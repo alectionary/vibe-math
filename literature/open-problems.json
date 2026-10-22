@@ -1965,6 +1965,11 @@
         "url": "https://arxiv.org/html/2607.13666v1",
         "locator": "Section 4.4, Proposition 4.17; reference [34]",
         "finding": "Explicitly cites Morris–Pllaha–Kelley and gives a restricted (3,3) elementary absorbing-set enumeration for column-weight-3, girth-at-least-6 QC-GHP codes. This is related progress, not a complete classification of structured QLDPC absorbing sets."
+      },
+      {
+        "url": "https://arxiv.org/html/2606.11987v1",
+        "locator": "Sections 3–4, Theorem 4.4 and Corollary 4.5; reference [12]",
+        "finding": "Restricted single-base-matrix lifted-product family: connectivity, minimal absorbing sets and lift behavior. Not a complete classification of structured QLDPC codes."
       }
     ]
   },
@@ -4046,7 +4051,14 @@
     "current_resolution_status": "counterexample_checked_in_python_not_lean",
     "search_family": "strongly_regular_99",
     "added_on": "2026-10-22",
-    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
+    "later_evidence": [
+      {
+        "url": "https://irsi.ai/notes/frontiermath-open/",
+        "locator": "AI-authored public note, dated October 20, 2026",
+        "finding": "Earlier public counterexamples report 169 and 120 triangles. Not peer reviewed; no priority claim for our later 66-triangle construction. Our preceding check independently reconstructed the ER(9) example; the 169-triangle example has not been independently reconstructed here."
+      }
+    ]
   },
   {
     "id": "L-P32-SOS-certificate",
@@ -5074,7 +5086,14 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "neural_codes_oriented_matroids",
     "added_on": "2026-10-22",
-    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2605.24181v1",
+        "locator": "Theorem 4.9",
+        "finding": "Bidegree Betti formula for inductively pierced codes. Restricted related progress, not a solution for arbitrary codes or a full fine-multigraded formula."
+      }
+    ]
   },
   {
     "id": "L-F13-Q10.4",
@@ -5478,5 +5497,335 @@
     "search_family": "high_girth_polynomial_lifts",
     "added_on": "2026-10-22",
     "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-P34-girth-eight",
+    "origin": "article_inventory_extension",
+    "title": "Characterize sufficient base-matrix conditions ensuring girth eight for the specified lifted-product Tanner graphs.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "P34",
+        "locator": "Section 5 after Theorem 5.1",
+        "extracted_text_lines": [
+          331,
+          332
+        ],
+        "url": "https://arxiv.org/html/2606.11987v1",
+        "source_sha256": "b3617a2ff27801b976f9a28e357d1b400ebbaa1240a942c56f12d6f10f77ad7c",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [
+      "L-P09-structured"
+    ],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-P34-decoding-effects",
+    "origin": "article_inventory_extension",
+    "title": "Analyze how girth-eight conditions affect other graph properties relevant for decoding.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.",
+    "occurrences": [
+      {
+        "source_id": "P34",
+        "locator": "Section 5 concluding question",
+        "extracted_text_lines": [
+          332,
+          332
+        ],
+        "url": "https://arxiv.org/html/2606.11987v1",
+        "source_sha256": "b3617a2ff27801b976f9a28e357d1b400ebbaa1240a942c56f12d6f10f77ad7c",
+        "relation": "concluding_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-P34-logical-partitions",
+    "origin": "article_inventory_extension",
+    "title": "Translate the cited row/column partition conditions for low-weight logical operators into Tanner-graph properties.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.",
+    "occurrences": [
+      {
+        "source_id": "P34",
+        "locator": "Conclusion",
+        "extracted_text_lines": [
+          334,
+          334
+        ],
+        "url": "https://arxiv.org/html/2606.11987v1",
+        "source_sha256": "b3617a2ff27801b976f9a28e357d1b400ebbaa1240a942c56f12d6f10f77ad7c",
+        "relation": "concluding_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-P34-base-design",
+    "origin": "article_inventory_extension",
+    "title": "Choose base-matrix entries to optimize Tanner-graph properties for iterative decoding.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.",
+    "occurrences": [
+      {
+        "source_id": "P34",
+        "locator": "Conclusion",
+        "extracted_text_lines": [
+          334,
+          334
+        ],
+        "url": "https://arxiv.org/html/2606.11987v1",
+        "source_sha256": "b3617a2ff27801b976f9a28e357d1b400ebbaa1240a942c56f12d6f10f77ad7c",
+        "relation": "concluding_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-F23-Q2.4",
+    "origin": "article_inventory_extension",
+    "title": "Does some total or partial concept class have strictly different list-replicability numbers at two accuracies 0 < epsilon1 < epsilon2 < 1/2?",
+    "kind": "mathematical_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "F23",
+        "locator": "Question 2.4",
+        "extracted_text_lines": [
+          191,
+          193
+        ],
+        "url": "https://arxiv.org/html/2606.06148v1",
+        "source_sha256": "40b2ca7e5033b572f984ea9ee912b0c0f17d6e8fc7fd0d432cfc355afdded37f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-F23-Q2.5",
+    "origin": "article_inventory_extension",
+    "title": "Determine the margin/accuracy parameter regimes for which the list-replicability number of d-dimensional large-margin halfspaces equals d.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "F23",
+        "locator": "Question 2.5",
+        "extracted_text_lines": [
+          194,
+          197
+        ],
+        "url": "https://arxiv.org/html/2606.06148v1",
+        "source_sha256": "40b2ca7e5033b572f984ea9ee912b0c0f17d6e8fc7fd0d432cfc355afdded37f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-F23-Q2.6",
+    "origin": "article_inventory_extension",
+    "title": "For the dimension d in the source setting, can varying margin and accuracy realize every integer list size from ceil(d/2)+1 through d?",
+    "kind": "mathematical_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "F23",
+        "locator": "Question 2.6",
+        "extracted_text_lines": [
+          198,
+          199
+        ],
+        "url": "https://arxiv.org/html/2606.06148v1",
+        "source_sha256": "40b2ca7e5033b572f984ea9ee912b0c0f17d6e8fc7fd0d432cfc355afdded37f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-F24-C1.15",
+    "origin": "article_inventory_extension",
+    "title": "Every finite N-by-M sign matrix has list-replicability number O(log N log M), with a universal implicit constant.",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "F24",
+        "locator": "Conjecture 1.15",
+        "extracted_text_lines": [
+          328,
+          331
+        ],
+        "url": "https://arxiv.org/html/2606.18236v1",
+        "source_sha256": "f2f61562bdac55a7960ae8d41edf51d95f40a0f522376c23f7f693d590bcd3cc",
+        "relation": "explicit_question"
+      },
+      {
+        "source_id": "F22",
+        "locator": "Introduction, discussion before Theorem 1.1",
+        "extracted_text_lines": [
+          49,
+          59
+        ],
+        "url": "https://arxiv.org/html/2610.20657v1",
+        "source_sha256": "4f7045dccb7b8571e104d4ed28263b9b4054a28623c07c55e8adb0bbbab6a25d",
+        "relation": "conjecture_recalled_with_weaker_bound"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "later_weaker_bound_in_primary_literature",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2610.20657v1",
+        "locator": "Theorem 1.1 and following paragraph",
+        "finding": "O(log^2 M log N) upper bound; tighter O(log M log N) conjecture remains open. No quantitative sample bound or computational efficiency guarantee."
+      }
+    ]
+  },
+  {
+    "id": "L-F24-P1.16-LR",
+    "origin": "article_inventory_extension",
+    "title": "Is list replicability of arbitrary finite concept classes bounded by a function of VC dimension alone?",
+    "kind": "mathematical_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "F24",
+        "locator": "Problem 1.16, list-replicability part",
+        "extracted_text_lines": [
+          332,
+          337
+        ],
+        "url": "https://arxiv.org/html/2606.18236v1",
+        "source_sha256": "f2f61562bdac55a7960ae8d41edf51d95f40a0f522376c23f7f693d590bcd3cc",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
+  },
+  {
+    "id": "L-F24-P1.16-index",
+    "origin": "article_inventory_extension",
+    "title": "Is the Z2-index of arbitrary finite concept classes bounded by a function of VC dimension alone?",
+    "kind": "mathematical_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retain definitions and regimes at the cited locator.",
+    "occurrences": [
+      {
+        "source_id": "F24",
+        "locator": "Problem 1.16, index part",
+        "extracted_text_lines": [
+          332,
+          337
+        ],
+        "url": "https://arxiv.org/html/2606.18236v1",
+        "source_sha256": "f2f61562bdac55a7960ae8d41edf51d95f40a0f522376c23f7f693d590bcd3cc",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "browser_scholar_x_extension",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/browser-search-review.json (primary text screen only; no new Lean declaration search)"
   }
 ]

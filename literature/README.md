@@ -22,11 +22,13 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 
 **The Bernstein question needs a scope correction.** Jeffries and Lieberman explicitly note that Bernstein’s inequality fails for general singularities. Their paper gives sufficient criteria and affirmative classes, including a Segre setting. The broad review question is a program to classify valid rings, not a universal conjecture asserting the inequality for every ring. This is existing context from a 2024 coauthored manuscript, not a newly discovered later disproof. [Introduction and Theorems 1.1–1.4](https://arxiv.org/html/2403.13146v1).
 
+See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more primary-paper screens, new open questions, an author’s X announcement, and pending citation leads.
+
 ## Counts and their meaning
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
-- **33 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **19 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
+- **24 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -311,6 +313,14 @@ Missing overlapping author-paper version; Question 4.1 repeats the dissertation�
 
 Location: Section 4, Question 4.1 and conclusion.
 
+### P34 Graphical Analysis of Lifted Product Code Constructions
+
+Ragnar Freij-Hollanti; Kirsten D. Morris; Patricija Šapokaitė. 2026. [full text relevant sections](https://arxiv.org/html/2606.11987v1).
+
+Scholar author search and P09 cited-by results. Reference [12] cites Morris–Pllaha–Kelley. Sections 3–4 give connectivity and minimal-absorbing-set results for the specified single-base-matrix lifted-product family; Section 5 leaves sufficient girth-eight conditions and decoding-oriented design questions.
+
+Location: Section 5 after Theorem 5.1 and conclusion.
+
 ## Related coauthor and external articles and later talks
 
 ### F01 Overcoming the Randomness-Utility Trade-off in Answering Differentially Private Linear Queries
@@ -438,6 +448,36 @@ Later answer to F14’s request for an efficient construction, with a closely re
 Tasawwar Hussain; Anthony Gómez-Fonseca; Tefjol Pllaha. 2026. [coauthor or citation expansion](https://arxiv.org/html/2610.03341v1).
 
 Later work by P11 coauthors Gómez-Fonseca and Pllaha; noncommuting polynomial lifts differ from dyadic signatures. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F20 Betti numbers of inductively pierced codes
+
+Hugh Geller; Rebecca R.G.; Alexandra Seceleanu; Nora Youngs. 2026. [browser discovered related paper](https://arxiv.org/html/2605.24181v1).
+
+Scholar coauthor lead through Seceleanu. The acknowledgment names Juliann Geraci. Theorem 4.9 gives a bidegree Betti formula for inductively pierced codes. This is restricted related progress toward F13 Question 10.3, not a formula for arbitrary codes or their full fine multigrading. No explicit remaining target was identified in the full-text screen. Primary text screened for explicit targets and scope; published proofs not independently certified and no Lean artifact built.
+
+### F21 From neural codes to homological invariants: regularity and projective dimension of polarized neural ideals
+
+Trung Chau. 2025. [browser discovered related paper](https://arxiv.org/html/2511.19043v1).
+
+Discovered through an X arXiv announcement. Related algebraic precursor; references shared neural-ideal sources. The introduction explicitly uses a broader class of squarefree monomial ideals with no generator divisible by x_i y_i. Its separate ranges of projective dimension and regularity do not settle F13 Question 10.2 about achievable pairs for actual neural codes. No new explicit open target was identified. Primary text screened for explicit targets and scope; published proofs not independently certified and no Lean artifact built.
+
+### F22 A polylogarithmic bound for list replicability
+
+Ari Blondal; Hamed Hatami; Pooya Hatami; Chavdar Lalov; Sivan Tretiak. 2026. [browser discovered related paper](https://arxiv.org/html/2610.20657v1).
+
+Scholar P31 cited-by results, sorted by date; author announcement on X independently located. Theorem 1.1 proves the O(log^2 M log N) list-size bound; it gives no quantitative sample-complexity or efficiency guarantee. This improves toward, but does not prove, F24 Conjecture 1.15. The manuscript credits Zhang’s earlier announcement and says it contains no new results. Primary text screened for explicit targets and scope; published proofs not independently certified and no Lean artifact built.
+
+### F23 Tight list replicability bounds via a novel sphere covering theorem
+
+Ari Blondal; Hamed Hatami; Pooya Hatami; Chavdar Lalov; Sivan Tretiak. 2026. [browser discovered related paper](https://arxiv.org/html/2606.06148v1).
+
+Scholar P31 cited-by results. Explicitly cites Dixon–Pavan–Vander Woude–Vinodchandran and related geometric/topological work. New bounds and open Questions 2.4–2.6 concern list size, accuracy and margin regimes, not the P31 sample/certificate gap. Primary text screened for explicit targets and scope; published proofs not independently certified and no Lean artifact built.
+
+### F24 Sign-Rank, Index, and List Replicability: Connections and Separations
+
+Ari Blondal; Hamed Hatami; Pooya Hatami; Chavdar Lalov; Sivan Tretiak. 2026. [browser discovered related paper](https://arxiv.org/html/2606.18236v1).
+
+Scholar P31 cited-by results and X announcement. References the P31 framework. Section 1.3 poses a logarithmic product bound and VC-dimension questions. Later F22 gives a weaker logarithmic bound; arbitrary VC-dimension-only bounds are not settled by that cardinality-dependent theorem. Primary text screened for explicit targets and scope; published proofs not independently certified and no Lean artifact built.
 
 ## Question by question cross references
 

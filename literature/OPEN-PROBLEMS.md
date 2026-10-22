@@ -2,27 +2,27 @@
 
 Checked October 22, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **171 canonical entries**: the original 40 dissertation targets and **131 additional article entries**. Of the additions, **62 are specific mathematical questions or tasks suitable for coverage tracking**; the other 69 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **181 canonical entries**: the original 40 dissertation targets and **141 additional article entries**. Of the additions, **69 are specific mathematical questions or tasks suitable for coverage tracking**; the other 72 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 62 |
-| Additional directions/formulation/method entries outside the denominator | 69 |
-| Combined eligible targets | 101 = 39 + 62 |
-| Eligible targets with an identified, verified proof-assistant statement | 1/101 (0.99%) |
-| Eligible targets with an identified, verified Lean statement | 1/101 (0.99%) |
-| Eligible targets with a complete checked Lean proof | 1/101 (0.99%) |
-| Eligible targets with checked finite cases, without a complete proof | 0/101 |
-| Additional identified Lean statements without a build audit | 1/101 |
-| Eligible targets with Lean discovery still unassessed in this extension | 5/101 |
-| Articles/preprints in scope | 52 |
-| Full-text sources screened, including withdrawn history | 51/52 |
-| Current-publication full texts screened | 50 |
+| Additional article targets in the coverage denominator | 69 |
+| Additional directions/formulation/method entries outside the denominator | 72 |
+| Combined eligible targets | 108 = 39 + 69 |
+| Eligible targets with an identified, verified proof-assistant statement | 1/108 (0.93%) |
+| Eligible targets with an identified, verified Lean statement | 1/108 (0.93%) |
+| Eligible targets with a complete checked Lean proof | 1/108 (0.93%) |
+| Eligible targets with checked finite cases, without a complete proof | 0/108 |
+| Additional identified Lean statements without a build audit | 1/108 |
+| Eligible targets with Lean discovery still unassessed in this extension | 12/108 |
+| Articles/preprints in scope | 58 |
+| Full-text sources screened, including withdrawn history | 57/58 |
+| Current-publication full texts screened | 56 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 1/52 |
+| Not fully assessed | 1/58 |
 
 **Current artifact coverage includes our [dyadic rank theorem](../formalization/dyadic-rank/README.md): a general Lean statement and a complete checked proof of that target by direct induction.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse now has a complete Lean proof of the recorded statement. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -38,7 +38,7 @@ The unit is a mathematical question, task, or explicitly labeled direction, not 
 
 Repeated targets share one canonical ID with multiple source occurrences. Related but different systems, hypotheses, or invariants retain different IDs and explicit related-target links. In particular, P01 changes the invariants in the held Geraci question; calmed rotational NSE is distinct from calmed velocity–vorticity; and two-dimensional Ohmic-heating MHD–Boussinesq is distinct from three-dimensional MHD. Local existence and global well-posedness are distinct obligations and are related in the ledger. No logical independence of the counted problems is claimed.
 
-This article set includes predecessor versions and overlapping publications as well as genuinely later papers. “Additional” means newly inventoried, not newly posed after the dissertation. Dates and author relationships remain in [the bibliography](papers.json). The October 22 expansion adds 21 screened papers and 57 canonical entries, of which 27 enter the denominator; repeated occurrences are merged. The earlier cohort remains 114 entries and 74 targets. See [expanded search findings and limits](SCHOLARLY-EXPANSION.md).
+This article set includes predecessor versions and overlapping publications as well as genuinely later papers. “Additional” means newly inventoried, not newly posed after the dissertation. Dates and author relationships remain in [the bibliography](papers.json). The October 22 expansion adds 21 screened papers and 57 canonical entries, of which 27 enter the denominator; repeated occurrences are merged. The earlier cohort remains 114 entries and 74 targets. See [expanded search findings and limits](SCHOLARLY-EXPANSION.md). A subsequent [Edge Scholar/X pass](BROWSER-SEARCH.md) adds six screened papers, ten canonical entries and seven eligible targets; its new Lean searches remain unassessed.
 
 ## Source coverage and gaps
 
@@ -100,6 +100,12 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F17](https://arxiv.org/html/2609.24201v1) | full text screened | 0 | Independent downstream paper citing Martinez–Kelley [13] and P11 [16]; construction progress is not an exact rank/support-conjecture repetition. |
 | [F18](https://arxiv.org/html/2510.16959v1) | full text screened | 1 | Later answer to F14’s request for an efficient construction, with a closely related parameter tradeoff; first preprint 2025, SOSA publication 2026. |
 | [F19](https://arxiv.org/html/2610.03341v1) | full text screened | 3 | Later work by P11 coauthors Gómez-Fonseca and Pllaha; noncommuting polynomial lifts differ from dyadic signatures. |
+| [P34](https://arxiv.org/html/2606.11987v1) | full text screened | 4 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
+| [F20](https://arxiv.org/html/2605.24181v1) | full text screened | 0 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
+| [F21](https://arxiv.org/html/2511.19043v1) | full text screened | 0 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
+| [F22](https://arxiv.org/html/2610.20657v1) | full text screened | 1 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
+| [F23](https://arxiv.org/html/2606.06148v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
+| [F24](https://arxiv.org/html/2606.18236v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
 
 ## Reproducible evidence and limits
 
@@ -107,11 +113,11 @@ Primary HTML/PDF retrievals and public full-text transcriptions, content hashes 
 
 The added search ran 44 lexical queries across four previously pinned Lean source trees, respecting the sparse checkout scope recorded in [audit sources](../audit/sources.json), plus eight GitHub indexed-code queries (limit 30 hits each). The dyadic/rank query reached the limit, so its results are explicitly incomplete. Candidate files were inspected for mathematical subject mismatches; no exact new target was established. A file retrieval failure is recorded, not interpreted as absence. Weighted Horace background, dyadic local algebra, topological absorbing sets, and primitive-set saturation games do not match the targets here. [Local searches](downstream-lean-searches.json) · [GitHub searches](downstream-github-searches.json) · [Candidate retrievals](downstream-lean-candidates.json) · [Comparison notes](downstream-search-review.json).
 
-The original 39 targets retain the earlier audit’s search evidence. New rows use family-level discovery and source-context comparisons, not an exhaustive search over all public declarations or alternate terminology. The recovered texts received eight supplementary pinned-source queries, recorded in [gap-specific Lean discovery](coverage-gap-lean-searches.json); no matching artifact was identified. P20 questions are historical, and a related graph-radius conjecture is not a matching algorithmic result. A public matching Lean artifact would change verified counts only after a semantic and build/axiom audit. The October 22 search identifies a matching `proof_wanted` existence statement for Conway’s 99-graph, recorded as identified but not build-verified. It supplies no proof. Five new eligible targets retain unassessed Lean-discovery status. [Search and candidate review](SCHOLARLY-EXPANSION.md).
+The original 39 targets retain the earlier audit’s search evidence. Earlier article rows use family-level discovery and source-context comparisons, not an exhaustive search over all public declarations or alternate terminology. The recovered texts received eight supplementary pinned-source queries, recorded in [gap-specific Lean discovery](coverage-gap-lean-searches.json); no matching artifact was identified. P20 questions are historical, and a related graph-radius conjecture is not a matching algorithmic result. A public matching Lean artifact would change verified counts only after a semantic and build/axiom audit. The October 22 search identifies a matching `proof_wanted` existence statement for Conway’s 99-graph, recorded as identified but not build-verified. It supplies no proof. The earlier pass left five eligible targets unassessed; the Edge continuation adds seven more without a new Lean search, for twelve unassessed eligible targets. [Search and candidate review](SCHOLARLY-EXPANSION.md).
 
 ## October 22 expansion
 
-[The expanded search](SCHOLARLY-EXPANSION.md) records Google Scholar access failures, OpenAlex lookups, author/coauthor discovery, repeated questions and later restricted answers. Two source statements are held after finite Python counterchecks. Those checks are not Lean proofs and do not settle Conway’s strongly regular graph existence problem.
+[The expanded search](SCHOLARLY-EXPANSION.md) records the earlier web-tool Google Scholar access failures, OpenAlex lookups, author/coauthor discovery, repeated questions and later restricted answers. Two source statements are held after finite Python counterchecks. Those checks are not Lean proofs and do not settle Conway’s strongly regular graph existence problem.
 
 ## Exclusions
 
@@ -770,6 +776,7 @@ Classify absorbing sets in structured QLDPC codes, including hypergraph-product 
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [P09: Section VI](https://arxiv.org/html/2307.14532); extraction lines 505–505; explicit open problem.
 - Later evidence: [Section 4.4, Proposition 4.17; reference [34]](https://arxiv.org/html/2607.13666v1). Explicitly cites Morris–Pllaha–Kelley and gives a restricted (3,3) elementary absorbing-set enumeration for column-weight-3, girth-at-least-6 QC-GHP codes. This is related progress, not a complete classification of structured QLDPC absorbing sets.
+- Later evidence: [Sections 3–4, Theorem 4.4 and Corollary 4.5; reference [12]](https://arxiv.org/html/2606.11987v1). Restricted single-base-matrix lifted-product family: connectivity, minimal absorbing sets and lift behavior. Not a complete classification of structured QLDPC codes.
 
 ### L-P09-decoders
 
@@ -1444,6 +1451,7 @@ Is the stated maximum of 55 triangles valid on 99 vertices under the diamond/K2,
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: counterexample checked in python not lean.
 - [P32: Conjecture 5](https://arxiv.org/html/2610.16266v1); extraction lines 76–134; explicit question.
+- Later evidence: [AI-authored public note, dated October 20, 2026](https://irsi.ai/notes/frontiermath-open/). Earlier public counterexamples report 169 and 120 triangles. Not peer reviewed; no priority claim for our later 66-triangle construction. Our preceding check independently reconstructed the ER(9) example; the 169-triangle example has not been independently reconstructed here.
 
 ### L-P32-SOS-certificate
 
@@ -1768,6 +1776,7 @@ Describe multigraded Betti numbers of polarized neural ideals combinatorially.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F13: Question 10.3](https://arxiv.org/html/2602.16993v1); extraction lines 1171–1173; explicit question.
+- Later evidence: [Theorem 4.9](https://arxiv.org/html/2605.24181v1). Bidegree Betti formula for inductively pierced codes. Restricted related progress, not a solution for arbitrary codes or a full fine-multigraded formula.
 
 ### L-F13-Q10.4
 
@@ -1894,3 +1903,106 @@ Extend the permutation-polynomial construction to quantum LDPC codes.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 309–309; explicit question.
+
+### L-P34-girth-eight
+
+Characterize sufficient base-matrix conditions ensuring girth eight for the specified lifted-product Tanner graphs.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P34: Section 5 after Theorem 5.1](https://arxiv.org/html/2606.11987v1); extraction lines 331–332; explicit question.
+- Related, not merged: L-P09-structured.
+
+### L-P34-decoding-effects
+
+Analyze how girth-eight conditions affect other graph properties relevant for decoding.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P34: Section 5 concluding question](https://arxiv.org/html/2606.11987v1); extraction lines 332–332; concluding direction.
+
+### L-P34-logical-partitions
+
+Translate the cited row/column partition conditions for low-weight logical operators into Tanner-graph properties.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
+
+### L-P34-base-design
+
+Choose base-matrix entries to optimize Tanner-graph properties for iterative decoding.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
+
+### L-F23-Q2.4
+
+Does some total or partial concept class have strictly different list-replicability numbers at two accuracies 0 < epsilon1 < epsilon2 < 1/2?
+
+- Type: mathematical question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F23: Question 2.4](https://arxiv.org/html/2606.06148v1); extraction lines 191–193; explicit question.
+
+### L-F23-Q2.5
+
+Determine the margin/accuracy parameter regimes for which the list-replicability number of d-dimensional large-margin halfspaces equals d.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F23: Question 2.5](https://arxiv.org/html/2606.06148v1); extraction lines 194–197; explicit question.
+
+### L-F23-Q2.6
+
+For the dimension d in the source setting, can varying margin and accuracy realize every integer list size from ceil(d/2)+1 through d?
+
+- Type: mathematical question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F23: Question 2.6](https://arxiv.org/html/2606.06148v1); extraction lines 198–199; explicit question.
+
+### L-F24-C1.15
+
+Every finite N-by-M sign matrix has list-replicability number O(log N log M), with a universal implicit constant.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: later weaker bound in primary literature.
+- [F24: Conjecture 1.15](https://arxiv.org/html/2606.18236v1); extraction lines 328–331; explicit question.
+- [F22: Introduction, discussion before Theorem 1.1](https://arxiv.org/html/2610.20657v1); extraction lines 49–59; conjecture recalled with weaker bound.
+- Later evidence: [Theorem 1.1 and following paragraph](https://arxiv.org/html/2610.20657v1). O(log^2 M log N) upper bound; tighter O(log M log N) conjecture remains open. No quantitative sample bound or computational efficiency guarantee.
+
+### L-F24-P1.16-LR
+
+Is list replicability of arbitrary finite concept classes bounded by a function of VC dimension alone?
+
+- Type: mathematical question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F24: Problem 1.16, list-replicability part](https://arxiv.org/html/2606.18236v1); extraction lines 332–337; explicit question.
+
+### L-F24-P1.16-index
+
+Is the Z2-index of arbitrary finite concept classes bounded by a function of VC dimension alone?
+
+- Type: mathematical question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F24: Problem 1.16, index part](https://arxiv.org/html/2606.18236v1); extraction lines 332–337; explicit question.

@@ -30,6 +30,8 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 
 **The Bernstein question needs a scope correction.** Jeffries and Lieberman explicitly note that Bernstein’s inequality fails for general singularities. Their paper gives sufficient criteria and affirmative classes, including a Segre setting. The broad review question is a program to classify valid rings, not a universal conjecture asserting the inequality for every ring. This is existing context from a 2024 coauthored manuscript, not a newly discovered later disproof. [Introduction and Theorems 1.1–1.4](https://arxiv.org/html/2403.13146v1).
 
+See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more primary-paper screens, new open questions, an author’s X announcement, and pending citation leads.
+
 ## Counts and their meaning
 
 '''

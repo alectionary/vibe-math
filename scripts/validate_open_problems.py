@@ -4,10 +4,11 @@ from urllib.parse import urlparse
 R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature';load=lambda n:json.loads((D/n).read_text())
 rows=load('open-problems.json');coverage=load('downstream-paper-coverage.json');summary=load('open-problem-summary.json');manifest={m['paper_id']:m for m in load('downstream-source-manifest.json')}
 expansion=load('scholarly-expansion-review.json')
-assert len(rows)==len({r['id'] for r in rows})==expansion['baseline']['canonical_entries']+len(expansion['added_target_ids'])
-assert set(expansion['baseline']['canonical_ids'])|set(expansion['added_target_ids'])=={r['id'] for r in rows}
+browser=load('browser-search-review.json')
+assert len(rows)==len({r['id'] for r in rows})==expansion['baseline']['canonical_entries']+len(expansion['added_target_ids'])+len(browser['added_target_ids'])
+assert set(expansion['baseline']['canonical_ids'])|set(expansion['added_target_ids'])|set(browser['added_target_ids'])=={r['id'] for r in rows}
 ids={r['id'] for r in rows};by={r['id']:r for r in rows};papers={p['id']:p for p in load('papers.json')+load('followups.json') if p['id'].startswith(('P','F'))}
-assert len(coverage)==len(papers)==len(manifest)==expansion['baseline']['paper_records']+len(expansion['added_paper_ids'])
+assert len(coverage)==len(papers)==len(manifest)==expansion['baseline']['paper_records']+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
 assert {p['paper_id'] for p in coverage}==set(papers)
 legacy={c['id']:c for c in json.loads((R/'audit/claims.json').read_text()) if c['kind']=='open_question'}
 assert len(legacy)==40
@@ -53,13 +54,13 @@ for m in manifest.values():
   p=R/m['local_file']
   if p.exists():assert hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']
 new=[r for r in rows if r['origin']=='article_inventory_extension'];eligible=[r for r in rows if r['eligible_for_coverage']]
-assert len(new)==summary['additional_entries']==74+expansion['added_entries']
-assert sum(r['eligible_for_coverage'] for r in new)==summary['additional_eligible_targets']==35+expansion['added_eligible_targets']
-assert len(eligible)==summary['eligible_targets']==74+expansion['added_eligible_targets']
+assert len(new)==summary['additional_entries']==74+expansion['added_entries']+browser['added_entries']
+assert sum(r['eligible_for_coverage'] for r in new)==summary['additional_eligible_targets']==35+expansion['added_eligible_targets']+browser['added_eligible_targets']
+assert len(eligible)==summary['eligible_targets']==74+expansion['added_eligible_targets']+browser['added_eligible_targets']
 assert summary['new_written_math_statuses']==dict(collections.Counter(r['written_math_status'] for r in new))
-assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)==30+len(expansion['added_paper_ids'])
+assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)==30+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
-assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])
+assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
 assert summary['not_fully_assessed']==1
 assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==1
 assert summary['eligible_verified_lean_proofs']==1
@@ -86,5 +87,5 @@ for href in re.findall(r'\]\(([^)]+)\)',report):
  if not u.scheme and u.path:assert (D/u.path).exists(),href
 assert f"0/{len(eligible)}" in report and f"0/{len(eligible)}" in page
 assert summary['eligible_identified_unverified_lean_statements']==1
-assert summary['eligible_lean_discovery_unassessed']==5
+assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']
 print(f'Validated {len(rows)} canonical entries, {len(eligible)} eligible targets, {len(coverage)} paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.')

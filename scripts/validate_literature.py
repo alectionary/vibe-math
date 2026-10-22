@@ -25,7 +25,7 @@ for l in links:
  assert set(l['paper_ids'])<=pids and set(l['followup_ids'])<=fids
  assert not l['full_resolution_verified']
  if l['finding']!='no_exact_reappearance_verified':assert l['paper_ids'] or l['followup_ids']
-assert summary['article_preprint_records']==len(papers)==33
+assert summary['article_preprint_records']==len(papers)==34
 assert summary['authors_with_topic_matched_records']==sum(bool(a['paper_ids']) for a in authors)==16
 assert summary['eligible_targets_from_lean_audit']==sum(l['eligible_in_previous_audit'] for l in links)==39
 assert summary['findings']==dict(collections.Counter(l['finding'] for l in links))
