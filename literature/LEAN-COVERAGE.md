@@ -13,6 +13,10 @@ The statement-only entry is Conway’s 99-graph existence problem, recorded as M
 
 The proved entry is **L-P11-rank-converse**, the general dyadic rank/support theorem. I reran `lake env lean Checks.lean` in the existing project: it exited successfully and printed 66 axiom reports using only `propext`, `Classical.choice` and `Quot.sound`. No `sorryAx` appeared. This rechecks the existing contribution; it adds no newly proved target. [Lean project and theorem scope](../formalization/dyadic-rank/README.md), [recheck output](lean-coverage-dyadic-recheck.log), [structured results](lean-coverage-review.json).
 
+## Supporting formalization after this assessment
+
+The subsequent P34 first stage now has **36 checked Lean theorems**, including the source matrix/Tanner comparison, walk closure, a complete four-cycle criterion and a ternary six-cycle obstruction. This is supporting progress: the full girth-eight design criterion remains unproved and is not counted as an additional fully formalized or proved target. Complete proof coverage remains **1/108**. [Exact checked scope, sources and reproducibility](../formalization/cyclic-lifts/README.md).
+
 ## The previously unassessed targets
 
 This pass assessed the **12 eligible targets** left unassessed after the two literature expansions, plus **nine excluded directions**. It did not repeat a complete search for every older target. Each of the 21 entries now points to this pass’s evidence. No exact new target statement or proof was identified.

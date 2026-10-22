@@ -15,6 +15,7 @@ for r in rows:
   return f'Tier {v["tier"]}: {v["band"]}' if v else 'Hold: scope/formulation first'
  a=fmt('statement_setup');b=fmt('proof_transfer_given_correct_complete_proof');research='Completed target' if r['completed'] else ('Scope/formulation first' if r['gate'] else f'Relative research obstacle {r["research_obstacle"]}/5; discovery time unestimated')
  text+=f'\n### {r["target_id"]}\n\n{r["title"]}\n\n- Statement: {a}.\n- Proof transfer, given a complete proof: {b}.\n- Research: {research}. {r["research_status"]}\n\n{r["rationale"]}\n\nFirst milestone: {r["first_milestone"]}\n\n'
+ if r.get('progress_note'):text+=f'Progress: {r["progress_note"]} [Checked artifact](../{r["progress_artifact"]}).\n\n'
  if r['gate']:text+=f'Gate: {r["gate"]}\n\n'
  if r.get('proof_branches'):text+=r['proof_branches']+'\n\n'
  text+=f'Basis: {r["basis"]} [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#{slug(r["target_id"])}).\n'

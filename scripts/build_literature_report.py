@@ -36,6 +36,8 @@ The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discover
 
 The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and recommends the P34 girth-eight problem as the next bounded project.
 
+The recommended P34 project has now completed its [first bounded formalization stage](../formalization/cyclic-lifts/README.md): walk and four-cycle results plus a six-cycle obstruction, with no claim to the full girth-eight question.
+
 ## Counts and their meaning
 
 '''

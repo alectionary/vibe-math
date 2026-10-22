@@ -2566,6 +2566,8 @@ Cyclic lifts reduce short closed walks to modular label sums, but the exact lift
 
 First milestone: Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.
 
+Progress: First bounded stage completed October 22: 36 checked supporting Lean theorems, source matrix comparison, four-cycle criterion and ternary no-four/six-cycle obstruction. Full girth-eight criterion remains open; the original planning tiers are not timed implementation measurements. [Checked artifact](../formalization/cyclic-lifts/README.md).
+
 Basis: New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p34-girth-eight).
 
 ### L-P34-decoding-effects

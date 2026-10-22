@@ -6,6 +6,10 @@ All **181 inventory entries** now have current planning assessments, including t
 
 [Every current assessment](CURRENT-DIFFICULTY.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json) · [Current summary](current-difficulty-summary.json) · [Lean coverage evidence](../literature/LEAN-COVERAGE.md).
 
+## Progress after starting the project
+
+The first bounded stage is now checked: 36 Lean theorems, a faithful source-matrix comparison, the complete four-cycle criterion and a ternary no-four/six-cycle obstruction. The Python scan covers 432 cases. The general girth-eight criterion remains unfinished; no new full inventory target is counted as proved. [Implementation, exact scope and verification](../formalization/cyclic-lifts/README.md). The effort bands below are the original planning priors, not a measurement of the work now completed.
+
 ## What the ratings mean
 
 There are three separate tasks: build a faithful statement and its definitions; discover a correct mathematical proof or counterexample; and transfer a supplied complete proof into checked Lean. **Discovery completion time is unestimated for every open target.** The proof-transfer bands below assume that discovery is already complete. They are additional effort after statement setup, with one experienced Lean developer and domain knowledge. Do not add bands across related targets, which can share foundations.

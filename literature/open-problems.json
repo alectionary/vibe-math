@@ -5588,8 +5588,19 @@
       {
         "url": "https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean",
         "finding": "Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited."
+      },
+      {
+        "url": "https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/LiftedProduct.lean",
+        "finding": "This project now checks the P34 binary matrix/Tanner graph model and a complete four-cycle criterion; SmallCases.lean checks a no-four/six-cycle obstruction. Supporting results, not a full girth-eight statement or proof."
       }
-    ]
+    ],
+    "supporting_lean_artifact": {
+      "readme": "formalization/cyclic-lifts/README.md",
+      "verification": "formalization/cyclic-lifts/verification.json",
+      "scope": "Checked walk/closure and four-cycle lemmas, source matrix comparison, symbolic no-four family, and a ternary six-cycle obstruction. No general girth-eight criterion or full target statement/proof.",
+      "checked_on": "2026-10-22",
+      "changes_exact_target_coverage": false
+    }
   },
   {
     "id": "L-P34-decoding-effects",

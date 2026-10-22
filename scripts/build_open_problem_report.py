@@ -94,6 +94,8 @@ for r in rows:
   a=r['verified_artifact'];s+=f"- Verified artifact: [{a['statement_declaration']}](../{a['readme']}); {a['scope']}.\n"
   for key, label in [('structural_note','Checked general proof'),('search_note','Larger counterexample search')]:
    if key in a:s+=f"- [{label}](../{a[key]}).\n"
+ if r.get('supporting_lean_artifact'):
+  a=r['supporting_lean_artifact'];s+=f"- Supporting Lean artifact (not full target coverage): [checked scope](../{a['readme']}). {a['scope']}\n"
  for o in r['occurrences']:
   extra='; PDF pages '+', '.join(map(str,o['pdf_pages'])) if 'pdf_pages' in o else '; extraction lines '+str(o['extracted_text_lines'][0])+'–'+str(o['extracted_text_lines'][1])
   s+=f"- [{o['source_id']}: {o['locator']}]({o['url']}){extra}; {o['relation'].replace('_',' ')}.\n"
@@ -112,6 +114,8 @@ for r in rows:
   a=r['verified_artifact'];sources+=f'<p><a href="../{e(a["readme"],quote=True)}">Verified Lean artifact</a></p>'
   for key, label in [('structural_note','Checked general proof'),('search_note','Larger counterexample search')]:
    if key in a:sources+=f'<p><a href="../{e(a[key],quote=True)}">{label}</a></p>'
+ if r.get('supporting_lean_artifact'):
+  a=r['supporting_lean_artifact'];sources+=f'<p><a href="../{e(a["readme"],quote=True)}">Checked supporting lemmas; full target remains open</a></p>'
  for evidence in r.get('related_formalization_evidence',[]):
   sources+=f'<p><a href="{e(evidence["url"],quote=True)}">Related Lean source (see audit status)</a></p>'
  text=' '.join([r['id'],r['title'],r['kind'],r['written_math_status']]+[o['source_id'] for o in r['occurrences']])

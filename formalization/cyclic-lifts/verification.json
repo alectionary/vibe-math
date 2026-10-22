@@ -1,0 +1,189 @@
+{
+  "target_id": "L-P34-girth-eight",
+  "checked_on": "2026-10-22",
+  "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_revision": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "primary_source": "https://arxiv.org/html/2606.11987v1",
+  "source_locator": "Equation (2.1), Equation (2.3), Section 5 after Theorem 5.1",
+  "source_sha256": "b3617a2ff27801b976f9a28e357d1b400ebbaa1240a942c56f12d6f10f77ad7c",
+  "working_directory": "formalization/dyadic-rank",
+  "build_command": "lake -f lakefile-cyclic.toml build CyclicLift",
+  "build_exit_code": 0,
+  "consumer_command": "lake -f lakefile-cyclic.toml env lean CyclicChecks.lean",
+  "consumer_exit_code": 0,
+  "theorem_count": 36,
+  "declaration_axioms": {
+    "CyclicLift.VoltageGraph.displacement_nil": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.displacement_cons": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.endpoint_fiber": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.same_fiber_iff": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.lift_walk_exists": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.lift_walk_projects": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.closed_lift_exists": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.closed_lift_projects_iff": [
+      "propext"
+    ],
+    "CyclicLift.VoltageGraph.displacement_append": [
+      "propext"
+    ],
+    "CyclicLift.fourWalk_isCycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.HasFourCycle.native": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.hasFourCycle_iff_native": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.variable_check_adj": [
+      "propext"
+    ],
+    "CyclicLift.check_variable_adj": [
+      "propext"
+    ],
+    "CyclicLift.not_variable_variable_adj": [
+      "propext"
+    ],
+    "CyclicLift.not_check_check_adj": [
+      "propext"
+    ],
+    "CyclicLift.rectangle_closes_iff": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.rectangle_gives_four_cycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.rectangle_of_four_edges": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.hasFourCycle_iff_rectangle": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.permutationEntry_neg": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.hX_left": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.hX_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.hX_ne_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.xGraph_eq_matrixTanner": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.base_rectangle_gives_x_four_cycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.xGraph_hasFourCycle_iff": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.xGraph_native_fourCycle_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.hX_row_count": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.hX_column_count": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.normalizedTwo_no_four": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.ternaryBase_rectangles": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.ternaryBase_no_four": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.ternarySix_isCycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.ternarySix_length": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.rectangle_exclusion_not_sufficient_for_no_six": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "full_target_statement_formalized": false,
+  "general_girth_eight_problem_proved": false,
+  "verified_scope": [
+    "Exact lifting and projection of prescribed walks; endpoint displacement and closed-lift iff zero displacement",
+    "Generic and P34 native four-cycle iff supported zero rectangle",
+    "Exact binary matrix/Tanner graph comparison and finite dimensions",
+    "Symbolic normalized 2x2 four-cycle exclusion",
+    "Ternary no-four-cycle and explicit simple-six-cycle obstruction"
+  ],
+  "python_case_count": 432,
+  "python_results_are_lean_certificates": false,
+  "original_dyadic_proof_sources_unchanged": true,
+  "sha256": {
+    "formalization/dyadic-rank/CyclicLift.lean": "cdb5ba5222a595566e923cecde03e98bdc98b85e413d17252dc72186cf760f06",
+    "formalization/dyadic-rank/CyclicChecks.lean": "19bf135b600c650b2e9000588031647cad91a5ea267f4523fefa371aae820b77",
+    "formalization/dyadic-rank/lakefile-cyclic.toml": "fbab846cca0b9b73388c15b5eb789d4593b9a3475af75787e8636e90b5c2f41c",
+    "formalization/dyadic-rank/lake-manifest.json": "2df78ebbe40bc72129461827774a34ade3b7b80616d28f5389c0a91217397963",
+    "formalization/dyadic-rank/lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+    "formalization/dyadic-rank/CyclicLift/Basic.lean": "d3f13f96ad9c73d85859036cc51e69e9cd2d4a5351805ba255d32855839e2b07",
+    "formalization/dyadic-rank/CyclicLift/Bipartite.lean": "e04c71240d7640c2535b6153f2ef34e20bcc6106948b3fea0364a57a0dd316b3",
+    "formalization/dyadic-rank/CyclicLift/LiftedProduct.lean": "c128c0a4bcfe785d9cab418172ea850e240cb72529419d25e9932f4a4b7daa74",
+    "formalization/dyadic-rank/CyclicLift/SmallCases.lean": "80a4d8346fcc53dba4574f18d6ba10d9ede9901f00a532126ffdf7e4f0358038",
+    "formalization/cyclic-lifts/search/scan.py": "fd4ab6a2770b738b70f0de3c1e95ad348ce516b339af3746474fde4f2569f2ad",
+    "formalization/cyclic-lifts/search/results.json": "9b4978e9d21b0a98a1874ef4c0fcedd9c544ef5bcbb80f4910f0f485c3e8dcc1"
+  },
+  "log_sha256": "6c3e8f298715c81ff2e28578916e32f1e898913bce6b7478db5fcb9b89be2038"
+}
