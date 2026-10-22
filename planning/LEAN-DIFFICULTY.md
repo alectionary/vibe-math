@@ -2,7 +2,7 @@
 
 The finite graph and binary-matrix questions offer the clearest starting points. Specialized geometry, support varieties, knot theory and nonlinear PDEs require much larger foundations. The original **114 inventory entries** have an assessment, but **41 directions or historical/formulation holds** do not yet identify a proof task precise enough to schedule. [Searchable estimates](difficulty.html) · [Per-question data](difficulty-estimates.json) · [Open-problem inventory](../literature/OPEN-PROBLEMS.md).
 
-The October 22 literature expansion adds 57 entries without difficulty estimates; the counts below describe the original 114-entry planning cohort.
+The [current assessment and recommendation](NEXT-PROJECT.md) now covers all 181 entries, including the 67 later additions. The counts below preserve the original 114-entry planning cohort.
 
 These are **low-confidence planning estimates**, dated October 21, 2026. They are family-based priors with selected question-specific adjustments, not measurements from implementing each target. A dependency spike can move a target by a full tier or more. Ratings assume one experienced Lean developer who understands the relevant mathematics and can use existing tools; they do not estimate a beginner's learning time or predict the effect of future automation.
 

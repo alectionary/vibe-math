@@ -34,6 +34,8 @@ See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more
 
 The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discovery backlog; one of 108 eligible targets retains a verified Lean proof (0.93%). Related source-level infrastructure is distinguished from exact target coverage.
 
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and recommends the P34 girth-eight problem as the next bounded project.
+
 ## Counts and their meaning
 
 '''
