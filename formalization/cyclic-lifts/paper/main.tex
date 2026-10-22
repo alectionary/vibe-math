@@ -90,8 +90,8 @@ columns.
 Question & Answer & Evidence \\
 \midrule
 Sufficient girth conditions & A necessary and sufficient rectangle-pair criterion & General Lean proof \\
-Absorbing sets & In degree three, minimum sets are exactly the four-variable eight-cycle supports & Written proof; Lean witnesses \\
-Stopping sets and syndromes & Stopping size at least six; local cancellation bounds & Written proof; Lean pair bound and witness \\
+Absorbing sets & In degree three, minimum sets are exactly the four-variable eight-cycle supports & Lean bijection; written $(4,4)$ profile \\
+Stopping sets and syndromes & Stopping size at least six; local cancellation bounds & Lean general lower bound and witness \\
 Connectivity and expansion & Connectivity is separate; connected girth-eight graphs can have vanishing conductance & Written argument; finite checks \\
 Finite design and decoding & Exact fixed-size minimum; paired decoder comparison & Exhaustive search and Monte Carlo \\
 \bottomrule
@@ -346,12 +346,16 @@ application, not a standalone one-line proof of the underlying mathematics.
 Eight supplementary declarations in \texttt{CyclicDecoding.lean} prove
 the general two-error bound and concrete absorbing/stopping certificates;
 three in \texttt{CyclicOptimized.lean} prove the two selected candidates'
-girth. The three source-question corollaries are also supplementary. All
+girth. The three source-question corollaries are also supplementary.
+A further 29 audited declarations in \texttt{CyclicStructure.lean} prove
+the general absorbing-support/eight-cycle bijection, its counting
+corollary and minimum-size exclusion, and the general stopping bound. All
 observed axioms are among \texttt{propext}, \texttt{Classical.choice} and
 \texttt{Quot.sound}; the development uses no admitted proofs or native
-evaluation axiom. The general arguments in Sections~\ref{sec:structure}
-and~\ref{sec:expansion} below are written proofs unless explicitly
-identified as Lean results.
+evaluation axiom. The structural results identified below are checked
+for arbitrary finite check types and finite selected-variable sets.
+The elementary $(4,4)$ incidence count, the companion-stabilizer
+identification and the expansion argument retain written proofs.
 
 \section{Consequences for degree-three decoding graphs}\label{sec:structure}
 
@@ -360,7 +364,7 @@ For a variable set $S$, induced check degree means degree in the graph
 on $S\cup N(S)$, including every edge from a selected variable.
 
 \begin{definition}
-An $(a,b)$ \emph{absorbing set} is a set of $a$ variables whose induced
+An $(a,b)$ \emph{absorbing set} is a nonempty set of $a$ variables whose induced
 graph has $b$ odd-degree checks, such that every selected variable has
 strictly more even-degree than odd-degree check neighbors. It is
 \emph{elementary} if every neighboring check has induced degree one or
@@ -405,6 +409,16 @@ has four vertices and minimum degree two. It is exactly a four-cycle.
 This also proves uniqueness of the corresponding Tanner eight-cycle.
 \end{proof}
 
+Lean proves the support characterization, exclusion of smaller nonempty
+absorbing sets, and a genuine equivalence between four-variable absorbing
+supports and unoriented eight-cycles. A cycle is represented by its variable
+and check supports with an explicit simple cyclic ordering; rotations and
+reversals are not counted separately. The development constructs a native
+Mathlib simple closed walk of length eight from each certificate and proves
+that the variable support uniquely determines the check support. The
+$4$ odd-check count in the elementary $(4,4)$ description is established
+by the written incidence argument above.
+
 The conclusion is a sharp threshold, not removal of absorbing sets:
 Lemma~\ref{lem:eight} makes four-variable sets unavoidable in this model.
 It converts the next design objective into eight-cycle minimization.
@@ -430,6 +444,12 @@ If the first row and column of $B$ vanish, select
 Exactly the nine checks $C(i,j,0)$ meet this set, each twice.
 It is a stopping set of size six and has zero syndrome.
 \end{proof}
+
+The general inequality is checked by
+\texttt{stopping\_card\_ge\_twice\_degree}; its hypotheses explicitly
+exclude four- and six-cycles, require a nonempty stopping set, and impose
+the degree lower bound only on its selected variables. The corollary
+\texttt{stopping\_minimum\_six} specializes it to degree three.
 
 The same support is a row of $\HZ$, indexed by $(0,0)$ and fiber zero.
 It represents a stabilizer, so this fact does not assign quantum logical
@@ -718,9 +738,10 @@ to uniform expansion from girth alone, and an optimized finite code with
 a measured recovery improvement. A general classification across
 arbitrary degrees, exact optimized quantum distances, optimization over
 lift sizes, and comparisons across decoders and noisy measurement models
-remain separate tasks. The general written structural proofs can also
-be added to the Lean development beyond its present witnesses and
-syndrome bound.
+remain separate tasks. The absorbing-support bijection and stopping lower bound are now
+Lean-checked general theorems. The elementary odd-check count, the
+companion-stabilizer identification and conductance argument remain
+available for further formalization.
 
 \paragraph{Acknowledgments and research provenance.}
 The question is credited to Ragnar Freij-Hollanti, Kirsten D. Morris and

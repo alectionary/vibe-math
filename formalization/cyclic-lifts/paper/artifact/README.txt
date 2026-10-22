@@ -16,6 +16,7 @@ The configuration intentionally preserves the original alternate Lake file:
   lake -f lakefile-cyclic.toml env lean CyclicSourceQuestion.lean
   lake -f lakefile-cyclic.toml env lean CyclicDecoding.lean
   lake -f lakefile-cyclic.toml env lean CyclicOptimized.lean
+  lake -f lakefile-cyclic.toml env lean CyclicStructure.lean
 
 Build the explicit CyclicLift target, as shown. The inherited config also names
 an unrelated DyadicRank library, which is not part of this manuscript snapshot.
@@ -31,6 +32,7 @@ From this artifact root:
   python3 formalization/cyclic-lifts/search/benchmark_decoding.py --trials 100000 --seed 20261023 --probabilities 0.01 0.02 0.04 --primary-only --output benchmark-confirmation.json
   python3 formalization/cyclic-lifts/search/targeted_absorbing.py
   python3 scripts/validate_cyclic_decoding_benchmark.py
+  python3 scripts/validate_cyclic_structure.py
 
 The last command audits existing results without rerunning the Monte Carlo:
 it repeats the exhaustive graph search, checks all orbit counts by an independent
@@ -47,6 +49,10 @@ and to score outcomes, never to select corrections. Lower-rate minima are only
 exploratory; confirmation uses four codes with n=252 and k=10.
 
 The 75-theorem core, three source-question corollaries, eight decoding declarations
-and three optimized-candidate declarations are separate audits. General absorbing
-and stopping bounds and the conductance argument are written mathematical proofs.
+and three optimized-candidate declarations are separate audits. A further 29
+audited declarations prove the general absorbing-support/eight-cycle bijection,
+minimum-size exclusion and the 2*d stopping bound. Cycles have an explicit
+native Mathlib walk bridge and are counted modulo origin and orientation.
+The elementary (4,4) odd-check count, companion-stabilizer identification and
+conductance argument retain written proofs.
 The fixed-size optimum and Monte Carlo results are computational evidence.

@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-22",
+  "lean": "4.36.0-rc1",
+  "audited_declarations": [
+    "mem_neighbors",
+    "mem_selected",
+    "selected_subset",
+    "check_unique",
+    "variable_unique",
+    "six_contradiction",
+    "stopping_other",
+    "stopping_card_ge_twice_degree",
+    "mem_even",
+    "even_subset",
+    "absorbing_even_two",
+    "even_two_distinct",
+    "even_check_two",
+    "even_other",
+    "pair_exhausts",
+    "no_triangle",
+    "absorbing_small_cycle",
+    "cycle_check_two",
+    "cycle_absorbing",
+    "cycle_shared_check",
+    "cycle_checks_exact",
+    "cycle_checks_unique",
+    "cycle_native",
+    "absorbing_iff_cycle",
+    "cycle_card_four",
+    "absorbing_minimum_four",
+    "stopping_minimum_six",
+    "absorbing_cycle_count",
+    "absorbing_cycle_equiv"
+  ],
+  "kernel_check": "passed",
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "assumptions": {
+    "incidence": "arbitrary E : V \u2192 C \u2192 Prop",
+    "checks": "finite type",
+    "selected_supports": "finite, nonempty for absorbing/stopping",
+    "absorbing": "variable degree three; no four- or six-cycles",
+    "stopping": "selected-variable degree at least d \u2265 2; no four- or six-cycles"
+  },
+  "results": [
+    "absorbing support iff explicit simple eight-cycle support for size \u2264 4",
+    "no nonempty absorbing support below four variables",
+    "bijection and equal counts with unoriented eight-cycle support pairs",
+    "native Mathlib IsCycle walk of length eight",
+    "stopping support cardinality \u2265 2*d, hence \u2265 6 in degree three"
+  ],
+  "remaining_written_proofs": [
+    "four odd checks in elementary (4,4) incidence profile",
+    "companion-stabilizer row identification",
+    "expansion/conductance argument"
+  ],
+  "sha256": {
+    "formalization/dyadic-rank/CyclicStructure.lean": "f3b1d173fe734a8d54383d11ca757f4b9995b10ae8686cc146b47c7e7332587f",
+    "formalization/cyclic-lifts/structure-checks.log": "77ccf8acdb5e218f42f11e88e8d45f78657a232e0d3f7b971c7fc149fc8d492c",
+    "scripts/validate_cyclic_structure.py": "b7cbe730d656886219946861c74cb46e4b89aaba0bcc123a66cefd90d7e4a7a3"
+  }
+}

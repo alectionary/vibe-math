@@ -1,5 +1,7 @@
 # Cyclic-lift groundwork for the P34 girth-eight question
 
+The academic manuscript is available as a [13-page PDF](paper/output/pdf/cyclic-lift-girth-eight.pdf), [LaTeX source](paper/main.tex), and [standalone Lean/code/data source bundle](paper/cyclic-lift-girth-eight-source.zip). It presents the open-question answer, proof, structural consequences, optimization and decoding results, with 15 references and a signed chronology. [Manuscript verification](paper/paper-verification.json).
+
 The **general girth-eight characterization is checked in Lean**, with **75 audited theorems** across the library. For any exponent matrix with at least two rows and columns, the lifted-product X Tanner graph has a simple eight-cycle. Its girth is exactly eight **if and only if** every distinct-row/column rectangle sum and every distinct-triple hexagon sum is nonzero. The theorem also applies directly to the expanded binary parity-check matrix. This completes the recorded P34 girth target for the source model; inventory proof coverage is now **2/108 (1.85%)**. Connectivity, absorbing sets and other decoding-property optimization are separate targets.
 
 The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Kirsten D. Morris and Patricija Šapokaitė, *Graphical Analysis of Lifted Product Code Constructions*, arXiv:2606.11987v1 (June 10, 2026). Its Equation (2.1) fixes the orientation of lift labels, and Equation (2.3) specifies the particular construction. The paper cites Gross and Tucker's *Topological Graph Theory* for its general graph-lift results. We use the paper as our source; we have not independently audited that book. Walk-closure and alternating-sum criteria are established graph-lift groundwork, and no priority claim is made for this mathematics or the finite example. [Primary paper](https://arxiv.org/html/2606.11987v1).
@@ -201,7 +203,7 @@ The recorded girth-eight target is complete for the stated X-graph model and dim
 
 This analysis addresses the second part of P34's Section 5 question. Its scope is the fully populated circulant-block construction already defined above. In particular, a **3-by-3** base gives variable degree three and check degree six. Conclusions about absorbing or stopping sets below use that degree assumption; they do not extend unchanged to arbitrary matrix dimensions.
 
-Evidence levels are kept separate: the general girth characterization remains Lean checked; eight additional declarations in [CyclicDecoding.lean](../dyadic-rank/CyclicDecoding.lean) check a general two-error bound and concrete absorbing/stopping witnesses. The general absorbing-set classification, stopping lower bound and asymptotic cut argument below are written mathematical arguments, **not yet general Lean theorems**. Cycle counts and component/cut measurements are independently cross-checked Python evidence. No decoder simulation or new priority claim is made.
+Evidence levels are kept separate: the general girth characterization remains Lean checked; eight additional declarations in [CyclicDecoding.lean](../dyadic-rank/CyclicDecoding.lean) check a general two-error bound and concrete absorbing/stopping witnesses. The general absorbing-support classification/bijection and stopping lower bound are now checked in [CyclicStructure.lean](../dyadic-rank/CyclicStructure.lean), with 29 separately audited declarations. The elementary `(4,4)` odd-check count and asymptotic cut argument retain written proofs. Cycle counts and component/cut measurements are independently cross-checked Python evidence. The later benchmark section reports decoder simulations; no new priority claim is made.
 
 ### Absorbing sets: a sharp size threshold, with an unavoidable obstruction
 
@@ -253,7 +255,7 @@ For our degree-three example, every stopping set therefore has size at least six
 
 The first row and column of sevenBase vanish, so precisely the nine checks `C(i,j,0)` meet this set, each twice. `sixSet_certificate` checks these facts, including zero odd checks and three even neighbors per variable. Hence the example has stopping distance six. Its classical binary kernel also has minimum nonzero weight six: a nonzero kernel support is a stopping set, and this support has zero syndrome. The same explicit witness works for the normalized bases in the table.
 
-**This is not a proof that the quantum logical distance is six.** The displayed support is a row of the companion `H_Z` matrix (row indices `(0,0)`, fiber zero), so it represents a stabilizer. Logical distance requires minimizing outside the stabilizer row space. The companion-matrix identification and the general stopping bound are explained here but have not been added to Lean. Lean verifies the concrete zero-syndrome incidence profile.
+**This is not a proof that the quantum logical distance is six.** The displayed support is a row of the companion `H_Z` matrix (row indices `(0,0)`, fiber zero), so it represents a stabilizer. Logical distance requires minimizing outside the stabilizer row space. The companion-matrix identification retains a written proof; the general stopping bound is now checked in `CyclicStructure.lean`. Lean verifies the concrete zero-syndrome incidence profile.
 
 ### Small error patterns have limited cancellation
 
@@ -394,3 +396,37 @@ From `formalization/dyadic-rank`, run `lake -f lakefile-cyclic.toml env lean Cyc
 ### Prior-art status of the optimized matrix
 
 The [targeted literature follow-up](PRIOR-ART-AND-PROOF-COMPARISON.md#optimized-matrix-and-decoding-benchmark) located no exact prior report of this modulo-14 matrix, the 2,520-set minimum, or the specific decoder comparison. Priority remains undetermined. Both absorbing-set-aware design and decoding improvements from changing symmetric LP base matrices have earlier sources. In particular, Raveendran–Declercq–Vasić (2025), Section V-A, Eq. (92), already compares same-size, same-rate girth-eight LP codes with different base matrices and decoding performance. Our baseline also satisfies its column-partition relation `c0+c2=2*c1`, whereas both optimized candidates avoid it. This supplies prior context for our observation, not a proof of the optimized distances or of causation by absorbing-set count alone.
+
+
+## General structural Lean proofs
+
+[CyclicStructure.lean](../dyadic-rank/CyclicStructure.lean) works with arbitrary
+Tanner incidence `E : V → C → Prop`, a finite check type, and finite selected
+supports. Its nonempty absorbing and stopping definitions use induced check
+degrees directly. No certificate assumes the result being proved.
+
+- `absorbing_iff_cycle` characterizes absorbing supports of size at most four,
+  assuming selected variables have degree three and there are no four-/six-cycles.
+- `absorbing_minimum_four` excludes every nonempty absorbing support of size < 4.
+- `absorbing_cycle_equiv` is a genuine bijection from unoriented simple eight-cycle
+  support pairs to four-variable absorbing supports; `absorbing_cycle_count`
+  gives equality of their counts. Rotation and reversal do not duplicate cycles.
+- `cycle_native` constructs a native Mathlib simple closed walk of length eight.
+  `cycle_checks_unique` proves uniqueness of check support from variable support.
+- `stopping_card_ge_twice_degree` proves the general `2*d` lower bound for `d ≥ 2`;
+  `stopping_minimum_six` specializes it to variable degree three.
+
+These are 29 new audited declarations, separate from the 75-theorem girth core
+and its previous consumers. Every axiom report is restricted to `propext`,
+`Classical.choice`, and `Quot.sound`. The four odd checks in the elementary
+`(4,4)` profile and the expansion/conductance argument retain written proofs.
+
+From `formalization/dyadic-rank`, run:
+
+```sh
+lake -f lakefile-cyclic.toml env lean CyclicStructure.lean
+```
+
+From the repository root, run `python3 scripts/validate_cyclic_structure.py`
+for the stored source/log audit, or append `--recheck-lean` to repeat the kernel
+check. [Audit manifest](structure-verification.json), [kernel output](structure-checks.log).
