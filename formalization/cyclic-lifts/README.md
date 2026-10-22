@@ -1,6 +1,6 @@
 # Cyclic-lift groundwork for the P34 girth-eight question
 
-The first bounded stage is checked in Lean: **36 theorems**, a faithful entrywise model of the paper's expanded binary matrix, a complete four-cycle criterion, and a six-cycle obstruction to a tempting insufficient condition. **The general P34 girth-eight question remains open in this project.** This is supporting formalization, not another completed inventory target; complete target proof coverage remains 1/108.
+Two bounded stages are checked in Lean: **50 theorems**, including a faithful binary-matrix model, a complete four-cycle criterion, six-walk closure and a **uniform girth-eight family**. For the normalized exponent matrix `[[0,0],[0,t]]`, every nonzero `t` gives an X Tanner graph of girth exactly eight, for every positive lift size. **The general P34 design question remains unfinished in this project.** These supporting results do not add a completed inventory target; complete target proof coverage remains 1/108.
 
 The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Kirsten D. Morris and Patricija Šapokaitė, *Graphical Analysis of Lifted Product Code Constructions*, arXiv:2606.11987v1 (June 10, 2026). Its Equation (2.1) fixes the orientation of lift labels, and Equation (2.3) specifies the particular construction. The paper cites Gross and Tucker's *Topological Graph Theory* for its general graph-lift results. We use the paper as our source; we have not independently audited that book. Walk-closure and alternating-sum criteria are established graph-lift groundwork, and no priority claim is made for this mathematics or the finite example. [Primary paper](https://arxiv.org/html/2606.11987v1).
 
@@ -10,10 +10,25 @@ The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Ki
 - **Four-cycle criterion:** for any supported bipartite lift over an additive commutative group, a simple four-cycle exists exactly when a supported rectangle on distinct variables and distinct checks has alternating label sum zero. The four-vertex formulation is proved equivalent to Mathlib's `Walk.IsCycle` with length four.
 - **Matrix/graph comparison:** `xGraph_eq_matrixTanner` proves equality with the Tanner graph of the explicit binary expansion of `B_X = [B tensor I_n | I_m tensor B*]`. Negating a circulant exponent transposes its permutation block. Both identity-factor supports and the conjugate-transpose sign are included. Finite row and column counts agree with `(mn)r` and `(n²+m²)r`.
 - **Complete four-cycle test for P34:** `xGraph_native_fourCycle_iff` reduces *all* simple four-cycles of `G_HX`, including both variable-block families, to zero rectangles in the original exponent matrix. Mixed left/right rectangles cannot contribute a four-cycle.
-- **Symbolic small family:** for the normalized 2-by-2 exponent matrix `[[0,0],[0,t]]`, every nonzero `t` gives a full `G_HX` with no four-cycles. The theorem is symbolic in the modulus and label. It does not prove girth eight.
+- **Six-edge closure:** `hexagon_closes_iff` proves that a prescribed supported walk `v0-c0-v1-c1-v2-c2-v0` closes exactly when `s(v0,c0)-s(v1,c0)+s(v1,c1)-s(v2,c1)+s(v2,c2)-s(v0,c2)=0`. It allows repeated base vertices and does not equate closure with simplicity. With three pairwise distinct variables and three pairwise distinct checks, `hexagon_gives_six_cycle` produces a native simple cycle. A complete converse six-cycle classification is still pending.
+- **Structural six-cycle exclusion:** neighboring checks over one variable have injective projection. Consequently, a six-cycle would yield three distinct base checks joined pairwise through variables. `two_by_two_no_six` rules this out for **every** 2-by-2 exponent matrix: its check coordinates form a 2-by-2 grid, which has no coordinate-sharing triangle on three distinct points. No assumption on the labels is needed.
+- **Symbolic girth-eight family:** `normalizedTwo_girth` proves exact girth eight for `[[0,0],[0,t]]` with `t ≠ 0`. This combines four-cycle exclusion, structural six-cycle exclusion, the explicit bipartite coloring, and a simple eight-cycle. `normalizedTwo_matrix_girth` transfers the result to the Tanner graph of the expanded binary `hX` matrix. These are symbolic theorems in the modulus and label, not certificates produced by the Python scan.
 - **Ternary obstruction:** `rectangle_exclusion_not_sufficient_for_no_six` proves that the explicit 3-by-3 ternary base below has no four-cycles but does have a native simple six-cycle.
 
 The general additive-group lemmas apply more broadly than cyclic lifts. To identify the source's finite circulant construction, take `A = ZMod r` with **positive modulus**. The formal algebraic definitions also make sense at `r=0`, where Lean's `ZMod 0` is infinite; that extension is not a finite circulant lift from the paper. The finite-dimension theorems explicitly require `NeZero r`. The P34 model uses a base with no zero permutation blocks; the generic bipartite lemmas separately allow sparse support.
+
+## A uniform checked girth-eight family
+
+For `B = [[0,0],[0,t]]`, with nonzero `t` in Z/rZ and positive `r`, the graph contains the cycle
+
+```
+C_00(0) → L_00(0) → C_10(0) → R_10(0) → C_11(0)
+        → L_01(0) → C_01(0) → R_00(0) → C_00(0).
+```
+
+Here `R_il` denotes a right-block variable; the other symbols follow the convention below. All eight vertices are distinct, and all eight edges use zero exponents, independently of `t`. Lean checks the cycle, excludes every shorter simple cycle, and concludes Mathlib's native `girth = 8`. The construction works without a connectedness assumption and does not require `t` to generate the cyclic group. For positive modulus, the expanded binary matrix has `4r` rows and `8r` columns; the Tanner graph has `12r` vertices.
+
+The no-six theorem is stronger than needed for this family: it applies to arbitrary 2-by-2 exponent matrices. The exact girth theorem currently uses the normalized family. We make no novelty claim for either result. Extending this to a useful general entrywise criterion for larger matrices remains separate work.
 
 ## A checked six-cycle obstruction
 
@@ -42,9 +57,9 @@ The reproducible Python scan contains **432 cases**:
 - Every normalized 3-by-3 exponent matrix for lift sizes 2 through 4: 353 cases.
 - One explicit 3-by-3 candidate at lift size 7: `[[0,0,0],[0,1,2],[0,3,6]]`.
 
-Two independently written constructions produce identical adjacency sets: a voltage lift and direct binary block expansion. Direct check-triple six-cycle counts agree with projected voltage-walk enumeration that checks distinct **lifted** vertices. The girth distribution is 351 cases of girth four, 14 of girth six and 67 of girth eight. These counts and the girth-eight cases are **Python evidence, not Lean certificates**.
+Two independently written constructions produce identical adjacency sets: a voltage lift and direct binary block expansion. Direct check-triple six-cycle counts agree with projected voltage-walk enumeration that checks distinct **lifted** vertices. The girth distribution is 351 cases of girth four, 14 of girth six and 67 of girth eight. These enumeration counts remain **Python evidence, not Lean certificates**. The normalized 2-by-2 girth-eight cases are now independently covered by the symbolic Lean theorem.
 
-For normalized 2-by-2 matrices in the tested range, zero `t` gives girth four and nonzero `t` gives girth eight. No general Lean girth-eight theorem is claimed. The lift-size-seven 3-by-3 example is a concrete candidate for a next checked girth-eight certificate. [Search script](search/scan.py), [all results](search/results.json).
+For normalized 2-by-2 matrices in the tested range, zero `t` gives girth four and nonzero `t` gives girth eight. The entire nonzero normalized 2-by-2 family is now proved in Lean, beyond the tested range. The lift-size-seven 3-by-3 example still has no Lean girth certificate and remains a candidate for a later check. [Search script](search/scan.py), [all results](search/results.json).
 
 ## Reproduce the checks
 
@@ -53,7 +68,7 @@ The new `CyclicLift` library shares the existing pinned Lean/Mathlib environment
 From `formalization/dyadic-rank`:
 
 ```
-lake -f lakefile-cyclic.toml exe cache get Mathlib.Combinatorics.SimpleGraph.Paths Mathlib.Data.ZMod.Basic
+lake -f lakefile-cyclic.toml exe cache get Mathlib.Combinatorics.SimpleGraph.Girth Mathlib.Combinatorics.SimpleGraph.Coloring.Constructions Mathlib.Data.ZMod.Basic
 lake -f lakefile-cyclic.toml build CyclicLift
 lake -f lakefile-cyclic.toml env lean CyclicChecks.lean
 ```
@@ -69,7 +84,8 @@ The Lean sources are in the shared environment:
 - [Basic.lean](../dyadic-rank/CyclicLift/Basic.lean): voltage graphs, projected/lifted walks and native four-cycle equivalence.
 - [Bipartite.lean](../dyadic-rank/CyclicLift/Bipartite.lean): supported rectangle closure and the complete generic four-cycle criterion.
 - [LiftedProduct.lean](../dyadic-rank/CyclicLift/LiftedProduct.lean): P34 indexing, binary expansion, matrix comparison, finite dimensions and four-cycle reduction.
-- [SmallCases.lean](../dyadic-rank/CyclicLift/SmallCases.lean): symbolic 2-by-2 exclusion and the ternary six-cycle obstruction.
+- [ShortCycles.lean](../dyadic-rank/CyclicLift/ShortCycles.lean): native six-cycle equivalence, hexagon closure, projection injectivity, triangle obstruction, bipartite coloring and the girth-eight assembly theorem.
+- [SmallCases.lean](../dyadic-rank/CyclicLift/SmallCases.lean): no-six theorem for arbitrary 2-by-2 bases, uniform normalized girth-eight family and the ternary six-cycle obstruction.
 - [CyclicChecks.lean](../dyadic-rank/CyclicChecks.lean): independent consumer statements and the axiom audit.
 
-The next step is a complete characterization of six-cycles, accounting for repeated projected vertices and partial fiber returns, followed by a useful entrywise sufficient condition and an eight-cycle witness. Absence of four- and six-cycles gives a lower bound in the bipartite setting; an **exact** girth-eight claim still needs an eight-cycle or an audited upper-bound argument. None of the current results supplies the full source-requested design criterion.
+The next step is a complete six-cycle characterization and its reduction to useful entrywise conditions for larger P34 matrices. The current closure equivalence and distinct-hexagon sufficient condition do not yet supply that converse. The 3-by-3, lift-size-seven candidate is still verified only by Python. The completed 2-by-2 family supplies an exact girth-eight theorem, but not the full source-requested design criterion.

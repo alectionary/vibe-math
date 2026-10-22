@@ -8,7 +8,7 @@ All **181 inventory entries** now have current planning assessments, including t
 
 ## Progress after starting the project
 
-The first bounded stage is now checked: 36 Lean theorems, a faithful source-matrix comparison, the complete four-cycle criterion and a ternary no-four/six-cycle obstruction. The Python scan covers 432 cases. The general girth-eight criterion remains unfinished; no new full inventory target is counted as proved. [Implementation, exact scope and verification](../formalization/cyclic-lifts/README.md). The effort bands below are the original planning priors, not a measurement of the work now completed.
+Two bounded stages are now checked: 50 Lean theorems, including the source-matrix comparison, four-cycle criterion, hexagon closure, no-six theorem for arbitrary 2-by-2 matrices, and exact girth eight for every nonzero normalized 2-by-2 matrix. The Python scan covers 432 cases. The general girth-eight criterion remains unfinished; no new full inventory target is counted as proved. [Implementation, exact scope and verification](../formalization/cyclic-lifts/README.md). The effort bands below are the original planning priors, not a measurement of the work now completed.
 
 ## What the ratings mean
 

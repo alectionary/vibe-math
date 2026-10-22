@@ -6,7 +6,9 @@ R=Path(__file__).resolve().parent.parent;P=R/'formalization/cyclic-lifts';L=R/'f
 v=json.loads((P/'verification.json').read_text())
 assert v['build_exit_code']==v['consumer_exit_code']==0
 assert not v['full_target_statement_formalized'] and not v['general_girth_eight_problem_proved']
-assert v['theorem_count']==len(v['declaration_axioms'])==36
+assert v['theorem_count']==len(v['declaration_axioms'])==50
+assert v['symbolic_girth_eight_family_verified']
+assert 'CyclicLift.normalizedTwo_matrix_girth' in v['declaration_axioms']
 assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in v['declaration_axioms'].values())
 assert hashlib.sha256((P/'verification.log').read_bytes()).hexdigest()==v['log_sha256']
 for name,sha in v['sha256'].items():assert hashlib.sha256((R/name).read_bytes()).hexdigest()==sha,name
@@ -14,6 +16,19 @@ for path in list((L/'CyclicLift').glob('*.lean'))+[L/'CyclicLift.lean',L/'Cyclic
  t=path.read_text()
  assert not re.search(r'\b(sorry|admit|native_decide|sorryAx)\b',t),path
  assert not re.search(r'^\s*(axiom|unsafe)\b',t,re.M),path
+# Every theorem in the library is represented in both the consumer and axiom report.
+names=set()
+for path in (L/'CyclicLift').glob('*.lean'):
+ for name in re.findall(r"^(?:@\[[^\n]*\]\s*)?theorem\s+([\w.']+)",path.read_text(),re.M):
+  names.add('CyclicLift.'+name)
+assert names==set(v['declaration_axioms'])
+consumer=(L/'CyclicChecks.lean').read_text()
+assert names==set(re.findall(r'^#print axioms (\S+)',consumer,re.M))
+log=(P/'verification.log').read_text()
+reported={}
+for name,axioms,empty in re.findall(r"'([^']+)' (?:depends on axioms: \[([^\]]*)\]|(does not depend on any axioms))",log):
+ reported[name]=[] if empty else [x.strip() for x in axioms.split(',') if x.strip()]
+assert reported==v['declaration_axioms']
 # Original proof source/configuration hashes remain unchanged.
 original=json.loads((L/'verification.json').read_text())
 for name,sha in original['sha256'].items():assert hashlib.sha256((L/name).read_bytes()).hexdigest()==sha,name
@@ -34,4 +49,4 @@ assert summary['eligible_verified_lean_proofs']==1 and summary['eligible_targets
 for href in re.findall(r'\]\(([^)]+)\)',(P/'README.md').read_text()):
  u=urlparse(href)
  if not u.scheme and u.path:assert (P/u.path).exists(),href
-print('Validated 36 checked supporting theorems, source hashes, unchanged dyadic artifact, 432 finite cases and the explicit no-four/six-cycle obstruction. General girth-eight target remains unproved.')
+print('Validated 50 checked supporting theorems, including the uniform normalized 2x2 girth-eight family, source hashes, unchanged dyadic artifact, 432 finite cases and the explicit no-four/six-cycle obstruction. General girth-eight target remains unproved.')

@@ -20,6 +20,13 @@ example : (¬HasFourCycle (xGraph ternaryBase)) ∧
     ∃ p : (xGraph ternaryBase).Walk (ternaryCheck 0 0 0) (ternaryCheck 0 0 0),
       p.IsCycle ∧ p.length = 6 := rectangle_exclusion_not_sufficient_for_no_six
 
+-- A uniform girth theorem, plus its binary-matrix interpretation.
+example (r : ℕ) (t : ZMod r) (ht : t ≠ 0) :
+    (xGraph (normalizedTwo t)).girth = 8 := normalizedTwo_girth t ht
+
+example : (matrixTanner (hX (normalizedTwo (1 : ZMod 7)))).girth = 8 :=
+  normalizedTwo_matrix_girth 1 (by decide)
+
 #print axioms CyclicLift.VoltageGraph.displacement_nil
 #print axioms CyclicLift.VoltageGraph.displacement_cons
 #print axioms CyclicLift.VoltageGraph.endpoint_fiber
@@ -50,7 +57,21 @@ example : (¬HasFourCycle (xGraph ternaryBase)) ∧
 #print axioms CyclicLift.xGraph_native_fourCycle_iff
 #print axioms CyclicLift.hX_row_count
 #print axioms CyclicLift.hX_column_count
+#print axioms CyclicLift.sixWalk_isCycle
+#print axioms CyclicLift.hasSixCycle_iff_native
+#print axioms CyclicLift.hexagon_closes_iff
+#print axioms CyclicLift.hexagon_gives_six_cycle
+#print axioms CyclicLift.neighboring_checks_project_injective
+#print axioms CyclicLift.no_six_of_check_triangle_free
+#print axioms CyclicLift.girth_eq_eight_of_short_cycles
 #print axioms CyclicLift.normalizedTwo_no_four
+#print axioms CyclicLift.xSupport_common_checks
+#print axioms CyclicLift.two_grid_triangle
+#print axioms CyclicLift.two_by_two_no_six
+#print axioms CyclicLift.normalizedEight_isCycle
+#print axioms CyclicLift.normalizedEight_length
+#print axioms CyclicLift.normalizedTwo_girth
+#print axioms CyclicLift.normalizedTwo_matrix_girth
 #print axioms CyclicLift.ternaryBase_rectangles
 #print axioms CyclicLift.ternaryBase_no_four
 #print axioms CyclicLift.ternarySix_isCycle
