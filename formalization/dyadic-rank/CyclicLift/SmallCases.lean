@@ -52,7 +52,7 @@ def sixWalk {W : Type*} {G : SimpleGraph W} {a b c d e f : W}
 def ternarySix : (xGraph ternaryBase).Walk (ternaryCheck 0 0 0) (ternaryCheck 0 0 0) :=
   sixWalk (b := ternaryLeft 0 0 0) (c := ternaryCheck 1 0 0)
     (d := ternaryLeft 1 0 2) (e := ternaryCheck 2 0 1) (f := ternaryLeft 2 0 0)
-    
+
     (by simp only [xGraph, check_variable_adj, xSupport, xLabel, ternaryBase]; decide)
     (by simp only [xGraph, variable_check_adj, xSupport, xLabel, ternaryBase]; decide)
     (by simp only [xGraph, check_variable_adj, xSupport, xLabel, ternaryBase]; decide)
