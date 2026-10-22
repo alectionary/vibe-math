@@ -4,6 +4,7 @@ A research collection covering 20 doctoral dissertations from 2022–2026: 16 ma
 
 ## Start here
 
+- **Research lessons:** [what worked and the workflow for the next investigation](RESEARCH-LESSONS.md).
 - **Research paper:** [dyadic rank–support formalization (PDF)](formalization/dyadic-rank/paper/output/pdf/dyadic-rank-support.pdf) and [LaTeX source](formalization/dyadic-rank/paper/main.tex).
 
 - **Dyadic rank theorem:** [complete general Lean proof](formalization/dyadic-rank/README.md).

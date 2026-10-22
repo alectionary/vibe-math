@@ -1,0 +1,131 @@
+# Lessons from the dyadic rank support investigation
+
+This investigation produced a general Lean proof, an explicit connection between coding theory and representation theory, and a reproducible paper and source artifact. Its most useful methodological lesson is to search for the same mathematics in different languages. Precise statements, small examples, computation, literature search, and formal proof each contributed different evidence; keeping those roles distinct made the final result easier to assess.
+
+This retrospective records the investigation as of October 21, 2026 and gives a workflow for the next problem. It supports improving the process, not predicting which future conjectures will yield new theorems.
+
+## What we established
+
+For a binary dyadic matrix indexed by vectors in `F₂^ell`, rank equal to half the matrix order forces the sum of its signature's support **index vectors** to be nonzero. The checked theorem covers every positive dimension. It is stronger than the finite cases and sampled searches with which we began. [Statement and verification](formalization/dyadic-rank/README.md)
+
+The explicit source question is Remark 3.4 of Gómez-Fonseca, Matthews, Morris, and Pllaha's preprint, posted May 3, 2026. The conclusion follows from Friedlander–Pevtsova's criterion published in April 2005, approximately 21 years earlier, after translating the objects and hypotheses. The Lean proof uses direct matrix induction; its central descent step specializes their published perturbation principle. The dates illustrate the usefulness of connecting the two formulations, without establishing who first recognized the connection or why the later conjecture was posed. [Chronology and attribution](formalization/dyadic-rank/paper/main.tex) · [Proof comparison](formalization/dyadic-rank/FORMALIZATION-AND-PROOF-COMPARISON.md)
+
+The contribution we can substantiate is a completed implementation, an elementary exposition, and an explicit literature connection. Priority for the theorem, proof method, or first Lean formalization is not established.
+
+## Preserve the source trail and freeze the statement
+
+Following dissertation authors into their related papers led us to the precise question. That trail mattered: the place where a topic was discovered, the publication that actually posed the question, and the source of an older applicable theorem deserve separate credit. Record all three as soon as they become known. The [literature inventory](literature/README.md) and the paper's [claim and citation guide](formalization/dyadic-rank/paper/main.tex) preserve those distinctions.
+
+Before investing heavily in a target, write down the exact objects, coefficient field, quantifiers, hypotheses, conclusion, and source locator. Keep a stable identifier for that mathematical target as it appears in multiple sources. A source describing a question as open is a historical observation; whether it remains open requires its own investigation.
+
+Our concrete warning was the meaning of “support sum.” Here it is a vector sum of indices, not the scalar parity of the signature. Another was directionality: half rank implies nonzero support sum, but the unrestricted reverse implication is false. A signature supported at one nonzero index produces an invertible permutation matrix despite having nonzero support sum. An equivalence needs an additional parity condition. A formal proof of an accidentally strengthened hypothesis or weakened conclusion would answer a different question. [Definitions and scope](formalization/dyadic-rank/README.md)
+
+**Next time:** prepare the informal statement and Lean signature together, then test the empty, singleton, smallest-dimensional, and boundary cases before choosing a proof strategy.
+
+## Translate the question before broadening the search
+
+Searching only for “dyadic rank support” would have missed the most useful published precedent. The productive translation replaced the matrix with multiplication by an element of an elementary abelian group algebra. That made flatness, augmentation ideals, and commuting nilpotent operators relevant search terms. [Translation and primary-source locators](formalization/dyadic-rank/PRIOR-ART.md)
+
+| Original formulation | Equivalent object or condition useful for searching |
+| --- | --- |
+| Matrix entry `D(x,y) = s(x+y)` | Binary convolution; multiplication by an element of an elementary abelian group algebra |
+| Scalar parity of the signature | Constant coefficient in augmentation variables |
+| Sum of support index vectors | Vector of linear coefficients in augmentation variables |
+| Half rank for a square-zero operator | Image equals kernel; freeness over `k[u]/(u²)` |
+| Dyadic triangular descent with commuting square-zero blocks | Projectivity under commuting nilpotent perturbations |
+
+These correspondences need justification. A plausible analogy is a search lead; a written translation must establish the hypotheses and the implication actually being used. In this project, the group-algebra literature connection remains an ordinary mathematical argument, separate from the checked matrix proof.
+
+**Next time:** build this translation table early. Search by operations, invariants, equivalent structures, and obstruction conditions, alongside the source's vocabulary. Follow references backward as well as citations forward. Search authors' manuscripts and books when the original terminology yields little.
+
+## Use computation to investigate and diagnose
+
+Small cases helped check the statement and the implementation. Larger exact searches provided examples and constraints to examine while the structural argument developed. The Python search used elimination over `F₂`, recorded its seed and tested families, distinguished exhaustive from sampled spaces, and retained independently checked rank witnesses. Its 45,543 tested signatures were conditioned candidates, not every signature through the largest dimension. [Search scope and checks](formalization/dyadic-rank/search/README.md)
+
+The lack of a counterexample did not establish the general theorem. The general proof instead used a dimension descent that reached a contradiction at dimension zero. Keeping the computational search outside that proof's dependency chain made the final claim straightforward to reproduce. [Inductive proof](formalization/dyadic-rank/INDUCTIVE-PROOF.md)
+
+**Next time:** choose searches that could distinguish competing explanations. Save extremal examples and failed constructions, not just a counterexample count. If a counterexample appears, reduce it and verify it independently before treating the conjecture as refuted. If none appears, use the examples to propose a structural lemma and state exactly which cases the search covered.
+
+## Choose a proof with manageable formal prerequisites
+
+The exact-zero-divisor route through Kustin–Şega–Vraciu supplied a useful mathematical perspective, but implementing the general proposition would have required substantially more algebraic infrastructure. The completed Lean proof instead used finite sums, linear maps, rank–nullity, and induction. Its key step constructs a preimage through a triangular block operator using two successive preimages, commutation, and square-zero cancellation. [Alternative route](formalization/dyadic-rank/STRUCTURAL-PROOF.md) · [Checked descent lemma](formalization/dyadic-rank/DyadicRank/Recursive.lean)
+
+The implementation benefits from an abstract helper: `kernelInRange_descends` exposes the preimage property needed by the argument, rather than forcing every intermediate step to carry a rank equation. The dyadic application supplies the additional coordinate identities. This separation produced a useful general lemma and kept the induction close to its mathematical explanation.
+
+**Next time:** compare plausible routes by the missing formal dependencies as well as their informal length. Prove the smallest structural lemma that could settle the strategy early. Build reusable pieces while developing the proof, and maintain an explicit list of what is checked and what remains informal. In this artifact, the general matrix theorem is checked; Kustin–Şega–Vraciu Proposition 1.9 and the group-algebra translation are not additional Lean theorems.
+
+## Investigate novelty alongside the proof
+
+The most consequential improvement is to move the translation-based prior-art search earlier. We completed the formal theorem before the historical comparison was settled. That produced a useful artifact, but left room for premature interpretations of what was mathematically new. A new proof in the current workspace establishes neither a new theorem nor historical priority.
+
+Keep four questions separate:
+
+| Question | Evidence needed |
+| --- | --- |
+| Is the mathematical conclusion new? | Search equivalent formulations and check earlier results that imply it. |
+| Is the proof principle new? | Compare the decisive lemma and mechanism with published arguments. |
+| Is this the first formalization? | Search matching proof-assistant statements and dependencies across a documented scope. |
+| What does this artifact contribute? | Identify its checked statement, implementation, exposition, reusable lemmas, and reproducibility evidence. |
+
+Our bounded Lean search found no earlier matching statement or complete proof in the searched sources. That supports a report about the search, not a first-formalization claim. A theorem can be hidden under another name, appear as a consequence of a general library lemma, or exist in unindexed work. Failed requests, inaccessible sources, sparse checkouts, and capped results must remain visible. [Search evidence and limitations](formalization/dyadic-rank/FORMALIZATION-AND-PROOF-COMPARISON.md)
+
+**Next time:** update the four answers whenever a significant source or proof route appears. Revisit the literature after deriving a strong lemma: the lemma's vocabulary may retrieve a theorem that the original conjecture's vocabulary did not.
+
+## Check sources and formal proofs at their boundaries
+
+A candidate reference becomes evidence only after reading its relevant statement and hypotheses. For Friedlander–Pevtsova, the erratum and ground-field assumptions mattered to the translation. For Kustin–Şega–Vraciu, it mattered which direction of Proposition 1.9 was used and which assumptions belonged to other nearby results. Exact theorem numbers, versions, and page locators prevented these distinctions from being lost. [Prior-art review](formalization/dyadic-rank/PRIOR-ART.md)
+
+Lean's kernel checks the formal implication from the definitions and premises supplied. It does not certify that those definitions match a sentence in a paper, that a reference is accurate, or that a novelty claim is justified. We therefore need both a source-to-statement comparison and a checked implementation. The pinned toolchain, dependency revisions, source hashes, consumer examples, and axiom reports make the latter inspectable. [Verification record](formalization/dyadic-rank/verification.json)
+
+**Next time:** require an explicit hypothesis-by-hypothesis comparison for every claimed equivalent theorem. Review the public Lean statement as carefully as its proof. Use AI to generate translations, candidate lemmas, and search leads, then verify those outputs against sources and the compiler. Seek independent mathematical review of the informal bridge and historical interpretation before relying on them for a strong publication claim.
+
+## Measure progress using mathematical targets
+
+The inventory distinguishes source occurrences, canonical questions, broad directions, statements, finite cases, and complete proofs. Those distinctions answer different questions. Repeated appearances of one conjecture are not independent unresolved targets; helper lemmas and instances in several dimensions do not count as several source problems solved. A precisely written mathematical statement in a paper is also different from a proof-assistant statement. [Counting rules](literature/OPEN-PROBLEMS.md)
+
+**Next time:** state the denominator and inclusion rule beside every coverage percentage. Track historical source status separately from current resolution status, and retain completed targets in a fixed cohort. Use “not identified in this search” for an unsuccessful artifact search and “not assessed” for unavailable material.
+
+## Workflow for the next investigation
+
+1. **Select a target.** Record its source, exact locator, historical status, and reason it is tractable or valuable. Separate an author-posed question from a reviewer-suggested task.
+2. **Freeze its meaning.** Write matching informal and Lean statements. Resolve the coefficient field, quantifiers, boundary cases, and every ambiguous operation.
+3. **Map alternative formulations.** Build a short translation table and test the implications. Run an initial prior-art search across those formulations before committing to an expensive implementation.
+4. **Check examples and candidate obstructions.** Verify small cases, test plausible counterexamples, and record exact search scope. Use the results to identify a useful structural lemma.
+5. **Choose and formalize a route.** Estimate missing dependencies, prove the central lemma, and assemble the general theorem. Keep finite computation and unused literature routes separate from the proof's actual premises.
+6. **Repeat the literature comparison.** Search using the final lemma's language, read primary statements and errata, and compare mechanisms. Update the four novelty questions above.
+7. **Audit the result.** Check statement fidelity, a clean build, consumer examples, axioms, pinned dependencies, and hashes. Account explicitly for every remaining informal step.
+8. **Publish and preserve.** Match each public claim to its evidence; credit the question's source and the prior results. Check the compiled paper and shared URLs, retain a complete source snapshot, and record lessons while the reasoning is fresh.
+
+Publication readiness can be checked early: distribution requirements, attribution, account access, licensing, and the artifact's intended audience can affect how a result is shared. These are separate from proving the mathematics.
+
+## Reusable investigation worksheet
+
+Copy this into the next target's research notes and update it as evidence changes:
+
+```text
+Target and source locator:
+Source version and date:
+Exact objects, field, quantifiers, hypotheses, and conclusion:
+Ambiguities and boundary examples:
+Lean statement and comparison with the source:
+
+Equivalent formulations and their justified implications:
+Search terms, sources, dates, limits, and unresolved access gaps:
+Candidate prior theorems and hypothesis comparisons:
+
+Counterexample search scope, exact arithmetic, seed, and saved witnesses:
+Candidate proof routes and missing formal dependencies:
+Central lemma and current proof obstruction:
+
+Checked statements and proofs:
+Remaining informal claims or translations:
+Build, dependency revisions, source hashes, and axiom report:
+
+Mathematical novelty:
+Proof-method novelty:
+Formalization priority:
+Concrete contribution supported by the evidence:
+Next action that would resolve the most important uncertainty:
+```
+
+A successful next investigation might yield a theorem, a counterexample, a reusable formal lemma, a corrected formulation, or a connection to existing theory. Record the achievement in terms of what was actually learned and verified.
