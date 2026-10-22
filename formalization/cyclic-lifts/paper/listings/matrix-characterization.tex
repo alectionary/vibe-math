@@ -1,0 +1,8 @@
+theorem matrixTanner_hX_girth_characterization [Nontrivial I] [Nontrivial J]
+    (B : I (*@$\to$@*) J (*@$\to$@*) ZMod r) :
+    (matrixTanner (hX B)).girth = 8 (*@$\leftrightarrow$@*)
+      ((*@$\forall$@*) a b c d, a (*@$\ne$@*) b (*@$\to$@*) c (*@$\ne$@*) d (*@$\to$@*) baseRectangle B a b c d (*@$\ne$@*) 0) (*@$\land$@*)
+      ((*@$\forall$@*) a b c d e f, a (*@$\ne$@*) b (*@$\to$@*) b (*@$\ne$@*) c (*@$\to$@*) a (*@$\ne$@*) c (*@$\to$@*) d (*@$\ne$@*) e (*@$\to$@*) e (*@$\ne$@*) f (*@$\to$@*) d (*@$\ne$@*) f (*@$\to$@*)
+        baseHexagon B a b c d e f (*@$\ne$@*) 0) := by
+  rw [(*@$\leftarrow$@*) xGraph_eq_matrixTanner]
+  exact xGraph_girth_characterization B

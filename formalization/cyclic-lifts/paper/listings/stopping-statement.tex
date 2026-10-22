@@ -1,0 +1,5 @@
+theorem stopping_card_ge_twice_degree (S : Finset V) (hs : Stopping E S)
+    (h4 : (*@$\neg$@*)HasFourCycle (bipartiteBase E))
+    (h6 : (*@$\neg$@*)HasSixCycle (bipartiteBase E))
+    (d : (*@$\mathbb N$@*)) (hd : 2 (*@$\le$@*) d) (hdegree : (*@$\forall$@*) v (*@$\in$@*) S, d (*@$\le$@*) (neighbors E v).card) :
+    2*d (*@$\le$@*) S.card

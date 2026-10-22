@@ -1,0 +1,6 @@
+  have hcard := Finset.card_le_card hsub
+  rw [Finset.card_union_of_disjoint hdis, hf, hsnd,
+    Finset.card_erase_of_mem ((mem_neighbors E a c0).mpr hac0),
+    Finset.card_erase_of_mem hv] at hcard
+  have hda := hdegree a haS
+  omega

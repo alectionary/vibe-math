@@ -56,3 +56,12 @@ native Mathlib walk bridge and are counted modulo origin and orientation.
 The elementary (4,4) odd-check count, companion-stabilizer identification and
 conductance argument retain written proofs.
 The fixed-size optimum and Monte Carlo results are computational evidence.
+
+FULL PROOF DISCOVERY AND PDF LISTINGS
+The manuscript's Appendix A and LEAN-PROOF-GUIDE.md link the complete formal
+proof at immutable revision 5dbda826fb9d385cf5528694f6908d28bc94054d. Every
+helper lemma is also included in this snapshot. The PDF prints nine selected
+excerpts and a proof dependency diagram. From this artifact root, run
+  python3 scripts/prepare_cyclic_paper_listings.py
+to regenerate the sibling manuscript listings and verify their Unicode escape
+round trips. The excerpts manifest records exact source locations and hashes.

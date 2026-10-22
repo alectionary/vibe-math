@@ -1,0 +1,19 @@
+def mixedEight (B : I (*@$\to$@*) J (*@$\to$@*) ZMod r) (i0 i1 : I) (j0 j1 k : J) (l : I) :
+    (xGraph B).Walk (.inr (i0,j0), B i0 k - B l j0)
+      (.inr (i0,j0), B i0 k - B l j0) :=
+  eightWalk
+    (b := (.inl (.inl (k,j0)), -B l j0))
+    (c := (.inr (i1,j0), B i1 k - B l j0))
+    (d := (.inl (.inr (i1,l)), B i1 k))
+    (e := (.inr (i1,j1), B i1 k - B l j1))
+    (f := (.inl (.inl (k,j1)), -B l j1))
+    (g := (.inr (i0,j1), B i0 k - B l j1))
+    (h := (.inl (.inr (i0,l)), B i0 k))
+    (by simp [xGraph, check_variable_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, variable_check_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, check_variable_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, variable_check_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, check_variable_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, variable_check_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, check_variable_adj, xSupport, xLabel]; abel)
+    (by simp [xGraph, variable_check_adj, xSupport, xLabel]; abel)

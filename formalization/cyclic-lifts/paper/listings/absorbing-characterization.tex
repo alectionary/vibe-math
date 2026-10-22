@@ -1,0 +1,7 @@
+theorem absorbing_iff_cycle (S : Finset V) (hcard : S.card (*@$\le$@*) 4)
+    (deg : (*@$\forall$@*) v (*@$\in$@*) S, (neighbors E v).card = 3)
+    (h4 : (*@$\neg$@*)HasFourCycle (bipartiteBase E))
+    (h6 : (*@$\neg$@*)HasSixCycle (bipartiteBase E)) :
+    Absorbing E S (*@$\leftrightarrow$@*) (*@$\exists$@*) T, EightCycleOn E S T := by
+  exact (*@$\langle$@*)fun hs => absorbing_small_cycle E S hs hcard deg h4 h6,
+    fun (*@$\langle$@*)_,ht(*@$\rangle$@*) => cycle_absorbing E ht deg h4(*@$\rangle$@*)

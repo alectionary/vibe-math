@@ -1,0 +1,6 @@
+theorem mixedEight_isCycle (B : I (*@$\to$@*) J (*@$\to$@*) ZMod r) (i0 i1 : I) (j0 j1 k : J) (l : I)
+    (hi : i0 (*@$\ne$@*) i1) (hj : j0 (*@$\ne$@*) j1) : (mixedEight B i0 i1 j0 j1 k l).IsCycle := by
+  rw [SimpleGraph.Walk.isCycle_iff_isPath_tail_and_le_length]
+  constructor
+  (*@$\cdot$@*) simp [mixedEight, eightWalk, SimpleGraph.Walk.isPath_def, hj, Ne.symm hi, Ne.symm hj]
+  (*@$\cdot$@*) change 3 (*@$\le$@*) 8; omega

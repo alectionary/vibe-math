@@ -1,0 +1,17 @@
+  have znw : (*@$\forall$@*) c e, z c (*@$\ne$@*) w e := by
+    intro c e h
+    have hca := (mem_neighbors E a c.val).mp (Finset.mem_erase.mp c.property).2
+    have hc0ne := (Finset.mem_erase.mp c.property).1
+    have hwe := (mem_neighbors E v e.val).mp e.property
+    have he0 : e.val (*@$\ne$@*) c0 := by
+      intro he
+      have heq : e = c0' := Subtype.ext he
+      exact hzne c (h.trans (congrArg w heq))
+    have hce : c.val (*@$\ne$@*) e.val := by
+      intro he
+      exact hc0ne (check_unique E h4 hav hca (he (*@$\triangleright$@*) hwe) hac0 hvc0)
+    have hawe : a (*@$\ne$@*) w e := by
+      intro he
+      exact he0 (check_unique E h4 hav (he (*@$\triangleright$@*) hwE e) hwe hac0 hvc0)
+    exact six_contradiction E h6 hav.symm hawe (hwne e).symm
+      (Ne.symm hc0ne) hce he0.symm hvc0 hac0 hca (h (*@$\triangleright$@*) hzE c) (hwE e) hwe

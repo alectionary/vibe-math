@@ -1,0 +1,19 @@
+noncomputable def absorbing_cycle_equiv
+    (deg : (*@$\forall$@*) v, (neighbors E v).card = 3)
+    (h4 : (*@$\neg$@*)HasFourCycle (bipartiteBase E))
+    (h6 : (*@$\neg$@*)HasSixCycle (bipartiteBase E)) :
+    UnorientedEightCycles E (*@$\simeq$@*) FourAbsorbingSupports E := by
+  let f : UnorientedEightCycles E (*@$\to$@*) FourAbsorbingSupports E := fun p =>
+    (*@$\langle$@*)p.val.1, cycle_card_four E p.property,
+      cycle_absorbing E p.property (fun v _ => deg v) h4(*@$\rangle$@*)
+  apply Equiv.ofBijective f
+  constructor
+  (*@$\cdot$@*) intro p q hpq
+    have hS : p.val.1 = q.val.1 := congrArg Subtype.val hpq
+    have hT : p.val.2 = q.val.2 := cycle_checks_unique E p.property
+      (hS.symm (*@$\triangleright$@*) q.property) h4 h6
+    exact Subtype.ext (Prod.ext hS hT)
+  (*@$\cdot$@*) intro S
+    obtain (*@$\langle$@*)T,hT(*@$\rangle$@*) := absorbing_small_cycle E S.val S.property.2
+      S.property.1.le (fun v _ => deg v) h4 h6
+    exact (*@$\langle$@*)(*@$\langle$@*)(S.val,T),hT(*@$\rangle$@*), Subtype.ext rfl(*@$\rangle$@*)

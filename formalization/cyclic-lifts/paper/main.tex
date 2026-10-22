@@ -322,40 +322,237 @@ six-cycle. Lean verifies this obstruction. It refutes the rectangle-only
 shortcut; the source paper does not assert that shortcut.
 \end{remark}
 
-\section{Lean certificate and mathematical scope}\label{sec:lean}
+\section{Lean development and proof structure}\label{sec:lean}
 
 The formal development uses Lean 4.36.0-rc1 and Mathlib revision
-\nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. The main library contains
-75 audited theorem declarations. Its final matrix theorem uses Mathlib's
-native simple-graph girth, together with an explicit binary expansion of
-$\HX$; the voltage graph is proved equal to that Tanner graph.
+\nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. The main girth
+library contains 75 audited theorem declarations. Separate consumers add
+three source-question corollaries, eight decoding declarations, three
+candidate certificates and 29 general structural declarations, for 118
+audited declarations in these five groups. These counts include supporting
+lemmas and certificates; they do not count 118 independent research results.
+The core and these four consumers occupy 2,064 source lines, including
+comments and module declarations. The additional checking consumer and
+prior-art comparisons are distributed as well.
 
-The following source corollary is an exact extract from the checked
-artifact, typeset using reversible TeX escapes. It expresses the sufficient-condition answer in rectangle-only
-form. A companion theorem proves necessity.
+The short final corollary is an application of this development. The
+substantive work establishes the relationship between the expanded binary
+matrix, lifted graph, explicit cycles, voltage obstructions and finite-set
+counting arguments. This section exposes the principal interfaces and
+selected proofs. Appendix~\ref{app:lean-source} links the complete source
+at an immutable revision and provides reproduction commands. Every listing
+here is extracted from that source, with reversible TeX escapes for Unicode;
+\texttt{listings/excerpts.json} records its source file, line range and hash.
+A fragment is identified as such rather than presented as a standalone proof.
+
+\subsection{Principal theorem interfaces}\label{sec:lean-interfaces}
+
+In the girth library, $I,J$ are row and column types and $r:\mathbb N$.
+The assumptions \texttt{[Nontrivial I]} and \texttt{[Nontrivial J]} mean
+that each type has at least two distinct elements. For the finite coding
+interpretation, use finite $I,J$ and $r\ge1$. The Lean theorem itself is
+more general. Its graph is Mathlib's \texttt{SimpleGraph}, and
+\texttt{girth} is the native graph invariant. The first complete declaration
+states both directions for the actual binary parity-check matrix:
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting[caption={The full expanded-matrix characterization and its final transfer proof.}]{listings/matrix-characterization.tex}
+\end{minipage}\par\medskip
+The rewriting step uses the proved equality between the voltage-model
+graph and \texttt{matrixTanner (hX B)}. The called theorem contains the
+cycle analysis; its proof is not replaced by that rewrite. To obtain the
+source question's rectangle-only formulation, use
+\texttt{baseHexagon\_eq\_rectangle\_add}. In particular, the sufficient
+condition is the following complete checked corollary:
+\par\medskip\noindent\begin{minipage}{\linewidth}
 \lstinputlisting{listings/source-answer.tex}
+\end{minipage}\par\medskip
 
-The listing's index types specialize to finite row and column sets, with
-at least two elements each, and positive $r$ for the finite circulant
-interpretation. Internally, the graph lemmas are stated at greater
-generality. They establish projected distinctness, eliminate mixed block
-patterns, construct native simple cycles, and identify the graph with the
-expanded matrix. This is the formal content behind the brief final
-application, not a standalone one-line proof of the underlying mathematics.
+For the structural results, let \texttt{E : V \(\to\) C \(\to\) Prop}
+be an arbitrary Tanner incidence relation, with decidable equality on
+both types and a finite check type $C$. The selected variable support
+\texttt{S : Finset V} is finite; the whole variable type need not be.
+\texttt{neighbors E v} contains all checks incident to $v$, and
+\texttt{selected E S c} contains the variables of $S$ incident to $c$.
+\texttt{Absorbing E S} explicitly requires nonemptiness and strictly more
+even than odd induced-degree neighbors at every selected variable.
+\texttt{Stopping E S} requires nonemptiness and at least two selected
+neighbors at every check touched by $S$.
 
-Eight supplementary declarations in \texttt{CyclicDecoding.lean} prove
-the general two-error bound and concrete absorbing/stopping certificates;
-three in \texttt{CyclicOptimized.lean} prove the two selected candidates'
-girth. The three source-question corollaries are also supplementary.
-A further 29 audited declarations in \texttt{CyclicStructure.lean} prove
-the general absorbing-support/eight-cycle bijection, its counting
-corollary and minimum-size exclusion, and the general stopping bound. All
-observed axioms are among \texttt{propext}, \texttt{Classical.choice} and
-\texttt{Quot.sound}; the development uses no admitted proofs or native
-evaluation axiom. The structural results identified below are checked
-for arbitrary finite check types and finite selected-variable sets.
-The elementary $(4,4)$ incidence count, the companion-stabilizer
-identification and the expansion argument retain written proofs.
+\texttt{EightCycleOn E S T} supplies four distinct variables and four
+distinct checks, their alternating incidences, and the equalities
+identifying their supports with $S,T$. Thus it records an explicit simple
+cyclic ordering. The following complete declaration characterizes all
+absorbing supports of size at most four:
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting{listings/absorbing-characterization.tex}
+\end{minipage}\par\medskip
+Here \texttt{HasFourCycle} and \texttt{HasSixCycle} are explicit cycle
+predicates on \texttt{bipartiteBase E}; the earlier library relates them
+to native simple closed walks. The degree assumption is imposed only on
+the selected variables. The two implications invoke the separately proved
+\texttt{absorbing\_small\_cycle} and \texttt{cycle\_absorbing}, rather
+than postulating a classification of cycle supports.
+
+The stopping theorem has a different degree hypothesis: it accepts any
+lower bound $d\ge2$, with no upper bound on the size of $S$. Its complete
+signature is printed below; its proof continues in the linked source and
+is analyzed in Section~\ref{sec:lean-stopping}.
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting[caption={Signature of the general stopping-set theorem; the body is in the full source.}]{listings/stopping-statement.tex}
+\end{minipage}\par\medskip
+\texttt{stopping\_minimum\_six} specializes this result to degree three.
+The absorbing correspondence is strengthened from an existence statement
+to the explicit equivalence shown in Section~\ref{sec:lean-bijection}.
+
+\subsection{Proof dependency diagram}\label{sec:lean-dependencies}
+
+Figure~\ref{fig:lean-dependencies} records the mathematical dependencies
+behind the main interfaces. Each arrow means that the lower conclusion
+uses the results above it; routine helper lemmas and the import graph are
+omitted. In particular, the stopping bound is an independent general
+Tanner-graph argument, not a finite check on the selected modulus.
+
+\begin{figure}[p]
+\centering
+\small
+\newcommand{\proofbox}[2]{\fbox{\parbox{#1}{\centering #2}}}
+\begin{tabular}{ccc}
+\proofbox{.27\linewidth}{Four-cycle criterion\\\texttt{xGraph\_hasFourCycle\_iff}} &
+\proofbox{.27\linewidth}{Six-cycle criterion\\\texttt{xGraph\_hasSixCycle\_iff}} &
+\proofbox{.27\linewidth}{Native mixed eight-cycle\\and bipartite coloring} \\
+\multicolumn{3}{c}{$\Downarrow$} \\
+\multicolumn{3}{c}{\proofbox{.80\linewidth}{Exact voltage-graph girth criterion\\\texttt{xGraph\_girth\_characterization}}} \\
+\multicolumn{3}{c}{$\Downarrow$ + \texttt{xGraph\_eq\_matrixTanner}} \\
+\multicolumn{3}{c}{\proofbox{.80\linewidth}{Expanded binary-matrix criterion\\\texttt{matrixTanner\_hX\_girth\_characterization}}} \\
+\multicolumn{3}{c}{$\Downarrow$ + \texttt{baseHexagon\_eq\_rectangle\_add}} \\
+\multicolumn{3}{c}{\proofbox{.80\linewidth}{Rectangle-pair formulation of the source question}}
+\end{tabular}
+
+\vspace{1.4em}
+\begin{tabular}{cc}
+\proofbox{.42\linewidth}{No four-/six-cycles; variable degree three\\\texttt{absorbing\_even\_two}, \texttt{even\_check\_two}} &
+\proofbox{.42\linewidth}{Degree three; no four-cycles\\Explicit simple eight-cycle\\\texttt{cycle\_check\_two}} \\
+$\Downarrow$ & $\Downarrow$ \\
+\proofbox{.42\linewidth}{Absorbing support gives an eight-cycle\\\texttt{absorbing\_small\_cycle}} &
+\proofbox{.42\linewidth}{Eight-cycle support is absorbing\\\texttt{cycle\_absorbing}} \\
+\multicolumn{2}{c}{$\Downarrow$ + \texttt{cycle\_checks\_unique}} \\
+\multicolumn{2}{c}{\proofbox{.85\linewidth}{Support bijection and equal counts\\\texttt{absorbing\_cycle\_equiv}, \texttt{absorbing\_cycle\_count}}}
+\end{tabular}
+
+\vspace{1.4em}
+\begin{tabular}{c}
+\proofbox{.85\linewidth}{No four-/six-cycles; selected-variable degree at least $d\ge2$} \\
+$\Downarrow$ choose stopping witnesses; prove injectivity and disjointness \\
+\proofbox{.85\linewidth}{Two disjoint layers inside $S\setminus\{v\}$ have sizes at least $d$ and $d-1$} \\
+$\Downarrow$ \\
+\proofbox{.85\linewidth}{$|S|\ge 2d$: \texttt{stopping\_card\_ge\_twice\_degree}}
+\end{tabular}
+\caption{Dependencies of the girth characterization, absorbing-support
+bijection and stopping bound. The structural branches use generic Tanner
+incidence; application to our construction uses its girth and degree properties.}
+\label{fig:lean-dependencies}
+\end{figure}
+
+\subsection{Constructing and checking the eight-cycle}
+
+The upper bound on girth is constructive. The complete definition below
+specifies all eight lifted vertices and discharges each adjacency by
+unfolding the incidence relation and normalizing additive expressions.
+Its fibers are exactly the ones in Lemma~\ref{lem:eight}.
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting[basicstyle=\small\ttfamily]{listings/mixed-cycle-construction.tex}
+\end{minipage}\par\medskip
+Closure of a walk alone does not prove simplicity. The next complete
+proof uses distinct row and column choices to establish that the tail is
+a path, and then applies Mathlib's native cycle criterion:
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting{listings/mixed-cycle-simple.tex}
+\end{minipage}\par\medskip
+The companion length theorem is by reflexivity. Together these establish
+a native simple cycle of length eight, not only an arithmetic cancellation
+or a closed walk that might revisit a vertex. The four-/six-cycle
+classification and bipartite coloring then give the matching lower bound.
+
+\subsection{The absorbing-support bijection}\label{sec:lean-bijection}
+
+The forward construction first proves that each selected degree-three
+variable has at least two even check neighbors. For $|S|\le4$, each such
+check has exactly two selected neighbors: a degree-four check would
+prevent a second even check by the four-cycle exclusion. Starting from
+one variable, two such checks give two distinct neighbors. A second check
+at one neighbor gives a fourth variable; equality with an earlier variable
+would create a four- or six-cycle. This constructs the required ordering.
+The converse checks the induced multiplicities of the cycle checks and
+verifies the even/odd inequality directly.
+
+For uniqueness, \texttt{cycle\_shared\_check} proves that a check meeting
+two selected cycle variables is a cycle check. A consecutive pair has a
+unique common check by four-cycle exclusion; an opposite pair would close
+a six-cycle. Hence \texttt{cycle\_checks\_exact} identifies the cycle's
+check support with the checks having at least two selected neighbors.
+This proves \texttt{cycle\_checks\_unique}.
+
+\texttt{UnorientedEightCycles E} is the subtype of variable/check support
+pairs equipped with an \texttt{EightCycleOn} certificate. Its cyclic
+ordering is existential data in a proposition, so choosing a different
+origin or direction does not create a new element. The target
+\texttt{FourAbsorbingSupports E} is the subtype of finite supports with
+cardinality four and the absorbing property. Here is the complete
+bijection construction, including both injectivity and surjectivity:
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting[basicstyle=\small\ttfamily]{listings/absorbing-bijection.tex}
+\end{minipage}\par\medskip
+The function \texttt{f} forgets the check support. Its injectivity uses
+uniqueness of that support, while surjectivity uses the explicit forward
+cycle construction. \texttt{absorbing\_cycle\_count} transfers the
+equivalence to equality of cardinalities. Independently,
+\texttt{cycle\_native} constructs a native Mathlib simple closed walk of
+length eight from every cycle certificate. The formal representation is
+therefore connected to the graph semantics used in the girth theorem.
+
+\subsection{Stopping witnesses: disjointness and cardinality}\label{sec:lean-stopping}
+
+The stopping proof begins with $v\in S$ and a check $c_0$ of $v$.
+For every check $c$ of $v$, choose another selected variable $w(c)$.
+Put $a=w(c_0)$. For every check $c\ne c_0$ of $a$, choose another selected
+variable $z(c)$. Four-cycle exclusion makes each witness map injective
+and excludes $z(c)=v$. The difficult remaining collision is
+$z(c)=w(e)$. The following contiguous excerpt is the entire local proof
+excluding that collision; \texttt{hwE}, \texttt{hzE} record the chosen
+incidences, and \texttt{hwne}, \texttt{hzne} record distinctness from the
+respective parent variables.
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting[basicstyle=\small\ttfamily]{listings/stopping-disjointness.tex}
+\end{minipage}\par\medskip
+The intermediate equalities would create four-cycles; after excluding
+them, the final invocation exhibits the forbidden six-cycle. The proof
+then forms the two finite images, \texttt{first} and \texttt{second},
+proves they are disjoint, and places their union in
+\texttt{S.erase v}. These injectivity, disjointness and inclusion facts
+justify the final cardinality calculation, reproduced verbatim:
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\lstinputlisting{listings/stopping-count.tex}
+\end{minipage}\par\medskip
+Thus the arithmetic tactic \texttt{omega} finishes only after the graph
+argument has supplied the two disjoint layers. The calculation is
+$|S|-1\ge\deg(v)+\deg(a)-1\ge2d-1$, yielding $|S|\ge2d$.
+
+\subsection{Trust boundary and scope}
+
+All 118 audited declarations use only \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}. There are no admitted
+proofs or native evaluation axioms. Classical choice selects witnesses;
+Lean's kernel checks the proof terms produced by tactics such as
+\texttt{simp}, \texttt{abel} and \texttt{omega}. The source and logs
+separate the core girth audit from the four supplementary groups.
+
+The absorbing-support characterization, actual support bijection, count
+equality, minimum-size exclusion and general stopping inequality are
+Lean results. The elementary $(4,4)$ odd-check count, companion-stabilizer
+identification and conductance argument retain written proofs. The finite
+optimization and decoding statistics have computational audits rather than
+Lean proofs. Appendix~\ref{app:lean-source} makes the complete formal
+proofs and those evidence boundaries directly discoverable.
 
 \section{Consequences for degree-three decoding graphs}\label{sec:structure}
 
@@ -750,6 +947,75 @@ targets. The predecessor contributions credited in Section~\ref{sec:history}
 guided the proof comparison and interpretation of decoding outcomes.
 OpenAI Codex was used for literature discovery, mathematical exploration,
 Lean development, experiment implementation and manuscript drafting.
+
+\appendix
+\section{Complete Lean proof and reproduction guide}\label{app:lean-source}
+
+The PDF prints selected declarations and substantive excerpts; the full
+formal proof, including every helper lemma, is available online. The
+following immutable directory link identifies the exact Lean source used
+for the listings and the 118-declaration audit:
+\begin{center}
+\href{https://github.com/alectionary/vibe-math/tree/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank}{\textbf{Browse the complete Lean proof at the frozen source revision}}
+\end{center}
+\noindent Source revision:
+\nolinkurl{5dbda826fb9d385cf5528694f6908d28bc94054d}.
+The links in Table~\ref{tab:source-guide} point to that revision. They
+identify complete source files, not only the extracts printed here.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{P{.38\linewidth}P{.55\linewidth}}
+\toprule
+Complete source file & Contents and role \\
+\midrule
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicLift/Basic.lean}{\texttt{CyclicLift/Basic.lean}} & Voltage lifts, four-cycle predicates and native graph foundations. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicLift/Bipartite.lean}{\texttt{CyclicLift/Bipartite.lean}} & Tanner incidence, bipartite coloring and short-cycle reduction. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicLift/LiftedProduct.lean}{\texttt{CyclicLift/LiftedProduct.lean}} & Product support, explicit binary $H_{\mathsf X}$ and equality with its Tanner graph. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicLift/SixCharacterization.lean}{\texttt{CyclicLift/}\newline\texttt{SixCharacterization.lean}} & Necessity and sufficiency of the hexagon obstruction; supported by \texttt{ShortCycles.lean}. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean}{\texttt{CyclicLift/}\newline\texttt{GirthCharacterization.lean}} & Constructive eight-cycle, full girth equivalence and rectangle-pair translation. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicStructure.lean}{\texttt{CyclicStructure.lean}} & All 651 lines of the general structural development: induced degrees, absorbing-support bijection and stopping bound. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicSourceQuestion.lean}{\texttt{CyclicSourceQuestion.lean}} & Public source-question corollaries. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicDecoding.lean}{\texttt{CyclicDecoding.lean}} & General two-error bound and concrete induced-degree certificates. \\
+\href{https://github.com/alectionary/vibe-math/blob/5dbda826fb9d385cf5528694f6908d28bc94054d/formalization/dyadic-rank/CyclicOptimized.lean}{\texttt{CyclicOptimized.lean}} & Girth certificates for the selected finite candidates. \\
+\bottomrule
+\end{tabular}
+\caption{Clickable roadmap to the complete formalization. Other library
+modules and the checking consumer are present in the linked directory.}
+\label{tab:source-guide}
+\end{table}
+
+For an offline copy, download the
+\href{https://github.com/alectionary/vibe-math/raw/refs/heads/master/formalization/cyclic-lifts/paper/cyclic-lift-girth-eight-source.zip}{\textbf{complete manuscript and Lean/code/data source bundle}}.
+This stable download address tracks the current manuscript draft; the
+bundle's \texttt{source-manifest.json} and
+\texttt{artifact/MANIFEST\_SHA256.json} identify its precise file contents.
+It includes the full Lean sources, the pinned toolchain and dependency
+manifest, source listings, axiom logs, experiments, results and validators.
+No dependency binaries are bundled. An additional
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/cyclic-lifts/paper/LEAN-PROOF-GUIDE.md}{\textbf{online proof guide}}
+provides the same entry points.
+
+After extracting the source bundle, enter
+\texttt{artifact/formalization/dyadic-rank} and run:
+\par\medskip\noindent\begin{minipage}{\linewidth}
+\begin{lstlisting}[basicstyle=\small\ttfamily]
+lake -f lakefile-cyclic.toml exe cache get
+lake -f lakefile-cyclic.toml build CyclicLift
+lake -f lakefile-cyclic.toml env lean CyclicChecks.lean
+lake -f lakefile-cyclic.toml env lean CyclicSourceQuestion.lean
+lake -f lakefile-cyclic.toml env lean CyclicDecoding.lean
+lake -f lakefile-cyclic.toml env lean CyclicOptimized.lean
+lake -f lakefile-cyclic.toml env lean CyclicStructure.lean
+\end{lstlisting}
+\end{minipage}\par\medskip
+The explicit \texttt{CyclicLift} build target avoids building an unrelated
+library named in the inherited alternate configuration. The five consumers
+emit the 75, 3, 8, 3 and 29 axiom reports respectively. From the
+\texttt{artifact} root, \texttt{python3 scripts/validate\_cyclic\_structure.py
+--recheck-lean} repeats the structural kernel check and checks exact audit
+coverage and source hashes. The package README gives the computational
+audit commands separately.
 
 \begin{thebibliography}{99}
 \bibitem{FHM2026}
