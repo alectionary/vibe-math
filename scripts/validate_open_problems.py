@@ -87,5 +87,5 @@ for href in re.findall(r'\]\(([^)]+)\)',report):
  if not u.scheme and u.path:assert (D/u.path).exists(),href
 assert f"0/{len(eligible)}" in report and f"0/{len(eligible)}" in page
 assert summary['eligible_identified_unverified_lean_statements']==1
-assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']
+assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']-load('lean-coverage-review.json')['assessed_eligible_count']
 print(f'Validated {len(rows)} canonical entries, {len(eligible)} eligible targets, {len(coverage)} paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.')

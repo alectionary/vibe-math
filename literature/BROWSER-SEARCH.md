@@ -1,5 +1,7 @@
 # Downstream search in Edge: Google Scholar and X
 
+The later [Lean coverage assessment](LEAN-COVERAGE.md) has now reviewed the twelve targets left unassessed below. This document preserves the browser pass’s discovery snapshot.
+
 Checked October 22, 2026. This continuation used the native Microsoft Edge browser on **scholar.google.com** and **x.com**, with primary papers checked separately after discovery. It adds **six full-text paper screens**, **ten canonical inventory entries**, and **seven eligible mathematical targets**. Three additional entries are directions without fixed theorem statements. Two screened papers supplied related results without a new explicit remaining target.
 
 The current [inventory](OPEN-PROBLEMS.md) has **181 entries, 108 eligible targets and 58 paper records**, of which 57 have full-text screens. The complete verified Lean proof count remains **1/108 (0.93%)**. No new Lean search or build was performed for these seven targets; their Lean status is **unassessed**, bringing that category to 12 eligible targets. Neither an ordinary proof in a paper nor an X announcement counts as Lean verification.

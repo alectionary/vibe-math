@@ -15,9 +15,13 @@ assert set(audit['baseline']['canonical_ids'])|set(audit['added_target_ids'])==s
 assert len(audit['added_paper_ids'])==6
 assert len(audit['added_target_ids'])==audit['added_entries']==10
 added=[rows[k] for k in audit['added_target_ids']]
+assessed={r['target_id'] for r in load('lean-coverage-review.json')['assessed_entries']}
 assert sum(r['eligible_for_coverage'] for r in added)==audit['added_eligible_targets']==7
 for r in added:
- assert r['lean_statement_status']==r['lean_proof_status']=='not_assessed_in_this_extension'
+ if r['id'] in assessed:
+  assert r['lean_statement_status']=='no_exact_statement_identified'
+  assert r['lean_proof_status']=='no_exact_proof_identified'
+ else:assert r['lean_statement_status']==r['lean_proof_status']=='not_assessed_in_this_extension'
  assert not r.get('verified_artifact')
  for o in r['occurrences']:
   assert o['source_id'] in audit['added_paper_ids']
@@ -38,4 +42,4 @@ assert any('irsi.ai' in e['url'] for e in rows['L-P32-triangle-bound']['later_ev
 for href in re.findall(r'\]\(([^)]+)\)',(D/'BROWSER-SEARCH.md').read_text()):
  u=urlparse(href)
  if not u.scheme and u.path:assert (D/u.path).exists(),href
-print('Validated 14 Scholar views, five X queries, six screened papers, ten entries, seven eligible targets and preserved unassessed Lean status.')
+print('Validated 14 Scholar views, five X queries, six screened papers, ten entries, seven eligible targets and historical discovery statuses with subsequent assessments.')

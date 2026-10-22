@@ -24,6 +24,8 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 
 See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more primary-paper screens, new open questions, an author’s X announcement, and pending citation leads.
 
+The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discovery backlog; one of 108 eligible targets retains a verified Lean proof (0.93%). Related source-level infrastructure is distinguished from exact target coverage.
+
 ## Counts and their meaning
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.

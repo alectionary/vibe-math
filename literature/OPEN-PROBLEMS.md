@@ -17,7 +17,7 @@ The inventory now contains **181 canonical entries**: the original 40 dissertati
 | Eligible targets with a complete checked Lean proof | 1/108 (0.93%) |
 | Eligible targets with checked finite cases, without a complete proof | 0/108 |
 | Additional identified Lean statements without a build audit | 1/108 |
-| Eligible targets with Lean discovery still unassessed in this extension | 12/108 |
+| Eligible targets with Lean discovery still unassessed in this extension | 0/108 |
 | Articles/preprints in scope | 58 |
 | Full-text sources screened, including withdrawn history | 57/58 |
 | Current-publication full texts screened | 56 |
@@ -38,7 +38,7 @@ The unit is a mathematical question, task, or explicitly labeled direction, not 
 
 Repeated targets share one canonical ID with multiple source occurrences. Related but different systems, hypotheses, or invariants retain different IDs and explicit related-target links. In particular, P01 changes the invariants in the held Geraci question; calmed rotational NSE is distinct from calmed velocity–vorticity; and two-dimensional Ohmic-heating MHD–Boussinesq is distinct from three-dimensional MHD. Local existence and global well-posedness are distinct obligations and are related in the ledger. No logical independence of the counted problems is claimed.
 
-This article set includes predecessor versions and overlapping publications as well as genuinely later papers. “Additional” means newly inventoried, not newly posed after the dissertation. Dates and author relationships remain in [the bibliography](papers.json). The October 22 expansion adds 21 screened papers and 57 canonical entries, of which 27 enter the denominator; repeated occurrences are merged. The earlier cohort remains 114 entries and 74 targets. See [expanded search findings and limits](SCHOLARLY-EXPANSION.md). A subsequent [Edge Scholar/X pass](BROWSER-SEARCH.md) adds six screened papers, ten canonical entries and seven eligible targets; its new Lean searches remain unassessed.
+This article set includes predecessor versions and overlapping publications as well as genuinely later papers. “Additional” means newly inventoried, not newly posed after the dissertation. Dates and author relationships remain in [the bibliography](papers.json). The October 22 expansion adds 21 screened papers and 57 canonical entries, of which 27 enter the denominator; repeated occurrences are merged. The earlier cohort remains 114 entries and 74 targets. See [expanded search findings and limits](SCHOLARLY-EXPANSION.md). A subsequent [Edge Scholar/X pass](BROWSER-SEARCH.md) adds six screened papers, ten canonical entries and seven eligible targets; its seven eligible additions subsequently received bounded Lean discovery in the [coverage assessment](LEAN-COVERAGE.md).
 
 ## Source coverage and gaps
 
@@ -113,7 +113,7 @@ Primary HTML/PDF retrievals and public full-text transcriptions, content hashes 
 
 The added search ran 44 lexical queries across four previously pinned Lean source trees, respecting the sparse checkout scope recorded in [audit sources](../audit/sources.json), plus eight GitHub indexed-code queries (limit 30 hits each). The dyadic/rank query reached the limit, so its results are explicitly incomplete. Candidate files were inspected for mathematical subject mismatches; no exact new target was established. A file retrieval failure is recorded, not interpreted as absence. Weighted Horace background, dyadic local algebra, topological absorbing sets, and primitive-set saturation games do not match the targets here. [Local searches](downstream-lean-searches.json) · [GitHub searches](downstream-github-searches.json) · [Candidate retrievals](downstream-lean-candidates.json) · [Comparison notes](downstream-search-review.json).
 
-The original 39 targets retain the earlier audit’s search evidence. Earlier article rows use family-level discovery and source-context comparisons, not an exhaustive search over all public declarations or alternate terminology. The recovered texts received eight supplementary pinned-source queries, recorded in [gap-specific Lean discovery](coverage-gap-lean-searches.json); no matching artifact was identified. P20 questions are historical, and a related graph-radius conjecture is not a matching algorithmic result. A public matching Lean artifact would change verified counts only after a semantic and build/axiom audit. The October 22 search identifies a matching `proof_wanted` existence statement for Conway’s 99-graph, recorded as identified but not build-verified. It supplies no proof. The earlier pass left five eligible targets unassessed; the Edge continuation adds seven more without a new Lean search, for twelve unassessed eligible targets. [Search and candidate review](SCHOLARLY-EXPANSION.md).
+The original 39 targets retain the earlier audit’s search evidence. Earlier article rows use family-level discovery and source-context comparisons, not an exhaustive search over all public declarations or alternate terminology. The recovered texts received eight supplementary pinned-source queries, recorded in [gap-specific Lean discovery](coverage-gap-lean-searches.json); no matching artifact was identified. P20 questions are historical, and a related graph-radius conjecture is not a matching algorithmic result. A public matching Lean artifact would change verified counts only after a semantic and build/axiom audit. The October 22 search identifies a matching `proof_wanted` existence statement for Conway’s 99-graph, recorded as identified but not build-verified. It supplies no proof. The [latest Lean assessment](LEAN-COVERAGE.md) reviews all twelve previously unassessed eligible targets and nine excluded directions; no additional exact target artifact was identified. Related background is recorded separately, and query caps and API failures remain explicit. [Search and candidate review](SCHOLARLY-EXPANSION.md).
 
 ## October 22 expansion
 
@@ -1469,7 +1469,7 @@ Are the open and closed neighborhood-color functions constant on the displayed r
 
 - Type: conjecture or question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [P33: Section 4, paragraph after Question 4.1](https://arxiv.org/html/2306.12593v1); extraction lines 420–422; explicit question.
 
@@ -1479,7 +1479,7 @@ Find one proof technique recovering both small-radius and larger-radius color bo
 
 - Type: proof method request; written formulation: proof method request.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [P33: Section 4 conclusion](https://arxiv.org/html/2306.12593v1); extraction lines 444–446; explicit question.
 
@@ -1733,7 +1733,7 @@ Can the condition c0*mu*h^2 <= nu be removed from the assimilation well-posednes
 
 - Type: conjecture or question; written formulation: precise math in source.
 - Coverage denominator: included. Question refers to this paper’s assimilation system and its remaining well-posedness hypotheses, not to general Navier–Stokes well-posedness.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F11: Section 3, after estimates (3.1)](https://arxiv.org/html/2508.07492v1); extraction lines 239–240; explicit question.
 
@@ -1794,10 +1794,11 @@ Achieve near-optimal counting-query accuracy with logarithmic expected randomnes
 
 - Type: conjecture or question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 336–341; explicit question.
 - Later evidence: [Main theorem, extraction lines 93–100](https://arxiv.org/html/2510.16959v1). The logarithmic-randomness specialization has a displayed d^2/epsilon-type error term up to logarithms; it is not the requested near-optimal d/epsilon accuracy.
+- Related formalization: [https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean](https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean). Private count/noised-query privacy under sensitivity and noise-system assumptions. No identified theorem supplies the F14 joint accuracy/expected-randomness/efficiency guarantees or randomness lower bound.
 
 ### L-F14-constant-parameters
 
@@ -1805,9 +1806,10 @@ Determine whether the logarithmic randomness lower bound persists at constant pr
 
 - Type: conjecture or question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 341–344; explicit question.
+- Related formalization: [https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean](https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean). Private count/noised-query privacy under sensitivity and noise-system assumptions. No identified theorem supplies the F14 joint accuracy/expected-randomness/efficiency guarantees or randomness lower bound.
 
 ### L-F14-efficient
 
@@ -1815,11 +1817,12 @@ Construct polynomial-time low-randomness mechanisms for private counting queries
 
 - Type: conjecture or question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: later parameterized answer in primary literature.
 - [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 345–352; explicit question.
 - [F18: Introduction: efficient-construction question and parameterized answer](https://arxiv.org/html/2510.16959v1); extraction lines 55–100; later parameterized answer.
 - Later evidence: [Introduction; main theorem (extraction lines 55–100)](https://arxiv.org/html/2510.16959v1). Provides polynomial-time mechanisms with a closely related randomness/accuracy tradeoff, including O(log d + log polylog(d/epsilon)) expected bits in the displayed regime. This is progress on efficiency; it does not supply logarithmic randomness at near-optimal accuracy for every parameter.
+- Related formalization: [https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean](https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean). Private count/noised-query privacy under sensitivity and noise-system assumptions. No identified theorem supplies the F14 joint accuracy/expected-randomness/efficiency guarantees or randomness lower bound.
 
 ### L-F14-other-releases
 
@@ -1827,9 +1830,10 @@ Extend randomness-complexity analysis to other statistical releases.
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 353–356; explicit question.
+- Related formalization: [https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean](https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean). Private count/noised-query privacy under sensitivity and noise-system assumptions. No identified theorem supplies the F14 joint accuracy/expected-randomness/efficiency guarantees or randomness lower bound.
 
 ### L-F14-replicability-links
 
@@ -1837,9 +1841,10 @@ Develop connections between privacy randomness and replicable algorithms.
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 357–358; explicit question.
+- Related formalization: [https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean](https://github.com/leanprover/SampCert/blob/a2c53bb5ff790e729e252958060699b7eff898b9/SampCert/DifferentialPrivacy/Queries/Count/Properties.lean). Private count/noised-query privacy under sensitivity and noise-system assumptions. No identified theorem supplies the F14 joint accuracy/expected-randomness/efficiency guarantees or randomness lower bound.
 
 ### L-F16-higher-counts
 
@@ -1880,7 +1885,7 @@ Determine useful minimum-distance upper bounds for the noncommuting polynomial-l
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 215–216; explicit question.
 
@@ -1890,7 +1895,7 @@ Explore closed families of permutation polynomials such as Dickson polynomials.
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 307–308; explicit question.
 
@@ -1900,7 +1905,7 @@ Extend the permutation-polynomial construction to quantum LDPC codes.
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 309–309; explicit question.
 
@@ -1910,10 +1915,11 @@ Characterize sufficient base-matrix conditions ensuring girth eight for the spec
 
 - Type: classification or construction; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [P34: Section 5 after Theorem 5.1](https://arxiv.org/html/2606.11987v1); extraction lines 331–332; explicit question.
 - Related, not merged: L-P09-structured.
+- Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-P34-decoding-effects
 
@@ -1921,9 +1927,10 @@ Analyze how girth-eight conditions affect other graph properties relevant for de
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [P34: Section 5 concluding question](https://arxiv.org/html/2606.11987v1); extraction lines 332–332; concluding direction.
+- Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-P34-logical-partitions
 
@@ -1931,9 +1938,10 @@ Translate the cited row/column partition conditions for low-weight logical opera
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
+- Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-P34-base-design
 
@@ -1941,9 +1949,10 @@ Choose base-matrix entries to optimize Tanner-graph properties for iterative dec
 
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
+- Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-F23-Q2.4
 
@@ -1951,7 +1960,7 @@ Does some total or partial concept class have strictly different list-replicabil
 
 - Type: mathematical question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F23: Question 2.4](https://arxiv.org/html/2606.06148v1); extraction lines 191–193; explicit question.
 
@@ -1961,7 +1970,7 @@ Determine the margin/accuracy parameter regimes for which the list-replicability
 
 - Type: classification or construction; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F23: Question 2.5](https://arxiv.org/html/2606.06148v1); extraction lines 194–197; explicit question.
 
@@ -1971,7 +1980,7 @@ For the dimension d in the source setting, can varying margin and accuracy reali
 
 - Type: mathematical question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F23: Question 2.6](https://arxiv.org/html/2606.06148v1); extraction lines 198–199; explicit question.
 
@@ -1981,7 +1990,7 @@ Every finite N-by-M sign matrix has list-replicability number O(log N log M), wi
 
 - Type: conjecture; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: later weaker bound in primary literature.
 - [F24: Conjecture 1.15](https://arxiv.org/html/2606.18236v1); extraction lines 328–331; explicit question.
 - [F22: Introduction, discussion before Theorem 1.1](https://arxiv.org/html/2610.20657v1); extraction lines 49–59; conjecture recalled with weaker bound.
@@ -1993,7 +2002,7 @@ Is list replicability of arbitrary finite concept classes bounded by a function 
 
 - Type: mathematical question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F24: Problem 1.16, list-replicability part](https://arxiv.org/html/2606.18236v1); extraction lines 332–337; explicit question.
 
@@ -2003,6 +2012,6 @@ Is the Z2-index of arbitrary finite concept classes bounded by a function of VC 
 
 - Type: mathematical question; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F24: Problem 1.16, index part](https://arxiv.org/html/2606.18236v1); extraction lines 332–337; explicit question.
