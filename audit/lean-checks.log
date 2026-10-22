@@ -1,0 +1,17 @@
+Module.Baer.iff_injective.{u, v} {R : Type u} [Ring R] {Q : Type v} [AddCommGroup Q] [Module R Q] [Small.{v, u} R] :
+  Module.Baer R Q ↔ Module.Injective R Q
+'Module.Baer.iff_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+Ideal.sInf_minimalPrimes.{u_1} {R : Type u_1} [CommSemiring R] {I : Ideal R} : sInf I.minimalPrimes = I.radical
+'Ideal.sInf_minimalPrimes' depends on axioms: [propext, Classical.choice, Quot.sound]
+MvPolynomial.vanishingIdeal_zeroLocus_eq_radical.{u_1, u_2, u_3} {k : Type u_1} {K : Type u_2} [Field k] [Field K]
+  [Algebra k K] {σ : Type u_3} [IsAlgClosed K] [Finite σ] (I : Ideal (MvPolynomial σ k)) :
+  MvPolynomial.vanishingIdeal k (MvPolynomial.zeroLocus K I) = I.radical
+'MvPolynomial.vanishingIdeal_zeroLocus_eq_radical' depends on axioms: [propext, Classical.choice, Quot.sound]
+BoundedContinuousFunction.arzela_ascoli.{u, v} {α : Type u} {β : Type v} [TopologicalSpace α] [CompactSpace α]
+  [PseudoMetricSpace β] [T2Space β] (s : Set β) (hs : IsCompact s) (A : Set (BoundedContinuousFunction α β))
+  (in_s : ∀ (f : BoundedContinuousFunction α β) (x : α), f ∈ A → f x ∈ s) (H : Equicontinuous fun x => ⇑↑x) :
+  IsCompact (closure A)
+'BoundedContinuousFunction.arzela_ascoli' depends on axioms: [propext, Classical.choice, Quot.sound]
+IsCoercive.continuousLinearEquivOfBilin.{u} {V : Type u} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+  [CompleteSpace V] {B : V →L[ℝ] V →L[ℝ] ℝ} (coercive : IsCoercive B) : V ≃L[ℝ] V
+'IsCoercive.continuousLinearEquivOfBilin' depends on axioms: [propext, Classical.choice, Quot.sound]

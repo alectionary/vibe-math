@@ -1,0 +1,191 @@
+[
+  {
+    "id": "B01",
+    "relationship": "background",
+    "declaration": "Module.Baer.iff_injective",
+    "url": "https://github.com/leanprover-community/mathlib4/blob/5f7b4198d22a9c82e1c698a379334fe128095c82/Mathlib/Algebra/Module/Injective.lean#L417",
+    "comparison": "Murray Theorem 1, PDF12. Same ideal-map extension criterion for injectivity. mathlib allows noncommutative rings; commutative specialization is appropriate. Universe Small hypothesis can be satisfied by choosing the module/ring universe together. Does not cover graded Baer or Bass numbers.",
+    "locally_checked": true,
+    "proof_status": "kernel_checked_standard_axioms_only"
+  },
+  {
+    "id": "B02",
+    "relationship": "background",
+    "declaration": "Ideal.sInf_minimalPrimes",
+    "url": "https://github.com/leanprover-community/mathlib4/blob/5f7b4198d22a9c82e1c698a379334fe128095c82/Mathlib/RingTheory/Ideal/MinimalPrime/Basic.lean#L115",
+    "comparison": "Barrett Theorem 1.1.3, PDF8. Same radical as intersection of minimal primes; order-theoretic sInf represents ideal intersection. mathlib even permits a commutative semiring.",
+    "locally_checked": true,
+    "proof_status": "kernel_checked_standard_axioms_only"
+  },
+  {
+    "id": "B03",
+    "relationship": "background",
+    "declaration": "MvPolynomial.vanishingIdeal_zeroLocus_eq_radical",
+    "url": "https://github.com/leanprover-community/mathlib4/blob/5f7b4198d22a9c82e1c698a379334fe128095c82/Mathlib/RingTheory/Nullstellensatz.lean#L171",
+    "comparison": "Affine Nullstellensatz background invoked by Barrett PDF25. Finite variable set, fields k and algebraically closed extension K. For the usual affine version take K=k algebraically closed. No toric Cox-ring equality follows automatically.",
+    "locally_checked": true,
+    "proof_status": "kernel_checked_standard_axioms_only"
+  },
+  {
+    "id": "B04",
+    "relationship": "background_foundation",
+    "declaration": "BoundedContinuousFunction.arzela_ascoli",
+    "url": "https://github.com/leanprover-community/mathlib4/blob/5f7b4198d22a9c82e1c698a379334fe128095c82/Mathlib/Topology/ContinuousMap/Bounded/ArzelaAscoli.lean#L110",
+    "comparison": "Related to Heitzman PDF8,19,23: compact domain, equicontinuous continuous family, values in one compact subset of a T2 pseudometric space, compact closure. Does not cover noncontinuous PVO families.",
+    "locally_checked": true,
+    "proof_status": "kernel_checked_standard_axioms_only"
+  },
+  {
+    "id": "B05",
+    "relationship": "background",
+    "declaration": "IsCoercive.continuousLinearEquivOfBilin",
+    "url": "https://github.com/leanprover-community/mathlib4/blob/5f7b4198d22a9c82e1c698a379334fe128095c82/Mathlib/Analysis/InnerProductSpace/LaxMilgram.lean#L105",
+    "comparison": "Lax–Milgram background invoked by Mu PDF44,86,133. Real complete Hilbert space and bounded coercive bilinear form; inverse equivalence is the Riesz-represented solution map. Does not identify dissertation Sobolev spaces, prove trace estimates, or establish the saddle-point/FSI generator.",
+    "locally_checked": true,
+    "proof_status": "kernel_checked_standard_axioms_only"
+  },
+  {
+    "id": "R01",
+    "relationship": "related_only",
+    "declaration": "TauCeti.GradedAlgebra.exists_grade_mul_eq_pow",
+    "url": "https://github.com/TauCetiProject/TauCeti/blob/78d2a293f185d30e6354b633329890fb502de9ec/TauCeti/RingTheory/GradedAlgebra/Veronese.lean#L188",
+    "comparison": "Finite-type graded algebra has a sufficiently divisible Veronese generated in degree one. No Bass-number, Matlis-duality or differential-operator conclusion; do not credit Murray or Lieberman main results.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "R02",
+    "relationship": "restricted_background_candidate",
+    "declaration": "alexanderHirschowitz",
+    "url": "https://github.com/d-torrance/terracini-lean/blob/a885285cc213931de47fd5a0a603f963b15d3fff/TerraciniLemma/AlexanderHirschowitzGeneral.lean#L293",
+    "comparison": "Ordinary Veronese tangent-space defect classification over a characteristic-zero nontrivially normed field. Related to Zamir background Theorem2.1 PDF14. Not the weighted P(1,2,3) theorem; geometric tangent-space-to-secant identification needs separate bridges. Source inspected, not kernel-checked here.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "R03",
+    "relationship": "conditional_related_candidate",
+    "declaration": "terraciniLemma_tangentCone",
+    "url": "https://github.com/d-torrance/terracini-lean/blob/a885285cc213931de47fd5a0a603f963b15d3fff/TerraciniLemma/Core.lean#L382",
+    "comparison": "The conclusion requires hgeneric, a dimension inequality for the tangent cone of the secant set; also requires local parametrizations over a normed field. It is not an unconditional proof of Zamir weighted secant/interpolation equivalence.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "R04",
+    "relationship": "related_foundation",
+    "declaration": "TauCeti.KnotTheory.alexander",
+    "url": "https://github.com/TauCetiProject/TauCeti/blob/78d2a293f185d30e6354b633329890fb502de9ec/TauCeti/KnotTheory/Alexander.lean#L13",
+    "comparison": "Seifert-matrix invariant and algebraic identities; file expressly leaves producing a matrix from a classical knot and comparison with other routes as separate work. No Wright complete-neighbor obstruction.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "R05",
+    "relationship": "related_foundation",
+    "declaration": "TauCeti.GridLink.unknottingNumber",
+    "url": "https://github.com/TauCetiProject/TauCeti/blob/78d2a293f185d30e6354b633329890fb502de9ec/TauCeti/KnotTheory/Grid/CrossingChange/UnknottingNumber.lean#L118",
+    "comparison": "Grid-diagram quotient/cross-commutation distance and basic bounds, not Wright five classical knot lower bounds or complete-neighbor conjectures.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "X01",
+    "relationship": "wrong_object",
+    "declaration": "SimpleGraph.saturationNumber",
+    "url": "https://github.com/google-deepmind/formal-conjectures/blob/2a315101d438a68c0ebdf22b7485ac731624efed/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Saturation.lean#L48",
+    "comparison": "Minimum size of a maximal matching; different from forbidden-subgraph saturation sat_H(n,F) in Volk.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "X02",
+    "relationship": "statement_with_placeholder_not_target",
+    "declaration": "NavierStokes.navier_stokes_existence_and_smoothness_R3",
+    "url": "https://github.com/google-deepmind/formal-conjectures/blob/2a315101d438a68c0ebdf22b7485ac731624efed/FormalConjectures/Millennium/NavierStokes.lean#L274",
+    "comparison": "Global smooth original Navier–Stokes statement ends in sorry. Not a proved calmed-system theorem; forced-breakdown proof metadata does not establish this statement.",
+    "locally_checked": false,
+    "proof_status": "source_inspected_not_locally_built"
+  },
+  {
+    "id": "discovery-Beneficial-AI-Foundation--vericoding--Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountMin_mCountMin.lean",
+    "relationship": "discovery_file",
+    "filename": "Beneficial-AI-Foundation--vericoding--Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountMin_mCountMin.lean",
+    "sha256": "0174663a0c7c9b977d2e8ec0115b2aeba97f52dfd4ea3e6316919e1dcc855d75",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-Beneficial-AI-Foundation--vericoding-benchmark--LD0130_specs.lean",
+    "relationship": "discovery_file",
+    "filename": "Beneficial-AI-Foundation--vericoding-benchmark--LD0130_specs.lean",
+    "sha256": "0174663a0c7c9b977d2e8ec0115b2aeba97f52dfd4ea3e6316919e1dcc855d75",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-Jiyuan-Tan--CausalSmith--PairedPrior.lean",
+    "relationship": "discovery_file",
+    "filename": "Jiyuan-Tan--CausalSmith--PairedPrior.lean",
+    "sha256": "61447e55a484eef4d392678b7b88313aac5231b39a295801da9bdd920a8c4088",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-blentz--artifactsmmo.lean",
+    "relationship": "discovery_file",
+    "filename": "blentz--artifactsmmo.lean",
+    "sha256": "63e5229b33a2bae42fcf9efe78ad01e598b81cc53a6b7501d639c18f43c9f524",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-kangxyz--motivic.lean",
+    "relationship": "discovery_file",
+    "filename": "kangxyz--motivic.lean",
+    "sha256": "1ae8815fa3d0c99d39fc349f987d2460374456e22dc52f0544313b14e714af63",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-laurloch--voting-methods-working-group-DSL-solver--Brazil_OpenPartyList.lean",
+    "relationship": "discovery_file",
+    "filename": "laurloch--voting-methods-working-group-DSL-solver--Brazil_OpenPartyList.lean",
+    "sha256": "3ff56154188dd77f217f1684738a73e804a668bb394c8b72674872cb20d814ab",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-mlinegar--ThinkingTrees--README.lean",
+    "relationship": "discovery_file",
+    "filename": "mlinegar--ThinkingTrees--README.lean",
+    "sha256": "7bbf8e010c8dcefe079279f4afd341c2653e5948bd1f5e98de51140a1d5218ec",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-shucrani--lean-lab--jordan_invariants.lean",
+    "relationship": "discovery_file",
+    "filename": "shucrani--lean-lab--jordan_invariants.lean",
+    "sha256": "82f9eed8527c0fa9b01a87de78710df7dea2287539b0434f0f29c46224048def",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  },
+  {
+    "id": "discovery-thehalleyyoung--tensorguard.lean",
+    "relationship": "discovery_file",
+    "filename": "thehalleyyoung--tensorguard.lean",
+    "sha256": "215249656fcc6a322a0377329c152dfe60290d364349738f073d7efebed4e16e",
+    "locally_checked": false,
+    "proof_status": "not_credited",
+    "comparison": "See claim-family comparison and GitHub query log. Discovery files were inspected for target relevance; no exact dissertation match accepted."
+  }
+]

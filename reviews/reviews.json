@@ -1,0 +1,2571 @@
+{
+  "2026-Geraci": {
+    "summary": "Connects Boolean matrix factorization and biclique covers with monomial ideals, regularity, neural codes, and order-theoretic morphisms.",
+    "definitions": [
+      {
+        "text": "Boolean rank, isolated sets, isolation ideals, neural-code morphisms, intersection completion, and monomial rank supply the precise mathematical objects.",
+        "pdf_pages": [
+          13,
+          14,
+          24,
+          30,
+          65,
+          89
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "For a bipartite graph, regularity of its edge-ideal quotient is bounded above by Boolean rank of its adjacency matrix. The argument translates biclique decompositions into bounds on regularity.",
+        "pdf_pages": [
+          21,
+          22
+        ],
+        "label": "Theorem 2.21"
+      },
+      {
+        "text": "The isolation-ideal quotient has regularity equal to the isolation number, also equal to one plus the isolation-complex dimension; this gives another Boolean-rank lower bound.",
+        "pdf_pages": [
+          30,
+          31,
+          32
+        ],
+        "label": "Theorem 2.41"
+      },
+      {
+        "text": "The code theory gives a canonical-form description of intersection completion, maximal-rank results for intersection-complete codes, and a monomial-rank lower bound on Boolean rank.",
+        "pdf_pages": [
+          65,
+          66,
+          88,
+          89,
+          90,
+          91
+        ],
+        "label": "Theorems 3.52, 4.19, 4.22"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "The first results concern finite Boolean matrices and their associated bipartite graphs; regularity is taken in explicitly defined graded polynomial-ring quotients. Neural-ring constructions use binary codes and their specified morphisms. These hypotheses cannot be replaced with arbitrary real matrices or arbitrary functions between codes.",
+        "pdf_pages": [
+          13,
+          20,
+          21,
+          30,
+          31,
+          40,
+          41
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "The author explicitly distinguishes propositions recalled from literature from lemmas/theorems developed in collaboration. Stanley–Reisner theory and the Artinian top-degree characterization of regularity are essential dependencies.",
+        "pdf_pages": [
+          11,
+          12,
+          31
+        ],
+        "label": "§1.1; Proposition 2.42"
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Worked matrix/code examples illustrate exact algebraic constructions. They do not constitute a Lean, Coq, or Isabelle verification of the general results.",
+        "pdf_pages": [
+          30,
+          33,
+          36,
+          38
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Questions 5.1 and 5.2 ask about gaps between Ferrers and biclique covering invariants and the largest canonical form of an intersection-complete code. Chapter 5 also proposes studying invariants of matrix representations of code morphisms.",
+        "pdf_pages": [
+          92,
+          93,
+          94
+        ],
+        "label": "Chapter 5"
+      },
+      {
+        "text": "The proposed equality relating Boolean rank before and after reduction to a count of nonsimple redundancies is explicitly conjectural.",
+        "pdf_pages": [
+          94
+        ],
+        "label": "§5.4"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Question 5.1 includes a fixed-number-of-vertices parenthetical. Literal unboundedness on a fixed finite vertex set is impossible, so the intended asymptotic quantifiers need clarification before formalization.",
+        "pdf_pages": [
+          93
+        ],
+        "label": ""
+      },
+      {
+        "text": "A neural code is a discrete mathematical model; these results do not by themselves validate a biological model.",
+        "pdf_pages": [
+          3,
+          4
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize the finite equivalence between a Boolean factorization and a biclique cover before tackling regularity or neural ideals.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2026-Watson": {
+    "summary": "Studies the behavior of cohomological support varieties under restriction and extension of scalars along local ring maps, and develops a computational construction.",
+    "definitions": [
+      {
+        "text": "Differential graded algebras/modules, filtered complexes, Koszul complexes, cohomological operators, and support varieties are the framework.",
+        "pdf_pages": [
+          12,
+          13,
+          14,
+          34,
+          35,
+          36,
+          37
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "Support varieties of suitable modules transform by inverse image under the map induced by a local homomorphism. The proof factors the map and uses the weakly regular and surjective cases.",
+        "pdf_pages": [
+          10,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55
+        ],
+        "label": "Theorems 1.0.1 and 3.3.9"
+      },
+      {
+        "text": "A local map of finite flat dimension gives the stated dimension inequality for supports after derived extension of scalars; complete-intersection descent/localization consequences follow.",
+        "pdf_pages": [
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ],
+        "label": "Theorem 3.4.4 and corollaries"
+      },
+      {
+        "text": "Chapter 4 develops the resolution/construction needed to compute supports, extending Eisenbud–Shamash methods; Chapter 5 recasts results in derived-category language.",
+        "pdf_pages": [
+          11,
+          63,
+          64,
+          65,
+          66,
+          93,
+          94
+        ],
+        "label": "Chapters 4–5"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Rings are commutative Noetherian and local in the principal comparison results. The affine-variety theorem assumes algebraically closed residue fields and finite generation over both rings. The dimension inequality additionally assumes finite flat dimension; the weakly regular base-change theorem uses its own flatness hypotheses.",
+        "pdf_pages": [
+          10,
+          34,
+          37,
+          38,
+          54,
+          60
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Avramov/Pollitz support theory, Cohen/regular factorizations, and classical Eisenbud–Shamash resolution constructions are prior mathematics, not new claims of this dissertation.",
+        "pdf_pages": [
+          3,
+          11,
+          34,
+          35
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "The introduction describes implementation in the Macaulay2 package ThickSubcategories as under development. This is computer algebra, with neither an independently rerun package nor a proof-assistant certificate established here.",
+        "pdf_pages": [
+          3,
+          11
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Remark 3.2.5 suggests a nonflat generalization using derived tensor products; this is a possible extension, not a theorem proved in the stated nonflat generality.",
+        "pdf_pages": [
+          40,
+          41
+        ],
+        "label": "Remark 3.2.5"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Theorems in Chapter 5 restate earlier results at another level of generality; do not count each restatement as a separate discovery. References to broader conjectures in the introduction do not mean those conjectures are solved.",
+        "pdf_pages": [
+          10,
+          93,
+          94
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: start with a finite Koszul-complex calculation or an explicit example of extension/restriction of scalars; the full result requires substantial derived/homological algebra.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2026-Murray": {
+    "summary": "Two algebraic projects: transfer of Bass-number finiteness through Veronese functors, and a characteristic-two obstruction to lifting Frobenius trace on symmetric determinantal rings.",
+    "definitions": [
+      {
+        "text": "Graded injective resolutions, Bass numbers, Veronese modules, local cohomology, differential operators, and Frobenius trace are defined and developed.",
+        "pdf_pages": [
+          16,
+          30,
+          39,
+          57,
+          64,
+          66,
+          90,
+          99
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "Under the graded-generation hypotheses, finite Bass numbers pass from M over R to the Veronese module over the Veronese subring. The thesis gives formulas away from the homogeneous maximal ideal and applications to local cohomology.",
+        "pdf_pages": [
+          66,
+          67,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ],
+        "label": "Theorems 10–12; Corollary 10"
+      },
+      {
+        "text": "A graded Matlis-duality statement relates graded Betti numbers to Bass numbers, furnishing a tool for the finiteness argument.",
+        "pdf_pages": [
+          57,
+          58
+        ],
+        "label": "Theorem 8"
+      },
+      {
+        "text": "For symmetric determinantal rings in the characteristic-two setting, the Frobenius trace does not lift to the indicated differential operator over the integral ring. The proof uses a nonzero local-cohomology obstruction and explicit differential operators.",
+        "pdf_pages": [
+          101,
+          102,
+          106,
+          133,
+          134,
+          135
+        ],
+        "label": "Theorems 16, 18, 19"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "The Veronese results require a positively graded finitely generated algebra with generator degrees coprime to the chosen positive integer, and a graded module with finite Bass numbers. The trace project is in characteristic two, with generic symmetric matrices of size at least three.",
+        "pdf_pages": [
+          3,
+          66,
+          67,
+          101
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Injective decomposition, graded Matlis duality, finiteness theorems of Lyubeznik/Huneke–Sharp, and Jeffries–Singh obstruction results are recalled or used as dependencies.",
+        "pdf_pages": [
+          16,
+          57,
+          90,
+          100,
+          101
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Explicit differential-operator and determinant calculations occur inside conventional algebraic proofs. They are not evidence of proof-assistant verification.",
+        "pdf_pages": [
+          106,
+          133,
+          134
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The Smith–Van den Bergh simplicity conjecture is discussed as background. A lifting question is also discussed together with known negative results; it must not be presented simply as an unanswered question.",
+        "pdf_pages": [
+          99,
+          100
+        ],
+        "label": ""
+      },
+      {
+        "text": "Question 1 about Veronese Bass numbers is answered under the dissertation’s hypotheses by Theorems 10–12, rather than left open.",
+        "pdf_pages": [
+          66,
+          67,
+          74
+        ],
+        "label": "Question 1"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Theorem 16 uses p in its statement while the immediately preceding text specifies p = 2. The review preserves that characteristic-two scope; an all-primes reading would overstate the contribution.",
+        "pdf_pages": [
+          100,
+          101
+        ],
+        "label": ""
+      },
+      {
+        "text": "The Bass-number formula excludes the homogeneous maximal ideal; finiteness is proved there without the same displayed formula.",
+        "pdf_pages": [
+          67,
+          74
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: a small Veronese grading example or a characteristic-two determinant identity, keeping the p = 2 parameter explicit.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2026-Mu": {
+    "summary": "Develops pressure elimination and operator representations for coupled fluid–elasticity PDEs on bounded Lipschitz geometries, with analytical well-posedness and finite-element applications.",
+    "definitions": [
+      {
+        "text": "The model specifies fluid/solid domains, transmission conditions, an energy Hilbert space, unbounded generators and their domains, and a locally strong solution class.",
+        "pdf_pages": [
+          16,
+          17,
+          18,
+          32,
+          33,
+          34,
+          35,
+          103,
+          104
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The linear Stokes–Lamé generator produces a contraction C0 semigroup in the stated energy space on bounded Lipschitz domain pairs. Dissipativity and resolvent maximality drive the proof.",
+        "pdf_pages": [
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43
+        ],
+        "label": "Theorem 3; §2.4"
+      },
+      {
+        "text": "The nonlinear resolvent system is solvable as stated; truncated systems admit nonlinear semigroups. For the untruncated system, local strong existence, uniqueness, and continuous dependence are proved in the specified solution class.",
+        "pdf_pages": [
+          75,
+          76,
+          82,
+          83,
+          104,
+          105,
+          106,
+          112,
+          113,
+          117,
+          118
+        ],
+        "label": "Theorems 9, 11, 15, 17, 22, 24"
+      },
+      {
+        "text": "Chapter 4 establishes finite-element error/convergence analysis using the mixed formulation and a discrete inf-sup condition.",
+        "pdf_pages": [
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133
+        ],
+        "label": "Chapter 4"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Bounded Lipschitz geometry does not remove the domain/interface hypotheses, constitutive parameters, function-space conditions, or prescribed boundary conditions. Local nonlinear strong solutions require data in the generator domain. FEM bounds require the specified meshes, spaces, and stability conditions.",
+        "pdf_pages": [
+          16,
+          17,
+          18,
+          36,
+          104,
+          129
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "de Rham pressure recovery, Lumer–Phillips, Babuška–Brezzi, and nonlinear variational/semigroup theorems are imported analytic tools.",
+        "pdf_pages": [
+          27,
+          47,
+          82,
+          106
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Chapters 5–6 implement numerical experiments. The introduction explicitly separates those experiments from the justification of the analytical results.",
+        "pdf_pages": [
+          14
+        ],
+        "label": "Introduction; Chapters 5–6"
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The introduction presents global well-posedness of the full untruncated nonlinear system in general geometry as a larger unresolved goal, including the 2D and small-data 3D directions.",
+        "pdf_pages": [
+          14,
+          15
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Global well-posedness for a truncated equation and local well-posedness for the full equation are different claims. Neither establishes unrestricted global Navier–Stokes/fluid–structure regularity.",
+        "pdf_pages": [
+          13,
+          14,
+          15,
+          104
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: an abstract contraction-semigroup energy estimate under explicit hypotheses; full pressure elimination requires a large functional-analysis library.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Heitzman": {
+    "summary": "Analyzes integral nonlocal derivatives, constructs antiderivatives from discrete approximations, and proves maximum-principle/kernel results for specified weights.",
+    "definitions": [
+      {
+        "text": "D_k f(x) is the integral of [f(x) − f(z)]k(x,z). The weight function is distinguished from the operator’s nullspace. Piecewise-vanishing oscillation and weak nonlocal derivatives supply solution frameworks.",
+        "pdf_pages": [
+          6,
+          8,
+          9,
+          89,
+          90
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The antiderivative results construct solutions to D_k f = g through compactness/convergence of approximations, with uniqueness and almost-uniform/Lp convergence in the stated settings.",
+        "pdf_pages": [
+          8,
+          49,
+          50,
+          51,
+          52
+        ],
+        "label": "Chapter 2; Theorem 15"
+      },
+      {
+        "text": "A singular-weight result gives a weak antiderivative for the one-sided 1/(t−s) weight when the forcing is Hölder continuous and vanishes at the initial point; weak derivatives are unique almost everywhere under their hypotheses.",
+        "pdf_pages": [
+          89,
+          90,
+          91
+        ],
+        "label": "Theorems 24–25"
+      },
+      {
+        "text": "The maximum-principle arguments constrain subsolutions and nullspaces using positivity, propagation/fattening, and integrability conditions.",
+        "pdf_pages": [
+          110,
+          111
+        ],
+        "label": "Chapter 3; Theorem 35 and discussion"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Results have different hypotheses: nonnegative/one-sided weights, positive and finite weight integrals, regularity/PVO assumptions, bounds by an auxiliary function, and normalization at zero. Singular weights require a separate weak formulation. Maximum principles use further connectivity/propagation and measure assumptions.",
+        "pdf_pages": [
+          16,
+          17,
+          51,
+          89,
+          90,
+          110,
+          111
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "The work builds on compactness ideas related to Arzelà–Ascoli, maximum principles, and previous nonlocal Poincaré/analysis results; these inputs are not additional new theorems merely because they appear in exposition.",
+        "pdf_pages": [
+          8,
+          9
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "The discrete approximations are part of an existence/convergence proof. An approximation algorithm is not, by itself, a machine-checked proof.",
+        "pdf_pages": [
+          8,
+          51,
+          65,
+          66
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "No dedicated unresolved-conjecture section was identified. The dissertation develops several solution regimes; conditions not covered by those theorems should be recorded as outside scope rather than declared open problems.",
+        "pdf_pages": [
+          5,
+          6,
+          9,
+          111
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "“Kernel” can refer to an integral weight or an operator nullspace; the author deliberately calls the former a weight function. A uniqueness theorem cannot be detached from its initial normalization or solution class.",
+        "pdf_pages": [
+          6,
+          50,
+          51
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: prove that constant functions lie in the nullspace when the defining integral exists, followed by a finite weighted-graph maximum principle.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Barrett": {
+    "summary": "Seeks a toric analogue of Zariski–Nagata: describing symbolic powers by vanishing-order conditions in Cox rings, with criteria for smooth toric surfaces.",
+    "definitions": [
+      {
+        "text": "Symbolic powers, point ideals, smooth fans, toric varieties, Cox rings and the generic-point ideal I(1) are the precise objects.",
+        "pdf_pages": [
+          19,
+          20,
+          21,
+          35,
+          36,
+          37,
+          40
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The Generic Point Criterion reduces the toric symbolic-power equality for all subvarieties of a smooth toric surface to equality of ordinary and symbolic powers of its generic-point ideal.",
+        "pdf_pages": [
+          51,
+          52
+        ],
+        "label": "Theorem 5.2.5"
+      },
+      {
+        "text": "The Quadrant Criterion supplies sufficient smoothness conditions; a corollary establishes Toric Zariski–Nagata for smooth complete toric surfaces with at most five rays.",
+        "pdf_pages": [
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ],
+        "label": "Theorem 6.0.2; Corollary 6.0.7"
+      },
+      {
+        "text": "Normality of the relevant generic-point quotient is a sufficient condition for the symbolic-power equality in the stated smooth complete surface setting.",
+        "pdf_pages": [
+          61
+        ],
+        "label": "Theorem 6.0.10"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "The setting uses the specified complex toric/Cox-ring construction, smoothness, and, where required, completeness. Fan/ray constraints and normality are substantive hypotheses, not conclusions automatically true for every toric variety.",
+        "pdf_pages": [
+          35,
+          36,
+          37,
+          51,
+          54,
+          61
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Classical affine/projective Zariski–Nagata, fan classification, and results on normal toric rings/strong F-regular type are imported dependencies.",
+        "pdf_pages": [
+          21,
+          27,
+          35,
+          57,
+          61
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "The final examples include Macaulay2-style calculations for particular fans/ideals. These illustrate cases; the general results have conventional proofs, not proof-assistant certificates.",
+        "pdf_pages": [
+          62,
+          63,
+          64
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The closing discussion leaves universality across toric surfaces unresolved, and suggests further normality criteria, higher-dimensional analogues, and behavior under star subdivision.",
+        "pdf_pages": [
+          64
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "The title is broader than the strongest unconditional family proved: at-most-five-ray complete surfaces and other surfaces meeting sufficient criteria. Do not infer a theorem for every smooth toric surface.",
+        "pdf_pages": [
+          57,
+          61,
+          64
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: a low-dimensional fan and explicit generic-point ideal example before any general symbolic-power theorem.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Morris": {
+    "summary": "Analyzes combinatorial causes of failure in graph-based quantum LDPC decoding and the effect of redundant checks in CSS-code constructions.",
+    "definitions": [
+      {
+        "text": "CSS/stabilizer codes, Tanner graphs, absorbing/trapping/failure-inducing sets and Gallager-style syndrome decoding are mathematical and algorithmic definitions.",
+        "pdf_pages": [
+          3,
+          33,
+          44,
+          45,
+          54,
+          73
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "Absorbing sets with odd-degree checks induce failure for the decoder being analyzed. All-even-check cases require an additional rowspace/stabilizer distinction; acyclic and cyclic structures give further trapping results.",
+        "pdf_pages": [
+          44,
+          45,
+          46,
+          48,
+          50
+        ],
+        "label": "Theorems 3.2.1–3.2.2, 3.2.6–3.2.7"
+      },
+      {
+        "text": "Symmetric stabilizers are absorbing sets, and several partition/path/tree configurations yield failure-inducing sets under explicit neighborhood conditions.",
+        "pdf_pages": [
+          54,
+          56,
+          58,
+          60,
+          62,
+          64,
+          65
+        ],
+        "label": "Theorems 4.1.2, 4.1.6 and §4.2"
+      },
+      {
+        "text": "For the specified maximally redundant check construction, the decoder returns a syndrome-matching error pattern within two iterations. Syndrome agreement is not necessarily recovery of the actual error or logical state.",
+        "pdf_pages": [
+          73,
+          74,
+          79,
+          80
+        ],
+        "label": "Theorems 5.0.1 and 5.1.4"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Failure results depend on a particular update rule, initialization, graph structure, error pattern, and, in the quantum setting, rowspace/stabilizer equivalence. A statement about this decoder is not universal over quantum decoding algorithms.",
+        "pdf_pages": [
+          44,
+          45,
+          56,
+          58,
+          73,
+          79
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Classical LDPC and quantum stabilizer/CSS constructions are prior theory. The hypergraph-product theorem in the background chapter is explicitly cited.",
+        "pdf_pages": [
+          3,
+          33
+        ],
+        "label": "Theorem 2.2.11"
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Hamming-derived CSS experiments support improved decoding in the tested constructions; performance plots do not prove improved error correction for every code/noise model.",
+        "pdf_pages": [
+          3,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The conclusion identifies failure-inducing sets outside the absorbing-set class and relaxation of the strong graphical/two-iteration convergence condition as further work.",
+        "pdf_pages": [
+          85
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "“Decodes within two iterations” must be read alongside the paper’s distinction between matched syndrome and correct estimated error. This distinction is explicit in Theorem 5.0.1.",
+        "pdf_pages": [
+          73,
+          79
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize a finite Tanner graph, the exact update rule, and one absorbing-set failure theorem.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Zamir": {
+    "summary": "Studies Hilbert functions and interpolation by general simple/double points in weighted projective spaces, proving weighted analogues and exception results.",
+    "definitions": [
+      {
+        "text": "Weighted projective spaces, general points, symbolic powers for multiple points, Hilbert functions, the AH property, and secant varieties organize the problem.",
+        "pdf_pages": [
+          10,
+          36,
+          37,
+          38,
+          46,
+          87
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "General simple points impose the expected number of conditions in every degree over an infinite field.",
+        "pdf_pages": [
+          46,
+          47,
+          48
+        ],
+        "label": "Theorem 5.1"
+      },
+      {
+        "text": "General double points in P(1,2,3) have expected Hilbert function in every degree, with no exceptions, under the stated characteristic exclusions. A weighted Terracini induction is a key ingredient.",
+        "pdf_pages": [
+          58,
+          59,
+          60,
+          61,
+          62
+        ],
+        "label": "Theorems 7.1 and 7.4"
+      },
+      {
+        "text": "For P(1,b,c), a sufficiently high degree gives expected double-point interpolation; the stated bound is d ≥ 10c, with a stronger alternative under an additional numerical condition. The thesis also characterizes P(1,2,3) as the exception-free plane in its family.",
+        "pdf_pages": [
+          89,
+          90,
+          91,
+          92,
+          93,
+          94
+        ],
+        "label": "Theorems 8.16 and 8.20"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "“General” refers to the algebraic-geometric parameter-space condition, not an arbitrary chosen point set. Weights and field conditions matter: Theorem 5.1 assumes an infinite field and Theorem 7.1 excludes characteristics 2, 3, and 5. Later statements inherit their chapter setup.",
+        "pdf_pages": [
+          10,
+          46,
+          58,
+          60,
+          89
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "The classical Alexander–Hirschowitz theorem and Terracini/secant-variety methods are prior results, generalized or adapted here.",
+        "pdf_pages": [
+          14,
+          17,
+          60,
+          79,
+          87
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Finite base cases and worked Hilbert-function examples support induction. Calculated examples are not proof-assistant verification, and generic conclusions must be justified by the parameter-space arguments.",
+        "pdf_pages": [
+          46,
+          58,
+          59,
+          60
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The final chapter lists explicit questions about generators of general-point ideals in dimension at least three, boundedness of the defect D(X,d), sharper/extended weighted interpolation statements, and associated Veronese/secant geometry.",
+        "pdf_pages": [
+          95,
+          96
+        ],
+        "label": "Chapter 9"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "The no-exceptions theorem is not asserted for all weighted planes; much of the dissertation analyzes exceptions and high-degree thresholds.",
+        "pdf_pages": [
+          58,
+          89,
+          93,
+          95
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: compute and prove a small weighted monomial-count/Hilbert-function base case with the characteristic parameter explicit.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Chanda": {
+    "summary": "Develops hash/sketch-based and Gaussian-process streaming predictors. It combines Bayesian derivations, conditional asymptotic results, and empirical comparisons for difficult prediction settings.",
+    "definitions": [
+      {
+        "text": "Hash-based predictors, estimated empirical distribution functions, Gaussian-process priors with random bias, Shtarkov predictors and cumulative absolute loss are precisely formulated methods/criteria.",
+        "pdf_pages": [
+          3,
+          28,
+          46,
+          68,
+          70,
+          73,
+          82
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "Posterior predictive Student-t distributions are derived for two specified Gaussian-process/random-bias setups.",
+        "pdf_pages": [
+          28,
+          29,
+          30,
+          31,
+          46
+        ],
+        "label": "Theorems 1–2"
+      },
+      {
+        "text": "The sketch chapter presents collision/count bounds and empirical-distribution approximation/convergence results. Theorem 6 explicitly assumes IID observations and an appropriate growth regime for sketch parameters.",
+        "pdf_pages": [
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ],
+        "label": "Theorems 3–6"
+      },
+      {
+        "text": "The Shtarkov comparison includes asymptotic statements under regularity hypotheses such as Fisher-information control and uniform limit assumptions; those hypotheses are stated rather than established for every data stream.",
+        "pdf_pages": [
+          85,
+          86,
+          87
+        ],
+        "label": "Theorems 7–8"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Bayesian posterior formulas are conditional on the adopted likelihood/prior and covariance choices. Consistency uses IID sampling and specified sketch growth. M-open motivation does not eliminate those assumptions from the theorems.",
+        "pdf_pages": [
+          3,
+          28,
+          46,
+          73,
+          85,
+          86
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Count-Min sketch bounds, Glivenko–Cantelli and prior Shtarkov/Bayesian theory are inputs or adapted results.",
+        "pdf_pages": [
+          68,
+          69,
+          73,
+          85
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Reported predictive rankings are comparisons on chosen data under cumulative absolute error and sensitivity experiments. They are not a universal optimality theorem for model-free or nonstationary streams.",
+        "pdf_pages": [
+          3,
+          146,
+          147,
+          148
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The thesis proposes turnstile-stream extensions, multidimensional prediction, broader empirical data classes, and possible recommender-system connections. It also identifies conceptual uncertainty about typical M-open data and bias–variance reasoning in that setting.",
+        "pdf_pages": [
+          16,
+          69,
+          138,
+          149,
+          150
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "The M-open discussion and IID consistency theorem have different scopes; do not advertise the latter as a theorem about arbitrary M-open streams. “Formalized” in the regret discussion means mathematically defined, not machine checked.",
+        "pdf_pages": [
+          3,
+          73,
+          82
+        ],
+        "label": ""
+      },
+      {
+        "text": "The displayed probability inequalities in Theorems 3–4 warrant checking against their proofs before direct transcription into a formal system; this review does not certify their exact typography.",
+        "pdf_pages": [
+          68,
+          69
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: a finite Count-Min collision-probability bound, then a separately scoped IID convergence statement.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Grantham": {
+    "summary": "Presents Iteratively Reweighted Fused Lasso (IRFL) as a flexible changepoint method, with optimization formulations, classical dynamic-programming proofs, derivations, and empirical evidence.",
+    "definitions": [
+      {
+        "text": "Segment cost functions, penalized changepoint objectives, generalized/fused lasso, adaptive weights, BIC selection and a recovery-distance metric define the framework.",
+        "pdf_pages": [
+          43,
+          44,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The background algorithm chapter proves the optimal-partition recursion, the PELT pruning implication under a cost inequality, and CPOP/segment-neighborhood recursions. These support the described classical algorithms.",
+        "pdf_pages": [
+          44,
+          45,
+          46,
+          47,
+          49,
+          50,
+          51,
+          52
+        ],
+        "label": "Propositions 1–4"
+      },
+      {
+        "text": "The new method is specified by weighted generalized-lasso subproblems, BIC-based selection, and an update/stopping rule. Appendix A supplies further optimization/criterion derivations; a method definition is not itself a convergence theorem.",
+        "pdf_pages": [
+          77,
+          78,
+          79,
+          80,
+          81,
+          211,
+          212
+        ],
+        "label": "Algorithm 1; §4.3; Appendix A.6"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "A design matrix, contrast matrix, stabilizing epsilon, tuning/selection criterion, and stopping tolerance are chosen. Segment models and simulation scenarios impose their own noise, trend, seasonality and autocorrelation structure; PELT correctness uses its stated cost inequality.",
+        "pdf_pages": [
+          44,
+          46,
+          76,
+          77,
+          79,
+          154
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Optimal partitioning, PELT, CPOP, generalized lasso and adaptive/reweighted lasso are prior methods; the cited pruning/recursion results should not be credited as novel IRFL guarantees.",
+        "pdf_pages": [
+          43,
+          45,
+          46,
+          47,
+          49,
+          81
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "IRFL’s recovery/performance claims are supported principally by simulation scenarios and applications to CO2 data and images. They are empirical findings under those designs.",
+        "pdf_pages": [
+          76,
+          150,
+          151,
+          152,
+          153,
+          154
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "No numbered new-method open-conjecture list was identified. A proof of general IRFL iterate convergence, exact global ℓ0 recovery, or universal support consistency was not identified; these are review-identified proof obligations, not claimed author-stated open problems.",
+        "pdf_pages": [
+          79,
+          80,
+          81,
+          151
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Equation (4.5) is presented as an approximation/heuristic after a stationarity argument. It is not a demonstrated global minimizer guarantee. Classical exact dynamic-programming guarantees should not be transferred to IRFL.",
+        "pdf_pages": [
+          43,
+          75,
+          76,
+          80,
+          81
+        ],
+        "label": ""
+      },
+      {
+        "text": "Alignment of estimated changepoints with historical events is an application-level interpretation, not a causal mathematical proof.",
+        "pdf_pages": [
+          3,
+          152,
+          153,
+          154
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize Proposition 1’s finite optimal-partition recurrence before attempting guarantees for the new iterative method.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2025-Hasanthika": {
+    "summary": "Builds hierarchical multivariate mixture-regression methods for Gaussian and count responses with known group labels and informative priors, using algebraic derivations and empirical validation.",
+    "definitions": [
+      {
+        "text": "Likelihoods, latent/indicator variables, known group membership, regression coefficients, hierarchical priors and Gaussian/Poisson-overdispersion response models are explicitly specified.",
+        "pdf_pages": [
+          22,
+          23,
+          24,
+          25,
+          26,
+          107,
+          108,
+          109,
+          188,
+          189,
+          263,
+          264
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The text derives likelihood/conditional-expectation and parameter-update formulas for successive mixture models. These are conventional conditional algebraic derivations, not theorem-labeled distribution-free guarantees.",
+        "pdf_pages": [
+          24,
+          25,
+          26,
+          114,
+          115,
+          116,
+          117,
+          118
+        ],
+        "label": "§2.5.2 and earlier model derivations"
+      },
+      {
+        "text": "Method-of-moments and robust-regression derivations, plus expanded derivations for the proposed Gaussian and count models, are placed in Appendices A–E. The summary explains the hybrid Bayesian-EM and moment/Newton estimation steps.",
+        "pdf_pages": [
+          324,
+          325,
+          328,
+          340,
+          353,
+          356,
+          363,
+          405,
+          412
+        ],
+        "label": "Appendices A–E; Chapter 4"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Known group information, a finite mixture/model structure, the chosen conditional Gaussian or overdispersed-count laws, design matrices and hierarchical priors are modeling assumptions. Distributional and independence/factorization assumptions belong to each likelihood specification.",
+        "pdf_pages": [
+          22,
+          24,
+          107,
+          108,
+          109,
+          188,
+          189,
+          263,
+          264
+        ],
+        "label": ""
+      },
+      {
+        "text": "Moment-based approximation and numerical root-finding are estimation choices; convergence or calibration across all possible data distributions is not implied by writing down the update equations.",
+        "pdf_pages": [
+          324,
+          325
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "EM, Bayes’ rule, generalized mixed-model methods and empirical-Bayes variance moderation draw on prior literature; limma/edgeR/DESeq2 are benchmark comparators.",
+        "pdf_pages": [
+          23,
+          26,
+          324
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Simulations and an application evaluate sensitivity, ROC behavior and false-discovery rates. Apparent FDR control in selected settings is empirical, not a proven universal frequentist FDR guarantee.",
+        "pdf_pages": [
+          165,
+          166,
+          174,
+          175,
+          176,
+          184,
+          185,
+          186,
+          311,
+          312,
+          319,
+          320,
+          321,
+          322
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The count-model discussion identifies anomalous n = 100 two-group results requiring diagnosis, further real-data validation, and extensions to time-course, single-cell and multi-omic applications.",
+        "pdf_pages": [
+          322,
+          323
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "The known group-label variable and inferred discriminating-feature indicators have different roles; do not call all latent quantities observed. High sensitivity and low FDR are different goals, and the author explicitly reports trade-offs.",
+        "pdf_pages": [
+          188,
+          322
+        ],
+        "label": ""
+      },
+      {
+        "text": "No theorem/proof-assistant inventory can be inferred from the absence of numbered theorem headings: this dissertation contains extensive mathematical derivations and proof appendices.",
+        "pdf_pages": [
+          8,
+          9,
+          324
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize one conjugate posterior or one EM conditional-expectation identity under a fully specified finite model; keep numerical/empirical claims separate.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2024-Ganger": {
+    "summary": "Connects finite-projective-space spreads and their transversals with associated groupoids/groups and geproci point sets, then relates finite-characteristic constructions to characteristic zero.",
+    "definitions": [
+      {
+        "text": "Projective spaces, spreads/maximal partial spreads, transversals, groupoid actions and geproci sets are the structural definitions. Geproci means that a general projection is a complete intersection.",
+        "pdf_pages": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The canonical spread in projective three-space has exactly two transversals for each finite base field, proved by separate characteristic-two and odd-characteristic arguments.",
+        "pdf_pages": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "label": "Theorem 2.2"
+      },
+      {
+        "text": "For the classified full/maximal partial spreads over F3, the associated groups are identified according to the existence of transversals and the type of spread.",
+        "pdf_pages": [
+          31,
+          32,
+          33
+        ],
+        "label": "Theorems 3.4 and 4.2"
+      },
+      {
+        "text": "The characteristic-zero orbit construction is shown projectively equivalent to the previously known standard geproci construction, linking the two perspectives.",
+        "pdf_pages": [
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49
+        ],
+        "label": "Theorem 7.3"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Finite-field extension constructions, the canonical spread, and the specific F3 classification hypotheses must be preserved. The characteristic-zero orbit argument uses selected roots of unity and prescribed fibers; it is not a theorem about every spread.",
+        "pdf_pages": [
+          14,
+          31,
+          33,
+          43,
+          46
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Projective geometry, finite-field theory, prior classifications of spreads, and the earlier standard geproci construction/root-system examples are dependencies or comparison targets.",
+        "pdf_pages": [
+          7,
+          31,
+          33,
+          46,
+          49
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Appendix A supplies Python code for explicit groupoid/group computations, including higher-dimensional examples. Exact finite computations and code are useful evidence but are not a kernel-checked formalization of the whole theory.",
+        "pdf_pages": [
+          42,
+          50,
+          51,
+          52
+        ],
+        "label": "Appendix A"
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Remark 6.4 asks whether the identified group relationship for the canonical spread extends to higher dimensions, motivated by a computed order-seven example.",
+        "pdf_pages": [
+          42
+        ],
+        "label": "Remark 6.4"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Do not generalize the two-transversal statement from the canonical spread to all spreads; the dissertation explicitly studies spreads without transversals as well.",
+        "pdf_pages": [
+          2,
+          14,
+          31
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: verify one finite-field spread/group action by exhaustive finite reasoning, then prove the small characteristic case.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2024-Lieberman": {
+    "summary": "Develops sandwich Bernstein–Sato functional equations and uses them, together with linear simplicity, to prove dimension/finiteness consequences for differential-operator rings.",
+    "definitions": [
+      {
+        "text": "Differential-operator rings, filtered-module dimension, Bernstein’s inequality, linear simplicity and sandwich Bernstein–Sato polynomials are explicitly defined. Sandwich equations use composition on both sides of multiplication by a power of f.",
+        "pdf_pages": [
+          49,
+          51,
+          56,
+          57,
+          77,
+          78,
+          79,
+          80
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "A finite-dimensional linearly simple filtered algebra satisfies the stated Bernstein-type lower bound on dimension of a nonzero filtered module.",
+        "pdf_pages": [
+          57,
+          58
+        ],
+        "label": "Theorem 4.7"
+      },
+      {
+        "text": "Veronese differential-operator rings have a quantified linear-simplicity result for the specified filtration.",
+        "pdf_pages": [
+          69,
+          70,
+          71,
+          72
+        ],
+        "label": "Theorems 4.17 and 4.19"
+      },
+      {
+        "text": "A suitable sandwich polynomial with no nonnegative integer roots implies linear simplicity under the singular-locus/localization hypotheses. The Segre-ring application proves Bernstein’s inequality for the stated filtered modules and existence of ordinary Bernstein–Sato polynomials for all its elements.",
+        "pdf_pages": [
+          99,
+          100,
+          101,
+          108,
+          109
+        ],
+        "label": "Theorems 6.17 and 6.24"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "The sandwich chapter works over a characteristic-zero field. Finiteness, grading, nonzero-module, filtration-compatibility, regular-element and localization hypotheses are essential where invoked.",
+        "pdf_pages": [
+          57,
+          77,
+          99,
+          108,
+          109
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Classical Weyl-algebra/Bernstein results, Kashiwara’s polynomial theorem and the cited links between linear simplicity and Bernstein inequalities form the background. Cited numbered results may be reproduced with proof and still be prior work.",
+        "pdf_pages": [
+          20,
+          49,
+          75,
+          76,
+          99
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Explicit differential-operator functional equations and divisibility/root calculations are conventional symbolic proofs. This review did not independently recompute or formally verify them.",
+        "pdf_pages": [
+          77,
+          78,
+          79,
+          108,
+          109
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Questions 3.27/4.5 ask about the general scope of Bernstein’s inequality; Question 6.2 asks for sandwich functional equations. Later sections establish sufficient criteria and families, rather than an unrestricted affirmative answer for every algebra and element.",
+        "pdf_pages": [
+          51,
+          56,
+          78,
+          99,
+          108,
+          109
+        ],
+        "label": ""
+      },
+      {
+        "text": "The Segre example bounds the possible sandwich polynomial without selecting between all displayed multiplicity alternatives; the dimension conclusion does not require resolving that ambiguity.",
+        "pdf_pages": [
+          108,
+          109
+        ],
+        "label": "Remark 6.23"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Ordinary and sandwich Bernstein–Sato polynomials are distinct invariants. Existence of one does not automatically establish the precise other polynomial, and a conditional theorem cannot be applied before its root/localization hypotheses are checked.",
+        "pdf_pages": [
+          77,
+          78,
+          99,
+          108
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize the one-variable Weyl commutator and the sandwich equation for f = x before the general filtration argument.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2024-Enlow": {
+    "summary": "Studies modified (“calmed”) dissipative PDEs, proving regularity/well-posedness and conditional convergence back to original fluid, flame-front and MHD models.",
+    "definitions": [
+      {
+        "text": "Calming functions have quantified Lipschitz/boundedness/approximation properties, with an additional structural condition for some energy results. Weak and strong solution spaces are explicitly defined.",
+        "pdf_pages": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The calmed Navier–Stokes systems admit the specified global solution/regularity results. Convergence to an original Navier–Stokes solution is proved on an interval where that sufficiently regular original solution exists.",
+        "pdf_pages": [
+          15,
+          16,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49
+        ],
+        "label": "Theorems 1.2.3–1.2.7 and Chapter 3"
+      },
+      {
+        "text": "For the rotational calmed system, an energy identity and global attractor follow under additional structural and forcing assumptions.",
+        "pdf_pages": [
+          17,
+          18,
+          62,
+          63,
+          64,
+          65
+        ],
+        "label": "Theorems 1.2.8 and 1.2.10"
+      },
+      {
+        "text": "Parallel global calmed-system results and short-time/conditional convergence results are obtained for the 2D MHD–Boussinesq model with calmed Ohmic heating and the calmed Kuramoto–Sivashinsky systems.",
+        "pdf_pages": [
+          20,
+          21,
+          23,
+          24
+        ],
+        "label": "Theorems 1.2.18–1.2.28"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Theorems distinguish initial-data spaces, forcing regularity, domain/boundary conditions, fixed calming parameter, and which of the calming-function conditions apply. Convergence assumes an original solution with stated regularity on the comparison interval.",
+        "pdf_pages": [
+          15,
+          16,
+          17,
+          18,
+          20,
+          21,
+          23,
+          24
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Galerkin compactness, Sobolev/energy estimates and dynamical-systems attractor methods are imported analytical machinery. The original PDE models and known obstacles are background, not resolved merely by modifying a nonlinearity.",
+        "pdf_pages": [
+          42,
+          62,
+          63,
+          84,
+          85,
+          112
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Computational investigations compare calmed/original dynamics and approximation quality. They supplement theorems but do not extend a local comparison to an unrestricted global theorem.",
+        "pdf_pages": [
+          3,
+          4,
+          41,
+          66
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The text leaves uniqueness of weak solutions/global-attractor questions for calmed velocity–vorticity systems open, and discusses unresolved original-equation global well-posedness and further computational comparisons.",
+        "pdf_pages": [
+          41,
+          62,
+          66,
+          83,
+          84,
+          85,
+          112
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Global well-posedness of a modified equation does not solve global well-posedness of the original equation. Statements about regular original solutions remain conditional.",
+        "pdf_pages": [
+          16,
+          21,
+          23,
+          24,
+          84
+        ],
+        "label": ""
+      },
+      {
+        "text": "Theorem 1.2.5’s uniqueness wording and later discussion of weak uniqueness need careful class-by-class reconciliation; this review does not treat the thesis as proving uniqueness for every weak-solution notion mentioned.",
+        "pdf_pages": [
+          15,
+          42,
+          66,
+          83
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: a calming-function inequality or an abstract energy estimate with assumptions explicit; avoid starting with full 3D PDE regularity.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2024-Al": {
+    "summary": "Analyzes how asteroidal sets constrain dominating pairs/targets in graphs, with structural and recognition-algorithm consequences.",
+    "definitions": [
+      {
+        "text": "Asteroidal sets/number, dominating pairs and targets, hereditary dominating-pair (HDP) graphs, strict dominating pairs, polar targets and golden triples are defined structural objects.",
+        "pdf_pages": [
+          14,
+          15,
+          16,
+          17,
+          24,
+          47,
+          53,
+          54,
+          65,
+          66
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "A strict dominating-pair graph must satisfy the stated diameter/asteroidal-number alternative; the converse is explicitly not asserted. Further theorems constrain how asteroidal sets meet dominating paths.",
+        "pdf_pages": [
+          29,
+          35,
+          37
+        ],
+        "label": "Theorems 16, 26, 28"
+      },
+      {
+        "text": "Chordal HDP graphs are characterized by the specified absence of asteroidal triples with 3-spread, giving the stated recognition-time bound.",
+        "pdf_pages": [
+          38,
+          39
+        ],
+        "label": "Theorem 29"
+      },
+      {
+        "text": "Additional results give a diameter bound under partition conditions on an asteroidal set, and show that a graph with dominating-target number three and a golden triple has a polar target of size three.",
+        "pdf_pages": [
+          43,
+          44,
+          65,
+          66
+        ],
+        "label": "Theorems 33, 56, 57"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "HDP/chordality, diameter constraints, prescribed dominating pairs/targets, and separation/spread/golden-triple conditions vary by theorem. The result for dominating-target number three is not the arbitrary-k statement.",
+        "pdf_pages": [
+          29,
+          39,
+          43,
+          65,
+          66,
+          67
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Earlier forbidden-subgraph characterizations and asteroidal-triple enumeration algorithms are dependencies in the recognition analysis, not newly proved from scratch by the runtime corollary.",
+        "pdf_pages": [
+          38,
+          39
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Graph drawings witness examples/counterexamples; the runtime guarantee is argued from structural characterization and known enumeration costs. No proof-assistant artifact was identified.",
+        "pdf_pages": [
+          29,
+          39,
+          43
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Conjecture 57.1 proposes the polar-target generalization for arbitrary k ≥ 2 under a distant asteroidal dominating-target hypothesis.",
+        "pdf_pages": [
+          67
+        ],
+        "label": "Conjecture 57.1"
+      },
+      {
+        "text": "The conclusion identifies polynomial-time recognition for general HDP graphs and further polar-target existence criteria as unresolved directions.",
+        "pdf_pages": [
+          71
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "A recognition theorem for chordal HDP graphs does not establish polynomial recognition for all HDP graphs. The exponent stated in the dissertation depends on its cited algorithmic ingredients.",
+        "pdf_pages": [
+          39,
+          71
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: encode finite graphs and prove a small dominating-pair/asteroidal-set lemma before the more involved polar-target construction.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2023-Wright": {
+    "summary": "Uses Alexander polynomials and linking-form obstructions to constrain which knots can be complete Alexander neighbors and to obstruct unknotting number one.",
+    "definitions": [
+      {
+        "text": "Gordian distance is crossing-change distance. Complete Alexander neighbors are defined by realizing every Alexander polynomial among distance-one neighbors. Knot determinants and algebraic versus ordinary unknotting numbers must be distinguished.",
+        "pdf_pages": [
+          8,
+          9,
+          24,
+          25,
+          26
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "A knot of unknotting number one with determinant greater than one, composite or congruent to one modulo four, is not a complete Alexander neighbor.",
+        "pdf_pages": [
+          8,
+          27,
+          28,
+          29,
+          30
+        ],
+        "label": "Theorem 1.1"
+      },
+      {
+        "text": "The thesis characterizes the breadth-two Alexander polynomials in the cited Kawauchi family via a nonsquare arithmetic condition, and derives exclusions from complete Alexander neighborhood.",
+        "pdf_pages": [
+          9,
+          31,
+          32,
+          33,
+          34
+        ],
+        "label": "Theorem 1.2; Corollary 1.3"
+      },
+      {
+        "text": "Determinant/linking-form obstructions rule out unknotting number one for five explicitly named knots.",
+        "pdf_pages": [
+          9,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "label": "Theorem 1.4; Chapter 4"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "The hypotheses distinguish ordinary unknotting number one from algebraic unknotting number one; breadth, determinant arithmetic and normalized Alexander-polynomial conventions restrict the results.",
+        "pdf_pages": [
+          8,
+          9,
+          24,
+          37,
+          38
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Reidemeister theory, Kawauchi’s polynomial/Gordian-distance results, surgery/Alexander-matrix descriptions, and linking-form obstructions supply prior inputs.",
+        "pdf_pages": [
+          13,
+          26,
+          33,
+          35,
+          36
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Finite knot-table exclusions and arithmetic tests complement the theoretical obstructions. Reported counts and KnotInfo unknown-status statements are historical to the dissertation, not verified current database counts.",
+        "pdf_pages": [
+          9,
+          34,
+          35
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Question 3.2 asks whether a complete Alexander neighbor can have nontrivial Alexander polynomial. Conjectures 3.8–3.12 concern extending polynomial realizability from ordinary to algebraic unknotting hypotheses and stronger breadth-two exclusions.",
+        "pdf_pages": [
+          26,
+          36,
+          37,
+          38
+        ],
+        "label": ""
+      },
+      {
+        "text": "Lemmas prove implications between these conjectures. A proved implication is not a proof of either conjecture’s premise.",
+        "pdf_pages": [
+          37,
+          38,
+          39
+        ],
+        "label": "Lemmas 3.11 and 3.13"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "The broad algebraic-unknotting extensions are labeled conjectural; do not substitute them for Theorem 1.1’s ordinary unknotting hypothesis.",
+        "pdf_pages": [
+          8,
+          37,
+          38
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize one determinant/congruence obstruction as a conditional arithmetic lemma; full knot-topology formalization is a larger dependency project.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2023-DeClerk": {
+    "summary": "Relates geometric word-problem properties to autostackable structures and proves correctness/computability results for prefix-constrained Knuth–Bendix completion.",
+    "definitions": [
+      {
+        "text": "Convergent prefix-rewriting systems, synchronously regular languages, autostackability/geodesic autostackability, compatible well-founded orderings, critical pairs and fair derivations are explicitly defined.",
+        "pdf_pages": [
+          17,
+          18,
+          48,
+          49,
+          50,
+          51,
+          52,
+          55
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "A weight-nonincreasing synchronously regular convergent prefix-rewriting system yields an autostackable structure. A group/generating-set pair with the falsification-by-fellow-traveler property is geodesically autostackable.",
+        "pdf_pages": [
+          21,
+          22,
+          23,
+          24,
+          30,
+          32,
+          34,
+          35
+        ],
+        "label": "Theorems 2.3.1–2.3.3 and 2.4.2"
+      },
+      {
+        "text": "The inference rules preserve the presented equivalence relation; a finite fair derivation yields a bounded convergent prefix-rewriting system. Termination of rewriting and local confluence are proved under the defined conditions.",
+        "pdf_pages": [
+          53,
+          54,
+          55,
+          56,
+          57
+        ],
+        "label": "Theorems 3.3.5 and 3.3.7"
+      },
+      {
+        "text": "Specified bounded regular orderings ensure computability of inference steps and regularity of languages; regular-split shortlex constructions provide examples.",
+        "pdf_pages": [
+          60,
+          61,
+          62,
+          64,
+          65,
+          66,
+          67
+        ],
+        "label": "Theorems 3.4.3, 3.4.8, 3.4.9"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Finite alphabets/presentations and well-founded compatible orders matter. “Fair” includes no remaining equations at the end and a complete critical-pair treatment. Correctness of a completed derivation does not prove the completion search terminates on all inputs.",
+        "pdf_pages": [
+          48,
+          50,
+          52,
+          55,
+          60
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Regular-language closure, rewriting/confluence theory and earlier relationships among automatic/geometric structures provide dependencies.",
+        "pdf_pages": [
+          21,
+          32,
+          50,
+          57
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "A Python implementation finds an autostackable structure for a Coxeter-group example; Appendix A lists the rules. This is an implemented proof-search/completion procedure whose correctness is conventionally proved, not evidence of a Lean-style kernel certificate.",
+        "pdf_pages": [
+          71,
+          72,
+          73
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The abstract notes that FFTP groups were not known to be automatic or to admit finite convergent rewriting systems. The thesis establishes autostackability, not those stronger properties.",
+        "pdf_pages": [
+          2
+        ],
+        "label": ""
+      },
+      {
+        "text": "No dedicated additional open-conjecture list was identified. Guaranteed termination/success on every group presentation is not established by the conditional completion theorem.",
+        "pdf_pages": [
+          55,
+          71
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "“A computer can prove convergence” here refers to the completion procedure together with mathematical correctness arguments. It should not be conflated with proof-assistant formalization.",
+        "pdf_pages": [
+          10,
+          55,
+          71
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: mechanize one inference rule’s soundness, then the finite fair-derivation correctness theorem with termination hypotheses explicit.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2023-Vander-Woude": {
+    "summary": "Constructs optimally secluded cube partitions and proves lower bounds and generalizations, then applies the geometry to reproducible/randomized computation and learning.",
+    "definitions": [
+      {
+        "text": "A (k, epsilon)-secluded partition limits how many cells any specified l-infinity ball can meet. Axis alignment, unit-cube versus diameter/volume restrictions, open/closed neighborhoods, and pseudodeterministic algorithms are separate definitions.",
+        "pdf_pages": [
+          3,
+          38,
+          39,
+          40,
+          101,
+          152,
+          153,
+          173,
+          361
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "Explicit efficiently computable axis-aligned unit-cube partitions achieve k = d + 1 and epsilon = 1/(2d). The lower bound on k and the exact epsilon optimum for that cube class are proved separately.",
+        "pdf_pages": [
+          45,
+          46,
+          102,
+          123,
+          124,
+          125,
+          333,
+          334,
+          335,
+          336,
+          337,
+          338,
+          339,
+          340
+        ],
+        "label": "Theorem 4.2.18; Theorem 5.1.1; Corollary 9.8.5"
+      },
+      {
+        "text": "For broader bounded-volume partitions, the work proves k ≥ d + 1 and a logarithmic-over-dimension epsilon bound. These are weaker than exact cube-class optimality, and have different hypotheses.",
+        "pdf_pages": [
+          152,
+          153,
+          158,
+          173,
+          184,
+          190
+        ],
+        "label": "Theorems 6.2.1 and 7.1.9"
+      },
+      {
+        "text": "Further proved results include neighborhood KKM/Sperner variants, equivalences for cube partitions, efficient rounding applications, and lower bounds for pseudodeterministic coin/threshold estimation.",
+        "pdf_pages": [
+          223,
+          224,
+          230,
+          239,
+          321,
+          361,
+          370
+        ],
+        "label": "Theorems 8.0.7–8.0.8, 9.7.4, 10.3.4, 10.3.10"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Each optimum is relative to an object class and norm/normalization. General partitions require diameter/outer-measure or local-finiteness conditions as stated. Computational lower bounds depend on the algorithm and learning models, not every possible notion of reproducibility.",
+        "pdf_pages": [
+          40,
+          152,
+          153,
+          173,
+          190,
+          361,
+          365,
+          370
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Classical Lebesgue covering/KKM/Sperner results, Brunn–Minkowski, and Zaks’s theorem are prior inputs; the thesis explicitly offers alternative proofs or new quantitative variants in several places.",
+        "pdf_pages": [
+          123,
+          124,
+          145,
+          146,
+          147,
+          180,
+          317
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Finite clique computations motivate conjectures about alternative partitions; examples and efficient algorithms do not settle their asymptotic conjectures.",
+        "pdf_pages": [
+          107,
+          110,
+          115,
+          118
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Conjectures include stronger optimal epsilon bounds for arbitrary diameter-bounded cells, clique behavior/bifurcation for particular constructions, extension of cube enclosures, additional equivalences, and randomized-rounding limitations.",
+        "pdf_pages": [
+          107,
+          110,
+          216,
+          217,
+          218,
+          266,
+          320,
+          324,
+          360
+        ],
+        "label": "Conjectures 4.3.1, 4.4.1, 7.3.1–7.3.3, 9.2.13, 9.6.7, 9.7.9, 10.2.17"
+      },
+      {
+        "text": "Question 8.3.2 asks about the range of the neighborhood-color functions; improving quantitative lower/upper bounds remains a direction.",
+        "pdf_pages": [
+          248,
+          252
+        ],
+        "label": ""
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Exact epsilon optimality for axis-aligned cubes is proved, while the analogous broad diameter-bounded claim is conjectural. Theorem 10.3.4’s headline wording must be read with its precise k < d + 1 statement, not as excluding k = d + 1.",
+        "pdf_pages": [
+          102,
+          216,
+          333,
+          361
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize a low-dimensional secluded partition and its finite intersection bound; preserve open versus closed ball conventions.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2023-Martinez": {
+    "summary": "Studies algebraic parity-check structure and graph invariants of dyadic, n-adic and quasi-dyadic error-correcting codes, including graph lifts and possible quantum applications.",
+    "definitions": [
+      {
+        "text": "Dyadic/n-adic matrices, signature rows, quasi-dyadic block arrays, codes over a quotient polynomial ring, Tanner girth, stopping sets and graph lifts are defined mathematical objects.",
+        "pdf_pages": [
+          2,
+          28,
+          32,
+          35,
+          50,
+          65,
+          72,
+          79
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "Dyadic matrices form a ring identified with the stated multivariate quotient; over F2 the square is zero or identity according to signature-row parity. The analogous n-adic family for n ≥ 3 is not generally a commutative multiplication-closed ring.",
+        "pdf_pages": [
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "label": "Theorems 3.0.4, 3.1.1, 3.1.2"
+      },
+      {
+        "text": "Even-weight dyadic check matrices produce dual-containing binary codes, with further conditions giving self-duality. Other results give permanent-based minimum-distance upper bounds and quasi-n-adic distance bounds.",
+        "pdf_pages": [
+          36,
+          38,
+          40,
+          50,
+          52,
+          60,
+          61
+        ],
+        "label": "Theorems 4.0.1, 4.0.7, 5.1.3, 5.2.4–5.2.5"
+      },
+      {
+        "text": "The thesis gives cycle/girth and stopping-distance statements, and describes how a base cycle’s permutation type determines lifted cycles; the 2-regular case has a specific generator-lift equivalence.",
+        "pdf_pages": [
+          65,
+          70,
+          72,
+          78,
+          79,
+          80,
+          81,
+          82
+        ],
+        "label": "Theorems 6.1.1, 6.1.3, 6.2.1, 7.0.4, 7.0.6"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "Field characteristic, dyadic versus n-adic structure, block weights/dimensions and parity conditions are essential. The binary square/dual-containing conclusions cannot be transferred automatically to arbitrary n or arbitrary fields.",
+        "pdf_pages": [
+          31,
+          32,
+          35,
+          36,
+          40,
+          52,
+          60,
+          65
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Classical coding theory, duality, earlier quasi-cyclic permanent bounds and graph-cover/permutation theory supply prior mathematics.",
+        "pdf_pages": [
+          2,
+          50,
+          52,
+          79
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Exact matrix and graph constructions illustrate the theory. Potential quantum-code usefulness and practical representational advantages are application directions, not universal performance theorems.",
+        "pdf_pages": [
+          2,
+          36,
+          40,
+          79
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "The graph-lift chapter proposes a more precise account of the general cycle-code relationship, including projected closed walks and cut-set dual codes, as future work.",
+        "pdf_pages": [
+          79
+        ],
+        "label": ""
+      },
+      {
+        "text": "The 2-regular special-case result is proved; it must not be generalized to arbitrary graph lifts without further argument.",
+        "pdf_pages": [
+          81,
+          82
+        ],
+        "label": "Theorem 7.0.6"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Structural dual containment, distance upper bounds and decoding performance are different kinds of statements. A bound or a construction alone does not prove robust empirical decoding performance.",
+        "pdf_pages": [
+          36,
+          52,
+          60,
+          72
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: prove the finite F2 dyadic-square identity and derive dual containment; it has fewer dependencies than the infinite/analytic results elsewhere in the collection.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  },
+  "2022-Volk": {
+    "summary": "Investigates extremal subgraph counts in saturated or covered graphs, characterizes tree-saturating spiders, and maximizes independent sets for selected covering constraints.",
+    "definitions": [
+      {
+        "text": "Generalized saturation counts, star/clique/path graphs, graph covering, tree-saturating trees/spiders and counts of fixed-size independent sets define several distinct optimization problems.",
+        "pdf_pages": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          78,
+          96,
+          104,
+          106
+        ],
+        "label": ""
+      }
+    ],
+    "proved_or_derived": [
+      {
+        "text": "The thesis proves an asymptotic cherry-count result for clique-saturated graphs, exact optimization over a candidate family for stars in star-saturated graphs, and existence bounds for multipartite saturated constructions.",
+        "pdf_pages": [
+          13,
+          14,
+          23,
+          24,
+          32,
+          33,
+          36,
+          43,
+          44
+        ],
+        "label": "Theorems 3–5 and 9"
+      },
+      {
+        "text": "A spider is tree-saturating exactly in the classified types. Necessary conditions for more general tree-saturating trees are not the same as a full classification.",
+        "pdf_pages": [
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85
+        ],
+        "label": "Theorem 15; Proposition 25"
+      },
+      {
+        "text": "For path-covered and matching-covered graphs, fixed-size independent-set counts are bounded by specified extremal candidate families.",
+        "pdf_pages": [
+          104,
+          105,
+          106,
+          107,
+          108,
+          109
+        ],
+        "label": "Theorems 6–7"
+      }
+    ],
+    "assumptions": [
+      {
+        "text": "The graph is finite/simple under the dissertation’s conventions; star parameters, n thresholds, forbidden subgraph, covering type and independent-set size vary by result. An asymptotic estimate is distinct from an exact value at every n.",
+        "pdf_pages": [
+          16,
+          17,
+          18,
+          23,
+          32,
+          43,
+          104,
+          106
+        ],
+        "label": ""
+      }
+    ],
+    "imported_results": [
+      {
+        "text": "Previously known clique-saturation extremal graphs, graph-coloring/regular-subgraph tools, and independent-set extremal theorems are recalled with attributions. Results by Chakraborti–Loh, Alon and others should not all be counted as new.",
+        "pdf_pages": [
+          12,
+          22,
+          61,
+          62,
+          96,
+          99
+        ],
+        "label": ""
+      }
+    ],
+    "computational_or_empirical": [
+      {
+        "text": "Explicit graph constructions, extremal counterexamples and finite parameter calculations accompany counting proofs. No machine-checked proof artifact was identified.",
+        "pdf_pages": [
+          23,
+          32,
+          43,
+          47,
+          62
+        ],
+        "label": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "text": "Conjecture 1 proposes a threshold separating the optimal matching-covered configurations. Questions ask about exact cherry/path minimizers, optimization of construction bounds, weak-saturation variants and a full classification of tree-saturating trees.",
+        "pdf_pages": [
+          47,
+          68,
+          112,
+          113,
+          114,
+          115
+        ],
+        "label": "Conjecture 1; Questions 1–6; Chapter 5"
+      }
+    ],
+    "interpretation_notes": [
+      {
+        "text": "Theorem 15 classifies spiders, not all trees. Some asymptotic subgraph-count results and all finite-n optimization questions remain separate from that classification.",
+        "pdf_pages": [
+          78,
+          85,
+          113,
+          114
+        ],
+        "label": ""
+      },
+      {
+        "text": "Future-work questions sometimes restate a broader problem after a restricted case was answered earlier; retain their parameter restrictions when labeling them unresolved.",
+        "pdf_pages": [
+          36,
+          40,
+          41,
+          113
+        ],
+        "label": ""
+      }
+    ],
+    "suggested_formalization_target": "Reviewer suggestion: formalize the star-count identity as a sum of degree binomial coefficients, or check one finite extremal construction before the asymptotic theory.",
+    "mechanization": {
+      "status": "No proof-assistant verification identified in the reviewed PDF",
+      "scope": "PDF-only evidence search and document review; no external formalization repositories audited. Mathematical formalism, computer algebra, and algorithmic proofs are not counted as kernel-checked proofs."
+    }
+  }
+}

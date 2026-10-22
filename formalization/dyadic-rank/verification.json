@@ -1,0 +1,463 @@
+{
+  "claim_id": "L-P11-rank-converse",
+  "checked_on": "2026-10-21",
+  "primary_source": "https://arxiv.org/html/2605.01942v1",
+  "source_locator": "Definition 2.1 and Remark 3.4",
+  "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_revision": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "build_command": "lake build",
+  "build_exit_code": 0,
+  "axiom_check_command": "lake env lean Checks.lean",
+  "axiom_check_exit_code": 0,
+  "general_statement": "DyadicRank.RankSupportConjecture",
+  "general_conjecture_proved": true,
+  "checked_cases": [
+    {
+      "ell": 0,
+      "matrix_size": 1,
+      "signatures": 2,
+      "theorem": "DyadicRank.rankSupportAt_zero",
+      "vacuous": true
+    },
+    {
+      "ell": 1,
+      "matrix_size": 2,
+      "signatures": 4,
+      "theorem": "DyadicRank.rankSupportAt_one",
+      "vacuous": false
+    },
+    {
+      "ell": 2,
+      "matrix_size": 4,
+      "signatures": 16,
+      "theorem": "DyadicRank.rankSupportAt_two",
+      "vacuous": false
+    }
+  ],
+  "bounded_theorem": "DyadicRank.rankSupportAt_le_two",
+  "public_matrix_theorem": "DyadicRank.dyadic_rank_support",
+  "method": "Original bounded certificates use kernel enumeration; the complete general theorem uses symbolic dimension induction, not finite search.",
+  "declaration_axioms": {
+    "DyadicRank.mem_binaryAssignments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.kernelVectors_card": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.kernelVectors_card_of_half_rank": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.certificate_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.certificate_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_le_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_rank_support_small": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.point_add_self": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.point_add_cancel_left": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.point_add_cancel_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.card_point": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sum_translate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.supportSum_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.coefficientParity_eq_card": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.mulVec_constant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.mulVec_coordinate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.coordinate_mem_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.constant_mem_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.affine_mem_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_square_off_diagonal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_square": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.range_le_kernel_of_square_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.twice_rank_le_of_square_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.half_rank_iff_range_eq_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_square_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_square_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rank_eq_card_of_square_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_rank_of_parity_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.parity_zero_of_half_rank": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_twice_rank_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.strict_rank_iff_range_lt_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_iff_strict_deficit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_iff_kernel_obstruction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.square_mem_span_squares": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.square_mem_product_of_mem_square": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.square_mem_generator_product": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.kernelInRange_descends": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sum_split_head": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.point_cons_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.vector_add_self": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_mul_comm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadicMatrix_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.parity_sliceOne": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.parity_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.supportSum_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sliceZero_mulVec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sliceOne_mulVec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sliceZero_duplicate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sliceOne_duplicate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.slices_ext": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sliceZero_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sliceOne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.sum_slices_mulVec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.triangular_zero_row": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.duplicate_cycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.kernelInRange_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.not_kernelInRange_zero_moments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportAt_all": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.rankSupportConjecture_proved": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_strict_rank_of_zero_moments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_rank_support": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicRank.dyadic_rank_support_half": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "unchecked_cases": "No missing dimensions in the recorded conjecture. The alternative polynomial/Proposition 1.9 route remains unformalized and is not a dependency.",
+  "sha256": {
+    "Checks.lean": "e056ab6c5014c8c8a9d3b92f1c1c710e4e42c736151be24202f1881f690b7aa9",
+    "DyadicRank/Basic.lean": "ad00e7b2773aafdd67f1f3ce0c691d71f765aafe3c8da0ba462130b49f678e96",
+    "DyadicRank/Enumeration.lean": "1c7b09197f4ecb2078b679636687f834b314ce1568185a4474578c624a88fa41",
+    "DyadicRank/FrobeniusObstruction.lean": "70ce39d7f668a28c0bef67d2ad228dad274bc1fa3db55f4fa75efcaaec60831a",
+    "DyadicRank/Recursive.lean": "3ca6a418b75a7fdf9bf64b247029ae68dbe556ab8bc10c69b5433bb1ff0a1cc7",
+    "DyadicRank/SmallCases.lean": "fd3896072372d71234268c20ac97e027f29ab953ec823906cc370d7c3ac890b4",
+    "DyadicRank/Structural.lean": "be4fe2a0a674a28981f438f036f845d300f29707c7e3560d163df31d051365ba",
+    "DyadicRank.lean": "67b16a38de82d380d136967ebdfd05e83de6f0503a1d873834a32b712f3e91f9",
+    "lake-manifest.json": "2df78ebbe40bc72129461827774a34ade3b7b80616d28f5389c0a91217397963",
+    "lakefile.toml": "31f0e109ea20bb8d1ae4f3ec465163955c2b24d29b508f6a8ae80b174c93a77d",
+    "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4"
+  },
+  "structural_declarations": [
+    "DyadicRank.point_add_self",
+    "DyadicRank.point_add_cancel_left",
+    "DyadicRank.point_add_cancel_right",
+    "DyadicRank.card_point",
+    "DyadicRank.sum_translate",
+    "DyadicRank.supportSum_apply",
+    "DyadicRank.coefficientParity_eq_card",
+    "DyadicRank.mulVec_constant",
+    "DyadicRank.mulVec_coordinate",
+    "DyadicRank.coordinate_mem_kernel",
+    "DyadicRank.constant_mem_kernel",
+    "DyadicRank.affine_mem_kernel",
+    "DyadicRank.dyadic_square_off_diagonal",
+    "DyadicRank.dyadic_square",
+    "DyadicRank.range_le_kernel_of_square_zero",
+    "DyadicRank.twice_rank_le_of_square_zero",
+    "DyadicRank.half_rank_iff_range_eq_kernel",
+    "DyadicRank.dyadic_square_zero",
+    "DyadicRank.dyadic_square_one",
+    "DyadicRank.rank_eq_card_of_square_one",
+    "DyadicRank.dyadic_rank_of_parity_one",
+    "DyadicRank.parity_zero_of_half_rank",
+    "DyadicRank.dyadic_twice_rank_le",
+    "DyadicRank.strict_rank_iff_range_lt_kernel",
+    "DyadicRank.rankSupportAt_iff_strict_deficit",
+    "DyadicRank.rankSupportAt_iff_kernel_obstruction",
+    "DyadicRank.square_mem_span_squares",
+    "DyadicRank.square_mem_product_of_mem_square",
+    "DyadicRank.square_mem_generator_product"
+  ],
+  "structural_new_theorems": 29,
+  "unrestricted_classical_argument_status": "Alternative algebraic argument retained as background; complete Lean proof uses direct induction.",
+  "general_proof_note": "INDUCTIVE-PROOF.md",
+  "computational_search": {
+    "results": "search/results.json",
+    "distinct_signatures": 45543,
+    "maximum_dimension": 10,
+    "maximum_matrix_size": 1024,
+    "lean_verified": false
+  },
+  "structural_method": "Symbolic matrix/linear algebra, finite involution cancellation, and characteristic-two ideal induction; no external theorem assumed in Lean.",
+  "general_proof_declaration": "DyadicRank.rankSupportConjecture_proved",
+  "general_scope": "forall ell : Nat, RankSupportAt ell; public division form assumes 0 < ell",
+  "general_proof_method": "Direct induction on dimension, with exactness descent through commuting square-zero block operators.",
+  "public_half_rank_theorem": "DyadicRank.dyadic_rank_support_half",
+  "bounded_regression_theorem": "DyadicRank.rankSupportAt_le_two",
+  "general_proof_uses_ksv_proposition": false,
+  "generic_ksv_proposition_formalized": false,
+  "recursive_declarations": [
+    "DyadicRank.kernelInRange_descends",
+    "DyadicRank.sum_split_head",
+    "DyadicRank.point_cons_add",
+    "DyadicRank.vector_add_self",
+    "DyadicRank.dyadic_mul_comm",
+    "DyadicRank.dyadicMatrix_add",
+    "DyadicRank.parity_sliceOne",
+    "DyadicRank.parity_lower",
+    "DyadicRank.supportSum_lower",
+    "DyadicRank.sliceZero_mulVec",
+    "DyadicRank.sliceOne_mulVec",
+    "DyadicRank.sliceZero_duplicate",
+    "DyadicRank.sliceOne_duplicate",
+    "DyadicRank.slices_ext",
+    "DyadicRank.sliceZero_zero",
+    "DyadicRank.sliceOne_zero",
+    "DyadicRank.sum_slices_mulVec",
+    "DyadicRank.triangular_zero_row",
+    "DyadicRank.duplicate_cycle",
+    "DyadicRank.kernelInRange_lower",
+    "DyadicRank.not_kernelInRange_zero_moments",
+    "DyadicRank.rankSupportAt_all",
+    "DyadicRank.rankSupportConjecture_proved",
+    "DyadicRank.dyadic_strict_rank_of_zero_moments",
+    "DyadicRank.dyadic_rank_support",
+    "DyadicRank.dyadic_rank_support_half"
+  ]
+}
