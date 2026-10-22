@@ -15,7 +15,7 @@ The proved entry is **L-P11-rank-converse**, the general dyadic rank/support the
 
 ## Supporting formalization after this assessment
 
-The subsequent P34 work now has **50 checked Lean theorems**, including source matrix/Tanner comparison, four-cycle and six-walk results, exclusion of six-cycles for arbitrary 2-by-2 matrices, and exact girth eight for the nonzero normalized 2-by-2 family. This is supporting progress: the full girth-eight design criterion remains unproved and is not counted as an additional fully formalized or proved target. Complete proof coverage remains **1/108**. [Exact checked scope, sources and reproducibility](../formalization/cyclic-lifts/README.md).
+The subsequent P34 work now has **63 checked Lean theorems**, including source matrix/Tanner comparison, complete four- and six-cycle criteria, exact girth eight for the nonzero normalized 2-by-2 family, and the 3-by-3 modulo-seven example. This is supporting progress: the full girth-eight design criterion remains unproved and is not counted as an additional fully formalized or proved target. Complete proof coverage remains **1/108**. [Exact checked scope, sources and reproducibility](../formalization/cyclic-lifts/README.md).
 
 ## The previously unassessed targets
 

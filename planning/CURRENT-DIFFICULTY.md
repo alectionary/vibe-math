@@ -2566,7 +2566,7 @@ Cyclic lifts reduce short closed walks to modular label sums, but the exact lift
 
 First milestone: Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.
 
-Progress: Two bounded stages completed October 22: 50 checked supporting Lean theorems, including exact girth eight for every nonzero normalized 2x2 exponent matrix and no six-cycles for arbitrary 2x2 bases. Larger-matrix design criterion remains unfinished; original planning tiers are not timed implementation measurements. [Checked artifact](../formalization/cyclic-lifts/README.md).
+Progress: Three bounded stages completed October 22: 63 checked supporting Lean theorems, including complete four/six-cycle criteria in arbitrary dimensions and exact girth eight for the normalized 2x2 family and the 3x3 modulo-seven example. General design target remains unfinished; original tiers are not implementation timings. [Checked artifact](../formalization/cyclic-lifts/README.md).
 
 Basis: New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p34-girth-eight).
 

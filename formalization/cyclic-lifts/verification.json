@@ -11,7 +11,7 @@
   "build_exit_code": 0,
   "consumer_command": "lake -f lakefile-cyclic.toml env lean CyclicChecks.lean",
   "consumer_exit_code": 0,
-  "theorem_count": 50,
+  "theorem_count": 63,
   "declaration_axioms": {
     "CyclicLift.VoltageGraph.displacement_nil": [
       "propext"
@@ -162,6 +162,27 @@
       "Classical.choice",
       "Quot.sound"
     ],
+    "CyclicLift.neighboring_variables_project_injective": [
+      "propext"
+    ],
+    "CyclicLift.hexagon_of_six_edges": [
+      "propext"
+    ],
+    "CyclicLift.hasSixCycle_iff_hexagon": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.xGraph_hasSixCycle_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.xGraph_native_sixCycle_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
     "CyclicLift.normalizedTwo_no_four": [
       "propext",
       "Classical.choice",
@@ -218,6 +239,42 @@
       "propext",
       "Classical.choice",
       "Quot.sound"
+    ],
+    "CyclicLift.sevenBase_rectangles": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenBase_hexagons": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenBase_no_four": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenBase_no_six": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenEight_isCycle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenEight_length": [
+      "propext",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenBase_girth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "CyclicLift.sevenBase_matrix_girth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
     ]
   },
   "full_target_statement_formalized": false,
@@ -226,28 +283,62 @@
     "Exact lifting and projection of prescribed walks; endpoint displacement and closed-lift iff zero displacement",
     "Generic and P34 native four-cycle iff supported zero rectangle",
     "Exact binary matrix/Tanner graph comparison and finite dimensions",
-    "Native six-cycle equivalence; supported hexagon closure iff zero voltage; distinct-hexagon simple-cycle sufficiency",
+    "Complete generic sparse-support six-cycle iff distinct supported zero hexagon; projected triples cannot repeat",
+    "Complete P34 native six-cycle iff zero base hexagon on distinct row and column triples; all mixed-block patterns excluded",
     "Projection injectivity and check-triangle obstruction; no six-cycles for every 2x2 exponent matrix",
     "Exact native girth eight for every nonzero normalized 2x2 exponent matrix, including explicit eight-cycle and binary matrix transfer",
+    "Exact native girth eight for 3x3 matrix [[0,0,0],[0,1,2],[0,3,6]] modulo 7, including finite kernel checks, explicit eight-cycle and binary matrix transfer",
     "Ternary no-four-cycle and explicit simple-six-cycle obstruction"
   ],
   "python_case_count": 432,
   "python_results_are_lean_certificates": false,
   "original_dyadic_proof_sources_unchanged": true,
   "sha256": {
-    "formalization/dyadic-rank/CyclicLift.lean": "cdb5ba5222a595566e923cecde03e98bdc98b85e413d17252dc72186cf760f06",
-    "formalization/dyadic-rank/CyclicChecks.lean": "0c73aca22a6ea7ff27e70f74b93cddc73c6933f057a94962db7f34ff26b4dfb6",
+    "formalization/dyadic-rank/CyclicLift.lean": "6a7fda09be850d5a0ae44b35d6425fac2ef96d43974ce37e29c5bb550622f68f",
+    "formalization/dyadic-rank/CyclicChecks.lean": "fb906ae1625961b9917926ad0766af7b8a4d22d2801fabafa9168682b4ecad82",
     "formalization/dyadic-rank/lakefile-cyclic.toml": "fbab846cca0b9b73388c15b5eb789d4593b9a3475af75787e8636e90b5c2f41c",
     "formalization/dyadic-rank/lake-manifest.json": "2df78ebbe40bc72129461827774a34ade3b7b80616d28f5389c0a91217397963",
     "formalization/dyadic-rank/lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
     "formalization/dyadic-rank/CyclicLift/Basic.lean": "d3f13f96ad9c73d85859036cc51e69e9cd2d4a5351805ba255d32855839e2b07",
     "formalization/dyadic-rank/CyclicLift/Bipartite.lean": "e04c71240d7640c2535b6153f2ef34e20bcc6106948b3fea0364a57a0dd316b3",
     "formalization/dyadic-rank/CyclicLift/LiftedProduct.lean": "c128c0a4bcfe785d9cab418172ea850e240cb72529419d25e9932f4a4b7daa74",
-    "formalization/dyadic-rank/CyclicLift/SmallCases.lean": "d2444b34331fe6392fe6891c32f1486f4390bacfa38a9373cc2c6df3e3854e22",
+    "formalization/dyadic-rank/CyclicLift/SmallCases.lean": "1c7cd68523de40fa8e5d5228dc4dea3eaaecd872f23d32e16f4631d095129c7e",
     "formalization/cyclic-lifts/search/scan.py": "fd4ab6a2770b738b70f0de3c1e95ad348ce516b339af3746474fde4f2569f2ad",
     "formalization/cyclic-lifts/search/results.json": "9b4978e9d21b0a98a1874ef4c0fcedd9c544ef5bcbb80f4910f0f485c3e8dcc1",
-    "formalization/dyadic-rank/CyclicLift/ShortCycles.lean": "d6fd652d9b80bc6099c8df089190206e68e784e9723c510ff1f8ae5bc93beed6"
+    "formalization/dyadic-rank/CyclicLift/ShortCycles.lean": "d6fd652d9b80bc6099c8df089190206e68e784e9723c510ff1f8ae5bc93beed6",
+    "formalization/dyadic-rank/CyclicLift/SixCharacterization.lean": "a1a3c8d18c668d2b8ccf65090afd0ee2a947660044c895de71553d65a561cda7",
+    "formalization/dyadic-rank/CyclicLift/LargerCases.lean": "53c94e3c396d5e636adac2516c0c873d52b2acea09aa11e7b4d8d119a3151382"
   },
-  "log_sha256": "0f7a0a9503213dbdc30d54b86fe4083481792d00deda7e8867f0d85241d5d224",
-  "symbolic_girth_eight_family_verified": true
+  "log_sha256": "53534593797b041ed287f7ac041e46b611c6f423127109d18896feb930d24a8b",
+  "symbolic_girth_eight_family_verified": true,
+  "six_cycle_characterization_complete": true,
+  "three_by_three_girth_eight_verified": true,
+  "three_by_three_certificate": {
+    "matrix": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        3,
+        6
+      ]
+    ],
+    "modulus": 7,
+    "binary_rows": 63,
+    "binary_columns": 126,
+    "graph_vertices": 189,
+    "girth": 8,
+    "graph_theorem": "CyclicLift.sevenBase_girth",
+    "expanded_matrix_theorem": "CyclicLift.sevenBase_matrix_girth",
+    "finite_checks": "Kernel-checked decide on base rectangles and hexagons; no native evaluation axiom",
+    "upper_bound": "Explicit native simple eight-cycle"
+  }
 }

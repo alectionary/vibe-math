@@ -1,3 +1,3 @@
 module
 
-public import CyclicLift.SmallCases
+public import CyclicLift.LargerCases

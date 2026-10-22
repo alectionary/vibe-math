@@ -6,10 +6,10 @@ open CyclicLift
 
 -- A source-sized finite-matrix consumer, independent of the proof implementation.
 example : Fintype.card (XCheck (Fin 2) (Fin 3) × ZMod 5) = 30 := by
-  simpa using (hX_row_count (I := Fin 2) (J := Fin 3) (r := 5))
+  simp [XCheck, Fintype.card_prod]
 
 example : Fintype.card (XVariable (Fin 2) (Fin 3) × ZMod 5) = 65 := by
-  simpa using (hX_column_count (I := Fin 2) (J := Fin 3) (r := 5))
+  simp [XVariable, Fintype.card_prod]
 
 -- Symbolic modulus and label, rather than a fixed finite enumeration.
 example (r : ℕ) (t : ZMod r) (ht : t ≠ 0) :
@@ -26,6 +26,28 @@ example (r : ℕ) (t : ZMod r) (ht : t ≠ 0) :
 
 example : (matrixTanner (hX (normalizedTwo (1 : ZMod 7)))).girth = 8 :=
   normalizedTwo_matrix_girth 1 (by decide)
+
+-- The larger candidate, including the actual expanded parity-check matrix.
+example : (xGraph sevenBase).girth = 8 := sevenBase_girth
+example : (matrixTanner (hX sevenBase)).girth = 8 := sevenBase_matrix_girth
+
+-- The concrete matrix is exactly the originally searched candidate.
+example : ∀ i j : Fin 3, sevenBase i j =
+    (![![(0 : ZMod 7), 0, 0], ![0, 1, 2], ![0, 3, 6]] : Matrix (Fin 3) (Fin 3) (ZMod 7)) i j := by
+  decide
+
+-- Its dimensions agree with the binary block model.
+example : Fintype.card (XCheck (Fin 3) (Fin 3) × ZMod 7) = 63 := by
+  simp [XCheck, Fintype.card_prod]
+example : Fintype.card (XVariable (Fin 3) (Fin 3) × ZMod 7) = 126 := by
+  simp [XVariable, Fintype.card_prod]
+
+-- The exact native six-cycle characterization is usable at arbitrary sizes.
+example {I J : Type*} {r : ℕ} (B : I → J → ZMod r) :
+    (∃ v, ∃ p : (xGraph B).Walk v v, p.IsCycle ∧ p.length = 6) ↔
+      ∃ i0 i1 i2 j0 j1 j2, i0 ≠ i1 ∧ i1 ≠ i2 ∧ i0 ≠ i2 ∧
+        j0 ≠ j1 ∧ j1 ≠ j2 ∧ j0 ≠ j2 ∧ baseHexagon B i0 i1 i2 j0 j1 j2 = 0 :=
+  xGraph_native_sixCycle_iff B
 
 #print axioms CyclicLift.VoltageGraph.displacement_nil
 #print axioms CyclicLift.VoltageGraph.displacement_cons
@@ -64,6 +86,11 @@ example : (matrixTanner (hX (normalizedTwo (1 : ZMod 7)))).girth = 8 :=
 #print axioms CyclicLift.neighboring_checks_project_injective
 #print axioms CyclicLift.no_six_of_check_triangle_free
 #print axioms CyclicLift.girth_eq_eight_of_short_cycles
+#print axioms CyclicLift.neighboring_variables_project_injective
+#print axioms CyclicLift.hexagon_of_six_edges
+#print axioms CyclicLift.hasSixCycle_iff_hexagon
+#print axioms CyclicLift.xGraph_hasSixCycle_iff
+#print axioms CyclicLift.xGraph_native_sixCycle_iff
 #print axioms CyclicLift.normalizedTwo_no_four
 #print axioms CyclicLift.xSupport_common_checks
 #print axioms CyclicLift.two_grid_triangle
@@ -77,3 +104,11 @@ example : (matrixTanner (hX (normalizedTwo (1 : ZMod 7)))).girth = 8 :=
 #print axioms CyclicLift.ternarySix_isCycle
 #print axioms CyclicLift.ternarySix_length
 #print axioms CyclicLift.rectangle_exclusion_not_sufficient_for_no_six
+#print axioms CyclicLift.sevenBase_rectangles
+#print axioms CyclicLift.sevenBase_hexagons
+#print axioms CyclicLift.sevenBase_no_four
+#print axioms CyclicLift.sevenBase_no_six
+#print axioms CyclicLift.sevenEight_isCycle
+#print axioms CyclicLift.sevenEight_length
+#print axioms CyclicLift.sevenBase_girth
+#print axioms CyclicLift.sevenBase_matrix_girth

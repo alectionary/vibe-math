@@ -1,6 +1,6 @@
 module
 
-public import CyclicLift.ShortCycles
+public import CyclicLift.SixCharacterization
 public import Mathlib.Tactic.FinCases
 
 @[expose] public section
