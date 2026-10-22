@@ -1,0 +1,388 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{xcolor,listings}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\ann}{\operatorname{ann}}
+\newcommand{\E}{\mathcal E}
+\lstdefinestyle{lean}{basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,keepspaces=true,breaklines=true,breakatwhitespace=false,
+  numbers=left,numberstyle=\tiny\color{gray},numbersep=7pt,
+  frame=lines,xleftmargin=1.7em,framexleftmargin=1.3em,
+  showstringspaces=false,tabsize=2,escapeinside={(*@}{@*)},
+  literate={¬}{{$\neg$}}1 {·}{{$\cdot$}}1 {×}{{$\times$}}1
+  {α}{{$\alpha$}}1 {₀}{{$_0$}}1 {₁}{{$_1$}}1 {ₗ}{{$_l$}}1
+  {ℕ}{{$\mathbb N$}}1 {←}{{$\leftarrow$}}1 {→}{{$\to$}}1
+  {↦}{{$\mapsto$}}1 {∀}{{$\forall$}}1 {∃}{{$\exists$}}1
+  {∈}{{$\in$}}1 {∑}{{$\sum$}}1 {∧}{{$\land$}}1
+  {≃}{{$\simeq$}}1 {≠}{{$\ne$}}1 {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1}
+\lstset{style=lean}
+\title{A Lean Formalization of the Dyadic Rank--Support Converse\\
+and Its Relation to Published Proofs}
+\author{}
+\date{Draft --- October 21, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a binary dyadic matrix of order $2^\ell$, rank $2^{\ell-1}$ forces the sum of the index vectors in its signature support to be nonzero. G\'omez-Fonseca, Matthews, Morris, and Pllaha explicitly propose this converse in Remark~3.4 of their 2026 preprint. We present a Lean~4 proof for every positive dimension, using a triangular block decomposition and descent of the image--kernel equality. The mathematical conclusion follows from established representation theory: we give the translation to the flatness criterion of Friedlander and Pevtsova, identify the descent step as a characteristic-two instance of their commuting-nilpotent perturbation principle, and explain an alternative implication of Kustin--\c{S}ega--Vraciu's exact-zero-divisor theorem. The published representation-theoretic criterion appeared in April 2005, approximately 21 years before the explicit conjecture was posted on May 3, 2026. The contribution is the checked implementation, its elementary matrix exposition, and an explicit connection between the coding-theoretic question and the earlier representation-theoretic criterion. We claim neither a new mathematical theorem nor priority for the proof method or its formalization. The full inductive Lean source, pinned dependencies, verification records, and bounded prior-art search are supplied with the manuscript.
+\end{abstract}
+
+\section{Origin of the question and scope of the contribution}\label{sec:origin}
+
+The precise question addressed here comes from \emph{Combinatorial Analysis of Dyadic and Quasi-Dyadic Codes} by Anthony G\'omez-Fonseca, Gretchen L. Matthews, Kirsten D. Morris, and Tefjol Pllaha. Their Remark~3.4 explicitly proposes the full converse of a rank criterion for dyadic matrices \cite[Remark~3.4]{gf}. We credit those four authors for this source formulation. The present theorem is the implication from half rank to a nonzero support-vector sum; we specify both the coefficient field and the meaning of support in Section~\ref{sec:statement}.
+
+Our investigation began with mathematics dissertations made available through the University of Nebraska--Lincoln's DigitalCommons: Meraiah Martinez's \emph{On Dyadic Parity Check Codes and Their Generalizations} \cite{martinez} and Kirsten Morris's \emph{Analysis of Graph-based Decoders for Quantum Low Density Parity Check Codes} \cite{morris}. Both repository records identify Christine A. Kelley as first advisor. Following the related literature led to the explicit 2026 conjecture. This discovery provenance is distinct from attributing that exact conjecture to either dissertation. The antecedent paper by Martinez, Pllaha, and Kelley \cite{mpk} is the work cited by G\'omez-Fonseca et al. in their discussion of the forward criterion \cite[Remark~3.4]{gf}.
+
+The formalization was developed before the literature comparison documented here was complete. Subsequent investigation identified the applicable flatness criterion in Friedlander--Pevtsova \cite[Example~2.6]{fp}, also stated by Benson \cite[Section~1.4, p.~6]{benson}. Accordingly, this paper reports an independently developed implementation of a consequence of existing theory, not a newly discovered theorem. Its main technical presentation is an elementary induction in matrix coordinates. Its scope as a formalization is exact: the matrix proof is checked in Lean; the group-algebra translation and the two literature comparisons are ordinary mathematical arguments in this manuscript, not additional Lean theorems.
+
+The chronology is striking: Friedlander--Pevtsova's article appeared in April 2005 \cite{fp}, whereas the explicit dyadic rank--support conjecture was posted on May 3, 2026 \cite{gf}, approximately \emph{21 years later}. This interval illustrates a barrier to recognizing applicable results across coding theory and representation theory: the conjecture is phrased in terms of dyadic matrix rank and signature support, while the earlier criterion concerns flatness and linear terms in an elementary abelian group algebra. Our contribution includes making that correspondence explicit and presenting it alongside a checked matrix proof. The dates alone do not establish that the correspondence was previously unknown, or why the conjecture's authors did not use it; we do not claim historical priority for connecting the two formulations. April 2005 is a verified published precedent, not an established earliest date for the underlying result.
+
+The accompanying artifact \cite{artifact} records a general proof, rather than a finite-dimensional search certificate. A bounded search found no prior matching Lean statement or complete proof in the searched sources. Section~\ref{sec:priority} states the coverage and limitations of that search; it does not establish that this is the first formalization.
+
+\section{Definitions and the formalized statement}\label{sec:statement}
+
+Fix $\ell\in\mathbb N$, let $G_\ell=\F^\ell$ with its additive group structure, and put $N=2^\ell$. A signature is a function $s:G_\ell\to\F$. Its dyadic matrix is
+\begin{equation}\label{eq:dyadic}
+ D_s(x,y)=s(x+y)\qquad(x,y\in G_\ell).
+\end{equation}
+This is the binary signature presentation used in the source \cite[Definition~2.1]{gf}. Define its parity and first moment by
+\begin{equation}\label{eq:moments}
+ p(s)=\sum_{x\in G_\ell}s(x)\in\F,\qquad
+ m(s)=\sum_{x\in G_\ell}s(x)x
+      =\sum_{x\in\supp(s)}x\in G_\ell.
+\end{equation}
+The last equality uses $s(x)\in\{0,1\}$. In particular, $m(s)$ is a sum of \emph{index vectors}, not the scalar sum of the entries of $s$. Every rank in this paper is ordinary matrix rank over $\F$.
+
+\begin{theorem}[Rank--support converse]\label{thm:main}
+For $\ell>0$ and any $s:G_\ell\to\F$,
+\[
+ \rk D_s=2^{\ell-1}\quad\Longrightarrow\quad m(s)\ne0.
+\]
+\end{theorem}
+
+The source of the conjectured implication is Remark~3.4 of \cite{gf}; its known-theory interpretation is established in Section~\ref{sec:group}. No condition that the support be a subspace, coset, or set of size two is imposed. We do not assert the unrestricted reverse implication. For example, if $a\ne0$ and $s$ is the indicator of $\{a\}$, then $m(s)=a$ while $D_s$ is an invertible permutation matrix. Parity matters when stating an equivalence.
+
+Lean uses the type \texttt{Point ell := Fin ell $\to$ ZMod 2}. The principal signature statement is the equivalent doubled-rank form
+\begin{lstlisting}[float=htbp,caption={The general signature interface.}]
+def RankSupportAt (ell : (*@$\mathbb{N}$@*)) : Prop :=
+  (*@$\forall$@*) s : Signature ell,
+    2 * (dyadicMatrix s).rank = 2 ^ ell (*@$\to$@*) supportSum s (*@$\ne$@*) 0
+
+theorem rankSupportAt_all (ell : (*@$\mathbb{N}$@*)) : RankSupportAt ell
+\end{lstlisting}
+Here \texttt{supportSum} is the sum over the finite support in~\eqref{eq:moments}. The doubled-rank proposition is vacuous for $\ell=0$, since twice an integer cannot equal one. The public theorem \nolinkurl{dyadic_rank_support_half} assumes positive dimension and uses Lean's natural-number expression \texttt{2 \^{} ell / 2}; it applies to any matrix satisfying~\eqref{eq:dyadic}, with signature recovered as its zero row. The definitions are in \texttt{Basic.lean}, and the source-to-matrix equivalence is proved there \cite{artifact}.
+
+\section{An elementary proof by dimension descent}\label{sec:proof}
+
+We give the mathematical argument implemented in \texttt{Structural.lean} and \texttt{Recursive.lean} \cite{artifact}. Dyadic squaring identities also occur in the source's preliminary properties \cite[Proposition~2.2]{gf}; the calculations below make their role in this proof explicit.
+
+\begin{lemma}\label{lem:square}
+For every signature $s$, $D_s^2=p(s)I$. Any two dyadic matrices commute.
+\end{lemma}
+\begin{proof}
+The $(x,y)$ entry of $D_s^2$ is $\sum_z s(x+z)s(z+y)$. If $x=y$, this equals $\sum_z s(x+z)^2=p(s)$. If $x\ne y$, the involution $z\mapsto x+y+z$ has no fixed point and exchanges the two factors; paired summands cancel in characteristic two. For two signatures, the same change of variable interchanges their order in the convolution product.
+\end{proof}
+
+\begin{definition}
+For an endomorphism $C$ of an $\F$-vector space, write $\E(C)$ for the preimage property
+\[
+ Cv=0\quad\Longrightarrow\quad \text{there exists }w\text{ with }Cw=v.
+\]
+If $C^2=0$, this property is equivalent to $\im C=\ker C$.
+\end{definition}
+
+If $\ell>0$ and $D_s$ has half rank, Lemma~\ref{lem:square} forces $p(s)=0$: otherwise $D_s^2=I$ would give full rank. In the square-zero case $\im D_s\subseteq\ker D_s$, so rank--nullity gives
+\begin{equation}\label{eq:exact}
+ 2\rk D_s=N\quad\Longleftrightarrow\quad\im D_s=\ker D_s.
+\end{equation}
+It therefore suffices to show that $p(s)=0=m(s)$ is incompatible with $\E(D_s)$.
+
+\begin{lemma}[Triangular descent]\label{lem:descent}
+Let $B,C$ be commuting endomorphisms with $B^2=0$, and set
+\[
+ T=\begin{pmatrix}C&B\\0&C\end{pmatrix}.
+\]
+If $\E(T)$ holds, then $\E(C)$ holds.
+\end{lemma}
+\begin{proof}
+Take $v$ with $Cv=0$. Since $T(v,0)=0$, choose $a,b$ such that
+\[
+ Ca+Bb=v,\qquad Cb=0.
+\]
+Apply the same property to $(b,0)$, obtaining $c,d$ with $Cc+Bd=b$ and $Cd=0$. Then
+\[
+ Bb=B(Cc+Bd)=BCc=CBc,
+ \qquad v=C(a+Bc).
+\]
+Thus $v$ has a preimage under $C$. No hypothesis $C^2=0$ is needed for this lemma itself.
+\end{proof}
+
+The Lean helper expresses the hypothesis using only the two coordinates required in the proof:
+\begin{lstlisting}[caption={Checked preimage calculation from Recursive.lean.}]
+theorem kernelInRange_descends {V : Type*} [AddCommGroup V] [Module F2 V]
+    (C B : V (*@$\to$@*)(*@${}_l$@*)[F2] V) (hc : (*@$\forall$@*) v, B (C v) = C (B v))
+    (hb : (*@$\forall$@*) v, B (B v) = 0)
+    (h : (*@$\forall$@*) v, C v = 0 (*@$\to$@*) (*@$\exists$@*) a b, C a + B b = v (*@$\land$@*) C b = 0) :
+    KernelInRange C := by
+  intro v hv
+  obtain (*@$\langle$@*)a, b, hab, hcb(*@$\rangle$@*) := h v hv
+  obtain (*@$\langle$@*)c, d, hcd, _(*@$\rangle$@*) := h b hcb
+  have hbb : B b = B (C c) := by
+    rw [(*@$\leftarrow$@*) hcd, map_add, hb, add_zero]
+  refine (*@$\langle$@*)a + B c, ?_(*@$\rangle$@*)
+  rw [map_add, (*@$\leftarrow$@*) hc, (*@$\leftarrow$@*) hbb]
+  exact hab
+\end{lstlisting}
+The application of this descent principle is a specialization of an existing published result; Section~\ref{sec:perturbation} gives the exact correspondence. We make no priority claim for the calculation.
+
+For the inductive step, write $G_{\ell+1}=\F\times G_\ell$ and let
+\[
+ a(x)=s(0,x),\qquad b(x)=s(1,x),\qquad t(x)=a(x)+b(x).
+\]
+Set $A=D_a$, $B=D_b$, and $C=D_t=A+B$. Then
+\begin{equation}\label{eq:blocks}
+ D_s=\begin{pmatrix}A&B\\B&A\end{pmatrix},\qquad
+ P D_s P=\begin{pmatrix}C&B\\0&C\end{pmatrix},\qquad
+ P=\begin{pmatrix}I&0\\I&I\end{pmatrix}=P^{-1}.
+\end{equation}
+Directly from~\eqref{eq:moments},
+\begin{equation}\label{eq:inherit}
+ p(t)=p(s),\qquad m(t)=\operatorname{tail}(m(s)),\qquad
+ p(b)=m(s)_0.
+\end{equation}
+Thus $p(s)=0=m(s)$ implies $p(t)=0=m(t)$ and $B^2=0$. Also $BC=CB$ by Lemma~\ref{lem:square}.
+
+\begin{lemma}\label{lem:nonexact}
+For every $\ell\ge0$, if $p(s)=0$ and $m(s)=0$, then $\E(D_s)$ is false.
+\end{lemma}
+\begin{proof}
+Induct on $\ell$. At $\ell=0$ there is one index vector. Zero parity forces $D_s$ to be the zero $1\times1$ matrix, so the nonzero vector $1$ is killed but is not an image. At the successor step, suppose $\E(D_s)$ holds. The coordinate change in~\eqref{eq:blocks} preserves the preimage property. Lemma~\ref{lem:descent} gives $\E(C)$, whereas~\eqref{eq:inherit} makes $t$ satisfy the induction hypothesis. This is a contradiction.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Half rank implies zero parity and, by~\eqref{eq:exact}, $\E(D_s)$. If $m(s)=0$, Lemma~\ref{lem:nonexact} contradicts that property.
+\end{proof}
+
+\begin{corollary}\label{cor:deficit}
+For every $\ell\ge0$, zero parity and zero first moment imply $2\rk D_s<2^\ell$.
+\end{corollary}
+\begin{proof}
+Square-zero endomorphisms satisfy $2\rk D_s\le N$ by image containment in the kernel. Equality is excluded by Lemma~\ref{lem:nonexact} and~\eqref{eq:exact}.
+\end{proof}
+This is \texttt{dyadic\_strict\_rank\_of\_zero\_moments} in the artifact. It is another formulation of the consequence proved here, not a separate novelty claim.
+
+\section{Relation to the published group-algebra criterion}\label{sec:group}
+
+Let $k$ be an algebraic closure of $\F$ and $E=(C_2)^\ell$. Denote its group basis by $g_x$, for $x\in G_\ell$, and put $f=\sum_xs(x)g_x\in kE$. Multiplication by $f$ has matrix $D_s$ in that basis. Set $X_i=g_{e_i}+1$. The presentation
+\begin{equation}\label{eq:algebra}
+ kE\simeq k[X_1,\ldots,X_\ell]/(X_1^2,\ldots,X_\ell^2)
+\end{equation}
+is standard for elementary abelian group algebras \cite[Section~1.3]{benson}. Since $g_x=\prod_i(1+X_i)^{x_i}$, the constant coefficient of $f$ is $p(s)$ and its linear coefficient vector is $m(s)$.
+
+Friedlander and Pevtsova's flatness criterion states that a map $k[u]/(u^p)\to kE$ is flat precisely when the image of $u$ has a nonzero linear term \cite[Example~2.6; author manuscript p.~11]{fp}. Benson restates the condition as membership in the augmentation ideal outside its square \cite[Section~1.4, p.~6]{benson}. Here is the resulting implication for our problem, with the translation made explicit.
+
+If $D_s$ has half rank, then $p(s)=0$ and $f^2=0$, so $u\mapsto f$ defines a map $k[u]/(u^2)\to kE$. A square-zero operator of rank $N/2$ has only size-two Jordan blocks. Consequently $kE$, as a module over $k[u]/(u^2)$, is a sum of copies of the regular module, hence free and flat. The criterion forces $m(s)\ne0$. Extending scalars to $k$ changes neither rank nor whether the coefficient vector $m(s)$ vanishes. This proves the implication over $\F$.
+
+The erratum to Friedlander--Pevtsova requires the abelian subgroup scheme in a p-point factorization to be unipotent \cite{fperr}. Here the algebra in~\eqref{eq:algebra} is local with nilpotent augmentation ideal, so the elementary abelian case meets that condition. The restriction is therefore respected in this application. These observations explain why the mathematical conclusion is already a consequence of published theory. The translation in this section has not been formalized in our Lean files.
+
+\subsection{The descent step as a perturbation specialization}\label{sec:perturbation}
+
+Friedlander--Pevtsova's Proposition~2.2 concerns pairwise commuting endomorphisms $\alpha,\beta,\gamma$ in characteristic $p$, with $\alpha^p=\beta^p=0$ and $\gamma^{p^r}=0$. It equates projectivity of the modules on which $u$ acts by $\alpha$ or by $\alpha+\beta\gamma$ \cite[Proposition~2.2; author manuscript pp.~8--9]{fp}.
+
+In our dyadic application, $C^2=B^2=0$ and $BC=CB$. On $V\oplus V$, take
+\begin{equation}\label{eq:fp-substitution}
+ \alpha=\begin{pmatrix}C&0\\0&C\end{pmatrix},\quad
+ \beta=\begin{pmatrix}B&0\\0&B\end{pmatrix},\quad
+ \gamma=\begin{pmatrix}0&I\\0&0\end{pmatrix}.
+\end{equation}
+The hypotheses hold with $p=2$ and $r=1$, and $\alpha+\beta\gamma=T$. In finite dimension, projectivity for a square-zero action is equivalent to image equaling kernel. Exactness of $\alpha$ is equivalent to exactness of $C$. Thus the published theorem implies precisely the direction $\E(T)\Rightarrow\E(C)$ used in our induction.
+
+The source proves the more general equivalence using a kernel/image quotient and nilpotence on that quotient. Its calculation applies the preimage property twice. Lemma~\ref{lem:descent} displays the cancellation directly in block coordinates; the dyadic recursion supplies~\eqref{eq:inherit}. This is a useful change of interface and prerequisites, but it does not establish a new underlying proof principle. The more weakly stated Lean helper need not assume $C^2=0$; that hypothesis does hold where it is applied to the dyadic problem.
+
+\section{The alternative exact-zero-divisor argument}\label{sec:ksv}
+
+An independent route uses the necessary direction of Kustin--\c{S}ega--Vraciu, Proposition~1.9 \cite[Proposition~1.9, p.~6]{ksv}. For a regular local ring $(Q,\mathfrak n)$ and $J\subseteq\mathfrak n^2$, if the images of $F,G\in Q$ form an exact pair of zero divisors in $Q/J$, then $FG\notin\mathfrak nJ$.
+
+To apply it, assume a counterexample has $p(s)=0=m(s)$. Use~\eqref{eq:algebra} and the regular local presentation
+\[
+ Q=k[[X_1,\ldots,X_\ell]],\quad
+ J=(X_1^2,\ldots,X_\ell^2),\quad R=Q/J.
+\]
+Half rank and $f^2=0$ imply $\ann_R(f)=(f)$, since multiplication has image equal to kernel. Thus $(f,f)$ is an exact pair. Vanishing constant and linear coefficients allow a lift $F\in\mathfrak n^2$. In characteristic two, $F^2$ consists of squared monomials of degree at least four; each is divisible by some $X_i^2$ with a remaining factor of positive degree. Hence $F^2\in\mathfrak nJ$, contradicting Proposition~1.9. Its necessary direction has no exclusion of characteristic two.
+
+This route differs substantially from matrix descent: it uses the lift product obstruction in a regular local presentation. The cited proof of Proposition~1.9 invokes a result counting minimal generators via homotopy invariants \cite[Theorem~1.8 and Proposition~1.9]{ksv}. Our complete Lean proof avoids those dependencies. The artifact retains elementary ideal-squaring lemmas in \texttt{FrobeniusObstruction.lean}, but neither Proposition~1.9 nor the full algebraic translation is formalized there \cite{artifact}.
+
+\section{Lean implementation and reproducibility}\label{sec:lean}
+
+The development uses Lean~4 \cite{lean} and mathlib \cite{mathlib}. The Lean toolchain is \texttt{4.36.0-rc1}. The pinned mathlib revision is
+
+\begin{center}\small\texttt{5f7b4198d22a9c82e1c698a379334fe128095c82}.\end{center}
+The \texttt{lean-toolchain}, \texttt{lakefile.toml}, and \texttt{lake-manifest.json} files record the toolchain and dependency versions. The code and audit snapshot cited here is repository revision
+\begin{center}\small\texttt{150bddaab87f80b1d2bf2ee44b8518af7ae2c2b0}.\end{center}
+The manuscript includes a local copy of that development under \texttt{artifact/}. Appendix~\ref{app:lean} prints the full inductive source file. Its imports and other definitions are supplied in the same artifact, rather than treated as unproved premises.
+
+\begin{center}
+\begin{tabular}{@{}p{0.31\linewidth}p{0.62\linewidth}@{}}
+\toprule
+File & Role \\
+\midrule
+\texttt{Basic.lean} & Signatures, support sums, and source-to-matrix equivalence.\\
+\texttt{Structural.lean} & Squaring, parity, rank--nullity reductions, and moments.\\
+\texttt{Recursive.lean} & Coordinate slices, triangular descent, induction, and general theorem.\\
+\texttt{Checks.lean} & Symbolic consumer examples and declaration axiom reports.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For example, the final signature theorem is assembled as follows:
+\lstinputlisting[firstline=238,lastline=249,caption={Assembly of the general theorem from the checked reductions.}]{listings/Recursive.lean.tex}
+The project also supplies exhaustive Lean checks for small dimensions and a separate Python counterexample search. Neither finite enumeration nor those computational results are premises of the general induction. We make no empirical claim about their search coverage in this paper beyond the records supplied with the artifact.
+
+To reproduce the general check from \texttt{artifact/}, install the pinned toolchain and run:
+\begin{lstlisting}[numbers=none]
+lake build
+lake env lean Checks.lean
+\end{lstlisting}
+Dependency retrieval requires network access or an existing Lake cache. The recorded successful build and the axiom audit are in \texttt{verification.log} and \texttt{verification.json} \cite{artifact}. The audit covers 66 declarations, including the general theorem, and reports only \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}. There are no unfinished-proof or custom mathematical axioms in those reported dependencies. The symbolic examples quantify over arbitrary dimension; they do not merely instantiate a fixed large matrix.
+
+Kernel checking establishes the formal implication from the definitions used. The mathematical correspondence between those definitions and the intended question still requires review; Sections~\ref{sec:statement}--\ref{sec:proof} expose it explicitly. The comparisons with published algebra are outside the checked dependency chain.
+
+\section{Prior-art search and limits of novelty claims}\label{sec:priority}
+
+The bounded formalization search is preserved in the companion audit \cite{artifact}. It searched 16,263 Lean source files in pinned checkouts of mathlib4, formal-conjectures, TauCeti, and terracini-lean; TauCeti had a recorded sparse scope. Eighteen successful indexed GitHub code queries led to comparison of 23 selected candidate files. Some broad queries reached their 100-file cap. Six rate-limit failures were retained as failures, not as evidence of absence. Exact identifiers were supplemented with algebraic and convolution terminology.
+
+Three native arXiv metadata queries returned 24 records in total; twenty arXiv-restricted indexed web queries supplemented them. Title and abstract screening did not identify a matching formalization. Nearby keyword hits included a Lean formalization concerning dyadic local fields \cite{ueda} and papers reporting formalizations of Rogers--Ramanujan identities associated with commuting nilpotent matrices \cite{hlo,hlop}. Those are different stated targets; this screening is not a build audit of all their auxiliary code.
+
+The claim supported by these records is that no prior matching Lean statement or complete proof was identified in the searched sources as of October~21, 2026. It is not an exhaustive search of all formal mathematics. Private or unindexed work, historical branches, alternate terminology, and lemmas not advertised in paper metadata can be missed. Priority for the specific inductive exposition is also not determined by this investigation.
+
+The contribution can therefore be described as a completed Lean implementation, a matrix-level exposition, and an explicit translation connecting a coding-theoretic conjecture to a representation-theoretic criterion published approximately 21 years earlier. The chronology motivates the value of this connection, but does not by itself establish novelty or priority for the connection. The descent step specializes Friedlander--Pevtsova's perturbation theorem. Neither the known mathematical conclusion, nor a fundamentally new proof method, nor a first-formalization claim is asserted.
+
+\paragraph{Preparation and attribution.}
+The code and manuscript were developed in an interactive workflow with OpenAI Codex, directed by the project maintainer. The proof was checked with the pinned Lean toolchain; no independent human review is claimed. We credit the dissertation authors and UNL DigitalCommons for the discovery starting points, G\'omez-Fonseca, Matthews, Morris, and Pllaha for the explicit question, and the authors of the cited published results for the mathematical principles underlying the literature comparisons. The author line of this review draft is intentionally unset.
+
+\begin{thebibliography}{99}
+\interlinepenalty=10000
+\raggedright
+\bibitem{gf} A. G\'omez-Fonseca, G. L. Matthews, K. D. Morris, and T. Pllaha.
+\emph{Combinatorial Analysis of Dyadic and Quasi-Dyadic Codes}.
+arXiv:2605.01942v1, posted May 3, 2026. Definition~2.1, Proposition~2.2, and Remark~3.4.
+\url{https://arxiv.org/html/2605.01942v1}.
+
+\bibitem{martinez} M. Martinez.
+\emph{On Dyadic Parity Check Codes and Their Generalizations}.
+Ph.D. dissertation, University of Nebraska--Lincoln, December 2023.
+UNL DigitalCommons, Mathematics student research, item~122.
+\url{https://digitalcommons.unl.edu/mathstudent/122/}.
+
+\bibitem{morris} K. Morris.
+\emph{Analysis of Graph-based Decoders for Quantum Low Density Parity Check Codes}.
+Ph.D. dissertation, University of Nebraska--Lincoln, August 2025.
+UNL DigitalCommons, Dissertations and Doctoral Documents, item~339.
+\url{https://digitalcommons.unl.edu/dissunl/339/}.
+
+\bibitem{mpk} M. Martinez, T. Pllaha, and C. A. Kelley.
+Codes based on dyadic matrices and their generalizations.
+\emph{Advances in Mathematics of Communications} \textbf{19}(5) (2025), 1277--1300; online December 13, 2024.
+\url{https://doi.org/10.3934/amc.2024054}.
+
+\bibitem{fp} E. M. Friedlander and J. Pevtsova.
+Representation-theoretic support spaces for finite group schemes.
+\emph{American Journal of Mathematics} \textbf{127}(2) (April 2005), 379--420.
+\url{https://doi.org/10.1353/ajm.2005.0010}.
+Locators in this paper refer to Proposition~2.2 and Example~2.6 in the author manuscript, pp.~8--9 and~11:
+\url{https://sites.math.washington.edu/~julia/Preprints/ppt/ppt.pdf}.
+
+\bibitem{fperr} E. M. Friedlander and J. Pevtsova.
+Erratum to ``Representation-theoretic support spaces for finite group schemes.''
+\emph{American Journal of Mathematics} \textbf{128}(4) (2006), 1067--1068.
+\url{https://sites.math.washington.edu/~julia/Preprints/ppt/erratum.pdf}.
+
+\bibitem{benson} D. J. Benson.
+\emph{Representations of Elementary Abelian p-Groups and Vector Bundles}.
+Cambridge Tracts in Mathematics~208, Cambridge University Press, 2016; online 2017.
+\url{https://doi.org/10.1017/9781316795699}.
+Sections~1.3--1.4, publisher excerpt:
+\url{https://assets.cambridge.org/97811071/74177/excerpt/9781107174177_excerpt.pdf}.
+
+\bibitem{ksv} A. R. Kustin, L. M. \c{S}ega, and A. Vraciu.
+\emph{Minimal quasi-complete intersection ideals}.
+arXiv:1309.1186v2, version posted January 6, 2015.
+Theorem~1.8 and Proposition~1.9, especially p.~6.
+\url{https://arxiv.org/pdf/1309.1186v2}.
+
+\bibitem{lean} L. de Moura and S. Ullrich.
+The Lean 4 theorem prover and programming language.
+In \emph{Automated Deduction---CADE 28}, 2021, pp.~625--635.
+\url{https://doi.org/10.1007/978-3-030-79876-5_37}.
+
+\bibitem{mathlib} The mathlib Community.
+The Lean mathematical library.
+In \emph{Certified Programs and Proofs (CPP 2020)}, pp.~367--381.
+\url{https://doi.org/10.1145/3372885.3373824}.
+The exact mathlib4 revision used here is recorded in Section~\ref{sec:lean}.
+
+\bibitem{artifact} \emph{Dyadic rank formalization and literature audit}.
+Companion artifact, October 21, 2026. Repository revision
+\texttt{150bddaab87f80b1d2bf2ee44b8518af7ae2c2b0}, directory \texttt{formalization/dyadic-rank}.
+\url{https://github.com/alectionary/vibe-math/tree/150bddaab87f80b1d2bf2ee44b8518af7ae2c2b0/formalization/dyadic-rank}.
+Code, \texttt{verification.json}, \texttt{verification.log},
+\texttt{formalization-priority-search.json}, and \texttt{arxiv-formalization-search.json}
+are also supplied with this manuscript (in an arXiv source upload, under \texttt{anc/artifact/}); access to the repository is not required to obtain this snapshot.
+
+\bibitem{ueda} F. Ueda.
+\emph{Formalization of Langlands's Second Main Lemma for Local Epsilon Factors}.
+arXiv:2609.30301v1, 2026.
+\url{https://arxiv.org/abs/2609.30301v1}.
+Cited only as a different formalization found during metadata screening.
+
+\bibitem{hlo} Y. Huang, K. Lau, and K. Ono.
+\emph{Rogers--Ramanujan identities from the geometry of $X^a=Y^b$}.
+arXiv:2609.20567v1, 2026. Abstract and formalization description.
+\url{https://arxiv.org/html/2609.20567v1}.
+
+\bibitem{hlop} Y. Huang, K. Lau, K. Ono, and P. Paule.
+\emph{Algebraic geometric framework of Rogers--Ramanujan identities}.
+arXiv:2608.15219v1, 2026. Abstract and formalization description.
+\url{https://arxiv.org/html/2608.15219v1}.
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Claim and citation guide}\label{app:citations}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.42\linewidth}>{\raggedright\arraybackslash}p{0.51\linewidth}@{}}
+\toprule
+Claim or contribution & Evidence and exact scope\\
+\midrule
+\endhead
+Discovery context in UNL dissertations & Martinez \cite{martinez}; Morris \cite{morris}; official DigitalCommons records. Neither is cited as the location of the exact 2026 conjecture.\\
+Explicit source of the converse question & G\'omez-Fonseca et al. \cite[Remark~3.4]{gf}.\\
+Antecedent dyadic-code literature & Martinez--Pllaha--Kelley \cite{mpk}, as discussed in \cite[Remark~3.4]{gf}. No unqualified forward implication is imported.\\
+Established flatness criterion & Friedlander--Pevtsova \cite[Example~2.6]{fp}; Benson \cite[Section~1.4]{benson}. Section~\ref{sec:group} supplies the translation.\\
+Unipotence condition & Friedlander--Pevtsova erratum \cite{fperr}; checked for the group algebra in~\eqref{eq:algebra}.\\
+Published perturbation principle & Friedlander--Pevtsova \cite[Proposition~2.2]{fp}; substitution~\eqref{eq:fp-substitution} is this manuscript's explicit comparison.\\
+Lift product obstruction & Kustin--\c{S}ega--Vraciu \cite[Proposition~1.9]{ksv}; Section~\ref{sec:ksv} supplies the application.\\
+General machine-checked implication & Companion code, exact revision, source hashes, build log, and axiom reports \cite{artifact}.\\
+Absence of an identified prior Lean artifact & Bounded search logs and candidate comparisons \cite{artifact}; this is a report of discovery coverage, not a theorem of absence.\\
+\bottomrule
+\end{longtable}
+
+
+
+\clearpage
+\section{Complete inductive Lean source}\label{app:lean}
+The following is the complete \texttt{Recursive.lean} file from the cited artifact. It imports the checked structural results and mathlib. The accompanying \texttt{artifact/} directory supplies all local imports, the build configuration, and consumer checks. The listing is generated from that file using TeX escapes for Unicode mathematical glyphs. Line wrapping and glyph rendering do not change the supplied UTF-8 source file.
+\lstinputlisting[caption={Complete Recursive.lean, including the general theorem and public matrix interface.}]{listings/Recursive.lean.tex}
+\end{document}
