@@ -13,8 +13,13 @@ for r in assessed:
  current=rows[r['target_id']]
  assert r['before_statement_status']==r['before_proof_status']=='not_assessed_in_this_extension'
  assert current['eligible_for_coverage']==r['eligible_for_coverage']
- assert current['lean_statement_status']=='no_exact_statement_identified'
- assert current['lean_proof_status']=='no_exact_proof_identified'
+ if r['target_id']=='L-P34-girth-eight':
+  assert current['lean_statement_status']=='verified_lean_statement'
+  assert current['lean_proof_status']=='verified_complete_lean_proof'
+  assert current['verified_artifact']['verification']=='formalization/cyclic-lifts/verification.json'
+ else:
+  assert current['lean_statement_status']=='no_exact_statement_identified'
+  assert current['lean_proof_status']=='no_exact_proof_identified'
  assert 'lean-coverage-review.json' in current['supplementary_search_evidence']
 local=load('lean-coverage-local-searches.json')['searches']
 assert len(local)==audit['local_queries']==32
@@ -40,11 +45,13 @@ for group in re.findall(r'\[(.*?)\]',t):
  assert {a.strip() for a in group.split(',') if a.strip()}<={'propext','Classical.choice','Quot.sound'}
 summary=load('open-problem-summary.json');cov=audit['coverage']
 assert summary['eligible_targets']==cov['eligible_targets']==108
-assert summary['eligible_verified_lean_proofs']==cov['verified_lean_proofs']==1
-assert summary['eligible_verified_lean_statements']==cov['verified_lean_statements']==1
+# Keep the discovery audit's original counts, and account for the later checked P34 proof.
+assert cov['verified_lean_proofs']==1 and summary['eligible_verified_lean_proofs']==2
+assert cov['verified_lean_statements']==1 and summary['eligible_verified_lean_statements']==2
 assert summary['eligible_identified_unverified_lean_statements']==cov['identified_unverified_lean_statements_without_proof']==1
 assert summary['eligible_lean_discovery_unassessed']==cov['lean_discovery_unassessed']==0
-assert sum(r['eligible_for_coverage'] and r['lean_statement_status']=='no_exact_statement_identified' for r in rows.values())==cov['no_exact_statement_identified_in_bounded_search']==106
+assert sum(r['eligible_for_coverage'] and r['lean_statement_status']=='no_exact_statement_identified' for r in rows.values())==105
+assert cov['no_exact_statement_identified_in_bounded_search']==106
 for href in re.findall(r'\]\(([^)]+)\)',(D/'LEAN-COVERAGE.md').read_text()):
  u=urlparse(href)
  if not u.scheme and u.path:assert (D/u.path).exists(),href

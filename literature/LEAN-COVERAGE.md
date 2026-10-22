@@ -1,21 +1,21 @@
 # Lean coverage assessment
 
-Checked October 22, 2026. **One of 108 eligible open-problem targets has a complete verified Lean proof: 0.93%.** One other target has an identified Lean statement without a build audit or proof. For the other 106 targets, the recorded bounded searches have not identified an exact Lean statement. This is coverage of the inventoried questions, not the fraction of every theorem or proof step in the dissertations and papers.
+Checked October 22, 2026. **Two of 108 eligible open-problem targets have complete verified Lean proofs: 1.85%.** One other target has an identified Lean statement without a build audit or proof. For the other 105 targets, the recorded bounded searches have not identified an exact Lean statement. This is coverage of the inventoried questions, not the fraction of every theorem or proof step in the dissertations and papers.
 
 | Disjoint target category | Count | Fraction of 108 |
 | --- | ---: | ---: |
-| Complete checked Lean proof and matching statement | 1 | 0.93% |
+| Complete checked Lean proof and matching statement | 2 | 1.85% |
 | Additional identified Lean statement, without a verified proof or build audit | 1 | 0.93% |
-| No exact Lean statement identified in bounded discovery | 106 | 98.15% |
+| No exact Lean statement identified in bounded discovery | 105 | 97.22% |
 | Discovery still unassessed | 0 | 0% |
 
 The statement-only entry is Conway’s 99-graph existence problem, recorded as Mathlib’s `proof_wanted conway_99`. That is an explicit request for a proof, not a result settling existence or nonexistence. [Pinned source](https://github.com/leanprover-community/mathlib4/blob/0db93bb44438a03c84317df5f033136cdd14c91f/Wanted/Combinatorics/SimpleGraph/StronglyRegular.lean).
 
-The proved entry is **L-P11-rank-converse**, the general dyadic rank/support theorem. I reran `lake env lean Checks.lean` in the existing project: it exited successfully and printed 66 axiom reports using only `propext`, `Classical.choice` and `Quot.sound`. No `sorryAx` appeared. This rechecks the existing contribution; it adds no newly proved target. [Lean project and theorem scope](../formalization/dyadic-rank/README.md), [recheck output](lean-coverage-dyadic-recheck.log), [structured results](lean-coverage-review.json).
+The entry already proved at the time of the discovery audit was **L-P11-rank-converse**, the general dyadic rank/support theorem. I reran `lake env lean Checks.lean` in the existing project: it exited successfully and printed 66 axiom reports using only `propext`, `Classical.choice` and `Quot.sound`. No `sorryAx` appeared. This rechecks the existing contribution; it adds no newly proved target. [Lean project and theorem scope](../formalization/dyadic-rank/README.md), [recheck output](lean-coverage-dyadic-recheck.log), [structured results](lean-coverage-review.json).
 
 ## Supporting formalization after this assessment
 
-The subsequent P34 work now has **63 checked Lean theorems**, including source matrix/Tanner comparison, complete four- and six-cycle criteria, exact girth eight for the nonzero normalized 2-by-2 family, and the 3-by-3 modulo-seven example. This is supporting progress: the full girth-eight design criterion remains unproved and is not counted as an additional fully formalized or proved target. Complete proof coverage remains **1/108**. [Exact checked scope, sources and reproducibility](../formalization/cyclic-lifts/README.md).
+The subsequent P34 work now has **75 checked Lean theorems**. A general simple eight-cycle combines with the complete four/six-cycle tests to give a necessary-and-sufficient girth-eight criterion, including the expanded binary matrix theorem and an equivalent formulation using pairs of 2-by-2 rectangles. The recorded `L-P34-girth-eight` target now has a verified statement and complete proof for cyclic permutation blocks with at least two rows and columns and positive lift size. This raises current proof coverage to **2/108**. The older discovery audit below and its JSON remain historical evidence, not the current proof count. Other graph-property optimization targets and priority claims remain separate. [Exact checked scope, source credit and reproducibility](../formalization/cyclic-lifts/README.md).
 
 ## The previously unassessed targets
 
@@ -26,7 +26,7 @@ This pass assessed the **12 eligible targets** left unassessed after the two lit
 | P33 neighborhood-color interval constancy | 1 | No matching statement identified; reciprocal-coloring and ordinary graph-neighborhood hits concern different problems. |
 | F11 assimilation smallness condition | 1 | No matching PDE assimilation statement identified. Most external “assimilation” hits concern phonology or JavaScript Promises. |
 | F14 counting-query randomness/accuracy/efficiency | 3 | SampCert provides relevant privacy foundations, but the inspected declarations do not give the requested joint randomness, accuracy and efficiency bounds or randomness lower bound. |
-| P34 lifted-product girth-eight conditions | 1 | Lifted-product definitions and CSS orthogonality exist in LeanPool; these do not characterize girth eight. |
+| P34 lifted-product girth-eight conditions | 1 | Historical search found only related LeanPool background; the subsequent implementation above now supplies a complete checked characterization. |
 | F23 accuracy/margin dependence of list replicability | 3 | No exact list-replicability definitions or target statements identified in the searched sources. |
 | F24 list-size and VC-dimension/index bounds | 3 | VC-dimension background exists; no matching list-replicability or Z2-index target identified. |
 

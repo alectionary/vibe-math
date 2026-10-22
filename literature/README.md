@@ -26,9 +26,9 @@ See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more
 
 The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discovery backlog; one of 108 eligible targets retains a verified Lean proof (0.93%). Related source-level infrastructure is distinguished from exact target coverage.
 
-The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and recommends the P34 girth-eight problem as the next bounded project.
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and now records completion of the selected P34 girth-eight target.
 
-The recommended P34 project has now completed [three bounded formalization stages](../formalization/cyclic-lifts/README.md): complete four- and six-cycle criteria, a uniform normalized 2-by-2 girth-eight family, and a checked 3-by-3 example, with no claim to the full girth-eight question.
+The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is 2/108; priority claims and other graph properties remain separate.
 
 ## Counts and their meaning
 

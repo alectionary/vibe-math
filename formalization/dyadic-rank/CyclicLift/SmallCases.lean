@@ -41,12 +41,6 @@ theorem two_by_two_no_six {r : ℕ} (B : Fin 2 → Fin 2 → ZMod r) :
   exact two_grid_triangle c0 c1 c2 (xSupport_common_checks v0 c0 c1 h00 h01)
     (xSupport_common_checks v1 c1 c2 h11 h12) (xSupport_common_checks v2 c2 c0 h22 h20)
 
-def eightWalk {W : Type*} {G : SimpleGraph W} {a b c d e f g h : W}
-    (hab : G.Adj a b) (hbc : G.Adj b c) (hcd : G.Adj c d) (hde : G.Adj d e)
-    (hef : G.Adj e f) (hfg : G.Adj f g) (hgh : G.Adj g h) (hha : G.Adj h a) :
-    G.Walk a a :=
-  .cons hab (.cons hbc (.cons hcd (.cons hde (.cons hef (.cons hfg (.cons hgh (.cons hha .nil)))))))
-
 abbrev twoCheck {r : ℕ} (i j : Fin 2) (a : ZMod r) :
     (XVariable (Fin 2) (Fin 2) ⊕ XCheck (Fin 2) (Fin 2)) × ZMod r := (.inr (i,j),a)
 abbrev twoLeft {r : ℕ} (k j : Fin 2) (a : ZMod r) :

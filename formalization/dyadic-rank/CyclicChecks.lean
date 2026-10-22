@@ -49,6 +49,26 @@ example {I J : Type*} {r : ℕ} (B : I → J → ZMod r) :
         j0 ≠ j1 ∧ j1 ≠ j2 ∧ j0 ≠ j2 ∧ baseHexagon B i0 i1 i2 j0 j1 j2 = 0 :=
   xGraph_native_sixCycle_iff B
 
+-- Arbitrary dimensions and arbitrary exponents: the actual binary-matrix criterion.
+example {I J : Type*} [Nontrivial I] [Nontrivial J] {r : ℕ} (B : I → J → ZMod r) :
+    (matrixTanner (hX B)).girth = 8 ↔
+      (∀ a b c d, a ≠ b → c ≠ d → baseRectangle B a b c d ≠ 0) ∧
+      (∀ a b c d e f, a ≠ b → b ≠ c → a ≠ c → d ≠ e → e ≠ f → d ≠ f →
+        baseHexagon B a b c d e f ≠ 0) := matrixTanner_hX_girth_characterization B
+
+-- Reprove the larger example by the general theorem, with no bespoke upper-bound argument.
+example : (xGraph sevenBase).girth = 8 :=
+  (xGraph_girth_characterization sevenBase).mpr ⟨sevenBase_rectangles, sevenBase_hexagons⟩
+
+-- The upper bound works for arbitrary, unnormalized exponents over a composite modulus.
+example (B : Fin 3 → Fin 4 → ZMod 6) : (xGraph B).egirth ≤ 8 := xGraph_egirth_le_eight B
+
+-- The characterization also detects failure: zero rectangles prevent exact girth eight.
+example : (xGraph (fun (_ _ : Fin 2) => (0 : ZMod 7))).girth ≠ 8 := by
+  intro h
+  have hc := ((xGraph_girth_characterization _).mp h).1
+  exact hc 0 1 0 1 (by decide) (by decide) (by simp [baseRectangle])
+
 #print axioms CyclicLift.VoltageGraph.displacement_nil
 #print axioms CyclicLift.VoltageGraph.displacement_cons
 #print axioms CyclicLift.VoltageGraph.endpoint_fiber
@@ -112,3 +132,15 @@ example {I J : Type*} {r : ℕ} (B : I → J → ZMod r) :
 #print axioms CyclicLift.sevenEight_length
 #print axioms CyclicLift.sevenBase_girth
 #print axioms CyclicLift.sevenBase_matrix_girth
+#print axioms CyclicLift.mixedEight_isCycle
+#print axioms CyclicLift.mixedEight_length
+#print axioms CyclicLift.xGraph_girth_le_eight
+#print axioms CyclicLift.xGraph_girth_eq_eight_iff_no_short
+#print axioms CyclicLift.xGraph_girth_eq_eight_iff
+#print axioms CyclicLift.matrixTanner_hX_girth_eq_eight_iff
+#print axioms CyclicLift.baseHexagon_eq_rectangle_add
+#print axioms CyclicLift.xGraph_girth_eq_eight_iff_rectangles
+#print axioms CyclicLift.xGraph_exists_eight_cycle
+#print axioms CyclicLift.xGraph_egirth_le_eight
+#print axioms CyclicLift.xGraph_girth_characterization
+#print axioms CyclicLift.matrixTanner_hX_girth_characterization

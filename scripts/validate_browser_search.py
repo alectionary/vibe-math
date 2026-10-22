@@ -18,11 +18,15 @@ added=[rows[k] for k in audit['added_target_ids']]
 assessed={r['target_id'] for r in load('lean-coverage-review.json')['assessed_entries']}
 assert sum(r['eligible_for_coverage'] for r in added)==audit['added_eligible_targets']==7
 for r in added:
- if r['id'] in assessed:
+ if r['id']=='L-P34-girth-eight':
+  assert r['lean_statement_status']=='verified_lean_statement'
+  assert r['lean_proof_status']=='verified_complete_lean_proof'
+  assert r['verified_artifact']['statement_declaration']=='CyclicLift.matrixTanner_hX_girth_characterization'
+ elif r['id'] in assessed:
   assert r['lean_statement_status']=='no_exact_statement_identified'
   assert r['lean_proof_status']=='no_exact_proof_identified'
  else:assert r['lean_statement_status']==r['lean_proof_status']=='not_assessed_in_this_extension'
- assert not r.get('verified_artifact')
+ if r['id']!='L-P34-girth-eight':assert not r.get('verified_artifact')
  for o in r['occurrences']:
   assert o['source_id'] in audit['added_paper_ids']
   assert o['source_sha256']==manifest[o['source_id']]['sha256']

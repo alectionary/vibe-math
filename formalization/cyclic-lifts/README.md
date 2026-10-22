@@ -1,8 +1,50 @@
 # Cyclic-lift groundwork for the P34 girth-eight question
 
-Three bounded stages are checked in Lean: **63 theorems**, including a faithful binary-matrix model, complete four- and six-cycle tests, a **uniform girth-eight family**, and a checked **3-by-3 girth-eight example**. For the normalized exponent matrix `[[0,0],[0,t]]`, every nonzero `t` gives an X Tanner graph of girth exactly eight, for every positive lift size. **The general P34 design question remains unfinished in this project.** These supporting results do not add a completed inventory target; complete target proof coverage remains 1/108.
+The **general girth-eight characterization is checked in Lean**, with **75 audited theorems** across the library. For any exponent matrix with at least two rows and columns, the lifted-product X Tanner graph has a simple eight-cycle. Its girth is exactly eight **if and only if** every distinct-row/column rectangle sum and every distinct-triple hexagon sum is nonzero. The theorem also applies directly to the expanded binary parity-check matrix. This completes the recorded P34 girth target for the source model; inventory proof coverage is now **2/108 (1.85%)**. Connectivity, absorbing sets and other decoding-property optimization are separate targets.
 
 The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Kirsten D. Morris and Patricija Šapokaitė, *Graphical Analysis of Lifted Product Code Constructions*, arXiv:2606.11987v1 (June 10, 2026). Its Equation (2.1) fixes the orientation of lift labels, and Equation (2.3) specifies the particular construction. The paper cites Gross and Tucker's *Topological Graph Theory* for its general graph-lift results. We use the paper as our source; we have not independently audited that book. Walk-closure and alternating-sum criteria are established graph-lift groundwork, and no priority claim is made for this mathematics or the finite example. [Primary paper](https://arxiv.org/html/2606.11987v1).
+
+## General theorem and scope
+
+Let `B` be an `m`-by-`n` exponent matrix over Z/rZ, with `m,n ≥ 2` and positive `r`. Every entry represents a circulant **permutation** block: exponent zero denotes the identity block, not a missing or zero matrix block. Let `G_HX` be the Tanner graph of `[B tensor I_n | I_m tensor B*]`, in the indexing proved equivalent to the expanded binary matrix by `xGraph_eq_matrixTanner`.
+
+Define
+
+```
+R(a,b;c,d) = B[a,c] - B[a,d] + B[b,d] - B[b,c]
+H(a,b,c;d,e,f) = B[a,d] - B[a,e] + B[b,e] - B[b,f] + B[c,f] - B[c,d].
+```
+
+Then `girth(G_HX) = 8` **if and only if** both conditions hold:
+
+1. `R(a,b;c,d) ≠ 0` for every pair of distinct rows and distinct columns.
+2. `H(a,b,c;d,e,f) ≠ 0` for every triple of pairwise distinct rows and pairwise distinct columns.
+
+All arithmetic is modulo `r`. `baseHexagon_eq_rectangle_add` also checks
+
+```
+H(a,b,c;d,e,f) = R(a,b;d,e) + R(b,c;d,f).
+```
+
+Thus the second condition can be expressed entirely as a compatibility condition on pairs of 2-by-2 rectangle voltages: the two indicated sums must not cancel. This is `xGraph_girth_eq_eight_iff_rectangles`; merely requiring every rectangle to be nonzero is insufficient, as the ternary example below demonstrates.
+
+The main declarations are `xGraph_girth_characterization` and `matrixTanner_hX_girth_characterization`. They use `[Nontrivial I] [Nontrivial J]` to express at least two row and column indices; witness-based versions accept explicit unequal indices. No normalization, connectedness, coprimality or primality assumption is imposed. The graph proof even extends to infinite index types and `ZMod 0`, but those extensions are not the source's finite circulant model. Sparse matrices with missing permutation blocks and noncommuting permutation lifts are outside this general eight-cycle theorem.
+
+## Why an eight-cycle always exists
+
+Choose distinct rows `i0,i1`, distinct columns `j0,j1`, and any indices `k,l` for the variable labels. Write `A_i = B[i,k]` and `D_j = B[l,j]`. The native walk `mixedEight` has vertices and fibers
+
+```
+C_i0,j0(A_i0-D_j0) → L_k,j0(-D_j0) → C_i1,j0(A_i1-D_j0)
+ → R_i1,l(A_i1) → C_i1,j1(A_i1-D_j1) → L_k,j1(-D_j1)
+ → C_i0,j1(A_i0-D_j1) → R_i0,l(A_i0) → C_i0,j0(A_i0-D_j0).
+```
+
+Every edge satisfies the source's exponent equation. The four check projections are distinct rectangle corners, the two left-variable projections are distinct, and the two right-variable projections are distinct. The block tags distinguish left variables from right variables. Consequently all eight lifted vertices are distinct, regardless of their fiber values. `mixedEight_isCycle` checks simplicity, `mixedEight_length` checks length eight, and `xGraph_exists_eight_cycle` packages the witness in arbitrary dimensions. `xGraph_egirth_le_eight` proves the extended-girth bound as well, so the argument explicitly excludes acyclicity rather than relying on the ordinary girth convention of zero for acyclic graphs.
+
+The converse/forward assembly is short once this witness is available: girth eight forbids four- and six-cycles; conversely the complete short-cycle criteria exclude those lengths, bipartite coloring excludes odd lengths, and the eight-cycle attains the bound. The independent consumer rederives the modulo-seven example through the general criterion and checks the bound at a composite modulus with arbitrary, unnormalized exponents.
+
+This is a verified characterization for the recorded graph model, not a claim to a new mathematical theorem or first Lean formalization. Comparison with published cyclic-lift criteria remains a separate literature task. The source's accompanying questions about other graph properties and decoding optimization are not answered by this girth theorem.
 
 ## Checked results
 
@@ -30,7 +72,7 @@ C_00(0) → L_00(0) → C_10(0) → R_10(0) → C_11(0)
 
 Here `R_il` denotes a right-block variable; the other symbols follow the convention below. All eight vertices are distinct, and all eight edges use zero exponents, independently of `t`. Lean checks the cycle, excludes every shorter simple cycle, and concludes Mathlib's native `girth = 8`. The construction works without a connectedness assumption and does not require `t` to generate the cyclic group. For positive modulus, the expanded binary matrix has `4r` rows and `8r` columns; the Tanner graph has `12r` vertices.
 
-The no-six theorem is stronger than needed for this family: it applies to arbitrary 2-by-2 exponent matrices. The exact girth theorem currently uses the normalized family. We make no novelty claim for either result. The six-cycle criterion below now applies in arbitrary dimensions. A general exact-girth-eight construction theorem remains separate work.
+The no-six theorem is stronger than needed for this family: it applies to arbitrary 2-by-2 exponent matrices. The exact girth theorem currently uses the normalized family. We make no novelty claim for either result. The six-cycle criterion below now applies in arbitrary dimensions. The general exact-girth-eight characterization is now proved as stated above.
 
 ## Complete six-cycle characterization
 
@@ -44,7 +86,7 @@ This is `baseHexagon` in the code. The generic sparse-support theorem is `hasSix
 
 Projection injectivity is essential to the converse. In a simple six-cycle, each pair of variables shares a check, and each pair of checks shares a variable. Repeating a projected vertex would therefore also repeat its fiber, contradicting simplicity. With exactly three vertices per side, this rules out every repeated projection. The argument does not assert this for longer cycles. After projection, P34's support equations exclude all six mixed left/right block patterns; the two pure patterns give the displayed test.
 
-Together with the four-cycle equivalence and bipartite coloring, this provides a complete entrywise test for excluding simple cycles shorter than eight. An exact-girth-eight statement additionally needs an eight-cycle witness; that witness is checked for the examples here, but not yet supplied uniformly for arbitrary matrices.
+Together with the four-cycle equivalence and bipartite coloring, this provides a complete entrywise test for excluding simple cycles shorter than eight. The general `mixedEight` witness now supplies the exact upper bound uniformly whenever there are at least two rows and columns, completing the girth-eight equivalence.
 
 ## A checked 3-by-3 example
 
@@ -60,7 +102,7 @@ Over Z/7Z, use
 
 `sevenEight` uses the same zero-fiber mixed-block eight-cycle displayed for the 2-by-2 family. `sevenEight_isCycle` checks all vertices are distinct and `sevenEight_length` checks length eight. Bipartite coloring excludes odd cycles, completing `sevenBase_girth : (xGraph sevenBase).girth = 8`. The consumer independently checks that `sevenBase` has exactly the displayed entries. It also checks that the expanded binary `hX` matrix has 63 rows and 126 columns, so the Tanner graph has 189 vertices. `sevenBase_matrix_girth` gives its native girth directly.
 
-The candidate came from the earlier finite search recorded below. This step turns its Python girth observation into a Lean theorem. It makes no claim that the matrix or the underlying mathematics is new, and does not establish the source's entire general design/optimization program.
+The candidate came from the earlier finite search recorded below. This step turns its Python girth observation into a Lean theorem. It makes no claim that the matrix or the underlying mathematics is new, and leaves the source's other graph-property and decoding-optimization questions separate.
 
 ## A checked six-cycle obstruction
 
@@ -119,7 +161,8 @@ The Lean sources are in the shared environment:
 - [ShortCycles.lean](../dyadic-rank/CyclicLift/ShortCycles.lean): native six-cycle equivalence, hexagon closure, projection injectivity, triangle obstruction, bipartite coloring and the girth-eight assembly theorem.
 - [SixCharacterization.lean](../dyadic-rank/CyclicLift/SixCharacterization.lean): complete generic sparse-support and source-matrix six-cycle equivalences, including projected distinctness and mixed-block exclusion.
 - [LargerCases.lean](../dyadic-rank/CyclicLift/LargerCases.lean): kernel-checked 3-by-3 modular exclusions, explicit eight-cycle and exact girth theorem for the voltage and expanded matrix graphs.
+- [GirthCharacterization.lean](../dyadic-rank/CyclicLift/GirthCharacterization.lean): arbitrary-exponent simple eight-cycle, ordinary/extended girth bounds, full iff characterization, rectangle-only reformulation, and binary-matrix theorem.
 - [SmallCases.lean](../dyadic-rank/CyclicLift/SmallCases.lean): no-six theorem for arbitrary 2-by-2 bases, uniform normalized girth-eight family and the ternary six-cycle obstruction.
 - [CyclicChecks.lean](../dyadic-rank/CyclicChecks.lean): independent consumer statements and the axiom audit.
 
-The requested six-cycle characterization and 3-by-3 girth-eight verification are complete. The next larger milestone is a uniform eight-cycle/upper-bound argument and useful sufficient-condition families in arbitrary dimensions, followed by a precise comparison with published cyclic-lift criteria. The full source-requested design target remains unrecorded as solved; inventory proof coverage stays 1/108. Connectivity, absorbing-set optimization and expansion are separate properties not proved by the girth theorem.
+The recorded girth-eight target is complete for the stated X-graph model and dimension assumptions. The remaining research tasks are a careful published-proof comparison and independent questions about connected constructions, absorbing sets, expansion and decoding performance. No priority claim has been established.

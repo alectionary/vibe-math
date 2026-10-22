@@ -12,9 +12,9 @@ The inventory now contains **181 canonical entries**: the original 40 dissertati
 | Additional article targets in the coverage denominator | 69 |
 | Additional directions/formulation/method entries outside the denominator | 72 |
 | Combined eligible targets | 108 = 39 + 69 |
-| Eligible targets with an identified, verified proof-assistant statement | 1/108 (0.93%) |
-| Eligible targets with an identified, verified Lean statement | 1/108 (0.93%) |
-| Eligible targets with a complete checked Lean proof | 1/108 (0.93%) |
+| Eligible targets with an identified, verified proof-assistant statement | 2/108 (1.85%) |
+| Eligible targets with an identified, verified Lean statement | 2/108 (1.85%) |
+| Eligible targets with a complete checked Lean proof | 2/108 (1.85%) |
 | Eligible targets with checked finite cases, without a complete proof | 0/108 |
 | Additional identified Lean statements without a build audit | 1/108 |
 | Eligible targets with Lean discovery still unassessed in this extension | 0/108 |
@@ -24,7 +24,7 @@ The inventory now contains **181 canonical entries**: the original 40 dissertati
 | Withdrawn historical manuscripts screened | 1 |
 | Not fully assessed | 1/58 |
 
-**Current artifact coverage includes our [dyadic rank theorem](../formalization/dyadic-rank/README.md): a general Lean statement and a complete checked proof of that target by direct induction.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse now has a complete Lean proof of the recorded statement. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
+**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md) and the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse and L-P34-girth-eight now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
 The historical Leray–Hopf uniqueness entry is held: later primary literature reports nonuniqueness, and the source’s domain/forcing/solution class must be fixed before a current comparison. Its entry links the later report. A related public Lean repository concerns forced smooth breakdown, not weak uniqueness; it was not built here.
 
@@ -1915,13 +1915,13 @@ Characterize sufficient base-matrix conditions ensuring girth eight for the spec
 
 - Type: classification or construction; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retain definitions and regimes at the cited locator.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
-- Source-described status: open as stated in source; current resolution: not independently established.
-- Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/README.md). 63 checked supporting theorems: exact matrix comparison, complete generic sparse-support and source-matrix four/six-cycle criteria, exact girth eight for the nonzero normalized 2x2 family and the 3x3 modulo-seven matrix [[0,0,0],[0,1,2],[0,3,6]]. General exact-girth-eight design criterion and full target remain unfinished.
+- Proof-assistant statement: verified lean statement. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
+- Source-described status: open as stated in source; current resolution: proved in lean for recorded statement.
+- Verified artifact: [CyclicLift.matrixTanner_hX_girth_characterization](../formalization/cyclic-lifts/README.md); Complete necessary-and-sufficient girth-eight criterion for the P34 X Tanner graph with at least two rows and columns, all entries circulant permutation blocks, and positive finite lift size. Arbitrary exponents; no normalization or connectedness assumption. Every distinct rectangle voltage must be nonzero, and every distinct-row/column hexagon voltage must be nonzero; equivalently a compatibility condition on pairs of 2x2 rectangles. General simple eight-cycle supplies the upper bound. Other graph-property/decoding optimization targets remain separate..
 - [P34: Section 5 after Theorem 5.1](https://arxiv.org/html/2606.11987v1); extraction lines 331–332; explicit question.
 - Related, not merged: L-P09-structured.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
-- Related formalization: [https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/LiftedProduct.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/LiftedProduct.lean). This project checks the P34 binary matrix/Tanner graph model, complete four- and six-cycle equivalences in arbitrary dimensions, and exact girth eight for the normalized 2x2 family and a 3x3 modulo-seven example. SixCharacterization.lean and LargerCases.lean complete the latest bounded milestone; the general source target remains unfinished.
+- Related formalization: [https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean). This project proves a general simple eight-cycle and exact native girth-eight iff nonzero rectangle/hexagon sums, including a 2x2-rectangle-only formulation and the expanded binary-matrix theorem. Scope: X construction, at least two rows and columns, all permutation blocks; positive modulus for the source finite model.
 
 ### L-P34-decoding-effects
 

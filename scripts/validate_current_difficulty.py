@@ -9,7 +9,7 @@ claims={c['id']:c for c in json.loads((R/'literature/open-problems.json').read_t
 assert len(r)==len({x['target_id'] for x in r})==len(claims)==s['entries']==181
 assert {x['target_id'] for x in r}==set(claims)
 assert sum(x['eligible_for_coverage'] for x in r)==s['eligible_targets']==108
-assert sum(x['completed'] for x in r)==s['completed_lean_targets']==1
+assert sum(x['completed'] for x in r)==s['completed_lean_targets']==2
 assert sum(bool(x['gate']) for x in r)==s['gated_entries']==76
 assert sum(bool(x['gate']) and x['eligible_for_coverage'] for x in r)==s['eligible_gated_entries']==3
 assert s['newly_assessed_entries']==67 and s['historical_priors_retained']==114
@@ -26,7 +26,8 @@ for x in r:
  if not x['eligible_for_coverage']:assert x['gate']
 for key,field in [('statement_setup','statement_tiers'),('proof_transfer_given_correct_complete_proof','conditional_proof_tiers')]:
  assert dict(collections.Counter(str(x[key]['tier']) if x[key] else 'hold' for x in r if x['eligible_for_coverage']))==s[field]
-assert s['recommendation']=='L-P34-girth-eight' and s['no_new_lean_statements_or_proofs']
+assert s['recommendation']=='L-P34-girth-eight' and not s['no_new_lean_statements_or_proofs']
+assert s['recommendation_status']=='selected_project_completed_for_recorded_girth_scope'
 for file in ['NEXT-PROJECT.md','CURRENT-DIFFICULTY.md']:
  doc=(D/file).read_text()
  for href in re.findall(r'\]\(([^)]+)\)',doc):
@@ -35,4 +36,4 @@ for file in ['NEXT-PROJECT.md','CURRENT-DIFFICULTY.md']:
 report=(D/'CURRENT-DIFFICULTY.md').read_text();page=(D/'current-difficulty.html').read_text()
 for x in r:assert f'### {x["target_id"]}\n' in report and x['target_id'] in page
 assert 'given a correct complete proof' in (D/'NEXT-PROJECT.md').read_text()
-print('Validated 181 current assessments, 67 additions, 108 eligible targets, one completed target, scope gates and unestimated discovery times.')
+print('Validated 181 current assessments, 67 additions, 108 eligible targets, two completed targets, scope gates and unestimated discovery times.')

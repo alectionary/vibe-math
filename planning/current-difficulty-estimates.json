@@ -7459,9 +7459,9 @@
     "target_id": "L-P34-girth-eight",
     "title": "Characterize sufficient base-matrix conditions ensuring girth eight for the specified lifted-product Tanner graphs.",
     "eligible_for_coverage": true,
-    "current_resolution_status": "not_independently_established",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "proved_in_lean_for_recorded_statement",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
     "assessment_date": "2026-10-22",
     "confidence": "low",
     "discovery_time_estimate": null,
@@ -7478,28 +7478,40 @@
         "relation": "explicit_question"
       }
     ],
-    "basis": "New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation.",
+    "basis": "General characterization built and axiom-audited October 22; prior effort estimates retained separately, not measured implementation timings.",
     "background_evidence": [
       "literature/LEAN-COVERAGE.md",
       "planning/difficulty-sources.json"
     ],
     "gate": null,
-    "completed": false,
-    "research_status": "open_or_unresolved_in_recorded_sources; present status not exhaustively established",
+    "completed": true,
+    "research_status": "already_proved_for_recorded_statement",
     "family": "cyclic_lift_graphs",
-    "rationale": "Cyclic lifts reduce short closed walks to modular label sums, but the exact lifted-product Tanner graph and simple-cycle conditions must be proved faithful.",
-    "first_milestone": "Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.",
-    "research_obstacle": 3,
+    "rationale": "A faithful matrix/Tanner comparison, complete short-cycle equivalences, and a general simple eight-cycle now prove the recorded girth-eight characterization for all finite dimensions at least two and all positive cyclic lift sizes. Other graph-property optimization questions remain separate.",
+    "first_milestone": "Maintain the arbitrary-dimension consumer and complete axiom audit; compare the precise criterion with published cyclic-lift criteria before priority claims.",
+    "research_obstacle": null,
     "statement_setup": {
-      "tier": 2,
-      "band": "4–10 expert person-days"
+      "tier": 0,
+      "band": "complete; no remaining setup for the recorded target"
     },
     "proof_transfer_given_correct_complete_proof": {
-      "tier": 3,
-      "band": "1–4 expert person-months"
+      "tier": 0,
+      "band": "complete; no remaining proof work for the recorded target"
     },
-    "progress_note": "Three bounded stages completed October 22: 63 checked supporting Lean theorems, including complete four/six-cycle criteria in arbitrary dimensions and exact girth eight for the normalized 2x2 family and the 3x3 modulo-seven example. General design target remains unfinished; original tiers are not implementation timings.",
-    "progress_artifact": "formalization/cyclic-lifts/README.md"
+    "progress_note": "Completed: 75 checked Lean theorems include the general eight-cycle bound and exact girth-eight characterization, with a formulation using only pairs of 2x2 rectangle voltages. The recorded girth target now counts as verified; novelty and other decoding properties remain unassessed.",
+    "progress_artifact": "formalization/cyclic-lifts/README.md",
+    "prior_planning_estimates": {
+      "statement_setup": {
+        "tier": 2,
+        "band": "4–10 expert person-days"
+      },
+      "proof_transfer_given_correct_complete_proof": {
+        "tier": 3,
+        "band": "1–4 expert person-months"
+      },
+      "rationale": "Cyclic lifts reduce short closed walks to modular label sums, but the exact lifted-product Tanner graph and simple-cycle conditions must be proved faithful.",
+      "first_milestone": "Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion."
+    }
   },
   {
     "target_id": "L-P34-decoding-effects",

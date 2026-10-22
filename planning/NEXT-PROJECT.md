@@ -1,14 +1,14 @@
 # Current difficulty assessment and next project
 
-Checked October 22, 2026. **Tackle L-P34-girth-eight next:** sufficient base-matrix conditions ensuring girth eight for the single-base-matrix lifted-product construction of Freij-Hollanti, Morris and Šapokaitė. Begin with a faithful cyclic-lift graph model and short-walk lemmas, then search for and prove conditions ruling out short cycles. The paper explicitly asks for sufficient conditions after Theorem 5.1; its arXiv record currently lists v1. This recommendation is a planning judgment, not evidence that the general question has a short proof. [Primary question, Section 5](https://arxiv.org/html/2606.11987v1), [version record](https://arxiv.org/abs/2606.11987).
+Checked October 22, 2026. **The selected L-P34-girth-eight project is complete for its recorded scope:** a necessary-and-sufficient criterion for the all-circulant-permutation-block X Tanner graph with at least two rows and columns and positive lift size. A general simple eight-cycle supplies the upper bound. Connectivity and other decoding-property optimization remain separate questions. The original planning rationale and first-stage plan are retained below; no new project has been started. [Primary question, Section 5](https://arxiv.org/html/2606.11987v1), [checked theorem and scope](../formalization/cyclic-lifts/README.md).
 
-All **181 inventory entries** now have current planning assessments, including the **67 additions** missing from the historical report. The cohort contains **108 eligible targets**: one completed Lean target, three with formulation decisions still needed for planning, and 104 other targets with effort tiers. The other 73 entries are directions, method requests or held statements outside the coverage denominator. Their scope must be fixed before scheduling a general proof. The [original 114-entry assessment](LEAN-DIFFICULTY.md) remains a historical snapshot.
+All **181 inventory entries** now have current planning assessments, including the **67 additions** missing from the historical report. The cohort contains **108 eligible targets**: two completed Lean targets, three with formulation decisions still needed for planning, and 103 other targets with effort tiers. The other 73 entries are directions, method requests or held statements outside the coverage denominator. Their scope must be fixed before scheduling a general proof. The [original 114-entry assessment](LEAN-DIFFICULTY.md) remains a historical snapshot.
 
 [Every current assessment](CURRENT-DIFFICULTY.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json) · [Current summary](current-difficulty-summary.json) · [Lean coverage evidence](../literature/LEAN-COVERAGE.md).
 
 ## Progress after starting the project
 
-Three bounded stages are now checked: 63 Lean theorems, including the source-matrix comparison, complete four- and six-cycle criteria, exact girth eight for every nonzero normalized 2-by-2 matrix, and the 3-by-3 modulo-seven example. The Python scan covers 432 cases. The general girth-eight criterion remains unfinished; no new full inventory target is counted as proved. [Implementation, exact scope and verification](../formalization/cyclic-lifts/README.md). The effort bands below are the original planning priors, not a measurement of the work now completed.
+The library now has 75 audited Lean theorems, including the arbitrary-exponent eight-cycle and full entrywise girth-eight characterization. The inventory now records two complete Lean targets out of 108. Earlier small families and the 432-case Python scan remain regression evidence. [Implementation, exact scope and verification](../formalization/cyclic-lifts/README.md). The original P34 effort estimates are retained in its structured planning record; completed setup/proof work is now tier zero.
 
 ## What the ratings mean
 
@@ -24,13 +24,13 @@ There are three separate tasks: build a faithful statement and its definitions; 
 
 These are low-confidence scenarios, not measured implementation times, deadlines or confidence intervals. The first 114 entries mostly retain their earlier priors, with completion, eligibility and scope checked against the current inventory. The 67 additions use source-specific wording and family priors informed by the recent Lean search. The leading coding candidates received another read of their relevant primary sections. Most entries have not received an implementation spike or a full dependency audit. A missing API can move a rating substantially.
 
-The dyadic rank/support target has zero remaining statement/proof work for its recorded scope because it is already verified. Its success demonstrates that a compact algebraic route can change a project's prospects; it does not calibrate the time needed to solve unrelated open questions. Current planning changes no proof-coverage count.
+The dyadic rank/support target has zero remaining statement/proof work for its recorded scope because it is already verified. Its success demonstrates that a compact algebraic route can change a project's prospects; it does not calibrate the time needed to solve unrelated open questions. P34 now also has zero remaining work for its recorded girth statement; its implementation is separately reflected in the current coverage count.
 
 ## Shortlist
 
 | Priority and target | Statement tier | Conditional full proof-transfer tier | Mathematical obstacle and first useful result |
 | --- | ---: | ---: | --- |
-| **1. P34 girth-eight conditions** | **2** | **3** | Concrete modular labels and finite graph walks. Prove displacement/closure and a four-cycle criterion; then handle six-cycle projections and seek a useful family of sufficient conditions. |
+| **Completed: P34 girth-eight conditions** | **0** | **0** | General simple eight-cycle and exact rectangle/hexagon criterion now verified; published-priority comparison and other graph properties are separate. |
 | **2. P11 forbidden-set completeness at lengths six/eight** | **2** | **3** | Strong continuity with our dyadic work, but rank lemmas do not automatically supply a Tanner-graph API. Audit the exact forbidden-set routine and compare it against exhaustive short-cycle enumeration. |
 | **3. P27 star-saturated, clique-free graph existence** | **2** | **3** | Good finite search and certificate route. Start with one fixed parameter pair and small orders, while preserving saturation under every missing-edge addition. The general all-parameter classification remains a larger mathematical task. |
 | F16 explicit (4,2)/(4,0) absorbing-set counts | 3 | 3 | A bounded four-variable pattern is approachable, but induced-subgraph corrections and the spectral/Fourier bridge add work. First certify the combinatorial count on tiny Tanner graphs. |
@@ -43,7 +43,7 @@ The shortlist ranks suitability for our next project, not probabilities of solvi
 
 The two counterchecked graph statements are not open targets to prove as written. The earlier triangle-bound counterexamples must retain credit, and the small-order periodicity defect needs a repaired formulation. Formalizing those counterexamples would be a useful short verification exercise, but it would not solve another currently open problem.
 
-## P34: a bounded first stage
+## Original P34 first-stage plan (completed)
 
 Allow roughly **2–4 expert person-weeks for the first stage**, as a planning scenario rather than a promise:
 

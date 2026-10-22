@@ -5575,31 +5575,58 @@
       "L-P09-structured"
     ],
     "status_as_of_source": "open_as_stated_in_source",
-    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "current_resolution_status": "not_independently_established",
+    "proof_assistant_statement_status": "verified_lean_statement",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "current_resolution_status": "proved_in_lean_for_recorded_statement",
     "search_family": "browser_scholar_x_extension",
     "added_on": "2026-10-22",
     "supplementary_search_evidence": "literature/lean-coverage-review.json; literature/lean-coverage-local-searches.json; literature/lean-coverage-github-searches.json; literature/lean-coverage-candidates.json",
     "lean_discovery_checked_on": "2026-10-22",
-    "lean_discovery_note": "Target reviewed in bounded family-level discovery. Related background is not exact target coverage. Some GitHub queries were capped or rate-limited; alternate terminology and unindexed code may be missed.",
+    "lean_discovery_note": "Target reviewed in bounded family-level discovery. Related background is not exact target coverage. Some GitHub queries were capped or rate-limited; alternate terminology and unindexed code may be missed. This describes the preimplementation search; the subsequently built general characterization is recorded in verified_artifact.",
     "related_formalization_evidence": [
       {
         "url": "https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean",
         "finding": "Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited."
       },
       {
-        "url": "https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/LiftedProduct.lean",
-        "finding": "This project checks the P34 binary matrix/Tanner graph model, complete four- and six-cycle equivalences in arbitrary dimensions, and exact girth eight for the normalized 2x2 family and a 3x3 modulo-seven example. SixCharacterization.lean and LargerCases.lean complete the latest bounded milestone; the general source target remains unfinished."
+        "url": "https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean",
+        "finding": "This project proves a general simple eight-cycle and exact native girth-eight iff nonzero rectangle/hexagon sums, including a 2x2-rectangle-only formulation and the expanded binary-matrix theorem. Scope: X construction, at least two rows and columns, all permutation blocks; positive modulus for the source finite model."
       }
     ],
-    "supporting_lean_artifact": {
+    "prior_bounded_search_status": {
+      "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+      "lean_statement_status": "no_exact_statement_identified",
+      "lean_proof_status": "no_exact_proof_identified"
+    },
+    "prior_supporting_lean_artifact": {
       "readme": "formalization/cyclic-lifts/README.md",
       "verification": "formalization/cyclic-lifts/verification.json",
       "scope": "63 checked supporting theorems: exact matrix comparison, complete generic sparse-support and source-matrix four/six-cycle criteria, exact girth eight for the nonzero normalized 2x2 family and the 3x3 modulo-seven matrix [[0,0,0],[0,1,2],[0,3,6]]. General exact-girth-eight design criterion and full target remain unfinished.",
       "checked_on": "2026-10-22",
       "changes_exact_target_coverage": false
+    },
+    "verified_artifact": {
+      "readme": "formalization/cyclic-lifts/README.md",
+      "source": "formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean",
+      "statement_declaration": "CyclicLift.matrixTanner_hX_girth_characterization",
+      "scope": "Complete necessary-and-sufficient girth-eight criterion for the P34 X Tanner graph with at least two rows and columns, all entries circulant permutation blocks, and positive finite lift size. Arbitrary exponents; no normalization or connectedness assumption. Every distinct rectangle voltage must be nonzero, and every distinct-row/column hexagon voltage must be nonzero; equivalently a compatibility condition on pairs of 2x2 rectangles. General simple eight-cycle supplies the upper bound. Other graph-property/decoding optimization targets remain separate.",
+      "verification": "formalization/cyclic-lifts/verification.json",
+      "checked_dimensions": "all_finite_row_and_column_sizes_at_least_two_and_all_positive_moduli",
+      "proof_declarations": [
+        "CyclicLift.mixedEight_isCycle",
+        "CyclicLift.xGraph_exists_eight_cycle",
+        "CyclicLift.xGraph_egirth_le_eight",
+        "CyclicLift.xGraph_girth_characterization",
+        "CyclicLift.matrixTanner_hX_girth_characterization",
+        "CyclicLift.xGraph_girth_eq_eight_iff_rectangles"
+      ]
+    },
+    "novelty_assessment": {
+      "checked_on": "2026-10-22",
+      "mathematical_priority": "not_established",
+      "lean_formalization_priority": "not_established",
+      "note": "The general entrywise characterization is checked in Lean. Walk-closure and short-cycle conditions are established voltage-graph background; no claim to a new mathematical theorem, proof method, or first Lean formalization follows. Published-criterion comparison remains a separate task."
     }
   },
   {

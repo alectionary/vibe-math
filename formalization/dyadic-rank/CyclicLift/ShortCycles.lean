@@ -12,6 +12,12 @@ def sixWalk {W : Type*} {G : SimpleGraph W} {a b c d e f : W}
     (hde : G.Adj d e) (hef : G.Adj e f) (hfa : G.Adj f a) : G.Walk a a :=
   .cons hab (.cons hbc (.cons hcd (.cons hde (.cons hef (.cons hfa .nil)))))
 
+def eightWalk {W : Type*} {G : SimpleGraph W} {a b c d e f g h : W}
+    (hab : G.Adj a b) (hbc : G.Adj b c) (hcd : G.Adj c d) (hde : G.Adj d e)
+    (hef : G.Adj e f) (hfg : G.Adj f g) (hgh : G.Adj g h) (hha : G.Adj h a) :
+    G.Walk a a :=
+  .cons hab (.cons hbc (.cons hcd (.cons hde (.cons hef (.cons hfg (.cons hgh (.cons hha .nil)))))))
+
 /-- Distinct lifted vertices turn the explicit six-edge walk into a simple cycle. -/
 theorem sixWalk_isCycle {W : Type*} {G : SimpleGraph W} {a b c d e f : W}
     (hab : G.Adj a b) (hbc : G.Adj b c) (hcd : G.Adj c d)

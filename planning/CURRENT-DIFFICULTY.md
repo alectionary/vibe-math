@@ -4,10 +4,10 @@ Checked October 22, 2026. Low-confidence planning priors for all 181 entries. [R
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
-| Already complete | 1 | 1 |
+| Already complete | 2 | 2 |
 | 1 | 1 | 0 |
-| 2 | 13 | 1 |
-| 3 | 41 | 26 |
+| 2 | 12 | 1 |
+| 3 | 41 | 25 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
 | Formulation required | 3 | 3 |
@@ -2558,17 +2558,17 @@ Basis: New family-based planning prior from source target and the bounded Lean-l
 
 Characterize sufficient base-matrix conditions ensuring girth eight for the specified lifted-product Tanner graphs.
 
-- Statement: Tier 2: 4–10 expert person-days.
-- Proof transfer, given a complete proof: Tier 3: 1–4 expert person-months.
-- Research: Relative research obstacle 3/5; discovery time unestimated. open_or_unresolved_in_recorded_sources; present status not exhaustively established
+- Statement: Tier 0: complete; no remaining setup for the recorded target.
+- Proof transfer, given a complete proof: Tier 0: complete; no remaining proof work for the recorded target.
+- Research: Completed target. already_proved_for_recorded_statement
 
-Cyclic lifts reduce short closed walks to modular label sums, but the exact lifted-product Tanner graph and simple-cycle conditions must be proved faithful.
+A faithful matrix/Tanner comparison, complete short-cycle equivalences, and a general simple eight-cycle now prove the recorded girth-eight characterization for all finite dimensions at least two and all positive cyclic lift sizes. Other graph-property optimization questions remain separate.
 
-First milestone: Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.
+First milestone: Maintain the arbitrary-dimension consumer and complete axiom audit; compare the precise criterion with published cyclic-lift criteria before priority claims.
 
-Progress: Three bounded stages completed October 22: 63 checked supporting Lean theorems, including complete four/six-cycle criteria in arbitrary dimensions and exact girth eight for the normalized 2x2 family and the 3x3 modulo-seven example. General design target remains unfinished; original tiers are not implementation timings. [Checked artifact](../formalization/cyclic-lifts/README.md).
+Progress: Completed: 75 checked Lean theorems include the general eight-cycle bound and exact girth-eight characterization, with a formulation using only pairs of 2x2 rectangle voltages. The recorded girth target now counts as verified; novelty and other decoding properties remain unassessed. [Checked artifact](../formalization/cyclic-lifts/README.md).
 
-Basis: New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p34-girth-eight).
+Basis: General characterization built and axiom-audited October 22; prior effort estimates retained separately, not measured implementation timings. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p34-girth-eight).
 
 ### L-P34-decoding-effects
 
