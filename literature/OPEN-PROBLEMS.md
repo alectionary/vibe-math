@@ -1,26 +1,28 @@
 # Expanded open-problem inventory
 
-Checked October 21, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Checked October 22, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **114 canonical entries**: the original 40 dissertation targets and **74 additional article entries**. Of the additions, **35 are specific mathematical questions or tasks suitable for coverage tracking**; the other 39 are research directions, formulation requests, or requests for different proof methods. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **171 canonical entries**: the original 40 dissertation targets and **131 additional article entries**. Of the additions, **62 are specific mathematical questions or tasks suitable for coverage tracking**; the other 69 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 35 |
-| Additional directions/formulation/method entries outside the denominator | 39 |
-| Combined eligible targets | 74 = 39 + 35 |
-| Eligible targets with an identified, verified proof-assistant statement | 1/74 (1.35%) |
-| Eligible targets with an identified, verified Lean statement | 1/74 (1.35%) |
-| Eligible targets with a complete checked Lean proof | 1/74 (1.35%) |
-| Eligible targets with checked finite cases, without a complete proof | 0/74 |
-| Articles/preprints in scope | 31 |
-| Full-text sources screened, including withdrawn history | 30/31 |
-| Current-publication full texts screened | 29 |
+| Additional article targets in the coverage denominator | 62 |
+| Additional directions/formulation/method entries outside the denominator | 69 |
+| Combined eligible targets | 101 = 39 + 62 |
+| Eligible targets with an identified, verified proof-assistant statement | 1/101 (0.99%) |
+| Eligible targets with an identified, verified Lean statement | 1/101 (0.99%) |
+| Eligible targets with a complete checked Lean proof | 1/101 (0.99%) |
+| Eligible targets with checked finite cases, without a complete proof | 0/101 |
+| Additional identified Lean statements without a build audit | 1/101 |
+| Eligible targets with Lean discovery still unassessed in this extension | 5/101 |
+| Articles/preprints in scope | 52 |
+| Full-text sources screened, including withdrawn history | 51/52 |
+| Current-publication full texts screened | 50 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 1/31 |
+| Not fully assessed | 1/52 |
 
 **Current artifact coverage includes our [dyadic rank theorem](../formalization/dyadic-rank/README.md): a general Lean statement and a complete checked proof of that target by direct induction.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse now has a complete Lean proof of the recorded statement. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -36,11 +38,11 @@ The unit is a mathematical question, task, or explicitly labeled direction, not 
 
 Repeated targets share one canonical ID with multiple source occurrences. Related but different systems, hypotheses, or invariants retain different IDs and explicit related-target links. In particular, P01 changes the invariants in the held Geraci question; calmed rotational NSE is distinct from calmed velocity–vorticity; and two-dimensional Ohmic-heating MHD–Boussinesq is distinct from three-dimensional MHD. Local existence and global well-posedness are distinct obligations and are related in the ledger. No logical independence of the counted problems is claimed.
 
-This article set includes predecessor versions and overlapping publications as well as genuinely later papers. “Additional” means newly inventoried, not newly posed after the dissertation. Dates and author relationships remain in [the bibliography](papers.json). No new exhaustive forward-citation census is claimed by this extension.
+This article set includes predecessor versions and overlapping publications as well as genuinely later papers. “Additional” means newly inventoried, not newly posed after the dissertation. Dates and author relationships remain in [the bibliography](papers.json). The October 22 expansion adds 21 screened papers and 57 canonical entries, of which 27 enter the denominator; repeated occurrences are merged. The earlier cohort remains 114 entries and 74 targets. See [expanded search findings and limits](SCHOLARLY-EXPANSION.md).
 
 ## Source coverage and gaps
 
-A full-text screen searched headings, explicit conjectures/questions, future-work passages and conclusion sections, then read their surrounding context. It is not a line-by-line correctness review or a guarantee that every implicit question was extracted. Full-text counts of zero mean “no additional explicit target recorded in this screen”; unavailable text has a null count, never zero. Two talk records from the earlier follow-up are outside the 31-article denominator.
+A full-text screen searched headings, explicit conjectures/questions, future-work passages and conclusion sections, then read their surrounding context. It is not a line-by-line correctness review or a guarantee that every implicit question was extracted. Full-text counts of zero mean “no additional explicit target recorded in this screen”; unavailable text has a null count, never zero. Two talk records from the earlier follow-up are outside the article denominator.
 
 **Three of the four earlier access gaps are closed.** P28 and F02 were recovered as public full-text transcriptions on ResearchGate; no standalone PDF was obtained for either, and their local hashes identify our transcription snapshots. P20’s historical v3 PDF was recovered and screened. Its current v4 remains withdrawn, so the historical directions are held outside the active coverage denominator. **P10 remains inaccessible** and needs a licensed or author-provided copy. [Gap-closure findings](COVERAGE-GAPS.md) · [Retrieval evidence](coverage-gap-retrievals.json) · [Primary withdrawal notice](https://arxiv.org/abs/2209.00110).
 
@@ -77,6 +79,27 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F01](https://arxiv.org/html/2609.02880v1) | full text screened | 4 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
 | [F02](https://www.aimsciences.org/article/doi/10.3934/dcdsb.2025153) | full text screened | 2 | Public 52-page full-text transcription screened, including all main theorems and references. One background open formulation recorded. Theorems 3.2–3.3 give weak uniqueness only for alpha >= 5/4, not the original alpha=1 target. |
 | [F03](https://arxiv.org/html/2404.02288v2) | full text screened | 3 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
+| [P29](https://arxiv.org/html/2606.25493v1) | full text screened | 1 | Later distance-graph work by the dissertation author; cites P21 in reference [1]. |
+| [P30](https://arxiv.org/html/2302.08431v1) | full text screened | 7 | Additional coauthored surface-topology paper listed on Wright’s scholarship page; not an answer to the Alexander-neighbor knot question. |
+| [P31](https://arxiv.org/html/2304.02240v1) | full text screened | 3 | Missing author-paper backfill; later bandit and RL papers explicitly build on its list-replicability framework. |
+| [P32](https://arxiv.org/html/2610.16266v1) | full text screened | 3 | Later coauthored preprint. Its relaxed triangle bound fails an exact finite check; its abstract’s nonexistence conclusion is not accepted here. |
+| [P33](https://arxiv.org/html/2306.12593v1) | full text screened | 4 | Missing overlapping author-paper version; Question 4.1 repeats the dissertation’s neighborhood-color range target. |
+| [F04](https://arxiv.org/html/2512.00553v1) | full text screened | 3 | Later work by coauthors Pavan and Vinodchandran; explicitly cites P31 and F05. PAC policies and policy traces differ from secluded-partition extremizers. |
+| [F05](https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf) | full text screened | 3 | Later coauthor work; cites P31 and extends list replicability to multi-armed and linear bandits. |
+| [F06](https://arxiv.org/html/2605.05139v1) | full text screened | 2 | Later work by Enlow’s coauthors Larios and Pei. Voigt regularization differs from algebraic calming. |
+| [F07](https://arxiv.org/html/2002.03542v2) | full text screened | 14 | Earlier paper by Geraci’s coauthor Kunin, recovered through the expanded search; its convex-polytope conjecture is explicitly restated by F08. |
+| [F08](https://arxiv.org/html/2512.04241v1) | full text screened | 2 | Independent downstream paper citing F07. Conjecture 1.3 restates F07 Question 6.3; covering-relation progress does not settle the convex-polytope conjecture. |
+| [F09](https://arxiv.org/html/2609.27002v1) | full text screened | 0 | Related nonlocal-operator work by Heitzman’s advisor and Enlow’s coauthor. This is a topic/advisor connection, not a verified citation to Heitzman’s dissertation. |
+| [F10](https://arxiv.org/html/2410.23492v1) | full text screened | 2 | Work by coauthor Larios on a different regularization; published in 2025. It does not resolve weak uniqueness for calmed velocity–vorticity. |
+| [F11](https://arxiv.org/html/2508.07492v1) | full text screened | 1 | Later coauthor work; conjectures removal of a smallness condition for its own assimilation system. |
+| [F12](https://arxiv.org/html/2604.10423v1) | full text screened | 0 | Independent topic follow-up citing Dixon et al.; proves a non-adaptive composition theorem, a different target from neighborhood-color bounds. |
+| [F13](https://arxiv.org/html/2602.16993v1) | full text screened | 5 | Independent neural-ideal paper citing the Kunin-related polar-complex literature. Its polarized-ideal invariants differ from Geraci’s Boolean-rank invariants. |
+| [F14](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf) | full text screened | 5 | Independent downstream use of deterministic rounding schemes, explicitly crediting Vander Woude et al.; later algorithmic progress is in F18. |
+| [F15](https://arxiv.org/html/2601.08636v1) | full text screened | 0 | Independent downstream code constructions; references [15] and [16] cite Martinez’s 2022 and 2025 code papers. |
+| [F16](https://arxiv.org/html/2607.13666v1) | full text screened | 3 | Independent downstream article explicitly cites Morris–Pllaha–Kelley, claims a restricted (3,3) absorbing-set enumeration, and acknowledges Morris. |
+| [F17](https://arxiv.org/html/2609.24201v1) | full text screened | 0 | Independent downstream paper citing Martinez–Kelley [13] and P11 [16]; construction progress is not an exact rank/support-conjecture repetition. |
+| [F18](https://arxiv.org/html/2510.16959v1) | full text screened | 1 | Later answer to F14’s request for an efficient construction, with a closely related parameter tradeoff; first preprint 2025, SOSA publication 2026. |
+| [F19](https://arxiv.org/html/2610.03341v1) | full text screened | 3 | Later work by P11 coauthors Gómez-Fonseca and Pllaha; noncommuting polynomial lifts differ from dyadic signatures. |
 
 ## Reproducible evidence and limits
 
@@ -84,7 +107,11 @@ Primary HTML/PDF retrievals and public full-text transcriptions, content hashes 
 
 The added search ran 44 lexical queries across four previously pinned Lean source trees, respecting the sparse checkout scope recorded in [audit sources](../audit/sources.json), plus eight GitHub indexed-code queries (limit 30 hits each). The dyadic/rank query reached the limit, so its results are explicitly incomplete. Candidate files were inspected for mathematical subject mismatches; no exact new target was established. A file retrieval failure is recorded, not interpreted as absence. Weighted Horace background, dyadic local algebra, topological absorbing sets, and primitive-set saturation games do not match the targets here. [Local searches](downstream-lean-searches.json) · [GitHub searches](downstream-github-searches.json) · [Candidate retrievals](downstream-lean-candidates.json) · [Comparison notes](downstream-search-review.json).
 
-The original 39 targets retain the earlier audit’s search evidence. New rows use family-level discovery and source-context comparisons, not an exhaustive search over all public declarations or alternate terminology. The recovered texts received eight supplementary pinned-source queries, recorded in [gap-specific Lean discovery](coverage-gap-lean-searches.json); no matching artifact was identified. P20 questions are historical, and a related graph-radius conjecture is not a matching algorithmic result. A public matching Lean artifact would change the corresponding status only after a semantic and build/axiom audit.
+The original 39 targets retain the earlier audit’s search evidence. New rows use family-level discovery and source-context comparisons, not an exhaustive search over all public declarations or alternate terminology. The recovered texts received eight supplementary pinned-source queries, recorded in [gap-specific Lean discovery](coverage-gap-lean-searches.json); no matching artifact was identified. P20 questions are historical, and a related graph-radius conjecture is not a matching algorithmic result. A public matching Lean artifact would change verified counts only after a semantic and build/axiom audit. The October 22 search identifies a matching `proof_wanted` existence statement for Conway’s 99-graph, recorded as identified but not build-verified. It supplies no proof. Five new eligible targets retain unassessed Lean-discovery status. [Search and candidate review](SCHOLARLY-EXPANSION.md).
+
+## October 22 expansion
+
+[The expanded search](SCHOLARLY-EXPANSION.md) records Google Scholar access failures, OpenAlex lookups, author/coauthor discovery, repeated questions and later restricted answers. Two source statements are held after finite Python counterchecks. Those checks are not Lean proofs and do not settle Conway’s strongly regular graph existence problem.
 
 ## Exclusions
 
@@ -443,6 +470,7 @@ Range of the two specified neighborhood-color functions.
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [2023-Vander-Woude: Question 8.3.2](https://digitalcommons.unl.edu/mathstudent/117/); PDF pages 248; original inventory source.
+- [P33: Section 4, Question 4.1](https://arxiv.org/html/2306.12593v1); extraction lines 417–422; earlier or later restatement.
 
 ### 2022-Volk-O01
 
@@ -741,6 +769,7 @@ Classify absorbing sets in structured QLDPC codes, including hypergraph-product 
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [P09: Section VI](https://arxiv.org/html/2307.14532); extraction lines 505–505; explicit open problem.
+- Later evidence: [Section 4.4, Proposition 4.17; reference [34]](https://arxiv.org/html/2607.13666v1). Explicitly cites Morris–Pllaha–Kelley and gives a restricted (3,3) elementary absorbing-set enumeration for column-weight-3, girth-at-least-6 QC-GHP codes. This is related progress, not a complete classification of structured QLDPC absorbing sets.
 
 ### L-P09-decoders
 
@@ -1075,6 +1104,7 @@ Improve the neighborhood Sperner/KKM color bound so it also recovers the classic
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [P26: Section 6; PDF p. 10](https://papers.neurips.cc/paper_files/paper/2024/file/8ff87c96935244b63503f542472462b3-Paper-Conference.pdf); extraction lines 662–666; explicit open problem.
+- [P33: Section 4 conclusion: improve neighborhood-color bounds](https://arxiv.org/html/2306.12593v1); extraction lines 441–446; earlier related formulation.
 
 ### L-P26-KKM-applications
 
@@ -1282,3 +1312,585 @@ Investigate the Hamiltonicity and coloring problems mentioned for AT-free graphs
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: withdrawn historical only; current resolution: not independently established.
 - [P20: Historical v3 Section 8 final sentence; PDF p. 16](https://arxiv.org/pdf/2209.00110v3); extraction lines 663–664; explicit research direction.
+
+### L-P29-period-bound
+
+Determine a valid order-restricted version of rho^2(G) <= |V|-3 for connected graphs.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. The source says every connected graph. K2 has rho^2=0 but |V|-3=-1; a lower-order restriction is missing. No repaired conjecture is silently substituted.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: literal statement has small counterexample.
+- [P29: Conjecture 1; Definition 1](https://arxiv.org/html/2606.25493v1); extraction lines 150–152; explicit question.
+
+### L-P30-crossing-additive
+
+Is crossing number additive under connected sum of orientable surfaces in S^4?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 484–487; explicit question.
+
+### L-P30-bridge-additive
+
+Is bridge number minus one additive under connected sum of orientable surfaces in S^4?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 484–487; explicit question.
+
+### L-P30-concentrated-gap
+
+Can a surface have smaller crossing number than its concentrated crossing number?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 488–490; explicit question.
+
+### L-P30-concentrated-max-gap
+
+How large can the concentrated crossing-number gap be?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 488–490; explicit question.
+
+### L-P30-joint-minimum
+
+Can bridge number and crossing number fail to be attained by one tri-plane diagram?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 491–493; explicit question.
+
+### L-P30-bridge-exceeds-crossing
+
+Can bridge number exceed crossing number without adding unknotted connected-sum factors?
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. The excluded connected-sum constructions need a precise restriction before denominator inclusion.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 494–496; explicit question.
+
+### L-P30-nonzero-euler-min
+
+Minimize crossing number for a surface with nonzero normal Euler number and no projective-plane summand.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P30: Section 6, Questions 6.1–6.5](https://arxiv.org/html/2302.08431v1); extraction lines 497–499; explicit question.
+
+### L-P31-sample-gap
+
+Is the sample-complexity gap between list and certificate replicability necessary at comparable parameters?
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P31: Section 6](https://arxiv.org/html/2304.02240v1); extraction lines 430–431; explicit question.
+
+### L-P31-adaptive-gap
+
+Is the exponential replicability-parameter gap between adaptive and non-adaptive statistical queries necessary?
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P31: Section 6](https://arxiv.org/html/2304.02240v1); extraction lines 430–431; explicit question.
+
+### L-P31-tradeoffs
+
+Determine tradeoffs among sampling, list size, certificates and adaptivity.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P31: Section 6](https://arxiv.org/html/2304.02240v1); extraction lines 430–431; explicit question.
+
+### L-P32-Conway-existence
+
+Does a strongly regular graph with parameters (99,14,1,2) exist?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: identified lean statement not build verified. Lean statement: identified lean statement not build verified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not resolved by the checked relaxed bound.
+- [P32: Section 1, opening existence question](https://arxiv.org/html/2610.16266v1); extraction lines 32–36; explicit question.
+- Later evidence: [Conjecture 5 and final paragraph](https://arxiv.org/html/2610.16266v1). The relaxed 55-triangle bound is contradicted by scripts/check_expansion_graphs.py; no conclusion about existence of the strongly regular graph follows from this check.
+- Related formalization: [https://github.com/leanprover-community/mathlib4/blob/0db93bb44438a03c84317df5f033136cdd14c91f/Wanted/Combinatorics/SimpleGraph/StronglyRegular.lean](https://github.com/leanprover-community/mathlib4/blob/0db93bb44438a03c84317df5f033136cdd14c91f/Wanted/Combinatorics/SimpleGraph/StronglyRegular.lean). SimpleGraph.conway_99 is a proof_wanted existence statement, not a proof. Also present in the pinned mathlib checkout; no build/axiom audit of this wanted item was performed.
+
+### L-P32-triangle-bound
+
+Is the stated maximum of 55 triangles valid on 99 vertices under the diamond/K2,3 exclusions?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: excluded. Held outside active coverage: an exact Python check gives a connected 99-vertex diamond-free, K2,3-free graph with 66 triangles. This graph is not strongly regular.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: counterexample checked in python not lean.
+- [P32: Conjecture 5](https://arxiv.org/html/2610.16266v1); extraction lines 76–134; explicit question.
+
+### L-P32-SOS-certificate
+
+Produce an exact checkable certificate for a corrected sum-of-squares relaxation.
+
+- Type: proof method request; written formulation: proof method request.
+- Coverage denominator: excluded. The source requests formalization of its certificate; the stated relaxed bound first needs correction. This is not a verified Lean artifact.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P32: Final paragraph, Section 3.2](https://arxiv.org/html/2610.16266v1); extraction lines 132–134; explicit question.
+
+### L-P33-interval-constancy
+
+Are the open and closed neighborhood-color functions constant on the displayed reciprocal intervals?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P33: Section 4, paragraph after Question 4.1](https://arxiv.org/html/2306.12593v1); extraction lines 420–422; explicit question.
+
+### L-P33-unified-method
+
+Find one proof technique recovering both small-radius and larger-radius color bounds.
+
+- Type: proof method request; written formulation: proof method request.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [P33: Section 4 conclusion](https://arxiv.org/html/2306.12593v1); extraction lines 444–446; explicit question.
+
+### L-F04-practical-definition
+
+Develop replicable reinforcement learning under other practical replicability definitions.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F04: Section 8](https://arxiv.org/html/2512.00553v1); extraction lines 424–426; explicit question.
+
+### L-F04-function-approximation
+
+Extend list-replicable reinforcement learning beyond tabular models using function approximation.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F04: Section 8](https://arxiv.org/html/2512.00553v1); extraction lines 424–426; explicit question.
+
+### L-F04-continuous-actions
+
+Extend the robust planner to continuous action spaces.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F04: Section 8](https://arxiv.org/html/2512.00553v1); extraction lines 424–426; explicit question.
+
+### L-F05-list-lower
+
+For the Theorem 5.4 regret regime and delta=1/k, is an Omega(k^2) list size necessary?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Fix the regret guarantee of Theorem 5.4; the paper already gives a k-list algorithm with a different regret rate.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F05: Section 8, PDF page 10](https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf); extraction lines 716–724; explicit question.
+
+### L-F05-tradeoff
+
+Determine the full list-complexity versus regret tradeoff for bandits.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F05: Section 8, PDF page 10](https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf); extraction lines 720–724; explicit question.
+
+### L-F05-UCB
+
+Modify UCB to guarantee list replicability with list size independent of the horizon.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. The source does not specify the regret and list-size guarantees for the requested UCB modification.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F05: Section 8, PDF page 10](https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf); extraction lines 725–733; explicit question.
+
+### L-F06-zero-resistivity
+
+Prove well-posedness after adding magnetic Voigt regularization and setting eta=0, nu>0.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. A concrete PDE direction, but the target solution class and full theorem hypotheses are not fixed in this passage.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F06: Section 1.1](https://arxiv.org/html/2605.05139v1); extraction lines 110–111; explicit question.
+
+### L-F06-thermal
+
+Add thermal coupling to the velocity-vorticity-Voigt MHD model.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F06: Section 1.1](https://arxiv.org/html/2605.05139v1); extraction lines 112–112; explicit question.
+
+### L-F07-Q6.1
+
+Axiomatize neural codes below oriented matroids.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.1](https://arxiv.org/html/2002.03542v2); extraction lines 1104–1115; explicit question.
+
+### L-F07-Q6.2
+
+Choose a combinatorial language and characterize convexity in it.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.2](https://arxiv.org/html/2002.03542v2); extraction lines 1121–1126; explicit question.
+
+### L-F07-Q6.3
+
+Can every convex neural code be realized by convex polytopes?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.3](https://arxiv.org/html/2002.03542v2); extraction lines 1134–1147; explicit question.
+- [F08: Introduction, Conjecture 1.3](https://arxiv.org/html/2512.04241v1); extraction lines 56–61; explicit later restatement.
+- Later evidence: [Introduction and Section 3](https://arxiv.org/html/2512.04241v1). The conjecture is explicitly restated; the source reports a planar affirmative case and proves covering-relation results. Higher-dimensional validity is not established here.
+
+### L-F07-Q6.4-finite
+
+Are there finitely many minor-minimal oriented matroids above a given code?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.4](https://arxiv.org/html/2002.03542v2); extraction lines 1148–1149; explicit question.
+
+### L-F07-Q6.4-enumerate
+
+Efficiently enumerate the minor-minimal oriented matroids above a code.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.4](https://arxiv.org/html/2002.03542v2); extraction lines 1148–1152; explicit question.
+- Later evidence: [Introduction and Section 3](https://arxiv.org/html/2512.04241v1). Covering-relation characterization supplies a related step toward climbing the code poset, not a proof of finite or efficiently enumerable minimal oriented matroids.
+
+### L-F07-Q6.5-growth
+
+Determine growth of the source-defined matroid ground-set bounds M(n) and H(n).
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.5](https://arxiv.org/html/2002.03542v2); extraction lines 1161–1174; explicit question.
+
+### L-F07-Q6.5-equal
+
+Are the source-defined functions M(n) and H(n) equal?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.5](https://arxiv.org/html/2002.03542v2); extraction lines 1161–1174; explicit question.
+
+### L-F07-Q6.6
+
+Formulate an oriented-matroid version of the neural-code sunflower theorem.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.6](https://arxiv.org/html/2002.03542v2); extraction lines 1177–1180; explicit question.
+
+### L-F07-Q6.7-collapse
+
+Are the specified missing-codeword links of oriented-matroid codes collapsible?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.7](https://arxiv.org/html/2002.03542v2); extraction lines 1181–1197; explicit question.
+
+### L-F07-Q6.7-classify
+
+Classify simplicial complexes occurring as those missing-codeword links.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.7](https://arxiv.org/html/2002.03542v2); extraction lines 1194–1197; explicit question.
+
+### L-F07-Q6.8
+
+Interpret chirotopes, rank and convex closure through neural-code functors.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.8](https://arxiv.org/html/2002.03542v2); extraction lines 1199–1206; explicit question.
+
+### L-F07-Q6.9
+
+Extend the categorical embeddings to affine oriented matroids and COMs.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.9](https://arxiv.org/html/2002.03542v2); extraction lines 1207–1220; explicit question.
+
+### L-F07-Q6.10
+
+Embed oriented matroids with weak maps into the code category.
+
+- Type: conjecture or question; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6, Question 6.10](https://arxiv.org/html/2002.03542v2); extraction lines 1221–1223; explicit question.
+
+### L-F07-convex-decision
+
+Is convexity of a finite neural code algorithmically decidable?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F07: Section 6.2 opening discussion](https://arxiv.org/html/2002.03542v2); extraction lines 1127–1133; explicit question.
+- [F08: Introduction: convexity decision problem](https://arxiv.org/html/2512.04241v1); extraction lines 39–61; related later discussion.
+
+### L-F10-boundary
+
+Extend fractional Voigt analysis to domains with physical boundaries.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F10: Section 7](https://arxiv.org/html/2410.23492v1); extraction lines 692–693; explicit question.
+
+### L-F10-computations
+
+Investigate turbulent statistics and blow-up criteria numerically for fractional Voigt models.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F10: Section 7](https://arxiv.org/html/2410.23492v1); extraction lines 692–693; explicit question.
+
+### L-F11-smallness
+
+Can the condition c0*mu*h^2 <= nu be removed from the assimilation well-posedness argument?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Question refers to this paper’s assimilation system and its remaining well-posedness hypotheses, not to general Navier–Stokes well-posedness.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F11: Section 3, after estimates (3.1)](https://arxiv.org/html/2508.07492v1); extraction lines 239–240; explicit question.
+
+### L-F13-Q5.8
+
+Classify neural codes attaining polarized-ideal projective dimension 2n-3.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F13: Question 5.8](https://arxiv.org/html/2602.16993v1); extraction lines 578–580; explicit question.
+
+### L-F13-Q10.1
+
+Explain the achievable homological-invariant region through cube geometry.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F13: Question 10.1](https://arxiv.org/html/2602.16993v1); extraction lines 1163–1167; explicit question.
+
+### L-F13-Q10.2
+
+Determine all achievable (projective dimension, regularity) pairs for n-neuron polarized neural ideals.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F13: Question 10.2](https://arxiv.org/html/2602.16993v1); extraction lines 1168–1170; explicit question.
+
+### L-F13-Q10.3
+
+Describe multigraded Betti numbers of polarized neural ideals combinatorially.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F13: Question 10.3](https://arxiv.org/html/2602.16993v1); extraction lines 1171–1173; explicit question.
+
+### L-F13-Q10.4
+
+Determine achievable invariant pairs under convex or stable-hyperplane code restrictions.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F13: Question 10.4](https://arxiv.org/html/2602.16993v1); extraction lines 1174–1177; explicit question.
+
+### L-F14-accuracy
+
+Achieve near-optimal counting-query accuracy with logarithmic expected randomness, or prove that more randomness is necessary.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 336–341; explicit question.
+- Later evidence: [Main theorem, extraction lines 93–100](https://arxiv.org/html/2510.16959v1). The logarithmic-randomness specialization has a displayed d^2/epsilon-type error term up to logarithms; it is not the requested near-optimal d/epsilon accuracy.
+
+### L-F14-constant-parameters
+
+Determine whether the logarithmic randomness lower bound persists at constant privacy/failure parameters.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 341–344; explicit question.
+
+### L-F14-efficient
+
+Construct polynomial-time low-randomness mechanisms for private counting queries.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: later parameterized answer in primary literature.
+- [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 345–352; explicit question.
+- [F18: Introduction: efficient-construction question and parameterized answer](https://arxiv.org/html/2510.16959v1); extraction lines 55–100; later parameterized answer.
+- Later evidence: [Introduction; main theorem (extraction lines 55–100)](https://arxiv.org/html/2510.16959v1). Provides polynomial-time mechanisms with a closely related randomness/accuracy tradeoff, including O(log d + log polylog(d/epsilon)) expected bits in the displayed regime. This is progress on efficiency; it does not supply logarithmic randomness at near-optimal accuracy for every parameter.
+
+### L-F14-other-releases
+
+Extend randomness-complexity analysis to other statistical releases.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 353–356; explicit question.
+
+### L-F14-replicability-links
+
+Develop connections between privacy randomness and replicable algorithms.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F14: Directions for Future Work, PDF page 8](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf); extraction lines 357–358; explicit question.
+
+### L-F16-higher-counts
+
+Extend Fourier/additive-energy formulas to higher cycles and absorbing sets.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 467–469; explicit question.
+- Related, not merged: L-P09-structured.
+
+### L-F16-stopping-bound
+
+Find QC-GHP parameters for which the paper’s spectral stopping-set bound is nonvacuous.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 470–471; explicit question.
+- Related, not merged: L-P09-structured.
+
+### L-F16-other-absorbing
+
+Derive explicit (4,2) and (4,0) elementary absorbing-set counts in the stated QC-GHP setting.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 472–473; explicit question.
+- Related, not merged: L-P09-structured.
+
+### L-F19-distance
+
+Determine useful minimum-distance upper bounds for the noncommuting polynomial-lift family.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 215–216; explicit question.
+
+### L-F19-Dickson
+
+Explore closed families of permutation polynomials such as Dickson polynomials.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 307–308; explicit question.
+
+### L-F19-quantum
+
+Extend the permutation-polynomial construction to quantum LDPC codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
+- Proof-assistant statement: not systematically searched beyond lean. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F19: End of Section III.B / Section V](https://arxiv.org/html/2610.03341v1); extraction lines 309–309; explicit question.

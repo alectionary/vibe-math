@@ -1049,6 +1049,17 @@
         "url": "https://digitalcommons.unl.edu/mathstudent/117/",
         "source_sha256": "b15884a9d4f7f653ddf0184d5071293b8fdf2a983adf6b4231cbcab284288af7",
         "relation": "original_inventory_source"
+      },
+      {
+        "source_id": "P33",
+        "locator": "Section 4, Question 4.1",
+        "extracted_text_lines": [
+          417,
+          422
+        ],
+        "url": "https://arxiv.org/html/2306.12593v1",
+        "source_sha256": "26e2157d28c859b9de187a0c47646d8e6c34f2f3227cf846db52b85e8d13818d",
+        "relation": "earlier_or_later_restatement"
       }
     ],
     "related_target_ids": [],
@@ -1948,7 +1959,14 @@
     "lean_statement_status": "no_exact_statement_identified",
     "lean_proof_status": "no_exact_proof_identified",
     "current_resolution_status": "not_independently_established",
-    "search_family": "quantum_dyadic"
+    "search_family": "quantum_dyadic",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2607.13666v1",
+        "locator": "Section 4.4, Proposition 4.17; reference [34]",
+        "finding": "Explicitly cites Morris–Pllaha–Kelley and gives a restricted (3,3) elementary absorbing-set enumeration for column-weight-3, girth-at-least-6 QC-GHP codes. This is related progress, not a complete classification of structured QLDPC absorbing sets."
+      }
+    ]
   },
   {
     "id": "L-P09-decoders",
@@ -2981,6 +2999,17 @@
         "url": "https://papers.neurips.cc/paper_files/paper/2024/file/8ff87c96935244b63503f542472462b3-Paper-Conference.pdf",
         "source_sha256": "a7d0d75f7425bea3916de531ad46176b1ad0792b60146828ffece0262e7c155f",
         "relation": "explicit_open_problem"
+      },
+      {
+        "source_id": "P33",
+        "locator": "Section 4 conclusion: improve neighborhood-color bounds",
+        "extracted_text_lines": [
+          441,
+          446
+        ],
+        "url": "https://arxiv.org/html/2306.12593v1",
+        "source_sha256": "26e2157d28c859b9de187a0c47646d8e6c34f2f3227cf846db52b85e8d13818d",
+        "relation": "earlier_related_formulation"
       }
     ],
     "related_target_ids": [],
@@ -3602,5 +3631,1852 @@
     "lean_proof_status": "no_exact_proof_identified",
     "current_resolution_status": "not_independently_established",
     "search_family": "AT_free_graphs"
+  },
+  {
+    "id": "L-P29-period-bound",
+    "origin": "article_inventory_extension",
+    "title": "Determine a valid order-restricted version of rho^2(G) <= |V|-3 for connected graphs.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "The source says every connected graph. K2 has rho^2=0 but |V|-3=-1; a lower-order restriction is missing. No repaired conjecture is silently substituted.",
+    "occurrences": [
+      {
+        "source_id": "P29",
+        "locator": "Conjecture 1; Definition 1",
+        "extracted_text_lines": [
+          150,
+          152
+        ],
+        "url": "https://arxiv.org/html/2606.25493v1",
+        "source_sha256": "4f24a2da41448b625befbc1b88522d01b161d03e4f2b7f247d57330af066d948",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "literal_statement_has_small_counterexample",
+    "search_family": "distance_graph_periodicity",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-crossing-additive",
+    "origin": "article_inventory_extension",
+    "title": "Is crossing number additive under connected sum of orientable surfaces in S^4?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          484,
+          487
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-bridge-additive",
+    "origin": "article_inventory_extension",
+    "title": "Is bridge number minus one additive under connected sum of orientable surfaces in S^4?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          484,
+          487
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-concentrated-gap",
+    "origin": "article_inventory_extension",
+    "title": "Can a surface have smaller crossing number than its concentrated crossing number?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          488,
+          490
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-concentrated-max-gap",
+    "origin": "article_inventory_extension",
+    "title": "How large can the concentrated crossing-number gap be?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          488,
+          490
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-joint-minimum",
+    "origin": "article_inventory_extension",
+    "title": "Can bridge number and crossing number fail to be attained by one tri-plane diagram?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          491,
+          493
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-bridge-exceeds-crossing",
+    "origin": "article_inventory_extension",
+    "title": "Can bridge number exceed crossing number without adding unknotted connected-sum factors?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "The excluded connected-sum constructions need a precise restriction before denominator inclusion.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          494,
+          496
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P30-nonzero-euler-min",
+    "origin": "article_inventory_extension",
+    "title": "Minimize crossing number for a surface with nonzero normal Euler number and no projective-plane summand.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P30",
+        "locator": "Section 6, Questions 6.1–6.5",
+        "extracted_text_lines": [
+          497,
+          499
+        ],
+        "url": "https://arxiv.org/html/2302.08431v1",
+        "source_sha256": "a288c73fa7b2f018dd26b93b2532ed6cb1c0cfc92a4d9b4a99757f7bc8687d29",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "tri_plane_surface_invariants",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P31-sample-gap",
+    "origin": "article_inventory_extension",
+    "title": "Is the sample-complexity gap between list and certificate replicability necessary at comparable parameters?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "P31",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          430,
+          431
+        ],
+        "url": "https://arxiv.org/html/2304.02240v1",
+        "source_sha256": "d56091938f4ea56dc9aca04e22632defedfd95ce2dd0e87d61b6c96f4ff57905",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P31-adaptive-gap",
+    "origin": "article_inventory_extension",
+    "title": "Is the exponential replicability-parameter gap between adaptive and non-adaptive statistical queries necessary?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "P31",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          430,
+          431
+        ],
+        "url": "https://arxiv.org/html/2304.02240v1",
+        "source_sha256": "d56091938f4ea56dc9aca04e22632defedfd95ce2dd0e87d61b6c96f4ff57905",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P31-tradeoffs",
+    "origin": "article_inventory_extension",
+    "title": "Determine tradeoffs among sampling, list size, certificates and adaptivity.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "P31",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          430,
+          431
+        ],
+        "url": "https://arxiv.org/html/2304.02240v1",
+        "source_sha256": "d56091938f4ea56dc9aca04e22632defedfd95ce2dd0e87d61b6c96f4ff57905",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P32-Conway-existence",
+    "origin": "article_inventory_extension",
+    "title": "Does a strongly regular graph with parameters (99,14,1,2) exist?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P32",
+        "locator": "Section 1, opening existence question",
+        "extracted_text_lines": [
+          32,
+          36
+        ],
+        "url": "https://arxiv.org/html/2610.16266v1",
+        "source_sha256": "1ced3f8564f7770f41cc8f5f6c7a15cc6b6f83974fdf9607646fd15426764909",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "identified_lean_statement_not_build_verified",
+    "lean_statement_status": "identified_lean_statement_not_build_verified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_resolved_by_the_checked_relaxed_bound",
+    "search_family": "strongly_regular_99",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
+    "related_formalization_evidence": [
+      {
+        "url": "https://github.com/leanprover-community/mathlib4/blob/0db93bb44438a03c84317df5f033136cdd14c91f/Wanted/Combinatorics/SimpleGraph/StronglyRegular.lean",
+        "finding": "SimpleGraph.conway_99 is a proof_wanted existence statement, not a proof. Also present in the pinned mathlib checkout; no build/axiom audit of this wanted item was performed."
+      }
+    ],
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2610.16266v1",
+        "locator": "Conjecture 5 and final paragraph",
+        "finding": "The relaxed 55-triangle bound is contradicted by scripts/check_expansion_graphs.py; no conclusion about existence of the strongly regular graph follows from this check."
+      }
+    ]
+  },
+  {
+    "id": "L-P32-triangle-bound",
+    "origin": "article_inventory_extension",
+    "title": "Is the stated maximum of 55 triangles valid on 99 vertices under the diamond/K2,3 exclusions?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Held outside active coverage: an exact Python check gives a connected 99-vertex diamond-free, K2,3-free graph with 66 triangles. This graph is not strongly regular.",
+    "occurrences": [
+      {
+        "source_id": "P32",
+        "locator": "Conjecture 5",
+        "extracted_text_lines": [
+          76,
+          134
+        ],
+        "url": "https://arxiv.org/html/2610.16266v1",
+        "source_sha256": "1ced3f8564f7770f41cc8f5f6c7a15cc6b6f83974fdf9607646fd15426764909",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "counterexample_checked_in_python_not_lean",
+    "search_family": "strongly_regular_99",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P32-SOS-certificate",
+    "origin": "article_inventory_extension",
+    "title": "Produce an exact checkable certificate for a corrected sum-of-squares relaxation.",
+    "kind": "proof_method_request",
+    "written_math_status": "proof_method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "The source requests formalization of its certificate; the stated relaxed bound first needs correction. This is not a verified Lean artifact.",
+    "occurrences": [
+      {
+        "source_id": "P32",
+        "locator": "Final paragraph, Section 3.2",
+        "extracted_text_lines": [
+          132,
+          134
+        ],
+        "url": "https://arxiv.org/html/2610.16266v1",
+        "source_sha256": "1ced3f8564f7770f41cc8f5f6c7a15cc6b6f83974fdf9607646fd15426764909",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "strongly_regular_99",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-P33-interval-constancy",
+    "origin": "article_inventory_extension",
+    "title": "Are the open and closed neighborhood-color functions constant on the displayed reciprocal intervals?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "P33",
+        "locator": "Section 4, paragraph after Question 4.1",
+        "extracted_text_lines": [
+          420,
+          422
+        ],
+        "url": "https://arxiv.org/html/2306.12593v1",
+        "source_sha256": "26e2157d28c859b9de187a0c47646d8e6c34f2f3227cf846db52b85e8d13818d",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neighborhood_KKM",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-P33-unified-method",
+    "origin": "article_inventory_extension",
+    "title": "Find one proof technique recovering both small-radius and larger-radius color bounds.",
+    "kind": "proof_method_request",
+    "written_math_status": "proof_method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "P33",
+        "locator": "Section 4 conclusion",
+        "extracted_text_lines": [
+          444,
+          446
+        ],
+        "url": "https://arxiv.org/html/2306.12593v1",
+        "source_sha256": "26e2157d28c859b9de187a0c47646d8e6c34f2f3227cf846db52b85e8d13818d",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neighborhood_KKM",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F04-practical-definition",
+    "origin": "article_inventory_extension",
+    "title": "Develop replicable reinforcement learning under other practical replicability definitions.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F04",
+        "locator": "Section 8",
+        "extracted_text_lines": [
+          424,
+          426
+        ],
+        "url": "https://arxiv.org/html/2512.00553v1",
+        "source_sha256": "a4bc0bf26c9150cc9db28fb431c7666559ce07a90131ec3bfe293111296b4d69",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F04-function-approximation",
+    "origin": "article_inventory_extension",
+    "title": "Extend list-replicable reinforcement learning beyond tabular models using function approximation.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F04",
+        "locator": "Section 8",
+        "extracted_text_lines": [
+          424,
+          426
+        ],
+        "url": "https://arxiv.org/html/2512.00553v1",
+        "source_sha256": "a4bc0bf26c9150cc9db28fb431c7666559ce07a90131ec3bfe293111296b4d69",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F04-continuous-actions",
+    "origin": "article_inventory_extension",
+    "title": "Extend the robust planner to continuous action spaces.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F04",
+        "locator": "Section 8",
+        "extracted_text_lines": [
+          424,
+          426
+        ],
+        "url": "https://arxiv.org/html/2512.00553v1",
+        "source_sha256": "a4bc0bf26c9150cc9db28fb431c7666559ce07a90131ec3bfe293111296b4d69",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F05-list-lower",
+    "origin": "article_inventory_extension",
+    "title": "For the Theorem 5.4 regret regime and delta=1/k, is an Omega(k^2) list size necessary?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Fix the regret guarantee of Theorem 5.4; the paper already gives a k-list algorithm with a different regret rate.",
+    "occurrences": [
+      {
+        "source_id": "F05",
+        "locator": "Section 8, PDF page 10",
+        "extracted_text_lines": [
+          716,
+          724
+        ],
+        "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf",
+        "source_sha256": "cc359b68f86a47aa809489451ff9dc3facee32121f7857ee951a60d5e9a96eec",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F05-tradeoff",
+    "origin": "article_inventory_extension",
+    "title": "Determine the full list-complexity versus regret tradeoff for bandits.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F05",
+        "locator": "Section 8, PDF page 10",
+        "extracted_text_lines": [
+          720,
+          724
+        ],
+        "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf",
+        "source_sha256": "cc359b68f86a47aa809489451ff9dc3facee32121f7857ee951a60d5e9a96eec",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F05-UCB",
+    "origin": "article_inventory_extension",
+    "title": "Modify UCB to guarantee list replicability with list size independent of the horizon.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "The source does not specify the regret and list-size guarantees for the requested UCB modification.",
+    "occurrences": [
+      {
+        "source_id": "F05",
+        "locator": "Section 8, PDF page 10",
+        "extracted_text_lines": [
+          725,
+          733
+        ],
+        "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf",
+        "source_sha256": "cc359b68f86a47aa809489451ff9dc3facee32121f7857ee951a60d5e9a96eec",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "list_replicability",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F06-zero-resistivity",
+    "origin": "article_inventory_extension",
+    "title": "Prove well-posedness after adding magnetic Voigt regularization and setting eta=0, nu>0.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "A concrete PDE direction, but the target solution class and full theorem hypotheses are not fixed in this passage.",
+    "occurrences": [
+      {
+        "source_id": "F06",
+        "locator": "Section 1.1",
+        "extracted_text_lines": [
+          110,
+          111
+        ],
+        "url": "https://arxiv.org/html/2605.05139v1",
+        "source_sha256": "eb6b6512c38e8ee10bad9b02df5d9100c7d79a40480c0941b505c9bd2c427f70",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Voigt_PDE",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F06-thermal",
+    "origin": "article_inventory_extension",
+    "title": "Add thermal coupling to the velocity-vorticity-Voigt MHD model.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F06",
+        "locator": "Section 1.1",
+        "extracted_text_lines": [
+          112,
+          112
+        ],
+        "url": "https://arxiv.org/html/2605.05139v1",
+        "source_sha256": "eb6b6512c38e8ee10bad9b02df5d9100c7d79a40480c0941b505c9bd2c427f70",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Voigt_PDE",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.1",
+    "origin": "article_inventory_extension",
+    "title": "Axiomatize neural codes below oriented matroids.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.1",
+        "extracted_text_lines": [
+          1104,
+          1115
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.2",
+    "origin": "article_inventory_extension",
+    "title": "Choose a combinatorial language and characterize convexity in it.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.2",
+        "extracted_text_lines": [
+          1121,
+          1126
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.3",
+    "origin": "article_inventory_extension",
+    "title": "Can every convex neural code be realized by convex polytopes?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.3",
+        "extracted_text_lines": [
+          1134,
+          1147
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      },
+      {
+        "source_id": "F08",
+        "locator": "Introduction, Conjecture 1.3",
+        "extracted_text_lines": [
+          56,
+          61
+        ],
+        "url": "https://arxiv.org/html/2512.04241v1",
+        "source_sha256": "af0db735a17d22c84d9ec1db6be8cca41a457e0d35392a28725b187bf14bd658",
+        "relation": "explicit_later_restatement"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2512.04241v1",
+        "locator": "Introduction and Section 3",
+        "finding": "The conjecture is explicitly restated; the source reports a planar affirmative case and proves covering-relation results. Higher-dimensional validity is not established here."
+      }
+    ]
+  },
+  {
+    "id": "L-F07-Q6.4-finite",
+    "origin": "article_inventory_extension",
+    "title": "Are there finitely many minor-minimal oriented matroids above a given code?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.4",
+        "extracted_text_lines": [
+          1148,
+          1149
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.4-enumerate",
+    "origin": "article_inventory_extension",
+    "title": "Efficiently enumerate the minor-minimal oriented matroids above a code.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.4",
+        "extracted_text_lines": [
+          1148,
+          1152
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2512.04241v1",
+        "locator": "Introduction and Section 3",
+        "finding": "Covering-relation characterization supplies a related step toward climbing the code poset, not a proof of finite or efficiently enumerable minimal oriented matroids."
+      }
+    ]
+  },
+  {
+    "id": "L-F07-Q6.5-growth",
+    "origin": "article_inventory_extension",
+    "title": "Determine growth of the source-defined matroid ground-set bounds M(n) and H(n).",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.5",
+        "extracted_text_lines": [
+          1161,
+          1174
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.5-equal",
+    "origin": "article_inventory_extension",
+    "title": "Are the source-defined functions M(n) and H(n) equal?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.5",
+        "extracted_text_lines": [
+          1161,
+          1174
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.6",
+    "origin": "article_inventory_extension",
+    "title": "Formulate an oriented-matroid version of the neural-code sunflower theorem.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.6",
+        "extracted_text_lines": [
+          1177,
+          1180
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.7-collapse",
+    "origin": "article_inventory_extension",
+    "title": "Are the specified missing-codeword links of oriented-matroid codes collapsible?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.7",
+        "extracted_text_lines": [
+          1181,
+          1197
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.7-classify",
+    "origin": "article_inventory_extension",
+    "title": "Classify simplicial complexes occurring as those missing-codeword links.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.7",
+        "extracted_text_lines": [
+          1194,
+          1197
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.8",
+    "origin": "article_inventory_extension",
+    "title": "Interpret chirotopes, rank and convex closure through neural-code functors.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.8",
+        "extracted_text_lines": [
+          1199,
+          1206
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.9",
+    "origin": "article_inventory_extension",
+    "title": "Extend the categorical embeddings to affine oriented matroids and COMs.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.9",
+        "extracted_text_lines": [
+          1207,
+          1220
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-Q6.10",
+    "origin": "article_inventory_extension",
+    "title": "Embed oriented matroids with weak maps into the code category.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6, Question 6.10",
+        "extracted_text_lines": [
+          1221,
+          1223
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F07-convex-decision",
+    "origin": "article_inventory_extension",
+    "title": "Is convexity of a finite neural code algorithmically decidable?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F07",
+        "locator": "Section 6.2 opening discussion",
+        "extracted_text_lines": [
+          1127,
+          1133
+        ],
+        "url": "https://arxiv.org/html/2002.03542v2",
+        "source_sha256": "6c91ad96682b3bc8590b18a6225c9f354e7fb9e564c3877732089dd0af2bc36f",
+        "relation": "explicit_question"
+      },
+      {
+        "source_id": "F08",
+        "locator": "Introduction: convexity decision problem",
+        "extracted_text_lines": [
+          39,
+          61
+        ],
+        "url": "https://arxiv.org/html/2512.04241v1",
+        "source_sha256": "af0db735a17d22c84d9ec1db6be8cca41a457e0d35392a28725b187bf14bd658",
+        "relation": "related_later_discussion"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F10-boundary",
+    "origin": "article_inventory_extension",
+    "title": "Extend fractional Voigt analysis to domains with physical boundaries.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F10",
+        "locator": "Section 7",
+        "extracted_text_lines": [
+          692,
+          693
+        ],
+        "url": "https://arxiv.org/html/2410.23492v1",
+        "source_sha256": "c9c269d9e3af70f7c0d092be2e32f66312f88566f02b73e2a7c81cd883ff122d",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Voigt_PDE",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F10-computations",
+    "origin": "article_inventory_extension",
+    "title": "Investigate turbulent statistics and blow-up criteria numerically for fractional Voigt models.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F10",
+        "locator": "Section 7",
+        "extracted_text_lines": [
+          692,
+          693
+        ],
+        "url": "https://arxiv.org/html/2410.23492v1",
+        "source_sha256": "c9c269d9e3af70f7c0d092be2e32f66312f88566f02b73e2a7c81cd883ff122d",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Voigt_PDE",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F11-smallness",
+    "origin": "article_inventory_extension",
+    "title": "Can the condition c0*mu*h^2 <= nu be removed from the assimilation well-posedness argument?",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Question refers to this paper’s assimilation system and its remaining well-posedness hypotheses, not to general Navier–Stokes well-posedness.",
+    "occurrences": [
+      {
+        "source_id": "F11",
+        "locator": "Section 3, after estimates (3.1)",
+        "extracted_text_lines": [
+          239,
+          240
+        ],
+        "url": "https://arxiv.org/html/2508.07492v1",
+        "source_sha256": "499f345dba975c15ff2413603552fdbf54463db71134b772e4a636f2196806e3",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "data_assimilation",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F13-Q5.8",
+    "origin": "article_inventory_extension",
+    "title": "Classify neural codes attaining polarized-ideal projective dimension 2n-3.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F13",
+        "locator": "Question 5.8",
+        "extracted_text_lines": [
+          578,
+          580
+        ],
+        "url": "https://arxiv.org/html/2602.16993v1",
+        "source_sha256": "bb96d2eac70dda26745f1dc6bd724050281dc9a058ee5d854f2978b4c63ef178",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F13-Q10.1",
+    "origin": "article_inventory_extension",
+    "title": "Explain the achievable homological-invariant region through cube geometry.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F13",
+        "locator": "Question 10.1",
+        "extracted_text_lines": [
+          1163,
+          1167
+        ],
+        "url": "https://arxiv.org/html/2602.16993v1",
+        "source_sha256": "bb96d2eac70dda26745f1dc6bd724050281dc9a058ee5d854f2978b4c63ef178",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F13-Q10.2",
+    "origin": "article_inventory_extension",
+    "title": "Determine all achievable (projective dimension, regularity) pairs for n-neuron polarized neural ideals.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F13",
+        "locator": "Question 10.2",
+        "extracted_text_lines": [
+          1168,
+          1170
+        ],
+        "url": "https://arxiv.org/html/2602.16993v1",
+        "source_sha256": "bb96d2eac70dda26745f1dc6bd724050281dc9a058ee5d854f2978b4c63ef178",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F13-Q10.3",
+    "origin": "article_inventory_extension",
+    "title": "Describe multigraded Betti numbers of polarized neural ideals combinatorially.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F13",
+        "locator": "Question 10.3",
+        "extracted_text_lines": [
+          1171,
+          1173
+        ],
+        "url": "https://arxiv.org/html/2602.16993v1",
+        "source_sha256": "bb96d2eac70dda26745f1dc6bd724050281dc9a058ee5d854f2978b4c63ef178",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F13-Q10.4",
+    "origin": "article_inventory_extension",
+    "title": "Determine achievable invariant pairs under convex or stable-hyperplane code restrictions.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F13",
+        "locator": "Question 10.4",
+        "extracted_text_lines": [
+          1174,
+          1177
+        ],
+        "url": "https://arxiv.org/html/2602.16993v1",
+        "source_sha256": "bb96d2eac70dda26745f1dc6bd724050281dc9a058ee5d854f2978b4c63ef178",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "neural_codes_oriented_matroids",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F14-accuracy",
+    "origin": "article_inventory_extension",
+    "title": "Achieve near-optimal counting-query accuracy with logarithmic expected randomness, or prove that more randomness is necessary.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F14",
+        "locator": "Directions for Future Work, PDF page 8",
+        "extracted_text_lines": [
+          336,
+          341
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf",
+        "source_sha256": "2b49021acf855e2e5407f80dec02c445e562354efcbcc0fcc49441c420e865aa",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "differential_privacy_randomness",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed.",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2510.16959v1",
+        "locator": "Main theorem, extraction lines 93–100",
+        "finding": "The logarithmic-randomness specialization has a displayed d^2/epsilon-type error term up to logarithms; it is not the requested near-optimal d/epsilon accuracy."
+      }
+    ]
+  },
+  {
+    "id": "L-F14-constant-parameters",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether the logarithmic randomness lower bound persists at constant privacy/failure parameters.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F14",
+        "locator": "Directions for Future Work, PDF page 8",
+        "extracted_text_lines": [
+          341,
+          344
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf",
+        "source_sha256": "2b49021acf855e2e5407f80dec02c445e562354efcbcc0fcc49441c420e865aa",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "differential_privacy_randomness",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F14-efficient",
+    "origin": "article_inventory_extension",
+    "title": "Construct polynomial-time low-randomness mechanisms for private counting queries.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F14",
+        "locator": "Directions for Future Work, PDF page 8",
+        "extracted_text_lines": [
+          345,
+          352
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf",
+        "source_sha256": "2b49021acf855e2e5407f80dec02c445e562354efcbcc0fcc49441c420e865aa",
+        "relation": "explicit_question"
+      },
+      {
+        "source_id": "F18",
+        "locator": "Introduction: efficient-construction question and parameterized answer",
+        "extracted_text_lines": [
+          55,
+          100
+        ],
+        "url": "https://arxiv.org/html/2510.16959v1",
+        "source_sha256": "2b080dd93fa44b4ab823c72b8e05f6bece77bf3fbb7f7b9eec85dcfd4b6d25b9",
+        "relation": "later_parameterized_answer"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "later_parameterized_answer_in_primary_literature",
+    "search_family": "differential_privacy_randomness",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed.",
+    "later_evidence": [
+      {
+        "url": "https://arxiv.org/html/2510.16959v1",
+        "locator": "Introduction; main theorem (extraction lines 55–100)",
+        "finding": "Provides polynomial-time mechanisms with a closely related randomness/accuracy tradeoff, including O(log d + log polylog(d/epsilon)) expected bits in the displayed regime. This is progress on efficiency; it does not supply logarithmic randomness at near-optimal accuracy for every parameter."
+      }
+    ]
+  },
+  {
+    "id": "L-F14-other-releases",
+    "origin": "article_inventory_extension",
+    "title": "Extend randomness-complexity analysis to other statistical releases.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F14",
+        "locator": "Directions for Future Work, PDF page 8",
+        "extracted_text_lines": [
+          353,
+          356
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf",
+        "source_sha256": "2b49021acf855e2e5407f80dec02c445e562354efcbcc0fcc49441c420e865aa",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "differential_privacy_randomness",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F14-replicability-links",
+    "origin": "article_inventory_extension",
+    "title": "Develop connections between privacy randomness and replicable algorithms.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F14",
+        "locator": "Directions for Future Work, PDF page 8",
+        "extracted_text_lines": [
+          357,
+          358
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf",
+        "source_sha256": "2b49021acf855e2e5407f80dec02c445e562354efcbcc0fcc49441c420e865aa",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "differential_privacy_randomness",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F16-higher-counts",
+    "origin": "article_inventory_extension",
+    "title": "Extend Fourier/additive-energy formulas to higher cycles and absorbing sets.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F16",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          467,
+          469
+        ],
+        "url": "https://arxiv.org/html/2607.13666v1",
+        "source_sha256": "c00d34d6ade246053469f686906cb29fb020a34096942d2042d1cd60a5b44606",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [
+      "L-P09-structured"
+    ],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Tanner_absorbing_sets",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F16-stopping-bound",
+    "origin": "article_inventory_extension",
+    "title": "Find QC-GHP parameters for which the paper’s spectral stopping-set bound is nonvacuous.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F16",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          470,
+          471
+        ],
+        "url": "https://arxiv.org/html/2607.13666v1",
+        "source_sha256": "c00d34d6ade246053469f686906cb29fb020a34096942d2042d1cd60a5b44606",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [
+      "L-P09-structured"
+    ],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Tanner_absorbing_sets",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F16-other-absorbing",
+    "origin": "article_inventory_extension",
+    "title": "Derive explicit (4,2) and (4,0) elementary absorbing-set counts in the stated QC-GHP setting.",
+    "kind": "classification_or_construction",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Specific source-posed target; retained in the source cohort if later answered.",
+    "occurrences": [
+      {
+        "source_id": "F16",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          472,
+          473
+        ],
+        "url": "https://arxiv.org/html/2607.13666v1",
+        "source_sha256": "c00d34d6ade246053469f686906cb29fb020a34096942d2042d1cd60a5b44606",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [
+      "L-P09-structured"
+    ],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "no_exact_statement_identified",
+    "lean_proof_status": "no_exact_proof_identified",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "Tanner_absorbing_sets",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json"
+  },
+  {
+    "id": "L-F19-distance",
+    "origin": "article_inventory_extension",
+    "title": "Determine useful minimum-distance upper bounds for the noncommuting polynomial-lift family.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F19",
+        "locator": "End of Section III.B / Section V",
+        "extracted_text_lines": [
+          215,
+          216
+        ],
+        "url": "https://arxiv.org/html/2610.03341v1",
+        "source_sha256": "64c729dd8015e415ea6a51f283cb882b2ccb60854883147ec59b2794f14a5397",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "high_girth_polynomial_lifts",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F19-Dickson",
+    "origin": "article_inventory_extension",
+    "title": "Explore closed families of permutation polynomials such as Dickson polynomials.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F19",
+        "locator": "End of Section III.B / Section V",
+        "extracted_text_lines": [
+          307,
+          308
+        ],
+        "url": "https://arxiv.org/html/2610.03341v1",
+        "source_sha256": "64c729dd8015e415ea6a51f283cb882b2ccb60854883147ec59b2794f14a5397",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "high_girth_polynomial_lifts",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
+  },
+  {
+    "id": "L-F19-quantum",
+    "origin": "article_inventory_extension",
+    "title": "Extend the permutation-polynomial construction to quantum LDPC codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or formulation request; outside the mathematical-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F19",
+        "locator": "End of Section III.B / Section V",
+        "extracted_text_lines": [
+          309,
+          309
+        ],
+        "url": "https://arxiv.org/html/2610.03341v1",
+        "source_sha256": "64c729dd8015e415ea6a51f283cb882b2ccb60854883147ec59b2794f14a5397",
+        "relation": "explicit_question"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "high_girth_polynomial_lifts",
+    "added_on": "2026-10-22",
+    "supplementary_search_evidence": "No target-specific Lean discovery in this extension; formalization status is unassessed."
   }
 ]

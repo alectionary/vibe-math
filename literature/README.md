@@ -1,8 +1,10 @@
 # Academic literature on dissertation open problems
 
-Checked October 21, 2026. The dissertation research has continued to circulate in articles, preprints and conference publications, and several specific questions also appear outside the dissertation text. The clearest later developments are a dyadic-code partial converse, independent work using secluded partitions, and fractional-diffusion extensions of algebraic calming. **No complete resolution of one of the 39 eligible open targets was verified in this bounded search.** This is a finding about the inspected literature, not a claim that all 39 remain open today.
+Checked October 22, 2026. The dissertation research has continued to circulate in articles, preprints and conference publications, and several specific questions also appear outside the dissertation text. The clearest later developments are a dyadic-code partial converse, independent work using secluded partitions, and fractional-diffusion extensions of algebraic calming. **No complete resolution of one of the 39 eligible open targets was verified in this bounded search.** This is a finding about the inspected literature, not a claim that all 39 remain open today.
 
 **Expanded inventory:** [Expanded canonical entries and per-entry formalization annotations](OPEN-PROBLEMS.md) · [searchable table](open-problems.html). The earlier 40-target cross-reference snapshot below is preserved; the expanded inventory adds article questions and explicit coverage limits.
+
+**October 22 expansion:** [Coauthor and citation search findings](SCHOLARLY-EXPANSION.md) adds 21 screened papers, 57 canonical entries and 27 eligible targets. Google Scholar access failed; OpenAlex, DBLP, author bibliographies and primary manuscripts supplied the expansion. Repeated conjectures, later restricted answers and source statements with counterexamples are recorded separately.
 
 ## Findings that matter for the project
 
@@ -23,8 +25,8 @@ Checked October 21, 2026. The dissertation research has continued to circulate i
 ## Counts and their meaning
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
-- **28 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not 28 independent new contributions or 28 peer-reviewed articles.
-- **Three external article follow-ups** and **two talk/abstract records** are tracked separately. The external papers cite the research family; they do not all repeat a particular dissertation question.
+- **33 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
+- **19 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -33,7 +35,7 @@ Eight selected questions have a directly corresponding earlier article statement
 
 A citation to an author or article is evidence of research uptake. An exact question repetition requires matching the mathematical objects and quantifiers. A partial result must add an actual theorem for a restricted case or subclaim. A resolution must settle the original target in its stated generality; a different model, a sufficient condition, or a result already present in the dissertation does not qualify. Publication date, first preprint date and revision date are kept distinct where they affect this interpretation.
 
-The search used author names with dissertation topics, problem terminology, article titles, author bibliographies, arXiv texts, publisher pages, and forward-citation discovery. It was not an exhaustive citation census or a proof-correctness review. The OpenAlex results underreport some citations independently located in the primary texts; zero index results must not be interpreted as zero citations. The earlier Semantic Scholar citation requests returned HTTP 429 and supplied no usable citation data. The gap-closure pass obtained limited open-access metadata separately; it did not replace the citation census. See [citation discovery failures](citation-discovery.json), [OpenAlex discovery](openalex-citations.json), and [author search coverage](authors.json).
+The search used author names with dissertation topics, problem terminology, article titles, author bibliographies, arXiv texts, publisher pages, and forward-citation discovery. It was not an exhaustive citation census or a proof-correctness review. The OpenAlex results underreport some citations independently located in the primary texts; zero index results must not be interpreted as zero citations. The earlier Semantic Scholar citation requests returned HTTP 429 and supplied no usable citation data. The gap-closure pass obtained limited open-access metadata separately; it did not replace the citation census. The October 22 pass adds six bounded forward-citation queries and 36 OpenAlex lexical discovery queries; lexical author-name hits are not treated as verified authorship. See [expanded methodology](SCHOLARLY-EXPANSION.md), [citation discovery failures](citation-discovery.json), [OpenAlex discovery](openalex-citations.json), and [author search coverage](authors.json).
 
 Four authors have no separately verified topic-matched article in this selected bibliography: Jordan Vincent Barrett, Alex John Heitzman, Allison Joan Ganger and Pahalapathirage Dona Kalani Hasanthika. That does not assert that they have no publications. Ganger’s work is acknowledged in a later seminar; Barrett has conference abstracts. Same-name Barrett graph-theory papers and unrelated Yuhao Mu physics/economics papers were excluded without an identity match.
 
@@ -269,7 +271,47 @@ Journal version of the dyadic/n-adic code research, subsequently cited and exten
 
 Location: Public manuscript Section 8, pp. 22–23; DOI/title/author identity matches publisher.
 
-## External articles and later talks
+### P29 On the Periodicity of k-distance Graphs
+
+Gregory Demo; David Lund; Oleksiy Al-saadi. 2026. [full text screened](https://arxiv.org/html/2606.25493v1).
+
+Later distance-graph work by the dissertation author; cites P21 in reference [1].
+
+Location: Conjecture 1; Section 4.
+
+### P30 Tri-plane diagrams for simple surfaces in S^4
+
+Wolfgang Allred; Manuel Aragón; Zack Dooley; Alexander Goldman; Yucong Lei; Isaiah Martinez; Nicholas Meyer; Devon Peters; Scott Warrander; Ana Wright; Alexander Zupan. 2023. [full text screened](https://arxiv.org/html/2302.08431v1).
+
+Additional coauthored surface-topology paper listed on Wright’s scholarship page; not an answer to the Alexander-neighbor knot question.
+
+Location: Section 6, Questions 6.1–6.5.
+
+### P31 List and Certificate Complexities in Replicable Learning
+
+Peter Dixon; A. Pavan; Jason Vander Woude; N. V. Vinodchandran. 2023. [full text screened](https://arxiv.org/html/2304.02240v1).
+
+Missing author-paper backfill; later bandit and RL papers explicitly build on its list-replicability framework.
+
+Location: Section 6; cited by F04 and F05.
+
+### P32 Towards a Sum-of-Squares Proof for the Nonexistence of Conway’s 99-graph
+
+Joseph Natal; Oleksiy Al-saadi. 2026. [full text screened](https://arxiv.org/html/2610.16266v1).
+
+Later coauthored preprint. Its relaxed triangle bound fails an exact finite check; its abstract’s nonexistence conclusion is not accepted here.
+
+Location: Section 1; Conjecture 5; final paragraph of Section 3.2.
+
+### P33 Neighborhood Variants of the KKM Lemma, Lebesgue Covering Theorem, and Sperner’s Lemma on the Cube
+
+Jason Vander Woude; Peter Dixon; A. Pavan; Jamie Radcliffe; N. V. Vinodchandran. 2023. [full text screened](https://arxiv.org/html/2306.12593v1).
+
+Missing overlapping author-paper version; Question 4.1 repeats the dissertation’s neighborhood-color range target.
+
+Location: Section 4, Question 4.1 and conclusion.
+
+## Related coauthor and external articles and later talks
 
 ### F01 Overcoming the Randomness-Utility Trade-off in Answering Differentially Private Linear Queries
 
@@ -300,6 +342,102 @@ STDC 2024 abstract, printed page 45, says the nontrivial-Alexander complete-neig
 Jake Kettinger. 2025. [later seminar mentions research](https://math.tulane.edu/~kmincheva/seminarAC_F25.html).
 
 12 November 2025 seminar abstract credits Brian Harbourne and Allison Ganger for investigating groupoids motivated by geproci sets. This verifies later acknowledgment of the research family, not a reference to or answer to Remark 6.4. No topic-matched Ganger article was verified in this search.
+
+### F04 List Replicable Reinforcement Learning
+
+Bohan Zhang; Michael Chen; A. Pavan; N. V. Vinodchandran; Lin F. Yang; Ruosong Wang. 2025. [coauthor or citation expansion](https://arxiv.org/html/2512.00553v1).
+
+Later work by coauthors Pavan and Vinodchandran; explicitly cites P31 and F05. PAC policies and policy traces differ from secluded-partition extremizers. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F05 Regret-Optimal List Replicable Bandit Learning: Matching Upper and Lower Bounds
+
+Michael Chen; A. Pavan; N. V. Vinodchandran; Ruosong Wang; Lin Yang. 2025. [coauthor or citation expansion](https://proceedings.iclr.cc/paper_files/paper/2025/file/0faa0019b0a8fcab8e6476bc43078e2e-Paper-Conference.pdf).
+
+Later coauthor work; cites P31 and extends list replicability to multi-armed and linear bandits. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F06 On a Partial Voigt Regularization of the 3D Magnetohydrodynamic Equations in Velocity-Vorticity Form
+
+Adam Larios; Yuan Pei. 2026. [coauthor or citation expansion](https://arxiv.org/html/2605.05139v1).
+
+Later work by Enlow’s coauthors Larios and Pei. Voigt regularization differs from algebraic calming. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F07 Oriented Matroids and Combinatorial Neural Codes
+
+Alexander Kunin; Caitlin Lienkaemper; Zvi Rosen. 2020. [coauthor or citation expansion](https://arxiv.org/html/2002.03542v2).
+
+Earlier paper by Geraci’s coauthor Kunin, recovered through the expanded search; its convex-polytope conjecture is explicitly restated by F08. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F08 Covering Relations in the Poset of Combinatorial Neural Codes
+
+R. Amzi Jeffs; Trong-Thuc Trang. 2025. [coauthor or citation expansion](https://arxiv.org/html/2512.04241v1).
+
+Independent downstream paper citing F07. Conjecture 1.3 restates F07 Question 6.3; covering-relation progress does not settle the convex-polytope conjecture. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F09 Nonlocal Boundary Conditions for Truncated-Fractional Differential Equations Posed on Bounded Domains
+
+Mikil Foss; Adam Larios; Michael Pieper. 2026. [coauthor or citation expansion](https://arxiv.org/html/2609.27002v1).
+
+Related nonlocal-operator work by Heitzman’s advisor and Enlow’s coauthor. This is a topic/advisor connection, not a verified citation to Heitzman’s dissertation. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F10 Fractional Voigt-regularization of the 3D Navier–Stokes and Euler equations: Global well-posedness and limiting behavior
+
+Zdzisław Brzeźniak; Adam Larios; Isabel Safarik. 2024. [coauthor or citation expansion](https://arxiv.org/html/2410.23492v1).
+
+Work by coauthor Larios on a different regularization; published in 2025. It does not resolve weak uniqueness for calmed velocity–vorticity. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F11 Data Assimilation in Large Eddy Simulation: Addressing Model-Observation Mismatch from Navier-Stokes Data
+
+Adam Larios; Ali Pakzad; Nicholas White. 2025. [coauthor or citation expansion](https://arxiv.org/html/2508.07492v1).
+
+Later coauthor work; conjectures removal of a smallness condition for its own assimilation system. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F12 Replicable Composition
+
+Kiarash Banihashem; MohammadHossein Bateni; Hossein Esfandiari; Samira Goudarzi; MohammadTaghi Hajiaghayi. 2026. [coauthor or citation expansion](https://arxiv.org/html/2604.10423v1).
+
+Independent topic follow-up citing Dixon et al.; proves a non-adaptive composition theorem, a different target from neighborhood-color bounds. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F13 Neural codes via homological invariants of polarized neural ideals
+
+Selvi Kara; Ellie Lew. 2026. [coauthor or citation expansion](https://arxiv.org/html/2602.16993v1).
+
+Independent neural-ideal paper citing the Kunin-related polar-complex literature. Its polarized-ideal invariants differ from Geraci’s Boolean-rank invariants. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F14 The Randomness Complexity of Differential Privacy
+
+Clément L. Canonne; Francis E. Su; Salil P. Vadhan. 2025. [coauthor or citation expansion](https://drops.dagstuhl.de/storage/00lipics/lipics-vol325-itcs2025/LIPIcs.ITCS.2025.27/LIPIcs.ITCS.2025.27.pdf).
+
+Independent downstream use of deterministic rounding schemes, explicitly crediting Vander Woude et al.; later algorithmic progress is in F18. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F15 Quantum CSS LDPC Codes based on Dyadic Matrices for Belief Propagation-based Decoding
+
+Alessio Baldelli; Massimo Battaglioni; Jonathan Mandelbaum; Sisi Miao; Laurent Schmalen. 2026. [coauthor or citation expansion](https://arxiv.org/html/2601.08636v1).
+
+Independent downstream code constructions; references [15] and [16] cite Martinez’s 2022 and 2025 code papers. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F16 Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes
+
+Aida Abiad; Nichola Castriota. 2026. [coauthor or citation expansion](https://arxiv.org/html/2607.13666v1).
+
+Independent downstream article explicitly cites Morris–Pllaha–Kelley, claims a restricted (3,3) absorbing-set enumeration, and acknowledges Morris. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F17 High-Rate Quasi-Dyadic Quantum LDPC Codes
+
+Alessio Baldelli; Sisi Miao; Laurent Schmalen; Massimo Battaglioni; Marco Baldi. 2026. [coauthor or citation expansion](https://arxiv.org/html/2609.24201v1).
+
+Independent downstream paper citing Martinez–Kelley [13] and P11 [16]; construction progress is not an exact rank/support-conjecture repetition. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F18 Efficient derandomization of differentially private counting queries
+
+Surendra Ghentiyala. 2025. [coauthor or citation expansion](https://arxiv.org/html/2510.16959v1).
+
+Later answer to F14’s request for an efficient construction, with a closely related parameter tradeoff; first preprint 2025, SOSA publication 2026. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
+
+### F19 Low-Density Parity-Check Codes of High Girth from Permutation Polynomials
+
+Tasawwar Hussain; Anthony Gómez-Fonseca; Tefjol Pllaha. 2026. [coauthor or citation expansion](https://arxiv.org/html/2610.03341v1).
+
+Later work by P11 coauthors Gómez-Fonseca and Pllaha; noncommuting polynomial lifts differ from dyadic signatures. Relation and source-posed questions were checked; no complete resolution of an original dissertation target is certified by this record.
 
 ## Question by question cross references
 
@@ -350,4 +488,4 @@ Jake Kettinger. 2025. [later seminar mentions research](https://math.tulane.edu/
 
 ## Search gaps worth resolving next
 
-The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. For the remaining exact conjectures, author bibliographies and richer forward-citation indexes may locate papers missed by title/topic search. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
+The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.

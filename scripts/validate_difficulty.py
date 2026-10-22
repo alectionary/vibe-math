@@ -4,11 +4,12 @@ from urllib.parse import urlparse
 R=pathlib.Path(__file__).resolve().parent.parent;D=R/'planning';load=lambda n:json.loads((D/n).read_text())
 rows=load('difficulty-estimates.json');scale=load('difficulty-scale.json');summary=load('difficulty-summary.json');sources=load('difficulty-sources.json')
 claims={r['id']:r for r in json.loads((R/'literature/open-problems.json').read_text())}
-assert len(rows)==len(claims)==len({r['claim_id'] for r in rows})==114
-assert {r['claim_id'] for r in rows}==set(claims)
+assert len(rows)==len({r['claim_id'] for r in rows})==114
+baseline=json.loads((R/'literature/scholarly-expansion-review.json').read_text())['baseline']['canonical_ids']
+assert {r['claim_id'] for r in rows}==set(baseline)<=set(claims)
 for r in rows:
  c=claims[r['claim_id']]
- assert r['title']==c['title'] and r['source_occurrences']==c['occurrences']
+ assert r['title']==c['title'] and all(o in c['occurrences'] for o in r['source_occurrences'])
  assert r['eligible_in_coverage_inventory']==c['eligible_for_coverage']
  assert r['related_target_ids']==c['related_target_ids']
  assert r['estimate_confidence']=='low' and not r['actual_formalization_status_changed']

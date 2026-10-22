@@ -9,6 +9,7 @@ A research collection covering 20 doctoral dissertations from 2022–2026: 16 ma
 
 - **Dyadic rank theorem:** [complete general Lean proof](formalization/dyadic-rank/README.md).
 - **Lean difficulty estimates:** [per-question ratings and assumptions](planning/LEAN-DIFFICULTY.md) and [searchable estimates](planning/difficulty.html).
+- **Expanded scholarly search:** [coauthors, citation trails, new questions and counterchecks](literature/SCHOLARLY-EXPANSION.md).
 - **Expanded open-problem inventory:** [searchable annotated inventory](literature/open-problems.html) and [method/counts](literature/OPEN-PROBLEMS.md), including the downstream articles; [full-text gap closure](literature/COVERAGE-GAPS.md).
 - **Academic literature follow-up:** [author papers and open-problem references](literature/README.md), with a structured [question ledger](literature/problem-links.json).
 - **Lean coverage audit:** [counts, scope and evidence](audit/README.md), [searchable ledger](audit/coverage.html), and [structured claims](audit/claims.json).

@@ -25,7 +25,7 @@ for l in links:
  assert set(l['paper_ids'])<=pids and set(l['followup_ids'])<=fids
  assert not l['full_resolution_verified']
  if l['finding']!='no_exact_reappearance_verified':assert l['paper_ids'] or l['followup_ids']
-assert summary['article_preprint_records']==len(papers)==28
+assert summary['article_preprint_records']==len(papers)==33
 assert summary['authors_with_topic_matched_records']==sum(bool(a['paper_ids']) for a in authors)==16
 assert summary['eligible_targets_from_lean_audit']==sum(l['eligible_in_previous_audit'] for l in links)==39
 assert summary['findings']==dict(collections.Counter(l['finding'] for l in links))
@@ -38,4 +38,4 @@ for href in re.findall(r'\]\(([^)]+)\)',report):
  if u.scheme or not u.path:continue
  assert (D/u.path).exists(),href
 assert summary['full_resolutions_verified']==0
-print('Validated 20 author records, 28 topic-matched article/preprint records, 5 external/talk records, and 40 question cross-references (39 eligible). No citation is counted as an automatic resolution.')
+print(f'Validated {len(authors)} author records, {len(papers)} author-paper records, {len(fs)} related-paper/talk records, and the preserved 40-question dissertation cross-reference snapshot.')
