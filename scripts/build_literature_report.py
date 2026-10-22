@@ -36,7 +36,7 @@ The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discover
 
 The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and now records completion of the selected P34 girth-eight target.
 
-The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is 2/108; priority claims and other graph properties remain separate.
+The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is 2/108. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; no new mathematical discovery or first-formalization claim is supported. Other graph properties remain separate.
 
 ## Counts and their meaning
 

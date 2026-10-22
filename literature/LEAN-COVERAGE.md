@@ -17,6 +17,8 @@ The entry already proved at the time of the discovery audit was **L-P11-rank-con
 
 The subsequent P34 work now has **75 checked Lean theorems**. A general simple eight-cycle combines with the complete four/six-cycle tests to give a necessary-and-sufficient girth-eight criterion, including the expanded binary matrix theorem and an equivalent formulation using pairs of 2-by-2 rectangles. The recorded `L-P34-girth-eight` target now has a verified statement and complete proof for cyclic permutation blocks with at least two rows and columns and positive lift size. This raises current proof coverage to **2/108**. The older discovery audit below and its JSON remain historical evidence, not the current proof count. Other graph-property optimization targets and priority claims remain separate. [Exact checked scope, source credit and reproducibility](../formalization/cyclic-lifts/README.md).
 
+The completed [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching proof mechanisms. The P34 contribution is a checked specialization and integration; the coverage count is not a count of new mathematical discoveries. First Lean formalization is unestablished.
+
 ## The previously unassessed targets
 
 This pass assessed the **12 eligible targets** left unassessed after the two literature expansions, plus **nine excluded directions**. It did not repeat a complete search for every older target. Each of the 21 entries now points to this pass’s evidence. No exact new target statement or proof was identified.

@@ -2566,7 +2566,7 @@ A faithful matrix/Tanner comparison, complete short-cycle equivalences, and a ge
 
 First milestone: Maintain the arbitrary-dimension consumer and complete axiom audit; compare the precise criterion with published cyclic-lift criteria before priority claims.
 
-Progress: Completed: 75 checked Lean theorems include the general eight-cycle bound and exact girth-eight characterization, with a formulation using only pairs of 2x2 rectangle voltages. The recorded girth target now counts as verified; novelty and other decoding properties remain unassessed. [Checked artifact](../formalization/cyclic-lifts/README.md).
+Progress: Completed: 75 checked Lean theorems include the general eight-cycle bound and exact girth-eight characterization, with a formulation using only pairs of 2x2 rectangle voltages. The recorded girth target now counts as verified; novelty and other decoding properties remain unassessed. The subsequent prior-art review identifies established component results and matching mechanisms; this is verified formalization coverage, not an established new mathematical discovery. [Checked artifact](../formalization/cyclic-lifts/README.md).
 
 Basis: General characterization built and axiom-audited October 22; prior effort estimates retained separately, not measured implementation timings. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p34-girth-eight).
 

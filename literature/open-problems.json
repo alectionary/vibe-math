@@ -5620,14 +5620,39 @@
         "CyclicLift.xGraph_girth_characterization",
         "CyclicLift.matrixTanner_hX_girth_characterization",
         "CyclicLift.xGraph_girth_eq_eight_iff_rectangles"
-      ]
+      ],
+      "prior_art_note": "formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md",
+      "proof_comparison_note": "formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md"
     },
     "novelty_assessment": {
       "checked_on": "2026-10-22",
-      "mathematical_priority": "not_established",
+      "mathematical_conclusion": "specialization_of_established_qc_cycle_conditions_and_lp_eight_cycle_bound",
+      "mathematical_priority": "no_new_mathematical_discovery_claim_supported",
+      "proof_method_priority": "same_mechanisms_as_inspected_published_component_proofs",
       "lean_formalization_priority": "not_established",
-      "note": "The general entrywise characterization is checked in Lean. Walk-closure and short-cycle conditions are established voltage-graph background; no claim to a new mathematical theorem, proof method, or first Lean formalization follows. Published-criterion comparison remains a separate task."
-    }
+      "exact_combined_iff_found_verbatim": false,
+      "negative_finding_is_bounded_not_global": true,
+      "note": "formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md",
+      "review": "formalization/cyclic-lifts/prior-art-review.json",
+      "scope": "Verified Lean characterization remains complete for the recorded model; exact combined wording not located, but established component results and matching proof mechanisms give the mathematical route. Broader code-design optimization and first-formalization priority are separate."
+    },
+    "later_evidence": [
+      {
+        "url": "https://doi.org/10.1109/TIT.2004.831841",
+        "locator": "Fossorier (2004), Equations (3)-(5), Theorem 2.1",
+        "finding": "Classical short-cycle criterion; notation translation checked in the comparison consumer."
+      },
+      {
+        "url": "https://arxiv.org/html/2503.07567v1",
+        "locator": "Raveendran-Declercq-Vasic (2025), Section III-B, p.5, after Equation (20)",
+        "finding": "Direct predecessor for the LP eight-cycle cancellation; also origin paper reference [9]."
+      },
+      {
+        "url": "https://arxiv.org/html/2604.27817v1",
+        "locator": "Okada-Kasai (2026), Lemma 3 and Theorem 5",
+        "finding": "Matching support argument and projected cycle, with different binary-base/CSS-lift hypotheses."
+      }
+    ]
   },
   {
     "id": "L-P34-decoding-effects",

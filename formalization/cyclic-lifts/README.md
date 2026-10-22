@@ -44,7 +44,7 @@ Every edge satisfies the source's exponent equation. The four check projections 
 
 The converse/forward assembly is short once this witness is available: girth eight forbids four- and six-cycles; conversely the complete short-cycle criteria exclude those lengths, bipartite coloring excludes odd lengths, and the eight-cycle attains the bound. The independent consumer rederives the modulo-seven example through the general criterion and checks the bound at a composite modulus with arbitrary, unnormalized exponents.
 
-This is a verified characterization for the recorded graph model, not a claim to a new mathematical theorem or first Lean formalization. Comparison with published cyclic-lift criteria remains a separate literature task. The source's accompanying questions about other graph properties and decoding optimization are not answered by this girth theorem.
+The [prior-art and proof comparison](PRIOR-ART-AND-PROOF-COMPARISON.md) identifies the short-cycle conditions as a specialization of Fossorier (2004), the direct LP eight-cycle cancellation in Raveendran–Declercq–Vasić (2025), and matching support/cycle mechanisms in other primary texts. The verified artifact combines established mathematics; neither a new mathematical discovery nor first Lean formalization is established. The source's accompanying questions about other graph properties and decoding optimization are not answered by this girth theorem.
 
 ## Checked results
 
@@ -165,4 +165,4 @@ The Lean sources are in the shared environment:
 - [SmallCases.lean](../dyadic-rank/CyclicLift/SmallCases.lean): no-six theorem for arbitrary 2-by-2 bases, uniform normalized girth-eight family and the ternary six-cycle obstruction.
 - [CyclicChecks.lean](../dyadic-rank/CyclicChecks.lean): independent consumer statements and the axiom audit.
 
-The recorded girth-eight target is complete for the stated X-graph model and dimension assumptions. The remaining research tasks are a careful published-proof comparison and independent questions about connected constructions, absorbing sets, expansion and decoding performance. No priority claim has been established.
+The recorded girth-eight target is complete for the stated X-graph model and dimension assumptions. The bounded published-proof comparison is now documented above. Independent questions about connected constructions, absorbing sets, expansion and decoding performance remain separate. No priority claim has been established.
