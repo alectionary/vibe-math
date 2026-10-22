@@ -1,0 +1,1130 @@
+{
+  "scope": "One Pauli error sector, independent Bernoulli(p) errors, perfect syndrome, normalized min-sum flooding; code-capacity experiment, not full depolarizing or circuit-level performance.",
+  "scoring": "Success iff error XOR correction is in row(H_Z). Failure is nonconvergence/syndrome mismatch OR matched nonstabilizer residual. Exact error recovery is separately reported.",
+  "decoder": "Syndrome normalized min-sum; constant prior log((1-p)/p), fixed point with 20 fractional bits, prior rounded to nearest integer, normalization in integer thousandths with nonnegative magnitudes rounded to nearest (ties up), zero LLR sign +1, hard bit 1 iff posterior<0, all messages clipped to +/-50; stop at first syndrome match, including iteration zero. No OSD, restarts or use of true error during decoding.",
+  "reference": "https://link.springer.com/article/10.1140/epjqt/s40507-023-00201-1#Sec4",
+  "selection": "All four minimum-count orbit representatives selected structurally, before decoding. Baseline and previous best are included. Primary rate-preserving comparisons: previous_best, minimum_2, minimum_4 (k=10). minimum_1 and minimum_3 have k=8 and are exploratory, not rate-matched. No winner chosen using decoding trials.",
+  "statistics": "Wilson marginal 95% intervals; paired normal 95% intervals for design-minus-baseline failure-rate differences. Pointwise, not adjusted for multiple comparisons.",
+  "flag_encoding": "zlib compressed packed bits, least significant bit first in each byte, base64; one bit per trial in stream order.",
+  "validation": {
+    "engine_reference_cases": 128,
+    "total_decoder_checks": 1658,
+    "additional_checks": [
+      "CSS orthogonality of every selected matrix pair",
+      "GF(2) membership against exhaustive toy span",
+      "all selected single errors and a stabilizer error",
+      "constructed zero-syndrome logical error scores as failure"
+    ]
+  },
+  "designs": {
+    "baseline": {
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          6
+        ]
+      ],
+      "r": 14,
+      "n": 252,
+      "rank_hx": 121,
+      "rank_hz": 121,
+      "k": 10,
+      "girth": 8,
+      "connected": true,
+      "four_variable_absorbing_sets": 3150
+    },
+    "previous_best": {
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          8
+        ]
+      ],
+      "r": 14,
+      "n": 252,
+      "rank_hx": 121,
+      "rank_hz": 121,
+      "k": 10,
+      "girth": 8,
+      "connected": true,
+      "four_variable_absorbing_sets": 2646
+    },
+    "minimum_1": {
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          4,
+          11
+        ]
+      ],
+      "r": 14,
+      "n": 252,
+      "rank_hx": 122,
+      "rank_hz": 122,
+      "k": 8,
+      "girth": 8,
+      "connected": true,
+      "four_variable_absorbing_sets": 2520
+    },
+    "minimum_2": {
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          6,
+          10
+        ]
+      ],
+      "r": 14,
+      "n": 252,
+      "rank_hx": 121,
+      "rank_hz": 121,
+      "k": 10,
+      "girth": 8,
+      "connected": true,
+      "four_variable_absorbing_sets": 2520
+    },
+    "minimum_3": {
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          7,
+          4
+        ]
+      ],
+      "r": 14,
+      "n": 252,
+      "rank_hx": 122,
+      "rank_hz": 122,
+      "k": 8,
+      "girth": 8,
+      "connected": true,
+      "four_variable_absorbing_sets": 2520
+    },
+    "minimum_4": {
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          6,
+          2
+        ]
+      ],
+      "r": 14,
+      "n": 252,
+      "rank_hx": 121,
+      "rank_hz": 121,
+      "k": 10,
+      "girth": 8,
+      "connected": true,
+      "four_variable_absorbing_sets": 2520
+    }
+  },
+  "experiment": {
+    "probabilities": [
+      0.0025,
+      0.005,
+      0.01,
+      0.02,
+      0.04
+    ],
+    "trials_per_probability": 10000,
+    "seed": 20261022,
+    "max_iterations": 100,
+    "alpha": 0.8,
+    "results": [
+      {
+        "design": "baseline",
+        "p": 0.0025,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 9999,
+        "stabilizer_equivalent_success": 1,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.4963,
+        "mean_iterations_given_syndrome_match": 0.4963,
+        "error_stream_sha256": "06c851d3c0b77b26c5e6fffbd8fd8f2085327b80436a9dfdff2850cc94fc7271",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "previous_best",
+        "p": 0.0025,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 10000,
+        "stabilizer_equivalent_success": 0,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.4812,
+        "mean_iterations_given_syndrome_match": 0.4812,
+        "error_stream_sha256": "06c851d3c0b77b26c5e6fffbd8fd8f2085327b80436a9dfdff2850cc94fc7271",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.0025,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 10000,
+        "stabilizer_equivalent_success": 0,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.4804,
+        "mean_iterations_given_syndrome_match": 0.4804,
+        "error_stream_sha256": "06c851d3c0b77b26c5e6fffbd8fd8f2085327b80436a9dfdff2850cc94fc7271",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.0025,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 10000,
+        "stabilizer_equivalent_success": 0,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.4813,
+        "mean_iterations_given_syndrome_match": 0.4813,
+        "error_stream_sha256": "06c851d3c0b77b26c5e6fffbd8fd8f2085327b80436a9dfdff2850cc94fc7271",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.0025,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 10000,
+        "stabilizer_equivalent_success": 0,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.4809,
+        "mean_iterations_given_syndrome_match": 0.4809,
+        "error_stream_sha256": "06c851d3c0b77b26c5e6fffbd8fd8f2085327b80436a9dfdff2850cc94fc7271",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.0025,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 10000,
+        "stabilizer_equivalent_success": 0,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.482,
+        "mean_iterations_given_syndrome_match": 0.482,
+        "error_stream_sha256": "06c851d3c0b77b26c5e6fffbd8fd8f2085327b80436a9dfdff2850cc94fc7271",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "baseline",
+        "p": 0.005,
+        "trials": 10000,
+        "failure_count": 1,
+        "failure_rate": 0.0001,
+        "wilson_95_interval": [
+          1.765267360112231e-05,
+          0.0005662688974013381
+        ],
+        "exact_recovery": 9998,
+        "stabilizer_equivalent_success": 1,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 1,
+        "mean_iterations": 0.7737,
+        "mean_iterations_given_syndrome_match": 0.7737,
+        "error_stream_sha256": "63bde303c4266832f6452aa6f14e0201e0e8645e92229fc4f0bc683faf48e4bb",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjIJBCASoYQgACTIAEQ==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "previous_best",
+        "p": 0.005,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 9999,
+        "stabilizer_equivalent_success": 1,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.7672,
+        "mean_iterations_given_syndrome_match": 0.7672,
+        "error_stream_sha256": "63bde303c4266832f6452aa6f14e0201e0e8645e92229fc4f0bc683faf48e4bb",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.005,
+        "trials": 10000,
+        "failure_count": 2,
+        "failure_rate": 0.0002,
+        "wilson_95_interval": [
+          5.484892732085777e-05,
+          0.0007289958440074673
+        ],
+        "exact_recovery": 9996,
+        "stabilizer_equivalent_success": 2,
+        "syndrome_failure": 2,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.792,
+        "mean_iterations_given_syndrome_match": 0.7721544308861772,
+        "error_stream_sha256": "63bde303c4266832f6452aa6f14e0201e0e8645e92229fc4f0bc683faf48e4bb",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUoIGG0SCgO2ChjbEA674AhQ==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUoIGG0SCgO2ChjbEA674AhQ=="
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.005,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 9999,
+        "stabilizer_equivalent_success": 1,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.7628,
+        "mean_iterations_given_syndrome_match": 0.7628,
+        "error_stream_sha256": "63bde303c4266832f6452aa6f14e0201e0e8645e92229fc4f0bc683faf48e4bb",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.005,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 9999,
+        "stabilizer_equivalent_success": 1,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.7658,
+        "mean_iterations_given_syndrome_match": 0.7658,
+        "error_stream_sha256": "63bde303c4266832f6452aa6f14e0201e0e8645e92229fc4f0bc683faf48e4bb",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.005,
+        "trials": 10000,
+        "failure_count": 0,
+        "failure_rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.00038399837067659573
+        ],
+        "exact_recovery": 10000,
+        "stabilizer_equivalent_success": 0,
+        "syndrome_failure": 0,
+        "matched_logical_failure": 0,
+        "mean_iterations": 0.7659,
+        "mean_iterations_given_syndrome_match": 0.7659,
+        "error_stream_sha256": "63bde303c4266832f6452aa6f14e0201e0e8645e92229fc4f0bc683faf48e4bb",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AUjILhCgAE4gAB"
+      },
+      {
+        "design": "baseline",
+        "p": 0.01,
+        "trials": 10000,
+        "failure_count": 3,
+        "failure_rate": 0.0003,
+        "wilson_95_interval": [
+          0.00010203219941781012,
+          0.0008817357722363795
+        ],
+        "exact_recovery": 9985,
+        "stabilizer_equivalent_success": 12,
+        "syndrome_failure": 2,
+        "matched_logical_failure": 1,
+        "mean_iterations": 1.2322,
+        "mean_iterations_given_syndrome_match": 1.2124424884976996,
+        "error_stream_sha256": "4f54b8dd856b5bfc76932a866f35ce5ccd297bd17d87ab7d2ffe0cfcf1bc8d79",
+        "failure_flags_zlib_base64": "eNpjYBiRoGFIuJKDYRSMgiEEHAahmwA5qADJ",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFgxZwjAbBKBhKwGEQugkARAoASQ=="
+      },
+      {
+        "design": "previous_best",
+        "p": 0.01,
+        "trials": 10000,
+        "failure_count": 7,
+        "failure_rate": 0.0007,
+        "wilson_95_interval": [
+          0.0003391263316879597,
+          0.0014443344412696886
+        ],
+        "exact_recovery": 9984,
+        "stabilizer_equivalent_success": 9,
+        "syndrome_failure": 7,
+        "matched_logical_failure": 0,
+        "mean_iterations": 1.2756,
+        "mean_iterations_given_syndrome_match": 1.2064445111578104,
+        "error_stream_sha256": "4f54b8dd856b5bfc76932a866f35ce5ccd297bd17d87ab7d2ffe0cfcf1bc8d79",
+        "failure_flags_zlib_base64": "eNpjYBhMwIEqprAwDCXARNvAwAQCDKNgkKTUUUBlwIEpBACcwADf",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBhMwIEqprAwDCXARNvAwAQCDKNgkKTUUUBlwIEpBACcwADf"
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.01,
+        "trials": 10000,
+        "failure_count": 5,
+        "failure_rate": 0.0005,
+        "wilson_95_interval": [
+          0.00021358842616382576,
+          0.0011700259461420934
+        ],
+        "exact_recovery": 9985,
+        "stabilizer_equivalent_success": 10,
+        "syndrome_failure": 5,
+        "matched_logical_failure": 0,
+        "mean_iterations": 1.2454,
+        "mean_iterations_given_syndrome_match": 1.1959979989994998,
+        "error_stream_sha256": "4f54b8dd856b5bfc76932a866f35ce5ccd297bd17d87ab7d2ffe0cfcf1bc8d79",
+        "failure_flags_zlib_base64": "eNpjYBhMwIFhFIyCoQAGSUrlwCEuwMDANBpJYAAAoEkAmw==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBhMwIFhFIyCoQAGSUrlwCEuwMDANBpJYAAAoEkAmw=="
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.01,
+        "trials": 10000,
+        "failure_count": 4,
+        "failure_rate": 0.0004,
+        "wilson_95_interval": [
+          0.00015556283662307484,
+          0.0010281283353569795
+        ],
+        "exact_recovery": 9980,
+        "stabilizer_equivalent_success": 16,
+        "syndrome_failure": 4,
+        "matched_logical_failure": 0,
+        "mean_iterations": 1.2496,
+        "mean_iterations_given_syndrome_match": 1.2100840336134453,
+        "error_stream_sha256": "4f54b8dd856b5bfc76932a866f35ce5ccd297bd17d87ab7d2ffe0cfcf1bc8d79",
+        "failure_flags_zlib_base64": "eNpjYBgFo2AU4AMCaHyWIeFqppEYVRyYQgAqIgAf",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFo2AU4AMCaHyWIeFqppEYVRyYQgAqIgAf"
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.01,
+        "trials": 10000,
+        "failure_count": 5,
+        "failure_rate": 0.0005,
+        "wilson_95_interval": [
+          0.00021358842616382576,
+          0.0011700259461420934
+        ],
+        "exact_recovery": 9986,
+        "stabilizer_equivalent_success": 9,
+        "syndrome_failure": 5,
+        "matched_logical_failure": 0,
+        "mean_iterations": 1.2284,
+        "mean_iterations_given_syndrome_match": 1.1789894947473736,
+        "error_stream_sha256": "4f54b8dd856b5bfc76932a866f35ce5ccd297bd17d87ab7d2ffe0cfcf1bc8d79",
+        "failure_flags_zlib_base64": "eNpjYBhMwIFhFIyCoQBGUyrRoaJARwdwYAoBALnpAOk=",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBhMwIFhFIyCoQBGUyrRoaJARwdwYAoBALnpAOk="
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.01,
+        "trials": 10000,
+        "failure_count": 3,
+        "failure_rate": 0.0003,
+        "wilson_95_interval": [
+          0.00010203219941781012,
+          0.0008817357722363795
+        ],
+        "exact_recovery": 9985,
+        "stabilizer_equivalent_success": 12,
+        "syndrome_failure": 3,
+        "matched_logical_failure": 0,
+        "mean_iterations": 1.2365,
+        "mean_iterations_given_syndrome_match": 1.2068620586175853,
+        "error_stream_sha256": "4f54b8dd856b5bfc76932a866f35ce5ccd297bd17d87ab7d2ffe0cfcf1bc8d79",
+        "failure_flags_zlib_base64": "eNpjYBgFtAMco0EwCkYT2ICGBwAqsgAZ",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBgFtAMco0EwCkYT2ICGBwAqsgAZ"
+      },
+      {
+        "design": "baseline",
+        "p": 0.02,
+        "trials": 10000,
+        "failure_count": 34,
+        "failure_rate": 0.0034,
+        "wilson_95_interval": [
+          0.002434181816300086,
+          0.004747205365455908
+        ],
+        "exact_recovery": 9892,
+        "stabilizer_equivalent_success": 74,
+        "syndrome_failure": 18,
+        "matched_logical_failure": 16,
+        "mean_iterations": 2.4427,
+        "mean_iterations_given_syndrome_match": 2.266780204367862,
+        "error_stream_sha256": "a94b6203c37d0fce2a9208fb771806870c1eb6590476a57bf4def8967bb63cb0",
+        "failure_flags_zlib_base64": "eNpjYMAPBBDMBgbiAAcDNUADlSxQYKAO4CDXWw7IHBYGagEFBroCJhqrJwEwwgO1AbsktQMJbGYDpWYJUjMMWMhJHxxUSgIchIKdHMMdqB4CoCAAuhkAjiYD7A==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYMAPBBDMBgbiAAcDjQFJFigMhKV0AAoMIxUwArEDPklaWEh5gAtQ00ksAxDuTASDiBLDHWjlbADylgGl"
+      },
+      {
+        "design": "previous_best",
+        "p": 0.02,
+        "trials": 10000,
+        "failure_count": 23,
+        "failure_rate": 0.0023,
+        "wilson_95_interval": [
+          0.001533154495882851,
+          0.0034490774822886323
+        ],
+        "exact_recovery": 9903,
+        "stabilizer_equivalent_success": 74,
+        "syndrome_failure": 23,
+        "matched_logical_failure": 0,
+        "mean_iterations": 2.4334,
+        "mean_iterations_given_syndrome_match": 2.2084795028565702,
+        "error_stream_sha256": "a94b6203c37d0fce2a9208fb771806870c1eb6590476a57bf4def8967bb63cb0",
+        "failure_flags_zlib_base64": "eNpjYCAGMDHQAmAxtQEHGwVwYBNkxKFYgWHQAwFyNNHUXyzUiE0HmgccI/HJYHACJqypwIEaIShAk/TSQDWvN9ArzQIA1qcDbA==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYCAGMDHQAmAxtQEHGwVwYBNkxKFYgWHQAwFyNNHUXyzUiE0HmgccI/HJYHACJqypwIEaIShAk/TSQDWvN9ArzQIA1qcDbA=="
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.02,
+        "trials": 10000,
+        "failure_count": 27,
+        "failure_rate": 0.0027,
+        "wilson_95_interval": [
+          0.0018563306257756151,
+          0.003925594153699328
+        ],
+        "exact_recovery": 9900,
+        "stabilizer_equivalent_success": 73,
+        "syndrome_failure": 27,
+        "matched_logical_failure": 0,
+        "mean_iterations": 2.4814,
+        "mean_iterations_given_syndrome_match": 2.217386944750827,
+        "error_stream_sha256": "a94b6203c37d0fce2a9208fb771806870c1eb6590476a57bf4def8967bb63cb0",
+        "failure_flags_zlib_base64": "eNpjYMAKHBjoAJigtABeVRx4dOICxDlfgIEuQAGrKAuF5igMUKQRjE3ypCGggbZO5KB+NNI0zMiOXSzhuICY8BGgVmBRH5CcuBmhNAAXJAPA",
+        "syndrome_failure_flags_zlib_base64": "eNpjYMAKHBjoAJigtABeVRx4dOICxDlfgIEuQAGrKAuF5igMUKQRjE3ypCGggbZO5KB+NNI0zMiOXSzhuICY8BGgVmBRH5CcuBmhNAAXJAPA"
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.02,
+        "trials": 10000,
+        "failure_count": 17,
+        "failure_rate": 0.0017,
+        "wilson_95_interval": [
+          0.0010617073611205116,
+          0.0027209854150957837
+        ],
+        "exact_recovery": 9902,
+        "stabilizer_equivalent_success": 81,
+        "syndrome_failure": 17,
+        "matched_logical_failure": 0,
+        "mean_iterations": 2.4312,
+        "mean_iterations_given_syndrome_match": 2.2650505859961934,
+        "error_stream_sha256": "a94b6203c37d0fce2a9208fb771806870c1eb6590476a57bf4def8967bb63cb0",
+        "failure_flags_zlib_base64": "eNpjYBj0QACJrTDYHMc0AHYyMgwRwEFjpzOR7gAahS4H/bIANROEAC0dzTagKbcBxgAAPpsA+A==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYBj0QACJrTDYHMc0AHYyMgwRwEFjpzOR7gAahS4H/bIANROEAC0dzTagKbcBxgAAPpsA+A=="
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.02,
+        "trials": 10000,
+        "failure_count": 25,
+        "failure_rate": 0.0025,
+        "wilson_95_interval": [
+          0.0016939976111583195,
+          0.0036880807676648924
+        ],
+        "exact_recovery": 9894,
+        "stabilizer_equivalent_success": 81,
+        "syndrome_failure": 25,
+        "matched_logical_failure": 0,
+        "mean_iterations": 2.4654,
+        "mean_iterations_given_syndrome_match": 2.220952380952381,
+        "error_stream_sha256": "a94b6203c37d0fce2a9208fb771806870c1eb6590476a57bf4def8967bb63cb0",
+        "failure_flags_zlib_base64": "eNpjYAACAYYBBIyD0ihiARMdLCfWZAeStSBcz8BBQGkDE+UBpUBIEdARDWQFPg7DyJYdWomQbCBAdGBSF7AQq1CB8mAGAH69Adg=",
+        "syndrome_failure_flags_zlib_base64": "eNpjYAACAYYBBIyD0ihiARMdLCfWZAeStSBcz8BBQGkDE+UBpUBIEdARDWQFPg7DyJYdWomQbCBAdGBSF7AQq1CB8mAGAH69Adg="
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.02,
+        "trials": 10000,
+        "failure_count": 26,
+        "failure_rate": 0.0026,
+        "wilson_95_interval": [
+          0.0017749883701664527,
+          0.0038070132089826243
+        ],
+        "exact_recovery": 9885,
+        "stabilizer_equivalent_success": 89,
+        "syndrome_failure": 26,
+        "matched_logical_failure": 0,
+        "mean_iterations": 2.5534,
+        "mean_iterations_given_syndrome_match": 2.2993783837978743,
+        "error_stream_sha256": "a94b6203c37d0fce2a9208fb771806870c1eb6590476a57bf4def8967bb63cb0",
+        "failure_flags_zlib_base64": "eNpjYCAAFBgoAhwMVAEsFJvgwEATwER9v2IARqqYQozrGogzqoE8O4QY6A4EsMfU4AMCJKc28tMprozVQFQiYaKSzUSmnwZKcwMA6dMC2Q==",
+        "syndrome_failure_flags_zlib_base64": "eNpjYCAAFBgoAhwMVAEsFJvgwEATwER9v2IARqqYQozrGogzqoE8O4QY6A4EsMfU4AMCJKc28tMprozVQFQiYaKSzUSmnwZKcwMA6dMC2Q=="
+      },
+      {
+        "design": "baseline",
+        "p": 0.04,
+        "trials": 10000,
+        "failure_count": 428,
+        "failure_rate": 0.0428,
+        "wilson_95_interval": [
+          0.03900535884286428,
+          0.046945769267282375
+        ],
+        "exact_recovery": 8999,
+        "stabilizer_equivalent_success": 573,
+        "syndrome_failure": 278,
+        "matched_logical_failure": 150,
+        "mean_iterations": 9.6503,
+        "mean_iterations_given_syndrome_match": 7.066755811561407,
+        "error_stream_sha256": "8c306e558b59ebc8c94f126e53bd5ce08736e435b70e78248db0b8477d4d4c64",
+        "failure_flags_zlib_base64": "eNpdVDtSAzEMlYSWMakEQ5HSMBRbcgSHoaDMEXIUM5MiZY6Uo6GP7XVQMpu1/fT0ew5kAgCBbrrKIH1dM/shQQUETLafbAeBHcD6OZbhChcFhiekqkwOgc9Bb6eUYDJduP+V/CXDi6PQDxGWkZxoAHK8cRgUqQwaZKWNDCbLqAWs4W6vndeszECZF/gxr+DB0WihiwMlv2/Jmx2hpsGNTx7Zs8zBXD0zA4ptaGSssFZp/tbgs0N6QWUdSWUPk/SXi20d1Dm1fEsrInFvgmFHidEKI+AdQZ9Ms0f47QPx2S2HIP2S6hHf4JaQYvQC+VLvOvUN0Va2MUexpTRFEEiH8RaCa+9WJMj303C7Kcs0iT03X9s7z8DOhV4z/ZtfE15X9MeYU4hU7uV32ll3Q32vLcHFlU51lm1kuzlzKN52TgZJfhk4Jr0OBep3vSuS21Xx+qeZZGV5NybYGV25eshqxSj0Z4hK7eALnttJQbjdZkk6c6v7x6vEMiQvaepPlGCCF2NNFHca0KcY3FImpbSBCDkJNT1XV2V5bhPfD+RZz72ZMq4Lq7Z0dcumwATPcbbdZVFE7uJRnS4ex/5zqm4X1ueS7PhkYa0NK7e5+JPEXQtHwD/1hzHz",
+        "syndrome_failure_flags_zlib_base64": "eNp1VLtSAzEMlIWZMakUKkrDUPAZpqPMJ/ApYobiPhtLsvw64iR3ib3SSru6QEYAIJhWBvLfnKMeIjCE+pL9JDthwt/aXRIdvsn6lhXn3LKHCdZV5EKoXzI8K8oIhNOLI6OwYFQoFjitY2kl1AYaXVgrgSV2ESDkBfig6ODUkhZXzhvw1NMT3M1caDB/wC4M9IZKmtwAFT1DLCMbtRYMn7yzOBXpXzXBBXedolFy9+7TkiLZ1qvEo0HqwcH/9dMy5E1Pclg8dTgXAMsYGWR25WXW8HcFpuap5MGtKobZQHzfiLcOqplJHR3yhsfkAw13g+MAFKtdOop4MjfnU9/o/TMsRr99Oy/bqAQ38GvMQhMpu7ihxURHWI3pgqpS+5RuEc3Pn5ZLEkpymrCVGHB/VHhRgYwL2zErSbnuzlXbyLyiPpBRZkv+W+BH7tf+aE8S5T48sQlGFlLJ6jUk4+UOo3FF0j2fpD8bjCIC"
+      },
+      {
+        "design": "previous_best",
+        "p": 0.04,
+        "trials": 10000,
+        "failure_count": 291,
+        "failure_rate": 0.0291,
+        "wilson_95_interval": [
+          0.025982055888652017,
+          0.0325795937768512
+        ],
+        "exact_recovery": 9096,
+        "stabilizer_equivalent_success": 613,
+        "syndrome_failure": 288,
+        "matched_logical_failure": 3,
+        "mean_iterations": 9.2743,
+        "mean_iterations_given_syndrome_match": 6.583916803953872,
+        "error_stream_sha256": "8c306e558b59ebc8c94f126e53bd5ce08736e435b70e78248db0b8477d4d4c64",
+        "failure_flags_zlib_base64": "eNptUztSQzEMlI0KTyoNk4JSCU3KHMFFCkqOwFEMw0E4CkdDsmzLSnDh54+0u1r5ASeQ0SdoAFW/TDBHmosyIs4yZznmvr8Bwe+4k2MfzbYaheObL4Z2BjuotuqcqezZnzuMMMCTscEXhNFTShOCmiZUm4mUOguKOlyVeGHKyte5oYDL2wqHDFoXaa+0qKg6d6gXiYI+nVPAR3ZbB+bBVCxcfl8iywElXACOaRod9Vbbpp2hmrajXDJwG5bU4ai6Q8MpZVDdGK2Fk0I+eyNSYLaKOY+HkddRVR20vJgSTytgScStxb6s2YsMr8D1/YScFZ5W2/qT1i71q2yKLT+dVxUYu6Q4BI/kTmUJxN79HIO4SI1y9rolCV67BDRcieS/nY6PKT3fVabjDeDb7cRowXpA1pHw5/KDm4Lb7n4hJ5PPy0huNbQcHxzXdHQ763Wr0l8j3a+IO0GFWP4/ckunwo20cNhucWYr9bk2Ab0Nv/4AyqUkNg==",
+        "syndrome_failure_flags_zlib_base64": "eNptUzF6gyEIRcvgl4khQ0eSLhlzBIcMGXuEHsX260F6lB6tICqSlMFfFN6Dhz9wArG+QAOo+mWCaWluyog4y5rlmLt/A4LfcSfHbs1cjcLxzRdDO4MdVNt1zlT27M8dRhjgxdjgC4L1lNKEoKYJ1WYipc6CUh2uTrwxZeXrdCjg8rbDUQati7R3WrSoOj3Ui0ShPl1TwEd2WQemKUgLl99XkeWAEi4AxzSFjvVWc9POUA30KJcM3IYkdSiq6tBQShms7min0Am0FJitY86j9LyOqtZBS4tZ4mkFrBJxG7Fva/YmwyvA5f2EnBWe1tj6k9Yp9atsFVt+Oq8uME5JcQieyZ3KEoh9+jkGcZEe5extSxK8dglouBLJfzu1j1l6fuhM7Q7w7XJilEDsAD6R8Ofyk5qC2x5+ISeTz+tIbjWMHJ8U13R0Oet169JfIz3uiDtBhdj+P+WWToUbaeHgbnEmK/W1NgG9Db3+ALMDJC4="
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.04,
+        "trials": 10000,
+        "failure_count": 261,
+        "failure_rate": 0.0261,
+        "wilson_95_interval": [
+          0.023152457773687764,
+          0.02941149588203951
+        ],
+        "exact_recovery": 9109,
+        "stabilizer_equivalent_success": 630,
+        "syndrome_failure": 260,
+        "matched_logical_failure": 1,
+        "mean_iterations": 9.1022,
+        "mean_iterations_given_syndrome_match": 6.675770020533881,
+        "error_stream_sha256": "8c306e558b59ebc8c94f126e53bd5ce08736e435b70e78248db0b8477d4d4c64",
+        "failure_flags_zlib_base64": "eNp9VEFuxDAIBAtVqNoDrXro0b3tM3zYB/TQB3HoA/qEPqVP6JOKg01sJ120UVgTYBgmAaimMNn+N9v15C7ZxbAY1V8xp8CJ1RTPyZuXl3iKhtifBomoWFwRQbC3thgGuELdtRsh3AdQk2mKlYpqRPTit1dPWwtKPRZArqHHgHtiLfPL5xPIGs8WuMHHNvmnwXq29s7b1XFq53xszjXbuvIlJoIsbarCtWhwdpnWx72ctjY4kE6+MwVuzd49T/bN86ACHWjbVUI8LmxMTwMCAnxD2LnGuLunOqVyzKK/oTohHQpXX2QQ0LovORHZiVlMflLsUibd7FgYpunRIaQ8nuppgwKuUpwEkxMcOrUIervSedbjQHmrR/M+/p0yV+mo66gsSzQVJTi81ryhbmUr7XKHQdpR5jjRxpE4W2kL+iZx+cgU10dPzq1EJn8/h0Vxg/wgV5jI+IZFhQLR0OwPaxEf9A==",
+        "syndrome_failure_flags_zlib_base64": "eNp9VEFuxDAIBMuqULUHWvXQI73tM3zoA3rogzj0AX1Cn9In9Ek1wSa2k120UVgTGBgmATBTmGz/K/V6cjfXi2CxbL9SnQInZimeI5snSzwFIPangSPKNa6IwNihawyjuZK7qz33TgOWPD9UrKuxoxe/vXoaLqXYjhmQLPQINyEj89vnYxCNZwu8w+c2+Vdt67nCO29X71M75yM4WXZFpUtMBMJtqkJWNDi7TOujXk4bDA6kZ9+ZAjWwD8/jffM0qEAH2naVZBoXNqanoYMM+Iawc41xd091SqWYRf9CdZx1KGw+8yCgdV98IrITqzH+TbFLnnSz90IwTY/eQpLxVE8BCrhKcRKMJDggtQg6XOk863Eg2erleR83pxSTjrqOyrLEqqIEh9eatq5bWaOd7zCY9y4lTrRxxM5W2oK+SVw+MsX10ZOllZDs7+ewKGotP/AVJjJ+YFEhQwBW+wdm9x/z"
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.04,
+        "trials": 10000,
+        "failure_count": 259,
+        "failure_rate": 0.0259,
+        "wilson_95_interval": [
+          0.022964183941872586,
+          0.02919992331320296
+        ],
+        "exact_recovery": 9156,
+        "stabilizer_equivalent_success": 585,
+        "syndrome_failure": 257,
+        "matched_logical_failure": 2,
+        "mean_iterations": 8.9545,
+        "mean_iterations_given_syndrome_match": 6.552909781381505,
+        "error_stream_sha256": "8c306e558b59ebc8c94f126e53bd5ce08736e435b70e78248db0b8477d4d4c64",
+        "failure_flags_zlib_base64": "eNp1UzFuBCEMtDkUOZ2VF/ikFCnyCHS6IuU94Z6CoitS50V5WjCLwbC3FGgNw3jG9gLYIt3EBQi7RfZhdxHg5QYPd5I7mMUwaTDEkSMZ4guwvA710mMz4MYmQcbp1ckceb1YffSzSs8M56JpQFLZKu+3aq25nUjPlnbHofrrZnnKhDNsJWSTWG5f25m4KynCvBtqRZdJladMqDmV8t4KZsQMFzY9JEfvJ9lciVI+z/VcB6A1Lg5AWu1v7pHCJiEXl0nzhg4KvBMgcNo3VINVb2qQvBvS6xyGA7/qBetwWUWIG5u4rnT+x1BDIBne/bBmxX30+pTgl/tgfD4tPGPn5u5JtEwocLTCVGrVT54Y3cyZMgPfyrtkxu0VBTfiBC3a/tI/PhBB02xvuTkW+9jMxbl32aqYB0GAxXuAeLeuzzZQxVCfj77EtuhbXbxwu3irh/+/lSOP",
+        "syndrome_failure_flags_zlib_base64": "eNp1UzFuBDEIxI4VkQ7dCzgpRYo8woquSHlPuKeg0xWp86I8LcY2Nt69dWEtZoAZYAHsoF7sjAC7g/ZhvgTweoWHe5EBJjZMnhnSrJEN8Q2hRMfq9FiB0LJx5Pl6cTRnXU9Wg3621IXgXDhNSC5XzXtXrrX20yOD0oTEqm+IpSUgrLA1soOled/6GzsXF2JeDfam88rQWTloTU156w2zxARfZHyQj+IX2lQTZTmv/dwuQB9cmoC8ld/UB4yNghSVWevGAYq0I8Dwsh+oGlu+uUNkN7DLasYDvaol1OWyjiD1bOymMvI/JhsEFnj3yyqK+xj9KcYvjcX4fNp4CiM3DU2sbQp8tIsQl1Yrf/SJg9s5Y2bga4nLJtyiMLoVR+hW+0v/6IAELrvdalMq8kMXl9bZiXVRZoIIsP130s2mvsoISgbHfozDdiU/6qKFuuNUH/8Br68jiQ=="
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.04,
+        "trials": 10000,
+        "failure_count": 253,
+        "failure_rate": 0.0253,
+        "wilson_95_interval": [
+          0.02239965645785025,
+          0.028564911595270106
+        ],
+        "exact_recovery": 9135,
+        "stabilizer_equivalent_success": 612,
+        "syndrome_failure": 252,
+        "matched_logical_failure": 1,
+        "mean_iterations": 8.9184,
+        "mean_iterations_given_syndrome_match": 6.563807960607304,
+        "error_stream_sha256": "8c306e558b59ebc8c94f126e53bd5ce08736e435b70e78248db0b8477d4d4c64",
+        "failure_flags_zlib_base64": "eNqNVDFOBDEMtK0ImROFRUWZggfcEyJEwTN4SkRFyRt4CU8jjp2ss0QntrjLOvbMeOIsABT451MrVAYgBHjV9x8L7+rRw/m8kUDmumSLGMBHSMYeb3+1xayAD4yRxz3PslHzd1qesQZYCTvkQLpPZDip06bbPiDcOe2nBZ4kCmsssvpmsorLVUIcBWzvmnBv1dGyrCoP65wVDzNslwTgAJewI6XX1anE17ie1YDHyceROm9MUJZCtltX6/k0F+XPnORHp945zUezcHEugbVjE8Vw1Z8E55aCX2HwHsb6sjTUEFPejU7enn6fyIy1wdNLF1dKcyBNaVZGKYqN5UxANdoIX6MBstrrycnYBbvvuJGW9q3b8zYpWSW+GzfpMIs1z1Nv6vdAvAEZZIR+S+SWS2WOm6d9j9FrDMNluzmCC1AKaP1Yy3kwGNar1T8hZoqW5jlnOXut/ALrwRyd",
+        "syndrome_failure_flags_zlib_base64": "eNqNVEFORCEMbRti6sRF48olCw8wRyDGhcfwKMSVS8/gSTyaQAsUJBP/YoZf2vdeH+UDQIJ/PjlDZgBCgNf6/qPhUz1aOO4bAWSsU9SIAny4ZGzx8pdLTAt4YvQ8bnmajTX/pOUZs4MVt0MGVPeJFCc02nDbB4Q7o/3UwJN4YYVFVt9UVjK5lRB7Aet7TbjXam9ZrCqndcaK0wzdJQGY4OJ2JLW6PJTYGtez6vA4+NhTx4MJlSXRhHXW8zYX6c+cxEejPjnNs1m4GJfA2rGKYrjWnwB7S84vN3gPfX1ZGiqIIZ5GJx5Pv01kxFzg6aWJS6k4EIY0LaPgxfpyJqDsbYSv3gBp7XVz0nfB5jsepIVz6/q8DUquEt+Vm+owizbPQ29o90CsAelkhHZL5JZLaYybpX2PGeHhst4cwQUoOLR2rGkfDIb1arVPiJpSS+OYsxitVn4Bl+EcfQ=="
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.04,
+        "trials": 10000,
+        "failure_count": 257,
+        "failure_rate": 0.0257,
+        "wilson_95_interval": [
+          0.02277595874247574,
+          0.028988302111948076
+        ],
+        "exact_recovery": 9129,
+        "stabilizer_equivalent_success": 614,
+        "syndrome_failure": 254,
+        "matched_logical_failure": 3,
+        "mean_iterations": 9.0622,
+        "mean_iterations_given_syndrome_match": 6.692181407757029,
+        "error_stream_sha256": "8c306e558b59ebc8c94f126e53bd5ce08736e435b70e78248db0b8477d4d4c64",
+        "failure_flags_zlib_base64": "eNp9U0FuAzEIxMiVaE8+9kilHvIMt8qhz+hT6E/y1NoYw7KJgrQrG2OYGTDANBkfAVS4QVMHzV+B6bItVcDllvlH9UN9A+jryrRXSIbw1LrWVSse+tHCO5ZlrXiVXpj2mi2Mtt+YPC7eCF52FIiM6rxT9BxZWt5bOdOiBrqoIttzcyhtHXZAifCTAFsvHgmke3Yj9p6j9QjJsi77AtG1ywTdUOLWmKDUO+EPNMBTqV2NEIeKu9eS5Jyccaq62EtHQ44tdJv72hTfDGotdw4qtywOr7S5lXNzh3fc1MZcPlPGO4s58O7jiCZtyzFrcRQteq40GM/DBX/6/16s9llRHKnRdAbGqZ1je40bGw17UOG4IUaGY17lkHAoRIaQ58nF/D+etzoh8RF69kRNoPG+eZMnJYkIgpDewaldW2/yk3p4aJTmyFXpMZ3siH8fdbeGVOdDvoyUdXvH4h/nDyOt",
+        "syndrome_failure_flags_zlib_base64": "eNp9U0FuAzEIxBaV6M3HHqnUQ57hRjn0GX0K/UmeWhtjWDZRkLKxMYaZAQNMk/EjAIQ7NHXQ/BSYLtsSQl1umd+qfsDx39eVae+QrMJL61pXrXjoZwvvWJa14lV6YdprtjDafmPyvHgjeNtRIDKq807Rc2RpeW/lTAsMdFFFtufuUNo67FAlwk8CbL14JJBAYcQ+crQWrmRZl32D6Nplgo7emEWNoOCD8Aca4KnUbkaIQ8Xda0lyTs51qrrYS6+GvLbQbe6xKb4Z1FruHCC3LA6vtLmVc/OAd9zUxly+UsYHizkoRxdpW45Zi6No0XOlwfU8XPCn3+titc+K4kiNpjMwTu0c21vc2GjYgwrHDTHkHPMqh4RDITKEPE8u5v/xvOiExEfo1RM1gcb75k2elGStIBXSOzi1a+tNfoKHh0ZpjlyVHtPJjvj3WXcxpDof8mWkxO0di393NyOB"
+      }
+    ],
+    "paired_comparisons": [
+      {
+        "design": "previous_best",
+        "p": 0.0025,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 0,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": 0.0,
+        "paired_normal_95_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.0025,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 0,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": 0.0,
+        "paired_normal_95_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.0025,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 0,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": 0.0,
+        "paired_normal_95_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.0025,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 0,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": 0.0,
+        "paired_normal_95_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.0025,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 0,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": 0.0,
+        "paired_normal_95_interval": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "design": "previous_best",
+        "p": 0.005,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 1,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": -0.0001,
+        "paired_normal_95_interval": [
+          -0.00029599639845400544,
+          9.599639845400542e-05
+        ]
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.005,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 1,
+        "baseline_succeeded_design_failed": 2,
+        "failure_rate_difference_design_minus_baseline": 0.0001,
+        "paired_normal_95_interval": [
+          -0.00023948703702326215,
+          0.00043948703702326213
+        ]
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.005,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 1,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": -0.0001,
+        "paired_normal_95_interval": [
+          -0.00029599639845400544,
+          9.599639845400542e-05
+        ]
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.005,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 1,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": -0.0001,
+        "paired_normal_95_interval": [
+          -0.00029599639845400544,
+          9.599639845400542e-05
+        ]
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.005,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 1,
+        "baseline_succeeded_design_failed": 0,
+        "failure_rate_difference_design_minus_baseline": -0.0001,
+        "paired_normal_95_interval": [
+          -0.00029599639845400544,
+          9.599639845400542e-05
+        ]
+      },
+      {
+        "design": "previous_best",
+        "p": 0.01,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 3,
+        "baseline_succeeded_design_failed": 7,
+        "failure_rate_difference_design_minus_baseline": 0.0004,
+        "paired_normal_95_interval": [
+          -0.00021977643631504944,
+          0.0010197764363150494
+        ]
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.01,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 3,
+        "baseline_succeeded_design_failed": 5,
+        "failure_rate_difference_design_minus_baseline": 0.0002,
+        "paired_normal_95_interval": [
+          -0.00035437538999088874,
+          0.0007543753899908887
+        ]
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.01,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 3,
+        "baseline_succeeded_design_failed": 4,
+        "failure_rate_difference_design_minus_baseline": 0.0001,
+        "paired_normal_95_interval": [
+          -0.0004185799538225699,
+          0.0006185799538225699
+        ]
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.01,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 2,
+        "baseline_succeeded_design_failed": 4,
+        "failure_rate_difference_design_minus_baseline": 0.0002,
+        "paired_normal_95_interval": [
+          -0.00028009916988853197,
+          0.0006800991698885319
+        ]
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.01,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 3,
+        "baseline_succeeded_design_failed": 3,
+        "failure_rate_difference_design_minus_baseline": 0.0,
+        "paired_normal_95_interval": [
+          -0.00048011517399440464,
+          0.00048011517399440464
+        ]
+      },
+      {
+        "design": "previous_best",
+        "p": 0.02,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 30,
+        "baseline_succeeded_design_failed": 19,
+        "failure_rate_difference_design_minus_baseline": -0.0011,
+        "paired_normal_95_interval": [
+          -0.002471873977245637,
+          0.0002718739772456368
+        ]
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.02,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 32,
+        "baseline_succeeded_design_failed": 25,
+        "failure_rate_difference_design_minus_baseline": -0.0007,
+        "paired_normal_95_interval": [
+          -0.002179750743382037,
+          0.0007797507433820371
+        ]
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.02,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 34,
+        "baseline_succeeded_design_failed": 17,
+        "failure_rate_difference_design_minus_baseline": -0.0017,
+        "paired_normal_95_interval": [
+          -0.003099367585703919,
+          -0.00030063241429608084
+        ]
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.02,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 34,
+        "baseline_succeeded_design_failed": 25,
+        "failure_rate_difference_design_minus_baseline": -0.0009,
+        "paired_normal_95_interval": [
+          -0.0024054488313002952,
+          0.0006054488313002951
+        ]
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.02,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 34,
+        "baseline_succeeded_design_failed": 26,
+        "failure_rate_difference_design_minus_baseline": -0.0008,
+        "paired_normal_95_interval": [
+          -0.002318176513138197,
+          0.0007181765131381972
+        ]
+      },
+      {
+        "design": "previous_best",
+        "p": 0.04,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 341,
+        "baseline_succeeded_design_failed": 204,
+        "failure_rate_difference_design_minus_baseline": -0.0137,
+        "paired_normal_95_interval": [
+          -0.018267924783297113,
+          -0.009132075216702888
+        ]
+      },
+      {
+        "design": "minimum_1",
+        "p": 0.04,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 364,
+        "baseline_succeeded_design_failed": 197,
+        "failure_rate_difference_design_minus_baseline": -0.0167,
+        "paired_normal_95_interval": [
+          -0.02133093879234584,
+          -0.01206906120765416
+        ]
+      },
+      {
+        "design": "minimum_2",
+        "p": 0.04,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 379,
+        "baseline_succeeded_design_failed": 210,
+        "failure_rate_difference_design_minus_baseline": -0.0169,
+        "paired_normal_95_interval": [
+          -0.02164539022856421,
+          -0.012154609771435787
+        ]
+      },
+      {
+        "design": "minimum_3",
+        "p": 0.04,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": false,
+        "baseline_failed_design_succeeded": 387,
+        "baseline_succeeded_design_failed": 212,
+        "failure_rate_difference_design_minus_baseline": -0.0175,
+        "paired_normal_95_interval": [
+          -0.022284870234174574,
+          -0.012715129765825428
+        ]
+      },
+      {
+        "design": "minimum_4",
+        "p": 0.04,
+        "trials": 10000,
+        "same_encoded_dimension_as_baseline": true,
+        "baseline_failed_design_succeeded": 383,
+        "baseline_succeeded_design_failed": 212,
+        "failure_rate_difference_design_minus_baseline": -0.0171,
+        "paired_normal_95_interval": [
+          -0.021869342360159204,
+          -0.012330657639840797
+        ]
+      }
+    ]
+  },
+  "sources_sha256": {
+    "benchmark_decoding.py": "0fa42e6681c614b634958bc89979bd0c0ef9bbf7db5a91941638a0a4978bc2c1",
+    "minsum.cpp": "4753cdab4a367110308b92abd7e67f0c00b734c5d8994655e33b8c823df8a427",
+    "optimization-r14.json": "44a6e4986d37fb625f7a4709c4c73a5ef6aecad9d4c00b693f3a15e81e2c2ba3"
+  }
+}

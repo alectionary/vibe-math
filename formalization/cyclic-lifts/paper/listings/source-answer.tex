@@ -1,0 +1,9 @@
+theorem sufficient_rectangle_conditions [Nontrivial I] [Nontrivial J]
+    (B : I (*@$\to$@*) J (*@$\to$@*) ZMod r)
+    (hRect : (*@$\forall$@*) a b c d, a (*@$\ne$@*) b (*@$\to$@*) c (*@$\ne$@*) d (*@$\to$@*) baseRectangle B a b c d (*@$\ne$@*) 0)
+    (hPairs : (*@$\forall$@*) a b c d e f, a (*@$\ne$@*) b (*@$\to$@*) b (*@$\ne$@*) c (*@$\to$@*) a (*@$\ne$@*) c (*@$\to$@*)
+      d (*@$\ne$@*) e (*@$\to$@*) e (*@$\ne$@*) f (*@$\to$@*) d (*@$\ne$@*) f (*@$\to$@*)
+      baseRectangle B a b d e + baseRectangle B b c d f (*@$\ne$@*) 0) :
+    (matrixTanner (hX B)).girth = 8 := by
+  apply (matrixTanner_hX_girth_characterization B).mpr
+  exact (*@$\langle$@*)hRect, by simpa only [baseHexagon_eq_rectangle_add] using hPairs(*@$\rangle$@*)

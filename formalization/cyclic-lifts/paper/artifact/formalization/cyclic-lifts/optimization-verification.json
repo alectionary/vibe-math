@@ -1,0 +1,34 @@
+{
+  "scope": "Fixed r=14 normalized 3x3 exhaustive connected girth-eight search; one-sector quantum code-capacity paired min-sum comparison. Search optimality, connectivity, ranks and simulation are Python/C++ evidence. Three supplementary Lean declarations verify candidate girth only.",
+  "date": "2026-10-22",
+  "python_version": "3.9.6",
+  "lean_command": "lake -f lakefile-cyclic.toml env lean CyclicOptimized.lean",
+  "working_directory": "formalization/dyadic-rank",
+  "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "lean_declaration_count": 3,
+  "observed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "confirmation_seed": 20261023,
+  "confirmation_trials_per_noise": 100000,
+  "confirmation_noise_probabilities": [
+    0.01,
+    0.02,
+    0.04
+  ],
+  "sha256": {
+    "formalization/dyadic-rank/CyclicOptimized.lean": "33771e58aca107be021ac877596d6ddc37b379added908b055e3dcb0339e4ddc",
+    "formalization/cyclic-lifts/optimized-checks.log": "4e2bd516d3d621f186dc0bd63db2611fb6c0c05cc6df49841f5b16a1a2fdb533",
+    "scripts/validate_cyclic_decoding_benchmark.py": "8bf2f97d25271bba5a1f40582cd9ba669b5fef7ab59d8da9950b34af0053676b",
+    "formalization/cyclic-lifts/search/optimize_absorbing.py": "d54f1cc26ac317a95e77979d0b04201951ffe96a26427d6f409a926cdbc3972e",
+    "formalization/cyclic-lifts/search/optimization-r14.json": "44a6e4986d37fb625f7a4709c4c73a5ef6aecad9d4c00b693f3a15e81e2c2ba3",
+    "formalization/cyclic-lifts/search/benchmark_decoding.py": "0fa42e6681c614b634958bc89979bd0c0ef9bbf7db5a91941638a0a4978bc2c1",
+    "formalization/cyclic-lifts/search/minsum.cpp": "4753cdab4a367110308b92abd7e67f0c00b734c5d8994655e33b8c823df8a427",
+    "formalization/cyclic-lifts/search/benchmark-results.json": "e682bcf57b27dab749927e2ec87c21e882656bf5095eba55ead8d445190ff2bf",
+    "formalization/cyclic-lifts/search/benchmark-confirmation.json": "c9e437517f85c8506adb1819c4e18b74241b0099cc8ef423dde3b4475d6ffb2d",
+    "formalization/cyclic-lifts/search/targeted_absorbing.py": "212a6d42044b8f68f2b6e44a61cbaf4c8eacceff6cb948c7fe62760e67c141e7",
+    "formalization/cyclic-lifts/search/targeted-results.json": "2e32c6676f048d4c347d846259b1efbdddadb8796c309ccd2cd84214caaa8cc7"
+  }
+}

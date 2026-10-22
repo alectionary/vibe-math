@@ -1,0 +1,259 @@
+{
+  "evidence": "Exact finite Python computations; no decoder simulation or priority claim.",
+  "methods": [
+    "independent voltage and binary matrix constructions",
+    "BFS girth",
+    "projected check graph eight-cycle counting",
+    "independent simple Tanner walk DFS count, quotient by orientation",
+    "BFS connected components",
+    "direct induced degrees and cut edge counts"
+  ],
+  "source_sha256": "e27405ed5b519821ddeb8acda44d65a4b3a99efbbd860ec0fc1766539e1d0722",
+  "cycle_cases": [
+    {
+      "label": "baseline7",
+      "r": 7,
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          6
+        ]
+      ],
+      "girth": 8,
+      "components": [
+        189
+      ],
+      "eight_cycles_by_left_variable_count": {
+        "0": 189,
+        "2": 1701,
+        "4": 189
+      },
+      "eight_cycles_total": 2079
+    },
+    {
+      "label": "baseline14",
+      "r": 14,
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          6
+        ]
+      ],
+      "girth": 8,
+      "components": [
+        378
+      ],
+      "eight_cycles_by_left_variable_count": {
+        "0": 210,
+        "2": 2730,
+        "4": 210
+      },
+      "eight_cycles_total": 3150
+    },
+    {
+      "label": "variant7-at14",
+      "r": 14,
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          7
+        ]
+      ],
+      "girth": 8,
+      "components": [
+        378
+      ],
+      "eight_cycles_by_left_variable_count": {
+        "0": 147,
+        "2": 2478,
+        "4": 147
+      },
+      "eight_cycles_total": 2772
+    },
+    {
+      "label": "variant8-at14",
+      "r": 14,
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          8
+        ]
+      ],
+      "girth": 8,
+      "components": [
+        378
+      ],
+      "eight_cycles_by_left_variable_count": {
+        "0": 126,
+        "2": 2394,
+        "4": 126
+      },
+      "eight_cycles_total": 2646
+    },
+    {
+      "label": "scaled14",
+      "r": 14,
+      "B": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          0,
+          6,
+          12
+        ]
+      ],
+      "girth": 8,
+      "components": [
+        189,
+        189
+      ],
+      "eight_cycles_by_left_variable_count": {
+        "0": 378,
+        "2": 3402,
+        "4": 378
+      },
+      "eight_cycles_total": 4158
+    }
+  ],
+  "four_variable_witness": {
+    "variables": 4,
+    "positive_check_degree_counts": {
+      "1": 4,
+      "2": 4
+    },
+    "syndrome_weight": 4,
+    "even_odd_neighbors_per_variable": [
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "absorbing": true,
+    "stopping": false
+  },
+  "six_variable_witness": {
+    "variables": 6,
+    "positive_check_degree_counts": {
+      "2": 9
+    },
+    "syndrome_weight": 0,
+    "even_odd_neighbors_per_variable": [
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "absorbing": true,
+    "stopping": true
+  },
+  "connected_family_cuts": [
+    {
+      "r": 14,
+      "cut": "all vertex types with fiber < floor(r/2)",
+      "boundary_edges": 144,
+      "volume": 756,
+      "complement_volume": 756,
+      "conductance_upper_bound": 0.19047619047619047
+    },
+    {
+      "r": 28,
+      "cut": "all vertex types with fiber < floor(r/2)",
+      "boundary_edges": 144,
+      "volume": 1512,
+      "complement_volume": 1512,
+      "conductance_upper_bound": 0.09523809523809523
+    },
+    {
+      "r": 56,
+      "cut": "all vertex types with fiber < floor(r/2)",
+      "boundary_edges": 144,
+      "volume": 3024,
+      "complement_volume": 3024,
+      "conductance_upper_bound": 0.047619047619047616
+    }
+  ]
+}

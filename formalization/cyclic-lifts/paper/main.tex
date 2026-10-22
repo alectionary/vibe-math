@@ -1,0 +1,824 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{listings,xcolor}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Rectangle Criteria for Girth Eight in Cyclic Lifted-Product Codes},pdfauthor={},pdfsubject={Lean verification, absorbing sets, expansion, and decoding}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Zr}{\mathbb Z/r\mathbb Z}
+\newcommand{\Ftwo}{\mathbb F_2}
+\newcommand{\HX}{H_{\mathsf X}}
+\newcommand{\HZ}{H_{\mathsf Z}}
+\newcommand{\GX}{G_{\mathsf X}}
+\newcommand{\row}{\operatorname{row}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\R}{\mathcal R}
+\newcommand{\Q}{\mathcal Q}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\lstset{basicstyle=\small\ttfamily,columns=fullflexible,keepspaces=true,
+  frame=single,framerule=.3pt,breaklines=true,showstringspaces=false,escapeinside={(*@}{@*)},
+  literate={∀}{{$\forall$}}1 {≠}{{$\ne$}}1 {∧}{{$\land$}}1 {ℕ}{{$\mathbb N$}}1
+  {→}{{$\to$}}1 {∈}{{$\in$}}1 {¬}{{$\neg$}}1 {≤}{{$\le$}}1
+  {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1}
+\setlength{\emergencystretch}{2em}
+\title{Rectangle Criteria for Girth Eight in Cyclic Lifted-Product Codes:\\
+A Lean-Verified Answer and Decoding Consequences}
+\author{}
+\date{October 22, 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Freij-Hollanti, Morris and \v Sapokait\.{e} asked for sufficient conditions,
+expressed through $2\times2$ submatrices, for a cyclic lifted-product Tanner
+graph to attain its maximum possible girth of eight, and for an analysis of
+the resulting decoding-relevant properties. We give an exact criterion:
+individual rectangle voltages must be nonzero and specified pairs of
+rectangle voltages must not cancel. The characterization for the expanded
+binary matrix is proved in Lean. For the degree-three case we derive a
+bijection between eight-cycles and minimum $(4,4)$ absorbing sets, a stopping
+set lower bound, and local syndrome bounds. A connected girth-eight family
+with conductance tending to zero shows that the criterion alone does not
+ensure uniform expansion. Exhaustive optimization at lift size fourteen
+reduces the minimum absorbing-set count from 3,150 to 2,520 while preserving
+252 physical and ten logical qubits. In an independent, paired min-sum
+experiment with 100,000 errors per noise level, the selected code's recovery
+failure rate falls from $4.385\%$ to $2.523\%$ at physical error probability
+$4\%$. We distinguish the formal theorem, written structural proofs, exact
+finite computations and statistical decoding evidence, and relate each to
+its mathematical predecessors.
+\end{abstract}
+
+\section{The open question and the answer}\label{sec:question}
+
+In Section~5 of \emph{Graphical Analysis of Lifted Product Code
+Constructions}, Freij-Hollanti, Morris and \v Sapokait\.{e} explicitly ask
+for \emph{``not just necessary, but sufficient conditions''} for the Tanner
+graph to have \emph{``maximum possible girth of $8$''}, together with the
+effects on other decoding-relevant graph properties~\cite{FHM2026}.
+The question concerns the cyclic, single-base-matrix lifted-product
+construction. It is presented as an open research question, rather than a
+numbered conjecture. Its first part asks for a definite mathematical
+criterion; its second part proposes a broader structural and experimental
+program.
+
+We answer the first part by an equivalence in the entries of the original
+base matrix, not a test requiring construction of the much larger binary
+parity-check matrix. The second part is addressed by precise consequences
+for degree-three graphs, a limitation on expansion, and a finite optimization
+and decoding study. Table~\ref{tab:scope} specifies the extent of each answer.
+The degree-three conclusions concern fully populated $3\times3$ bases;
+the girth theorem holds in every dimension with at least two rows and two
+columns.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{P{.24\linewidth}P{.43\linewidth}P{.23\linewidth}}
+\toprule
+Question & Answer & Evidence \\
+\midrule
+Sufficient girth conditions & A necessary and sufficient rectangle-pair criterion & General Lean proof \\
+Absorbing sets & In degree three, minimum sets are exactly the four-variable eight-cycle supports & Written proof; Lean witnesses \\
+Stopping sets and syndromes & Stopping size at least six; local cancellation bounds & Written proof; Lean pair bound and witness \\
+Connectivity and expansion & Connectivity is separate; connected girth-eight graphs can have vanishing conductance & Written argument; finite checks \\
+Finite design and decoding & Exact fixed-size minimum; paired decoder comparison & Exhaustive search and Monte Carlo \\
+\bottomrule
+\end{tabular}
+\caption{The answer to the two parts of the source question, with evidence levels.}
+\label{tab:scope}
+\end{table}
+
+\section{Predecessors and chronology}\label{sec:history}
+
+Fossorier's exponent-sum criterion supplies the classical short-cycle
+congruences~\cite{Fossorier2004}. Smarandache and Mitchell develop necessary
+and sufficient QC girth tests through matrix products and derived
+submatrices~\cite{SM2021}. Our walk-based proof specializes the classical
+congruences and supplies the reduction from the lifted-product support to
+the original input matrix.
+
+Raveendran and Vasi\'c describe the product eight-cycle mechanism in
+hypergraph-product graphs~\cite{RV2021}. Zhang's thesis studies cyclic
+cancellation and cycle counting for lifted products under additional
+base-factor girth hypotheses~\cite{Zhang2024}. Raveendran, Declercq and
+Vasi\'c exhibit the eight-label cancellation directly for the same monomial
+LP family~\cite{RDV2025}. Okada and Kasai use a related coordinate-support
+argument and a forced eight-cycle in square-base hypergraph products with
+constrained CPM lifts~\cite{OK2026}. These works provide the closest
+mechanisms behind the proof below. Their stated settings and conclusions
+are distinguished from our entrywise equivalence in Table~\ref{tab:history}.
+
+The absorbing-set design perspective is established in classical coding
+theory by Wang, Dolecek, Zhang and Wesel~\cite{WDZW2011} and its cycle
+consistency matrix development~\cite{WDW2012}. McMillon, Beemer and Kelley
+give extremal absorbing-set bounds, including the relevant girth-eight
+degree-three lower bound~\cite{MBK2023}. Morris, Pllaha and Kelley develop
+the quantum absorbing-set framework and its decoder interpretation
+\cite{MPK2026}. Our consequences apply this framework to the characterized
+LP family. Abiad and Castriota's later spectral treatment counts cycles and
+absorbing configurations and bounds stopping sizes in a different
+QC-GHP/GB setting~\cite{AC2026}.
+
+\begin{table}[p]
+\centering\small
+\begin{tabular}{P{.20\linewidth}P{.18\linewidth}rP{.37\linewidth}}
+\toprule
+Work & Date used & $\Delta$ years & Contribution and relationship \\
+\midrule
+Fossorier~\cite{Fossorier2004} & August 2004 & $-21.9$ & Classical QC cycle congruences; ingredients for the input-matrix tests. \\
+Wang et al.~\cite{WDZW2011} & May 31, 2011 & $-15.03$ & Absorbing-spectrum design and measured classical decoding gains. \\
+McMillon et al.~\cite{MBK2023} & March 31, 2021 & $-5.19$ & Early online publication of extremal absorbing-set bounds. \\
+Smarandache and Mitchell~\cite{SM2021} & May 7, 2021 & $-5.09$ & Classical necessary/sufficient QC girth conditions via matrix products. \\
+Raveendran--Vasi\'c~\cite{RV2021} & October 14, 2021 & $-4.65$ & Product eight-cycle and quantum trapping-set analysis. \\
+Zhang~\cite{Zhang2024} & March 27, 2024 & $-2.20$ & Thesis defense; LP cyclic cancellation with additional hypotheses. \\
+Raveendran et al.~\cite{RDV2025} & March 10, 2025 & $-1.25$ & Same-family LP cancellation and controlled base-matrix decoding comparisons. \\
+Morris et al.~\cite{MPK2026} & March 3, 2026 & $-0.27$ & Published quantum absorbing-set framework; earlier preprints precede this date. \\
+Okada--Kasai, v1~\cite{OK2026} & April 30, 2026 & $-0.11$ & Related square-base support argument and forced eight-cycle. \\
+Freij-Hollanti et al.~\cite{FHM2026} & June 10, 2026 & $0$ & Explicit sufficient-condition and decoding-properties question. \\
+Abiad--Castriota~\cite{AC2026} & July 15, 2026 & $+0.10$ & Related spectral enumeration and stopping-bound program. \\
+Okada--Kasai, v3~\cite{OK2026} & September 11, 2026 & $+0.25$ & Expanded finite-instance certificates in the square-base setting. \\
+This manuscript/artifact & October 22, 2026 & $+0.37$ & Exact Lean characterization, structural consequences and finite benchmark. \\
+\bottomrule
+\end{tabular}
+\caption{Signed chronology relative to June 10, 2026. A negative number
+means preceding the question. Day-resolved entries use elapsed days divided
+by $365.2425$; the August 2004 entry is month-resolved and rounded to one
+decimal. The present artifact is dated 134 days after the question.
+Dates identify the versions or publication milestones used, not dates of
+private discovery.}
+\label{tab:history}
+\end{table}
+
+The chronology separates earlier ingredients from an answer to the stated
+question. In particular, the roughly $21.9$ years between Fossorier's
+criterion and the question are not a claim that the full LP equivalence
+was already stated in 2004. The present answer assembles those methods
+into one exact input-matrix theorem with an explicit formal certificate.
+Measured instead to this manuscript, the March 2025 direct LP predecessor
+is 591 days ($1.62$ years) earlier, the April 2026 square-base predecessor
+is 175 days ($0.48$ years) earlier, and the July 2026 spectral study is
+99 days ($0.27$ years) earlier. The main answer here follows the published
+question by 134 days ($0.37$ years).
+
+\section{Construction and notation}\label{sec:model}
+
+Let $r\ge1$ and let $B=(B_{ij})\in(\Zr)^{m\times n}$, where $m,n\ge2$.
+Every entry represents the circulant permutation $P^{B_{ij}}$; exponent
+zero represents an identity block. There are no missing input blocks.
+Write $B^*$ for transposition followed by exponent negation. Expanding the
+block matrices
+\begin{equation}\label{eq:lp}
+ B_{\mathsf X}=[B\otimes I_n\mid I_m\otimes B^*],\qquad
+ B_{\mathsf Z}=[I_n\otimes B\mid B^*\otimes I_m]
+\end{equation}
+gives binary parity-check matrices $\HX,\HZ$ with
+$r(m^2+n^2)$ columns and $rmn$ rows. This is the source paper's
+Equation~(2.3)~\cite{FHM2026}, within the established lifted-product
+framework~\cite{PK2021,RDV2025}.
+
+Use checks $C(i,j,a)$ and variables $L(k,j,b)$, $R(i,\ell,b)$, with fibers
+$a,b\in\Zr$. Adjacency in $\GX$ is exactly
+\begin{align}
+ L(k,j,b)&\sim C(i,j,b+B_{ik}),\label{eq:left}\\
+ R(i,\ell,b)&\sim C(i,j,b-B_{\ell j}).\label{eq:right}
+\end{align}
+Left variables have degree $m$, right variables degree $n$, and checks
+degree $m+n$. Thus $m=n=3$ gives a $(3,6)$-biregular graph. Girth is the
+length of the shortest simple cycle; the explicit cycle below guarantees
+that the graphs considered here are not forests.
+
+Define the rectangle and hexagon voltages
+\begin{align}
+ \R(a,b;c,d)&=B_{ac}-B_{ad}+B_{bd}-B_{bc},\label{eq:rectangle}\\
+ \Q(a,b,c;d,e,f)&=B_{ad}-B_{ae}+B_{be}-B_{bf}+B_{cf}-B_{cd}.
+ \label{eq:hexagon}
+\end{align}
+All arithmetic is in $\Zr$. Direct cancellation gives
+\begin{equation}\label{eq:pair}
+ \Q(a,b,c;d,e,f)=\R(a,b;d,e)+\R(b,c;d,f).
+\end{equation}
+
+\section{The exact girth-eight characterization}\label{sec:main}
+
+\begin{theorem}[Rectangle-pair characterization]\label{thm:main}
+For the construction above, $g(\GX)=8$ if and only if both conditions hold:
+\begin{align}
+ &\R(a,b;c,d)\ne0
+ &&\text{for }a\ne b,\ c\ne d;\label{eq:cond4}\\
+ &\R(a,b;d,e)+\R(b,c;d,f)\ne0
+ &&\text{for pairwise distinct }a,b,c\text{ and }d,e,f.
+ \label{eq:cond6}
+\end{align}
+Equivalently, every eligible rectangle and every eligible hexagon voltage
+is nonzero. No connectedness, primality or normalization assumption is
+required.
+\end{theorem}
+
+The point of~\eqref{eq:cond6} is that nonzero individual rectangles do not
+prevent cancellation between two rectangles. The two conditions are tests
+on the original $m\times n$ matrix, including for the sparse product support
+of~\eqref{eq:lp}.
+
+\begin{lemma}[Four-cycle reduction]\label{lem:four}
+The graph $\GX$ contains a four-cycle if and only if an eligible rectangle
+voltage of $B$ vanishes.
+\end{lemma}
+\begin{proof}
+A four-cycle alternates between two variables and two checks. A variable
+and a neighboring projected check determine the variable fiber uniquely,
+and conversely a variable fiber determines the adjacent check fiber.
+Consequently distinct same-side vertices in this short cycle cannot have
+the same projection. Two left variables can share checks only when their
+second coordinates agree, yielding distinct row and column indices in
+$B$; closure is exactly~\eqref{eq:rectangle}. Two right variables give the
+transposed, negated criterion, which has the same zero set. A left and a
+right variable can share only the projected check at their common
+coordinate pair, and fiber uniqueness prevents them from sharing a second
+check. Thus a mixed four-cycle is impossible. Conversely, lifting a zero
+rectangle at any fixed unused coordinate produces four distinct vertices
+and hence a genuine four-cycle.
+\end{proof}
+
+\begin{lemma}[Six-cycle reduction]\label{lem:six}
+The graph $\GX$ contains a six-cycle if and only if an eligible hexagon
+voltage of $B$ vanishes.
+\end{lemma}
+\begin{proof}
+In a simple six-cycle each pair among its three variables shares a check,
+and each pair among its three checks shares a variable. Fiber uniqueness
+therefore forces three distinct projections on each side.
+
+The three projected checks form a triangle whose edges are labeled by
+the block type of the intervening variable. An $L$ edge preserves the
+check's second coordinate; an $R$ edge preserves its first coordinate.
+If both edge types occur, two edges share a type. Their coordinate
+equalities, combined with the third edge, identify two projected checks,
+a contradiction. Hence all three variables belong to the same block
+family. In the left family, a cycle can be written
+\[
+ L(d,j)\sim C(a,j)\sim L(e,j)\sim C(b,j)
+ \sim L(f,j)\sim C(c,j)\sim L(d,j).
+\]
+The fiber returns to its starting value exactly when
+$\Q(a,b,c;d,e,f)=0$. The right family gives the transposed, signed
+version of the same collection of tests. Conversely, distinct row and
+column triples and a zero hexagon voltage lift to a simple six-cycle.
+\end{proof}
+
+The short-cycle closure calculations are the corresponding instances of
+Fossorier's QC criterion~\cite{Fossorier2004}. The coordinate reduction
+is related to the support argument of Okada and Kasai~\cite{OK2026};
+here it yields an equivalence for arbitrary fully populated rectangular
+exponent matrices.
+
+\begin{lemma}[Uniform eight-cycle]\label{lem:eight}
+For every $B$ with $m,n\ge2$, the graph $\GX$ contains a simple eight-cycle.
+\end{lemma}
+\begin{proof}
+Choose $i_0\ne i_1$, $j_0\ne j_1$, and arbitrary $k,\ell$. The following
+vertices, listed in cycle order, satisfy~\eqref{eq:left}--\eqref{eq:right}:
+\[
+\begin{array}{ll}
+C(i_0,j_0,B_{i_0k}-B_{\ell j_0}), & L(k,j_0,-B_{\ell j_0}),\\
+C(i_1,j_0,B_{i_1k}-B_{\ell j_0}), & R(i_1,\ell,B_{i_1k}),\\
+C(i_1,j_1,B_{i_1k}-B_{\ell j_1}), & L(k,j_1,-B_{\ell j_1}),\\
+C(i_0,j_1,B_{i_0k}-B_{\ell j_1}), & R(i_0,\ell,B_{i_0k}).
+\end{array}
+\]
+Distinct selected rows and columns give four distinct checks, two distinct
+left variables and two distinct right variables. The block families are
+disjoint. Thus the cycle is simple, regardless of its fiber values.
+\end{proof}
+
+This is the known LP cancellation mechanism~\cite{RDV2025}, with explicit
+fibers and a separate simplicity check. Its product antecedents include
+\cite{RV2021,Zhang2024}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemmas~\ref{lem:four} and~\ref{lem:six} equate the two voltage conditions
+with absence of all four- and six-cycles. Bipartiteness excludes odd
+cycles. Lemma~\ref{lem:eight} provides an eight-cycle, so the absence of
+shorter cycles is equivalent to girth eight. Finally,
+\eqref{eq:pair} rewrites the hexagon condition using only rectangle sums.
+\end{proof}
+
+\begin{remark}[A useful failed shortcut]
+Over $\mathbb Z/3\mathbb Z$, the matrix
+$\left(\begin{smallmatrix}0&0&0\\0&1&2\\0&2&1\end{smallmatrix}\right)$
+has no zero eligible rectangle but does have a zero hexagon and a simple
+six-cycle. Lean verifies this obstruction. It refutes the rectangle-only
+shortcut; the source paper does not assert that shortcut.
+\end{remark}
+
+\section{Lean certificate and mathematical scope}\label{sec:lean}
+
+The formal development uses Lean 4.36.0-rc1 and Mathlib revision
+\nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. The main library contains
+75 audited theorem declarations. Its final matrix theorem uses Mathlib's
+native simple-graph girth, together with an explicit binary expansion of
+$\HX$; the voltage graph is proved equal to that Tanner graph.
+
+The following source corollary is an exact extract from the checked
+artifact, typeset using reversible TeX escapes. It expresses the sufficient-condition answer in rectangle-only
+form. A companion theorem proves necessity.
+\lstinputlisting{listings/source-answer.tex}
+
+The listing's index types specialize to finite row and column sets, with
+at least two elements each, and positive $r$ for the finite circulant
+interpretation. Internally, the graph lemmas are stated at greater
+generality. They establish projected distinctness, eliminate mixed block
+patterns, construct native simple cycles, and identify the graph with the
+expanded matrix. This is the formal content behind the brief final
+application, not a standalone one-line proof of the underlying mathematics.
+
+Eight supplementary declarations in \texttt{CyclicDecoding.lean} prove
+the general two-error bound and concrete absorbing/stopping certificates;
+three in \texttt{CyclicOptimized.lean} prove the two selected candidates'
+girth. The three source-question corollaries are also supplementary. All
+observed axioms are among \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound}; the development uses no admitted proofs or native
+evaluation axiom. The general arguments in Sections~\ref{sec:structure}
+and~\ref{sec:expansion} below are written proofs unless explicitly
+identified as Lean results.
+
+\section{Consequences for degree-three decoding graphs}\label{sec:structure}
+
+Fix $m=n=3$ and assume the conditions of Theorem~\ref{thm:main}.
+For a variable set $S$, induced check degree means degree in the graph
+on $S\cup N(S)$, including every edge from a selected variable.
+
+\begin{definition}
+An $(a,b)$ \emph{absorbing set} is a set of $a$ variables whose induced
+graph has $b$ odd-degree checks, such that every selected variable has
+strictly more even-degree than odd-degree check neighbors. It is
+\emph{elementary} if every neighboring check has induced degree one or
+two. A \emph{stopping set} is a nonempty variable set with no neighboring
+check of induced degree one.
+\end{definition}
+
+These conventions agree with the source and quantum absorbing-set
+framework~\cite{FHM2026,MPK2026}. The size lower bound in the next result
+is consistent with the established extremal bounds of~\cite{MBK2023}.
+
+\begin{theorem}[Minimum absorbing sets]\label{thm:absorbing}
+In any variable-degree-three Tanner graph of girth eight, no absorbing set
+has fewer than four variables. Its four-variable absorbing sets are
+exactly the supports of simple eight-cycles, with one such cycle per
+support. All are elementary $(4,4)$ sets. Consequently their multiplicity
+equals the number of eight-cycles.
+\end{theorem}
+\begin{proof}
+A selected variable needs at least two even check neighbors. For at most
+three selected variables, each such check has degree two. No pair of
+variables can share two checks, as that would make a four-cycle. Sets
+of size one or two therefore fail absorption. A size-three set would
+need three pair checks forming a six-cycle, also excluded.
+
+Take the four variables of an eight-cycle. An additional edge from one
+of its checks to another selected variable creates a four-cycle. An
+outside check meeting two selected variables creates a four-cycle when
+they are consecutive, or a six-cycle when they are opposite. Thus the
+four cycle checks have induced degree two and the four remaining
+neighbors are distinct checks of degree one. Each variable has two even
+neighbors and one odd neighbor.
+
+Conversely, an absorbing set of four variables cannot meet a degree-four
+check: every other even check would share a pair with it and create a
+four-cycle, leaving each variable at most one even neighbor. Nor can it
+meet a degree-three check: each of that check's variables could then have
+at most one even neighbor, paired with the fourth variable. Hence all
+check degrees are at most two. Replace every degree-two check by an edge
+between its variables. The resulting normal graph is simple, triangle-free,
+has four vertices and minimum degree two. It is exactly a four-cycle.
+This also proves uniqueness of the corresponding Tanner eight-cycle.
+\end{proof}
+
+The conclusion is a sharp threshold, not removal of absorbing sets:
+Lemma~\ref{lem:eight} makes four-variable sets unavoidable in this model.
+It converts the next design objective into eight-cycle minimization.
+
+\begin{proposition}[Stopping size and a sharp example]\label{prop:stopping}
+A Tanner graph of girth at least eight and minimum variable degree
+$d\ge2$ has stopping-set size at least $2d$. For the normalized
+$3\times3$ constructions here, this bound is attained at six.
+\end{proposition}
+\begin{proof}
+Choose a variable $v$ in a stopping set and $d$ of its check neighbors.
+Each check needs a second selected variable. These $d$ witnesses are
+distinct, since a coincidence creates a four-cycle. Choose one witness
+$a$. At least $d-1$ other checks of $a$ each need another selected
+variable. The new witnesses are distinct and cannot equal $v$ by the
+four-cycle exclusion; none can be a different first-level witness by
+the six-cycle exclusion. There are at least $1+d+(d-1)=2d$ variables.
+
+If the first row and column of $B$ vanish, select
+\begin{equation}\label{eq:sixset}
+ S_6=\{L(0,j,0):0\le j<3\}\cup\{R(i,0,0):0\le i<3\}.
+\end{equation}
+Exactly the nine checks $C(i,j,0)$ meet this set, each twice.
+It is a stopping set of size six and has zero syndrome.
+\end{proof}
+
+The same support is a row of $\HZ$, indexed by $(0,0)$ and fiber zero.
+It represents a stabilizer, so this fact does not assign quantum logical
+distance six. For the binary classical kernel of $\HX$, the stopping
+lower bound and~\eqref{eq:sixset} do give minimum nonzero weight six.
+Lean checks the concrete induced-degree profile over $\mathbb Z/7\mathbb Z$.
+
+\begin{proposition}[Small-error syndrome bounds]\label{prop:syndrome}
+In a four-cycle-free Tanner graph, errors at two distinct variables
+$v,w$ produce at least $\deg(v)+\deg(w)-2$ odd checks. In degree three
+and girth at least eight, one, two and three errors expose at least
+three, four and five degree-one checks, respectively.
+\end{proposition}
+\begin{proof}
+Distinct variables share at most one check. The two-error syndrome is
+$N(v)\mathbin{\triangle}N(w)$, proving the first assertion; this argument
+is formalized in Lean. For $S$ with $a\le3$ variables, the induced
+incidence graph is a forest, since any cycle would have length at most
+six. If $E=\sum_{v\in S}\deg(v)$ and there are $c\ge1$ components,
+then $|N(S)|=E-a+c\ge E-a+1$. If $t$ checks have degree one,
+$E\ge t+2(|N(S)|-t)$, whence $t\ge E-2a+2$. Set $E=3a$.
+\end{proof}
+
+These are graph and syndrome statements. Failure-inducing sets also depend
+on decoder dynamics, as emphasized by~\cite{RV2021,MPK2026}. Section
+\ref{sec:decoding} tests that distinction directly.
+
+\section{Connectivity and a limitation on expansion}\label{sec:expansion}
+
+Girth eight alone does not ensure connectedness. For example, doubling
+every exponent of the modulus-seven matrix below and working modulo
+fourteen yields two components, because every edge preserves fiber parity.
+Direct BFS gives two components of 189 vertices each.
+
+\begin{theorem}[Connected girth eight with vanishing conductance]
+Let $r=7k$, $k\ge1$, and interpret the fixed integer matrix
+\begin{equation}\label{eq:baseline}
+ B_0=\begin{pmatrix}0&0&0\\0&1&2\\0&3&6\end{pmatrix}
+\end{equation}
+modulo $r$. The corresponding graphs are connected and have girth eight.
+For $k\ge2$, their edge conductance satisfies
+\begin{equation}\label{eq:conductance}
+ \phi(\GX)\le\frac{4}{3\lfloor r/2\rfloor}\longrightarrow0.
+\end{equation}
+\end{theorem}
+\begin{proof}
+All eligible rectangle and hexagon sums for $B_0$ are nonzero modulo seven,
+as checked by Lean in the modulus-seven case. If any vanished modulo
+$7k$, it would vanish modulo seven. Theorem~\ref{thm:main} thus gives
+girth eight for every $k$. The upper-left rectangle has voltage one, which
+generates the whole cyclic group. The source's connectivity criterion
+(Theorem~3.6 of~\cite{FHM2026}) therefore gives connectedness.
+
+Let $S$ contain all vertex types with fibers
+$0,\ldots,\lfloor r/2\rfloor-1$. Define
+\[
+ \phi(\GX)=\min_{\varnothing\ne T\ne V}
+ \frac{|\partial T|}{\min(\vol(T),\vol(V\setminus T))}.
+\]
+There are nine degree-six checks and eighteen degree-three variables
+per fiber, or 108 units of volume. For $k\ge2$, both fiber arcs have
+length at least seven. Each matching of displacement $\epsilon$, where
+$|\epsilon|\le6$, crosses the cut in exactly $2|\epsilon|$ edges.
+The sum of the entries of $B_0$ is 12; each appears in three left and
+three right edge types. Thus $|\partial S|=2\cdot6\cdot12=144$, and
+the smaller volume is $108\lfloor r/2\rfloor$. This proves
+\eqref{eq:conductance}.
+\end{proof}
+
+The cuts at $r=14,28,56$ have conductance ratios $0.190476$, $0.095238$
+and $0.047619$, respectively, confirmed by direct enumeration. These
+are upper bounds from specified cuts. They show that the girth criterion
+alone cannot provide a uniform expansion guarantee. Expansion remains
+a separate design objective, as in the source's hierarchy~\cite{FHM2026}
+and the related spectral program~\cite{AC2026}.
+
+\section{Exhaustive finite optimization}\label{sec:optimization}
+
+Fix lift size $r=14$ and normalize the first row and column to zero:
+\begin{equation}\label{eq:normalized}
+ B(a,b,c,d)=\begin{pmatrix}0&0&0\\0&a&b\\0&c&d\end{pmatrix}.
+\end{equation}
+Girth eight forces each interior entry to be nonzero, leaving
+$13^4=28,561$ candidates. Applying the exact rectangle/hexagon tests
+and the connectivity condition $\gcd(14,a,b,c,d)=1$ leaves 10,368 bases.
+In this normalized model the four interior exponents generate the
+cycle-voltage subgroup, which explains the gcd test.
+
+The search partitions these bases into 25 orbits under row/column
+permutations, normalization, multiplication by units modulo fourteen,
+and transposition. For the gauge change $B'_{ij}=B_{ij}+u_i+v_j$, the
+graph isomorphism shifts fibers of $C(i,j)$ by $u_i-v_j$, of $L(k,j)$
+by $-v_k-v_j$, and of $R(i,\ell)$ by $u_i+u_\ell$. Transposition
+exchanges block families, swaps check coordinates and negates fibers.
+These identities justify counting a representative of every orbit.
+The number 25 refers to this explicit symmetry group, rather than an
+assertion that no further graph isomorphisms exist.
+
+Each representative is checked for connectedness by BFS. Eight-cycle
+counts are computed both by check-projection enumeration with four
+distinct variable labels and by an independent depth-eight traversal
+of the Tanner graph. The validation script compares both algorithms
+on all 25 representatives. It also checks explicit graph bijections
+for each symmetry type and repeats the search partition.
+
+\begin{proposition}[Computed fixed-size optimum]\label{prop:optimum}
+In the normalized connected girth-eight search at $r=14$, the minimum
+number of four-variable absorbing sets is 2,520. Exactly 1,728 bases
+attain it, forming four orbits under the stated symmetries.
+\end{proposition}
+
+Proposition~\ref{prop:optimum} is established by exhaustive finite
+computation; it is not a Lean optimality theorem. The four representative
+interiors are
+\[
+ (1,2,4,11),\quad(1,3,6,10),\quad(1,3,7,4),\quad(1,4,6,2).
+\]
+The first and third encode eight logical qubits. The second and fourth
+preserve the baseline's ten and are the primary rate-matched candidates:
+\begin{equation}\label{eq:candidates}
+ B_2=\begin{pmatrix}0&0&0\\0&1&3\\0&6&10\end{pmatrix},\qquad
+ B_4=\begin{pmatrix}0&0&0\\0&1&4\\0&6&2\end{pmatrix}.
+\end{equation}
+For both, $\rank(\HX)=\rank(\HZ)=121$ and
+$K=252-121-121=10$, by exact binary elimination. Lean independently
+verifies their girth eight. Their count is 20\% below the baseline's
+3,150 and $4.76\%$ below the previous candidate
+$B(1,2,3,8)$ with 2,646. Equal length and dimension do not imply
+equal quantum distance.
+
+\section{Measured decoding performance}\label{sec:decoding}
+
+\subsection{Protocol and independent checks}
+We use syndrome normalized min-sum with a flooding schedule,
+normalization $\alpha=0.8$, at most 100 iterations and message saturation
+at absolute LLR 50. The prior is $\log((1-p)/p)$. The implementation
+uses fixed-point messages with twenty fractional bits, rounds
+normalization magnitudes to the nearest integer with ties up, assigns
+positive sign to zero messages and hard bit zero to a zero posterior.
+It halts at the first syndrome match, including the initial zero estimate.
+There is no post-processing or per-design tuning. The syndrome min-sum
+method and LP simulation framework have prior treatments in
+\cite{Raveendran2022,Raveendran2023}; our fixed implementation is
+specified to make this comparison reproducible.
+
+Errors are independent Bernoulli($p$) in one Pauli sector, with perfect
+syndrome measurements. The decoder receives the syndrome and prior.
+The true error and $\HZ$ are used only afterward for scoring. If
+$\hat e$ is the correction, recovery succeeds exactly when
+\begin{equation}\label{eq:success}
+ e+\hat e\in\row_{\Ftwo}(\HZ).
+\end{equation}
+Thus nonzero stabilizer residuals count as success; syndrome mismatch
+or a nonstabilizer residual counts as failed recovery. This is the
+standard distinction between exact recovery, degeneracy and logical
+miscorrection~\cite{MPK2026}. The experiment is a one-sector
+code-capacity comparison, not a circuit-level or depolarizing-channel
+benchmark.
+
+An independent Python implementation evaluates the direct extrinsic
+message equations and matches the C++ engine on 128 small cases,
+including an exact repetition-code oracle. Every primary code is checked
+on all single-qubit errors, zero error, an injected stabilizer and a
+constructed zero-syndrome logical operator. These checks distinguish
+the two cases in~\eqref{eq:success}. All CSS row-pair orthogonality
+relations and GF(2) ranks are checked independently.
+
+An exploratory experiment used 10,000 shared errors at each of five
+probabilities with seed 20261022. The confirmation uses a new seed,
+20261023, and 100,000 independent errors at each of
+$p=0.01,0.02,0.04$. At each probability all four rate-matched codes
+receive the same error patterns. The confirmation therefore comprises
+300,000 independent patterns and 1.2 million decoder runs. Both
+rate-preserving structural minima were retained; selection did not use
+the confirmation outcomes.
+
+\subsection{Results}
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Code & $(4,4)$ sets & $p=1\%$ & $p=2\%$ & $p=4\%$ \\
+\midrule
+$B_0=B(1,2,3,6)$ & 3,150 & 0.033\% & 0.369\% & 4.385\% \\
+$B(1,2,3,8)$ & 2,646 & 0.031\% & 0.278\% & 2.750\% \\
+$B_2=B(1,3,6,10)$ & 2,520 & 0.036\% & 0.251\% & 2.523\% \\
+$B_4=B(1,4,6,2)$ & 2,520 & 0.035\% & 0.278\% & 2.607\% \\
+\bottomrule
+\end{tabular}
+\caption{Recovery failure rates, 100,000 trials per cell. Every code
+has 252 physical qubits, ten logical qubits, connectedness and girth eight.}
+\label{tab:decoding}
+\end{table}
+
+At $p=4\%$, $B_2$ has approximately $42.46\%$ fewer failed recoveries
+than $B_0$. Wilson 95\% marginal intervals are
+$[4.260\%,4.514\%]$ and $[2.428\%,2.622\%]$, respectively.
+Using the shared errors, the paired difference is $-1.862$ percentage
+points, with approximate pointwise 95\% interval
+$[-2.011,-1.713]$. At $p=2\%$, it is $-0.118$ points with interval
+$[-0.166,-0.070]$. At $p=1\%$ there are only 33 baseline and 36
+$B_2$ failures; the paired interval includes zero, so this experiment
+does not establish improvement there.
+
+The two minima are not clearly distinguished: at $p=4\%$ their paired
+difference is $-0.084$ points, with interval $[-0.208,+0.040]$.
+Intervals are pointwise and not corrected for multiple comparisons.
+We infer neither an asymptotic threshold nor a low-noise error-floor
+law from these measurements.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{lrrr}
+\toprule
+Code & Syndrome mismatch & Matched logical failure & Stabilizer successes\textsuperscript{*} \\
+\midrule
+$B_0$ & 2,981 & 1,404 & 5,834 \\
+$B(1,2,3,8)$ & 2,714 & 36 & 5,849 \\
+$B_2$ & 2,503 & 20 & 6,005 \\
+$B_4$ & 2,565 & 42 & 6,031 \\
+\bottomrule
+\end{tabular}
+\caption{Outcome decomposition at $p=4\%$, per 100,000 trials.
+\textsuperscript{*}Successful nonzero stabilizer residuals, in addition
+to exact error recovery.}
+\label{tab:outcomes}
+\end{table}
+
+The improvement includes a large reduction in logical miscorrections.
+Mean iterations, counting failures at the limit, decrease from 9.689
+for $B_0$ to 8.857 for $B_2$. Absorbing-set count is a structural
+selection objective; the exponent changes also affect algebraic and
+other graph properties, so the experiment does not isolate that count
+as the sole causal variable.
+
+\subsection{Exhaustive targeted errors and the earlier design framework}
+We additionally decode every exact four-variable absorbing support,
+with no other erroneous variables, at each of $p=0.01,0.02,0.04$.
+Every support is checked directly for its $(4,4)$ profile. The baseline
+fails on 378 of 3,150 supports, or $12\%$, always through a matched
+nonstabilizer residual. The previous best and both minima succeed on
+every support tested. Thus an absorbing support is not automatically
+failure-inducing for this min-sum decoder.
+
+All failing baseline supports are mixed. Their residuals have weight
+six in 294 cases and weight eight in 84 cases. Explicit support
+witnesses are checked for zero syndrome and exclusion from
+$\row(\HZ)$. The weight-six witness bounds the baseline's distance
+in the tested Pauli sector by six. No exact optimized-code distance
+is assigned here. Under Bernoulli noise, these disjoint exact supports
+contribute $378p^4(1-p)^{248}$ to the baseline's failure probability;
+they are one error subclass, not an estimate of the full failure rate.
+
+Raveendran, Declercq and Vasi\'c already demonstrate that different
+base matrices can produce different decoding performance at equal
+length, rate and girth eight~\cite[Sec.~V-A, Eq.~(92), Fig.~1]{RDV2025}.
+Their comparison uses 600-qubit codes and BP+OSD-10. Our baseline
+also satisfies their column-partition pattern $c_0+c_2=2c_1$ modulo
+fourteen; the previous best and both minima avoid every corresponding
+three-column or three-row relation. This links our example to their
+low-weight-logical design framework without assigning an optimized
+distance or claiming a new decoder. The finite optimum and the
+specified min-sum benchmark are the concrete contributions of this study.
+
+\section{Reproducibility and remaining scope}\label{sec:artifact}
+
+The companion artifact is organized under
+\texttt{formalization/cyclic-lifts} in the anonymous project repository
+\url{https://github.com/alectionary/vibe-math}. The manuscript package
+contains a snapshot of all Lean sources, the pinned Lake configuration,
+experiment programs, JSON results, encoded paired outcomes and validation
+scripts needed for this paper. Its manifest records SHA-256 hashes;
+the snapshot does not depend on a moving branch or unpublished working
+tree. Build instructions are included with the package.
+
+The library and consumers verify the main theorem and concrete
+certificates using the pinned Lean/Mathlib environment. The standard-library
+Python search and C++17 decoder reproduce the finite experiments.
+The statistical audit reconstructs counts and paired comparisons from
+stored per-trial flags. No physical experiments were performed.
+
+The precise girth-condition question is settled by
+Theorem~\ref{thm:main}. Its decoding-properties continuation receives
+three complementary answers: structural consequences, a counterexample
+to uniform expansion from girth alone, and an optimized finite code with
+a measured recovery improvement. A general classification across
+arbitrary degrees, exact optimized quantum distances, optimization over
+lift sizes, and comparisons across decoders and noisy measurement models
+remain separate tasks. The general written structural proofs can also
+be added to the Lean development beyond its present witnesses and
+syndrome bound.
+
+\paragraph{Acknowledgments and research provenance.}
+The question is credited to Ragnar Freij-Hollanti, Kirsten D. Morris and
+Patricija \v Sapokait\.{e}; their structural program guided the choice of
+targets. The predecessor contributions credited in Section~\ref{sec:history}
+guided the proof comparison and interpretation of decoding outcomes.
+OpenAI Codex was used for literature discovery, mathematical exploration,
+Lean development, experiment implementation and manuscript drafting.
+
+\begin{thebibliography}{99}
+\bibitem{FHM2026}
+R. Freij-Hollanti, K. D. Morris and P. \v Sapokait\.{e},
+\emph{Graphical Analysis of Lifted Product Code Constructions},
+arXiv:2606.11987v1, June 10, 2026.
+\url{https://arxiv.org/abs/2606.11987v1}.
+
+\bibitem{Fossorier2004}
+M. P. C. Fossorier,
+\emph{Quasi-Cyclic Low-Density Parity-Check Codes From Circulant Permutation Matrices},
+IEEE Transactions on Information Theory \textbf{50}(8), 1788--1793, 2004.
+\href{https://doi.org/10.1109/TIT.2004.831841}{doi:10.1109/TIT.2004.831841}.
+
+\bibitem{SM2021}
+R. Smarandache and D. G. M. Mitchell,
+\emph{Necessary and Sufficient Girth Conditions for Tanner Graphs of Quasi-Cyclic LDPC Codes},
+arXiv:2105.03462v1, May 7, 2021.
+\url{https://arxiv.org/abs/2105.03462v1}.
+
+\bibitem{RV2021}
+N. Raveendran and B. Vasi\'c,
+\emph{Trapping Sets of Quantum LDPC Codes}, Quantum \textbf{5}, 562, October 14, 2021.
+\href{https://doi.org/10.22331/q-2021-10-14-562}{doi:10.22331/q-2021-10-14-562}.
+
+\bibitem{Zhang2024}
+B. Zhang, \emph{On the Left-Right Lifted Product Quantum LDPC Code},
+Master's thesis, Duke University, defended March 27, 2024, Section 3.3, Theorem 5.
+\url{https://dukespace.lib.duke.edu/server/api/core/bitstreams/8f596ec8-b362-43da-bf61-f8c26f0c5edc/content}.
+
+\bibitem{RDV2025}
+N. Raveendran, D. Declercq and B. Vasi\'c,
+\emph{On the Minimum Distances of Finite-Length Lifted Product Quantum LDPC Codes},
+arXiv:2503.07567v1, March 10, 2025.
+\url{https://arxiv.org/abs/2503.07567v1}.
+
+\bibitem{OK2026}
+K. Okada and K. Kasai,
+\emph{High-Girth Regular Quantum LDPC Codes from Square-Base Hypergraph Products via CPM Lifts},
+arXiv:2604.27817; v1 April 30, 2026; v3 September 11, 2026.
+\url{https://arxiv.org/abs/2604.27817v3}.
+
+\bibitem{WDZW2011}
+J. Wang, L. Dolecek, Z. Zhang and R. Wesel,
+\emph{Absorbing Set Spectrum Approach for Practical Code Design},
+arXiv:1106.0057v1, May 31, 2011.
+\url{https://arxiv.org/abs/1106.0057v1}.
+
+\bibitem{WDW2012}
+J. Wang, L. Dolecek and R. Wesel,
+\emph{The Cycle Consistency Matrix Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes},
+arXiv:1208.6094v2, December 5, 2012.
+\url{https://arxiv.org/abs/1208.6094v2}.
+
+\bibitem{MBK2023}
+E. McMillon, A. Beemer and C. A. Kelley,
+\emph{Extremal absorbing sets in low-density parity-check codes},
+Advances in Mathematics of Communications \textbf{17}(2), 465--483, 2023;
+published online March 31, 2021.
+\href{https://doi.org/10.3934/amc.2021003}{doi:10.3934/amc.2021003}.
+
+\bibitem{MPK2026}
+K. D. Morris, T. Pllaha and C. A. Kelley,
+\emph{Absorbing sets in quantum LDPC codes},
+Advances in Mathematics of Communications \textbf{23}, 234--254, 2026;
+published online March 3, 2026.
+\href{https://doi.org/10.3934/amc.2026023}{doi:10.3934/amc.2026023}.
+
+\bibitem{AC2026}
+A. Abiad and N. Castriota,
+\emph{Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes},
+arXiv:2607.13666v1, July 15, 2026.
+\url{https://arxiv.org/abs/2607.13666v1}.
+
+\bibitem{PK2021}
+P. Panteleev and G. Kalachev,
+\emph{Degenerate Quantum LDPC Codes With Good Finite Length Performance},
+Quantum \textbf{5}, 585, 2021.
+\href{https://doi.org/10.22331/q-2021-11-22-585}{doi:10.22331/q-2021-11-22-585}.
+
+\bibitem{Raveendran2022}
+N. Raveendran, N. Rengaswamy, F. Rozp\k{e}dek, A. Raina, L. Jiang and B. Vasi\'c,
+\emph{Finite Rate QLDPC-GKP Coding Scheme that Surpasses the CSS Hamming Bound},
+Quantum \textbf{6}, 767, 2022.
+\href{https://doi.org/10.22331/q-2022-07-20-767}{doi:10.22331/q-2022-07-20-767}.
+
+\bibitem{Raveendran2023}
+N. Raveendran, J. Valls, A. K. Pradhan, N. Rengaswamy, F. Garcia-Herrero and B. Vasi\'c,
+\emph{Soft syndrome iterative decoding of quantum LDPC codes and hardware architectures},
+EPJ Quantum Technology \textbf{10}, 45, October 19, 2023.
+\href{https://doi.org/10.1140/epjqt/s40507-023-00201-1}{doi:10.1140/epjqt/s40507-023-00201-1}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,359 @@
+{
+  "scope": "Every four-variable absorbing support, one error per selected variable and no other errors; not all weight-four patterns.",
+  "decoder": "Same fixed-point normalized min-sum alpha=.8, max_iter=100 as confirmation experiment.",
+  "probability_interpretation": "For a Bernoulli(p) channel these disjoint exact supports contribute failures*p^4*(1-p)^(n-4) to total FER; this is only one error subclass, not a FER estimate.",
+  "results": [
+    {
+      "design": "baseline",
+      "enumerated_absorbing_supports": 3150,
+      "all_profiles_directly_checked": true,
+      "by_probability": [
+        {
+          "p": 0.01,
+          "failures": 378,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 378,
+          "exact_recovery": 1470,
+          "stabilizer_equivalent_success": 1302,
+          "failure_counts_by_left_variable_count": {
+            "2": 378
+          },
+          "failed_residual_weight_histogram": {
+            "6": 294,
+            "8": 84
+          },
+          "failed_residual_examples": {
+            "6": {
+              "error_support": [
+                56,
+                111,
+                126,
+                140
+              ],
+              "correction_support": [
+                28,
+                84,
+                111,
+                140,
+                184,
+                244
+              ],
+              "residual_support": [
+                28,
+                56,
+                84,
+                126,
+                184,
+                244
+              ]
+            },
+            "8": {
+              "error_support": [
+                41,
+                82,
+                139,
+                140
+              ],
+              "correction_support": [
+                42,
+                97,
+                227,
+                243
+              ],
+              "residual_support": [
+                41,
+                42,
+                82,
+                97,
+                139,
+                140,
+                227,
+                243
+              ]
+            }
+          },
+          "conditional_failure_fraction": 0.12,
+          "exact_bernoulli_failure_contribution": 3.126223763830683e-07
+        },
+        {
+          "p": 0.02,
+          "failures": 378,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 378,
+          "exact_recovery": 1470,
+          "stabilizer_equivalent_success": 1302,
+          "failure_counts_by_left_variable_count": {
+            "2": 378
+          },
+          "failed_residual_weight_histogram": {
+            "6": 294,
+            "8": 84
+          },
+          "failed_residual_examples": {
+            "6": {
+              "error_support": [
+                56,
+                111,
+                126,
+                140
+              ],
+              "correction_support": [
+                28,
+                84,
+                111,
+                140,
+                184,
+                244
+              ],
+              "residual_support": [
+                28,
+                56,
+                84,
+                126,
+                184,
+                244
+              ]
+            },
+            "8": {
+              "error_support": [
+                41,
+                82,
+                139,
+                140
+              ],
+              "correction_support": [
+                42,
+                97,
+                227,
+                243
+              ],
+              "residual_support": [
+                41,
+                42,
+                82,
+                97,
+                139,
+                140,
+                227,
+                243
+              ]
+            }
+          },
+          "conditional_failure_fraction": 0.12,
+          "exact_bernoulli_failure_contribution": 4.0334674285122344e-07
+        },
+        {
+          "p": 0.04,
+          "failures": 378,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 378,
+          "exact_recovery": 1470,
+          "stabilizer_equivalent_success": 1302,
+          "failure_counts_by_left_variable_count": {
+            "2": 378
+          },
+          "failed_residual_weight_histogram": {
+            "6": 294,
+            "8": 84
+          },
+          "failed_residual_examples": {
+            "6": {
+              "error_support": [
+                56,
+                111,
+                126,
+                140
+              ],
+              "correction_support": [
+                28,
+                84,
+                111,
+                140,
+                184,
+                244
+              ],
+              "residual_support": [
+                28,
+                56,
+                84,
+                126,
+                184,
+                244
+              ]
+            },
+            "8": {
+              "error_support": [
+                41,
+                82,
+                139,
+                140
+              ],
+              "correction_support": [
+                42,
+                97,
+                227,
+                243
+              ],
+              "residual_support": [
+                41,
+                42,
+                82,
+                97,
+                139,
+                140,
+                227,
+                243
+              ]
+            }
+          },
+          "conditional_failure_fraction": 0.12,
+          "exact_bernoulli_failure_contribution": 3.881481843209397e-08
+        }
+      ]
+    },
+    {
+      "design": "previous_best",
+      "enumerated_absorbing_supports": 2646,
+      "all_profiles_directly_checked": true,
+      "by_probability": [
+        {
+          "p": 0.01,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1512,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        },
+        {
+          "p": 0.02,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1512,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        },
+        {
+          "p": 0.04,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1512,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        }
+      ]
+    },
+    {
+      "design": "minimum_2",
+      "enumerated_absorbing_supports": 2520,
+      "all_profiles_directly_checked": true,
+      "by_probability": [
+        {
+          "p": 0.01,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1386,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        },
+        {
+          "p": 0.02,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1386,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        },
+        {
+          "p": 0.04,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1386,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        }
+      ]
+    },
+    {
+      "design": "minimum_4",
+      "enumerated_absorbing_supports": 2520,
+      "all_profiles_directly_checked": true,
+      "by_probability": [
+        {
+          "p": 0.01,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1386,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        },
+        {
+          "p": 0.02,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1386,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        },
+        {
+          "p": 0.04,
+          "failures": 0,
+          "syndrome_failures": 0,
+          "matched_logical_failures": 0,
+          "exact_recovery": 1386,
+          "stabilizer_equivalent_success": 1134,
+          "failure_counts_by_left_variable_count": {},
+          "failed_residual_weight_histogram": {},
+          "failed_residual_examples": {},
+          "conditional_failure_fraction": 0.0,
+          "exact_bernoulli_failure_contribution": 0.0
+        }
+      ]
+    }
+  ],
+  "sources_sha256": {
+    "targeted_absorbing.py": "212a6d42044b8f68f2b6e44a61cbaf4c8eacceff6cb948c7fe62760e67c141e7",
+    "minsum.cpp": "4753cdab4a367110308b92abd7e67f0c00b734c5d8994655e33b8c823df8a427",
+    "benchmark_decoding.py": "0fa42e6681c614b634958bc89979bd0c0ef9bbf7db5a91941638a0a4978bc2c1",
+    "benchmark-confirmation.json": "c9e437517f85c8506adb1819c4e18b74241b0099cc8ef423dde3b4475d6ffb2d"
+  }
+}
