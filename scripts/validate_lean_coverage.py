@@ -44,12 +44,15 @@ assert 'sorryAx' not in t and 'error:' not in t
 for group in re.findall(r'\[(.*?)\]',t):
  assert {a.strip() for a in group.split(',') if a.strip()}<={'propext','Classical.choice','Quot.sound'}
 summary=load('open-problem-summary.json');cov=audit['coverage']
-assert summary['eligible_targets']==cov['eligible_targets']==108
+delta=load('research-reconciliation.json')['added_eligible_targets']
+assert cov['eligible_targets']==108
+assert summary['eligible_targets']==cov['eligible_targets']+delta
 # Keep the discovery audit's original counts, and account for the later checked P34 proof.
 assert cov['verified_lean_proofs']==1 and summary['eligible_verified_lean_proofs']==3
 assert cov['verified_lean_statements']==1 and summary['eligible_verified_lean_statements']==3
 assert summary['eligible_identified_unverified_lean_statements']==cov['identified_unverified_lean_statements_without_proof']==1
-assert summary['eligible_lean_discovery_unassessed']==cov['lean_discovery_unassessed']==0
+assert cov['lean_discovery_unassessed']==0
+assert summary['eligible_lean_discovery_unassessed']==delta
 assert sum(r['eligible_for_coverage'] and r['lean_statement_status']=='no_exact_statement_identified' for r in rows.values())==104
 assert summary['eligible_targets_with_supporting_lean_proofs']==0
 assert rows['L-P11-forbidden']['lean_proof_status']=='verified_complete_lean_proof'

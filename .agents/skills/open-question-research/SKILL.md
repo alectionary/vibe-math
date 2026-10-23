@@ -123,6 +123,17 @@ progress by canonical mathematical targets, not declaration counts or paper page
 Explain specific remaining gaps without presenting every follow-up as necessary
 to finish an already completed theorem.
 
+Reconcile discoveries with the shared inventory before closing a research block:
+link used sources, source-stated questions, canonical occurrences, resolution and
+Lean evidence, remaining project-derived tasks, and planning records. Use the
+existing files under `literature/` and `planning/`, with an explicit cohort delta
+when adding targets. Deduplicate equivalent questions; do not promote our own
+follow-ups into author-posed questions. Mark new source/current-resolution/Lean
+searches and difficulty assessments unassessed where applicable. Regenerate the
+reports and run their bookkeeping validators; paper-only notes are not sufficient
+integration. The [October 23 reconciliation](../../../literature/RESEARCH-RECONCILIATION.md)
+illustrates the distinctions without changing frozen experiment inputs.
+
 When writing or revising a paper, cite sources that contributed to its claims,
 including close predecessors and the original question. Use dates of inspected
 versions, earliest relevant preprints and publication milestones explicitly.

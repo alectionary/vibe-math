@@ -1,5 +1,7 @@
 # Current difficulty assessment and next project
 
+**October 23 inventory reconciliation:** the inventory now has 187 entries and 111 eligible targets. Six new source questions/directions are recorded as planning-unassessed in [the current table](CURRENT-DIFFICULTY.md); the earlier numerical rankings and selected-project recommendation below are historical, not a recommendation to repeat an already completed investigation. [Reconciliation](../literature/RESEARCH-RECONCILIATION.md).
+
 Checked October 23, 2026. **The selected P11 forbidden-set completeness project is complete for its recorded cumulative cycle/girth scope.** The literal optimized appendix enumeration, including all printed half sums and ordered row/column constraints, now has a full Lean proof and an executable checker matching native cycles in the expanded binary matrix. [Full checked correspondence](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md). The earlier P34 girth-eight project is also complete for its recorded scope; its original planning rationale is retained below.
 
 

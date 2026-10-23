@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 23, 2026. Low-confidence planning priors for all 181 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 23, 2026. Low-confidence planning priors for all 187 entries (6 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Checked October 23, 2026. Low-confidence planning priors for all 181 entries. [R
 | 3 | 41 | 24 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
-| Formulation required | 3 | 3 |
+| Unestimated / scope gate | 6 | 6 |
 
 ### 2026-Geraci-O01
 
@@ -2582,7 +2582,9 @@ Analyze how girth-eight conditions affect other graph properties relevant for de
 
 Cyclic lifts reduce short closed walks to modular label sums, but the exact lifted-product Tanner graph and simple-cycle conditions must be proved faithful.
 
-First milestone: Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.
+First milestone: Choose a bounded unresolved claim from the reconciled source target; retain the completed girth proof and concrete structural/trajectory evidence rather than restarting them.
+
+Progress: Later research now linked in the central inventory. Exact onset, possible-influence cones, soft-only/delayed examples and channel moments; new confirmation partitions 451/985 and 571/1210 descriptively, not causally. [Checked artifact](../formalization/cyclic-lifts/ENTRY-DYNAMICS.md).
 
 Gate: Choose a precise theorem, algorithmic resource guarantee or repaired statement before scheduling a general proof. This entry is outside the coverage denominator.
 
@@ -2598,7 +2600,9 @@ Translate the cited row/column partition conditions for low-weight logical opera
 
 Cyclic lifts reduce short closed walks to modular label sums, but the exact lifted-product Tanner graph and simple-cycle conditions must be proved faithful.
 
-First milestone: Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.
+First milestone: Choose a bounded unresolved claim from the reconciled source target; retain the completed girth proof and concrete structural/trajectory evidence rather than restarting them.
+
+Progress: Later research now linked in the central inventory. One million fresh paired errors distinguish two exact [[252,10,10]] codes under the fixed decoder; no isolated absorbing-count cause. [Checked artifact](../formalization/cyclic-lifts/MILLION-PAIRED.md).
 
 Gate: Choose a precise theorem, algorithmic resource guarantee or repaired statement before scheduling a general proof. This entry is outside the coverage denominator.
 
@@ -2614,7 +2618,9 @@ Choose base-matrix entries to optimize Tanner-graph properties for iterative dec
 
 Cyclic lifts reduce short closed walks to modular label sums, but the exact lifted-product Tanner graph and simple-cycle conditions must be proved faithful.
 
-First milestone: Define cyclic lifts and prove the closed-walk displacement lemma, then the four-cycle criterion.
+First milestone: Choose a bounded unresolved claim from the reconciled source target; retain the completed girth proof and concrete structural/trajectory evidence rather than restarting them.
+
+Progress: Later research now linked in the central inventory. Exact onset, possible-influence cones, soft-only/delayed examples and channel moments; new confirmation partitions 451/985 and 571/1210 descriptively, not causally. [Checked artifact](../formalization/cyclic-lifts/ENTRY-DYNAMICS.md).
 
 Gate: Choose a precise theorem, algorithmic resource guarantee or repaired statement before scheduling a general proof. This entry is outside the coverage denominator.
 
@@ -2703,3 +2709,99 @@ Finite sign matrices are simple data; list replicability and topological Z2-inde
 First milestone: Specify list size, universality of constants and the finite concept-class/domain parameters.
 
 Basis: New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f24-p116-index).
+
+### L-F25-distance-preservation
+
+Find sufficient base-matrix constraints ensuring equality of the quantum and classical minimum distances in the stated type-I LP construction.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f25-distance-preservation).
+
+### L-F25-general-protographs
+
+Extend the type-I LP distance and problematic-structure analysis to more general protographs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f25-general-protographs).
+
+### L-F25-hardware-entries
+
+Investigate circulant-entry choices that ease hardware constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f25-hardware-entries).
+
+### L-F26-exact-distance
+
+Determine the exact X/Z quantum distances of the fixed randomized P=64 lift of B15, currently certified between 18 and 192 in the source.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f26-exact-distance).
+
+### L-F26-logical-qubit-lifts
+
+Construct connected CSS-preserving CPM lifts with additional nonconstant left-kernel vectors that increase logical-qubit count while retaining the targeted short-cycle constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f26-logical-qubit-lifts).
+
+### L-F26-replicated-comparisons
+
+Extend repair/decoder comparisons and replicated statistics across multiple lifted instances.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f26-replicated-comparisons).

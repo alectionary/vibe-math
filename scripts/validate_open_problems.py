@@ -5,10 +5,11 @@ R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature';load=lambda n:
 rows=load('open-problems.json');coverage=load('downstream-paper-coverage.json');summary=load('open-problem-summary.json');manifest={m['paper_id']:m for m in load('downstream-source-manifest.json')}
 expansion=load('scholarly-expansion-review.json')
 browser=load('browser-search-review.json')
-assert len(rows)==len({r['id'] for r in rows})==expansion['baseline']['canonical_entries']+len(expansion['added_target_ids'])+len(browser['added_target_ids'])
-assert set(expansion['baseline']['canonical_ids'])|set(expansion['added_target_ids'])|set(browser['added_target_ids'])=={r['id'] for r in rows}
+reconciliation=load('research-reconciliation.json');added=set(reconciliation['added_target_ids'])
+assert len(rows)==len({r['id'] for r in rows})==expansion['baseline']['canonical_entries']+len(expansion['added_target_ids'])+len(browser['added_target_ids'])+len(added)
+assert set(expansion['baseline']['canonical_ids'])|set(expansion['added_target_ids'])|set(browser['added_target_ids'])|added=={r['id'] for r in rows}
 ids={r['id'] for r in rows};by={r['id']:r for r in rows};papers={p['id']:p for p in load('papers.json')+load('followups.json') if p['id'].startswith(('P','F'))}
-assert len(coverage)==len(papers)==len(manifest)==expansion['baseline']['paper_records']+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
+assert len(coverage)==len(papers)==len(manifest)==expansion['baseline']['paper_records']+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+len(reconciliation['added_paper_ids'])
 assert {p['paper_id'] for p in coverage}==set(papers)
 legacy={c['id']:c for c in json.loads((R/'audit/claims.json').read_text()) if c['kind']=='open_question'}
 assert len(legacy)==40
@@ -27,6 +28,9 @@ for r in rows:
   assert r['lean_statement_status']=='identified_lean_statement_not_build_verified'
   assert r['lean_proof_status']=='no_exact_proof_identified'
   assert 'proof_wanted' in r['related_formalization_evidence'][0]['finding']
+ elif r['id'] in added:
+  assert r['lean_statement_status']==r['lean_proof_status']=='not_assessed_in_this_extension'
+  assert r['current_resolution_status']=='not_independently_established'
  elif r.get('added_on')=='2026-10-22':
   assert r['lean_statement_status'] in ('no_exact_statement_identified','not_assessed_in_this_extension')
   assert r['lean_proof_status'] in ('no_exact_proof_identified','not_assessed_in_this_extension')
@@ -47,21 +51,21 @@ for r in rows:
 for p in coverage:
  expected={r['id'] for r in rows if any(o['source_id']==p['paper_id'] for o in r['occurrences'])}
  assert set(p['recorded_target_ids'])==expected
- assert p['target_count']==(len(expected) if p['coverage_status'].endswith('full_text_screened') else None)
- if not p['coverage_status'].endswith('full_text_screened'):assert not expected
+ assert p['target_count']==(len(expected) if p['coverage_status'].endswith('full_text_screened') or p['coverage_status']=='relevant_sections_screened' else None)
+ if not p['coverage_status'].endswith('full_text_screened') and p['coverage_status']!='relevant_sections_screened':assert not expected
 for m in manifest.values():
  if m['status']=='retrieved':
   p=R/m['local_file']
   if p.exists():assert hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']
 new=[r for r in rows if r['origin']=='article_inventory_extension'];eligible=[r for r in rows if r['eligible_for_coverage']]
-assert len(new)==summary['additional_entries']==74+expansion['added_entries']+browser['added_entries']
-assert sum(r['eligible_for_coverage'] for r in new)==summary['additional_eligible_targets']==35+expansion['added_eligible_targets']+browser['added_eligible_targets']
-assert len(eligible)==summary['eligible_targets']==74+expansion['added_eligible_targets']+browser['added_eligible_targets']
+assert len(new)==summary['additional_entries']==74+expansion['added_entries']+browser['added_entries']+reconciliation['added_entries']
+assert sum(r['eligible_for_coverage'] for r in new)==summary['additional_eligible_targets']==35+expansion['added_eligible_targets']+browser['added_eligible_targets']+reconciliation['added_eligible_targets']
+assert len(eligible)==summary['eligible_targets']==74+expansion['added_eligible_targets']+browser['added_eligible_targets']+reconciliation['added_eligible_targets']
 assert summary['new_written_math_statuses']==dict(collections.Counter(r['written_math_status'] for r in new))
 assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)==30+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
 assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
-assert summary['not_fully_assessed']==1
+assert summary['not_fully_assessed']==1+reconciliation['added_relevant_section_screens']
 assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==3
 assert summary['eligible_verified_lean_proofs']==3
 assert summary['eligible_targets_with_verified_finite_cases']==0
@@ -87,5 +91,21 @@ for href in re.findall(r'\]\(([^)]+)\)',report):
  if not u.scheme and u.path:assert (D/u.path).exists(),href
 assert f"0/{len(eligible)}" in report and f"0/{len(eligible)}" in page
 assert summary['eligible_identified_unverified_lean_statements']==1
-assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']-load('lean-coverage-review.json')['assessed_eligible_count']
+assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']-load('lean-coverage-review.json')['assessed_eligible_count']+reconciliation['added_eligible_targets']
 print(f'Validated {len(rows)} canonical entries, {len(eligible)} eligible targets, {len(coverage)} paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.')
+
+assert reconciliation['completed_targets_added']==0
+assert len(added)==6 and sum(by[t]['eligible_for_coverage'] for t in added)==3
+assert summary['eligible_targets']==reconciliation['baseline']['eligible_targets']+3
+for task in reconciliation['project_derived_followups']:
+ assert task['origin']=='project_derived_followup' and not task['source_authors_asked_this_exact_question']
+ assert not task['eligible_for_coverage'] and task['id'] not in ids
+for source in load('research-source-index.json')['sources']:
+ assert set(source['related_target_ids']) <= ids
+ assert source['access'] and source['comparison_limit'] and source['record_kind']
+ if source.get('bibliography_id'):assert source['bibliography_id'] in papers
+for row in rows:
+ for p in row.get('research_progress',[]):
+  assert (R/p['report']).is_file()
+  for source in p['lean_sources']:assert (R/source).is_file()
+print('Research reconciliation: six new source targets, 21 linked sources, later proof/experiment records and five separately labeled project follow-ups PASS.')

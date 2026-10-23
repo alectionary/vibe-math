@@ -3,6 +3,8 @@ import collections,html,json,pathlib
 R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature'
 load=lambda n:json.loads((D/n).read_text())
 rows=load('open-problems.json');coverage=load('downstream-paper-coverage.json');exclusions=load('downstream-exclusions.json');mechanization=load('downstream-mechanization.json')
+reconciliation=load('research-reconciliation.json')
+research_sources=load('research-source-index.json')['sources']
 new=[r for r in rows if r['origin']=='article_inventory_extension'];eligible=[r for r in rows if r['eligible_for_coverage']]
 screened=lambda p:p['coverage_status'].endswith('full_text_screened')
 new_eligible=sum(r['eligible_for_coverage'] for r in new);new_excluded=len(new)-new_eligible
@@ -23,6 +25,8 @@ s=f'''# Expanded open-problem inventory
 Checked October 23, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
 The inventory now contains **{len(rows)} canonical entries**: the original 40 dissertation targets and **{len(new)} additional article entries**. Of the additions, **{new_eligible} are specific mathematical questions or tasks suitable for coverage tracking**; the other {new_excluded} are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [21 indexed research sources](RESEARCH-SOURCES.md). It adds six source-posed questions/directions from two already identified papers; their current-resolution and Lean searches are unassessed. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the expanded cohort has 3/{len(eligible)}. This is denominator growth, not a loss of verified work.
 
 ## Counts and formalization evidence
 
@@ -104,6 +108,13 @@ for r in rows:
    if key in a:s+=f"- [{label}](../{a[key]}).\n"
  if r.get('supporting_lean_artifact'):
   a=r['supporting_lean_artifact'];s+=f"- Supporting Lean artifact (not full target coverage): [checked scope](../{a['readme']}). {a['scope']}\n"
+ if r.get('scope_comparison'):s+='- Scope comparison: '+r['scope_comparison']+'\n'
+ if r.get('research_source_index'):s+='- Research sources: [central source index](RESEARCH-SOURCES.md).\n'
+ for progress in r.get('research_progress',[]):
+  s+=f"- Research progress: [{progress['title']}](../{progress['report']}) ({progress['evidence'].replace('_',' ')}). {progress['contribution']}\n"
+  for path in progress['lean_sources']:s+=f"  - [Complete Lean source](../{path}).\n"
+ for task in r.get('remaining_project_questions',[]):
+  s+=f"- Project-derived follow-up, outside the source-target denominator: **{task['id']}** — {task['title']} {task['status']}\n"
  for o in r['occurrences']:
   extra='; PDF pages '+', '.join(map(str,o['pdf_pages'])) if 'pdf_pages' in o else '; extraction lines '+str(o['extracted_text_lines'][0])+'–'+str(o['extracted_text_lines'][1])
   s+=f"- [{o['source_id']}: {o['locator']}]({o['url']}){extra}; {o['relation'].replace('_',' ')}.\n"
@@ -130,9 +141,17 @@ for r in rows:
    if key in a:sources+=f'<p><a href="../{e(a[key],quote=True)}">{label}</a></p>'
  if r.get('supporting_lean_artifact'):
   a=r['supporting_lean_artifact'];sources+=f'<p><a href="../{e(a["readme"],quote=True)}">Checked supporting artifact; see source-comparison scope</a></p>'
+ for progress in r.get('research_progress',[]):
+  sources+=f'<p><a href="../{e(progress["report"],quote=True)}">{e(progress["title"])}</a>: {e(progress["contribution"])}</p>'
+  for path in progress['lean_sources']:sources+=f'<a href="../{e(path,quote=True)}">{e(path.rsplit("/",1)[-1])}</a> '
+ for task in r.get('remaining_project_questions',[]):
+  sources+=f'<p><strong>Project follow-up {e(task["id"])}</strong>: {e(task["title"])} {e(task["status"])}</p>'
+ if r.get('research_source_index'):sources+='<p><a href="RESEARCH-SOURCES.md">Linked research bibliography and access levels</a></p>'
  for evidence in r.get('related_formalization_evidence',[]):
   sources+=f'<p><a href="{e(evidence["url"],quote=True)}">Related Lean source (see audit status)</a></p>'
  text=' '.join([r['id'],r['title'],r['kind'],r['written_math_status']]+[o['source_id'] for o in r['occurrences']])
+ text+=' '+' '.join(' '.join([p['title']]+p['authors']) for p in research_sources if r['id'] in p['related_target_ids'])
+ text+=' '+' '.join(t['title'] for t in r.get('remaining_project_questions',[]))
  cards.append(f'<tr data-search="{e(text.lower(),quote=True)}" data-eligible="{str(r["eligible_for_coverage"]).lower()}" data-origin="{r["origin"]}"><td><strong>{e(r["id"])}</strong><p>{e(r["title"])}</p><small>{e(r["eligibility_note"])}</small><p>Current resolution: {e(r["current_resolution_status"].replace("_"," "))}</p></td><td>{e(r["written_math_status"].replace("_"," "))}<p>{e(r["kind"].replace("_"," "))}</p><strong>{"Included" if r["eligible_for_coverage"] else "Excluded"}</strong></td><td>{e(r["proof_assistant_statement_status"].replace("_"," "))}<small>Other assistants not systematically searched</small></td><td>{e(r["lean_statement_status"].replace("_"," "))}</td><td>{e(r["lean_proof_status"].replace("_"," "))}</td><td>{sources}</td></tr>')
 page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Expanded open-problem inventory</title><style>body{font:16px/1.55 system-ui,sans-serif;margin:2rem;color:#172b3a;background:#fafbfc}h1{max-width:950px;line-height:1.15}p{max-width:1100px}a{color:#075e9e}table{border-collapse:collapse;width:100%;background:white}td,th{border:1px solid #d7dfe5;padding:.8rem;text-align:left;vertical-align:top}th{background:#eaf1f5}td:first-child{min-width:300px}td:last-child{min-width:200px}td p{margin:.4rem 0}small{display:block;color:#52616d}input,select{font:inherit;padding:.5rem;margin:.3rem}.scroll{overflow:auto}.notice{border-left:4px solid #b5790f;padding:.8rem;background:#fff6e3;max-width:1100px}</style><h1>Open problems across the dissertations and related papers</h1>'''
 page+=f'<p><strong>{len(rows)} entries · {len(eligible)} eligible targets · {len(new)} article additions · {full_count}/{len(coverage)} full-text screens</strong></p><p><a href="OPEN-PROBLEMS.md">Method, counts and complete notes</a> · <a href="open-problems.json">Structured inventory</a> · <a href="README.md">Literature follow-up</a> · <a href="../planning/difficulty.html">Lean difficulty estimates</a></p>'

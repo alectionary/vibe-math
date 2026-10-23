@@ -6,6 +6,8 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 
 **October 22 expansion:** [Coauthor and citation search findings](SCHOLARLY-EXPANSION.md) adds 21 screened papers, 57 canonical entries and 27 eligible targets. Google Scholar access failed; OpenAlex, DBLP, author bibliographies and primary manuscripts supplied the expansion. Repeated conjectures, later restricted answers and source statements with counterexamples are recorded separately.
 
+**October 23 research reconciliation:** [later work, newly indexed source questions and remaining project tasks](RESEARCH-RECONCILIATION.md) · [central research-source index](RESEARCH-SOURCES.md). Later trajectory results now appear under their existing canonical targets, and two previously found papers contribute six source questions/directions. The earlier 108-target cohort remains historical; current counts are in the expanded inventory.
+
 ## Findings that matter for the project
 
 **Dyadic codes have a concrete later extension.** Gómez-Fonseca, Matthews, Morris and Pllaha’s May 2026 preprint cites Martinez, Pllaha and Kelley’s code paper. Remark 3.4 explicitly identifies a new theorem as a partial converse of the earlier Theorem 4.6, then conjectures the full converse. Its walk/cycle section also develops the graph-lift direction identified in the Martinez review. This is substantive follow-up, although the matrix converse was not one of the 39 fixed open targets in the earlier audit. [Theorem 3.1, Remark 3.4 and Section 4.1](https://arxiv.org/html/2605.01942v1).
@@ -24,17 +26,17 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 
 See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more primary-paper screens, new open questions, an author’s X announcement, and pending citation leads.
 
-The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discovery backlog; one of 108 eligible targets retains a verified Lean proof (0.93%). Related source-level infrastructure is distinguished from exact target coverage.
+The historical [Lean coverage assessment](LEAN-COVERAGE.md) reviewed the earlier discovery backlog with one complete proof at that stage. Current counts, including subsequent proofs and the new source cohort, are in [the expanded inventory](OPEN-PROBLEMS.md). Related source-level infrastructure is distinguished from exact target coverage.
 
-The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and now records completion of the selected P34 girth-eight target.
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 187 inventory entries, including six additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
 
-The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is 2/108. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; no new mathematical discovery or first-formalization claim is supported. Other graph properties remain separate.
+The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is recorded in the regenerated expanded inventory, including the separate P11 completeness result. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; the full girth characterization is the earliest complete answer known to us; its established ingredients and first-formalization status are distinguished. Other graph properties remain separate.
 
 ## Counts and their meaning
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **24 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **26 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -484,6 +486,18 @@ Scholar P31 cited-by results. Explicitly cites Dixon–Pavan–Vander Woude–Vi
 Ari Blondal; Hamed Hatami; Pooya Hatami; Chavdar Lalov; Sivan Tretiak. 2026. [browser discovered related paper](https://arxiv.org/html/2606.18236v1).
 
 Scholar P31 cited-by results and X announcement. References the P31 framework. Section 1.3 poses a logarithmic product bound and VC-dimension questions. Later F22 gives a weaker logarithmic bound; arbitrary VC-dimension-only bounds are not settled by that cardinality-dependent theorem. Primary text screened for explicit targets and scope; published proofs not independently certified and no Lean artifact built.
+
+### F25 On the Minimum Distances of Finite-Length Lifted Product Quantum LDPC Codes
+
+Nithin Raveendran; David Declercq; Bane Vasić. 2025. [primary predecessor and related open questions](https://arxiv.org/html/2503.07567v1).
+
+LP eight-cycle predecessor; logical-structure and design/performance context. Open/future directions rechecked in Sections II-A and VI. Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed.
+
+### F26 High-Girth Regular Quantum LDPC Codes from Square-Base Hypergraph Products via CPM Lifts
+
+Koki Okada; Kenta Kasai. 2026. [primary predecessor and related open questions](https://arxiv.org/html/2604.27817v3).
+
+Closely related support reduction and product-cycle results. Open/future directions rechecked in Sections 7-8. Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed.
 
 ## Question by question cross references
 

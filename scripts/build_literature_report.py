@@ -4,7 +4,7 @@ R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature'
 read=lambda name:json.loads((D/name).read_text())
 papers=read('papers.json');followups=read('followups.json');authors=read('authors.json');links=read('problem-links.json')
 byid={p['id']:p for p in papers+followups}
-summary=dict(checked_on='2026-10-22',authors_searched=len(authors),authors_with_topic_matched_records=sum(bool(a['paper_ids']) for a in authors),article_preprint_records=len(papers),external_article_followups=sum(f['id'].startswith('F') for f in followups),talk_abstracts=len([f for f in followups if f['id'].startswith('T')]),open_targets_traced=len(links),eligible_targets_from_lean_audit=sum(l['eligible_in_previous_audit'] for l in links),full_resolutions_verified=sum(l['full_resolution_verified'] for l in links),findings=dict(collections.Counter(l['finding'] for l in links)))
+summary=dict(checked_on='2026-10-23',authors_searched=len(authors),authors_with_topic_matched_records=sum(bool(a['paper_ids']) for a in authors),article_preprint_records=len(papers),external_article_followups=sum(f['id'].startswith('F') for f in followups),talk_abstracts=len([f for f in followups if f['id'].startswith('T')]),open_targets_traced=len(links),eligible_targets_from_lean_audit=sum(l['eligible_in_previous_audit'] for l in links),full_resolutions_verified=sum(l['full_resolution_verified'] for l in links),findings=dict(collections.Counter(l['finding'] for l in links)))
 (D/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 s='''# Academic literature on dissertation open problems
 
@@ -13,6 +13,8 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 **Expanded inventory:** [Expanded canonical entries and per-entry formalization annotations](OPEN-PROBLEMS.md) · [searchable table](open-problems.html). The earlier 40-target cross-reference snapshot below is preserved; the expanded inventory adds article questions and explicit coverage limits.
 
 **October 22 expansion:** [Coauthor and citation search findings](SCHOLARLY-EXPANSION.md) adds 21 screened papers, 57 canonical entries and 27 eligible targets. Google Scholar access failed; OpenAlex, DBLP, author bibliographies and primary manuscripts supplied the expansion. Repeated conjectures, later restricted answers and source statements with counterexamples are recorded separately.
+
+**October 23 research reconciliation:** [later work, newly indexed source questions and remaining project tasks](RESEARCH-RECONCILIATION.md) · [central research-source index](RESEARCH-SOURCES.md). Later trajectory results now appear under their existing canonical targets, and two previously found papers contribute six source questions/directions. The earlier 108-target cohort remains historical; current counts are in the expanded inventory.
 
 ## Findings that matter for the project
 
@@ -32,11 +34,11 @@ Checked October 22, 2026. The dissertation research has continued to circulate i
 
 See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more primary-paper screens, new open questions, an author’s X announcement, and pending citation leads.
 
-The subsequent [Lean coverage assessment](LEAN-COVERAGE.md) reviews the discovery backlog; one of 108 eligible targets retains a verified Lean proof (0.93%). Related source-level infrastructure is distinguished from exact target coverage.
+The historical [Lean coverage assessment](LEAN-COVERAGE.md) reviewed the earlier discovery backlog with one complete proof at that stage. Current counts, including subsequent proofs and the new source cohort, are in [the expanded inventory](OPEN-PROBLEMS.md). Related source-level infrastructure is distinguished from exact target coverage.
 
-The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 181 inventory entries and now records completion of the selected P34 girth-eight target.
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 187 inventory entries, including six additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
 
-The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is 2/108. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; no new mathematical discovery or first-formalization claim is supported. Other graph properties remain separate.
+The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is recorded in the regenerated expanded inventory, including the separate P11 completeness result. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; the full girth characterization is the earliest complete answer known to us; its established ingredients and first-formalization status are distinguished. Other graph properties remain separate.
 
 ## Counts and their meaning
 

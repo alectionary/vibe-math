@@ -30,6 +30,7 @@ Latest local feasibility: [degree- and girth-preserving same-code representation
 - **Lean difficulty estimates:** [per-question ratings and assumptions](planning/LEAN-DIFFICULTY.md) and [searchable estimates](planning/difficulty.html).
 - **Expanded scholarly search:** [coauthors, citation trails, new questions and counterchecks](literature/SCHOLARLY-EXPANSION.md).
 - **Expanded open-problem inventory:** [searchable annotated inventory](literature/open-problems.html) and [method/counts](literature/OPEN-PROBLEMS.md), including the downstream articles; [full-text gap closure](literature/COVERAGE-GAPS.md).
+- **Research-to-inventory updates:** [later results, six newly indexed source questions/directions and remaining project follow-ups](literature/RESEARCH-RECONCILIATION.md), with a [central index of the 21 research sources used](literature/RESEARCH-SOURCES.md). The expanded inventory has 187 entries and 111 eligible targets; the earlier 108-target cohort is preserved separately.
 - **Academic literature follow-up:** [author papers and open-problem references](literature/README.md), with a structured [question ledger](literature/problem-links.json).
 - **Lean coverage audit:** [counts, scope and evidence](audit/README.md), [searchable ledger](audit/coverage.html), and [structured claims](audit/claims.json).
 - Read a paper-specific review using the table below.
@@ -78,6 +79,7 @@ The October 23 follow-up extended the October 22 answer to the same girth-eight 
 - **Compare complete theorems with prior literature.** Compare hypotheses, conclusions and the translation between constructions, including equivalent results expressed in different terminology. Matching component lemmas alone does not settle whether the complete answer was known.
 - **State novelty plainly and proportionately.** Give the strongest supported claim once, with credit to the question's authors and relevant predecessors. Distinguish the earliest complete answer known to us from established ingredients and new formal certificates, without repeatedly burying the result in generic priority qualifications.
 - **Label revisions clearly.** Announce an expanded paper with new trajectory proofs as an expanded paper. Make clear when a revision adds consequences or evidence rather than answering a different open question.
+- **Feed discoveries back into the shared inventory.** Reconcile sources, canonical questions, results, Lean evidence and planning records after each research block. Read new source questions before adding them, deduplicate equivalent ones, and label our proposed follow-ups separately. Regenerate reports with an explicit cohort delta; preserve historical counts and mark unassessed searches or difficulty estimates as unassessed.
 
 End each research block with these three lines:
 

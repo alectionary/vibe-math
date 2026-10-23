@@ -2,28 +2,30 @@
 
 Checked October 23, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **181 canonical entries**: the original 40 dissertation targets and **141 additional article entries**. Of the additions, **69 are specific mathematical questions or tasks suitable for coverage tracking**; the other 72 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **187 canonical entries**: the original 40 dissertation targets and **147 additional article entries**. Of the additions, **72 are specific mathematical questions or tasks suitable for coverage tracking**; the other 75 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [21 indexed research sources](RESEARCH-SOURCES.md). It adds six source-posed questions/directions from two already identified papers; their current-resolution and Lean searches are unassessed. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the expanded cohort has 3/111. This is denominator growth, not a loss of verified work.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 69 |
-| Additional directions/formulation/method entries outside the denominator | 72 |
-| Combined eligible targets | 108 = 39 + 69 |
-| Eligible targets with an identified, verified proof-assistant statement | 3/108 (2.78%) |
-| Eligible targets with an identified, verified Lean statement | 3/108 (2.78%) |
-| Eligible targets with a complete checked Lean proof | 3/108 (2.78%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/108 |
-| Eligible targets with checked finite cases, without a complete proof | 0/108 |
-| Additional identified Lean statements without a build audit | 1/108 |
-| Eligible targets with Lean discovery still unassessed in this extension | 0/108 |
-| Articles/preprints in scope | 58 |
-| Full-text sources screened, including withdrawn history | 57/58 |
+| Additional article targets in the coverage denominator | 72 |
+| Additional directions/formulation/method entries outside the denominator | 75 |
+| Combined eligible targets | 111 = 39 + 72 |
+| Eligible targets with an identified, verified proof-assistant statement | 3/111 (2.70%) |
+| Eligible targets with an identified, verified Lean statement | 3/111 (2.70%) |
+| Eligible targets with a complete checked Lean proof | 3/111 (2.70%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/111 |
+| Eligible targets with checked finite cases, without a complete proof | 0/111 |
+| Additional identified Lean statements without a build audit | 1/111 |
+| Eligible targets with Lean discovery still unassessed in this extension | 3/111 |
+| Articles/preprints in scope | 60 |
+| Full-text sources screened, including withdrawn history | 57/60 |
 | Current-publication full texts screened | 56 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 1/58 |
+| Not fully assessed | 3/60 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), and the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight and L-P11-forbidden now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -107,6 +109,8 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F22](https://arxiv.org/html/2610.20657v1) | full text screened | 1 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
 | [F23](https://arxiv.org/html/2606.06148v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
 | [F24](https://arxiv.org/html/2606.18236v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
+| [F25](https://arxiv.org/html/2503.07567v1) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
+| [F26](https://arxiv.org/html/2604.27817v3) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
 
 ## Reproducible evidence and limits
 
@@ -1859,8 +1863,10 @@ Extend Fourier/additive-energy formulas to higher cycles and absorbing sets.
 - Coverage denominator: excluded. Direction or formulation request; outside the mathematical-target denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Scope comparison: Our cyclic single-input LP degree-three structural proofs do not resolve this distinct QC-GHP/GB Fourier-count or spectral-bound target.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
 - [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 467–469; explicit question.
-- Related, not merged: L-P09-structured.
+- Related, not merged: L-P09-structured, L-P34-decoding-effects.
 
 ### L-F16-stopping-bound
 
@@ -1870,8 +1876,10 @@ Find QC-GHP parameters for which the paper’s spectral stopping-set bound is no
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Scope comparison: Our cyclic single-input LP degree-three structural proofs do not resolve this distinct QC-GHP/GB Fourier-count or spectral-bound target.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
 - [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 470–471; explicit question.
-- Related, not merged: L-P09-structured.
+- Related, not merged: L-P09-structured, L-P34-decoding-effects.
 
 ### L-F16-other-absorbing
 
@@ -1881,8 +1889,10 @@ Derive explicit (4,2) and (4,0) elementary absorbing-set counts in the stated QC
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Scope comparison: Our cyclic single-input LP degree-three structural proofs do not resolve this distinct QC-GHP/GB Fourier-count or spectral-bound target.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
 - [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 472–473; explicit question.
-- Related, not merged: L-P09-structured.
+- Related, not merged: L-P09-structured, L-P34-decoding-effects.
 
 ### L-F19-distance
 
@@ -1923,11 +1933,13 @@ Characterize sufficient base-matrix conditions ensuring girth eight for the spec
 - Proof-assistant statement: verified lean statement. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
 - Source-described status: open as stated in source; current resolution: proved in lean for recorded statement.
 - Verified artifact: [CyclicLift.matrixTanner_hX_girth_characterization](../formalization/cyclic-lifts/README.md); Complete necessary-and-sufficient girth-eight criterion for the P34 X Tanner graph with at least two rows and columns, all entries circulant permutation blocks, and positive finite lift size. Arbitrary exponents; no normalization or connectedness assumption. Every distinct rectangle voltage must be nonzero, and every distinct-row/column hexagon voltage must be nonzero; equivalently a compatibility condition on pairs of 2x2 rectangles. General simple eight-cycle supplies the upper bound. Other graph-property/decoding optimization targets remain separate..
+- Research sources: [central source index](RESEARCH-SOURCES.md).
 - [P34: Section 5 after Theorem 5.1](https://arxiv.org/html/2606.11987v1); extraction lines 331–332; explicit question.
 - Related, not merged: L-P09-structured.
 - Later evidence: [Fossorier (2004), Equations (3)-(5), Theorem 2.1](https://doi.org/10.1109/TIT.2004.831841). Classical short-cycle criterion; notation translation checked in the comparison consumer.
 - Later evidence: [Raveendran-Declercq-Vasic (2025), Section III-B, p.5, after Equation (20)](https://arxiv.org/html/2503.07567v1). Direct predecessor for the LP eight-cycle cancellation; also origin paper reference [9].
 - Later evidence: [Okada-Kasai (2026), Lemma 3 and Theorem 5](https://arxiv.org/html/2604.27817v1). Matching support argument and projected cycle, with different binary-base/CSS-lift hypotheses.
+- Later evidence: [Revised manuscript Section 2 and the exact-equivalence audit](https://github.com/alectionary/vibe-math/blob/f0e967b/formalization/cyclic-lifts/paper/main.tex). Full theorem compared rather than components alone; later trajectory milestones have separate contributions and pinned Lean links.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 - Related formalization: [https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean). This project proves a general simple eight-cycle and exact native girth-eight iff nonzero rectangle/hexagon sums, including a 2x2-rectangle-only formulation and the expanded binary-matrix theorem. Scope: X construction, at least two rows and columns, all permutation blocks; positive modulus for the source finite model.
 
@@ -1938,10 +1950,34 @@ Analyze how girth-eight conditions affect other graph properties relevant for de
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
-- Source-described status: open as stated in source; current resolution: not independently established.
+- Source-described status: open as stated in source; current resolution: partially addressed by project.
 - Empirical follow-up: [exact distances and fresh distance matched comparison completed for saved codes](../formalization/cyclic-lifts/DISTANCE-MATCHED.md). Exact distances of the four saved codes are 6,10,12,10. The two [[252,10,10]] codes have fresh primary FER 2.731% versus 2.709%; paired 95% interval includes zero. Exact minimum-distance matching is achieved for this comparison, not a causal isolation of absorbing count or universal objective ranking.
 - Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
+- Research progress: [Exact-distance matched replication](../formalization/cyclic-lifts/MILLION-PAIRED.md) (sampled experiment). One million fresh paired errors distinguish two exact [[252,10,10]] codes under the fixed decoder; no isolated absorbing-count cause.
+- Research progress: [Same-code degree/girth-preserving intervention](../formalization/cyclic-lifts/DEGREE-PRESERVING.md) (written proof and exact finite computation). Merging disjoint checks changes absorbing counts while retaining the code, variable degrees and girth; check degrees and routing change.
+- Research progress: [Fresh same-code performance comparison](../formalization/cyclic-lifts/MERGED-MILLION.md) (sampled experiment). One million fresh paired errors per code show deterioration under the fixed merger; losses and rescues are separately recorded.
+- Research progress: [Local message obstruction](../formalization/cyclic-lifts/MERGED-MECHANISM.md) (general lean lemmas and concrete certificates). Checked merger identity, sign/attenuation classification, matrix-kernel equality and local acceptance obstructions.
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicMergedMessages.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicMergedWitnesses.lean).
+- Research progress: [Frozen persistence holdout and complete stopping comparisons](../formalization/cyclic-lifts/LOOP-HOLDOUT.md) (general lean lemmas concrete trajectories and independent holdout). Finite persistence certificates plus two full from-prior comparisons; pinned-check net explanatory contributions are 1/721 and 86/986, so aggregate explanation remains partial.
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderPersistence.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderParity.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderReachability.lean).
+- Research progress: [Entry and propagation continuation](../formalization/cyclic-lifts/ENTRY-DYNAMICS.md) (general lean lemmas concrete trajectories and independent holdout). Exact onset, possible-influence cones, soft-only/delayed examples and channel moments; new confirmation partitions 451/985 and 571/1210 descriptively, not causally.
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryInitial.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryCone.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryExamples.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryDelayed.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryChannel.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryBias.lean).
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-aggregate-entry** — Explain the remaining net representation-dependent decoding deterioration through early, reachable message mechanisms. partial; exact examples and onset/propagation proofs exist, aggregate mechanism remains incomplete.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-count-causality** — Isolate the effect of absorbing-set count from check degrees, routing and logical structure. open; existing interventions identify representation effects, not count alone.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-early-predictor** — Find an early failure predictor with independent holdout performance beyond baseline error hardness. partial; initial-activity associations weaken under hardness controls; late tubes certify persistence.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-objective-ranking** — Identify when cycle-only, absorbing-only or joint objectives predict superior decoding. open; no universally superior objective established.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-error-floor** — Derive a quantitative error-floor predictor for the stated model from structural and dynamical properties. open; finite inventories and experiments do not supply a general law.
 - [P34: Section 5 concluding question](https://arxiv.org/html/2606.11987v1); extraction lines 332–332; concluding direction.
+- Related, not merged: L-F26-replicated-comparisons.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-P34-logical-partitions
@@ -1951,10 +1987,13 @@ Translate the cited row/column partition conditions for low-weight logical opera
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
-- Source-described status: open as stated in source; current resolution: not independently established.
+- Source-described status: open as stated in source; current resolution: partially addressed by project.
 - Empirical follow-up: [exact distances and fresh distance matched comparison completed for saved codes](../formalization/cyclic-lifts/DISTANCE-MATCHED.md). Exact distances of the four saved codes are 6,10,12,10. The two [[252,10,10]] codes have fresh primary FER 2.731% versus 2.709%; paired 95% interval includes zero. Exact minimum-distance matching is achieved for this comparison, not a causal isolation of absorbing count or universal objective ranking.
 - Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
+- Research progress: [Exact-distance matched replication](../formalization/cyclic-lifts/MILLION-PAIRED.md) (sampled experiment). One million fresh paired errors distinguish two exact [[252,10,10]] codes under the fixed decoder; no isolated absorbing-count cause.
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
+- Related, not merged: L-F25-distance-preservation, L-F26-exact-distance.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-P34-base-design
@@ -1964,10 +2003,34 @@ Choose base-matrix entries to optimize Tanner-graph properties for iterative dec
 - Type: research direction; written formulation: research direction.
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
-- Source-described status: open as stated in source; current resolution: not independently established.
+- Source-described status: open as stated in source; current resolution: partially addressed by project.
 - Empirical follow-up: [exact distances and fresh distance matched comparison completed for saved codes](../formalization/cyclic-lifts/DISTANCE-MATCHED.md). Exact distances of the four saved codes are 6,10,12,10. The two [[252,10,10]] codes have fresh primary FER 2.731% versus 2.709%; paired 95% interval includes zero. Exact minimum-distance matching is achieved for this comparison, not a causal isolation of absorbing count or universal objective ranking.
 - Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
+- Research progress: [Exact-distance matched replication](../formalization/cyclic-lifts/MILLION-PAIRED.md) (sampled experiment). One million fresh paired errors distinguish two exact [[252,10,10]] codes under the fixed decoder; no isolated absorbing-count cause.
+- Research progress: [Same-code degree/girth-preserving intervention](../formalization/cyclic-lifts/DEGREE-PRESERVING.md) (written proof and exact finite computation). Merging disjoint checks changes absorbing counts while retaining the code, variable degrees and girth; check degrees and routing change.
+- Research progress: [Fresh same-code performance comparison](../formalization/cyclic-lifts/MERGED-MILLION.md) (sampled experiment). One million fresh paired errors per code show deterioration under the fixed merger; losses and rescues are separately recorded.
+- Research progress: [Local message obstruction](../formalization/cyclic-lifts/MERGED-MECHANISM.md) (general lean lemmas and concrete certificates). Checked merger identity, sign/attenuation classification, matrix-kernel equality and local acceptance obstructions.
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicMergedMessages.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicMergedWitnesses.lean).
+- Research progress: [Frozen persistence holdout and complete stopping comparisons](../formalization/cyclic-lifts/LOOP-HOLDOUT.md) (general lean lemmas concrete trajectories and independent holdout). Finite persistence certificates plus two full from-prior comparisons; pinned-check net explanatory contributions are 1/721 and 86/986, so aggregate explanation remains partial.
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderPersistence.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderParity.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderReachability.lean).
+- Research progress: [Entry and propagation continuation](../formalization/cyclic-lifts/ENTRY-DYNAMICS.md) (general lean lemmas concrete trajectories and independent holdout). Exact onset, possible-influence cones, soft-only/delayed examples and channel moments; new confirmation partitions 451/985 and 571/1210 descriptively, not causally.
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryInitial.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryCone.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryExamples.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryDelayed.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryChannel.lean).
+  - [Complete Lean source](../formalization/dyadic-rank/CyclicDecoderEntryBias.lean).
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-aggregate-entry** — Explain the remaining net representation-dependent decoding deterioration through early, reachable message mechanisms. partial; exact examples and onset/propagation proofs exist, aggregate mechanism remains incomplete.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-count-causality** — Isolate the effect of absorbing-set count from check degrees, routing and logical structure. open; existing interventions identify representation effects, not count alone.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-early-predictor** — Find an early failure predictor with independent holdout performance beyond baseline error hardness. partial; initial-activity associations weaken under hardness controls; late tubes certify persistence.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-objective-ranking** — Identify when cycle-only, absorbing-only or joint objectives predict superior decoding. open; no universally superior objective established.
+- Project-derived follow-up, outside the source-target denominator: **RQ-P34-error-floor** — Derive a quantitative error-floor predictor for the stated model from structural and dynamical properties. open; finite inventories and experiments do not supply a general law.
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
+- Related, not merged: L-F25-distance-preservation, L-F25-general-protographs, L-F25-hardware-entries, L-F26-logical-qubit-lifts.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
 ### L-F23-Q2.4
@@ -2031,3 +2094,69 @@ Is the Z2-index of arbitrary finite concept classes bounded by a function of VC 
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F24: Problem 1.16, index part](https://arxiv.org/html/2606.18236v1); extraction lines 332–337; explicit question.
+
+### L-F25-distance-preservation
+
+Find sufficient base-matrix constraints ensuring equality of the quantum and classical minimum distances in the stated type-I LP construction.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed distance or construction target; retain the model and fixed-instance definitions at the cited locator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
+- Related, not merged: L-P34-logical-partitions, L-P34-base-design.
+
+### L-F25-general-protographs
+
+Extend the type-I LP distance and problematic-structure analysis to more general protographs.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad source-posed research direction; no fixed complete theorem or experiment is specified, so excluded from the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F25: Section II-A and Section VI](https://arxiv.org/html/2503.07567v1); extraction lines 6838–6838; explicit future work target.
+- Related, not merged: L-P34-base-design.
+
+### L-F25-hardware-entries
+
+Investigate circulant-entry choices that ease hardware constraints.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad source-posed research direction; no fixed complete theorem or experiment is specified, so excluded from the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F25: Section VI, final future-work sentence](https://arxiv.org/html/2503.07567v1); extraction lines 6838–6838; explicit future work target.
+- Related, not merged: L-P34-base-design.
+
+### L-F26-exact-distance
+
+Determine the exact X/Z quantum distances of the fixed randomized P=64 lift of B15, currently certified between 18 and 192 in the source.
+
+- Type: specific distance problem; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed distance or construction target; retain the model and fixed-instance definitions at the cited locator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F26: Section 7 limitations and Section 8](https://arxiv.org/html/2604.27817v3); extraction lines 5286–5286; explicit future work target.
+- Related, not merged: L-P34-logical-partitions.
+
+### L-F26-logical-qubit-lifts
+
+Construct connected CSS-preserving CPM lifts with additional nonconstant left-kernel vectors that increase logical-qubit count while retaining the targeted short-cycle constraints.
+
+- Type: classification or construction; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-posed distance or construction target; retain the model and fixed-instance definitions at the cited locator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F26: Section 8, final future-work direction](https://arxiv.org/html/2604.27817v3); extraction lines 5358–5380; explicit future work target.
+- Related, not merged: L-P34-base-design.
+
+### L-F26-replicated-comparisons
+
+Extend repair/decoder comparisons and replicated statistics across multiple lifted instances.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad source-posed research direction; no fixed complete theorem or experiment is specified, so excluded from the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F26: Section 7 limitations and Section 8](https://arxiv.org/html/2604.27817v3); extraction lines 5358–5380; explicit future work target.
+- Related, not merged: L-P34-decoding-effects.
