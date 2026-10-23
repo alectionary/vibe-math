@@ -6,6 +6,8 @@ A research collection covering 20 doctoral dissertations from 2022–2026: 16 ma
 
 Latest local cyclic follow-up: [one million fresh distance-matched paired errors](formalization/cyclic-lifts/MILLION-PAIRED.md). At `p=4%`, the two exact `[[252,10,10]]` codes have failure rates **2.7476% versus 2.5787%**, favoring Minimum 4; the paired difference is **-0.1689 percentage points**, with 95% interval **[-0.2101,-0.1277]**. This supports the fixed-code comparison, without isolating absorbing count as its cause. The [earlier 100,000-pair experiment and exact-distance audit](formalization/cyclic-lifts/DISTANCE-MATCHED.md) remain separately archived.
 
+New local mechanism study: [same-code parity-check interventions and trajectories](formalization/cyclic-lifts/REPRESENTATIONS.md). Deleting a redundant check changes absorbing counts while preserving the entire CSS code, channel and decoder algorithm. A fixed 50,000-error pilot finds fewer absorbing supports but worse decoding for both saved codes; six variable degrees also change, so this is a generator-deletion effect rather than an isolated count effect. Exact local-update arithmetic and independently checked trajectories document the distinction.
+
 ## Start here
 
 - **Research lessons:** [what worked and the workflow for the next investigation](RESEARCH-LESSONS.md).

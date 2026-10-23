@@ -16,7 +16,13 @@ The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Ki
 
 The later [P11 dyadic trajectory obstruction](../dyadic-performance/TRAJECTORIES.md) concerns a different construction and decoder setting. It is not a replication of this paper's cyclic benchmark and is not part of its formal proof.
 
-## Latest continuation: exact distance and matched decoding
+## Latest local continuation: same-code generator intervention
+
+The [representation feasibility and trajectory study](REPRESENTATIONS.md) verifies twelve representations of the two saved codes using exact row-span equality and two complete absorbing-support enumerators. All preserve the original labeled CSS code and its full logical spectrum. The existing census rules out an alternative set of 126 distinct weight-six checks; changing counts requires relaxing that constraint in these codes.
+
+Deleting the first redundant check preserves girth eight and reduces counts **2,646→2,559** and **2,520→2,442**, but changes six variable degrees from three to two. On a separately frozen 50,000-error shared-noise pilot at `p=4%`, failure rates worsen **2.610%→2.974%** and **2.548%→2.796%**, respectively. Row reordering produces identical outputs in all 100,000 within-code controls. Forty-eight complete hard-decision trajectories agree with independent message equations; an exact first-iteration calculation and two-error witnesses demonstrate how deleting a satisfied redundant check can create an incorrect flip. This is not an isolated count intervention or a full explanation of aggregate failures. It does not establish the cause of the earlier cross-code improvement or change the original regular-family optimum.
+
+## Exact distance and matched decoding
 
 The [exact-distance audit and fresh matched comparison](DISTANCE-MATCHED.md) establish distances **6, 10, 12 and 10** for the baseline, previous best, Minimum 2 and Minimum 4, respectively. Both Pauli sectors agree. Translation-anchored searches and independent cycle-seeded lower-bound checks, together with explicit nonstabilizer witnesses, establish the finite results.
 
