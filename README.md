@@ -4,7 +4,7 @@ A research collection covering 20 doctoral dissertations from 2022–2026: 16 ma
 
 [Publication status and dated audit records](PUBLICATION-STATUS.md).
 
-Latest cyclic follow-up: [exact distances and a fresh distance-matched decoding comparison](formalization/cyclic-lifts/DISTANCE-MATCHED.md). The matched primary comparison does not establish a winner.
+Latest local cyclic follow-up: [one million fresh distance-matched paired errors](formalization/cyclic-lifts/MILLION-PAIRED.md). At `p=4%`, the two exact `[[252,10,10]]` codes have failure rates **2.7476% versus 2.5787%**, favoring Minimum 4; the paired difference is **-0.1689 percentage points**, with 95% interval **[-0.2101,-0.1277]**. This supports the fixed-code comparison, without isolating absorbing count as its cause. The [earlier 100,000-pair experiment and exact-distance audit](formalization/cyclic-lifts/DISTANCE-MATCHED.md) remain separately archived.
 
 ## Start here
 
