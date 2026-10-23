@@ -270,9 +270,10 @@ The report also credits the published syndrome min-sum equations; no new
 decoder is claimed. Nothing here establishes an asymptotic error floor.
 
 The original experiment/Lean verification manifest is a historical snapshot at
-commit `888beeb`; this literature revision preserves every scientific input,
-result and proof. Run `python3 scripts/verify_cyclic_loop_literature.py` for the
-current documentation revision and its comparison against that snapshot.
+commit `888beeb`; the literature revision is archived at `223f58d`.
+The later entry continuation preserves the prior scientific inputs and adds
+separately frozen evidence. Its current artifact verifier checks both historical
+manifests at their original commits.
 
 ## What this closes and what remains
 
@@ -314,3 +315,17 @@ python3 scripts/check_cyclic_loop_lean.py
 This serial build includes the generic results, actual graph correspondences,
 all four tubes and both complete retained-example comparisons. The scientific
 holdout runner is separate and refuses to overwrite the frozen selection.
+
+## Later entry-dynamics continuation
+
+The [entry-dynamics follow-up](ENTRY-DYNAMICS.md) keeps this sample and its
+certificate coverage unchanged. It checks exact initial-message divergence,
+actual-graph propagation and two early-entry/full-stopping examples in Lean,
+then tests a frozen activity interaction on another million fresh paired errors
+per code. The new sample has 985/1,210 net additional syndrome failures; it is
+not pooled with this report's 721/986. Baseline-hardness controls weaken the
+activity association. Soft-only first-step categories contain a descriptive
+451/571 net excess, not new sound failure certificates. The aggregate
+explanation remains incomplete. The current
+[verification manifest](entry-verification.json) preserves the earlier research
+and literature manifests at their original publication commits.

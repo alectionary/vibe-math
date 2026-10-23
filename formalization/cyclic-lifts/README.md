@@ -1,11 +1,23 @@
 # Cyclic-lift groundwork for the P34 girth-eight question
 
+The latest [entry-dynamics continuation](ENTRY-DYNAMICS.md) addresses the missing
+early part of the failure explanation. It proves the initial message-divergence
+criterion, instantiates propagation locality for both actual graphs, and joins
+soft-only and delayed entry to the complete Lean stopping comparisons. An exact
+second-update cross-half sign reversal is now checked for all six changed outputs. Another
+million fresh paired errors per code confirms an initial-activity interaction,
+but baseline-hardness controls weaken it. The net soft-only partitions are
+451/985 and 571/1,210 in that distinct sample; they are not failure certificates.
+The aggregate explanation remains open. Use
+`python3 scripts/verify_cyclic_entry_artifacts.py` for the current revision;
+the earlier manifests are preserved at their original publication commits.
+
 The [October 23 literature update](LOOP-LITERATURE.md) compares both the original
 source question and the representation/trajectory follow-ups with existing
 research, distinguishes full-text comparisons from leads, and credits a direct
 2004 predecessor for the stopping-set bound. The bounded-loop experiment and
-Lean proofs remain the verified `888beeb` snapshot; use
-`python3 scripts/verify_cyclic_loop_literature.py` to check the documentation update.
+Lean persistence proofs remain the verified `888beeb` snapshot. The literature
+revision and its documentation manifest are archived at `223f58d`.
 
 The academic manuscript is available as a [PDF](paper/output/pdf/cyclic-lift-girth-eight.pdf), [LaTeX source](paper/main.tex), and [standalone Lean/code/data source bundle](paper/cyclic-lift-girth-eight-source.zip). It presents a complete answer to the girth-condition part, partial structural consequences, a fixed-family optimization and a fixed-decoder benchmark, with 15 references and a signed chronology. [Manuscript verification](paper/paper-verification.json). The expanded Lean section includes principal declarations, a dependency diagram and substantive proofs; Appendix A and the [complete proof guide](paper/LEAN-PROOF-GUIDE.md) link every part of the full formalization at an immutable revision.
 
