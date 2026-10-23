@@ -16,7 +16,13 @@ The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Ki
 
 The later [P11 dyadic trajectory obstruction](../dyadic-performance/TRAJECTORIES.md) concerns a different construction and decoder setting. It is not a replication of this paper's cyclic benchmark and is not part of its formal proof.
 
-## Latest local continuation: same-code generator intervention
+## Latest local continuation: preserve variable degrees and girth
+
+The [same-code merger feasibility study](DEGREE-PRESERVING.md) preserves **every variable degree at three, girth eight, connectedness, all 756 edges and the entire labeled CSS code**. Merging two disjoint redundant checks at Tanner distance eight changes counts **2,646→2,764** for Previous best and **2,520→2,640** for Minimum 4. All original supports survive; the 118/120 added supports correspond exactly to shortest length-eight paths between the merged checks. Twenty-eight translated candidates are verified, with one orbit per code and two fully enumerated representatives. The same channel and decoder settings remain usable; only deterministic compatibility controls were run.
+
+This is stronger than deletion, but reduces 126 checks to 125 and creates one weight-twelve check in place of two weight-six checks. A minimum-weight/edge-budget argument plus the existing complete census proves that keeping 126 nonzero checks as well would force the original representation. The new graph-merger arguments are written and computationally checked, not newly Lean formalized. No isolated causal count effect or new performance result is asserted.
+
+## Same-code generator deletion and trajectories
 
 The [representation feasibility and trajectory study](REPRESENTATIONS.md) verifies twelve representations of the two saved codes using exact row-span equality and two complete absorbing-support enumerators. All preserve the original labeled CSS code and its full logical spectrum. The existing census rules out an alternative set of 126 distinct weight-six checks; changing counts requires relaxing that constraint in these codes.
 
