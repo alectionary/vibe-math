@@ -16,6 +16,14 @@ The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Ki
 
 The later [P11 dyadic trajectory obstruction](../dyadic-performance/TRAJECTORIES.md) concerns a different construction and decoder setting. It is not a replication of this paper's cyclic benchmark and is not part of its formal proof.
 
+## Latest local continuation: message-level syndrome obstruction
+
+The [trajectory mechanism study](MERGED-MECHANISM.md) replays all **41,181 syndrome-discordant pairs** from the fixed million-error experiment. At every first message divergence, incoming states agree and the changed output lies on a source-check edge. The exact merger identity splits the change into opposite nonzero sign, reduced magnitude, or both. The corresponding descriptive contributions to the net syndrome penalty are **709 / 173 / 127** for Previous best and **769 / 241 / 166** for Minimum 4; these are onset categories, not independently isolated causes.
+
+The new [generic Lean proofs](../dyadic-rank/CyclicMergedMessages.lean) check this message identity, classification, attenuation threshold and first-state divergence locality. The [concrete Lean certificates](../dyadic-rank/CyclicMergedWitnesses.lean) prove both actual original/merged matrix kernels equal and verify four local obstructions, including valid stabilizer-equivalent split recoveries. In one actual failed merged trajectory at iteration 99, coupling changes variable 117's correcting message from **−2,592,987 to +333,850**, turning exact recovery into a nonzero syndrome at that same incoming state.
+
+Local diagnostics block acceptance at **289/10,846** and **335/10,837** original accepting states. A split local update would accept at some recorded state on **five actually failed merged trajectories per code**. The remainder of the aggregate penalty still lacks a sufficient trajectory-level explanation. Replay, independently checked against direct message equations, establishes reachability of the certified states; Lean proves the local obstructions, not the complete decoder execution or an isolated absorbing-count effect. No new noise, code, channel, decoder settings or inventory completion is claimed. [Protocol](MERGED-MECHANISM-PROTOCOL.md) and [verification record](merged-mechanism-verification.json).
+
 ## Latest local continuation: million-error same-code merger comparison
 
 The [fixed original-versus-merged experiment](MERGED-MILLION.md) uses one million fresh shared errors at `p=4%`, four million decoder evaluations, and unchanged min-sum settings. Original/merged FER is **2.7123% / 2.8116%** for Previous best and **2.5549% / 2.6719%** for Minimum 4. Merged-minus-original differences are **+0.0993** and **+0.1170 percentage points**, with Bonferroni simultaneous 95% intervals **[+0.0671,+0.1315]** and **[+0.0850,+0.1490]**. Both favor the originals under the code/variable-degree/girth/edge controls.
