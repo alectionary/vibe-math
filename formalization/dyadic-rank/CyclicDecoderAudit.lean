@@ -1,0 +1,19 @@
+import CyclicDecoderReachability
+import CyclicDecoderSensitivity
+
+/-! Axiom inventory for the principal mathematical conclusions. -/
+#print axioms CyclicDecoderPersistence.intervalCheck_sound
+#print axioms CyclicDecoderPersistence.boxNext_sound
+#print axioms CyclicDecoderPersistence.tube_contains
+#print axioms CyclicDecoderPersistence.tube_rejects
+#print axioms CyclicDecoderParity.wrong_parity_persists
+#print axioms CyclicDecoderTubes.PreviousHoldout.enclosed_local_pattern
+#print axioms CyclicDecoderTubes.MinimumHoldout.enclosed_local_pattern
+#print axioms CyclicDecoderTubes.PreviousHoldout.robust_remaining_failure
+#print axioms CyclicDecoderTubes.MinimumHoldout.robust_remaining_failure
+#print axioms CyclicDecoderReachability.same_solutions_previous
+#print axioms CyclicDecoderReachability.same_solutions_minimum
+#print axioms CyclicDecoderReachability.stopping_comparison_1804
+#print axioms CyclicDecoderReachability.stopping_comparison_2435
+#print axioms CyclicDecoderSensitivity.Previous.not_nonexpansive
+#print axioms CyclicDecoderSensitivity.Minimum.not_nonexpansive

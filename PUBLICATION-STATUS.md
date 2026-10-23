@@ -5,3 +5,5 @@ The repository packages the cyclic paper revision, P11 completeness development,
 Some dated reports and verification records say the artifacts were local or unpushed. Those describe their status when the checks were performed; they are preserved as historical evidence. The Git revision and remote history determine which snapshot is publicly available now. Do not interpret a historical local-status field as a claim that its containing Git revision is unpublished.
 
 Proof coverage counts source targets rather than helper declarations. The new supporting results do not add completed targets to the existing three of 108. Finite computations, Monte Carlo, written proofs and Lean-checked results retain separate evidence labels.
+
+The [bounded persistence/holdout follow-up](formalization/cyclic-lifts/LOOP-HOLDOUT.md) is separate from the current paper PDF. Its frozen Monte Carlo comparison, mathematical persistence certificates and implementation checks have distinct evidence scopes; it does not add a completed source target.

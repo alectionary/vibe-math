@@ -1,0 +1,309 @@
+{
+  "checked_at_utc": "2026-10-23T21:53:32.881130+00:00",
+  "status": "frozen_holdout_and_complete_mathematical_decoder_certificates_verified",
+  "publication": "included_in_repository_commit",
+  "previous_public_commit": "4156628a2c4fbc51bc533affe4ab0444204fa65f",
+  "research_window": {
+    "started_at_utc": "2026-10-23T20:15:30Z",
+    "deadline_utc": "2026-10-23T22:15:30Z"
+  },
+  "independent_fresh_error_patterns": 2000000,
+  "primary_decoder_executions": 4000000,
+  "trials_per_code": 1000000,
+  "p": 0.04,
+  "decoder_parameters": {
+    "alpha_thousandths": 800,
+    "maximum_iterations": 100,
+    "integer_scale": 1048576,
+    "message_cap": 52428800,
+    "prior": 3332431
+  },
+  "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "seeds": {
+    "previous_best": 90316268011,
+    "minimum_4": 90316268012
+  },
+  "frozen_candidates": 3,
+  "complete_interval_tubes": 4,
+  "complete_from_prior_comparisons": 2,
+  "cpp_full_state_snapshots": 351,
+  "independent_heldout_full_trajectory_replays": 28,
+  "generated_lean_numeric_entries_round_tripped": 388582,
+  "new_completed_inventory_targets": 0,
+  "scope": "Two fixed code/representation comparisons. Lean checks mathematical updates, finite persistence, exact prefixes and stopping certificates. C++ execution and sampling remain independently checked implementation bridges. Persistent-check coverage is limited; no isolated absorbing-count cause or universal predictor is established.",
+  "proof_checks": [
+    {
+      "module": "CyclicMergedMessages",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-messages-dependency-check.log"
+    },
+    {
+      "module": "CyclicMergedWitnesses",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-matrix-dependency-check.log"
+    },
+    {
+      "module": "CyclicDecoderPersistence",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-persistence-lean-check.log"
+    },
+    {
+      "module": "CyclicDecoderParity",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-parity-lean-check.log"
+    },
+    {
+      "module": "CyclicDecoderTubeData",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-tube-data-check.log"
+    },
+    {
+      "module": "CyclicDecoderTubeGraph",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-tube-graph-check.log"
+    },
+    {
+      "module": "CyclicDecoderTubeData.PreviousDevelopment",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-data-PreviousDevelopment.log"
+    },
+    {
+      "module": "CyclicDecoderTubes.PreviousDevelopment",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-proof-PreviousDevelopment.log"
+    },
+    {
+      "module": "CyclicDecoderTubeData.MinimumDevelopment",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-data-MinimumDevelopment.log"
+    },
+    {
+      "module": "CyclicDecoderTubes.MinimumDevelopment",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-proof-MinimumDevelopment.log"
+    },
+    {
+      "module": "CyclicDecoderTubeData.PreviousHoldout",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-data-PreviousHoldout.log"
+    },
+    {
+      "module": "CyclicDecoderTubes.PreviousHoldout",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-proof-PreviousHoldout.log"
+    },
+    {
+      "module": "CyclicDecoderTubeData.MinimumHoldout",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-data-MinimumHoldout.log"
+    },
+    {
+      "module": "CyclicDecoderTubes.MinimumHoldout",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-proof-MinimumHoldout.log"
+    },
+    {
+      "module": "CyclicDecoderTubes",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-all-tubes-check.log"
+    },
+    {
+      "module": "CyclicDecoderSensitivity",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-sensitivity-lean-check.log"
+    },
+    {
+      "module": "CyclicDecoderOriginal",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-original-graph-check.log"
+    },
+    {
+      "module": "CyclicDecoderOrbit",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-orbit-check.log"
+    },
+    {
+      "module": "CyclicDecoderReachData.Original",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-data-original.log"
+    },
+    {
+      "module": "CyclicDecoderReachProofs.Original",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-proof-original.log"
+    },
+    {
+      "module": "CyclicDecoderReachData.Merged",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-data-merged.log"
+    },
+    {
+      "module": "CyclicDecoderReachProofs.Merged",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-proof-merged.log"
+    },
+    {
+      "module": "CyclicDecoderOriginalMinimum",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-original-minimum-graph-check.log"
+    },
+    {
+      "module": "CyclicDecoderReachData.MinimumOriginal",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-data-minimum-original.log"
+    },
+    {
+      "module": "CyclicDecoderReachProofs.MinimumOriginal",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-proof-minimum-original.log"
+    },
+    {
+      "module": "CyclicDecoderReachData.MinimumMerged",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-data-minimum-merged.log"
+    },
+    {
+      "module": "CyclicDecoderReachProofs.MinimumMerged",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reach-proof-minimum-merged.log"
+    },
+    {
+      "module": "CyclicDecoderReachability",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-reachability-lean-check.log"
+    },
+    {
+      "module": "CyclicDecoderAudit",
+      "status": "passed",
+      "log": "formalization/cyclic-lifts/loop-final-axioms.log"
+    }
+  ],
+  "checks": [
+    "all frozen scientific input hashes unchanged",
+    "four million outcomes, two million noise patterns, contrasts and detector summaries independently reconstructed",
+    "28 retained trajectories independently replayed; all 351 full C++ q/R states for complete examples match direct Python equations",
+    "all generated balanced Lean tables round-trip to reference states",
+    "all mathematical proof modules compile with no admitted proofs or native-decision shortcut",
+    "historical manifests verified at original publication revisions",
+    "syntax, JSON, privacy, links and git whitespace checks pass"
+  ],
+  "sha256": {
+    "PUBLICATION-STATUS.md": "44fae59c71d1c528878fc9938f99ae14cb6857147ae335559089b45c545e61fb",
+    "README.md": "455f875c88ad8ec42f2e5621e24c5abf31b1f782da65fa46f0e10f4bcd9403c7",
+    "RESEARCH-LESSONS.md": "28a579506ac612a236425a8a42acbe26c40322420882b93921396eb2e5917cae",
+    "formalization/cyclic-lifts/LOOP-DEVELOPMENT-PROTOCOL.md": "4932e7969b77d96825829d4bceb8f77da950ac166af7e25928afb7ae9c166aff",
+    "formalization/cyclic-lifts/LOOP-HOLDOUT-PROTOCOL.md": "b16edd90d5ad32aaa46eacc9411838ac63ab3ec6b85096e6f1fd98ff29fcac6a",
+    "formalization/cyclic-lifts/LOOP-HOLDOUT.md": "effcf53fb283f58dfc6702d4ed4930d0cbc41bf01333b75acc986c94ce36b73c",
+    "formalization/cyclic-lifts/README.md": "867d4169757bfda98071d6e66ef006c0dfc77a0b5001464e702d10977d3c498d",
+    "formalization/cyclic-lifts/loop-all-tubes-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-data-MinimumDevelopment.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-data-MinimumHoldout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-data-PreviousDevelopment.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-data-PreviousHoldout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-development-checks.log": "ab1fac368672586691b8f750c15ec04c85501438fda512eca245002ba09dc993",
+    "formalization/cyclic-lifts/loop-development-full-run.log": "e9de9667b968593a228c2a58113166232abd66460a25d86b6c433c28e535bd45",
+    "formalization/cyclic-lifts/loop-development-run.log": "6dd22ceaafba9296e824204ac3c357f496eb2b9452c3ce5471ea15f81fb2b261",
+    "formalization/cyclic-lifts/loop-final-axioms.log": "c8e87417c75dce8cdaa36084ec97d181094c2d8a77489a7751c583df1ccc2847",
+    "formalization/cyclic-lifts/loop-holdout-checks.log": "2bd2517adbbae7d5eac347230503887b34a6143e82ebdf4cc1ba4f2b836abb9c",
+    "formalization/cyclic-lifts/loop-holdout-run.log": "617f242fbe9f120b0d4d8f8d4c6a90376013525122c7221d5a6c9aab07191a4c",
+    "formalization/cyclic-lifts/loop-lean-build-run.log": "6c1cc71812ebd2f90578bf81959904fa6cb0ea354dcfd54a9a329cd90362af34",
+    "formalization/cyclic-lifts/loop-lean-data-checks.log": "d15fb135457607dd9d5e3c61ac6c82904d258831c5fad0ef7d2ce21a9cdc14ac",
+    "formalization/cyclic-lifts/loop-matrix-dependency-check.log": "582b4cff39756e497cf97698ac3eab259abd476e874e4e129b24fc36bb6c5ec1",
+    "formalization/cyclic-lifts/loop-messages-dependency-check.log": "9f7b4ce0e89793138211ea407be64cbba2dc7126612649c9bc848f27fa5981d6",
+    "formalization/cyclic-lifts/loop-orbit-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-original-graph-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-original-minimum-graph-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-parity-lean-check.log": "0fb8933538538008bcc543522e8ffe160295b51010812f2bb6ef145f04442dea",
+    "formalization/cyclic-lifts/loop-persistence-lean-check.log": "cdb7c6748bf8dffba8c911d036466e741a6f45a9570929928a5d4b7d7b6164d7",
+    "formalization/cyclic-lifts/loop-proof-MinimumDevelopment.log": "ab9e533fb5160bca40c98e3e73bc3847baa7d9b7e69c26dce8b244269be80aa1",
+    "formalization/cyclic-lifts/loop-proof-MinimumHoldout.log": "e66f36457b6fa81f5c8da9df09c10452518f1109e1363cf01280ba62c1c398d2",
+    "formalization/cyclic-lifts/loop-proof-PreviousDevelopment.log": "a3d43502941cf720ed978553dbf6880497ca983d3774158b316c914297ce5242",
+    "formalization/cyclic-lifts/loop-proof-PreviousHoldout.log": "544a817a92e289559c8e92f469831bb180719c0580120915a429c86fd468a98b",
+    "formalization/cyclic-lifts/loop-proof-build-run.log": "43bf7500bc1f5641b6b7ace2646b03553c86cf134414c6f5ed34d2f05307b70f",
+    "formalization/cyclic-lifts/loop-reach-data-merged.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-reach-data-minimum-merged.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-reach-data-minimum-original.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-reach-data-original.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-reach-lean-build-run.log": "403ac5e3a29d35c7387eece3332d10e4947072070fd367738abc784795f4dc99",
+    "formalization/cyclic-lifts/loop-reach-proof-merged.log": "ba2495de1d86a32c9c73b7d9f484209f9dde1955240a90e2000f85a5776c1da8",
+    "formalization/cyclic-lifts/loop-reach-proof-minimum-merged.log": "2bb11d9f38b7f23888cdb1ff4110da49ef86ea14fb30b85e071e1a144d6f32a1",
+    "formalization/cyclic-lifts/loop-reach-proof-minimum-original.log": "3f8359b712443dcf59a2e0382f492a333aff5b77c0e3b06ebcb9a06d10542b75",
+    "formalization/cyclic-lifts/loop-reach-proof-original.log": "939d670c10769ca382d7dab652264c3800e2676abd059161ae4a90cefbf33f8b",
+    "formalization/cyclic-lifts/loop-reachability-checks.log": "8bf888a0acdc0b1a3eb26241277f24e138a566439c326dcb86b3ebcf0ffcd758",
+    "formalization/cyclic-lifts/loop-reachability-lean-check.log": "ccfabdd69ffd90ee8947f77f50ca4c859207c9df963796260c9a8efc20eae7e4",
+    "formalization/cyclic-lifts/loop-reachability-minimum-checks.log": "da2e51a44a14b65e665c0610b949240488711cae6eee8e04f5cbdee0caf01d9f",
+    "formalization/cyclic-lifts/loop-sensitivity-lean-check.log": "256c39ad276bb5fb67bac4926951297b51a68e535d9d4dcf008bd321b195aef3",
+    "formalization/cyclic-lifts/loop-sharp-boxes-development.log": "3ce0c6abf101acef9acf9f8bcd1fa4a5ef8fed770d03f326379ed01c19f3dca4",
+    "formalization/cyclic-lifts/loop-symmetry-development.log": "9f7e3796a87d7deb8e823dc903f5c7fa61a99d563263208e1c4ceee2f9030b41",
+    "formalization/cyclic-lifts/loop-symmetry-discordant-development.log": "17353eddb7f81d0da3849a9432538bf5348301a245fb8c4d24f0ddc5d30fb4e1",
+    "formalization/cyclic-lifts/loop-tube-data-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-tube-graph-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/cyclic-lifts/loop-tube-probe-check.log": "ef4ceec0800e1b113ebe1d87dec5593cfe1a38e5179c33a4c71e6bd8956feab7",
+    "formalization/cyclic-lifts/loop-two-phase-development.log": "53d8d51651a9f57984c964da484a6e7d0d72d04840444c63a29f545d7746c287",
+    "formalization/cyclic-lifts/search/develop_loop_mechanisms.py": "c147c2d603afe05264f9ab35ea0f7e24c8a40901f3902c09e733ce56303923fd",
+    "formalization/cyclic-lifts/search/generate_loop_lean.py": "0e5611c89721c2db6a693cc0536343491cec4c0d002df46c6b52258be53ac836",
+    "formalization/cyclic-lifts/search/generate_loop_proofs.py": "e6e20dedd0b267add7e2210c1f17a871108f942a9b50ae07c1e86c3b8babf337",
+    "formalization/cyclic-lifts/search/generate_loop_reach_proofs.py": "e8f17fab87cc86d509ca0c04d4ba95058dfc53d2c191572fc722707d6b175e1c",
+    "formalization/cyclic-lifts/search/generate_loop_reachability.py": "b5600333006eb975ab10ab444efb76cf351aa9ea3fb9827cc31bec665199bb0f",
+    "formalization/cyclic-lifts/search/loop-development-full-results.json": "9638b9e3a102567afbdb6eddc2a9a68aed7e855e237be998c4ee294a3f67be44",
+    "formalization/cyclic-lifts/search/loop-development-results.json": "f52978e4c86b38a3475a03215279bca6407d0950c9a489320060a56dfa8b6c36",
+    "formalization/cyclic-lifts/search/loop-development-validation.json": "36eb0a3f0d01ce9806dc7e13819890204afd0d7dcd2183d40e81ba7d8a8a00a9",
+    "formalization/cyclic-lifts/search/loop-generation-validation.json": "3065755d8642f68c2015f20183eccf0212bab2e52891c6359fb215cd5a7c158f",
+    "formalization/cyclic-lifts/search/loop-holdout-results.json": "efff4a75df5e1b04a52876cd38403bfa9049b320b0f0b6760f9f2cfc90f1e3d2",
+    "formalization/cyclic-lifts/search/loop-holdout-selection.json": "3f1a66f647f8fe41867fea95635ace3edb1fae0d4b40641b885062126c11d763",
+    "formalization/cyclic-lifts/search/loop-holdout-validation.json": "04191d400715637eb978f82cb93671a93d1ea1fc763207f19c14d90b3dbaecc5",
+    "formalization/cyclic-lifts/search/loop-lean-build-results.json": "4adf4c9a618e2516da25c3f6855882114476112f0be835817d538cbf989b3816",
+    "formalization/cyclic-lifts/search/loop-lean-data-validation.json": "ea5a6e6481571c5c9cd161a3939d6006db2ec34a2b6e57e20defcff1e28df6fd",
+    "formalization/cyclic-lifts/search/loop-lean-witnesses.json": "9f27f164a870c98b5e3595ab511f006e292069dc4981b76246ba8836185e1187",
+    "formalization/cyclic-lifts/search/loop-reach-lean-build-results.json": "658a32e4ec805fbc6622355393f799a7e3d70b7a5c20326c5458552dae9326fa",
+    "formalization/cyclic-lifts/search/loop-reachability-minimum-validation.json": "c166fced1ac7c0d721955e30a3482b97c401e4319d31890ee93dc82660080705",
+    "formalization/cyclic-lifts/search/loop-reachability-validation.json": "8ba77e898bab6f0da277c4d95ed9623833e8b6e2f39581338645c2dc16aca685",
+    "formalization/cyclic-lifts/search/loop-sharp-boxes-development.json": "3d4270a026e3a24d85bc490bc29b6d85198990abd47239274136075f565e84e5",
+    "formalization/cyclic-lifts/search/loop-symmetry-development.json": "16a38f90a02e1bf638d85b0378c595ee3408dc3f84ebfe99403806095a256b7d",
+    "formalization/cyclic-lifts/search/loop-symmetry-discordant-development.json": "ff49de2321b93534dac0f52e64aa17afd08fba8e51eb3599b11ea1f6e5e72399",
+    "formalization/cyclic-lifts/search/loop-two-phase-development.json": "13a6e4ee1817b75bc06529607b33badaaf052a483d5b0790cc2f9c8e12635bdf",
+    "formalization/cyclic-lifts/search/loop_development_full.py": "3405066ef34bf748e61d5d0c21096fc0fa62c76aca4290af06cbabd3eb882689",
+    "formalization/cyclic-lifts/search/loop_engine.py": "53daa462a380bb8eb6783287bbeead26cfa5b4d0b7acba2a7209b80b98ed58de",
+    "formalization/cyclic-lifts/search/loop_holdout.py": "37fbd82b63d5355bf4b3b105e836a0915cfadeb6a8775153234ea7e200e9b9db",
+    "formalization/cyclic-lifts/search/loop_mechanisms.cpp": "cad337d888a3fc190aca48da2562508730157645907f7439de6549cca99e4810",
+    "formalization/cyclic-lifts/search/loop_reference.py": "14e3faee7fc692faec5b5b2abbb298338bcc60346681c4fbc18562828291ea8b",
+    "formalization/cyclic-lifts/search/loop_sharp_boxes_development.py": "a883aad8134041e05d6889d5b538a29139c1e0cc0699eed1c63ea2f95456629d",
+    "formalization/cyclic-lifts/search/loop_symmetry_development.py": "8ceddb02c969755e09c02c88f3767ab04c5b3a1bc2a7be417b7b280a24bfa0a6",
+    "formalization/cyclic-lifts/search/loop_symmetry_discordant_development.py": "2ed253ae02c9d1a8b276b41dbd3ad2a88f4a2acff59c12f8189f27faadd90380",
+    "formalization/cyclic-lifts/search/loop_two_phase_development.py": "afad97eb715d969239286ca11e9dba83d85fc820a0bce3f9a2a6b3b23a1c879a",
+    "formalization/cyclic-lifts/search/report_loop_holdout.py": "7e7c0b097036ba27375bc6aed5bb713407f2a22d2013680ef4c540a117a0d66e",
+    "formalization/dyadic-rank/CyclicDecoderAudit.lean": "505e1b99f273a5796040d0f2879ccace46c65be0575c6fb97bd2c1b9312528a3",
+    "formalization/dyadic-rank/CyclicDecoderOrbit.lean": "91b96b21b3e8ee4427daab1f51c746c2c0a29e5f7c9370fdf2c00fbc711dad63",
+    "formalization/dyadic-rank/CyclicDecoderOriginal.lean": "878e08e9659cd3318c608f2752870cde1c25586147a9c4575ae3dcadb8e135ae",
+    "formalization/dyadic-rank/CyclicDecoderOriginalMinimum.lean": "ab6618191434a738f6fdd8d87f507f5fb625a27bb388217dc9e90a2dfe0edae5",
+    "formalization/dyadic-rank/CyclicDecoderParity.lean": "0f9e08f800a27d393f7e58463814e109dbd00edf7d545de17b909dc69781b438",
+    "formalization/dyadic-rank/CyclicDecoderPersistence.lean": "dfd32fa9e6356a72c9c447754594089cddd0269f466a4f5af70e02c3a2107731",
+    "formalization/dyadic-rank/CyclicDecoderReachData/Merged.lean": "ee595caf26a116f104dbe11a5d58d1d1a9ad0fda4539794fcca54ac16933e6ba",
+    "formalization/dyadic-rank/CyclicDecoderReachData/MinimumMerged.lean": "77b125f2685a74b360ec8e7840e3e0bbb35f66e99cfc35d88f78e0903f8af5bc",
+    "formalization/dyadic-rank/CyclicDecoderReachData/MinimumOriginal.lean": "74fb97fb39ef6290bb8056873f932208f1b640ebadc34807d64eded549f1daaa",
+    "formalization/dyadic-rank/CyclicDecoderReachData/Original.lean": "7a9e7f9fb5e4bcadfb073dbe9cfb3addaf1103978f93d3e854ef88a5415995c8",
+    "formalization/dyadic-rank/CyclicDecoderReachProofs/Merged.lean": "8fda6d10b7bfb67d7be07a5d6a6dc8ae155672fb97610056371137545de7c121",
+    "formalization/dyadic-rank/CyclicDecoderReachProofs/MinimumMerged.lean": "79a4efa555a86faf808e956cb7c7c9bfbe08683c453da2e105ed008b7573c223",
+    "formalization/dyadic-rank/CyclicDecoderReachProofs/MinimumOriginal.lean": "6ab40969aa30158b44157abc5765a07d5b22819c6ecebe8e682763c8585be13c",
+    "formalization/dyadic-rank/CyclicDecoderReachProofs/Original.lean": "9b37caaf03702f7e8a8cf754b58b4784018e7a46a569c24f33d9cbd23885409f",
+    "formalization/dyadic-rank/CyclicDecoderReachability.lean": "1da3fa79e3ecdd5e1a3bc847e90bccdd9fd963f5c31cb6df170266bd62db7b41",
+    "formalization/dyadic-rank/CyclicDecoderSensitivity.lean": "3cbc273147919043097e21c86d2212a09e77b7cb991cf70d9e356f084e10fbbe",
+    "formalization/dyadic-rank/CyclicDecoderTubeData.lean": "3a07de20525d31c4e3b840d88933e142376a0e0873aac2c6862c07b048e3a9d2",
+    "formalization/dyadic-rank/CyclicDecoderTubeData/MinimumDevelopment.lean": "84d0b15fac22a4c709c5c28b18f2787ef0445e320ccd2fc78ed1a9beb282bcfc",
+    "formalization/dyadic-rank/CyclicDecoderTubeData/MinimumHoldout.lean": "b77d529da0377871a43d464f1d2684a507e7b38f3add1c0dc592f78cba19a83d",
+    "formalization/dyadic-rank/CyclicDecoderTubeData/PreviousDevelopment.lean": "40a0d8e2065c4998427b530ebdde71e3d05366f0e9b9d52c91c05940eddc731e",
+    "formalization/dyadic-rank/CyclicDecoderTubeData/PreviousHoldout.lean": "f91e5b025d908cf17801aad8cd1ffdb544352f8ddc730e382dd2223d65e09987",
+    "formalization/dyadic-rank/CyclicDecoderTubeGraph.lean": "d51832a6386a0cb9a0dec6279e41ebba26d2dbb9cb5fdc007d77f02893fa4d15",
+    "formalization/dyadic-rank/CyclicDecoderTubeProbe.lean": "ea2af69c28fd4d2cc78df356f99d8a23fe33eba82caf1cdc490b1048c5d233d9",
+    "formalization/dyadic-rank/CyclicDecoderTubes.lean": "2a3eca71a3476deb530cf196ff11985469c0714b8ff899622f23a7258e4575fa",
+    "formalization/dyadic-rank/CyclicDecoderTubes/MinimumDevelopment.lean": "5871b38bbce02a48b1182e17e0cfee1dde542316f5b8b0067c9ee5af95cc5ff6",
+    "formalization/dyadic-rank/CyclicDecoderTubes/MinimumHoldout.lean": "1fd4f5a5e41413a807fca7d700bc60be2047a3543021f3cb688bd4950543f948",
+    "formalization/dyadic-rank/CyclicDecoderTubes/PreviousDevelopment.lean": "236326d206672610967cd9c1b9d9505cad083feae6deca7ce08b5ce1a56dde2d",
+    "formalization/dyadic-rank/CyclicDecoderTubes/PreviousHoldout.lean": "2569adfbc49fe5395788d526d274c2bba0d34b80ed21b79ebd0ffc2eeaf119e7",
+    "scripts/check_cyclic_loop_lean.py": "bc58adc36a143875d0fe4f4652e6636800659d4e205d3fa6ad7a03048f0c0780",
+    "scripts/validate_cyclic_loop_development.py": "18afa53f2da77a60601156c244d5902a2c7ce11bfdfc8e0121503545a12f6352",
+    "scripts/validate_cyclic_loop_holdout.py": "4a71a56a73bbef9d572889b85f21c05cea9bfbbef02f190a51ebaf18ec376393",
+    "scripts/validate_cyclic_loop_lean_data.py": "3098739d9e1ad1971e67fbefe86b30b42795dd43db34beeabbf542f70bd93956",
+    "scripts/verify_cyclic_loop_artifacts.py": "3121a6028f43b2a10fd8df9cec2bae632f7e7246f0b0dbe5ac4d85a4fe3c43d9"
+  }
+}

@@ -129,3 +129,16 @@ Next action that would resolve the most important uncertainty:
 ```
 
 A successful next investigation might yield a theorem, a counterexample, a reusable formal lemma, a corrected formulation, or a connection to existing theory. Record the achievement in terms of what was actually learned and verified.
+
+## Lessons from the bounded trajectory-mechanism loop
+
+- **Freeze before fresh noise.** Preserve the old exploratory grid, unsuccessful candidates, detector definitions, seeds and hashes. A revised mechanism needs a new independent validation claim; do not quietly reinterpret the original holdout.
+- **Distinguish states from decisions.** Two hard decisions can alternate while the full integer messages never repeat. Exact recurrence, a proved invariant region and a finite-horizon parity certificate have different conclusions.
+- **Count rescues as well as losses.** On the fresh comparison, the primary certificate marks 825 lost versus 824 gained syndrome matches for one code, and 821 versus 735 for the other. Thousands of certified failures do not by themselves explain a net penalty.
+- **Do not sell late verification as prediction.** A tube starting at iteration 75 with ±1 integer unit can certify nearly every remaining rejection when different checks are allowed. That does not explain entry into failure, establish an infinite trap, or validate an error-floor predictor.
+- **Link numerical certificates to the actual model.** Check the matrix/edge correspondence, rounding, clipping, every transition and the stopping horizon. Keep mathematical update proofs, implementation replay and Monte Carlo counts separate.
+- **Close a manageable execution bridge.** For two fixed fresh errors, checking the prefixes from the integer prior turns a conditional late-state certificate into a complete mathematical first-match comparison. That verifies those examples; it does not supply a compact condition explaining the population penalty.
+- **Make large certificates checkable.** Balanced lookup tables, serial Lean builds, independent data round trips and byte-for-byte regeneration checks kept the numerical proofs practical without a native-decision shortcut.
+- **Retain negative results and stop weak routes.** No exact recurrence or rejecting invariant box was found under the frozen rules. A small old-data-only two-phase refinement also found no rejecting certificate; it did not change the holdout rules.
+
+The [full study](formalization/cyclic-lifts/LOOP-HOLDOUT.md) preserves the numerical outcomes, formal scope and remaining gaps.
