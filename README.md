@@ -51,6 +51,8 @@ The cyclic paper completes the stated girth-condition criterion and supplies par
 
 ## Lessons from the cyclic lifted-product investigation
 
+For the next investigation, use the repo-local [Open Question Research skill](.agents/skills/open-question-research/SKILL.md): `Use $open-question-research to tackle <inventory target or source question>.` It applies the lessons below and provides a reusable investigation worksheet. For a continuation, name the existing target and the specific follow-up to keep the scope clear.
+
 This round concerns **coding theory, specifically quantum error-correcting codes**, with graph theory and combinatorics at its mathematical core. Freij-Hollanti, Morris and Šapokaitė's question asks how conditions on an exponent matrix determine girth eight in a cyclic lifted-product Tanner graph, and how the resulting graph structure affects decoding. Absorbing sets and stopping sets connect those graph properties to error correction. The [paper](formalization/cyclic-lifts/paper/main.tex) credits the question and its mathematical predecessors; the [proof guide](formalization/cyclic-lifts/paper/LEAN-PROOF-GUIDE.md) locates the complete formal development.
 
 The following lessons extend the earlier [dyadic rank–support retrospective](RESEARCH-LESSONS.md), as of October 23, 2026:
@@ -63,6 +65,27 @@ The following lessons extend the earlier [dyadic rank–support retrospective](R
 - **Show the formal work.** A short final theorem invocation hides its supporting development. Include meaningful statements, a dependency diagram and substantive excerpts, with direct links to the complete proofs and an explicit account of remaining informal claims.
 - **Preserve reproducibility as the paper evolves.** Pin source links to an immutable revision, bundle the full sources, record dependencies and hashes, and verify the public downloads.
 - **Use feedback to improve communication.** Positive reception is encouraging evidence that the work interests readers; correctness and novelty still rest on proofs, source comparisons and review.
+
+### Keeping investigations focused
+
+The October 23 follow-up extended the October 22 answer to the same girth-eight question; it did not resolve a second independent open question. The additional Lean proofs and controlled experiments were substantive, but deeper work on an existing result should not silently substitute for progress on another inventory problem.
+
+- **Name the target before starting.** State the exact source question, what is already answered, and whether the proposed task is a new problem or a follow-up. Make the choice between depth and breadth explicit.
+- **Set a stopping condition.** Once the main theorem is complete, give each follow-up a bounded objective and a stopping point. A broad aim such as explaining decoding performance can otherwise expand indefinitely.
+- **Measure progress by answered questions.** More Lean declarations, experiments or manuscript pages do not necessarily mean another open question has been resolved. Report completed answers separately from supporting work and partial progress.
+- **Separate a mechanism from an aggregate explanation.** A proof explaining particular failed trajectories does not establish the cause of an overall failure-rate difference. A late-state certificate establishes persistence; it does not explain why the decoder entered that state.
+- **Control confounds early.** Establish exact distance when comparing different codes. Same-code comparisons improve the controls, but changes to check degrees and message routing still prevent attributing an effect solely to absorbing-set count.
+- **Compare complete theorems with prior literature.** Compare hypotheses, conclusions and the translation between constructions, including equivalent results expressed in different terminology. Matching component lemmas alone does not settle whether the complete answer was known.
+- **State novelty plainly and proportionately.** Give the strongest supported claim once, with credit to the question's authors and relevant predecessors. Distinguish the earliest complete answer known to us from established ingredients and new formal certificates, without repeatedly burying the result in generic priority qualifications.
+- **Label revisions clearly.** Announce an expanded paper with new trajectory proofs as an expanded paper. Make clear when a revision adds consequences or evidence rather than answering a different open question.
+
+End each research block with these three lines:
+
+> **Question answered:** the exact completed claim and its evidence.
+>
+> **Question still open:** the specific unresolved part and the limit of the current result.
+>
+> **Next proposed target:** the bounded next task, explicitly labeled as a new problem or a follow-up.
 
 ## Reviews
 
