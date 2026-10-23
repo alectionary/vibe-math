@@ -11,10 +11,18 @@ The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Ki
 - **Lean-checked:** the exact girth-eight characterization for the stated cyclic single-base construction, the degree-three absorbing-support/eight-cycle bijection and the stopping-set lower bound.
 - **Written proofs:** the specified odd-check profile, companion-stabilizer interpretation and the connected-family expansion limitation, as distinguished in the manuscript.
 - **Exact finite computation:** the 2,520 absorbing-support minimum in the specified normalized connected `3×3`, lift-14, rate-preserving search family. This is not an optimum over arbitrary code families or lift sizes.
-- **Measured:** one-sector, perfect-syndrome min-sum recovery fractions for four fixed codes on independent confirmation noise, including the 4.385% versus 2.523% comparison at `p=4%`. The new exhaustive census gives baseline distance six and distance at least eight for the other codes, so distance was not matched; no improvement is established at `p=1%`.
+- **Measured:** one-sector, perfect-syndrome min-sum recovery fractions for four fixed codes on independent confirmation noise, including the 4.385% versus 2.523% comparison at `p=4%`. The latest audit gives distances six, ten, twelve and ten across the four codes, so distance was not matched; no improvement is established at `p=1%`.
 - **Open:** a general relation from the girth conditions to decoding performance, causal separation of absorbing counts from logical structure, a universal design objective and an asymptotic error-floor predictor. The broader source program is only partly addressed.
 
 The later [P11 dyadic trajectory obstruction](../dyadic-performance/TRAJECTORIES.md) concerns a different construction and decoder setting. It is not a replication of this paper's cyclic benchmark and is not part of its formal proof.
+
+## Latest continuation: exact distance and matched decoding
+
+The [exact-distance audit and fresh matched comparison](DISTANCE-MATCHED.md) establish distances **6, 10, 12 and 10** for the baseline, previous best, Minimum 2 and Minimum 4, respectively. Both Pauli sectors agree. Translation-anchored searches and independent cycle-seeded lower-bound checks, together with explicit nonstabilizer witnesses, establish the finite results.
+
+Only previous best and Minimum 4 form the exact `[[252,10,10]]` matched pair. On 100,000 new shared errors at the prespecified primary `p=4%`, their failure rates are **2.731% and 2.709%**. The paired difference is **-0.0220 percentage points**, with 95% interval **[-0.1532,+0.1092]**. Thus this matched experiment does not establish a primary-condition winner. All three noise levels are reported, including the nominal secondary difference at `p=1%`; no universal absorbing-objective advantage or no-effect theorem follows.
+
+The earlier large improvement compares distances six and twelve. It remains a measured joint design improvement rather than an isolated effect of absorbing count. This follow-up closes the exact-distance/matching gap for the saved codes, while leaving spectrum, dynamics and causal attribution open. The existing PDF contains the earlier valid bounds; the new follow-up is recorded separately rather than silently changing its frozen experiment.
 
 ## New continuation: low-weight logical structure
 

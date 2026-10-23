@@ -4,6 +4,8 @@ A research collection covering 20 doctoral dissertations from 2022–2026: 16 ma
 
 [Publication status and dated audit records](PUBLICATION-STATUS.md).
 
+Latest cyclic follow-up: [exact distances and a fresh distance-matched decoding comparison](formalization/cyclic-lifts/DISTANCE-MATCHED.md). The matched primary comparison does not establish a winner.
+
 ## Start here
 
 - **Research lessons:** [what worked and the workflow for the next investigation](RESEARCH-LESSONS.md).
