@@ -231,6 +231,49 @@ This rules out a global one-step nonexpansiveness claim for those maps. It is a 
 limitation, not a mechanism unique to merging; it neither explains the measured
 penalty nor excludes more precise invariant regions.
 
+## Relationship to existing research
+
+The [dated literature comparison](LOOP-LITERATURE.md) covers both P34's original
+girth/decoding-properties question and these follow-ups, with a
+[source and access ledger](search/loop-literature-review.json).
+Fossorier's QC cycle criteria (2004), Raveendran–Declercq–Vasić's LP eight-cycle
+argument (2025), and Okada–Kasai's square-base results (2026) are mathematical
+predecessors. The degree-three, girth-eight stopping bound also has a direct
+classical predecessor in Kelley–Sridhara–Xu–Rosenthal (2004).
+
+The original seed dissertation by Morris (2025), Chapter 5 Table 5.1, already
+separates opposing syndrome/logical effects under Gallager-B: a representation
+with fewer failure-inducing absorbing sets can have more syndrome mismatches.
+Its Chapter 6 explicitly proposes redundancy studies for lifted products.
+This is a direct research-program predecessor, with a different decoder,
+count definition and intervention. Our merger study partly investigates that
+direction; it does not settle the general question or claim the first
+count/performance mismatch.
+
+Representation-dependent quantum decoding is established prior work:
+Rigby–Olivier–Jarvis (2019), Miao–Schnerring–Li–Schmalen (2022/2023), and
+Rabeti–Mahdavifar (2026) alter check representations. Raveendran–Vasić (2021)
+and Morris–Pllaha–Kelley (2023/2024; journal 2026) analyze quantum failure
+structures. Butler–Siegel (2014), Zhang–Siegel (2014), and
+Tomasoni–Bellini–Ferrari (2014 preprint) supply state-space, quantization,
+saturation and min-sum equilibrium/limit-cycle precedents. Their hypotheses
+do not automatically apply to our full fixed syndrome decoder.
+
+Our contribution here is the reproducible fixed-code experiment and its
+concrete Lean-checked mathematical certificates, not discovery of these general
+phenomena. The exact codes/mergers/certificates were not matched in inspected
+primary texts; priority is not established. The especially relevant
+Morris–Pllaha–Kelley ISTC 2025 redundancy paper is confirmed by the authors'
+bibliographies, but its substantive full text was not obtained. The comparison
+marks that gap explicitly rather than treating a title as a proof comparison.
+The report also credits the published syndrome min-sum equations; no new
+decoder is claimed. Nothing here establishes an asymptotic error floor.
+
+The original experiment/Lean verification manifest is a historical snapshot at
+commit `888beeb`; this literature revision preserves every scientific input,
+result and proof. Run `python3 scripts/verify_cyclic_loop_literature.py` for the
+current documentation revision and its comparison against that snapshot.
+
 ## What this closes and what remains
 
 **Completed:** the frozen, fresh, distance- and dimension-controlled paired

@@ -1,5 +1,12 @@
 # Cyclic-lift groundwork for the P34 girth-eight question
 
+The [October 23 literature update](LOOP-LITERATURE.md) compares both the original
+source question and the representation/trajectory follow-ups with existing
+research, distinguishes full-text comparisons from leads, and credits a direct
+2004 predecessor for the stopping-set bound. The bounded-loop experiment and
+Lean proofs remain the verified `888beeb` snapshot; use
+`python3 scripts/verify_cyclic_loop_literature.py` to check the documentation update.
+
 The academic manuscript is available as a [PDF](paper/output/pdf/cyclic-lift-girth-eight.pdf), [LaTeX source](paper/main.tex), and [standalone Lean/code/data source bundle](paper/cyclic-lift-girth-eight-source.zip). It presents a complete answer to the girth-condition part, partial structural consequences, a fixed-family optimization and a fixed-decoder benchmark, with 15 references and a signed chronology. [Manuscript verification](paper/paper-verification.json). The expanded Lean section includes principal declarations, a dependency diagram and substantive proofs; Appendix A and the [complete proof guide](paper/LEAN-PROOF-GUIDE.md) link every part of the full formalization at an immutable revision.
 
 The **general girth-eight characterization is checked in Lean**, with **75 audited theorems** across the library. For any exponent matrix with at least two rows and columns, the lifted-product X Tanner graph has a simple eight-cycle. Its girth is exactly eight **if and only if** every distinct-row/column rectangle sum and every distinct-triple hexagon sum is nonzero. The theorem also applies directly to the expanded binary parity-check matrix. This completes the recorded P34 girth target for the source model; this is one completed source target; current repository coverage is **3/108 (2.78%)** after the separate P11 completeness proof. Connectivity, absorbing sets and other decoding-property optimization are separate targets.
