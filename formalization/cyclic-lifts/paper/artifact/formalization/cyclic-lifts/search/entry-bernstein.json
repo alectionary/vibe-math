@@ -1,0 +1,66 @@
+{
+  "status": "secondary_finite_sample_bernstein_intervals",
+  "new_noise_patterns": 0,
+  "source_sha256": "ae2d29400bff193ccf6a225fa37c4355b84b9b51f81337c784d8fdc9327fc45c",
+  "family_failure_probability": 0.05,
+  "one_sided_events": 8,
+  "one_sided_delta": 0.00625,
+  "logarithm_argument": 320,
+  "source": {
+    "authors": [
+      "Andreas Maurer",
+      "Massimiliano Pontil"
+    ],
+    "year": 2009,
+    "title": "Empirical Bernstein Bounds and Sample Variance Penalization",
+    "locator": "Theorem 4, PDF page 2",
+    "url": "https://www.learningtheory.org/colt2009/papers/012.pdf"
+  },
+  "records": [
+    {
+      "design": "previous_best",
+      "difference": 0.0018082889081012627,
+      "simultaneous_95_interval": [
+        0.000198914339844849,
+        0.0034176634763576764
+      ],
+      "strata": {
+        "active": {
+          "n": 354518,
+          "mean": 0.002152217940979019,
+          "sample_variance": 0.026039253005387706,
+          "radius": 0.0009964543823218536
+        },
+        "inactive": {
+          "n": 645482,
+          "mean": 0.0003439290328777565,
+          "sample_variance": 0.018256034875937015,
+          "radius": 0.0006129201859345602
+        }
+      }
+    },
+    {
+      "design": "minimum_4",
+      "difference": 0.002261573689522801,
+      "simultaneous_95_interval": [
+        0.0006612599299228796,
+        0.0038618874491227226
+      ],
+      "strata": {
+        "active": {
+          "n": 355325,
+          "mean": 0.0026679800182931117,
+          "sample_variance": 0.025997317251136028,
+          "radius": 0.0009944953087349514
+        },
+        "inactive": {
+          "n": 644675,
+          "mean": 0.0004064063287703106,
+          "sample_variance": 0.01777936371180141,
+          "radius": 0.0006058184508649701
+        }
+      }
+    }
+  ],
+  "limitation": "Secondary robustness calculation, not a replacement primary analysis or a Lean proof of the confidence theorem. Does not establish mediation or remove baseline hardness differences."
+}

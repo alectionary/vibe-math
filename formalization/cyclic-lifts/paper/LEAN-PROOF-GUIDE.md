@@ -83,3 +83,37 @@ From the bundle's `artifact/formalization/dyadic-rank`, run:
 ```sh
 lake -f lakefile-cyclic.toml env lean CyclicLogicalSix.lean
 ```
+
+## October 23 trajectory and entry supplement
+
+The chronology now includes later distance controls, same-code representation interventions, local obstructions, persistence and complete trajectories, followed by entry dynamics and independent confirmation. The full follow-up Lean sources are frozen at `c5561734e1b91c55911703ef4930f6e718624453`. They supplement the original proof revision rather than changing its historical 118-report count.
+
+| Complete Lean module | Contribution |
+|---|---|
+| [CyclicMergedMessages.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicMergedMessages.lean) | Merger message identity, attenuation and first-divergence locality. |
+| [CyclicMergedWitnesses.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicMergedWitnesses.lean) | Actual matrices, equal kernels and local obstruction certificates. |
+| [CyclicDecoderPersistence.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderPersistence.lean) | Finite interval enclosure and persistence. |
+| [CyclicDecoderParity.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderParity.lean) | Parity preservation under synchronized flips. |
+| [CyclicDecoderTubes.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderTubes.lean) | Four complete finite-horizon tube certificates. |
+| [CyclicDecoderReachability.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderReachability.lean) | Two complete from-prior stopping comparisons. |
+| [CyclicDecoderEntry.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntry.lean) | Generic propagation locality and margin lemmas. |
+| [CyclicDecoderEntryInitial.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryInitial.lean) | Initial message and hard-decision criterion. |
+| [CyclicDecoderEntryCone.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryCone.lean) | Concrete possible-influence cones. |
+| [CyclicDecoderEntryExamples.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryExamples.lean) | Soft-only and delayed entry joined to final stopping results. |
+| [CyclicDecoderEntryDelayed.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryDelayed.lean) | Exact second-update delayed activation. |
+| [CyclicDecoderEntryChannel.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryChannel.lean) | Finite independent Bernoulli parity moments. |
+| [CyclicDecoderEntryBias.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryBias.lean) | Exact signed moments for the actual gate supports. |
+| [CyclicDecoderEntryAudit.lean](https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/CyclicDecoderEntryAudit.lean) | Entry-theorem axiom audit. |
+
+All local imported Lean modules, generated trajectory data and concrete proof files are included in the refreshed source bundle. In particular, the `CyclicDecoderReachData`, `CyclicDecoderReachProofs`, `CyclicDecoderTubeData` and `CyclicDecoderTubes` subdirectories are required; the linked top-level modules are not standalone snippets.
+
+With the pinned dependencies available, enter `artifact/formalization/dyadic-rank` and run:
+
+```sh
+lake -f lakefile-cyclic.toml env lean CyclicMergedWitnesses.lean
+lake -f lakefile-cyclic.toml env lean CyclicDecoderTubes.lean
+lake -f lakefile-cyclic.toml env lean CyclicDecoderAudit.lean
+lake -f lakefile-cyclic.toml env lean CyclicDecoderEntryAudit.lean
+```
+
+The bundle contains importable `.lean` sources, not compiled `.olean` files. Build local imported modules in dependency order first. The included `scripts/check_cyclic_paper_followups.py` performs that ordering and checks these four entry points; the generated reachability proofs can take several minutes. The unchanged research build logs are included as historical verification records. Sampling, C++ execution, finite optimization, exact-distance searches and aggregate statistical comparisons are not Lean FER proofs. No new trajectories or scientific results were generated for this paper revision.

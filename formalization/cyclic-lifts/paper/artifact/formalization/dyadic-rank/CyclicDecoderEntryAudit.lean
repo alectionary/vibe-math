@@ -1,0 +1,44 @@
+import CyclicDecoderEntryExamples
+import CyclicDecoderEntryInitial
+import CyclicDecoderEntryCone
+import CyclicDecoderEntryRepair
+import CyclicDecoderEntryBias
+import CyclicDecoderEntryDelayed
+
+#print axioms CyclicDecoderEntry.posterior_decomposition
+#print axioms CyclicDecoderEntry.positive_margin_crossing
+#print axioms CyclicDecoderEntry.negative_margin_crossing
+#print axioms CyclicDecoderEntry.stable_outside_margin
+#print axioms CyclicDecoderEntry.next_local
+#print axioms CyclicDecoderEntry.immediate_source_divergence
+#print axioms CyclicDecoderEntry.first_extrinsic_pulse
+#print axioms CyclicDecoderEntryChannel.parity_moment
+#print axioms CyclicDecoderEntryChannel.triple_odd_probability
+#print axioms CyclicDecoderEntryInitial.Previous.expected_changed_gates
+#print axioms CyclicDecoderEntryInitial.Minimum.expected_changed_gates
+#print axioms CyclicDecoderEntryBridge.Previous.immediate_divergence_iff
+#print axioms CyclicDecoderEntryBridge.Minimum.immediate_divergence_iff
+#print axioms CyclicDecoderEntryBridge.Previous.common_update
+#print axioms CyclicDecoderEntryBridge.Minimum.common_update
+#print axioms CyclicDecoderEntryBridge.Previous.trajectory_confined
+#print axioms CyclicDecoderEntryBridge.Minimum.trajectory_confined
+#print axioms CyclicDecoderEntryCone.Previous.full_cone_at_four
+#print axioms CyclicDecoderEntryCone.Minimum.full_cone_at_four
+#print axioms CyclicDecoderEntryWitnesses.Previous.no_direct_forcing
+#print axioms CyclicDecoderEntryWitnesses.Minimum.no_direct_forcing
+#print axioms CyclicDecoderEntryExamples.Previous.soft_only_entry_to_fixed_budget_failure
+#print axioms CyclicDecoderEntryExamples.Minimum.delayed_entry_to_fixed_budget_failure
+#print axioms CyclicDecoderEntryRepair.Previous.repaired_despite_immediate_pulse
+#print axioms CyclicDecoderEntryRepair.Minimum.repaired_despite_immediate_pulse
+#print axioms CyclicDecoderEntryBias.first_bit_error_gap
+#print axioms CyclicDecoderEntryBias.gated_character
+#print axioms CyclicDecoderEntryBias.Previous.signed_gate_moment
+#print axioms CyclicDecoderEntryBias.Minimum.signed_gate_moment
+#print axioms CyclicDecoderEntryDelayed.negative_foreign_input
+#print axioms CyclicDecoderEntryDelayed.foreign_enters_only_merged_check
+#print axioms CyclicDecoderEntryDelayed.old_second_inputs
+#print axioms CyclicDecoderEntryDelayed.merged_second_inputs
+#print axioms CyclicDecoderEntryDelayed.same_second_word
+#print axioms CyclicDecoderEntryDelayed.second_difference_iff
+#print axioms CyclicDecoderEntryDelayed.second_difference_count
+#print axioms CyclicDecoderEntryDelayed.delayed_sign_reversal_and_stopping

@@ -26,6 +26,8 @@
 \newcommand{\rank}{\operatorname{rank}}
 \newcommand{\R}{\mathcal R}
 \newcommand{\Q}{\mathcal Q}
+\newcommand{\laterlean}[2]{\href{https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/dyadic-rank/#1.lean}{#2}}
+\newcommand{\laterreport}[2]{\href{https://github.com/alectionary/vibe-math/blob/c5561734e1b91c55911703ef4930f6e718624453/formalization/cyclic-lifts/#1.md}{#2}}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \lstset{basicstyle=\small\ttfamily,columns=fullflexible,keepspaces=true,
   frame=single,framerule=.3pt,breaklines=true,showstringspaces=false,escapeinside={(*@}{@*)},
@@ -134,6 +136,16 @@ the quantum absorbing-set framework and its decoder interpretation
 LP family. Abiad and Castriota's later spectral treatment counts cycles and
 absorbing configurations and bounds stopping sizes in a different
 QC-GHP/GB setting~\cite{AC2026}.
+The stopping bound also has a direct classical predecessor in Kelley,
+Sridhara, Xu and Rosenthal~\cite{KSXR2004}. Representation-dependent BP
+behavior predates our intervention: Rigby, Olivier and Jarvis study
+augmented checks~\cite{Rigby2019}, and Miao et al. study overcomplete
+quantum check matrices~\cite{Miao2022}. Earlier trapping-set dynamics,
+including saturation and limit cycles, are studied by Tomasoni, Bellini
+and Ferrari~\cite{TBF2014}; the quantum symmetry/failure connection is
+already present in Raveendran and Vasi\'c~\cite{RV2021}. Our update equations
+follow the soft-syndrome min-sum framework~\cite{Raveendran2023}, with the
+fixed arithmetic and parameters specified in the later reports.
 
 \begin{table}[p]
 \centering\small
@@ -175,6 +187,74 @@ is 591 days ($1.62$ years) earlier, the April 2026 square-base predecessor
 is 175 days ($0.48$ years) earlier, and the July 2026 spectral study is
 99 days ($0.27$ years) earlier. The main answer here follows the published
 question by 134 days ($0.37$ years).
+
+\subsection{Later decoding-trajectory chronology and formal contributions}
+
+Table~\ref{tab:later-history} extends the chronology beyond the original
+manuscript. Every follow-up listed was recorded on October 23, 2026:
+135 days after the source question and one day after the original draft.
+The sequence is resolved by repository commits, not by assigning distinct
+calendar dates to work performed on the same day. The complete girth
+characterization is the earliest complete answer to that specific question
+known to us. For the follow-ups, the contribution column distinguishes
+concrete certificates and measurements from the established principles
+they instantiate.
+
+\begingroup\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{P{.19\linewidth}P{.36\linewidth}P{.36\linewidth}}
+\caption{Later milestones, all October 23, 2026 ($+135$ days from the
+question). Links identify complete Lean files and reports at immutable
+revision \texttt{c556173}. Predecessor dates appear in
+Table~\ref{tab:history} and the bibliography.}\label{tab:later-history}\\
+\toprule
+Milestone / commit & Contribution and relationship to earlier work & Evidence and complete Lean sources \\
+\midrule\endfirsthead
+\toprule
+Milestone / commit & Contribution and relationship to earlier work & Evidence and complete Lean sources \\
+\midrule\endhead
+\bottomrule\endfoot
+Logical structure and distance controls\newline\texttt{50ba916}, \texttt{feae8aa}, \texttt{e39a457}
+& Same local topology can have different logical roles. Exact distance audits identify a matched pair of $[[252,10,10]]$ codes; one million fresh paired errors distinguish their fixed-decoder recovery rates. Extends the design comparisons in~\cite{RDV2025} with explicit distance controls.
+& \laterlean{CyclicLogicalSix}{Logical/stabilizer certificate}. Exact distances and sampling statistics are computational, not general Lean theorems. \laterreport{DISTANCE-MATCHED}{Distance audit}; \laterreport{MILLION-PAIRED}{paired comparison}. \\
+Same-code representation intervention\newline\texttt{8cf355c}, \texttt{7d58083}, \texttt{8e6efb6}
+& Changes absorbing counts while preserving the full code; a check merger also preserves variable degrees, connectedness and girth eight. Fresh paired tests find deterioration. Instantiates known representation dependence~\cite{Rigby2019,Miao2022}; altered check degrees/routing prevent isolating absorbing count.
+& Feasibility and performance are written/computational results. Later \laterlean{CyclicMergedWitnesses}{concrete matrix-kernel equalities} check algebraic equivalence. \laterreport{DEGREE-PRESERVING}{Feasibility}; \laterreport{MERGED-MILLION}{million-error study}. \\
+Local message obstruction\newline\texttt{4156628}
+& Derives the merger's message identity, sign reversal/attenuation cases and local acceptance obstructions. Explains specific harmful updates under the unchanged decoder, rather than proposing a new decoder.
+& \laterlean{CyclicMergedMessages}{General message lemmas}; \laterlean{CyclicMergedWitnesses}{actual-code witnesses}. Local certificates do not establish the aggregate penalty. \laterreport{MERGED-MECHANISM}{Mechanism report}. \\
+Persistence and fresh holdout\newline\texttt{888beeb}
+& Freezes mechanisms, then tests one million fresh paired errors per code. Proves finite rejection tubes and synchronized-flip parity preservation; a pinned-check certificate covers about 13--14\% of syndrome failures. Relates to prior symmetry and min-sum trapping dynamics~\cite{RV2021,TBF2014}.
+& \laterlean{CyclicDecoderPersistence}{Interval/persistence theory}; \laterlean{CyclicDecoderParity}{parity lemma}; \laterlean{CyclicDecoderTubes}{four concrete tubes}. Finite-horizon rejection, not infinite trapping or a full aggregate explanation. \laterreport{LOOP-HOLDOUT}{Holdout report}. \\
+Complete trajectory comparisons\newline\texttt{888beeb}
+& Joins initialization, exact updates and first-match stopping for two retained fresh examples: original exact recovery at updates 65/86; merged rejection through update 100, with identical syndrome solution sets.
+& \laterlean{CyclicDecoderReachability}{Complete comparison theorems}, with imported data/proof modules. Lean checks the mathematical decoder; compiler execution and noise sampling remain implementation bridges. \\
+Entry, propagation and channel moments\newline\texttt{c556173}
+& Proves the initial divergence criterion, propagation locality and concrete possible-influence cones reaching all 756 message coordinates by update four. Checks soft-only and delayed-entry examples and an exact second-update sign reversal; formalizes finite Bernoulli parity moments.
+& \laterlean{CyclicDecoderEntryInitial}{Initial rule}; \laterlean{CyclicDecoderEntryCone}{cones}; \laterlean{CyclicDecoderEntryExamples}{complete entry examples}; \laterlean{CyclicDecoderEntryDelayed}{delayed activation}; \laterlean{CyclicDecoderEntryChannel}{channel moments}; \laterlean{CyclicDecoderEntryBias}{signed moments}. \laterreport{ENTRY-DYNAMICS}{Full report}. \\
+Independent entry confirmation\newline\texttt{c556173}
+& Another million fresh paired errors per code tests the initial-activity hypothesis. Soft-only entry partitions 451/985 and 571/1,210 net excess syndrome failures descriptively; baseline-hardness controls weaken the interaction.
+& Statistical/computational evidence, not a Lean FER theorem or causal mediation result. The full expectation-to-decoder bridge and aggregate failure explanation remain partial. \laterreport{ENTRY-DYNAMICS}{Protocol, results and controls}. \\
+\end{longtable}
+\endgroup
+
+The formalization uses Lean \texttt{4.36.0-rc1} and Mathlib revision
+\nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. The original
+75-report girth audit and 29-report structural audit are separate from
+the later trajectory modules; helper declarations are not counted as
+independent research answers. Appendix~\ref{app:lean-source} and the online
+guide provide the complete code and reproducible checks. The original
+benchmark below remains its historical experiment; the later matched and
+same-code studies have distinct samples and are not pooled with it.
+
+These follow-ups make the source's decoding-properties program more
+concrete, but do not establish a universally superior objective, causation
+by absorbing-set count alone, or a general error-floor formula. Earlier
+representation and trapping results motivate the analysis; our specific
+contribution is the fixed-code intervention, audited observations and
+checked mathematical trajectories. The long calendar gaps to general
+principles are not durations for which those principles remained unsolved.
 
 \section{Construction and notation}\label{sec:model}
 
@@ -1098,6 +1178,19 @@ emit the 75, 3, 8, 3 and 29 axiom reports respectively. From the
 coverage and source hashes. The package README gives the computational
 audit commands separately.
 
+\subsection{Complete later trajectory sources}
+The chronology's later Lean links use the immutable follow-up revision
+\nolinkurl{c5561734e1b91c55911703ef4930f6e718624453}.
+The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/cyclic-lifts/paper/LEAN-PROOF-GUIDE.md}{online proof guide}
+lists every principal trajectory module, its role and reproduction commands.
+The refreshed bundle includes all imported local sources, including generated
+reachability data and concrete proof modules. Its
+\texttt{scripts/check\_cyclic\_paper\_followups.py} builds local imports in
+dependency order before checking the merger, persistence, full trajectory
+and entry audit consumers. Historical build/axiom logs accompany the sources.
+These supplements do not alter the original 118-report audit or turn the
+statistical experiments into Lean probability-of-failure theorems.
+
 \begin{thebibliography}{99}
 \bibitem{FHM2026}
 R. Freij-Hollanti, K. D. Morris and P. \v Sapokait\.{e},
@@ -1188,5 +1281,27 @@ N. Raveendran, J. Valls, A. K. Pradhan, N. Rengaswamy, F. Garcia-Herrero and B. 
 \emph{Soft syndrome iterative decoding of quantum LDPC codes and hardware architectures},
 EPJ Quantum Technology \textbf{10}, 45, October 19, 2023.
 \href{https://doi.org/10.1140/epjqt/s40507-023-00201-1}{doi:10.1140/epjqt/s40507-023-00201-1}.
+\bibitem{KSXR2004}
+C. Kelley, D. Sridhara, J. Xu and J. Rosenthal,
+\emph{Pseudocodeword Weights and Stopping Sets}, ISIT 2004, Theorem III.1.
+\url{https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf}.
+
+\bibitem{Rigby2019}
+A. Rigby, J. C. Olivier and P. Jarvis,
+\emph{Modified belief propagation decoders for quantum low-density parity-check codes},
+Physical Review A \textbf{100}, 012330, 2019.
+\url{https://doi.org/10.1103/PhysRevA.100.012330}.
+
+\bibitem{Miao2022}
+S. Miao, A. Schnerring, H. Li and L. Schmalen,
+\emph{Neural Belief Propagation Decoding of Quantum LDPC Codes Using Overcomplete Check Matrices},
+arXiv:2212.10245, first posted December 20, 2022; v2 March 21, 2023.
+\url{https://arxiv.org/abs/2212.10245}.
+
+\bibitem{TBF2014}
+A. Tomasoni, S. Bellini and M. Ferrari,
+\emph{Thresholds of absorbing sets in Low-Density-Parity-Check codes},
+arXiv:1401.8168v1, January 31, 2014.
+\url{https://arxiv.org/abs/1401.8168}.
 \end{thebibliography}
 \end{document}

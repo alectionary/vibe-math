@@ -83,3 +83,12 @@ Then in formalization/dyadic-rank:
 The ten new Lean declarations prove a concrete same-local-topology/different-
 logical-role certificate, including a full-span nonmembership witness. They do
 not formalize the exhaustive census. No new code, noise or decoder was added.
+
+LATER TRAJECTORY CHRONOLOGY SUPPLEMENT
+The complete local follow-up Lean imports and generated proof data are now included.
+After obtaining the pinned Mathlib cache, run from this artifact root:
+  python3 scripts/check_cyclic_paper_followups.py
+This builds imports in dependency order; concrete trajectory checks can take minutes.
+FOLLOWUP-SNAPSHOT.json records the frozen revision and scientific scope.
+Compact results and reports are bundled; large packed experimental streams remain
+at the linked repository revision. Historical manifests and counts retain their scope.
