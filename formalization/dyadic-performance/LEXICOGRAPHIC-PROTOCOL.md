@@ -1,0 +1,7 @@
+# Shortest cycle first sensitivity comparison
+
+Fixed after inspecting the original intervention, before generating this comparison's decoding outcomes. The original standardized aggregate cycle policy traded more four-cycles for fewer six- and eight-cycles. A blanket conclusion that cycle optimization is inferior would therefore be unwarranted.
+
+Use the same 16 frozen candidate pools and all original admissibility controls. Retain baseline, absorbing-only and joint selections unchanged. Replace the aggregate cycle selection with the lexicographic minimum `(four_cycles, six_cycles, eight_cycles)`, breaking ties by flattened label array. This prioritizes shortest cycles. An inspection of the saved graph features shows it selects the original absorbing winner in 12/16 pools and the original joint winner in 13/16 pools; this structural observation preceded the new decoding run.
+
+Decode every arm on fresh shared noise using seed `20261030 + 100*pool_index`, 5,000 frames at each original probability, both original min-sum settings and the same exact-error success criterion. Preserve the original intervention files. Save the new selections before decoding and independently check any newly selected matrices. Use the same pool-paired bootstrap procedure and primary condition for comparability. This is a follow-up sensitivity analysis motivated by the earlier outcomes, not the original prespecified primary comparison or a new independent code population. Report all conditions and avoid a universal superiority claim from small differences.

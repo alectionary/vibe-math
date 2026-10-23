@@ -3078,10 +3078,10 @@
     "target_id": "L-P11-forbidden",
     "title": "Are the paper’s forbidden sets complete for length-six and length-eight pathologies?",
     "eligible_for_coverage": true,
-    "current_resolution_status": "not_independently_established",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "assessment_date": "2026-10-22",
+    "current_resolution_status": "proved_in_lean_for_recorded_cycle_contract",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "assessment_date": "2026-10-23",
     "confidence": "low",
     "discovery_time_estimate": null,
     "source_occurrences": [
@@ -3097,26 +3097,40 @@
         "relation": "explicit_open_problem"
       }
     ],
-    "basis": "Retained October 21 family prior with current eligibility/resolution checks; not a new implementation benchmark.",
+    "basis": "October 23 general Lean proof, successful Lake build and axiom audits. Earlier planning estimates retained separately as historical priors.",
     "background_evidence": [
       "literature/LEAN-COVERAGE.md",
       "planning/difficulty-sources.json"
     ],
     "gate": null,
-    "completed": false,
+    "completed": true,
     "historical_assessment": "planning/difficulty-estimates.json",
-    "research_status": "open_or_unresolved_in_recorded_sources; present status not exhaustively established",
+    "research_status": "already_proved_for_recorded_cycle_contract",
     "family": "quantum_decoding",
-    "rationale": "Lengths six and eight permit explicit walk-pattern analysis. Completeness still quantifies over the source ensemble and cannot be inferred from a few tested lifts. Tanner graphs are finite, but decoder transitions, stopping/cycle behavior, quantum error equivalence and absorbing/trapping terminology add substantial bespoke machinery.",
-    "first_milestone": "Define one exact decoder and verify its finite-state transition rule on a small graph.",
-    "research_obstacle": 3,
+    "rationale": "The literal appendix enumeration is now matched in Lean: ordered visited-row factorization, printed-order 21 classes and 42 half sums, cyclic column constraints, support and native-cycle extraction. The executable appendix checker equals the original prefix checker and the expanded binary-matrix cycle specification at thresholds six/eight.",
+    "first_milestone": "Maintain the source-specific proof and consumer audit; any future exact-count or decoder claim requires separate evidence.",
+    "research_obstacle": null,
     "statement_setup": {
-      "tier": 2,
-      "band": "4–10 expert person-days"
+      "tier": 0,
+      "band": "complete; no remaining setup for the recorded target"
     },
     "proof_transfer_given_correct_complete_proof": {
-      "tier": 3,
-      "band": "1–4 expert person-months"
+      "tier": 0,
+      "band": "complete; no remaining proof work for the recorded target"
+    },
+    "progress_note": "Completed: 90 audited library declarations plus two kernel-evaluated execution checks. The full literal source-enumeration bridge is now checked; this target counts once as complete. Source authors and predecessors retain attribution; no new-mathematics or formalization-priority claim.",
+    "progress_artifact": "formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md",
+    "prior_planning_estimates": {
+      "statement_setup": {
+        "tier": 2,
+        "band": "4–10 expert person-days"
+      },
+      "proof_transfer_given_correct_complete_proof": {
+        "tier": 3,
+        "band": "1–4 expert person-months"
+      },
+      "rationale": "The mathematical cycle/girth interpretation is answered by the full-pattern cumulative reconstruction and a general Lean equivalence. Remaining formalization concerns the literal optimized appendix enumeration and its correspondence to the general checker; this is not an unresolved search for a mathematical cycle criterion.",
+      "first_milestone": "Formalize the literal optimized row/column and half-sum enumerator directly, using the verified general TBC checker as its specification."
     }
   },
   {

@@ -46,11 +46,13 @@ for group in re.findall(r'\[(.*?)\]',t):
 summary=load('open-problem-summary.json');cov=audit['coverage']
 assert summary['eligible_targets']==cov['eligible_targets']==108
 # Keep the discovery audit's original counts, and account for the later checked P34 proof.
-assert cov['verified_lean_proofs']==1 and summary['eligible_verified_lean_proofs']==2
-assert cov['verified_lean_statements']==1 and summary['eligible_verified_lean_statements']==2
+assert cov['verified_lean_proofs']==1 and summary['eligible_verified_lean_proofs']==3
+assert cov['verified_lean_statements']==1 and summary['eligible_verified_lean_statements']==3
 assert summary['eligible_identified_unverified_lean_statements']==cov['identified_unverified_lean_statements_without_proof']==1
 assert summary['eligible_lean_discovery_unassessed']==cov['lean_discovery_unassessed']==0
-assert sum(r['eligible_for_coverage'] and r['lean_statement_status']=='no_exact_statement_identified' for r in rows.values())==105
+assert sum(r['eligible_for_coverage'] and r['lean_statement_status']=='no_exact_statement_identified' for r in rows.values())==104
+assert summary['eligible_targets_with_supporting_lean_proofs']==0
+assert rows['L-P11-forbidden']['lean_proof_status']=='verified_complete_lean_proof'
 assert cov['no_exact_statement_identified_in_bounded_search']==106
 for href in re.findall(r'\]\(([^)]+)\)',(D/'LEAN-COVERAGE.md').read_text()):
  u=urlparse(href)

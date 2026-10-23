@@ -1,0 +1,113 @@
+abbrev F := ZMod 2
+abbrev Word := Fin 252 → F
+
+def indicator (support : List (Fin 252)) : Word :=
+  fun v => if v ∈ support then 1 else 0
+
+def row (data : List (List Nat)) (i : Fin 126) : Word :=
+  fun v => if v.val ∈ data.getD i.val [] then 1 else 0
+
+def sparseParity (ns : List Nat) (word : Word) : F :=
+  (ns.map (fun v => word (Fin.ofNat 252 v))).sum
+
+def expandedX (i : Fin 126) : List Nat :=
+  let a := i.val % 14
+  let u := i.val / 42
+  let v := i.val / 14 % 3
+  (List.range 3).map (fun k => (3*k+v)*14 +
+      ((a+14-(baseline_B.getD u []).getD k 0)%14)) ++
+  (List.range 3).map (fun k => 126+(3*u+k)*14 +
+      ((a+(baseline_B.getD k []).getD v 0)%14))
+
+def expandedZ (i : Fin 126) : List Nat :=
+  let a := i.val % 14
+  let u := i.val / 42
+  let v := i.val / 14 % 3
+  (List.range 3).map (fun k => (3*u+k)*14 +
+      ((a+14-(baseline_B.getD v []).getD k 0)%14)) ++
+  (List.range 3).map (fun k => 126+(3*k+v)*14 +
+      ((a+(baseline_B.getD k []).getD u 0)%14))
+
+/-- Check the explicit circulant expansion and the column-index convention. -/
+theorem expansion_bridge :
+    (∀ i : Fin 126, hx_rows.getD i.val [] = expandedX i) ∧
+    (∀ i : Fin 126, hz_rows.getD i.val [] = expandedZ i) := by decide +kernel
+
+def logicalWord : Word := indicator logical_support
+
+def stabilizerWord : Word := indicator stabilizer_support
+
+def stabilizers : Submodule F Word := Submodule.span F (Set.range (row hz_rows))
+
+/-- The sparse dual witness defines a linear functional on all 252-bit words. -/
+def dualFunctional : Word →ₗ[F] F where
+  toFun x := ∑ v ∈ dual_support, x v
+  map_add' x y := by simp [Finset.sum_add_distrib]
+  map_smul' a x := by simp [Finset.mul_sum]
+
+theorem logical_zero_syndrome : ∀ i : Fin 126,
+    sparseParity (hx_rows.getD i.val []) logicalWord = 0 := by decide +kernel
+
+theorem generators_annihilated : ∀ i : Fin 126,
+    dualFunctional (row hz_rows i) = 0 := by decide +kernel
+
+theorem logical_pairing : dualFunctional logicalWord = 1 := by decide +kernel
+
+/-- Nonmembership concerns the full linear stabilizer span, not just its rows. -/
+theorem logical_not_stabilizer : logicalWord ∉ stabilizers := by
+  have hs : stabilizers ≤ LinearMap.ker dualFunctional := by
+    apply Submodule.span_le.mpr
+    rintro _ ⟨i,rfl⟩
+    exact generators_annihilated i
+  intro h
+  have hz : dualFunctional logicalWord = 0 := hs h
+  rw [logical_pairing] at hz
+  exact one_ne_zero hz
+
+theorem stabilizer_is_row : stabilizerWord = row hz_rows 0 := by decide +kernel
+
+theorem stabilizer_mem : stabilizerWord ∈ stabilizers := by
+  rw [stabilizer_is_row]
+  exact Submodule.subset_span ⟨0,rfl⟩
+
+def sharesCheck (support : List (Fin 252)) (i j : Fin 6) : Bool :=
+  decide (i ≠ j) && hx_rows.any (fun ns =>
+    decide ((support.getD i.val 0).val ∈ ns ∧ (support.getD j.val 0).val ∈ ns))
+
+def k33 (i j : Fin 6) : Bool :=
+  decide ((i.val < 3 ∧ 3 ≤ j.val) ∨ (j.val < 3 ∧ 3 ≤ i.val))
+
+/-- Contracting the nine induced degree-two checks gives K3,3 for both supports. -/
+theorem same_k33_adjacency : ∀ i j : Fin 6,
+    sharesCheck logical_support i j = k33 i j ∧
+    sharesCheck stabilizer_support i j = k33 i j := by decide +kernel
+
+def inducedDegree (support : List (Fin 252)) (ns : List Nat) : Nat :=
+  (support.filter (fun v => decide (v.val ∈ ns))).length
+
+theorem both_nine_degree_two_checks :
+    (∀ ns ∈ hx_rows, inducedDegree logical_support ns = 0 ∨ inducedDegree logical_support ns = 2) ∧
+    (∀ ns ∈ hx_rows, inducedDegree stabilizer_support ns = 0 ∨ inducedDegree stabilizer_support ns = 2) ∧
+    (hx_rows.filter (fun ns => decide (inducedDegree logical_support ns = 2))).length = 9 ∧
+    (hx_rows.filter (fun ns => decide (inducedDegree stabilizer_support ns = 2))).length = 9 := by
+  decide +kernel
+
+/-- Same contracted local adjacency, opposite stabilizer membership. -/
+theorem same_local_topology_different_logical_role :
+    (∀ i j : Fin 6, sharesCheck logical_support i j = sharesCheck stabilizer_support i j) ∧
+    logicalWord ∉ stabilizers ∧ stabilizerWord ∈ stabilizers := by
+  refine ⟨?_,logical_not_stabilizer,stabilizer_mem⟩
+  intro i j
+  exact (same_k33_adjacency i j).1.trans (same_k33_adjacency i j).2.symm
+
+end CyclicLogicalSix
+#print axioms CyclicLogicalSix.expansion_bridge
+#print axioms CyclicLogicalSix.logical_zero_syndrome
+#print axioms CyclicLogicalSix.generators_annihilated
+#print axioms CyclicLogicalSix.logical_pairing
+#print axioms CyclicLogicalSix.logical_not_stabilizer
+#print axioms CyclicLogicalSix.stabilizer_is_row
+#print axioms CyclicLogicalSix.stabilizer_mem
+#print axioms CyclicLogicalSix.same_k33_adjacency
+#print axioms CyclicLogicalSix.both_nine_degree_two_checks
+#print axioms CyclicLogicalSix.same_local_topology_different_logical_role

@@ -2174,7 +2174,201 @@
     "lean_statement_status": "no_exact_statement_identified",
     "lean_proof_status": "no_exact_proof_identified",
     "current_resolution_status": "not_independently_established",
-    "search_family": "quantum_dyadic"
+    "search_family": "quantum_dyadic",
+    "empirical_followup": {
+      "checked_on": "2026-10-23",
+      "status": "fixed_code_all_iterations_min_sum_obstruction_proved_with_bounded_trajectory_census",
+      "source_scope": "Section 7 absorbing invariants and performance-objective research directions; not a new fixed conjecture",
+      "writeup": "formalization/dyadic-performance/README.md",
+      "prior_art": "formalization/dyadic-performance/PRIOR-ART.md",
+      "protocol": "formalization/dyadic-performance/PROTOCOL.md",
+      "artifact": "formalization/dyadic-performance/search/results.json",
+      "codes": 64,
+      "monte_carlo_decodes": 7822000,
+      "exact_low_weight_decodes": 164652,
+      "conclusion": "Forbidden-set completeness remains a separate completed target. Objective comparisons give conditional gains. The fixed-code trajectory follow-up proves an all-iterations integer min-sum obstruction for pair {0,17} in an optimized [[32,8,4]] instance. Across the two representative profiles, symmetry-forced pair failures decrease while other syndrome and logical failures increase, so this is a partial structural explanation rather than a complete performance theory.",
+      "remaining": "No universal objective ranking, complete mechanism for aggregate deterioration or general error-floor predictor. The specific all-iterations obstruction is proved; higher-weight failures and other failure trajectories remain incompletely explained. Fixed-code follow-up is capped and complete.",
+      "lean_proof_added": true,
+      "research_direction_resolved": false,
+      "code_count_meaning": "Prediction studies: 32 draws in each of two populations, 60 distinct invariant fingerprints in their union. Additional optimization: 768 distinct candidate arrays in 16 pools; counts and selected-code ties recorded separately. Fingerprints are not a complete isomorphism classification.",
+      "followup_protocol": "formalization/dyadic-performance/FOLLOWUP-PROTOCOL.md",
+      "followup_artifact": "formalization/dyadic-performance/search/followup-results.json",
+      "optimization_followup": {
+        "report": "formalization/dyadic-performance/OPTIMIZATION.md",
+        "protocol": "formalization/dyadic-performance/OPTIMIZATION-PROTOCOL.md",
+        "selection": "formalization/dyadic-performance/search/optimization-selection.json",
+        "artifact": "formalization/dyadic-performance/search/optimization-results.json",
+        "sensitivity_protocol": "formalization/dyadic-performance/LEXICOGRAPHIC-PROTOCOL.md",
+        "sensitivity_artifact": "formalization/dyadic-performance/search/lexicographic-results.json",
+        "candidate_arrays": 768,
+        "pools": 16,
+        "candidates_per_pool": 48,
+        "parameters": {
+          "n": 48,
+          "k": 28,
+          "d": 4
+        },
+        "actual_monte_carlo_decodes": 2490000,
+        "nominal_arm_frame_evaluations": 3840000,
+        "decoder_reference_checks": 332,
+        "primary_condition": {
+          "p": 0.05,
+          "alpha": 0.8,
+          "iterations": 50
+        },
+        "followup_mean_fer": {
+          "baseline": 0.2813,
+          "shortest_cycle_first": 0.1984875,
+          "absorbing_only": 0.196825,
+          "joint": 0.2093875
+        },
+        "followup_absorbing_minus_shortest_cycle_ci95": [
+          -0.004200000000000002,
+          0.0001250000000000001
+        ],
+        "sensitivity_analysis_adaptive": true,
+        "lean_proof_added": false
+      },
+      "decoder_count_meaning": "3642000 classical executions, 3300000 original quantum sector executions and 880000 targeted fresh quantum sector executions. Exact low-weight decodes and audit checks are separate; shared quantum noise frames are not independent per code.",
+      "quantum_css_followup": {
+        "report": "formalization/dyadic-performance/QUANTUM.md",
+        "source_mapping": "formalization/dyadic-performance/QUANTUM-SOURCE-COMPARISON.md",
+        "protocol": "formalization/dyadic-performance/QUANTUM-PROTOCOL.md",
+        "selection": "formalization/dyadic-performance/search/quantum-selection.json",
+        "artifact": "formalization/dyadic-performance/search/quantum-results.json",
+        "verification": "formalization/dyadic-performance/quantum-verification.json",
+        "source_constructions": [
+          "3.10",
+          "3.11"
+        ],
+        "candidate_pairs": 768,
+        "calibration_pairs": 48,
+        "pools_per_family": 16,
+        "candidates_per_pool": 24,
+        "quantum_strata": [
+          [
+            32,
+            8,
+            4
+          ],
+          [
+            96,
+            40,
+            4
+          ]
+        ],
+        "exact_sector_distances": [
+          4,
+          4
+        ],
+        "success_criterion": "Residual X in rowspan(H_X) and residual Z in rowspan(H_Z)",
+        "primary_setting": {
+          "component_error_probability": 0.02,
+          "normalization": 0.8,
+          "iterations": 50
+        },
+        "channel": "Independent X and Z components, perfect syndrome; not depolarizing or circuit-level",
+        "mean_primary_quantum_fer": {
+          "3.10": {
+            "baseline": 0.141575,
+            "optimized_all_policies": 0.153
+          },
+          "3.11": {
+            "baseline": 0.3186125,
+            "optimized_all_policies": 0.2798125
+          }
+        },
+        "all_optimizer_selections_identical_within_each_pool": true,
+        "actual_quantum_frame_evaluations": 1650000,
+        "actual_sector_decoder_executions": 3300000,
+        "independent_noise_frames": 480000,
+        "nonexact_stabilizer_successes": 51,
+        "lean_proof_added": false,
+        "full_source_direction_resolved": false
+      },
+      "lean_proof_scope": "Five general ambiguity lemmas and twelve concrete decoder-trajectory lemmas, including all-iterations failure for one frozen P11 instance; not completion of the full source research direction.",
+      "targeted_followup": {
+        "report": "formalization/dyadic-performance/TARGETED.md",
+        "protocol": "formalization/dyadic-performance/TARGETED-PROTOCOL.md",
+        "selection": "formalization/dyadic-performance/search/targeted-selection.json",
+        "artifact": "formalization/dyadic-performance/search/targeted-results.json",
+        "verification": "formalization/dyadic-performance/targeted-verification.json",
+        "supporting_lean_source": "formalization/dyadic-rank/QuantumSyndromeAmbiguity.lean",
+        "supporting_lean_declarations": 5,
+        "completed_source_targets_added": 0,
+        "existing_pairs_reused": 22,
+        "observed_profiles": [
+          7,
+          4
+        ],
+        "fresh_independent_noise_frames": 80000,
+        "fresh_quantum_frame_evaluations": 440000,
+        "fresh_sector_decoder_executions": 880000,
+        "exact_binary_sector_responses": 89324,
+        "exact_pauli_pattern_evaluations": 394486,
+        "decoder_reference_checks": 352,
+        "discordant_comparisons": [
+          {
+            "cycle_preferred": 3,
+            "absorbing_preferred": 0,
+            "cycle_minus_absorbing_fer": 0.015225,
+            "representative_differences": [
+              0.0142,
+              0.01625
+            ],
+            "ci95": [
+              0.012117557978984226,
+              0.018332442021015777
+            ],
+            "two_contrast_ci97_5": [
+              0.01167134846522535,
+              0.018778651534774652
+            ]
+          },
+          {
+            "cycle_preferred": 5,
+            "absorbing_preferred": 0,
+            "cycle_minus_absorbing_fer": 0.016300000000000002,
+            "representative_differences": [
+              0.01805,
+              0.01455
+            ],
+            "ci95": [
+              0.013174236337924704,
+              0.0194257636620753
+            ],
+            "two_contrast_ci97_5": [
+              0.012725395949480748,
+              0.019874604050519256
+            ]
+          }
+        ],
+        "research_direction_resolved": false,
+        "bounded_study_complete": true
+      },
+      "exact_low_weight_count_meaning": "75328 classical runs plus 89324 quantum binary-sector runs in the prediction/targeted studies. The 394486 Pauli patterns are assembled evaluations. Additional trajectory observations and original-decoder replays are recorded separately in trajectory_followup.",
+      "trajectory_followup": {
+        "report": "formalization/dyadic-performance/TRAJECTORIES.md",
+        "protocol": "formalization/dyadic-performance/TRAJECTORY-PROTOCOL.md",
+        "artifact": "formalization/dyadic-performance/search/trajectory-results.json",
+        "analysis": "formalization/dyadic-performance/search/trajectory-analysis.json",
+        "verification": "formalization/dyadic-performance/trajectory-verification.json",
+        "lean_source": "formalization/dyadic-rank/DyadicMinSumTrajectory.lean",
+        "lean_declarations": 12,
+        "concrete_main_theorem": "DyadicMinSumTrajectory.pair_0_17_never_matches",
+        "existing_codes_reused": 4,
+        "sector_graph_instances": 8,
+        "binary_pair_trajectories": 3968,
+        "observer_frozen_decoder_comparisons": 3968,
+        "independent_validation_original_replays": 3968,
+        "full_message_reference_traces": 6,
+        "new_noise_samples": 0,
+        "all_iterations_obstruction_scope": "profile 2 representative 0, X sector, pair {0,17}; exact normalization/clipping and uniform prior",
+        "completed_source_targets_added": 0,
+        "research_direction_resolved": false,
+        "bounded_study_complete": true
+      }
+    }
   },
   {
     "id": "L-P11-forbidden",
@@ -2183,7 +2377,7 @@
     "kind": "conjecture_or_question",
     "written_math_status": "precise_math_in_source",
     "eligible_for_coverage": true,
-    "eligibility_note": "Statement must be read with the definitions and hypotheses at the source locator.",
+    "eligibility_note": "Recorded scope is Definition 4.20 cumulative cycle/girth completeness at thresholds six/eight, with missing blocks omitted as in Remark 4.21. The literal ordered appendix-pattern enumeration, its half-sum arithmetic and its correspondence to the native expanded Tanner graph are now checked in Lean. This does not assert author-software identity, exact-count coefficients or elimination of all decoding pathologies.",
     "occurrences": [
       {
         "source_id": "P11",
@@ -2199,11 +2393,54 @@
     ],
     "related_target_ids": [],
     "status_as_of_source": "open_or_proposed_in_source",
-    "proof_assistant_statement_status": "no_exact_statement_identified_in_bounded_search",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "current_resolution_status": "not_independently_established",
-    "search_family": "quantum_dyadic"
+    "proof_assistant_statement_status": "verified_lean_statement",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "current_resolution_status": "proved_in_lean_for_recorded_cycle_contract",
+    "search_family": "quantum_dyadic",
+    "source_comparison": {
+      "readme": "formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md",
+      "source": "formalization/dyadic-rank/DyadicForbiddenAppendix.lean",
+      "checked_on": "2026-10-23",
+      "cycle_contract_answered": true,
+      "published_full_pattern_reconstruction_complete": true,
+      "general_tbc_checker_equivalence_lean_verified": true,
+      "literal_optimized_enumerator_bridge": "general Lean proof, including printed-order triples, ordered row embeddings, support and column constraints",
+      "authors_software_identity_verified": false,
+      "full_source_specific_lean_coverage_promoted": true,
+      "literal_optimized_enumerator_bridge_lean_verified": true
+    },
+    "prior_supporting_lean_artifact": {
+      "readme": "formalization/dyadic-forbidden/README.md",
+      "source": "formalization/dyadic-rank/DyadicForbidden.lean",
+      "checked_on": "2026-10-23",
+      "scope": "41 audited declarations: original prefix/matrix checker plus general zero-voltage TBC equivalence and arbitrary-row relabeling of the 21 source classes. The cumulative full-pattern reconstruction answers the published cycle/girth contract; its literal optimized enumeration bridge is written and independently checked in Python. No author-software identity, exact-count coefficients or all-pathologies claim. Full source-specific Lean target count unchanged."
+    },
+    "prior_bounded_search_status": {
+      "proof_assistant_statement_status": "verified_supporting_lean_statement",
+      "lean_statement_status": "verified_supporting_lean_statement",
+      "lean_proof_status": "verified_supporting_lean_proof"
+    },
+    "verified_artifact": {
+      "readme": "formalization/dyadic-forbidden/README.md",
+      "source": "formalization/dyadic-rank/DyadicForbiddenAppendix.lean",
+      "statement_declaration": "DyadicForbidden.Appendix.appendixForbiddenCheck_spec",
+      "proof_declarations": [
+        "DyadicForbidden.Appendix.enum2_complete",
+        "DyadicForbidden.Appendix.enum3_complete",
+        "DyadicForbidden.Appendix.enum4_complete",
+        "DyadicForbidden.Appendix.appendixForbiddenCheck_eq",
+        "DyadicForbidden.Appendix.appendix_dyadic_six_eight"
+      ],
+      "verification": "formalization/dyadic-forbidden/verification.json",
+      "source_comparison": "formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md",
+      "checked_on": "2026-10-23",
+      "scope": "Complete source-specific cumulative cycle-forbidden criterion at thresholds six/eight (also four): single dyadic permutation per occupied cell, arbitrary finite row/column dimensions and every nonnegative bit-vector fiber dimension. Literal printed 21 eight-step classes and all 42 half-path sums, one rectangle/hexagon class, ordered embeddings on used row names, missing blocks and preexisting cycles. Equality to the original checker and the actual expanded binary Tanner graph. No minimum-four-row or lower-girth hypothesis; no exact-count or decoder/PEG optimality claim.",
+      "checked_dimensions": "all_finite_array_dimensions_and_nonnegative_fiber_dimensions",
+      "audited_library_declarations": 90,
+      "audited_execution_checks": 2,
+      "novelty_note": "Completeness formalization of the source-derived cumulative construction; no new-mathematics or first-formalization claim."
+    }
   },
   {
     "id": "L-P11-n-adic",
@@ -5691,7 +5928,27 @@
         "url": "https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean",
         "finding": "Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited."
       }
-    ]
+    ],
+    "empirical_followup": {
+      "checked_on": "2026-10-23",
+      "status": "bounded_weight_six_census_and_Lean_local_topology_limitation",
+      "writeup": "formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md",
+      "artifact": "formalization/cyclic-lifts/search/logical-six-results.json",
+      "verification": "formalization/cyclic-lifts/logical-six-verification.json",
+      "conclusion": "The baseline has quantum distance six; all three existing comparison codes have distance at least eight. A Lean certificate exhibits identical local K3,3 topology with opposite stabilizer membership. This is a finite partial answer, not a general optimization or decoding theory.",
+      "remaining": "Exact optimized distances above the lower bound, general voltage-labelled logical criteria, causal performance attribution, universal objectives and error-floor prediction remain open.",
+      "lean_proof_scope": "Ten concrete supporting declarations; no full census formalization or completed source target added.",
+      "existing_codes": 4,
+      "sector_instances": 8,
+      "new_codes": 0,
+      "new_noise_samples": 0,
+      "lean_proof_added": true,
+      "research_direction_resolved": false
+    },
+    "supporting_lean_artifact": {
+      "readme": "formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md",
+      "scope": "Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction."
+    }
   },
   {
     "id": "L-P34-logical-partitions",
@@ -5730,7 +5987,27 @@
         "url": "https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean",
         "finding": "Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited."
       }
-    ]
+    ],
+    "empirical_followup": {
+      "checked_on": "2026-10-23",
+      "status": "bounded_weight_six_census_and_Lean_local_topology_limitation",
+      "writeup": "formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md",
+      "artifact": "formalization/cyclic-lifts/search/logical-six-results.json",
+      "verification": "formalization/cyclic-lifts/logical-six-verification.json",
+      "conclusion": "The baseline has quantum distance six; all three existing comparison codes have distance at least eight. A Lean certificate exhibits identical local K3,3 topology with opposite stabilizer membership. This is a finite partial answer, not a general optimization or decoding theory.",
+      "remaining": "Exact optimized distances above the lower bound, general voltage-labelled logical criteria, causal performance attribution, universal objectives and error-floor prediction remain open.",
+      "lean_proof_scope": "Ten concrete supporting declarations; no full census formalization or completed source target added.",
+      "existing_codes": 4,
+      "sector_instances": 8,
+      "new_codes": 0,
+      "new_noise_samples": 0,
+      "lean_proof_added": true,
+      "research_direction_resolved": false
+    },
+    "supporting_lean_artifact": {
+      "readme": "formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md",
+      "scope": "Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction."
+    }
   },
   {
     "id": "L-P34-base-design",
@@ -5769,7 +6046,27 @@
         "url": "https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean",
         "finding": "Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited."
       }
-    ]
+    ],
+    "empirical_followup": {
+      "checked_on": "2026-10-23",
+      "status": "bounded_weight_six_census_and_Lean_local_topology_limitation",
+      "writeup": "formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md",
+      "artifact": "formalization/cyclic-lifts/search/logical-six-results.json",
+      "verification": "formalization/cyclic-lifts/logical-six-verification.json",
+      "conclusion": "The baseline has quantum distance six; all three existing comparison codes have distance at least eight. A Lean certificate exhibits identical local K3,3 topology with opposite stabilizer membership. This is a finite partial answer, not a general optimization or decoding theory.",
+      "remaining": "Exact optimized distances above the lower bound, general voltage-labelled logical criteria, causal performance attribution, universal objectives and error-floor prediction remain open.",
+      "lean_proof_scope": "Ten concrete supporting declarations; no full census formalization or completed source target added.",
+      "existing_codes": 4,
+      "sector_instances": 8,
+      "new_codes": 0,
+      "new_noise_samples": 0,
+      "lean_proof_added": true,
+      "research_direction_resolved": false
+    },
+    "supporting_lean_artifact": {
+      "readme": "formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md",
+      "scope": "Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction."
+    }
   },
   {
     "id": "L-F23-Q2.4",

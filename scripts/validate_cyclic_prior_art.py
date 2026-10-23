@@ -41,10 +41,11 @@ assert row['lean_proof_status']=='verified_complete_lean_proof'
 assert row['novelty_assessment']['review']=='formalization/cyclic-lifts/prior-art-review.json'
 assert row['novelty_assessment']['mathematical_conclusion']=='specialization_of_established_qc_cycle_conditions_and_lp_eight_cycle_bound'
 summary=json.loads((R/'literature/open-problem-summary.json').read_text())
-assert summary['eligible_verified_lean_proofs']==a['complete_lean_targets']==2
+assert a['complete_lean_targets']==2  # Historical milestone; retain the frozen assessment.
+assert summary['eligible_verified_lean_proofs']>=a['complete_lean_targets']
 assert summary['eligible_targets']==a['eligible_targets']==108
 report=(D/'PRIOR-ART-AND-PROOF-COMPARISON.md').read_text()
 for href in re.findall(r'\]\(([^)]+)\)',report):
  u=urlparse(href)
  if not u.scheme and u.path:assert (D/u.path).exists(),href
-print('Validated seven primary-source comparisons, three standard-axiom Lean translations, unchanged 75-theorem library and 2/108 proof coverage. Mathematical/first-formalization priority is not claimed.')
+print('Validated seven primary-source comparisons, three standard-axiom Lean translations, unchanged 75-theorem library and the historical 2/108 proof-coverage milestone. Mathematical/first-formalization priority is not claimed.')

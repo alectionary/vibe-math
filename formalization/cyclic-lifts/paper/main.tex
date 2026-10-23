@@ -34,9 +34,9 @@
   {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1}
 \setlength{\emergencystretch}{2em}
 \title{Rectangle Criteria for Girth Eight in Cyclic Lifted-Product Codes:\\
-A Lean-Verified Answer and Decoding Consequences}
+A Lean-Verified Criterion and Decoding Case Studies}
 \author{}
-\date{October 22, 2026}
+\date{October 22, 2026; revised October 23, 2026}
 
 \begin{document}
 \maketitle
@@ -52,16 +52,19 @@ bijection between eight-cycles and minimum $(4,4)$ absorbing sets, a stopping
 set lower bound, and local syndrome bounds. A connected girth-eight family
 with conductance tending to zero shows that the criterion alone does not
 ensure uniform expansion. Exhaustive optimization at lift size fourteen
-reduces the minimum absorbing-set count from 3,150 to 2,520 while preserving
+reduces the absorbing-set count from 3,150 to the fixed-family minimum of 2,520 while preserving
 252 physical and ten logical qubits. In an independent, paired min-sum
-experiment with 100,000 errors per noise level, the selected code's recovery
+experiment with 100,000 errors per noise level, one structural minimizer's recovery
 failure rate falls from $4.385\%$ to $2.523\%$ at physical error probability
-$4\%$. We distinguish the formal theorem, written structural proofs, exact
-finite computations and statistical decoding evidence, and relate each to
-its mathematical predecessors.
+$4\%$. The girth criterion answers the definite mathematical part of the source
+question; the broader decoding program remains open. The benchmark does not
+isolate absorbing-set count as the cause of improvement: a new exhaustive
+low-weight census gives baseline distance six and distance at least eight
+for the other three codes. We distinguish Lean-checked theorems, written structural
+proofs, exact finite computations and statistical evidence.
 \end{abstract}
 
-\section{The open question and the answer}\label{sec:question}
+\section{The source question and the scope of our answer}\label{sec:question}
 
 In Section~5 of \emph{Graphical Analysis of Lifted Product Code
 Constructions}, Freij-Hollanti, Morris and \v Sapokait\.{e} explicitly ask
@@ -76,9 +79,10 @@ program.
 
 We answer the first part by an equivalence in the entries of the original
 base matrix, not a test requiring construction of the much larger binary
-parity-check matrix. The second part is addressed by precise consequences
+parity-check matrix. For the second part we establish specific consequences
 for degree-three graphs, a limitation on expansion, and a finite optimization
-and decoding study. Table~\ref{tab:scope} specifies the extent of each answer.
+and decoding study. These are partial answers to the broader research
+program, not a general performance characterization. Table~\ref{tab:scope} specifies the extent of each answer.
 The degree-three conclusions concern fully populated $3\times3$ bases;
 the girth theorem holds in every dimension with at least two rows and two
 columns.
@@ -93,10 +97,10 @@ Sufficient girth conditions & A necessary and sufficient rectangle-pair criterio
 Absorbing sets & In degree three, minimum sets are exactly the four-variable eight-cycle supports & Lean bijection; written $(4,4)$ profile \\
 Stopping sets and syndromes & Stopping size at least six; local cancellation bounds & Lean general lower bound and witness \\
 Connectivity and expansion & Connectivity is separate; connected girth-eight graphs can have vanishing conductance & Written argument; finite checks \\
-Finite design and decoding & Exact fixed-size minimum; paired decoder comparison & Exhaustive search and Monte Carlo \\
+Finite design and decoding & Exact minimum in the specified normalized family; paired decoder comparison & Exhaustive search and Monte Carlo \\
 \bottomrule
 \end{tabular}
-\caption{The answer to the two parts of the source question, with evidence levels.}
+\caption{Completed girth criterion and partial answers to the broader decoding program, with evidence levels.}
 \label{tab:scope}
 \end{table}
 
@@ -837,7 +841,8 @@ $B_4=B(1,4,6,2)$ & 2,520 & 0.035\% & 0.278\% & 2.607\% \\
 \bottomrule
 \end{tabular}
 \caption{Recovery failure rates, 100,000 trials per cell. Every code
-has 252 physical qubits, ten logical qubits, connectedness and girth eight.}
+has 252 physical qubits, ten logical qubits, connectedness and girth eight;
+quantum distance is not matched (Section~\ref{sec:logical-census}).}
 \label{tab:decoding}
 \end{table}
 
@@ -879,8 +884,11 @@ The improvement includes a large reduction in logical miscorrections.
 Mean iterations, counting failures at the limit, decrease from 9.689
 for $B_0$ to 8.857 for $B_2$. Absorbing-set count is a structural
 selection objective; the exponent changes also affect algebraic and
-other graph properties, so the experiment does not isolate that count
-as the sole causal variable.
+other graph properties. The census in Section~\ref{sec:logical-census} gives baseline distance six
+and distance at least eight for the other codes. Thus length and rate
+matching must not be read as distance matching. The experiment establishes an outcome for these codes,
+channel and decoder, not an isolated causal effect of absorbing-set count
+or a universal objective ranking.
 
 \subsection{Exhaustive targeted errors and the earlier design framework}
 We additionally decode every exact four-variable absorbing support,
@@ -895,8 +903,9 @@ All failing baseline supports are mixed. Their residuals have weight
 six in 294 cases and weight eight in 84 cases. Explicit support
 witnesses are checked for zero syndrome and exclusion from
 $\row(\HZ)$. The weight-six witness bounds the baseline's distance
-in the tested Pauli sector by six. No exact optimized-code distance
-is assigned here. Under Bernoulli noise, these disjoint exact supports
+in the tested Pauli sector by six. The exhaustive census below sharpens the baseline distance to six and
+proves a lower bound of eight for each other code; it does not assign an
+exact optimized distance. Under Bernoulli noise, these disjoint exact supports
 contribute $378p^4(1-p)^{248}$ to the baseline's failure probability;
 they are one error subclass, not an estimate of the full failure rate.
 
@@ -910,6 +919,76 @@ three-column or three-row relation. This links our example to their
 low-weight-logical design framework without assigning an optimized
 distance or claiming a new decoder. The finite optimum and the
 specified min-sum benchmark are the concrete contributions of this study.
+
+\subsection{Low-weight logical census and a limit of local topology}\label{sec:logical-census}
+
+The source's conclusion specifically asks how row/column constraints
+producing low-weight logical operators translate into Tanner-graph
+properties~\cite{FHM2026,RDV2025}. We address a finite part of that question
+using the same four benchmark codes, with no new noise or decoder settings.
+For each Pauli sector, distinct nonzero column syndromes and distinct
+unordered-pair syndromes exclude kernel words of weights two and four.
+Odd column degree three excludes all odd-weight kernel words. These checks
+exclude every nonzero kernel word below weight six.
+
+We enumerate all $\binom{252}{3}=2{,}635{,}500$ column triples per sector,
+sort by exact syndrome, and join equal-syndrome triples. Lower-weight
+exclusion guarantees disjointness of distinct triples in a bucket.
+Every weight-six kernel support has exactly ten unordered $3+3$
+partitions. Each resulting support is tested against the full companion
+stabilizer row span. Both sectors give the following identical counts:
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{lrrl}
+\toprule
+Code & Weight-six stabilizers & Weight-six logical supports & Quantum distance \\
+\midrule
+$B_0$ & 126 & 14 & $6$ \\
+$B(1,2,3,8)$ & 126 & 0 & $\geq8$ \\
+$B_2$ & 126 & 0 & $\geq8$ \\
+$B_4$ & 126 & 0 & $\geq8$ \\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive finite census, per Pauli sector. A lower bound of eight
+is not an assertion of exact distance eight.}
+\label{tab:logical-six}
+\end{table}
+
+This identifies a material confound in the interpretation of
+Table~\ref{tab:decoding}: the better-performing codes also exclude the
+baseline's minimum-weight logical class. The experiment cannot separate
+that algebraic change from the absorbing-count reduction. The census
+supports a specific design check---exclude low-weight nonstabilizer kernel
+supports---but does not prove that this check alone predicts the measured
+failure rates.
+
+There is a concrete limit to a purely local graph description. With the
+artifact's zero-based column indexing, the baseline support
+$\{28,56,84,126,184,244\}$ has zero syndrome and is not a stabilizer.
+The support $\{0,14,28,126,168,210\}$ is a companion stabilizer row.
+Both induced Tanner subgraphs consist of six variables and nine
+checks of degree two; contracting the checks gives $K_{3,3}$ in both
+cases. Thus their local unlabeled topology agrees, while their quantum
+roles differ. A test using only that topology cannot distinguish these
+two supports; the global companion row space is essential.
+
+The supplementary Lean file \texttt{CyclicLogicalSix.lean} checks the
+actual circulant expansion, both local adjacency certificates and a dual
+linear functional that annihilates every companion row but evaluates to
+one on the logical support. Linearity proves nonmembership in the entire
+stabilizer span. Its ten audited theorem declarations are supplied in the
+source bundle. The exhaustive distance lower bounds and census remain
+finite computational evidence; they are not formalized by this small
+certificate. The historical frozen revision linked in Appendix~A covers
+the earlier girth/structural development; this new certificate is included
+in the updated bundle.
+
+The partition mechanism and low-weight-logical design motivation are due
+to Raveendran, Declercq and Vasi\'c~\cite{RDV2025}. Our finite census and
+checked same-topology/different-role example apply that research direction
+to these benchmark instances; no priority for the general mechanism is
+claimed.
 
 \section{Reproducibility and remaining scope}\label{sec:artifact}
 
@@ -930,10 +1009,12 @@ stored per-trial flags. No physical experiments were performed.
 
 The precise girth-condition question is settled by
 Theorem~\ref{thm:main}. Its decoding-properties continuation receives
-three complementary answers: structural consequences, a counterexample
+three partial answers: structural consequences, a counterexample
 to uniform expansion from girth alone, and an optimized finite code with
-a measured recovery improvement. A general classification across
-arbitrary degrees, exact optimized quantum distances, optimization over
+a measured recovery improvement at the specified noise levels. These results
+do not complete the source's broader decoding-properties program. A general classification across
+arbitrary degrees, exact optimized quantum distances above the new lower
+bound, optimization over
 lift sizes, and comparisons across decoders and noisy measurement models
 remain separate tasks. The absorbing-support bijection and stopping lower bound are now
 Lean-checked general theorems. The elementary odd-check count, the

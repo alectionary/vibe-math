@@ -1,0 +1,176 @@
+
+def qClass (e : Fin 128) : Fin 7 := qClassData.getD e.val 0
+def rClass (e : Fin 128) : Fin 7 := rClassData.getD e.val 0
+def pClass (v : Fin 32) : Fin 3 := pClassData.getD v.val 0
+def edgeVariable (e : Fin 128) : Nat := edgeVariableData.getD e.val 0
+def checkInputs (e : Fin 128) : List (Fin 128) := checkInputsData.getD e.val []
+def postInputs (v : Nat) : List (Fin 128) := postInputsData.getD v []
+def target (c : Fin 16) : Bool := targetData.getD c.val false
+
+def expandedRow (c : Nat) : List Nat :=
+  (List.range 8).map (fun j => 4*j + Nat.xor (c % 4)
+    ((labelRows.getD (c/4) []).getD j 0))
+
+/-- Concrete data really enumerate the original expanded Tanner graph. -/
+theorem graph_bridge :
+    (∀ e : Fin 128, edgeVariable e = (expandedRow (e.val/8)).getD (e.val%8) 0) ∧
+    (∀ e : Fin 128, checkInputs e = (List.finRange 128).filter
+      (fun f => decide (e.val/8 = f.val/8 ∧ f ≠ e))) ∧
+    (∀ v : Fin 32, postInputs v.val = (List.finRange 128).filter
+      (fun e => decide (edgeVariable e = v.val))) := by decide +kernel
+
+/-- Check-message sign, including all incoming negative messages. -/
+def signs (xs : List Int) : Bool :=
+  (xs.map (fun x => decide (x < 0))).foldr Bool.xor false
+
+/-- The original C++ initializes its excluded-edge minimum at 1000*scale. -/
+def magnitude (xs : List Int) : Nat :=
+  (xs.map Int.natAbs).foldr min (1000*2^20)
+
+def clip (x : Int) : Int := max (-(50*2^20)) (min (50*2^20) x)
+
+def check (s : Bool) (xs : List Int) : Int :=
+  let mag : Int := ((800 * magnitude xs + 500) / 1000 : Nat)
+  clip (if s ^^ signs xs then -mag else mag)
+
+def messages (q : Fin 128 → Int) (e : Fin 128) : Int :=
+  check (targetData.getD (e.val/8) false) ((checkInputs e).map q)
+
+def posterior (prior : Int) (q : Fin 128 → Int) (v : Nat) : Int :=
+  prior + ((postInputs v).map (messages q)).sum
+
+/-- Exact flooding update: posterior minus this edge's check message, clipped. -/
+def step (prior : Int) (q : Fin 128 → Int) (e : Fin 128) : Int :=
+  clip (posterior prior q (edgeVariable e) - messages q e)
+
+def reducedR (q : Fin 7 → Int) (c : Fin 7) : Int :=
+  check (rTarget.getD c.val false) ((rInputClasses.getD c.val []).map q)
+
+def reducedQ (prior : Int) (r : Fin 7 → Int) (c : Fin 7) : Int :=
+  clip (prior + ((qInputClasses.getD c.val []).map r).sum)
+
+def reducedP (prior : Int) (r : Fin 7 → Int) (c : Fin 3) : Int :=
+  prior + ((pInputClasses.getD c.val []).map r).sum
+
+/-- Repeated even multiplicities cancel in the sign and do not change a minimum.
+This proves the *actual* check updates factor through seven classes, rather than
+assuming an abstract equivariant decoder. -/
+theorem check_factors (q : Fin 7 → Int) (e : Fin 128) :
+    messages (fun j => q (qClass j)) e = reducedR q (rClass e) := by
+  fin_cases e <;>
+    simp [messages, checkInputs, checkInputsData, qClass, qClassData, rClass,
+      rClassData, reducedR, rInputClasses, rTarget, targetData, check, signs,
+      magnitude, Bool.xor_assoc, Bool.xor_left_comm, Bool.xor_comm,
+      min_assoc, min_left_comm, min_comm]
+
+/-- Full edge multiplicities are retained in sums at variable nodes. -/
+theorem variable_factors (prior : Int) (r : Fin 7 → Int) (e : Fin 128) :
+    clip (prior + ((postInputs (edgeVariable e)).map (fun j => r (rClass j))).sum
+      - r (rClass e)) = reducedQ prior r (qClass e) := by
+  fin_cases e <;>
+    simp [postInputs, postInputsData, edgeVariable, edgeVariableData, rClass,
+      rClassData, qClass, qClassData, reducedQ, qInputClasses] <;>
+    congr 1 <;> abel
+
+theorem posterior_factors (prior : Int) (r : Fin 7 → Int) (v : Fin 32) :
+    prior + ((postInputs v.val).map (fun j => r (rClass j))).sum =
+      reducedP prior r (pClass v) := by
+  fin_cases v <;>
+    simp [postInputs, postInputsData, rClass, rClassData, reducedP, pClass,
+      pClassData, pInputClasses] <;> abel
+
+theorem step_factors (prior : Int) (q : Fin 7 → Int) :
+    step prior (fun e => q (qClass e)) =
+      fun e => reducedQ prior (reducedR q) (qClass e) := by
+  have hr : messages (fun e => q (qClass e)) = fun e => reducedR q (rClass e) :=
+    funext (check_factors q)
+  funext e
+  simp only [step, posterior, hr]
+  exact variable_factors prior (reducedR q) e
+
+def state (prior : Int) : Nat → (Fin 128 → Int)
+  | 0 => fun _ => clip prior
+  | n+1 => step prior (state prior n)
+
+/-- Invariant holds for every iteration count, not just the observed fifty. -/
+theorem state_factors (prior : Int) (n : Nat) :
+    ∃ q : Fin 7 → Int, state prior n = fun e => q (qClass e) := by
+  induction n with
+  | zero => exact ⟨fun _ => clip prior, rfl⟩
+  | succ n ih =>
+    obtain ⟨q,hq⟩ := ih
+    refine ⟨reducedQ prior (reducedR q), ?_⟩
+    change step prior (state prior n) = _
+    rw [hq, step_factors]
+
+def syndrome (word : Nat → Bool) (c : Fin 16) : Bool :=
+  ((expandedRow c.val).map word).foldr Bool.xor false
+
+def hardDecision (prior : Int) (n : Nat) (v : Nat) : Bool :=
+  decide (posterior prior (state prior n) v < 0)
+
+theorem row_class_bridge (c : Fin 16) :
+    (expandedRow c.val).map (fun v => pClassData.getD v 0) =
+      rowClassesData.getD c.val [] := by revert c; decide +kernel
+
+/-- Every row meets each belief class in an even number of variables. -/
+theorem belief_class_zero_syndrome (bits : Fin 3 → Bool) (c : Fin 16) :
+    syndrome (fun v => bits (pClassData.getD v 0)) c = false := by
+  unfold syndrome
+  change ((expandedRow c.val).map (bits ∘ (fun v => pClassData.getD v 0))).foldr Bool.xor false = false
+  rw [← List.map_map, row_class_bridge]
+  fin_cases c <;> simp [rowClassesData, Bool.xor_assoc, Bool.xor_left_comm, Bool.xor_comm]
+
+/-- All-iterations conclusion for the concrete graph and exact min-sum arithmetic.
+The prior may be arbitrary; the frozen experiment uses 4080869. -/
+theorem all_iterations_zero_syndrome (prior : Int) (n : Nat) (c : Fin 16) :
+    syndrome (hardDecision prior n) c = false := by
+  obtain ⟨q,hq⟩ := state_factors prior n
+  have h : ∀ v : Fin 32, hardDecision prior n v.val =
+      decide (reducedP prior (reducedR q) (pClass v) < 0) := by
+    intro v
+    have hr : messages (fun e => q (qClass e)) = fun e => reducedR q (rClass e) :=
+      funext (check_factors q)
+    simp only [hardDecision, hq, posterior, hr, posterior_factors]
+  have hrow : ∀ v ∈ expandedRow c.val, v < 32 := by
+    fin_cases c <;> decide +kernel
+  unfold syndrome
+  have hm : (expandedRow c.val).map (hardDecision prior n) =
+      (expandedRow c.val).map
+        (fun v => decide (reducedP prior (reducedR q) (pClassData.getD v 0) < 0)) := by
+    apply List.map_congr_left
+    intro v hv
+    exact h ⟨v, hrow v hv⟩
+  rw [hm]
+  exact belief_class_zero_syndrome
+    (fun k => decide (reducedP prior (reducedR q) k < 0)) c
+
+/-- The target is exactly the syndrome of the injected pair {0,17}. -/
+theorem target_is_pair : ∀ c : Fin 16,
+    target c = syndrome (fun v => decide (v=0 ∨ v=17)) c := by decide +kernel
+
+theorem target_nonzero : target (5 : Fin 16) = true := by decide +kernel
+
+/-- The injected error has a solution, but this decoder cannot reach its syndrome
+at any iteration. This is stronger than a finite fifty-iteration observation. -/
+theorem pair_0_17_never_matches (prior : Int) (n : Nat) :
+    ¬ (∀ c : Fin 16, syndrome (hardDecision prior n) c = target c) := by
+  intro h
+  have hc := h 5
+  rw [all_iterations_zero_syndrome, target_nonzero] at hc
+  cases hc
+
+end DyadicMinSumTrajectory
+
+#print axioms DyadicMinSumTrajectory.graph_bridge
+#print axioms DyadicMinSumTrajectory.check_factors
+#print axioms DyadicMinSumTrajectory.variable_factors
+#print axioms DyadicMinSumTrajectory.posterior_factors
+#print axioms DyadicMinSumTrajectory.step_factors
+#print axioms DyadicMinSumTrajectory.state_factors
+#print axioms DyadicMinSumTrajectory.row_class_bridge
+#print axioms DyadicMinSumTrajectory.belief_class_zero_syndrome
+#print axioms DyadicMinSumTrajectory.all_iterations_zero_syndrome
+#print axioms DyadicMinSumTrajectory.target_is_pair
+#print axioms DyadicMinSumTrajectory.target_nonzero
+#print axioms DyadicMinSumTrajectory.pair_0_17_never_matches

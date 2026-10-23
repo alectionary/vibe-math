@@ -19,7 +19,7 @@ for id,c in legacy.items():
 for r in rows:
  assert r['title'] and r['eligibility_note'] and r['occurrences']
  assert set(r['related_target_ids']) <= ids and r['id'] not in r['related_target_ids']
- if r['id'] in ('L-P11-rank-converse','L-P34-girth-eight'):
+ if r['id'] in ('L-P11-rank-converse','L-P34-girth-eight','L-P11-forbidden'):
   assert r['lean_statement_status']=='verified_lean_statement'
   assert r['lean_proof_status']=='verified_complete_lean_proof'
   assert (R/r['verified_artifact']['readme']).exists()
@@ -62,8 +62,8 @@ assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_te
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
 assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
 assert summary['not_fully_assessed']==1
-assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==2
-assert summary['eligible_verified_lean_proofs']==2
+assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==3
+assert summary['eligible_verified_lean_proofs']==3
 assert summary['eligible_targets_with_verified_finite_cases']==0
 assert all(not r['eligible_for_coverage'] for r in rows if r['status_as_of_source']=='withdrawn_historical_only')
 assert next(p for p in coverage if p['paper_id']=='P10')['target_count'] is None

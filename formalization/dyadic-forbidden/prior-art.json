@@ -1,0 +1,118 @@
+{
+  "checked_on": "2026-10-23",
+  "target_id": "L-P11-forbidden",
+  "question_excerpt": "whether forbidden sets are complete for lengths 6 and 8 pathologies",
+  "sources": [
+    {
+      "id": "P11",
+      "title": "Combinatorial Analysis of Dyadic and Quasi-Dyadic Codes",
+      "authors": [
+        "Anthony Gómez-Fonseca",
+        "Gretchen L. Matthews",
+        "Kirsten D. Morris",
+        "Tefjol Pllaha"
+      ],
+      "url": "https://arxiv.org/html/2605.01942v1",
+      "submitted": "2026-05-03",
+      "version_history_observed": [
+        "v1"
+      ],
+      "locators": {
+        "question": "Section 7; PDF page 21",
+        "semantic_definition": "Definition 4.20; PDF page 15",
+        "partial_blocks": "Remark 4.21",
+        "calls_without_body": "Algorithms 2 and 3",
+        "counting_scope": "Theorem 4.9, Lemma 4.10, Remark 4.12; Appendix A",
+        "row_patterns": "Appendix A.2.2 before Theorem A.6; PDF page 26"
+      },
+      "local_html_sha256": "acbb86b998c5f9b73e4106f686da77217058bdbd60b512e119c072bb4b3c3373",
+      "review": "Relevant definitions, algorithms, conclusion and appendix passages read in HTML; locators checked against PDF text. Primary PDF downloaded and page 26 rendered and visually inspected for the 21 row patterns; list matches as a set, with a different ordering in the Lean/Python transcription. Web PDF screenshots failed with cache-miss errors.",
+      "pdf_sha256": "8ea378dbe059434ef6ede9e1dd48ed704106083c84537b5ca59e7cb3f4f1a457"
+    },
+    {
+      "id": "GSM-PEG-2023",
+      "title": "A Low Complexity PEG-like Algorithm to Construct Quasi-Cyclic LDPC Codes",
+      "authors": [
+        "Anthony Gómez-Fonseca",
+        "Roxana Smarandache",
+        "David G. M. Mitchell"
+      ],
+      "year": 2023,
+      "doi": "10.1109/ISTC57237.2023.10273481",
+      "url": "https://par.nsf.gov/servlets/purl/10487343",
+      "pdf_sha256": "acc717bf63509121e988f81d661b3b5f523b72a1e3f75f69f3687c684d6c5890",
+      "locators": [
+        "Definition 1 and Example 1, PDF page 2"
+      ],
+      "review": "Full five-page primary manuscript retrieved with curl and relevant forbidden-set formulas read. Web open returned 502. Explicit four-/six-cycle forbidden sets are supplied for a normalized QC array; cyclic and dyadic label groups are distinct. Example 1 explicitly unions four-cycle and additional six-cycle forbidden sets, supporting the cumulative reconstruction."
+    },
+    {
+      "id": "GSM-CYCLES-2023",
+      "title": "An Efficient Strategy to Count Cycles in the Tanner Graph of Quasi-Cyclic LDPC Codes",
+      "authors": [
+        "Anthony Gómez-Fonseca",
+        "Roxana Smarandache",
+        "David G. M. Mitchell"
+      ],
+      "year": 2023,
+      "doi": "10.1109/JSAIT.2023.3315585",
+      "url": "https://par.nsf.gov/servlets/purl/10463749",
+      "pdf_sha256": "d30e1412f1660603238b2eddee18357d2ccd40915b797ae29489c0bd02ed6073",
+      "locators": [
+        "Lemma 11 and Remark 12, PDF page 9"
+      ],
+      "review": "Primary author manuscript retrieved and relevant cycle/closed-walk distinction and references read. Lemma 11 credits Karimi-Banihashemi 2013; that earlier paper was not separately inspected. Explicitly explains why a doubled girth cycle is not a simple cycle of twice the length."
+    },
+    {
+      "id": "SM-2021",
+      "title": "A Unifying Framework to Construct QC-LDPC Tanner Graphs of Desired Girth",
+      "authors": [
+        "Roxana Smarandache",
+        "David G. M. Mitchell"
+      ],
+      "url": "https://arxiv.org/abs/2108.01637v1",
+      "review": "Abstract and primary version metadata checked; not a theorem-by-theorem audit."
+    },
+    {
+      "id": "GOMEZ-THESIS-2025",
+      "title": "Efficient Algorithms for the Construction of QC-LDPC Codes from a Girth and Cycle Analysis",
+      "url": "https://curate.nd.edu/articles/dataset/Efficient_Algorithms_for_the_Construction_of_QC-LDPC_Codes_from_a_Girth_and_Cycle_Analysis/28786166",
+      "review": "Search lead only: repository open returned 403; no claim about unseen proof contents."
+    }
+  ],
+  "search_queries": [
+    "\"dyadic\" \"forbidden sets\" cycles completeness",
+    "\"Combinatorial Analysis of Dyadic and Quasi-Dyadic Codes\"",
+    "LDPC \"forbidden sets\" Smarandache Mitchell 2021",
+    "\"quasi-dyadic\" \"PEG\" forbidden",
+    "\"quasi-dyadic\" \"cycle\" \"completeness\"",
+    "\"A Low Complexity PEG-like Algorithm\" pdf",
+    "\"An Efficient Strategy to Count Cycles\" pdf Gómez Fonseca",
+    "site:arxiv.org \"dyadic\" \"forbidden sets\" -2605.01942",
+    "site:github.com Lean \"dyadic\" \"forbidden\"",
+    "\"Combinatorial Analysis of Dyadic and Quasi-Dyadic Codes\" \"completeness\" -site:themoonlight.io -site:emergentmind.com -site:kurate.org",
+    "\"Gómez-Fonseca\" \"forbidden\" \"2026\" completeness",
+    "\"Combinatorial Analysis of Dyadic\" github forbidden",
+    "\"Gómez-Fonseca\" dyadic github code"
+  ],
+  "bounded_search_conclusion": "No exact later resolution or exact external Lean implementation identified in these lexical queries. Unrelated dyadic type-system and analytic matches were rejected. This is not an exhaustive citation or repository search.",
+  "statement_fidelity": {
+    "group": "Fin ell → ZMod 2, not ZMod (2^ell)",
+    "array": "At most one permutation per occupied cell; Option.none means absent",
+    "badness": "Native simple cycle of length at most the threshold; acyclic graphs do not count",
+    "author_routine": "Published primitive has a semantic contract but no unique body; full-pattern cumulative reconstruction is specified in SOURCE-COMPARISON.md.",
+    "concrete_procedure": "Enumerate bounded supported base walks; check zero displacement and nonrepeating vertex/fiber tail",
+    "known_diagnostics": "Odd-occurrence-only coefficient solving misses doubled rectangles; zero closure alone does not certify exact cycle length"
+  },
+  "claims": {
+    "constructive_completeness": "General Lean criterion and terminating checker, connected to expanded binary matrices",
+    "authors_specific_routine": "Software identity not established; the mathematical reconstruction realizes the published cycle/girth contract.",
+    "novel_mathematical_theorem": false,
+    "first_formalization_claim": false,
+    "source_target_marked_fully_resolved": true,
+    "source_cycle_contract_answered": true,
+    "source_reconstruction_equivalence": "General Lean proof of the literal printed-order appendix enumeration, including ordered used-row embeddings, all 42 half-path sums and column/support conditions, with equality to the prefix checker and native expanded binary matrix cycle specification at thresholds six/eight.",
+    "optimized_pattern_enumerator_equivalence_in_lean": true,
+    "resolution_scope": "Cumulative cycle/girth interpretation of Definition 4.20; author-software identity, exact multiplicity coefficients and all decoding pathologies are not claimed."
+  }
+}

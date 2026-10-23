@@ -73,3 +73,13 @@ certificates. Observed axioms are only `propext`, `Classical.choice`, `Quot.soun
 The four odd checks in the elementary `(4,4)` profile, companion-stabilizer
 identification, and conductance argument retain written proofs. Search optimality
 and decoding experiments have computational audits, not Lean proofs.
+
+## October 23 logical-support supplement
+
+The updated source bundle additionally contains `CyclicLogicalSix.lean`, with ten audited declarations. It verifies an explicit baseline logical word, its dual nonmembership witness, and an identically shaped stabilizer support. The graph expansion, local `K3,3` adjacency and complete stabilizer-span distinction are checked. The full weight-six census and distance bounds are computational, not Lean-certified enumeration. This supplement is included in the bundle; it is not part of the historical immutable revision linked above. The original 118-report count remains historical and separate.
+
+From the bundle's `artifact/formalization/dyadic-rank`, run:
+
+```sh
+lake -f lakefile-cyclic.toml env lean CyclicLogicalSix.lean
+```

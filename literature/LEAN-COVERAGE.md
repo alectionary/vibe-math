@@ -1,12 +1,12 @@
 # Lean coverage assessment
 
-Checked October 22, 2026. **Two of 108 eligible open-problem targets have complete verified Lean proofs: 1.85%.** One other target has an identified Lean statement without a build audit or proof. For the other 105 targets, the recorded bounded searches have not identified an exact Lean statement. This is coverage of the inventoried questions, not the fraction of every theorem or proof step in the dissertations and papers.
+Checked October 23, 2026. **Three of 108 eligible open-problem targets have complete verified Lean proofs: 2.78%.** P11 now includes the fully checked literal appendix-enumeration correspondence. One other target has an identified Lean statement without a build audit or proof. For the other 104 targets, the recorded bounded searches have not identified an exact Lean statement. This is coverage of the inventoried questions, not the fraction of every theorem or proof step in the dissertations and papers.
 
 | Disjoint target category | Count | Fraction of 108 |
 | --- | ---: | ---: |
-| Complete checked Lean proof and matching statement | 2 | 1.85% |
+| Complete checked Lean proof and matching statement | 3 | 2.78% |
 | Additional identified Lean statement, without a verified proof or build audit | 1 | 0.93% |
-| No exact Lean statement identified in bounded discovery | 105 | 97.22% |
+| No exact Lean statement identified in bounded discovery | 104 | 96.30% |
 | Discovery still unassessed | 0 | 0% |
 
 The statement-only entry is Conway’s 99-graph existence problem, recorded as Mathlib’s `proof_wanted conway_99`. That is an explicit request for a proof, not a result settling existence or nonexistence. [Pinned source](https://github.com/leanprover-community/mathlib4/blob/0db93bb44438a03c84317df5f033136cdd14c91f/Wanted/Combinatorics/SimpleGraph/StronglyRegular.lean).
@@ -15,9 +15,11 @@ The entry already proved at the time of the discovery audit was **L-P11-rank-con
 
 ## Supporting formalization after this assessment
 
-The subsequent P34 work now has **75 checked Lean theorems**. A general simple eight-cycle combines with the complete four/six-cycle tests to give a necessary-and-sufficient girth-eight criterion, including the expanded binary matrix theorem and an equivalent formulation using pairs of 2-by-2 rectangles. The recorded `L-P34-girth-eight` target now has a verified statement and complete proof for cyclic permutation blocks with at least two rows and columns and positive lift size. This raises current proof coverage to **2/108**. The older discovery audit below and its JSON remain historical evidence, not the current proof count. Other graph-property optimization targets and priority claims remain separate. [Exact checked scope, source credit and reproducibility](../formalization/cyclic-lifts/README.md).
+The subsequent P34 work now has **75 checked Lean theorems**. A general simple eight-cycle combines with the complete four/six-cycle tests to give a necessary-and-sufficient girth-eight criterion, including the expanded binary matrix theorem and an equivalent formulation using pairs of 2-by-2 rectangles. The recorded `L-P34-girth-eight` target now has a verified statement and complete proof for cyclic permutation blocks with at least two rows and columns and positive lift size. At that milestone proof coverage reached **2/108**; P11 subsequently raises it to three targets. The older discovery audit below and its JSON remain historical evidence, not the current proof count. Other graph-property optimization targets and priority claims remain separate. [Exact checked scope, source credit and reproducibility](../formalization/cyclic-lifts/README.md).
 
 The completed [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching proof mechanisms. The P34 contribution is a checked specialization and integration; the coverage count is not a count of new mathematical discoveries. First Lean formalization is unestablished.
+
+The October 23 [P11 literal appendix proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md) completes the cumulative cycle/girth contract: printed-order 21 classes and 42 half sums, ordered embeddings of used rows, column/support constraints and native expanded-matrix specification are all checked in Lean. The investigation has 90 audited library declarations plus two kernel-evaluated execution checks. `L-P11-forbidden` now counts once as complete, bringing current coverage to **3/108**. Exact multiplicity formulas, decoder/PEG optimization and unpublished author software remain outside this recorded target. This is formalization coverage, not an assertion of mathematical novelty.
 
 ## The previously unassessed targets
 

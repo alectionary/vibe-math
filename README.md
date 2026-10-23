@@ -2,11 +2,16 @@
 
 A research collection covering 20 doctoral dissertations from 2022–2026: 16 mathematics, 3 statistics and 1 computing (graph theory). The source PDFs total 3,013 pages; exact metadata and SHA-256 hashes are in `source-manifest.json`.
 
+[Publication status and dated audit records](PUBLICATION-STATUS.md).
+
 ## Start here
 
 - **Research lessons:** [what worked and the workflow for the next investigation](RESEARCH-LESSONS.md).
 - **Research paper:** [dyadic rank–support formalization (PDF)](formalization/dyadic-rank/paper/output/pdf/dyadic-rank-support.pdf) and [LaTeX source](formalization/dyadic-rank/paper/main.tex).
+- **Cyclic lifted-product paper:** [girth-eight characterization and decoding consequences (PDF)](formalization/cyclic-lifts/paper/output/pdf/cyclic-lift-girth-eight.pdf), [results and evidence](formalization/cyclic-lifts/README.md), and [complete Lean proof guide](formalization/cyclic-lifts/paper/LEAN-PROOF-GUIDE.md).
 
+- **Dyadic forbidden-set investigation:** [exact question, prior art, counterchecks and complete Lean checker](formalization/dyadic-forbidden/README.md).
+- **Dyadic decoding objectives:** [prior art and prediction studies](formalization/dyadic-performance/README.md), [classical optimization](formalization/dyadic-performance/OPTIMIZATION.md), [literal P11 quantum CSS experiments with stabilizer-aware scoring](formalization/dyadic-performance/QUANTUM.md), and [bounded objective disagreements with exact low-weight ambiguity bounds](formalization/dyadic-performance/TARGETED.md), and [a Lean-checked decoder trajectory obstruction](formalization/dyadic-performance/TRAJECTORIES.md).
 - **Dyadic rank theorem:** [complete general Lean proof](formalization/dyadic-rank/README.md).
 - **Lean difficulty estimates:** [per-question ratings and assumptions](planning/LEAN-DIFFICULTY.md) and [searchable estimates](planning/difficulty.html).
 - **Expanded scholarly search:** [coauthors, citation trails, new questions and counterchecks](literature/SCHOLARLY-EXPANSION.md).
@@ -27,6 +32,23 @@ The AI-assisted reviews map principal mathematical content: definitions and prec
 Open-question status is as described in each dissertation. Later papers were not checked to determine whether those questions remain open today. Review-identified proof obligations are explicitly distinguished from author-stated open problems. Introductory restatements and cited background theorems are not all new contributions.
 
 The statement index has 1,170 detected kind/number pairs. It is a search aid: it can include references/restatements and miss unnumbered results. It does not assign individual proof validity or novelty. The manually curated review entries carry the substantive classifications. The separate coverage audit selects 132 eligible named results, 3 derivation groups and 39 open targets; 4 further units need statement clarification. These selected units do not form an exhaustive theorem inventory.
+
+The cyclic paper completes the stated girth-condition criterion and supplies partial decoding-related consequences. A new exhaustive census also finds baseline distance six versus distance at least eight for its three comparison codes. Its fixed-family optimum and one-sector decoding benchmark do not establish a universal objective, causal effect of absorbing counts, or general error-floor law. [Evidence and remaining scope](formalization/cyclic-lifts/README.md#what-is-established-and-what-remains-open).
+
+## Lessons from the cyclic lifted-product investigation
+
+This round concerns **coding theory, specifically quantum error-correcting codes**, with graph theory and combinatorics at its mathematical core. Freij-Hollanti, Morris and Šapokaitė's question asks how conditions on an exponent matrix determine girth eight in a cyclic lifted-product Tanner graph, and how the resulting graph structure affects decoding. Absorbing sets and stopping sets connect those graph properties to error correction. The [paper](formalization/cyclic-lifts/paper/main.tex) credits the question and its mathematical predecessors; the [proof guide](formalization/cyclic-lifts/paper/LEAN-PROOF-GUIDE.md) locates the complete formal development.
+
+The following lessons extend the earlier [dyadic rank–support retrospective](RESEARCH-LESSONS.md), as of October 23, 2026:
+
+- **Keep the exact question visible.** Compare each result directly with the source's wording. Proving useful component lemmas does not automatically answer the original question.
+- **Separate the main criterion from its consequences.** The girth characterization, absorbing-support bijection, stopping bound, finite optimization and decoding experiment are distinct achievements with different evidence. Record which are general Lean theorems, written proofs or finite computational results.
+- **Formalize the connections between representations.** Arithmetic cancellation must produce an actual simple cycle, and the abstract graph must match the expanded parity-check matrix. These bridges are essential parts of the proof.
+- **Make definitions explicit.** Nonempty supports, induced check degrees, and counting cycles without duplicating rotations or reversals materially affect the statements.
+- **Design fair decoding comparisons.** Preserve code length and dimension, use shared error samples, and count stabilizer-equivalent recovery as success. An absorbing configuration does not automatically cause decoder failure, and improved performance does not by itself isolate its cause.
+- **Show the formal work.** A short final theorem invocation hides its supporting development. Include meaningful statements, a dependency diagram and substantive excerpts, with direct links to the complete proofs and an explicit account of remaining informal claims.
+- **Preserve reproducibility as the paper evolves.** Pin source links to an immutable revision, bundle the full sources, record dependencies and hashes, and verify the public downloads.
+- **Use feedback to improve communication.** Positive reception is encouraging evidence that the work interests readers; correctness and novelty still rest on proofs, source comparisons and review.
 
 ## Reviews
 

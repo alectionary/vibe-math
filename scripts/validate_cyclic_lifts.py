@@ -74,7 +74,8 @@ row=next(r for r in json.loads((R/'literature/open-problems.json').read_text()) 
 assert row['lean_proof_status']=='verified_complete_lean_proof'
 assert row['verified_artifact']['statement_declaration']=='CyclicLift.matrixTanner_hX_girth_characterization'
 summary=json.loads((R/'literature/open-problem-summary.json').read_text())
-assert summary['eligible_verified_lean_proofs']==2 and summary['eligible_targets']==108
+# Later projects may increase current coverage beyond this artifact's two-target milestone.
+assert summary['eligible_verified_lean_proofs']>=2 and summary['eligible_targets']==108
 for href in re.findall(r'\]\(([^)]+)\)',(P/'README.md').read_text()):
  u=urlparse(href)
  if not u.scheme and u.path:assert (P/u.path).exists(),href

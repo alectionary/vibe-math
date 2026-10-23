@@ -10,16 +10,17 @@ full_count=sum(screened(p) for p in coverage);historical_count=sum(p['coverage_s
 article_ids={p['paper_id'] for p in coverage};article_targets=[r for r in rows if any(o['source_id'] in article_ids for o in r['occurrences'])]
 statement_count=sum(r['lean_statement_status']=='verified_lean_statement' for r in eligible)
 proof_count=sum(r['lean_proof_status']=='verified_complete_lean_proof' for r in eligible)
+supporting_count=sum(r['lean_proof_status']=='verified_supporting_lean_proof' for r in eligible)
 partial_count=sum(r['lean_proof_status']=='verified_finite_cases_only' for r in eligible)
 identified_count=sum(r['lean_statement_status']=='identified_lean_statement_not_build_verified' for r in eligible)
 unassessed_count=sum(r['lean_statement_status']=='not_assessed_in_this_extension' for r in eligible)
-summary=dict(checked_on='2026-10-22',canonical_inventory_entries=len(rows),legacy_entries=len(rows)-len(new),additional_entries=len(new),additional_eligible_targets=sum(r['eligible_for_coverage'] for r in new),additional_non_denominator_entries=sum(not r['eligible_for_coverage'] for r in new),eligible_targets=len(eligible),eligible_verified_proof_assistant_statements=statement_count,eligible_verified_lean_statements=statement_count,eligible_verified_lean_proofs=proof_count,eligible_identified_unverified_lean_statements=identified_count,eligible_lean_discovery_unassessed=unassessed_count,eligible_targets_with_verified_finite_cases=partial_count,article_records=len(coverage),full_text_screened=full_count,current_publication_full_text_screened=full_count-historical_count,historical_withdrawn_full_text_screened=historical_count,not_fully_assessed=len(coverage)-full_count,article_records_with_recorded_targets=sum(bool(p['recorded_target_ids']) for p in coverage),canonical_targets_with_article_occurrences=len(article_targets),legacy_targets_with_article_occurrences=sum(r['origin']=='dissertation_inventory' for r in article_targets),new_entry_kinds=dict(collections.Counter(r['kind'] for r in new)),new_written_math_statuses=dict(collections.Counter(r['written_math_status'] for r in new)),related_author_reported_lean_constructions=len(mechanization))
+summary=dict(checked_on='2026-10-23',canonical_inventory_entries=len(rows),legacy_entries=len(rows)-len(new),additional_entries=len(new),additional_eligible_targets=sum(r['eligible_for_coverage'] for r in new),additional_non_denominator_entries=sum(not r['eligible_for_coverage'] for r in new),eligible_targets=len(eligible),eligible_verified_proof_assistant_statements=statement_count,eligible_verified_lean_statements=statement_count,eligible_verified_lean_proofs=proof_count,eligible_targets_with_supporting_lean_proofs=supporting_count,eligible_identified_unverified_lean_statements=identified_count,eligible_lean_discovery_unassessed=unassessed_count,eligible_targets_with_verified_finite_cases=partial_count,article_records=len(coverage),full_text_screened=full_count,current_publication_full_text_screened=full_count-historical_count,historical_withdrawn_full_text_screened=historical_count,not_fully_assessed=len(coverage)-full_count,article_records_with_recorded_targets=sum(bool(p['recorded_target_ids']) for p in coverage),canonical_targets_with_article_occurrences=len(article_targets),legacy_targets_with_article_occurrences=sum(r['origin']=='dissertation_inventory' for r in article_targets),new_entry_kinds=dict(collections.Counter(r['kind'] for r in new)),new_written_math_statuses=dict(collections.Counter(r['written_math_status'] for r in new)),related_author_reported_lean_constructions=len(mechanization))
 # Counts are asserted against evidence rather than inferred from prose.
 assert all((R/r['verified_artifact']['readme']).exists() for r in eligible if r.get('verified_artifact'))
 (D/'open-problem-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 s=f'''# Expanded open-problem inventory
 
-Checked October 22, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Checked October 23, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
 The inventory now contains **{len(rows)} canonical entries**: the original 40 dissertation targets and **{len(new)} additional article entries**. Of the additions, **{new_eligible} are specific mathematical questions or tasks suitable for coverage tracking**; the other {new_excluded} are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
@@ -34,6 +35,7 @@ The inventory now contains **{len(rows)} canonical entries**: the original 40 di
 | Eligible targets with an identified, verified proof-assistant statement | {statement_count}/{len(eligible)} ({100*statement_count/len(eligible):.2f}%) |
 | Eligible targets with an identified, verified Lean statement | {statement_count}/{len(eligible)} ({100*statement_count/len(eligible):.2f}%) |
 | Eligible targets with a complete checked Lean proof | {proof_count}/{len(eligible)} ({100*proof_count/len(eligible):.2f}%) |
+| Additional targets with checked supporting proofs and a written source bridge | {supporting_count}/{len(eligible)} |
 | Eligible targets with checked finite cases, without a complete proof | {partial_count}/{len(eligible)} |
 | Additional identified Lean statements without a build audit | {identified_count}/{len(eligible)} |
 | Eligible targets with Lean discovery still unassessed in this extension | {unassessed_count}/{len(eligible)} |
@@ -43,7 +45,7 @@ The inventory now contains **{len(rows)} canonical entries**: the original 40 di
 | Withdrawn historical manuscripts screened | {historical_count} |
 | Not fully assessed | {len(coverage)-full_count}/{len(coverage)} |
 
-**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md) and the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse and L-P34-girth-eight now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
+**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), and the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight and L-P11-forbidden now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
 The historical Leray–Hopf uniqueness entry is held: later primary literature reports nonuniqueness, and the source’s domain/forcing/solution class must be fixed before a current comparison. Its entry links the later report. A related public Lean repository concerns forced smooth breakdown, not weak uniqueness; it was not built here.
 
@@ -90,6 +92,12 @@ for x in exclusions:s+=f"- **{x['paper_id']} — {x['locator']}:** {x['reason']}
 s+='\n## Canonical inventory\n\nEach entry below distinguishes the written formulation, denominator eligibility, proof-assistant statement search, Lean statement search, and Lean proof search. The original bounded search found no exact artifact; the later verified dyadic pilot is included in the current statuses. The withdrawn historical entries remain historical; later mathematical resolution is not certified.\n\n'
 for r in rows:
  s+=f"### {r['id']}\n\n{r['title']}\n\n- Type: {r['kind'].replace('_',' ')}; written formulation: {r['written_math_status'].replace('_',' ')}.\n- Coverage denominator: {'included' if r['eligible_for_coverage'] else 'excluded'}. {r['eligibility_note']}\n- Proof-assistant statement: {r['proof_assistant_statement_status'].replace('_',' ')}. Lean statement: {r['lean_statement_status'].replace('_',' ')}. Lean proof: {r['lean_proof_status'].replace('_',' ')}.\n- Source-described status: {r['status_as_of_source'].replace('_',' ')}; current resolution: {r['current_resolution_status'].replace('_',' ')}.\n"
+ if r.get('empirical_followup'):
+  a=r['empirical_followup'];s+=f"- Empirical follow-up: [{a['status'].replace('_',' ')}](../{a['writeup']}). {a['conclusion']}\n"
+  if a.get('targeted_followup'):
+   t=a['targeted_followup'];s+=f"- Bounded follow-up: [objective disagreements, exact ambiguity decomposition and supporting Lean lemmas](../{t['report']}); research direction remains open. {a['lean_proof_scope']}\n"
+ if r.get('empirical_followup',{}).get('trajectory_followup'):
+  t=r['empirical_followup']['trajectory_followup'];s+=f"- Decoder trajectories: [concrete all-iterations Lean obstruction and fixed-code census](../{t['report']}); partial structural explanation, no completed source target added.\n"
  if r.get('verified_artifact'):
   a=r['verified_artifact'];s+=f"- Verified artifact: [{a['statement_declaration']}](../{a['readme']}); {a['scope']}.\n"
   for key, label in [('structural_note','Checked general proof'),('search_note','Larger counterexample search')]:
@@ -110,12 +118,18 @@ e=html.escape
 cards=[]
 for r in rows:
  sources='; '.join(f'<a href="{e(o["url"],quote=True)}">{e(o["source_id"])}: {e(o["locator"])}</a>' for o in r['occurrences'])
+ if r.get('empirical_followup'):
+  a=r['empirical_followup'];sources+=f'<p><a href="../{e(a["writeup"],quote=True)}">Empirical follow-up; direction remains open</a></p>'
+  if a.get('targeted_followup'):
+   t=a['targeted_followup'];sources+=f'<p><a href="../{e(t["report"],quote=True)}">Bounded objective comparisons and supporting ambiguity lemmas</a></p>'
+ if r.get('empirical_followup',{}).get('trajectory_followup'):
+  t=r['empirical_followup']['trajectory_followup'];sources+=f'<p><a href="../{e(t["report"],quote=True)}">Lean-checked decoder obstruction and fixed-code trajectory census</a></p>'
  if r.get('verified_artifact'):
   a=r['verified_artifact'];sources+=f'<p><a href="../{e(a["readme"],quote=True)}">Verified Lean artifact</a></p>'
   for key, label in [('structural_note','Checked general proof'),('search_note','Larger counterexample search')]:
    if key in a:sources+=f'<p><a href="../{e(a[key],quote=True)}">{label}</a></p>'
  if r.get('supporting_lean_artifact'):
-  a=r['supporting_lean_artifact'];sources+=f'<p><a href="../{e(a["readme"],quote=True)}">Checked supporting lemmas; full target remains open</a></p>'
+  a=r['supporting_lean_artifact'];sources+=f'<p><a href="../{e(a["readme"],quote=True)}">Checked supporting artifact; see source-comparison scope</a></p>'
  for evidence in r.get('related_formalization_evidence',[]):
   sources+=f'<p><a href="{e(evidence["url"],quote=True)}">Related Lean source (see audit status)</a></p>'
  text=' '.join([r['id'],r['title'],r['kind'],r['written_math_status']]+[o['source_id'] for o in r['occurrences']])

@@ -1,6 +1,6 @@
 # Expanded open-problem inventory
 
-Checked October 22, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Checked October 23, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
 The inventory now contains **181 canonical entries**: the original 40 dissertation targets and **141 additional article entries**. Of the additions, **69 are specific mathematical questions or tasks suitable for coverage tracking**; the other 72 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
@@ -12,9 +12,10 @@ The inventory now contains **181 canonical entries**: the original 40 dissertati
 | Additional article targets in the coverage denominator | 69 |
 | Additional directions/formulation/method entries outside the denominator | 72 |
 | Combined eligible targets | 108 = 39 + 69 |
-| Eligible targets with an identified, verified proof-assistant statement | 2/108 (1.85%) |
-| Eligible targets with an identified, verified Lean statement | 2/108 (1.85%) |
-| Eligible targets with a complete checked Lean proof | 2/108 (1.85%) |
+| Eligible targets with an identified, verified proof-assistant statement | 3/108 (2.78%) |
+| Eligible targets with an identified, verified Lean statement | 3/108 (2.78%) |
+| Eligible targets with a complete checked Lean proof | 3/108 (2.78%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/108 |
 | Eligible targets with checked finite cases, without a complete proof | 0/108 |
 | Additional identified Lean statements without a build audit | 1/108 |
 | Eligible targets with Lean discovery still unassessed in this extension | 0/108 |
@@ -24,7 +25,7 @@ The inventory now contains **181 canonical entries**: the original 40 dissertati
 | Withdrawn historical manuscripts screened | 1 |
 | Not fully assessed | 1/58 |
 
-**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md) and the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse and L-P34-girth-eight now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
+**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), and the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight and L-P11-forbidden now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
 The historical Leray–Hopf uniqueness entry is held: later primary literature reports nonuniqueness, and the source’s domain/forcing/solution class must be fixed before a current comparison. Its entry links the later report. A related public Lean repository concerns forced smooth breakdown, not weak uniqueness; it was not built here.
 
@@ -831,6 +832,9 @@ Extend absorbing-set results to general quasi-dyadic ensembles and find dyadic i
 - Coverage denominator: excluded. Excluded from the coverage denominator: a direction or a formulation/method request, not a fixed unresolved proposition or specified mathematical task.
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open or proposed in source; current resolution: not independently established.
+- Empirical follow-up: [fixed code all iterations min sum obstruction proved with bounded trajectory census](../formalization/dyadic-performance/README.md). Forbidden-set completeness remains a separate completed target. Objective comparisons give conditional gains. The fixed-code trajectory follow-up proves an all-iterations integer min-sum obstruction for pair {0,17} in an optimized [[32,8,4]] instance. Across the two representative profiles, symmetry-forced pair failures decrease while other syndrome and logical failures increase, so this is a partial structural explanation rather than a complete performance theory.
+- Bounded follow-up: [objective disagreements, exact ambiguity decomposition and supporting Lean lemmas](../formalization/dyadic-performance/TARGETED.md); research direction remains open. Five general ambiguity lemmas and twelve concrete decoder-trajectory lemmas, including all-iterations failure for one frozen P11 instance; not completion of the full source research direction.
+- Decoder trajectories: [concrete all-iterations Lean obstruction and fixed-code census](../formalization/dyadic-performance/TRAJECTORIES.md); partial structural explanation, no completed source target added.
 - [P11: Section 7](https://arxiv.org/html/2605.01942); extraction lines 554–554; explicit open problem.
 
 ### L-P11-forbidden
@@ -838,9 +842,10 @@ Extend absorbing-set results to general quasi-dyadic ensembles and find dyadic i
 Are the paper’s forbidden sets complete for length-six and length-eight pathologies?
 
 - Type: conjecture or question; written formulation: precise math in source.
-- Coverage denominator: included. Statement must be read with the definitions and hypotheses at the source locator.
-- Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
-- Source-described status: open or proposed in source; current resolution: not independently established.
+- Coverage denominator: included. Recorded scope is Definition 4.20 cumulative cycle/girth completeness at thresholds six/eight, with missing blocks omitted as in Remark 4.21. The literal ordered appendix-pattern enumeration, its half-sum arithmetic and its correspondence to the native expanded Tanner graph are now checked in Lean. This does not assert author-software identity, exact-count coefficients or elimination of all decoding pathologies.
+- Proof-assistant statement: verified lean statement. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
+- Source-described status: open or proposed in source; current resolution: proved in lean for recorded cycle contract.
+- Verified artifact: [DyadicForbidden.Appendix.appendixForbiddenCheck_spec](../formalization/dyadic-forbidden/README.md); Complete source-specific cumulative cycle-forbidden criterion at thresholds six/eight (also four): single dyadic permutation per occupied cell, arbitrary finite row/column dimensions and every nonnegative bit-vector fiber dimension. Literal printed 21 eight-step classes and all 42 half-path sums, one rectangle/hexagon class, ordered embeddings on used row names, missing blocks and preexisting cycles. Equality to the original checker and the actual expanded binary Tanner graph. No minimum-four-row or lower-girth hypothesis; no exact-count or decoder/PEG optimality claim..
 - [P11: Section 7](https://arxiv.org/html/2605.01942); extraction lines 555–555; explicit open problem.
 
 ### L-P11-n-adic
@@ -1934,6 +1939,8 @@ Analyze how girth-eight conditions affect other graph properties relevant for de
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Empirical follow-up: [bounded weight six census and Lean local topology limitation](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). The baseline has quantum distance six; all three existing comparison codes have distance at least eight. A Lean certificate exhibits identical local K3,3 topology with opposite stabilizer membership. This is a finite partial answer, not a general optimization or decoding theory.
+- Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
 - [P34: Section 5 concluding question](https://arxiv.org/html/2606.11987v1); extraction lines 332–332; concluding direction.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
@@ -1945,6 +1952,8 @@ Translate the cited row/column partition conditions for low-weight logical opera
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Empirical follow-up: [bounded weight six census and Lean local topology limitation](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). The baseline has quantum distance six; all three existing comparison codes have distance at least eight. A Lean certificate exhibits identical local K3,3 topology with opposite stabilizer membership. This is a finite partial answer, not a general optimization or decoding theory.
+- Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 
@@ -1956,6 +1965,8 @@ Choose base-matrix entries to optimize Tanner-graph properties for iterative dec
 - Coverage denominator: excluded. Direction lacks a fixed criterion or complete theorem statement; excluded from the denominator.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Empirical follow-up: [bounded weight six census and Lean local topology limitation](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). The baseline has quantum distance six; all three existing comparison codes have distance at least eight. A Lean certificate exhibits identical local K3,3 topology with opposite stabilizer membership. This is a finite partial answer, not a general optimization or decoding theory.
+- Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
 

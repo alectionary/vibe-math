@@ -1,5 +1,5 @@
 COMPANION ARTIFACT -- RECTANGLE CRITERIA FOR GIRTH EIGHT
-Snapshot date: 2026-10-22
+Snapshot revision: 2026-10-23 (earlier proof sources retained)
 
 This snapshot accompanies the anonymous manuscript main.tex. All source and
 result paths are relative to this directory. MANIFEST_SHA256.json freezes the
@@ -65,3 +65,21 @@ excerpts and a proof dependency diagram. From this artifact root, run
   python3 scripts/prepare_cyclic_paper_listings.py
 to regenerate the sibling manuscript listings and verify their Unicode escape
 round trips. The excerpts manifest records exact source locations and hashes.
+
+OCTOBER 23 CLAIM AUDIT AND LOW-WEIGHT SUPPLEMENT
+The girth-condition question is answered. Broader decoding-properties questions
+have partial answers only. The original benchmark fixes length/rate but not
+distance: exhaustive weight-six searches give baseline distance six and lower
+bound eight for each comparison code, in both sectors. Absorbing-count changes
+and algebraic changes are not causally separated by that benchmark.
+
+From the artifact root:
+  python3 formalization/cyclic-lifts/search/logical_six.py
+  python3 scripts/validate_cyclic_logical_six.py
+  python3 formalization/cyclic-lifts/search/generate_logical_certificate.py
+Then in formalization/dyadic-rank:
+  lake -f lakefile-cyclic.toml env lean CyclicLogicalSix.lean
+
+The ten new Lean declarations prove a concrete same-local-topology/different-
+logical-role certificate, including a full-span nonmembership witness. They do
+not formalize the exhaustive census. No new code, noise or decoder was added.

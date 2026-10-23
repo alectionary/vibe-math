@@ -1,13 +1,13 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 22, 2026. Low-confidence planning priors for all 181 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 23, 2026. Low-confidence planning priors for all 181 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
-| Already complete | 2 | 2 |
+| Already complete | 3 | 3 |
 | 1 | 1 | 0 |
-| 2 | 12 | 1 |
-| 3 | 41 | 25 |
+| 2 | 11 | 1 |
+| 3 | 41 | 24 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
 | Formulation required | 3 | 3 |
@@ -986,15 +986,17 @@ Basis: Retained October 21 family prior with current eligibility/resolution chec
 
 Are the paper’s forbidden sets complete for length-six and length-eight pathologies?
 
-- Statement: Tier 2: 4–10 expert person-days.
-- Proof transfer, given a complete proof: Tier 3: 1–4 expert person-months.
-- Research: Relative research obstacle 3/5; discovery time unestimated. open_or_unresolved_in_recorded_sources; present status not exhaustively established
+- Statement: Tier 0: complete; no remaining setup for the recorded target.
+- Proof transfer, given a complete proof: Tier 0: complete; no remaining proof work for the recorded target.
+- Research: Completed target. already_proved_for_recorded_cycle_contract
 
-Lengths six and eight permit explicit walk-pattern analysis. Completeness still quantifies over the source ensemble and cannot be inferred from a few tested lifts. Tanner graphs are finite, but decoder transitions, stopping/cycle behavior, quantum error equivalence and absorbing/trapping terminology add substantial bespoke machinery.
+The literal appendix enumeration is now matched in Lean: ordered visited-row factorization, printed-order 21 classes and 42 half sums, cyclic column constraints, support and native-cycle extraction. The executable appendix checker equals the original prefix checker and the expanded binary-matrix cycle specification at thresholds six/eight.
 
-First milestone: Define one exact decoder and verify its finite-state transition rule on a small graph.
+First milestone: Maintain the source-specific proof and consumer audit; any future exact-count or decoder claim requires separate evidence.
 
-Basis: Retained October 21 family prior with current eligibility/resolution checks; not a new implementation benchmark. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p11-forbidden).
+Progress: Completed: 90 audited library declarations plus two kernel-evaluated execution checks. The full literal source-enumeration bridge is now checked; this target counts once as complete. Source authors and predecessors retain attribution; no new-mathematics or formalization-priority claim. [Checked artifact](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md).
+
+Basis: October 23 general Lean proof, successful Lake build and axiom audits. Earlier planning estimates retained separately as historical priors. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p11-forbidden).
 
 ### L-P11-n-adic
 

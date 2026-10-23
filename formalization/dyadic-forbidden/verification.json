@@ -1,0 +1,537 @@
+{
+  "checked_on": "2026-10-23",
+  "target_id": "L-P11-forbidden",
+  "lean_toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_revision": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "lean_command": "lake -f lakefile-cyclic.toml env lean DyadicForbidden.lean",
+  "lean_working_directory": "formalization/dyadic-rank",
+  "lean_exit_code": 0,
+  "audited_declarations": 23,
+  "declaration_axioms": {
+    "DyadicForbidden.liftedWalk_support": [
+      "propext"
+    ],
+    "DyadicForbidden.liftedWalk_length": [
+      "propext"
+    ],
+    "DyadicForbidden.trace_project": [
+      "propext"
+    ],
+    "DyadicForbidden.trace_shift": [
+      "propext"
+    ],
+    "DyadicForbidden.trace_tail_nodup_zero_iff": [
+      "propext",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.goodWord_sound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.goodWord_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.forbidden_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.exact_cycle_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.wordCheck_iff": [
+      "propext"
+    ],
+    "DyadicForbidden.completeCheck_iff_pattern": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.completeCheck_spec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.lift_eq_binaryTanner": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.forbidden_labels_matrix_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.six_eight_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.dyadic_threshold_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.forbiddenCheck_spec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.repeated_rectangle_good": [
+      "propext",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.repeated_rectangle_native_eight": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.zero_repeated_rectangle_not_simple": [
+      "propext",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.executable_counterexample": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.source_row_patterns_complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "DyadicForbidden.proper_row_word_count": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "constructive_procedure_complete": true,
+  "authors_routine_equivalence_proved": false,
+  "source_target_marked_fully_resolved": true,
+  "source_row_patterns": {
+    "representatives": 21,
+    "admissible_four_step_words": 84,
+    "equivalence": "rotation or reversal",
+    "multiplicity_formulas_verified": false
+  },
+  "finite_search": {
+    "partial_arrays": 1043,
+    "candidate_label_threshold_checks": 21168,
+    "mismatches": 0,
+    "seed": 20261023
+  },
+  "scope": "Single-permutation cells, absent blocks allowed; general additive commutative voltage group; explicit dyadic bit-vector specialization; arbitrary cycle thresholds. Exact author routine remains unspecified.",
+  "sha256": {
+    "formalization/dyadic-rank/DyadicForbidden.lean": "d8fbc286e26c30a215d6208f0bd9f4d58978ce9e4d929ea03758f2388f6eaefc",
+    "formalization/dyadic-rank/CyclicLift.lean": "39f85d3b4d9f6952f56d8dde07fa71b014691b6b49950743e7bf87f778c2fac8",
+    "formalization/dyadic-rank/lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+    "formalization/dyadic-rank/lakefile-cyclic.toml": "fbab846cca0b9b73388c15b5eb789d4593b9a3475af75787e8636e90b5c2f41c",
+    "formalization/dyadic-forbidden/README.md": "a1c3a8a98a198cef2292ff37a61da772c31ea19aaedd166975e45d63b0ae9cda",
+    "formalization/dyadic-forbidden/prior-art.json": "9402e149186353212ebd9cbb2fbd0c2f169ffb4e4ba6f1879c91418c94841198",
+    "formalization/dyadic-forbidden/lean-checks.log": "98b5c0d5767f428f9c3335e694133287a190dfc7c01b537f460a92db3776b1e6",
+    "formalization/dyadic-forbidden/search/scan.py": "090c3bf70d1caffd9b31fabc8e0977d08e99347017841ef0ada11bdd16047120",
+    "formalization/dyadic-forbidden/search/results.json": "a4e13b68336e397e604da12d6504b6d788e1bc8e39b4132ae4acc30a32948a3b",
+    "scripts/validate_dyadic_forbidden.py": "5fef0edda281a195c5fff24e22b168d212b5cbe7fd504d2819afad4ff9714052",
+    "formalization/dyadic-rank/CyclicLift/Basic.lean": "d3f13f96ad9c73d85859036cc51e69e9cd2d4a5351805ba255d32855839e2b07",
+    "formalization/dyadic-rank/CyclicLift/Bipartite.lean": "e04c71240d7640c2535b6153f2ef34e20bcc6106948b3fea0364a57a0dd316b3",
+    "formalization/dyadic-rank/CyclicLift/GirthCharacterization.lean": "07b41b4251a8cf2ce753a0d1ba6434713caed4cf41e682d6b5a8801c496501e3",
+    "formalization/dyadic-rank/CyclicLift/LargerCases.lean": "53c94e3c396d5e636adac2516c0c873d52b2acea09aa11e7b4d8d119a3151382",
+    "formalization/dyadic-rank/CyclicLift/LiftedProduct.lean": "c128c0a4bcfe785d9cab418172ea850e240cb72529419d25e9932f4a4b7daa74",
+    "formalization/dyadic-rank/CyclicLift/ShortCycles.lean": "54748e3a13361d61ab7711a03ab56d4b746dfabf2602e56db0dd293cb4a17f22",
+    "formalization/dyadic-rank/CyclicLift/SixCharacterization.lean": "a1a3c8d18c668d2b8ccf65090afd0ee2a947660044c895de71553d65a561cda7",
+    "formalization/dyadic-rank/CyclicLift/SmallCases.lean": "a1a2b2c3a9fe191b23ea9213492cc77470093428f68fb49d1b40909a4ca8bdf5",
+    "formalization/dyadic-rank/DyadicForbiddenSource.lean": "c0e07bbd5282884cc669b6f81554446d92265ba55a88d0d0dfd2716c0c86f5c9",
+    "formalization/dyadic-forbidden/SOURCE-COMPARISON.md": "1bd860060ecb94a7a6a4b3f490369a2b521cb63ef3e4caa5bb55dd3de095555a",
+    "formalization/dyadic-forbidden/source-lean-checks.log": "e0d86a1f3952fca9a161e978a7c226072ab03f9be8e1a3c17bdfdd733c933cd8",
+    "formalization/dyadic-forbidden/search/source_compare.py": "cb11a591b146b95ee0b77385e3e03b6769fb869596bddc2a8373d65087b61809",
+    "formalization/dyadic-forbidden/search/source-results.json": "703cde8a5d140acbd8b85081a0d35bc00f9c438edaeefbb00f72278fe33d0641",
+    "formalization/dyadic-rank/DyadicForbiddenAppendix.lean": "18543e03fbd81748221840fe99be760ed0cdc10199272efef6b3d828e229c726",
+    "formalization/dyadic-rank/DyadicForbiddenAppendixChecks.lean": "8084fff5877a5b424ef4931f3b56bbb0912e4ca774222dbbbf610c89c8bad4fb",
+    "formalization/dyadic-rank/lakefile-forbidden.toml": "45a47d3650b1f355c0a4e43b75782f5b54f52a0a53bc69bef1258fbf3bcb8b5e",
+    "formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md": "63e28c813f2def310a224447dd5359fc3122950b62beed07f3eb30bd0a033a58",
+    "formalization/dyadic-forbidden/appendix-lean-checks.log": "c8c91b00f16b7fac54bc7594795939b0be1d97488fac1af00a572cee25e23a23",
+    "formalization/dyadic-forbidden/appendix-execution-checks.log": "82dcf135aba5abb6aea947018ca14546a5ad6e21162f7b016a8706ab17031633",
+    "formalization/dyadic-forbidden/build.log": "f6c52d7dc2059d1e6ca09b8d4e3776bd0e1e1c5bca60eccd0d10ef4f5f59f0a2"
+  },
+  "audited_declarations_total": 92,
+  "source_comparison": {
+    "lean_exit_code": 0,
+    "lean_command": "lake -f lakefile-cyclic.toml env lean DyadicForbiddenSource.lean",
+    "audited_declarations": 18,
+    "declaration_axioms": {
+      "DyadicForbidden.reduced_path_or_boundedCycle": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.reduced_closed_boundedCycle": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.reduced_cons_cons": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.cycle_tbc": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.two_step_fiber_unique": [
+        "propext"
+      ],
+      "DyadicForbidden.reduced_project_iff": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.source_forbidden_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.source_forbidden_iff_prefix": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.rowEncode_decode": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.arbitrary_row_patterns_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.tbc_project_iff": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.source_tbc_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.sourceWordCheck_iff": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.sourceCheck_iff": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.sourceCheck_eq_completeCheck": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.sourceForbiddenCheck_eq": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.sourceForbiddenCheck_spec": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.source_dyadic_six_eight": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "general_tbc_checker_equivalence_verified": true,
+    "source_cycle_contract_answered": true,
+    "literal_optimized_enumerator_bridge_in_lean": true,
+    "authors_software_identity_verified": false,
+    "scope": "The 18-declaration TBC layer is supplemented by the checked 49-declaration literal appendix enumeration; author software identity and exact-count coefficients remain outside the statement."
+  },
+  "source_target_scope": "Cumulative cycle/girth completeness at thresholds six/eight in the single-dyadic-permutation-block model, with missing blocks omitted.",
+  "audited_library_declarations": 90,
+  "build_command": "lake -f lakefile-forbidden.toml build",
+  "build_exit_code": 0,
+  "appendix_enumeration": {
+    "lean_exit_code": 0,
+    "lean_command": "lake -f lakefile-forbidden.toml env lean DyadicForbiddenAppendix.lean",
+    "audited_declarations": 49,
+    "declaration_axioms": {
+      "DyadicForbidden.Appendix.zero_pair": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.polygon2_zero": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.polygon3_zero": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.polygon4_zero": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.polygon2_tbc": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.polygon3_tbc": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.polygon4_tbc": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw2_of_base": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw3_of_base": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw4_of_base": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.rowAt_step": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.proper_reindex": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.proper_col_reindex": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.supported_reindex": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.total_reindex": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.ordered_factor": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.used_reindex": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.prefix_reindex": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.printedIndex_bijective": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.literal_triples_match": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.literal_halves_match": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.classify2": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.classify3": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.classify4": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.total2_halves": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw2_iff_word": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw2_sound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.total3_halves": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw3_iff_word": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw3_sound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.total4_halves": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw4_iff_word": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw4_sound": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.check_root_cycle": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw2_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw3_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw4_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.raw_cumulative_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.optimized_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.halfEnumeration_iff": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.enum2_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.enum3_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.enum4_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.paper_columns4_iff": [
+        "propext",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.appendix_complete": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.appendixCheck_spec": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.appendixForbiddenCheck_spec": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.appendixForbiddenCheck_eq": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.Appendix.appendix_dyadic_six_eight": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "literal_optimized_enumerator_bridge_in_lean": true,
+    "printed_row_classes": 21,
+    "printed_half_path_sums": 42,
+    "ordered_used_row_embeddings": true,
+    "cyclic_column_and_support_constraints": true,
+    "native_binary_matrix_specification": true,
+    "thresholds": [
+      4,
+      6,
+      8
+    ],
+    "arbitrary_finite_array_dimensions": true,
+    "arbitrary_nonnegative_fiber_dimension": true,
+    "main_declarations": [
+      "DyadicForbidden.Appendix.appendixForbiddenCheck_spec",
+      "DyadicForbidden.Appendix.appendixForbiddenCheck_eq",
+      "DyadicForbidden.Appendix.appendix_dyadic_six_eight"
+    ]
+  },
+  "execution_checks": {
+    "lean_exit_code": 0,
+    "lean_command": "lake -f lakefile-forbidden.toml env lean DyadicForbiddenAppendixChecks.lean",
+    "audited_declarations": 2,
+    "declaration_axioms": {
+      "DyadicForbidden.AppendixChecks.appendix_execution": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "DyadicForbidden.AppendixChecks.appendix_empty_rows": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "scope": "Kernel evaluation of the parity-sensitive 2x2 insertion at thresholds four/six/eight and a zero-check-row boundary."
+  }
+}
