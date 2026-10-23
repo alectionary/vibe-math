@@ -16,7 +16,13 @@ The source problem is Section 5, after Theorem 5.1, in Ragnar Freij-Hollanti, Ki
 
 The later [P11 dyadic trajectory obstruction](../dyadic-performance/TRAJECTORIES.md) concerns a different construction and decoder setting. It is not a replication of this paper's cyclic benchmark and is not part of its formal proof.
 
-## Latest local continuation: preserve variable degrees and girth
+## Latest local continuation: million-error same-code merger comparison
+
+The [fixed original-versus-merged experiment](MERGED-MILLION.md) uses one million fresh shared errors at `p=4%`, four million decoder evaluations, and unchanged min-sum settings. Original/merged FER is **2.7123% / 2.8116%** for Previous best and **2.5549% / 2.6719%** for Minimum 4. Merged-minus-original differences are **+0.0993** and **+0.1170 percentage points**, with Bonferroni simultaneous 95% intervals **[+0.0671,+0.1315]** and **[+0.0850,+0.1490]**. Both favor the originals under the code/variable-degree/girth/edge controls.
+
+The net penalties are **993** and **1,170** failures, consisting of **1,009/1,176 additional syndrome failures** and **16/6 fewer logical failures**. Every pair has a first-hard-divergence summary; 90 predefined full histories and 4,969 per-iteration annotations are independently checked. An exact first-iteration XOR-sign rule predicts presence and size/location of all first-round divergences across two million code/error pairs. Of the net penalties, **971** and **1,149** occur on errors initially containing none of the gained supports; this does not exclude later interaction with them. Median first hard divergence is iteration four for both rescued and harmed pairs. These results measure the generator merger's effect; changed check degrees, check count and message routing still preclude attribution to absorbing count alone. No new Lean declaration or inventory target is claimed.
+
+## Preserve variable degrees and girth: feasibility
 
 The [same-code merger feasibility study](DEGREE-PRESERVING.md) preserves **every variable degree at three, girth eight, connectedness, all 756 edges and the entire labeled CSS code**. Merging two disjoint redundant checks at Tanner distance eight changes counts **2,646→2,764** for Previous best and **2,520→2,640** for Minimum 4. All original supports survive; the 118/120 added supports correspond exactly to shortest length-eight paths between the merged checks. Twenty-eight translated candidates are verified, with one orbit per code and two fully enumerated representatives. The same channel and decoder settings remain usable; only deterministic compatibility controls were run.
 

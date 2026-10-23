@@ -1,0 +1,283 @@
+{
+  "status": "descriptive_summary_of_frozen_million_pair_results",
+  "source_results_sha256": "c651efb6d4faf227ab4dbda5c560e7a81004962cc72f799e3693a5009a0b7684",
+  "report_source_sha256": "c9f49821705a316c14fa39b7e7c375d2e9bc342c28007e1729d8f5f63d86615c",
+  "codes": {
+    "previous_best": {
+      "categories": {
+        "both_succeed": {
+          "patterns": 962066,
+          "no_common_hard_divergence": 653853,
+          "first_at_iteration_one": 87693,
+          "first_later": 220520,
+          "median_first_divergence": 2.0
+        },
+        "both_fail": {
+          "patterns": 17305,
+          "no_common_hard_divergence": 303,
+          "first_at_iteration_one": 2277,
+          "first_later": 14725,
+          "median_first_divergence": 4.0
+        },
+        "rescued": {
+          "patterns": 9818,
+          "no_common_hard_divergence": 0,
+          "first_at_iteration_one": 1457,
+          "first_later": 8361,
+          "median_first_divergence": 4.0
+        },
+        "harmed": {
+          "patterns": 10811,
+          "no_common_hard_divergence": 0,
+          "first_at_iteration_one": 1822,
+          "first_later": 8989,
+          "median_first_divergence": 4.0
+        }
+      },
+      "initial_source_syndrome": {
+        "00": {
+          "patterns": 644980,
+          "original_failures": 16055,
+          "merged_failures": 16349,
+          "rescued": 5567,
+          "harmed": 5861
+        },
+        "01": {
+          "patterns": 157937,
+          "original_failures": 4863,
+          "merged_failures": 5163,
+          "rescued": 1829,
+          "harmed": 2129
+        },
+        "10": {
+          "patterns": 158501,
+          "original_failures": 4833,
+          "merged_failures": 5010,
+          "rescued": 1821,
+          "harmed": 1998
+        },
+        "11": {
+          "patterns": 38582,
+          "original_failures": 1372,
+          "merged_failures": 1594,
+          "rescued": 601,
+          "harmed": 823
+        }
+      },
+      "initial_gained_support_containment": {
+        "0": {
+          "patterns": 999719,
+          "original_failures": 27093,
+          "merged_failures": 28064,
+          "rescued": 9812,
+          "harmed": 10783
+        },
+        "1": {
+          "patterns": 281,
+          "original_failures": 30,
+          "merged_failures": 52,
+          "rescued": 6,
+          "harmed": 28
+        }
+      },
+      "first_divergence_involves_outside_variables": 180715,
+      "selected_error_pairs": 22,
+      "selected_histories": 44,
+      "examples": [
+        {
+          "category": "harmed",
+          "index": 167,
+          "error_weight": 14,
+          "first_differing_variables": [
+            173
+          ],
+          "source_syndrome": [
+            1,
+            0
+          ],
+          "first": 1,
+          "first_changed": 1,
+          "first_inside": 1,
+          "original_iterations": 97,
+          "merged_iterations": 100,
+          "terminal_transition": "exact->syndrome",
+          "initial_contains_gained": false,
+          "first_gained_in_residual": {
+            "original": null,
+            "merged": 58
+          }
+        },
+        {
+          "category": "rescued",
+          "index": 158,
+          "error_weight": 16,
+          "first_differing_variables": [
+            90,
+            156
+          ],
+          "source_syndrome": [
+            0,
+            1
+          ],
+          "first": 2,
+          "first_changed": 2,
+          "first_inside": 0,
+          "original_iterations": 100,
+          "merged_iterations": 16,
+          "terminal_transition": "syndrome->stabilizer",
+          "initial_contains_gained": false,
+          "first_gained_in_residual": {
+            "original": null,
+            "merged": null
+          }
+        }
+      ],
+      "verdict": "The adjusted interval favors the original representation."
+    },
+    "minimum_4": {
+      "categories": {
+        "harmed": {
+          "patterns": 10808,
+          "no_common_hard_divergence": 0,
+          "first_at_iteration_one": 1805,
+          "first_later": 9003,
+          "median_first_divergence": 4.0
+        },
+        "both_succeed": {
+          "patterns": 963643,
+          "no_common_hard_divergence": 655118,
+          "first_at_iteration_one": 87953,
+          "first_later": 220572,
+          "median_first_divergence": 2.0
+        },
+        "both_fail": {
+          "patterns": 15911,
+          "no_common_hard_divergence": 288,
+          "first_at_iteration_one": 2158,
+          "first_later": 13465,
+          "median_first_divergence": 4.0
+        },
+        "rescued": {
+          "patterns": 9638,
+          "no_common_hard_divergence": 0,
+          "first_at_iteration_one": 1368,
+          "first_later": 8270,
+          "median_first_divergence": 4.0
+        }
+      },
+      "initial_source_syndrome": {
+        "00": {
+          "patterns": 645321,
+          "original_failures": 14965,
+          "merged_failures": 15368,
+          "rescued": 5485,
+          "harmed": 5888
+        },
+        "01": {
+          "patterns": 157766,
+          "original_failures": 4499,
+          "merged_failures": 4829,
+          "rescued": 1712,
+          "harmed": 2042
+        },
+        "10": {
+          "patterns": 158033,
+          "original_failures": 4680,
+          "merged_failures": 4831,
+          "rescued": 1901,
+          "harmed": 2052
+        },
+        "11": {
+          "patterns": 38880,
+          "original_failures": 1405,
+          "merged_failures": 1691,
+          "rescued": 540,
+          "harmed": 826
+        }
+      },
+      "initial_gained_support_containment": {
+        "0": {
+          "patterns": 999675,
+          "original_failures": 25517,
+          "merged_failures": 26666,
+          "rescued": 9630,
+          "harmed": 10779
+        },
+        "1": {
+          "patterns": 325,
+          "original_failures": 32,
+          "merged_failures": 53,
+          "rescued": 8,
+          "harmed": 29
+        }
+      },
+      "first_divergence_involves_outside_variables": 179109,
+      "selected_error_pairs": 23,
+      "selected_histories": 46,
+      "examples": [
+        {
+          "category": "harmed",
+          "index": 0,
+          "error_weight": 14,
+          "first_differing_variables": [
+            5,
+            58
+          ],
+          "source_syndrome": [
+            0,
+            1
+          ],
+          "first": 3,
+          "first_changed": 2,
+          "first_inside": 0,
+          "original_iterations": 10,
+          "merged_iterations": 100,
+          "terminal_transition": "exact->syndrome",
+          "initial_contains_gained": false,
+          "first_gained_in_residual": {
+            "original": null,
+            "merged": 16
+          }
+        },
+        {
+          "category": "rescued",
+          "index": 90,
+          "error_weight": 11,
+          "first_differing_variables": [
+            14,
+            24,
+            26,
+            30,
+            45,
+            52,
+            71,
+            96,
+            145,
+            168,
+            177,
+            180,
+            196,
+            220,
+            235
+          ],
+          "source_syndrome": [
+            0,
+            0
+          ],
+          "first": 18,
+          "first_changed": 15,
+          "first_inside": 4,
+          "original_iterations": 100,
+          "merged_iterations": 29,
+          "terminal_transition": "syndrome->exact",
+          "initial_contains_gained": false,
+          "first_gained_in_residual": {
+            "original": 50,
+            "merged": 18
+          }
+        }
+      ],
+      "verdict": "The adjusted interval favors the original representation."
+    }
+  }
+}
