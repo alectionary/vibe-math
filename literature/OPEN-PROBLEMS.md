@@ -2,30 +2,30 @@
 
 Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **190 canonical entries**: the original 40 dissertation targets and **150 additional article entries**. Of the additions, **73 are specific mathematical questions or tasks suitable for coverage tracking**; the other 77 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **252 canonical entries**: the original 40 dissertation targets and **212 additional article entries**. Of the additions, **96 are specific mathematical questions or tasks suitable for coverage tracking**; the other 116 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [56 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 4/112 after completion of the existing F16 target. The separate Beezer screen adds one eligible target.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [62 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 4/135 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 73 |
-| Additional directions/formulation/method entries outside the denominator | 77 |
-| Combined eligible targets | 112 = 39 + 73 |
-| Eligible targets with an identified, verified proof-assistant statement | 4/112 (3.57%) |
-| Eligible targets with an identified, verified Lean statement | 4/112 (3.57%) |
-| Eligible targets with a complete checked Lean proof | 4/112 (3.57%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/112 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/112 |
-| Additional identified Lean statements without a build audit | 1/112 |
-| Eligible targets with Lean discovery still unassessed in this extension | 4/112 |
-| Articles/preprints in scope | 61 |
-| Full-text sources screened, including withdrawn history | 58/61 |
-| Current-publication full texts screened | 57 |
+| Additional article targets in the coverage denominator | 96 |
+| Additional directions/formulation/method entries outside the denominator | 116 |
+| Combined eligible targets | 135 = 39 + 96 |
+| Eligible targets with an identified, verified proof-assistant statement | 4/135 (2.96%) |
+| Eligible targets with an identified, verified Lean statement | 4/135 (2.96%) |
+| Eligible targets with a complete checked Lean proof | 4/135 (2.96%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/135 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/135 |
+| Additional identified Lean statements without a build audit | 1/135 |
+| Eligible targets with Lean discovery still unassessed in this extension | 27/135 |
+| Articles/preprints in scope | 100 |
+| Full-text sources screened, including withdrawn history | 90/100 |
+| Current-publication full texts screened | 89 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 3/61 |
+| Not fully assessed | 10/100 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -112,6 +112,45 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F25](https://arxiv.org/html/2503.07567v1) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
 | [F26](https://arxiv.org/html/2604.27817v3) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
 | [F27](https://doi.org/10.1006/jcta.2001.3185) | current publication full text screened | 3 | Full final17-page journal read. One conjecture and two broad directions indexed; historical Erdos question is resolved and is not added as currently open. Regular-graph subcase shares the conjecture ID. |
+| [F28](https://arxiv.org/html/2012.15297v2) | current publication full text screened | 5 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F29](https://people.eecs.berkeley.edu/~bora/Journals/2010/IT-10.pdf) | current publication full text screened | 1 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F30](https://arxiv.org/html/1208.6094v2) | current publication full text screened | 1 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F31](https://arxiv.org/html/1308.1259v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F32](https://arxiv.org/html/1510.04954v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F33](https://publica.fraunhofer.de/entities/publication/888e2ff4-57e9-467a-a9c6-c7db59f38de4) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F34](https://arxiv.org/html/2605.13690v1) | current publication full text screened | 6 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F35](https://doi.org/10.1186/s13638-023-02273-0) | current publication full text screened | 2 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F36](https://ietresearch.onlinelibrary.wiley.com/doi/pdf/10.1049/cmu2.12762) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F37](https://perso.etis-lab.fr/declercq/PDF/ConferencePapers/Shadi_2010_ITA.pdf) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F38](https://arxiv.org/html/1905.13228v1) | current publication full text screened | 2 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F39](https://arxiv.org/html/2605.14173v1) | current publication full text screened | 4 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F40](https://grannell.net/Papers/smallbasis.pdf) | current publication full text screened | 3 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F41](https://onlinelibrary.wiley.com/doi/10.1002/jcd.21839) | current publication full text screened | 2 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F42](https://arxiv.org/html/2608.11516v1) | current publication full text screened | 3 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F43](https://arxiv.org/html/2008.01322v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F44](https://arxiv.org/html/1803.08141v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F45](https://arxiv.org/html/2307.02737v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F46](https://arxiv.org/html/2503.01341v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F47](https://arxiv.org/html/2604.12332v1) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F48](https://arxiv.org/html/2609.20030v1) | current publication full text screened | 1 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F49](https://arxiv.org/pdf/1309.5587v2) | current publication full text screened | 6 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F50](https://doi.org/10.1002/j.1538-7305.1963.tb04003.x) | current publication full text screened | 1 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F51](https://userpages.cs.umbc.edu/lomonaco/f06/653/handouts/MacWilliams-Pless-Identities.pdf) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F52](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf) | current publication full text screened | 3 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F53](https://annals.math.princeton.edu/2024/200-3/p04) | current publication full text screened | 4 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F54](https://doi.org/10.1007/s00373-016-1681-3) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Both the full publisher HTML and the 2014 arXiv preprint were available. Introductory configuration questions are addressed by the paper, not new future-work targets. |
+| [F55](https://arxiv.org/abs/2104.04880v2) | current publication full text screened | 2 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F56](https://arxiv.org/abs/1002.4311) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F57](https://www.seas.ucla.edu/csl/files/publications/JiadongWang_ITA2011.pdf) | current publication full text screened | 0 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F58](https://digitalcommons.unl.edu/mathfacpub/171/) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F59](https://www.vde-verlag.de/proceedings-en/442947110.html) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F60](https://experts.arizona.edu/en/publications/quasicyclic-low-density-parity-check-codes/) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F61](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/) | current publication full text screened | 7 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Image-only 17-page journal PDF recovered. OCR searched; printed p111/PDF15 visually checked. Generator girth is distinct from density girth. |
+| [F62](https://doi.org/10.26493/2590-9770.1564.2b8) | current publication full text screened | 1 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F63](https://doi.org/10.1109/TIT.2004.828066) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F64](https://doi.org/10.1145/3821162.3821166) | full text unavailable | Not assessed | Question screen of the explicitly identified accessible version; later-version limits are in the audit. Failed/empty responses and abstract-only pages do not count as screened full texts. Earlier acquisition routes remain in the frozen source-comparison ledgers. |
+| [F65](https://arxiv.org/abs/2402.17856v1) | current publication full text screened | 2 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
+| [F66](https://arxiv.org/abs/2202.05088v4) | current publication full text screened | 10 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
 
 ## Reproducible evidence and limits
 
@@ -137,6 +176,15 @@ The original 39 targets retain the earlier audit’s search evidence. Earlier ar
 - **P26 — NeurIPS author checklist:** Checklist items labeled Question are administrative, not mathematical open questions.
 - **F01 — AI Disclosure Statement:** Lean report concerns the established MSSP construction, not any Section 6 open target.
 - **P20 — arXiv v4 withdrawal notice:** Withdrawn claim; no active mathematical conclusion is accepted from the abstract.
+- **F40 — Discussion, preprint p11, Added in Proof:** The proposed five-line mitre/mia basis is explicitly confirmed in the same paper’s addendum; not an open addition.
+- **F40 — Discussion, preprint p12; Beezer2002 Section3, printed p101:** The proposed Erdos-configuration-only generating set is explicitly reported false in Beezer2002. It is not the full-generator minimality conjecture.
+- **F61 — Question1.1 and Section2 (density-girth and anti-Pasch spectrum):** Historical Erdos density-girth existence question is resolved by Kwan–Sah–Sawhney–Simkin Theorem1.1. The anti-Pasch spectrum was resolved in2000, as recorded by Fujiwara2014 Theorem3.10. Neither resolution settles Section7 Question1 about generator girth7.
+- **F53 — Section1.3, higher-uniformity suggestion:** Delcourt–Postle2024 Theorem1.6 proves the stated high-girth Steiner-system existence generalization. Recorded as later resolved, not added as currently open.
+- **F53 — Section1.3, Latin-square suggestion:** Kwan–Sah–Sawhney–Simkin arXiv2202.05088v4 Theorem1.4 proves arbitrarily high-girth Latin-square existence. Their other enumerative conjectures are indexed separately.
+- **F65 — Conjectures1.1,1.3,1.5 and Theorems1.2,1.4,1.6:** The named existence conjectures are explicitly proved or cited as proved in this paper; only its Section8 remaining questions are added.
+- **F50 — Introduction and final paragraph:** The introductory spectrum/dual-spectrum questions motivate the identity proved in the paper. Only the explicitly proposed broader computer-study program is retained, outside the coverage denominator.
+- **F54 — Introduction and principal complete-graph representation/count theorems:** Introductory questions describe the problem answered in the article; no additional explicit unresolved target was identified in the screened publisher HTML and preprint.
+- **F34 — AppendixK.2 and K.7:** TheoremK.2 is presented as a conditional theorem. Its own hypotheses are not silently dropped or promoted into an extra open integrality conjecture. The broader ConjectureK.3 is indexed with the scope warning.
 
 ## Canonical inventory
 
@@ -771,6 +819,7 @@ Understand structural connections between X- and Z-error absorbing sets in hyper
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [P09: Section VI](https://arxiv.org/html/2307.14532); extraction lines 503–504; explicit open problem.
+- Related, not merged: L-F28-correlated-noncss-trapping.
 
 ### L-P09-structured
 
@@ -781,6 +830,7 @@ Classify absorbing sets in structured QLDPC codes, including hypergraph-product 
 - Proof-assistant statement: no exact statement identified in bounded search. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [P09: Section VI](https://arxiv.org/html/2307.14532); extraction lines 505–505; explicit open problem.
+- Related, not merged: L-F28-quantum-trapping-enumeration.
 - Later evidence: [Section 4.4, Proposition 4.17; reference [34]](https://arxiv.org/html/2607.13666v1). Explicitly cites Morris–Pllaha–Kelley and gives a restricted (3,3) elementary absorbing-set enumeration for column-weight-3, girth-at-least-6 QC-GHP codes. This is related progress, not a complete classification of structured QLDPC absorbing sets.
 - Later evidence: [Sections 3–4, Theorem 4.4 and Corollary 4.5; reference [12]](https://arxiv.org/html/2606.11987v1). Restricted single-base-matrix lifted-product family: connectivity, minimal absorbing sets and lift behavior. Not a complete classification of structured QLDPC codes.
 
@@ -2306,6 +2356,7 @@ For fixed t and k, prove that all generators on at most m blocks form a minimal 
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F27: Conjecture4.1 and following regular-graph special-case proposal, p351/PDF11](https://doi.org/10.1006/jcta.2001.3185); extraction lines 377–382; explicit conjecture.
+- Related, not merged: L-F41-strict-full-basis.
 - Later evidence: [Heinlein–Ostergard2022 Section2.2,Theorem7 and proof](https://onlinelibrary.wiley.com/doi/full/10.1002/jcd.21839). Restricted later progress: minimality of full-configuration counts for complete Steiner triple systems through eight lines, via a rank180 computation on623STS25. Not an all-t,k,m solution; exact current-resolution and Lean discovery for the full conjecture remain unassessed.
 
 ### L-F27-minimal-girth-designs
@@ -2317,6 +2368,8 @@ Determine minimum-order designs of fixed generator girth and investigate their s
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F27: Section7, Definition7.1 and design-cage direction, pp356–357/PDF16–17](https://doi.org/10.1006/jcta.2001.3185); extraction lines 617–635; explicit research direction.
+- [F61: Section7, Question3, printed p111/PDF15; Definitions5.2–5.3](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 15; equivalent research direction.
+- Related, not merged: L-F61-generator-girth7-sts, L-F61-asymptotic-generator-avoidance.
 
 ### L-F27-constant-configurations
 
@@ -2327,3 +2380,633 @@ Extend the configuration equations and classification of constant configurations
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F27: Section6 concluding paragraph, p355/PDF15](https://doi.org/10.1006/jcta.2001.3185); extraction lines 549–575; explicit research direction.
+- Related, not merged: L-F41-constant-sts-configurations.
+
+### L-F29-ensemble-distributions
+
+Determine asymptotic average distributions of absorbing and fully absorbing sets in LDPC ensembles.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F29: Section IV, conclusion, printed p195 / PDF15](https://people.eecs.berkeley.edu/~bora/Journals/2010/IT-10.pdf); PDF pages 15; explicit research direction.
+
+### L-F30-ccm-other-structures
+
+Extend the cycle-consistency-matrix method to other graphical structures, including trapping sets.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F30: Conclusion, PDF21](https://arxiv.org/html/1208.6094v2); PDF pages 21; explicit research direction.
+
+### L-F38-extra-cycle-information
+
+Determine what additional information beyond spectrum and degree sequences permits counting cycles of length at least twice the girth.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F38: Section VI, concluding remarks](https://arxiv.org/html/1905.13228v1); PDF pages 21; explicit research direction.
+
+### L-F38-switching-trapping-sets
+
+Determine how Godsil–McKay switching changes trapping-set distributions and whether it can reduce harmful trapping-set multiplicities.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F38: Section VI, concluding remarks](https://arxiv.org/html/1905.13228v1); PDF pages 21; explicit research direction.
+
+### L-F34-asymptotic-statistical-extension
+
+Extend the WidthWall theory beyond fixed-size noiseless hypergraphs, including asymptotic regimes, sample complexity and noisy or evolving inputs.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F34: Sections 6–7, conclusion and limitations](https://arxiv.org/html/2605.13690v1); PDF pages 9, 10; explicit research direction.
+
+### L-F34-approximation-gap
+
+Characterize the approximation gap of finite-template Sinkhorn models in terms of template budget J, temperature tau and target-invariant hypertree width.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F34: Appendix G, final paragraph / PDF27](https://arxiv.org/html/2605.13690v1); PDF pages 26, 27; explicit research direction.
+
+### L-F34-sinkhorn-gap-bound
+
+Conjecture K.3: for k-uniform templates P on v vertices and ||A||_F <= B_A, bound gap_SK(P;A) by C_k (delta(P)-1) v^(k-2) B_A, with C_k depending only on k.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F34: Appendix K.3, Conjecture K.3 / PDF31](https://arxiv.org/html/2605.13690v1); PDF pages 31; explicit conjecture.
+
+### L-F34-gap-versus-width
+
+Question K.4: is sup_{||A||_F<=1} gap_SK(P;A) bounded by a function only of generalized hypertree width; does width one imply exactness, and can large width force positive gaps?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F34: Appendix K.3, Question K.4 / PDF31](https://arxiv.org/html/2605.13690v1); PDF pages 31; explicit question.
+
+### L-F34-hodge-width-threshold
+
+Conjecture K.6: determine the minimum pattern-width level needed to approximate the Hodge spectral gap, including the proposed width-two bounded-degree threshold and accuracy dependence.
+
+- Type: conjecture; written formulation: formulation requires scope check.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F34: Appendix K.6, Conjecture K.6 / PDF32](https://arxiv.org/html/2605.13690v1); PDF pages 32; explicit conjecture.
+
+### L-F34-sts13-hodge-test
+
+Do the two STS(13) examples in Appendix F.1 have different smallest nonzero Hodge 1-Laplacian eigenvalues, so that they separate the proposed Hodge-gap invariant?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F34: Appendix K.7, stress test 4 / PDF33](https://arxiv.org/html/2605.13690v1); PDF pages 33; explicit question.
+
+### L-F35-sliding-window-harmful-objects
+
+Analyze the high-SNR harmful structures specific to sliding-window decoding of QC-SC codes, including error propagation, and tailor MIHAO to them.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F35: Section 4.2, discussion of Figure 1](https://doi.org/10.1186/s13638-023-02273-0); extraction lines 260–260; explicit research direction.
+
+### L-F35-alternative-base-performance
+
+Analyze the performance of optimized QC-SC codes obtained from the alternative girth-eight QC-LDPC base constructions identified by the authors.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F35: Section 4.2, final paragraph](https://doi.org/10.1186/s13638-023-02273-0); extraction lines 275–275; explicit research direction.
+
+### L-F39-ub-distance
+
+Obtain tighter minimum-distance analysis for the proposed univariate bicycle code construction.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F39: Conclusion, PDF5](https://arxiv.org/html/2605.14173v1); PDF pages 5; explicit research direction.
+
+### L-F39-beyond-divisor
+
+Extend the univariate bicycle construction beyond the divisor setting used in the paper.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F39: Conclusion, PDF5](https://arxiv.org/html/2605.14173v1); PDF pages 5; explicit research direction.
+
+### L-F39-ub-decoding
+
+Develop improved decoding methods tailored to univariate bicycle codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F39: Conclusion, PDF5](https://arxiv.org/html/2605.14173v1); PDF pages 5; explicit research direction.
+
+### L-F39-ub-logical-gates
+
+Use the explicit logical structure of univariate bicycle codes for systematic logical-gate constructions and hardware-aware design.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F39: Conclusion, PDF5](https://arxiv.org/html/2605.14173v1); PDF pages 5; explicit research direction.
+
+### L-F40-maxi-pasch
+
+For admissible v not of the form 2^n-1, determine the maximum number of Pasch configurations in an STS(v) and construct systems attaining it.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F40: Discussion, preprint p10](https://grannell.net/Papers/smallbasis.pdf); PDF pages 10; explicit question.
+
+### L-F40-maximal-partial-bases
+
+Develop configuration-counting relations for maximal partial Steiner triple systems and compare them with the complete-STS relations.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F40: Discussion, preprint pp10–11](https://grannell.net/Papers/smallbasis.pdf); PDF pages 10, 11; explicit research direction.
+
+### L-F40-lambda-triple-bases
+
+Extend the configuration-counting basis investigation to triple systems TS(v,lambda) of general index.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F40: Discussion, preprint p11](https://grannell.net/Papers/smallbasis.pdf); PDF pages 11; explicit research direction.
+
+### L-F41-constant-sts-configurations
+
+Give a complete characterization of configurations whose number of occurrences in an STS(v) depends only on v.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F41: Section 2.1, printed p529](https://onlinelibrary.wiley.com/doi/10.1002/jcd.21839); PDF pages 4; explicit research direction.
+- Related, not merged: L-F27-constant-configurations.
+
+### L-F41-strict-full-basis
+
+For every n, are all full m-line configurations with m<=n necessary for determining all n-line STS configuration counts, as in Theorem 4?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F41: Section 2.2, strictness discussion following Theorem 6, printed p532](https://onlinelibrary.wiley.com/doi/10.1002/jcd.21839); PDF pages 7, 8; explicit conjecture.
+- Related, not merged: L-F27-generator-basis.
+
+### L-F52-general-even-freeness-bounds
+
+Find nontrivial upper bounds and existence results for high even-freeness of Steiner 2-designs S(2,mu,v) for general large block size mu.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F52: Section 3, discussion preceding Theorem 3.11 / printed p38](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf); PDF pages 6, 7; explicit research direction.
+- [F49: SectionIII-B, discussion before Theorem3.11 / PDF8](https://arxiv.org/pdf/1309.5587v2); PDF pages 8; same research direction.
+
+### L-F52-new-even-free-constructions
+
+Find constructions of highly even-free Steiner 2-designs beyond the finite-geometric and recursive constructions described in the survey.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F52: Section 3, paragraph following Theorem 3.13 / printed p39](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf); PDF pages 7; explicit research direction.
+- [F49: SectionIII-B, discussion after the finite-geometric constructions / PDF9](https://arxiv.org/pdf/1309.5587v2); PDF pages 9; same source question.
+
+### L-F49-relative-substructure-harm
+
+Determine the relative harmfulness of parity-check substructures for sum-product decoding over a binary symmetric channel.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F49: Section III-B, structural-design discussion / PDF6](https://arxiv.org/pdf/1309.5587v2); PDF pages 6; explicit research direction.
+
+### L-F49-auxiliary-budget
+
+Determine appropriate auxiliary-qubit or ebit budgets and the break-even point against alternative coding schemes as auxiliary-qubit reliability and cost vary.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F49: Section IV, final discussion / PDF15](https://arxiv.org/pdf/1309.5587v2); PDF pages 15; explicit research direction.
+
+### L-F49-small-weight-degeneracy
+
+Do all sufficiently small-weight classical codewords in the quantum LDPC constructions considered correspond to undetectable nontrivial logical errors?
+
+- Type: conjecture; written formulation: formulation requires scope check.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F49: Section V, unnumbered conjecture before Theorem 5.1 / PDF16](https://arxiv.org/pdf/1309.5587v2); PDF pages 16; explicit conjecture.
+
+### L-F28-quantum-trapping-enumeration
+
+Adapt expansion–contraction methods to quantum trapping sets, determine parent–child structure and relative harmfulness, and account for Tanner-neighborhood effects.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F28: Section 6, concluding discussion / PDF16](https://arxiv.org/html/2012.15297v2); PDF pages 16; explicit research direction.
+- Related, not merged: L-P09-structured.
+
+### L-F28-symmetric-stabilizer-enumeration
+
+Enumerate symmetric stabilizers in QLDPC codes to exploit degeneracy in decoding.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F28: Section 6 / PDF16](https://arxiv.org/html/2012.15297v2); PDF pages 16; explicit research direction.
+
+### L-F28-correlated-noncss-trapping
+
+Extend quantum trapping-set definitions to correlated X/Z errors and general non-CSS stabilizer codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F28: Section 6 / PDF16](https://arxiv.org/html/2012.15297v2); PDF pages 16; explicit research direction.
+- Related, not merged: L-P09-XZ.
+
+### L-F28-degeneracy-low-complexity-decoding
+
+Develop message-passing algorithms of lower complexity than BP that systematically exploit quantum-code degeneracy.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F28: Section 5, paragraph preceding Remark 5 / PDF15](https://arxiv.org/html/2012.15297v2); PDF pages 15; explicit research direction.
+
+### L-F28-beyond-sqrt-distance-performance
+
+Analyze finite-length performance of QLDPC codes exceeding square-root distance scaling using their quantum trapping-set enumeration.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F28: Section 6, final paragraph / PDF16](https://arxiv.org/html/2012.15297v2); PDF pages 16; explicit research direction.
+
+### L-F42-ai-decoder-structures
+
+Characterize harmful trapping structures for AI-based quantum decoders.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F42: Introduction / PDF2](https://arxiv.org/html/2608.11516v1); PDF pages 2; explicit research direction.
+
+### L-F42-larger-dem-search
+
+Determine whether small-LETS error-floor estimation remains sufficient and feasible for larger-distance circuit-level codes, and find structural subclasses enabling deeper search.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F42: Section VI, conclusions / PDFs14–15](https://arxiv.org/html/2608.11516v1); PDF pages 14, 15; explicit research direction.
+
+### L-F42-dem-aware-decoding
+
+Use the harmful-LETS catalog to design circuit-level decoders that suppress or escape the observed low-weight failure mechanisms.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F42: Section VI, final paragraph / PDF15](https://arxiv.org/html/2608.11516v1); PDF pages 15; explicit research direction.
+
+### L-F48-haemers-spectrum
+
+Are almost all finite simple graphs determined up to isomorphism by their adjacency spectrum?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F48: Introduction / PDF1, cited Haemers conjecture [26]](https://arxiv.org/html/2609.20030v1); PDF pages 1; cited conjecture.
+
+### L-F55-moore-degree57
+
+Does a Moore graph of degree 57 (equivalently SRG(3250,57,0,1)) exist?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F55: Section 3, Moore-graph construction](https://arxiv.org/abs/2104.04880v2); PDF pages 8; cited conjecture.
+
+### L-F55-partial-geometry-664
+
+Does a partial geometry pg(6,6,4) exist?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F55: Section 4, feasible-parameter discussion](https://arxiv.org/abs/2104.04880v2); PDF pages 16, 17; cited conjecture.
+
+### L-F62-grid-free-sts
+
+Does there exist a Steiner triple system STS(v), with v>=9, containing no grid configuration?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F62: Introduction, paragraph on six-line full configurations / PDF3](https://doi.org/10.26493/2590-9770.1564.2b8); PDF pages 3; explicit question.
+
+### L-F61-generator-girth7-sts
+
+Does there exist a Steiner triple system of generator girth exactly 7 in the sense of Definition 5.2?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F61: Section 7, Question 1, printed p111 / PDF15](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 15; explicit question.
+- Related, not merged: L-F27-minimal-girth-designs.
+
+### L-F61-other-design-girth5
+
+Does any nontrivial design other than a regular graph or a Steiner triple system have generator girth at least 5?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F61: Section 7, Question 2, printed p111 / PDF15](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 15; explicit question.
+
+### L-F61-design-to-graph-cages
+
+Use design-cage methods to improve the construction or search for cages among regular graphs.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F61: Section 7, direction 4, printed p111 / PDF15](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 15; explicit research direction.
+
+### L-F61-moore-designs
+
+Develop a design-cage analogue of the Moore lower bound, recovering the graph bound, and investigate designs attaining it.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F61: Section 7, Question 5, printed p111 / PDF15](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 15; explicit research direction.
+
+### L-F61-more-fundamental-generators
+
+Find more fundamental configuration building blocks than generators, accounting for the shared cores obtained by removing degree-one vertices.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F61: Section 7, Question 6, printed p111 / PDF15](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 15; explicit research direction.
+
+### L-F61-asymptotic-generator-avoidance
+
+For fixed t,k,lambda,r, does a threshold exist above which every admissible order has a design avoiding all nontrivial generators with at most r blocks?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F61: Section 5, final paragraph, printed p104 / PDF8](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/); PDF pages 8; explicit question.
+- Related, not merged: L-F27-minimal-girth-designs.
+
+### L-F53-counting-upper-bound
+
+Is the lower bound of Theorem 1.3 for the number of labeled STSs of girth greater than g asymptotically sharp, with a matching leading exponential constant?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F53: Section 1.3, after Theorem 1.3 / PDF5](https://annals.math.princeton.edu/2024/200-3/p04); PDF pages 5; explicit conjecture.
+
+### L-F53-maximal-sts-girth
+
+Determine the optimal asymptotic maximum density girth of an STS of order N, equivalently the optimal dependence of N_1.1(g) on g.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F53: Section 1.3 / PDF5](https://annals.math.princeton.edu/2024/200-3/p04); PDF pages 5; explicit question.
+
+### L-F53-pseudorandom-decomposition
+
+Establish high-girth triangle decompositions in sufficiently dense pseudorandom graphs satisfying the required divisibility conditions.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F53: Section 1.3 / PDF5](https://annals.math.princeton.edu/2024/200-3/p04); PDF pages 5; explicit research direction.
+
+### L-F53-high-girth-factorizations
+
+Extend the high-girth construction program to 1-factorizations, as suggested in the discussion of Linial’s proposals.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F53: Section 1.3 / PDF5](https://annals.math.princeton.edu/2024/200-3/p04); PDF pages 5; explicit research direction.
+
+### L-F50-systematic-weight-distributions
+
+Develop systematic computer investigations of weight distributions using structural information about codes and their duals.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F50: Final discussion, printed p94 / PDF16](https://doi.org/10.1002/j.1538-7305.1963.tb04003.x); PDF pages 16; explicit research direction.
+
+### L-F65-minimum-degree-threshold
+
+Determine the optimal minimum-degree threshold for high-girth K_q^r-decompositions in Theorem 8.1; for r=2, can it match ordinary K_q-decomposition bounds?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F65: Section 8, after Theorem 8.1 / PDF54](https://arxiv.org/abs/2402.17856v1); PDF pages 54; explicit question.
+
+### L-F65-random-high-girth-designs
+
+Determine thresholds for high-girth Steiner systems in random graphs and random uniform hypergraphs, extending the referenced refined-absorption threshold results.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F65: Section 8, final paragraph / PDF54](https://arxiv.org/abs/2402.17856v1); PDF pages 54; explicit research direction.
+
+### L-F66-latin-enumeration
+
+Close the gap between upper and lower bounds on the number of Latin squares of order n.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Introduction / PDF1](https://arxiv.org/abs/2202.05088v4); PDF pages 1; explicit research direction.
+
+### L-F66-uniform-sampling
+
+Find a provably efficient method for generating a uniformly random Latin square of order n.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Introduction and footnote 2 / PDF1](https://arxiv.org/abs/2202.05088v4); PDF pages 1; explicit research direction.
+
+### L-F66-intercalate-lower-tail
+
+Conjecture 1.6: for each fixed 0<delta<=1, does the intercalate count N in a random Latin square satisfy Pr[N<=(1-delta)EN]=exp(-(delta+(1-delta)log(1-delta)+o(1))EN)?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4, Conjecture 1.6 / PDF4](https://arxiv.org/abs/2202.05088v4); PDF pages 4; explicit conjecture.
+
+### L-F66-intercalate-upper-tail
+
+Conjecture 1.7: for fixed delta>0, is Pr[N>=(1+delta)n^2/4]=exp(-(1+o(1))Phi(delta EN) log n), where Phi is the partial-Latin-square intercalate extremal function?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4, Conjecture 1.7 / PDF4](https://arxiv.org/abs/2202.05088v4); PDF pages 4; explicit conjecture.
+
+### L-F66-partial-latin-extremal
+
+Determine the asymptotic value of Phi(N), the least number of nonempty cells in a partial Latin square with at least N intercalates.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4 and discussion before Theorem 2.3 / PDFs4–5](https://arxiv.org/abs/2202.05088v4); PDF pages 4; explicit question.
+
+### L-F66-maximum-intercalates
+
+Determine the asymptotic maximum number of intercalates in a Latin square of order n.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4 / PDF4](https://arxiv.org/abs/2202.05088v4); PDF pages 4; explicit question.
+
+### L-F66-hilton-no-subsquares
+
+For all sufficiently large orders n=2^a 3^b with a>=1 and b>=0, does an order-n Latin square with no proper nontrivial Latin subsquare exist (the remaining Hilton N_infinity cases stated in the source)?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4, cited Hilton conjecture / PDF4](https://arxiv.org/abs/2202.05088v4); PDF pages 4; cited conjecture.
+
+### L-F66-poisson-three-subsquares
+
+Establish the proposed asymptotic Poisson law with bounded mean for the number of 3x3 subsquares in a uniformly random Latin square.
+
+- Type: conjecture; written formulation: formulation requires scope check.
+- Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4, cited Kwan–Sah–Sawhney conjecture / PDF4](https://arxiv.org/abs/2202.05088v4); PDF pages 4; cited conjecture.
+
+### L-F66-no-large-subsquares
+
+Does the probability that a uniformly random order-n Latin square has no proper Latin subsquare of order at least four tend to one as n grows?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.4, cited subsquare conjecture / PDF4](https://arxiv.org/abs/2202.05088v4); PDF pages 4; cited conjecture.
+
+### L-F66-minimum-cuboctahedra
+
+Determine the asymptotic minimum number of cuboctahedra in an order-n Latin square; in particular, can the count be below (4-Omega(1))n^4?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F66: Section 1.3 and final paragraph of Section 1.4 / PDFs3–4](https://arxiv.org/abs/2202.05088v4); PDF pages 3, 4; explicit question.
+
+### L-F52-seven-even-free-sts
+
+Does a nontrivial Steiner triple system exist that simultaneously avoids the Pasch, grid and double-triangle even configurations, and hence is seven-even-free?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Specific source-stated mathematical question; current resolution, matching Lean discovery and difficulty assessment pending.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F52: Section3, discussion after Theorem3.10 / printed pp37–38](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf); PDF pages 6; explicit question.
+- [F49: SectionIII-B, even-freeness discussion / PDF8](https://arxiv.org/pdf/1309.5587v2); PDF pages 8; same source question.

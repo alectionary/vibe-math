@@ -86,9 +86,13 @@ Searches can miss alternate definitions, terminology, unindexed code, private ar
 
 ## October24 Beezer screen and (4,0) follow-up
 
-Current cohort: **190 entries,112 eligible targets,4/112 complete checked Lean targets** and **0/112 additional targets with supporting proofs**. Beezer contributes three newly indexed source targets/directions, one eligible; all three have unassessed current-resolution/Lean/difficulty status. The (4,0) work completes the recorded incidence-corrected counts and spectral-only obstruction under the existing F16 ID; it adds one complete target, not a new question. Earlier fractions below/above are dated cohort snapshots.
+Cohort after the Beezer screen: **190 entries,112 eligible targets,4/112 complete checked Lean targets** and **0/112 additional targets with supporting proofs**. Beezer contributes three newly indexed source targets/directions, one eligible; all three have unassessed current-resolution/Lean/difficulty status. The (4,0) work completes the recorded incidence-corrected counts and spectral-only obstruction under the existing F16 ID; it adds one complete target, not a new question. Earlier fractions below/above are dated cohort snapshots.
 
 [Current research report](../formalization/absorbing-four-zero/RESEARCH-NOTE.txt) · [Checked scope](../formalization/absorbing-four-zero/verification.json) · [Beezer journal review](../formalization/absorbing-four-zero/BEEZER-REVIEW.txt).
 
 
-Project-derived lift-label extension: [precise evidence](../formalization/lift-label-elimination/verification.json) records checked Lean versions of every manuscript proof, including assignment counts, physical incidence bridges and all-q quantum rank/distance. It contributes zero canonical source targets;4/112 remains the coverage fraction.
+Project-derived lift-label extension: [precise evidence](../formalization/lift-label-elimination/verification.json) records checked Lean versions of every manuscript proof, including assignment counts, physical incidence bridges and all-q quantum rank/distance. It contributes zero canonical source targets;4/112 was that publication cohort’s coverage fraction.
+
+## Complete paper-by-paper source-question screen
+
+[Audit and access gaps](RESEARCH-QUESTION-SCREENING.md) adds 62 source questions/directions (23 specific eligible targets), with no new completed proof claim. The live inventory is 252 entries, 135 eligible targets and 4/135 complete checked Lean targets; all new Lean discovery and planning assessments are pending. Earlier fractions above are dated cohorts.

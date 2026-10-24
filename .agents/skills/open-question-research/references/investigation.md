@@ -16,6 +16,16 @@ Resolve repository links from the repository root, not this reference directory.
 - Answer contract: question/source → intended answer → decisive evidence:
 - Authorized deliverable, time/computation bounds and stopping condition:
 
+## Paper-by-paper question harvesting
+
+| Paper / exact version | Full-text access and hash | Questions and source locators | Canonical IDs / resolved exclusion / access gap |
+|---|---|---|---|
+
+Include every actively encountered paper, even when used only for a method or
+counterexample. Screen outside the immediate target topic. Do not infer no
+questions from a partial read; record blocked versions and unverified leads.
+Update the shared inventory and its coverage ledger before closing the block.
+
 ## Literature comparison
 
 | Source / version / date / locator | Inspected result and hypotheses | Translation to our exact target | Contribution or remaining mismatch |

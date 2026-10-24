@@ -37,6 +37,9 @@ for s in sources:
     text += f"- Comparison limit: {s['comparison_limit']}\n"
     text += '- Related canonical targets: ' + ', '.join(target_link(t) for t in s['related_target_ids']) + '.\n'
     text += f"- Provenance: [source review ledger](../{s['provenance_ledger']}).\n\n"
+    if s.get('question_screening'):
+        q=s['question_screening']
+        text += f"- Question screen: [{q['status'].replace('_',' ')}](RESEARCH-QUESTION-SCREENING.md); {len(q['target_ids'])} linked canonical targets.\n\n"
     if s.get('followup_provenance_ledger'):
         text += f"- Follow-up comparison: [dated source review](../{s['followup_provenance_ledger']}).\n\n"
 (D / 'RESEARCH-SOURCES.md').write_text(text.rstrip() + '\n')
@@ -115,10 +118,17 @@ for block in review.get('research_blocks', []):
     text += f"Canonical entry delta **{block['canonical_entry_delta']}**, eligible-target delta **{block['eligible_target_delta']}**, completed canonical Lean-target delta **{block['complete_canonical_lean_target_delta']}**. Consult this dated artifact for its exact source and proof scope.\n"
 for extension in review.get('indexing_extensions', []):
     text += f"\n## Separate indexing extension: {extension['id']}\n\n"
-    text += "Beezer's final journal was fully read. The precise minimal-basis conjecture and two broad directions are inventoried separately from the (4,0) research follow-up.\n\n"
+    if extension['id']=='beezer-final-journal-2026-10-24':
+        text += "Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.\n\n"
+    else:
+        text += extension.get('summary','Source-question indexing extension.') + "\n\n"
+    text += f"[Screen report](../{extension['report']}). Added **{extension['added_entries']} entries**, **{extension['added_eligible_targets']} eligible targets**, **{len(extension['added_paper_ids'])} paper records**, **{extension['full_text_screens_added']} full-text screens** and **{extension['completed_targets_added']} completed proofs**.\n\n"
     for identifier in extension['added_target_ids']:
         text += f"- {target_link(identifier)}: {rows[identifier]['title']}\n"
-    text += "\nCurrent cohort: **190 canonical entries,112 eligible targets,61 paper records,58 full-text screens**. Complete checked canonical Lean targets are now **4/112 (3.57%)** after finishing the existing F16 target; new Beezer questions remain unassessed. New planning records are unassessed. The original six-entry expansion and dated research blocks above are preserved.\n"
+coverage=load('downstream-paper-coverage.json')
+eligible=sum(r['eligible_for_coverage'] for r in rows.values())
+complete=sum(r['eligible_for_coverage'] and r['lean_proof_status']=='verified_complete_lean_proof' for r in rows.values())
+text += f"\nCurrent cohort: **{len(rows)} canonical entries,{eligible} eligible targets,{len(coverage)} paper records,{sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)} full-text screens**; **{complete}/{eligible} complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.\n"
 text += f"\nThe current source index has **{len(sources)}** records, with actual access levels retained.\n"
 (D / 'RESEARCH-RECONCILIATION.md').write_text(text)
 print(f'Rendered {len(sources)} linked sources and {len(review["added_target_ids"])} new source questions/directions.')

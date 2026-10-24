@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 190 entries (9 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 252 entries (71 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Checked October 24, 2026. Low-confidence planning priors for all 190 entries (9 
 | 3 | 40 | 23 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 7 | 7 |
+| Unestimated / scope gate | 30 | 30 |
 
 ### 2026-Geraci-O01
 
@@ -2855,3 +2855,995 @@ First milestone: Read the cited source definitions and formulate a bounded targe
 Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
 
 Basis: New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f27-constant-configurations).
+
+### L-F29-ensemble-distributions
+
+Determine asymptotic average distributions of absorbing and fully absorbing sets in LDPC ensembles.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f29-ensemble-distributions).
+
+### L-F30-ccm-other-structures
+
+Extend the cycle-consistency-matrix method to other graphical structures, including trapping sets.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f30-ccm-other-structures).
+
+### L-F38-extra-cycle-information
+
+Determine what additional information beyond spectrum and degree sequences permits counting cycles of length at least twice the girth.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f38-extra-cycle-information).
+
+### L-F38-switching-trapping-sets
+
+Determine how Godsil–McKay switching changes trapping-set distributions and whether it can reduce harmful trapping-set multiplicities.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f38-switching-trapping-sets).
+
+### L-F34-asymptotic-statistical-extension
+
+Extend the WidthWall theory beyond fixed-size noiseless hypergraphs, including asymptotic regimes, sample complexity and noisy or evolving inputs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f34-asymptotic-statistical-extension).
+
+### L-F34-approximation-gap
+
+Characterize the approximation gap of finite-template Sinkhorn models in terms of template budget J, temperature tau and target-invariant hypertree width.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f34-approximation-gap).
+
+### L-F34-sinkhorn-gap-bound
+
+Conjecture K.3: for k-uniform templates P on v vertices and ||A||_F <= B_A, bound gap_SK(P;A) by C_k (delta(P)-1) v^(k-2) B_A, with C_k depending only on k.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f34-sinkhorn-gap-bound).
+
+### L-F34-gap-versus-width
+
+Question K.4: is sup_{||A||_F<=1} gap_SK(P;A) bounded by a function only of generalized hypertree width; does width one imply exactness, and can large width force positive gaps?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f34-gap-versus-width).
+
+### L-F34-hodge-width-threshold
+
+Conjecture K.6: determine the minimum pattern-width level needed to approximate the Hodge spectral gap, including the proposed width-two bounded-degree threshold and accuracy dependence.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f34-hodge-width-threshold).
+
+### L-F34-sts13-hodge-test
+
+Do the two STS(13) examples in Appendix F.1 have different smallest nonzero Hodge 1-Laplacian eigenvalues, so that they separate the proposed Hodge-gap invariant?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f34-sts13-hodge-test).
+
+### L-F35-sliding-window-harmful-objects
+
+Analyze the high-SNR harmful structures specific to sliding-window decoding of QC-SC codes, including error propagation, and tailor MIHAO to them.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f35-sliding-window-harmful-objects).
+
+### L-F35-alternative-base-performance
+
+Analyze the performance of optimized QC-SC codes obtained from the alternative girth-eight QC-LDPC base constructions identified by the authors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f35-alternative-base-performance).
+
+### L-F39-ub-distance
+
+Obtain tighter minimum-distance analysis for the proposed univariate bicycle code construction.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f39-ub-distance).
+
+### L-F39-beyond-divisor
+
+Extend the univariate bicycle construction beyond the divisor setting used in the paper.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f39-beyond-divisor).
+
+### L-F39-ub-decoding
+
+Develop improved decoding methods tailored to univariate bicycle codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f39-ub-decoding).
+
+### L-F39-ub-logical-gates
+
+Use the explicit logical structure of univariate bicycle codes for systematic logical-gate constructions and hardware-aware design.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f39-ub-logical-gates).
+
+### L-F40-maxi-pasch
+
+For admissible v not of the form 2^n-1, determine the maximum number of Pasch configurations in an STS(v) and construct systems attaining it.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f40-maxi-pasch).
+
+### L-F40-maximal-partial-bases
+
+Develop configuration-counting relations for maximal partial Steiner triple systems and compare them with the complete-STS relations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f40-maximal-partial-bases).
+
+### L-F40-lambda-triple-bases
+
+Extend the configuration-counting basis investigation to triple systems TS(v,lambda) of general index.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f40-lambda-triple-bases).
+
+### L-F41-constant-sts-configurations
+
+Give a complete characterization of configurations whose number of occurrences in an STS(v) depends only on v.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f41-constant-sts-configurations).
+
+### L-F41-strict-full-basis
+
+For every n, are all full m-line configurations with m<=n necessary for determining all n-line STS configuration counts, as in Theorem 4?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f41-strict-full-basis).
+
+### L-F52-general-even-freeness-bounds
+
+Find nontrivial upper bounds and existence results for high even-freeness of Steiner 2-designs S(2,mu,v) for general large block size mu.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f52-general-even-freeness-bounds).
+
+### L-F52-new-even-free-constructions
+
+Find constructions of highly even-free Steiner 2-designs beyond the finite-geometric and recursive constructions described in the survey.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f52-new-even-free-constructions).
+
+### L-F49-relative-substructure-harm
+
+Determine the relative harmfulness of parity-check substructures for sum-product decoding over a binary symmetric channel.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f49-relative-substructure-harm).
+
+### L-F49-auxiliary-budget
+
+Determine appropriate auxiliary-qubit or ebit budgets and the break-even point against alternative coding schemes as auxiliary-qubit reliability and cost vary.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f49-auxiliary-budget).
+
+### L-F49-small-weight-degeneracy
+
+Do all sufficiently small-weight classical codewords in the quantum LDPC constructions considered correspond to undetectable nontrivial logical errors?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f49-small-weight-degeneracy).
+
+### L-F28-quantum-trapping-enumeration
+
+Adapt expansion–contraction methods to quantum trapping sets, determine parent–child structure and relative harmfulness, and account for Tanner-neighborhood effects.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f28-quantum-trapping-enumeration).
+
+### L-F28-symmetric-stabilizer-enumeration
+
+Enumerate symmetric stabilizers in QLDPC codes to exploit degeneracy in decoding.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f28-symmetric-stabilizer-enumeration).
+
+### L-F28-correlated-noncss-trapping
+
+Extend quantum trapping-set definitions to correlated X/Z errors and general non-CSS stabilizer codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f28-correlated-noncss-trapping).
+
+### L-F28-degeneracy-low-complexity-decoding
+
+Develop message-passing algorithms of lower complexity than BP that systematically exploit quantum-code degeneracy.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f28-degeneracy-low-complexity-decoding).
+
+### L-F28-beyond-sqrt-distance-performance
+
+Analyze finite-length performance of QLDPC codes exceeding square-root distance scaling using their quantum trapping-set enumeration.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f28-beyond-sqrt-distance-performance).
+
+### L-F42-ai-decoder-structures
+
+Characterize harmful trapping structures for AI-based quantum decoders.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f42-ai-decoder-structures).
+
+### L-F42-larger-dem-search
+
+Determine whether small-LETS error-floor estimation remains sufficient and feasible for larger-distance circuit-level codes, and find structural subclasses enabling deeper search.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f42-larger-dem-search).
+
+### L-F42-dem-aware-decoding
+
+Use the harmful-LETS catalog to design circuit-level decoders that suppress or escape the observed low-weight failure mechanisms.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f42-dem-aware-decoding).
+
+### L-F48-haemers-spectrum
+
+Are almost all finite simple graphs determined up to isomorphism by their adjacency spectrum?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f48-haemers-spectrum).
+
+### L-F55-moore-degree57
+
+Does a Moore graph of degree 57 (equivalently SRG(3250,57,0,1)) exist?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f55-moore-degree57).
+
+### L-F55-partial-geometry-664
+
+Does a partial geometry pg(6,6,4) exist?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f55-partial-geometry-664).
+
+### L-F62-grid-free-sts
+
+Does there exist a Steiner triple system STS(v), with v>=9, containing no grid configuration?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f62-grid-free-sts).
+
+### L-F61-generator-girth7-sts
+
+Does there exist a Steiner triple system of generator girth exactly 7 in the sense of Definition 5.2?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f61-generator-girth7-sts).
+
+### L-F61-other-design-girth5
+
+Does any nontrivial design other than a regular graph or a Steiner triple system have generator girth at least 5?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f61-other-design-girth5).
+
+### L-F61-design-to-graph-cages
+
+Use design-cage methods to improve the construction or search for cages among regular graphs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f61-design-to-graph-cages).
+
+### L-F61-moore-designs
+
+Develop a design-cage analogue of the Moore lower bound, recovering the graph bound, and investigate designs attaining it.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f61-moore-designs).
+
+### L-F61-more-fundamental-generators
+
+Find more fundamental configuration building blocks than generators, accounting for the shared cores obtained by removing degree-one vertices.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f61-more-fundamental-generators).
+
+### L-F61-asymptotic-generator-avoidance
+
+For fixed t,k,lambda,r, does a threshold exist above which every admissible order has a design avoiding all nontrivial generators with at most r blocks?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f61-asymptotic-generator-avoidance).
+
+### L-F53-counting-upper-bound
+
+Is the lower bound of Theorem 1.3 for the number of labeled STSs of girth greater than g asymptotically sharp, with a matching leading exponential constant?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f53-counting-upper-bound).
+
+### L-F53-maximal-sts-girth
+
+Determine the optimal asymptotic maximum density girth of an STS of order N, equivalently the optimal dependence of N_1.1(g) on g.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f53-maximal-sts-girth).
+
+### L-F53-pseudorandom-decomposition
+
+Establish high-girth triangle decompositions in sufficiently dense pseudorandom graphs satisfying the required divisibility conditions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f53-pseudorandom-decomposition).
+
+### L-F53-high-girth-factorizations
+
+Extend the high-girth construction program to 1-factorizations, as suggested in the discussion of Linial’s proposals.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f53-high-girth-factorizations).
+
+### L-F50-systematic-weight-distributions
+
+Develop systematic computer investigations of weight distributions using structural information about codes and their duals.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f50-systematic-weight-distributions).
+
+### L-F65-minimum-degree-threshold
+
+Determine the optimal minimum-degree threshold for high-girth K_q^r-decompositions in Theorem 8.1; for r=2, can it match ordinary K_q-decomposition bounds?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f65-minimum-degree-threshold).
+
+### L-F65-random-high-girth-designs
+
+Determine thresholds for high-girth Steiner systems in random graphs and random uniform hypergraphs, extending the referenced refined-absorption threshold results.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f65-random-high-girth-designs).
+
+### L-F66-latin-enumeration
+
+Close the gap between upper and lower bounds on the number of Latin squares of order n.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-latin-enumeration).
+
+### L-F66-uniform-sampling
+
+Find a provably efficient method for generating a uniformly random Latin square of order n.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-uniform-sampling).
+
+### L-F66-intercalate-lower-tail
+
+Conjecture 1.6: for each fixed 0<delta<=1, does the intercalate count N in a random Latin square satisfy Pr[N<=(1-delta)EN]=exp(-(delta+(1-delta)log(1-delta)+o(1))EN)?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-intercalate-lower-tail).
+
+### L-F66-intercalate-upper-tail
+
+Conjecture 1.7: for fixed delta>0, is Pr[N>=(1+delta)n^2/4]=exp(-(1+o(1))Phi(delta EN) log n), where Phi is the partial-Latin-square intercalate extremal function?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-intercalate-upper-tail).
+
+### L-F66-partial-latin-extremal
+
+Determine the asymptotic value of Phi(N), the least number of nonempty cells in a partial Latin square with at least N intercalates.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-partial-latin-extremal).
+
+### L-F66-maximum-intercalates
+
+Determine the asymptotic maximum number of intercalates in a Latin square of order n.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-maximum-intercalates).
+
+### L-F66-hilton-no-subsquares
+
+For all sufficiently large orders n=2^a 3^b with a>=1 and b>=0, does an order-n Latin square with no proper nontrivial Latin subsquare exist (the remaining Hilton N_infinity cases stated in the source)?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-hilton-no-subsquares).
+
+### L-F66-poisson-three-subsquares
+
+Establish the proposed asymptotic Poisson law with bounded mean for the number of 3x3 subsquares in a uniformly random Latin square.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-poisson-three-subsquares).
+
+### L-F66-no-large-subsquares
+
+Does the probability that a uniformly random order-n Latin square has no proper Latin subsquare of order at least four tend to one as n grows?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-no-large-subsquares).
+
+### L-F66-minimum-cuboctahedra
+
+Determine the asymptotic minimum number of cuboctahedra in an order-n Latin square; in particular, can the count be below (4-Omega(1))n^4?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f66-minimum-cuboctahedra).
+
+### L-F52-seven-even-free-sts
+
+Does a nontrivial Steiner triple system exist that simultaneously avoids the Pasch, grid and double-triangle even configurations, and hence is seven-even-free?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f52-seven-even-free-sts).

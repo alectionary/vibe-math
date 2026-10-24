@@ -34,7 +34,9 @@ assert load(A/'family-ingredient-verification.json')['passed']
 v=load(A/'result-validation.json');assert v['passed'] and v['cpp_gauge_assignments']==8746998 and v['code_parameters']==[280,18,6]
 q=load(A/'quantum-independent.json');assert q['passed'] and q['quadruples_per_graph']==250654530 and q['augmented_Z_rank']==132
 rows=load(R/'literature/open-problems.json');ids={r['id'] for r in rows};assert m['target_id'] not in ids
-assert len(rows)==190 and sum(r['eligible_for_coverage'] for r in rows)==112
+summary=load(R/'literature/open-problem-summary.json')
+assert len(rows)==summary['canonical_inventory_entries'] and sum(r['eligible_for_coverage'] for r in rows)==summary['eligible_targets']
+assert len(rows)>=190 and summary['eligible_targets']>=112  # Original publication cohort remains a historical subset.
 assert sum(r['eligible_for_coverage'] and r['lean_proof_status']=='verified_complete_lean_proof' for r in rows)==4
 rec=load(R/'literature/research-reconciliation.json');task=next(t for t in rec['project_derived_followups'] if t['id']==m['target_id']);assert task['parent_target_id']==m['parent_canonical_target'] and not task['eligible_for_coverage']
 assert not task['source_authors_asked_this_exact_question']
@@ -50,4 +52,4 @@ for r in chronology['rows']:
 
 prior=load(A/'prior-art.json');assert len(prior['searches']['x_direct']['queries'])==3 and len(prior['searches']['github']['github'])==4
 assert prior['searches']['limits'] and prior['remaining_access_gaps']
-print(f"PASS:{m['new_module_count']}new checked modules,all manuscript proofs covered,{audit['declaration_count']}audited declarations,61preserved dependencies; X/GitHub limits recorded; canonical coverage unchanged4/112.")
+print(f"PASS:{m['new_module_count']}new checked modules,all manuscript proofs covered,{audit['declaration_count']}audited declarations,61preserved dependencies; X/GitHub limits recorded; zero canonical target increment from the lift-label proof artifact.")

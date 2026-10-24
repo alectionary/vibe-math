@@ -80,7 +80,7 @@ assert summary['new_written_math_statuses']==dict(collections.Counter(r['written
 assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)==30+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+ext_full
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
 assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+ext_full
-assert summary['not_fully_assessed']==1+reconciliation['added_relevant_section_screens']
+assert summary['not_fully_assessed']==1+reconciliation['added_relevant_section_screens']+sum(e.get('incomplete_paper_records_added',0) for e in extensions)
 assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==4
 assert summary['eligible_verified_lean_proofs']==4
 assert summary['eligible_targets_with_verified_finite_cases']==0
@@ -131,13 +131,17 @@ for block in reconciliation.get('research_blocks',[]):
 print('Research reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.')
 
 # Beezer journal extension: exact independent delta, source hash and no invented Lean status.
-assert len(extensions)==1
+assert extensions
 e=extensions[0]
 assert e['baseline']==dict(canonical_entries=187,eligible_targets=111,paper_records=60,full_text_screens=57,verified_complete_lean_targets=3)
 assert e['added_entries']==3 and e['added_eligible_targets']==1 and e['full_text_screens_added']==1
 assert e['added_paper_ids']==['F27'] and e['completed_targets_added']==0
 assert len(e['added_target_ids'])==3 and sum(by[i]['eligible_for_coverage'] for i in e['added_target_ids'])==1
 assert manifest['F27']['sha256']=='d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810'
-assert len(rows)==190 and len(eligible)==112 and len(coverage)==61 and summary['full_text_screened']==58
+later=extensions[1:]
+assert len(rows)==190+sum(x['added_entries'] for x in later)
+assert len(eligible)==112+sum(x['added_eligible_targets'] for x in later)
+assert len(coverage)==61+sum(len(x['added_paper_ids']) for x in later)
+assert summary['full_text_screened']==58+sum(x['full_text_screens_added'] for x in later)
 assert (R/e['report']).is_file()
 print('Beezer extension:187→190 entries,111→112 eligible,60→61 papers,57→58 full-text screens; three historical complete Lean targets retained; one existing F16 target completed.')

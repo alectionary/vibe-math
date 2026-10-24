@@ -79,6 +79,35 @@ task; it is a working record, not a reason to create empty files or a new taxono
   unresolved access gaps in the evidence ledger; make historical priority claims
   only when separately supported.
 
+## Harvest questions from every encountered paper
+
+During each investigation, keep a deduplicated ledger of papers actually found
+or consulted, including classical predecessors, surveys, secondary leads and
+later versions. This happens automatically with the research; do not wait for a
+separate inventory request. Bibliography-only citations need not trigger an
+unbounded recursive search.
+
+For every accessible full text, screen numbered conjectures/questions, unknown
+existence cases, introductions, conclusions and future-work passages; read the
+surrounding definitions and context. Extract author-stated targets beyond the
+immediate problem being researched. Check addenda and later statements in the
+same paper before calling a passage open. Preserve original versus discovery
+authorship, exact version/date, locator and source hash. Merge equivalent
+questions; link genuinely different restricted cases. Separate precise targets,
+broad directions, held formulations and known solved/refuted historical claims.
+
+Before closeout, give every paper/version an explicit outcome: linked inventory
+entries, a completed screen with no additional explicit target found, or a named
+access/version gap. An abstract, empty successful response or unreadable scan
+cannot justify a zero-question result. Try reasonable primary/author copies,
+use OCR and visually check relevant pages when needed, and retain unresolved
+leads without inventing bibliographic details. Add the findings to the shared
+inventory and planning records, leave unperformed current-resolution/Lean checks
+unassessed, regenerate reports and validate source coverage and cohort deltas.
+The [complete absorbing-set source screen](../../../literature/RESEARCH-QUESTION-SCREENING.md)
+illustrates this workflow and the distinction between downloaded, consulted,
+screened and question-contributing papers.
+
 ## Develop a proof or counterexample with useful formal scope
 
 Test small and boundary examples first, then choose searches that could

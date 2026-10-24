@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **26 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **66 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -499,6 +499,246 @@ Koki Okada; Kenta Kasai. 2026. [primary predecessor and related open questions](
 
 Closely related support reduction and product-cycle results. Open/future directions rechecked in Sections 7-8. Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed.
 
+### F27 Counting Configurations in Designs
+
+Robert A. Beezer. 2001. [classical predecessor and source stated questions](https://doi.org/10.1006/jcta.2001.3185).
+
+All17pages of final journal PDF read; precise conjecture and two research directions indexed. Historical source-open labels are not current unresolvedness claims. Newly indexed Beezer targets have no current-resolution/Lean/difficulty assessment.
+
+### F28 Trapping Sets of Quantum LDPC Codes
+
+Nithin Raveendran; Bane Vasić. 2021. [absorbing set research question screen](https://arxiv.org/html/2012.15297v2).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F29 Analysis of Absorbing Sets and Fully Absorbing Sets of Array-Based LDPC Codes
+
+Lara Dolecek; Zhengya Zhang; Venkat Anantharam; Martin J. Wainwright; Borivoje Nikolic. 2010. [absorbing set research question screen](https://people.eecs.berkeley.edu/~bora/Journals/2010/IT-10.pdf).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F30 The Cycle Consistency Matrix Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes
+
+Jiadong Wang; Lara Dolecek; Richard Wesel. 2012. [absorbing set research question screen](https://arxiv.org/html/1208.6094v2).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F31 On Characterization of Elementary Trapping Sets of Variable-Regular LDPC Codes
+
+Mehdi Karimi; Amir H. Banihashemi. 2013. [absorbing set research question screen](https://arxiv.org/html/1308.1259v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F32 New Characterization and Efficient Exhaustive Search Algorithm for Elementary Trapping Sets of Variable-Regular LDPC Codes
+
+Yoones Hashemi; Amir H. Banihashemi. 2015. [absorbing set research question screen](https://arxiv.org/html/1510.04954v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F33 Characterization of Small Trapping Sets in LDPC Codes from Steiner Triple Systems
+
+Stefan Laendner; Olgica Milenkovic; Johannes B. Huber. 2010. [absorbing set research question screen](https://publica.fraunhofer.de/entities/publication/888e2ff4-57e9-467a-a9c6-c7db59f38de4).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F34 The WidthWall: A Strict Expressivity Hierarchy for Hypergraph Neural Networks
+
+Fengqing Jiang; Yuetai Li; Yichen Feng; Kaiyuan Zheng; Luyao Niu; Bhaskar Ramasubramanian; Basel Alomair; Linda Bushnell; Radha Poovendran. 2026. [absorbing set research question screen](https://arxiv.org/html/2605.13690v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F35 Optimizing quasi-cyclic spatially coupled LDPC codes by eliminating harmful objects
+
+Massimo Battaglioni; Franco Chiaraluce; Marco Baldi; Michele Pacenti; David G. M. Mitchell. 2023. [absorbing set research question screen](https://doi.org/10.1186/s13638-023-02273-0).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F36 On a class of column-weight 3 decomposable LDPC codes with the analysis of elementary trapping sets
+
+G. Raeisi; M. Gholami. 2024. [absorbing set research question screen](https://ietresearch.onlinelibrary.wiley.com/doi/pdf/10.1049/cmu2.12762).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F37 Trapping Set Enumerators for Specific LDPC Codes
+
+Shadi Abu-Surra; David DeClercq; Dariush Divsalar; William E. Ryan. 2010. [absorbing set research question screen](https://perso.etis-lab.fr/declercq/PDF/ConferencePapers/Shadi_2010_ITA.pdf).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F38 Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles
+
+Ali Dehghan; Amir H. Banihashemi. 2019. [absorbing set research question screen](https://arxiv.org/html/1905.13228v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F39 Univariate Bicycle Quantum LDPC Codes: Explicit Logical Structure and Distance Bounds
+
+Sheida Rabeti; Hessam Mahdavifar. 2026. [absorbing set research question screen](https://arxiv.org/html/2605.14173v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F40 A Small Basis for Four-Line Configurations in Steiner Triple Systems
+
+M. J. Grannell; T. S. Griggs; E. Mendelsohn. 1995. [absorbing set research question screen](https://grannell.net/Papers/smallbasis.pdf).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F41 Algorithms and Complexity for Counting Configurations in Steiner Triple Systems
+
+Daniel Heinlein; Patric R. J. Ostergard. 2021. [absorbing set research question screen](https://onlinelibrary.wiley.com/doi/10.1002/jcd.21839).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F42 Trapping Sets of Detector Error Models
+
+Michele Pacenti; Nithin Raveendran; Bane Vasic. 2026. [absorbing set research question screen](https://arxiv.org/html/2608.11516v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F43 Construction of Protograph-Based LDPC Codes With Chordless Short Cycles
+
+Farzane Amirzade; Mohammad-Reza Sadeghi; Daniel Panario. 2008. [absorbing set research question screen](https://arxiv.org/html/2008.01322v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F44 Efficient Search of QC-LDPC Codes with Girths 6 and 8 and Free of Elementary Trapping Sets with Small Size
+
+Farzane Amirzade; Mohammad-Reza Sadeghi. 2018. [absorbing set research question screen](https://arxiv.org/html/1803.08141v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F45 Theoretical Bounds for the Size of Elementary Trapping Sets by Graphic Methods
+
+Haoran Xiong; Zicheng Ye; Huazi Zhang; Jun Wang; Ke Liu; Dawei Yin; Guanghui Wang; Guiying Yan; Zhiming Ma. 2023. [absorbing set research question screen](https://arxiv.org/html/2307.02737v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F46 The Impact of the Distance Between Cycles on Elementary Trapping Sets
+
+Haoran Xiong; Guanghui Wang; Zhiming Ma; Guiying Yan. 2025. [absorbing set research question screen](https://arxiv.org/html/2503.01341v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F47 Turan-Theoretic Bounds on Several Elementary Trapping Sets in LDPC Codes
+
+Ziyang Zhao; Haoran Xiong; Zicheng Ye; Guiying Yan. 2026. [absorbing set research question screen](https://arxiv.org/html/2604.12332v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F48 Switching graphs and designs
+
+Aida Abiad; Dean Crnkovic; Louka Peters; Andrea Svob. 2003. [absorbing set research question screen](https://arxiv.org/html/2609.20030v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F49 High-rate quantum low-density parity-check codes assisted by reliable qubits
+
+Yuichiro Fujiwara; Alexander Gruner; Peter Vandendriessche. 2015. [absorbing set research question screen](https://arxiv.org/pdf/1309.5587v2).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F50 A Theorem on the Distribution of Weights in a Systematic Code
+
+F. Jessie MacWilliams. 1963. [absorbing set research question screen](https://doi.org/10.1002/j.1538-7305.1963.tb04003.x).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F51 The MacWilliams and Pless Identities: A Summary
+
+Samuel J. Lomonaco. 2006. [absorbing set research question screen](https://userpages.cs.umbc.edu/lomonaco/f06/653/handouts/MacWilliams-Pless-Identities.pdf).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F52 Codes and designs for quantum error correction: some recent developments through combinatorics
+
+Yuichiro Fujiwara. 2014. [absorbing set research question screen](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F53 High-girth Steiner triple systems
+
+Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. 2022. [absorbing set research question screen](https://annals.math.princeton.edu/2024/200-3/p04).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F54 Binomial partial Steiner triple systems containing complete graphs
+
+Małgorzata Prażmowska; Krzysztof Prażmowski. 2016. [absorbing set research question screen](https://doi.org/10.1007/s00373-016-1681-3).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F55 Strongly regular configurations
+
+Marién Abreu; Martin Funk; Vedran Krčadinac; Domenico Labbate. 2021. [absorbing set research question screen](https://arxiv.org/abs/2104.04880v2).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F56 Lowering the Error Floor of LDPC Codes Using Cyclic Liftings
+
+Reza Asvadi; Amir H. Banihashemi; Mahmoud Ahmadian-Attari. 2010. [absorbing set research question screen](https://arxiv.org/abs/1002.4311).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F57 LDPC Absorbing Sets, the Null Space of the Cycle Consistency Matrix, and Tanner's Constructions
+
+Jiadong Wang; Lara Dolecek; Richard Wesel. 2011. [absorbing set research question screen](https://www.seas.ucla.edu/csl/files/publications/JiadongWang_ITA2011.pdf).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F58 LDPC codes from voltage graphs
+
+Christine A. Kelley; Judy L. Walker. 2008. [absorbing set research question screen](https://digitalcommons.unl.edu/mathfacpub/171/).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F59 Designing a Self-orthogonal Quasi-cyclic Code with Extended Minimum Hamming Distance
+
+Makoto Noda. 2006. [absorbing set research question screen](https://www.vde-verlag.de/proceedings-en/442947110.html).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F60 Quasicyclic low-density parity check codes
+
+Bane Vasic; Ivan B. Djordjevic. 2003. [absorbing set research question screen](https://experts.arizona.edu/en/publications/quasicyclic-low-density-parity-check-codes/).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F61 The Girth of a Design
+
+Robert A. Beezer. 2002. [absorbing set research question screen](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F62 A visual representation of the Steiner triple systems of order 13
+
+Marco Pavone. 2023. [absorbing set research question screen](https://doi.org/10.26493/2590-9770.1564.2b8).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F63 Combinatorial constructions of low-density parity-check codes for iterative decoding
+
+Bane Vasić; Olgica Milenkovic. 2004. [absorbing set research question screen](https://doi.org/10.1109/TIT.2004.828066).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F64 Joint Short-Cycle and ACE Statistics in LDPC Tanner Graphs via Fast Message Passing
+
+Xiang Li; Xuan He. 2026. [absorbing set research question screen](https://doi.org/10.1145/3821162.3821166).
+
+Available metadata or relevant passages checked; full-text question screen remains blocked. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F65 Proof of the High Girth Existence Conjecture via Refined Absorption
+
+Michelle Delcourt; Luke Postle. 2024. [absorbing set research question screen](https://arxiv.org/abs/2402.17856v1).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
+### F66 Substructures in Latin squares
+
+Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. 2022. [absorbing set research question screen](https://arxiv.org/abs/2202.05088v4).
+
+Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
+
 ## Question by question cross references
 
 “Not verified” is a bounded search result. A related paper listed next to a question is not automatically evidence that the question itself was restated. The original page references and hypotheses remain in [the coverage ledger](../audit/claims.json). Research directions outside those 40 targets are described in the paper records, especially the Morris/Martinez and Grantham follow-ups.
@@ -549,8 +789,3 @@ Closely related support reduction and product-cycle results. Open/future directi
 ## Search gaps worth resolving next
 
 The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
-
-
-Dated October24 research update: the current inventory has **190 canonical entries,112 eligible targets and4/112 complete checked Lean targets**. The existing F16 four-variable counting target is completed in its incidence-corrected/source-obstruction scope. Beezer contributes one separately indexed conjecture and two broad directions, with current-resolution/Lean/difficulty assessment pending. Earlier counts and recommendations in this document are historical snapshots. See [current reconciliation](RESEARCH-RECONCILIATION.md).
-
-Additional indexed classical source: **F27 — Robert A. Beezer, Counting Configurations in Designs (2001)**, final journal17pages fully read. [Journal source](https://doi.org/10.1006/jcta.2001.3185). One precise conjecture and two broad directions are separately indexed; see the [current reconciliation](RESEARCH-RECONCILIATION.md).

@@ -31,7 +31,7 @@ Latest local feasibility: [degree- and girth-preserving same-code representation
 - **Expanded scholarly search:** [coauthors, citation trails, new questions and counterchecks](literature/SCHOLARLY-EXPANSION.md).
 - **Expanded open-problem inventory:** [searchable annotated inventory](literature/open-problems.html) and [method/counts](literature/OPEN-PROBLEMS.md), including the downstream articles; [full-text gap closure](literature/COVERAGE-GAPS.md).
 - **Four-variable absorbing counts:** [classical baseline, incidence-corrected complex formulas and a (3,6)-regular matrix-only counterexample](formalization/absorbing-four-zero/RESEARCH-NOTE.txt). [Checked source archive manifest](formalization/absorbing-four-zero/verification.json).
-- **Research-to-inventory updates:** [dated results, source-question indexing and remaining project follow-ups](literature/RESEARCH-RECONCILIATION.md), with a [central source index](literature/RESEARCH-SOURCES.md). The current inventory has 190 entries,112 eligible targets and4 complete checked Lean targets. Beezer contributes one conjecture and two broad directions; the existing F16 four-variable count target is completed with the required incidence correction. Earlier cohort snapshots are preserved.
+- **Research-to-inventory updates:** [dated results, source-question indexing and remaining project follow-ups](literature/RESEARCH-RECONCILIATION.md), with a [central source index](literature/RESEARCH-SOURCES.md). The current inventory has 252 entries,135 eligible targets and4 complete checked Lean targets. Beezer contributes one conjecture and two broad directions; the existing F16 four-variable count target is completed with the required incidence correction. Earlier cohort snapshots are preserved.
 - **Academic literature follow-up:** [author papers and open-problem references](literature/README.md), with a structured [question ledger](literature/problem-links.json).
 - **Lean coverage audit:** [counts, scope and evidence](audit/README.md), [searchable ledger](audit/coverage.html), and [structured claims](audit/claims.json).
 - Read a paper-specific review using the table below.
@@ -135,7 +135,9 @@ Extraction and heading detection are automated. They do not generate or update t
 Reviewed October 21, 2026. PDFs remain copyright their respective authors; review text does not imply endorsement by any source institution or dissertation author.
 
 
-October24 lift-label follow-up: [exact fixed-base counts and a support-free CSS family](formalization/lift-label-elimination/README.txt). Classical cycle-consistency attribution, independent q2 verification and checked Lean versions of every manuscript proof are explicit. This is a project-derived follow-up; canonical coverage remains4/112.
+October24 lift-label follow-up: [exact fixed-base counts and a support-free CSS family](formalization/lift-label-elimination/README.txt). Classical cycle-consistency attribution, independent q2 verification and checked Lean versions of every manuscript proof are explicit. This is a project-derived follow-up; the publication cohort had canonical coverage4/112; current inventory counts are linked above.
 
 
 Lift-label paper: [PDF](papers/lift-label-elimination/main.pdf) · [TeX](papers/lift-label-elimination/main.tex) · [all checked proof files](formalization/lift-label-elimination/PROOFS.md). The manuscript includes the reference chronology and immutable Lean links.
+
+Paper-by-paper source audit: [all encountered absorbing-set papers, extracted questions and access gaps](literature/RESEARCH-QUESTION-SCREENING.md). The screen adds 62 canonical entries from 20 question-contributing papers, including 23 specific mathematical targets; present resolution and Lean discovery remain separately unassessed.

@@ -20,6 +20,8 @@ Ragnar Freij-Hollanti; Kirsten D. Morris; Patricija Šapokaitė. 2026-06-10, arX
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-girth-eight](OPEN-PROBLEMS.md#l-p34-girth-eight), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
 ## Fossorier2004 — Quasi-Cyclic Low-Density Parity-Check Codes From Circulant Permutation Matrices
@@ -88,6 +90,8 @@ Kirsten D. Morris; Tefjol Pllaha; Christine A. Kelley. arXiv first 2023-07-26; i
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
 ## RigbyEtAl2019 — Modified belief propagation decoders for quantum low-density parity-check codes
@@ -153,8 +157,10 @@ Nithin Raveendran; Bane Vasić. arXiv v2 2021-10-07; Quantum 2021-10-14. [Primar
 - Inspected locator: Section 3.1 Definition 5, Lemmas 1-2; Section 3.2 (4,2) comparison: Sections3.1–3.2; Section4.2, Example3, Tables1–2.
 - Contribution: Symmetric-stabilizer failures and decoder-dependent harmfulness. Prior quantum trapping-set search, constituent-to-HGP replication, and explicit (4,2) enumeration in a 900-qubit example; not claimed as new here.
 - Comparison limit: Our unequal-posterior local oscillations do not establish their equal-message symmetry. (4,2) comparison: Table2 gives 720 elementary (4,2) configurations in one HP example using classical search machinery. The inspected sections do not give our full nonconstant-QC-GHP corrected socket/Fourier formula or equal-M_j obstruction. Harmfulness is decoder dependent; our incidence count does not assert a decoder failure rate.
-- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F28-quantum-trapping-enumeration](OPEN-PROBLEMS.md#l-f28-quantum-trapping-enumeration), [L-F28-symmetric-stabilizer-enumeration](OPEN-PROBLEMS.md#l-f28-symmetric-stabilizer-enumeration), [L-F28-correlated-noncss-trapping](OPEN-PROBLEMS.md#l-f28-correlated-noncss-trapping), [L-F28-degeneracy-low-complexity-decoding](OPEN-PROBLEMS.md#l-f28-degeneracy-low-complexity-decoding), [L-F28-beyond-sqrt-distance-performance](OPEN-PROBLEMS.md#l-f28-beyond-sqrt-distance-performance).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 5 linked canonical targets.
 
 ## ButlerSiegel2014 — Error Floor Approximation for LDPC Codes in the AWGN Channel
 
@@ -244,6 +250,8 @@ Aida Abiad; Nichola Castriota. arXiv:2607.13666v1, July 15, 2026. [Primary sourc
 - Related canonical targets: [L-F16-higher-counts](OPEN-PROBLEMS.md#l-f16-higher-counts), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-zero/prior-art.json).
 
 ## DolecekEtAl2010 — Analysis of Absorbing Sets and Fully Absorbing Sets of Array-Based LDPC Codes
@@ -254,8 +262,10 @@ Lara Dolecek; Zhengya Zhang; Venkat Anantharam; Martin J. Wainwright; Borivoje N
 - Inspected locator: Section III-C, Lemma 4, printed pp. 187–188 (PDF pp. 7–8).
 - Contribution: Classical diamond/two-triangle structure and exact special-family (4,2) fully absorbing counts; credited ingredients.
 - Comparison limit: The exponent r*c array family and its special extension multiplicity do not establish the full sparse/two-block polynomial QC-GHP formula. Absorbing and fully absorbing conventions must be kept separate.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F29-ensemble-distributions](OPEN-PROBLEMS.md#l-f29-ensemble-distributions).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
 
 ## WangDolecekWesel2012 — The Cycle Consistency Matrix Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes
 
@@ -265,8 +275,10 @@ Jiadong Wang; Lara Dolecek; Richard Wesel. arXiv:1208.6094v2, December 5, 2012; 
 - Inspected locator: Theorem 1; Section VI, (4,2) CCM and multiplicity; Lift-label follow-up: SectionsIII-D/E, equations6-9 K4 cycle space,Theorem1 and proof.
 - Contribution: Classical cycle/check/bit consistency method and explicit (4,2) normal graph. Follow-up also credits the cycle-consistency method for label elimination.
 - Comparison limit: Separable-circulant mother/daughter hypotheses, plus non-extensibility in sufficiency, are not a universal incidence-corrected QC-GHP Fourier formula. In a column-weight-three SCB mother/daughter with three retained row groups, each variable has one check in each group. The fixed B^T block in our witness contains a seven-check Fano subsystem whose check co-occurrence graph is K7, so it cannot admit such a three-group partition, even after row/column relabeling.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F30-ccm-other-structures](OPEN-PROBLEMS.md#l-f30-ccm-other-structures).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/lift-label-elimination/prior-art.json).
 
@@ -281,6 +293,8 @@ Mehdi Karimi; Amir H. Banihashemi. arXiv:1308.1259v1, August 6, 2013. [Primary s
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## HashemiBanihashemi2015 — New Characterization and Efficient Exhaustive Search Algorithm for Elementary Trapping Sets of Variable-Regular LDPC Codes
 
 Yoones Hashemi; Amir H. Banihashemi. arXiv:1510.04954v1, October 16, 2015. [Primary source](https://arxiv.org/html/1510.04954v1).
@@ -291,6 +305,8 @@ Yoones Hashemi; Amir H. Banihashemi. arXiv:1510.04954v1, October 16, 2015. [Prim
 - Comparison limit: Does not supply the inspected small-matrix M_j-only QC-GHP count; no claim that the new rooted count is a first exact algorithm.
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
 
 ## LaendnerMilenkovicHuber2010 — Characterization of Small Trapping Sets in LDPC Codes from Steiner Triple Systems
 
@@ -303,6 +319,8 @@ Stefan Laendner; Olgica Milenkovic; Johannes B. Huber. ISTC 2010; DOI 10.1109/IS
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
 ## JiangEtAl2026WidthWall — The WidthWall: A Strict Expressivity Hierarchy for Hypergraph Neural Networks
@@ -313,8 +331,10 @@ Fengqing Jiang; Yuetai Li; Yichen Feng; Kaiyuan Zheng; Luyao Niu; Bhaskar Ramasu
 - Inspected locator: Appendix F.1, explicit STS(13) pair and Pasch trade.
 - Contribution: Existing example has identical pair coverage but 13 versus 8 Pasch configurations. Credit for the information-loss idea and this initial example.
 - Comparison limit: The reduced square cubic 12x12 bases and matched [[168,6]] QC-GHP examples were generated separately. No novelty claim for pairwise projections losing higher-order incidence data.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F34-asymptotic-statistical-extension](OPEN-PROBLEMS.md#l-f34-asymptotic-statistical-extension), [L-F34-approximation-gap](OPEN-PROBLEMS.md#l-f34-approximation-gap), [L-F34-sinkhorn-gap-bound](OPEN-PROBLEMS.md#l-f34-sinkhorn-gap-bound), [L-F34-gap-versus-width](OPEN-PROBLEMS.md#l-f34-gap-versus-width), [L-F34-hodge-width-threshold](OPEN-PROBLEMS.md#l-f34-hodge-width-threshold), [L-F34-sts13-hodge-test](OPEN-PROBLEMS.md#l-f34-sts13-hodge-test).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
 
 ## BattaglioniEtAl2023 — Optimizing quasi-cyclic spatially coupled LDPC codes by eliminating harmful objects
 
@@ -324,8 +344,10 @@ Massimo Battaglioni; Franco Chiaraluce; Marco Baldi; Michele Pacenti; David G. M
 - Inspected locator: Sections 1.2, 2.1 and 3, especially the declared trapping-set enumeration method.
 - Contribution: QC protograph/exponent enumeration and optimization of (4,2) objects are established techniques.
 - Comparison limit: Uses the prior exhaustive ETS algorithm for trapping-set counts and excludes blocks of circulant weight greater than one (Section 2.1); no inspected full target Fourier formula or equal-M_j obstruction.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F35-sliding-window-harmful-objects](OPEN-PROBLEMS.md#l-f35-sliding-window-harmful-objects), [L-F35-alternative-base-performance](OPEN-PROBLEMS.md#l-f35-alternative-base-performance).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
 
 ## RaeisiGholami2024 — On a class of column-weight 3 decomposable LDPC codes with the analysis of elementary trapping sets
 
@@ -337,6 +359,8 @@ G. Raeisi; M. Gholami. IET Communications 18(9), 583–596; first published Apri
 - Comparison limit: Three check groups are required, each variable having one check in each. The Fano block in our witness precludes this hypothesis. Algorithm1 enumerates non-isomorphic normal-graph shapes; it is not the inspected incidence-corrected count of embedded sets from arbitrary QC-GHP sockets or a formula in M_j. No matching general corrected Fourier formula identified in the inspected sections. Follow-up: The 168-column witnesses contain a Fano block and cannot admit three check groups; the smaller 48-column pair does admit this partition, using check coordinate modulo 3. Algorithm 1 enumerates nonisomorphic shapes rather than embeddings. These distinctions do not exclude the broader arbitrary-protograph chordless-cycle literature. Concrete Fano exclusion and finite three-group checks are provided by this follow-up at their separately labeled evidence levels.
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -351,6 +375,8 @@ Shadi Abu-Surra; David DeClercq; Dariush Divsalar; William E. Ryan. Information 
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## DehghanBanihashemiCospectral2019 — Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles
 
 Ali Dehghan; Amir H. Banihashemi. arXiv v1 May31,2019; Graphs and Combinatorics35,1673–1693(2019). [Primary source](https://arxiv.org/html/1905.13228v1).
@@ -359,8 +385,10 @@ Ali Dehghan; Amir H. Banihashemi. arXiv v1 May31,2019; Graphs and Combinatorics3
 - Inspected locator: Introduction; SectionIII Theorem2 and degree-preserving switching discussion; SectionVI concluding remarks.
 - Contribution: Classical limitations of spectral/degree data for Tanner cycle counts and proposed study of trapping-set changes under cospectral switching.
 - Comparison limit: SectionVI proposes studying trapping-set distributions under switching. The inspected paper proves cycle-count obstructions, not our elementary (4,2) count at equal full frequency matrices in a QC-GHP/CSS family. Spectral information-loss as a general theme is classical, not claimed as new.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F38-extra-cycle-information](OPEN-PROBLEMS.md#l-f38-extra-cycle-information), [L-F38-switching-trapping-sets](OPEN-PROBLEMS.md#l-f38-switching-trapping-sets).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
 
 ## RabetiMahdavifarUB2026 — Univariate Bicycle Quantum LDPC Codes: Explicit Logical Structure and Distance Bounds
 
@@ -370,8 +398,10 @@ Sheida Rabeti; Hessam Mahdavifar. arXiv v1 May13,2026. [Primary source](https://
 - Inspected locator: SectionsII-B andIII, Proposition1, defining equations2–3 and Lemma2; targeted text search for absorbing/(4,2).
 - Contribution: Prior Frobenius-coupled GB/UB construction b=a^(2^ell). The 48-qubit pair uses a and its square with a one-sided reciprocal, so this is construction background, not a new code-family claim.
 - Comparison limit: Their convention is HX=[A|B], whereas the source here uses HX=[A|B^T]; the reciprocal/shift must be accounted for before comparing. Inspected construction sections and targeted text search did not identify a (4,2) incidence/Fourier enumeration or equal-M_j obstruction. No distance theorem from this source is asserted for our witnesses.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F39-ub-distance](OPEN-PROBLEMS.md#l-f39-ub-distance), [L-F39-beyond-divisor](OPEN-PROBLEMS.md#l-f39-beyond-divisor), [L-F39-ub-decoding](OPEN-PROBLEMS.md#l-f39-ub-decoding), [L-F39-ub-logical-gates](OPEN-PROBLEMS.md#l-f39-ub-logical-gates).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
 
 ## GrannellGriggsMendelsohn1995 — A Small Basis for Four-Line Configurations in Steiner Triple Systems
 
@@ -381,8 +411,10 @@ M. J. Grannell; T. S. Griggs; E. Mendelsohn. 1995 journal article, author-hosted
 - Inspected locator: Figure 2 (PDF page 5), C14 derivation (PDF page 6), formula summary (PDF page 10).
 - Contribution: The C14 pattern has four triples, five degree-two points and two degree-one points; it is exactly the elementary (4,2) Tanner pattern. The stated count is v(v-1)(v-3)/4 - 6P, where P is the Pasch count.
 - Comparison limit: Requires every pair of check-points to occur in exactly one triple: a complete STS(v). Arbitrary linear cubic socket incidences do not satisfy this. The 1995 result already supplies the STS special case and implies loss of count information from the common STS point-Gram matrix; neither observation is claimed as new here. The source-to-pattern labels are a written diagram translation, supported by a concrete Lean shape certificate.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F40-maxi-pasch](OPEN-PROBLEMS.md#l-f40-maxi-pasch), [L-F40-maximal-partial-bases](OPEN-PROBLEMS.md#l-f40-maximal-partial-bases), [L-F40-lambda-triple-bases](OPEN-PROBLEMS.md#l-f40-lambda-triple-bases).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -394,8 +426,10 @@ Daniel Heinlein; Patric R. J. Ostergard. arXiv:2110.00320v1, 2021-10-01; journal
 - Inspected locator: Section 2.1; Section 2.2, Theorems 2-4 and proofs.
 - Contribution: Theorem 3 gives O(v^3) counting for every variable four-line STS configuration, using the 1995 reduction to Pasch counts. Counting and listing complexity are explicitly distinguished. Later comparison: Theorem7 verifies complete-STS generator-basis minimality through eight lines; its all-n conjecture is a restricted case of BeezerConj4.1.
 - Comparison limit: A complete STS is the input. This establishes a strong earlier counting result for that special case; it is not the arbitrary cyclic socket Fourier identity. The2022finite STS result does not settle arbitrary t,k,m; no new Lean audit of its GAP rank certificate.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F27-generator-basis](OPEN-PROBLEMS.md#l-f27-generator-basis), [L-F27-constant-configurations](OPEN-PROBLEMS.md#l-f27-constant-configurations).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F27-generator-basis](OPEN-PROBLEMS.md#l-f27-generator-basis), [L-F27-constant-configurations](OPEN-PROBLEMS.md#l-f27-constant-configurations), [L-F41-constant-sts-configurations](OPEN-PROBLEMS.md#l-f41-constant-sts-configurations), [L-F41-strict-full-basis](OPEN-PROBLEMS.md#l-f41-strict-full-basis).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-zero/prior-art.json).
 
@@ -410,6 +444,8 @@ Robert A. Beezer. Final journal: JCTA 96(2),341–357 (2001); received1997-08-15
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F27-generator-basis](OPEN-PROBLEMS.md#l-f27-generator-basis), [L-F27-minimal-girth-designs](OPEN-PROBLEMS.md#l-f27-minimal-girth-designs), [L-F27-constant-configurations](OPEN-PROBLEMS.md#l-f27-constant-configurations).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-zero/prior-art.json).
 
 ## PacentiRaveendranVasic2026 — Trapping Sets of Detector Error Models
@@ -420,8 +456,10 @@ Michele Pacenti; Nithin Raveendran; Bane Vasic. arXiv:2608.11516v1, submitted 20
 - Inspected locator: Sections III.1-III.3; Appendix B, including dot expansion and complete exhaustive-search procedure.
 - Contribution: New forward-citation lead. Uses established dpl enumeration on full detector Tanner graphs, followed by decoder-specific fault tests. In a cubic no-four-cycle graph its LETS catalog includes the (4,2) elementary supports.
 - Comparison limit: This is an earlier general enumeration approach, not a new claim of ours. It does not supply the inspected socket/Fourier identity; its detector matrices and decoder experiments have a different scope from the present incidence theorem.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F42-ai-decoder-structures](OPEN-PROBLEMS.md#l-f42-ai-decoder-structures), [L-F42-larger-dem-search](OPEN-PROBLEMS.md#l-f42-larger-dem-search), [L-F42-dem-aware-decoding](OPEN-PROBLEMS.md#l-f42-dem-aware-decoding).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -436,6 +474,8 @@ Farzane Amirzade; Mohammad-Reza Sadeghi; Daniel Panario. arXiv:2008.01322v1, 202
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
 ## AmirzadeSadeghi2018QCETS — Efficient Search of QC-LDPC Codes with Girths 6 and 8 and Free of Elementary Trapping Sets with Small Size
@@ -448,6 +488,8 @@ Farzane Amirzade; Mohammad-Reza Sadeghi. arXiv:1803.08141v1, 2018-03-21. [Primar
 - Comparison limit: Uses three fully occupied check-row groups and gives avoidance conditions. It is not an exact arbitrary sparse/multiple-edge QC socket count or its complex Fourier formula. Those restrictions apply to this 2018 preprint, not to the broader 2020/2024 chordless-cycle work.
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -462,6 +504,8 @@ Haoran Xiong; Zicheng Ye; Huazi Zhang; Jun Wang; Ke Liu; Dawei Yin; Guanghui Wan
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
 ## XiongWangMaYan2025CycleDistance — The Impact of the Distance Between Cycles on Elementary Trapping Sets
@@ -474,6 +518,8 @@ Haoran Xiong; Guanghui Wang; Zhiming Ma; Guiying Yan. arXiv:2503.01341v1, 2025-0
 - Comparison limit: Its spectral matrix is the local message-propagation matrix, not the evaluated check Gram M_j. Its counts of nonisomorphic shapes differ from the number of supports in a specified socket graph. No exact target Fourier identity was identified in the inspected preprint.
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -488,6 +534,8 @@ Ziyang Zhao; Haoran Xiong; Zicheng Ye; Guiying Yan. arXiv:2604.12332v1, 2026-04-
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
 ## AbiadCrnkovicPetersSvob2026Switching — Switching graphs and designs
@@ -498,8 +546,10 @@ Aida Abiad; Dean Crnkovic; Louka Peters; Andrea Svob. arXiv:2609.20030v1, 2026-0
 - Inspected locator: Introduction; Section 3, Theorem 3.2 and proof; Section 4.2, Theorems 4.3-4.4 and proofs.
 - Contribution: Source-author downstream paper: extends CS-switching to divisible designs and relates design switching to cospectral graph switching. The proof of Theorem 3.2 preserves point-pair incidence counts.
 - Comparison limit: These are parameter-preserving transformations, not a computation of (4,2) support multiplicities or their Fourier formula. Gram-preserving design switches are relevant prior machinery, not claimed new here. The inspected theorem comparison goes beyond keyword absence.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F48-haemers-spectrum](OPEN-PROBLEMS.md#l-f48-haemers-spectrum).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -511,8 +561,10 @@ Yuichiro Fujiwara; Alexander Gruner; Peter Vandendriessche. arXiv:1309.5587v2, 2
 - Inspected locator: Sections III-B/C, Proposition 3.7, Theorems 3.9-3.15; Section IV final STS comparison; Section V Theorem 5.1/proof; references 60 and 77.
 - Contribution: Closed citation lead after correcting the unavailable v3 request to the actual latest v2. Even configurations control distance; assisted-code constructions and finite-geometry bounds are prior work.
 - Comparison limit: Even-freeness excludes zero-odd-point supports; it does not count two-odd-point supports. The cited bounds and assisted-code constructions do not supply the general QC socket multiplicity identity. Section IV refers its small-configuration analysis to the still-unavailable Laendner-Milenkovic-Huber 2010 paper; this is not a substitute for that full text.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F49-relative-substructure-harm](OPEN-PROBLEMS.md#l-f49-relative-substructure-harm), [L-F49-auxiliary-budget](OPEN-PROBLEMS.md#l-f49-auxiliary-budget), [L-F49-small-weight-degeneracy](OPEN-PROBLEMS.md#l-f49-small-weight-degeneracy).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -524,8 +576,10 @@ F. Jessie MacWilliams. Bell System Technical Journal42(1),79–94,January1963. [
 - Inspected locator: Publisher abstract; explicit identity verified in Lomonaco2006 handout and independently derived in the research note.
 - Contribution: The classical dual weight-enumerator transform supplies the general N40 count after the binary-kernel translation.
 - Comparison limit: The complete1963proof was not retrieved. This establishes classical attribution of the identity, not that MacWilliams discussed these QC-GHP absorbing sets or gave a low-dimensional M_j-only formula.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F50-systematic-weight-distributions](OPEN-PROBLEMS.md#l-f50-systematic-weight-distributions).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
 
 ## Lomonaco2006 — The MacWilliams and Pless Identities: A Summary
 
@@ -538,6 +592,8 @@ Samuel J. Lomonaco. Course handout,October9,2006,3pages. [Primary source](https:
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## Fujiwara2014 — Codes and designs for quantum error correction: some recent developments through combinatorics
 
 Yuichiro Fujiwara. RIMS Kokyuroku1889(2014),32–41. [Primary source](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf).
@@ -546,8 +602,10 @@ Yuichiro Fujiwara. RIMS Kokyuroku1889(2014),32–41. [Primary source](https://ww
 - Inspected locator: Section3 p37/PDF6, Proposition3.8 and following even-four-configuration paragraph; references[9],[16].
 - Contribution: Even configurations correspond to binary dependencies; the even four-triple configuration is Pasch. This is explicit prior terminology and substance for the kernel bridge in complete Steiner designs.
 - Comparison limit: Our generic cubic linear incidence proof does not need complete-design regularity. The bridge itself is classical elementary linear algebra, not a new mathematical phenomenon. Later open even-freeness questions in this2014survey were not screened for inventory or current status.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F52-general-even-freeness-bounds](OPEN-PROBLEMS.md#l-f52-general-even-freeness-bounds), [L-F52-new-even-free-constructions](OPEN-PROBLEMS.md#l-f52-new-even-free-constructions), [L-F52-seven-even-free-sts](OPEN-PROBLEMS.md#l-f52-seven-even-free-sts).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
 
 ## KwanSahSawhneySimkin2024 — High-girth Steiner triple systems
 
@@ -557,8 +615,10 @@ Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. arXiv2201.04554v2 Jan
 - Inspected locator: Author preprint first3pages,Theorem1.1/Definition1.2; publisher bibliographic milestones.
 - Contribution: Resolves the historical Erdos high-girth existence problem cited by Beezer, preventing it from being indexed as currently open.
 - Comparison limit: Small dense (j,j−2) configurations are different from all Beezer generators. Does not by itself answer Beezer minimum-order fixed-generator-girth problem. Full proof not audited in this block.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F53-counting-upper-bound](OPEN-PROBLEMS.md#l-f53-counting-upper-bound), [L-F53-maximal-sts-girth](OPEN-PROBLEMS.md#l-f53-maximal-sts-girth), [L-F53-pseudorandom-decomposition](OPEN-PROBLEMS.md#l-f53-pseudorandom-decomposition), [L-F53-high-girth-factorizations](OPEN-PROBLEMS.md#l-f53-high-girth-factorizations).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
 
 ## PefchKMacWilliamsLean2026 — Binary MacWilliams identity: public Lean source
 
@@ -593,6 +653,8 @@ Małgorzata Prażmowska; Krzysztof Prażmowski. Graphs and Combinatorics32,2079�
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## AbreuFunkKrcadinacLabbate2021 — Strongly regular configurations
 
 Marién Abreu; Martin Funk; Vedran Krčadinac; Domenico Labbate. arXiv2104.04880v2,2021-09-12; journalDCC90(2022),1881–1897 metadata. [Primary source](https://arxiv.org/abs/2104.04880v2).
@@ -601,8 +663,10 @@ Marién Abreu; Martin Funk; Vedran Krčadinac; Domenico Labbate. arXiv2104.04880
 - Inspected locator: Introductionpp2–3/Figure1;Section3p8;author table(10_3;3,4)entry and linkedtwo-configurationdata.
 - Contribution: Both smaller cubic base configurations are explicitly isomorphic to the author-listed classical configurations. Exact relabellings recorded; these are established data, not new base examples.
 - Comparison limit: Preprint relevant passages and author dataset inspected; full2022journal revision not compared. Incidence-isomorphism comparison is exact finite computation, not a Lean theorem. Source-specific QC-GHP count/evaluated-M transfer is independently Lean checked here. Other questions/directions in this paper were not screened/indexed.
-- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F55-moore-degree57](OPEN-PROBLEMS.md#l-f55-moore-degree57), [L-F55-partial-geometry-664](OPEN-PROBLEMS.md#l-f55-partial-geometry-664).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
 
 ## AsvadiBanihashemiAhmadianAttari2010 — Lowering the Error Floor of LDPC Codes Using Cyclic Liftings
 
@@ -615,6 +679,8 @@ Reza Asvadi; Amir H. Banihashemi; Mahmoud Ahmadian-Attari. arXiv1002.4311v1,2010
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## WangDolecekWesel2011 — LDPC Absorbing Sets, the Null Space of the Cycle Consistency Matrix, and Tanner's Constructions
 
 Jiadong Wang; Lara Dolecek; Richard Wesel. ITA2011,author five-page conference PDF. [Primary source](https://www.seas.ucla.edu/csl/files/publications/JiadongWang_ITA2011.pdf).
@@ -625,6 +691,8 @@ Jiadong Wang; Lara Dolecek; Richard Wesel. ITA2011,author five-page conference P
 - Comparison limit: Focuses on SCB/Tanner constructions and column4 examples; not an arbitrary-voltage/all-composite finite-base histogram or this precise scalar-right CSS construction.
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
 
 ## KelleyWalker2008 — LDPC codes from voltage graphs
 
@@ -637,6 +705,8 @@ Christine A. Kelley; Judy L. Walker. ISIT2008,DOI10.1109/ISIT.2008.4595095. [Pri
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## Noda2006 — Designing a Self-orthogonal Quasi-cyclic Code with Extended Minimum Hamming Distance
 
 Makoto Noda. TURBO-CODING2006,Munich,2006-04-03 to2006-04-07,6pages. [Primary source](https://www.vde-verlag.de/proceedings-en/442947110.html).
@@ -648,6 +718,8 @@ Makoto Noda. TURBO-CODING2006,Munich,2006-04-03 to2006-04-07,6pages. [Primary so
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
 ## VasicDjordjevic2003 — Quasicyclic low-density parity check codes
 
 Bane Vasic; Ivan B. Djordjevic. TELSIKS2003,vol2,417-420,2003-10-01 to2003-10-03;DOI10.1109/TELSKS.2003.1246258. [Primary source](https://experts.arizona.edu/en/publications/quasicyclic-low-density-parity-check-codes/).
@@ -658,3 +730,83 @@ Bane Vasic; Ivan B. Djordjevic. TELSIKS2003,vol2,417-420,2003-10-01 to2003-10-03
 - Comparison limit: Full4-page article not obtained; credited as classical background, not used to assert exact match or exclusion of the new fixed-base calculation.
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
+
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## Beezer2002 — The Girth of a Design
+
+Robert A. Beezer. Journal of Combinatorial Mathematics and Combinatorial Computing 40 (2002),97–113; publisher date28February2002. [Primary source](https://combinatorialpress.com/jcmcc-articles/volume-040/the-girth-of-a-design/).
+
+- Record type: academic source; access: See question-screening ledger.
+- Inspected locator: Question-screening review of the available version.
+- Contribution: Paper encountered through the absorbing-set investigation or a direct resolution check.
+- Comparison limit: Question extraction is separate from proof verification and current-resolution or Lean discovery.
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F61-generator-girth7-sts](OPEN-PROBLEMS.md#l-f61-generator-girth7-sts), [L-F61-other-design-girth5](OPEN-PROBLEMS.md#l-f61-other-design-girth5), [L-F61-design-to-graph-cages](OPEN-PROBLEMS.md#l-f61-design-to-graph-cages), [L-F61-moore-designs](OPEN-PROBLEMS.md#l-f61-moore-designs), [L-F61-more-fundamental-generators](OPEN-PROBLEMS.md#l-f61-more-fundamental-generators), [L-F61-asymptotic-generator-avoidance](OPEN-PROBLEMS.md#l-f61-asymptotic-generator-avoidance).
+- Provenance: [source review ledger](../literature/research-question-screening.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 7 linked canonical targets.
+
+## Pavone2023 — A visual representation of the Steiner triple systems of order 13
+
+Marco Pavone. Author preprint5January2023; The Art of Discrete and Applied Mathematics6(3)(2023),DOI10.26493/2590-9770.1564.2b8. [Primary source](https://doi.org/10.26493/2590-9770.1564.2b8).
+
+- Record type: academic source; access: See question-screening ledger.
+- Inspected locator: Question-screening review of the available version.
+- Contribution: Paper encountered through the absorbing-set investigation or a direct resolution check.
+- Comparison limit: Question extraction is separate from proof verification and current-resolution or Lean discovery.
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F62-grid-free-sts](OPEN-PROBLEMS.md#l-f62-grid-free-sts).
+- Provenance: [source review ledger](../literature/research-question-screening.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## VasicMilenkovic2004 — Combinatorial constructions of low-density parity-check codes for iterative decoding
+
+Bane Vasić; Olgica Milenkovic. IEEE Transactions on Information Theory50(6)(June2004),1156–1176;DOI10.1109/TIT.2004.828066. [Primary source](https://doi.org/10.1109/TIT.2004.828066).
+
+- Record type: academic source; access: See question-screening ledger.
+- Inspected locator: Question-screening review of the available version.
+- Contribution: Paper encountered through the absorbing-set investigation or a direct resolution check.
+- Comparison limit: Question extraction is separate from proof verification and current-resolution or Lean discovery.
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Provenance: [source review ledger](../literature/research-question-screening.json).
+
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## ACE2026 — Joint Short-Cycle and ACE Statistics in LDPC Tanner Graphs via Fast Message Passing
+
+Xiang Li; Xuan He. Crossref metadata:29May2026;DOI10.1145/3821162.3821166. [Primary source](https://doi.org/10.1145/3821162.3821166).
+
+- Record type: academic source; access: See question-screening ledger.
+- Inspected locator: Question-screening review of the available version.
+- Contribution: Paper encountered through the absorbing-set investigation or a direct resolution check.
+- Comparison limit: Question extraction is separate from proof verification and current-resolution or Lean discovery.
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Provenance: [source review ledger](../literature/research-question-screening.json).
+
+- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## KSSSResolution2024 — Proof of the High Girth Existence Conjecture via Refined Absorption
+
+Michelle Delcourt; Luke Postle. arXiv2402.17856v1,27February2024. [Primary source](https://arxiv.org/abs/2402.17856v1).
+
+- Record type: academic source; access: See question-screening ledger.
+- Inspected locator: Question-screening review of the available version.
+- Contribution: Paper encountered through the absorbing-set investigation or a direct resolution check.
+- Comparison limit: Question extraction is separate from proof verification and current-resolution or Lean discovery.
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F65-minimum-degree-threshold](OPEN-PROBLEMS.md#l-f65-minimum-degree-threshold), [L-F65-random-high-girth-designs](OPEN-PROBLEMS.md#l-f65-random-high-girth-designs).
+- Provenance: [source review ledger](../literature/research-question-screening.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+
+## KwanSahSawhney2022Latin — Substructures in Latin squares
+
+Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. arXiv2202.05088v4,4August2022. [Primary source](https://arxiv.org/abs/2202.05088v4).
+
+- Record type: academic source; access: See question-screening ledger.
+- Inspected locator: Question-screening review of the available version.
+- Contribution: Paper encountered through the absorbing-set investigation or a direct resolution check.
+- Comparison limit: Question extraction is separate from proof verification and current-resolution or Lean discovery.
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F66-latin-enumeration](OPEN-PROBLEMS.md#l-f66-latin-enumeration), [L-F66-uniform-sampling](OPEN-PROBLEMS.md#l-f66-uniform-sampling), [L-F66-intercalate-lower-tail](OPEN-PROBLEMS.md#l-f66-intercalate-lower-tail), [L-F66-intercalate-upper-tail](OPEN-PROBLEMS.md#l-f66-intercalate-upper-tail), [L-F66-partial-latin-extremal](OPEN-PROBLEMS.md#l-f66-partial-latin-extremal), [L-F66-maximum-intercalates](OPEN-PROBLEMS.md#l-f66-maximum-intercalates), [L-F66-hilton-no-subsquares](OPEN-PROBLEMS.md#l-f66-hilton-no-subsquares), [L-F66-poisson-three-subsquares](OPEN-PROBLEMS.md#l-f66-poisson-three-subsquares), [L-F66-no-large-subsquares](OPEN-PROBLEMS.md#l-f66-no-large-subsquares), [L-F66-minimum-cuboctahedra](OPEN-PROBLEMS.md#l-f66-minimum-cuboctahedra).
+- Provenance: [source review ledger](../literature/research-question-screening.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 10 linked canonical targets.
