@@ -59,3 +59,10 @@ This checkpoint is local, uncommitted and unposted. GitHub folder URLs in the
 X draft are intended publication destinations and must be checked after an
 authorized publication. No new immutable public proof links exist yet. Complete
 archive-relative file links and SHA-256 hashes support local reproducibility.
+
+Documentation audit24October2026: PROOF-LINKS.md and PROOF-LINKS.html give EVERY Lean file with full current and immutable URLs. Paper Appendices A-C contain actual checked statements/proof excerpts, dependency/translation guides and exact/range chronology deltas.
+https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md
+
+Regenerate this paper with Python3+ReportLab and DejaVu Sans/Mono fonts:
+  PAPER_FONT_DIR=/path/to/dejavu PAPER_OUTPUT_DIR=./generated python3 make_paper.py
+The paper_compliance.py and compliance-data.json files are included here.

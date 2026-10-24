@@ -124,6 +124,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **1**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: stopping-publication-compliance-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Publication/skill audit and missing dense source bridge completed. All3 paper source/answer tables, full proof links and complete source-date deltas repaired.. Remaining at that dated checkpoint: Named literature/access gaps, original dates for secondary mirrors, independent peer review and a stronger replacement bound remain outside this correction.. [Report](../formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md) · [Verification](../formalization/stopping-bound/source-answer/dense-bridge-verification.json) · [Prior art](../formalization/stopping-bound/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.

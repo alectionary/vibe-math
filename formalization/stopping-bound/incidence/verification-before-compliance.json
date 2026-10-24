@@ -1,0 +1,180 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-10-24T21:35:16.383201+00:00",
+  "target_id": "L-F16-stopping-bound",
+  "scope": "Restricted explicit positive63-multiple CSS check family; exact stopping distance6 and actual sigma2 squared>=12. No logical-dimension/distance or source-gap family claim.",
+  "lean": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_commit": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "repository_baseline_commit": "938eed493cb05828fe87f7c672b4a0bca3aa47b5",
+  "publication": "uncommitted, not pushed",
+  "declarations_audited": 100,
+  "new_source_modules": 12,
+  "build": {
+    "command": "lake build IncidenceCertificate",
+    "exit_code": 0,
+    "jobs": 5494,
+    "log": "build.log",
+    "fresh_local_project_build": true
+  },
+  "axiom_audit": {
+    "command": "lake env lean AuditIncidence.lean",
+    "exit_code": 0,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "log": "axiom-audit.log",
+    "all_named_declarations": true,
+    "native_oracle": false,
+    "admissions": false
+  },
+  "matrix_contract": {
+    "lift": "63t with natural t positive",
+    "columns": "882t",
+    "rows": "441t",
+    "X_column_weight": 3,
+    "X_row_weight": 6,
+    "CSS": true,
+    "stopping_distance": 6,
+    "logical_parameters": "not established"
+  },
+  "proof_links": "PROOF-LINKS.html",
+  "crosscheck": "crosscheck.json",
+  "pdf_validation": {
+    "pages": 6,
+    "rendered_all_pages": true,
+    "visually_inspected_all_pages": true,
+    "font": "DejaVu Sans; corrected missing Arial mathematical glyphs"
+  },
+  "elapsed_investigation_minutes": 106.3,
+  "elapsed_followup_minutes": 47.3,
+  "canonical_completion_delta": 0,
+  "files": {
+    "AuditIncidence.lean": {
+      "sha256": "32a4303c1b49127bf6394b35c7b89bcdac1645d0e3712e7d4999048dfdf2c7c6",
+      "bytes": 7203
+    },
+    "Incidence.lean": {
+      "sha256": "7a93ec03b03ec380b4eb2a32ded38ddc955ef8d3ecddb5582ad4bb4fe704f7aa",
+      "bytes": 1197
+    },
+    "IncidenceCSS.lean": {
+      "sha256": "9cbd44283a3aae34441e0cc43dc7a62488e510189fc72cfaa83300a0f5ff4169",
+      "bytes": 2502
+    },
+    "IncidenceCertificate.lean": {
+      "sha256": "e8dc26b4646517f58736bd6311ce36a9522ac9bc50d9b66f022c28307cc261d1",
+      "bytes": 1736
+    },
+    "IncidenceCore.lean": {
+      "sha256": "41255efaa7203b7eefff2b18757316262d9af30b41c12973d000d8fe9e4b1635",
+      "bytes": 3928
+    },
+    "IncidenceCover.lean": {
+      "sha256": "b8e814eca6c5080a9515acfe7a9d4413e4c29a7e08dda8bd1df416b9c6a60fdf",
+      "bytes": 1896
+    },
+    "IncidenceDegrees.lean": {
+      "sha256": "8de5b652d26386e296dacc0feb79f6c16fc04d5cc312f5a439218b42834b84b6",
+      "bytes": 1602
+    },
+    "IncidenceFamily.lean": {
+      "sha256": "35a9368e78e07ebef316f621aa13f8e5c41f9ddcadb71b50d75ba7e40cebca40",
+      "bytes": 1351
+    },
+    "IncidenceFamilyCore.lean": {
+      "sha256": "1122d91fd7f178ede747750fcf6618c40042b530ffe71b55e01f4c222ea913c6",
+      "bytes": 7267
+    },
+    "IncidenceFamilySource.lean": {
+      "sha256": "d785abf219e65d15f77fa5c0ba3bb625080b694610dca161893ab61146ca0093",
+      "bytes": 4050
+    },
+    "IncidenceList.lean": {
+      "sha256": "6c7620d6dd72620a5325e350b887a0d24cb0619e555947a0d0713ed0d92f862d",
+      "bytes": 2247
+    },
+    "IncidenceSource.lean": {
+      "sha256": "9682a12757d2dff48ccb37aa68a2c2925f0ff8749693591c0976b7fadb810983",
+      "bytes": 3046
+    },
+    "IncidenceSpectral.lean": {
+      "sha256": "b9ed8aeedc832e1228acf5fcc4ecb6a84a968241faf94a6e8db290fe6d612354",
+      "bytes": 5231
+    },
+    "PROOF-LINKS.html": {
+      "sha256": "dc662bebf1256c7216108e463ceebe4f95951b07d9d516c17191066bc5134236",
+      "bytes": 1345
+    },
+    "README.txt": {
+      "sha256": "3bda96f98cf2a65497a7b2b3ec3046b4adce3cec44561438fccd4a67df54ea68",
+      "bytes": 2156
+    },
+    "RESEARCH-NOTE.txt": {
+      "sha256": "40f652d93f1c3b465a6eadda308e4ecaf30dd58846ec15e56c1829e75eeecd8e",
+      "bytes": 19113
+    },
+    "audit-declarations.json": {
+      "sha256": "98db5744fb5137ac000fcf4e121267e4a911d7f90c31605c96da37f1a7a18418",
+      "bytes": 3014
+    },
+    "axiom-audit.log": {
+      "sha256": "f50a4f2267cc3a2c1e0991ecca199af045ddd967acad7b50d022b0a74521db27",
+      "bytes": 21655
+    },
+    "build.log": {
+      "sha256": "df024a46e1792179368233c3b11d6f2b5abfac9c9cb0fde71b0d7e909ee85d85",
+      "bytes": 620
+    },
+    "crosscheck.json": {
+      "sha256": "0190bbcd24fe4b2265f33bf8fc9273721bcc5ed1299094f8f2a58ea58e220c43",
+      "bytes": 3848
+    },
+    "crosscheck.py": {
+      "sha256": "bb97bb61c109e831bd1f9ad60eae7efcd802b85d604b3f69eadabce5578eaf2b",
+      "bytes": 3536
+    },
+    "dependencies/Spectral.lean": {
+      "sha256": "a3e712b2a206bd7743408ecc122e66e7d980dbd4689c6d49977536dfe9bb469d",
+      "bytes": 30959
+    },
+    "lake-manifest.json": {
+      "sha256": "f1f16a3d713bee01a9580d1384810113bfac0ec920cd63da0a2ca820b185fab8",
+      "bytes": 3554
+    },
+    "lakefile.toml": {
+      "sha256": "9fa9c6c7f1f4592266b37c0a39ea1a90b808c4c79f5b8428f2895ac7ceadfa05",
+      "bytes": 755
+    },
+    "lean-toolchain": {
+      "sha256": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+      "bytes": 29
+    },
+    "make_paper.py": {
+      "sha256": "657b1de3a633f4ace6bdf37bf84a120a9f02c5a9bb78e9f58a0b74087eb1eddc",
+      "bytes": 22484
+    },
+    "paper.pdf": {
+      "sha256": "253721e4285cec57728fa0c2ab87c3e284dc525b333297a142bb8c660282fab2",
+      "bytes": 62804
+    },
+    "parent-prior-art.json": {
+      "sha256": "12ff26405a3b2f3a91582c9d6935ad0cfb434de9a7c268f56796aa3311340818",
+      "bytes": 19958
+    },
+    "prior-art.json": {
+      "sha256": "84997316cce2cc4458875dd5a244c041b31d5fe563ee5ea079724158ddbd645e",
+      "bytes": 9328
+    },
+    "source-screening.json": {
+      "sha256": "be2896703775386c8a7a5da188818d8a7716ee5fadc49f58a37bfccb8d669957",
+      "bytes": 8234
+    },
+    "x-post-draft.txt": {
+      "sha256": "ead2e5c13d0c1ac0acbbd714be696cadf70410c465f7d5813f858b3702d22937",
+      "bytes": 953
+    }
+  },
+  "publication_preparation": "Paper generator font-path default made portable; original checkpoint manifest preserved in verification-prepublication.json. All Lean sources, proof logs, checked mathematical claims and paper PDF unchanged."
+}

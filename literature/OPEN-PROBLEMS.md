@@ -1954,6 +1954,9 @@ Find QC-GHP parameters for which the paper’s spectral stopping-set bound is no
 - Research progress: [Universal negative answer to the Proposition5.1 useful-parameter question](../formalization/stopping-bound/source-answer/RESEARCH-NOTE.txt) (checked lean proof). No positive-dimensional binary biregular scalar-factor parameter choice gives a source large root above two under the strict spectral inequality. All-cases theorem also checks every stopping support and the separate small-branch exclusion; source scope corrected directly against §3.2.
   - [Complete Lean source](../formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean).
   - [Complete Lean source](../formalization/stopping-bound/source-answer/dependencies/Spectral.lean).
+- Research progress: [Publication compliance audit and explicit dense source-construction bridge](../formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md) (checked lean proof and documentary audit). Corrected all3 papers with complete full branch/immutable URLs for42 Lean/audit files,32 exact/range chronology milestones, actual proof excerpts and dependency guides; checked the previously prose-only source-circulant/reindexing bridge for the dense example (20 declarations). No new source question or canonical completion.
+  - [Complete Lean source](../formalization/stopping-bound/source-answer/DenseSourceBridge.lean).
+  - [Complete Lean source](../formalization/stopping-bound/source-answer/AuditDenseSourceBridge.lean).
 - [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 470–471; explicit question.
 - Related, not merged: L-P09-structured, L-P34-decoding-effects.
 

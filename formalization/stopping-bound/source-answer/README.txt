@@ -22,3 +22,13 @@ https://github.com/alectionary/vibe-math/blob/ce3c849feff7a4f6284ff4f93d0209e42d
 
 Paper: paper.pdf; companion announcement: x-post-draft.txt (not posted).
 The publication reconciliation is recorded in PUBLICATION.txt / publication.json.
+
+Documentation audit24October2026: PROOF-LINKS.md and PROOF-LINKS.html give EVERY Lean file with full current and immutable URLs. Paper Appendices A-C contain actual checked statements/proof excerpts, dependency/translation guides and exact/range chronology deltas.
+https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md
+
+Regenerate this paper with Python3+ReportLab and DejaVu Sans/Mono fonts:
+  PAPER_FONT_DIR=/path/to/dejavu PAPER_OUTPUT_DIR=./generated python3 make_paper.py
+The paper_compliance.py and compliance-data.json files are included here.
+Additional checked source bridge:
+  lake build DenseSourceBridge
+  lake env lean AuditDenseSourceBridge.lean

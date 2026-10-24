@@ -41,4 +41,11 @@ The universal proofs do not depend on Python or a numerical eigenvalue.
 source-screening.json and prior-art.json preserve source/algorithm comparisons
 and explicit access gaps. Shared inventory/source/planning reports were updated,
 with five broad historical directions and no new canonical completion.
-No publication, commit, push, external message or PAT creation was performed.
+The paper and checked proofs are published to GitHub. Historical checkpoint records retain their original dates. The X draft remains unposted; no PAT was created.
+
+Documentation audit24October2026: PROOF-LINKS.md and PROOF-LINKS.html give EVERY Lean file with full current and immutable URLs. Paper Appendices A-C contain actual checked statements/proof excerpts, dependency/translation guides and exact/range chronology deltas.
+https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md
+
+Regenerate this paper with Python3+ReportLab and DejaVu Sans/Mono fonts:
+  PAPER_FONT_DIR=/path/to/dejavu PAPER_OUTPUT_DIR=./generated python3 make_paper.py
+The paper_compliance.py and compliance-data.json files are included here.
