@@ -549,3 +549,8 @@ Closely related support reduction and product-cycle results. Open/future directi
 ## Search gaps worth resolving next
 
 The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
+
+
+Dated October24 research update: the current inventory has **190 canonical entries,112 eligible targets and4/112 complete checked Lean targets**. The existing F16 four-variable counting target is completed in its incidence-corrected/source-obstruction scope. Beezer contributes one separately indexed conjecture and two broad directions, with current-resolution/Lean/difficulty assessment pending. Earlier counts and recommendations in this document are historical snapshots. See [current reconciliation](RESEARCH-RECONCILIATION.md).
+
+Additional indexed classical source: **F27 — Robert A. Beezer, Counting Configurations in Designs (2001)**, final journal17pages fully read. [Journal source](https://doi.org/10.1006/jcta.2001.3185). One precise conjecture and two broad directions are separately indexed; see the [current reconciliation](RESEARCH-RECONCILIATION.md).

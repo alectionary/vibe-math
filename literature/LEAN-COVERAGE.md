@@ -21,6 +21,36 @@ The completed [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND
 
 The October 23 [P11 literal appendix proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md) completes the cumulative cycle/girth contract: printed-order 21 classes and 42 half sums, ordered embeddings of used rows, column/support constraints and native expanded-matrix specification are all checked in Lean. The investigation has 90 audited library declarations plus two kernel-evaluated execution checks. `L-P11-forbidden` now counts once as complete, bringing current coverage to **3/108**. Exact multiplicity formulas, decoder/PEG optimization and unpublished author software remain outside this recorded target. This is formalization coverage, not an assertion of mathematical novelty.
 
+
+## Standard-complex (4,2) follow-up
+
+The second bounded block closes the standard complex-exponential, negative-exponent
+DFT, full rectangular matrix, Euclidean norm and normalization bridge in Lean.
+The actual 168-column source matrices, evaluated complex M_j and counts 49/35
+are connected by checked source/index equivalences. The earlier dated note
+below records the preceding snapshot when that bridge remained written.
+The joint (4,2)/(4,0) canonical target remains partial: **3/111** complete
+targets and **1/111** additional target with supporting proofs; all cohort
+deltas are zero. Classical complete-STS counting, modular avoidance and ETS
+enumeration are credited, and unavailable full texts remain explicit gaps.
+[Current result](../formalization/absorbing-four-two/followup-complex/RESEARCH-UPDATE.txt) ·
+[Verification](../formalization/absorbing-four-two/followup-complex/verification.json) ·
+[Literature scope](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+## Subsequent (4,2) component proof
+
+The bounded October 23 investigation of `L-F16-other-absorbing` proves the
+incidence-corrected (4,2) count, cyclic normalization and finite-character
+Fourier formula in Lean. The standard complex-exponential/norm specialization
+remains written. This is **supporting evidence for the combined (4,2)/(4,0)
+source target**, whose (4,0) component was not attempted; it is not another
+complete canonical target. The expanded inventory remains **3/111** complete,
+with **1/111** additional targets having checked supporting proofs. The earlier
+108-target discovery snapshot and its source/search manifests remain unchanged.
+[Exact scope and proof map](../formalization/absorbing-four-two/README.txt) ·
+[Verification](../formalization/absorbing-four-two/verification.json) ·
+[Prior art](../formalization/absorbing-four-two/prior-art.json).
+
 ## The previously unassessed targets
 
 This pass assessed the **12 eligible targets** left unassessed after the two literature expansions, plus **nine excluded directions**. It did not repeat a complete search for every older target. Each of the 21 entries now points to this pass’s evidence. No exact new target statement or proof was identified.
@@ -53,3 +83,12 @@ The pass ran **32 lexical queries across four pinned source trees**: Mathlib, Fo
 Nine supplementary web queries supplied discovery leads. A page labeled “Formalized claims in Lean” displayed only the beginning of a proposition for a different group-extension lifting claim; it did not supply a complete matching buildable artifact in the inspected page. Such a label contributes zero target coverage. [Background-source comparisons](lean-coverage-background.json), [web discovery](lean-coverage-web-searches.json).
 
 Searches can miss alternate definitions, terminology, unindexed code, private artifacts and work outside the pinned snapshots. “No exact statement identified” is therefore an evidence status, **not a claim that no formalization exists**. No new external candidate was built because none matched an inventoried target. Other proof assistants were not systematically assessed. The earlier search evidence remains attached to the older targets.
+
+## October24 Beezer screen and (4,0) follow-up
+
+Current cohort: **190 entries,112 eligible targets,4/112 complete checked Lean targets** and **0/112 additional targets with supporting proofs**. Beezer contributes three newly indexed source targets/directions, one eligible; all three have unassessed current-resolution/Lean/difficulty status. The (4,0) work completes the recorded incidence-corrected counts and spectral-only obstruction under the existing F16 ID; it adds one complete target, not a new question. Earlier fractions below/above are dated cohort snapshots.
+
+[Current research report](../formalization/absorbing-four-zero/RESEARCH-NOTE.txt) · [Checked scope](../formalization/absorbing-four-zero/verification.json) · [Beezer journal review](../formalization/absorbing-four-zero/BEEZER-REVIEW.txt).
+
+
+Project-derived lift-label extension: [precise evidence](../formalization/lift-label-elimination/verification.json) records checked Lean versions of every manuscript proof, including assignment counts, physical incidence bridges and all-q quantum rank/distance. It contributes zero canonical source targets;4/112 remains the coverage fraction.

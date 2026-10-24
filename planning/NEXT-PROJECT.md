@@ -66,3 +66,9 @@ The first-stage success condition is a built, axiom-audited walk/closure lemma a
 P34 offers a short route from a finite definition to useful symbolic lemmas, a direct comparison between computation and proof, and shared infrastructure with the P11 and F16 questions. Mathlib already supplies finite graphs and girth; a public LeanPool file supplies related lifted-product matrices and CSS-orthogonality proofs. That file was source-inspected but not built or semantically identified with P34's graph here, so reuse is a candidate rather than a ready-made solution. [Available background and audit limits](../literature/LEAN-COVERAGE.md).
 
 No novelty claim follows from selecting this problem. Before presenting a general result as new, compare the exact criterion with classical cyclic-lift cycle conditions, the paper's cited sources and later work. A new Lean verification can still be useful when the underlying mathematics is already known, provided both contributions are described accurately.
+
+
+Dated October24 research update: the current inventory has **190 canonical entries,112 eligible targets and4/112 complete checked Lean targets**. The existing F16 four-variable counting target is completed in its incidence-corrected/source-obstruction scope. Beezer contributes one separately indexed conjecture and two broad directions, with current-resolution/Lean/difficulty assessment pending. Earlier counts and recommendations in this document are historical snapshots. See [current reconciliation](../literature/RESEARCH-RECONCILIATION.md).
+
+
+October24 lift-label follow-up is complete for the two fixed bases: [report](../formalization/lift-label-elimination/RESEARCH-NOTE.txt). The [[140q,18,6]] family has independently checked q2 data and a checked Lean version of every manuscript proof, including mixed-Pauli distance. General decoder optimization remains outside this study. No new source question or effort estimate was added.

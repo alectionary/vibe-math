@@ -8,9 +8,9 @@ supporting Lean lemmas as additional solved open questions.
 
 [Source bibliography](RESEARCH-SOURCES.md) · [Structured update record](research-reconciliation.json) · [Searchable inventory](open-problems.html)
 
-## What changed
+## Historical October23 change
 
-- Indexed 21 sources used in the investigation, preserving full-text, abstract-only,
+- The earlier reconciliation indexed 21 sources used in the investigation, preserving full-text, abstract-only,
   inaccessible-paper and software-lead distinctions. Some already had central records;
   this is not 21 newly discovered papers.
 - Linked six later research milestones and their Lean sources under the existing
@@ -19,7 +19,7 @@ supporting Lean lemmas as additional solved open questions.
 - Added two previously identified primary papers to the main bibliography and
   recorded six source-posed questions/directions from their inspected passages.
 - Retained the three existing F16 spectral questions without duplicating them.
-  Our different cyclic LP construction does not settle their QC-GHP/GB formulas.
+  The subsequent (4,2) block partially addresses one of these targets, as recorded below.
 - Recorded five project-derived follow-ups separately from author-posed questions.
 
 ## Newly indexed source questions
@@ -37,7 +37,7 @@ These are newly inventoried, not newly posed today. Their source-described open
 status is historical; no new current-resolution or matching Lean search was
 performed here. Relevant sections were screened, not every line of either paper.
 
-The inventory grows from **181 to 187 canonical entries** and from **108 to 111
+The October23 inventory grew from **181 to 187 canonical entries** and from **108 to 111
 eligible targets**. Complete checked targets remain **3**: the historical cohort
 is still **3/108 (2.78%)**, while the expanded cohort is **3/111 (2.70%)**.
 The two new sources make **60** article/preprint records; the **57** full-text
@@ -51,8 +51,9 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-P34-early-predictor:** Find an early failure predictor with independent holdout performance beyond baseline error hardness. Status: partial; initial-activity associations weaken under hardness controls; late tubes certify persistence.
 - **RQ-P34-objective-ranking:** Identify when cycle-only, absorbing-only or joint objectives predict superior decoding. Status: open; no universally superior objective established.
 - **RQ-P34-error-floor:** Derive a quantitative error-floor predictor for the stated model from structural and dynamical properties. Status: open; finite inventories and experiments do not supply a general law.
+- **RQ-F16-lift-label-elimination:** Classify labels eliminating Pasch supports in the two fixed cyclic covers and explain the full QC-GHP implication. Status: Answered in the recorded fixed-base scope; every manuscript proof has a checked Lean version. Optimization/performance and priority are outside scope.
 
-These remain attached to `L-P34-decoding-effects` and outside the coverage denominator.
+These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
 Negative recurrence/invariant-box searches and the limited net explanatory coverage
 remain visible in the linked records.
@@ -66,3 +67,39 @@ after reading their passages, and keep research leads and our proposed next step
 distinct. Regenerate the reports and validate the explicit cohort delta.
 Historical experiment manifests continue to refer to their original publication
 revisions; this documentation update does not rewrite frozen scientific inputs.
+
+## Subsequent block: absorbing-four-two-2026-10-23
+
+[L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing): (4,2) incidence formula and M_j-only obstruction. Remaining at that dated checkpoint: (4,0). [Report](../formalization/absorbing-four-two/RESEARCH-NOTE.txt) · [Verification](../formalization/absorbing-four-two/verification.json) · [Prior art](../formalization/absorbing-four-two/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: absorbing-complex-2026-10-24
+
+[L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing): Standard-complex character/DFT/matrix/norm/count bridge for (4,2), including the actual 49/35 source witnesses; classical scope and access reconciliation. Remaining at that dated checkpoint: general (4,0). [Report](../formalization/absorbing-four-two/followup-complex/RESEARCH-UPDATE.txt) · [Verification](../formalization/absorbing-four-two/followup-complex/verification.json) · [Prior art](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: absorbing-four-zero-2026-10-24
+
+[L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing): Both incidence-corrected four-variable count formulas and the full273-variable (4,0) source-matrix/M_j-only obstruction are Lean checked; stronger(3,6)-regular140-variable full-M-equal pair with77/105alsoLeanchecked. Remaining at that dated checkpoint: mathematical/formalization priority; named inaccessible final texts; standalone Lean MacWilliams transform. [Report](../formalization/absorbing-four-zero/RESEARCH-NOTE.txt) · [Verification](../formalization/absorbing-four-zero/verification.json) · [Prior art](../formalization/absorbing-four-zero/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **1**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: lift-label-elimination-2026-10-24
+
+[L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing): General voltage-cycle elimination is classical. Exact all-N raw-label and slice histograms, physical incidence/counting bridges, integer-certificate soundness, full scalar-right counts and the [[140q,18,6]] family for every q>=2 now have checked Lean versions for every manuscript proof. The all-declaration axiom audit and independent exact q2 checks are recorded. No priority, decoder-performance, general gauge-orbit or canonical coverage increment is claimed.. Remaining at that dated checkpoint: Decoder optimization/performance, general switching-orbit classification, and global priority claim.. [Report](../formalization/lift-label-elimination/RESEARCH-NOTE.txt) · [Verification](../formalization/lift-label-elimination/verification.json) · [Prior art](../formalization/lift-label-elimination/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Separate indexing extension: beezer-final-journal-2026-10-24
+
+Beezer's final journal was fully read. The precise minimal-basis conjecture and two broad directions are inventoried separately from the (4,0) research follow-up.
+
+- [L-F27-generator-basis](OPEN-PROBLEMS.md#l-f27-generator-basis): For fixed t and k, prove that all generators on at most m blocks form a minimal generating set for m-line configurations in general t-(v,k,lambda) designs.
+- [L-F27-minimal-girth-designs](OPEN-PROBLEMS.md#l-f27-minimal-girth-designs): Determine minimum-order designs of fixed generator girth and investigate their structure.
+- [L-F27-constant-configurations](OPEN-PROBLEMS.md#l-f27-constant-configurations): Extend the configuration equations and classification of constant configurations to larger numbers of blocks.
+
+Current cohort: **190 canonical entries,112 eligible targets,61 paper records,58 full-text screens**. Complete checked canonical Lean targets are now **4/112 (3.57%)** after finishing the existing F16 target; new Beezer questions remain unassessed. New planning records are unassessed. The original six-entry expansion and dated research blocks above are preserved.
+
+The current source index has **56** records, with actual access levels retained.

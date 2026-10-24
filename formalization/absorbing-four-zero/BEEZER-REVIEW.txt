@@ -1,0 +1,131 @@
+BEEZER JOURNAL REVIEW AND QUESTION INDEX
+
+Source: Robert A. Beezer, Counting Configurations in Designs, Journal of
+Combinatorial Theory, Series A 96 (2001), 341-357. DOI 10.1006/jcta.2001.3185.
+Received August 15, 1997; published online July 17, 2001; issue November 2001.
+The final 17-page publisher PDF was saved through the native Edge PDF viewer.
+SHA-256: d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810.
+The public publisher page labels it Open archive. Earlier failed automated
+requests and the incomplete previous-block comparison remain historical evidence.
+The final journal paper, including all sections, proofs and reference list, has
+now been read; key mathematical pages were also rendered for visual inspection.
+This is a literature review, not a proof-assistant verification of Beezer's paper.
+
+FINAL-VERSION NUMBERING
+
+The earlier August 21, 1997 indexed preprint uses different numbering in places.
+The final journal has Theorem 2.1 (marked-configuration relation), Definition 3.1
+(generator), Theorem 3.1 (generating set), Corollary 3.1 (STS specialization),
+Theorem 4.1 (regular-graph finite computation), Conjecture 4.1 (minimal basis),
+Theorem 5.1 (triangular solution), and Definition 7.1 (design girth).
+Use these journal numbers for claims about the final paper. Earlier artifact
+locators remain dated preprint locators and must not be silently reinterpreted.
+
+USEFUL RESULTS AND EXACT LIMITS
+
+Definitions 1.1-1.3, pp341-342 (PDF1-2): configurations are collections of
+blocks in a t-design. The source permits repeated blocks and states how to
+count them, though examples favor designs without repetition. A generating set
+expresses every configuration count up to m blocks as a linear combination of
+selected counts, with coefficients polynomial in v and lambda over the rationals.
+This is about occurrence counts in a fixed design, not merely a shape catalog.
+
+Theorem 2.1, pp344-347 (PDF4-7): removing a block with enough private points
+and double-counting marked configurations gives a relation triangular in block
+count and number of nontrivial points. Its proof uses exact t-design regularity
+to say how many ambient blocks contain a marked t-set. The theorem is therefore
+not automatically a theorem about arbitrary irregular partial triple systems.
+A check-regular cubic incidence is a 1-design, so that applicable special case
+must nevertheless be considered rather than dismissed as 'not an STS.'
+
+Definition 3.1 and Theorem 3.1, p348 (PDF8): a generator has more than t
+repeated points on every block. All generators on at most m blocks generate
+the remaining counts. Corollary 3.1, p349 (PDF9), specializes this to STS
+configurations having no point of degree one. The empty configuration is included.
+
+Theorem 5.1 and proof, pp352-354 (PDF12-14): the non-generator counts can be
+solved in terms of the generator counts by a lower-triangular linear system.
+The generator counts are inputs. In a Pasch configuration, all three points
+of each triple have degree two. Thus Pasch is a generator both for t=1 and
+t=2. This theorem does not compute its count from the design parameters alone.
+For comparison, the (4,2)/C14 configuration is a generator at t=1 but not at t=2.
+
+Section 5 credits the complete STS four-line basis (empty configuration and
+Pasch) and its explicit formulas to Grannell-Griggs-Mendelsohn (1995). This
+confirms that the classical (4,2) formula depends on an independently supplied
+Pasch count; it does not turn that formula into a parameter-only (4,0) count.
+The existing STS(13) trade already has Pasch counts 13 and 8 at identical
+parameters and identical integer point-Gram matrices. It is a previously
+credited example, not a new counterexample found in this block.
+
+Theorem 4.1, p351 (PDF11), reports a finite computation proving minimality
+for regular-graph generators through eight edges. The proof uses 46 simple
+5-regular graphs on 16 vertices and a nonzero determinant computed in
+Mathematica. This is an author-reported computation, not a Lean proof. The
+initial repeated-block convention should be retained when formulating any
+formal version; the listed simple-graph computation is the stated proof scope.
+
+SOURCE-STATED QUESTIONS AND DIRECTIONS
+
+1. Conjecture 4.1, p351 (PDF11): for fixed t and k, are the generators on at
+most m blocks a minimal generating set for m-line configurations in general
+t-(v,k,lambda) designs? This is an explicit precise conjecture, suitable for
+one canonical target. The following paragraph proposes regular graphs
+(t=1,k=2), for all m, as a first special case. We record that paragraph as a
+special-case occurrence of the same conjecture, not a second equivalent target.
+The final theorem verifies only m<=8 in that regular-graph case. A bounded
+exact-title/conjecture search did not identify a later full solution; the current
+resolution and exact Lean discovery remain unassessed, rather than certified open.
+
+2. Section 7, pp356-357 (PDF16-17): determine the smallest designs of fixed
+girth, in analogy with graph cages, and examine their structure. This is a
+source-posed research direction. Fixing the admissible design parameters and
+existence range is still needed for a precise extremal theorem. It is indexed
+outside the eligible theorem denominator. Beezer points to his own 'The girth
+of a design' for a fuller exploration; that follow-up must be read before
+choosing an instance as a new research problem.
+
+3. Section 6, p355 (PDF15): extend the tabulated equations to identify which
+larger configurations have counts determined by the design parameters.
+This is a broad source-proposed computational/classification direction, not
+a separately numbered conjecture or a completed finite classification. It is
+indexed outside the eligible theorem denominator; no effort estimate is invented.
+
+HISTORICAL QUESTION, NOT A NEW BEEZER CONJECTURE
+
+The introduction and Section 7 recall the Erdos high-girth STS existence
+question. Kwan-Sah-Sawhney-Simkin's Annals 2024 theorem answers that historical
+question. Its girth excludes small dense configurations on j points with j-2
+blocks. Beezer's Definition 7.1 instead excludes all small nonempty generators.
+These definitions must not be merged: a six-block, nine-point grid is a generator
+but is not a six-block, eight-point forbidden configuration. The later high-girth
+existence theorem does not by itself solve Beezer's minimum-order design problem.
+This historical citation is recorded in the review, not counted as a new
+currently open canonical question from Beezer's paper.
+
+INVENTORY EFFECT
+
+One new source paper is fully screened. Three source-stated targets/directions
+are indexed, one with a precise mathematical statement eligible for coverage.
+No question is counted as solved because its source was read; no new Lean
+statement, proof or discovery-time estimate is attributed to those three targets.
+The present research remains a follow-up to L-F16-other-absorbing, not an attempt
+to solve Conjecture 4.1 or the design-cage direction.
+
+FOLLOW-UP FOUND DURING THE FINAL AUDIT
+
+Heinlein–Ostergard2022, Algorithms and complexity for counting configurations
+in Steiner triple systems (DOI10.1002/jcd.21839), Section2.2, Theorem7, verifies
+the minimality conjecture for complete Steiner triple systems through eight
+lines by a full-rank computation on623 STS(25)s. This is a later restricted
+case of Beezer's general minimal-basis conjecture, not a solution for arbitrary
+t,k,m. Their introduction still describes the all-n case as a conjecture.
+This was read in the final publisher HTML. No new Lean audit of their rank
+computation is claimed. The authors also describe constant-configuration
+classification as incomplete; the full general current status remains unassessed.
+
+Beezer's own follow-up has verified publisher metadata: The girth of a design,
+J. Combin. Math. Combin. Comput.40(2002),97–113. The publisher volume40 table
+was read; it exposed no article/file link for that older entry. Its full text
+remains an uninspected lead, so no theorem comparison or current extremal
+resolution is inferred from the title.

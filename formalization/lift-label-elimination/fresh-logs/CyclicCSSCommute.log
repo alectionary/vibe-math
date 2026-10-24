@@ -1,0 +1,30 @@
+./CyclicCSSCommute.lean:30:0: warning: automatically included section variable(s) unused in theorem `CyclicCSSCommute.eq_add_iff`:
+  [Fintype G]
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./CyclicCSSCommute.lean:35:0: warning: automatically included section variable(s) unused in theorem `CyclicCSSCommute.eq_sub_iff`:
+  [Fintype G]
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./CyclicCSSCommute.lean:50:41: warning: This simp argument is unused:
+  Finset.sum_ite_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mul_apply, Fintype.sum_prod_type, cover, translation, mul_ite, ite_and, Finset.sum_ite_eq']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./CyclicCSSCommute.lean:64:10: warning: This simp argument is unused:
+  ite_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ite_and, Finset.sum_ite_eq', Finset.sum_ite_eq, cover, eq_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'CyclicCSSCommute.commute_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CyclicCSSCommute.css_commutes' depends on axioms: [propext, Classical.choice, Quot.sound]

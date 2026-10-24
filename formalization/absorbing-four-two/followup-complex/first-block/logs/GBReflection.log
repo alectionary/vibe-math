@@ -1,0 +1,17 @@
+./GBReflection.lean:11:0: warning: automatically included section variable(s) unused in theorem `GBReflection.reflected_eval`:
+  [Fintype G]
+  [IsDomain K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] [IsDomain K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./GBReflection.lean:26:0: warning: automatically included section variable(s) unused in theorem `GBReflection.phase_unit`:
+  [Fintype G]
+  [DecidableEq G]
+  [IsDomain K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] [DecidableEq G] [IsDomain K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'GBReflection.reflected_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GBReflection.all_scalar_M_equal' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,222 @@
+THE (4,2) COMPLEX-CHARACTER BRIDGE AND LITERATURE FOLLOW-UP
+
+Target: L-F16-other-absorbing, follow-up, not a new source question.
+Source: Abiad-Castriota, arXiv:2607.13666v1 (2026-07-15), Section 6.
+Second requested block: 2026-10-24 05:22:47 UTC, for 7200 seconds.
+The final completion time and wall-clock elapsed duration are in verification.json.
+That duration includes a browser download stall far beyond its requested timeout;
+it is not a claim of continuous productive work during the interruption.
+This note may also appear in an explicitly incomplete checkpoint package.
+
+RESULT
+
+The standard-complex bridge is now a general Lean proof. For every positive
+integer N, the checked formula uses the actual character
+
+  psi(a) = exp(2*pi*i*a.val/N),    omega = exp(2*pi*i/N).
+
+It proves injectivity through mathlib's standard character, the conjugation
+identity star(psi(a))=psi(-a), unit norm, and the Fourier convention
+
+  psi(-j*a) = omega^(-j.val*a.val).
+
+The exponent on the right is an ordinary integer, so this statement also checks
+the wraparound convention for even/composite lift sizes. N=1 is included.
+
+For socket incidence H(p,a)={(r,a+e):(r,e) in sockets(p)}, define the full
+rectangular evaluated matrix and transformed indicator by
+
+  D_j[r,p] = sum_(r,e in sockets(p)) omega^(-j*e),
+  b_hat_j[p] = sum_(p,a in W) omega^(-j*a).
+
+The formalization connects their ordinary matrix-vector product to the existing
+finite convolution theorem, and connects its Euclidean complex-vector norm to
+the algebraic energy. Thus the checked source formula is
+
+  N42(H) = (N/4) sum_roots [t^2+2t - (1/N) sum_j ||D_j b_hat_j||^2].
+
+Roots are ordered central-pair representatives ((p,0),(q,d)) with distinct
+variables sharing a check. W is their proper common-neighbor set: a third
+variable forms a genuine six-cycle with the pair, using distinct check nodes.
+t=|W|. The hypotheses remain exactly column degree three and no four-cycles;
+check degrees may vary. Every elementary (4,2) support is automatically absorbing
+under these hypotheses, by the previously checked classification. This is a
+count of four-variable supports, not labeled drawings or cycle occurrences.
+
+The proof does not replace D_j by eigenvalues or by M_j=D_j D_j*. The incidence
+correction is essential. The preceding block proved why projected diamonds alone
+can include non-elementary check incidences and why full M_j data lose information.
+
+THE EXPLICIT QUANTUM WITNESS
+
+The new socket-to-matrix theorem connects this complex interpretation to the
+saved 168-column matrices, through the existing tensor/literal index equivalences.
+The right sockets are {0,-1,-3}; their evaluation is
+
+  beta_j = 1+omega^j+omega^(3j),
+
+which checks the positive exponent caused by the transposed binary right block.
+The full rectangular matrix is exactly [A | beta_j I]. The two saved A/A'
+examples have identical full complex M_j at every frequency, and their exact
+elementary (4,2) counts are 49 and 35. Both counts, their actual binary/source
+interpretation, the complex evaluated matrices, and the failure of any M_j-only
+count function are now connected in Lean. The cubicity/no-four-cycle premises
+of the general complex formula are discharged for both examples.
+
+The earlier exact computations of rank and connectivity, and the earlier CSS
+commutation proof, retain their recorded scope. The smaller 48-qubit example's
+finite count remains an exact external computation; its unfinished large finite
+Lean candidate has not been promoted by this complex follow-up.
+
+An additional attempt replaced the monolithic 48-column computation by finite
+root/neighbor certificates and kernel evaluation. The preserved development
+variants did not produce a successful full module check; the final attempt
+reached its ten-minute per-module cap. No candidate is included in the checked
+module list or used by the general complex theorem. The candidate record and
+sources are retained for a future formalization effort, with the existing exact
+counts unchanged.
+
+Boundary consumers check a four-variable diamond at N=1, whose count is one and
+whose normalized complex energy is 36. Character/sign consumers at N=7 and N=24
+check a prime case and an even composite case. No floating-point result supplies
+an exact mathematical premise.
+
+LITERATURE FINDINGS
+
+The complete Steiner-triple-system special case was already solved in 1995.
+Grannell, Griggs and Mendelsohn's C14 configuration is exactly the elementary
+(4,2) pattern when triples become variables and points become checks. Their
+formula is N42=v(v-1)(v-3)/4-6P, where P counts Pasch configurations. Figure 2
+and the derivation were inspected in the author-hosted accepted preprint.
+https://grannell.net/Papers/smallbasis.pdf
+
+Heinlein-Ostergard's Theorem 3 (2021 preprint; 2022 journal) also establishes
+O(v^3) counting of every variable four-line STS configuration, using the earlier
+reduction. Efficient counting in that special case is established prior work.
+https://onlinelibrary.wiley.com/doi/10.1002/jcd.21839
+
+The distinction from general socket data is substantive: a complete STS covers
+every check-point pair exactly once. General cubic/no-four-cycle incidences only
+cover each pair at most once. Beezer's general t-design reduction was checked in
+the relevant indexed primary-preprint passages. A check-regular cubic incidence
+structure is a 1-design, but C14 is itself a generator at t=1; the reduction for
+non-generators does not compute it from other generator counts. For a complete
+STS, t=2 and C14 is a non-generator. The finite shape/hypothesis distinction is
+checked in ClassicalConfiguration.lean. The final journal PDF subsequently opened
+through the normal publisher browser's open-archive link. Its download stalled,
+so the full final-text comparison remains incomplete; the ledger names the
+preprint passages actually read.
+https://doi.org/10.1006/jcta.2001.3185
+
+General expanded-graph ETS enumeration was already established, and the newer
+Pacenti-Raveendran-Vasic detector-model work also uses exhaustive dpl search.
+Our result is not the first algorithm capable of counting these supports on an
+expanded graph. P34's base-pattern counts and lifting results were also compared
+with the full target; their stated counts concern different objects.
+https://arxiv.org/html/2608.11516v1
+https://arxiv.org/html/2606.11987v1
+
+The repaired Semantic Scholar and OpenAlex requests provide actual citation-list
+snapshots. Both index the F16 source with zero citing records at the checkpoint;
+the older STS paper returns 15 and 14 records, respectively. These are index
+snapshots, with duplicate/version limitations, not an exhaustive citation census.
+The more detailed source, hypothesis and access record is literature-followup.json.
+
+The refined theta/chord search found a closer predecessor: Amirzade, Sadeghi
+and Panario's 2020 preprint gives shared-six-cycle modular criteria for avoiding
+chorded eight-cycles, including a multiple-edge protograph discussion. This is
+prior work for the detection idea, and its broader family cannot be dismissed
+by imposing three fully occupied check-row groups. The inspected criteria are
+avoidance statements, rather than the separate corrected (4,2) support count
+and Fourier normalization proved here. The 24-page 2024 journal expansion is
+not the same text as the eight-page public preprint; its full comparison remains
+unavailable. Public citation-location and author-page checks located only v1.
+https://arxiv.org/html/2008.01322v1
+https://doi.org/10.1109/TIT.2023.3307583
+
+The earlier 2018 Amirzade-Sadeghi preprint gives modular avoidance conditions
+in the more restrictive fully connected three-row single-edge setting. The
+2023 graphic-bound and 2025 cycle-distance preprints, and the 2026 Turan-bound
+follow-up, were also compared. Their extremal edge bounds, catalogs of
+nonisomorphic shapes, and decoder state-matrix spectral radii do not count
+embeddings in a particular QC socket incidence. The relevant theorem and proof
+locators, and inspected preprint versions, are recorded in the ledger.
+
+An independent exact comparison enumerates all 2048 candidate shared-check
+support families on four variables. After the cubic/linearity filters and
+isomorphism quotient, it obtains the 16 classical four-triple shapes, with a
+unique elementary (4,2) shape of check degrees 1,1,2,2,2,2,2. It also reproduces
+the attributed 1995 formula on the Fano STS(7), with Pasch=7 and N42=0, and the
+affine-plane STS(9), with Pasch=0 and N42=108. This is exact finite computation;
+the general classical STS counting theorem is not re-proved in Lean here.
+See check_classical_shapes.py and classical-shape-check.json.
+
+The already credited STS(13) trade in Jiang et al., Appendix F.1, gives a sharper
+novelty cross-check. Its Pasch counts 13 and 8 give N42=312 and 342 by the 1995
+formula; independent exhaustive checks of all 14,950 four-block supports in
+each system reproduce those values. Both integer point-Gram matrices have
+diagonal six and off-diagonal one. Thus classical inputs already demonstrate
+that full pair-incidence data can lose the (4,2) count. The information-loss
+idea is not a new claim of this project. The concrete 168-column quantum
+certificate and its source/complex bridge retain their own stated contribution.
+https://arxiv.org/html/2605.13690v1
+
+The three-check-group hypothesis of Raeisi-Gholami's decomposable-code results
+also has an explicit comparison. ClassicalDecomposability.lean proves that a
+Fano block cannot admit those three row groups, and that each 168-column witness
+contains such a block. The smaller 48-column pair does admit the partition,
+using check coordinate modulo three; the finite check is recorded separately.
+This distinction does not exclude the broader arbitrary-protograph predecessors.
+
+A source-author downstream check found Abiad-Crnkovic-Peters-Svob's September
+2026 switching paper. Its Theorem 3.2 preserves point-pair incidence counts,
+and Section 4 relates design switches to cospectral graph switches. It supplies
+relevant prior machinery, rather than the target support-count formula.
+https://arxiv.org/html/2609.20030v1
+
+The specific 2010 Laendner-Milenkovic-Huber full text is still unavailable. The
+historical STS count is settled by the inspected 1995 source regardless of that
+access failure. The 2026 Morris-Pllaha-Kelley journal introduction and theorem
+outline were obtained publicly, but full HTML requires subscription/login and
+the advertised PDF returned no data. The latest arXiv version is still the
+inspected 2024 v2. Author publication-site checks did not locate a final copy.
+Neither access gap is represented as a completed full-text comparison.
+The expanded chordless-cycle journal comparison and Beezer whole-file comparison
+are additional named gaps, not completed exclusions. Normal IEEE browser access
+confirmed that the 2010 and expanded 2024 texts require access to continue reading.
+
+The reliable-qubit citation lead is now compared from the full public v2 PDF;
+the earlier v3 request used a nonexistent version. Its even-freeness and
+assisted-code results do not supply the general multiplicity formula, and its
+STS simulation discussion refers to the still-unavailable 2010 paper.
+https://arxiv.org/pdf/1309.5587v2
+
+No earlier complete corrected QC socket/Fourier formula has been identified in
+the inspected material. Mathematical, method and formalization priority remain
+unestablished. Classical configurations, modular cycle closure, Pasch information
+loss and expanded-graph enumeration are credited rather than claimed anew.
+
+VERIFICATION AND STATUS
+
+The exact toolchain is Lean v4.36.0-rc1, with mathlib commit
+5f7b4198d22a9c82e1c698a379334fe128095c82. The manifest records source hashes,
+compiler exits, unchanged-during-check flags and printed axiom reports. Only
+propext, Classical.choice and Quot.sound are allowed. The archive contains no
+prebuilt research .olean files. The fresh-recheck record, when present in the
+final artifact, documents a separate full rebuild from preserved source copies.
+
+The earlier artifact and its dated manifest remain intact in first-block/.
+Current inventory/planning records link this follow-up. The canonical combined
+(4,2)/(4,0) target remains partial: this block does not undertake the companion
+general (4,0) enumeration. Canonical/eligible/completed deltas are all zero.
+
+Question answered: the standard-complex character, sign, matrix, Euclidean-norm
+and normalization bridge for the general (4,2) formula, including the actual
+49/35 witness matrices, with general and concrete Lean evidence.
+
+Question still open: general (4,0) enumeration; exact historical priority and
+the named unavailable full-text comparisons. Concrete ranks/connectivity retain
+their earlier exact external-computation status.
+
+Next proposed target (follow-up): resolve the remaining accessible prior-art
+leads, then undertake the companion (4,0) component as a separately bounded task.

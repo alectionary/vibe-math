@@ -1,0 +1,23 @@
+./PaschGlobalCount.lean:74:30: warning: This simp argument is unused:
+  Finset.sum_const_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_const, add_zero, Nat.nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./PaschGlobalCount.lean:74:52: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_const, Finset.sum_const_zero, Nat.nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./PaschGlobalCount.lean:93:0: warning: automatically included section variable(s) unused in theorem `PaschGlobalCount.quad_embedding40`:
+  [Fintype C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'PaschGlobalCount.ordered_roots40_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaschGlobalCount.rootSum40_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaschGlobalCount.count40_energy_identity' depends on axioms: [propext, Classical.choice, Quot.sound]

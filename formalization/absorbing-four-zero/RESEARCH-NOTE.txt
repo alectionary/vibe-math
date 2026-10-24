@@ -1,0 +1,237 @@
+A STRONGER (3,6)-REGULAR COUNTEREXAMPLE, CHECKED IN THE SAME BLOCK
+
+PaschCubicTrade.lean provides two actual140-variable,70-check QC-GHP models
+with column degree3, check degree6 and no Tanner four-cycles. Their full complex
+M_j matrices agree at every frequency, but their (4,0) counts are77 and105.
+This removes the check-degree9 limitation of the earlier273-variable witness.
+The273-variable182/147case remains as a second checked consumer.
+
+The smaller pair uses the elementary Pasch trade extended by six triples.
+Label the six edges of K4 by0,...,5. On these labels take either the four
+stars or the four triangles, and append {edge-label,6+endpoint1,6+endpoint2}
+for every edge. Both incidence systems are cubic/linear with the same integer
+point Gram. The first has one Pasch; the second has five. The generic HGP
+formula gives7*1+10*7=77 and7*5+10*7=105 after the cyclic Fano lift.
+
+The construction K_X+_mu H is classical: Prażmowska–Prażmowski2016,
+Section3 following Propositions3.2–3.3 (the relevant statements/proofs were read):
+https://doi.org/10.1007/s00373-016-1681-3
+No novelty is claimed for these10_3configurations or their Pasch trade/counts.
+The checked deliverable is the exact source-incidence/evaluated-matrix bridge.
+
+Independent C++ enumeration tested all15,329,615four-subsets of each140-column
+model. Direct binary-kernel and induced degree0/2 counts both agree77/105.
+See cubic-trade-counts.json, independent-quad140-counts.jsonl and the explicit
+source140-columns.json data.
+
+THE (4,0) HALF IS ANSWERED, WITH A NECESSARY CORRECTION
+
+The general full-incidence count already has a classical answer: under column
+weight three and no Tanner four-cycles, elementary (4,0) supports are exactly
+the weight-four words in the binary kernel. MacWilliams identities therefore
+supply an exact count. The specialized cyclic formula and the source-data
+correction have now also been proved in Lean.
+
+The source's stronger suggestion that these counts follow from its M_j matrices
+alone is false. We have two actual273-variable QC-GHP examples with the same
+full M_j at every complex frequency but182 versus 147elementary (4,0) supports.
+Their source incidence, counts, binary-kernel translation, complex matrix
+identity and impossibility conclusion are checked in Lean. This goes beyond
+just showing equal spectra or numerically similar matrices.
+
+WHAT WAS THE QUESTION?
+
+This continues the (4,0) component of the same combined (4,2)/(4,0) question
+L-F16-other-absorbing from Abiad–Castriota, arXiv2607.13666v1, Remark4.18
+and Section6. The earlier blocks completed (4,2). The two components are now
+available together as AbsorbingFourCounts.explicit_cubic_cyclic_four_counts.
+
+Beezer's Counting Configurations in Designs is a different, classical paper
+used to check whether its general reduction already answers the task. His
+Conjecture4.1 concerns whether a set of generator counts is a minimal basis.
+We indexed that conjecture and two broad research directions, without treating
+them as more pieces of the quantum-coding question or as solved targets.
+
+WHY THE CLASSICAL ANSWER APPLIES
+
+For four selected variables, zero binary syndrome means every selected check
+has even degree. A degree-four check would force all other selected checks to
+be private, by the no-four-cycle condition. That contradicts their even degrees
+and the column degree of three. Thus all selected checks have degree two,
+which is exactly a Pasch configuration. Every selected variable has three even
+checks and zero odd checks, so the absorbing-majority condition holds.
+
+This is classical even-configuration/codeword mathematics, explicitly discussed
+for Steiner designs by Fujiwara2014. Our generic proof does not need a complete
+design. The equality to the weight-four coefficient gives both the classical
+MacWilliams count and a simple standard pair-XOR counting route. We do not
+claim that general weight-four counting is a newly solved open problem.
+
+BEEZER'S FINAL JOURNAL PDF
+
+The complete 17-page final 2001 journal PDF has been saved, read and compared
+with the previously indexed1997preprint passages. Its SHA-256 is
+
+d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810
+
+The useful journal results are Theorem3.1/Corollary3.1 on generators and
+Theorem5.1 on the triangular solution. The old preprint numbering differs.
+Pasch is a generator for both t=1 and t=2. Beezer's reduction therefore leaves
+its count as an input; it does not determine it from v and lambda. That
+hypothesis comparison is also captured by a general checked generator lemma.
+
+The new source index records:
+
+* L-F27-generator-basis: Conjecture4.1, p351/PDF11; precise and eligible.
+* L-F27-minimal-girth-designs: Section7, pp356–357; broad direction.
+* L-F27-constant-configurations: Section6, p355; broad direction.
+
+The regular-graph paragraph is a special case of the first conjecture, not a
+second canonical question. Heinlein–Ostergard2022 later verifies the analogous
+complete-STS minimality statement through eight lines; it does not settle the
+general all-t,k,m conjecture. The historical Erdos high-girth existence question
+mentioned in Beezer is resolved by Kwan–Sah–Sawhney–Simkin2024. That density-based
+girth differs from Beezer's generator-based girth and does not automatically
+answer his minimum-order design direction. Full current-resolution and Lean
+searches for the three newly indexed Beezer targets remain unassessed.
+
+THE EXPLICIT CYCLIC FORMULA
+
+At an ordered adjacent root pair (u,v), let W be the proper common neighbors:
+third variables completing genuine six-cycles at that root, excluding a single
+check shared by all three. Let t=|W|. For each check c let k_c count variables
+of W incident with c. Define E=sum_c k_c^2, and let F=sum_{c in H(u) union H(v)}
+k_c^2. Every w in W has exactly one check outside the root checks. It follows
+that E-F-t counts ordered outer pairs producing genuine Pasches. Each Pasch
+has24root/order choices, giving
+
+  24 N40 = sum_{ordered adjacent roots} (E-F-t).
+
+For a cyclic lift of size N>0, normalize roots to (p,0),(q,d). Let D_j be the
+full rectangular evaluated incidence matrix and b_hat_W its proper-common-
+neighbor indicator transformed with the same unnormalized negative-exponent
+DFT as the earlier complex bridge. Then
+
+  N40 = (N/24) sum_{normalized adjacent roots}
+           [(1/N)sum_j ||D_j b_hat_W(j)||^2 -F-t].
+
+The artifact proves the actual-support/root correspondence, the factor24,
+cyclic normalization, matrix-vector interpretation, standard complex character,
+sign and Euclidean norm/Parseval factor. It applies to every positive N,
+including1 and even/composite lift sizes. No check-regularity or complete-
+Steiner-design premise was smuggled into the general theorem.
+
+The expression uses more than M_j=D_jD_j*. Both W and the correction F preserve
+which variables meet which checks. A projected K4 can come from one degree-four
+check and fail to be a Pasch; a checked small counterexample illustrates this.
+
+THE ACTUAL SOURCE COUNTEREXAMPLE
+
+The previously credited STS(13) trade has Pasch counts13 and 8 and the same integer
+point-Gram matrix: diagonal6, off-diagonal1. It is classical input, not a new
+trade discovery. Using the source construction
+
+  HX=[A tensor I7 | I13 tensor B^T],       B(x)=1+x+x^3,
+
+gives273 variables and91 checks. All columns have degree3, all checks degree9,
+and there are no Tanner four-cycles. In an ordinary hypergraph product every
+Pasch belongs to a single factor fiber, so
+
+  N40(HGP(A,B))=7 N40(A)+13 N40(B^T).
+
+The Fano transpose block has7 Pasches. Thus the counts are182 and 147. The new
+Lean proof checks this product identity, the finite base counts, actual socket/
+source incidence transfer, the binary-matrix kernel interpretation, the
+ordinary complex evaluated matrices, and the two specialized Fourier formulas.
+CSS commutation is checked in the product model too. No rank or quantum-
+distance inference is made.
+
+For every frequency, D_j=[A | beta_j I13]. Identical A A^T therefore gives
+identical full M_j, while the two support counts differ. A function of all M_j
+alone cannot equal both counts. The public theorem is
+PaschQuantumWitness40.no_actual_complex_M_only_count40.
+
+VERIFICATION AND WHAT IS NEW
+
+There are19 new checked research modules on top of42 unchanged checked modules
+from the previous two blocks. The final manifest records a clean source rebuild
+of all 61, pinned Lean/mathlib versions, per-source hashes and axiom reports.
+Only propext,Classical.choice,Quot.sound are permitted. The archive includes no
+research .olean files. An initial direct finite-evaluation strategy timed out
+at 240 seconds; separate checked row certificates completed the same counts.
+That unsuccessful execution is retained rather than represented as a proof.
+
+Exact Python checks compared induced-support enumeration, pair-XOR collisions,
+root energy and MacWilliams/fourth-moment formulas on four small consumers.
+For the273-variable cases, separate pair-XOR and root methods agreed. An
+independent C++ definition-based oracle tested all 226,387,980 four-subsets of
+each case and confirmed182 and 147. These exact computations corroborate the
+source consumers; their essential count/matrix claims now also have Lean proofs.
+
+The main deliverable is a source translation/correction and checked artifact.
+The MacWilliams transform itself and the separate XOR-collision derivation are
+written proofs here, not newly formalized transforms. The source's spectral-only
+claim is refuted, while the corrected full-incidence task is completed. Three
+named inaccessible final/full texts remain priority-comparison limits. Neither
+new mathematical priority nor first formalization is asserted.
+
+SHARED INVENTORY
+
+Beezer adds one fully screened paper and three source targets/directions, one
+eligible:187→190 canonical entries,111→112 eligible targets,60→61 paper records,
+57→58 full-text screens. Those additions are independent of the existing F16
+research target. Completing that existing target gives4/112 complete checked
+Lean targets; it does not add another question or count helper modules as
+solutions. Historical manifests/cohort snapshots are preserved.
+
+Question answered: Both recorded cubic cyclic four-variable counts, with the
+necessary full-incidence correction; the M_j-only interpretation is refuted.
+Evidence: general Lean formulas and checked actual source consumers, with a
+classical counting baseline and independent exhaustive finite verification.
+
+Question still open: No count remains open within that recorded scope. Current
+status of Beezer's general minimal-basis conjecture and his broad directions
+is not established by this block. Named final-text/priority comparisons remain
+unresolved; these are limits on attribution, not missing steps in the checked
+counting result.
+
+Next proposed target: FOLLOW-UP — choose a bounded parameter regime and study
+how to eliminate (4,0) supports using the corrected incidence criterion. This
+would be a new project-derived design task, not an unsolved part of the count
+or a claim to have solved Beezer Conjecture4.1. No work on that new task was
+started under this block.
+
+X AND GITHUB PRIOR-ART EXTENSION (October24)
+
+Direct X Latest searches and public GitHub repository/indexed searches were
+completed. The exact queries, visible-result limits and source comparisons are
+in social-prior-art.json. A public Lean binary MacWilliams theorem was found:
+https://github.com/pefch-k/lean-coding-theory-macwilliams-identity
+Both Lean files were read at pinned commit8848ddeeff36408d9b6f13f229a82d568c006424.
+They contain no sorry/admit/custom-axiom/native_decide tokens, but were not built
+or axiom-audited here. This is relevant pre-existing formalized background; it
+does not contain the absorbing/Pasch/cyclic-source bridge in its two-file tree.
+A separate GitHub finite Pasch-count report was also read; its code link returned
+404 and its reported computation is not independently certified here.
+No matching independent proof was identified in the bounded X results; our own
+earlier announcement was excluded as independent prior art. These searches do
+not establish global absence or priority.
+
+CLASSICAL DATA IDENTIFICATION
+Both10_3bases were matched, by explicit checked incidence relabellings, to
+Krčadinac's public data accompanying Abreu–Funk–Krčadinac–Labbate,
+Strongly regular configurations,arXiv2104.04880v2(2021),laterDCC90(2022).
+https://arxiv.org/abs/2104.04880v2
+https://web.math.pmf.unizg.hr/~krcko/results/srconf/10-3-3-4.txt
+The star base matches dataset item2; the triangle base matches item1.
+See classical-cubic-comparison.json for the explicit maps and exact-data hash.
+The preprint introduction and relevant Section3 passages were read; the full
+2022journal revision was not compared. No novelty for the base examples is claimed.
+
+FRESH BUILD METHOD
+The clean-source rebuild first checked60modules. After the smaller consumer
+was added,59unchanged final modules were retained by exact source/object/log
+provenance; the new consumer and changed public entry were compiled against
+those fresh objects. The final closure contains61modules. The superseded entry
+check is excluded from that count. The public reproduction script rebuilds all
+61sources directly; no research object files are distributed.

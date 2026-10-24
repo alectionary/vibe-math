@@ -1,0 +1,30 @@
+AbsorbingFourier.complex_root_count_formula.{u_1, u_2} {N : ℕ} [NeZero N] {P : Type u_1} {R : Type u_2} [Fintype P]
+  [DecidableEq P] [Fintype R] [DecidableEq R] (sockets : P → Finset (R × ZMod N))
+  (hd : ∀ (v : P × ZMod N), (CyclicNormalization.incidence sockets v).card = 3)
+  (h4 :
+    ∀ (u v : P × ZMod N),
+      u ≠ v → (CyclicNormalization.incidence sockets u ∩ CyclicNormalization.incidence sockets v).card ≤ 1) :
+  ↑(GlobalCounting.count42 (CyclicNormalization.incidence sockets)) =
+    ↑N / 4 * ∑ p, ∑ q, ∑ d, AbsorbingFourier.complexRootSummand sockets p q d
+ComplexQuantumFormula.actual_A_complex_formula :
+  49 =
+    7 / 4 *
+      ∑ p, ∑ q, ∑ d, AbsorbingFourier.complexRootSummand (ComplexQuantumWitness.sockets Absorbing42Small.baseA) p q d
+ComplexQuantumFormula.actual_B_complex_formula :
+  35 =
+    7 / 4 *
+      ∑ p, ∑ q, ∑ d, AbsorbingFourier.complexRootSummand (ComplexQuantumWitness.sockets Absorbing42Small.baseB) p q d
+ComplexQuantumWitness.no_actual_complex_M_only_count :
+  ¬∃ f,
+      f (ComplexQuantumWitness.fullM Absorbing42Small.baseA) =
+          GlobalCounting.count42
+            (CyclicNormalization.incidence (ComplexQuantumWitness.sockets Absorbing42Small.baseA)) ∧
+        f (ComplexQuantumWitness.fullM Absorbing42Small.baseB) =
+          GlobalCounting.count42 (CyclicNormalization.incidence (ComplexQuantumWitness.sockets Absorbing42Small.baseB))
+ClassicalDecomposability.source_not_three_groups (base : Absorbing42Small.Incidence) :
+  ¬ClassicalDecomposability.ThreeGroups (HGPIncidence.columns base FanoBlock.columns)
+'AbsorbingFourier.complex_root_count_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ComplexQuantumWitness.no_actual_complex_M_only_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ComplexQuantumFormula.actual_A_complex_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ComplexQuantumFormula.actual_B_complex_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClassicalDecomposability.source_not_three_groups' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,11 @@
+./StructuredKernel.lean:31:0: warning: automatically included section variable(s) unused in theorem `StructuredKernel.fromSeeds_condition`:
+  [Fintype m]
+  [DecidableEq m]
+  [DecidableEq n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype m] [DecidableEq m] [DecidableEq n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'StructuredKernel.fromSeeds_condition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StructuredKernel.equivalence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StructuredKernel.kernel_card' depends on axioms: [propext, Classical.choice, Quot.sound]

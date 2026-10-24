@@ -1,16 +1,16 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 23, 2026. Low-confidence planning priors for all 187 entries (6 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 190 entries (9 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
-| Already complete | 3 | 3 |
+| Already complete | 4 | 4 |
 | 1 | 1 | 0 |
 | 2 | 11 | 1 |
-| 3 | 41 | 24 |
+| 3 | 40 | 23 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 6 | 6 |
+| Unestimated / scope gate | 7 | 7 |
 
 ### 2026-Geraci-O01
 
@@ -2498,15 +2498,17 @@ Basis: New family-based planning prior from source target and the bounded Lean-l
 
 Derive explicit (4,2) and (4,0) elementary absorbing-set counts in the stated QC-GHP setting.
 
-- Statement: Tier 3: 2–6 expert person-weeks.
-- Proof transfer, given a complete proof: Tier 3: 1–4 expert person-months.
-- Research: Relative research obstacle 3/5; discovery time unestimated. open_or_unresolved_in_recorded_sources; present status not exhaustively established
+- Statement: Tier 0: complete.
+- Proof transfer, given a complete proof: Tier 0: complete.
+- Research: Completed target. completed_recorded_incidence_corrected_count_and_spectral_obstruction_scope
 
-Finite Tanner-graph objects are accessible; spectral/Fourier identities and induced-subgraph correction terms add substantial proof work.
+For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.
 
-First milestone: Check the proposed condition or absorbing-set count on a small explicit lifted code.
+First milestone: Recorded target completed. Any new parameter-only optimization or decoder question requires a separately bounded follow-up.
 
-Basis: New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-other-absorbing).
+Progress: For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer. Project-derived follow-up: fixed-base lift labels and [[140q,18,6]] family are answered with formal/written/finite scope separated in formalization/lift-label-elimination/RESEARCH-NOTE.txt. No new author-posed target, difficulty estimate or coverage increment. Subsequent Lean transfer: every manuscript proof now has a checked Lean version, including the all-q mixed-Pauli distance theorem; see formalization/lift-label-elimination/proof-coverage.json. [Checked artifact](../formalization/absorbing-four-zero/README.txt).
+
+Basis: Updated after the (4,0) follow-up; the precise general Lean scope is in verification.json. Historical effort bands retained; no new discovery-time estimate invented. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-other-absorbing).
 
 ### L-F19-distance
 
@@ -2805,3 +2807,51 @@ First milestone: Read the cited source definitions and formulate a bounded targe
 Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
 
 Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f26-replicated-comparisons).
+
+### L-F27-generator-basis
+
+For fixed t and k, prove that all generators on at most m blocks form a minimal generating set for m-line configurations in general t-(v,k,lambda) designs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f27-generator-basis).
+
+### L-F27-minimal-girth-designs
+
+Determine minimum-order designs of fixed generator girth and investigate their structure.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f27-minimal-girth-designs).
+
+### L-F27-constant-configurations
+
+Extend the configuration equations and classification of constant configurations to larger numbers of blocks.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+
+First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+
+Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+
+Basis: New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f27-constant-configurations).

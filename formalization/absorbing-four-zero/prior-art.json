@@ -1,0 +1,272 @@
+{
+  "canonical_target_id": "L-F16-other-absorbing",
+  "kind": "follow-up: (4,0) component",
+  "checked_on": "2026-10-24",
+  "source_version_rechecked": "Abiad–Castriota arXiv2607.13666v1 July15,2026,Remark4.18 and Section6; raw HTML hash c00d34d6ade246053469f686906cb29fb020a34096942d2042d1cd60a5b44606",
+  "full_target": "Exact elementary (4,0) support count for cubic no-four-cycle QC-GHP incidence; distinguish full incidence/socket data from Hermitian M_j alone.",
+  "conclusion": "The full-incidence count is classically supplied by weight-four kernel enumeration and MacWilliams. The incidence-corrected cyclic formula is Lean checked. Actual(3,6)-regular140-variable QC-GHP pairs have equal full complex M_j and different counts77/105; the273-variable182/147pair is also retained. Beezer leaves Pasch as an input. No mathematical/formalization priority claim.",
+  "sources": [
+    {
+      "id": "Beezer2001",
+      "title": "Counting Configurations in Designs",
+      "authors": [
+        "Robert A. Beezer"
+      ],
+      "date_or_version": "Final journal: JCTA 96(2),341–357 (2001); received1997-08-15; online2001-07-17",
+      "url": "https://doi.org/10.1006/jcta.2001.3185",
+      "access": "full_final_journal_PDF_read_and_locally_hashed",
+      "locator": "Entire final17pages; especiallyDef3.1/Thm3.1 p348,Cor3.1 p349,Conj4.1 p351,Thm5.1 pp352–354,Sections6–7 pp355–357",
+      "relationship": "General generator reduction leaves Pasch as a generator input at both t=1 and t=2. Final numbering and all source question passages are indexed separately.",
+      "comparison_limit": "No formula determining general Pasch count from design parameters. Conj4.1 current resolution/Lean discovery remain unassessed; design-cage direction has a different girth from the Erdos density girth."
+    },
+    {
+      "id": "MacWilliams1963",
+      "title": "A Theorem on the Distribution of Weights in a Systematic Code",
+      "authors": [
+        "F. Jessie MacWilliams"
+      ],
+      "date_or_version": "Bell System Technical Journal42(1),79–94,January1963",
+      "url": "https://doi.org/10.1002/j.1538-7305.1963.tb04003.x",
+      "access": "publisher_abstract_metadata_and_bibliography_read",
+      "locator": "Publisher abstract; explicit identity verified in Lomonaco2006 handout and independently derived in the research note",
+      "relationship": "The classical dual weight-enumerator transform supplies the general N40 count after the binary-kernel translation.",
+      "comparison_limit": "The complete1963proof was not retrieved. This establishes classical attribution of the identity, not that MacWilliams discussed these QC-GHP absorbing sets or gave a low-dimensional M_j-only formula."
+    },
+    {
+      "id": "Lomonaco2006",
+      "title": "The MacWilliams and Pless Identities: A Summary",
+      "authors": [
+        "Samuel J. Lomonaco"
+      ],
+      "date_or_version": "Course handout,October9,2006,3pages",
+      "url": "https://userpages.cs.umbc.edu/lomonaco/f06/653/handouts/MacWilliams-Pless-Identities.pdf",
+      "access": "full_three_page_primary_handout_read",
+      "locator": "Theorem1 p1 and explicit parity-check/dual enumeration example pp2–3",
+      "relationship": "Primary instructor exposition verifies the binary weight-enumerator identity used here; its degree-four coefficient is the counting baseline.",
+      "comparison_limit": "The handout is an exposition, not the original priority source. Our all-2^m-row-messages form permits dependent check rows, justified separately by constant-size fibers."
+    },
+    {
+      "id": "Fujiwara2014",
+      "title": "Codes and designs for quantum error correction: some recent developments through combinatorics",
+      "authors": [
+        "Yuichiro Fujiwara"
+      ],
+      "date_or_version": "RIMS Kokyuroku1889(2014),32–41",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf",
+      "access": "relevant_full_text_sections_and_references_read",
+      "locator": "Section3 p37/PDF6, Proposition3.8 and following even-four-configuration paragraph; references[9],[16]",
+      "relationship": "Even configurations correspond to binary dependencies; the even four-triple configuration is Pasch. This is explicit prior terminology and substance for the kernel bridge in complete Steiner designs.",
+      "comparison_limit": "Our generic cubic linear incidence proof does not need complete-design regularity. The bridge itself is classical elementary linear algebra, not a new mathematical phenomenon. Later open even-freeness questions in this2014survey were not screened for inventory or current status."
+    },
+    {
+      "id": "KwanSahSawhneySimkin2024",
+      "title": "High-girth Steiner triple systems",
+      "authors": [
+        "Matthew Kwan",
+        "Ashwin Sah",
+        "Mehtaab Sawhney",
+        "Michael Simkin"
+      ],
+      "date_or_version": "arXiv2201.04554v2 January16,2022; Annals200(3),1059–1156,onlineNovember1,2024",
+      "url": "https://annals.math.princeton.edu/2024/200-3/p04",
+      "access": "publisher_abstract_and_author_preprint_definition_and_theorem_read",
+      "locator": "Author preprint first3pages,Theorem1.1/Definition1.2; publisher bibliographic milestones",
+      "relationship": "Resolves the historical Erdos high-girth existence problem cited by Beezer, preventing it from being indexed as currently open.",
+      "comparison_limit": "Small dense (j,j−2) configurations are different from all Beezer generators. Does not by itself answer Beezer minimum-order fixed-generator-girth problem. Full proof not audited in this block."
+    },
+    {
+      "id": "PefchKMacWilliamsLean2026",
+      "title": "Binary MacWilliams identity: public Lean source",
+      "authors": [
+        "pefch-k (GitHub account)"
+      ],
+      "date_or_version": "Inspected commit8848ddeeff36408d9b6f13f229a82d568c006424; commit timestamp2026-07-03T14:21:26Z",
+      "url": "https://github.com/pefch-k/lean-coding-theory-macwilliams-identity/tree/8848ddeeff36408d9b6f13f229a82d568c006424",
+      "access": "both_Lean_files_and_toolchain_read_static_only_not_build_verified",
+      "locator": "Macwilliams identity/Basic.lean: InformationTheory.LinearCode.macwilliams_identity_binary",
+      "relationship": "General rational-evaluation binary dual weight-enumerator identity, over arbitrary ZMod2 submodules, with x != -1. Related classical background for the full-incidence count.",
+      "comparison_limit": "Both Lean files inspected; no sorry/admit/custom axiom/native_decide tokens found. Not compiled or axiom-audited here. Declared Lean v4.32.0-rc1 differs from our pinned v4.36.0-rc1. No absorbing-support/Pasch/socket/complex cyclic count bridge in this two-file source tree. No first-formalization claim for our work.",
+      "record_kind": "public_software_source",
+      "related_target_ids": [
+        "L-F16-other-absorbing"
+      ]
+    },
+    {
+      "id": "ScopePaschCounts2026",
+      "title": "Public finite Pasch/mitre counting report for anti-Pasch KTS(21)",
+      "authors": [
+        "SCOPE-Science (GitHub organization)"
+      ],
+      "date_or_version": "Inspected repository commitad79274971cb851042694070e536b6a195fd08f7; report path2026/09/13/030",
+      "url": "https://github.com/SCOPE-Science/SCOPE2026/blob/ad79274971cb851042694070e536b6a195fd08f7/2026/09/13/030/RESULT.md",
+      "access": "full_report_read_code_link_returned404_not_independently_verified",
+      "locator": "RESULT.md, method and validation sections",
+      "relationship": "Describes finite configuration counting and Fano/STS13 Pasch sanity checks; confirms that Pasch counting algorithms and the13count are prior material.",
+      "comparison_limit": "Different finite dataset/mitre-minimum question. No general QC-GHP formula, full-M-only obstruction, or Lean proof in the inspected report. Relative counters.py retrieval returned404; reported computations not independently certified here.",
+      "record_kind": "public_software_report",
+      "related_target_ids": [
+        "L-F16-other-absorbing"
+      ]
+    },
+    {
+      "id": "PrazmowskaPrazmowski2016",
+      "title": "Binomial partial Steiner triple systems containing complete graphs",
+      "authors": [
+        "Małgorzata Prażmowska",
+        "Krzysztof Prażmowski"
+      ],
+      "date_or_version": "Graphs and Combinatorics32,2079–2092; published2016-02-16",
+      "url": "https://doi.org/10.1007/s00373-016-1681-3",
+      "access": "publisher_full_HTML_relevant_definitions_and_Propositions3.2_3.3_proofs_read",
+      "locator": "Section3,Propositions3.2–3.3 and following K_X+_mu H construction; Section2 Grassmannian definitions",
+      "relationship": "Explicit classical construction joins a labelled Pasch to the sides of K4 to form a10_3configuration. This is the construction used for our smaller cubic source pair.",
+      "comparison_limit": "Credits the configuration construction; no claim that its configurations, Pasch counts or trade are new. The source-specific cyclic lift, equal evaluated-M and count transfer are checked here. Remaining article/open questions not inventoried or fully screened in this block.",
+      "record_kind": "academic_source",
+      "related_target_ids": [
+        "L-F16-other-absorbing"
+      ]
+    },
+    {
+      "id": "AbreuFunkKrcadinacLabbate2021",
+      "title": "Strongly regular configurations",
+      "authors": [
+        "Marién Abreu",
+        "Martin Funk",
+        "Vedran Krčadinac",
+        "Domenico Labbate"
+      ],
+      "date_or_version": "arXiv2104.04880v2,2021-09-12; journalDCC90(2022),1881–1897 metadata",
+      "url": "https://arxiv.org/abs/2104.04880v2",
+      "access": "author_preprint_intro_and_Section3_relevant_passages_read_and_public_author_dataset_compared",
+      "locator": "Introductionpp2–3/Figure1;Section3p8;author table(10_3;3,4)entry and linkedtwo-configurationdata",
+      "relationship": "Both smaller cubic base configurations are explicitly isomorphic to the author-listed classical configurations. Exact relabellings recorded; these are established data, not new base examples.",
+      "comparison_limit": "Preprint relevant passages and author dataset inspected; full2022journal revision not compared. Incidence-isomorphism comparison is exact finite computation, not a Lean theorem. Source-specific QC-GHP count/evaluated-M transfer is independently Lean checked here. Other questions/directions in this paper were not screened/indexed.",
+      "record_kind": "academic_source",
+      "related_target_ids": [
+        "L-F16-other-absorbing"
+      ],
+      "provenance_ledger": "formalization/absorbing-four-zero/prior-art.json",
+      "author_data_url": "https://web.math.pmf.unizg.hr/~krcko/results/srconf/10-3-3-4.txt",
+      "author_data_sha256": "45b2259865c0da4f9f33e8561cbc304642861275ccf9ece37dd0643127370103",
+      "checked_on": "2026-10-24"
+    }
+  ],
+  "remaining_access_gaps": [
+    {
+      "source": "Laendner-Milenkovic-Huber 2010, DOI 10.1109/ISTC.2010.5613812",
+      "status": "Specific full text still unavailable",
+      "routes_checked": [
+        "Fraunhofer public item and embedded public file listing (no article PDF)",
+        "Illinois Experts metadata",
+        "author publication lists/CVs",
+        "IEEE normal document route (empty 202 response)",
+        "OpenAlex and Semantic Scholar full-text locations (closed, no public PDF)",
+        "proceedings table of contents",
+        "Normal IEEE browser article opened; section navigation exposed only introductory preview and Sign in to Continue Reading; PDF explicitly unavailable to current session."
+      ],
+      "what_closed": "The STS special-case count itself is already settled by the fully inspected 1995 predecessor; this does not replace inspection of every claim in the 2010 article."
+    },
+    {
+      "source": "Morris-Pllaha-Kelley 2026 journal revision, DOI 10.3934/amc.2026023",
+      "status": "Revised public introduction read; full journal text still unavailable",
+      "routes_checked": [
+        "Publisher full-HTML link explicitly requires subscription/login",
+        "Advertised citation_pdf_url returned HTTP 200 with zero bytes",
+        "public introduction-content endpoint returned the revised introduction",
+        "latest arXiv remains v2, 2024-05-10",
+        "author publication page links the journal DOI without a separate final copy"
+      ],
+      "comparison": "The public revised outline locates decoder-failure results in Sections 4-5 and an HGP case study in Section 5. It does not establish that every later journal claim matches the inspected 2024 preprint."
+    },
+    {
+      "source": "Amirzade-Sadeghi-Panario expanded 2024 journal article, DOI 10.1109/TIT.2023.3307583",
+      "status": "Public 2020 preprint inspected; expanded 24-page journal full text still unavailable",
+      "routes_checked": [
+        "Normal IEEE article and stamp routes returned empty 202 responses",
+        "Author research page lists the final journal citation but no article file",
+        "OpenAlex and Semantic Scholar public full-text locations lead only to arXiv:2008.01322v1",
+        "Exact DOI/title searches located metadata and the shorter preprint, not a public final copy",
+        "Normal IEEE browser article opened; PDF explicitly unavailable and full-text preview requires subscription. Final-version comparison remains incomplete."
+      ],
+      "comparison": "This is a close unresolved version comparison; do not dismiss its general multiple-edge protograph scope or equate the public preprint with the expanded final article."
+    }
+  ],
+  "closed_access_gaps": [
+    {
+      "source": "Beezer2001finaljournal",
+      "file": "sources/beezer-final.pdf",
+      "sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+      "scope": "All17pages read and final-numbering comparison complete"
+    }
+  ],
+  "reused_prior_art": [
+    "Grannell–Griggs–Mendelsohn1995 four-line STS basis (Pasch remains free input)",
+    "Heinlein–Ostergard2022 exact configuration-counting algorithms; complete STS hypotheses",
+    "Expanded ETS enumeration and shared-six-cycle/QC avoidance predecessors from previous block",
+    "Jiang et al arXiv2605.13690v1 AppendixF.1: already credited STS13 trade, reused rather than newly discovered"
+  ],
+  "search_scope": {
+    "date": "2026-10-24",
+    "channels": [
+      "Primary publisher and author/instructor pages",
+      "Web exact-title, Pasch/weight-four/codeword, MacWilliams/Krawtchouk, Beezer minimal-basis and girth queries",
+      "Prior two blocks primary-text/citation-index ledgers reused with their limits",
+      "Direct X Latest searches and public GitHub repository/source inspection; exact coverage in social-prior-art.json"
+    ],
+    "queries": [
+      "Pasch weight four codewords count",
+      "Counting Configurations in Designs minimal Beezer conjecture",
+      "MacWilliams identity binary weight distribution Krawtchouk official lecture notes",
+      "Robert Beezer girth of a design pdf",
+      "Beezer generators Conjecture4.1",
+      "Pasch configurations codewords weight",
+      "counting configurations in designs minimal basis conjecture solved",
+      "Steiner triple systems13 8 Pasch",
+      "Pasch weight MacWilliams",
+      "Steiner triple systems of order13 Pasch",
+      "Beezer girth of a design",
+      "10_3 Pasch configurations",
+      "Desargues same point graph configuration",
+      "Strongly regular configurations"
+    ],
+    "limits": "Bounded search, not an exhaustive priority audit. X/GitHub queries, relevant candidates and inspection limits are recorded in social-prior-art.json. No new Google Scholar or comprehensive forward-citation harvest was performed. No matching current-resolution/Lean search is claimed for the newly inventoried Beezer conjecture. The Girth of a Design follow-up remains an uninspected lead."
+  },
+  "evidence_levels": {
+    "general_Lean": "Complete generic cubic/no-four-cycle actual-support classifications and both literal standard-complex cyclic formulas; actual273-variable source incidence/count/kernel/M_j equality and impossibility bridge; generic HGP factor count; Beezer generator comparison. Exact declarations in verification.json.",
+    "written": "Classical MacWilliams specialization, fourth-moment and separate pair-XOR formula. A related public Lean MacWilliams theorem is identified but not build-verified/imported here; no new transform or priority claim.",
+    "exact_finite": "Four classical consumers and two273-column QC-GHP cases, separate collision/root methods; additional cubic10_3base counts1/5 and140-variable source counts77/105, independently enumerated in C++.",
+    "unresolved": "Named inaccessible full texts and mathematical/formalization priority"
+  },
+  "cohort_delta": {
+    "canonical_research_target_entries": 0,
+    "eligible_research_targets": 0,
+    "complete_canonical_Lean_targets": 1
+  },
+  "independent_indexing_extension": {
+    "paper_id": "F27",
+    "canonical_entries": 3,
+    "eligible_targets": 1,
+    "full_text_screens": 1,
+    "complete_Lean_targets": 0
+  },
+  "additional_search_leads": [
+    {
+      "source": "Beezer2002 The girth of a design",
+      "url": "https://combinatorialpress.com/jcmcc/vol40/",
+      "access": "publisher_volume_metadata_only",
+      "comparison": "Verified pages97–113 in volume40(2002), no article/file link exposed. Full-text/extremal theorem comparison remains uninspected."
+    },
+    {
+      "source": "Pavone2023 A visual representation of the Steiner triple systems of order13",
+      "url": "https://doi.org/10.26493/2590-9770.1564.2b8",
+      "access": "primary_institutional_indexed_relevant_section; file403",
+      "comparison": "Primary institutional PDF index Section2 explicitly gives classical Pasch counts13 and8. No full-file or earliest-priority review claimed."
+    }
+  ],
+  "beezer_later_partial_result": {
+    "source": "HeinleinOstergard2022",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jcd.21839",
+    "locator": "Section2.2,Theorem7 and proof; introduction and constant-configuration paragraph",
+    "finding": "The full-configuration minimality conjecture is verified for complete STS through8lines using623STS25 rank180. This is a restricted later case, not an all-t,k,m solution to BeezerConj4.1. Exact Lean/current full-conjecture discovery remains unassessed."
+  }
+}

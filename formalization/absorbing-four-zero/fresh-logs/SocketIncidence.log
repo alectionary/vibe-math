@@ -1,0 +1,20 @@
+./prior/first-block/SocketIncidence.lean:13:0: warning: automatically included section variable(s) unused in theorem `AbsorbingFourier.socketAction_eq_incidenceAction`:
+  [IsDomain K]
+  [StarRing K]
+  [DecidableEq P]
+  [Fintype R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [IsDomain K] [StarRing K] [DecidableEq P] [Fintype R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./prior/first-block/SocketIncidence.lean:50:0: warning: automatically included section variable(s) unused in theorem `AbsorbingFourier.incidenceAction_indicator`:
+  [IsDomain K]
+  [StarRing K]
+  [Fintype R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [IsDomain K] [StarRing K] [Fintype R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'AbsorbingFourier.socketAction_eq_incidenceAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AbsorbingFourier.incidenceAction_indicator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AbsorbingFourier.Fourier_energy' depends on axioms: [propext, Classical.choice, Quot.sound]

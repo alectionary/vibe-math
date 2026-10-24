@@ -1,0 +1,16 @@
+import AbsorbingFourTwo
+import ClassicalConfiguration
+import ClassicalDecomposability
+import ComplexConsumer
+import ComplexQuantumFormula
+
+#check AbsorbingFourier.complex_root_count_formula
+#check ComplexQuantumFormula.actual_A_complex_formula
+#check ComplexQuantumFormula.actual_B_complex_formula
+#check ComplexQuantumWitness.no_actual_complex_M_only_count
+#check ClassicalDecomposability.source_not_three_groups
+#print axioms AbsorbingFourier.complex_root_count_formula
+#print axioms ComplexQuantumWitness.no_actual_complex_M_only_count
+#print axioms ComplexQuantumFormula.actual_A_complex_formula
+#print axioms ComplexQuantumFormula.actual_B_complex_formula
+#print axioms ClassicalDecomposability.source_not_three_groups

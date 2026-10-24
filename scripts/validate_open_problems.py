@@ -5,11 +5,18 @@ R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature';load=lambda n:
 rows=load('open-problems.json');coverage=load('downstream-paper-coverage.json');summary=load('open-problem-summary.json');manifest={m['paper_id']:m for m in load('downstream-source-manifest.json')}
 expansion=load('scholarly-expansion-review.json')
 browser=load('browser-search-review.json')
-reconciliation=load('research-reconciliation.json');added=set(reconciliation['added_target_ids'])
+reconciliation=load('research-reconciliation.json');historical_added=set(reconciliation['added_target_ids'])
+extensions=reconciliation.get('indexing_extensions',[])
+ext_ids={i for e in extensions for i in e['added_target_ids']}
+assert len(ext_ids)==sum(e['added_entries'] for e in extensions)
+assert historical_added.isdisjoint(ext_ids)
+added=historical_added|ext_ids
+ext_n=sum(e['added_entries'] for e in extensions);ext_e=sum(e['added_eligible_targets'] for e in extensions)
+ext_p=sum(len(e['added_paper_ids']) for e in extensions);ext_full=sum(e['full_text_screens_added'] for e in extensions)
 assert len(rows)==len({r['id'] for r in rows})==expansion['baseline']['canonical_entries']+len(expansion['added_target_ids'])+len(browser['added_target_ids'])+len(added)
 assert set(expansion['baseline']['canonical_ids'])|set(expansion['added_target_ids'])|set(browser['added_target_ids'])|added=={r['id'] for r in rows}
 ids={r['id'] for r in rows};by={r['id']:r for r in rows};papers={p['id']:p for p in load('papers.json')+load('followups.json') if p['id'].startswith(('P','F'))}
-assert len(coverage)==len(papers)==len(manifest)==expansion['baseline']['paper_records']+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+len(reconciliation['added_paper_ids'])
+assert len(coverage)==len(papers)==len(manifest)==expansion['baseline']['paper_records']+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+len(reconciliation['added_paper_ids'])+ext_p
 assert {p['paper_id'] for p in coverage}==set(papers)
 legacy={c['id']:c for c in json.loads((R/'audit/claims.json').read_text()) if c['kind']=='open_question'}
 assert len(legacy)==40
@@ -24,6 +31,14 @@ for r in rows:
   assert r['lean_statement_status']=='verified_lean_statement'
   assert r['lean_proof_status']=='verified_complete_lean_proof'
   assert (R/r['verified_artifact']['readme']).exists()
+ elif r['id']=='L-F16-other-absorbing':
+  assert r['lean_statement_status']=='verified_lean_statement'
+  assert r['lean_proof_status']=='verified_complete_lean_proof'
+  assert r['current_resolution_status']=='proved_in_lean_for_incidence_corrected_counts_and_spectral_only_obstruction'
+  assert r['verified_artifact']['statement_declaration']=='AbsorbingFourCounts.explicit_cubic_cyclic_four_counts'
+  assert (R/r['verified_artifact']['verification']).is_file()
+  assert r['partial_artifact']['source_component']=='(4,2) only'
+  assert (R/r['partial_artifact']['verification']).is_file()
  elif r['id']=='L-P32-Conway-existence':
   assert r['lean_statement_status']=='identified_lean_statement_not_build_verified'
   assert r['lean_proof_status']=='no_exact_proof_identified'
@@ -58,16 +73,16 @@ for m in manifest.values():
   p=R/m['local_file']
   if p.exists():assert hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']
 new=[r for r in rows if r['origin']=='article_inventory_extension'];eligible=[r for r in rows if r['eligible_for_coverage']]
-assert len(new)==summary['additional_entries']==74+expansion['added_entries']+browser['added_entries']+reconciliation['added_entries']
-assert sum(r['eligible_for_coverage'] for r in new)==summary['additional_eligible_targets']==35+expansion['added_eligible_targets']+browser['added_eligible_targets']+reconciliation['added_eligible_targets']
-assert len(eligible)==summary['eligible_targets']==74+expansion['added_eligible_targets']+browser['added_eligible_targets']+reconciliation['added_eligible_targets']
+assert len(new)==summary['additional_entries']==74+expansion['added_entries']+browser['added_entries']+reconciliation['added_entries']+ext_n
+assert sum(r['eligible_for_coverage'] for r in new)==summary['additional_eligible_targets']==35+expansion['added_eligible_targets']+browser['added_eligible_targets']+reconciliation['added_eligible_targets']+ext_e
+assert len(eligible)==summary['eligible_targets']==74+expansion['added_eligible_targets']+browser['added_eligible_targets']+reconciliation['added_eligible_targets']+ext_e
 assert summary['new_written_math_statuses']==dict(collections.Counter(r['written_math_status'] for r in new))
-assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)==30+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
+assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_text_screened') for p in coverage)==30+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+ext_full
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
-assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])
+assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+ext_full
 assert summary['not_fully_assessed']==1+reconciliation['added_relevant_section_screens']
-assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==3
-assert summary['eligible_verified_lean_proofs']==3
+assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==4
+assert summary['eligible_verified_lean_proofs']==4
 assert summary['eligible_targets_with_verified_finite_cases']==0
 assert all(not r['eligible_for_coverage'] for r in rows if r['status_as_of_source']=='withdrawn_historical_only')
 assert next(p for p in coverage if p['paper_id']=='P10')['target_count'] is None
@@ -91,12 +106,12 @@ for href in re.findall(r'\]\(([^)]+)\)',report):
  if not u.scheme and u.path:assert (D/u.path).exists(),href
 assert f"0/{len(eligible)}" in report and f"0/{len(eligible)}" in page
 assert summary['eligible_identified_unverified_lean_statements']==1
-assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']-load('lean-coverage-review.json')['assessed_eligible_count']+reconciliation['added_eligible_targets']
+assert summary['eligible_lean_discovery_unassessed']==5+browser['added_eligible_targets']-load('lean-coverage-review.json')['assessed_eligible_count']+reconciliation['added_eligible_targets']+ext_e
 print(f'Validated {len(rows)} canonical entries, {len(eligible)} eligible targets, {len(coverage)} paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.')
 
 assert reconciliation['completed_targets_added']==0
-assert len(added)==6 and sum(by[t]['eligible_for_coverage'] for t in added)==3
-assert summary['eligible_targets']==reconciliation['baseline']['eligible_targets']+3
+assert len(historical_added)==6 and sum(by[t]['eligible_for_coverage'] for t in historical_added)==3
+assert summary['eligible_targets']==reconciliation['baseline']['eligible_targets']+3+ext_e
 for task in reconciliation['project_derived_followups']:
  assert task['origin']=='project_derived_followup' and not task['source_authors_asked_this_exact_question']
  assert not task['eligible_for_coverage'] and task['id'] not in ids
@@ -108,4 +123,21 @@ for row in rows:
  for p in row.get('research_progress',[]):
   assert (R/p['report']).is_file()
   for source in p['lean_sources']:assert (R/source).is_file()
-print('Research reconciliation: six new source targets, 21 linked sources, later proof/experiment records and five separately labeled project follow-ups PASS.')
+assert len(load('research-source-index.json')['sources'])==reconciliation['central_source_records']
+for block in reconciliation.get('research_blocks',[]):
+ assert block['canonical_entry_delta']==block['eligible_target_delta']==0
+ assert block['complete_canonical_lean_target_delta']==(1 if block['id']=='absorbing-four-zero-2026-10-24' else 0)
+ assert (R/block['report']).is_file() and (R/block['verification']).is_file()
+print('Research reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.')
+
+# Beezer journal extension: exact independent delta, source hash and no invented Lean status.
+assert len(extensions)==1
+e=extensions[0]
+assert e['baseline']==dict(canonical_entries=187,eligible_targets=111,paper_records=60,full_text_screens=57,verified_complete_lean_targets=3)
+assert e['added_entries']==3 and e['added_eligible_targets']==1 and e['full_text_screens_added']==1
+assert e['added_paper_ids']==['F27'] and e['completed_targets_added']==0
+assert len(e['added_target_ids'])==3 and sum(by[i]['eligible_for_coverage'] for i in e['added_target_ids'])==1
+assert manifest['F27']['sha256']=='d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810'
+assert len(rows)==190 and len(eligible)==112 and len(coverage)==61 and summary['full_text_screened']==58
+assert (R/e['report']).is_file()
+print('Beezer extension:187→190 entries,111→112 eligible,60→61 papers,57→58 full-text screens; three historical complete Lean targets retained; one existing F16 target completed.')

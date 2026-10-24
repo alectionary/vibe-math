@@ -1,0 +1,45 @@
+./prior/first-block/GlobalCounting.lean:45:0: warning: automatically included section variable(s) unused in theorem `GlobalCounting.local_degree`:
+  [Fintype C]
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./prior/first-block/GlobalCounting.lean:50:0: warning: automatically included section variable(s) unused in theorem `GlobalCounting.local_linear`:
+  [Fintype C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./prior/first-block/GlobalCounting.lean:97:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+./prior/first-block/GlobalCounting.lean:98:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+./prior/first-block/GlobalCounting.lean:103:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+./prior/first-block/GlobalCounting.lean:104:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+./prior/first-block/GlobalCounting.lean:129:31: warning: This simp argument is unused:
+  Finset.sum_const_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_const, add_zero, Nat.nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./prior/first-block/GlobalCounting.lean:129:54: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Finset.sum_const, Finset.sum_const_zero, Nat.nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'GlobalCounting.rootSum_eq_four_count42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GlobalCounting.counted_support_is_absorbing' depends on axioms: [propext, Classical.choice, Quot.sound]

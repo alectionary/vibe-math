@@ -1,0 +1,27 @@
+./SparseCSS.lean:38:0: warning: automatically included section variable(s) unused in theorem `SparseCSS.right_apply`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./SparseCSS.lean:44:23: warning: This simp argument is unused:
+  Finset.sum_ite_eq
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Matrix.mulVec, dotProduct, adjoint, Fintype.sum_prod_type, add_mul, Finset.sum_add_distrib, ite_and,
+    Finset.sum_ite_irrel, Finset.sum_ite_eq']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./SparseCSS.lean:52:23: warning: This simp argument is unused:
+  ← Finset.sum_filter
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [base, ite_mul]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SparseCSS.kernel_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SparseCSS.kernel_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SparseCSS.rank_defect_nine' depends on axioms: [propext, Classical.choice, Quot.sound]

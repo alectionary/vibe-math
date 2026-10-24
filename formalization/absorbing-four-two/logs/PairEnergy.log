@@ -1,0 +1,43 @@
+./PairEnergy.lean:28:0: warning: automatically included section variable(s) unused in theorem `PairEnergy.degree_square`:
+  [Fintype V]
+  [Fintype C]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype C] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PairEnergy.lean:42:0: warning: automatically included section variable(s) unused in theorem `PairEnergy.sum_checks`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PairEnergy.lean:63:0: warning: automatically included section variable(s) unused in theorem `PairEnergy.common_card`:
+  [Fintype V]
+  [Fintype C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PairEnergy.lean:78:16: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [huv, hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./PairEnergy.lean:97:0: warning: automatically included section variable(s) unused in theorem `PairEnergy.diagonal_card`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PairEnergy.lean:106:0: warning: automatically included section variable(s) unused in theorem `PairEnergy.pair_partition`:
+  [Fintype C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'PairEnergy.energy_eq_pair_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PairEnergy.missing_pair_energy_identity' depends on axioms: [propext, Classical.choice, Quot.sound]

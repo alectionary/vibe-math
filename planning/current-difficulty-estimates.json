@@ -7315,10 +7315,10 @@
     "target_id": "L-F16-other-absorbing",
     "title": "Derive explicit (4,2) and (4,0) elementary absorbing-set counts in the stated QC-GHP setting.",
     "eligible_for_coverage": true,
-    "current_resolution_status": "not_independently_established",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "assessment_date": "2026-10-22",
+    "current_resolution_status": "proved_in_lean_for_incidence_corrected_counts_and_spectral_only_obstruction",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "assessment_date": "2026-10-24",
     "confidence": "low",
     "discovery_time_estimate": null,
     "source_occurrences": [
@@ -7334,26 +7334,40 @@
         "relation": "explicit_question"
       }
     ],
-    "basis": "New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation.",
+    "basis": "Updated after the (4,0) follow-up; the precise general Lean scope is in verification.json. Historical effort bands retained; no new discovery-time estimate invented.",
     "background_evidence": [
       "literature/LEAN-COVERAGE.md",
-      "planning/difficulty-sources.json"
+      "planning/difficulty-sources.json",
+      "formalization/absorbing-four-two/RESEARCH-NOTE.txt",
+      "formalization/absorbing-four-two/verification.json",
+      "formalization/absorbing-four-two/prior-art.json",
+      "formalization/absorbing-four-two/followup-complex/RESEARCH-UPDATE.txt",
+      "formalization/absorbing-four-two/followup-complex/verification.json",
+      "formalization/absorbing-four-two/followup-complex/literature-followup.json",
+      "formalization/absorbing-four-zero/RESEARCH-NOTE.txt",
+      "formalization/absorbing-four-zero/verification.json",
+      "formalization/absorbing-four-zero/prior-art.json",
+      "formalization/lift-label-elimination/RESEARCH-NOTE.txt",
+      "formalization/lift-label-elimination/verification.json",
+      "formalization/lift-label-elimination/prior-art.json"
     ],
     "gate": null,
-    "completed": false,
-    "research_status": "open_or_unresolved_in_recorded_sources; present status not exhaustively established",
+    "completed": true,
+    "research_status": "completed_recorded_incidence_corrected_count_and_spectral_obstruction_scope",
     "family": "quantum_code_combinatorics",
-    "rationale": "Finite Tanner-graph objects are accessible; spectral/Fourier identities and induced-subgraph correction terms add substantial proof work.",
-    "first_milestone": "Check the proposed condition or absorbing-set count on a small explicit lifted code.",
-    "research_obstacle": 3,
+    "rationale": "For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.",
+    "first_milestone": "Recorded target completed. Any new parameter-only optimization or decoder question requires a separately bounded follow-up.",
+    "research_obstacle": null,
     "statement_setup": {
-      "tier": 3,
-      "band": "2–6 expert person-weeks"
+      "tier": 0,
+      "band": "complete"
     },
     "proof_transfer_given_correct_complete_proof": {
-      "tier": 3,
-      "band": "1–4 expert person-months"
-    }
+      "tier": 0,
+      "band": "complete"
+    },
+    "progress_note": "For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer. Project-derived follow-up: fixed-base lift labels and [[140q,18,6]] family are answered with formal/written/finite scope separated in formalization/lift-label-elimination/RESEARCH-NOTE.txt. No new author-posed target, difficulty estimate or coverage increment. Subsequent Lean transfer: every manuscript proof now has a checked Lean version, including the all-q mixed-Pauli distance theorem; see formalization/lift-label-elimination/proof-coverage.json.",
+    "progress_artifact": "formalization/absorbing-four-zero/README.txt"
   },
   {
     "target_id": "L-F19-distance",
@@ -8138,6 +8152,120 @@
     "completed": false,
     "research_status": "planning_not_yet_assessed",
     "family": "cyclic_lift_graphs",
+    "rationale": "Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.",
+    "first_milestone": "Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "title": "For fixed t and k, prove that all generators on at most m blocks form a minimal generating set for m-line configurations in general t-(v,k,lambda) designs.",
+    "eligible_for_coverage": true,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "target_id": "L-F27-generator-basis",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F27",
+        "locator": "Conjecture4.1 and following regular-graph special-case proposal, p351/PDF11",
+        "extracted_text_lines": [
+          377,
+          382
+        ],
+        "url": "https://doi.org/10.1006/jcta.2001.3185",
+        "source_sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+        "relation": "explicit_conjecture"
+      }
+    ],
+    "basis": "New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending.",
+    "background_evidence": [
+      "literature/RESEARCH-RECONCILIATION.md",
+      "formalization/absorbing-four-zero/BEEZER-REVIEW.txt"
+    ],
+    "gate": "Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "design_configuration_generators",
+    "rationale": "Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.",
+    "first_milestone": "Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "title": "Determine minimum-order designs of fixed generator girth and investigate their structure.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "target_id": "L-F27-minimal-girth-designs",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F27",
+        "locator": "Section7, Definition7.1 and design-cage direction, pp356–357/PDF16–17",
+        "extracted_text_lines": [
+          617,
+          635
+        ],
+        "url": "https://doi.org/10.1006/jcta.2001.3185",
+        "source_sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+        "relation": "explicit_research_direction"
+      }
+    ],
+    "basis": "New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending.",
+    "background_evidence": [
+      "literature/RESEARCH-RECONCILIATION.md",
+      "formalization/absorbing-four-zero/BEEZER-REVIEW.txt"
+    ],
+    "gate": "Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "design_configuration_generators",
+    "rationale": "Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.",
+    "first_milestone": "Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "title": "Extend the configuration equations and classification of constant configurations to larger numbers of blocks.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "target_id": "L-F27-constant-configurations",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F27",
+        "locator": "Section6 concluding paragraph, p355/PDF15",
+        "extracted_text_lines": [
+          549,
+          575
+        ],
+        "url": "https://doi.org/10.1006/jcta.2001.3185",
+        "source_sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+        "relation": "explicit_research_direction"
+      }
+    ],
+    "basis": "New Beezer final-journal source target; exact current-resolution, Lean discovery and difficulty assessment pending.",
+    "background_evidence": [
+      "literature/RESEARCH-RECONCILIATION.md",
+      "formalization/absorbing-four-zero/BEEZER-REVIEW.txt"
+    ],
+    "gate": "Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "design_configuration_generators",
     "rationale": "Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.",
     "first_milestone": "Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.",
     "research_obstacle": null,

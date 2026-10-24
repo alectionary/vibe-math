@@ -11,7 +11,8 @@ audit=load('browser-search-review.json')
 rows={r['id']:r for r in load('open-problems.json')}
 manifest={m['paper_id']:m for m in load('downstream-source-manifest.json')}
 assert set(audit['baseline']['canonical_ids']).isdisjoint(audit['added_target_ids'])
-later=set(load('research-reconciliation.json')['added_target_ids'])
+reconciliation=load('research-reconciliation.json')
+later=set(reconciliation['added_target_ids'])|{i for e in reconciliation.get('indexing_extensions',[]) for i in e['added_target_ids']}
 assert (set(audit['baseline']['canonical_ids'])|set(audit['added_target_ids'])).isdisjoint(later)
 assert set(audit['baseline']['canonical_ids'])|set(audit['added_target_ids'])|later==set(rows)
 assert len(audit['added_paper_ids'])==6

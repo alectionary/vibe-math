@@ -1,0 +1,24 @@
+./PaschRootEnergy.lean:15:0: warning: automatically included section variable(s) unused in theorem `PaschRootEnergy.outside_degreeInto`:
+  [Fintype V]
+  [Fintype C]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype C] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PaschRootEnergy.lean:34:0: warning: automatically included section variable(s) unused in theorem `PaschRootEnergy.proper_common_outside_one`:
+  [Fintype C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PaschRootEnergy.lean:84:17: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [he, hz]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'PaschRootEnergy.proper_common_outside_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaschRootEnergy.energy_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaschRootEnergy.local_energy_identity' depends on axioms: [propext, Classical.choice, Quot.sound]

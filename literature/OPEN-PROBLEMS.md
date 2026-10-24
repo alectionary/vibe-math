@@ -1,33 +1,33 @@
 # Expanded open-problem inventory
 
-Checked October 23, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **187 canonical entries**: the original 40 dissertation targets and **147 additional article entries**. Of the additions, **72 are specific mathematical questions or tasks suitable for coverage tracking**; the other 75 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **190 canonical entries**: the original 40 dissertation targets and **150 additional article entries**. Of the additions, **73 are specific mathematical questions or tasks suitable for coverage tracking**; the other 77 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [21 indexed research sources](RESEARCH-SOURCES.md). It adds six source-posed questions/directions from two already identified papers; their current-resolution and Lean searches are unassessed. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the expanded cohort has 3/111. This is denominator growth, not a loss of verified work.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [56 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 4/112 after completion of the existing F16 target. The separate Beezer screen adds one eligible target.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 72 |
-| Additional directions/formulation/method entries outside the denominator | 75 |
-| Combined eligible targets | 111 = 39 + 72 |
-| Eligible targets with an identified, verified proof-assistant statement | 3/111 (2.70%) |
-| Eligible targets with an identified, verified Lean statement | 3/111 (2.70%) |
-| Eligible targets with a complete checked Lean proof | 3/111 (2.70%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/111 |
-| Eligible targets with checked finite cases, without a complete proof | 0/111 |
-| Additional identified Lean statements without a build audit | 1/111 |
-| Eligible targets with Lean discovery still unassessed in this extension | 3/111 |
-| Articles/preprints in scope | 60 |
-| Full-text sources screened, including withdrawn history | 57/60 |
-| Current-publication full texts screened | 56 |
+| Additional article targets in the coverage denominator | 73 |
+| Additional directions/formulation/method entries outside the denominator | 77 |
+| Combined eligible targets | 112 = 39 + 73 |
+| Eligible targets with an identified, verified proof-assistant statement | 4/112 (3.57%) |
+| Eligible targets with an identified, verified Lean statement | 4/112 (3.57%) |
+| Eligible targets with a complete checked Lean proof | 4/112 (3.57%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/112 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/112 |
+| Additional identified Lean statements without a build audit | 1/112 |
+| Eligible targets with Lean discovery still unassessed in this extension | 4/112 |
+| Articles/preprints in scope | 61 |
+| Full-text sources screened, including withdrawn history | 58/61 |
+| Current-publication full texts screened | 57 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 3/60 |
+| Not fully assessed | 3/61 |
 
-**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), and the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight and L-P11-forbidden now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
+**Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
 The historical Leray–Hopf uniqueness entry is held: later primary literature reports nonuniqueness, and the source’s domain/forcing/solution class must be fixed before a current comparison. Its entry links the later report. A related public Lean repository concerns forced smooth breakdown, not weak uniqueness; it was not built here.
 
@@ -111,6 +111,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F24](https://arxiv.org/html/2606.18236v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
 | [F25](https://arxiv.org/html/2503.07567v1) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
 | [F26](https://arxiv.org/html/2604.27817v3) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
+| [F27](https://doi.org/10.1006/jcta.2001.3185) | current publication full text screened | 3 | Full final17-page journal read. One conjecture and two broad directions indexed; historical Erdos question is resolved and is not added as currently open. Regular-graph subcase shares the conjecture ID. |
 
 ## Reproducible evidence and limits
 
@@ -1887,12 +1888,147 @@ Derive explicit (4,2) and (4,0) elementary absorbing-set counts in the stated QC
 
 - Type: classification or construction; written formulation: precise math in source.
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
-- Proof-assistant statement: not systematically searched beyond lean. Lean statement: no exact statement identified. Lean proof: no exact proof identified.
-- Source-described status: open as stated in source; current resolution: not independently established.
-- Scope comparison: Our cyclic single-input LP degree-three structural proofs do not resolve this distinct QC-GHP/GB Fourier-count or spectral-bound target.
+- Proof-assistant statement: verified lean statement. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
+- Source-described status: open as stated in source; current resolution: proved in lean for incidence corrected counts and spectral only obstruction.
+- Verified artifact: [AbsorbingFourCounts.explicit_cubic_cyclic_four_counts](../formalization/absorbing-four-zero/README.txt); For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer..
+- Scope comparison: For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.
 - Research sources: [central source index](RESEARCH-SOURCES.md).
+- Historical first-block snapshot (2026-10-23). Its standard-complex gap was closed by the follow-up below; the dated report and manifest are preserved. Historical snapshot: its unaddressed (4,0) component and Beezer access limit are updated by the subsequent (4,0) block; original files remain frozen.
+- Research progress: [Incidence-corrected (4,2) formula and obstruction to M_j-only counts](../formalization/absorbing-four-two/RESEARCH-NOTE.txt) (general lean incidence cyclic and finite character fourier with written complex specialization and exact cases). The (4,2) component has an exact incidence-corrected general counting theorem with checked general Lean incidence, cyclic and finite-character Fourier proofs (the standard complex-exponential/norm specialization remains written). Identical M_j do not determine this count: matched connected [[168,6]] QC-GHP examples have 49 versus 35. The counts (including their source/literal index transfer), Gram and evaluated-frequency obstruction, modular completion model, and CSS commutation have checked Lean proofs; ranks and connectedness remain exact external computations. A smaller generalized-bicycle pair on 48 qubits with k=4 has equal scalar M_j but counts 192 versus 72; its shifted-reflection frequency identity is Lean checked, with exact independent subset counts. The companion (4,0) task is unaddressed, so the combined canonical target is not a complete Lean target. No earlier full-target answer was found in the recorded bounded search; priority remains unestablished.
+  - [Complete Lean source](../formalization/absorbing-four-two/FourColumnClassification.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/GlobalCounting.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/OrderedRoots.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/PairEnergy.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/PairFormulaCore.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/FourCompletions.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/PairRootBridge.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/CyclicNormalization.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/FiniteFourier.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/SocketFourier.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/SocketIncidence.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/CyclicFourierCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/GramCounterexample12.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/FanoBlock.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/ProjectionObstruction.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/QuantumConstruction.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/HGPIncidence.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/HGPPatterns.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/HGPCounts.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/HGPGramObstruction.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/HGPCSS.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/HGPSpectral.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/SocketCompletion.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/CompletionBridge.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/IncidenceEquivalence.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/QuantumReindex.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/GBReflection.lean).
+-  Historical snapshot: its unaddressed (4,0) component and Beezer access limit are updated by the subsequent (4,0) block; original files remain frozen.
+- Research progress: [Standard complex-character bridge and classical literature reconciliation](../formalization/absorbing-four-two/followup-complex/RESEARCH-UPDATE.txt) (general lean standard complex fourier and concrete source matrix bridge with classical hypothesis audit). The (4,2) component now has general Lean proofs of the incidence correction, cyclic normalization and literal standard-complex Fourier formula, including character injectivity, exponent sign, ordinary rectangular matrix-vector multiplication and Euclidean norm. The hypotheses are column degree three and no four-cycles, for every positive lift size, including even/composite sizes and N=1. The actual 168-column source/literal matrices and complex evaluated M_j are connected to the same sockets: equal full M_j give counts 49 versus 35. Concrete ranks/connectivity retain their exact external-computation status. The complete STS special case was already counted in 1995, and modular shared-cycle avoidance and general ETS enumeration are prior work. Named inaccessible final/full texts remain unresolved comparisons, so priority is unestablished. The general (4,0) component is outside this block; the combined canonical target remains partial.
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ClassicalConfiguration.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ClassicalDecomposability.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexCharacter.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexDFT.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexCyclicCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexMatrixCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexRootFormula.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexConsumer.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexQuantumSockets.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexQuantumWitness.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/ComplexQuantumFormula.lean).
+  - [Complete Lean source](../formalization/absorbing-four-two/followup-complex/AbsorbingComplex.lean).
+- Research progress: [Pasch/kernel translation, classical counting baseline and cyclic root-energy (4,0) follow-up](../formalization/absorbing-four-zero/RESEARCH-NOTE.txt) (general lean complete recorded counts and concrete source counterexample). For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschAbsorbingBridge.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschBeezerBridge.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschClassification.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschComplexCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschConsumers.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschCyclicCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschDesignData.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschGlobalCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschHGPCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschKernelCount.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschQuantumBridge.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschQuantumWitness40.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschReindex40.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschRootClassification.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschRootEnergy.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschSTS13.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschSTS13Counts.lean).
+  - [Complete Lean source](../formalization/absorbing-four-zero/PaschCubicTrade.lean).
+- Research progress: [Project-derived lift-label elimination, exact fixed-base assignment counts and CSS family](../formalization/lift-label-elimination/RESEARCH-NOTE.txt) (every manuscript proof has checked Lean version and independent exact finite checks). General voltage-cycle elimination is classical. Exact all-N raw-label and slice histograms, physical incidence/counting bridges, integer-certificate soundness, full scalar-right counts and the [[140q,18,6]] family for every q>=2 now have checked Lean versions for every manuscript proof. The all-declaration axiom audit and independent exact q2 checks are recorded. No priority, decoder-performance, general gauge-orbit or canonical coverage increment is claimed.
+  - [Complete Lean source](../formalization/lift-label-elimination/BinaryDistance.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/BinarySupportEquiv.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/ConcreteElimination.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/CountRepresentatives.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/CoverCounting.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/CycleData.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/CycleKernelBridge.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/CyclicCSSCommute.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/CyclicRecurrence.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/EventHistogram.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FamilyGraphs.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FamilyLogical.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FamilyPauliDistance.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FamilyRank.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FamilyTheorem.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FanoCarryCertificate.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FanoObstruction.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FiniteEventArithmetic.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FinitePaschRepresentatives.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/FullGraphCounts.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/GraphMatrices.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/HistogramPolynomials.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/IntegerKernel.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/JointCertificates.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/JointCycleData.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/JointElimination.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/JointLabelCount.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/KernelFourBridge.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/LabelEncoding.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/LabelHistograms.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/LiteralLabelCounts.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/LogicalWitness.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/NormalFormCount.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/OrientedKernel.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/PaschLiftCriterion.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/PaschLiftProjection.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/PaschReindex.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/PaschVoltage.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/PositiveLabelCounts.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/QCRegularity.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/QCSectorElimination.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/QCSupportCount.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/RankFromKernel.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/ScalarIncidence.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/ScalarTranspose.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/ScalarWeight.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/SparseCSS.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/SparseCSSMatrices.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/SparseRowDegrees.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/SparseTranspose.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StarCertificates.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StarCheckKernel.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StarDuality.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StarElimination.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StarKernelCertificate.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StarVoltageData.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/StructuredKernel.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/SumCounting.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/SupportVoltageCount.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleGaugeCertificates0.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleGaugeCertificates1.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleGaugeCertificates2.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleGaugeCertificates3.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleRawCertificates0.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleRawCertificates1.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleRawCertificates2.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleRawCertificates3.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/TriangleVoltageData.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/UnorderedSections.lean).
+  - [Complete Lean source](../formalization/lift-label-elimination/VoltageQCIncidence.lean).
 - [F16: Section 6](https://arxiv.org/html/2607.13666v1); extraction lines 472–473; explicit question.
 - Related, not merged: L-P09-structured, L-P34-decoding-effects.
+- Related formalization: [https://github.com/pefch-k/lean-coding-theory-macwilliams-identity/tree/8848ddeeff36408d9b6f13f229a82d568c006424](https://github.com/pefch-k/lean-coding-theory-macwilliams-identity/tree/8848ddeeff36408d9b6f13f229a82d568c006424). Related binary MacWilliams weight-enumerator theorem found in a two-file public Lean source tree. Both files statically inspected; not built/axiom-audited here. No absorbing/Pasch/cyclic-source translation in that tree. See formalization/absorbing-four-zero/social-prior-art.json for exact scope.
 
 ### L-F19-distance
 
@@ -2160,3 +2296,34 @@ Extend repair/decoder comparisons and replicated statistics across multiple lift
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F26: Section 7 limitations and Section 8](https://arxiv.org/html/2604.27817v3); extraction lines 5358–5380; explicit future work target.
 - Related, not merged: L-P34-decoding-effects.
+
+### L-F27-generator-basis
+
+For fixed t and k, prove that all generators on at most m blocks form a minimal generating set for m-line configurations in general t-(v,k,lambda) designs.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Precise source conjecture; current resolution and matching Lean discovery not yet assessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F27: Conjecture4.1 and following regular-graph special-case proposal, p351/PDF11](https://doi.org/10.1006/jcta.2001.3185); extraction lines 377–382; explicit conjecture.
+- Later evidence: [Heinlein–Ostergard2022 Section2.2,Theorem7 and proof](https://onlinelibrary.wiley.com/doi/full/10.1002/jcd.21839). Restricted later progress: minimality of full-configuration counts for complete Steiner triple systems through eight lines, via a rank180 computation on623STS25. Not an all-t,k,m solution; exact current-resolution and Lean discovery for the full conjecture remain unassessed.
+
+### L-F27-minimal-girth-designs
+
+Determine minimum-order designs of fixed generator girth and investigate their structure.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad source direction requiring a bounded parameterized target; excluded from the theorem denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F27: Section7, Definition7.1 and design-cage direction, pp356–357/PDF16–17](https://doi.org/10.1006/jcta.2001.3185); extraction lines 617–635; explicit research direction.
+
+### L-F27-constant-configurations
+
+Extend the configuration equations and classification of constant configurations to larger numbers of blocks.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad source direction requiring a bounded parameterized target; excluded from the theorem denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F27: Section6 concluding paragraph, p355/PDF15](https://doi.org/10.1006/jcta.2001.3185); extraction lines 549–575; explicit research direction.

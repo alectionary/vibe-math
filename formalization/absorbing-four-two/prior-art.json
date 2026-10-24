@@ -1,0 +1,277 @@
+{
+  "checked_on": "2026-10-23",
+  "canonical_target_id": "L-F16-other-absorbing",
+  "component": "elementary (4,2) counts; companion (4,0) target not attempted",
+  "conclusion": "No earlier complete answer to the full inspected QC-GHP corrected counting target was identified in this bounded search. Mathematical novelty, method novelty, and formalization priority remain unestablished.",
+  "existing_results": [
+    {
+      "source": "formalization/cyclic-lifts/CyclicStructure.lean",
+      "comparison": "Girth-eight cubic classification gives only (4,4) on four variables, so the requested (4,2) count is zero in the old scope."
+    },
+    {
+      "source": "formalization/cyclic-lifts/CyclicDecoding.lean",
+      "comparison": "no_four_two_error_bound concerns two-error syndrome weight, not (4,2) absorbing-set enumeration."
+    }
+  ],
+  "sources": [
+    {
+      "id": "AbiadCastriota2026",
+      "title": "Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes",
+      "authors": [
+        "Aida Abiad",
+        "Nichola Castriota"
+      ],
+      "url": "https://arxiv.org/html/2607.13666v1",
+      "date_or_version": "arXiv:2607.13666v1, July 15, 2026",
+      "access": "relevant_primary_sections_and_proofs_inspected",
+      "locator": "Section 4, especially Remark 4.18; Section 6",
+      "relationship": "Poses the deferred (4,2)/(4,0) counting task. The new formula retains actual incidences; the equal-M_j counterexample obstructs an M_j-only answer to the (4,2) component.",
+      "comparison_limit": "The joint canonical (4,2)/(4,0) target is only partially addressed. General incidence, cyclic and finite-character Fourier identities are Lean checked. The standard complex-exponential/norm specialization remains written; concrete linear-algebra/connectivity properties are exact finite computations."
+    },
+    {
+      "id": "DolecekEtAl2010",
+      "title": "Analysis of Absorbing Sets and Fully Absorbing Sets of Array-Based LDPC Codes",
+      "authors": [
+        "Lara Dolecek",
+        "Zhengya Zhang",
+        "Venkat Anantharam",
+        "Martin J. Wainwright",
+        "Borivoje Nikolic"
+      ],
+      "url": "https://people.eecs.berkeley.edu/~bora/Journals/2010/IT-10.pdf",
+      "date_or_version": "IEEE Transactions on Information Theory 56(1), 181–201, January 2010",
+      "access": "relevant_primary_statements_and_proofs_inspected",
+      "locator": "Section III-C, Lemma 4, printed pp. 187–188 (PDF pp. 7–8)",
+      "relationship": "Classical diamond/two-triangle structure and exact special-family (4,2) fully absorbing counts; credited ingredients.",
+      "comparison_limit": "The exponent r*c array family and its special extension multiplicity do not establish the full sparse/two-block polynomial QC-GHP formula. Absorbing and fully absorbing conventions must be kept separate."
+    },
+    {
+      "id": "WangDolecekWesel2012",
+      "title": "The Cycle Consistency Matrix Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes",
+      "authors": [
+        "Jiadong Wang",
+        "Lara Dolecek",
+        "Richard Wesel"
+      ],
+      "url": "https://arxiv.org/html/1208.6094v2",
+      "date_or_version": "arXiv:1208.6094v2, December 5, 2012; journal publication 2013",
+      "access": "relevant_primary_statements_and_proofs_inspected",
+      "locator": "Theorem 1; Section VI, (4,2) CCM and multiplicity",
+      "relationship": "Classical cycle/check/bit consistency method and explicit (4,2) normal graph.",
+      "comparison_limit": "Separable-circulant mother/daughter hypotheses, plus non-extensibility in sufficiency, are not a universal incidence-corrected QC-GHP Fourier formula. In a column-weight-three SCB mother/daughter with three retained row groups, each variable has one check in each group. The fixed B^T block in our witness contains a seven-check Fano subsystem whose check co-occurrence graph is K7, so it cannot admit such a three-group partition, even after row/column relabeling."
+    },
+    {
+      "id": "KarimiBanihashemi2013",
+      "title": "On Characterization of Elementary Trapping Sets of Variable-Regular LDPC Codes",
+      "authors": [
+        "Mehdi Karimi",
+        "Amir H. Banihashemi"
+      ],
+      "url": "https://arxiv.org/html/1308.1259v1",
+      "date_or_version": "arXiv:1308.1259v1, August 6, 2013",
+      "access": "relevant_primary_sections_inspected",
+      "locator": "Section III, normal graphs; Sections IV and V-B1",
+      "relationship": "Normal graph dictionary and cycle expansion enumeration are classical predecessors.",
+      "comparison_limit": "A normal graph of an already elementary set does not identify all induced diamonds of the unrestricted global variable projection with elementary sets. General enumeration is already known."
+    },
+    {
+      "id": "HashemiBanihashemi2015",
+      "title": "New Characterization and Efficient Exhaustive Search Algorithm for Elementary Trapping Sets of Variable-Regular LDPC Codes",
+      "authors": [
+        "Yoones Hashemi",
+        "Amir H. Banihashemi"
+      ],
+      "url": "https://arxiv.org/html/1510.04954v1",
+      "date_or_version": "arXiv:1510.04954v1, October 16, 2015",
+      "access": "relevant_primary_sections_inspected",
+      "locator": "Dot/path/lollipop characterization and exhaustive search construction",
+      "relationship": "General exact ETS enumeration predates this work; expanded-graph enumeration alone is not a new solution method.",
+      "comparison_limit": "Does not supply the inspected small-matrix M_j-only QC-GHP count; no claim that the new rooted count is a first exact algorithm."
+    },
+    {
+      "id": "LaendnerMilenkovicHuber2010",
+      "title": "Characterization of Small Trapping Sets in LDPC Codes from Steiner Triple Systems",
+      "authors": [
+        "Stefan Laendner",
+        "Olgica Milenkovic",
+        "Johannes B. Huber"
+      ],
+      "url": "https://publica.fraunhofer.de/entities/publication/888e2ff4-57e9-467a-a9c6-c7db59f38de4",
+      "date_or_version": "ISTC 2010; DOI 10.1109/ISTC.2010.5613812",
+      "access": "institutional_abstract_only_full_text_unavailable",
+      "locator": "Institutional abstract; IEEE full-text route met robot/access challenge",
+      "relationship": "Direct classical STS/trapping-set lead relevant to Pasch configurations and count translations.",
+      "comparison_limit": "Full theorem/proof comparison incomplete; must not claim this lead fails to imply any proposed identity.",
+      "additional_primary_urls": [
+        "https://experts.illinois.edu/en/publications/characterization-of-small-trapping-sets-in-ldpc-codes-from-steine/"
+      ]
+    },
+    {
+      "id": "JiangEtAl2026WidthWall",
+      "title": "The WidthWall: A Strict Expressivity Hierarchy for Hypergraph Neural Networks",
+      "authors": [
+        "Fengqing Jiang",
+        "Yuetai Li",
+        "Yichen Feng",
+        "Kaiyuan Zheng",
+        "Luyao Niu",
+        "Bhaskar Ramasubramanian",
+        "Basel Alomair",
+        "Linda Bushnell",
+        "Radha Poovendran"
+      ],
+      "url": "https://arxiv.org/html/2605.13690v1",
+      "date_or_version": "arXiv:2605.13690v1, May 13, 2026",
+      "access": "relevant_primary_appendix_inspected",
+      "locator": "Appendix F.1, explicit STS(13) pair and Pasch trade",
+      "relationship": "Existing example has identical pair coverage but 13 versus 8 Pasch configurations. Credit for the information-loss idea and this initial example.",
+      "comparison_limit": "The reduced square cubic 12x12 bases and matched [[168,6]] QC-GHP examples were generated separately. No novelty claim for pairwise projections losing higher-order incidence data."
+    },
+    {
+      "id": "BattaglioniEtAl2023",
+      "title": "Optimizing quasi-cyclic spatially coupled LDPC codes by eliminating harmful objects",
+      "authors": [
+        "Massimo Battaglioni",
+        "Franco Chiaraluce",
+        "Marco Baldi",
+        "Michele Pacenti",
+        "David G. M. Mitchell"
+      ],
+      "url": "https://doi.org/10.1186/s13638-023-02273-0",
+      "date_or_version": "EURASIP Journal on Wireless Communications and Networking 2023, article 67, July 25, 2023",
+      "access": "relevant_primary_sections_inspected",
+      "locator": "Sections 1.2, 2.1 and 3, especially the declared trapping-set enumeration method",
+      "relationship": "QC protograph/exponent enumeration and optimization of (4,2) objects are established techniques.",
+      "comparison_limit": "Uses the prior exhaustive ETS algorithm for trapping-set counts and excludes blocks of circulant weight greater than one (Section 2.1); no inspected full target Fourier formula or equal-M_j obstruction."
+    },
+    {
+      "id": "RaeisiGholami2024",
+      "title": "On a class of column-weight 3 decomposable LDPC codes with the analysis of elementary trapping sets",
+      "authors": [
+        "G. Raeisi",
+        "M. Gholami"
+      ],
+      "url": "https://ietresearch.onlinelibrary.wiley.com/doi/pdf/10.1049/cmu2.12762",
+      "date_or_version": "IET Communications 18(9), 583–596; first published April 22, 2024",
+      "access": "relevant_full_primary_pdf_sections_and_proofs_inspected",
+      "locator": "Definition of decomposability (p586); Section5 pp590–592, Proposition5.5, Theorem3 and proof, Algorithm1, Table5; QC-lift setup Section6",
+      "relationship": "Classical decomposable-code normal-graph characterization and shape enumeration, including the unique elementary (4,2) shape.",
+      "comparison_limit": "Three check groups are required, each variable having one check in each. The Fano block in our witness precludes this hypothesis. Algorithm1 enumerates non-isomorphic normal-graph shapes; it is not the inspected incidence-corrected count of embedded sets from arbitrary QC-GHP sockets or a formula in M_j. No matching general corrected Fourier formula identified in the inspected sections."
+    },
+    {
+      "id": "MorrisPllahaKelleyAbsorbing",
+      "title": "Absorbing Sets in Quantum LDPC Codes",
+      "authors": [
+        "Kirsten D. Morris",
+        "Tefjol Pllaha",
+        "Christine A. Kelley"
+      ],
+      "url": "https://arxiv.org/html/2307.14532v2",
+      "date_or_version": "First preprint July 26, 2023; inspected v2 May 10, 2024; journal early access March 3, 2026",
+      "access": "relevant_full_preprint_sections_and_journal_metadata_inspected",
+      "locator": "Definition 5; Section V-C, Remark 4 and Example 20; Section VI",
+      "relationship": "Source strict-majority definition and prior propagation of base absorbing sets into ordinary hypergraph products. Constant-label witnesses here are ordinary HGPs, so replication of their base configurations is a classical ingredient, not claimed as a new construction principle.",
+      "comparison_limit": "The inspected text gives base-matrix characterization/propagation and examples, not an explicit incidence-corrected Fourier formula for nonconstant QC-GHP labels or an M_j-only count. The 2026 journal full text is subscription restricted, so the exact inspected mathematical version is v2 (2024)."
+    },
+    {
+      "id": "RaveendranVasic2021",
+      "title": "Trapping Sets of Quantum LDPC Codes",
+      "authors": [
+        "Nithin Raveendran",
+        "Bane Vasić"
+      ],
+      "url": "https://arxiv.org/html/2012.15297v2",
+      "date_or_version": "arXiv v2 October 7, 2021; Quantum 5, 562, October 14, 2021",
+      "access": "relevant_primary_sections_and_examples_inspected",
+      "locator": "Sections3.1–3.2; Section4.2, Example3, Tables1–2",
+      "relationship": "Prior quantum trapping-set search, constituent-to-HGP replication, and explicit (4,2) enumeration in a 900-qubit example; not claimed as new here.",
+      "comparison_limit": "Table2 gives 720 elementary (4,2) configurations in one HP example using classical search machinery. The inspected sections do not give our full nonconstant-QC-GHP corrected socket/Fourier formula or equal-M_j obstruction. Harmfulness is decoder dependent; our incidence count does not assert a decoder failure rate."
+    },
+    {
+      "id": "AbuSurraEtAl2010",
+      "title": "Trapping Set Enumerators for Specific LDPC Codes",
+      "authors": [
+        "Shadi Abu-Surra",
+        "David DeClercq",
+        "Dariush Divsalar",
+        "William E. Ryan"
+      ],
+      "url": "https://perso.etis-lab.fr/declercq/PDF/ConferencePapers/Shadi_2010_ITA.pdf",
+      "date_or_version": "Information Theory and Applications Workshop, 2010; author-hosted five-page paper",
+      "access": "relevant_primary_algorithm_and_examples_inspected",
+      "locator": "SectionII graph transformation H-tilde=[H|I] and customized impulse algorithm; SectionsIII–IV and tables",
+      "relationship": "Earlier general finite-code trapping-set enumerator and concrete (4,2) counts, including QC examples.",
+      "comparison_limit": "The graph transformation tracks general odd-check counts without imposing elementarity or absorption. Its practical codeword enumeration is explicitly approximate. It is not an inspected exact construction-only corrected Fourier formula, and no priority is claimed for finite-code enumeration."
+    },
+    {
+      "id": "DehghanBanihashemiCospectral2019",
+      "title": "Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles",
+      "authors": [
+        "Ali Dehghan",
+        "Amir H. Banihashemi"
+      ],
+      "url": "https://arxiv.org/html/1905.13228v1",
+      "date_or_version": "arXiv v1 May31,2019; Graphs and Combinatorics35,1673–1693(2019)",
+      "access": "relevant_primary_introduction_theorem_and_conclusion_inspected",
+      "locator": "Introduction; SectionIII Theorem2 and degree-preserving switching discussion; SectionVI concluding remarks",
+      "relationship": "Classical limitations of spectral/degree data for Tanner cycle counts and proposed study of trapping-set changes under cospectral switching.",
+      "comparison_limit": "SectionVI proposes studying trapping-set distributions under switching. The inspected paper proves cycle-count obstructions, not our elementary (4,2) count at equal full frequency matrices in a QC-GHP/CSS family. Spectral information-loss as a general theme is classical, not claimed as new."
+    },
+    {
+      "id": "RabetiMahdavifarUB2026",
+      "title": "Univariate Bicycle Quantum LDPC Codes: Explicit Logical Structure and Distance Bounds",
+      "authors": [
+        "Sheida Rabeti",
+        "Hessam Mahdavifar"
+      ],
+      "url": "https://arxiv.org/html/2605.14173v1",
+      "date_or_version": "arXiv v1 May13,2026",
+      "access": "relevant_primary_construction_sections_inspected",
+      "locator": "SectionsII-B andIII, Proposition1, defining equations2–3 and Lemma2; targeted text search for absorbing/(4,2)",
+      "relationship": "Prior Frobenius-coupled GB/UB construction b=a^(2^ell). The 48-qubit pair uses a and its square with a one-sided reciprocal, so this is construction background, not a new code-family claim.",
+      "comparison_limit": "Their convention is HX=[A|B], whereas the source here uses HX=[A|B^T]; the reciprocal/shift must be accounted for before comparing. Inspected construction sections and targeted text search did not identify a (4,2) incidence/Fourier enumeration or equal-M_j obstruction. No distance theorem from this source is asserted for our witnesses."
+    }
+  ],
+  "search_scope": {
+    "queries": [
+      "source title, arXiv id, author pair and downstream (4,2)/(4,0) work",
+      "QC-GHP / lifted product / generalized hypergraph product absorbing set counts",
+      "classical (4,2) absorbing sets, pairs of six-cycles, cycle consistency matrices",
+      "LDPC common-neighbor diamond counts, Fourier/Gram/cospectral trapping sets",
+      "Steiner triple systems, Pasch trades, equal pair coverage",
+      "exact corrected formula vocabulary after deriving the incidence-energy identity",
+      "Late independent check: LDPC (4,2) count matrix / absorbing sets diamond / trapping sets common neighbors / absorbing sets Gram; inspected author-hosted 2010 enumerator and the existing 2021 QTS source Section4.2.",
+      "After GB reversal witness: bicycle absorbing transpose / trapping sets homometric / LDPC same spectrum trapping; inspected Dehghan–Banihashemi2019 primary SectionsIII/VI.",
+      "Late exact-polynomial/48-qubit bicycle search found UB Frobenius construction background; inspected primary SectionsII-B/III, with transpose conventions kept explicit."
+    ],
+    "backward_routes": [
+      "F16 references 27, 44, 48 and its normal-graph discussion",
+      "normal graph/LSS/dpl papers and STS lead"
+    ],
+    "forward_routes": [
+      "source title/id and authors searched again after derivation",
+      "Google Scholar and Semantic Scholar links attempted; access failed",
+      "newer QC spatially coupled optimization paper inspected for the count it actually uses",
+      "Author pair and exact arXiv id searched again after the main result; no additional matching downstream paper identified by those indexed queries. This is not a complete author-bibliography audit."
+    ],
+    "access_limits": [
+      "Laendner et al. full text unavailable",
+      "Google Scholar and Semantic Scholar citation requests failed",
+      "search indexing and negative results do not establish priority",
+      "Morris–Pllaha–Kelley 2026 journal full text subscription restricted; relevant full preprint v2 (2024) inspected instead"
+    ],
+    "publication_authorized": false
+  },
+  "late_access_checks": [
+    {
+      "checked_utc": "2026-10-24T02:53:00Z",
+      "scope": "Retried primary publisher full text for Raeisi–Gholami 2024; fetched search excerpts and citation metadata, full page again timed out. Searched exact STS title plus author routes; institutional abstract and author CV available, full STS paper still unavailable.",
+      "effect": "No new full-text comparison; access gaps and unestablished priority retained."
+    },
+    {
+      "checked_utc": "2026-10-24T02:55:00Z",
+      "scope": "Publisher PDF route for Raeisi–Gholami succeeded. Read decomposability definition and Section5 including Theorem3/proof, Algorithm1, Table5 and QC setup.",
+      "effect": "Closed this full-text gap; retained classical shape-enumeration credit and distinguished the three-check-group hypothesis from our Fano-block witnesses."
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+WHY THE COMPLEX FORMULA COUNTS THE REQUIRED SUPPORTS
+
+This is an explanatory companion to the checked theorem interfaces in
+SOURCE-MAP.txt. All graphs below are finite binary incidences: a variable v
+has three distinct check neighbors H(v), and two distinct variables share at
+most one check. The latter condition is precisely absence of Tanner four-cycles.
+
+1. THE LOCAL COUNT
+
+Fix an ordered adjacent pair (u,v). Let W consist of the other variables w
+that share a check with each of u,v, while no check belongs to all of u,v,w.
+With the hypotheses above, the three pairwise shared checks are distinct.
+Thus u,v,w form a genuine six-cycle. Ordinary common neighbors in the
+variable projection would also include triples meeting at one check; W
+explicitly removes those false completions.
+
+Put t=|W| and k_c=|{w in W : c in H(w)}|. The incidence energy is
+
+  E(W) = sum_c k_c^2.
+
+Expanding the squares counts ordered pairs (w,z), weighted by the number of
+their shared checks. Diagonal pairs contribute 3t. Every adjacent off-diagonal
+pair contributes one, and every nonadjacent pair contributes zero. Consequently
+
+  # ordered distinct nonadjacent pairs in W = t^2+2t-E(W).
+
+This is PairEnergy.missing_pair_energy_identity, written over natural numbers
+as a positive equality to avoid subtraction truncation.
+
+2. WHY THE DIVISOR IS FOUR
+
+An ordered nonadjacent pair w,z in W gives an elementary (4,2) support
+{u,v,w,z}. Its variable projection is a diamond: the central vertices u,v
+have degree three, and w,z have degree two. The proper-completion and
+nonadjacency requirements prevent check identifications that would destroy
+elementarity. Conversely every elementary (4,2) support has exactly this
+shape under cubicity and absence of four-cycles, and is absorbing.
+
+The central edge is unique. There are two orders of its endpoints and two
+orders of the remaining vertices. Summing the preceding local count over
+all ordered central pairs therefore counts each support exactly four times.
+This is PairRootBridge.rootPairSum_eq_four_count42, using the checked
+four-column classification and root equivalences from the first block.
+
+3. WHY CYCLIC NORMALIZATION CONTRIBUTES N
+
+For socket data S_p subset R x Z/N, variables are (p,a), checks are (r,b),
+and (p,a) has check (r,a+e) for each (r,e) in S_p. Simultaneous translation
+is an incidence automorphism. Every ordered central pair is uniquely a
+translate of ((p,0),(q,d)); the translating element is the first variable's
+coordinate. Its orbit therefore has exactly N elements.
+
+This argument concerns ordered roots. It does not assume that the translation
+action on unordered four-variable supports is free. Supports with a nontrivial
+period do not invalidate the N factor, including for composite N. The
+normalization theorem in CyclicNormalization.lean counts these roots directly.
+
+4. WHY THE FOURIER ENERGY HAS A 1/N FACTOR
+
+Let f_p(a) be the indicator that (p,a) belongs to W. Then k_r(b), the number
+of its incident W variables, is the finite convolution
+
+  k_r(b) = sum_p sum_(r,e in S_p) f_p(b-e).
+
+Use psi(a)=exp(2*pi*i*a.val/N), omega=exp(2*pi*i/N), and the unnormalized
+negative-exponent transform f_hat_p(j)=sum_a psi(-j*a) f_p(a). The shift
+convention above gives
+
+  k_hat_r(j) = sum_p D_j[r,p] f_hat_p(j),
+  D_j[r,p]  = sum_(r,e in S_p) psi(-j*e).
+
+The standard character is faithful for every positive N. Its exact finite
+orthogonality identity gives unnormalized Parseval:
+
+  sum_j ||D_j f_hat(j)||_2^2 = N sum_(r,b) k_r(b)^2 = N E(W).
+
+No primality assumption, numerical approximation, or formal substitute for
+the complex exponential is used. ComplexDFT.lean also checks the ordinary
+integer-power expression psi(-j*a)=omega^(-j.val*a.val), including modular
+wraparound; ComplexMatrixCount.lean checks the ordinary Euclidean norm.
+
+5. THE RESULT AND ITS INFORMATION REQUIREMENT
+
+Combining the four-root multiplicity, N translates per normalized root, and
+Parseval gives
+
+  N42(H) = (N/4) sum_(normalized central roots)
+             [t^2+2t - (1/N) sum_j ||D_j f_hat(j)||_2^2].
+
+The sum is zero for nonadjacent or identical proposed central endpoints.
+The theorem is AbsorbingFourier.complex_root_count_formula. The indicator
+and the full rectangular matrix both remain in the statement: f_hat depends
+on the proper common-neighbor set determined by the actual incidence.
+
+For the actual 168-column witnesses, the same sockets give D_j=[A | beta_j I]
+with beta_j=1+omega^j+omega^(3j). Positive exponents here come from the
+transposed right binary block. The source/literal incidence equivalences,
+counts 49 and 35, and equality of all their full complex D_j D_j* are checked
+in the new modules. Thus even the full evaluated Gram matrices cannot by
+themselves replace the incidence information in this formula.
+
+This explanation makes no efficiency or historical-priority claim. Classical
+STS counts, shared-cycle detection, and expanded-graph enumeration have
+the predecessors and access limits recorded in literature-followup.json.
+
+6. AN INDEPENDENT CONSISTENCY REDUCTION TO THE CLASSICAL STS COUNT
+
+Here is a written specialization of the root argument, not an additional Lean
+theorem. Its resulting formula is attributed to Grannell-Griggs-Mendelsohn
+(1995), https://grannell.net/Papers/smallbasis.pdf, Section 2, C14. The purpose
+is to check that the general incidence correction agrees with that prior result.
+
+Let points be checks and the blocks of a complete STS(v) be variables. For an
+ordered intersecting block pair write u={c,a,b}, v={c,d,e}. The five displayed
+points are distinct. Each of the four cross pairs (a,d), (a,e), (b,d), (b,e)
+lies in exactly one block. Those four blocks are exactly W. They are distinct,
+and their third points lie outside {c,a,b,d,e}, by uniqueness of pair coverage.
+Write them as
+
+  w11={a,d,x11}, w12={a,e,x12},
+  w21={b,d,x21}, w22={b,e,x22}.
+
+Four unordered pairs among these blocks already share a displayed point.
+The only possible missing pairs are the two diagonals. Define delta1 to be
+one when x11=x22, and delta2 to be one when x12=x21, zero otherwise. Each
+diagonal equality makes a Pasch configuration together with u,v. Hence
+
+  t=4, E(W)=20+2(delta1+delta2),
+  # ordered missing pairs = 4-2(delta1+delta2).
+
+Each point belongs to r=(v-1)/2 blocks. Thus there are v*r*(r-1) ordered
+intersecting block pairs. Every Pasch has four blocks, any ordered pair of
+which can serve as u,v; the remaining pair contributes exactly one of the
+two deltas. Summing delta1+delta2 therefore gives 12P, where P is the number
+of unordered Pasch supports. Summing the local identity and dividing by four
+gives
+
+  N42 = v*r*(r-1)-6P = v(v-1)(v-3)/4-6P.
+
+The crucial extra premise is complete pair coverage, used to produce all four
+cross-pair blocks. A partial triple system need not contain them; W can have
+different sizes. Thus this specialization verifies agreement with the classical
+answer without replacing the general socket theorem by an STS-only formula.
+The finite consumer report also checks the intermediate root counts for the
+four inspected classical systems. None of this establishes new priority.

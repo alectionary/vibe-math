@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "python": "3.12.14",
+  "records": [
+    {
+      "command": [
+        "python3",
+        "verify_certificates.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.13887904098373838,
+      "stdout_sha256": "10f2dda75b0c3f526cc27c183a6f4949c1a963f3489595346faba38cf1617efb"
+    },
+    {
+      "command": [
+        "python3",
+        "verify_family_ingredients.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.031015582993859425,
+      "stdout_sha256": "89ea41d2c2ae50639373479ba8f216888f5e7d2000480cfcbad54e548c5485f7"
+    },
+    {
+      "command": [
+        "python3",
+        "validate_results.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.029295125015778467,
+      "stdout_sha256": "d86b53a920f463c7ee7ab615e0d1b516f5c03b0f2bb61552e79d4d81f4f07f3c"
+    },
+    {
+      "command": [
+        "python3",
+        "check_generators.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3035361660004128,
+      "stdout_sha256": "3b56a51d395679b9a4f0ca55bd93a53c4a02b7ed0f883cec03c91c0b962aaba8"
+    },
+    {
+      "command": [
+        "c++",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.12359366699820384,
+      "stdout_sha256": "4e8a77bcb032deb6591b0db384ff9808d01d9030f00e2d877394df88a12a2536"
+    },
+    {
+      "command": [
+        "c++",
+        "-O3",
+        "-UNDEBUG",
+        "-std=c++17",
+        "exhaustive.cpp",
+        "-o",
+        "<temporary-executable>"
+      ],
+      "exit_code": 0,
+      "seconds": 0.821266667015152,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "exhaustive"
+      ],
+      "exit_code": 0,
+      "seconds": 0.6241388749913312,
+      "stdout_sha256": "74993c955d5a555bc1de975438872462a1ba7b216db5bb27e5a4e58967a0cb78"
+    },
+    {
+      "command": [
+        "c++",
+        "-O3",
+        "-UNDEBUG",
+        "-std=c++17",
+        "verify_quantum.cpp",
+        "-o",
+        "<temporary-executable>"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4651486670190934,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "verify_quantum"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5672223749861587,
+      "stdout_sha256": "2e0797784f6e39a05999b1f0e36c662fc052127b07b03b3a8dd9d08607a92b60"
+    }
+  ],
+  "frozen_payload_checked": true,
+  "frozen_payload_preserved": true,
+  "finished_utc": "2026-10-24T19:01:44.677129+00:00"
+}

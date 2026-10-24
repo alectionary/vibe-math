@@ -1,0 +1,1 @@
+The direct single-expression root-mass proof was stopped after240seconds. The same true counts were later kernel-checked through separate row certificates. This historical failed execution is not an imported proof module.

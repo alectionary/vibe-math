@@ -1,0 +1,255 @@
+A STRONGER (3,6)-REGULAR COUNTEREXAMPLE, CHECKED IN THE SAME BLOCK
+
+PaschCubicTrade.lean provides two actual140-variable,70-check QC-GHP models
+with column degree3, check degree6 and no Tanner four-cycles. Their full complex
+M_j matrices agree at every frequency, but their (4,0) counts are77 and105.
+This removes the check-degree9 limitation of the earlier273-variable witness.
+The273-variable182/147case remains as a second checked consumer.
+
+The smaller pair uses the elementary Pasch trade extended by six triples.
+Label the six edges of K4 by0,...,5. On these labels take either the four
+stars or the four triangles, and append {edge-label,6+endpoint1,6+endpoint2}
+for every edge. Both incidence systems are cubic/linear with the same integer
+point Gram. The first has one Pasch; the second has five. The generic HGP
+formula gives7*1+10*7=77 and7*5+10*7=105 after the cyclic Fano lift.
+
+The construction K_X+_mu H is classical: Prażmowska–Prażmowski2016,
+Section3 following Propositions3.2–3.3 (the relevant statements/proofs were read):
+https://doi.org/10.1007/s00373-016-1681-3
+No novelty is claimed for these10_3configurations or their Pasch trade/counts.
+The checked deliverable is the exact source-incidence/evaluated-matrix bridge.
+
+Independent C++ enumeration tested all15,329,615four-subsets of each140-column
+model. Direct binary-kernel and induced degree0/2 counts both agree77/105.
+See cubic-trade-counts.json, independent-quad140-counts.jsonl and the explicit
+source140-columns.json data.
+
+THE (4,0) COUNT: DEFINITIONS, CLASSICAL ANSWER AND CYCLIC FORMULA
+
+Target: the (4,0) half of the existing combined source task
+L-F16-other-absorbing. This is a follow-up, not a new Beezer conjecture.
+Source: Abiad–Castriota, arXiv:2607.13666v1, 15 July2026, Remark4.18
+and the final bullet of Section6. The source proposes induced K4 counts
+accessible through the same spectral data. The correction below uses actual
+check incidence and full rectangular Fourier matrices; M_j alone is insufficient.
+
+1. Objects and conventions
+
+H is a finite binary check-by-variable incidence matrix. Write H(v) for the
+set of checks incident with variable v. Assume every H(v) has size three and
+|H(u) intersect H(v)|<=1 for distinct u,v. The second assumption is precisely
+absence of Tanner four-cycles. No completeness, check regularity, connectedness,
+prime lift size or quantum-distance assumption is used in the generic formula.
+
+A support is an unordered four-element set of distinct variables. Its selected
+check degree is the number of those variables incident with that check. It is
+an elementary (4,0) support when every selected check degree is 0 or2. It is
+automatically absorbing: every variable has three even checks and zero odd
+checks. We count supports, not isomorphic shapes or ordered embeddings.
+
+2. The decisive classical translation
+
+A support is in ker_F2 H iff all its selected check degrees are even. With
+four variables, the only possible obstruction to elementarity is a check c
+of degree four. If such c exists, any other check d belonging to one selected
+variable must also belong to another selected variable, by parity. That pair
+would share c and d, contradicting the no-four-cycle assumption. Consequently
+that selected variable could have only c, contradicting its degree three.
+Thus even parity already forces elementarity. Conversely elementarity with
+zero odd checks implies zero binary syndrome immediately.
+
+Therefore N40(H)=A4(ker_F2 H), the ordinary binary weight-four coefficient.
+This is classical codeword/even-configuration mathematics. Fujiwara2014,
+Section3 p37, explicitly identifies the even four-triple configuration as
+Pasch in Steiner designs. The argument above needs only a linear partial
+triple system, not a complete design. The new artifact proves this implication
+and the equality of actual matrix/support counts in Lean; no mathematical
+priority for the elementary translation is claimed.
+
+All six variable pairs have distinct check incidences. Each variable has
+three degree-two checks, so its normal degree is three; hence the normal
+simple graph is K4. Projected K4 alone is insufficient: four cubic columns
+{0,1,2},{0,3,4},{0,5,6},{0,7,8} project to K4 through one degree-four check
+and contain no (4,0) support. The artifact includes this boundary certificate.
+
+A binary kernel word here can be a stabilizer in a quantum code. N40 is not
+a count of nontrivial logical operators and does not by itself determine
+quantum minimum distance or decoding performance.
+
+3. MacWilliams already gives a full-incidence count
+
+Let n be the number of variables and m the number of check rows. For each
+binary check-message y in F2^m set w(y)=wt(y^T H). Then
+
+  N40(H)=2^(-m) sum_y sum_{j=0}^4 (-1)^j C(w(y),j) C(n-w(y),4-j).       (MW)
+
+Binomial coefficients outside their natural ranges are zero. This is the
+weight-four coefficient of the classical MacWilliams transform, credited to
+MacWilliams1963. The precise binary identity was checked in Lomonaco2006,
+Theorem1; the original1963full proof was not retrieved. (MW) remains valid
+with dependent check rows: y maps onto the row code with equally sized fibers,
+so averaging over all messages equals averaging uniformly over the row code.
+
+Here is a direct proof of the exact needed specialization. For a four-set S,
+its zero-syndrome indicator is 2^(-m) sum_y (-1)^(y dot sum_{v in S}h_v),
+by binary character orthogonality. Sum over S and interchange the finite sums.
+For fixed y, choosing j variables having y dot h_v=1 and4-j having0 gives
+the inner binomial expression in (MW). This proof identifies the actual input
+needed; it does not assume that a dual weight distribution is free information.
+
+Equivalently let s(y)=sum_v (-1)^(y dot h_v)=n-2w(y). Distinct columns imply
+
+  24 N40(H)=2^(-m) sum_y s(y)^4 -3n^2+2n.                              (M4)
+
+To check the diagonal corrections, expand the fourth power over ordered
+four-tuples. All-distinct tuples contribute24N40. Four equal indices
+contribute n, and two unequal pairs contribute6*C(n,2)=3n(n-1). Three-plus-
+one and two-plus-one-plus-one tuples have nonzero binary sum because columns
+are distinct. Hence the repeated-index contribution is3n^2-2n, as in(M4).
+
+These are complete conventional counts from full binary incidence. They can
+be exponential in m if implemented by all check messages. They are not low-
+dimensional formulas from the physical cyclic matrices M_j. Binary syndrome-
+space Fourier analysis and physical Z/N Fourier analysis use different groups.
+The classical identity does not make M_j sufficient.
+
+A standard meet-in-the-middle alternative is much cheaper. For each binary
+syndrome s let m_s be the number of unordered distinct column pairs whose XOR
+is s. Then
+
+  N40(H)=(1/3) sum_s C(m_s,2).                                        (XOR)
+
+Any two different pairs with equal XOR are disjoint: if they shared a variable,
+the remaining two columns would be equal. Conversely a zero four-set has
+exactly three perfect matchings, each producing one equal-XOR collision.
+Cubic/no-four-cycle columns are distinct, so all hypotheses hold. The formula
+uses O(n^2) pairs and exact syndrome hashing. This is a standard coding/counting
+method, not a claim of a new counting algorithm or first enumeration.
+
+4. Root-energy identity
+
+Take an ordered adjacent root pair (u,v). Let W(u,v) consist of variables w
+distinct from both roots that share a check with each root, but do not belong
+to a common check of u and v. These are proper six-cycle third variables.
+Let t=|W|, B=H(u) union H(v), and k_c=|{w in W:c in H(w)}|. Put
+
+  E=sum_c k_c^2,        F=sum_{c in B} k_c^2.
+
+Every w has one check shared with u and another shared with v. Those two checks
+are distinct, because w shares no check of the root pair; there cannot be a
+second check shared with either root, by no-four-cycles. Cubicity leaves exactly
+one check outside B. Thus E-F counts ordered pairs (w,z) sharing an outside
+check, including t diagonal pairs. Consequently
+
+  E-F-t=number of ordered distinct outer pairs sharing an outside check. (L)
+
+Such w,z cannot occupy the same socket at either root: they would share that
+root socket and their outside check, producing a four-cycle. Their six pair
+checks therefore form a Pasch with u,v. Conversely any ordered Pasch gives
+this root/outer-pair structure. Every support has4!=24 such orderings. Hence
+
+  24 N40(H)=sum_{ordered adjacent (u,v)} (E(u,v)-F(u,v)-t(u,v)).         (R)
+
+The positive identity24N40+sum(F+t)=sum E avoids truncated natural subtraction.
+It is important to remove F: counting arbitrary adjacent outer pairs also counts
+ones sharing root checks and therefore does not count only genuine Pasches.
+The generic Lean modules prove the local equivalence, all 24 orderings, the
+bijections to actual four-supports, and the global positive energy identity.
+
+5. Physical cyclic normalization and ordinary complex matrices
+
+Let the incidence be a cyclic lift on variable types p and check types r over
+G=Z/N, N>0. A socket (r,s) at type p means that (p,a) is incident with(r,a+s).
+Normalize roots to (p,0),(q,d). Translating ordered roots is free, so the total
+root sum is N times its normalized sum. No free-action hypothesis on unordered
+four-supports is assumed or needed.
+
+Define omega=exp(2*pi*i/N),
+
+  D_j(r,p)=sum_{(r,s) in sockets(p)} omega^(-j*s),
+  b_hat_W(j,p)=sum_a 1_W(p,a) omega^(-j*a).
+
+The prior frozen standard-complex bridge proves that D_j b_hat_W is the actual
+transformed incidence action, with the same negative-exponent convention and
+the ordinary Euclidean norm. Unnormalized Parseval gives
+
+  E(u,v)=(1/N) sum_j ||D_j b_hat_W(j)||^2.
+
+Thus the explicit corrected formula is
+
+  N40 = (N/24) sum_{normalized adjacent roots}
+           [(1/N)sum_j ||D_j b_hat_W(j)||^2 -F(u,v)-t(u,v)].           (C40)
+
+For comparison, the preserved (4,2) formula is
+
+  N42 = (N/4) sum_{normalized adjacent roots}
+           [t(u,v)^2+2t(u,v) -(1/N)sum_j ||D_j b_hat_W(j)||^2].        (C42)
+
+They are two components of the same source question. Neither is an answer to
+Beezer Conjecture4.1. Formula(C40) is proved in PaschComplexCount using the
+preserved complex bridge and the new actual-support/root count. Its signature
+allows every positive N, including1 and even/composite N. It uses actual full
+rectangular D_j and incidence-defined W and F, not only D_jD_j*.
+
+6. The source family and the M_j obstruction
+
+Use the previously credited STS(13) Pasch trade (Jiang et al., arXiv2605.13690v1,
+AppendixF.1, as recorded in our first block). Its two13-by26incidence matrices
+A and A' are cubic, check-regular of degree6 and linear. Both integer point-Gram
+matrices have diagonal6 and off-diagonal1, yet their Pasch counts are13 and8.
+No new trade discovery is claimed.
+
+Take B(x)=1+x+x^3 over the cyclic group of order7 and the actual source matrix
+
+  HX=[A tensor I7 | I13 tensor B^T].
+
+There are273 variables and91 checks. Its columns have degree3; its check degrees
+are9; it has no Tanner four-cycles. The Fano transpose factor has7 Pasches.
+Every Pasch in an ordinary HGP lies entirely in one factor fiber: any mixed
+left/right root has no proper six-cycle third variable, and all pairs in a
+Pasch must complete proper six-cycles. This gives the exact identity
+
+  N40(HGP(A,B))=|D|N40(A)+|C|N40(B).
+
+Therefore the two source counts are7*13+13*7=182 and7*8+13*7=147.
+At every complex frequency, D_j=[A | beta_j I13] and
+M_j=A A^T+|beta_j|^2 I13, with the same beta_j=1+omega^j+omega^(3j).
+Consequently their full evaluated M_j matrices agree at every frequency;
+not merely their eigenvalues or traces. A function of all M_j alone cannot
+give both distinct counts. No quantitative claim of rarity or decoding effect
+follows from this example.
+
+The file verification.json states which parts of this source consumer are
+kernel-checked Lean proofs and which remain exact computations or written
+bridges. An independent C++ definition-based oracle enumerated all226,387,980
+four-subsets in each273-column case, agreeing with the separate pair-XOR and
+root-energy implementations on182 and147. No floating-point comparison was
+used to establish Gram equality or these counts.
+
+7. Literature verdict and exact limits
+
+Beezer2001 is now fully read in its final journal form. Theorem5.1 expresses
+non-generators in terms of generator counts. Pasch is itself a generator at
+both t=1 and t=2, so its count remains an input. The complete-STS four-line
+basis of Grannell–Griggs–Mendelsohn1995 similarly does not determine that input.
+MacWilliams, however, supplies the general full-incidence answer after the
+classical even-configuration translation. The useful research contribution of
+this block is the explicit source translation/correction and checked artifact,
+not a claim that general weight-four counting was previously unknown.
+
+Three earlier final/full-text comparisons remain inaccessible in the retained
+ledger. Those limit priority conclusions, not the validity of the proofs above.
+No claim of first-ever mathematical or formalization priority is made. The
+newly inventoried Beezer questions have unassessed current-resolution and Lean
+status; a historical conjecture label is not a certificate that it remains open.
+
+CLASSICAL DATA IDENTIFICATION
+Both10_3bases were matched, by explicit checked incidence relabellings, to
+Krčadinac's public data accompanying Abreu–Funk–Krčadinac–Labbate,
+Strongly regular configurations,arXiv2104.04880v2(2021),laterDCC90(2022).
+https://arxiv.org/abs/2104.04880v2
+https://web.math.pmf.unizg.hr/~krcko/results/srconf/10-3-3-4.txt
+The star base matches dataset item2; the triangle base matches item1.
+See classical-cubic-comparison.json for the explicit maps and exact-data hash.
+The preprint introduction and relevant Section3 passages were read; the full
+2022journal revision was not compared. No novelty for the base examples is claimed.

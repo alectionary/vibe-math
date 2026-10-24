@@ -1,0 +1,34 @@
+./SparseCSSMatrices.lean:15:0: warning: automatically included section variable(s) unused in theorem `SparseCSSMatrices.transpose_translation`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./SparseCSSMatrices.lean:33:0: warning: automatically included section variable(s) unused in theorem `SparseCSSMatrices.transpose_cover`:
+  [Fintype C]
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./SparseCSSMatrices.lean:63:0: warning: automatically included section variable(s) unused in theorem `SparseCSSMatrices.x_adjoint`:
+  [Fintype V]
+  [Fintype C]
+  [DecidableEq V]
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype C] [DecidableEq V] [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./SparseCSSMatrices.lean:69:44: warning: This simp argument is unused:
+  eq_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [checksX, fromCols, CyclicCSSCommute.scalar, translation, SparseCSS.adjoint, SparseCSS.shift,
+    Matrix.transpose_apply, sub_eq_add_neg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SparseCSSMatrices.transpose_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SparseCSSMatrices.css_commutes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SparseCSSMatrices.x_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SparseCSSMatrices.z_swapped_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound]

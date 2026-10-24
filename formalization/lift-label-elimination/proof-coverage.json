@@ -1,0 +1,143 @@
+{
+  "scope": "Every proof in the manuscript; auxiliary independent computations are checks of finite instances, not replacements for these theorems.",
+  "status": "every_manuscript_proof_has_checked_Lean_version",
+  "proofs": [
+    {
+      "paper_label": "lem:projection",
+      "claims": [
+        "Cubic and linear actual cyclic cover",
+        "Injective projection of every lifted four-column dependency"
+      ],
+      "lean": [
+        "PaschLiftProjection.cubic",
+        "PaschLiftProjection.linear",
+        "PaschLiftProjection.zero_syndrome_projects"
+      ]
+    },
+    {
+      "paper_label": "thm:voltage",
+      "claims": [
+        "Actual incidence compatibility and balance equivalence",
+        "N offsets for each balanced base Pasch",
+        "Exact global unordered count without ordering multiplicity"
+      ],
+      "files": [
+        "PaschLiftCriterion.lean",
+        "SupportVoltageCount.lean",
+        "CountRepresentatives.lean",
+        "ConcreteElimination.lean"
+      ]
+    },
+    {
+      "paper_label": "lem:integer",
+      "claims": [
+        "Integer unit-normal-form certificates transport actual kernels over every ZMod N",
+        "Unit diagonal gives exactly N^(n-r) solutions"
+      ],
+      "files": [
+        "IntegerKernel.lean",
+        "NormalFormCount.lean"
+      ],
+      "certificate_indexes": [
+        "normal-form-index.json",
+        "joint-normal-form-index.json"
+      ]
+    },
+    {
+      "paper_label": "thm:hist",
+      "claims": [
+        "Complete literal star/triangle base Pasch lists and edge encodings",
+        "All subset matrix certificates and physical-event bridges",
+        "All six histogram bins for every N, including composite N",
+        "Actual cover elimination counts and positive counts for N>=2; N=1 boundary"
+      ],
+      "files": [
+        "StarVoltageData.lean",
+        "TriangleVoltageData.lean",
+        "LabelEncoding.lean",
+        "CycleKernelBridge.lean",
+        "EventHistogram.lean",
+        "HistogramPolynomials.lean",
+        "LabelHistograms.lean",
+        "LiteralLabelCounts.lean",
+        "ConcreteElimination.lean",
+        "PositiveLabelCounts.lean"
+      ]
+    },
+    {
+      "paper_label": "prop:joint",
+      "claims": [
+        "Complete dual star Pasch list and physical event bridge",
+        "Rank-six joint event certificate and simultaneous actual cover elimination count"
+      ],
+      "files": [
+        "JointCycleData.lean",
+        "JointLabelCount.lean",
+        "JointElimination.lean"
+      ]
+    },
+    {
+      "paper_label": "thm:full",
+      "claims": [
+        "No mixed-sector four-column dependency",
+        "Exact unordered partition and scalar check-type fiber count",
+        "Both scalar orientations at N=7 have seven supports; full graph count at least70"
+      ],
+      "files": [
+        "VoltageQCIncidence.lean",
+        "QCSectorElimination.lean",
+        "SumCounting.lean",
+        "QCSupportCount.lean",
+        "ScalarTranspose.lean",
+        "FanoObstruction.lean",
+        "FullGraphCounts.lean"
+      ]
+    },
+    {
+      "paper_label": "thm:family",
+      "claims": [
+        "Literal binary X and Z matrices commute",
+        "Scalar recurrence has eight solutions, every nonzero scalar kernel word weight4q",
+        "Original/dual cover elimination, full column3,row6,linearity",
+        "Actual rank10N-9 and CSS dimension18 for every q>=2 including even q",
+        "Explicit weight-six nontrivial logical with separating witness",
+        "Every nontrivial mixed Pauli logical has weight at least6",
+        "Actual unordered support counts in both full graphs equal zero"
+      ],
+      "files": [
+        "CyclicRecurrence.lean",
+        "ScalarWeight.lean",
+        "ScalarIncidence.lean",
+        "ScalarTranspose.lean",
+        "StarElimination.lean",
+        "StarDuality.lean",
+        "CyclicCSSCommute.lean",
+        "SparseCSSMatrices.lean",
+        "GraphMatrices.lean",
+        "FamilyRank.lean",
+        "FamilyGraphs.lean",
+        "SparseRowDegrees.lean",
+        "FamilyLogical.lean",
+        "FamilyPauliDistance.lean",
+        "FamilyTheorem.lean"
+      ]
+    }
+  ],
+  "alternate_proof_routes": "The paper uses a recurrence proof of scalar kernels and quantum ranks, and a separating orthogonal witness for logical nontriviality. Earlier exploratory polynomial/carry derivations prove the same claims but are not additional manuscript proofs. Slice counts are counted directly; no general gauge-orbit theorem is asserted.",
+  "independent_finite_checks": "The q=2 theorem is a specialization of the all-q Lean family. C++ exhaustive enumeration and Python consumers are independently implemented checks; their software algorithms are not claimed formally verified.",
+  "certificate_sources": "The ten root certificate batches compile all141 unchanged generated fragments; certificate-assembly.json records the mapping.",
+  "all_declaration_audit": {
+    "passed": true,
+    "all_named_authored_declarations_audited": true,
+    "module_count": 70,
+    "declaration_count": 1755,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "audit_source_sha256": "ca2e6b616cac32f5e32a3a6f426ba5baeb850ff4dbc9882ca960c04183b283af",
+    "audit_log_sha256": "6a7df8b7d2d728d49110193e33b8069b5f920e158b1fb88c1b0427a00c1a505c",
+    "declarations_sha256": "72efbe871cc3f9a96e08d2c2cdd634fd8a5973ce39b7b9a1b28dc85206edaa2f"
+  }
+}

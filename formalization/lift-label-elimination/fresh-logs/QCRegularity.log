@@ -1,0 +1,36 @@
+./QCRegularity.lean:9:0: warning: automatically included section variable(s) unused in theorem `QCRegularity.cubic`:
+  [DecidableEq E]
+  [Fintype U]
+  [Fintype E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq E] [Fintype U] [Fintype E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./QCRegularity.lean:14:27: warning: This simp argument is unused:
+  Finset.card_product
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [columns, hdB]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./QCRegularity.lean:16:0: warning: automatically included section variable(s) unused in theorem `QCRegularity.mixed_linear`:
+  [DecidableEq E]
+  [Fintype U]
+  [Fintype E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq E] [Fintype U] [Fintype E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./QCRegularity.lean:31:0: warning: automatically included section variable(s) unused in theorem `QCRegularity.right_linear`:
+  [DecidableEq U]
+  [DecidableEq E]
+  [Fintype U]
+  [Fintype C]
+  [Fintype E]
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq U] [DecidableEq E] [Fintype U] [Fintype C] [Fintype E] [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'QCRegularity.cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QCRegularity.linear' depends on axioms: [propext, Classical.choice, Quot.sound]

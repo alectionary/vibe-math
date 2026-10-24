@@ -1,0 +1,137 @@
+A STRONGER (3,6)-REGULAR COUNTEREXAMPLE, CHECKED IN THE SAME BLOCK
+
+PaschCubicTrade.lean provides two actual140-variable,70-check QC-GHP models
+with column degree3, check degree6 and no Tanner four-cycles. Their full complex
+M_j matrices agree at every frequency, but their (4,0) counts are77 and105.
+This removes the check-degree9 limitation of the earlier273-variable witness.
+The273-variable182/147case remains as a second checked consumer.
+
+The smaller pair uses the elementary Pasch trade extended by six triples.
+Label the six edges of K4 by0,...,5. On these labels take either the four
+stars or the four triangles, and append {edge-label,6+endpoint1,6+endpoint2}
+for every edge. Both incidence systems are cubic/linear with the same integer
+point Gram. The first has one Pasch; the second has five. The generic HGP
+formula gives7*1+10*7=77 and7*5+10*7=105 after the cyclic Fano lift.
+
+The construction K_X+_mu H is classical: Prażmowska–Prażmowski2016,
+Section3 following Propositions3.2–3.3 (the relevant statements/proofs were read):
+https://doi.org/10.1007/s00373-016-1681-3
+No novelty is claimed for these10_3configurations or their Pasch trade/counts.
+The checked deliverable is the exact source-incidence/evaluated-matrix bridge.
+
+Independent C++ enumeration tested all15,329,615four-subsets of each140-column
+model. Direct binary-kernel and induced degree0/2 counts both agree77/105.
+See cubic-trade-counts.json, independent-quad140-counts.jsonl and the explicit
+source140-columns.json data.
+
+PRIMARY SOURCE AND PROOF MAP
+
+Question source: Abiad–Castriota arXiv2607.13666v1 (2026-07-15).
+https://arxiv.org/html/2607.13666v1
+Remark4.18, Section6 final bullet: (4,2)/(4,0) via projected diamonds/K4 and
+same spectral data. Raw HTML SHA256:
+c00d34d6ade246053469f686906cb29fb020a34096942d2042d1cd60a5b44606.
+The exact Section6 was reread; source spectral-only proposal is refuted here.
+
+Classical comparison: Beezer, Counting Configurations in Designs, JCTA96(2)
+(2001),341–357. https://doi.org/10.1006/jcta.2001.3185
+Final17-page PDF fully read; hash in beezer-acquisition.json. Final numbering:
+Def3.1/Thm3.1 p348; Cor3.1 p349; Conj4.1 p351; Thm5.1 pp352–354;
+Sections6–7 pp355–357. Its generator reduction does not determine Pasch count.
+Our BEEZER-REVIEW.txt and BEEZER-QUESTIONS.csv index three source targets.
+
+Classical transform: MacWilliams, Bell System Technical Journal42(1)(1963),
+79–94. https://doi.org/10.1002/j.1538-7305.1963.tb04003.x
+Publisher abstract/bibliography read. Precise binary identity checked in the
+complete3-page Lomonaco2006 instructor handout, Theorem1:
+https://userpages.cs.umbc.edu/lomonaco/f06/653/handouts/MacWilliams-Pless-Identities.pdf
+Original1963full proof not retrieved. Direct specialization proved in writing.
+
+Even configurations: Fujiwara, RIMS Kokyuroku1889(2014),32–41, Section3 p37:
+https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1889-05.pdf
+Relevant full-text definitions/Proposition3.8/following Pasch paragraph and
+references read. Explicit classical codeword/even-configuration relationship.
+
+Later Beezer special case: Heinlein–Ostergard2022, Section2.2/Theorem7:
+https://onlinelibrary.wiley.com/doi/full/10.1002/jcd.21839
+The complete-STS minimality case through 8 lines is verified by a rank 180
+computation on 623 STS(25)s; not an all-t,k,m answer. Complete-STS exact Pasch
+listing/counting algorithms are classical; our method is not an algorithm-
+priority or optimal-complexity claim for complete Steiner designs.
+
+Historical Erdos question: Kwan–Sah–Sawhney–Simkin, Annals200(3)(2024),1059–1156:
+https://annals.math.princeton.edu/2024/200-3/p04
+Publisher metadata and author preprint first3pages definitions/Theorem1.1
+read. Resolves the density-girth existence question. It does not identify
+Beezer's generator-girth minimum-order designs.
+
+Previously credited STS13 data: Jiang et al arXiv2605.13690v1 AppendixF.1,
+as preserved in the first-block ledger. The two STS13 and their13/8 Pasch
+counts are classical; an additional indexed primary exposition is Pavone2023,
+https://doi.org/10.26493/2590-9770.1564.2b8 . Its institutional indexed Section2
+was read, while the attempted full institutional file returned403.
+
+GENERAL LEAN PROOFS
+PaschClassification: zero syndrome implies elementary Pasch; local absorbing.
+PaschKernelCount: actual binary matrix/support indicator and count equality.
+PaschAbsorbingBridge: literal global majority and zero odd-check count.
+PaschRootEnergy: outside-check degree one; positive local energy identity.
+PaschRootClassification: actual root condition iff zero syndrome.
+PaschGlobalCount: ordered embeddings/supports bijections; factor24; global count.
+PaschCyclicCount: translation, cyclic normalization and root correction.
+PaschComplexCount: standard complex rectangular-matrix/norm/count formula.
+PaschHGPCount: pure-factor-fiber product count, generic finite factors.
+PaschReindex40: count preservation under variable/check equivalences.
+PaschQuantumBridge: rectangular-base source incidence/evaluated-matrix bridge.
+PaschBeezerBridge: actual zero-syndrome configuration is a Beezer generator
+for both t=1 and t=2; no use of Beezer's unproved conjecture.
+AbsorbingFourCounts: both recorded formulas in one general theorem.
+
+CONCRETE LEAN CONSUMERS
+PaschConsumers: one Pasch, projected false K4, Fano count and binary kernel.
+PaschSTS13: actual26columns of each prior STS13 trade, cubicity/linearity/Gram.
+PaschSTS13Counts: independent per-row root certificates;13/8base counts and
+182/147product counts, through the generic product theorem.
+PaschDesignData: STS point-Gram values, row degree9 and full binary Gram equality.
+PaschQuantumWitness40: actual273-variable sockets/counts, full complex M_j
+identity, impossibility theorem, specialized formulas, kernel counts and CSS.
+
+PRESERVED DEPENDENCIES
+prior/ contains the previous complex bridge and first-block source payloads
+verbatim. It supplies30 base and12 complex checked modules. Unchecked historical
+candidates remain labeled as such and are not imported. verification.json and
+fresh-recheck.json specify the exact checked dependency closure.
+
+REMAINING ACCESS COMPARISONS
+Laendner–Milenkovic–Huber2010 specific full text;
+Morris–Pllaha–Kelley2026 final journal text beyond its public introduction;
+Amirzade–Sadeghi–Panario2024 expanded journal beyond the public2020preprint.
+Prior routes/limits are retained in prior-art.json. Beezer2001 is now closed.
+No first-ever priority follows from the negative bounded search.
+
+X AND GITHUB PRIOR-ART EXTENSION (October24)
+
+Direct X Latest searches and public GitHub repository/indexed searches were
+completed. The exact queries, visible-result limits and source comparisons are
+in social-prior-art.json. A public Lean binary MacWilliams theorem was found:
+https://github.com/pefch-k/lean-coding-theory-macwilliams-identity
+Both Lean files were read at pinned commit8848ddeeff36408d9b6f13f229a82d568c006424.
+They contain no sorry/admit/custom-axiom/native_decide tokens, but were not built
+or axiom-audited here. This is relevant pre-existing formalized background; it
+does not contain the absorbing/Pasch/cyclic-source bridge in its two-file tree.
+A separate GitHub finite Pasch-count report was also read; its code link returned
+404 and its reported computation is not independently certified here.
+No matching independent proof was identified in the bounded X results; our own
+earlier announcement was excluded as independent prior art. These searches do
+not establish global absence or priority.
+
+CLASSICAL DATA IDENTIFICATION
+Both10_3bases were matched, by explicit checked incidence relabellings, to
+Krčadinac's public data accompanying Abreu–Funk–Krčadinac–Labbate,
+Strongly regular configurations,arXiv2104.04880v2(2021),laterDCC90(2022).
+https://arxiv.org/abs/2104.04880v2
+https://web.math.pmf.unizg.hr/~krcko/results/srconf/10-3-3-4.txt
+The star base matches dataset item2; the triangle base matches item1.
+See classical-cubic-comparison.json for the explicit maps and exact-data hash.
+The preprint introduction and relevant Section3 passages were read; the full
+2022journal revision was not compared. No novelty for the base examples is claimed.

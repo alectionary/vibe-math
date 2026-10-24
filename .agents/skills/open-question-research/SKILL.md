@@ -47,7 +47,12 @@ task; it is a working record, not a reason to create empty files or a new taxono
   those translations as well as the source's words. Follow references backward,
   citations forward, and the authors' and coauthors' downstream work. Scholar or
   similar indexes and author repositories are useful discovery routes; record
-  their actual coverage and access failures. Use additional channels when requested.
+  their actual coverage and access failures. Include public GitHub repositories/code
+  and accessible X.com research posts in the prior-art audit, as well as classical
+  literature. Record exact queries, authentication/access limitations, result caps,
+  inspected matches and dates. Test search filters with a known-positive sanity
+  query; discard negative results from unsupported or ineffective qualifiers.
+  Absence from a bounded or capped search is not evidence of global absence.
 - Read candidate theorem statements, hypotheses, relevant proofs and errata.
   Compare the **full target**, including earlier general theorems that imply it;
   checking component lemmas alone is insufficient. Justify translations instead
@@ -134,14 +139,33 @@ reports and run their bookkeeping validators; paper-only notes are not sufficien
 integration. The [October 23 reconciliation](../../../literature/RESEARCH-RECONCILIATION.md)
 illustrates the distinctions without changing frozen experiment inputs.
 
-When writing or revising a paper, cite sources that contributed to its claims,
-including close predecessors and the original question. Use dates of inspected
-versions, earliest relevant preprints and publication milestones explicitly.
-Record elapsed time to the answer and to subsequent revisions separately; the age
-of an ingredient is not an unsolved-problem duration. Clearly label an expanded
-paper versus a new research target. Show meaningful Lean statements, dependencies
-and proof excerpts, with immutable links to complete proofs and imported modules.
-Verify PDFs, source archives, hashes and public URLs when publication is in scope.
+When writing or revising a research paper:
+
+- Keep a proof-to-Lean table covering every proof created for the manuscript,
+  including counting bijections, certificate soundness, matrix/source translations,
+  finite-instance verification and applications. Give every such proof a faithful
+  Lean version with the same objects, quantifiers and hypotheses. Build and audit
+  those versions before presenting the corresponding paper claims as proved.
+  Supporting lemmas or an exact external computation do not replace a missing
+  theorem bridge. Keep incomplete proofs explicitly outside the proved results;
+  do not silently narrow the requested result or disguise an equivalent conclusion
+  as a new premise to obtain apparent formal coverage.
+- Show meaningful Lean statements, dependencies and proof excerpts. Include direct
+  clickable repository file links for the complete proofs (not just a directory or
+  theorem name), and immutable commit-pinned links for reproducibility. Verify
+  that the linked Lean sources and imported research modules are checked into the
+  repository. When publication is authorized, push them with the paper and check
+  that the public links resolve to the verified sources.
+- Cite the discovery source, original question and applicable predecessors.
+  Include a reference chronology table: source, earliest relevant preprint/date,
+  inspected version/publication milestone, this paper's dated revision, and the
+  explicit elapsed-time delta. Label date precision and approximation rather than
+  inventing a day for a year-only source. Distinguish an ingredient's age from the
+  duration of an unsolved problem. Record elapsed investigation time to the answer
+  and later formalization/manuscript revisions separately.
+- Clearly label an expanded paper versus a new research target. Validate the PDF,
+  source archive, hashes, proof-coverage table, reference-date arithmetic and public
+  URLs before delivery. Commit/push only within the user's existing authorization.
 
 Preserve the repository's anonymity conventions in public artifacts and Git
 identity. This skill does not itself authorize publication, external messages,

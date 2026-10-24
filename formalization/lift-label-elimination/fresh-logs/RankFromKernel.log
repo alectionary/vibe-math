@@ -1,0 +1,11 @@
+./RankFromKernel.lean:11:0: warning: automatically included section variable(s) unused in theorem `RankFromKernel.nullity_nine`:
+  [Fintype m]
+  [DecidableEq m]
+  [DecidableEq n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype m] [DecidableEq m] [DecidableEq n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'RankFromKernel.nullity_nine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RankFromKernel.rank_of_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RankFromKernel.check_rank' depends on axioms: [propext, Classical.choice, Quot.sound]

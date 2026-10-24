@@ -1,0 +1,10 @@
+./CountRepresentatives.lean:46:0: warning: automatically included section variable(s) unused in theorem `CountRepresentatives.rep_offset_iff`:
+  [Fintype R]
+  [DecidableEq R]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype R] [DecidableEq R] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'CountRepresentatives.rep_offset_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CountRepresentatives.balancedSupportEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CountRepresentatives.count40_representatives' depends on axioms: [propext, Classical.choice, Quot.sound]

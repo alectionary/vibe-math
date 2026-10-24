@@ -1,0 +1,347 @@
+{
+  "canonical_target_id": "L-F16-other-absorbing",
+  "kind": "follow-up",
+  "checked_on": "2026-10-23 PDT / 2026-10-24 UTC",
+  "source_version_rechecked": "Abiad-Castriota, arXiv:2607.13666v1, 2026-07-15; still the only version listed at this checkpoint",
+  "full_target": "Exact incidence-corrected (4,2) counting in cubic binary Tanner graphs without four-cycles, with a formula in cyclic socket data using the full evaluated rectangular matrix and standard complex DFT. The combined canonical question also includes (4,0), outside this block.",
+  "conclusion": "The complete-STS (4,2) count is classical (1995). Expanded-graph ETS enumeration, shared-six-cycle/theta structure and modular QC avoidance are established prior work. No earlier complete incidence-corrected QC socket/Fourier support formula was identified in the inspected versions. The expanded chordless-cycle journal text and named other full texts remain unresolved comparisons; no priority claim is established.",
+  "sources": [
+    {
+      "id": "GrannellGriggsMendelsohn1995",
+      "title": "A Small Basis for Four-Line Configurations in Steiner Triple Systems",
+      "authors": [
+        "M. J. Grannell",
+        "T. S. Griggs",
+        "E. Mendelsohn"
+      ],
+      "date_or_version": "1995 journal article, author-hosted accepted preprint inspected",
+      "url": "https://grannell.net/Papers/smallbasis.pdf",
+      "access": "full_text",
+      "locator": "Figure 2 (PDF page 5), C14 derivation (PDF page 6), formula summary (PDF page 10)",
+      "relationship": "The C14 pattern has four triples, five degree-two points and two degree-one points; it is exactly the elementary (4,2) Tanner pattern. The stated count is v(v-1)(v-3)/4 - 6P, where P is the Pasch count.",
+      "comparison_limit": "Requires every pair of check-points to occur in exactly one triple: a complete STS(v). Arbitrary linear cubic socket incidences do not satisfy this. The 1995 result already supplies the STS special case and implies loss of count information from the common STS point-Gram matrix; neither observation is claimed as new here. The source-to-pattern labels are a written diagram translation, supported by a concrete Lean shape certificate."
+    },
+    {
+      "id": "HeinleinOstergard2022",
+      "title": "Algorithms and Complexity for Counting Configurations in Steiner Triple Systems",
+      "authors": [
+        "Daniel Heinlein",
+        "Patric R. J. Ostergard"
+      ],
+      "date_or_version": "arXiv:2110.00320v1, 2021-10-01; journal 2022, volume 30, pages 527-546",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/jcd.21839",
+      "additional_primary_urls": [
+        "https://arxiv.org/abs/2110.00320"
+      ],
+      "access": "full_text_relevant_sections",
+      "locator": "Section 2.1; Section 2.2, Theorems 2-4 and proofs",
+      "relationship": "Theorem 3 gives O(v^3) counting for every variable four-line STS configuration, using the 1995 reduction to Pasch counts. Counting and listing complexity are explicitly distinguished.",
+      "comparison_limit": "A complete STS is the input. This establishes a strong earlier counting result for that special case; it is not the arbitrary cyclic socket Fourier identity."
+    },
+    {
+      "id": "Beezer2001",
+      "title": "Counting Configurations in Designs",
+      "authors": [
+        "Robert A. Beezer"
+      ],
+      "date_or_version": "Indexed author preprint dated 1997-08-21; journal 2001, JCTA 96(2), 341-357",
+      "url": "https://doi.org/10.1006/jcta.2001.3185",
+      "additional_primary_urls": [
+        "https://citeseerx.ist.psu.edu/document?doi=f77abf3297fe5456939e988f1c8bc7e2d04d1640&repid=rep1&type=pdf"
+      ],
+      "access": "Relevant indexed primary preprint passages read; full 2001 journal PDF opened in the normal publisher browser; whole-file comparison incomplete after download-tool stall.",
+      "locator": "Definition 3.1 and Theorem 3.2/proof (indexed page 5), Corollary 3.3 (page 8), Theorem 5.1/proof (page 10)",
+      "relationship": "General t-design reduction must be checked, because a check-regular cubic incidence structure is a 1-design. A generator has more than t repeated points in every block. C14 is a generator for t=1 and a non-generator for t=2, as verified in ClassicalConfiguration.lean.",
+      "comparison_limit": "Theorem 5.1 reduces non-generators and therefore does not compute the general 1-design C14 count from other generator counts. Complete STS inputs have t=2 and admit the classical reduction. The named preprint passages were inspected. The final 17-page journal PDF opened through the publisher open-archive link, but download failures prevented completing the final-text comparison in this block."
+    },
+    {
+      "id": "P34",
+      "title": "Graphical Analysis of Lifted Product Code Constructions",
+      "authors": [
+        "Ragnar Freij-Hollanti",
+        "Kirsten D. Morris",
+        "Patricija Sapokaite"
+      ],
+      "date_or_version": "arXiv:2606.11987v1, 2026-06-10",
+      "url": "https://arxiv.org/html/2606.11987v1",
+      "access": "full_text",
+      "locator": "Section 4, Theorem 4.4, proof, Corollary 4.5, Remark 4.6",
+      "relationship": "Rechecked the base-configuration counts and lifting mechanism against the present target.",
+      "comparison_limit": "Theorem 4.4 counts absorbing patterns in the monomial base graph; Corollary 4.5 treats the lifts of its two-variable zero-syndrome patterns via cycle order. These are not the complete elementary (4,2) count in arbitrary expanded QC-GHP socket incidences. The shared equal-base product setting also differs from the one-factor-scalar QC-GHP form here."
+    },
+    {
+      "id": "PacentiRaveendranVasic2026",
+      "title": "Trapping Sets of Detector Error Models",
+      "authors": [
+        "Michele Pacenti",
+        "Nithin Raveendran",
+        "Bane Vasic"
+      ],
+      "date_or_version": "arXiv:2608.11516v1, submitted 2026-08-12",
+      "url": "https://arxiv.org/html/2608.11516v1",
+      "access": "full_text_relevant_sections",
+      "locator": "Sections III.1-III.3; Appendix B, including dot expansion and complete exhaustive-search procedure",
+      "relationship": "New forward-citation lead. Uses established dpl enumeration on full detector Tanner graphs, followed by decoder-specific fault tests. In a cubic no-four-cycle graph its LETS catalog includes the (4,2) elementary supports.",
+      "comparison_limit": "This is an earlier general enumeration approach, not a new claim of ours. It does not supply the inspected socket/Fourier identity; its detector matrices and decoder experiments have a different scope from the present incidence theorem."
+    },
+    {
+      "id": "AmirzadeSadeghiPanarioChordless2020",
+      "title": "Construction of Protograph-Based LDPC Codes With Chordless Short Cycles",
+      "authors": [
+        "Farzane Amirzade",
+        "Mohammad-Reza Sadeghi",
+        "Daniel Panario"
+      ],
+      "date_or_version": "arXiv:2008.01322v1, 2020-08-04; expanded journal version online 2023-08-22, IEEE TIT 70(1), 51-74, January 2024",
+      "url": "https://arxiv.org/html/2008.01322v1",
+      "additional_primary_urls": [
+        "https://doi.org/10.1109/TIT.2023.3307583"
+      ],
+      "access": "full_preprint_relevant_statements_and_proofs; expanded_journal_full_text_unavailable",
+      "locator": "Preprint Definition 2; Figure 1; Section IV, Theorems 6-7/proofs and multi-edge subsection IV-B; final journal abstract/metadata",
+      "relationship": "Close predecessor: a chorded eight-cycle has a diamond normal graph, and the preprint uses paired six-cycle equations with common socket data to avoid it. Its stated scope includes single-edge and multi-edge, regular and irregular protographs; it cannot be excluded merely by assuming three fully occupied row groups.",
+      "comparison_limit": "The inspected criteria detect/avoid configurations rather than give the separate incidence-corrected (4,2) support count with Fourier normalization. The shared-six-cycle/modular detection idea is prior work. Eight-page preprint and 24-page journal article are different versions; a complete comparison with the expanded journal remains an access gap."
+    },
+    {
+      "id": "AmirzadeSadeghi2018QCETS",
+      "title": "Efficient Search of QC-LDPC Codes with Girths 6 and 8 and Free of Elementary Trapping Sets with Small Size",
+      "authors": [
+        "Farzane Amirzade",
+        "Mohammad-Reza Sadeghi"
+      ],
+      "date_or_version": "arXiv:1803.08141v1, 2018-03-21",
+      "url": "https://arxiv.org/html/1803.08141v1",
+      "access": "full_preprint_relevant_statements_and_proofs",
+      "locator": "Sections II-III, difference matrices D/DD, Theorem 1 and proof; Figure 2",
+      "relationship": "Earlier sufficient modular conditions eliminate (4,0) and (4,2) ETSs in fully connected (3,n)-regular single-edge QC codes by eliminating selected eight-cycles.",
+      "comparison_limit": "Uses three fully occupied check-row groups and gives avoidance conditions. It is not an exact arbitrary sparse/multiple-edge QC socket count or its complex Fourier formula. Those restrictions apply to this 2018 preprint, not to the broader 2020/2024 chordless-cycle work."
+    },
+    {
+      "id": "XiongEtAl2023GraphicBounds",
+      "title": "Theoretical Bounds for the Size of Elementary Trapping Sets by Graphic Methods",
+      "authors": [
+        "Haoran Xiong",
+        "Zicheng Ye",
+        "Huazi Zhang",
+        "Jun Wang",
+        "Ke Liu",
+        "Dawei Yin",
+        "Guanghui Wang",
+        "Guiying Yan",
+        "Zhiming Ma"
+      ],
+      "date_or_version": "arXiv:2307.02737v1, 2023-07-06",
+      "url": "https://arxiv.org/html/2307.02737v1",
+      "access": "full_preprint_relevant_statements_and_proofs",
+      "locator": "Section III, theta Turan number; Section IV-A, Theorem 7/proof; Section V construction discussion",
+      "relationship": "The diamond is theta(1,2,2) in the normal graph. Exact Turan bounds yield ETS size bounds under a condition excluding shared short cycles.",
+      "comparison_limit": "Counts extremal edges or classifies possible sizes after exclusion; it does not count embeddings of (4,2) supports in a given QC incidence. The inspected version is the 2023 v1 preprint."
+    },
+    {
+      "id": "XiongWangMaYan2025CycleDistance",
+      "title": "The Impact of the Distance Between Cycles on Elementary Trapping Sets",
+      "authors": [
+        "Haoran Xiong",
+        "Guanghui Wang",
+        "Zhiming Ma",
+        "Guiying Yan"
+      ],
+      "date_or_version": "arXiv:2503.01341v1, 2025-03-03; journal DOI 10.1109/TIT.2025.3631564 recorded as a separate publication milestone, not inspected full text",
+      "url": "https://arxiv.org/html/2503.01341v1",
+      "access": "full_preprint_relevant_sections",
+      "locator": "Definitions 1-4; Sections III-B and IV; Example 1 (explicit (4,2) system matrix); enumeration tables",
+      "relationship": "Studies theta/dumbbell cycle overlaps, ETS sizes and the spectral radius of the decoder state-space system matrix. Includes an explicit (4,2) model.",
+      "comparison_limit": "Its spectral matrix is the local message-propagation matrix, not the evaluated check Gram M_j. Its counts of nonisomorphic shapes differ from the number of supports in a specified socket graph. No exact target Fourier identity was identified in the inspected preprint."
+    },
+    {
+      "id": "ZhaoXiongYeYan2026Turan",
+      "title": "Turan-Theoretic Bounds on Several Elementary Trapping Sets in LDPC Codes",
+      "authors": [
+        "Ziyang Zhao",
+        "Haoran Xiong",
+        "Zicheng Ye",
+        "Guiying Yan"
+      ],
+      "date_or_version": "arXiv:2604.12332v1, 2026-04-14",
+      "url": "https://arxiv.org/html/2604.12332v1",
+      "access": "full_preprint_relevant_sections_and_proofs",
+      "locator": "Definitions; Section IV, Theorems 6-7 and derivation from extremal graph bounds; Section V-A, tables of nonisomorphic ETSs and system spectral radii",
+      "relationship": "Forward-citation follow-up studies forbidden cycle overlaps, Turan numbers and ETS size bounds, with catalogs of nonisomorphic shapes and local system spectral radii.",
+      "comparison_limit": "The inspected counts are shape catalogs, not embeddings in a specified QC code. Theorems 6-7 bound sizes under extra forbidden-subgraph hypotheses; they do not give the general incidence-corrected Fourier support count."
+    },
+    {
+      "id": "RaeisiGholami2024",
+      "title": "On a class of column-weight 3 decomposable LDPC codes with the analysis of elementary trapping sets",
+      "authors": [
+        "G. Raeisi",
+        "M. Gholami"
+      ],
+      "url": "https://ietresearch.onlinelibrary.wiley.com/doi/pdf/10.1049/cmu2.12762",
+      "date_or_version": "IET Communications 18(9), 583–596; first published April 22, 2024",
+      "access": "Relevant full primary PDF sections/proofs inspected in first block; row-partition definition rechecked in the indexed primary page in this block",
+      "locator": "Definition of decomposability (p586); Section5 pp590–592, Proposition5.5, Theorem3 and proof, Algorithm1, Table5; QC-lift setup Section6",
+      "relationship": "Rechecked the three-check-group hypothesis and distinguished normal-graph shape enumeration from support counts in a given code.",
+      "comparison_limit": "The 168-column witnesses contain a Fano block and cannot admit three check groups; the smaller 48-column pair does admit this partition, using check coordinate modulo 3. Algorithm 1 enumerates nonisomorphic shapes rather than embeddings. These distinctions do not exclude the broader arbitrary-protograph chordless-cycle literature. Concrete Fano exclusion and finite three-group checks are provided by this follow-up at their separately labeled evidence levels."
+    },
+    {
+      "id": "AbiadCrnkovicPetersSvob2026Switching",
+      "title": "Switching graphs and designs",
+      "authors": [
+        "Aida Abiad",
+        "Dean Crnkovic",
+        "Louka Peters",
+        "Andrea Svob"
+      ],
+      "date_or_version": "arXiv:2609.20030v1, 2026-09-17",
+      "url": "https://arxiv.org/html/2609.20030v1",
+      "access": "full_preprint_relevant_statements_and_proofs",
+      "locator": "Introduction; Section 3, Theorem 3.2 and proof; Section 4.2, Theorems 4.3-4.4 and proofs",
+      "relationship": "Source-author downstream paper: extends CS-switching to divisible designs and relates design switching to cospectral graph switching. The proof of Theorem 3.2 preserves point-pair incidence counts.",
+      "comparison_limit": "These are parameter-preserving transformations, not a computation of (4,2) support multiplicities or their Fourier formula. Gram-preserving design switches are relevant prior machinery, not claimed new here. The inspected theorem comparison goes beyond keyword absence."
+    },
+    {
+      "id": "FujiwaraGrunerVandendriessche2015Reliable",
+      "title": "High-rate quantum low-density parity-check codes assisted by reliable qubits",
+      "authors": [
+        "Yuichiro Fujiwara",
+        "Alexander Gruner",
+        "Peter Vandendriessche"
+      ],
+      "date_or_version": "arXiv:1309.5587v2, 2015-03-14; initial submission 2013-09-22; IEEE TIT 61 (2015), 1860-1878",
+      "url": "https://arxiv.org/pdf/1309.5587v2",
+      "access": "full_v2_PDF_obtained; relevant_sections_read",
+      "locator": "Sections III-B/C, Proposition 3.7, Theorems 3.9-3.15; Section IV final STS comparison; Section V Theorem 5.1/proof; references 60 and 77",
+      "relationship": "Closed citation lead after correcting the unavailable v3 request to the actual latest v2. Even configurations control distance; assisted-code constructions and finite-geometry bounds are prior work.",
+      "comparison_limit": "Even-freeness excludes zero-odd-point supports; it does not count two-odd-point supports. The cited bounds and assisted-code constructions do not supply the general QC socket multiplicity identity. Section IV refers its small-configuration analysis to the still-unavailable Laendner-Milenkovic-Huber 2010 paper; this is not a substitute for that full text."
+    }
+  ],
+  "citation_index_audit": {
+    "retrieved_utc": "2026-10-24T05:26:14Z to 2026-10-24T05:28:46Z",
+    "semantic_scholar": {
+      "source_F16": {
+        "paper_id": "7dee7ff7dea6a3014f4706acb405e401f978935a",
+        "indexed_citations": 0
+      },
+      "STS2010": {
+        "paper_id": "afc585d14d0ce78c5d5fd3bfa4ba61b18a79511e",
+        "indexed_citing_records_returned": 15
+      },
+      "Morris_preprint_and_journal_merged_record": {
+        "paper_id": "f0cf69dc4c6da529de7ba214aac07b747c30aea9",
+        "indexed_citing_records_returned": 7
+      },
+      "chordless_2020_2024_merged_record": {
+        "paper_id": "61ece59eb703a35e021b8ba773a24710fd4e1823",
+        "indexed_citing_records_returned": 9,
+        "full_text_location": "2020 arXiv v1 only; not the expanded final text"
+      }
+    },
+    "openalex": {
+      "source_F16": {
+        "work_id": "W7168547573",
+        "indexed_citations": 0
+      },
+      "STS2010": {
+        "work_id": "W1972047510",
+        "indexed_citing_records_returned": 14
+      },
+      "Morris_journal_only": {
+        "work_id": "W7133340848",
+        "indexed_citations": 0
+      }
+    },
+    "limit": "These are successful bounded index snapshots, not an exhaustive citation census. Records can duplicate preprint/journal versions; merged and separate records have different counts. Google Scholar access was not repaired. Zero indexed citations does not establish absence of downstream work."
+  },
+  "remaining_access_gaps": [
+    {
+      "source": "Laendner-Milenkovic-Huber 2010, DOI 10.1109/ISTC.2010.5613812",
+      "status": "Specific full text still unavailable",
+      "routes_checked": [
+        "Fraunhofer public item and embedded public file listing (no article PDF)",
+        "Illinois Experts metadata",
+        "author publication lists/CVs",
+        "IEEE normal document route (empty 202 response)",
+        "OpenAlex and Semantic Scholar full-text locations (closed, no public PDF)",
+        "proceedings table of contents",
+        "Normal IEEE browser article opened; section navigation exposed only introductory preview and Sign in to Continue Reading; PDF explicitly unavailable to current session."
+      ],
+      "what_closed": "The STS special-case count itself is already settled by the fully inspected 1995 predecessor; this does not replace inspection of every claim in the 2010 article."
+    },
+    {
+      "source": "Morris-Pllaha-Kelley 2026 journal revision, DOI 10.3934/amc.2026023",
+      "status": "Revised public introduction read; full journal text still unavailable",
+      "routes_checked": [
+        "Publisher full-HTML link explicitly requires subscription/login",
+        "Advertised citation_pdf_url returned HTTP 200 with zero bytes",
+        "public introduction-content endpoint returned the revised introduction",
+        "latest arXiv remains v2, 2024-05-10",
+        "author publication page links the journal DOI without a separate final copy"
+      ],
+      "comparison": "The public revised outline locates decoder-failure results in Sections 4-5 and an HGP case study in Section 5. It does not establish that every later journal claim matches the inspected 2024 preprint."
+    },
+    {
+      "source": "Beezer 2001 full preprint/final file",
+      "status": "Relevant indexed passages read; final journal PDF accessible in normal publisher browser, but full final-text comparison incomplete.",
+      "routes_checked": [
+        "Publisher PDF returned 403",
+        "Crossref-advertised XML endpoint returned metadata only",
+        "author and institutional repository hosts did not resolve",
+        "CiteSeer current/legacy file routes returned 404",
+        "Internet Archive exact original-file query returned no captures",
+        "Normal open-archive PDF returned 403; explicit FULL XML view returned 401; linkinghub redirected to the same publisher page",
+        "Migrated author-host PDF path returned 404; older math.ups.edu path had a certificate/hostname mismatch (not bypassed)",
+        "Public rbeezer repository list and the aims-dmg-2014, eagts and small-documents trees checked; no matching full paper located. Migrated author home and original PostScript path returned 404.",
+        "Normal browser publisher open-archive View PDF link successfully opened the 17-page journal PDF; downloadMedia and visible viewer download both failed/stalled. No final-version theorem exclusion is claimed."
+      ]
+    },
+    {
+      "source": "Amirzade-Sadeghi-Panario expanded 2024 journal article, DOI 10.1109/TIT.2023.3307583",
+      "status": "Public 2020 preprint inspected; expanded 24-page journal full text still unavailable",
+      "routes_checked": [
+        "Normal IEEE article and stamp routes returned empty 202 responses",
+        "Author research page lists the final journal citation but no article file",
+        "OpenAlex and Semantic Scholar public full-text locations lead only to arXiv:2008.01322v1",
+        "Exact DOI/title searches located metadata and the shorter preprint, not a public final copy",
+        "Normal IEEE browser article opened; PDF explicitly unavailable and full-text preview requires subscription. Final-version comparison remains incomplete."
+      ],
+      "comparison": "This is a close unresolved version comparison; do not dismiss its general multiple-edge protograph scope or equate the public preprint with the expanded final article."
+    }
+  ],
+  "cohort_delta": {
+    "canonical_entries": 0,
+    "eligible_targets": 0,
+    "complete_canonical_Lean_targets": 0
+  },
+  "additional_search_leads": [
+    {
+      "title": "Joint Short-Cycle and ACE Statistics in LDPC Tanner Graphs via Fast Message Passing",
+      "doi": "10.1145/3821162.3821166",
+      "access": "Public metadata only; normal ACM PDF route returned 403. Abstract/full target not inspected.",
+      "status": "Search lead; exact full-target comparison unavailable"
+    },
+    {
+      "title": "A Novel Behrend-Based Construction for Girth-8 QC-LDPC Codes",
+      "doi": "10.36227/techrxiv.175382813.34829210",
+      "access": "indexed abstract and metadata; advertised full-text host did not resolve",
+      "status": "Search lead; no full-result exclusion claimed"
+    }
+  ],
+  "source_author_downstream_audit": {
+    "source": "Abiad-Castriota 2026",
+    "checked_utc": "2026-10-24T06:26:12Z",
+    "routes": [
+      "Exact title/author and correction searches",
+      "Public arXiv version history",
+      "VUB official Abiad profile (displayed output stops at 2025, so incomplete for 2026)",
+      "Public author publication discovery, including September 2026 arXiv:2609.20030v1"
+    ],
+    "finding": "A later source-author switching paper was found and its relevant theorems/proofs compared. No later full target answer was identified in this bounded check; the official profile is not a complete current bibliography."
+  },
+  "classical_count_crosscheck": {
+    "evidence": "exact_finite_computation",
+    "report": "classical-shape-check.json",
+    "prior_source": "Preserved first-block JiangEtAl2026WidthWall record, arXiv:2605.13690v1 Appendix F.1",
+    "result": "Existing STS(13) pair: Pasch 13/8, N42 312/342; identical integer point-Gram (diagonal 6, off-diagonal 1). General classical formula is attributed to Grannell-Griggs-Mendelsohn 1995.",
+    "novelty_limit": "This is a prior-art translation and independent finite cross-check, not a new information-loss witness or a general Lean proof of the classical STS formula."
+  }
+}

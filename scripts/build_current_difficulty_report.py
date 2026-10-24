@@ -4,7 +4,7 @@ import json,html,re
 R=Path(__file__).resolve().parent.parent;D=R/'planning'
 rows=json.loads((D/'current-difficulty-estimates.json').read_text());s=json.loads((D/'current-difficulty-summary.json').read_text());e=html.escape
 slug=lambda x:re.sub(r'[^\w-]','',x.lower())
-text='# Current per-target Lean difficulty estimates\n\nChecked October 23, 2026. Low-confidence planning priors for all 181 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.\n\n'
+text='# Current per-target Lean difficulty estimates\n\nChecked October 24, 2026. Low-confidence planning priors for all 181 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.\n\n'
 text+='| Eligible-target tier | Statement setup | Conditional proof transfer |\n| --- | ---: | ---: |\n'
 for tier in ['0','1','2','3','4','5','hold']:
  text+=f'| {"Already complete" if tier=="0" else "Unestimated / scope gate" if tier=="hold" else tier} | {s["statement_tiers"].get(tier,0)} | {s["conditional_proof_tiers"].get(tier,0)} |\n'

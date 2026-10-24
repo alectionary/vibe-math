@@ -1,0 +1,78 @@
+NEW PROOF INTERFACES
+
+ComplexCharacter.lean
+  AbsorbingFourier.standard_character_star
+  standard_character_exp, standard_character_unit_norm, star_mul_eq_norm_sq
+  Uses mathlib's ZMod.stdAddChar and its injectivity. Character values are the
+  actual complex exponential, not an abstract formal root supplied as a premise.
+
+ComplexDFT.lean
+  standardRoot_exp, standard_character_neg_product
+  standard_dft_eq_powers, standard_evaluatedMatrix_eq_powers
+  Proves omega=exp(2*pi*i/N) and the literal omega^(-j.val*a.val) convention.
+
+ComplexCyclicCount.lean
+  rootNormEnergy_coe, normalizedNormEnergy_coe
+  complex_cyclic_count_identity, complex_cyclic_count_formula
+  Transfers the existing finite-character count to a real-valued sum of squared
+  complex norms. No primality or oddness assumption on N.
+
+ComplexMatrixCount.lean
+  standard_transformedAction_eq_mulVec, evaluatedVector_norm_sq
+  complex_matrix_count_formula
+  Ordinary Matrix.mulVec and the EuclideanSpace complex-vector norm are linked
+  to the componentwise algebraic energy.
+
+ComplexRootFormula.lean
+  complex_root_parseval, complexRootSummand_eq, complex_root_count_formula
+  Exact source form: N/4 times the ordered-root sum of t^2+2t minus Fourier
+  energy/N. The full rectangular matrix and proper indicator remain present.
+
+ComplexConsumer.lean
+  diamond_complex_formula, diamond_complex_energy
+  even_composite_faithful, even_composite_negative_exponent
+  prime_negative_exponent
+  A positive-count graph at N=1, and character conventions at N=7 and N=24.
+
+ClassicalConfiguration.lean
+  ClassicalConfiguration.c14_elementary42, c14_absorbing, c14_count
+  c14_generator_one, c14_not_generator_two
+  Concrete shape/hypothesis checks for the 1995 count and Beezer's t-design
+  generator criterion. The complete general STS counting theorem is cited
+  classical mathematics, not re-proved in this Lean file.
+
+ComplexQuantumSockets.lean
+  ComplexQuantum.source_evaluated_eq_D
+  standard_character_eq_power
+  Derives [A | beta I] from the same sockets that define binary incidence.
+
+ClassicalDecomposability.lean
+  ClassicalDecomposability.fano_pair_complete, fano_not_three_groups
+  source_not_three_groups
+  Proves the precise three-check-group obstruction used in the comparison with
+  decomposable-code results. This hypothesis is not imposed on the general
+  arbitrary-protograph chordless-cycle predecessors.
+
+ComplexQuantumWitness.lean
+  ComplexQuantumWitness.source_incidence_bridge
+  literal_A_bridge, literal_B_bridge, count_A, count_B
+  beta_eq_polynomial, identical_actual_complex_M
+  no_actual_complex_M_only_count
+  Connects the concrete tensor and literal 168-column source representations
+  to sockets; beta=1+omega^j+omega^(3j) includes the transpose convention.
+
+ComplexQuantumFormula.lean
+  ComplexQuantumFormula.socket_cubic, socket_linear
+  actual_A_complex_formula, actual_B_complex_formula
+  Discharges the general formula's premises for the actual 49/35 witnesses.
+
+AbsorbingComplex.lean
+  Checked entry point and public theorem/axiom reports.
+
+See first-block/SOURCE-MAP.txt for the unchanged general incidence, orbit,
+completion, HGP counting, Gram obstruction, CSS and literal-index bridges.
+Helper modules do not count as additional solved canonical source questions.
+
+Unchecked optional development files are under candidates/. In particular,
+GB48RootData and ComplexGB48 are not checked modules. The active proof entry
+point and its default Lake target do not import them. See followup-candidates.json.

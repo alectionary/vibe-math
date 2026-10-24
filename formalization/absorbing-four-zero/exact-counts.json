@@ -1,0 +1,138 @@
+{
+  "evidence": "exact_finite_computation",
+  "classical_consumers": [
+    {
+      "name": "STS13-prior",
+      "n": 26,
+      "N40": 13,
+      "induced_support_enumeration": true,
+      "collision": {
+        "pair_count": 325,
+        "syndrome_values": 286,
+        "pair_collisions": 39
+      },
+      "root": {
+        "normalized_roots": 390,
+        "lift_size": 1,
+        "local_sum": 312,
+        "formula": "N/24 * sum(E(W)-F(W)-t)"
+      },
+      "MacWilliams": {
+        "binary_check_messages": 8192,
+        "weight_four_macwilliams": true,
+        "fourth_moment_identity": true
+      }
+    },
+    {
+      "name": "STS13-prior-trade",
+      "n": 26,
+      "N40": 8,
+      "induced_support_enumeration": true,
+      "collision": {
+        "pair_count": 325,
+        "syndrome_values": 301,
+        "pair_collisions": 24
+      },
+      "root": {
+        "normalized_roots": 390,
+        "lift_size": 1,
+        "local_sum": 192,
+        "formula": "N/24 * sum(E(W)-F(W)-t)"
+      },
+      "MacWilliams": {
+        "binary_check_messages": 8192,
+        "weight_four_macwilliams": true,
+        "fourth_moment_identity": true
+      }
+    },
+    {
+      "name": "Fano7",
+      "n": 7,
+      "N40": 7,
+      "induced_support_enumeration": true,
+      "collision": {
+        "pair_count": 21,
+        "syndrome_values": 7,
+        "pair_collisions": 21
+      },
+      "root": {
+        "normalized_roots": 42,
+        "lift_size": 1,
+        "local_sum": 168,
+        "formula": "N/24 * sum(E(W)-F(W)-t)"
+      },
+      "MacWilliams": {
+        "binary_check_messages": 128,
+        "weight_four_macwilliams": true,
+        "fourth_moment_identity": true
+      }
+    },
+    {
+      "name": "Affine9",
+      "n": 12,
+      "N40": 0,
+      "induced_support_enumeration": true,
+      "collision": {
+        "pair_count": 66,
+        "syndrome_values": 66,
+        "pair_collisions": 0
+      },
+      "root": {
+        "normalized_roots": 108,
+        "lift_size": 1,
+        "local_sum": 0,
+        "formula": "N/24 * sum(E(W)-F(W)-t)"
+      },
+      "MacWilliams": {
+        "binary_check_messages": 512,
+        "weight_four_macwilliams": true,
+        "fourth_moment_identity": true
+      }
+    }
+  ],
+  "source_consumers": [
+    {
+      "name": "STS13-prior-QC-GHP",
+      "n": 273,
+      "checks": 91,
+      "N40": 182,
+      "collision": {
+        "pair_count": 37128,
+        "syndrome_values": 36673,
+        "pair_collisions": 546
+      },
+      "normalized_root": {
+        "normalized_roots": 936,
+        "lift_size": 7,
+        "local_sum": 624,
+        "formula": "N/24 * sum(E(W)-F(W)-t)"
+      },
+      "full_root_verified": true,
+      "pure_fiber_written_identity": 182
+    },
+    {
+      "name": "STS13-prior-trade-QC-GHP",
+      "n": 273,
+      "checks": 91,
+      "N40": 147,
+      "collision": {
+        "pair_count": 37128,
+        "syndrome_values": 36778,
+        "pair_collisions": 441
+      },
+      "normalized_root": {
+        "normalized_roots": 936,
+        "lift_size": 7,
+        "local_sum": 504,
+        "formula": "N/24 * sum(E(W)-F(W)-t)"
+      },
+      "full_root_verified": true,
+      "pure_fiber_written_identity": 147
+    }
+  ],
+  "equal_base_integer_Gram": true,
+  "equal_full_evaluated_complex_M_by_block_identity": true,
+  "source_credit": "STS(13) trade already credited to Jiang et al., arXiv:2605.13690v1 Appendix F.1 in the first block; not a new classical witness.",
+  "scope": "Exact support counts and identities, not a quantum-distance or decoder-performance claim.",
+  "script_sha256": "7d3c6eb0be6c36986ac289c23eabffec14a0e5c4192ea8d41ee1555c6d5c7e85"
+}

@@ -29,8 +29,12 @@ for pid in review['added_paper_ids']:
         assert hashlib.sha256(text.read_bytes()).hexdigest() == m['extracted_text_sha256']
 for entry in added:
     assert entry['added_on'] == '2026-10-22'
-    assert not entry.get('verified_artifact')
-    assert entry['lean_proof_status'] != 'verified_complete_lean_proof'
+    if entry['id']=='L-F16-other-absorbing':
+        assert entry['lean_proof_status']=='verified_complete_lean_proof'
+        assert entry['verified_artifact']['statement_declaration']=='AbsorbingFourCounts.explicit_cubic_cyclic_four_counts'
+    else:
+        assert not entry.get('verified_artifact')
+        assert entry['lean_proof_status'] != 'verified_complete_lean_proof'
     for occurrence in entry['occurrences']:
         assert occurrence['source_id'] in review['added_paper_ids']
         assert occurrence['source_sha256'] == manifest[occurrence['source_id']]['sha256']

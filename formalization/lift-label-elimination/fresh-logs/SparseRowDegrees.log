@@ -1,0 +1,9 @@
+./SparseRowDegrees.lean:30:0: warning: automatically included section variable(s) unused in theorem `SparseRowDegrees.check_column`:
+  [Fintype V]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'SparseRowDegrees.x_row_minus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SparseRowDegrees.z_row_minus' depends on axioms: [propext, Classical.choice, Quot.sound]

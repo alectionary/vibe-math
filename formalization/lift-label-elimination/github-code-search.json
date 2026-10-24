@@ -1,0 +1,43 @@
+{
+  "queries": [
+    {
+      "query": "\"Pasch\" \"voltage\" is:public",
+      "limit": 50,
+      "exit_code": 0,
+      "method": "Authenticated gh legacy code-search API; public qualifier",
+      "checked_utc": "2026-10-24T16:35:21.482622+00:00",
+      "results": [],
+      "returned": 0,
+      "hit_cap_reached": false
+    },
+    {
+      "query": "\"cycle consistency\" \"absorbing\" is:public",
+      "limit": 50,
+      "exit_code": 0,
+      "method": "Authenticated gh legacy code-search API; public qualifier",
+      "checked_utc": "2026-10-24T16:35:23.408169+00:00",
+      "results": [],
+      "returned": 0,
+      "hit_cap_reached": false
+    },
+    {
+      "query": "absorbing cyclic language:Lean is:public",
+      "limit": 50,
+      "exit_code": 1,
+      "method": "Authenticated gh legacy code-search API; public qualifier",
+      "checked_utc": "2026-10-24T16:35:23.670183+00:00",
+      "error": "HTTP 422: ERROR_TYPE_QUERY_PARSING_FATAL unable to parse query! (https://api.github.com/search/code?page=1&per_page=50&q=absorbing+cyclic+language%3A%22Lean+is%3Apublic%22)"
+    },
+    {
+      "query": "\"Pasch\" \"Desargues\" is:public",
+      "limit": 50,
+      "exit_code": 0,
+      "method": "Authenticated gh legacy code-search API; public qualifier",
+      "checked_utc": "2026-10-24T16:35:24.077166+00:00",
+      "results": [],
+      "returned": 0,
+      "hit_cap_reached": false
+    }
+  ],
+  "limits": "Legacy code-search results can differ from the GitHub web interface. The50-result limit and returned statuses are explicit; negative results are bounded, not a priority proof."
+}

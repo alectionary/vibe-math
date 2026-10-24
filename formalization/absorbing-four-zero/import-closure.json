@@ -1,0 +1,598 @@
+{
+  "checked_modules": 61,
+  "all_research_imports_listed": true,
+  "allowed_external_prefixes": [
+    "Mathlib."
+  ],
+  "records": [
+    {
+      "module": "FourColumnClassification",
+      "source": "prior/first-block/FourColumnClassification.lean",
+      "sha256": "57d144e6783cdc3820a67dfae330817c7d12713468c9e3e6e72ea20e998b4d99",
+      "imports": [
+        "Mathlib.Data.Finset.Powerset",
+        "Mathlib.Data.Fintype.Card",
+        "Mathlib.Data.Fintype.Powerset",
+        "Mathlib.Data.Fintype.Perm",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+        "Mathlib.Tactic.FinCases",
+        "Mathlib.Tactic.IntervalCases",
+        "Mathlib.Tactic.NormNum"
+      ]
+    },
+    {
+      "module": "GlobalCounting",
+      "source": "prior/first-block/GlobalCounting.lean",
+      "sha256": "0703e796cc34b2bc3a26b5b25a78adc9c9f563d3319d2e52c94ef3fd681848ce",
+      "imports": [
+        "FourColumnClassification",
+        "Mathlib.Data.Fintype.CardEmbedding"
+      ]
+    },
+    {
+      "module": "OrderedRoots",
+      "source": "prior/first-block/OrderedRoots.lean",
+      "sha256": "a12020786881c196cea56f45bc90f94c6fa35a96f18fa9f977122c444ccdca3b",
+      "imports": [
+        "GlobalCounting"
+      ]
+    },
+    {
+      "module": "PairEnergy",
+      "source": "prior/first-block/PairEnergy.lean",
+      "sha256": "43bcc829f84bf18e8f524bf221ff8d033acc1f4392e57049e57e6e062d2be4ef",
+      "imports": [
+        "FourColumnClassification",
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Sigma"
+      ]
+    },
+    {
+      "module": "PairFormulaCore",
+      "source": "prior/first-block/PairFormulaCore.lean",
+      "sha256": "9c4dfe77da2546b9152473f84ae77105227c871746672b30de38623ded0a5f6d",
+      "imports": [
+        "PairEnergy"
+      ]
+    },
+    {
+      "module": "FourCompletions",
+      "source": "prior/first-block/FourCompletions.lean",
+      "sha256": "f1469614a6e5ac99228640398ca1d61ae6736d3b8d8d70ed6978702cd31b1c35",
+      "imports": [
+        "PairFormulaCore",
+        "Mathlib.Data.Fintype.Card",
+        "Mathlib.Data.Fintype.Prod"
+      ]
+    },
+    {
+      "module": "PairRootBridge",
+      "source": "prior/first-block/PairRootBridge.lean",
+      "sha256": "bd8dcb11590ebf4c6103293835ceb9a36a5492001dca94dab3246ffdf010d732",
+      "imports": [
+        "OrderedRoots",
+        "PairFormulaCore"
+      ]
+    },
+    {
+      "module": "CyclicNormalization",
+      "source": "prior/first-block/CyclicNormalization.lean",
+      "sha256": "1cbd0cba775aaa6f62647fc0b08dbbbe6ff96d35aeaf37d012eafe1a2f0d1e1e",
+      "imports": [
+        "PairRootBridge",
+        "Mathlib.Algebra.Group.Basic"
+      ]
+    },
+    {
+      "module": "FiniteFourier",
+      "source": "prior/first-block/FiniteFourier.lean",
+      "sha256": "6d2e88aeec6cab0d5757a998ee86dd5fe6872f5d95666bee00b6266428ea2efa",
+      "imports": [
+        "Mathlib.Algebra.Group.AddChar",
+        "Mathlib.Algebra.Star.BigOperators",
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Data.Fintype.Prod",
+        "Mathlib.Tactic.Ring"
+      ]
+    },
+    {
+      "module": "SocketFourier",
+      "source": "prior/first-block/SocketFourier.lean",
+      "sha256": "5c81eb55492ea7ac5169173a3b96a3bc0685e2a6d87b465c3fbcb4c76bc062b8",
+      "imports": [
+        "FiniteFourier",
+        "CyclicNormalization"
+      ]
+    },
+    {
+      "module": "SocketIncidence",
+      "source": "prior/first-block/SocketIncidence.lean",
+      "sha256": "b08647b65c4f0290ddf0bc6ec64c86209a3a629bbd3b9d5b5299cab1fee50d72",
+      "imports": [
+        "SocketFourier"
+      ]
+    },
+    {
+      "module": "CyclicFourierCount",
+      "source": "prior/first-block/CyclicFourierCount.lean",
+      "sha256": "f9b85d25e3b9ff430357e441add7c681034cfc1ec0d28e828328f3da48f2816c",
+      "imports": [
+        "SocketIncidence"
+      ]
+    },
+    {
+      "module": "GramCounterexample12",
+      "source": "prior/first-block/GramCounterexample12.lean",
+      "sha256": "a72bb67fa36b95462684ffd7a213aa5f618ebec839505e179ff0c911701f624b",
+      "imports": [
+        "Mathlib.Data.Finset.Powerset",
+        "Mathlib.Data.Fintype.Card",
+        "Mathlib.Tactic.NormNum"
+      ]
+    },
+    {
+      "module": "SmallQuantumData",
+      "source": "prior/first-block/SmallQuantumData.lean",
+      "sha256": "de5d3115aef8159fe35bb4e755e741fde5e5763faf56f3eef662a6219e24e8b0",
+      "imports": [
+        "PairFormulaCore"
+      ]
+    },
+    {
+      "module": "FastQuantumData",
+      "source": "prior/first-block/FastQuantumData.lean",
+      "sha256": "de47bedd1b0967ed3b0a45d7b0971e468e332e939300bf656d5ce691cb4fe574",
+      "imports": [
+        "SmallQuantumData"
+      ]
+    },
+    {
+      "module": "QuantumConstruction",
+      "source": "prior/first-block/QuantumConstruction.lean",
+      "sha256": "7f9437d14d0999b03b87aae9c2f58165de35c7f5ea9f28621218ac7daccb773e",
+      "imports": [
+        "GramCounterexample12",
+        "FastQuantumData"
+      ]
+    },
+    {
+      "module": "FanoBlock",
+      "source": "prior/first-block/FanoBlock.lean",
+      "sha256": "ba947dbcc0dc334f42db727563a2f6f515f179008c0333060707f5e2c0a8cf29",
+      "imports": [
+        "GlobalCounting",
+        "Mathlib.Data.Fintype.Prod"
+      ]
+    },
+    {
+      "module": "ProjectionObstruction",
+      "source": "prior/first-block/ProjectionObstruction.lean",
+      "sha256": "cf684fbda8dde26a6abaa9dd87ef8f02bcd21cbf69b66960e6e8cd80c98933a7",
+      "imports": [
+        "GlobalCounting",
+        "Mathlib.Data.Fintype.Prod"
+      ]
+    },
+    {
+      "module": "HGPIncidence",
+      "source": "prior/first-block/HGPIncidence.lean",
+      "sha256": "b18ea364fe030cfbcac7c9b199f157aac8d173bc786f4b406f504bc6055ad11e",
+      "imports": [
+        "PairFormulaCore",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Fintype.Prod"
+      ]
+    },
+    {
+      "module": "HGPPatterns",
+      "source": "prior/first-block/HGPPatterns.lean",
+      "sha256": "729b585ac8941773741b5402aaa96883cb29bf765b537ac24537160d19ae1942",
+      "imports": [
+        "HGPIncidence",
+        "CyclicNormalization"
+      ]
+    },
+    {
+      "module": "HGPCounts",
+      "source": "prior/first-block/HGPCounts.lean",
+      "sha256": "d69ef25dc6021be41b008ffb329a3648c050cd8fa147354e9772031d46420a94",
+      "imports": [
+        "HGPPatterns",
+        "GramCounterexample12",
+        "FanoBlock",
+        "Mathlib.Tactic.Ring"
+      ]
+    },
+    {
+      "module": "HGPGramObstruction",
+      "source": "prior/first-block/HGPGramObstruction.lean",
+      "sha256": "a5b3fed8fb6737d2afb435311dee2887e88d919b8064deaad9c614320cb6c6c1",
+      "imports": [
+        "HGPCounts"
+      ]
+    },
+    {
+      "module": "HGPCSS",
+      "source": "prior/first-block/HGPCSS.lean",
+      "sha256": "2bbf29c6f9644e0151c8c3a1ec7f5c1a9bfbbdb49941273eeeabbe795269e69d",
+      "imports": [
+        "HGPGramObstruction",
+        "Mathlib.Data.ZMod.Basic"
+      ]
+    },
+    {
+      "module": "HGPSpectral",
+      "source": "prior/first-block/HGPSpectral.lean",
+      "sha256": "40b65bb08b16c6c86362990817fa06217c561a70231a348631d5d395b12fd631",
+      "imports": [
+        "HGPCSS",
+        "Mathlib.Algebra.Star.Basic"
+      ]
+    },
+    {
+      "module": "SocketCompletion",
+      "source": "prior/first-block/SocketCompletion.lean",
+      "sha256": "3c767755c25b0a347e25c0fe8d2ff9a418cb3af523040f112f63c2fd4dfddfde",
+      "imports": [
+        "CyclicNormalization",
+        "Mathlib.Tactic.Abel"
+      ]
+    },
+    {
+      "module": "CompletionBridge",
+      "source": "prior/first-block/CompletionBridge.lean",
+      "sha256": "c19f7eeb1d6b0603b22726ea54816ae1cfad4bee09c72107079ca95c0204f07f",
+      "imports": [
+        "SocketCompletion"
+      ]
+    },
+    {
+      "module": "IncidenceEquivalence",
+      "source": "prior/first-block/IncidenceEquivalence.lean",
+      "sha256": "0cbd8f900c1ebd4df9f11868cbc78414b68d524d7d396546a6d42855f17ff299",
+      "imports": [
+        "GlobalCounting"
+      ]
+    },
+    {
+      "module": "QuantumReindex",
+      "source": "prior/first-block/QuantumReindex.lean",
+      "sha256": "037d2ffd8bfcaff6a3c55ae5aaac4d3c06000882e580d28e465d2eff011feea5",
+      "imports": [
+        "HGPSpectral",
+        "IncidenceEquivalence",
+        "QuantumConstruction",
+        "Mathlib.Logic.Equiv.Fin.Basic"
+      ]
+    },
+    {
+      "module": "GBReflection",
+      "source": "prior/first-block/GBReflection.lean",
+      "sha256": "80fe796fd05c759961144be6e5d668c051d682e721f8927da821902166ef5340",
+      "imports": [
+        "SocketFourier",
+        "Mathlib.Data.ZMod.Basic"
+      ]
+    },
+    {
+      "module": "AbsorbingFourTwo",
+      "source": "prior/first-block/AbsorbingFourTwo.lean",
+      "sha256": "45c2763d55bd272c6f99704b68a1382c5d3f558f589ec595e5ccff1cf647b155",
+      "imports": [
+        "FourColumnClassification",
+        "GlobalCounting",
+        "OrderedRoots",
+        "PairEnergy",
+        "PairFormulaCore",
+        "FourCompletions",
+        "PairRootBridge",
+        "CyclicNormalization",
+        "FiniteFourier",
+        "SocketFourier",
+        "SocketIncidence",
+        "CyclicFourierCount",
+        "GramCounterexample12",
+        "SmallQuantumData",
+        "FastQuantumData",
+        "QuantumConstruction",
+        "FanoBlock",
+        "ProjectionObstruction",
+        "HGPIncidence",
+        "HGPPatterns",
+        "HGPCounts",
+        "HGPGramObstruction",
+        "HGPCSS",
+        "HGPSpectral",
+        "SocketCompletion",
+        "CompletionBridge",
+        "IncidenceEquivalence",
+        "QuantumReindex"
+      ]
+    },
+    {
+      "module": "ClassicalConfiguration",
+      "source": "prior/ClassicalConfiguration.lean",
+      "sha256": "8cbb45cbe6894440b2e905484d054b6ebf28f03d4a85da9c608f3ebc35587d0c",
+      "imports": [
+        "GlobalCounting"
+      ]
+    },
+    {
+      "module": "ClassicalDecomposability",
+      "source": "prior/ClassicalDecomposability.lean",
+      "sha256": "c3492a0398c707b98321150dd6afcfb9d2c2d19a7abf36622b24d32b89aba16d",
+      "imports": [
+        "FanoBlock",
+        "HGPIncidence",
+        "GramCounterexample12"
+      ]
+    },
+    {
+      "module": "ComplexCharacter",
+      "source": "prior/ComplexCharacter.lean",
+      "sha256": "e3833482a9d565b97b3d12b00ab48994179f5e35bd937e10881156d79a0dabe9",
+      "imports": [
+        "CyclicFourierCount",
+        "Mathlib.Analysis.SpecialFunctions.Complex.CircleAddChar"
+      ]
+    },
+    {
+      "module": "ComplexDFT",
+      "source": "prior/ComplexDFT.lean",
+      "sha256": "19f4f26be951bfde9c49a476fbcc5ce21ece360e77caace9260921d6cd4ffa35",
+      "imports": [
+        "ComplexCharacter"
+      ]
+    },
+    {
+      "module": "ComplexCyclicCount",
+      "source": "prior/ComplexCyclicCount.lean",
+      "sha256": "da7354c62c4eec8624abbf78817b22110da7dbfcb72b8d19e7b5ac53ba628b15",
+      "imports": [
+        "ComplexCharacter"
+      ]
+    },
+    {
+      "module": "ComplexMatrixCount",
+      "source": "prior/ComplexMatrixCount.lean",
+      "sha256": "f5dab0a1bf0c74dc6ff6a99d4390d1264c1e9c816132a751a552079393f9df2f",
+      "imports": [
+        "ComplexCyclicCount",
+        "ComplexDFT",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Data.Matrix.Mul"
+      ]
+    },
+    {
+      "module": "ComplexRootFormula",
+      "source": "prior/ComplexRootFormula.lean",
+      "sha256": "3f80b3dca6deed8d0728dd4b884a6fbfaf5272c7474f566dd164318065fc6fbb",
+      "imports": [
+        "ComplexMatrixCount"
+      ]
+    },
+    {
+      "module": "ComplexConsumer",
+      "source": "prior/ComplexConsumer.lean",
+      "sha256": "4e78db8fb764614bc4a21efb2f87dfe6a0030ab2def8c9de7f1de59c54a7b5bb",
+      "imports": [
+        "ComplexRootFormula"
+      ]
+    },
+    {
+      "module": "ComplexQuantumSockets",
+      "source": "prior/ComplexQuantumSockets.lean",
+      "sha256": "9f4acc3fe5770aeddf8a7b5573940cc240940845e760b493506a4237937e8a1e",
+      "imports": [
+        "ComplexDFT",
+        "HGPSpectral",
+        "GBReflection"
+      ]
+    },
+    {
+      "module": "ComplexQuantumWitness",
+      "source": "prior/ComplexQuantumWitness.lean",
+      "sha256": "8c188e84bc9da61c05029a0324b1ed598a0806556310e19724a51f5201325a6c",
+      "imports": [
+        "ComplexQuantumSockets",
+        "ComplexRootFormula",
+        "QuantumReindex"
+      ]
+    },
+    {
+      "module": "ComplexQuantumFormula",
+      "source": "prior/ComplexQuantumFormula.lean",
+      "sha256": "8f3fac5e51272a7b2a3ff0972680e93fc3d001af59fe9b082603f1fb44318f8d",
+      "imports": [
+        "ComplexQuantumWitness"
+      ]
+    },
+    {
+      "module": "AbsorbingComplex",
+      "source": "prior/AbsorbingComplex.lean",
+      "sha256": "3d3337462830fa43ddf6c83f17ec95fe8a35aa9704618fd3a880298f1d61384b",
+      "imports": [
+        "AbsorbingFourTwo",
+        "ClassicalConfiguration",
+        "ClassicalDecomposability",
+        "ComplexConsumer",
+        "ComplexQuantumFormula"
+      ]
+    },
+    {
+      "module": "PaschClassification",
+      "source": "PaschClassification.lean",
+      "sha256": "6687f91f404e0e6068704167a8e1790cb80a9b60122119d95f72f611a3fd1a77",
+      "imports": [
+        "GlobalCounting",
+        "PairEnergy",
+        "Mathlib.Data.ZMod.Basic"
+      ]
+    },
+    {
+      "module": "PaschKernelCount",
+      "source": "PaschKernelCount.lean",
+      "sha256": "7650ef83164737b415830fe028fcfd008e20e7dbff976e8895edcb535fb11384",
+      "imports": [
+        "PaschClassification",
+        "Mathlib.Data.Matrix.Mul"
+      ]
+    },
+    {
+      "module": "PaschAbsorbingBridge",
+      "source": "PaschAbsorbingBridge.lean",
+      "sha256": "0e6dc90faacff4cacac58b26e49618fe3efc00e154e9ee7c504541ea0532f282",
+      "imports": [
+        "PaschKernelCount"
+      ]
+    },
+    {
+      "module": "PaschRootEnergy",
+      "source": "PaschRootEnergy.lean",
+      "sha256": "c169eb60f19c47d61c92c227b7f018b29c449723031634b16d988319130bd9f9",
+      "imports": [
+        "PaschKernelCount",
+        "PairFormulaCore"
+      ]
+    },
+    {
+      "module": "PaschRootClassification",
+      "source": "PaschRootClassification.lean",
+      "sha256": "9f8349b8c8f3640d916fde16464588f8ac78090f08f63624b0371f31011dd723",
+      "imports": [
+        "PaschRootEnergy"
+      ]
+    },
+    {
+      "module": "PaschGlobalCount",
+      "source": "PaschGlobalCount.lean",
+      "sha256": "e2a7eeb8cac6a25b58eca5a65500cf100c29f18f78a349e4e335bbf555954f3f",
+      "imports": [
+        "PaschRootClassification",
+        "PairRootBridge"
+      ]
+    },
+    {
+      "module": "PaschCyclicCount",
+      "source": "PaschCyclicCount.lean",
+      "sha256": "84b1d044c86d37ee42aa1da574bf17fdcbf49e0f636e402069dc26be28893500",
+      "imports": [
+        "PaschGlobalCount",
+        "CyclicNormalization"
+      ]
+    },
+    {
+      "module": "PaschComplexCount",
+      "source": "PaschComplexCount.lean",
+      "sha256": "f6e13b20efb9d93d585cd0664215e97da8c5acb65610a5d275c55977ea020796",
+      "imports": [
+        "PaschCyclicCount",
+        "ComplexRootFormula"
+      ]
+    },
+    {
+      "module": "PaschConsumers",
+      "source": "PaschConsumers.lean",
+      "sha256": "df3b8c26701e55378bc1873e6e47ecdfa92ef62e1ed44d905e289603e6d2079c",
+      "imports": [
+        "PaschComplexCount",
+        "FanoBlock",
+        "GramCounterexample12"
+      ]
+    },
+    {
+      "module": "PaschHGPCount",
+      "source": "PaschHGPCount.lean",
+      "sha256": "f5b2f4c5b29b30c6403882a7873eebc95082fe93111758a15575e3881ede76de",
+      "imports": [
+        "PaschCyclicCount",
+        "HGPCounts"
+      ]
+    },
+    {
+      "module": "PaschReindex40",
+      "source": "PaschReindex40.lean",
+      "sha256": "2bbe545f41785ec2163b1cc66389fdf47b8492aa63006b793b54c71354c7a35b",
+      "imports": [
+        "PaschKernelCount",
+        "IncidenceEquivalence"
+      ]
+    },
+    {
+      "module": "PaschSTS13",
+      "source": "PaschSTS13.lean",
+      "sha256": "28f6a16ee35667dae367e2e24ce81bc2a780a799de16eb17d760ac129b57542d",
+      "imports": [
+        "PaschHGPCount",
+        "PaschConsumers",
+        "HGPGramObstruction"
+      ]
+    },
+    {
+      "module": "PaschSTS13Counts",
+      "source": "PaschSTS13Counts.lean",
+      "sha256": "133e17b87739d71f36ff1e1e94b6b350c8d665d1c21f5a0427b97fe15f42a466",
+      "imports": [
+        "PaschSTS13"
+      ]
+    },
+    {
+      "module": "PaschDesignData",
+      "source": "PaschDesignData.lean",
+      "sha256": "01d922d038cc34f83313a680860c5963846137b697044ef691bd019dcdd32a1c",
+      "imports": [
+        "PaschSTS13"
+      ]
+    },
+    {
+      "module": "PaschQuantumBridge",
+      "source": "PaschQuantumBridge.lean",
+      "sha256": "63176be7c8d09a0688e41065308c0060fb63b9f0951b08cc6dc76e32c449e46e",
+      "imports": [
+        "PaschReindex40",
+        "PaschHGPCount",
+        "ComplexQuantumWitness"
+      ]
+    },
+    {
+      "module": "PaschQuantumWitness40",
+      "source": "PaschQuantumWitness40.lean",
+      "sha256": "a81ea7a65e0714a9ded41e00f00d87107acc451a78e90db31c33b94fdb1e9568",
+      "imports": [
+        "PaschQuantumBridge",
+        "PaschSTS13Counts",
+        "PaschComplexCount"
+      ]
+    },
+    {
+      "module": "PaschBeezerBridge",
+      "source": "PaschBeezerBridge.lean",
+      "sha256": "643d5ed57901aa2698e1f3d20e3af459a698e272913ea25012e68f4e7ac46f8e",
+      "imports": [
+        "PaschClassification"
+      ]
+    },
+    {
+      "module": "PaschCubicTrade",
+      "source": "PaschCubicTrade.lean",
+      "sha256": "d632d1f0164953ff411f53b8b9115a463b70941d4d093e4fdd540c812863df0e",
+      "imports": [
+        "PaschDesignData",
+        "PaschQuantumWitness40"
+      ]
+    },
+    {
+      "module": "AbsorbingFourCounts",
+      "source": "AbsorbingFourCounts.lean",
+      "sha256": "b80b0f5b6f7177db07d533b4ce28f3a7d065296761ce71aba013e47fda83039d",
+      "imports": [
+        "PaschComplexCount",
+        "PaschBeezerBridge",
+        "PaschAbsorbingBridge",
+        "PaschQuantumWitness40",
+        "PaschDesignData",
+        "PaschCubicTrade"
+      ]
+    }
+  ]
+}

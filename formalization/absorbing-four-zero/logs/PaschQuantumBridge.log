@@ -1,0 +1,17 @@
+./PaschQuantumBridge.lean:27:0: warning: automatically included section variable(s) unused in theorem `PaschQuantumBridge.source_incidence_bridge`:
+  [Fintype U]
+  [Fintype C]
+  [DecidableEq U]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype U] [Fintype C] [DecidableEq U] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./PaschQuantumBridge.lean:86:0: warning: automatically included section variable(s) unused in theorem `PaschQuantumBridge.fullM_eq`:
+  [DecidableEq U]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq U] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'PaschQuantumBridge.source_incidence_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaschQuantumBridge.socket_count40_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaschQuantumBridge.fullM_eq_of_Gram' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,48 @@
+./prior/first-block/HGPIncidence.lean:18:0: warning: automatically included section variable(s) unused in theorem `HGPIncidence.left_left`:
+  [Fintype U]
+  [Fintype C]
+  [Fintype D]
+  [Fintype E]
+  [DecidableEq U]
+  [DecidableEq E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype U] [Fintype C] [Fintype D] [Fintype E] [DecidableEq U] [DecidableEq E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./prior/first-block/HGPIncidence.lean:29:0: warning: automatically included section variable(s) unused in theorem `HGPIncidence.left_right`:
+  [Fintype U]
+  [Fintype C]
+  [Fintype D]
+  [Fintype E]
+  [DecidableEq U]
+  [DecidableEq E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype U] [Fintype C] [Fintype D] [Fintype E] [DecidableEq U] [DecidableEq E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./prior/first-block/HGPIncidence.lean:39:0: warning: automatically included section variable(s) unused in theorem `HGPIncidence.right_right`:
+  [Fintype U]
+  [Fintype C]
+  [Fintype D]
+  [Fintype E]
+  [DecidableEq U]
+  [DecidableEq E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype U] [Fintype C] [Fintype D] [Fintype E] [DecidableEq U] [DecidableEq E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+./prior/first-block/HGPIncidence.lean:67:29: warning: This simp argument is unused:
+  hcentral.2
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [columns, hcentral.1, hright.1, hright.2, hleft.1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+./prior/first-block/HGPIncidence.lean:74:18: warning: This simp argument is unused:
+  hcentral.1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [columns, hcentral.2, hleft.1, hleft.2, hright.1]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'HGPIncidence.mixed_properCommon_empty' depends on axioms: [propext, Classical.choice, Quot.sound]

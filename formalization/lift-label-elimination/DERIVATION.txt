@@ -1,0 +1,272 @@
+HISTORICAL ORDINARY DERIVATION PATHS
+
+This file preserves arguments from the bounded research hour, including
+alternative switching and quotient-ring explanations. The current manuscript
+uses independently counted coordinate slices, recurrence-based ranks and an
+orthogonal separating witness. Its seven proof blocks and auxiliary claims
+have the faithful Lean versions listed in proof-coverage.json. Historical
+pending-formalization language below describes that checkpoint, not the final
+verified scope. A general switching-orbit theorem is not part of the manuscript.
+
+LIFT-LABEL ELIMINATION: PRECISE STATEMENTS AND PROOFS
+Project-derived follow-up RQ-F16-lift-label-elimination, parent L-F16-other-absorbing.
+All counts refer to unordered supports, not ordered embeddings or decoder events.
+
+1. Objects and classification
+Let H:V -> finite subsets of C have column size three and |H(u) intersect H(v)|<=1
+for distinct variables. A four-variable elementary(4,0) support has every used
+check incident with exactly two selected variables. Its six used checks are in
+bijection with the six pairs of selected variables: the normal graph is K4.
+Conversely such a Pasch is elementary(4,0). A zero binary syndrome four-support
+is automatically elementary: odd check degrees are excluded; a degree-four
+check would already use the unique common check of every pair and prevent the
+remaining two sockets on every variable from being paired. These general facts
+are in the preserved PaschClassification/PaschKernelCount formalization.
+
+2. Ordinary monomial cover and projection
+For N>=1, z(v,c) in Z/N on every existing edge, define
+H_z(v,t)={(c,t+z(v,c)):c in H(v)}.
+Two distinct fibers of the same base variable cannot share a check, since the
+unique edge to any base check gives t+z=s+z only if t=s. Hence the pair-complete
+four variables of a lifted Pasch have distinct base types. Their base types are
+pair-complete. If three of these types contained the same base check c, base
+linearity would force their pair checks to project to c. At one variable, its
+single edge to c then forces the three lifted variables to share the same check,
+contradicting elementary selected degree<=2. Thus all projected used checks
+have selected degree<=2; cubicity and pair completeness give a base Pasch.
+This excludes both repeated-type and false projected K4 configurations.
+Evidence: general Lean, PaschLiftProjection.zero_syndrome_projects.
+
+3. Exact voltage criterion and count
+Fix a base Pasch with its variables ordered v0<v1<v2<v3 (choose any fixed order
+on a finite base), and its unique pair checks c_ij. Put
+ d_ij=z(vi,c_ij)-z(vj,c_ij), i<j.
+Offsets x_i give the lifted pair incidences precisely when x_j-x_i=d_ij.
+All six equations hold iff
+ d01+d12=d02, d01+d13=d03, d02+d23=d03.                 (B)
+Necessity is cancellation. Under(B), all solutions, uniquely, are
+ (t,t+d01,t+d02,t+d03), t in Z/N.
+For any solution the six projected pair checks were distinct, so the actual
+lifted checks are distinct, and this is a Pasch. Distinct t give distinct
+unordered supports because the base variables are distinct; different base
+Pasches also have different projected supports. Section2 proves surjectivity.
+Consequently
+ N40(H_z)=N * #{base Pasches satisfying(B)}.            (1)
+General Lean: PaschVoltage proves the solution equivalence/count over any
+additive commutative group (cyclic count for all positive N). PaschLiftCriterion
+connects the actual cover incidence and binary even-check condition to the six
+offset equations. Projection is separately Lean checked. The final finite-set
+partition and passage from fixed ordered base representatives to unordered
+supports in(1) are the written bijection above, not a claimed Lean count theorem.
+This is a specialization of classical voltage/cycle-consistency principles,
+not a newly discovered elimination method. Eliminate at least one equation of
+(B) for every base Pasch. At N=1 no base Pasch can be eliminated.
+
+4. The fixed classical ten-triple bases
+Variable types are0,...,9, check types0,...,9. The star base is
+ 012,034,135,245,067,168,269,378,479,589.
+The triangle base replaces the first four triples by345,125,024,013.
+Both are connected cubic linear10_3 configurations with30 Tanner edges.
+Their base Pasches are respectively one and five (all supports in results.json).
+The bases and these classical counts were identified with public author data
+in the previous block; no claim of new base configurations is made.
+
+Fix the spanning tree given in results.json. Switching vertex fiber origins
+sets its19 labels to zero uniquely after fixing one vertex potential. There are
+11 free chord labels. Every gauge class has N^19 raw assignments, since the
+only switch fixing every edge on a connected graph is a constant vertex switch.
+This holds over every Z/N, without field assumptions.
+For every subset J of base Pasches stack its three integer cycle equations into
+A_J. results.json supplies elementary integer row/column operations reducing
+A_J, both on30 edges and11 chords, to diag(I_r,0). Swaps, sign changes and adding
+integer multiples of another row/column are invertible modulo every N. Thus
+|ker(A_J mod N)|=N^(30-r), or N^(11-r) after gauge fixing. No assertion based
+only on rational rank or prime-field rank is used.
+For the star r=0,3. For the triangle, r by |J|=0,1,2,3,4,5 is0,3,6,9,11,11.
+All34 subset certificates are independently replayed by verify_certificates.py;
+all six-variable/edge lists are independently reconstructed in that verifier.
+Inclusion-exclusion gives eliminating raw assignments:
+ star:     N^30-N^27;
+ triangle: N^30-5N^27+10N^24-10N^21+4N^19.             (2)
+The complete triangle gauge histogram g_j, where j is the number of balanced
+base Pasches and the actual lift has N*j supports, is
+ g0=N^11-5N^8+10N^5-10N^2+4,
+ g1=5(N^8-4N^5+6N^2-3),
+ g2=10(N^5-3N^2+2),
+ g3=10(N^2-1), g4=0, g5=1.                          (3)
+Indeed, for s>=j, the sum over s-event intersections is binom(5,s)N^(11-r_s),
+and binomial inversion gives g_j=sum_{s=j}^5(-1)^(s-j)binom(s,j)binom(5,s)
+N^(11-r_s). The star histogram is(N^11-N^8,N^8).
+All raw histogram counts are N^19*g_j. For N>=2 the zero-support counts are
+positive: for the triangle divide by N^11 and bound below by
+1-5/N^3-10/N^9 >=1-5/8-10/512>0. N=1 gives only the balanced zero assignment.
+A second independent C++ program exhaustively enumerates all11 chord labels
+for N=2,3,4 in both bases (8,746,998 assignments). It agrees with(3).
+Python additionally checks N=1,2,3 exhaustively and128 seeded direct lifted
+incidence consumers across N=1,2,3,4,7,8,9,12. The latter are sampled tests,
+not a substitute for the proof. Evidence for(2)-(3): written proof with explicit
+finite integer certificates; not a general Lean enumeration theorem.
+
+5. Simultaneous star/dual-star elimination
+The dual star base has unique Pasch on check types6,7,8,9. Map its voltages back
+to original edges with sign minus. The three original and three dual equations
+form the6x30 matrix in joint-star.json; an independently replayed unimodular
+certificate reduces it to diag(I_6,0). Each individual event has rank3. Hence
+the number of raw assignments killing both left-cover and dual-cover Pasches is
+ N^30-2N^27+N^24=(N^15-N^12)^2.                       (4)
+This does not remove Pasches internal to a fixed scalar-right factor.
+
+6. Full scalar-right QC-GHP incidence and obstruction
+Over R_N=F2[x]/(x^N-1), let A_cv=x^z(v,c) on base edges and0 elsewhere, and
+b=1+x+x^3. Set X=[A | b* I_C], Z=[b I_V | A*], where star transposes matrices
+and replaces x by x^-1. XZ*=Ab*+b*A=0. With ordinary binary circulant expansion,
+X left(v,t) has checks(c,t+z_vc), X right(c,t) has(c,t-e), e=0,1,3;
+Z left(v,t) has(v,t+e), Z right(c,t) has(v,t-z_vc).
+Assume b's binary columns have size3 and no pair intersects twice. Then X,Z
+also have column3, row6 for these square cubic bases, and no Tanner4cycles:
+left-left follows cover linearity, right-right follows the scalar factor, and
+left-right intersects at most once since a left column has one edge per c.
+
+No mixed Pasch exists, even for arbitrary z. Four pairwise adjacent variables:
+- One left/three right: right-right adjacency forces all three right variables
+  into the same check-type fiber c. The left has only one check of type c,
+  forcing selected degree4 there, impossible.
+- Two left/two right: the two right variables have the same type c. Each left
+  must meet both at its unique c-check, forcing selected degree at least3.
+- Three left/one right: the three lefts meet the right at its three distinct
+  checks of the same type c. They have distinct base variable types; otherwise
+  they could not be adjacent. All three base types contain c, so base linearity
+  forces every left-left intersection to have type c. Their distinct c-checks
+  then prevent adjacency, a contradiction.
+An all-right Pasch is contained in one type fiber. Thus
+ N40(X)=N*j_A+|C|*N40(B), N40(Z)=N*j_Astar+|V|*N40(B). (5)
+Here B is the ordinary scalar circulant; transpose/reindexing does not change
+its support count. Equation(5) is a written arbitrary-voltage extension; the
+prior Lean HGP product count assumed constant left labels, and is not silently
+reused for this stronger scope. The finite witnesses below are checked directly.
+For N=7, B is Fano incidence and N40(B)=7. Both ten-type full Tanner graphs
+therefore retain at least70 supports regardless of left labels. Left-only
+elimination is possible, full elimination with that fixed factor is impossible.
+
+7. A finite nontrivial quantum-code certificate
+Take the star base, N=14 and z(0,0)=z(4,6)=7, every other edge label0.
+The original Pasch is killed by z(0,0); the dual unique Pasch is killed by z(4,6).
+The scalar B14 has no weight-four kernel support (direct exact check).
+The actual binary X,Z each have140 rows and280 columns, column3,row6, and
+no Tanner4cycles. Both ranks over F2 are131, X Z^T=0, so k=280-131-131=18.
+Both N40 counts are0. Python pair-XOR counting and an independent C++17
+exhaustive enumeration of all250,654,530 four-subsets per graph agree.
+The C++ verifier separately reconstructs every column from the base/labels,
+checks degrees/linearity/commutation, and uses a different Gaussian elimination.
+The zero-based support [28,42,70,84,98,112] is a weight-six word in ker X;
+appending it to the rows of Z raises their rank from131 to132. Hence it is a
+nontrivial logical operator. Any kernel word has even weight because summing
+all check syndromes gives column-weight3 times its weight. A weight-two kernel
+word would require equal columns, impossible by linearity. Weight four is
+exhaustively absent in each graph. Therefore the CSS distance is exactly6,
+and the certified parameters are [[280,18,6]]. This is exact finite computation
+plus the written distance argument, not a Lean quantum-distance theorem.
+The N=8 labels1 on the same two edges also eliminate both support counts, but
+rank X=rank Z=80 at length160 gives k=0. This degenerate candidate is retained.
+The N=7 zero-label baseline has n140,rank61 each,k18,N40=77 in both graphs.
+No decoder simulation, improvement in error floor, optimality, asymptotic
+performance or uniqueness of the parameter set is claimed.
+
+8. Scope and remaining work
+The fixed-base label criterion and all-N assignment counts are answered. The
+fixed N=7 full-code obstruction and the N=14 nontrivial elimination example
+are answered. Classical work already supplies the general method; bounded X,
+GitHub and literature searches did not identify the exact two-base histogram
+or this exact labeled instance, which does not establish priority.
+Remaining formalization: the final unordered counting partition, integer
+certificate soundness/inclusion-exclusion and arbitrary-voltage QC mixed-sector
+partition; current proof scope is listed precisely in verification.json.
+A proposed next FOLLOW-UP would compare decoding only after fixing a controlled
+code/channel/decoder estimand, or formalize the integer certificate checker.
+Neither is required to finish the present finite construction/count result.
+
+9. Written general family: [[140q,18,6]], every integer q>=2
+Set N=7q, use exactly the same two nonzero labels7, and b=1+x+x^3.
+The finite construction of Section7 is q=2. This is a bounded extension of the
+same label-elimination model, not a new source-posed inventory problem.
+
+Scalar factor: view B_(7q) as a q-fold monomial cover of B7. Write its variable
+index as r+7s,0<=r<7, and each check index as c+7u. The edge r+7s -> r+7s-e,
+e=0,1,3, has base check c=(r-e) mod7 and voltage floor((r-e)/7) in Z/q.
+Exactly four of the21 edge voltages are-1, namely(r,c)=(0,4),(0,6),(1,5),(2,6);
+all others are0. B7 is cubic linear and has exactly the seven Pasches below.
+The three integer cycle residuals in the order of Section3 are:
+  0125: (0,0,1); 0146: (1,0,0); 0234: (0,1,1);
+  0356: (1,1,0); 1236: (0,0,1); 1345: (0,1,1); 2456: (0,1,1).
+Every residual triple contains1, which is nonzero modulo every q>=2. Projection
+and(1) give N40(B_(7q))=0. Linearity is inherited from the B7 cover.
+FanoCarryCertificate.lean kernel-checks cubicity, linearity, the complete
+unordered four-support list, its unique pair-check data, and the integer unit
+residual property. The coordinate isomorphism and reduction modulo q in this
+paragraph are written bridges, not a claimed Lean B_(7q) count theorem.
+
+The two modified star edges kill its unique original and unique dual Pasch for
+all q>=2, since their relevant cycle residuals contain +/-7, nonzero modulo7q.
+The all-left counts vanish. Equation(5) then gives no elementary(4,0) support
+in either full CSS Tanner graph. All columns have weight3 and checks weight6.
+
+Rank proof over the quotient ring, including repeated-root cases:
+Let g=x^(7q)+1, b'=1+x^2+x^3. The identity(x+1)b b'=x^7+1 shows b,b' divide g.
+The binary row-rank defect of X=[A|b*I] is the binary dimension of ker X*.
+Here X* is the vertical stack[A*;bI]. Thus a check-coordinate column alpha
+satisfies b alpha=0 and A*alpha=0.
+In F2[x]/g, every scalar annihilator element of b has a unique expression
+ (g/b) beta mod g, beta in F2[x]/b.
+This follows directly by polynomial cancellation b*a multiple of g iff a is
+multiple of g/b, with beta unique modulo b; no coprimality is assumed.
+Consequently the alpha conditions reduce to (A* mod b)*beta=0 over Q=F2[x]/b.
+Because x^7=1 in Q and all A labels are0 or7, A* mod b=H^T, with H the binary
+star incidence matrix. Its binary rank is7. Binary invertible row/column
+operations reduce H^T to diag(I7,0) and stay invertible over Q. Its kernel is
+Q^3, dimension3*deg(b)=9 over F2. Therefore rank X=10N-9.
+For Z=[bI|A*], the adjoint Z* is the vertical stack[b*I;A]. Since
+b*=x^-3 b', its scalar annihilator equals that of b'. Reduction modulo b'
+gives A mod b'=H and again a9-dimensional binary check kernel. Thus
+rank Z=10N-9. This uses the column-polynomial convention x^t for fiber t,
+so adjoint means the ordinary binary transpose; exponent signs are explicit.
+Thus k=20N-2(10N-9)=18 for every q>=2, even q included. The elementary polynomial
+factorization and binary rank are exact finite ingredients; the quotient-ring
+argument is an ordinary written proof, not a general Lean rank theorem.
+
+Distance proof: the six base variables{2,3,5,6,7,8} form a binary dependency and
+avoid both modified variables0,4. Put each at fiber0. Their six actual X columns
+therefore sum to zero for every q. The resulting left-only word is outside the
+Z row span: the left component of every binary Z row combination, equivalently every
+column in im Z*, is divisible by b' in R_N (b*=x^-3 b'). Reduction modulo
+b' sends it to zero, whereas our nonzero constant
+coordinate vector survives. This quotient map is well-defined because b'|g.
+It is a nontrivial weight-six logical. Odd kernel weights are excluded by
+column3, weight2 by linearity, and weight4 by the proven elimination. Hence
+minimum CSS distance is6. We obtain [[20N,18,6]]=[[140q,18,6]].
+This is a constant-dimension, constant-distance family; its rate tends to zero.
+It is not proposed as an asymptotically good family or a code-performance record.
+Independent finite consumers q=2,3,4 confirm the formulas; exhaustive C++
+quadruple/rank/logical verification is only claimed for q=2. Exact all-q rank,
+distance and mixed-support arguments remain written, with the formal and finite
+components separated in verification.json and the paper.
+
+FORMAL ADDENDA DURING THE SAME BOUNDED BLOCK
+PaschLiftCriterion.actual_even_offset_count also counts actual even-check offset
+assignments above one specified base Pasch, rather than just abstract equations.
+FanoCarryCertificate.every_representative_unbalanced proves reduction of the
+unit residual to nonzero modulo every q>=2 for all seven canonical representatives.
+StarKernelCertificate.complete_kernel kernel-checks all eight binary base
+kernel supports; kernel_card=8 supplies the written rank7 inference.
+StarElimination.nonzero_eliminates proves directly that the actual star cover
+with nonzero labels a at(0,0),(4,6) has no four-variable binary dependency, over
+any finite additive commutative group. Its support-image bridge uses the full
+base kernel list and handles arbitrary ordering of projected variables.
+VoltageQCIncidence.mixed_properCommon_empty and mixed_rootTerm40_zero prove
+the arbitrary-voltage mixed-root exclusion under base linearity. The final
+global QC support partition and all-q quantum module rank/distance remain written.
+
+StarDuality supplies the explicit self-duality: base variable u maps to dual
+variable u+6 mod10; base check c maps to dual check c+4 mod10. Under these
+permutations the dual voltages become the original two-edge pattern with label
+-a. The actual cover column-image equality and dual_nonzero_eliminates are
+checked, so both cover-sector elimination claims have general Lean proofs.

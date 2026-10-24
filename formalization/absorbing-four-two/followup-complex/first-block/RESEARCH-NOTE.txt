@@ -1,0 +1,522 @@
+EXACT (4,2) COUNTS WITH INCIDENCE CORRECTIONS
+Mathematical research note, October 23, 2026
+Canonical target: L-F16-other-absorbing, (4,2) component.
+
+Research-block outcome
+----------------------
+This is a follow-up to the earlier girth-eight project, not a repetition of it.
+The old scope forces N42=0. This block addresses girth-six cubic graphs and the
+(4,2) component of the source's deferred QC-GHP enumeration task.
+
+Question answered: an exact incidence-corrected (4,2) formula for every finite
+cubic/no-four-cycle Tanner graph, its cyclic construction-data specialization,
+and an obstruction to using only the source's M_j matrices. The generic integer
+formula, cyclic normalization and finite-character Fourier formula are checked
+in Lean, under the declared faithful/unitary-character hypotheses. The explicit connected
+[[168,6]] obstruction has counts 49 versus 35, proved structurally in Lean for
+the tensor incidences and independently verified from full X/Z matrices and a
+definition-based four-subset enumerator. See verification.json
+for the exact extent of the additional concrete Lean and Fourier checks.
+
+Question still open: the companion (4,0) part of the combined canonical target
+was not attempted. No unresolved mathematical step is claimed in the stated
+written (4,2) formula. Any remaining Lean bridge is a formalization limit, not a
+mathematical gap silently filled by computation. The bounded prior-art search
+found no earlier full-target answer; it does not establish first-ever priority.
+
+Next proposed target (follow-up): inspect the remaining full-text leads and
+finish any specifically recorded Fourier/concrete formalization bridge. A
+separate (4,0) investigation would be a new research block. No publication,
+external messages, decoder performance experiment, or distance claim is made.
+
+Scope and notation
+------------------
+H is a finite binary parity-check matrix. Its columns are variables V and rows
+are checks C. N(v) is the set of checks incident to v. Every column has weight
+three. Distinct columns share at most one check (equivalently, the simple Tanner
+graph has no four-cycle). Products used for counting below are ordinary integer
+or complex products. CSS commutation is checked separately over F_2.
+
+For a selected variable set S, d_S(c)=|N(c) intersect S|. S is elementary when
+every incident check has induced degree one or two. It is absorbing when each
+selected variable has more even than odd induced-degree check neighbors. An
+elementary (4,2) set has |S|=4 and exactly two odd induced-degree checks. Count
+variable subsets once, without choosing an ordering or checking nodes outside S.
+This is not the stronger 'fully absorbing' condition.
+
+Classical ingredient
+--------------------
+The elementary (4,2) normal graph is a diamond, K4 minus an edge. The two central
+vertices have normal degree three; the two leaves have degree two. This topology,
+and counting through the two constituent six-cycles, are classical. See Dolecek
+et al. (2010), Section III-C / Lemma 4, and Wang–Dolecek–Wesel (2012/2013), Section
+VI. The count below makes the distinction between a normal graph of an already
+elementary set and the global variable-node projection explicit.
+
+Lemma 1: classification from actual incidences
+---------------------------------------------
+Let S be four selected variables. If it is elementary with two odd checks, the
+12 variable-check incidences comprise two degree-one checks and five degree-two
+checks. Replacing degree-two checks by edges gives a simple graph with four
+vertices and five edges: no parallel edge is possible because H has no four-
+cycle. Thus it is K4 minus an edge. Its degrees are 3,3,2,2, proving absorption
+automatically, and giving a unique unordered central pair.
+
+Conversely, an incidence-realized diamond with five distinct degree-two checks
+and two distinct remaining degree-one checks is elementary (4,2). An induced
+diamond in the global projection alone does not guarantee these incidences.
+
+Lemma 2: proper common neighbors
+--------------------------------
+For an ordered pair u != v sharing a check c, define
+
+  W_uv = {w not in {u,v}: w shares a check with u and with v,
+                             and w is not incident to c}.
+  t_uv = |W_uv|.
+
+The shared check c is unique. Equivalently, the triple intersection
+N(u) intersect N(v) intersect N(w) must be empty. Each w in W_uv completes a
+proper six-cycle on u,v,w, through three distinct checks. The other two checks
+of u and the other two checks of v give four possible pairs of checks; at most
+one variable realizes each such pair. Consequently t_uv <= 4.
+
+An ordered choice w,z in W_uv, w != z, with N(w) intersect N(z) empty, determines
+an elementary (4,2) set {u,v,w,z}. To see this, consider the five pair-checks uv,
+uw,vw,uz,vz. The proper-triangle conditions make each of the two triangles use
+three distinct checks. Any further equality between these five check labels
+would force w and z to share a check. Hence all five are distinct. Degree three
+exhausts the check neighborhoods of u and v. Each leaf has its two indicated
+even checks and one remaining check. Neither remaining check meets u or v,
+since this would repeat a shared check for a variable pair; the two remaining
+checks cannot coincide since w,z have no shared check. Thus they are precisely
+the two odd degree-one checks. Conversely, the two leaves of every elementary
+(4,2) set satisfy these requirements at its central pair.
+
+There are exactly four ordered realizations of each set: two central orders and
+two leaf orders. No division by the number of cycles or by a lift orbit is used.
+
+Theorem 1: exact incidence formula
+----------------------------------
+Let E^or denote the ordered distinct variable pairs sharing a check. Let A be
+the adjacency matrix of the simple global variable-node projection, with zero
+diagonal; A = H^T H - 3I. Let b_uv be the 0/1 indicator vector of W_uv. Then
+
+  4 N_(4,2)(H)
+    = sum_{(u,v) in E^or} [t_uv(t_uv-1) - b_uv^T A b_uv]
+    = sum_{(u,v) in E^or} [t_uv^2 + 2t_uv - ||H b_uv||_2^2].       (1)
+
+Proof: t(t-1) counts ordered distinct leaf choices. The quadratic form b^T A b
+counts precisely the ordered choices whose leaves share a check. Lemma 2 gives
+the four-to-one correspondence. Finally, H^T H = A+3I and b^T b=t.
+Every summand is nonnegative and even. The individual energy identity can be
+written without subtraction:
+
+  #ordered distinct nonadjacent pairs in W + ||H 1_W||_2^2 = |W|^2+2|W|.
+
+This identity holds for every W in a cubic Tanner graph without four-cycles.
+Thus there is no unknown (4,0) count left as a correction term in (1).
+
+Computing the incidence correction
+----------------------------------
+For a central edge uv with unique check c, all common projected neighbors at c
+must be removed. If h_c is the indicator of the whole check neighborhood, then
+
+  b_uv = (A e_u) elementwise-multiplied by (A e_v) - h_c + e_u + e_v,
+  t_uv = (A^2)_(uv) - deg(c) + 2.
+
+The endpoint additions restore zero at u and v. All other entries are zero or
+one by the no-four-cycle hypothesis. These expressions exhibit the additional
+incidence information used by (1).
+
+Theorem 2: cyclic / Fourier formula
+-----------------------------------
+Describe a cyclic lift of degree ell by three sockets (r,e) for every variable
+type p. Its variable (p,a) has check neighbors (r,a+e), with arithmetic modulo
+ell. The sockets are distinct, and the expanded Tanner graph satisfies the
+preceding hypotheses. This includes the stated column-weight-three QC-GHP
+matrix [A_tilde | I tensor B^T], after the transpose sign on B is included.
+
+Let R be the ordered central-pair representatives ((p,0),(q,d)). Each actual
+ordered central pair has a unique such representative and a unique translate.
+This action is free on ordered pairs, even for composite or even ell. For a
+root alpha in R compute W_alpha and t_alpha by its sockets. For each pair of
+remaining check sockets x=(r,a), y=(s,b), a completing variable (p,t) exists
+exactly when it has distinct sockets (r,e),(s,f) satisfying
+
+  t = a-e;        a-e+f = b    (mod ell).
+
+No four-cycle makes this completion unique when it exists. Only four pairs of
+remaining sockets must be inspected to construct W_alpha; no expanded graph is
+needed for the integer implementation.
+
+Define omega=exp(2 pi i/ell),
+  D_j[r,p] = sum_{(r,e) in sockets(p)} omega^(-je),
+  b_hat_alpha,j[p] = sum_{(p,a) in W_alpha} omega^(-ja).
+With this unnormalized Fourier convention, Parseval gives
+
+  ||H b_alpha||^2 = (1/ell) sum_{j=0}^{ell-1} ||D_j b_hat_alpha,j||^2.
+
+Applying (1) and the free ordered-root translation yields the explicit formula
+
+  N_(4,2)(H) = (ell/4) sum_{alpha in R}
+    [t_alpha^2 + 2t_alpha
+        - (1/ell) sum_j ||D_j b_hat_alpha,j||^2].                 (2)
+
+This is a finite formula in the polynomial/socket data. Exact modular counting
+implements it without rounding; numerical complex evaluation is only a check.
+For QC-GHP, D_j is the full rectangular evaluated check matrix. Its product
+M_j=D_j D_j^* loses information needed to recover the corrected vectors/count.
+
+Theorem 3: M_j alone does not determine the count, even at fixed parameters
+---------------------------------------------------------------------------
+Here are two 12x12 binary matrices, specified by column supports in rows 0..11.
+They have the following eight common columns:
+
+  {0,10,11}, {1,6,9}, {2,9,10}, {3,6,7},
+  {4,7,8}, {5,7,11}, {6,8,10}, {8,9,11}.
+
+Add to A the four columns
+  {0,1,2}, {0,3,4}, {1,3,5}, {2,4,5}.
+Add to A' instead
+  {0,1,3}, {0,2,4}, {1,2,5}, {3,4,5}.
+
+This is a Pasch trade: the two four-column families cover exactly the same
+check pairs. Each point occurs twice on each side. Thus AA^T=A'A'^T over the
+integers. Both complete matrices have row and column weight three, no repeated
+check pair, and binary rank eleven. Their (4,2) counts are seven and five.
+These small base facts are suitable for direct kernel-evaluated certificates.
+
+Let B be the 7x7 circulant of b(x)=1+x+x^3. Define genuine QC-GHP CSS matrices
+
+  H_X(A) = [A tensor I_7 | I_12 tensor B^T],
+  H_Z(A) = [I_12 tensor B | A^T tensor I_7],
+
+and similarly for A'. The two products commute over F_2. Both are connected
+[[168,6]] codes (distance unspecified), with rank(H_X)=rank(H_Z)=81. Their X
+Tanner graphs are (3,6)-biregular with girth six. Their entire integer X-side
+Gram matrices agree:
+
+  H_X H_X^T = (AA^T) tensor I_7 + I_12 tensor (B^T B).
+
+Consequently every M_j agrees, not merely its eigenvalues. Nevertheless,
+
+              N_(4,2)(H_X(A)) = 49,
+              N_(4,2)(H_X(A')) = 35.
+
+The additional (4,0) counts are both 91, so the difference is not obtained by
+simply changing that companion count. Code length, logical dimension, degree
+parameters and the X-side spectral data all match. No decoder comparison or
+minimum-distance equality is asserted.
+
+Structural proof of the lift counts: with constant base labels, any proper
+mixed six-cycle would have either two left variables sharing a check (forcing
+their fiber coordinates to agree), or two right variables sharing a check
+(forcing their row types to agree). In either case the left/right cross
+incidences would all use one check, contradicting properness. Thus every proper
+six-cycle is wholly left or wholly right. The two triangles of a (4,2) diamond
+share the central pair, so the whole set is of one type. Left-only counts are
+seven copies of the base counts. Right-only sets lie in one row group, and the
+circulant B^T is the Fano incidence matrix, which has no (4,2) set. Hence 49 and
+35 follow. Independent full-matrix direct enumeration also checks both values.
+
+The obstruction is specifically to formulas using only the M_j. Full D_j,
+polynomial supports, or equivalent incidence information can support (2).
+
+Verification and evidence boundaries
+------------------------------------------------------------------
+The integer root formula, the construction-only socket implementation, and a
+separate C++ definition-based subset enumeration agree on 7,274 no-four-cycle
+codes from all normalized 3x3 exponent arrays at ell=7,8,9,10 with b=1+x+x^3.
+The independent enumeration examines 2,680,323,732 four-variable subsets.
+An exhaustive local classification checks all 2,048 families of possible
+non-singleton check supports on four variables; 97 are compatible with the
+cubic/no-four-cycle constraints.
+
+The 168-variable counterexample was independently expanded as binary X/Z
+matrices, checked for CSS commutation, degree conditions, no four-cycles,
+connectedness, exact binary ranks, equality of integer Gram matrices, and
+direct enumeration of 32,018,910 four-subsets per graph. The polynomial and
+expanded-matrix counts agree. No sampled decoder experiments are involved.
+
+The source's 882-variable example has 210 ordered-root representatives: 126
+have t=0 and 84 have t=1. It therefore has no elementary (4,2) set. The source
+matrix and transpose conventions were reconstructed from Example 3.2.
+
+General Lean developments cover the incidence classification, exact local
+four-to-one multiplicity, support/ordering count, and integer energy identity.
+The socket-to-incidence cyclic normalization and its corrected integer formula
+are checked general Lean theorems. The four-completion bound and the finite
+source-construction bridge are checked too. The finite-character Fourier algebra, socket-to-incidence action, energy
+identity and combined corrected Fourier count are also checked. They assume a
+faithful additive character satisfying star(psi a)=psi(-a); the standard complex
+exponential/norm specialization is written. The verification manifest records
+any further completed concrete certificates. The generic HGP incidence,
+proper-common-neighbor and root-mass proofs now establish the full product-count
+reduction. Concrete tensor incidences have kernel-checked counts 49 and 35.
+Their full check-Gram equality, the evaluated source relation D_j=[A|beta_j I],
+equality of every M_j, and CSS commutation are checked as well. QuantumReindex
+checks the canonical renumbering from tensor incidences to the explicit source
+construction and literal Fin 168 tables, transferring the exact counts to both.
+SocketCompletion and CompletionBridge check the occupied-socket pair equation,
+uniqueness and reconstruction of proper common neighbors; the Python code is
+validated separately from this mathematical algorithm model.
+It is the authority for what was actually compiled, with pinned versions and
+source hashes. Standard complex exponential/norm conventions must still be
+compared with the exact formal interface. Concrete kernel checks are separate
+from general theorems; the exact rank and connectedness computations are not
+promoted into formal linear-algebra or graph-connectivity proofs.
+
+Prior-art scope
+---------------
+The original project settles the girth-eight specialization, where this count
+is zero. Classical array-code formulas and general exhaustive ETS enumeration
+predate this investigation. No earlier complete formula for the full stated
+QC-GHP target was identified in the recorded bounded search. The projection-
+information obstruction has classical hypergraph predecessors; an existing
+STS(13) example in Jiang et al. (2026), Appendix F.1, was discovered during the
+search and is credited separately from the cubic examples generated here.
+Mathematical and method priority are unestablished. The STS paper, later P09 journal text, and failed citation-index requests leave
+explicit search gaps. The decomposable-code PDF gap was closed before block end.
+
+No new source question is added to the inventory. The canonical target also
+contains the companion (4,0) task, which was not the subject of this block.
+
+A subtraction-free modular alternative
+--------------------------------------
+For an ordered central representative alpha=((p,0),(q,delta)), order each
+endpoint's two remaining checks as x0,x1 and y0,y1. Let C(x,y) be the unique
+variable incident to both checks, or undefined if none exists. No four-cycle
+ensures uniqueness. For each permutation sigma of {0,1}, put
+
+  w = C(x0,y_sigma(0)),       z = C(x1,y_sigma(1)).
+
+Let e_alpha be the number of these two permutations for which w,z exist and
+N(w) intersect N(z) is empty. This also excludes w=z. The matching covers the
+two exclusive checks at each central endpoint. Each elementary diamond has one
+such matching at each of its two central orders, so
+
+  N42 = (ell/2) sum_alpha e_alpha.                              (3)
+
+The modular completion test in Theorem 2 makes (3) explicit in the occupied
+polynomial sockets. It uses only four potential completing variables per root,
+and two matching tests. This is an alternative written proof/implementation
+route; it is not claimed as the first exhaustive enumeration method. For the
+reduced witnesses, the normalized matching sums are 14 and 10, agreeing with
+the ordered-leaf sums 28 and 20 in (1)/(2).
+
+Details of the Fourier bridge
+-----------------------------
+For a check row type r and fiber t, let y_r(t)=(H b)_(r,t). Socket incidence gives
+
+  y_r(t) = sum_p sum_{(r,e) in sockets(p)} b_p(t-e).
+
+Changing variables a=t-e in the finite DFT shows
+
+  y_hat_r(j) = sum_p [sum_{(r,e) in sockets(p)} omega^(-je)] b_hat_p(j),
+
+which is exactly (D_j b_hat_j)_r. Orthogonality is the finite geometric-series
+identity sum_j omega^(j(a-b))=ell when a=b modulo ell, and zero otherwise.
+Expanding sum_j conjugate(y_hat_r(j))*y_hat_r(j), interchanging finite sums, and
+applying this identity leaves ell*sum_t |y_r(t)|^2. Summing over r proves (2).
+This proof works for every positive ell, including composite/even ell. It never
+assumes that a four-variable set has a free translation orbit. Only its ordered
+central roots are normalized, and that action is free. The paper's opposite
+polynomial/DFT sign convention only relabels j by -j in the full frequency sum.
+
+Why the normal-graph qualification matters
+------------------------------------------
+Here is a four-variable, eight-check cubic/no-four-cycle example:
+
+  N(0)={0,1,3}, N(1)={0,2,4}, N(2)={0,5,6}, N(3)={1,2,7}.
+
+Its global variable projection has five edges, hence is a diamond. But check 0
+meets three selected variables, so the configuration is not elementary and its
+N42 count is zero. Thus the classical normal graph of an already elementary
+set cannot be confused with every induced diamond in the global projection.
+The proper-neighbor exclusion in (1) removes this obstruction.
+
+Closer predecessor comparisons
+-------------------------------
+Morris–Pllaha–Kelley (first preprint 2023, inspected v2 2024; journal 2026),
+Definition 5 and Section V-C Remark 4 / Example 20, already describes base-set
+propagation into ordinary hypergraph products. The constant-label obstruction
+codes here are ordinary HGPs inside QC-GHP, and that replication principle is
+credited. The exact pure-type exclusion and product-count proof supply the
+count equality; generic propagation alone would only give a lower bound. The
+formula (1)/(2) also applies to nonconstant labels. No full nonconstant QC-GHP
+corrected Fourier count was identified in the inspected predecessor text. The
+2026 journal full text was subscription restricted; its metadata and accessible
+preprint were checked separately.
+
+The three-row-group column-weight-three SCB mother/daughter family in the
+classical CCM paper has one neighbor of each variable in each check group. In
+our fixed B^T Fano block every pair of its seven checks shares a variable, so
+all seven would require different groups. The witness cannot fit that
+three-group family even after relabeling. This is a hypothesis comparison,
+not an argument that classical generic ETS enumeration fails on these codes.
+
+Raeisi–Gholami (2024), Section 5 Theorem 3, Algorithm 1 and Table 5, was
+inspected through the publisher PDF after its HTML route timed out. It already
+lists the elementary (4,2) normal-graph shape. Its decomposable family has three
+check groups, which our Fano block cannot satisfy. Algorithm 1 counts abstract
+non-isomorphic shapes; it does not supply the inspected full QC-GHP socket or
+corrected Fourier embedding count. The shape classification is credited.
+
+For an exact numerical view of the trace obstruction, the two full global
+variable projections have the same traces tr(A_VN^2)=2520,
+tr(A_VN^3)=12810 and tr(A_VN^4)=157136. These were independently evaluated with
+ordinary integers. More generally, equal check Grams and equal dimensions imply
+the same singular values and hence equal traces of every power of
+A_VN=H_X^T H_X-3I, even though the elementary (4,2) counts differ.
+
+Two further predecessor checks strengthen these limits. Abu-Surra et al.
+(ITA 2010), Sections II–IV, gives a general finite-code trapping enumerator via
+an augmented parity-check matrix; its practical impulse stage is approximate,
+and its odd-check count does not itself impose elementarity or absorption.
+Raveendran–Vasić (2021), Sections 3.2/4.2 and Table 2, already enumerates 720
+elementary (4,2) configurations in a 900-qubit HP example and describes
+constituent replication. Neither inspected passage gives (2) or the equal-M_j
+obstruction. Enumeration and HGP replication are therefore explicitly credited.
+
+Dehghan–Banihashemi (2019), Sections III/VI, already gives classical
+cospectral degree-preserving obstructions for cycle counts and proposes studying
+trapping-set distributions under switching. General spectral information loss
+is therefore not a new idea. The inspected text does not prove the concrete
+equal-full-M_j elementary (4,2) obstruction within a QC-GHP/CSS family here.
+
+The source's phrase 'spectral data'  should be read precisely: the counterexample
+excludes a formula using only M_j (even their full entries, not just eigenvalues).
+It does not exclude a formula using the full rectangular D_j or polynomial
+supports. If the phrase includes those fuller data, (2) gives such a formula.
+The general loss of hypergraph information under pairwise projection is older
+than this block; the prior-art record credits the existing Pasch-trade example.
+
+A smaller scalar-frequency obstruction found late in the block
+--------------------------------------------------------------
+Take ell=24 and use the generalized-bicycle construction (the r1=n1=1
+subfamily of QC-GHP). In F2[x]/(x^24-1), put
+
+  a(x)=1+x+x^5,
+  b(x)=1+x^2+x^10,        b'(x)=1+x^2+x^16=x^2 b(x^-1).
+
+For each choice of b or b', set HX=[A | B^T], HZ=[B | A^T], where A,B
+are the corresponding 24x24 circulants. The two Tanner graphs are cubic,
+check-degree six, connected and have no four-cycles. Exact binary elimination
+gives rankX=rankZ=22, hence both constructions are [[48,4]] (distance
+unspecified). At every frequency, |b'(omega^j)|=|b(omega^j)|, so the scalar
+M_j=|a(omega^j)|^2+|b(omega^j)|^2 agrees. Their full integer check Grams agree too.
+
+Nevertheless N42 is 192 for b and 72 for b'. Their normalized ordered-root
+sums are 32 and 12, giving (24/4)*32 and (24/4)*12. A separate C++ program
+checks every one of the 194,580 four-subsets in each graph, agreeing with
+independent Python definition-based enumeration and the exact socket formula.
+Their N40 values are 0 and 24. Thus the 168-qubit example remains useful for
+its stronger matched-N40 property, while this 48-qubit pair gives a simpler
+obstruction already in the scalar generalized-bicycle subfamily.
+
+Run reproduce_gb48.py for independent expansion, commutation, ranks,
+connectedness, Gram equality and direct counts. GB48.lean, GBReflection.lean
+and GB48Spectral.lean have precisely the successful/candidate statuses in
+verification.json; their presence alone does not certify a kernel check.
+At the cutoff, the additional GB48 finite kernel reduction had not completed
+and was stopped. GB48Spectral was not run because it imports that candidate.
+GBReflection is checked; the smaller counts retain independent exact Python
+and C++ verification. The larger 168-variable counts and obstruction have
+completed structural/index-transfer Lean proofs. The bounded search is
+reproducible but makes no global minimality claim.
+The Frobenius relation b=a^2 is also construction background: see
+Rabeti–Mahdavifar (2026), Sections II-B/III, for UB codes. Their convention
+HX=[A|B] differs from the source's HX=[A|B^T]; after accounting for the
+reciprocal and block shift, the 72-count member has that coupled form. We do
+not claim a new GB/UB family or import any distance assertion from that work.
+The phase/reflection identity is elementary classical Fourier algebra; no
+priority is claimed for that identity or for spectral information loss itself.
+
+References and search record
+----------------------------
+
+AbiadCastriota2026: Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes
+arXiv:2607.13666v1, July 15, 2026
+https://arxiv.org/html/2607.13666v1
+Inspected: Section 4, especially Remark 4.18; Section 6
+Limit: The joint canonical (4,2)/(4,0) target is only partially addressed. General incidence, cyclic and finite-character Fourier identities are Lean checked. The standard complex-exponential/norm specialization remains written; concrete linear-algebra/connectivity properties are exact finite computations.
+
+DolecekEtAl2010: Analysis of Absorbing Sets and Fully Absorbing Sets of Array-Based LDPC Codes
+IEEE Transactions on Information Theory 56(1), 181–201, January 2010
+https://people.eecs.berkeley.edu/~bora/Journals/2010/IT-10.pdf
+Inspected: Section III-C, Lemma 4, printed pp. 187–188 (PDF pp. 7–8)
+Limit: The exponent r*c array family and its special extension multiplicity do not establish the full sparse/two-block polynomial QC-GHP formula. Absorbing and fully absorbing conventions must be kept separate.
+
+WangDolecekWesel2012: The Cycle Consistency Matrix Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes
+arXiv:1208.6094v2, December 5, 2012; journal publication 2013
+https://arxiv.org/html/1208.6094v2
+Inspected: Theorem 1; Section VI, (4,2) CCM and multiplicity
+Limit: Separable-circulant mother/daughter hypotheses, plus non-extensibility in sufficiency, are not a universal incidence-corrected QC-GHP Fourier formula. In a column-weight-three SCB mother/daughter with three retained row groups, each variable has one check in each group. The fixed B^T block in our witness contains a seven-check Fano subsystem whose check co-occurrence graph is K7, so it cannot admit such a three-group partition, even after row/column relabeling.
+
+KarimiBanihashemi2013: On Characterization of Elementary Trapping Sets of Variable-Regular LDPC Codes
+arXiv:1308.1259v1, August 6, 2013
+https://arxiv.org/html/1308.1259v1
+Inspected: Section III, normal graphs; Sections IV and V-B1
+Limit: A normal graph of an already elementary set does not identify all induced diamonds of the unrestricted global variable projection with elementary sets. General enumeration is already known.
+
+HashemiBanihashemi2015: New Characterization and Efficient Exhaustive Search Algorithm for Elementary Trapping Sets of Variable-Regular LDPC Codes
+arXiv:1510.04954v1, October 16, 2015
+https://arxiv.org/html/1510.04954v1
+Inspected: Dot/path/lollipop characterization and exhaustive search construction
+Limit: Does not supply the inspected small-matrix M_j-only QC-GHP count; no claim that the new rooted count is a first exact algorithm.
+
+LaendnerMilenkovicHuber2010: Characterization of Small Trapping Sets in LDPC Codes from Steiner Triple Systems
+ISTC 2010; DOI 10.1109/ISTC.2010.5613812
+https://publica.fraunhofer.de/entities/publication/888e2ff4-57e9-467a-a9c6-c7db59f38de4
+Inspected: Institutional abstract; IEEE full-text route met robot/access challenge
+Limit: Full theorem/proof comparison incomplete; must not claim this lead fails to imply any proposed identity.
+
+JiangEtAl2026WidthWall: The WidthWall: A Strict Expressivity Hierarchy for Hypergraph Neural Networks
+arXiv:2605.13690v1, May 13, 2026
+https://arxiv.org/html/2605.13690v1
+Inspected: Appendix F.1, explicit STS(13) pair and Pasch trade
+Limit: The reduced square cubic 12x12 bases and matched [[168,6]] QC-GHP examples were generated separately. No novelty claim for pairwise projections losing higher-order incidence data.
+
+BattaglioniEtAl2023: Optimizing quasi-cyclic spatially coupled LDPC codes by eliminating harmful objects
+EURASIP Journal on Wireless Communications and Networking 2023, article 67, July 25, 2023
+https://doi.org/10.1186/s13638-023-02273-0
+Inspected: Sections 1.2, 2.1 and 3, especially the declared trapping-set enumeration method
+Limit: Uses the prior exhaustive ETS algorithm for trapping-set counts and excludes blocks of circulant weight greater than one (Section 2.1); no inspected full target Fourier formula or equal-M_j obstruction.
+
+RaeisiGholami2024: On a class of column-weight 3 decomposable LDPC codes with the analysis of elementary trapping sets
+IET Communications 18(9), 583–596; first published April 22, 2024
+https://ietresearch.onlinelibrary.wiley.com/doi/pdf/10.1049/cmu2.12762
+Inspected: Definition of decomposability (p586); Section5 pp590–592, Proposition5.5, Theorem3 and proof, Algorithm1, Table5; QC-lift setup Section6
+Limit: Three check groups are required, each variable having one check in each. The Fano block in our witness precludes this hypothesis. Algorithm1 enumerates non-isomorphic normal-graph shapes; it is not the inspected incidence-corrected count of embedded sets from arbitrary QC-GHP sockets or a formula in M_j. No matching general corrected Fourier formula identified in the inspected sections.
+
+MorrisPllahaKelleyAbsorbing: Absorbing Sets in Quantum LDPC Codes
+First preprint July 26, 2023; inspected v2 May 10, 2024; journal early access March 3, 2026
+https://arxiv.org/html/2307.14532v2
+Inspected: Definition 5; Section V-C, Remark 4 and Example 20; Section VI
+Limit: The inspected text gives base-matrix characterization/propagation and examples, not an explicit incidence-corrected Fourier formula for nonconstant QC-GHP labels or an M_j-only count. The 2026 journal full text is subscription restricted, so the exact inspected mathematical version is v2 (2024).
+
+RaveendranVasic2021: Trapping Sets of Quantum LDPC Codes
+arXiv v2 October 7, 2021; Quantum 5, 562, October 14, 2021
+https://arxiv.org/html/2012.15297v2
+Inspected: Sections3.1–3.2; Section4.2, Example3, Tables1–2
+Limit: Table2 gives 720 elementary (4,2) configurations in one HP example using classical search machinery. The inspected sections do not give our full nonconstant-QC-GHP corrected socket/Fourier formula or equal-M_j obstruction. Harmfulness is decoder dependent; our incidence count does not assert a decoder failure rate.
+
+AbuSurraEtAl2010: Trapping Set Enumerators for Specific LDPC Codes
+Information Theory and Applications Workshop, 2010; author-hosted five-page paper
+https://perso.etis-lab.fr/declercq/PDF/ConferencePapers/Shadi_2010_ITA.pdf
+Inspected: SectionII graph transformation H-tilde=[H|I] and customized impulse algorithm; SectionsIII–IV and tables
+Limit: The graph transformation tracks general odd-check counts without imposing elementarity or absorption. Its practical codeword enumeration is explicitly approximate. It is not an inspected exact construction-only corrected Fourier formula, and no priority is claimed for finite-code enumeration.
+
+DehghanBanihashemiCospectral2019: Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles
+arXiv v1 May31,2019; Graphs and Combinatorics35,1673–1693(2019)
+https://arxiv.org/html/1905.13228v1
+Inspected: Introduction; SectionIII Theorem2 and degree-preserving switching discussion; SectionVI concluding remarks
+Limit: SectionVI proposes studying trapping-set distributions under switching. The inspected paper proves cycle-count obstructions, not our elementary (4,2) count at equal full frequency matrices in a QC-GHP/CSS family. Spectral information-loss as a general theme is classical, not claimed as new.
+
+RabetiMahdavifarUB2026: Univariate Bicycle Quantum LDPC Codes: Explicit Logical Structure and Distance Bounds
+arXiv v1 May13,2026
+https://arxiv.org/html/2605.14173v1
+Inspected: SectionsII-B andIII, Proposition1, defining equations2–3 and Lemma2; targeted text search for absorbing/(4,2)
+Limit: Their convention is HX=[A|B], whereas the source here uses HX=[A|B^T]; the reciprocal/shift must be accounted for before comparing. Inspected construction sections and targeted text search did not identify a (4,2) incidence/Fourier enumeration or equal-M_j obstruction. No distance theorem from this source is asserted for our witnesses.
+
+Full search scope, access failures and existing-project comparison: prior-art.json.

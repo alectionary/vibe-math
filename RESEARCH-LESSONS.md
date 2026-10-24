@@ -142,3 +142,11 @@ A successful next investigation might yield a theorem, a counterexample, a reusa
 - **Retain negative results and stop weak routes.** No exact recurrence or rejecting invariant box was found under the frozen rules. A small old-data-only two-phase refinement also found no rejecting certificate; it did not change the holdout rules.
 
 The [full study](formalization/cyclic-lifts/LOOP-HOLDOUT.md) preserves the numerical outcomes, formal scope and remaining gaps.
+
+### Validate social and code searches before interpreting zero results
+
+A GitHub search qualifier can yield false zero results without a useful error.
+Check a known-positive control, retain effective query text and caps, inspect
+public matches, and exclude invalid searches from prior-art conclusions. Record
+X access restrictions and available date/order filters. Neither service substitutes
+for reading the applicable classical theorem and its hypotheses.

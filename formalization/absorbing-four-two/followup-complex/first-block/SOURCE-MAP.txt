@@ -1,0 +1,128 @@
+Formal statements and evidence scope
+
+PairRootBridge.lean
+  PairRootBridge.corrected_count_identity
+  PairRootBridge.count42_eq_corrected_energy
+  General finite cubic/no-four-cycle incidence count. No CSS or cyclic premise.
+
+GlobalCounting.lean
+  GlobalCounting.count42
+  GlobalCounting.counted_support_is_absorbing
+  The counted four-subsets use elementarity and exactly two odd checks. Under
+  cubicity/no four-cycles, strict-majority absorption follows. This bridges the
+  computable count to the source's absorbing-set convention.
+
+FourColumnClassification.lean, OrderedRoots.lean, PairRootBridge.lean
+  FourColumnClassification.exact_local_multiplicity
+  OrderedRoots.ordered_roots_eq_four_count42
+  PairRootBridge.rootPairSum_eq_four_count42
+  Local incidence classification, ordering/support correspondence, factor four.
+
+PairEnergy.lean
+  PairEnergy.missing_pair_energy_identity
+  Exact integer incidence energy and ordered nonadjacent-pair identity.
+
+FourCompletions.lean
+  FourCompletions.proper_common_le_four
+  General proof that each proper common-neighbor set has at most four elements.
+
+CyclicNormalization.lean
+  CyclicNormalization.cyclic_corrected_count_identity
+  Explicit socket incidence model, equivariance, and free ordered-root
+  normalization over finite additive groups. No odd/prime-lift restriction.
+
+FiniteFourier.lean, SocketFourier.lean, SocketIncidence.lean
+  AbsorbingFourier.parseval
+  AbsorbingFourier.dft_socketAction
+  AbsorbingFourier.Fourier_energy
+  Finite-character algebra, actual binary incidence action, and energy bridge.
+
+CyclicFourierCount.lean
+  AbsorbingFourier.cyclic_Fourier_count_formula
+  Combined corrected Fourier formula over a characteristic-zero field with
+  star, assuming a faithful additive character with star(psi a)=psi(-a).
+  Standard complex exponential/norm specialization remains a written bridge.
+
+GramCounterexample12.lean
+  Absorbing42Small.baseA_count42 (7)
+  Absorbing42Small.baseB_count42 (5)
+  Absorbing42Small.same_check_gram
+  Absorbing42Small.no_gram_only_count
+  Concrete base incidences, actual absorption, cubicity, no four-cycles and
+  equality of the entire integer check Gram. Kernel-evaluated finite proofs.
+
+QuantumConstruction.lean, SmallQuantumData.lean, FastQuantumData.lean
+  SmallQuantum.constructed_XA / constructed_XB
+  SmallQuantum.XAfast_eq / XBfast_eq
+  Explicit 168-column X-matrix lookup and its finite bridge to the source
+  [A tensor I_7 | I_12 tensor B^T] construction.
+
+FanoBlock.lean
+  FanoBlock.transpose_circulant, count42_zero, no_three_check_groups
+  The fixed circulant convention, zero (4,2) count, and failure of the
+  three-check-group hypothesis used in the SCB special-family comparison.
+
+ProjectionObstruction.lean
+  ProjectionObstruction.five_projected_edges / induced_degree_three / count42_zero
+  A four-variable cubic/no-four-cycle induced projected diamond is not
+  elementary. This checks the qualification needed in the normal-graph dictionary.
+
+HGPIncidence.lean
+  HGPIncidence.mixed_properCommon_empty
+  General proof that a mixed left/right product edge has no proper common
+  neighbor, supporting the checked pure-type count reduction.
+
+HGPPatterns.lean, HGPCounts.lean
+  HGPPatterns.root_mass_product, HGPCounts.count42_product
+  HGPCounts.Concrete.full_A_count / full_B_count
+  General product-count reduction under cubicity/no-four-cycles, then the
+  concrete 168-variable tensor-incidence counts 49 and 35.
+
+HGPGramObstruction.lean
+  HGPGramObstruction.gram_product / same_full_gram / no_full_gram_only_count
+  Full product check-Gram identity and obstruction using the checked counts.
+
+HGPCSS.lean
+  HGPCSS.commute
+  General X/Z tensor-construction commutation over ZMod 2.
+
+HGPSpectral.lean
+  HGPSpectral.M_eq_gram / identical_all_evaluated_M / no_evaluated_M_only_count
+  Actual rectangular evaluated matrices D_j=[A|beta_j I], their product M_j,
+  and the impossibility of recovering these counts from all M_j alone.
+  This works for any frequency scalars beta_j in a commutative star ring.
+
+Larger concrete certificates
+  FullQuantumAFast, FullQuantumBCert, FullQuantumBFast, QuantumRows,
+  QuantumObstruction and SpectralObstruction have only the verification status
+  explicitly recorded in verification.json. Their source files or candidate
+  proof text alone must not be counted as completed checks.
+
+SocketCompletion.lean, CompletionBridge.lean
+  SocketCompletion.completions_correct / completions_unique
+  CompletionBridge.candidates_eq_properCommon
+  Modular completion from occupied sockets, uniqueness under no-four-cycles,
+  and reconstruction of proper common neighbors from exclusive endpoint checks.
+
+IncidenceEquivalence.lean, QuantumReindex.lean
+  IncidenceEquivalence.count42_eq
+  QuantumReindex.source_A_bridge / source_B_bridge
+  QuantumReindex.literal_A_count / literal_B_count
+  General count invariance under variable/check equivalences, the actual index
+  equivalences between tensor and source constructions, and counts 49/35 for
+  the explicit literal Fin 168 lookup tables. These supersede the unfinished
+  large finite-reduction route above without promoting its candidate checks.
+
+External finite computations
+  reproduce.py, independent.py and the separate direct.cpp checker verify the
+  full quantum examples, including ranks, connectedness and commutation.
+  These exact computations are not formal rank/connectivity theorems.
+
+Smaller generalized-bicycle witness
+  GB48.lean: cubic/no-four-cycle conditions, normalized sums 32/12, counts
+  192/72, and full integer Gram equality.
+  GBReflection.lean: generic shifted reflection preserves Fourier magnitude.
+  GB48Spectral.lean: actual evaluated socket matrices and M_j-only obstruction.
+  Only successful modules listed in verification.json are certified; unfinished
+  versions are explicitly separated as candidates. reproduce_gb48.py provides
+  independent exact finite verification, including CSS/ranks/connectivity.

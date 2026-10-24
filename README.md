@@ -30,7 +30,8 @@ Latest local feasibility: [degree- and girth-preserving same-code representation
 - **Lean difficulty estimates:** [per-question ratings and assumptions](planning/LEAN-DIFFICULTY.md) and [searchable estimates](planning/difficulty.html).
 - **Expanded scholarly search:** [coauthors, citation trails, new questions and counterchecks](literature/SCHOLARLY-EXPANSION.md).
 - **Expanded open-problem inventory:** [searchable annotated inventory](literature/open-problems.html) and [method/counts](literature/OPEN-PROBLEMS.md), including the downstream articles; [full-text gap closure](literature/COVERAGE-GAPS.md).
-- **Research-to-inventory updates:** [later results, six newly indexed source questions/directions and remaining project follow-ups](literature/RESEARCH-RECONCILIATION.md), with a [central index of the 21 research sources used](literature/RESEARCH-SOURCES.md). The expanded inventory has 187 entries and 111 eligible targets; the earlier 108-target cohort is preserved separately.
+- **Four-variable absorbing counts:** [classical baseline, incidence-corrected complex formulas and a (3,6)-regular matrix-only counterexample](formalization/absorbing-four-zero/RESEARCH-NOTE.txt). [Checked source archive manifest](formalization/absorbing-four-zero/verification.json).
+- **Research-to-inventory updates:** [dated results, source-question indexing and remaining project follow-ups](literature/RESEARCH-RECONCILIATION.md), with a [central source index](literature/RESEARCH-SOURCES.md). The current inventory has 190 entries,112 eligible targets and4 complete checked Lean targets. Beezer contributes one conjecture and two broad directions; the existing F16 four-variable count target is completed with the required incidence correction. Earlier cohort snapshots are preserved.
 - **Academic literature follow-up:** [author papers and open-problem references](literature/README.md), with a structured [question ledger](literature/problem-links.json).
 - **Lean coverage audit:** [counts, scope and evidence](audit/README.md), [searchable ledger](audit/coverage.html), and [structured claims](audit/claims.json).
 - Read a paper-specific review using the table below.
@@ -132,3 +133,6 @@ python3 scripts/validate.py
 Extraction and heading detection are automated. They do not generate or update the curated mathematical judgments in `reviews/reviews.json`; those require review of the cited source pages. Re-running extraction records current file hashes; compare them with the committed manifest before reviewing changed source files. Formula extraction can lose glyphs/spaces: inspect the PDF for exact notation. Several high-risk statements were also checked visually during the review.
 
 Reviewed October 21, 2026. PDFs remain copyright their respective authors; review text does not imply endorsement by any source institution or dissertation author.
+
+
+October24 lift-label follow-up: [exact fixed-base counts and a support-free CSS family](formalization/lift-label-elimination/README.txt). Classical cycle-consistency attribution, independent q2 verification and checked Lean versions of every manuscript proof are explicit. This is a project-derived follow-up; canonical coverage remains4/112.

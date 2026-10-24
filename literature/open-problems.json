@@ -5687,15 +5687,249 @@
       "L-P34-decoding-effects"
     ],
     "status_as_of_source": "open_as_stated_in_source",
-    "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "current_resolution_status": "not_independently_established",
+    "proof_assistant_statement_status": "verified_lean_statement",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "current_resolution_status": "proved_in_lean_for_incidence_corrected_counts_and_spectral_only_obstruction",
     "search_family": "Tanner_absorbing_sets",
     "added_on": "2026-10-22",
     "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
     "research_source_index": "literature/research-source-index.json",
-    "scope_comparison": "Our cyclic single-input LP degree-three structural proofs do not resolve this distinct QC-GHP/GB Fourier-count or spectral-bound target."
+    "scope_comparison": "For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.",
+    "research_progress": [
+      {
+        "title": "Incidence-corrected (4,2) formula and obstruction to M_j-only counts",
+        "report": "formalization/absorbing-four-two/RESEARCH-NOTE.txt",
+        "evidence": "general_lean_incidence_cyclic_and_finite_character_fourier_with_written_complex_specialization_and_exact_cases",
+        "contribution": "The (4,2) component has an exact incidence-corrected general counting theorem with checked general Lean incidence, cyclic and finite-character Fourier proofs (the standard complex-exponential/norm specialization remains written). Identical M_j do not determine this count: matched connected [[168,6]] QC-GHP examples have 49 versus 35. The counts (including their source/literal index transfer), Gram and evaluated-frequency obstruction, modular completion model, and CSS commutation have checked Lean proofs; ranks and connectedness remain exact external computations. A smaller generalized-bicycle pair on 48 qubits with k=4 has equal scalar M_j but counts 192 versus 72; its shifted-reflection frequency identity is Lean checked, with exact independent subset counts. The companion (4,0) task is unaddressed, so the combined canonical target is not a complete Lean target. No earlier full-target answer was found in the recorded bounded search; priority remains unestablished.",
+        "lean_sources": [
+          "formalization/absorbing-four-two/FourColumnClassification.lean",
+          "formalization/absorbing-four-two/GlobalCounting.lean",
+          "formalization/absorbing-four-two/OrderedRoots.lean",
+          "formalization/absorbing-four-two/PairEnergy.lean",
+          "formalization/absorbing-four-two/PairFormulaCore.lean",
+          "formalization/absorbing-four-two/FourCompletions.lean",
+          "formalization/absorbing-four-two/PairRootBridge.lean",
+          "formalization/absorbing-four-two/CyclicNormalization.lean",
+          "formalization/absorbing-four-two/FiniteFourier.lean",
+          "formalization/absorbing-four-two/SocketFourier.lean",
+          "formalization/absorbing-four-two/SocketIncidence.lean",
+          "formalization/absorbing-four-two/CyclicFourierCount.lean",
+          "formalization/absorbing-four-two/GramCounterexample12.lean",
+          "formalization/absorbing-four-two/FanoBlock.lean",
+          "formalization/absorbing-four-two/ProjectionObstruction.lean",
+          "formalization/absorbing-four-two/QuantumConstruction.lean",
+          "formalization/absorbing-four-two/HGPIncidence.lean",
+          "formalization/absorbing-four-two/HGPPatterns.lean",
+          "formalization/absorbing-four-two/HGPCounts.lean",
+          "formalization/absorbing-four-two/HGPGramObstruction.lean",
+          "formalization/absorbing-four-two/HGPCSS.lean",
+          "formalization/absorbing-four-two/HGPSpectral.lean",
+          "formalization/absorbing-four-two/SocketCompletion.lean",
+          "formalization/absorbing-four-two/CompletionBridge.lean",
+          "formalization/absorbing-four-two/IncidenceEquivalence.lean",
+          "formalization/absorbing-four-two/QuantumReindex.lean",
+          "formalization/absorbing-four-two/GBReflection.lean"
+        ],
+        "checked_on": "2026-10-23",
+        "snapshot_note": "Historical first-block snapshot (2026-10-23). Its standard-complex gap was closed by the follow-up below; the dated report and manifest are preserved. Historical snapshot: its unaddressed (4,0) component and Beezer access limit are updated by the subsequent (4,0) block; original files remain frozen."
+      },
+      {
+        "title": "Standard complex-character bridge and classical literature reconciliation",
+        "report": "formalization/absorbing-four-two/followup-complex/RESEARCH-UPDATE.txt",
+        "checked_on": "2026-10-24",
+        "evidence": "general_lean_standard_complex_fourier_and_concrete_source_matrix_bridge_with_classical_hypothesis_audit",
+        "contribution": "The (4,2) component now has general Lean proofs of the incidence correction, cyclic normalization and literal standard-complex Fourier formula, including character injectivity, exponent sign, ordinary rectangular matrix-vector multiplication and Euclidean norm. The hypotheses are column degree three and no four-cycles, for every positive lift size, including even/composite sizes and N=1. The actual 168-column source/literal matrices and complex evaluated M_j are connected to the same sockets: equal full M_j give counts 49 versus 35. Concrete ranks/connectivity retain their exact external-computation status. The complete STS special case was already counted in 1995, and modular shared-cycle avoidance and general ETS enumeration are prior work. Named inaccessible final/full texts remain unresolved comparisons, so priority is unestablished. The general (4,0) component is outside this block; the combined canonical target remains partial.",
+        "lean_sources": [
+          "formalization/absorbing-four-two/followup-complex/ClassicalConfiguration.lean",
+          "formalization/absorbing-four-two/followup-complex/ClassicalDecomposability.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexCharacter.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexDFT.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexCyclicCount.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexMatrixCount.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexRootFormula.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexConsumer.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexQuantumSockets.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexQuantumWitness.lean",
+          "formalization/absorbing-four-two/followup-complex/ComplexQuantumFormula.lean",
+          "formalization/absorbing-four-two/followup-complex/AbsorbingComplex.lean"
+        ],
+        "snapshot_note": " Historical snapshot: its unaddressed (4,0) component and Beezer access limit are updated by the subsequent (4,0) block; original files remain frozen."
+      },
+      {
+        "title": "Pasch/kernel translation, classical counting baseline and cyclic root-energy (4,0) follow-up",
+        "report": "formalization/absorbing-four-zero/RESEARCH-NOTE.txt",
+        "checked_on": "2026-10-24",
+        "evidence": "general_lean_complete_recorded_counts_and_concrete_source_counterexample",
+        "contribution": "For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.",
+        "lean_sources": [
+          "formalization/absorbing-four-zero/PaschAbsorbingBridge.lean",
+          "formalization/absorbing-four-zero/PaschBeezerBridge.lean",
+          "formalization/absorbing-four-zero/PaschClassification.lean",
+          "formalization/absorbing-four-zero/PaschComplexCount.lean",
+          "formalization/absorbing-four-zero/PaschConsumers.lean",
+          "formalization/absorbing-four-zero/PaschCyclicCount.lean",
+          "formalization/absorbing-four-zero/PaschDesignData.lean",
+          "formalization/absorbing-four-zero/PaschGlobalCount.lean",
+          "formalization/absorbing-four-zero/PaschHGPCount.lean",
+          "formalization/absorbing-four-zero/PaschKernelCount.lean",
+          "formalization/absorbing-four-zero/PaschQuantumBridge.lean",
+          "formalization/absorbing-four-zero/PaschQuantumWitness40.lean",
+          "formalization/absorbing-four-zero/PaschReindex40.lean",
+          "formalization/absorbing-four-zero/PaschRootClassification.lean",
+          "formalization/absorbing-four-zero/PaschRootEnergy.lean",
+          "formalization/absorbing-four-zero/PaschSTS13.lean",
+          "formalization/absorbing-four-zero/PaschSTS13Counts.lean",
+          "formalization/absorbing-four-zero/PaschCubicTrade.lean"
+        ]
+      },
+      {
+        "title": "Project-derived lift-label elimination, exact fixed-base assignment counts and CSS family",
+        "report": "formalization/lift-label-elimination/RESEARCH-NOTE.txt",
+        "checked_on": "2026-10-24",
+        "evidence": "every_manuscript_proof_has_checked_Lean_version_and_independent_exact_finite_checks",
+        "contribution": "General voltage-cycle elimination is classical. Exact all-N raw-label and slice histograms, physical incidence/counting bridges, integer-certificate soundness, full scalar-right counts and the [[140q,18,6]] family for every q>=2 now have checked Lean versions for every manuscript proof. The all-declaration axiom audit and independent exact q2 checks are recorded. No priority, decoder-performance, general gauge-orbit or canonical coverage increment is claimed.",
+        "lean_sources": [
+          "formalization/lift-label-elimination/BinaryDistance.lean",
+          "formalization/lift-label-elimination/BinarySupportEquiv.lean",
+          "formalization/lift-label-elimination/ConcreteElimination.lean",
+          "formalization/lift-label-elimination/CountRepresentatives.lean",
+          "formalization/lift-label-elimination/CoverCounting.lean",
+          "formalization/lift-label-elimination/CycleData.lean",
+          "formalization/lift-label-elimination/CycleKernelBridge.lean",
+          "formalization/lift-label-elimination/CyclicCSSCommute.lean",
+          "formalization/lift-label-elimination/CyclicRecurrence.lean",
+          "formalization/lift-label-elimination/EventHistogram.lean",
+          "formalization/lift-label-elimination/FamilyGraphs.lean",
+          "formalization/lift-label-elimination/FamilyLogical.lean",
+          "formalization/lift-label-elimination/FamilyPauliDistance.lean",
+          "formalization/lift-label-elimination/FamilyRank.lean",
+          "formalization/lift-label-elimination/FamilyTheorem.lean",
+          "formalization/lift-label-elimination/FanoCarryCertificate.lean",
+          "formalization/lift-label-elimination/FanoObstruction.lean",
+          "formalization/lift-label-elimination/FiniteEventArithmetic.lean",
+          "formalization/lift-label-elimination/FinitePaschRepresentatives.lean",
+          "formalization/lift-label-elimination/FullGraphCounts.lean",
+          "formalization/lift-label-elimination/GraphMatrices.lean",
+          "formalization/lift-label-elimination/HistogramPolynomials.lean",
+          "formalization/lift-label-elimination/IntegerKernel.lean",
+          "formalization/lift-label-elimination/JointCertificates.lean",
+          "formalization/lift-label-elimination/JointCycleData.lean",
+          "formalization/lift-label-elimination/JointElimination.lean",
+          "formalization/lift-label-elimination/JointLabelCount.lean",
+          "formalization/lift-label-elimination/KernelFourBridge.lean",
+          "formalization/lift-label-elimination/LabelEncoding.lean",
+          "formalization/lift-label-elimination/LabelHistograms.lean",
+          "formalization/lift-label-elimination/LiteralLabelCounts.lean",
+          "formalization/lift-label-elimination/LogicalWitness.lean",
+          "formalization/lift-label-elimination/NormalFormCount.lean",
+          "formalization/lift-label-elimination/OrientedKernel.lean",
+          "formalization/lift-label-elimination/PaschLiftCriterion.lean",
+          "formalization/lift-label-elimination/PaschLiftProjection.lean",
+          "formalization/lift-label-elimination/PaschReindex.lean",
+          "formalization/lift-label-elimination/PaschVoltage.lean",
+          "formalization/lift-label-elimination/PositiveLabelCounts.lean",
+          "formalization/lift-label-elimination/QCRegularity.lean",
+          "formalization/lift-label-elimination/QCSectorElimination.lean",
+          "formalization/lift-label-elimination/QCSupportCount.lean",
+          "formalization/lift-label-elimination/RankFromKernel.lean",
+          "formalization/lift-label-elimination/ScalarIncidence.lean",
+          "formalization/lift-label-elimination/ScalarTranspose.lean",
+          "formalization/lift-label-elimination/ScalarWeight.lean",
+          "formalization/lift-label-elimination/SparseCSS.lean",
+          "formalization/lift-label-elimination/SparseCSSMatrices.lean",
+          "formalization/lift-label-elimination/SparseRowDegrees.lean",
+          "formalization/lift-label-elimination/SparseTranspose.lean",
+          "formalization/lift-label-elimination/StarCertificates.lean",
+          "formalization/lift-label-elimination/StarCheckKernel.lean",
+          "formalization/lift-label-elimination/StarDuality.lean",
+          "formalization/lift-label-elimination/StarElimination.lean",
+          "formalization/lift-label-elimination/StarKernelCertificate.lean",
+          "formalization/lift-label-elimination/StarVoltageData.lean",
+          "formalization/lift-label-elimination/StructuredKernel.lean",
+          "formalization/lift-label-elimination/SumCounting.lean",
+          "formalization/lift-label-elimination/SupportVoltageCount.lean",
+          "formalization/lift-label-elimination/TriangleGaugeCertificates0.lean",
+          "formalization/lift-label-elimination/TriangleGaugeCertificates1.lean",
+          "formalization/lift-label-elimination/TriangleGaugeCertificates2.lean",
+          "formalization/lift-label-elimination/TriangleGaugeCertificates3.lean",
+          "formalization/lift-label-elimination/TriangleRawCertificates0.lean",
+          "formalization/lift-label-elimination/TriangleRawCertificates1.lean",
+          "formalization/lift-label-elimination/TriangleRawCertificates2.lean",
+          "formalization/lift-label-elimination/TriangleRawCertificates3.lean",
+          "formalization/lift-label-elimination/TriangleVoltageData.lean",
+          "formalization/lift-label-elimination/UnorderedSections.lean",
+          "formalization/lift-label-elimination/VoltageQCIncidence.lean"
+        ],
+        "project_derived_followup_id": "RQ-F16-lift-label-elimination",
+        "cohort_delta": {
+          "canonical_entries": 0,
+          "eligible_targets": 0,
+          "complete_canonical_Lean_targets": 0
+        }
+      }
+    ],
+    "partial_artifact": {
+      "readme": "formalization/absorbing-four-two/followup-complex/README.txt",
+      "verification": "formalization/absorbing-four-two/followup-complex/verification.json",
+      "source_component": "(4,2) only",
+      "remaining": "Historical(4,2)-only snapshot: its missing(4,0)component is completed by the subsequent absorbing-four-zero artifact. The historical source files/manifest are unchanged. Named unavailable final texts and priority remain attribution limits, not missing count proofs.",
+      "scope": "General (4,2) incidence and standard-complex formula plus actual source-matrix consumers. Supporting proof for the combined source target, not a complete canonical target."
+    },
+    "current_resolution_search": {
+      "checked_on": "2026-10-24",
+      "record": "formalization/absorbing-four-zero/prior-art.json",
+      "conclusion": "The full-incidence count is classically supplied by weight-four kernel enumeration and MacWilliams. The incidence-corrected cyclic formula is Lean checked. Actual(3,6)-regular140-variable QC-GHP pairs have equal full complex M_j and different counts77/105; the273-variable182/147pair is also retained. Beezer leaves Pasch as an input. No mathematical/formalization priority claim.",
+      "access_gaps": [
+        "Laendner-Milenkovic-Huber 2010, DOI 10.1109/ISTC.2010.5613812: Specific full text still unavailable",
+        "Morris-Pllaha-Kelley 2026 journal revision, DOI 10.3934/amc.2026023: Revised public introduction read; full journal text still unavailable",
+        "Amirzade-Sadeghi-Panario expanded 2024 journal article, DOI 10.1109/TIT.2023.3307583: Public 2020 preprint inspected; expanded 24-page journal full text still unavailable"
+      ],
+      "citation_index_coverage": "Bounded search, not an exhaustive priority audit. X/GitHub queries, relevant candidates and inspection limits are recorded in social-prior-art.json. No new Google Scholar or comprehensive forward-citation harvest was performed. No matching current-resolution/Lean search is claimed for the newly inventoried Beezer conjecture. The Girth of a Design follow-up remains an uninspected lead."
+    },
+    "four_zero_artifact": {
+      "readme": "formalization/absorbing-four-zero/README.txt",
+      "verification": "formalization/absorbing-four-zero/verification.json",
+      "source_component": "(4,0)",
+      "scope": "For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer."
+    },
+    "verified_artifact": {
+      "readme": "formalization/absorbing-four-zero/README.txt",
+      "source": "formalization/absorbing-four-zero/AbsorbingFourCounts.lean",
+      "statement_declaration": "AbsorbingFourCounts.explicit_cubic_cyclic_four_counts",
+      "proof_declarations": [
+        "PaschKernelCount.count40_eq_weightFourKernelCount",
+        "PaschGlobalCount.count40_energy_identity",
+        "PaschComplexCount.complex_root_count40_formula",
+        "AbsorbingFourCounts.explicit_cubic_cyclic_four_counts",
+        "PaschQuantumWitness40.no_actual_complex_M_only_count40",
+        "PaschQuantumWitness40.actual_A_complex_formula",
+        "PaschQuantumWitness40.actual_B_complex_formula",
+        "PaschCubicTrade.no_actual_complex_M_only_count40",
+        "PaschCubicTrade.product_A_check_degree",
+        "PaschCubicTrade.source_count_A",
+        "PaschCubicTrade.source_count_B"
+      ],
+      "verification": "formalization/absorbing-four-zero/verification.json",
+      "source_comparison": "formalization/absorbing-four-zero/DERIVATION.txt",
+      "checked_on": "2026-10-24",
+      "scope": "For every positive cyclic lift size, cubic binary socket incidence with no Tanner four-cycles has explicit general standard-complex formulas for both (4,2) and (4,0), over actual unordered supports. Both classifications, absorbing conditions, local root incidence corrections, multiplicities4/24, cyclic normalization, full rectangular evaluated matrices, exponent sign and Euclidean norm/Parseval bridges are checked in Lean. The same-spectral-data-only interpretation is refuted: fully checked273-variable QC-GHP source models have equal full complex M_j at every frequency but (4,0) counts182/147. The earlier checked168-variable (4,2) obstruction is preserved. The full-incidence baseline also follows classically from weight-four kernel enumeration and MacWilliams identities; the MacWilliams transform itself is not newly formalized. Beezer generator reductions leave Pasch as an input. No mathematical or formalization-priority claim is established; named unavailable final/full texts remain comparison limits. Additional checked strengthening: actual140-variable(3,6)-regularQC-GHP incidence models have equal full complex M_j at every frequency but(4,0)counts77/105, via classical10_3Pasch extensions. The larger273-variablecheck-degree9pair remains a second consumer.",
+      "novelty_note": "Classical counting baseline credited; this is a source translation/correction and checked proof artifact, without a first-mathematics or first-formalization claim."
+    },
+    "related_formalization_evidence": [
+      {
+        "url": "https://github.com/pefch-k/lean-coding-theory-macwilliams-identity/tree/8848ddeeff36408d9b6f13f229a82d568c006424",
+        "finding": "Related binary MacWilliams weight-enumerator theorem found in a two-file public Lean source tree. Both files statically inspected; not built/axiom-audited here. No absorbing/Pasch/cyclic-source translation in that tree. See formalization/absorbing-four-zero/social-prior-art.json for exact scope."
+      }
+    ],
+    "project_derived_followups": [
+      {
+        "id": "RQ-F16-lift-label-elimination",
+        "report": "formalization/lift-label-elimination/RESEARCH-NOTE.txt",
+        "status": "answered_in_recorded_fixed_base_scope_with_all_manuscript_proofs_Lean_checked",
+        "eligible_for_coverage": false
+      }
+    ]
   },
   {
     "id": "L-F19-distance",
@@ -6832,5 +7066,105 @@
     "search_family": "cyclic_research_reconciliation",
     "added_on": "2026-10-23",
     "lean_discovery_note": "Newly inventoried source question; no exact-target Lean discovery or proof audit performed in this reconciliation. Historical open status is not a claim of current unresolvedness."
+  },
+  {
+    "id": "L-F27-generator-basis",
+    "origin": "article_inventory_extension",
+    "title": "For fixed t and k, prove that all generators on at most m blocks form a minimal generating set for m-line configurations in general t-(v,k,lambda) designs.",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise source conjecture; current resolution and matching Lean discovery not yet assessed.",
+    "occurrences": [
+      {
+        "source_id": "F27",
+        "locator": "Conjecture4.1 and following regular-graph special-case proposal, p351/PDF11",
+        "extracted_text_lines": [
+          377,
+          382
+        ],
+        "url": "https://doi.org/10.1006/jcta.2001.3185",
+        "source_sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+        "relation": "explicit_conjecture"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "design_configuration_generators",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full source screened; no exact-target current-resolution, Lean-discovery or difficulty assessment performed. The regular-graph paragraph is a special case of the same conjecture, not an additional canonical target.",
+    "later_evidence": [
+      {
+        "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jcd.21839",
+        "locator": "Heinlein–Ostergard2022 Section2.2,Theorem7 and proof",
+        "finding": "Restricted later progress: minimality of full-configuration counts for complete Steiner triple systems through eight lines, via a rank180 computation on623STS25. Not an all-t,k,m solution; exact current-resolution and Lean discovery for the full conjecture remain unassessed."
+      }
+    ]
+  },
+  {
+    "id": "L-F27-minimal-girth-designs",
+    "origin": "article_inventory_extension",
+    "title": "Determine minimum-order designs of fixed generator girth and investigate their structure.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad source direction requiring a bounded parameterized target; excluded from the theorem denominator.",
+    "occurrences": [
+      {
+        "source_id": "F27",
+        "locator": "Section7, Definition7.1 and design-cage direction, pp356–357/PDF16–17",
+        "extracted_text_lines": [
+          617,
+          635
+        ],
+        "url": "https://doi.org/10.1006/jcta.2001.3185",
+        "source_sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+        "relation": "explicit_research_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "design_configuration_generators",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full source screened; no exact-target current-resolution, Lean-discovery or difficulty assessment performed. The regular-graph paragraph is a special case of the same conjecture, not an additional canonical target."
+  },
+  {
+    "id": "L-F27-constant-configurations",
+    "origin": "article_inventory_extension",
+    "title": "Extend the configuration equations and classification of constant configurations to larger numbers of blocks.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad source direction requiring a bounded parameterized target; excluded from the theorem denominator.",
+    "occurrences": [
+      {
+        "source_id": "F27",
+        "locator": "Section6 concluding paragraph, p355/PDF15",
+        "extracted_text_lines": [
+          549,
+          575
+        ],
+        "url": "https://doi.org/10.1006/jcta.2001.3185",
+        "source_sha256": "d904cb0ee96f4b3a8c09ef0d11e2c965454228fec027c91eeb6ca5d56762c810",
+        "relation": "explicit_research_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "design_configuration_generators",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full source screened; no exact-target current-resolution, Lean-discovery or difficulty assessment performed. The regular-graph paragraph is a special case of the same conjecture, not an additional canonical target."
   }
 ]
