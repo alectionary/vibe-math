@@ -141,6 +141,9 @@ illustrates the distinctions without changing frozen experiment inputs.
 
 When writing or revising a research paper:
 
+- Omit the manuscript author line unless the user explicitly requests one. Do not
+  substitute a collective label such as "Project Contributors". Preserve source
+  author attribution in citations and the question/source/answer table.
 - Lead with the proved result, counterexample or completed characterization.
   Identify each motivating source question by author, date, version and exact
   remark/conjecture/section, then give its specific answer and theorem/proof link.
