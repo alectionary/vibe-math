@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-24T22:52:13.412076+00:00",
+  "scope": "Length-two b=1+x scalar-circulant A and B, actual HX=[A|B^T] and companionHZ=[B|A^T], bijective row/column reindexing, real and binary all-ones matrices, actual degrees2/4, second Gram eigenvalue0, source roots0/2, CSS and all stopping supports.",
+  "proof_coverage_gap_repaired": "Earlier manuscript identified the dense CSS example with the source scalar-factor construction in prose; this module checks the explicit circulant and reindexing bridge.",
+  "build": {
+    "command": "lake build DenseSourceBridge",
+    "exit_code": 0,
+    "jobs": 5472,
+    "log": "dense-bridge-build.log"
+  },
+  "axiom_audit": {
+    "command": "lake env lean AuditDenseSourceBridge.lean",
+    "exit_code": 0,
+    "declarations": [
+      "support",
+      "support_univ",
+      "B",
+      "A",
+      "H",
+      "B_one",
+      "H_one",
+      "rowEquiv",
+      "colEquiv",
+      "expanded",
+      "expanded_eq",
+      "binary",
+      "binary_eq",
+      "HZ",
+      "HZ_one",
+      "binaryZ",
+      "binaryZ_eq",
+      "column_weight",
+      "row_weight",
+      "source_certificate"
+    ],
+    "count": 20,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "log": "dense-bridge-axiom-audit.log"
+  },
+  "new_source_question_delta": 0,
+  "canonical_completion_delta": 0,
+  "files": {
+    "DenseSourceBridge.lean": {
+      "sha256": "0beda627cdfe3c72cadc5c34ddf676f0c8e5c0c6846c42527ce042b28bab2296",
+      "bytes": 3753
+    },
+    "AuditDenseSourceBridge.lean": {
+      "sha256": "3fd0c666595f262e59f23c80d642d626be065c1492f1016ffefa8975afeff85a",
+      "bytes": 1941
+    },
+    "dense-bridge-build.log": {
+      "sha256": "37aab85e45e78b9baa7fd8a98e9825bb02c4accb72e2c8c27ee2eb6ed4e60177",
+      "bytes": 89
+    },
+    "dense-bridge-axiom-audit.log": {
+      "sha256": "ca7e4cbadfec0bac6ed0cf0ef8729b05add00075d2041424e94f3c8fceb9bfdd",
+      "bytes": 5487
+    },
+    "dense-bridge-declarations.json": {
+      "sha256": "51ff0be7f8dfb08173357d73d47c1691d2dec695e8eb0d005b48afc38584d01b",
+      "bytes": 271
+    },
+    "lakefile.toml": {
+      "sha256": "4ee5c14e1f4d5390fd98d059903504a8f5f819aa7420d558abeff4a7b4c92ed2",
+      "bytes": 368
+    }
+  }
+}

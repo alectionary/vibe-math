@@ -125,8 +125,8 @@
       "bytes": 3557
     },
     "lakefile.toml": {
-      "sha256": "0d5010256d6b55357a186857b18fb20ef197eecf7a6600212794d5de43891afa",
-      "bytes": 327
+      "sha256": "4ee5c14e1f4d5390fd98d059903504a8f5f819aa7420d558abeff4a7b4c92ed2",
+      "bytes": 368
     },
     "lean-toolchain": {
       "sha256": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
@@ -183,8 +183,43 @@
     "source-ledgers/parameter-note-prepublication.txt": {
       "sha256": "29a24339429f9bb4dd0ac1c477f3c57c9d627070f875f8fff7ad84b8710d45f7",
       "bytes": 5674
+    },
+    "DenseSourceBridge.lean": {
+      "sha256": "0beda627cdfe3c72cadc5c34ddf676f0c8e5c0c6846c42527ce042b28bab2296",
+      "bytes": 3753
+    },
+    "AuditDenseSourceBridge.lean": {
+      "sha256": "3fd0c666595f262e59f23c80d642d626be065c1492f1016ffefa8975afeff85a",
+      "bytes": 1941
+    },
+    "dense-bridge-build.log": {
+      "sha256": "37aab85e45e78b9baa7fd8a98e9825bb02c4accb72e2c8c27ee2eb6ed4e60177",
+      "bytes": 89
+    },
+    "dense-bridge-axiom-audit.log": {
+      "sha256": "ca7e4cbadfec0bac6ed0cf0ef8729b05add00075d2041424e94f3c8fceb9bfdd",
+      "bytes": 5487
+    },
+    "dense-bridge-declarations.json": {
+      "sha256": "51ff0be7f8dfb08173357d73d47c1691d2dec695e8eb0d005b48afc38584d01b",
+      "bytes": 271
+    },
+    "dense-bridge-verification.json": {
+      "sha256": "a02d5215e82302de1249e4f7f15b35aa4f8f3c6c1d353b368d4b5aae0d9b525a",
+      "bytes": 2257
+    },
+    "verification-before-compliance.json": {
+      "sha256": "82539463b238c35000ceff1332b73339afa03b393cfbb88c34832239c7f1406a",
+      "bytes": 8730
     }
   },
   "publication_reconciliation_canonical_completion_delta": 1,
-  "current_complete_canonical_lean_targets": 5
+  "current_complete_canonical_lean_targets": 5,
+  "additional_source_bridge": {
+    "verification": "dense-bridge-verification.json",
+    "source": "DenseSourceBridge.lean",
+    "main_declaration": "StoppingSpectral.DenseSource.source_certificate",
+    "declarations_audited": 20,
+    "proof_sources_previously_checked_unchanged": true
+  }
 }

@@ -1,0 +1,65 @@
+StoppingSpectral.DenseSource.support : Finset (ZMod 2)
+'StoppingSpectral.DenseSource.support' depends on axioms: [propext, Quot.sound]
+StoppingSpectral.DenseSource.support_univ : StoppingSpectral.DenseSource.support = Finset.univ
+'StoppingSpectral.DenseSource.support_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.B : Matrix (ZMod 2) (ZMod 2) ℝ
+'StoppingSpectral.DenseSource.B' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.A : Matrix (Fin 1 × ZMod 2) (Fin 1 × ZMod 2) ℝ
+'StoppingSpectral.DenseSource.A' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.H : Matrix (Fin 1 × ZMod 2) (Fin 1 × ZMod 2 ⊕ Fin 1 × ZMod 2) ℝ
+'StoppingSpectral.DenseSource.H' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.B_one (i j : ZMod 2) : StoppingSpectral.DenseSource.B i j = 1
+'StoppingSpectral.DenseSource.B_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.H_one (i : Fin 1 × ZMod 2) (j : Fin 1 × ZMod 2 ⊕ Fin 1 × ZMod 2) :
+  StoppingSpectral.DenseSource.H i j = 1
+'StoppingSpectral.DenseSource.H_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.rowEquiv : Fin 1 × ZMod 2 ≃ Fin 2
+'StoppingSpectral.DenseSource.rowEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.colEquiv : Fin 1 × ZMod 2 ⊕ Fin 1 × ZMod 2 ≃ Fin 4
+'StoppingSpectral.DenseSource.colEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.expanded : Matrix (Fin 2) (Fin 4) ℝ
+'StoppingSpectral.DenseSource.expanded' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.expanded_eq : StoppingSpectral.DenseSource.expanded = StoppingSpectral.denseExample
+'StoppingSpectral.DenseSource.expanded_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.binary : Matrix (Fin 2) (Fin 4) (ZMod 2)
+'StoppingSpectral.DenseSource.binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.binary_eq : StoppingSpectral.DenseSource.binary = StoppingSpectral.denseExampleBinary
+'StoppingSpectral.DenseSource.binary_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.HZ : Matrix (Fin 1 × ZMod 2) (Fin 1 × ZMod 2 ⊕ Fin 1 × ZMod 2) ℝ
+'StoppingSpectral.DenseSource.HZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.HZ_one (i : Fin 1 × ZMod 2) (j : Fin 1 × ZMod 2 ⊕ Fin 1 × ZMod 2) :
+  StoppingSpectral.DenseSource.HZ i j = 1
+'StoppingSpectral.DenseSource.HZ_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.binaryZ : Matrix (Fin 2) (Fin 4) (ZMod 2)
+'StoppingSpectral.DenseSource.binaryZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.binaryZ_eq : StoppingSpectral.DenseSource.binaryZ = StoppingSpectral.denseExampleBinary
+'StoppingSpectral.DenseSource.binaryZ_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.column_weight (j : Fin 4) : ∑ i, StoppingSpectral.DenseSource.expanded i j = 2
+'StoppingSpectral.DenseSource.column_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.row_weight (i : Fin 2) : ∑ j, StoppingSpectral.DenseSource.expanded i j = 4
+'StoppingSpectral.DenseSource.row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.DenseSource.source_certificate :
+  StoppingSpectral.DenseSource.B = StoppingSpectral.supportCirculant {0, 1} ∧
+    StoppingSpectral.DenseSource.expanded = StoppingSpectral.denseExample ∧
+      StoppingSpectral.DenseSource.binary = StoppingSpectral.denseExampleBinary ∧
+        StoppingSpectral.DenseSource.binaryZ = StoppingSpectral.denseExampleBinary ∧
+          (∀ (j : Fin 4), ∑ i, StoppingSpectral.DenseSource.expanded i j = 2) ∧
+            (∀ (i : Fin 2), ∑ j, StoppingSpectral.DenseSource.expanded i j = 4) ∧
+              StoppingSpectral.eigs StoppingSpectral.DenseSource.expanded
+                    ⟨1, StoppingSpectral.DenseSource.source_certificate._proof_1⟩ =
+                  0 ∧
+                StoppingSpectral.eigs StoppingSpectral.DenseSource.expanded
+                      ⟨1, StoppingSpectral.DenseSource.source_certificate._proof_1⟩ <
+                    2 / 2 ∧
+                  StoppingSpectral.sourceSmallRoot 2 2
+                        (StoppingSpectral.eigs StoppingSpectral.DenseSource.expanded
+                          ⟨1, StoppingSpectral.DenseSource.source_certificate._proof_1⟩) =
+                      0 ∧
+                    StoppingSpectral.sourceLargeRoot 2 2
+                          (StoppingSpectral.eigs StoppingSpectral.DenseSource.expanded
+                            ⟨1, StoppingSpectral.DenseSource.source_certificate._proof_1⟩) =
+                        2 ∧
+                      StoppingSpectral.DenseSource.binary * StoppingSpectral.DenseSource.binaryZ.transpose = 0 ∧
+                        ∀ (S : Finset (Fin 4)),
+                          StoppingSpectral.IsStopping StoppingSpectral.DenseSource.expanded S ↔ 2 ≤ S.card
+'StoppingSpectral.DenseSource.source_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
