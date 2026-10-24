@@ -20,11 +20,13 @@ ids=a['added_target_ids'];assert len(ids)==len(set(ids))==a['added_entries']==e[
 assert set(ids)==set(e['added_target_ids'])
 assert sum(by[i]['eligible_for_coverage'] for i in ids)==a['added_eligible_targets']==e['added_eligible_targets']
 assert a['completed_targets_added']==e['completed_targets_added']==0
-assert len(rows)==a['baseline']['canonical_entries']+a['added_entries']
-assert sum(r['eligible_for_coverage'] for r in rows)==a['baseline']['eligible_targets']+a['added_eligible_targets']
-assert len(coverage)==a['baseline']['paper_records']+a['new_paper_records']
-assert sum(c['coverage_status'].endswith('full_text_screened') for c in coverage.values())==a['baseline']['full_text_screens']+a['full_text_screens_added']
-assert sum(r['eligible_for_coverage'] and r['lean_proof_status']=='verified_complete_lean_proof' for r in rows)==a['baseline']['verified_complete_lean_targets']==4
+later=rec['indexing_extensions'][rec['indexing_extensions'].index(e)+1:]
+assert len(rows)==a['baseline']['canonical_entries']+a['added_entries']+sum(x['added_entries'] for x in later)
+assert sum(r['eligible_for_coverage'] for r in rows)==a['baseline']['eligible_targets']+a['added_eligible_targets']+sum(x['added_eligible_targets'] for x in later)
+assert len(coverage)==a['baseline']['paper_records']+a['new_paper_records']+sum(len(x['added_paper_ids']) for x in later)
+assert sum(c['coverage_status'].endswith('full_text_screened') for c in coverage.values())==a['baseline']['full_text_screens']+a['full_text_screens_added']+sum(x['full_text_screens_added'] for x in later)
+assert a['baseline']['verified_complete_lean_targets']==4
+assert sum(r['eligible_for_coverage'] and r['lean_proof_status']=='verified_complete_lean_proof' for r in rows)==a['baseline']['verified_complete_lean_targets']+1  # later parameter-question completion
 linked=[]
 for p in a['papers']:
  assert p['paper_id'] in coverage and p['source_index_id'] in index

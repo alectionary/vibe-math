@@ -52,6 +52,8 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-P34-objective-ranking:** Identify when cycle-only, absorbing-only or joint objectives predict superior decoding. Status: open; no universally superior objective established.
 - **RQ-P34-error-floor:** Derive a quantitative error-floor predictor for the stated model from structural and dynamical properties. Status: open; finite inventories and experiments do not supply a general law.
 - **RQ-F16-lift-label-elimination:** Classify labels eliminating Pasch supports in the two fixed cyclic covers and explain the full QC-GHP implication. Status: Answered in the recorded fixed-base scope; every manuscript proof has a checked Lean version. Optimization/performance and priority are outside scope.
+- **RQ-F16-incidence-six:** Certify a useful incidence-aware stopping bound for the source B1 matrix and its cyclic covers. Status: completed_for_the_explicit_positive_63_multiple_lift_family
+- **RQ-F16-minimum-support-classification:** Classify all size-six stopping supports of the source B1 matrix. Status: completed_for_the_exact_882_column_source_matrix
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -91,6 +93,36 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing): General voltage-cycle elimination is classical. Exact all-N raw-label and slice histograms, physical incidence/counting bridges, integer-certificate soundness, full scalar-right counts and the [[140q,18,6]] family for every q>=2 now have checked Lean versions for every manuscript proof. The all-declaration axiom audit and independent exact q2 checks are recorded. No priority, decoder-performance, general gauge-orbit or canonical coverage increment is claimed.. Remaining at that dated checkpoint: Decoder optimization/performance, general switching-orbit classification, and global priority claim.. [Report](../formalization/lift-label-elimination/RESEARCH-NOTE.txt) · [Verification](../formalization/lift-label-elimination/verification.json) · [Prior art](../formalization/lift-label-elimination/prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: stopping-bound-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result.. Remaining at that dated checkpoint: A stronger parameter-aware/multi-eigenvalue bound; full general lifted products with both base factors matrix-valued; global priority.. [Report](../formalization/stopping-bound/RESEARCH-NOTE.txt) · [Verification](../formalization/stopping-bound/verification.json) · [Prior art](../formalization/stopping-bound/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: incidence-stopping-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Incidence-aware restricted follow-up: exact stopping distance six for A=x^27 I_7+S_7+x^54 S_7^2 and b=1+x+x^6 at every positive lift length divisible by63. Includes generic extension-search soundness, two-root certificate, both cyclic symmetries, cover projection/local-injectivity, source-matrix and CSS bridges. No quantum logical-distance or rate claim; no parameters satisfying Proposition5.1 are produced. Exact expanded-matrix sigma_2 squared is at least12; both Zhu–Chugg formula values are negative whenever their strict gap holds.. Remaining at that dated checkpoint: General incidence-conditioned spectral theorem, minimum-stopping-set classification, logical ranks/distances and full higher-rank lifted products.. [Report](../formalization/stopping-bound/incidence/RESEARCH-NOTE.txt) · [Verification](../formalization/stopping-bound/incidence/verification.json) · [Prior art](../formalization/stopping-bound/incidence/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: b1-stopping-classification-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Complete base-B1 minimum-support classification: all size-six stopping supports of the exact 882-column source H_X are precisely the 441 distinct companion H_Z row supports, in a single free Z/7 x Z/63 coordinate-translation orbit. Includes exhaustive-search soundness, kernel certificate, unique center, count and actual binary source bridge. No classification for larger covers or logical-distance claim.. Remaining at that dated checkpoint: Minimum-support classification of larger cyclic covers, least non-companion stopping support, logical ranks/distances and general QC-GHP design theorem.. [Report](../formalization/stopping-bound/classification/RESEARCH-NOTE.txt) · [Verification](../formalization/stopping-bound/classification/verification.json) · [Prior art](../formalization/stopping-bound/classification/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: stopping-source-parameter-answer-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): No positive-dimensional binary biregular scalar-factor parameter choice gives a source large root above two under the strict spectral inequality.. Remaining at that dated checkpoint: Separate stronger/replacement-bound direction; not an unhandled parameter case of the current proposition.. [Report](../formalization/stopping-bound/source-answer/RESEARCH-NOTE.txt) · [Verification](../formalization/stopping-bound/source-answer/verification.json) · [Prior art](../formalization/stopping-bound/source-answer/source-ledgers/parent-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: stopping-parameter-publication-reconciliation-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Original Proposition5.1 useful-parameter question answered negatively by existing checked universal theorem.. Remaining at that dated checkpoint: Distinct stronger/replacement-bound direction.. [Report](../formalization/stopping-bound/source-answer/PUBLICATION.txt) · [Verification](../formalization/stopping-bound/source-answer/verification.json) · [Prior art](../formalization/stopping-bound/source-answer/source-ledgers/parent-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **1**. Consult this dated artifact for its exact source and proof scope.
 
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
@@ -171,6 +203,35 @@ Version-specific screening of every paper encountered in the four-variable absor
 - [L-F66-minimum-cuboctahedra](OPEN-PROBLEMS.md#l-f66-minimum-cuboctahedra): Determine the asymptotic minimum number of cuboctahedra in an order-n Latin square; in particular, can the count be below (4-Omega(1))n^4?
 - [L-F52-seven-even-free-sts](OPEN-PROBLEMS.md#l-f52-seven-even-free-sts): Does a nontrivial Steiner triple system exist that simultaneously avoids the Pasch, grid and double-triangle even configurations, and hence is seven-even-free?
 
-Current cohort: **252 canonical entries,135 eligible targets,100 paper records,90 full-text screens**; **4/135 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: stopping-bound-source-screen-2026-10-24
 
-The current source index has **62** records, with actual access levels retained.
+Four new complete primary-text screens add ten broad historical directions, with two named classical full-text/archival gaps. The F16 tightening component remains attached to its existing canonical target. No precise-target or completion increment.
+
+[Screen report](../literature/stopping-bound-source-screening.json). Added **10 entries**, **0 eligible targets**, **6 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F67-redundant-check-design](OPEN-PROBLEMS.md#l-f67-redundant-check-design): Develop a principled way to add redundant parity checks that improves iterative decoding beyond the difference-set examples.
+- [L-F68-integer-tightening](OPEN-PROBLEMS.md#l-f68-integer-tightening): Improve the graph-analysis distance bound by enforcing integer relation-distribution vectors.
+- [L-F68-degree-stratification](OPEN-PROBLEMS.md#l-f68-degree-stratification): Refine the graph-analysis bound by separating active checks according to their induced degrees.
+- [L-F68-decoder-quality](OPEN-PROBLEMS.md#l-f68-decoder-quality): Test whether the graph-analysis bound predicts the quality of a graph for iterative decoding.
+- [L-F69-general-distance](OPEN-PROBLEMS.md#l-f69-general-distance): Find nontrivial general minimum-distance lower bounds for the proposed QC generalized hypergraph-product codes.
+- [L-F70-efficient-decoding](OPEN-PROBLEMS.md#l-f70-efficient-decoding): Devise an efficient decoder for quantum Tanner codes.
+- [L-F70-generator-weight](OPEN-PROBLEMS.md#l-f70-generator-weight): Reduce the constant generator weights in the quantum Tanner construction.
+- [L-F70-other-complexes](OPEN-PROBLEMS.md#l-f70-other-complexes): Find complexes beyond left-right Cayley complexes on which the Tanner construction gives good quantum LDPC families.
+- [L-F70-explicit-components](OPEN-PROBLEMS.md#l-f70-explicit-components): Make the required component-code and quantum Tanner constructions completely explicit.
+- [L-F70-robustness-exponent](OPEN-PROBLEMS.md#l-f70-robustness-exponent): Improve component dual-tensor robustness beyond the Delta-to-the-three-halves scale and strengthen the distance dependence.
+
+## Separate indexing extension: incidence-stopping-source-screen-2026-10-24
+
+Three primary full-text screens add five broad historical directions; one 2026 HGP access gap. A project-derived exact incidence family certificate remains supporting evidence under L-F16, without another canonical completion.
+
+[Screen report](../literature/incidence-stopping-source-screening.json). Added **5 entries**, **0 eligible targets**, **4 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+- [L-F73-residual-erasure-techniques](OPEN-PROBLEMS.md#l-f73-residual-erasure-techniques): Develop other techniques to handle the small residual errors left after peeling quantum expander codes.
+- [L-F74-socket-partition-design](OPEN-PROBLEMS.md#l-f74-socket-partition-design): Improve socket selection and partitioning events in composite branch-and-bound stopping-set searches.
+- [L-F74-faster-implementation](OPEN-PROBLEMS.md#l-f74-faster-implementation): Extend exhaustive small stopping/trapping-set search to longer codes through better data structures, software or hardware.
+- [L-F74-direct-trapping-search](OPEN-PROBLEMS.md#l-f74-direct-trapping-search): Design direct exhaustive trapping-set algorithms that improve on reduction to stopping-set enumeration.
+- [L-F75-pruned-cluster-combination](OPEN-PROBLEMS.md#l-f75-pruned-cluster-combination): Study pruned peeling combined with cluster decomposition more comprehensively.
+
+Current cohort: **267 canonical entries,135 eligible targets,110 paper records,97 full-text screens**; **5/135 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **76** records, with actual access levels retained.

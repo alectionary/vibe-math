@@ -1,0 +1,202 @@
+All 441 minimum stopping supports of the source B1 matrix are companion-check rows
+24 October2026 — project-derived follow-up to L-F16-stopping-bound
+
+QUESTION / SOURCE / ANSWER CONTRACT
+
+Source: Aida Abiad and Nichola Castriota, Spectral and Additive Combinatorial
+Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes,
+arXiv:2607.13666v1,15July2026, Example3.2, Proposition5.1, Remark5.2 and §6.
+https://arxiv.org/html/2607.13666v1
+
+The source asks when its spectral stopping bound is informative and how it can
+be tightened. Earlier checked blocks establish a scalar-factor spectral
+obstruction and an incidence-aware exact stopping distance six for the source's
+B1 matrix and positive63-multiple covers. The present USER-REQUESTED follow-up
+asks to classify every size-six stopping support of B1. This exact restricted
+question is project-derived, not an additional author-posed canonical problem.
+
+Intended answer -> decisive evidence:
+Every size-six stopping support is exactly one companion H_Z row support;
+there are441 distinct supports forming one FREE Z/7 x Z/63 translation orbit.
+Evidence: generic all-branch extension-classifier soundness; a two-root kernel
+certificate; unique-center and orbit/count proofs; actual binary source-matrix
+and companion-row bridges. Independent all882-root exact enumeration corroborates
+but is not a Lean premise. No elementary, connected-support or even-syndrome
+assumption is imposed on stopping sets in the classification theorem.
+
+EXACT CLASSIFICATION AND OBJECTS
+
+Take ell=63, A=x^27 I_7+S_7+x^54 S_7^2, b=1+x+x^6, with P(s)_{i,j}=1
+exactly when i=j+s. Work with the expanded binary source matrices
+  H_X=[Atilde | I_7 tensor Btilde^T],
+  H_Z=[I_7 tensor Btilde | Atilde^T].
+These are the EXACT source Example3.2 conventions, not a silently substituted
+older B1 labeling. Checks c=(j,f) lie in G=Z/7 x Z/63. Variables are
+Bool x G, with false/left and true/right blocks. For every c define
+  R(j,f)={left(j,f),left(j,f-1),left(j,f-6),
+          right(j,f+27),right(j+1,f),right(j+2,f+54)}.
+
+Theorem: for every finite variable support T,
+  [T is a nonempty H_X stopping set AND |T|=6]
+    iff there exists a UNIQUE c in G with T=R(c)
+    iff there exists a UNIQUE c in G with T={v : H_Z(c,v)=1}.
+Stopping means no check has exactly one selected neighbor. Matrices are binary
+over F_2. The statement quantifies over all T, not just a supplied list of
+experimental supports. Every R(c) is a stopping support of size six. Since the
+previous theorem excludes sizes1–5, these are precisely ALL minimum supports.
+
+The map c -> R(c) is injective. Therefore the complete finite family of minimum
+supports has cardinality |G|=441. All R(c) are translates of R(0,0), and no
+nonzero translation fixes it. G is the PRODUCT Z/7 x Z/63; we do not call G a
+cyclic group of order441. The supports each have three left and three right
+variables, and every check has selected degree zero or two. Elementary structure
+and this balance are conclusions, not assumptions of the completeness theorem.
+
+PROOF AND LEAN TRANSLATION
+
+1. Generic classifier — ClassificationSearch.lean, classifiesList_sound.
+The prior degree-one extension lemma says that if S lies in a stopping support T
+and a check has degree one in S, some neighbor of that check lies in T\S.
+The new classifier branches over EVERY such neighbor. At fuel0 it accepts if a
+check of degree one remains (so S cannot equal a stopping T) or if S has a
+specified good form. At positive fuel, encountering no degree-one check rejects
+rather than silently assuming a minimality result. All other children must
+accept. The proof uses induction, S.Nodup, S subset T and |T|<=|S|+fuel.
+At fuel0 the cardinality bound forces S=T. At positive fuel the stopping
+extension lemma provides a child inside T; the all-children Boolean certificate
+supplies the induction premise. Thus a true certificate proves the requested
+property for every stopping completion in the exact stated size range.
+
+2. Good leaves — ClassificationData.lean; branch certificates — ClassificationBranches.lean; two-root combination — ClassificationKernel.lean.
+The good predicate checks length6 and containment in the row list at one of
+six centers:
+  (0,0),(0,1),(0,6),(0,-27),(-1,0),(-2,-54).
+The first three are the companion rows containing left(0,0); the other three
+contain right(0,0). The soundness proof uses duplicate-freeness, containment and
+the proved cardinality6 of every R(c) to obtain equality. It does not infer
+stopping from the predicate alone. Ten smaller kernel reductions check all unselected neighbors of both side
+roots, with four further additions each. The generic proved branch-introduction rule combines them into the two-root
+five-addition certificate. The row-neighbor completeness and degree-one picker
+proofs are inherited unchanged from the preceding checked artifact.
+
+3. Classification of arbitrary supports — Classification.lean.
+Take a selected variable v in a nonempty stopping support. Translate by the
+negative of both of v's cyclic coordinates. Incidence, nonemptiness, size and
+stopping semantics are preserved; the translated support contains one of the
+two normalized roots. The classifier gives a row support R(c). Translate back;
+the proved identity image(R(c),shift(t))=R(c+t) gives the requested form.
+The certificate uses decide +kernel. No native_decide, Lean.ofReduceBool,
+external SAT certificate, Python enumeration or floating computation is used
+as a proof premise.
+
+4. Unique centers, count and orbit — ClassificationCertificate.lean.
+A second kernel certificate checks that inclusion R(c) subset R(0,0), expressed
+using six-element row lists, forces c=0. If R(c)=R(d), translate by -d and apply
+this certificate to R(c-d)=R(0). Thus c=d. The final classification supplies
+existence and this injectivity supplies uniqueness. Define the finite candidate
+family as the image of all441 centers, then prove membership in that family
+EQUIVALENT to being a size-six stopping support. Its cardinality follows from
+the injective-image formula, not an assumed output count. The same translation
+identity gives the single free G-orbit statement.
+
+5. Actual binary matrix and stabilizer bridge — ClassificationCertificate.lean.
+The natural source H_Z matrix is invariant under simultaneous translations of
+its row and column coordinates, proved from its explicit circulant entries.
+The known R(0) companion-row identity therefore gives R(c)={v:HZ(c,v)=1}
+for every c. All coefficients are0 or1, proved before passing to F_2.
+The binary_source_classification theorem uses the exact t=1 HX2 and HZ2
+matrices from the preceding family theorem. Its statement is an IFF with a
+UNIQUE actual binary H_Z row. Natural graph predicates, matrix casts and
+source conventions are all linked rather than supplied as assumptions.
+All new structure/profile consequences have their own checked Lean proofs.
+
+INDEPENDENT CHECKS
+
+The independent sparse Python graph uses source columns directly and chooses
+degree-one checks in sorted numeric order, differently from Lean's list picker.
+At the two normalized roots it visits7812 search nodes and finds six supports.
+Taking both coordinate translations gives441 distinct supports, exactly the
+441 source H_Z rows. A separate run over ALL882 roots visits3445092 nodes and
+finds the same441 supports, with neither extras nor missing companion rows.
+Those full supports and exact domains are retained in full-root-check.json.
+These finite computations corroborate the model; the completeness and count
+claims are established by the Lean theorem, not by treating Python as an oracle.
+
+COMPARISON WITH KNOWN STOPPING SETS AND SPECTRAL BOUNDS
+
+Zhu–Chugg2007 Corollary6 provides regular-graph two-eigenvalue lower bounds;
+Wang–Kulkarni–Poor2009 provides classical rooted narrowing/branch-and-bound
+methods. Neither general enumeration nor the stabilizer stopping-set mechanism
+is presented as new. Prabhu et al. arXiv2504.21845v2 §III.B–D and Yao et al.
+arXiv2412.08817v1 §III distinguish stabilizer from horizontal/vertical stopping
+sets and cite Connolly et al.'s stabilizer-support lemma. Yao et al. Figure7
+explicitly studies B1. Existence of companion-row stopping sets is therefore
+known; the present classification additionally proves their EXHAUSTIVENESS at
+size six and the exact count for this displayed source matrix.
+
+The previous checked spectral result sigma_2(H_X)^2>=12 still applies. Thus
+Abiad–Castriota Proposition5.1's requirement sigma_2^2<gamma/2=3/2 fails for
+B1. Whenever the Zhu–Chugg strict gap eta<18 holds, their bit and parity bound
+expressions both have positive denominators and negative numerators (6-eta and
+10-eta). Outside that gap, these formulas are outside the compared regime.
+The complete minimum-support classification uses incidence information absent
+from those two scalar expressions. It neither refutes Zhu–Chugg's broader
+framework nor produces source-gap parameters.
+
+The classification concerns graph stopping and source Z-check supports. It does
+not establish logical dimension, logical distance, erasure-decoding success,
+check independence or all low-weight stabilizers. In particular441 DISTINCT row
+supports does not mean441 linearly independent generators. It classifies only
+size-six stopping supports of the882-variable BASE. The previous exact-distance
+family theorem remains valid for all positive63-multiple covers, but the present
+classification is not silently extended to those larger matrices.
+
+PRIOR ART / SOURCE SCREENING / SHARED INVENTORY
+
+The prior artifact's complete source screens, public GitHub code comparisons,
+accessible signed-in X posts and explicit access gaps remain inherited. A new
+bounded web search used the exact B1/882/stopping/six vocabulary. It returned
+mostly unrelated matches, the already-held Javed SB-LP lead and a few search-only
+technical leads. No newly consulted full paper is treated as screened and no
+absence or global priority claim is inferred. The exact query/outcome ledger
+preserves named discovery gaps. The 2026 Prabhu–Gayathri–Kumar full paper remains
+inaccessible; its abstract is not used as a classification theorem.
+
+This block adds NO author-posed questions, NO eligible targets, NO paper records,
+NO completed canonical targets and NO new full-text screens. The shared cohort
+stays267 canonical entries,135 eligible,110 paper records,97 full-text screens
+and4 completed canonical Lean targets. L-F16 remains partially addressed with
+supporting Lean proofs. The completed project-derived classification is linked
+under that same target, with reports/planning regenerated and validators run.
+Frozen earlier proof files, paper and verification manifests are preserved.
+
+REPRODUCTION / CHRONOLOGY / STATUS
+
+Pinned Lean4.36.0-rc1 and mathlib5f7b4198d22a9c82e1c698a379334fe128095c82.
+The previous proof modules are vendored unchanged under dependencies/ with their
+hashes; new declarations have complete axiom/signature reports. Only standard
+propext,Classical.choice,Quot.sound are allowed. See verification.json for exact
+commands, file hashes, fresh build, audit and checkpoint time. No new source-file
+public immutable links exist until authorized commit/publication; archive-relative
+complete proof links and hashes are the reproducibility anchor. No PAT, post,
+external message, commit or push is created by this follow-up.
+
+Source question:15July2026. Present revision:24October2026,101 calendar days
+later (date arithmetic, not asserted unsolved duration). Original investigation
+began19:49UTC, incidence theorem20:48UTC, classification follow-up21:38UTC.
+Final certificate/build/audit/manuscript times are recorded separately.
+
+Question answered: every size-six stopping support of the exact binary source
+B1 matrix is a unique companion H_Z row support; exactly441 supports, one free
+Z/7 x Z/63 translation orbit, with three variables per side and induced degrees0/2.
+
+Question still open: whether an equally exhaustive minimum-support classification
+holds in every positive63-multiple cover; general incidence-conditioned QC-GHP
+bounds; logical ranks/distances; the smallest non-companion stopping supports.
+
+Next proposed target — FOLLOW-UP: classify size-six supports in ALL positive
+63-multiple covers using the checked projection plus the connected base support.
+This is more bounded and reuses more infrastructure than a general polynomial
+criterion. Searching the first non-companion size has quantum-decoding relevance
+but increases finite search and formal certificate costs. Logical-rank formulas
+require a different algebraic program. None of those is claimed completed here.

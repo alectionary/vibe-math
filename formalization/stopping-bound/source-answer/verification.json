@@ -1,0 +1,150 @@
+{
+  "status": "passed",
+  "target_id": "L-F16-stopping-bound",
+  "checked_utc": "2026-10-24T22:27:02.308297+00:00",
+  "answer": "Universal negative answer: no useful parameter choice in Proposition5.1 stated positive-dimensional binary biregular scalar-factor model gives a large root above two.",
+  "parameter_component_status": "resolved_negative",
+  "separate_open_component": "Stronger/replacement stopping bound",
+  "canonical_completion_delta": 0,
+  "new_question_delta": 0,
+  "new_paper_delta": 0,
+  "new_full_text_screen_delta": 0,
+  "source_fidelity": {
+    "scalar_scope": "Source §3.2 r2=n2=1 used throughout; Proposition5.1 explicitly invokes Theorem4.1 scalar-shift matrices.",
+    "matrix": "Actual real expanded binary H=[A | I_r tensor B^T]; arbitrary first block allowed.",
+    "quantifiers": "r,n1,ell,gamma positive integers, k natural, m=r*ell>=2; every binary biregular matrix with these dimensions.",
+    "spectrum": "Second descending Gram eigenvalue including multiplicity, unnormalized.",
+    "roots": "Original source radicals, bridged by unchanged Spectral.lean.",
+    "branch": "Every nonempty stopping support has >=2 variables and exceeds sourceSmallRoot; sourceLargeRoot<=2.",
+    "raw_gap": "Possible in dense examples; not claimed impossible in the one-row case.",
+    "excluded": "Zero-width first factor, zero column degree, fewer than two check nodes; no logical-distance statement."
+  },
+  "build": {
+    "command": "lake build SourceQuestionAnswer",
+    "exit_code": 0,
+    "jobs": 5470,
+    "log": "build.log",
+    "completed_utc": "2026-10-24T22:21:40.743162+00:00"
+  },
+  "axiom_audit": {
+    "command": "lake env lean AuditSourceAnswer.lean",
+    "exit_code": 0,
+    "declarations": [
+      "source_parameter_question_negative",
+      "no_parameters_give_source_improvement"
+    ],
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "log": "axiom-audit.log",
+    "no_admissions": true,
+    "completed_utc": "2026-10-24T22:23:40.253557+00:00"
+  },
+  "lean": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_commit": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "inherited_declarations_audited": 52,
+  "inherited_source_unchanged": true,
+  "pdf": {
+    "pages": 5,
+    "all_pages_rendered_and_visually_inspected": true,
+    "author_line_omitted": true
+  },
+  "chronology": {
+    "source": "2026-07-15",
+    "revision": "2026-10-24",
+    "calendar_delta_days": 101,
+    "investigation_start": "2026-10-24T19:49:00Z",
+    "parent_audit": "2026-10-24T20:20:37.519704+00:00",
+    "source_scope_clarification": "after2026-10-24T22:20:00Z"
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "x_posted": false,
+    "PAT_created": false
+  },
+  "files": {
+    "AuditSourceAnswer.lean": {
+      "sha256": "f6b53798a8cd974a46c8dfbb56d08d75272fd49efc7fd60f2c4bdcec7fae1ae9",
+      "bytes": 284
+    },
+    "PROOF-LINKS.html": {
+      "sha256": "3ec230f5f1d0f333b33209a519a473845e3a7397c79e9e70694ed52ed6c237a9",
+      "bytes": 1114
+    },
+    "README.txt": {
+      "sha256": "596590ab22137a7f4c6a1d3ef500940ca63bb8817f2b1dd948901b6031537177",
+      "bytes": 839
+    },
+    "RESEARCH-NOTE.txt": {
+      "sha256": "29a24339429f9bb4dd0ac1c477f3c57c9d627070f875f8fff7ad84b8710d45f7",
+      "bytes": 5674
+    },
+    "SourceQuestionAnswer.lean": {
+      "sha256": "f1c1c424fa881dab4b36fb43a31beb5e99ea22525adce7a71e3403ad77890d23",
+      "bytes": 3116
+    },
+    "axiom-audit.log": {
+      "sha256": "d4d94356065165279fb8b602a668c7202d5c9351b7900d122ec08f787fde7761",
+      "bytes": 2974
+    },
+    "build.log": {
+      "sha256": "27194ce2adac4e759bcb19e3d7936c535ef58df0d8ed329aaa40088cd24effe4",
+      "bytes": 130
+    },
+    "dependencies/Spectral.lean": {
+      "sha256": "a3e712b2a206bd7743408ecc122e66e7d980dbd4689c6d49977536dfe9bb469d",
+      "bytes": 30959
+    },
+    "lake-manifest.json": {
+      "sha256": "4f422a2f41a8ee018a7d7cf021bcd3373bcb1cc7027c1ed6552f1a3c2f6a0e35",
+      "bytes": 3557
+    },
+    "lakefile.toml": {
+      "sha256": "0d5010256d6b55357a186857b18fb20ef197eecf7a6600212794d5de43891afa",
+      "bytes": 327
+    },
+    "lean-toolchain": {
+      "sha256": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+      "bytes": 29
+    },
+    "make_paper.py": {
+      "sha256": "afc67641d3bfdb396a3df05b66e2e2d31822fa04bfa82d2fcc42953dcf59e986",
+      "bytes": 16203
+    },
+    "paper.pdf": {
+      "sha256": "b9a0f012b458dfb170d57018910c98fab35625bb88fb885407bf3aea1bbeac7c",
+      "bytes": 58043
+    },
+    "source-ledgers/F16-v1.html": {
+      "sha256": "c00d34d6ade246053469f686906cb29fb020a34096942d2042d1cd60a5b44606",
+      "bytes": 890862
+    },
+    "source-ledgers/parent-Audit.lean": {
+      "sha256": "a11f2de037f052720a29ab7740c84da6697fd4533ce98711b49bd007ec4f970a",
+      "bytes": 3007
+    },
+    "source-ledgers/parent-RESEARCH-NOTE.txt": {
+      "sha256": "fb2f8a65b8f369eb4289e7c58fef6c92c9da013136f062f44507046126b77d0b",
+      "bytes": 17581
+    },
+    "source-ledgers/parent-axiom-audit.log": {
+      "sha256": "cce1f866fd9e5074f6d99d930e176699aac5d6e040be2122647fbbd1dc5fe978",
+      "bytes": 8848
+    },
+    "source-ledgers/parent-prior-art.json": {
+      "sha256": "12ff26405a3b2f3a91582c9d6935ad0cfb434de9a7c268f56796aa3311340818",
+      "bytes": 19958
+    },
+    "source-ledgers/parent-verification.json": {
+      "sha256": "ff691db2f9e81e95cc8f8f85da6b859c8d5383df587cb7d7067a30383f29f5e0",
+      "bytes": 6100
+    },
+    "x-post-draft.txt": {
+      "sha256": "b507d7067f56a6c2a0639c4ef992a7450cc2f7c504c06aad34526bdbf6fcc39c",
+      "bytes": 593
+    }
+  }
+}

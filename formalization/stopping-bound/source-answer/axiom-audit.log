@@ -1,0 +1,39 @@
+StoppingSpectral.source_parameter_question_negative.{u_1, u_2} {C : Type u_1} {F : Type u_2} [Fintype C] [DecidableEq C]
+  [Nonempty C] [Fintype F] [DecidableEq F] [Nonempty F] (r γ k : ℕ) (hr : 0 < r) (hγ : 0 < γ)
+  (A : Matrix (Fin r × F) (C × F) ℝ) (B : Matrix F F ℝ) (hm : 2 ≤ Fintype.card (Fin r × F))
+  (hbin :
+    ∀ (i : Fin r × F) (j : C × F ⊕ Fin r × F),
+      StoppingSpectral.scalarFactorMatrix A B i j = 0 ∨ StoppingSpectral.scalarFactorMatrix A B i j = 1)
+  (hcol : ∀ (j : C × F ⊕ Fin r × F), ∑ i, StoppingSpectral.scalarFactorMatrix A B i j = ↑γ)
+  (hrow : ∀ (i : Fin r × F), ∑ j, StoppingSpectral.scalarFactorMatrix A B i j = ↑k)
+  (hgap : StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩ < ↑γ / 2) :
+  r = 1 ∧
+    1 <
+        StoppingSpectral.sourceLargeRoot (↑(Fintype.card (Fin r × F))) (↑γ)
+          (StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩) ∧
+      StoppingSpectral.sourceLargeRoot (↑(Fintype.card (Fin r × F))) (↑γ)
+            (StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩) ≤
+          2 ∧
+        ∀ (S : Finset (C × F ⊕ Fin r × F)),
+          StoppingSpectral.IsStopping (StoppingSpectral.scalarFactorMatrix A B) S →
+            2 ≤ S.card ∧
+              StoppingSpectral.sourceSmallRoot (↑(Fintype.card (Fin r × F))) (↑γ)
+                    (StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩) <
+                  ↑S.card ∧
+                StoppingSpectral.sourceLargeRoot (↑(Fintype.card (Fin r × F))) (↑γ)
+                    (StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩) ≤
+                  ↑S.card
+'StoppingSpectral.source_parameter_question_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.no_parameters_give_source_improvement.{u_1, u_2} {C : Type u_1} {F : Type u_2} [Fintype C]
+  [DecidableEq C] [Nonempty C] [Fintype F] [DecidableEq F] [Nonempty F] (r γ k : ℕ) (hr : 0 < r) (hγ : 0 < γ)
+  (A : Matrix (Fin r × F) (C × F) ℝ) (B : Matrix F F ℝ) (hm : 2 ≤ Fintype.card (Fin r × F))
+  (hbin :
+    ∀ (i : Fin r × F) (j : C × F ⊕ Fin r × F),
+      StoppingSpectral.scalarFactorMatrix A B i j = 0 ∨ StoppingSpectral.scalarFactorMatrix A B i j = 1)
+  (hcol : ∀ (j : C × F ⊕ Fin r × F), ∑ i, StoppingSpectral.scalarFactorMatrix A B i j = ↑γ)
+  (hrow : ∀ (i : Fin r × F), ∑ j, StoppingSpectral.scalarFactorMatrix A B i j = ↑k) :
+  ¬(StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩ < ↑γ / 2 ∧
+      2 <
+        StoppingSpectral.sourceLargeRoot (↑(Fintype.card (Fin r × F))) (↑γ)
+          (StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, hm⟩))
+'StoppingSpectral.no_parameters_give_source_improvement' depends on axioms: [propext, Classical.choice, Quot.sound]

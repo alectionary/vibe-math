@@ -1,0 +1,268 @@
+Incidence.running_lower_six (T : Finset Incidence.Var) (hT : Incidence.Stopping Incidence.E T) : 6 ≤ T.card
+'Incidence.running_lower_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.aCoef {n : ℕ} (g : Incidence.Family.Check n) : ZMod 2
+'Incidence.Family.aCoef' depends on axioms: [propext, Quot.sound]
+Incidence.Family.dCoef {n : ℕ} (g : Incidence.Family.Check n) : ZMod 2
+'Incidence.Family.dCoef' depends on axioms: [propext, Quot.sound]
+Incidence.Family.ite_and_zero.{u_1} {α : Type u_1} [Zero α] (a : α) (p q : Prop) [Decidable p] [Decidable q] :
+  (if p then if q then a else 0 else 0) = if p ∧ q then a else 0
+'Incidence.Family.ite_and_zero' depends on axioms: [propext]
+Incidence.Family.A_circulant {n : ℕ} : (fun c v => ↑(Incidence.Family.A c v)) = Matrix.circulant Incidence.Family.aCoef
+'Incidence.Family.A_circulant' depends on axioms: [propext, Quot.sound]
+Incidence.Family.D_circulant {n : ℕ} :
+  (fun c v => if c.1 = v.1 then ↑(Incidence.Family.B c.2 v.2) else 0) = Matrix.circulant Incidence.Family.dCoef
+'Incidence.Family.D_circulant' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HX2 {n : ℕ} : Matrix (Incidence.Family.Check n) (Incidence.Family.Var n) (ZMod 2)
+'Incidence.Family.HX2' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HZ2 {n : ℕ} : Matrix (Incidence.Family.Check n) (Incidence.Family.Var n) (ZMod 2)
+'Incidence.Family.HZ2' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HX2_incidence {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) (c : Incidence.Family.Check n) :
+  Incidence.Family.HX2 c v = 1 ↔ Incidence.Family.E v c
+'Incidence.Family.HX2_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.css {n : ℕ} [NeZero n] : Incidence.Family.HX2 * Incidence.Family.HZ2.transpose = 0
+'Incidence.Family.css' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.positive_family (t : ℕ) [NeZero t] :
+  Fintype.card (Incidence.Family.Var (63 * t)) = 882 * t ∧
+    Fintype.card (Incidence.Family.Check (63 * t)) = 441 * t ∧
+      (∀ (v : Incidence.Family.Var (63 * t)), {c | Incidence.Family.HX c v = 1}.card = 3) ∧
+        (∀ (c : Incidence.Family.Check (63 * t)), {v | Incidence.Family.HX c v = 1}.card = 6) ∧
+          Incidence.Family.HX2 * Incidence.Family.HZ2.transpose = 0 ∧
+            (∀ (T : Finset (Incidence.Family.Var (63 * t))),
+                Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T → 6 ≤ T.card) ∧
+              ∃ T, Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T ∧ T.card = 6
+'Incidence.Family.positive_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.source_B1_stopping_distance_six :
+  (∀ (T : Finset (Incidence.Family.Var 63)),
+      Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T → 6 ≤ T.card) ∧
+    ∃ T, Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T ∧ T.card = 6
+'Incidence.Family.source_B1_stopping_distance_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} (E : V → C → Prop) [DecidableRel E] (T : Finset V) : Prop
+'Incidence.Stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.stopping_extension.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
+  [DecidableRel E] (T S : Finset V) (hT : Incidence.Stopping E T) (hST : S ⊆ T) (c : C)
+  (hc : {v ∈ S | E v c}.card = 1) : ∃ v ∈ T, v ∉ S ∧ E v c
+'Incidence.stopping_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Check : Type
+'Incidence.Check' does not depend on any axioms
+Incidence.Var : Type
+'Incidence.Var' does not depend on any axioms
+Incidence.col (v : Incidence.Var) : List Incidence.Check
+'Incidence.col' depends on axioms: [propext, Quot.sound]
+Incidence.E (v : Incidence.Var) (c : Incidence.Check) : Prop
+'Incidence.E' depends on axioms: [propext, Quot.sound]
+Incidence.row (c : Incidence.Check) : List Incidence.Var
+'Incidence.row' depends on axioms: [propext, Quot.sound]
+Incidence.row_complete (v : Incidence.Var) (c : Incidence.Check) (h : Incidence.E v c) : v ∈ Incidence.row c
+'Incidence.row_complete' depends on axioms: [propext, Quot.sound]
+Incidence.shiftV (t : Incidence.Check) : Incidence.Var ≃ Incidence.Var
+'Incidence.shiftV' depends on axioms: [propext, Quot.sound]
+Incidence.shiftC (t : Incidence.Check) : Incidence.Check ≃ Incidence.Check
+'Incidence.shiftC' depends on axioms: [propext, Quot.sound]
+Incidence.shift_incidence (t : Incidence.Check) (v : Incidence.Var) (c : Incidence.Check) :
+  Incidence.E ((Incidence.shiftV t) v) ((Incidence.shiftC t) c) ↔ Incidence.E v c
+'Incidence.shift_incidence' depends on axioms: [propext, Quot.sound]
+Incidence.stopping_image.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
+  [DecidableRel E] (e : V ≃ V) (f : C ≃ C) (he : ∀ (v : V) (c : C), E (e v) (f c) ↔ E v c) (T : Finset V)
+  (hT : Incidence.Stopping E T) : Incidence.Stopping E (Finset.image (⇑e) T)
+'Incidence.stopping_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.stopping_cover_image.{u_1, u_2, u_3, u_4} {V : Type u_1} {C : Type u_2} {W : Type u_3} {D : Type u_4}
+  [DecidableEq V] [DecidableEq C] [DecidableEq W] [DecidableEq D] (E : V → C → Prop) [DecidableRel E] (F : W → D → Prop)
+  [DecidableRel F] (p : V → W) (q : C → D) (maps : ∀ (v : V) (c : C), E v c → F (p v) (q c))
+  (lifts : ∀ (v : V) (d : D), F (p v) d → ∃ c, E v c ∧ q c = d)
+  (local_inj : ∀ (v w : V) (c : C), E v c → E w c → p v = p w → v = w) (T : Finset V) (hT : Incidence.Stopping E T) :
+  Incidence.Stopping F (Finset.image p T)
+'Incidence.stopping_cover_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.row_sound {n : ℕ} (v : Incidence.Family.Var n) (c : Incidence.Family.Check n)
+  (h : v ∈ Incidence.Family.row c) : Incidence.Family.E v c
+'Incidence.Family.row_sound' depends on axioms: [propext, Quot.sound]
+Incidence.Family.row_nodup {n : ℕ} (h : 63 ∣ n) (c : Incidence.Family.Check n) : (Incidence.Family.row c).Nodup
+'Incidence.Family.row_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.column_weight {n : ℕ} [NeZero n] (h : 63 ∣ n) (v : Incidence.Family.Var n) :
+  {c | Incidence.Family.HX c v = 1}.card = 3
+'Incidence.Family.column_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.row_weight {n : ℕ} [NeZero n] (h : 63 ∣ n) (c : Incidence.Family.Check n) :
+  {v | Incidence.Family.HX c v = 1}.card = 6
+'Incidence.Family.row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.dimensions {n : ℕ} [NeZero n] :
+  Fintype.card (Incidence.Family.Var n) = 14 * n ∧ Fintype.card (Incidence.Family.Check n) = 7 * n
+'Incidence.Family.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.lower_six {n : ℕ} (h : 63 ∣ n) (T : Finset (Incidence.Family.Var n))
+  (hT : Incidence.Stopping Incidence.Family.E T) : 6 ≤ T.card
+'Incidence.Family.lower_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.matrix_stopping_iff {n : ℕ} (h : 63 ∣ n) (T : Finset (Incidence.Family.Var n)) :
+  Incidence.Stopping (fun v c => Incidence.Family.HX c v = 1) T ↔ Incidence.Stopping Incidence.Family.E T
+'Incidence.Family.matrix_stopping_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.source_matrix_exact_six {n : ℕ} (h : 63 ∣ n) :
+  (∀ (T : Finset (Incidence.Family.Var n)),
+      Incidence.Stopping (fun v c => Incidence.Family.HX c v = 1) T → 6 ≤ T.card) ∧
+    ∃ T, Incidence.Stopping (fun v c => Incidence.Family.HX c v = 1) T ∧ T.card = 6
+'Incidence.Family.source_matrix_exact_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.Check (n : ℕ) : Type
+'Incidence.Family.Check' does not depend on any axioms
+Incidence.Family.Var (n : ℕ) : Type
+'Incidence.Family.Var' does not depend on any axioms
+Incidence.Family.col {n : ℕ} (v : Incidence.Family.Var n) : List (Incidence.Family.Check n)
+'Incidence.Family.col' depends on axioms: [propext, Quot.sound]
+Incidence.Family.row {n : ℕ} (c : Incidence.Family.Check n) : List (Incidence.Family.Var n)
+'Incidence.Family.row' depends on axioms: [propext, Quot.sound]
+Incidence.Family.E {n : ℕ} (v : Incidence.Family.Var n) (c : Incidence.Family.Check n) : Prop
+'Incidence.Family.E' depends on axioms: [propext, Quot.sound]
+Incidence.Family.projC {n : ℕ} (h : 63 ∣ n) (c : Incidence.Family.Check n) : Incidence.Check
+'Incidence.Family.projC' depends on axioms: [propext, Quot.sound]
+Incidence.Family.projV {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) : Incidence.Var
+'Incidence.Family.projV' depends on axioms: [propext, Quot.sound]
+Incidence.Family.project_col {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) :
+  List.map (Incidence.Family.projC h) (Incidence.Family.col v) = Incidence.col (Incidence.Family.projV h v)
+'Incidence.Family.project_col' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.project_row {n : ℕ} (h : 63 ∣ n) (c : Incidence.Family.Check n) :
+  List.map (Incidence.Family.projV h) (Incidence.Family.row c) = Incidence.row (Incidence.Family.projC h c)
+'Incidence.Family.project_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.row_complete {n : ℕ} (v : Incidence.Family.Var n) (c : Incidence.Family.Check n)
+  (h : Incidence.Family.E v c) : v ∈ Incidence.Family.row c
+'Incidence.Family.row_complete' depends on axioms: [propext, Quot.sound]
+Incidence.Family.maps {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) (c : Incidence.Family.Check n)
+  (he : Incidence.Family.E v c) : Incidence.E (Incidence.Family.projV h v) (Incidence.Family.projC h c)
+'Incidence.Family.maps' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.lifts {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) (d : Incidence.Check)
+  (he : Incidence.E (Incidence.Family.projV h v) d) : ∃ c, Incidence.Family.E v c ∧ Incidence.Family.projC h c = d
+'Incidence.Family.lifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.base_row_nodup (c : Incidence.Check) : (Incidence.row c).Nodup
+'Incidence.Family.base_row_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.local_inj {n : ℕ} (h : 63 ∣ n) (v w : Incidence.Family.Var n) (c : Incidence.Family.Check n)
+  (hv : Incidence.Family.E v c) (hw : Incidence.Family.E w c)
+  (he : Incidence.Family.projV h v = Incidence.Family.projV h w) : v = w
+'Incidence.Family.local_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.stopping_of_partners.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (S : Finset V) (hne : S.Nonempty)
+  (hp : ∀ v ∈ S, ∀ (c : C), E v c → ∃ w ∈ S, w ≠ v ∧ E w c) : Incidence.Stopping E S
+'Incidence.Family.stopping_of_partners' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.sixList {n : ℕ} : List (Incidence.Family.Var n)
+'Incidence.Family.sixList' depends on axioms: [propext, Quot.sound]
+Incidence.Family.six {n : ℕ} : Finset (Incidence.Family.Var n)
+'Incidence.Family.six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.project_sixList {n : ℕ} (h : 63 ∣ n) :
+  List.map (Incidence.Family.projV h) Incidence.Family.sixList = Incidence.Family.sixList
+'Incidence.Family.project_sixList' depends on axioms: [propext, Quot.sound]
+Incidence.Family.six_card {n : ℕ} (h : 63 ∣ n) : Incidence.Family.six.card = 6
+'Incidence.Family.six_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.six_stopping {n : ℕ} : Incidence.Stopping Incidence.Family.E Incidence.Family.six
+'Incidence.Family.six_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.P {n : ℕ} (s i j : ZMod n) : ℕ
+'Incidence.Family.P' depends on axioms: [propext, Quot.sound]
+Incidence.Family.A {n : ℕ} (c v : Incidence.Family.Check n) : ℕ
+'Incidence.Family.A' depends on axioms: [propext, Quot.sound]
+Incidence.Family.B {n : ℕ} (i j : ZMod n) : ℕ
+'Incidence.Family.B' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HX {n : ℕ} (c : Incidence.Family.Check n) (v : Incidence.Family.Var n) : ℕ
+'Incidence.Family.HX' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HZ {n : ℕ} (c : Incidence.Family.Check n) (v : Incidence.Family.Var n) : ℕ
+'Incidence.Family.HZ' depends on axioms: [propext, Quot.sound]
+Incidence.Family.col_nodup {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) : (Incidence.Family.col v).Nodup
+'Incidence.Family.col_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.P_transpose {n : ℕ} (s f g : ZMod n) : Incidence.Family.P s f g = if g = f - s then 1 else 0
+'Incidence.Family.P_transpose' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HX_count {n : ℕ} (c : Incidence.Family.Check n) (v : Incidence.Family.Var n) :
+  Incidence.Family.HX c v = List.countP (fun x => decide (x = c)) (Incidence.Family.col v)
+'Incidence.Family.HX_count' depends on axioms: [propext, Quot.sound]
+Incidence.Family.HX_incidence {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) (c : Incidence.Family.Check n) :
+  Incidence.Family.HX c v = 1 ↔ Incidence.Family.E v c
+'Incidence.Family.HX_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.HX_binary {n : ℕ} (h : 63 ∣ n) (c : Incidence.Family.Check n) (v : Incidence.Family.Var n) :
+  Incidence.Family.HX c v = 0 ∨ Incidence.Family.HX c v = 1
+'Incidence.Family.HX_binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.HZ_row_count {n : ℕ} (v : Incidence.Family.Var n) :
+  Incidence.Family.HZ (0, 0) v = List.countP (fun x => decide (x = v)) Incidence.Family.sixList
+'Incidence.Family.HZ_row_count' depends on axioms: [propext, Quot.sound]
+Incidence.Family.sixList_nodup {n : ℕ} (h : 63 ∣ n) : Incidence.Family.sixList.Nodup
+'Incidence.Family.sixList_nodup' depends on axioms: [propext, Quot.sound]
+Incidence.Family.six_is_HZ_row {n : ℕ} (h : 63 ∣ n) (v : Incidence.Family.Var n) :
+  v ∈ Incidence.Family.six ↔ Incidence.Family.HZ (0, 0) v = 1
+'Incidence.Family.six_is_HZ_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.survivesList.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] (pick : List V → Option C)
+  (row : C → List V) (n : ℕ) : List V → Bool
+'Incidence.survivesList' depends on axioms: [propext]
+Incidence.survivesList_of_stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (pick : List V → Option C) (row : C → List V)
+  (hp : ∀ (S : List V), S.Nodup → ∀ (c : C), pick S = some c → {v ∈ S.toFinset | E v c}.card = 1)
+  (hr : ∀ (v : V) (c : C), E v c → v ∈ row c) (n : ℕ) (S : List V) (T : Finset V) (hT : Incidence.Stopping E T)
+  (hnd : S.Nodup) (hST : S.toFinset ⊆ T) (hcard : T.card ≤ S.length + n) : Incidence.survivesList pick row n S = true
+'Incidence.survivesList_of_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.pickList (S : List Incidence.Var) : Option Incidence.Check
+'Incidence.pickList' depends on axioms: [propext, Quot.sound]
+Incidence.pickList_singleton (S : List Incidence.Var) (hn : S.Nodup) (c : Incidence.Check)
+  (h : Incidence.pickList S = some c) : {v ∈ S.toFinset | Incidence.E v c}.card = 1
+'Incidence.pickList_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.P (s i j : ZMod 63) : ℕ
+'Incidence.P' depends on axioms: [propext, Quot.sound]
+Incidence.A (c v : Incidence.Check) : ℕ
+'Incidence.A' depends on axioms: [propext, Quot.sound]
+Incidence.B (i j : ZMod 63) : ℕ
+'Incidence.B' depends on axioms: [propext, Quot.sound]
+Incidence.HX (c : Incidence.Check) (v : Incidence.Var) : ℕ
+'Incidence.HX' depends on axioms: [propext, Quot.sound]
+Incidence.HZ (c : Incidence.Check) (v : Incidence.Var) : ℕ
+'Incidence.HZ' depends on axioms: [propext, Quot.sound]
+Incidence.col_nodup (v : Incidence.Var) : (Incidence.col v).Nodup
+'Incidence.col_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.point_indicator.{u_1, u_2} {R : Type u_1} {F : Type u_2} [DecidableEq R] [DecidableEq F] (i j : R) (g f : F) :
+  (if i = j then if g = f then 1 else 0 else 0) = if (j, f) = (i, g) then 1 else 0
+'Incidence.point_indicator' depends on axioms: [propext]
+Incidence.P_transpose (s f g : ZMod 63) : Incidence.P s f g = if g = f - s then 1 else 0
+'Incidence.P_transpose' depends on axioms: [propext, Quot.sound]
+Incidence.HX_count (c : Incidence.Check) (v : Incidence.Var) :
+  Incidence.HX c v = List.countP (fun x => decide (x = c)) (Incidence.col v)
+'Incidence.HX_count' depends on axioms: [propext, Quot.sound]
+Incidence.HX_incidence (v : Incidence.Var) (c : Incidence.Check) : Incidence.HX c v = 1 ↔ Incidence.E v c
+'Incidence.HX_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.six : Finset Incidence.Var
+'Incidence.six' depends on axioms: [propext, Quot.sound]
+Incidence.six_card : Incidence.six.card = 6
+'Incidence.six_card' depends on axioms: [propext, Quot.sound]
+Incidence.six_profile (c : Incidence.Check) :
+  {v ∈ Incidence.six | Incidence.E v c}.card = 0 ∨ {v ∈ Incidence.six | Incidence.E v c}.card = 2
+'Incidence.six_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.six_stopping : Incidence.Stopping Incidence.E Incidence.six
+'Incidence.six_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.six_is_HZ_row (v : Incidence.Var) : v ∈ Incidence.six ↔ Incidence.HZ (0, 0) v = 1
+'Incidence.six_is_HZ_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.dimensions : Fintype.card Incidence.Var = 882 ∧ Fintype.card Incidence.Check = 441
+'Incidence.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.HR {n : ℕ} : Matrix (Incidence.Family.Check n) (Incidence.Family.Var n) ℝ
+'Incidence.Family.HR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.action_false {n : ℕ} [NeZero n] (u : ZMod 7 → ℝ) (j : ZMod 7) (f : ZMod n) :
+  ∑ c, Incidence.Family.HR c (false, j, f) * u c.1 = u j + u (j + 1) + u (j + 2)
+'Incidence.Family.action_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.action_true {n : ℕ} [NeZero n] (u : ZMod 7 → ℝ) (j : ZMod 7) (f : ZMod n) :
+  ∑ c, Incidence.Family.HR c (true, j, f) * u c.1 = 3 * u j
+'Incidence.Family.action_true' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.coef (u : Fin 2 → ℝ) (r : ZMod 7) : ℝ
+'Incidence.Family.coef' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.plane {n : ℕ} : (Fin 2 → ℝ) →ₗ[ℝ] EuclideanSpace ℝ (Incidence.Family.Check n)
+'Incidence.Family.plane' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.coef_norm (u : Fin 2 → ℝ) : ∑ r, Incidence.Family.coef u r ^ 2 = u 0 ^ 2 + u 1 ^ 2
+'Incidence.Family.coef_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.coef_action (u : Fin 2 → ℝ) :
+  ∑ r, (Incidence.Family.coef u r + Incidence.Family.coef u (r + 1) + Incidence.Family.coef u (r + 2)) ^ 2 =
+    3 * (u 0 ^ 2 + u 1 ^ 2)
+'Incidence.Family.coef_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.plane_norm {n : ℕ} [NeZero n] (u : Fin 2 → ℝ) :
+  StoppingSpectral.normSq (Incidence.Family.plane u).ofLp = ↑n * (u 0 ^ 2 + u 1 ^ 2)
+'Incidence.Family.plane_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.plane_energy {n : ℕ} [NeZero n] (u : Fin 2 → ℝ) :
+  StoppingSpectral.energy Incidence.Family.HR (Incidence.Family.plane u).ofLp =
+    12 * StoppingSpectral.normSq (Incidence.Family.plane u).ofLp
+'Incidence.Family.plane_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.row_count_ge_two {n : ℕ} [NeZero n] : 2 ≤ Fintype.card (Incidence.Family.Check n)
+'Incidence.Family.row_count_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.second_lower_twelve {n : ℕ} [NeZero n] : 12 ≤ StoppingSpectral.eigs Incidence.Family.HR ⟨1, ⋯⟩
+'Incidence.Family.second_lower_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.source_gap_impossible {n : ℕ} [NeZero n] : ¬StoppingSpectral.eigs Incidence.Family.HR ⟨1, ⋯⟩ < 3 / 2
+'Incidence.Family.source_gap_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Family.zhu_chugg_bounds_negative {n : ℕ} [NeZero n]
+  (hgap : StoppingSpectral.eigs Incidence.Family.HR ⟨1, ⋯⟩ < 18) :
+  have s := StoppingSpectral.eigs Incidence.Family.HR ⟨1, ⋯⟩;
+  14 * ↑n * (6 - s) / (18 - s) < 0 ∧ 2 * (14 * ↑n) * (10 - s) / (6 * (18 - s)) < 0
+'Incidence.Family.zhu_chugg_bounds_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.normalized_roots_reject (b : Bool) :
+  Incidence.survivesList Incidence.pickList Incidence.row 4 [(b, 0, 0)] = false
+'Incidence.normalized_roots_reject' depends on axioms: [propext, Quot.sound]

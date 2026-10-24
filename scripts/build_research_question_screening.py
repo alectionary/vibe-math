@@ -31,7 +31,7 @@ The earlier research read many papers for a specific counting/elimination compar
 | New full-text screens in the shared coverage ledger | {a['full_text_screens_added']} |
 | New completed proofs claimed | {a['completed_targets_added']} |
 
-The live inventory grows from **190 to 252 entries**, **112 to 135 eligible targets**, **61 to 100 paper records** and **58 to 90 full-text screens**. The four previously completed Lean targets are unchanged. New entries have unassessed present resolution, Lean discovery and planning difficulty; a source calling a question open is recorded as a dated source claim.
+At this dated screen the inventory grew from **190 to 252 entries**, **112 to 135 eligible targets**, **61 to 100 paper records** and **58 to 90 full-text screens**. The four previously completed Lean targets are unchanged. New entries have unassessed present resolution, Lean discovery and planning difficulty; a source calling a question open is recorded as a dated source claim.
 
 ## How the screen was performed
 

@@ -10,7 +10,7 @@ assert len(r)==len({x['target_id'] for x in r})==len(claims)==s['entries']==181+
 assert {x['target_id'] for x in r}==set(claims)
 extensions=json.loads((R/'literature/research-reconciliation.json').read_text()).get('indexing_extensions',[])
 assert sum(x['eligible_for_coverage'] for x in r)==s['eligible_targets']==111+sum(x['added_eligible_targets'] for x in extensions)
-assert sum(x['completed'] for x in r)==s['completed_lean_targets']==4
+assert sum(x['completed'] for x in r)==s['completed_lean_targets']==5
 assert sum(bool(x['gate']) for x in r)==s['gated_entries']==76+s.get('unassessed_added_entries',0)
 assert sum(bool(x['gate']) and x['eligible_for_coverage'] for x in r)==s['eligible_gated_entries']==6+sum(x['added_eligible_targets'] for x in extensions)
 assert s['newly_assessed_entries']==67 and s['historical_priors_retained']==114
@@ -38,4 +38,4 @@ report=(D/'CURRENT-DIFFICULTY.md').read_text();page=(D/'current-difficulty.html'
 for x in r:assert f'### {x["target_id"]}\n' in report and x['target_id'] in page
 assert 'given a correct complete proof' in (D/'NEXT-PROJECT.md').read_text()
 assert sum(x['research_status']=='planning_not_yet_assessed' for x in r)==s['unassessed_added_entries']==6+sum(x['added_entries'] for x in extensions)
-print(f'Validated {len(r)} planning records, including {s["unassessed_added_entries"]} explicitly unassessed additions, {s["eligible_targets"]} eligible targets and four completed targets.')
+print(f'Validated {len(r)} planning records, including {s["unassessed_added_entries"]} explicitly unassessed additions, {s["eligible_targets"]} eligible targets and five completed targets.')

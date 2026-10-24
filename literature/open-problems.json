@@ -5656,14 +5656,140 @@
     ],
     "status_as_of_source": "open_as_stated_in_source",
     "proof_assistant_statement_status": "not_systematically_searched_beyond_lean",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "current_resolution_status": "answered_negatively_for_prop51_useful_parameter_question",
     "search_family": "Tanner_absorbing_sets",
     "added_on": "2026-10-22",
     "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
     "research_source_index": "literature/research-source-index.json",
-    "scope_comparison": "Our cyclic single-input LP degree-three structural proofs do not resolve this distinct QC-GHP/GB Fourier-count or spectral-bound target."
+    "scope_comparison": "Universal negative answer for the useful-parameter question of Proposition5.1 in its stated positive-dimensional binary biregular scalar-factor model: no choice can simultaneously satisfy sigma2^2<gamma/2 and source large root>2. Section3.2 explicitly uses r2=n2=1 throughout, and Proposition5.1 refers to the corresponding Theorem4.1 Fourier matrices. All positive row-block counts are covered. For r>=2 the gap is impossible; for r=1 it forces density>3/4, roots1<a+<=2 and a-<2. Every stopping support has cardinality>=2, so the small branch is excluded but the large-root guarantee is redundant. Dense raw-gap examples exist. A stronger replacement bound remains open as a separate component. Completed project-derived follow-ups establish exact stopping distance six for the positive63-multiple B1 cover family and classify all441 size-six base supports as unique companion Z-check rows; these are distinct incidence results, not the negative parameter proof. No logical-distance claim.",
+    "scope_components": [
+      {
+        "component": "Proposition5.1 parameter regime in the scalar-factor construction",
+        "status": "resolved_negative_for_every_parameter_in_prop51_stated_model",
+        "answer": "No positive-dimensional binary biregular scalar-factor parameter choice gives a source large root above two under the strict spectral inequality.",
+        "proof": "formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean",
+        "main_declaration": "StoppingSpectral.no_parameters_give_source_improvement"
+      },
+      {
+        "component": "Tanner-style or parameter-aware replacement/tightening",
+        "status": "not_resolved"
+      },
+      {
+        "component": "Incidence-aware stopping bound for the explicit cyclic-cover family",
+        "status": "checked_exact_stopping_distance_six",
+        "source_authors_asked_this_exact_restricted_question": false
+      },
+      {
+        "component": "All base-B1 size-six stopping supports",
+        "status": "checked_complete_base_classification",
+        "source_authors_asked_this_exact_restricted_question": false
+      }
+    ],
+    "research_progress": [
+      {
+        "checked_on": "2026-10-24",
+        "report": "formalization/stopping-bound/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/verification.json",
+        "lean_sources": [
+          "formalization/stopping-bound/Spectral.lean",
+          "formalization/stopping-bound/Audit.lean"
+        ],
+        "scope": "Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result.",
+        "title": "Finite scalar-factor spectral obstruction and stopping-root non-improvement",
+        "evidence": "general_lean_proof",
+        "contribution": "Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result."
+      },
+      {
+        "checked_on": "2026-10-24",
+        "report": "formalization/stopping-bound/incidence/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/incidence/verification.json",
+        "lean_sources": [
+          "formalization/stopping-bound/incidence/IncidenceFamily.lean",
+          "formalization/stopping-bound/incidence/IncidenceSpectral.lean"
+        ],
+        "scope": "Incidence-aware restricted follow-up: exact stopping distance six for A=x^27 I_7+S_7+x^54 S_7^2 and b=1+x+x^6 at every positive lift length divisible by63. Includes generic extension-search soundness, two-root certificate, both cyclic symmetries, cover projection/local-injectivity, source-matrix and CSS bridges. No quantum logical-distance or rate claim; no parameters satisfying Proposition5.1 are produced.",
+        "title": "Exact incidence-aware stopping distance six in the positive63-multiple B1 check family",
+        "evidence": "checked_lean_proof",
+        "contribution": "Incidence-aware restricted follow-up: exact stopping distance six for A=x^27 I_7+S_7+x^54 S_7^2 and b=1+x+x^6 at every positive lift length divisible by63. Includes generic extension-search soundness, two-root certificate, both cyclic symmetries, cover projection/local-injectivity, source-matrix and CSS bridges. No quantum logical-distance or rate claim; no parameters satisfying Proposition5.1 are produced."
+      },
+      {
+        "title": "Complete classification of all441 minimum stopping supports of source B1",
+        "checked_on": "2026-10-24",
+        "evidence": "checked_lean_proof",
+        "contribution": "Complete base-B1 minimum-support classification: all size-six stopping supports of the exact 882-column source H_X are precisely the 441 distinct companion H_Z row supports, in a single free Z/7 x Z/63 coordinate-translation orbit. Includes exhaustive-search soundness, kernel certificate, unique center, count and actual binary source bridge. No classification for larger covers or logical-distance claim.",
+        "report": "formalization/stopping-bound/classification/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/classification/verification.json",
+        "lean_sources": [
+          "formalization/stopping-bound/classification/Classification.lean",
+          "formalization/stopping-bound/classification/ClassificationCertificate.lean"
+        ]
+      },
+      {
+        "title": "Universal negative answer to the Proposition5.1 useful-parameter question",
+        "checked_on": "2026-10-24",
+        "evidence": "checked_lean_proof",
+        "contribution": "No positive-dimensional binary biregular scalar-factor parameter choice gives a source large root above two under the strict spectral inequality. All-cases theorem also checks every stopping support and the separate small-branch exclusion; source scope corrected directly against §3.2.",
+        "report": "formalization/stopping-bound/source-answer/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/source-answer/verification.json",
+        "lean_sources": [
+          "formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean",
+          "formalization/stopping-bound/source-answer/dependencies/Spectral.lean"
+        ]
+      }
+    ],
+    "supporting_artifact": {
+      "readme": "formalization/stopping-bound/RESEARCH-NOTE.txt",
+      "verification": "formalization/stopping-bound/verification.json",
+      "lean_source": "formalization/stopping-bound/Spectral.lean",
+      "main_declarations": [
+        "StoppingSpectral.qc_scalar_factor_no_source_regime",
+        "StoppingSpectral.scalar_one_row_source_obstruction"
+      ]
+    },
+    "supporting_lean_artifact": {
+      "readme": "formalization/stopping-bound/RESEARCH-NOTE.txt",
+      "scope": "Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result."
+    },
+    "supplementary_supporting_artifacts": [
+      {
+        "report": "formalization/stopping-bound/incidence/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/incidence/verification.json",
+        "lean_source": "formalization/stopping-bound/incidence/IncidenceFamily.lean",
+        "main_declaration": "Incidence.Family.source_matrix_exact_six",
+        "scope": "Incidence-aware restricted follow-up: exact stopping distance six for A=x^27 I_7+S_7+x^54 S_7^2 and b=1+x+x^6 at every positive lift length divisible by63. Includes generic extension-search soundness, two-root certificate, both cyclic symmetries, cover projection/local-injectivity, source-matrix and CSS bridges. No quantum logical-distance or rate claim; no parameters satisfying Proposition5.1 are produced."
+      },
+      {
+        "report": "formalization/stopping-bound/classification/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/classification/verification.json",
+        "lean_source": "formalization/stopping-bound/classification/ClassificationCertificate.lean",
+        "main_declaration": "Incidence.Classification.binary_source_classification",
+        "scope": "Complete base-B1 minimum-support classification: all size-six stopping supports of the exact 882-column source H_X are precisely the 441 distinct companion H_Z row supports, in a single free Z/7 x Z/63 coordinate-translation orbit. Includes exhaustive-search soundness, kernel certificate, unique center, count and actual binary source bridge. No classification for larger covers or logical-distance claim."
+      },
+      {
+        "report": "formalization/stopping-bound/source-answer/RESEARCH-NOTE.txt",
+        "verification": "formalization/stopping-bound/source-answer/verification.json",
+        "lean_source": "formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean",
+        "main_declaration": "StoppingSpectral.no_parameters_give_source_improvement",
+        "scope": "No positive-dimensional binary biregular scalar-factor parameter choice gives a source large root above two under the strict spectral inequality."
+      }
+    ],
+    "parameter_question_status": "answered_negatively_by_universal_checked_nonexistence_proof",
+    "bundled_status_explanation": "The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples.",
+    "verified_artifact": {
+      "readme": "formalization/stopping-bound/source-answer/README.txt",
+      "verification": "formalization/stopping-bound/source-answer/verification.json",
+      "lean_source": "formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean",
+      "statement_declaration": "StoppingSpectral.no_parameters_give_source_improvement",
+      "scope": "Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate stronger replacement bound remains open."
+    },
+    "remaining_source_direction": {
+      "title": "A stronger Tanner-style or parameter-aware replacement stopping bound",
+      "source_locator": "Remark5.2 and Section6",
+      "status": "open_in_this_investigation",
+      "distinct_from_answered_parameter_question": true
+    }
   },
   {
     "id": "L-F16-other-absorbing",
@@ -9417,5 +9543,515 @@
     "added_on": "2026-10-24",
     "source_screening": "literature/research-question-screening.json",
     "screening_note": "A stronger avoidance question than grid-freeness alone. It is not identified with Beezer generator girth7 or with density girth."
+  },
+  {
+    "id": "L-F67-redundant-check-design",
+    "origin": "article_inventory_extension",
+    "title": "Develop a principled way to add redundant parity checks that improves iterative decoding beyond the difference-set examples.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F67",
+        "locator": "Section V, printed p.4840 / PDF p.7",
+        "extracted_text_lines": [
+          1050,
+          1058
+        ],
+        "url": "https://hal.usc.edu/chugg/docs/pubs/zhu2007bounds.pdf",
+        "source_sha256": "c13d09f1f412e0da0e188bdf51e055a4072f7f75b8bf6130924d8cb6e260cca3",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F68-integer-tightening",
+    "origin": "article_inventory_extension",
+    "title": "Improve the graph-analysis distance bound by enforcing integer relation-distribution vectors.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F68",
+        "locator": "Section 7 / manuscript PDF p.19",
+        "extracted_text_lines": [
+          962,
+          967
+        ],
+        "url": "https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf",
+        "source_sha256": "2eb2fc722d4f3863b6e967aeff1aa0ecea1cc0b3f43416e6201709bc7e136901",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F68-degree-stratification",
+    "origin": "article_inventory_extension",
+    "title": "Refine the graph-analysis bound by separating active checks according to their induced degrees.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F68",
+        "locator": "Section 7 / manuscript PDF p.19",
+        "extracted_text_lines": [
+          967,
+          974
+        ],
+        "url": "https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf",
+        "source_sha256": "2eb2fc722d4f3863b6e967aeff1aa0ecea1cc0b3f43416e6201709bc7e136901",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F68-decoder-quality",
+    "origin": "article_inventory_extension",
+    "title": "Test whether the graph-analysis bound predicts the quality of a graph for iterative decoding.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F68",
+        "locator": "Section 7 / manuscript PDF p.19",
+        "extracted_text_lines": [
+          975,
+          987
+        ],
+        "url": "https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf",
+        "source_sha256": "2eb2fc722d4f3863b6e967aeff1aa0ecea1cc0b3f43416e6201709bc7e136901",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F69-general-distance",
+    "origin": "article_inventory_extension",
+    "title": "Find nontrivial general minimum-distance lower bounds for the proposed QC generalized hypergraph-product codes.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F69",
+        "locator": "Section 6, including footnote 19 / PDF p.17",
+        "extracted_text_lines": [
+          1843,
+          1863
+        ],
+        "url": "https://arxiv.org/abs/1904.02703v3",
+        "source_sha256": "62e5351bd8a317a0d49488960b9b73b90b603891e6017cb040b1464eb79ea775",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F70-efficient-decoding",
+    "origin": "article_inventory_extension",
+    "title": "Devise an efficient decoder for quantum Tanner codes.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          502,
+          507
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F70-generator-weight",
+    "origin": "article_inventory_extension",
+    "title": "Reduce the constant generator weights in the quantum Tanner construction.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          508,
+          513
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F70-other-complexes",
+    "origin": "article_inventory_extension",
+    "title": "Find complexes beyond left-right Cayley complexes on which the Tanner construction gives good quantum LDPC families.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          514,
+          516
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F70-explicit-components",
+    "origin": "article_inventory_extension",
+    "title": "Make the required component-code and quantum Tanner constructions completely explicit.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          517,
+          522
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F70-robustness-exponent",
+    "origin": "article_inventory_extension",
+    "title": "Improve component dual-tensor robustness beyond the Delta-to-the-three-halves scale and strengthen the distance dependence.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          522,
+          529
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "spectral_stopping_bounds",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stopping-bound-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F73-residual-erasure-techniques",
+    "origin": "article_inventory_extension",
+    "title": "Develop other techniques to handle the small residual errors left after peeling quantum expander codes.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F73",
+        "locator": "Section VII / PDF p.19",
+        "extracted_text_lines": [
+          709,
+          718
+        ],
+        "url": "https://arxiv.org/abs/2504.21845v2",
+        "source_sha256": "9915a7541e1e4167e9212084bcbac2b8e95678c708e46dae580159d9a2a282b7",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "incidence_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/incidence-stopping-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F74-socket-partition-design",
+    "origin": "article_inventory_extension",
+    "title": "Improve socket selection and partitioning events in composite branch-and-bound stopping-set searches.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F74",
+        "locator": "Section VIII / printed p.1995",
+        "extracted_text_lines": [
+          2703,
+          2715
+        ],
+        "url": "https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf",
+        "source_sha256": "02846356329da2a1b004681a3728747433008909d658fea2e2331b891b77b961",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "incidence_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/incidence-stopping-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F74-faster-implementation",
+    "origin": "article_inventory_extension",
+    "title": "Extend exhaustive small stopping/trapping-set search to longer codes through better data structures, software or hardware.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F74",
+        "locator": "Section VIII / printed p.1995",
+        "extracted_text_lines": [
+          2715,
+          2722
+        ],
+        "url": "https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf",
+        "source_sha256": "02846356329da2a1b004681a3728747433008909d658fea2e2331b891b77b961",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "incidence_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/incidence-stopping-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F74-direct-trapping-search",
+    "origin": "article_inventory_extension",
+    "title": "Design direct exhaustive trapping-set algorithms that improve on reduction to stopping-set enumeration.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F74",
+        "locator": "Section VIII / printed p.1995",
+        "extracted_text_lines": [
+          2722,
+          2740
+        ],
+        "url": "https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf",
+        "source_sha256": "02846356329da2a1b004681a3728747433008909d658fea2e2331b891b77b961",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "incidence_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/incidence-stopping-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F75-pruned-cluster-combination",
+    "origin": "article_inventory_extension",
+    "title": "Study pruned peeling combined with cluster decomposition more comprehensively.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated method or research direction; no frozen single mathematical theorem interface. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F75",
+        "locator": "Section III / PDF p.5",
+        "extracted_text_lines": [
+          551,
+          567
+        ],
+        "url": "https://arxiv.org/abs/2412.08817v1",
+        "source_sha256": "3626c20be1b94b29f2c592f7fbd9af75a500fc2dc91280b55bcbcd87370c7f55",
+        "relation": "explicit_direction"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_direction_as_stated_in_inspected_version",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "incidence_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/incidence-stopping-source-screening.json",
+    "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
   }
 ]

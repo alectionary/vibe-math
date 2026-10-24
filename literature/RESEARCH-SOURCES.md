@@ -810,3 +810,177 @@ Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. arXiv2202.05088v4,4Au
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
 - Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 10 linked canonical targets.
+
+## ZhuChugg2007 — Bounds on the Expansion Properties of Tanner Graphs
+
+Mingrui Zhu; Keith M. Chugg. December 2007 journal version; DOI 10.1109/TIT.2007.909127. [Primary source](https://hal.usc.edu/chugg/docs/pubs/zhu2007bounds.pdf).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Corollary 6, equations (41) and (42); Theorem 5; conclusion.
+- Contribution: Classical or construction comparison for L-F16-stopping-bound; version-specific question screen.
+- Comparison limit: The bit-oriented bound is s(H) >= n(2γ−η)/(γk−η), η=σ₂², with binary regular incidence. It concerns the same graph stopping distance, but does not construct QC-GHP matrices meeting η<γ/2. The parity-oriented bound and multi-eigenvector expansion analysis supply older alternatives to the weak mixing step.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F67-redundant-check-design](OPEN-PROBLEMS.md#l-f67-redundant-check-design).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## Tanner2000Spectral — Minimum Distance Bounds by Graph Analysis
+
+R. Michael Tanner. Inspected manuscript dated July 26, 2000; 2001 journal version not inspected. [Primary source](https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Theorems 3.1 and 4.1, their proofs; Sections 1 and 7.
+- Contribution: Classical or construction comparison for L-F16-stopping-bound; version-specific question screen.
+- Comparison limit: Theorems assume a connected regular bipartite graph, with constant bit and check degrees. Theorem 3.1 gives n(2γ−η)/(γk−η) for classical distance. Its at-least-two-active-bits proof is the ancestor of Zhu–Chugg’s explicit stopping-distance extension. This is not the same γ/2 test, nor a QC-GHP parameter theorem. The manuscript reports an earlier 1982 submission; this is not treated as an inspected 1982 publication.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F68-decoder-quality](OPEN-PROBLEMS.md#l-f68-decoder-quality), [L-F68-degree-stratification](OPEN-PROBLEMS.md#l-f68-degree-stratification), [L-F68-integer-tightening](OPEN-PROBLEMS.md#l-f68-integer-tightening).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+
+## PanteleevKalachev2021Finite — Degenerate Quantum LDPC Codes With Good Finite Length Performance
+
+Pavel Panteleev; Gleb Kalachev. arXiv:1904.02703v3, November 12, 2021; Quantum 5,585. [Primary source](https://arxiv.org/abs/1904.02703v3).
+
+- Record type: academic source; access: full text.
+- Inspected locator: QC-GHP construction; Section 6 and footnote 19.
+- Contribution: Classical or construction comparison for L-F16-stopping-bound; version-specific question screen.
+- Comparison limit: Original construction source. Quantum logical distance excludes stabilizers; graph stopping distance does not. The conclusion explicitly notes special-case lower bounds for C(A,1+x) in footnote 19. Those results neither imply the source’s raw singular-value condition nor answer its stopping-bound question.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F69-general-distance](OPEN-PROBLEMS.md#l-f69-general-distance).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## LeverrierZemor2022Tanner — Quantum Tanner codes
+
+Anthony Leverrier; Gilles Zémor. arXiv:2202.13641v3, September 16, 2022; PDF dated September 19. [Primary source](https://arxiv.org/abs/2202.13641v3).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Theorems 1 and 2; component-code hypotheses; Comments and open problems.
+- Contribution: Classical or construction comparison for L-F16-stopping-bound; version-specific question screen.
+- Comparison limit: Ramanujan expansion is imposed on constituent Cayley graphs, together with local-code distance, dual-tensor robustness, puncturing resistance and total no-conjugacy. It is not a statement that the expanded CSS parity-check matrix has σ₂²<γ/2. It does not furnish parameters for Proposition 5.1. Efficient decoding is a historical question in this 2022 version; current resolution is deliberately unassessed in this screen.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F70-efficient-decoding](OPEN-PROBLEMS.md#l-f70-efficient-decoding), [L-F70-explicit-components](OPEN-PROBLEMS.md#l-f70-explicit-components), [L-F70-generator-weight](OPEN-PROBLEMS.md#l-f70-generator-weight), [L-F70-other-complexes](OPEN-PROBLEMS.md#l-f70-other-complexes), [L-F70-robustness-exponent](OPEN-PROBLEMS.md#l-f70-robustness-exponent).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 5 linked canonical targets.
+
+## FengLi1996 — Spectra of Hypergraphs and Applications
+
+Keqin Feng; Wen-Ch’ing Winnie Li. September 1996, J.Number Theory 60(1),1–22. [Primary source](https://doi.org/10.1006/jnth.1996.0109).
+
+- Record type: academic source; access: abstract only.
+- Inspected locator: Introduction and Section4 (Li–Solé); publisher abstract (Feng–Li).
+- Contribution: Classical predecessors cited in Remark5.2.
+- Comparison limit: Publisher abstract available through web; direct HTML is an anti-bot response. No readable full original was recovered. The source paper attributes the asymptotic biregular lower bound to this work; its full hypotheses and question screen remain a gap.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+- Question screen: [full text access or archival gap](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## LiSole1996 — Spectra of Regular Graphs and Hypergraphs and Orthogonal Polynomials
+
+Wen-Ch’ing Winnie Li; Patrick Solé. 1996, European J.Combinatorics17(5),461–477. [Primary source](https://doi.org/10.1006/eujc.1996.0040).
+
+- Record type: academic source; access: web full text context and keyword screen.
+- Inspected locator: Introduction and Section4 (Li–Solé); publisher abstract (Feng–Li).
+- Contribution: Classical predecessors cited in Remark5.2.
+- Comparison limit: Author-uploaded paper body is web-indexed. Inspected introduction, Section4 and keyword hits restricted to the paper body; no additional explicit target found there. Original PDF download and complete local original snapshot failed, so the archival full-text screen and total question count remain unassessed. The normalized snapshot hash is not a PDF hash.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+- Question screen: [full text access or archival gap](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## qLDPCOrgLP2026 — qLDPC lifted-product constructor
+
+qLDPC contributors. Inspected October24,2026. [Primary source](https://github.com/qLDPCOrg/qLDPC/blob/02f8b9fa132b17e11253dc7f8a8dc08f0f39449d/src/qldpc/codes/quantum.py).
+
+- Record type: software source; access: public read.
+- Inspected locator: LPCode class; expanded X post.
+- Contribution: Public code/social prior-art audit requested by the user.
+- Comparison limit: Read LPCode construction/documentation and searched stopping/spectral/singular terminology. Constructors and decoder tools do not provide a verified Proposition5.1 parameter answer.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+## XExistingF16Announcement2026 — Existing four-variable absorbing-set announcement
+
+Nate Waterhouse. Inspected October24,2026. [Primary source](https://x.com/A_Lectionary/status/2114074628184498566).
+
+- Record type: public research post; access: public read.
+- Inspected locator: LPCode class; expanded X post.
+- Contribution: Public code/social prior-art audit requested by the user.
+- Comparison limit: Read the expanded post in signed-in Edge. It concerns exact (4,0) counts and a [[140q,18,6]] construction, not the stopping spectral condition; linked existing repository work was already checked.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
+
+## PrabhuEtAl2025Peeling — On the Efficacy of the Peeling Decoder for the Quantum Expander Code
+
+Jefrin Sharmitha Prabhu; Abhinav Vaishya; Shobhit Bhatnagar; Aryaman Manish Kolhe; V. Lalitha; P. Vijay Kumar. arXiv:2504.21845v2,29May2025; first preprint30April2025. [Primary source](https://arxiv.org/abs/2504.21845v2).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Section III.B–D,pp.7–10; Theorem3,p.17; SectionVII,p.19.
+- Contribution: Incidence-stopping follow-up of L-F16-stopping-bound.
+- Comparison limit: Distinguishes stabilizer, horizontal and vertical stopping sets, citing Connolly et al.; SSF guarantees require constituent left/right expansion and delta<1/8. This does not assert a small second singular value for an expanded CSS check matrix, nor the exact stopping distance of B1.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F73-residual-erasure-techniques](OPEN-PROBLEMS.md#l-f73-residual-erasure-techniques).
+- Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## WangKulkarniPoor2009Substructures — Finding All Small Error-Prone Substructures in LDPC Codes
+
+Chih-Chun Wang; Sanjeev R. Kulkarni; H. Vincent Poor. IEEE TIT55(5),1976–1999,May2009; current version22April2009; DOI10.1109/TIT.2009.2015993. [Primary source](https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Sections I.B–D,V–VI; SectionVIII,p.1995; Appendix correctness statements.
+- Contribution: Incidence-stopping follow-up of L-F16-stopping-bound.
+- Comparison limit: Classical exhaustive narrowing and branch-and-bound search is established prior art, including bit-rooted enumeration and automorphisms. Our method is a small degree-one extension certificate, not a new general enumeration method. The paper provides methods for arbitrary Tanner matrices, not an inspected exact B1 certificate. Introductory dependency/FER/codeword questions are answered later in this paper.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F74-socket-partition-design](OPEN-PROBLEMS.md#l-f74-socket-partition-design), [L-F74-faster-implementation](OPEN-PROBLEMS.md#l-f74-faster-implementation), [L-F74-direct-trapping-search](OPEN-PROBLEMS.md#l-f74-direct-trapping-search).
+- Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+
+## YaoGokdumanPfister2024Cluster — Cluster Decomposition for Improved Erasure Decoding of Quantum LDPC Codes
+
+Hanwen Yao; Mert Gökduman; Henry D. Pfister. arXiv:2412.08817v1,11December2024. [Primary source](https://arxiv.org/abs/2412.08817v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: SectionIII,p.5; Figure7,p.11; Theorems1–2; conclusion.
+- Contribution: Incidence-stopping follow-up of L-F16-stopping-bound.
+- Comparison limit: Explicitly studies the [[882,24]] B1 code in Figure7 and cites the stabilizer-support stopping-set lemma. It supplies simulations and a post-peeling decomposition decoder, not an exact stopping-distance-six theorem or the source spectral inequality. The proposed generalization of VH decomposition is addressed by this paper; its speculation about a cluster-size phase transition is held as context rather than promoted to a precise conjecture.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F75-pruned-cluster-combination](OPEN-PROBLEMS.md#l-f75-pruned-cluster-combination).
+- Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
+
+- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## PrabhuGayathriKumar2026Stopping — On the Analysis of Stopping Sets Associated with the Quantum Hypergraph Product Code
+
+Jefrin Sharmitha Prabhu; Gayathri R.; P. Vijay Kumar. ISIT2026, full-text version unavailable. [Primary source](https://doi.org/10.1109/ISIT62367.2026.11654127).
+
+- Record type: academic source; access: metadata and secondary abstract only.
+- Inspected locator: Author conference listing; secondary abstract.
+- Contribution: Subsequent ordinary-HGP stopping-set study.
+- Comparison limit: Author conference page confirms the ISIT2026 title/authors. DOI full text was inaccessible; a secondary abstract describes stabilizer and horizontal/vertical stopping probabilities for ordinary HGP codes. Full theorem hypotheses and question screen remain unassessed; no zero-question or exact B1 claim.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
+
+- Question screen: [full text access or archival gap](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## LcryptoStoppingEnumerator2026 — Lcrypto/Stopping-sets-enumerator
+
+Lcrypto (GitHub account). Inspected24October2026; pinned source revision in prior-art ledger. [Primary source](https://github.com/Lcrypto/Stopping-sets-enumerator).
+
+- Record type: software repository; access: public read only.
+- Inspected locator: README and main.cpp (stopping enumerator); README (trapping enumerator).
+- Contribution: Algorithmic prior art for incidence-aware search.
+- Comparison limit: Pinned1be33f2ef3b751a61f3a38a13e035889570e1ec0: README advertises LP; inspected main.cpp has a getLowerBound stub returning current weight and initializes currentMin=5. It is not an exact six certificate; downloaded code was not executed.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
+
+## LcryptoTrappingEnumerator2026 — Lcrypto/trapping-sets-enumeration
+
+Lcrypto (GitHub account). Inspected24October2026; pinned source revision in prior-art ledger. [Primary source](https://github.com/Lcrypto/trapping-sets-enumeration).
+
+- Record type: software repository; access: public read only.
+- Inspected locator: README and main.cpp (stopping enumerator); README (trapping enumerator).
+- Contribution: Algorithmic prior art for incidence-aware search.
+- Comparison limit: README distinguishes importance sampling, MILP and QC automorphism options; classical enumeration prior art, not an inspected B1 stopping-distance theorem.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).

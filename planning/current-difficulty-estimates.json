@@ -7271,10 +7271,10 @@
     "target_id": "L-F16-stopping-bound",
     "title": "Find QC-GHP parameters for which the paper’s spectral stopping-set bound is nonvacuous.",
     "eligible_for_coverage": true,
-    "current_resolution_status": "not_independently_established",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "assessment_date": "2026-10-22",
+    "current_resolution_status": "answered_negatively_for_prop51_useful_parameter_question",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "assessment_date": "2026-10-24",
     "confidence": "low",
     "discovery_time_estimate": null,
     "source_occurrences": [
@@ -7290,26 +7290,32 @@
         "relation": "explicit_question"
       }
     ],
-    "basis": "New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation.",
+    "basis": "Primary status reconciled with the checked all-cases theorem; earlier partial labels bundled the separate stronger-bound direction. All historical proof artifacts and counts remain unchanged.",
     "background_evidence": [
       "literature/LEAN-COVERAGE.md",
-      "planning/difficulty-sources.json"
+      "planning/difficulty-sources.json",
+      "formalization/stopping-bound/RESEARCH-NOTE.txt",
+      "formalization/stopping-bound/incidence/RESEARCH-NOTE.txt",
+      "formalization/stopping-bound/classification/RESEARCH-NOTE.txt",
+      "formalization/stopping-bound/source-answer/RESEARCH-NOTE.txt"
     ],
     "gate": null,
-    "completed": false,
-    "research_status": "open_or_unresolved_in_recorded_sources; present status not exhaustively established",
+    "completed": true,
+    "research_status": "original_parameter_question_answered_negatively_in_lean",
     "family": "quantum_code_combinatorics",
-    "rationale": "Finite Tanner-graph objects are accessible; spectral/Fourier identities and induced-subgraph correction terms add substantial proof work.",
-    "first_milestone": "Check the proposed condition or absorbing-set count on a small explicit lifted code.",
-    "research_obstacle": 3,
+    "rationale": "Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate stronger replacement bound remains open.",
+    "first_milestone": "Original parameter question completed negatively. A stronger replacement bound is a distinct FOLLOW-UP.",
+    "research_obstacle": null,
     "statement_setup": {
-      "tier": 3,
-      "band": "2–6 expert person-weeks"
+      "tier": 0,
+      "band": "complete"
     },
     "proof_transfer_given_correct_complete_proof": {
-      "tier": 3,
-      "band": "1–4 expert person-months"
-    }
+      "tier": 0,
+      "band": "complete"
+    },
+    "progress_note": "The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples.",
+    "progress_artifact": "formalization/stopping-bound/source-answer/README.txt"
   },
   {
     "target_id": "L-F16-other-absorbing",
@@ -10806,6 +10812,561 @@
     "family": "absorbing_set_research_source_questions",
     "rationale": "Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.",
     "first_milestone": "Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F67-redundant-check-design",
+    "title": "Develop a principled way to add redundant parity checks that improves iterative decoding beyond the difference-set examples.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F67",
+        "locator": "Section V, printed p.4840 / PDF p.7",
+        "extracted_text_lines": [
+          1050,
+          1058
+        ],
+        "url": "https://hal.usc.edu/chugg/docs/pubs/zhu2007bounds.pdf",
+        "source_sha256": "c13d09f1f412e0da0e188bdf51e055a4072f7f75b8bf6130924d8cb6e260cca3",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F68-integer-tightening",
+    "title": "Improve the graph-analysis distance bound by enforcing integer relation-distribution vectors.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F68",
+        "locator": "Section 7 / manuscript PDF p.19",
+        "extracted_text_lines": [
+          962,
+          967
+        ],
+        "url": "https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf",
+        "source_sha256": "2eb2fc722d4f3863b6e967aeff1aa0ecea1cc0b3f43416e6201709bc7e136901",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F68-degree-stratification",
+    "title": "Refine the graph-analysis bound by separating active checks according to their induced degrees.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F68",
+        "locator": "Section 7 / manuscript PDF p.19",
+        "extracted_text_lines": [
+          967,
+          974
+        ],
+        "url": "https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf",
+        "source_sha256": "2eb2fc722d4f3863b6e967aeff1aa0ecea1cc0b3f43416e6201709bc7e136901",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F68-decoder-quality",
+    "title": "Test whether the graph-analysis bound predicts the quality of a graph for iterative decoding.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F68",
+        "locator": "Section 7 / manuscript PDF p.19",
+        "extracted_text_lines": [
+          975,
+          987
+        ],
+        "url": "https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf",
+        "source_sha256": "2eb2fc722d4f3863b6e967aeff1aa0ecea1cc0b3f43416e6201709bc7e136901",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F69-general-distance",
+    "title": "Find nontrivial general minimum-distance lower bounds for the proposed QC generalized hypergraph-product codes.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F69",
+        "locator": "Section 6, including footnote 19 / PDF p.17",
+        "extracted_text_lines": [
+          1843,
+          1863
+        ],
+        "url": "https://arxiv.org/abs/1904.02703v3",
+        "source_sha256": "62e5351bd8a317a0d49488960b9b73b90b603891e6017cb040b1464eb79ea775",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F70-efficient-decoding",
+    "title": "Devise an efficient decoder for quantum Tanner codes.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          502,
+          507
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F70-generator-weight",
+    "title": "Reduce the constant generator weights in the quantum Tanner construction.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          508,
+          513
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F70-other-complexes",
+    "title": "Find complexes beyond left-right Cayley complexes on which the Tanner construction gives good quantum LDPC families.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          514,
+          516
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F70-explicit-components",
+    "title": "Make the required component-code and quantum Tanner constructions completely explicit.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          517,
+          522
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F70-robustness-exponent",
+    "title": "Improve component dual-tensor robustness beyond the Delta-to-the-three-halves scale and strengthen the distance dependence.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F70",
+        "locator": "Comments and open problems / PDF p.10",
+        "extracted_text_lines": [
+          522,
+          529
+        ],
+        "url": "https://arxiv.org/abs/2202.13641v3",
+        "source_sha256": "e712a97ef8393e13e631ec38d853dce4520581633583f69f6e72765e51d870a1",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/stopping-bound-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "spectral_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F73-residual-erasure-techniques",
+    "title": "Develop other techniques to handle the small residual errors left after peeling quantum expander codes.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F73",
+        "locator": "Section VII / PDF p.19",
+        "extracted_text_lines": [
+          709,
+          718
+        ],
+        "url": "https://arxiv.org/abs/2504.21845v2",
+        "source_sha256": "9915a7541e1e4167e9212084bcbac2b8e95678c708e46dae580159d9a2a282b7",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/incidence-stopping-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "incidence_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F74-socket-partition-design",
+    "title": "Improve socket selection and partitioning events in composite branch-and-bound stopping-set searches.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F74",
+        "locator": "Section VIII / printed p.1995",
+        "extracted_text_lines": [
+          2703,
+          2715
+        ],
+        "url": "https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf",
+        "source_sha256": "02846356329da2a1b004681a3728747433008909d658fea2e2331b891b77b961",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/incidence-stopping-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "incidence_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F74-faster-implementation",
+    "title": "Extend exhaustive small stopping/trapping-set search to longer codes through better data structures, software or hardware.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F74",
+        "locator": "Section VIII / printed p.1995",
+        "extracted_text_lines": [
+          2715,
+          2722
+        ],
+        "url": "https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf",
+        "source_sha256": "02846356329da2a1b004681a3728747433008909d658fea2e2331b891b77b961",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/incidence-stopping-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "incidence_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F74-direct-trapping-search",
+    "title": "Design direct exhaustive trapping-set algorithms that improve on reduction to stopping-set enumeration.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F74",
+        "locator": "Section VIII / printed p.1995",
+        "extracted_text_lines": [
+          2722,
+          2740
+        ],
+        "url": "https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf",
+        "source_sha256": "02846356329da2a1b004681a3728747433008909d658fea2e2331b891b77b961",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/incidence-stopping-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "incidence_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F75-pruned-cluster-combination",
+    "title": "Study pruned peeling combined with cluster decomposition more comprehensively.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-24",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F75",
+        "locator": "Section III / PDF p.5",
+        "extracted_text_lines": [
+          551,
+          567
+        ],
+        "url": "https://arxiv.org/abs/2412.08817v1",
+        "source_sha256": "3626c20be1b94b29f2c592f7fbd9af75a500fc2dc91280b55bcbcd87370c7f55",
+        "relation": "explicit_direction"
+      }
+    ],
+    "basis": "Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed.",
+    "background_evidence": [
+      "literature/incidence-stopping-source-screening.json"
+    ],
+    "gate": "Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "incidence_stopping_source_questions",
+    "rationale": "No difficulty estimate is inferred from a literature-screening passage.",
+    "first_milestone": "Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.",
     "research_obstacle": null,
     "statement_setup": null,
     "proof_transfer_given_correct_complete_proof": null

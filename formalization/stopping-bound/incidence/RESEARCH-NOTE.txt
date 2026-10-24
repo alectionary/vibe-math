@@ -1,0 +1,312 @@
+Exact stopping distance six in an explicit QC-GHP cyclic-cover family
+2026-10-24 — incidence-aware follow-up to L-F16-stopping-bound
+
+RESULT AND SCOPE
+
+For every positive integer t, put ell=63t and work over F_2[x]/(x^ell-1).
+Take A=x^27 I_7+S_7+x^54 S_7^2 and b=1+x+x^6, with S_7 the forward
+cyclic shift. Expand the polynomial entries as circulants in the convention
+P^s_{i,j}=1 iff i=j+s. Then
+  H_X=[ A_tilde | I_7 tensor B_tilde^T ],
+  H_Z=[ I_7 tensor B_tilde | A_tilde^T ].
+The binary CSS matrices have 882t columns and 441t rows each; H_X has
+variable degree3 and check degree6. The stopping distance of H_X is EXACTLY SIX.
+All new proofs, including the source-matrix, binary-coefficient, covering,
+companion-row and CSS bridges, have checked Lean versions.
+
+Moreover the actual unnormalized second squared singular value satisfies
+  sigma_2(H_X)^2 >= 12.
+Thus Proposition5.1's condition sigma_2(H_X)^2<gamma/2=3/2 is impossible
+on this family. Whenever the strict classical gap sigma_2^2<18 holds, BOTH
+Zhu–Chugg two-eigenvalue stopping-bound expressions are negative. Incidence
+information certifies six even where these spectral expressions provide no
+positive lower bound.
+
+This is a theorem about explicit CSS check matrices and graph stopping sets.
+It supplies no logical k(t), logical distance d(t), asymptotic rate, decoding
+threshold or performance claim. In particular the size-six witness is an H_Z
+row, hence a stabilizer support, not a weight-six logical operator. The t=1
+matrix is exactly Example3.2 in the source's presentation of the reported
+[[882,24,d]],18<=d<=24 code. Those logical parameters are SOURCE REPORTED;
+our stopping theorem does not reprove them. Nonzero logical dimension for every
+t is not asserted. This family does not meet the source spectral inequality.
+
+QUESTION, SOURCE, ANSWER CONTRACT
+
+Aida Abiad and Nichola Castriota, Spectral and Additive Combinatorial Methods
+for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes,
+arXiv:2607.13666v1,15July2026, Proposition5.1, Remark5.2 and Section6:
+identify parameters making their spectral stopping-set bound informative,
+and investigate tighter bounds.
+https://arxiv.org/html/2607.13666v1
+
+The preceding research block proved that the exact positive-degree, binary,
+biregular scalar-factor construction cannot gain a stopping guarantee above two
+from Proposition5.1: r_1>=2 forces sigma_2^2>=gamma^2; r_1=1 forces density>3/4
+under its strict condition, and then its large root lies in (1,2], while its
+small root is below two. The original quadratic gives a small-size OR a
+large-size branch; the small-size branch requires separate exclusion. All those
+hypotheses and bridges remain in the frozen parent artifact. This follow-up
+neither drops that exclusion nor presents inequality satisfaction as usefulness.
+
+The present project-derived follow-up asks a narrower question: can the actual
+incidences certify a useful bound for the running B1 matrix despite that
+obstruction? Intended answer: exact stopping distance six. Decisive evidence:
+a sound exhaustive extension certificate excluding sizes1–5, and an actual
+six-element companion-row stopping support. The proved covering extension makes
+the same answer valid at every positive multiple of63. It remains supporting
+evidence under the SAME canonical L-F16 target; no new author-posed question or
+canonical completion is created.
+
+The repository's existing girth-eight stopping theorem gives six in a different
+cyclic construction. B1 has girth six (source Example3.2), so that theorem does
+not supply this certificate. Existing four-variable absorbing-set results also
+do not by themselves exclude all five-variable, potentially non-elementary
+stopping supports. The current search covers every stopping support in its size
+range, without elementary, connected-support or parity-even assumptions.
+
+DEFINITIONS AND SOURCE TRANSLATION
+
+Rows are Check=Z/7 x Z/ell; variables are Bool x Check, with false denoting the
+left block and true the right. In zero-based coordinates the column incidences
+are:
+  false(j,f): (j,f+27), (j+1,f), (j+2,f+54);
+  true(j,f):  (j,f), (j,f-1), (j,f-6).
+The three scalar circulants and the two block matrices are defined explicitly
+as NATURAL matrices, then cast to F_2 for CSS and to R for the spectrum.
+Nodup proofs ensure the natural coefficients are zero or one when63 divides ell.
+HX_count/HX_incidence and HX2_incidence identify these actual matrices with the
+incidence predicate. The source's n1=r1=7, r2=n2=1, gamma=3,k=6 and all
+transpose signs are retained. No change to Panteleev–Kalachev's older B1 labeling
+is silently assumed; we use Abiad–Castriota's displayed matrix.
+
+A stopping set is NONEMPTY and each row's selected-neighbor cardinality is
+unequal to one. This is the source's graph definition. It includes noncodeword
+stopping sets and stabilizers, so classical distance, logical distance and
+stopping distance are separate invariants. The real spectrum is the descending
+ordered spectrum of H_X H_X^T, INCLUDING MULTIPLICITY. It is neither normalized
+nor the spectrum of a constituent/protograph alone.
+
+PROOFS AND THEIR LEAN INTERFACES
+
+1. Sound extension test — IncidenceList.lean:
+   survivesList_of_stopping.
+Given a partial support S contained in a stopping set T, select a check with
+exactly one neighbor in S. T must contain another neighbor of that check outside
+S. Branch over every such check neighbor. If |T|<=|S|+fuel, one branch reaches T
+before fuel is exhausted. The proof maintains S.Nodup and uses list length, not
+a multiset count with possible duplicates. A rejected root therefore excludes
+ALL stopping supersets in the stated size range. A successful branch is not used
+as a lower-bound certificate. The checked picker proof proves degree one; row
+completeness is checked against the actual incidences.
+
+2. Two root orbits — IncidenceCore.lean:
+   shift_incidence, stopping_image; Incidence.lean: running_lower_six.
+Simultaneously translating both cyclic coordinates of variables and checks
+preserves all incidences. A nonempty support has a selected variable; translate
+that variable to (side,0,0). Both cardinality and stopping semantics are preserved.
+There are only two side representatives. No support connectedness is assumed.
+
+3. Finite certificate — Incidence.lean: normalized_roots_reject.
+Lean kernel reduction verifies that both representatives are rejected with four
+further additions, excluding all sizes1–5. The certificate uses ordinary lists
+and exact modular arithmetic. It uses decide +kernel; no native_decide,
+Lean.ofReduceBool, external SAT result, numerical eigensolver or Python premise
+is used. Earlier quotient-sorting attempts were replaced by the checked list
+implementation; unsuccessful scratch attempts are not part of this artifact.
+
+4. Cover projection — IncidenceCover.lean: stopping_cover_image;
+   IncidenceFamilyCore.lean: project_col, project_row, maps, lifts, local_inj;
+   IncidenceFamily.lean: lower_six.
+A graph cover projects a stopping support to a stopping support if incidences
+map correctly, each target incident check lifts at each selected variable, and
+the variable projection is injective on each check's neighbor set. The last
+condition prevents two selected neighbors collapsing to a singleton. The theorem
+proves this rather than assuming a stopping-distance conclusion.
+Reduction Z/(63t)->Z/63 is a ring homomorphism. The explicit column lists map
+onto the base columns; the six row-neighbor lists map onto six distinct base
+neighbors. Hence all three cover hypotheses hold. A projected stopping support
+has at least six variables and its cardinality is at most the original support's.
+The abstract proof also accepts ell=0 (the infinite integer cover), but the
+public finite-code family theorem requires t positive and makes no finite-code
+claim at zero.
+
+5. Upper witness, source and CSS — IncidenceFamilyCore.lean: six_stopping,
+   six_card; IncidenceFamilySource.lean: six_is_HZ_row;
+   IncidenceCSS.lean: A_circulant, D_circulant, css, HX2_incidence.
+The six variables are
+  false(0,0), false(0,-1), false(0,-6),
+  true(0,27), true(1,0), true(2,54).
+Each selected incidence has an explicitly checked partner on the opposite block.
+The support has size six when63 divides ell, and it is exactly H_Z row(0,0).
+For the base, Lean additionally checks the complete profile: every check has
+induced degree0 or2 (six_profile).
+For CSS, A and D=I_7 tensor B are circulants on the finite abelian product group.
+Mathlib's circulant commutation theorem yields A D^T=D^T A. The explicitly
+expanded binary product is A D^T+D^T A=0 in F_2. This is a proof of the actual
+matrices' commutation, not a CSS assumption.
+
+6. Degrees, dimensions and final contract — IncidenceDegrees.lean;
+   IncidenceCertificate.lean: positive_family, source_B1_stopping_distance_six.
+The final positive_family theorem combines exact matrix dimensions, degrees,
+CSS commutation, the lower bound for ALL nonempty stopping supports of the
+binary matrix, and a size-six upper witness. NeZero t is positivity for naturals.
+The t=1 consumer is the source's882-column matrix. This aggregation also checks
+that the separate matrix, graph and cover proofs concern the same objects.
+
+7. Spectral obstruction and classical comparison — IncidenceSpectral.lean:
+   plane_energy, second_lower_twelve, source_gap_impossible,
+   zhu_chugg_bounds_negative.
+Let a,b be arbitrary real coefficients on fiber-constant row-block indicators
+at protograph rows0 and3. Their norm squared is ell(a^2+b^2). The first block
+contributes3ell(a^2+b^2), since the relevant three column blocks are disjoint.
+The second contributes9ell(a^2+b^2). Direct sums over the EXPANDED matrix give
+energy=12 times norm squared. A linear functional recording the top eigenvector
+coefficient has a nonzero kernel on this two-dimensional plane. The resulting
+nonzero test vector has no top component, so its energy is at most sigma_2^2
+ times its norm squared. Therefore sigma_2^2>=12. This uses no unproved DFT or
+compressed-spectrum interlacing premise.
+
+CLASSICAL AND SUBSEQUENT COMPARISON
+
+Zhu and Chugg, Bounds on the Expansion Properties of Tanner Graphs,
+IEEE TIT53(12),4834–4840,December2007, Corollary6, equations(41),(42):
+https://hal.usc.edu/chugg/docs/pubs/zhu2007bounds.pdf
+For binary regular incidence, N variables, column degree gamma, row degree k,
+and eta the second Gram eigenvalue, their bit/parity stopping lower bounds are
+  N(2gamma-eta)/(gamma k-eta),
+  2N(2gamma+k-2-eta)/(k(gamma k-eta)).
+Their usable strict spectral gap is eta<gamma k (unique top eigenvalue in the
+connected regular setting). There is no separate small-support branch. They are
+not the source's eta<gamma/2 criterion. Tanner's inspected26July2000 manuscript,
+Theorems3.1 and4.1, gives the corresponding classical-distance bounds under
+regular connected graph hypotheses; Zhu–Chugg explicitly extends the reasoning
+to stopping sets. Their multi-eigenvector/irregular analysis is broader than the
+two scalar formulas compared here, and is NOT refuted by their vacuity here.
+
+In our family N=14ell,gamma=3,k=6,eta>=12. If eta<18, both denominators are
+positive while6-eta<0 and10-eta<0. The displayed bounds are therefore negative,
+proved in Lean for the ACTUAL eta. If that strict gap fails, these displayed
+classical formulas are outside their strict-gap regime. No connectivity proof
+or numerically inferred strict gap is needed to establish this dichotomy.
+For illustration only, an independent NumPy reconstruction at ell=63 gives
+eta approximately15.8929414535 and formula values approximately-4141.1162
+and-822.2481. These floating values are not proof premises.
+
+Wang–Kulkarni–Poor, Finding All Small Error-Prone Substructures in LDPC Codes,
+IEEE TIT55(5),1976–1999,May2009:
+https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf
+Exhaustive rooted search, narrowing, branch-and-bound and automorphisms are
+classical prior art. Our contribution is this small proof-carrying instance and
+its covering/spectral comparison, not a new general enumeration method.
+
+Prabhu et al., arXiv:2504.21845v2,29May2025, SectionIII.B–D:
+https://arxiv.org/abs/2504.21845v2
+Stabilizer, horizontal and vertical stopping supports are distinguished, with
+pruned peeling and SSF addressing different obstructions. Their constituent
+expansion hypotheses are not a spectral condition on the expanded H_X.
+
+Yao–Gokduman–Pfister, arXiv:2412.08817v1,11December2024, SectionIII and Figure7:
+https://arxiv.org/abs/2412.08817v1
+This earlier paper explicitly simulates B1, cites Connolly et al.'s stabilizer-
+support stopping lemma, and supplies a post-peeling cluster decoder. Its inspected
+text does not state the exact stopping-distance-six lower certificate. Our
+six-element upper witness is an instance of the known stabilizer mechanism;
+its existence is not presented as a new mechanism. Quantum degeneracy allows
+such a support to be correctable by a quantum-aware decoder despite obstructing
+plain peeling. This artifact does not analyze a post-peeling decoder.
+
+The relevant2026 Prabhu–Gayathri–Kumar HGP paper remains a named full-text gap.
+An author publication list confirms its metadata; an abstract is not enough to
+compare all theorem hypotheses or certify a zero-question screen. It is not used
+as evidence of an exact B1 result. The prior parent audit's classical access gaps
+and bounded GitHub/X limitations remain explicit. No global priority claim is made.
+
+PUBLIC CODE AND SOCIAL AUDIT
+
+The public Lcrypto stopping enumerator was pinned at
+1be33f2ef3b751a61f3a38a13e035889570e1ec0 and its main.cpp read. Its README
+advertises LP, but the inspected getLowerBound only returns current weight and
+currentMin is initialized to5. That source is not an exact stopping-distance-six
+certificate. The executable was not run. The related trapping-enumeration README
+describes classical MILP, importance-sampling and QC symmetry tools. The original
+block also inspected qLDPC's lifted-product constructor and concrete public search
+matches. None of those inspected records supplied this certificate.
+
+The parent audit's signed-in X results included a source announcement and the
+repository's own four-variable absorbing-set announcement, neither an answer to
+the spectral stopping question. Follow-up web queries were bounded and noisy.
+A follow-up native X query was unusable after a text-input/clipboard failure and
+was abandoned; no negative inference is drawn from it. No posts, messages, PATs,
+commits or pushes were created. Exact queries and access limits are in prior-art.json.
+
+SOURCE HARVEST AND SHARED INVENTORY
+
+Three new primary full texts were screened, including introductions, numbered
+statements, conclusions/future work and surrounding candidate passages. Five
+historical broad directions were added: Prabhu's residual-error techniques;
+Wang's socket/partition design, implementation improvements and direct trapping
+search; Yao's pruned-peeling/cluster combination. Their current resolution,
+Lean discovery and effort remain unassessed. One2026 paper has an explicit access
+gap and an UNKNOWN question count. Resolved internal questions and a speculative
+phase-transition passage are separately held/excluded. Other search-only leads
+retain named gaps rather than zero-question claims.
+
+The shared cohort changes262->267 entries,135 eligible targets unchanged,
+106->110 paper records,94->97 full-text screens, and4 completed canonical Lean
+targets unchanged. This family result is a completed PROJECT-DERIVED restricted
+follow-up and supporting proof for L-F16; it is not another author-posed target.
+Reports and bookkeeping validators are regenerated. Source PDFs stay in ignored
+local extraction, not in the public proof bundle. Provenance hashes distinguish
+original PDFs from local access/metadata notes.
+
+REPRODUCTION AND EVIDENCE BOUNDARY
+
+Read README.txt and verification.json for the pinned toolchain, source hashes,
+full build, complete declaration axiom audit and exact commands. All new source
+modules are included. dependencies/Spectral.lean is a byte-for-byte vendored
+copy of the parent block's checked spectral infrastructure, with its hash frozen;
+it is not counted as a new result. The complete public theorem signatures are
+printed in the audit. Only standard propext, Classical.choice and Quot.sound
+may occur; no admission, added axiom or native evaluation oracle is allowed.
+
+crosscheck.py reconstructs the source matrix independently using integer
+Kronecker products, performs a full882-root base search and bounded checks at
+t=1,...,8, checks every companion-row incidence profile in those domains, and
+checks the cover maps. Its exact finite domains and separately labelled floating
+illustration are in crosscheck.json. These checks corroborate the formal model;
+the universal family theorem comes from Lean, not extrapolation from those tests.
+
+Chronology (day precision where known):
+  Zhu–Chugg conference predecessor:28September2005, metadata only; full-text gap.
+  Zhu–Chugg journal:December2007, month precision; inspected Corollary6.
+  Tanner:inspected26July2000 manuscript;2001 journal not independently inspected.
+  Wang preprint:19May2006; inspected successor journal current version22April2009.
+  Panteleev–Kalachev construction:4April2019 preprint; inspected12November2021v3
+    in the parent block.
+  Yao et al.:11December2024v1, inspected here.
+  Prabhu et al.:30April2025v1; inspected29May2025v2.
+  Source question:15July2026v1.
+  Present dated artifact:24October2026,101 calendar days after that source date.
+This elapsed calendar difference is not a claim about the duration of an unsolved
+problem. Follow-up work began20:48UTC within the original19:49–23:49UTC budget;
+final verification time and elapsed investigation time are recorded in the manifest.
+The source convention and spectral obstruction were handled in the preceding
+block; proof/kernel optimization and inventory closeout are separate milestones.
+
+Question answered: the exact stopping distance of the displayed B1 H_X and its
+positive63-multiple cyclic-cover family is six; faithful checked Lean evidence
+also proves CSS commutation, bounded degrees and spectral lower bound12.
+
+Question still open: a broadly applicable incidence-conditioned spectral/design
+bound for other QC-GHP polynomial parameters; higher-rank/full lifted products;
+logical ranks/distances of these covers; classification of all minimum supports.
+This does not resolve every tightening direction in the source's Section6.
+
+Next proposed target — FOLLOW-UP: classify all size-six stopping supports of the
+base B1 matrix, identifying which are companion-row stabilizer supports. This is
+more bounded and reuses the checked finite search infrastructure; it would tell
+us what a stronger incidence criterion must preserve or exclude. A general
+polynomial-design criterion has broader payoff but more theorem/formalization
+risk; logical-rank formulas need separate linear-algebra infrastructure. Neither
+is silently claimed as completed here.

@@ -39,6 +39,12 @@ for r in rows:
   assert (R/r['verified_artifact']['verification']).is_file()
   assert r['partial_artifact']['source_component']=='(4,2) only'
   assert (R/r['partial_artifact']['verification']).is_file()
+ elif r['id']=='L-F16-stopping-bound':
+  assert r['lean_statement_status']=='verified_lean_statement'
+  assert r['lean_proof_status']=='verified_complete_lean_proof'
+  assert r['current_resolution_status']=='answered_negatively_for_prop51_useful_parameter_question'
+  assert (R/r['supporting_artifact']['verification']).is_file()
+  assert (R/r['supporting_artifact']['lean_source']).is_file()
  elif r['id']=='L-P32-Conway-existence':
   assert r['lean_statement_status']=='identified_lean_statement_not_build_verified'
   assert r['lean_proof_status']=='no_exact_proof_identified'
@@ -81,8 +87,8 @@ assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_te
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
 assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+ext_full
 assert summary['not_fully_assessed']==1+reconciliation['added_relevant_section_screens']+sum(e.get('incomplete_paper_records_added',0) for e in extensions)
-assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==4
-assert summary['eligible_verified_lean_proofs']==4
+assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==5
+assert summary['eligible_verified_lean_proofs']==5
 assert summary['eligible_targets_with_verified_finite_cases']==0
 assert all(not r['eligible_for_coverage'] for r in rows if r['status_as_of_source']=='withdrawn_historical_only')
 assert next(p for p in coverage if p['paper_id']=='P10')['target_count'] is None
@@ -126,7 +132,7 @@ for row in rows:
 assert len(load('research-source-index.json')['sources'])==reconciliation['central_source_records']
 for block in reconciliation.get('research_blocks',[]):
  assert block['canonical_entry_delta']==block['eligible_target_delta']==0
- assert block['complete_canonical_lean_target_delta']==(1 if block['id']=='absorbing-four-zero-2026-10-24' else 0)
+ assert block['complete_canonical_lean_target_delta']==(1 if block['id'] in ('absorbing-four-zero-2026-10-24','stopping-parameter-publication-reconciliation-2026-10-24') else 0)
  assert (R/block['report']).is_file() and (R/block['verification']).is_file()
 print('Research reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.')
 

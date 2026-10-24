@@ -1,0 +1,5 @@
+import SourceQuestionAnswer
+#check StoppingSpectral.source_parameter_question_negative
+#print axioms StoppingSpectral.source_parameter_question_negative
+#check StoppingSpectral.no_parameters_give_source_improvement
+#print axioms StoppingSpectral.no_parameters_give_source_improvement

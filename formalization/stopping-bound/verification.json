@@ -1,0 +1,185 @@
+{
+  "status": "passed",
+  "checked_on": "2026-10-24T20:20:37.519704+00:00",
+  "target_id": "L-F16-stopping-bound",
+  "scope": "Actual expanded scalar-factor QC-GHP matrix obstruction; one-row density and exact source-root/stopping-branch non-improvement; dense CSS and running-code consumers. Stronger bounds remain open.",
+  "canonical_completion_delta": 0,
+  "lean_version": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_revision": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "build": {
+    "command": "lake build Spectral",
+    "exit_code": 0,
+    "log": "build.log",
+    "project_root": "formalization/stopping-bound"
+  },
+  "axiom_audit": {
+    "command": "lake env lean Audit.lean",
+    "exit_code": 0,
+    "log": "axiom-audit.log",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "no_sorry": true,
+    "no_new_axioms": true
+  },
+  "declarations_audited": 52,
+  "declarations": [
+    "energy",
+    "normSq",
+    "energy_eq_gram",
+    "eigs",
+    "eBasis",
+    "eigs_antitone",
+    "gram_apply_basis",
+    "normSq_euclidean",
+    "energy_eigenbasis",
+    "energy_basis",
+    "eigs_trace",
+    "energy_le_of_coeff_zero",
+    "binary_weighted_cauchy",
+    "regular_energy_upper",
+    "regular_trace",
+    "regular_eigs_le",
+    "regular_trace_obstruction",
+    "scalarFactorMatrix",
+    "fiberLift",
+    "scalarFactor_right_action",
+    "scalarFactor_energy_lower",
+    "replicated_scalar_second_lower",
+    "replicated_scalar_no_source_regime",
+    "one_row_density",
+    "one_row_large_root_le_two",
+    "one_row_matrix_obstruction",
+    "binary_column_sum_le_card",
+    "regular_edge_count",
+    "one_row_biregular_obstruction",
+    "qc_scalar_factor_no_source_regime",
+    "eigs_det",
+    "denseExample",
+    "denseEigs",
+    "denseExample_second",
+    "IsStopping",
+    "denseExample_stopping",
+    "denseExampleBinary",
+    "denseExample_css",
+    "denseExample_source_certificate",
+    "sourceLargeRoot",
+    "sourceLargeRoot_eq",
+    "sourceSmallRoot",
+    "sourceSmallRoot_eq",
+    "one_row_roots",
+    "stopping_card_ge_two",
+    "one_row_stopping_bound_redundant",
+    "one_row_cardinal_obstruction",
+    "scalar_one_row_source_obstruction",
+    "supportCirculant",
+    "supportCirculant_row_sum",
+    "running_882_scalar_obstruction",
+    "denseExample_minimum"
+  ],
+  "files": {
+    "Spectral.lean": {
+      "sha256": "a3e712b2a206bd7743408ecc122e66e7d980dbd4689c6d49977536dfe9bb469d",
+      "bytes": 30959
+    },
+    "Audit.lean": {
+      "sha256": "a11f2de037f052720a29ab7740c84da6697fd4533ce98711b49bd007ec4f970a",
+      "bytes": 3007
+    },
+    "README.txt": {
+      "sha256": "5a83b97bc054c7d2d0455cc09e73adc62787dd4cf542d11f4d4f73e246967fa6",
+      "bytes": 1981
+    },
+    "RESEARCH-NOTE.txt": {
+      "sha256": "fb2f8a65b8f369eb4289e7c58fef6c92c9da013136f062f44507046126b77d0b",
+      "bytes": 17581
+    },
+    "prior-art.json": {
+      "sha256": "12ff26405a3b2f3a91582c9d6935ad0cfb434de9a7c268f56796aa3311340818",
+      "bytes": 19958
+    },
+    "crosscheck.py": {
+      "sha256": "a7c001f9a4ee767290ad82f2adac0a5d4f0d09d25ff00b222092bd8cfdae8412",
+      "bytes": 3045
+    },
+    "crosscheck.json": {
+      "sha256": "1da8e6affffb0224d0f215449282c08bc6149713d27df5107d0573c24e91c9a8",
+      "bytes": 10024
+    },
+    "lakefile.toml": {
+      "sha256": "9fbc63d087852733d4a7203b1c2f6d85e1eec5dc8cc1411c03866d71cdd7f618",
+      "bytes": 243
+    },
+    "lake-manifest.json": {
+      "sha256": "cc64ddae07b39625e45eae07bb021953f4953bd957611b501002c1029a9a47f9",
+      "bytes": 3550
+    },
+    "lean-toolchain": {
+      "sha256": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+      "bytes": 29
+    },
+    "build.log": {
+      "sha256": "ba2590c04cac5842bafebc61cc1a121b460b9bbd719ce83bfe957d6283a8f313",
+      "bytes": 79
+    },
+    "axiom-audit.log": {
+      "sha256": "cce1f866fd9e5074f6d99d930e176699aac5d6e040be2122647fbbd1dc5fe978",
+      "bytes": 8848
+    },
+    "inventory-validation.log": {
+      "sha256": "f81c56c57a9fc534d9b6dc6dc7ebb4f82b9f3bcd46933803c342d4eb12f84375",
+      "bytes": 1068
+    }
+  },
+  "source_fidelity": {
+    "field": "Real expanded 0-1 incidence, not F2 or normalized spectrum.",
+    "second_squared": "Second ordered Gram eigenvalue, counting multiplicity; m>=2.",
+    "scalar_factor": "scalarFactorMatrix A B implements [A | I_r tensor B^T] with no assumed spectral envelope.",
+    "degree_bridge": "B row sum follows from H column regularity; k=qγ and γ<=ell are derived for one row block.",
+    "roots": "Both sourceLargeRoot_eq and sourceSmallRoot_eq match the original C=s*m²/gamma² radicals.",
+    "stopping": "Nonempty support with no induced check degree one; actual source theorem excludes a_- using positive degree.",
+    "boundaries": "Positive integral gamma; positive base dimensions; r=ell=1 has no sigma₂; gamma0 excluded."
+  },
+  "independent_crosscheck": {
+    "command": "python3 crosscheck.py (NumPy)",
+    "exit_code": 0,
+    "seed": 20261024,
+    "replicated_cases": 61,
+    "one_row_ordered_pairs": 250941,
+    "numerical_strict_margin_cases": 339,
+    "numerical_boundary_cases": 25,
+    "proof_dependency": false
+  },
+  "inventory": {
+    "status": "passed",
+    "canonical_entries": 262,
+    "eligible_targets": 135,
+    "complete_canonical_lean_targets": 4,
+    "new_historical_directions": 10,
+    "new_paper_records": 6,
+    "new_full_text_screens": 4,
+    "named_classical_source_gaps": 2,
+    "validation_scripts": [
+      "validate_open_problems.py",
+      "validate_current_difficulty.py",
+      "validate_research_question_screening.py",
+      "validate_stopping_bound.py"
+    ],
+    "log": "inventory-validation.log"
+  },
+  "time_budget": {
+    "user_hours": 4,
+    "first_recorded_clock_utc": "2026-10-24T19:52:55Z",
+    "proof_audit_completed_utc": "2026-10-24T20:20:37.519704+00:00",
+    "elapsed_seconds_from_first_recorded_clock": 1662.519704,
+    "source_question_calendar_days_to_investigation": 101
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "external_messages_sent": false,
+    "PAT_created": false
+  }
+}

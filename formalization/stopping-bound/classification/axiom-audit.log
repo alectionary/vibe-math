@@ -1,0 +1,181 @@
+Incidence.Classification.shift_rowSupport (t c : Incidence.Check) :
+  Finset.image (⇑(Incidence.shiftV t)) (Incidence.Classification.rowSupport c) =
+    Incidence.Classification.rowSupport (c + t)
+'Incidence.Classification.shift_rowSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.size_six_classification (T : Finset Incidence.Var) (hT : Incidence.Stopping Incidence.E T)
+  (h6 : T.card = 6) : ∃ c, T = Incidence.Classification.rowSupport c
+'Incidence.Classification.size_six_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_false_0 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(false, 0 - 1, 27), (false, 0, 0)] =
+    true
+'Incidence.Classification.branch_false_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_false_1 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(false, 0 - 2, 27 - 54), (false, 0, 0)] =
+    true
+'Incidence.Classification.branch_false_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_false_2 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(true, 0, 27), (false, 0, 0)] =
+    true
+'Incidence.Classification.branch_false_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_false_3 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(true, 0, 27 + 1), (false, 0, 0)] =
+    true
+'Incidence.Classification.branch_false_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_false_4 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(true, 0, 27 + 6), (false, 0, 0)] =
+    true
+'Incidence.Classification.branch_false_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_true_0 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(false, 0, 0 - 27), (true, 0, 0)] =
+    true
+'Incidence.Classification.branch_true_0' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_true_1 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(false, 0 - 1, 0), (true, 0, 0)] =
+    true
+'Incidence.Classification.branch_true_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_true_2 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(false, 0 - 2, 0 - 54), (true, 0, 0)] =
+    true
+'Incidence.Classification.branch_true_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_true_3 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(true, 0, 0 + 1), (true, 0, 0)] =
+    true
+'Incidence.Classification.branch_true_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.branch_true_4 :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 4
+      [(true, 0, 0 + 6), (true, 0, 0)] =
+    true
+'Incidence.Classification.branch_true_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.normalized_center_certificate (c : Incidence.Check) :
+  ((Incidence.Classification.rowList c).all fun v => decide (v ∈ Incidence.Classification.rowList (0, 0))) = true →
+    c = (0, 0)
+'Incidence.Classification.normalized_center_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_eq_zero (c : Incidence.Check)
+  (h : Incidence.Classification.rowSupport c = Incidence.Classification.rowSupport (0, 0)) : c = (0, 0)
+'Incidence.Classification.rowSupport_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_injective : Function.Injective Incidence.Classification.rowSupport
+'Incidence.Classification.rowSupport_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.translation_free (c t : Incidence.Check)
+  (h :
+    Finset.image (⇑(Incidence.shiftV t)) (Incidence.Classification.rowSupport c) =
+      Incidence.Classification.rowSupport c) :
+  t = (0, 0)
+'Incidence.Classification.translation_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.classification_iff (T : Finset Incidence.Var) :
+  Incidence.Stopping Incidence.E T ∧ T.card = 6 ↔ ∃ c, T = Incidence.Classification.rowSupport c
+'Incidence.Classification.classification_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.unique_center (T : Finset Incidence.Var) (hs : Incidence.Stopping Incidence.E T)
+  (h6 : T.card = 6) : ∃! c, T = Incidence.Classification.rowSupport c
+'Incidence.Classification.unique_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.minimumSupports : Finset (Finset Incidence.Var)
+'Incidence.Classification.minimumSupports' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.mem_minimumSupports (T : Finset Incidence.Var) :
+  T ∈ Incidence.Classification.minimumSupports ↔ Incidence.Stopping Incidence.E T ∧ T.card = 6
+'Incidence.Classification.mem_minimumSupports' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.minimumSupports_card : Incidence.Classification.minimumSupports.card = 441
+'Incidence.Classification.minimumSupports_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.single_translation_orbit (T : Finset Incidence.Var) :
+  Incidence.Stopping Incidence.E T ∧ T.card = 6 ↔ ∃ c, T = Finset.image (⇑(Incidence.shiftV c)) Incidence.six
+'Incidence.Classification.single_translation_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.HZ_shift (t c : Incidence.Check) (v : Incidence.Var) :
+  Incidence.HZ ((Incidence.shiftC t) c) ((Incidence.shiftV t) v) = Incidence.HZ c v
+'Incidence.Classification.HZ_shift' depends on axioms: [propext, Quot.sound]
+Incidence.Classification.rowSupport_HZ (c : Incidence.Check) (v : Incidence.Var) :
+  v ∈ Incidence.Classification.rowSupport c ↔ Incidence.HZ c v = 1
+'Incidence.Classification.rowSupport_HZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.HZ_binary (c : Incidence.Check) (v : Incidence.Var) :
+  Incidence.HZ c v = 0 ∨ Incidence.HZ c v = 1
+'Incidence.Classification.HZ_binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.binary_source_classification (T : Finset Incidence.Var) :
+  Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T ∧ T.card = 6 ↔
+    ∃! c, T = {v | Incidence.Family.HZ2 c v = 1}
+'Incidence.Classification.binary_source_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_profile (c d : Incidence.Check) :
+  {v ∈ Incidence.Classification.rowSupport c | Incidence.E v d}.card = 0 ∨
+    {v ∈ Incidence.Classification.rowSupport c | Incidence.E v d}.card = 2
+'Incidence.Classification.rowSupport_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_sides (c : Incidence.Check) :
+  {v ∈ Incidence.Classification.rowSupport c | v.1 = false}.card = 3 ∧
+    {v ∈ Incidence.Classification.rowSupport c | v.1 = true}.card = 3
+'Incidence.Classification.rowSupport_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.minimum_structure (T : Finset Incidence.Var) (hs : Incidence.Stopping Incidence.E T)
+  (h6 : T.card = 6) :
+  {v ∈ T | v.1 = false}.card = 3 ∧
+    {v ∈ T | v.1 = true}.card = 3 ∧
+      ∀ (d : Incidence.Check), {v ∈ T | Incidence.E v d}.card = 0 ∨ {v ∈ T | Incidence.E v d}.card = 2
+'Incidence.Classification.minimum_structure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.mem_minimumSupports_binary (T : Finset Incidence.Var) :
+  T ∈ Incidence.Classification.minimumSupports ↔
+    Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T ∧ T.card = 6
+'Incidence.Classification.mem_minimumSupports_binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.source_complete_certificate :
+  Incidence.Classification.minimumSupports.card = 441 ∧
+    (∀ (T : Finset Incidence.Var),
+        T ∈ Incidence.Classification.minimumSupports ↔
+          Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T ∧ T.card = 6) ∧
+      ∀ (T : Finset Incidence.Var),
+        Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T ∧ T.card = 6 ↔
+          ∃! c, T = {v | Incidence.Family.HZ2 c v = 1}
+'Incidence.Classification.source_complete_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.binary_source_structure (T : Finset Incidence.Var)
+  (hs : Incidence.Stopping (fun v c => Incidence.Family.HX2 c v = 1) T) (h6 : T.card = 6) :
+  {v ∈ T | v.1 = false}.card = 3 ∧
+    {v ∈ T | v.1 = true}.card = 3 ∧
+      ∀ (d : Incidence.Check),
+        {v ∈ T | Incidence.Family.HX2 d v = 1}.card = 0 ∨ {v ∈ T | Incidence.Family.HX2 d v = 1}.card = 2
+'Incidence.Classification.binary_source_structure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowList (c : Incidence.Check) : List Incidence.Var
+'Incidence.Classification.rowList' depends on axioms: [propext, Quot.sound]
+Incidence.Classification.rowSupport (c : Incidence.Check) : Finset Incidence.Var
+'Incidence.Classification.rowSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_image (c : Incidence.Check) :
+  Incidence.Classification.rowSupport c = Finset.image (⇑(Incidence.shiftV c)) Incidence.six
+'Incidence.Classification.rowSupport_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_card (c : Incidence.Check) : (Incidence.Classification.rowSupport c).card = 6
+'Incidence.Classification.rowSupport_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.rowSupport_stopping (c : Incidence.Check) :
+  Incidence.Stopping Incidence.E (Incidence.Classification.rowSupport c)
+'Incidence.Classification.rowSupport_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.centers : List Incidence.Check
+'Incidence.Classification.centers' depends on axioms: [propext, Quot.sound]
+Incidence.Classification.good (S : List Incidence.Var) : Bool
+'Incidence.Classification.good' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.good_sound (S : List Incidence.Var) (hnd : S.Nodup)
+  (h : Incidence.Classification.good S = true) : ∃ c, S.toFinset = Incidence.Classification.rowSupport c
+'Incidence.Classification.good_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Classification.normalized_classification_certificate (b : Bool) :
+  Incidence.classifiesList Incidence.pickList Incidence.row Incidence.Classification.good 5 [(b, 0, 0)] = true
+'Incidence.Classification.normalized_classification_certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Incidence.classifiesList.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] (pick : List V → Option C)
+  (row : C → List V) (good : List V → Bool) (n : ℕ) : List V → Bool
+'Incidence.classifiesList' depends on axioms: [propext]
+Incidence.classifiesList_succ.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (pick : List V → Option C) (row : C → List V) (good : List V → Bool) (n : ℕ) (S : List V) :
+  Incidence.classifiesList pick row good (n + 1) S =
+    match pick S with
+    | none => false
+    | some c => (row c).all fun v => bif decide (v ∈ S) then true else Incidence.classifiesList pick row good n (v :: S)
+'Incidence.classifiesList_succ' depends on axioms: [propext]
+Incidence.classifiesList_step_of_children.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (pick : List V → Option C) (row : C → List V) (good : List V → Bool) (n : ℕ) (S : List V) (c : C)
+  (hp : pick S = some c) (hc : ∀ v ∈ row c, v ∉ S → Incidence.classifiesList pick row good n (v :: S) = true) :
+  Incidence.classifiesList pick row good (n + 1) S = true
+'Incidence.classifiesList_step_of_children' depends on axioms: [propext, Quot.sound]
+Incidence.classifiesList_sound.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (pick : List V → Option C) (row : C → List V) (good : List V → Bool)
+  (P : Finset V → Prop) (hp : ∀ (S : List V), S.Nodup → ∀ (c : C), pick S = some c → {v ∈ S.toFinset | E v c}.card = 1)
+  (hr : ∀ (v : V) (c : C), E v c → v ∈ row c) (hg : ∀ (S : List V), S.Nodup → good S = true → P S.toFinset) (n : ℕ)
+  (S : List V) (T : Finset V) (hT : Incidence.Stopping E T) (hnd : S.Nodup) (hST : S.toFinset ⊆ T)
+  (hcard : T.card ≤ S.length + n) (hcert : Incidence.classifiesList pick row good n S = true) : P T
+'Incidence.classifiesList_sound' depends on axioms: [propext, Classical.choice, Quot.sound]

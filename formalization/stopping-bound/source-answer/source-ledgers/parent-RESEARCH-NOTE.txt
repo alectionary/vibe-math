@@ -1,0 +1,329 @@
+L-F16-stopping-bound: a finite obstruction for the scalar-factor QC-GHP bound
+24 October 2026
+
+ANSWER
+
+For the positive-degree, binary biregular scalar-factor QC-GHP construction
+actually used in Proposition 5.1, the proposed regime cannot give a new stopping-
+distance guarantee. With two or more row blocks it is impossible. With one row
+block it forces a dense matrix and yields exactly the elementary integer lower
+bound two. The raw spectral inequality can hold for dense finite CSS matrices;
+that is different from a useful LDPC stopping-distance guarantee.
+
+This answers the bounded parameter-feasibility part in the source's precise
+scalar-factor setting. It does not supply a stronger spectral bound, classify all
+dense parameters satisfying the raw inequality, or settle arbitrary matrix-factor
+or nonabelian lifted products. The canonical inventory target remains partially
+addressed because its stronger-bound direction is still open.
+
+Exact question and attribution
+------------------------------
+Target: L-F16-stopping-bound.
+Question source: Aida Abiad and Nichola Castriota, "Spectral and Additive
+Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum
+LDPC Codes", arXiv:2607.13666v1, 15 July 2026, Section 6, with Proposition 5.1
+and Remark 5.2 read directly. The unversioned arXiv record still listed only v1
+when checked on 24 October. Discovery came through the repository's existing
+F16 inventory and its Morris/absorbing-set research trail.
+https://arxiv.org/html/2607.13666v1#S5
+https://arxiv.org/html/2607.13666v1#S6
+
+This was a new repository target, separate from the completed cyclic-girth and
+incidence-corrected four-variable absorbing-count targets. Those results do not
+verify the spectral inequality. The bounded answer contract was: source
+parameter question -> explicit qualifying useful family OR rigorous obstruction
+-> actual-matrix theorem, faithful Lean proof, prior-art audit and inventory
+reconciliation. The obstruction route succeeded.
+
+SOURCE STATEMENT AND HYPOTHESES
+
+Let A be the real binary expansion of an r-by-n1 group-ring matrix, let B be the
+ell-by-ell binary circulant of b, and let
+
+    H = [ A | I_r tensor B^T ].
+
+The source's specialization has r2=n2=1. Assume r,n1,ell are positive; H is binary
+and (gamma,k)-biregular; gamma is a positive integer; m=r*ell is the check count,
+and N=(n1+r)*ell is the variable count. We require m>=2 so that the second
+singular value exists. The singleton-check case r=ell=1 does not define that
+quantity. Gamma=0 is also outside the divisions and the intended statement.
+There is no additional girth assumption in Proposition 5.1. Connectedness is not
+postulated by our theorems. Repeated eigenvalues are counted with multiplicity.
+
+All spectra here are over the REAL expanded incidence matrix, not over F2 and
+not normalized by degrees. Write s=sigma_2(H)^2. The Fourier identity is
+
+    M_j = A(omega^j) A(omega^j)^* + |b(omega^j)|^2 I_r.
+
+At frequency zero, b(1) means the ordinary integer support weight, not its parity.
+Column regularity in the second block forces wt(b)=gamma. In the r=1 case the
+source's lambda_2(M_0) term has no index and is omitted; the full Gram matrix
+still has a second eigenvalue when ell>=2.
+
+Proposition 5.1 states, for each nonempty stopping set of size a,
+
+    a (m-a*gamma/2) <= C,       C=s*m^2/gamma^2.
+
+When s<gamma/2, set
+
+    a_- = (m/gamma)(1-sqrt(1-2s/gamma)),
+    a_+ = (m/gamma)(1+sqrt(1-2s/gamma)).
+
+These are precisely the source roots (m +/- sqrt(m^2-2*gamma*C))/gamma;
+sourceLargeRoot_eq and sourceSmallRoot_eq check both algebraic translations
+in Lean. The conclusion is
+a DISJUNCTION: a<=a_- OR a>=a_+. A stopping-distance bound a_+ additionally
+requires exclusion of every nonempty stopping support in (0,a_-]. Merely finding
+s<gamma/2 does not establish that exclusion or a useful lower bound.
+
+The proof's division by a*|T| addresses |T|>0. If T is empty, the displayed
+inequality holds because its left side is nonpositive; the omitted division case
+is harmless. Tanner graphs are simple because the expanded matrices are 0-1.
+Quantum logical distance is a different invariant: stabilizer supports can be
+stopping sets and are not excluded here.
+
+THEOREMS AND PROOFS
+
+1. Two or more row blocks: s >= gamma^2, for every finite lift.
+
+The zero-frequency shift already explains the obstruction. M_0 is a positive
+semidefinite Gram matrix plus gamma^2 I_r, so all r of its eigenvalues are at
+least gamma^2. With r>=2, removal of a single Perron eigenvalue leaves one of
+these values in the full nonprincipal spectrum. Thus s>=gamma^2>=gamma/2 for
+positive integral gamma. Increasing gamma cannot rescue this regime.
+
+The Lean proof establishes the same result directly for the expanded real
+matrix, without taking the Fourier identity as a premise. On the r-dimensional
+space of vectors constant within each fiber, the second block contributes
+exactly gamma^2 times the squared norm. The first block contributes a sum of
+squares. When r>=2, the linear functional giving the coefficient of a top Gram
+eigenvector has a nonzero kernel on that space. For a nonzero vector in this
+kernel, the ordered spectral expansion bounds its energy above by s times its
+squared norm. Comparison proves s>=gamma^2. This argument also covers repeated
+top eigenvalues and disconnected graphs.
+
+In fact the first block may be any real matrix and B need only have constant row
+sum gamma. The source's cyclic/binary construction is a subclass. The theorem
+qc_scalar_factor_no_source_regime derives the needed row sum of B directly from
+H's column regularity; it is not an extra spectral assumption.
+
+As a checked consumer, the running 882-variable code's scalar support {0,1,6}
+in Z/63Z already forces s>=9 for every first block of the appropriate size.
+The paper requires s<1.5 for its column weight three. This is a finite
+obstruction, stronger for this purpose than the asymptotic comparison in
+Remark 5.2.
+
+2. One row block: necessary density greater than three quarters.
+
+Put r=1, q=n1+1>=2 and m=ell. Edge counting gives k=q*gamma. Binary column
+regularity gives gamma<=ell. For any binary (gamma,k)-biregular matrix with m>=2,
+
+    k(m-gamma) <= (m-1)s.                              (T)
+
+Indeed, tr(HH^T)=m*k, every eigenvalue except the largest is at most s, and the
+largest is at most gamma*k. The last bound follows directly by binary weighted
+Cauchy-Schwarz and the row and column sums. Our proof checks these statements for
+the actual sorted Gram spectrum, not an assumed list of eigenvalues.
+
+Consequently, in the one-row case,
+
+    q*gamma*(ell-gamma) <= (ell-1)*s.
+
+If s<gamma/2, positivity permits cancellation and gives
+
+    gamma > ell-(ell-1)/(2q) >= (3ell+1)/4.
+
+Thus each column occupies more than 3/4 of the checks, and each row more than
+3/4 of the variables. These matrices cannot form a sparse parity-check family
+of unbounded length. This includes polynomial entries in the first block;
+restricting those entries to monomials does not create an escape.
+
+3. The remaining source bound is exactly the trivial integer bound two.
+
+Under the same one-row hypotheses and s<gamma/2, Lean proves
+
+    1 < a_+ <= 2,             0 <= a_- < 2.
+
+For the upper bound, (T), q>=2 and gamma<=ell imply
+
+    s*ell^2 >= 2*gamma^2*(ell-gamma).
+
+To see this without a division assumption, multiply (T) by gamma and use
+ell^2>=gamma(ell-1) and s>=0. Density gives 2gamma/ell-1>=0. The displayed
+inequality is equivalent to
+
+    1-2s/gamma <= (2gamma/ell-1)^2.
+
+Taking nonnegative square roots yields a_+<=2. Strict positivity of the
+discriminant and ell/gamma>=1 give a_+>1. The same discriminant and density
+bounds give 0<=a_-<2.
+
+Every positive-column-weight binary Tanner graph already has no singleton
+stopping set: a nonzero column has a neighboring check of induced degree one.
+So every nonempty stopping set has at least two variables. In the surviving
+one-row regime this automatically excludes the small branch, and also already
+implies a>=a_+. The ceiling of a_+ is exactly two. The source spectral stopping
+inequality contributes no additional guarantee.
+
+The final source theorem uses scalarFactorMatrix with the unflattened indices
+(Fin 1 x F) and ((C x F) + (Fin 1 x F)). It derives the cardinality equation and
+edge-count relation internally. No relabeling, Fourier decomposition, auxiliary
+expansion hypothesis, or desired spectral lower bound is added as a premise.
+
+4. A checked dense illustration separates the raw inequality from usefulness.
+
+Take H_X=H_Z to be the all-ones 2-by-4 matrix. Its real Gram matrix is
+[[4,4],[4,4]], with eigenvalues 8 and 0. Its column degree is two, so s=0<1.
+The roots are a_-=0 and a_+=2. Its nonempty stopping supports are exactly the
+subsets of size at least two. H_X H_Z^T=0 over F2, so these are a valid CSS
+matrix pair. This illustration is dense and is not a new LDPC family. No
+quantum logical-distance or dimension calculation is claimed for it.
+
+LEAN EVIDENCE AND FIDELITY
+
+Project: formalization/stopping-bound/.
+Toolchain: leanprover/lean4:v4.36.0-rc1.
+Mathlib revision: 5f7b4198d22a9c82e1c698a379334fe128095c82.
+
+Proof-to-Lean map (all in Spectral.lean):
+
+- Actual energy/Gram and ordered-spectrum bridge:
+  energy_eq_gram, energy_eigenbasis, energy_le_of_coeff_zero, eigs_trace.
+- Biregular trace obstruction:
+  binary_weighted_cauchy, regular_energy_upper, regular_trace_obstruction.
+- Multi-row expanded-source obstruction:
+  scalarFactor_energy_lower, replicated_scalar_second_lower,
+  qc_scalar_factor_no_source_regime.
+- Binary/cardinality/degree bridges:
+  binary_column_sum_le_card, regular_edge_count,
+  one_row_cardinal_obstruction.
+- Root algebra, density, and numerical obstruction:
+  sourceLargeRoot_eq, sourceSmallRoot_eq, one_row_density, one_row_large_root_le_two,
+  one_row_roots.
+- Stopping supports and full source theorem:
+  IsStopping, stopping_card_ge_two, scalar_one_row_source_obstruction.
+- Source circulant and running-code consumer:
+  supportCirculant_row_sum, running_882_scalar_obstruction.
+- Dense illustration:
+  denseExample_second, denseExample_css, denseExample_source_certificate,
+  denseExample_stopping, denseExample_minimum.
+
+The public spectral parameter eigs H 1 is the second-largest eigenvalue of
+HH^T, sorted in decreasing order with multiplicity. This is sigma_2(H)^2 for
+the source's wider-than-tall matrix. Mathlib supplies the finite-dimensional
+spectral theorem; the source-specific matrix and stopping-set bridges are
+proved here. The development does not assume the obstruction as a field of a
+structure or as a spectral-envelope premise.
+
+Audit.lean prints every new declaration's axioms. See verification.json,
+build.log and axiom-audit.log for actual command results, hashes and the audit.
+The source archive includes the pinned Lake files and independent crosscheck.
+There are no admitted research lemmas or external numerical premises in the
+proved results. The prior-art review and historical question statuses are
+ordinary documentary evidence, not Lean theorems.
+
+Independent reconstruction: 61 finite multi-row matrices were generated with
+seed 20261024; a separate one-row enumeration covered all 250,941 ordered pairs
+of equal-weight supports through lift size ten. Floating spectra identified 339
+strictly qualifying pairs away from a 1e-8 margin and 25 boundary pairs; all
+observed strict cases obeyed the density/root constraints. These numerical
+checks are exploration and error detection, not exact spectral certificates.
+The four-column stopping/CSS illustration was also enumerated with integer
+arithmetic. The general results depend only on Lean.
+
+PRIOR ART AND CURRENT-STATUS AUDIT
+
+The full ledger is prior-art.json; it records queries, versions, inspected
+statements, public code/social matches and failures.
+
+- Existing repository results: the completed cyclic-girth and four-variable
+  absorbing-count theorems address different conditions. Their degree/girth
+  stopping bounds do not verify s<gamma/2 for this construction.
+- Tanner's inspected manuscript is dated 26 July 2000 (journal publication
+  2001). Theorem 3.1 gives the classical bit-oriented distance bound. Its proof
+  uses connected biregularity and at least two active bits per active check.
+- Zhu and Chugg, December 2007, Corollary 6 explicitly extend the classical
+  bit-oriented bound to stopping distance:
+
+      d_stop >= N(2gamma-s)/(gamma*k-s).
+
+  It becomes positive at s<2gamma, not at gamma/2. It is a genuine lower bound
+  without the source's small/large-branch issue. This older result makes a
+  Tanner-style replacement of the weak mixing step available, but does not
+  identify a source-regime QC-GHP family. We do not claim that bound as new.
+- Remark 5.2's Feng-Li and Li-Sole references concern asymptotic or girth-
+  dependent spectral restrictions. Those asymptotic/girth comparisons do not by themselves supply the finite
+  dense exception or the actual scalar-factor obstruction. Full original
+  retrieval remained incomplete for these two classical sources; those gaps
+  are explicitly retained rather than reported as zero-question screens.
+- Panteleev-Kalachev, arXiv:1904.02703v3 (12 November 2021), supplies the
+  construction. Its general quantum-distance agenda is distinct from graph
+  stopping distance, and its footnote 19 already acknowledges special-case
+  bounds for C(A,1+x).
+- Leverrier-Zemor, arXiv:2202.13641v3 (16 September 2022), Theorems 1-2,
+  uses constituent Ramanujan Cayley graphs AND local-code distance, robust
+  dual tensors, puncturing resistance and total no-conjugacy. It does not
+  assert that the expanded CSS check matrix satisfies s<gamma/2. A good
+  constituent graph is not a certificate for the source singular-value test.
+
+No earlier complete answer to this exact parameter question was identified
+within the recorded search. The obstruction uses elementary spectral and trace
+ingredients; no mathematical or formalization-priority claim is made.
+
+Public GitHub and X were included. Signed-in Edge's code search for the source
+identifier returned 30 files; the first grouped result page was reviewed, and
+the substantive secondary text matches were retrieved. The focused query
+"QC-GHP" "stopping" returned a source-paper mirror. The pinned qLDPC
+LPCode constructor provides constructions, not a source-regime theorem.
+The source-identifier X search exposed the paper bot announcement and the
+repository's existing absorbing-set announcement; the latter was expanded and
+read. Its scope does not answer this target. A separate author-name query failed
+to retrieve that known-positive post, so its negative result and the related
+compound-query negatives are excluded from the audit's conclusions.
+
+Coverage limits: GitHub's CLI token was invalid, and unauthenticated API code
+search required authentication; signed-in browser search supplied the relevant
+code results. OpenAlex indexed the source with zero forward citations at this
+check; Semantic Scholar returned HTTP429 and Scholar retrieval failed.
+The author SciRate query returned only the source paper. These are bounded and
+incomplete discovery surfaces, not proof of universal absence. No PAT was
+created and no external messages were sent.
+
+INVENTORY AND NEXT STEP
+
+Every relied-on primary paper received a question screen or a named access/
+archival gap. The four newly retrieved complete texts contributed ten broad
+historical directions: redundant-check design, three graph-analysis refinements/
+validation directions, the original QC-GHP distance agenda, and five quantum
+Tanner directions. Their current resolution, Lean discovery and difficulty
+remain unassessed; they are not counted as precise theorem targets. Two named
+Hamiltonian-complexity conjectures mentioned only contextually in the Tanner
+paper are retained as held source leads, without inventing exact formulations. F16's
+stronger-bound direction remains a component of its existing canonical entry.
+
+The shared reconciliation records: 252 -> 262 canonical entries; 135 -> 135
+eligible targets; 100 -> 106 article records; 90 -> 94 complete archived
+full-text screens. Four complete canonical Lean targets remain four.
+L-F16-stopping-bound now has a verified supporting statement/proof and the exact
+scalar-factor scope above. Adding helper declarations is not another completed
+canonical question. Validators and regenerated reports are included in the
+verification record.
+
+Question answered: For the source's scalar-factor QC-GHP form, can Proposition
+5.1's raw regime yield a stopping-distance improvement beyond the elementary
+bound two? No: multi-row blocks make the inequality impossible; one-row blocks
+force density above 3/4 and a source root in (1,2], with the small branch already
+excluded by positive degree. All new mathematical proofs and the actual-source
+bridges are Lean checked.
+
+Question still open: A genuinely useful replacement/tightening of the spectral
+stopping bound; and any corresponding parameter question for more general
+matrix-factor or nonabelian lifted products. The work is not a classification of
+all dense matrices satisfying the raw inequality.
+
+Next decisive step — FOLLOW-UP: freeze a stronger bound using actual incidence
+or stabilizer structure, compare it first with Zhu-Chugg's classical formula,
+and test whether it proves a lower bound greater than two on a fixed sparse
+scalar-factor QC-GHP family with independently known small stopping supports.
+Simply searching higher column weights or improving the constituent Ramanujan
+graph does not resolve the finite obstruction proved here.

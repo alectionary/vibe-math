@@ -1,13 +1,13 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 252 entries (71 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 267 entries (86 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
-| Already complete | 4 | 4 |
+| Already complete | 5 | 5 |
 | 1 | 1 | 0 |
 | 2 | 11 | 1 |
-| 3 | 40 | 23 |
+| 3 | 39 | 22 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
 | Unestimated / scope gate | 30 | 30 |
@@ -2484,15 +2484,17 @@ Basis: New family-based planning prior from source target and the bounded Lean-l
 
 Find QC-GHP parameters for which the paper’s spectral stopping-set bound is nonvacuous.
 
-- Statement: Tier 3: 2–6 expert person-weeks.
-- Proof transfer, given a complete proof: Tier 3: 1–4 expert person-months.
-- Research: Relative research obstacle 3/5; discovery time unestimated. open_or_unresolved_in_recorded_sources; present status not exhaustively established
+- Statement: Tier 0: complete.
+- Proof transfer, given a complete proof: Tier 0: complete.
+- Research: Completed target. original_parameter_question_answered_negatively_in_lean
 
-Finite Tanner-graph objects are accessible; spectral/Fourier identities and induced-subgraph correction terms add substantial proof work.
+Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate stronger replacement bound remains open.
 
-First milestone: Check the proposed condition or absorbing-set count on a small explicit lifted code.
+First milestone: Original parameter question completed negatively. A stronger replacement bound is a distinct FOLLOW-UP.
 
-Basis: New family-based planning prior from source target and the bounded Lean-library assessment; candidate-specific source reading for P34 and F16, not a full feasibility implementation. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-stopping-bound).
+Progress: The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples. [Checked artifact](../formalization/stopping-bound/source-answer/README.txt).
+
+Basis: Primary status reconciled with the checked all-cases theorem; earlier partial labels bundled the separate stronger-bound direction. All historical proof artifacts and counts remain unchanged. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-stopping-bound).
 
 ### L-F16-other-absorbing
 
@@ -3847,3 +3849,243 @@ First milestone: Read the cited source definitions and formulate a bounded targe
 Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
 
 Basis: New source-question screen; present resolution, Lean discovery and difficulty assessment pending. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f52-seven-even-free-sts).
+
+### L-F67-redundant-check-design
+
+Develop a principled way to add redundant parity checks that improves iterative decoding beyond the difference-set examples.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f67-redundant-check-design).
+
+### L-F68-integer-tightening
+
+Improve the graph-analysis distance bound by enforcing integer relation-distribution vectors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f68-integer-tightening).
+
+### L-F68-degree-stratification
+
+Refine the graph-analysis bound by separating active checks according to their induced degrees.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f68-degree-stratification).
+
+### L-F68-decoder-quality
+
+Test whether the graph-analysis bound predicts the quality of a graph for iterative decoding.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f68-decoder-quality).
+
+### L-F69-general-distance
+
+Find nontrivial general minimum-distance lower bounds for the proposed QC generalized hypergraph-product codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f69-general-distance).
+
+### L-F70-efficient-decoding
+
+Devise an efficient decoder for quantum Tanner codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f70-efficient-decoding).
+
+### L-F70-generator-weight
+
+Reduce the constant generator weights in the quantum Tanner construction.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f70-generator-weight).
+
+### L-F70-other-complexes
+
+Find complexes beyond left-right Cayley complexes on which the Tanner construction gives good quantum LDPC families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f70-other-complexes).
+
+### L-F70-explicit-components
+
+Make the required component-code and quantum Tanner constructions completely explicit.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f70-explicit-components).
+
+### L-F70-robustness-exponent
+
+Improve component dual-tensor robustness beyond the Delta-to-the-three-halves scale and strengthen the distance dependence.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: New version-specific stopping-bound source screen; current resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f70-robustness-exponent).
+
+### L-F73-residual-erasure-techniques
+
+Develop other techniques to handle the small residual errors left after peeling quantum expander codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f73-residual-erasure-techniques).
+
+### L-F74-socket-partition-design
+
+Improve socket selection and partitioning events in composite branch-and-bound stopping-set searches.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f74-socket-partition-design).
+
+### L-F74-faster-implementation
+
+Extend exhaustive small stopping/trapping-set search to longer codes through better data structures, software or hardware.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f74-faster-implementation).
+
+### L-F74-direct-trapping-search
+
+Design direct exhaustive trapping-set algorithms that improve on reduction to stopping-set enumeration.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f74-direct-trapping-search).
+
+### L-F75-pruned-cluster-combination
+
+Study pruned peeling combined with cluster decomposition more comprehensively.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+No difficulty estimate is inferred from a literature-screening passage.
+
+First milestone: Inspect the definitions and later work, choose a bounded claim, and write its matching Lean interface.
+
+Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
+
+Basis: Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f75-pruned-cluster-combination).

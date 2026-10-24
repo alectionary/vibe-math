@@ -1,0 +1,111 @@
+'StoppingSpectral.energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.normSq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.energy_eq_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.eigs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.eBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.eigs_antitone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.gram_apply_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.normSq_euclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.energy_eigenbasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.energy_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.eigs_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.energy_le_of_coeff_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.binary_weighted_cauchy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.regular_energy_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.regular_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.regular_eigs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.regular_trace_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.scalarFactorMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.fiberLift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.scalarFactor_right_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.scalarFactor_energy_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.replicated_scalar_second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.replicated_scalar_no_source_regime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_large_root_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_matrix_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.binary_column_sum_le_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.regular_edge_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_biregular_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.qc_scalar_factor_no_source_regime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.eigs_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseExample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseEigs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseExample_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.IsStopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseExample_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseExampleBinary' depends on axioms: [propext, Quot.sound]
+'StoppingSpectral.denseExample_css' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseExample_source_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.sourceLargeRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.sourceLargeRoot_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.sourceSmallRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.sourceSmallRoot_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.stopping_card_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_stopping_bound_redundant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.one_row_cardinal_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.scalar_one_row_source_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.supportCirculant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.supportCirculant_row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.running_882_scalar_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StoppingSpectral.denseExample_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+@StoppingSpectral.qc_scalar_factor_no_source_regime : ∀ {R : Type u_1} {C : Type u_2} {F : Type u_3} [inst : Fintype R]
+  [inst_1 : DecidableEq R] [inst_2 : Fintype C] [DecidableEq C] [inst_4 : Fintype F] [inst_5 : DecidableEq F]
+  [inst_6 : Nonempty F] (A : Matrix (R × F) (C × F) ℝ) (B : Matrix F F ℝ) (γ : ℕ) (hr : 2 ≤ Fintype.card R),
+  0 < γ →
+    (∀ (j : C × F ⊕ R × F), ∑ i, StoppingSpectral.scalarFactorMatrix A B i j = ↑γ) →
+      ¬StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩ < ↑γ / 2
+@StoppingSpectral.scalar_one_row_source_obstruction : ∀ {C : Type u_1} {F : Type u_2} [inst : Fintype C] [DecidableEq C]
+  [Nonempty C] [inst_3 : Fintype F] [inst_4 : DecidableEq F] (A : Matrix (Fin 1 × F) (C × F) ℝ) (B : Matrix F F ℝ)
+  (γ k : ℝ) (hF : 2 ≤ Fintype.card F),
+  0 < γ →
+    (∀ (i : Fin 1 × F) (j : C × F ⊕ Fin 1 × F),
+        StoppingSpectral.scalarFactorMatrix A B i j = 0 ∨ StoppingSpectral.scalarFactorMatrix A B i j = 1) →
+      (∀ (j : C × F ⊕ Fin 1 × F), ∑ i, StoppingSpectral.scalarFactorMatrix A B i j = γ) →
+        (∀ (i : Fin 1 × F), ∑ j, StoppingSpectral.scalarFactorMatrix A B i j = k) →
+          StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩ < γ / 2 →
+            have s := StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩;
+            (3 * ↑(Fintype.card F) + 1) / 4 < γ ∧
+              1 < StoppingSpectral.sourceLargeRoot (↑(Fintype.card F)) γ s ∧
+                StoppingSpectral.sourceLargeRoot (↑(Fintype.card F)) γ s ≤ 2 ∧
+                  ∀ (S : Finset (C × F ⊕ Fin 1 × F)),
+                    StoppingSpectral.IsStopping (StoppingSpectral.scalarFactorMatrix A B) S →
+                      2 ≤ S.card ∧
+                        StoppingSpectral.sourceSmallRoot (↑(Fintype.card F)) γ s < ↑S.card ∧
+                          StoppingSpectral.sourceLargeRoot (↑(Fintype.card F)) γ s ≤ ↑S.card
+@StoppingSpectral.one_row_stopping_bound_redundant : ∀ {ell q : ℕ} (H : Matrix (Fin ell) (Fin q × Fin ell) ℝ) (γ k : ℝ)
+  (hell : 2 ≤ ell),
+  2 ≤ q →
+    0 < γ →
+      (∀ (i : Fin ell) (j : Fin q × Fin ell), H i j = 0 ∨ H i j = 1) →
+        (∀ (j : Fin q × Fin ell), ∑ i, H i j = γ) →
+          (∀ (i : Fin ell), ∑ j, H i j = k) →
+            StoppingSpectral.eigs H ⟨1, ⋯⟩ < γ / 2 →
+              ∀ (S : Finset (Fin q × Fin ell)),
+                StoppingSpectral.IsStopping H S →
+                  StoppingSpectral.sourceLargeRoot (↑ell) γ (StoppingSpectral.eigs H ⟨1, ⋯⟩) ≤ 2 ∧
+                    2 ≤ S.card ∧ StoppingSpectral.sourceLargeRoot (↑ell) γ (StoppingSpectral.eigs H ⟨1, ⋯⟩) ≤ ↑S.card
+StoppingSpectral.running_882_scalar_obstruction : ∀ (A : Matrix (Fin 7 × ZMod 63) (Fin 7 × ZMod 63) ℝ),
+  9 ≤
+    StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A (StoppingSpectral.supportCirculant {0, 1, 6}))
+      ⟨1, StoppingSpectral.running_882_scalar_obstruction._proof_1⟩
+StoppingSpectral.denseExample_source_certificate : StoppingSpectral.eigs StoppingSpectral.denseExample
+      ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ <
+    2 / 2 ∧
+  2 / 2 *
+        (1 -
+          √(1 -
+              2 *
+                  StoppingSpectral.eigs StoppingSpectral.denseExample
+                    ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ /
+                2)) =
+      0 ∧
+    2 / 2 *
+        (1 +
+          √(1 -
+              2 *
+                  StoppingSpectral.eigs StoppingSpectral.denseExample
+                    ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ /
+                2)) =
+      2
