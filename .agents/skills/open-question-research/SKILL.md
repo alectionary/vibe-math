@@ -29,6 +29,20 @@ asking for routine implementation decisions. If no target was specified, use the
 inventory and prior progress to recommend one; do not substitute another round
 on a completed problem without saying so.
 
+When recommending the next question, briefly compare the strongest candidates
+from the inventory and explain the choice: mathematical payoff, evidence that
+our results or an existing theorem do not already settle it, a plausible decisive
+lemma or counterexample route, and the cost of faithful Lean formalization.
+Prefer a complete answer to a meaningful bounded question over an easy auxiliary
+lemma. A difficult general question may justify a restricted target, but label
+the restriction before starting and retain the original target's status.
+
+Write a short answer contract in the working notes: **question and source →
+intended answer → decisive evidence**. Explain why the answer would matter
+(e.g. determining missing information, refuting a proposed criterion, giving an
+exact count or enabling a construction). Update this contract when the result
+changes; do not let a successful computation silently redefine the question.
+
 Use [the investigation worksheet](references/investigation.md) in the target's
 existing notes or a suitably named new research note. Keep it proportional to the
 task; it is a working record, not a reason to create empty files or a new taxonomy.
@@ -60,9 +74,10 @@ task; it is a working record, not a reason to create empty files or a new taxono
   supplies better search vocabulary. Keep unavailable full texts as leads.
 - Keep mathematical novelty, proof-method novelty, formalization priority and the
   artifact's concrete contribution separate. State the strongest supported finding
-  plainly, once, with attribution. When appropriate, use "earliest complete answer
-  known to us" with the recorded search scope; a negative search does not prove
-  first-ever priority. Avoid repeated generic qualifications.
+  plainly, once, with attribution. An ordinary theorem or counterexample claim
+  needs no generic priority disclaimer. Record concrete prior-art comparisons and
+  unresolved access gaps in the evidence ledger; make historical priority claims
+  only when separately supported.
 
 ## Develop a proof or counterexample with useful formal scope
 
@@ -121,6 +136,19 @@ sampling and statistical conclusions. Stop a weak route at its bounded endpoint
 and record what it failed to establish.
 
 ## Report, preserve and hand off
+
+Before closing a proof, try to break the final statement. Recheck the full
+quantifiers, degenerate cases and source-to-formal translation; for a family,
+test exceptional parameter regimes as well as the easiest instances. Check
+necessity versus sufficiency, lower bounds versus exact values, ordered versus
+unordered counts, and component results versus the full construction when those
+distinctions apply. Use an independent representation or reconstruction for
+concrete witnesses where practical, rather than reusing the generator's own
+assumptions. Repair failures or narrow the stated conclusion explicitly.
+
+Trace the headline claim through the source question, manuscript theorem,
+Lean statement, dependencies and verification record. Do not substitute a
+successful build for this semantic comparison.
 
 Compare the final result directly with the source request: identify precisely what
 was answered, what was answered only partially, and what remains open. Measure
@@ -182,6 +210,14 @@ When writing or revising a research paper:
 - Clearly label an expanded paper versus a new research target. Validate the PDF,
   source archive, hashes, proof-coverage table, reference-date arithmetic and public
   URLs before delivery. Commit/push only within the user's existing authorization.
+
+When an announcement is requested, draft a short X post containing the exact
+answered question, the source authors and precise reference (DOI or arXiv,
+plus the relevant locator), the main answer and the GitHub folder containing
+the final PDF and proof links. Keep only the terminology needed to understand
+the contribution; use the requested length rather than an automatic long thread.
+Check that compression preserves restrictions and distinguishes this paper's
+results from earlier work. Drafting an announcement does not authorize posting.
 
 Preserve the repository's anonymity conventions in public artifacts and Git
 identity. This skill does not itself authorize publication, external messages,

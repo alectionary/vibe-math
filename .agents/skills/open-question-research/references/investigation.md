@@ -12,6 +12,8 @@ Resolve repository links from the repository root, not this reference directory.
 - Exact question or conjecture; historical versus currently checked status:
 - Objects, field, quantifiers, hypotheses, conclusion and implication direction:
 - Intended Lean signature; source-to-formal comparison and boundary examples:
+- Why this target: mathematical payoff, candidate comparison and plausible route:
+- Answer contract: question/source → intended answer → decisive evidence:
 - Authorized deliverable, time/computation bounds and stopping condition:
 
 ## Literature comparison
@@ -32,6 +34,8 @@ as separate findings, without repeatedly restating generic uncertainty.
 - Search domain, exact arithmetic, exhaustive/sampled scope and seeds:
 - Saved witnesses, independent checks and failed approaches:
 - Formal representation bridges still needed:
+- Attempts to break the final statement; exceptional parameters and counterchecks:
+- Headline claim → source question → paper theorem → Lean statement → checked evidence:
 
 | Exact claim | Evidence label | Proof / data / source locator | Assumptions and unresolved bridge |
 |---|---|---|---|
@@ -53,7 +57,8 @@ as separate findings, without repeatedly restating generic uncertainty.
 - Written proofs, finite computation and implementation bridges outside Lean:
 - Chronology: source question, earlier relevant versions, first answer, revision:
 - Calendar differences and what each result contributed:
-- Paper/announcement wording: new answer or expanded follow-up:
+- Opening question/source/date/answer table; earlier versus current results:
+- Paper/announcement wording: exact answer, essential restrictions, source and PDF-folder link:
 - PDF/source-bundle checks; privacy; public links if publishing was authorized:
 - Canonical coverage denominator and target status, if the inventory changed:
 
