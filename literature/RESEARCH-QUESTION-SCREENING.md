@@ -300,3 +300,10 @@ These gaps require a readable public, licensed or author-provided full text befo
 ## Workflow and checks
 
 The research skill now requires this paper-by-paper harvest automatically during investigations, including papers read only for prior art. Every encountered paper/version must have an inventory outcome or an explicit gap before closeout. `validate_research_question_screening.py` checks cohort coverage, source hashes and locators, question links, null-versus-zero handling, duplicate merges and the exact inventory delta. Existing inventory, planning and prior proof-artifact validators retain their historical checks.
+
+
+## Stronger stopping-bound checkpoint -24October2026
+
+The incidence-conditioned replacement question is answered positively beyond B1: a reusable partition bound, explicit sparse nontrivial CSS families, and a separate exact stopping/logical-distance-six family. An explicit same-full-Gram counterpart has stopping distance two, giving a restricted obstruction to Gram-only lower bounds. The original Proposition5.1 useful-parameter question remains answered negatively. [Paper and checked proof guide](../formalization/stopping-bound/stronger/README.txt).
+
+Four main texts were screened, adding20 historical entries, eight eligible:287 canonical entries,143 eligible targets,114 paper records and101 full-text main-paper screens. Complete canonical Lean targets remain five. New question statuses and difficulty are unassessed. [Dedicated source screen](stronger-stopping-source-screening.json).

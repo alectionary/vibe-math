@@ -20,4 +20,4 @@ assert t['scope_components'][0]['status']=='resolved_negative_for_every_paramete
 assert t['remaining_source_direction']['distinct_from_answered_parameter_question']
 assert t['scope_components'][1]['status']=='not_resolved'
 assert v['new_question_delta']==v['new_paper_delta']==v['new_full_text_screen_delta']==v['canonical_completion_delta']==0
-print('PASS: universal nonexistence theorem, both cases and small-branch coverage, unchanged parent source, source scope and separate open replacement-bound component.')
+print('PASS: universal nonexistence theorem, both cases and small-branch coverage, unchanged parent source, source scope and separate incidence-positive and restricted spectral follow-up tracked.')

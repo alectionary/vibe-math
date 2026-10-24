@@ -2,30 +2,30 @@
 
 Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **267 canonical entries**: the original 40 dissertation targets and **227 additional article entries**. Of the additions, **96 are specific mathematical questions or tasks suitable for coverage tracking**; the other 131 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **287 canonical entries**: the original 40 dissertation targets and **247 additional article entries**. Of the additions, **104 are specific mathematical questions or tasks suitable for coverage tracking**; the other 143 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [76 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/135 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [80 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/143 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 96 |
-| Additional directions/formulation/method entries outside the denominator | 131 |
-| Combined eligible targets | 135 = 39 + 96 |
-| Eligible targets with an identified, verified proof-assistant statement | 5/135 (3.70%) |
-| Eligible targets with an identified, verified Lean statement | 5/135 (3.70%) |
-| Eligible targets with a complete checked Lean proof | 5/135 (3.70%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/135 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/135 |
-| Additional identified Lean statements without a build audit | 1/135 |
-| Eligible targets with Lean discovery still unassessed in this extension | 27/135 |
-| Articles/preprints in scope | 110 |
-| Full-text sources screened, including withdrawn history | 97/110 |
-| Current-publication full texts screened | 96 |
+| Additional article targets in the coverage denominator | 104 |
+| Additional directions/formulation/method entries outside the denominator | 143 |
+| Combined eligible targets | 143 = 39 + 104 |
+| Eligible targets with an identified, verified proof-assistant statement | 5/143 (3.50%) |
+| Eligible targets with an identified, verified Lean statement | 5/143 (3.50%) |
+| Eligible targets with a complete checked Lean proof | 5/143 (3.50%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/143 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/143 |
+| Additional identified Lean statements without a build audit | 1/143 |
+| Eligible targets with Lean discovery still unassessed in this extension | 35/143 |
+| Articles/preprints in scope | 114 |
+| Full-text sources screened, including withdrawn history | 101/114 |
+| Current-publication full texts screened | 100 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 13/110 |
+| Not fully assessed | 13/114 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -161,6 +161,10 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F74](https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf) | current publication full text screened | 3 | IEEE TIT55(5),1976–1999,May2009; current version22April2009; DOI10.1109/TIT.2009.2015993; historical directions do not establish current-open status. |
 | [F75](https://arxiv.org/abs/2412.08817v1) | current publication full text screened | 1 | arXiv:2412.08817v1,11December2024; historical directions do not establish current-open status. |
 | [F76](https://doi.org/10.1109/ISIT62367.2026.11654127) | not fully assessed | Not assessed | Author conference page confirms the ISIT2026 title/authors. DOI full text was inaccessible; a secondary abstract describes stabilizer and horizontal/vertical stopping probabilities for ordinary HGP codes. Full theorem hypotheses and question screen remain unassessed; no zero-question or exact B1 claim. |
+| [F77](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf) | full text screened | 10 | March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
+| [F78](https://arxiv.org/abs/2203.17216v1) | full text screened | 7 | v1 submitted31March2022; PDF internally dated1April2022; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
+| [F79](https://doi.org/10.1038/s41534-026-01212-3) | full text screened | 2 | Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
+| [F80](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf) | full text screened | 1 | Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
 
 ## Reproducible evidence and limits
 
@@ -1937,7 +1941,8 @@ Find QC-GHP parameters for which the paper’s spectral stopping-set bound is no
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
 - Source-described status: open as stated in source; current resolution: answered negatively for prop51 useful parameter question.
-- **Parameter question: answered negatively by universal checked nonexistence proof.** The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples.
+- **Parameter question: answered negatively by universal checked nonexistence proof.** The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1 stated scalar-factor model. A useful incidence-conditioned replacement is now proved. The broader spectral-refinement direction has a proved same-Gram obstruction on explicit families and remains unassessed outside that scope; no universal disproof is claimed. Raw spectral-gap feasibility alone has dense positive examples.
+- **Incidence replacement answered positively:** [reusable two-block bound, sparse nontrivial CSS families and a restricted Gram obstruction](../formalization/stopping-bound/stronger/RESEARCH-NOTE.txt). The motivating spectral-refinement direction is broad. A useful incidence replacement now exists; an unrestricted claim that all stronger spectral bounds are impossible is not made.
 - Verified artifact: [StoppingSpectral.no_parameters_give_source_improvement](../formalization/stopping-bound/source-answer/README.txt); Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate stronger replacement bound remains open..
 - Supporting Lean artifact (not full target coverage): [checked scope](../formalization/stopping-bound/RESEARCH-NOTE.txt). Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result.
 - Scope comparison: Universal negative answer for the useful-parameter question of Proposition5.1 in its stated positive-dimensional binary biregular scalar-factor model: no choice can simultaneously satisfy sigma2^2<gamma/2 and source large root>2. Section3.2 explicitly uses r2=n2=1 throughout, and Proposition5.1 refers to the corresponding Theorem4.1 Fourier matrices. All positive row-block counts are covered. For r>=2 the gap is impossible; for r=1 it forces density>3/4, roots1<a+<=2 and a-<2. Every stopping support has cardinality>=2, so the small branch is excluded but the large-root guarantee is redundant. Dense raw-gap examples exist. A stronger replacement bound remains open as a separate component. Completed project-derived follow-ups establish exact stopping distance six for the positive63-multiple B1 cover family and classify all441 size-six base supports as unique companion Z-check rows; these are distinct incidence results, not the negative parameter proof. No logical-distance claim.
@@ -3202,4 +3207,224 @@ Study pruned peeling combined with cluster decomposition more comprehensively.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open direction as stated in inspected version; current resolution: not independently established.
 - [F75: Section III / PDF p.5](https://arxiv.org/abs/2412.08817v1); extraction lines 551–567; explicit direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-polynomial-redundancy
+
+Does an asymptotically good binary linear code family have stopping redundancy polynomial in its length?
+
+- Type: open question; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-Golay34
+
+Is the stopping redundancy of the extended binary Golay code G24 equal to34?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-MDS-invariance
+
+Do all finite-field [n,k] MDS codes have stopping redundancy depending only on n and k?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-locally-thin-three
+
+Is t(3)<1, where t(k)=limsup_{rho->infinity} log2(M(rho,k))/rho for k-locally-thin families?
+
+- Type: open question; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, Eq.27, PDF pp.9-10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-locally-thin-monotone
+
+Is t(k) nonincreasing for integers k>=2 in the same locally-thin-family definition?
+
+- Type: open question; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-general-lower-bounds
+
+Improve general lower bounds for stopping redundancy.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-nonbinary-constructions
+
+Study stopping redundancy under nonbinary concatenated and multilevel constructions.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-MDS-exact
+
+Determine exact MDS stopping redundancy as a function of the code parameters.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVI-VII, PDF pp.9-10](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-other-channels
+
+Determine the relevance of stopping redundancy for channels beyond the BEC and LP decoding.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, PDF p.9](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F77-locally-thin-sequence
+
+Determine the sequence t(k) for locally-thin families.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F77: SectionVII, Eq.27, PDF p.9](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf); extraction lines 1397–1567; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-cyclic-good
+
+Do asymptotically good linear cyclic codes exist over a fixed finite field?
+
+- Type: open question; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: SectionsIII.B-III.C, PDF pp.4,6](https://arxiv.org/abs/2203.17216v1); extraction lines 380–510; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-Artin
+
+For each positive nonsquare integer q>1, do primes with ord_p(q)=p-1 have positive density?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: Example8, PDF p.4](https://arxiv.org/abs/2203.17216v1); extraction lines 380–510; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-GB-scaling
+
+Determine optimal distance scaling of generalized bicycle codes at bounded generator weight.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: SectionV, PDF p.9](https://arxiv.org/abs/2203.17216v1); extraction lines 1083–1253; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-higher-k-fault-tolerance
+
+Study parameters and fault-tolerant performance of generalized bicycle codes encoding more than two qubits.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: SectionV, PDF p.9](https://arxiv.org/abs/2203.17216v1); extraction lines 1083–1253; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-local-above-square-root
+
+Can quantum codes local in a fixed dimension D>2 have polynomial distance exponent strictly above1/2?
+
+- Type: open question; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: SectionV, PDF p.9](https://arxiv.org/abs/2203.17216v1); extraction lines 1083–1253; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-other-commuting-matrices
+
+Find better LDPC parameters from other commuting-square-matrix CSS constructions.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: SectionV, PDF p.9](https://arxiv.org/abs/2203.17216v1); extraction lines 1083–1253; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F78-measurement-tradeoff
+
+Determine whether larger bicycle-code distances offset higher-weight measurement complexity.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F78: SectionV, PDF p.9](https://arxiv.org/abs/2203.17216v1); extraction lines 1083–1253; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F79-minsum-erasure
+
+Study min-sum variants of the proposed soft BP decoders for quantum erasures.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F79: Discussion, PDF p.9](https://doi.org/10.1038/s41534-026-01212-3); extraction lines 1152–1322; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F79-circuit-erasure
+
+Develop the detailed circuit-level erasure treatment, including conversion circuits, left outside this paper.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F79: Discussion, PDF p.10](https://doi.org/10.1038/s41534-026-01212-3); extraction lines 1152–1322; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F80-design-enumerators
+
+Determine stopping-set weight enumerators for general designs and their associated codes.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad author-stated direction; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F80: Enumerating Stopping Sets, PDF pp.9-12](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf); extraction lines 616–786; explicit question or direction.
 - Related, not merged: L-F16-stopping-bound.

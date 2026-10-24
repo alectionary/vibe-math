@@ -984,3 +984,30 @@ Lcrypto (GitHub account). Inspected24October2026; pinned source revision in prio
 - Comparison limit: README distinguishes importance sampling, MILP and QC automorphism options; classical enumeration prior art, not an inspected B1 stopping-distance theorem.
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
 - Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
+
+
+## Newly screened stronger-bound sources -24October2026
+
+### SchwartzVardy2006Stopping
+
+Moshe Schwartz; Alexander Vardy. March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005. [On the Stopping Distance and the Stopping Redundancy of Codes](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf).
+
+Matrix-dependent stopping distance and stopping redundancy differ. Codeword supports stop; changing redundant checks changes the graph. Their Theorem3 gives three for positive distinct columns, not the new four/six guarantees. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+
+### WangPryadko2022Bicycle
+
+Renyu Wang; Leonid P. Pryadko. v1 submitted31March2022; PDF internally dated1April2022. [Distance bounds for generalized bicycle codes](https://arxiv.org/abs/2203.17216v1).
+
+Eq.8 uses HX=[A|B], HZT=[B;-A]. Our B=A-transpose. Eq.10 counts logical dimension via a gcd; it is not a stopping-distance theorem. No dimension formula is imported into our new proof. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+
+### KuoOuyang2026Erasure
+
+Kao-Yueh Kuo; Yingkai Ouyang. Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024. [Degenerate quantum erasure decoding](https://doi.org/10.1038/s41534-026-01212-3).
+
+Degenerate decoding can pass ordinary stopping obstructions. Performance/capacity claims concern a decoder and error model, not a lower stopping distance for our fixed HX. Introductory capacity questions are claimed answered within the paper. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+
+### KashyapVardyDesigns
+
+Navin Kashyap; Alexander Vardy. Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF. [Stopping Sets in Codes from Designs](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf).
+
+Theorem1: uniform column weight w and distinct-column intersection at most mu give s>=w/mu+1. Here mu=2, hence three at w=4; our two-block refinement gives four. Corollary2 assumes intersection at most one, which fails across our blocks. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).

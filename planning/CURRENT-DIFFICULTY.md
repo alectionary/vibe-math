@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 267 entries (86 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 287 entries (106 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Checked October 24, 2026. Low-confidence planning priors for all 267 entries (86
 | 3 | 39 | 22 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 30 | 30 |
+| Unestimated / scope gate | 38 | 38 |
 
 ### 2026-Geraci-O01
 
@@ -2494,7 +2494,7 @@ First milestone: Original parameter question completed negatively. A stronger re
 
 Progress: The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples. [Checked artifact](../formalization/stopping-bound/source-answer/README.txt).
 
-Basis: Primary status reconciled with the checked all-cases theorem; earlier partial labels bundled the separate stronger-bound direction. All historical proof artifacts and counts remain unchanged. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-stopping-bound).
+Basis: Primary status reconciled with the checked all-cases theorem; earlier partial labels bundled the separate stronger-bound direction. All historical proof artifacts and counts remain unchanged. New incidence follow-up: reusable two-block bound and sparse nontrivial CSS families; see stronger artifact. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-stopping-bound).
 
 ### L-F16-other-absorbing
 
@@ -4089,3 +4089,323 @@ First milestone: Inspect the definitions and later work, choose a bounded claim,
 Gate: Broad source direction; freeze a bounded mathematical or algorithmic statement before assessment.
 
 Basis: Incidence-stopping source screen; resolution, Lean discovery and effort remain unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f75-pruned-cluster-combination).
+
+### L-F77-polynomial-redundancy
+
+Does an asymptotically good binary linear code family have stopping redundancy polynomial in its length?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-polynomial-redundancy).
+
+### L-F77-Golay34
+
+Is the stopping redundancy of the extended binary Golay code G24 equal to34?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-golay34).
+
+### L-F77-MDS-invariance
+
+Do all finite-field [n,k] MDS codes have stopping redundancy depending only on n and k?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-mds-invariance).
+
+### L-F77-locally-thin-three
+
+Is t(3)<1, where t(k)=limsup_{rho->infinity} log2(M(rho,k))/rho for k-locally-thin families?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-locally-thin-three).
+
+### L-F77-locally-thin-monotone
+
+Is t(k) nonincreasing for integers k>=2 in the same locally-thin-family definition?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-locally-thin-monotone).
+
+### L-F77-general-lower-bounds
+
+Improve general lower bounds for stopping redundancy.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-general-lower-bounds).
+
+### L-F77-nonbinary-constructions
+
+Study stopping redundancy under nonbinary concatenated and multilevel constructions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-nonbinary-constructions).
+
+### L-F77-MDS-exact
+
+Determine exact MDS stopping redundancy as a function of the code parameters.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-mds-exact).
+
+### L-F77-other-channels
+
+Determine the relevance of stopping redundancy for channels beyond the BEC and LP decoding.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-other-channels).
+
+### L-F77-locally-thin-sequence
+
+Determine the sequence t(k) for locally-thin families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f77-locally-thin-sequence).
+
+### L-F78-cyclic-good
+
+Do asymptotically good linear cyclic codes exist over a fixed finite field?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-cyclic-good).
+
+### L-F78-Artin
+
+For each positive nonsquare integer q>1, do primes with ord_p(q)=p-1 have positive density?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-artin).
+
+### L-F78-GB-scaling
+
+Determine optimal distance scaling of generalized bicycle codes at bounded generator weight.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-gb-scaling).
+
+### L-F78-higher-k-fault-tolerance
+
+Study parameters and fault-tolerant performance of generalized bicycle codes encoding more than two qubits.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-higher-k-fault-tolerance).
+
+### L-F78-local-above-square-root
+
+Can quantum codes local in a fixed dimension D>2 have polynomial distance exponent strictly above1/2?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-local-above-square-root).
+
+### L-F78-other-commuting-matrices
+
+Find better LDPC parameters from other commuting-square-matrix CSS constructions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-other-commuting-matrices).
+
+### L-F78-measurement-tradeoff
+
+Determine whether larger bicycle-code distances offset higher-weight measurement complexity.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f78-measurement-tradeoff).
+
+### L-F79-minsum-erasure
+
+Study min-sum variants of the proposed soft BP decoders for quantum erasures.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f79-minsum-erasure).
+
+### L-F79-circuit-erasure
+
+Develop the detailed circuit-level erasure treatment, including conversion circuits, left outside this paper.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f79-circuit-erasure).
+
+### L-F80-design-enumerators
+
+Determine stopping-set weight enumerators for general designs and their associated codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f80-design-enumerators).

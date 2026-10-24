@@ -97,6 +97,8 @@ s+='\n## Canonical inventory\n\nEach entry below distinguishes the written formu
 for r in rows:
  s+=f"### {r['id']}\n\n{r['title']}\n\n- Type: {r['kind'].replace('_',' ')}; written formulation: {r['written_math_status'].replace('_',' ')}.\n- Coverage denominator: {'included' if r['eligible_for_coverage'] else 'excluded'}. {r['eligibility_note']}\n- Proof-assistant statement: {r['proof_assistant_statement_status'].replace('_',' ')}. Lean statement: {r['lean_statement_status'].replace('_',' ')}. Lean proof: {r['lean_proof_status'].replace('_',' ')}.\n- Source-described status: {r['status_as_of_source'].replace('_',' ')}; current resolution: {r['current_resolution_status'].replace('_',' ')}.\n"
  if r.get('parameter_question_status'):s+='- **Parameter question: '+r['parameter_question_status'].replace('_',' ')+'.** '+r['bundled_status_explanation']+'\n'
+ if r.get('stronger_bound_followup'):
+  a=r['stronger_bound_followup'];s+='- **Incidence replacement answered positively:** [reusable two-block bound, sparse nontrivial CSS families and a restricted Gram obstruction](../'+a['report']+'). '+a['source_direction_status']+'\n'
  if r.get('empirical_followup'):
   a=r['empirical_followup'];s+=f"- Empirical follow-up: [{a['status'].replace('_',' ')}](../{a['writeup']}). {a['conclusion']}\n"
   if a.get('targeted_followup'):
@@ -131,6 +133,8 @@ e=html.escape
 cards=[]
 for r in rows:
  sources='; '.join(f'<a href="{e(o["url"],quote=True)}">{e(o["source_id"])}: {e(o["locator"])}</a>' for o in r['occurrences'])
+ if r.get('stronger_bound_followup'):
+  a=r['stronger_bound_followup'];s+='- **Incidence replacement answered positively:** [reusable two-block bound, sparse nontrivial CSS families and a restricted Gram obstruction](../'+a['report']+'). '+a['source_direction_status']+'\n'
  if r.get('empirical_followup'):
   a=r['empirical_followup'];sources+=f'<p><a href="../{e(a["writeup"],quote=True)}">Empirical follow-up; direction remains open</a></p>'
   if a.get('targeted_followup'):

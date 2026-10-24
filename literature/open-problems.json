@@ -5788,7 +5788,7 @@
       }
     ],
     "parameter_question_status": "answered_negatively_by_universal_checked_nonexistence_proof",
-    "bundled_status_explanation": "The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples.",
+    "bundled_status_explanation": "The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1 stated scalar-factor model. A useful incidence-conditioned replacement is now proved. The broader spectral-refinement direction has a proved same-Gram obstruction on explicit families and remains unassessed outside that scope; no universal disproof is claimed. Raw spectral-gap feasibility alone has dense positive examples.",
     "verified_artifact": {
       "readme": "formalization/stopping-bound/source-answer/README.txt",
       "verification": "formalization/stopping-bound/source-answer/verification.json",
@@ -5799,11 +5799,28 @@
     "remaining_source_direction": {
       "title": "A stronger Tanner-style or parameter-aware replacement stopping bound",
       "source_locator": "Remark5.2 and Section6",
-      "status": "open_in_this_investigation",
-      "distinct_from_answered_parameter_question": true
+      "status": "partially_answered_by_incidence_replacement_and_restricted_gram_obstruction",
+      "distinct_from_answered_parameter_question": true,
+      "incidence_replacement_status": "answered_positively",
+      "gram_only_status": "cannot_certify_improvement_on_the_paired_repeated_counterfamilies",
+      "remaining_scope": "Stronger spectral bounds on other classes, or bounds using additional incidence information.",
+      "report": "formalization/stopping-bound/stronger/RESEARCH-NOTE.txt"
     },
     "publication_compliance_audit": "formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md",
-    "complete_proof_file_index": "formalization/stopping-bound/FULL-PROOF-LINKS.md"
+    "complete_proof_file_index": "formalization/stopping-bound/FULL-PROOF-LINKS.md",
+    "stronger_bound_followup": {
+      "status": "incidence_conditioned_existence_answered_positively_and_gram_only_obstruction_proved",
+      "source_direction_status": "The motivating spectral-refinement direction is broad. A useful incidence replacement now exists; an unrestricted claim that all stronger spectral bounds are impossible is not made.",
+      "report": "formalization/stopping-bound/stronger/RESEARCH-NOTE.txt",
+      "verification": "formalization/stopping-bound/stronger/verification.json",
+      "lean_sources": [
+        "formalization/stopping-bound/stronger/PartitionBound.lean",
+        "formalization/stopping-bound/stronger/PowersFamily.lean",
+        "formalization/stopping-bound/stronger/KernelStopping.lean",
+        "formalization/stopping-bound/stronger/BadStopping.lean"
+      ],
+      "canonical_completion_delta": 0
+    }
   },
   {
     "id": "L-F16-other-absorbing",
@@ -10067,5 +10084,730 @@
     "added_on": "2026-10-24",
     "source_screening": "literature/incidence-stopping-source-screening.json",
     "screening_note": "Historical source formulation; this inventory addition makes no current-open, priority or difficulty claim. Later statements within the inspected version were checked."
+  },
+  {
+    "id": "L-F77-polynomial-redundancy",
+    "origin": "article_inventory_extension",
+    "title": "Does an asymptotically good binary linear code family have stopping redundancy polynomial in its length?",
+    "kind": "open_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "asymptotically good means positive limiting rate and relative distance"
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "asymptotically good means positive limiting rate and relative distance"
+  },
+  {
+    "id": "L-F77-Golay34",
+    "origin": "article_inventory_extension",
+    "title": "Is the stopping redundancy of the extended binary Golay code G24 equal to34?",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "Historical source question; no current-status inference."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Historical source question; no current-status inference."
+  },
+  {
+    "id": "L-F77-MDS-invariance",
+    "origin": "article_inventory_extension",
+    "title": "Do all finite-field [n,k] MDS codes have stopping redundancy depending only on n and k?",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "Keep code/field independence as stated; d=n-k+1."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Keep code/field independence as stated; d=n-k+1."
+  },
+  {
+    "id": "L-F77-locally-thin-three",
+    "origin": "article_inventory_extension",
+    "title": "Is t(3)<1, where t(k)=limsup_{rho->infinity} log2(M(rho,k))/rho for k-locally-thin families?",
+    "kind": "open_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, Eq.27, PDF pp.9-10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "M(rho,k) is the largest family of distinct subsets for which every k members have an element in exactly one."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "M(rho,k) is the largest family of distinct subsets for which every k members have an element in exactly one."
+  },
+  {
+    "id": "L-F77-locally-thin-monotone",
+    "origin": "article_inventory_extension",
+    "title": "Is t(k) nonincreasing for integers k>=2 in the same locally-thin-family definition?",
+    "kind": "open_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "Monotone decrease interpreted as nonincrease; interpretation disclosed."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Monotone decrease interpreted as nonincrease; interpretation disclosed."
+  },
+  {
+    "id": "L-F77-general-lower-bounds",
+    "origin": "article_inventory_extension",
+    "title": "Improve general lower bounds for stopping redundancy.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "Upper-bound progress by Han-Siegel is already reported in this version."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Upper-bound progress by Han-Siegel is already reported in this version."
+  },
+  {
+    "id": "L-F77-nonbinary-constructions",
+    "origin": "article_inventory_extension",
+    "title": "Study stopping redundancy under nonbinary concatenated and multilevel constructions.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "No single theorem interface frozen."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "No single theorem interface frozen."
+  },
+  {
+    "id": "L-F77-MDS-exact",
+    "origin": "article_inventory_extension",
+    "title": "Determine exact MDS stopping redundancy as a function of the code parameters.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVI-VII, PDF pp.9-10",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "Related to, not identical with, parameter invariance."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Related to, not identical with, parameter invariance."
+  },
+  {
+    "id": "L-F77-other-channels",
+    "origin": "article_inventory_extension",
+    "title": "Determine the relevance of stopping redundancy for channels beyond the BEC and LP decoding.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, PDF p.9",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "No single channel or asymptotic criterion frozen."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "No single channel or asymptotic criterion frozen."
+  },
+  {
+    "id": "L-F77-locally-thin-sequence",
+    "origin": "article_inventory_extension",
+    "title": "Determine the sequence t(k) for locally-thin families.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F77",
+        "locator": "SectionVII, Eq.27, PDF p.9",
+        "extracted_text_lines": [
+          1397,
+          1567
+        ],
+        "url": "https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf",
+        "source_sha256": "3e3e5870f5bc0ffb8ae90a2a8c484d99a87a17762eb155867c4b7675faf40e9b",
+        "relation": "explicit_question_or_direction",
+        "version": "March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005",
+        "interpretation": "Contains the two separately frozen questions."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Contains the two separately frozen questions."
+  },
+  {
+    "id": "L-F78-cyclic-good",
+    "origin": "article_inventory_extension",
+    "title": "Do asymptotically good linear cyclic codes exist over a fixed finite field?",
+    "kind": "open_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "SectionsIII.B-III.C, PDF pp.4,6",
+        "extracted_text_lines": [
+          380,
+          510
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "Classical question discussed by the discovery source; fixed field and positive asymptotic rate/relative distance."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Classical question discussed by the discovery source; fixed field and positive asymptotic rate/relative distance."
+  },
+  {
+    "id": "L-F78-Artin",
+    "origin": "article_inventory_extension",
+    "title": "For each positive nonsquare integer q>1, do primes with ord_p(q)=p-1 have positive density?",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "Example8, PDF p.4",
+        "extracted_text_lines": [
+          380,
+          510
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "Artin original authorship; Wang-Pryadko is the discovery occurrence, not original authorship."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Artin original authorship; Wang-Pryadko is the discovery occurrence, not original authorship.",
+    "original_question_author": "Emil Artin",
+    "discovery_source_authors": [
+      "Renyu Wang",
+      "Leonid P. Pryadko"
+    ]
+  },
+  {
+    "id": "L-F78-GB-scaling",
+    "origin": "article_inventory_extension",
+    "title": "Determine optimal distance scaling of generalized bicycle codes at bounded generator weight.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "SectionV, PDF p.9",
+        "extracted_text_lines": [
+          1083,
+          1253
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "Logical distance; our fixed stopping guarantee does not settle scaling."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Logical distance; our fixed stopping guarantee does not settle scaling."
+  },
+  {
+    "id": "L-F78-higher-k-fault-tolerance",
+    "origin": "article_inventory_extension",
+    "title": "Study parameters and fault-tolerant performance of generalized bicycle codes encoding more than two qubits.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "SectionV, PDF p.9",
+        "extracted_text_lines": [
+          1083,
+          1253
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "No single theorem frozen."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "No single theorem frozen."
+  },
+  {
+    "id": "L-F78-local-above-square-root",
+    "origin": "article_inventory_extension",
+    "title": "Can quantum codes local in a fixed dimension D>2 have polynomial distance exponent strictly above1/2?",
+    "kind": "open_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical mathematical target; current resolution, Lean discovery and difficulty unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "SectionV, PDF p.9",
+        "extracted_text_lines": [
+          1083,
+          1253
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "Fixed interaction range and bounded generator weight; ignores logarithmic factors, as in source."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Fixed interaction range and bounded generator weight; ignores logarithmic factors, as in source."
+  },
+  {
+    "id": "L-F78-other-commuting-matrices",
+    "origin": "article_inventory_extension",
+    "title": "Find better LDPC parameters from other commuting-square-matrix CSS constructions.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "SectionV, PDF p.9",
+        "extracted_text_lines": [
+          1083,
+          1253
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "No universal parameter order or theorem frozen."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "No universal parameter order or theorem frozen."
+  },
+  {
+    "id": "L-F78-measurement-tradeoff",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether larger bicycle-code distances offset higher-weight measurement complexity.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F78",
+        "locator": "SectionV, PDF p.9",
+        "extracted_text_lines": [
+          1083,
+          1253
+        ],
+        "url": "https://arxiv.org/abs/2203.17216v1",
+        "source_sha256": "ff582fe363c4e5d046ff02760830ff359e728ca24bc6d5d7f318f536351262a5",
+        "relation": "explicit_question_or_direction",
+        "version": "v1 submitted31March2022; PDF internally dated1April2022",
+        "interpretation": "Performance/design direction, not a proved inequality."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Performance/design direction, not a proved inequality."
+  },
+  {
+    "id": "L-F79-minsum-erasure",
+    "origin": "article_inventory_extension",
+    "title": "Study min-sum variants of the proposed soft BP decoders for quantum erasures.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F79",
+        "locator": "Discussion, PDF p.9",
+        "extracted_text_lines": [
+          1152,
+          1322
+        ],
+        "url": "https://doi.org/10.1038/s41534-026-01212-3",
+        "source_sha256": "b8afd211f7461328e4ecab47b409a6ef8be23fcb8901cec8583f7dfd932f3e68",
+        "relation": "explicit_question_or_direction",
+        "version": "Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024",
+        "interpretation": "Performance question; not a stopping-distance theorem."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Performance question; not a stopping-distance theorem."
+  },
+  {
+    "id": "L-F79-circuit-erasure",
+    "origin": "article_inventory_extension",
+    "title": "Develop the detailed circuit-level erasure treatment, including conversion circuits, left outside this paper.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F79",
+        "locator": "Discussion, PDF p.10",
+        "extracted_text_lines": [
+          1152,
+          1322
+        ],
+        "url": "https://doi.org/10.1038/s41534-026-01212-3",
+        "source_sha256": "b8afd211f7461328e4ecab47b409a6ef8be23fcb8901cec8583f7dfd932f3e68",
+        "relation": "explicit_question_or_direction",
+        "version": "Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024",
+        "interpretation": "Broader claim of extendibility is not a completed circuit-level analysis."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "Broader claim of extendibility is not a completed circuit-level analysis."
+  },
+  {
+    "id": "L-F80-design-enumerators",
+    "origin": "article_inventory_extension",
+    "title": "Determine stopping-set weight enumerators for general designs and their associated codes.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F80",
+        "locator": "Enumerating Stopping Sets, PDF pp.9-12",
+        "extracted_text_lines": [
+          616,
+          786
+        ],
+        "url": "https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf",
+        "source_sha256": "0bdad91d18e36aef6138157c8d205056a3efe003e3bdc0a726d51b28f3658a7e",
+        "relation": "explicit_question_or_direction",
+        "version": "Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF",
+        "interpretation": "PG(2,2) and PG(2,4) enumerators are completed within this manuscript; no new unresolved finite instances inferred."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/stronger-stopping-source-screening.json",
+    "screening_note": "PG(2,2) and PG(2,4) enumerators are completed within this manuscript; no new unresolved finite instances inferred."
   }
 ]

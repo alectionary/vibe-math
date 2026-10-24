@@ -4,7 +4,7 @@ R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature'
 read=lambda name:json.loads((D/name).read_text())
 papers=read('papers.json');followups=read('followups.json');authors=read('authors.json');links=read('problem-links.json')
 byid={p['id']:p for p in papers+followups}
-summary=dict(checked_on='2026-10-23',authors_searched=len(authors),authors_with_topic_matched_records=sum(bool(a['paper_ids']) for a in authors),article_preprint_records=len(papers),external_article_followups=sum(f['id'].startswith('F') for f in followups),talk_abstracts=len([f for f in followups if f['id'].startswith('T')]),open_targets_traced=len(links),eligible_targets_from_lean_audit=sum(l['eligible_in_previous_audit'] for l in links),full_resolutions_verified=sum(l['full_resolution_verified'] for l in links),findings=dict(collections.Counter(l['finding'] for l in links)))
+summary=dict(checked_on='2026-10-24',authors_searched=len(authors),authors_with_topic_matched_records=sum(bool(a['paper_ids']) for a in authors),article_preprint_records=len(papers),external_article_followups=sum(f['id'].startswith('F') for f in followups),talk_abstracts=len([f for f in followups if f['id'].startswith('T')]),open_targets_traced=len(links),eligible_targets_from_lean_audit=sum(l['eligible_in_previous_audit'] for l in links),full_resolutions_verified=sum(l['full_resolution_verified'] for l in links),findings=dict(collections.Counter(l['finding'] for l in links)))
 (D/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 s='''# Academic literature on dissertation open problems
 

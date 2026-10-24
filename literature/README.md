@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **66 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **80 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -739,6 +739,90 @@ Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. 2022. [absorbing set 
 
 Version-specific full-text question screen; see research-question-screening.json. Source-described questions are historical; exact current resolution and Lean discovery remain unassessed unless explicitly linked.
 
+### F67 Bounds on the Expansion Properties of Tanner Graphs
+
+Mingrui Zhu; Keith M. Chugg. 2007. [spectral stopping source screen](https://hal.usc.edu/chugg/docs/pubs/zhu2007bounds.pdf).
+
+Primary text and hypotheses inspected; source questions screened with hashes and locators in literature/stopping-bound-source-screening.json The bit-oriented bound is s(H) >= n(2γ−η)/(γk−η), η=σ₂², with binary regular incidence. It concerns the same graph stopping distance, but does not construct QC-GHP matrices meeting η<γ/2. The parity-oriented bound and multi-eigenvector expansion analysis supply older alternatives to the weak mixing step.
+
+### F68 Minimum Distance Bounds by Graph Analysis
+
+R. Michael Tanner. 2001. [spectral stopping source screen](https://citeseerx.ist.psu.edu/document?doi=b467ba3c3d8d22c34667c1006a7e09e71cfe1bbf&repid=rep1&type=pdf).
+
+Primary text and hypotheses inspected; source questions screened with hashes and locators in literature/stopping-bound-source-screening.json Theorems assume a connected regular bipartite graph, with constant bit and check degrees. Theorem 3.1 gives n(2γ−η)/(γk−η) for classical distance. Its at-least-two-active-bits proof is the ancestor of Zhu–Chugg’s explicit stopping-distance extension. This is not the same γ/2 test, nor a QC-GHP parameter theorem. The manuscript reports an earlier 1982 submission; this is not treated as an inspected 1982 publication.
+
+### F69 Degenerate Quantum LDPC Codes With Good Finite Length Performance
+
+Pavel Panteleev; Gleb Kalachev. 2021. [spectral stopping source screen](https://arxiv.org/abs/1904.02703v3).
+
+Primary text and hypotheses inspected; source questions screened with hashes and locators in literature/stopping-bound-source-screening.json Original construction source. Quantum logical distance excludes stabilizers; graph stopping distance does not. The conclusion explicitly notes special-case lower bounds for C(A,1+x) in footnote 19. Those results neither imply the source’s raw singular-value condition nor answer its stopping-bound question.
+
+### F70 Quantum Tanner codes
+
+Anthony Leverrier; Gilles Zémor. 2022. [spectral stopping source screen](https://arxiv.org/abs/2202.13641v3).
+
+Primary text and hypotheses inspected; source questions screened with hashes and locators in literature/stopping-bound-source-screening.json Ramanujan expansion is imposed on constituent Cayley graphs, together with local-code distance, dual-tensor robustness, puncturing resistance and total no-conjugacy. It is not a statement that the expanded CSS parity-check matrix has σ₂²<γ/2. It does not furnish parameters for Proposition 5.1. Efficient decoding is a historical question in this 2022 version; current resolution is deliberately unassessed in this screen.
+
+### F71 Spectra of Hypergraphs and Applications
+
+Keqin Feng; Wen-Ch’ing Winnie Li. 1996. [spectral stopping classical lead](https://doi.org/10.1006/jnth.1996.0109).
+
+Publisher abstract available through web; direct HTML is an anti-bot response. No readable full original was recovered. The source paper attributes the asymptotic biregular lower bound to this work; its full hypotheses and question screen remain a gap. No complete archived original-text screen or exact prior-answer claim.
+
+### F72 Spectra of Regular Graphs and Hypergraphs and Orthogonal Polynomials
+
+Wen-Ch’ing Winnie Li; Patrick Solé. 1996. [spectral stopping classical lead](https://doi.org/10.1006/eujc.1996.0040).
+
+Author-uploaded paper body is web-indexed. Inspected introduction, Section4 and keyword hits restricted to the paper body; no additional explicit target found there. Original PDF download and complete local original snapshot failed, so the archival full-text screen and total question count remain unassessed. The normalized snapshot hash is not a PDF hash. No complete archived original-text screen or exact prior-answer claim.
+
+### F73 On the Efficacy of the Peeling Decoder for the Quantum Expander Code
+
+Jefrin Sharmitha Prabhu; Abhinav Vaishya; Shobhit Bhatnagar; Aryaman Manish Kolhe; V. Lalitha; P. Vijay Kumar. 2025. [incidence stopping source screen](https://arxiv.org/abs/2504.21845v2).
+
+Primary full text and source questions screened; hashes and locators in literature/incidence-stopping-source-screening.json Distinguishes stabilizer, horizontal and vertical stopping sets, citing Connolly et al.; SSF guarantees require constituent left/right expansion and delta<1/8. This does not assert a small second singular value for an expanded CSS check matrix, nor the exact stopping distance of B1.
+
+### F74 Finding All Small Error-Prone Substructures in LDPC Codes
+
+Chih-Chun Wang; Sanjeev R. Kulkarni; H. Vincent Poor. 2009. [incidence stopping source screen](https://swh.princeton.edu/~kulkarni/Papers/Journals/j069_2009_WangKulPoo_TranIT.pdf).
+
+Primary full text and source questions screened; hashes and locators in literature/incidence-stopping-source-screening.json Classical exhaustive narrowing and branch-and-bound search is established prior art, including bit-rooted enumeration and automorphisms. Our method is a small degree-one extension certificate, not a new general enumeration method. The paper provides methods for arbitrary Tanner matrices, not an inspected exact B1 certificate. Introductory dependency/FER/codeword questions are answered later in this paper.
+
+### F75 Cluster Decomposition for Improved Erasure Decoding of Quantum LDPC Codes
+
+Hanwen Yao; Mert Gökduman; Henry D. Pfister. 2024. [incidence stopping source screen](https://arxiv.org/abs/2412.08817v1).
+
+Primary full text and source questions screened; hashes and locators in literature/incidence-stopping-source-screening.json Explicitly studies the [[882,24]] B1 code in Figure7 and cites the stabilizer-support stopping-set lemma. It supplies simulations and a post-peeling decomposition decoder, not an exact stopping-distance-six theorem or the source spectral inequality. The proposed generalization of VH decomposition is addressed by this paper; its speculation about a cluster-size phase transition is held as context rather than promoted to a precise conjecture.
+
+### F76 On the Analysis of Stopping Sets Associated with the Quantum Hypergraph Product Code
+
+Jefrin Sharmitha Prabhu; Gayathri R.; P. Vijay Kumar. 2026. [incidence stopping access gap](https://doi.org/10.1109/ISIT62367.2026.11654127).
+
+Author conference page confirms the ISIT2026 title/authors. DOI full text was inaccessible; a secondary abstract describes stabilizer and horizontal/vertical stopping probabilities for ordinary HGP codes. Full theorem hypotheses and question screen remain unassessed; no zero-question or exact B1 claim. Full paper and version-specific question screen unavailable.
+
+### F77 On the Stopping Distance and the Stopping Redundancy of Codes
+
+Moshe Schwartz; Alexander Vardy. 2006. [stronger stopping prior art](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf).
+
+Matrix-dependent stopping distance and stopping redundancy differ. Codeword supports stop; changing redundant checks changes the graph. Their Theorem3 gives three for positive distinct columns, not the new four/six guarantees. Historical source screen; later resolution and Lean search unassessed for harvested questions. Named version gaps in dedicated ledger.
+
+### F78 Distance bounds for generalized bicycle codes
+
+Renyu Wang; Leonid P. Pryadko. 2022. [stronger stopping prior art](https://arxiv.org/abs/2203.17216v1).
+
+Eq.8 uses HX=[A|B], HZT=[B;-A]. Our B=A-transpose. Eq.10 counts logical dimension via a gcd; it is not a stopping-distance theorem. No dimension formula is imported into our new proof. Historical source screen; later resolution and Lean search unassessed for harvested questions. Named version gaps in dedicated ledger.
+
+### F79 Degenerate quantum erasure decoding
+
+Kao-Yueh Kuo; Yingkai Ouyang. 2026. [stronger stopping prior art](https://doi.org/10.1038/s41534-026-01212-3).
+
+Degenerate decoding can pass ordinary stopping obstructions. Performance/capacity claims concern a decoder and error model, not a lower stopping distance for our fixed HX. Introductory capacity questions are claimed answered within the paper. Historical source screen; later resolution and Lean search unassessed for harvested questions. Named version gaps in dedicated ledger.
+
+### F80 Stopping Sets in Codes from Designs
+
+Navin Kashyap; Alexander Vardy. 2003. [stronger stopping prior art](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf).
+
+Theorem1: uniform column weight w and distinct-column intersection at most mu give s>=w/mu+1. Here mu=2, hence three at w=4; our two-block refinement gives four. Corollary2 assumes intersection at most one, which fails across our blocks. Historical source screen; later resolution and Lean search unassessed for harvested questions. Named version gaps in dedicated ledger.
+
 ## Question by question cross references
 
 “Not verified” is a bounded search result. A related paper listed next to a question is not automatically evidence that the question itself was restated. The original page references and hypotheses remain in [the coverage ledger](../audit/claims.json). Research directions outside those 40 targets are described in the paper records, especially the Morris/Martinez and Grantham follow-ups.
@@ -789,3 +873,10 @@ Version-specific full-text question screen; see research-question-screening.json
 ## Search gaps worth resolving next
 
 The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
+
+
+## Stronger stopping-bound checkpoint -24October2026
+
+The incidence-conditioned replacement question is answered positively beyond B1: a reusable partition bound, explicit sparse nontrivial CSS families, and a separate exact stopping/logical-distance-six family. An explicit same-full-Gram counterpart has stopping distance two, giving a restricted obstruction to Gram-only lower bounds. The original Proposition5.1 useful-parameter question remains answered negatively. [Paper and checked proof guide](../formalization/stopping-bound/stronger/README.txt).
+
+Four main texts were screened, adding20 historical entries, eight eligible:287 canonical entries,143 eligible targets,114 paper records and101 full-text main-paper screens. Complete canonical Lean targets remain five. New question statuses and difficulty are unassessed. [Dedicated source screen](stronger-stopping-source-screening.json).

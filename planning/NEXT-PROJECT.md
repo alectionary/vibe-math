@@ -72,3 +72,10 @@ Dated October24 research update: the current inventory has **190 canonical entri
 
 
 October24 lift-label follow-up is complete for the two fixed bases: [report](../formalization/lift-label-elimination/RESEARCH-NOTE.txt). The [[140q,18,6]] family has independently checked q2 data and a checked Lean version of every manuscript proof, including mixed-Pauli distance. General decoder optimization remains outside this study. No new source question or effort estimate was added.
+
+
+## Current stronger-bound continuation -24October2026
+
+The requested incidence-conditioned existence target is now answered positively; B1 classification is already complete. See [the stronger-bound checkpoint](../formalization/stopping-bound/stronger/README.txt). For the remaining authorized research time, compare two bounded steps: a rigorous expanded-spectrum comparison with Zhu-Chugg (high explanatory payoff, reusable finite linear-algebra/cover infrastructure), and tightening the Sidon criterion (larger mathematical payoff, but additive-consistency and sharpness are not yet settled). Prioritize a direct spectral certificate, then test a sharper incidence statement against finite counterexamples. No source question is marked unresolved merely because these follow-ups remain.
+
+The source screen adds20 planning records with no invented effort estimates. The fixed canonical completion count stays five.

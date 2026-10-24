@@ -4,8 +4,11 @@ import json,hashlib,re
 R=Path(__file__).resolve().parents[1];D=R/'literature';A=R/'formalization/stopping-bound/classification'
 load=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 rows=load(D/'open-problems.json');by={x['id']:x for x in rows};rec=load(D/'research-reconciliation.json')
-assert len(rows)==267 and sum(x['eligible_for_coverage'] for x in rows)==135
-assert len(load(D/'downstream-paper-coverage.json'))==110
+anchor=next(x for x in rec['indexing_extensions'] if x['id']=='incidence-stopping-source-screen-2026-10-24')
+later=rec['indexing_extensions'][rec['indexing_extensions'].index(anchor)+1:]
+assert len(rows)==267+sum(x['added_entries'] for x in later)
+assert sum(x['eligible_for_coverage'] for x in rows)==135+sum(x['added_eligible_targets'] for x in later)
+assert len(load(D/'downstream-paper-coverage.json'))==110+sum(len(x['added_paper_ids']) for x in later)
 assert sum(x['eligible_for_coverage'] and x['lean_proof_status']=='verified_complete_lean_proof' for x in rows)==5
 parent=by['L-F16-stopping-bound'];assert parent['lean_proof_status']=='verified_complete_lean_proof'
 assert parent['current_resolution_status']=='answered_negatively_for_prop51_useful_parameter_question'

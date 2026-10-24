@@ -241,3 +241,10 @@ Three primary full-text screens add five broad historical directions; one 2026 H
 Current cohort: **267 canonical entries,135 eligible targets,110 paper records,97 full-text screens**; **5/135 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
 
 The current source index has **76** records, with actual access levels retained.
+
+
+## Stronger stopping-bound checkpoint -24October2026
+
+The incidence-conditioned replacement question is answered positively beyond B1: a reusable partition bound, explicit sparse nontrivial CSS families, and a separate exact stopping/logical-distance-six family. An explicit same-full-Gram counterpart has stopping distance two, giving a restricted obstruction to Gram-only lower bounds. The original Proposition5.1 useful-parameter question remains answered negatively. [Paper and checked proof guide](../formalization/stopping-bound/stronger/README.txt).
+
+Four main texts were screened, adding20 historical entries, eight eligible:287 canonical entries,143 eligible targets,114 paper records and101 full-text main-paper screens. Complete canonical Lean targets remain five. New question statuses and difficulty are unassessed. [Dedicated source screen](stronger-stopping-source-screening.json).
