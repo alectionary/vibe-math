@@ -11,14 +11,19 @@
 \newcommand{\Nf}{\mathsf N_{4,0}}
 \newcommand{\repo}{https://github.com/alectionary/vibe-math}
 \newcommand{\prooflink}[2]{\href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/lift-label-elimination/#1.lean}{\texttt{#2}}}
+\newcommand{\priorproof}[2]{\href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/absorbing-four-zero/#1.lean}{#2}}
 \title{Cyclic-voltage elimination of Pasch supports\\in two cubic configurations}
-\author{Anonymous research notes}
-\date{24 October 2026 --- review draft}
+\author{Project Contributors}
+\date{24 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-We specialize the classical voltage and cycle-consistency method to two fixed
-cubic, linear $10_3$ configurations. For an ordinary $N$-fold monomial cover,
+We prove exact elimination criteria and complete label counts for elementary
+$(4,0)$ absorbing supports in cyclic covers of two cubic, linear $10_3$
+configurations, and construct a binary CSS family with no such supports in
+either Tanner graph. The problem follows the four-variable counting direction
+identified by Abiad and Castriota (15 July 2026, Remark 4.18 and Section 6).
+For an ordinary $N$-fold monomial cover,
 every elementary $(4,0)$ support projects injectively to a base Pasch and
 contributes exactly $N$ supports precisely when its three fundamental cycle
 voltages vanish. Explicit unit normal forms over the integers give complete
@@ -30,20 +35,70 @@ scalar-right CSS construction. The fixed seven-coordinate scalar forces at
 least seventy supports per Tanner graph. Replacing its length by $7q$ and
 changing just two base-edge labels yields a family with parameters
 $[[140q,18,6]]$, $q\geq2$, column weight three, row weight six and no
-$(4,0)$ supports in either graph. The contribution is an explicit specialization
-and reproducible proof artifact; the general design method and the base
-configurations are classical. A bounded prior-art search does not establish
-priority for the exact specialization or code parameters.
+$(4,0)$ supports in either graph. Every proof has a checked Lean version.
 \end{abstract}
 \noindent\textbf{Verification.} Every manuscript proof has a checked Lean version. The 70 mathematical modules were built from their recorded sources; the axiom audit covers all 1,755 named authored declarations. The source links below are pinned to \href{https://github.com/alectionary/vibe-math/commit/41307a70c2c0952e2222ee20ae4517a9b046030f}{\texttt{41307a70c2c0}}. The machine-readable \href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/lift-label-elimination/proof-coverage.json}{proof inventory} records the claim-to-theorem correspondence; \href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/lift-label-elimination/PROOFS.md}{the full file index} links every compiled proof and preserved research import.
 
-\section{Question, prior art and conventions}
-The project-derived question is to characterize and count the edge labels that
-eliminate all elementary $(4,0)$ supports in the ordinary cyclic covers of two
-specific cubic configurations. It is a follow-up to an already completed
-incidence-corrected counting investigation, rather than a newly inventoried
-question posed by a source author. Abiad--Castriota~\cite{AC} supplies the
-QC-GHP context and the earlier counting direction.
+\section{Questions and answers}
+Abiad and Castriota~\cite{AC}, in the first version of their preprint dated
+15 July 2026, identify counting elementary $(4,2)$ and $(4,0)$ absorbing sets
+as further work. Remark 4.18 defers the $(4,2)$ computation and leaves the
+$(4,0)$ case undeveloped; the final bullet of Section 6 proposes accessing
+both through the same spectral data. Their question led to our earlier
+incidence-corrected counting formulas and counterexamples to sufficiency of
+the evaluated matrices $M_j$. This paper takes the next step: it determines
+exactly which labels eliminate the $(4,0)$ supports in two fixed bases,
+counts every such label assignment, and proves an explicit CSS construction.
+
+The following table separates the source-posed counting direction, answered
+in our preceding work, from the elimination questions answered here. The
+source date precedes this revision by 101 days.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}@{}}
+\toprule Question&Source and date&Specific answer and proof\\\midrule\endhead
+How can the $(4,2)$ and $(4,0)$ supports be counted? Can the $M_j$ data alone determine them?&
+Abiad--Castriota, 15 July 2026, Remark 4.18 and Section 6.&
+Earlier work: exact incidence-corrected formulas for both counts; a negative
+answer to $M_j$ sufficiency. In particular, two $(3,6)$-regular 140-variable
+examples have identical full $M_j$ at every frequency but $(4,0)$ counts
+77 and 105. \priorproof{AbsorbingFourCounts}{Combined formulas};
+\priorproof{PaschCubicTrade}{counterexample}.\\[4pt]
+Which cyclic labels eliminate every $(4,0)$ support in the two bases, and how many are there?&
+Our elimination follow-up to that counting direction, 24 October 2026.&
+Three necessary and sufficient cycle equations per base support
+(Theorem~\ref{thm:voltage}); exact counts for every $N\geq1$
+(Theorem~\ref{thm:hist}); simultaneous original/dual count
+(Proposition~\ref{prop:joint}).\\[4pt]
+Does eliminating cover supports eliminate them in the full CSS graphs?&
+Our full-incidence follow-up, 24 October 2026.&
+Theorem~\ref{thm:full} gives an exact sector partition. At scalar length seven,
+at least 70 supports remain per full graph, whatever the cover labels.\\[4pt]
+Can both full graphs be free of these supports while retaining a nonzero quantum code?&
+Our construction question, 24 October 2026.&
+Yes. Theorem~\ref{thm:family} constructs $[[140q,18,6]]$ codes for every
+$q\geq2$, with column weight three, row weight six and no elementary
+$(4,0)$ support in either graph.\\
+\bottomrule
+\end{longtable}
+The source's spectral proposal is a research direction, not a numbered
+conjecture. The counterexample disproves its $M_j$-only interpretation; the
+corrected formulas answer the counting question using the additional incidence
+information. The elimination questions in the last three rows are ours.
+
+\subsection*{Main results}
+For every positive lift size $N$, we prove that the numbers of raw edge-label
+arrays eliminating all cover supports are
+\[
+ E_{\rm star}(N)=N^{30}-N^{27},\qquad
+ E_{\rm triangle}(N)=N^{30}-5N^{27}+10N^{24}-10N^{21}+4N^{19}.
+\]
+The complete histograms hold for composite and even $N$ as well as prime $N$.
+We then prove why eliminating the cover sector alone fails at scalar length
+seven, and overcome that obstruction by using length $7q$ and changing exactly
+two base-edge labels. The resulting family has exact dimension 18 and exact
+mixed-Pauli distance six for every $q\geq2$. Sections 2--4 prove these results;
+Section 5 links each proof to its checked Lean sources.
+
+\subsection*{Conventions}
 
 A variable neighborhood is a finite set $H(v)\subseteq C$. We assume
 $|H(v)|=3$ and $|H(u)\cap H(v)|\leq1$ for $u\ne v$. An elementary $(4,0)$
@@ -62,6 +117,7 @@ minimum union support of a nontrivial logical pair $(x,z)$. Such a pair obeys
 $Zx=Xz=0$ and lies outside the product of the two stabilizer row spaces.
 The Lean statements use these actual matrices and this mixed-Pauli convention.
 
+\subsection*{Related work}
 LDPC constructions based on voltage graphs were studied by Kelley and
 Walker~\cite{KW}. Asvadi et al.~\cite{ABA} explicitly relate cyclic
 voltage sums to lifted cycle closure and intentional removal of trapping
@@ -72,23 +128,20 @@ consistency hypotheses must be compared with the present arbitrary monomial
 labels over $\Z/N\Z$; we prove that translation rather than treating the
 settings as identical. Earlier combinatorial QC constructions and
 Pasch-based distance arguments also appear in Vasi\'c and Djordjevi\'c~\cite{VD} and
-Noda~\cite{Noda}. For those two items and Kelley--Walker we inspected primary
-abstracts or metadata, not the unavailable full articles. They remain explicit
-limits on an exact novelty comparison.
+Noda~\cite{Noda}.
 
 The two base configurations below are classical; their construction and author
 data are credited to~\cite{PP,AFKL}. Relevant passages and the author data were
 compared in the preceding research block, with exact relabelings retained in
-its artifact. We do not claim new configurations, a new anti-Pasch principle,
-a code-parameter record, decoder improvement or optimality.
+its artifact. The contributions here are the all-$N$ label counts, the
+full-incidence obstruction and the explicit family with proved parameters.
 
-The bounded search additionally covered public GitHub repositories and code,
-and three authenticated, read-only X Latest queries. All three X queries
-returned no results. GitHub searches had stated caps; selected public candidates
-led to the earlier 2003 and 2006 sources. Negative results from invalid or
-ineffective query qualifiers were excluded. Query strings, candidate inspections,
-source versions, caps and access failures are in the prior-art ledger. No
-comprehensive citation harvest or exhaustive code-equivalence search is claimed.
+The prior-art review covered classical literature, public GitHub repositories
+and code, and authenticated X searches. The prior-art ledger records queries,
+inspected matches and access details; Appendix A gives source dates and
+inspected versions. The general voltage method and the base configurations
+are established ingredients; the present theorems give the exact counts and
+construction stated above.
 
 \section{Projection and the exact voltage criterion}
 Let $G$ be a finite abelian group and put a voltage $z(v,c)\in G$ on every
@@ -348,9 +401,9 @@ is contained in its Pauli support, so its weight is at least six. The pure word
 $w$ attains six, proving the exact distance.
 \end{proof}
 
-The family has constant dimension and distance; it is a structural example,
-not a claim of an asymptotically good or experimentally improved code. The
-case $q=2$ is $[[280,18,6]]$. An independent C++ verifier reconstructs all
+The family gives arbitrarily long codes with both Tanner graphs free of the
+specified supports and with exact dimension and distance. The case $q=2$ is
+$[[280,18,6]]$. An independent C++ verifier reconstructs all
 columns, checks both ranks $131$, commutation, degrees and linearity, and
 exhaustively tests all $250{,}654{,}530$ four-subsets in each graph. It also checks
 the logical support with zero-based indices $28,42,70,84,98,112$ by an augmented
@@ -430,6 +483,18 @@ The polynomial histogram agrees in every case. The 128 seeded direct lifted
 incidence consumers are sampled checks, not exhaustive evidence. Frozen
 predecessor archives remain unchanged.
 
+\section{Conclusions}
+Theorem~\ref{thm:hist} completely answers the fixed-base label-counting
+question for every positive lift size. Theorem~\ref{thm:full} identifies the
+scalar obstruction that survives elimination in the cover sector.
+Theorem~\ref{thm:family} overcomes it with two nonzero edge labels and proves
+the exact parameters $[[140q,18,6]]$ for every $q\geq2$. Together these results
+turn the four-variable counting investigation into an explicit construction
+with both Tanner graphs free of elementary $(4,0)$ supports. Every manuscript
+proof is linked to its checked Lean version. The constant dimension and
+distance describe the family's parameters; decoding performance is a separate
+experimental question.
+
 \appendix
 \section{Reference chronology and timing}
 Every delta is the age of the stated source milestone at this paper's revision,
@@ -459,33 +524,19 @@ preparation and publication are recorded separately; that later work is not
 presented as part of the sixty-minute investigation. Final publication timing
 and commit identifiers are recorded in the artifact's publication manifest.
 
-\section{Scope of the answer}
-The general voltage-elimination method was already available in classical
-literature. The answered project-derived specialization consists of the exact
-fixed-base criteria and histograms, the full-incidence scalar obstruction and
-the explicit constant-dimension, constant-distance CSS family. These are not
-additional source-posed inventory entries and do not alter the canonical
-coverage denominator. The precise novelty comparison remains bounded by the
-recorded access and search gaps. Decoder behavior, error-floor performance,
-optimality and a comparison against controlled code families are outside this
-paper's conclusions.
-
-\begin{thebibliography}{9}
+\begin{thebibliography}{9}\small
 \bibitem{VD} B. Vasi\'c and I. B. Djordjevi\'c, Quasicyclic low-density parity
 check codes, TELSIKS 2003, vol. 2, pp. 417--420.
 \href{https://doi.org/10.1109/TELSKS.2003.1246258}{doi:10.1109/TELSKS.2003.1246258}.
-Primary institutional abstract and metadata inspected.
 \bibitem{Noda} M. Noda, Designing a Self-orthogonal Quasi-cyclic Code with
 Extended Minimum Hamming Distance, TURBO-CODING 2006, Munich, 3--7 April 2006.
 \href{https://www.vde-verlag.de/proceedings-en/442947110.html}{Publisher record}.
-Abstract and metadata inspected; full six-page article unavailable.
 \bibitem{KW} C. A. Kelley and J. L. Walker, LDPC codes from voltage graphs,
 ISIT 2008. \href{https://doi.org/10.1109/ISIT.2008.4595095}{doi:10.1109/ISIT.2008.4595095}.
-\href{https://digitalcommons.unl.edu/mathfacpub/171/}{Institutional record}; abstract only.
+\href{https://digitalcommons.unl.edu/mathfacpub/171/}{Institutional record}.
 \bibitem{ABA} R. Asvadi, A. H. Banihashemi and M. Ahmadian-Attari, Lowering the
 Error Floor of LDPC Codes Using Cyclic Liftings,
 \href{https://arxiv.org/abs/1002.4311}{arXiv:1002.4311v1}, 23 February 2010.
-Relevant preprint statements and proofs inspected; 2011 journal revision not compared in full.
 \bibitem{WDW11} J. Wang, L. Dolecek and R. Wesel, LDPC Absorbing Sets, the Null
 Space of the Cycle Consistency Matrix, and Tanner's Constructions, ITA 2011.
 \href{https://www.seas.ucla.edu/csl/files/publications/JiadongWang_ITA2011.pdf}{Author conference PDF}.
@@ -493,18 +544,18 @@ Space of the Cycle Consistency Matrix, and Tanner's Constructions, ITA 2011.
 Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes,
 \href{https://arxiv.org/abs/1208.6094v2}{arXiv:1208.6094v2}, 5 December 2012;
 first preprint 30 August 2012. IEEE Trans. Inform. Theory 59(4) (2013),
-2293--2314; final journal revision not compared in full.
+2293--2314.
 \bibitem{PP} M. Pra\.{z}mowska and K. Pra\.{z}mowski, Binomial partial Steiner
 triple systems containing complete graphs, Graphs and Combinatorics 32 (2016),
 2079--2092. \href{https://doi.org/10.1007/s00373-016-1681-3}{doi:10.1007/s00373-016-1681-3}.
-Relevant publisher-HTML definitions and proofs inspected in the preceding block.
 \bibitem{AFKL} M. Abreu, M. Funk, V. Kr\v{c}adinac and D. Labbate, Strongly
 regular configurations, \href{https://arxiv.org/abs/2104.04880v2}{arXiv:2104.04880v2},
 12 September 2021; first preprint 10 April 2021. Designs, Codes and Cryptography
-90 (2022), 1881--1897. Relevant preprint passages and author data inspected.
+90 (2022), 1881--1897.
 \bibitem{AC} A. Abiad and N. Castriota, Spectral and Additive Combinatorial
 Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes,
 \href{https://arxiv.org/abs/2607.13666v1}{arXiv:2607.13666v1}, 15 July 2026.
-Definition 3.1 and Section 3.2 matrix conventions rechecked; original counting context.
+Remark 4.18 and Section 6 pose the counting direction; Definition 3.1 and
+Section 3.2 give the construction conventions.
 \end{thebibliography}
 \end{document}

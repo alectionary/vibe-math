@@ -141,6 +141,19 @@ illustrates the distinctions without changing frozen experiment inputs.
 
 When writing or revising a research paper:
 
+- Lead with the proved result, counterexample or completed characterization.
+  Identify each motivating source question by author, date, version and exact
+  remark/conjecture/section, then give its specific answer and theorem/proof link.
+  Use an opening question/source/answer table when several targets are involved.
+  Separate results established in this paper from cited results of earlier work,
+  and source-posed questions from our own follow-ups. Do not relabel a research
+  direction as a numbered conjecture. Describe completed proofs as proofs or
+  theorems rather than diminishing them as preliminary research notes.
+- Credit classical ingredients in related work. Keep concrete access and search
+  limitations in one relevant passage or evidence ledger; avoid generic repeated
+  priority disclaimers in the abstract, introduction and conclusion. An ordinary
+  result claim does not require a universal claim to historical priority. Retain
+  mathematical hypotheses and limits that determine what the theorem proves.
 - Keep a proof-to-Lean table covering every proof created for the manuscript,
   including counting bijections, certificate soundness, matrix/source translations,
   finite-instance verification and applications. Give every such proof a faithful
