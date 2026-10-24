@@ -1,0 +1,522 @@
+PartitionStopping.neighbors.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] (E : V → C → Prop) [DecidableRel E]
+  (v : V) : Finset C
+'PartitionStopping.neighbors' depends on axioms: [propext, Classical.choice, Quot.sound]
+PartitionStopping.overlap.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] [DecidableEq C] (E : V → C → Prop)
+  [DecidableRel E] (v w : V) : ℕ
+'PartitionStopping.overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+PartitionStopping.degree_le_overlap_sum.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] [DecidableEq V]
+  [DecidableEq C] (E : V → C → Prop) [DecidableRel E] (S : Finset V) (hS : Incidence.Stopping E S) (v : V)
+  (hv : v ∈ S) : (PartitionStopping.neighbors E v).card ≤ ∑ w ∈ S.erase v, PartitionStopping.overlap E v w
+'PartitionStopping.degree_le_overlap_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+PartitionStopping.column_budget.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (color : V → Bool) (S : Finset V) (hS : Incidence.Stopping E S) (γ σ τ : ℕ)
+  (hdeg : ∀ v ∈ S, γ ≤ (PartitionStopping.neighbors E v).card)
+  (hov : ∀ v ∈ S, ∀ w ∈ S, v ≠ w → PartitionStopping.overlap E v w ≤ if color v = color w then σ else τ) (v : V)
+  (hv : v ∈ S) : γ + σ ≤ σ * {w ∈ S | color w = color v}.card + τ * {w ∈ S | color w ≠ color v}.card
+'PartitionStopping.column_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+PartitionStopping.partition_bound.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (color : V → Bool) (S : Finset V) (hS : Incidence.Stopping E S) (γ σ τ : ℕ)
+  (hst : σ ≤ τ) (hdeg : ∀ v ∈ S, γ ≤ (PartitionStopping.neighbors E v).card)
+  (hov : ∀ v ∈ S, ∀ w ∈ S, v ≠ w → PartitionStopping.overlap E v w ≤ if color v = color w then σ else τ) :
+  2 * (γ + σ) ≤ (σ + τ) * S.card
+'PartitionStopping.partition_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+PartitionStopping.weight_four_bound.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (color : V → Bool) (S : Finset V) (hS : Incidence.Stopping E S)
+  (hdeg : ∀ v ∈ S, 4 ≤ (PartitionStopping.neighbors E v).card)
+  (hov : ∀ v ∈ S, ∀ w ∈ S, v ≠ w → PartitionStopping.overlap E v w ≤ if color v = color w then 1 else 2) : 4 ≤ S.card
+'PartitionStopping.weight_four_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+PartitionStopping.uniform_overlap_bound.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype C] [DecidableEq V]
+  [DecidableEq C] (E : V → C → Prop) [DecidableRel E] (S : Finset V) (hS : Incidence.Stopping E S) (γ μ : ℕ)
+  (hdeg : ∀ v ∈ S, γ ≤ (PartitionStopping.neighbors E v).card)
+  (hov : ∀ v ∈ S, ∀ w ∈ S, v ≠ w → PartitionStopping.overlap E v w ≤ μ) : γ + μ ≤ μ * S.card
+'PartitionStopping.uniform_overlap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+GramStopping.paired.{u_1, u_2} {G : Type u_1} {R : Type u_2} (A : Matrix G G R) : Matrix G (Bool × G) R
+'GramStopping.paired' does not depend on any axioms
+GramStopping.doubled.{u_1, u_2} {G : Type u_1} {R : Type u_2} (A : Matrix G G R) : Matrix G (Bool × G) R
+'GramStopping.doubled' does not depend on any axioms
+GramStopping.paired_gram.{u_1, u_2} {G : Type u_1} {R : Type u_2} [Fintype G] [AddCommGroup G] [CommSemiring R]
+  (A : Matrix G G R) : GramStopping.paired A * (GramStopping.paired A).transpose = A * A.transpose + A.transpose * A
+'GramStopping.paired_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+GramStopping.doubled_gram.{u_1, u_2} {G : Type u_1} {R : Type u_2} [Fintype G] [AddCommGroup G] [CommSemiring R]
+  (A : Matrix G G R) : GramStopping.doubled A * (GramStopping.doubled A).transpose = A * A.transpose + A * A.transpose
+'GramStopping.doubled_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+GramStopping.circulant_gram_equal.{u_1, u_2} {G : Type u_1} {R : Type u_2} [Fintype G] [AddCommGroup G] [CommSemiring R]
+  (f : G → R) :
+  GramStopping.paired (Matrix.circulant f) * (GramStopping.paired (Matrix.circulant f)).transpose =
+    GramStopping.doubled (Matrix.circulant f) * (GramStopping.doubled (Matrix.circulant f)).transpose
+'GramStopping.circulant_gram_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+GramStopping.paired_css.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] (f : G → ZMod 2) :
+  GramStopping.paired (Matrix.circulant f) * (GramStopping.paired (Matrix.circulant f)).transpose = 0
+'GramStopping.paired_css' depends on axioms: [propext, Classical.choice, Quot.sound]
+GramStopping.doubled_css.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] (A : Matrix G G (ZMod 2)) :
+  GramStopping.doubled A * (GramStopping.doubled A.transpose).transpose = 0
+'GramStopping.doubled_css' depends on axioms: [propext, Classical.choice, Quot.sound]
+GramStopping.gram_bound_obstruction.{u_3, u_4} {Code : Type u_3} {Data : Type u_4} (gram : Code → Data)
+  (distance : Code → ℕ) (lower : Data → ℕ) (valid : ∀ (Q : Code), lower (gram Q) ≤ distance Q) (good bad : Code)
+  (heq : gram good = gram bad) (hbad : distance bad = 2) : lower (gram good) ≤ 2
+'GramStopping.gram_bound_obstruction' does not depend on any axioms
+Bicycle.Check : Type
+'Bicycle.Check' does not depend on any axioms
+Bicycle.Var : Type
+'Bicycle.Var' does not depend on any axioms
+Bicycle.col (v : Bicycle.Var) : List Bicycle.Check
+'Bicycle.col' depends on axioms: [propext, Quot.sound]
+Bicycle.E (v : Bicycle.Var) (c : Bicycle.Check) : Prop
+'Bicycle.E' depends on axioms: [propext, Quot.sound]
+Bicycle.row (c : Bicycle.Check) : List Bicycle.Var
+'Bicycle.row' depends on axioms: [propext, Quot.sound]
+Bicycle.row_complete (v : Bicycle.Var) (c : Bicycle.Check) (h : Bicycle.E v c) : v ∈ Bicycle.row c
+'Bicycle.row_complete' depends on axioms: [propext, Quot.sound]
+Bicycle.pick (S : List Bicycle.Var) : Option Bicycle.Check
+'Bicycle.pick' depends on axioms: [propext, Quot.sound]
+Bicycle.pick_singleton (S : List Bicycle.Var) (hn : S.Nodup) (c : Bicycle.Check) (h : Bicycle.pick S = some c) :
+  {v ∈ S.toFinset | Bicycle.E v c}.card = 1
+'Bicycle.pick_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.shiftV (t : Bicycle.Check) : Bicycle.Var ≃ Bicycle.Var
+'Bicycle.shiftV' depends on axioms: [propext, Quot.sound]
+Bicycle.shiftC (t : Bicycle.Check) : Bicycle.Check ≃ Bicycle.Check
+'Bicycle.shiftC' depends on axioms: [propext, Quot.sound]
+Bicycle.shift_incidence (t : Bicycle.Check) (v : Bicycle.Var) (c : Bicycle.Check) :
+  Bicycle.E ((Bicycle.shiftV t) v) ((Bicycle.shiftC t) c) ↔ Bicycle.E v c
+'Bicycle.shift_incidence' depends on axioms: [propext, Quot.sound]
+Bicycle.root_false : Incidence.survivesList Bicycle.pick Bicycle.row 4 [(false, 0)] = false
+'Bicycle.root_false' depends on axioms: [propext, Quot.sound]
+Bicycle.root_true : Incidence.survivesList Bicycle.pick Bicycle.row 4 [(true, 0)] = false
+'Bicycle.root_true' depends on axioms: [propext, Quot.sound]
+Bicycle.stopping_ge_six (T : Finset Bicycle.Var) (hT : Incidence.Stopping Bicycle.E T) : 6 ≤ T.card
+'Bicycle.stopping_ge_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.six : Finset Bicycle.Var
+'Bicycle.six' depends on axioms: [propext, Quot.sound]
+Bicycle.six_card : Bicycle.six.card = 6
+'Bicycle.six_card' depends on axioms: [propext, Quot.sound]
+Bicycle.six_stopping : Incidence.Stopping Bicycle.E Bicycle.six
+'Bicycle.six_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.column_degree (v : Bicycle.Var) : (PartitionStopping.neighbors Bicycle.E v).card = 4
+'Bicycle.column_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.overlap_bound (v w : Bicycle.Var) : v ≠ w → PartitionStopping.overlap Bicycle.E v w ≤ if v.1 = w.1 then 1 else 2
+'Bicycle.overlap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.incidence_bound (T : Finset Bicycle.Var) (hT : Incidence.Stopping Bicycle.E T) : 4 ≤ T.card
+'Bicycle.incidence_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.Check (n : ℕ) : Type
+'Bicycle.Family.Check' does not depend on any axioms
+Bicycle.Family.Var (n : ℕ) : Type
+'Bicycle.Family.Var' does not depend on any axioms
+Bicycle.Family.col {n : ℕ} (v : Bicycle.Family.Var n) : List (Bicycle.Family.Check n)
+'Bicycle.Family.col' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.E {n : ℕ} (v : Bicycle.Family.Var n) (c : Bicycle.Family.Check n) : Prop
+'Bicycle.Family.E' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.row {n : ℕ} (c : Bicycle.Family.Check n) : List (Bicycle.Family.Var n)
+'Bicycle.Family.row' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.projC {n : ℕ} (h : 39 ∣ n) : Bicycle.Family.Check n → Bicycle.Check
+'Bicycle.Family.projC' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.projV {n : ℕ} (h : 39 ∣ n) (v : Bicycle.Family.Var n) : Bicycle.Var
+'Bicycle.Family.projV' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.project_col {n : ℕ} (h : 39 ∣ n) (v : Bicycle.Family.Var n) :
+  List.map (Bicycle.Family.projC h) (Bicycle.Family.col v) = Bicycle.col (Bicycle.Family.projV h v)
+'Bicycle.Family.project_col' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.project_row {n : ℕ} (h : 39 ∣ n) (c : Bicycle.Family.Check n) :
+  List.map (Bicycle.Family.projV h) (Bicycle.Family.row c) = Bicycle.row (Bicycle.Family.projC h c)
+'Bicycle.Family.project_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.row_complete {n : ℕ} (v : Bicycle.Family.Var n) (c : Bicycle.Family.Check n) (h : Bicycle.Family.E v c) :
+  v ∈ Bicycle.Family.row c
+'Bicycle.Family.row_complete' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.maps {n : ℕ} (h : 39 ∣ n) (v : Bicycle.Family.Var n) (c : Bicycle.Family.Check n)
+  (he : Bicycle.Family.E v c) : Bicycle.E (Bicycle.Family.projV h v) (Bicycle.Family.projC h c)
+'Bicycle.Family.maps' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.lifts {n : ℕ} (h : 39 ∣ n) (v : Bicycle.Family.Var n) (d : Bicycle.Check)
+  (he : Bicycle.E (Bicycle.Family.projV h v) d) : ∃ c, Bicycle.Family.E v c ∧ Bicycle.Family.projC h c = d
+'Bicycle.Family.lifts' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.base_row_nodup (c : Bicycle.Check) : (Bicycle.row c).Nodup
+'Bicycle.Family.base_row_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.base_col_nodup (v : Bicycle.Var) : (Bicycle.col v).Nodup
+'Bicycle.Family.base_col_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.local_inj {n : ℕ} (h : 39 ∣ n) (v w : Bicycle.Family.Var n) (c : Bicycle.Family.Check n)
+  (hv : Bicycle.Family.E v c) (hw : Bicycle.Family.E w c) (he : Bicycle.Family.projV h v = Bicycle.Family.projV h w) :
+  v = w
+'Bicycle.Family.local_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.col_nodup {n : ℕ} (h : 39 ∣ n) (v : Bicycle.Family.Var n) : (Bicycle.Family.col v).Nodup
+'Bicycle.Family.col_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.stopping_of_partners.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (S : Finset V) (hne : S.Nonempty)
+  (hp : ∀ v ∈ S, ∀ (c : C), E v c → ∃ w ∈ S, w ≠ v ∧ E w c) : Incidence.Stopping E S
+'Bicycle.Family.stopping_of_partners' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.sixList {n : ℕ} : List (Bicycle.Family.Var n)
+'Bicycle.Family.sixList' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.six {n : ℕ} : Finset (Bicycle.Family.Var n)
+'Bicycle.Family.six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.project_sixList {n : ℕ} (h : 39 ∣ n) :
+  List.map (Bicycle.Family.projV h) Bicycle.Family.sixList = Bicycle.Family.sixList
+'Bicycle.Family.project_sixList' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.six_card {n : ℕ} (h : 39 ∣ n) : Bicycle.Family.six.card = 6
+'Bicycle.Family.six_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.six_stopping {n : ℕ} (h : 39 ∣ n) : Incidence.Stopping Bicycle.Family.E Bicycle.Family.six
+'Bicycle.Family.six_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.stopping_ge_six {n : ℕ} (h : 39 ∣ n) (T : Finset (Bicycle.Family.Var n))
+  (hT : Incidence.Stopping Bicycle.Family.E T) : 6 ≤ T.card
+'Bicycle.Family.stopping_ge_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.exact_six {n : ℕ} (h : 39 ∣ n) :
+  (∀ (T : Finset (Bicycle.Family.Var n)), Incidence.Stopping Bicycle.Family.E T → 6 ≤ T.card) ∧
+    Incidence.Stopping Bicycle.Family.E Bicycle.Family.six ∧ Bicycle.Family.six.card = 6
+'Bicycle.Family.exact_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.coef.{u_1} {n : ℕ} {R : Type u_1} [Zero R] [One R] (i : Bicycle.Family.Check n) : R
+'Bicycle.Family.coef' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.A.{u_1} {n : ℕ} (R : Type u_1) [Zero R] [One R] :
+  Matrix (Bicycle.Family.Check n) (Bicycle.Family.Check n) R
+'Bicycle.Family.A' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.HX.{u_1} {n : ℕ} (R : Type u_1) [Zero R] [One R] :
+  Matrix (Bicycle.Family.Check n) (Bicycle.Family.Var n) R
+'Bicycle.Family.HX' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.HZ.{u_1} {n : ℕ} (R : Type u_1) [Zero R] [One R] :
+  Matrix (Bicycle.Family.Check n) (Bicycle.Family.Var n) R
+'Bicycle.Family.HZ' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.BadX.{u_1} {n : ℕ} (R : Type u_1) [Zero R] [One R] :
+  Matrix (Bicycle.Family.Check n) (Bicycle.Family.Var n) R
+'Bicycle.Family.BadX' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.BadZ.{u_1} {n : ℕ} (R : Type u_1) [Zero R] [One R] :
+  Matrix (Bicycle.Family.Check n) (Bicycle.Family.Var n) R
+'Bicycle.Family.BadZ' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.HX_entry.{u_1} {n : ℕ} {R : Type u_1} [Zero R] [One R] (c : Bicycle.Family.Check n)
+  (v : Bicycle.Family.Var n) : Bicycle.Family.HX R c v = if Bicycle.Family.E v c then 1 else 0
+'Bicycle.Family.HX_entry' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.HX_binary.{u_1} {n : ℕ} {R : Type u_1} [Zero R] [One R] (c : Bicycle.Family.Check n)
+  (v : Bicycle.Family.Var n) : Bicycle.Family.HX R c v = 0 ∨ Bicycle.Family.HX R c v = 1
+'Bicycle.Family.HX_binary' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.HX2_incidence {n : ℕ} (c : Bicycle.Family.Check n) (v : Bicycle.Family.Var n) :
+  Bicycle.Family.HX (ZMod 2) c v = 1 ↔ Bicycle.Family.E v c
+'Bicycle.Family.HX2_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.css {n : ℕ} [NeZero n] : Bicycle.Family.HX (ZMod 2) * (Bicycle.Family.HZ (ZMod 2)).transpose = 0
+'Bicycle.Family.css' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.bad_css {n : ℕ} [NeZero n] : Bicycle.Family.BadX (ZMod 2) * (Bicycle.Family.BadZ (ZMod 2)).transpose = 0
+'Bicycle.Family.bad_css' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.real_gram_equal {n : ℕ} [NeZero n] :
+  Bicycle.Family.HX ℝ * (Bicycle.Family.HX ℝ).transpose = Bicycle.Family.BadX ℝ * (Bicycle.Family.BadX ℝ).transpose
+'Bicycle.Family.real_gram_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.row_sound {n : ℕ} (v : Bicycle.Family.Var n) (c : Bicycle.Family.Check n)
+  (h : v ∈ Bicycle.Family.row c) : Bicycle.Family.E v c
+'Bicycle.Family.row_sound' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.row_nodup {n : ℕ} (h : 39 ∣ n) (c : Bicycle.Family.Check n) : (Bicycle.Family.row c).Nodup
+'Bicycle.Family.row_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.degree_four {n : ℕ} [NeZero n] (h : 39 ∣ n) (v : Bicycle.Family.Var n) :
+  (PartitionStopping.neighbors Bicycle.Family.E v).card = 4
+'Bicycle.Family.degree_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.row_weight_eight {n : ℕ} [NeZero n] (h : 39 ∣ n) (c : Bicycle.Family.Check n) :
+  {v | Bicycle.Family.HX (ZMod 2) c v = 1}.card = 8
+'Bicycle.Family.row_weight_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.dimensions {n : ℕ} [NeZero n] :
+  Fintype.card (Bicycle.Family.Var n) = 2 * n ∧ Fintype.card (Bicycle.Family.Check n) = n
+'Bicycle.Family.dimensions' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.column_local_inj {n : ℕ} (h : 39 ∣ n) (v : Bicycle.Family.Var n) (c d : Bicycle.Family.Check n)
+  (hc : Bicycle.Family.E v c) (hd : Bicycle.Family.E v d) (he : Bicycle.Family.projC h c = Bicycle.Family.projC h d) :
+  c = d
+'Bicycle.Family.column_local_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.overlap_le_base {n : ℕ} [NeZero n] (h : 39 ∣ n) (v w : Bicycle.Family.Var n) :
+  PartitionStopping.overlap Bicycle.Family.E v w ≤
+    PartitionStopping.overlap Bicycle.E (Bicycle.Family.projV h v) (Bicycle.Family.projV h w)
+'Bicycle.Family.overlap_le_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.overlap_bound {n : ℕ} [NeZero n] (h : 39 ∣ n) (v w : Bicycle.Family.Var n) (hne : v ≠ w) :
+  PartitionStopping.overlap Bicycle.Family.E v w ≤ if v.1 = w.1 then 1 else 2
+'Bicycle.Family.overlap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.incidence_bound_four {n : ℕ} [NeZero n] (h : 39 ∣ n) (T : Finset (Bicycle.Family.Var n))
+  (hT : Incidence.Stopping Bicycle.Family.E T) : 4 ≤ T.card
+'Bicycle.Family.incidence_bound_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.sixList_nodup {n : ℕ} [NeZero n] (h : 39 ∣ n) : Bicycle.Family.sixList.Nodup
+'Bicycle.Family.sixList_nodup' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.HX_count {n : ℕ} [NeZero n] (h : 39 ∣ n) (c : Bicycle.Family.Check n) (v : Bicycle.Family.Var n) :
+  Bicycle.Family.HX (ZMod 2) c v = ↑(List.countP (fun x => decide (x = c)) (Bicycle.Family.col v))
+'Bicycle.Family.HX_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.six_count_even {n : ℕ} [NeZero n] (c : Bicycle.Family.Check n) :
+  List.countP (fun x => decide (x = c)) (List.flatMap Bicycle.Family.col Bicycle.Family.sixList) % 2 = 0
+'Bicycle.Family.six_count_even' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.word {n : ℕ} : Bicycle.Family.Var n → ZMod 2
+'Bicycle.Family.word' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.six_row_sum {n : ℕ} [NeZero n] (h : 39 ∣ n) (c : Bicycle.Family.Check n) :
+  ∑ v ∈ Bicycle.Family.six, Bicycle.Family.HX (ZMod 2) c v = 0
+'Bicycle.Family.six_row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.word_kernel {n : ℕ} [NeZero n] (h : 39 ∣ n) : (Bicycle.Family.HX (ZMod 2)).mulVec Bicycle.Family.word = 0
+'Bicycle.Family.word_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.leftParity {n : ℕ} [NeZero n] (x : Bicycle.Family.Var n → ZMod 2) : ZMod 2
+'Bicycle.Family.leftParity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.word_parity {n : ℕ} [NeZero n] (h : 39 ∣ n) : Bicycle.Family.leftParity Bicycle.Family.word = 1
+'Bicycle.Family.word_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.row_parity {n : ℕ} [NeZero n] (h : 39 ∣ n) (c : Bicycle.Family.Check n) :
+  (Bicycle.Family.leftParity fun v => Bicycle.Family.HZ (ZMod 2) c v) = 0
+'Bicycle.Family.row_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.stabilizer_parity {n : ℕ} [NeZero n] (h : 39 ∣ n) (a : Bicycle.Family.Check n → ZMod 2) :
+  Bicycle.Family.leftParity ((Bicycle.Family.HZ (ZMod 2)).transpose.mulVec a) = 0
+'Bicycle.Family.stabilizer_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.word_not_stabilizer {n : ℕ} [NeZero n] (h : 39 ∣ n) :
+  ¬∃ a, (Bicycle.Family.HZ (ZMod 2)).transpose.mulVec a = Bicycle.Family.word
+'Bicycle.Family.word_not_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+BinaryStopping.matrix.{u_1, u_2} {V : Type u_1} {C : Type u_2} (E : V → C → Prop) [DecidableRel E] : Matrix C V (ZMod 2)
+'BinaryStopping.matrix' depends on axioms: [propext, Quot.sound]
+BinaryStopping.support.{u_1} {V : Type u_1} [Fintype V] (x : V → ZMod 2) : Finset V
+'BinaryStopping.support' depends on axioms: [propext, Classical.choice, Quot.sound]
+BinaryStopping.kernel_stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} [Fintype V] [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (x : V → ZMod 2) (hne : x ≠ 0) (hk : (BinaryStopping.matrix E).mulVec x = 0) :
+  Incidence.Stopping E (BinaryStopping.support x)
+'BinaryStopping.kernel_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.word_support {n : ℕ} [NeZero n] : BinaryStopping.support Bicycle.Family.word = Bicycle.Family.six
+'Bicycle.Family.word_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.word_weight {n : ℕ} [NeZero n] (h : 39 ∣ n) : (BinaryStopping.support Bicycle.Family.word).card = 6
+'Bicycle.Family.word_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.all_nonzero_kernel_weight_ge_six {n : ℕ} [NeZero n] (h : 39 ∣ n) (x : Bicycle.Family.Var n → ZMod 2)
+  (hne : x ≠ 0) (hk : (Bicycle.Family.HX (ZMod 2)).mulVec x = 0) : 6 ≤ (BinaryStopping.support x).card
+'Bicycle.Family.all_nonzero_kernel_weight_ge_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.quantum_distance_six {n : ℕ} [NeZero n] (h : 39 ∣ n) :
+  Bicycle.Family.HX (ZMod 2) * (Bicycle.Family.HZ (ZMod 2)).transpose = 0 ∧
+    (∀ (x : Bicycle.Family.Var n → ZMod 2),
+        x ≠ 0 → (Bicycle.Family.HX (ZMod 2)).mulVec x = 0 → 6 ≤ (BinaryStopping.support x).card) ∧
+      (Bicycle.Family.HX (ZMod 2)).mulVec Bicycle.Family.word = 0 ∧
+        (¬∃ a, (Bicycle.Family.HZ (ZMod 2)).transpose.mulVec a = Bicycle.Family.word) ∧
+          (BinaryStopping.support Bicycle.Family.word).card = 6
+'Bicycle.Family.quantum_distance_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.BadE {n : ℕ} (v : Bicycle.Family.Var n) (c : Bicycle.Family.Check n) : Prop
+'Bicycle.Family.BadE' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.bad_entry.{u_1} {n : ℕ} {R : Type u_1} [Zero R] [One R] (c : Bicycle.Family.Check n)
+  (v : Bicycle.Family.Var n) : Bicycle.Family.BadX R c v = if Bicycle.Family.BadE v c then 1 else 0
+'Bicycle.Family.bad_entry' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.two {n : ℕ} : Finset (Bicycle.Family.Var n)
+'Bicycle.Family.two' depends on axioms: [propext, Quot.sound]
+Bicycle.Family.two_card {n : ℕ} : Bicycle.Family.two.card = 2
+'Bicycle.Family.two_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.two_stopping {n : ℕ} : Incidence.Stopping Bicycle.Family.BadE Bicycle.Family.two
+'Bicycle.Family.two_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.positive_stopping_ge_two.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (positive : ∀ (v : V), ∃ c, E v c) (S : Finset V) (hS : Incidence.Stopping E S) :
+  2 ≤ S.card
+'Bicycle.Family.positive_stopping_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.bad_lower_two {n : ℕ} (T : Finset (Bicycle.Family.Var n))
+  (hT : Incidence.Stopping Bicycle.Family.BadE T) : 2 ≤ T.card
+'Bicycle.Family.bad_lower_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.bad_real_incidence {n : ℕ} (c : Bicycle.Family.Check n) (v : Bicycle.Family.Var n) :
+  Bicycle.Family.BadX ℝ c v = 1 ↔ Bicycle.Family.BadE v c
+'Bicycle.Family.bad_real_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.gram_only_cannot_improve_two {n : ℕ} [NeZero n]
+  (lower : Matrix (Bicycle.Family.Check n) (Bicycle.Family.Check n) ℝ → ℕ)
+  (valid_bad :
+    ∀ (T : Finset (Bicycle.Family.Var n)),
+      Incidence.Stopping (fun v c => Bicycle.Family.BadX ℝ c v = 1) T →
+        lower (Bicycle.Family.BadX ℝ * (Bicycle.Family.BadX ℝ).transpose) ≤ T.card) :
+  lower (Bicycle.Family.HX ℝ * (Bicycle.Family.HX ℝ).transpose) ≤ 2
+'Bicycle.Family.gram_only_cannot_improve_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.IsSidon.{u_1} {G : Type u_1} [AddCommGroup G] (S : Finset G) : Prop
+'SidonStopping.IsSidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.E.{u_1} {G : Type u_1} [AddCommGroup G] (S : Finset G) (v : Bool × G) (c : G) : Prop
+'SidonStopping.E' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.same_overlap.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] [Fintype G] (S : Finset G)
+  (hs : SidonStopping.IsSidon S) (b : Bool) (v w : G) (hvw : v ≠ w) :
+  PartitionStopping.overlap (SidonStopping.E S) (b, v) (b, w) ≤ 1
+'SidonStopping.same_overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.cross_overlap.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] [Fintype G] (S : Finset G)
+  (hs : SidonStopping.IsSidon S) (v w : G) : PartitionStopping.overlap (SidonStopping.E S) (false, v) (true, w) ≤ 2
+'SidonStopping.cross_overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.overlap_bound.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] [Fintype G] (S : Finset G)
+  (hs : SidonStopping.IsSidon S) (v w : Bool × G) (hne : v ≠ w) :
+  PartitionStopping.overlap (SidonStopping.E S) v w ≤ if v.1 = w.1 then 1 else 2
+'SidonStopping.overlap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.degree.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] [Fintype G] (S : Finset G) (v : Bool × G) :
+  (PartitionStopping.neighbors (SidonStopping.E S) v).card = S.card
+'SidonStopping.degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.stopping_bound.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] [Fintype G] (S : Finset G)
+  (hs : SidonStopping.IsSidon S) (T : Finset (Bool × G)) (hT : Incidence.Stopping (SidonStopping.E S) T) :
+  2 * (S.card + 1) ≤ 3 * T.card
+'SidonStopping.stopping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.sorted_sum_unique (a b c d : ℕ) (hab : a ≤ b) (hcd : c ≤ d) (he : 3 ^ a + 3 ^ b = 3 ^ c + 3 ^ d) :
+  a = c ∧ b = d
+'PowersThree.sorted_sum_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.sum_unique (a b c d : ℕ) (he : 3 ^ a + 3 ^ b = 3 ^ c + 3 ^ d) : a = c ∧ b = d ∨ a = d ∧ b = c
+'PowersThree.sum_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.pair_lt (γ n a b : ℕ) (hn : 3 ^ γ ≤ n) (ha : a < γ) (hb : b < γ) : 3 ^ a + 3 ^ b < n
+'PowersThree.pair_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.support (γ n : ℕ) : Finset (ZMod n)
+'PowersThree.support' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.cast_sum_injective {n : ℕ} (a b c d : ℕ) (hab : a + b < n) (hcd : c + d < n) (he : ↑a + ↑b = ↑c + ↑d) :
+  a + b = c + d
+'PowersThree.cast_sum_injective' depends on axioms: [propext, Quot.sound]
+PowersThree.sidon (γ n : ℕ) (hn : 3 ^ γ ≤ n) : SidonStopping.IsSidon (PowersThree.support γ n)
+'PowersThree.sidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.support_card (γ n : ℕ) (hn : 3 ^ γ ≤ n) : (PowersThree.support γ n).card = γ
+'PowersThree.support_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.coeff.{u_1, u_2} {G : Type u_1} [DecidableEq G] (R : Type u_2) [Zero R] [One R] (S : Finset G) (g : G) : R
+'SidonStopping.coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.X.{u_1, u_2} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (R : Type u_2) [Zero R] [One R]
+  (S : Finset G) : Matrix G (Bool × G) R
+'SidonStopping.X' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.BadX.{u_1, u_2} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (R : Type u_2) [Zero R] [One R]
+  (S : Finset G) : Matrix G (Bool × G) R
+'SidonStopping.BadX' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.BadZ.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (S : Finset G) : Matrix G (Bool × G) (ZMod 2)
+'SidonStopping.BadZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.entry.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2) [Zero R]
+  [One R] (S : Finset G) (v : Bool × G) (c : G) : SidonStopping.X R S c v = if SidonStopping.E S v c then 1 else 0
+'SidonStopping.entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.binary_incidence.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (v : Bool × G) (c : G) : SidonStopping.X (ZMod 2) S c v = 1 ↔ SidonStopping.E S v c
+'SidonStopping.binary_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.css.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  SidonStopping.X (ZMod 2) S * (SidonStopping.X (ZMod 2) S).transpose = 0
+'SidonStopping.css' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_css.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  SidonStopping.BadX (ZMod 2) S * (SidonStopping.BadZ S).transpose = 0
+'SidonStopping.bad_css' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.gram_equal.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose = SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose
+'SidonStopping.gram_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.column_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (v : Bool × G) : {c | SidonStopping.X (ZMod 2) S c v = 1}.card = S.card
+'SidonStopping.column_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.row_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) (c : G) :
+  {v | SidonStopping.X (ZMod 2) S c v = 1}.card = 2 * S.card
+'SidonStopping.row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.coefficient_sum.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  ∑ j, SidonStopping.coeff (ZMod 2) S j = ↑S.card
+'SidonStopping.coefficient_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.left_row_sum.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) (c : G) :
+  ∑ j, SidonStopping.X (ZMod 2) S c (false, j) = ↑S.card
+'SidonStopping.left_row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.leftParity.{u_1} {G : Type u_1} [Fintype G] (x : Bool × G → ZMod 2) : ZMod 2
+'SidonStopping.leftParity' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.leftOnes.{u_1} {G : Type u_1} : Bool × G → ZMod 2
+'SidonStopping.leftOnes' depends on axioms: [propext, Quot.sound]
+SidonStopping.leftOnes_kernel.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (heven : Even S.card) : (SidonStopping.X (ZMod 2) S).mulVec SidonStopping.leftOnes = 0
+'SidonStopping.leftOnes_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.stabilizer_parity.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (heven : Even S.card) (a : G → ZMod 2) :
+  SidonStopping.leftParity ((SidonStopping.X (ZMod 2) S).transpose.mulVec a) = 0
+'SidonStopping.stabilizer_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.leftOnes_not_stabilizer.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (heven : Even S.card) (hodd : Odd (Fintype.card G)) :
+  ¬∃ a, (SidonStopping.X (ZMod 2) S).transpose.mulVec a = SidonStopping.leftOnes
+'SidonStopping.leftOnes_not_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.positive_family (γ n : ℕ) [NeZero n] (hn : 3 ^ γ ≤ n) (heven : Even γ) (hodd : Odd n) :
+  have S := PowersThree.support γ n;
+  SidonStopping.X (ZMod 2) S * (SidonStopping.X (ZMod 2) S).transpose = 0 ∧
+    (∀ (v : Bool × ZMod n), {c | SidonStopping.X (ZMod 2) S c v = 1}.card = γ) ∧
+      (∀ (c : ZMod n), {v | SidonStopping.X (ZMod 2) S c v = 1}.card = 2 * γ) ∧
+        (∀ (T : Finset (Bool × ZMod n)), Incidence.Stopping (SidonStopping.E S) T → 2 * (γ + 1) ≤ 3 * T.card) ∧
+          (SidonStopping.X (ZMod 2) S).mulVec SidonStopping.leftOnes = 0 ∧
+            (¬∃ a, (SidonStopping.X (ZMod 2) S).transpose.mulVec a = SidonStopping.leftOnes) ∧
+              SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose =
+                SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose
+'PowersThree.positive_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.liftLength (d t : ℕ) : ℕ
+'PowersThree.liftLength' depends on axioms: [propext]
+PowersThree.lift_positive (d t : ℕ) : 0 < PowersThree.liftLength d t
+'PowersThree.lift_positive' depends on axioms: [propext, Quot.sound]
+PowersThree.lift_large (d t : ℕ) : 3 ^ (2 * d) ≤ PowersThree.liftLength d t
+'PowersThree.lift_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.lift_odd (d t : ℕ) : Odd (PowersThree.liftLength d t)
+'PowersThree.lift_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.arbitrary_fixed_guarantee (d t : ℕ) [NeZero (PowersThree.liftLength d t)]
+  (T : Finset (Bool × ZMod (PowersThree.liftLength d t)))
+  (hT : Incidence.Stopping (SidonStopping.E (PowersThree.support (2 * d) (PowersThree.liftLength d t))) T) :
+  d + 1 ≤ T.card
+'PowersThree.arbitrary_fixed_guarantee' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.lengths_unbounded (d N : ℕ) : ∃ t, N < 2 * PowersThree.liftLength d t
+'PowersThree.lengths_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.badE.{u_1} {G : Type u_1} [AddCommGroup G] (S : Finset G) (v : Bool × G) (c : G) : Prop
+'SidonStopping.badE' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twin.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] : Finset (Bool × G)
+'SidonStopping.twin' depends on axioms: [propext, Quot.sound]
+SidonStopping.twin_card.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] : SidonStopping.twin.card = 2
+'SidonStopping.twin_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twin_stopping.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  Incidence.Stopping (SidonStopping.badE S) SidonStopping.twin
+'SidonStopping.twin_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_lower_two.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (hS : S.Nonempty) (T : Finset (Bool × G)) (hT : Incidence.Stopping (SidonStopping.badE S) T) : 2 ≤ T.card
+'SidonStopping.bad_lower_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_entry.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2) [Zero R]
+  [One R] (S : Finset G) (v : Bool × G) (c : G) : SidonStopping.BadX R S c v = if SidonStopping.badE S v c then 1 else 0
+'SidonStopping.bad_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_row_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) (c : G) :
+  {v | SidonStopping.BadX (ZMod 2) S c v = 1}.card = 2 * S.card
+'SidonStopping.bad_row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.gram_only_bound.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (lower : Matrix G G ℝ → ℕ)
+  (valid_bad :
+    ∀ (T : Finset (Bool × G)),
+      Incidence.Stopping (SidonStopping.badE S) T →
+        lower (SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose) ≤ T.card) :
+  lower (SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose) ≤ 2
+'SidonStopping.gram_only_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_binary_incidence.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (v : Bool × G) (c : G) : SidonStopping.BadX (ZMod 2) S c v = 1 ↔ SidonStopping.badE S v c
+'SidonStopping.bad_binary_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_column_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (v : Bool × G) : {c | SidonStopping.BadX (ZMod 2) S c v = 1}.card = S.card
+'SidonStopping.bad_column_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.spectral_data_equal.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G]
+  {Data : Type u_2} (S : Finset G) (f : Matrix G G ℝ → Data) :
+  f (SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose) =
+    f (SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose)
+'SidonStopping.spectral_data_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+BinaryStopping.css_row_stopping.{u_1, u_2, u_3} {V : Type u_1} {C : Type u_2} {D : Type u_3} [Fintype V] [DecidableEq V]
+  [DecidableEq C] (E : V → C → Prop) [DecidableRel E] (Z : Matrix D V (ZMod 2))
+  (hcss : BinaryStopping.matrix E * Z.transpose = 0) (d : D) (hne : (fun v => Z d v) ≠ 0) :
+  Incidence.Stopping E (BinaryStopping.support fun v => Z d v)
+'BinaryStopping.css_row_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.row_stopping.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (hne : S.Nonempty) (c : G) :
+  have T := BinaryStopping.support fun v => SidonStopping.X (ZMod 2) S c v;
+  Incidence.Stopping (SidonStopping.E S) T ∧ T.card = 2 * S.card
+'SidonStopping.row_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+StrongerAnswer.exact_stopping_six (t : ℕ) [NeZero t] :
+  have n := 39 * t;
+  (∀ (T : Finset (Bicycle.Family.Var n)), Incidence.Stopping Bicycle.Family.E T → 6 ≤ T.card) ∧
+    Incidence.Stopping Bicycle.Family.E Bicycle.Family.six ∧ Bicycle.Family.six.card = 6
+'StrongerAnswer.exact_stopping_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+StrongerAnswer.reusable_four (t : ℕ) [NeZero t] (T : Finset (Bicycle.Family.Var (39 * t)))
+  (hT : Incidence.Stopping Bicycle.Family.E T) : 4 ≤ T.card
+'StrongerAnswer.reusable_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} (E : V → C → Prop) [DecidableRel E] (T : Finset V) : Prop
+'Incidence.Stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.stopping_extension.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
+  [DecidableRel E] (T S : Finset V) (hT : Incidence.Stopping E T) (hST : S ⊆ T) (c : C)
+  (hc : {v ∈ S | E v c}.card = 1) : ∃ v ∈ T, v ∉ S ∧ E v c
+'Incidence.stopping_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.Check : Type
+'Incidence.Check' does not depend on any axioms
+Incidence.Var : Type
+'Incidence.Var' does not depend on any axioms
+Incidence.col (v : Incidence.Var) : List Incidence.Check
+'Incidence.col' depends on axioms: [propext, Quot.sound]
+Incidence.E (v : Incidence.Var) (c : Incidence.Check) : Prop
+'Incidence.E' depends on axioms: [propext, Quot.sound]
+Incidence.row (c : Incidence.Check) : List Incidence.Var
+'Incidence.row' depends on axioms: [propext, Quot.sound]
+Incidence.row_complete (v : Incidence.Var) (c : Incidence.Check) (h : Incidence.E v c) : v ∈ Incidence.row c
+'Incidence.row_complete' depends on axioms: [propext, Quot.sound]
+Incidence.shiftV (t : Incidence.Check) : Incidence.Var ≃ Incidence.Var
+'Incidence.shiftV' depends on axioms: [propext, Quot.sound]
+Incidence.shiftC (t : Incidence.Check) : Incidence.Check ≃ Incidence.Check
+'Incidence.shiftC' depends on axioms: [propext, Quot.sound]
+Incidence.shift_incidence (t : Incidence.Check) (v : Incidence.Var) (c : Incidence.Check) :
+  Incidence.E ((Incidence.shiftV t) v) ((Incidence.shiftC t) c) ↔ Incidence.E v c
+'Incidence.shift_incidence' depends on axioms: [propext, Quot.sound]
+Incidence.stopping_image.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
+  [DecidableRel E] (e : V ≃ V) (f : C ≃ C) (he : ∀ (v : V) (c : C), E (e v) (f c) ↔ E v c) (T : Finset V)
+  (hT : Incidence.Stopping E T) : Incidence.Stopping E (Finset.image (⇑e) T)
+'Incidence.stopping_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.survivesList.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] (pick : List V → Option C)
+  (row : C → List V) (n : ℕ) : List V → Bool
+'Incidence.survivesList' depends on axioms: [propext]
+Incidence.survivesList_of_stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] (pick : List V → Option C) (row : C → List V)
+  (hp : ∀ (S : List V), S.Nodup → ∀ (c : C), pick S = some c → {v ∈ S.toFinset | E v c}.card = 1)
+  (hr : ∀ (v : V) (c : C), E v c → v ∈ row c) (n : ℕ) (S : List V) (T : Finset V) (hT : Incidence.Stopping E T)
+  (hnd : S.Nodup) (hST : S.toFinset ⊆ T) (hcard : T.card ≤ S.length + n) : Incidence.survivesList pick row n S = true
+'Incidence.survivesList_of_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.pickList (S : List Incidence.Var) : Option Incidence.Check
+'Incidence.pickList' depends on axioms: [propext, Quot.sound]
+Incidence.pickList_singleton (S : List Incidence.Var) (hn : S.Nodup) (c : Incidence.Check)
+  (h : Incidence.pickList S = some c) : {v ∈ S.toFinset | Incidence.E v c}.card = 1
+'Incidence.pickList_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+Incidence.stopping_cover_image.{u_1, u_2, u_3, u_4} {V : Type u_1} {C : Type u_2} {W : Type u_3} {D : Type u_4}
+  [DecidableEq V] [DecidableEq C] [DecidableEq W] [DecidableEq D] (E : V → C → Prop) [DecidableRel E] (F : W → D → Prop)
+  [DecidableRel F] (p : V → W) (q : C → D) (maps : ∀ (v : V) (c : C), E v c → F (p v) (q c))
+  (lifts : ∀ (v : V) (d : D), F (p v) d → ∃ c, E v c ∧ q c = d)
+  (local_inj : ∀ (v w : V) (c : C), E v c → E w c → p v = p w → v = w) (T : Finset V) (hT : Incidence.Stopping E T) :
+  Incidence.Stopping F (Finset.image p T)
+'Incidence.stopping_cover_image' depends on axioms: [propext, Classical.choice, Quot.sound]
