@@ -1,0 +1,510 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,array,hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Nf}{\mathsf N_{4,0}}
+\newcommand{\repo}{https://github.com/alectionary/vibe-math}
+\newcommand{\prooflink}[2]{\href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/lift-label-elimination/#1.lean}{\texttt{#2}}}
+\title{Cyclic-voltage elimination of Pasch supports\\in two cubic configurations}
+\author{Anonymous research notes}
+\date{24 October 2026 --- review draft}
+\begin{document}
+\maketitle
+\begin{abstract}
+We specialize the classical voltage and cycle-consistency method to two fixed
+cubic, linear $10_3$ configurations. For an ordinary $N$-fold monomial cover,
+every elementary $(4,0)$ support projects injectively to a base Pasch and
+contributes exactly $N$ supports precisely when its three fundamental cycle
+voltages vanish. Explicit unit normal forms over the integers give complete
+label histograms for every $N\geq1$, including composite $N$. The numbers of
+eliminating raw label arrays are $N^{30}-N^{27}$ and
+$N^{30}-5N^{27}+10N^{24}-10N^{21}+4N^{19}$.
+We distinguish elimination in a cover sector from elimination in the full
+scalar-right CSS construction. The fixed seven-coordinate scalar forces at
+least seventy supports per Tanner graph. Replacing its length by $7q$ and
+changing just two base-edge labels yields a family with parameters
+$[[140q,18,6]]$, $q\geq2$, column weight three, row weight six and no
+$(4,0)$ supports in either graph. The contribution is an explicit specialization
+and reproducible proof artifact; the general design method and the base
+configurations are classical. A bounded prior-art search does not establish
+priority for the exact specialization or code parameters.
+\end{abstract}
+\noindent\textbf{Verification.} Every manuscript proof has a checked Lean version. The 70 mathematical modules were built from their recorded sources; the axiom audit covers all 1,755 named authored declarations. The source links below are pinned to \href{https://github.com/alectionary/vibe-math/commit/41307a70c2c0952e2222ee20ae4517a9b046030f}{\texttt{41307a70c2c0}}. The machine-readable \href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/lift-label-elimination/proof-coverage.json}{proof inventory} records the claim-to-theorem correspondence; \href{https://github.com/alectionary/vibe-math/blob/41307a70c2c0952e2222ee20ae4517a9b046030f/formalization/lift-label-elimination/PROOFS.md}{the full file index} links every compiled proof and preserved research import.
+
+\section{Question, prior art and conventions}
+The project-derived question is to characterize and count the edge labels that
+eliminate all elementary $(4,0)$ supports in the ordinary cyclic covers of two
+specific cubic configurations. It is a follow-up to an already completed
+incidence-corrected counting investigation, rather than a newly inventoried
+question posed by a source author. Abiad--Castriota~\cite{AC} supplies the
+QC-GHP context and the earlier counting direction.
+
+A variable neighborhood is a finite set $H(v)\subseteq C$. We assume
+$|H(v)|=3$ and $|H(u)\cap H(v)|\leq1$ for $u\ne v$. An elementary $(4,0)$
+support is an \emph{unordered} set of four variables for which every used
+check has selected degree two. In a cubic linear incidence structure it is a
+Pasch: the normal graph is $K_4$, with six distinct pair checks. Equivalently,
+its four actual binary columns have zero sum. A selected degree-four check
+would consume the unique common check of every pair and prevent pairing the
+remaining sockets, so a four-column binary dependency is automatically
+elementary under these hypotheses. We use the preserved generic Lean
+classification and actual binary-matrix bridge for these facts.
+
+For CSS parameters we use the binary check-matrix model: $XZ^{\mathsf T}=0$,
+$k=n-\operatorname{rank}X-\operatorname{rank}Z$, and distance equal to the
+minimum union support of a nontrivial logical pair $(x,z)$. Such a pair obeys
+$Zx=Xz=0$ and lies outside the product of the two stabilizer row spaces.
+The Lean statements use these actual matrices and this mixed-Pauli convention.
+
+LDPC constructions based on voltage graphs were studied by Kelley and
+Walker~\cite{KW}. Asvadi et al.~\cite{ABA} explicitly relate cyclic
+voltage sums to lifted cycle closure and intentional removal of trapping
+structures. The cycle-consistency matrix approach of
+Wang et al.~\cite{WDW11,WDW12} gives the corresponding fundamental-cycle
+framework for absorbing structures. Its SCB separability, prime-field and
+consistency hypotheses must be compared with the present arbitrary monomial
+labels over $\Z/N\Z$; we prove that translation rather than treating the
+settings as identical. Earlier combinatorial QC constructions and
+Pasch-based distance arguments also appear in Vasi\'c and Djordjevi\'c~\cite{VD} and
+Noda~\cite{Noda}. For those two items and Kelley--Walker we inspected primary
+abstracts or metadata, not the unavailable full articles. They remain explicit
+limits on an exact novelty comparison.
+
+The two base configurations below are classical; their construction and author
+data are credited to~\cite{PP,AFKL}. Relevant passages and the author data were
+compared in the preceding research block, with exact relabelings retained in
+its artifact. We do not claim new configurations, a new anti-Pasch principle,
+a code-parameter record, decoder improvement or optimality.
+
+The bounded search additionally covered public GitHub repositories and code,
+and three authenticated, read-only X Latest queries. All three X queries
+returned no results. GitHub searches had stated caps; selected public candidates
+led to the earlier 2003 and 2006 sources. Negative results from invalid or
+ineffective query qualifiers were excluded. Query strings, candidate inspections,
+source versions, caps and access failures are in the prior-art ledger. No
+comprehensive citation harvest or exhaustive code-equivalence search is claimed.
+
+\section{Projection and the exact voltage criterion}
+Let $G$ be a finite abelian group and put a voltage $z(v,c)\in G$ on every
+existing incidence. Define the actual cover columns by
+\begin{equation}\label{eq:cover}
+ H_z(v,t)=\{(c,t+z(v,c)):c\in H(v)\}.
+\end{equation}
+Voltages on nonedges have no effect. The numerical counts below specialize to
+$G=\Z/N\Z$, $N\geq1$.
+
+\begin{lemma}[Faithful Pasch projection]\label{lem:projection}
+Every Pasch in $H_z$ has four distinct base variable types and projects to a
+base Pasch.
+\end{lemma}
+\begin{proof}
+Two different fibers of the same variable cannot share a check: their single
+edges to a fixed base check would require $t+z=s+z$, hence $t=s$. The four
+pairwise adjacent variables of a lifted Pasch therefore have distinct types.
+Suppose three projected types contained the same base check $c$. Base linearity
+forces their pair checks to have type $c$. The single $c$-edge at one lifted
+variable then forces a common actual check of selected degree at least three,
+a contradiction. Thus projected selected degrees are at most two. Cubicity and
+pair completeness now give the base Pasch.
+\end{proof}
+
+Fix an ordered representative $v_0,v_1,v_2,v_3$ of a base Pasch, and let
+$c_{ij}$ be its unique pair check. Set $d_{ij}=z(v_i,c_{ij})-z(v_j,c_{ij})$.
+The six actual lifted pair incidences are the equations $x_j-x_i=d_{ij}$.
+\begin{theorem}[Voltage criterion and unordered count]\label{thm:voltage}
+The representative lifts if and only if
+\begin{equation}\label{eq:balance}
+ d_{01}+d_{12}=d_{02},\qquad d_{01}+d_{13}=d_{03},\qquad
+ d_{02}+d_{23}=d_{03}.
+\end{equation}
+A balanced base support has exactly $|G|$ lifted supports. Consequently
+\begin{equation}\label{eq:global}
+ \Nf(H_z)=|G|\,\#\{\text{balanced base Pasch supports}\}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Cancellation gives necessity. Under~\eqref{eq:balance}, all six equations hold
+for, and only for,
+$(x_0,x_1,x_2,x_3)=(t,t+d_{01},t+d_{02},t+d_{03})$, $t\in G$.
+The base pair checks are distinct, so these equations give an actual Pasch.
+Distinct $t$ give distinct unordered supports because their base types differ;
+different base supports have different projections. Lemma~\ref{lem:projection}
+gives surjectivity. Formally, the last step is a bijection between unordered
+supports with injective projection and a base support together with offsets
+above a fixed labeling. Reindexing that labeling changes neither existence nor
+multiplicity. The checked proof includes this finite-set partition, not just
+the solution count for a fixed ordered tuple.
+\end{proof}
+
+\section{Complete label counts for the two fixed bases}
+Write a triple such as $012$ for $\{0,1,2\}$. The star base has columns
+\[
+012,034,135,245,067,168,269,378,479,589.
+\]
+The triangle base replaces its first four triples by $345,125,024,013$.
+Both have ten variables, ten checks and thirty edges, and are cubic and linear
+on both sides. The star has the sole Pasch $0123$. The triangle has exactly
+\[
+0123,\quad0789,\quad1569,\quad2468,\quad3457.
+\]
+These complete finite lists and all pair checks are kernel-checked. A raw label
+array has thirty coordinates, ordered by variable and then check. For the auxiliary eleven-coordinate slice, the allowed edge positions are
+$7,10,11,16,19,22,23,25,26,28,29$ for the star and
+$8,10,11,16,19,22,23,25,26,28,29$ for the triangle (zero-based indices);
+the remaining nineteen labels are zero. The label encodings are injective.
+We count raw arrays and these explicit slices independently. No assertion
+about equivalence classes under switching is needed or made.
+
+For a subset $J$ of the balance events, stack its three integer cycle rows
+into $A_J$. Explicit elementary integer row and column operations reduce
+$A_J$, both on all thirty edges and on the eleven slice coordinates, to
+$\operatorname{diag}(I_r,0)$. For the star $r=0,3$. For the triangle,
+\begin{center}
+\begin{tabular}{c@{\qquad}rrrrrr}
+\toprule
+$|J|$&0&1&2&3&4&5\\
+$r_J$&0&3&6&9&11&11\\
+\bottomrule
+\end{tabular}
+\end{center}
+The nonzero invariant factors are all units. This integer assertion is stronger
+than a rational or prime-field rank computation.
+
+\begin{lemma}[Certificate soundness]\label{lem:integer}
+If integer matrices $U,U^{-1},V,V^{-1}$ satisfy the recorded inverse identities
+and $UAV=\operatorname{diag}(I_r,0)$, reduction modulo every positive $N$
+gives $N^{n-r}$ solutions to $Az=0$ in $(\Z/N\Z)^n$.
+\end{lemma}
+\begin{proof}
+The integer identities survive the ring homomorphism to $\Z/N\Z$. The map
+$z\mapsto V^{-1}z$ is a bijection from the original kernel to the diagonal
+kernel, with inverse $y\mapsto Vy$. The diagonal kernel consists of vectors
+with its first $r$ coordinates zero and its remaining $n-r$ arbitrary. This
+argument needs neither a field nor coprimality. All inverse and normal-form
+identities, as well as their connection to the literal cycle rows, are checked
+in Lean. An independent Python verifier reconstructs and replays the same
+certificates.
+\end{proof}
+
+\begin{theorem}[All-$N$ label histograms]\label{thm:hist}
+The raw numbers eliminating every left-cover Pasch are
+\begin{align}
+ E_{\rm star}(N)&=N^{30}-N^{27},\label{eq:star}\\
+ E_{\rm triangle}(N)&=N^{30}-5N^{27}+10N^{24}-10N^{21}+4N^{19}.\label{eq:triangle}
+\end{align}
+For the triangle, let $g_j$ count slice arrays with exactly $j$ balanced
+base Pasches. Then
+\begin{align*}
+ g_0&=N^{11}-5N^8+10N^5-10N^2+4,\\
+ g_1&=5(N^8-4N^5+6N^2-3),\\
+ g_2&=10(N^5-3N^2+2),\\
+ g_3&=10(N^2-1),\qquad g_4=0,\qquad g_5=1.
+\end{align*}
+Raw histograms are $N^{19}g_j$. The star slice histogram is
+$(N^{11}-N^8,N^8)$. An array in bin $j$ gives $Nj$ actual lifted supports.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:integer} gives $N^{n-r_J}$ for every event intersection.
+Inclusion-exclusion gives~\eqref{eq:star}--\eqref{eq:triangle}. More generally,
+\[
+ g_j=\sum_{s=j}^{5}(-1)^{s-j}\binom{s}{j}\binom{5}{s}N^{11-r_s}.
+\]
+This follows pointwise: a truth pattern with $k$ events contributes
+$\sum_{s=j}^k(-1)^{s-j}\binom{s}{j}\binom{k}{s}$, which is one for $k=j$
+and zero otherwise. Summing gives the histogram. The Lean proof checks the
+finite truth-pattern identity, proves the summation bridge and groups subsets
+by cardinality. It then evaluates the six polynomials. Literal voltage data
+connect the abstract linear forms to the actual edge labels of both bases.
+The raw calculation uses $n=30$, the slice calculation $n=11$; their ratio
+and the displayed raw factors follow from the two independently checked counts.
+\end{proof}
+
+At $N=1$ no base Pasch can be eliminated. For $N\geq2$ the eliminating counts
+are positive. In particular,
+\[
+ g_0=N^8(N^3-5)+10N^2(N^3-1)+4>0.
+\]
+For the star, $N^{30}-N^{27}=N^{27}(N^3-1)>0$.
+
+\begin{proposition}[Simultaneous original and dual elimination]\label{prop:joint}
+For the star base, the number of raw arrays eliminating both its original and
+its dual-cover Pasch is
+\begin{equation}\label{eq:joint}
+ N^{30}-2N^{27}+N^{24}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The dual has its sole Pasch on check types $6,7,8,9$. Pulling its voltages back
+to the original edges with a minus sign gives a second three-row event. The
+stacked six-row matrix has an explicit unit normal form of rank six. Each
+individual event has rank three. Lemma~\ref{lem:integer} and two-event
+inclusion-exclusion give~\eqref{eq:joint}.
+\end{proof}
+
+\section{Full scalar-right incidence and the quantum family}
+Let $R_N=\F[x]/(x^N+1)$, and let $A_{cv}=x^{z(v,c)}$ on each base edge.
+The adjoint $*$ transposes a matrix and replaces $x$ by $x^{-1}$. For
+$b=1+x+x^3$, use
+\begin{equation}\label{eq:css}
+ X=[A\mid b^*I_C],\qquad Z=[bI_V\mid A^*].
+\end{equation}
+Thus $XZ^*=Ab^*+b^*A=0$. Equivalently, common cyclic translations commute
+with the arbitrary monomial cover, and the two equal binary summands cancel.
+The Lean proof uses the actual expanded sparse matrices and block product.
+
+An $X$ left column $(v,t)$ is~\eqref{eq:cover}; an $X$ right column $(c,t)$
+has checks $(c,t-e)$ for $e\in\{0,1,3\}$. A $Z$ left column $(v,t)$ has
+checks $(v,t+e)$, and a $Z$ right column $(c,t)$ has checks $(v,t-z(v,c))$.
+These signs specify the ordinary binary transpose convention.
+
+\begin{theorem}[Full support partition]\label{thm:full}
+For $N\geq7$, any base whose incidence and transpose are cubic and linear, and any
+monomial labels, suppose the scalar columns $B$ are cubic and linear. Then
+\begin{equation}\label{eq:full}
+ \Nf(X)=\Nf(H_z)+|C|\Nf(B),\qquad
+ \Nf(Z)=\Nf(H^*_{z})+|V|\Nf(B).
+\end{equation}
+No mixed-sector Pasch occurs. For the two ten-type bases and $N=7$, each full
+Tanner graph therefore retains at least seventy supports, for every left label
+assignment.
+\end{theorem}
+\begin{proof}
+An adjacent mixed pair has no proper common neighbor: base linearity and the
+single edge of each left variable at a fixed check type would force any such
+neighbor into a triple common check. In a Pasch every third variable would be
+a proper common neighbor of either root pair, so a mixed pair is impossible.
+Every support is all left or all right. Pairwise adjacency forces an all-right
+support into a single check-type fiber. The finite-set partition gives the
+sum of the left-cover count and one scalar count per fiber. The scalar at
+$N=7$ has exactly seven supports; its transpose has the same count. Hence
+$10\cdot7=70$ is unavoidable even when every left-cover Pasch is eliminated.
+\end{proof}
+
+\begin{theorem}[Explicit family]\label{thm:family}
+For every integer $q\geq2$, put $N=7q$, use the star base and set
+\begin{equation}\label{eq:labels}
+ z(0,0)=z(4,6)=7,\qquad z(v,c)=0\text{ on all other edges}.
+\end{equation}
+The actual binary checks~\eqref{eq:css} define a CSS code with parameters
+$[[140q,18,6]]$. Both graphs have column weight three, row weight six, no
+Tanner four-cycle and no elementary $(4,0)$ support.
+\end{theorem}
+\begin{proof}
+\emph{Scalar factor.} The kernel equation of the negative-shift scalar is
+$f_{t+3}=f_t+f_{t+1}$. Every solution is determined by three bits $(a,b,c)$
+and follows the seven-periodic pattern
+\[
+ (a,b,c,a+b,b+c,a+b+c,a+c).
+\]
+At length $7q$ all eight patterns occur. Every nonzero pattern has four ones
+per seven coordinates, so every nonzero scalar kernel word has weight $4q$.
+Thus $q\geq2$ excludes weight four. Reflection proves the same assertion for
+the transposed scalar. The differences of $\{0,1,3\}$ are distinct modulo
+$N\geq14$, proving scalar cubicity and linearity.
+
+\emph{Cover sectors.} The original sole Pasch has a cycle residual $7$,
+and the dual sole Pasch has a residual $\pm7$; these are nonzero modulo $7q$.
+The checked duality maps base variable $u$ to dual variable $u+6\pmod{10}$
+and base check $c$ to dual check $c+4\pmod{10}$, changing the two-edge label
+pattern to its negative. Hence both cover sectors have no four-column binary
+dependency. Theorem~\ref{thm:full} excludes supports in the full graphs.
+Cubicity follows from the two three-socket column types. Cover linearity,
+scalar linearity and the one-edge-per-check-type property exclude Tanner
+four-cycles, including mixed pairs. A row has three cover neighbors and three
+scalar neighbors, giving weight six.
+
+\emph{Dimension.} In either check-equation kernel, the scalar conditions force
+each coordinate sequence into a seven-periodic three-bit pattern (with
+reflection for the negative orientation). All nonzero labels are multiples of
+seven, so shifts by those labels act trivially on such sequences. Each of the
+three phases therefore belongs to the kernel of the binary star incidence or
+its transpose. Each base kernel has exactly eight elements, as certified by
+its complete finite support list. Consequently each expanded check-equation
+kernel has $8^3=512=2^9$ elements. Binary rank-nullity gives
+\[
+ \operatorname{rank}X=\operatorname{rank}Z=10N-9,
+ \qquad k=20N-2(10N-9)=18.
+\]
+This recurrence argument also covers even $q$, without a square-free or
+coprimality assumption on the polynomial quotient.
+
+\emph{Distance.} Put ones on left variable types $\{2,3,5,6,7,8\}$ at fiber zero
+and zero elsewhere, obtaining $w$ of weight six. These six base columns sum
+to zero and avoid the two modified variables, so $Xw=0$. Let $p$ be the scalar
+pattern with initial bits $(1,0,0)$, and put $u(v,t)=p(-t)$ for left type $v=2$,
+with zero on all other coordinates. Then $Zu=0$ and $\langle w,u\rangle=1$.
+Every vector in the row space of $Z$ is orthogonal to $u$, so $w$ is a nontrivial
+logical word. Column weight three forces every kernel word to have even weight;
+linearity excludes weight two; the elimination proof excludes weight four.
+Thus both classical check kernels have minimum nonzero weight at least six.
+Every nontrivial mixed CSS logical has a nontrivial component whose support
+is contained in its Pauli support, so its weight is at least six. The pure word
+$w$ attains six, proving the exact distance.
+\end{proof}
+
+The family has constant dimension and distance; it is a structural example,
+not a claim of an asymptotically good or experimentally improved code. The
+case $q=2$ is $[[280,18,6]]$. An independent C++ verifier reconstructs all
+columns, checks both ranks $131$, commutation, degrees and linearity, and
+exhaustively tests all $250{,}654{,}530$ four-subsets in each graph. It also checks
+the logical support with zero-based indices $28,42,70,84,98,112$ by an augmented
+row-rank calculation. Python exact consumers additionally cover $q=3,4$.
+These computations are independent checks of the specified finite instances;
+the all-$q$ conclusion uses the proof above.
+
+\section{Proof artifacts and reproducibility}
+The proof inventory below names checked entry points. All seven manuscript
+proof blocks, plus their finite data, source translations and auxiliary claims,
+have Lean versions with matching hypotheses and conclusions. The axiom audit
+queries every named authored declaration, including definitions containing proofs. Source files and all imported research modules are
+included in the repository. Compiled objects, third-party PDFs and local caches
+are not redistributed.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.60\textwidth}@{}}
+\toprule Claim or bridge&Direct repository proof file\\\midrule\endhead
+Projection and actual incidence&\prooflink{PaschLiftProjection}{PaschLiftProjection.lean}; \prooflink{PaschLiftCriterion}{PaschLiftCriterion.lean}\\
+Unordered all-$N$ count&\prooflink{SupportVoltageCount}{SupportVoltageCount.lean}; \prooflink{CountRepresentatives}{CountRepresentatives.lean}\\
+Complete base lists and physical voltages&\prooflink{StarVoltageData}{StarVoltageData.lean}; \prooflink{TriangleVoltageData}{TriangleVoltageData.lean}\\
+Integer certificate soundness&\prooflink{NormalFormCount}{NormalFormCount.lean}; individual normal forms and row connections in the manifest\\
+Histograms and raw label counts&\prooflink{LabelHistograms}{LabelHistograms.lean}; \prooflink{ConcreteElimination}{ConcreteElimination.lean}\\
+Label encodings and positivity&\prooflink{LabelEncoding}{LabelEncoding.lean}; \prooflink{PositiveLabelCounts}{PositiveLabelCounts.lean}\\
+Simultaneous star/dual count&\prooflink{JointElimination}{JointElimination.lean}\\
+Full scalar-right count&\prooflink{QCSupportCount}{QCSupportCount.lean}; \prooflink{FullGraphCounts}{FullGraphCounts.lean}\\
+Fixed seven-coordinate obstruction&\prooflink{FanoObstruction}{FanoObstruction.lean}\\
+Scalar factor, all $q$&\prooflink{ScalarWeight}{ScalarWeight.lean}; \prooflink{ScalarIncidence}{ScalarIncidence.lean}\\
+Actual CSS matrices and dimensions&\prooflink{SparseCSSMatrices}{SparseCSSMatrices.lean}; \prooflink{FamilyRank}{FamilyRank.lean}\\
+Full-graph elimination and distance&\prooflink{FamilyGraphs}{FamilyGraphs.lean}; \prooflink{FamilyPauliDistance}{FamilyPauliDistance.lean}\\
+Row degrees and final family&\prooflink{SparseRowDegrees}{SparseRowDegrees.lean}; \prooflink{FamilyTheorem}{FamilyTheorem.lean}\\
+\bottomrule
+\end{longtable}
+\noindent The pinned environment is Lean \texttt{v4.36.0-rc1}, mathlib revision
+\href{https://github.com/leanprover-community/mathlib4/commit/5f7b4198d22a9c82e1c698a379334fe128095c82}{\texttt{5f7b4198d22a}} (full revision in the manifest). The final modules were
+built from their recorded sources and audited for axioms; only \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound} are permitted. No admitted
+proof, native-decision axiom or custom mathematical axiom is accepted.
+The new checks distinguish newly compiled modules from the unchanged,
+previously freshly checked sixty-one-module dependency artifact.
+
+For example, the following are ASCII renderings of checked entry-point
+statements. The first has $N>0$; the last two have $q>0$, and $F=\Z/2\Z$.
+Here \texttt{Logical} uses the two actual binary syndromes and excludes the
+corresponding stabilizer row spaces; \texttt{pauliWeight} counts the union of
+the two component supports.
+{\small\begin{verbatim}
+theorem star_raw_count :
+  (Nat.card {z : Fin 30 -> ZMod N //
+    Eliminates StarVoltageData.H (StarVoltageData.labelsRaw z)}
+    : Int) = (N : Int)^30 - (N : Int)^27
+
+theorem dimension :
+  Fintype.card (Qubits q) - (X q).rank - (Z q).rank = 18 := by
+  have hx := rankX q
+  have hz := rankZ q
+  have hq := NeZero.ne q
+  rw [length]
+  omega
+
+theorem distance_six (hq : 2 <= q) :
+  And (forall x z : Qubits q -> F,
+         Logical q x z -> 6 <= pauliWeight q x z)
+      (And (Logical q 0 (word q))
+           (pauliWeight q 0 (word q) = 6))
+\end{verbatim}}
+The source proofs respectively transport the exact physical elimination
+predicate to its counted balance event, apply binary rank-nullity to the
+literal check matrices, and combine a lower bound for every mixed Pauli word
+with the explicit separating logical witness. The complete statements,
+including their section parameters and imports, are in the linked files.
+
+
+Run \texttt{verify.py} for the independent certificate and C++ checks, and
+\texttt{verify\_lean.py --project /path/to/pinned/project} after rebuilding the
+preserved dependency artifact. The independent slice enumeration covers all
+eleven-coordinate arrays for $N=2,3,4$ in both bases: $8{,}746{,}998$ arrays.
+The polynomial histogram agrees in every case. The 128 seeded direct lifted
+incidence consumers are sampled checks, not exhaustive evidence. Frozen
+predecessor archives remain unchanged.
+
+\appendix
+\section{Reference chronology and timing}
+Every delta is the age of the stated source milestone at this paper's revision,
+24 October 2026. It is \emph{not} a claim that a problem remained unsolved for
+that interval. Year-only dates give a day-range; conference intervals are
+retained. For the 2016 source we use the earliest located publisher date, not
+an asserted earliest preprint. Date arithmetic is reproduced in
+\texttt{reference-chronology.json}.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}r@{}}
+\toprule Source&Earliest located milestone&Inspected version / access&Delta (days)\\\midrule\endhead
+Vasi\'c--Djordjevi\'c&1--3 Oct. 2003&Conference interval; primary institutional abstract only&8422--8424\\
+Noda&3--7 Apr. 2006&Conference interval; primary publisher abstract only&7505--7509\\
+Kelley--Walker&2008 (year only)&ISIT year; institutional abstract only&6506--6871\\
+Asvadi et al.&23 Feb. 2010&arXiv v1 read; final 2011 metadata only&6087\\
+Wang et al.&2011 (year only)&ITA author PDF read&5411--5775\\
+Wang et al.&30 Aug. 2012&5 Dec. 2012 v2 read; final 2013 metadata only&5168\\
+Pra\.{z}mowska and Pra\.{z}mowski&16 Feb. 2016&Publisher date; relevant HTML proofs read&3903\\
+Abreu et al.&10 Apr. 2021&12 Sep. 2021 v2 passages and author data&2023\\
+Abiad--Castriota&15 July 2026&v1 source conventions rechecked&101\\
+
+\bottomrule
+\end{longtable}
+The bounded mathematical research block ran from 15:54:07 to 16:54:07 UTC on
+24 October 2026 (sixty minutes). It included the prior-art audit and ordinary
+construction/count arguments. Subsequent Lean proof transfer, manuscript
+preparation and publication are recorded separately; that later work is not
+presented as part of the sixty-minute investigation. Final publication timing
+and commit identifiers are recorded in the artifact's publication manifest.
+
+\section{Scope of the answer}
+The general voltage-elimination method was already available in classical
+literature. The answered project-derived specialization consists of the exact
+fixed-base criteria and histograms, the full-incidence scalar obstruction and
+the explicit constant-dimension, constant-distance CSS family. These are not
+additional source-posed inventory entries and do not alter the canonical
+coverage denominator. The precise novelty comparison remains bounded by the
+recorded access and search gaps. Decoder behavior, error-floor performance,
+optimality and a comparison against controlled code families are outside this
+paper's conclusions.
+
+\begin{thebibliography}{9}
+\bibitem{VD} B. Vasi\'c and I. B. Djordjevi\'c, Quasicyclic low-density parity
+check codes, TELSIKS 2003, vol. 2, pp. 417--420.
+\href{https://doi.org/10.1109/TELSKS.2003.1246258}{doi:10.1109/TELSKS.2003.1246258}.
+Primary institutional abstract and metadata inspected.
+\bibitem{Noda} M. Noda, Designing a Self-orthogonal Quasi-cyclic Code with
+Extended Minimum Hamming Distance, TURBO-CODING 2006, Munich, 3--7 April 2006.
+\href{https://www.vde-verlag.de/proceedings-en/442947110.html}{Publisher record}.
+Abstract and metadata inspected; full six-page article unavailable.
+\bibitem{KW} C. A. Kelley and J. L. Walker, LDPC codes from voltage graphs,
+ISIT 2008. \href{https://doi.org/10.1109/ISIT.2008.4595095}{doi:10.1109/ISIT.2008.4595095}.
+\href{https://digitalcommons.unl.edu/mathfacpub/171/}{Institutional record}; abstract only.
+\bibitem{ABA} R. Asvadi, A. H. Banihashemi and M. Ahmadian-Attari, Lowering the
+Error Floor of LDPC Codes Using Cyclic Liftings,
+\href{https://arxiv.org/abs/1002.4311}{arXiv:1002.4311v1}, 23 February 2010.
+Relevant preprint statements and proofs inspected; 2011 journal revision not compared in full.
+\bibitem{WDW11} J. Wang, L. Dolecek and R. Wesel, LDPC Absorbing Sets, the Null
+Space of the Cycle Consistency Matrix, and Tanner's Constructions, ITA 2011.
+\href{https://www.seas.ucla.edu/csl/files/publications/JiadongWang_ITA2011.pdf}{Author conference PDF}.
+\bibitem{WDW12} J. Wang, L. Dolecek and R. Wesel, The Cycle Consistency Matrix
+Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes,
+\href{https://arxiv.org/abs/1208.6094v2}{arXiv:1208.6094v2}, 5 December 2012;
+first preprint 30 August 2012. IEEE Trans. Inform. Theory 59(4) (2013),
+2293--2314; final journal revision not compared in full.
+\bibitem{PP} M. Pra\.{z}mowska and K. Pra\.{z}mowski, Binomial partial Steiner
+triple systems containing complete graphs, Graphs and Combinatorics 32 (2016),
+2079--2092. \href{https://doi.org/10.1007/s00373-016-1681-3}{doi:10.1007/s00373-016-1681-3}.
+Relevant publisher-HTML definitions and proofs inspected in the preceding block.
+\bibitem{AFKL} M. Abreu, M. Funk, V. Kr\v{c}adinac and D. Labbate, Strongly
+regular configurations, \href{https://arxiv.org/abs/2104.04880v2}{arXiv:2104.04880v2},
+12 September 2021; first preprint 10 April 2021. Designs, Codes and Cryptography
+90 (2022), 1881--1897. Relevant preprint passages and author data inspected.
+\bibitem{AC} A. Abiad and N. Castriota, Spectral and Additive Combinatorial
+Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes,
+\href{https://arxiv.org/abs/2607.13666v1}{arXiv:2607.13666v1}, 15 July 2026.
+Definition 3.1 and Section 3.2 matrix conventions rechecked; original counting context.
+\end{thebibliography}
+\end{document}

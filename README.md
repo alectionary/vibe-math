@@ -136,3 +136,6 @@ Reviewed October 21, 2026. PDFs remain copyright their respective authors; revie
 
 
 October24 lift-label follow-up: [exact fixed-base counts and a support-free CSS family](formalization/lift-label-elimination/README.txt). Classical cycle-consistency attribution, independent q2 verification and checked Lean versions of every manuscript proof are explicit. This is a project-derived follow-up; canonical coverage remains4/112.
+
+
+Lift-label paper: [PDF](papers/lift-label-elimination/main.pdf) · [TeX](papers/lift-label-elimination/main.tex) · [all checked proof files](formalization/lift-label-elimination/PROOFS.md). The manuscript includes the reference chronology and immutable Lean links.
