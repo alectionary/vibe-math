@@ -13,4 +13,12 @@ The project includes unchanged parent Spectral.lean under dependencies/.
 source-ledgers/parent-verification.json, parent-Audit.lean and its axiom log
 preserve the earlier52-declaration audit. New2-declaration audit checks the
 combined all-cases statements. PROOF-LINKS.html has archive-local file links.
-New files are local/uncommitted; no public immutable source link is claimed.
+Original parameter question: ANSWERED NEGATIVELY; complete checked Lean proof.
+The separate stronger replacement-bound direction remains open.
+
+Immutable proof source revision: ce3c849feff7a4f6284ff4f93d0209e42da33983
+https://github.com/alectionary/vibe-math/blob/ce3c849feff7a4f6284ff4f93d0209e42da33983/formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean
+https://github.com/alectionary/vibe-math/blob/ce3c849feff7a4f6284ff4f93d0209e42da33983/formalization/stopping-bound/source-answer/dependencies/Spectral.lean
+
+Paper: paper.pdf; companion announcement: x-post-draft.txt (not posted).
+The publication reconciliation is recorded in PUBLICATION.txt / publication.json.

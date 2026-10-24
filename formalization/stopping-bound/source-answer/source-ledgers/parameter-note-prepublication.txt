@@ -1,0 +1,94 @@
+Universal negative answer to the Proposition 5.1 parameter question
+24 October 2026 — L-F16-stopping-bound — source-scope clarification
+
+ANSWER CONTRACT
+Abiad–Castriota, 15 July 2026, arXiv:2607.13666v1, §6 / Prop.5.1 / Remark5.2
+→ no parameter choice in the stated positive-dimensional binary biregular
+scalar-factor model gives a stopping-distance improvement beyond two
+→ universal Lean theorem no_parameters_give_source_improvement, actual expanded
+matrix and original radical, with source_parameter_question_negative checking
+both row-block cases and the small-branch exclusion.
+
+This is a quantified NONEXISTENCE PROOF, not absence of an example in a search.
+It answers the useful-parameter question negatively. It is not a counterexample
+to the validity of Proposition5.1's inequality.
+
+SOURCE SCOPE
+§3.2 explicitly specializes to r2=n2=1, H2=(b), saying this is used throughout
+the paper. Prop5.1 explicitly uses Theorem4.1's scalar-shift Fourier matrices.
+Thus general two-matrix/nonabelian lifted products are extensions, not missing
+parameter cases that must be solved to answer this proposition's question.
+The cached HTML and parent full-paper open-question screen are included.
+No new paper/version was encountered in this clarification. All source-screen,
+GitHub/X prior-art search limits and unresolved access leads are inherited,
+without converting bounded search failure into a mathematical argument.
+
+PRECISE THEOREM
+Take positive integers r,n1,ell,gamma, natural row degree k, m=r*ell>=2.
+Let H=[A | I_r tensor B^T] be the real 0–1 expanded matrix with r*ell rows
+and (n1+r)*ell columns, column degree gamma and row degree k. Source circulants
+are included; the formal theorem does not require circulancy, so covers a larger
+matrix class. s is the second-largest eigenvalue of HH^T, with multiplicity.
+For a±=(m/gamma)(1±sqrt(1-2s/gamma)),
+
+    NOT (s<gamma/2 AND a+>2).
+
+If s<gamma/2, then r=1 and 1<a+<=2. Every nonempty stopping support S
+has |S|>=2, a-<|S| and a+<=|S|. Thus the separate small-size branch is
+excluded, but the resulting integer lower bound is exactly two.
+Positive column degree alone already excludes singleton stopping sets.
+Zero-width first factors, gamma=0 and matrices without a second singular value
+are excluded explicitly. No girth, connectivity, monomial-entry, or desired
+spectral-envelope premise is added. No logical-distance assertion is made.
+
+PROOF
+If r>=2, the repeated scalar block forces s>=gamma^2>=gamma/2. The expanded
+matrix proof uses a two-dimensional fiber-constant plane and a vector orthogonal
+to a top Gram eigenvector. The scalar block supplies energy gamma^2 times norm
+squared; the other block contributes a nonnegative quantity.
+If r=1, q=n1+1>=2, m=ell and edge counting gives k=q*gamma. Binary regularity
+and the trace of HH^T give k(m-gamma)<=(m-1)s, with gamma<=m. Under the strict
+gap this forces gamma>m-(m-1)/(2q)>3m/4. Checked radical algebra then yields
+1<a+<=2 and 0<=a-<2. Positive columns give |S|>=2, excluding the small branch
+and already implying the large-root conclusion. The parent note gives the
+complete energy/trace/radical derivations, each matched to Lean.
+
+RAW GAP VERSUS USEFUL BOUND
+The all-ones 2-by-4 CSS check pair has gamma=2, k=4 and s=0; hence the raw
+strict inequality holds. Its roots are zero and two and stopping distance is
+two. Parent denseExample_source_certificate, denseExample_css and
+denseExample_minimum prove these facts. Consequently 'no raw-gap parameters'
+would be FALSE. 'No useful improvement beyond two' is the theorem proved here.
+
+LEAN COVERAGE
+The unchanged Spectral.lean contains the 52 previously checked declarations
+covering expanded matrices, sorted Gram eigenvalues, trace, roots, stopping
+supports, degree/cardinality bridges, dense example and source consumers.
+SHA-256: a3e712b2a206bd7743408ecc122e66e7d980dbd4689c6d49977536dfe9bb469d.
+Two new declarations combine all positive r into one theorem and its direct
+nonexistence corollary. Both have been built and audited, using only propext,
+Classical.choice and Quot.sound. No admitted lemma or numerical premise is used.
+Lean4.36.0-rc1; mathlib5f7b4198d22a9c82e1c698a379334fe128095c82.
+
+INVENTORY INTERPRETATION
+The parameter component is resolved by the universal negative answer for the
+proposition's stated model. The bundled canonical entry retains its historical
+partial status solely because the separate stronger/replacement-bound direction
+is unresolved. This is NOT an unresolved quantifier in the parameter theorem.
+Helper aggregation is not counted as another completed canonical problem.
+No source, canonical-entry, eligible-target or screening-count delta is added.
+The exact-distance-six family and complete441-support B1 classification remain
+separate completed project-derived follow-ups; they are not this negative proof.
+
+Question answered: no positive-dimensional binary biregular scalar-factor
+parameter choice can turn Proposition5.1 into a lower guarantee exceeding two.
+Question still open: a generally useful replacement/tightening of that bound.
+Next proposed target (FOLLOW-UP): specify and prove an incidence-conditioned
+replacement that exceeds two on a sparse family, beyond the already completed
+exact-distance-six family and B1 minimum-support classification.
+
+Chronology: source2026-07-15 → revision2026-10-24 =101 calendar days. This is
+not a claim about an unsolved duration. Investigation began19:49UTC; parent
+proof audit completed20:20:37UTC. The source-scope wording was corrected and
+the all-cases theorem assembled after22:20UTC. See verification.json for times.
+Publication: local only; no commit/push or X post. No PAT created.
