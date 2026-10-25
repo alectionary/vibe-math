@@ -305,6 +305,11 @@ answered question, the source authors and precise reference (DOI or arXiv,
 plus the relevant locator), the main answer and the GitHub folder containing
 the final PDF and proof links. Keep only the terminology needed to understand
 the contribution; use the requested length rather than an automatic long thread.
+Lead with the motivating question, then explain the answer, its mathematical
+mechanism and the logical follow-on findings. State what remains open and the
+next direction when relevant. Integrate accurate search terms naturally so
+researchers can find the work. Verify that the linked public revision contains
+the announced PDF and proofs before handing off a publication-ready draft.
 Check that compression preserves restrictions and distinguishes this paper's
 results from cited work. Announce the paper directly; internal drafting does not
   make the first external announcement an "expanded paper" or an "update".
