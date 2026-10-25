@@ -1,0 +1,22 @@
+theorem eight_distinct (hL : 11 (*@$\mid$@*) L) :
+    (checks (L := L)).Nodup (*@$\land$@*) (variableVertices (L := L)).Nodup := by
+  have hl : 11 (*@$\le$@*) L := Nat.le_of_dvd (NeZero.pos L) hL
+  letI : Fact (1<L) := (*@$\langle$@*)by omega(*@$\rangle$@*)
+  simp [checks,variableVertices]
+
+theorem eight_edges :
+    VoltageCycles.Edge (FamilyNoShort.e L) (0,0) (0,0) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (1,0) (0,0) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (1,0) (1,-1) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (2,1) (1,-1) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (2,1) (0,1) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (1,1) (0,1) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (1,1) (1,0) (*@$\land$@*)
+    VoltageCycles.Edge (FamilyNoShort.e L) (0,0) (1,0) := by
+  norm_num [VoltageCycles.Edge,FamilyNoShort.e,FamilyWords.exponent]
+
+theorem exact_eight_certificate (hL : 11 (*@$\mid$@*) L) :
+    VoltageCycles.NoFourVoltage (FamilyNoShort.e L) (*@$\land$@*)
+    VoltageCycles.NoSixVoltage (FamilyNoShort.e L) (*@$\land$@*)
+    (checks (L := L)).Nodup (*@$\land$@*) (variableVertices (L := L)).Nodup :=
+  (*@$\langle$@*)FamilyNoShort.no_four hL,FamilyNoShort.no_six hL,(eight_distinct hL).1,(eight_distinct hL).2(*@$\rangle$@*)

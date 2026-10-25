@@ -18,7 +18,13 @@
 \newcommand{\row}{\operatorname{row}}
 \newcommand{\HX}{H_{\mathsf X}}
 \newcommand{\HZ}{H_{\mathsf Z}}
-\newcommand{\lean}[2]{\href{../#1.lean}{\nolinkurl{#2}}}
+\newcommand{\proofcommit}{98eb91cd9049e6a88887a5ba79150ad96a4a3e53}
+\newcommand{\proofbase}{https://github.com/alectionary/vibe-math/blob/\proofcommit/formalization/distance-preservation}
+\input{proof-targets.tex}
+\newcommand{\lean}[2]{\href{\proofbase/#1.lean\#L\csname leanline@#2\endcsname}{\nolinkurl{#2}}}
+\newcommand{\proofsource}[4]{\href{\proofbase/#1.lean\#L#2-L#3}{\nolinkurl{#4}}}
+\newcommand{\leanlisting}[1]{\csname leanlisting@#1\endcsname}
+\input{listing-inputs.tex}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \lstset{basicstyle=\small\ttfamily,columns=fullflexible,keepspaces=true,
  frame=single,framerule=.3pt,breaklines=true,showstringspaces=false,
@@ -573,14 +579,16 @@ Native-decision prototypes and external search exclusions are outside
 this closure.
 
 Table~\ref{tab:coverage} covers each manuscript proof, including the
-translations and applications. The companion
-\href{PROOF-GUIDE.html}{proof guide} lists every admitted source,
-its SHA-256 digest and direct file link. In this local review artifact
-the links address the bundled source files. The source archive and
-hash manifest preserve their exact bytes. The sources have not been
-published at a new Git revision; no public commit-pinned URL is
-claimed for them. The guide records this publication limitation
-separately from the successful local proof checks.
+translations and applications. Appendices~\ref{app:lean-map}--\ref{app:lean-assembly}
+explain the formal objects and give complete central Lean proofs, from
+the stabilizer separator and cover bound to the source-distance conclusion.
+Appendix~\ref{app:lean-links} gives current and immutable URLs for all fifty
+admitted modules. Every theorem link in the text targets its declaration
+at commit \texttt{98eb91cd9049}, whose source bytes match the checked
+builds. The companion \href{PROOF-GUIDE.html}{proof guide} and source
+archive provide hashes, logs and editable files in addition to the PDF
+exposition. Generated appendix listings are exact source extracts with
+typographical substitutions for Unicode symbols, not new proof modules.
 
 \begin{longtable}{@{}P{.27\textwidth}P{.40\textwidth}P{.27\textwidth}@{}}
 \caption{Complete proof-to-Lean correspondence. Full names, source hashes,
@@ -660,44 +668,12 @@ quantum distance added.\\
 \bottomrule
 \end{longtable}
 
-Here is the source-word distance statement, with its actual minimum
-definitions in \nolinkurl{SourceWordBridge.lean}:
-\begin{lstlisting}
-variable {L : Nat} [NeZero L]
-theorem source_distance_drop (hL : 11 (*@$\mid$@*) L) :
-    quantumDistance L (*@$\leq$@*) 11 (*@$\land$@*) 12 (*@$\leq$@*) classicalDistance L (*@$\land$@*)
-    quantumDistance L < classicalDistance L := by
-  rw [quantum_distance_eq, classical_distance_eq]
-  exact (*@$\langle$@*)DistanceFamily.quantum_distance_upper,
-    DistanceFamily.classical_distance_lower hL,
-    DistanceFamily.distance_drop hL(*@$\rangle$@*)
-\end{lstlisting}
-The decisive general cover theorem is not a family-specific numerical
-assertion: its premises are the base kernel and stopping bounds and
-its conclusion is about every nonzero upstairs kernel word. The
-faithful full signature is reproduced from the source in the
-\href{PROOF-GUIDE.html}{proof guide}; its proof's two branches are:
-\begin{lstlisting}
-  let y := CoverWeight.push (CyclicCover.project p) x
-  by_cases hy : y=0
-  · have hs := hstop _
-      (CyclicCover.projected_support_stopping p e x hx hn)
-    have hw := CoverWeight.zero_push_weight_doubles
-      (CyclicCover.project p) x hy
-    exact (Nat.min_le_right d (2*s)).trans
-      ((Nat.mul_le_mul_left 2 hs).trans hw)
-  · have hd := hcode y (CyclicCover.kernel_push p e x hx) hy
-    have hw := CoverWeight.push_weight_le (CyclicCover.project p) x
-    change (CoverWeight.support y).card (*@$\leq$@*)
-      (CoverWeight.support x).card at hw
-    exact (Nat.min_le_left d (2*s)).trans (hd.trans hw)
-\end{lstlisting}
-The dependency structure is: finite base reconstruction and tree stopping
-bound $\to$ cover projection $\to$ classical lower bound; explicit
-coefficient kernel and separating functional $\to$ source logical
-upper bound; actual source/minimum bridges $\to$ distance separation.
-Graph geometry and transpose characterization are independent supporting
-branches. External distance searches are not premises of these proofs.
+The formal appendix follows the mathematical argument in dependency order:
+actual source objects and full spans; the logical obstruction; parity
+projection and the base certificate; graph and transpose properties; and
+the final all-word distance statement. The dependency diagram in
+Appendix~\ref{app:lean-map} separates these branches and their trust
+boundaries. External distance searches are not premises of the proofs.
 
 \section{Implications and the next bounded question}\label{sec:limits}
 The counterfamily separates local graph and full-partition exclusions
@@ -745,6 +721,8 @@ $d_Q=d_C$ in the source construction.\\
 bound \eqref{eq:next} under the explicit strengthened hypotheses above.
 
 \appendix
+\input{lean-appendix.tex}
+\clearpage
 \section{Reference dates and evidence boundaries}\label{app:references}
 The chronology in Section~\ref{sec:answer} uses the manuscript date
 25 October 2026 in UTC. Calendar subtraction from 10 March 2025 gives

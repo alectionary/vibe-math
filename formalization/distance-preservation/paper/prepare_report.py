@@ -18,6 +18,11 @@ def dump(p, x):
 
 def main():
     source = (P/'main.tex').read_text()
+    manuscript_files=['main.tex','lean-appendix.tex','listing-inputs.tex',
+                      'proof-targets.tex','proof-file-index.tex']
+    manuscript_files+=['listings/'+f.name for f in sorted((P/'listings').glob('*.tex'))]
+    all_source='\n'.join((P/f).read_text() for f in manuscript_files)
+    appendix=json.loads((P/'appendix-listings.json').read_text())
     # Read the frozen module list without importing/rerunning its auditor.
     tree = ast.parse((W/'audit_artifact.py').read_text())
     node = next(n.value for n in tree.body if isinstance(n, ast.Assign)
@@ -32,7 +37,7 @@ def main():
         assert rec['source_sha256']==sha(W/(mod+'.lean')) and rec['exit_code']==0
         assert rec['log_sha256']==sha(W/'logs'/(mod+'.log'))
 
-    refs=sorted(set(re.findall(r'\\lean\{([^}]+)\}\{([^}]+)\}',source)))
+    refs=sorted(set(re.findall(r'\\lean\{([^}]+)\}\{([^}]+)\}',all_source)))
     for mod, name in refs:
         assert mod in modules, mod
         assert re.search(r'\b(?:theorem|lemma|def|abbrev)\s+'+re.escape(name.split('.')[-1])+r'\b',
@@ -54,7 +59,9 @@ def main():
                 'declarations':['DistanceFamily.classical_distance_upper',
                                 'DistanceFamily.stronger_counterfamily']},
               'linked_declarations':[{'module':a,'declaration':b} for a,b in refs],
-              'scope':'Every manuscript proof and explicitly proved application; exploratory routes remain outside proved results.'}
+              'appendix_lean_listings':appendix['listings'],
+              'manuscript_files_sha256':{f:sha(P/f) for f in manuscript_files},
+              'scope':'Every manuscript proof, explicitly proved application and complete displayed Lean declaration; exploratory routes remain outside proved results.'}
     dump(P/'proof-coverage.json',coverage)
 
     audit='import FinalAudit\n\n-- Audit every declaration linked in the manuscript.\n'
@@ -86,7 +93,8 @@ def main():
     for group in re.findall(r'depends on axioms: \[([^]]*)\]',body):
         assert set(x.strip() for x in group.split(',') if x.strip())<=allowed
     for _,name in refs:
-        assert "'"+name+"' depends on axioms:" in body, name
+        assert ("'"+name+"' depends on axioms:" in body or
+                "'"+name+"' does not depend on any axioms" in body), name
 
     heading='''<!doctype html><html lang="en"><meta charset="utf-8">
 <title>Distance-preservation proof guide</title>
@@ -97,10 +105,11 @@ a{color:#135eac}h2{margin-top:2em}</style>
 <h1>Distance loss in girth-eight cyclic lifted-product codes</h1>
 <p><a href="main.pdf">Manuscript PDF</a> · <a href="main.tex">TeX source</a> ·
 <a href="proof-coverage.json">Proof coverage</a> · <a href="paper-lean-audit.json">Declaration audit</a></p>
-<p>Local review snapshot, 25 October 2026. The new source files are uncommitted.
-These direct relative links and content hashes identify the checked files;
-there is no new published commit URL. Publication would require committing
-the exact files, pinning their links and verifying the public downloads.</p>
+<p>The fifty mathematical proof sources are published at immutable commit
+<a href="https://github.com/alectionary/vibe-math/tree/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation">98eb91cd9049e6a88887a5ba79150ad96a4a3e53</a>.
+The manuscript's Lean appendices give complete central proof bodies and declaration-level
+links into that snapshot. This presentation build and its source archive are local
+until separately committed; the pinned mathematical sources are unchanged.</p>
 <p>Lean 4.36.0-rc1; mathlib
 <code>5f7b4198d22a9c82e1c698a379334fe128095c82</code>.
 All fifty admitted modules passed source-bound and isolated authored-source builds.
@@ -127,7 +136,8 @@ and Quot.sound occur in the audited closure. External search exclusions are not 
     for mod in modules:
         deps=re.findall(r'^import (\S+)',(W/(mod+'.lean')).read_text(),re.M)
         dep_links=[f'<a href="../{d}.lean">{d}</a>' if d in modules else html.escape(d) for d in deps]
-        out+=f'<tr><td><a href="../{mod}.lean">{mod}.lean</a><br><a href="../logs/{mod}.json">Build record</a> · <a href="../logs/{mod}.log">Log</a></td><td><code>{sha(W/(mod+".lean"))}</code></td><td>'+ '<br>'.join(dep_links)+'</td></tr>\n'
+        pinned=f'https://github.com/alectionary/vibe-math/blob/{appendix["proof_commit"]}/formalization/distance-preservation/{mod}.lean'
+        out+=f'<tr><td><a href="../{mod}.lean">{mod}.lean</a> · <a href="{pinned}">Immutable source</a><br><a href="../logs/{mod}.json">Build record</a> · <a href="../logs/{mod}.log">Log</a></td><td><code>{sha(W/(mod+".lean"))}</code></td><td>'+ '<br>'.join(dep_links)+'</td></tr>\n'
     out+='''</table><h2>Reproduction and evidence</h2><p><a href="README.txt">Instructions</a> ·
 <a href="../clean-rebuild.json">Isolated rebuild</a> · <a href="../verification.json">Full investigation audit</a> ·
 <a href="../SOURCE-TO-PROOF.txt">Semantic source map</a> · <a href="../prior-art.json">Prior-art and GitHub/X ledger</a> ·
@@ -157,7 +167,9 @@ remain in the original investigation directory.</p></html>'''
                  'PaperAudit.lean','PaperAudit.log','paper-lean-audit.json','prepare_report.py','validate_report.py',
                  'report-source-checks.json','presentation-review.json','integrate_report.py',
                  'source-screen-recheck.json','rebuild_proofs.py',
-                 'lean-environment/lakefile.toml','lean-environment/lean-toolchain']:
+                 'lean-environment/lakefile.toml','lean-environment/lean-toolchain',
+                 'generate_appendix.py','appendix-listings.json','editorial-provenance.json',
+                 'published-links.json']+manuscript_files:
         selected.add(P/name)
     extra={R/'formalization/dyadic-rank/lean-toolchain':'dependencies/lean-toolchain',
            R/'formalization/dyadic-rank/lake-manifest.json':'dependencies/lake-manifest.json',
@@ -178,6 +190,7 @@ remain in the original investigation directory.</p></html>'''
     dump(P/'report-audit.json',{'status':'BUILT_PENDING_PRESENTATION_VALIDATION','built_utc':now,
         'manuscript_date':'2026-10-25','python':sys.executable,
         'paper_pdf_sha256':sha(P/'main.pdf'),'paper_tex_sha256':sha(P/'main.tex'),
+        'manuscript_files_sha256':{f:sha(P/f) for f in manuscript_files},
         'source_archive_sha256':sha(archive),'source_archive_members':len(hashes)+1,
         'admitted_main_modules':50,'linked_declarations':len(refs),'proof_environments':len(proofs),
         'canonical_completion_delta':0,'source_problem_complete':False,
@@ -185,7 +198,9 @@ remain in the original investigation directory.</p></html>'''
                           'F86_internal':62,'F89_internal':62},
         'classical_ingredient_age':'2004 year precision; approximately22years',
         'investigation_closeout':json.loads((W/'closeout.json').read_text()),
-        'publication':'Local uncommitted snapshot; no commit/push/announcement performed.',
+        'proof_source_commit':appendix['proof_commit'],
+        'appendix_listings':len(appendix['listings']),
+        'publication':'Mathematical proof sources published at recorded immutable pin; current manuscript build local until separately committed.',
         'artifact_members_sha256':hashes})
     print(json.dumps({'status':'BUILT','modules':50,'proofs':len(proofs),
                       'declarations':len(refs),'archive_members':len(hashes)+1}))

@@ -1,5 +1,5 @@
 {
-  "manuscript_sha256": "5008ac40ec2ff2417c40d361d79dc1cc370d2f6928372200d701dedf547c68df",
+  "manuscript_sha256": "f51b4a44ceb4e458c692faca2b8b382e4442dc08aeb555549a0c4f565cea2d3e",
   "proof_environments": [
     {
       "proof_number": 1,
@@ -219,8 +219,20 @@
       "declaration": "ClassicalUpper20.nonzero"
     },
     {
+      "module": "ClassicalUpper20",
+      "declaration": "ClassicalUpper20.word"
+    },
+    {
       "module": "CoverDistance",
       "declaration": "CoverDistance.lower_bound"
+    },
+    {
+      "module": "CoverWeight",
+      "declaration": "CoverWeight.push"
+    },
+    {
+      "module": "CoverWeight",
+      "declaration": "CoverWeight.zero_push_fiber_lower"
     },
     {
       "module": "CoverWeight",
@@ -239,6 +251,10 @@
       "declaration": "FamilyBaseGraph.code_lower_twelve"
     },
     {
+      "module": "FamilyBaseDistance",
+      "declaration": "FamilyBaseGraph.packWord_weight"
+    },
+    {
       "module": "FamilyBounds",
       "declaration": "DistanceFamily.classical_distance_upper"
     },
@@ -255,6 +271,10 @@
       "declaration": "FamilyConnected.connected"
     },
     {
+      "module": "FamilyConnected",
+      "declaration": "FamilyConnected.shift"
+    },
+    {
       "module": "FamilyCoverAlternative",
       "declaration": "FamilyCoverAlternative.classical_lower_twelve"
     },
@@ -265,6 +285,10 @@
     {
       "module": "FamilyDistance11",
       "declaration": "FamilyClassical11.encoded_lower"
+    },
+    {
+      "module": "FamilyGirth",
+      "declaration": "FamilyGirth.eight_distinct"
     },
     {
       "module": "FamilyGirth",
@@ -292,11 +316,55 @@
     },
     {
       "module": "FamilyTranspose",
+      "declaration": "FamilyTranspose.Kernel"
+    },
+    {
+      "module": "FamilyTranspose",
+      "declaration": "FamilyTranspose.boundary"
+    },
+    {
+      "module": "FamilyTranspose",
       "declaration": "FamilyTranspose.third_period"
     },
     {
       "module": "FamilyTreeStopping",
       "declaration": "FamilyTreeStopping.base_stopping_six"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.HX"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.HZ"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.InSpanX"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.LogicalX"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.Syndrome"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.augmentation_stabilizer"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.full_span_left"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.stabilizerLeft"
+    },
+    {
+      "module": "GeneralLP",
+      "declaration": "GeneralLP.stabilizerRight"
     },
     {
       "module": "ParametricProjection",
@@ -320,11 +388,47 @@
     },
     {
       "module": "ParametricWords",
+      "declaration": "ParametricWords.U"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.V"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.actual_logical"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.augmentation_witness"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.e"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.supportList"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.weight_le"
+    },
+    {
+      "module": "ParametricWords",
       "declaration": "ParametricWords.witness_kernel"
+    },
+    {
+      "module": "ParametricWords",
+      "declaration": "ParametricWords.zero_outside"
     },
     {
       "module": "SourceDistance",
       "declaration": "SourceDistance.c_action"
+    },
+    {
+      "module": "SourceSectors",
+      "declaration": "SourceModel.InSpanX"
     },
     {
       "module": "SourceSectors",
@@ -337,6 +441,22 @@
     {
       "module": "SourceSymmetry",
       "declaration": "SourceSymmetry.sector_weights"
+    },
+    {
+      "module": "SourceWordBridge",
+      "declaration": "SourceWordBridge.InSpan"
+    },
+    {
+      "module": "SourceWordBridge",
+      "declaration": "SourceWordBridge.Kernel"
+    },
+    {
+      "module": "SourceWordBridge",
+      "declaration": "SourceWordBridge.QuantumHasWeight"
+    },
+    {
+      "module": "SourceWordBridge",
+      "declaration": "SourceWordBridge.block_weight_iff"
     },
     {
       "module": "SourceWordBridge",
@@ -371,6 +491,10 @@
       "declaration": "FamilyTranspose.distance_characterization"
     },
     {
+      "module": "TransposeDistance",
+      "declaration": "FamilyTranspose.nonzero_weight"
+    },
+    {
       "module": "VoltageCycles",
       "declaration": "VoltageCycles.no_four"
     },
@@ -379,5 +503,694 @@
       "declaration": "VoltageCycles.no_six"
     }
   ],
-  "scope": "Every manuscript proof and explicitly proved application; exploratory routes remain outside proved results."
+  "appendix_lean_listings": [
+    {
+      "id": "source-objects",
+      "module": "GeneralLP",
+      "declarations": [
+        {
+          "name": "GeneralLP.HX",
+          "first_line": 11,
+          "last_line": 13,
+          "raw_sha256": "52deb6ef2a5ab7804af6a144a5f8e79fa6417bce2cd8b3c7bab60f6967313d3f",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L11-L13"
+        },
+        {
+          "name": "GeneralLP.HZ",
+          "first_line": 15,
+          "last_line": 17,
+          "raw_sha256": "aff57d67d8915014c743bd8bc41c6184e0c74e74ee3657b77bf26055c88f384e",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L15-L17"
+        },
+        {
+          "name": "GeneralLP.Syndrome",
+          "first_line": 19,
+          "last_line": 22,
+          "raw_sha256": "62910ec4f8975d479b0569f1b677efa01350b268d8eb78c6e1860b59c3ee185a",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L19-L22"
+        },
+        {
+          "name": "GeneralLP.stabilizerLeft",
+          "first_line": 24,
+          "last_line": 26,
+          "raw_sha256": "9bbec2e28fdef2e19e545130b98c4e8d9867c1561b8895737fb414f35139e457",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L24-L26"
+        },
+        {
+          "name": "GeneralLP.stabilizerRight",
+          "first_line": 28,
+          "last_line": 30,
+          "raw_sha256": "25043b9a64f073220dcad7a52936b6956d9e71bb47ab8c5452485b971cf83ff6",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L28-L30"
+        },
+        {
+          "name": "GeneralLP.InSpanX",
+          "first_line": 65,
+          "last_line": 67,
+          "raw_sha256": "42808a04b3edf576867e202e7e40e3134be7e4ab481ba763b04261e0818555a6",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L65-L67"
+        },
+        {
+          "name": "GeneralLP.LogicalX",
+          "first_line": 69,
+          "last_line": 71,
+          "raw_sha256": "0b02db2ac516fed391c02da4cdabebd62dfcf7a03b139d9ada0f9aaa4640d8d2",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L69-L71"
+        }
+      ],
+      "source_sha256": "6e0273f19be351bf68e925f42dd2c881bde35404833d1607374c5f4e0976c3ba",
+      "listing_sha256": "430c127d9a861e6ab57795843984e1940d0b5ab8793dd7558b47364085e989a2",
+      "raw_sha256": "ccdaf23e11c75c8b9f6ac83a775419739e5c2f75d5bbd1ea77b36220375a24d9",
+      "raw_line_count": 28,
+      "complete_declarations": true
+    },
+    {
+      "id": "source-span",
+      "module": "SourceSectors",
+      "declarations": [
+        {
+          "name": "SourceModel.InSpanX",
+          "first_line": 35,
+          "last_line": 37,
+          "raw_sha256": "ac35e4b68bca79c4c7a7d252267e4c5b7abbfbfda838fe5a009fe256d6cf83d7",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceSectors.lean#L35-L37"
+        },
+        {
+          "name": "SourceModel.inSpanX_iff",
+          "first_line": 43,
+          "last_line": 58,
+          "raw_sha256": "edb16a34631baf0f2af8249ff5cadca633f5df5342461fcf5542d57eb4a4eace",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceSectors.lean#L43-L58"
+        }
+      ],
+      "source_sha256": "5d2902661c6864c2ab76aae3416736c0058ab87daf2591f7c7ec94b4ca8c2e83",
+      "listing_sha256": "285b3e5e33feb277f505c657fe7af1c5aeb95c6d33ead39a6f5bd467f1e08cc7",
+      "raw_sha256": "8dfc34e7a2032985e1b16ef2314bc24518e4a2fb83f38e220be1cd8456e803ba",
+      "raw_line_count": 20,
+      "complete_declarations": true
+    },
+    {
+      "id": "source-minimum",
+      "module": "SourceWordBridge",
+      "declarations": [
+        {
+          "name": "SourceWordBridge.Kernel",
+          "first_line": 8,
+          "last_line": 9,
+          "raw_sha256": "4dcc704099c52314f25aff50421d3b166828a6d9849097203cb7c227360be466",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L8-L9"
+        },
+        {
+          "name": "SourceWordBridge.InSpan",
+          "first_line": 11,
+          "last_line": 12,
+          "raw_sha256": "0df860e346286726dbbc84f6d19a977e9eb1b48db49196c5037733b83d68865a",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L11-L12"
+        },
+        {
+          "name": "SourceWordBridge.QuantumHasWeight",
+          "first_line": 14,
+          "last_line": 17,
+          "raw_sha256": "de392db8a4b73712440fa25ef1c67518b751d1369dce195011bfa225f722971d",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L14-L17"
+        }
+      ],
+      "source_sha256": "95558e223617189e34b88c254b744ce033a55ee1709c9c0857698cbd2fca42a3",
+      "listing_sha256": "a709f1f9ba914a55b697adced25a776132105cece00715495809437ccd8c5f90",
+      "raw_sha256": "0d368281b1ff80f049b267080bfdcad0d8c96a34043a32ae11fcd9935387968b",
+      "raw_line_count": 10,
+      "complete_declarations": true
+    },
+    {
+      "id": "parametric-word",
+      "module": "ParametricWords",
+      "declarations": [
+        {
+          "name": "ParametricWords.e",
+          "first_line": 9,
+          "last_line": 10,
+          "raw_sha256": "424af261b875259cf810776625876909a9f67bb40e21d436d65dc1d91e0fadb7",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L9-L10"
+        },
+        {
+          "name": "ParametricWords.U",
+          "first_line": 12,
+          "last_line": 16,
+          "raw_sha256": "0960f2bdcceb57406f967301222ea9692fdfa690c5607b8cc7a54d9ce6479302",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L12-L16"
+        },
+        {
+          "name": "ParametricWords.V",
+          "first_line": 18,
+          "last_line": 18,
+          "raw_sha256": "cb090e4039b1168f7f588555e99d0a918348845ca19a5a7efdf26d72248e3260",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L18-L18"
+        },
+        {
+          "name": "ParametricWords.witness_kernel",
+          "first_line": 20,
+          "last_line": 27,
+          "raw_sha256": "b26a029fd937056da1562b068fa2c252ed5c088d8a3466206af6377b9ebd6288",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L20-L27"
+        }
+      ],
+      "source_sha256": "8b7ee351ce2a122e6d10782c7f6bf222a65ec4a73ed1c931c0d089448508d62c",
+      "listing_sha256": "7409af374b17bfc2cde6e6b8612c3d56f88f88df9165f13df98a16dea4b487e6",
+      "raw_sha256": "b26e988478497230b9c70c97bea2d950499bb751628b21eda25e4d94d210bb7f",
+      "raw_line_count": 19,
+      "complete_declarations": true
+    },
+    {
+      "id": "separator-span",
+      "module": "GeneralLP",
+      "declarations": [
+        {
+          "name": "GeneralLP.augmentation_stabilizer",
+          "first_line": 73,
+          "last_line": 82,
+          "raw_sha256": "277c67cb2312dc4471abe6b1c3c9b95f4d1cf374562fd3306f9199a00a44f8b3",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L73-L82"
+        },
+        {
+          "name": "GeneralLP.full_span_left",
+          "first_line": 84,
+          "last_line": 90,
+          "raw_sha256": "2e4d1142b823484f83941c6f498e54497e35afcdd34f7dc522ffa04d6e5ac905",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/GeneralLP.lean#L84-L90"
+        }
+      ],
+      "source_sha256": "6e0273f19be351bf68e925f42dd2c881bde35404833d1607374c5f4e0976c3ba",
+      "listing_sha256": "97dfc52ed478c3f628eb4a6b3ffdec39266b90369a5bae74fc63423c31e8719b",
+      "raw_sha256": "296f6ed39352e7498deb8f4f603e76e952e0152ebf845d502517795ddb71c95f",
+      "raw_line_count": 18,
+      "complete_declarations": true
+    },
+    {
+      "id": "logical-separation",
+      "module": "ParametricWords",
+      "declarations": [
+        {
+          "name": "ParametricWords.augmentation_witness",
+          "first_line": 29,
+          "last_line": 30,
+          "raw_sha256": "362c8a3ace8dd1169b9baf7aea8852e7e0514e64b550b61aa8160bc7783475ba",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L29-L30"
+        },
+        {
+          "name": "ParametricWords.actual_logical",
+          "first_line": 33,
+          "last_line": 41,
+          "raw_sha256": "ffa370002d9e443f3a8f22a466ee2bf45f87e9cfc574ce0d1c576d2e399cd037",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L33-L41"
+        }
+      ],
+      "source_sha256": "8b7ee351ce2a122e6d10782c7f6bf222a65ec4a73ed1c931c0d089448508d62c",
+      "listing_sha256": "64e9d26823556b92b1fe40904f2da53134d542c6ff751bfaf08248a40394ed53",
+      "raw_sha256": "01f9d415cd94a11b4a6acb69247eda0cc0dbb018a2d11949888b274020c1d0de",
+      "raw_line_count": 12,
+      "complete_declarations": true
+    },
+    {
+      "id": "physical-weight",
+      "module": "ParametricWords",
+      "declarations": [
+        {
+          "name": "ParametricWords.supportList",
+          "first_line": 43,
+          "last_line": 47,
+          "raw_sha256": "6634d09c01449f59f8442820e01e5519d91bc4f91295ab57de47c3d3784b9d21",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L43-L47"
+        },
+        {
+          "name": "ParametricWords.zero_outside",
+          "first_line": 49,
+          "last_line": 59,
+          "raw_sha256": "394fa9186e5313ea4bd8d720fbaf5936d92ce6a1d24b759f32ea808bb0607c9c",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L49-L59"
+        },
+        {
+          "name": "ParametricWords.weight_le",
+          "first_line": 61,
+          "last_line": 72,
+          "raw_sha256": "70f6b516f1b8b8c2a60c51053fab0bbe9a94ea4c944394a6cbec131e2b98f1a3",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricWords.lean#L61-L72"
+        }
+      ],
+      "source_sha256": "8b7ee351ce2a122e6d10782c7f6bf222a65ec4a73ed1c931c0d089448508d62c",
+      "listing_sha256": "2b51759613e6976b167e7f6399f6a31dc85f71e5d792332d5dafa7bf96669b77",
+      "raw_sha256": "2249eacc40647051a21db7af0f0d3b257752eb12628cde66e99fde265da18765",
+      "raw_line_count": 30,
+      "complete_declarations": true
+    },
+    {
+      "id": "source-obstruction",
+      "module": "ParametricSource",
+      "declarations": [
+        {
+          "name": "ParametricWords.source_parametric_obstruction",
+          "first_line": 9,
+          "last_line": 14,
+          "raw_sha256": "740b64bc6c683d4d61d5f7867f4958486a8f8258a43fa8a23890bd1201a4c361",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricSource.lean#L9-L14"
+        }
+      ],
+      "source_sha256": "a6b2d40bb21e38084172056be371f4cc7b1c87fb2225d06a5e34d410565ee99e",
+      "listing_sha256": "3d93c5a27f970b77e408e72f3e7e56580d0f779f2d3c5c1dd34c55d47b911a4e",
+      "raw_sha256": "740b64bc6c683d4d61d5f7867f4958486a8f8258a43fa8a23890bd1201a4c361",
+      "raw_line_count": 6,
+      "complete_declarations": true
+    },
+    {
+      "id": "cancelled-fibers",
+      "module": "CoverWeight",
+      "declarations": [
+        {
+          "name": "CoverWeight.push",
+          "first_line": 10,
+          "last_line": 11,
+          "raw_sha256": "489e09a67575cd5176dbcf4fa1d084f641fce749828e02f39718fa7edbfec338",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/CoverWeight.lean#L10-L11"
+        },
+        {
+          "name": "CoverWeight.zero_push_fiber_lower",
+          "first_line": 55,
+          "last_line": 68,
+          "raw_sha256": "3914ab0ca2700015875a005fd409b210faf763f8b81e576d6b473c09b3de8da8",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/CoverWeight.lean#L55-L68"
+        },
+        {
+          "name": "CoverWeight.zero_push_weight_doubles",
+          "first_line": 72,
+          "last_line": 78,
+          "raw_sha256": "8d8f43838af199f10d15a4e1943b97142ea0dce6a245848429f4c72d5421c31f",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/CoverWeight.lean#L72-L78"
+        }
+      ],
+      "source_sha256": "f73b590595339062fa240fc78f7c377ea0c31a4356daf447b5f6c34b38118e62",
+      "listing_sha256": "00da4b0003eeb58d937bc03e8bdd7bf115de575a811a124bce38544d85600326",
+      "raw_sha256": "751f993234dff74bfd2b2299c27a1db5d771225da19f83ff6da6fc844060f7d9",
+      "raw_line_count": 25,
+      "complete_declarations": true
+    },
+    {
+      "id": "stopping-projection",
+      "module": "CyclicCover",
+      "declarations": [
+        {
+          "name": "CyclicCover.projected_support_stopping",
+          "first_line": 67,
+          "last_line": 98,
+          "raw_sha256": "94e8e15d8a282ebc2bc4f3706f7049bd44abec0a639364c1badc9cc98eecdbfa",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/CyclicCover.lean#L67-L98"
+        }
+      ],
+      "source_sha256": "0915f8f68aa28afdd6c9794769badc32d0314233a9ca8f4ccd78ec377cfb8d8f",
+      "listing_sha256": "bbe632d9072da7561f8e9ed45976814d4ee52c678abb8b12f8dc2fa74a3b8fa4",
+      "raw_sha256": "94e8e15d8a282ebc2bc4f3706f7049bd44abec0a639364c1badc9cc98eecdbfa",
+      "raw_line_count": 32,
+      "complete_declarations": true
+    },
+    {
+      "id": "cover-bound",
+      "module": "CoverDistance",
+      "declarations": [
+        {
+          "name": "CoverDistance.lower_bound",
+          "first_line": 9,
+          "last_line": 24,
+          "raw_sha256": "a6719e7f71cc12545e191d2e085e1ad15a25bb60eb286f8f5024dacec295495a",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/CoverDistance.lean#L9-L24"
+        }
+      ],
+      "source_sha256": "afe16c15b4ce4d9dd22150bee471ce6dcddf1eb5bd7a67b6527ca2a36fa5a90a",
+      "listing_sha256": "608a721165578daef212f7acebeb87832395f840b55df34435d49c976c844592",
+      "raw_sha256": "a6719e7f71cc12545e191d2e085e1ad15a25bb60eb286f8f5024dacec295495a",
+      "raw_line_count": 16,
+      "complete_declarations": true
+    },
+    {
+      "id": "finite-certificate",
+      "module": "FamilyDistance11",
+      "declarations": [
+        {
+          "name": "FamilyClassical11.encoded_lower",
+          "first_line": 75,
+          "last_line": 86,
+          "raw_sha256": "50dddccaa65674cdc5269923a4f4b320f395e2d8c053c57a2b347214eeb344d7",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyDistance11.lean#L75-L86"
+        },
+        {
+          "name": "FamilyClassical11.actual_classical_lower",
+          "first_line": 88,
+          "last_line": 91,
+          "raw_sha256": "0c1a169699ae4bfd21aa5acbc504365b93a890e78551c97697763b032093fe0b",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyDistance11.lean#L88-L91"
+        }
+      ],
+      "source_sha256": "cb4524f49472cce8b10e4cf0791bd78eb08fa1105f49cf6891ad5533fad2f438",
+      "listing_sha256": "dac980deba717078f6612219c0e38aa7bff69176080322e9f95e2236ebd9e904",
+      "raw_sha256": "6e8c7aceac0787f5ab6649dca9c71013cd0047501ae939f9dde3440f8b20b395",
+      "raw_line_count": 17,
+      "complete_declarations": true
+    },
+    {
+      "id": "finite-weight-bridge",
+      "module": "FamilyBaseDistance",
+      "declarations": [
+        {
+          "name": "FamilyBaseGraph.packWord_weight",
+          "first_line": 316,
+          "last_line": 319,
+          "raw_sha256": "9327a82b147e9c9ee5589cb33bd8f68215789eabd69ee820abf32c59c6edd9ad",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyBaseDistance.lean#L316-L319"
+        },
+        {
+          "name": "FamilyBaseGraph.code_lower_twelve",
+          "first_line": 321,
+          "last_line": 334,
+          "raw_sha256": "4237c883eb507f77e2fee4494fd03075d0beca297c548489332e071ddd39808b",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyBaseDistance.lean#L321-L334"
+        }
+      ],
+      "source_sha256": "f077eb6471a7199a08cc872a2949a00347fdb15c40cb9773787803268d7a0b49",
+      "listing_sha256": "cb25436556607efb89f5627808a90b81b36dc5437f4eb933ec6dff2dc4ebc08c",
+      "raw_sha256": "456ccde2e92a23894f75369486a8c54242f79f8d09565aa298d1c812f0b225d3",
+      "raw_line_count": 19,
+      "complete_declarations": true
+    },
+    {
+      "id": "tree-stopping",
+      "module": "TannerSix",
+      "declarations": [
+        {
+          "name": "TannerSix.stopping_lower_six",
+          "first_line": 47,
+          "last_line": 115,
+          "raw_sha256": "f2dbfffaaadd584283a2417171fd6c45f384170c31da9df8ae106279b462caa3",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/TannerSix.lean#L47-L115"
+        }
+      ],
+      "source_sha256": "dc56e9be9934584c4138251778136d009ba99c0c77461ef66d6e8ec4f3ea5c67",
+      "listing_sha256": "795ba4947830f16e43ed091eb6a6937cd057f1c6cad415b4210809e36d21ccfa",
+      "raw_sha256": "f2dbfffaaadd584283a2417171fd6c45f384170c31da9df8ae106279b462caa3",
+      "raw_line_count": 69,
+      "complete_declarations": true
+    },
+    {
+      "id": "cover-application",
+      "module": "FamilyCoverAlternative",
+      "declarations": [
+        {
+          "name": "FamilyCoverAlternative.classical_lower_twelve",
+          "first_line": 10,
+          "last_line": 23,
+          "raw_sha256": "8e54c45940e3bbae805b1ba02065fd5fb3e39e63f8c5596a2f0a31c9a0508f84",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyCoverAlternative.lean#L10-L23"
+        }
+      ],
+      "source_sha256": "dcccd2aa6e90d83b134b30fd46400e6c9d19f990e108d08854de9ae7ee17603d",
+      "listing_sha256": "7a4bf99fd7e399e0ee43c4d8cd55ae9493a031f74dc5c87782ad3d06633db76a",
+      "raw_sha256": "8e54c45940e3bbae805b1ba02065fd5fb3e39e63f8c5596a2f0a31c9a0508f84",
+      "raw_line_count": 14,
+      "complete_declarations": true
+    },
+    {
+      "id": "classical-upper",
+      "module": "ClassicalUpper20",
+      "declarations": [
+        {
+          "name": "ClassicalUpper20.word",
+          "first_line": 8,
+          "last_line": 12,
+          "raw_sha256": "4b7138acfb835c2e71ddced677cce8b7eade7a3bfda7d5a54dad8494734ab706",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ClassicalUpper20.lean#L8-L12"
+        },
+        {
+          "name": "ClassicalUpper20.kernel",
+          "first_line": 14,
+          "last_line": 18,
+          "raw_sha256": "a9536b70ac0e6ed944db7781ef1ae643d13a3e23ae1a425c05112acedc10756b",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ClassicalUpper20.lean#L14-L18"
+        },
+        {
+          "name": "ClassicalUpper20.nonzero",
+          "first_line": 20,
+          "last_line": 39,
+          "raw_sha256": "f208fa87db97a0d767fe731dfe2eb11f1600c6ac83e52abd2db5ae3ef1c5407b",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ClassicalUpper20.lean#L20-L39"
+        },
+        {
+          "name": "ClassicalUpper20.classical_distance_upper",
+          "first_line": 62,
+          "last_line": 65,
+          "raw_sha256": "13aa4491d9fef931ed3ba8408f3e394710c04d663b03d06c0eb753679c03a7d8",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ClassicalUpper20.lean#L62-L65"
+        }
+      ],
+      "source_sha256": "d64a0f09807d366476c5fe4ac52d437aabcac3e9183930c64f574d92b4582a21",
+      "listing_sha256": "6708aecec0efbfa105fb15f32113d7c9d548479656490a337cbade7a6e2c3a54",
+      "raw_sha256": "2d984e61934885630209f0aacf2e826fa309cb171e5832db623c1421bb6244b0",
+      "raw_line_count": 37,
+      "complete_declarations": true
+    },
+    {
+      "id": "transpose-period",
+      "module": "FamilyTranspose",
+      "declarations": [
+        {
+          "name": "FamilyTranspose.boundary",
+          "first_line": 6,
+          "last_line": 7,
+          "raw_sha256": "9a052c7ffcf4da521ad62b203189cbc6eb42b0d9e7030eab5f571b53cc8cfdcc",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyTranspose.lean#L6-L7"
+        },
+        {
+          "name": "FamilyTranspose.Kernel",
+          "first_line": 8,
+          "last_line": 8,
+          "raw_sha256": "eea9fecec0c1bf5101757a645a6b187118e3c65e018f73f031bc1a7b0367d054",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyTranspose.lean#L8-L8"
+        },
+        {
+          "name": "FamilyTranspose.third_period",
+          "first_line": 10,
+          "last_line": 36,
+          "raw_sha256": "1f8a72bde12ded32d1fb7b95180beff576108f9e99551a02f8282f91b23c3900",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyTranspose.lean#L10-L36"
+        }
+      ],
+      "source_sha256": "600ac46b4658c786aad7842425ea93ed05032cccc872fdcb948cbd6613294bc3",
+      "listing_sha256": "56062f6e2e70ccca5a671d74266281c8c536a2ec10388b8334c26668ffa0c351",
+      "raw_sha256": "1f5375619a1301a38c4ba07ccf515cedb69881757c36917c9751195c77aebf2c",
+      "raw_line_count": 32,
+      "complete_declarations": true
+    },
+    {
+      "id": "transpose-constant",
+      "module": "TransposeConstant",
+      "declarations": [
+        {
+          "name": "FamilyTranspose.kernel_iff",
+          "first_line": 59,
+          "last_line": 69,
+          "raw_sha256": "e5a1f3089454d71247e1804cf0ed5811f87acbffdc78690d6b0e294670a77ae7",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/TransposeConstant.lean#L59-L69"
+        }
+      ],
+      "source_sha256": "baab0b49abd503957df54499212b807925b37b8f6678161ec90c8d0717f63d1e",
+      "listing_sha256": "b93302012008e3027748730e99016128ea134e3112f7e1adf6f42befef67961f",
+      "raw_sha256": "e5a1f3089454d71247e1804cf0ed5811f87acbffdc78690d6b0e294670a77ae7",
+      "raw_line_count": 11,
+      "complete_declarations": true
+    },
+    {
+      "id": "transpose-distance",
+      "module": "TransposeDistance",
+      "declarations": [
+        {
+          "name": "FamilyTranspose.nonzero_weight",
+          "first_line": 13,
+          "last_line": 34,
+          "raw_sha256": "638902e82475363584b650d76a10c39a9ad19b0aaf48f6287a029ba8878d3fe4",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/TransposeDistance.lean#L13-L34"
+        },
+        {
+          "name": "FamilyTranspose.distance_characterization",
+          "first_line": 49,
+          "last_line": 53,
+          "raw_sha256": "46c4ea866e0576f5e3de41d1aabe0910954e6cd5f25a854ef7d9ef682c7212f2",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/TransposeDistance.lean#L49-L53"
+        }
+      ],
+      "source_sha256": "31d5b54acc1427a6f1f5a9c09133a1e687f957b428f38f254711de54e19ba40e",
+      "listing_sha256": "6f009a2cbf8fcec32031b23d5ff391010053e28e0ae411e1e41d56cad09e6f86",
+      "raw_sha256": "d47c0955f11323c3174e325196fb13394de8744e1c79b0a306c6b43bd2ed87f6",
+      "raw_line_count": 28,
+      "complete_declarations": true
+    },
+    {
+      "id": "girth-eight",
+      "module": "FamilyGirth",
+      "declarations": [
+        {
+          "name": "FamilyGirth.eight_distinct",
+          "first_line": 11,
+          "last_line": 15,
+          "raw_sha256": "3e3794e928328f12140a831944d9a8f1c9aad570eb4ec24733520770b0b1d6cd",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyGirth.lean#L11-L15"
+        },
+        {
+          "name": "FamilyGirth.eight_edges",
+          "first_line": 17,
+          "last_line": 26,
+          "raw_sha256": "0cf86b1f6f203f868e8a8340cc452334f70ae1196ad66196ee5a8dc8ca10a543",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyGirth.lean#L17-L26"
+        },
+        {
+          "name": "FamilyGirth.exact_eight_certificate",
+          "first_line": 29,
+          "last_line": 33,
+          "raw_sha256": "1fcfa026d3ed3e1ec4a1f4ef823b86a476432dff54fd46b7c324cda159d5897a",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyGirth.lean#L29-L33"
+        }
+      ],
+      "source_sha256": "c0661febb9421eaedb7230c9907b421054fa0ae750876b79aa9cb8d8f2aaf7ae",
+      "listing_sha256": "673e6456631d2d6ff328da170f00cd43eeadc4fdddcd1d45c39d4395432f66e0",
+      "raw_sha256": "8e9ea1f229d83c7a15e93b690bffc01f43715a4cef344c8a279966cf8ad445b1",
+      "raw_line_count": 22,
+      "complete_declarations": true
+    },
+    {
+      "id": "connected",
+      "module": "FamilyConnected",
+      "declarations": [
+        {
+          "name": "FamilyConnected.shift",
+          "first_line": 27,
+          "last_line": 30,
+          "raw_sha256": "39d0c7266b4c1806696f3cfac77f4eeb0c05e127c97f009ee42289ea23da62b5",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyConnected.lean#L27-L30"
+        },
+        {
+          "name": "FamilyConnected.connected",
+          "first_line": 48,
+          "last_line": 58,
+          "raw_sha256": "312ad154cadcf90a62b2fe5b37435c525f4834beea4a6aa6173462542880de2c",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/FamilyConnected.lean#L48-L58"
+        }
+      ],
+      "source_sha256": "95eb944290e5d7dfb427214e5bb64ace967ad99e8529f680f940b42dee4be2a5",
+      "listing_sha256": "192072451972b4643ed9d9c4666836d480ee650243015abdd46a5728b3455109",
+      "raw_sha256": "192072451972b4643ed9d9c4666836d480ee650243015abdd46a5728b3455109",
+      "raw_line_count": 16,
+      "complete_declarations": true
+    },
+    {
+      "id": "arithmetic-family",
+      "module": "ParametricProjection",
+      "declarations": [
+        {
+          "name": "ParametricProjection.projected_counterfamily",
+          "first_line": 88,
+          "last_line": 99,
+          "raw_sha256": "abbd901998f2062e38052ca604ab37580dab675b2f15c9532f562b3eb1269c40",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/ParametricProjection.lean#L88-L99"
+        }
+      ],
+      "source_sha256": "573bf4a382530c6226a622363ad11f90b5911edcaf655b460974eaff35e0fa67",
+      "listing_sha256": "f7f3dca1a336e200ff70f6805800ec1b652d37dd90e94154b0b6a23b666d8962",
+      "raw_sha256": "abbd901998f2062e38052ca604ab37580dab675b2f15c9532f562b3eb1269c40",
+      "raw_line_count": 12,
+      "complete_declarations": true
+    },
+    {
+      "id": "minimum-bridge",
+      "module": "SourceWordBridge",
+      "declarations": [
+        {
+          "name": "SourceWordBridge.block_weight_iff",
+          "first_line": 19,
+          "last_line": 25,
+          "raw_sha256": "e4b7524594d2861eaf622e741ed14c59faeb34e75ea2d7b10d9d79fefc1b612d",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L19-L25"
+        },
+        {
+          "name": "SourceWordBridge.quantum_weight_iff",
+          "first_line": 27,
+          "last_line": 28,
+          "raw_sha256": "67ab2b14fd85a91cbb18ea1ae3432a87698d617034f88ef03501b30ef6f128de",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L27-L28"
+        },
+        {
+          "name": "SourceWordBridge.quantum_distance_eq",
+          "first_line": 44,
+          "last_line": 47,
+          "raw_sha256": "a3ec92d7ae6ee3ef11cd1be630b92a846713e7b51221c675b80dcce43aa06afb",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L44-L47"
+        },
+        {
+          "name": "SourceWordBridge.classical_distance_eq",
+          "first_line": 49,
+          "last_line": 52,
+          "raw_sha256": "baa1bd82327d80b1fb9a37267ad5df74b52a0d23b83d923a5c29d961df439873",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L49-L52"
+        }
+      ],
+      "source_sha256": "95558e223617189e34b88c254b744ce033a55ee1709c9c0857698cbd2fca42a3",
+      "listing_sha256": "5332e235a55dad29e9af99468f1fc745dd487a23eb091a09ef79d82ebdef327b",
+      "raw_sha256": "63820fcc436af7e236de5f0baa299ca5d3e8590a0c2323722af9446f49a64c6c",
+      "raw_line_count": 20,
+      "complete_declarations": true
+    },
+    {
+      "id": "final-distance",
+      "module": "SourceWordBridge",
+      "declarations": [
+        {
+          "name": "SourceWordBridge.source_distance_drop",
+          "first_line": 55,
+          "last_line": 59,
+          "raw_sha256": "e7b7fb043974ea15b2d49e33632a3bcaf5f9cae20918fac1911b15ce2229d95a",
+          "url": "https://github.com/alectionary/vibe-math/blob/98eb91cd9049e6a88887a5ba79150ad96a4a3e53/formalization/distance-preservation/SourceWordBridge.lean#L55-L59"
+        }
+      ],
+      "source_sha256": "95558e223617189e34b88c254b744ce033a55ee1709c9c0857698cbd2fca42a3",
+      "listing_sha256": "130ab7aa2bdee66402bd32d071503a1b3c28b196920923250ea1942f548fe2d4",
+      "raw_sha256": "e7b7fb043974ea15b2d49e33632a3bcaf5f9cae20918fac1911b15ce2229d95a",
+      "raw_line_count": 5,
+      "complete_declarations": true
+    }
+  ],
+  "manuscript_files_sha256": {
+    "main.tex": "f51b4a44ceb4e458c692faca2b8b382e4442dc08aeb555549a0c4f565cea2d3e",
+    "lean-appendix.tex": "2cfdf01ff3405fb18e53aa2bf2e41182be89d05eb4b161b5d1fa4465fd0baf8f",
+    "listing-inputs.tex": "361e863f07dd519a825972b56a4b2bbcc8fa952874af2371066c708a439ea1f9",
+    "proof-targets.tex": "ae658e88f40a1e95f39b0cdf6268f92af4a38b298c6275ecd86acd81b6f5155b",
+    "proof-file-index.tex": "f3b13160e7bf667327d343568e1809e07c7a84193160d18f1fe10db4728e33fa",
+    "listings/arithmetic-family.tex": "f7f3dca1a336e200ff70f6805800ec1b652d37dd90e94154b0b6a23b666d8962",
+    "listings/cancelled-fibers.tex": "00da4b0003eeb58d937bc03e8bdd7bf115de575a811a124bce38544d85600326",
+    "listings/classical-upper.tex": "6708aecec0efbfa105fb15f32113d7c9d548479656490a337cbade7a6e2c3a54",
+    "listings/connected.tex": "192072451972b4643ed9d9c4666836d480ee650243015abdd46a5728b3455109",
+    "listings/cover-application.tex": "7a4bf99fd7e399e0ee43c4d8cd55ae9493a031f74dc5c87782ad3d06633db76a",
+    "listings/cover-bound.tex": "608a721165578daef212f7acebeb87832395f840b55df34435d49c976c844592",
+    "listings/final-distance.tex": "130ab7aa2bdee66402bd32d071503a1b3c28b196920923250ea1942f548fe2d4",
+    "listings/finite-certificate.tex": "dac980deba717078f6612219c0e38aa7bff69176080322e9f95e2236ebd9e904",
+    "listings/finite-weight-bridge.tex": "cb25436556607efb89f5627808a90b81b36dc5437f4eb933ec6dff2dc4ebc08c",
+    "listings/girth-eight.tex": "673e6456631d2d6ff328da170f00cd43eeadc4fdddcd1d45c39d4395432f66e0",
+    "listings/logical-separation.tex": "64e9d26823556b92b1fe40904f2da53134d542c6ff751bfaf08248a40394ed53",
+    "listings/minimum-bridge.tex": "5332e235a55dad29e9af99468f1fc745dd487a23eb091a09ef79d82ebdef327b",
+    "listings/parametric-word.tex": "7409af374b17bfc2cde6e6b8612c3d56f88f88df9165f13df98a16dea4b487e6",
+    "listings/physical-weight.tex": "2b51759613e6976b167e7f6399f6a31dc85f71e5d792332d5dafa7bf96669b77",
+    "listings/separator-span.tex": "97dfc52ed478c3f628eb4a6b3ffdec39266b90369a5bae74fc63423c31e8719b",
+    "listings/source-minimum.tex": "a709f1f9ba914a55b697adced25a776132105cece00715495809437ccd8c5f90",
+    "listings/source-objects.tex": "430c127d9a861e6ab57795843984e1940d0b5ab8793dd7558b47364085e989a2",
+    "listings/source-obstruction.tex": "3d93c5a27f970b77e408e72f3e7e56580d0f779f2d3c5c1dd34c55d47b911a4e",
+    "listings/source-span.tex": "285b3e5e33feb277f505c657fe7af1c5aeb95c6d33ead39a6f5bd467f1e08cc7",
+    "listings/stopping-projection.tex": "bbe632d9072da7561f8e9ed45976814d4ee52c678abb8b12f8dc2fa74a3b8fa4",
+    "listings/transpose-constant.tex": "b93302012008e3027748730e99016128ea134e3112f7e1adf6f42befef67961f",
+    "listings/transpose-distance.tex": "6f009a2cbf8fcec32031b23d5ff391010053e28e0ae411e1e41d56cad09e6f86",
+    "listings/transpose-period.tex": "56062f6e2e70ccca5a671d74266281c8c536a2ec10388b8334c26668ffa0c351",
+    "listings/tree-stopping.tex": "795ba4947830f16e43ed091eb6a6937cd057f1c6cad415b4210809e36d21ccfa"
+  },
+  "scope": "Every manuscript proof, explicitly proved application and complete displayed Lean declaration; exploratory routes remain outside proved results."
 }

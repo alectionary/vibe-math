@@ -1,0 +1,16 @@
+theorem lower_bound (p : A (*@$\to$@*)+ B) (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) A) (d s : Nat)
+    (hcode : (*@$\forall$@*) y : CyclicCover.Word B, CyclicCover.Kernel (fun i j => p (e i j)) y (*@$\to$@*)
+      y(*@$\ne$@*)0 (*@$\to$@*) d(*@$\le$@*)(CoverWeight.support y).card)
+    (hstop : (*@$\forall$@*) T : Finset (Fin 4 (*@$\times$@*) B), SmallStopping.Stopping
+      (CyclicCover.Adjacent (fun i j => p (e i j))) T (*@$\to$@*) s(*@$\le$@*)T.card)
+    (x : CyclicCover.Word A) (hx : CyclicCover.Kernel e x) (hn : x(*@$\ne$@*)0) :
+    min d (2*s) (*@$\le$@*) (CoverWeight.support x).card := by
+  let y := CoverWeight.push (CyclicCover.project p) x
+  by_cases hy : y=0
+  (*@$\cdot$@*) have hs := hstop _ (CyclicCover.projected_support_stopping p e x hx hn)
+    have hw := CoverWeight.zero_push_weight_doubles (CyclicCover.project p) x hy
+    exact (Nat.min_le_right d (2*s)).trans ((Nat.mul_le_mul_left 2 hs).trans hw)
+  (*@$\cdot$@*) have hd := hcode y (CyclicCover.kernel_push p e x hx) hy
+    have hw := CoverWeight.push_weight_le (CyclicCover.project p) x
+    change (CoverWeight.support y).card (*@$\le$@*) (CoverWeight.support x).card at hw
+    exact (Nat.min_le_left d (2*s)).trans (hd.trans hw)

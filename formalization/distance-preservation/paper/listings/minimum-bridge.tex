@@ -1,0 +1,20 @@
+theorem block_weight_iff (n : Nat) : QuantumHasWeight L n (*@$\leftrightarrow$@*) SourceDistance.QuantumHasWeight L n := by
+  constructor
+  (*@$\cdot$@*) rintro (*@$\langle$@*)w,hw,hn(*@$\rangle$@*)
+    obtain (*@$\langle$@*)u,v,rfl(*@$\rangle$@*) := SourceModel.join_surjective w
+    exact (*@$\langle$@*)u,v,hw,hn(*@$\rangle$@*)
+  (*@$\cdot$@*) rintro (*@$\langle$@*)u,v,hw,hn(*@$\rangle$@*)
+    exact (*@$\langle$@*)SourceModel.join u v,hw,hn(*@$\rangle$@*)
+
+theorem quantum_weight_iff (n : Nat) : QuantumHasWeight L n (*@$\leftrightarrow$@*) DistanceFamily.QuantumHasWeight L n :=
+  (block_weight_iff n).trans (SourceDistance.quantum_weight_iff n)
+
+theorem quantum_distance_eq : quantumDistance L = DistanceFamily.quantumDistance L := by
+  apply Nat.le_antisymm
+  (*@$\cdot$@*) exact Nat.find_min' _ ((quantum_weight_iff _).mpr (Nat.find_spec (DistanceFamily.quantum_exists (L := L))))
+  (*@$\cdot$@*) exact Nat.find_min' _ ((quantum_weight_iff _).mp (Nat.find_spec (quantum_exists (L := L))))
+
+theorem classical_distance_eq : classicalDistance L = DistanceFamily.classicalDistance L := by
+  apply Nat.le_antisymm
+  (*@$\cdot$@*) exact Nat.find_min' _ ((SourceDistance.classical_weight_iff _).mpr (Nat.find_spec (DistanceFamily.classical_exists (L := L))))
+  (*@$\cdot$@*) exact Nat.find_min' _ ((SourceDistance.classical_weight_iff _).mp (Nat.find_spec (classical_exists (L := L))))

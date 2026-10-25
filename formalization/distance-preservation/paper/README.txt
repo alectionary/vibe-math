@@ -1,9 +1,12 @@
 Distance loss in girth-eight cyclic lifted-product codes
 Manuscript date: 25 October 2026 (UTC). No author line.
 
-Read main.pdf. main.tex is the editable manuscript. PROOF-GUIDE.html links
-every admitted Lean file, its exact hash, checked build record and imports.
-proof-coverage.json maps every manuscript proof to the formal counterparts.
+Read main.pdf. Its Lean appendices explain the objects, dependency structure,
+complete central proof bodies and all current/immutable source URLs. main.tex
+and lean-appendix.tex are editable; the listings and deep links are generated
+from the checked sources. PROOF-GUIDE.html additionally links every admitted
+file, exact hash, checked build record and imports. proof-coverage.json maps
+every manuscript proof and appendix listing to the formal counterparts.
 
 The result is an infinite counterfamily to our diagnostic criterion:
 for every L>0 divisible by11, dQ<=11<12<=dC<=20, classical girth8,
@@ -11,15 +14,21 @@ connected classical Tanner graph, no full RCPC, transpose distance2L.
 The source's general sufficient-condition problem is not marked solved.
 The report follows the repository's established article/theorem/proof style.
 
-Local review status
-The new research sources and this paper are local, uncommitted files.
-No new public commit-pinned links can truthfully be given yet. File links
-and the SHA-256 snapshot provide reviewable exact sources. No commit,
-push, announcement or external message is part of this report request.
-Publication, if later authorized, requires committing all linked sources,
-pinning the links to that immutable revision and checking the public URLs.
+Publication and source pins
+The unchanged mathematical Lean sources are published at Git commit
+98eb91cd9049e6a88887a5ba79150ad96a4a3e53. Manuscript theorem links target
+their exact declarations at that pin. The paper appendices also print every
+current and immutable source URL. This presentation build is local until
+separately committed; no new push or announcement is part of its preparation.
+editorial-provenance.json records the earlier snapshot and the presentation work.
 
 Reproduction
+Generate the source-bound listings before building the manuscript:
+  python3 generate_appendix.py
+This checks all50 source files against the immutable Git snapshot and records
+exact ranges/hashes in appendix-listings.json. In an extracted ZIP without Git
+history, the existing generated files can be compiled as supplied; hash/range
+validation in validate_report.py does not require Git history.
 Build main.tex with Tectonic (the repository's existing manuscript workflow):
   tectonic --keep-logs main.tex
 The desktop LaTeX project/compiler can also compile and preview this folder.

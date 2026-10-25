@@ -261,6 +261,13 @@ When writing or revising a research paper:
   that the linked Lean sources and imported research modules are checked into the
   repository. When publication is authorized, push them with the paper and check
   that the public links resolve to the verified sources.
+- Include a substantive, organized Lean appendix in the PDF, following the
+  [stopping-bound paper's proof appendix](../../../formalization/stopping-bound/stronger/supplement.tex):
+  explain the definitions and source bridges, print complete central proof bodies,
+  show their dependency structure, and provide current and commit-pinned source
+  links with declaration-level anchors. A coverage table, external guide or source
+  archive supplements this exposition; it does not replace it. Review the rendered
+  appendix against that example before delivery.
 - Cite the discovery source, original question and applicable predecessors.
   Include a reference chronology table: source, earliest relevant preprint/date,
   inspected version/publication milestone, this paper's dated revision, and the

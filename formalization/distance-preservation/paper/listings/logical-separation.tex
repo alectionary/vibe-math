@@ -1,0 +1,12 @@
+theorem augmentation_witness (a b : ZMod L) : FamilyWords.augmentation (U a b)=1 := by
+  simp [FamilyWords.augmentation,U,delta]
+
+theorem actual_logical (a b : ZMod L) : GeneralLP.LogicalX (e a b) (U a b) V := by
+  constructor
+  (*@$\cdot$@*) intro c
+    exact (GeneralLP.z_action (e a b) (U a b) V c.1.1 c.1.2 c.2).trans (witness_kernel a b _ _ _)
+  (*@$\cdot$@*) intro h
+    obtain (*@$\langle$@*)w,hw(*@$\rangle$@*) := GeneralLP.full_span_left (e a b) (U a b) V h
+    have h1 := augmentation_witness a b
+    rw [hw,GeneralLP.augmentation_stabilizer] at h1
+    exact zero_ne_one h1

@@ -1,0 +1,32 @@
+theorem projected_support_stopping (p : A (*@$\to$@*)+ B) (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) A)
+    (x : Word A) (hx : Kernel e x) (hn : x (*@$\ne$@*) 0) :
+    SmallStopping.Stopping (Adjacent (fun i j => p (e i j)))
+      ((CoverWeight.support x).image (project p)) := by
+  have hs : (CoverWeight.support x).Nonempty := by
+    by_contra h
+    apply hn
+    funext v
+    by_contra hv
+    change x v (*@$\ne$@*) 0 at hv
+    exact h (*@$\langle$@*)v,Finset.mem_filter.mpr (*@$\langle$@*)Finset.mem_univ _,hv(*@$\rangle$@*)(*@$\rangle$@*)
+  apply stopping_of_partners _ _ (hs.image _)
+  intro v hv c hc
+  obtain (*@$\langle$@*)w,hw,rfl(*@$\rangle$@*) := Finset.mem_image.mp hv
+  have hwnz : x w (*@$\ne$@*) 0 := (Finset.mem_filter.mp hw).2
+  let d : Fin 3 (*@$\times$@*) A := (c.1,w.2+e c.1 w.1)
+  have hk : (*@$\exists$@*) k : Fin 4, k (*@$\ne$@*) w.1 (*@$\land$@*) x (k,d.2-e c.1 k) (*@$\ne$@*) 0 := by
+    by_contra h
+    push Not at h
+    have he : boundary e x d = x w := by
+      unfold boundary
+      rw [Finset.sum_eq_single w.1]
+      (*@$\cdot$@*) simp [d]
+      (*@$\cdot$@*) intro k hk hne
+        exact h k hne
+      (*@$\cdot$@*) simp
+    exact hwnz (he.symm.trans (hx d))
+  obtain (*@$\langle$@*)k,hkw,hkx(*@$\rangle$@*) := hk
+  refine (*@$\langle$@*)project p (k,d.2-e c.1 k),Finset.mem_image.mpr (*@$\langle$@*)_,by simp [CoverWeight.support,hkx],rfl(*@$\rangle$@*),?_,?_(*@$\rangle$@*)
+  (*@$\cdot$@*) intro h
+    exact hkw (congrArg Prod.fst h)
+  (*@$\cdot$@*) simpa [Adjacent,project,d,map_sub,map_add] using hc

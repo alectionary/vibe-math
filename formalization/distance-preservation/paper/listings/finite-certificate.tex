@@ -1,0 +1,17 @@
+theorem encoded_lower (c : BitVec 13) : encode c = 0 (*@$\lor$@*) 12 (*@$\le$@*) (encode c).cpop.toNat := by
+  have hc : c.toNat < 8192 := c.isLt
+  have hb : c.toNat / 128 < 64 := by omega
+  have h := all_blocks (*@$\langle$@*)c.toNat / 128, hb(*@$\rangle$@*)
+  unfold goodBlock at h
+  have hh := List.all_eq_true.mp h (c.toNat % 128) (List.mem_range.mpr (Nat.mod_lt _ (by decide)))
+  have he : 128*(c.toNat/128)+c.toNat%128 = c.toNat := by omega
+  rw [he, BitVec.ofNat_toNat] at hh
+  have hp : encode c = 0#44 (*@$\lor$@*) (12 : BitVec 44) (*@$\le$@*) (encode c).cpop := by simpa using hh
+  rcases hp with hp | hp
+  (*@$\cdot$@*) exact Or.inl hp
+  (*@$\cdot$@*) exact Or.inr hp
+
+theorem actual_classical_lower (x : BitVec 44) (h : ClassicalKernel x) :
+    x = 0 (*@$\lor$@*) 12 (*@$\le$@*) x.cpop.toNat := by
+  rw [kernel_reconstruct x h]
+  exact encoded_lower _

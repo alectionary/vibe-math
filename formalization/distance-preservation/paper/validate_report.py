@@ -3,6 +3,7 @@ from pathlib import Path
 import datetime, hashlib, html.parser, json, re, urllib.parse, zipfile
 from pypdf import PdfReader
 import pdfplumber
+from generate_appendix import declaration, tex_code
 
 P=Path(__file__).resolve().parent
 W=P.parent
@@ -18,6 +19,7 @@ def main():
     a=json.loads((P/'report-audit.json').read_text())
     assert sha(P/'main.tex')==a['paper_tex_sha256']
     assert sha(P/'main.pdf')==a['paper_pdf_sha256']
+    for name,h in a['manuscript_files_sha256'].items():assert sha(P/name)==h,name
     assert sha(P/'distance-preservation-source.zip')==a['source_archive_sha256']
     c=json.loads((P/'proof-coverage.json').read_text())
     assert c['manuscript_sha256']==sha(P/'main.tex')
@@ -36,8 +38,9 @@ def main():
         assert z.read('distance-preservation/paper/SHA256SUMS.txt').decode()==sums
         assert not any('/sources/' in p or p.endswith('.olean') for p in z.namelist())
 
-    tex=(P/'main.tex').read_text()
-    assert r'\author{}' in tex
+    main_tex=(P/'main.tex').read_text()
+    tex='\n'.join((P/f).read_text() for f in a['manuscript_files_sha256'])
+    assert r'\author{}' in main_tex
     assert not re.search(r'\b(expanded paper|updated paper|revised paper)\b',tex,re.I)
     proof_refs=re.findall(r'\\lean\{([^}]+)\}\{([^}]+)\}',tex)
     links=[f'../{mod}.lean' for mod,name in proof_refs]
@@ -46,6 +49,41 @@ def main():
     local=[urllib.parse.unquote(x.split('#')[0]) for x in links
            if not urllib.parse.urlparse(x).scheme]
     for link in local:assert (P/link).is_file(),link
+    extracts=json.loads((P/'appendix-listings.json').read_text())
+    assert len(extracts['listings'])==24
+    assert len(extracts['complete_source_modules'])==50
+    total_declarations=0
+    for listing in extracts['listings']:
+        mod=listing['module'];parts=[]
+        assert sha(W/(mod+'.lean'))==listing['source_sha256']
+        for d in listing['declarations']:
+            raw,first,last=declaration(mod,d['name'].split('.')[-1])
+            assert (first,last)==(d['first_line'],d['last_line'])
+            assert hashlib.sha256(raw.encode()).hexdigest()==d['raw_sha256']
+            assert d['url'].endswith(f'/{mod}.lean#L{first}-L{last}')
+            assert any(x['declaration']==d['name'] and x['module']==mod
+                       for x in c['linked_declarations']),d['name']
+            parts.append(raw);total_declarations+=1
+        rendered=tex_code('\n'.join(parts))
+        f=P/'listings'/(listing['id']+'.tex')
+        assert f.read_text()==rendered and sha(f)==listing['listing_sha256']
+    targets=dict(re.findall(r'\\csname leanline@([^\\]+)\\endcsname\{(\d+)\}',(P/'proof-targets.tex').read_text()))
+    for mod,name in proof_refs:
+        raw,first,last=declaration(mod,name.split('.')[-1])
+        assert targets[name]==str(first),(mod,name)
+    public=json.loads((P/'published-links.json').read_text())
+    assert public['status']=='PASS' and public['module_count']==50
+    assert public['proof_commit']==extracts['proof_commit']==a['proof_source_commit']
+    for mod in extracts['complete_source_modules']:
+        item=next(x for x in public['modules'] if x['module']==mod['module'])
+        assert item['github_blob']==mod['git_blob']
+        assert item['source_sha256']==mod['source_sha256']
+    # A source bundle is supplementary: substantive explanations and complete
+    # proof bodies must be present in the PDF sources themselves.
+    appendix=(P/'lean-appendix.tex').read_text()
+    for key in ['source-span','logical-separation','cover-bound','finite-certificate',
+                'transpose-period','final-distance']:
+        assert '\\leanlisting{'+key+'}' in appendix,key
     dates={'RDV2025':datetime.date(2025,3,10),'FHM2026':datetime.date(2026,6,10),
            'F86_first':datetime.date(2026,7,30),'F89_first':datetime.date(2026,7,30),
            'F86_internal':datetime.date(2026,8,24),'F89_internal':datetime.date(2026,8,24)}
@@ -77,6 +115,11 @@ def main():
     assert 'Question answered' in text and 'Question still open' in text
     assert 'Next proposed target' in text and '594 days' in text and '137 days' in text
     assert '\ufffd' not in text
+    import unicodedata
+    normalized_text=' '.join(unicodedata.normalize('NFKC',text).lower().split())
+    for heading in ['kernel, full-span separation','projection and the finite base',
+                    'Complete current and immutable Lean URLs']:
+        assert heading.lower() in normalized_text,heading
     visual=json.loads((P/'presentation-review.json').read_text())
     assert visual['status']=='PASS' and visual['pdf_sha256']==sha(P/'main.pdf')
     assert visual['reviewed_pages']==list(range(1,len(reader.pages)+1))
@@ -100,8 +143,13 @@ def main():
         'pdf_character_and_link_bounds':'PASS',
         'historical_evidence_hashes_checked':present,
         'historical_evidence_files_omitted_from_focused_bundle':absent,
+        'complete_appendix_listings':len(extracts['listings']),
+        'complete_displayed_declarations':total_declarations,
+        'listing_source_ranges_and_typesetting':'PASS',
+        'all_pinned_source_files_public_with_matching_blobs':50,
+        'declaration_level_link_anchors':'PASS',
         'visual_review_record':'presentation-review.json (separate manual visual check)',
-        'public_links':'The five cited primary source URLs and relevant version histories were reopened with the web tool on25October2026; no new published proof URLs claimed.'}
+        'public_links':'The50 immutable proof source files are verified against GitHub commit-tree blobs; every printed declaration anchor matches exact checked source lines. Primary-paper checks are retained in report-source-checks.json.'}
     (P/'report-audit.json').write_text(json.dumps(a,indent=2,ensure_ascii=False)+'\n')
     print(json.dumps({'status':'PASS','pages':len(reader.pages),'local_links':len(local),
                       'pdf_links':total_links,'archive_members':a['source_archive_members']}))

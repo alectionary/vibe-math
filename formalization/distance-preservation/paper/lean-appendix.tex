@@ -1,0 +1,278 @@
+\clearpage
+\section{The checked Lean argument: objects and dependency map}\label{app:lean-map}
+
+This appendix presents the formal argument inside the paper. It explains how
+the source objects are represented and prints the complete central declaration
+bodies used in the distance obstruction, together with the applications needed
+to recover the mathematical theorems. Appendix~\ref{app:lean-links} then gives
+current and immutable links for every admitted source file. These links
+supplement the displayed proofs; they are also the route to routine coordinate
+lemmas and the large finite row certificates not printed in full.
+
+All listings below are generated from the checked sources at commit
+\texttt{98eb91cd9049}. They retain complete declarations, with Unicode symbols
+typeset mathematically and long lines wrapped. They are extracts from their
+original namespaces and imported contexts, rather than separate standalone Lean
+files. Unless stated otherwise, cyclic modules use an implicit natural number
+\texttt{L} and the instance \texttt{[NeZero L]}. This excludes length zero, not
+even or composite lengths. The generic cover modules instead use finite abelian
+groups and the instances stated with their theorem signatures. The archive's
+\nolinkurl{appendix-listings.json} binds each extract to its source hash and exact
+line ranges. No mathematical proof source was changed to produce these listings.
+
+\subsection{How the branches fit together}
+The lower and upper bounds are proved independently and combined only after
+their actual source-coordinate translations. The following diagram summarizes
+the dependency structure; the graph and transpose branches establish the
+additional clauses of Theorem~\ref{thm:main}.
+\[
+\begin{array}{ccc}
+\text{Kernel and augmentation}&&\text{Base certificate and tree bound}\\
+\downarrow&&\downarrow\\
+\text{Full-span exclusion; weight }\leq11&&\text{Cover projection; weight }\geq12\\
+\searrow&&\swarrow\\[-2pt]
+\multicolumn{3}{c}{\text{Actual source words, spans and minima}}\\
+\multicolumn{3}{c}{\downarrow}\\
+\multicolumn{3}{c}{d_Q\leq11<12\leq d_C}
+\end{array}
+\]
+\begin{center}\small
+\begin{tabular}{@{}P{.30\textwidth}cP{.57\textwidth}@{}}
+\toprule Branch&&Checked dependency chain\\\midrule
+Quantum upper bound&$\longrightarrow$&
+Coefficient kernel $\to$ augmentation separator $\to$ full-span nonmembership
+$\to$ physical support at most eleven.\\[4pt]
+Classical lower bound&$\longrightarrow$&
+Base row reconstruction and finite weight certificate; Tanner-tree stopping bound
+$\to$ parity projection $\to$ every nonzero upstairs word has weight at least twelve.\\[4pt]
+Source distances&$\longrightarrow$&
+Actual matrix actions and full spans $\to$ both CSS sectors and all-word weight
+predicates $\to$ equality of the formal minima $\to$ $d_Q<d_C$.\\[4pt]
+Graph and transpose properties&$\longrightarrow$&
+Voltage exclusions plus explicit cycle edges; cyclic reachability;
+transpose period identity $\to$ constant fibers $\to$ exact transpose weight.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The trust boundary is the ordinary Lean kernel and the recorded standard axioms
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The finite
+classical certificate is checked by Lean; external C++ and SAT exclusions are
+absent from these branches. The separately audited generic follow-up lemmas are
+not used to claim the unproved truncated-distance condition.
+
+\subsection{Actual matrices and physical coordinates}
+\nolinkurl{GeneralLP} gives the coefficient matrices for an arbitrary monomial
+$3\times4$ exponent array. Its \texttt{Qubit} type is the disjoint union of the
+$4\times4$ and $3\times3$ product blocks, each with one cyclic coordinate.
+The \texttt{P} coefficient uses exactly $t=s+e$. Thus the definitions implement
+\eqref{eq:source}, including the star's negative exponent, without a second lift.
+The syndrome and two stabilizer actions displayed here expose every sign.
+\leanlisting{source-objects}
+
+\subsection{The complete row span, not just the generators}
+The following equivalence quantifies over an arbitrary binary coefficient for
+every lifted check. Its forward direction evaluates a general row combination
+in each physical block; its reverse direction reconstructs that combination.
+The \texttt{inSpanZ\_iff} theorem in the same file proves the corresponding
+other-sector statement by transposing both square blocks. This is the bridge
+needed before an augmentation obstruction can certify a logical class.
+\leanlisting{source-span}
+
+\subsection{The all-word distance predicate}
+Here \texttt{Kernel} and \texttt{InSpan} quantify over actual source binary
+coordinates, while \texttt{QuantumHasWeight} includes both logical sectors.
+These are the predicates behind the minima, rather than a restricted search
+through displayed words. Existence and the minimum equivalences are used in
+Appendix~\ref{app:lean-assembly}.
+\leanlisting{source-minimum}
+
+\clearpage
+\section{The logical obstruction: kernel, full-span separation and weight}\label{app:lean-obstruction}
+This branch proves Theorem~\ref{thm:template}. The coefficient word is defined
+for arbitrary parameters in \texttt{ZMod L}. In particular, monomial terms may
+coincide, and the weight argument must allow characteristic-two cancellation.
+
+\subsection{The word and its full coefficient kernel proof}
+The matrix literal below is the coefficient version of \eqref{eq:UV}.
+\texttt{delta a s} is one exactly when $s=a$. The proof checks all twelve
+check types with arbitrary fiber coordinate; it does not sample lift sizes.
+\leanlisting{parametric-word}
+
+\subsection{Why the separator annihilates every stabilizer}
+The augmentation is the two fiber sums of \eqref{eq:ell}. Translation permutes
+a finite cyclic fiber, so both terms of a stabilizer give the same sum and
+cancel. The second theorem extracts a left-block stabilizer representation
+from membership in the entire physical row span. Together these statements
+make the separator apply to arbitrary source stabilizer combinations.
+\leanlisting{separator-span}
+
+\subsection{Nontriviality of the actual source logical}
+The source check action transports the coefficient identity to the matrix
+kernel. If the word belonged to the stabilizer span, its left block would
+have augmentation zero, contradicting the computed value one. The following
+is the complete proof of that nonmembership, with no finite span search.
+\leanlisting{logical-separation}
+
+\subsection{Physical Hamming weight, including cancelling parameters}
+The support list consists of eleven physical qubit coordinates. The first
+proof shows the word vanishes outside that list; the second compares finite
+support cardinalities. It deliberately uses list length as an upper bound,
+so duplicate coordinates and cancellation cannot invalidate the theorem.
+\leanlisting{physical-weight}
+
+\subsection{The source-matched universal conclusion}
+This theorem assembles actual CSS matrix commutation, full logical
+nontriviality and physical coefficient weight. It is the same universal
+parameter statement used in Theorem~\ref{thm:template}.
+\leanlisting{source-obstruction}
+
+\clearpage
+\section{The classical lower bound: projection and the finite base}\label{app:lean-classical}
+This branch separates ordinary binary parity projection from the image of
+occupied support. The distinction is necessary when all projected parities
+cancel, and avoids an odd-cover assumption.
+
+\subsection{Cancellation gives two occupied coordinates per fiber}
+The push-forward is a sum in \texttt{ZMod 2}. If it is zero, a nonempty
+fiber support cannot have cardinality one. Summing the resulting two-per-fiber
+bound gives twice the size of the occupied image. The full proof below
+works for arbitrary finite source and target types, not just cyclic groups.
+\leanlisting{cancelled-fibers}
+
+\subsection{The occupied image is a nonempty stopping set}
+The projected support theorem uses the actual monomial incidence. At a
+touched lifted check, binary parity gives a second selected neighbor.
+Its base column type differs from the first, so the neighbors remain
+distinct after projection. The helper \texttt{stopping\_of\_partners}
+turns these partners into the finite-set stopping predicate.
+\leanlisting{stopping-projection}
+
+\subsection{The complete cover-bound theorem}
+Both alternatives now appear in a single full theorem and proof. When
+the parity projection is nonzero, its base code distance supplies $d$;
+when it is zero, the occupied image supplies $2s$. The printed hypotheses
+make clear which base facts are required.
+\leanlisting{cover-bound}
+
+\subsection{What the eleven-fold certificate actually checks}
+\nolinkurl{FamilyEnum11.encode} is an explicit XOR of thirteen $44$-bit
+vectors. \nolinkurl{FamilySource11} proves
+\texttt{kernel\_reconstruct}: every actual source-kernel vector equals
+that encoding at its thirteen extracted free coordinates. It is an
+identity derived from the source rows, not an assumed generator-span
+description. \nolinkurl{FamilyEnum11.goodBlock} checks 128 consecutive
+inputs, and \nolinkurl{FamilyDistance11.all_blocks} checks all 64 blocks.
+Their complete source files, including the bit constants and row identities,
+are linked in Appendix~\ref{app:lean-links}.
+
+The following proofs turn the checked blocks into a theorem for an arbitrary
+thirteen-bit input and then for every source-kernel vector. This displays
+the certificate's soundness step rather than an external enumerator result.
+\leanlisting{finite-certificate}
+
+The next bridge packs actual coefficient functions into the bit-vector
+certificate and identifies population count with physical Hamming weight.
+The final theorem converts each source check equation into a certified row
+dot product before applying the lower bound.
+\leanlisting{finite-weight-bridge}
+
+\subsection{The structural stopping bound}
+The classical Tanner-tree argument is credited to Kelley et al.~\cite{Kelley}
+in the main text. Here is its complete checked degree-three, no-four/no-six
+implementation. It constructs six distinct selected variables explicitly;
+the no-cycle hypotheses rule out each potential collision.
+\leanlisting{tree-stopping}
+
+\subsection{Application to every positive multiple of eleven}
+Reduction modulo eleven supplies the additive map. The two premises of
+the generic theorem are discharged by the actual base kernel certificate
+and the independently proved structural stopping bound. This is the full
+family application, including the exponent-projection equality.
+\leanlisting{cover-application}
+
+\clearpage
+\section{Upper bounds, transpose distance and actual graph witnesses}\label{app:lean-geometry}
+
+\subsection{A nonzero classical word of weight at most twenty}
+The coefficient definition below is \eqref{eq:twenty}. Kernel membership
+is proved for every positive $L$; nonzero membership uses reduction modulo
+eleven. The final step applies the physical support bound to the actual
+classical minimum. The helper \texttt{weight\_le} and its support list
+are in the same linked source file.
+\leanlisting{classical-upper}
+
+\subsection{The transpose period identity}
+The transpose boundary has the plus exponent $t+E_{ij}$. The following
+proof writes down the precise combination of shifted check equations in
+\eqref{eq:bezout}. The identity forces the third component to have period
+one without semisimplicity, oddness or a rank-preservation hypothesis.
+\leanlisting{transpose-period}
+
+The intervening lemmas in \nolinkurl{TransposeConstant.lean} propagate
+period one to constancy of all three fibers. The full equivalence below
+includes the converse and the even-sum condition.
+\leanlisting{transpose-constant}
+
+\subsection{Exact weight of every nonzero transpose word}
+The finite binary-triple fact \texttt{three\_even\_count} says that a
+nonzero even triple has exactly two ones. The proof below then counts
+the Cartesian product of those two occupied component types with all
+$L$ fibers. The final conjunction includes existence, so the distance
+statement is not vacuous.
+\leanlisting{transpose-distance}
+
+\subsection{Girth exactly eight}
+The finite voltage tests and their reduction proofs exclude four- and
+six-cycles. To complete exact girth, one also needs a simple eight-cycle
+in the actual incidence. The following declarations give distinct
+vertices and all eight edges separately. The main text explains their
+assembly into the displayed cycle.
+\leanlisting{girth-eight}
+
+\subsection{Connectedness through actual Tanner walks}
+The normalized zero row connects column types within a fiber; the unit
+exponent supplies the following shift walk. The final proof combines
+variable-to-variable walks and the zero-column incidences to cover all
+variable/check endpoints. Both statements hold for every positive $L$.
+\leanlisting{connected}
+
+\clearpage
+\section{Parameter transfer and the final source-distance statement}\label{app:lean-assembly}
+
+\subsection{The arithmetic counterfamily}
+This complete implication displays every premise of the general parameter
+extension. An additive projection sends the parameters to $(1,5)$; the
+conclusion includes the voltage exclusions, full partition exclusions,
+actual classical-kernel lower bound and source logical upper witness.
+The cyclic-congruence specialization is in the same source file.
+\leanlisting{arithmetic-family}
+
+\subsection{From block coordinates to every physical binary word}
+The disjoint-union coordinate map is surjective, so every physical word
+has two blocks. The first two equivalences transport logical-sector
+membership and exact support weight. The next two proofs identify the
+minima in both directions, using the corresponding weight equivalences.
+This is the bridge that prevents an accidentally restricted minimum.
+\leanlisting{minimum-bridge}
+
+\subsection{The final distance drop}
+All substantive ingredients now occur as checked dependencies. The
+last theorem rewrites the actual source minima, applies the quantum
+witness and classical lower theorem, and concludes strict separation.
+The other clauses of Theorem~\ref{thm:main} are supplied by the graph,
+transpose and upper-word proofs above; they are not extra assumptions
+of this distance statement.
+\leanlisting{final-distance}
+
+\paragraph{Reproducing the checks.}
+The fifty original modules and their full import closure were rebuilt
+against the pinned cached dependencies as described in
+Section~\ref{sec:formal}. The manuscript declaration audit checks every
+named declaration linked here, including those added to the exposition.
+The listing generator verifies that each source equals its published
+Git blob, and that each printed declaration is a complete source range.
+The archive contains that generator, the range/hash manifest, the
+declaration audit and the portable rebuild instructions. The exact
+typesetting extracts add no axioms or proof modules.
+
+\input{proof-file-index.tex}

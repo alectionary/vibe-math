@@ -1,0 +1,14 @@
+theorem classical_lower_twelve (hL : 11 (*@$\mid$@*) L) (x : CyclicCover.Word (ZMod L))
+    (hx : CyclicCover.Kernel DistanceFamily.liftE x) (hn : x(*@$\ne$@*)0) :
+    12(*@$\le$@*)(CoverWeight.support x).card := by
+  let p : ZMod L (*@$\to$@*)+ ZMod 11 := (ZMod.castHom hL (ZMod 11)).toAddMonoidHom
+  have he : (fun i j => p (DistanceFamily.liftE i j)) = FamilyBaseGraph.e := by
+    funext i j
+    simp [p,DistanceFamily.liftE,FamilyBaseGraph.e]
+  apply CoverDistance.lower_bound p DistanceFamily.liftE 12 6 _ _ x hx hn
+  (*@$\cdot$@*) intro y hy hny
+    rw [he] at hy
+    exact FamilyBaseGraph.code_lower_twelve y hy hny
+  (*@$\cdot$@*) intro T hT
+    rw [he] at hT
+    exact FamilyTreeStopping.base_stopping_six T hT

@@ -1,0 +1,6 @@
+theorem source_parametric_obstruction (a b : ZMod L) :
+    ((*@$\forall$@*) c : GeneralLP.XCheck L, (*@$\forall$@*) d : GeneralLP.ZCheck L,
+      ((*@$\sum$@*) q, GeneralLP.HZ (e a b) d q * GeneralLP.HX (e a b) c q)=0) (*@$\land$@*)
+    GeneralLP.LogicalX (e a b) (U a b) V (*@$\land$@*)
+    (CoverWeight.support (GeneralLP.join (U a b) V)).card(*@$\le$@*)11 :=
+  (*@$\langle$@*)GeneralLP.css_commutation (e a b),parametric_obstruction a b(*@$\rangle$@*)

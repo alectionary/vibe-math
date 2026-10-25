@@ -1,0 +1,25 @@
+def push (p : A (*@$\to$@*) B) (x : A (*@$\to$@*) ZMod 2) (b : B) : ZMod 2 :=
+  (*@$\sum$@*) a, if p a = b then x a else 0
+
+theorem zero_push_fiber_lower (p : A (*@$\to$@*) B) (x : A (*@$\to$@*) ZMod 2) (hz : push p x = 0)
+    (b : B) (hb : b (*@$\in$@*) (support x).image p) :
+    2 (*@$\le$@*) ((support x).filter (fun a => p a = b)).card := by
+  obtain (*@$\langle$@*)a,ha,hp(*@$\rangle$@*) := Finset.mem_image.mp hb
+  have hpos : 0 < ((support x).filter (fun a => p a = b)).card :=
+    Finset.card_pos.mpr (*@$\langle$@*)a,Finset.mem_filter.mpr (*@$\langle$@*)ha,hp(*@$\rangle$@*)(*@$\rangle$@*)
+  have hc := push_eq_card p x b
+  have he := congrFun hz b
+  rw [he] at hc
+  have hne : ((support x).filter (fun a => p a = b)).card (*@$\ne$@*) 1 := by
+    intro h1
+    rw [h1] at hc
+    norm_num at hc
+  omega
+
+theorem zero_push_weight_doubles (p : A (*@$\to$@*) B) (x : A (*@$\to$@*) ZMod 2) (hz : push p x = 0) :
+    2 * ((support x).image p).card (*@$\le$@*) (support x).card := by
+  calc
+    2 * ((support x).image p).card = (*@$\sum$@*) b (*@$\in$@*) (support x).image p, 2 := by simp [Nat.mul_comm]
+    _ (*@$\le$@*) (*@$\sum$@*) b (*@$\in$@*) (support x).image p, ((support x).filter (fun a => p a = b)).card :=
+      Finset.sum_le_sum (fun b hb => zero_push_fiber_lower p x hz b hb)
+    _ = (support x).card := (Finset.card_eq_sum_card_image p (support x)).symm

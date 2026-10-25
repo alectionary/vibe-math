@@ -1,0 +1,28 @@
+def HX (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (c : XCheck L) (q : Qubit L) : ZMod 2 := match q with
+  | .inl ((i,j),s) => if c.1.2=j then P (e c.1.1 i) c.2 s else 0
+  | .inr ((i,j),s) => if c.1.1=i then P (-e j c.1.2) c.2 s else 0
+
+def HZ (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (c : ZCheck L) (q : Qubit L) : ZMod 2 := match q with
+  | .inl ((i,j),s) => if c.1.1=i then P (e c.1.2 j) c.2 s else 0
+  | .inr ((i,j),s) => if c.1.2=j then P (-e i c.1.1) c.2 s else 0
+
+def Syndrome (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (j : Fin 4) (i : Fin 3) (t : ZMod L) : ZMod 2 :=
+  ((*@$\sum$@*) k : Fin 4, u j k (t-e i k)) + ((*@$\sum$@*) l : Fin 3, v l i (t+e l j))
+
+def stabilizerLeft (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (w : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) (i j : Fin 4) (s : ZMod L) : ZMod 2 :=
+  (*@$\sum$@*) k : Fin 3, w k j (s+e k i)
+
+def stabilizerRight (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (w : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) (i j : Fin 3) (s : ZMod L) : ZMod 2 :=
+  (*@$\sum$@*) k : Fin 4, w i k (s-e j k)
+
+def InSpanX (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) : Prop :=
+  (*@$\exists$@*) w : XCheck L (*@$\to$@*) ZMod 2, (*@$\forall$@*) q, join u v q=(*@$\sum$@*) c, w c*HX e c q
+
+def LogicalX (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) : Prop :=
+  ((*@$\forall$@*) c : ZCheck L, (*@$\sum$@*) q, HZ e c q*join u v q=0) (*@$\land$@*) (*@$\neg$@*) InSpanX e u v

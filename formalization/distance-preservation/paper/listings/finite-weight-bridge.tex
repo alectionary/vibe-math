@@ -1,0 +1,19 @@
+theorem packWord_weight (x : Var (*@$\to$@*) ZMod 2) : (packWord x).cpop.toNat = (CoverWeight.support x).card := by
+  unfold packWord
+  rw [BinaryFinite.pack44_weight]
+  exact Finset.card_equiv varEquiv.symm (fun v => by simp [CoverWeight.support])
+
+theorem code_lower_twelve (x : Var (*@$\to$@*) ZMod 2) (hx : (*@$\forall$@*) c, boundary x c = 0) (hn : x (*@$\ne$@*) 0) :
+    12 (*@$\le$@*) (CoverWeight.support x).card := by
+  have hk : FamilyBase11.ClassicalKernel (packWord x) := fun c => (kernel_row x c).mpr (hx _)
+  have hp : packWord x (*@$\ne$@*) 0 := by
+    intro hz
+    apply hn
+    funext v
+    have hb := packWord_bit x (varEquiv v)
+    rw [hz] at hb
+    have hh : decide (x v (*@$\ne$@*) 0) = false := by simpa using hb.symm
+    exact not_ne_iff.mp (of_decide_eq_false hh)
+  rcases FamilyClassical11.actual_classical_lower (packWord x) hk with hz | hl
+  (*@$\cdot$@*) exact False.elim (hp hz)
+  (*@$\cdot$@*) rwa [packWord_weight] at hl

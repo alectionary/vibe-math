@@ -1,0 +1,19 @@
+def e (a b : ZMod L) : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L :=
+  !![0,0,0,0;0,a,b,3*a;0,2*a,2*b,b+2*a]
+
+def U (a b : ZMod L) (i j : Fin 4) (s : ZMod L) : ZMod 2 :=
+  !![delta 0 s,0,0,0;
+     0,delta (-2*a) s,0,0;
+     0,0,delta (-2*b) s,0;
+     delta (-2*a) s,delta (-4*a) s+delta (-2*a) s,delta (-(b+2*a)) s,delta (-4*a) s] i j
+
+abbrev V : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2 := FamilyWords.V
+
+theorem witness_kernel (a b : ZMod L) (j : Fin 4) (i : Fin 3) (t : ZMod L) :
+    GeneralLP.Syndrome (e a b) (U a b) V j i t=0 := by
+  have ht : (2 : ZMod 2)=0 := by decide +kernel
+  have hf : (4 : ZMod 2)=0 := by decide +kernel
+  fin_cases j <;> fin_cases i <;>
+    norm_num [GeneralLP.Syndrome,e,U,V,FamilyWords.V,Fin.sum_univ_succ,delta_sub,delta_add]
+  all_goals ring_nf
+  all_goals simp only [ht,hf,mul_zero,sub_zero,zero_sub,neg_zero,add_zero,zero_add]

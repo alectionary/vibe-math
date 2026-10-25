@@ -1,0 +1,12 @@
+theorem projected_counterfamily (p : ZMod L (*@$\to$@*)+ ZMod 11) (a b : ZMod L) (ha : p a=1) (hb : p b=5) :
+    VoltageCycles.NoFourVoltage (ParametricWords.e a b) (*@$\land$@*)
+    VoltageCycles.NoSixVoltage (ParametricWords.e a b) (*@$\land$@*)
+    (*@$\neg$@*) RowPairing (ParametricWords.e a b) (*@$\land$@*) (*@$\neg$@*) ColumnPairing (ParametricWords.e a b) (*@$\land$@*)
+    ((*@$\forall$@*) x : CyclicCover.Word (ZMod L),
+      ((*@$\forall$@*) c, (*@$\sum$@*) v, GeneralLP.C (ParametricWords.e a b) c v*x v=0) (*@$\to$@*)
+      x(*@$\ne$@*)0 (*@$\to$@*) 12(*@$\le$@*)(CoverWeight.support x).card) (*@$\land$@*)
+    GeneralLP.LogicalX (ParametricWords.e a b) (ParametricWords.U a b) ParametricWords.V (*@$\land$@*)
+    (CoverWeight.support (GeneralLP.join (ParametricWords.U a b) ParametricWords.V)).card(*@$\le$@*)11 :=
+  (*@$\langle$@*)no_four p a b ha hb,no_six p a b ha hb,no_row_pairing p a b ha hb,
+    no_column_pairing p a b ha hb,actual_classical_lower p a b ha hb,
+    ParametricWords.parametric_obstruction a b(*@$\rangle$@*)

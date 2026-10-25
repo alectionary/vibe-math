@@ -1,0 +1,30 @@
+def supportList (a b : ZMod L) : List (Qubit L) :=
+  [.inl ((0,0),0),.inl ((1,1),-2*a),.inl ((2,2),-2*b),
+   .inl ((3,0),-2*a),.inl ((3,1),-4*a),.inl ((3,1),-2*a),
+   .inl ((3,2),-(b+2*a)),.inl ((3,3),-4*a),
+   .inr ((0,2),0),.inr ((1,1),0),.inr ((2,0),0)]
+
+theorem zero_outside (a b : ZMod L) (q : Qubit L) (hq : q(*@$\notin$@*)supportList a b) :
+    GeneralLP.join (U a b) V q=0 := by
+  cases q with
+  | inl p =>
+    rcases p with (*@$\langle$@*)(*@$\langle$@*)i,j(*@$\rangle$@*),s(*@$\rangle$@*)
+    fin_cases i <;> fin_cases j <;>
+      simp_all [GeneralLP.join,SourceModel.join,U,supportList,delta]
+  | inr p =>
+    rcases p with (*@$\langle$@*)(*@$\langle$@*)i,j(*@$\rangle$@*),s(*@$\rangle$@*)
+    fin_cases i <;> fin_cases j <;>
+      simp_all [GeneralLP.join,SourceModel.join,V,FamilyWords.V,supportList,delta]
+
+theorem weight_le (a b : ZMod L) :
+    (CoverWeight.support (GeneralLP.join (U a b) V)).card(*@$\le$@*)11 := by
+  have hs : CoverWeight.support (GeneralLP.join (U a b) V) (*@$\subseteq$@*) (supportList a b).toFinset := by
+    intro q hq
+    have hn : GeneralLP.join (U a b) V q(*@$\ne$@*)0 := (Finset.mem_filter.mp hq).2
+    by_contra h
+    have hh : q(*@$\notin$@*)supportList a b := by simpa using h
+    exact hn (zero_outside a b q hh)
+  have h := Finset.card_le_card hs
+  have hl := List.toFinset_card_le (l := supportList a b)
+  have he : (supportList a b).length=11 := rfl
+  omega

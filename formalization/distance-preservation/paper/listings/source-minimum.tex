@@ -1,0 +1,10 @@
+def Kernel {Row : Type*} [Fintype Row] (H : Row (*@$\to$@*) Qubit L (*@$\to$@*) ZMod 2) (w : Qubit L (*@$\to$@*) ZMod 2) :=
+  (*@$\forall$@*) c, (*@$\sum$@*) q, H c q * w q = 0
+
+def InSpan {Row : Type*} [Fintype Row] (H : Row (*@$\to$@*) Qubit L (*@$\to$@*) ZMod 2) (w : Qubit L (*@$\to$@*) ZMod 2) :=
+  (*@$\exists$@*) a : Row (*@$\to$@*) ZMod 2, (*@$\forall$@*) q, w q = (*@$\sum$@*) c, a c * H c q
+
+def QuantumHasWeight (L : Nat) [NeZero L] (n : Nat) : Prop :=
+  (*@$\exists$@*) w : Qubit L (*@$\to$@*) ZMod 2,
+    ((Kernel HZ w (*@$\land$@*) (*@$\neg$@*) InSpan HX w) (*@$\lor$@*) (Kernel HX w (*@$\land$@*) (*@$\neg$@*) InSpan HZ w)) (*@$\land$@*)
+      (CoverWeight.support w).card = n

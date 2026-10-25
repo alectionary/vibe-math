@@ -1,0 +1,5 @@
+theorem source_distance_drop (hL : 11 (*@$\mid$@*) L) :
+    quantumDistance L (*@$\le$@*) 11 (*@$\land$@*) 12 (*@$\le$@*) classicalDistance L (*@$\land$@*) quantumDistance L < classicalDistance L := by
+  rw [quantum_distance_eq,classical_distance_eq]
+  exact (*@$\langle$@*)DistanceFamily.quantum_distance_upper,DistanceFamily.classical_distance_lower hL,
+    DistanceFamily.distance_drop hL(*@$\rangle$@*)
