@@ -9,19 +9,19 @@
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={From an Uninformative Spectral Bound to Useful Stopping Guarantees for QC-GHP Codes},pdfauthor={}}
 \newtheorem{theorem}{Theorem}
-\newtheorem*{priorresult}{Earlier theorem (original parameter question)}
+\newtheorem*{priorresult}{Parameter obstruction}
 \setlength{\emergencystretch}{3em}
 \lstset{basicstyle=\scriptsize\ttfamily,columns=fullflexible,keepspaces=true,
  breaklines=true,breakatwhitespace=false,showstringspaces=false,frame=lines,
  escapeinside={(*@}{@*)}}
 \title{From an Uninformative Spectral Bound to Useful\\Stopping Guarantees for QC-GHP Codes}
 \author{}
-\date{October 24, 2026\\\small Expanded follow-up to L-F16-stopping-bound; presentation revised}
+\date{October 24, 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
 Abiad and Castriota ask for QC-GHP parameters making their spectral stopping-set
-bound informative, and propose stronger spectral bounds. Our earlier universal
+bound informative, and propose stronger spectral bounds. A universal
 obstruction answers the original useful-parameter question negatively in the
 proposition's stated scalar-factor model. Here we show that useful replacements
 exist: a degree-corrected fourth-moment criterion gives stopping distance at least
@@ -32,7 +32,7 @@ formulas apply. A two-block incidence refinement and a separate family with exac
 stopping and logical distance six demonstrate further structural gains. Finally,
 Gram-equal CSS constructions prove an unbounded limitation for uniformly useful
 bounds based only on the specified Gram data. The spectral criterion combines
-classical moment and overlap ingredients; all new proofs, constructions and
+classical moment and overlap ingredients; the mathematical proofs, constructions and
 source-to-matrix bridges are checked in Lean.
 \end{abstract}
 
@@ -74,8 +74,7 @@ If the strict spectral condition holds, then $r=1$, $1<a_+\le2$, and every
 stopping support satisfies $|S|\ge2$ and $a_-<|S|$.
 \end{priorresult}
 
-This is the already checked universal result of \cite{ref7}, not a new theorem of this
-revision. Its proof separates the two unavoidable regimes. For $r\ge2$, the
+The proof, formalized in \cite{ref7}, separates two unavoidable regimes. For $r\ge2$, the
 repeated scalar block forces $\eta\ge\gamma^2$, contradicting the strict
 condition. For $r=1$, binary regularity, edge counting and the Gram trace force
 the dense regime in which $a_+\le2$ and $a_-<2$. Positive columns already exclude
@@ -84,22 +83,22 @@ but yields no improvement. The all-ones $2\times4$ example has $\eta=0$ and
 stopping distance two: raw spectral-gap examples do exist.
 The complete proof is \texttt{SourceQuestionAnswer.lean} and its frozen
 \texttt{Spectral.lean} dependency; Appendix~\ref{app:links} gives full current
-and immutable URLs, including the earlier proof closure.
+and immutable URLs for the complete formal proof sources.
 
-\subsection{What this paper answers next}
+\subsection{Useful spectral and incidence replacements}
 The obstruction makes the replacement problem substantive: can different
 spectral information give a stopping bound greater than two on an explicit
-sparse QC-GHP family? Can incidence information do so beyond the earlier B1
-result? We answer both existence questions positively. These are explicit
-follow-up formulations of the source direction, not a claim to an optimal
-universal bound or a new numbered conjecture in \cite{ref1}.
+sparse QC-GHP family? Can incidence information give useful guarantees when
+cross-block intersections exceed within-block intersections? We answer both
+existence questions positively. These are precise replacement questions motivated
+by the source direction; optimal universal refinements are a separate target.
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{.465\linewidth}>{\raggedright\arraybackslash}p{.465\linewidth}@{}}
 \toprule
-\caption{Source questions, follow-up formulations and exact answers.}\label{tab:answers}\\
+\caption{Source question, replacement questions and exact answers.}\label{tab:answers}\\
 \textbf{Question / source} & \textbf{Answer and scope}\\\midrule\endhead
-Abiad--Castriota, 15 July 2026, v1, Prop. 5.1, Remark 5.2, §6: useful parameters for the stated bound & Negative, by the earlier universal theorem (Section 1.1).\\[4pt]
+Abiad--Castriota, 15 July 2026, v1, Prop. 5.1, Remark 5.2, §6: useful parameters for the stated bound & Negative, by the parameter obstruction (Section 1.1).\\[4pt]
 Same source: tighter spectral stopping bounds, including multi-eigenvalue refinements & YES for useful-replacement existence: a fourth-moment criterion proves \ensuremath{\gamma}+1 on explicit sparse joint Sidon families. Theorem 1 and Section 3 prove existence; Theorem 5 limits uniform improvement on other families.\\[4pt]
-This requested follow-up: incidence-conditioned replacement exceeding two on a sparse family beyond B1 & Positive: Theorems 2--3 give the criterion and families; Theorem 4 gives exact distance six.\\[4pt]
+Incidence-conditioned replacement: a stopping guarantee exceeding two on a sparse QC-GHP family & Positive: Theorems 2--3 give the criterion and families; Theorem 4 gives exact distance six.\\[4pt]
 \bottomrule\end{longtable}
 The central argument is as follows. Section~\ref{sec:moment} replaces the failed
 second-eigenvalue regime by an exact fourth-moment criterion. Section~\ref{sec:families}
@@ -111,7 +110,7 @@ why the specified Gram data cannot uniformly recover those incidence gains.
 
 \subsection{Reference chronology and calendar-time comparison}
 Table~\ref{tab:chronology} makes the central source dates visible before the
-proofs. Every elapsed time is measured to this paper's dated revision,
+proofs. Every elapsed time is measured to this paper's date,
 October 24, 2026 (Pacific), rather than to a moving reading date. These are source
 ages, not claims about how long a problem was unresolved. Appendix~\ref{app:chronology}
 records all used sources and held leads, with version distinctions and precision.
@@ -461,8 +460,8 @@ logical distance six in both coinciding sectors.
 \texttt{BicycleFamily} check the finite certificate and cover transfer.
 \texttt{BicycleMatrices}, \texttt{BicycleDegrees}, \texttt{BicycleLogical} and
 \texttt{KernelStopping} check actual matrices, degrees, syndrome, cardinality
-and nonstabilizer status. Unlike the earlier B1 witnesses, this upper witness
-is a logical word rather than a companion row. It is not assumed elementary:
+and nonstabilizer status. For the B1 support characterization cited in \cite{ref7}, the minimum witnesses
+are companion rows; here the upper witness is a nontrivial logical word. It is not assumed elementary:
 the base reconstruction has selected check degrees zero, two and four.
 No general formula for encoded dimension is claimed.
 
@@ -572,16 +571,15 @@ Appendix~\ref{app:ledger} and the accompanying source ledgers.
 
 \section{Answers, implications, and remaining targets}
 \label{sec:answers}
-The original parameter question is answered negatively by the earlier universal
-theorem: Proposition~5.1's strict spectral regime cannot produce a large-root
+The original parameter question is answered negatively by the parameter
+obstruction: Proposition~5.1's strict spectral regime cannot produce a large-root
 guarantee above two in its stated model, with the small branch properly handled.
 The stronger-replacement existence question is answered positively by
 Theorem~\ref{thm:moment} and the explicit sparse families. The
 incidence-conditioned existence question is answered positively by
 Theorems~\ref{thm:partition}--\ref{thm:paired}; Theorem~\ref{thm:six}
 additionally supplies exact stopping and logical distance six on a separate
-infinite family. These are the answers, rather than a report that a search
-failed or that a raw spectral inequality happened to hold.
+infinite family. These are the answers, complete mathematical statements with their displayed hypotheses.
 
 The implications have distinct scopes. Full-spectrum moment information is
 sufficient on a concrete class. Retaining block incidence improves uniform
@@ -592,19 +590,20 @@ obstruction. The short $4/8$ family has lower bound five, not an exact-five
 theorem, and no positive asymptotic rate or growing distance at fixed degree
 has been established.
 
-A bounded next follow-up is to construct or obstruct informative sparse scalar
+Further mathematical questions are to construct or obstruct informative sparse scalar
 QC families with positive moment excess, or determine sharp stopping distances
-for the general powers families. These further questions do not prevent the
-two existence answers from being complete.
+for the general powers families. The two replacement existence questions are
+settled by the displayed constructions.
 
 \paragraph{Formal evidence.}
-All new proofs and source-to-matrix bridges are checked in Lean. The unchanged
-build and audit cover 485 named declarations: 416 new and 69 inherited.
+The mathematical proofs and source-to-matrix bridges are checked in Lean.
+The build and audit cover 485 named declarations in the replacement-bound
+proof project; the parameter-obstruction sources have their own audits.
 Appendix~\ref{app:proofs} maps the claims to their complete proof chains,
 Appendix~\ref{app:links} gives every full current and immutable Lean URL, and
 Appendix~\ref{app:chronology} gives the complete chronology behind
-Table~\ref{tab:chronology}. Investigation timestamps and inventory reconciliation
-are supporting records in Appendix~\ref{app:ledger}.
+Table~\ref{tab:chronology}. Appendix~\ref{app:ledger} states the bounded
+prior-art coverage; detailed search and verification records accompany the sources.
 
 \begin{thebibliography}{99}
 \bibitem{ref1} Aida Abiad and Nichola Castriota. Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes. 15 July 2026, v1, Prop. 5.1, Remark 5.2,§6. \url{https://arxiv.org/html/2607.13666v1}.
@@ -619,7 +618,7 @@ are supporting records in Appendix~\ref{app:ledger}.
 
 \bibitem{ref6} Kao-Yueh Kuo and Yingkai Ouyang. Degenerate quantum erasure decoding. npj Quantum Information 12, 75, 2026. Inspected article-in-press main PDF; version distinctions in chronology. \url{https://doi.org/10.1038/s41534-026-01212-3}.
 
-\bibitem{ref7} Earlier checked parameter-answer and B1 papers in this repository. The new target is distinct from the completed original proposition and completed B1 classification. \url{https://github.com/alectionary/vibe-math/tree/master/formalization/stopping-bound}.
+\bibitem{ref7} Formal proof sources for the scalar-factor parameter obstruction and the B1 stopping-support characterization. \url{https://github.com/alectionary/vibe-math/tree/master/formalization/stopping-bound}.
 
 \bibitem{ref8} Shu-Tao Xia and Fang-Wei Fu. Minimum Pseudo-Weight and Minimum Pseudo-Codewords of LDPC Codes. arXiv:cs/0606051v2,11 November 2006; first submission12 June 2006. Internal PDF date2019 distinguished in chronology. \url{https://arxiv.org/abs/cs/0606051v2}.
 

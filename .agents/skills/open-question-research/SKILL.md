@@ -205,8 +205,9 @@ When writing or revising a research paper:
   requirements do not by themselves justify replacing the paper's visual style.
 - Organize the exposition around the answer contract: source question and its
   motivation → exact answer → decisive theorem and proof → implications and
-  limits. Distinguish an earlier completed answer from a new follow-up before
-  developing the follow-up. Give each main section a clear mathematical role;
+  limits. Explain how a source question motivates any replacement problem;
+  distinguish cited mathematical results from claims established in the paper
+  without narrating the work session. Give each main section a clear mathematical role;
   introduce constructions as existence witnesses, parameter improvements,
   sharpness results or obstructions as appropriate. Put comparisons beside the
   claims they assess, and keep search mechanics and inventory bookkeeping in
@@ -251,14 +252,27 @@ When writing or revising a research paper:
   moving reading date. Label date precision and approximation rather than
   inventing a day for a year-only source. Distinguish an ingredient's age from the
   duration of an unsolved problem. Record elapsed investigation time to the answer
-  and later formalization/manuscript revisions separately.
-- Clearly label an expanded paper versus a new research target. Validate the PDF,
+  and later formalization/manuscript revisions separately in reproducibility
+  records, not in the manuscript narrative unless the user requests that history.
+- Present the manuscript as a standalone mathematical argument. Internal drafts,
+  checkpoint builds and GitHub commits do not establish an externally announced
+  publication or justify calling the paper "expanded", "updated" or "revised".
+  Use a plain manuscript date by default. Use version-comparison language only
+  for an established externally announced version or at the user's request.
+  Keep investigation timelines, drafting decisions, session history and revision
+  logs in reproducibility records unless the user asks for them in the paper.
+  Cite related repository results by mathematical statement and source, without
+  turning the manuscript into an account of when they were produced.
+- Validate the PDF,
   source archive, hashes, proof-coverage table, reference-date arithmetic and public
   URLs before delivery. Review the rendered PDF as a reader: can the original
   question, specific answer, main proof, implications, chronology comparison and
   complete proof links be located readily? Check narrative hierarchy and style
   continuity as well as mechanical presence; a required table buried without
-  signposting is not sufficient. Commit/push only within the user's existing
+  signposting is not sufficient. Check the title/date line, abstract, introduction,
+  conclusion, appendices and announcement for internal draft-history framing;
+  preserve technical uses such as expanded matrices and cited source-version
+  dates. Commit/push only within the user's existing
   authorization.
 
 When an announcement is requested, draft a short X post containing the exact
@@ -267,7 +281,9 @@ plus the relevant locator), the main answer and the GitHub folder containing
 the final PDF and proof links. Keep only the terminology needed to understand
 the contribution; use the requested length rather than an automatic long thread.
 Check that compression preserves restrictions and distinguishes this paper's
-results from earlier work. Drafting an announcement does not authorize posting.
+results from cited work. Announce the paper directly; internal drafting does not
+  make the first external announcement an "expanded paper" or an "update".
+  Drafting an announcement does not authorize posting.
 
 Preserve the repository's anonymity conventions in public artifacts and Git
 identity. This skill does not itself authorize publication, external messages,

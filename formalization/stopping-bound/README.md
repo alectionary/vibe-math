@@ -1,6 +1,6 @@
 # QC-GHP stopping-bound results
 
-**Original useful-parameter question: answered negatively.** For every positive-dimensional binary biregular scalar-factor parameter choice in Proposition5.1’s stated model, its strict spectral inequality cannot yield a stopping-distance guarantee exceeding two. Useful spectral and incidence replacements are now proved in the [expanded stronger-bound paper](stronger/README.txt). The original parameter answer remains negative. The earlier papers and manifests retain their historical publication state.
+**Original useful-parameter question: answered negatively.** For every positive-dimensional binary biregular scalar-factor parameter choice in Proposition5.1’s stated model, its strict spectral inequality cannot yield a stopping-distance guarantee exceeding two. Useful spectral and incidence replacements are now proved in the [stopping-bound paper](stronger/README.txt). The original parameter answer remains negative. The earlier papers and manifests retain their historical publication state.
 
 - Parameter-answer paper: https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/paper.pdf
 - Exact distance-six cover-family paper: https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/paper.pdf

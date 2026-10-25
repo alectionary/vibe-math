@@ -1,5 +1,5 @@
 \clearpage\section{Proof coverage and checked Lean excerpts}\label{app:proofs}
-The aggregate build and all 485 named-declaration audits pass in Lean 4.36.0-rc1 with mathlib \nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. Only propext, Classical.choice and Quot.sound occur. The project contains 50 new modules and four frozen imported research modules. Reproduce with lake build StrongerAnswer, followed by lake env lean AuditStronger.lean. The logs, signatures, complete source links, hashes and independent reconstructions accompany the archive.
+The aggregate build and all 485 named-declaration audits pass in Lean 4.36.0-rc1 with mathlib \nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. Only propext, Classical.choice and Quot.sound occur. The project contains 50 proof modules and four imported research modules. Reproduce with lake build StrongerAnswer, followed by lake env lean AuditStronger.lean. The logs, signatures, complete source links, hashes and independent reconstructions accompany the archive.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{.465\linewidth}>{\raggedright\arraybackslash}p{.465\linewidth}@{}}
 \toprule
@@ -211,9 +211,9 @@ theorem zhu_chugg_comparison (hgap : eigs HR (*@\ensuremath{\langle}@*)1,by deci
   (*@\ensuremath{\cdot}@*) apply (div_le_iff(*@\ensuremath{{}_0}@*) (by positivity : 0 < 8*(32-eigs HR (*@\ensuremath{\langle}@*)1,by decide(*@\ensuremath{\rangle}@*)))).mpr
     nlinarith
 \end{lstlisting}
-\paragraph{Dependency guide.} PartitionBound provides generic counting. SidonStopping and PowersThree prove incidence hypotheses constructively. SidonMatrices and PowersFamily supply actual binary CSS and nontrivial logical content. BicycleBaseCore/List dependencies give search soundness; BicycleBase rejects small roots; FamilyCore/Cover transfer exact6. BicycleMatrices/Degrees/Logical/KernelStopping check the actual code and logical witness. GramObstruction, BadStopping and SidonBad prove indistinguishability and exact bad stopping2. CSSStopping checks the known stabilizer upper mechanism. AuditStronger checks every named declaration, including every frozen dependency. The second checkpoint adds SpectralMoment/MomentBound for an actual ordered-eigenvalue replacement; JointSidon/Matrices/Powers/MomentFamily/Kernel for constructed useful spectral families; JointSpectralBase for an exact cited-formula comparison; real-valued/unbounded Gram-gap and nontrivial bad logical proofs; exact two-vector certificates with cyclic-cover energy transfer; and growing stopping/kernel guarantees. SeparateSidon/ShortFamilySupports/ShortFamily provide shorter fixed-degree parameters; Practical27Core/Practical27/Practical27Design/Practical27Spectral check the 54-variable example and exact cited-formula comparison. MomentReplacement/GlobalMomentFamily and MomentExcess provide the global bound function and quantitative extension. BothGram covers both separate check Gram matrices, excluding cross-sector/binary-rank information.
+\paragraph{Dependency guide.} PartitionBound provides generic counting. SidonStopping and PowersThree prove incidence hypotheses constructively. SidonMatrices and PowersFamily supply actual binary CSS and nontrivial logical content. BicycleBaseCore/List dependencies give search soundness; BicycleBase rejects small roots; FamilyCore/Cover transfer exact6. BicycleMatrices/Degrees/Logical/KernelStopping check the actual code and logical witness. GramObstruction, BadStopping and SidonBad prove indistinguishability and exact bad stopping2. CSSStopping checks the known stabilizer upper mechanism. AuditStronger checks every named declaration, including every frozen dependency. SpectralMoment/MomentBound establish the ordered-eigenvalue criterion. JointSidon/Matrices/Powers/MomentFamily/Kernel construct the useful spectral families. JointSpectralBase checks the cited-formula comparison. RealGramBound/GramGap/BadLogical establish the real-valued Gram obstruction and nontrivial bad logical words. SpectralPlane/FiberSums and the cover-energy modules check exact two-vector certificates and cover transfer. GrowingFamily/KernelFamily give the stopping/kernel growth guarantees. SeparateSidon/ShortFamilySupports/ShortFamily provide shorter fixed-degree parameters; Practical27Core/Practical27/Practical27Design/Practical27Spectral check the 54-variable example and exact cited-formula comparison. MomentReplacement/GlobalMomentFamily and MomentExcess provide the global bound function and quantitative extension. BothGram covers both separate check Gram matrices, excluding cross-sector/binary-rank information.
 \clearpage\section{Complete current and immutable Lean URLs}\label{app:links}
-Every URL below is printed in full and clickable. The stronger-bound sources retain the checked revision \texttt{bed7719cb3cac4118e4f333690db364566ede03e}. The earlier proof closure retains its own immutable revision.
+Every URL below is printed in full and clickable. The replacement-bound sources are pinned at commit \texttt{bed7719cb3cac4118e4f333690db364566ede03e}. The parameter-obstruction and B1 proof sources have separate immutable pins.
 
 \subsection{This paper: every proof, audit and imported research file}
 \medskip
@@ -491,7 +491,7 @@ Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e
 {\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/Spectral.lean}\\
 Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/Spectral.lean}\par}
 \smallskip
-\subsection{Cited earlier proof closure}
+\subsection{Parameter-obstruction and B1 proof sources}
 \medskip
 \par\noindent\textbf{\texttt{Audit.lean}}\par\nopagebreak
 {\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/Audit.lean}\\
@@ -703,7 +703,7 @@ Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1
 Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/source-ledgers/parent-Audit.lean}\par}
 \smallskip
 \clearpage\section{Complete source chronology and calendar deltas}\label{app:chronology}
-This manuscript uses October 24, 2026 in America/Los\_Angeles as its dated revision. UTC research/build times are recorded separately. Civil calendar days to 2026-10-24; exact dates give exact differences. Month/year precision yields inclusive minimum/maximum day ranges; dates are not invented. Date ranges are clipped to the revision because these records already existed then. Source age is not unresolved-problem duration.
+This manuscript uses October 24, 2026 in America/Los\_Angeles as its reference date. Civil calendar days to 2026-10-24; exact dates give exact differences. Month/year precision yields inclusive minimum/maximum day ranges; dates are not invented. Date ranges are clipped to the reference date for sources known to exist then. Source age is not unresolved-problem duration.
 
 The central comparison is Table~\ref{tab:chronology}; this ledger also includes inherited sources, software snapshots and held leads. Inspection-only milestones do not become publication dates.
 
@@ -728,8 +728,8 @@ Morris2025: Kirsten Morris: Analysis of Graph-based Decoders for Quantum Low Den
 qLDPCOrg/qLDPC: qLDPCOrg/qLDPC pinned snapshot; Software/infrastructure snapshot, not original publication age & inspected commit: 2026-10-23; 1 days (day) & pinned source or infrastructure\\[4pt]
 Lcrypto/Stopping-sets-enumerator: Lcrypto/Stopping-sets-enumerator pinned snapshot; Software/infrastructure snapshot, not original publication age & inspected commit: 2023-10-29; 1091 days (day) & pinned source or infrastructure\\[4pt]
 leanprover-community/mathlib4: leanprover-community/mathlib4 pinned snapshot; Software/infrastructure snapshot, not original publication age & inspected commit: 2026-10-21; 3 days (day) & pinned source or infrastructure\\[4pt]
-X-source-announcement: mathCObot source-paper announcement; Accessible X comparison; not a mathematical answer & post UTC date: 2026-07-16; 100 days (day); authenticated browser local displayed post date: 2026-07-15; 101 days (day) & authenticated post detail rechecked final checkpoint\\[4pt]
-X-earlier-result: A\_Lectionary earlier absorbing-set announcement; Earlier repository result; different target & post UTC date: 2026-10-24; 0 days (day) & post inspected in parent audit\\[4pt]
+X-source-announcement: mathCObot source-paper announcement; Accessible X comparison; not a mathematical answer & post UTC date: 2026-07-16; 100 days (day); authenticated browser local displayed post date: 2026-07-15; 101 days (day) & authenticated post detail inspected\\[4pt]
+X-lift-label-announcement: A\_Lectionary lift-label announcement; Distinct mathematical target & post UTC date: 2026-10-24; 0 days (day) & post inspected\\[4pt]
 other-code-snapshots: Other inspected GitHub mirrors/README-only code; Secondary discovery/control sources; no theorem or earliest-publication claim & recorded inspection: 2026-10-24; 0 days (day) & inspection date only earliest dates unassessed\\[4pt]
 Lean-runtime: Lean 4.36.0-rc1 runtime; Pinned proof checker; release-age claim not made & recorded use: 2026-10-24; 0 days (day) & use date only release date unassessed\\[4pt]
 F77: Schwartz-Vardy: stopping distance and stopping redundancy; Classical matrix-dependent stopping convention, codeword mechanism and distinct-column criterion & first preprint metadata: 2005-03-23; 7885 days (day); journal revised manuscript: 2005-12-09; 7624 days (day); inspected journal issue: 2006-03; 7512--7542 days (month) & inspected full text\\[4pt]
@@ -740,8 +740,6 @@ F81: Xia-Fu: Minimum Pseudo-Weight and Minimum Pseudo-Codewords of LDPC Codes; C
 F38: Dehghan-Banihashemi: Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles; Earlier cospectral-cycle obstruction; existing23-page source screen reused, no added inventory cohort & first and inspectedv1: 2019-05-31; 2703 days (day); journal volume metadata: 2019; 2489--2853 days (year) & inspected full text\\[4pt]
 gideonlsx/bicycle-race: gideonlsx/bicycle-race pinned public repository; README/software comparison; not theorem evidence & inspected commit: 2026-10-11; 13 days (day) & public metadata or readme inspected\\[4pt]
 kywukuo/qLDPC\_dec: kywukuo/qLDPC\_dec pinned public repository; README/software comparison; not theorem evidence & inspected commit: 2026-01-26; 271 days (day) & public metadata or readme inspected\\[4pt]
-prior-proof-checkpoint: Cited original-question and B1 proof closure; Earlier checked proof sources, not a new completion & immutable proof-source commit: 2026-10-24; 0 days (day) & checked prior lean sources\\[4pt]
-new-proof-checkpoint: This stronger-bound proof checkpoint; Checked mathematical source, not a priority date & new research and proof-source checkpoint: 2026-10-24; 0 days (day) & checked lean source\\[4pt]
 held-lead-1: Generalized Bicycle Codes with Low Connectivity: Minimum Distance Bounds and Hook Errors; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
 held-lead-2: Spectral Theory of Semisimple Bivariate Bicycle Codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
 held-lead-3: Logical Operator Decomposition for Distance Analysis of Bivariate Bicycle Codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
@@ -763,18 +761,20 @@ X-final-search: Final authenticated X source/stopping audit; Read-only bounded q
 \bottomrule\end{longtable}
 }
 Inspection-only dates are explicitly distinguished from publication dates. The Kashyap-Vardy author manuscript is undated after its reported 2003 composition; its web transcription hash is not a PDF hash. Supplementary/final-version, citation-index and X access gaps remain named. Date differences are source ages, not durations of unsolved problems.
-\clearpage\section{Search coverage, inventory and revision record}\label{app:ledger}
-Public GitHub comparisons include the pinned bicycle-race README, which describes logical-distance records, and the Kuo decoder repository metadata. A final CLI support-fingerprint query and a known-positive mathlib control both returned no items; those negative code-search outputs are discarded. Authenticated Edge access later succeeded: the arXiv-ID query visibly returned the source announcement and an earlier project lift-label post. The source post detail displayed10:23 PM, 15 July 2026; the prior UTC 16 July date is distinguished in the chronology. A focused QC-GHP stopping query displayed no results in that bounded view. None is a proof of global absence or priority. The earlier Mac-locked failure is superseded by this fresh read-only check. No post was sent.
+\clearpage\section{Prior-art coverage and access limitations}\label{app:ledger}
+The comparisons use the cited primary theorem statements and their hypotheses.
+Public software comparisons include the bicycle-race README and Kuo decoder
+repository: their logical-distance and decoder claims do not establish the
+stopping-distance guarantees proved here. Accessible X posts include the source
+paper announcement and a lift-label result on a different target; neither is
+an independent answer to this stopping-bound question.
 
-Nine additional accessible main texts were screened, adding 28 historical questions/directions, nine precise enough for the denominator:267\ensuremath{\to}295 entries,135\ensuremath{\to}144 eligible targets,110\ensuremath{\to}119 papers and 97\ensuremath{\to}106 full-text main-paper screens. The separate indexing deltas are20/8/4,3/1/1 and 5/0/4. Completed canonical Lean targets remain five. New harvested questions have unassessed current resolution, Lean discovery and effort. The latest four-paper target screen records five broad directions; FSS and the lifting-degree paper have no additional explicit unresolved target. The PCDP theorem's excluded residue classes are not invented as an open conjecture: explicit 8/16/32 seeds exist in the same paper. Existing F38 screening is reused without duplication. Publisher429/403, supplementary/version, retrieval and X access gaps remain explicit.
-
-\paragraph{Research time versus manuscript revision.}
-The stronger-bound investigation began October 24, 2026 at 22:59:20 UTC. The
-first checked incidence/exact-six checkpoint was reached at 23:36:01 UTC
-(36 minutes 41 seconds). The final selected proof checkpoint was October 25
-at 01:30:24 UTC (2 hours 31 minutes 4 seconds). These timestamps describe the
-completed mathematical investigation. The present LaTeX and narrative revision
-changes presentation and preserves its checked proof sources, inventory totals
-and immutable proof pins. Its publication timestamp is recorded separately in
-the accompanying presentation-revision record. The manuscript's civil revision
-date is October 24, 2026 in America/Los\_Angeles; UTC timestamps are distinct.
+The recorded GitHub code-search query failed its known-positive control, so its
+negative output is not evidence of absence. The focused X search is bounded
+and likewise establishes no global absence or historical priority. Named
+unavailable full texts, supplementary versions and metadata-only leads are
+identified in Appendix~\ref{app:chronology} and the accompanying source ledgers.
+Detailed queries, inspected matches and access limits are available in
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/prior-art.json}{the prior-art record}
+and
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/X-GITHUB-FINAL-AUDIT.json}{the public-source audit}.

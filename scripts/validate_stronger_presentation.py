@@ -18,7 +18,9 @@ r=PdfReader(A/'stronger-stopping-paper.pdf');pages=[q.extract_text()for q in r.p
 assert len(pages)==v['paper']['pages']==p['paper_pages']
 assert not r.metadata.get('/Author')
 assert 'Abiad' in pages[0] and 'Proposition' in pages[0] and '5.1' in pages[0]
-assert 'Earlier theorem' in '\n'.join(pages[:2])
+assert 'Parameter obstruction' in '\n'.join(pages[:2])
+assert not re.search(r'expanded follow.up|presentation revised|second checkpoint|research time versus manuscript', text, re.I)
+assert 'RESEARCH-PROVENANCE.txt' in p['internal_history_record']
 assert 'Elapsed days' in pages[p['central_chronology_page']-1]
 assert p['central_chronology_page']<=4
 assert '101' in pages[p['central_chronology_page']-1]
@@ -31,7 +33,8 @@ for q in r.pages:
   if uri:uris.add(str(uri))
 for e in c['paper_lean_files']+c['cited_prior_proofs']:
  for key in ['branch_url','pinned_url']:assert e[key] in uris and e[key] in flat
-assert len(c['chronology'])==p['complete_chronology_records']
+assert len(c['chronology'])==p['source_chronology_records']
+assert p['complete_chronology_records']==len(c['chronology'])-len(p['reproducibility_only_chronology_ids'])
 revision=datetime.date.fromisoformat(c['revision_date'])
 for s in c['chronology']:
  for m in s['milestones']:
