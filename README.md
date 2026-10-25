@@ -70,6 +70,15 @@ The cyclic paper completes the stated girth-condition criterion and supplies par
 
 For the next investigation, use the repo-local [Open Question Research skill](.agents/skills/open-question-research/SKILL.md): `Use $open-question-research to tackle <inventory target or source question>.` It applies the lessons below and provides a reusable investigation worksheet. For a continuation, name the existing target and the specific follow-up to keep the scope clear.
 
+For GitHub and X research, check available access early using the portable
+[research access and setup guide](.agents/skills/open-question-research/references/research-access.md).
+GitHub connectors or authenticated `gh` and signed-in browser extensions provide
+different routes; verify the needed operation on each machine. Attempt searches
+opportunistically while continuing independent work, and account for every required
+search at closeout as completed coverage or an explicit access gap. Setup details
+and observed locked-screen behavior belong in the access record, not assumptions
+about every browser or machine.
+
 This round concerns **coding theory, specifically quantum error-correcting codes**, with graph theory and combinatorics at its mathematical core. Freij-Hollanti, Morris and Šapokaitė's question asks how conditions on an exponent matrix determine girth eight in a cyclic lifted-product Tanner graph, and how the resulting graph structure affects decoding. Absorbing sets and stopping sets connect those graph properties to error correction. The [paper](formalization/cyclic-lifts/paper/main.tex) credits the question and its mathematical predecessors; the [proof guide](formalization/cyclic-lifts/paper/LEAN-PROOF-GUIDE.md) locates the complete formal development.
 
 The following lessons extend the earlier [dyadic rank–support retrospective](RESEARCH-LESSONS.md), as of October 23, 2026:

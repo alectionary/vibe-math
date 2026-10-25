@@ -16,6 +16,22 @@ Resolve repository links from the repository root, not this reference directory.
 - Answer contract: question/source → intended answer → decisive evidence:
 - Authorized deliverable, time/computation bounds and stopping condition:
 
+## Research access and required search coverage
+
+Use [research access and setup](research-access.md) when choosing or troubleshooting
+a route. Record the current environment's relevant tools/browser connection; omit
+credentials and unnecessary personal details. Installation or connection alone
+does not establish that an authenticated target-site search succeeded.
+
+| Service | Method / browser | Verified operation and date | Queries, inspected scope and status | Access gap and retry trigger |
+|---|---|---|---|---|
+
+Keep pending GitHub/X searches visible while independent research continues.
+Retry after meaningful access changes or at useful phase boundaries; before
+closeout, record each required search as completed with its coverage limits or
+as an explicit access gap. For locked-screen tests, distinguish user-reported
+lock status from independent observation, and screen lock from sleep.
+
 ## Paper-by-paper question harvesting
 
 | Paper / exact version | Full-text access and hash | Questions and source locators | Canonical IDs / resolved exclusion / access gap |

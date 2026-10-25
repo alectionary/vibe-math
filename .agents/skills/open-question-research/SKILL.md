@@ -49,6 +49,24 @@ task; it is a working record, not a reason to create empty files or a new taxono
 
 ## Freeze meaning and inspect the literature
 
+For investigations requiring GitHub or X coverage, make a brief, read-only access
+check early. Discover the current environment's tools rather than assuming another
+machine's installations, accounts or browser connection. Prefer an applicable
+GitHub connector or authenticated `gh` CLI; for X, use an applicable connector or
+the user's signed-in browser extension when available. Respect explicit browser
+choices and follow the selected tool's current instructions. Read
+[research access and setup](references/research-access.md) when selecting a route,
+setting up another machine, or diagnosing blocked access.
+
+Search execution is opportunistic; accounting for required searches is mandatory.
+Attempt a bounded pass early. If blocked, record the pending searches and continue
+independent research. Retry at useful phase boundaries or after a meaningful
+access change, including the user reporting that the computer is ready. Before
+closeout, complete each required service search or explicitly record its access
+gap and the resulting coverage limit. Do not silently count indexed web results
+as authenticated service coverage, poll repeatedly, or wait indefinitely for UI
+access. Record actual successful operations, not just installed tools.
+
 - Record the source version/date, precise page or section, and the actual question.
   Credit the discovery source, the source posing the question and earlier applicable
   results separately. A paper's historical open label is not a current-status check.

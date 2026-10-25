@@ -166,3 +166,32 @@ same frozen matrices and bounds, and bind results to the actual implementation
 and input hashes. Include node caps in conflicting input filenames. A repaired
 external exclusion still needs its own faithful bridge before it becomes a Lean
 lower-bound certificate. [Repair and replay evidence](formalization/distance-preservation/search-repair.json).
+
+### Browser extensions and CLI access can avoid a desktop dependency
+
+During the 25 October 2026 access checks, the installed GitHub CLI successfully
+verified an existing authenticated login when network access was available. The
+initial restricted-network check had reported an invalid token; that message did
+not establish that the credentials required replacement.
+
+The Edge browser-extension connection also successfully opened and read a public
+page. In a subsequent test, after the user reported locking the Mac and a requested
+ten-second delay elapsed, it opened X search, used the existing signed-in session,
+and returned readable results for `lifted product codes` with Latest selected.
+These were extension operations, not native desktop-control operations. The lock
+status was user-reported, not independently verified. No sleep test was performed.
+
+Earlier native desktop access had failed while the Mac was locked. Together these
+observations support checking the available control method before treating an
+unlocked desktop as a prerequisite. They do not establish behavior for every
+machine, future connection, site operation or sleeping computer.
+
+For future research, discover available routes early and verify actual operations.
+Use an applicable GitHub connector or authenticated CLI where sufficient, and a
+supported signed-in browser extension for X when needed. Attempt service searches
+opportunistically, continue independent research when blocked, and retry at useful
+checkpoints or after meaningful access changes. Each required search must be
+completed with stated scope or left as an explicit access gap at closeout.
+The [portable access guide](.agents/skills/open-question-research/references/research-access.md)
+describes setup on another machine and keeps installation, authentication and
+permission changes separate from routine research.
