@@ -1,0 +1,133 @@
+Next quantum coding problem — selection review, 25 October 2026
+
+RECOMMENDATION
+
+Canonical parent: L-F25-distance-preservation.
+Bounded target: RQ-F25-truncated-distance-12.
+Mode: FOLLOW-UP, not a newly discovered author-posed conjecture.
+
+Prove or refute dQ >= min(dC,12) for the normalized fully populated 3-by-4
+cyclic bases satisfying the strengthened entry tests below. This is the
+preferred existing follow-up in formalization/distance-preservation/STRUCTURAL-ROUTE.txt,
+reassessed against the latest research note and source question. The earlier
+October 24 recommendation and its frozen evidence remain historical records.
+
+SOURCE AND CURRENT STATUS
+
+Raveendran, Declercq and Vasic, On the Minimum Distances of Finite-Length
+Lifted Product Quantum LDPC Codes, arXiv:2503.07567v1 (10 March 2025),
+equation (9), Definitions 2–5, and Section VI:
+https://arxiv.org/html/2503.07567v1
+
+Section VI asks for sufficient base constraints ensuring dQ=dC. This is the
+source motivation; the truncated bound and additional hypotheses below are
+our project's proposed sufficient condition, not a statement attributed to
+the source. Its current global resolution is not established by this review.
+
+Already answered: the old girth-eight/no-RCPC diagnostic is false, even with
+large transpose distance. The checked family has dQ<=11<12<=dC<=20. It does
+not refute the strengthened test, which excludes its partial row pairing.
+The corrected frozen 104-base search found no counterexample within its
+recorded bounds. That is finite diagnostic evidence, not a universal proof.
+Generic low-weight and fixed-column lemmas are checked; the source-support
+classification and full stabilizer-quotient bridges remain missing.
+
+EXACT BOUNDED QUESTION
+
+Let L>=2, R=F2[x]/(x^L-1), and E:Fin3 x Fin4 -> ZMod L. All 12 base entries
+are monomials x^E(i,c); a zero exponent is an identity circulant. Normalize
+the first row and column to zero. Use the source's symmetric ring LP
+construction, with star equal to transpose followed by x -> x^(-1):
+  C  = expand(B),
+  HX = expand([B tensor I4 | I3 tensor B*]),
+  HZ = expand([I4 tensor B | B* tensor I3]).
+The ring tensor product precedes expansion. Quantum length is 25L.
+
+Assume:
+  (1) the classical Tanner graph of C has girth at least eight;
+  (2) neither full source row nor column RCPC holds;
+  (3) for each choice of middle row k, with other rows i,j, no value occurs
+      on three or more columns among E(i,c)+E(j,c)-2E(k,c);
+  (4) the transpose classical distance dT is at least dC;
+  (5) the CSS logical quotient has positive dimension.
+
+dC is the minimum nonzero binary kernel weight of C. Define dT analogously
+for C transpose, with infinity if its kernel is zero. Define dX over
+ker(HZ) minus rowspan(HX), dZ with X/Z exchanged, and dQ=min(dX,dZ).
+For the usual Pauli distance, supply the min-sector/union-of-support bridge.
+All row spans are complete binary row spans, not just individual generators.
+
+Answer contract:
+Source distance-preservation question -> a universal sufficient lower bound
+under explicit strengthened tests -> faithful written and Lean proofs of
+the source-matrix, both-sector and full-span statements, OR an independently
+verified qualifying base and a nontrivial logical of weight < min(dC,12).
+A counterexample needs a certified classical lower bound strictly above the
+witness weight; computing the exact quantum distance is unnecessary.
+
+WHY THIS IS THE NEXT TRACTABLE BLOCK
+
+RQ-F25-truncated-distance-12: Best reuse of established infrastructure and
+a finite support range while seeking a universal design condition. Existing
+LowWeightChecks.lean proves a zero-or-two check-incidence result through
+weight 11 under its own degree/girth hypotheses. Transport to the actual
+source incidence must be proved, not assumed. Mixed supports of weights
+8–11 and completeness beyond the restricted 144-pattern catalog are the
+main obstructions. Tractability confidence is low; no time-to-proof estimate.
+
+L-P09-all-absorbing: A more direct author-posed conjecture, but a faithful
+syndrome-based Gallager-B transition system, initialization, trapping notion,
+and quantum success criterion must first be fixed. The existing min-sum
+trajectory work is not that decoder. Keep as a strong new-problem reserve.
+
+L-F26-exact-distance: Precise but the source's fixed 28,800-qubit code has
+a broad 18..192 interval; a complete lower certificate is a much larger task.
+L-F26-logical-qubit-lifts: Bare existence repeats the source's k=50 to 62
+connected lift example; a genuinely systematic construction needs new scope.
+L-F39-ub-distance: Useful different family but a broad research direction;
+freeze a new family and a sharper target before selecting it.
+L-F49-small-weight-degeneracy: Held formulation; "sufficiently small" lacks
+a uniform threshold and the source already proves a restricted case.
+
+FIRST RESEARCH BLOCK AND STOPPING CONDITION
+
+This selection task does not start a proof campaign. The next research block
+should first recheck current literature and source conventions, audit the
+actual-incidence bridge, and derive a complete finite support-geometry
+classification through weight 11. Freeze any computational enumeration and
+its completeness argument before execution. Include pure-block supports,
+both CSS sectors, cancellation and all stabilizers. Do not stop successfully
+at the weight-seven source-claim audit or another generic helper lemma.
+
+Stop at a faithful universal theorem, an independently verified counterexample,
+or a documented structural obstruction with explicit missing cases. Do not
+silently widen to full distance equality, a decoder campaign or an unbounded
+search over lifts. The canonical parent remains open unless actually answered.
+
+ACCESS AND REVIEW LIMITS
+
+On October 25 the current source Section VI and F26 conclusion were read via
+the web, alongside the existing inventory, research notes and checked-module
+interfaces. Bounded indexed queries included:
+  "lifted product" "distance" "partial" "pairing"
+  "2503.07567" "distance preservation"
+  "quantum" "d_C" "12" "RCPC"
+No inspected result established this exact strengthened universal bound.
+These noisy ranked queries do not establish global absence or novelty.
+No new primary paper is used as mathematical evidence; previous full-text
+screens remain the source-question ledger. Native authenticated GitHub code
+search, X and forward-citation coverage remain pending for the research block.
+The P09 journal landing page was inspected; its later full text was not audited.
+
+GitHub coordination: https://github.com/alectionary/vibe-math/issues/1 is the
+canonical issue. Repository write access is authenticated as alectionary.
+Project creation was rejected for missing project write scope; the user then
+explicitly requested skipping Projects. Issue and claim coordination proceeds
+independently. The issue records the verified ownership commit and current state.
+Claim ref: refs/heads/claims/L-F25-distance-preservation.
+Work branch: research/RQ-F25-truncated-distance-12-f0515dd8.
+Reservation owner: codex-9576731cf5294e0ba5018ad0f0515dd8.
+The reservation is for the next research block, not an active proof campaign.
+
+Inventory delta: zero canonical entries, eligible targets, completed targets,
+paper records or full-text screens. No new mathematical theorem is claimed.

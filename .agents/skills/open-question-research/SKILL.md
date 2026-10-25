@@ -47,6 +47,57 @@ Use [the investigation worksheet](references/investigation.md) in the target's
 existing notes or a suitably named new research note. Keep it proportional to the
 task; it is a working record, not a reason to create empty files or a new taxonomy.
 
+## Coordinate the investigation with an issue and claim
+
+Before starting a research block, coordinate by canonical inventory ID in the
+shared upstream repository, even if only one agent is currently visible. Use
+an issue and remote claim together; use a repository-linked GitHub Project when
+requested and accessible. A locally
+checked-out branch is not a shared claim; issue assignees also cannot distinguish
+sessions using one account. Read [GitHub coordination](references/github-coordination.md)
+for access checks, setup, verification and handoff details.
+
+Use one GitHub issue per canonical target for discussion, scope, progress and
+handoff; search open and closed issues before creating one. If using a Project,
+add that real issue and reuse the existing board rather than creating a board
+per agent. Missing Project access does not block issue/claim coordination.
+Keep mathematical resolution and Lean
+coverage in the existing inventory; a claim means work is reserved, not solved.
+
+Reserve `refs/heads/claims/<canonical-id>` with a **create-only remote reference
+operation**, such as GitHub's create-reference API. Point it at a commit recording
+a unique session identifier, UTC start time, bounded scope, issue URL and separate
+work branch. Prepare that commit on the work branch first. Begin substantial
+research only after the server confirms creation. Checking for absence and then
+performing an ordinary push is not an exclusive reservation; never force-update
+an existing claim. If creation conflicts or its outcome is uncertain, inspect
+the remote claim and resolve ownership before proceeding. Choose another target
+when it is already owned; resume only a claim belonging to this session or an
+explicitly handed-off investigation.
+
+Use a separate worktree or clone and a unique work branch per investigation.
+Initially reserve the whole canonical target, including restricted follow-ups;
+split it only after the investigators agree on nonoverlapping scopes. Record
+progress and handoffs in the issue. At completion or release, preserve the work
+branch and evidence, update the issue, and remove only this session's claim using
+an expected-SHA check. An old timestamp alone does not authorize taking over a
+claim. Keep the issue and any Project status consistent with the actual work and claim: reserved
+for a future block is Todo; active research is In Progress. Record a blocked
+reason or handoff in the issue, using existing board options. Releasing a claim
+does not mean the source question is answered. Mark a block Done only with its
+outcome and evidence recorded; do not close an unanswered canonical question
+merely because a bounded follow-up finished.
+
+If shared repository write access is unavailable, prepare the exact issue body
+and answer contract, and report which remote operations remain pending. Continue
+source inspection or independent preparation without presenting the target as
+reserved. If only Project access is missing, complete the issue and claim and
+report the board as skipped or pending according to the user's instructions.
+Verify actual server state after each stage;
+a local draft, CLI installation or proposed command is not a successful trial.
+Perform GitHub writes within the user's authorized scope; this convention does
+not itself authorize publishing or spawning additional agents.
+
 ## Freeze meaning and inspect the literature
 
 For investigations requiring GitHub or X coverage, make a brief, read-only access

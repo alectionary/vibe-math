@@ -16,6 +16,15 @@ Resolve repository links from the repository root, not this reference directory.
 - Answer contract: question/source → intended answer → decisive evidence:
 - Authorized deliverable, time/computation bounds and stopping condition:
 
+## Issue, claim and Project
+
+- Canonical issue URL; bounded follow-up ID:
+- Shared Project/board URL, item ID and verified Status:
+- Unique session ID, UTC start, work branch and isolated checkout:
+- Claim ref, immutable ownership commit SHA and verified acquisition outcome:
+- Current owner, next action and explicit handoff/release state:
+- Pending remote operations or access gaps (drafts are not reservations):
+
 ## Research access and required search coverage
 
 Use [research access and setup](research-access.md) when choosing or troubleshooting
