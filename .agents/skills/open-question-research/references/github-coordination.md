@@ -93,3 +93,12 @@ Project item before reporting success. Close an issue only if its stated questio
 is answered or explicitly retired; completion of one bounded follow-up can
 leave the canonical source question open. During this workflow, do not merge
 shared inventory changes or reset another agent's checkout implicitly.
+
+## Verified repository example
+
+The [October 25 reservation](https://github.com/alectionary/vibe-math/issues/1)
+uses `claims/L-F25-distance-preservation` for follow-up
+`RQ-F25-truncated-distance-12`. Creation and owner read-back succeeded; a second
+create returned `422 Reference already exists` without changing the claim SHA.
+Projects were explicitly skipped after a read-only Project token failed creation.
+Use the live reference and issue for current ownership, not this dated example.
