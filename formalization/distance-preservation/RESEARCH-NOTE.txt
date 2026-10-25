@@ -1,0 +1,419 @@
+Distance loss in a girth-eight, RCPC-free lifted-product family
+Research block: 24–25 October 2026 (Pacific research date: October 24)
+Canonical source target: L-F25-distance-preservation
+
+RESULT
+
+The proposed criterion “classical girth at least eight and no row/column
+partition constraint imply d_Q=d_C” is false. This was our diagnostic
+hypothesis, not a conjecture attributed to the source authors.
+
+A fixed fully populated monomial 3-by-4 base gives a counterfamily at every
+positive lift size divisible by 11:
+
+                 [0  0   0  0]
+       E =       [0  1   5  3],             L=11q, q>=1.
+                 [0  2  10  7]
+
+The entries are exponents modulo L. Zero means an identity circulant.
+The classical Tanner graph is connected and has girth exactly eight. Neither
+source RCPC pairing exists. Nevertheless,
+
+                   d_Q <= 11 < 12 <= d_C <= 20.
+
+These are general Lean proofs with source-matrix and full stabilizer-span
+bridges. The transpose classical code has distance 2L, so a lighter transpose
+code does not explain the mixed logical. Both quantum CSS sectors are included
+in the definition of d_Q. The result needs an upper bound on d_Q; its exact
+value for the whole family is not established here.
+
+There is also a general obstruction template:
+
+       E(a,b) = [[0,0,0,0],[0,a,b,3a],[0,2a,2b,b+2a]].
+
+For every positive cyclic L and every a,b in ZMod L, this template has a
+nontrivial source logical of weight at most 11. If 11 divides L and a,b reduce
+to 1,5 modulo 11, respectively, the classical lower bound 12, the absence of
+four/six cycles and the absence of RCPC hold as well. Thus the template gives
+many further counterexamples. Connectedness, transpose distance 2L and the
+classical upper bound 20 above refer to the fixed specialization a=1,b=5.
+
+SOURCE QUESTION AND CONNECTION TO EARLIER WORK
+
+Raveendran, Declercq and Vasić, On the Minimum Distances of Finite-Length
+Lifted Product Quantum LDPC Codes, arXiv:2503.07567v1, 10 March 2025, Section VI,
+asks for sufficient base constraints ensuring quantum/classical distance
+equality. Equation (9) fixes the construction; Definitions 2–5 fix RCPC,
+including the self-pair in the odd case.
+https://arxiv.org/html/2503.07567v1#S6
+
+Earlier project results about girth, stopping sets and displayed low-weight
+patterns supply useful ingredients, but do not control every vector in the
+stabilizer quotient. The P34 girth work supplies the entrywise cycle vocabulary;
+the stopping-set work supplies the structural lower-bound ingredient used in
+the cover proof; earlier CSS distance work supplies the full-quotient standard
+for checking a logical. This investigation supplies a distance obstruction
+that passes the earlier local tests. It is a new target within a familiar
+construction, with quantum distance as the invariant being investigated.
+
+The source's Theorem2 associates RCPC with the m+n stabilizer-weight scale
+(seven for a3x4 base). The partial-pairing construction here leaves a
+weight-eleven nontrivial logical. That is already enough to lose distance
+when the classical minimum is at least twelve.
+
+The source's broader sufficient-condition problem remains open in this project.
+This result refutes our explicit proposed criterion, including its variant
+requiring transpose distance at least d_C. It does not refute the possibility
+of useful sufficient conditions or the source's RCPC implication. Canonical
+source-target completion delta: zero.
+
+MATRIX CONVENTIONS
+
+Let R=F_2[x,x^(-1)]/(x^L-1), B_ij=x^(E_ij), and bar mean x->x^(-1).
+The source star is B*=bar(B)^T. Binary expansion uses
+P^e(t,s)=1 iff t=s+e modulo L. The matrices are
+
+  C  = expand(B),                         dimensions 3L by 4L,
+  HX = expand([B tensor I4 | I3 tensor B*]),
+  HZ = expand([I4 tensor B | B* tensor I3]), dimensions 12L by 25L.
+
+The tensor products occur in the ring before binary expansion. There is one
+cyclic fiber, so the quantum length is 25L.
+
+Left and right qubit blocks are U in R^(4 by 4) and V in R^(3 by 3).
+The displayed (U,V) is a pure X logical supported in both product qubit blocks.
+Consequently its weight also upper-bounds the usual Pauli logical distance
+directly. No general quantum lower bound is part of the counterfamily claim.
+The HZ cycle equation is U B^T + bar(B)^T V=0. In coefficients:
+
+  sum_k u(j,k,t-E(i,k)) + sum_l v(l,i,t+E(l,j)) = 0.
+
+An arbitrary HX stabilizer, with binary coefficients w(i,j,s), has blocks
+
+  u(i,j,s)=sum_k w(k,j,s+E(k,i)),
+  v(i,j,s)=sum_k w(i,k,s-E(j,k)).
+
+Nontriviality is tested against every row combination. SourceModel/SourceSectors
+prove the matrix actions and both full spans; SourceWordBridge proves equivalence
+with minima over all source binary vectors. Transposing both square blocks
+exchanges X/Z sectors and preserves weight; the fiber is not negated. The
+compiled SourceSymmetry theorem covers the fixed family. For exploratory
+bases, the same written row/qubit-permutation argument is used; their lower
+search bounds are outside the Lean closure.
+GeneralLP proves the same matrix identities for arbitrary monomial 3-by-4 E.
+ParametricSpecialization proves that this general model specializes to the
+original fixed model, including the star's cast/negation identities.
+
+THE PERSISTENT LOGICAL
+
+For the fixed specialization, use
+
+       [1    0            0       0   ]
+  U =  [0    x^-2         0       0   ],
+       [0    0            x^-10   0   ]
+       [x^-2 x^-4+x^-2    x^-7    x^-4]
+
+       [0 0 1]
+  V =  [0 1 0].
+       [1 0 0]
+
+Direct multiplication gives U B^T=bar(B)^T V. There are at most 11 nonzero
+binary coordinates: eight terms in U and three in V. The identity holds
+before imposing a cyclic quotient, so it survives every lift size, including
+even sizes.
+
+The linear functional
+
+  ell(u)=sum_s u(0,0,s)+sum_s u(1,0,s) in F_2
+
+vanishes on every HX stabilizer: translation permutes each fiber sum, and the
+two resulting copies of sum_(k,s) w(k,0,s) cancel. But ell(U)=1. The witness
+therefore lies outside the entire stabilizer span.
+
+For general a,b, replace the first three diagonal entries by
+1,x^(-2a),x^(-2b), and the last row by
+[x^(-2a),x^(-4a)+x^(-2a),x^(-(b+2a)),x^(-4a)]. Keep V unchanged.
+ParametricRing proves the polynomial identity; ParametricSource proves the
+actual matrix-kernel, full-span nonmembership, weight bound and CSS commutation
+for every positive L and every parameter pair. Coincident terms can cancel,
+which is why the universal statement uses weight at most 11.
+
+The row-pairing relation holds on the first three columns. For a=1,b=5 it
+fails on the fourth by one unit. Correcting that column produces the mixed
+operator above. Excluding full RCPC therefore does not exclude this mechanism.
+
+CLASSICAL LOWER BOUND THROUGH A COVER
+
+At L=11 the fixed expanded base has 44 variables, 33 checks, rank 31 and kernel
+dimension 13. Complete enumeration gives minimum nonzero weight 12. Lean
+verifies source-row reconstruction of every kernel word and checks the complete
+8192-case weight certificate. Explicit incidence, dot-product and Hamming-weight
+bridges connect the finite certificate to the actual coefficient functions.
+
+Reduce the fiber modulo 11. For a nonzero classical codeword z upstairs, let y
+be its binary parity projection, and T the image of its occupied support,
+retaining fibers whose parity cancels. Projection commutes with the check map.
+
+If y is nonzero, wt(z)>=wt(y)>=12. If y=0, each occupied fiber contains at
+least two selected coordinates. T is a nonempty stopping set: a selected
+neighbor of an upstairs check has another selected neighbor in a different
+base-column type, and projection preserves that distinction. The base stopping
+lower bound is six. Hence wt(z)>=2|T|>=12.
+
+CoverDistance proves the reusable lower bound min(d_base,2*s_base). The argument
+uses no odd-cover or unchanged-dimension premise. A finite stopping certificate
+and an independent structural proof both establish the required base bound.
+TannerSix proves that variable degree at least three and no four/six cycles
+force a nonempty stopping set to have at least six vertices. FamilyTreeStopping
+and FamilyCoverAlternative apply that argument to this source family.
+
+The classical ingredients are credited to Kelley, Sridhara, Xu and Rosenthal,
+Pseudocodeword Weights and Stopping Sets, ISIT 2004, Theorem III.1 and the
+following note. Projected cover-codeword support being stopping and the
+classical girth/tree bound are established predecessors.
+https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf
+
+ParametricProjection uses any additive projection p:ZMod L -> ZMod 11 with
+p(a)=1,p(b)=5. It maps E(a,b) to the certified base. Reduction modulo 11 supplies
+such a projection under the stated cyclic congruences.
+
+GIRTH, RCPC, CONNECTEDNESS AND TRANSPOSE
+
+All distinct row/column choices have nonzero four/six-cycle voltages modulo 11.
+A zero voltage upstairs would project to a forbidden equality. VoltageCycles
+proves the bridge from those conditions to simple cycles in the actual Tanner
+incidence t=s+Eij.
+
+For three rows, RCPC requires distinct i,j,k with E_i+E_j=2E_k in every column.
+For four columns it requires a partition into two disjoint pairs with equal
+column sums. Both fail in the certified base, and any pairing upstairs would
+project to one downstairs. These are source Definitions 5 and 2, respectively.
+
+For the fixed specialization, an explicit simple eight-cycle has check vertices
+(0,0),(1,0),(2,1),(1,1) and variable vertices
+(0,0),(1,-1),(0,1),(1,0), in alternating order. FamilyGirth checks its edges and
+distinctness. The normalized zero row/column connect all types at one fiber;
+entry one at (row1,column1) gives a four-edge walk incrementing the fiber.
+FamilyConnected proves connectedness for every positive L.
+
+For the fixed base, a polynomial Bezout identity in the four transpose equations
+forces period one in the third component. It then forces all three components
+constant, with binary sum zero. Every nonzero transpose codeword has weight 2L,
+and one exists. TransposeDistance and the actual C^T action bridge prove this
+for all positive L.
+
+There is also an explicit classical word f with components
+
+  x^4+x^5+x^7+x^8+x^9+x^11,
+  x^2+x^3+x^6+x^7+x^8+x^11,
+  1+x^2+x^3+x^6,
+  1+x^4+x^5+x^9.
+
+It satisfies B f=0 before quotienting. For 11|L it remains nonzero and has
+weight at most 20. ClassicalUpper20 proves the resulting d_C upper bound.
+The bounded polynomial-multiplier search that found it is retained separately;
+no exact large-L classical minimum follows from that search.
+
+FINITE EVIDENCE AND SEARCH LIMITS
+
+The initial frozen protocol sampled normalized six-exponent arrays with
+seed 20261025 at L=6..24, at most 50000 draws per length, retaining the first
+five eligible arrays. It retained 75 arrays at L=10..24. Complete classical
+kernel enumerations, saved logical witnesses and bounded support searches
+have separate evidence labels.
+
+The first L11 witness used [[0,0,0,0],[0,8,7,2],[0,5,3,1]]. Multiplication of
+fiber coordinates by seven gives the displayed base modulo 11. Both bases
+were separately certified. The reduced old labels are not reused as integer
+labels for arbitrary L.
+
+Independent dense checks for the fixed specialization give:
+  L=11: classical [44,13,12], transpose distance 22, quantum length 275,
+        k=23, nontrivial logical weight 11.
+  L=22: classical [88,24,18], transpose distance 44, quantum length 550,
+        k=34, nontrivial logical weight 11.
+
+Three predetermined parameter boundary checks at L22 also pass dense syndrome,
+augmented stabilizer rank, complete classical/transpose enumeration and RCPC
+checks:
+    a    b    d_C    d_transpose    k    verified logical weight
+    1   16     16        22        38             11
+   12    5     14        44        34             11
+   12   16     12        22        46             11
+The last case has even voltages and a disconnected classical cover. Universal
+parameter claims do not include connectedness or a fixed dimension formula.
+A separate exhaustive boundary audit checks all 285 parameter pairs at L1..9:
+CSS commutation, source syndrome, the separator and augmented full stabilizer
+rank pass. When 2a=0, coincident polynomial terms cancel and the witness has
+weight nine; otherwise it has weight eleven. No small-L classical lower or
+girth claim follows. The support helper now cancels repeated terms over F2;
+the three earlier saved boundary supports are unchanged. See
+independent-degenerate.json.
+
+An independently checked L16 example has d_C=12 and a pure-right logical of
+weight eight, illustrating a different transpose-code obstruction.
+
+The diagnostic exhaustive classification at L<=11 is retained separately.
+There are no eligible normalized bases at L<=9. At L10, 1152 eligible arrays
+form three orbits under the stated equivalences; at L11 there are 3600 arrays
+in three orbits. The orbit classification is an exact finite computational record. Repaired
+C++ exclusions are recorded in exhaustive-representative-search-corrected.json;
+they remain outside the admitted Lean lower-bound closure.
+
+One fresh strengthened-condition campaign was frozen before generation:
+seed 202610250413, first eight eligible arrays at each L=12..24, excluding
+literal repeats from discovery. In addition to girth/RCPC tests, it excludes
+row pairing on any three columns: for each middle row k, no value occurs three
+times among E_i,c+E_j,c-2E_k,c. Exact transpose distance must be at least d_C.
+All 104 retained arrays satisfy this last condition. The support search used
+bound min(d_C-1,11) and node cap 10^7. The corrected replay found no witness
+and exhausted no node cap; see fresh-corrected-summary.json. For 29 arrays that bound reaches d_C-1; for 75 it stops at 11 below the
+range needed for full equality. This is a bounded diagnostic, not a proof of
+the criterion.
+
+A separate adaptive follow-up chose the first L13 case,
+E=[[0,0,0,0],[0,1,11,3],[0,8,12,6]]. Complete classical enumeration gives d_C14
+and transpose distance 26. The corrected separate C++ replay completed through
+weight 13 (15,807,080 nodes) without a witness; an independent dense check verifies a
+weight-14 logical. The quantum lower bound 14 has no Lean certificate here.
+This adaptive result is kept separate from the frozen 104-base campaign.
+Its replacement record is intermediate-corrected.json.
+
+A final audit found a real bug in the original search: the two-place
+completion shortcut checked pairs but omitted singles. All earlier negative
+search claims were withdrawn and replayed after repair, preserving the same
+matrices, bounds and node caps. The old binary fails the focused regression;
+the repair passes it and 1235 independent full-word comparisons over 180 small
+periodic CSS instances. All earlier completed negative outcomes were reproduced.
+Original outputs remain as superseded history; only the corrected outputs
+support present exclusions. search-repair.json provides their map, and
+SEARCH-SOUNDNESS.txt records the written completeness argument and its cyclic
+symmetry prerequisite. Every fresh search matrix is independently reconstructed
+and its generic X/Z permutation checked entry by entry in
+frozen-matrix-crosschecks.json. This bug
+does not affect the Lean proof closure, verified positive witnesses, classical
+minima or orbit counts. The original 194 saved input hashes remain unchanged.
+
+A separate dense CSS-to-CNF encoding was checked against79 complete small-case
+oracles and the independently fixed weight14 upper witness. The installed
+CaDiCaL2.1.2 solver returned UNKNOWN after its900-second limit on weight<=13.
+This adds no SAT lower-bound result; the corrected C++ exclusion remains the
+external finite evidence. sat-crosscheck.json records the exact encoding,
+solver/hash, input/output hashes and limit. No solver rerun or tuning followed.
+
+BOUNDED STRUCTURAL PROGRESS
+
+Two separate generic Lean modules also pass normal and isolated builds.
+LowWeightChecks proves that, with variable degree at least three and no four/
+six cycles, every binary kernel support of size at most eleven meets each
+check in zero or two selected positions. Four neighbors at one check force
+twelve selected variables; parity then proves the claim. An independently
+verified ordinary binary [12,1,12] Tanner graph of girth eight shows the
+threshold is sharp. That sharpness example is exact finite evidence.
+
+PermutationFixedColumns proves a cyclic two-torsion obstruction to two fixed
+columns in an explicit seven-coordinate cross-block matching pattern. A
+separate144-permutation diagnostic finds125 short-cycle identities,12 RCPC
+identities, one torsion collision and six unclassified cases under its fixed
+coefficient cap. The six residual maps and the identity torsion case satisfy
+the separate fixed-column lemma's hypotheses when the pattern equations hold.
+Every saved linear identity and all144 maps are independently reconstructed
+and checked with Python integers. The full support-to-pattern and catalog-to-
+source Lean bridges are missing, so no universal weight-seven classification
+is claimed. STRUCTURAL-ROUTE.txt gives the exact evidence and proposed route.
+
+LITERATURE, CODE AND SOCIAL AUDIT
+
+The audit includes primary texts and proofs, public GitHub code, and signed-in
+Edge searches on GitHub and X. Exact queries, inspected matches, known-positive
+sanity checks, result caps and access gaps are in prior-art.json. The Mac later
+locked, leaving the last GitHub result page unread. A recheck after the user
+reported it unlocked still returned a locked-Mac error at05:10 UTC. Indexed query negatives
+are not treated as global absence.
+
+Freij-Hollanti, Morris and Šapokaitė, arXiv:2606.11987v1, already supply
+source-sector graph isomorphism and connectivity criteria. SourceSymmetry and
+FamilyConnected give the checked specializations needed here. Their concluding
+partition/graph direction remains the existing L-P34-logical-partitions entry.
+The arXiv submission histories for this source and RDV2025 still list only v1
+at the final bounded recheck; no newer source version was found there.
+
+High-rate qLDPC processors, arXiv:2607.28795v1, Appendix G Theorem 8, supplies
+upper bounds under full binary row rank. It does not give the missing lower
+bound or apply directly to these deficient-rank monomial bases. Its
+rank-deficient example is over C4 x C2.
+
+Hirasaki and Lee, Lifting Lifted Product Codes, arXiv:2607.28621v1, Corollary 6,
+compares lifted and base quantum distances under parity/dimension hypotheses.
+It does not imply quantum/classical equality here. A reverse bound requiring
+unchanged k cannot be imported into these varying-dimension families. The
+author's X post led to the inspected primary paper.
+
+Webster, Jacob and Higgott, arXiv:2603.22532v2, distinguishes exact and heuristic
+distance-finding methods. Ehatamm et al., arXiv:2605.16523v1, supplies related
+formal CSS/SAT infrastructure. Inspected CodeDistance, Yarn and bias-tailored
+LP code do not supply the source sufficient-condition theorem. Those
+downloaded repository sources were read without installation or execution.
+The separate SAT audit used the preinstalled CaDiCaL executable.
+
+Five new full-text screens add five bibliography records and 24 deduplicated
+broad directions. These directions remain outside the precise-target coverage
+denominator. The shared cohort is 319 entries, 144 eligible targets and five
+completed canonical Lean targets. Abstract/snippet-only leads retain explicit
+screening gaps; bibliography references were not pursued recursively.
+
+EVIDENCE AND REPRODUCTION
+
+verification.json binds every admitted Lean source to a successful build log
+and records the toolchain, mathlib commit, axiom closure and data hashes.
+FinalAudit checks the theorem signatures. SOURCE-TO-PROOF.txt maps the paper's
+objects, quantifiers and matrix conventions to the exact proof interfaces.
+
+The fixed-family distance minima, general parameter obstruction, projection
+criterion, stopping/cover bridges, cycle/RCPC exclusions, connectedness,
+transpose characterization and classical upper word are general Lean proofs.
+The base minimum and standalone old L11 instance include concrete kernel-checked
+certificates. Independent finite data do not supply the universal quantifiers.
+
+The admitted closure uses only propext, Classical.choice and Quot.sound.
+Native bv_decide prototypes, incomplete experiments and C++ quantum exclusions
+are excluded. No commit, push, announcement or external message was made.
+
+Pinned environment: Lean4 v4.36.0-rc1, mathlib commit
+5f7b4198d22a9c82e1c698a379334fe128095c82. The sibling dyadic-rank Lake project
+pins that dependency. build_lean.py uses its Lake environment, or a local ignored
+runtime cache. Rebuild the modules in verification.json.module_order, then run
+audit_artifact.py. The isolated rebuild passes all50 counterfamily modules, with a successful
+FinalAudit root at05:35 UTC. Both separate generic structural modules also
+pass isolated builds. The reports state the exact cache/scratch scope;
+mathlib itself was reused at its pinned revision.
+
+Independent replay uses modern Python (tested 3.12) and NumPy 2.3.5:
+  python3 independent_family.py
+  python3 independent_parametric.py
+  python3 independent_intermediate.py
+The verifier constructs binary matrices coefficientwise with Kronecker products,
+uses exact binary elimination and full classical kernels, checks augmented
+stabilizer rank and runs Tanner BFS. It does not import the discovery generator.
+Frozen searches, caps and failed approaches remain in PROTOCOL.txt and data files.
+
+Question answered: our girth/RCPC sufficient criterion is false; the explicit
+mixed template gives a general obstruction, with a connected fixed family
+satisfying d_Q<=11<12<=d_C<=20 and transpose distance 2L.
+Question still open: useful sufficient constraints for the original source
+quantum/classical distance-equality design problem; the strengthened candidate
+condition has not been proved.
+The preferred next mathematical task is the truncated bound dQ>=min(dC,12)
+under the strengthened entry tests. The generic zero-or-two geometry applies
+exactly to the relevant support range<=11. SourceSectionV-B already asserts
+the RCPC recipe's stabilizer-weight exclusion, so the weight-seven work is
+recorded as source-claim verification, not a new open mathematical question.
+The source/support and full-span bridges remain necessary. Keep the L13
+quantum14 certificate as a deferred finite alternative.
+
+Next proposed target: FOLLOW-UP, prove or refute dQ>=min(dC,12) for normalized,
+fully populated3x4 cyclic bases with classical girth>=8, no fullRCPC, no
+three-column partial row pairing, and transpose distance>=dC. Classify all
+potential mixed supports through11 in the actual source construction and
+both full stabilizer quotients. This is our bounded proposed condition;
+the full source sufficient-condition question remains open in this project.

@@ -20,7 +20,7 @@ Ragnar Freij-Hollanti; Kirsten D. Morris; Patricija Šapokaitė. 2026-06-10, arX
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-girth-eight](OPEN-PROBLEMS.md#l-p34-girth-eight), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -41,10 +41,14 @@ Nithin Raveendran; David Declercq; Bane Vasić. 2025-03-10, arXiv v1. [Primary s
 
 - Record type: academic source; access: full text.
 - Inspected locator: Section III-B after (20); IV-D; V-A, (92).
-- Contribution: LP eight-cycle predecessor; logical-structure and design/performance context.
-- Comparison limit: Inspected passages do not give the full input-to-product iff; performance comparison allows different quantum distances.
+- Contribution: LP eight-cycle predecessor, logical-structure context, and source of the SectionVI distance-preservation design question.
+- Comparison limit: The source does not supply the full input-to-product iff. The later checked counterfamilies refute our proposed girth/RCPC distance criterion; the general sufficient-condition question remains open in this project.
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-girth-eight](OPEN-PROBLEMS.md#l-p34-girth-eight), [L-P34-logical-partitions](OPEN-PROBLEMS.md#l-p34-logical-partitions), [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation), [L-F25-general-protographs](OPEN-PROBLEMS.md#l-f25-general-protographs), [L-F25-hardware-entries](OPEN-PROBLEMS.md#l-f25-hardware-entries).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
+
+- Question screen: [full text screened](../literature/quantum-next-selection-2026-10-24.json); 3 linked canonical targets.
+
+- Current selection comparison: [October 24 review](../literature/quantum-next-selection-2026-10-24.json).
 
 ## OkadaKasai2026 — High-Girth Regular Quantum LDPC Codes from Square-Base Hypergraph Products via CPM Lifts
 
@@ -56,6 +60,10 @@ Koki Okada; Kenta Kasai. arXiv:2604.27817v3. [Primary source](https://arxiv.org/
 - Comparison limit: Square binary input and constrained CPM lifts differ from arbitrary rectangular monomial matrices.
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-girth-eight](OPEN-PROBLEMS.md#l-p34-girth-eight), [L-F26-exact-distance](OPEN-PROBLEMS.md#l-f26-exact-distance), [L-F26-logical-qubit-lifts](OPEN-PROBLEMS.md#l-f26-logical-qubit-lifts), [L-F26-replicated-comparisons](OPEN-PROBLEMS.md#l-f26-replicated-comparisons).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
+
+- Question screen: [full text screened](../literature/quantum-next-selection-2026-10-24.json); 3 linked canonical targets.
+
+- Current selection comparison: [October 24 review](../literature/quantum-next-selection-2026-10-24.json).
 
 ## McMillonBeemerKelley2023 — Extremal absorbing sets in low-density parity-check codes
 
@@ -76,8 +84,10 @@ Christine Kelley; Deepak Sridhara; Jun Xu; Joachim Rosenthal. ISIT 2004. [Primar
 - Inspected locator: Theorem III.1 and following note.
 - Contribution: Degree-three girth-eight stopping distance bound specializes to six.
 - Comparison limit: A classical numerical predecessor, not a soft-decoder success guarantee.
-- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design).
+- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
 
 ## MorrisPllahaKelleyAbsorbing — Absorbing Sets in Quantum LDPC Codes
 
@@ -90,7 +100,7 @@ Kirsten D. Morris; Tefjol Pllaha; Christine A. Kelley. arXiv first 2023-07-26; i
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 4 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -160,7 +170,7 @@ Nithin Raveendran; Bane Vasić. arXiv v2 2021-10-07; Quantum 2021-10-14. [Primar
 - Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F28-quantum-trapping-enumeration](OPEN-PROBLEMS.md#l-f28-quantum-trapping-enumeration), [L-F28-symmetric-stabilizer-enumeration](OPEN-PROBLEMS.md#l-f28-symmetric-stabilizer-enumeration), [L-F28-correlated-noncss-trapping](OPEN-PROBLEMS.md#l-f28-correlated-noncss-trapping), [L-F28-degeneracy-low-complexity-decoding](OPEN-PROBLEMS.md#l-f28-degeneracy-low-complexity-decoding), [L-F28-beyond-sqrt-distance-performance](OPEN-PROBLEMS.md#l-f28-beyond-sqrt-distance-performance).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 5 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 5 linked canonical targets.
 
 ## ButlerSiegel2014 — Error Floor Approximation for LDPC Codes in the AWGN Channel
 
@@ -250,7 +260,7 @@ Aida Abiad; Nichola Castriota. arXiv:2607.13666v1, July 15, 2026. [Primary sourc
 - Related canonical targets: [L-F16-higher-counts](OPEN-PROBLEMS.md#l-f16-higher-counts), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 3 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-zero/prior-art.json).
 
@@ -265,7 +275,7 @@ Lara Dolecek; Zhengya Zhang; Venkat Anantharam; Martin J. Wainwright; Borivoje N
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F29-ensemble-distributions](OPEN-PROBLEMS.md#l-f29-ensemble-distributions).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 1 linked canonical targets.
 
 ## WangDolecekWesel2012 — The Cycle Consistency Matrix Approach to Absorbing Sets in Separable Circulant-Based LDPC Codes
 
@@ -278,7 +288,7 @@ Jiadong Wang; Lara Dolecek; Richard Wesel. arXiv:1208.6094v2, December 5, 2012; 
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F30-ccm-other-structures](OPEN-PROBLEMS.md#l-f30-ccm-other-structures).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 1 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/lift-label-elimination/prior-art.json).
 
@@ -293,7 +303,7 @@ Mehdi Karimi; Amir H. Banihashemi. arXiv:1308.1259v1, August 6, 2013. [Primary s
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## HashemiBanihashemi2015 — New Characterization and Efficient Exhaustive Search Algorithm for Elementary Trapping Sets of Variable-Regular LDPC Codes
 
@@ -306,7 +316,7 @@ Yoones Hashemi; Amir H. Banihashemi. arXiv:1510.04954v1, October 16, 2015. [Prim
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## LaendnerMilenkovicHuber2010 — Characterization of Small Trapping Sets in LDPC Codes from Steiner Triple Systems
 
@@ -319,7 +329,7 @@ Stefan Laendner; Olgica Milenkovic; Johannes B. Huber. ISTC 2010; DOI 10.1109/IS
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -334,7 +344,7 @@ Fengqing Jiang; Yuetai Li; Yichen Feng; Kaiyuan Zheng; Luyao Niu; Bhaskar Ramasu
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F34-asymptotic-statistical-extension](OPEN-PROBLEMS.md#l-f34-asymptotic-statistical-extension), [L-F34-approximation-gap](OPEN-PROBLEMS.md#l-f34-approximation-gap), [L-F34-sinkhorn-gap-bound](OPEN-PROBLEMS.md#l-f34-sinkhorn-gap-bound), [L-F34-gap-versus-width](OPEN-PROBLEMS.md#l-f34-gap-versus-width), [L-F34-hodge-width-threshold](OPEN-PROBLEMS.md#l-f34-hodge-width-threshold), [L-F34-sts13-hodge-test](OPEN-PROBLEMS.md#l-f34-sts13-hodge-test).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 6 linked canonical targets.
 
 ## BattaglioniEtAl2023 — Optimizing quasi-cyclic spatially coupled LDPC codes by eliminating harmful objects
 
@@ -347,7 +357,7 @@ Massimo Battaglioni; Franco Chiaraluce; Marco Baldi; Michele Pacenti; David G. M
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F35-sliding-window-harmful-objects](OPEN-PROBLEMS.md#l-f35-sliding-window-harmful-objects), [L-F35-alternative-base-performance](OPEN-PROBLEMS.md#l-f35-alternative-base-performance).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 2 linked canonical targets.
 
 ## RaeisiGholami2024 — On a class of column-weight 3 decomposable LDPC codes with the analysis of elementary trapping sets
 
@@ -360,7 +370,7 @@ G. Raeisi; M. Gholami. IET Communications 18(9), 583–596; first published Apri
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -375,7 +385,7 @@ Shadi Abu-Surra; David DeClercq; Dariush Divsalar; William E. Ryan. Information 
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## DehghanBanihashemiCospectral2019 — Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles
 
@@ -388,7 +398,7 @@ Ali Dehghan; Amir H. Banihashemi. arXiv v1 May31,2019; Graphs and Combinatorics3
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F38-extra-cycle-information](OPEN-PROBLEMS.md#l-f38-extra-cycle-information), [L-F38-switching-trapping-sets](OPEN-PROBLEMS.md#l-f38-switching-trapping-sets).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 2 linked canonical targets.
 
 ## RabetiMahdavifarUB2026 — Univariate Bicycle Quantum LDPC Codes: Explicit Logical Structure and Distance Bounds
 
@@ -401,7 +411,9 @@ Sheida Rabeti; Hessam Mahdavifar. arXiv v1 May13,2026. [Primary source](https://
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F39-ub-distance](OPEN-PROBLEMS.md#l-f39-ub-distance), [L-F39-beyond-divisor](OPEN-PROBLEMS.md#l-f39-beyond-divisor), [L-F39-ub-decoding](OPEN-PROBLEMS.md#l-f39-ub-decoding), [L-F39-ub-logical-gates](OPEN-PROBLEMS.md#l-f39-ub-logical-gates).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 4 linked canonical targets.
+
+- Current selection comparison: [October 24 review](../literature/quantum-next-selection-2026-10-24.json).
 
 ## GrannellGriggsMendelsohn1995 — A Small Basis for Four-Line Configurations in Steiner Triple Systems
 
@@ -414,7 +426,7 @@ M. J. Grannell; T. S. Griggs; E. Mendelsohn. 1995 journal article, author-hosted
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F40-maxi-pasch](OPEN-PROBLEMS.md#l-f40-maxi-pasch), [L-F40-maximal-partial-bases](OPEN-PROBLEMS.md#l-f40-maximal-partial-bases), [L-F40-lambda-triple-bases](OPEN-PROBLEMS.md#l-f40-lambda-triple-bases).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 3 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -429,7 +441,7 @@ Daniel Heinlein; Patric R. J. Ostergard. arXiv:2110.00320v1, 2021-10-01; journal
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F27-generator-basis](OPEN-PROBLEMS.md#l-f27-generator-basis), [L-F27-constant-configurations](OPEN-PROBLEMS.md#l-f27-constant-configurations), [L-F41-constant-sts-configurations](OPEN-PROBLEMS.md#l-f41-constant-sts-configurations), [L-F41-strict-full-basis](OPEN-PROBLEMS.md#l-f41-strict-full-basis).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 2 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-zero/prior-art.json).
 
@@ -444,7 +456,7 @@ Robert A. Beezer. Final journal: JCTA 96(2),341–357 (2001); received1997-08-15
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F27-generator-basis](OPEN-PROBLEMS.md#l-f27-generator-basis), [L-F27-minimal-girth-designs](OPEN-PROBLEMS.md#l-f27-minimal-girth-designs), [L-F27-constant-configurations](OPEN-PROBLEMS.md#l-f27-constant-configurations).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 3 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-zero/prior-art.json).
 
@@ -459,7 +471,7 @@ Michele Pacenti; Nithin Raveendran; Bane Vasic. arXiv:2608.11516v1, submitted 20
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F42-ai-decoder-structures](OPEN-PROBLEMS.md#l-f42-ai-decoder-structures), [L-F42-larger-dem-search](OPEN-PROBLEMS.md#l-f42-larger-dem-search), [L-F42-dem-aware-decoding](OPEN-PROBLEMS.md#l-f42-dem-aware-decoding).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 3 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -474,7 +486,7 @@ Farzane Amirzade; Mohammad-Reza Sadeghi; Daniel Panario. arXiv:2008.01322v1, 202
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -489,7 +501,7 @@ Farzane Amirzade; Mohammad-Reza Sadeghi. arXiv:1803.08141v1, 2018-03-21. [Primar
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -504,7 +516,7 @@ Haoran Xiong; Zicheng Ye; Huazi Zhang; Jun Wang; Ke Liu; Dawei Yin; Guanghui Wan
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -519,7 +531,7 @@ Haoran Xiong; Guanghui Wang; Zhiming Ma; Guiying Yan. arXiv:2503.01341v1, 2025-0
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -534,7 +546,7 @@ Ziyang Zhao; Haoran Xiong; Zicheng Ye; Guiying Yan. arXiv:2604.12332v1, 2026-04-
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -549,7 +561,7 @@ Aida Abiad; Dean Crnkovic; Louka Peters; Andrea Svob. arXiv:2609.20030v1, 2026-0
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F48-haemers-spectrum](OPEN-PROBLEMS.md#l-f48-haemers-spectrum).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 1 linked canonical targets.
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -564,7 +576,9 @@ Yuichiro Fujiwara; Alexander Gruner; Peter Vandendriessche. arXiv:1309.5587v2, 2
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F49-relative-substructure-harm](OPEN-PROBLEMS.md#l-f49-relative-substructure-harm), [L-F49-auxiliary-budget](OPEN-PROBLEMS.md#l-f49-auxiliary-budget), [L-F49-small-weight-degeneracy](OPEN-PROBLEMS.md#l-f49-small-weight-degeneracy).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 6 linked canonical targets.
+
+- Current selection comparison: [October 24 review](../literature/quantum-next-selection-2026-10-24.json).
 
 - Follow-up comparison: [dated source review](../formalization/absorbing-four-two/followup-complex/literature-followup.json).
 
@@ -579,7 +593,7 @@ F. Jessie MacWilliams. Bell System Technical Journal42(1),79–94,January1963. [
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F50-systematic-weight-distributions](OPEN-PROBLEMS.md#l-f50-systematic-weight-distributions).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 1 linked canonical targets.
 
 ## Lomonaco2006 — The MacWilliams and Pless Identities: A Summary
 
@@ -592,7 +606,7 @@ Samuel J. Lomonaco. Course handout,October9,2006,3pages. [Primary source](https:
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## Fujiwara2014 — Codes and designs for quantum error correction: some recent developments through combinatorics
 
@@ -605,7 +619,7 @@ Yuichiro Fujiwara. RIMS Kokyuroku1889(2014),32–41. [Primary source](https://ww
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F52-general-even-freeness-bounds](OPEN-PROBLEMS.md#l-f52-general-even-freeness-bounds), [L-F52-new-even-free-constructions](OPEN-PROBLEMS.md#l-f52-new-even-free-constructions), [L-F52-seven-even-free-sts](OPEN-PROBLEMS.md#l-f52-seven-even-free-sts).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 3 linked canonical targets.
 
 ## KwanSahSawhneySimkin2024 — High-girth Steiner triple systems
 
@@ -618,7 +632,7 @@ Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. arXiv2201.04554v2 Jan
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F53-counting-upper-bound](OPEN-PROBLEMS.md#l-f53-counting-upper-bound), [L-F53-maximal-sts-girth](OPEN-PROBLEMS.md#l-f53-maximal-sts-girth), [L-F53-pseudorandom-decomposition](OPEN-PROBLEMS.md#l-f53-pseudorandom-decomposition), [L-F53-high-girth-factorizations](OPEN-PROBLEMS.md#l-f53-high-girth-factorizations).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 4 linked canonical targets.
 
 ## PefchKMacWilliamsLean2026 — Binary MacWilliams identity: public Lean source
 
@@ -653,7 +667,7 @@ Małgorzata Prażmowska; Krzysztof Prażmowski. Graphs and Combinatorics32,2079�
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## AbreuFunkKrcadinacLabbate2021 — Strongly regular configurations
 
@@ -666,7 +680,7 @@ Marién Abreu; Martin Funk; Vedran Krčadinac; Domenico Labbate. arXiv2104.04880
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F55-moore-degree57](OPEN-PROBLEMS.md#l-f55-moore-degree57), [L-F55-partial-geometry-664](OPEN-PROBLEMS.md#l-f55-partial-geometry-664).
 - Provenance: [source review ledger](../formalization/absorbing-four-zero/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 2 linked canonical targets.
 
 ## AsvadiBanihashemiAhmadianAttari2010 — Lowering the Error Floor of LDPC Codes Using Cyclic Liftings
 
@@ -679,7 +693,7 @@ Reza Asvadi; Amir H. Banihashemi; Mahmoud Ahmadian-Attari. arXiv1002.4311v1,2010
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## WangDolecekWesel2011 — LDPC Absorbing Sets, the Null Space of the Cycle Consistency Matrix, and Tanner's Constructions
 
@@ -692,7 +706,7 @@ Jiadong Wang; Lara Dolecek; Richard Wesel. ITA2011,author five-page conference P
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## KelleyWalker2008 — LDPC codes from voltage graphs
 
@@ -705,7 +719,7 @@ Christine A. Kelley; Judy L. Walker. ISIT2008,DOI10.1109/ISIT.2008.4595095. [Pri
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## Noda2006 — Designing a Self-orthogonal Quasi-cyclic Code with Extended Minimum Hamming Distance
 
@@ -718,7 +732,7 @@ Makoto Noda. TURBO-CODING2006,Munich,2006-04-03 to2006-04-07,6pages. [Primary so
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## VasicDjordjevic2003 — Quasicyclic low-density parity check codes
 
@@ -731,7 +745,7 @@ Bane Vasic; Ivan B. Djordjevic. TELSIKS2003,vol2,417-420,2003-10-01 to2003-10-03
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../formalization/lift-label-elimination/prior-art.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## Beezer2002 — The Girth of a Design
 
@@ -744,7 +758,7 @@ Robert A. Beezer. Journal of Combinatorial Mathematics and Combinatorial Computi
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F61-generator-girth7-sts](OPEN-PROBLEMS.md#l-f61-generator-girth7-sts), [L-F61-other-design-girth5](OPEN-PROBLEMS.md#l-f61-other-design-girth5), [L-F61-design-to-graph-cages](OPEN-PROBLEMS.md#l-f61-design-to-graph-cages), [L-F61-moore-designs](OPEN-PROBLEMS.md#l-f61-moore-designs), [L-F61-more-fundamental-generators](OPEN-PROBLEMS.md#l-f61-more-fundamental-generators), [L-F61-asymptotic-generator-avoidance](OPEN-PROBLEMS.md#l-f61-asymptotic-generator-avoidance).
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 7 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 7 linked canonical targets.
 
 ## Pavone2023 — A visual representation of the Steiner triple systems of order 13
 
@@ -757,7 +771,7 @@ Marco Pavone. Author preprint5January2023; The Art of Discrete and Applied Mathe
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F62-grid-free-sts](OPEN-PROBLEMS.md#l-f62-grid-free-sts).
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 1 linked canonical targets.
 
 ## VasicMilenkovic2004 — Combinatorial constructions of low-density parity-check codes for iterative decoding
 
@@ -770,7 +784,7 @@ Bane Vasić; Olgica Milenkovic. IEEE Transactions on Information Theory50(6)(Jun
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## ACE2026 — Joint Short-Cycle and ACE Statistics in LDPC Tanner Graphs via Fast Message Passing
 
@@ -783,7 +797,7 @@ Xiang Li; Xuan He. Crossref metadata:29May2026;DOI10.1145/3821162.3821166. [Prim
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
-- Question screen: [full text unavailable](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text unavailable](../literature/research-question-screening.json); 0 linked canonical targets.
 
 ## KSSSResolution2024 — Proof of the High Girth Existence Conjecture via Refined Absorption
 
@@ -796,7 +810,7 @@ Michelle Delcourt; Luke Postle. arXiv2402.17856v1,27February2024. [Primary sourc
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F65-minimum-degree-threshold](OPEN-PROBLEMS.md#l-f65-minimum-degree-threshold), [L-F65-random-high-girth-designs](OPEN-PROBLEMS.md#l-f65-random-high-girth-designs).
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 2 linked canonical targets.
 
 ## KwanSahSawhney2022Latin — Substructures in Latin squares
 
@@ -809,7 +823,7 @@ Matthew Kwan; Ashwin Sah; Mehtaab Sawhney; Michael Simkin. arXiv2202.05088v4,4Au
 - Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-F66-latin-enumeration](OPEN-PROBLEMS.md#l-f66-latin-enumeration), [L-F66-uniform-sampling](OPEN-PROBLEMS.md#l-f66-uniform-sampling), [L-F66-intercalate-lower-tail](OPEN-PROBLEMS.md#l-f66-intercalate-lower-tail), [L-F66-intercalate-upper-tail](OPEN-PROBLEMS.md#l-f66-intercalate-upper-tail), [L-F66-partial-latin-extremal](OPEN-PROBLEMS.md#l-f66-partial-latin-extremal), [L-F66-maximum-intercalates](OPEN-PROBLEMS.md#l-f66-maximum-intercalates), [L-F66-hilton-no-subsquares](OPEN-PROBLEMS.md#l-f66-hilton-no-subsquares), [L-F66-poisson-three-subsquares](OPEN-PROBLEMS.md#l-f66-poisson-three-subsquares), [L-F66-no-large-subsquares](OPEN-PROBLEMS.md#l-f66-no-large-subsquares), [L-F66-minimum-cuboctahedra](OPEN-PROBLEMS.md#l-f66-minimum-cuboctahedra).
 - Provenance: [source review ledger](../literature/research-question-screening.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 10 linked canonical targets.
+- Question screen: [full text screened](../literature/research-question-screening.json); 10 linked canonical targets.
 
 ## ZhuChugg2007 — Bounds on the Expansion Properties of Tanner Graphs
 
@@ -822,7 +836,7 @@ Mingrui Zhu; Keith M. Chugg. December 2007 journal version; DOI 10.1109/TIT.2007
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F67-redundant-check-design](OPEN-PROBLEMS.md#l-f67-redundant-check-design).
 - Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/stopping-bound-source-screening.json); 1 linked canonical targets.
 
 ## Tanner2000Spectral — Minimum Distance Bounds by Graph Analysis
 
@@ -835,7 +849,7 @@ R. Michael Tanner. Inspected manuscript dated July 26, 2000; 2001 journal versio
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F68-decoder-quality](OPEN-PROBLEMS.md#l-f68-decoder-quality), [L-F68-degree-stratification](OPEN-PROBLEMS.md#l-f68-degree-stratification), [L-F68-integer-tightening](OPEN-PROBLEMS.md#l-f68-integer-tightening).
 - Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/stopping-bound-source-screening.json); 3 linked canonical targets.
 
 ## PanteleevKalachev2021Finite — Degenerate Quantum LDPC Codes With Good Finite Length Performance
 
@@ -848,7 +862,7 @@ Pavel Panteleev; Gleb Kalachev. arXiv:1904.02703v3, November 12, 2021; Quantum 5
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F69-general-distance](OPEN-PROBLEMS.md#l-f69-general-distance).
 - Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/stopping-bound-source-screening.json); 1 linked canonical targets.
 
 ## LeverrierZemor2022Tanner — Quantum Tanner codes
 
@@ -861,7 +875,7 @@ Anthony Leverrier; Gilles Zémor. arXiv:2202.13641v3, September 16, 2022; PDF da
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F70-efficient-decoding](OPEN-PROBLEMS.md#l-f70-efficient-decoding), [L-F70-explicit-components](OPEN-PROBLEMS.md#l-f70-explicit-components), [L-F70-generator-weight](OPEN-PROBLEMS.md#l-f70-generator-weight), [L-F70-other-complexes](OPEN-PROBLEMS.md#l-f70-other-complexes), [L-F70-robustness-exponent](OPEN-PROBLEMS.md#l-f70-robustness-exponent).
 - Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 5 linked canonical targets.
+- Question screen: [full text screened](../literature/stopping-bound-source-screening.json); 5 linked canonical targets.
 
 ## FengLi1996 — Spectra of Hypergraphs and Applications
 
@@ -874,7 +888,7 @@ Keqin Feng; Wen-Ch’ing Winnie Li. September 1996, J.Number Theory 60(1),1–22
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
 - Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
 
-- Question screen: [full text access or archival gap](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text access or archival gap](../literature/stopping-bound-source-screening.json); 0 linked canonical targets.
 
 ## LiSole1996 — Spectra of Regular Graphs and Hypergraphs and Orthogonal Polynomials
 
@@ -887,7 +901,7 @@ Wen-Ch’ing Winnie Li; Patrick Solé. 1996, European J.Combinatorics17(5),461�
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
 - Provenance: [source review ledger](../formalization/stopping-bound/prior-art.json).
 
-- Question screen: [full text access or archival gap](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text access or archival gap](../literature/stopping-bound-source-screening.json); 0 linked canonical targets.
 
 ## qLDPCOrgLP2026 — qLDPC lifted-product constructor
 
@@ -922,7 +936,7 @@ Jefrin Sharmitha Prabhu; Abhinav Vaishya; Shobhit Bhatnagar; Aryaman Manish Kolh
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F73-residual-erasure-techniques](OPEN-PROBLEMS.md#l-f73-residual-erasure-techniques).
 - Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/incidence-stopping-source-screening.json); 1 linked canonical targets.
 
 ## WangKulkarniPoor2009Substructures — Finding All Small Error-Prone Substructures in LDPC Codes
 
@@ -935,7 +949,7 @@ Chih-Chun Wang; Sanjeev R. Kulkarni; H. Vincent Poor. IEEE TIT55(5),1976–1999,
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F74-socket-partition-design](OPEN-PROBLEMS.md#l-f74-socket-partition-design), [L-F74-faster-implementation](OPEN-PROBLEMS.md#l-f74-faster-implementation), [L-F74-direct-trapping-search](OPEN-PROBLEMS.md#l-f74-direct-trapping-search).
 - Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
+- Question screen: [full text screened](../literature/incidence-stopping-source-screening.json); 3 linked canonical targets.
 
 ## YaoGokdumanPfister2024Cluster — Cluster Decomposition for Improved Erasure Decoding of Quantum LDPC Codes
 
@@ -948,7 +962,7 @@ Hanwen Yao; Mert Gökduman; Henry D. Pfister. arXiv:2412.08817v1,11December2024.
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound), [L-F75-pruned-cluster-combination](OPEN-PROBLEMS.md#l-f75-pruned-cluster-combination).
 - Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
 
-- Question screen: [full text screened](RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+- Question screen: [full text screened](../literature/incidence-stopping-source-screening.json); 1 linked canonical targets.
 
 ## PrabhuGayathriKumar2026Stopping — On the Analysis of Stopping Sets Associated with the Quantum Hypergraph Product Code
 
@@ -961,7 +975,7 @@ Jefrin Sharmitha Prabhu; Gayathri R.; P. Vijay Kumar. ISIT2026, full-text versio
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
 - Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
 
-- Question screen: [full text access or archival gap](RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+- Question screen: [full text access or archival gap](../literature/incidence-stopping-source-screening.json); 0 linked canonical targets.
 
 ## LcryptoStoppingEnumerator2026 — Lcrypto/Stopping-sets-enumerator
 
@@ -985,42 +999,226 @@ Lcrypto (GitHub account). Inspected24October2026; pinned source revision in prio
 - Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
 - Provenance: [source review ledger](../formalization/stopping-bound/incidence/prior-art.json).
 
+## SchwartzVardy2006Stopping — On the Stopping Distance and the Stopping Redundancy of Codes
 
-## Newly screened stronger-bound sources -24October2026
+Moshe Schwartz; Alexander Vardy. March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005. [Primary source](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf).
 
-### SchwartzVardy2006Stopping
+- Record type: academic source; access: full text.
+- Inspected locator: All text screened; relevant locators in ledger.
+- Contribution: Stopping-bound follow-up prior art and question harvesting
+- Comparison limit: Matrix-dependent stopping distance and stopping redundancy differ. Codeword supports stop; changing redundant checks changes the graph. Their Theorem3 gives three for positive distinct columns, not the new four/six guarantees.
+- Related canonical targets: [L-F77-polynomial-redundancy](OPEN-PROBLEMS.md#l-f77-polynomial-redundancy), [L-F77-Golay34](OPEN-PROBLEMS.md#l-f77-golay34), [L-F77-MDS-invariance](OPEN-PROBLEMS.md#l-f77-mds-invariance), [L-F77-locally-thin-three](OPEN-PROBLEMS.md#l-f77-locally-thin-three), [L-F77-locally-thin-monotone](OPEN-PROBLEMS.md#l-f77-locally-thin-monotone), [L-F77-general-lower-bounds](OPEN-PROBLEMS.md#l-f77-general-lower-bounds), [L-F77-nonbinary-constructions](OPEN-PROBLEMS.md#l-f77-nonbinary-constructions), [L-F77-MDS-exact](OPEN-PROBLEMS.md#l-f77-mds-exact), [L-F77-other-channels](OPEN-PROBLEMS.md#l-f77-other-channels), [L-F77-locally-thin-sequence](OPEN-PROBLEMS.md#l-f77-locally-thin-sequence), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/stronger/prior-art.json).
 
-Moshe Schwartz; Alexander Vardy. March2006 journal, pp.922-932; received17March2005, revised9December2005; preprint23March2005. [On the Stopping Distance and the Stopping Redundancy of Codes](https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf).
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 10 linked canonical targets.
 
-Matrix-dependent stopping distance and stopping redundancy differ. Codeword supports stop; changing redundant checks changes the graph. Their Theorem3 gives three for positive distinct columns, not the new four/six guarantees. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+## WangPryadko2022Bicycle — Distance bounds for generalized bicycle codes
 
-### WangPryadko2022Bicycle
+Renyu Wang; Leonid P. Pryadko. v1 submitted31March2022; PDF internally dated1April2022. [Primary source](https://arxiv.org/abs/2203.17216v1).
 
-Renyu Wang; Leonid P. Pryadko. v1 submitted31March2022; PDF internally dated1April2022. [Distance bounds for generalized bicycle codes](https://arxiv.org/abs/2203.17216v1).
+- Record type: academic source; access: full text.
+- Inspected locator: All text screened; relevant locators in ledger.
+- Contribution: Stopping-bound follow-up prior art and question harvesting
+- Comparison limit: Eq.8 uses HX=[A|B], HZT=[B;-A]. Our B=A-transpose. Eq.10 counts logical dimension via a gcd; it is not a stopping-distance theorem. No dimension formula is imported into our new proof.
+- Related canonical targets: [L-F78-cyclic-good](OPEN-PROBLEMS.md#l-f78-cyclic-good), [L-F78-Artin](OPEN-PROBLEMS.md#l-f78-artin), [L-F78-GB-scaling](OPEN-PROBLEMS.md#l-f78-gb-scaling), [L-F78-higher-k-fault-tolerance](OPEN-PROBLEMS.md#l-f78-higher-k-fault-tolerance), [L-F78-local-above-square-root](OPEN-PROBLEMS.md#l-f78-local-above-square-root), [L-F78-other-commuting-matrices](OPEN-PROBLEMS.md#l-f78-other-commuting-matrices), [L-F78-measurement-tradeoff](OPEN-PROBLEMS.md#l-f78-measurement-tradeoff), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/stronger/prior-art.json).
 
-Eq.8 uses HX=[A|B], HZT=[B;-A]. Our B=A-transpose. Eq.10 counts logical dimension via a gcd; it is not a stopping-distance theorem. No dimension formula is imported into our new proof. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 7 linked canonical targets.
 
-### KuoOuyang2026Erasure
+## KuoOuyang2026Erasure — Degenerate quantum erasure decoding
 
-Kao-Yueh Kuo; Yingkai Ouyang. Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024. [Degenerate quantum erasure decoding](https://doi.org/10.1038/s41534-026-01212-3).
+Kao-Yueh Kuo; Yingkai Ouyang. Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024. [Primary source](https://doi.org/10.1038/s41534-026-01212-3).
 
-Degenerate decoding can pass ordinary stopping obstructions. Performance/capacity claims concern a decoder and error model, not a lower stopping distance for our fixed HX. Introductory capacity questions are claimed answered within the paper. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+- Record type: academic source; access: full text.
+- Inspected locator: All text screened; relevant locators in ledger.
+- Contribution: Stopping-bound follow-up prior art and question harvesting
+- Comparison limit: Degenerate decoding can pass ordinary stopping obstructions. Performance/capacity claims concern a decoder and error model, not a lower stopping distance for our fixed HX. Introductory capacity questions are claimed answered within the paper.
+- Related canonical targets: [L-F79-minsum-erasure](OPEN-PROBLEMS.md#l-f79-minsum-erasure), [L-F79-circuit-erasure](OPEN-PROBLEMS.md#l-f79-circuit-erasure), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/stronger/prior-art.json).
 
-### KashyapVardyDesigns
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
 
-Navin Kashyap; Alexander Vardy. Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF. [Stopping Sets in Codes from Designs](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf).
+## KashyapVardyDesigns — Stopping Sets in Codes from Designs
 
-Theorem1: uniform column weight w and distinct-column intersection at most mu give s>=w/mu+1. Here mu=2, hence three at w=4; our two-block refinement gives four. Corollary2 assumes intersection at most one, which fails across our blocks. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+Navin Kashyap; Alexander Vardy. Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF. [Primary source](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf).
 
+- Record type: academic source; access: full text.
+- Inspected locator: All text screened; relevant locators in ledger.
+- Contribution: Stopping-bound follow-up prior art and question harvesting
+- Comparison limit: Theorem1: uniform column weight w and distinct-column intersection at most mu give s>=w/mu+1. Here mu=2, hence three at w=4; our two-block refinement gives four. Corollary2 assumes intersection at most one, which fails across our blocks.
+- Related canonical targets: [L-F80-design-enumerators](OPEN-PROBLEMS.md#l-f80-design-enumerators), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../formalization/stopping-bound/stronger/prior-art.json).
 
-## Xia-Fu and reused cospectral comparison -24October2026 Pacific
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
 
-Shu-Tao Xia and Fang-Wei Fu, arXiv:cs/0606051v2,11November2006 (first12June2006). Full17-page primary PDF screened; internal title-page date6May2019 is separate from the arXiv stamp. Theorem3 gives3 at gamma4/lambda2; the partition criterion gives4. Its girth>=6 theorem does not apply to paired cross4-cycles. [Primary](https://arxiv.org/abs/cs/0606051v2); [question/version audit](xia-fu-stopping-source-screening.json).
+## XiaFu2006PseudoWeight — Minimum Pseudo-Weight and Minimum Pseudo-Codewords of LDPC Codes
 
-Dehghan-Banihashemi arXiv:1905.13228v1,31May2019: existing F38 full-text screen reused. Its cospectral cycle-count counterexamples differ from the actual full-Gram-equal CSS stopping/logical constructions here. No duplicated inventory entries or priority claim.
+Shu-Tao Xia; Fang-Wei Fu. arXiv:cs/0606051v2,11November2006; first submission12June2006; downloaded PDF internal title-page date6May2019 is distinguished from the arXiv version stamp, not assumed a new public version. [Primary source](https://arxiv.org/abs/cs/0606051v2).
 
-## Final short-parameter checkpoint -24October2026 Pacific
+- Record type: academic source; access: full text.
+- Inspected locator: Theorems1/3,Example4(ii),SectionV.
+- Contribution: Stopping-bound prior art and question harvesting
+- Comparison limit: Theorem3 extends Kashyap-Vardy to AWGN pseudo-weight under minimum column weight gamma, distinct-column overlap<=lambda and integral gamma/lambda; equality iff a scaled minimum-weight codeword. At gamma4,lambda2 it yields three, not our partition four or exact six. Theorem1 needs girth>=6 and is inapplicable to our cross-block4-cycles. No theorem here proves a new fixed-matrix stopping bound4/6 for our families.
+- Related canonical targets: [L-F81-optimal-LP-existence](OPEN-PROBLEMS.md#l-f81-optimal-lp-existence), [L-F81-optimal-LP-minimum-rows](OPEN-PROBLEMS.md#l-f81-optimal-lp-minimum-rows), [L-F81-TypeII-l4-distance](OPEN-PROBLEMS.md#l-f81-typeii-l4-distance), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../literature/xia-fu-stopping-source-screening.json).
 
-The useful spectral and incidence existence answers are positive. Explicit supports{0,1,3,11} and{0,5,12,18} give column/row weights4/8, moment88n and stopping guarantee5 for every odd n>=37. Actual binary CSS, both-sector kernel bounds and a nontrivial logical class are checked. The n27 instance is checked separately:54variables,moment2376. Its actual eta>=17/2 makes the first Zhu-Chugg expression negative and the second<=297/94<4 under the cited strict gap; the new bound is5. This is a lower guarantee, not an exact-five or encoded-dimension theorem. The original Proposition5.1 parameter question remains answered negatively. [Paper and full checked proof links](../formalization/stopping-bound/stronger/README.txt).
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 3 linked canonical targets.
 
-The post-lemma primary screen adds5 broad directions,0 eligible,4 papers/screens. Current totals295canonical/144eligible/119papers/106full main-paper screens/5completed canonical targets. Exact chronology, source hashes, zero-question outcomes and named primary access/version gaps are recorded in [the post-lemma ledger](postlemma-stopping-source-screening.json). No metadata-only lead is treated as a zero-question screen. New current-resolution/Lean/difficulty assessments remain unassessed.
+## DonovanRaoUskupluYazici2022Difference — QC-LDPC Codes from Difference Matrices and Difference Covering Arrays
+
+Diane Donovan; Asha Rao; Elif Üsküplü; E. Şule Yazıcı. arXiv:2205.00563v1,2022-05-01. [Primary source](https://arxiv.org/abs/2205.00563v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; exact recorded locators in source ledger.
+- Contribution: Difference-design comparison and question harvesting
+- Comparison limit: Lemma9 proves stopping distance>=8 under3 not dividing a, for the specified classical DM/DCA matrices with their four-group incidence structure. This is a different construction and supplies no stated QC-GHP companion/CSS bridge for our matrices. The source ingredients already show overlap/girth approaches are classical.
+- Related canonical targets: [L-F82-higher-column-DM](OPEN-PROBLEMS.md#l-f82-higher-column-dm), [L-F82-general-DCA](OPEN-PROBLEMS.md#l-f82-general-dca), [L-F82-improved-minimum-distance](OPEN-PROBLEMS.md#l-f82-improved-minimum-distance), [L-F82-larger-stopping-sets](OPEN-PROBLEMS.md#l-f82-larger-stopping-sets), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../literature/postlemma-stopping-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 4 linked canonical targets.
+
+## CheeLingYin2010PCDP — Optimal Partitioned Cyclic Difference Packings for Frequency Hopping and Code Synchronization
+
+Yeow Meng Chee; Alan C. H. Ling; Jianxing Yin. arXiv:1008.1615v1,2010-08-10. [Primary source](https://arxiv.org/abs/1008.1615v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; exact recorded locators in source ledger.
+- Contribution: Difference-design comparison and question harvesting
+- Comparison limit: SectionII defines cyclic difference packing and separately requires a partition for PCDP. Our two supports may overlap and do not partition the group, so the PCDP theorems are not a direct theorem for our code. Theorem6.3 excludes two residue classes from its stated range, but Example6.1 and Lemma6.2 already settle seeds8,16,32; do not invent a blanket open-exception conjecture.
+- Related canonical targets: [L-F83-optimal-index](OPEN-PROBLEMS.md#l-f83-optimal-index), [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../literature/postlemma-stopping-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## GholamiSamadieh2014FSS — Quasi Cyclic LDPC Codes Based on Finite Set Systems
+
+Mohammad Gholami; Mehdi Samadieh. arXiv:1405.3775v1,2014-05-15; internal PDF title-page date2022-03-28 separately recorded. [Primary source](https://arxiv.org/abs/1405.3775v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; exact recorded locators in source ledger.
+- Contribution: Difference-design comparison and question harvesting
+- Comparison limit: Definitions3-5 and Section3 concern classical lifted finite set systems, inevitable walks and algorithms; Section5 summarizes results. No additional explicit unresolved question was found in the full-document target screen. Introductory algorithm goals are addressed in the paper and not added as open targets. Internal PDF date28March2022 is distinct from the2014 arXivv1 stamp.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../literature/postlemma-stopping-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## AmirzadeSadeghi2017Difference — Lower bounds on the lifting degree of single-edge and multiple-edge QC-LDPC codes by difference matrices
+
+Farzane Amirzade; Mohammad-Reza Sadeghi. arXiv:1709.00825v1,4September2017; internal running draft date18November2018 distinguished from the version stamp. [Primary source](https://arxiv.org/abs/1709.00825v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; exact recorded locators in source ledger.
+- Contribution: Difference-design comparison and question harvesting
+- Comparison limit: Classical single/multiple-edge QC-LDPC difference criteria and lifting-degree bounds, not a stated QC-GHP stopping theorem or companion CSS construction. Full-document target screen includes introduction,all question/unknown/future-work contexts,SectionV and appendices; no additional explicit unresolved target found. Search goals and reported finite optima are addressed results, not invented author conjectures.
+- Related canonical targets: [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound).
+- Provenance: [source review ledger](../literature/postlemma-stopping-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 0 linked canonical targets.
+
+## BhardwajEtAl2026Processors — High-rate qLDPC processors
+
+Aditya Bhardwaj; Muzhou Ma; Nadine Meister; Robbie King; Dolev Bluvstein; John Preskill; Madelyn Cain; Qian Xu; Hsin-Yuan Huang. arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026. [Primary source](https://arxiv.org/html/2607.28795v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; relevant result comparison in source ledger.
+- Contribution: Distance-preservation investigation
+- Comparison limit: Appendix G, Theorem 8 and Lemmas 5–6 give an upper bound under full binary row rank. Remark 12 shows the rank premise cannot generally be dropped. This is not the lower bound needed for equality in F25; fully populated monomial 3x4 bases are rank deficient at augmentation.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/distance-preservation-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 8 linked canonical targets.
+
+## WebsterJacobHiggott2026Distance — Distance-Finding Algorithms for Quantum Codes and Circuits
+
+Mark Webster; Abraham Jacob; Oscar Higgott. arXiv:2603.22532v2, 14 August 2026; first submitted 23 March 2026. [Primary source](https://arxiv.org/html/2603.22532v2).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; relevant result comparison in source ledger.
+- Contribution: Distance-preservation investigation
+- Comparison limit: Exact connected-cluster, MIP, SAT and Brouwer–Zimmermann methods versus heuristic upper-bound methods. Supports method selection and evidence labels; does not give F25 base constraints or certify our inputs.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/distance-preservation-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+
+## EhatammEtAl2026LeanQEC — End-to-End Formalization of Quantum Error Correction
+
+Mattias Ehatamm; Yi Lee; Xiaodi Wu; Runzhou Tao. arXiv:2605.16523v1, 15 May 2026. [Primary source](https://arxiv.org/html/2605.16523v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; relevant result comparison in source ledger.
+- Contribution: Distance-preservation investigation
+- Comparison limit: Verified CSS-to-SAT translation and concrete BB/GB distance certificates, with binary-symplectic/stabilizer bridge. The public README and paper were inspected; the repository was not built or axiom-audited here. No exact F25 LP-distance preservation theorem was identified in these inspected materials.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/distance-preservation-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
+
+## HirasakiLee2026Lifting — Lifting Lifted Product Codes
+
+Yuta Hirasaki; Jong Yeon Lee. arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026. [Primary source](https://arxiv.org/html/2607.28621v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Full-document target screen; relevant result comparison in source ledger.
+- Contribution: Distance-preservation investigation
+- Comparison limit: Section II and Corollary 6 describe compatible group-extension lifts and chain/cochain transfer. For odd lift index, d_lift<=t*d_base; the reverse inequality stated there additionally assumes unchanged logical dimension. This does not settle our classical-distance versus quantum-distance equality question. Our candidate family has growing logical dimension.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/distance-preservation-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 8 linked canonical targets.
+
+## CodeDistanceSoftware2026 — codeDistance: CSS and classical distance algorithms
+
+Mark Webster; Abraham Jacob; Oscar Higgott. commit a4afe9c09bbf5790da9ecc05b65c5b62343979ad. [Primary source](https://github.com/m-webster/codeDistancePYPI/blob/a4afe9c09bbf5790da9ecc05b65c5b62343979ad/codedistance/distance.py).
+
+- Record type: software source; access: public read only.
+- Inspected locator: distance.py: codeDistance, CSScodeDistance, LOcheck, MIP and SAT formulations.
+- Contribution: F25 distance-preservation prior-art audit
+- Comparison limit: Read source dispatch, witness checks and optimization formulations; not installed or executed. Different exact and heuristic methods have different guarantees. No F25 sufficient-condition theorem supplied.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../formalization/distance-preservation/prior-art.json).
+
+## YarnCodeSearch2026 — yarn LP code-search pipeline
+
+a7b (GitHub account). commit 1b58edd24e19b6b5da6814fd3a74ebb376b6e90f. [Primary source](https://github.com/a7b/yarn/blob/1b58edd24e19b6b5da6814fd3a74ebb376b6e90f/code_search/README.md).
+
+- Record type: software source; access: public read only.
+- Inspected locator: code_search/README.md, interface contract.
+- Contribution: F25 distance-preservation prior-art audit
+- Comparison limit: README explicitly states that distance-screen passes are budgeted randomized upper-bound searches. Pipeline not executed; no lower-bound proof or F25 equality criterion in inspected README.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../formalization/distance-preservation/prior-art.json).
+
+## BiasTailoredLP2022Software — Bias-tailored lifted-product constructor
+
+quantumgizmos contributors. main retrieved 24 October 2026; local content hash in ledger. [Primary source](https://github.com/quantumgizmos/bias_tailored_qldpc/blob/main/lifted_hgp.py).
+
+- Record type: software source; access: public read only.
+- Inspected locator: lifted_hgp.py, lifted_hgp.__init__.
+- Contribution: F25 distance-preservation prior-art audit
+- Comparison limit: Read the two protograph Kronecker block constructions and binary expansion call; no distance-preservation theorem. Code not executed.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../formalization/distance-preservation/prior-art.json).
+
+## LeanQECSoftware2026 — VerifiedQC/Lean-QEC public repository
+
+Mattias Ehatamm; Yi Lee; Xiaodi Wu; Runzhou Tao. README retrieved 24 October 2026. [Primary source](https://github.com/VerifiedQC/Lean-QEC).
+
+- Record type: software source; access: public read only.
+- Inspected locator: README theorem signatures, example/build scope and LRAT instructions.
+- Contribution: F25 distance-preservation prior-art audit
+- Comparison limit: Related general CSS-to-SAT and stabilizer/BSR infrastructure; README/paper inspected, repository not built or axiom-audited. No claim of first formalization of code distance.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../formalization/distance-preservation/prior-art.json).
+
+## XHirasakiLifting2026 — Author announcement of Lifting Lifted Product Codes
+
+Yuta Hirasaki. 31 July 2026, 06:40 AM displayed in browser. [Primary source](https://x.com/hira920/status/2083186108079153284).
+
+- Record type: public research post; access: public read only.
+- Inspected locator: Expanded author post and followed primary arXiv link.
+- Contribution: F25 distance-preservation prior-art audit
+- Comparison limit: Read in signed-in Edge; discovered arXiv:2607.28621v1. Post is a discovery source; theorem/hypothesis comparison uses the primary full text.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../formalization/distance-preservation/prior-art.json).

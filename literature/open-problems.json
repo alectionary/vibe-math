@@ -6651,6 +6651,18 @@
         "contribution": "One million fresh paired errors distinguish two exact [[252,10,10]] codes under the fixed decoder; no isolated absorbing-count cause.",
         "lean_sources": [],
         "checked_on": "2026-10-23"
+      },
+      {
+        "title": "Generic low-weight check geometry and restricted permutation-pattern analysis",
+        "checked_on": "2026-10-24",
+        "evidence": "general_lean_proofs_and_exact_finite_pattern_identities",
+        "report": "formalization/distance-preservation/STRUCTURAL-ROUTE.txt",
+        "verification": "formalization/distance-preservation/verification.json",
+        "lean_sources": [
+          "formalization/distance-preservation/LowWeightChecks.lean",
+          "formalization/distance-preservation/PermutationFixedColumns.lean"
+        ],
+        "contribution": "Supports the existing graph/partition direction with generic zero-or-two check geometry below weight12 and a checked cyclic fixed-column obstruction. The full source logical-pattern classification is not completed in this artifact; the stabilizer-weight exclusion is already claimed inSourceSectionV-B. No canonical completion is added."
       }
     ],
     "research_source_index": "literature/research-source-index.json"
@@ -7109,7 +7121,61 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "cyclic_research_reconciliation",
     "added_on": "2026-10-23",
-    "lean_discovery_note": "Newly inventoried source question; no exact-target Lean discovery or proof audit performed in this reconciliation. Historical open status is not a claim of current unresolvedness."
+    "lean_discovery_note": "The full source sufficient-condition problem remains unassessed/unestablished. A separate source-matched Lean counterfamily refutes our diagnostic girth/RCPC sufficient criterion; see research_progress. This is not a full-target completion or a global unresolvedness claim.",
+    "selection_review": {
+      "checked_on": "2026-10-24",
+      "selected": true,
+      "report": "planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt",
+      "ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "scope": "Source and qualitative tractability review; current global resolution and exact-target Lean proof audit remain unestablished."
+    },
+    "research_progress": [
+      {
+        "title": "Infinite mixed-logical counterfamily to the proposed girth/RCPC criterion",
+        "checked_on": "2026-10-24",
+        "evidence": "general_lean_proof_and_independent_finite_verification",
+        "contribution": "For fixed E=[[0,0,0,0],[0,1,5,3],[0,2,10,7]] and every positive L divisible by11, the source LP construction has no4/6 classical cycles, no RCPC, but dQ<=11<12<=dC<=20. The fixed graph is connected with girth8 and transpose distance2L. General E(a,b) templates have source logical weight<=11; projection of parameters to(1,5) modulo11 preserves the lower bound and exclusions. Actual coefficient matrices, both sectors and full stabilizer spans are bridged. This refutes our proposed criterion; the source sufficient-condition question remains open in this project. Canonical completion delta0.",
+        "report": "formalization/distance-preservation/RESEARCH-NOTE.txt",
+        "verification": "formalization/distance-preservation/verification.json",
+        "search_implementation_audit": "formalization/distance-preservation/search-repair.json",
+        "lean_sources": [
+          "formalization/distance-preservation/SourceWordBridge.lean",
+          "formalization/distance-preservation/ParametricProjection.lean",
+          "formalization/distance-preservation/ClassicalUpper20.lean",
+          "formalization/distance-preservation/FinalAudit.lean"
+        ],
+        "supporting_structural_evidence": [
+          "formalization/distance-preservation/LowWeightChecks.lean",
+          "formalization/distance-preservation/PermutationFixedColumns.lean",
+          "formalization/distance-preservation/auxiliary-verification.json",
+          "formalization/distance-preservation/auxiliary-fixed-columns-verification.json",
+          "formalization/distance-preservation/pattern-certificate-verification.json"
+        ],
+        "manuscript": {
+          "pdf": "formalization/distance-preservation/paper/main.pdf",
+          "tex": "formalization/distance-preservation/paper/main.tex",
+          "proof_guide": "formalization/distance-preservation/paper/PROOF-GUIDE.html",
+          "report_audit": "formalization/distance-preservation/paper/report-audit.json",
+          "source_archive": "formalization/distance-preservation/paper/distance-preservation-source.zip",
+          "status": "local_review_artifact_not_published",
+          "manuscript_date": "2026-10-25"
+        }
+      }
+    ],
+    "research_source_index": "literature/research-source-index.json",
+    "remaining_project_questions": [
+      {
+        "id": "RQ-F25-exclude-mixed-patterns",
+        "title": "Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes.",
+        "status": "Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned."
+      },
+      {
+        "id": "RQ-F25-truncated-distance-12",
+        "title": "For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12).",
+        "status": "Preferred bounded follow-up: classify mixed logical supports through11, with both actual source sectors and the full stabilizer quotient. Generic lemmas and finite diagnostics do not establish this universal bound."
+      }
+    ],
+    "scope_comparison": "The statement/proof statuses concern the full positive source-condition target. The checked counterfamilies answer our narrower proposed criterion and supply a general obstruction template; they are not counted as a complete answer to the source design question."
   },
   {
     "id": "L-F25-general-protographs",
@@ -7208,7 +7274,14 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "cyclic_research_reconciliation",
     "added_on": "2026-10-23",
-    "lean_discovery_note": "Newly inventoried source question; no exact-target Lean discovery or proof audit performed in this reconciliation. Historical open status is not a claim of current unresolvedness."
+    "lean_discovery_note": "Newly inventoried source question; no exact-target Lean discovery or proof audit performed in this reconciliation. Historical open status is not a claim of current unresolvedness.",
+    "selection_review": {
+      "checked_on": "2026-10-24",
+      "selected": false,
+      "report": "planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt",
+      "ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "scope": "Source and qualitative tractability review; current global resolution and exact-target Lean proof audit remain unestablished."
+    }
   },
   {
     "id": "L-F26-logical-qubit-lifts",
@@ -7241,7 +7314,14 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "cyclic_research_reconciliation",
     "added_on": "2026-10-23",
-    "lean_discovery_note": "Newly inventoried source question; no exact-target Lean discovery or proof audit performed in this reconciliation. Historical open status is not a claim of current unresolvedness."
+    "lean_discovery_note": "Newly inventoried source question; no exact-target Lean discovery or proof audit performed in this reconciliation. Historical open status is not a claim of current unresolvedness.",
+    "selection_review": {
+      "checked_on": "2026-10-24",
+      "selected": false,
+      "report": "planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt",
+      "ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "scope": "Source and qualitative tractability review; current global resolution and exact-target Lean proof audit remain unestablished."
+    }
   },
   {
     "id": "L-F26-replicated-comparisons",
@@ -7846,7 +7926,14 @@
     "search_family": "absorbing_set_research_source_questions",
     "added_on": "2026-10-24",
     "source_screening": "literature/research-question-screening.json",
-    "screening_note": "Full-text source screen only; no claim of present-day unresolvedness or mathematical independence."
+    "screening_note": "Full-text source screen only; no claim of present-day unresolvedness or mathematical independence.",
+    "selection_review": {
+      "checked_on": "2026-10-24",
+      "selected": false,
+      "report": "planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt",
+      "ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "scope": "Source and qualitative tractability review; current global resolution and exact-target Lean proof audit remain unestablished."
+    }
   },
   {
     "id": "L-F39-beyond-divisor",
@@ -8336,7 +8423,14 @@
     "search_family": "absorbing_set_research_source_questions",
     "added_on": "2026-10-24",
     "source_screening": "literature/research-question-screening.json",
-    "screening_note": "Held for formulation: the source leaves “sufficiently small” unspecified and does not give universal quantifiers across all its constructions. Theorem 5.1 proves a restricted even-replicate STS case."
+    "screening_note": "Held for formulation: the source leaves “sufficiently small” unspecified and does not give universal quantifiers across all its constructions. Theorem 5.1 proves a restricted even-replicate STS case.",
+    "selection_review": {
+      "checked_on": "2026-10-24",
+      "selected": false,
+      "report": "planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt",
+      "ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "scope": "Source and qualitative tractability review; current global resolution and exact-target Lean proof audit remain unestablished."
+    }
   },
   {
     "id": "L-F28-quantum-trapping-enumeration",
@@ -11203,5 +11297,797 @@
       "Jianxing Yin"
     ],
     "original_question_authorship": "Not independently established by this screen; source formulation is credited without assigning historical priority."
+  },
+  {
+    "id": "L-F86-surgery-cost",
+    "origin": "article_inventory_extension",
+    "title": "Reduce the spacetime cost of mitten-code surgery gadgets.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Section VIII",
+        "extracted_text_lines": [
+          936,
+          936
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-structured-decoding",
+    "origin": "article_inventory_extension",
+    "title": "Develop faster and more effective decoders exploiting mitten-code structure.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Section VIII",
+        "extracted_text_lines": [
+          936,
+          936
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-superconducting-routing",
+    "origin": "article_inventory_extension",
+    "title": "Improve superconducting on-chip routing for mitten-code syndrome extraction and logical operations.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Section VIII",
+        "extracted_text_lines": [
+          936,
+          936
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-atom-movement",
+    "origin": "article_inventory_extension",
+    "title": "Improve atom-array movement and syndrome-extraction strategies, including moving data, GHZ ancillas or different transport.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Section VIII and Appendix J",
+        "extracted_text_lines": [
+          936,
+          936
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      },
+      {
+        "source_id": "F86",
+        "locator": "Appendix J, syndrome-extraction timing model",
+        "extracted_text_lines": [
+          8489,
+          8490
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-experimental-processors",
+    "origin": "article_inventory_extension",
+    "title": "Demonstrate high-rate qLDPC processors experimentally using the proposed small-block codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Section VIII",
+        "extracted_text_lines": [
+          936,
+          936
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-teraquop-certification",
+    "origin": "article_inventory_extension",
+    "title": "Assess and certify teraquop-scale processing capacity for higher-distance mitten codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Section VIII",
+        "extracted_text_lines": [
+          932,
+          932
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-beam-decoder-comparison",
+    "origin": "article_inventory_extension",
+    "title": "Compare the telescoping and beam-search decoders on the same detector error models.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Appendix I.B",
+        "extracted_text_lines": [
+          7696,
+          7696
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F86-atom-loss",
+    "origin": "article_inventory_extension",
+    "title": "Determine achievable qLDPC performance with loss-aware decoding under realistic atom loss.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F86",
+        "locator": "Appendix I.C",
+        "extracted_text_lines": [
+          7997,
+          7997
+        ],
+        "url": "https://arxiv.org/html/2607.28795v1",
+        "source_sha256": "9bcf1c8dafd9051489c548aeaf56157e85ff119074817d939b217e98ce02ef6e",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F87-qdistevol-refinement",
+    "origin": "article_inventory_extension",
+    "title": "Refine QDistEvol and implement it in C using asymptotically optimal Gaussian elimination.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F87",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          8747,
+          8747
+        ],
+        "url": "https://arxiv.org/html/2603.22532v2",
+        "source_sha256": "71d4511cf5d2dd38b3128b554677207b37f8f33be2af2d987c3a3a5847f920f6",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2603.22532v2, 14 August 2026; first submitted 23 March 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F87-faster-bposd",
+    "origin": "article_inventory_extension",
+    "title": "Develop a faster BP-OSD implementation and assess its competitiveness with random information-set distance searches.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F87",
+        "locator": "Section 6",
+        "extracted_text_lines": [
+          8749,
+          8749
+        ],
+        "url": "https://arxiv.org/html/2603.22532v2",
+        "source_sha256": "71d4511cf5d2dd38b3128b554677207b37f8f33be2af2d987c3a3a5847f920f6",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2603.22532v2, 14 August 2026; first submitted 23 March 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F88-solver-scaling",
+    "origin": "article_inventory_extension",
+    "title": "Extend distance-certificate scaling through decomposition and solvers specialized to linear codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F88",
+        "locator": "Section 6.3",
+        "extracted_text_lines": [
+          7360,
+          7375
+        ],
+        "url": "https://arxiv.org/html/2605.16523v1",
+        "source_sha256": "ce2afa65ae3e6a798ac003da1c9140486dee5a9b2964c941822b0d69015c964c",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2605.16523v1, 15 May 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F88-non-css",
+    "origin": "article_inventory_extension",
+    "title": "Extend the verified distance framework to general non-CSS stabilizer codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F88",
+        "locator": "Section 6.3",
+        "extracted_text_lines": [
+          7376,
+          7388
+        ],
+        "url": "https://arxiv.org/html/2605.16523v1",
+        "source_sha256": "ce2afa65ae3e6a798ac003da1c9140486dee5a9b2964c941822b0d69015c964c",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2605.16523v1, 15 May 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F88-subsystem",
+    "origin": "article_inventory_extension",
+    "title": "Extend the formalization to subsystem codes and the broader stabilizer formalism.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F88",
+        "locator": "Section 6.3",
+        "extracted_text_lines": [
+          7376,
+          7388
+        ],
+        "url": "https://arxiv.org/html/2605.16523v1",
+        "source_sha256": "ce2afa65ae3e6a798ac003da1c9140486dee5a9b2964c941822b0d69015c964c",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2605.16523v1, 15 May 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F88-verified-row-reduction",
+    "origin": "article_inventory_extension",
+    "title": "Implement verified row reduction for kernel-basis computation in the Lean-QEC preprocessing pipeline.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F88",
+        "locator": "Section 6.3",
+        "extracted_text_lines": [
+          7388,
+          7392
+        ],
+        "url": "https://arxiv.org/html/2605.16523v1",
+        "source_sha256": "ce2afa65ae3e6a798ac003da1c9140486dee5a9b2964c941822b0d69015c964c",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2605.16523v1, 15 May 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F88-circuit-integration",
+    "origin": "article_inventory_extension",
+    "title": "Connect the QEC layer to verified circuit compilers such as SQIR.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F88",
+        "locator": "Section 6.3",
+        "extracted_text_lines": [
+          7393,
+          7397
+        ],
+        "url": "https://arxiv.org/html/2605.16523v1",
+        "source_sha256": "ce2afa65ae3e6a798ac003da1c9140486dee5a9b2964c941822b0d69015c964c",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2605.16523v1, 15 May 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F88-gate-calculus",
+    "origin": "article_inventory_extension",
+    "title": "Develop a richer verified gate-level quantum-circuit calculus.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F88",
+        "locator": "Section 3",
+        "extracted_text_lines": [
+          1065,
+          1071
+        ],
+        "url": "https://arxiv.org/html/2605.16523v1",
+        "source_sha256": "ce2afa65ae3e6a798ac003da1c9140486dee5a9b2964c941822b0d69015c964c",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2605.16523v1, 15 May 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-inherited-logicals",
+    "origin": "article_inventory_extension",
+    "title": "Describe inherited and newly created logical degrees of freedom under lifts, including even-index lifts.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section VI",
+        "extracted_text_lines": [
+          8483,
+          8489
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-gadget-distance",
+    "origin": "article_inventory_extension",
+    "title": "Determine how inherited logical-operation gadgets preserve distance under lifting.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section VI",
+        "extracted_text_lines": [
+          8490,
+          8518
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-operation-transfer",
+    "origin": "article_inventory_extension",
+    "title": "Determine when transversal gates, homomorphic CNOTs and measurements, or code switching transfer to lifts.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section VI",
+        "extracted_text_lines": [
+          8490,
+          8518
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-thermodynamic-branches",
+    "origin": "article_inventory_extension",
+    "title": "Find geometric and homological conditions selecting lift branches with common thermodynamic behavior.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section V remark and Section VI",
+        "extracted_text_lines": [
+          8420,
+          8467
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      },
+      {
+        "source_id": "F89",
+        "locator": "Section VI, third direction",
+        "extracted_text_lines": [
+          8519,
+          8535
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-decoder-transfer",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether useful decoders transfer from a base LP code to its lifts.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section VI",
+        "extracted_text_lines": [
+          8536,
+          8543
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-hardware-transfer",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether hardware-efficient implementations transfer from base codes to lifts.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section VI",
+        "extracted_text_lines": [
+          8536,
+          8543
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-other-code-families",
+    "origin": "article_inventory_extension",
+    "title": "Extend the lifting construction to other high-rate group-algebra codes and quantum Tanner codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section VI",
+        "extracted_text_lines": [
+          8544,
+          8560
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F89-general-nontransversal-surgery",
+    "origin": "article_inventory_extension",
+    "title": "Develop systematic nontransversal surgery constructions for general qLDPC codes without an underlying lifted structure.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F89",
+        "locator": "Section IV",
+        "extracted_text_lines": [
+          6874,
+          6879
+        ],
+        "url": "https://arxiv.org/html/2607.28621v1",
+        "source_sha256": "ee48797d078457bf4043673018837a54e67376576752e547ce624c6ebdc24af5",
+        "relation": "explicit_broad_research_or_engineering_direction",
+        "version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_as_stated_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "distance_preservation_source_questions",
+    "added_on": "2026-10-24",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
   }
 ]

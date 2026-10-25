@@ -41,6 +41,11 @@
           "L-P34-girth-eight",
           "L-P34-logical-partitions"
         ]
+      },
+      "distance_preservation_connection": {
+        "report": "formalization/distance-preservation/STRUCTURAL-ROUTE.txt",
+        "existing_direction_id": "L-P34-logical-partitions",
+        "comparison": "Source already supplies graph isomorphism/connectivity and asks how partition constraints translate to graph properties. The weight7 recipe is a source-claim verification task. The proposed truncated lower bound through11 is a project-derived restricted step toward the source distance-preservation problem."
       }
     },
     {
@@ -79,8 +84,8 @@
       "url": "https://arxiv.org/html/2503.07567v1",
       "access": "full_text",
       "locator": "Section III-B after (20); IV-D; V-A, (92)",
-      "relationship": "LP eight-cycle predecessor; logical-structure and design/performance context.",
-      "comparison_limit": "Inspected passages do not give the full input-to-product iff; performance comparison allows different quantum distances.",
+      "relationship": "LP eight-cycle predecessor, logical-structure context, and source of the SectionVI distance-preservation design question.",
+      "comparison_limit": "The source does not supply the full input-to-product iff. The later checked counterfamilies refute our proposed girth/RCPC distance criterion; the general sufficient-condition question remains open in this project.",
       "provenance_ledger": "formalization/cyclic-lifts/search/loop-literature-review.json",
       "checked_on": "2026-10-23",
       "related_target_ids": [
@@ -93,7 +98,46 @@
         "L-F25-hardware-entries"
       ],
       "bibliography_id": "F25",
-      "record_kind": "academic_source"
+      "record_kind": "academic_source",
+      "selection_review_ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "question_screening": {
+        "ledger": "literature/quantum-next-selection-2026-10-24.json",
+        "checked_on": "2026-10-24",
+        "status": "full_text_screened",
+        "target_ids": [
+          "L-F25-distance-preservation",
+          "L-F25-general-protographs",
+          "L-F25-hardware-entries"
+        ]
+      },
+      "distance_preservation_review": {
+        "checked_on": "2026-10-24",
+        "locator": "Equation9, Definitions2–5 and SectionVI",
+        "report": "formalization/distance-preservation/RESEARCH-NOTE.txt",
+        "verification": "formalization/distance-preservation/verification.json",
+        "comparison": "Source motivates sufficient conditions. The checked counterfamily refutes our own girth/RCPC criterion, not an author-stated conjecture or the source general design problem.",
+        "unresolved_leads": [
+          {
+            "title": "Shor's algorithm is possible with as few as10,000 reconfigurable atomic qubits",
+            "url": "https://ludepress.com/wp-content/uploads/2026/03/2603.28627v1.pdf",
+            "outcome": "Named full-text access/screening gap, not counted as a new full-text screen or source-question extraction."
+          },
+          {
+            "title": "Finite Rate QLDPC-GKP Coding Scheme that Surpasses the CSS Hamming Bound",
+            "url": "https://inspirehep.net/files/40d1301ce7c459a1ba5345f94e16987d",
+            "outcome": "Named full-text screening gap, no new question/count inferred."
+          }
+        ],
+        "manuscript": {
+          "pdf": "formalization/distance-preservation/paper/main.pdf",
+          "tex": "formalization/distance-preservation/paper/main.tex",
+          "proof_guide": "formalization/distance-preservation/paper/PROOF-GUIDE.html",
+          "report_audit": "formalization/distance-preservation/paper/report-audit.json",
+          "source_archive": "formalization/distance-preservation/paper/distance-preservation-source.zip",
+          "status": "local_review_artifact_not_published",
+          "manuscript_date": "2026-10-25"
+        }
+      }
     },
     {
       "id": "OkadaKasai2026",
@@ -119,7 +163,18 @@
         "L-F26-replicated-comparisons"
       ],
       "bibliography_id": "F26",
-      "record_kind": "academic_source"
+      "record_kind": "academic_source",
+      "selection_review_ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "question_screening": {
+        "ledger": "literature/quantum-next-selection-2026-10-24.json",
+        "checked_on": "2026-10-24",
+        "status": "full_text_screened",
+        "target_ids": [
+          "L-F26-exact-distance",
+          "L-F26-logical-qubit-lifts",
+          "L-F26-replicated-comparisons"
+        ]
+      }
     },
     {
       "id": "McMillonBeemerKelley2023",
@@ -162,12 +217,21 @@
       "relationship": "Degree-three girth-eight stopping distance bound specializes to six.",
       "comparison_limit": "A classical numerical predecessor, not a soft-decoder success guarantee.",
       "provenance_ledger": "formalization/cyclic-lifts/search/loop-literature-review.json",
-      "checked_on": "2026-10-23",
+      "checked_on": "2026-10-24",
       "related_target_ids": [
         "L-P34-decoding-effects",
-        "L-P34-base-design"
+        "L-P34-base-design",
+        "L-F25-distance-preservation"
       ],
-      "record_kind": "academic_source"
+      "record_kind": "academic_source",
+      "bibliography_id": "F90",
+      "question_screening": {
+        "status": "full_text_screened",
+        "screen_date": "2026-10-24",
+        "target_count": 0,
+        "audit": "literature/distance-preservation-source-screening.json",
+        "target_ids": []
+      }
     },
     {
       "id": "MorrisPllahaKelleyAbsorbing",
@@ -934,7 +998,8 @@
           "L-F39-ub-distance",
           "L-F39-ub-logical-gates"
         ]
-      }
+      },
+      "selection_review_ledger": "literature/quantum-next-selection-2026-10-24.json"
     },
     {
       "id": "GrannellGriggsMendelsohn1995",
@@ -1308,7 +1373,8 @@
           "L-F52-new-even-free-constructions",
           "L-F52-seven-even-free-sts"
         ]
-      }
+      },
+      "selection_review_ledger": "literature/quantum-next-selection-2026-10-24.json"
     },
     {
       "id": "MacWilliams1963",
@@ -2584,6 +2650,263 @@
         "audit": "literature/postlemma-stopping-source-screening.json",
         "target_ids": []
       }
+    },
+    {
+      "id": "BhardwajEtAl2026Processors",
+      "title": "High-rate qLDPC processors",
+      "authors": [
+        "Aditya Bhardwaj",
+        "Muzhou Ma",
+        "Nadine Meister",
+        "Robbie King",
+        "Dolev Bluvstein",
+        "John Preskill",
+        "Madelyn Cain",
+        "Qian Xu",
+        "Hsin-Yuan Huang"
+      ],
+      "date_or_version": "arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026",
+      "url": "https://arxiv.org/html/2607.28795v1",
+      "access": "full_text",
+      "locator": "Full-document target screen; relevant result comparison in source ledger",
+      "relationship": "Distance-preservation investigation",
+      "comparison_limit": "Appendix G, Theorem 8 and Lemmas 5–6 give an upper bound under full binary row rank. Remark 12 shows the rank premise cannot generally be dropped. This is not the lower bound needed for equality in F25; fully populated monomial 3x4 bases are rank deficient at augmentation.",
+      "record_kind": "academic_source",
+      "bibliography_id": "F86",
+      "checked_on": "2026-10-24",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "literature/distance-preservation-source-screening.json",
+      "question_screening": {
+        "status": "full_text_screened",
+        "screen_date": "2026-10-24",
+        "target_count": 8,
+        "audit": "literature/distance-preservation-source-screening.json",
+        "target_ids": [
+          "L-F86-surgery-cost",
+          "L-F86-structured-decoding",
+          "L-F86-superconducting-routing",
+          "L-F86-atom-movement",
+          "L-F86-experimental-processors",
+          "L-F86-teraquop-certification",
+          "L-F86-beam-decoder-comparison",
+          "L-F86-atom-loss"
+        ]
+      },
+      "report_preparation_version_check": {
+        "checked_on": "2026-10-25",
+        "record": "formalization/distance-preservation/paper/report-source-checks.json",
+        "finding": "Abstract history lists v2 dated2October2026. Paper comparison is explicitly to inspectedv1; later full-text/version comparison remains unassessed.",
+        "new_full_texts": 0,
+        "canonical_target_delta": 0
+      }
+    },
+    {
+      "id": "WebsterJacobHiggott2026Distance",
+      "title": "Distance-Finding Algorithms for Quantum Codes and Circuits",
+      "authors": [
+        "Mark Webster",
+        "Abraham Jacob",
+        "Oscar Higgott"
+      ],
+      "date_or_version": "arXiv:2603.22532v2, 14 August 2026; first submitted 23 March 2026",
+      "url": "https://arxiv.org/html/2603.22532v2",
+      "access": "full_text",
+      "locator": "Full-document target screen; relevant result comparison in source ledger",
+      "relationship": "Distance-preservation investigation",
+      "comparison_limit": "Exact connected-cluster, MIP, SAT and Brouwer–Zimmermann methods versus heuristic upper-bound methods. Supports method selection and evidence labels; does not give F25 base constraints or certify our inputs.",
+      "record_kind": "academic_source",
+      "bibliography_id": "F87",
+      "checked_on": "2026-10-24",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "literature/distance-preservation-source-screening.json",
+      "question_screening": {
+        "status": "full_text_screened",
+        "screen_date": "2026-10-24",
+        "target_count": 2,
+        "audit": "literature/distance-preservation-source-screening.json",
+        "target_ids": [
+          "L-F87-qdistevol-refinement",
+          "L-F87-faster-bposd"
+        ]
+      }
+    },
+    {
+      "id": "EhatammEtAl2026LeanQEC",
+      "title": "End-to-End Formalization of Quantum Error Correction",
+      "authors": [
+        "Mattias Ehatamm",
+        "Yi Lee",
+        "Xiaodi Wu",
+        "Runzhou Tao"
+      ],
+      "date_or_version": "arXiv:2605.16523v1, 15 May 2026",
+      "url": "https://arxiv.org/html/2605.16523v1",
+      "access": "full_text",
+      "locator": "Full-document target screen; relevant result comparison in source ledger",
+      "relationship": "Distance-preservation investigation",
+      "comparison_limit": "Verified CSS-to-SAT translation and concrete BB/GB distance certificates, with binary-symplectic/stabilizer bridge. The public README and paper were inspected; the repository was not built or axiom-audited here. No exact F25 LP-distance preservation theorem was identified in these inspected materials.",
+      "record_kind": "academic_source",
+      "bibliography_id": "F88",
+      "checked_on": "2026-10-24",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "literature/distance-preservation-source-screening.json",
+      "question_screening": {
+        "status": "full_text_screened",
+        "screen_date": "2026-10-24",
+        "target_count": 6,
+        "audit": "literature/distance-preservation-source-screening.json",
+        "target_ids": [
+          "L-F88-solver-scaling",
+          "L-F88-non-css",
+          "L-F88-subsystem",
+          "L-F88-verified-row-reduction",
+          "L-F88-circuit-integration",
+          "L-F88-gate-calculus"
+        ]
+      }
+    },
+    {
+      "id": "HirasakiLee2026Lifting",
+      "title": "Lifting Lifted Product Codes",
+      "authors": [
+        "Yuta Hirasaki",
+        "Jong Yeon Lee"
+      ],
+      "date_or_version": "arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026",
+      "url": "https://arxiv.org/html/2607.28621v1",
+      "access": "full_text",
+      "locator": "Full-document target screen; relevant result comparison in source ledger",
+      "relationship": "Distance-preservation investigation",
+      "comparison_limit": "Section II and Corollary 6 describe compatible group-extension lifts and chain/cochain transfer. For odd lift index, d_lift<=t*d_base; the reverse inequality stated there additionally assumes unchanged logical dimension. This does not settle our classical-distance versus quantum-distance equality question. Our candidate family has growing logical dimension.",
+      "record_kind": "academic_source",
+      "bibliography_id": "F89",
+      "checked_on": "2026-10-24",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "literature/distance-preservation-source-screening.json",
+      "question_screening": {
+        "status": "full_text_screened",
+        "screen_date": "2026-10-24",
+        "target_count": 8,
+        "audit": "literature/distance-preservation-source-screening.json",
+        "target_ids": [
+          "L-F89-inherited-logicals",
+          "L-F89-gadget-distance",
+          "L-F89-operation-transfer",
+          "L-F89-thermodynamic-branches",
+          "L-F89-decoder-transfer",
+          "L-F89-hardware-transfer",
+          "L-F89-other-code-families",
+          "L-F89-general-nontransversal-surgery"
+        ]
+      }
+    },
+    {
+      "id": "CodeDistanceSoftware2026",
+      "title": "codeDistance: CSS and classical distance algorithms",
+      "authors": [
+        "Mark Webster",
+        "Abraham Jacob",
+        "Oscar Higgott"
+      ],
+      "url": "https://github.com/m-webster/codeDistancePYPI/blob/a4afe9c09bbf5790da9ecc05b65c5b62343979ad/codedistance/distance.py",
+      "date_or_version": "commit a4afe9c09bbf5790da9ecc05b65c5b62343979ad",
+      "access": "public_read_only",
+      "locator": "distance.py: codeDistance, CSScodeDistance, LOcheck, MIP and SAT formulations",
+      "relationship": "F25 distance-preservation prior-art audit",
+      "comparison_limit": "Read source dispatch, witness checks and optimization formulations; not installed or executed. Different exact and heuristic methods have different guarantees. No F25 sufficient-condition theorem supplied.",
+      "record_kind": "software_source",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "formalization/distance-preservation/prior-art.json",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "id": "YarnCodeSearch2026",
+      "title": "yarn LP code-search pipeline",
+      "authors": [
+        "a7b (GitHub account)"
+      ],
+      "url": "https://github.com/a7b/yarn/blob/1b58edd24e19b6b5da6814fd3a74ebb376b6e90f/code_search/README.md",
+      "date_or_version": "commit 1b58edd24e19b6b5da6814fd3a74ebb376b6e90f",
+      "access": "public_read_only",
+      "locator": "code_search/README.md, interface contract",
+      "relationship": "F25 distance-preservation prior-art audit",
+      "comparison_limit": "README explicitly states that distance-screen passes are budgeted randomized upper-bound searches. Pipeline not executed; no lower-bound proof or F25 equality criterion in inspected README.",
+      "record_kind": "software_source",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "formalization/distance-preservation/prior-art.json",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "id": "BiasTailoredLP2022Software",
+      "title": "Bias-tailored lifted-product constructor",
+      "authors": [
+        "quantumgizmos contributors"
+      ],
+      "url": "https://github.com/quantumgizmos/bias_tailored_qldpc/blob/main/lifted_hgp.py",
+      "date_or_version": "main retrieved 24 October 2026; local content hash in ledger",
+      "access": "public_read_only",
+      "locator": "lifted_hgp.py, lifted_hgp.__init__",
+      "relationship": "F25 distance-preservation prior-art audit",
+      "comparison_limit": "Read the two protograph Kronecker block constructions and binary expansion call; no distance-preservation theorem. Code not executed.",
+      "record_kind": "software_source",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "formalization/distance-preservation/prior-art.json",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "id": "LeanQECSoftware2026",
+      "title": "VerifiedQC/Lean-QEC public repository",
+      "authors": [
+        "Mattias Ehatamm",
+        "Yi Lee",
+        "Xiaodi Wu",
+        "Runzhou Tao"
+      ],
+      "url": "https://github.com/VerifiedQC/Lean-QEC",
+      "date_or_version": "README retrieved 24 October 2026",
+      "access": "public_read_only",
+      "locator": "README theorem signatures, example/build scope and LRAT instructions",
+      "relationship": "F25 distance-preservation prior-art audit",
+      "comparison_limit": "Related general CSS-to-SAT and stabilizer/BSR infrastructure; README/paper inspected, repository not built or axiom-audited. No claim of first formalization of code distance.",
+      "record_kind": "software_source",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "formalization/distance-preservation/prior-art.json",
+      "checked_on": "2026-10-24"
+    },
+    {
+      "id": "XHirasakiLifting2026",
+      "title": "Author announcement of Lifting Lifted Product Codes",
+      "authors": [
+        "Yuta Hirasaki"
+      ],
+      "url": "https://x.com/hira920/status/2083186108079153284",
+      "date_or_version": "31 July 2026, 06:40 AM displayed in browser",
+      "access": "public_read_only",
+      "locator": "Expanded author post and followed primary arXiv link",
+      "relationship": "F25 distance-preservation prior-art audit",
+      "comparison_limit": "Read in signed-in Edge; discovered arXiv:2607.28621v1. Post is a discovery source; theorem/hypothesis comparison uses the primary full text.",
+      "record_kind": "public_research_post",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "formalization/distance-preservation/prior-art.json",
+      "checked_on": "2026-10-24"
     }
   ]
 }

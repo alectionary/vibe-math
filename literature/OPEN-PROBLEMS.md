@@ -2,9 +2,9 @@
 
 Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **295 canonical entries**: the original 40 dissertation targets and **255 additional article entries**. Of the additions, **105 are specific mathematical questions or tasks suitable for coverage tracking**; the other 150 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **319 canonical entries**: the original 40 dissertation targets and **279 additional article entries**. Of the additions, **105 are specific mathematical questions or tasks suitable for coverage tracking**; the other 174 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [85 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/144 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [94 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/144 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 105 |
-| Additional directions/formulation/method entries outside the denominator | 150 |
+| Additional directions/formulation/method entries outside the denominator | 174 |
 | Combined eligible targets | 144 = 39 + 105 |
 | Eligible targets with an identified, verified proof-assistant statement | 5/144 (3.47%) |
 | Eligible targets with an identified, verified Lean statement | 5/144 (3.47%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/144 |
 | Additional identified Lean statements without a build audit | 1/144 |
 | Eligible targets with Lean discovery still unassessed in this extension | 36/144 |
-| Articles/preprints in scope | 119 |
-| Full-text sources screened, including withdrawn history | 106/119 |
-| Current-publication full texts screened | 105 |
+| Articles/preprints in scope | 124 |
+| Full-text sources screened, including withdrawn history | 113/124 |
+| Current-publication full texts screened | 112 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 13/119 |
+| Not fully assessed | 11/124 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -109,8 +109,8 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F22](https://arxiv.org/html/2610.20657v1) | full text screened | 1 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
 | [F23](https://arxiv.org/html/2606.06148v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
 | [F24](https://arxiv.org/html/2606.18236v1) | full text screened | 3 | Primary full text screened for explicit questions, conjectures, future work and surrounding scope. Not a proof-correctness audit. No explicit remaining target found is a bounded screen result, not a guarantee of absence. |
-| [F25](https://arxiv.org/html/2503.07567v1) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
-| [F26](https://arxiv.org/html/2604.27817v3) | relevant sections screened | 3 | Related external work reached through the P34 investigation, not seed-author coauthorship. Relevant sections screened; no exhaustive full-paper question extraction or current-resolution/Lean search for the new questions is claimed. |
+| [F25](https://arxiv.org/html/2503.07567v1) | full text screened | 3 | October 24 selection review: full-text lexical question/future-work scan and surrounding definition/result/conclusion context inspected. All explicit targets found link to existing entries. No line-by-line correctness audit or complete current-resolution/Lean search is claimed. See quantum-next-selection-2026-10-24.json. |
+| [F26](https://arxiv.org/html/2604.27817v3) | full text screened | 3 | October 24 selection review: full-text lexical question/future-work scan and surrounding definition/result/conclusion context inspected. All explicit targets found link to existing entries. No line-by-line correctness audit or complete current-resolution/Lean search is claimed. See quantum-next-selection-2026-10-24.json. |
 | [F27](https://doi.org/10.1006/jcta.2001.3185) | current publication full text screened | 3 | Full final17-page journal read. One conjecture and two broad directions indexed; historical Erdos question is resolved and is not added as currently open. Regular-graph subcase shares the conjecture ID. |
 | [F28](https://arxiv.org/html/2012.15297v2) | current publication full text screened | 5 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
 | [F29](https://people.eecs.berkeley.edu/~bora/Journals/2010/IT-10.pdf) | current publication full text screened | 1 | Question screen of the explicitly identified accessible version; later-version limits are in the audit. The inspected preprint is not a completed audit of every later journal revision. |
@@ -170,6 +170,11 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F83](https://arxiv.org/abs/1008.1615v1) | full text screened | 1 | arXiv:1008.1615v1,2010-08-10; full-document target screen across introductions, definitions, unknown cases, conclusions, appendix and candidate-context passages; not a verification of every theorem. |
 | [F84](https://arxiv.org/abs/1405.3775v1) | full text screened | 0 | arXiv:1405.3775v1,2014-05-15; internal PDF title-page date2022-03-28 separately recorded; full-document target screen across introductions, definitions, unknown cases, conclusions, appendix and candidate-context passages; not a verification of every theorem. |
 | [F85](https://arxiv.org/abs/1709.00825v1) | full text screened | 0 | arXiv:1709.00825v1,4September2017; internal running draft date18November2018 distinguished from the version stamp;33-page full-document target screen |
+| [F86](https://arxiv.org/html/2607.28795v1) | full text screened | 8 | arXiv:2607.28795v1, 30 July 2026; internal manuscript date 24 August 2026; full-document lexical target screen plus introduction/conclusion and matched-context review |
+| [F87](https://arxiv.org/html/2603.22532v2) | full text screened | 2 | arXiv:2603.22532v2, 14 August 2026; first submitted 23 March 2026; full-document lexical target screen plus introduction/conclusion and matched-context review |
+| [F88](https://arxiv.org/html/2605.16523v1) | full text screened | 6 | arXiv:2605.16523v1, 15 May 2026; full-document lexical target screen plus introduction/conclusion and matched-context review |
+| [F89](https://arxiv.org/html/2607.28621v1) | full text screened | 8 | arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026; full-document lexical target screen plus introduction/conclusion and matched-context review |
+| [F90](https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf) | full text screened | 0 | Complete single-page proceedings text and rendered page inspected, including all theorem statements, note, introduction and references. |
 
 ## Reproducible evidence and limits
 
@@ -2216,6 +2221,9 @@ Translate the cited row/column partition conditions for low-weight logical opera
 - Supporting Lean artifact (not full target coverage): [checked scope](../formalization/cyclic-lifts/LOW-WEIGHT-LOGICALS.md). Concrete same-local-topology/different-logical-role theorem, including full companion-span nonmembership. Does not complete the broader research direction.
 - Research sources: [central source index](RESEARCH-SOURCES.md).
 - Research progress: [Exact-distance matched replication](../formalization/cyclic-lifts/MILLION-PAIRED.md) (sampled experiment). One million fresh paired errors distinguish two exact [[252,10,10]] codes under the fixed decoder; no isolated absorbing-count cause.
+- Research progress: [Generic low-weight check geometry and restricted permutation-pattern analysis](../formalization/distance-preservation/STRUCTURAL-ROUTE.txt) (general lean proofs and exact finite pattern identities). Supports the existing graph/partition direction with generic zero-or-two check geometry below weight12 and a checked cyclic fixed-column obstruction. The full source logical-pattern classification is not completed in this artifact; the stabilizer-weight exclusion is already claimed inSourceSectionV-B. No canonical completion is added.
+  - [Complete Lean source](../formalization/distance-preservation/LowWeightChecks.lean).
+  - [Complete Lean source](../formalization/distance-preservation/PermutationFixedColumns.lean).
 - [P34: Conclusion](https://arxiv.org/html/2606.11987v1); extraction lines 334–334; concluding direction.
 - Related, not merged: L-F25-distance-preservation, L-F26-exact-distance.
 - Related formalization: [https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean](https://github.com/LeanPool/lean-pool/blob/1a4fed6d89aa7b28fac75a3c29f750a83236a246/LeanPool/QECCertificates/GF2/LiftedProduct.lean). Related lifted-product matrix definitions and CSS orthogonality (lp_orthogonal, lp2_orthogonal). No Tanner-girth-eight characterization or absorbing-set classification in this file. Source inspected; not built or axiom-audited.
@@ -2327,6 +2335,16 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
 - Coverage denominator: included. Specific source-posed distance or construction target; retain the model and fixed-instance definitions at the cited locator.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- October 24 selection review: selected next new problem. [Rationale and bounded next action](../planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt). The selection snapshot alone claimed no mathematical answer; later research progress is listed below.
+- Scope comparison: The statement/proof statuses concern the full positive source-condition target. The checked counterfamilies answer our narrower proposed criterion and supply a general obstruction template; they are not counted as a complete answer to the source design question.
+- Research sources: [central source index](RESEARCH-SOURCES.md).
+- Research progress: [Infinite mixed-logical counterfamily to the proposed girth/RCPC criterion](../formalization/distance-preservation/RESEARCH-NOTE.txt) (general lean proof and independent finite verification). For fixed E=[[0,0,0,0],[0,1,5,3],[0,2,10,7]] and every positive L divisible by11, the source LP construction has no4/6 classical cycles, no RCPC, but dQ<=11<12<=dC<=20. The fixed graph is connected with girth8 and transpose distance2L. General E(a,b) templates have source logical weight<=11; projection of parameters to(1,5) modulo11 preserves the lower bound and exclusions. Actual coefficient matrices, both sectors and full stabilizer spans are bridged. This refutes our proposed criterion; the source sufficient-condition question remains open in this project. Canonical completion delta0.
+  - [Complete Lean source](../formalization/distance-preservation/SourceWordBridge.lean).
+  - [Complete Lean source](../formalization/distance-preservation/ParametricProjection.lean).
+  - [Complete Lean source](../formalization/distance-preservation/ClassicalUpper20.lean).
+  - [Complete Lean source](../formalization/distance-preservation/FinalAudit.lean).
+- Project-derived follow-up, outside the source-target denominator: **RQ-F25-exclude-mixed-patterns** — Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned.
+- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Preferred bounded follow-up: classify mixed logical supports through11, with both actual source sectors and the full stabilizer quotient. Generic lemmas and finite diagnostics do not establish this universal bound.
 - [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
 - Related, not merged: L-P34-logical-partitions, L-P34-base-design.
 
@@ -2360,6 +2378,7 @@ Determine the exact X/Z quantum distances of the fixed randomized P=64 lift of B
 - Coverage denominator: included. Specific source-posed distance or construction target; retain the model and fixed-instance definitions at the cited locator.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- October 24 selection review: compared candidate. [Rationale and bounded next action](../planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt). The selection snapshot alone claimed no mathematical answer; later research progress is listed below.
 - [F26: Section 7 limitations and Section 8](https://arxiv.org/html/2604.27817v3); extraction lines 5286–5286; explicit future work target.
 - Related, not merged: L-P34-logical-partitions.
 
@@ -2371,6 +2390,7 @@ Construct connected CSS-preserving CPM lifts with additional nonconstant left-ke
 - Coverage denominator: included. Specific source-posed distance or construction target; retain the model and fixed-instance definitions at the cited locator.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- October 24 selection review: compared candidate. [Rationale and bounded next action](../planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt). The selection snapshot alone claimed no mathematical answer; later research progress is listed below.
 - [F26: Section 8, final future-work direction](https://arxiv.org/html/2604.27817v3); extraction lines 5358–5380; explicit future work target.
 - Related, not merged: L-P34-base-design.
 
@@ -2548,6 +2568,7 @@ Obtain tighter minimum-distance analysis for the proposed univariate bicycle cod
 - Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- October 24 selection review: compared candidate. [Rationale and bounded next action](../planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt). The selection snapshot alone claimed no mathematical answer; later research progress is listed below.
 - [F39: Conclusion, PDF5](https://arxiv.org/html/2605.14173v1); PDF pages 5; explicit research direction.
 
 ### L-F39-beyond-divisor
@@ -2682,6 +2703,7 @@ Do all sufficiently small-weight classical codewords in the quantum LDPC constru
 - Coverage denominator: excluded. Broad direction or source statement requiring a bounded formal formulation; excluded from the theorem-coverage denominator.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- October 24 selection review: compared candidate. [Rationale and bounded next action](../planning/QUANTUM-NEXT-PROBLEM-2026-10-24.txt). The selection snapshot alone claimed no mathematical answer; later research progress is listed below.
 - [F49: Section V, unnumbered conjecture before Theorem 5.1 / PDF16](https://arxiv.org/pdf/1309.5587v2); PDF pages 16; explicit conjecture.
 
 ### L-F28-quantum-trapping-enumeration
@@ -3521,3 +3543,245 @@ Determine or construct the optimal index rho(n,m) for partitioned cyclic differe
 - Source-described status: open or proposed in inspected source; current resolution: not independently established.
 - [F83: SectionII,p2](https://arxiv.org/abs/1008.1615v1); PDF pages 2; explicit broad problem or direction.
 - Related, not merged: L-F16-stopping-bound.
+
+### L-F86-surgery-cost
+
+Reduce the spacetime cost of mitten-code surgery gadgets.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Section VIII](https://arxiv.org/html/2607.28795v1); extraction lines 936–936; explicit broad research or engineering direction.
+
+### L-F86-structured-decoding
+
+Develop faster and more effective decoders exploiting mitten-code structure.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Section VIII](https://arxiv.org/html/2607.28795v1); extraction lines 936–936; explicit broad research or engineering direction.
+
+### L-F86-superconducting-routing
+
+Improve superconducting on-chip routing for mitten-code syndrome extraction and logical operations.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Section VIII](https://arxiv.org/html/2607.28795v1); extraction lines 936–936; explicit broad research or engineering direction.
+
+### L-F86-atom-movement
+
+Improve atom-array movement and syndrome-extraction strategies, including moving data, GHZ ancillas or different transport.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Section VIII and Appendix J](https://arxiv.org/html/2607.28795v1); extraction lines 936–936; explicit broad research or engineering direction.
+- [F86: Appendix J, syndrome-extraction timing model](https://arxiv.org/html/2607.28795v1); extraction lines 8489–8490; explicit broad research or engineering direction.
+
+### L-F86-experimental-processors
+
+Demonstrate high-rate qLDPC processors experimentally using the proposed small-block codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Section VIII](https://arxiv.org/html/2607.28795v1); extraction lines 936–936; explicit broad research or engineering direction.
+
+### L-F86-teraquop-certification
+
+Assess and certify teraquop-scale processing capacity for higher-distance mitten codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Section VIII](https://arxiv.org/html/2607.28795v1); extraction lines 932–932; explicit broad research or engineering direction.
+
+### L-F86-beam-decoder-comparison
+
+Compare the telescoping and beam-search decoders on the same detector error models.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Appendix I.B](https://arxiv.org/html/2607.28795v1); extraction lines 7696–7696; explicit broad research or engineering direction.
+
+### L-F86-atom-loss
+
+Determine achievable qLDPC performance with loss-aware decoding under realistic atom loss.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F86: Appendix I.C](https://arxiv.org/html/2607.28795v1); extraction lines 7997–7997; explicit broad research or engineering direction.
+
+### L-F87-qdistevol-refinement
+
+Refine QDistEvol and implement it in C using asymptotically optimal Gaussian elimination.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F87: Section 6](https://arxiv.org/html/2603.22532v2); extraction lines 8747–8747; explicit broad research or engineering direction.
+
+### L-F87-faster-bposd
+
+Develop a faster BP-OSD implementation and assess its competitiveness with random information-set distance searches.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F87: Section 6](https://arxiv.org/html/2603.22532v2); extraction lines 8749–8749; explicit broad research or engineering direction.
+
+### L-F88-solver-scaling
+
+Extend distance-certificate scaling through decomposition and solvers specialized to linear codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F88: Section 6.3](https://arxiv.org/html/2605.16523v1); extraction lines 7360–7375; explicit broad research or engineering direction.
+
+### L-F88-non-css
+
+Extend the verified distance framework to general non-CSS stabilizer codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F88: Section 6.3](https://arxiv.org/html/2605.16523v1); extraction lines 7376–7388; explicit broad research or engineering direction.
+
+### L-F88-subsystem
+
+Extend the formalization to subsystem codes and the broader stabilizer formalism.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F88: Section 6.3](https://arxiv.org/html/2605.16523v1); extraction lines 7376–7388; explicit broad research or engineering direction.
+
+### L-F88-verified-row-reduction
+
+Implement verified row reduction for kernel-basis computation in the Lean-QEC preprocessing pipeline.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F88: Section 6.3](https://arxiv.org/html/2605.16523v1); extraction lines 7388–7392; explicit broad research or engineering direction.
+
+### L-F88-circuit-integration
+
+Connect the QEC layer to verified circuit compilers such as SQIR.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F88: Section 6.3](https://arxiv.org/html/2605.16523v1); extraction lines 7393–7397; explicit broad research or engineering direction.
+
+### L-F88-gate-calculus
+
+Develop a richer verified gate-level quantum-circuit calculus.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F88: Section 3](https://arxiv.org/html/2605.16523v1); extraction lines 1065–1071; explicit broad research or engineering direction.
+
+### L-F89-inherited-logicals
+
+Describe inherited and newly created logical degrees of freedom under lifts, including even-index lifts.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8483–8489; explicit broad research or engineering direction.
+
+### L-F89-gadget-distance
+
+Determine how inherited logical-operation gadgets preserve distance under lifting.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8490–8518; explicit broad research or engineering direction.
+
+### L-F89-operation-transfer
+
+Determine when transversal gates, homomorphic CNOTs and measurements, or code switching transfer to lifts.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8490–8518; explicit broad research or engineering direction.
+
+### L-F89-thermodynamic-branches
+
+Find geometric and homological conditions selecting lift branches with common thermodynamic behavior.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section V remark and Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8420–8467; explicit broad research or engineering direction.
+- [F89: Section VI, third direction](https://arxiv.org/html/2607.28621v1); extraction lines 8519–8535; explicit broad research or engineering direction.
+
+### L-F89-decoder-transfer
+
+Determine whether useful decoders transfer from a base LP code to its lifts.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8536–8543; explicit broad research or engineering direction.
+
+### L-F89-hardware-transfer
+
+Determine whether hardware-efficient implementations transfer from base codes to lifts.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8536–8543; explicit broad research or engineering direction.
+
+### L-F89-other-code-families
+
+Extend the lifting construction to other high-rate group-algebra codes and quantum Tanner codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section VI](https://arxiv.org/html/2607.28621v1); extraction lines 8544–8560; explicit broad research or engineering direction.
+
+### L-F89-general-nontransversal-surgery
+
+Develop systematic nontransversal surgery constructions for general qLDPC codes without an underlying lifted structure.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Source-stated broad research/engineering direction; no complete fixed theorem or controlled experiment is specified. Excluded from the mathematical target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F89: Section IV](https://arxiv.org/html/2607.28621v1); extraction lines 6874–6879; explicit broad research or engineering direction.

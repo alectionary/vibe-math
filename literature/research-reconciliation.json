@@ -23,7 +23,7 @@
   "added_eligible_targets": 3,
   "added_relevant_section_screens": 2,
   "full_text_screens_added": 0,
-  "central_source_records": 85,
+  "central_source_records": 94,
   "updated_target_ids": [
     "L-P34-girth-eight",
     "L-P34-decoding-effects",
@@ -31,7 +31,8 @@
     "L-P34-logical-partitions",
     "L-F16-higher-counts",
     "L-F16-stopping-bound",
-    "L-F16-other-absorbing"
+    "L-F16-other-absorbing",
+    "L-F25-distance-preservation"
   ],
   "project_derived_followups": [
     {
@@ -135,6 +136,93 @@
       "verification": "formalization/stopping-bound/stronger/verification.json",
       "scope": "Existence, not an optimal universal-bound classification. Classical source Lemma4.8 and overlap ingredients explicitly credited.",
       "interpretation_role": "Precise useful-existence interpretation of the source broad direction, not a new author-numbered question."
+    },
+    {
+      "id": "RQ-F25-girth-RCPC-criterion",
+      "origin": "project_derived_followup",
+      "diagnostic_role": "our_proposed_sufficient_criterion",
+      "source_authors_asked_this_exact_question": false,
+      "eligible_for_coverage": false,
+      "parent_target_id": "L-F25-distance-preservation",
+      "title": "Do classical girth>=8 and RCPC absence imply source LP quantum/classical distance equality for normalized3x4 monomial bases?",
+      "status": "refuted_by_infinite_lean_counterfamily",
+      "report": "formalization/distance-preservation/RESEARCH-NOTE.txt",
+      "verification": "formalization/distance-preservation/verification.json",
+      "scope": "Our proposed sufficient criterion, also false with no lighter transpose code; not the full source sufficient-condition target."
+    },
+    {
+      "id": "RQ-F25-exclude-mixed-patterns",
+      "origin": "project_derived_followup",
+      "source_authors_asked_this_exact_question": false,
+      "eligible_for_coverage": false,
+      "parent_target_id": "L-F25-distance-preservation",
+      "title": "Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes.",
+      "status": "open_after_bounded_fresh_diagnostic",
+      "report": "formalization/distance-preservation/RESEARCH-NOTE.txt",
+      "scope": "The repaired104-base campaign reproduces no witness within min(dC-1,11);75 cases remain capped below the required range. The separate corrected L13 C++ exclusion through13 has no Lean lower-bound certificate. Original negative outputs are superseded; see search-repair.json.",
+      "computational_evidence": [
+        "formalization/distance-preservation/fresh-corrected-summary.json",
+        "formalization/distance-preservation/intermediate-corrected.json",
+        "formalization/distance-preservation/search-repair.json"
+      ],
+      "next_proposed_target_id": "RQ-F25-truncated-distance-12",
+      "deferred_finite_certificate": {
+        "L": 13,
+        "E": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            11,
+            3
+          ],
+          [
+            0,
+            8,
+            12,
+            6
+          ]
+        ],
+        "classical_distance": 14,
+        "verified_quantum_upper": 14,
+        "quantum_lower_lean_status": "not_certified",
+        "evidence": "formalization/distance-preservation/independent-intermediate.json"
+      }
+    },
+    {
+      "id": "RQ-F25-weight7-RCPC-converse",
+      "origin": "project_derived_followup",
+      "source_authors_asked_this_exact_question": false,
+      "eligible_for_coverage": false,
+      "parent_target_id": "L-F25-distance-preservation",
+      "title": "Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case.",
+      "status": "source_claim_verification_followup_not_new_open_math",
+      "report": "formalization/distance-preservation/STRUCTURAL-ROUTE.txt",
+      "scope": "Theorem2 states the forward RCPC implication; SectionV-B and the conclusion assert the broader recipe guarantee. The partial generic proofs and restricted144-pattern catalog support checking that claimed result. Do not present the weight7 exclusion as a newly discovered open problem."
+    },
+    {
+      "id": "RQ-F25-truncated-distance-12",
+      "origin": "project_derived_followup",
+      "source_authors_asked_this_exact_question": false,
+      "eligible_for_coverage": false,
+      "parent_target_id": "L-F25-distance-preservation",
+      "related_target_ids": [
+        "L-P34-logical-partitions"
+      ],
+      "title": "For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12).",
+      "status": "open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence",
+      "report": "formalization/distance-preservation/STRUCTURAL-ROUTE.txt",
+      "scope": "Our proposed bounded lower-condition task. Assumes normalized3x4 cyclic base, classical girth>=8, no fullRCPC, no three-column partial row pairing, and dTranspose>=dC. All source supports belowmin(dC,12), both sectors and the entire stabilizer span must be controlled. The weight7 exclusion is already asserted by SourceSectionV-B and is treated as a supporting claim audit.",
+      "evidence": [
+        "formalization/distance-preservation/auxiliary-verification.json",
+        "formalization/distance-preservation/auxiliary-fixed-columns-verification.json",
+        "formalization/distance-preservation/pattern-certificate-verification.json"
+      ]
     }
   ],
   "completed_targets_added": 0,
@@ -296,6 +384,47 @@
       "complete_canonical_lean_target_delta": 0,
       "report": "formalization/stopping-bound/stronger/RESEARCH-NOTE.txt",
       "verification": "formalization/stopping-bound/stronger/verification.json"
+    },
+    {
+      "id": "distance-preservation-four-hour-2026-10-24",
+      "checked_on": "2026-10-24",
+      "kind": "authorized_new_problem_investigation",
+      "canonical_target_id": "L-F25-distance-preservation",
+      "canonical_completion_delta": 0,
+      "canonical_entry_delta": 0,
+      "eligible_target_delta": 0,
+      "complete_canonical_lean_target_delta": 0,
+      "conclusion": "Our girth/RCPC sufficient criterion is refuted by an infinite source-matched family; the broader source question remains open in this project.",
+      "report": "formalization/distance-preservation/RESEARCH-NOTE.txt",
+      "verification": "formalization/distance-preservation/verification.json",
+      "proof_artifact": "formalization/distance-preservation/FinalAudit.lean",
+      "literature_screen": "literature/distance-preservation-source-screening.json",
+      "indexing_extensions": [
+        "distance-preservation-sources-2026-10-24",
+        "distance-preservation-classical-source-2026-10-24"
+      ],
+      "indexing_scope": "Separate indexing extensions add24 non-denominator directions and5 fully screened papers; no precise eligible target or canonical completion is added.",
+      "supporting_structural_results": {
+        "generic_lean_proofs": [
+          "formalization/distance-preservation/LowWeightChecks.lean",
+          "formalization/distance-preservation/PermutationFixedColumns.lean"
+        ],
+        "verification": [
+          "formalization/distance-preservation/auxiliary-verification.json",
+          "formalization/distance-preservation/auxiliary-fixed-columns-verification.json"
+        ],
+        "restricted_finite_catalog": "formalization/distance-preservation/pattern-certificate-verification.json",
+        "scope": "Generic zero-or-two check-degree theorem below weight12 and a cyclic fixed-column obstruction. No full weight7 logical classification or new canonical completion."
+      },
+      "manuscript": {
+        "pdf": "formalization/distance-preservation/paper/main.pdf",
+        "tex": "formalization/distance-preservation/paper/main.tex",
+        "proof_guide": "formalization/distance-preservation/paper/PROOF-GUIDE.html",
+        "report_audit": "formalization/distance-preservation/paper/report-audit.json",
+        "source_archive": "formalization/distance-preservation/paper/distance-preservation-source.zip",
+        "status": "local_review_artifact_not_published",
+        "manuscript_date": "2026-10-25"
+      }
     }
   ],
   "indexing_extensions": [
@@ -615,6 +744,101 @@
       "completed_targets_added": 0,
       "incomplete_paper_records_added": 0,
       "report": "literature/postlemma-stopping-source-screening.json"
+    },
+    {
+      "id": "quantum-next-selection-2026-10-24",
+      "checked_on": "2026-10-24",
+      "summary": "Selected L-F25-distance-preservation as the next new quantum coding problem. Compared F26 rank/distance, F39 distance and F49 degeneracy; no theorem solved. Upgraded two existing paper question screens without adding entries.",
+      "baseline": {
+        "canonical_entries": 295,
+        "eligible_targets": 144,
+        "paper_records": 119,
+        "full_text_screens": 106,
+        "verified_complete_lean_targets": 5
+      },
+      "added_target_ids": [],
+      "added_paper_ids": [],
+      "added_entries": 0,
+      "added_eligible_targets": 0,
+      "new_paper_records": 0,
+      "full_text_screens_added": 2,
+      "completed_targets_added": 0,
+      "incomplete_paper_records_added": -2,
+      "report": "literature/quantum-next-selection-2026-10-24.json"
+    },
+    {
+      "id": "distance-preservation-sources-2026-10-24",
+      "checked_on": "2026-10-24",
+      "summary": "Four accessible primary papers screened during the F25 investigation; 24 broad directions harvested. No new eligible mathematical target or canonical completion.",
+      "baseline": {
+        "canonical_entries": 295,
+        "eligible_targets": 144,
+        "paper_records": 119,
+        "full_text_screens": 108,
+        "verified_complete_lean_targets": 5
+      },
+      "added_target_ids": [
+        "L-F86-surgery-cost",
+        "L-F86-structured-decoding",
+        "L-F86-superconducting-routing",
+        "L-F86-atom-movement",
+        "L-F86-experimental-processors",
+        "L-F86-teraquop-certification",
+        "L-F86-beam-decoder-comparison",
+        "L-F86-atom-loss",
+        "L-F87-qdistevol-refinement",
+        "L-F87-faster-bposd",
+        "L-F88-solver-scaling",
+        "L-F88-non-css",
+        "L-F88-subsystem",
+        "L-F88-verified-row-reduction",
+        "L-F88-circuit-integration",
+        "L-F88-gate-calculus",
+        "L-F89-inherited-logicals",
+        "L-F89-gadget-distance",
+        "L-F89-operation-transfer",
+        "L-F89-thermodynamic-branches",
+        "L-F89-decoder-transfer",
+        "L-F89-hardware-transfer",
+        "L-F89-other-code-families",
+        "L-F89-general-nontransversal-surgery"
+      ],
+      "added_paper_ids": [
+        "F86",
+        "F87",
+        "F88",
+        "F89"
+      ],
+      "added_entries": 24,
+      "added_eligible_targets": 0,
+      "new_paper_records": 4,
+      "full_text_screens_added": 4,
+      "completed_targets_added": 0,
+      "incomplete_paper_records_added": 0,
+      "report": "literature/distance-preservation-source-screening.json"
+    },
+    {
+      "id": "distance-preservation-classical-source-2026-10-24",
+      "checked_on": "2026-10-24",
+      "summary": "Added the already indexed Kelley et al. classical predecessor to paper coverage after reading its complete one-page proceedings text. No new target or canonical completion.",
+      "baseline": {
+        "canonical_entries": 319,
+        "eligible_targets": 144,
+        "paper_records": 123,
+        "full_text_screens": 112,
+        "verified_complete_lean_targets": 5
+      },
+      "added_target_ids": [],
+      "added_paper_ids": [
+        "F90"
+      ],
+      "added_entries": 0,
+      "added_eligible_targets": 0,
+      "new_paper_records": 1,
+      "full_text_screens_added": 1,
+      "completed_targets_added": 0,
+      "incomplete_paper_records_added": 0,
+      "report": "literature/distance-preservation-source-screening.json"
     }
   ]
 }

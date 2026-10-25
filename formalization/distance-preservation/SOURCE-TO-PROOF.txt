@@ -1,0 +1,249 @@
+Source-to-proof audit for L-F25-distance-preservation
+
+Source: Raveendran–Declercq–Vasic, arXiv2503.07567v1 (10 March2025).
+Relevant formal model: equation(9), fully populated monomial3x4 B over the
+cyclic binary group algebra, with B1=B2=B. Definitions2–5 are RCPC.
+The source's SectionVI asks for sufficient constraints yielding dQ=dC.
+The refuted implication in this artifact is our proposed restriction of that
+question; the source does not state that implication as a conjecture.
+
+Counting/coordinate convention
+  i in Fin3, j in Fin4, fiber s in ZModL.
+  Classical variable (j,s); check (i,t); incidence t=s+Eij.
+  Left quantum coordinate ((a,b),s), a,b in Fin4.
+  Right quantum coordinate ((a,b),s), a,b in Fin3.
+  Quantum checkX ((i,j),t); checkZ ((j,i),t).
+  Fixed family integer labels [[0,0,0,0],[0,1,5,3],[0,2,10,7]].
+  Monomial zero exponent is an identity block. There are no absent base blocks.
+  Star means transpose plus exponent negation. Binary transpose alone is not
+  silently substituted for the ring star before expansion.
+
+Source object -> formal object -> bridge/evidence
+
+1. Expanded classical B
+  SourceDistance.C uses SourceModel.P(e,t,s)=if t=s+e then1 else0.
+  SourceDistance.c_action proves multiplication by that matrix equals the
+  coefficient boundary in CyclicCover. This is the actual3L by4L matrix.
+  FamilyBaseGraph.incidence_bridge transports finite base incidence atL11
+  through explicit finProdFinEquiv maps. FamilyBaseDistance.kernel_row and
+  packWord_weight transport the source kernel and Hamming weight to the
+  finite BitVec certificate. RREF reconstruction covers EVERY source-kernel
+  vector, not only the listed basis vectors or tested codewords.
+
+2. HX=[B tensor I4 | I3 tensor B*]
+  SourceModel.HX gives its individual coefficients with the coordinate order
+  above. SourceModel.x_span_left and x_span_right prove arbitrary binary
+  row combinations equal FamilyWords.stabilizerLeft/stabilizerRight.
+  SourceModel.inSpanX_iff quantifies over EVERY lifted-check coefficient
+  function and identifies the full row span with the abstract image.
+  This is not a single-generator test or a bounded stabilizer search.
+
+3. HZ=[I4 tensor B | B* tensor I3]
+  SourceModel.HZ gives its individual coefficients.
+  SourceModel.z_action proves the full check action equals FamilyWords.Syndrome.
+  SourceModel.z_span_left/z_span_right and inSpanZ_iff cover the other full
+  row span. FamilyWords.css_commutation proves HZ HX^T=0 in coefficient form.
+
+4. Classical and quantum distance
+  DistanceFamily.ClassicalHasWeight minimizes nonzero classical kernel words.
+  DistanceFamily.LogicalX is ker(HZ) outside the full HX image.
+  DistanceFamily.QuantumHasWeight includes both LogicalX(u,v) and
+  LogicalX(transpose(u),transpose(v)). SourceDistance.logicalX_iff and
+  logicalZ_iff prove those are exactly the two source CSS sectors. Both
+  square qubit blocks transpose; the cyclic fiber does not change sign.
+  SourceDistance.classical_weight_iff/quantum_weight_iff identify the actual
+  source predicates with the predicates used in the Nat.find minima.
+  Explicit classical and quantum witnesses prove the minimized sets nonempty.
+  The quantum witness's nonspan proof itself guarantees a nonzero logical
+  quotient, so no vacuous zero-dimension distance convention is being used.
+
+5. The logical witness
+  FamilyRing: fixed E identity U B^T=bar(B)^T V over a general characteristic-
+  two commutative ring with an integer-indexed multiplicative monomial map.
+  FamilyWords.witness_kernel: independently checks all12 coefficient check
+  types with arbitrary fiber t and arbitrary L.
+  FamilyWords.augmentation_stabilizer: all binary coefficients w.
+  FamilyWords.augmentation_witness and witness_nontrivial: separating value1.
+  FamilyWords.witness_weight_le: support containment in an11-element list;
+  overlaps and characteristic-two cancellation can only lower the weight.
+  No minimal-distance search result is used as this theorem's premise.
+
+6. Classical cover lower bound
+  CoverWeight.push is binary fiber parity, not ordinary occupied-support image.
+  CyclicCover.boundary_push and kernel_push prove the parity-check bridge.
+  CyclicCover.projected_support_stopping retains occupied fibers even when
+  the parity projection vanishes. Partner variables have distinct base-column
+  types; that is why projection does not merge the two neighbors of a check.
+  CoverWeight.zero_push_weight_doubles treats cancellation separately.
+  FamilyClassical11.actual_classical_lower certifies the full base kernel;
+  FamilyBaseGraph.code_lower_twelve includes kernel and Hamming-weight bridges.
+  FamilyBaseGraph.stopping_lower_six includes the actual incidence bridge.
+  DistanceFamily.classical_lower_twelve splits zero/nonzero parity projection
+  and proves the lower bound for every positive L with11 dividing L.
+  L may be even. L=0 is excluded by NeZeroL, and11|L then forces L>=11.
+
+7. Girth
+  VoltageCycles uses the actual classical incidence t=s+Eij.
+  The no-four/no-six voltage hypotheses concern distinct base row/column types.
+  A simple alternating4-cycle must have distinct row and column types; a
+  simple alternating6-cycle in this monomial cover must use3 distinct types
+  on each side. Its arithmetic closure is therefore one of the forbidden
+  voltages. No non-simple closed walk is counted as a simple cycle.
+  FamilyNoShort.no_four/no_six prove those voltage conditions for every11|L
+  by mapping a hypothetical equality through ZMod.castHom to the checked
+  base11 equality. Bipartiteness and simplicity make the absence of4/6 the
+  usual girth>=8 assertion.
+
+8. RCPC
+  For3 rows there is one distinct pair and one self-pair. RowPairing quantifies
+  i,j,k distinct with E_i+E_j=2E_k in every column (Definition5).
+  For4 columns there are two disjoint pairs. ColumnPairing quantifies four
+  distinct indices with equal paired sums in every row (Definition2).
+  A forbidden pairing atL would map to one modulo11. No converse of the
+  source RCPC theorem is assumed.
+
+9. Connectedness
+  FamilyConnected.Step is the actual undirected classical Tanner incidence,
+  with separate variable/check vertices. Reach is its reflexive transitive
+  closure, so connected states that every pair is joined by a finite walk.
+  The normalized zero row/column connect all types at one fiber; exponent1
+  permits a fiber increment; natural representatives reach every ZModL fiber.
+  This excludes explaining the family as disjoint copies of the L11 example.
+
+10. Transpose-code comparison
+  FamilyTranspose.boundary is sum_i x(i,t+Eij), with a PLUS exponent because
+  this is C^T. DistanceFamily.transpose_c_action proves that actual matrix
+  action explicitly. The polynomial Bezout identity in FamilyTranspose.third_period
+  forces period1 of the third component. TransposeConstant proves all three
+  components constant and their binary sum zero. TransposeDistance proves
+  every nonzero such word has weight2L and exhibits one.
+  DistanceFamily.classical_distance_upper uses an actual classical word with
+  two complete variable fibers, of weight2L. Stronger_counterfamily therefore
+  shows the mixed logical drop survives the additional condition that no
+  nonzero transpose word is lighter than dC.
+
+11. Standalone finite certificate
+  Counterexample11 uses the original L11 labels [[0,0,0,0],[0,8,7,2],[0,5,3,1]].
+  Source11 and QuantumRows11 define actual source-expanded BitVec rows;
+  CSS11 proves every X/Z check pair commutes. The separator annihilates the
+  full rowSum image. ClassicalDistance11 reconstructs all source-kernel words.
+  Counterexample11.diagnostic_refuted gives dC=12 and dQ<=11. This certificate
+  is retained independently of the family assembly.
+
+12. General parameter template
+  ParametricRing.mixed_cycle proves the polynomial identity for arbitrary
+  integer parameters a,b and any characteristic-two commutative ring with
+  the stated monomial multiplication law. ParametricWords uses parameters
+  directly in ZModL and proves the coefficient identity, augmentation value
+  and11-term support bound, including coincident/cancelling parameter cases.
+  GeneralLP.HX/HZ/C are the same source Kronecker coefficients with arbitrary
+  E. GeneralLP.classical_action and z_action give the actual matrix actions;
+  x_span_left/right quantify arbitrary lifted-check coefficients. Its LogicalX
+  predicate uses the actual kernel and the entire actual row span.
+  ParametricSource.source_parametric_obstruction includes actual matrix CSS
+  commutation, nontriviality and physical-coordinate Hamming weight.
+  GeneralLP.nonzero_classical_exists proves the classical minimum nonempty.
+
+13. Congruence family
+  ParametricProjection.projected_exponents checks every source exponent under
+  an additive homomorphism p with p(a)=1,p(b)=5. The hypotheses are arithmetic,
+  not lower-distance assumptions. Classical_lower applies the checked base
+  kernel and the structural stopping proof through CoverDistance.lower_bound.
+  Actual_classical_lower converts this to the generic source C matrix.
+  No_four/no_six and pairing exclusions map hypothetical equalities to the
+  forbidden base11 equalities. Cyclic_congruence_counterfamily specializes to
+  11|L and reduction of(a,b) to(1,5). No oddness, unit-parameter, unchanged-rank
+  or connectedness premise is silently added.
+
+14. Fixed/general model equivalence
+  ParametricSpecialization.exponent_matrix, HX_matrix, HZ_matrix,
+  classical_matrix and left_word identify the parameter(1,5) with the original
+  fixed definitions. In particular, HX/HZ use Int.cast_neg to reconcile
+  negation before an exponent cast with negation in ZModL. LogicalX proves
+  equivalence of the complete physical kernel/span predicates, not just of
+  the displayed witness.
+
+15. Classical upper word and alternative cover route
+  ClassicalUpper20.kernel directly checks the20-term polynomial word in all
+  three source classical equations for arbitrary positive L. Its nonzero
+  proof uses reduction modulo11 to separate the0,2,3,6 positions in one
+  component. Its support-list proof permits cancellations and yields at most20.
+  Classical_distance_upper uses the existing source minimum definition.
+  CoverDistance.lower_bound is the general min(d_base,2*s_base) argument;
+  FamilyCoverAlternative assembles the family lower12 using the generic
+  TannerSix theorem and actual source incidence. The finite stopping-set
+  search certificate remains separately checked.
+
+16. Sector symmetry
+  SourceSymmetry.swapQ transposes each square qubit block and fixes the fiber.
+  Transpose_weight proves the actual support-cardinality equality through
+  that permutation. Sector_weights identifies the source X/Z logical weight
+  spectra for the fixed family. For arbitrary exploratory E, the written
+  identity HX((i,j),t;q)=HZ((j,i),t;swapQ(q)) gives the same row/qubit
+  permutation argument. This generic application is outside the compiled
+  SourceSymmetry scope and does not turn C++ searches into Lean lower bounds.
+
+Formal status is determined by successful source-bound records in
+verification.json and FinalAudit.log. A filename in this map is not itself
+an assertion that its latest version has compiled. Failed earlier builds,
+prototype native-decide modules and the C++ quantum exclusions are excluded
+from the admitted proof closure.
+
+Independent finite evidence
+  independent_family.py constructs U,V supports directly, without importing
+  research.py. independent_verify.py builds each binary coefficient matrix
+  from explicit circulant powers and Kronecker products, checks CSS, syndrome,
+  augmented stabilizer rank, complete classical/transpose enumerators and
+  actual Tanner BFS. These computations support L11/L22 instances, not the
+  universal quantifier. They supplement the Lean proof rather than define it.
+
+Current-resolution/priority limits
+  Bounded source, GitHub and X audit documented in prior-art.json. No global
+  absence claim. Classical stopping/cover ingredients credited to Kelley etal.
+  Newer full-rank upper-bound and lift-versus-base theorems are compared with
+  their actual hypotheses, not treated as general equality theorems. No
+  first-formalization or historical-priority claim is made.
+
+Search implementation correction
+  The original C++ two-place completion shortcut omitted singles. No admitted
+  Lean declaration depends on a negative C++ result. All earlier negative
+  search claims were withdrawn and replayed after repair; search-repair.json
+  identifies superseded and corrected records, independent regression tests
+  and unchanged original input hashes. External exclusions remain outside
+  the admitted Lean closure even after successful replay.
+
+Universal-parameter boundary audit
+  independent-degenerate.json verifies all285 pairs atL1..9 in dense matrices,
+  including a=0, b=0, nonunits and cancelling support terms. The helper now
+  takes polynomial support modulo2. The earlier three L22 saved supports
+  are bytewise the same coordinate lists under the corrected helper.
+  These are finite tests of the universal Lean theorem, not its premises.
+
+Independent SAT attempt
+  sat_crosscheck.py encodes the full dense HZ kernel and an OR over a basis
+  of ker(HX)/rowspan(HZ), which detects nonmembership in the entire HX span.
+  Small full-word oracles and the known upper witness pass; the L13 lower
+  search returns UNKNOWN at900 seconds. No SAT UNSAT or Lean lower certificate
+  is claimed. The quotient dimension, solver pin and exact hashes are saved.
+
+Separate generic structural closure
+  LowWeightChecks.kernel_check_zero_or_two covers arbitrary binary Tanner
+  kernels under explicit degree/no4/no6 premises. Its stopping/support and
+  parity bridges are checked. PermutationFixedColumns.two_fixed_columns_impossible
+  covers explicit source matching equations, identity row map and two fixed
+  columns. Both have separate source-bound and isolated authored-dependency
+  builds. Neither theorem silently asserts the missing full weight7 source
+  support-to-pattern classification. The finite144-pattern integer identities
+  are independently rechecked, but their universal catalog/source Lean bridge
+  remains a proposed follow-up. See STRUCTURAL-ROUTE.txt.
+
+Final semantic handoff checks
+  The source Kronecker products occur before expansion: length25L, not25L^2.
+  The main result requires positiveL with11|L; fixed-family connectedness and
+  transpose characterization have their separately recorded broader scopes.
+  The universal parameter obstruction includes cancellations and even covers.
+  The proposed next truncated target keeps normalized first row/column and
+  the frozen strengthened entry tests explicit. Its choice is adaptive after
+  the diagnostic; no general condition is marked proved. SourceSectionV-B
+  already claims the stabilizer-weight exclusion, so weight7 work is a source
+  claim audit rather than a newly open mathematical problem.

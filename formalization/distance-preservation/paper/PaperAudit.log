@@ -1,0 +1,180 @@
+ClassicalUpper20.classical_distance_upper {L : ℕ} [NeZero L] (hL : 11 ∣ L) : DistanceFamily.classicalDistance L ≤ 20
+'ClassicalUpper20.classical_distance_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+ClassicalUpper20.kernel {L : ℕ} [NeZero L] : CyclicCover.Kernel DistanceFamily.liftE ClassicalUpper20.word
+'ClassicalUpper20.kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+ClassicalUpper20.nonzero {L : ℕ} [NeZero L] (hL : 11 ∣ L) : ClassicalUpper20.word ≠ 0
+'ClassicalUpper20.nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+CoverDistance.lower_bound.{u_1, u_2} {A : Type u_1} {B : Type u_2} [AddCommGroup A] [AddCommGroup B] [Fintype A]
+  [Fintype B] [DecidableEq A] [DecidableEq B] (p : A →+ B) (e : Fin 3 → Fin 4 → A) (d s : ℕ)
+  (hcode :
+    ∀ (y : CyclicCover.Word B), CyclicCover.Kernel (fun i j => p (e i j)) y → y ≠ 0 → d ≤ (CoverWeight.support y).card)
+  (hstop :
+    ∀ (T : Finset (Fin 4 × B)), SmallStopping.Stopping (CyclicCover.Adjacent fun i j => p (e i j)) T → s ≤ T.card)
+  (x : CyclicCover.Word A) (hx : CyclicCover.Kernel e x) (hn : x ≠ 0) : min d (2 * s) ≤ (CoverWeight.support x).card
+'CoverDistance.lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+CoverWeight.zero_push_weight_doubles.{u_1, u_2} {A : Type u_1} {B : Type u_2} [Fintype A] [Fintype B] [DecidableEq A]
+  [DecidableEq B] (p : A → B) (x : A → ZMod 2) (hz : CoverWeight.push p x = 0) :
+  2 * (Finset.image p (CoverWeight.support x)).card ≤ (CoverWeight.support x).card
+'CoverWeight.zero_push_weight_doubles' depends on axioms: [propext, Classical.choice, Quot.sound]
+CyclicCover.kernel_push.{u_1, u_2} {A : Type u_1} {B : Type u_2} [AddCommGroup A] [AddCommGroup B] [Fintype A]
+  [Fintype B] [DecidableEq A] [DecidableEq B] (p : A →+ B) (e : Fin 3 → Fin 4 → A) (x : CyclicCover.Word A)
+  (hx : CyclicCover.Kernel e x) : CyclicCover.Kernel (fun i j => p (e i j)) (CoverWeight.push (CyclicCover.project p) x)
+'CyclicCover.kernel_push' depends on axioms: [propext, Classical.choice, Quot.sound]
+CyclicCover.projected_support_stopping.{u_1, u_2} {A : Type u_1} {B : Type u_2} [AddCommGroup A] [AddCommGroup B]
+  [Fintype A] [Fintype B] [DecidableEq A] [DecidableEq B] (p : A →+ B) (e : Fin 3 → Fin 4 → A) (x : CyclicCover.Word A)
+  (hx : CyclicCover.Kernel e x) (hn : x ≠ 0) :
+  SmallStopping.Stopping (CyclicCover.Adjacent fun i j => p (e i j))
+    (Finset.image (CyclicCover.project p) (CoverWeight.support x))
+'CyclicCover.projected_support_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyBaseGraph.code_lower_twelve (x : FamilyBaseGraph.Var → ZMod 2)
+  (hx : ∀ (c : FamilyBaseGraph.Check), FamilyBaseGraph.boundary x c = 0) (hn : x ≠ 0) :
+  12 ≤ (CoverWeight.support x).card
+'FamilyBaseGraph.code_lower_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+DistanceFamily.classical_distance_upper {L : ℕ} [NeZero L] : DistanceFamily.classicalDistance L ≤ 2 * L
+'DistanceFamily.classical_distance_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+DistanceFamily.stronger_counterfamily {L : ℕ} [NeZero L] (hL : 11 ∣ L) :
+  DistanceFamily.quantumDistance L < DistanceFamily.classicalDistance L ∧
+    ∀ (x : Fin 3 → ZMod L → ZMod 2),
+      FamilyTranspose.Kernel x →
+        x ≠ 0 → DistanceFamily.classicalDistance L ≤ (CoverWeight.support (FamilyTranspose.word x)).card
+'DistanceFamily.stronger_counterfamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+DistanceFamily.transpose_c_action {L : ℕ} [NeZero L] (x : Fin 3 → ZMod L → ZMod 2) (v : Fin 4 × ZMod L) :
+  ∑ c, SourceDistance.C c v * x c.1 c.2 = FamilyTranspose.boundary x v.1 v.2
+'DistanceFamily.transpose_c_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyConnected.connected {L : ℕ} [NeZero L] (a b : FamilyConnected.Vertex L) : FamilyConnected.Reach a b
+'FamilyConnected.connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyCoverAlternative.classical_lower_twelve {L : ℕ} [NeZero L] (hL : 11 ∣ L) (x : CyclicCover.Word (ZMod L))
+  (hx : CyclicCover.Kernel DistanceFamily.liftE x) (hn : x ≠ 0) : 12 ≤ (CoverWeight.support x).card
+'FamilyCoverAlternative.classical_lower_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyClassical11.actual_classical_lower (x : BitVec 44) (h : FamilyBase11.ClassicalKernel x) :
+  x = 0 ∨ 12 ≤ x.cpop.toNat
+'FamilyClassical11.actual_classical_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyClassical11.encoded_lower (c : BitVec 13) :
+  FamilyClassical11.encode c = 0 ∨ 12 ≤ (FamilyClassical11.encode c).cpop.toNat
+'FamilyClassical11.encoded_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyGirth.eight_edges {L : ℕ} [NeZero L] :
+  VoltageCycles.Edge (FamilyNoShort.e L) (0, 0) (0, 0) ∧
+    VoltageCycles.Edge (FamilyNoShort.e L) (1, 0) (0, 0) ∧
+      VoltageCycles.Edge (FamilyNoShort.e L) (1, 0) (1, -1) ∧
+        VoltageCycles.Edge (FamilyNoShort.e L) (2, 1) (1, -1) ∧
+          VoltageCycles.Edge (FamilyNoShort.e L) (2, 1) (0, 1) ∧
+            VoltageCycles.Edge (FamilyNoShort.e L) (1, 1) (0, 1) ∧
+              VoltageCycles.Edge (FamilyNoShort.e L) (1, 1) (1, 0) ∧
+                VoltageCycles.Edge (FamilyNoShort.e L) (0, 0) (1, 0)
+'FamilyGirth.eight_edges' depends on axioms: [propext, Quot.sound]
+FamilyGirth.exact_eight_certificate {L : ℕ} [NeZero L] (hL : 11 ∣ L) :
+  VoltageCycles.NoFourVoltage (FamilyNoShort.e L) ∧
+    VoltageCycles.NoSixVoltage (FamilyNoShort.e L) ∧ FamilyGirth.checks.Nodup ∧ FamilyGirth.variableVertices.Nodup
+'FamilyGirth.exact_eight_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyNoShort.no_column_pairing {L : ℕ} (hL : 11 ∣ L) : ¬FamilyNoShort.ColumnPairing L
+'FamilyNoShort.no_column_pairing' depends on axioms: [propext, Quot.sound]
+FamilyNoShort.no_row_pairing {L : ℕ} (hL : 11 ∣ L) : ¬FamilyNoShort.RowPairing L
+'FamilyNoShort.no_row_pairing' depends on axioms: [propext, Quot.sound]
+FamilyBase11.kernel_reconstruct (x : BitVec 44) (h : FamilyBase11.ClassicalKernel x) :
+  x = FamilyClassical11.encode (FamilyBase11.freeInput x)
+'FamilyBase11.kernel_reconstruct' depends on axioms: [propext, Quot.sound]
+DistanceFamily.infinite_counterfamily {L : ℕ} [NeZero L] (hL : 11 ∣ L) :
+  VoltageCycles.NoFourVoltage (FamilyNoShort.e L) ∧
+    VoltageCycles.NoSixVoltage (FamilyNoShort.e L) ∧
+      ¬FamilyNoShort.RowPairing L ∧
+        ¬FamilyNoShort.ColumnPairing L ∧ DistanceFamily.quantumDistance L ≤ 11 ∧ 12 ≤ DistanceFamily.classicalDistance L
+'DistanceFamily.infinite_counterfamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyTranspose.third_period {L : ℕ} [NeZero L] (x : Fin 3 → ZMod L → ZMod 2) (hx : FamilyTranspose.Kernel x)
+  (t : ZMod L) : x 2 (t + 1) + x 2 (t + 2) = 0
+'FamilyTranspose.third_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyTreeStopping.base_stopping_six (T : Finset FamilyBaseGraph.Var)
+  (hT : SmallStopping.Stopping FamilyBaseGraph.E T) : 6 ≤ T.card
+'FamilyTreeStopping.base_stopping_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParametricProjection.cyclic_congruence_counterfamily {L : ℕ} [NeZero L] (hL : 11 ∣ L) (a b : ZMod L)
+  (ha : (ZMod.castHom hL (ZMod 11)) a = 1) (hb : (ZMod.castHom hL (ZMod 11)) b = 5) :
+  VoltageCycles.NoFourVoltage (ParametricWords.e a b) ∧
+    VoltageCycles.NoSixVoltage (ParametricWords.e a b) ∧
+      ¬ParametricProjection.RowPairing (ParametricWords.e a b) ∧
+        ¬ParametricProjection.ColumnPairing (ParametricWords.e a b) ∧
+          (∀ (x : CyclicCover.Word (ZMod L)),
+              (∀ (c : Fin 3 × ZMod L), ∑ v, GeneralLP.C (ParametricWords.e a b) c v * x v = 0) →
+                x ≠ 0 → 12 ≤ (CoverWeight.support x).card) ∧
+            GeneralLP.LogicalX (ParametricWords.e a b) (ParametricWords.U a b) ParametricWords.V ∧
+              (CoverWeight.support (GeneralLP.join (ParametricWords.U a b) ParametricWords.V)).card ≤ 11
+'ParametricProjection.cyclic_congruence_counterfamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParametricProjection.projected_counterfamily {L : ℕ} [NeZero L] (p : ZMod L →+ ZMod 11) (a b : ZMod L) (ha : p a = 1)
+  (hb : p b = 5) :
+  VoltageCycles.NoFourVoltage (ParametricWords.e a b) ∧
+    VoltageCycles.NoSixVoltage (ParametricWords.e a b) ∧
+      ¬ParametricProjection.RowPairing (ParametricWords.e a b) ∧
+        ¬ParametricProjection.ColumnPairing (ParametricWords.e a b) ∧
+          (∀ (x : CyclicCover.Word (ZMod L)),
+              (∀ (c : Fin 3 × ZMod L), ∑ v, GeneralLP.C (ParametricWords.e a b) c v * x v = 0) →
+                x ≠ 0 → 12 ≤ (CoverWeight.support x).card) ∧
+            GeneralLP.LogicalX (ParametricWords.e a b) (ParametricWords.U a b) ParametricWords.V ∧
+              (CoverWeight.support (GeneralLP.join (ParametricWords.U a b) ParametricWords.V)).card ≤ 11
+'ParametricProjection.projected_counterfamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParametricRing.mixed_cycle.{u_1} {R : Type u_1} [CommRing R] [CharP R 2] (x : ℤ → R) (h0 : x 0 = 1)
+  (hm : ∀ (c d : ℤ), x c * x d = x (c + d)) (a b : ℤ) :
+  ParametricRing.U x a b * (ParametricRing.base x a b).transpose = ParametricRing.star x a b * ParametricRing.V x
+'ParametricRing.mixed_cycle' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParametricWords.source_parametric_obstruction {L : ℕ} [NeZero L] (a b : ZMod L) :
+  (∀ (c : GeneralLP.XCheck L) (d : GeneralLP.ZCheck L),
+      ∑ q, GeneralLP.HZ (ParametricWords.e a b) d q * GeneralLP.HX (ParametricWords.e a b) c q = 0) ∧
+    GeneralLP.LogicalX (ParametricWords.e a b) (ParametricWords.U a b) ParametricWords.V ∧
+      (CoverWeight.support (GeneralLP.join (ParametricWords.U a b) ParametricWords.V)).card ≤ 11
+'ParametricWords.source_parametric_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParametricSpecialization.logicalX {L : ℕ} [NeZero L] (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (v : Fin 3 → Fin 3 → ZMod L → ZMod 2) : GeneralLP.LogicalX (ParametricWords.e 1 5) u v ↔ SourceDistance.LogicalX u v
+'ParametricSpecialization.logicalX' depends on axioms: [propext, Classical.choice, Quot.sound]
+ParametricWords.witness_kernel {L : ℕ} [NeZero L] (a b : ZMod L) (j : Fin 4) (i : Fin 3) (t : ZMod L) :
+  GeneralLP.Syndrome (ParametricWords.e a b) (ParametricWords.U a b) ParametricWords.V j i t = 0
+'ParametricWords.witness_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceDistance.c_action {L : ℕ} [NeZero L] (x : CyclicCover.Word (ZMod L)) (c : Fin 3 × ZMod L) :
+  ∑ v, SourceDistance.C c v * x v = CyclicCover.boundary DistanceFamily.liftE x c
+'SourceDistance.c_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceModel.inSpanX_iff {L : ℕ} [NeZero L] (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2) :
+  SourceModel.InSpanX u v ↔ ∃ w, u = FamilyWords.stabilizerLeft w ∧ v = FamilyWords.stabilizerRight w
+'SourceModel.inSpanX_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceModel.inSpanZ_iff {L : ℕ} [NeZero L] (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2) :
+  SourceModel.InSpanZ u v ↔
+    ∃ w,
+      SourceModel.transpose u = FamilyWords.stabilizerLeft w ∧ SourceModel.transpose v = FamilyWords.stabilizerRight w
+'SourceModel.inSpanZ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceSymmetry.sector_weights {L : ℕ} [NeZero L] (n : ℕ) : SourceSymmetry.ZHasWeight L n ↔ SourceSymmetry.XHasWeight L n
+'SourceSymmetry.sector_weights' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceWordBridge.classical_distance_eq {L : ℕ} [NeZero L] :
+  SourceWordBridge.classicalDistance L = DistanceFamily.classicalDistance L
+'SourceWordBridge.classical_distance_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceWordBridge.css_commutation {L : ℕ} [NeZero L] (a : SourceModel.XCheck L) (b : SourceModel.ZCheck L) :
+  ∑ q, SourceModel.HZ b q * SourceModel.HX a q = 0
+'SourceWordBridge.css_commutation' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceWordBridge.quantum_distance_eq {L : ℕ} [NeZero L] :
+  SourceWordBridge.quantumDistance L = DistanceFamily.quantumDistance L
+'SourceWordBridge.quantum_distance_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceWordBridge.quantum_weight_iff {L : ℕ} [NeZero L] (n : ℕ) :
+  SourceWordBridge.QuantumHasWeight L n ↔ DistanceFamily.QuantumHasWeight L n
+'SourceWordBridge.quantum_weight_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceWordBridge.source_distance_drop {L : ℕ} [NeZero L] (hL : 11 ∣ L) :
+  SourceWordBridge.quantumDistance L ≤ 11 ∧
+    12 ≤ SourceWordBridge.classicalDistance L ∧
+      SourceWordBridge.quantumDistance L < SourceWordBridge.classicalDistance L
+'SourceWordBridge.source_distance_drop' depends on axioms: [propext, Classical.choice, Quot.sound]
+TannerSix.stopping_lower_six.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
+  [DecidableRel E] (h4 : TannerSix.NoFour E) (h6 : TannerSix.NoSix E) (hd : TannerSix.ThreeChecks E) (T : Finset V)
+  (hT : SmallStopping.Stopping E T) : 6 ≤ T.card
+'TannerSix.stopping_lower_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyTranspose.kernel_iff {L : ℕ} [NeZero L] (x : Fin 3 → ZMod L → ZMod 2) :
+  FamilyTranspose.Kernel x ↔ (∀ (i : Fin 3) (s : ZMod L), x i s = x i 0) ∧ x 0 0 + x 1 0 + x 2 0 = 0
+'FamilyTranspose.kernel_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+FamilyTranspose.distance_characterization {L : ℕ} [NeZero L] :
+  (∀ (x : Fin 3 → ZMod L → ZMod 2),
+      FamilyTranspose.Kernel x → x ≠ 0 → (CoverWeight.support (FamilyTranspose.word x)).card = 2 * L) ∧
+    ∃ x, FamilyTranspose.Kernel x ∧ x ≠ 0
+'FamilyTranspose.distance_characterization' depends on axioms: [propext, Classical.choice, Quot.sound]
+VoltageCycles.no_four {m n L : ℕ} (E : Fin m → Fin n → ZMod L) (hE : VoltageCycles.NoFourVoltage E)
+  (i j : VoltageCycles.Check m L) (a b : VoltageCycles.Variable n L) (hij : i ≠ j) (hab : a ≠ b)
+  (h0 : VoltageCycles.Edge E i a) (h1 : VoltageCycles.Edge E j a) (h2 : VoltageCycles.Edge E j b)
+  (h3 : VoltageCycles.Edge E i b) : False
+'VoltageCycles.no_four' depends on axioms: [propext, Quot.sound]
+VoltageCycles.no_six {m n L : ℕ} (E : Fin m → Fin n → ZMod L) (hE : VoltageCycles.NoSixVoltage E)
+  (i j k : VoltageCycles.Check m L) (a b c : VoltageCycles.Variable n L) (hij : i ≠ j) (hjk : j ≠ k) (hki : k ≠ i)
+  (hab : a ≠ b) (hbc : b ≠ c) (hca : c ≠ a) (h0 : VoltageCycles.Edge E i a) (h1 : VoltageCycles.Edge E j a)
+  (h2 : VoltageCycles.Edge E j b) (h3 : VoltageCycles.Edge E k b) (h4 : VoltageCycles.Edge E k c)
+  (h5 : VoltageCycles.Edge E i c) : False
+'VoltageCycles.no_six' depends on axioms: [propext, Quot.sound]

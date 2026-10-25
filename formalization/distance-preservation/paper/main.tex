@@ -1,0 +1,830 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,array}
+\usepackage{listings,xcolor,xurl,hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,
+ pdftitle={Distance loss in girth-eight cyclic lifted-product codes},pdfauthor={}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\row}{\operatorname{row}}
+\newcommand{\HX}{H_{\mathsf X}}
+\newcommand{\HZ}{H_{\mathsf Z}}
+\newcommand{\lean}[2]{\href{../#1.lean}{\nolinkurl{#2}}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\lstset{basicstyle=\small\ttfamily,columns=fullflexible,keepspaces=true,
+ frame=single,framerule=.3pt,breaklines=true,showstringspaces=false,
+ escapeinside={(*@}{@*)},
+ literate={∀}{{$\forall$}}1 {∃}{{$\exists$}}1 {≠}{{$\ne$}}1
+ {∧}{{$\land$}}1 {→}{{$\to$}}1 {≤}{{$\le$}}1 {¬}{{$\neg$}}1
+ {∑}{{$\sum$}}1 {↔}{{$\leftrightarrow$}}1 {∣}{{$\mid$}}1
+ {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1}
+\title{Distance loss in girth-eight cyclic lifted-product codes\\
+An infinite counterfamily with checked Lean proofs}
+\author{}
+\date{25 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We construct a connected cyclic lifted-product family whose classical Tanner
+graph has girth exactly eight and whose exponent matrix satisfies neither
+full row nor full column partition constraint, but whose quantum distance
+is strictly smaller than its classical distance. For every positive multiple
+$L$ of eleven, the same fully populated $3\times4$ exponent matrix gives
+$25L$ physical qubits and
+\[
+ d_Q\leq 11<12\leq d_C\leq20.
+\]
+The transpose classical code has distance $2L$, so requiring its distance
+to be at least $d_C$ does not remove the obstruction. The logical operator
+is pure $X$, with support in both product blocks; a fiber-sum functional
+separates it from the entire stabilizer span. A two-parameter template
+gives such a logical of weight at most eleven for every positive cyclic
+length, including even lengths and parameters with cancelling terms.
+Classical lower bounds pass from the eleven-fold base through a parity
+projection and a stopping-set bound. The results refute a proposed
+girth/partition sufficiency test motivated by Raveendran, Declercq and
+Vasi\'c's distance-equality question; their general sufficient-condition
+question remains open here. Every proof in the manuscript has a checked
+Lean counterpart, including the source-matrix and full-span translations.
+\end{abstract}
+
+\section{The result and the source question}\label{sec:answer}
+
+Consider the fixed integer exponent matrix
+\begin{equation}\label{eq:E}
+ E=\begin{pmatrix}0&0&0&0\\0&1&5&3\\0&2&10&7\end{pmatrix}.
+\end{equation}
+At cyclic length $L$, each entry is reduced modulo $L$ and specifies a
+circulant permutation, so an exponent zero is an identity block. Let $C$
+be its $3L\times4L$ binary classical check matrix. We use the symmetric
+single-base lifted product of Raveendran, Declercq and Vasi\'c
+\cite[Eq.~(9)]{RDV}, with precise conventions in Section~\ref{sec:model}.
+
+\begin{theorem}[Connected counterfamily]\label{thm:main}
+For every positive integer $L$ divisible by eleven, the construction from
+\eqref{eq:E} has the following properties:
+\begin{enumerate}
+\item The classical Tanner graph is connected and has girth exactly eight.
+\item Neither full row nor full column RCPC of
+\cite[Definitions 2--5]{RDV} holds.
+\item Its classical and quantum distances satisfy
+$d_Q\leq11<12\leq d_C\leq20$.
+\item Every nonzero word in $\ker C^{\mathsf T}$ has weight $2L$, and
+such a word exists. In particular, the transpose-code distance is at least $d_C$.
+\end{enumerate}
+\end{theorem}
+
+The proof is assembled in Sections~\ref{sec:logical}--\ref{sec:geometry}.
+Its decisive features are an explicit logical in the full stabilizer
+quotient and a uniform classical lower bound. No exact value of $d_Q$ for
+the whole family is asserted. The bounded distances also mean that this
+is a finite-length obstruction family, rather than an asymptotically good
+code family.
+
+Raveendran, Declercq and Vasi\'c's preprint, first posted on 10 March 2025,
+asks in Section VI for sufficient constraints under which the quantum
+distance equals the distance of the underlying classical code. Their
+partition constraints identify a low-weight obstruction at the stabilizer
+generator scale. The question motivates testing whether classical girth
+and exclusion of those full partitions already suffice. Theorem~\ref{thm:main}
+answers that test negatively. The test is our proposed criterion; it is
+not a conjecture attributed to the source authors.
+
+\begin{longtable}{@{}P{.26\textwidth}P{.29\textwidth}P{.39\textwidth}@{}}
+\toprule Question&Source and precise locator&Answer in this paper\\\midrule\endhead
+Which constraints guarantee $d_Q=d_C$?&
+Raveendran--Declercq--Vasi\'c, arXiv:2503.07567v1,
+10 March 2025, Section VI; construction Eq.~(9).&
+Still unresolved in general. The counterfamily rules out the particular
+tests in the next two rows.\\[4pt]
+Do classical girth at least eight and absence of full RCPC suffice?&
+Our diagnostic follow-up to that source question; RCPC as in
+Definitions 2--5 of the same version.&
+No. Theorem~\ref{thm:main} gives an infinite family with
+$d_Q\leq11<12\leq d_C$.\\[4pt]
+Does additionally excluding a lighter transpose code suffice?&
+Our strengthened diagnostic follow-up.&
+No. The same family has transpose distance $2L\geq d_C$
+(Proposition~\ref{prop:transpose}).\\
+\bottomrule
+\end{longtable}
+
+The source's Theorem 2 gives an RCPC implication; its Section V-B and
+conclusion also describe a recipe excluding stabilizer-weight logicals.
+Our weight-eleven obstruction does not refute that scale-seven exclusion
+for a $3\times4$ base. Instead, it shows why removing that obstruction
+need not reach the larger classical distance.
+
+\subsection*{Relation to earlier graph questions}
+Freij-Hollanti, Morris and \v Sapokait\.{e}~\cite{FHM} study the Tanner
+graphs of this single-base construction, prove sector graph isomorphism
+and connectivity results, and ask in Section 5 for sufficient girth-eight
+conditions and their consequences. Earlier project work answers the
+girth criterion using rectangle voltages. That local graph information
+does not determine the minimum of the stabilizer quotient. Here the
+classical graph passes the short-cycle tests and is connected, while a
+logical supported in both product blocks still reduces distance.
+The connection is therefore mathematical, but the invariant and the
+answered diagnostic are different.
+
+The stopping ingredient is classical. Kelley, Sridhara, Xu and
+Rosenthal~\cite[Theorem III.1 and the following note]{Kelley} give the
+tree bound and its stopping-set interpretation. Their graph-cover
+description also explains why the occupied image of a lifted codeword
+is a stopping set. We provide checked versions of the degree-three,
+girth-eight case and the parity-projection argument needed here; we
+do not claim these classical principles as new.
+
+Two more recent distance results address different implications.
+Bhardwaj et al.~\cite[Appendix G, Theorem 8]{Bhardwaj} give an
+upper bound with a full binary row-rank premise; this does not supply
+the lower bound required for $d_Q=d_C$. Hirasaki and
+Lee~\cite[Corollary 6]{Hirasaki} compare quantum distances before and
+after a compatible group-extension lift. Their odd-index upper bound
+and their reverse bound with an additional unchanged-logical-dimension
+premise compare quantum codes with quantum codes, rather than the
+quantum and classical distances in the present question. Neither
+result is used as a premise of our counterfamily proof.
+
+For the central sources, the chronology to the manuscript date is:
+\begin{center}\small
+\begin{tabular}{@{}P{.25\textwidth}P{.22\textwidth}P{.23\textwidth}P{.22\textwidth}@{}}
+\toprule Source&Earliest relevant date&Inspected milestone&Elapsed to 25 Oct. 2026\\\midrule
+Raveendran et al.~\cite{RDV}&10 March 2025&arXiv v1, same date&594 days\\
+Freij-Hollanti et al.~\cite{FHM}&10 June 2026&arXiv v1, same date&137 days\\
+Kelley et al.~\cite{Kelley}&2004 (year precision)&ISIT 2004 proceedings&About 22 years\\
+Bhardwaj et al.~\cite{Bhardwaj}&30 July 2026&v1; internal date 24 Aug. 2026&87 days; 62 from internal date\\
+Hirasaki--Lee~\cite{Hirasaki}&30 July 2026&v1; internal date 24 Aug. 2026&87 days; 62 from internal date\\
+\bottomrule
+\end{tabular}
+\end{center}
+These are source ages, not measurements of how long a problem has been
+unsolved. Appendix~\ref{app:references} explains the date convention and
+the bounded literature, GitHub and X audit.
+
+\section{The actual source matrices and distances}\label{sec:model}
+Write $G_L=\Z/L\Z$ and
+$R_L=\F[x,x^{-1}]/(x^L-1)$. For $e\in G_L$ put
+\[
+ P^e(t,s)=\begin{cases}1&t=s+e,\\0&\text{otherwise},\end{cases}
+ \qquad t,s\in G_L.
+\]
+Binary expansion replaces $x^e$ by $P^e$. With
+$B_{ij}=x^{E_{ij}}$, set $B^*=\overline B^{\mathsf T}$, where
+$\overline{x^e}=x^{-e}$. The matrices are
+\begin{equation}\label{eq:source}
+ C=\operatorname{expand}(B),\quad
+ \HX=\operatorname{expand}[B\otimes I_4\mid I_3\otimes B^*],\quad
+ \HZ=\operatorname{expand}[I_4\otimes B\mid B^*\otimes I_3].
+\end{equation}
+The Kronecker products are taken in the ring before expansion. Thus both
+quantum check matrices have $12L$ rows and $25L$ columns: there is one
+cyclic fiber.
+
+Number rows and columns from zero. A quantum word has blocks
+$u(j,k,s)$, $j,k<4$, and $v(l,i,s)$, $l,i<3$, represented by matrices
+$U\in R_L^{4\times4}$, $V\in R_L^{3\times3}$. All weights count
+nonzero binary coefficients across both blocks. The $Z$ check at
+$(j,i,t)$ evaluates to
+\begin{equation}\label{eq:syndrome}
+ \sum_{k<4}u(j,k,t-E_{ik})+
+ \sum_{l<3}v(l,i,t+E_{lj}).
+\end{equation}
+Consequently the pure-$X$ kernel equation is
+\begin{equation}\label{eq:ringkernel}
+ UB^{\mathsf T}=\overline B^{\mathsf T}V.
+\end{equation}
+For arbitrary binary check coefficients $w(i,j,s)$, the full $X$ stabilizer
+span consists exactly of the pairs
+\begin{align}
+ u(i,j,s)&=\sum_{k<3}w(k,j,s+E_{ki}),\label{eq:spanleft}\\
+ v(i,j,s)&=\sum_{k<4}w(i,k,s-E_{jk}).\label{eq:spanright}
+\end{align}
+Here the index $i$ in \eqref{eq:spanleft} ranges below four; in
+\eqref{eq:spanright} it ranges below three. These formulas quantify
+over all lifted-check coefficients.
+
+\begin{proposition}[Matrix and quotient bridges]\label{prop:bridges}
+The matrices \eqref{eq:source} satisfy $\HZ\HX^{\mathsf T}=0$.
+The $\HZ$ check action and full $\HX$ row span are exactly
+\eqref{eq:syndrome}--\eqref{eq:spanright}. For the fixed single-base
+family, transposing both square qubit blocks exchanges the two CSS
+logical sectors and preserves coefficient weight.
+\end{proposition}
+\begin{proof}
+Expand each monomial using $t=s+e$. Summing first over the single
+nonzero circulant entry gives \eqref{eq:syndrome} and the two span
+formulas. Substitution of \eqref{eq:spanleft}--\eqref{eq:spanright}
+into \eqref{eq:syndrome} cancels the two double sums, proving
+commutation for arbitrary check coefficients and hence for every pair
+of check rows. Transposing the two square coordinate blocks and the
+check type exchanges the $X$ and $Z$ coefficient matrices. This is a
+coordinate permutation, so it preserves weight and transports the
+entire spans. The cyclic coordinate is unchanged.
+The checked matrix identities and equivalences are
+\lean{SourceSectors}{SourceModel.inSpanX_iff},
+\lean{SourceSectors}{SourceModel.inSpanZ_iff},
+\lean{SourceWordBridge}{SourceWordBridge.css_commutation} and
+\lean{SourceSymmetry}{SourceSymmetry.sector_weights}.
+\end{proof}
+
+Let $d_C$ be the minimum weight of a nonzero word in $\ker C$.
+For $d_Q$ use the minimum of the two pure CSS logical spectra,
+\[
+ (\ker\HZ\setminus\row\HX)\ \cup\
+ (\ker\HX\setminus\row\HZ),
+\]
+in the physical binary coordinates. The formal definitions use minima
+over all words, with explicit existence witnesses; the quantum quotient
+is nonzero. Our bound also applies directly to usual Pauli distance,
+because its exhibited operator is a nontrivial pure-$X$ Pauli operator.
+The translation of the actual source minima is checked in
+\lean{SourceWordBridge}{SourceWordBridge.quantum_distance_eq} and
+\lean{SourceWordBridge}{SourceWordBridge.classical_distance_eq}.
+
+\section{A persistent logical supported in both blocks}\label{sec:logical}
+
+The obstruction is more transparent in two parameters. For $a,b\in G_L$
+define
+\begin{equation}\label{eq:param}
+ E(a,b)=\begin{pmatrix}0&0&0&0\\0&a&b&3a\\0&2a&2b&b+2a\end{pmatrix}.
+\end{equation}
+The fixed family is $a=1,b=5$. For this template put
+\begin{equation}\label{eq:UV}
+ U=\begin{pmatrix}
+ 1&0&0&0\\0&x^{-2a}&0&0\\0&0&x^{-2b}&0\\
+ x^{-2a}&x^{-4a}+x^{-2a}&x^{-(b+2a)}&x^{-4a}
+ \end{pmatrix},\qquad
+ V=\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}.
+\end{equation}
+
+\begin{theorem}[Universal template obstruction]\label{thm:template}
+For every positive $L$ and every $a,b\in G_L$, the pair \eqref{eq:UV}
+is in $\ker\HZ\setminus\row\HX$ for the actual matrices of
+\eqref{eq:param}, and has weight at most eleven.
+\end{theorem}
+\begin{proof}
+Direct multiplication gives \eqref{eq:ringkernel}. The first three
+rows on both sides are, respectively,
+\[
+ (1,1,1),\quad (x^{-2a},x^{-a},1),\quad(x^{-2b},x^{-b},1).
+\]
+The last rows agree after cancellation in characteristic two; their
+three entries are
+\[
+ x^{-(b+2a)},\qquad x^{-3a},\qquad 1.
+\]
+These identities hold with formal monomials and therefore also after
+any cyclic quotient. They are checked in
+\lean{ParametricRing}{ParametricRing.mixed_cycle} and, directly in
+coefficients, \lean{ParametricWords}{ParametricWords.witness_kernel}.
+
+To exclude every stabilizer combination, define
+\begin{equation}\label{eq:ell}
+ \ell(u)=\sum_{s\in G_L}u(0,0,s)+\sum_{s\in G_L}u(1,0,s)\in\F.
+\end{equation}
+For a span word \eqref{eq:spanleft}, each of the two sums is
+$\sum_{k,s}w(k,0,s)$, since translation permutes $G_L$. They cancel.
+For \eqref{eq:UV} the first sum is one and the second zero, so
+$\ell(U)=1$. Thus the word lies outside the full $X$ row span.
+Finally, $U$ contains eight displayed monomial terms and $V$ three.
+Their coefficient support is contained in a list of length eleven.
+Coinciding terms may cancel, and cannot increase the weight. The
+source-matched conclusion, including matrix commutation, is
+\lean{ParametricSource}{ParametricWords.source_parametric_obstruction}.
+\end{proof}
+
+The word is pure $X$ throughout. Its use of both product blocks is
+distinct from combining $X$ and $Z$ Pauli components. This distinction
+matters: a search confined to one product block would miss the obstruction.
+
+For the fixed exponents, the row-pairing equality
+$E_{0c}+E_{2c}=2E_{1c}$ holds in the first three columns but fails in the
+fourth. The last row of $U$ compensates for that failure. Absence of a
+\emph{full} partition therefore does not remove all partial-pairing
+logical mechanisms.
+
+\section{The classical lower bound}\label{sec:classical}
+
+For an exponent array $e$ over a finite cyclic group $A$, write a classical
+word as $z(j,s)$, with boundary
+\[
+ (\partial_e z)(i,t)=\sum_{j<4}z(j,t-e_{ij}).
+\]
+A stopping set means a nonempty variable set for which every check has
+either zero or at least two selected neighbors.
+
+\begin{lemma}[Cover projection bound]\label{lem:cover}
+Let $p:A\to B$ be an additive map of finite cyclic groups and
+$e'=p\circ e$. Suppose every nonzero word of $\ker\partial_{e'}$
+has weight at least $d$, and every stopping set of its Tanner incidence
+has size at least $s$. Then every nonzero word of $\ker\partial_e$
+has weight at least $\min(d,2s)$.
+\end{lemma}
+\begin{proof}
+For $z\ne0$ in the upstairs kernel, define its binary parity projection
+and its occupied image by
+\[
+ y(j,r)=\sum_{t:p(t)=r}z(j,t),\qquad
+ T=\{(j,p(t)):z(j,t)\ne0\}.
+\]
+Projection commutes with the boundary, so $\partial_{e'}y=0$.
+Also $\wt(y)\leq\wt(z)$. If $y\ne0$, the code bound gives
+$\wt(z)\geq d$.
+
+If $y=0$, each occupied fiber contributes a positive even number of
+ones, hence $\wt(z)\geq2|T|$. The set $T$ is a stopping set:
+choose any lifted selected neighbor of a touched projected check.
+The lifted kernel equation supplies a second selected neighbor at
+that check. A monomial row has only one neighbor of each column type,
+so the two neighbors have different column types and remain distinct
+after projection. Thus $|T|\geq s$, proving the second bound.
+This argument is \lean{CoverDistance}{CoverDistance.lower_bound};
+\lean{CyclicCover}{CyclicCover.projected_support_stopping} and
+\lean{CoverWeight}{CoverWeight.zero_push_weight_doubles} are its two
+essential cancellation bridges.
+\end{proof}
+
+The use of $T$ as well as $y$ is necessary. A parity projection may
+vanish even though the occupied image is nonempty, especially in even
+covers. The proof assumes neither odd cover degree nor unchanged rank.
+
+\begin{lemma}[The eleven-fold base]\label{lem:base}
+For \eqref{eq:E} at $L=11$, every nonzero classical kernel word has
+weight at least twelve, and every stopping set has size at least six.
+\end{lemma}
+\begin{proof}
+For the code bound, the finite certificate reconstructs every
+$44$-bit source-kernel word as an encoding of thirteen free bits.
+All $2^{13}=8192$ inputs are checked: the encoded word is zero or its
+population count is at least twelve. Reconstruction is proved from
+the actual source rows; it is not an assumption that a displayed
+list spans the kernel. The bit packing, dot-product and population-count
+bridges identify this count with coefficient weight.
+The checked chain is
+\lean{FamilySource11}{FamilyBase11.kernel_reconstruct},
+\lean{FamilyDistance11}{FamilyClassical11.encoded_lower},
+\lean{FamilyDistance11}{FamilyClassical11.actual_classical_lower}, and
+\lean{FamilyBaseDistance}{FamilyBaseGraph.code_lower_twelve}.
+
+For the stopping bound, the base has variable degree three and no
+four- or six-cycle, as checked by its finite voltage tests. Choose a
+variable $v$ in a stopping set. Its three check neighbors have selected
+partners $w_0,w_1,w_2$, distinct by exclusion of four-cycles. At $w_0$,
+choose two other checks and their selected partners $x,y$.
+Four-cycle exclusion prevents $x=y$ or either partner being $v$;
+six-cycle exclusion prevents them being $w_1,w_2$. Together with
+$w_0$ being distinct, this yields the six distinct variables
+$v,w_0,w_1,w_2,x,y$. This is the degree-three, girth-eight Tanner-tree
+bound credited above. Its general checked version is
+\lean{TannerSix}{TannerSix.stopping_lower_six}; its actual base
+incidence application is
+\lean{FamilyTreeStopping}{FamilyTreeStopping.base_stopping_six}.
+\end{proof}
+
+\begin{corollary}[Uniform classical lower bound]\label{cor:lower}
+If $L>0$ and $11\mid L$, the classical code of \eqref{eq:E} has
+$d_C\geq12$.
+\end{corollary}
+\begin{proof}
+Use reduction $G_L\to G_{11}$ in Lemma~\ref{lem:cover}, with
+$d=12$ and $s=6$ from Lemma~\ref{lem:base}. The exponent array reduces
+to the eleven-fold base and $\min(12,2\cdot6)=12$.
+The source-action bridge is
+\lean{SourceDistance}{SourceDistance.c_action}; the application is
+\lean{FamilyCoverAlternative}{FamilyCoverAlternative.classical_lower_twelve}.
+\end{proof}
+
+\begin{corollary}[Arithmetic extensions]\label{cor:param}
+Let $L>0$, and suppose an additive map $p:G_L\to G_{11}$ sends
+$a$ to $1$ and $b$ to $5$. Then the template \eqref{eq:param} has
+no classical four- or six-cycle, has neither full RCPC, and satisfies
+$d_Q\leq11<12\leq d_C$. In particular this holds when $11\mid L$
+and $a,b$ reduce to $1,5$ modulo eleven.
+\end{corollary}
+\begin{proof}
+The exponent array projects to \eqref{eq:E} modulo eleven. The same
+cover bound proves the classical inequality, and
+Theorem~\ref{thm:template} supplies the logical. A four-cycle, six-cycle
+or full partition upstairs would project to a forbidden voltage or
+partition equality at eleven; the base exclusions are specified in
+Section~\ref{sec:geometry}. The complete arithmetic implication is
+\lean{ParametricProjection}{ParametricProjection.projected_counterfamily},
+with the stated congruence specialization in
+\lean{ParametricProjection}{ParametricProjection.cyclic_congruence_counterfamily}.
+\end{proof}
+We assert connectedness, the bound $d_C\leq20$ and transpose distance
+$2L$ only for the fixed specialization of Theorem~\ref{thm:main}.
+
+\section{Upper bound, transpose code and graph geometry}\label{sec:geometry}
+
+\begin{proposition}[A classical word of weight at most twenty]\label{prop:upper}
+For the fixed family with $L>0$ and $11\mid L$, $d_C\leq20$.
+\end{proposition}
+\begin{proof}
+The following column vector is a polynomial kernel word for $B$:
+\begin{equation}\label{eq:twenty}
+ \begin{pmatrix}
+ x^4+x^5+x^7+x^8+x^9+x^{11}\\
+ x^2+x^3+x^6+x^7+x^8+x^{11}\\
+ 1+x^2+x^3+x^6\\
+ 1+x^4+x^5+x^9
+ \end{pmatrix}.
+\end{equation}
+Multiplying by each row of $B$ cancels all terms in characteristic two.
+There are twenty displayed monomials, so the coefficient weight is at
+most twenty after reduction. The third component is nonzero: its
+exponents $0,2,3,6$ remain distinct after reduction modulo eleven,
+and hence cannot cancel upstairs. The coefficient kernel identity,
+nonzero bridge and support bound are proved in
+\lean{ClassicalUpper20}{ClassicalUpper20.classical_distance_upper}.
+\end{proof}
+
+\begin{proposition}[Exact transpose distance]\label{prop:transpose}
+For the fixed matrix \eqref{eq:E} and every positive $L$, the words
+of $\ker C^{\mathsf T}$ are exactly the triples of constant fiber
+functions $(z_0,z_1,z_2)$ with $z_0+z_1+z_2=0$.
+Every nonzero such word has weight $2L$, and a nonzero such word exists.
+\end{proposition}
+\begin{proof}
+The actual transpose equations, with their plus sign, are
+\[
+ f_j(t):=\sum_{i<3}z_i(t+E_{ij})=0\quad(j<4).
+\]
+There is a direct characteristic-two identity
+\begin{equation}\label{eq:bezout}
+ \sum_{j=0}^3\sum_{r\in A_j} f_j(t+r)=z_2(t+1)+z_2(t+2),
+\end{equation}
+where
+\[
+\begin{split}
+ A_0&=\{1,4,6,7,8,9\},\quad A_1=\{0,2,4,8,9\},\\
+ A_2&=\{3,4\},\qquad\quad A_3=\{0,1,2,3,4,6,7\}.
+\end{split}
+\]
+Thus $z_2$ has period one and is constant. The equations $f_0=f_1=0$
+then make $z_1$ constant; $f_0=0$ makes $z_0$ constant as well and
+gives their sum zero. Conversely such a constant triple satisfies
+every equation. A nonzero even binary triple has exactly two ones,
+giving weight $2L$; $(1,1,0)$ supplies existence.
+Identity~\eqref{eq:bezout} is
+\lean{FamilyTranspose}{FamilyTranspose.third_period}; the characterization
+and count are
+\lean{TransposeConstant}{FamilyTranspose.kernel_iff} and
+\lean{TransposeDistance}{FamilyTranspose.distance_characterization}.
+The actual transpose action is checked in
+\lean{FamilyBounds}{DistanceFamily.transpose_c_action}.
+\end{proof}
+
+For the comparison $d_C\leq2L$ at every positive $L$, set two entire
+classical variable fibers to one and the other two to zero. Each
+classical check then sees two ones. This word has weight $2L$;
+\lean{FamilyBounds}{DistanceFamily.classical_distance_upper} checks the
+kernel, nonzero and weight claims. Consequently no nonzero transpose
+word is lighter than $d_C$, as assembled in
+\lean{FamilyBounds}{DistanceFamily.stronger_counterfamily}.
+
+\begin{proposition}[Classical graph and full partitions]\label{prop:graph}
+For $L>0$ divisible by eleven, the classical graph of \eqref{eq:E}
+is connected, has girth exactly eight and has neither full RCPC.
+\end{proposition}
+\begin{proof}
+A classical incidence joins variable $(j,s)$ to check
+$(i,s+E_{ij})$. A simple four-cycle has two distinct row types
+and two distinct column types and forces
+\[
+ E_{ic}-E_{jc}+E_{jd}-E_{id}=0.
+\]
+A simple six-cycle has three distinct row and column types and forces
+\[
+ E_{ic}-E_{jc}+E_{jd}-E_{kd}+E_{kf}-E_{if}=0.
+\]
+Distinctness of the types follows from the unique neighbor of any
+specified type at a monomial incidence; the graph/cycle bridge is
+\lean{VoltageCycles}{VoltageCycles.no_four} and
+\lean{VoltageCycles}{VoltageCycles.no_six}.
+The finite tests at eleven show that neither voltage can vanish
+with the indicated distinct types. Any equality upstairs reduces
+to one at eleven, so both cycle lengths are excluded for every
+$11\mid L$.
+
+There is an explicit eight-cycle, written alternately with check
+vertices $c$ and variable vertices $v$:
+\[
+ c_{0,0},\ v_{0,0},\ c_{1,0},\ v_{1,-1},\ c_{2,1},\ v_{0,1},\
+ c_{1,1},\ v_{1,0},\ c_{0,0}.
+\]
+Each displayed edge satisfies the incidence equation. The four
+variables and four checks are separately distinct since $L\geq11$.
+The graph is simple and bipartite, so its girth is exactly eight.
+The voltage exclusions and distinctness are
+\lean{FamilyGirth}{FamilyGirth.exact_eight_certificate}; all eight
+edges are checked in \lean{FamilyGirth}{FamilyGirth.eight_edges}.
+
+For three rows a full row RCPC means that distinct $i,j,k$ satisfy
+$E_{ic}+E_{jc}=2E_{kc}$ in every column, including the odd-size
+self-pair convention. For four columns a full column RCPC partitions
+the columns into two pairs with equal sums in every row. The finite
+tests exclude both at eleven; again projection excludes them
+upstairs. These are
+\lean{FamilyNoShort}{FamilyNoShort.no_row_pairing} and
+\lean{FamilyNoShort}{FamilyNoShort.no_column_pairing}.
+
+Finally the zero row connects all variable types at a common fiber,
+and the zero column connects the check types. The entry $E_{11}=1$
+gives a walk from variable $(0,s)$ to $(0,s+1)$ through variable
+$(1,s)$ and check $(1,s+1)$. Iterating reaches every cyclic fiber,
+so all vertices are connected. This argument works for every
+positive $L$ and is \lean{FamilyConnected}{FamilyConnected.connected}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Proposition~\ref{prop:graph} proves the graph and RCPC assertions.
+Theorem~\ref{thm:template}, specialized to $a=1,b=5$, gives
+$d_Q\leq11$. Corollary~\ref{cor:lower} and
+Proposition~\ref{prop:upper} give $12\leq d_C\leq20$.
+Proposition~\ref{prop:transpose} and the two-fiber classical word
+give the transpose comparison. The specialization of all source
+matrices and full logical predicates is checked in
+\lean{ParametricSpecialization}{ParametricSpecialization.logicalX}.
+The source-distance conclusion is
+\lean{SourceWordBridge}{SourceWordBridge.source_distance_drop}.
+\end{proof}
+
+\section{Formal coverage and reproducibility}\label{sec:formal}
+The proofs use Lean 4.36.0-rc1 and mathlib commit
+\texttt{5f7b4198d22a9c82e1c698a379334fe128095c82}.
+The admitted counterfamily closure contains fifty authored modules.
+All were built from their recorded sources and rebuilt in an isolated
+directory with original research compiled objects excluded. Pinned
+cached mathlib, dependency and standard-library objects were reused;
+this was not a fresh mathlib rebuild. The axiom audit admits only
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}.
+Native-decision prototypes and external search exclusions are outside
+this closure.
+
+Table~\ref{tab:coverage} covers each manuscript proof, including the
+translations and applications. The companion
+\href{PROOF-GUIDE.html}{proof guide} lists every admitted source,
+its SHA-256 digest and direct file link. In this local review artifact
+the links address the bundled source files. The source archive and
+hash manifest preserve their exact bytes. The sources have not been
+published at a new Git revision; no public commit-pinned URL is
+claimed for them. The guide records this publication limitation
+separately from the successful local proof checks.
+
+\begin{longtable}{@{}P{.27\textwidth}P{.40\textwidth}P{.27\textwidth}@{}}
+\caption{Complete proof-to-Lean correspondence. Full names, source hashes,
+imports and checked logs are linked in the companion guide.}\label{tab:coverage}\\
+\toprule Manuscript proof&Faithful formal result&Objects and scope\\\midrule\endfirsthead
+\toprule Manuscript proof&Faithful formal result&Objects and scope\\\midrule\endhead
+Proposition~\ref{prop:bridges}; source minima&
+\lean{SourceSectors}{SourceModel.inSpanX_iff};
+\lean{SourceSectors}{SourceModel.inSpanZ_iff};
+\lean{SourceWordBridge}{SourceWordBridge.quantum_weight_iff};
+\lean{SourceWordBridge}{SourceWordBridge.css_commutation};
+\lean{SourceSymmetry}{SourceSymmetry.sector_weights}&
+Actual coefficient matrices, arbitrary binary row coefficients, both
+sectors, all physical words and weights.\\[4pt]
+Theorem~\ref{thm:template}&
+\lean{ParametricRing}{ParametricRing.mixed_cycle};
+\lean{ParametricSource}{ParametricWords.source_parametric_obstruction}&
+Every positive $L$, arbitrary $a,b\in G_L$; full row span, cancellation
+and physical support bound.\\[4pt]
+Lemma~\ref{lem:cover}&
+\lean{CoverDistance}{CoverDistance.lower_bound};
+\lean{CyclicCover}{CyclicCover.kernel_push};
+\lean{CyclicCover}{CyclicCover.projected_support_stopping};
+\lean{CoverWeight}{CoverWeight.zero_push_weight_doubles}&
+Additive projection; nonzero upstairs word; parity and occupied-support
+cases treated separately.\\[4pt]
+Lemma~\ref{lem:base}, code certificate&
+\lean{FamilySource11}{FamilyBase11.kernel_reconstruct};
+\lean{FamilyDistance11}{FamilyClassical11.actual_classical_lower};
+\lean{FamilyBaseDistance}{FamilyBaseGraph.code_lower_twelve}&
+Every source-kernel word; all thirteen-bit inputs; incidence, dot-product
+and Hamming-weight bridges.\\[4pt]
+Lemma~\ref{lem:base}, stopping bound&
+\lean{TannerSix}{TannerSix.stopping_lower_six};
+\lean{FamilyTreeStopping}{FamilyTreeStopping.base_stopping_six}&
+Nonempty stopping sets; degree at least three and no four/six cycles;
+actual base incidence.\\[4pt]
+Corollary~\ref{cor:lower}&
+\lean{FamilyCoverAlternative}{FamilyCoverAlternative.classical_lower_twelve};
+\lean{SourceDistance}{SourceDistance.c_action}&
+All $L>0$, $11\mid L$; actual classical source words.\\[4pt]
+Corollary~\ref{cor:param}&
+\lean{ParametricProjection}{ParametricProjection.projected_counterfamily};
+\lean{ParametricProjection}{ParametricProjection.cyclic_congruence_counterfamily}&
+Explicit additive map sending $a,b$ to $1,5$; no implicit unit,
+connectedness or rank premise.\\[4pt]
+Proposition~\ref{prop:upper}&
+\lean{ClassicalUpper20}{ClassicalUpper20.kernel};
+\lean{ClassicalUpper20}{ClassicalUpper20.nonzero};
+\lean{ClassicalUpper20}{ClassicalUpper20.classical_distance_upper}&
+Polynomial word, nonzero under reduction modulo eleven, at most twenty
+physical coordinates.\\[4pt]
+Proposition~\ref{prop:transpose}; two-fiber comparison&
+\lean{FamilyTranspose}{FamilyTranspose.third_period};
+\lean{TransposeConstant}{FamilyTranspose.kernel_iff};
+\lean{TransposeDistance}{FamilyTranspose.distance_characterization};
+\lean{FamilyBounds}{DistanceFamily.stronger_counterfamily}&
+Actual $C^{\mathsf T}$, every positive $L$, all kernel words and nonempty
+minimum; comparison with actual $d_C$.\\[4pt]
+Proposition~\ref{prop:graph}&
+\lean{VoltageCycles}{VoltageCycles.no_four};
+\lean{VoltageCycles}{VoltageCycles.no_six};
+\lean{FamilyNoShort}{FamilyNoShort.no_row_pairing};
+\lean{FamilyNoShort}{FamilyNoShort.no_column_pairing};
+\lean{FamilyGirth}{FamilyGirth.exact_eight_certificate};
+\lean{FamilyGirth}{FamilyGirth.eight_edges};
+\lean{FamilyConnected}{FamilyConnected.connected}&
+Simple-cycle bridges, checked base exclusions, explicit eight-cycle
+vertices and edges, actual Tanner reachability.\\[4pt]
+Theorem~\ref{thm:main}, assembly&
+\lean{FamilyTheorem}{DistanceFamily.infinite_counterfamily};
+\lean{SourceWordBridge}{SourceWordBridge.source_distance_drop};
+\lean{ParametricSpecialization}{ParametricSpecialization.logicalX};
+preceding bound/graph theorems&
+Same source construction and minima, $L>0$, $11\mid L$; no exact
+quantum distance added.\\
+\bottomrule
+\end{longtable}
+
+Here is the source-word distance statement, with its actual minimum
+definitions in \nolinkurl{SourceWordBridge.lean}:
+\begin{lstlisting}
+variable {L : Nat} [NeZero L]
+theorem source_distance_drop (hL : 11 (*@$\mid$@*) L) :
+    quantumDistance L (*@$\leq$@*) 11 (*@$\land$@*) 12 (*@$\leq$@*) classicalDistance L (*@$\land$@*)
+    quantumDistance L < classicalDistance L := by
+  rw [quantum_distance_eq, classical_distance_eq]
+  exact (*@$\langle$@*)DistanceFamily.quantum_distance_upper,
+    DistanceFamily.classical_distance_lower hL,
+    DistanceFamily.distance_drop hL(*@$\rangle$@*)
+\end{lstlisting}
+The decisive general cover theorem is not a family-specific numerical
+assertion: its premises are the base kernel and stopping bounds and
+its conclusion is about every nonzero upstairs kernel word. The
+faithful full signature is reproduced from the source in the
+\href{PROOF-GUIDE.html}{proof guide}; its proof's two branches are:
+\begin{lstlisting}
+  let y := CoverWeight.push (CyclicCover.project p) x
+  by_cases hy : y=0
+  · have hs := hstop _
+      (CyclicCover.projected_support_stopping p e x hx hn)
+    have hw := CoverWeight.zero_push_weight_doubles
+      (CyclicCover.project p) x hy
+    exact (Nat.min_le_right d (2*s)).trans
+      ((Nat.mul_le_mul_left 2 hs).trans hw)
+  · have hd := hcode y (CyclicCover.kernel_push p e x hx) hy
+    have hw := CoverWeight.push_weight_le (CyclicCover.project p) x
+    change (CoverWeight.support y).card (*@$\leq$@*)
+      (CoverWeight.support x).card at hw
+    exact (Nat.min_le_left d (2*s)).trans (hd.trans hw)
+\end{lstlisting}
+The dependency structure is: finite base reconstruction and tree stopping
+bound $\to$ cover projection $\to$ classical lower bound; explicit
+coefficient kernel and separating functional $\to$ source logical
+upper bound; actual source/minimum bridges $\to$ distance separation.
+Graph geometry and transpose characterization are independent supporting
+branches. External distance searches are not premises of these proofs.
+
+\section{Implications and the next bounded question}\label{sec:limits}
+The counterfamily separates local graph and full-partition exclusions
+from quantum distance preservation. Connectedness rules out explaining
+it as disjoint copies of the eleven-fold example, and the exact
+transpose characterization rules out a lighter transpose code as the
+cause. What remains is a logical using both product blocks, produced
+by a partial pairing that full RCPC tests do not detect.
+
+The source's general equality problem is not answered by this negative
+test. A bounded follow-up is to prove or refute
+\begin{equation}\label{eq:next}
+ d_Q\geq\min(d_C,12)
+\end{equation}
+for normalized, fully populated $3\times4$ cyclic exponent matrices
+whose classical Tanner graph has girth at least eight, which have no
+full RCPC, whose transpose distance is at least $d_C$, and which also
+obey the following partial-pairing exclusion: for every choice of
+distinct rows $i,j,k$, no value among
+\[
+ E_{ic}+E_{jc}-2E_{kc},\qquad c=0,1,2,3,
+\]
+occurs three or more times. Normalization means the first row and
+first column are zero; the entry tests are stated in this convention.
+The fixed counterfamily violates this additional test.
+
+This is a project-derived follow-up, proposed after the counterexample
+and the bounded diagnostic recorded in the supporting evidence. It
+is not a proved criterion or a new author-posed conjecture. The
+remaining obstruction is control of all small logical supports in
+the full quotient, especially weights eight through eleven. Two
+separately checked generic lemmas provide structural progress, but
+neither completes the source-support classification or proves
+\eqref{eq:next}. A complete exact-distance certificate for a selected
+finite instance is a separate alternative. Verifying the source's
+scale-seven recipe is a source-claim audit, rather than a newly open
+mathematical problem.
+
+\noindent\textbf{Question answered.} The proposed girth/RCPC criterion,
+even with connectedness and the transpose-distance comparison, is
+false by Theorem~\ref{thm:main}.\\
+\textbf{Question still open.} General sufficient constraints guaranteeing
+$d_Q=d_C$ in the source construction.\\
+\textbf{Next proposed target (follow-up).} Prove or refute the truncated
+bound \eqref{eq:next} under the explicit strengthened hypotheses above.
+
+\appendix
+\section{Reference dates and evidence boundaries}\label{app:references}
+The chronology in Section~\ref{sec:answer} uses the manuscript date
+25 October 2026 in UTC. Calendar subtraction from 10 March 2025 gives
+594 days and from 10 June 2026 gives 137 days. Only year precision is
+used for the inspected ISIT 2004 source; its age is therefore stated
+approximately. The arXiv histories inspected for \cite{RDV,FHM} list
+v1 only. These checks do not establish global unresolved status.
+Both July preprints were inspected in the v1 copies recorded in the
+evidence ledger, which carry an internal manuscript date of 24 August
+2026. The corresponding deltas are 87 and 62 days. The current abstract
+page for \cite{Bhardwaj} additionally lists v2 dated 2 October 2026;
+that later version was identified during report preparation and is
+retained as a version-comparison gap, not treated as a screened full text.
+The comparison above is explicitly to the inspected v1 theorem.
+
+The complete investigation ledger is
+\href{../prior-art.json}{\texttt{prior-art.json}} and the semantic
+translation record is \href{../SOURCE-TO-PROOF.txt}{\texttt{SOURCE-TO-PROOF.txt}}.
+The prior-art audit includes primary papers, author references, public
+GitHub code and signed-in Edge searches of GitHub and X. It records
+queries, known-positive controls, caps and inspected results. Later
+native-browser access failed when the Mac locked; indexed search
+did not replace complete native coverage. Some discovered leads
+were available only as snippets and were not used as theorem evidence.
+The precise unresolved leads and access limitations remain in that
+ledger. The searches support concrete source comparisons, not a
+claim that no earlier result exists anywhere.
+
+The supporting research record separates general Lean proofs, concrete
+Lean certificates, exact finite computations and sampled diagnostics.
+In particular, negative C++ searches are external computations. A
+completion-shortcut bug was repaired, with an old-fails/new-passes
+regression, 1,235 small full-word comparisons and replay of every
+original saved input. Only corrected replay records support current
+negative search statements. These computations are absent from the
+theorem dependency closure. The separate SAT attempt returned
+\texttt{UNKNOWN}, not a distance certificate. None of these
+investigation details changes the proved counterfamily.
+
+The companion \href{README.txt}{\texttt{README.txt}} gives artifact
+layout and reproduction commands. The manuscript source archive
+contains the fifty admitted Lean sources, their checked build records,
+the dependency pins, the source-to-proof guide, evidence ledgers and
+the manuscript. Content hashes identify the local review snapshot.
+The investigation duration and subsequent manuscript preparation are
+recorded there separately; they are not source chronology claims.
+
+\begin{thebibliography}{9}
+\bibitem{RDV}
+N. Raveendran, D. Declercq and B. Vasi\'c,
+\emph{On the Minimum Distances of Finite-Length Lifted Product Quantum
+LDPC Codes}, arXiv:2503.07567v1, 10 March 2025.
+\href{https://arxiv.org/html/2503.07567v1}{Full text};
+Eq.~(9), Definitions 2--5, Theorem 2, Sections V-B and VI.
+
+\bibitem{FHM}
+R. Freij-Hollanti, K. D. Morris and P. \v Sapokait\.{e},
+\emph{Graphical Analysis of Lifted Product Code Constructions},
+arXiv:2606.11987v1, 10 June 2026.
+\href{https://arxiv.org/html/2606.11987v1}{Full text};
+sector graph isomorphism, connectivity and Section 5.
+
+\bibitem{Kelley}
+C. Kelley, D. Sridhara, J. Xu and J. Rosenthal,
+\emph{Pseudocodeword Weights and Stopping Sets},
+Proceedings of the IEEE International Symposium on Information Theory,
+2004. Theorem III.1 and its following note; Sections II--III.
+\href{https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf}{Author-hosted paper}.
+
+\bibitem{Bhardwaj}
+A. Bhardwaj et al., \emph{High-rate qLDPC processors},
+arXiv:2607.28795v1, first submitted 30 July 2026; inspected copy
+internally dated 24 August 2026. Appendix G, Theorem 8 and Remark 12.
+\href{https://arxiv.org/html/2607.28795v1}{Inspected version};
+\href{https://arxiv.org/abs/2607.28795}{version history} (later v2 identified).
+
+\bibitem{Hirasaki}
+Y. Hirasaki and J. Y. Lee, \emph{Lifting Lifted Product Codes},
+arXiv:2607.28621v1, first submitted 30 July 2026; inspected copy
+internally dated 24 August 2026. Section II and Corollary 6.
+\href{https://arxiv.org/html/2607.28621v1}{Full text}.
+\end{thebibliography}
+\end{document}

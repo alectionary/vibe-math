@@ -1,0 +1,30 @@
+/Users/danabbott/Documents/dancing-robots/research/unl-dissertations-2022-2026/formalization/distance-preservation/LowWeightChecks.lean:104:0: warning: automatically included section variable(s) unused in theorem `LowWeightChecks.parity_card`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/Users/danabbott/Documents/dancing-robots/research/unl-dissertations-2022-2026/formalization/distance-preservation/LowWeightChecks.lean:151:2: error: unsolved goals
+case neg.inr.inr.inr
+V : Type u_1
+C : Type u_2
+inst✝³ : DecidableEq V
+inst✝² : DecidableEq C
+inst✝¹ : Fintype V
+E : V → C → Prop
+inst✝ : DecidableRel E
+h4 : NoFour E
+h6 : NoSix E
+hd : ThreeChecks E
+x : V → ZMod 2
+hk : BinaryKernel E x
+hsize : (CoverWeight.support x).card ≤ 11
+c : C
+hn : ¬x = 0
+hdg : {v ∈ CoverWeight.support x | E v c}.card ≤ 3
+h : {v ∈ CoverWeight.support x | E v c}.card = 3
+hp : 3 = 0
+⊢ {v ∈ CoverWeight.support x | E v c}.card = 0 ∨ {v ∈ CoverWeight.support x | E v c}.card = 2
+'LowWeightChecks.four_neighbors_force_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowWeightChecks.degree_le_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowWeightChecks.kernel_check_zero_or_two' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

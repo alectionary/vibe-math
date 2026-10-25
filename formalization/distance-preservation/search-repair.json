@@ -1,0 +1,43 @@
+{
+  "identified_utc": "2026-10-25T05:08:12.560730+00:00",
+  "old_source_sha256": "d7dad58de9c43f9b282623c551f807f414a878313564c9eb7618d2992956b5d6",
+  "new_source_sha256": "7a96d716649fe7361e8d472be780fa69490f403a4e8d9fc2f86d326e52a6f0f6",
+  "bug": "At rem==2, the search checked pairs but skipped single-variable completions. Exclusions at bound W could miss a minimal logical of weight W-1.",
+  "effect": "Earlier negative search claims withdrawn. Saved positive witnesses and all Lean proofs remain valid; classical enumerations and base-orbit counts unaffected.",
+  "invalidated_negative_outputs": [
+    "search-results.jsonl",
+    "search-through-ten.jsonl",
+    "exhaustive-representative-search.json",
+    "witness-L11-bound9.json",
+    "witness-L11-bound10.json",
+    "fresh-results.jsonl",
+    "fresh-summary.json",
+    "intermediate-weights.json"
+  ],
+  "replay_policy": "Same frozen matrices, classical data, bounds and node caps. Correct the implementation, retain original outputs as invalidated history, and save corrected outputs separately.",
+  "status": "PASS_REPLAYED",
+  "regression_tests": "search-regression-tests.json",
+  "corrected_fresh_results": "fresh-corrected-summary.json",
+  "corrected_adaptive_result": "intermediate-corrected.json",
+  "corrected_historical_results": "historical-corrected-summary.json",
+  "previous_manifest_snapshot": "development/verification-before-search-repair.json",
+  "original_input_hashes_checked": 194,
+  "original_input_bytes_changed": [],
+  "replay_outcome": "All earlier completed negative results were reproduced by the repaired search, with the same frozen matrices, bounds and caps. This does not supply Lean lower certificates.",
+  "input_filename_repair": "Preserve original input files byte-for-byte; conflicting node caps now get cap-specific filenames and every new result binds its input SHA256.",
+  "repaired_build": {
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
+    "command": "c++ -O3 -std=c++17 support_search.cpp -o support_search",
+    "binary_sha256": "0bca422289e39eaec59dc386227de21c8231ddb1693aca863651f54e3ece2ac7",
+    "source_sha256": "7a96d716649fe7361e8d472be780fa69490f403a4e8d9fc2f86d326e52a6f0f6"
+  },
+  "previous_manifest_sha256": "5eb3072cada180747c8a70b92a256c9d3ee1012ba3cb76c2313d8a99b0e4776a",
+  "archived_source_path": "development/support_search-before-completion-fix.cpp",
+  "replay_input_coverage": {
+    "original_frozen_input_files": 194,
+    "corrected_search_records": 196,
+    "unique_corrected_input_hashes": 196,
+    "original_inputs_without_matching_replay": [],
+    "method": "Compare every inputSHA in the preserved pre-repair manifest against the inputSHAs bound by all corrected search outputs. Includes separate cap variants."
+  }
+}

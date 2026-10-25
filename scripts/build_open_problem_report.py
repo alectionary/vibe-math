@@ -111,6 +111,8 @@ for r in rows:
    if key in a:s+=f"- [{label}](../{a[key]}).\n"
  if r.get('supporting_lean_artifact'):
   a=r['supporting_lean_artifact'];s+=f"- Supporting Lean artifact (not full target coverage): [checked scope](../{a['readme']}). {a['scope']}\n"
+ if r.get('selection_review'):
+  a=r['selection_review'];s+=f"- October 24 selection review: {'selected next new problem' if a['selected'] else 'compared candidate'}. [Rationale and bounded next action](../{a['report']}). The selection snapshot alone claimed no mathematical answer; later research progress is listed below.\n"
  if r.get('scope_comparison'):s+='- Scope comparison: '+r['scope_comparison']+'\n'
  if r.get('research_source_index'):s+='- Research sources: [central source index](RESEARCH-SOURCES.md).\n'
  for progress in r.get('research_progress',[]):
@@ -133,6 +135,8 @@ e=html.escape
 cards=[]
 for r in rows:
  sources='; '.join(f'<a href="{e(o["url"],quote=True)}">{e(o["source_id"])}: {e(o["locator"])}</a>' for o in r['occurrences'])
+ if r.get('selection_review'):
+  a=r['selection_review'];sources+=f'<p><a href="../{e(a["report"],quote=True)}">October 24: {"selected next new problem" if a["selected"] else "candidate comparison"}</a></p>'
  if r.get('stronger_bound_followup'):
   a=r['stronger_bound_followup'];s+='- **Incidence replacement answered positively:** [reusable two-block bound, sparse nontrivial CSS families and a restricted Gram obstruction](../'+a['report']+'). '+a['source_direction_status']+'\n'
  if r.get('empirical_followup'):

@@ -1,0 +1,201 @@
+Next quantum coding problem — selection review, 24 October 2026
+
+Recommendation: L-F25-distance-preservation. NEW PROBLEM for this project.
+
+Question and source
+Find sufficient constraints on a fully connected type-I quasi-cyclic base
+matrix that ensure d_Q = d_C for its symmetric lifted-product CSS code.
+Raveendran, Declercq and Vasic, On the Minimum Distances of Finite-Length
+Lifted Product Quantum LDPC Codes, arXiv:2503.07567v1, 10 March 2025,
+Section VI. Definitions: Sections II–III, especially equation (9).
+https://arxiv.org/html/2503.07567v1#S6
+
+The problem was inventoried on October 23. That indexing, source reading,
+and related girth/decoder work did not answer it. No distance-preservation
+investigation or result for this canonical target was found in the current
+formalization notes. This is a distinct target within an already familiar
+construction, not a claim that lifted-product codes are new territory for us.
+
+Answer contract
+Source question -> a nonvacuous, checkable sufficient condition on an explicit
+family of base exponent matrices -> a proof of both distance inequalities,
+including nontrivial logical witnesses and exclusion of all lighter logicals.
+A condition that merely restates d_Q >= d_C is not an answer. Nor is excluding
+only the paper's displayed weight-(m+n) patterns, finding a heavy logical
+representative, or observing no failure in sampled decoding.
+
+Proposed first research block (not executed by this selection task)
+Restrict initially to normalized 3-by-4 monomial bases over cyclic lifts.
+Use lift lengths 6 through 24 as a bounded discovery window, with exhaustive
+versus sampled scope frozen before running a search. No claim of exhaustive
+enumeration of that window is intended. First reproduce small source examples
+and audit the LP matrix convention. Then test the following OUR hypothesis:
+absence of the source's RCPC patterns, together with girth at least eight in
+the expanded classical base graph, suffices for d_Q = d_C in this family.
+The hypothesis is a diagnostic restriction of the source question, not an
+author-posed conjecture or an asserted theorem.
+
+Stop this first block at a fully verified counterexample to that hypothesis,
+or a structural sufficient-condition theorem for a clearly specified nonempty
+subfamily, or a documented feasibility failure at the frozen search limit.
+Counterexample success requires an exact classical-distance lower certificate
+strictly above the weight of a quantum logical witness. The witness must have
+zero opposite syndrome and lie outside the entire stabilizer row span.
+It need not establish the exact quantum distance. A counterexample refutes our
+hypothesis; the general sufficient-condition problem remains open.
+Do not silently replace this with another decoder campaign or a girth theorem.
+
+Precise objects and intended formal interface
+Let L >= 2, R = F_2[x]/(x^L-1), and E : Fin 3 -> Fin 4 -> ZMod L.
+Normalize E(0,j)=E(i,0)=0 and set B_ij=x^(E_ij) in R. These zeros denote
+identity circulants, not absent edges. Set B*=transpose with x -> x^(-1).
+Use the source's equation (9), with B1=B2=B:
+  HX = expand([B tensor I_4 | I_3 tensor B*]),
+  HZ = expand([I_4 tensor B | B* tensor I_3]).
+Both have 12L rows and 25L columns. The classical matrix expand(B) has
+3L rows and 4L columns. All weights and row spans are binary after expansion.
+d_C minimizes weight over nonzero ker(expand(B));
+d_X minimizes over ker(HZ) minus rowspan(HX), and d_Z swaps X and Z;
+d_Q=min(d_X,d_Z). Require positive CSS dimension when discussing distance.
+
+Lean interface sketch, NOT a compiled statement:
+  distance_preserved_of_base_constraints
+    (L : Nat) (hL : 2 <= L) (E : Fin 3 -> Fin 4 -> ZMod L)
+    (normalized : Normalized E) (constraints : DesignCondition E)
+    (nontrivial : PositiveCSSDimension (sourceLP E)) :
+    quantumDistance (sourceLP E) = classicalDistance (expandBase E)
+DesignCondition is deliberately not invented during selection. Discover and
+state it explicitly before treating this signature as a mathematical theorem.
+Boundary checks: repeated rows/columns, deficient ranks, even L, self-pairs in
+odd RCPC partitions, vanishing logical quotient, and stabilizer cancellations.
+Do not import a full-row-rank assumption without testing it: evaluating a fully
+connected monomial base at x=1 gives an all-one matrix, with inherited row
+dependencies. Ordinary binary HGP and ring LP also have different lengths.
+
+Why this choice
+Candidate                              Assessment
+L-F25-distance-preservation             Best balance of direct quantum payoff,
+                                       a definite missing condition, small
+                                       exponent descriptions, and reusable
+                                       matrix/graph infrastructure.
+L-F26-exact-distance                    Exact target, but 28,800 qubits and the
+                                       source interval 18..192 make complete
+                                       lower-bound certification a substantial
+                                       burden. Not the best first choice.
+L-F26-logical-qubit-lifts                Rank certificates are attractive, but
+                                       Section 4.1 already gives a connected
+                                       lift increasing k from 50 to 62. A mere
+                                       existence witness repeats source work;
+                                       a systematic construction needs a new,
+                                       sharper objective.
+L-F39-ub-distance                       Good reserve. A different code family,
+                                       but 'tighter analysis' is broad and its
+                                       small examples already have claimed
+                                       exact distances. Freeze a new family or
+                                       genuinely sharper bound first.
+L-F49-small-weight-degeneracy           Requires a precise family and meaning
+                                       of 'sufficiently small'; Section V also
+                                       proves a restricted answer. More scope
+                                       ambiguity than the chosen question.
+Completed P11/P34/F16 investigations    Excluded by the user's new-target
+                                       requirement, including their unfinished
+                                       project-derived follow-ups.
+
+Tractability is a relative judgment, with low confidence; no discovery-time
+estimate or probability of success is assigned. A 3-by-4 base has six normalized
+exponents, but exact distance still grows difficult. The decisive obstruction
+is controlling logical vectors with support in both product sectors, modulo
+all stabilizers. Searching for new support patterns can yield a small exact
+counterexample before a general theorem. A positive theorem must supply a
+genuine weight lower bound, not just characterize the known RCPC witness.
+
+Formalization cost
+Moderate for a fixed counterexample after external discovery: finite binary
+matrices, exact syndromes, row-span nonmembership, and a classical-distance
+exclusion certificate. Potentially substantial for a general theorem: source
+matrix equivalence, quotient representatives, and a weight-preserving reduction
+need fresh proofs. Existing CyclicLift/LiftedProduct.lean provides graph/matrix
+bridges; the prior low-weight-logical and lift-label work supplies related
+certificate patterns. These are reusable ingredients, not a distance theorem
+for arbitrary 3-by-4 bases. No build or exact-target Lean proof is claimed here.
+
+Literature comparison and search limits
+F25 Section IV-D, Definitions 2–5 and Theorem 2 concerns the presence of RCPC,
+and claims a distance formula under that condition. It does not settle the
+Section VI design problem in the absence of RCPC. Its proof is presented as a
+sketch with fuller treatment deferred. Neither its converse nor completeness
+of the low-weight pattern classification is assumed in the proposed block.
+Source Table I and equation (92) give finite construction/search examples;
+reproducing those alone would not answer the open structural question.
+
+F26's square binary HGP bases and constrained CPM lifts differ from F25's
+rectangular monomial ring LP. Its connected rank-growth example settles the
+bare existence version, not a general rank-design method or F25 distance.
+F39's Frobenius-coupled bicycle subclass supplies upper bounds and explicit
+logical cosets; it is not a distance-preservation theorem for rectangular LP.
+F49's assisted-code/Steiner setting and its nondegeneracy theorem likewise do
+not imply the chosen statement.
+
+On October 24, web queries included:
+  "On the Minimum Distances of Finite-Length" "distance" 2026
+  "2503.07567" "sufficient"
+  "lifted product" "distance preservation" sufficient constraints
+  "Raveendran" "Declercq" "Vasic" "minimum distances" 2026
+  "lifted product" "classical" "minimum distance" "full row rank"
+  site:github.com "2503.07567"
+  site:github.com "lifted product" "distance"
+  site:x.com "2503.07567"
+  site:x.com "lifted product" "distance"
+  site:scholar.google.com "On the Minimum Distances of Finite-Length Lifted Product Quantum LDPC Codes"
+Search outputs were bounded ranked web results, not exhaustive citation/code
+indexes. Direct arXiv version history still exposes v1 for F25; the author
+homepage was inspected as a downstream discovery route. No complete answer
+was identified in the inspected primary texts. Current resolution remains
+'not independently established', not a claim of global absence.
+
+GitHub broad discovery returned a7b/yarn/code_search (LP search tooling),
+quantumgizmos/bias_tailored_qldpc (numerical distance estimates), and
+Stavan-Jain/qec-lab (a different Gross-code distance-bound audit). None of
+these search excerpts supplies the selected theorem; source-code proof audits
+remain pending. A known-positive check using the inventory's pinned LeanPool
+LiftedProduct file failed in web search and direct/raw retrieval (cache miss).
+Therefore negative exact-code results are discarded as evidence of absence.
+No native authenticated GitHub code search was performed. X-index queries
+yielded no inspected relevant post; native X access and filter efficacy were
+not verified, so this is an access/coverage gap. Scholar indexing did not yield
+an inspected citation list; forward-citation coverage remains incomplete.
+
+An indexed High-rate qLDPC processors manuscript excerpt advertises a
+full-row-rank classical-to-quantum upper bound and a rank-deficient
+counterexample over C4 x C2. Treat this as an unresolved primary-text lead,
+not a theorem imported here: locate its actual version and check the complete
+hypotheses before committing to discovery. An upper bound alone does not
+give the missing lower bound. The search also surfaced newer author papers
+on other lift constructions; only their abstracts/snippets were encountered.
+They do not establish resolution of F25 and their full-text screens are pending
+if used in a subsequent investigation. Bibliography-only leads were not pursued
+recursively in this selection block.
+
+Source question harvesting and preservation
+See literature/quantum-next-selection-2026-10-24.json for exact source files,
+SHA-256 hashes, paper-by-paper screening outcomes and existing canonical IDs.
+F25 and F26 received a full-text lexical screen plus surrounding introduction,
+definition, theorem and concluding context inspection. All explicit future
+directions found link to existing entries. F39 and F49 were rechecked against
+their existing full-text screens. No new mathematical target was added.
+F49 Section V's theorem is a restricted answer within the conjecture's context,
+not evidence that its general conjecture is resolved.
+
+Inventory delta: 0 canonical entries, 0 eligible targets, 0 completed targets,
+0 new paper records. Two existing relevant-section screens are upgraded to
+full-text question screens; no line-by-line correctness audit is implied.
+The cohort remains 295 entries, 144 eligible targets, 5 completed Lean targets.
+The current selection is recorded separately from the historical completed P11
+planning recommendation, which is preserved for provenance.
+
+Question answered: Selection completed; no new mathematical question solved.
+Question still open: Sufficient base constraints ensuring d_Q=d_C in the source
+type-I lifted-product construction; no general preservation proof found here.
+Next proposed target: NEW PROBLEM, L-F25-distance-preservation, beginning with
+the bounded 3-by-4 diagnostic above. This turn stops at selection and a research
+contract; no expensive search, proof campaign or publication was initiated.

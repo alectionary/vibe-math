@@ -1,0 +1,220 @@
+L-F25-distance-preservation — four-hour research contract
+Started 2026-10-25 02:13:15 UTC; stop at 06:13:15 UTC.
+New canonical problem; no previous source answer is assumed.
+
+Source: arXiv:2503.07567v1, Section VI; construction equation (9).
+Question -> nonvacuous sufficient base constraints for dQ=dC -> exact
+source-matched proof, or meaningful verified obstruction to a proposed route.
+
+Initial diagnostic (our hypothesis, not the authors' conjecture):
+For normalized fully populated 3x4 exponent matrices E modulo L, classical
+Tanner girth >=8 and failure of every RCPC pairing imply dQ=dC.
+Binary expansion uses P^e(row,col)=1 iff row=col+e mod L. B* is transpose
+with exponents negated; HX=[B tensor I4 | I3 tensor B*] and
+HZ=[I4 tensor B | B* tensor I3]. Minimum distance excludes the full opposite
+stabilizer row span. A witness below an exact lower bound on dC refutes
+the diagnostic without needing the exact dQ.
+
+Discovery sampling frozen before generation:
+Python random.Random(20261025), L=6..24, at most 50000 independent normalized
+six-exponent draws per L. Retain first five girth>=8, RCPC-free matrices per L;
+deduplicate literal matrices. Source examples are separate regression inputs.
+Record every attempted/accepted count and saved matrix. This samples normalized
+arrays; it is not uniform over equivalence classes or an exhaustive enumeration.
+Small-pivot Gaussian/ISD searches and syndrome-guided support searches are
+discovery methods. They establish upper bounds only when a saved logical is
+independently checked. Only completed exact kernel enumeration or a proved
+exclusion certificate establishes a classical lower bound.
+
+Before long runs, verify CSS commutation, matrix dimensions, all column/row
+weights, source examples, exact RCPC pair/self-pair rules, and direct BFS girth
+versus the exponent filter. Preserve failed approaches and search limits.
+Do not assume all syndrome-zero vectors are nontrivial logicals.
+
+First diagnostic stopping condition: verified counterexample, theorem for a
+nonempty explicit subfamily, or frozen search limit reached. With remaining
+authorized time, pursue the source sufficient-condition question via the
+newly identified obstruction, giving any expansion its own bounded contract.
+
+Deliverables: reproducible exact data and independent verification, written
+mathematical result and faithful Lean certificates/proofs where feasible,
+source/prior-art comparisons, paper question screens, and shared inventory
+reconciliation. No publication or external messaging is authorized.
+
+Structural follow-up, frozen 2026-10-25 03:09 UTC after decoding the L11 witness:
+E(a,b)=[[0,0,0,0],[0,a,b,3a],[0,2a,2b,b+2a]] modulo L.
+Candidate mixed cycle uses V=anti-diagonal 3x3 identity and U with diagonal
+entries 1,x^(-2a),x^(-2b) in its first three rows, and last row
+[x^(-2a),x^(-4a)+x^(-2a),x^(-b-2a),x^(-4a)].
+Claim to test/prove: source cycle equations hold for every L; wt<=11;
+full-fiber separator on left blocks (0,0),(1,0) proves nontriviality.
+For a=8,b=7 and L=11q, q>0, project to the verified L11 classical Tanner
+graph. Candidate classical lower bound: min(d_base,2*s_base)=12, using
+its stopping distance at least6. If projection parity is nonzero, use d_base;
+if it is zero, every occupied fiber contains at least2 selected variables,
+and its projected support is stopping. This would give an infinite connected
+counterfamily, since gcd(8,7,L)=1. This is a proposed written proof until its
+cover/parity/stopping bridges are checked, not an established family result.
+Bound: develop the family within the original 06:13:15 UTC stopping time;
+retain finite L11 certificate independently if any family bridge remains open.
+
+Chosen family specialization, 03:11 UTC:
+Use a=1,b=5, hence fixed integer E=[[0,0,0,0],[0,1,5,3],[0,2,10,7]].
+At L11 this is the original example under fiber multiplication by7; the
+new base was also enumerated and independently certified directly. Do not
+reuse the reduced original residues as integer labels for arbitrary L.
+Deterministic regression: q=1..16, L=11q, source CSS construction, witness
+syndrome and separating pairing; complete classical enumeration only q=1,2.
+The independent dense q=2 check gives dC18 and a weight11 nontrivial logical.
+General claims rely on the Lean/written family argument, not the sixteen tests.
+
+Semantic-strengthening audit, appended04:03 UTC:
+The transpose-code investigation began at03:49 UTC as a check of whether the
+mixed witness was explained by a lighter transpose classical code. Exact tests
+at22 listed lengths gave transpose distance2L. A polynomial Bezout identity
+with coefficient supports [1,4,6,7,8,9], [0,2,4,8,9], [3,4],
+[0,1,2,3,4,6,7] on the four column equations gives
+x_2(t+1)+x_2(t+2)=0. The bounded audit target is to prove every transpose
+codeword constant in its fiber, characterize its nonzero weight2L, and bridge
+that statement to the actual transpose C^T. Combine with the original
+classical two-full-fiber word of weight2L. This would refute even the
+strengthened proposed criterion adding transpose distance>=dC. It does not
+require or authorize an exact general quantum-distance computation.
+
+Also audit actual source matrix coefficients, arbitrary stabilizer row spans,
+both X/Z sectors, Hamming weights, nonempty minima and connected Tanner graph.
+These are semantic closure of the existing family result within the original
+06:13:15 UTC deadline. No new manuscript or publication is authorized.
+
+One bounded fresh diagnostic, frozen04:13 UTC before generation:
+Proposed strengthened criterion (ours, not source-author posed): normalized
+fully populated3x4 cyclic base; classical girth>=8; no full RCPC; for every
+choice of middle row k, the four values E_i,c+E_j,c-2E_k,c (other rows i,j)
+contain no value3 or more times; and transpose classical distance>=dC.
+The repeated-value test is invariant under row/column shifts and detects a
+row pairing on any3 columns after normalization, including subsets omitting
+column0. The proved family fails it on its first3 columns.
+
+Fresh protocol: random.Random(202610250413), L=12..24 in increasing order,
+at most50000 independent six-exponent draws perL. Retain first8 arrays perL
+that pass no4/6, no full RCPC and no3-column partial row pairing. Exclude
+literal arrays already in candidates.json and earlier fresh retained arrays;
+equivalent orbits are not excluded and no uniform-orbit claim is made.
+Freeze generation before computing outcomes. Compute exact classical and
+transpose minima only when kernel dimension<=27; retain any cap failures.
+Only arrays with complete minima and dTranspose>=dC enter the criterion test.
+For those run the existing support finder at bound min(dC-1,11), node cap10^7,
+X sector (the two square-block transpose symmetry exchanges sectors).
+A found word must pass independent dense source-matrix verification before
+being reported as a counterexample. Stop on a verified counterexample or
+completion of all frozen104 bases, whichever comes first. A cap or no witness
+is not a lower bound; this cannot prove the proposed general criterion.
+Do not tune the criterion, seed, sample or support bound after results arrive.
+The original06:13:15 UTC stop takes precedence. This is a diagnostic follow-up
+within the source-condition investigation, separate from the completed
+infinite obstruction and its ongoing formal semantic audit.
+
+Separate adaptive finite follow-up, frozen04:19 UTC:
+The104-base campaign has ended with no witness under its fixed cap. Keep that
+campaign unchanged. Select its first L13 base, fresh-L13-0, with exact dC14,
+dTranspose26, no3-column partial row pairing and no full RCPC. The follow-up
+question is whether this particular code has a quantum word of weight<=13.
+Run one source X-sector support search through13 with cap10^8 nodes. Independently
+verify any returned witness. Stop at a verified witness, a completed exclusion
+through13, or the node cap. Record separately; do not pool this adaptive result
+with the held-out104-base diagnostic or infer a general equality theorem.
+This targets the two intermediate weights12 and13 left open by the cap11.
+The original06:13:15 UTC deadline still applies.
+
+Complete the original parametric mechanism, bounded04:28 UTC:
+The original03:09 structural contract included arbitrary a,b. The fixed a1,b5
+family is now proved, and ParametricRing verifies the universal algebraic cycle
+identity. Complete its faithful coefficient/source-matrix version: for every
+positive cyclic L and arbitrary a,b in ZModL, the3x4 E(a,b) template has a
+nontrivial source X logical of weight<=11. Reuse the augmentation separator
+and an11-term support list. This is an explicit obstruction to designing
+quantum distance>=12 with that template. Keep dC>=12, girth and RCPC claims
+restricted to the separately proved L11q specialization unless another
+projection bridge is actually completed. Stop within the original deadline.
+
+Final reproducibility audit, bounded04:50 UTC:
+Freeze Lean sources. Copy only the admitted authored modules into an isolated
+scratch directory; rebuild their dependency DAG with at most3 compiler workers.
+Exclude original research/dyadic-rank compiled objects from LEAN_PATH; reuse
+only the pinned cached mathlib, dependencies and standard library. This checks
+authored-source closure, not a fresh mathlib build. Stop by06:00 UTC to reserve
+13 minutes for final closeout. A successful final root is required for an
+isolated-rebuild PASS; otherwise record the bounded failure/timeout honestly.
+
+Completion-shortcut repair and exact replay,05:08 UTC:
+The C++ rem==2 shortcut omitted one-variable completions. Withdraw every
+earlier negative support-search assertion, preserve original outputs and
+source, and replay with the same frozen matrices, bounds and node caps.
+Require a focused failing-old/passing-new regression and independent full-word
+small periodic tests before replay. Store corrected outputs separately.
+Original positive witnesses, classical enumerations and Lean proofs remain
+valid. search-repair.json binds the repair, tests and replacement records.
+
+Independent SAT cross-check, bounded05:13 UTC:
+Use the installed pinned CaDiCaL2.1.2 through a separate dense CSS-to-CNF
+encoding of HZ kernel, nonmembership in the full HX row span and weight<=13
+for the already selected L13 case. Test the encoding against full-word
+oracles on small periodic CSS inputs and its known weight14 upper witness.
+Use global cyclic-translation symmetry only with periodic checks/stabilizers.
+One900-second solver limit; retain UNKNOWN honestly and do not tune or rerun
+a timed-out target. SAT witnesses require independent dense verification.
+An UNSAT result without a Lean encoding/certificate bridge remains external
+finite evidence. No new general equality theorem is authorized or inferred.
+
+Universal-template boundary audit,05:16 UTC:
+Test every pair a,b in ZModL for each L1..9, including cancelling terms,
+zero parameters and nonunits. Independently expand source matrices, check
+CSS/syndrome, separating functional and augmented full stabilizer rank.
+The support helper must add polynomial terms modulo2 rather than retaining
+duplicate coordinates. No girth/classical lower or distance-drop claim is
+made at these small lengths. This audits the existing universal theorem.
+
+Bounded structural follow-up,05:22 UTC, stop by05:50 UTC:
+Question: in a binary Tanner graph of minimum variable degree at least3 and
+no4/6 cycles, does every kernel support of size<=11 meet each check in0 or2
+positions? Intended answer: generic Lean implication via the classical
+check-rooted tree argument. Four selected neighbors of one check force
+four root variables and eight distinct partners, hence support size>=12.
+Parity then rules out degrees1 and3 below12. This supports future low-weight
+classification; it is not a source LP equality theorem. Credit the classical
+Tanner-tree method already inspected in Kelley etal. Keep the50 main proof
+sources frozen and check any new helper in a separate closure. Retain incomplete
+work as held if it does not finish within this bound. No new source target.
+
+Finite structural diagnostic,05:35 UTC; stop05:50:
+For the explicit complete cross-block seven-coordinate pattern, enumerate all
+24 column permutations and6 row permutations. Derive the six integer linear
+consistency equations in normalized E. Search integer combinations with
+coefficients in[-2,2] for a forced4/6-cycle, full RCPC, or a cyclic g-torsion
+collision withg2or3. Recheck each found combination by direct Python integer
+multiplication. Retain unclassified cases under the same coefficient cap;
+no retuning. This does not assert all weight7 operators have this pattern,
+a converse RCPC theorem, or a new Lean result. SourceTheorem2 is an implication
+fromRCPC; its wording does not supply the proposed converse.
+
+Residual-case written/formal analysis,05:37 UTC, same05:50 stop:
+The frozen144-case diagnostic leaves six single-transposition column maps
+with identity row map unclassified. Preserve that computational outcome.
+Attempt a separate generic Lean obstruction: two fixed columns in the stated
+source matching equations force three distinct row differences into a coset
+of cyclic2-torsion, which has at mosttwo elements. This contradicts no4cycles.
+No coefficient cap or frozen diagnostic is changed. Even a successful residual
+lemma does not prove that all weight7 logicals have the specified pattern or
+provide the whole catalog-to-source Lean bridge.
+
+Final target audit,05:48 UTC:
+SourceSectionV-B/conclusion already assert the RCPC recipe's stabilizer-weight
+exclusion. Treat weight7 characterization work as source-claim verification,
+not a new open mathematical problem. Preferred next proposed FOLLOW-UP is
+the truncated lower bound dQ>=min(dC,12) under normalized3x4 girth8/noRCPC/
+no3-column partial pairing and dTranspose>=dC. This is exactly the frozen
+104-base search range, not a post-hoc change to that experiment. No universal
+proof or counterexample is claimed. Generic zero-or-two geometry is sharp
+at12 and motivates the restricted target. All new proof/search work stops
+by05:50; remaining authorized time is semantic and reproducibility closeout
+until the original06:13:15 deadline.

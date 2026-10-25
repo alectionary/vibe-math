@@ -1,0 +1,180 @@
+Low-weight geometry and the next bounded distance-preservation follow-up
+Canonical parent: L-F25-distance-preservation
+Related existing direction: L-P34-logical-partitions
+Research date:24October2026 Pacific
+
+COMPLETED GENERIC PROOFS
+
+LowWeightChecks.lean proves the following general implication for a binary
+Tanner incidence E. Assume every variable has at least three distinct check
+neighbors and there are no simple four- or six-cycles. Every binary kernel
+word with support size at most eleven meets every check in zero or two
+selected positions. All variables and checks in the theorem are arbitrary
+finite/decidable types as required by its signature; no source LP hypothesis
+is substituted for a missing graph proof.
+
+The check-rooted counting proof is a classical Tanner-tree argument. If one
+check has four selected neighbors, choose two other checks at each of those
+four variables, and a selected partner at each new check. Four-cycle exclusion
+keeps the eight partners outside the four roots and separates partners of one
+root; six-cycle exclusion separates partners of different roots. There are
+at least twelve selected variables. Below twelve, each check degree is at
+most three; binary parity leaves only zero and two.
+
+This proof and its parity/kernel-support bridge pass the normal source-bound
+build and a separate rebuild against freshly rebuilt authored dependencies.
+Only propext, Classical.choice and Quot.sound occur in the printed closures.
+See auxiliary-verification.json. This is separate from the frozen50-module
+counterfamily root.
+
+An independent exact finite example shows the generic threshold is sharp:
+a17-by12 ordinary binary matrix has every variable degree three, girth eight,
+kernel dimension one and minimum distance twelve. Its nonzero word meets one
+check in four positions. The construction is four root variables at one check,
+eight private partners and an eight-cycle connecting the partners, with the
+partners of each root opposite on the cycle. low-weight-sharpness.json records
+the whole matrix, exact enumeration and BFS check. This sharpness example is
+external finite evidence, not a Lean certificate or an LP quantum instance.
+
+PermutationFixedColumns.lean separately proves that two nonzero cyclic
+elements killed by two must coincide. It then excludes the following explicit
+source matching equations when k has two distinct fixed columns p,q:
+
+  s_j + E(i,k(j)) = t_i - E(i,j), for every i inFin3 and j inFin4,
+
+under classical four-cycle exclusion. The equations force all differences
+(E(i,p)-E(i,q))-(E(0,p)-E(0,q)) into cyclic2-torsion. Four-cycle exclusion
+makes the three row differences distinct, contradicting the size of that
+torsion set. auxiliary-fixed-columns-verification.json binds the normal and
+isolated checks. The theorem's interface is the displayed matching equations;
+it is not a complete logical-support classification.
+
+THE RESTRICTED144-PATTERN DIAGNOSTIC
+
+Consider exactly one left coordinate U(j,k(j),s_j) for each j inFin4 and
+one right coordinate V(l(i),i,t_i) for each i inFin3, with k and l permutations.
+Assume their check incidences pair across all twelve (j,i) check types.
+The source syndrome matching equations are
+
+  s_j+E(i,k(j))=t_i-E(l(i),j).
+
+Thus F(i,j)=E(i,k(j))+E(l(i),j) is row/column separable. For normalized E,
+its six consistency equations are
+F(i,j)-F(i,0)-F(0,j)+F(0,0)=0, i=1,2, j=1,2,3.
+These are integer linear equations A*v=0 in the six nontrivial exponents.
+
+The frozen diagnostic enumerates all24*6=144 permutations and searches only
+integer combinations of these six equations with coefficients in[-2,2].
+It finds125 forced short-cycle identities,12 full-RCPC identities, one cyclic
+two-torsion collision, and leaves six maps unclassified under that fixed search.
+The latter six are single column transpositions with identity row map; they
+have two fixed columns. The identity-map torsion case also has fixed columns.
+The separate checked fixed-column obstruction applies to those seven cases
+under the stated matching equations. The original diagnostic counts remain
+unchanged.
+
+verify_pattern_certificates.py independently reconstructs A and every target
+form by evaluating scalar basis exponent matrices. It checks all saved integer
+combinations with Python integers and checks coverage of all144 maps. The
+catalog is permutation-patterns.json; its independent check is
+pattern-certificate-verification.json. No coefficient cap was retuned.
+
+At the level of a written finite-certificate argument, the specified
+permutation-pattern family is therefore forced into RCPC or a forbidden cycle.
+The universal source-equation/catalog Lean bridge is not supplied here.
+No inference that every weight-seven logical has this form is part of this
+finite diagnostic.
+
+SOURCE-CLAIM VERIFICATION ROUTE —NOT A COMPLETED LEAN RESULT
+
+One supporting verification task is the following claimed source consequence:
+
+  For a normalized fully populated source3x4 cyclic base, classical girth>=8 and a nontrivial
+  weight-seven logical imply a row or column RCPC pairing.
+
+Normalized means that the first row and first column of E are zero. Keep this
+hypothesis explicit: literal RCPC equalities can change under arbitrary row
+gauge shifts. The finite catalog uses exactly this normalized model.
+
+RDV2025 Theorem2 explicitly states the forward RCPC implication. SectionV-B
+and the conclusion assert the recipe's stronger exclusion of stabilizer-weight
+logicals. Accordingly, the weight-seven work is an audit/formalization of a
+source claim, not a new open mathematical question. P34's conclusion asks how partition
+constraints translate to Tanner-graph properties. Reuse those canonical source
+identifiers; this task adds no new author-posed question or eligible target.
+
+A proposed proof route has the following bridges still to complete and audit.
+
+1. Instantiate the generic zero-or-two theorem on the actual source quantum
+   Tanner incidence. The prior P34 girth characterization and the new source
+   matrices use the same circulant/star convention; their coordinate transport
+   and degree-three/four statements must be explicit.
+
+2. Turn a weight-seven kernel support into a simple graph joining its paired
+   variables through checks. No four-cycles gives unique edges and no six-cycles
+   gives triangle-freeness. The source left/right degrees are three/four. Parity
+   makes the number of selected left variables even, so a selected right variable
+   exists. Its four neighbors are independent. Each has at least three neighbors
+   among the three remaining vertices, forcing the proposed K(4,3) geometry.
+   This argument must be checked with the actual matrix incidence.
+
+3. Show that the complete cross-block geometry contains each first left index
+   and each second right index once, producing maps k,l and fibers s,t. If one
+   map repeats, source four-cycle exclusion should force both maps constant.
+   In that case the matching equations identify exactly one translated HX row,
+   which is a stabilizer. Otherwise both maps are permutations.
+
+4. Transport the144 integer certificates to the source exponent equations,
+   apply the fixed-column obstruction, and cover the other CSS sector with the
+   actual row/qubit permutation and full span. The restricted catalog does not
+   replace these steps or the stabilizer/nontriviality argument.
+
+These are proposed bridges, with the generic lemmas and exact catalog already
+available. The source claim is not yet fully checked in this artifact. The broader
+distance-equality condition remains open even if this weight-seven case succeeds:
+the proved counterfamily has a weight-eleven logical.
+
+PREFERRED NEXT FOLLOW-UP: A TRUNCATED DISTANCE-PRESERVATION CONDITION
+
+Our proposed bounded mathematical target is:
+
+  dQ >= min(dC,12)
+
+for normalized fully populated3x4 cyclic bases satisfying all of:
+  classical girth at least8;
+  no full row/column RCPC;
+  no value repeated three times among E(i,c)+E(j,c)-2E(k,c) over the four
+    columns, for each choice of middle row k and other rows i,j;
+  transpose classical distance at least dC.
+
+The truncated target is an adaptive recommendation made after the diagnostic.
+Its exclusion range matches the corrected frozen104-base campaign: no logical
+of weight<=min(dC-1,11). The inputs and bounds remain unchanged; this does not
+turn that diagnostic into a successful proof of the original full-equality
+condition. The finite sample supports no
+universal conclusion. The new generic zero-or-two lemma applies throughout
+this range and is sharp at12, giving a natural bounded classification problem.
+The source-claimed weight7 case still needs its faithful verification; the
+new mathematical bottleneck is controlling other mixed supports, especially
+weights8..11. Pure-block/classical comparisons and the smallest-weight cases
+must also be bridged, with both sectors and full spans. For the usual Pauli
+distance, include the union-of-support/min-sector bridge: a nontrivial Pauli
+has a nontrivial pure component whose weight is no larger.
+
+This target is a restricted sufficient lower-bound question within the original
+source design problem. It does not promise equality for classical distance
+above12, or silently assume a general quantum upper bridge. It is our proposed
+follow-up, not an author-posed numbered conjecture or a new canonical target.
+
+WHY THIS TARGET IS PREFERRED
+
+The truncated problem uses one finite range of support geometries and the
+checked generic lemmas, while aiming for a universal entrywise design result.
+The144-pattern work supports the already-claimed weight7 case. The alternative
+finiteL13 quantum14 certificate has an independent upper witness and a corrected
+external exclusion through13, but no Lean lower certificate; its separate SAT
+attempt returned UNKNOWN at900seconds. Keep that as a deferred finite option.
+
+No discovery-time or formalization-time estimate is inferred. Completion of
+generic helper lemmas is not completion of either source question. Canonical
+completion delta for this research block remains zero.

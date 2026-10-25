@@ -150,3 +150,19 @@ Check a known-positive control, retain effective query text and caps, inspect
 public matches, and exclude invalid searches from prior-art conclusions. Record
 X access restrictions and available date/order filters. Neither service substitutes
 for reading the applicable classical theorem and its hypotheses.
+
+### Audit negative searches with a full-word oracle
+
+The distance-preservation search had an "at most two more variables" shortcut
+that checked pairs but omitted singles. Positive logical witnesses and the
+independent Lean counterfamily proof remained valid, but every negative search
+claim had to be withdrawn. The repaired search reproduced those outcomes only
+after a failing-old/passing-new regression and 1,235 comparisons against complete
+binary-word enumeration on small periodic CSS inputs.
+
+Test every smaller completion allowed by a search budget, including degenerate
+and zero-quotient cases. Preserve old outputs as superseded history, replay the
+same frozen matrices and bounds, and bind results to the actual implementation
+and input hashes. Include node caps in conflicting input filenames. A repaired
+external exclusion still needs its own faithful bridge before it becomes a Lean
+lower-bound certificate. [Repair and replay evidence](formalization/distance-preservation/search-repair.json).

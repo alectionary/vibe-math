@@ -39,7 +39,9 @@ for s in sources:
     text += f"- Provenance: [source review ledger](../{s['provenance_ledger']}).\n\n"
     if s.get('question_screening'):
         q=s['question_screening']
-        text += f"- Question screen: [{q['status'].replace('_',' ')}](RESEARCH-QUESTION-SCREENING.md); {len(q['target_ids'])} linked canonical targets.\n\n"
+        text += f"- Question screen: [{q['status'].replace('_',' ')}](../{q.get('ledger', 'literature/RESEARCH-QUESTION-SCREENING.md')}); {len(q['target_ids'])} linked canonical targets.\n\n"
+    if s.get('selection_review_ledger'):
+        text += f"- Current selection comparison: [October 24 review](../{s['selection_review_ledger']}).\n\n"
     if s.get('followup_provenance_ledger'):
         text += f"- Follow-up comparison: [dated source review](../{s['followup_provenance_ledger']}).\n\n"
 (D / 'RESEARCH-SOURCES.md').write_text(text.rstrip() + '\n')
@@ -112,9 +114,16 @@ revisions; this documentation update does not rewrite frozen scientific inputs.
 '''
 for block in review.get('research_blocks', []):
     text += f"\n## Subsequent block: {block['id']}\n\n"
-    text += f"[{block['canonical_target_id']}](OPEN-PROBLEMS.md#{block['canonical_target_id'].lower()}): {block['component_answered']}. "
-    text += f"Remaining at that dated checkpoint: {block['component_not_attempted']}. "
-    text += f"[Report](../{block['report']}) · [Verification](../{block['verification']}) · [Prior art](../{block['prior_art']}).\n\n"
+    target = block.get('canonical_target_id', block.get('target_id'))
+    if target:
+        text += f"[{target}](OPEN-PROBLEMS.md#{target.lower()}): "
+    text += block.get('component_answered', block.get('conclusion', 'See the dated report')) + '. '
+    if block.get('component_not_attempted'):
+        text += f"Remaining at that dated checkpoint: {block['component_not_attempted']}. "
+    text += f"[Report](../{block['report']}) · [Verification](../{block['verification']})"
+    if block.get('prior_art'):
+        text += f" · [Prior art](../{block['prior_art']})"
+    text += '.\n\n'
     text += f"Canonical entry delta **{block['canonical_entry_delta']}**, eligible-target delta **{block['eligible_target_delta']}**, completed canonical Lean-target delta **{block['complete_canonical_lean_target_delta']}**. Consult this dated artifact for its exact source and proof scope.\n"
 for extension in review.get('indexing_extensions', []):
     text += f"\n## Separate indexing extension: {extension['id']}\n\n"

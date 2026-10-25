@@ -1,0 +1,32 @@
+/Users/danabbott/Documents/dancing-robots/research/unl-dissertations-2022-2026/formalization/distance-preservation/LowWeightChecks.lean:23:46: error: unsolved goals
+case «1».«0»
+V : Type u_1
+C : Type u_2
+inst✝² : DecidableEq V
+inst✝¹ : DecidableEq C
+E : V → C → Prop
+inst✝ : DecidableRel E
+h4 : NoFour E
+h6 : NoSix E
+hd : ThreeChecks E
+T : Finset V
+hT : SmallStopping.Stopping E T
+c : C
+v : Fin 4 → V
+hvi : Function.Injective v
+hvT : ∀ (i : Fin 4), v i ∈ T
+hvc : ∀ (i : Fin 4), E (v i) c
+a b : Fin 4 → C
+d : Fin 4 → Fin 2 → C := fun i k => if k = 0 then a i else b i
+i : Fin 4
+hab : ∀ (i : Fin 4), ¬a i = b i
+hac : ∀ (i : Fin 4), ¬a i = c
+hbc : ∀ (i : Fin 4), ¬b i = c
+hea : ∀ (i : Fin 4), E (v i) (a i)
+heb : ∀ (i : Fin 4), E (v i) (b i)
+h : b i = a i
+⊢ False
+/Users/danabbott/Documents/dancing-robots/research/unl-dissertations-2022-2026/formalization/distance-preservation/LowWeightChecks.lean:86:19: error(lean.unknownIdentifier): Unknown constant `Fintype.card_le_iff.mp`
+/Users/danabbott/Documents/dancing-robots/research/unl-dissertations-2022-2026/formalization/distance-preservation/LowWeightChecks.lean:86:9: error: Tactic `rcases` failed: `x✝ : ?m.48` is not an inductive datatype
+'LowWeightChecks.four_neighbors_force_twelve' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LowWeightChecks.degree_le_three' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

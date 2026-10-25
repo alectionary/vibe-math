@@ -1,0 +1,57 @@
+import VoltageCycles
+set_option maxHeartbeats 0
+namespace PermutationFixedColumns
+variable {L : Nat} [NeZero L]
+
+lemma nonzero_two_torsion_val (a : ZMod L) (ha : 2*a=0) (hn : a≠0) :
+    a.val+a.val=L := by
+  have hs : a+a=0 := by simpa only [two_mul] using ha
+  have hp : 0<a.val := Nat.pos_of_ne_zero (fun h => hn ((ZMod.val_eq_zero a).mp h))
+  by_cases h : a.val+a.val<L
+  · have hv := ZMod.val_add_of_lt h
+    rw [hs] at hv
+    simp only [ZMod.val_zero] at hv
+    omega
+  · have hg : L≤a.val+a.val := by omega
+    have hv := ZMod.val_add_val_of_le hg
+    simpa only [hs,ZMod.val_zero,zero_add] using hv
+
+/-- A cyclic group has at most one nonzero element killed by two. -/
+theorem two_torsion_unique (a b : ZMod L) (ha : 2*a=0) (hb : 2*b=0)
+    (hna : a≠0) (hnb : b≠0) : a=b := by
+  apply ZMod.val_injective L
+  have h1 := nonzero_two_torsion_val a ha hna
+  have h2 := nonzero_two_torsion_val b hb hnb
+  omega
+
+/-- In the complete cross-block pattern with identity row map, two fixed
+columns are incompatible with classical four-cycle exclusion. The displayed
+equations are the pattern's source syndrome matching equations. -/
+theorem two_fixed_columns_impossible (e : Fin 3 → Fin 4 → ZMod L)
+    (h4 : VoltageCycles.NoFourVoltage e) (k : Fin 4 → Fin 4)
+    (p q : Fin 4) (hpq : p≠q) (hkp : k p=p) (hkq : k q=q)
+    (s : Fin 4 → ZMod L) (t : Fin 3 → ZMod L)
+    (h : ∀ i j, s j+e i (k j)=t i-e i j) : False := by
+  let δ : Fin 3 → ZMod L := fun i => e i p-e i q
+  have hδ : ∀ i j, i≠j → δ i≠δ j := by
+    intro i j hij he
+    apply h4 i j p q hij hpq
+    dsimp [δ] at he
+    linear_combination he
+  have hz (i : Fin 3) : (2 : ZMod L)*(δ i-δ 0)=0 := by
+    have hip:=h i p
+    have hiq:=h i q
+    have h0p:=h 0 p
+    have h0q:=h 0 q
+    rw [hkp] at hip h0p
+    rw [hkq] at hiq h0q
+    dsimp [δ]
+    linear_combination hip-hiq-h0p+h0q
+  have ha : δ 1-δ 0≠0 := sub_ne_zero.mpr (hδ 1 0 (by decide))
+  have hb : δ 2-δ 0≠0 := sub_ne_zero.mpr (hδ 2 0 (by decide))
+  have he := two_torsion_unique (δ 1-δ 0) (δ 2-δ 0) (hz 1) (hz 2) ha hb
+  exact hδ 1 2 (by decide) (sub_right_inj.mp he)
+
+#print axioms two_torsion_unique
+#print axioms two_fixed_columns_impossible
+end PermutationFixedColumns

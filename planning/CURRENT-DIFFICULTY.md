@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 295 entries (114 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 319 entries (138 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -2722,13 +2722,13 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Newly inventoried target; no invented research difficulty or discovery-time estimate is assigned.
+Selected in the October24 qualitative comparison: direct quantum distance payoff, six normalized exponents in the first family, and reusable matrix/graph infrastructure. Exact distance exclusion and mixed-sector logical reduction remain substantial obstacles; no numeric effort tier assigned.
 
-First milestone: Read the cited source definitions and formulate a bounded target with a matching Lean signature, then assess missing prerequisites.
+First milestone: Completed: source-matched infinite counterfamilies, corrected frozen104-base and L13 finite searches, plus generic Lean low-weight check geometry and a cyclic fixed-column obstruction. A restricted144-pattern catalog is independently checked but its full source/support bridge is missing. Preferred next follow-up: prove or refute the truncated bound dQ>=min(dC,12) under the strengthened entry tests. SourceSectionV-B already claims the stabilizer-weight exclusion, so the weight7 work is a source-claim verification task, not a new open mathematical result. ExactL13 quantum14 certification remains a deferred finite option. See search-repair.json for the repaired search and unchanged replay outcomes.
 
-Gate: Planning assessment pending. Inspect the precise source instance, model and missing Lean prerequisites before assigning an effort band; this is not an assertion that the source question is ill-posed.
+Gate: The strengthened condition has been stated and boundedly tested, but no general proof is established. No numeric effort tier or discovery-time prediction is inferred for the full design question.
 
-Basis: New source target from literature/research-reconciliation.json; no difficulty estimate or Lean discovery audit has yet been performed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f25-distance-preservation).
+Basis: Full source-condition difficulty is still unassessed. The four-hour bounded investigation refuted our first proposed criterion with source-matched Lean proofs and independent finite checks; this does not complete the original design problem. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f25-distance-preservation).
 
 ### L-F25-general-protographs
 
@@ -4537,3 +4537,387 @@ First milestone: Verify current mathematical status and exact hypotheses.
 Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
 
 Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f83-optimal-index).
+
+### L-F86-surgery-cost
+
+Reduce the spacetime cost of mitten-code surgery gadgets.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-surgery-cost).
+
+### L-F86-structured-decoding
+
+Develop faster and more effective decoders exploiting mitten-code structure.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-structured-decoding).
+
+### L-F86-superconducting-routing
+
+Improve superconducting on-chip routing for mitten-code syndrome extraction and logical operations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-superconducting-routing).
+
+### L-F86-atom-movement
+
+Improve atom-array movement and syndrome-extraction strategies, including moving data, GHZ ancillas or different transport.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-atom-movement).
+
+### L-F86-experimental-processors
+
+Demonstrate high-rate qLDPC processors experimentally using the proposed small-block codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-experimental-processors).
+
+### L-F86-teraquop-certification
+
+Assess and certify teraquop-scale processing capacity for higher-distance mitten codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-teraquop-certification).
+
+### L-F86-beam-decoder-comparison
+
+Compare the telescoping and beam-search decoders on the same detector error models.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-beam-decoder-comparison).
+
+### L-F86-atom-loss
+
+Determine achievable qLDPC performance with loss-aware decoding under realistic atom loss.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f86-atom-loss).
+
+### L-F87-qdistevol-refinement
+
+Refine QDistEvol and implement it in C using asymptotically optimal Gaussian elimination.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f87-qdistevol-refinement).
+
+### L-F87-faster-bposd
+
+Develop a faster BP-OSD implementation and assess its competitiveness with random information-set distance searches.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f87-faster-bposd).
+
+### L-F88-solver-scaling
+
+Extend distance-certificate scaling through decomposition and solvers specialized to linear codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f88-solver-scaling).
+
+### L-F88-non-css
+
+Extend the verified distance framework to general non-CSS stabilizer codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f88-non-css).
+
+### L-F88-subsystem
+
+Extend the formalization to subsystem codes and the broader stabilizer formalism.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f88-subsystem).
+
+### L-F88-verified-row-reduction
+
+Implement verified row reduction for kernel-basis computation in the Lean-QEC preprocessing pipeline.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f88-verified-row-reduction).
+
+### L-F88-circuit-integration
+
+Connect the QEC layer to verified circuit compilers such as SQIR.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f88-circuit-integration).
+
+### L-F88-gate-calculus
+
+Develop a richer verified gate-level quantum-circuit calculus.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f88-gate-calculus).
+
+### L-F89-inherited-logicals
+
+Describe inherited and newly created logical degrees of freedom under lifts, including even-index lifts.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-inherited-logicals).
+
+### L-F89-gadget-distance
+
+Determine how inherited logical-operation gadgets preserve distance under lifting.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-gadget-distance).
+
+### L-F89-operation-transfer
+
+Determine when transversal gates, homomorphic CNOTs and measurements, or code switching transfer to lifts.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-operation-transfer).
+
+### L-F89-thermodynamic-branches
+
+Find geometric and homological conditions selecting lift branches with common thermodynamic behavior.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-thermodynamic-branches).
+
+### L-F89-decoder-transfer
+
+Determine whether useful decoders transfer from a base LP code to its lifts.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-decoder-transfer).
+
+### L-F89-hardware-transfer
+
+Determine whether hardware-efficient implementations transfer from base codes to lifts.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-hardware-transfer).
+
+### L-F89-other-code-families
+
+Extend the lifting construction to other high-rate group-algebra codes and quantum Tanner codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-other-code-families).
+
+### L-F89-general-nontransversal-surgery
+
+Develop systematic nontransversal surgery constructions for general qLDPC codes without an underlying lifted structure.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical research direction is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-general-nontransversal-surgery).

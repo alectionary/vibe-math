@@ -2,6 +2,11 @@
 
 # vibe-math
 
+Latest distance-preservation result: [an infinite girth-eight, RCPC-free counterfamily](formalization/distance-preservation/RESEARCH-NOTE.txt) has dQ≤11<12≤dC≤20 for every positive lift length divisible by11. The fixed classical graph is connected and its transpose code has distance2L. Source-matrix and full stabilizer-span proofs are checked in Lean. This refutes our proposed criterion; the source's broader sufficient-condition question remains open in this project. [Proof audit](formalization/distance-preservation/verification.json).
+
+Distance-preservation report: [PDF](formalization/distance-preservation/paper/main.pdf) · [TeX](formalization/distance-preservation/paper/main.tex) · [complete Lean proof guide](formalization/distance-preservation/paper/PROOF-GUIDE.html) · [source snapshot](formalization/distance-preservation/paper/distance-preservation-source.zip). The manuscript separates the answered diagnostic from the general source question and includes full proof coverage, source chronology and reproducibility records. Local review artifact; no publication is implied.
+
+
 **Stopping-bound parameter question answered negatively.** A universal Lean-checked theorem proves that no positive-dimensional binary biregular parameter choice in Proposition5.1’s stated scalar-factor QC-GHP model yields a stopping-distance guarantee above two. This is a nonexistence proof, not an unsuccessful search. The raw inequality can hold for dense examples. A stronger incidence replacement is proved in the new follow-up; unrestricted stronger spectral bounds remain a separate direction. [Corrected paper and complete checked proof](formalization/stopping-bound/source-answer/README.txt).
 
 Latest stopping-support classification: all **441** size-six stopping supports of the source B1 matrix are exactly the distinct companion Z-check row supports, in one free Z/7 x Z/63 coordinate-translation orbit. [Paper and checked proofs](formalization/stopping-bound/classification/README.txt). The actual binary matrix bridge and complete classification are checked in Lean. This is supporting progress on L-F16; larger-cover classifications and logical parameters remain outside the claim.

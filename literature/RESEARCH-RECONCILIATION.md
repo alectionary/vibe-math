@@ -54,6 +54,12 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F16-lift-label-elimination:** Classify labels eliminating Pasch supports in the two fixed cyclic covers and explain the full QC-GHP implication. Status: Answered in the recorded fixed-base scope; every manuscript proof has a checked Lean version. Optimization/performance and priority are outside scope.
 - **RQ-F16-incidence-six:** Certify a useful incidence-aware stopping bound for the source B1 matrix and its cyclic covers. Status: completed_for_the_explicit_positive_63_multiple_lift_family
 - **RQ-F16-minimum-support-classification:** Classify all size-six stopping supports of the source B1 matrix. Status: completed_for_the_exact_882_column_source_matrix
+- **RQ-F16-incidence-replacement:** Give an incidence-conditioned stopping bound exceeding two on sparse nontrivial QC-GHP families beyond B1. Status: answered_positively_by_reusable_partition_bound_and_explicit_infinite_families
+- **RQ-F16-spectral-replacement-existence:** Give a useful spectral stopping replacement above two on an explicit infinite sparse QC-GHP family without the original small-gap premise. Status: proved_by_fourth_moment_criterion_and_joint_sidon_family
+- **RQ-F25-girth-RCPC-criterion:** Do classical girth>=8 and RCPC absence imply source LP quantum/classical distance equality for normalized3x4 monomial bases? Status: refuted_by_infinite_lean_counterfamily
+- **RQ-F25-exclude-mixed-patterns:** Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Status: open_after_bounded_fresh_diagnostic
+- **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
+- **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -127,6 +133,24 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: stopping-publication-compliance-2026-10-24
 
 [L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Publication/skill audit and missing dense source bridge completed. All3 paper source/answer tables, full proof links and complete source-date deltas repaired.. Remaining at that dated checkpoint: Named literature/access gaps, original dates for secondary mirrors, independent peer review and a stronger replacement bound remain outside this correction.. [Report](../formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md) · [Verification](../formalization/stopping-bound/source-answer/dense-bridge-verification.json) · [Prior art](../formalization/stopping-bound/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: stronger-stopping-2026-10-24
+
+Useful spectral replacement existence and incidence replacement existence answered positively; exact6 nontrivial family, actual Zhu-Chugg certificates and unbounded restricted Gram obstruction. Original parameter answer stays negative.. [Report](../formalization/stopping-bound/stronger/RESEARCH-NOTE.txt) · [Verification](../formalization/stopping-bound/stronger/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: stronger-stopping-short-parameters-2026-10-24
+
+[L-F16-stopping-bound](OPEN-PROBLEMS.md#l-f16-stopping-bound): Useful spectral/incidence existence positive; explicit fixed-degree4/8 family for odd n>=37 plus54-variable certificate, with actual matrix/moment/kernel/logical bridges. Original parameter answer stays negative.. [Report](../formalization/stopping-bound/stronger/RESEARCH-NOTE.txt) · [Verification](../formalization/stopping-bound/stronger/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: distance-preservation-four-hour-2026-10-24
+
+[L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation): Our girth/RCPC sufficient criterion is refuted by an infinite source-matched family; the broader source question remains open in this project.. [Report](../formalization/distance-preservation/RESEARCH-NOTE.txt) · [Verification](../formalization/distance-preservation/verification.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -238,25 +262,100 @@ Three primary full-text screens add five broad historical directions; one 2026 H
 - [L-F74-direct-trapping-search](OPEN-PROBLEMS.md#l-f74-direct-trapping-search): Design direct exhaustive trapping-set algorithms that improve on reduction to stopping-set enumeration.
 - [L-F75-pruned-cluster-combination](OPEN-PROBLEMS.md#l-f75-pruned-cluster-combination): Study pruned peeling combined with cluster decomposition more comprehensively.
 
-Current cohort: **267 canonical entries,135 eligible targets,110 paper records,97 full-text screens**; **5/135 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: stronger-stopping-source-screen-2026-10-24
 
-The current source index has **76** records, with actual access levels retained.
+Source-question indexing extension.
+
+[Screen report](../formalization/stopping-bound/stronger/RESEARCH-NOTE.txt). Added **20 entries**, **8 eligible targets**, **4 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F77-polynomial-redundancy](OPEN-PROBLEMS.md#l-f77-polynomial-redundancy): Does an asymptotically good binary linear code family have stopping redundancy polynomial in its length?
+- [L-F77-Golay34](OPEN-PROBLEMS.md#l-f77-golay34): Is the stopping redundancy of the extended binary Golay code G24 equal to34?
+- [L-F77-MDS-invariance](OPEN-PROBLEMS.md#l-f77-mds-invariance): Do all finite-field [n,k] MDS codes have stopping redundancy depending only on n and k?
+- [L-F77-locally-thin-three](OPEN-PROBLEMS.md#l-f77-locally-thin-three): Is t(3)<1, where t(k)=limsup_{rho->infinity} log2(M(rho,k))/rho for k-locally-thin families?
+- [L-F77-locally-thin-monotone](OPEN-PROBLEMS.md#l-f77-locally-thin-monotone): Is t(k) nonincreasing for integers k>=2 in the same locally-thin-family definition?
+- [L-F77-general-lower-bounds](OPEN-PROBLEMS.md#l-f77-general-lower-bounds): Improve general lower bounds for stopping redundancy.
+- [L-F77-nonbinary-constructions](OPEN-PROBLEMS.md#l-f77-nonbinary-constructions): Study stopping redundancy under nonbinary concatenated and multilevel constructions.
+- [L-F77-MDS-exact](OPEN-PROBLEMS.md#l-f77-mds-exact): Determine exact MDS stopping redundancy as a function of the code parameters.
+- [L-F77-other-channels](OPEN-PROBLEMS.md#l-f77-other-channels): Determine the relevance of stopping redundancy for channels beyond the BEC and LP decoding.
+- [L-F77-locally-thin-sequence](OPEN-PROBLEMS.md#l-f77-locally-thin-sequence): Determine the sequence t(k) for locally-thin families.
+- [L-F78-cyclic-good](OPEN-PROBLEMS.md#l-f78-cyclic-good): Do asymptotically good linear cyclic codes exist over a fixed finite field?
+- [L-F78-Artin](OPEN-PROBLEMS.md#l-f78-artin): For each positive nonsquare integer q>1, do primes with ord_p(q)=p-1 have positive density?
+- [L-F78-GB-scaling](OPEN-PROBLEMS.md#l-f78-gb-scaling): Determine optimal distance scaling of generalized bicycle codes at bounded generator weight.
+- [L-F78-higher-k-fault-tolerance](OPEN-PROBLEMS.md#l-f78-higher-k-fault-tolerance): Study parameters and fault-tolerant performance of generalized bicycle codes encoding more than two qubits.
+- [L-F78-local-above-square-root](OPEN-PROBLEMS.md#l-f78-local-above-square-root): Can quantum codes local in a fixed dimension D>2 have polynomial distance exponent strictly above1/2?
+- [L-F78-other-commuting-matrices](OPEN-PROBLEMS.md#l-f78-other-commuting-matrices): Find better LDPC parameters from other commuting-square-matrix CSS constructions.
+- [L-F78-measurement-tradeoff](OPEN-PROBLEMS.md#l-f78-measurement-tradeoff): Determine whether larger bicycle-code distances offset higher-weight measurement complexity.
+- [L-F79-minsum-erasure](OPEN-PROBLEMS.md#l-f79-minsum-erasure): Study min-sum variants of the proposed soft BP decoders for quantum erasures.
+- [L-F79-circuit-erasure](OPEN-PROBLEMS.md#l-f79-circuit-erasure): Develop the detailed circuit-level erasure treatment, including conversion circuits, left outside this paper.
+- [L-F80-design-enumerators](OPEN-PROBLEMS.md#l-f80-design-enumerators): Determine stopping-set weight enumerators for general designs and their associated codes.
+
+## Separate indexing extension: xia-fu-stopping-source-screen-2026-10-24
+
+Source-question indexing extension.
+
+[Screen report](../literature/xia-fu-stopping-source-screening.json). Added **3 entries**, **1 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F81-optimal-LP-existence](OPEN-PROBLEMS.md#l-f81-optimal-lp-existence): Does every binary linear code admit a finite parity-check matrix H whose minimum AWGN pseudo-weight equals its minimum Hamming distance and whose number of minimum edges equals its number of minimum codewords?
+- [L-F81-optimal-LP-minimum-rows](OPEN-PROBLEMS.md#l-f81-optimal-lp-minimum-rows): Construct an asymptotically LP-optimal parity-check representation with the minimum number of rows for a binary LDPC code.
+- [L-F81-TypeII-l4-distance](OPEN-PROBLEMS.md#l-f81-typeii-l4-distance): For the binary Type-II tree construction with l=4 of Sridhara-Kelley-Rosenthal, is d=d_L?
+
+## Separate indexing extension: postlemma-stopping-source-screen-2026-10-24
+
+Source-question indexing extension.
+
+[Screen report](../literature/postlemma-stopping-source-screening.json). Added **5 entries**, **0 eligible targets**, **4 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F82-higher-column-DM](OPEN-PROBLEMS.md#l-f82-higher-column-dm): Determine existence of higher-column difference matrices DM(k;a) for admissible orders beyond the treated k=3 case.
+- [L-F82-general-DCA](OPEN-PROBLEMS.md#l-f82-general-dca): Develop the general-k theory and constructions of difference covering arrays beyond the treated three-column case.
+- [L-F82-improved-minimum-distance](OPEN-PROBLEMS.md#l-f82-improved-minimum-distance): Improve the proposed difference-matrix LDPC constructions to obtain higher minimum distance.
+- [L-F82-larger-stopping-sets](OPEN-PROBLEMS.md#l-f82-larger-stopping-sets): Investigate larger stopping sets by discarding selected rows of the underlying DM or DCA, as in Construction2.
+- [L-F83-optimal-index](OPEN-PROBLEMS.md#l-f83-optimal-index): Determine or construct the optimal index rho(n,m) for partitioned cyclic difference packings with prescribed n and m.
+
+## Separate indexing extension: quantum-next-selection-2026-10-24
+
+Selected L-F25-distance-preservation as the next new quantum coding problem. Compared F26 rank/distance, F39 distance and F49 degeneracy; no theorem solved. Upgraded two existing paper question screens without adding entries.
+
+[Screen report](../literature/quantum-next-selection-2026-10-24.json). Added **0 entries**, **0 eligible targets**, **0 paper records**, **2 full-text screens** and **0 completed proofs**.
 
 
-## Stronger stopping-bound checkpoint -24October2026
+## Separate indexing extension: distance-preservation-sources-2026-10-24
 
-The incidence-conditioned replacement question is answered positively beyond B1: a reusable partition bound, explicit sparse nontrivial CSS families, and a separate exact stopping/logical-distance-six family. An explicit same-full-Gram counterpart has stopping distance two, giving a restricted obstruction to Gram-only lower bounds. The original Proposition5.1 useful-parameter question remains answered negatively. [Paper and checked proof guide](../formalization/stopping-bound/stronger/README.txt).
+Four accessible primary papers screened during the F25 investigation; 24 broad directions harvested. No new eligible mathematical target or canonical completion.
 
-Four main texts were screened, adding20 historical entries, eight eligible:287 canonical entries,143 eligible targets,114 paper records and101 full-text main-paper screens. Complete canonical Lean targets remain five. New question statuses and difficulty are unassessed. [Dedicated source screen](stronger-stopping-source-screening.json).
+[Screen report](../literature/distance-preservation-source-screening.json). Added **24 entries**, **0 eligible targets**, **4 paper records**, **4 full-text screens** and **0 completed proofs**.
 
-## Expanded spectral replacement checkpoint -24October2026 Pacific
+- [L-F86-surgery-cost](OPEN-PROBLEMS.md#l-f86-surgery-cost): Reduce the spacetime cost of mitten-code surgery gadgets.
+- [L-F86-structured-decoding](OPEN-PROBLEMS.md#l-f86-structured-decoding): Develop faster and more effective decoders exploiting mitten-code structure.
+- [L-F86-superconducting-routing](OPEN-PROBLEMS.md#l-f86-superconducting-routing): Improve superconducting on-chip routing for mitten-code syndrome extraction and logical operations.
+- [L-F86-atom-movement](OPEN-PROBLEMS.md#l-f86-atom-movement): Improve atom-array movement and syndrome-extraction strategies, including moving data, GHZ ancillas or different transport.
+- [L-F86-experimental-processors](OPEN-PROBLEMS.md#l-f86-experimental-processors): Demonstrate high-rate qLDPC processors experimentally using the proposed small-block codes.
+- [L-F86-teraquop-certification](OPEN-PROBLEMS.md#l-f86-teraquop-certification): Assess and certify teraquop-scale processing capacity for higher-distance mitten codes.
+- [L-F86-beam-decoder-comparison](OPEN-PROBLEMS.md#l-f86-beam-decoder-comparison): Compare the telescoping and beam-search decoders on the same detector error models.
+- [L-F86-atom-loss](OPEN-PROBLEMS.md#l-f86-atom-loss): Determine achievable qLDPC performance with loss-aware decoding under realistic atom loss.
+- [L-F87-qdistevol-refinement](OPEN-PROBLEMS.md#l-f87-qdistevol-refinement): Refine QDistEvol and implement it in C using asymptotically optimal Gaussian elimination.
+- [L-F87-faster-bposd](OPEN-PROBLEMS.md#l-f87-faster-bposd): Develop a faster BP-OSD implementation and assess its competitiveness with random information-set distance searches.
+- [L-F88-solver-scaling](OPEN-PROBLEMS.md#l-f88-solver-scaling): Extend distance-certificate scaling through decomposition and solvers specialized to linear codes.
+- [L-F88-non-css](OPEN-PROBLEMS.md#l-f88-non-css): Extend the verified distance framework to general non-CSS stabilizer codes.
+- [L-F88-subsystem](OPEN-PROBLEMS.md#l-f88-subsystem): Extend the formalization to subsystem codes and the broader stabilizer formalism.
+- [L-F88-verified-row-reduction](OPEN-PROBLEMS.md#l-f88-verified-row-reduction): Implement verified row reduction for kernel-basis computation in the Lean-QEC preprocessing pipeline.
+- [L-F88-circuit-integration](OPEN-PROBLEMS.md#l-f88-circuit-integration): Connect the QEC layer to verified circuit compilers such as SQIR.
+- [L-F88-gate-calculus](OPEN-PROBLEMS.md#l-f88-gate-calculus): Develop a richer verified gate-level quantum-circuit calculus.
+- [L-F89-inherited-logicals](OPEN-PROBLEMS.md#l-f89-inherited-logicals): Describe inherited and newly created logical degrees of freedom under lifts, including even-index lifts.
+- [L-F89-gadget-distance](OPEN-PROBLEMS.md#l-f89-gadget-distance): Determine how inherited logical-operation gadgets preserve distance under lifting.
+- [L-F89-operation-transfer](OPEN-PROBLEMS.md#l-f89-operation-transfer): Determine when transversal gates, homomorphic CNOTs and measurements, or code switching transfer to lifts.
+- [L-F89-thermodynamic-branches](OPEN-PROBLEMS.md#l-f89-thermodynamic-branches): Find geometric and homological conditions selecting lift branches with common thermodynamic behavior.
+- [L-F89-decoder-transfer](OPEN-PROBLEMS.md#l-f89-decoder-transfer): Determine whether useful decoders transfer from a base LP code to its lifts.
+- [L-F89-hardware-transfer](OPEN-PROBLEMS.md#l-f89-hardware-transfer): Determine whether hardware-efficient implementations transfer from base codes to lifts.
+- [L-F89-other-code-families](OPEN-PROBLEMS.md#l-f89-other-code-families): Extend the lifting construction to other high-rate group-algebra codes and quantum Tanner codes.
+- [L-F89-general-nontransversal-surgery](OPEN-PROBLEMS.md#l-f89-general-nontransversal-surgery): Develop systematic nontransversal surgery constructions for general qLDPC codes without an underlying lifted structure.
 
-Useful spectral replacement existence is answered positively: the checked fourth-moment equality gives stopping distance at least gamma+1 on explicit sparse joint-Sidon QC-GHP families, without the original small-gap premise or a separate small-size exclusion. Source Lemma4.8 and classical overlap ingredients are credited. Incidence existence beyond B1 is positive too. Gram twins give an unbounded restricted obstruction; encoded dimension/binary rank/cross-sector data are outside that shared input. The original Proposition5.1 parameter question remains answered negatively. [Current paper/proofs](../formalization/stopping-bound/stronger/README.txt).
+## Separate indexing extension: distance-preservation-classical-source-2026-10-24
 
-The full17-page Xia-Fu v2 screen adds3 historical entries, one eligible and one paper/screen beyond the earlier20/8/4 extension. Current totals:290 entries,144 eligible targets,115 papers,102 full main-paper screens and5 complete canonical Lean targets. Present resolution, Lean discovery and difficulty of harvested questions remain unassessed. Existing F38 screening is reused without duplication. [Xia-Fu ledger](xia-fu-stopping-source-screening.json).
+Added the already indexed Kelley et al. classical predecessor to paper coverage after reading its complete one-page proceedings text. No new target or canonical completion.
 
-## Final short-parameter checkpoint -24October2026 Pacific
+[Screen report](../literature/distance-preservation-source-screening.json). Added **0 entries**, **0 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
 
-The useful spectral and incidence existence answers are positive. Explicit supports{0,1,3,11} and{0,5,12,18} give column/row weights4/8, moment88n and stopping guarantee5 for every odd n>=37. Actual binary CSS, both-sector kernel bounds and a nontrivial logical class are checked. The n27 instance is checked separately:54variables,moment2376. Its actual eta>=17/2 makes the first Zhu-Chugg expression negative and the second<=297/94<4 under the cited strict gap; the new bound is5. This is a lower guarantee, not an exact-five or encoded-dimension theorem. The original Proposition5.1 parameter question remains answered negatively. [Paper and full checked proof links](../formalization/stopping-bound/stronger/README.txt).
 
-The post-lemma primary screen adds5 broad directions,0 eligible,4 papers/screens. Current totals295canonical/144eligible/119papers/106full main-paper screens/5completed canonical targets. Exact chronology, source hashes, zero-question outcomes and named primary access/version gaps are recorded in [the post-lemma ledger](postlemma-stopping-source-screening.json). No metadata-only lead is treated as a zero-question screen. New current-resolution/Lean/difficulty assessments remain unassessed.
+Current cohort: **319 canonical entries,144 eligible targets,124 paper records,113 full-text screens**; **5/144 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **94** records, with actual access levels retained.

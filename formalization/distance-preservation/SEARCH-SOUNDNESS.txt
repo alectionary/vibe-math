@@ -1,0 +1,53 @@
+Written completeness argument for the repaired bounded support search
+Evidence label: written algorithm review, not a Lean exclusion certificate.
+
+The caller supplies binary check columns and every stabilizer generator, with
+the stabilizer span contained in the check kernel. All coordinates use the
+same indexing. The array capacities are n<=640 and checks<=320; every present
+search satisfies them. A no-witness outcome is an exclusion only if the node
+budget was not exhausted. A saved positive witness is checked independently.
+
+Root reduction requires more than the parser's dimension checks: simultaneous
+translation of every length-L coordinate fiber must preserve the kernel and
+the full stabilizer span. This holds for the cyclic source matrices because
+all translated check rows are supplied. The independent dense cross-check
+also verifies the actual matrices on all104 frozen fresh inputs. Arbitrary
+nonperiodic inputs with L>1 would not justify this root reduction.
+
+Suppose a nontrivial logical of weight at most the bound exists, and choose
+one of minimum weight W. Translate it so that one selected coordinate in its
+first occupied coordinate block has fiber0. The root loop includes that
+coordinate a. Its initially forbidden earlier blocks contain no coordinate
+of W; within the root block only a is initially forbidden and already selected.
+
+Maintain a branch whose selected support S is a subset of W and whose forbidden
+coordinates outside S do not meet W. If a nonempty proper S has zero syndrome,
+either it is already a nontrivial logical (success), or it is a stabilizer.
+In the latter case W+S is a smaller nontrivial logical, contradicting minimality.
+Thus the branch has a nonzero syndrome until it reaches W.
+
+For an unsatisfied check, W minus S must contain an available neighbor: W has
+zero syndrome. In the ordered neighbor loop, take its first such neighbor.
+All earlier candidates are outside W, so adding them to the forbidden set
+preserves the branch invariant. Recursive restoration preserves the parent's
+state when a branch returns. The syndrome-popcount pruning cannot discard
+this branch: at most rem columns of degree at most maxdegree can account for
+at most rem*maxdegree odd syndrome positions.
+
+With one or two slots left, the remaining subset is present in the complete
+single/pair tables. The repaired two-slot case checks BOTH singles and pairs.
+That is the missing step in the archived implementation. It is essential for
+an "at most" search. Selected/forbidden tests and distinct pair indices keep
+supports free of duplicates. Zero-syndrome candidates undergo elimination
+against the entire stabilizer basis; the zero vector is rejected.
+
+Therefore a completed repaired search cannot miss a minimum nontrivial logical
+within the requested bound under these input and symmetry conditions. Budget
+exhaustion cannot establish an exclusion. This written argument and the1235
+full-word oracle comparisons supplement code review; no Lean bridge from this
+C++ implementation to the logical-distance definition is claimed.
+
+Source sector reduction is separately justified by square-block transpose.
+The compiled SourceSymmetry theorem covers the fixed family. For arbitrary
+fresh bases, frozen-matrix-crosschecks.json verifies the row/qubit permutation
+entry by entry on every input; no general new Lean sector theorem is claimed.
