@@ -1,6 +1,6 @@
 # Source chronology and calendar deltas
 
-Civil calendar days to 2026-10-24; exact dates give exact differences. Month/year precision yields inclusive minimum/maximum day ranges; dates are not invented. Date ranges are clipped to the revision because these records already existed then. Source age is not unresolved-problem duration.
+This manuscript uses24October2026 inAmerica/Los_Angeles as its dated revision. UTC research/build times are recorded separately. Civil calendar days to 2026-10-24; exact dates give exact differences. Month/year precision yields inclusive minimum/maximum day ranges; dates are not invented. Date ranges are clipped to the revision because these records already existed then. Source age is not unresolved-problem duration.
 
 |Source|Milestone|Date/precision|Calendar days to24October2026|
 |---|---|---|---|
@@ -49,14 +49,22 @@ Civil calendar days to 2026-10-24; exact dates give exact differences. Month/yea
 |[F80](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf)|reported conference presentation|2003 / year|8333-8697|
 |[F80](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf)|reported original composition|2003-09 / month|8425-8454|
 |[F80](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf)|inspected revised author manuscript|2026-10-24 / day|0|
+|[F81](https://arxiv.org/abs/cs/0606051v2)|earliest preprint|2006-06-12 / day|7439|
+|[F81](https://arxiv.org/abs/cs/0606051v2)|inspected arXivv2 stamp|2006-11-11 / day|7287|
+|[F81](https://arxiv.org/abs/cs/0606051v2)|PDF internal title-page date|2019-05-06 / day|2728|
+|[F38](https://arxiv.org/abs/1905.13228v1)|first and inspectedv1|2019-05-31 / day|2703|
+|[F38](https://arxiv.org/abs/1905.13228v1)|journal volume metadata|2019 / year|2489-2853|
 |[gideonlsx/bicycle-race](https://github.com/gideonlsx/bicycle-race/commit/aed705a42733bba1676fe1faf26d4bf311f31d88)|inspected commit|2026-10-11 / day|13|
 |[kywukuo/qLDPC_dec](https://github.com/kywukuo/qLDPC_dec/commit/402a83e8afd0df5203693aeeed1e42f1900e344d)|inspected commit|2026-01-26 / day|271|
-|[new-proof-checkpoint](https://github.com/alectionary/vibe-math/commit/3e70cc79d7c4c171027a2a40f0757781d9787efb)|new research and proof-source checkpoint|2026-10-24 / day|0|
+|[prior-proof-checkpoint](https://github.com/alectionary/vibe-math/commit/b7628643bb256bf9c1a319f16f6e19608116cff6)|immutable proof-source commit|2026-10-24 / day|0|
+|[new-proof-checkpoint](https://github.com/alectionary/vibe-math/commit/ad6b34fae9943383851de1bf010650fd8bd42af5)|new research and proof-source checkpoint|2026-10-24 / day|0|
 |[held-lead-1](https://arxiv.org/abs/2508.09082)|inspection only|2026-10-24 / day|0|
 |[held-lead-2](https://inspirehep.net/literature/3197325)|inspection only|2026-10-24 / day|0|
 |[held-lead-3](https://arxiv.org/abs/2609.39395)|inspection only|2026-10-24 / day|0|
 |[held-lead-4](https://citeseerx.ist.psu.edu/document?doi=d9a23af9968c27b51a6d7ee402275fe77e99eb71&repid=rep1&type=pdf)|inspection only|2026-10-24 / day|0|
 |[held-lead-5](https://arxiv.org/abs/2601.10713)|inspection only|2026-10-24 / day|0|
-|[held-lead-6](https://arxiv.org/abs/cs/0606051)|inspection only|2026-10-24 / day|0|
+|[held-lead-6](https://arxiv.org/abs/1304.7402v1)|inspection only|2026-10-24 / day|0|
+|[held-lead-7](https://arxiv.org/abs/0704.2258)|inspection only|2026-10-24 / day|0|
+|[held-lead-8](https://www.researchgate.net/publication/396550633)|inspection only|2026-10-24 / day|0|
 
 Inspection-only dates are explicitly distinguished from publication dates. The Kashyap-Vardy author manuscript is undated after its reported2003 composition; its web transcription hash is not a PDF hash. Supplementary/final-version, citation-index and X access gaps remain named. Date differences are source ages, not durations of unsolved problems.

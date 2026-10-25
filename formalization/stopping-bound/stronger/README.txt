@@ -1,23 +1,19 @@
-Incidence-sensitive stopping bounds and a Gram obstruction
-24 October 2026. Follow-up to L-F16-stopping-bound.
+Useful spectral replacements and incidence stopping bounds for QC-GHP codes
+24October2026 Pacific. Expanded follow-up to L-F16-stopping-bound.
 
-Question answered positively: a reusable incidence-conditioned bound exceeds two on sparse QC-GHP quantum-code families beyond B1.
+The original Proposition5.1 useful-parameter question remains answered NEGATIVELY by the earlier universal source-question proof.
 
-PartitionBound proves 2(gamma+sigma) <= (sigma+tau)|S|. PowersFamily gives actual binary CSS families, nontrivial logical classes, constant degrees and arbitrary fixed guarantees. KernelStopping proves exact stopping/logical distance six for the explicit weight4/8 family at every positive39-multiple lift. SidonBad and BadStopping give same-full-real-Gram CSS counterparts with stopping distance two.
+Useful stronger-replacement existence is answered POSITIVELY. MomentBound proves a fourth-Gram-moment criterion implying stopping distance>=gamma+1. JointMomentFamily supplies actual binary QC-GHP/CSS matrices with explicit joint-Sidon supports, exact spectral equality and fixed degrees on arbitrarily long lifts. JointPowers and JointKernel prove nontrivial logical content and both sector kernel bounds. The mathematical ingredients were already available in source Lemma4.8 and classical overlap results; no new-classical-principle or optimal-universal claim is made.
 
-The earlier Proposition5.1 useful-parameter question remains answered negatively. The new Gram obstruction is restricted; no claim rules out every stronger spectral bound on every QC-GHP family.
+The incidence-conditioned existence question is positive too: the reusable partition criterion, paired powers families and an exact stopping/logical-distance-six family extend beyond B1. GramGap proves an unbounded obstruction to uniformly informative real Gram-only bounds on paired/repeated twins. Both separate real check Grams agree (BothGram), but encoded quantum dimension, binary rank and cross-sector incidence are not assumed shared. BadLogical proves nontrivial bad logical words and both sector minimum two.
 
-Reproduce with Lean4.36.0-rc1 and the pinned mathlib:
+BicycleSpectralFamily proves eta>=290/13 on every39-cover and strict negativity of both Zhu-Chugg formulas under their strict gap. JointSpectralBase gives eta>=121/20 on the new n81 joint-support instance and the analogous negative-formula comparison. No numerical spectral estimate or external search is a proof premise.
+
+Reproduce with Lean4.36.0-rc1 and pinned mathlib5f7b4198d22a9c82e1c698a379334fe128095c82:
   lake build StrongerAnswer
   lake env lean AuditStronger.lean
-The three dependencies are frozen generic stopping/cover infrastructure from the earlier artifact. No native_decide, unproved axiom or external numerical result is a proof premise.
+All named declarations, including four unchanged inherited modules, have signatures and axiom reports. Only propext,Classical.choice and Quot.sound occur.
 
-The paper, complete branch and immutable Lean links, source chronology and inventory reconciliation accompany the publication checkpoint. X drafts are not posted.
+Read stronger-stopping-paper.pdf, PROOF-LINKS.md (every full current and immutable Lean URL), SOURCE-CHRONOLOGY.md (all source dates/deltas), and verification.json. The source archive includes standalone checked sources and shared inventory/planning snapshots. External copyrighted papers stay in ignored local extraction. The X draft is NOT POSTED.
 
-Published paper: stronger-stopping-paper.pdf
-Companion announcement: stronger-stopping-x-draft.txt (not posted)
-Complete direct Lean file URLs: PROOF-LINKS.md; immutable source pin3e70cc79d7c4c171027a2a40f0757781d9787efb.
-Chronology: SOURCE-CHRONOLOGY.md and compliance-data.json.
-Shared inventory: literature/stronger-stopping-source-screening.json;287 entries,143 eligible,5 complete canonical proofs.
-Validate with Python3+pypdf: python3 scripts/validate_stronger_stopping.py from repository root.
-The source archive includes the checked standalone project and shared question/planning snapshots. Copyrighted primary full texts remain in ignored local extraction, not the archive.
+Shared totals:290 canonical entries,144 eligible targets,115 papers,102 full main-paper screens,5 complete canonical proofs. Separate historical indexing deltas20/8/4 and3/1/1; no new canonical completion is counted for project-derived follow-ups. Newly harvested current-resolution/Lean/difficulty assessments remain unassessed.

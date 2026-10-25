@@ -68,7 +68,7 @@ assert set(v['axiom_audit']['axioms'])<=set(['propext','Classical.choice','Quot.
 assert not re.search(r'\b(sorry|admit|axiom|native_decide)\b|Lean\.ofReduceBool',(A/'source-answer/DenseSourceBridge.lean').read_text())
 rows=load(R/'literature/open-problems.json');t=next(x for x in rows if x['id']=='L-F16-stopping-bound')
 assert t['current_resolution_status']=='answered_negatively_for_prop51_useful_parameter_question'
-assert t['remaining_source_direction']['status'] in ['open_in_this_investigation','partially_answered_by_incidence_replacement_and_restricted_gram_obstruction']
+assert t['remaining_source_direction']['status'] in ['open_in_this_investigation','partially_answered_by_incidence_replacement_and_restricted_gram_obstruction','useful_spectral_and_incidence_replacement_existence_answered_positively']
 assert sum(x['eligible_for_coverage'] and x['lean_proof_status']=='verified_complete_lean_proof' for x in rows)==5
 assert 'Feng' in (A/'SKILL-COMPLIANCE-AUDIT.md').read_text()
 print('PASS: historical42 Lean/audit files have displayed/clickable full current/immutable URLs;21 source records/32 date milestones; actual proof excerpts, imports, PDF metadata, hashes and20-declaration dense bridge audit; historical cohort267/135/110/97/5 retained; later extensions validated separately.')

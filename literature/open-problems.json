@@ -5663,7 +5663,7 @@
     "added_on": "2026-10-22",
     "supplementary_search_evidence": "literature/expansion-github-lean-searches.json; literature/expansion-local-lean-searches.json",
     "research_source_index": "literature/research-source-index.json",
-    "scope_comparison": "Universal negative answer for the useful-parameter question of Proposition5.1 in its stated positive-dimensional binary biregular scalar-factor model: no choice can simultaneously satisfy sigma2^2<gamma/2 and source large root>2. Section3.2 explicitly uses r2=n2=1 throughout, and Proposition5.1 refers to the corresponding Theorem4.1 Fourier matrices. All positive row-block counts are covered. For r>=2 the gap is impossible; for r=1 it forces density>3/4, roots1<a+<=2 and a-<2. Every stopping support has cardinality>=2, so the small branch is excluded but the large-root guarantee is redundant. Dense raw-gap examples exist. A stronger replacement bound remains open as a separate component. Completed project-derived follow-ups establish exact stopping distance six for the positive63-multiple B1 cover family and classify all441 size-six base supports as unique companion Z-check rows; these are distinct incidence results, not the negative parameter proof. No logical-distance claim.",
+    "scope_comparison": "Universal negative answer for the useful-parameter question of Proposition5.1 in its stated positive-dimensional binary biregular scalar-factor model: no choice can simultaneously satisfy sigma2^2<gamma/2 and source large root>2. Section3.2 explicitly uses r2=n2=1 throughout, and Proposition5.1 refers to the corresponding Theorem4.1 Fourier matrices. All positive row-block counts are covered. For r>=2 the gap is impossible; for r=1 it forces density>3/4, roots1<a+<=2 and a-<2. Every stopping support has cardinality>=2, so the small branch is excluded but the large-root guarantee is redundant. Dense raw-gap examples exist. Useful replacement existence is now answered positively by the checked fourth-moment criterion and incidence families in the stronger artifact; optimal/general refinements are not asserted complete. Completed project-derived follow-ups establish exact stopping distance six for the positive63-multiple B1 cover family and classify all441 size-six base supports as unique companion Z-check rows; these are distinct incidence results, not the negative parameter proof. Those B1 results make no quantum logical-distance claim; the separate stronger-artifact family has exact logical distance six.",
     "scope_components": [
       {
         "component": "Proposition5.1 parameter regime in the scalar-factor construction",
@@ -5674,7 +5674,10 @@
       },
       {
         "component": "Tanner-style or parameter-aware replacement/tightening",
-        "status": "not_resolved"
+        "status": "useful_replacement_existence_answered_positively",
+        "answer": "Classical fourth-moment/overlap ingredients yield a checked useful spectral replacement on explicit sparse joint-Sidon QC-GHP families. A uniform improvement on Gram twins is obstructed.",
+        "proof": "formalization/stopping-bound/stronger/MomentBound.lean",
+        "family_proof": "formalization/stopping-bound/stronger/JointMomentFamily.lean"
       },
       {
         "component": "Incidence-aware stopping bound for the explicit cyclic-cover family",
@@ -5788,38 +5791,49 @@
       }
     ],
     "parameter_question_status": "answered_negatively_by_universal_checked_nonexistence_proof",
-    "bundled_status_explanation": "The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1 stated scalar-factor model. A useful incidence-conditioned replacement is now proved. The broader spectral-refinement direction has a proved same-Gram obstruction on explicit families and remains unassessed outside that scope; no universal disproof is claimed. Raw spectral-gap feasibility alone has dense positive examples.",
+    "bundled_status_explanation": "The original useful-parameter question is universally answered negatively in the stated scalar-factor model. Useful spectral replacement existence is now positive via a fourth-moment criterion and explicit joint-Sidon families; incidence existence is positive as well. An unbounded Gram-twin obstruction has explicit data restrictions. Optimal universal refinements are not claimed. Raw spectral-gap feasibility still has dense examples.",
     "verified_artifact": {
       "readme": "formalization/stopping-bound/source-answer/README.txt",
       "verification": "formalization/stopping-bound/source-answer/verification.json",
       "lean_source": "formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean",
       "statement_declaration": "StoppingSpectral.no_parameters_give_source_improvement",
-      "scope": "Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate stronger replacement bound remains open."
+      "scope": "Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate useful spectral/incidence replacements are proved in the stronger artifact; the earlier universal negative parameter theorem is unchanged."
     },
     "remaining_source_direction": {
       "title": "A stronger Tanner-style or parameter-aware replacement stopping bound",
       "source_locator": "Remark5.2 and Section6",
-      "status": "partially_answered_by_incidence_replacement_and_restricted_gram_obstruction",
+      "status": "useful_spectral_and_incidence_replacement_existence_answered_positively",
       "distinct_from_answered_parameter_question": true,
       "incidence_replacement_status": "answered_positively",
-      "gram_only_status": "cannot_certify_improvement_on_the_paired_repeated_counterfamilies",
-      "remaining_scope": "Stronger spectral bounds on other classes, or bounds using additional incidence information.",
-      "report": "formalization/stopping-bound/stronger/RESEARCH-NOTE.txt"
+      "gram_only_status": "unbounded_factor_obstruction_on_the_paired_repeated_counterfamilies_with_shared_real_gram_data",
+      "remaining_scope": "Optimal or generally sharp replacements and other input classes are not settled. Useful existence is no longer labeled open.",
+      "report": "formalization/stopping-bound/stronger/RESEARCH-NOTE.txt",
+      "spectral_replacement_status": "answered_positively_by_checked_fourth_moment_criterion_and_constructed_family"
     },
     "publication_compliance_audit": "formalization/stopping-bound/SKILL-COMPLIANCE-AUDIT.md",
     "complete_proof_file_index": "formalization/stopping-bound/FULL-PROOF-LINKS.md",
     "stronger_bound_followup": {
-      "status": "incidence_conditioned_existence_answered_positively_and_gram_only_obstruction_proved",
-      "source_direction_status": "The motivating spectral-refinement direction is broad. A useful incidence replacement now exists; an unrestricted claim that all stronger spectral bounds are impossible is not made.",
+      "status": "useful_spectral_and_incidence_existence_answered_positively_with_unbounded_gram_obstruction",
+      "source_direction_status": "Useful spectral-replacement existence is answered positively by a fourth-moment criterion, an explicit sparse joint-Sidon family and faithful binary/eigenvalue bridges. The incidence existence question is also answered positively. Gram twins give an unbounded restricted obstruction; this does not disprove useful bounds on other classes.",
       "report": "formalization/stopping-bound/stronger/RESEARCH-NOTE.txt",
       "verification": "formalization/stopping-bound/stronger/verification.json",
       "lean_sources": [
         "formalization/stopping-bound/stronger/PartitionBound.lean",
         "formalization/stopping-bound/stronger/PowersFamily.lean",
         "formalization/stopping-bound/stronger/KernelStopping.lean",
-        "formalization/stopping-bound/stronger/BadStopping.lean"
+        "formalization/stopping-bound/stronger/BadStopping.lean",
+        "formalization/stopping-bound/stronger/MomentBound.lean",
+        "formalization/stopping-bound/stronger/JointMomentFamily.lean",
+        "formalization/stopping-bound/stronger/JointSpectralBase.lean",
+        "formalization/stopping-bound/stronger/GramGap.lean",
+        "formalization/stopping-bound/stronger/BadLogical.lean",
+        "formalization/stopping-bound/stronger/BothGram.lean"
       ],
-      "canonical_completion_delta": 0
+      "canonical_completion_delta": 0,
+      "positive_spectral_replacement_status": "answered_positively",
+      "source_ingredient_comparison": "Already implied by source Lemma4.8 plus Kashyap-Vardy Theorem1/Xia-Fu Theorem3; no new classical counting principle or optimal-universal resolution claimed.",
+      "gram_obstruction_limits": "Check-matrix dimensions/degrees and separate real check Gram data are shared; encoded quantum dimension, binary rank and cross-sector real incidence data are not assumed shared.",
+      "first_checkpoint_status": "incidence_conditioned_existence_answered_positively_and_gram_only_obstruction_proved"
     }
   },
   {
@@ -10809,5 +10823,122 @@
     "added_on": "2026-10-24",
     "source_screening": "literature/stronger-stopping-source-screening.json",
     "screening_note": "PG(2,2) and PG(2,4) enumerators are completed within this manuscript; no new unresolved finite instances inferred."
+  },
+  {
+    "id": "L-F81-optimal-LP-existence",
+    "origin": "article_inventory_extension",
+    "title": "Does every binary linear code admit a finite parity-check matrix H whose minimum AWGN pseudo-weight equals its minimum Hamming distance and whose number of minimum edges equals its number of minimum codewords?",
+    "kind": "open_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise historical question; current status and Lean discovery unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F81",
+        "locator": "SectionV,PDFp14",
+        "extracted_text_lines": [
+          547,
+          597
+        ],
+        "url": "https://arxiv.org/abs/cs/0606051v2",
+        "source_sha256": "b9d22451aec9fbb1a7493696de98345e22bab2ea50579bcdb352f77df9abf225",
+        "relation": "explicit_question_or_direction",
+        "version": "arXiv:cs/0606051v2,11November2006; first submission12June2006; downloaded PDF internal title-page date6May2019 is distinguished from the arXiv version stamp, not assumed a new public version",
+        "interpretation": "The authors use these two equalities to characterize asymptotically optimal LP decoding. Arbitrary redundant rows are allowed; current resolution and formalization discovery unassessed."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/xia-fu-stopping-source-screening.json",
+    "screening_note": "The authors use these two equalities to characterize asymptotically optimal LP decoding. Arbitrary redundant rows are allowed; current resolution and formalization discovery unassessed."
+  },
+  {
+    "id": "L-F81-optimal-LP-minimum-rows",
+    "origin": "article_inventory_extension",
+    "title": "Construct an asymptotically LP-optimal parity-check representation with the minimum number of rows for a binary LDPC code.",
+    "kind": "research_direction",
+    "written_math_status": "broad_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad optimization direction, outside precise denominator.",
+    "occurrences": [
+      {
+        "source_id": "F81",
+        "locator": "SectionV,PDFp14",
+        "extracted_text_lines": [
+          547,
+          597
+        ],
+        "url": "https://arxiv.org/abs/cs/0606051v2",
+        "source_sha256": "b9d22451aec9fbb1a7493696de98345e22bab2ea50579bcdb352f77df9abf225",
+        "relation": "explicit_question_or_direction",
+        "version": "arXiv:cs/0606051v2,11November2006; first submission12June2006; downloaded PDF internal title-page date6May2019 is distinguished from the arXiv version stamp, not assumed a new public version",
+        "interpretation": "Optimization direction; no individual code instance is frozen. Distinct from the universal existence question."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/xia-fu-stopping-source-screening.json",
+    "screening_note": "Optimization direction; no individual code instance is frozen. Distinct from the universal existence question."
+  },
+  {
+    "id": "L-F81-TypeII-l4-distance",
+    "origin": "article_inventory_extension",
+    "title": "For the binary Type-II tree construction with l=4 of Sridhara-Kelley-Rosenthal, is d=d_L?",
+    "kind": "conjecture",
+    "written_math_status": "held_formulation",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Held construction-dependent conjecture; exact Type-II definition not frozen.",
+    "occurrences": [
+      {
+        "source_id": "F81",
+        "locator": "Example4(ii),PDFp8",
+        "extracted_text_lines": [
+          293,
+          343
+        ],
+        "url": "https://arxiv.org/abs/cs/0606051v2",
+        "source_sha256": "b9d22451aec9fbb1a7493696de98345e22bab2ea50579bcdb352f77df9abf225",
+        "relation": "explicit_question_or_direction",
+        "version": "arXiv:cs/0606051v2,11November2006; first submission12June2006; downloaded PDF internal title-page date6May2019 is distinguished from the arXiv version stamp, not assumed a new public version",
+        "interpretation": "Earlier conjecture quoted by Xia-Fu; full Type-II construction is in cited source[21], not defined in this paper. Hold the formulation pending that definition. The (2,2)-finite-generalized-quadrangle instance is reported solved here; no duplicate open instance."
+      }
+    ],
+    "related_target_ids": [
+      "L-F16-stopping-bound"
+    ],
+    "status_as_of_source": "open_or_proposed_in_inspected_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "search_family": "stronger_stopping_followup",
+    "added_on": "2026-10-24",
+    "source_screening": "literature/xia-fu-stopping-source-screening.json",
+    "screening_note": "Earlier conjecture quoted by Xia-Fu; full Type-II construction is in cited source[21], not defined in this paper. Hold the formulation pending that definition. The (2,2)-finite-generalized-quadrangle instance is reported solved here; no duplicate open instance.",
+    "original_question_authors": [
+      "D. Sridhara",
+      "C. Kelley",
+      "J. Rosenthal"
+    ],
+    "discovery_source_authors": [
+      "Shu-Tao Xia",
+      "Fang-Wei Fu"
+    ]
   }
 ]

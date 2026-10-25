@@ -1,4 +1,4 @@
-**Incidence replacement answered positively beyond B1.** A checked two-block stopping bound applies to explicit sparse QC-GHP quantum-code families with nontrivial logical content. A separate weight4/8 family has stopping and logical distance exactly6 at all positive39-multiple lifts. Same-full-Gram CSS counterparts have stopping distance2, proving a restricted Gram-only obstruction. [Paper, full Lean links and evidence](formalization/stopping-bound/stronger/README.txt).
+**Useful spectral and incidence replacements are proved.** A fourth-moment criterion gives stopping distance at least gamma+1 on explicit sparse nontrivial QC-GHP families, without the original small-gap or small-branch premise. A separate family has exact stopping/logical distance6, and Gram twins give an unbounded restricted obstruction. The original Proposition5.1 parameter question stays answered negatively. [Expanded paper, complete Lean URLs and evidence](formalization/stopping-bound/stronger/README.txt).
 
 # vibe-math
 

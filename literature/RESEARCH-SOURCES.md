@@ -1011,3 +1011,10 @@ Degenerate decoding can pass ordinary stopping obstructions. Performance/capacit
 Navin Kashyap; Alexander Vardy. Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF. [Stopping Sets in Codes from Designs](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf).
 
 Theorem1: uniform column weight w and distinct-column intersection at most mu give s>=w/mu+1. Here mu=2, hence three at w=4; our two-block refinement gives four. Corollary2 assumes intersection at most one, which fails across our blocks. Questions and version gaps: [source screen](stronger-stopping-source-screening.json).
+
+
+## Xia-Fu and reused cospectral comparison -24October2026 Pacific
+
+Shu-Tao Xia and Fang-Wei Fu, arXiv:cs/0606051v2,11November2006 (first12June2006). Full17-page primary PDF screened; internal title-page date6May2019 is separate from the arXiv stamp. Theorem3 gives3 at gamma4/lambda2; the partition criterion gives4. Its girth>=6 theorem does not apply to paired cross4-cycles. [Primary](https://arxiv.org/abs/cs/0606051v2); [question/version audit](xia-fu-stopping-source-screening.json).
+
+Dehghan-Banihashemi arXiv:1905.13228v1,31May2019: existing F38 full-text screen reused. Its cospectral cycle-count counterexamples differ from the actual full-Gram-equal CSS stopping/logical constructions here. No duplicated inventory entries or priority claim.

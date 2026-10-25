@@ -2,30 +2,30 @@
 
 Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **287 canonical entries**: the original 40 dissertation targets and **247 additional article entries**. Of the additions, **104 are specific mathematical questions or tasks suitable for coverage tracking**; the other 143 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **290 canonical entries**: the original 40 dissertation targets and **250 additional article entries**. Of the additions, **105 are specific mathematical questions or tasks suitable for coverage tracking**; the other 145 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [80 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/143 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [81 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/144 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 104 |
-| Additional directions/formulation/method entries outside the denominator | 143 |
-| Combined eligible targets | 143 = 39 + 104 |
-| Eligible targets with an identified, verified proof-assistant statement | 5/143 (3.50%) |
-| Eligible targets with an identified, verified Lean statement | 5/143 (3.50%) |
-| Eligible targets with a complete checked Lean proof | 5/143 (3.50%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/143 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/143 |
-| Additional identified Lean statements without a build audit | 1/143 |
-| Eligible targets with Lean discovery still unassessed in this extension | 35/143 |
-| Articles/preprints in scope | 114 |
-| Full-text sources screened, including withdrawn history | 101/114 |
-| Current-publication full texts screened | 100 |
+| Additional article targets in the coverage denominator | 105 |
+| Additional directions/formulation/method entries outside the denominator | 145 |
+| Combined eligible targets | 144 = 39 + 105 |
+| Eligible targets with an identified, verified proof-assistant statement | 5/144 (3.47%) |
+| Eligible targets with an identified, verified Lean statement | 5/144 (3.47%) |
+| Eligible targets with a complete checked Lean proof | 5/144 (3.47%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/144 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/144 |
+| Additional identified Lean statements without a build audit | 1/144 |
+| Eligible targets with Lean discovery still unassessed in this extension | 36/144 |
+| Articles/preprints in scope | 115 |
+| Full-text sources screened, including withdrawn history | 102/115 |
+| Current-publication full texts screened | 101 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 13/114 |
+| Not fully assessed | 13/115 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -165,6 +165,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F78](https://arxiv.org/abs/2203.17216v1) | full text screened | 7 | v1 submitted31March2022; PDF internally dated1April2022; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
 | [F79](https://doi.org/10.1038/s41534-026-01212-3) | full text screened | 2 | Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
 | [F80](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf) | full text screened | 1 | Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
+| [F81](https://arxiv.org/abs/cs/0606051v2) | full text screened | 3 | arXiv:cs/0606051v2,11November2006; first submission12June2006; downloaded PDF internal title-page date6May2019 is distinguished from the arXiv version stamp, not assumed a new public version; all17pages screened, including proof, examples and conclusion. |
 
 ## Reproducible evidence and limits
 
@@ -1941,11 +1942,11 @@ Find QC-GHP parameters for which the paper’s spectral stopping-set bound is no
 - Coverage denominator: included. Specific source-posed target; retained in the source cohort if later answered.
 - Proof-assistant statement: not systematically searched beyond lean. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
 - Source-described status: open as stated in source; current resolution: answered negatively for prop51 useful parameter question.
-- **Parameter question: answered negatively by universal checked nonexistence proof.** The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1 stated scalar-factor model. A useful incidence-conditioned replacement is now proved. The broader spectral-refinement direction has a proved same-Gram obstruction on explicit families and remains unassessed outside that scope; no universal disproof is claimed. Raw spectral-gap feasibility alone has dense positive examples.
-- **Incidence replacement answered positively:** [reusable two-block bound, sparse nontrivial CSS families and a restricted Gram obstruction](../formalization/stopping-bound/stronger/RESEARCH-NOTE.txt). The motivating spectral-refinement direction is broad. A useful incidence replacement now exists; an unrestricted claim that all stronger spectral bounds are impossible is not made.
-- Verified artifact: [StoppingSpectral.no_parameters_give_source_improvement](../formalization/stopping-bound/source-answer/README.txt); Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate stronger replacement bound remains open..
+- **Parameter question: answered negatively by universal checked nonexistence proof.** The original useful-parameter question is universally answered negatively in the stated scalar-factor model. Useful spectral replacement existence is now positive via a fourth-moment criterion and explicit joint-Sidon families; incidence existence is positive as well. An unbounded Gram-twin obstruction has explicit data restrictions. Optimal universal refinements are not claimed. Raw spectral-gap feasibility still has dense examples.
+- **Incidence replacement answered positively:** [reusable two-block bound, sparse nontrivial CSS families and a restricted Gram obstruction](../formalization/stopping-bound/stronger/RESEARCH-NOTE.txt). Useful spectral-replacement existence is answered positively by a fourth-moment criterion, an explicit sparse joint-Sidon family and faithful binary/eigenvalue bridges. The incidence existence question is also answered positively. Gram twins give an unbounded restricted obstruction; this does not disprove useful bounds on other classes.
+- Verified artifact: [StoppingSpectral.no_parameters_give_source_improvement](../formalization/stopping-bound/source-answer/README.txt); Universal negative answer to the original useful-parameter question in the source model; all positive row-block counts, actual expanded binary matrices and original roots. Separate useful spectral/incidence replacements are proved in the stronger artifact; the earlier universal negative parameter theorem is unchanged..
 - Supporting Lean artifact (not full target coverage): [checked scope](../formalization/stopping-bound/RESEARCH-NOTE.txt). Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result.
-- Scope comparison: Universal negative answer for the useful-parameter question of Proposition5.1 in its stated positive-dimensional binary biregular scalar-factor model: no choice can simultaneously satisfy sigma2^2<gamma/2 and source large root>2. Section3.2 explicitly uses r2=n2=1 throughout, and Proposition5.1 refers to the corresponding Theorem4.1 Fourier matrices. All positive row-block counts are covered. For r>=2 the gap is impossible; for r=1 it forces density>3/4, roots1<a+<=2 and a-<2. Every stopping support has cardinality>=2, so the small branch is excluded but the large-root guarantee is redundant. Dense raw-gap examples exist. A stronger replacement bound remains open as a separate component. Completed project-derived follow-ups establish exact stopping distance six for the positive63-multiple B1 cover family and classify all441 size-six base supports as unique companion Z-check rows; these are distinct incidence results, not the negative parameter proof. No logical-distance claim.
+- Scope comparison: Universal negative answer for the useful-parameter question of Proposition5.1 in its stated positive-dimensional binary biregular scalar-factor model: no choice can simultaneously satisfy sigma2^2<gamma/2 and source large root>2. Section3.2 explicitly uses r2=n2=1 throughout, and Proposition5.1 refers to the corresponding Theorem4.1 Fourier matrices. All positive row-block counts are covered. For r>=2 the gap is impossible; for r=1 it forces density>3/4, roots1<a+<=2 and a-<2. Every stopping support has cardinality>=2, so the small branch is excluded but the large-root guarantee is redundant. Dense raw-gap examples exist. Useful replacement existence is now answered positively by the checked fourth-moment criterion and incidence families in the stronger artifact; optimal/general refinements are not asserted complete. Completed project-derived follow-ups establish exact stopping distance six for the positive63-multiple B1 cover family and classify all441 size-six base supports as unique companion Z-check rows; these are distinct incidence results, not the negative parameter proof. Those B1 results make no quantum logical-distance claim; the separate stronger-artifact family has exact logical distance six.
 - Research sources: [central source index](RESEARCH-SOURCES.md).
 - Research progress: [Finite scalar-factor spectral obstruction and stopping-root non-improvement](../formalization/stopping-bound/RESEARCH-NOTE.txt) (general lean proof). Checked for the exact r₂=n₂=1 scalar-factor QC-GHP form with positive integral column weight and positive base dimensions: r₁≥2 cannot satisfy σ₂²<γ/2; r₁=1 can satisfy it only at row/column density>3/4, and then 1<a+≤2 while a−<2. The exact source-matrix and stopping-set bridges are checked. Dense raw-condition examples exist. Stronger spectral bounds and general two-factor/nonabelian constructions are outside this result.
   - [Complete Lean source](../formalization/stopping-bound/Spectral.lean).
@@ -3427,4 +3428,37 @@ Determine stopping-set weight enumerators for general designs and their associat
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in inspected source; current resolution: not independently established.
 - [F80: Enumerating Stopping Sets, PDF pp.9-12](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf); extraction lines 616–786; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F81-optimal-LP-existence
+
+Does every binary linear code admit a finite parity-check matrix H whose minimum AWGN pseudo-weight equals its minimum Hamming distance and whose number of minimum edges equals its number of minimum codewords?
+
+- Type: open question; written formulation: precise math in source.
+- Coverage denominator: included. Precise historical question; current status and Lean discovery unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F81: SectionV,PDFp14](https://arxiv.org/abs/cs/0606051v2); extraction lines 547–597; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F81-optimal-LP-minimum-rows
+
+Construct an asymptotically LP-optimal parity-check representation with the minimum number of rows for a binary LDPC code.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad optimization direction, outside precise denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F81: SectionV,PDFp14](https://arxiv.org/abs/cs/0606051v2); extraction lines 547–597; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F81-TypeII-l4-distance
+
+For the binary Type-II tree construction with l=4 of Sridhara-Kelley-Rosenthal, is d=d_L?
+
+- Type: conjecture; written formulation: held formulation.
+- Coverage denominator: excluded. Held construction-dependent conjecture; exact Type-II definition not frozen.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F81: Example4(ii),PDFp8](https://arxiv.org/abs/cs/0606051v2); extraction lines 293–343; explicit question or direction.
 - Related, not merged: L-F16-stopping-bound.

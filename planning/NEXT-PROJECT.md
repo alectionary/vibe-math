@@ -79,3 +79,8 @@ October24 lift-label follow-up is complete for the two fixed bases: [report](../
 The requested incidence-conditioned existence target is now answered positively; B1 classification is already complete. See [the stronger-bound checkpoint](../formalization/stopping-bound/stronger/README.txt). For the remaining authorized research time, compare two bounded steps: a rigorous expanded-spectrum comparison with Zhu-Chugg (high explanatory payoff, reusable finite linear-algebra/cover infrastructure), and tightening the Sidon criterion (larger mathematical payoff, but additive-consistency and sharpness are not yet settled). Prioritize a direct spectral certificate, then test a sharper incidence statement against finite counterexamples. No source question is marked unresolved merely because these follow-ups remain.
 
 The source screen adds20 planning records with no invented effort estimates. The fixed canonical completion count stays five.
+
+
+## Updated bounded follow-up after the spectral existence answer
+
+The exact fourth-moment criterion, actual joint-Sidon family and two-sector kernel bridges answer useful spectral replacement existence positively. The original parameter question stays negative. These are completed existence answers, not an optimal universal-bound theorem. The quantitative nonzero-excess criterion is now checked in MomentExcess. The next target is to construct or obstruct a sparse scalar QC family in its informative nonzero-excess regime, or determine sharp powers-family stopping distances. The independent base81 exact-eight certificate is a held computation and is excluded from published theorem claims unless its entire chain finishes. Complete canonical count remains five.

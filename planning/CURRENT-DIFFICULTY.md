@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 287 entries (106 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 290 entries (109 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Checked October 24, 2026. Low-confidence planning priors for all 287 entries (10
 | 3 | 39 | 22 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 38 | 38 |
+| Unestimated / scope gate | 39 | 39 |
 
 ### 2026-Geraci-O01
 
@@ -2494,7 +2494,7 @@ First milestone: Original parameter question completed negatively. A stronger re
 
 Progress: The original useful-parameter question is answered negatively for every positive-dimensional binary biregular choice in Proposition5.1’s stated scalar-factor model. The separate stronger/replacement-bound direction remains open. Earlier partial labels bundled these distinct tasks; they are historical, not the current status of the parameter question. Raw spectral-gap feasibility alone has dense positive examples. [Checked artifact](../formalization/stopping-bound/source-answer/README.txt).
 
-Basis: Primary status reconciled with the checked all-cases theorem; earlier partial labels bundled the separate stronger-bound direction. All historical proof artifacts and counts remain unchanged. New incidence follow-up: reusable two-block bound and sparse nontrivial CSS families; see stronger artifact. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-stopping-bound).
+Basis: Primary status reconciled with the checked all-cases theorem; earlier partial labels bundled the separate stronger-bound direction. All historical proof artifacts and counts remain unchanged. New incidence follow-up: reusable two-block bound and sparse nontrivial CSS families; see stronger artifact. Useful spectral-replacement existence is now also proved through an exact fourth-moment criterion and explicit joint-Sidon family; unbounded Gram-only obstruction has stated data restrictions. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f16-stopping-bound).
 
 ### L-F16-other-absorbing
 
@@ -4409,3 +4409,51 @@ First milestone: Verify current mathematical status and exact hypotheses.
 Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
 
 Basis: New full-text screen; current status and formalization effort not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f80-design-enumerators).
+
+### L-F81-optimal-LP-existence
+
+Does every binary linear code admit a finite parity-check matrix H whose minimum AWGN pseudo-weight equals its minimum Hamming distance and whose number of minimum edges equals its number of minimum codewords?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f81-optimal-lp-existence).
+
+### L-F81-optimal-LP-minimum-rows
+
+Construct an asymptotically LP-optimal parity-check representation with the minimum number of rows for a binary LDPC code.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f81-optimal-lp-minimum-rows).
+
+### L-F81-TypeII-l4-distance
+
+For the binary Type-II tree construction with l=4 of Sridhara-Kelley-Rosenthal, is d=d_L?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New full-text screen; current status and formalization effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f81-typeii-l4-distance).
