@@ -470,6 +470,605 @@ StrongerAnswer.exact_stopping_six (t : ℕ) [NeZero t] :
 StrongerAnswer.reusable_four (t : ℕ) [NeZero t] (T : Finset (Bicycle.Family.Var (39 * t)))
   (hT : Incidence.Stopping Bicycle.Family.E T) : 4 ≤ T.card
 'StrongerAnswer.reusable_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingPlane.innerForm.{u_1} {C : Type u_1} [Fintype C] (x y : C → ℝ) : ℝ
+'StoppingPlane.innerForm' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingPlane.gramForm.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] (H : Matrix C V ℝ)
+  (x y : C → ℝ) : ℝ
+'StoppingPlane.gramForm' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingPlane.norm_expand.{u_1} {C : Type u_1} [Fintype C] [DecidableEq C] (x y : C → ℝ) (a b : ℝ) :
+  (StoppingSpectral.normSq fun c => a * x c + b * y c) =
+    a ^ 2 * StoppingSpectral.normSq x + 2 * a * b * StoppingPlane.innerForm x y + b ^ 2 * StoppingSpectral.normSq y
+'StoppingPlane.norm_expand' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingPlane.energy_expand.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (H : Matrix C V ℝ) (x y : C → ℝ) (a b : ℝ) :
+  (StoppingSpectral.energy H fun c => a * x c + b * y c) =
+    a ^ 2 * StoppingSpectral.energy H x + 2 * a * b * StoppingPlane.gramForm H x y + b ^ 2 * StoppingSpectral.energy H y
+'StoppingPlane.energy_expand' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingPlane.second_lower.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (H : Matrix C V ℝ) (hm : 2 ≤ Fintype.card C) (x y : C → ℝ) (q D K L : ℝ) (hq : 0 < q) (hK : 0 ≤ K)
+  (hxx : StoppingSpectral.normSq x = q) (hyy : StoppingSpectral.normSq y = q) (hxy : StoppingPlane.innerForm x y = 0)
+  (hEx : StoppingSpectral.energy H x = D) (hEy : StoppingSpectral.energy H y = D)
+  (hE : StoppingPlane.gramForm H x y = K) (hL : L * q ≤ D - K) : L ≤ StoppingSpectral.eigs H ⟨1, ⋯⟩
+'StoppingPlane.second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingFiber.fiberEquiv.{u_1, u_2} {G : Type u_1} {K : Type u_2} [AddCommGroup G] [AddCommGroup K] (q : G →+ K)
+  (hq : Function.Surjective ⇑q) (d : K) : { x // q x = 0 } ≃ { x // q x = d }
+'StoppingFiber.fiberEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingFiber.pullback_sum.{u_1, u_2} {G : Type u_1} {K : Type u_2} [AddCommGroup G] [AddCommGroup K] [Fintype G]
+  [Fintype K] [DecidableEq G] [DecidableEq K] (q : G →+ K) (hq : Function.Surjective ⇑q) (f : K → ℝ) :
+  ∑ x, f (q x) = ↑(Fintype.card { x // q x = 0 }) * ∑ d, f d
+'StoppingFiber.pullback_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingFiber.kernel_card_pos.{u_1, u_2} {G : Type u_1} {K : Type u_2} [AddCommGroup G] [AddCommGroup K] [Fintype G]
+  [Fintype K] [DecidableEq G] [DecidableEq K] (q : G →+ K) : 0 < Fintype.card { x // q x = 0 }
+'StoppingFiber.kernel_card_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.C : Type
+'Bicycle.SpectralBase.C' does not depend on any axioms
+Bicycle.SpectralBase.V : Type
+'Bicycle.SpectralBase.V' does not depend on any axioms
+Bicycle.SpectralBase.HInt : Matrix Bicycle.SpectralBase.C Bicycle.SpectralBase.V ℤ
+'Bicycle.SpectralBase.HInt' depends on axioms: [propext, Quot.sound]
+Bicycle.SpectralBase.HR : Matrix Bicycle.SpectralBase.C Bicycle.SpectralBase.V ℝ
+'Bicycle.SpectralBase.HR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.uZ (c : Bicycle.SpectralBase.C) : ℤ
+'Bicycle.SpectralBase.uZ' does not depend on any axioms
+Bicycle.SpectralBase.vZ (c : Bicycle.SpectralBase.C) : ℤ
+'Bicycle.SpectralBase.vZ' does not depend on any axioms
+Bicycle.SpectralBase.normZ (x : Bicycle.SpectralBase.C → ℤ) : ℤ
+'Bicycle.SpectralBase.normZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.dotZ (x y : Bicycle.SpectralBase.C → ℤ) : ℤ
+'Bicycle.SpectralBase.dotZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.enZ (x : Bicycle.SpectralBase.C → ℤ) : ℤ
+'Bicycle.SpectralBase.enZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.crossZ (x y : Bicycle.SpectralBase.C → ℤ) : ℤ
+'Bicycle.SpectralBase.crossZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.norm_u : Bicycle.SpectralBase.normZ Bicycle.SpectralBase.uZ = 13
+'Bicycle.SpectralBase.norm_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.norm_v : Bicycle.SpectralBase.normZ Bicycle.SpectralBase.vZ = 13
+'Bicycle.SpectralBase.norm_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.dot_uv : Bicycle.SpectralBase.dotZ Bicycle.SpectralBase.uZ Bicycle.SpectralBase.vZ = 0
+'Bicycle.SpectralBase.dot_uv' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.energy_u : Bicycle.SpectralBase.enZ Bicycle.SpectralBase.uZ = 332
+'Bicycle.SpectralBase.energy_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.energy_v : Bicycle.SpectralBase.enZ Bicycle.SpectralBase.vZ = 332
+'Bicycle.SpectralBase.energy_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.cross_uv : Bicycle.SpectralBase.crossZ Bicycle.SpectralBase.uZ Bicycle.SpectralBase.vZ = 42
+'Bicycle.SpectralBase.cross_uv' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.uR (c : Bicycle.SpectralBase.C) : ℝ
+'Bicycle.SpectralBase.uR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.vR (c : Bicycle.SpectralBase.C) : ℝ
+'Bicycle.SpectralBase.vR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.matrix_cast (c : Bicycle.SpectralBase.C) (v : Bicycle.SpectralBase.V) :
+  Bicycle.SpectralBase.HR c v = ↑(Bicycle.SpectralBase.HInt c v)
+'Bicycle.SpectralBase.matrix_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.norm_cast (x : Bicycle.SpectralBase.C → ℤ) :
+  (StoppingSpectral.normSq fun c => ↑(x c)) = ↑(Bicycle.SpectralBase.normZ x)
+'Bicycle.SpectralBase.norm_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.dot_cast (x y : Bicycle.SpectralBase.C → ℤ) :
+  (StoppingPlane.innerForm (fun c => ↑(x c)) fun c => ↑(y c)) = ↑(Bicycle.SpectralBase.dotZ x y)
+'Bicycle.SpectralBase.dot_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.energy_cast (x : Bicycle.SpectralBase.C → ℤ) :
+  (StoppingSpectral.energy Bicycle.SpectralBase.HR fun c => ↑(x c)) = ↑(Bicycle.SpectralBase.enZ x)
+'Bicycle.SpectralBase.energy_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.cross_cast (x y : Bicycle.SpectralBase.C → ℤ) :
+  (StoppingPlane.gramForm Bicycle.SpectralBase.HR (fun c => ↑(x c)) fun c => ↑(y c)) =
+    ↑(Bicycle.SpectralBase.crossZ x y)
+'Bicycle.SpectralBase.cross_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.second_lower : 290 / 13 ≤ StoppingSpectral.eigs Bicycle.SpectralBase.HR ⟨1, ⋯⟩
+'Bicycle.SpectralBase.second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralBase.zhu_chugg_negative (hgap : StoppingSpectral.eigs Bicycle.SpectralBase.HR ⟨1, ⋯⟩ < 32) :
+  have s := StoppingSpectral.eigs Bicycle.SpectralBase.HR ⟨1, ⋯⟩;
+  78 * (8 - s) / (32 - s) < 0 ∧ 156 * (14 - s) / (8 * (32 - s)) < 0
+'Bicycle.SpectralBase.zhu_chugg_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.q {n : ℕ} (h : 39 ∣ n) : ZMod n →+ ZMod 39
+'Bicycle.CoverEnergy.q' depends on axioms: [propext, Quot.sound]
+Bicycle.CoverEnergy.q_surj {n : ℕ} [NeZero n] (h : 39 ∣ n) : Function.Surjective ⇑(Bicycle.CoverEnergy.q h)
+'Bicycle.CoverEnergy.q_surj' depends on axioms: [propext, Quot.sound]
+Bicycle.CoverEnergy.copies {n : ℕ} [NeZero n] (h : 39 ∣ n) : ℝ
+'Bicycle.CoverEnergy.copies' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.copies_pos {n : ℕ} [NeZero n] (h : 39 ∣ n) : 0 < Bicycle.CoverEnergy.copies h
+'Bicycle.CoverEnergy.copies_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.sum_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (f : ZMod 39 → ℝ) :
+  ∑ c, f (Bicycle.Family.projC h c) = Bicycle.CoverEnergy.copies h * ∑ d, f d
+'Bicycle.CoverEnergy.sum_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.var_sum_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (f : Bool × ZMod 39 → ℝ) :
+  ∑ v, f (Bicycle.Family.projV h v) = Bicycle.CoverEnergy.copies h * ∑ w, f w
+'Bicycle.CoverEnergy.var_sum_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.action_list {n : ℕ} [NeZero n] (h : 39 ∣ n) (x : ZMod n → ℝ) (v : Bicycle.Family.Var n) :
+  ∑ c, Bicycle.Family.HX ℝ c v * x c = (List.map x (Bicycle.Family.col v)).sum
+'Bicycle.CoverEnergy.action_list' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.action_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (x : ZMod 39 → ℝ) (v : Bicycle.Family.Var n) :
+  ∑ c, Bicycle.Family.HX ℝ c v * x (Bicycle.Family.projC h c) =
+    ∑ d, Bicycle.Family.HX ℝ d (Bicycle.Family.projV h v) * x d
+'Bicycle.CoverEnergy.action_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.norm_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (x : ZMod 39 → ℝ) :
+  (StoppingSpectral.normSq fun c => x (Bicycle.Family.projC h c)) =
+    Bicycle.CoverEnergy.copies h * StoppingSpectral.normSq x
+'Bicycle.CoverEnergy.norm_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.dot_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (x y : ZMod 39 → ℝ) :
+  (StoppingPlane.innerForm (fun c => x (Bicycle.Family.projC h c)) fun c => y (Bicycle.Family.projC h c)) =
+    Bicycle.CoverEnergy.copies h * StoppingPlane.innerForm x y
+'Bicycle.CoverEnergy.dot_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.energy_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (x : ZMod 39 → ℝ) :
+  (StoppingSpectral.energy (Bicycle.Family.HX ℝ) fun c => x (Bicycle.Family.projC h c)) =
+    Bicycle.CoverEnergy.copies h * StoppingSpectral.energy (Bicycle.Family.HX ℝ) x
+'Bicycle.CoverEnergy.energy_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.CoverEnergy.cross_pull {n : ℕ} [NeZero n] (h : 39 ∣ n) (x y : ZMod 39 → ℝ) :
+  (StoppingPlane.gramForm (Bicycle.Family.HX ℝ) (fun c => x (Bicycle.Family.projC h c)) fun c =>
+      y (Bicycle.Family.projC h c)) =
+    Bicycle.CoverEnergy.copies h * StoppingPlane.gramForm (Bicycle.Family.HX ℝ) x y
+'Bicycle.CoverEnergy.cross_pull' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralFamily.check_count {n : ℕ} [NeZero n] (h : 39 ∣ n) : 2 ≤ Fintype.card (ZMod n)
+'Bicycle.SpectralFamily.check_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralFamily.second_lower {n : ℕ} [NeZero n] (h : 39 ∣ n) :
+  290 / 13 ≤ StoppingSpectral.eigs (Bicycle.Family.HX ℝ) ⟨1, ⋯⟩
+'Bicycle.SpectralFamily.second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralFamily.source_gap_impossible {n : ℕ} [NeZero n] (h : 39 ∣ n) :
+  ¬StoppingSpectral.eigs (Bicycle.Family.HX ℝ) ⟨1, ⋯⟩ < 2
+'Bicycle.SpectralFamily.source_gap_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.SpectralFamily.zhu_chugg_negative {n : ℕ} [NeZero n] (h : 39 ∣ n)
+  (hgap : StoppingSpectral.eigs (Bicycle.Family.HX ℝ) ⟨1, ⋯⟩ < 32) :
+  have s := StoppingSpectral.eigs (Bicycle.Family.HX ℝ) ⟨1, ⋯⟩;
+  2 * ↑n * (8 - s) / (32 - s) < 0 ∧ 4 * ↑n * (14 - s) / (8 * (32 - s)) < 0
+'Bicycle.SpectralFamily.zhu_chugg_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+Bicycle.Family.real_gram_only_bound {n : ℕ} [NeZero n]
+  (lower : Matrix (Bicycle.Family.Check n) (Bicycle.Family.Check n) ℝ → ℝ)
+  (valid_bad :
+    ∀ (T : Finset (Bicycle.Family.Var n)),
+      Incidence.Stopping (fun v c => Bicycle.Family.BadX ℝ c v = 1) T →
+        lower (Bicycle.Family.BadX ℝ * (Bicycle.Family.BadX ℝ).transpose) ≤ ↑T.card) :
+  lower (Bicycle.Family.HX ℝ * (Bicycle.Family.HX ℝ).transpose) ≤ 2
+'Bicycle.Family.real_gram_only_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.real_gram_only_bound.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (lower : Matrix G G ℝ → ℝ)
+  (valid_bad :
+    ∀ (T : Finset (Bool × G)),
+      Incidence.Stopping (SidonStopping.badE S) T →
+        lower (SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose) ≤ ↑T.card) :
+  lower (SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose) ≤ 2
+'SidonStopping.real_gram_only_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.two_mul_le_pow (d : ℕ) : 2 * d ≤ 3 ^ d
+'PowersThree.two_mul_le_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.density_certificate (d : ℕ) : 2 * d * 3 ^ d ≤ 3 ^ (2 * d)
+'PowersThree.density_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.growing_guarantee (d : ℕ) [NeZero (PowersThree.liftLength d 0)]
+  (T : Finset (Bool × ZMod (PowersThree.liftLength d 0)))
+  (hT : Incidence.Stopping (SidonStopping.E (PowersThree.support (2 * d) (PowersThree.liftLength d 0))) T) :
+  d + 1 ≤ T.card ∧ 2 * d * 3 ^ d ≤ PowersThree.liftLength d 0
+'PowersThree.growing_guarantee' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.unbounded_gram_gap (M t : ℕ) [NeZero (PowersThree.liftLength (2 * M) t)]
+  (lower : Matrix (ZMod (PowersThree.liftLength (2 * M) t)) (ZMod (PowersThree.liftLength (2 * M) t)) ℝ → ℝ)
+  (valid_bad :
+    ∀ (U : Finset (Bool × ZMod (PowersThree.liftLength (2 * M) t))),
+      Incidence.Stopping (SidonStopping.badE (PowersThree.support (4 * M) (PowersThree.liftLength (2 * M) t))) U →
+        lower
+            (SidonStopping.BadX ℝ (PowersThree.support (4 * M) (PowersThree.liftLength (2 * M) t)) *
+              (SidonStopping.BadX ℝ (PowersThree.support (4 * M) (PowersThree.liftLength (2 * M) t))).transpose) ≤
+          ↑U.card)
+  (T : Finset (Bool × ZMod (PowersThree.liftLength (2 * M) t)))
+  (hT : Incidence.Stopping (SidonStopping.E (PowersThree.support (4 * M) (PowersThree.liftLength (2 * M) t))) T) :
+  ↑M *
+      lower
+        (SidonStopping.X ℝ (PowersThree.support (4 * M) (PowersThree.liftLength (2 * M) t)) *
+          (SidonStopping.X ℝ (PowersThree.support (4 * M) (PowersThree.liftLength (2 * M) t))).transpose) <
+    ↑T.card
+'PowersThree.unbounded_gram_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twinWord.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (v : Bool × G) : ZMod 2
+'SidonStopping.twinWord' depends on axioms: [propext, Quot.sound]
+SidonStopping.twinWord_support.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] :
+  BinaryStopping.support SidonStopping.twinWord = SidonStopping.twin
+'SidonStopping.twinWord_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twinWord_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] :
+  (BinaryStopping.support SidonStopping.twinWord).card = 2
+'SidonStopping.twinWord_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twinWord_kernel.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  (SidonStopping.BadX (ZMod 2) S).mulVec SidonStopping.twinWord = 0
+'SidonStopping.twinWord_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twinWord_parity.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] :
+  SidonStopping.leftParity SidonStopping.twinWord = 1
+'SidonStopping.twinWord_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_left_row_sum.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (c : G) : ∑ j, SidonStopping.BadZ S c (false, j) = ↑S.card
+'SidonStopping.bad_left_row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_stabilizer_parity.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (he : Even S.card) (a : G → ZMod 2) : SidonStopping.leftParity ((SidonStopping.BadZ S).transpose.mulVec a) = 0
+'SidonStopping.bad_stabilizer_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.twinWord_not_stabilizer.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (he : Even S.card) : ¬∃ a, (SidonStopping.BadZ S).transpose.mulVec a = SidonStopping.twinWord
+'SidonStopping.twinWord_not_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_kernel_weight_two.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (hS : S.Nonempty) (x : Bool × G → ZMod 2) (hx : x ≠ 0) (hk : (SidonStopping.BadX (ZMod 2) S).mulVec x = 0) :
+  2 ≤ (BinaryStopping.support x).card
+'SidonStopping.bad_kernel_weight_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_z_kernel_weight_two.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (hS : S.Nonempty) (x : Bool × G → ZMod 2) (hx : x ≠ 0) (hk : (SidonStopping.BadZ S).mulVec x = 0) :
+  2 ≤ (BinaryStopping.support x).card
+'SidonStopping.bad_z_kernel_weight_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_quantum_distance_two.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (hS : S.Nonempty) (he : Even S.card) :
+  SidonStopping.BadX (ZMod 2) S * (SidonStopping.BadZ S).transpose = 0 ∧
+    (∀ (x : Bool × G → ZMod 2),
+        x ≠ 0 → (SidonStopping.BadX (ZMod 2) S).mulVec x = 0 → 2 ≤ (BinaryStopping.support x).card) ∧
+      (∀ (x : Bool × G → ZMod 2), x ≠ 0 → (SidonStopping.BadZ S).mulVec x = 0 → 2 ≤ (BinaryStopping.support x).card) ∧
+        (SidonStopping.BadX (ZMod 2) S).mulVec SidonStopping.twinWord = 0 ∧
+          (¬∃ a, (SidonStopping.BadZ S).transpose.mulVec a = SidonStopping.twinWord) ∧
+            (BinaryStopping.support SidonStopping.twinWord).card = 2
+'SidonStopping.bad_quantum_distance_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.binary_kernel_stopping.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (x : Bool × G → ZMod 2) (hx : x ≠ 0) (hk : (SidonStopping.X (ZMod 2) S).mulVec x = 0) :
+  Incidence.Stopping (SidonStopping.E S) (BinaryStopping.support x)
+'SidonStopping.binary_kernel_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.kernel_weight_bound.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (hs : SidonStopping.IsSidon S) (x : Bool × G → ZMod 2) (hx : x ≠ 0) (hk : (SidonStopping.X (ZMod 2) S).mulVec x = 0) :
+  2 * (S.card + 1) ≤ 3 * (BinaryStopping.support x).card
+'SidonStopping.kernel_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+PowersThree.growing_kernel_weight (d t : ℕ) [NeZero (PowersThree.liftLength d t)]
+  (x : Bool × ZMod (PowersThree.liftLength d t) → ZMod 2) (hx : x ≠ 0)
+  (hk : (SidonStopping.X (ZMod 2) (PowersThree.support (2 * d) (PowersThree.liftLength d t))).mulVec x = 0) :
+  d + 1 ≤ (BinaryStopping.support x).card
+'PowersThree.growing_kernel_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.eigs_sq_trace.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (H : Matrix C V ℝ) : ∑ i, StoppingSpectral.eigs H i ^ 2 = (H * H.transpose * (H * H.transpose)).trace
+'StoppingMoment.eigs_sq_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.trace_gram_sq.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (H : Matrix C V ℝ) : (H * H.transpose * (H * H.transpose)).trace = ∑ v, ∑ w, (H.transpose * H) v w ^ 2
+'StoppingMoment.trace_gram_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.H.{u_1, u_2} {C : Type u_1} {V : Type u_2} (E : V → C → Prop) [DecidableRel E] : Matrix C V ℝ
+'StoppingMoment.H' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.gram_entry.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (v w : V) :
+  ((StoppingMoment.H E).transpose * StoppingMoment.H E) v w = ↑(PartitionStopping.overlap E v w)
+'StoppingMoment.gram_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.overlap_diag.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (v : V) :
+  PartitionStopping.overlap E v v = (PartitionStopping.neighbors E v).card
+'StoppingMoment.overlap_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.overlap_le_one.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E]
+  (hbudget :
+    ∑ v, ∑ w, ↑(PartitionStopping.overlap E v w) ^ 2 =
+      ∑ v, ↑(PartitionStopping.overlap E v v) ^ 2 + ∑ v, ∑ w, if v = w then 0 else ↑(PartitionStopping.overlap E v w))
+  (v w : V) : v ≠ w → PartitionStopping.overlap E v w ≤ 1
+'StoppingMoment.overlap_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.rowWeight.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype V] (E : V → C → Prop) [DecidableRel E]
+  (c : C) : ℕ
+'StoppingMoment.rowWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.row_sum.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C] [DecidableEq V]
+  (E : V → C → Prop) [DecidableRel E] (c : C) : ∑ v, StoppingMoment.H E c v = ↑(StoppingMoment.rowWeight E c)
+'StoppingMoment.row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.overlap_sum.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] :
+  ∑ v, ∑ w, ↑(PartitionStopping.overlap E v w) = ∑ c, ↑(StoppingMoment.rowWeight E c) ^ 2
+'StoppingMoment.overlap_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.off_sum.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C] [DecidableEq V]
+  (E : V → C → Prop) [DecidableRel E] :
+  (∑ v, ∑ w, if v = w then 0 else ↑(PartitionStopping.overlap E v w)) =
+    ∑ c, ↑(StoppingMoment.rowWeight E c) ^ 2 - ∑ v, ↑(PartitionStopping.neighbors E v).card
+'StoppingMoment.off_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.spectral_overlap_one.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E]
+  (hmoment :
+    ∑ i, StoppingSpectral.eigs (StoppingMoment.H E) i ^ 2 + ∑ v, ↑(PartitionStopping.neighbors E v).card =
+      ∑ v, ↑(PartitionStopping.neighbors E v).card ^ 2 + ∑ c, ↑(StoppingMoment.rowWeight E c) ^ 2)
+  (v w : V) : v ≠ w → PartitionStopping.overlap E v w ≤ 1
+'StoppingMoment.spectral_overlap_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.spectral_stopping_bound.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (γ : ℕ)
+  (hdegree : ∀ (v : V), γ ≤ (PartitionStopping.neighbors E v).card)
+  (hmoment :
+    ∑ i, StoppingSpectral.eigs (StoppingMoment.H E) i ^ 2 + ∑ v, ↑(PartitionStopping.neighbors E v).card =
+      ∑ v, ↑(PartitionStopping.neighbors E v).card ^ 2 + ∑ c, ↑(StoppingMoment.rowWeight E c) ^ 2)
+  (S : Finset V) (hS : Incidence.Stopping E S) : γ + 1 ≤ S.card
+'StoppingMoment.spectral_stopping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.moment_of_overlap_one.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E]
+  (hone : ∀ (v w : V), v ≠ w → PartitionStopping.overlap E v w ≤ 1) :
+  ∑ i, StoppingSpectral.eigs (StoppingMoment.H E) i ^ 2 + ∑ v, ↑(PartitionStopping.neighbors E v).card =
+    ∑ v, ↑(PartitionStopping.neighbors E v).card ^ 2 + ∑ c, ↑(StoppingMoment.rowWeight E c) ^ 2
+'StoppingMoment.moment_of_overlap_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.regular_spectral_bound.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (γ k : ℕ)
+  (hcol : ∀ (v : V), (PartitionStopping.neighbors E v).card = γ) (hrow : ∀ (c : C), StoppingMoment.rowWeight E c = k)
+  (hmoment :
+    ∑ i, StoppingSpectral.eigs (StoppingMoment.H E) i ^ 2 + ↑(Fintype.card V) * ↑γ =
+      ↑(Fintype.card V) * ↑γ ^ 2 + ↑(Fintype.card C) * ↑k ^ 2)
+  (S : Finset V) (hS : Incidence.Stopping E S) : γ + 1 ≤ S.card
+'StoppingMoment.regular_spectral_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.E.{u_1} {G : Type u_1} [AddCommGroup G] (S T : Finset G) (v : Bool × G) (c : G) : Prop
+'JointSidon.E' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.joined.{u_1, u_2} {G : Type u_1} {R : Type u_2} [Zero R] [One R] (A B : Matrix G G R) : Matrix G (Bool × G) R
+'JointSidon.joined' does not depend on any axioms
+JointSidon.X.{u_1, u_2} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (R : Type u_2) [Zero R] [One R]
+  (S T : Finset G) : Matrix G (Bool × G) R
+'JointSidon.X' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.Z.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (S T : Finset G) : Matrix G (Bool × G) (ZMod 2)
+'JointSidon.Z' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.entry.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2) [Zero R] [One R]
+  (S T : Finset G) (v : Bool × G) (c : G) : JointSidon.X R S T c v = if JointSidon.E S T v c then 1 else 0
+'JointSidon.entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.binary_incidence.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (v : Bool × G) (c : G) : JointSidon.X (ZMod 2) S T c v = 1 ↔ JointSidon.E S T v c
+'JointSidon.binary_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.joined_product.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] {R : Type u_2}
+  [CommSemiring R] (A B : Matrix G G R) :
+  JointSidon.joined A B * (JointSidon.joined B A).transpose = A * B.transpose + B.transpose * A
+'JointSidon.joined_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.css.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G) :
+  JointSidon.X (ZMod 2) S T * (JointSidon.Z S T).transpose = 0
+'JointSidon.css' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.overlap_one.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (hs : SidonStopping.IsSidon (S ∪ T)) (hd : Disjoint S T) (v w : Bool × G) (hne : v ≠ w) :
+  PartitionStopping.overlap (JointSidon.E S T) v w ≤ 1
+'JointSidon.overlap_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.degree.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G) (v : Bool × G) :
+  (PartitionStopping.neighbors (JointSidon.E S T) v).card = if v.1 = true then T.card else S.card
+'JointSidon.degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.stopping_bound.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (hs : SidonStopping.IsSidon (S ∪ T)) (hd : Disjoint S T) (hc : S.card = T.card) (U : Finset (Bool × G))
+  (hU : Incidence.Stopping (JointSidon.E S T) U) : S.card + 1 ≤ U.card
+'JointSidon.stopping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.coeff_sum.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2)
+  [CommSemiring R] (S : Finset G) : ∑ j, SidonStopping.coeff R S j = ↑S.card
+'JointSidon.coeff_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.left_sum.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2)
+  [CommSemiring R] (S T : Finset G) (c : G) : ∑ j, JointSidon.X R S T c (false, j) = ↑S.card
+'JointSidon.left_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.right_sum.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2)
+  [CommSemiring R] (S T : Finset G) (c : G) : ∑ j, JointSidon.X R S T c (true, j) = ↑T.card
+'JointSidon.right_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.row_sum.{u_1, u_2} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (R : Type u_2)
+  [CommSemiring R] (S T : Finset G) (c : G) : ∑ v, JointSidon.X R S T c v = ↑(S.card + T.card)
+'JointSidon.row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.column_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (v : Bool × G) : {c | JointSidon.X (ZMod 2) S T c v = 1}.card = if v.1 = true then T.card else S.card
+'JointSidon.column_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.row_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G) (c : G) :
+  {v | JointSidon.X (ZMod 2) S T c v = 1}.card = S.card + T.card
+'JointSidon.row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.left_kernel.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (he : Even S.card) : (JointSidon.X (ZMod 2) S T).mulVec SidonStopping.leftOnes = 0
+'JointSidon.left_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.stabilizer_parity.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (he : Even T.card) (a : G → ZMod 2) : SidonStopping.leftParity ((JointSidon.Z S T).transpose.mulVec a) = 0
+'JointSidon.stabilizer_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.left_not_stabilizer.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (he : Even T.card) (ho : Odd (Fintype.card G)) : ¬∃ a, (JointSidon.Z S T).transpose.mulVec a = SidonStopping.leftOnes
+'JointSidon.left_not_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.leftMarks (γ n : ℕ) : Finset (ZMod n)
+'JointPowers.leftMarks' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.rightMarks (γ n : ℕ) : Finset (ZMod n)
+'JointPowers.rightMarks' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.mark_inj (B n i j : ℕ) (hn : 3 ^ B ≤ n) (hi : i < B) (hj : j < B) (he : ↑(3 ^ i) = ↑(3 ^ j)) : i = j
+'JointPowers.mark_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.left_card (γ n : ℕ) (hn : 3 ^ (2 * γ) ≤ n) : (JointPowers.leftMarks γ n).card = γ
+'JointPowers.left_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.right_card (γ n : ℕ) (hn : 3 ^ (2 * γ) ≤ n) : (JointPowers.rightMarks γ n).card = γ
+'JointPowers.right_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.disjoint_marks (γ n : ℕ) (hn : 3 ^ (2 * γ) ≤ n) :
+  Disjoint (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)
+'JointPowers.disjoint_marks' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.union_subset (γ n : ℕ) :
+  JointPowers.leftMarks γ n ∪ JointPowers.rightMarks γ n ⊆ PowersThree.support (2 * γ) n
+'JointPowers.union_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.joint_sidon (γ n : ℕ) (hn : 3 ^ (2 * γ) ≤ n) :
+  SidonStopping.IsSidon (JointPowers.leftMarks γ n ∪ JointPowers.rightMarks γ n)
+'JointPowers.joint_sidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.stopping_bound (γ n : ℕ) [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (U : Finset (Bool × ZMod n))
+  (hU : Incidence.Stopping (JointSidon.E (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) U) : γ + 1 ≤ U.card
+'JointPowers.stopping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.nontrivial_code (γ n : ℕ) [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (he : Even γ) (ho : Odd n) :
+  JointSidon.X (ZMod 2) (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n) *
+        (JointSidon.Z (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)).transpose =
+      0 ∧
+    (JointSidon.X (ZMod 2) (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)).mulVec SidonStopping.leftOnes = 0 ∧
+      ¬∃ a,
+          (JointSidon.Z (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)).transpose.mulVec a =
+            SidonStopping.leftOnes
+'JointPowers.nontrivial_code' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.real_matrix {γ n : ℕ} [NeZero n] :
+  StoppingMoment.H (JointSidon.E (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) =
+    JointSidon.X ℝ (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)
+'JointPowers.real_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.column_degree {γ n : ℕ} [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (v : Bool × ZMod n) :
+  (PartitionStopping.neighbors (JointSidon.E (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) v).card = γ
+'JointPowers.column_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.row_degree {γ n : ℕ} [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (c : ZMod n) :
+  StoppingMoment.rowWeight (JointSidon.E (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) c = 2 * γ
+'JointPowers.row_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.fourth_moment {γ n : ℕ} [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) :
+  ∑ i, StoppingSpectral.eigs (JointSidon.X ℝ (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) i ^ 2 =
+    2 * ↑n * ↑γ * (3 * ↑γ - 1)
+'JointPowers.fourth_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.spectral_stopping_bound {γ n : ℕ} [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (U : Finset (Bool × ZMod n))
+  (hU : Incidence.Stopping (JointSidon.E (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) U) : γ + 1 ≤ U.card
+'JointPowers.spectral_stopping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.C : Type
+'JointPowers.SpectralBase.C' does not depend on any axioms
+JointPowers.SpectralBase.V : Type
+'JointPowers.SpectralBase.V' does not depend on any axioms
+JointPowers.SpectralBase.HInt : Matrix JointPowers.SpectralBase.C JointPowers.SpectralBase.V ℤ
+'JointPowers.SpectralBase.HInt' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.HR : Matrix JointPowers.SpectralBase.C JointPowers.SpectralBase.V ℝ
+'JointPowers.SpectralBase.HR' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.uZ (c : JointPowers.SpectralBase.C) : ℤ
+'JointPowers.SpectralBase.uZ' does not depend on any axioms
+JointPowers.SpectralBase.vZ (c : JointPowers.SpectralBase.C) : ℤ
+'JointPowers.SpectralBase.vZ' does not depend on any axioms
+JointPowers.SpectralBase.normZ (x : JointPowers.SpectralBase.C → ℤ) : ℤ
+'JointPowers.SpectralBase.normZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.dotZ (x y : JointPowers.SpectralBase.C → ℤ) : ℤ
+'JointPowers.SpectralBase.dotZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.enZ (x : JointPowers.SpectralBase.C → ℤ) : ℤ
+'JointPowers.SpectralBase.enZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.crossZ (x y : JointPowers.SpectralBase.C → ℤ) : ℤ
+'JointPowers.SpectralBase.crossZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.norm_u : JointPowers.SpectralBase.normZ JointPowers.SpectralBase.uZ = 40
+'JointPowers.SpectralBase.norm_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.norm_v : JointPowers.SpectralBase.normZ JointPowers.SpectralBase.vZ = 40
+'JointPowers.SpectralBase.norm_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.dot_uv :
+  JointPowers.SpectralBase.dotZ JointPowers.SpectralBase.uZ JointPowers.SpectralBase.vZ = 0
+'JointPowers.SpectralBase.dot_uv' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.energy_u : JointPowers.SpectralBase.enZ JointPowers.SpectralBase.uZ = 280
+'JointPowers.SpectralBase.energy_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.energy_v : JointPowers.SpectralBase.enZ JointPowers.SpectralBase.vZ = 280
+'JointPowers.SpectralBase.energy_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.cross_uv :
+  JointPowers.SpectralBase.crossZ JointPowers.SpectralBase.uZ JointPowers.SpectralBase.vZ = 38
+'JointPowers.SpectralBase.cross_uv' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.uR (c : JointPowers.SpectralBase.C) : ℝ
+'JointPowers.SpectralBase.uR' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.vR (c : JointPowers.SpectralBase.C) : ℝ
+'JointPowers.SpectralBase.vR' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.matrix_cast (c : JointPowers.SpectralBase.C) (v : JointPowers.SpectralBase.V) :
+  JointPowers.SpectralBase.HR c v = ↑(JointPowers.SpectralBase.HInt c v)
+'JointPowers.SpectralBase.matrix_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.norm_cast (x : JointPowers.SpectralBase.C → ℤ) :
+  (StoppingSpectral.normSq fun c => ↑(x c)) = ↑(JointPowers.SpectralBase.normZ x)
+'JointPowers.SpectralBase.norm_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.dot_cast (x y : JointPowers.SpectralBase.C → ℤ) :
+  (StoppingPlane.innerForm (fun c => ↑(x c)) fun c => ↑(y c)) = ↑(JointPowers.SpectralBase.dotZ x y)
+'JointPowers.SpectralBase.dot_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.energy_cast (x : JointPowers.SpectralBase.C → ℤ) :
+  (StoppingSpectral.energy JointPowers.SpectralBase.HR fun c => ↑(x c)) = ↑(JointPowers.SpectralBase.enZ x)
+'JointPowers.SpectralBase.energy_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.cross_cast (x y : JointPowers.SpectralBase.C → ℤ) :
+  (StoppingPlane.gramForm JointPowers.SpectralBase.HR (fun c => ↑(x c)) fun c => ↑(y c)) =
+    ↑(JointPowers.SpectralBase.crossZ x y)
+'JointPowers.SpectralBase.cross_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.second_lower : 121 / 20 ≤ StoppingSpectral.eigs JointPowers.SpectralBase.HR ⟨1, ⋯⟩
+'JointPowers.SpectralBase.second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.SpectralBase.zhu_chugg_negative (hgap : StoppingSpectral.eigs JointPowers.SpectralBase.HR ⟨1, ⋯⟩ < 8) :
+  have s := StoppingSpectral.eigs JointPowers.SpectralBase.HR ⟨1, ⋯⟩;
+  162 * (4 - s) / (8 - s) < 0 ∧ 324 * (6 - s) / (4 * (8 - s)) < 0
+'JointPowers.SpectralBase.zhu_chugg_negative' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.binary_kernel_stopping.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (x : Bool × G → ZMod 2) (hx : x ≠ 0) (hk : (JointSidon.X (ZMod 2) S T).mulVec x = 0) :
+  Incidence.Stopping (JointSidon.E S T) (BinaryStopping.support x)
+'JointSidon.binary_kernel_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.kernel_weight_bound.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (hs : SidonStopping.IsSidon (S ∪ T)) (hd : Disjoint S T) (hc : S.card = T.card) (x : Bool × G → ZMod 2) (hx : x ≠ 0)
+  (hk : (JointSidon.X (ZMod 2) S T).mulVec x = 0) : S.card + 1 ≤ (BinaryStopping.support x).card
+'JointSidon.kernel_weight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.both_sector_bounds (γ n : ℕ) [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) :
+  (∀ (x : Bool × ZMod n → ZMod 2),
+      x ≠ 0 →
+        (JointSidon.X (ZMod 2) (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)).mulVec x = 0 →
+          γ + 1 ≤ (BinaryStopping.support x).card) ∧
+    ∀ (x : Bool × ZMod n → ZMod 2),
+      x ≠ 0 →
+        (JointSidon.Z (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)).mulVec x = 0 →
+          γ + 1 ≤ (BinaryStopping.support x).card
+'JointPowers.both_sector_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.badZReal.{u_1} {G : Type u_1} [AddCommGroup G] [DecidableEq G] (S : Finset G) : Matrix G (Bool × G) ℝ
+'SidonStopping.badZReal' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.badZReal_entry.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) (c : G)
+  (v : Bool × G) : SidonStopping.badZReal S c v = if v.2 - c ∈ S then 1 else 0
+'SidonStopping.badZReal_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.badZBinary_entry.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) (c : G)
+  (v : Bool × G) : SidonStopping.BadZ S c v = if v.2 - c ∈ S then 1 else 0
+'SidonStopping.badZBinary_entry' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_z_real_gram.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  SidonStopping.badZReal S * (SidonStopping.badZReal S).transpose =
+    SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose
+'SidonStopping.bad_z_real_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.separate_grams_equal.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) :
+  (SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose, SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose) =
+    (SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose,
+      SidonStopping.badZReal S * (SidonStopping.badZReal S).transpose)
+'SidonStopping.separate_grams_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.both_gram_only_bound.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (lower : Matrix G G ℝ × Matrix G G ℝ → ℝ)
+  (valid_bad :
+    ∀ (U : Finset (Bool × G)),
+      Incidence.Stopping (SidonStopping.badE S) U →
+        lower
+            (SidonStopping.BadX ℝ S * (SidonStopping.BadX ℝ S).transpose,
+              SidonStopping.badZReal S * (SidonStopping.badZReal S).transpose) ≤
+          ↑U.card) :
+  lower (SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose, SidonStopping.X ℝ S * (SidonStopping.X ℝ S).transpose) ≤
+    2
+'SidonStopping.both_gram_only_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.excess.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  (E : V → C → Prop) [DecidableRel E] : ℝ
+'StoppingMoment.excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.pairExcess.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [DecidableEq C] [DecidableEq V]
+  (E : V → C → Prop) [DecidableRel E] (v w : V) : ℝ
+'StoppingMoment.pairExcess' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.pair_nonneg.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (v w : V) : 0 ≤ StoppingMoment.pairExcess E v w
+'StoppingMoment.pair_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.excess_eq_sum.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] :
+  StoppingMoment.excess E = ∑ v, ∑ w, StoppingMoment.pairExcess E v w
+'StoppingMoment.excess_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.pair_symm.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (v w : V) :
+  StoppingMoment.pairExcess E v w = StoppingMoment.pairExcess E w v
+'StoppingMoment.pair_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.pair_le_excess.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (v w : V) (hne : v ≠ w) :
+  2 * (↑(PartitionStopping.overlap E v w) ^ 2 - ↑(PartitionStopping.overlap E v w)) ≤ StoppingMoment.excess E
+'StoppingMoment.pair_le_excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.spectral_overlap_bound.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (μ : ℕ) (hsmall : StoppingMoment.excess E < 2 * ↑μ * (↑μ + 1))
+  (v w : V) : v ≠ w → PartitionStopping.overlap E v w ≤ μ
+'StoppingMoment.spectral_overlap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.spectral_excess_stopping_bound.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V]
+  [DecidableEq C] [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (γ μ : ℕ)
+  (hdegree : ∀ (v : V), γ ≤ (PartitionStopping.neighbors E v).card)
+  (hsmall : StoppingMoment.excess E < 2 * ↑μ * (↑μ + 1)) (S : Finset V) (hS : Incidence.Stopping E S) :
+  γ + μ ≤ μ * S.card
+'StoppingMoment.spectral_excess_stopping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.regularReplacement (m N γ k : ℕ) (M4 : ℝ) : ℕ
+'StoppingMoment.regularReplacement' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.regularReplacement_ge_two (m N γ k : ℕ) (M4 : ℝ) (hγ : 0 < γ) :
+  2 ≤ StoppingMoment.regularReplacement m N γ k M4
+'StoppingMoment.regularReplacement_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingMoment.regularReplacement_valid.{u_1, u_2} {C : Type u_1} {V : Type u_2} [Fintype C] [Fintype V] [DecidableEq C]
+  [DecidableEq V] (E : V → C → Prop) [DecidableRel E] (γ k : ℕ) (hγ : 0 < γ)
+  (hcol : ∀ (v : V), (PartitionStopping.neighbors E v).card = γ) (hrow : ∀ (c : C), StoppingMoment.rowWeight E c = k)
+  (S : Finset V) (hS : Incidence.Stopping E S) :
+  StoppingMoment.regularReplacement (Fintype.card C) (Fintype.card V) γ k
+      (∑ i, StoppingSpectral.eigs (StoppingMoment.H E) i ^ 2) ≤
+    S.card
+'StoppingMoment.regularReplacement_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.replacement_value {γ n : ℕ} [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) :
+  StoppingMoment.regularReplacement n (2 * n) γ (2 * γ)
+      (∑ i, StoppingSpectral.eigs (JointSidon.X ℝ (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) i ^ 2) =
+    γ + 1
+'JointPowers.replacement_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.replacement_informative {γ n : ℕ} [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (hγ : 2 ≤ γ) :
+  2 <
+    StoppingMoment.regularReplacement n (2 * n) γ (2 * γ)
+      (∑ i, StoppingSpectral.eigs (JointSidon.X ℝ (JointPowers.leftMarks γ n) (JointPowers.rightMarks γ n)) i ^ 2)
+'JointPowers.replacement_informative' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointPowers.base_fourth_moment :
+  ∑ i, StoppingSpectral.eigs (JointSidon.X ℝ (JointPowers.leftMarks 2 81) (JointPowers.rightMarks 2 81)) i ^ 2 = 1620
+'JointPowers.base_fourth_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceConsumers.actual_joint_family (γ n : ℕ) [NeZero n] (hn : 3 ^ (2 * γ) ≤ n) (he : Even γ) (ho : Odd n) :
+  have S := JointPowers.leftMarks γ n;
+  have T := JointPowers.rightMarks γ n;
+  have HX := JointSidon.X (ZMod 2) S T;
+  have HZ := JointSidon.Z S T;
+  HX * HZ.transpose = 0 ∧
+    (∀ (v : Bool × ZMod n), {c | HX c v = 1}.card = γ) ∧
+      (∀ (c : ZMod n), {v | HX c v = 1}.card = 2 * γ) ∧
+        ∑ i, StoppingSpectral.eigs (JointSidon.X ℝ S T) i ^ 2 = 2 * ↑n * ↑γ * (3 * ↑γ - 1) ∧
+          (∀ (U : Finset (Bool × ZMod n)), Incidence.Stopping (fun v c => HX c v = 1) U → γ + 1 ≤ U.card) ∧
+            HX.mulVec SidonStopping.leftOnes = 0 ∧ ¬∃ a, HZ.transpose.mulVec a = SidonStopping.leftOnes
+'SourceConsumers.actual_joint_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceConsumers.arbitrary_joint_lengths (γ B : ℕ) : ∃ n, B < 2 * n ∧ 0 < n ∧ Odd n ∧ 3 ^ (2 * γ) ≤ n
+'SourceConsumers.arbitrary_joint_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]
+SourceConsumers.growing_density (d : ℕ) : 2 * ↑d / 3 ^ (2 * d) ≤ 1 / 3 ^ d
+'SourceConsumers.growing_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_z_binary.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G) (c : G)
+  (v : Bool × G) : SidonStopping.BadZ S c v = 1 ↔ v.2 - c ∈ S
+'SidonStopping.bad_z_binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_z_column_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (v : Bool × G) : {c | SidonStopping.BadZ S c v = 1}.card = S.card
+'SidonStopping.bad_z_column_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+SidonStopping.bad_z_row_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
+  (c : G) : {v | SidonStopping.BadZ S c v = 1}.card = 2 * S.card
+'SidonStopping.bad_z_row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
 Incidence.Stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} (E : V → C → Prop) [DecidableRel E] (T : Finset V) : Prop
 'Incidence.Stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
 Incidence.stopping_extension.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
@@ -520,3 +1119,238 @@ Incidence.stopping_cover_image.{u_1, u_2, u_3, u_4} {V : Type u_1} {C : Type u_2
   (local_inj : ∀ (v w : V) (c : C), E v c → E w c → p v = p w → v = w) (T : Finset V) (hT : Incidence.Stopping E T) :
   Incidence.Stopping F (Finset.image p T)
 'Incidence.stopping_cover_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.energy.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [Fintype n] (H : Matrix m n ℝ)
+  (x : m → ℝ) : ℝ
+'StoppingSpectral.energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.normSq.{u_1} {m : Type u_1} [Fintype m] (x : m → ℝ) : ℝ
+'StoppingSpectral.normSq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.energy_eq_gram.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (x : m → ℝ) : StoppingSpectral.energy H x = x ⬝ᵥ (H * H.transpose).mulVec x
+'StoppingSpectral.energy_eq_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.eigs.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  (H : Matrix m n ℝ) : Fin (Fintype.card m) → ℝ
+'StoppingSpectral.eigs' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.eBasis.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  (H : Matrix m n ℝ) : OrthonormalBasis (Fin (Fintype.card m)) ℝ (EuclideanSpace ℝ m)
+'StoppingSpectral.eBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.eigs_antitone.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) : Antitone (StoppingSpectral.eigs H)
+'StoppingSpectral.eigs_antitone' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.gram_apply_basis.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (i : Fin (Fintype.card m)) :
+  (H * H.transpose).mulVec ((StoppingSpectral.eBasis H) i).ofLp =
+    StoppingSpectral.eigs H i • ((StoppingSpectral.eBasis H) i).ofLp
+'StoppingSpectral.gram_apply_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.normSq_euclidean.{u_1} {m : Type u_1} [Fintype m] [DecidableEq m] (x : EuclideanSpace ℝ m) :
+  StoppingSpectral.normSq x.ofLp = ‖x‖ ^ 2
+'StoppingSpectral.normSq_euclidean' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.energy_eigenbasis.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (x : EuclideanSpace ℝ m) :
+  StoppingSpectral.energy H x.ofLp = ∑ i, StoppingSpectral.eigs H i * ((StoppingSpectral.eBasis H).repr x).ofLp i ^ 2
+'StoppingSpectral.energy_eigenbasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.energy_basis.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (i : Fin (Fintype.card m)) :
+  StoppingSpectral.energy H ((StoppingSpectral.eBasis H) i).ofLp = StoppingSpectral.eigs H i
+'StoppingSpectral.energy_basis' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.eigs_trace.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) : ∑ i, StoppingSpectral.eigs H i = (H * H.transpose).trace
+'StoppingSpectral.eigs_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.energy_le_of_coeff_zero.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m]
+  [Fintype n] [DecidableEq n] (H : Matrix m n ℝ) (hm : 2 ≤ Fintype.card m) (x : EuclideanSpace ℝ m)
+  (hx : ((StoppingSpectral.eBasis H).repr x).ofLp ⟨0, ⋯⟩ = 0) :
+  StoppingSpectral.energy H x.ofLp ≤ StoppingSpectral.eigs H ⟨1, ⋯⟩ * StoppingSpectral.normSq x.ofLp
+'StoppingSpectral.energy_le_of_coeff_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.binary_weighted_cauchy.{u_1} {m : Type u_1} [Fintype m] [DecidableEq m] (w x : m → ℝ)
+  (hw : ∀ (i : m), w i = 0 ∨ w i = 1) : (∑ i, w i * x i) ^ 2 ≤ (∑ i, w i) * ∑ i, w i * x i ^ 2
+'StoppingSpectral.binary_weighted_cauchy' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.regular_energy_upper.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (γ k : ℝ) (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1)
+  (hcol : ∀ (j : n), ∑ i, H i j = γ) (hrow : ∀ (i : m), ∑ j, H i j = k) (x : m → ℝ) :
+  StoppingSpectral.energy H x ≤ γ * k * StoppingSpectral.normSq x
+'StoppingSpectral.regular_energy_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.regular_trace.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (k : ℝ) (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1)
+  (hrow : ∀ (i : m), ∑ j, H i j = k) : (H * H.transpose).trace = ↑(Fintype.card m) * k
+'StoppingSpectral.regular_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.regular_eigs_le.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (γ k : ℝ) (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1)
+  (hcol : ∀ (j : n), ∑ i, H i j = γ) (hrow : ∀ (i : m), ∑ j, H i j = k) (i : Fin (Fintype.card m)) :
+  StoppingSpectral.eigs H i ≤ γ * k
+'StoppingSpectral.regular_eigs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.regular_trace_obstruction.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m]
+  [Fintype n] [DecidableEq n] (H : Matrix m n ℝ) (γ k : ℝ) (hm : 2 ≤ Fintype.card m)
+  (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1) (hcol : ∀ (j : n), ∑ i, H i j = γ)
+  (hrow : ∀ (i : m), ∑ j, H i j = k) :
+  k * (↑(Fintype.card m) - γ) ≤ (↑(Fintype.card m) - 1) * StoppingSpectral.eigs H ⟨1, ⋯⟩
+'StoppingSpectral.regular_trace_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.scalarFactorMatrix.{u_3, u_4, u_5} {R : Type u_3} {C : Type u_4} {F : Type u_5} [DecidableEq R]
+  (A : Matrix (R × F) (C × F) ℝ) (B : Matrix F F ℝ) : Matrix (R × F) (C × F ⊕ R × F) ℝ
+'StoppingSpectral.scalarFactorMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.fiberLift.{u_3, u_5} {R : Type u_3} {F : Type u_5} : (R → ℝ) →ₗ[ℝ] EuclideanSpace ℝ (R × F)
+'StoppingSpectral.fiberLift' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.scalarFactor_right_action.{u_3, u_4, u_5} {R : Type u_3} {C : Type u_4} {F : Type u_5} [Fintype R]
+  [DecidableEq R] [Fintype C] [DecidableEq C] [Fintype F] [DecidableEq F] (A : Matrix (R × F) (C × F) ℝ)
+  (B : Matrix F F ℝ) (γ : ℝ) (hB : ∀ (j : F), ∑ i, B j i = γ) (u : R → ℝ) (j : R × F) :
+  ∑ i, StoppingSpectral.scalarFactorMatrix A B i (Sum.inr j) * u i.1 = γ * u j.1
+'StoppingSpectral.scalarFactor_right_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.scalarFactor_energy_lower.{u_3, u_4, u_5} {R : Type u_3} {C : Type u_4} {F : Type u_5} [Fintype R]
+  [DecidableEq R] [Fintype C] [DecidableEq C] [Fintype F] [DecidableEq F] (A : Matrix (R × F) (C × F) ℝ)
+  (B : Matrix F F ℝ) (γ : ℝ) (hB : ∀ (j : F), ∑ i, B j i = γ) (u : R → ℝ) :
+  γ ^ 2 * StoppingSpectral.normSq (StoppingSpectral.fiberLift u).ofLp ≤
+    StoppingSpectral.energy (StoppingSpectral.scalarFactorMatrix A B) (StoppingSpectral.fiberLift u).ofLp
+'StoppingSpectral.scalarFactor_energy_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.replicated_scalar_second_lower.{u_3, u_4, u_5} {R : Type u_3} {C : Type u_4} {F : Type u_5} [Fintype R]
+  [DecidableEq R] [Fintype C] [DecidableEq C] [Fintype F] [DecidableEq F] [Nonempty F] (A : Matrix (R × F) (C × F) ℝ)
+  (B : Matrix F F ℝ) (γ : ℝ) (hr : 2 ≤ Fintype.card R) (hB : ∀ (j : F), ∑ i, B j i = γ) :
+  γ ^ 2 ≤ StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩
+'StoppingSpectral.replicated_scalar_second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.replicated_scalar_no_source_regime.{u_3, u_4, u_5} {R : Type u_3} {C : Type u_4} {F : Type u_5}
+  [Fintype R] [DecidableEq R] [Fintype C] [DecidableEq C] [Fintype F] [DecidableEq F] [Nonempty F]
+  (A : Matrix (R × F) (C × F) ℝ) (B : Matrix F F ℝ) (γ : ℕ) (hr : 2 ≤ Fintype.card R) (hγ : 0 < γ)
+  (hB : ∀ (j : F), ∑ i, B j i = ↑γ) : ¬StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩ < ↑γ / 2
+'StoppingSpectral.replicated_scalar_no_source_regime' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_density (ell γ q s : ℝ) (he : 1 < ell) (hg : 0 < γ) (hgell : γ ≤ ell) (hq : 2 ≤ q)
+  (htrace : q * γ * (ell - γ) ≤ (ell - 1) * s) (hgap : s < γ / 2) :
+  ell - (ell - 1) / (2 * q) < γ ∧ (3 * ell + 1) / 4 < γ
+'StoppingSpectral.one_row_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_large_root_le_two (ell γ q s : ℝ) (he : 1 < ell) (hg : 0 < γ) (hgell : γ ≤ ell) (hq : 2 ≤ q)
+  (hs : 0 ≤ s) (htrace : q * γ * (ell - γ) ≤ (ell - 1) * s) (hgap : s < γ / 2) : ell / γ * (1 + √(1 - 2 * s / γ)) ≤ 2
+'StoppingSpectral.one_row_large_root_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_matrix_obstruction {ell q : ℕ} (H : Matrix (Fin ell) (Fin q × Fin ell) ℝ) (γ : ℝ)
+  (hell : 2 ≤ ell) (hq : 2 ≤ q) (hg : 0 < γ) (hgell : γ ≤ ↑ell)
+  (hbin : ∀ (i : Fin ell) (j : Fin q × Fin ell), H i j = 0 ∨ H i j = 1) (hcol : ∀ (j : Fin q × Fin ell), ∑ i, H i j = γ)
+  (hrow : ∀ (i : Fin ell), ∑ j, H i j = ↑q * γ) (hgap : StoppingSpectral.eigs H ⟨1, ⋯⟩ < γ / 2) :
+  (3 * ↑ell + 1) / 4 < γ ∧ ↑ell / γ * (1 + √(1 - 2 * StoppingSpectral.eigs H ⟨1, ⋯⟩ / γ)) ≤ 2
+'StoppingSpectral.one_row_matrix_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.binary_column_sum_le_card.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m]
+  [Fintype n] [DecidableEq n] (H : Matrix m n ℝ) (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1) (j : n) :
+  ∑ i, H i j ≤ ↑(Fintype.card m)
+'StoppingSpectral.binary_column_sum_le_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.regular_edge_count.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (γ k : ℝ) (hcol : ∀ (j : n), ∑ i, H i j = γ) (hrow : ∀ (i : m), ∑ j, H i j = k) :
+  ↑(Fintype.card m) * k = ↑(Fintype.card n) * γ
+'StoppingSpectral.regular_edge_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_biregular_obstruction {ell q : ℕ} (H : Matrix (Fin ell) (Fin q × Fin ell) ℝ) (γ k : ℝ)
+  (hell : 2 ≤ ell) (hq : 2 ≤ q) (hg : 0 < γ) (hbin : ∀ (i : Fin ell) (j : Fin q × Fin ell), H i j = 0 ∨ H i j = 1)
+  (hcol : ∀ (j : Fin q × Fin ell), ∑ i, H i j = γ) (hrow : ∀ (i : Fin ell), ∑ j, H i j = k)
+  (hgap : StoppingSpectral.eigs H ⟨1, ⋯⟩ < γ / 2) :
+  (3 * ↑ell + 1) / 4 < γ ∧ ↑ell / γ * (1 + √(1 - 2 * StoppingSpectral.eigs H ⟨1, ⋯⟩ / γ)) ≤ 2
+'StoppingSpectral.one_row_biregular_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.qc_scalar_factor_no_source_regime.{u_3, u_4, u_5} {R : Type u_3} {C : Type u_4} {F : Type u_5}
+  [Fintype R] [DecidableEq R] [Fintype C] [DecidableEq C] [Fintype F] [DecidableEq F] [Nonempty F]
+  (A : Matrix (R × F) (C × F) ℝ) (B : Matrix F F ℝ) (γ : ℕ) (hr : 2 ≤ Fintype.card R) (hγ : 0 < γ)
+  (hcol : ∀ (j : C × F ⊕ R × F), ∑ i, StoppingSpectral.scalarFactorMatrix A B i j = ↑γ) :
+  ¬StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩ < ↑γ / 2
+'StoppingSpectral.qc_scalar_factor_no_source_regime' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.eigs_det.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) : ∏ i, StoppingSpectral.eigs H i = (H * H.transpose).det
+'StoppingSpectral.eigs_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseExample : Matrix (Fin 2) (Fin 4) ℝ
+'StoppingSpectral.denseExample' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseEigs : Fin 2 → ℝ
+'StoppingSpectral.denseEigs' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseExample_second :
+  StoppingSpectral.eigs StoppingSpectral.denseExample ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ = 0
+'StoppingSpectral.denseExample_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.IsStopping.{u_1, u_2, u_3} {m : Type u_1} {n : Type u_2} {α : Type u_3} [One α] (M : Matrix m n α)
+  (S : Finset n) : Prop
+'StoppingSpectral.IsStopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseExample_stopping (S : Finset (Fin 4)) :
+  StoppingSpectral.IsStopping StoppingSpectral.denseExample S ↔ 2 ≤ S.card
+'StoppingSpectral.denseExample_stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseExampleBinary : Matrix (Fin 2) (Fin 4) (ZMod 2)
+'StoppingSpectral.denseExampleBinary' depends on axioms: [propext, Quot.sound]
+StoppingSpectral.denseExample_css :
+  StoppingSpectral.denseExampleBinary * StoppingSpectral.denseExampleBinary.transpose = 0
+'StoppingSpectral.denseExample_css' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseExample_source_certificate :
+  StoppingSpectral.eigs StoppingSpectral.denseExample ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ < 2 / 2 ∧
+    2 / 2 *
+          (1 -
+            √(1 -
+                2 *
+                    StoppingSpectral.eigs StoppingSpectral.denseExample
+                      ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ /
+                  2)) =
+        0 ∧
+      2 / 2 *
+          (1 +
+            √(1 -
+                2 *
+                    StoppingSpectral.eigs StoppingSpectral.denseExample
+                      ⟨1, StoppingSpectral.denseExample_second._proof_1⟩ /
+                  2)) =
+        2
+'StoppingSpectral.denseExample_source_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.sourceLargeRoot (m γ s : ℝ) : ℝ
+'StoppingSpectral.sourceLargeRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.sourceLargeRoot_eq (m γ s : ℝ) (hm : 0 ≤ m) (hg : 0 < γ) :
+  StoppingSpectral.sourceLargeRoot m γ s = m / γ * (1 + √(1 - 2 * s / γ))
+'StoppingSpectral.sourceLargeRoot_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.sourceSmallRoot (m γ s : ℝ) : ℝ
+'StoppingSpectral.sourceSmallRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.sourceSmallRoot_eq (m γ s : ℝ) (hm : 0 ≤ m) (hg : 0 < γ) :
+  StoppingSpectral.sourceSmallRoot m γ s = m / γ * (1 - √(1 - 2 * s / γ))
+'StoppingSpectral.sourceSmallRoot_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_roots (ell γ q s : ℝ) (he : 1 < ell) (hg : 0 < γ) (hgell : γ ≤ ell) (hq : 2 ≤ q) (hs : 0 ≤ s)
+  (htrace : q * γ * (ell - γ) ≤ (ell - 1) * s) (hgap : s < γ / 2) :
+  1 < StoppingSpectral.sourceLargeRoot ell γ s ∧
+    StoppingSpectral.sourceLargeRoot ell γ s ≤ 2 ∧
+      0 ≤ ell / γ * (1 - √(1 - 2 * s / γ)) ∧ ell / γ * (1 - √(1 - 2 * s / γ)) < 2
+'StoppingSpectral.one_row_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.stopping_card_ge_two.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m] [Fintype n]
+  [DecidableEq n] (H : Matrix m n ℝ) (γ : ℝ) (hg : 0 < γ) (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1)
+  (hcol : ∀ (j : n), ∑ i, H i j = γ) (S : Finset n) (hS : StoppingSpectral.IsStopping H S) : 2 ≤ S.card
+'StoppingSpectral.stopping_card_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_stopping_bound_redundant {ell q : ℕ} (H : Matrix (Fin ell) (Fin q × Fin ell) ℝ) (γ k : ℝ)
+  (hell : 2 ≤ ell) (hq : 2 ≤ q) (hg : 0 < γ) (hbin : ∀ (i : Fin ell) (j : Fin q × Fin ell), H i j = 0 ∨ H i j = 1)
+  (hcol : ∀ (j : Fin q × Fin ell), ∑ i, H i j = γ) (hrow : ∀ (i : Fin ell), ∑ j, H i j = k)
+  (hgap : StoppingSpectral.eigs H ⟨1, ⋯⟩ < γ / 2) (S : Finset (Fin q × Fin ell))
+  (hS : StoppingSpectral.IsStopping H S) :
+  StoppingSpectral.sourceLargeRoot (↑ell) γ (StoppingSpectral.eigs H ⟨1, ⋯⟩) ≤ 2 ∧
+    2 ≤ S.card ∧ StoppingSpectral.sourceLargeRoot (↑ell) γ (StoppingSpectral.eigs H ⟨1, ⋯⟩) ≤ ↑S.card
+'StoppingSpectral.one_row_stopping_bound_redundant' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.one_row_cardinal_obstruction.{u_1, u_2} {m : Type u_1} {n : Type u_2} [Fintype m] [DecidableEq m]
+  [Fintype n] [DecidableEq n] (H : Matrix m n ℝ) (γ k : ℝ) (q : ℕ) (hm : 2 ≤ Fintype.card m) (hq : 2 ≤ q)
+  (hsize : Fintype.card n = q * Fintype.card m) (hg : 0 < γ) (hbin : ∀ (i : m) (j : n), H i j = 0 ∨ H i j = 1)
+  (hcol : ∀ (j : n), ∑ i, H i j = γ) (hrow : ∀ (i : m), ∑ j, H i j = k)
+  (hgap : StoppingSpectral.eigs H ⟨1, ⋯⟩ < γ / 2) :
+  (3 * ↑(Fintype.card m) + 1) / 4 < γ ∧
+    1 < StoppingSpectral.sourceLargeRoot (↑(Fintype.card m)) γ (StoppingSpectral.eigs H ⟨1, ⋯⟩) ∧
+      StoppingSpectral.sourceLargeRoot (↑(Fintype.card m)) γ (StoppingSpectral.eigs H ⟨1, ⋯⟩) ≤ 2 ∧
+        0 ≤ ↑(Fintype.card m) / γ * (1 - √(1 - 2 * StoppingSpectral.eigs H ⟨1, ⋯⟩ / γ)) ∧
+          ↑(Fintype.card m) / γ * (1 - √(1 - 2 * StoppingSpectral.eigs H ⟨1, ⋯⟩ / γ)) < 2
+'StoppingSpectral.one_row_cardinal_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.scalar_one_row_source_obstruction.{u_3, u_4} {C : Type u_3} {F : Type u_4} [Fintype C] [DecidableEq C]
+  [Nonempty C] [Fintype F] [DecidableEq F] (A : Matrix (Fin 1 × F) (C × F) ℝ) (B : Matrix F F ℝ) (γ k : ℝ)
+  (hF : 2 ≤ Fintype.card F) (hg : 0 < γ)
+  (hbin :
+    ∀ (i : Fin 1 × F) (j : C × F ⊕ Fin 1 × F),
+      StoppingSpectral.scalarFactorMatrix A B i j = 0 ∨ StoppingSpectral.scalarFactorMatrix A B i j = 1)
+  (hcol : ∀ (j : C × F ⊕ Fin 1 × F), ∑ i, StoppingSpectral.scalarFactorMatrix A B i j = γ)
+  (hrow : ∀ (i : Fin 1 × F), ∑ j, StoppingSpectral.scalarFactorMatrix A B i j = k)
+  (hgap : StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩ < γ / 2) :
+  have s := StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A B) ⟨1, ⋯⟩;
+  (3 * ↑(Fintype.card F) + 1) / 4 < γ ∧
+    1 < StoppingSpectral.sourceLargeRoot (↑(Fintype.card F)) γ s ∧
+      StoppingSpectral.sourceLargeRoot (↑(Fintype.card F)) γ s ≤ 2 ∧
+        ∀ (S : Finset (C × F ⊕ Fin 1 × F)),
+          StoppingSpectral.IsStopping (StoppingSpectral.scalarFactorMatrix A B) S →
+            2 ≤ S.card ∧
+              StoppingSpectral.sourceSmallRoot (↑(Fintype.card F)) γ s < ↑S.card ∧
+                StoppingSpectral.sourceLargeRoot (↑(Fintype.card F)) γ s ≤ ↑S.card
+'StoppingSpectral.scalar_one_row_source_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.supportCirculant.{u_3} {G : Type u_3} [DecidableEq G] [AddCommGroup G] (S : Finset G) : Matrix G G ℝ
+'StoppingSpectral.supportCirculant' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.supportCirculant_row_sum.{u_3} {G : Type u_3} [Fintype G] [DecidableEq G] [AddCommGroup G]
+  (S : Finset G) (i : G) : ∑ j, StoppingSpectral.supportCirculant S i j = ↑S.card
+'StoppingSpectral.supportCirculant_row_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.running_882_scalar_obstruction (A : Matrix (Fin 7 × ZMod 63) (Fin 7 × ZMod 63) ℝ) :
+  9 ≤
+    StoppingSpectral.eigs (StoppingSpectral.scalarFactorMatrix A (StoppingSpectral.supportCirculant {0, 1, 6}))
+      ⟨1, StoppingSpectral.running_882_scalar_obstruction._proof_1⟩
+'StoppingSpectral.running_882_scalar_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+StoppingSpectral.denseExample_minimum :
+  StoppingSpectral.IsStopping StoppingSpectral.denseExample {0, 1} ∧
+    ∀ (S : Finset (Fin 4)), StoppingSpectral.IsStopping StoppingSpectral.denseExample S → 2 ≤ S.card
+'StoppingSpectral.denseExample_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]
