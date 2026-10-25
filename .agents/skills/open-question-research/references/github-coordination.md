@@ -43,6 +43,14 @@ stopping condition, work branch and claim state. Keep the issue useful to an
 investigator who has not read the chat. For multiline CLI bodies, use a file
 with `--body-file` so shell interpretation cannot alter mathematical notation.
 
+Include a prior-work summary distinguishing an earlier proposal, finite search,
+partial proof and completed result, with direct artifact links. Name precisely
+what this block would add. Issue creation time is not the question's origin.
+When research is deferred by the user, use **Reserved — awaiting user instruction
+to begin**, retain the agreed reservation, and state that the study has not
+started. Change to active only after research is authorized; do not infer that
+authorization from acquiring a claim or editing the skill.
+
 Create a unique work branch in an isolated clone/worktree. Commit the answer
 contract and ownership metadata: unique session ID, UTC start time, canonical
 ID, bounded scope, issue URL, work branch and intended next action. Publish

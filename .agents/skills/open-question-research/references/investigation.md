@@ -8,6 +8,7 @@ Resolve repository links from the repository root, not this reference directory.
 
 - Canonical inventory identifier and note location:
 - New problem or follow-up; what is already answered:
+- Prior proposal/search/partial proof/completed result, evidence links and exact remaining gap:
 - Discovery source; original question's authors, version/date and locator:
 - Exact question or conjecture; historical versus currently checked status:
 - Objects, field, quantifiers, hypotheses, conclusion and implication direction:
@@ -23,6 +24,7 @@ Resolve repository links from the repository root, not this reference directory.
 - Unique session ID, UTC start, work branch and isolated checkout:
 - Claim ref, immutable ownership commit SHA and verified acquisition outcome:
 - Current owner, next action and explicit handoff/release state:
+- Study authorized now, or reserved awaiting the user's instruction to begin:
 - Pending remote operations or access gaps (drafts are not reservations):
 
 ## Research access and required search coverage

@@ -19,6 +19,13 @@ Reuse the canonical inventory identifier across equivalent formulations and
 repeated source occurrences. Distinguish author-posed questions, numbered
 conjectures, broad research directions and our own proposed tasks.
 
+Before calling a recommendation new, check the canonical issue (including
+closed issues), inventory, research notes and verification records for earlier
+work on the exact formulation. Report separately whether it was previously
+proposed, computationally explored, partially proved, or completely answered.
+An unanswered follow-up can be the best next target; label it as a continuation
+and link the prior evidence rather than presenting it as an untouched problem.
+
 Define a bounded deliverable and stopping condition suited to the user's request:
 for example, an exact statement/proof, an independently verified counterexample,
 a decisive structural lemma, or one frozen controlled comparison. Honor an
@@ -63,6 +70,18 @@ add that real issue and reuse the existing board rather than creating a board
 per agent. Missing Project access does not block issue/claim coordination.
 Keep mathematical resolution and Lean
 coverage in the existing inventory; a claim means work is reserved, not solved.
+
+Keep the issue current with the exact bounded question, prior attempts and their
+outcomes, remaining gap, evidence links, owner and next action. Creating a new
+issue does not make the mathematical question new. Reuse the parent issue for
+successive follow-ups and preserve their distinct scopes and outcomes.
+
+Distinguish selection/reservation from permission to conduct the study. When
+the user asks only for setup or says they will tell us when to begin, record
+**Reserved — awaiting user instruction to begin** in the issue and stop after
+the authorized coordination work. Do not launch literature campaigns, searches,
+experiments or proof work on that reservation. A request that already authorizes
+research needs no additional start confirmation.
 
 Reserve `refs/heads/claims/<canonical-id>` with a **create-only remote reference
 operation**, such as GitHub's create-reference API. Point it at a commit recording
