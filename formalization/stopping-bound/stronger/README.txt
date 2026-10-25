@@ -17,3 +17,18 @@ All named declarations, including four unchanged inherited modules, have signatu
 Read stronger-stopping-paper.pdf, PROOF-LINKS.md (every full current and immutable Lean URL), SOURCE-CHRONOLOGY.md (all source dates/deltas), and verification.json. The source archive includes standalone checked sources and shared inventory/planning snapshots. External copyrighted papers stay in ignored local extraction. The X draft is NOT POSTED.
 
 Shared totals:295 canonical entries,144 eligible targets,119 papers,106 full main-paper screens,5 complete canonical proofs. Separate historical indexing deltas20/8/4,3/1/1 and5/0/4; no new canonical completion is counted for project-derived follow-ups. Newly harvested current-resolution/Lean/difficulty assessments remain unassessed.
+
+Presentation revision (24 October 2026 Pacific): main.tex and supplement.tex
+replace the custom ReportLab layout with the established article format used
+by the earlier dyadic-rank and cyclic-lifts papers. The introduction explains
+the original negative answer before motivating the positive replacement.
+The central chronology is Table 2 near the introduction; the complete ledger
+remains in Appendix C. All checked Lean source files and immutable pins are
+unchanged. PRESENTATION-REVISION.json records the editorial scope and checks.
+
+Compile the editable manuscript with Tectonic:
+  python3 make_paper.py --tectonic /path/to/tectonic
+or set TECTONIC and run python3 make_paper.py. PAPER_OUTPUT_DIR is supported;
+--only-cached disables resource downloads. main.tex also opens in a LaTeX
+editor. The source archive contains both TeX files and the updated workflow
+skill snapshot. The X draft remains unchanged and unposted.

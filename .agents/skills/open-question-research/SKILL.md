@@ -198,6 +198,19 @@ illustrates the distinctions without changing frozen experiment inputs.
 
 When writing or revising a research paper:
 
+- Inspect representative earlier papers in the repository before choosing the
+  manuscript format. Reuse their established typography, theorem/proof structure,
+  citation style and source workflow unless the user requests a departure or the
+  task requires one; explain a necessary departure. Supporting verification
+  requirements do not by themselves justify replacing the paper's visual style.
+- Organize the exposition around the answer contract: source question and its
+  motivation → exact answer → decisive theorem and proof → implications and
+  limits. Distinguish an earlier completed answer from a new follow-up before
+  developing the follow-up. Give each main section a clear mathematical role;
+  introduce constructions as existence witnesses, parameter improvements,
+  sharpness results or obstructions as appropriate. Put comparisons beside the
+  claims they assess, and keep search mechanics and inventory bookkeeping in
+  supporting material when they interrupt the argument.
 - Omit the manuscript author line unless the user explicitly requests one. Do not
   substitute a collective label such as "Project Contributors". Preserve source
   author attribution in citations and the question/source/answer table.
@@ -232,13 +245,21 @@ When writing or revising a research paper:
 - Cite the discovery source, original question and applicable predecessors.
   Include a reference chronology table: source, earliest relevant preprint/date,
   inspected version/publication milestone, this paper's dated revision, and the
-  explicit elapsed-time delta. Label date precision and approximation rather than
+  explicit elapsed-time delta. Put a readable central-source comparison near the
+  introduction or related work and explicitly signpost the complete ledger if it
+  is in an appendix. Measure deltas to the stated manuscript revision date, not a
+  moving reading date. Label date precision and approximation rather than
   inventing a day for a year-only source. Distinguish an ingredient's age from the
   duration of an unsolved problem. Record elapsed investigation time to the answer
   and later formalization/manuscript revisions separately.
 - Clearly label an expanded paper versus a new research target. Validate the PDF,
   source archive, hashes, proof-coverage table, reference-date arithmetic and public
-  URLs before delivery. Commit/push only within the user's existing authorization.
+  URLs before delivery. Review the rendered PDF as a reader: can the original
+  question, specific answer, main proof, implications, chronology comparison and
+  complete proof links be located readily? Check narrative hierarchy and style
+  continuity as well as mechanical presence; a required table buried without
+  signposting is not sufficient. Commit/push only within the user's existing
+  authorization.
 
 When an announcement is requested, draft a short X post containing the exact
 answered question, the source authors and precise reference (DOI or arXiv,

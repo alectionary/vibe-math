@@ -1,0 +1,639 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable}
+\usepackage{xcolor,listings}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={From an Uninformative Spectral Bound to Useful Stopping Guarantees for QC-GHP Codes},pdfauthor={}}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{priorresult}{Earlier theorem (original parameter question)}
+\setlength{\emergencystretch}{3em}
+\lstset{basicstyle=\scriptsize\ttfamily,columns=fullflexible,keepspaces=true,
+ breaklines=true,breakatwhitespace=false,showstringspaces=false,frame=lines,
+ escapeinside={(*@}{@*)}}
+\title{From an Uninformative Spectral Bound to Useful\\Stopping Guarantees for QC-GHP Codes}
+\author{}
+\date{October 24, 2026\\\small Expanded follow-up to L-F16-stopping-bound; presentation revised}
+\begin{document}
+\maketitle
+\begin{abstract}
+Abiad and Castriota ask for QC-GHP parameters making their spectral stopping-set
+bound informative, and propose stronger spectral bounds. Our earlier universal
+obstruction answers the original useful-parameter question negatively in the
+proposition's stated scalar-factor model. Here we show that useful replacements
+exist: a degree-corrected fourth-moment criterion gives stopping distance at least
+$\gamma+1$, and explicit sparse QC-GHP families meet its hypotheses. A fixed
+column/row-weight $4/8$ family has guarantee five; an independently certified
+54-variable instance improves on the compared Zhu--Chugg formulas wherever those
+formulas apply. A two-block incidence refinement and a separate family with exact
+stopping and logical distance six demonstrate further structural gains. Finally,
+Gram-equal CSS constructions prove an unbounded limitation for uniformly useful
+bounds based only on the specified Gram data. The spectral criterion combines
+classical moment and overlap ingredients; all new proofs, constructions and
+source-to-matrix bridges are checked in Lean.
+\end{abstract}
+
+\section{The source question, its obstruction, and the replacement problem}
+\label{sec:question}
+Aida Abiad and Nichola Castriota pose the motivating question in Section~6 of
+\emph{Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets
+in Lifted-Product Quantum LDPC Codes}, July 15, 2026, arXiv:2607.13666v1 \cite{ref1}.
+Can QC-GHP parameters make Proposition~5.1 give an informative stopping-set
+bound? Remark~5.2 and Section~6 also motivate tighter spectral bounds.
+
+Throughout, a stopping support of a binary check matrix is a nonempty set of
+columns for which no row meets exactly one selected column. Its minimum size is
+the stopping distance $s(H)$. This is a property of the specified check matrix.
+Logical distance instead minimizes over nontrivial logical words; a lower bound
+for logical distance alone need not exclude all small stopping supports.
+
+\subsection{Why the original parameters cannot provide the desired improvement}
+The source specializes to a scalar second factor in Section~3.2 and retains that
+model for Proposition~5.1. Write the expanded real zero--one matrix as
+$H_X=[A\mid I_r\otimes B^{\mathsf T}]$, with $m=r\ell$ rows,
+positive column weight $\gamma$, and constant row weight $k$.
+Assume positive first-factor column width, $r,\ell>0$, and $m\ge2$ so that
+the second singular value is defined. Put $\eta=\sigma_2(H_X)^2$, the second
+largest eigenvalue of $H_XH_X^{\mathsf T}$, counting multiplicity. The source
+requires the strict condition
+\[
+ \eta<\gamma/2,
+ \qquad a_\pm=\frac m\gamma\left(1\pm\sqrt{1-2\eta/\gamma}\right).
+\]
+Its large-root conclusion additionally requires excluding the small-size branch:
+for a stopping support $S$, one must establish $a_-<|S|$. The spectral inequality
+alone is therefore not a useful stopping-distance guarantee.
+
+\begin{priorresult}
+For every binary biregular scalar-factor matrix with these positive dimensions
+and degrees, it is impossible to have both $\eta<\gamma/2$ and $a_+>2$.
+If the strict spectral condition holds, then $r=1$, $1<a_+\le2$, and every
+stopping support satisfies $|S|\ge2$ and $a_-<|S|$.
+\end{priorresult}
+
+This is the already checked universal result of \cite{ref7}, not a new theorem of this
+revision. Its proof separates the two unavoidable regimes. For $r\ge2$, the
+repeated scalar block forces $\eta\ge\gamma^2$, contradicting the strict
+condition. For $r=1$, binary regularity, edge counting and the Gram trace force
+the dense regime in which $a_+\le2$ and $a_-<2$. Positive columns already exclude
+singleton stopping supports, so the separate small-branch requirement is met
+but yields no improvement. The all-ones $2\times4$ example has $\eta=0$ and
+stopping distance two: raw spectral-gap examples do exist.
+The complete proof is \texttt{SourceQuestionAnswer.lean} and its frozen
+\texttt{Spectral.lean} dependency; Appendix~\ref{app:links} gives full current
+and immutable URLs, including the earlier proof closure.
+
+\subsection{What this paper answers next}
+The obstruction makes the replacement problem substantive: can different
+spectral information give a stopping bound greater than two on an explicit
+sparse QC-GHP family? Can incidence information do so beyond the earlier B1
+result? We answer both existence questions positively. These are explicit
+follow-up formulations of the source direction, not a claim to an optimal
+universal bound or a new numbered conjecture in \cite{ref1}.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.465\linewidth}>{\raggedright\arraybackslash}p{.465\linewidth}@{}}
+\toprule
+\caption{Source questions, follow-up formulations and exact answers.}\label{tab:answers}\\
+\textbf{Question / source} & \textbf{Answer and scope}\\\midrule\endhead
+Abiad--Castriota, 15 July 2026, v1, Prop. 5.1, Remark 5.2, §6: useful parameters for the stated bound & Negative, by the earlier universal theorem (Section 1.1).\\[4pt]
+Same source: tighter spectral stopping bounds, including multi-eigenvalue refinements & YES for useful-replacement existence: a fourth-moment criterion proves \ensuremath{\gamma}+1 on explicit sparse joint Sidon families. Theorem 1 and Section 3 prove existence; Theorem 5 limits uniform improvement on other families.\\[4pt]
+This requested follow-up: incidence-conditioned replacement exceeding two on a sparse family beyond B1 & Positive: Theorems 2--3 give the criterion and families; Theorem 4 gives exact distance six.\\[4pt]
+\bottomrule\end{longtable}
+The central argument is as follows. Section~\ref{sec:moment} replaces the failed
+second-eigenvalue regime by an exact fourth-moment criterion. Section~\ref{sec:families}
+realizes it on actual sparse CSS matrices and compares the resulting guarantees
+with Zhu--Chugg. Section~\ref{sec:incidence} retains block incidence to sharpen
+classical overlap counting; Section~\ref{sec:six} shows how additional finite
+incidence information yields an exact distance. Section~\ref{sec:gram} then proves
+why the specified Gram data cannot uniformly recover those incidence gains.
+
+\subsection{Reference chronology and calendar-time comparison}
+Table~\ref{tab:chronology} makes the central source dates visible before the
+proofs. Every elapsed time is measured to this paper's dated revision,
+October 24, 2026 (Pacific), rather than to a moving reading date. These are source
+ages, not claims about how long a problem was unresolved. Appendix~\ref{app:chronology}
+records all used sources and held leads, with version distinctions and precision.
+\begin{center}\small
+\begin{longtable}{@{}p{.27\linewidth}p{.43\linewidth}p{.22\linewidth}@{}}
+\caption{Central sources and elapsed calendar days to October 24, 2026.}\label{tab:chronology}\\
+\toprule Source / role & Relevant preprint or inspected milestone & Elapsed days\\\midrule\endhead
+Abiad-Castriota & first and inspected v1: 2026-07-15 & 101\\[5pt]
+Kashyap--Vardy (overlap bound) & reported conference presentation: 2003\newline reported original composition: 2003-09 & 8333--8697\newline 8425--8454\\[5pt]
+Xia-Fu & earliest preprint: 2006-06-12\newline inspected arXivv2 stamp: 2006-11-11 & 7439\newline 7287\\[5pt]
+Zhu--Chugg (spectral comparison) & conference predecessor metadata: 2005-09-28\newline inspected journal version: 2007-12 & 7696\newline 6872--6902\\[5pt]
+Schwartz-Vardy & first preprint metadata: 2005-03-23\newline inspected journal issue: 2006-03 & 7885\newline 7512--7542\\[5pt]
+Wang-Pryadko & first and inspected v1 submission: 2022-03-31\newline PDF internal date: 2022-04-01 & 1668\newline 1667\\[5pt]
+Kuo-Ouyang & first preprint metadata: 2024-11-20\newline inspected article-in-press: 2026-03-13 & 703\newline 225\\[5pt]
+Dehghan-Banihashemi & first and inspectedv1: 2019-05-31\newline journal volume metadata: 2019 & 2703\newline 2489--2853\\[5pt]
+Donovan-Rao-Üsküplü-Yaz\i{}c\i{} & first and inspectedv1: 2022-05-01\newline journal publication year metadata: 2023 & 1637\newline 1028--1392\\[5pt]
+Chee-Ling-Yin & first and inspectedv1: 2010-08-10\newline journal issue metadata: 2010-11 & 5919\newline 5807--5836\\[5pt]
+Gholami-Samadieh & first and inspectedv1: 2014-05-15\newline internal PDF title-page date: 2022-03-28 & 4545\newline 1671\\[5pt]
+Amirzade-Sadeghi & first and inspectedv1: 2017-09-04\newline internal PDF running draft date: 2018-11-18 & 3337\newline 2897\\[5pt]
+\bottomrule\end{longtable}\end{center}
+For Kashyap--Vardy, the author manuscript is undated; the reported 2003
+presentation/composition is distinguished from our inspection. Month- and
+year-only milestones give ranges rather than invented publication days.
+
+\section{Replacing the small spectral gap by a fourth-moment criterion}
+\label{sec:moment}
+The failed regime uses only the second singular value. A different spectral
+quantity can certify a concrete incidence property: distinct columns share at
+most one check. This property makes a classical stopping-set count useful.
+
+Let $H$ be a finite binary incidence matrix, interpreted over the reals when
+forming its Gram matrix. Write $d_v$ for its column degrees, $r_c$ for its row
+degrees, and $\eta_1,\ldots,\eta_m$ for all eigenvalues of $HH^{\mathsf T}$,
+counting multiplicity. Thus $M_4=\sum_i\eta_i^2$ is its fourth singular-value
+moment. All these quantities refer to the actual expanded matrix.
+
+\begin{theorem}[Zero-excess spectral stopping bound]\label{thm:moment}
+Suppose every column has degree at least $\gamma$ and
+\begin{equation}\label{eq:moment}
+ M_4+\sum_v d_v=\sum_v d_v^2+\sum_c r_c^2.
+\end{equation}
+Every nonempty stopping support has size at least $\gamma+1$.
+For a $(\gamma,k)$-regular matrix with $N$ columns and $m$ rows,
+condition~\eqref{eq:moment} is equivalently
+\[
+ M_4+N\gamma=N\gamma^2+mk^2,
+ \qquad\text{or}\qquad M_4=N\gamma(\gamma+k-1),
+\]
+using the edge count $mk=N\gamma$. There is no second-eigenvalue gap
+assumption or separate exclusion of small stopping supports.
+\end{theorem}
+\begin{proof}
+Let $q_{uv}$ be the number of checks common to columns $u,v$.
+The real spectral identity gives
+\[
+ M_4=\operatorname{tr}((HH^{\mathsf T})^2)
+     =\sum_{u,v}q_{uv}^2,
+ \qquad q_{vv}=d_v,\qquad \sum_{u,v}q_{uv}=\sum_cr_c^2.
+\]
+Consequently the excess in~\eqref{eq:moment} is
+\begin{equation}\label{eq:excess}
+ \Delta:=M_4+\sum_vd_v-\sum_vd_v^2-\sum_cr_c^2
+        =\sum_{u\ne v}q_{uv}(q_{uv}-1).
+\end{equation}
+Each term is nonnegative because $q_{uv}$ is a natural number. If $\Delta=0$,
+then $q_{uv}\le1$ for distinct columns. Choose a column $v$ in a stopping
+support $S$. Every one of its at least $\gamma$ checks must meet another
+selected column. Each other selected column can account for at most one such
+check. Hence $\gamma\le |S|-1$.
+\end{proof}
+
+This criterion combines known ingredients. Abiad--Castriota \cite{ref1}, Lemma~4.8,
+gives the moment/cycle identity; Kashyap--Vardy \cite{ref2}, Theorem~1, gives the
+uniform-overlap count, and Xia--Fu \cite{ref8}, Theorem~3, supplies a related
+minimum-column-weight formulation. The contribution here is the checked
+spectral corollary, its explicit QC-GHP realizations and the complete
+source-to-matrix proof chain. \texttt{SpectralMoment.lean} and
+\texttt{MomentBound.lean} check the identities and the stopping implication.
+
+\paragraph{A bound valid outside the informative regime.}
+For positive column weight $\gamma$, define $L$ from $(m,N,\gamma,k,M_4)$ to be
+$\gamma+1$ when the regular moment equality holds and two otherwise.
+\texttt{MomentReplacement.lean} proves $2\le L\le |S|$ for every nonempty
+stopping support of every such regular binary matrix. The fallback follows
+from positive columns excluding singletons. \texttt{GlobalMomentFamily.lean}
+checks that $L=\gamma+1>2$ on the families below for $\gamma\ge2$.
+Thus the construction realizes an actual globally valid bound function.
+
+\paragraph{Small positive excess.}
+The same calculation has a quantitative extension. For a natural number $\mu$,
+if $\Delta<2\mu(\mu+1)$, every distinct-column overlap is at most $\mu$:
+an overlap at least $\mu+1$ would contribute at least $2\mu(\mu+1)$ through
+the two ordered pairs in~\eqref{eq:excess}. Covering the neighbors of a selected
+column then gives
+\[
+ \gamma+\mu\le\mu|S|.
+\]
+\texttt{MomentExcess.lean} checks this implication without regularity or an
+assumed overlap bound. It is a conditional criterion; we do not claim a new
+infinite sparse QC family realizing its useful positive-excess regime.
+
+\section{Explicit sparse families and the useful guarantee}
+\label{sec:families}
+An abstract criterion alone would leave the existence question unanswered.
+We now construct actual QC-GHP matrices satisfying it, including CSS
+commutation, degree counts and nontrivial logical content.
+
+\subsection{A uniform construction for every even column weight}
+Fix an even $\gamma\ge2$ and an odd $n\ge3^{2\gamma}$. In $\mathbb Z/n\mathbb Z$ set
+\[
+ S=\{3^i:0\le i<\gamma\},\qquad
+ T=\{3^{\gamma+i}:0\le i<\gamma\}.
+\]
+Let $A,B$ be their binary circulants, with $A_{c,j}=1$ precisely when
+$c-j\in S$, and similarly for $B,T$. Use the scalar-factor convention
+\begin{equation}\label{eq:joint}
+ H_X=[A\mid B^{\mathsf T}],\qquad H_Z=[B\mid A^{\mathsf T}].
+\end{equation}
+The combined support is Sidon, including repeated summands; all relevant pair
+sums are less than $n$. Its two supports are disjoint and distinct columns of
+$H_X$ meet in at most one check. Circulants commute, so over $\mathbb F_2$,
+$H_XH_Z^{\mathsf T}=AB^{\mathsf T}+B^{\mathsf T}A=0$.
+There are $n$ checks and $2n$ variables, column weight $\gamma$ and row weight
+$2\gamma$. The actual moment and resulting bound are
+\[
+ M_4=2n\gamma(3\gamma-1),\qquad s(H_X)\ge\gamma+1.
+\]
+Theorem~\ref{thm:moment} therefore gives an informative stopping guarantee.
+Both sectors also have nonzero kernel weight at least $\gamma+1$.
+
+These matrices have nontrivial logical content. The word equal to one on the
+left block and zero on the right has zero syndrome since $\gamma$ is even.
+Its left parity is odd since $n$ is odd, while every companion row, and every
+linear combination of companion rows, has even left parity. Thus it is outside
+the stabilizer span. For fixed $\gamma$, choosing
+$n=3^{2\gamma}(2t+1)$ gives arbitrarily long matrices of fixed degrees.
+In particular $\gamma=2,n=81$ gives 162 variables and stopping guarantee three.
+No encoded-dimension formula or positive-rate claim is made.
+\texttt{JointSidon}, \texttt{JointMatrices}, \texttt{JointPowers},
+\texttt{JointMomentFamily} and \texttt{JointKernel} check these claims.
+
+\subsection{Short supports: guarantee five at fixed weights $4/8$}
+The exponential sufficient length is unnecessary for a useful weight-four
+example. For every odd $n\ge37$ use
+\begin{equation}\label{eq:short}
+ S=\{0,1,3,11\},\qquad T=\{0,5,12,18\}
+\end{equation}
+in~\eqref{eq:joint}. Then
+\[
+ N=2n,\quad \gamma=4,\quad k=8,\quad M_4=88n,\quad L=5.
+\]
+Every nonempty X-stopping support has size at least five; every nonzero kernel
+word in either sector has weight at least five. The all-ones-left class is
+nontrivial. Thus a fixed-degree infinite sparse family starts at 74 variables.
+
+To verify the incidence hypotheses, it suffices that each support is separately
+Sidon and that the mixed sums $s+t$ are unique with their ordered support roles.
+Disjoint supports and a Sidon union are unnecessary. All relevant natural pair
+sums are at most 36, so reduction modulo $n\ge37$ preserves these properties.
+\texttt{SeparateSidon.lean}, \texttt{ShortFamilySupports.lean} and
+\texttt{ShortFamily.lean} check the finite identities, no-wrap bridge, actual
+matrices, moment, both-sector bounds and logical witness. This realizes the
+girth-at-least-six difference criterion of \cite{ref1}, Corollary~4.11; the classical
+criterion receives credit rather than being presented as newly discovered.
+
+The same supports also work modulo 27, by a separate finite certificate rather
+than the no-wrap argument. \texttt{Practical27Core.lean} checks every
+distinct-column overlap of the actual 54-variable matrix in Lean's kernel.
+The remaining \texttt{Practical27} modules prove
+$M_4=2376$, stopping bound five, both-sector kernel bounds and nontrivial
+logical content. A search suggested the supports; no external search outcome
+is a proof premise. Neither this instance nor the general short family is
+claimed to have exact stopping distance five.
+
+\subsection{Comparison with Zhu--Chugg on the certified matrices}
+Zhu--Chugg \cite{ref3}, Corollary~6, equations~41--42, gives the two expressions
+\begin{equation}\label{eq:zhu}
+ \frac{N(2\gamma-\eta)}{\gamma k-\eta},\qquad
+ \frac{2N(2\gamma+k-2-\eta)}{k(\gamma k-\eta)},
+\end{equation}
+where $\eta$ is the second Gram eigenvalue. Their regular connected setting,
+strict gap $\eta<\gamma k$ and other applicability hypotheses must be respected.
+
+For the 54-variable instance, take the real check vectors
+\[
+ u=\delta_0+\delta_8-\delta_4-\delta_{12},\qquad
+ v=\delta_{20}+\delta_1-\delta_{24}-\delta_5.
+\]
+They have disjoint supports, squared norms four, Gram energies 34 and cross
+energy zero. The two-dimensional Rayleigh certificate therefore gives
+$\eta\ge17/2$. Under the required gap $\eta<32$, the first expression
+in~\eqref{eq:zhu} is negative and the second is at most $297/94<4$.
+The new guarantee five is stronger even after integer rounding.
+\texttt{Practical27Spectral.lean} checks the actual matrix evaluations,
+eigenvalue implication and formula comparison.
+
+For the joint-support example $\gamma=2,n=81$, another exact plane certificate
+has squared norms 40, energies 280 and cross energy 38. It gives
+$\eta\ge121/20>6$. Under $\eta<8$ both expressions~\eqref{eq:zhu} are negative,
+whereas the moment criterion gives three. \texttt{JointSpectralBase.lean}
+checks the comparison. These are exact certificates, not floating-point
+premises; when a required gap fails, the cited formulas are outside their
+stipulated regime.
+
+\section{Retaining block incidence strengthens overlap counting}
+\label{sec:incidence}
+The moment criterion certifies overlap at most one. A different useful regime
+allows larger overlaps between column blocks while retaining smaller overlaps
+inside each block. Keeping this distinction sharpens the classical count.
+
+\begin{theorem}[Two-block incidence bound]\label{thm:partition}
+Partition the columns of a finite binary incidence relation into two parts.
+Let $S$ be a nonempty stopping support. Suppose every selected column has at
+least $\gamma$ neighbors, distinct selected columns in the same part share at
+most $\sigma$ checks, and selected columns in different parts share at most
+$\tau$ checks, where $\sigma\le\tau$. Then
+\[
+ 2(\gamma+\sigma)\le(\sigma+\tau)|S|.
+\]
+Either part is allowed to be empty within $S$. For $\sigma+\tau>0$, the
+resulting integer lower bound is $\lceil2(\gamma+\sigma)/(\sigma+\tau)\rceil$.
+\end{theorem}
+\begin{proof}
+For a selected column $v$, every incident check must meet another selected
+column, so
+\[
+ \gamma\le\sum_{w\in S\setminus\{v\}}|N(v)\cap N(w)|.
+\]
+Write $p,q$ for the selected counts in the two parts. A selected left column
+gives $\gamma+\sigma\le\sigma p+\tau q$; a selected right column gives
+$\gamma+\sigma\le\tau p+\sigma q$. When both parts occur, add the inequalities.
+If only one occurs, its inequality is $\gamma+\sigma\le\sigma|S|$,
+which is at least as strong because $\tau\ge\sigma$.
+\end{proof}
+\texttt{PartitionBound.lean} checks the cover, finite sums, partition and
+one-part cases. The uniform version is $\gamma+\mu\le\mu|S|$.
+Kashyap--Vardy \cite{ref2}, Theorem~1, assumes uniform column size $w$ and maximum
+intersection $\mu$, giving $1+w/\mu$. At $\gamma=4,\sigma=1,\tau=2$,
+its uniform count gives three, while Theorem~\ref{thm:partition} gives four.
+
+\subsection{Sidon supports verify the required intersections}
+For a finite abelian group $G$, call $T$ Sidon if equality $a+b=c+d$ among its
+elements forces equality of the unordered pairs, including repeated elements.
+Let $A_{c,j}=1$ precisely when $c-j\in T$, and set
+\[
+ H_X=H_Z=[A\mid A^{\mathsf T}].
+\]
+The two column neighborhoods are $j+T$ and $j-T$. Distinct columns in the same
+part share at most one check. Across parts they share at most two: after fixing
+one common check $c_0$, the Sidon identity leaves only $c_0$ and $v+w-c_0$.
+Every column has degree $|T|$ and every row has degree $2|T|$.
+Over $\mathbb F_2$, commutation gives
+$H_XH_Z^{\mathsf T}=AA^{\mathsf T}+A^{\mathsf T}A=0$.
+These are the scalar QC-GHP/generalized-bicycle matrices of \cite{ref1,ref4}, with
+$r_1=n_1=1$ and $b=a$. Thus
+\[
+ 3|S|\ge2(|T|+1).
+\]
+\texttt{SidonStopping.lean} and \texttt{SidonMatrices.lean} include the actual
+matrix, degree and cardinality bridges, with empty-intersection cases.
+
+\subsection{Sparse families for any prescribed fixed guarantee}
+\begin{theorem}[Paired powers family]\label{thm:paired}
+Fix an even integer $\gamma\ge2$ and an odd $n\ge3^\gamma$. In
+$G=\mathbb Z/n\mathbb Z$ take
+\[
+ T=\{1,3,3^2,\ldots,3^{\gamma-1}\},\qquad
+ a(x)=\sum_{i=0}^{\gamma-1}x^{3^i},\qquad H_X=H_Z=[A\mid A^{\mathsf T}].
+\]
+These are binary CSS checks of column weight $\gamma$ and row weight $2\gamma$,
+with stopping distance at least $\lceil2(\gamma+1)/3\rceil$ and a nontrivial
+logical class. For fixed $\gamma$, the lengths $n=3^\gamma(2t+1)$ are unbounded
+while the degrees stay fixed.
+\end{theorem}
+\begin{proof}
+Sort exponents in $3^a+3^b=3^c+3^d$ so that $a\le b$ and $c\le d$.
+If $b<d$, then the left side is at most $2\cdot3^b$, while the right is at
+least $3^d\ge3\cdot3^b$, a contradiction. The opposite inequality is symmetric;
+cancel equal largest terms to identify the smaller exponents. All relevant pair
+sums are below $n$, since $2\cdot3^{\gamma-1}<3^\gamma\le n$. This proves the
+Sidon property after reduction and distinctness of the $\gamma$ marks.
+Theorem~\ref{thm:partition} applies with $\sigma=1,\tau=2$.
+The all-ones-left word is a kernel word of odd left parity, whereas every
+companion stabilizer combination has even left parity. It is therefore a
+nontrivial logical word.
+\end{proof}
+\texttt{PowersThree.lean}, \texttt{PowersFamily.lean} and
+\texttt{SidonMatrices.lean} check the support, no-wrap, matrix and span claims.
+\begin{center}
+\begin{tabular}{@{}ccc@{}}\toprule
+Column / row weights & Two-block guarantee & Uniform-overlap guarantee\\\midrule
+$4/8$ & $4$ & $3$\\
+$6/12$ & $5$ & $4$\\
+$8/16$ & $6$ & $5$\\\bottomrule
+\end{tabular}
+\end{center}
+Choose $\gamma$ first to obtain any desired fixed guarantee, then increase
+length with degrees fixed. This does not establish growing stopping distance at
+fixed degree, positive asymptotic rate or practical parameter efficiency.
+The sufficient length is exponential in $\gamma$; a companion-row stopping
+support gives the upper witness $2\gamma$, checked in \texttt{CSSStopping.lean}.
+
+A second choice, $\gamma=2d$ and $n=3^{2d}$, gives stopping and nonzero-kernel
+weight at least $d+1$. \texttt{GrowingFamily.lean} proves
+$(2d)3^d\le n$, so incidence density is at most $3^{-d}$;
+\texttt{KernelFamily.lean} supplies the kernel bridge. Here the degree varies
+with length.
+
+\section{Additional incidence information gives exact distance six}
+\label{sec:six}
+The reusable criterion need not be sharp. A separate finite certificate and
+cover argument can close the gap between it and a logical upper witness.
+
+\begin{theorem}[Exact-six family]\label{thm:six}
+For every positive integer $t$, let $n=39t$, let $A$ have circulant support
+$\{0,1,4,6\}$, and set $H_X=H_Z=[A\mid A^{\mathsf T}]$.
+There are $78t$ variables and $39t$ checks, column weight four and row weight
+eight. Both stopping distance and quantum logical distance are exactly six.
+\end{theorem}
+\begin{proof}
+The two-block criterion gives four. To exclude sizes at most five, simultaneous
+translation reduces the base $n=39$ check to one root in each side.
+A sound degree-one extension procedure rejects both roots with four further
+additions. Its exact Boolean tests are reduced in Lean's kernel; no external
+search result is a premise.
+
+Reduction modulo 39 maps lifted column lists to their base lists, lifts each
+incident base check, and is injective on each check's neighbor set. Thus a
+lifted stopping support projects to a base stopping support of no greater size.
+The checked local-cover theorem transfers the lower bound six to every
+positive multiple of 39.
+
+For the upper bound, select
+\[
+ \operatorname{left}(0),\ \operatorname{left}(-5),\ \operatorname{left}(-4),\quad
+ \operatorname{right}(1),\ \operatorname{right}(5),\ \operatorname{right}(6).
+\]
+These six columns are distinct at every stated lift. Every incident check has
+a selected partner; an independent exact parity calculation shows all selected
+check degrees are even, so the word is in the binary kernel. Its left weight
+is three, while each companion row has left weight four. Left parity therefore
+separates it from the entire stabilizer span. Every nonzero kernel word has
+stopping support; the stopping lower bound and this nontrivial six-word give
+logical distance six in both coinciding sectors.
+\end{proof}
+\texttt{BicycleBaseCore}, \texttt{BicycleBase}, \texttt{BicycleFamilyCore} and
+\texttt{BicycleFamily} check the finite certificate and cover transfer.
+\texttt{BicycleMatrices}, \texttt{BicycleDegrees}, \texttt{BicycleLogical} and
+\texttt{KernelStopping} check actual matrices, degrees, syndrome, cardinality
+and nonstabilizer status. Unlike the earlier B1 witnesses, this upper witness
+is a logical word rather than a companion row. It is not assumed elementary:
+the base reconstruction has selected check degrees zero, two and four.
+No general formula for encoded dimension is claimed.
+
+For comparison with~\eqref{eq:zhu}, an exact two-dimensional plane certificate
+gives $\eta\ge290/13$ on every 39-cover. The base vectors have disjoint supports,
+squared norms 13, energies 332 and cross energy 42; the minimum plane quotient
+is $(332-42)/13$. The checked fiber argument scales norms and energies exactly
+through each cover. Thus both Zhu--Chugg expressions are negative whenever
+their required gap $\eta<32$ holds. \texttt{SpectralPlane}, \texttt{FiberSums},
+\texttt{BicycleCoverEnergy} and \texttt{BicycleSpectralFamily} check this
+comparison without assuming a floating-point spectral envelope.
+
+\section{Why the full check Gram data cannot uniformly recover the gain}
+\label{sec:gram}
+The positive results suggest a limitation question: could a universally valid
+function of the full Gram data recover these incidence gains on every family?
+The following indistinguishable good/bad pairs obstruct that possibility for
+the specified inputs.
+
+\begin{theorem}[Restricted Gram-data obstruction]\label{thm:gram}
+For a constituent circulant $A$ from the paired families above, form
+\[
+ \begin{aligned}
+ \text{Good: }& H_X=H_Z=[A\mid A^{\mathsf T}],\\
+ \text{Bad: }& H_X'=[A\mid A],\qquad H_Z'=[A^{\mathsf T}\mid A^{\mathsf T}].
+ \end{aligned}
+\]
+Both are binary CSS pairs with the same check-matrix dimensions and degrees
+and the same two separate real check Gram matrices. The bad code has stopping
+distance two and a nontrivial logical word of weight two. Any real-valued
+stopping lower-bound function depending only on these shared data and valid
+on both members is at most two on the good member as well.
+\end{theorem}
+\begin{proof}
+Circulants commute with their transposes. Over the reals,
+\[
+ H_XH_X^{\mathsf T}=AA^{\mathsf T}+A^{\mathsf T}A
+                   =2AA^{\mathsf T}=H_X'(H_X')^{\mathsf T},
+\]
+and the same calculation gives equality for the Z check Grams. Both pairs
+commute in the binary CSS sense. The bad X-matrix has identical positive
+columns at each coordinate, giving a stopping pair; positive columns exclude
+singletons. The corresponding weight-two word is outside the companion
+stabilizer span, as checked by the binary parity separation in
+\texttt{BadLogical.lean}. The analogous sector statement is also checked.
+Validity of a bound on the bad pair forces its value to be at most two;
+the identical inputs force the same output on the good pair.
+\end{proof}
+
+For an unbounded separation, choose $\gamma=4M$ for $M\ge1$ and
+$n=3^{4M}(2t+1)$ in Theorem~\ref{thm:paired}. Every good stopping support
+has size at least $2M+1$, while its bad twin has stopping distance two.
+Consequently any such bound $L$ satisfies $ML<|S|$ on every good stopping
+support. \texttt{RealGramBound.lean}, \texttt{GramGap.lean} and
+\texttt{BothGram.lean} check the exact quantifiers and both Gram identities;
+the chain includes \texttt{GramObstruction}, \texttt{BadStopping},
+\texttt{SidonBad} and \texttt{BadDegrees}.
+
+This obstruction includes functions of the complete Gram spectra and of
+eigenvectors determined solely by those check Gram matrices. It does not
+assume equality of binary ranks or encoded dimensions, and it does not include
+cross-sector real incidence or variable-side eigenvectors as inputs.
+It is compatible with Theorem~\ref{thm:moment}: the zero-excess criterion succeeds
+on a particular class, whereas the paired-family obstruction exhibits a
+different class on which shared Gram data cannot distinguish large from small
+stopping distance.
+
+\section{Relation to classical stopping sets and quantum-code results}
+\label{sec:related}
+The classical ingredients explain both the positive answer and its scope.
+Kashyap--Vardy \cite{ref2} already gives a uniform-overlap route to a guarantee above
+two in the weight-four regime. Theorem~\ref{thm:partition} improves its value
+by retaining the partition. Xia--Fu \cite{ref8}, Theorem~3, assumes minimum column
+weight $\gamma$, maximum distinct-column intersection $\lambda$ and integral
+$\gamma/\lambda$, and gives pseudo-weight at least $\gamma/\lambda+1$ with an
+equality characterization. At $\gamma=4,\lambda=2$ this is three, compared
+with four from the partition criterion. Their girth-at-least-six Theorem~1
+does not apply to the paired family's cross-block four-cycles.
+
+Schwartz--Vardy \cite{ref5} emphasizes that stopping distance belongs to a specified
+parity-check matrix and that codeword supports are stopping sets. Their
+stopping redundancy optimizes over added checks, unlike the fixed-$H_X$
+guarantees here. Wang--Pryadko \cite{ref4}, equation~8, uses
+$H_X=[A\mid B]$, $H_Z^{\mathsf T}=[B;-A]$; our paired case takes
+$B=A^{\mathsf T}$. Their logical-distance bounds and dimension formula concern
+different invariants. Likewise, Kuo--Ouyang \cite{ref6} studies decoding exploiting
+degeneracy; decoder success does not establish an ordinary peeling
+stopping-distance bound.
+
+Dehghan--Banihashemi \cite{ref9} gives cospectral bipartite examples with matched
+degree sequences and different cycle counts. Those cycle statements explain
+how spectral data can omit incidence information; they do not supply the
+actual full-Gram-equal CSS pairs and stopping/logical certificates proved here.
+The existing source screen is reused without counting a new paper cohort.
+
+Donovan--Rao--\"Usk\"upl\"u--Yaz\i c\i\ \cite{ref10}, Lemma~9, gives stopping
+distance at least eight when $3\nmid a$ for its specified DM/DCA matrices and
+four-row-group hypotheses. No QC-GHP CSS-companion bridge for our displayed
+matrices is supplied by that statement. Chee--Ling--Yin \cite{ref11} distinguishes
+cyclic difference packing from the partition condition for PCDP; our
+overlapping supports are not claimed to be a PCDP. Gholami--Samadieh \cite{ref12}
+studies classical lifted finite set systems and inevitable walks, and
+Amirzade--Sadeghi \cite{ref13} gives classical single/multiple-edge difference criteria
+and lifting bounds. These comparisons do not make classical stopping bounds
+above two new. Search coverage and access limitations are recorded once in
+Appendix~\ref{app:ledger} and the accompanying source ledgers.
+
+\section{Answers, implications, and remaining targets}
+\label{sec:answers}
+The original parameter question is answered negatively by the earlier universal
+theorem: Proposition~5.1's strict spectral regime cannot produce a large-root
+guarantee above two in its stated model, with the small branch properly handled.
+The stronger-replacement existence question is answered positively by
+Theorem~\ref{thm:moment} and the explicit sparse families. The
+incidence-conditioned existence question is answered positively by
+Theorems~\ref{thm:partition}--\ref{thm:paired}; Theorem~\ref{thm:six}
+additionally supplies exact stopping and logical distance six on a separate
+infinite family. These are the answers, rather than a report that a search
+failed or that a raw spectral inequality happened to hold.
+
+The implications have distinct scopes. Full-spectrum moment information is
+sufficient on a concrete class. Retaining block incidence improves uniform
+overlap counting. Even the full separate check Gram matrices cannot uniformly
+recover the incidence gains on the class in Theorem~\ref{thm:gram}.
+Binary ranks, encoded dimensions and cross-sector data remain outside that
+obstruction. The short $4/8$ family has lower bound five, not an exact-five
+theorem, and no positive asymptotic rate or growing distance at fixed degree
+has been established.
+
+A bounded next follow-up is to construct or obstruct informative sparse scalar
+QC families with positive moment excess, or determine sharp stopping distances
+for the general powers families. These further questions do not prevent the
+two existence answers from being complete.
+
+\paragraph{Formal evidence.}
+All new proofs and source-to-matrix bridges are checked in Lean. The unchanged
+build and audit cover 485 named declarations: 416 new and 69 inherited.
+Appendix~\ref{app:proofs} maps the claims to their complete proof chains,
+Appendix~\ref{app:links} gives every full current and immutable Lean URL, and
+Appendix~\ref{app:chronology} gives the complete chronology behind
+Table~\ref{tab:chronology}. Investigation timestamps and inventory reconciliation
+are supporting records in Appendix~\ref{app:ledger}.
+
+\begin{thebibliography}{99}
+\bibitem{ref1} Aida Abiad and Nichola Castriota. Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes. 15 July 2026, v1, Prop. 5.1, Remark 5.2,§6. \url{https://arxiv.org/html/2607.13666v1}.
+
+\bibitem{ref2} Navin Kashyap and Alexander Vardy. Stopping Sets in Codes from Designs. Undated revised author manuscript; reports composition September 2003 and ISIT 2003 presentation. Theorem 1. \url{https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf}.
+
+\bibitem{ref3} Mingrui Zhu and Keith M.Chugg. Bounds on the Expansion Properties of Tanner Graphs. IEEE TIT 53(12), 4834--4840, December 2007. Corollary 6. \url{https://hal.usc.edu/chugg/docs/pubs/zhu2007bounds.pdf}.
+
+\bibitem{ref4} Renyu Wang and Leonid P.Pryadko. Distance bounds for generalized bicycle codes. arXiv:2203.17216v1,31 March 2022; internal PDF date1 April 2022. \url{https://arxiv.org/abs/2203.17216v1}.
+
+\bibitem{ref5} Moshe Schwartz and Alexander Vardy. On the Stopping Distance and the Stopping Redundancy of Codes. IEEE TIT 52(3), 922--932, March 2006. \url{https://www.ece.mcmaster.ca/~schwam10/publications/MSjrnl6.pdf}.
+
+\bibitem{ref6} Kao-Yueh Kuo and Yingkai Ouyang. Degenerate quantum erasure decoding. npj Quantum Information 12, 75, 2026. Inspected article-in-press main PDF; version distinctions in chronology. \url{https://doi.org/10.1038/s41534-026-01212-3}.
+
+\bibitem{ref7} Earlier checked parameter-answer and B1 papers in this repository. The new target is distinct from the completed original proposition and completed B1 classification. \url{https://github.com/alectionary/vibe-math/tree/master/formalization/stopping-bound}.
+
+\bibitem{ref8} Shu-Tao Xia and Fang-Wei Fu. Minimum Pseudo-Weight and Minimum Pseudo-Codewords of LDPC Codes. arXiv:cs/0606051v2,11 November 2006; first submission12 June 2006. Internal PDF date2019 distinguished in chronology. \url{https://arxiv.org/abs/cs/0606051v2}.
+
+\bibitem{ref9} Ali Dehghan and Amir H.Banihashemi. Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles. arXiv:1905.13228v1,31 May 2019; existing full-text screen reused. \url{https://arxiv.org/abs/1905.13228v1}.
+
+\bibitem{ref10} Diane Donovan,Asha Rao,Elif Üsküplü,E.\c{S}ule Yaz\i{}c\i{}. QC-LDPC Codes from Difference Matrices and Difference Covering Arrays. arXiv:2205.00563v1, 1 May 2022. Lemma 9,Section 3,Section 5. \url{https://arxiv.org/abs/2205.00563v1}.
+
+\bibitem{ref11} Yeow Meng Chee,Alan C.H.Ling,Jianxing Yin. Optimal Partitioned Cyclic Difference Packings for Frequency Hopping and Code Synchronization. arXiv:1008.1615v1, 10 August 2010. Section II,Theorem 6.3. \url{https://arxiv.org/abs/1008.1615v1}.
+
+\bibitem{ref12} Mohammad Gholami,Mehdi Samadieh. Quasi Cyclic LDPC Codes Based on Finite Set Systems. arXiv:1405.3775v1, 15 May 2014; internal PDF date 28 March 2022 separately recorded. \url{https://arxiv.org/abs/1405.3775v1}.
+
+\bibitem{ref13} Farzane Amirzade,Mohammad-Reza Sadeghi. Lower bounds on the lifting degree of single-edge and multiple-edge QC-LDPC codes by difference matrices. arXiv:1709.00825v1, 4 September 2017; internal running draft date 18 November 2018. Full-document target screen, no additional explicit unresolved target. \url{https://arxiv.org/abs/1709.00825v1}.
+
+\end{thebibliography}
+\appendix
+\input{supplement.tex}
+\end{document}

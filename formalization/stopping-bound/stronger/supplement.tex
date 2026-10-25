@@ -1,0 +1,780 @@
+\clearpage\section{Proof coverage and checked Lean excerpts}\label{app:proofs}
+The aggregate build and all 485 named-declaration audits pass in Lean 4.36.0-rc1 with mathlib \nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}. Only propext, Classical.choice and Quot.sound occur. The project contains 50 new modules and four frozen imported research modules. Reproduce with lake build StrongerAnswer, followed by lake env lean AuditStronger.lean. The logs, signatures, complete source links, hashes and independent reconstructions accompany the archive.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.465\linewidth}>{\raggedright\arraybackslash}p{.465\linewidth}@{}}
+\toprule
+\textbf{Proof component} & \textbf{Checked source}\\\midrule\endhead
+Ordered eigenvalue fourth moment, zero excess and useful spectral bound & SpectralMoment; MomentBound\\[4pt]
+Globally valid bound function and quantitative nonzero excess & MomentReplacement; GlobalMomentFamily; MomentExcess\\[4pt]
+Shorter fixed-degree family and 54-variable matrix, both sectors & SeparateSidon; ShortFamilySupports; ShortFamily; Practical27Core; Practical27; Practical27Design; Practical27Spectral\\[4pt]
+Actual source matrices, length/density consumers and bad companion degrees & SourceConsumers; BadDegrees\\[4pt]
+Constructed joint Sidon matrices, spectral family and both binary sectors & JointSidon; JointMatrices; JointPowers; JointMomentFamily; JointKernel\\[4pt]
+Exact plane certificates and all 39-cover energy scaling & SpectralPlane; FiberSums; BicycleSpectralBase; BicycleCoverEnergy; BicycleSpectralFamily; JointSpectralBase\\[4pt]
+Real-valued/unbounded Gram gap and nontrivial bad logical class & RealGramBound; GramGap; BadLogical; BothGram\\[4pt]
+Growing-degree density and kernel guarantees & GrowingFamily; KernelFamily\\[4pt]
+Generic neighbor cover and two-block/uniform bounds & PartitionBound.lean\\[4pt]
+Sidon intersection limits and no-wrap powers-of-three support & SidonStopping.lean; PowersThree.lean\\[4pt]
+Binary matrices, CSS, degree counts and logical separation & SidonMatrices.lean; PowersFamily.lean\\[4pt]
+Rooted search soundness, two roots and cyclic covers & dependencies/IncidenceCore,List,Cover; BicycleBaseCore,Base,FamilyCore,Family\\[4pt]
+Concrete actual matrices, degrees, overlap and exact logical witness & BicycleMatrices,Degrees,Overlap,Logical; KernelStopping\\[4pt]
+Same-Gram identity, bad pair and universal-bound obstruction & GramObstruction; BadStopping; SidonBad\\[4pt]
+Known nonzero companion-row stopping mechanism & CSSStopping.lean\\[4pt]
+Consumers and exhaustive named-declaration audit & StrongerAnswer.lean; AuditStronger.lean\\[4pt]
+\bottomrule\end{longtable}
+\subsection*{\texttt{PartitionBound.lean}}
+\begin{lstlisting}
+theorem partition_bound (color : V (*@\ensuremath{\to}@*) Bool) (S : Finset V)
+    (hS : Incidence.Stopping E S) ((*@\ensuremath{\gamma}@*) (*@\ensuremath{\sigma}@*) (*@\ensuremath{\tau}@*) : (*@\ensuremath{\mathbb N}@*)) (hst : (*@\ensuremath{\sigma}@*) (*@\ensuremath{\le}@*) (*@\ensuremath{\tau}@*))
+    (hdeg : (*@\ensuremath{\forall}@*) v (*@\ensuremath{\in}@*) S, (*@\ensuremath{\gamma}@*) (*@\ensuremath{\le}@*) (neighbors E v).card)
+    (hov : (*@\ensuremath{\forall}@*) v (*@\ensuremath{\in}@*) S, (*@\ensuremath{\forall}@*) w (*@\ensuremath{\in}@*) S, v (*@\ensuremath{\ne}@*) w (*@\ensuremath{\to}@*)
+      overlap E v w (*@\ensuremath{\le}@*) if color v = color w then (*@\ensuremath{\sigma}@*) else (*@\ensuremath{\tau}@*)) :
+    2 * ((*@\ensuremath{\gamma}@*) + (*@\ensuremath{\sigma}@*)) (*@\ensuremath{\le}@*) ((*@\ensuremath{\sigma}@*) + (*@\ensuremath{\tau}@*)) * S.card := by
+  classical
+  let P := S.filter (fun w => color w = false)
+  let Q := S.filter (fun w => color w = true)
+  have hcard : P.card + Q.card = S.card := by
+    have h := card_filter_add_card_filter_not (s := S) (fun w => color w = false)
+    simpa [P,Q,Bool.not_eq_false] using h
+  have hfalse (v : V) (hv : v (*@\ensuremath{\in}@*) S) (hc : color v = false) :
+      (*@\ensuremath{\gamma}@*) + (*@\ensuremath{\sigma}@*) (*@\ensuremath{\le}@*) (*@\ensuremath{\sigma}@*) * P.card + (*@\ensuremath{\tau}@*) * Q.card := by
+    have h := column_budget E color S hS (*@\ensuremath{\gamma}@*) (*@\ensuremath{\sigma}@*) (*@\ensuremath{\tau}@*) hdeg hov v hv
+    simpa [hc,P,Q,Bool.not_eq_false] using h
+  have htrue (v : V) (hv : v (*@\ensuremath{\in}@*) S) (hc : color v = true) :
+      (*@\ensuremath{\gamma}@*) + (*@\ensuremath{\sigma}@*) (*@\ensuremath{\le}@*) (*@\ensuremath{\tau}@*) * P.card + (*@\ensuremath{\sigma}@*) * Q.card := by
+    have h := column_budget E color S hS (*@\ensuremath{\gamma}@*) (*@\ensuremath{\sigma}@*) (*@\ensuremath{\tau}@*) hdeg hov v hv
+    simpa [hc,P,Q,Bool.not_eq_true,add_comm] using h
+  by_cases hp : P.Nonempty
+  (*@\ensuremath{\cdot}@*) obtain (*@\ensuremath{\langle}@*)v,hv(*@\ensuremath{\rangle}@*) := hp
+    have hv' := mem_filter.mp hv
+    have hb := hfalse v hv'.1 hv'.2
+    by_cases hq : Q.Nonempty
+    (*@\ensuremath{\cdot}@*) obtain (*@\ensuremath{\langle}@*)w,hw(*@\ensuremath{\rangle}@*) := hq
+      have hw' := mem_filter.mp hw
+      have hb' := htrue w hw'.1 hw'.2
+      nlinarith
+    (*@\ensuremath{\cdot}@*) have hq0 : Q.card = 0 := card_eq_zero.mpr (not_nonempty_iff_eq_empty.mp hq)
+      nlinarith [Nat.mul_le_mul_right P.card hst]
+  (*@\ensuremath{\cdot}@*) have hp0 : P.card = 0 := card_eq_zero.mpr (not_nonempty_iff_eq_empty.mp hp)
+    obtain (*@\ensuremath{\langle}@*)v,hv(*@\ensuremath{\rangle}@*) := hS.1
+    have hc : color v = true := by
+      cases hc : color v
+      (*@\ensuremath{\cdot}@*) have : v (*@\ensuremath{\in}@*) P := mem_filter.mpr (*@\ensuremath{\langle}@*)hv,hc(*@\ensuremath{\rangle}@*)
+        exact False.elim (hp (*@\ensuremath{\langle}@*)v,this(*@\ensuremath{\rangle}@*))
+      (*@\ensuremath{\cdot}@*) rfl
+    have hb := htrue v hv hc
+    nlinarith [Nat.mul_le_mul_right Q.card hst]
+\end{lstlisting}
+\subsection*{\texttt{PowersFamily.lean}}
+\begin{lstlisting}
+theorem positive_family ((*@\ensuremath{\gamma}@*) n : (*@\ensuremath{\mathbb N}@*)) [NeZero n]
+    (hn : 3^(*@\ensuremath{\gamma}@*) (*@\ensuremath{\le}@*) n) (heven : Even (*@\ensuremath{\gamma}@*)) (hodd : Odd n) :
+    let S := support (*@\ensuremath{\gamma}@*) n
+    (SidonStopping.X (ZMod 2) S * (SidonStopping.X (ZMod 2) S)(*@\ensuremath{{}^{\mathsf T}}@*) = 0) (*@\ensuremath{\land}@*)
+    ((*@\ensuremath{\forall}@*) v, (Finset.univ.filter (fun c => SidonStopping.X (ZMod 2) S c v = 1)).card = (*@\ensuremath{\gamma}@*)) (*@\ensuremath{\land}@*)
+    ((*@\ensuremath{\forall}@*) c, (Finset.univ.filter (fun v => SidonStopping.X (ZMod 2) S c v = 1)).card = 2*(*@\ensuremath{\gamma}@*)) (*@\ensuremath{\land}@*)
+    ((*@\ensuremath{\forall}@*) T, Incidence.Stopping (SidonStopping.E S) T (*@\ensuremath{\to}@*) 2*((*@\ensuremath{\gamma}@*)+1) (*@\ensuremath{\le}@*) 3*T.card) (*@\ensuremath{\land}@*)
+    (SidonStopping.X (ZMod 2) S).mulVec (SidonStopping.leftOnes (G := ZMod n)) = 0 (*@\ensuremath{\land}@*)
+    ((*@\ensuremath{\neg}@*) (*@\ensuremath{\exists}@*) a, (SidonStopping.X (ZMod 2) S)(*@\ensuremath{{}^{\mathsf T}}@*).mulVec a =
+      SidonStopping.leftOnes (G := ZMod n)) (*@\ensuremath{\land}@*)
+    (SidonStopping.X (*@\ensuremath{\mathbb R}@*) S * (SidonStopping.X (*@\ensuremath{\mathbb R}@*) S)(*@\ensuremath{{}^{\mathsf T}}@*) =
+      SidonStopping.BadX (*@\ensuremath{\mathbb R}@*) S * (SidonStopping.BadX (*@\ensuremath{\mathbb R}@*) S)(*@\ensuremath{{}^{\mathsf T}}@*)) := by
+  dsimp only
+  have hcard := support_card (*@\ensuremath{\gamma}@*) n hn
+  have he : Even (support (*@\ensuremath{\gamma}@*) n).card := by simpa [hcard] using heven
+  refine (*@\ensuremath{\langle}@*)SidonStopping.css _,?_,?_,?_,SidonStopping.leftOnes_kernel _ he,?_,SidonStopping.gram_equal _(*@\ensuremath{\rangle}@*)
+  (*@\ensuremath{\cdot}@*) intro v; rw [SidonStopping.column_weight,hcard]
+  (*@\ensuremath{\cdot}@*) intro c; rw [SidonStopping.row_weight,hcard]
+  (*@\ensuremath{\cdot}@*) intro T hT
+    simpa only [hcard] using SidonStopping.stopping_bound _ (sidon (*@\ensuremath{\gamma}@*) n hn) T hT
+  (*@\ensuremath{\cdot}@*) apply SidonStopping.leftOnes_not_stabilizer _ he
+    simpa using hodd
+\end{lstlisting}
+\subsection*{\texttt{KernelStopping.lean}}
+\begin{lstlisting}
+theorem quantum_distance_six (h : 39 (*@\ensuremath{\mid}@*) n) :
+    (HX (n := n) (ZMod 2) * (HZ (n := n) (ZMod 2))(*@\ensuremath{{}^{\mathsf T}}@*) = 0) (*@\ensuremath{\land}@*)
+    ((*@\ensuremath{\forall}@*) x : Var n (*@\ensuremath{\to}@*) ZMod 2, x (*@\ensuremath{\ne}@*) 0 (*@\ensuremath{\to}@*) (HX (ZMod 2)).mulVec x = 0 (*@\ensuremath{\to}@*)
+      6 (*@\ensuremath{\le}@*) (BinaryStopping.support x).card) (*@\ensuremath{\land}@*)
+    (HX (ZMod 2)).mulVec (@word n) = 0 (*@\ensuremath{\land}@*)
+    ((*@\ensuremath{\neg}@*) (*@\ensuremath{\exists}@*) a : Check n (*@\ensuremath{\to}@*) ZMod 2, ((HZ (ZMod 2))(*@\ensuremath{{}^{\mathsf T}}@*).mulVec a) = (@word n)) (*@\ensuremath{\land}@*)
+    (BinaryStopping.support (@word n)).card = 6 :=
+  (*@\ensuremath{\langle}@*)css,all_nonzero_kernel_weight_ge_six h,word_kernel h,word_not_stabilizer h,word_weight h(*@\ensuremath{\rangle}@*)
+\end{lstlisting}
+\subsection*{\texttt{SidonBad.lean}}
+\begin{lstlisting}
+theorem gram_only_bound (S : Finset G)
+    (lower : Matrix G G (*@\ensuremath{\mathbb R}@*) (*@\ensuremath{\to}@*) (*@\ensuremath{\mathbb N}@*))
+    (valid_bad : (*@\ensuremath{\forall}@*) T : Finset (Bool (*@\ensuremath{\times}@*) G), Incidence.Stopping (badE S) T (*@\ensuremath{\to}@*)
+      lower (BadX (*@\ensuremath{\mathbb R}@*) S * (BadX (*@\ensuremath{\mathbb R}@*) S)(*@\ensuremath{{}^{\mathsf T}}@*)) (*@\ensuremath{\le}@*) T.card) :
+    lower (X (*@\ensuremath{\mathbb R}@*) S * (X (*@\ensuremath{\mathbb R}@*) S)(*@\ensuremath{{}^{\mathsf T}}@*)) (*@\ensuremath{\le}@*) 2 := by
+  rw [gram_equal]
+  have h := valid_bad twin (twin_stopping S)
+  simpa [twin_card] using h
+\end{lstlisting}
+\subsection*{\texttt{GramGap.lean}}
+\begin{lstlisting}
+theorem unbounded_gram_gap (M t : (*@\ensuremath{\mathbb N}@*)) [NeZero (liftLength (2*M) t)]
+    (lower : Matrix (ZMod (liftLength (2*M) t)) (ZMod (liftLength (2*M) t)) (*@\ensuremath{\mathbb R}@*) (*@\ensuremath{\to}@*) (*@\ensuremath{\mathbb R}@*))
+    (valid_bad : (*@\ensuremath{\forall}@*) U : Finset (Bool (*@\ensuremath{\times}@*) ZMod (liftLength (2*M) t)),
+      Incidence.Stopping (SidonStopping.badE (support (4*M) (liftLength (2*M) t))) U (*@\ensuremath{\to}@*)
+      lower (SidonStopping.BadX (*@\ensuremath{\mathbb R}@*) (support (4*M) (liftLength (2*M) t)) *
+        (SidonStopping.BadX (*@\ensuremath{\mathbb R}@*) (support (4*M) (liftLength (2*M) t)))(*@\ensuremath{{}^{\mathsf T}}@*)) (*@\ensuremath{\le}@*) (U.card : (*@\ensuremath{\mathbb R}@*)))
+    (T : Finset (Bool (*@\ensuremath{\times}@*) ZMod (liftLength (2*M) t)))
+    (hT : Incidence.Stopping (SidonStopping.E (support (4*M) (liftLength (2*M) t))) T) :
+    (M:(*@\ensuremath{\mathbb R}@*))*lower (SidonStopping.X (*@\ensuremath{\mathbb R}@*) (support (4*M) (liftLength (2*M) t)) *
+      (SidonStopping.X (*@\ensuremath{\mathbb R}@*) (support (4*M) (liftLength (2*M) t)))(*@\ensuremath{{}^{\mathsf T}}@*)) < (T.card : (*@\ensuremath{\mathbb R}@*)) := by
+  have hbound := SidonStopping.real_gram_only_bound _ lower valid_bad
+  have hrewrite : 4*M = 2*(2*M) := by omega
+  rw [hrewrite] at hT
+  have hg := arbitrary_fixed_guarantee (2*M) t T hT
+  have hgr : (2*M+1:(*@\ensuremath{\mathbb N}@*)) (*@\ensuremath{\le}@*) T.card := hg
+  have hrr : (2*(M:(*@\ensuremath{\mathbb R}@*))+1) (*@\ensuremath{\le}@*) (T.card:(*@\ensuremath{\mathbb R}@*)) := by exact_mod_cast hgr
+  have hmul := mul_le_mul_of_nonneg_left hbound (Nat.cast_nonneg M : (0:(*@\ensuremath{\mathbb R}@*)) (*@\ensuremath{\le}@*) M)
+  linarith
+\end{lstlisting}
+\subsection*{\texttt{BicycleSpectralFamily.lean}}
+\begin{lstlisting}
+theorem zhu_chugg_negative (h : 39 (*@\ensuremath{\mid}@*) n)
+    (hgap : eigs (Family.HX (n := n) (*@\ensuremath{\mathbb R}@*)) (*@\ensuremath{\langle}@*)1,by exact check_count h(*@\ensuremath{\rangle}@*) < 32) :
+    let s := eigs (Family.HX (n := n) (*@\ensuremath{\mathbb R}@*)) (*@\ensuremath{\langle}@*)1,by exact check_count h(*@\ensuremath{\rangle}@*)
+    (2*(n:(*@\ensuremath{\mathbb R}@*)))*(8-s)/(32-s) < 0 (*@\ensuremath{\land}@*)
+    (4*(n:(*@\ensuremath{\mathbb R}@*)))*(14-s)/(8*(32-s)) < 0 := by
+  dsimp
+  have hs := second_lower h
+  have hn : (0:(*@\ensuremath{\mathbb R}@*)) < n := by exact_mod_cast NeZero.pos n
+  constructor
+  (*@\ensuremath{\cdot}@*) apply div_neg_of_neg_of_pos
+    (*@\ensuremath{\cdot}@*) exact mul_neg_of_pos_of_neg (by positivity) (by linarith)
+    (*@\ensuremath{\cdot}@*) linarith
+  (*@\ensuremath{\cdot}@*) apply div_neg_of_neg_of_pos
+    (*@\ensuremath{\cdot}@*) exact mul_neg_of_pos_of_neg (by positivity) (by linarith)
+    (*@\ensuremath{\cdot}@*) positivity
+\end{lstlisting}
+\subsection*{\texttt{MomentBound.lean}}
+\begin{lstlisting}
+theorem regular_spectral_bound (E : V (*@\ensuremath{\to}@*) C (*@\ensuremath{\to}@*) Prop) [DecidableRel E] ((*@\ensuremath{\gamma}@*) k : (*@\ensuremath{\mathbb N}@*))
+    (hcol : (*@\ensuremath{\forall}@*) v, (PartitionStopping.neighbors E v).card = (*@\ensuremath{\gamma}@*))
+    (hrow : (*@\ensuremath{\forall}@*) c, rowWeight E c = k)
+    (hmoment : ((*@\ensuremath{\sum}@*) i,(StoppingSpectral.eigs (H E) i)^2) + (Fintype.card V : (*@\ensuremath{\mathbb R}@*))*(*@\ensuremath{\gamma}@*) =
+      (Fintype.card V : (*@\ensuremath{\mathbb R}@*))*((*@\ensuremath{\gamma}@*):(*@\ensuremath{\mathbb R}@*))^2 + (Fintype.card C : (*@\ensuremath{\mathbb R}@*))*(k:(*@\ensuremath{\mathbb R}@*))^2)
+    (S : Finset V) (hS : Incidence.Stopping E S) : (*@\ensuremath{\gamma}@*)+1 (*@\ensuremath{\le}@*) S.card := by
+  apply spectral_stopping_bound E (*@\ensuremath{\gamma}@*) (fun v => by rw [hcol]) _ S hS
+  simpa only [hcol,hrow,sum_const,card_univ,nsmul_eq_mul] using hmoment
+\end{lstlisting}
+\subsection*{\texttt{JointMomentFamily.lean}}
+\begin{lstlisting}
+theorem fourth_moment (hn : 3^(2*(*@\ensuremath{\gamma}@*)) (*@\ensuremath{\le}@*) n) :
+    ((*@\ensuremath{\sum}@*) i,(eigs (JointSidon.X (*@\ensuremath{\mathbb R}@*) (leftMarks (*@\ensuremath{\gamma}@*) n) (rightMarks (*@\ensuremath{\gamma}@*) n)) i)^2) =
+      2*(n:(*@\ensuremath{\mathbb R}@*))*((*@\ensuremath{\gamma}@*):(*@\ensuremath{\mathbb R}@*))*(3*((*@\ensuremath{\gamma}@*):(*@\ensuremath{\mathbb R}@*))-1) := by
+  have hm := StoppingMoment.moment_of_overlap_one
+    (JointSidon.E (leftMarks (*@\ensuremath{\gamma}@*) n) (rightMarks (*@\ensuremath{\gamma}@*) n))
+    (JointSidon.overlap_one _ _ (joint_sidon (*@\ensuremath{\gamma}@*) n hn) (disjoint_marks (*@\ensuremath{\gamma}@*) n hn))
+  rw [real_matrix] at hm
+  simp_rw [column_degree hn,row_degree hn] at hm
+  simp only [sum_const,card_univ,Fintype.card_prod,Fintype.card_bool,ZMod.card,
+    Nat.cast_mul,Nat.cast_ofNat,nsmul_eq_mul] at hm
+  nlinarith
+\end{lstlisting}
+\subsection*{\texttt{ShortFamily.lean}}
+\begin{lstlisting}
+theorem source_stopping_five (hn : 37(*@\ensuremath{\le}@*)n) (U : Finset (Bool (*@\ensuremath{\times}@*) ZMod n))
+    (hU : Incidence.Stopping (fun v c => HX (n := n) (ZMod 2) c v=1) U) : 5(*@\ensuremath{\le}@*)U.card := by
+  refine regular_spectral_bound (E (n := n)) 4 8 (degree hn) (row_degree hn) ?_ U ?_
+  (*@\ensuremath{\cdot}@*) rw [real_matrix,fourth_moment hn]
+    simp only [Fintype.card_prod,Fintype.card_bool,ZMod.card,Nat.cast_mul,Nat.cast_ofNat]
+    ring
+  (*@\ensuremath{\cdot}@*) simpa only [HX,Incidence.Stopping,JointSidon.binary_incidence] using hU
+
+theorem replacement_value (hn : 37(*@\ensuremath{\le}@*)n) :
+    regularReplacement n (2*n) 4 8 ((*@\ensuremath{\sum}@*) i,(eigs (HX (n := n) (*@\ensuremath{\mathbb R}@*)) i)^2)=5 := by
+  rw [fourth_moment hn]
+  unfold regularReplacement
+  split_ifs with he
+  (*@\ensuremath{\cdot}@*) norm_num
+  (*@\ensuremath{\cdot}@*) exfalso
+    apply he
+    push_cast
+    ring
+\end{lstlisting}
+\subsection*{\texttt{Practical27Spectral.lean}}
+\begin{lstlisting}
+theorem zhu_chugg_comparison (hgap : eigs HR (*@\ensuremath{\langle}@*)1,by decide(*@\ensuremath{\rangle}@*) < 32) :
+    let s := eigs HR (*@\ensuremath{\langle}@*)1,by decide(*@\ensuremath{\rangle}@*)
+    54*(8-s)/(32-s) < 0 (*@\ensuremath{\land}@*)
+      108*(14-s)/(8*(32-s)) (*@\ensuremath{\le}@*) (297:(*@\ensuremath{\mathbb R}@*))/94 (*@\ensuremath{\land}@*) (297:(*@\ensuremath{\mathbb R}@*))/94 < 4 := by
+  dsimp
+  have hs := second_lower
+  refine (*@\ensuremath{\langle}@*)?_,?_,by norm_num(*@\ensuremath{\rangle}@*)
+  (*@\ensuremath{\cdot}@*) apply div_neg_of_neg_of_pos
+    (*@\ensuremath{\cdot}@*) nlinarith
+    (*@\ensuremath{\cdot}@*) linarith
+  (*@\ensuremath{\cdot}@*) apply (div_le_iff(*@\ensuremath{{}_0}@*) (by positivity : 0 < 8*(32-eigs HR (*@\ensuremath{\langle}@*)1,by decide(*@\ensuremath{\rangle}@*)))).mpr
+    nlinarith
+\end{lstlisting}
+\paragraph{Dependency guide.} PartitionBound provides generic counting. SidonStopping and PowersThree prove incidence hypotheses constructively. SidonMatrices and PowersFamily supply actual binary CSS and nontrivial logical content. BicycleBaseCore/List dependencies give search soundness; BicycleBase rejects small roots; FamilyCore/Cover transfer exact6. BicycleMatrices/Degrees/Logical/KernelStopping check the actual code and logical witness. GramObstruction, BadStopping and SidonBad prove indistinguishability and exact bad stopping2. CSSStopping checks the known stabilizer upper mechanism. AuditStronger checks every named declaration, including every frozen dependency. The second checkpoint adds SpectralMoment/MomentBound for an actual ordered-eigenvalue replacement; JointSidon/Matrices/Powers/MomentFamily/Kernel for constructed useful spectral families; JointSpectralBase for an exact cited-formula comparison; real-valued/unbounded Gram-gap and nontrivial bad logical proofs; exact two-vector certificates with cyclic-cover energy transfer; and growing stopping/kernel guarantees. SeparateSidon/ShortFamilySupports/ShortFamily provide shorter fixed-degree parameters; Practical27Core/Practical27/Practical27Design/Practical27Spectral check the 54-variable example and exact cited-formula comparison. MomentReplacement/GlobalMomentFamily and MomentExcess provide the global bound function and quantitative extension. BothGram covers both separate check Gram matrices, excluding cross-sector/binary-rank information.
+\clearpage\section{Complete current and immutable Lean URLs}\label{app:links}
+Every URL below is printed in full and clickable. The stronger-bound sources retain the checked revision \texttt{bed7719cb3cac4118e4f333690db364566ede03e}. The earlier proof closure retains its own immutable revision.
+
+\subsection{This paper: every proof, audit and imported research file}
+\medskip
+\par\noindent\textbf{\texttt{AuditStronger.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/AuditStronger.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/AuditStronger.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BadDegrees.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadDegrees.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadDegrees.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BadLogical.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadLogical.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadLogical.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BadStopping.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadStopping.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadStopping.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleBase.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleBase.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleBase.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleBaseCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleBaseCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleBaseCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleCoverEnergy.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleDegrees.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleDegrees.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleDegrees.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleFamilyCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleFamilyCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleFamilyCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleLogical.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleLogical.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleLogical.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleMatrices.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleMatrices.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleMatrices.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleOverlap.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleOverlap.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleOverlap.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleSpectralBase.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleSpectralBase.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleSpectralBase.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BicycleSpectralFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{BothGram.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BothGram.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BothGram.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{CSSStopping.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/CSSStopping.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/CSSStopping.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{FiberSums.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/FiberSums.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/FiberSums.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{GlobalMomentFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GlobalMomentFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GlobalMomentFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{GramGap.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GramGap.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GramGap.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{GramObstruction.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GramObstruction.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GramObstruction.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{GrowingFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GrowingFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GrowingFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{JointKernel.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointKernel.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointKernel.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{JointMatrices.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointMatrices.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointMatrices.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{JointMomentFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointMomentFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointMomentFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{JointPowers.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointPowers.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointPowers.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{JointSidon.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointSidon.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointSidon.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{JointSpectralBase.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointSpectralBase.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointSpectralBase.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{KernelFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/KernelFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/KernelFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{KernelStopping.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/KernelStopping.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/KernelStopping.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{MomentBound.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentBound.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentBound.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{MomentExcess.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentExcess.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentExcess.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{MomentReplacement.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentReplacement.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentReplacement.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{PartitionBound.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PartitionBound.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PartitionBound.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{PowersFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PowersFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PowersFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{PowersThree.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PowersThree.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PowersThree.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{Practical27.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{Practical27Core.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Core.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Core.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{Practical27Design.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Design.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Design.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{Practical27Spectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Spectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Spectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{RealGramBound.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/RealGramBound.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/RealGramBound.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SeparateSidon.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SeparateSidon.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SeparateSidon.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{ShortFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/ShortFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/ShortFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{ShortFamilySupports.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/ShortFamilySupports.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/ShortFamilySupports.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SidonBad.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonBad.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonBad.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SidonMatrices.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonMatrices.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonMatrices.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SidonStopping.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonStopping.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonStopping.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SourceConsumers.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SourceConsumers.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SourceConsumers.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SpectralMoment.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SpectralMoment.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SpectralMoment.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{SpectralPlane.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SpectralPlane.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SpectralPlane.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{StrongerAnswer.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/StrongerAnswer.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/StrongerAnswer.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{dependencies/IncidenceCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{dependencies/IncidenceCover.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{dependencies/IncidenceList.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{dependencies/Spectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/Spectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/Spectral.lean}\par}
+\smallskip
+\subsection{Cited earlier proof closure}
+\medskip
+\par\noindent\textbf{\texttt{Audit.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/Audit.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/Audit.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{Spectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/Spectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/Spectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/AuditClassification.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/AuditClassification.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/AuditClassification.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/Classification.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/Classification.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/Classification.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/ClassificationBranches.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/ClassificationBranches.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/ClassificationBranches.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/ClassificationCertificate.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/ClassificationCertificate.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/ClassificationCertificate.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/ClassificationData.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/ClassificationData.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/ClassificationData.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/ClassificationKernel.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/ClassificationKernel.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/ClassificationKernel.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/ClassificationSearch.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/ClassificationSearch.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/ClassificationSearch.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/Incidence.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/Incidence.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/Incidence.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceCSS.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceCSS.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceCSS.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceCertificate.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceCertificate.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceCertificate.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceCover.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceCover.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceCover.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceDegrees.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceDegrees.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceDegrees.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceFamilyCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceFamilyCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceFamilyCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceFamilySource.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceFamilySource.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceFamilySource.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceList.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceList.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceList.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceSource.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceSource.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceSource.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/IncidenceSpectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/IncidenceSpectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/IncidenceSpectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{classification/dependencies/Spectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/classification/dependencies/Spectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/classification/dependencies/Spectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/AuditIncidence.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/AuditIncidence.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/AuditIncidence.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/Incidence.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/Incidence.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/Incidence.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceCSS.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceCSS.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceCSS.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceCertificate.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceCertificate.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceCertificate.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceCover.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceCover.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceCover.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceDegrees.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceDegrees.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceDegrees.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceFamily.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceFamily.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceFamily.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceFamilyCore.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceFamilyCore.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceFamilyCore.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceFamilySource.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceFamilySource.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceFamilySource.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceList.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceList.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceList.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceSource.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceSource.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceSource.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/IncidenceSpectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/IncidenceSpectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/IncidenceSpectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{incidence/dependencies/Spectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/incidence/dependencies/Spectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/incidence/dependencies/Spectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{source-answer/AuditDenseSourceBridge.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/AuditDenseSourceBridge.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/AuditDenseSourceBridge.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{source-answer/AuditSourceAnswer.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/AuditSourceAnswer.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/AuditSourceAnswer.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{source-answer/DenseSourceBridge.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/DenseSourceBridge.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/DenseSourceBridge.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{source-answer/SourceQuestionAnswer.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/SourceQuestionAnswer.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{source-answer/dependencies/Spectral.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/dependencies/Spectral.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/dependencies/Spectral.lean}\par}
+\smallskip
+\medskip
+\par\noindent\textbf{\texttt{source-answer/source-ledgers/parent-Audit.lean}}\par\nopagebreak
+{\footnotesize\noindent Current: \url{https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/source-answer/source-ledgers/parent-Audit.lean}\\
+Immutable: \url{https://github.com/alectionary/vibe-math/blob/b7628643bb256bf9c1a319f16f6e19608116cff6/formalization/stopping-bound/source-answer/source-ledgers/parent-Audit.lean}\par}
+\smallskip
+\clearpage\section{Complete source chronology and calendar deltas}\label{app:chronology}
+This manuscript uses October 24, 2026 in America/Los\_Angeles as its dated revision. UTC research/build times are recorded separately. Civil calendar days to 2026-10-24; exact dates give exact differences. Month/year precision yields inclusive minimum/maximum day ranges; dates are not invented. Date ranges are clipped to the revision because these records already existed then. Source age is not unresolved-problem duration.
+
+The central comparison is Table~\ref{tab:chronology}; this ledger also includes inherited sources, software snapshots and held leads. Inspection-only milestones do not become publication dates.
+
+{\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.27\linewidth}>{\raggedright\arraybackslash}p{.47\linewidth}>{\raggedright\arraybackslash}p{.18\linewidth}@{}}
+\toprule
+\textbf{Source / role} & \textbf{Milestone, date and elapsed calendar days} & \textbf{Access / precision}\\\midrule\endhead
+F16: Abiad-Castriota: motivating parameter question; Original question; Prop.5.1 / Remark5.2 / §6 & first and inspected v1: 2026-07-15; 101 days (day) & inspected full text\\[4pt]
+F68: Tanner: Minimum Distance Bounds by Graph Analysis; Classical spectral ingredient & earliest inspected manuscript: 2000-07-26; 9586 days (day); journal milestone: 2001; 9063--9427 days (year) & inspected full text\\[4pt]
+F67: Zhu-Chugg: Bounds on the Expansion Properties of Tanner Graphs; Classical stopping bound; exact Cor.6 comparison & conference predecessor metadata: 2005-09-28; 7696 days (day); inspected journal version: 2007-12; 6872--6902 days (month) & inspected full text\\[4pt]
+F69: Panteleev-Kalachev: Degenerate Quantum LDPC Codes With Good Finite Length Performance; Scalar-factor construction & first v1: 2019-04-04; 2760 days (day); inspected v3: 2021-11-12; 1807 days (day); journal milestone: 2021-11-22; 1797 days (day) & inspected full text\\[4pt]
+F70: Leverrier-Zemor: Quantum Tanner codes; Constituent Ramanujan comparison & first v1: 2022-02-28; 1699 days (day); inspected v3: 2022-09-16; 1499 days (day); PDF internal date: 2022-09-19; 1496 days (day) & inspected full text\\[4pt]
+F71: Feng-Li: Spectra of Hypergraphs and Applications; Classical source cited by Remark5.2; not a proof premise & publication metadata: 1996-09; 10981--11010 days (month) & abstract only full text gap\\[4pt]
+F72: Li-Sole: Spectra of Regular Graphs and Hypergraphs and Orthogonal Polynomials; Classical comparison lead; not a proof premise & publication metadata: 1996; 10889--11254 days (year) & partial web text archival gap\\[4pt]
+F73: Prabhu et al.: On the Efficacy of the Peeling Decoder for the Quantum Expander Code; Known stopping-set mechanisms and expansion conditions & first v1: 2025-04-30; 542 days (day); inspected v2: 2025-05-29; 513 days (day) & inspected full text\\[4pt]
+F74: Wang-Kulkarni-Poor: Finding All Small Error-Prone Substructures in LDPC Codes; Classical rooted narrowing and branch-and-bound & related first preprint: 2006-05-19; 7463 days (day); inspected current-version date: 2009-04-22; 6394 days (day); journal issue: 2009-05; 6355--6385 days (month) & inspected full text\\[4pt]
+F75: Yao-Gokduman-Pfister: Cluster Decomposition for Improved Erasure Decoding of Quantum LDPC Codes; B1 simulations / peeling-cluster comparison & first and inspected v1: 2024-12-11; 682 days (day) & inspected full text\\[4pt]
+Connolly2024: Connolly-Londe-Leverrier-Delfosse: Fast erasure decoder for hypergraph product codes; Original stabilizer-support mechanism, credited through inspected F73/F75 & first v1: 2022-08-01; 1545 days (day); v3 metadata: 2024-08-21; 794 days (day); journal publication: 2024-08-27; 788 days (day) & metadata only full text not consulted\\[4pt]
+F76: Prabhu-Gayathri-Kumar: On the Analysis of Stopping Sets Associated with the Quantum Hypergraph Product Code; Later comparison lead; no exact theorem claim & conference metadata: 2026; 0--296 days (year) & full text access gap\\[4pt]
+RosnesYtrehus2007: Rosnes-Ytrehus: An Algorithm to Find All Small-Size Stopping Sets of Low-Density Parity-Check Matrices; Bibliography-only enumeration lead & conference year: 2007; 6872--7236 days (year) & bibliography only not used as theorem evidence\\[4pt]
+Morris2025: Kirsten Morris: Analysis of Graph-based Decoders for Quantum Low Density Parity Check Codes; Discovery trail through existing dissertation inventory & repository source version: 2025-08; 419--449 days (month) & discovery record not new full text screen\\[4pt]
+qLDPCOrg/qLDPC: qLDPCOrg/qLDPC pinned snapshot; Software/infrastructure snapshot, not original publication age & inspected commit: 2026-10-23; 1 days (day) & pinned source or infrastructure\\[4pt]
+Lcrypto/Stopping-sets-enumerator: Lcrypto/Stopping-sets-enumerator pinned snapshot; Software/infrastructure snapshot, not original publication age & inspected commit: 2023-10-29; 1091 days (day) & pinned source or infrastructure\\[4pt]
+leanprover-community/mathlib4: leanprover-community/mathlib4 pinned snapshot; Software/infrastructure snapshot, not original publication age & inspected commit: 2026-10-21; 3 days (day) & pinned source or infrastructure\\[4pt]
+X-source-announcement: mathCObot source-paper announcement; Accessible X comparison; not a mathematical answer & post UTC date: 2026-07-16; 100 days (day); authenticated browser local displayed post date: 2026-07-15; 101 days (day) & authenticated post detail rechecked final checkpoint\\[4pt]
+X-earlier-result: A\_Lectionary earlier absorbing-set announcement; Earlier repository result; different target & post UTC date: 2026-10-24; 0 days (day) & post inspected in parent audit\\[4pt]
+other-code-snapshots: Other inspected GitHub mirrors/README-only code; Secondary discovery/control sources; no theorem or earliest-publication claim & recorded inspection: 2026-10-24; 0 days (day) & inspection date only earliest dates unassessed\\[4pt]
+Lean-runtime: Lean 4.36.0-rc1 runtime; Pinned proof checker; release-age claim not made & recorded use: 2026-10-24; 0 days (day) & use date only release date unassessed\\[4pt]
+F77: Schwartz-Vardy: stopping distance and stopping redundancy; Classical matrix-dependent stopping convention, codeword mechanism and distinct-column criterion & first preprint metadata: 2005-03-23; 7885 days (day); journal revised manuscript: 2005-12-09; 7624 days (day); inspected journal issue: 2006-03; 7512--7542 days (month) & inspected full text\\[4pt]
+F78: Wang-Pryadko: Distance bounds for generalized bicycle codes; Binary GB/CSS construction convention and logical-distance comparison & first and inspected v1 submission: 2022-03-31; 1668 days (day); PDF internal date: 2022-04-01; 1667 days (day) & inspected full text\\[4pt]
+F79: Kuo-Ouyang: Degenerate quantum erasure decoding; Quantum-aware decoding comparison; article-in-press main text screened & first preprint metadata: 2024-11-20; 703 days (day); received: 2025-05-31; 511 days (day); accepted: 2026-02-23; 243 days (day); publication / inspected article-in-press: 2026-03-13; 225 days (day); version of record metadata: 2026-04-29; 178 days (day) & inspected full text\\[4pt]
+F80: Kashyap-Vardy: Stopping Sets in Codes from Designs; Classical uniform-overlap lower bound, Theorem 1 & reported conference presentation: 2003; 8333--8697 days (year); reported original composition: 2003-09; 8425--8454 days (month); inspected revised author manuscript: 2026-10-24; 0 days (day) & full web text screened direct pdf download403 transcription archived\\[4pt]
+F81: Xia-Fu: Minimum Pseudo-Weight and Minimum Pseudo-Codewords of LDPC Codes; Classical overlap/pseudo-weight comparison, Theorems1/3; full17-page primary screen & earliest preprint: 2006-06-12; 7439 days (day); inspected arXivv2 stamp: 2006-11-11; 7287 days (day); PDF internal title-page date: 2019-05-06; 2728 days (day) & inspected full text\\[4pt]
+F38: Dehghan-Banihashemi: Cospectral Bipartite Graphs with the Same Degree Sequences but with Different Number of Large Cycles; Earlier cospectral-cycle obstruction; existing23-page source screen reused, no added inventory cohort & first and inspectedv1: 2019-05-31; 2703 days (day); journal volume metadata: 2019; 2489--2853 days (year) & inspected full text\\[4pt]
+gideonlsx/bicycle-race: gideonlsx/bicycle-race pinned public repository; README/software comparison; not theorem evidence & inspected commit: 2026-10-11; 13 days (day) & public metadata or readme inspected\\[4pt]
+kywukuo/qLDPC\_dec: kywukuo/qLDPC\_dec pinned public repository; README/software comparison; not theorem evidence & inspected commit: 2026-01-26; 271 days (day) & public metadata or readme inspected\\[4pt]
+prior-proof-checkpoint: Cited original-question and B1 proof closure; Earlier checked proof sources, not a new completion & immutable proof-source commit: 2026-10-24; 0 days (day) & checked prior lean sources\\[4pt]
+new-proof-checkpoint: This stronger-bound proof checkpoint; Checked mathematical source, not a priority date & new research and proof-source checkpoint: 2026-10-24; 0 days (day) & checked lean source\\[4pt]
+held-lead-1: Generalized Bicycle Codes with Low Connectivity: Minimum Distance Bounds and Hook Errors; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-2: Spectral Theory of Semisimple Bivariate Bicycle Codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-3: Logical Operator Decomposition for Distance Analysis of Bivariate Bicycle Codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-4: Permutation Decoding and the Stopping Redundancy Hierarchy; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-5: Quantum Maxwell Erasure Decoder for qLDPC codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-6: Stopping Sets of Algebraic Geometry Codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-7: On the Hardness of Approximating Stopping and Trapping Sets in LDPC Codes; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+held-lead-8: A class of LDPC codes based on symplectic space over finite fields; Encountered lead, no theorem premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & metadata or abstract only fulltext unassessed\\[4pt]
+F82: Donovan-Rao-Üsküplü-Yaz\i{}c\i{}: QC-LDPC Codes from Difference Matrices and Difference Covering Arrays; Post-lemma primary full-document question screen and exact construction comparison & first and inspectedv1: 2022-05-01; 1637 days (day); journal publication year metadata: 2023; 1028--1392 days (year) & inspected full text\\[4pt]
+F83: Chee-Ling-Yin: Optimal Partitioned Cyclic Difference Packings; Post-lemma primary full-document question screen and exact construction comparison & first and inspectedv1: 2010-08-10; 5919 days (day); journal issue metadata: 2010-11; 5807--5836 days (month) & inspected full text\\[4pt]
+F84: Gholami-Samadieh: QC-LDPC Codes Based on Finite Set Systems; Post-lemma primary full-document question screen and exact construction comparison & first and inspectedv1: 2014-05-15; 4545 days (day); internal PDF title-page date: 2022-03-28; 1671 days (day) & inspected full text\\[4pt]
+F85: Amirzade-Sadeghi: Lower bounds on the lifting degree by difference matrices; Post-lemma primary full-document question screen and exact construction comparison & first and inspectedv1: 2017-09-04; 3337 days (day); internal PDF running draft date: 2018-11-18; 2897 days (day) & inspected full text\\[4pt]
+postlemma-held-1: Difference-Spectrum Completion of Multi-Weight Optical Orthogonal Codes; Post-lemma metadata lead, no mathematical premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & publisher429 and primary PDF403; fulltext unavailable; metadata only no zero question claim\\[4pt]
+postlemma-held-2: On the Girth of Tanner QC-LDPC Cycle Codes: An Algebraic Number Theory Approach; Post-lemma metadata lead, no mathematical premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & publisher429 and primary PDF403; fulltext unavailable; metadata only no zero question claim\\[4pt]
+postlemma-held-3: Cyclic balanced incomplete block designs with block size four and arbitrary index; Post-lemma metadata lead, no mathematical premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & publisher403; abstract metadata only; fulltext unavailable no zero question claim\\[4pt]
+postlemma-held-4: Additive, Structural, and Multiplicative Transformations for the Construction of Quasi-Cyclic LDPC Matrices; Post-lemma metadata lead, no mathematical premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & Secondary search snippet only; primary full version not located/inspected in bounded search; no theorem premise or zero-question claim\\[4pt]
+postlemma-held-5: Cyclic Difference Packing and Covering Arrays; Post-lemma metadata lead, no mathematical premise or zero-question claim & inspection only: 2026-10-24; 0 days (day) & Secondary metadata/bibliographic lead only; primary full version not inspected; no theorem premise or zero-question claim\\[4pt]
+X-final-search: Final authenticated X source/stopping audit; Read-only bounded query with known-positive control; not absence or theorem evidence & final inspection: 2026-10-24; 0 days (day) & authenticated bounded search read no post sent\\[4pt]
+\bottomrule\end{longtable}
+}
+Inspection-only dates are explicitly distinguished from publication dates. The Kashyap-Vardy author manuscript is undated after its reported 2003 composition; its web transcription hash is not a PDF hash. Supplementary/final-version, citation-index and X access gaps remain named. Date differences are source ages, not durations of unsolved problems.
+\clearpage\section{Search coverage, inventory and revision record}\label{app:ledger}
+Public GitHub comparisons include the pinned bicycle-race README, which describes logical-distance records, and the Kuo decoder repository metadata. A final CLI support-fingerprint query and a known-positive mathlib control both returned no items; those negative code-search outputs are discarded. Authenticated Edge access later succeeded: the arXiv-ID query visibly returned the source announcement and an earlier project lift-label post. The source post detail displayed10:23 PM, 15 July 2026; the prior UTC 16 July date is distinguished in the chronology. A focused QC-GHP stopping query displayed no results in that bounded view. None is a proof of global absence or priority. The earlier Mac-locked failure is superseded by this fresh read-only check. No post was sent.
+
+Nine additional accessible main texts were screened, adding 28 historical questions/directions, nine precise enough for the denominator:267\ensuremath{\to}295 entries,135\ensuremath{\to}144 eligible targets,110\ensuremath{\to}119 papers and 97\ensuremath{\to}106 full-text main-paper screens. The separate indexing deltas are20/8/4,3/1/1 and 5/0/4. Completed canonical Lean targets remain five. New harvested questions have unassessed current resolution, Lean discovery and effort. The latest four-paper target screen records five broad directions; FSS and the lifting-degree paper have no additional explicit unresolved target. The PCDP theorem's excluded residue classes are not invented as an open conjecture: explicit 8/16/32 seeds exist in the same paper. Existing F38 screening is reused without duplication. Publisher429/403, supplementary/version, retrieval and X access gaps remain explicit.
+
+\paragraph{Research time versus manuscript revision.}
+The stronger-bound investigation began October 24, 2026 at 22:59:20 UTC. The
+first checked incidence/exact-six checkpoint was reached at 23:36:01 UTC
+(36 minutes 41 seconds). The final selected proof checkpoint was October 25
+at 01:30:24 UTC (2 hours 31 minutes 4 seconds). These timestamps describe the
+completed mathematical investigation. The present LaTeX and narrative revision
+changes presentation and preserves its checked proof sources, inventory totals
+and immutable proof pins. Its publication timestamp is recorded separately in
+the accompanying presentation-revision record. The manuscript's civil revision
+date is October 24, 2026 in America/Los\_Angeles; UTC timestamps are distinct.
