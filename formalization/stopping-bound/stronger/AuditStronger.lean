@@ -667,6 +667,172 @@ set_option pp.universes false
 #print axioms SidonStopping.bad_z_column_weight
 #check SidonStopping.bad_z_row_weight
 #print axioms SidonStopping.bad_z_row_weight
+#check Practical27.G
+#print axioms Practical27.G
+#check Practical27.V
+#print axioms Practical27.V
+#check Practical27.S
+#print axioms Practical27.S
+#check Practical27.T
+#print axioms Practical27.T
+#check Practical27.E
+#print axioms Practical27.E
+#check Practical27.HX
+#print axioms Practical27.HX
+#check Practical27.HZ
+#print axioms Practical27.HZ
+#check Practical27.cardS
+#print axioms Practical27.cardS
+#check Practical27.cardT
+#print axioms Practical27.cardT
+#check Practical27.linearity
+#print axioms Practical27.linearity
+#check Practical27.degree
+#print axioms Practical27.degree
+#check Practical27.row_degree
+#print axioms Practical27.row_degree
+#check Practical27.real_matrix
+#print axioms Practical27.real_matrix
+#check Practical27.fourth_moment
+#print axioms Practical27.fourth_moment
+#check Practical27.source_stopping_five
+#print axioms Practical27.source_stopping_five
+#check Practical27.replacement_value
+#print axioms Practical27.replacement_value
+#check Practical27.nontrivial_code
+#print axioms Practical27.nontrivial_code
+#check Practical27.Spectral.C
+#print axioms Practical27.Spectral.C
+#check Practical27.Spectral.V
+#print axioms Practical27.Spectral.V
+#check Practical27.Spectral.HInt
+#print axioms Practical27.Spectral.HInt
+#check Practical27.Spectral.HR
+#print axioms Practical27.Spectral.HR
+#check Practical27.Spectral.uZ
+#print axioms Practical27.Spectral.uZ
+#check Practical27.Spectral.vZ
+#print axioms Practical27.Spectral.vZ
+#check Practical27.Spectral.normZ
+#print axioms Practical27.Spectral.normZ
+#check Practical27.Spectral.dotZ
+#print axioms Practical27.Spectral.dotZ
+#check Practical27.Spectral.enZ
+#print axioms Practical27.Spectral.enZ
+#check Practical27.Spectral.crossZ
+#print axioms Practical27.Spectral.crossZ
+#check Practical27.Spectral.norm_u
+#print axioms Practical27.Spectral.norm_u
+#check Practical27.Spectral.norm_v
+#print axioms Practical27.Spectral.norm_v
+#check Practical27.Spectral.dot_uv
+#print axioms Practical27.Spectral.dot_uv
+#check Practical27.Spectral.energy_u
+#print axioms Practical27.Spectral.energy_u
+#check Practical27.Spectral.energy_v
+#print axioms Practical27.Spectral.energy_v
+#check Practical27.Spectral.cross_uv
+#print axioms Practical27.Spectral.cross_uv
+#check Practical27.Spectral.uR
+#print axioms Practical27.Spectral.uR
+#check Practical27.Spectral.vR
+#print axioms Practical27.Spectral.vR
+#check Practical27.Spectral.matrix_cast
+#print axioms Practical27.Spectral.matrix_cast
+#check Practical27.Spectral.norm_cast
+#print axioms Practical27.Spectral.norm_cast
+#check Practical27.Spectral.dot_cast
+#print axioms Practical27.Spectral.dot_cast
+#check Practical27.Spectral.energy_cast
+#print axioms Practical27.Spectral.energy_cast
+#check Practical27.Spectral.cross_cast
+#print axioms Practical27.Spectral.cross_cast
+#check Practical27.Spectral.second_lower
+#print axioms Practical27.Spectral.second_lower
+#check Practical27.Spectral.zhu_chugg_comparison
+#print axioms Practical27.Spectral.zhu_chugg_comparison
+#check JointSidon.CrossUnique
+#print axioms JointSidon.CrossUnique
+#check JointSidon.separate_overlap_one
+#print axioms JointSidon.separate_overlap_one
+#check ShortFamily.NS
+#print axioms ShortFamily.NS
+#check ShortFamily.NT
+#print axioms ShortFamily.NT
+#check ShortFamily.S
+#print axioms ShortFamily.S
+#check ShortFamily.T
+#print axioms ShortFamily.T
+#check ShortFamily.ns_bound
+#print axioms ShortFamily.ns_bound
+#check ShortFamily.nt_bound
+#print axioms ShortFamily.nt_bound
+#check ShortFamily.ns_card
+#print axioms ShortFamily.ns_card
+#check ShortFamily.nt_card
+#print axioms ShortFamily.nt_card
+#check ShortFamily.ns_sidon
+#print axioms ShortFamily.ns_sidon
+#check ShortFamily.nt_sidon
+#print axioms ShortFamily.nt_sidon
+#check ShortFamily.nat_cross
+#print axioms ShortFamily.nat_cross
+#check ShortFamily.cast_inj
+#print axioms ShortFamily.cast_inj
+#check ShortFamily.lifted_card
+#print axioms ShortFamily.lifted_card
+#check ShortFamily.cardS
+#print axioms ShortFamily.cardS
+#check ShortFamily.cardT
+#print axioms ShortFamily.cardT
+#check ShortFamily.lifted_sidon
+#print axioms ShortFamily.lifted_sidon
+#check ShortFamily.sidonS
+#print axioms ShortFamily.sidonS
+#check ShortFamily.sidonT
+#print axioms ShortFamily.sidonT
+#check ShortFamily.cross
+#print axioms ShortFamily.cross
+#check ShortFamily.cross_swap
+#print axioms ShortFamily.cross_swap
+#check ShortFamily.E
+#print axioms ShortFamily.E
+#check ShortFamily.HX
+#print axioms ShortFamily.HX
+#check ShortFamily.HZ
+#print axioms ShortFamily.HZ
+#check ShortFamily.linearity
+#print axioms ShortFamily.linearity
+#check ShortFamily.swapped_linearity
+#print axioms ShortFamily.swapped_linearity
+#check ShortFamily.degree
+#print axioms ShortFamily.degree
+#check ShortFamily.row_degree
+#print axioms ShortFamily.row_degree
+#check ShortFamily.real_matrix
+#print axioms ShortFamily.real_matrix
+#check ShortFamily.fourth_moment
+#print axioms ShortFamily.fourth_moment
+#check ShortFamily.source_stopping_five
+#print axioms ShortFamily.source_stopping_five
+#check ShortFamily.replacement_value
+#print axioms ShortFamily.replacement_value
+#check ShortFamily.nontrivial_code
+#print axioms ShortFamily.nontrivial_code
+#check ShortFamily.both_sector_kernel_bounds
+#print axioms ShortFamily.both_sector_kernel_bounds
+#check ShortFamily.arbitrary_lengths
+#print axioms ShortFamily.arbitrary_lengths
+#check Practical27.sidonS
+#print axioms Practical27.sidonS
+#check Practical27.sidonT
+#print axioms Practical27.sidonT
+#check Practical27.mixed_unique
+#print axioms Practical27.mixed_unique
+#check Practical27.swapped_linearity
+#print axioms Practical27.swapped_linearity
+#check Practical27.both_sector_kernel_bounds
+#print axioms Practical27.both_sector_kernel_bounds
 #check Incidence.Stopping
 #print axioms Incidence.Stopping
 #check Incidence.stopping_extension

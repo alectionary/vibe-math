@@ -1,74 +1,84 @@
-⚠ [5459/5491] Replayed PartitionBound
+⚠ [2473/2561] Replayed PartitionBound
 warning: PartitionBound.lean: imports `Mathlib.Algebra.Order.BigOperators.Group.Finset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 warning: PartitionBound.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5460/5491] Ran PartitionBound:irArts
+⚠ [2474/2561] Ran PartitionBound:irArts
 warning: PartitionBound.lean: imports `Mathlib.Algebra.Order.BigOperators.Group.Finset` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 warning: PartitionBound.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5472/5564] Replayed SpectralPlane
-warning: SpectralPlane.lean: imports `Mathlib.LinearAlgebra.Matrix.Reindex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: SpectralPlane.lean:10:0: automatically included section variable(s) unused in theorem `StoppingPlane.norm_expand`:
-  [DecidableEq C]
+⚠ [2775/3025] Replayed GramObstruction
+warning: GramObstruction.lean: imports `Mathlib.LinearAlgebra.Matrix.Circulant` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean: imports `Mathlib.Data.ZMod.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean: imports `Mathlib.Data.Fintype.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean: imports `Mathlib.Tactic.NormNum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean:14:0: automatically included section variable(s) unused in theorem `GramStopping.paired_gram`:
+  [AddCommGroup G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq C] in theorem ...
+  omit [AddCommGroup G] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SpectralPlane.lean:18:0: automatically included section variable(s) unused in theorem `StoppingPlane.energy_expand`:
-  [DecidableEq C]
+warning: GramObstruction.lean:22:0: automatically included section variable(s) unused in theorem `GramStopping.doubled_gram`:
+  [AddCommGroup G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq C] in theorem ...
+  omit [AddCommGroup G] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5473/5564] Ran SpectralPlane:irArts
-warning: SpectralPlane.lean: imports `Mathlib.LinearAlgebra.Matrix.Reindex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5474/5564] Replayed SpectralMoment
-warning: SpectralMoment.lean:7:0: automatically included section variable(s) unused in theorem `StoppingMoment.eigs_sq_trace`:
-  [DecidableEq V]
+warning: GramObstruction.lean:43:0: automatically included section variable(s) unused in theorem `GramStopping.doubled_css`:
+  [AddCommGroup G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq V] in theorem ...
+  omit [AddCommGroup G] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SpectralMoment.lean:20:76: This simp argument is unused:
-  hA
+warning: GramObstruction.lean:48:30: This simp argument is unused:
+  transpose_apply
 
 Hint: Omit it from the simp argument list.
-  [apply] simp [StoppingSpectral.eigs, Matrix.IsHermitian.eigenvalues]
+  [apply] simp only [Fintype.sum_bool]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-warning: SpectralMoment.lean:22:0: automatically included section variable(s) unused in theorem `StoppingMoment.trace_gram_sq`:
-  [DecidableEq C]
-  [DecidableEq V]
+⚠ [2776/3025] Ran GramObstruction:irArts
+warning: GramObstruction.lean: imports `Mathlib.LinearAlgebra.Matrix.Circulant` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean: imports `Mathlib.Data.ZMod.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean: imports `Mathlib.Data.Fintype.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: GramObstruction.lean: imports `Mathlib.Tactic.NormNum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2797/3025] Replayed SidonMatrices
+warning: SidonMatrices.lean: imports `Mathlib.Basic.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: SidonMatrices.lean:14:0: automatically included section variable(s) unused in theorem `SidonStopping.entry`:
+  [Fintype G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq C] [DecidableEq V] in theorem ...
+  omit [Fintype G] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SpectralMoment.lean:42:0: automatically included section variable(s) unused in theorem `StoppingMoment.gram_entry`:
-  [Fintype V]
-  [DecidableEq V]
+warning: SidonMatrices.lean:54:40: This simp argument is unused:
+  add_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [f]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SidonMatrices.lean:62:0: automatically included section variable(s) unused in theorem `SidonStopping.coefficient_sum`:
+  [AddCommGroup G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype V] [DecidableEq V] in theorem ...
+  omit [AddCommGroup G] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SpectralMoment.lean:52:0: automatically included section variable(s) unused in theorem `StoppingMoment.overlap_diag`:
-  [Fintype V]
-  [DecidableEq V]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype V] [DecidableEq V] in theorem ...
+warning: SidonMatrices.lean:63:14: This simp argument is unused:
+  ← sum_filter
 
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SpectralMoment.lean:91:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
+Hint: Omit it from the simp argument list.
+  [apply] simp [coeff]
 
-Hint: Replace the deprecated name:
-  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
-⚠ [5476/5564] Replayed MomentBound
-warning: MomentBound.lean:7:0: automatically included section variable(s) unused in theorem `StoppingMoment.row_sum`:
-  [Fintype C]
-  [DecidableEq C]
-  [DecidableEq V]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype C] [DecidableEq C] [DecidableEq V] in theorem ...
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
 
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5480/5564] Replayed BicycleBaseCore
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SidonMatrices.lean:82:92: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Fintype.sum_bool, Bool.false_eq_true, ↓reduceIte, mul_zero, mul_one, sum_const_zero, zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [2798/3025] Ran SidonMatrices:irArts
+warning: SidonMatrices.lean: imports `Mathlib.Basic.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2801/3025] Replayed BicycleBaseCore
 warning: BicycleBaseCore.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 warning: BicycleBaseCore.lean:48:49: This simp argument is unused:
   add_left_comm
@@ -77,9 +87,9 @@ Hint: Omit it from the simp argument list.
   [apply] simp [col, shiftV, shiftC, add_comm, add_assoc, sub_eq_add_neg]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [5481/5564] Ran BicycleBaseCore:irArts
+⚠ [2802/3025] Ran BicycleBaseCore:irArts
 warning: BicycleBaseCore.lean: imports `Mathlib.Tactic.Linarith` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5484/5564] Replayed BicycleFamilyCore
+⚠ [2805/3025] Replayed BicycleFamilyCore
 warning: BicycleFamilyCore.lean:91:23: Unused tactic linter: `<;>` can be replaced with `;`.
 
 Note: This linter can be disabled with `set_option linter.unusedTactic false`
@@ -272,42 +282,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 warning: BicycleFamilyCore.lean:227:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [5488/5564] Replayed GramObstruction
-warning: GramObstruction.lean: imports `Mathlib.LinearAlgebra.Matrix.Circulant` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean: imports `Mathlib.Data.ZMod.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean: imports `Mathlib.Data.Fintype.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean: imports `Mathlib.Tactic.NormNum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean:14:0: automatically included section variable(s) unused in theorem `GramStopping.paired_gram`:
-  [AddCommGroup G]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [AddCommGroup G] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: GramObstruction.lean:22:0: automatically included section variable(s) unused in theorem `GramStopping.doubled_gram`:
-  [AddCommGroup G]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [AddCommGroup G] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: GramObstruction.lean:43:0: automatically included section variable(s) unused in theorem `GramStopping.doubled_css`:
-  [AddCommGroup G]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [AddCommGroup G] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: GramObstruction.lean:48:30: This simp argument is unused:
-  transpose_apply
-
-Hint: Omit it from the simp argument list.
-  [apply] simp only [Fintype.sum_bool]
-
-Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [5489/5564] Ran GramObstruction:irArts
-warning: GramObstruction.lean: imports `Mathlib.LinearAlgebra.Matrix.Circulant` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean: imports `Mathlib.Data.ZMod.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean: imports `Mathlib.Data.Fintype.Prod` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: GramObstruction.lean: imports `Mathlib.Tactic.NormNum` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5492/5564] Replayed BicycleMatrices
+⚠ [2809/3025] Replayed BicycleMatrices
 warning: BicycleMatrices.lean: imports `Mathlib.Data.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 warning: BicycleMatrices.lean:3:0: 'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
 
@@ -319,48 +294,9 @@ Hint: Omit it from the simp argument list.
   [apply] simp [HX, GramStopping.paired, A, Matrix.circulant, coef, E, col, sub_eq_iff_eq_add, add_comm]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [5493/5564] Ran BicycleMatrices:irArts
+⚠ [2810/3025] Ran BicycleMatrices:irArts
 warning: BicycleMatrices.lean: imports `Mathlib.Data.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5498/5564] Replayed SidonMatrices
-warning: SidonMatrices.lean: imports `Mathlib.Basic.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: SidonMatrices.lean:14:0: automatically included section variable(s) unused in theorem `SidonStopping.entry`:
-  [Fintype G]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype G] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SidonMatrices.lean:54:40: This simp argument is unused:
-  add_comm
-
-Hint: Omit it from the simp argument list.
-  [apply] simp [f]
-
-Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-warning: SidonMatrices.lean:62:0: automatically included section variable(s) unused in theorem `SidonStopping.coefficient_sum`:
-  [AddCommGroup G]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [AddCommGroup G] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SidonMatrices.lean:63:14: This simp argument is unused:
-  ← sum_filter
-
-Hint: Omit it from the simp argument list.
-  [apply] simp [coeff]
-
-Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
-
-Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-warning: SidonMatrices.lean:82:92: This simp argument is unused:
-  add_zero
-
-Hint: Omit it from the simp argument list.
-  [apply] simp only [Fintype.sum_bool, Bool.false_eq_true, ↓reduceIte, mul_zero, mul_one, sum_const_zero, zero_add]
-
-Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [5499/5564] Ran SidonMatrices:irArts
-warning: SidonMatrices.lean: imports `Mathlib.Basic.Real.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5502/5564] Replayed BicycleLogical
+⚠ [2813/3025] Replayed BicycleLogical
 warning: BicycleLogical.lean: imports `Mathlib.Algebra.BigOperators.Group.Finset.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
 warning: BicycleLogical.lean:6:0: automatically included section variable(s) unused in theorem `Bicycle.Family.sixList_nodup`:
   [NeZero n]
@@ -408,9 +344,9 @@ Note: This linter can be disabled with `set_option linter.unusedTactic false`
 warning: BicycleLogical.lean:84:17: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-⚠ [5503/5564] Ran BicycleLogical:irArts
+⚠ [2814/3025] Ran BicycleLogical:irArts
 warning: BicycleLogical.lean: imports `Mathlib.Algebra.BigOperators.Group.Finset.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5508/5564] Replayed KernelStopping
+⚠ [2819/3025] Replayed KernelStopping
 warning: KernelStopping.lean:10:0: automatically included section variable(s) unused in theorem `BinaryStopping.kernel_stopping`:
   [DecidableEq V]
   [DecidableEq C]
@@ -418,7 +354,7 @@ consider restructuring your `variable` declarations so that the variables are no
   omit [DecidableEq V] [DecidableEq C] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5512/5564] Replayed JointSidon
+⚠ [2823/3025] Replayed JointSidon
 warning: JointSidon.lean:15:0: automatically included section variable(s) unused in theorem `JointSidon.entry`:
   [Fintype G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
@@ -432,7 +368,27 @@ consider restructuring your `variable` declarations so that the variables are no
   omit [AddCommGroup G] [DecidableEq G] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5514/5564] Replayed JointMatrices
+⚠ [2827/3025] Replayed PowersThree
+warning: PowersThree.lean: imports `Mathlib.Algebra.Order.GroupWithZero.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: PowersThree.lean:56:2: Try this:
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: PowersThree.lean:81:2: Try this:
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [2828/3025] Ran PowersThree:irArts
+warning: PowersThree.lean: imports `Mathlib.Algebra.Order.GroupWithZero.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [2831/3025] Replayed JointMatrices
 warning: JointMatrices.lean:5:0: automatically included section variable(s) unused in theorem `JointSidon.coeff_sum`:
   [AddCommGroup G]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
@@ -455,106 +411,71 @@ Hint: Omit it from the simp argument list.
   [apply] simp only [Fintype.sum_bool, Bool.false_eq_true, ↓reduceIte, mul_zero, mul_one, sum_const_zero, zero_add]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [5516/5564] Replayed PowersThree
-warning: PowersThree.lean: imports `Mathlib.Algebra.Order.GroupWithZero.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-warning: PowersThree.lean:56:2: Try this:
-  letI̵
-
-The goal is a proposition, so `let` is preferred over `letI`.
-The difference between `let` and `letI` is that `letI` inlines the value.
-But this is not relevant for proofs because of proof irrelevance.
-
-Note: This linter can be disabled with `set_option linter.style.haveILetI false`
-warning: PowersThree.lean:81:2: Try this:
-  letI̵
-
-The goal is a proposition, so `let` is preferred over `letI`.
-The difference between `let` and `letI` is that `letI` inlines the value.
-But this is not relevant for proofs because of proof irrelevance.
-
-Note: This linter can be disabled with `set_option linter.style.haveILetI false`
-⚠ [5517/5564] Ran PowersThree:irArts
-warning: PowersThree.lean: imports `Mathlib.Algebra.Order.GroupWithZero.Basic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
-⚠ [5524/5564] Replayed PowersFamily
-warning: PowersFamily.lean:37:2: `simp` already closes the goal
-
-Hint: Use `simp` instead of `simpa`:
-  [apply] simp
-
-Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [5528/5564] Replayed SidonBad
-warning: SidonBad.lean:10:0: automatically included section variable(s) unused in theorem `SidonStopping.twin_card`:
-  [Fintype G]
+⚠ [5518/5578] Replayed SpectralPlane
+warning: SpectralPlane.lean: imports `Mathlib.LinearAlgebra.Matrix.Reindex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+warning: SpectralPlane.lean:10:0: automatically included section variable(s) unused in theorem `StoppingPlane.norm_expand`:
+  [DecidableEq C]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype G] in theorem ...
+  omit [DecidableEq C] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SidonBad.lean:32:0: automatically included section variable(s) unused in theorem `SidonStopping.bad_lower_two`:
-  [Fintype G]
+warning: SpectralPlane.lean:18:0: automatically included section variable(s) unused in theorem `StoppingPlane.energy_expand`:
+  [DecidableEq C]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype G] in theorem ...
+  omit [DecidableEq C] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: SidonBad.lean:39:0: automatically included section variable(s) unused in theorem `SidonStopping.bad_entry`:
-  [Fintype G]
+⚠ [5519/5578] Ran SpectralPlane:irArts
+warning: SpectralPlane.lean: imports `Mathlib.LinearAlgebra.Matrix.Reindex` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [5520/5578] Replayed SpectralMoment
+warning: SpectralMoment.lean:7:0: automatically included section variable(s) unused in theorem `StoppingMoment.eigs_sq_trace`:
+  [DecidableEq V]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype G] in theorem ...
+  omit [DecidableEq V] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5532/5564] Replayed BothGram
-warning: BothGram.lean:7:0: automatically included section variable(s) unused in theorem `SidonStopping.badZReal_entry`:
-  [Fintype G]
+warning: SpectralMoment.lean:20:76: This simp argument is unused:
+  hA
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [StoppingSpectral.eigs, Matrix.IsHermitian.eigenvalues]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SpectralMoment.lean:22:0: automatically included section variable(s) unused in theorem `StoppingMoment.trace_gram_sq`:
+  [DecidableEq C]
+  [DecidableEq V]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype G] in theorem ...
+  omit [DecidableEq C] [DecidableEq V] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: BothGram.lean:9:0: automatically included section variable(s) unused in theorem `SidonStopping.badZBinary_entry`:
-  [Fintype G]
+warning: SpectralMoment.lean:42:0: automatically included section variable(s) unused in theorem `StoppingMoment.gram_entry`:
+  [Fintype V]
+  [DecidableEq V]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype G] in theorem ...
+  omit [Fintype V] [DecidableEq V] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5536/5564] Replayed FiberSums
-warning: FiberSums.lean:17:0: automatically included section variable(s) unused in theorem `StoppingFiber.pullback_sum`:
-  [DecidableEq G]
+warning: SpectralMoment.lean:52:0: automatically included section variable(s) unused in theorem `StoppingMoment.overlap_diag`:
+  [Fintype V]
+  [DecidableEq V]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq G] in theorem ...
+  omit [Fintype V] [DecidableEq V] in theorem ...
 
 Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: FiberSums.lean:26:0: automatically included section variable(s) unused in theorem `StoppingFiber.kernel_card_pos`:
-  [Fintype K]
-  [DecidableEq G]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [Fintype K] [DecidableEq G] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-⚠ [5538/5564] Replayed BicycleCoverEnergy
-warning: BicycleCoverEnergy.lean:7:0: automatically included section variable(s) unused in theorem `Bicycle.CoverEnergy.q_surj`:
-  [NeZero n]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [NeZero n] in theorem ...
-
-Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
-warning: BicycleCoverEnergy.lean:28:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
-
-Hint: Replace the deprecated name:
-  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
-warning: BicycleCoverEnergy.lean:28:46: `if_pos` has been deprecated: Use `ite_eq_left` instead
-
-Hint: Replace the deprecated name:
-  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
-warning: BicycleCoverEnergy.lean:30:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: SpectralMoment.lean:91:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
 
 Hint: Replace the deprecated name:
   i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
-warning: BicycleCoverEnergy.lean:30:47: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [5522/5578] Replayed MomentBound
+warning: MomentBound.lean:7:0: automatically included section variable(s) unused in theorem `StoppingMoment.row_sum`:
+  [Fintype C]
+  [DecidableEq C]
+  [DecidableEq V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] [DecidableEq C] [DecidableEq V] in theorem ...
 
-Hint: Replace the deprecated name:
-  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
-✔ [5552/5564] Built BadDegrees (90s)
-✔ [5554/5564] Built MomentReplacement (136s)
-✔ [5556/5564] Built SourceConsumers (136s)
-⚠ [5558/5564] Built MomentExcess (136s)
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [5538/5578] Replayed MomentExcess
 warning: MomentExcess.lean:13:0: automatically included section variable(s) unused in theorem `StoppingMoment.pair_nonneg`:
   [Fintype V]
 consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
@@ -586,10 +507,86 @@ warning: MomentExcess.lean:63:25: `if_neg` has been deprecated: Use `ite_eq_righ
 
 Hint: Replace the deprecated name:
   i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
-⚠ [5560/5564] Built GlobalMomentFamily (125s)
+⚠ [5542/5578] Replayed GlobalMomentFamily
 warning: GlobalMomentFamily.lean:17:6: `if_pos` has been deprecated: Use `ite_eq_left` instead
 
 Hint: Replace the deprecated name:
   i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
-✔ [5562/5564] Built StrongerAnswer (159s)
-Build completed successfully (5564 jobs).
+⚠ [5544/5578] Replayed PowersFamily
+warning: PowersFamily.lean:37:2: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [5550/5578] Replayed SidonBad
+warning: SidonBad.lean:10:0: automatically included section variable(s) unused in theorem `SidonStopping.twin_card`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SidonBad.lean:32:0: automatically included section variable(s) unused in theorem `SidonStopping.bad_lower_two`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SidonBad.lean:39:0: automatically included section variable(s) unused in theorem `SidonStopping.bad_entry`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [5554/5578] Replayed BothGram
+warning: BothGram.lean:7:0: automatically included section variable(s) unused in theorem `SidonStopping.badZReal_entry`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: BothGram.lean:9:0: automatically included section variable(s) unused in theorem `SidonStopping.badZBinary_entry`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [5560/5578] Replayed FiberSums
+warning: FiberSums.lean:17:0: automatically included section variable(s) unused in theorem `StoppingFiber.pullback_sum`:
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: FiberSums.lean:26:0: automatically included section variable(s) unused in theorem `StoppingFiber.kernel_card_pos`:
+  [Fintype K]
+  [DecidableEq G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype K] [DecidableEq G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [5562/5578] Replayed BicycleCoverEnergy
+warning: BicycleCoverEnergy.lean:7:0: automatically included section variable(s) unused in theorem `Bicycle.CoverEnergy.q_surj`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: BicycleCoverEnergy.lean:28:28: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: BicycleCoverEnergy.lean:28:46: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: BicycleCoverEnergy.lean:30:28: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: BicycleCoverEnergy.lean:30:47: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+✔ [5576/5578] Built StrongerAnswer (39s)
+Build completed successfully (5578 jobs).

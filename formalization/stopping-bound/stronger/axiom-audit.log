@@ -1069,6 +1069,211 @@ SidonStopping.bad_z_column_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup
 SidonStopping.bad_z_row_weight.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S : Finset G)
   (c : G) : {v | SidonStopping.BadZ S c v = 1}.card = 2 * S.card
 'SidonStopping.bad_z_row_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.G : Type
+'Practical27.G' does not depend on any axioms
+Practical27.V : Type
+'Practical27.V' does not depend on any axioms
+Practical27.S : Finset Practical27.G
+'Practical27.S' depends on axioms: [propext, Quot.sound]
+Practical27.T : Finset Practical27.G
+'Practical27.T' depends on axioms: [propext, Quot.sound]
+Practical27.E (v : Bool × Practical27.G) (c : Practical27.G) : Prop
+'Practical27.E' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.HX.{u_1} (R : Type u_1) [Zero R] [One R] : Matrix Practical27.G Practical27.V R
+'Practical27.HX' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.HZ : Matrix Practical27.G Practical27.V (ZMod 2)
+'Practical27.HZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.cardS : Practical27.S.card = 4
+'Practical27.cardS' depends on axioms: [propext, Quot.sound]
+Practical27.cardT : Practical27.T.card = 4
+'Practical27.cardT' depends on axioms: [propext, Quot.sound]
+Practical27.linearity (v w : Practical27.V) : v ≠ w → PartitionStopping.overlap Practical27.E v w ≤ 1
+'Practical27.linearity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.degree (v : Practical27.V) : (PartitionStopping.neighbors Practical27.E v).card = 4
+'Practical27.degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.row_degree (c : Practical27.G) : StoppingMoment.rowWeight Practical27.E c = 8
+'Practical27.row_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.real_matrix : StoppingMoment.H Practical27.E = Practical27.HX ℝ
+'Practical27.real_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.fourth_moment : ∑ i, StoppingSpectral.eigs (Practical27.HX ℝ) i ^ 2 = 2376
+'Practical27.fourth_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.source_stopping_five (U : Finset Practical27.V)
+  (hU : Incidence.Stopping (fun v c => Practical27.HX (ZMod 2) c v = 1) U) : 5 ≤ U.card
+'Practical27.source_stopping_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.replacement_value :
+  StoppingMoment.regularReplacement 27 54 4 8 (∑ i, StoppingSpectral.eigs (Practical27.HX ℝ) i ^ 2) = 5
+'Practical27.replacement_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.nontrivial_code :
+  Practical27.HX (ZMod 2) * Practical27.HZ.transpose = 0 ∧
+    (Practical27.HX (ZMod 2)).mulVec SidonStopping.leftOnes = 0 ∧
+      ¬∃ a, Practical27.HZ.transpose.mulVec a = SidonStopping.leftOnes
+'Practical27.nontrivial_code' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.C : Type
+'Practical27.Spectral.C' does not depend on any axioms
+Practical27.Spectral.V : Type
+'Practical27.Spectral.V' does not depend on any axioms
+Practical27.Spectral.HInt : Matrix Practical27.Spectral.C Practical27.Spectral.V ℤ
+'Practical27.Spectral.HInt' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.HR : Matrix Practical27.Spectral.C Practical27.Spectral.V ℝ
+'Practical27.Spectral.HR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.uZ (c : Practical27.Spectral.C) : ℤ
+'Practical27.Spectral.uZ' depends on axioms: [propext, Quot.sound]
+Practical27.Spectral.vZ (c : Practical27.Spectral.C) : ℤ
+'Practical27.Spectral.vZ' depends on axioms: [propext, Quot.sound]
+Practical27.Spectral.normZ (x : Practical27.Spectral.C → ℤ) : ℤ
+'Practical27.Spectral.normZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.dotZ (x y : Practical27.Spectral.C → ℤ) : ℤ
+'Practical27.Spectral.dotZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.enZ (x : Practical27.Spectral.C → ℤ) : ℤ
+'Practical27.Spectral.enZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.crossZ (x y : Practical27.Spectral.C → ℤ) : ℤ
+'Practical27.Spectral.crossZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.norm_u : Practical27.Spectral.normZ Practical27.Spectral.uZ = 4
+'Practical27.Spectral.norm_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.norm_v : Practical27.Spectral.normZ Practical27.Spectral.vZ = 4
+'Practical27.Spectral.norm_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.dot_uv : Practical27.Spectral.dotZ Practical27.Spectral.uZ Practical27.Spectral.vZ = 0
+'Practical27.Spectral.dot_uv' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.energy_u : Practical27.Spectral.enZ Practical27.Spectral.uZ = 34
+'Practical27.Spectral.energy_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.energy_v : Practical27.Spectral.enZ Practical27.Spectral.vZ = 34
+'Practical27.Spectral.energy_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.cross_uv : Practical27.Spectral.crossZ Practical27.Spectral.uZ Practical27.Spectral.vZ = 0
+'Practical27.Spectral.cross_uv' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.uR (c : Practical27.Spectral.C) : ℝ
+'Practical27.Spectral.uR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.vR (c : Practical27.Spectral.C) : ℝ
+'Practical27.Spectral.vR' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.matrix_cast (c : Practical27.Spectral.C) (v : Practical27.Spectral.V) :
+  Practical27.Spectral.HR c v = ↑(Practical27.Spectral.HInt c v)
+'Practical27.Spectral.matrix_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.norm_cast (x : Practical27.Spectral.C → ℤ) :
+  (StoppingSpectral.normSq fun c => ↑(x c)) = ↑(Practical27.Spectral.normZ x)
+'Practical27.Spectral.norm_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.dot_cast (x y : Practical27.Spectral.C → ℤ) :
+  (StoppingPlane.innerForm (fun c => ↑(x c)) fun c => ↑(y c)) = ↑(Practical27.Spectral.dotZ x y)
+'Practical27.Spectral.dot_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.energy_cast (x : Practical27.Spectral.C → ℤ) :
+  (StoppingSpectral.energy Practical27.Spectral.HR fun c => ↑(x c)) = ↑(Practical27.Spectral.enZ x)
+'Practical27.Spectral.energy_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.cross_cast (x y : Practical27.Spectral.C → ℤ) :
+  (StoppingPlane.gramForm Practical27.Spectral.HR (fun c => ↑(x c)) fun c => ↑(y c)) =
+    ↑(Practical27.Spectral.crossZ x y)
+'Practical27.Spectral.cross_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.second_lower : 17 / 2 ≤ StoppingSpectral.eigs Practical27.Spectral.HR ⟨1, ⋯⟩
+'Practical27.Spectral.second_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.Spectral.zhu_chugg_comparison (hgap : StoppingSpectral.eigs Practical27.Spectral.HR ⟨1, ⋯⟩ < 32) :
+  have s := StoppingSpectral.eigs Practical27.Spectral.HR ⟨1, ⋯⟩;
+  54 * (8 - s) / (32 - s) < 0 ∧ 108 * (14 - s) / (8 * (32 - s)) ≤ 297 / 94 ∧ 297 / 94 < 4
+'Practical27.Spectral.zhu_chugg_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.CrossUnique.{u_1} {G : Type u_1} [AddCommGroup G] (S T : Finset G) : Prop
+'JointSidon.CrossUnique' depends on axioms: [propext, Classical.choice, Quot.sound]
+JointSidon.separate_overlap_one.{u_1} {G : Type u_1} [Fintype G] [AddCommGroup G] [DecidableEq G] (S T : Finset G)
+  (hS : SidonStopping.IsSidon S) (hT : SidonStopping.IsSidon T) (hcross : JointSidon.CrossUnique S T) (v w : Bool × G)
+  (hne : v ≠ w) : PartitionStopping.overlap (JointSidon.E S T) v w ≤ 1
+'JointSidon.separate_overlap_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.NS : Finset ℕ
+'ShortFamily.NS' depends on axioms: [propext, Quot.sound]
+ShortFamily.NT : Finset ℕ
+'ShortFamily.NT' depends on axioms: [propext, Quot.sound]
+ShortFamily.S (n : ℕ) : Finset (ZMod n)
+'ShortFamily.S' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.T (n : ℕ) : Finset (ZMod n)
+'ShortFamily.T' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.ns_bound (a : ℕ) : a ∈ ShortFamily.NS → a ≤ 18
+'ShortFamily.ns_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.nt_bound (a : ℕ) : a ∈ ShortFamily.NT → a ≤ 18
+'ShortFamily.nt_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.ns_card : ShortFamily.NS.card = 4
+'ShortFamily.ns_card' depends on axioms: [propext, Quot.sound]
+ShortFamily.nt_card : ShortFamily.NT.card = 4
+'ShortFamily.nt_card' depends on axioms: [propext, Quot.sound]
+ShortFamily.ns_sidon (a : ℕ) :
+  a ∈ ShortFamily.NS →
+    ∀ b ∈ ShortFamily.NS, ∀ c ∈ ShortFamily.NS, ∀ d ∈ ShortFamily.NS, a + b = c + d → a = c ∧ b = d ∨ a = d ∧ b = c
+'ShortFamily.ns_sidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.nt_sidon (a : ℕ) :
+  a ∈ ShortFamily.NT →
+    ∀ b ∈ ShortFamily.NT, ∀ c ∈ ShortFamily.NT, ∀ d ∈ ShortFamily.NT, a + b = c + d → a = c ∧ b = d ∨ a = d ∧ b = c
+'ShortFamily.nt_sidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.nat_cross (a : ℕ) :
+  a ∈ ShortFamily.NS → ∀ b ∈ ShortFamily.NT, ∀ c ∈ ShortFamily.NS, ∀ d ∈ ShortFamily.NT, a + b = c + d → a = c ∧ b = d
+'ShortFamily.nat_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.cast_inj (n a b : ℕ) (hn : 37 ≤ n) (ha : a ≤ 18) (hb : b ≤ 18) (he : ↑a = ↑b) : a = b
+'ShortFamily.cast_inj' depends on axioms: [propext, Quot.sound]
+ShortFamily.lifted_card (U : Finset ℕ) (hU : ∀ a ∈ U, a ≤ 18) (n : ℕ) (hn : 37 ≤ n) :
+  (Finset.image (fun a => ↑a) U).card = U.card
+'ShortFamily.lifted_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.cardS (n : ℕ) (hn : 37 ≤ n) : (ShortFamily.S n).card = 4
+'ShortFamily.cardS' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.cardT (n : ℕ) (hn : 37 ≤ n) : (ShortFamily.T n).card = 4
+'ShortFamily.cardT' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.lifted_sidon (U : Finset ℕ) (hU : ∀ a ∈ U, a ≤ 18)
+  (hs : ∀ a ∈ U, ∀ b ∈ U, ∀ c ∈ U, ∀ d ∈ U, a + b = c + d → a = c ∧ b = d ∨ a = d ∧ b = c) (n : ℕ) (hn : 37 ≤ n) :
+  SidonStopping.IsSidon (Finset.image (fun a => ↑a) U)
+'ShortFamily.lifted_sidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.sidonS (n : ℕ) (hn : 37 ≤ n) : SidonStopping.IsSidon (ShortFamily.S n)
+'ShortFamily.sidonS' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.sidonT (n : ℕ) (hn : 37 ≤ n) : SidonStopping.IsSidon (ShortFamily.T n)
+'ShortFamily.sidonT' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.cross (n : ℕ) (hn : 37 ≤ n) : JointSidon.CrossUnique (ShortFamily.S n) (ShortFamily.T n)
+'ShortFamily.cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.cross_swap (n : ℕ) (hn : 37 ≤ n) : JointSidon.CrossUnique (ShortFamily.T n) (ShortFamily.S n)
+'ShortFamily.cross_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.E {n : ℕ} (v : Bool × ZMod n) (c : ZMod n) : Prop
+'ShortFamily.E' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.HX.{u_1} {n : ℕ} (R : Type u_1) [Zero R] [One R] : Matrix (ZMod n) (Bool × ZMod n) R
+'ShortFamily.HX' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.HZ {n : ℕ} : Matrix (ZMod n) (Bool × ZMod n) (ZMod 2)
+'ShortFamily.HZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.linearity {n : ℕ} [NeZero n] (hn : 37 ≤ n) (v w : Bool × ZMod n) :
+  v ≠ w → PartitionStopping.overlap ShortFamily.E v w ≤ 1
+'ShortFamily.linearity' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.swapped_linearity {n : ℕ} [NeZero n] (hn : 37 ≤ n) (v w : Bool × ZMod n) :
+  v ≠ w → PartitionStopping.overlap (JointSidon.E (ShortFamily.T n) (ShortFamily.S n)) v w ≤ 1
+'ShortFamily.swapped_linearity' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.degree {n : ℕ} [NeZero n] (hn : 37 ≤ n) (v : Bool × ZMod n) :
+  (PartitionStopping.neighbors ShortFamily.E v).card = 4
+'ShortFamily.degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.row_degree {n : ℕ} [NeZero n] (hn : 37 ≤ n) (c : ZMod n) : StoppingMoment.rowWeight ShortFamily.E c = 8
+'ShortFamily.row_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.real_matrix {n : ℕ} [NeZero n] : StoppingMoment.H ShortFamily.E = ShortFamily.HX ℝ
+'ShortFamily.real_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.fourth_moment {n : ℕ} [NeZero n] (hn : 37 ≤ n) :
+  ∑ i, StoppingSpectral.eigs (ShortFamily.HX ℝ) i ^ 2 = 88 * ↑n
+'ShortFamily.fourth_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.source_stopping_five {n : ℕ} [NeZero n] (hn : 37 ≤ n) (U : Finset (Bool × ZMod n))
+  (hU : Incidence.Stopping (fun v c => ShortFamily.HX (ZMod 2) c v = 1) U) : 5 ≤ U.card
+'ShortFamily.source_stopping_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.replacement_value {n : ℕ} [NeZero n] (hn : 37 ≤ n) :
+  StoppingMoment.regularReplacement n (2 * n) 4 8 (∑ i, StoppingSpectral.eigs (ShortFamily.HX ℝ) i ^ 2) = 5
+'ShortFamily.replacement_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.nontrivial_code {n : ℕ} [NeZero n] (hn : 37 ≤ n) (ho : Odd n) :
+  ShortFamily.HX (ZMod 2) * ShortFamily.HZ.transpose = 0 ∧
+    (ShortFamily.HX (ZMod 2)).mulVec SidonStopping.leftOnes = 0 ∧
+      ¬∃ a, ShortFamily.HZ.transpose.mulVec a = SidonStopping.leftOnes
+'ShortFamily.nontrivial_code' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.both_sector_kernel_bounds {n : ℕ} [NeZero n] (hn : 37 ≤ n) :
+  (∀ (x : Bool × ZMod n → ZMod 2),
+      x ≠ 0 → (ShortFamily.HX (ZMod 2)).mulVec x = 0 → 5 ≤ (BinaryStopping.support x).card) ∧
+    ∀ (x : Bool × ZMod n → ZMod 2), x ≠ 0 → ShortFamily.HZ.mulVec x = 0 → 5 ≤ (BinaryStopping.support x).card
+'ShortFamily.both_sector_kernel_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+ShortFamily.arbitrary_lengths (B : ℕ) : ∃ n, 0 < n ∧ Odd n ∧ 37 ≤ n ∧ B < 2 * n
+'ShortFamily.arbitrary_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.sidonS : SidonStopping.IsSidon Practical27.S
+'Practical27.sidonS' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.sidonT : SidonStopping.IsSidon Practical27.T
+'Practical27.sidonT' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.mixed_unique : JointSidon.CrossUnique Practical27.S Practical27.T
+'Practical27.mixed_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.swapped_linearity (v w : Practical27.V) :
+  v ≠ w → PartitionStopping.overlap (JointSidon.E Practical27.T Practical27.S) v w ≤ 1
+'Practical27.swapped_linearity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Practical27.both_sector_kernel_bounds :
+  (∀ (x : Practical27.V → ZMod 2),
+      x ≠ 0 → (Practical27.HX (ZMod 2)).mulVec x = 0 → 5 ≤ (BinaryStopping.support x).card) ∧
+    ∀ (x : Practical27.V → ZMod 2), x ≠ 0 → Practical27.HZ.mulVec x = 0 → 5 ≤ (BinaryStopping.support x).card
+'Practical27.both_sector_kernel_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
 Incidence.Stopping.{u_1, u_2} {V : Type u_1} {C : Type u_2} (E : V → C → Prop) [DecidableRel E] (T : Finset V) : Prop
 'Incidence.Stopping' depends on axioms: [propext, Classical.choice, Quot.sound]
 Incidence.stopping_extension.{u_1, u_2} {V : Type u_1} {C : Type u_2} [DecidableEq V] [DecidableEq C] (E : V → C → Prop)
