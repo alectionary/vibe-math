@@ -2,9 +2,9 @@
 
 Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **290 canonical entries**: the original 40 dissertation targets and **250 additional article entries**. Of the additions, **105 are specific mathematical questions or tasks suitable for coverage tracking**; the other 145 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **295 canonical entries**: the original 40 dissertation targets and **255 additional article entries**. Of the additions, **105 are specific mathematical questions or tasks suitable for coverage tracking**; the other 150 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [81 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/144 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [85 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/144 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 105 |
-| Additional directions/formulation/method entries outside the denominator | 145 |
+| Additional directions/formulation/method entries outside the denominator | 150 |
 | Combined eligible targets | 144 = 39 + 105 |
 | Eligible targets with an identified, verified proof-assistant statement | 5/144 (3.47%) |
 | Eligible targets with an identified, verified Lean statement | 5/144 (3.47%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/144 |
 | Additional identified Lean statements without a build audit | 1/144 |
 | Eligible targets with Lean discovery still unassessed in this extension | 36/144 |
-| Articles/preprints in scope | 115 |
-| Full-text sources screened, including withdrawn history | 102/115 |
-| Current-publication full texts screened | 101 |
+| Articles/preprints in scope | 119 |
+| Full-text sources screened, including withdrawn history | 106/119 |
+| Current-publication full texts screened | 105 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 13/115 |
+| Not fully assessed | 13/119 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -166,6 +166,10 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F79](https://doi.org/10.1038/s41534-026-01212-3) | full text screened | 2 | Article-in-press main PDF; accepted23February2026; published13March2026; version-of-record29April2026 metadata; first preprint20November2024; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
 | [F80](https://ece.iisc.ac.in/~nkashyap/Papers/stopsets.pdf) | full text screened | 1 | Author manuscript reports original compositionSeptember2003 and ISIT2003 presentation; inspected undated revised web PDF; full accessible main text screened, including later same-paper answers; named supplementary/version gaps retained in dedicated ledger. |
 | [F81](https://arxiv.org/abs/cs/0606051v2) | full text screened | 3 | arXiv:cs/0606051v2,11November2006; first submission12June2006; downloaded PDF internal title-page date6May2019 is distinguished from the arXiv version stamp, not assumed a new public version; all17pages screened, including proof, examples and conclusion. |
+| [F82](https://arxiv.org/abs/2205.00563v1) | full text screened | 4 | arXiv:2205.00563v1,2022-05-01; full-document target screen across introductions, definitions, unknown cases, conclusions, appendix and candidate-context passages; not a verification of every theorem. |
+| [F83](https://arxiv.org/abs/1008.1615v1) | full text screened | 1 | arXiv:1008.1615v1,2010-08-10; full-document target screen across introductions, definitions, unknown cases, conclusions, appendix and candidate-context passages; not a verification of every theorem. |
+| [F84](https://arxiv.org/abs/1405.3775v1) | full text screened | 0 | arXiv:1405.3775v1,2014-05-15; internal PDF title-page date2022-03-28 separately recorded; full-document target screen across introductions, definitions, unknown cases, conclusions, appendix and candidate-context passages; not a verification of every theorem. |
+| [F85](https://arxiv.org/abs/1709.00825v1) | full text screened | 0 | arXiv:1709.00825v1,4September2017; internal running draft date18November2018 distinguished from the version stamp;33-page full-document target screen |
 
 ## Reproducible evidence and limits
 
@@ -3461,4 +3465,59 @@ For the binary Type-II tree construction with l=4 of Sridhara-Kelley-Rosenthal, 
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in inspected source; current resolution: not independently established.
 - [F81: Example4(ii),PDFp8](https://arxiv.org/abs/cs/0606051v2); extraction lines 293–343; explicit question or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F82-higher-column-DM
+
+Determine existence of higher-column difference matrices DM(k;a) for admissible orders beyond the treated k=3 case.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad parameter/existence/optimization direction; outside the precise coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F82: Section3,p9](https://arxiv.org/abs/2205.00563v1); PDF pages 9; explicit broad problem or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F82-general-DCA
+
+Develop the general-k theory and constructions of difference covering arrays beyond the treated three-column case.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad parameter/existence/optimization direction; outside the precise coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F82: Section3,p12](https://arxiv.org/abs/2205.00563v1); PDF pages 12; explicit broad problem or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F82-improved-minimum-distance
+
+Improve the proposed difference-matrix LDPC constructions to obtain higher minimum distance.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad parameter/existence/optimization direction; outside the precise coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F82: Section5.1,p23](https://arxiv.org/abs/2205.00563v1); PDF pages 23; explicit broad problem or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F82-larger-stopping-sets
+
+Investigate larger stopping sets by discarding selected rows of the underlying DM or DCA, as in Construction2.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad parameter/existence/optimization direction; outside the precise coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F82: Section5.2,p23](https://arxiv.org/abs/2205.00563v1); PDF pages 23; explicit broad problem or direction.
+- Related, not merged: L-F16-stopping-bound.
+
+### L-F83-optimal-index
+
+Determine or construct the optimal index rho(n,m) for partitioned cyclic difference packings with prescribed n and m.
+
+- Type: research direction; written formulation: broad direction.
+- Coverage denominator: excluded. Broad parameter/existence/optimization direction; outside the precise coverage denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F83: SectionII,p2](https://arxiv.org/abs/1008.1615v1); PDF pages 2; explicit broad problem or direction.
 - Related, not merged: L-F16-stopping-bound.

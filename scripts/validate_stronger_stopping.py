@@ -83,7 +83,20 @@ assert x['full_text_screens_added']==len(x['papers'])==1
 for i in x['added_target_ids']:
  assert by[i]['current_resolution_status']=='not_independently_established'
  assert by[i]['lean_proof_status']=='not_assessed_in_this_extension'
-assert {'F81','F38'}<={src['id']for src in c['chronology']}
+assert {'F81','F38','F82','F83','F84','F85'}<={src['id']for src in c['chronology']}
+post=load(D/'postlemma-stopping-source-screening.json');assert load(A/'postlemma-source-screening.json')==post
+assert post['added_entries']==len(post['added_target_ids'])==5 and post['added_eligible_targets']==0
+assert post['full_text_screens_added']==len(post['papers'])==4
+for p in post['papers']:
+ assert p['target_count']==len(p['recorded_target_ids'])
+ assert p['target_count']>0 or p['outcome']=='no_additional_explicit_question_identified'
+ for path,key in [('source_local_file','source_sha256'),('extracted_text_file','extracted_text_sha256')]:
+  if(R/p[path]).exists():assert sha(R/p[path])==p[key]
+for i in post['added_target_ids']:
+ assert not by[i]['eligible_for_coverage']
+ assert by[i]['current_resolution_status']=='not_independently_established'
+assert {'ShortFamily.source_stopping_five','ShortFamily.fourth_moment','ShortFamily.both_sector_kernel_bounds','ShortFamily.nontrivial_code','Practical27.source_stopping_five','Practical27.Spectral.zhu_chugg_comparison'}<=set(names)
+assert load(A/'short-family-crosscheck.json')['status']=='passed'
 for name in ['phase2-crosscheck.json','joint-crosscheck.json']:assert load(A/name)['status']=='passed'
 assert sum(r['eligible_for_coverage']and r['lean_proof_status']=='verified_complete_lean_proof'for r in rows)==5
 cc=load(A/'crosscheck.json');assert cc['status']=='passed'and len(cc['families'])==8
@@ -91,4 +104,4 @@ assert all(r['gram_equal']and r['css']and r['bad_css']and r['six_stopping']and r
 if(A/'stronger-stopping-source.zip').exists():
  z=A/'stronger-stopping-source.zip';assert sha(z)in(A/'SHA256SUMS').read_text()
  with zipfile.ZipFile(z)as f:assert f.testzip()is None
-print('PASS: positive fourth-moment/constructed spectral and incidence families; exact6; unbounded restricted Gram gap; complete named audit/full current+immutable Lean URLs; chronology;23/9/5 cumulative inventory delta; original negative parameter answer retained.')
+print('PASS: positive fourth-moment/constructed spectral and incidence families; exact6; unbounded restricted Gram gap; complete named audit/full current+immutable Lean URLs; chronology;28/9/9 cumulative inventory delta; original negative parameter answer retained.')

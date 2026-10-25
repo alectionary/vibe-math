@@ -33,6 +33,7 @@ This manuscript uses24October2026 inAmerica/Los_Angeles as its dated revision. U
 |[Lcrypto/Stopping-sets-enumerator](https://github.com/Lcrypto/Stopping-sets-enumerator/commit/1be33f2ef3b751a61f3a38a13e035889570e1ec0)|inspected commit|2023-10-29 / day|1091|
 |[leanprover-community/mathlib4](https://github.com/leanprover-community/mathlib4/commit/5f7b4198d22a9c82e1c698a379334fe128095c82)|inspected commit|2026-10-21 / day|3|
 |[X-source-announcement](https://x.com/mathCObot/status/2077625188309491976)|post UTC date|2026-07-16 / day|100|
+|[X-source-announcement](https://x.com/mathCObot/status/2077625188309491976)|authenticated browser local displayed post date|2026-07-15 / day|101|
 |[X-earlier-result](https://x.com/A_Lectionary/status/2114074628184498566)|post UTC date|2026-10-24 / day|0|
 |[other-code-snapshots](https://github.com/alectionary/vibe-math/blob/532ac30c8278a2102f35fb1121ede41037b7734d/formalization/stopping-bound/prior-art.json)|recorded inspection|2026-10-24 / day|0|
 |[Lean-runtime](https://github.com/leanprover/lean4/releases/tag/v4.36.0-rc1)|recorded use|2026-10-24 / day|0|
@@ -57,7 +58,7 @@ This manuscript uses24October2026 inAmerica/Los_Angeles as its dated revision. U
 |[gideonlsx/bicycle-race](https://github.com/gideonlsx/bicycle-race/commit/aed705a42733bba1676fe1faf26d4bf311f31d88)|inspected commit|2026-10-11 / day|13|
 |[kywukuo/qLDPC_dec](https://github.com/kywukuo/qLDPC_dec/commit/402a83e8afd0df5203693aeeed1e42f1900e344d)|inspected commit|2026-01-26 / day|271|
 |[prior-proof-checkpoint](https://github.com/alectionary/vibe-math/commit/b7628643bb256bf9c1a319f16f6e19608116cff6)|immutable proof-source commit|2026-10-24 / day|0|
-|[new-proof-checkpoint](https://github.com/alectionary/vibe-math/commit/ad6b34fae9943383851de1bf010650fd8bd42af5)|new research and proof-source checkpoint|2026-10-24 / day|0|
+|[new-proof-checkpoint](https://github.com/alectionary/vibe-math/commit/bed7719cb3cac4118e4f333690db364566ede03e)|new research and proof-source checkpoint|2026-10-24 / day|0|
 |[held-lead-1](https://arxiv.org/abs/2508.09082)|inspection only|2026-10-24 / day|0|
 |[held-lead-2](https://inspirehep.net/literature/3197325)|inspection only|2026-10-24 / day|0|
 |[held-lead-3](https://arxiv.org/abs/2609.39395)|inspection only|2026-10-24 / day|0|
@@ -66,5 +67,19 @@ This manuscript uses24October2026 inAmerica/Los_Angeles as its dated revision. U
 |[held-lead-6](https://arxiv.org/abs/1304.7402v1)|inspection only|2026-10-24 / day|0|
 |[held-lead-7](https://arxiv.org/abs/0704.2258)|inspection only|2026-10-24 / day|0|
 |[held-lead-8](https://www.researchgate.net/publication/396550633)|inspection only|2026-10-24 / day|0|
+|[F82](https://arxiv.org/abs/2205.00563v1)|first and inspectedv1|2022-05-01 / day|1637|
+|[F82](https://arxiv.org/abs/2205.00563v1)|journal publication year metadata|2023 / year|1028-1392|
+|[F83](https://arxiv.org/abs/1008.1615v1)|first and inspectedv1|2010-08-10 / day|5919|
+|[F83](https://arxiv.org/abs/1008.1615v1)|journal issue metadata|2010-11 / month|5807-5836|
+|[F84](https://arxiv.org/abs/1405.3775v1)|first and inspectedv1|2014-05-15 / day|4545|
+|[F84](https://arxiv.org/abs/1405.3775v1)|internal PDF title-page date|2022-03-28 / day|1671|
+|[F85](https://arxiv.org/abs/1709.00825v1)|first and inspectedv1|2017-09-04 / day|3337|
+|[F85](https://arxiv.org/abs/1709.00825v1)|internal PDF running draft date|2018-11-18 / day|2897|
+|[postlemma-held-1](https://www.mdpi.com/1099-4300/28/10/1106)|inspection only|2026-10-24 / day|0|
+|[postlemma-held-2](https://www.mdpi.com/2075-1680/15/5/384)|inspection only|2026-10-24 / day|0|
+|[postlemma-held-3](https://www.sciencedirect.com/science/article/abs/pii/S0012365X25004819)|inspection only|2026-10-24 / day|0|
+|[postlemma-held-4](https://www.researchgate.net/publication/329861921_Additive_Structural_and_Multiplicative_Transformations_for_the_Construction_of_Quasi-Cyclic_LDPC_Matrices)|inspection only|2026-10-24 / day|0|
+|[postlemma-held-5](https://openurl.ebsco.com/results?bquery=AU+Yin%2C+Jianxing&link_origin=&searchDescription=Yin%2C+Jianxing&sid=ebsco%3Aocu%3Arecord)|inspection only|2026-10-24 / day|0|
+|[X-final-search](https://x.com/search?q=%222607.13666%22&src=typed_query&f=live)|final inspection|2026-10-24 / day|0|
 
 Inspection-only dates are explicitly distinguished from publication dates. The Kashyap-Vardy author manuscript is undated after its reported2003 composition; its web transcription hash is not a PDF hash. Supplementary/final-version, citation-index and X access gaps remain named. Date differences are source ages, not durations of unsolved problems.

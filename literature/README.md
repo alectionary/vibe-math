@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **81 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **85 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -829,6 +829,30 @@ Shu-Tao Xia; Fang-Wei Fu. 2006. [stronger stopping source screen](https://arxiv.
 
 Full17-page primary-v2 screen; see xia-fu-stopping-source-screening.json. Historical questions are not asserted currently open; internal PDF2019 date is distinguished from the2006 arXiv stamp.
 
+### F82 QC-LDPC Codes from Difference Matrices and Difference Covering Arrays
+
+Diane Donovan; Asha Rao; Elif Üsküplü; E. Şule Yazıcı. 2022. [stronger stopping source screen](https://arxiv.org/abs/2205.00563v1).
+
+Primary PDF full-document question screen Lemma9 proves stopping distance>=8 under3 not dividing a, for the specified classical DM/DCA matrices with their four-group incidence structure. This is a different construction and supplies no stated QC-GHP companion/CSS bridge for our matrices. The source ingredients already show overlap/girth approaches are classical.
+
+### F83 Optimal Partitioned Cyclic Difference Packings for Frequency Hopping and Code Synchronization
+
+Yeow Meng Chee; Alan C. H. Ling; Jianxing Yin. 2010. [stronger stopping source screen](https://arxiv.org/abs/1008.1615v1).
+
+Primary PDF full-document question screen SectionII defines cyclic difference packing and separately requires a partition for PCDP. Our two supports may overlap and do not partition the group, so the PCDP theorems are not a direct theorem for our code. Theorem6.3 excludes two residue classes from its stated range, but Example6.1 and Lemma6.2 already settle seeds8,16,32; do not invent a blanket open-exception conjecture.
+
+### F84 Quasi Cyclic LDPC Codes Based on Finite Set Systems
+
+Mohammad Gholami; Mehdi Samadieh. 2014. [stronger stopping source screen](https://arxiv.org/abs/1405.3775v1).
+
+Primary PDF full-document question screen Definitions3-5 and Section3 concern classical lifted finite set systems, inevitable walks and algorithms; Section5 summarizes results. No additional explicit unresolved question was found in the full-document target screen. Introductory algorithm goals are addressed in the paper and not added as open targets. Internal PDF date28March2022 is distinct from the2014 arXivv1 stamp.
+
+### F85 Lower bounds on the lifting degree of single-edge and multiple-edge QC-LDPC codes by difference matrices
+
+Farzane Amirzade; Mohammad-Reza Sadeghi. 2017. [stronger stopping source screen](https://arxiv.org/abs/1709.00825v1).
+
+Primary PDF full-document question screen Classical single/multiple-edge QC-LDPC difference criteria and lifting-degree bounds, not a stated QC-GHP stopping theorem or companion CSS construction. Full-document target screen includes introduction,all question/unknown/future-work contexts,SectionV and appendices; no additional explicit unresolved target found. Search goals and reported finite optima are addressed results, not invented author conjectures.
+
 ## Question by question cross references
 
 “Not verified” is a bounded search result. A related paper listed next to a question is not automatically evidence that the question itself was restated. The original page references and hypotheses remain in [the coverage ledger](../audit/claims.json). Research directions outside those 40 targets are described in the paper records, especially the Morris/Martinez and Grantham follow-ups.
@@ -885,3 +909,9 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 Useful spectral replacement existence is answered positively: the checked fourth-moment equality gives stopping distance at least gamma+1 on explicit sparse joint-Sidon QC-GHP families, without the original small-gap premise or a separate small-size exclusion. Source Lemma4.8 and classical overlap ingredients are credited. Incidence existence beyond B1 is positive too. Gram twins give an unbounded restricted obstruction; encoded dimension/binary rank/cross-sector data are outside that shared input. The original Proposition5.1 parameter question remains answered negatively. [Current paper/proofs](../formalization/stopping-bound/stronger/README.txt).
 
 The full17-page Xia-Fu v2 screen adds3 historical entries, one eligible and one paper/screen beyond the earlier20/8/4 extension. Current totals:290 entries,144 eligible targets,115 papers,102 full main-paper screens and5 complete canonical Lean targets. Present resolution, Lean discovery and difficulty of harvested questions remain unassessed. Existing F38 screening is reused without duplication. [Xia-Fu ledger](xia-fu-stopping-source-screening.json).
+
+## Final short-parameter checkpoint -24October2026 Pacific
+
+The explicit4/8 family has moment88n and stopping guarantee5 for every odd n>=37; the54-variable instance is checked separately. Both-sector kernel lower bounds and nontrivial logical content are checked. The n27 spectral certificate gives eta>=17/2 and a strict improvement over both Zhu-Chugg expressions under their required gap. Original parameter question: negative. Replacement existence: positive. [Current paper and complete proofs](../formalization/stopping-bound/stronger/README.txt).
+
+The final post-lemma cohort adds5 broad directions,0 eligible,4 primary papers/screens. Totals295canonical/144eligible/119papers/106full main-paper screens/5completed canonical targets. Current-resolution/Lean/difficulty checks for new targets remain unassessed. [Full source outcomes, hashes and access/version gaps](postlemma-stopping-source-screening.json).

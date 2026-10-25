@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 290 entries (109 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Checked October 24, 2026. Low-confidence planning priors for all 295 entries (114 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -4457,3 +4457,83 @@ First milestone: Verify current mathematical status and exact hypotheses.
 Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
 
 Basis: New full-text screen; current status and formalization effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f81-typeii-l4-distance).
+
+### L-F82-higher-column-DM
+
+Determine existence of higher-column difference matrices DM(k;a) for admissible orders beyond the treated k=3 case.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f82-higher-column-dm).
+
+### L-F82-general-DCA
+
+Develop the general-k theory and constructions of difference covering arrays beyond the treated three-column case.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f82-general-dca).
+
+### L-F82-improved-minimum-distance
+
+Improve the proposed difference-matrix LDPC constructions to obtain higher minimum distance.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f82-improved-minimum-distance).
+
+### L-F82-larger-stopping-sets
+
+Investigate larger stopping sets by discarding selected rows of the underlying DM or DCA, as in Construction2.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f82-larger-stopping-sets).
+
+### L-F83-optimal-index
+
+Determine or construct the optimal index rho(n,m) for partitioned cyclic difference packings with prescribed n and m.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical open label is not a current-resolution or difficulty assessment.
+
+First milestone: Verify current mathematical status and exact hypotheses.
+
+Gate: Inspect later literature and freeze the complete mathematical/Lean interface before estimating effort.
+
+Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f83-optimal-index).

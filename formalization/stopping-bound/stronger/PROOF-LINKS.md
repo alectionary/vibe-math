@@ -1,6 +1,6 @@
 # Complete checked Lean file URLs
 
-Every new, audit and imported research source is listed. Immutable pin: ad6b34fae9943383851de1bf010650fd8bd42af5.
+Every new, audit and imported research source is listed. Immutable pin: bed7719cb3cac4118e4f333690db364566ede03e.
 
 ## AuditStronger.lean
 
@@ -8,7 +8,7 @@ axiom/signature audit
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/AuditStronger.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/AuditStronger.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/AuditStronger.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/AuditStronger.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/AuditStronger.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/AuditStronger.lean)
 
 ## BadDegrees.lean
 
@@ -16,7 +16,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadDegrees.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadDegrees.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BadDegrees.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BadDegrees.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadDegrees.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadDegrees.lean)
 
 ## BadLogical.lean
 
@@ -24,7 +24,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadLogical.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadLogical.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BadLogical.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BadLogical.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadLogical.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadLogical.lean)
 
 ## BadStopping.lean
 
@@ -32,7 +32,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadStopping.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BadStopping.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BadStopping.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BadStopping.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadStopping.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BadStopping.lean)
 
 ## BicycleBase.lean
 
@@ -40,7 +40,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleBase.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleBase.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleBase.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleBase.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleBase.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleBase.lean)
 
 ## BicycleBaseCore.lean
 
@@ -48,7 +48,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleBaseCore.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleBaseCore.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleBaseCore.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleBaseCore.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleBaseCore.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleBaseCore.lean)
 
 ## BicycleCoverEnergy.lean
 
@@ -56,7 +56,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleCoverEnergy.lean)
 
 ## BicycleDegrees.lean
 
@@ -64,7 +64,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleDegrees.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleDegrees.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleDegrees.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleDegrees.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleDegrees.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleDegrees.lean)
 
 ## BicycleFamily.lean
 
@@ -72,7 +72,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleFamily.lean)
 
 ## BicycleFamilyCore.lean
 
@@ -80,7 +80,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleFamilyCore.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleFamilyCore.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleFamilyCore.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleFamilyCore.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleFamilyCore.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleFamilyCore.lean)
 
 ## BicycleLogical.lean
 
@@ -88,7 +88,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleLogical.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleLogical.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleLogical.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleLogical.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleLogical.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleLogical.lean)
 
 ## BicycleMatrices.lean
 
@@ -96,7 +96,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleMatrices.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleMatrices.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleMatrices.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleMatrices.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleMatrices.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleMatrices.lean)
 
 ## BicycleOverlap.lean
 
@@ -104,7 +104,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleOverlap.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleOverlap.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleOverlap.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleOverlap.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleOverlap.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleOverlap.lean)
 
 ## BicycleSpectralBase.lean
 
@@ -112,7 +112,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleSpectralBase.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleSpectralBase.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleSpectralBase.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleSpectralBase.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleSpectralBase.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleSpectralBase.lean)
 
 ## BicycleSpectralFamily.lean
 
@@ -120,7 +120,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BicycleSpectralFamily.lean)
 
 ## BothGram.lean
 
@@ -128,7 +128,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BothGram.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/BothGram.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BothGram.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/BothGram.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BothGram.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/BothGram.lean)
 
 ## CSSStopping.lean
 
@@ -136,7 +136,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/CSSStopping.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/CSSStopping.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/CSSStopping.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/CSSStopping.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/CSSStopping.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/CSSStopping.lean)
 
 ## FiberSums.lean
 
@@ -144,7 +144,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/FiberSums.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/FiberSums.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/FiberSums.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/FiberSums.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/FiberSums.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/FiberSums.lean)
 
 ## GlobalMomentFamily.lean
 
@@ -152,7 +152,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GlobalMomentFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GlobalMomentFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GlobalMomentFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GlobalMomentFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GlobalMomentFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GlobalMomentFamily.lean)
 
 ## GramGap.lean
 
@@ -160,7 +160,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GramGap.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GramGap.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GramGap.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GramGap.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GramGap.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GramGap.lean)
 
 ## GramObstruction.lean
 
@@ -168,7 +168,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GramObstruction.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GramObstruction.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GramObstruction.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GramObstruction.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GramObstruction.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GramObstruction.lean)
 
 ## GrowingFamily.lean
 
@@ -176,7 +176,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GrowingFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/GrowingFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GrowingFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/GrowingFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GrowingFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/GrowingFamily.lean)
 
 ## JointKernel.lean
 
@@ -184,7 +184,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointKernel.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointKernel.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointKernel.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointKernel.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointKernel.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointKernel.lean)
 
 ## JointMatrices.lean
 
@@ -192,7 +192,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointMatrices.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointMatrices.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointMatrices.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointMatrices.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointMatrices.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointMatrices.lean)
 
 ## JointMomentFamily.lean
 
@@ -200,7 +200,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointMomentFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointMomentFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointMomentFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointMomentFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointMomentFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointMomentFamily.lean)
 
 ## JointPowers.lean
 
@@ -208,7 +208,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointPowers.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointPowers.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointPowers.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointPowers.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointPowers.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointPowers.lean)
 
 ## JointSidon.lean
 
@@ -216,7 +216,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointSidon.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointSidon.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointSidon.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointSidon.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointSidon.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointSidon.lean)
 
 ## JointSpectralBase.lean
 
@@ -224,7 +224,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointSpectralBase.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/JointSpectralBase.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointSpectralBase.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/JointSpectralBase.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointSpectralBase.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/JointSpectralBase.lean)
 
 ## KernelFamily.lean
 
@@ -232,7 +232,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/KernelFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/KernelFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/KernelFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/KernelFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/KernelFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/KernelFamily.lean)
 
 ## KernelStopping.lean
 
@@ -240,7 +240,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/KernelStopping.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/KernelStopping.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/KernelStopping.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/KernelStopping.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/KernelStopping.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/KernelStopping.lean)
 
 ## MomentBound.lean
 
@@ -248,7 +248,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentBound.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentBound.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/MomentBound.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/MomentBound.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentBound.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentBound.lean)
 
 ## MomentExcess.lean
 
@@ -256,7 +256,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentExcess.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentExcess.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/MomentExcess.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/MomentExcess.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentExcess.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentExcess.lean)
 
 ## MomentReplacement.lean
 
@@ -264,7 +264,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentReplacement.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/MomentReplacement.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/MomentReplacement.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/MomentReplacement.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentReplacement.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/MomentReplacement.lean)
 
 ## PartitionBound.lean
 
@@ -272,7 +272,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PartitionBound.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PartitionBound.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/PartitionBound.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/PartitionBound.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PartitionBound.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PartitionBound.lean)
 
 ## PowersFamily.lean
 
@@ -280,7 +280,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PowersFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PowersFamily.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/PowersFamily.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/PowersFamily.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PowersFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PowersFamily.lean)
 
 ## PowersThree.lean
 
@@ -288,7 +288,39 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PowersThree.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/PowersThree.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/PowersThree.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/PowersThree.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PowersThree.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/PowersThree.lean)
+
+## Practical27.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27.lean)
+
+## Practical27Core.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Core.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Core.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Core.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Core.lean)
+
+## Practical27Design.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Design.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Design.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Design.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Design.lean)
+
+## Practical27Spectral.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Spectral.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/Practical27Spectral.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Spectral.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/Practical27Spectral.lean)
 
 ## RealGramBound.lean
 
@@ -296,7 +328,31 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/RealGramBound.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/RealGramBound.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/RealGramBound.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/RealGramBound.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/RealGramBound.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/RealGramBound.lean)
+
+## SeparateSidon.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SeparateSidon.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SeparateSidon.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SeparateSidon.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SeparateSidon.lean)
+
+## ShortFamily.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/ShortFamily.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/ShortFamily.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/ShortFamily.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/ShortFamily.lean)
+
+## ShortFamilySupports.lean
+
+new checked proof module
+
+Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/ShortFamilySupports.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/ShortFamilySupports.lean)
+
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/ShortFamilySupports.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/ShortFamilySupports.lean)
 
 ## SidonBad.lean
 
@@ -304,7 +360,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonBad.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonBad.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SidonBad.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SidonBad.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonBad.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonBad.lean)
 
 ## SidonMatrices.lean
 
@@ -312,7 +368,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonMatrices.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonMatrices.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SidonMatrices.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SidonMatrices.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonMatrices.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonMatrices.lean)
 
 ## SidonStopping.lean
 
@@ -320,7 +376,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonStopping.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SidonStopping.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SidonStopping.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SidonStopping.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonStopping.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SidonStopping.lean)
 
 ## SourceConsumers.lean
 
@@ -328,7 +384,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SourceConsumers.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SourceConsumers.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SourceConsumers.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SourceConsumers.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SourceConsumers.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SourceConsumers.lean)
 
 ## SpectralMoment.lean
 
@@ -336,7 +392,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SpectralMoment.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SpectralMoment.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SpectralMoment.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SpectralMoment.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SpectralMoment.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SpectralMoment.lean)
 
 ## SpectralPlane.lean
 
@@ -344,7 +400,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SpectralPlane.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/SpectralPlane.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SpectralPlane.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/SpectralPlane.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SpectralPlane.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/SpectralPlane.lean)
 
 ## StrongerAnswer.lean
 
@@ -352,7 +408,7 @@ new checked proof module
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/StrongerAnswer.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/StrongerAnswer.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/StrongerAnswer.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/StrongerAnswer.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/StrongerAnswer.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/StrongerAnswer.lean)
 
 ## dependencies/IncidenceCore.lean
 
@@ -360,7 +416,7 @@ inherited proof dependency
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceCore.lean)
 
 ## dependencies/IncidenceCover.lean
 
@@ -368,7 +424,7 @@ inherited proof dependency
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceCover.lean)
 
 ## dependencies/IncidenceList.lean
 
@@ -376,7 +432,7 @@ inherited proof dependency
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/IncidenceList.lean)
 
 ## dependencies/Spectral.lean
 
@@ -384,7 +440,7 @@ inherited proof dependency
 
 Current: [https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/Spectral.lean](https://github.com/alectionary/vibe-math/blob/master/formalization/stopping-bound/stronger/dependencies/Spectral.lean)
 
-Immutable: [https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/Spectral.lean](https://github.com/alectionary/vibe-math/blob/ad6b34fae9943383851de1bf010650fd8bd42af5/formalization/stopping-bound/stronger/dependencies/Spectral.lean)
+Immutable: [https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/Spectral.lean](https://github.com/alectionary/vibe-math/blob/bed7719cb3cac4118e4f333690db364566ede03e/formalization/stopping-bound/stronger/dependencies/Spectral.lean)
 
 
 ## Cited earlier proof closure (historical publication)
