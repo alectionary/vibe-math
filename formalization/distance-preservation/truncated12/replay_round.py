@@ -7,17 +7,9 @@ from pathlib import Path
 import argparse,json,re,subprocess,sys
 R=Path(__file__).resolve().parent
 
-def main():
-    ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--plan',action='store_true')
-    ap.add_argument('--mathlib');ap.add_argument('--lean-bin');ap.add_argument('--build-dir')
-    ap.add_argument('--threads',type=int,default=2)
-    ap.add_argument('--timeout',type=int,default=600)
-    ap.add_argument('modules',nargs='*')
-    a=ap.parse_args()
+def local_import_order(roots):
+    """Resolve every research import, rejecting missing modules and cycles."""
     paths={p.stem:p for root in [R.parent,R,R/'catalog-chunks'] for p in root.glob('*.lean')}
-    manifest=json.loads((R/'verification.json').read_text())
-    roots=a.modules or [n for n,s in manifest['modules'].items() if s['status']=='PASS']
     order=[];active=set();done=set()
     def visit(n):
         if n in done:return
@@ -32,6 +24,19 @@ def main():
                     raise ValueError('Unresolved local import '+dep+' from '+n)
         active.remove(n);done.add(n);order.append(n)
     for n in roots:visit(n)
+    return order
+
+def main():
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--plan',action='store_true')
+    ap.add_argument('--mathlib');ap.add_argument('--lean-bin');ap.add_argument('--build-dir')
+    ap.add_argument('--threads',type=int,default=2)
+    ap.add_argument('--timeout',type=int,default=600)
+    ap.add_argument('modules',nargs='*')
+    a=ap.parse_args()
+    manifest=json.loads((R/'verification.json').read_text())
+    roots=a.modules or [n for n,s in manifest['modules'].items() if s['status']=='PASS']
+    order=local_import_order(roots)
     if a.plan:
         print(json.dumps(dict(modules=len(order),order=order),indent=2));return 0
     for arg in ['mathlib','lean_bin','build_dir']:

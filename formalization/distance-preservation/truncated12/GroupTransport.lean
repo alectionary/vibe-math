@@ -17,13 +17,17 @@ theorem perm_left_count (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
     (c : Equiv.Perm (Fin 4)) (j : Fin 4) : leftCount (permU u c) j=leftCount u (c j) := by
   unfold leftCount
   exact Finset.card_equiv (Equiv.prodCongr c (Equiv.refl _))
-    (fun q => by simp [CoverWeight.support,permU])
+    (fun q => by
+      simp only [CoverWeight.support,Finset.mem_filter,Finset.mem_univ,true_and]
+      rfl)
 
 theorem perm_right_count (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
     (r : Equiv.Perm (Fin 3)) (i : Fin 3) : rightCount (permV v r) i=rightCount v (r i) := by
   unfold rightCount
   exact Finset.card_equiv (Equiv.prodCongr r (Equiv.refl _))
-    (fun q => by simp [CoverWeight.support,permV])
+    (fun q => by
+      simp only [CoverWeight.support,Finset.mem_filter,Finset.mem_univ,true_and]
+      rfl)
 
 def fiberShift {A : Type*} (f : A → ZMod L) : (A × ZMod L) ≃ (A × ZMod L) where
   toFun q := (q.1,q.2+f q.1)

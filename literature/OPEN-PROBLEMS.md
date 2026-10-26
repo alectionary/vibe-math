@@ -2384,6 +2384,15 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenGeometry.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenIndex.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenRealization.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenEncoding.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SourceEleven.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/GroupTransport.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ProfileTransport.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/CountCanonical.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SourceTen.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TwelveConditional.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/DistanceMinima.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/CriterionScope.lean).
 - Project-derived follow-up, outside the source-target denominator: **RQ-F25-exclude-mixed-patterns** — Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned.
 - Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Second four-hour formalization block active; completed source bridges and remaining catalog/main-theorem coverage are recorded in truncated12/verification.json.
 - [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
