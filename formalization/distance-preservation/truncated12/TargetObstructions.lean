@@ -20,6 +20,7 @@ def targetVector (p t : ℕ) (k : Fin 6) : Int := targetValue p t k.val
 def targetForm (e : Fin 3 → Fin 4 → ZMod L) (p t : ℕ) : ZMod L :=
   integerDot (targetVector p t) (sourceVars e)
 def needsClassicalBound (p : ℕ) : Prop := p=48 ∨ p=49 ∨ p=52
+instance (p : ℕ) : Decidable (needsClassicalBound p) := by unfold needsClassicalBound;infer_instance
 
 
 theorem vector_0_0 : targetVector 0 0=![(-2),0,0,0,0,0] := by
@@ -406,12 +407,18 @@ theorem obstruction_0
   intro j
   fin_cases j
   · simp [hC0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h2
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 0 1-e 1 1)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 0 2-e 1 2)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 0 3-e 1 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h2 | linear_combination -h2
 
 theorem obstruction_1
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -432,11 +439,11 @@ theorem obstruction_1
   apply hP 1 2 0 (by decide) (by decide) (by decide) 0 1 2 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_2
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -457,11 +464,11 @@ theorem obstruction_2
   apply hP 0 1 2 (by decide) (by decide) (by decide) 0 1 2 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_3
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -476,8 +483,8 @@ theorem obstruction_3
   rw [vector_3_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 1 (by decide) 0 1 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_4
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -498,11 +505,11 @@ theorem obstruction_4
   apply hP 0 2 1 (by decide) (by decide) (by decide) 0 1 2 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_5
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -524,10 +531,14 @@ theorem obstruction_5
   intro i
   fin_cases i
   · simp [hR0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 1 0-e 1 1)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 2 0-e 2 1)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_6
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -542,8 +553,8 @@ theorem obstruction_6
   rw [vector_6_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 1 2 (by decide) 2 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_7
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -558,8 +569,8 @@ theorem obstruction_7
   rw [vector_7_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 1 (by decide) 2 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_8
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -574,8 +585,8 @@ theorem obstruction_8
   rw [vector_8_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 2 (by decide) 2 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_9
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -597,10 +608,14 @@ theorem obstruction_9
   intro i
   fin_cases i
   · simp [hR0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 1 0-e 1 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 2 0-e 2 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_10
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -615,8 +630,8 @@ theorem obstruction_10
   rw [vector_10_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 1 2 (by decide) 1 2 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_11
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -631,8 +646,8 @@ theorem obstruction_11
   rw [vector_11_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 1 (by decide) 1 2 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_12
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -647,8 +662,8 @@ theorem obstruction_12
   rw [vector_12_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 1 (by decide) 0 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_13
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -663,8 +678,8 @@ theorem obstruction_13
   rw [vector_13_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 2 (by decide) 1 2 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_14
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -679,8 +694,8 @@ theorem obstruction_14
   rw [vector_14_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 0 1 3 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_15
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -695,8 +710,8 @@ theorem obstruction_15
   rw [vector_15_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 0 1 2 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_16
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -718,10 +733,14 @@ theorem obstruction_16
   intro i
   fin_cases i
   · simp [hR0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 1 0-e 1 2)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 2 0-e 2 2)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_17
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -736,8 +755,8 @@ theorem obstruction_17
   rw [vector_17_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 1 2 (by decide) 1 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_18
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -752,8 +771,8 @@ theorem obstruction_18
   rw [vector_18_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 1 (by decide) 1 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_19
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -768,8 +787,8 @@ theorem obstruction_19
   rw [vector_19_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 1 (by decide) 0 2 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_20
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -784,8 +803,8 @@ theorem obstruction_20
   rw [vector_20_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 2 (by decide) 1 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_21
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -807,10 +826,14 @@ theorem obstruction_21
   intro i
   fin_cases i
   · simp [hR0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 1 2-e 1 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 2 2-e 2 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_22
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -825,8 +848,8 @@ theorem obstruction_22
   rw [vector_22_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 1 2 (by decide) 0 1 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_23
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -841,8 +864,8 @@ theorem obstruction_23
   rw [vector_23_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 2 (by decide) 0 1 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_24
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -864,12 +887,14 @@ theorem obstruction_24
   intro i
   fin_cases i
   · simp [columnForm,hR0]
-  · unfold columnForm
-    simp only [hR0,hC0]
-    linear_combination h0
-  · unfold columnForm
-    simp only [hR0,hC0]
-    linear_combination h1
+  · change columnForm e 1 0 1 2 3=0
+    unfold columnForm
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · change columnForm e 2 0 1 2 3=0
+    unfold columnForm
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_25
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -884,8 +909,8 @@ theorem obstruction_25
   rw [vector_25_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 1 2 (by decide) 0 2 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_26
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -900,8 +925,8 @@ theorem obstruction_26
   rw [vector_26_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 2 (by decide) 0 2 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_27
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -916,8 +941,8 @@ theorem obstruction_27
   rw [vector_27_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 1 2 (by decide) 0 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_28
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -932,8 +957,8 @@ theorem obstruction_28
   rw [vector_28_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_four_form_nonzero e h4 0 2 (by decide) 0 3 (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_29
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -955,10 +980,14 @@ theorem obstruction_29
   intro i
   fin_cases i
   · simp [hR0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 1 1-e 1 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 2 1-e 2 3)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_30
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -980,12 +1009,14 @@ theorem obstruction_30
   intro i
   fin_cases i
   · simp [columnForm,hR0]
-  · unfold columnForm
-    simp only [hR0,hC0]
-    linear_combination h0
-  · unfold columnForm
-    simp only [hR0,hC0]
-    linear_combination h1
+  · change columnForm e 1 0 2 1 3=0
+    unfold columnForm
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · change columnForm e 2 0 2 1 3=0
+    unfold columnForm
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_31
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1007,10 +1038,14 @@ theorem obstruction_31
   intro i
   fin_cases i
   · simp [hR0]
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h0
-  · simp only [nsmul_eq_mul,hR0,hC0]
-    linear_combination h1
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 1 1-e 1 2)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · simp only [nsmul_eq_mul]
+    change (2 : ZMod L)*(e 2 1-e 2 2)=0
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_32
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1032,12 +1067,14 @@ theorem obstruction_32
   intro i
   fin_cases i
   · simp [columnForm,hR0]
-  · unfold columnForm
-    simp only [hR0,hC0]
-    linear_combination h0
-  · unfold columnForm
-    simp only [hR0,hC0]
-    linear_combination h1
+  · change columnForm e 1 0 3 1 2=0
+    unfold columnForm
+    try simp only [hR0,hC0]
+    first | linear_combination h0 | linear_combination -h0
+  · change columnForm e 2 0 3 1 2=0
+    unfold columnForm
+    try simp only [hR0,hC0]
+    first | linear_combination h1 | linear_combination -h1
 
 theorem obstruction_33
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1052,8 +1089,8 @@ theorem obstruction_33
   rw [vector_33_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 1 0 2 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_34
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1068,8 +1105,8 @@ theorem obstruction_34
   rw [vector_34_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 0 3 1 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_35
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1084,8 +1121,8 @@ theorem obstruction_35
   rw [vector_35_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 0 2 1 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_36
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1100,8 +1137,8 @@ theorem obstruction_36
   rw [vector_36_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 0 3 2 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_37
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1116,8 +1153,8 @@ theorem obstruction_37
   rw [vector_37_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 0 2 3 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_38
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1132,8 +1169,8 @@ theorem obstruction_38
   rw [vector_38_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 2 1 0 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_39
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1148,8 +1185,8 @@ theorem obstruction_39
   rw [vector_39_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 3 0 1 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_40
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1164,8 +1201,8 @@ theorem obstruction_40
   rw [vector_40_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 1 2 0 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_41
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1180,8 +1217,8 @@ theorem obstruction_41
   rw [vector_41_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 3 0 2 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_42
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1196,8 +1233,8 @@ theorem obstruction_42
   rw [vector_42_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 3 1 0 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_43
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1212,8 +1249,8 @@ theorem obstruction_43
   rw [vector_43_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 2 0 1 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_44
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1228,8 +1265,8 @@ theorem obstruction_44
   rw [vector_44_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 1 0 3 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_45
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1244,8 +1281,8 @@ theorem obstruction_45
   rw [vector_45_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 1 3 0 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_46
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1260,8 +1297,8 @@ theorem obstruction_46
   rw [vector_46_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 2 0 3 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_47
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1276,8 +1313,8 @@ theorem obstruction_47
   rw [vector_47_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 1 2 3 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_48
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1300,9 +1337,11 @@ theorem obstruction_48
     fin_cases i
     · simp [hR0]
     · simp only [nsmul_eq_mul]
-      linear_combination h0
+      change (5 : ZMod L)*e 1 2=0
+      first | linear_combination h0 | linear_combination -h0
     · simp only [nsmul_eq_mul]
-      linear_combination h1)
+      change (5 : ZMod L)*e 2 2=0
+      first | linear_combination h1 | linear_combination -h1)
   have hlarge : 10<D := hExtra (by decide +kernel)
   omega
 
@@ -1327,9 +1366,11 @@ theorem obstruction_49
     fin_cases i
     · simp [hR0]
     · simp only [nsmul_eq_mul]
-      linear_combination h0
+      change (5 : ZMod L)*e 1 3=0
+      first | linear_combination h0 | linear_combination -h0
     · simp only [nsmul_eq_mul]
-      linear_combination h1)
+      change (5 : ZMod L)*e 2 3=0
+      first | linear_combination h1 | linear_combination -h1)
   have hlarge : 10<D := hExtra (by decide +kernel)
   omega
 
@@ -1346,8 +1387,8 @@ theorem obstruction_50
   rw [vector_50_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 3 2 0 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_51
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1362,8 +1403,8 @@ theorem obstruction_51
   rw [vector_51_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 2 3 0 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_52
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1386,9 +1427,11 @@ theorem obstruction_52
     fin_cases i
     · simp [hR0]
     · simp only [nsmul_eq_mul]
-      linear_combination h0
+      change (5 : ZMod L)*e 1 1=0
+      first | linear_combination h0 | linear_combination -h0
     · simp only [nsmul_eq_mul]
-      linear_combination h1)
+      change (5 : ZMod L)*e 2 1=0
+      first | linear_combination h1 | linear_combination -h1)
   have hlarge : 10<D := hExtra (by decide +kernel)
   omega
 
@@ -1405,8 +1448,8 @@ theorem obstruction_53
   rw [vector_53_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 1 3 2 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_54
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1427,11 +1470,11 @@ theorem obstruction_54
   apply hP 0 1 2 (by decide) (by decide) (by decide) 1 2 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_55
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1452,11 +1495,11 @@ theorem obstruction_55
   apply hP 0 2 1 (by decide) (by decide) (by decide) 1 2 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_56
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1477,11 +1520,11 @@ theorem obstruction_56
   apply hP 1 2 0 (by decide) (by decide) (by decide) 1 2 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_57
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1502,11 +1545,11 @@ theorem obstruction_57
   apply hP 0 1 2 (by decide) (by decide) (by decide) 0 1 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_58
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1527,11 +1570,11 @@ theorem obstruction_58
   apply hP 0 2 1 (by decide) (by decide) (by decide) 0 1 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_59
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1552,11 +1595,11 @@ theorem obstruction_59
   apply hP 1 2 0 (by decide) (by decide) (by decide) 0 1 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_60
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1571,8 +1614,8 @@ theorem obstruction_60
   rw [vector_60_0] at h0
   norm_num [integerDot,sourceVars,Fin.sum_univ_succ,zsmul_eq_mul] at h0
   apply source_six_form_nonzero e h6 hR0 2 1 3 (by decide) (by decide) (by decide)
-  simp only [hR0,hC0]
-  linear_combination h0
+  try simp only [hR0,hC0]
+  first | linear_combination h0 | linear_combination -h0
 
 theorem obstruction_61
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1593,11 +1636,11 @@ theorem obstruction_61
   apply hP 0 1 2 (by decide) (by decide) (by decide) 0 2 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_62
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1618,11 +1661,11 @@ theorem obstruction_62
   apply hP 0 2 1 (by decide) (by decide) (by decide) 0 2 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem obstruction_63
     (e : Fin 3 → Fin 4 → ZMod L)
@@ -1643,11 +1686,11 @@ theorem obstruction_63
   apply hP 1 2 0 (by decide) (by decide) (by decide) 0 2 3 (by decide) (by decide) (by decide)
   constructor
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h0
+    try simp only [hR0,hC0]
+    first | linear_combination -h0 | linear_combination h0
   · unfold rowForm
-    simp only [hR0,hC0]
-    linear_combination -h1
+    try simp only [hR0,hC0]
+    first | linear_combination -h1 | linear_combination h1
 
 theorem source_target_obstruction
     (e : Fin 3 → Fin 4 → ZMod L)

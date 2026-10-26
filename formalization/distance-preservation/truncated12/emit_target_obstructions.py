@@ -26,7 +26,7 @@ def targetVector (p t : ℕ) (k : Fin 6) : Int := targetValue p t k.val
 def targetForm (e : Fin 3 → Fin 4 → ZMod L) (p t : ℕ) : ZMod L :=
   integerDot (targetVector p t) (sourceVars e)
 '''
-head+='def needsClassicalBound (p : ℕ) : Prop := '+classprop+'\n\n'
+head+='def needsClassicalBound (p : ℕ) : Prop := '+classprop+'\ninstance (p : ℕ) : Decidable (needsClassicalBound p) := by unfold needsClassicalBound;infer_instance\n\n'
 lines=[head]
 for p,t in enumerate(T):
  for j,f in enumerate(t['forms']):
@@ -51,20 +51,27 @@ for p,t in enumerate(T):
   z,a,b,c=v;i,j=[x for x in range(3) if x!=z]
   lines +=[f'  apply hP {i} {j} {z} (by decide) (by decide) (by decide) {a} {b} {c} (by decide) (by decide) (by decide)','  constructor', '  · unfold rowForm','    simp only [hR0,hC0]','    linear_combination -h0', '  · unfold rowForm','    simp only [hR0,hC0]','    linear_combination -h1']
  elif k=='column_rcpc':
-  a,b,c,d=v;lines +=[f'  apply hCP {a} {b} {c} {d} (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)','  intro i','  fin_cases i','  · simp [columnForm,hR0]','  · unfold columnForm','    simp only [hR0,hC0]','    linear_combination h0','  · unfold columnForm','    simp only [hR0,hC0]','    linear_combination h1']
+  a,b,c,d=v;lines +=[f'  apply hCP {a} {b} {c} {d} (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)','  intro i','  fin_cases i','  · simp [columnForm,hR0]',f'  · change columnForm e 1 {a} {b} {c} {d}=0','    unfold columnForm','    simp only [hR0,hC0]','    linear_combination h0',f'  · change columnForm e 2 {a} {b} {c} {d}=0','    unfold columnForm','    simp only [hR0,hC0]','    linear_combination h1']
  elif k=='cyclic_torsion':
   n,i,z=v;lines +=[f'  apply row_small_torsion_impossible e h4 {n} (by decide) (by decide) {i} {z} (by decide)','  intro j','  fin_cases j','  · simp [hC0]']
-  for j in range(3):lines +=['  · simp only [nsmul_eq_mul,hR0,hC0]',f'    linear_combination h{j}']
+  for j in range(3):lines +=['  · simp only [nsmul_eq_mul]',f'    change ({n} : ZMod L)*(e {i} {j+1}-e {z} {j+1})=0','    try simp only [hR0,hC0]',f'    linear_combination h{j}']
  elif k=='column_two_torsion':
   a,b=v;lines +=[f'  apply column_two_torsion_impossible e h4 {a} {b} (by decide)','  intro i','  fin_cases i','  · simp [hR0]']
-  for j in range(2):lines +=['  · simp only [nsmul_eq_mul,hR0,hC0]',f'    linear_combination h{j}']
+  for j in range(2):lines +=['  · simp only [nsmul_eq_mul]',f'    change (2 : ZMod L)*(e {j+1} {a}-e {j+1} {b})=0','    try simp only [hR0,hC0]',f'    linear_combination h{j}']
  elif k=='classical_weight_le10':
   a,b=v;assert a==0
-  lines +=[f'  have hsmall : D≤10 := torsion5_forces_classical_bound e D hC {b} (by decide) hC0 (by', '    intro i','    fin_cases i','    · simp [hR0]','    · simp only [nsmul_eq_mul]','      linear_combination h0','    · simp only [nsmul_eq_mul]','      linear_combination h1)',f'  have hlarge : 10<D := hExtra (by decide +kernel)','  omega']
+  lines +=[f'  have hsmall : D≤10 := torsion5_forces_classical_bound e D hC {b} (by decide) hC0 (by', '    intro i','    fin_cases i','    · simp [hR0]','    · simp only [nsmul_eq_mul]',f'      change (5 : ZMod L)*e 1 {b}=0','      linear_combination h0','    · simp only [nsmul_eq_mul]',f'      change (5 : ZMod L)*e 2 {b}=0','      linear_combination h1)',f'  have hlarge : 10<D := hExtra (by decide +kernel)','  omega']
  else:raise ValueError(k)
  lines+=['']
 lines+=['theorem source_target_obstruction\n'+args+'    (p : Fin 64) (hExtra : needsClassicalBound p.val → 10<D)\n    (hz : ∀ t : Fin (targetArity p.val),targetForm e p.val t.val=0) : False := by','  fin_cases p']
 for p in range(len(T)):lines +=[f'  · exact obstruction_{p} e h4 h6 hR0 hC0 hCP hP D hC hExtra hz']
 lines +=['#print axioms source_target_obstruction','end TruncatedDistance']
-(R/'TargetObstructions.lean').write_text('\n'.join(lines)+'\n')
+fixed=[]
+for line in lines:
+ if line.lstrip().startswith('linear_combination '):
+  indent=line[:len(line)-len(line.lstrip())];arg=line.strip().split('linear_combination ',1)[1];closing=')' if arg.endswith(')') else '';arg=arg[:-1] if closing else arg;other=arg[1:] if arg.startswith('-') else '-'+arg
+  line=indent+'first | linear_combination '+arg+' | linear_combination '+other+closing
+ if line.strip()=='simp only [hR0,hC0]':line=line.replace('simp only','try simp only')
+ fixed.append(line)
+(R/'TargetObstructions.lean').write_text('\n'.join(fixed)+'\n')
 print({'target_types':len(T),'classical_alternative_ids':classic})

@@ -6,7 +6,7 @@ STATUS AND CLAIM BOUNDARY
 
 This note gives a certificate-assisted written argument for the proposed
 bound dQ >= min(dC,12), with the exact source hypotheses below. The finite
-pattern identities have an independent integer verifier. Several generic
+pattern identities have an independent integer verifier. A complete intermediate min(dC,10) source bound and several generic
 source bridges are proved in Lean. A complete Lean theorem deriving the
 bound from exactly these hypotheses is NOT yet supplied: the remaining
 formalization obligations are listed at the end. Do not count a completed
@@ -119,7 +119,10 @@ row/column relabeling therefore preserves word weights and full quotients.
 The partial-row values change by one column-independent constant; equality
 on any three columns is preserved. Normalization.lean checks these form identities,
 the normalized full tests and no-four/no-six transport. GaugeWeight.lean checks
-actual support weight; SpanCoefficients.lean checks equivalence of the complete
+actual support weight; ClassicalTransport.lean checks both actual classical
+lower-bound predicates under normalization and permutation. EntryTestTransport.lean
+checks both exact entry tests after permutation and re-normalization, including
+the relocated original zero-row anchor. SpanCoefficients.lean checks equivalence of the complete
 source stabilizer spans under gauge shifts. For clarity, unrestricted gauge shifts need not preserve the literal zero
 form of an RCPC equation. Here we always re-normalize after a row/column
 permutation. If F_i=E(i,a)+E(i,b)-E(i,c)-E(i,d), re-normalizing with first rowr
@@ -150,6 +153,9 @@ stabilizer: all three singleton U coordinates and all three V coordinates
 cancel, leaving a pure U kernel support of size at most6. If the original
 weight11 were below dC, the remainder must be zero. The original word is then
 a stabilizer. No restricted set of generators is substituted for the full span.
+RowCancellation.lean checks the actual pure-remainder argument and complete HX
+row membership. ConstantRows.lean now checks the whole identification from
+constant singleton representations and the exceptional-group cancellation.
 
 5. EXHAUSTIVE LABEL CATALOGS AND INTEGER CERTIFICATES
 
@@ -182,6 +188,12 @@ is used. IntegerSoundness.lean proves the general additive-group interpretation
 of such identities. verify_catalog.py independently reconstructs source offsets,
 sockets, cycle equations, forbidden forms and every integer identity without
 importing the discovery code, SymPy or Smith decomposition.
+MatchingRows.lean derives these full rows from actual pairs of source incidences.
+TargetObstructions.lean interprets every one of the64 outcome types under the
+actual entry/girth tests. PatternRealizations.lean combines these bridges:
+any actual realization of a checked pattern is impossible, with the additional
+D>10 comparison only for the six weight-ten classical alternatives. This theorem
+is conditional on a realization witness; it does not construct all witnesses.
 
 Independently checked final counts:
                              weight7   weight10   weight11
@@ -194,6 +206,13 @@ Independently checked final counts:
   classical word of weight<=10    0          6          0
   total                         144     124416      58752
 No final catalog case is unclassified.
+
+SourceSeven.lean now assembles all144 closed checks into a quantified
+certificate theorem, constructs actual source realizations from the injective
+singleton labels, and proves that every actual seven-singleton source kernel
+word lies in the entire HX row span. This completes that profile in Lean.
+The stronger through-weight-eleven source bound still needs the other two
+profile maps and the remaining catalog/final assembly.
 
 Small-torsion exclusions use the cyclic nature of ZMod L. For fixed distinct
 rows, the four column differences must be distinct by classical no4. If all
@@ -239,19 +258,41 @@ This is a certificate-assisted written argument. Complete proof-assistant
 coverage is a separate deliverable, not supplied by the external catalog replay.
 The original full-equality source target remains open in this project.
 
+7A. COMPLETED INTERMEDIATE SOURCE BOUND IN LEAN
+
+ThroughNine.lean proves source_pauli_bound_ten: under the exact normalized
+entry/girth tests, ClassicalAtLeast e D and TransposeAtLeast e D, every
+nontrivial actual source Pauli pair has union weight at least min(D,10).
+Thus the stated dTranspose>=dC comparison gives dQ>=min(dC,10).
+The theorem retains both entire stabilizer spans and the actual expanded
+source matrices. This is a completed general implication, not only a finite
+certificate or a helper conditional on an unproved support-coverage premise.
+
+Its argument is short after the source bridges. A kernel word lighter than
+min(D,10) cannot be a nonzero pure U/V word, by the actual classical/transpose
+bounds. The mixed count classification leaves only the weight7 profile,
+since the other two profiles have weights10/11. SourceSeven proves that
+all actual words in the weight7 profile are full stabilizers. GeneralSymmetry
+and PauliBridge give the other CSS sector and ordinary union weight.
+
+This complete intermediate bound is strictly weaker than the requested
+min(D,12) theorem. It does not settle that follow-up or the canonical equality
+problem. The exact source/hash/axiom record is in verification.json.
+
 8. REMAINING FORMALIZATION AND REPRODUCIBILITY OBLIGATIONS
 
 Do not state that the main bound is a completed checked Lean theorem until all
 of the following have been assembled from the source hypotheses:
-- complete actual support-to-labeled-pattern maps for the7/10/11 profiles,
+- complete actual support-to-labeled-pattern maps for the10/11 profiles,
   including group enumeration, weight10 pair matching and weight11 graph/color
   extraction (the count profiles, K2,3 equality and finite label tables are checked);
-- complete actual constant-label stabilizer-row cancellation (singleton extraction,
-  the algebraic alternative and full-span gauge transport are checked);
-- package permutation/normalization transport of every source hypothesis and
-  both classical distance predicates (individual coordinate/test bridges are checked);
-- finish any pending closed catalog kernel replay, interpret its forbidden forms,
-  and connect the interpreted six two-column alternatives to the actual patterns;
+- integrate the checked actual constant-label row identification/cancellation
+  into the final profile case split;
+- compose the checked permutation/normalization, exact entry-test, both classical
+  distance, quantum-kernel, full-span and weight transports in the actual support maps;
+- finish any pending closed catalog kernel replay and assemble uniform catalog
+  coverage; all64 forbidden-form interpretations and the conditional actual
+  realization exclusion, including the two-column alternatives, are checked;
 - assemble a final theorem connecting these to the source distance minima.
 These are formal assembly/coverage gaps. Their written arguments are given above,
 but an external program and a compiled helper theorem do not fill them silently.

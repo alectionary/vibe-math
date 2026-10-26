@@ -4,25 +4,48 @@ This is the October 25, 2026 study of `RQ-F25-truncated-distance-12`, within
 `L-F25-distance-preservation`. The [issue](https://github.com/alectionary/vibe-math/issues/1)
 records coordination and the four-hour cap.
 
+**Completed general Lean result:** [ThroughNine.lean](ThroughNine.lean) proves
+`dQ >= min(dC,10)` under the stated girth/entry tests and transpose-distance
+comparison, using actual source matrices, both entire stabilizer row spans and
+Pauli union weight. Its predicate form assumes both classical kernel distances
+are at least `D` and proves the union-weight lower bound `min(D,10)`.
+
 [RESEARCH-NOTE.txt](RESEARCH-NOTE.txt) gives a certificate-assisted written
 argument for `dQ >= min(dC,12)` under the exact stated entry tests. A complete
-source-level Lean distance theorem has **not** been assembled. The broader
+source-level Lean theorem for that stronger bound has **not** been assembled. The broader
 source question asking for sufficient conditions for `dQ=dC` remains distinct.
 
-The strongest completed source theorem is `source_mixed_count_profiles` in
-[SourceProfiles.lean](SourceProfiles.lean): starting with the actual expanded
-source kernel, girth hypotheses and support weight at most eleven, it derives
+[SourceProfiles.lean](SourceProfiles.lean) proves `source_mixed_count_profiles`:
+from the actual expanded source kernel, girth hypotheses and support weight
+at most eleven, it derives
 exactly the three mixed block-count profiles. [ExceptionalGraph.lean](ExceptionalGraph.lean)
 identifies the exceptional five-coordinate graph with `K2,3`.
 [SupportSingletons.lean](SupportSingletons.lean) derives the singleton label
-alternative from actual source supports. Other modules cover pure sectors,
-torsion classical words, full-span/gauge transport, normalization, cycle
+alternative from actual source supports. [ConstantRows.lean](ConstantRows.lean)
+identifies constant-label supports with a complete HX row and proves the
+exceptional-group cancellation below the classical distance.
+[MatchingRows.lean](MatchingRows.lean) derives full integer matching equations
+from actual source incidences. [TargetObstructions.lean](TargetObstructions.lean)
+interprets all 64 certificate outcome types, and
+[PatternRealizations.lean](PatternRealizations.lean) excludes certified patterns
+**conditional on an actual realization witness**. Constructing that witness
+for every source support is a separate obligation. [SourceSeven.lean](SourceSeven.lean) completes the seven-singleton profile:
+actual source kernel words with those counts lie in the entire HX row span.
+It includes a quantified 144-pattern certificate theorem and constructs actual
+source realizations for the injective label case. Other modules cover pure sectors,
+torsion classical words, full-span/gauge transport, actual classical/transpose
+distance transport and normalized entry-test transport, cycle
 obstructions, both CSS sectors and Pauli union weight.
+
+[NEXT-STEPS.txt](NEXT-STEPS.txt) gives the concrete handoff for the remaining
+support constructions and catalog assembly.
 
 [verification.json](verification.json) is authoritative for exact-source build
 status, admitted case intervals and pending work. Generated theorem source is
 not a successful check until its matching build record passes. In particular,
-the complete weight-ten kernel replay is deferred when it cannot fit the cap.
+the complete weight-ten kernel replay was deferred to fit the cap. All 58,752
+weight-eleven cases, all 144 weight-seven cases and 7,000 weight-ten cases pass;
+the latter include all six exceptional classical-torsion alternatives.
 The independent standard-library verifier checks all **183,312** integer pattern
 certificates; that is separate from Lean coverage and actual support coverage.
 
@@ -36,15 +59,17 @@ child PID and accepts memory, thread, timeout and UTC deadline limits.
 
 ```sh
 python3 verify_catalog.py
-python3 verify_round.py
-python3 build_round.py --mathlib /path/to/pinned/mathlib4 \
+python3 replay_round.py --mathlib /path/to/pinned/mathlib4 \
   --lean-bin /path/to/pinned/lean/bin --build-dir /path/to/fresh/objects \
-  SourceProfiles ExceptionalGraph SupportSingletons
+  ThroughNine
+python3 verify_round.py --final
 ```
 
-For a fresh build, first compile the dependencies in their import order; the
-admitted module records and import statements identify them. Parent-directory
-modules are unchanged source dependencies. Mathlib's cache must be available.
+`replay_round.py` computes and builds the full local import closure in dependency
+order; `--plan` prints that order without compiling. With no module arguments it
+selects only exact-source modules admitted in the manifest, excluding deferred
+weight-ten chunks. Parent-directory modules are unchanged source dependencies.
+Mathlib's pinned cache must be available.
 The closed catalog checker itself imports only Lean core definitions.
 
 `integer_patterns.py` discovers integer certificates using SymPy 1.14;
