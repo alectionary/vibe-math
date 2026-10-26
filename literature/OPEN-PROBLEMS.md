@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/150 |
 | Additional identified Lean statements without a build audit | 1/150 |
 | Eligible targets with Lean discovery still unassessed in this extension | 42/150 |
-| Articles/preprints in scope | 174 |
-| Full-text sources screened, including withdrawn history | 143/174 |
-| Current-publication full texts screened | 142 |
+| Articles/preprints in scope | 176 |
+| Full-text sources screened, including withdrawn history | 146/176 |
+| Current-publication full texts screened | 145 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 31/174 |
+| Not fully assessed | 30/176 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -223,8 +223,10 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F136](https://doi.org/10.1016/j.chiabu.2010.12.007) | full text access gap | Not assessed | unassessed_full_text_access_gap |
 | [F137](https://doi.org/10.1016/j.appdev.2016.01.009) | full text access gap | Not assessed | unassessed_full_text_access_gap |
 | [F138](https://doi.org/10.1177/028072700502300102) | full text access gap | Not assessed | unassessed_full_text_access_gap |
-| [F139](https://doi.org/10.1007/s11747-014-0420-7) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F139](https://doi.org/10.1007/s11747-014-0420-7) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
 | [F140](https://doi.org/10.1016/j.alcr.2025.100708) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F141](https://doi.org/10.3389/fphys.2017.00331) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
+| [F142](https://doi.org/10.1177/0265407518787232) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
 
 ## Reproducible evidence and limits
 

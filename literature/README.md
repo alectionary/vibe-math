@@ -1033,7 +1033,7 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 
 ## CFA and measurement-model continuation
 
-[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 metadata records and 39 selected source works; the prior 58-record first pass remains a dated snapshot.
+[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 dissertation records and 41 selected source works; the prior 58-record first pass remains a dated snapshot.
 
 - **F128**: [Development and initial validation of a creative self-efficacy scale for undergraduates: categorical confirmatory factor analysis and multidimensional item response theory](https://doi.org/10.3389/feduc.2023.1306532).
 - **F129**: [Creative Self-Eﬃcacy Scale for Children and Adolescents (CASES): A Development and Validation Study](https://doi.org/10.21500/20112084.5410).
@@ -1048,3 +1048,10 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 - **F138**: [Flood and Psychological Well-Being: Direct, Mediating, and Moderating Effects](https://doi.org/10.1177/028072700502300102).
 - **F139**: [Dispersion of marketing capabilities: Impact on marketing’s influence and business unit outcomes](https://doi.org/10.1007/s11747-014-0420-7).
 - **F140**: [More than intentions: Importance of motherhood predicts first but not subsequent births](https://doi.org/10.1016/j.alcr.2025.100708).
+
+## Dissertation retrieval correction
+
+[All99 route rechecks and seven complete dissertation screens](unl-sem/RETRIEVAL-REPAIR.md). Existing F139 is now fully screened.
+
+- **F141**: [Greater Neural Adaptations following High- vs. Low-Load Resistance Training](https://doi.org/10.3389/fphys.2017.00331).
+- **F142**: [Partner congruence on fertility intentions and values: Implications for birth outcomes](https://doi.org/10.1177/0265407518787232).

@@ -4,7 +4,7 @@ Continuation of [issue #5](https://github.com/alectionary/vibe-math/issues/5) an
 
 **41 missed/related dissertations added: 31 core SEM/CFA/growth/path/measurement records and 10 adjacent IRT/latent-class/exploratory-factor records.** All 41 added authors received targeted downstream searches. 108 additional discovery/identity/copy queries include 32 vocabulary queries. The pass adds 13 source works, 7 complete full-text screens and 2 gated statistical methods directions. It also links new seed author Abdullah Ferdous to the existing F118 coauthored paper without duplicating it.
 
-Abbott's 2010 dissertation is included as UNL-SEM-D067, merging cehsdiss/68 and AAI3402936. Its use of CFA makes it a valid core candidate even though the abstract did not use the literal phrase structural equation modeling. Its body remains unavailable here; two independent later papers explicitly citing it were retrieved and screened. Those are not Abbott-authored publications.
+Abbott's 2010 dissertation is included as UNL-SEM-D067, merging cehsdiss/68 and AAI3402936. Its use of CFA makes it a valid core candidate even though the abstract did not use the literal phrase structural equation modeling. Its body was not recovered during that expansion pass; it was subsequently recovered and screened in the [retrieval correction](RETRIEVAL-REPAIR.md). Two independent later papers explicitly citing it were retrieved and screened. Those are not Abbott-authored publications.
 
 ## New source-supported mathematical directions
 
@@ -75,28 +75,15 @@ Both entries are method directions, not precise theorem claims. They leave the e
 | F136 | [Children's participation in foster care hearings](https://doi.org/10.1016/j.chiabu.2010.12.007) | post_dissertation_author_work | full_text_access_gap |
 | F137 | [Peer victimization and prosocial behavior trajectories: Exploring sources of resilience for victims](https://doi.org/10.1016/j.appdev.2016.01.009) | post_dissertation_author_work | full_text_access_gap |
 | F138 | [Flood and Psychological Well-Being: Direct, Mediating, and Moderating Effects](https://doi.org/10.1177/028072700502300102) | post_dissertation_author_work | full_text_access_gap |
-| F139 | [Dispersion of marketing capabilities: Impact on marketing’s influence and business unit outcomes](https://doi.org/10.1007/s11747-014-0420-7) | post_dissertation_author_work | full_text_access_gap |
+| F139 | [Dispersion of marketing capabilities: Impact on marketing’s influence and business unit outcomes](https://doi.org/10.1007/s11747-014-0420-7) | post_dissertation_author_work | full_text_screened |
 | F140 | [More than intentions: Importance of motherhood predicts first but not subsequent births](https://doi.org/10.1016/j.alcr.2025.100708) | post_dissertation_author_work | full_text_screened |
 
 ## Scope checks, exclusions and remaining access
 
 The candidate ledger records rejected document types, pre-2001 dates, duplicate aliases, exploratory-only leads, proposed-but-unexecuted CFA and unrelated physical-science/regression keyword hits. These are not hidden zero-question papers. The 10 adjacent records remain labeled separately from the 89 core records.
 
-No dissertation body was recovered: all 41 added primary routes returned403; Abbott's CORE routes, Frohn's indexed PDF copy and Bentz's CiteSeer copy also failed. Public-copy records and readable PDF access remain distinct. Six added source works have full-text gaps. Native publisher metadata pages were not counted as full texts solely because they contained references or many characters.
+At the expansion snapshot, no dissertation body had been recovered: all 41 added primary routes returned403; Abbott's CORE routes, Frohn's indexed PDF copy and Bentz's CiteSeer copy also failed. Public-copy records and readable PDF access remain distinct. At that snapshot six added source works had full-text gaps; F139 was subsequently recovered and screened. Current dissertation and article dispositions supersede these historical route failures in [the retrieval correction](RETRIEVAL-REPAIR.md). Native publisher metadata pages were not counted as full texts solely because they contained references or many characters.
 
 The new full-text screens excluded empirical scale validation, race/ethnicity DIF in observed student samples, developmental/sociocultural questions, clinical causal ordering and fertility-attitude associations. No such question is relabeled a mathematical conjecture.
 
 The repository's source records, shared inventory, planning gates and generated reports are updated together. The dated first-pass baseline is preserved. PR review and merge remain with the user.
-
-## Subsequent retrieval correction: 2026-10-26
-
-The earlier failed-download statements describe the survey pass, not document
-availability. A user-supplied ProQuest open-access PDF route subsequently recovered
-UNL-SEM-D067 (283 pages). Its title and Future Research section, printed pp197–203
-(PDF pp211–217), were consulted. The section proposes shorter scales, revised
-items and forced-choice/conjoint measurement, plus empirical longitudinal and
-intervention studies. This selective consultation is not a completed dissertation
-question screen and adds no precise theorem target. Provenance and PDF hash are in
-[retrieval-corrections.json](retrieval-corrections.json); the copyrighted PDF stays
-outside Git. The stable [ProQuest record](https://www.proquest.com/docview/305217740)
-is retained instead of the temporary signed download URL.
