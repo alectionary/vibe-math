@@ -1,0 +1,9 @@
+theorem normPerm_span (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (r : Equiv.Perm (Fin 3)) (c : Equiv.Perm (Fin 4))
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2) :
+    GeneralLP.InSpanX (normPermE e r c) (normPermU e r c u) (normPermV e r c v) (*@$\leftrightarrow$@*)
+      GeneralLP.InSpanX e u v := by
+  unfold normPermE normPermU normPermV
+  rw [normalize_is_gauge,full_span_gauge_iff]
+  exact perm_source_span_iff e r c u v

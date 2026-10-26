@@ -1,0 +1,46 @@
+theorem actual_k23_numbering (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : NoFour (CEdge e)) (h6 : NoSix (CEdge e))
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (hk : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*GeneralLP.join u v q)=0)
+    (hw : (CoverWeight.support (GeneralLP.join u v)).card(*@$\le$@*)11)
+    (hU : leftCount u 3=5) (hV : (*@$\forall$@*) i,rightCount v i=1) : Nonempty (K23Numbering e u) := by
+  classical
+  obtain (*@$\langle$@*)f(*@$\rangle$@*) := exceptional_group_is_k23 e h4 h6 u v hk hw 3 hU hV
+  have hcoords (x : Fin 5) : (*@$\exists$@*) k s,(f.symm x).val=.inl ((3,k),s) (*@$\land$@*) u 3 k s(*@$\ne$@*)0 :=
+    left_support_coordinates u 3 (f.symm x).val (f.symm x).property
+  choose K S hq using hcoords
+  refine (*@$\langle$@*){
+    K := K
+    S := S
+    nonzero := fun x => (hq x).2
+    injective := ?_
+    covers := ?_
+    adjacency := ?_
+  }(*@$\rangle$@*)
+  (*@$\cdot$@*) intro x y he
+    apply f.symm.injective
+    apply Subtype.ext
+    rw [(hq x).1,(hq y).1]
+    have ha := congrArg Prod.fst he
+    have hb := congrArg Prod.snd he
+    change K x=K y at ha
+    change S x=S y at hb
+    rw [ha,hb]
+  (*@$\cdot$@*) intro k s hn
+    let z : leftSupport u 3 := (*@$\langle$@*).inl ((3,k),s),by simp [hn](*@$\rangle$@*)
+    refine (*@$\langle$@*)f z,?_(*@$\rangle$@*)
+    have he := (hq (f z)).1
+    simp only [f.symm_apply_apply] at he
+    change Sum.inl ((3,k),s)=Sum.inl ((3,K (f z)),S (f z)) at he
+    have hp := Sum.inl.inj he
+    exact (*@$\langle$@*)(congrArg (fun p => p.1.2) hp).symm,(congrArg Prod.snd hp).symm(*@$\rangle$@*)
+  (*@$\cdot$@*) intro x y
+    have hx : (f.symm x).val=.inl ((3,K x),S x) := (hq x).1
+    have hy : (f.symm y).val=.inl ((3,K y),S y) := (hq y).1
+    have hn : f.symm x(*@$\ne$@*)f.symm y (*@$\leftrightarrow$@*) x(*@$\ne$@*)y := f.symm.injective.ne_iff
+    change (x(*@$\ne$@*)y (*@$\land$@*) (*@$\exists$@*) c,ZEdge e (.inl ((3,K x),S x)) c (*@$\land$@*) ZEdge e (.inl ((3,K y),S y)) c) (*@$\leftrightarrow$@*)
+      (SimpleGraph.turanGraph 5 2).Adj x y
+    rw [(*@$\leftarrow$@*) f.symm.map_adj_iff]
+    change (x(*@$\ne$@*)y (*@$\land$@*) _) (*@$\leftrightarrow$@*) (f.symm x(*@$\ne$@*)f.symm y (*@$\land$@*) _)
+    rw [hn,hx,hy]

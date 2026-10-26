@@ -1,0 +1,13 @@
+theorem source_pauli_bound_twelve
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : TannerSix.NoFour (CEdge e)) (h6 : TannerSix.NoSix (CEdge e))
+    (hR0 : (*@$\forall$@*) j,e 0 j=0) (hC0 : (*@$\forall$@*) i,e i 0=0)
+    (hCP : NoColumnPartition e) (hP : NoTripleRow e)
+    (D : (*@$\mathbb N$@*)) (hC : ClassicalAtLeast e D) (hT : TransposeAtLeast e D)
+    (x z : Qubit L (*@$\to$@*) ZMod 2)
+    (hx : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*x q)=0)
+    (hz : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HX e c q*z q)=0)
+    (hn : (*@$\neg$@*)(fullSpanX e x (*@$\land$@*) fullSpanZ e z)) :
+    min D 12(*@$\le$@*)((CoverWeight.support x)(*@$\cup$@*)(CoverWeight.support z)).card :=
+  source_pauli_bound_twelve_of_coverage complete_coverage10 e D
+    (*@$\langle$@*)h4,h6,hR0,hC0,hCP,hP,hC,hT(*@$\rangle$@*) x z hx hz hn

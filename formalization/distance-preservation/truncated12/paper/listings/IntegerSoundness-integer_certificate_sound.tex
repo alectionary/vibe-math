@@ -1,0 +1,12 @@
+theorem integer_certificate_sound {m n : (*@$\mathbb N$@*)} {A : Type*} [AddCommGroup A]
+    (M : Fin m (*@$\to$@*) Fin n (*@$\to$@*) (*@$\mathbb Z$@*)) (a : Fin m (*@$\to$@*) (*@$\mathbb Z$@*)) (target : Fin n (*@$\to$@*) (*@$\mathbb Z$@*))
+    (x : Fin n (*@$\to$@*) A) (hrows : (*@$\forall$@*) i, integerDot (M i) x=0)
+    (hcert : (*@$\forall$@*) j, target j=(*@$\sum$@*) i, a i*M i j) : integerDot target x=0 := by
+  change ((*@$\sum$@*) j, target j (*@$\bullet$@*) x j)=0
+  calc
+    _ = (*@$\sum$@*) j, (*@$\sum$@*) i, (a i*M i j) (*@$\bullet$@*) x j := by
+      simp_rw [hcert,Finset.sum_smul]
+    _ = (*@$\sum$@*) i, a i (*@$\bullet$@*) integerDot (M i) x := by
+      rw [Finset.sum_comm]
+      simp only [integerDot,Finset.smul_sum,mul_zsmul]
+    _ = 0 := by simp [hrows]

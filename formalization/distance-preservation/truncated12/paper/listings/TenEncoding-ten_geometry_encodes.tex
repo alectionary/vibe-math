@@ -1,0 +1,31 @@
+theorem ten_geometry_encodes
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (hR0 : (*@$\forall$@*) k,e 0 k=0) (hC0 : (*@$\forall$@*) l,e l 0=0)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (d : TenGeometry e u v) :
+    (*@$\exists$@*) p : Fin 124416,Nonempty (PatternRealization e 10 p.val) := by
+  classical
+  choose c hc using (fun j => ordered_column_pair_complete (d.K j 0) (d.K j 1) (d.orderedK j))
+  choose r hr using (fun i => ordered_row_pair_complete (d.H i 0) (d.H i 1) (d.orderedH i))
+  have hK (j : Fin 3) (a : Fin 2) : columnPairValue (c j).val a.val=(d.K j a).val := by
+    fin_cases a
+    (*@$\cdot$@*) exact (hc j).1
+    (*@$\cdot$@*) exact (hc j).2
+  have hH (i : Fin 2) (a : Fin 2) : rowPairValue (r i).val a.val=(d.H i a).val := by
+    fin_cases a
+    (*@$\cdot$@*) exact (hr i).1
+    (*@$\cdot$@*) exact (hr i).2
+  let flips : Fin 6 (*@$\to$@*) Fin 2 := ![d.flip 0 0,d.flip 0 1,d.flip 0 2,d.flip 1 0,d.flip 1 1,d.flip 1 2]
+  obtain (*@$\langle$@*)bits,hbits(*@$\rangle$@*) := six_binary_flips_complete flips
+  have hflip (i : Fin 2) (j : Fin 3) : flip10 (tenRank c r bits) i.val j.val=(d.flip i j).val := by
+    rw [tenRank_flip]
+    fin_cases i <;> fin_cases j
+    (*@$\cdot$@*) simpa [flips] using hbits 0
+    (*@$\cdot$@*) simpa [flips] using hbits 1
+    (*@$\cdot$@*) simpa [flips] using hbits 2
+    (*@$\cdot$@*) simpa [flips] using hbits 3
+    (*@$\cdot$@*) simpa [flips] using hbits 4
+    (*@$\cdot$@*) simpa [flips] using hbits 5
+  exact (*@$\langle$@*)(*@$\langle$@*)tenRank c r bits,tenRank_bound c r bits(*@$\rangle$@*),
+    (*@$\langle$@*)ten_realization_of_geometry d hR0 hC0 c r bits hK hH hflip(*@$\rangle$@*)(*@$\rangle$@*)

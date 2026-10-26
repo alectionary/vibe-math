@@ -1,0 +1,4 @@
+theorem source_classical_minimum_lower (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) :
+    ClassicalAtLeast e (sourceClassicalDistance e) := by
+  intro x hk hn
+  exact Nat.find_min' (source_classical_weight_exists e) (*@$\langle$@*)x,hk,hn,rfl(*@$\rangle$@*)

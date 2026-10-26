@@ -1,0 +1,10 @@
+theorem source_distance_bound_twelve
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : TannerSix.NoFour (CEdge e)) (h6 : TannerSix.NoSix (CEdge e))
+    (hR0 : (*@$\forall$@*) j,e 0 j=0) (hC0 : (*@$\forall$@*) i,e i 0=0)
+    (hCP : NoColumnPartition e) (hP : NoTripleRow e)
+    (hT : (sourceClassicalDistance e : (*@$\mathbb N$@*)(*@$\infty$@*))(*@$\le$@*)sourceTransposeDistance e) :
+    ((min (sourceClassicalDistance e) 12 : (*@$\mathbb N$@*)) : (*@$\mathbb N$@*)(*@$\infty$@*))(*@$\le$@*)sourceQuantumDistance e := by
+  apply (source_quantum_minimum_lower_iff e _).mpr
+  exact source_pauli_bound_twelve e h4 h6 hR0 hC0 hCP hP (sourceClassicalDistance e)
+    (source_classical_minimum_lower e) (source_transpose_comparison_lower e _ hT)

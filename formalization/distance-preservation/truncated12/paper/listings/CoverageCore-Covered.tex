@@ -1,0 +1,2 @@
+def Covered (w start count : Nat) : Prop :=
+  (*@$\forall$@*) p : Fin count,(*@$\exists$@*) c : Certificate,checkCertificateFast w (start+p.val) c=true

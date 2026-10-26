@@ -1,0 +1,19 @@
+theorem constant_singleton_rows {J : Type*} [Nonempty J]
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (hk : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*GeneralLP.join u v q)=0)
+    (a : J (*@$\to$@*) Fin 4) (K : Fin 4) (H : Fin 3)
+    (s : J (*@$\to$@*) ZMod L) (t : Fin 3 (*@$\to$@*) ZMod L)
+    (hu : (*@$\forall$@*) j k' s',u (a j) k' s'=if k'=K (*@$\land$@*) s'=s j then 1 else 0)
+    (hv : (*@$\forall$@*) i l' t',v l' i t'=if l'=H (*@$\land$@*) t'=t i then 1 else 0) :
+    (*@$\exists$@*) z,((*@$\forall$@*) j,u (a j)=rowU e H K z (a j)) (*@$\land$@*) v=rowV e H K z := by
+  have hc (j : J) (i : Fin 3) : s j+e i K=t i-e H (a j) :=
+    singleton_source_check_matches e u v hk (a j) K i H (s j) (t i) (hu j) (hv i)
+  obtain (*@$\langle$@*)z,hs,ht(*@$\rangle$@*) := constant_label_fibers e a (fun i : Fin 3 => i) K H s t hc
+  refine (*@$\langle$@*)z,?_,?_(*@$\rangle$@*)
+  (*@$\cdot$@*) intro j
+    funext k' s'
+    rw [hu,rowU_indicator,hs j]
+  (*@$\cdot$@*) funext l' i t'
+    rw [hv,rowV_indicator,ht i]

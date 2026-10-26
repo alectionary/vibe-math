@@ -9,6 +9,11 @@ proves `dQ >= min(dC,12)` for every normalized, fully populated monomial 3x4
 cyclic base satisfying classical girth at least eight, the exact strengthened
 column/triple-row entry tests, and `dTranspose >= dC`.
 
+The standalone [research report](paper/main.pdf) gives the theorem, full argument,
+source chronology and substantive Lean appendix. [Editable TeX](paper/main.tex),
+[complete proof guide](paper/PROOF-GUIDE.html) and
+[reproducible source archive](paper/truncated-distance-source.zip) accompany it.
+
 The distances are minima for the actual expanded binary source matrices.
 Both entire stabilizer row spans are retained, and quantum weight is the
 ordinary Pauli union weight. The transpose distance is infinity when its

@@ -1,0 +1,6 @@
+theorem covered_single (w start : Nat) (c : Certificate)
+    (h : checkCertificateFast w start c=true) : Covered w start 1 := by
+  intro p
+  have hp : p.val=0 := by omega
+  refine (*@$\langle$@*)c,?_(*@$\rangle$@*)
+  simpa only [hp,Nat.add_zero] using h

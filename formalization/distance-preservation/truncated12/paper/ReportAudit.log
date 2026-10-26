@@ -1,0 +1,370 @@
+TruncatedDistance.classical_incidence {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (v : Fin 4 × ZMod L)
+  (c : Fin 3 × ZMod L) : GeneralLP.C e c v ≠ 0 ↔ TruncatedDistance.CEdge e v c
+'TruncatedDistance.classical_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.quantum_incidence {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (q : FamilyWords.Qubit L)
+  (c : SourceModel.ZCheck L) : GeneralLP.HZ e c q ≠ 0 ↔ TruncatedDistance.ZEdge e q c
+'TruncatedDistance.quantum_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.quantum_no_four {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) : TannerSix.NoFour (TruncatedDistance.ZEdge e)
+'TruncatedDistance.quantum_no_four' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.quantum_no_six {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e)) : TannerSix.NoSix (TruncatedDistance.ZEdge e)
+'TruncatedDistance.quantum_no_six' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.source_kernel_zero_or_two {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (x : FamilyWords.Qubit L → ZMod 2) (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * x q = 0)
+  (hw : (CoverWeight.support x).card ≤ 11) (c : SourceModel.ZCheck L) :
+  {q ∈ CoverWeight.support x | TruncatedDistance.ZEdge e q c}.card = 0 ∨
+    {q ∈ CoverWeight.support x | TruncatedDistance.ZEdge e q c}.card = 2
+'TruncatedDistance.source_kernel_zero_or_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.common_count_parity {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (j : Fin 4) (i : Fin 3) (t : ZMod L), GeneralLP.Syndrome e u v j i t = 0) :
+  ∃ p < 2,
+    (∀ (j : Fin 4), TruncatedDistance.leftCount u j % 2 = p) ∧ ∀ (i : Fin 3), TruncatedDistance.rightCount v i % 2 = p
+'TruncatedDistance.common_count_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.common_block_parity {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (j : Fin 4) (i : Fin 3) (t : ZMod L), GeneralLP.Syndrome e u v j i t = 0) :
+  ∃ p, (∀ (j : Fin 4), TruncatedDistance.leftMass u j = p) ∧ ∀ (i : Fin 3), TruncatedDistance.rightMass v i = p
+'TruncatedDistance.common_block_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.constant_singleton_rows.{u_1} {L : ℕ} [NeZero L] {J : Type u_1} [Nonempty J]
+  (e : Fin 3 → Fin 4 → ZMod L) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0) (a : J → Fin 4) (K : Fin 4)
+  (H : Fin 3) (s : J → ZMod L) (t : Fin 3 → ZMod L)
+  (hu : ∀ (j : J) (k' : Fin 4) (s' : ZMod L), u (a j) k' s' = if k' = K ∧ s' = s j then 1 else 0)
+  (hv : ∀ (i l' : Fin 3) (t' : ZMod L), v l' i t' = if l' = H ∧ t' = t i then 1 else 0) :
+  ∃ z, (∀ (j : J), u (a j) = TruncatedDistance.rowU e H K z (a j)) ∧ v = TruncatedDistance.rowV e H K z
+'TruncatedDistance.constant_singleton_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.eleven_left_marker (f : Fin 4 → ℕ) (h : TruncatedDistance.sortedCounts f = [5, 1, 1, 1]) :
+  ∃ m, f m = 5 ∧ ∀ (j : Fin 4), j ≠ m → f j = 1
+'TruncatedDistance.eleven_left_marker' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.ten_left_marker (f : Fin 4 → ℕ) (h : TruncatedDistance.sortedCounts f = [2, 2, 2, 0]) :
+  ∃ m, f m = 0 ∧ ∀ (j : Fin 4), j ≠ m → f j = 2
+'TruncatedDistance.ten_left_marker' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.ten_right_marker (f : Fin 3 → ℕ) (h : TruncatedDistance.sortedCounts f = [2, 2, 0]) :
+  ∃ m, f m = 0 ∧ ∀ (i : Fin 3), i ≠ m → f i = 2
+'TruncatedDistance.ten_right_marker' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.classified_of_mem_countCases (ab : List ℕ × List ℕ) (hm : ab ∈ TruncatedDistance.countCases)
+  (hM : TruncatedDistance.localMantel ab = true) :
+  ab = ([1, 1, 1, 1], [1, 1, 1]) ∨ ab = ([2, 2, 2, 0], [2, 2, 0]) ∨ ab = ([5, 1, 1, 1], [1, 1, 1])
+'TruncatedDistance.classified_of_mem_countCases' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.count_cases_length : TruncatedDistance.countCases.length = 44
+'TruncatedDistance.count_cases_length' depends on axioms: [propext]
+KernelCatalog.complete_coverage10 : KernelCatalog.Covered 10 0 124416
+'KernelCatalog.complete_coverage10' depends on axioms: [propext, Quot.sound]
+KernelCatalog.complete_coverage11 : KernelCatalog.Covered 11 0 58752
+'KernelCatalog.complete_coverage11' depends on axioms: [propext, Quot.sound]
+KernelCatalog.Covered (w start count : ℕ) : Prop
+'KernelCatalog.Covered' does not depend on any axioms
+KernelCatalog.covered_append (w start a b : ℕ) (ha : KernelCatalog.Covered w start a)
+  (hb : KernelCatalog.Covered w (start + a) b) : KernelCatalog.Covered w start (a + b)
+'KernelCatalog.covered_append' depends on axioms: [propext, Quot.sound]
+KernelCatalog.covered_single (w start : ℕ) (c : KernelCatalog.Certificate)
+  (h : KernelCatalog.checkCertificateFast w start c = true) : KernelCatalog.Covered w start 1
+'KernelCatalog.covered_single' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.no_full_row_of_no_triple {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h : TruncatedDistance.NoTripleRow e) : TruncatedDistance.NoFullRowRCPC e
+'TruncatedDistance.no_full_row_of_no_triple' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.sourceClassicalDistance {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) : ℕ
+'TruncatedDistance.sourceClassicalDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.sourceClassicalHasWeight {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (n : ℕ) : Prop
+'TruncatedDistance.sourceClassicalHasWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.sourceQuantumDistance {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) : ℕ∞
+'TruncatedDistance.sourceQuantumDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.sourceQuantumHasWeight {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (n : ℕ∞) : Prop
+'TruncatedDistance.sourceQuantumHasWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.sourceTransposeDistance {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) : ℕ∞
+'TruncatedDistance.sourceTransposeDistance' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.sourceTransposeHasWeight {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (n : ℕ∞) : Prop
+'TruncatedDistance.sourceTransposeHasWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_classical_minimum_lower {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) :
+  TruncatedDistance.ClassicalAtLeast e (TruncatedDistance.sourceClassicalDistance e)
+'TruncatedDistance.source_classical_minimum_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_classical_minimum_realized {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) :
+  TruncatedDistance.sourceClassicalHasWeight e (TruncatedDistance.sourceClassicalDistance e)
+'TruncatedDistance.source_classical_minimum_realized' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_quantum_minimum_lower_iff {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (b : ℕ) :
+  ↑b ≤ TruncatedDistance.sourceQuantumDistance e ↔
+    ∀ (x z : FamilyWords.Qubit L → ZMod 2),
+      (∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * x q = 0) →
+        (∀ (c : GeneralLP.XCheck L), ∑ q, GeneralLP.HX e c q * z q = 0) →
+          ¬(TruncatedDistance.fullSpanX e x ∧ TruncatedDistance.fullSpanZ e z) →
+            b ≤ (CoverWeight.support x ∪ CoverWeight.support z).card
+'TruncatedDistance.source_quantum_minimum_lower_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_transpose_zero_kernel_infinity {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (hz : ∀ (y : Fin 3 × ZMod L → ZMod 2), (∀ (q : Fin 4 × ZMod L), ∑ a, GeneralLP.C e a q * y a = 0) → y = 0) :
+  TruncatedDistance.sourceTransposeDistance e = ⊤
+'TruncatedDistance.source_transpose_zero_kernel_infinity' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_distance_bound_twelve {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (hR0 : ∀ (j : Fin 4), e 0 j = 0) (hC0 : ∀ (i : Fin 3), e i 0 = 0) (hCP : TruncatedDistance.NoColumnPartition e)
+  (hP : TruncatedDistance.NoTripleRow e)
+  (hT : ↑(TruncatedDistance.sourceClassicalDistance e) ≤ TruncatedDistance.sourceTransposeDistance e) :
+  ↑(min (TruncatedDistance.sourceClassicalDistance e) 12) ≤ TruncatedDistance.sourceQuantumDistance e
+'TruncatedDistance.source_distance_bound_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.eleven_geometry_encodes {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (d : TruncatedDistance.ElevenGeometry e) : ∃ p, Nonempty (TruncatedDistance.PatternRealization e 11 ↑p)
+'TruncatedDistance.eleven_geometry_encodes' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.actual_eleven_geometry {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11) (n : TruncatedDistance.K23Numbering e u)
+  (c : TruncatedDistance.K23InternalChecks e u n) (K : Fin 3 → Fin 4) (S : Fin 3 → ZMod L) (H : Fin 3 → Fin 3)
+  (T : Fin 3 → ZMod L) (hK : Function.Injective K) (hH : Function.Injective H)
+  (hMatch : ∀ (j i : Fin 3), S j + e i (K j) = T i - e (H i) (TruncatedDistance.lowColumn j))
+  (hv : ∀ (i l : Fin 3) (t : ZMod L), v l i t = if l = H i ∧ t = T i then 1 else 0) :
+  Nonempty (TruncatedDistance.ElevenGeometry e)
+'TruncatedDistance.actual_eleven_geometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.exceptional_group_is_k23 {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11) (j : Fin 4) (hU : TruncatedDistance.leftCount u j = 5)
+  (hV : ∀ (i : Fin 3), TruncatedDistance.rightCount v i = 1) :
+  Nonempty
+    (TruncatedDistance.normalGraph (TruncatedDistance.ZEdge e) (TruncatedDistance.leftSupport u j) ≃g
+      SimpleGraph.turanGraph 5 2)
+'TruncatedDistance.exceptional_group_is_k23' depends on axioms: [propext, Classical.choice, Quot.sound]
+GeneralLP.HX {L : ℕ} (e : Fin 3 → Fin 4 → ZMod L) (c : GeneralLP.XCheck L) (q : FamilyWords.Qubit L) : ZMod 2
+'GeneralLP.HX' depends on axioms: [propext, Classical.choice, Quot.sound]
+GeneralLP.HZ {L : ℕ} (e : Fin 3 → Fin 4 → ZMod L) (c : GeneralLP.ZCheck L) (q : FamilyWords.Qubit L) : ZMod 2
+'GeneralLP.HZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+GeneralLP.InSpanX {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (v : Fin 3 → Fin 3 → ZMod L → ZMod 2) : Prop
+'GeneralLP.InSpanX' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.fullSpanX {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (x : FamilyWords.Qubit L → ZMod 2) : Prop
+'TruncatedDistance.fullSpanX' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.fullSpanZ {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (x : FamilyWords.Qubit L → ZMod 2) : Prop
+'TruncatedDistance.fullSpanZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.full_span_swap {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (x : FamilyWords.Qubit L → ZMod 2) :
+  TruncatedDistance.fullSpanX e x ↔ TruncatedDistance.fullSpanZ e fun q => x (TruncatedDistance.squareSwap q)
+'TruncatedDistance.full_span_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.kernel_swap {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (x : FamilyWords.Qubit L → ZMod 2) :
+  (∀ (c : SourceModel.ZCheck L), ∑ q, GeneralLP.HZ e c q * x q = 0) ↔
+    ∀ (c : SourceModel.XCheck L), ∑ q, GeneralLP.HX e c q * x (TruncatedDistance.squareSwap q) = 0
+'TruncatedDistance.kernel_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.swap_weight {L : ℕ} [NeZero L] (x : FamilyWords.Qubit L → ZMod 2) :
+  (CoverWeight.support fun q => x (TruncatedDistance.squareSwap q)).card = (CoverWeight.support x).card
+'TruncatedDistance.swap_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.column_two_torsion_impossible {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (a b : Fin 4) (hab : a ≠ b)
+  (ht : ∀ (i : Fin 3), 2 • (e i a - e i b) = 0) : False
+'TruncatedDistance.column_two_torsion_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.integer_certificate_sound.{u_1} {m n : ℕ} {A : Type u_1} [AddCommGroup A] (M : Fin m → Fin n → ℤ)
+  (a : Fin m → ℤ) (target : Fin n → ℤ) (x : Fin n → A) (hrows : ∀ (i : Fin m), TruncatedDistance.integerDot (M i) x = 0)
+  (hcert : ∀ (j : Fin n), target j = ∑ i, a i * M i j) : TruncatedDistance.integerDot target x = 0
+'TruncatedDistance.integer_certificate_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.row_small_torsion_impossible {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (n : ℕ) (hn : 0 < n) (hsmall : n ≤ 3) (i k : Fin 3) (hik : i ≠ k)
+  (ht : ∀ (j : Fin 4), n • (e i j - e k j) = 0) : False
+'TruncatedDistance.row_small_torsion_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.actual_k23_numbering {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11) (hU : TruncatedDistance.leftCount u 3 = 5)
+  (hV : ∀ (i : Fin 3), TruncatedDistance.rightCount v i = 1) : Nonempty (TruncatedDistance.K23Numbering e u)
+'TruncatedDistance.actual_k23_numbering' depends on axioms: [propext, Classical.choice, Quot.sound]
+KernelCatalog.checked_fast_equations.{u_1} {A : Type u_1} [AddCommGroup A] (w p : ℕ) (c : KernelCatalog.Certificate)
+  (hc : KernelCatalog.checkCertificateFast w p c = true) (x : Fin (w + 6) → A)
+  (hr : ∀ (i : Fin 18), TruncatedDistance.integerDot (KernelCatalog.sourceRow w p i) x = 0)
+  (t : Fin (KernelCatalog.targetArity c.kind)) :
+  TruncatedDistance.integerDot (KernelCatalog.certificateTarget w c t) x = 0
+'KernelCatalog.checked_fast_equations' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_left_local_mantel {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11) (j : Fin 4) :
+  ∑ i, (TruncatedDistance.leftCount u j - TruncatedDistance.rightCount v i) / 2 ≤
+    TruncatedDistance.leftCount u j ^ 2 / 4
+'TruncatedDistance.source_left_local_mantel' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_right_local_mantel {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11) (i : Fin 3) :
+  ∑ j, (TruncatedDistance.rightCount v i - TruncatedDistance.leftCount u j) / 2 ≤
+    TruncatedDistance.rightCount v i ^ 2 / 4
+'TruncatedDistance.source_right_local_mantel' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.PatternRealization {L : ℕ} (e : Fin 3 → Fin 4 → ZMod L) (w p : ℕ) : Type
+'TruncatedDistance.PatternRealization' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.certified_pattern_has_no_source_realization {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (hR0 : ∀ (j : Fin 4), e 0 j = 0) (hC0 : ∀ (i : Fin 3), e i 0 = 0) (hCP : TruncatedDistance.NoColumnPartition e)
+  (hP : TruncatedDistance.NoTripleRow e) (D : ℕ) (hC : TruncatedDistance.ClassicalAtLeast e D) (w p : ℕ)
+  (c : KernelCatalog.Certificate) (hc : KernelCatalog.checkCertificateFast w p c = true)
+  (hExtra : TruncatedDistance.needsClassicalBound c.kind → 10 < D) :
+  ¬Nonempty (TruncatedDistance.PatternRealization e w p)
+'TruncatedDistance.certified_pattern_has_no_source_realization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+TruncatedDistance.pauli_bound_of_x_bound {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (b : ℕ)
+  (hbound : ∀ (x : FamilyWords.Qubit L → ZMod 2), TruncatedDistance.pureX e x → b ≤ (CoverWeight.support x).card)
+  (x z : FamilyWords.Qubit L → ZMod 2) (hx : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * x q = 0)
+  (hz : ∀ (c : GeneralLP.XCheck L), ∑ q, GeneralLP.HX e c q * z q = 0)
+  (hn : ¬(TruncatedDistance.fullSpanX e x ∧ TruncatedDistance.fullSpanZ e z)) :
+  b ≤ (CoverWeight.support x ∪ CoverWeight.support z).card
+'TruncatedDistance.pauli_bound_of_x_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.DistanceCriterion {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ) : Prop
+'TruncatedDistance.DistanceCriterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.normPerm_criterion {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ)
+  (h : TruncatedDistance.DistanceCriterion e D) (r : Equiv.Perm (Fin 3)) (c : Equiv.Perm (Fin 4)) :
+  TruncatedDistance.DistanceCriterion (TruncatedDistance.normPermE e r c) D
+'TruncatedDistance.normPerm_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.normPerm_kernel {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (r : Equiv.Perm (Fin 3))
+  (c : Equiv.Perm (Fin 4)) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (a : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e a q * GeneralLP.join u v q = 0) (a : GeneralLP.ZCheck L) :
+  ∑ q,
+      GeneralLP.HZ (TruncatedDistance.normPermE e r c) a q *
+        GeneralLP.join (TruncatedDistance.normPermU e r c u) (TruncatedDistance.normPermV e r c v) q =
+    0
+'TruncatedDistance.normPerm_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.normPerm_span {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (r : Equiv.Perm (Fin 3))
+  (c : Equiv.Perm (Fin 4)) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2) :
+  GeneralLP.InSpanX (TruncatedDistance.normPermE e r c) (TruncatedDistance.normPermU e r c u)
+      (TruncatedDistance.normPermV e r c v) ↔
+    GeneralLP.InSpanX e u v
+'TruncatedDistance.normPerm_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.normPerm_weight {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (r : Equiv.Perm (Fin 3))
+  (c : Equiv.Perm (Fin 4)) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2) :
+  (CoverWeight.support
+        (GeneralLP.join (TruncatedDistance.normPermU e r c u) (TruncatedDistance.normPermV e r c v))).card =
+    (CoverWeight.support (GeneralLP.join u v)).card
+'TruncatedDistance.normPerm_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.pure_left_zero_below_classical {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ)
+  (hC : TruncatedDistance.ClassicalAtLeast e D) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u 0 q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u 0)).card < D) : u = 0
+'TruncatedDistance.pure_left_zero_below_classical' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.pure_right_zero_below_transpose {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ)
+  (hT : TruncatedDistance.TransposeAtLeast e D) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join 0 v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join 0 v)).card < D) : v = 0
+'TruncatedDistance.pure_right_zero_below_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.single_exception_cancellation {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ) (hD : 6 < D)
+  (hC : TruncatedDistance.ClassicalAtLeast e D) (u a : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (v b : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hSpan : GeneralLP.InSpanX e a b) (j₀ : Fin 4) (hU : TruncatedDistance.leftCount u j₀ ≤ 5)
+  (hA : TruncatedDistance.leftCount a j₀ ≤ 1) (hOutside : ∀ (j : Fin 4), j ≠ j₀ → u j = a j) (hRight : v = b) :
+  GeneralLP.InSpanX e u v
+'TruncatedDistance.single_exception_cancellation' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_canonical_eleven_stabilizer {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (hR0 : ∀ (j : Fin 4), e 0 j = 0) (hC0 : ∀ (i : Fin 3), e i 0 = 0) (hCP : TruncatedDistance.NoColumnPartition e)
+  (hP : TruncatedDistance.NoTripleRow e) (D : ℕ) (hD : 10 < D) (hC : TruncatedDistance.ClassicalAtLeast e D)
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11)
+  (hU : ∀ (j : Fin 3), TruncatedDistance.leftCount u (TruncatedDistance.lowColumn j) = 1)
+  (hU3 : TruncatedDistance.leftCount u 3 = 5) (hV : ∀ (i : Fin 3), TruncatedDistance.rightCount v i = 1) :
+  GeneralLP.InSpanX e u v
+'TruncatedDistance.source_canonical_eleven_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_mixed_count_profiles {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card ≤ 11) (hU : 0 < ∑ j, TruncatedDistance.leftCount u j)
+  (hV : 0 < ∑ i, TruncatedDistance.rightCount v i) :
+  (TruncatedDistance.sortedCounts (TruncatedDistance.leftCount u),
+        TruncatedDistance.sortedCounts (TruncatedDistance.rightCount v)) =
+      ([1, 1, 1, 1], [1, 1, 1]) ∨
+    (TruncatedDistance.sortedCounts (TruncatedDistance.leftCount u),
+          TruncatedDistance.sortedCounts (TruncatedDistance.rightCount v)) =
+        ([2, 2, 2, 0], [2, 2, 0]) ∨
+      (TruncatedDistance.sortedCounts (TruncatedDistance.leftCount u),
+          TruncatedDistance.sortedCounts (TruncatedDistance.rightCount v)) =
+        ([5, 1, 1, 1], [1, 1, 1])
+'TruncatedDistance.source_mixed_count_profiles' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.seven_certificates_complete (p : Fin 144) :
+  ∃ c, KernelCatalog.checkCertificateFast 7 (↑p) c = true ∧ ¬TruncatedDistance.needsClassicalBound c.kind
+'TruncatedDistance.seven_certificates_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_seven_singleton_profile_stabilizer {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (hR0 : ∀ (j : Fin 4), e 0 j = 0) (hC0 : ∀ (i : Fin 3), e i 0 = 0) (hCP : TruncatedDistance.NoColumnPartition e)
+  (hP : TruncatedDistance.NoTripleRow e) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hker : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hU : ∀ (j : Fin 4), TruncatedDistance.leftCount u j = 1) (hV : ∀ (i : Fin 3), TruncatedDistance.rightCount v i = 1) :
+  GeneralLP.InSpanX e u v
+'TruncatedDistance.source_seven_singleton_profile_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.actual_singleton_label_alternative.{u_2} {L : ℕ} [NeZero L] {J : Type u_2} [Nonempty J] [Nontrivial J]
+  (e : Fin 3 → Fin 4 → ZMod L) (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0) (a : J → Fin 4)
+  (ha : Function.Injective a) (hU : ∀ (j : J), TruncatedDistance.leftCount u (a j) = 1)
+  (hV : ∀ (i : Fin 3), TruncatedDistance.rightCount v i = 1) :
+  ∃ k s l t,
+    (∀ (j : J) (k' : Fin 4) (s' : ZMod L), u (a j) k' s' = if k' = k j ∧ s' = s j then 1 else 0) ∧
+      (∀ (i l' : Fin 3) (t' : ZMod L), v l' i t' = if l' = l i ∧ t' = t i then 1 else 0) ∧
+        (∀ (j : J) (i : Fin 3), s j + e i (k j) = t i - e (l i) (a j)) ∧
+          ((∃ K H, (∀ (j : J), k j = K) ∧ ∀ (i : Fin 3), l i = H) ∨ Function.Injective k ∧ Function.Injective l)
+'TruncatedDistance.actual_singleton_label_alternative' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_target_obstruction {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (hR0 : ∀ (j : Fin 4), e 0 j = 0) (hC0 : ∀ (i : Fin 3), e i 0 = 0) (hCP : TruncatedDistance.NoColumnPartition e)
+  (hP : TruncatedDistance.NoTripleRow e) (D : ℕ) (hC : TruncatedDistance.ClassicalAtLeast e D) (p : Fin 64)
+  (hExtra : TruncatedDistance.needsClassicalBound ↑p → 10 < D)
+  (hz : ∀ (t : Fin (KernelCatalog.targetArity ↑p)), TruncatedDistance.targetForm e ↑p ↑t = 0) : False
+'TruncatedDistance.source_target_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.actual_canonical_ten_support_encodes {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (hR0 : ∀ (k : Fin 4), e 0 k = 0) (hC0 : ∀ (l : Fin 3), e l 0 = 0)
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hU0 : TruncatedDistance.leftCount u 0 = 0) (hV0 : TruncatedDistance.rightCount v 0 = 0)
+  (hU : ∀ (j : Fin 3), TruncatedDistance.leftCount u j.succ = 2)
+  (hV : ∀ (i : Fin 2), TruncatedDistance.rightCount v i.succ = 2) :
+  ∃ p, Nonempty (TruncatedDistance.PatternRealization e 10 ↑p)
+'TruncatedDistance.actual_canonical_ten_support_encodes' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.ten_geometry_encodes {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (hR0 : ∀ (k : Fin 4), e 0 k = 0)
+  (hC0 : ∀ (l : Fin 3), e l 0 = 0) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (d : TruncatedDistance.TenGeometry e u v) : ∃ p, Nonempty (TruncatedDistance.PatternRealization e 10 ↑p)
+'TruncatedDistance.ten_geometry_encodes' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_ten_geometry {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (hR0 : ∀ (k : Fin 4), e 0 k = 0) (hC0 : ∀ (l : Fin 3), e l 0 = 0)
+  (u : Fin 4 → Fin 4 → ZMod L → ZMod 2) (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * GeneralLP.join u v q = 0)
+  (hU0 : TruncatedDistance.leftCount u 0 = 0) (hV0 : TruncatedDistance.rightCount v 0 = 0)
+  (hU : ∀ (j : Fin 3), TruncatedDistance.leftCount u j.succ = 2)
+  (hV : ∀ (i : Fin 2), TruncatedDistance.rightCount v i.succ = 2) : Nonempty (TruncatedDistance.TenGeometry e u v)
+'TruncatedDistance.source_ten_geometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.tenRank_bound (c : Fin 3 → Fin 6) (r : Fin 2 → Fin 3) (bits : Fin 64) :
+  TruncatedDistance.tenRank c r bits < 124416
+'TruncatedDistance.tenRank_bound' depends on axioms: [propext, Quot.sound]
+TruncatedDistance.source_kernel_below_twelve_is_stabilizer {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ)
+  (h : TruncatedDistance.DistanceCriterion e D) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (a : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e a q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card < min D 12) : GeneralLP.InSpanX e u v
+'TruncatedDistance.source_kernel_below_twelve_is_stabilizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_pauli_bound_twelve {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L)
+  (h4 : TannerSix.NoFour (TruncatedDistance.CEdge e)) (h6 : TannerSix.NoSix (TruncatedDistance.CEdge e))
+  (hR0 : ∀ (j : Fin 4), e 0 j = 0) (hC0 : ∀ (i : Fin 3), e i 0 = 0) (hCP : TruncatedDistance.NoColumnPartition e)
+  (hP : TruncatedDistance.NoTripleRow e) (D : ℕ) (hC : TruncatedDistance.ClassicalAtLeast e D)
+  (hT : TruncatedDistance.TransposeAtLeast e D) (x z : FamilyWords.Qubit L → ZMod 2)
+  (hx : ∀ (c : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e c q * x q = 0)
+  (hz : ∀ (c : GeneralLP.XCheck L), ∑ q, GeneralLP.HX e c q * z q = 0)
+  (hn : ¬(TruncatedDistance.fullSpanX e x ∧ TruncatedDistance.fullSpanZ e z)) :
+  min D 12 ≤ (CoverWeight.support x ∪ CoverWeight.support z).card
+'TruncatedDistance.source_pauli_bound_twelve' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_classical_word_le10 {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (c : Fin 4) (hc : c ≠ 0)
+  (h0 : ∀ (i : Fin 3), e i 0 = 0) (ht : ∀ (i : Fin 3), 5 • e i c = 0) :
+  ∃ x, (∀ (a : Fin 3 × ZMod L), ∑ q, GeneralLP.C e a q * x q = 0) ∧ x ≠ 0 ∧ (CoverWeight.support x).card ≤ 10
+'TruncatedDistance.source_classical_word_le10' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.torsionWord {L : ℕ} (n : ℕ) (c : Fin 4) (q : Fin 4 × ZMod L) : ZMod 2
+'TruncatedDistance.torsionWord' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.torsionWord_source_kernel {L : ℕ} [NeZero L] (e : Fin 3 → Fin 4 → ZMod L) (n : ℕ) (c : Fin 4)
+  (h0 : ∀ (i : Fin 3), e i 0 = 0) (ht : ∀ (i : Fin 3), n • e i c = 0) (a : Fin 3 × ZMod L) :
+  ∑ q, GeneralLP.C e a q * TruncatedDistance.torsionWord n c q = 0
+'TruncatedDistance.torsionWord_source_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.torsion_card_le {L : ℕ} [NeZero L] (n : ℕ) (hn : 0 < n) : (TruncatedDistance.torsionSet n).card ≤ n
+'TruncatedDistance.torsion_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+TruncatedDistance.source_kernel_below_twelve_of_coverage {L : ℕ} [NeZero L]
+  (hCoverage : KernelCatalog.Covered 10 0 124416) (e : Fin 3 → Fin 4 → ZMod L) (D : ℕ)
+  (h : TruncatedDistance.DistanceCriterion e D) (u : Fin 4 → Fin 4 → ZMod L → ZMod 2)
+  (v : Fin 3 → Fin 3 → ZMod L → ZMod 2)
+  (hk : ∀ (a : GeneralLP.ZCheck L), ∑ q, GeneralLP.HZ e a q * GeneralLP.join u v q = 0)
+  (hw : (CoverWeight.support (GeneralLP.join u v)).card < min D 12) : GeneralLP.InSpanX e u v
+'TruncatedDistance.source_kernel_below_twelve_of_coverage' depends on axioms: [propext, Classical.choice, Quot.sound]

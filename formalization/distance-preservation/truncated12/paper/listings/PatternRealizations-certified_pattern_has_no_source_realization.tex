@@ -1,0 +1,19 @@
+theorem certified_pattern_has_no_source_realization
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : TannerSix.NoFour (CEdge e)) (h6 : TannerSix.NoSix (CEdge e))
+    (hR0 : (*@$\forall$@*) j,e 0 j=0) (hC0 : (*@$\forall$@*) i,e i 0=0)
+    (hCP : NoColumnPartition e) (hP : NoTripleRow e)
+    (D : (*@$\mathbb N$@*)) (hC : ClassicalAtLeast e D) (w p : (*@$\mathbb N$@*)) (c : Certificate)
+    (hc : checkCertificateFast w p c=true)
+    (hExtra : needsClassicalBound c.kind (*@$\to$@*) 10<D) : (*@$\neg$@*)Nonempty (PatternRealization e w p) := by
+  rintro (*@$\langle$@*)h(*@$\rangle$@*)
+  have hkind : c.kind<64 := of_decide_eq_true
+    ((Bool.and_eq_true_iff.mp ((Bool.and_eq_true_iff.mp hc).1)).2)
+  have hz := checked_fast_equations w p c hc (realizationVector e w h.qubits)
+    (realization_rows_zero e hR0 hC0 w p h)
+  apply source_target_obstruction e h4 h6 hR0 hC0 hCP hP D hC (*@$\langle$@*)c.kind,hkind(*@$\rangle$@*) hExtra
+  intro t
+  have ht := hz t
+  change integerDot (extendSix w (targetVector c.kind t.val)) (realizationVector e w h.qubits)=0 at ht
+  rw [dot_extendSix,realization_prefix] at ht
+  simpa only [targetForm,sourceVars,sourceExponents] using ht

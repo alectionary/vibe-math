@@ -1,0 +1,3 @@
+def torsionWord (n : (*@$\mathbb N$@*)) (c : Fin 4) (q : Fin 4 (*@$\times$@*) ZMod L) : ZMod 2 :=
+  (if q.1 = 0 then torsionBit n q.2 else 0) +
+  (if q.1 = c then torsionBit n q.2 else 0)

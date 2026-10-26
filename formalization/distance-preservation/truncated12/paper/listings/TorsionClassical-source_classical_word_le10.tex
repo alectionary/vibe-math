@@ -1,0 +1,9 @@
+theorem source_classical_word_le10 (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (c : Fin 4) (hc : c (*@$\ne$@*) 0) (h0 : (*@$\forall$@*) i, e i 0=0)
+    (ht : (*@$\forall$@*) i, 5 (*@$\bullet$@*) e i c=0) :
+    (*@$\exists$@*) x : (Fin 4 (*@$\times$@*) ZMod L) (*@$\to$@*) ZMod 2,
+      ((*@$\forall$@*) a, ((*@$\sum$@*) q, GeneralLP.C e a q*x q)=0) (*@$\land$@*) x(*@$\ne$@*)0 (*@$\land$@*)
+      (CoverWeight.support x).card(*@$\le$@*)10 := by
+  refine (*@$\langle$@*)torsionWord 5 c,torsionWord_source_kernel e 5 c h0 ht,
+    torsionWord_nonzero 5 c hc,?_(*@$\rangle$@*)
+  simpa using torsionWord_weight_le (L := L) 5 (by decide) c hc

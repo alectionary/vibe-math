@@ -1,0 +1,10 @@
+theorem covered_append (w start a b : Nat)
+    (ha : Covered w start a) (hb : Covered w (start+a) b) : Covered w start (a+b) := by
+  intro p
+  by_cases h : p.val<a
+  (*@$\cdot$@*) exact ha (*@$\langle$@*)p.val,h(*@$\rangle$@*)
+  (*@$\cdot$@*) have ht : p.val-a<b := by have := p.isLt;omega
+    obtain (*@$\langle$@*)c,hc(*@$\rangle$@*) := hb (*@$\langle$@*)p.val-a,ht(*@$\rangle$@*)
+    refine (*@$\langle$@*)c,?_(*@$\rangle$@*)
+    have he : start+a+(p.val-a)=start+p.val := by omega
+    simpa only [he] using hc

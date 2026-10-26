@@ -1,0 +1,670 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,array}
+\usepackage{listings,xcolor,xurl,hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,
+ pdftitle={A truncated distance bound for cyclic lifted-product quantum codes},pdfauthor={}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\F}{\mathbb F_2}\newcommand{\Z}{\mathbb Z}
+\newcommand{\wt}{\operatorname{wt}}\newcommand{\row}{\operatorname{row}}
+\newcommand{\HX}{H_{\mathsf X}}\newcommand{\HZ}{H_{\mathsf Z}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\lean}[2]{\csname proof@#1.#2\endcsname}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\input{proof-targets.tex}
+\lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true,
+ frame=single,framerule=.3pt,breaklines=true,showstringspaces=false,
+ escapeinside={(*@}{@*)},aboveskip=8pt,belowskip=10pt}
+\title{A truncated distance bound for cyclic lifted-product quantum codes\\
+Small-support geometry and checked integer certificates}
+\author{}
+\date{25 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove a sufficient condition for the ordinary Pauli distance of a symmetric
+cyclic lifted-product code to satisfy $d_Q\geq\min(d_C,12)$.
+The base is a normalized, fully populated $3\times4$ monomial matrix over
+$\F[x]/(x^L-1)$. The conditions are classical Tanner girth at least eight,
+absence of a full column partition, exclusion of three equal values of each
+three-row pairing form, and transpose-code distance at least $d_C$.
+The proof works for arbitrary cyclic lift length, including composite lengths.
+A source-kernel argument reduces every mixed support of weight at most eleven
+to three block-count profiles, of weights seven, ten and eleven.
+Actual support encodings and 183,312 checked integer certificates eliminate
+the non-stabilizer possibilities. Six exceptional certificates instead force
+a classical word of weight at most ten, which suffices for the distance bound.
+Lean checks the complete implication for the actual expanded binary matrices,
+both full stabilizer spans, both CSS sectors and Pauli union weight, together
+with the literal distance minima and the transpose infinity convention.
+The result is a bounded sufficient condition motivated by Raveendran,
+Declercq and Vasi\'c's question about $d_Q=d_C$; it does not settle that broader
+question.
+\end{abstract}
+
+\section{The theorem and the source question}\label{sec:answer}
+Let $L\geq2$ and $G=\Z/L\Z$. A matrix
+$E:\{0,1,2\}\times\{0,1,2,3\}\to G$ specifies the monomial base
+$B_{ic}=x^{E_{ic}}$. Every entry is present: exponent zero means an identity
+circulant. We normalize
+\begin{equation}\label{eq:normal}
+ E_{0c}=E_{i0}=0.
+\end{equation}
+The associated symmetric lifted product has $25L$ physical qubits and
+binary checks obtained from
+\begin{equation}\label{eq:source}
+ C=\operatorname{expand}(B),\qquad
+ \HX=\operatorname{expand}[B\otimes I_4\mid I_3\otimes B^*],\qquad
+ \HZ=\operatorname{expand}[I_4\otimes B\mid B^*\otimes I_3].
+\end{equation}
+Here star transposes and sends $x$ to $x^{-1}$. Section~\ref{sec:model}
+fixes the coefficient convention and the full logical quotient.
+
+We use two explicit entry tests. The \emph{column test} excludes any partition
+of all four distinct columns $a,b,c,d$ for which
+\begin{equation}\label{eq:column}
+ E_{ia}+E_{ib}=E_{ic}+E_{id}\quad\hbox{for every row }i.
+\end{equation}
+For distinct rows $i,j,k$, put
+\begin{equation}\label{eq:rowform}
+ F_{ijk}(c)=E_{ic}+E_{jc}-2E_{kc}.
+\end{equation}
+The \emph{triple-row test} says that no three distinct columns have the same
+value of $F_{ijk}$. In particular, it excludes a full-row RCPC, since four
+zero values would contain three equal values. These tests are stated directly
+in the exponent group; their exact relation to the source conventions is
+recorded in Appendix~\ref{app:scope}.
+
+\begin{theorem}[Truncated source distance]\label{thm:main}
+For the construction~\eqref{eq:source}, assume normalization~\eqref{eq:normal},
+classical Tanner girth at least eight, the column and triple-row tests, and
+$d_{C^{\mathsf T}}\geq d_C$. Then
+\begin{equation}\label{eq:main}
+                         d_Q\geq\min(d_C,12).
+\end{equation}
+The transpose distance is $+\infty$ when $\ker C^{\mathsf T}=0$.
+Quantum distance is measured with both entire stabilizer row spans and
+ordinary Pauli union weight. The implication holds for arbitrary cyclic
+modulus; neither oddness nor primality is assumed.
+\end{theorem}
+
+The complete distance statement is
+\lean{DistanceTwelve}{source_distance_bound_twelve}.
+Its general predicate form,
+\lean{ThroughEleven}{source_pauli_bound_twelve}, assumes that every nonzero
+classical and transpose kernel word has weight at least $D$, and concludes
+the Pauli bound $\min(D,12)$. The proof of Theorem~\ref{thm:main} is completed
+in Section~\ref{sec:assembly}. Appendix~\ref{app:coverage} maps every argument
+below to the checked declarations; the following Lean appendices print
+complete central proof bodies and link every imported research module.
+
+\subsection{What is answered}
+Raveendran, Declercq and Vasi\'c~\cite[Eq.~(9), Definitions 2--5 and
+Section VI]{RDV} ask for sufficient base constraints ensuring equality of the
+quantum and underlying classical distances. Their partition constraints
+motivate examining logical supports near the stabilizer-generator scale.
+For a $3\times4$ base a generator has weight seven, whereas a mixed logical
+can involve more coordinates. A previously established counterfamily
+\cite{Counterfamily} has classical girth eight, no full RCPC and
+$d_Q\leq11<12\leq d_C$, even when its transpose distance is at least $d_C$.
+This motivates controlling partial row pairing as well as full partitions.
+
+The triple-row condition and the truncated target are the bounded criterion
+studied here, rather than a numbered conjecture attributed to the source
+paper. The distinction matters: a lower bound cut off at twelve leaves all
+higher-weight logical supports untreated and supplies no upper bound on $d_Q$.
+
+\begin{longtable}{@{}P{.25\textwidth}P{.32\textwidth}P{.37\textwidth}@{}}
+\toprule Question & Source and locator & Answer\\\midrule\endhead
+Which base constraints ensure $d_Q=d_C$? & Raveendran--Declercq--Vasi\'c,
+arXiv:2503.07567v1, 10 March 2025, Section VI. & Remains open in general here.\\[4pt]
+Does the strengthened normalized $3\times4$ criterion imply
+$d_Q\geq\min(d_C,12)$? & Project-proposed bounded follow-up to that question;
+construction Eq.~(9), entry conventions Definitions 2--5. & Yes:
+Theorem~\ref{thm:main}, including actual source matrices and complete
+stabilizer quotients.\\[4pt]
+Can the finite algebraic obstructions be interpreted for composite lifts? &
+The proof obligation for this criterion. & Yes: integer identities are
+interpreted without division, and the six torsion-five alternatives are
+classical low-weight words (Lemma~\ref{lem:torsion}).\\
+\bottomrule\end{longtable}
+
+\subsection{Comparison and reference chronology}
+Pairing selected coordinates at checks, passing to a colored triangle-free
+normal graph and using exact integer consistency certificates are related
+prior methods in Okada and Kasai~\cite[Sections 3.4 and 3.7]{OK}.
+Their inspected v2 proves distance eighteen for one $[[34542,23032,18]]$
+code and an affine-lift ceiling for a different fixed finite-field base at
+prime lift degree greater than nineteen. Those statements do not establish
+the normalized $3\times4$ cyclic criterion here. The contribution of the
+present proof is its source-complete reduction and certificate interpretation
+for this family at every cyclic modulus, with the full logical quotient.
+
+Lin and Pryadko~\cite[Section IV.6, Statement 12]{LP} give distance bounds for
+two-block group-algebra codes involving a support-intersection subgroup.
+Their two-element construction and bound do not imply this matrix-base
+criterion. Lee~\cite{Lee} supplies exact code-specific distance searches and
+equivalence reductions for small two-block codes; those computations are
+useful background, rather than premises of the universal implication here.
+The tree counting behind paired checks and Mantel's triangle-free edge bound
+are classical ingredients; related stopping-set tree bounds are discussed by
+Kelley et al.~\cite{Kelley}. The actual matrix and quotient translations are
+included in the checked proof.
+
+The central chronology is shown below; Appendix~\ref{app:sources} specifies
+coverage and date precision. Calendar ages are not durations of an unsolved
+problem or measurements of proof effort.
+\begin{center}\small
+\begin{tabular}{@{}P{.25\textwidth}P{.20\textwidth}P{.23\textwidth}P{.23\textwidth}@{}}
+\toprule Source & Earliest date & Inspected version & Age to 25 Oct. 2026\\\midrule
+Raveendran et al.~\cite{RDV} & 10 Mar. 2025 & v1, 10 Mar. 2025 & 594 days\\
+Lin--Pryadko~\cite{LP} & 28 June 2023 & v1, same date & 1,215 days\\
+Okada--Kasai~\cite{OK} & 25 June 2026 & v2, 5 Sept. 2026 & 122 days; 50 from v2\\
+Lee~\cite{Lee} & 9 Oct. 2026 & v2, 12 Oct. 2026 & 16 days; 13 from v2\\
+Kelley et al.~\cite{Kelley} & 2004 (year only) & ISIT 2004 & About 22 years\\
+\bottomrule\end{tabular}
+\end{center}
+
+\section{Source matrices, kernel words and the full quotient}\label{sec:model}
+A classical variable is $(c,s)\in\{0,1,2,3\}\times G$ and a classical check is
+$(i,t)\in\{0,1,2\}\times G$, with coefficient one precisely when
+$t=s+E_{ic}$. Left product coordinates are $U(j,k,s)$, with $j,k\in\{0,1,2,3\}$;
+right coordinates are $V(\ell,i,s)$, with $\ell,i\in\{0,1,2\}$. The actual
+$Z$-check equation at $(j,i,t)$ is
+\begin{equation}\label{eq:syndrome}
+ \sum_k U(j,k,t-E_{ik})+\sum_\ell V(\ell,i,t+E_{\ell j})=0\quad\hbox{in }\F.
+\end{equation}
+A left coordinate meets three checks and a right coordinate meets four.
+Both check matrices have $12L$ rows and $25L$ columns.
+
+For binary vectors $x,z$ on these physical coordinates, let
+\begin{equation}\label{eq:pauli}
+ \HZ x=0,\qquad \HX z=0,\qquad
+ (x,z)\notin\row(\HX)\times\row(\HZ).
+\end{equation}
+Their Pauli weight is $|\supp(x)\cup\supp(z)|$. Every linear combination of
+every stabilizer row is allowed in~\eqref{eq:pauli}; no restricted collection
+of generators is substituted. The quantum distance is the minimum of these
+weights. Equivalently, one may take the extended-natural infimum and assign
+$+\infty$ if there is no nontrivial pair. The lower bound applies to that
+convention as well as the usual positive-logical-dimension regime.
+
+The classical distance is the least nonzero weight in $\ker C$, and the
+transpose distance uses $\ker C^{\mathsf T}$. A pure-left source kernel word
+splits into classical kernel words, one for each $j$; a pure-right word
+splits into transpose kernel words, one for each $i$. Thus a nonzero pure
+word cannot have weight below $D$ if both classical lower predicates hold.
+The checked pure-sector statements are used in Lemma~\ref{lem:global}.
+
+\section{Small supports have only three mixed profiles}\label{sec:geometry}
+\begin{lemma}[Actual incidence and paired checks]\label{lem:incidence}
+Classical no-four/no-six implies no-four/no-six for the actual $Z$-check
+incidence of~\eqref{eq:source}. In a source kernel word of weight at most
+eleven, every check meets its support in zero or two coordinates.
+\end{lemma}
+\begin{proof}
+The coefficient incidence is exactly the relation in~\eqref{eq:syndrome}.
+Two coordinates of the same product block sharing two checks give a classical
+four-cycle; a mixed pair has only one check type in common. A six-cycle
+contained in one block gives a classical six-cycle. In a mixed six-cycle,
+the lone coordinate from one block would have to use the same check type
+twice, contradicting distinctness of the cycle checks.
+
+Kernel parity makes each selected check degree even. If a check met at least
+four selected coordinates, choose four. Each has at least two other checks;
+each of those needs another selected neighbor. Four-cycle exclusion makes
+the eight other checks distinct, and four-/six-cycle exclusion makes their
+eight required support neighbors distinct from one another and from the
+four original coordinates. The support would have at least twelve elements.
+The actual source-degree and short-cycle premises of this tree argument are
+proved in \texttt{ActualIncidence}; its conclusion is
+\lean{ActualIncidence}{source_kernel_zero_or_two}.
+\end{proof}
+
+At each occupied check, join its two selected coordinates. This normal graph
+is simple by four-cycle exclusion and triangle-free by six-cycle exclusion.
+Its left and right vertex degrees are three and four. Set
+\begin{equation}\label{eq:counts}
+ a_j=|\supp U\cap\{\hbox{first index }j\}|,\qquad
+ b_i=|\supp V\cap\{\hbox{second index }i\}|.
+\end{equation}
+\begin{lemma}[Complete mixed count classification]\label{lem:profiles}
+For a source kernel word of weight at most eleven with both blocks nonempty,
+the separately sorted counts are exactly one of
+\begin{equation}\label{eq:profiles}
+ \begin{array}{c|c|c}
+ \hbox{weight}&a&b\\\hline
+ 7&(1,1,1,1)&(1,1,1)\\
+ 10&(2,2,2,0)&(2,2,0)\\
+ 11&(5,1,1,1)&(1,1,1).
+ \end{array}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Sum~\eqref{eq:syndrome} over the fiber variable. For every $j,i$ it gives
+$a_j+b_i=0\pmod2$, so all seven counts have one common parity.
+Let $m_{ji}$ count internal left-left normal edges in bucket $(j,i)$ and
+$c_{ji}$ count cross edges there. Socket counting gives
+$a_j=2m_{ji}+c_{ji}$ and $c_{ji}\leq b_i$. Distinct internal edges of a fixed
+left group form a triangle-free graph on $a_j$ vertices. Mantel's bound gives
+\begin{equation}\label{eq:mantel}
+ \sum_i\frac{\max(a_j-b_i,0)}2\leq\left\lfloor\frac{a_j^2}4\right\rfloor,
+ \qquad
+ \sum_j\frac{\max(b_i-a_j,0)}2\leq\left\lfloor\frac{b_i^2}4\right\rfloor.
+\end{equation}
+All differences being divided by two are even. The analogous right-group
+argument proves the second inequality.
+There are forty-four sorted common-parity profiles with both blocks nonempty
+and total at most eleven. An exhaustive bounded-list enumeration proves
+completeness, and checking~\eqref{eq:mantel} on those profiles leaves exactly
+\eqref{eq:profiles}. The enumeration and inequalities are both checked from
+the actual source kernel in
+\lean{SourceProfiles}{source_mixed_count_profiles}; the independent socket
+classification agrees. The enumeration is over integer counts, not sampled
+bases or lift lengths.
+\end{proof}
+
+\section{Canonical source supports and finite encodings}\label{sec:encoding}
+\begin{lemma}[Transport preserves the complete problem]\label{lem:transport}
+Row/column permutation followed by re-normalization preserves the entry tests,
+classical and transpose lower predicates, source kernel, full stabilizer
+membership, weight and group counts. Hence the missing weight-ten groups
+may be placed at zero and the exceptional weight-eleven group at index three.
+\end{lemma}
+\begin{proof}
+Permutations relabel both tensor factors. For a gauge change
+$E'_{ij}=E_{ij}+r_i+c_j$, use the fiber bijections
+\begin{equation}\label{eq:gauge}
+ U'(j,k,s)=U(j,k,s+c_j+c_k),\qquad
+ V'(\ell,i,s)=V(\ell,i,s-r_\ell-r_i).
+\end{equation}
+Substitution checks the kernel equation; stabilizer coefficients transform
+by $w'(i,j,s)=w(i,j,s-r_i+c_j)$. These are coordinate bijections, so both
+full spans and weight are preserved. Classical and transpose kernels have
+the corresponding coordinate transports.
+
+Re-normalizing a permuted base subtracts one column-independent constant
+from each row form, preserving equality of three values. For the column
+partition form $A_i=E_{ia}+E_{ib}-E_{ic}-E_{id}$ it replaces $A_i$ by
+$A_i-A_r$. The original zero row gives $A_0=0$, so simultaneous vanishing
+is preserved. Girth is preserved by the source incidence bijections.
+Finally the count classification supplies the unique missing or exceptional
+group and the values of every other group. The complete transports are in
+\texttt{ProfileTransport}; the marker choices are in \texttt{CountCanonical}.
+Thus canonical placement is derived, rather than an additional hypothesis.
+\end{proof}
+
+\begin{lemma}[Singleton labels and the constant-row branch]\label{lem:singleton}
+The singleton groups in the weight-seven and weight-eleven profiles have
+label maps that are either both constant or both injective. The constant
+case is in the full stabilizer span when the word is below the classical
+lower bound. The weight-seven profile is always a stabilizer under the
+entry tests.
+\end{lemma}
+\begin{proof}
+Write a singleton left coordinate as $(j,k_j,s_j)$ and a right coordinate
+as $(\ell_i,i,t_i)$. Their actual cross checks give
+\begin{equation}\label{eq:cross}
+ s_j+E_{i,k_j}=t_i-E_{\ell_i,j}.
+\end{equation}
+If two $k_j$ agree, subtraction forces a column difference to be independent
+of $i$; classical four-cycle exclusion forces all $\ell_i$ to agree.
+The converse is symmetric. Hence the maps are both constant or both injective.
+
+For constants $K,H$, equation~\eqref{eq:cross} supplies a common $z$ with
+$s_j=z-E_{Hj}$ and $t_i=z+E_{iK}$. These are precisely the coordinates of
+the complete $X$-stabilizer row indexed by $(H,K,z)$. At weight seven this
+is the whole word. At weight eleven, adding that row cancels the three
+singleton left coordinates and all three right coordinates; the remainder
+is pure-left of weight at most six. Below the classical lower bound it
+vanishes, proving full stabilizer membership. The checked source statement
+includes the right coordinates and all stabilizer coefficients.
+
+In the injective weight-seven case, the label maps are permutations of four
+columns and three rows. The resulting $24\cdot6=144$ patterns are all
+certified forbidden by the entry/girth tests through the integer argument
+of Section~\ref{sec:certificates}. Actual source realizations are constructed
+in \texttt{SourceSeven}; none is postulated as a new premise.
+\end{proof}
+
+\begin{lemma}[Complete weight-ten encoding]\label{lem:ten}
+Every actual weight-ten kernel support with counts in~\eqref{eq:profiles},
+after the transport of Lemma~\ref{lem:transport}, realizes an index in a
+catalog of size $124,416$.
+\end{lemma}
+\begin{proof}
+At the missing right row zero, each remaining two-coordinate left group
+must be internally paired. Its two fibers agree by normalization, and its
+two column labels differ. The same two coordinates cannot be internally
+paired at another row, since that would give a classical four-cycle.
+Similarly each right pair is internally matched at missing left column zero,
+with equal fibers and different row labels. Every other bucket is a
+bijection between two-element sets and has exactly two matching choices.
+
+The three increasingly ordered column pairs are selected from six possibilities each,
+the two increasingly ordered row pairs from three possibilities each, and the six
+cross-bucket matchings from two possibilities each. Thus the finite decoder
+has $6^3 3^2 2^6=124,416$ indices. The geometry is extracted from actual
+supports; rank bounds, decoder identities and every source incidence are
+proved before applying the catalog. The complete interface is
+\lean{TenEncoding}{actual_canonical_ten_support_encodes}.
+\end{proof}
+
+\begin{lemma}[Complete weight-eleven encoding]\label{lem:eleven}
+For a weight-eleven support in~\eqref{eq:profiles}, the constant-label branch
+is covered by Lemma~\ref{lem:singleton}. Every injective-label support realizes
+an index in a catalog of size $58,752$.
+\end{lemma}
+\begin{proof}
+The exceptional left group has five vertices and six internal normal edges:
+its fifteen sockets have exactly three cross partners. A triangle-free
+five-vertex graph with six edges is $K_{2,3}$. Its two centers use all three
+row colors internally; each leaf has one missing color and one cross partner.
+The missing colors are distinct because the right singleton in any row has
+only one socket at the exceptional first-index group. Index the leaves by
+those missing colors. There are two compatible row-color orientations.
+Adjacent internal vertices cannot have the same second column label, since
+their common source check would then force identical coordinates.
+
+The complete finite label table has 204 admissible center/leaf tuples.
+There are 24 injective singleton-column maps, six row permutations and two
+orientations, giving $24\cdot6\cdot204\cdot2=58,752$ decoder indices.
+The actual $K_{2,3}$ numbering, colors, missing-row permutation, singleton
+partners and eighteen source incidences are extracted in the source proof.
+\lean{SourceEleven}{source_canonical_eleven_stabilizer} assembles this encoding
+with the complete constant-label branch and the certified exclusions.
+\end{proof}
+
+\section{Integer certificates for every encoded pattern}\label{sec:certificates}
+\begin{lemma}[Universal interpretation of the certificates]\label{lem:cert}
+A checked integer row identity for a catalog pattern implies its specified
+forbidden equation in $G$, whenever that pattern has an actual source
+realization. This implication requires no division and holds at every cyclic
+modulus.
+\end{lemma}
+\begin{proof}
+Let $y$ consist of the six normalized exponents and the $w$ vertex fibers.
+Every matching edge gives a homogeneous integer equation in these variables,
+with signs fixed by~\eqref{eq:syndrome}. The full matching matrix $M$ uses
+eighteen row slots, padding unused slots when necessary. A certificate for
+a target row $f$ is an integer vector $a$ satisfying
+$f_j=\sum_r a_rM_{rj}$ for every variable $j$. In every additive group,
+\[
+ \sum_j f_j y_j=\sum_r a_r\Bigl(\sum_j M_{rj}y_j\Bigr)=0.
+\]
+All fiber columns are included in the checked identity. Certificates involving
+several targets provide each identity separately.
+
+The checker verifies these integer equalities, and
+\lean{KernelCatalog}{checked_fast_equations} interprets its Boolean success
+through \lean{IntegerSoundness}{integer_certificate_sound}.
+An actual realization supplies the matching equations. The sixty-four target
+outcome types are interpreted as short cycles, a prohibited entry pattern,
+small cyclic torsion, or the classical alternative in Lemma~\ref{lem:torsion}.
+This final source exclusion is
+\lean{PatternRealizations}{certified_pattern_has_no_source_realization}.
+\end{proof}
+
+\begin{lemma}[Cyclic torsion and the six classical alternatives]\label{lem:torsion}
+The small row/column torsion outcomes contradict classical no-four.
+Each of the six remaining weight-ten alternatives instead forces a nonzero
+classical word of weight at most ten, contradicting $10<d_C$.
+\end{lemma}
+\begin{proof}
+For distinct rows, the four differences across columns are distinct under
+no-four; for distinct columns, the three row differences are distinct.
+For positive $n$, the $n$-torsion subgroup of $G$ has at most $n$ elements. Consequently four
+distinct row differences cannot all be killed by $1\leq n\leq3$, and three distinct
+column differences cannot all be killed by two.
+
+Each exceptional weight-ten pattern forces $5E_{1c}=5E_{2c}=0$ for some
+$c\ne0$. Set $K=\{s\in G:5s=0\}$ and take the binary indicator of
+$\{0,c\}\times K$. It is nonzero and has weight $2|K|\leq10$.
+In each classical check its two contributions cancel: $E_{i0}=0$, and
+translation by $E_{ic}\in K$ preserves $K$. This is an actual $C$-kernel word,
+proved by \lean{TorsionClassical}{source_classical_word_le10}.
+The alternative contradicts a proposed weight-ten support strictly below
+$d_C$; it is not a qualifying counterexample. In particular the argument
+never divides by five, including when $5\mid L$.
+\end{proof}
+
+\begin{proposition}[Complete quantified catalog coverage]\label{prop:coverage}
+Every decoder index at weights seven, ten and eleven has a kernel-checked
+certificate. The catalog sizes are respectively $144$, $124,416$ and $58,752$.
+\end{proposition}
+\begin{proof}
+Each closed Lean case proves that the full integer-identity checker returns
+true for its explicit certificate. A balanced interval proof assembles the
+closed cases into $\forall p:\operatorname{Fin}(N),\exists c,\mathrm{check}(p,c)$.
+The checked append lemma composes adjacent intervals and covers both branches
+of the index split. The resulting uniform statements are
+\lean{SourceSeven}{seven_certificates_complete},
+\lean{Coverage10}{complete_coverage10} and
+\lean{Coverage11}{complete_coverage11}.
+An independent standard-library verifier reconstructs every matching matrix
+and integer identity; it agrees on all $183,312$ indices, but is not a premise
+of these Lean theorems.
+\end{proof}
+
+\begin{center}\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule Certificate outcome & Weight 7 & Weight 10 & Weight 11\\\midrule
+Classical four-cycle &109&124,129&57,282\\
+Classical six-cycle &16&262&1,008\\
+Forbidden three-column row form &9&9&342\\
+Full column partition &3&3&66\\
+Small cyclic row torsion &1&1&0\\
+Column two-torsion &6&6&54\\
+Classical word of weight at most ten &0&6&0\\\midrule
+Total &144&124,416&58,752\\\bottomrule
+\end{tabular}
+\end{center}
+These are certificate classifications of the finite decoder indices. They
+are not counts of inequivalent codes, lift lengths or logical operators.
+Discovery used integer algebra; checking uses the full source matching rows,
+including fiber variables. No finite case remains unclassified.
+
+\section{The full source bound and ordinary Pauli distance}\label{sec:assembly}
+\begin{lemma}[Global full-span reduction]\label{lem:global}
+Assume the source entry/girth tests and classical/transpose lower predicates
+at $D$. Every source $Z$-kernel word of weight below $\min(D,12)$ lies in the
+entire row span of $\HX$.
+\end{lemma}
+\begin{proof}
+A pure-block word below $D$ is zero by the actual classical or transpose
+kernel bound. Otherwise Lemma~\ref{lem:profiles} leaves only weights seven,
+ten and eleven. Lemma~\ref{lem:transport} supplies canonical placement and
+preserves every hypothesis and the full quotient.
+The weight-seven case is a stabilizer by Lemma~\ref{lem:singleton}.
+For weight ten, Lemma~\ref{lem:ten} gives an actual realization of a certified
+pattern. Its outcome contradicts a source test, or forces $d_C\leq10$ while
+the word has weight ten below $D$. For weight eleven the constant case is a
+stabilizer; the injective case is excluded by Lemma~\ref{lem:eleven} and the
+complete catalog. Transport the resulting full-span statement back to the
+original source coordinates. The case split is printed in the Lean appendix
+as \lean{TwelveConditional}{source_kernel_below_twelve_of_coverage};
+\lean{ThroughEleven}{source_kernel_below_twelve_is_stabilizer} discharges its
+finite-coverage premise with Proposition~\ref{prop:coverage}.
+\end{proof}
+
+\begin{lemma}[Both sectors and union weight]\label{lem:pauli}
+An $X$-logical lower bound $b$ for this source construction gives the same
+$Z$-logical lower bound and the ordinary Pauli lower bound $b$.
+\end{lemma}
+\begin{proof}
+Swap the two finite indices within each tensor-coordinate block.
+This involutive coordinate permutation exchanges the actual $X$/$Z$ kernel
+equations and full spans and preserves support size. A nontrivial Pauli pair
+has a component outside its corresponding full span. That component is a
+pure logical, and its weight is at most the union weight. Apply the sector
+bound and support inclusion. The complete union-weight proof is
+\lean{PauliBridge}{pauli_bound_of_x_bound}.
+\end{proof}
+
+\begin{proposition}[Literal distance minima]\label{prop:minima}
+The classical minimum is attained and satisfies its universal lower predicate.
+The transpose minimum is infinity for a zero transpose kernel, and a comparison
+$D\leq d_{C^{\mathsf T}}$ implies the corresponding lower predicate.
+For the full Pauli quotient, $b\leq d_Q$ is equivalent to saying that every
+nontrivial pair has union weight at least $b$.
+\end{proposition}
+\begin{proof}
+The actual $3L\times4L$ classical matrix has a nonzero kernel word, as proved
+in \texttt{GeneralLPPhysical}; define its distance by the least attained
+natural weight. Leastness gives the universal predicate. Define transpose
+and Pauli distances as extended-natural infima of their actual nonzero-word
+or nontrivial-pair weights. The infimum of the empty set is infinity.
+An infimum is at most each member, and a lower bound on every member is at
+most the infimum. These properties prove the required implications and the
+Pauli equivalence. All three definitions and the bridges are checked in
+\texttt{DistanceMinima}; the public theorem retains the complete quotient.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Set $D=d_C$. Proposition~\ref{prop:minima} supplies the classical lower
+predicate and obtains the transpose predicate from the assumed comparison.
+Lemma~\ref{lem:global} excludes every $X$ logical below $\min(D,12)$;
+Lemma~\ref{lem:pauli} gives the ordinary Pauli bound. Apply the minimum
+characterization in Proposition~\ref{prop:minima}. This is exactly the
+proof body of \lean{DistanceTwelve}{source_distance_bound_twelve}.
+\end{proof}
+
+\section{Implications and remaining question}\label{sec:limits}
+The theorem controls the entire small-support range relevant to the
+truncation: every hypothetical nontrivial word below $\min(d_C,12)$ is
+excluded in the actual source model. The integer argument remains valid
+at even and composite lift lengths; the torsion-five alternatives explain
+why a certificate need not be a pure entry obstruction to finish a distance
+lower bound.
+
+The conclusion is sufficient and one-sided. It does not characterize all
+bases with preserved distance, give an exact $d_Q$, or settle the source's
+unrestricted $d_Q=d_C$ design question. No decoder-performance conclusion
+follows from it. Higher-weight supports need further arguments.
+A concrete possible follow-up is the already-studied $L=13$ base with
+classical distance fourteen and a saved quantum upper witness of weight
+fourteen. Its computational exclusion through thirteen is separate evidence;
+a faithful Lean distance-fourteen certificate would still need the concrete
+hypotheses, upper witness and weight-twelve/thirteen exclusion. That finite
+follow-up is not required for Theorem~\ref{thm:main}.
+
+\appendix
+\clearpage\section{Proof coverage and reproducibility}\label{app:coverage}
+The checked toolchain is Lean 4.36.0-rc1, commit
+\nolinkurl{c9afcddf514a6772bd4d649f7cfc04eff0b9f15e}, with Mathlib commit
+\nolinkurl{5f7b4198d22a9c82e1c698a379334fe128095c82}.
+The immutable proof snapshot is
+\nolinkurl{3ae21c0719cedbd928f4f7882f9b9e266567605e}.
+The main source-distance theorem and source-scope audit have 269 research
+imports, all admitted against matching source and log hashes. Their reported
+axioms are contained in \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound}. No native decision oracle or unproved catalog premise
+is admitted. The dependency cache is pinned; Mathlib itself is not presented
+as newly rebuilt here.
+
+The table maps every theorem/proof in the mathematical exposition to its
+faithful formal counterpart, including the support constructions, finite
+coverage and literal minima. \texttt{ReportAudit.lean} checks the named
+declarations and prints their axiom closures. The following appendices print
+complete central declarations extracted from the immutable checked sources.
+The large finite case files are linked in full in Appendix~\ref{app:links}.
+\begingroup\footnotesize\input{proof-coverage.tex}\endgroup
+
+The proof dependencies can be read in the following order:
+\begin{center}
+\begin{tabular}{c}
+Actual source matrices and incidence\\$\downarrow$\\
+Paired checks, parity and local triangle-free edge bounds\\$\downarrow$\\
+Three count profiles; actual weight-seven/ten/eleven encodings\\$\downarrow$\\
+Full integer identities and quantified finite coverage\\$\downarrow$\\
+Permutation/normalization transport and full-span reduction\\$\downarrow$\\
+Both sectors, union weight and literal distance minima
+\end{tabular}
+\end{center}
+
+From the investigation directory, run the independent verifier and rebuild
+with pinned dependencies in a fresh object directory:
+\begin{lstlisting}
+python3 verify_catalog.py
+python3 replay_round.py --mathlib /path/to/pinned/mathlib4 \
+  --lean-bin /path/to/pinned/lean/bin --build-dir /path/to/fresh/objects \
+  DistanceTwelve CriterionScope
+python3 verify_round.py --round-number 2 --final
+\end{lstlisting}
+The archive preserves relative source relationships and all required research
+imports. Generators, encoded certificates, interval plans and build records
+are included. Discovery outputs and prior unsuccessful classifications remain
+in the research repository; they are not proof premises. The standalone
+report build and integrity checker are described in the bundled
+\texttt{README.txt}. Investigation effort and report preparation timestamps
+are recorded outside the mathematical exposition in the provenance records.
+
+\clearpage\section{Source scope and reference ledger}\label{app:scope}
+The source construction is Raveendran--Declercq--Vasi\'c v1,
+equation (9). The column condition is its full-column RCPC exclusion at
+four columns (Definition 2). At three rows, full-row RCPC has the row form
+\eqref{eq:rowform} equal to zero at every column (Definition 5).
+The stronger triple-row test excludes that case;
+\lean{CriterionScope}{no_full_row_of_no_triple} checks the implication.
+Thus omission of a separate full-row field in the final Lean statement
+removes only a redundant hypothesis. The formal theorem uses a positive
+cyclic modulus; the displayed $L\geq2$ scope is contained in it.
+The actual coefficient matrices, not just a support surrogate, determine all
+kernel and span predicates.
+
+\subsection{Chronology and bounded prior-art coverage}\label{app:sources}
+The manuscript date is 25 October 2026. Exact calendar deltas in the table
+near the introduction are differences to that date, using the earliest
+arXiv posting and the inspected version date separately. The source histories
+are linked in the bibliography and recorded in
+\texttt{reference-chronology.json}. The 2004 stopping-set reference has only
+year precision here, so its age is approximate. A source's age is not a
+claim that its broad question was unsolved throughout that interval.
+
+The source comparison reuses the completed full-text screens in
+\href{https://github.com/alectionary/vibe-math/blob/3ae21c0719cedbd928f4f7882f9b9e266567605e/literature/truncated-distance12-source-screening.json}{the source ledger}.
+It includes the original question, full-theorem comparisons and harvested
+questions from encountered papers. The report metadata pass rechecks dates
+of those same versions; it creates no new paper/question cohort.
+Public GitHub and primary-source searches were bounded. Native X access was
+unavailable; indexed discovery was not treated as authenticated coverage.
+Uninspected leads remain named gaps in the ledger. These limits concern
+source coverage, rather than a premise of the mathematical theorem.
+
+\begin{thebibliography}{9}
+\bibitem{RDV} N. Raveendran, D. Declercq and B. Vasi\'c,
+\emph{On the Minimum Distances of Finite-Length Lifted Product Quantum LDPC Codes},
+\href{https://arxiv.org/abs/2503.07567v1}{arXiv:2503.07567v1}, 10 March 2025.
+Construction Eq.~(9), Definitions 2--5, Sections V-B and VI.
+\bibitem{LP} H.-K. Lin and L. P. Pryadko,
+\emph{Quantum two-block group algebra codes},
+\href{https://arxiv.org/abs/2306.16400v1}{arXiv:2306.16400v1}, 28 June 2023.
+Section IV.6, Statement 12.
+\bibitem{OK} K. Okada and K. Kasai,
+\emph{Rate-2/3 Girth-8 (3,18)-Regular Quantum LDPC Codes from Two-Branch
+Finite-Field Bases and CPM Lifts},
+\href{https://arxiv.org/abs/2606.27130v2}{arXiv:2606.27130v2},
+first posted 25 June 2026; inspected v2, 5 September 2026.
+\bibitem{Lee} G. Lee,
+\emph{Bicycle Race: small two-block codes on the Pareto frontier},
+\href{https://arxiv.org/abs/2610.13880v2}{arXiv:2610.13880v2},
+first posted 9 October 2026; inspected v2, 12 October 2026.
+\bibitem{Kelley} C. Kelley, D. Sridhara, J. Xu and J. Rosenthal,
+\emph{Pseudocodeword Weights and Stopping Sets}, ISIT 2004.
+\href{https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf}{Author-hosted paper};
+Theorem III.1 and its following note.
+\bibitem{Counterfamily} \emph{Distance loss in girth-eight cyclic lifted-product
+codes: An infinite counterfamily with checked Lean proofs}, repository report,
+25 October 2026.
+\href{https://github.com/alectionary/vibe-math/blob/3ae21c0719cedbd928f4f7882f9b9e266567605e/formalization/distance-preservation/paper/main.pdf}{Report and source links}.
+\end{thebibliography}
+
+\input{lean-appendix.tex}
+\input{source-links.tex}
+\end{document}

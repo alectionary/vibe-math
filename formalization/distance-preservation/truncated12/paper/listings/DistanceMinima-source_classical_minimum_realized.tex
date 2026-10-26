@@ -1,0 +1,3 @@
+theorem source_classical_minimum_realized (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) :
+    sourceClassicalHasWeight e (sourceClassicalDistance e) :=
+  Nat.find_spec (source_classical_weight_exists e)
