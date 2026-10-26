@@ -2,7 +2,7 @@
 
 Inventory updated October 26, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **371 canonical entries**: the original 40 dissertation targets and **331 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 220 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **373 canonical entries**: the original 40 dissertation targets and **333 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 222 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
 The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [106 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/150 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 111 |
-| Additional directions/formulation/method entries outside the denominator | 220 |
+| Additional directions/formulation/method entries outside the denominator | 222 |
 | Combined eligible targets | 150 = 39 + 111 |
 | Eligible targets with an identified, verified proof-assistant statement | 6/150 (4.00%) |
 | Eligible targets with an identified, verified Lean statement | 6/150 (4.00%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/150 |
 | Additional identified Lean statements without a build audit | 1/150 |
 | Eligible targets with Lean discovery still unassessed in this extension | 42/150 |
-| Articles/preprints in scope | 161 |
-| Full-text sources screened, including withdrawn history | 136/161 |
-| Current-publication full texts screened | 135 |
+| Articles/preprints in scope | 174 |
+| Full-text sources screened, including withdrawn history | 143/174 |
+| Current-publication full texts screened | 142 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 25/161 |
+| Not fully assessed | 31/174 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -212,6 +212,19 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F125](https://pmc.ncbi.nlm.nih.gov/articles/PMC13186587/) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
 | [F126](https://doi.org/10.1017/S0021859607006806) | full text access gap | Not assessed | unassessed_full_text_access_gap |
 | [F127](https://doi.org/10.1111/j.1469-1809.2010.00634.x) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F128](https://doi.org/10.3389/feduc.2023.1306532) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F129](https://doi.org/10.21500/20112084.5410) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F130](https://doi.org/10.3389/fcomp.2020.00011) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F131](https://doi.org/10.1007/s40653-024-00654-1) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F132](https://files.eric.ed.gov/fulltext/ED475369.pdf) | full text screened | 1 | methodological_directions_recorded |
+| [F133](https://www.mathematica.org/publications/measurement-models-for-behavioral-frequencies-a-comparison-between-numerically-and-vaguely-quantified-reports) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F134](https://doi.org/10.1093/poq/nfs072) | full text screened | 1 | methodological_directions_recorded |
+| [F135](https://doi.org/10.1007/s10943-013-9741-y) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F136](https://doi.org/10.1016/j.chiabu.2010.12.007) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F137](https://doi.org/10.1016/j.appdev.2016.01.009) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F138](https://doi.org/10.1177/028072700502300102) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F139](https://doi.org/10.1007/s11747-014-0420-7) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F140](https://doi.org/10.1016/j.alcr.2025.100708) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
 
 ## Reproducible evidence and limits
 
@@ -4404,3 +4417,23 @@ Develop direct-discrepancy dynamic fit index procedures for multiple-group or mu
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F106: Letter, final paragraph before References](https://pmc.ncbi.nlm.nih.gov/articles/PMC11659859/); extraction lines 126–138; author stated question or direction.
+
+### L-F132-subset-score-precision
+
+Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Source-stated statistical method direction; a precise model, quantifiers and success guarantee are needed. Not an empirical social-theory conjecture.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F132: Discussion, PDF viewer p13 (printed p12)](https://files.eric.ed.gov/fulltext/ED475369.pdf); extraction lines 352–364; author stated question or direction.
+
+### L-F134-interpretation-detection
+
+Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Source-stated statistical method direction; a precise model, quantifiers and success guarantee are needed. Not an empirical social-theory conjecture.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F134: Discussion, printed p142; author-uploaded transcription webL1579–1585](https://www.researchgate.net/publication/274557890_On_the_Use_of_Latent_Variable_Models_to_Detect_Differences_in_the_Interpretation_of_Vague_Quantifiers); extraction lines 1524–1530; author stated question or direction.

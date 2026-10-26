@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 371 entries (190 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 26, 2026. Low-confidence planning priors for all 373 entries (192 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -5755,3 +5755,35 @@ First milestone: Formulate the mathematical model and inferential guarantee, the
 Gate: The authors identify unavailable multiple-group/multilevel support. Specify model class and a level/power guarantee before proposing a theorem.
 
 Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f106-dynamic-fit-multilevel).
+
+### L-F132-subset-score-precision
+
+Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source calls for generalizability and selection-sensitivity studies. Its observed success with 50% subsets is not a universal 50% sufficiency theorem; increasing the number of strata also needs explicit allocation/variance conditions.
+
+First milestone: Freeze the mathematical model and desired guarantee; compare existing mathematical/statistical results before recommending a proof target.
+
+Gate: Specify the item-by-judge probability matrix, subset-sampling design, allocation/weighting and an error or coverage criterion relative to the full-test score.
+
+Basis: Source-stated statistical methods direction; not an assumed theorem or a timed effort estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f132-subset-score-precision).
+
+### L-F134-interpretation-detection
+
+Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The author suggests simulation evaluation of detection ability. Population-specific collection, demographic prediction and scale validation requests are empirical and excluded. This is a cited follow-up to Marincic (2011); a Griffin/Marincic identity transition is not asserted.
+
+First milestone: Freeze the mathematical model and desired guarantee; compare existing mathematical/statistical results before recommending a proof target.
+
+Gate: Specify ordinal responses, substantive factors, response-style factors/classes, identification constraints and a detection/error criterion. Separate identifiable model distinctions from labels that observations cannot distinguish.
+
+Basis: Source-stated statistical methods direction; not an assumed theorem or a timed effort estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f134-interpretation-detection).

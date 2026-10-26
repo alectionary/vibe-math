@@ -1030,3 +1030,21 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 - **F125**: [Like night and day: a review of nocturnal predator communities and predation in annual row crop agroecosystems](https://pmc.ncbi.nlm.nih.gov/articles/PMC13186587/).
 - **F126**: [Structural equation modelling for studying genotype × environment interactions of physiological traits affecting yield in wheat](https://doi.org/10.1017/S0021859607006806).
 - **F127**: [Structural Equation Modeling of Gene–Environment Interactions in Coronary Heart Disease](https://doi.org/10.1111/j.1469-1809.2010.00634.x).
+
+## CFA and measurement-model continuation
+
+[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 metadata records and 39 selected source works; the prior 58-record first pass remains a dated snapshot.
+
+- **F128**: [Development and initial validation of a creative self-efficacy scale for undergraduates: categorical confirmatory factor analysis and multidimensional item response theory](https://doi.org/10.3389/feduc.2023.1306532).
+- **F129**: [Creative Self-Eﬃcacy Scale for Children and Adolescents (CASES): A Development and Validation Study](https://doi.org/10.21500/20112084.5410).
+- **F130**: [Development and Evaluation of the Nebraska Assessment of Computing Knowledge](https://doi.org/10.3389/fcomp.2020.00011).
+- **F131**: [Adverse Childhood Experiences among Adolescent Girls in Residential Treatment: Relationship with Trauma Symptoms, Substance Use, and Delinquency](https://doi.org/10.1007/s40653-024-00654-1).
+- **F132**: [The Use of Subsets of Test Questions in an Angoff Standard Setting Method](https://files.eric.ed.gov/fulltext/ED475369.pdf).
+- **F133**: [Measurement Models for Behavioral Frequencies: A Comparison Between Numerically and Vaguely Quantified Reports](https://www.mathematica.org/publications/measurement-models-for-behavioral-frequencies-a-comparison-between-numerically-and-vaguely-quantified-reports).
+- **F134**: [On the Use of Latent Variable Models to Detect Differences in the Interpretation of Vague Quantifiers](https://doi.org/10.1093/poq/nfs072).
+- **F135**: [Aging and religious participation in late life](https://doi.org/10.1007/s10943-013-9741-y).
+- **F136**: [Children's participation in foster care hearings](https://doi.org/10.1016/j.chiabu.2010.12.007).
+- **F137**: [Peer victimization and prosocial behavior trajectories: Exploring sources of resilience for victims](https://doi.org/10.1016/j.appdev.2016.01.009).
+- **F138**: [Flood and Psychological Well-Being: Direct, Mediating, and Moderating Effects](https://doi.org/10.1177/028072700502300102).
+- **F139**: [Dispersion of marketing capabilities: Impact on marketing’s influence and business unit outcomes](https://doi.org/10.1007/s11747-014-0420-7).
+- **F140**: [More than intentions: Importance of motherhood predicts first but not subsequent births](https://doi.org/10.1016/j.alcr.2025.100708).

@@ -1,6 +1,6 @@
 # Selecting mathematical targets from the SEM seed
 
-The eight inventoried entries are author-stated statistical methods directions. They are potentially useful sources of formalization work, but none yet fixes all of the model, quantifiers and success guarantee needed for the precise-target denominator. No purely social theory or empirical association was added as a mathematical conjecture.
+The ten inventoried entries are author-stated statistical methods directions. They are potentially useful sources of formalization work, but none yet fixes all of the model, quantifiers and success guarantee needed for the precise-target denominator. No purely social theory or empirical association was added as a mathematical conjecture. Eight entries came from the first pass; two were added by the CFA/measurement-model continuation.
 
 ## Inclusion rule
 
@@ -20,6 +20,12 @@ Exclude questions that require new observations to answer: whether an interventi
 | Nonlinear trait relationships | A bounded nonlinear family, noise law and an exact existence/identification/estimation claim |
 | Dynamic-fit robustness | SEM family, discrepancy thresholds, Monte Carlo calibration, Type-I/II error or coverage criterion |
 | Dynamic-fit multigroup/multilevel extension | Group/cluster model, calibration method and a stated level/power guarantee |
+| Angoff item-subset selection | Item-by-judge probabilities, sample design and allocation, score estimator and an error/coverage criterion relative to the full test |
+| Detecting interpretation variability | Ordinal-response factor/mixture model, identification constraints and detection accuracy; exclude demographic or population effects requiring new observations |
+
+The expanded registry labels ten adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations separately from its SEM/CFA core. These include factor-structure scale-development records without an asserted CFA analysis, and one explicitly planned-but-unexecuted CFA with exploratory scale analyses. The Angoff source is a 2003 conference paper recovered through the author of a 2005 IRT dissertation; it is earlier background. The interpretation source is a 2013 article explicitly citing Marincic's dissertation; no Griffin/Marincic surname equivalence is assumed.
+
+For the Angoff direction, a useful project-derived first task is to express the full-test score as a functional of a fixed finite item-by-judge matrix and bound the deviation of a correctly weighted random subset estimator. This is a proposed formulation, not the source's exact conjecture. Its empirical 50% result does not supply a universal sampling guarantee, and a claim that additional strata always improve precision needs allocation and variance assumptions.
 
 ## Project-derived formalization tasks, separate from author-posed questions
 

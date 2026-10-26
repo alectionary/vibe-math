@@ -1,6 +1,6 @@
 {
   "checked_on": "2026-10-26",
-  "scope": "58 dissertation metadata seeds and bounded author/coauthor discovery; complete question screens only for retrieved readable article texts. This does not claim full dissertation screens.",
+  "scope": "99 dissertation metadata seeds:89 core SEM/CFA/growth/path/measurement records and10 adjacent IRT/latent-class/exploratory-factor/scale-structure/planned-CFA records. The planned CFA case is explicitly not counted as completed core CFA.",
   "baseline": {
     "canonical_entries": 363,
     "eligible_targets": 150,
@@ -8,8 +8,8 @@
     "full_text_screens": 122,
     "verified_complete_lean_targets": 6
   },
-  "full_text_paper_screens": 14,
-  "access_gap_papers": 12,
+  "full_text_paper_screens": 21,
+  "access_gap_papers": 18,
   "question_ids": [
     "L-F103-pleiotropy-linked",
     "L-F103-missing-phenotypes",
@@ -18,7 +18,9 @@
     "L-F102-correlated-residuals",
     "L-F102-nonlinear-traits",
     "L-F106-dynamic-fit-robustness",
-    "L-F106-dynamic-fit-multilevel"
+    "L-F106-dynamic-fit-multilevel",
+    "L-F132-subset-score-precision",
+    "L-F134-interpretation-detection"
   ],
   "excluded_passages": [
     {
@@ -75,6 +77,31 @@
       "locator": "The Nocturnal Ecology Research Gap; Conclusion",
       "reason": "Predator identification, diel ecology, sampling observations and climate responses need empirical ecological investigation; no explicit mathematical conjecture extracted.",
       "paper_id": "F125"
+    },
+    {
+      "paper_id": "F128",
+      "locator": "Section4.1 and limitations",
+      "reason": "Cross-population validation, associations and empirical measurement invariance are data-dependent. No author-stated mathematical guarantee is invented."
+    },
+    {
+      "paper_id": "F129",
+      "locator": "Final discussion",
+      "reason": "Developmental dimensions, sociocultural influences and temporal reliability/scale validation require observations; not mathematical conjectures."
+    },
+    {
+      "paper_id": "F130",
+      "locator": "Discussion/Limitations, extracted lines532–534",
+      "reason": "Race/ethnicity and international-student DIF, population replication and correlations with other assessments are empirical validation questions."
+    },
+    {
+      "paper_id": "F131",
+      "locator": "Strengths and Limitations, extracted lines965–967",
+      "reason": "Longitudinal causal ordering and multi-informant clinical assessments require new observations, not a proof of the social/clinical theory."
+    },
+    {
+      "paper_id": "F140",
+      "locator": "Section5.1 Limitations and future directions, lines1007–1031",
+      "reason": "Attitudes, social-location interactions and improved fertility-intention measurements are empirical; no mathematical open statement extracted."
     }
   ],
   "screen_method": "Search complete extracted texts for questions, conjectures, unknown cases and future-work language; inspect introductions, relevant definitions and closing passages; read in-paper answers and later inspected continuations. Not line-by-line proof verification.",
@@ -83,10 +110,20 @@
   "requirement_evidence": {
     "all_58_seed_authors_searched": "met: authors.json and searches.json",
     "downstream_author_or_coauthor_identity": "met for selected works; unverified search leads remain separate",
-    "full_text_question_harvest": "partial/access-limited: 14 article texts screened; dissertation texts and other article texts remain unavailable",
+    "full_text_question_harvest": "21 source works fully screened, including7 additional texts; all dissertation screens and18 article/work screens remain access-limited.",
     "social_empirical_filter": "met: excluded_passages plus per-question formalization_suitability",
     "inventory_and_planning": "met after regeneration and validation",
     "publication": "PR for user review; not merged",
     "validation": "met: validate_unl_sem_seed.py, validate_open_problems.py, validate_current_difficulty.py, validate_literature.py, validate.py and git diff --check"
+  },
+  "cohort_totals": {
+    "dissertations": 99,
+    "authors_searched": 99,
+    "selected_works": 39,
+    "full_text_screens": 21,
+    "access_gap_works": 18,
+    "method_directions": 10,
+    "eligible_additions": 0,
+    "seed_full_text_screens": 0
   }
 }
