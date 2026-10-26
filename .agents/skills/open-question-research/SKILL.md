@@ -201,7 +201,12 @@ entries, a completed screen with no additional explicit target found, or a named
 access/version gap. An abstract, empty successful response or unreadable scan
 cannot justify a zero-question result. Try reasonable primary/author copies,
 use OCR and visually check relevant pages when needed, and retain unresolved
-leads without inventing bibliographic details. Add the findings to the shared
+leads without inventing bibliographic details. A failed HTTP fetch is a failure of
+that retrieval route, not evidence that a work is paywalled. Follow the archive's
+actual Download link and any publisher landing page; when available, attempt the
+user's supported browser extension before declaring an access gap. Distinguish
+browser-connection failure from site restrictions. See [full-text retrieval](references/research-access.md#retrieve-full-text-before-recording-an-access-gap)
+for redirects, cookie banners and temporary PDF links. Add the findings to the shared
 inventory and planning records, leave unperformed current-resolution/Lean checks
 unassessed, regenerate reports and validate source coverage and cohort deltas.
 The [complete absorbing-set source screen](../../../literature/RESEARCH-QUESTION-SCREENING.md)

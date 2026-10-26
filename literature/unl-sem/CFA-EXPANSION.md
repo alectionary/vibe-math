@@ -87,3 +87,16 @@ No dissertation body was recovered: all 41 added primary routes returned403; Abb
 The new full-text screens excluded empirical scale validation, race/ethnicity DIF in observed student samples, developmental/sociocultural questions, clinical causal ordering and fertility-attitude associations. No such question is relabeled a mathematical conjecture.
 
 The repository's source records, shared inventory, planning gates and generated reports are updated together. The dated first-pass baseline is preserved. PR review and merge remain with the user.
+
+## Subsequent retrieval correction: 2026-10-26
+
+The earlier failed-download statements describe the survey pass, not document
+availability. A user-supplied ProQuest open-access PDF route subsequently recovered
+UNL-SEM-D067 (283 pages). Its title and Future Research section, printed pp197–203
+(PDF pp211–217), were consulted. The section proposes shorter scales, revised
+items and forced-choice/conjoint measurement, plus empirical longitudinal and
+intervention studies. This selective consultation is not a completed dissertation
+question screen and adds no precise theorem target. Provenance and PDF hash are in
+[retrieval-corrections.json](retrieval-corrections.json); the copyrighted PDF stays
+outside Git. The stable [ProQuest record](https://www.proquest.com/docview/305217740)
+is retained instead of the temporary signed download URL.
