@@ -1,14 +1,14 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 25, 2026. Low-confidence planning priors for all 338 entries (157 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 26, 2026. Low-confidence planning priors for all 344 entries (163 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
-| Already complete | 5 | 5 |
+| Already complete | 6 | 6 |
 | 1 | 1 | 0 |
 | 2 | 11 | 1 |
-| 3 | 39 | 22 |
-| 4 | 41 | 42 |
+| 3 | 38 | 22 |
+| 4 | 41 | 41 |
 | 5 | 8 | 35 |
 | Unestimated / scope gate | 43 | 43 |
 
@@ -868,13 +868,15 @@ Basis: Retained October 21 family prior with current eligibility/resolution chec
 
 Under the paper’s syndrome-based Gallager-B decoder, is every absorbing set a trapping set?
 
-- Statement: Tier 3: 2–6 expert person-weeks.
-- Proof transfer, given a complete proof: Tier 4: 4–12 expert person-months.
-- Research: Relative research obstacle 4/5; discovery time unestimated. open_or_unresolved_in_recorded_sources; present status not exhaustively established
+- Statement: Tier 0: Complete.
+- Proof transfer, given a complete proof: Tier 0: Complete.
+- Research: Completed target. completed_unrestricted_counterexample
 
-A finite decoder state machine allows bounded experiments, but the general absorbing-to-trapping implication needs the exact decoder and quantum degeneracy conventions. Tanner graphs are finite, but decoder transitions, stopping/cycle behavior, quantum error equivalence and absorbing/trapping terminology add substantial bespoke machinery.
+Exact source compared: arXiv:2307.14532v2, SectionII-B, Definitions3/5 and SectionVI. Stopped outputs extend constantly. Both hard and outgoing-edge syndrome tests pass. The ordinary Steane pairing still permits logical miscorrections; the separate actual CSS pair eliminates these for every first-component Z-error. Connected-ambient, high-girth, column-weight3 and selected-logical-support variants are not answered. Journal full text was access restricted.
 
-First milestone: Define one exact decoder and verify its finite-state transition rule on a small graph.
+First milestone: Complete: checked counterexample and actual CSS recovery.
+
+Progress: All128 supported errors; complete actual-matrix, update and stabilizer-span bridges checked. [Checked artifact](../formalization/gallager-b-absorbing/README.md).
 
 Basis: Retained October 21 family prior with current eligibility/resolution checks; not a new implementation benchmark. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p09-all-absorbing).
 
@@ -5225,3 +5227,99 @@ First milestone: Freeze source objects and current resolution; resolve any named
 Gate: Verify current status, exact object and quantifiers before estimating effort.
 
 Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f94-nonaffine-lifts).
+
+### L-F95-bell-correlations
+
+Historical conjecture on Bell-type inequalities for the seven-qubit code correlations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source does not specify an exact inequality or measurement family; freeze these and establish current resolution before treating it as a mathematical target.
+
+First milestone: Verify the exact historical statement and subsequent resolution.
+
+Gate: Freeze historical scope and check modern resolution before any research recommendation.
+
+Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-bell-correlations).
+
+### L-F95-asymmetric-gv
+
+Historical question on simultaneous Gilbert-Varshamov bounds for a nested code and its dual subcode.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The same paragraph reports the equal-distance case proved by Calderbank and Shor. Preserve the unequal-distance qualification and settle finite-versus-asymptotic quantifiers and current status first.
+
+First milestone: Verify the exact historical statement and subsequent resolution.
+
+Gate: Freeze historical scope and check modern resolution before any research recommendation.
+
+Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-asymmetric-gv).
+
+### L-F95-stochastic-model
+
+Historical direction on adequacy of stochastic defection models for physical quantum errors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A physical modeling direction, not a universal theorem that arbitrary correlated noise is stochastic independent noise. Current developments not assessed here.
+
+First milestone: Verify the exact historical statement and subsequent resolution.
+
+Gate: Freeze historical scope and check modern resolution before any research recommendation.
+
+Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-stochastic-model).
+
+### L-F95-noisy-capacity
+
+Historical direction toward a fuller understanding of noisy quantum-channel capacity.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Historical motivation only; not a claim that the 1996 capacity question remains open in its original form.
+
+First milestone: Verify the exact historical statement and subsequent resolution.
+
+Gate: Freeze historical scope and check modern resolution before any research recommendation.
+
+Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-noisy-capacity).
+
+### L-F95-noisy-correction
+
+Historical direction on errors introduced during the quantum correction process.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A historical fault-tolerance direction without fixed hypotheses; no present-day open status or Lean discovery claimed.
+
+First milestone: Verify the exact historical statement and subsequent resolution.
+
+Gate: Freeze historical scope and check modern resolution before any research recommendation.
+
+Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-noisy-correction).
+
+### L-F95-small-experiments
+
+Historical experimental direction to implement three- or seven-qubit correction schemes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Historical experimental direction retained outside the mathematical-target denominator; do not recommend it as a current unperformed experiment.
+
+First milestone: Verify the exact historical statement and subsequent resolution.
+
+Gate: Freeze historical scope and check modern resolution before any research recommendation.
+
+Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-small-experiments).

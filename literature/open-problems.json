@@ -1897,11 +1897,32 @@
     ],
     "related_target_ids": [],
     "status_as_of_source": "open_or_proposed_in_source",
-    "proof_assistant_statement_status": "no_exact_statement_identified_in_bounded_search",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "current_resolution_status": "not_independently_established",
-    "search_family": "quantum_dyadic"
+    "proof_assistant_statement_status": "verified_lean_statement",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "current_resolution_status": "refuted_by_lean_checked_unrestricted_counterexample",
+    "search_family": "quantum_dyadic",
+    "prior_bounded_search_status": {
+      "proof_assistant_statement_status": "no_exact_statement_identified_in_bounded_search",
+      "lean_statement_status": "no_exact_statement_identified",
+      "lean_proof_status": "no_exact_proof_identified",
+      "current_resolution_status": "not_independently_established"
+    },
+    "verified_artifact": {
+      "readme": "formalization/gallager-b-absorbing/README.md",
+      "source": "formalization/gallager-b-absorbing/Counterexample.lean",
+      "statement_declaration": "GallagerAbsorbing.absorbing_not_trapping",
+      "scope": "Explicit connected (7,0)-absorbing component: all128 supported binary errors accepted at initialization or first iteration; actual fourteen-coordinate CSS embedding corrects all supported Z-errors modulo the complete opposite stabilizer span and has a nontrivial logical on the second component. Redundant checks and four-cycles allowed; ambient graph disconnected.",
+      "verification": "formalization/gallager-b-absorbing/verification.json",
+      "proof_declarations": [
+        "GallagerAbsorbing.absorbing_not_trapping",
+        "GallagerAbsorbing.actual_matrix_quantum_recovery",
+        "GallagerAbsorbing.logical_not_stabilizer"
+      ],
+      "immutable_commit": "2717b0ab2b59c2ccb71f0e369a9f21d80490c191",
+      "issue_url": "https://github.com/alectionary/vibe-math/issues/2"
+    },
+    "scope_comparison": "Exact source compared: arXiv:2307.14532v2, SectionII-B, Definitions3/5 and SectionVI. Stopped outputs extend constantly. Both hard and outgoing-edge syndrome tests pass. The ordinary Steane pairing still permits logical miscorrections; the separate actual CSS pair eliminates these for every first-component Z-error. Connected-ambient, high-girth, column-weight3 and selected-logical-support variants are not answered. Journal full text was access restricted."
   },
   {
     "id": "L-P09-XZ",
@@ -12860,5 +12881,197 @@
     "search_family": "truncated_distance12_postlemma_sources",
     "added_on": "2026-10-25",
     "lean_discovery_note": "Question harvesting only. No current-resolution or Lean audit; speculative, broad and held formulations remain distinguished."
+  },
+  {
+    "id": "L-F95-bell-correlations",
+    "origin": "article_inventory_extension",
+    "title": "Historical conjecture on Bell-type inequalities for the seven-qubit code correlations.",
+    "kind": "held_formulation",
+    "written_math_status": "formulation_requires_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Historical source question/direction; scope and modern resolution require assessment. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 10",
+        "extracted_text_lines": [
+          423,
+          432
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "The source does not specify an exact inequality or measurement family; freeze these and establish current resolution before treating it as a mathematical target."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "historical_css_background"
+  },
+  {
+    "id": "L-F95-asymmetric-gv",
+    "origin": "article_inventory_extension",
+    "title": "Historical question on simultaneous Gilbert-Varshamov bounds for a nested code and its dual subcode.",
+    "kind": "held_formulation",
+    "written_math_status": "formulation_requires_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Historical source question/direction; scope and modern resolution require assessment. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 28",
+        "extracted_text_lines": [
+          1430,
+          1439
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "The same paragraph reports the equal-distance case proved by Calderbank and Shor. Preserve the unequal-distance qualification and settle finite-versus-asymptotic quantifiers and current status first."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "historical_css_background"
+  },
+  {
+    "id": "L-F95-stochastic-model",
+    "origin": "article_inventory_extension",
+    "title": "Historical direction on adequacy of stochastic defection models for physical quantum errors.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Historical source question/direction; scope and modern resolution require assessment. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 30",
+        "extracted_text_lines": [
+          1537,
+          1546
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "A physical modeling direction, not a universal theorem that arbitrary correlated noise is stochastic independent noise. Current developments not assessed here."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "historical_css_background"
+  },
+  {
+    "id": "L-F95-noisy-capacity",
+    "origin": "article_inventory_extension",
+    "title": "Historical direction toward a fuller understanding of noisy quantum-channel capacity.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Historical source question/direction; scope and modern resolution require assessment. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 34",
+        "extracted_text_lines": [
+          1730,
+          1739
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "Historical motivation only; not a claim that the 1996 capacity question remains open in its original form."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "historical_css_background"
+  },
+  {
+    "id": "L-F95-noisy-correction",
+    "origin": "article_inventory_extension",
+    "title": "Historical direction on errors introduced during the quantum correction process.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Historical source question/direction; scope and modern resolution require assessment. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 34",
+        "extracted_text_lines": [
+          1715,
+          1724
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "A historical fault-tolerance direction without fixed hypotheses; no present-day open status or Lean discovery claimed."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "historical_css_background"
+  },
+  {
+    "id": "L-F95-small-experiments",
+    "origin": "article_inventory_extension",
+    "title": "Historical experimental direction to implement three- or seven-qubit correction schemes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Historical source question/direction; scope and modern resolution require assessment. Outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 34",
+        "extracted_text_lines": [
+          485,
+          494
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "Historical experimental direction retained outside the mathematical-target denominator; do not recommend it as a current unperformed experiment."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "historical_css_background"
   }
 ]

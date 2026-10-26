@@ -2736,10 +2736,10 @@
     "target_id": "L-P09-all-absorbing",
     "title": "Under the paper’s syndrome-based Gallager-B decoder, is every absorbing set a trapping set?",
     "eligible_for_coverage": true,
-    "current_resolution_status": "not_independently_established",
-    "lean_statement_status": "no_exact_statement_identified",
-    "lean_proof_status": "no_exact_proof_identified",
-    "assessment_date": "2026-10-22",
+    "current_resolution_status": "refuted_by_lean_checked_unrestricted_counterexample",
+    "lean_statement_status": "verified_lean_statement",
+    "lean_proof_status": "verified_complete_lean_proof",
+    "assessment_date": "2026-10-26",
     "confidence": "low",
     "discovery_time_estimate": null,
     "source_occurrences": [
@@ -2761,21 +2761,23 @@
       "planning/difficulty-sources.json"
     ],
     "gate": null,
-    "completed": false,
+    "completed": true,
     "historical_assessment": "planning/difficulty-estimates.json",
-    "research_status": "open_or_unresolved_in_recorded_sources; present status not exhaustively established",
+    "research_status": "completed_unrestricted_counterexample",
     "family": "quantum_decoding",
-    "rationale": "A finite decoder state machine allows bounded experiments, but the general absorbing-to-trapping implication needs the exact decoder and quantum degeneracy conventions. Tanner graphs are finite, but decoder transitions, stopping/cycle behavior, quantum error equivalence and absorbing/trapping terminology add substantial bespoke machinery.",
-    "first_milestone": "Define one exact decoder and verify its finite-state transition rule on a small graph.",
-    "research_obstacle": 4,
+    "rationale": "Exact source compared: arXiv:2307.14532v2, SectionII-B, Definitions3/5 and SectionVI. Stopped outputs extend constantly. Both hard and outgoing-edge syndrome tests pass. The ordinary Steane pairing still permits logical miscorrections; the separate actual CSS pair eliminates these for every first-component Z-error. Connected-ambient, high-girth, column-weight3 and selected-logical-support variants are not answered. Journal full text was access restricted.",
+    "first_milestone": "Complete: checked counterexample and actual CSS recovery.",
+    "research_obstacle": 0,
     "statement_setup": {
-      "tier": 3,
-      "band": "2–6 expert person-weeks"
+      "tier": 0,
+      "band": "Complete"
     },
     "proof_transfer_given_correct_complete_proof": {
-      "tier": 4,
-      "band": "4–12 expert person-months"
-    }
+      "tier": 0,
+      "band": "Complete"
+    },
+    "progress_note": "All128 supported errors; complete actual-matrix, update and stabilizer-span bridges checked.",
+    "progress_artifact": "formalization/gallager-b-absorbing/README.md"
   },
   {
     "target_id": "L-P09-XZ",
@@ -14302,6 +14304,240 @@
     "family": "truncated_distance12_postlemma_sources",
     "rationale": "A proposed construction direction; retain CSS orthogonality and new girth/distance checks. No existence theorem for a distance improvement is claimed.",
     "first_milestone": "Freeze source objects and current resolution; resolve any named formulation gap.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F95-bell-correlations",
+    "title": "Historical conjecture on Bell-type inequalities for the seven-qubit code correlations.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-26",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 10",
+        "extracted_text_lines": [
+          423,
+          432
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "The source does not specify an exact inequality or measurement family; freeze these and establish current resolution before treating it as a mathematical target."
+      }
+    ],
+    "basis": "Historical primary-source question screen; no current open-status inference.",
+    "background_evidence": [
+      "literature/gallager-absorbing-source-screening.json"
+    ],
+    "gate": "Freeze historical scope and check modern resolution before any research recommendation.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "historical_css_background",
+    "rationale": "The source does not specify an exact inequality or measurement family; freeze these and establish current resolution before treating it as a mathematical target.",
+    "first_milestone": "Verify the exact historical statement and subsequent resolution.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F95-asymmetric-gv",
+    "title": "Historical question on simultaneous Gilbert-Varshamov bounds for a nested code and its dual subcode.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-26",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 28",
+        "extracted_text_lines": [
+          1430,
+          1439
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "The same paragraph reports the equal-distance case proved by Calderbank and Shor. Preserve the unequal-distance qualification and settle finite-versus-asymptotic quantifiers and current status first."
+      }
+    ],
+    "basis": "Historical primary-source question screen; no current open-status inference.",
+    "background_evidence": [
+      "literature/gallager-absorbing-source-screening.json"
+    ],
+    "gate": "Freeze historical scope and check modern resolution before any research recommendation.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "historical_css_background",
+    "rationale": "The same paragraph reports the equal-distance case proved by Calderbank and Shor. Preserve the unequal-distance qualification and settle finite-versus-asymptotic quantifiers and current status first.",
+    "first_milestone": "Verify the exact historical statement and subsequent resolution.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F95-stochastic-model",
+    "title": "Historical direction on adequacy of stochastic defection models for physical quantum errors.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-26",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 30",
+        "extracted_text_lines": [
+          1537,
+          1546
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "A physical modeling direction, not a universal theorem that arbitrary correlated noise is stochastic independent noise. Current developments not assessed here."
+      }
+    ],
+    "basis": "Historical primary-source question screen; no current open-status inference.",
+    "background_evidence": [
+      "literature/gallager-absorbing-source-screening.json"
+    ],
+    "gate": "Freeze historical scope and check modern resolution before any research recommendation.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "historical_css_background",
+    "rationale": "A physical modeling direction, not a universal theorem that arbitrary correlated noise is stochastic independent noise. Current developments not assessed here.",
+    "first_milestone": "Verify the exact historical statement and subsequent resolution.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F95-noisy-capacity",
+    "title": "Historical direction toward a fuller understanding of noisy quantum-channel capacity.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-26",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 34",
+        "extracted_text_lines": [
+          1730,
+          1739
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "Historical motivation only; not a claim that the 1996 capacity question remains open in its original form."
+      }
+    ],
+    "basis": "Historical primary-source question screen; no current open-status inference.",
+    "background_evidence": [
+      "literature/gallager-absorbing-source-screening.json"
+    ],
+    "gate": "Freeze historical scope and check modern resolution before any research recommendation.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "historical_css_background",
+    "rationale": "Historical motivation only; not a claim that the 1996 capacity question remains open in its original form.",
+    "first_milestone": "Verify the exact historical statement and subsequent resolution.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F95-noisy-correction",
+    "title": "Historical direction on errors introduced during the quantum correction process.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-26",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 34",
+        "extracted_text_lines": [
+          1715,
+          1724
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "A historical fault-tolerance direction without fixed hypotheses; no present-day open status or Lean discovery claimed."
+      }
+    ],
+    "basis": "Historical primary-source question screen; no current open-status inference.",
+    "background_evidence": [
+      "literature/gallager-absorbing-source-screening.json"
+    ],
+    "gate": "Freeze historical scope and check modern resolution before any research recommendation.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "historical_css_background",
+    "rationale": "A historical fault-tolerance direction without fixed hypotheses; no present-day open status or Lean discovery claimed.",
+    "first_milestone": "Verify the exact historical statement and subsequent resolution.",
+    "research_obstacle": null,
+    "statement_setup": null,
+    "proof_transfer_given_correct_complete_proof": null
+  },
+  {
+    "target_id": "L-F95-small-experiments",
+    "title": "Historical experimental direction to implement three- or seven-qubit correction schemes.",
+    "eligible_for_coverage": false,
+    "current_resolution_status": "not_independently_established",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "assessment_date": "2026-10-26",
+    "confidence": "low",
+    "discovery_time_estimate": null,
+    "source_occurrences": [
+      {
+        "source_id": "F95",
+        "locator": "arXiv v3 PDF page 34",
+        "extracted_text_lines": [
+          485,
+          494
+        ],
+        "url": "https://arxiv.org/pdf/quant-ph/9601029v3",
+        "source_sha256": "f82b8d09cb628d24b436bdb2ef2d947bbf4062395af9115c79257b74aeda2415",
+        "relation": "historical_author_stated_question_or_direction",
+        "version": "arXiv:quant-ph/9601029v3, 13 May 1996",
+        "interpretation": "Historical experimental direction retained outside the mathematical-target denominator; do not recommend it as a current unperformed experiment."
+      }
+    ],
+    "basis": "Historical primary-source question screen; no current open-status inference.",
+    "background_evidence": [
+      "literature/gallager-absorbing-source-screening.json"
+    ],
+    "gate": "Freeze historical scope and check modern resolution before any research recommendation.",
+    "completed": false,
+    "research_status": "planning_not_yet_assessed",
+    "family": "historical_css_background",
+    "rationale": "Historical experimental direction retained outside the mathematical-target denominator; do not recommend it as a current unperformed experiment.",
+    "first_milestone": "Verify the exact historical statement and subsequent resolution.",
     "research_obstacle": null,
     "statement_setup": null,
     "proof_transfer_given_correct_complete_proof": null

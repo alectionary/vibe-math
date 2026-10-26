@@ -45,6 +45,16 @@ for r in rows:
   assert r['current_resolution_status']=='answered_negatively_for_prop51_useful_parameter_question'
   assert (R/r['supporting_artifact']['verification']).is_file()
   assert (R/r['supporting_artifact']['lean_source']).is_file()
+ elif r['id']=='L-P09-all-absorbing':
+  assert r['lean_statement_status']=='verified_lean_statement'
+  assert r['lean_proof_status']=='verified_complete_lean_proof'
+  assert r['current_resolution_status']=='refuted_by_lean_checked_unrestricted_counterexample'
+  artifact=r['verified_artifact']; proof=R/artifact['source']
+  v=json.loads((R/artifact['verification']).read_text())
+  assert artifact['statement_declaration']=='GallagerAbsorbing.absorbing_not_trapping'
+  assert v['lean_returncode']==0 and v['source_sha256']==hashlib.sha256(proof.read_bytes()).hexdigest()
+  assert v['certificate_sha256']==hashlib.sha256((proof.parent/'certificate.json').read_bytes()).hexdigest()
+  assert 'sorryAx' not in (proof.parent/'lean-build.log').read_text()
  elif r['id']=='L-P32-Conway-existence':
   assert r['lean_statement_status']=='identified_lean_statement_not_build_verified'
   assert r['lean_proof_status']=='no_exact_proof_identified'
@@ -87,8 +97,8 @@ assert summary['full_text_screened']==sum(p['coverage_status'].endswith('full_te
 assert sum(r['origin']=='dissertation_inventory' and len(r['occurrences'])>1 for r in rows)==15
 assert summary['historical_withdrawn_full_text_screened']==1 and summary['current_publication_full_text_screened']==29+len(expansion['added_paper_ids'])+len(browser['added_paper_ids'])+ext_full
 assert summary['not_fully_assessed']==1+reconciliation['added_relevant_section_screens']+sum(e.get('incomplete_paper_records_added',0) for e in extensions)
-assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==5
-assert summary['eligible_verified_lean_proofs']==5
+assert summary['eligible_verified_lean_statements']==summary['eligible_verified_proof_assistant_statements']==6
+assert summary['eligible_verified_lean_proofs']==6
 assert summary['eligible_targets_with_verified_finite_cases']==0
 assert all(not r['eligible_for_coverage'] for r in rows if r['status_as_of_source']=='withdrawn_historical_only')
 assert next(p for p in coverage if p['paper_id']=='P10')['target_count'] is None

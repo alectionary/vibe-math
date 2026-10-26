@@ -1,0 +1,28 @@
+{
+  "checked_on": "2026-10-26",
+  "canonical_target": "L-P09-all-absorbing",
+  "source_meaning": {
+    "exact_version": "arXiv:2307.14532v2, 10 May 2024",
+    "question_locator": "Section VI; decoder Section II-B; Definitions 3 and 5",
+    "quantifiers": "A nonempty absorbing set is trapping iff some supported binary input produces a neighboring check not eventually correct or a selected variable not eventually converged, for the stated stopped decoder.",
+    "semantic_checks": ["zero initialization", "extrinsic XOR check messages", "strict extrinsic variable majority", "zero ties", "hard decisions from all check messages", "syndrome stopping", "all128 input supports", "constant extension after stopping", "both hard and outgoing-extrinsic syndrome tests", "actual opposite CSS stabilizer span, not the decoded matrix row span"],
+    "source_version_limit": "The 2026 journal full text is subscription restricted. No claim of unchanged journal wording."
+  },
+  "classical_ingredients": [
+    {"source": "Hamming1950", "finding": "The syndrome-column representation is classical; not claimed as a new code construction.", "access": "Publisher metadata and three-page introduction excerpt; full original article not retrieved."},
+    {"source": "Steane1996", "version": "quant-ph/9601029v3,13May1996", "finding": "Classical simplex/Hamming and CSS ingredients; inspected complete arXiv text, seven-qubit construction and conclusion. The author-hosted journal scan lacked machine-readable text; arXiv v3 supplied the complete screen.", "question_ledger": "../../literature/gallager-absorbing-source-screening.json"}
+  ],
+  "searches": [
+    {"service": "public web", "queries": ["Morris Pllaha Kelley absorbing counterexample", "Absorbing Sets in Quantum LDPC Codes Gallager syndrome error correction", "any absorbing set trapping quantum", "Hamming code all redundant parity checks majority logic one iteration decoding Gallager B", "absorbing sets simplex quantum", "Steane Gallager redundant parity check"], "result": "Source preprint, journal metadata, classical decoding leads and secondary summaries found. No directly verified earlier counterexample from this bounded pass. Secondary summaries were not used as theorem evidence.", "limit": "Search is not an exhaustive citation or priority audit."},
+    {"service": "GitHub authenticated CLI", "queries": ["Gallager language:Lean", "absorbing Gallager", "Gallager", "quantum trapping absorbing Gallager"], "controls": ["syndrome repo:alectionary/vibe-math returned zero despite a known local match and is excluded as a negative control", "Nat repo:leanprover-community/mathlib4 returned Mathlib/Order/Nat.lean and verified the public code index responds"], "result": "No exact Lean match found in the bounded search. Broad Gallager query returned at most30 public code matches; FeCl, CommPy, xdsopl/LDPC and CodingTheory were leads, not verified matching theorems.", "limit": "Indexing and cap limitations remain; absence does not establish formalization priority."},
+    {"service": "X signed-in Edge extension", "query": "\"absorbing sets\" \"quantum\"", "sort": "Latest", "result": "Search visibly returned no results. A broader Gallager query was submitted but no completed relevant-result review is claimed.", "limit": "One exact-term search, not an exhaustive social-media or priority audit. Native desktop was locked but the browser extension worked."}
+  ],
+  "paper_screening": "../../literature/gallager-absorbing-source-screening.json",
+  "comparison": "The source already treats positive-b absorbing sets, paths and cycles. This graph is a degree4, redundant-check (7,0) example with four-cycles. The result is a counterexample to the unrestricted version; connected ambient CSS, high girth, prescribed degree and selected-logical-support restrictions are outside the claim.",
+  "novelty": {
+    "supported_contribution": "Explicit counterexample to the recorded unrestricted question, complete source-model and CSS recovery bridges, standalone exposition and checked proof artifact.",
+    "classical_code_construction": "Not new.",
+    "historical_priority": "Not established by the bounded searches.",
+    "first_formalization": "Not established."
+  }
+}

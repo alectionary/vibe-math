@@ -1,0 +1,97 @@
+\section{Complete checked proofs and source bridges}\label{app:lean}
+The single research module imports only \texttt{Std}. The proof toolchain is
+Lean 4.36.0-rc1, commit \texttt{c9afcddf514a6772bd4d649f7cfc04eff0b9f15e}.
+Every finite statement below is proved by kernel reduction with
+\texttt{decide}, not by a native decision oracle. The quantifier
+\texttt{e : BitVec 7} covers every one of the $128$ subsets, including the
+empty and full supports. The clean build and axiom reports are included
+in the artifact. The permitted axioms are \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}; no admitted proof is used.
+
+\subsection{Public sources and the proof map}
+The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/Counterexample.lean}{complete current Lean source}
+and its
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean}{immutable checked revision}
+contain all research proofs, including the actual fourteen-coordinate bridge.
+The
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/verification.json}{verification manifest},
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/prior-art.json}{source and search ledger}, and
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/verify.py}{independent literal-matrix verifier}
+make the input domain, access limits and evidence distinctions explicit.
+
+\small
+\begin{longtable}{p{.27\textwidth}p{.61\textwidth}}
+\toprule Manuscript proof & Matching Lean declarations (all in the linked module)\\
+\midrule\endhead
+Absorption and connectivity & \texttt{degrees}, \texttt{full\_set\_absorbing}, \texttt{first\_block\_connected}\\
+Syndrome-column identity and Lemma~\ref{lem:votes} & \texttt{syndrome\_index\_bridge}, \texttt{simplex\_vote\_counts}, \texttt{first\_hard\_formula}, \texttt{first\_hard\_matches}\\
+Extrinsic update, Lemma~\ref{lem:edges} & \texttt{first\_edge\_matches}, with the full \texttt{checkUpdate} and \texttt{variableUpdate} definitions\\
+Theorem~\ref{thm:main}, eventual properties & \texttt{terminal\_matches}, \texttt{all\_eventually\_correct}, \texttt{all\_eventually\_converge}, \texttt{absorbing\_not\_trapping}\\
+Steane miscorrection comparison & \texttt{steane\_logical\_miscorrection}\\
+Lemma~\ref{lem:kernel} & \texttt{kernel\_equals\_four\_generator\_span}, \texttt{actual\_css\_commutation}\\
+Proposition~\ref{prop:css}, complete span and nontrivial logical & \texttt{first\_block\_residual\_is\_stabilizer}, \texttt{first\_block\_quantum\_recovery}, \texttt{logical\_commutes}, \texttt{logical\_not\_stabilizer}\\
+Actual source matrices and fourteen-coordinate update & \texttt{actual\_matrix\_first\_step\_bridge}, \texttt{actual\_matrix\_syndrome\_matches}, \texttt{terminal\_eq\_firstHard}, \texttt{actual\_matrix\_quantum\_recovery}\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\lstset{escapeinside={(*@}{@*)}}
+
+\subsection{Matrix, subsets and exact update rules}
+A seven-bit word is the indicator of a subset of the seven actual columns.
+The matrix is the binary dot product on labels $1,\ldots,7$.
+\texttt{pack\_bits} checks that packing and reading these column bits agree.
+The two message functions exclude the recipient explicitly, and the
+majority definition implements zero ties by a strict inequality.
+Here are the complete definitions and finite source checks. Unicode symbols are rendered typographically; the linked Lean file is the checked source.
+\lstinputlisting[firstline=1,lastline=81]{proof-listing.txt}
+
+\subsection{From accepted output to absence of trapping}
+The dependency chain is
+\texttt{first\_hard\_matches} $\to$ \texttt{terminal\_matches} $\to$
+the two eventual properties $\to$ \texttt{absorbing\_not\_trapping}.
+The output at time zero is the initial zero guess. From time one onward
+it is the accepted terminal value. Thus the following unbounded-in-time
+proof is a structural argument, rather than a finite simulation horizon.
+The complete central proof bodies are printed here.
+\lstinputlisting[firstline=83,lastline=126]{proof-listing.txt}
+Direct declaration links:
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean#L101}{eventual check correctness},
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean#L108}{eventual variable convergence}, and
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean#L115}{nontrapping theorem}.
+
+\subsection{Full CSS span and logical witness}
+A pair of seven-bit words is exactly a binary word on the disjoint union
+of two seven-coordinate blocks. The matrices below retain all fourteen
+$X$ checks and all seven $Z$ generators. \texttt{combine} enumerates the
+entire generator span with independent binary coefficients; it does not
+check only individual stabilizer rows. The recovery statement covers every
+input and witnesses membership of the residual in that whole span.
+The nontrivial logical test uses the same matrix and span definitions.
+\lstinputlisting[firstline=128,lastline=191]{proof-listing.txt}
+Direct declaration links:
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean#L151}{complete residual-span theorem} and
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean#L165}{nontrivial logical theorem}.
+
+\subsection{Analytic identities and the actual fourteen-coordinate decoder}
+The finite formulas below supply the syndrome-column, vote-count and
+kernel/span identities used in the written proofs. The final portion then
+calculates the syndrome and all first-step votes directly from the actual
+fourteen-coordinate rows. Its bridge theorem proves that this calculation
+is the component calculation used above. This avoids assuming that an
+abstract block argument automatically matches the source matrix.
+\lstinputlisting[firstline=193,lastline=274]{proof-listing.txt}
+Direct declaration link:
+\href{https://github.com/alectionary/vibe-math/blob/2717b0ab2b59c2ccb71f0e369a9f21d80490c191/formalization/gallager-b-absorbing/Counterexample.lean#L259}{actual-matrix quantum recovery theorem}.
+
+\subsection{Reproduction and evidence limits}
+Run \texttt{python3 build.py --lean /path/to/lean} from the artifact
+folder with the pinned toolchain, then \texttt{python3 verify.py --check}.
+The Lean result is the proof; the independently regenerated JSON certificate
+provides a second, literal-matrix reconstruction of all inputs.
+No sampled experiment is used. The certificate also supplies independent
+linear-algebra diagnostics; numerical diagnostics not stated as theorems
+in the manuscript are not additional formal results.
+The source ledger distinguishes the accessible arXiv source, the restricted
+journal text, partial classical-source retrievals and historical questions
+harvested without claiming they remain open today.
