@@ -2368,8 +2368,24 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ThroughNine.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ClassicalTransport.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/EntryTestTransport.lean).
+- Research progress: [Second bounded distance-12 formalization block](../formalization/distance-preservation/truncated12/ROUND2.txt) (general lean source geometry and partial closed catalog replay). Second authorized block develops actual weight-ten/eleven source support encodings and quantified finite coverage toward min(D,12); the exact main theorem remains incomplete. The previous complete min(D,10) theorem is preserved. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/Coverage11.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/CatalogExclusion11.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SupportPairs.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/PairMatching.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TenGeometry.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TenIndex.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TenRealization.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TenEncoding.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/K23Numbering.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/K23Colors.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/K23MissingRows.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/K23LeafMatches.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenGeometry.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenIndex.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ElevenRealization.lean).
 - Project-derived follow-up, outside the source-target denominator: **RQ-F25-exclude-mixed-patterns** — Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned.
-- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). A certificate-assisted written argument is recorded, and actual-source count classification is checked in Lean in the October25 round. The current exact remaining gaps and any completed intermediate bound are in truncated12/verification.json. The source equality question is not marked solved.
+- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Second four-hour formalization block active; completed source bridges and remaining catalog/main-theorem coverage are recorded in truncated12/verification.json.
 - [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
 - Related, not merged: L-P34-logical-partitions, L-P34-base-design.
 
