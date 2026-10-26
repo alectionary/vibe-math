@@ -94,7 +94,10 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 - Session: `lf91-c16-20261026T174815Z-f4663e80`. Authorized start 2026-10-26T17:47:00Z. Deadline 2026-10-26T21:47:00Z.
 - X public search, `search_posts_all`, no posts written. Known-positive query `lifted product` returned posts. Query `"canonical width" OR "unrestricted canonical" OR C16,9 OR "1088,128,16"` returned result count 0. Query `2610.06820 OR "public-regular-logical-frames" OR "canonical frame width"` returned result count 0. A zero count is not a global absence.
 - GitHub issues before this block: #1 (`L-F25`, open) and #2 (`L-P09`, closed). No earlier claim ref for this target.
-- GitHub code search for `unrestricted canonical width` and `canonical frame width` returned HTTP 429 on 2026-10-26, including retries at 18:40Z and 18:44Z (retry-after about 326 seconds on the later attempt). An earlier `C16,9` code search also returned HTTP 429. Those queries are unassessed, not empty.
+- GitHub issue search for `L-F91-c16-unrestricted-width` in `alectionary/vibe-math` returns only issue #3.
+- GitHub code search for `canonical frame width` at 18:51:36Z returned graphics and layout files (pixel frame width). None concern this code or Proposition 9.
+- GitHub code search for `LPQ6` at 18:52:38Z returned the author's `VERIFYING.md` replay command and unrelated string matches. The returned page does not contain an independent determination of \(f\).
+- GitHub code search for `unrestricted canonical width` still returned HTTP 429 at 18:51:26Z (retry-after about 737 seconds), and `public-regular-logical-frames` returned HTTP 429 at 18:52:38Z. Those two queries are unassessed, not empty. An earlier `C16,9` code search also returned HTTP 429.
 
 ## Next proposed target
 
