@@ -1,0 +1,600 @@
+import Std
+
+/-! A 15-coordinate connected CSS example. Only `Std` is imported.
+All inputs are seven-bit supports on physical coordinates 0,...,6.
+The actual decoding graph has 15 distinct X-check rows. -/
+namespace ConnectedAbsorbing
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+abbrev Word := BitVec 15
+abbrev Input := BitVec 7
+abbrev V := Fin 15
+abbrev ZC := Fin 7
+abbrev Msg := V → V → Bool
+
+def xs : List Word := [213,102,179,120,173,30,203,10880,13056,6528,15360,5760,3840,9600,16512]
+def zs : List Word := [85,102,120,127,27265,13056,15360]
+def xrow (c : V) : Word := xs[c.val]!
+def zrow (d : ZC) : Word := zs[d.val]!
+def vertices : List V := List.finRange 15
+
+def bit (w : Word) (v : V) : Bool := w.getLsbD v.val
+def parity (bs : List Bool) := bs.foldl Bool.xor false
+def dot (a b : Word) : Bool := parity (vertices.map fun v => bit a v && bit b v)
+def pack (f : V → Bool) : Word :=
+  BitVec.ofNat 15 ((vertices.map fun v => if f v then 2^v.val else 0).foldl (·+·) 0)
+def embed (e : Input) : Word := BitVec.ofNat 15 e.toNat
+def support : Word := 127
+def adj (c v : V) : Bool := bit (xrow c) v
+
+def syndrome (e : Word) : Word := pack fun c => dot (xrow c) e
+
+def majority (bs : List Bool) : Bool := decide (bs.length < 2 * bs.countP id)
+def checkUpdate (s : Word) (x : Msg) : Msg := fun c v =>
+  adj c v && Bool.xor (bit s c)
+    (parity (vertices.map fun u => adj c u && (u != v) && x c u))
+def hard (y : Msg) : Word :=
+  pack fun v => majority ((vertices.filter fun c => adj c v).map fun c => y c v)
+def variableUpdate (y : Msg) : Msg := fun c v =>
+  adj c v && majority ((vertices.filter fun d => adj d v && (d != c)).map fun d => y d v)
+def edgeSyndrome (x : Msg) : Word :=
+  pack fun c => parity (vertices.map fun v => adj c v && x c v)
+def firstChecks (e : Input) : Msg := checkUpdate (syndrome (embed e)) (fun _ _ => false)
+def firstHard (e : Input) : Word := hard (firstChecks e)
+def firstEdges (e : Input) : Msg := variableUpdate (firstChecks e)
+def terminal (e : Input) : Word := if syndrome (embed e) = 0 then 0 else firstHard e
+
+def Absorbing (a : Word) : Prop := ∀ v : V, bit a v = true →
+  (vertices.filter fun c => adj c v && dot (xrow c) a).length <
+  (vertices.filter fun c => adj c v && !(dot (xrow c) a)).length
+
+theorem selected_absorbing : Absorbing support := by
+  unfold Absorbing
+  decide
+
+theorem induced_checks_even : ∀ c : V, dot (xrow c) support = false := by decide
+
+theorem selected_size : (vertices.filter fun v => bit support v).length = 7 := by decide
+
+theorem distinct_x_checks : xs.Pairwise (fun a b => a ≠ b) := by decide
+
+theorem css_commutation : ∀ c : V, ∀ d : ZC, dot (xrow c) (zrow d) = false := by decide
+
+theorem first_hard_matches : ∀ e : Input,
+  syndrome (firstHard e) = syndrome (embed e) := by decide
+
+theorem first_edge_matches : ∀ e : Input,
+  edgeSyndrome (firstEdges e) = syndrome (embed e) := by decide
+
+theorem terminal_matches : ∀ e : Input,
+  syndrome (terminal e) = syndrome (embed e) := by decide
+
+theorem terminal_equals_first : ∀ e : Input, terminal e = firstHard e := by decide
+
+def zCombination (a : BitVec 7) : Word :=
+  ((List.finRange 7).map fun d => if a.getLsbD d.val then zrow d else 0).foldl (· ^^^ ·) 0
+
+def xBasis : List Word := [213,102,120,10880,13056,15360,16512]
+def xCombination (a : BitVec 7) : Word :=
+  ((List.finRange 7).map fun d => if a.getLsbD d.val then xBasis[d.val]! else 0).foldl (· ^^^ ·) 0
+
+def XSpan (w : Word) : Prop := ∃ a : BitVec 7, xCombination a = w
+def ZSpan (w : Word) : Prop := ∃ a : BitVec 7, zCombination a = w
+
+theorem actual_x_rows_in_basis_span : ∀ c : V, ∃ a : BitVec 7, xCombination a = xrow c := by decide
+
+theorem basis_rows_are_actual : ∀ i : Fin 7, ∃ c : V, xBasis[i.val]! = xrow c := by decide
+
+theorem complete_quantum_recovery : ∀ e : Input,
+  ∃ a : BitVec 7, zCombination a = embed e ^^^ terminal e := by decide
+
+theorem span_x_commutes : ∀ a : BitVec 7, ∀ d : ZC,
+  dot (xCombination a) (zrow d) = false := by decide
+
+theorem zero_z_span : ZSpan 0 := by
+  unfold ZSpan
+  decide
+
+-- A genuine logical pair on the actual code, not on an unconnected spectator.
+def logicalZ : Word := 32641
+def logicalX : Word := 16256
+
+theorem logical_Z_commutes : ∀ c : V, dot (xrow c) logicalZ = false := by decide
+
+theorem logical_Z_not_stabilizer : ¬ ZSpan logicalZ := by
+  unfold ZSpan
+  decide
+
+theorem logical_X_commutes : ∀ d : ZC, dot logicalX (zrow d) = false := by decide
+
+theorem logical_pair_anticommutes : dot logicalX logicalZ = true := by decide
+
+-- Actual bipartite connectivity, including every check and every variable.
+abbrev Node := Sum V V
+
+def Edge : Node → Node → Prop
+  | .inl v, .inr c => adj c v = true
+  | .inr c, .inl v => adj c v = true
+  | _, _ => False
+
+inductive Walk : Node → Node → Prop
+  | nil (u : Node) : Walk u u
+  | cons {u v w : Node} : Edge u v → Walk v w → Walk u w
+
+theorem edge_symm {u v : Node} (h : Edge u v) : Edge v u := by
+  cases u <;> cases v <;> simp_all [Edge]
+
+theorem walk_trans {u v w : Node} (h : Walk u v) (k : Walk v w) : Walk u w := by
+  induction h with
+  | nil => exact k
+  | cons h _ ih => exact Walk.cons h (ih k)
+
+theorem walk_reverse {u v : Node} (h : Walk u v) : Walk v u := by
+  induction h with
+  | nil u => exact Walk.nil u
+  | @cons u v w h hv ih =>
+    exact walk_trans ih (Walk.cons (edge_symm h) (Walk.nil u))
+
+theorem hub_incidence : ∀ v : V, ∃ c : V,
+  adj c v = true ∧ adj c 7 = true := by decide
+
+theorem checks_nonempty : ∀ c : V, ∃ v : V, adj c v = true := by decide
+
+theorem variable_to_hub (v : V) : Walk (.inl v) (.inl 7) := by
+  obtain ⟨c,hv,h7⟩ := hub_incidence v
+  exact Walk.cons (v := .inr c) hv (Walk.cons (v := .inl 7) h7 (Walk.nil (.inl 7)))
+
+theorem node_to_hub (u : Node) : Walk u (.inl 7) := by
+  cases u with
+  | inl v => exact variable_to_hub v
+  | inr c =>
+    obtain ⟨v,hv⟩ := checks_nonempty c
+    exact Walk.cons (v := .inl v) hv (variable_to_hub v)
+
+theorem decoding_graph_connected (u v : Node) : Walk u v := by
+  exact walk_trans (node_to_hub u) (walk_reverse (node_to_hub v))
+
+-- The two-row overlap certificate is a spanning tree on all15 coordinates.
+-- For every nontrivial physical cut, at least one X/Z stabilizer pair has
+-- anticommuting restrictions. A product stabilizer space cannot have this.
+def treeX : List Nat := [0,2,4,6,9,11,13,14,2,5,5,9,12,12]
+def treeZ : List Nat := [4,0,0,0,4,4,4,4,2,2,1,6,6,5]
+def treeParent : List Nat := [0,0,0,0,7,7,7,7,4,4,2,11,11,9]
+def treeChild : List Nat := [7,4,2,6,11,9,13,14,5,3,1,12,10,8]
+def tx (i : Fin 14) : V := ⟨treeX[i.val]!, by decide +revert⟩
+def tz (i : Fin 14) : ZC := ⟨treeZ[i.val]!, by decide +revert⟩
+
+theorem cmp_impossible : ∀ a b : BitVec 1,
+  (!(a == b) == (b == a)) = true → False := by decide
+
+theorem bool_impossible : ∀ b : Bool, (!b == b) = true → False := by decide
+
+theorem edge_0_projection (cut : Word) :
+  dot (xrow 0 &&& cut) (zrow 4) =
+    Bool.xor (cut.getLsbD 0) (cut.getLsbD 7) := by
+  change dot ((213 : Word) &&& cut) (27265 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_1_projection (cut : Word) :
+  dot (xrow 2 &&& cut) (zrow 0) =
+    Bool.xor (cut.getLsbD 0) (cut.getLsbD 4) := by
+  change dot ((179 : Word) &&& cut) (85 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_2_projection (cut : Word) :
+  dot (xrow 4 &&& cut) (zrow 0) =
+    Bool.xor (cut.getLsbD 0) (cut.getLsbD 2) := by
+  change dot ((173 : Word) &&& cut) (85 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_3_projection (cut : Word) :
+  dot (xrow 6 &&& cut) (zrow 0) =
+    Bool.xor (cut.getLsbD 0) (cut.getLsbD 6) := by
+  change dot ((203 : Word) &&& cut) (85 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_4_projection (cut : Word) :
+  dot (xrow 9 &&& cut) (zrow 4) =
+    Bool.xor (cut.getLsbD 7) (cut.getLsbD 11) := by
+  change dot ((6528 : Word) &&& cut) (27265 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_5_projection (cut : Word) :
+  dot (xrow 11 &&& cut) (zrow 4) =
+    Bool.xor (cut.getLsbD 7) (cut.getLsbD 9) := by
+  change dot ((5760 : Word) &&& cut) (27265 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_6_projection (cut : Word) :
+  dot (xrow 13 &&& cut) (zrow 4) =
+    Bool.xor (cut.getLsbD 7) (cut.getLsbD 13) := by
+  change dot ((9600 : Word) &&& cut) (27265 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_7_projection (cut : Word) :
+  dot (xrow 14 &&& cut) (zrow 4) =
+    Bool.xor (cut.getLsbD 7) (cut.getLsbD 14) := by
+  change dot ((16512 : Word) &&& cut) (27265 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_8_projection (cut : Word) :
+  dot (xrow 2 &&& cut) (zrow 2) =
+    Bool.xor (cut.getLsbD 4) (cut.getLsbD 5) := by
+  change dot ((179 : Word) &&& cut) (120 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_9_projection (cut : Word) :
+  dot (xrow 5 &&& cut) (zrow 2) =
+    Bool.xor (cut.getLsbD 4) (cut.getLsbD 3) := by
+  change dot ((30 : Word) &&& cut) (120 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_10_projection (cut : Word) :
+  dot (xrow 5 &&& cut) (zrow 1) =
+    Bool.xor (cut.getLsbD 2) (cut.getLsbD 1) := by
+  change dot ((30 : Word) &&& cut) (102 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_11_projection (cut : Word) :
+  dot (xrow 9 &&& cut) (zrow 6) =
+    Bool.xor (cut.getLsbD 11) (cut.getLsbD 12) := by
+  change dot ((6528 : Word) &&& cut) (15360 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_12_projection (cut : Word) :
+  dot (xrow 12 &&& cut) (zrow 6) =
+    Bool.xor (cut.getLsbD 11) (cut.getLsbD 10) := by
+  change dot ((3840 : Word) &&& cut) (15360 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+theorem edge_13_projection (cut : Word) :
+  dot (xrow 12 &&& cut) (zrow 5) =
+    Bool.xor (cut.getLsbD 9) (cut.getLsbD 8) := by
+  change dot ((3840 : Word) &&& cut) (13056 : Word) = _
+  simp [dot,vertices,parity,bit,List.finRange]
+  bv_normalize
+  all_goals first
+    | exact bool_impossible _ (by assumption)
+    | exact cmp_impossible _ _ (by assumption)
+
+def TreeCrosses (cut : Word) : Prop :=
+  cut.getLsbD 0 ≠ cut.getLsbD 7 ∨
+  cut.getLsbD 0 ≠ cut.getLsbD 4 ∨
+  cut.getLsbD 0 ≠ cut.getLsbD 2 ∨
+  cut.getLsbD 0 ≠ cut.getLsbD 6 ∨
+  cut.getLsbD 7 ≠ cut.getLsbD 11 ∨
+  cut.getLsbD 7 ≠ cut.getLsbD 9 ∨
+  cut.getLsbD 7 ≠ cut.getLsbD 13 ∨
+  cut.getLsbD 7 ≠ cut.getLsbD 14 ∨
+  cut.getLsbD 4 ≠ cut.getLsbD 5 ∨
+  cut.getLsbD 4 ≠ cut.getLsbD 3 ∨
+  cut.getLsbD 2 ≠ cut.getLsbD 1 ∨
+  cut.getLsbD 11 ≠ cut.getLsbD 12 ∨
+  cut.getLsbD 11 ≠ cut.getLsbD 10 ∨
+  cut.getLsbD 9 ≠ cut.getLsbD 8
+
+theorem tree_crosses (cut : Word) (h0 : cut ≠ 0) (h1 : cut ≠ 32767) : TreeCrosses cut := by
+  apply Classical.byContradiction
+  intro hn
+  simp only [TreeCrosses,not_or,Classical.not_not] at hn
+  rcases hn with ⟨he0,he1,he2,he3,he4,he5,he6,he7,he8,he9,he10,he11,he12,he13⟩
+  have hv0 : cut.getLsbD 0 = cut.getLsbD 0 := rfl
+  have hv7 : cut.getLsbD 7 = cut.getLsbD 0 := he0.symm.trans hv0
+  have hv4 : cut.getLsbD 4 = cut.getLsbD 0 := he1.symm.trans hv0
+  have hv2 : cut.getLsbD 2 = cut.getLsbD 0 := he2.symm.trans hv0
+  have hv6 : cut.getLsbD 6 = cut.getLsbD 0 := he3.symm.trans hv0
+  have hv11 : cut.getLsbD 11 = cut.getLsbD 0 := he4.symm.trans hv7
+  have hv9 : cut.getLsbD 9 = cut.getLsbD 0 := he5.symm.trans hv7
+  have hv13 : cut.getLsbD 13 = cut.getLsbD 0 := he6.symm.trans hv7
+  have hv14 : cut.getLsbD 14 = cut.getLsbD 0 := he7.symm.trans hv7
+  have hv5 : cut.getLsbD 5 = cut.getLsbD 0 := he8.symm.trans hv4
+  have hv3 : cut.getLsbD 3 = cut.getLsbD 0 := he9.symm.trans hv4
+  have hv1 : cut.getLsbD 1 = cut.getLsbD 0 := he10.symm.trans hv2
+  have hv12 : cut.getLsbD 12 = cut.getLsbD 0 := he11.symm.trans hv11
+  have hv10 : cut.getLsbD 10 = cut.getLsbD 0 := he12.symm.trans hv11
+  have hv8 : cut.getLsbD 8 = cut.getLsbD 0 := he13.symm.trans hv9
+  have hall (i : Nat) (hi : i < 15) : cut.getLsbD i = cut.getLsbD 0 := by
+    have hcases : i = 0 ∨ i = 1 ∨ i = 2 ∨ i = 3 ∨ i = 4 ∨ i = 5 ∨ i = 6 ∨ i = 7 ∨ i = 8 ∨ i = 9 ∨ i = 10 ∨ i = 11 ∨ i = 12 ∨ i = 13 ∨ i = 14 := by omega
+    rcases hcases with hi | hi | hi | hi | hi | hi | hi | hi | hi | hi | hi | hi | hi | hi | hi
+    · simpa [hi] using hv0
+    · simpa [hi] using hv1
+    · simpa [hi] using hv2
+    · simpa [hi] using hv3
+    · simpa [hi] using hv4
+    · simpa [hi] using hv5
+    · simpa [hi] using hv6
+    · simpa [hi] using hv7
+    · simpa [hi] using hv8
+    · simpa [hi] using hv9
+    · simpa [hi] using hv10
+    · simpa [hi] using hv11
+    · simpa [hi] using hv12
+    · simpa [hi] using hv13
+    · simpa [hi] using hv14
+  cases hroot : cut.getLsbD 0 with
+  | false =>
+    apply h0
+    apply BitVec.eq_of_getLsbD_eq
+    intro i hi
+    rw [hall i hi,hroot]
+    simp
+  | true =>
+    have hc : cut = BitVec.allOnes 15 := by
+      apply BitVec.eq_of_getLsbD_eq
+      intro i hi
+      calc cut.getLsbD i = true := (hall i hi).trans hroot
+           _ = (BitVec.allOnes 15).getLsbD i := by
+             rw [BitVec.getLsbD_allOnes]
+             simp only [hi, decide_true]
+    have hf : BitVec.allOnes 15 = (32767 : Word) := by decide
+    exact h1 (hc.trans hf)
+
+theorem cut_anticommutation (cut : Word) (h0 : cut ≠ 0) (h1 : cut ≠ 32767) :
+  ∃ i : Fin 14, dot (xrow (tx i) &&& cut) (zrow (tz i)) = true := by
+  have h := tree_crosses cut h0 h1
+  unfold TreeCrosses at h
+  rcases h with h | h | h | h | h | h | h | h | h | h | h | h | h | h
+  · refine ⟨0,?_⟩
+    change dot (xrow 0 &&& cut) (zrow 4) = true
+    rw [edge_0_projection]
+    cases hu : cut.getLsbD 0 <;> cases hv : cut.getLsbD 7 <;> simp_all
+  · refine ⟨1,?_⟩
+    change dot (xrow 2 &&& cut) (zrow 0) = true
+    rw [edge_1_projection]
+    cases hu : cut.getLsbD 0 <;> cases hv : cut.getLsbD 4 <;> simp_all
+  · refine ⟨2,?_⟩
+    change dot (xrow 4 &&& cut) (zrow 0) = true
+    rw [edge_2_projection]
+    cases hu : cut.getLsbD 0 <;> cases hv : cut.getLsbD 2 <;> simp_all
+  · refine ⟨3,?_⟩
+    change dot (xrow 6 &&& cut) (zrow 0) = true
+    rw [edge_3_projection]
+    cases hu : cut.getLsbD 0 <;> cases hv : cut.getLsbD 6 <;> simp_all
+  · refine ⟨4,?_⟩
+    change dot (xrow 9 &&& cut) (zrow 4) = true
+    rw [edge_4_projection]
+    cases hu : cut.getLsbD 7 <;> cases hv : cut.getLsbD 11 <;> simp_all
+  · refine ⟨5,?_⟩
+    change dot (xrow 11 &&& cut) (zrow 4) = true
+    rw [edge_5_projection]
+    cases hu : cut.getLsbD 7 <;> cases hv : cut.getLsbD 9 <;> simp_all
+  · refine ⟨6,?_⟩
+    change dot (xrow 13 &&& cut) (zrow 4) = true
+    rw [edge_6_projection]
+    cases hu : cut.getLsbD 7 <;> cases hv : cut.getLsbD 13 <;> simp_all
+  · refine ⟨7,?_⟩
+    change dot (xrow 14 &&& cut) (zrow 4) = true
+    rw [edge_7_projection]
+    cases hu : cut.getLsbD 7 <;> cases hv : cut.getLsbD 14 <;> simp_all
+  · refine ⟨8,?_⟩
+    change dot (xrow 2 &&& cut) (zrow 2) = true
+    rw [edge_8_projection]
+    cases hu : cut.getLsbD 4 <;> cases hv : cut.getLsbD 5 <;> simp_all
+  · refine ⟨9,?_⟩
+    change dot (xrow 5 &&& cut) (zrow 2) = true
+    rw [edge_9_projection]
+    cases hu : cut.getLsbD 4 <;> cases hv : cut.getLsbD 3 <;> simp_all
+  · refine ⟨10,?_⟩
+    change dot (xrow 5 &&& cut) (zrow 1) = true
+    rw [edge_10_projection]
+    cases hu : cut.getLsbD 2 <;> cases hv : cut.getLsbD 1 <;> simp_all
+  · refine ⟨11,?_⟩
+    change dot (xrow 9 &&& cut) (zrow 6) = true
+    rw [edge_11_projection]
+    cases hu : cut.getLsbD 11 <;> cases hv : cut.getLsbD 12 <;> simp_all
+  · refine ⟨12,?_⟩
+    change dot (xrow 12 &&& cut) (zrow 6) = true
+    rw [edge_12_projection]
+    cases hu : cut.getLsbD 11 <;> cases hv : cut.getLsbD 10 <;> simp_all
+  · refine ⟨13,?_⟩
+    change dot (xrow 12 &&& cut) (zrow 5) = true
+    rw [edge_13_projection]
+    cases hu : cut.getLsbD 9 <;> cases hv : cut.getLsbD 8 <;> simp_all
+
+def CSSStabilizer (p : Word × Word) : Prop := XSpan p.1 ∧ ZSpan p.2
+
+def SplitsAcross (cut : Word) : Prop :=
+  ∀ p : Word × Word, CSSStabilizer p → CSSStabilizer (p.1 &&& cut, p.2 &&& cut)
+
+theorem no_physical_product_cut (cut : Word) (h0 : cut ≠ 0) (h1 : cut ≠ 32767) :
+  ¬ SplitsAcross cut := by
+  intro hs
+  obtain ⟨i,hi⟩ := cut_anticommutation cut h0 h1
+  obtain ⟨a,ha⟩ := actual_x_rows_in_basis_span (tx i)
+  have hp : CSSStabilizer (xrow (tx i), 0) := ⟨⟨a,ha⟩,zero_z_span⟩
+  obtain ⟨b,hb⟩ := (hs _ hp).1
+  have hc := span_x_commutes b (tz i)
+  rw [hb] at hc
+  rw [hi] at hc
+  contradiction
+
+-- Eventual properties refer to the specified decoder with syndrome stopping.
+def stoppedOutput (e : Input) (t : Nat) : Word := if t = 0 then 0 else terminal e
+
+def EventuallyCorrect (e : Input) (c : V) : Prop :=
+  ∃ L : Nat, ∀ t : Nat, L ≤ t →
+    bit (syndrome (stoppedOutput e t)) c = bit (syndrome (embed e)) c
+
+def EventuallyConverges (e : Input) (v : V) : Prop :=
+  ∃ L : Nat, ∀ t : Nat, L ≤ t → bit (stoppedOutput e t) v = bit (stoppedOutput e (t+1)) v
+
+def TrappingSelected : Prop := ∃ e : Input,
+  (∃ c : V, ¬ EventuallyCorrect e c) ∨
+  (∃ v : V, bit support v = true ∧ ¬ EventuallyConverges e v)
+
+theorem all_checks_eventually_correct (e : Input) (c : V) : EventuallyCorrect e c := by
+  refine ⟨1,?_⟩
+  intro t ht
+  have h : t ≠ 0 := by omega
+  simp only [stoppedOutput,ite_eq_right h]
+  rw [terminal_matches]
+
+theorem all_variables_converge (e : Input) (v : V) : EventuallyConverges e v := by
+  refine ⟨1,?_⟩
+  intro t ht
+  have h : t ≠ 0 := by omega
+  have h' : t+1 ≠ 0 := by omega
+  simp only [stoppedOutput,ite_eq_right h,ite_eq_right h']
+
+theorem selected_not_trapping : ¬ TrappingSelected := by
+  intro ⟨e,h⟩
+  rcases h with ⟨c,hc⟩ | ⟨v,hv,hf⟩
+  · exact hc (all_checks_eventually_correct e c)
+  · exact hf (all_variables_converge e v)
+
+-- Explicit finite construction bridge to two CNOTs on the earlier CSS pair
+-- plus one X-stabilized auxiliary qubit. The final code has no physical factor.
+def originalX : List Word := [85,102,51,120,45,30,75,10880,13056,6528,15360,5760,3840,9600,16384]
+def originalZ : List Word := [85,102,120,127,10880,13056,15360]
+def cnotX (c t : V) (w : Word) : Word :=
+  if bit w c then w ^^^ BitVec.ofNat 15 (2^t.val) else w
+def cnotZ (c t : V) (w : Word) : Word :=
+  if bit w t then w ^^^ BitVec.ofNat 15 (2^c.val) else w
+
+theorem two_CNOT_X_bridge : originalX.map (fun w => cnotX 14 7 (cnotX 0 7 w)) = xs := by decide
+theorem two_CNOT_Z_bridge : originalZ.map (fun w => cnotZ 14 7 (cnotZ 0 7 w)) = zs := by decide
+
+theorem x_basis_independent : ∀ a b : BitVec 7,
+  xCombination a = xCombination b ↔ a = b := by decide
+
+theorem z_basis_independent : ∀ a b : BitVec 7,
+  zCombination a = zCombination b ↔ a = b := by decide
+
+theorem no_supported_Z_logical (e : Input) (h : syndrome (embed e) = 0) : ZSpan (embed e) := by
+  obtain ⟨a,ha⟩ := complete_quantum_recovery e
+  have ht : terminal e = 0 := by simp [terminal,h]
+  refine ⟨a,?_⟩
+  simpa [ht] using ha
+
+-- Analytic descriptions, checked against the literal fifteen-coordinate model.
+def label (e : Input) : BitVec 3 :=
+  ((List.finRange 7).map fun i => if e.getLsbD i.val then BitVec.ofNat 3 (i.val+1) else 0).foldl (· ^^^ ·) 0
+
+def singletonOutput (p : BitVec 3) : Word :=
+  if p = 0 then 0 else BitVec.ofNat 15 (2^(p.toNat-1))
+
+def initialOnes (e : Input) (v : V) : Nat :=
+  ((vertices.filter fun c => adj c v).map fun c => firstChecks e c v).countP id
+
+theorem selected_variable_degrees : ∀ v : V, bit support v = true →
+  (vertices.filter fun c => adj c v).length = 4 := by decide
+
+theorem first_output_formula : ∀ e : Input, firstHard e = singletonOutput (label e) := by decide
+
+theorem first_vote_counts : ∀ e : Input, ∀ i : Fin 7,
+  initialOnes e ⟨i.val,by omega⟩ =
+    if label e = 0 then 0 else if (label e).toNat = i.val+1 then 4 else 2 := by decide
+
+theorem outside_edges_zero : ∀ e : Input, ∀ c v : V,
+  7 ≤ v.val → firstEdges e c v = false := by decide
+
+#print axioms selected_absorbing
+#print axioms induced_checks_even
+#print axioms selected_size
+#print axioms distinct_x_checks
+#print axioms css_commutation
+#print axioms first_hard_matches
+#print axioms first_edge_matches
+#print axioms terminal_matches
+#print axioms terminal_equals_first
+#print axioms actual_x_rows_in_basis_span
+#print axioms basis_rows_are_actual
+#print axioms complete_quantum_recovery
+#print axioms span_x_commutes
+#print axioms zero_z_span
+#print axioms logical_Z_commutes
+#print axioms logical_Z_not_stabilizer
+#print axioms logical_X_commutes
+#print axioms logical_pair_anticommutes
+#print axioms edge_symm
+#print axioms walk_trans
+#print axioms walk_reverse
+#print axioms hub_incidence
+#print axioms checks_nonempty
+#print axioms variable_to_hub
+#print axioms node_to_hub
+#print axioms decoding_graph_connected
+#print axioms cmp_impossible
+#print axioms bool_impossible
+#print axioms edge_0_projection
+#print axioms edge_1_projection
+#print axioms edge_2_projection
+#print axioms edge_3_projection
+#print axioms edge_4_projection
+#print axioms edge_5_projection
+#print axioms edge_6_projection
+#print axioms edge_7_projection
+#print axioms edge_8_projection
+#print axioms edge_9_projection
+#print axioms edge_10_projection
+#print axioms edge_11_projection
+#print axioms edge_12_projection
+#print axioms edge_13_projection
+#print axioms tree_crosses
+#print axioms cut_anticommutation
+#print axioms no_physical_product_cut
+#print axioms all_checks_eventually_correct
+#print axioms all_variables_converge
+#print axioms selected_not_trapping
+#print axioms two_CNOT_X_bridge
+#print axioms two_CNOT_Z_bridge
+#print axioms x_basis_independent
+#print axioms z_basis_independent
+#print axioms no_supported_Z_logical
+#print axioms selected_variable_degrees
+#print axioms first_output_formula
+#print axioms first_vote_counts
+#print axioms outside_edges_zero
+end ConnectedAbsorbing
