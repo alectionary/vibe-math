@@ -14,6 +14,7 @@ r=subprocess.run([a.tectonic,'--keep-logs','--outdir',str(R),str(R/'main.tex')],
 (R/'compiler-output.log').write_text(r.stdout+r.stderr)
 assert r.returncode==0,r.stdout+r.stderr
 log=(R/'main.log').read_text()
+(R/'main.log').write_text('\n'.join(line.rstrip() for line in log.splitlines())+'\n')
 for failure in ['Missing character:','Overfull \\hbox','undefined references','LaTeX Error:']:
  assert failure not in log,failure
 print('Paper compiled with no missing characters, overfull boxes or undefined references.')
