@@ -28,6 +28,8 @@ For a binary CSS code whose X- and Z-stabilizer row spaces agree, every odd-weig
 \section{Result and motivating question}
 Morris, Pllaha and Kelley ask whether every absorbing set is trapping for their syndrome-based Gallager-B decoder \cite{mpk}, Section VI, arXiv v2, May 10, 2024. A seven-variable simplex matrix answers the unrestricted dynamical question negatively \cite{simplex}. A separate fifteen-qubit asymmetric CSS construction recovers all 128 errors on a $(7,0)$ support, with a connected actual decoding graph, one encoded qubit and no physical product cut \cite{connected}. These are cited results, with their complete checked proofs preserved separately.
 
+The Error Correction Zoo's \emph{Self-dual CSS code} entry \cite{eczoo} supplied the terminology and discovery route to the weakly self-dual code-conversion and quotient-form references. The primary sources \cite{blt,hhpw}, rather than the expository entry, supply the mathematical definitions and results compared below.
+
 The natural equal-stabilizer-space restriction has an elementary but decisive parity obstruction. We use \emph{weakly self-dual CSS} in the sense of Bravyi, Leemhuis and Terhal \cite{blt}, Section 3: the binary X- and Z-stabilizer spaces are equal. This is weaker than requiring identical generating matrices and stronger than allowing a coordinate permutation to exchange unequal spaces. It is distinct from the graph-partition notion of a \emph{symmetric stabilizer} in \cite{mpk}, Definition 6.
 
 \small
@@ -44,7 +46,7 @@ Can a suitable even support recover in a connected equal-space code? & Project-d
 \begin{theorem}[Odd-support obstruction]\label{thm:parity}
 Let $H_X,H_Z$ be finite binary check matrices on $n$ physical coordinates. Write $R_X=\row H_X$ and $R_Z=\row H_Z$. Suppose $H_XH_Z^T=0$ and $R_X=R_Z$. Every vector of $R_Z$ has even weight. If $a$ has odd weight and $H_Xa=0$, then $a\notin R_Z$ and represents a nontrivial logical Z operator. In particular this applies to the indicator of any odd-cardinality $(a,0)$ absorbing set in the actual $H_X$ graph.
 \end{theorem}
-Theorem~\ref{thm:parity} is the classical self-orthogonality parity argument applied to the decoding support. The formal contribution is a general proof with actual-matrix, induced-degree and recovery interfaces. The relevant quotient $R^\perp/R$ and its bilinear form are classical; see \cite{hhpw}, Section 3. The complete proof and source-comparison ledgers are signposted in Appendix~\ref{app:lean}; Appendix~\ref{app:dates} gives the reference chronology.
+Theorem~\ref{thm:parity} is the classical self-orthogonality parity argument applied to the decoding support. The formal contribution is a general proof with actual-matrix, induced-degree and recovery interfaces. The relevant quotient $R^\perp/R$ and its bilinear form are classical; see \cite{hhpw}, Section 3. The complete proof and source-comparison ledgers are signposted in Appendix~\ref{app:lean}; Section~\ref{sec:chronology} gives the main-text reference chronology.
 
 \section{Binary spaces, incidence and the proof}
 Vectors lie in $\F^n$, addition is XOR, and $u\cdot v=\sum_i u_iv_i$ in $\F$. Matrices are finite ordered lists of rows; redundant and zero rows are allowed in the general theorem. The row space is the least set containing zero and every actual row and closed under XOR. Thus it is the full stabilizer space, not a selected basis or a restricted submatrix.
@@ -110,16 +112,51 @@ No converse from eventual success to one-iteration success is proved or assumed.
 \section{Relation to existing results and limits}
 Bravyi--Leemhuis--Terhal \cite{blt}, Section 3, supplies precisely the equal-space/self-orthogonality framework. Their Section 5, Corollary 1 maps any $[[n,k,d]]$ stabilizer code to a $[[4n,2k,2d]]$ weakly self-dual CSS code while preserving geometric locality up to constants. Its proofs control code parameters and locality. Applying it here still requires a bridge preserving the selected absorbing support, the actual Gallager-B votes and first stopping, and recovery of every error on that support. We have not established those bridges; the code conversion alone is not a checked solution of Question~\ref{q:full}.
 
-Haah--Hastings--Poulin--Wecker \cite{hhpw}, Sections 3--4, studies self-orthogonal spaces, logical quotient forms and weakly self-dual code constructions for magic-state distillation. Its normal/hyperbolic distinction concerns the quotient bilinear form, not odd/even cardinality of an absorbing support. These results do not supply the particular stopped Gallager-B recovery certificate required here. We use their algebraic framework as prior context, without claiming the underlying parity fact is new.
+Haah--Hastings--Poulin--Wecker \cite{hhpw}, Sections 3--4, studies self-orthogonal spaces, logical quotient forms and weakly self-dual code constructions for magic-state distillation. Its normal/hyperbolic distinction concerns the quotient bilinear form, not odd/even cardinality of an absorbing support. These results do not supply the particular stopped Gallager-B recovery certificate required here. Their algebraic framework supplies the relevant prior context.
 
-Morris--Pllaha--Kelley \cite{mpk}, Theorem 5, already distinguishes logical and degenerate zero-syndrome patterns using the induced code. An induced submatrix's row space is not automatically the entire opposite ambient stabilizer space on a proper support; we explicitly use the latter. Its Definition 3 is dynamical, whereas our obstruction is logical. Section II-B also discusses same-syndrome logical errors; syndrome equality must not be substituted for stabilizer equivalence. The exact final journal full text remains subscription-restricted in this review. The public journal introduction and accessible arXiv v2 were checked separately; no assertion of identical journal wording is made.
+Morris--Pllaha--Kelley \cite{mpk}, Theorem 5, distinguishes logical and degenerate zero-syndrome patterns using the induced code. An induced submatrix's row space is not automatically the entire opposite ambient stabilizer space on a proper support; we explicitly use the latter. Its Definition 3 is dynamical, whereas our obstruction is logical. Section II-B also discusses same-syndrome logical errors; syndrome equality must not be substituted for stabilizer equivalence.
 
-The bounded primary-source and public-code comparison is recorded in the linked ledger. Direct authenticated X search was unavailable. These limits constrain a current-status or priority inference; the precise remaining target is unresolved in this artifact. The unrestricted source question remains answered negatively by the cited counterexample. The odd-support equal-space quantum-recovery restriction is answered negatively here. The remaining even-support existence problem is a separate follow-up.
+Dhingra, Matthews, McDevitt and McMillon \cite{dhingra}, Section 2 (pp.~6--8), initialize variable states with the received word and use integer or fractional unsatisfied-check bit-flip rules. Section 3 studies fixed-state absorbing patterns for those variants. Our decoder instead uses zero-initialized extrinsic syndrome messages, and quantum success is measured modulo the full opposite stabilizer space.
 
+Morris, Pllaha and Kelley's related study \cite{redundancy} examines redundancy in syndrome-based quantum LDPC decoding. Its abstract describes sufficient graph conditions for convergence to the input syndrome. The distinction relevant here is between such syndrome convergence and quantum recovery: our parity obstruction concerns a nontrivial logical word sharing the identity's syndrome.
+
+The unrestricted absorbing-implies-trapping question is answered negatively by the cited counterexample. Theorem~\ref{thm:decoder} rules out universal recovery on odd zero-syndrome supports when the full X/Z stabilizer spaces agree. Question~\ref{q:full} asks for a connected, physically inseparable even-support example under the exact stated decoder; this paper establishes its necessary conditions and the benchmark implication, leaving its existence unresolved.
+
+\clearpage
+\section{Reference chronology and source roles}\label{sec:chronology}
+Table~\ref{tab:chronology} compares the central references and inspected milestones to this manuscript's date, October 26, 2026. The three roles are distinct: Morris--Pllaha--Kelley poses the motivating question; Error Correction Zoo supplies a discovery trail; the classical primary references supply the algebraic ingredients. The prior repository manuscripts supply the cited unrestricted and connected asymmetric witnesses.
+
+\begin{table}[ht]\centering\footnotesize
+\begin{tabular}{>{\raggedright\arraybackslash}p{.24\textwidth}>{\raggedright\arraybackslash}p{.48\textwidth}>{\raggedleft\arraybackslash}p{.16\textwidth}}
+\toprule Source & Dated milestone & Days to this manuscript\\\midrule
+Bravyi et al. \cite{blt} & 2010-04-21: First preprint & 6032\\
+Bravyi et al. \cite{blt} & 2010-04-27: Inspected arXiv v2; journal year 2010 & 6026\\
+Haah et al. \cite{hhpw} & 2017-03-22: First preprint & 3505\\
+Haah et al. \cite{hhpw} & 2017-09-29: Inspected arXiv v3 & 3314\\
+Haah et al. \cite{hhpw} & 2017-10-03: Quantum publication & 3310\\
+Morris et al. (absorbing) \cite{mpk} & 2023-07-26: First preprint & 1188\\
+Morris et al. (absorbing) \cite{mpk} & 2024-05-10: Inspected arXiv v2 & 899\\
+Morris et al. (absorbing) \cite{mpk} & 2026-03-03: Journal publication metadata & 237\\
+Morris et al. (redundancy) \cite{redundancy} & 2025-08-23: Author availability announcement & 429\\
+Dhingra et al. \cite{dhingra} & 2026: Accepted manuscript; repository year only & Not asserted\\
+Simplex manuscript \cite{simplex} & 2026-10-26: Dated repository manuscript; fixed cited revision & 0\\
+Connected manuscript \cite{connected} & 2026-10-26: Dated repository manuscript; fixed cited revision & 0\\
+This manuscript & 2026-10-26: Present dated manuscript & 0\\
+\bottomrule
+\end{tabular}
+\caption{Reference timeline. Day counts are exact for day-precision events. A source's age is not the duration of an unsolved problem.}\label{tab:chronology}
+\end{table}
+
+Dates are given at their available precision: the BLT journal and the Dhingra repository record supply years, while the redundancy-paper row uses the author's dated availability announcement. Error Correction Zoo was consulted on October 26, 2026 as a discovery source. Repository manuscript rows use the dates printed on the cited documents. Investigation and packaging times are recorded separately in the reproducibility records.
+
+\clearpage
 \appendix
 \input{supplement.tex}
 \clearpage
 \begin{thebibliography}{9}
+\bibitem{eczoo} Error Correction Zoo contributors, \emph{Self-dual CSS code}, \url{https://errorcorrectionzoo.org/c/self_dual_css}, inspected October 26, 2026 (discovery and terminology source).
+\bibitem{dhingra} R. Dhingra, G. L. Matthews, C. McDevitt and E. McMillon, \emph{Absorbing Sets of LDPC Codes Under a Gallager B Decoding Variant}, accepted manuscript, \href{https://hdl.handle.net/10919/140590}{Virginia Tech repository} (2026; year precision).
+\bibitem{redundancy} K. D. Morris, T. Pllaha and C. A. Kelley, \emph{Effect of redundancy on syndrome-based decoding for QLDPC codes}, ISTC (2025), pp.~1--5, \href{https://doi.org/10.1109/ISTC65386.2025.11154620}{doi:10.1109/ISTC65386.2025.11154620}. \href{https://kirstendmorris.github.io/}{Author availability announcement}, August 23, 2025. Public IEEE-authored abstract at \href{https://inspirehep.net/literature/2971808}{INSPIRE 2971808}.
 \bibitem{mpk} K. D. Morris, T. Pllaha and C. A. Kelley, \emph{Absorbing Sets in Quantum LDPC Codes}, \href{https://arxiv.org/abs/2307.14532v2}{arXiv:2307.14532v2} (May 10, 2024). Journal metadata: \href{https://doi.org/10.3934/amc.2026023}{doi:10.3934/amc.2026023} (2026).
 \bibitem{blt} S. Bravyi, B. Leemhuis and B. M. Terhal, \emph{Majorana Fermion Codes}, \href{https://arxiv.org/abs/1004.3791v2}{arXiv:1004.3791v2} (April 27, 2010), New J. Phys. 12, 083039 (2010).
 \bibitem{hhpw} J. Haah, M. B. Hastings, D. Poulin and D. Wecker, \emph{Magic State Distillation with Low Space Overhead and Optimal Asymptotic Input Count}, \href{https://arxiv.org/abs/1703.07847v3}{arXiv:1703.07847v3} (September 29, 2017), Quantum 1, 31 (October 3, 2017).

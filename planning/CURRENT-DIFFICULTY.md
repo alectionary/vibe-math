@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 360 entries (179 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 26, 2026. Low-confidence planning priors for all 363 entries (182 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -5579,3 +5579,51 @@ First milestone: Verify exact scope and modern resolution.
 Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
 
 Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-ccz-normal-codes).
+
+### L-F101-prevalence
+
+Quantify the prevalence and influence of absorbing sets in decoder failure.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad conclusion direction; source supplies no fixed ensemble, channel, estimator or theorem target.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-prevalence).
+
+### L-F101-hybrid-decoding
+
+Develop hybrid decoding approaches combining strengths of multiple algorithms.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad algorithm-design direction, without a specified hybrid protocol or performance criterion.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-hybrid-decoding).
+
+### L-F101-decoder-dependent-structure
+
+Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+General direction beyond the source's proved Type1 classifications; no new unresolved classification theorem is inferred.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure).

@@ -6,13 +6,13 @@ The names below are in namespace \texttt{CSSOddSupport}, with \texttt{Question} 
 \footnotesize
 \begin{longtable}{>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.61\textwidth}}
 \toprule Written proof & Exact Lean coverage\\\midrule\endhead
-Incidence/zero syndrome & \texttt{dot\_intersection\_weight}, \texttt{zero\_b\_iff\_induced\_even}, \texttt{zero\_b\_iff\_zero\_syndrome}\\
-Theorem~\ref{thm:parity} & \texttt{css\_spans\_commute}, \texttt{equal\_spans\_even\_stabilizers}, \texttt{odd\_zero\_syndrome\_logical}, \texttt{odd\_zero\_b\_logical}\\
-Theorem~\ref{thm:decoder} & \texttt{cannot\_correct\_identity\_and\_odd\_support}, \texttt{no\_universal\_supported\_recovery}\\
-Zero-stopping application & \texttt{zero\_stopping\_decoder\_fails\_odd\_support}, Question's two \texttt{zero\_syndrome\_*\_success\_iff}\\
-Proposition~\ref{prop:presentation} & \texttt{common\_matrix\_css}, \texttt{common\_matrix\_supported\_recovery\_iff}, \texttt{common\_matrix\_stabilizer\_iff}, \texttt{common\_matrix\_product\_cut\_iff}, \texttt{common\_matrix\_both\_sectors}\\
-Proposition~\ref{prop:gates} & Question's \texttt{full\_candidate\_no\_supported\_logical}, \texttt{full\_candidate\_support\_even}, \texttt{full\_question\_iff\_even}, \texttt{benchmark\_implies\_full}\\
-All boundary/consumer assertions & Complete \texttt{Consumers.lean} below; independent fixed-family replay in \texttt{verify.py}\\
+Incidence/zero syndrome & \path|dot_intersection_weight|, \path|zero_b_iff_induced_even|, \path|zero_b_iff_zero_syndrome|\\
+Theorem~\ref{thm:parity} & \path|css_spans_commute|, \path|equal_spans_even_stabilizers|, \path|odd_zero_syndrome_logical|, \path|odd_zero_b_logical|\\
+Theorem~\ref{thm:decoder} & \path|cannot_correct_identity_and_odd_support|, \path|no_universal_supported_recovery|\\
+Zero-stopping application & \path|zero_stopping_decoder_fails_odd_support|, Question's two \path|zero_syndrome_*_success_iff|\\
+Proposition~\ref{prop:presentation} & \path|common_matrix_css|, \path|common_matrix_supported_recovery_iff|, \path|common_matrix_stabilizer_iff|, \path|common_matrix_product_cut_iff|, \path|common_matrix_both_sectors|\\
+Proposition~\ref{prop:gates} & Question's \path|full_candidate_no_supported_logical|, \path|full_candidate_support_even|, \path|full_question_iff_even|, \path|benchmark_implies_full|\\
+All boundary/consumer assertions & Complete linked \texttt{Consumers.lean}; independent fixed-family replay in \texttt{verify.py}\\
 Question~\ref{q:full} & \texttt{Structural}, \texttt{FullCandidate}, \texttt{FullQuestion}; these are definitions, not an existence theorem.\\
 \bottomrule
 \end{longtable}
@@ -31,30 +31,83 @@ Question~\ref{q:full} & \texttt{Structural}, \texttt{FullCandidate}, \texttt{Ful
 \noindent\texttt{seven\_no\_decoder\_corrects\_all}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L29}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L29}{immutable}.\par
 \noindent\texttt{permutation\_only\_spaces\_differ}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L109}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L109}{immutable}.\par
 
-The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/verification.json}{verification manifest} records every declaration, source hash and dependency. The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/prior-art.json}{comparison ledger} and \href{https://github.com/alectionary/vibe-math/blob/master/literature/symmetric-css-source-screening.json}{source-question screen} retain access limits and question provenance. Running \texttt{build.py --lean /path/to/lean} checks a temporary clean import closure and independently replays the fixed certificate.
+The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/editorial-source-screening.json}{targeted follow-through ledger} records the later classical variant screen and quantum redundancy bibliography. The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/verification.json}{verification manifest} records every declaration, source hash and dependency. The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/prior-art.json}{comparison ledger} and \href{https://github.com/alectionary/vibe-math/blob/master/literature/symmetric-css-source-screening.json}{source-question screen} retain access limits and question provenance. Running \texttt{build.py --lean /path/to/lean} checks a temporary clean import closure and independently replays the fixed certificate.
 
-\subsection{Finite binary interface and the general proof}
-\texttt{Word n} is an actual function on the finite physical coordinates, and \texttt{Span} is inductively generated by zero, actual rows and XOR. Orthogonality extends by induction. The complete module below includes the parity identity, no-decoder proof, incidence bridge and presentation/sector proofs. Its general theorem allows all finite lengths and arbitrary finite row lists, including empty and degenerate boundaries.
-\lstinputlisting[escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\subsection{Dependency structure: from checks to decoder ambiguity}
+The two headline theorems follow this chain, with no decoder-specific convergence premise:
+\[
+\begin{gathered}
+ H_XH_Z^T=0\quad\Longrightarrow\quad R_X\perp R_Z,\\
+ R_X=R_Z\quad\Longrightarrow\quad w\in R_Z\Rightarrow w\cdot w=0
+ \quad\Longrightarrow\quad |w|\equiv0\pmod2,\\
+ |a|\equiv1\pmod2,\ H_Xa=0\quad\Longrightarrow\quad
+ a\in R_X^\perp\setminus R_Z,\\
+ H_Xa=H_X0,\ a\notin R_Z\quad\Longrightarrow\quad
+ \text{no shared syndrome correction succeeds on both }0\text{ and }a.
+\end{gathered}
+\]
+The source-to-formal path is separate: an actual check's induced degree is the weight of its intersection with the selected support, its parity is the binary dot product, and having no odd checks is exactly zero syndrome. These bridges prevent replacing ambient stabilizer membership by an induced submatrix condition. The strict-majority absorbing property is not needed after zero syndrome and oddness are known.
 
-\subsection{Actual messages and first stopping}
-Check indices enumerate the actual row list. Nonedges are set to zero; majority is strict, with zero on ties. The trajectory is defined unhalted only to locate the first accepting time. \texttt{Success} insists on that first time and its hard output. \texttt{FullQuestion} and \texttt{OneStepQuestion} remain unproved propositions; the only existence implication proved is from the benchmark to the full question.
-\lstinputlisting[escapeinside={(*@}{@*)}]{Question-listing.txt}
+\subsection{Finite words, full row spaces and parity}
+\texttt{Word n} uses the physical coordinates themselves. \texttt{Span} is the least XOR-closed set generated by the actual rows, including all redundant generators. \texttt{CSS} asserts orthogonality of actual X/Z rows, whereas \texttt{SameSpan} identifies the entire spaces.
+\lstinputlisting[firstline=8,lastline=8,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=18,lastline=18,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=22,lastline=22,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=24,lastline=24,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=97,lastline=100,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=111,lastline=112,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=114,lastline=115,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+The recursive dot-product and weight definitions, their structural parity proof and bilinearity lemmas are in the complete linked module. The checked identity below is the precise $w\cdot w=|w|\bmod2$ interface. Orthogonality extends by induction over \texttt{Span}; equal spaces then force every stabilizer's self-dot to vanish. Here are the complete central bodies implementing that chain.
+\lstinputlisting[firstline=89,lastline=90,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=125,lastline=130,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=132,lastline=135,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=137,lastline=143,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=145,lastline=152,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\subsection{Incidence and the logical-word conclusion}
+A zero syndrome is orthogonality against every actual decoding row. An ambient logical Z word is precisely such a word outside the entire Z span. \texttt{bValue} counts actual check-list entries of odd induced degree. The incidence equivalence and the logical conclusion use those same objects and hypotheses.
+\lstinputlisting[firstline=154,lastline=155,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=157,lastline=158,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=160,lastline=161,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=163,lastline=163,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=165,lastline=167,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=262,lastline=270,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=272,lastline=279,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=169,lastline=172,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=174,lastline=178,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\subsection{Why a syndrome-only decoder cannot correct both errors}
+\texttt{Decoder} is an arbitrary deterministic syndrome map, not a Gallager-B-specific heuristic. \texttt{Corrects} tests the residual in the full opposite span. If identity and the odd word both succeeded, XOR closure and equal input syndromes would put the odd word in that span. The following complete proof gives the contradiction; the subsequent support application uses that both identity and the full indicator are supported on the selected set.
+\lstinputlisting[firstline=208,lastline=208,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=210,lastline=211,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=213,lastline=223,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=225,lastline=225,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=227,lastline=228,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=238,lastline=245,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+The named support lemmas and XOR cancellation used above have complete bodies in the immutable source. They introduce no additional code or decoder assumptions. The theorem therefore rules out universal quantum recovery, without asserting message nonconvergence or persistent syndrome mismatch.
 
-\subsection{Fixed consumers and hypothesis guards}
-These controls test oddness, actual selected degrees, empty-coordinate boundaries, row-space equality versus literal equality, and permutation-only symmetry. The seven-coordinate consumer is a logical-failure control, not a successful even-support construction.
-\lstinputlisting[escapeinside={(*@}{@*)}]{Consumers-listing.txt}
+\subsection{Common presentation, physical cuts and Pauli sectors}
+The presentation reductions identify span membership, not just a numerical rank. \path|common_matrix_css| first extends row orthogonality to the replacement presentation. The three membership equivalences then preserve recovery and the full binary stabilizer space; \path|common_matrix_product_cut_iff| transports closure under coordinate restriction. Complete definitions and the cut proof are at the declaration links above. The two short central reductions below show why keeping the actual X check list preserves the chosen decoder's recovery predicate and why componentwise recovery suffices for the common-matrix Pauli decoder.
+\lstinputlisting[firstline=308,lastline=311,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=347,lastline=349,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\lstinputlisting[firstline=351,lastline=355,escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+\subsection{First stopping, the necessary gate and the benchmark}
+\texttt{FirstAccept} excludes every earlier accepting iteration. \texttt{Success} requires that first acceptance and its hard output to leave a stabilizer residual. The actual check, strict-majority, extrinsic-update, hard-output and outgoing-parity definitions are in \texttt{Question.lean}; Section~\ref{sec:question} specifies their initialization, ties and two separately stopped rules. These interfaces do not replace eventual success by a finite search horizon.
+\lstinputlisting[firstline=50,lastline=51,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=53,lastline=55,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=94,lastline=95,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=97,lastline=98,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=101,lastline=101,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=103,lastline=104,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=106,lastline=106,escapeinside={(*@}{@*)}]{Question-listing.txt}
+At syndrome zero, initialization is already the first acceptance and returns zero. The complete proof below reduces hard-stopped success exactly to stabilizer membership; \path|zero_syndrome_edge_success_iff| has the corresponding outgoing-test proof in the linked source. This is the necessary supported-logical filter, not a sufficient decoder-success criterion.
+\lstinputlisting[firstline=115,lastline=127,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=185,lastline=186,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=188,lastline=191,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=193,lastline=197,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=199,lastline=204,escapeinside={(*@}{@*)}]{Question-listing.txt}
+For nonzero syndrome, initialization cannot accept. Therefore a first-iteration hard match, outgoing parity match and stabilizer residual give the first stopped success under each rule; the complete \path|one_step_hard_success| and \path|one_step_edge_success| bodies establish this in \texttt{Question.lean}. The following application exposes the direction of implication. Neither existence proposition is proved here, and no converse or bounded-search nonexistence conclusion is supplied.
+\lstinputlisting[firstline=179,lastline=183,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\lstinputlisting[firstline=206,lastline=208,escapeinside={(*@}{@*)}]{Question-listing.txt}
+\subsection{Controls and complete supporting sources}
+The proof map's consumer module checks the seven-coordinate logical-failure control, the even stabilizer boundary, unequal generating lists with equal spans, and the permutation-only symmetry guard. The independent integer-mask certificate covers the fixed finite controls described in the main text. It does not establish the general theorem by enumeration or search for a construction.
 
-\section{Reference chronology}\label{app:dates}
-The manuscript date is October 26, 2026. Day counts below are exact differences from the explicitly dated preprint events. They measure source age, not how long a question was unsolved. The repository papers are mathematical predecessors cited at fixed revisions, not evidence of an external announcement date.
-\small
-\par\noindent
-\begin{tabular}{>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.29\textwidth}>{\raggedright\arraybackslash}p{.12\textwidth}}
-\toprule Source & Earliest preprint & Inspected milestone & Days since earliest\\\midrule
-Bravyi et al. & 2010-04-21 & v2 April 27, 2010; NJP 2010 & 6032\\
-Haah et al. & 2017-03-22 & v3 Sept. 29, 2017; Quantum Oct. 3, 2017 & 3505\\
-Morris et al. & 2023-07-26 & v2 May 10, 2024; public journal intro 2026 & 1188\\
-\bottomrule
-\end{tabular}
-\normalsize
-The BLT journal day is not asserted here; the year is sufficient for the inspected preprint comparison. The P09 final journal full-text access gap is retained in the comparison ledger. Earlier repository constructions are referenced at their immutable publication and proof commits in the bibliography.
+Complete supporting proofs and decoder definitions are in the linked current and immutable modules and source archive. The excerpts above reproduce complete selected declarations, with typographic Unicode rendering; \texttt{excerpts.json} records their exact checked-source ranges.

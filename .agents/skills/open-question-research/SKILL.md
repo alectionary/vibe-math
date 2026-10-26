@@ -328,6 +328,10 @@ When writing or revising a research paper:
   priority disclaimers in the abstract, introduction and conclusion. An ordinary
   result claim does not require a universal claim to historical priority. Retain
   mathematical hypotheses and limits that determine what the theorem proves.
+  Keep routine retrieval failures in the supporting ledger. An unavailable source
+  alone is not a reason to cast doubt on a proved result, speculate that unseen
+  work invalidates or subsumes it, or hedge an ordinary theorem claim. Give
+  precise overlap attribution when an inspected source actually supports it.
 - Keep a proof-to-Lean table covering every proof created for the manuscript,
   including counting bijections, certificate soundness, matrix/source translations,
   finite-instance verification and applications. Give every such proof a faithful
@@ -347,16 +351,26 @@ When writing or revising a research paper:
   [stopping-bound paper's proof appendix](../../../formalization/stopping-bound/stronger/supplement.tex):
   explain the definitions and source bridges, print complete central proof bodies,
   show their dependency structure, and provide current and commit-pinned source
-  links with declaration-level anchors. A coverage table, external guide or source
-  archive supplements this exposition; it does not replace it. Review the rendered
-  appendix against that example before delivery.
-- Cite the discovery source, original question and applicable predecessors.
+  links with declaration-level anchors. Explain the chain from source definitions
+  through the decisive lemmas to the conclusion; place complete central proof
+  bodies beside that explanation. Whole-module listings alone do not satisfy this
+  requirement. Keep complete supporting sources available and linked. A coverage
+  table, external guide or source archive supplements this exposition; it does not
+  replace it. Review the rendered appendix against that example before delivery.
+- Cite the discovery source, original question and applicable predecessors in
+  the manuscript, distinguishing discovery credit from mathematical authority.
+  A discovery record only in a repository ledger is insufficient.
   Include a reference chronology table: source, earliest relevant preprint/date,
   inspected version/publication milestone, this paper's dated revision, and the
-  explicit elapsed-time delta. Put a readable central-source comparison near the
-  introduction or related work and explicitly signpost the complete ledger if it
-  is in an appendix. Measure deltas to the stated manuscript revision date, not a
-  moving reading date. Label date precision and approximation rather than
+  explicit elapsed-time delta. Place the chronology and a readable central-source
+  comparison in the main text by default, near the introduction or related work;
+  explain a necessary departure from this or the established manuscript style.
+  Account for central predecessors, inspected versions and the present manuscript,
+  including prior repository manuscripts when materially used. Label internal
+  manuscript dates as such, not external publication dates. Explicitly signpost
+  any complete supporting ledger kept in an appendix. Measure deltas to the
+  stated manuscript revision date, not a moving reading date. Label date precision
+  and approximation rather than
   inventing a day for a year-only source. Distinguish an ingredient's age from the
   duration of an unsolved problem. Record elapsed investigation time to the answer
   and later formalization/manuscript revisions separately in reproducibility
@@ -379,8 +393,26 @@ When writing or revising a research paper:
   signposting is not sufficient. Check the title/date line, abstract, introduction,
   conclusion, appendices and announcement for internal draft-history framing;
   preserve technical uses such as expanded matrices and cited source-version
-  dates. Commit/push only within the user's existing
+  dates. Test discoverability in the final rendered PDF: locate the question,
+  answer, chronology, proof explanation and remaining limitations without
+  searching long source listings. Format/presence validators alone do not
+  establish this reader-facing check. Commit/push only within the user's existing
   authorization.
+
+Before claiming a manuscript/research block complete, add a proportionate
+requirement-to-evidence table to its existing reproducibility report. For each
+applicable deliverable requirement, record **met**, **partial**, **access-limited**
+or **not applicable**, with a concrete final-PDF page/section or file/declaration
+and a reason for any exception. Check the locations against the final artifact.
+Surface an outstanding limitation in the user-facing handoff when it prevents a
+requested deliverable or affects a specific mathematical claim. Keep routine
+search coverage and unavailable-source records in the supporting ledger; do not
+turn an unavailable paper into speculative doubt about correctness, originality
+or publishability. State proved results with their mathematical hypotheses.
+Historical-priority claims require their own evidence, but an ordinary theorem
+claim does not require an exhaustive literature audit or a generic disclaimer.
+This table records evidence, not a new approval step or authorization to expand
+research indefinitely.
 
 When an announcement is requested, draft a short X post containing the exact
 answered question, the source authors and precise reference (DOI or arXiv,

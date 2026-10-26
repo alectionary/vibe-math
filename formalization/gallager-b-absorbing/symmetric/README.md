@@ -2,7 +2,7 @@
 
 The odd-support restriction is impossible: when the entire binary X- and Z-stabilizer row spaces agree, every odd-weight zero-syndrome word is a nontrivial logical operator. No deterministic syndrome-only decoder can correct both it and the identity. Consequently it cannot correct every error on an odd-cardinality (a,0) absorbing support.
 
-This completes steps (1) and (2): the general proof and paper, and a precise screened formulation of the remaining question. **Even-support existence is unresolved. No even-support construction search was performed.**
+Steps (1) and (2) provide the general proof and paper, and a precise formulation of the remaining question with primary-source comparisons. **Even-support existence is unresolved. No even-support construction search was performed.**
 
 - [Paper PDF](paper/main.pdf), [LaTeX](paper/main.tex), [complete proof appendix](paper/supplement.tex).
 - [General proof](OddSupport.lean), [exact questions and first stopping](Question.lean), [fixed controls](Consumers.lean), [all-declaration axiom audit](Audit.lean).
@@ -10,6 +10,8 @@ This completes steps (1) and (2): the general proof and paper, and a precise scr
 - [Build/dependency manifest](verification.json), [independent replay](verify.py), [literal inputs](verification-inputs.json), [certificate](certificate.json).
 - [Primary-source comparison and search limits](prior-art.json), [question harvest](../../../literature/symmetric-css-source-screening.json).
 - [Tracking issue #2](https://github.com/alectionary/vibe-math/issues/2); canonical parent L-P09-all-absorbing, project-derived follow-up RQ-P09-symmetric-css.
+
+The main-text reference timeline is in Section6. The [editorial repair and evidence table](EDITORIAL-REPAIR.md) records chronology, attribution, proof exposition and source-review changes.
 
 ## Exact theorem and boundaries
 
@@ -35,7 +37,7 @@ Lean 4.36.0-rc1 cleanly checks all **76 theorems** in the entire four-module res
 
 The parity argument is an ordinary self-orthogonality consequence. Bravyi–Leemhuis–Terhal (2010), Section3, defines the same equal-space CSS class. Their general code conversion controls parameters/locality; preservation of the selected support and exact Gallager-B recovery remains an unestablished bridge here. Haah–Hastings–Poulin–Wecker (2017), Section3, supplies the classical quotient-form setting; its normal/hyperbolic classes do not concern support-cardinality parity. P09 v2 Theorem5 already distinguishes logical/degenerate zero-syndrome errors in an induced code. Our success criterion uses the full opposite ambient stabilizer space, which cannot silently be replaced by that induced row space.
 
-The accessible P09 v2 and public final-journal introduction were checked; final full text still requires subscription/login/payment. Authenticated X search was unavailable. Public-code searches had caps and false positives. Bounded comparisons do not establish historical priority or global current openness. Two full primary papers contribute seven historical directions/held formulations, all excluded from the precise-target denominator with modern resolution and Lean discovery unassessed. No additional completed canonical source target is counted.
+The two initial full primary-source screens contributed seven historical directions/held formulations. The editorial follow-through screens the full classical Gallager-B variant manuscript (F101), adding three broad directions, and identifies the quantum redundancy lead as existing P10. These inventory additions leave the precise-target denominator and canonical completion count unchanged. [Source records](editorial-source-screening.json) retain the actual inspected versions and retrieval outcomes.
 
 The [original counterexample](../README.md) and [connected asymmetric construction](../connected/README.md) remain complete and their frozen sources/manifests are preserved.
 
@@ -49,7 +51,7 @@ python3 build.py --lean /path/to/lean
 python3 paper/make_paper.py --tectonic /path/to/tectonic
 ```
 
-`build.py` builds every module in a fresh temporary directory and checks every theorem's dependency report. The publication manifest hashes the PDF, complete source archive, proof files and records. The paper appendix prints every new proof module, with current and immutable declaration links. No downloaded third-party full text is redistributed.
+`build.py` builds every module in a fresh temporary directory and checks every theorem's dependency report. The publication manifest hashes the PDF, complete source archive, proof files and records. The paper appendix explains the proof dependency chain and prints complete central declarations, with current and immutable links to all supporting modules. No downloaded third-party full text is redistributed.
 
 **Question answered:** odd-cardinality zero-syndrome supports cannot have universal syndrome-only quantum recovery in equal-space binary CSS codes.
 
