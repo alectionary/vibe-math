@@ -29,9 +29,48 @@ An induced matching of pairs with nonzero \(B\)-components (seeds 4 and 5) is ne
 
 Inside the quotient seed 0 = seed 1 = 0, the same solver found an induced matching of 56 pairs. Adding the 32 pure monomials on seeds 0 and 1, which commute with that quotient, gives 88 logical pairs with Gram identity. The physical supports are `partial-frame-88.json`. The committed checker reports weight 16, zero syndromes, and Gram identity. This is a larger partial frame than the 84-pair witness. It still does not extend to 128 pairs, and the search did not prove that 56 is the maximum in the quotient.
 
+## Seed-4 monomials cannot all lie in a CSS frame
+
+Logical coordinates are 128-bit vectors in the width-18 frame basis, eight seeds of 16 bits, saved in `pools/xcoords.txt` and `pools/zcoords.txt`. Seed 4 is bits 64 through 79. The X pool contains exactly one pure monomial on each of those 16 coordinates. The Z pool contains none. For each seed-4 bit there are exactly three Z-pool vectors whose seed-4 block is that monomial and which anticommute with the matching X monomial. Up to translation they are the three normalized partners
+
+- seeds 4 and 5 only, with seed-5 polynomial \(t^{13}\);
+- monomials on seeds 0, 1, 4, and 5;
+- the weight-20 vector supported on all eight seeds.
+
+Any CSS canonical frame that contains all 16 seed-4 X monomials must pair them with one of these three partners per bit: the full Gram identity forces the partner's seed-4 block to be exactly that monomial. Those 16 partners are linearly independent because their Gram matrix against the monomials is \(I_{16}\), so their common orthogonal has dimension 112. The other 112 basis vectors would have to be chosen from the X pool inside that orthogonal. `monomial_rank.cpp` evaluates the rank of that pool for every one of the \(3^{16}=43046721\) partner assignments. The visit count equals \(3^{16}\). The maximum rank is 109, which is less than 112. Therefore no width-16 CSS canonical frame contains every seed-4 X monomial.
+
+Evidence label: **exact finite computation**. An independent Python rank on the three uniform assignments returns \((80,61)\), \((224,96)\), and \((272,96)\) for (pool count, rank), and the hill-climbed assignment \((2,1,2,2,1,2,2,1,2,1,1,2,1,2,2,1)\) returns rank 109. The C++ scan starts at the all-type-0 assignment with rank 61 and never exceeds 109. The same three uniform frames that do extend to a 32-pair block-\(B\) dual basis, by pairing the complementary seed-5 monomials with X vectors of seed-5 block a single bit, still leave an orthogonal X pool of rank 80.
+
+## Fourteen or fifteen seed-4 monomials also fail
+
+The same partner list is forced for any subset of the monomials. If a frame contains \(m\) of them, those partners are independent, the complementary X pool has to span a space of dimension \(128-m\), and the Z pool orthogonal to those monomials has to supply a dual basis of that space. Translation preserves the pools and the dot product, because it rotates every 16-bit seed by the same amount. So it is enough to omit one fixed bit when \(m=15\), and to omit a pair at cyclic distance \(1,\ldots,8\) when \(m=14\).
+
+For \(m=15\), `seed4_fifteen.cpp` visits all \(3^{15}=14348907\) partner assignments with bit 0 omitted. The visit count matches. The maximum orthogonal X rank is 113, equal to the required dimension, and exactly nine assignments attain it:
+
+`*212022112122120`, `*212122112122120`, `*212212122102121`, `*102112122022121`, `*102112122122121`, `*202112122122121`, `*202212122122121`, `*112122122220102`, `*202112021112122`.
+
+A star is the omitted bit and a digit is the partner type in pool order. For each of the nine, the quotient search exhausts with no dual basis. An independent Python transcription of that search reproduces the nine node counts \(203,128,1208,292,766,124,124,146,178\) and also finds no basis.
+
+For \(m=14\), the same program visits \(3^{14}=4782969\) assignments in each of the eight distance classes. Every visit count matches. The classes, written as the omitted-bit mask, and the number of assignments whose orthogonal X rank equals 114, are:
+
+| Omitted bits | Mask | Full-rank assignments |
+|---|---|---|
+| \(\{0,1\}\) | 3 | 346 |
+| \(\{0,2\}\) | 5 | 589 |
+| \(\{0,3\}\) | 9 | 108 |
+| \(\{0,4\}\) | 17 | 193 |
+| \(\{0,5\}\) | 33 | 880 |
+| \(\{0,6\}\) | 65 | 107 |
+| \(\{0,7\}\) | 129 | 138 |
+| \(\{0,8\}\) | 257 | 569 |
+
+That is 2930 full-rank assignments. Each quotient search exhausts. Most trees die within \(10^5\) nodes on the X-rank test alone. Thirty-six trees were rerun with the additional Z-rank test; the largest of those used 17623 nodes. None returns a dual basis. Python reproduces the node counts on the trees of sizes 26, 171, 50, 1649, and 302.
+
+Therefore no width-16 CSS canonical frame contains 14, 15, or 16 of the seed-4 X monomials. Frames that use 13 or fewer of them are not settled by this count. The C++ sources under `search/` are the earlier sampled climbers. They read the same pool files and do not decide \(f\).
+
 ## Question still open
 
-The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. This block does not decide it. There is no Lean certificate.
+The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. No width-16 CSS frame contains 14 or more of the seed-4 X monomials. Frames using 13 or fewer, and the conditional mixed-Pauli reduction, remain open. There is no Lean certificate.
 
 A pure CSS width-16 canonical basis would be an admissible unrestricted basis, so it would prove \(f\le 16\). No such 128-pair basis was found. Failure of the searches below is not a proof that none exists. Ruling out only CSS representatives does not prove \(f=18\) unless the mixed-Pauli reduction is accepted.
 
@@ -108,6 +147,9 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 | Released enumerator reproduces 45 orbits through weight 17 | Exact finite computation of that program, not an independent enumerator |
 | Mixed width \(\le 17\) reduces to CSS width 16 | Written proof (source Appendix C.3), numerical hypotheses recomputed; not Lean |
 | Local search and 158-coloring | Sampled experiment |
+| No width-16 CSS frame contains 16 seed-4 X monomials | Exact finite computation |
+| No width-16 CSS frame contains 15 seed-4 X monomials | Exact finite computation |
+| No width-16 CSS frame contains 14 seed-4 X monomials | Exact finite computation |
 | No width-16 canonical basis exists | Not established |
 | \(f=16\) or \(f=18\) | Not established |
 | Lean certificate | None |
@@ -128,4 +170,4 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 
 ## Next proposed target
 
-Follow-up, not a new problem: decide whether the 720-class weight-16 CSS pools contain a 128-pair canonical frame, by an exact search that is not confined to the 84-pair basin or by a proof that every dual basis meets a forbidden family. Do not move on to \(C_{20,10}\) or the 1024-qubit PP family while this gap is open.
+Follow-up, not a new problem: decide the CSS frames that use 13 or fewer seed-4 X monomials. The same rank-and-quotient test applies, and the 14-monomial case is now closed. Do not move on to \(C_{20,10}\) or the 1024-qubit PP family while \(f\) is still open.

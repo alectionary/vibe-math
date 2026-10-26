@@ -58,6 +58,42 @@
     "binary_sha256": "2dcb140e0a388557b7d89b2d3d5ce20de09291485e312872507b6b8b45516ab8",
     "stdout_sha256": "36dc5c723c0aba9f1f7de7aa87f06e7173afbc39bb8b3336d4fe72d9ef226536"
   },
+  "seed4_monomials": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/monomial_rank.cpp",
+    "pools": ["formalization/canonical-width/c16/pools/xcoords.txt", "formalization/canonical-width/c16/pools/zcoords.txt"],
+    "assignments": 43046721,
+    "maximum_orthogonal_x_rank": 109,
+    "rank_required_for_a_frame": 112,
+    "conclusion": "No width-16 CSS canonical frame contains all 16 seed-4 X monomials."
+  },
+  "seed4_fifteen": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_fifteen.cpp",
+    "pools": ["formalization/canonical-width/c16/pools/xcoords.txt", "formalization/canonical-width/c16/pools/zcoords.txt"],
+    "omit_bit": 0,
+    "assignments": 14348907,
+    "full_rank_assignments": 9,
+    "maximum_orthogonal_x_rank": 113,
+    "rank_required_for_a_frame": 113,
+    "quotient_solutions": 0,
+    "independent_python_node_counts": [203, 128, 1208, 292, 766, 124, 124, 146, 178],
+    "conclusion": "No width-16 CSS canonical frame contains 15 of the 16 seed-4 X monomials."
+  },
+  "seed4_fourteen": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_fifteen.cpp",
+    "assignments_per_distance": 4782969,
+    "distances": [1, 2, 3, 4, 5, 6, 7, 8],
+    "omit_masks": [3, 5, 9, 17, 33, 65, 129, 257],
+    "full_rank_assignments": [346, 589, 108, 193, 880, 107, 138, 569],
+    "full_rank_total": 2930,
+    "rank_required_for_a_frame": 114,
+    "quotient_solutions": 0,
+    "capped_then_rerun_with_z_rank": 36,
+    "largest_rerun_nodes": 17623,
+    "conclusion": "No width-16 CSS canonical frame contains 14 of the 16 seed-4 X monomials."
+  },
   "b_identity_matching": {
     "evidence": "exact_finite_computation",
     "solver": "OR-Tools CP-SAT 9.15.6755",
