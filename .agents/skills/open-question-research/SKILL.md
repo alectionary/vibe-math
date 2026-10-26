@@ -107,6 +107,18 @@ does not mean the source question is answered. Mark a block Done only with its
 outcome and evidence recorded; do not close an unanswered canonical question
 merely because a bounded follow-up finished.
 
+For this repository, finished work belongs on `master` unless the user explicitly
+requests a draft, branch-only delivery or another destination. Within the user's
+authorized publication scope, integrate all completed artifacts and their required
+sources, certificates, verification records, inventory updates and skill changes
+before reporting delivery complete. A pushed work branch is a checkpoint, not
+completion of publication. Verify the actual files on remote `master`, compare
+artifact hashes with the validated copies, and give working `master` URLs alongside
+immutable proof links. Follow the integration steps in
+[GitHub coordination](references/github-coordination.md#integrate-finished-work).
+If integration is blocked, state that publication is pending and why; partial work
+may remain on its work branch with an explicit handoff.
+
 If shared repository write access is unavailable, prepare the exact issue body
 and answer contract, and report which remote operations remain pending. Continue
 source inspection or independent preparation without presenting the target as
@@ -389,6 +401,12 @@ Preserve the repository's anonymity conventions in public artifacts and Git
 identity. This skill does not itself authorize publication, external messages,
 new scheduled tasks or changes to unrelated projects. Apply the user's existing
 authorization to the actual requested actions.
+
+When editing this skill itself, validate its frontmatter with the
+`skill-creator` skill's `scripts/quick_validate.py`. That validator requires
+PyYAML. Use a workspace virtual environment, ensure the dependency with
+`python -m pip install PyYAML`, and run the validator with that same Python
+interpreter. Reuse an existing environment when it already has the dependency.
 
 Finish each research block with:
 

@@ -9,6 +9,8 @@ proves `dQ >= min(dC,12)` for every normalized, fully populated monomial 3x4
 cyclic base satisfying classical girth at least eight, the exact strengthened
 column/triple-row entry tests, and `dTranspose >= dC`.
 
+The [abstract and keywords](paper/ABSTRACT.txt) accompany the report.
+
 The standalone [research report](paper/main.pdf) gives the theorem, full argument,
 source chronology and substantive Lean appendix. [Editable TeX](paper/main.tex),
 [complete proof guide](paper/PROOF-GUIDE.html) and
