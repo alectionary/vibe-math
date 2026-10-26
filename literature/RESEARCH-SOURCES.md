@@ -1230,8 +1230,8 @@ Jong Yeon Lee. arXiv:2610.06820v1, 5 October 2026. [Primary source](https://arxi
 - Record type: academic source; access: full text.
 - Inspected locator: Sections IV.4, VI and Appendices A.4/C.3.
 - Contribution: Issue1 primary comparison and question harvesting.
-- Comparison limit: Full regularity and canonical-frame width concern complete logical bases, not the minimum distance lower bound in our strengthened 3x4 monomial LP target. Full-row-rank augmentation criteria do not apply to the all-one rank-one augmentation of our fully populated 3x4 base. Appendix A.4 supplies a related exhaustive-support-search completeness argument; its code-specific execution records do not certify our inputs.
-- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Comparison limit: Full regularity and canonical-frame width concern complete logical bases, not the minimum distance lower bound in our strengthened 3x4 monomial LP target. Full-row-rank augmentation criteria do not apply to the all-one rank-one augmentation of our fully populated 3x4 base. Appendix A.4 supplies a related exhaustive-support-search completeness argument; its code-specific execution records do not certify our inputs. A 2026-10-26 re-read of the same HTML found no author-posed question beyond the six harvested targets. Proposition 9 for C16,9 remains unresolved here.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation), [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
 
 - Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
@@ -1322,3 +1322,14 @@ Owidiusz Makuta; Remigiusz Augusiak. 23 August 2025 journal publication. [Primar
 - Provenance: [source review ledger](../literature/connected-gallager-source-screening.json).
 
 - Question screen: [relevant sections screened](../literature/connected-gallager-source-screening.json); 6 linked canonical targets.
+
+## Lee2026FramesData — public-regular-logical-frames
+
+Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. [Primary source](https://github.com/yeon-lee/public-regular-logical-frames).
+
+- Record type: software repository; access: cloned and enumerator executed.
+- Inspected locator: LPQ6 inputs and verification/regular_pairing enumerator through weight 17.
+- Contribution: Released operator lists and enumerator for the Proposition 9 code C^LP_16,9. Fresh execution reproduced 45 orbits.
+- Comparison limit: This is the author's program, not an independent enumerator. Completeness still uses the source Appendix A argument. The repository leaves unrestricted width-16 existence unresolved. No new author-posed inventory question is taken from the repository text.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/prior-art.json).
