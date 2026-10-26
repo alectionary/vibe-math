@@ -15,7 +15,7 @@ No helper, external verifier or conditional support map replaces the main result
 
 Proof sources are pinned to immutable commit
 3ae21c0719cedbd928f4f7882f9b9e266567605e. All183312 finite cases and the full
-source-distance theorem pass. The preserved research branch supplies the
+source-distance theorem pass. The master branch supplies the
 current links. ReportAudit.lean checks all named source interfaces and axiom
 closures; declaration-audit.json binds that successful check to its exact source
 and log. The only reported axioms are propext, Classical.choice and Quot.sound.

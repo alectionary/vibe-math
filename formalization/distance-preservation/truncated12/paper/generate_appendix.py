@@ -4,7 +4,7 @@ import hashlib,html,json,re,subprocess,sys
 P=Path(__file__).resolve().parent;R=P.parent;ROOT=R.parents[2]
 sys.path.insert(0,str(R));from replay_round import local_import_order
 PIN='3ae21c0719cedbd928f4f7882f9b9e266567605e'
-CURRENT='research/RQ-F25-truncated-distance-12-round2-f0515dd8'
+CURRENT='master'
 SECTIONS=[
  ('Source matrices, full spans and exact distances','The source interface fixes actual binary coefficients, every stabilizer row combination and the extended-natural minimum convention.',[
  ('GeneralLP',['HX','HZ','InSpanX']),('GeneralSymmetry',['fullSpanX','fullSpanZ']),('DistanceMinima',['sourceClassicalHasWeight','sourceClassicalDistance','sourceTransposeHasWeight','sourceTransposeDistance','sourceQuantumHasWeight','sourceQuantumDistance'])]),
@@ -81,7 +81,7 @@ def main():
   links='; '.join(r'\lean{'+m+'}{'+n+'}' for m,n in ds)
   rows.append(r'\ref{'+label+'}: '+title+' & '+links+r'\\[5pt]')
  (P/'proof-coverage.tex').write_text(r'\begin{longtable}{@{}P{.30\textwidth}P{.65\textwidth}@{}}'+'\n'+r'\toprule Manuscript proof & Checked Lean declarations\\\midrule\endhead'+'\n'+'\n'.join(rows)+'\n'+r'\bottomrule\end{longtable}'+'\n')
- links=[r'\clearpage\section{Complete research-source link index}\label{app:links}',r'Every module in the final theorem and source-scope audit is listed below. Each row has a link to the preserved research branch and an immutable link at commit \nolinkurl{'+PIN+'}. The source archive includes these exact files and their matching build records. The accompanying HTML guide provides hashes and imports.',r'\footnotesize\begin{longtable}{@{}P{.62\textwidth}P{.14\textwidth}P{.14\textwidth}@{}}',r'\toprule Module & Current & Immutable\\\midrule\endhead']
+ links=[r'\clearpage\section{Complete research-source link index}\label{app:links}',r'Every module in the final theorem and source-scope audit is listed below. Each row has a link to the master branch and an immutable link at commit \nolinkurl{'+PIN+'}. The source archive includes these exact files and their matching build records. The accompanying HTML guide provides hashes and imports.',r'\footnotesize\begin{longtable}{@{}P{.62\textwidth}P{.14\textwidth}P{.14\textwidth}@{}}',r'\toprule Module & Current & Immutable\\\midrule\endhead']
  for d in sources:links.append(tex(d['path'].replace('formalization/distance-preservation/',''))+' & '+r'\href{'+d['current_url']+r'}{source} & \href{'+d['url']+r'}{source}\\')
  links += [r'\bottomrule\end{longtable}\normalsize'];(P/'source-links.tex').write_text('\n'.join(links)+'\n')
  doc=['<!doctype html><meta charset="utf-8"><title>Truncated distance proof guide</title><style>body{max-width:1000px;margin:40px auto;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:8px}code{overflow-wrap:anywhere;font-size:12px}</style><h1>Truncated distance through weight eleven</h1><p>Literal theorem: <b>dQ ≥ min(dC,12)</b>, under the exact strengthened normalized 3×4 cyclic source criterion. Proof commit: <code>'+PIN+'</code>.</p><p>All 183,312 cases and the complete 269-module research closure pass. Main theorem: <a href="'+targets[('DistanceTwelve','source_distance_bound_twelve')]['url']+'">source_distance_bound_twelve</a>.</p><table><tr><th>Module</th><th>Sources</th><th>Exact source SHA256 / imports</th></tr>']

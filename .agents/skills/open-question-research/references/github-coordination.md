@@ -81,6 +81,24 @@ succeeds but Project synchronization fails; do not create another claim or
 another Project to hide a partial failure. An omitted board does not invalidate
 an issue and successfully acquired claim.
 
+## Integrate finished work
+
+Finished deliverables for this repository go on `master` unless the user requests
+a different destination. Fetch its current state and integrate all completed work
+from the investigation, including the report, editable sources, complete proof
+imports, certificates, archives, verification records, inventory/planning updates
+and any skill changes. Preserve unrelated work. Use a normal fast-forward when
+possible; otherwise resolve the integration on a work branch and follow any
+required pull-request or branch-protection workflow. Do not force-push `master`.
+
+Run the checks appropriate to the integrated changes. After publication, read back
+remote `master` and verify that the actual artifact files and required sources are
+present and match the validated hashes. Provide canonical `master` links for the
+paper and artifacts, retaining immutable commit links for reproducibility. A
+successful work-branch push alone does not meet this completion check. If access,
+protection or an unresolved conflict prevents integration, report publication as
+pending with the specific blocker rather than declaring the delivery complete.
+
 ## Handoff and release
 
 Record the result, evidence, remaining question and next owner/action in the
@@ -99,8 +117,8 @@ git push --force-with-lease="refs/heads/claims/$canonical_id:$claim_sha" \
 Preserve the work branch and evidence. Read back the issue, claim state and any
 Project item before reporting success. Close an issue only if its stated question
 is answered or explicitly retired; completion of one bounded follow-up can
-leave the canonical source question open. During this workflow, do not merge
-shared inventory changes or reset another agent's checkout implicitly.
+leave the canonical source question open. Integrate only the authorized work;
+do not overwrite another investigator's inventory changes or reset their checkout.
 
 ## Verified repository example
 
