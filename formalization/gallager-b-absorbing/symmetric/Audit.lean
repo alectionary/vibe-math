@@ -69,6 +69,7 @@ import Consumers
 #print axioms CSSOddSupport.Consumers.seven_logical_pair
 #print axioms CSSOddSupport.Consumers.zero_length_not_odd
 #print axioms CSSOddSupport.Consumers.one_pair_row_css
+#print axioms CSSOddSupport.Consumers.even_zero_syndrome_stabilizer
 #print axioms CSSOddSupport.Consumers.duplicate_row_same_span
 #print axioms CSSOddSupport.Consumers.duplicate_lists_differ
 #print axioms CSSOddSupport.Consumers.permutation_only_css
