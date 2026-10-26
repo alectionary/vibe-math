@@ -116,3 +116,19 @@ stable document identifier, not a signed query string, in public provenance.
 Verify PDF bytes and the title/author/version before attributing the recovered
 text. Keep downloaded, selectively consulted and fully screened statuses distinct.
 When a route succeeds, correct the access record while preserving dated attempts.
+
+For UNL records linked to ProQuest, the archive's general institutional-access
+banner does not determine the individual dissertation's access. Resolve its AAI
+publication number using the publisher's [documented OpenURL syntax](https://supportcenter.clarivate.com/articledetail?id=kA0400000004JHqCAM),
+then inspect the actual destination for an open-access Download PDF control or
+an explicit preview/institutional-access notice. A route-specific preview does
+not rule out a public departmental or author copy. Use observed document IDs,
+not guessed publisher identifiers. Indexed CORE mirror links can also use an
+older download path; check the currently observed download route for the same
+verified CORE identifier rather than treating a stale URL as document unavailability.
+
+Validate completeness as well as PDF bytes: front matter or a publisher preview
+is not a dissertation body. Check the contents, main chapters, references and final
+pages. Text extraction can return many characters with a broken glyph mapping;
+inspect readability, OCR when necessary, and visually check relevant passages
+before interpreting a zero-result keyword search as a completed question screen.

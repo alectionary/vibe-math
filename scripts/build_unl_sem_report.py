@@ -1,5 +1,5 @@
 """Render the SEM/CFA seed report, retaining the first-pass cohort separately."""
-import json,pathlib
+import csv,json,pathlib
 R=pathlib.Path(__file__).resolve().parents[1];D=R/'literature/unl-sem'
 load=lambda n:json.loads((D/n).read_text())
 seed=load('dissertations.json');authors=load('authors.json');works=load('works.json');questions=load('questions.json');screen=load('screening.json');exp=load('cfa-expansion.json')
@@ -8,11 +8,13 @@ adj=sum(s.get('scope_class')=='adjacent_latent_measurement' for s in seed);core=
 public=sum(bool(s['public_copy_record'] or s.get('located_public_copy_url')) for s in seed)
 full=sum(w['screen_status']=='full_text_screened' for w in works)
 author_count=sum(bool(a['selected_work_ids']) for a in authors)
+seed_full=sum(s['full_text_screen_status']=='full_text_screened' for s in seed)
+retrieval=load('retrieval-audit.json')
 text=f'''# SEM, CFA and related measurement-model dissertation seed
 
-Checked October 26, 2026. [PR #6](https://github.com/alectionary/vibe-math/pull/6) · [Tracking issue #5](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [CFA expansion](CFA-EXPANSION.md) · [Formalization suitability](FORMALIZATION.md) · [Shared questions](../OPEN-PROBLEMS.md).
+Checked October 26, 2026. [PR #6](https://github.com/alectionary/vibe-math/pull/6) · [Tracking issue #5](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [CFA expansion](CFA-EXPANSION.md) · [Retrieval correction](RETRIEVAL-REPAIR.md) · [Formalization suitability](FORMALIZATION.md) · [Shared questions](../OPEN-PROBLEMS.md).
 
-The expanded seed contains **{core} SEM/CFA, growth/path or latent-measurement dissertations**, plus **{adj} explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** ({len(seed)} records total). These are doctoral-dissertation metadata seeds from 2001 onward. All {len(authors)} authors have recorded downstream searches. The bibliography contains **{len(works)} selected source works**, with **{full} readable full texts screened** and **{len(questions)} source-stated statistical methods directions** indexed.
+The expanded seed contains **{core} SEM/CFA, growth/path or latent-measurement dissertations**, plus **{adj} explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** ({len(seed)} records total). These are doctoral-dissertation records from 2001 onward; {seed_full} now have complete-text question screens. All {len(authors)} authors have recorded downstream searches. The bibliography contains **{len(works)} selected source works**, with **{full} readable full texts screened** and **{len(questions)} source-stated statistical methods directions** indexed.
 
 The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records. It corrects the initial literal-SEM search's omission of Daniel H. Abbott's 2010 dissertation. Public and ProQuest catalog copies are merged, not counted twice. [The original 58-record pass](FIRST-PASS.md) is a historical snapshot, not the current total.
 
@@ -29,11 +31,13 @@ The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records
 | Full source texts screened | {full} |
 | Selected source works with full-text gaps | {len(works)-full} |
 | Located public-copy dissertation records | {public} |
-| Completed dissertation full-text screens | 0 |
+| Completed dissertation full-text screens | {seed_full} |
+| Front-matter-only previews, excluded from full screens | 1 |
+| Dissertation complete texts not yet recovered | {len(seed)-seed_full} |
 | Statistical methods directions indexed | {len(questions)} |
 | Added precise theorem targets / completed proofs | 0 / 0 |
 
-**Access scope:** dissertation title/abstract records are available through indexed archive pages, but readable dissertation bodies were not recovered in these passes. All dissertation question counts remain null, not zero. Public-copy landing pages do not establish successful PDF retrieval. The {len(works)-full} source-work text gaps also retain null counts. [UNL explains its public-copy versus ProQuest access arrangements](https://digitalcommons.unl.edu/dissertations/).
+**Corrected retrieval scope:** all {len(seed)} archive records and Download controls were revisited. Seven complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The {len(seed)-seed_full} records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The {len(works)-full} associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
 
 ## Search and inclusion criteria
 
@@ -59,12 +63,12 @@ for w in works:
  text+=f'| {w["id"]}/{w["year"]} | [{esc(w["title"])}]({w["url"]}) | {esc(w.get("relationship",w.get("temporal_relation","author/coauthor work")))} | {count} |\n'
 text+='\n## Excluded or historical passages\n\n'
 for x in screen['excluded_passages']:text+=f'- **{x["paper_id"]}, {x["locator"]}:** {x["reason"]}\n'
-text+='\n## Dissertation registry\n\nAll rows are archive metadata records, not completed dissertation question screens. The original 20 fully reviewed dissertations remain a separate historical cohort.\n\n| Seed/year | Author and dissertation | Model family | Public-copy record |\n| --- | --- | --- | --- |\n'
-for s in seed:text+=f'| {s["id"]}/{s["year"]} | {esc(s["author"])} — [{esc(s["title"])}]({s["url"]}) | {esc(s.get("family","explicit SEM"))} | {"Located" if s["public_copy_record"] or s.get("located_public_copy_url") else "Not located"} |\n'
+text+='\n## Dissertation registry\n\nSeven rows now have complete-text question screens, identified in the final column. The original 20 fully reviewed dissertations remain a separate historical cohort.\n\n| Seed/year | Author and dissertation | Model family | Public-copy record | Full-text disposition |\n| --- | --- | --- | --- | --- |\n'
+for s in seed:text+=f'| {s["id"]}/{s["year"]} | {esc(s["author"])} — [{esc(s["title"])}]({s["url"]}) | {esc(s.get("family","explicit SEM"))} | {"Located" if s["public_copy_record"] or s.get("located_public_copy_url") else "Not located"} | {"Complete text screened" if s["full_text_screen_status"]=="full_text_screened" else "Front matter only; unscreened" if s["full_text_screen_status"]=="not_screened_partial_preview" else "Retrieval incomplete; unassessed"} |\n'
 text+='''
 ## Inventory integration and verification
 
-Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→174 and full-text source screens 122→143. Dissertation metadata counts are separate from article/work screen counts and from the original 20 complete dissertation reviews.
+Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→176 and full-text source screens 122→146. Seven recovered dissertation question screens are separate from article/work screen counts and from the original 20 complete dissertation reviews.
 
 Sources have versions, exact locators and hashes. F134's hash identifies a complete author-uploaded web transcription, not original PDF bytes. Copyrighted bodies remain in ignored storage. Current resolution, Lean discovery and implementation difficulty for the added directions remain unassessed; no mathematical result or priority claim is made.
 
@@ -78,7 +82,7 @@ Continuation of [issue #5](https://github.com/alectionary/vibe-math/issues/5) an
 
 **41 missed/related dissertations added: 31 core SEM/CFA/growth/path/measurement records and 10 adjacent IRT/latent-class/exploratory-factor records.** All 41 added authors received targeted downstream searches. {exp['new_discovery_queries']} additional discovery/identity/copy queries include {exp['vocabulary_queries']} vocabulary queries. The pass adds 13 source works, 7 complete full-text screens and 2 gated statistical methods directions. It also links new seed author Abdullah Ferdous to the existing F118 coauthored paper without duplicating it.
 
-Abbott's 2010 dissertation is included as UNL-SEM-D067, merging cehsdiss/68 and AAI3402936. Its use of CFA makes it a valid core candidate even though the abstract did not use the literal phrase structural equation modeling. Its body remains unavailable here; two independent later papers explicitly citing it were retrieved and screened. Those are not Abbott-authored publications.
+Abbott's 2010 dissertation is included as UNL-SEM-D067, merging cehsdiss/68 and AAI3402936. Its use of CFA makes it a valid core candidate even though the abstract did not use the literal phrase structural equation modeling. Its body was not recovered during that expansion pass; it was subsequently recovered and screened in the [retrieval correction](RETRIEVAL-REPAIR.md). Two independent later papers explicitly citing it were retrieved and screened. Those are not Abbott-authored publications.
 
 ## New source-supported mathematical directions
 
@@ -103,7 +107,7 @@ detail+='''
 
 The candidate ledger records rejected document types, pre-2001 dates, duplicate aliases, exploratory-only leads, proposed-but-unexecuted CFA and unrelated physical-science/regression keyword hits. These are not hidden zero-question papers. The 10 adjacent records remain labeled separately from the 89 core records.
 
-No dissertation body was recovered: all 41 added primary routes returned403; Abbott's CORE routes, Frohn's indexed PDF copy and Bentz's CiteSeer copy also failed. Public-copy records and readable PDF access remain distinct. Six added source works have full-text gaps. Native publisher metadata pages were not counted as full texts solely because they contained references or many characters.
+At the expansion snapshot, no dissertation body had been recovered: all 41 added primary routes returned403; Abbott's CORE routes, Frohn's indexed PDF copy and Bentz's CiteSeer copy also failed. Public-copy records and readable PDF access remain distinct. At that snapshot six added source works had full-text gaps; F139 was subsequently recovered and screened. Current dissertation and article dispositions supersede these historical route failures in [the retrieval correction](RETRIEVAL-REPAIR.md). Native publisher metadata pages were not counted as full texts solely because they contained references or many characters.
 
 The new full-text screens excluded empirical scale validation, race/ethnicity DIF in observed student samples, developmental/sociocultural questions, clinical causal ordering and fertility-attitude associations. No such question is relabeled a mathematical conjecture.
 
@@ -111,3 +115,8 @@ The repository's source records, shared inventory, planning gates and generated 
 '''
 (D/'CFA-EXPANSION.md').write_text(detail)
 print('Rendered current SEM/CFA registry and CFA expansion report.')
+
+# Keep the CSV's current dispositions aligned with the JSON registry.
+fields=['id','year','author','title','category','scope_class','family','public_copy_record','located_public_copy_url','url','alternate_urls','full_text_screen_status','question_count','retrieval_status','notes']
+with (D/'dissertations.csv').open('w',newline='') as f:
+ writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore',lineterminator='\n');writer.writeheader();writer.writerows(seed)

@@ -40,3 +40,16 @@ The first and third tasks can reuse known mathematical results. Existing theorem
 ## Downstream correction that affects target selection
 
 Peugh and Feldon (2020) suggested equivalence testing for SEM fit and called for broader testing. Their own 2024 letter reports unfavorable subsequent simulations and withdraws the recommendation. Keep the 2020 request as historical context. The 2024 letter's separate dynamic-fit questions are the new inventory entries; neither the earlier recommendation nor a universal failure theorem is inferred from those simulations.
+
+## Recovered dissertation texts
+
+The [retrieval correction](RETRIEVAL-REPAIR.md) adds seven complete dissertation
+question screens without changing the ten canonical source-stated method
+directions above. Empirical construct validation, populations and intervention
+hypotheses remain outside mathematical target counts. The source passages are
+retained with exact page locators in [seed-screening.json](seed-screening.json).
+That file separately records two project-derived mathematical formulations:
+short-form information loss under a fixed factor model, and identification under
+a specified cross-survey bridge model. These are our follow-up proposals, not
+conjectures posed by the dissertation authors, and require explicit models and
+success criteria before entering a theorem campaign.
