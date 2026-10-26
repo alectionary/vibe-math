@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Check the recorded 84-pair partial canonical frame for C^LP_{16,9}.
+"""Check a recorded partial canonical frame for C^LP_{16,9}.
 
 The checks are rebuilt from the coefficient and exponent arrays in Lee,
 arXiv:2610.06820v1, equation (50), using the balanced binary trace expansion
 of equations (14)--(18) and Appendix B.3. The witness stores physical supports
 only. This script does not read the upstream pool or checker.
+
+With no argument it checks partial-frame-84.json. Pass a witness path to check
+another file in the same schema, including partial-frame-88.json.
 """
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 P = 16
@@ -99,10 +103,12 @@ def rank(rows: list[int]) -> int:
 
 
 def main() -> None:
-    witness = json.loads((Path(__file__).with_name("partial-frame-84.json")).read_text())
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).with_name("partial-frame-84.json")
+    witness = json.loads(path.read_text())
     pairs = witness["pairs"]
-    if len(pairs) != 84 or witness["n_pairs"] != 84:
-        raise SystemExit("expected 84 pairs")
+    n_pairs = witness["n_pairs"]
+    if len(pairs) != n_pairs or n_pairs < 1:
+        raise SystemExit(f"expected {n_pairs} pairs")
     hx, hz = reconstruct_checks()
     if len(hx) != 480 or len(hz) != 480:
         raise SystemExit(f"unexpected check counts {len(hx)} {len(hz)}")
@@ -127,9 +133,9 @@ def main() -> None:
         for j, z in enumerate(zs):
             if parity(x, z) != (i == j):
                 raise SystemExit(f"Gram failure at {(i, j)}")
-    if len(set(xs)) != 84 or len(set(zs)) != 84:
+    if len(set(xs)) != n_pairs or len(set(zs)) != n_pairs:
         raise SystemExit("duplicate operators")
-    print("partial canonical frame ok: 84 pairs, weight 16, zero syndromes, Gram identity")
+    print(f"partial canonical frame ok: {n_pairs} pairs, weight 16, zero syndromes, Gram identity")
     print(f"rebuilt checks: {len(hx)} rows, max weight 9, ranks {(rx, rz)}, k={N - rx - rz}")
 
 

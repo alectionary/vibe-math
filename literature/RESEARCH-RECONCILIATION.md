@@ -61,7 +61,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
-- **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open. Checked 84-pair partial frame does not extend in the pools; sampled search did not pass 84. Not a determination of f.
+- **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open. Checked 88-pair partial frame; the earlier 84-pair frame does not extend in the pools. Not a determination of f.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -176,7 +176,7 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 ## Subsequent block: l-f91-c16-unrestricted-width-2026-10-26
 
-[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Checked 84-pair width-16 partial CSS canonical frame for C^LP_16,9, rebuilt checks of weight at most 9 and rank 480, and numerical hypotheses of the mixed-Pauli reduction. The exact unrestricted width remains 16 or 18. Remaining at that dated checkpoint: Exact value of f; Lean certificate; exhaustive search of the 720-class pools. [Report](../formalization/canonical-width/c16/INVESTIGATION.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/prior-art.json).
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Checked 88-pair width-16 partial CSS canonical frame for C^LP_16,9, rebuilt checks of weight at most 9 and rank 480, and numerical hypotheses of the mixed-Pauli reduction. The exact unrestricted width remains 16 or 18. Remaining at that dated checkpoint: Exact value of f; Lean certificate; exhaustive search of the 720-class pools. [Report](../formalization/canonical-width/c16/INVESTIGATION.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
