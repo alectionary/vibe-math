@@ -1,0 +1,297 @@
+A truncated distance bound from small-support geometry
+Issue1 follow-up: RQ-F25-truncated-distance-12
+Canonical parent: L-F25-distance-preservation
+
+STATUS AND CLAIM BOUNDARY
+
+This note gives a certificate-assisted written argument for the proposed
+bound dQ >= min(dC,12), with the exact source hypotheses below. The finite
+pattern identities have an independent integer verifier. Several generic
+source bridges are proved in Lean. A complete Lean theorem deriving the
+bound from exactly these hypotheses is NOT yet supplied: the remaining
+formalization obligations are listed at the end. Do not count a completed
+canonical source question or a complete checked distance theorem from this note.
+
+The source's broader sufficient-condition problem for dQ=dC remains distinct.
+No general quantum upper bound, exact quantum distance, decoder-performance
+claim or historical-priority claim is inferred here.
+
+1. SOURCE OBJECTS AND ANSWER CONTRACT
+
+Raveendran, Declercq and Vasic, On the Minimum Distances of Finite-Length
+Lifted Product Quantum LDPC Codes, arXiv:2503.07567v1 (10 March 2025),
+equation(9), Definitions2–5 and SectionVI, motivates the parent design problem.
+https://arxiv.org/html/2503.07567v1
+The entry tests and truncated bound here are our proposed follow-up.
+
+For L>=2, let R=F2[x]/(x^L-1), B(i,j)=x^E(i,j), with all12 entries present,
+i inFin3 and j inFin4. Zero exponent means an identity circulant. Normalize
+E(0,j)=E(i,0)=0. Star transposes and sends x to x^(-1). Form in R, then expand:
+  C  = expand(B),
+  HX = expand([B tensor I4 | I3 tensor B*]),
+  HZ = expand([I4 tensor B | B* tensor I3]).
+There are25L qubits. U(j,k,s) is the left block; V(l,i,s) is the right block.
+The HZ equation at check(j,i,t) is
+  sum_k U(j,k,t-E(i,k)) + sum_l V(l,i,t+E(l,j)) = 0.
+
+Assume classical Tanner girth>=8; no full source row/column RCPC; no value
+appearing on three columns among E(i,c)+E(j,c)-2E(k,c), for each middle rowk;
+dTranspose>=dC; and positive CSS logical dimension. Both distances are binary
+kernel minima, with dTranspose=infinity for a zero transpose kernel.
+A pure X logical lies in ker(HZ) outside the ENTIRE row span of HX. Swap X/Z
+for the other sector. The usual Pauli weight is union of the two supports.
+
+Answer contract: establish the universal lower bound with faithful source,
+sector and full-span bridges, or produce an independently checked qualifying
+base and a nontrivial logical of weight<min(dC,12). Finite examples and helper
+lemmas alone do not complete the requested Lean result.
+
+2. ACTUAL INCIDENCE, ZERO-OR-TWO CHECKS AND PARITY
+
+A left coordinate(j,k,s) meets check(j,i,s+E(i,k)) for each i: degree3.
+A right coordinate(l,i,s) meets check(j,i,s-E(l,j)) for each j: degree4.
+Two same-sector qubits sharing two checks would give a classical four-cycle;
+a mixed pair has only one possible check type. Three same-sector qubits in
+a quantum six-cycle give a classical six-cycle. In a mixed six-cycle, the
+single opposite-sector qubit would use the same check type twice, forcing two
+of the supposedly distinct checks equal. Thus classical no4/no6 implies no4/
+no6 for the actual HZ incidence. ActualIncidence.lean proves these statements
+and the exact nonzero-entry correspondence, for arbitrary E and positive L.
+
+Apply LowWeightChecks.kernel_check_zero_or_two, a checked check-rooted Tanner
+tree argument, to any source kernel word of weight<=11. Every neighboring check
+meets its support in exactly two coordinates. Source incidence has just been
+bridged; a statement about an unrelated abstract graph is not substituted.
+
+Let a_j be the number of selected left coordinates with first indexj and b_i
+the number of selected right coordinates with second indexi. Summing the HZ
+equations over t gives a_j+b_i=0 modulo2, for every j,i. All seven counts have
+one common parity. BlockParity.lean proves this directly in the source model;
+BlockCounts.lean relates binary masses to actual support cardinalities.
+
+3. NORMAL GRAPH AND THE THREE COUNT PROFILES
+
+Join the two selected coordinates at each occupied check. The resulting normal
+graph is simple: two checks joining the same pair would be a quantum four-cycle.
+It is triangle-free: the three edge checks must be distinct (otherwise one
+check would meet three selected coordinates), and distinct checks would give a
+quantum six-cycle. Its left/right vertex degrees are3/4, respectively.
+NormalGraph.lean proves the generic triangle-free implication and the standard
+Mantel/Turan edge bound, on the actual selected subtype rather than all qubits.
+
+Within bucket(j,i), let m_ji count U-U edges and c_ji count U-V edges. The socket
+identity is a_j=2m_ji+c_ji, and c_ji<=b_i. Consequently
+  sum_i max(a_j-b_i,0)/2 <= floor(a_j^2/4).
+The analogous V-V inequality is
+  sum_j max(b_i-a_j,0)/2 <= floor(b_i^2/4).
+Same-parity counts make each nonzero difference even. The upper bounds are
+Mantel's triangle-free edge bound applied to each induced same-group graph.
+Distinct check types count distinct normal edges by four-cycle exclusion.
+
+For mixed supports of total weight<=11, sort the four a counts and three b
+counts separately. There are exactly44 common-parity positive-total profiles.
+The displayed inequalities leave precisely:
+  weight7:  a=(1,1,1,1), b=(1,1,1);
+  weight10: a=(2,2,2,0), b=(2,2,0);
+  weight11: a=(5,1,1,1), b=(1,1,1).
+CountPatterns.lean proves completeness of the bounded descending-list enumerator
+and checks the44-case arithmetic implication in the Lean kernel. A separate
+exhaustive socket-matching program independently finds these same three profiles,
+with1,64 and120 labeled matchings, respectively. SocketEdges, SocketArithmetic,
+BucketCounts, BucketSums and LocalMantel now prove the displayed inequalities
+from the actual expanded source kernel. SourceProfiles.lean proves the complete
+source-to-sorted-profile theorem, including sorting completeness and parity.
+
+Pure U supports split into classical C-kernel words, one per first-index group;
+pure V supports split into C-transpose kernel words. A nonzero pure support of
+weight<dC is therefore impossible under dTranspose>=dC.
+
+4. NORMALIZATION AND THE CONSTANT LABEL CASE
+
+Row/column permutations relabel both tensor coordinates and check indices.
+For row/column gauge e'(i,j)=e(i,j)+r_i+c_j, the transformed words are
+  U'(j,k,s)=U(j,k,s+c_j+c_k),
+  V'(l,i,s)=V(l,i,s-r_l-r_i),
+and transformed stabilizer coefficients are w'(i,j,s)=w(i,j,s-r_i+c_j).
+GaugeTransport.lean checks the syndrome and both entire span formulas. These
+maps are coordinate permutations, with inverse shifts. Normalizing after a
+row/column relabeling therefore preserves word weights and full quotients.
+The partial-row values change by one column-independent constant; equality
+on any three columns is preserved. Normalization.lean checks these form identities,
+the normalized full tests and no-four/no-six transport. GaugeWeight.lean checks
+actual support weight; SpanCoefficients.lean checks equivalence of the complete
+source stabilizer spans under gauge shifts. For clarity, unrestricted gauge shifts need not preserve the literal zero
+form of an RCPC equation. Here we always re-normalize after a row/column
+permutation. If F_i=E(i,a)+E(i,b)-E(i,c)-E(i,d), re-normalizing with first rowr
+changes it to F_i-F_r. Since the old first row has F_0=0, all new F_i vanish
+if and only if all old F_i vanish. Likewise a row-pair form
+G_c=E(i,c)+E(j,c)-2E(k,c) changes to G_c-G_h when columnh becomes first;
+the old first column has G_0=0. Thus full normalized RCPC is preserved, and
+threefold equality of partial-row values is preserved. Tanner girth is
+preserved by the corresponding check/variable coordinate permutations. We may put the missing weight10 row/column at0 and the
+exceptional weight11 first-index group at3.
+
+For singleton U groups j and singleton V groups i, let k_j be the U second
+index, l_i the V first index, and s_j,t_i their fibers. Cross matching says
+  s_j+E(i,k_j)=t_i-E(l_i,j).
+If two k_j agree, subtracting their equations forces the column difference
+E(l_i,j)-E(l_i,j') independent of i. Four-cycle exclusion then forces all l_i
+equal. Conversely, a repeated l_i forces all k_j equal. Thus the maps are either
+both constant or both injective. SingletonLabels.lean proves this algebraic
+alternative. SupportSingletons.lean extracts actual singleton coordinates and
+matching equations from the source kernel and applies the alternative. In the injective case l is a permutation of
+three rows; k is a permutation (weight7) or an injective triple (weight11).
+
+In the constant case, write k_j=K and l_i=H. The equations give a common z with
+  s_j=z-E(H,j),  t_i=z+E(i,K).
+These are exactly the corresponding coordinates of HX row((H,K),z).
+At weight7 the word is that stabilizer. At weight11, add that complete
+stabilizer: all three singleton U coordinates and all three V coordinates
+cancel, leaving a pure U kernel support of size at most6. If the original
+weight11 were below dC, the remainder must be zero. The original word is then
+a stabilizer. No restricted set of generators is substituted for the full span.
+
+5. EXHAUSTIVE LABEL CATALOGS AND INTEGER CERTIFICATES
+
+Weight7 has complete cross graph K4,3. The injective index maps give24*6=144
+patterns. Weight11's exceptional group has5 vertices,6 internal edges and no
+triangle. Equality in the five-vertex Mantel bound makes it K2,3; ExceptionalGraph.lean
+proves this on the actual source group. FiniteLabels.lean checks the two proper
+row-color orientations and completeness of every small label table. Its two degree3
+centers have no cross edges; each degree2 leaf uses its missing row color to
+meet one V vertex. Index leaves by that missing color. The two proper colorings
+are precisely the two cyclic orientations in integer_patterns.py.
+Adjacent internal vertices must have different second column labels, since
+otherwise matching fibers would make the two qubits identical. There are204
+center/leaf label assignments,24 injective singleton-column maps,6 row maps
+and2 orientations: exactly58,752 patterns.
+
+In weight10, each two-U group is internally paired at the missing row0. It
+cannot be paired internally again at another row without a four-cycle. Each
+two-V group is similarly internally paired at missing column0. Every other
+bucket is cross-matched. Its two U columns and two V rows are distinct. The
+entire universe is6^3*3^2*2^6=124,416 patterns. The missing-row/column pairings
+make the fibers within each pair equal, which is used by the catalog.
+
+For every pattern, the source check-fiber matching equations are integer linear
+equations. A spanning tree eliminates all vertex fibers except one common
+translation, leaving rows A in the six normalized exponents. Saved coefficients
+prove each forbidden target form, or both forms of a compound condition, to be
+an INTEGER row combination of A. No rational division or prime-modulus premise
+is used. IntegerSoundness.lean proves the general additive-group interpretation
+of such identities. verify_catalog.py independently reconstructs source offsets,
+sockets, cycle equations, forbidden forms and every integer identity without
+importing the discovery code, SymPy or Smith decomposition.
+
+Independently checked final counts:
+                             weight7   weight10   weight11
+  classical four-cycle          109     124129      57282
+  classical six-cycle            16        262       1008
+  forbidden partial row pair      9          9        342
+  full column RCPC                3          3         66
+  small cyclic row torsion        1          1          0
+  column two-torsion              6          6         54
+  classical word of weight<=10    0          6          0
+  total                         144     124416      58752
+No final catalog case is unclassified.
+
+Small-torsion exclusions use the cyclic nature of ZMod L. For fixed distinct
+rows, the four column differences must be distinct by classical no4. If all
+are killed by n<=3, they lie in a subgroup of size<=n, impossible. For fixed
+distinct columns, the three row differences must be distinct; all cannot be
+killed by2. IntegerSoundness.lean proves these exclusions, using the general
+cyclic torsion cardinality bound, rather than assuming L prime or odd.
+
+6. THE SIX WEIGHT10 EXCEPTIONS ARE CLASSICAL ALTERNATIVES
+
+Each of these cases implies 5E(1,c)=5E(2,c)=0 for some c!=0; normalized row0
+supplies the remaining equation. Put K={s in ZMod L: 5s=0}. Its size is at most5.
+The binary word equal to1 on {0,c} x K and0 elsewhere is nonzero. At each
+classical check, its two contributions agree: the exponent in column0 is zero,
+and the exponent in columnc lies in K, so translating K preserves its indicator.
+The two equal binary contributions cancel. Its weight is2|K|<=10.
+TorsionClassical.lean proves this for actual source C and, more generally, the
+weight<=2n construction for an n-torsion subgroup.
+
+Hence a source word of weight10 in one of these patterns cannot be strictly
+lighter than dC. This is an alternative in the proof, not a counterexample.
+The independently checked L10 boundary example in boundary-L10.json has dC6,
+dTranspose10, a nontrivial quantum word of weight10, and the displayed torsion
+word of weight10. These upper witnesses do not assert exact quantum distance.
+
+7. CONCLUSION OF THE WRITTEN REDUCTION
+
+Suppose a nontrivial X logical has weight w<min(dC,12). It is nonzero, w<=11,
+and cannot be pure-sector. Source incidence gives the normal graph, common
+parity and local edge bounds, so its profile is one of7,10,11. Constant label
+cases are stabilizers or reduce to a forbidden small classical word. Injective
+cases belong to the complete finite catalogs. Every catalog case contradicts
+a hypothesis, except the six classical alternatives, which imply dC<=10=w.
+This contradicts w<dC. Thus no such X logical exists.
+
+GeneralSymmetry.lean proves actual X/Z kernel, full-span and weight transport
+for arbitrary E, not just the previous fixed family. PauliBridge.lean proves
+that an X-sector lower bound transfers to the Z sector and bounds the union
+support of any nontrivial Pauli pair. Therefore the written reduction gives
+the intended dQ>=min(dC,12), with exactly the stated hypotheses.
+
+This is a certificate-assisted written argument. Complete proof-assistant
+coverage is a separate deliverable, not supplied by the external catalog replay.
+The original full-equality source target remains open in this project.
+
+8. REMAINING FORMALIZATION AND REPRODUCIBILITY OBLIGATIONS
+
+Do not state that the main bound is a completed checked Lean theorem until all
+of the following have been assembled from the source hypotheses:
+- complete actual support-to-labeled-pattern maps for the7/10/11 profiles,
+  including group enumeration, weight10 pair matching and weight11 graph/color
+  extraction (the count profiles, K2,3 equality and finite label tables are checked);
+- complete actual constant-label stabilizer-row cancellation (singleton extraction,
+  the algebraic alternative and full-span gauge transport are checked);
+- package permutation/normalization transport of every source hypothesis and
+  both classical distance predicates (individual coordinate/test bridges are checked);
+- finish any pending closed catalog kernel replay, interpret its forbidden forms,
+  and connect the interpreted six two-column alternatives to the actual patterns;
+- assemble a final theorem connecting these to the source distance minima.
+These are formal assembly/coverage gaps. Their written arguments are given above,
+but an external program and a compiled helper theorem do not fill them silently.
+
+This is a follow-up within the original source target; no new author-posed
+question or canonical completion is credited. Earlier frozen campaigns and
+verification manifests are unchanged. PROTOCOL.txt records the initial finite
+prime13 diagnostic; EXCEPTION-PROTOCOL.txt records the adaptive torsion5 lead.
+That numeric exploration was stopped in favor of the universal classical-word
+certificate; unfinished numeric rows supply no negative result.
+The independent certificate report, fresh module logs, source hashes, access
+ledger and current verification manifest specify the actual checked scope.
+
+9. POST-LEMMA PRIMARY COMPARISONS
+
+Lin and Pryadko, Quantum two-block group algebra codes, arXiv:2306.16400v1
+(28June2023), SectionIV.6/Statement12, prove a lower bound with a divisor equal
+to the support-intersection subgroup size. Their two-element group-algebra
+construction and that bound do not establish this 3x4 matrix-base criterion.
+
+Gideon Lee, Bicycle Race: small two-block codes on the Pareto frontier,
+arXiv:2610.13880v2 (12October2026), describes exact code-specific distance
+engines, equivalence reductions and rank-based search targeting. These are
+relevant computational background, rather than a general theorem implying
+the target here. Its additional questions and four unresolved fixed-code
+distances have been harvested, with exact block-identification gaps held.
+
+Okada and Kasai, Rate-2/3 Girth-8 (3,18)-Regular Quantum LDPC Codes from
+Two-Branch Finite-Field Bases and CPM Lifts, arXiv:2606.27130v2
+(5September2026), Sections3.4/3.7, use pairing at checks, colored triangle-free
+normal graphs and exact integer consistency certificates. These related
+methods are prior work and are credited. Their v2 proves exact distance18
+for one34542-qubit code and a weight18 affine-shift ceiling for a different,
+fixed finite-field base, for prime lift degree>19. The v1-only upper-bound
+wording is superseded by that v2 result. Neither theorem supplies our universal
+3x4 symmetric-LP statement. Our all-cyclic-modulus integer identities do not
+divide by a coefficient that might vanish at a composite or small modulus.
+
+The post-lemma primary pass screened all DOM text, introductions, conclusions
+and matched question contexts of these versions. The shared source ledger
+records harvested questions separately from current-resolution and Lean audits.
+Indexed web discovery and other uninspected leads do not fill the native X
+access gap or establish exhaustive novelty.

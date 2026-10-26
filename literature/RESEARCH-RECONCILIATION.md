@@ -154,6 +154,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: truncated-distance12-four-hour-2026-10-25
+
+[L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation): For the strengthened normalized 3x4 criterion, a certificate-assisted written argument gives dQ>=min(dC,12). Lean checks the actual-source mixed count-profile classification through weight11, induced K2,3 equality case, singleton support/label reduction, normalization and full-span bridges. Independent integer replay checks all183312 pattern certificates. The complete source-level distance theorem is not assembled; no qualifying counterexample and no canonical source completion is claimed.. [Report](../formalization/distance-preservation/truncated12/RESEARCH-NOTE.txt) · [Verification](../formalization/distance-preservation/truncated12/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
@@ -356,6 +362,39 @@ Added the already indexed Kelley et al. classical predecessor to paper coverage 
 [Screen report](../literature/distance-preservation-source-screening.json). Added **0 entries**, **0 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
 
 
-Current cohort: **319 canonical entries,144 eligible targets,124 paper records,113 full-text screens**; **5/144 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: truncated-distance12-sources-2026-10-25
 
-The current source index has **94** records, with actual access levels retained.
+One new primary paper screened; three fixed mathematical questions and three broad directions harvested. No canonical target completion.
+
+[Screen report](../literature/truncated-distance12-source-screening.json). Added **6 entries**, **3 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Determine whether the unrestricted canonical frame width of the fixed LP code C16,9 is 16 or 18.
+- [L-F91-c20-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c20-unrestricted-width): Determine the unrestricted canonical frame width of the fixed LP code C20,10.
+- [L-F91-pp1024-joint-parameters](OPEN-PROBLEMS.md#l-f91-pp1024-joint-parameters): Does the specified 1024-qubit PP family contain a code simultaneously attaining d=24, check weight w=10 and unrestricted frame width f=25?
+- [L-F91-nonabelian-common-action](OPEN-PROBLEMS.md#l-f91-nonabelian-common-action): Extend the non-Abelian constructions to full regular canonical frames with one physical group action preserving both CSS sectors.
+- [L-F91-rate-distance-frame-design](OPEN-PROBLEMS.md#l-f91-rate-distance-frame-design): Optimize distance and canonical frame width as the matrix dimensions and encoding rate vary.
+- [L-F91-measurement-interfaces](OPEN-PROBLEMS.md#l-f91-measurement-interfaces): Develop distance-preserving logical-measurement interfaces for the translated frames and assess their ancilla and circuit costs.
+
+## Separate indexing extension: truncated-distance12-postlemma-sources-2026-10-25
+
+Three post-lemma primary papers screened; one speculative square-root conjecture, seven broad directions and five held formulations harvested. No canonical completion.
+
+[Screen report](../literature/truncated-distance12-source-screening.json). Added **13 entries**, **1 eligible targets**, **3 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+- [L-F92-distance-scaling](OPEN-PROBLEMS.md#l-f92-distance-scaling): Determine asymptotic distance scaling of fixed-check-weight two-block group-algebra codes.
+- [L-F92-ambient-search-bound](OPEN-PROBLEMS.md#l-f92-ambient-search-bound): Find a finite ambient-group search bound, up to the relevant equivalence, for fixed-length double-coset subcodes.
+- [L-F93-weight5-square-root](OPEN-PROBLEMS.md#l-f93-weight5-square-root): Does a universal square-root distance upper bound hold for binary weight-five two-block group-algebra codes?
+- [L-F93-complete-equivalence](OPEN-PROBLEMS.md#l-f93-complete-equivalence): Find a complete set of equivalence moves for two-block group-algebra codes.
+- [L-F93-distance-preserving-circuits](OPEN-PROBLEMS.md#l-f93-distance-preserving-circuits): Design distance-preserving syndrome-extraction circuits for the highlighted [[102,20,10]] and [[120,24,10]] codes.
+- [L-F93-covers-versus-primitive](OPEN-PROBLEMS.md#l-f93-covers-versus-primitive): Explain when covers or primitive two-block codes produce better distance and code parameters.
+- [L-F93-group-distance-mechanism](OPEN-PROBLEMS.md#l-f93-group-distance-mechanism): Explain the group structures that concentrate high-distance two-block codes.
+- [L-F93-logical-gadgets](OPEN-PROBLEMS.md#l-f93-logical-gadgets): Co-design and assess logical gadgets for the highlighted two-block codes under neutral-atom device constraints.
+- [L-F93-distance-252-16](OPEN-PROBLEMS.md#l-f93-distance-252-16): Determine the exact distance of the fixed Aydin–Tamo–Barg [[252,16]] code reported with lower bound19.
+- [L-F93-distance-306-22](OPEN-PROBLEMS.md#l-f93-distance-306-22): Determine the exact distance of the fixed Aydin–Tamo–Barg [[306,22]] code reported with lower bound23.
+- [L-F93-distance-288-20](OPEN-PROBLEMS.md#l-f93-distance-288-20): Determine the exact distance of the fixed Symons-et-al. [[288,20]] code reported with lower bound20.
+- [L-F93-distance-288-14](OPEN-PROBLEMS.md#l-f93-distance-288-14): Determine the exact distance of the fixed Symons-et-al. [[288,14]] code reported with lower bound20.
+- [L-F94-nonaffine-lifts](OPEN-PROBLEMS.md#l-f94-nonaffine-lifts): Explore non-affine CPM shift functions for the fixed two-branch F19 base to avoid its forced affine weight18 logical mode.
+
+Current cohort: **338 canonical entries,148 eligible targets,128 paper records,117 full-text screens**; **5/148 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **98** records, with actual access levels retained.

@@ -1,9 +1,12 @@
 """Render the curated dissertation/article problem inventory; never infer Lean proof status."""
 import collections,html,json,pathlib
+from datetime import date
 R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature'
 load=lambda n:json.loads((D/n).read_text())
 rows=load('open-problems.json');coverage=load('downstream-paper-coverage.json');exclusions=load('downstream-exclusions.json');mechanization=load('downstream-mechanization.json')
 reconciliation=load('research-reconciliation.json')
+updated_on=max(e['checked_on'] for e in reconciliation['indexing_extensions'])
+date_label=date.fromisoformat(updated_on).strftime('%B %d, %Y').replace(' 0',' ')
 research_sources=load('research-source-index.json')['sources']
 new=[r for r in rows if r['origin']=='article_inventory_extension'];eligible=[r for r in rows if r['eligible_for_coverage']]
 screened=lambda p:p['coverage_status'].endswith('full_text_screened')
@@ -16,13 +19,13 @@ supporting_count=sum(r['lean_proof_status']=='verified_supporting_lean_proof' fo
 partial_count=sum(r['lean_proof_status']=='verified_finite_cases_only' for r in eligible)
 identified_count=sum(r['lean_statement_status']=='identified_lean_statement_not_build_verified' for r in eligible)
 unassessed_count=sum(r['lean_statement_status']=='not_assessed_in_this_extension' for r in eligible)
-summary=dict(checked_on='2026-10-24',canonical_inventory_entries=len(rows),legacy_entries=len(rows)-len(new),additional_entries=len(new),additional_eligible_targets=sum(r['eligible_for_coverage'] for r in new),additional_non_denominator_entries=sum(not r['eligible_for_coverage'] for r in new),eligible_targets=len(eligible),eligible_verified_proof_assistant_statements=statement_count,eligible_verified_lean_statements=statement_count,eligible_verified_lean_proofs=proof_count,eligible_targets_with_supporting_lean_proofs=supporting_count,eligible_identified_unverified_lean_statements=identified_count,eligible_lean_discovery_unassessed=unassessed_count,eligible_targets_with_verified_finite_cases=partial_count,article_records=len(coverage),full_text_screened=full_count,current_publication_full_text_screened=full_count-historical_count,historical_withdrawn_full_text_screened=historical_count,not_fully_assessed=len(coverage)-full_count,article_records_with_recorded_targets=sum(bool(p['recorded_target_ids']) for p in coverage),canonical_targets_with_article_occurrences=len(article_targets),legacy_targets_with_article_occurrences=sum(r['origin']=='dissertation_inventory' for r in article_targets),new_entry_kinds=dict(collections.Counter(r['kind'] for r in new)),new_written_math_statuses=dict(collections.Counter(r['written_math_status'] for r in new)),related_author_reported_lean_constructions=len(mechanization))
+summary=dict(checked_on=updated_on,canonical_inventory_entries=len(rows),legacy_entries=len(rows)-len(new),additional_entries=len(new),additional_eligible_targets=sum(r['eligible_for_coverage'] for r in new),additional_non_denominator_entries=sum(not r['eligible_for_coverage'] for r in new),eligible_targets=len(eligible),eligible_verified_proof_assistant_statements=statement_count,eligible_verified_lean_statements=statement_count,eligible_verified_lean_proofs=proof_count,eligible_targets_with_supporting_lean_proofs=supporting_count,eligible_identified_unverified_lean_statements=identified_count,eligible_lean_discovery_unassessed=unassessed_count,eligible_targets_with_verified_finite_cases=partial_count,article_records=len(coverage),full_text_screened=full_count,current_publication_full_text_screened=full_count-historical_count,historical_withdrawn_full_text_screened=historical_count,not_fully_assessed=len(coverage)-full_count,article_records_with_recorded_targets=sum(bool(p['recorded_target_ids']) for p in coverage),canonical_targets_with_article_occurrences=len(article_targets),legacy_targets_with_article_occurrences=sum(r['origin']=='dissertation_inventory' for r in article_targets),new_entry_kinds=dict(collections.Counter(r['kind'] for r in new)),new_written_math_statuses=dict(collections.Counter(r['written_math_status'] for r in new)),related_author_reported_lean_constructions=len(mechanization))
 # Counts are asserted against evidence rather than inferred from prose.
 assert all((R/r['verified_artifact']['readme']).exists() for r in eligible if r.get('verified_artifact'))
 (D/'open-problem-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
 s=f'''# Expanded open-problem inventory
 
-Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Inventory updated {date_label}. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
 The inventory now contains **{len(rows)} canonical entries**: the original 40 dissertation targets and **{len(new)} additional article entries**. Of the additions, **{new_eligible} are specific mathematical questions or tasks suitable for coverage tracking**; the other {new_excluded} are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 

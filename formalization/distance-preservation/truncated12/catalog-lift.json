@@ -1,0 +1,54 @@
+{
+  "status": "integer_lift_verified",
+  "reports": [
+    {
+      "weight": 7,
+      "cases": 144,
+      "max_coefficient": 2,
+      "max_nonzero_coefficients": 8,
+      "counts": {
+        "cyclic_torsion": 1,
+        "partial_row": 9,
+        "cycle4": 109,
+        "column_two_torsion": 6,
+        "cycle6": 16,
+        "column_rcpc": 3
+      },
+      "encoded_sha256": "32c1349549b15e2b73fbdb5f9e7ca0a89c324464e3b92ad1fbe4f6319d24765e"
+    },
+    {
+      "weight": 10,
+      "cases": 124416,
+      "max_coefficient": 15780,
+      "max_nonzero_coefficients": 17,
+      "counts": {
+        "cycle4": 124129,
+        "cycle6": 262,
+        "cyclic_torsion": 1,
+        "partial_row": 9,
+        "column_two_torsion": 6,
+        "column_rcpc": 3,
+        "classical_weight_le10": 6
+      },
+      "encoded_sha256": "f8ec418ac6d8c9d5fc6e3d1d0020fd7d24675cb9e17bccad25b29e525799f0dc"
+    },
+    {
+      "weight": 11,
+      "cases": 58752,
+      "max_coefficient": 922,
+      "max_nonzero_coefficients": 18,
+      "counts": {
+        "cycle4": 57282,
+        "cycle6": 1008,
+        "partial_row": 342,
+        "column_two_torsion": 54,
+        "column_rcpc": 66
+      },
+      "encoded_sha256": "fa649c82d160e6ba9c0a5c3994c46474741dca5bd0256bd0589e5e88c9d9339e"
+    }
+  ],
+  "target_types": 64,
+  "encoding": "low8 bits targetID, next8 bits coefficient width b, then18 zigzag coefficients per target form, b bits each; absent rows are zero padded.",
+  "seconds": 71.3158896669629,
+  "scope": "Full source matching equations including all fiber variables; generated Lean sources are not certified until compiled and audited."
+}

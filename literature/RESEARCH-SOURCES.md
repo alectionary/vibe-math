@@ -1222,3 +1222,55 @@ Yuta Hirasaki. 31 July 2026, 06:40 AM displayed in browser. [Primary source](htt
 - Comparison limit: Read in signed-in Edge; discovered arXiv:2607.28621v1. Post is a discovery source; theorem/hypothesis comparison uses the primary full text.
 - Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
 - Provenance: [source review ledger](../formalization/distance-preservation/prior-art.json).
+
+## Lee2026Frames — Designing Group-Valued Codes with Full Regular Low-Weight Bases
+
+Jong Yeon Lee. arXiv:2610.06820v1, 5 October 2026. [Primary source](https://arxiv.org/html/2610.06820v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Sections IV.4, VI and Appendices A.4/C.3.
+- Contribution: Issue1 primary comparison and question harvesting.
+- Comparison limit: Full regularity and canonical-frame width concern complete logical bases, not the minimum distance lower bound in our strengthened 3x4 monomial LP target. Full-row-rank augmentation criteria do not apply to the all-one rank-one augmentation of our fully populated 3x4 base. Appendix A.4 supplies a related exhaustive-support-search completeness argument; its code-specific execution records do not certify our inputs.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
+
+## LinPryadko2023 — Quantum two-block group algebra codes
+
+Hsiang-Ku Lin; Leonid P. Pryadko. arXiv:2306.16400v1, 28 June 2023. [Primary source](https://arxiv.org/html/2306.16400v1).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Sections IV.6, V and VI; Statement12 and its proof.
+- Contribution: Issue1 post-lemma primary comparison; related prior methods credited.
+- Comparison limit: Statement12 gives a support-intersection-size divisor in a two-group-algebra-element construction. Neither its construction hypotheses nor its numerical bound establish the strengthened normalized 3x4 matrix-base truncated-distance theorem. It is credited distance-bound background, not a newly discovered proof.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 2 linked canonical targets.
+
+## GideonLee2026 — Bicycle Race: small two-block codes on the Pareto frontier
+
+Gideon Lee. arXiv:2610.13880v2, 12 October 2026. [Primary source](https://arxiv.org/html/2610.13880v2).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Sections3–5, Appendices C.1/C.4 and E.
+- Contribution: Issue1 post-lemma primary comparison; related prior methods credited.
+- Comparison limit: Exact code-specific distance searches and group-algebra rank targeting do not establish our universal 3x4 criterion. This is relevant method/computational-completeness background. Four reported unresolved fixed-code distances are held until their exact database blocks and original source versions are frozen; parameters alone do not identify a code.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 10 linked canonical targets.
+
+## OkadaKasai2026 — Rate-2/3 Girth-8 (3,18)-Regular Quantum LDPC Codes from Two-Branch Finite-Field Bases and CPM Lifts
+
+Koki Okada; Kenta Kasai. arXiv:2606.27130v2, 5 September 2026. [Primary source](https://arxiv.org/html/2606.27130v2).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Sections3.4,3.7 and6; exact-distance and affine-ceiling theorems.
+- Contribution: Issue1 post-lemma primary comparison; related prior methods credited.
+- Comparison limit: The v2 paper proves one 34542-qubit code has distance18 and a fixed-base affine-shift ceiling for primes greater than19. Its pair-at-check normal-graph enumeration and exact integer consistency certificates are related prior methods and are credited. Its different two-branch finite-field construction is not our monomial 3x4 symmetric LP family; its theorems do not imply our universal truncated bound. The earlier v1 distance-upper-bound language must not replace this v2 exact-distance result.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
+
+- Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.

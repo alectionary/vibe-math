@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Checked October 24, 2026. Low-confidence planning priors for all 319 entries (138 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 25, 2026. Low-confidence planning priors for all 338 entries (157 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Checked October 24, 2026. Low-confidence planning priors for all 319 entries (13
 | 3 | 39 | 22 |
 | 4 | 41 | 42 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 39 | 39 |
+| Unestimated / scope gate | 43 | 43 |
 
 ### 2026-Geraci-O01
 
@@ -2724,7 +2724,7 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
 
 Selected in the October24 qualitative comparison: direct quantum distance payoff, six normalized exponents in the first family, and reusable matrix/graph infrastructure. Exact distance exclusion and mixed-sector logical reduction remain substantial obstacles; no numeric effort tier assigned.
 
-First milestone: Completed: source-matched infinite counterfamilies, corrected frozen104-base and L13 finite searches, plus generic Lean low-weight check geometry and a cyclic fixed-column obstruction. A restricted144-pattern catalog is independently checked but its full source/support bridge is missing. Preferred next follow-up: prove or refute the truncated bound dQ>=min(dC,12) under the strengthened entry tests. SourceSectionV-B already claims the stabilizer-weight exclusion, so the weight7 work is a source-claim verification task, not a new open mathematical result. ExactL13 quantum14 certification remains a deferred finite option. See search-repair.json for the repaired search and unchanged replay outcomes.
+First milestone: Completed actual-source mixed support count classification through11, K2,3 equality, singleton-label bridges, and a certificate-assisted written truncated-bound argument. Remaining milestone: complete source support-to-pattern maps, constant-row cancellation and final Lean distance assembly; see truncated12/verification.json. No canonical completion or discovery-time estimate inferred.
 
 Gate: The strengthened condition has been stated and boundedly tested, but no general proof is established. No numeric effort tier or discovery-time prediction is inferred for the full design question.
 
@@ -4921,3 +4921,307 @@ First milestone: Verify current mathematical status and exact hypotheses.
 Gate: Verify current status and freeze the complete mathematical or experimental interface before estimating effort.
 
 Basis: New primary full-document target screen; current resolution, Lean discovery and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f89-general-nontransversal-surgery).
+
+### L-F91-c16-unrestricted-width
+
+Determine whether the unrestricted canonical frame width of the fixed LP code C16,9 is 16 or 18.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A source-stated open target is not a present-resolution or difficulty assessment.
+
+First milestone: Verify the fixed source model, current resolution and formalization coverage.
+
+Gate: Verify current status and exact source construction before estimating effort.
+
+Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+
+### L-F91-c20-unrestricted-width
+
+Determine the unrestricted canonical frame width of the fixed LP code C20,10.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A source-stated open target is not a present-resolution or difficulty assessment.
+
+First milestone: Verify the fixed source model, current resolution and formalization coverage.
+
+Gate: Verify current status and exact source construction before estimating effort.
+
+Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c20-unrestricted-width).
+
+### L-F91-pp1024-joint-parameters
+
+Does the specified 1024-qubit PP family contain a code simultaneously attaining d=24, check weight w=10 and unrestricted frame width f=25?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A source-stated open target is not a present-resolution or difficulty assessment.
+
+First milestone: Verify the fixed source model, current resolution and formalization coverage.
+
+Gate: Verify current status and exact source construction before estimating effort.
+
+Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-pp1024-joint-parameters).
+
+### L-F91-nonabelian-common-action
+
+Extend the non-Abelian constructions to full regular canonical frames with one physical group action preserving both CSS sectors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A source-stated open target is not a present-resolution or difficulty assessment.
+
+First milestone: Verify the fixed source model, current resolution and formalization coverage.
+
+Gate: Verify current status and exact source construction before estimating effort.
+
+Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-nonabelian-common-action).
+
+### L-F91-rate-distance-frame-design
+
+Optimize distance and canonical frame width as the matrix dimensions and encoding rate vary.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A source-stated open target is not a present-resolution or difficulty assessment.
+
+First milestone: Verify the fixed source model, current resolution and formalization coverage.
+
+Gate: Verify current status and exact source construction before estimating effort.
+
+Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-rate-distance-frame-design).
+
+### L-F91-measurement-interfaces
+
+Develop distance-preserving logical-measurement interfaces for the translated frames and assess their ancilla and circuit costs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A source-stated open target is not a present-resolution or difficulty assessment.
+
+First milestone: Verify the fixed source model, current resolution and formalization coverage.
+
+Gate: Verify current status and exact source construction before estimating effort.
+
+Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-measurement-interfaces).
+
+### L-F92-distance-scaling
+
+Determine asymptotic distance scaling of fixed-check-weight two-block group-algebra codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Family and asymptotic quantifiers are not frozen by the numerical comparison; retain as a broad direction.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f92-distance-scaling).
+
+### L-F92-ambient-search-bound
+
+Find a finite ambient-group search bound, up to the relevant equivalence, for fixed-length double-coset subcodes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source reports no method of limiting ambient group sizes; equivalence and the exact search target need formulation.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f92-ambient-search-bound).
+
+### L-F93-weight5-square-root
+
+Does a universal square-root distance upper bound hold for binary weight-five two-block group-algebra codes?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source-speculative asymptotic conjecture d=O(sqrt(n)), not the empirical constants1.11,1.18 or1.6; retain source-defined binary 2BGA family and positive logical dimension. Current status unassessed.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-weight5-square-root).
+
+### L-F93-complete-equivalence
+
+Find a complete set of equivalence moves for two-block group-algebra codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The paper distinguishes Tanner-graph equivalence from stabilizer-group equivalence; freeze the intended notion and allowed moves before formalizing.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-complete-equivalence).
+
+### L-F93-distance-preserving-circuits
+
+Design distance-preserving syndrome-extraction circuits for the highlighted [[102,20,10]] and [[120,24,10]] codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The existing source circuits have circuit distance8. Allowed resources, noise/fault model and optimization target need a bounded engineering formulation.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-distance-preserving-circuits).
+
+### L-F93-covers-versus-primitive
+
+Explain when covers or primitive two-block codes produce better distance and code parameters.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source reports no consistent rule; no universal quantitative comparison is specified.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-covers-versus-primitive).
+
+### L-F93-group-distance-mechanism
+
+Explain the group structures that concentrate high-distance two-block codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+An empirical mechanism question, separate from the proved rank/dimension targeting statements.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-group-distance-mechanism).
+
+### L-F93-logical-gadgets
+
+Co-design and assess logical gadgets for the highlighted two-block codes under neutral-atom device constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad hardware/circuit design and performance direction; not a fixed mathematical theorem.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-logical-gadgets).
+
+### L-F93-distance-252-16
+
+Determine the exact distance of the fixed Aydin–Tamo–Barg [[252,16]] code reported with lower bound19.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-distance-252-16).
+
+### L-F93-distance-306-22
+
+Determine the exact distance of the fixed Aydin–Tamo–Barg [[306,22]] code reported with lower bound23.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-distance-306-22).
+
+### L-F93-distance-288-20
+
+Determine the exact distance of the fixed Symons-et-al. [[288,20]] code reported with lower bound20.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-distance-288-20).
+
+### L-F93-distance-288-14
+
+Determine the exact distance of the fixed Symons-et-al. [[288,14]] code reported with lower bound20.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f93-distance-288-14).
+
+### L-F94-nonaffine-lifts
+
+Explore non-affine CPM shift functions for the fixed two-branch F19 base to avoid its forced affine weight18 logical mode.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A proposed construction direction; retain CSS orthogonality and new girth/distance checks. No existence theorem for a distance improvement is claimed.
+
+First milestone: Freeze source objects and current resolution; resolve any named formulation gap.
+
+Gate: Verify current status, exact object and quantifiers before estimating effort.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f94-nonaffine-lifts).
