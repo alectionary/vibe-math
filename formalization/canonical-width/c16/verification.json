@@ -1,0 +1,66 @@
+{
+  "checked_on": "2026-10-26",
+  "canonical_target_id": "L-F91-c16-unrestricted-width",
+  "canonical_completion_delta": 0,
+  "question_status": "open",
+  "value_of_f": "still_16_or_18",
+  "lean_certificate": false,
+  "committed_checker": {
+    "command": "python3 formalization/canonical-width/c16/verify_partial_frame.py",
+    "script_sha256": "1a7ee7da4f73d1a361e3ecb76d83e109f0bc3d25015b4425692379782984c9e5",
+    "witness": "formalization/canonical-width/c16/partial-frame-84.json",
+    "witness_sha256": "7823c6f7987daa8c35dc96a8f5ec381ead428531df6c129ba5788d63f6cce949",
+    "witness_pairs": 84,
+    "operator_weight": 16,
+    "expected_stdout": [
+      "partial canonical frame ok: 84 pairs, weight 16, zero syndromes, Gram identity",
+      "rebuilt checks: 480 rows, max weight 9, ranks (480, 480), k=128"
+    ],
+    "construction": {
+      "source": "Lee arXiv:2610.06820v1 equation (50)",
+      "html_sha256": "3e4294e6e8c328eca1de101b04b1ad527e0ddae1fc9bc776e3037328ef22a37f",
+      "P": 16,
+      "n": 1088,
+      "k": 128,
+      "C_coefficients_0_1_omega_omega2": [[1, 1, 1, 1, 1], [1, 1, 2, 0, 3], [1, 3, 1, 2, 0]],
+      "E": [[0, 0, 0, 0, 0], [0, 6, 12, 9, 3], [0, 12, 6, 2, 14]]
+    },
+    "does_not_import": "Lee checker or unpacked pool"
+  },
+  "scratch_nonextension": {
+    "evidence": "exact_finite_computation",
+    "in_committed_checker": false,
+    "basis_file": "/tmp/lf91/best-11.txt",
+    "dual_hits_in_z_pool": 84,
+    "dual_misses": 44,
+    "z_pool_vectors_orthogonal_to_the_84_x_columns": 0,
+    "meaning": "This 84-pair frame does not extend by one more weight-16 pool pair. It does not prove that no 128-pair frame exists."
+  },
+  "reproduced_enumerator": {
+    "evidence": "exact_finite_computation_of_released_program",
+    "independent_reimplementation": false,
+    "repository": "https://github.com/yeon-lee/public-regular-logical-frames",
+    "commit": "04ad4795ad15cb89ee47b7868ff925c30b2fc731",
+    "code": "LPQ6",
+    "returncode": 0,
+    "wall_seconds": 54.86957409599995,
+    "nodes": 56921793,
+    "normalized_orbits": 45,
+    "matches_released_pool": true,
+    "stabilizer_overlap_pruning": false,
+    "terminal": "ENUMERATION_COMPLETE W=17 roots=[0,68) children=[0,1073741824) mod(D=-1,M=1,r=0) nodes=56921793 t=54.8",
+    "input_sha256": "a00f1dac2385856c0fab25f28c04d57729cd1ac79f745ff18e37d03b432137d2",
+    "source_sha256": "b9f0b5be8e26195af5c37fb45f33c29956653ee028212e58646489caa0b74a8c",
+    "binary_sha256": "2dcb140e0a388557b7d89b2d3d5ce20de09291485e312872507b6b8b45516ab8",
+    "stdout_sha256": "36dc5c723c0aba9f1f7de7aa87f06e7173afbc39bb8b3336d4fe72d9ef226536"
+  },
+  "sampled_search": {
+    "evidence": "sampled_experiment",
+    "best_partial_pairs": 84,
+    "reduced_96_plateau": 48,
+    "reduced_coloring_colors": 158,
+    "reduced_coloring_max_degree": 8354,
+    "ils_stopped_for_closeout": true,
+    "ils_best": 84
+  }
+}

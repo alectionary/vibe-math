@@ -4932,13 +4932,15 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-A source-stated open target is not a present-resolution or difficulty assessment.
+The source two-point gap is still open. A checked 84-pair partial frame and sampled search are not a difficulty assessment.
 
-First milestone: Verify the fixed source model, current resolution and formalization coverage.
+First milestone: Decide the 720-class CSS frame by an exact search outside the 84-pair basin, or prove every dual basis meets a forbidden family.
+
+Progress: Explicit 84-pair weight-16 partial CSS frame checked; unrestricted width still 16 or 18. [Checked artifact](../formalization/canonical-width/c16/INVESTIGATION.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
-Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: 2026-10-26 block checked a width-16 partial frame and left f in {16, 18}. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 
