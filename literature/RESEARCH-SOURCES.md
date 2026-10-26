@@ -144,8 +144,8 @@ Kirsten D. Morris; Tefjol Pllaha; Christine A. Kelley. ISTC 2025, pp.1-5. [Prima
 - Record type: academic source; access: author bibliographies only.
 - Inspected locator: Morris publication list; Pllaha publications.
 - Contribution: Directly relevant earlier source-author study.
-- Comparison limit: Publisher substantive text inaccessible; cannot assert transformation, theorem or exclude an exact match.
-- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design).
+- Comparison limit: Public IEEE-authored abstract and author bibliographies inspected; full theorem text not retrieved. No theorem attributed from the secondary code summary.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
 
 ## RaveendranEtAl2023 — Soft syndrome iterative decoding of quantum LDPC codes and hardware architectures
@@ -1359,3 +1359,16 @@ Error Correction Zoo contributors. Entry inspected 26 October 2026. [Primary sou
 - Comparison limit: Not used as primary proof evidence. Bibliography alone did not trigger recursive paper screening.
 - Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing).
 - Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).
+
+## DhingraMatthewsMcDevittMcMillon2026 — Absorbing Sets of LDPC Codes Under a Gallager B Decoding Variant
+
+Renaya Dhingra; Gretchen L. Matthews; Collin McDevitt; Emily McMillon. Accepted manuscript; institutional repository year2026, first public day unverified. [Primary source](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections2/3 update rules, definitions/proofs; Section5 conclusion; full19-page manuscript screen.
+- Contribution: Different received-word bit-flip decoder; comparison clarifies scope.
+- Comparison limit: Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-F101-prevalence](OPEN-PROBLEMS.md#l-f101-prevalence), [L-F101-hybrid-decoding](OPEN-PROBLEMS.md#l-f101-hybrid-decoding), [L-F101-decoder-dependent-structure](OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure).
+- Provenance: [source review ledger](../literature/symmetric-css-editorial-source-screening.json).
+
+- Question screen: [full text screened](../literature/symmetric-css-editorial-source-screening.json); 3 linked canonical targets.

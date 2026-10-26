@@ -61,7 +61,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
-- **RQ-P09-symmetric-css:** Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. Status: Precise statement and necessary odd-support/no-supported-logical gates proved; bounded primary-source comparison completed with named gaps. No even-support construction search performed.
+- **RQ-P09-symmetric-css:** Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. Status: General odd-support and supported-logical obstructions proved; exact even-support full/one-step existence questions remain unresolved. No construction search performed.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -177,6 +177,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: symmetric-css-2026-10-26
 
 [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): General odd-support quantum-recovery obstruction under equality of full stabilizer row spaces; exact full/benchmark question interfaces.. Remaining at that dated checkpoint: Even-support existence or nonexistence; no candidate search.. [Report](../formalization/gallager-b-absorbing/symmetric/README.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: symmetric-css-editorial-2026-10-26
+
+[L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): Main-text chronology, discovery citation, explanatory proof dependency appendix, targeted source review and evidence-backed skill closeout requirements.. Remaining at that dated checkpoint: Even-support construction search. [Report](../formalization/gallager-b-absorbing/symmetric/EDITORIAL-REPAIR.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -458,6 +464,16 @@ Two primary full texts; seven broad directions or held formulations, no precise-
 - [L-F100-explicit-good-families](OPEN-PROBLEMS.md#l-f100-explicit-good-families): Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.
 - [L-F100-ccz-normal-codes](OPEN-PROBLEMS.md#l-f100-ccz-normal-codes): Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.
 
-Current cohort: **360 canonical entries,150 eligible targets,134 paper records,121 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: symmetric-css-editorial-sources-2026-10-26
 
-The current source index has **105** records, with actual access levels retained.
+One previously uninspected classical variant full text contributes three broad directions. Existing P10 quantum redundancy lead identified and deduplicated; full-text comparison remains access-limited.
+
+[Screen report](../literature/symmetric-css-editorial-source-screening.json). Added **3 entries**, **0 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F101-prevalence](OPEN-PROBLEMS.md#l-f101-prevalence): Quantify the prevalence and influence of absorbing sets in decoder failure.
+- [L-F101-hybrid-decoding](OPEN-PROBLEMS.md#l-f101-hybrid-decoding): Develop hybrid decoding approaches combining strengths of multiple algorithms.
+- [L-F101-decoder-dependent-structure](OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure): Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
+
+Current cohort: **363 canonical entries,150 eligible targets,135 paper records,122 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **106** records, with actual access levels retained.
