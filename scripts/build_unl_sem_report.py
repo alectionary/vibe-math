@@ -1,75 +1,113 @@
-"""Render the SEM seed report from curated source and suitability records."""
+"""Render the SEM/CFA seed report, retaining the first-pass cohort separately."""
 import json,pathlib
 R=pathlib.Path(__file__).resolve().parents[1];D=R/'literature/unl-sem'
 load=lambda n:json.loads((D/n).read_text())
-seed=load('dissertations.json');authors=load('authors.json');works=load('works.json');questions=load('questions.json');screen=load('screening.json')
+seed=load('dissertations.json');authors=load('authors.json');works=load('works.json');questions=load('questions.json');screen=load('screening.json');exp=load('cfa-expansion.json')
 def esc(s):return str(s).replace('|','\\|').replace('\n',' ')
-text='''# Structural equation modeling: UNL dissertation seed and downstream work
+adj=sum(s.get('scope_class')=='adjacent_latent_measurement' for s in seed);core=len(seed)-adj
+public=sum(bool(s['public_copy_record'] or s.get('located_public_copy_url')) for s in seed)
+full=sum(w['screen_status']=='full_text_screened' for w in works)
+author_count=sum(bool(a['selected_work_ids']) for a in authors)
+text=f'''# SEM, CFA and related measurement-model dissertation seed
 
-Checked October 26, 2026. [Tracking issue](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [Author search outcomes](authors.json) · [Formalization suitability](FORMALIZATION.md) · [Shared question index](../OPEN-PROBLEMS.md).
+Checked October 26, 2026. [PR #6](https://github.com/alectionary/vibe-math/pull/6) · [Tracking issue #5](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [CFA expansion](CFA-EXPANSION.md) · [Formalization suitability](FORMALIZATION.md) · [Shared questions](../OPEN-PROBLEMS.md).
 
-This pass adds **58 doctoral-dissertation metadata records** and searches subsequent publications for every seed author. It verifies **26 selected article/letter records linked to 18 authors**, screens **14 readable article full texts**, and adds **8 source-stated statistical method directions** to the shared inventory. Two pairs of repeated QTL directions are merged. These eight need a precise model and success guarantee before becoming theorem targets; the eligible-target count remains **150**, and no new proof is claimed.
+The expanded seed contains **{core} SEM/CFA, growth/path or latent-measurement dissertations**, plus **{adj} explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** ({len(seed)} records total). These are doctoral-dissertation metadata seeds from 2001 onward. All {len(authors)} authors have recorded downstream searches. The bibliography contains **{len(works)} selected source works**, with **{full} readable full texts screened** and **{len(questions)} source-stated statistical methods directions** indexed.
 
-The dissertation registry is a discovery seed, not 58 completed full-text reviews. All dissertation question counts remain **unassessed (null)**. Public archive landing pages were readable through indexed web results, but native access to all 18 original public-copy routes returned HTTP403, as did two actual download links tested through the web tool. The remaining 40 original records link to the ProQuest catalog. A further public-copy record for Evertson was discovered during this pass, bringing located public-copy records to **19**; a public record does not establish successful PDF retrieval. [UNL explains its access arrangements here](https://digitalcommons.unl.edu/dissertations/).
+The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records. It corrects the initial literal-SEM search's omission of Daniel H. Abbott's 2010 dissertation. Public and ProQuest catalog copies are merged, not counted twice. [The original 58-record pass](FIRST-PASS.md) is a historical snapshot, not the current total.
 
-## Scope and counts
+## Current counts
 
-| Measure | Result |
+| Measure | Count |
 | --- | ---: |
-| Dissertations dated 2001 onward identified in the original survey | 58 |
-| Original seed overlaps with the existing 20-dissertation review catalog | 0 |
-| Seed authors with recorded downstream searches | 58 |
-| Authors linked to selected verified publication records | 18 |
-| Selected article/letter records | 26 |
-| Post-dissertation publication records | 25 |
-| Same-year publication with ordering unverified | 1 |
-| Readable article full texts screened | 14 |
-| Selected articles with incomplete full-text access | 12 |
-| Dissertation full texts screened | 0 |
-| Added statistical method directions | 8 |
-| Added precise conjectures / completed proofs | 0 / 0 |
+| Core SEM/CFA/growth/path/measurement dissertation records | {core} |
+| Adjacent IRT/latent-class/exploratory-factor dissertation records | {adj} |
+| Total deduplicated dissertation metadata records | {len(seed)} |
+| Authors with recorded downstream searches | {len(authors)} |
+| Authors linked to verified selected author/coauthor records | {author_count} |
+| Selected source works, including earlier background and independent citation followups | {len(works)} |
+| Full source texts screened | {full} |
+| Selected source works with full-text gaps | {len(works)-full} |
+| Located public-copy dissertation records | {public} |
+| Completed dissertation full-text screens | 0 |
+| Statistical methods directions indexed | {len(questions)} |
+| Added precise theorem targets / completed proofs | 0 / 0 |
 
-The original survey searched dates from 2001 onward; its located dissertations span 2003–2025. Missing years are not asserted to have zero qualifying dissertations. The original seed has 10 methods-oriented and 48 applied dissertations. This pass records 130 additional discovery/copy/verification queries, including one author/topic query for each seed. Author/coauthor links rely on primary article metadata, topical continuity and affiliations/coauthors; matching names alone is insufficient. Bibliographic leads outside the 26 selected verified works remain in the discovery log, without author attribution or question counts.
+**Access scope:** dissertation title/abstract records are available through indexed archive pages, but readable dissertation bodies were not recovered in these passes. All dissertation question counts remain null, not zero. Public-copy landing pages do not establish successful PDF retrieval. The {len(works)-full} source-work text gaps also retain null counts. [UNL explains its public-copy versus ProQuest access arrangements](https://digitalcommons.unl.edu/dissertations/).
 
-This is a bounded first-hop search, not a census of every coauthor's career or a recursive citation crawl. [Queries/results](searches.json), [all discovery result dispositions](discovery-results.json), [retrieval evidence](extra-retrieval-attempts.json), and [service access](service-access.json) preserve its actual coverage. Earlier work recovered during searches is not relabeled post-dissertation progress.
+## Search and inclusion criteria
+
+The first pass searched explicit structural-equation terminology. The continuation adds confirmatory factor analysis, measurement models/invariance, latent growth, factor structure, bifactor/factor-mixture models, path analysis and related latent-variable terms. IRT and latent-class models are a separately labeled adjacent cohort. Generic regression, exploratory-factor-only leads without qualifying model evidence, keyword-only matches, master's theses, posters, articles and pre-2001 dissertations do not enter the core dissertation count. One proposed-but-unexecuted CFA with exploratory scale analysis is retained as an adjacent record; it is not counted as completed core CFA.
+
+[Queries and result dispositions](searches.json), [CFA candidate decisions](cfa-discovery-decisions.json), [author outcomes](authors.json), and [source acquisitions](works.json) record the search. Name-only matches do not establish identity. Citation-only followups are distinguished from author/coauthor publications; the Griffin/Marincic name transition and the Hawley/Shaw identity lead are not asserted without a verified primary bridge. Earlier background is not relabeled post-dissertation work. This bounded search is not a publication census or recursive bibliography crawl.
 
 ## Mathematical suitability
 
-The included directions concern QTL model discrimination, missing observations, mixed outcomes, residual covariance, nonlinear models, experimental design effects, and dynamic fit-index calibration. Their statements can ultimately involve distributions, estimators, matrices and algorithmic guarantees. They are not claims that any proposed method universally improves power.
+The retained directions concern QTL methods, model-fit calibration, sampling accuracy and latent interpretation effects. Each has a separate statement gate describing mathematical objects, estimands and guarantees that must be fixed. Source-stated simulation requests are not promoted into universal bounds. Empirical questions about attitudes, leadership, instrument validity in a new population, clinical outcomes, or ecological observations stay outside mathematical target counts. See [the suitability worksheet](FORMALIZATION.md).
 
-The screen excludes intervention effects, attitudes, leadership/satisfaction associations, instrument replication in new populations, clinical effects, stakeholder theories, and ecological observations when answering them requires new data. An SEM equation in a paper does not turn every research question in that paper into a mathematical conjecture. The [suitability worksheet](FORMALIZATION.md) gives the missing assumptions for each retained direction and separates three project-derived formalization starting points from author-posed research questions.
+Peugh and Feldon's 2024 letter withdraws their 2020 fit-assessment recommendation after subsequent simulations. That historical request is not indexed as a fresh conjecture. The later dynamic-fit questions remain distinct. Mi et al.'s 2011 gene–environment SEM is recorded as related progress on the 2010 agenda, without claiming a full model-equivalence comparison from its abstract.
 
-## Downstream results that change interpretation
-
-Peugh and Feldon's 2020 fit-assessment article called for wider testing of equivalence testing. Their own 2024 letter reports unfavorable subsequent simulations and withdraws the recommendation. The 2020 study request is therefore historical context; the separate 2024 dynamic-fit questions are indexed. This is a published methodological correction, not a universal mathematical disproof.
-
-Mi and coauthors' 2011 gene–environment SEM paper is related later development of an agenda discussed in the 2010 QTL papers. Its inspected abstract does not establish complete equivalence to the earlier QTL-mapping/model-design directions. Kmail–Eskridge's 2022 D-optimal design paper and Jeffries–Bovaird's 2026 latent-contrast paper are verified follow-on records; their full-text question screens remain access-limited.
-
-## Newly recorded method directions
+## Indexed statistical methods directions
 
 '''
 for q in questions:
- sources=', '.join(f'[{o["source_id"]}]({o["url"]}) — {o["locator"]}' for o in q['occurrences'])
- text+=f'### {q["id"]}\n\n{q["title"]}\n\nSource: {sources}.\n\nStatement gate: {q["formalization_suitability"]["objects_and_gate"]}\n\n'
-text+='## Every selected downstream work and its screen outcome\n\n| ID / year | Work | Seed authors | Full-text question outcome |\n| --- | --- | --- | --- |\n'
-by={s['id']:s for s in seed}
+ src='; '.join(f'[{o["source_id"]}]({o["url"]}), {o["locator"]}' for o in q['occurrences'])
+ text+=f'### {q["id"]}\n\n{q["title"]}\n\nSource: {src}.\n\nStatement gate: {q["formalization_suitability"]["objects_and_gate"]}\n\n'
+text+='## Selected source works and their outcomes\n\n| ID/year | Work | Relationship | Full-text outcome |\n| --- | --- | --- | --- |\n'
 for w in works:
- count='Unassessed: full-text access gap' if w['question_count'] is None else f'{w["question_count"]} recorded directions' if w['question_count'] else 'No additional suitable explicit mathematical target recorded'
- text+=f'| {w["id"]} / {w["year"]} | [{esc(w["title"])}]({w["url"]}) | {esc("; ".join(by[i]["author"] for i in w["seed_ids"]))} | {count} |\n'
+ count='Unassessed: full-text gap' if w['question_count'] is None else f'{w["question_count"]} method directions' if w['question_count'] else 'No suitable additional explicit mathematical target recorded'
+ text+=f'| {w["id"]}/{w["year"]} | [{esc(w["title"])}]({w["url"]}) | {esc(w.get("relationship",w.get("temporal_relation","author/coauthor work")))} | {count} |\n'
 text+='\n## Excluded or historical passages\n\n'
 for x in screen['excluded_passages']:text+=f'- **{x["paper_id"]}, {x["locator"]}:** {x["reason"]}\n'
-text+='\n## Dissertation seed\n\nAll rows below are archive metadata/abstract records; full-text question harvesting remains access-limited. The separate original 20 full dissertation reviews and their frozen audit denominator are preserved.\n\n| Seed | Year | Author / dissertation | Located public-copy record |\n| --- | --- | --- | --- |\n'
-for s in seed:text+=f'| {s["id"]} | {s["year"]} | {esc(s["author"])} — [{esc(s["title"])}]({s["url"]}) | {"Yes" if s["public_copy_record"] or s.get("located_public_copy_url") else "Not located in this search"} |\n'
+text+='\n## Dissertation registry\n\nAll rows are archive metadata records, not completed dissertation question screens. The original 20 fully reviewed dissertations remain a separate historical cohort.\n\n| Seed/year | Author and dissertation | Model family | Public-copy record |\n| --- | --- | --- | --- |\n'
+for s in seed:text+=f'| {s["id"]}/{s["year"]} | {esc(s["author"])} — [{esc(s["title"])}]({s["url"]}) | {esc(s.get("family","explicit SEM"))} | {"Located" if s["public_copy_record"] or s.get("located_public_copy_url") else "Not located"} |\n'
 text+='''
-## Inventory integration and reproducibility
+## Inventory integration and verification
 
-The shared inventory grows **363→371 entries**, while precise eligible targets stay **150** and complete Lean targets stay **6**. The shared article/letter bibliography grows **135→161 records** and full-text screens **122→136**. The 58 dissertation metadata seeds are counted separately from article screens and from the earlier 20 complete dissertation reviews.
+Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→174 and full-text source screens 122→143. Dissertation metadata counts are separate from article/work screen counts and from the original 20 complete dissertation reviews.
 
-`works.json` supplies seed links, exact acquisition outcomes, source hashes and version/date notes. `screening.json` records exclusions and requirement evidence. Current-resolution checks and Lean proof discovery for the eight directions remain unassessed; no theorem or historical-priority claim is made. Sources are linked and copyrighted full texts remain in ignored local storage. HTML extraction line numbers belong to the saved copy; PDF viewer pages include publisher cover sheets.
+Sources have versions, exact locators and hashes. F134's hash identifies a complete author-uploaded web transcription, not original PDF bytes. Copyrighted bodies remain in ignored storage. Current resolution, Lean discovery and implementation difficulty for the added directions remain unassessed; no mathematical result or priority claim is made.
 
-Rebuild reports with `python3 scripts/build_unl_sem_report.py`, `python3 scripts/build_open_problem_report.py`, and `python3 scripts/build_current_difficulty_report.py`. Validate with `python3 scripts/validate_unl_sem_seed.py`, `python3 scripts/validate_open_problems.py`, `python3 scripts/validate_current_difficulty.py`, and `python3 scripts/validate_literature.py`. The new validation checks seed coverage, source/target links, null-versus-zero distinctions, hashes when local copies exist, and the exact cohort delta.
-
-No new social theory was added to the mathematical inventory. No author-stated empirical question was relabeled a conjecture. The three proposed implementation starting points in `FORMALIZATION.md` remain outside the canonical question count.
+Rebuild with `python3 scripts/build_unl_sem_report.py`, `python3 scripts/build_open_problem_report.py`, and `python3 scripts/build_current_difficulty_report.py`. Validate with `validate_unl_sem_seed.py`, `validate_open_problems.py`, `validate_current_difficulty.py`, `validate_literature.py`, `validate.py`, and `git diff --check`. The original first-pass audit is preserved in `FIRST-PASS.md`; current cohort requirements are in `screening.json` and `cfa-expansion.json`.
 '''
 (D/'README.md').write_text(text)
-print('Rendered SEM seed, downstream works and suitability report.')
+newids=set(exp['added_seed_ids']);newworks=set(exp['new_work_ids']);newqs=set(exp['new_target_ids'])
+detail=f'''# CFA and measurement-model expansion
+
+Continuation of [issue #5](https://github.com/alectionary/vibe-math/issues/5) and [PR #6](https://github.com/alectionary/vibe-math/pull/6), October 26, 2026.
+
+**41 missed/related dissertations added: 31 core SEM/CFA/growth/path/measurement records and 10 adjacent IRT/latent-class/exploratory-factor records.** All 41 added authors received targeted downstream searches. {exp['new_discovery_queries']} additional discovery/identity/copy queries include {exp['vocabulary_queries']} vocabulary queries. The pass adds 13 source works, 7 complete full-text screens and 2 gated statistical methods directions. It also links new seed author Abdullah Ferdous to the existing F118 coauthored paper without duplicating it.
+
+Abbott's 2010 dissertation is included as UNL-SEM-D067, merging cehsdiss/68 and AAI3402936. Its use of CFA makes it a valid core candidate even though the abstract did not use the literal phrase structural equation modeling. Its body remains unavailable here; two independent later papers explicitly citing it were retrieved and screened. Those are not Abbott-authored publications.
+
+## New source-supported mathematical directions
+
+F132 asks for work on the generalizability and selection sensitivity of reduced-item Angoff passing-score estimates. A mathematical formulation needs the item/judge matrix, sampling/stratification scheme and accuracy criterion. The observed 50% subset result is not a universal guarantee. The inspected 2003 conference source precedes Ferdous's 2005 dissertation; its later 2005 journal version is recorded separately as a version lead.
+
+F134 proposes evaluating latent-model detection of interpretation variability in vague response categories. The formalizable core concerns ordinal/factor-mixture models and detection/identification conditions, with empirical demographic and population questions excluded. It explicitly cites Marincic (2011); a surname alias is not assumed. The full author-uploaded transcription, including references, was retrieved in 12 overlapping views with continuous coverage of web lines 56–1799, and the saved text has its own hash.
+
+Both entries are method directions, not precise theorem claims. They leave the eligible-target denominator unchanged.
+
+## Added dissertations
+
+| ID | Year | Dissertation | Family |
+| --- | --- | --- | --- |
+'''
+for s in seed:
+ if s['id'] in newids:detail+=f'| {s["id"]} | {s["year"]} | {esc(s["author"])} — [{esc(s["title"])}]({s["url"]}) | {esc(s["family"])} |\n'
+detail+='\n## Source works recovered through the added authors\n\n| ID | Work | Relationship | Screen |\n| --- | --- | --- | --- |\n'
+for w in works:
+ if w['id'] in newworks:detail+=f'| {w["id"]} | [{esc(w["title"])}]({w["url"]}) | {esc(w["relationship"])} | {w["screen_status"]} |\n'
+detail+='''
+## Scope checks, exclusions and remaining access
+
+The candidate ledger records rejected document types, pre-2001 dates, duplicate aliases, exploratory-only leads, proposed-but-unexecuted CFA and unrelated physical-science/regression keyword hits. These are not hidden zero-question papers. The 10 adjacent records remain labeled separately from the 89 core records.
+
+No dissertation body was recovered: all 41 added primary routes returned403; Abbott's CORE routes, Frohn's indexed PDF copy and Bentz's CiteSeer copy also failed. Public-copy records and readable PDF access remain distinct. Six added source works have full-text gaps. Native publisher metadata pages were not counted as full texts solely because they contained references or many characters.
+
+The new full-text screens excluded empirical scale validation, race/ethnicity DIF in observed student samples, developmental/sociocultural questions, clinical causal ordering and fertility-attitude associations. No such question is relabeled a mathematical conjecture.
+
+The repository's source records, shared inventory, planning gates and generated reports are updated together. The dated first-pass baseline is preserved. PR review and merge remain with the user.
+'''
+(D/'CFA-EXPANSION.md').write_text(detail)
+print('Rendered current SEM/CFA registry and CFA expansion report.')
