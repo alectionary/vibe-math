@@ -2368,7 +2368,7 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ThroughNine.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ClassicalTransport.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/EntryTestTransport.lean).
-- Research progress: [Second bounded distance-12 formalization block](../formalization/distance-preservation/truncated12/ROUND2.txt) (general lean source geometry and partial closed catalog replay). Second authorized block develops actual weight-ten/eleven source support encodings and quantified finite coverage toward min(D,12); the exact main theorem remains incomplete. The previous complete min(D,10) theorem is preserved. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.
+- Research progress: [Second bounded distance-12 formalization block](../formalization/distance-preservation/truncated12/ROUND2.txt) (general lean complete bounded source distance theorem). The bounded strengthened criterion now has a general Lean Pauli bound min(D,12), with actual source supports, both full stabilizer spans, all finite certificates and source distance minima. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.
   - [Complete Lean source](../formalization/distance-preservation/truncated12/Coverage11.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/CatalogExclusion11.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/SupportPairs.lean).
@@ -2391,10 +2391,13 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/truncated12/CountCanonical.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/SourceTen.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/TwelveConditional.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/Coverage10.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ThroughEleven.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/DistanceMinima.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/DistanceTwelve.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/CriterionScope.lean).
 - Project-derived follow-up, outside the source-target denominator: **RQ-F25-exclude-mixed-patterns** — Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned.
-- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Second four-hour formalization block active; completed source bridges and remaining catalog/main-theorem coverage are recorded in truncated12/verification.json.
+- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Completed bounded min(D,12) follow-up in general Lean; the broader source equality question remains open.
 - [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
 - Related, not merged: L-P34-logical-partitions, L-P34-base-design.
 

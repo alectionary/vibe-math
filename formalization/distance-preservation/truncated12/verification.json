@@ -1,17 +1,24 @@
 {
-  "checked_utc": "2026-10-26T03:02:19.947650+00:00",
-  "round_status": "in_progress",
+  "checked_utc": "2026-10-26T03:46:44.320002+00:00",
+  "round_status": "closed_with_completed_bounded_followup",
   "canonical_target_id": "L-F25-distance-preservation",
   "bounded_followup_id": "RQ-F25-truncated-distance-12",
   "issue": "https://github.com/alectionary/vibe-math/issues/1",
   "study_round": 2,
   "study_started_utc": "2026-10-26T01:40:59Z",
   "deadline_utc": "2026-10-26T05:40:59Z",
-  "main_source_distance_theorem_completed": false,
-  "completed_bounded_followup": null,
+  "main_source_distance_theorem_completed": true,
+  "completed_bounded_followup": {
+    "bound": "dQ >= min(dC,12)",
+    "pauli_theorem": "source_pauli_bound_twelve",
+    "pauli_source": "ThroughEleven.lean",
+    "distance_theorem": "source_distance_bound_twelve",
+    "distance_source": "DistanceTwelve.lean",
+    "scope": "Arbitrary positive cyclic modulus, normalized fully populated monomial3x4 base, classical no-four/no-six, exact column/triple-row tests, transpose distance at least classical distance, both full spans and ordinary Pauli union weight. The broader full-equality question is not settled."
+  },
   "canonical_completion_delta": 0,
   "full_canonical_lean_completion_delta": 0,
-  "claim_boundary": "The min(D,10) theorem is complete. Current min(D,12) source reduction and case coverage remain explicitly separated; no unconditional stronger result is claimed until every required source and finite-coverage proof passes.",
+  "claim_boundary": "General Lean truncated distance12 theorem completed, including actual support coverage and literal source minima; broader dQ=dC remains open.",
   "independent_integer_replay": {
     "status": "PASS",
     "patterns": 183312,
@@ -33,7 +40,7 @@
     },
     "10": {
       "expected_patterns": 124416,
-      "admitted_patterns": 80000,
+      "admitted_patterns": 124416,
       "admitted_intervals": [
         [
           0,
@@ -344,66 +351,200 @@
           77000
         ],
         [
+          77000,
+          78000
+        ],
+        [
+          78000,
+          79000
+        ],
+        [
+          79000,
+          80000
+        ],
+        [
+          80000,
+          81000
+        ],
+        [
+          81000,
+          82000
+        ],
+        [
+          82000,
+          83000
+        ],
+        [
+          83000,
+          84000
+        ],
+        [
+          84000,
+          85000
+        ],
+        [
+          85000,
+          86000
+        ],
+        [
+          86000,
+          87000
+        ],
+        [
+          87000,
+          88000
+        ],
+        [
+          88000,
+          89000
+        ],
+        [
+          89000,
+          90000
+        ],
+        [
+          90000,
+          91000
+        ],
+        [
+          91000,
+          92000
+        ],
+        [
+          92000,
+          93000
+        ],
+        [
+          93000,
+          94000
+        ],
+        [
+          94000,
+          95000
+        ],
+        [
+          95000,
+          96000
+        ],
+        [
+          96000,
+          97000
+        ],
+        [
           97000,
           98000
+        ],
+        [
+          98000,
+          99000
+        ],
+        [
+          99000,
+          100000
+        ],
+        [
+          100000,
+          101000
+        ],
+        [
+          101000,
+          102000
+        ],
+        [
+          102000,
+          103000
+        ],
+        [
+          103000,
+          104000
+        ],
+        [
+          104000,
+          105000
+        ],
+        [
+          105000,
+          106000
+        ],
+        [
+          106000,
+          107000
         ],
         [
           107000,
           108000
         ],
         [
+          108000,
+          109000
+        ],
+        [
+          109000,
+          110000
+        ],
+        [
+          110000,
+          111000
+        ],
+        [
+          111000,
+          112000
+        ],
+        [
+          112000,
+          113000
+        ],
+        [
+          113000,
+          114000
+        ],
+        [
+          114000,
+          115000
+        ],
+        [
+          115000,
+          116000
+        ],
+        [
+          116000,
+          117000
+        ],
+        [
+          117000,
+          118000
+        ],
+        [
+          118000,
+          119000
+        ],
+        [
+          119000,
+          120000
+        ],
+        [
+          120000,
+          121000
+        ],
+        [
           121000,
           122000
+        ],
+        [
+          122000,
+          123000
+        ],
+        [
+          123000,
+          124000
+        ],
+        [
+          124000,
+          124416
         ]
       ],
-      "pending_modules": [
-        "F10_077",
-        "F10_078",
-        "F10_079",
-        "F10_080",
-        "F10_081",
-        "F10_082",
-        "F10_083",
-        "F10_084",
-        "F10_085",
-        "F10_086",
-        "F10_087",
-        "F10_088",
-        "F10_089",
-        "F10_090",
-        "F10_091",
-        "F10_092",
-        "F10_093",
-        "F10_094",
-        "F10_095",
-        "F10_096",
-        "F10_098",
-        "F10_099",
-        "F10_100",
-        "F10_101",
-        "F10_102",
-        "F10_103",
-        "F10_104",
-        "F10_105",
-        "F10_106",
-        "F10_108",
-        "F10_109",
-        "F10_110",
-        "F10_111",
-        "F10_112",
-        "F10_113",
-        "F10_114",
-        "F10_115",
-        "F10_116",
-        "F10_117",
-        "F10_118",
-        "F10_119",
-        "F10_120",
-        "F10_122",
-        "F10_123",
-        "F10_124"
-      ],
-      "all_closed_cases_admitted": false
+      "pending_modules": [],
+      "all_closed_cases_admitted": true
     },
     "11": {
       "expected_patterns": 58752,
@@ -654,6 +795,7 @@
     "ActualIncidence": {
       "status": "PASS",
       "source_sha256": "f87574d6fa7152f97bb77b4e7371e68a40e34d882f872cea3171f4973aba62ce",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ActualIncidence.json",
       "log_sha256": "3e69af554aee22460aa93604e8baa53352d6be67599fe9d9e7c96e9ea6701938",
@@ -668,6 +810,7 @@
     "BlockCounts": {
       "status": "PASS",
       "source_sha256": "a13847bf42fd93169168bad81dcb44ebc4c309e6e3cfbabfb3130433e1739c01",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/BlockCounts.json",
       "log_sha256": "fcfc307f21dca5bc49f07a56bc2e8a326465c872f5a84a2cc01b828d9acc9dbd",
@@ -682,6 +825,7 @@
     "BlockParity": {
       "status": "PASS",
       "source_sha256": "5e58946c3186eb660a0c4c265e65263e7c68583c36f7e5fce37fe555a705c620",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/BlockParity.json",
       "log_sha256": "b6e768752de55003d67ff448857fbd0ee115c13ff0abafed19713e561a2a0287",
@@ -696,6 +840,7 @@
     "BucketCounts": {
       "status": "PASS",
       "source_sha256": "05287805e7f3b95d405df52be570984355b58966a2537a493b20cb8399e7b3c8",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/BucketCounts.json",
       "log_sha256": "377aff5409864f2fd18af0b56a3ad3b93b37acc681cf2c8e58be780c1ead3029",
@@ -710,6 +855,7 @@
     "BucketSums": {
       "status": "PASS",
       "source_sha256": "a8edb86e32edcb0514c286913aead763fc941e794dfa5c8e56bd20cad396515b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/BucketSums.json",
       "log_sha256": "98d46b8b331b0969d822c6320727e046a9390b59f5f673b7918256d22f9fe43b",
@@ -722,12 +868,20 @@
       "seconds": 91.849553875
     },
     "Catalog10": {
-      "status": "not_checked",
-      "source_sha256": "e9c8c9355ce0dccfba8ca8c2a6698d7d1a5b1f398417c94d1f0ebfb7e3ba3bcc"
+      "status": "PASS",
+      "source_sha256": "e9c8c9355ce0dccfba8ca8c2a6698d7d1a5b1f398417c94d1f0ebfb7e3ba3bcc",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/Catalog10.json",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:43:25.474311+00:00",
+      "seconds": 1.298826582962647
     },
     "Catalog11": {
       "status": "PASS",
       "source_sha256": "ac32f37aa5896b73fc5e22a3ecb18ca38777634895488cad08e6f6566c493a91",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/Catalog11.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -738,6 +892,7 @@
     "Catalog7": {
       "status": "PASS",
       "source_sha256": "7d763c792995bb7dc129f9f1a324fecdeabe2bc0f6feef27c0c54f9e1d414cdc",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/Catalog7.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -748,6 +903,7 @@
     "CatalogChecker": {
       "status": "PASS",
       "source_sha256": "1d3939a13c04084fb90a6d263124794f07feb669ff741160d10d5130f922122b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CatalogChecker.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -758,6 +914,7 @@
     "CatalogExclusion11": {
       "status": "PASS",
       "source_sha256": "d0dbd2d3ff0aec2d2205f6c8f957668715e4712428a5173510b3b77e86d1d170",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CatalogExclusion11.json",
       "log_sha256": "40fa96e34344db43a3366ff92b03bc79988e3b05a59af7f6c6f2aafad539aaa5",
@@ -772,6 +929,7 @@
     "CatalogTables": {
       "status": "PASS",
       "source_sha256": "193d9b778cbb23a5add2c455ef35a8ac4791255eae4199abb1a8b76faf39c213",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CatalogTables.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -782,6 +940,7 @@
     "ClassicalTransport": {
       "status": "PASS",
       "source_sha256": "b289805c5734ca084ca2a34b4521e390ffdb12febe7a8dfd278c283809dadc29",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ClassicalTransport.json",
       "log_sha256": "aeb73bd8115ee7471b2f0f251f216c7e45f14c42913046f36295aa12cb60d3d9",
@@ -796,6 +955,7 @@
     "ConstantRows": {
       "status": "PASS",
       "source_sha256": "98a7739aa8740efd598084df5d95d5d1301f0598365a0b131b2b02dca69a3609",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ConstantRows.json",
       "log_sha256": "c2ba4920ab78be341f63b4b053e4bd5992a7b9ec0339ba485e5603e4c6c8296b",
@@ -810,6 +970,7 @@
     "CountCanonical": {
       "status": "PASS",
       "source_sha256": "a99b4461e46fb73d821a5c9a0242f12ec697bd0d78bb6f00bb7b368851e96aad",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CountCanonical.json",
       "log_sha256": "e938b059aa2fb251aab5610d8e736be3dc1752f190fca5a24ff078a2c35b7229",
@@ -824,6 +985,7 @@
     "CountPatterns": {
       "status": "PASS",
       "source_sha256": "dcdede55d861c40421a3183abf9f5b48af5d6621b22143f42a1d3fffe95c0225",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CountPatterns.json",
       "log_sha256": "0846739d756c7a1fe1075b09b893e428a0295bb2dccd919198b4ee76f1bfd815",
@@ -835,12 +997,23 @@
       "seconds": 89.881476875
     },
     "Coverage10": {
-      "status": "not_checked",
-      "source_sha256": "10d6e22ff4e963ea4234f3ff74f9f91e533ebcb8f79c75278539fa8820974fb3"
+      "status": "PASS",
+      "source_sha256": "10d6e22ff4e963ea4234f3ff74f9f91e533ebcb8f79c75278539fa8820974fb3",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/Coverage10.json",
+      "log_sha256": "ee4f8442544d6b1717ceb0e9d5bc5e6a427034aedfdf3ae18cc7a37d0c60e229",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "finished_utc": "2026-10-26T03:44:36.018496+00:00",
+      "seconds": 70.54282149998471
     },
     "Coverage11": {
       "status": "PASS",
       "source_sha256": "66221be646396b8a1ee89ba3dc57fb266cd75b7de523882d1d4beaeaa92ab8b4",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/Coverage11.json",
       "log_sha256": "7de0867b369c55f81d8a37689640e7aa5112ac664b7c811f8046720939986933",
@@ -854,6 +1027,7 @@
     "CoverageCore": {
       "status": "PASS",
       "source_sha256": "1819d5e43cf7ccffb68702325984c586b1489b8d05afb3ec9f846a2f46cbb816",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CoverageCore.json",
       "log_sha256": "2be6e802241fc462e93848360dd440e23b72f481eef8e742d7348e9ae381afaf",
@@ -867,6 +1041,7 @@
     "CriterionScope": {
       "status": "PASS",
       "source_sha256": "e1be1afe0de24a4e5d3359819fcdf9be4d700bd230db8374499660244208b1b2",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/CriterionScope.json",
       "log_sha256": "30cdc44233b75008911cefbba25fc1890e9947dcac784c2d709363491dd01717",
@@ -880,6 +1055,7 @@
     "DistanceMinima": {
       "status": "PASS",
       "source_sha256": "3d0252d06fd5e14c7099863458ae953f86c049f49d1e7ac4eb4157cad1873478",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/DistanceMinima.json",
       "log_sha256": "d13629265d9b7c6c5f4b97ecff84b0c9e2a420d982c00bd5850c10497d80914e",
@@ -892,12 +1068,24 @@
       "seconds": 97.62464241600003
     },
     "DistanceTwelve": {
-      "status": "not_checked",
-      "source_sha256": "aa48711fd94f4d4150fb9a99d2c7856c7120e06611c84731d62c38ce916d7413"
+      "status": "PASS",
+      "source_sha256": "aa48711fd94f4d4150fb9a99d2c7856c7120e06611c84731d62c38ce916d7413",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/DistanceTwelve.json",
+      "log_sha256": "bbdf156a1a756f07a4a31c1fd1db3283cadef42312742ed43820a80838d8c29b",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "finished_utc": "2026-10-26T03:46:38.346638+00:00",
+      "seconds": 63.12675341696013
     },
     "ElevenEncoding": {
       "status": "PASS",
       "source_sha256": "766b3d003d939b82ac308a812d5477b77e89ef58d28d4a1d3de582b26e972018",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ElevenEncoding.json",
       "log_sha256": "bb0e42b7a2f349acc87e54c812f5bddc1b6382984d0f9d034c5e343f3a938d74",
@@ -912,6 +1100,7 @@
     "ElevenGeometry": {
       "status": "PASS",
       "source_sha256": "9c3caeb87e516996af354276e85130f89b7a6e7a47b79a672f7224ef581d16ff",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ElevenGeometry.json",
       "log_sha256": "894ca62be0d7c1d33e9590c8feba0d30c81516cd61d47efa3be15feaa92f989f",
@@ -926,6 +1115,7 @@
     "ElevenIndex": {
       "status": "PASS",
       "source_sha256": "7218912cea3048ae95e34fefb955472e629f758c0925b5769e60374933ebce10",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ElevenIndex.json",
       "log_sha256": "e6dfa1a0f2ffa58677342fa986364a96e809639756d2215f90311cd28b04ea16",
@@ -939,6 +1129,7 @@
     "ElevenRealization": {
       "status": "PASS",
       "source_sha256": "2315da93716a5e47df42726160a8908152d0ad7803d610390062feed0bb7b561",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ElevenRealization.json",
       "log_sha256": "509b988ffb7e69cd8481a7b33b76420e8478d8bfec17e8780e768508cf77cf32",
@@ -953,6 +1144,7 @@
     "EntryTestTransport": {
       "status": "PASS",
       "source_sha256": "48e851189ac333e927da2d62b656f3c8455cee3913117f9cc1f68c65f87542c3",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/EntryTestTransport.json",
       "log_sha256": "6b89aa0497de7c972ed89e8a8202c552a2ba3716b71c817a377f7fd66e032525",
@@ -966,6 +1158,7 @@
     "ExceptionalGraph": {
       "status": "PASS",
       "source_sha256": "72ffcc5c7bc0ec6dfc57a377f920535a7f284bb7b454d1b6727db9869ce5071d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ExceptionalGraph.json",
       "log_sha256": "3c26163ae4d715acc42dcf564d2c88c9d6251b621e6ccf5be3c831eb0b15441a",
@@ -980,6 +1173,7 @@
     "FastCatalogChecker": {
       "status": "PASS",
       "source_sha256": "913e7d3facb7a0f18821979e69072aaa76d6275c7a32fd51a1b45027bc8f3ccb",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/FastCatalogChecker.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -990,6 +1184,7 @@
     "FiniteLabels": {
       "status": "PASS",
       "source_sha256": "297a2920973fed0048174c7059f7c10499c465d16f7f4dfb7a6a3ef073393914",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/FiniteLabels.json",
       "log_sha256": "ce15de591c310347a1d269b57188bcd341ede2759c63f117694c2d6645906143",
@@ -1004,6 +1199,7 @@
     "GaugeTransport": {
       "status": "PASS",
       "source_sha256": "b1aa9a37eefedff52a5d324f2b4c692ed0a53310c26d7a5488b4fec9f26e3b1d",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/GaugeTransport.json",
       "log_sha256": "780b8783a483b6a9c1ccc1f0b9f80289f28b4f12899ead570f35af20c9e9404d",
@@ -1018,6 +1214,7 @@
     "GaugeWeight": {
       "status": "PASS",
       "source_sha256": "322278260c17141a58b0f48bc200e9e936ceb2c25906da2b0e33ccbbd4fd9dd9",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/GaugeWeight.json",
       "log_sha256": "90c5a24a046d1f5333d4170383be8c7dba1fe09d1e150fd0dac774b76ea9da1a",
@@ -1032,6 +1229,7 @@
     "GeneralSymmetry": {
       "status": "PASS",
       "source_sha256": "f3ee7f5e3aca6cc2d8c36432174b6cbff284365a8b215f535acb773d9cf69a87",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/GeneralSymmetry.json",
       "log_sha256": "b088bbb50cd378a3413ca70dacf9d366064955fec2790011e704369b4478edc1",
@@ -1046,6 +1244,7 @@
     "GroupTransport": {
       "status": "PASS",
       "source_sha256": "5768cf2fc65559d25f44162d2eeda3b8a3eded5ff55a682b18c09d49ef403283",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/GroupTransport.json",
       "log_sha256": "b516f0239b3b8de298cae6c14acd6a5ebcf87f20fc81cb7a0d575dcea147d57c",
@@ -1060,6 +1259,7 @@
     "IntegerSoundness": {
       "status": "PASS",
       "source_sha256": "0ec522975095ae52d8ab4df150d23469a01509070d72cc50ba652608054cf265",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/IntegerSoundness.json",
       "log_sha256": "bf5e048d6c3251e8f9f3426fbc4655f05ac2a4f3ad58fb7861c8472c77893b86",
@@ -1074,6 +1274,7 @@
     "K23Colors": {
       "status": "PASS",
       "source_sha256": "3862d946e4b06f6598bcc9b65b2fec5a43835b9a9b778d7f7ca9348c19532b0c",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/K23Colors.json",
       "log_sha256": "f9287d4a41eac1342aa26b985d7e7c2e904ce2ded27a7160adc1c09c23e0786e",
@@ -1088,6 +1289,7 @@
     "K23LeafMatches": {
       "status": "PASS",
       "source_sha256": "97e84a1f39b7bd625cdef4458902b70fb88135e0980a9da16eb4829e14f48062",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/K23LeafMatches.json",
       "log_sha256": "2f87c57822c66da9bdf0b7514edd51d7f67478d2cf5fcfe1b3c7195f5324226f",
@@ -1102,6 +1304,7 @@
     "K23MissingRows": {
       "status": "PASS",
       "source_sha256": "6deb3f7a76d13dc3fc7387d12fa440fa49aafba434fad907cbb7bb43ee1cadac",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/K23MissingRows.json",
       "log_sha256": "5ee88eb735b6c705fc7109a258cf160553d4864a155b3687faa1e028ec7a1ff7",
@@ -1116,6 +1319,7 @@
     "K23Numbering": {
       "status": "PASS",
       "source_sha256": "41fc10c7c61b1acfa73256a65b8a94c2048f12d8e2c4eb7a6de71a17797aee8f",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/K23Numbering.json",
       "log_sha256": "a6e6d05561ce78bd130a238d14bf8c360ddc097f8dc82cce5355e4e0d8091d58",
@@ -1130,6 +1334,7 @@
     "KernelCatalog": {
       "status": "PASS",
       "source_sha256": "4a8e2c8657e1e77021efd52db5bbd6278aec91765056b25c915136be02e68130",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/KernelCatalog.json",
       "log_sha256": "91d036d8bbc079bc5468d91297923f67610a06424fa4be18f024022178723627",
@@ -1144,6 +1349,7 @@
     "ListCatalogChecker": {
       "status": "PASS",
       "source_sha256": "9245cdba81c1b42e0e651ff412c4f98646eaecf7a1e6b0057fcd4c7f6c95b253",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ListCatalogChecker.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1154,6 +1360,7 @@
     "LocalMantel": {
       "status": "PASS",
       "source_sha256": "7de9f55797ad4677c4a3e6ba40c060d9180772b80f60fd2d14b333c75bef7184",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/LocalMantel.json",
       "log_sha256": "de702a655924eac4a8e0de7b1b66203819fed3d17ee1b07e85052c1c16eb6e27",
@@ -1168,6 +1375,7 @@
     "MatchingRows": {
       "status": "PASS",
       "source_sha256": "cdcce87cc3ad8902a80f6b08ddfbdda79c4c88d81f7ffc6b66b4aa1d094e91c4",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/MatchingRows.json",
       "log_sha256": "d2020273a802ec853ee4da5e084f70900962756b48a322bd7cd114edb55ad217",
@@ -1182,6 +1390,7 @@
     "NormalGraph": {
       "status": "PASS",
       "source_sha256": "b06e4fe78b48a1fe019fa64ac2ae5655ed5c0206547b8d2a4d632e6b5a97f9cf",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/NormalGraph.json",
       "log_sha256": "bc4d94def57367211c362d7bdba0afa9e8b65c21b4c57a343ef666a24c2910f4",
@@ -1196,6 +1405,7 @@
     "Normalization": {
       "status": "PASS",
       "source_sha256": "2d62ae2c29aa2918cfcb4f3ae3990e0af87847a64c18618f56913718dab5998e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/Normalization.json",
       "log_sha256": "fe0ceeffd0d8513ba5e410f98ef45d7de4a21c7420f7b54dd40de18b655ca109",
@@ -1209,6 +1419,7 @@
     "PackedTables": {
       "status": "PASS",
       "source_sha256": "8814b6c34f5075c77984bb1ba54332a5788f39c65affee3c69032ec1b56544cd",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PackedTables.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1219,6 +1430,7 @@
     "PackedTablesAudit": {
       "status": "PASS",
       "source_sha256": "2753441ea56aa553ade9e8bbe5ea25d129e4c6f3cd218961722b11a507deef5d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PackedTablesAudit.json",
       "log_sha256": "aa1e4d95e5c3a082484ac66a607ea3b10e6bc9d22746f43efbf87c3685cefb38",
@@ -1229,6 +1441,7 @@
     "PairMatching": {
       "status": "PASS",
       "source_sha256": "fa0e6cb70176bf45b613c2565a3ee3dfb971db3c0bfb35918a683c82a5dbf611",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PairMatching.json",
       "log_sha256": "197442787904708630420c2e774371db0f6d0dd1b958ced7d6de1de110e9d158",
@@ -1243,6 +1456,7 @@
     "PatternRealizations": {
       "status": "PASS",
       "source_sha256": "62af41b5cf39dbdc9fb02eed1c33a7457d52d15f4d05820c97f5bde2fbbdf9dd",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PatternRealizations.json",
       "log_sha256": "517670fc3161d226437002f3a776d1b140ac27645c5420c91c48c31169572b0a",
@@ -1257,6 +1471,7 @@
     "PauliBridge": {
       "status": "PASS",
       "source_sha256": "2e766891a0f9f370e6f46bb58550c03f674964ef28fd098656c3d8cfaba4f1f7",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PauliBridge.json",
       "log_sha256": "739464e80e326ab0de19b4250d07b75e3b451088a29cde275e9a640658ec82e6",
@@ -1271,6 +1486,7 @@
     "PermuteSource": {
       "status": "PASS",
       "source_sha256": "990aed1cc0bc927a276247b63a872916da61b0067685f67d207729a769327180",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PermuteSource.json",
       "log_sha256": "62cd1e2531c78c8452de425bc24c4b16605a5284188e9970ea7be4a0e150c15f",
@@ -1285,6 +1501,7 @@
     "ProfileTransport": {
       "status": "PASS",
       "source_sha256": "fbd68aa217030a74957ac9ddded836cf9439b41a81012bc65d7fd79702d3d32a",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ProfileTransport.json",
       "log_sha256": "928d85ee6762e84067f9bea5f1f95965e752cd26c7055aa6b09429098981eee7",
@@ -1299,6 +1516,7 @@
     "PureDistance": {
       "status": "PASS",
       "source_sha256": "47286ee71ab1a26051922715c690a4ae8d4fa068575706fccdb1899f20d06c38",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/PureDistance.json",
       "log_sha256": "d56ab31a18e3c33d890d517f626fa19873111c160d8be8a82c7a6a02dbc742fc",
@@ -1313,6 +1531,7 @@
     "RowCancellation": {
       "status": "PASS",
       "source_sha256": "e318eb72c2b38c41a15961c092013374976becc91bdceda93a94023d39337c87",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/RowCancellation.json",
       "log_sha256": "0235474aedbbc93c10873a94c83beeae2d32fc9aaa78f50333c1f84b2f111e3c",
@@ -1327,6 +1546,7 @@
     "SingletonLabels": {
       "status": "PASS",
       "source_sha256": "2cf6b0abe805aa5fb36bd131ca246db22d0f9249685b60804cd4bc2f553af8b4",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SingletonLabels.json",
       "log_sha256": "4df2629eb8594835804351e443a357b5af15aecb68e15092965973c4ed47fd6a",
@@ -1341,6 +1561,7 @@
     "SocketArithmetic": {
       "status": "PASS",
       "source_sha256": "6ab20e9855b01a97b89a80a2dcc9648d50f4d063f2acc9e0328878b94e996848",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SocketArithmetic.json",
       "log_sha256": "18029dbdb221aa351fd11e51c4fd97499132509a91125a8e732c19b835eb295f",
@@ -1355,6 +1576,7 @@
     "SocketEdges": {
       "status": "PASS",
       "source_sha256": "68a796c5671756c18fe9f7c5bf8334fec4e2adc2722ea54f074a453d3baae60e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SocketEdges.json",
       "log_sha256": "ba368d1e6aec0ce3b598edb7ff491ed727990502c7262fe2dd3fad38e3b00122",
@@ -1369,6 +1591,7 @@
     "SourceCycleFacts": {
       "status": "PASS",
       "source_sha256": "0ec276694bb56e4470f5cfbab62d9191474ea765b85e38f60b848587b3f77677",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourceCycleFacts.json",
       "log_sha256": "800f9a012866be68d7effe5db90f3141672206f9f5bca1f2a24e4b2fa44dd628",
@@ -1382,6 +1605,7 @@
     "SourceEleven": {
       "status": "PASS",
       "source_sha256": "9dd2a5a9d2b44a0925f1adf872a60506db747a9789ed7cd7cb2badfd4dd36937",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourceEleven.json",
       "log_sha256": "bc92620343f7f24f69a92e82783b2b6366faa9eaff4f284e7d75ad098e6a5953",
@@ -1396,6 +1620,7 @@
     "SourceNormal": {
       "status": "PASS",
       "source_sha256": "0e7342e3c9c71465a47db885869f689e39f76f48f0a295ce0e05e2e8bdb22d99",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourceNormal.json",
       "log_sha256": "43351f6292e30c5c64cdc54a75462e042fbf22254c97fae3b8a7dbfabdbe9560",
@@ -1410,6 +1635,7 @@
     "SourcePartners": {
       "status": "PASS",
       "source_sha256": "8b4c2ffc70e9b0abb85ca3add4b55b871475aec64724b21a4dfe34be568b5f4e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourcePartners.json",
       "log_sha256": "e7c0abfc554b5c2dba195418092946208134a6ecc434bf859e4562d1d82ca1a0",
@@ -1424,6 +1650,7 @@
     "SourceProfiles": {
       "status": "PASS",
       "source_sha256": "727b0a1b73f71ba7243ba5bb5f159beb363f58c226e7f12f4f98b2d52d29709f",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourceProfiles.json",
       "log_sha256": "b3c9f1de7ae639a7b62d9d2105d993ae1fdfdd4b1726f8e23867c2666e1498ee",
@@ -1438,6 +1665,7 @@
     "SourceSeven": {
       "status": "PASS",
       "source_sha256": "fa93e284cbe2fc3706375f8726274a8f017c7c6ce2212704f4591995086e445b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourceSeven.json",
       "log_sha256": "3d108ecf93891345cce42207633086e34330183394525f527cedf02fe8166ff7",
@@ -1452,6 +1680,7 @@
     "SourceTen": {
       "status": "PASS",
       "source_sha256": "d6902c179437ecea98cbc4b27515cc3a032b647a02ded90ed92992403e3b94e5",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SourceTen.json",
       "log_sha256": "133e50c53569a6a9418efbcaf3e998c83fdc657a6feb4ed3ba561cec88148489",
@@ -1466,6 +1695,7 @@
     "SpanCoefficients": {
       "status": "PASS",
       "source_sha256": "717f7c9c5ccab731c693cf7d084bcb18e2b0b83c3468af66a624423c329666f6",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SpanCoefficients.json",
       "log_sha256": "f70eb8b39fbfb0fd254c642ee275af5a6e4573189f7d8c6638fa3958c5a439b5",
@@ -1480,6 +1710,7 @@
     "SparseCatalogChecker": {
       "status": "PASS",
       "source_sha256": "4d982a105cb78627d28eb5fe8d6b09cf43a9f3a8038fee16b6ebefee920446f0",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SparseCatalogChecker.json",
       "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1490,6 +1721,7 @@
     "SupportPairs": {
       "status": "PASS",
       "source_sha256": "106a0c2cc4af167a08a55749de85ca3e5f61811cfdbf6f2954aabd2aed9dbc5e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SupportPairs.json",
       "log_sha256": "964664241232e8355f6a50302383582289a90d915403a0ab5e182943c648481f",
@@ -1504,6 +1736,7 @@
     "SupportSingletons": {
       "status": "PASS",
       "source_sha256": "7ef7d476954033a71df88fa7c77426709c280d9c4242d1b1f9cca0d8b9059753",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/SupportSingletons.json",
       "log_sha256": "f06ab8b2d7b466e764f23348a0c215b9068049302fcadc71792909083f83b2a6",
@@ -1518,6 +1751,7 @@
     "TargetObstructions": {
       "status": "PASS",
       "source_sha256": "605390e11f217d03c56c61f885db8c663c778877b055d685c7a7ad84ae206859",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TargetObstructions.json",
       "log_sha256": "f12035ed405eff33a630b5d6aa5838866278932c0d833a3bf5b3785208b716a5",
@@ -1532,6 +1766,7 @@
     "TenEncoding": {
       "status": "PASS",
       "source_sha256": "023cf2791461eadcd2aff1b549af3566e892f0571043c5e7519e5b6809347e77",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TenEncoding.json",
       "log_sha256": "b1bfc777d3d0f492c357811d49afe8787a1eefdb4b92fce769b3b81e3fa3effc",
@@ -1546,6 +1781,7 @@
     "TenGeometry": {
       "status": "PASS",
       "source_sha256": "f978db04ccd676d3c0a2080a7f3d3ca31ed321f583badaf22bb59535a22a9476",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TenGeometry.json",
       "log_sha256": "b8459d6ec6f030ef7d3f2833ceb5ff8c2816d6b7987d1426ac50b76911c1483d",
@@ -1560,6 +1796,7 @@
     "TenIndex": {
       "status": "PASS",
       "source_sha256": "b1c1a1a16b78563646e34ffccc0d3d7572e59972fedd2f03291204620b3224fa",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TenIndex.json",
       "log_sha256": "5c0a42a71b91a0c97a7a12dc42a09a5ca2206fcd0658abb8377af0344f9ef79f",
@@ -1574,6 +1811,7 @@
     "TenRealization": {
       "status": "PASS",
       "source_sha256": "d6ca7703a3c3ad558ba53881743f5c23d9122c048f0363474afef0ab3a42c670",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TenRealization.json",
       "log_sha256": "45328bbde1a807491ccbe0a91ee9f4f3c81377e29f81152b948341a5af9624db",
@@ -1586,12 +1824,24 @@
       "seconds": 119.236790459
     },
     "ThroughEleven": {
-      "status": "not_checked",
-      "source_sha256": "ea2671f689e75aefdf87bdb63702d5059a7c9e708d2bb5166f09558785f5c6a5"
+      "status": "PASS",
+      "source_sha256": "ea2671f689e75aefdf87bdb63702d5059a7c9e708d2bb5166f09558785f5c6a5",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/ThroughEleven.json",
+      "log_sha256": "85d5b2c813e6b252ceb0e25adaf7c095b9bae3247a0e13c989c772014780d7d1",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "finished_utc": "2026-10-26T03:45:35.217231+00:00",
+      "seconds": 59.19331179198343
     },
     "ThroughNine": {
       "status": "PASS",
       "source_sha256": "a1e08d16d0911db0878baba36ab6e160061db8131b1ea1970673871cb2b4d4ff",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/ThroughNine.json",
       "log_sha256": "469de30ab7f6c4e796cf453ad30f9783879b01f821a57e514462de3339866543",
@@ -1606,6 +1856,7 @@
     "TorsionClassical": {
       "status": "PASS",
       "source_sha256": "cb5878c8dd9534d2e81a18f3224022620b0658ef1013710d9973162200640943",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TorsionClassical.json",
       "log_sha256": "77fd41f03e7eff6b812d25e9785350656a927ee7b7903079d865984da45a6a91",
@@ -1620,6 +1871,7 @@
     "TwelveConditional": {
       "status": "PASS",
       "source_sha256": "185d472a3040226336b84ce59527e9fd30c817c9f8e640241b92d8041c39ce0a",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/TwelveConditional.json",
       "log_sha256": "d82c7bac0e9979c7b41814766073302e548a458379d288cb21b5b33776454860",
@@ -1634,6 +1886,7 @@
     "GeneralLP": {
       "status": "PASS",
       "source_sha256": "6e0273f19be351bf68e925f42dd2c881bde35404833d1607374c5f4e0976c3ba",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/GeneralLP.json",
       "log_sha256": "2f2aa133600c87534e9eebf67bb2dc12b5b78105a4a4abd56bf9c7c09a5e12d3",
@@ -1648,6 +1901,7 @@
     "GeneralLPPhysical": {
       "status": "PASS",
       "source_sha256": "6522198f46c9067b29d077b55a9d88f178210a93b22dbc88551f5b5badb6f5e0",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/GeneralLPPhysical.json",
       "log_sha256": "5b00ac2d9c597e3f6ae1e2dc2cc2145cfd105767033fc73ca3bacfb6c27fd0ae",
@@ -1662,6 +1916,7 @@
     "SmallStopping": {
       "status": "PASS",
       "source_sha256": "d5f56f33f14c921924b987aab19fc6a396a16aed16760899285f2560a5ca6c64",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/SmallStopping.json",
       "log_sha256": "90c7763f82147cf370c623175e86f4c0b13f2d9e4004973845fb6f9d00c97c4e",
@@ -1672,6 +1927,7 @@
     "CoverWeight": {
       "status": "PASS",
       "source_sha256": "f73b590595339062fa240fc78f7c377ea0c31a4356daf447b5f6c34b38118e62",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/CoverWeight.json",
       "log_sha256": "2477c6c11e4a5a9de2584c7a0ede86c3b9ecd87932908394e563a30a6591b4a6",
@@ -1686,6 +1942,7 @@
     "LowWeightChecks": {
       "status": "PASS",
       "source_sha256": "2784aeb9997ec116ecf096e7bbfb735a6f89b4183f44480d06279a3bb1dd282f",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/LowWeightChecks.json",
       "log_sha256": "56f6d210517dba09b67b25477d57ba9a835bc73df2f003ae2b2d5792556508c1",
@@ -1700,6 +1957,7 @@
     "SourceModel": {
       "status": "PASS",
       "source_sha256": "a3e73e8732383f9f545da535af4fcaded76e2b1fe7f749fb60d0ff2781636c83",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/SourceModel.json",
       "log_sha256": "662968d1a1d7f12545890773bd69a749c94ecee9d1994ef9472ae252596c4ae2",
@@ -1714,6 +1972,7 @@
     "FamilyWords": {
       "status": "PASS",
       "source_sha256": "6cd172ed84d2fe454cfd18f482e6c820e97fdd0325c7b1b60e783626217e8574",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/FamilyWords.json",
       "log_sha256": "70d815c190429540e011eab707a2f25d129bb02735413014dab8687b03d68252",
@@ -1728,6 +1987,7 @@
     "CyclicCover": {
       "status": "PASS",
       "source_sha256": "0915f8f68aa28afdd6c9794769badc32d0314233a9ca8f4ccd78ec377cfb8d8f",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/CyclicCover.json",
       "log_sha256": "a9a064252370993447b49f1fc1328fe578271867d5df90999f80433ebfbc0367",
@@ -1742,6 +2002,7 @@
     "TannerSix": {
       "status": "PASS",
       "source_sha256": "dc56e9be9934584c4138251778136d009ba99c0c77461ef66d6e8ec4f3ea5c67",
+      "pinned_toolchain": true,
       "source_change_capture": "legacy_record_current_hash_matched",
       "record": "round-logs/TannerSix.json",
       "log_sha256": "cc404c00db9fde732c0efa42244d9fd500df89a315e2f5075ca052fe53442166",
@@ -1756,6 +2017,7 @@
     "F7_000": {
       "status": "PASS",
       "source_sha256": "9a8b3ea2821fc045169264246588557082fbaf5cd4151b61ac7f26eac85c2c90",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F7_000.json",
       "log_sha256": "fd2122c56b220a4b5fcf2a79bf24186d79051268bd255f248ef41fa6ef57137f",
@@ -1766,6 +2028,7 @@
     "F10_000": {
       "status": "PASS",
       "source_sha256": "a31c25475bfdd900dfe87225ba3501d88d76a52d158119bab299173f677e95e4",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_000.json",
       "log_sha256": "0e52a47512a0657a4298a90c84f62e1d88d220b2afc5b18864187d440ba94061",
@@ -1776,6 +2039,7 @@
     "F10_001": {
       "status": "PASS",
       "source_sha256": "c7445c24e5fbf6e9519cf9759cf7c4be10133b573b10474de7127a14af7491f1",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_001.json",
       "log_sha256": "b51a94d9f8bf757744b617b6e83607e1f360c2bbca4322c60cc55adbeefae07d",
@@ -1786,6 +2050,7 @@
     "F10_002": {
       "status": "PASS",
       "source_sha256": "1613c1ade8573e78c3350ca988533073a0dcd9d68dd6cadac6b3b5675fd7a6cc",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_002.json",
       "log_sha256": "e31b5e77b78bdf83711005a2db53339a98355430d92c017cb4f5b574ac97d44a",
@@ -1796,6 +2061,7 @@
     "F10_003": {
       "status": "PASS",
       "source_sha256": "da33d6a968f9e83d16c64a008cedd3ed5d7f0a3365be1f9f63e092b2c59516d4",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_003.json",
       "log_sha256": "457304bdafd38ebb0f45656f1d2221d015edefdc9b8d1f65377dfa79d4acfe65",
@@ -1806,6 +2072,7 @@
     "F10_004": {
       "status": "PASS",
       "source_sha256": "e363410c1a607a276f12927c54df4cb4380bb0bfeb5c74dc452975b37c8e3423",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_004.json",
       "log_sha256": "11daa7b23ddd4e40da27bf78ddbde9eae0ede6dad376ad856fb055b76612b586",
@@ -1816,6 +2083,7 @@
     "F10_005": {
       "status": "PASS",
       "source_sha256": "ac00fbd5c57f1a4b6739b712d8ba609b8a2adedc2f3c24f7fafb39c9a4f0ff8d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_005.json",
       "log_sha256": "361350313badee48d2c5ce8fe3382fbd0b7ea238980f57ed628c80caf39f83fa",
@@ -1826,6 +2094,7 @@
     "F10_006": {
       "status": "PASS",
       "source_sha256": "2a2cc3b3337f62430ecb35a1ca121db69bb757cc5a7fe5e9c3d3e81736a259c9",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_006.json",
       "log_sha256": "3a4962a3bd8e31a3b473856b330e1bf7e4f500f7f15c28b48ece11b2f5e0f198",
@@ -1836,6 +2105,7 @@
     "F10_007": {
       "status": "PASS",
       "source_sha256": "bada9411f382a5a239e45880dcc2ea0364cb6262ae06e417e0a053b054bf433b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_007.json",
       "log_sha256": "6ceea1abcdb856f3c64c91c9ef3842ffebfdfb02fffe889fad764d2a256e3c49",
@@ -1846,6 +2116,7 @@
     "F10_008": {
       "status": "PASS",
       "source_sha256": "99e2ae9097b133c366c3cde8aef87b45082eea3f1c5088862cb46bfbbca6d1d2",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_008.json",
       "log_sha256": "21dbc2d7ea19f302949df031bf7a65093b163de20ca1aa49e9d89c78340f3d53",
@@ -1856,6 +2127,7 @@
     "F10_009": {
       "status": "PASS",
       "source_sha256": "0051df744c5f48766d2af2daf81c319230ce32f45ccb2f9464ce09a2f60664f0",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_009.json",
       "log_sha256": "08903cbd02a971801ba554d40e3378334edc722043dbf6ad1d74f685b07dc5ae",
@@ -1866,6 +2138,7 @@
     "F10_010": {
       "status": "PASS",
       "source_sha256": "1926c825780d14c74b0bc6dcf92cbeb5ee4caf5e6fa6fd419b16cc3c93776eb1",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_010.json",
       "log_sha256": "edd76d0e134ad35440be4cdffbb40f7729ebed6d4829803ee184b5a0c0236a73",
@@ -1876,6 +2149,7 @@
     "F10_011": {
       "status": "PASS",
       "source_sha256": "45441cf83fb79e3c5e22457ef7079d6ba0b1c7e7f054eb657eaf8d4cfdf6601f",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_011.json",
       "log_sha256": "e793f75103a629e3be857e6f3e52732c3ffecfcbe470f95649c765e607ed88c9",
@@ -1886,6 +2160,7 @@
     "F10_012": {
       "status": "PASS",
       "source_sha256": "64c71cb3aeab5e8f004a9835be2939618be714eb8343b18e844fe9daab69c325",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_012.json",
       "log_sha256": "1736d6ffbb050b8f4c8688310543fcd24d7f611412fd36a38ff6dc75d2df61b3",
@@ -1896,6 +2171,7 @@
     "F10_013": {
       "status": "PASS",
       "source_sha256": "3bcd6690a8c347b7c94e3cb4967fe3aa2f5b229a5535f48597dc991713ab34cf",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_013.json",
       "log_sha256": "2a152294d1820bd74a4f196712ac536448effba68ab82386636112ab07a8ea20",
@@ -1906,6 +2182,7 @@
     "F10_014": {
       "status": "PASS",
       "source_sha256": "86e1dea14c723d56156f9043661528a08cc6b9483a4d30b7ed99030858a5746e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_014.json",
       "log_sha256": "5cc138b191a0b3fc677e3732c9f12ea88de8dc650f43eb22b4e3e9bb362f7854",
@@ -1916,6 +2193,7 @@
     "F10_015": {
       "status": "PASS",
       "source_sha256": "dc078e49ef67c64513c1f58f07fc291c78d58cddc0c7bbfae4c9eda0be9513dc",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_015.json",
       "log_sha256": "7e65fa1305accd36853417fbdbcfbaebc8d39c3243de4e5a0a02f6768964bbbd",
@@ -1926,6 +2204,7 @@
     "F10_016": {
       "status": "PASS",
       "source_sha256": "2aa9126a6b8a17d9b122096712b2f6751abf4a2867223db9c806af0e1fc433de",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_016.json",
       "log_sha256": "36d8048bc15b1ba52ca3886912e9c356c376f75db441abca59a441c0e0392597",
@@ -1936,6 +2215,7 @@
     "F10_017": {
       "status": "PASS",
       "source_sha256": "3adc815af0f757537ddd99e8dd1509f7c302e125b9ad56a00910cc9d70be3ba3",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_017.json",
       "log_sha256": "37179ac05dc3787f7f69d0ebf28096fceacba821704d04c5be68ad8fc1e453f3",
@@ -1946,6 +2226,7 @@
     "F10_018": {
       "status": "PASS",
       "source_sha256": "805311465ee804bc89b1cde6719040e61a760c37a1f5b9b6bf587c576e1764dc",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_018.json",
       "log_sha256": "fb9469cbb2d7b63c8e9d6e0ed17105049f122f5a35c1a151e06c9adbcc6cd26b",
@@ -1956,6 +2237,7 @@
     "F10_019": {
       "status": "PASS",
       "source_sha256": "5464f45bbd28dcdc90002850e34cc6572f6f3e756c66dd5b348b527406316011",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_019.json",
       "log_sha256": "d61117561338b0767a8205e2b0dad9162c1df387e0d21cba3e0bff6316a5da9d",
@@ -1966,6 +2248,7 @@
     "F10_020": {
       "status": "PASS",
       "source_sha256": "28791e7f4f102bf9745cb15741ba5de725ab1cbc9047602fe2ea587926643a71",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_020.json",
       "log_sha256": "63a14da6407605007679485f94da08bf7675450287cc3a857ff0ee8df4cb6677",
@@ -1976,6 +2259,7 @@
     "F10_021": {
       "status": "PASS",
       "source_sha256": "b0bc8b5bd3d678043950eb831107ac6296295af73ebd67e9bd19a27b1f8fa30d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_021.json",
       "log_sha256": "1958c147c8d40e61a1c09d5bc820fcde64f5b782b2191165cb1c27d6aa4d0fdf",
@@ -1986,6 +2270,7 @@
     "F10_022": {
       "status": "PASS",
       "source_sha256": "dfedd83c6a141eddd7ceb3223050be4421c24650320835392629f2b67986997f",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_022.json",
       "log_sha256": "bb6aaa4e46ae122b847eaaf2210c1e8c1afe1dfd15a9cd43f935ad96803058e6",
@@ -1996,6 +2281,7 @@
     "F10_023": {
       "status": "PASS",
       "source_sha256": "2e3158fcaa7895a6949896ab300158faa118d0eefddee7f0041d7da06f9ec3e0",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_023.json",
       "log_sha256": "bceca564e2d3a9a22e391c2fe1c56964b2d5fbf49247f7390f3b833d5e0fa047",
@@ -2006,6 +2292,7 @@
     "F10_024": {
       "status": "PASS",
       "source_sha256": "e5cbd1741ac6b74cee6390c75406facc68ea6a86f24226aa7d2b47d09f922943",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_024.json",
       "log_sha256": "57cf3cb4504462c521894e38da5ad6848540ee6f2a1ef36fa7e04edf789806dc",
@@ -2016,6 +2303,7 @@
     "F10_025": {
       "status": "PASS",
       "source_sha256": "e68ac89c7a1b6987a57448a7aa190bdc88a5be36950e15bf851fa3023355120d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_025.json",
       "log_sha256": "89e0c3b92f764652ddfa1963496e913e114aee7e53cb96428b81b083b74c6750",
@@ -2026,6 +2314,7 @@
     "F10_026": {
       "status": "PASS",
       "source_sha256": "32f32c08600d2f959e1f07a1e270c562bfd8a76c94423bdfd3cfce42d5be15be",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_026.json",
       "log_sha256": "6ecde8ed7ebb3417140e955a9b439b3c1094af81fa56d01c0cb7d5d0ad98a247",
@@ -2036,6 +2325,7 @@
     "F10_027": {
       "status": "PASS",
       "source_sha256": "000cfaba4d69c848f68e35f9cf52e30e871edc97a8a1f4b865177fbccf2e33ce",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_027.json",
       "log_sha256": "c8e5573bc428fa3154b435775fa794f6592fc754972b87540496c9bd6336103d",
@@ -2046,6 +2336,7 @@
     "F10_028": {
       "status": "PASS",
       "source_sha256": "582639c8ea49140c0e4a8bb298da16f3a8e513716ff59284b40e6c56a92f60b2",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_028.json",
       "log_sha256": "d5da160d0c0fd43f8119c1ba68e1c68ca446c91e360704ff3bcc9e2ab0c024b1",
@@ -2056,6 +2347,7 @@
     "F10_029": {
       "status": "PASS",
       "source_sha256": "2c1f890535d831622321f02beff5184b23e8536982e47cba266fa85090b3a250",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_029.json",
       "log_sha256": "1362f486dff5d7b3914ee2bdf9c4786cc23f5b8751bcb72255bc3acafacdb421",
@@ -2066,6 +2358,7 @@
     "F10_030": {
       "status": "PASS",
       "source_sha256": "fce16ab880c4d100f45ef6c92eb75646c95c29882842977245ee9305f1e40f1d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_030.json",
       "log_sha256": "52e341c3f8d6c6ffbf3b37bdada1dc8b35561101cb2d804c2324f79f591a4399",
@@ -2076,6 +2369,7 @@
     "F10_031": {
       "status": "PASS",
       "source_sha256": "5aa861433d0dfa60a9f473f660ed80f2df2865debf0f53684a613671fb461da2",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_031.json",
       "log_sha256": "49a89d73f386eb870b70a951854464b3b3947183a2ead647252a9ffa94381f63",
@@ -2086,6 +2380,7 @@
     "F10_032": {
       "status": "PASS",
       "source_sha256": "127696117cc8af699434dfb0eaef17997de87418c4f12ae569bdf74fdfaa784e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_032.json",
       "log_sha256": "6594e99a43fd045c18a1fe3ec61cb971bce7b4581a6b38a085a0b743bdf1125b",
@@ -2096,6 +2391,7 @@
     "F10_033": {
       "status": "PASS",
       "source_sha256": "a0a82a98965d55156f7a7d54151ff060092f6eef969cebe3dfd79ddde1794e59",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_033.json",
       "log_sha256": "5ffbf4e48e74f44886e0599d8ee8a477b35cb7efa3300147cd852078e3d66080",
@@ -2106,6 +2402,7 @@
     "F10_034": {
       "status": "PASS",
       "source_sha256": "80d3f0bffa3a42f2e20f3ac95d612d1694b13c3cba2d064dee15ee42796da7d7",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_034.json",
       "log_sha256": "445554eefa2a880b6bfcd137c39f1591cd6cd5daafd045cd14760a9ef58becd2",
@@ -2116,6 +2413,7 @@
     "F10_035": {
       "status": "PASS",
       "source_sha256": "5c135c95b0b53dd37583707215d2b636d1bcdeb7d07b84f8bf773d2d0e71c40c",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_035.json",
       "log_sha256": "855c09b4a1520c56a6cfcd3e1e7a0793e618a9b16b0c1fcb4f1e81f8aec9ae74",
@@ -2126,6 +2424,7 @@
     "F10_036": {
       "status": "PASS",
       "source_sha256": "9b55d04769530c0ef8ee3f0096daa866994064cbd5c21713cc763a77e15b25a3",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_036.json",
       "log_sha256": "731dfb83247d6a2907292fb8f08636d2f67cbea18abb1a06856719c0098a5e46",
@@ -2136,6 +2435,7 @@
     "F10_037": {
       "status": "PASS",
       "source_sha256": "10f5164d7f8b70b8d721fc4374a891eda4824307dd41d3ad87ca4c1d512023b0",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_037.json",
       "log_sha256": "bad717802e0dd2f9fc8b9aa40fb74dcfe5df054dbd0e1147b13153e5921d900b",
@@ -2146,6 +2446,7 @@
     "F10_038": {
       "status": "PASS",
       "source_sha256": "4471f43e79ec93c31ca7da6ae7f66d857ea4169fc64df524ec3411eb1ca6cc82",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_038.json",
       "log_sha256": "ecf5deb07ce47905c5a2baf32d978e4d753179da9a26ffe061dacced91b2b8d0",
@@ -2156,6 +2457,7 @@
     "F10_039": {
       "status": "PASS",
       "source_sha256": "f0508cbb81a0d4125e705bbdfef59b8478017b6eb4fe1c69560f0d2e0a48fe95",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_039.json",
       "log_sha256": "9e2901fa4e18236ef512a2bfff184783e30ea3daad87526e9dbfdb954d17d1fd",
@@ -2166,6 +2468,7 @@
     "F10_040": {
       "status": "PASS",
       "source_sha256": "320141bd449939f4ba6a4d2c7a93750c8f755f37d93a557b47315d500b6dc62b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_040.json",
       "log_sha256": "d6d0180cd6f851353edab328ab514275dd8f65d19030c607b964859a622c673b",
@@ -2176,6 +2479,7 @@
     "F10_041": {
       "status": "PASS",
       "source_sha256": "69acd577faadaf64ef5e1aa38b6efa9a4ae61aed2519985e132efaa63b8250b7",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_041.json",
       "log_sha256": "cd88435b6b90e106652f08498612eff123be534e2122118b4b47b1f7e3e63659",
@@ -2186,6 +2490,7 @@
     "F10_042": {
       "status": "PASS",
       "source_sha256": "701fd9a28e1284fd0aa1f912860482caedbc33a8b2e1d2d14f23fa8307fed5a6",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_042.json",
       "log_sha256": "b90512bd220fdd3a1e2992a4181f566bb089898b83dea212b7df2f449e8e3ec6",
@@ -2196,6 +2501,7 @@
     "F10_043": {
       "status": "PASS",
       "source_sha256": "86e57f382ea58524b2eeb96550a953241bd2922f6513a15c2c66af68b4ae044a",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_043.json",
       "log_sha256": "0c8ffe99b3adc829f059085cb1b9d906c8ee01cc2ef1602f4086cbfe91533c54",
@@ -2206,6 +2512,7 @@
     "F10_044": {
       "status": "PASS",
       "source_sha256": "338c713ae29432f18f0f45c063c9396fd71c06863166f66d0439383896c48e40",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_044.json",
       "log_sha256": "d26e446afeaea0d80bc643d869edb2baf2c94e32511189dcfd6c34a20673c848",
@@ -2216,6 +2523,7 @@
     "F10_045": {
       "status": "PASS",
       "source_sha256": "a7582f4f5391e2086f3e2b0f23e1a8d04f26b35be7b1a4de9e9eec1139237b89",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_045.json",
       "log_sha256": "74dccba2a7b98fb716e282874d3fe2a7c482d861a3a5b5eeb41c9c12e48ab24d",
@@ -2226,6 +2534,7 @@
     "F10_046": {
       "status": "PASS",
       "source_sha256": "bf4d19ca1a7931a6f62c3c3b64a81cda76dd14713a67bb3ee8c49614ba70f3cc",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_046.json",
       "log_sha256": "5bae3aabd913304657347ad1de32fccf3a47c5204b855f6c4b5e276cc065f0ad",
@@ -2236,6 +2545,7 @@
     "F10_047": {
       "status": "PASS",
       "source_sha256": "24903a56ba915491de4247863f7d0d6ef75f8153082c98a5e659df8a7b13c196",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_047.json",
       "log_sha256": "c3e8e6c914072a58e21054c592cc198a016eb95cf82d3136c689559e373f9c6e",
@@ -2246,6 +2556,7 @@
     "F10_048": {
       "status": "PASS",
       "source_sha256": "87f52c21de0c1da22e6ca7c6d926e0f3b774c79a908b82dd5418b11f969cc36b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_048.json",
       "log_sha256": "a9652f1d1e0faf3b6353dcbf457ea55c995e52c9684f1baa8854d51a736ad6c0",
@@ -2256,6 +2567,7 @@
     "F10_049": {
       "status": "PASS",
       "source_sha256": "30bd6f07418e534d83cf75cdf7af7bc0a51c4d5a58f61d96ab84b785dec6f293",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_049.json",
       "log_sha256": "7c488a75ebb919bacbe820acb95d45c8fb007b3025579586b8b925f982c2eeff",
@@ -2266,6 +2578,7 @@
     "F10_050": {
       "status": "PASS",
       "source_sha256": "21d4f0288f0bffc893f66a86cc71d57b0dbb74617add86ee798e6806522a7834",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_050.json",
       "log_sha256": "45c16457c066209743ec011140fec0b8f98a487365285817e754e92da66fc67e",
@@ -2276,6 +2589,7 @@
     "F10_051": {
       "status": "PASS",
       "source_sha256": "a9f366abe550f6bc9344e02247c91f3e549949f5c0506a73fcaead01e31dd150",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_051.json",
       "log_sha256": "7e56c44aebb6c8d60a424496704b017db0b4bd206db514890adfbf7de95a4ff4",
@@ -2286,6 +2600,7 @@
     "F10_052": {
       "status": "PASS",
       "source_sha256": "f1dca9cfce92342b681aa839c236567e8d06dff7c35d1d480d74a8db1d1a1d8f",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_052.json",
       "log_sha256": "445c0e9da99e0e31ebf7ee9011224cb08725d99f9220e4c4d53cab1735eff136",
@@ -2296,6 +2611,7 @@
     "F10_053": {
       "status": "PASS",
       "source_sha256": "05c45699b8dbe5169faf6e66248889aff0f6a6fc677dcbb7e8e9269f9ecf770b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_053.json",
       "log_sha256": "9c4423d44602c1a8bfa4057ca460370e9ae0c9ccdd8c9770703c8967db494920",
@@ -2306,6 +2622,7 @@
     "F10_054": {
       "status": "PASS",
       "source_sha256": "3f48ed02423e87f3207fcb4773c7dccca534db02d83808b24d0c6385ee54ae48",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_054.json",
       "log_sha256": "c0fab99e20147e74e1143eeb9df9e1b984d1304c29f3a6b8bf7dafef046a1018",
@@ -2316,6 +2633,7 @@
     "F10_055": {
       "status": "PASS",
       "source_sha256": "48bebb9a12208a8e8c77bb45fded345ba9b0fd991b3356910be7f459b7adec59",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_055.json",
       "log_sha256": "c17bdde031f48bfafdeec71dd97b78938a078a19c5a7fdb5de9af453768f7aaa",
@@ -2326,6 +2644,7 @@
     "F10_056": {
       "status": "PASS",
       "source_sha256": "9c11ae6a69d5d98e6aed4f0d3b23beaaa1e654dbe2174e720b6e988ac3246043",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_056.json",
       "log_sha256": "009779e426a87eed980f5dadd3d8ea132575a33db277c0a69289cfe0f0753f4b",
@@ -2336,6 +2655,7 @@
     "F10_057": {
       "status": "PASS",
       "source_sha256": "b62d70deb3b9b5fdaf0fcc7888481aa15aa577ca3c53035a02c451c4c1ca338b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_057.json",
       "log_sha256": "99160c758751e7c3dd018ec1af31cf8157496566ca8570f4d980a657d92999b3",
@@ -2346,6 +2666,7 @@
     "F10_058": {
       "status": "PASS",
       "source_sha256": "e66a0fce6eeab241dc229882598545812dbdaae6738dc408f7a8eb1b29eb2797",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_058.json",
       "log_sha256": "a7e69ed5ee44d06c0585f0b5d3bfb556ac7d9b8b662746ed3c90384f87571983",
@@ -2356,6 +2677,7 @@
     "F10_059": {
       "status": "PASS",
       "source_sha256": "13032a20b88dd560207d5f5b95d735a422853122003ac4bebe57a542f79006c3",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_059.json",
       "log_sha256": "dfc8bef6463f53fe0d133454425224c045d821ad309f8fc27069c8db7ae1e5dd",
@@ -2366,6 +2688,7 @@
     "F10_060": {
       "status": "PASS",
       "source_sha256": "62a2da8e6a24fe5539d4066b72237d8417e66315e56564f4617cf55a0b2e59ca",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_060.json",
       "log_sha256": "0ad782f55b9b001df11d81ba510b2cbcf2f92caa00ef271b3c2d22eb0eb73e4d",
@@ -2376,6 +2699,7 @@
     "F10_061": {
       "status": "PASS",
       "source_sha256": "f914c4108fd848a8d0bf5ba68b846035414eae5116963d6bb304c255d4ae2818",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_061.json",
       "log_sha256": "3b827b805c5793de2b65bf33342bffddb6a4df00fada5e6fc05bdbcedfcfc31b",
@@ -2386,6 +2710,7 @@
     "F10_062": {
       "status": "PASS",
       "source_sha256": "5368044e7d18cede9af282e3605049ad4263d26acb3806c548b6bc7956f099d8",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_062.json",
       "log_sha256": "489375355d365b363f64d8a2c78d1c04863edb46a23f9a19192f82dec8b7f528",
@@ -2396,6 +2721,7 @@
     "F10_063": {
       "status": "PASS",
       "source_sha256": "9360df048612eb290187ca4e86572138eefd1c24ea81170dd4a1e121db7e392a",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_063.json",
       "log_sha256": "40c69e18c6c86706a61ada7fd02d196f6a7e5872dda6b16352fc21d5bde7cfe3",
@@ -2406,6 +2732,7 @@
     "F10_064": {
       "status": "PASS",
       "source_sha256": "74c544a79c3880c49b8c87a0d5a19a6763235917983b913ebf017deb7c2a3177",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_064.json",
       "log_sha256": "770a6396e4f21cc1f8ac0f21962354e84a61155c0aa2ff35c385b18c165b23cf",
@@ -2416,6 +2743,7 @@
     "F10_065": {
       "status": "PASS",
       "source_sha256": "6d99959207818d15ef6a7a282cffc26a042348c3d526fb98a90e2c20fbee8a21",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_065.json",
       "log_sha256": "239b4c1154999a9f205e2920b5c8512cd8c453e514a6a060ef7dd18898c6c870",
@@ -2426,6 +2754,7 @@
     "F10_066": {
       "status": "PASS",
       "source_sha256": "e83fd891d7872a9e2fdef5d68814976272355b6d20412a5f67bbc6b98386a82a",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_066.json",
       "log_sha256": "41e56461d94aded572d7a0b09c3f8b7d8aa35e84ba722e3f7258f6286825b620",
@@ -2436,6 +2765,7 @@
     "F10_067": {
       "status": "PASS",
       "source_sha256": "bada31c6f9178b1836fecebb83cbb9476c511ddb35f893471815be2e1f2c5a1f",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_067.json",
       "log_sha256": "9b355151331f79b405435c4725a9962b2e6b2d435b19075142076dccfbfbddfb",
@@ -2446,6 +2776,7 @@
     "F10_068": {
       "status": "PASS",
       "source_sha256": "92d353e9b1e9f6fd13daefb7b1885c97cc9601b237922804e29e5780a94d9768",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_068.json",
       "log_sha256": "856ea9d846c787f6c4d1c9f4c5ca51a5ba9908bd591a90694fe2f5e8596de14d",
@@ -2456,6 +2787,7 @@
     "F10_069": {
       "status": "PASS",
       "source_sha256": "fb922390e8e720922a5d1f0919c574ec26eaf5abf7d9e2c667fc6207d429a624",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_069.json",
       "log_sha256": "a2eb976f7f5053124708b8010ae9cb1963e4863b55aa8896d1c727fb69210bfd",
@@ -2466,6 +2798,7 @@
     "F10_070": {
       "status": "PASS",
       "source_sha256": "e950ed0ab495cc1bd972deea75553c8e54f362e62d54a42b9cd9c0d1f430e227",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_070.json",
       "log_sha256": "672924b114e4be157c434594537dce8759e43c11f480004c9e10094ea50da3ac",
@@ -2476,6 +2809,7 @@
     "F10_071": {
       "status": "PASS",
       "source_sha256": "2b017ffac9f83321d675b3feb9e3358659e9e9d4cbc9b29ff006801de0014b1d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_071.json",
       "log_sha256": "934c08d2d3a7394af2980683cd8ebbfa18625bcfbc4bf341a7ba0b80ee2a2a44",
@@ -2486,6 +2820,7 @@
     "F10_072": {
       "status": "PASS",
       "source_sha256": "126eb439fab40330f528065b9536ca04b0db954dddf36ba67e41274023810c91",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_072.json",
       "log_sha256": "46bd222284d34208bcc8c59d5ff813edcf61a74634d04516f640f7ab86bd8a94",
@@ -2496,6 +2831,7 @@
     "F10_073": {
       "status": "PASS",
       "source_sha256": "3d883a2b3a34f6b9e5ab6c8d41fb9ef995106b956807e15505db0fa6a5e3b265",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_073.json",
       "log_sha256": "80e14ce8e3aaa54fd57b89900c4076f91c74ea2f030842febb286d4a6ca07bfe",
@@ -2506,6 +2842,7 @@
     "F10_074": {
       "status": "PASS",
       "source_sha256": "4fa619ca74ae2bb0ddb027be90e57fc3db3fabce8f390ad4ee3e82d8f3bcd0aa",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_074.json",
       "log_sha256": "b2a7bb135721e67589a7987c1a634122899450ff8905639f8ad1def6cab1a6a0",
@@ -2516,6 +2853,7 @@
     "F10_075": {
       "status": "PASS",
       "source_sha256": "3d6c5d79b3caf22338801c61c9b55ac989bbbb649bfb86ff192b4fb69d383d9e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_075.json",
       "log_sha256": "c567ad83542722fead31eefe45a15a9c204d839cec126bf1d044e35cf7c148d6",
@@ -2526,6 +2864,7 @@
     "F10_076": {
       "status": "PASS",
       "source_sha256": "62e521f07b0f7ed8a8199ba09e12e59374f11471fc403363968dad62ce2b6c06",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_076.json",
       "log_sha256": "e94b85db9b402232337f8b4c57352ea20f9e343b99e64e9be8006e1ef798fe19",
@@ -2534,88 +2873,229 @@
       "seconds": 61.49600329203531
     },
     "F10_077": {
-      "status": "not_checked",
-      "source_sha256": "308f56ddd4ba113410e517c6e4888b610c550b33ccb96178092bb24a34e72a63"
+      "status": "PASS",
+      "source_sha256": "308f56ddd4ba113410e517c6e4888b610c550b33ccb96178092bb24a34e72a63",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_077.json",
+      "log_sha256": "fe3aae81c3558640aaed252d1f350e0076e57b7e2112ca703c7f4b06a693bf0e",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:02:23.069071+00:00",
+      "seconds": 62.48326899996027
     },
     "F10_078": {
-      "status": "not_checked",
-      "source_sha256": "4203ce805c989f5c3c029099adb2dbbea799dcbe6913c9153740eb68a2f34f44"
+      "status": "PASS",
+      "source_sha256": "4203ce805c989f5c3c029099adb2dbbea799dcbe6913c9153740eb68a2f34f44",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_078.json",
+      "log_sha256": "60aec5300cc95c3207d56f3ec2e2214d340a5f939d528eea10df2653e8d8e56f",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:03:26.447511+00:00",
+      "seconds": 63.37353008298669
     },
     "F10_079": {
-      "status": "not_checked",
-      "source_sha256": "765b5d07e64c975cdddd58fb0fd83cf2821a764df8e79b02e5b9f93735b2d798"
+      "status": "PASS",
+      "source_sha256": "765b5d07e64c975cdddd58fb0fd83cf2821a764df8e79b02e5b9f93735b2d798",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_079.json",
+      "log_sha256": "a3a6b6e0fda8cf6a9510a1857add681f9021fc60097ec75eee4967dba95f5ef3",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:04:27.557157+00:00",
+      "seconds": 61.104951334011275
     },
     "F10_080": {
-      "status": "not_checked",
-      "source_sha256": "66aa3f4774f6e68fd47e00f5a05ecd0e75b508d6458ebc2400fe5471007c87f1"
+      "status": "PASS",
+      "source_sha256": "66aa3f4774f6e68fd47e00f5a05ecd0e75b508d6458ebc2400fe5471007c87f1",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_080.json",
+      "log_sha256": "66d2f414aa0f7f39378feb42ff21fbc1aa43bffb069b47100707f422ba7ab536",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:05:21.427409+00:00",
+      "seconds": 53.86341449996689
     },
     "F10_081": {
-      "status": "not_checked",
-      "source_sha256": "964300631e8222bd03e000337351e6d5a030a97f87b871b2a8745b2470865a59"
+      "status": "PASS",
+      "source_sha256": "964300631e8222bd03e000337351e6d5a030a97f87b871b2a8745b2470865a59",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_081.json",
+      "log_sha256": "9a113d3982db06f6931af9107001962f3eaf84ed601db9ddad372382ab3a81cd",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:06:16.679086+00:00",
+      "seconds": 55.247942749992944
     },
     "F10_082": {
-      "status": "not_checked",
-      "source_sha256": "273e18315310cf0d181a543835fc79455a1734a817a2643a30b708b0d3a766c4"
+      "status": "PASS",
+      "source_sha256": "273e18315310cf0d181a543835fc79455a1734a817a2643a30b708b0d3a766c4",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_082.json",
+      "log_sha256": "406114788cb328c1e9fabe38786b5e02f681c4dc0f7645d5f349da8fb904c912",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:07:10.870028+00:00",
+      "seconds": 54.18308766599512
     },
     "F10_083": {
-      "status": "not_checked",
-      "source_sha256": "252e9783caa1d604fa6eb6285047730c099e5d533a516afd0c270b037d3f7d7d"
+      "status": "PASS",
+      "source_sha256": "252e9783caa1d604fa6eb6285047730c099e5d533a516afd0c270b037d3f7d7d",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_083.json",
+      "log_sha256": "c9c8c6a2d22d75f034e0833b46a686bd81063f1ee75572998c79ccbe8f996e3e",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:08:19.163540+00:00",
+      "seconds": 68.28941412497079
     },
     "F10_084": {
-      "status": "not_checked",
-      "source_sha256": "4ca54fdc5ff25981f126be059154e8ec7086748ccb1029b6df8aa04ba0eaa96d"
+      "status": "PASS",
+      "source_sha256": "4ca54fdc5ff25981f126be059154e8ec7086748ccb1029b6df8aa04ba0eaa96d",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_084.json",
+      "log_sha256": "a7fee08d3c6f4b5727b14d9b9d537dd57d51b308a551f1ec06d255b538ddba5e",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:09:08.903900+00:00",
+      "seconds": 49.736663791001774
     },
     "F10_085": {
-      "status": "not_checked",
-      "source_sha256": "d9396c581cffe15bfa06ecf99cb3de5edc611cb74afb29b7795b71732f0bfb51"
+      "status": "PASS",
+      "source_sha256": "d9396c581cffe15bfa06ecf99cb3de5edc611cb74afb29b7795b71732f0bfb51",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_085.json",
+      "log_sha256": "b6a8693aadde0efe9b89d9fdb6a1c2631376ade7400f66aec732ed7e0a844654",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:09:59.777357+00:00",
+      "seconds": 50.869480333989486
     },
     "F10_086": {
-      "status": "not_checked",
-      "source_sha256": "c647b8d9044a5cb76317e9ed52c6769da604c731ce3435cb3422570115b8d8ba"
+      "status": "PASS",
+      "source_sha256": "c647b8d9044a5cb76317e9ed52c6769da604c731ce3435cb3422570115b8d8ba",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_086.json",
+      "log_sha256": "985b6c45ebf237bd4ece2cff640933adf5d68118a935402bf4bcbddd6b60b0b7",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:10:51.823764+00:00",
+      "seconds": 52.043631792010274
     },
     "F10_087": {
-      "status": "not_checked",
-      "source_sha256": "f3abd85356fd1187669533106fa5724375ac978a3f0c42d1ff16aec7f4895294"
+      "status": "PASS",
+      "source_sha256": "f3abd85356fd1187669533106fa5724375ac978a3f0c42d1ff16aec7f4895294",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_087.json",
+      "log_sha256": "1d800c0dfe64a1ee1060288fb865a43373db95567c69551c3b67e807d2b8c7c4",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:11:45.914002+00:00",
+      "seconds": 54.08721124997828
     },
     "F10_088": {
-      "status": "not_checked",
-      "source_sha256": "d3849d3571b7ce6a966e2e2a9c8d55adf0b2784bbffe2bf232bdf1e760efb484"
+      "status": "PASS",
+      "source_sha256": "d3849d3571b7ce6a966e2e2a9c8d55adf0b2784bbffe2bf232bdf1e760efb484",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_088.json",
+      "log_sha256": "cec3efd067f5973645e9647f35ec532ae81e0f843ff8f39b7e7f857d76e7ce51",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:12:42.175571+00:00",
+      "seconds": 56.257319750031456
     },
     "F10_089": {
-      "status": "not_checked",
-      "source_sha256": "3aedcbd11e59ecb975ba2d6da403ff677078820fa49842b1e68b02a725728f6e"
+      "status": "PASS",
+      "source_sha256": "3aedcbd11e59ecb975ba2d6da403ff677078820fa49842b1e68b02a725728f6e",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_089.json",
+      "log_sha256": "5e2ef68c4363458a177946247d0290c56c633218cd095c4cce5928f0073c9939",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:13:38.613484+00:00",
+      "seconds": 56.43507279199548
     },
     "F10_090": {
-      "status": "not_checked",
-      "source_sha256": "8081ebc49482a813c5bf54c071d58f23d0343d4e27c0669e98a27cbd5b7fbe66"
+      "status": "PASS",
+      "source_sha256": "8081ebc49482a813c5bf54c071d58f23d0343d4e27c0669e98a27cbd5b7fbe66",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_090.json",
+      "log_sha256": "4e2054f95a6cb61422a31667fcd24fd7e3a1d3976a35c8896f0d4baea39c5bfa",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:14:36.955991+00:00",
+      "seconds": 58.33840837498428
     },
     "F10_091": {
-      "status": "not_checked",
-      "source_sha256": "41fc9331a4b400ca059486213ea06d6eb6e3f19056a71bce5dcb26e0f2a012d0"
+      "status": "PASS",
+      "source_sha256": "41fc9331a4b400ca059486213ea06d6eb6e3f19056a71bce5dcb26e0f2a012d0",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_091.json",
+      "log_sha256": "aaf164a0658083bc17b80238ffa19f1e8bf440cda1971c6b285be8b24d8a1517",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:15:32.311825+00:00",
+      "seconds": 55.35101287497673
     },
     "F10_092": {
-      "status": "not_checked",
-      "source_sha256": "6ba6ba4831b825412b2525df7dc73c605d0c2d6ccb13a02945ed91948301d08f"
+      "status": "PASS",
+      "source_sha256": "6ba6ba4831b825412b2525df7dc73c605d0c2d6ccb13a02945ed91948301d08f",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_092.json",
+      "log_sha256": "62bb0b64df0645fb0f6a7e0a963fd2624744c0f2e2121109e808411dff8149f9",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:16:25.656643+00:00",
+      "seconds": 53.336959708016366
     },
     "F10_093": {
-      "status": "not_checked",
-      "source_sha256": "99b4968a4c4e29865008959a91906c572b44bdadfb964771a0ad9c72c49af563"
+      "status": "PASS",
+      "source_sha256": "99b4968a4c4e29865008959a91906c572b44bdadfb964771a0ad9c72c49af563",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_093.json",
+      "log_sha256": "89615eb314c6766fb8bfc2b0cb533f51666a37bef0b7323367cb0e0605e739f2",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:17:16.526430+00:00",
+      "seconds": 50.86573745799251
     },
     "F10_094": {
-      "status": "not_checked",
-      "source_sha256": "f41c7344630307b48f9fa4c6e39944e46c33343fdc9c83221455ccf8509dad8e"
+      "status": "PASS",
+      "source_sha256": "f41c7344630307b48f9fa4c6e39944e46c33343fdc9c83221455ccf8509dad8e",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_094.json",
+      "log_sha256": "a68546c62a08bc9ea683cb748bbc72908d5e580201f80dc75757d5ad9ac2b3d8",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:18:12.968338+00:00",
+      "seconds": 56.4376821659971
     },
     "F10_095": {
-      "status": "not_checked",
-      "source_sha256": "ad50cee8a5fd6712c016bbe72006657d480759363d6b76f37ab433f5c39ad497"
+      "status": "PASS",
+      "source_sha256": "ad50cee8a5fd6712c016bbe72006657d480759363d6b76f37ab433f5c39ad497",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_095.json",
+      "log_sha256": "9d0f37aeeb6045b9c691205146628d2a5682d0f6b7d66becbf6562bd5db9ccff",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:19:11.204801+00:00",
+      "seconds": 58.23299345799023
     },
     "F10_096": {
-      "status": "not_checked",
-      "source_sha256": "7f0a1425ba1007cb2b82e4a34c0f9e8b34568261c617e00f4290720bf38c4c19"
+      "status": "PASS",
+      "source_sha256": "7f0a1425ba1007cb2b82e4a34c0f9e8b34568261c617e00f4290720bf38c4c19",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_096.json",
+      "log_sha256": "0491591fdacf7e75c6b3e9743bddc6fc52670b74f33a79e8a169ecbf15aa2c14",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:20:06.732047+00:00",
+      "seconds": 55.523136333038565
     },
     "F10_097": {
       "status": "PASS",
       "source_sha256": "e990a5628de68fb9b4773e0ef1e7955f06fb0306617357e0c0f1a303a66c0ccd",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_097.json",
       "log_sha256": "ed5dec4c0e25d4634506a6a65d6b28cdad6a2c53bb70055b0faaba61e8039835",
@@ -2624,44 +3104,108 @@
       "seconds": 116.87959945800002
     },
     "F10_098": {
-      "status": "not_checked",
-      "source_sha256": "0294ce983d5c2ebc64500d148ba45d9c94cec621afee769c68c473117a040be7"
+      "status": "PASS",
+      "source_sha256": "0294ce983d5c2ebc64500d148ba45d9c94cec621afee769c68c473117a040be7",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_098.json",
+      "log_sha256": "c0d99affa1784ef1dcf11da326cd38297c0c0bba404c5853b0813c65a0d6a700",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:21:02.918384+00:00",
+      "seconds": 56.18289616703987
     },
     "F10_099": {
-      "status": "not_checked",
-      "source_sha256": "54ee5b8d053328f4055061f9f94a55fcb9f0a122d77b848df1109ffeb48c049c"
+      "status": "PASS",
+      "source_sha256": "54ee5b8d053328f4055061f9f94a55fcb9f0a122d77b848df1109ffeb48c049c",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_099.json",
+      "log_sha256": "15ee3a4f59badc3fc514c24e203a46dde93a3226fc8452ad5e6d6b58017847e6",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:22:00.527271+00:00",
+      "seconds": 57.604627416003495
     },
     "F10_100": {
-      "status": "not_checked",
-      "source_sha256": "8d9abfbf2d8513e61561489e6d7c7c48fa8c26eb9a6d0056cfaeea0d0f0cc8b9"
+      "status": "PASS",
+      "source_sha256": "8d9abfbf2d8513e61561489e6d7c7c48fa8c26eb9a6d0056cfaeea0d0f0cc8b9",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_100.json",
+      "log_sha256": "fb320d55d1b358b8434f93842eb865dd1b74135ef9479792dd323d8a16e69fd6",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:22:56.325065+00:00",
+      "seconds": 55.790786167024635
     },
     "F10_101": {
-      "status": "not_checked",
-      "source_sha256": "de74d98eede16eb20fc71c12c08560823bf33f5bbe7d8d52537ea36491a46361"
+      "status": "PASS",
+      "source_sha256": "de74d98eede16eb20fc71c12c08560823bf33f5bbe7d8d52537ea36491a46361",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_101.json",
+      "log_sha256": "dce2e5a2919b462fd6dbb7e329c92ae3fca80e4ba9d666fbd5e7bfcaaa979f7c",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:23:50.391505+00:00",
+      "seconds": 54.06318699999247
     },
     "F10_102": {
-      "status": "not_checked",
-      "source_sha256": "074ef58aab50f148e10e6bb8bab4f800101fd3cdb0a2875e81d80b287601a98a"
+      "status": "PASS",
+      "source_sha256": "074ef58aab50f148e10e6bb8bab4f800101fd3cdb0a2875e81d80b287601a98a",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_102.json",
+      "log_sha256": "ad2a8bffdb4011943d0a8cff02bdec6b658c0b40f2059ba1c6b25eb2af630484",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:24:45.149108+00:00",
+      "seconds": 54.75335758301662
     },
     "F10_103": {
-      "status": "not_checked",
-      "source_sha256": "631cd31cc6b3d0923f25a570c3b32c0d86935e2dd0f9ae3bc5271aaf66f41a92"
+      "status": "PASS",
+      "source_sha256": "631cd31cc6b3d0923f25a570c3b32c0d86935e2dd0f9ae3bc5271aaf66f41a92",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_103.json",
+      "log_sha256": "36bca9eca3cc52acd9bb92696b622c23288194c0d8db671d650411a7ec5a8031",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:25:45.609888+00:00",
+      "seconds": 60.45712083298713
     },
     "F10_104": {
-      "status": "not_checked",
-      "source_sha256": "fcd4a48a1d70aaa3832791b61aaabd68fa243f18bbff304fdc1874ebca9827a0"
+      "status": "PASS",
+      "source_sha256": "fcd4a48a1d70aaa3832791b61aaabd68fa243f18bbff304fdc1874ebca9827a0",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_104.json",
+      "log_sha256": "7ff0e0358ee01f9a14bddab09e7052afb898e36df5845226b6a550b894ff1cd4",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:26:44.394933+00:00",
+      "seconds": 58.781261916970834
     },
     "F10_105": {
-      "status": "not_checked",
-      "source_sha256": "58de99070d0acdf8f265f9b23b43b908078717886f42bd22736a14ef428637b6"
+      "status": "PASS",
+      "source_sha256": "58de99070d0acdf8f265f9b23b43b908078717886f42bd22736a14ef428637b6",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_105.json",
+      "log_sha256": "d1dab34339477912664a82879462dee6612d037ab41f75c5cb56ffd4f9d3a026",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:27:46.045882+00:00",
+      "seconds": 61.64841995801544
     },
     "F10_106": {
-      "status": "not_checked",
-      "source_sha256": "34dbfdf24fea743b34396acaafb2a2ae0e4a6a38bcd7bff0cf27f575d61e4f56"
+      "status": "PASS",
+      "source_sha256": "34dbfdf24fea743b34396acaafb2a2ae0e4a6a38bcd7bff0cf27f575d61e4f56",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_106.json",
+      "log_sha256": "9c89417a63f725937c5e39d360b8c267a0374cc770144d8d456299a879a7cb31",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:28:47.750321+00:00",
+      "seconds": 61.69674574997043
     },
     "F10_107": {
       "status": "PASS",
       "source_sha256": "24ffebdd35b2b7dbd6d7c374000f7237a311328c9605efb3a9e9dcaa9d3badb1",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_107.json",
       "log_sha256": "bbf4b3838f4ed0d6017c737e12c96d1de8d28da004feb8d4dc592294055b00b7",
@@ -2670,60 +3214,152 @@
       "seconds": 122.96193524999998
     },
     "F10_108": {
-      "status": "not_checked",
-      "source_sha256": "08ff2f1088cd3fdbad2c33fb3d12ff5acc955b7bee846dae5b5156d6e85a7070"
+      "status": "PASS",
+      "source_sha256": "08ff2f1088cd3fdbad2c33fb3d12ff5acc955b7bee846dae5b5156d6e85a7070",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_108.json",
+      "log_sha256": "5890e617e792d95bbc870122497ca8de4014d12e06919aa731b463a5f7f642a4",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:29:49.184532+00:00",
+      "seconds": 61.430620250001084
     },
     "F10_109": {
-      "status": "not_checked",
-      "source_sha256": "23975a9e15eacf38bac62f8ae7a22bf5146ec85e1127b6f244ac3e70a1842359"
+      "status": "PASS",
+      "source_sha256": "23975a9e15eacf38bac62f8ae7a22bf5146ec85e1127b6f244ac3e70a1842359",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_109.json",
+      "log_sha256": "78b988aa1f3e74e2723570e937f774fc90c9b1ba6deaef0e470f190370271fa7",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:30:52.437778+00:00",
+      "seconds": 63.24939133395674
     },
     "F10_110": {
-      "status": "not_checked",
-      "source_sha256": "0df93c602b13469b1f48fb38980fbd1b1e6b68833c5835574cdffb8de3805580"
+      "status": "PASS",
+      "source_sha256": "0df93c602b13469b1f48fb38980fbd1b1e6b68833c5835574cdffb8de3805580",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_110.json",
+      "log_sha256": "4535df71a072ae2212338ba8d6a6bdbb957de2c774c8bd53eea6184f8a4da94c",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:31:49.138905+00:00",
+      "seconds": 56.6922147909645
     },
     "F10_111": {
-      "status": "not_checked",
-      "source_sha256": "11404808ea594439519563b6e3fc926b84c20865fd3b12fe1fc348836316cf15"
+      "status": "PASS",
+      "source_sha256": "11404808ea594439519563b6e3fc926b84c20865fd3b12fe1fc348836316cf15",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_111.json",
+      "log_sha256": "0459fd4086a9934fe5f18f1586baed1a65378b3005688b094690ae5603e53455",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:32:42.315048+00:00",
+      "seconds": 53.172184749972075
     },
     "F10_112": {
-      "status": "not_checked",
-      "source_sha256": "023850b1be478e671f91bdc97de87d7cf550b3f7c4a14d1a96e695b720305896"
+      "status": "PASS",
+      "source_sha256": "023850b1be478e671f91bdc97de87d7cf550b3f7c4a14d1a96e695b720305896",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_112.json",
+      "log_sha256": "3449d14ccd817a296819d52d366bf92f1780afa3c834ab94b1a661647eb4a015",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:33:40.126611+00:00",
+      "seconds": 57.80663266702322
     },
     "F10_113": {
-      "status": "not_checked",
-      "source_sha256": "aedabbb69ed9a079e887904b0dea63e63daa1d719939c0c796504e5d4fb2e001"
+      "status": "PASS",
+      "source_sha256": "aedabbb69ed9a079e887904b0dea63e63daa1d719939c0c796504e5d4fb2e001",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_113.json",
+      "log_sha256": "b10c7ecbf557075a373e7b67eaaf6264bbe52de26d7f7f2f4c20128da720974f",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:34:33.490162+00:00",
+      "seconds": 53.36051645904081
     },
     "F10_114": {
-      "status": "not_checked",
-      "source_sha256": "2cf7cca09114b0d83cb8538fa6745150e45b8c2492bdd16f4dd9c00162e80ce6"
+      "status": "PASS",
+      "source_sha256": "2cf7cca09114b0d83cb8538fa6745150e45b8c2492bdd16f4dd9c00162e80ce6",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_114.json",
+      "log_sha256": "ee00f0030061d0c5a7446170049d163f615ce42cf706442c20912a80adf5659f",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:35:29.858435+00:00",
+      "seconds": 56.3648895000224
     },
     "F10_115": {
-      "status": "not_checked",
-      "source_sha256": "63396759d46c24a2de1e056b49d554e2d6a3a8e237a93fa032d88d49ca709b79"
+      "status": "PASS",
+      "source_sha256": "63396759d46c24a2de1e056b49d554e2d6a3a8e237a93fa032d88d49ca709b79",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_115.json",
+      "log_sha256": "d78fa3f251b4c19fab5bcd1badba6580955628bf8ef2d671c485b0c256f9f61d",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:36:24.870563+00:00",
+      "seconds": 55.009340499993414
     },
     "F10_116": {
-      "status": "not_checked",
-      "source_sha256": "78278d041d6e0eb2168d3d2b19f0509ee391f5f06a335212072b05d5efc7874c"
+      "status": "PASS",
+      "source_sha256": "78278d041d6e0eb2168d3d2b19f0509ee391f5f06a335212072b05d5efc7874c",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_116.json",
+      "log_sha256": "37fdbcdebd3a7d16ddaeee22525af84999a8df3367c406166f1d7f6932eb8b4b",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:37:23.740205+00:00",
+      "seconds": 58.86500595801044
     },
     "F10_117": {
-      "status": "not_checked",
-      "source_sha256": "b5191c024a469c046de729d3b9897e30374b3dc187188dd0d85e4ac7d86d7672"
+      "status": "PASS",
+      "source_sha256": "b5191c024a469c046de729d3b9897e30374b3dc187188dd0d85e4ac7d86d7672",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_117.json",
+      "log_sha256": "a4447ceabc6a2fef13672d2b38f03dcb5094a4473fd2558e87d442b1dc220c03",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:38:19.231578+00:00",
+      "seconds": 55.487944666005205
     },
     "F10_118": {
-      "status": "not_checked",
-      "source_sha256": "9c1913e8c6ec2c0a5e19c7cfd1ac40703d63519c37270b7c1118e57071909f54"
+      "status": "PASS",
+      "source_sha256": "9c1913e8c6ec2c0a5e19c7cfd1ac40703d63519c37270b7c1118e57071909f54",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_118.json",
+      "log_sha256": "2a3fa02158e9ba487a091c52379208882dac7a386ef4cf7624ae19f3e8858aaf",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:39:13.412826+00:00",
+      "seconds": 54.17788041604217
     },
     "F10_119": {
-      "status": "not_checked",
-      "source_sha256": "90bbcd26163b3e693866e3bfa6e12dceb730885186cb4ab769afc82899251399"
+      "status": "PASS",
+      "source_sha256": "90bbcd26163b3e693866e3bfa6e12dceb730885186cb4ab769afc82899251399",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_119.json",
+      "log_sha256": "864d88af244ba5fc7a32f6764e01fb1ab6663e3cccf6d01f16609d1cb0cbd2c1",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:40:07.466791+00:00",
+      "seconds": 54.05134691600688
     },
     "F10_120": {
-      "status": "not_checked",
-      "source_sha256": "37a0cc05ae7858ac764d15a6c3be4b81865679403d5a50e85f13e4e6dba210d7"
+      "status": "PASS",
+      "source_sha256": "37a0cc05ae7858ac764d15a6c3be4b81865679403d5a50e85f13e4e6dba210d7",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_120.json",
+      "log_sha256": "b9c69db7f1f30e1468c7e02405e14338c09a4e65779c3c6a09337948f7af7abb",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:41:03.682503+00:00",
+      "seconds": 56.213369375036564
     },
     "F10_121": {
       "status": "PASS",
       "source_sha256": "41f30d5a3576947dace0c82d519f937cfda0fde9596164e0b6d3dab045508aa5",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F10_121.json",
       "log_sha256": "a3431e448ed9f9425d58da38578243786fdf148917c057079449f944abee876f",
@@ -2732,20 +3368,42 @@
       "seconds": 127.84729787499998
     },
     "F10_122": {
-      "status": "not_checked",
-      "source_sha256": "05120245b2564616d4779a3b39450d55acef05cc41fe8140d38642514364e777"
+      "status": "PASS",
+      "source_sha256": "05120245b2564616d4779a3b39450d55acef05cc41fe8140d38642514364e777",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_122.json",
+      "log_sha256": "31b9d9a4b287709e932d9f5cd20db5f0576aea96f47ef65c9fd488985b1ed19d",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:41:55.184382+00:00",
+      "seconds": 51.497552999993786
     },
     "F10_123": {
-      "status": "not_checked",
-      "source_sha256": "654058d6d05f85ea48b772c550f906c99c8b35e1452039c6c6d3c56195c3590a"
+      "status": "PASS",
+      "source_sha256": "654058d6d05f85ea48b772c550f906c99c8b35e1452039c6c6d3c56195c3590a",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_123.json",
+      "log_sha256": "c960380a027e1b1c4131af8acdf85aec9e3a96c445912ff9558bc3ee35b8597b",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:42:48.397451+00:00",
+      "seconds": 53.20955337502528
     },
     "F10_124": {
-      "status": "not_checked",
-      "source_sha256": "d1b17e0d8092fe3082172b4f21b8c1f22d22c01fb5c9e15849446304e42e42b0"
+      "status": "PASS",
+      "source_sha256": "d1b17e0d8092fe3082172b4f21b8c1f22d22c01fb5c9e15849446304e42e42b0",
+      "pinned_toolchain": true,
+      "source_change_capture": "before_and_after",
+      "record": "round-logs/F10_124.json",
+      "log_sha256": "de30eb9acea04f2369b680271b41e3ea2e9aa6586ee2b9318e28ac13d6f1ffc7",
+      "axioms": [],
+      "finished_utc": "2026-10-26T03:43:07.643079+00:00",
+      "seconds": 19.24284370901296
     },
     "F11_000": {
       "status": "PASS",
       "source_sha256": "00e6f282566bc8eb21ac4eddc8f217a92c63ac0eb6327c5c264929f6e64a24ae",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_000.json",
       "log_sha256": "4dd89778de4516e426170b2ae19a6842c343e348d5165408942de8534b810fad",
@@ -2756,6 +3414,7 @@
     "F11_001": {
       "status": "PASS",
       "source_sha256": "91e2d236c84136f477503757e33268df1b8bd6cb24943d2978a3cf37661b5a0b",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_001.json",
       "log_sha256": "23ea42a18b8544604cc010d28c4e6f11d91b0533b290bbf6784406b502ec9c7e",
@@ -2766,6 +3425,7 @@
     "F11_002": {
       "status": "PASS",
       "source_sha256": "99d7d7a57041b75f969cbfe160b2c5ece2d7b86de795c1f2f627110f83efd872",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_002.json",
       "log_sha256": "0205526a6f2e844f9c7b39537315bf0767c81064b903af19cc1e00fc35c00f5a",
@@ -2776,6 +3436,7 @@
     "F11_003": {
       "status": "PASS",
       "source_sha256": "a94bfa566e15f97a5a39a3154dabdadcfea9db85cacbf85a63782de29b6ab762",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_003.json",
       "log_sha256": "0a567a001fe4fc302eb7847c6c45074ac992dbb378940a4eda55f8523cdb97e8",
@@ -2786,6 +3447,7 @@
     "F11_004": {
       "status": "PASS",
       "source_sha256": "3a3d4881e0f65a71ff3c2721ba40c014a4347d361818dc25d923843032993c77",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_004.json",
       "log_sha256": "c5cbc238a9ceffd64b43ebff27d1006eafb711f57e93db6b580628097eef6bf5",
@@ -2796,6 +3458,7 @@
     "F11_005": {
       "status": "PASS",
       "source_sha256": "bd4f12c85cb38b92308a87ddc0deab0e3145095d859a1e1cf58b76cd062272c6",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_005.json",
       "log_sha256": "b1f0afa8735ab719ae1a2293096e88d2ab7f120717d634a516e852ae1fb0a1ce",
@@ -2806,6 +3469,7 @@
     "F11_006": {
       "status": "PASS",
       "source_sha256": "f5856a8529199ce115e215c2937b66b080917cd2998ce7efe2272dad60a7c034",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_006.json",
       "log_sha256": "c11310128c458fb2e84b3a26179c8b5c655337335af98c7507384ae19349a7b5",
@@ -2816,6 +3480,7 @@
     "F11_007": {
       "status": "PASS",
       "source_sha256": "92cdf07cba8f750e90ff5cac0a522178cf05e574d11b26aac97ee68ef4e6cbf6",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_007.json",
       "log_sha256": "27fde41f94f548aebab493435fbb3f8781e770ef18e6bc6623ce0579eb3e45d0",
@@ -2826,6 +3491,7 @@
     "F11_008": {
       "status": "PASS",
       "source_sha256": "6c9b0b0ea24fab6886034217f935a1f5e02b31ced60754e180496918557d74f4",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_008.json",
       "log_sha256": "80ebff7507650fbc31a66f56ce8d8095a912e7d3b6967efb49146412e2ab8ad4",
@@ -2836,6 +3502,7 @@
     "F11_009": {
       "status": "PASS",
       "source_sha256": "b56ddf8a4de57a617c875762504da531a290c9b77bc5c43823d8a9c8e3040368",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_009.json",
       "log_sha256": "9b59cc165b335259f2814388023b0172580e7d9bfded73ab822751ebfe084bdd",
@@ -2846,6 +3513,7 @@
     "F11_010": {
       "status": "PASS",
       "source_sha256": "60c68297c389753df3628240540596a765bc861cee3234d1a7860848c2435138",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_010.json",
       "log_sha256": "125b69919e37bc4f4f4469c903463e908d422f2ad4d19abcfbbe884197e08ede",
@@ -2856,6 +3524,7 @@
     "F11_011": {
       "status": "PASS",
       "source_sha256": "66f594d6ae299dc981503963ba5feeeb99580dccc13b99a777a31fe831f5ef97",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_011.json",
       "log_sha256": "8d751e5ef1f547d5f7e039e66518c3adb5bbbe3707b16395e00b7b0653c94798",
@@ -2866,6 +3535,7 @@
     "F11_012": {
       "status": "PASS",
       "source_sha256": "d86f412416b9087271876c9d7c5d5b616abc057caa5e6b84124e2cfaa1a2ad3c",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_012.json",
       "log_sha256": "082fe6b0d9240461aaf72e2191428b0c29ad9b1d3745a0c031bd685f97f8529b",
@@ -2876,6 +3546,7 @@
     "F11_013": {
       "status": "PASS",
       "source_sha256": "02215bfacf6f28681995725af9b44efd630cf0411695a33df3fcd1d7ad5bf235",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_013.json",
       "log_sha256": "ab3cdac644e9870f218c384dea1f27307657470e76efc52bc5eb9290594874b6",
@@ -2886,6 +3557,7 @@
     "F11_014": {
       "status": "PASS",
       "source_sha256": "7be0314d1c7ec6fbd3bb607cb72395bc4fb90da9f214c1b4177dde022a885a62",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_014.json",
       "log_sha256": "133e06b57a960febbac955125de2c53557e681e62686a4324501cab521631af8",
@@ -2896,6 +3568,7 @@
     "F11_015": {
       "status": "PASS",
       "source_sha256": "87853f963fbfc0dcec7f02dc89b5c566199975a347996dcb486ea29e437ff3f5",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_015.json",
       "log_sha256": "636b0b26e8a84d28cddd3510f90e0b99dbc5f06bfe8651066f2978d08bd00d02",
@@ -2906,6 +3579,7 @@
     "F11_016": {
       "status": "PASS",
       "source_sha256": "84aceb0fbc8a1dc035b13979c3fca0a694460cd31be9f026e8ec44b9a7510b7d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_016.json",
       "log_sha256": "1ad2373617940b198836ec10f47806e30a94ce0f406de391fa875eb666a44cd8",
@@ -2916,6 +3590,7 @@
     "F11_017": {
       "status": "PASS",
       "source_sha256": "7c6e1ee529efaa6556c1f73aa4a62177fb6bf8c1a2b967dc2881e5d911d988b0",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_017.json",
       "log_sha256": "e5ae510bc8839b5d2a4feaf508629764584b8ad60037e284222dcca1ad09dde1",
@@ -2926,6 +3601,7 @@
     "F11_018": {
       "status": "PASS",
       "source_sha256": "b57d858ae841ac1c450474fc8cce442870bbc1257ad0f7733d06d0d431c6cc06",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_018.json",
       "log_sha256": "a8748aa952f9be64c8aad79bf2cf6c1c0e58d510e0be609dfd07261a5f1312a0",
@@ -2936,6 +3612,7 @@
     "F11_019": {
       "status": "PASS",
       "source_sha256": "aa723333550ef8849b87d2e6f4f044182e4522df2740dd19b6fa90f393d4acf6",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_019.json",
       "log_sha256": "9f220d084746f3326d3d69a3617d07683d0b61ed26b9c4935b503fdabe650a57",
@@ -2946,6 +3623,7 @@
     "F11_020": {
       "status": "PASS",
       "source_sha256": "2e98cdc522a0843ca1e2269fea3dba3938b7c11b1870a1951ca8935fb7d3ae47",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_020.json",
       "log_sha256": "420c218be5dbed23b5346b2d4aafb94f5d86000e3b5950b07fdf5e0ebc8501de",
@@ -2956,6 +3634,7 @@
     "F11_021": {
       "status": "PASS",
       "source_sha256": "9d36cb0b59994e03edc49849ecdeea8c0d5fc64a569ea90ee0ffcd3cc66597bd",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_021.json",
       "log_sha256": "e8c044200e40b963d9cc58cc789496c6a67993b41fb05875f1bed72a19ecc1c0",
@@ -2966,6 +3645,7 @@
     "F11_022": {
       "status": "PASS",
       "source_sha256": "ae52bcc37b8b5533e5504a047ab084a62e0a4a7c8072af9e87e0050226539214",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_022.json",
       "log_sha256": "8b1aa3627b115855e710df634cce5b3aee32367f323c0618e7e4c48ae0031089",
@@ -2976,6 +3656,7 @@
     "F11_023": {
       "status": "PASS",
       "source_sha256": "6b4402ab7ece4840395fbda59488d58fe66d216334c4d3f5e0c89ae54df7c16e",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_023.json",
       "log_sha256": "3b04b63bbf030103e0dae5dd1ffd1a0e58a278f20a08e09fcc53b4e675b9ada7",
@@ -2986,6 +3667,7 @@
     "F11_024": {
       "status": "PASS",
       "source_sha256": "c3985707e58ca6aefda29230462e6ef47aed1dcb6451a4ee55b4fea0765e9742",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_024.json",
       "log_sha256": "61577a8b9d0e34ad93f8b38db7c9dcab7aa995da24b52c1cef5439fee9fdf59c",
@@ -2996,6 +3678,7 @@
     "F11_025": {
       "status": "PASS",
       "source_sha256": "5ca5fae1ce0b86644292da5b5c318f16d28946f58c35d6656fd6dc1943e9a202",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_025.json",
       "log_sha256": "7ea97bdff1fe070351a908d628dc298e159d583edd5fad35a4695e68a334d36a",
@@ -3006,6 +3689,7 @@
     "F11_026": {
       "status": "PASS",
       "source_sha256": "64b001d21a7db8edcb08e04d1d34be2b21ada4c8b5748dd4476a4eabc2067b80",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_026.json",
       "log_sha256": "5a16ac22fb72d3b710997de78cffd398c944488cd1048d42cb1e6636addd9c52",
@@ -3016,6 +3700,7 @@
     "F11_027": {
       "status": "PASS",
       "source_sha256": "4230ecc07cc2b2ef01958175dbf24b71023dcfc35e0829732b449cd4f405d0a1",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_027.json",
       "log_sha256": "7600a35f0cec94898b359303904a655161657d26642af50d6baa5d74dabe0f27",
@@ -3026,6 +3711,7 @@
     "F11_028": {
       "status": "PASS",
       "source_sha256": "2c559dac2e0a4bd4d2dabc93ec3afc874d5b1448fad27ed98c75299c1a07cb1d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_028.json",
       "log_sha256": "b5f6de888267b9bb68fce64554552852ac5001c3dd5b6cdcd2367e91b21e1d48",
@@ -3036,6 +3722,7 @@
     "F11_029": {
       "status": "PASS",
       "source_sha256": "e9ebcd4d7779fb09e926de84bdf4ca7568e454e9adc56516cfee360492718583",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_029.json",
       "log_sha256": "6870aed4df315b98e9c16f93b5ecd03ff5d7a2ea5d50bababdef930f4f3da8bf",
@@ -3046,6 +3733,7 @@
     "F11_030": {
       "status": "PASS",
       "source_sha256": "bcfcfa773104b39f114f18e1a865ad3432ea8c1e5f24ce40cc98c9405d966a14",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_030.json",
       "log_sha256": "87ab2bd086ce4a48f9dcfda35d53734177f3c390b1210fb5ee62762b02a4a6ec",
@@ -3056,6 +3744,7 @@
     "F11_031": {
       "status": "PASS",
       "source_sha256": "ce4d22fbdf7b725911e8bf8f34c8c4ac757f46ab3a447541b8765eadc0ac17dd",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_031.json",
       "log_sha256": "bffdf365584ec4e030a14fa92e3461cfa39360986e31a2e5ea448038959502ad",
@@ -3066,6 +3755,7 @@
     "F11_032": {
       "status": "PASS",
       "source_sha256": "9cec23d1528703d12441b40504097f692326b13a1cd19e61d504c670c1bb4702",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_032.json",
       "log_sha256": "5433097b5546f0377a47d37bc29e5c05a33f0b7619a13f5aaecba27dc2abe697",
@@ -3076,6 +3766,7 @@
     "F11_033": {
       "status": "PASS",
       "source_sha256": "ca19ccacad7ce1e962bc2f17524ae3a1e13715ec50acdd594b1efa0e74fb5005",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_033.json",
       "log_sha256": "c912c106e9379ba53b881cf03b8e652f6523fe71b905fb491eb12f8edc8306df",
@@ -3086,6 +3777,7 @@
     "F11_034": {
       "status": "PASS",
       "source_sha256": "8db840d94ea8694d334d368ef00e72f395ab9b26bfbdf53271b2839daa394743",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_034.json",
       "log_sha256": "6928799d80d5826cc2236342724c0ea166ff959e9936fb2c07ed8a9e8d31bfaa",
@@ -3096,6 +3788,7 @@
     "F11_035": {
       "status": "PASS",
       "source_sha256": "212e407e2c196f8ba04d7b1da0541703eb5d6ffa94792195edd01d568f87f0ab",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_035.json",
       "log_sha256": "32f221454ebc3ab8b7389c6050c76a1c10cd93c684fe88a7e6aef953350ecdba",
@@ -3106,6 +3799,7 @@
     "F11_036": {
       "status": "PASS",
       "source_sha256": "dc1265bd74f66bbe556de92898615675f5cded4b20def3c2ab809c36dfc73e56",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_036.json",
       "log_sha256": "e4c7cefb5930e7f1dba28eccbe118e2cc4e3f2791c8e3741fe42ad8a4fad7e0c",
@@ -3116,6 +3810,7 @@
     "F11_037": {
       "status": "PASS",
       "source_sha256": "24b1ab001155e00e573cf325d31f85a5832d7f599b79022cd9d9ab7396be43bf",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_037.json",
       "log_sha256": "48b90d44b6cb9cf7d681c7740784ba4ae61c060bf7f4e1e033cb841d57bd354d",
@@ -3126,6 +3821,7 @@
     "F11_038": {
       "status": "PASS",
       "source_sha256": "a8fab665ce4bb12952d0b0fbd2a7b6c22d12ff3ca49be80f297557de518c052d",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_038.json",
       "log_sha256": "802f4d2b6ffc18970725c5239f2b9b3c9c308c1bd02b52359f7327aae6665f27",
@@ -3136,6 +3832,7 @@
     "F11_039": {
       "status": "PASS",
       "source_sha256": "a61d8f2cc4d8f8e633f5fd7ba58e69db987acdf131743c5bffa4023cffdb94f3",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_039.json",
       "log_sha256": "423c0c159f70b3e799d54a8ddf11fa4d60f665a523ff2019574dcc1686567d52",
@@ -3146,6 +3843,7 @@
     "F11_040": {
       "status": "PASS",
       "source_sha256": "4c736703f12a7a0b0a5a7076de9c7eced36036ea0f5f10caf2832714b10edc69",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_040.json",
       "log_sha256": "7c2e3e8dbd7676e2ec0d99f109b7363cefdf54a657c7339f7db5b992e2e4293b",
@@ -3156,6 +3854,7 @@
     "F11_041": {
       "status": "PASS",
       "source_sha256": "7581b1c9a1a5bf7f7afd94af58b275109f09636fe58c52a0ff796e812444dcce",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_041.json",
       "log_sha256": "87d7b0463589fb4b7320ad7bf7491cddf258b801fcd6c90f69c39020b4b67998",
@@ -3166,6 +3865,7 @@
     "F11_042": {
       "status": "PASS",
       "source_sha256": "11a499b21db4dd6fd53810aec914e1fdeb6078212c8a0965b6b7a5261598dc50",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_042.json",
       "log_sha256": "2896620f4249c5cbd83cfbbe2389fb3e275c64a5d41f5ece07ae5b958a20b38a",
@@ -3176,6 +3876,7 @@
     "F11_043": {
       "status": "PASS",
       "source_sha256": "8e1b4fb6bab6a5ecb588f814415dab69c0f5da3ab6cde94ee23655c11c0557e9",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_043.json",
       "log_sha256": "872c0e16200698f2b3845f66334a13733ca0c98f28e360efbe0eb3402440a05b",
@@ -3186,6 +3887,7 @@
     "F11_044": {
       "status": "PASS",
       "source_sha256": "79deba5cb981ff3839f67a06c7e5c4209328947828c4b926ef8d76eb13167d75",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_044.json",
       "log_sha256": "57c0ed4ff173fbccbd79c05261eb7b4aad2400aaa7e658d391b7ae7a65244d23",
@@ -3196,6 +3898,7 @@
     "F11_045": {
       "status": "PASS",
       "source_sha256": "6f907f41cc6cf26c19f431f84ac38d9de157f16f78c2b44cf391e904f28027e1",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_045.json",
       "log_sha256": "cede3ae0c712180ccb89d0b673da9c41bcaa6152dd35b121c229923ed19afb04",
@@ -3206,6 +3909,7 @@
     "F11_046": {
       "status": "PASS",
       "source_sha256": "690001cccf517ac7260826f3cae8b37648c972f369636110685189525f62b6c6",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_046.json",
       "log_sha256": "589dbb14869ad3cb6cd07c507516cc5c876f7b6ba9a9c33a89b4c99ffccfdf6c",
@@ -3216,6 +3920,7 @@
     "F11_047": {
       "status": "PASS",
       "source_sha256": "6aeb827474b2064c1d06820924f4a94c2f70e573b5823ae2b6b3e8f2e9b9f054",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_047.json",
       "log_sha256": "63e7f6c834aa09e66c171151797a96c4d0ac5028e94f3af61da86f582ddf92c3",
@@ -3226,6 +3931,7 @@
     "F11_048": {
       "status": "PASS",
       "source_sha256": "cbc2beac49912ef000a23a51d52593e1a6be9282f5b26a5b177cdaad36ab1876",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_048.json",
       "log_sha256": "548560edec9ad01024de9654e5ed7f0ed0896d01901a4b12a95bf1ccf5feccf1",
@@ -3236,6 +3942,7 @@
     "F11_049": {
       "status": "PASS",
       "source_sha256": "f383e3d4c64e02f4eb4b75efb87cf0b65b649b2faf1e2f38a641503456e991b9",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_049.json",
       "log_sha256": "b0ec03838592118c21b0cc8e205f6c325065485ddde294afea050e41ddacaf52",
@@ -3246,6 +3953,7 @@
     "F11_050": {
       "status": "PASS",
       "source_sha256": "1ee9680380fc8edb7aa97527fce71a11e3b7c30a673f33cdafce2210388ac810",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_050.json",
       "log_sha256": "b9072acc0ba69f9d85d838f29fe0afa6907a7fb2f56566bfa4a83b3b8bf7f89f",
@@ -3256,6 +3964,7 @@
     "F11_051": {
       "status": "PASS",
       "source_sha256": "5919e888015f6ea3b92a7003de5b2daed2ca920709099d59327c14fb5a43c7fb",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_051.json",
       "log_sha256": "eaf2c1f82b670587f357d6c63642906c23c0dfcea10faa52d641cebff1a98c72",
@@ -3266,6 +3975,7 @@
     "F11_052": {
       "status": "PASS",
       "source_sha256": "800c865e1e29f118f02c42450da5586d72ce69b83959e6a0ce7fc4e7ece96f89",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_052.json",
       "log_sha256": "7482e3643e3c0ce9db9abeaa2caf0c52d2ea16a8a71fbf3bf0cff2fb49576571",
@@ -3276,6 +3986,7 @@
     "F11_053": {
       "status": "PASS",
       "source_sha256": "d13637b052792fe4cee3ee5599b1a95c149b8e898de8b21d48c7a23e8c3e9f45",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_053.json",
       "log_sha256": "a43750cd7a489675456a31f0d5c2a73a7f260cff2a2c38af2f340599b61ee70d",
@@ -3286,6 +3997,7 @@
     "F11_054": {
       "status": "PASS",
       "source_sha256": "888b728e71017c97317749d318339576a3011ed992ab5d45fd58a3797ba75ada",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_054.json",
       "log_sha256": "6d5407a5d29f1a5c14c34fea77c12be6da352c73f91b56fe19bee1ed8a267d30",
@@ -3296,6 +4008,7 @@
     "F11_055": {
       "status": "PASS",
       "source_sha256": "010fe4e945f1cf87b2b61989d7d4ba74d3fc8848660010e7b56f1b3c56063817",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_055.json",
       "log_sha256": "28b4e0dfcf0921da6e170eddfe2c3c5f1754c45b069bebf5c4e320c25d5b2be4",
@@ -3306,6 +4019,7 @@
     "F11_056": {
       "status": "PASS",
       "source_sha256": "7556748b1579ba13f548e2be94b0206fa108400d5fc52cf8ac03b2f35593a657",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_056.json",
       "log_sha256": "b5ad9228ea78d0d5599e80ce200434e4ffd84565cbefae6e457cb2c5f96e8a05",
@@ -3316,6 +4030,7 @@
     "F11_057": {
       "status": "PASS",
       "source_sha256": "0d5b7cd5660034f2b1a57eef14054d7f66308a19a835584a4a6094b7ab6e40dd",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_057.json",
       "log_sha256": "425e00f73d67c91d5226705b4fc3b57e6673c45545e95761fc6e4d3b1eab6d6c",
@@ -3326,6 +4041,7 @@
     "F11_058": {
       "status": "PASS",
       "source_sha256": "735299e870efe5ee27688cb2a651aa99fbddbd4a644b65519264b277fa92bcb2",
+      "pinned_toolchain": true,
       "source_change_capture": "before_and_after",
       "record": "round-logs/F11_058.json",
       "log_sha256": "e9b621fd09afec20891e9b2016b787e667a826963badcf2b91a0080f4cf1f162",
@@ -3334,13 +4050,7 @@
       "seconds": 59.42840662500021
     }
   },
-  "remaining_formal_gaps": [
-    "Finish the complete weight-10 closed-case kernel replay.",
-    "Assemble quantified finite coverage for the weight-10 catalog.",
-    "Discharge all finite coverage in the unconditional general min(D,12) source Pauli theorem.",
-    "Complete the literal source-distance minimum theorem and transpose infinity convention.",
-    "Admit every exact-source research dependency in the final theorem import closure; see main_import_closure.pending_modules."
-  ],
+  "remaining_formal_gaps": [],
   "completed_intermediate_source_bounds": [
     {
       "bound": "min(D,10)",
@@ -3351,65 +4061,15 @@
   ],
   "literature_ledger": "../../../literature/truncated-distance12-source-screening.json",
   "prior_art_coverage_limit": "Bounded primary/GitHub searches; native X unavailable. No exhaustive novelty or current-resolution claim.",
-  "verifier_sha256": "3e387cb3a890fea45e830e4ed2f7d294e8c6c8c71ef5500c09eaa8e2046d89c3",
+  "verifier_sha256": "05afcd58bb6622c073bf54cb386dc92b88007aae7b5526d093c80e7b14afa767",
   "main_import_closure": {
     "roots": [
       "DistanceTwelve",
       "CriterionScope"
     ],
     "modules": 269,
-    "admitted_modules": 220,
-    "pending_modules": [
-      "F10_077",
-      "F10_078",
-      "F10_079",
-      "F10_080",
-      "F10_081",
-      "F10_082",
-      "F10_083",
-      "F10_084",
-      "F10_085",
-      "F10_086",
-      "F10_087",
-      "F10_088",
-      "F10_089",
-      "F10_090",
-      "F10_091",
-      "F10_092",
-      "F10_093",
-      "F10_094",
-      "F10_095",
-      "F10_096",
-      "F10_098",
-      "F10_099",
-      "F10_100",
-      "F10_101",
-      "F10_102",
-      "F10_103",
-      "F10_104",
-      "F10_105",
-      "F10_106",
-      "F10_108",
-      "F10_109",
-      "F10_110",
-      "F10_111",
-      "F10_112",
-      "F10_113",
-      "F10_114",
-      "F10_115",
-      "F10_116",
-      "F10_117",
-      "F10_118",
-      "F10_119",
-      "F10_120",
-      "F10_122",
-      "F10_123",
-      "F10_124",
-      "Catalog10",
-      "Coverage10",
-      "ThroughEleven",
-      "DistanceTwelve"
-    ],
-    "all_exact_sources_admitted": false
+    "admitted_modules": 269,
+    "pending_modules": [],
+    "all_exact_sources_admitted": true
   }
 }
