@@ -21,6 +21,10 @@ theorem source_classical_weight_exists (e : Fin 3 → Fin 4 → ZMod L) :
 noncomputable def sourceClassicalDistance (e : Fin 3 → Fin 4 → ZMod L) : ℕ :=
   Nat.find (source_classical_weight_exists e)
 
+theorem source_classical_minimum_realized (e : Fin 3 → Fin 4 → ZMod L) :
+    sourceClassicalHasWeight e (sourceClassicalDistance e) :=
+  Nat.find_spec (source_classical_weight_exists e)
+
 theorem source_classical_minimum_lower (e : Fin 3 → Fin 4 → ZMod L) :
     ClassicalAtLeast e (sourceClassicalDistance e) := by
   intro x hk hn
@@ -66,6 +70,21 @@ this the usual finite minimum; the lower-bound theorem also covers infinity. -/
 noncomputable def sourceQuantumDistance (e : Fin 3 → Fin 4 → ZMod L) : ℕ∞ :=
   sInf {n | sourceQuantumHasWeight e n}
 
+theorem source_quantum_minimum_upper (e : Fin 3 → Fin 4 → ZMod L)
+    (x z : Qubit L → ZMod 2)
+    (hx : ∀ c,(∑ q,GeneralLP.HZ e c q*x q)=0)
+    (hz : ∀ c,(∑ q,GeneralLP.HX e c q*z q)=0)
+    (hn : ¬(fullSpanX e x ∧ fullSpanZ e z)) :
+    sourceQuantumDistance e≤(((CoverWeight.support x)∪(CoverWeight.support z)).card : ℕ∞) :=
+  sInf_le (show sourceQuantumHasWeight e _ from ⟨x,z,hx,hz,hn,rfl⟩)
+
+theorem source_quantum_finite_of_logical (e : Fin 3 → Fin 4 → ZMod L)
+    (x z : Qubit L → ZMod 2)
+    (hx : ∀ c,(∑ q,GeneralLP.HZ e c q*x q)=0)
+    (hz : ∀ c,(∑ q,GeneralLP.HX e c q*z q)=0)
+    (hn : ¬(fullSpanX e x ∧ fullSpanZ e z)) : sourceQuantumDistance e<⊤ :=
+  lt_of_le_of_lt (source_quantum_minimum_upper e x z hx hz hn) (by simp)
+
 theorem source_quantum_minimum_lower_iff (e : Fin 3 → Fin 4 → ZMod L) (b : ℕ) :
     (b : ℕ∞)≤sourceQuantumDistance e ↔
       ∀ x z : Qubit L → ZMod 2,
@@ -83,6 +102,7 @@ theorem source_quantum_minimum_lower_iff (e : Fin 3 → Fin 4 → ZMod L) (b : �
     rintro n ⟨x,z,hx,hz,hn,rfl⟩
     exact_mod_cast h x z hx hz hn
 
+#print axioms source_classical_minimum_realized
 #print axioms source_classical_minimum_lower
 #print axioms source_transpose_zero_kernel_infinity
 #print axioms source_quantum_minimum_lower_iff

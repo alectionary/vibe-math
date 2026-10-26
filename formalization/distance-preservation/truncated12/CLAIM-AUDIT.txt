@@ -1,0 +1,99 @@
+Claim alignment for the strengthened truncated-distance criterion
+
+Status rule: cite the main theorem as checked only when verification.json has
+main_source_distance_theorem_completed=true. A source file or a conditional
+reduction is not the unconditional completed result.
+
+Question and provenance
+
+The motivating source is Raveendran–Declercq–Vasic, arXiv2503.07567v1,
+equation9, Definitions2–5 and SectionVI. Its broader design question asks for
+conditions giving dQ=dC. The strengthened 3x4 entry tests and the truncated
+min(dC,12) target are a project-proposed follow-up, RQ-F25-truncated-distance-12.
+Neither a completed truncated bound nor its supporting lemmas are counted as a
+new canonical completion of the broader equality question.
+
+Objects
+
+For positive L, e : Fin3 -> Fin4 -> ZMod L specifies every monomial entry x^e
+of the fully populated base B over F2[x]/(x^L-1). A zero exponent denotes an
+identity circulant, not a missing block. GeneralLP.C is the actual 3L-by-4L
+binary expansion. GeneralLP.HX and GeneralLP.HZ are the actual 12L-by-25L
+coefficient matrices of [B tensor I4 | I3 tensor B*] and
+[I4 tensor B | B* tensor I3]. No support-only surrogate replaces these matrices.
+The formal statements use NeZero L; the requested L>=2 supplies this instance.
+No oddness, primality or field assumption is imposed on the cyclic modulus.
+
+Hypothesis correspondence
+
+- Classical girth>=8: TannerSix.NoFour (CEdge e) and NoSix (CEdge e).
+  The incidence is the nonzero-entry relation of actual C. ActualIncidence
+  transfers these properties to the quantum check incidence and proves degrees.
+- First row/column zero: explicit row_zero and column_zero fields; zero means
+  the exponent identity. Exactly six normalized exponent variables remain.
+- Full column RCPC: NoColumnPartition ranges over all four distinct column
+  labels. For every partition into two pairs it excludes equality of their
+  exponent-vector sums. This is Definition2 at n=4, checked against the primary
+  text in the second round as well as the original source screen.
+- Full row RCPC: Definition5 at m=3 is rowForm e i j k c=0 for all columns,
+  where rowForm=e(i,c)+e(j,c)-2e(k,c). NoTripleRow is stronger: it forbids equal
+  rowForm values on any three distinct columns. CriterionScope proves that this
+  already excludes full-row RCPC; the redundant separate premise is unnecessary.
+- Transpose comparison: sourceTransposeDistance is the infimum of actual nonzero
+  binary C-transpose kernel weights. DistanceMinima proves it is infinity for a
+  zero transpose kernel, and converts dTranspose>=dC into TransposeAtLeast e dC.
+- Classical minimum: sourceClassicalDistance is Nat.find over actual nonzero
+  C-kernel word weights. GeneralLP.nonzero_classical_exists ensures existence;
+  DistanceMinima proves both attainment and its universal lower-bound property.
+
+Logical quotient and weight
+
+fullSpanX and fullSpanZ quantify every binary linear combination of every HX/HZ
+row. The X word must be in ker HZ and the Z word in ker HX. A Pauli pair is
+nontrivial exactly when its two components are not both in those full spans.
+Its weight is the cardinality of the UNION of supports, not their sum.
+GeneralSymmetry checks sector transport for arbitrary e, and PauliBridge checks
+the union-weight implication. DistanceMinima defines the actual quantum minimum
+as an extended-natural infimum of these Pauli weights and proves the lower-bound
+equivalence. A nontrivial Pauli witness makes it finite; with no such witness it
+is infinity. Thus the lower bound also covers that boundary case, while the
+source's positive-CSS-dimension regime has the usual finite Pauli distance.
+No positive-dimension conclusion is inferred merely from compiling a bound.
+
+Coverage chain
+
+SourceProfiles starts with the actual source kernel and proves that every mixed
+support of weight<=11 has precisely one of the sorted count profiles at weights
+7,10,11. Pure sectors are handled by actual C and C-transpose lower bounds.
+SourceSeven handles the complete seven-singleton profile. TenEncoding constructs
+actual finite patterns from canonical weight-ten supports. SourceEleven derives
+the actual weight-eleven K2,3 graph, proper row coloring, missing-row permutation,
+two orientations and cross matches, and includes the complete constant-row
+stabilizer cancellation branch. ProfileTransport preserves every entry/girth
+and distance hypothesis, the actual kernel, full spans, weight and group counts
+under the required permutations and re-normalization. CountCanonical supplies
+the marker choices, so canonical placement is not an extra input assumption.
+
+Closed checks prove full integer identities of the source matching matrix,
+including all fiber variables. KernelCatalog interprets them in additive groups;
+TargetObstructions and PatternRealizations apply them to actual source incidences.
+CoverageCore assembles the checks into quantified coverage using a balanced
+interval proof. Coverage10 and Coverage11 must be admitted before final use.
+The six torsion-five alternatives give an actual classical word of weight<=10;
+they contradict a proposed weight-ten word strictly below dC. They are not
+qualifying counterexamples, and division by5 is never used.
+
+TwelveConditional is explicitly conditional on the independent weight-ten finite
+coverage. ThroughEleven must discharge that premise with complete_coverage10.
+DistanceTwelve then states the literal source minimum bound. A completed result
+requires these exact sources, all imported research sources and their matching
+kernel records; generated data, discovery output and Python replay are separate.
+
+Limits
+
+The conclusion is a sufficient LOWER bound min(dC,12). It is not an exact quantum
+distance, a necessary criterion, a quantum upper bound or the unrestricted dQ=dC
+answer. The known weaker-criterion counterfamily and all prior frozen experiments
+remain unchanged. The literature ledger credits related methods and records
+bounded prior-art coverage, including the unavailable native-X service. No new
+paper/question cohort is created by this formalization continuation.

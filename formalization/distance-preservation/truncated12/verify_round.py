@@ -1,6 +1,7 @@
-"""Audit exact-source build records and finite-case coverage; never infer the main theorem."""
+"""Audit exact sources, standard axioms, finite coverage and the assembled main theorem."""
 from pathlib import Path
 import argparse,datetime,hashlib,json,re
+from replay_round import local_import_order
 R=Path(__file__).resolve().parent
 ALLOWED={'propext','Classical.choice','Quot.sound'}
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -18,7 +19,7 @@ def build_status(src):
  return dict(status='PASS' if good else 'not_admitted',source_sha256=sha(src),source_change_capture='before_and_after' if 'source_changed_during_build' in x else 'legacy_record_current_hash_matched',record=str(p.relative_to(R)),log_sha256=sha(log),axioms=sorted(axioms),finished_utc=x['finished_utc'],seconds=x['seconds'])
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--final',action='store_true');ap.add_argument('--round-number',type=int,choices=[1,2],default=1);a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--final',action='store_true');ap.add_argument('--round-number',type=int,choices=[1,2],default=2);a=ap.parse_args()
  modules={p.stem:build_status(p) for p in sorted(R.glob('*.lean'))}
  for p in R.parent.glob('*.lean'):
   if (R/'round-logs'/(p.stem+'.json')).exists():modules[p.stem]=build_status(p)
@@ -47,23 +48,30 @@ def main():
   assert x['catalog_sha256']==sha(R/name)
  lift=read(R/'catalog-lift.json');assert lift['status']=='integer_lift_verified'
  for x in lift['reports']:assert x['encoded_sha256']==sha(R/f"encoded-catalog-{x['weight']}.json.gz")
+ required_main=['SourceProfiles','SourceSeven','TenEncoding','CoverageCore','Catalog10','Coverage10','Catalog11','Coverage11','CatalogExclusion11','SourceEleven','ProfileTransport','CountCanonical','SourceTen','TwelveConditional','ThroughEleven','DistanceMinima','DistanceTwelve','CriterionScope']
+ admitted=lambda n:modules.get(n,{}).get('status')=='PASS'
+ closure=local_import_order(['DistanceTwelve','CriterionScope'])
+ pending_imports=[n for n in closure if not admitted(n)]
+ main_done=all(admitted(n) for n in required_main) and not pending_imports and all(x['all_closed_cases_admitted'] for x in coverage.values())
  gaps=[]
- if modules.get('SourceSeven',{}).get('status')!='PASS':
-  gaps.append('Complete actual source support-to-pattern construction and full catalog application for the seven-singleton profile.')
- gaps.append('Complete actual source support-to-labeled-pattern maps for the weight-ten and weight-eleven profiles, including pair matching and graph/color extraction.')
- if modules.get('ConstantRows',{}).get('status')!='PASS':
-  gaps.append('Complete actual constant-label stabilizer-row identification and cancellation.')
- if not all(modules.get(n,{}).get('status')=='PASS' for n in ['ClassicalTransport','EntryTestTransport']):
-  gaps.append('Complete permutation/normalization transport of all entry tests and both classical distance predicates.')
- if not coverage[10]['all_closed_cases_admitted']:
-  gaps.append('Finish the deferred complete weight-ten closed-case kernel replay.')
- if not coverage[11]['all_closed_cases_admitted']:
-  gaps.append('Finish any pending weight-eleven closed-case kernel replay.')
- gaps.append('Assemble uniform finite-catalog coverage, all source transports, the remaining profiles, and the final min(D,12) source distance/Pauli theorem.')
+ if not admitted('TenEncoding'):gaps.append('Complete the actual canonical weight-ten support-to-pattern map.')
+ if not admitted('SourceEleven'):gaps.append('Complete the actual canonical weight-eleven support map and both stabilizer branches.')
+ if not admitted('ProfileTransport') or not admitted('CountCanonical'):gaps.append('Complete transport and canonical ordering for arbitrary actual profiles.')
+ if not admitted('TwelveConditional'):gaps.append('Assemble the full source/Pauli reduction conditional on the independent weight-ten finite coverage.')
+ for w in [10,11]:
+  if not coverage[w]['all_closed_cases_admitted']:gaps.append(f'Finish the complete weight-{w} closed-case kernel replay.')
+  if not admitted(f'Coverage{w}'):gaps.append(f'Assemble quantified finite coverage for the weight-{w} catalog.')
+ if not admitted('ThroughEleven'):gaps.append('Discharge all finite coverage in the unconditional general min(D,12) source Pauli theorem.')
+ if not admitted('DistanceMinima') or not admitted('DistanceTwelve'):gaps.append('Complete the literal source-distance minimum theorem and transpose infinity convention.')
+ if not admitted('CriterionScope'):gaps.append('Check that the strengthened triple-row test subsumes full-row RCPC.')
+ if pending_imports:gaps.append('Admit every exact-source research dependency in the final theorem import closure; see main_import_closure.pending_modules.')
+ if main_done:assert not gaps
+ bounded_result=(dict(bound='dQ >= min(dC,12)',pauli_theorem='source_pauli_bound_twelve',pauli_source='ThroughEleven.lean',distance_theorem='source_distance_bound_twelve',distance_source='DistanceTwelve.lean',scope='Arbitrary positive cyclic modulus, normalized fully populated monomial3x4 base, classical no-four/no-six, exact column/triple-row tests, transpose distance at least classical distance, both full spans and ordinary Pauli union weight. The broader full-equality question is not settled.') if main_done else None)
  intermediate=[]
  if modules.get('ThroughNine',{}).get('status')=='PASS':
   intermediate.append(dict(bound='min(D,10)',theorem='source_pauli_bound_ten',source='ThroughNine.lean',scope='Actual expanded source matrices, both full stabilizer spans and Pauli union weight; ClassicalAtLeast e D and TransposeAtLeast e D under the normalized girth/entry tests. This is strictly weaker than the requested min(D,12) result.'))
- out=dict(checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),round_status='closed_with_partial_formalization' if a.final else 'in_progress',canonical_target_id='L-F25-distance-preservation',bounded_followup_id='RQ-F25-truncated-distance-12',issue='https://github.com/alectionary/vibe-math/issues/1',study_round=a.round_number,study_started_utc={1:'2026-10-25T21:58:56Z',2:'2026-10-26T01:40:59Z'}[a.round_number],deadline_utc={1:'2026-10-26T01:58:56Z',2:'2026-10-26T05:40:59Z'}[a.round_number],main_source_distance_theorem_completed=False,canonical_completion_delta=0,full_canonical_lean_completion_delta=0,claim_boundary='Written certificate-assisted argument and checked structural bridges. Closed synthetic pattern identities do not by themselves prove every actual source support is represented or establish the final distance theorem.',independent_integer_replay=dict(status='PASS',patterns=183312,report='catalog-verification.json'),integer_lift_report='catalog-lift.json',kernel_cases={str(k):v for k,v in coverage.items()},modules=modules,remaining_formal_gaps=gaps,completed_intermediate_source_bounds=intermediate,literature_ledger='../../../literature/truncated-distance12-source-screening.json',prior_art_coverage_limit='Bounded primary/GitHub searches; native X unavailable. No exhaustive novelty or current-resolution claim.',verifier_sha256=sha(Path(__file__)))
+ out=dict(checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),round_status=('closed_with_completed_bounded_followup' if main_done else 'closed_with_partial_formalization') if a.final else 'in_progress',canonical_target_id='L-F25-distance-preservation',bounded_followup_id='RQ-F25-truncated-distance-12',issue='https://github.com/alectionary/vibe-math/issues/1',study_round=a.round_number,study_started_utc={1:'2026-10-25T21:58:56Z',2:'2026-10-26T01:40:59Z'}[a.round_number],deadline_utc={1:'2026-10-26T01:58:56Z',2:'2026-10-26T05:40:59Z'}[a.round_number],main_source_distance_theorem_completed=main_done,completed_bounded_followup=bounded_result,canonical_completion_delta=0,full_canonical_lean_completion_delta=0,claim_boundary=('General Lean truncated distance12 theorem completed, including actual support coverage and literal source minima; broader dQ=dC remains open.' if main_done else 'The min(D,10) theorem is complete. Current min(D,12) source reduction and case coverage remain explicitly separated; no unconditional stronger result is claimed until every required source and finite-coverage proof passes.'),independent_integer_replay=dict(status='PASS',patterns=183312,report='catalog-verification.json'),integer_lift_report='catalog-lift.json',kernel_cases={str(k):v for k,v in coverage.items()},modules=modules,remaining_formal_gaps=gaps,completed_intermediate_source_bounds=intermediate,literature_ledger='../../../literature/truncated-distance12-source-screening.json',prior_art_coverage_limit='Bounded primary/GitHub searches; native X unavailable. No exhaustive novelty or current-resolution claim.',verifier_sha256=sha(Path(__file__)))
+ out['main_import_closure']=dict(roots=['DistanceTwelve','CriterionScope'],modules=len(closure),admitted_modules=len(closure)-len(pending_imports),pending_modules=pending_imports,all_exact_sources_admitted=not pending_imports)
  (R/'verification.json').write_text(json.dumps(out,indent=2)+'\n')
- print(json.dumps(dict(round_status=out['round_status'],kernel_cases={str(w):(v['admitted_patterns'],v['expected_patterns']) for w,v in coverage.items()},main_source_distance_theorem_completed=False,passed_modules=sum(x['status']=='PASS' for x in modules.values())),indent=2))
+ print(json.dumps(dict(round_status=out['round_status'],kernel_cases={str(w):(v['admitted_patterns'],v['expected_patterns']) for w,v in coverage.items()},main_source_distance_theorem_completed=main_done,passed_modules=sum(x['status']=='PASS' for x in modules.values())),indent=2))
 if __name__=='__main__':main()

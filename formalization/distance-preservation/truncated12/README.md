@@ -10,44 +10,35 @@ comparison, using actual source matrices, both entire stabilizer row spans and
 Pauli union weight. Its predicate form assumes both classical kernel distances
 are at least `D` and proves the union-weight lower bound `min(D,10)`.
 
-[RESEARCH-NOTE.txt](RESEARCH-NOTE.txt) gives a certificate-assisted written
-argument for `dQ >= min(dC,12)` under the exact stated entry tests. A complete
-source-level Lean theorem for that stronger bound has **not** been assembled. The broader
-source question asking for sufficient conditions for `dQ=dC` remains distinct.
+The second authorized block has checked the full general reduction in
+[TwelveConditional.lean](TwelveConditional.lean), conditional only on the
+independent finite weight-ten certificate coverage. Both remaining actual
+support constructions are complete: [TenEncoding.lean](TenEncoding.lean)
+and [SourceEleven.lean](SourceEleven.lean). The latter includes the constant-label
+full-stabilizer branch and the actual colored K2,3 realization.
+[ProfileTransport.lean](ProfileTransport.lean) and
+[CountCanonical.lean](CountCanonical.lean) discharge arbitrary group placement
+and re-normalization. [DistanceMinima.lean](DistanceMinima.lean) checks the actual
+classical, transpose and quantum minimum definitions, including infinity.
+[CriterionScope.lean](CriterionScope.lean) checks the redundancy of the full-row
+RCPC premise under the stronger three-column test.
 
-[SourceProfiles.lean](SourceProfiles.lean) proves `source_mixed_count_profiles`:
-from the actual expanded source kernel, girth hypotheses and support weight
-at most eleven, it derives
-exactly the three mixed block-count profiles. [ExceptionalGraph.lean](ExceptionalGraph.lean)
-identifies the exceptional five-coordinate graph with `K2,3`.
-[SupportSingletons.lean](SupportSingletons.lean) derives the singleton label
-alternative from actual source supports. [ConstantRows.lean](ConstantRows.lean)
-identifies constant-label supports with a complete HX row and proves the
-exceptional-group cancellation below the classical distance.
-[MatchingRows.lean](MatchingRows.lean) derives full integer matching equations
-from actual source incidences. [TargetObstructions.lean](TargetObstructions.lean)
-interprets all 64 certificate outcome types, and
-[PatternRealizations.lean](PatternRealizations.lean) excludes certified patterns
-**conditional on an actual realization witness**. Constructing that witness
-for every source support is a separate obligation. [SourceSeven.lean](SourceSeven.lean) completes the seven-singleton profile:
-actual source kernel words with those counts lie in the entire HX row span.
-It includes a quantified 144-pattern certificate theorem and constructs actual
-source realizations for the injective label case. Other modules cover pure sectors,
-torsion classical words, full-span/gauge transport, actual classical/transpose
-distance transport and normalized entry-test transport, cycle
-obstructions, both CSS sectors and Pauli union weight.
+The remaining work is the weight-ten closed-case replay and its unconditional
+assembly in [Coverage10.lean](Coverage10.lean),
+[ThroughEleven.lean](ThroughEleven.lean) and
+[DistanceTwelve.lean](DistanceTwelve.lean). Those source files are not yet
+admitted. The broader source question asking for sufficient conditions for
+`dQ=dC` remains distinct.
 
-[NEXT-STEPS.txt](NEXT-STEPS.txt) gives the concrete handoff for the remaining
-support constructions and catalog assembly.
-
+[RESEARCH-NOTE.txt](RESEARCH-NOTE.txt) gives the mathematical argument;
+[CLAIM-AUDIT.txt](CLAIM-AUDIT.txt) traces the source hypotheses, actual objects,
+complete quotient and final statement.
 [verification.json](verification.json) is authoritative for exact-source build
-status, admitted case intervals and pending work. Generated theorem source is
-not a successful check until its matching build record passes. In particular,
-the complete weight-ten kernel replay was deferred to fit the cap. All 58,752
-weight-eleven cases, all 144 weight-seven cases and 7,000 weight-ten cases pass;
-the latter include all six exceptional classical-torsion alternatives.
-The independent standard-library verifier checks all **183,312** integer pattern
-certificates; that is separate from Lean coverage and actual support coverage.
+status and admitted intervals. The first block's manifest is preserved in
+[round1-verification.json](round1-verification.json). All 58,752 weight-eleven
+and all 144 weight-seven checks pass. The independent standard-library verifier
+checks all **183,312** integer pattern certificates; this is separate from Lean
+coverage and actual support coverage.
 
 ## Reproduce the checks
 
