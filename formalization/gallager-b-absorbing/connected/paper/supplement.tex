@@ -1,0 +1,104 @@
+\section{Checked proofs, exact interfaces and reproduction}\label{app:lean}
+The complete proof module imports only \texttt{Std}, using Lean 4.36.0-rc1.
+Finite statements use kernel-evaluated \texttt{decide}; the graph walks,
+spanning-tree propagation and eventual stopping arguments are structural
+proofs. The bit-vector projection simplifier \texttt{bv\_normalize} produces
+ordinary proof terms. No native decision or SAT certificate oracle is used.
+Every theorem's audited dependencies are restricted to \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}.
+
+\subsection{Public files and proof map}
+The
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/connected/Connected.lean}{complete current Lean module},
+\href{https://github.com/alectionary/vibe-math/blob/65bcfe0d8573a392f250295fcfa3619b586e4159/formalization/gallager-b-absorbing/connected/Connected.lean}{immutable checked module},
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/connected/verification.json}{build and dependency manifest}, and
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/connected/verify.py}{independent verifier}
+are part of the published artifact. The
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/connected/prior-art.json}{source-comparison ledger}
+records inspected versions and access limits; the
+\href{https://github.com/alectionary/vibe-math/blob/master/literature/connected-gallager-source-screening.json}{complete source-screening ledger}
+records harvested questions separately from this project-derived follow-up.
+
+\small
+\renewcommand{\arraystretch}{0.9}
+\begin{longtable}{p{.28\textwidth}p{.60\textwidth}}
+\toprule Written assertion & Matching formal declarations\\\midrule\endhead
+Literal CSS construction & \texttt{xs}, \texttt{zs}, \texttt{css\_commutation},
+\texttt{two\_CNOT\_X\_bridge}, \texttt{two\_CNOT\_Z\_bridge}\\
+Lemma~\ref{lem:css}: basis and ranks & \texttt{actual\_x\_rows\_in\_basis\_span},
+\texttt{basis\_rows\_are\_actual}, \texttt{x\_basis\_independent},
+\texttt{z\_basis\_independent}\\
+Lemma~\ref{lem:css}: absorbing set & \texttt{selected\_absorbing},
+\texttt{induced\_checks\_even}, \texttt{selected\_size},
+\texttt{selected\_variable\_degrees}, \texttt{distinct\_x\_checks}\\
+Logical witnesses & \texttt{logical\_Z\_commutes}, \texttt{logical\_Z\_not\_stabilizer},
+\texttt{logical\_X\_commutes}, \texttt{logical\_pair\_anticommutes}\\
+Lemma~\ref{lem:recovery}: exact votes/output & \texttt{first\_vote\_counts},
+\texttt{first\_output\_formula}, \texttt{outside\_edges\_zero}\\
+Lemma~\ref{lem:recovery}: syndrome and recovery & \texttt{first\_hard\_matches},
+\texttt{first\_edge\_matches}, \texttt{complete\_quantum\_recovery}\\
+Stopped dynamics, Theorem~\ref{thm:main} & \texttt{terminal\_matches},
+\texttt{terminal\_equals\_first}, \texttt{all\_checks\_eventually\_correct},
+\texttt{all\_variables\_converge}, \texttt{selected\_not\_trapping}\\
+Lemma~\ref{lem:connected} & \texttt{hub\_incidence}, \texttt{checks\_nonempty},
+\texttt{node\_to\_hub}, \texttt{decoding\_graph\_connected}\\
+Lemma~\ref{lem:cut}: every cut & \texttt{edge\_0\_projection} through
+\texttt{edge\_13\_projection}, \texttt{tree\_crosses}, \texttt{cut\_anticommutation}\\
+Lemma~\ref{lem:cut}: physical product obstruction & \texttt{span\_x\_commutes},
+\texttt{CSSStabilizer}, \texttt{SplitsAcross}, \texttt{no\_physical\_product\_cut}\\
+\bottomrule
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+\normalsize
+The finite independence statements say that all binary coefficient words
+produce different combinations, while the two row/basis bridge statements
+identify the span of the actual redundant rows. Together they are the
+binary rank certificates used in the written CSS dimension calculation. The supported-logical consequence is checked by \texttt{no\_supported\_Z\_logical}.
+\lstset{escapeinside={(*@}{@*)}}
+
+\subsection{Actual matrices and the complete decoding model}
+\texttt{Input = BitVec 7} includes every subset of $A$, including empty
+and full. \texttt{Word = BitVec 15} is the entire physical word, and
+\texttt{Msg} includes all actual check/variable pairs. Nonedges are masked
+out explicitly. \texttt{ZSpan} enumerates all combinations of the seven
+opposite generators; it does not check only individual rows.
+Unicode symbols in the following listing are rendered typographically;
+the linked UTF-8 Lean source is the checked file.
+\lstinputlisting[firstline=1,lastline=111]{proof-listing.txt}
+\subsection{Constructed walks in the actual Tanner graph}
+The dependency chain is hub incidence $\to$ variable/check walks $\to$
+walk reversal and concatenation $\to$ every ordered pair of nodes.
+Both sides of the bipartite graph are included as the two constructors
+of \texttt{Sum V V}.
+\lstinputlisting[firstline=112,lastline=156]{proof-listing.txt}\href{https://github.com/alectionary/vibe-math/blob/65bcfe0d8573a392f250295fcfa3619b586e4159/formalization/gallager-b-absorbing/connected/Connected.lean#L154}{Direct immutable link to the connectivity proof.}
+\subsection{Projection identities and the universal cut proof}
+The fourteen two-coordinate identities are ground matrix calculations
+with a universally quantified cut. One complete representative proof is
+printed below; the thirteen parallel identities are in the complete linked
+module. \texttt{bv\_normalize} reduces the bit operations; the remaining
+one-bit Boolean contradictions are proved by the two tiny kernel-decided
+lemmas. It introduces no trusted native computation dependency.
+\lstinputlisting[firstline=157,lastline=181]{proof-listing.txt}
+The following is the complete spanning-tree propagation and cut witness
+proof, followed by the whole product-obstruction proof. The disjunction
+in \texttt{TreeCrosses} uses exactly the fourteen edges of Table~\ref{tab:tree}.
+If all comparisons are equal, every bit equals the root bit. Extensionality
+then makes the mask zero or all ones, contradicting a nontrivial cut.
+\lstinputlisting[firstline=312,lastline=462]{proof-listing.txt}\href{https://github.com/alectionary/vibe-math/blob/65bcfe0d8573a392f250295fcfa3619b586e4159/formalization/gallager-b-absorbing/connected/Connected.lean#L451}{Direct immutable link to the physical product obstruction.}
+\subsection{Stopped executions, gate bridges and analytic formulas}
+The source algorithm halts on a syndrome match. \texttt{stoppedOutput}
+therefore repeats the accepted terminal word after time one; the already
+proved first-step equalities make this a faithful representation for every
+input. The witnesses $L=1$ prove both eventual quantifiers for all natural
+times, and their negations rule out a trapping input. The remainder prints
+the exact gate maps, the independent-basis interfaces, the supported-logical
+consequence and the analytic vote/output descriptions.
+\lstinputlisting[firstline=463,lastline=542]{proof-listing.txt}\href{https://github.com/alectionary/vibe-math/blob/65bcfe0d8573a392f250295fcfa3619b586e4159/formalization/gallager-b-absorbing/connected/Connected.lean#L88}{Direct immutable link to recovery modulo the full opposite span.}
+\subsection{Reproduction and evidence levels}
+Run \texttt{python3 build.py --lean /path/to/lean} in the artifact folder
+with the pinned toolchain, then \texttt{python3 verify.py --check}.
+The clean build reports every theorem's dependencies. The independent
+literal-list implementation reconstructs the two CNOT maps, all $128$
+inputs, complete binary spans and all $32,766$ nontrivial cuts. Its JSON
+certificate supplies diagnostics, while Lean supplies the formal proofs.
+The original fourteen-coordinate artifact remains preserved separately.

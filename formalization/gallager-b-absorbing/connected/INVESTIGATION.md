@@ -6,7 +6,7 @@ Session: connected-20261026T144345Z-01a176d9
 UTC start: 2026-10-26T14:43:45Z; hard deadline: 2026-10-26T18:43:45Z.
 User authorization: work up to four hours on the previously proposed stronger construction and verified publication workflow.
 Work branch: research/L-P09-connected-20261026T144345Z
-Claim: refs/heads/claims/L-P09-all-absorbing, pending create-only acquisition.
+Claim: refs/heads/claims/L-P09-all-absorbing, owned by this session at f65da2d24e4088a6487a80290d3ff483fc7162e3 (create-only API acquisition and read-back verified).
 
 ## Prior work and exact new deliverable
 The unrestricted v2 question already has a checked seven-variable (7,0) counterexample. The fourteen-coordinate embedding is disconnected and fixes the selected component as a stabilizer state. Those completed results are retained; this is a follow-up, not another new author-posed problem.
@@ -20,3 +20,20 @@ All-errors correction forbids a nontrivial logical of the decoded error type sup
 First route: CSS-preserving CNOT/column transformations of the existing pair, followed by exact graph/absorbing/coupling and all-supported-error checks. Preserve both successful and unsuccessful candidates. Stronger girth, degree-three, distance and both-Pauli-sector assertions are not silently added.
 
 Stop at a faithful checked construction and paper, or a precise unresolved report by the deadline. Reserve time for verification, reconciliation and publication; do not consume the whole block in unbounded search. No Project requested. No agent delegation requested or used.
+
+## Decisive result
+The accepted candidate is the explicit fifteen-qubit pair in Connected.lean and candidate15.json. Its actual thirty-vertex decoding graph is connected and all fifteen X rows are distinct. All128 supported Z-errors pass both first-step syndrome tests and complete opposite-stabilizer recovery. An independently rediscovered fourteen-edge overlap spanning tree obstructs all32766 nontrivial physical product cuts. This supersedes the proposed local-rank certificate with a stronger representation-independent obstruction. The local stabilizer rank on A is six (independent diagnostic), and the full ranks are seven/seven.
+
+The rejected fourteen-coordinate route fails sixteen outgoing-edge syndrome tests; it is retained rather than silently counted successful. No new source-posed target or completed coverage count is added for this follow-up. Asymmetric CSS, four-cycles and an exterior degree-one auxiliary variable remain explicit limits. The source's same-matrix row-space wording and unavailable journal full text are not certified by our asymmetric construction.
+
+The resumed instruction continues the original four-hour deadline; it does not restart it. Source search and manuscript revision dates are recorded separately from proof completion and publication in the final manifest.
+
+Candidate existence was publicly recorded by 14:55:50 UTC in issue comment6419173858, within725seconds of block start. This is a discovery upper bound, not the clean Lean completion time; the latter is recorded in verification.json.
+
+## Verification resource record
+The final module is checked with a clean temporary output directory. A900-second run expired during severe host memory pressure; this is a local execution cap, not a failed mathematical case. The subsequent build uses one Lean worker, streamed profiling/dependency logs and a3000-second cap within the unchanged four-hour deadline. Verification.json records only the successful final build, if completed.
+
+The one-worker compilation returned0 and produced its clean .olean on the first full successful run; every theorem had standard dependencies. The wrapper audit then rejected a theorem name interrupted by an interleaved profiling stderr message. Both raw logs are retained in diagnostics/. This is an output-transport/parser failure, not a Lean proof failure. The corrected build separates stdout and profiling stderr and reruns the clean audit; its final verification record is authoritative.
+
+## Completed proof audit
+Final clean build checked all57 theorems at 2026-10-26T17:34:53.494751+00:00 in 276.78 wall seconds, using one worker and separate profiling output. All theorem dependencies are standard; no admitted or native-oracle proof occurs. The independent128-input replay passed again. The manuscript has13 visually reviewed pages. Paper-only source/privacy and scope checks are complete; no further mathematical scope is added.

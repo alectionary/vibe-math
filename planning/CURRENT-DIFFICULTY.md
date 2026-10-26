@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 344 entries (163 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 26, 2026. Low-confidence planning priors for all 353 entries (172 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 26, 2026. Low-confidence planning priors for all 344 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 43 | 43 |
+| Unestimated / scope gate | 45 | 45 |
 
 ### 2026-Geraci-O01
 
@@ -872,11 +872,11 @@ Under the paper’s syndrome-based Gallager-B decoder, is every absorbing set a 
 - Proof transfer, given a complete proof: Tier 0: Complete.
 - Research: Completed target. completed_unrestricted_counterexample
 
-Exact source compared: arXiv:2307.14532v2, SectionII-B, Definitions3/5 and SectionVI. Stopped outputs extend constantly. Both hard and outgoing-edge syndrome tests pass. The ordinary Steane pairing still permits logical miscorrections; the separate actual CSS pair eliminates these for every first-component Z-error. Connected-ambient, high-girth, column-weight3 and selected-logical-support variants are not answered. Journal full text was access restricted.
+The original fourteen-coordinate artifact is disconnected. The separate connected follow-up proves a fifteen-coordinate asymmetric CSS example with no physical product split and complete recovery of all128 supported Z-errors under both syndrome tests. Same-matrix/symmetric CSS, girth/degree restrictions and both-sector results remain unassessed; final journal full text is an access gap.
 
 First milestone: Complete: checked counterexample and actual CSS recovery.
 
-Progress: All128 supported errors; complete actual-matrix, update and stabilizer-span bridges checked. [Checked artifact](../formalization/gallager-b-absorbing/README.md).
+Progress: Connected fifteen-coordinate strengthening also complete within its asymmetric-CSS scope; no physical product cut. [Checked artifact](../formalization/gallager-b-absorbing/connected/README.md).
 
 Basis: Retained October 21 family prior with current eligibility/resolution checks; not a new implementation benchmark. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p09-all-absorbing).
 
@@ -5323,3 +5323,147 @@ First milestone: Verify the exact historical statement and subsequent resolution
 Gate: Freeze historical scope and check modern resolution before any research recommendation.
 
 Basis: Historical primary-source question screen; no current open-status inference. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f95-small-experiments).
+
+### L-F97-computation-entanglement
+
+Historical direction: study entanglement in quantum computation involving stabilizer codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad historical direction; no current unresolved-status inference.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f97-computation-entanglement).
+
+### L-F97-stabilizer-witnesses
+
+Historical direction: construct bipartite and multipartite entanglement witnesses from stabilizer generators.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+An application direction, not a specified optimization problem. Modern status unassessed.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f97-stabilizer-witnesses).
+
+### L-F98-entangled-nonlocal-classification
+
+Characterize which entangled states can yield Bell violations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad background problem; original literature credit belongs to the references in the source, not newly posed here.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f98-entangled-nonlocal-classification).
+
+### L-F98-pure-gme-gmnl
+
+Does every genuinely multipartite entangled pure state exhibit genuine multipartite nonlocality?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retain pure states; the same paragraph explicitly rules out a universal mixed-state implication. Original background references12-14 are discovery leads, not newly screened papers.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f98-pure-gme-gmnl).
+
+### L-F98-qudit-gme-mfnl
+
+Is every genuinely multipartite entangled qudit stabilizer subspace multipartite fully nonlocal?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Local dimension greater than2; the main theorem handles qubits and the graph-state subsection handles a restricted qudit case. Keep all-subspace scope and definitions in the source.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f98-qudit-gme-mfnl).
+
+### L-F98-bell-inequalities
+
+Construct Bell inequalities detecting genuine multipartite nonlocality of the stabilizer states or subspaces under discussion.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source proposes a strategy; no fixed family, efficiency or optimality requirement.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f98-bell-inequalities).
+
+### L-F98-experimental-nonlocality
+
+Experimentally determine the genuine nonlocality content of multipartite stabilizer mixed states using the bipartite bound.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Experimental direction using Theorem2, not a new existence conjecture about all states.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f98-experimental-nonlocality).
+
+### L-F98-tighter-nonlocality-bound
+
+Improve the genuine nonlocality-content bound in Equation12 using measured m-party subsystems.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+A tighter-bound research request; exact optimization objective and strictness regime require freezing before theorem tracking.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f98-tighter-nonlocality-bound).
+
+### L-F97-multipartite-conversion
+
+Historical direction: quantify multipartite entanglement resources and their interconversion relations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Historical broad motivation, citing earlier references11/12; not claimed first posed by this paper. Its efficiently computed stabilizer measure is not a complete general operational resource-conversion theory. Modern resolution unassessed.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f97-multipartite-conversion).
