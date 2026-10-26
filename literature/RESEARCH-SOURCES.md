@@ -1322,3 +1322,40 @@ Owidiusz Makuta; Remigiusz Augusiak. 23 August 2025 journal publication. [Primar
 - Provenance: [source review ledger](../literature/connected-gallager-source-screening.json).
 
 - Question screen: [relevant sections screened](../literature/connected-gallager-source-screening.json); 6 linked canonical targets.
+
+## BravyiLeemhuisTerhal2010 — Majorana Fermion Codes
+
+Sergey Bravyi; Bernhard Leemhuis; Barbara M. Terhal. arXiv v2, 27 April 2010; first submitted 21 April 2010. [Primary source](https://arxiv.org/pdf/1004.3791v2).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections3/5/6 and Introduction.
+- Contribution: Classical algebra and weakly self-dual code conversions.
+- Comparison limit: Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-F99-self-correction](OPEN-PROBLEMS.md#l-f99-self-correction), [L-F99-physical-realization](OPEN-PROBLEMS.md#l-f99-physical-realization), [L-F99-emergent-order](OPEN-PROBLEMS.md#l-f99-emergent-order).
+- Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).
+
+- Question screen: [full text screened](../literature/symmetric-css-source-screening.json); 3 linked canonical targets.
+
+## HaahHastingsPoulinWecker2017 — Magic State Distillation with Low Space Overhead and Optimal Asymptotic Input Count
+
+Jeongwan Haah; Matthew B. Hastings; David Poulin; Dave Wecker. arXiv v3, 29 September 2017; first submitted 22 March 2017; Quantum publication 3 October 2017. [Primary source](https://arxiv.org/pdf/1703.07847v3).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections3/4 and introduction/discussion, appendices A-E screened.
+- Contribution: Classical algebra and weakly self-dual code conversions.
+- Comparison limit: Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-F100-architecture-cost](OPEN-PROBLEMS.md#l-f100-architecture-cost), [L-F100-gamma-bound](OPEN-PROBLEMS.md#l-f100-gamma-bound), [L-F100-explicit-good-families](OPEN-PROBLEMS.md#l-f100-explicit-good-families), [L-F100-ccz-normal-codes](OPEN-PROBLEMS.md#l-f100-ccz-normal-codes).
+- Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).
+
+- Question screen: [full text screened](../literature/symmetric-css-source-screening.json); 4 linked canonical targets.
+
+## ECZooSelfDualCSS — Self-dual CSS code
+
+Error Correction Zoo contributors. Entry inspected 26 October 2026. [Primary source](https://errorcorrectionzoo.org/c/self_dual_css).
+
+- Record type: non paper expository source; access: entry read.
+- Inspected locator: Definitions, aliases, parent relation and references.
+- Contribution: Terminology/discovery lead to BLT2010 and HHPW2017; primary theorems checked separately.
+- Comparison limit: Not used as primary proof evidence. Bibliography alone did not trigger recursive paper screening.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing).
+- Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).

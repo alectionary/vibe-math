@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 353 entries (172 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 26, 2026. Low-confidence planning priors for all 360 entries (179 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -876,7 +876,7 @@ The original fourteen-coordinate artifact is disconnected. The separate connecte
 
 First milestone: Complete: checked counterexample and actual CSS recovery.
 
-Progress: Connected fifteen-coordinate strengthening also complete within its asymmetric-CSS scope; no physical product cut. [Checked artifact](../formalization/gallager-b-absorbing/connected/README.md).
+Progress: The connected asymmetric witness remains complete. A subsequent general proof rules out odd zero-syndrome supports under equality of full X/Z spaces, and freezes the unresolved even-support full/one-step questions. No even-support construction search performed. [Checked artifact](../formalization/gallager-b-absorbing/symmetric/README.md).
 
 Basis: Retained October 21 family prior with current eligibility/resolution checks; not a new implementation benchmark. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p09-all-absorbing).
 
@@ -5467,3 +5467,115 @@ First milestone: Verify exact scope and modern resolution.
 Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
 
 Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f97-multipartite-conversion).
+
+### L-F99-self-correction
+
+Historical direction: characterize robust quantum storage at nonzero temperature under geometric locality constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad physical-regime-dependent direction, with a partial negative 2D Majorana answer in the same paper; do not retain that answered restricted case as open.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f99-self-correction).
+
+### L-F99-physical-realization
+
+Find physical mechanisms realizing interacting Majorana fermion codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Explicit author-stated broad implementation problem; no fixed mathematical model is supplied; modern status unassessed.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f99-physical-realization).
+
+### L-F99-emergent-order
+
+Use the Majorana-code framework to explain emergence of topological order from microscopic interactions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad physical explanation direction, not a fixed unresolved proposition.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f99-emergent-order).
+
+### L-F100-architecture-cost
+
+Compare realistic architecture-dependent costs of magic-state distillation and alternative gate constructions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Authors explicitly defer architecture-dependent cost comparison to future work.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-architecture-cost).
+
+### L-F100-gamma-bound
+
+Historical conjecture: magic-state-distillation overhead exponent gamma cannot be below one.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Held formulation: source attributes the conjecture to Bravyi--Haah2012 ref12; the admissible protocol/resource/error class and original wording require direct verification before recommendation. Current resolution unassessed. Repeated abstract/discussion optimality mentions merged here.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-gamma-bound).
+
+### L-F100-explicit-good-families
+
+Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The random/greedy existence bound is already established. The explicit/efficient construction request needs frozen algorithmic quantifiers; current resolution unassessed.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-explicit-good-families).
+
+### L-F100-ccz-normal-codes
+
+Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Speculative author direction, with the noncommuting rejection-probability limitation explicitly noted. Not a general CCZ construction question.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-ccz-normal-codes).
