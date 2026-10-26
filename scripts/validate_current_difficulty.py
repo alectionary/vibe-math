@@ -10,7 +10,7 @@ assert len(r)==len({x['target_id'] for x in r})==len(claims)==s['entries']==181+
 assert {x['target_id'] for x in r}==set(claims)
 extensions=json.loads((R/'literature/research-reconciliation.json').read_text()).get('indexing_extensions',[])
 assert sum(x['eligible_for_coverage'] for x in r)==s['eligible_targets']==111+sum(x['added_eligible_targets'] for x in extensions)
-assert sum(x['completed'] for x in r)==s['completed_lean_targets']==5
+assert sum(x['completed'] for x in r)==s['completed_lean_targets']==6
 assert sum(bool(x['gate']) for x in r)==s['gated_entries']==76+s.get('unassessed_added_entries',0)
 assert sum(bool(x['gate']) and x['eligible_for_coverage'] for x in r)==s['eligible_gated_entries']==6+sum(x['added_eligible_targets'] for x in extensions)
 assert s['newly_assessed_entries']==67 and s['historical_priors_retained']==114
@@ -28,7 +28,7 @@ for x in r:
 for key,field in [('statement_setup','statement_tiers'),('proof_transfer_given_correct_complete_proof','conditional_proof_tiers')]:
  assert dict(collections.Counter(str(x[key]['tier']) if x[key] else 'hold' for x in r if x['eligible_for_coverage']))==s[field]
 assert s['recommendation']=='L-P11-forbidden' and not s['no_new_lean_statements_or_proofs']
-assert s['recommendation_status']=='selected_project_completed_for_recorded_cycle_scope'
+assert s['recommendation_status']=='L-P09-all-absorbing_completed_by_unrestricted_counterexample'
 for file in ['NEXT-PROJECT.md','CURRENT-DIFFICULTY.md']:
  doc=(D/file).read_text()
  for href in re.findall(r'\]\(([^)]+)\)',doc):
@@ -38,4 +38,4 @@ report=(D/'CURRENT-DIFFICULTY.md').read_text();page=(D/'current-difficulty.html'
 for x in r:assert f'### {x["target_id"]}\n' in report and x['target_id'] in page
 assert 'given a correct complete proof' in (D/'NEXT-PROJECT.md').read_text()
 assert sum(x['research_status']=='planning_not_yet_assessed' for x in r)==s['unassessed_added_entries']==6+sum(x['added_entries'] for x in extensions)
-print(f'Validated {len(r)} planning records, including {s["unassessed_added_entries"]} explicitly unassessed additions, {s["eligible_targets"]} eligible targets and five completed targets.')
+print(f'Validated {len(r)} planning records, including {s["unassessed_added_entries"]} explicitly unassessed additions, {s["eligible_targets"]} eligible targets and {s["completed_lean_targets"]} completed targets.')

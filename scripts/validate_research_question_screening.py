@@ -26,7 +26,7 @@ assert sum(r['eligible_for_coverage'] for r in rows)==a['baseline']['eligible_ta
 assert len(coverage)==a['baseline']['paper_records']+a['new_paper_records']+sum(len(x['added_paper_ids']) for x in later)
 assert sum(c['coverage_status'].endswith('full_text_screened') for c in coverage.values())==a['baseline']['full_text_screens']+a['full_text_screens_added']+sum(x['full_text_screens_added'] for x in later)
 assert a['baseline']['verified_complete_lean_targets']==4
-assert sum(r['eligible_for_coverage'] and r['lean_proof_status']=='verified_complete_lean_proof' for r in rows)==a['baseline']['verified_complete_lean_targets']+1  # later parameter-question completion
+assert sum(r['eligible_for_coverage'] and r['lean_proof_status']=='verified_complete_lean_proof' for r in rows)==a['baseline']['verified_complete_lean_targets']+1+sum(x['completed_targets_added'] for x in later)  # later parameter question plus recorded new completions
 linked=[]
 for p in a['papers']:
  assert p['paper_id'] in coverage and p['source_index_id'] in index

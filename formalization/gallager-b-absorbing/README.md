@@ -2,7 +2,7 @@
 
 **L-P09-all-absorbing is answered negatively for the unrestricted question in arXiv:2307.14532v2, Section VI.** The full seven-variable simplex-check graph is (7,0)-absorbing, but every one of its 128 input error supports is accepted at initialization or after one full syndrome-based Gallager-B iteration.
 
-[Paper](paper/main.pdf) · [Editable source](paper/main.tex) · [Complete Lean proof](Counterexample.lean) · [Verification](verification.json) · [All input cases](certificate.json) · [Tracking issue #2](https://github.com/alectionary/vibe-math/issues/2).
+[Paper](paper/main.pdf) · [Editable source](paper/main.tex) · [Complete Lean proof](Counterexample.lean) · [Verification](verification.json) · [All input cases](certificate.json) · [Complete source bundle](research-source.zip) · [Publication hashes](publication-manifest.json) · [Tracking issue #2](https://github.com/alectionary/vibe-math/issues/2).
 
 The result uses zero initialization, strict extrinsic majority and zero ties. Both hard-decision and outgoing-extrinsic syndrome calculations match. A stopped decoder has constant terminal output, so no supported error creates the persistent mismatch/nonconvergence of the source's Definition3.
 

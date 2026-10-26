@@ -401,6 +401,19 @@ Three post-lemma primary papers screened; one speculative square-root conjecture
 - [L-F93-distance-288-14](OPEN-PROBLEMS.md#l-f93-distance-288-14): Determine the exact distance of the fixed Symons-et-al. [[288,14]] code reported with lower bound20.
 - [L-F94-nonaffine-lifts](OPEN-PROBLEMS.md#l-f94-nonaffine-lifts): Explore non-affine CPM shift functions for the fixed two-branch F19 base to avoid its forced affine weight18 logical mode.
 
-Current cohort: **338 canonical entries,148 eligible targets,128 paper records,117 full-text screens**; **5/148 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: gallager-absorbing-sources-2026-10-26
 
-The current source index has **98** records, with actual access levels retained.
+P09 unrestricted statement refuted by checked counterexample. One complete historical CSS source yields six held/direction entries; one classical excerpt remains an access gap. No new eligible target.
+
+[Screen report](../literature/gallager-absorbing-source-screening.json). Added **6 entries**, **0 eligible targets**, **2 paper records**, **1 full-text screens** and **1 completed proofs**.
+
+- [L-F95-bell-correlations](OPEN-PROBLEMS.md#l-f95-bell-correlations): Historical conjecture on Bell-type inequalities for the seven-qubit code correlations.
+- [L-F95-asymmetric-gv](OPEN-PROBLEMS.md#l-f95-asymmetric-gv): Historical question on simultaneous Gilbert-Varshamov bounds for a nested code and its dual subcode.
+- [L-F95-stochastic-model](OPEN-PROBLEMS.md#l-f95-stochastic-model): Historical direction on adequacy of stochastic defection models for physical quantum errors.
+- [L-F95-noisy-capacity](OPEN-PROBLEMS.md#l-f95-noisy-capacity): Historical direction toward a fuller understanding of noisy quantum-channel capacity.
+- [L-F95-noisy-correction](OPEN-PROBLEMS.md#l-f95-noisy-correction): Historical direction on errors introduced during the quantum correction process.
+- [L-F95-small-experiments](OPEN-PROBLEMS.md#l-f95-small-experiments): Historical experimental direction to implement three- or seven-qubit correction schemes.
+
+Current cohort: **344 canonical entries,148 eligible targets,130 paper records,118 full-text screens**; **6/148 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **100** records, with actual access levels retained.

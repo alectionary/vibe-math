@@ -1,0 +1,304 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable,xcolor,listings,xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={An Absorbing Set Without Gallager-B Trapping},pdfauthor={}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\row}{\operatorname{row}}
+\newcommand{\maj}{\operatorname{maj}_0}
+\setlength{\emergencystretch}{3em}
+\lstset{basicstyle=\scriptsize\ttfamily,columns=fullflexible,keepspaces=true,
+ breaklines=true,breakatwhitespace=false,showstringspaces=false,frame=lines}
+\title{An Absorbing Set Without Gallager-B Trapping}
+\author{}
+\date{October 26, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a seven-variable $(7,0)$-absorbing set for which every binary error
+support is accepted by the zero-initialized syndrome-based Gallager-B decoder
+at initialization or after one iteration. Both the hard-decision syndrome and
+the parity of outgoing extrinsic messages match the input syndrome. Thus no
+subset produces the persistent syndrome mismatch or nonconvergence in the
+trapping-set definition of Morris, Pllaha and Kelley. The matrix consists of
+all seven nonzero simplex checks: majority voting recovers the single-column
+representative of each Hamming syndrome. To distinguish syndrome acceptance
+from quantum recovery, we also give an explicit fourteen-qubit CSS pair in
+which this absorbing component corrects every error in the decoded binary
+sector modulo the entire opposite stabilizer span. A nontrivial logical
+operator remains on the other component. Complete finite proofs and the
+stopped-execution argument are checked in Lean, with an independent
+literal-matrix verifier.
+\end{abstract}
+
+\section{Question and answer}
+Morris, Pllaha and Kelley ask in Section VI of
+\emph{Absorbing Sets in Quantum LDPC Codes}, arXiv:2307.14532v2,
+May 10, 2024, whether every absorbing set is a trapping set for their
+syndrome-based Gallager-B decoder \cite{mpk}.
+Their Definition 5 requires each selected variable to have strictly more
+neighbors of even induced degree than of odd induced degree.
+Definition 3 calls a nonempty set trapping if some error supported on it
+produces a neighboring check that is not eventually correct or a selected
+variable that does not eventually converge.
+
+\begin{theorem}\label{thm:main}
+There is a connected seven-variable $(7,0)$-absorbing Tanner graph such
+that every error supported on its variables has an accepted, constant
+terminal output after at most one full Gallager-B iteration. Consequently
+the variable set is not trapping in the sense of Definition 3 of
+\cite{mpk}. Moreover it occurs as a component of an explicit CSS code with
+a nontrivial logical operator, in which every error in this binary sector
+supported on the component is corrected modulo stabilizers.
+\end{theorem}
+The first assertion is proved in Section~\ref{sec:decoding}; the CSS
+assertion is proved in Section~\ref{sec:css}. The precise source-to-model
+comparison is in Section~\ref{sec:meaning}. Appendix~\ref{app:lean} contains
+central Lean definitions, complete proof bodies and direct source links.
+
+The example uses redundant checks, check degree four, variable degree four
+and Tanner four-cycles. None is forbidden in the cited general question.
+The selected component is connected; the fourteen-qubit ambient graph has
+two components. We do not assert a connected-ambient, girth-constrained or
+column-weight-three counterexample. We also do not assert correction of
+both Pauli sectors on the selected component, or of arbitrary errors on
+the other component.
+
+\section{The actual matrix}
+Index checks and variables by the nonzero vectors of $\F^3$, in the
+integer order $1,\ldots,7$ with least significant binary digit first.
+Let $H_{a,v}=a\cdot v$. Explicitly,
+\begin{equation}\label{eq:H}
+H=\begin{pmatrix}
+1&0&1&0&1&0&1\\
+0&1&1&0&0&1&1\\
+1&1&0&0&1&1&0\\
+0&0&0&1&1&1&1\\
+1&0&1&1&0&1&0\\
+0&1&1&1&1&0&0\\
+1&1&0&1&0&0&1
+\end{pmatrix}.
+\end{equation}
+Write $A$ for all seven variables. Every row and column of $H$ has weight
+four, so all neighboring checks have even induced degree and every variable
+has four even and no odd neighbors. Hence $A$ is $(7,0)$-absorbing.
+Any pair of distinct variables has two common check neighbors: two independent
+linear equations $a\cdot u=a\cdot v=1$ have two solutions in $\F^3$.
+In particular the Tanner graph is connected and has four-cycles.
+The finite statements \texttt{degrees}, \texttt{full\_set\_absorbing} and
+\texttt{first\_block\_connected} check the actual matrix, not an abstract
+replacement graph.
+
+\section{One iteration accepts every supported error}\label{sec:decoding}
+All arithmetic in check messages is in $\F$.
+For an arbitrary input error $e\in\F^7$ put
+\[
+ p=\sum_{v\ne0}e_vv\in\F^3,\qquad s=He^{\mathsf T}.
+\]
+Then $s_a=a\cdot p$. Zero initial variable-to-check messages imply that
+check $a$ sends $s_a$ to each of its neighbors. A hard decision is the
+strict majority of all incoming check messages, with ties resolved to zero.
+The outgoing message toward $a$ takes the same strict majority after
+excluding $a$.
+
+\begin{lemma}\label{lem:votes}
+For $v\ne0$, the number of neighboring checks sending one initially is
+zero if $p=0$, four if $p=v$, and two otherwise. Thus the first hard output is
+\[
+ \hat e=0\quad(p=0),\qquad \hat e=\mathbf e_p\quad(p\ne0),
+\]
+where $\mathbf e_p$ is the singleton indicator at column $p$.
+In every case $H\hat e^{\mathsf T}=s$.
+\end{lemma}
+\begin{proof}
+The vote count is the number of $a\in\F^3\setminus\{0\}$ satisfying
+$a\cdot v=a\cdot p=1$. If $p=0$ there are none. If $p=v$ there are four.
+Otherwise the two nonzero, distinct vectors $v,p$ are independent and the
+two independent equations have two solutions. The strict majority of four
+bits is one only in the second case. The asserted syndrome follows from
+$H\mathbf e_p^{\mathsf T}=(a\cdot p)_a$.
+All counts and the displayed output formula have matching kernel-checked
+finite Lean proofs, including all $128$ inputs.
+\end{proof}
+
+The conclusion also survives the alternate syndrome calculation from outgoing
+extrinsic variable messages, which is relevant to some computations in
+\cite{mpk}.
+\begin{lemma}\label{lem:edges}
+Let $x'_{v\to a}$ be the first outgoing extrinsic message. Then
+$\sum_{v:a\cdot v=1}x'_{v\to a}=s_a$ for every check $a$.
+\end{lemma}
+\begin{proof}
+For $p=0$ all messages vanish. For $p\ne0$, variable $p$ sends one on all
+four incident edges. At $v\ne p$ there were two ones and two zeros before
+excluding the recipient check. Excluding a zero gives two ones among three
+messages; excluding a one gives one. Hence $x'_{v\to a}=1-s_a$ for these
+variables. A check with $s_a=1$ is adjacent to $p$ and receives exactly one
+one. A check with $s_a=0$ is not adjacent to $p$ and receives four ones,
+whose parity is zero. This is exactly $s_a$. The actual update equations
+are checked by \texttt{first\_edge\_matches}.
+\end{proof}
+
+\begin{proof}[Proof of the dynamical assertion of Theorem~\ref{thm:main}]
+The zero syndrome is accepted at initialization. Every nonzero syndrome
+is accepted after the first iteration by Lemma~\ref{lem:votes};
+Lemma~\ref{lem:edges} gives the same stopping decision for the alternate
+edge-parity convention. Extend a halted decoder by repeating its terminal
+output. All neighboring checks are then correct, and every variable is
+constant, for all times $t\ge1$. This holds for every error $e$, not just
+the error with support $A$. There can therefore be no failure-inducing
+subset in Definition 3. The Lean theorem
+\texttt{absorbing\_not\_trapping} proves precisely these eventual properties.
+\end{proof}
+The extension by a constant terminal output represents the stated stopping
+algorithm. It does not claim that artificially continuing message updates
+after a successful stop would preserve every intermediate message.
+
+\section{An actual CSS counterexample with successful recovery}\label{sec:css}
+Syndrome acceptance alone does not guarantee quantum recovery. For example,
+using $H$ in both sectors of the familiar Steane construction \cite{steane},
+errors on columns $1$ and $2$ produce the singleton output on column $3$.
+The residual supported on $\{1,2,3\}$ has zero syndrome but is not in
+$\row H$. Thus it is a logical miscorrection. The source's dynamical
+Definition 3 and the broader notion of quantum decoding failure must be
+distinguished. We now eliminate this issue in a separate explicit CSS pair.
+
+Let $G$ consist of rows $1,2,4$ of $H$, and put
+\[
+ K=\begin{pmatrix}G\\\mathbf1\end{pmatrix},\qquad
+ H_X=\begin{pmatrix}H&0\\0&H\end{pmatrix},\qquad
+ H_Z=\begin{pmatrix}K&0\\0&G\end{pmatrix}.
+\]
+These are binary matrices of sizes $14\times14$ and $7\times14$.
+The redundant rows of $H_X$ are retained as the actual decoding checks.
+For $Z$-errors, the decoder uses $H_X$ and successful recovery means that
+the residual belongs to the \emph{entire} row span of $H_Z$.
+
+\begin{lemma}\label{lem:kernel}
+$\ker H=\row K$, and $H_XH_Z^{\mathsf T}=0$.
+\end{lemma}
+\begin{proof}
+Every row of $H$ has even weight, and two distinct rows have overlap two.
+Consequently $HG^{\mathsf T}=0$ and $H\mathbf1^{\mathsf T}=0$, so
+$\row K\subseteq\ker H$ and the displayed CSS matrices commute.
+For completeness, the reverse inclusion is checked on all $128$ binary
+words against all $16$ combinations of the four displayed generators.
+The Lean theorem \texttt{kernel\_equals\_four\_generator\_span} is this
+complete finite proof, not a search restricted by weight. The independent
+literal-matrix verifier obtains exactly the same kernel of $16$ words.
+\end{proof}
+
+\begin{proposition}\label{prop:css}
+Let $A$ be the first seven coordinates in this CSS pair. Every binary
+$Z$-error supported on $A$ is decoded correctly modulo the complete
+$Z$-stabilizer span. There is nevertheless a nontrivial $Z$ logical
+operator on the second block.
+\end{proposition}
+\begin{proof}
+There are no check edges between the two blocks. On input $(e,0)$ the
+second block remains zero, while the first returns $(\hat e,0)$ at
+initialization or after one iteration. By Lemma~\ref{lem:votes},
+$e+\hat e\in\ker H=\row K$. Hence
+$(e+\hat e,0)\in\row H_Z$, so recovery is quantum-correct for all $128$
+supported errors. This exact complete-span membership is also checked
+directly by \texttt{first\_block\_quantum\_recovery}.
+
+The word $(0,\mathbf1)$ commutes with every row of $H_X$, because all rows
+of $H$ have even weight. It is not in $\row H_Z$: all second-block
+components in that span belong to $\row G$, whose words have even weight,
+whereas $\mathbf1$ has weight seven. This supplies a genuine nontrivial
+logical operator. Both statements are checked on the actual matrices by
+\texttt{logical\_commutes} and \texttt{logical\_not\_stabilizer}.
+\end{proof}
+This construction explicitly uses a stabilizer-state component for the
+selected support, together with a component carrying logical information.
+It is not a claim that arbitrary high-weight errors on encoded information
+can be corrected. It shows why an unrestricted assertion about every
+absorbing set needs hypotheses on both the Tanner representation and the
+opposite stabilizer space.
+
+\section{Comparison with the source and earlier ingredients}\label{sec:meaning}
+The decoder here uses exactly zero initialization, extrinsic check XOR,
+extrinsic variable majority, zero ties, and syndrome stopping from Section
+II-B of \cite{mpk}. Every possible subset of $A$ is an input. There is no
+iteration cutoff, sampled failure estimate, or assumption excluding
+stabilizer errors. The first block has no exterior check neighbors, so the
+source convention that exterior messages are correct is automatically met.
+The checks and variables relevant to Definition 3 are all included.
+
+The source proves the positive-$b$ absorbing-set result in its Theorem 4;
+our example has $b=0$ and does not contradict that theorem. Its path and
+cycle results concern other graphs; our matrix has degree four and is
+neither a path nor a cycle. In particular the counterexample does not
+imply that those cases, or useful high-girth code-design restrictions,
+are settled by this example.
+
+Hamming's construction \cite{hamming} already provides the syndrome-column
+representation used here. The simplex checks, the Steane code and the CSS
+stabilizer criterion are classical ingredients. The contribution here is
+their explicit application to the blanket absorbing-set question, the
+separation of dynamical trapping from logical miscorrection, and the
+complete checked counterexample. The two-block CSS example also refutes
+the stronger interpretation that some supported error must fail quantum
+recovery in the selected sector. It does not replace the opposite
+stabilizer span by the row span of the decoded matrix.
+
+The directly inspected question is the May 10, 2024 arXiv version. A journal
+version appeared March 3, 2026 (DOI 10.3934/amc.2026023); its full text was
+access-restricted during the comparison. We therefore do not attribute
+unchanged wording to the journal version. The complete search and
+source-screening ledger is linked in Appendix~\ref{app:lean}.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{p{.26\textwidth}p{.34\textwidth}p{.30\textwidth}}
+\toprule Source & Inspected milestone & Interval to October 26, 2026\\
+\midrule
+Hamming & April 1950 publication & About 76.5 years (month precision)\\
+Steane & January 29, 1996 preprint & 11,228 days\\
+Morris--Pllaha--Kelley & July 26, 2023 first preprint & 1,188 days\\
+Question in inspected version & May 10, 2024, v2, Section VI & 899 days\\
+Journal metadata & March 3, 2026 online publication & 237 days\\
+This paper & October 26, 2026 & 0 days\\
+\bottomrule
+\end{tabular}
+\caption{Reference chronology. Ingredient age is not the duration for which
+an open question was unresolved. Exact day differences are independently
+regenerated in the artifact.}
+\end{table}
+
+\section{Conclusion}
+The full variable set of the redundant seven-column simplex matrix is
+absorbing, but none of its subsets traps the stated stopped Gallager-B
+algorithm. The explicit CSS pair additionally makes every supported error
+in the decoded sector quantum-correct. Thus an unrestricted implication
+from absorbing to trapping is false. Whether useful additional restrictions
+such as connected ambient CSS graphs, prescribed degree or girth conditions,
+or requiring the selected support to carry logical information restore such
+an implication is a separate question.
+
+\begin{thebibliography}{9}
+\bibitem{mpk} K. D. Morris, T. Pllaha and C. A. Kelley,
+\emph{Absorbing Sets in Quantum LDPC Codes}, arXiv:2307.14532v2,
+May 10, 2024, Sections II-B, III (Definitions 3 and 5), IV and VI.
+\url{https://arxiv.org/html/2307.14532v2}.
+Journal metadata: \emph{Advances in Mathematics of Communications} 23
+(2026), 234--254, \url{https://doi.org/10.3934/amc.2026023}.
+\bibitem{hamming} R. W. Hamming, \emph{Error detecting and error correcting
+codes}, Bell System Technical Journal 29 (1950), 147--160.
+\url{https://doi.org/10.1002/j.1538-7305.1950.tb00463.x}.
+\bibitem{steane} A. Steane, \emph{Multiple particle interference and quantum
+error correction}, arXiv:quant-ph/9601029, January 29, 1996;
+Proceedings of the Royal Society A 452 (1996), 2551--2577.
+\url{https://arxiv.org/abs/quant-ph/9601029}.
+\end{thebibliography}
+\appendix
+\input{supplement.tex}
+\end{document}

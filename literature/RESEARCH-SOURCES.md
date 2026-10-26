@@ -97,7 +97,7 @@ Kirsten D. Morris; Tefjol Pllaha; Christine A. Kelley. arXiv first 2023-07-26; i
 - Inspected locator: Sections II-B, IV, V; explicit Gallager-B algorithm Follow-up: revised public introduction and theorem outline; final HTML explicitly requires subscription/login and advertised PDF returned zero bytes..
 - Contribution: Prior failure-inducing structures and syndrome/logical outcome distinction. Source strict-majority definition and prior propagation of base absorbing sets into ordinary hypergraph products. Constant-label witnesses here are ordinary HGPs, so replication of their base configurations is a classical ingredient, not claimed as a new construction principle.
 - Comparison limit: Gallager-B theorems are not automatically normalized min-sum results. (4,2) comparison: The inspected text gives base-matrix characterization/propagation and examples, not an explicit incidence-corrected Fourier formula for nonconstant QC-GHP labels or an M_j-only count. The 2026 journal full text is subscription restricted, so the exact inspected mathematical version is v2 (2024).
-- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing).
+- Related canonical targets: [L-F16-other-absorbing](OPEN-PROBLEMS.md#l-f16-other-absorbing), [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects).
 - Provenance: [source review ledger](../formalization/absorbing-four-two/prior-art.json).
 
 - Question screen: [full text screened](../literature/research-question-screening.json); 4 linked canonical targets.
@@ -1274,3 +1274,25 @@ Koki Okada; Kenta Kasai. arXiv:2606.27130v2, 5 September 2026. [Primary source](
 - Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
 
 - Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 1 linked canonical targets.
+
+## Steane1996 — Multiple Particle Interference and Quantum Error Correction
+
+Andrew Steane. 13May1996 arXivv3. [Primary source](https://arxiv.org/pdf/quant-ph/9601029v3).
+
+- Record type: academic source; access: full arxiv v3 text screened.
+- Inspected locator: arXiv v3 pages10,28,30,34.
+- Contribution: Classical ingredient and background in the absorbing-set counterexample.
+- Comparison limit: Classical CSS ingredient. Six historical held/direction entries harvested, with no present-day open claim; equal-distance GV case reported solved in same text.
+- Related canonical targets: [L-F95-bell-correlations](OPEN-PROBLEMS.md#l-f95-bell-correlations), [L-F95-asymmetric-gv](OPEN-PROBLEMS.md#l-f95-asymmetric-gv), [L-F95-stochastic-model](OPEN-PROBLEMS.md#l-f95-stochastic-model), [L-F95-noisy-capacity](OPEN-PROBLEMS.md#l-f95-noisy-capacity), [L-F95-noisy-correction](OPEN-PROBLEMS.md#l-f95-noisy-correction), [L-F95-small-experiments](OPEN-PROBLEMS.md#l-f95-small-experiments).
+- Provenance: [source review ledger](../literature/gallager-absorbing-source-screening.json).
+
+## Hamming1950 — Error Detecting and Error Correcting Codes
+
+R. W. Hamming. April1950. [Primary source](https://doi.org/10.1002/j.1538-7305.1950.tb00463.x).
+
+- Record type: academic source; access: publication metadata and three page introduction excerpt only.
+- Inspected locator: Introduction excerpt.
+- Contribution: Classical ingredient and background in the absorbing-set counterexample.
+- Comparison limit: Syndrome construction credited; full original article not retrieved, no complete question screen claimed.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/gallager-absorbing-source-screening.json).
