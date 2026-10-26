@@ -4932,15 +4932,15 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-The source two-point gap is still open. A checked 88-pair partial frame and the B-identity obstructions are not a difficulty assessment.
+The source two-point gap is still open. A checked 88-pair partial frame and the seed-4 monomial obstructions for 14, 15, and 16 monomials are not a difficulty assessment.
 
-First milestone: Decide the 720-class CSS frame by an exact search outside the 88-pair witness, or extend the B-identity obstruction to every dual basis.
+First milestone: Decide the CSS frames that use 13 or fewer seed-4 X monomials, or extend an obstruction to every dual basis.
 
-Progress: Explicit 88-pair weight-16 partial CSS frame checked; unrestricted width still 16 or 18. [Checked artifact](../formalization/canonical-width/c16/INVESTIGATION.md).
+Progress: Explicit 88-pair weight-16 partial CSS frame checked. No width-16 CSS frame contains 14 or more seed-4 X monomials. Unrestricted width still 16 or 18. [Checked artifact](../formalization/canonical-width/c16/INVESTIGATION.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
-Basis: 2026-10-26 block checked a width-16 partial frame and left f in {16, 18}. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: 2026-10-26 block checked a width-16 partial frame, ruled out CSS frames with 14 or more seed-4 X monomials, and left f in {16, 18}. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 
