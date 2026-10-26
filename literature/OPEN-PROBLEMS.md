@@ -2347,7 +2347,7 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/ParametricProjection.lean).
   - [Complete Lean source](../formalization/distance-preservation/ClassicalUpper20.lean).
   - [Complete Lean source](../formalization/distance-preservation/FinalAudit.lean).
-- Research progress: [Certificate-assisted truncated-bound argument and actual-source small-support classification](../formalization/distance-preservation/truncated12/RESEARCH-NOTE.txt) (written argument exact integer replay general lean structural bridges partial closed case replay). For the strengthened normalized 3x4 criterion, a certificate-assisted written argument gives dQ>=min(dC,12). Lean checks the actual-source mixed count-profile classification through weight11, induced K2,3 equality case, singleton support/label reduction, normalization and full-span bridges. Independent integer replay checks all183312 pattern certificates. The complete source-level distance theorem is not assembled; no qualifying counterexample and no canonical source completion is claimed.
+- Research progress: [Truncated-bound written argument, actual-source classification and partial formalization](../formalization/distance-preservation/truncated12/RESEARCH-NOTE.txt) (written argument exact integer replay general lean structural bridges partial closed case replay). For the strengthened normalized 3x4 criterion, a certificate-assisted written argument gives dQ>=min(dC,12). Lean checks the actual-source mixed count-profile classification through weight11, induced K2,3 equality case, singleton support/label reduction, normalization, full-span, actual matching-row, constant-row cancellation and interpreted obstruction bridges. Independent integer replay checks all183312 pattern certificates. The complete min(D,12) source-level distance theorem is not assembled; no qualifying counterexample and no canonical source completion is claimed. A complete intermediate Lean theorem proves the actual Pauli bound min(D,10) under both classical lower-bound predicates and the exact normalized girth/entry tests.
   - [Complete Lean source](../formalization/distance-preservation/truncated12/SourceProfiles.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/ExceptionalGraph.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/SupportSingletons.lean).
@@ -2359,8 +2359,17 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/truncated12/TorsionClassical.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/GeneralSymmetry.lean).
   - [Complete Lean source](../formalization/distance-preservation/truncated12/PauliBridge.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/MatchingRows.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/RowCancellation.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ConstantRows.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TargetObstructions.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/PatternRealizations.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SourceSeven.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ThroughNine.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ClassicalTransport.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/EntryTestTransport.lean).
 - Project-derived follow-up, outside the source-target denominator: **RQ-F25-exclude-mixed-patterns** — Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned.
-- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Certificate-assisted written argument and actual-source count classification checked in Lean in the October25 round. Complete source support-to-pattern/cancellation and final distance assembly remain; see truncated12/verification.json. The source equality question is not marked solved.
+- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). A certificate-assisted written argument is recorded, and actual-source count classification is checked in Lean in the October25 round. The current exact remaining gaps and any completed intermediate bound are in truncated12/verification.json. The source equality question is not marked solved.
 - [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
 - Related, not merged: L-P34-logical-partitions, L-P34-base-design.
 
