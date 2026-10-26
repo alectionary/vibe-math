@@ -176,7 +176,7 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 ## Subsequent block: l-f91-c16-unrestricted-width-2026-10-26
 
-[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Checked 88-pair width-16 partial CSS canonical frame for C^LP_16,9 and proved that no width-16 CSS frame contains 13, 14, 15, or 16 seed-4 X monomials. The exact unrestricted width remains 16 or 18. Remaining at that dated checkpoint: Exact value of f; Lean certificate; CSS frames using 12 or fewer seed-4 monomials. [Report](../formalization/canonical-width/c16/INVESTIGATION.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/prior-art.json).
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Checked 88-pair width-16 partial CSS canonical frame for C^LP_16,9 and proved that no width-16 CSS frame contains 13, 14, 15, or 16 seed-4 X monomials. Thirty-three of 116 twelve-monomial rotation orbits also have no such frame. The exact unrestricted width remains 16 or 18. Remaining at that dated checkpoint: Exact value of f; Lean certificate; the unfinished 12-monomial orbits (100 capped assignments, 7 interrupted, 28 not started); fewer than 12 monomials; the global matching. [Report](../formalization/canonical-width/c16/INVESTIGATION.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 

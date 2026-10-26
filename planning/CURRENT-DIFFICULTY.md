@@ -4932,15 +4932,15 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-The source two-point gap is still open. A checked 88-pair partial frame and the seed-4 monomial obstructions for 13 through 16 monomials are not a difficulty assessment.
+The source two-point gap is still open. A checked 88-pair partial frame and the seed-4 monomial obstructions for 13 through 16 monomials are not a difficulty assessment. The unfinished 12-monomial search is not one either.
 
-First milestone: Decide the CSS frames that use 12 or fewer seed-4 X monomials, or extend an obstruction to every dual basis.
+First milestone: Finish the 12-monomial quotient, including the 100 capped assignments, or extend an obstruction to every dual basis.
 
-Progress: Explicit 88-pair weight-16 partial CSS frame checked. No width-16 CSS frame contains 13 or more seed-4 X monomials. Unrestricted width still 16 or 18. [Checked artifact](../formalization/canonical-width/c16/INVESTIGATION.md).
+Progress: Explicit 88-pair weight-16 partial CSS frame checked. No width-16 CSS frame contains 13 or more seed-4 X monomials. The 12-monomial rank scan is done and 33 of 116 orbits are impossible; 100 assignments are capped and 35 orbits are unfinished. Unrestricted width still 16 or 18. [Checked artifact](../formalization/canonical-width/c16/INVESTIGATION.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
-Basis: 2026-10-26 block checked a width-16 partial frame, ruled out CSS frames with 13 or more seed-4 X monomials, and left f in {16, 18}. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: 2026-10-26 block checked a width-16 partial frame, ruled out CSS frames with 13 or more seed-4 X monomials, left the 12-monomial quotient unfinished, and left f in {16, 18}. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 

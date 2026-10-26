@@ -13,7 +13,7 @@ This is a follow-up, not a new problem. The 2026-10-26 block recorded an 84-pair
 - Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` (create-only, this commit)
 - Authorized by the user to answer Proposition 9. No paper, external post, or `master` push was requested.
 - Answer contract: exact value of \(f(C^{\mathrm{LP}}_{16,9})\). Either a checked 128-pair weight-16 canonical basis, or a checked proof that none exists. Mixed Paulis stay in scope through the already recomputed reduction, which still depends on the reproduced weight-17 pool.
-- Stopping point: a decisive value of \(f\), or a recorded obstruction that blocks both routes.
+- Stopping point: the user ended this block on 2026-10-26 before a decisive value of \(f\). The handoff is below. Do not treat the unfinished 12-monomial search as a non-existence proof.
 
 
 
@@ -70,9 +70,27 @@ For \(m=13\) there are 35 rotation orbits of omitted triples. Each orbit has \(3
 
 Therefore no width-16 CSS canonical frame contains 13, 14, 15, or 16 of the seed-4 X monomials. Frames that use 12 or fewer of them are not settled by this count. The C++ sources under `search/` are the earlier sampled climbers. They read the same pool files and do not decide \(f\).
 
+## Twelve seed-4 monomials, stopped unfinished
+
+There are 116 rotation orbits of 4-subsets of the 16 seed-4 bits. With a zero node cap, `seed4_fifteen.cpp` ranked every orbit. Each orbit has \(3^{12}=531441\) partner assignments, and every visit count matches. Every orbit attains orthogonal X rank 116, the dimension a 12-monomial frame needs, so rank is not an obstruction. There are 1008952 full-rank assignments, from 1035 to 17143 in an orbit.
+
+The quotient search used the binary `complete_z` built at 2026-10-26T21:45:34Z, before the closeout edit of the same source, with a cap of 300000 nodes on four cores. It was killed at 2026-10-26T23:40:28Z. A finished orbit is one whose DEAD, CAPPED, and FOUND lines add up to its full-rank count and whose process exit is 2 or 3. Exit 143 is a killed process. The accounting is `seed4-twelve-partial.json`.
+
+- 33 orbits, containing 319061 full-rank assignments, exhaust with no dual basis.
+- 48 further orbits were searched to the end of their assignment lists and contain 98 assignments that hit the cap, plus 545321 that died under it.
+- 7 orbits were interrupted, including 2 assignments that had already hit the cap. Rerun those orbits. Their partial logs are not a finished proof.
+- 28 orbits, containing 102838 full-rank assignments, were not started.
+- The logs contain no FOUND line. The 100 capped type strings are `seed4-twelve-capped.txt`.
+
+Evidence label: the rank scan, and the exhaustion of those 33 orbits, are **exact finite computation**. The capped, interrupted, and unstarted orbits are **not established**. Together they do not prove that every 12-monomial frame fails, and they do not exhibit a frame.
+
+Rank-log mtimes run from 2026-10-26T21:57:37Z through 2026-10-26T22:02:35Z. The four quotient sessions were created at 2026-10-26T22:05:35Z and killed at 2026-10-26T23:40:28Z, about 95 minutes of wall time.
+
+The closeout source rejects a branch when the pairs already chosen and the surviving pool cannot span the quotient, and it stores 1024 indices instead of 512. The filtered 12-monomial pools have at most 338 X vectors and 378 Z vectors, so the older 512-bit sets were large enough for the run above. The new binary was not used for those counts. Its self-test passed. On three trees the older search had called dead, it also returns dead, in 2, 49, and 108 nodes. The third tree is the 15-monomial assignment `*212022112122120`, which took 203 nodes under the weaker pool-rank prune.
+
 ## Question still open
 
-The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. No width-16 CSS frame contains 13 or more of the seed-4 X monomials. Frames using 12 or fewer, and the conditional mixed-Pauli reduction, remain open. There is no Lean certificate.
+The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. No width-16 CSS frame contains 13 or more of the seed-4 X monomials. Thirty-three orbits of the 12-monomial case are impossible, and the other 12-monomial orbits are unfinished. Frames using fewer than 12 monomials, the global matching, and the conditional mixed-Pauli reduction remain open. There is no Lean certificate.
 
 A pure CSS width-16 canonical basis would be an admissible unrestricted basis, so it would prove \(f\le 16\). No such 128-pair basis was found. Failure of the searches below is not a proof that none exists. Ruling out only CSS representatives does not prove \(f=18\) unless the mixed-Pauli reduction is accepted.
 
@@ -153,6 +171,9 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 | No width-16 CSS frame contains 15 seed-4 X monomials | Exact finite computation |
 | No width-16 CSS frame contains 14 seed-4 X monomials | Exact finite computation |
 | No width-16 CSS frame contains 13 seed-4 X monomials | Exact finite computation |
+| Every 12-monomial orbit attains orthogonal rank 116; 1008952 full-rank assignments | Exact finite computation |
+| 33 of 116 twelve-monomial orbits have no quotient dual basis | Exact finite computation |
+| The other 83 twelve-monomial orbits | Not established |
 | No width-16 canonical basis exists | Not established |
 | \(f=16\) or \(f=18\) | Not established |
 | Lean certificate | None |
@@ -161,8 +182,8 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 
 - Issue: https://github.com/alectionary/vibe-math/issues/3
 - Work branch: `cursor/l-f91-c16-unrestricted-width-1697`
-- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` was created at `d417d1c9f811523120aa70caff10d517ed2af491`. Closeout read that SHA back and deleted the ref with `--force-with-lease` on that expected SHA. A following read-back was empty. The work branch remains.
-- Issue comment on #3 is pending. `gh issue comment` and the issues comments API returned HTTP 403, `Resource not accessible by integration`. The result text is in this note and in pull request #4.
+- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` was created at `d417d1c9f811523120aa70caff10d517ed2af491` and released at the first closeout. This follow-up recreated it at `773fe8976c8c90345c81148fe33d1abdc15fac1d`. Closeout of this block deletes that ref with `--force-with-lease` on that expected SHA. The work branch remains.
+- Issue comment on #3 returned HTTP 403, `Resource not accessible by integration`, both in the first closeout and at this handoff. The result text is in this note and in pull request #4.
 - Session: `lf91-c16-20261026T174815Z-f4663e80`. Authorized start 2026-10-26T17:47:00Z. Deadline 2026-10-26T21:47:00Z.
 - X public search, `search_posts_all`, no posts written. Known-positive query `lifted product` returned posts. Query `"canonical width" OR "unrestricted canonical" OR C16,9 OR "1088,128,16"` returned result count 0. Query `2610.06820 OR "public-regular-logical-frames" OR "canonical frame width"` returned result count 0. A zero count is not a global absence.
 - GitHub issues before this block: #1 (`L-F25`, open) and #2 (`L-P09`, closed). No earlier claim ref for this target.
@@ -173,4 +194,4 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 
 ## Next proposed target
 
-Follow-up, not a new problem: decide the CSS frames that use 12 or fewer seed-4 X monomials. The same rank-and-quotient test applies, and the cases of 13 through 16 monomials are now closed. Do not move on to \(C_{20,10}\) or the 1024-qubit PP family while \(f\) is still open.
+The user ended this block. The next useful piece is still the same question, not a new problem: finish the 12-monomial quotient, including the 100 capped assignments at a higher node cap, and then either continue to fewer monomials or replace the ladder with an argument that covers them. Do not move on to \(C_{20,10}\) or the 1024-qubit PP family while \(f\) is still open. This session does not hold the claim after closeout.
