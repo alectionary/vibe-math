@@ -1,0 +1,24 @@
+theorem source_seven_singleton_profile_stabilizer
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : TannerSix.NoFour (CEdge e)) (h6 : TannerSix.NoSix (CEdge e))
+    (hR0 : (*@$\forall$@*) j,e 0 j=0) (hC0 : (*@$\forall$@*) i,e i 0=0)
+    (hCP : NoColumnPartition e) (hP : NoTripleRow e)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (hker : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*GeneralLP.join u v q)=0)
+    (hU : (*@$\forall$@*) j,leftCount u j=1) (hV : (*@$\forall$@*) i,rightCount v i=1) :
+    GeneralLP.InSpanX e u v := by
+  obtain (*@$\langle$@*)k,s,l,t,hu,hv,hc,hcase(*@$\rangle$@*) := actual_singleton_label_alternative e h4 u v hker
+    (fun j : Fin 4 => j) Function.injective_id hU hV
+  rcases hcase with (*@$\langle$@*)K,H,hk,hl(*@$\rangle$@*)|(*@$\langle$@*)hk,hl(*@$\rangle$@*)
+  (*@$\cdot$@*) apply constant_all_singletons_stabilizer e u v hker K H s t
+    (*@$\cdot$@*) simpa only [hk] using hu
+    (*@$\cdot$@*) simpa only [hl] using hv
+  (*@$\cdot$@*) obtain (*@$\langle$@*)p(*@${}_4$@*),hp(*@${}_4$@*)(*@$\rangle$@*) := permutation4_complete k hk
+    obtain (*@$\langle$@*)p(*@${}_3$@*),hp(*@${}_3$@*)(*@$\rangle$@*) := permutation3_complete l hl
+    have hp : 6*p(*@${}_4$@*).val+p(*@${}_3$@*).val<144 := by omega
+    obtain (*@$\langle$@*)c,hcert,hn(*@$\rangle$@*) := seven_certificates_complete (*@$\langle$@*)_,hp(*@$\rangle$@*)
+    have hD : ClassicalAtLeast e 0 := by intro x hx hx0;exact Nat.zero_le _
+    exact False.elim (certified_pattern_has_no_source_realization e h4 h6 hR0 hC0 hCP hP
+      0 hD 7 _ c hcert (fun h => False.elim (hn h))
+      (*@$\langle$@*)seven_realization_of_labels e k l s t hc p(*@${}_4$@*) p(*@${}_3$@*) hp(*@${}_4$@*) hp(*@${}_3$@*)(*@$\rangle$@*))

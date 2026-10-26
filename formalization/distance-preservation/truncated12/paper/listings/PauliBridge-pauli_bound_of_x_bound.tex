@@ -1,0 +1,12 @@
+theorem pauli_bound_of_x_bound (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (b : (*@$\mathbb N$@*))
+    (hbound : (*@$\forall$@*) x, pureX e x (*@$\to$@*) b(*@$\le$@*)(CoverWeight.support x).card)
+    (x z : Qubit L (*@$\to$@*) ZMod 2)
+    (hx : (*@$\forall$@*) c, ((*@$\sum$@*) q,GeneralLP.HZ e c q*x q)=0)
+    (hz : (*@$\forall$@*) c, ((*@$\sum$@*) q,GeneralLP.HX e c q*z q)=0)
+    (hn : (*@$\neg$@*)(fullSpanX e x (*@$\land$@*) fullSpanZ e z)) :
+    b(*@$\le$@*)((CoverWeight.support x) (*@$\cup$@*) (CoverWeight.support z)).card := by
+  by_cases hs : fullSpanX e x
+  (*@$\cdot$@*) have hzn : (*@$\neg$@*)fullSpanZ e z := fun h => hn (*@$\langle$@*)hs,h(*@$\rangle$@*)
+    exact (z_bound_of_x_bound e b hbound z (*@$\langle$@*)hz,hzn(*@$\rangle$@*)).trans
+      (Finset.card_le_card Finset.subset_union_right)
+  (*@$\cdot$@*) exact (hbound x (*@$\langle$@*)hx,hs(*@$\rangle$@*)).trans (Finset.card_le_card Finset.subset_union_left)

@@ -1,0 +1,51 @@
+theorem source_mixed_count_profiles (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : NoFour (CEdge e)) (h6 : NoSix (CEdge e))
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (hk : (*@$\forall$@*) c, ((*@$\sum$@*) q,GeneralLP.HZ e c q*GeneralLP.join u v q)=0)
+    (hw : (CoverWeight.support (GeneralLP.join u v)).card(*@$\le$@*)11)
+    (hU : 0<(*@$\sum$@*) j,leftCount u j) (hV : 0<(*@$\sum$@*) i,rightCount v i) :
+    (sortedCounts (leftCount u),sortedCounts (rightCount v))=([1,1,1,1],[1,1,1]) (*@$\lor$@*)
+    (sortedCounts (leftCount u),sortedCounts (rightCount v))=([2,2,2,0],[2,2,0]) (*@$\lor$@*)
+    (sortedCounts (leftCount u),sortedCounts (rightCount v))=([5,1,1,1],[1,1,1]) := by
+  have htotal : ((*@$\sum$@*) j,leftCount u j)+((*@$\sum$@*) i,rightCount v i)(*@$\le$@*)11 := by
+    simpa only [support_weight_counts] using hw
+  have hsy : (*@$\forall$@*) j i t, GeneralLP.Syndrome e u v j i t=0 := by
+    intro j i t
+    exact (GeneralLP.z_action e u v j i t).symm.trans (hk ((j,i),t))
+  obtain (*@$\langle$@*)p,hp,hap,hbp(*@$\rangle$@*) := common_count_parity e u v hsy
+  have hboundA (x : (*@$\mathbb N$@*)) (hx : x(*@$\in$@*)sortedCounts (leftCount u)) : x(*@$\le$@*)11 := by
+    obtain (*@$\langle$@*)j,rfl(*@$\rangle$@*) := (sortedCounts_mem _ _).mp hx
+    have hs : leftCount u j(*@$\le$@*)(*@$\sum$@*) k,leftCount u k :=
+      Finset.single_le_sum (fun k _ => Nat.zero_le _) (Finset.mem_univ j)
+    omega
+  have hboundB (x : (*@$\mathbb N$@*)) (hx : x(*@$\in$@*)sortedCounts (rightCount v)) : x(*@$\le$@*)11 := by
+    obtain (*@$\langle$@*)i,rfl(*@$\rangle$@*) := (sortedCounts_mem _ _).mp hx
+    have hs : rightCount v i(*@$\le$@*)(*@$\sum$@*) k,rightCount v k :=
+      Finset.single_le_sum (fun k _ => Nat.zero_le _) (Finset.mem_univ i)
+    omega
+  have hparA (x : (*@$\mathbb N$@*)) (hx : x(*@$\in$@*)sortedCounts (leftCount u)) : x%2=p := by
+    obtain (*@$\langle$@*)j,rfl(*@$\rangle$@*) := (sortedCounts_mem _ _).mp hx
+    exact hap j
+  have hparB (x : (*@$\mathbb N$@*)) (hx : x(*@$\in$@*)sortedCounts (rightCount v)) : x%2=p := by
+    obtain (*@$\langle$@*)i,rfl(*@$\rangle$@*) := (sortedCounts_mem _ _).mp hx
+    exact hbp i
+  have hm := mem_countCases (sortedCounts (leftCount u)) (sortedCounts (rightCount v)) p hp
+    (sortedCounts_length _) (sortedCounts_length _) (sortedCounts_pairwise _)
+    (sortedCounts_pairwise _) hboundA hboundB hparA hparB
+    (by simpa only [sortedCounts_sum] using hU)
+    (by simpa only [sortedCounts_sum] using hV)
+    (by simpa only [sortedCounts_sum] using htotal)
+  apply classified_of_mem_countCases _ hm
+  apply Bool.and_eq_true_iff.mpr
+  constructor
+  (*@$\cdot$@*) apply List.all_eq_true.mpr
+    intro a ha
+    obtain (*@$\langle$@*)j,rfl(*@$\rangle$@*) := (sortedCounts_mem _ _).mp ha
+    apply decide_eq_true_iff.mpr
+    simpa only [sortedCounts_map_sum,pow_two] using source_left_local_mantel e h4 h6 u v hk hw j
+  (*@$\cdot$@*) apply List.all_eq_true.mpr
+    intro b hb
+    obtain (*@$\langle$@*)i,rfl(*@$\rangle$@*) := (sortedCounts_mem _ _).mp hb
+    apply decide_eq_true_iff.mpr
+    simpa only [sortedCounts_map_sum,pow_two] using source_right_local_mantel e h4 h6 u v hk hw i

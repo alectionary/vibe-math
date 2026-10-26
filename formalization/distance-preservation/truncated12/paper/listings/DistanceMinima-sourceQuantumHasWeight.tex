@@ -1,0 +1,6 @@
+def sourceQuantumHasWeight (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (n : (*@$\mathbb N$@*)(*@$\infty$@*)) : Prop :=
+  (*@$\exists$@*) x z : Qubit L (*@$\to$@*) ZMod 2,
+    ((*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*x q)=0) (*@$\land$@*)
+    ((*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HX e c q*z q)=0) (*@$\land$@*)
+    (*@$\neg$@*)(fullSpanX e x (*@$\land$@*) fullSpanZ e z) (*@$\land$@*)
+    n=(((CoverWeight.support x)(*@$\cup$@*)(CoverWeight.support z)).card : (*@$\mathbb N$@*)(*@$\infty$@*))

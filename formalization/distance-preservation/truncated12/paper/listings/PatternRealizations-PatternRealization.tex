@@ -1,0 +1,12 @@
+structure PatternRealization (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (w p : (*@$\mathbb N$@*)) where
+  qubits : Fin w (*@$\to$@*) Qubit L
+  checks : (r : Fin 18) (*@$\to$@*) r.val<edgeCount w (*@$\to$@*) SourceModel.ZCheck L
+  left_bound : (*@$\forall$@*) r : Fin 18,(*@$\forall$@*) hr : r.val<edgeCount w,(edge w p r.val).a<w
+  right_bound : (*@$\forall$@*) r : Fin 18,(*@$\forall$@*) hr : r.val<edgeCount w,(edge w p r.val).b<w
+  labels : (*@$\forall$@*) v : Fin w,VertexLabel (vertex w p v.val) (qubits v)
+  check_column : (*@$\forall$@*) r : Fin 18,(*@$\forall$@*) hr : r.val<edgeCount w,(edge w p r.val).j=(checks r hr).1.1.val
+  check_row : (*@$\forall$@*) r : Fin 18,(*@$\forall$@*) hr : r.val<edgeCount w,(edge w p r.val).i=(checks r hr).1.2.val
+  left_edge : (*@$\forall$@*) r : Fin 18,(*@$\forall$@*) hr : r.val<edgeCount w,
+    ZEdge e (qubits (*@$\langle$@*)(edge w p r.val).a,left_bound r hr(*@$\rangle$@*)) (checks r hr)
+  right_edge : (*@$\forall$@*) r : Fin 18,(*@$\forall$@*) hr : r.val<edgeCount w,
+    ZEdge e (qubits (*@$\langle$@*)(edge w p r.val).b,right_bound r hr(*@$\rangle$@*)) (checks r hr)

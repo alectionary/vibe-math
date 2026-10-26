@@ -1,0 +1,2 @@
+def fullSpanZ (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (x : Qubit L (*@$\to$@*) ZMod 2) : Prop :=
+  (*@$\exists$@*) w : SourceModel.ZCheck L (*@$\to$@*) ZMod 2, (*@$\forall$@*) q, x q=(*@$\sum$@*) c, w c*GeneralLP.HZ e c q

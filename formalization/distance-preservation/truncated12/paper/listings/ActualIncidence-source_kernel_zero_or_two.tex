@@ -1,0 +1,18 @@
+theorem source_kernel_zero_or_two (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : NoFour (CEdge e)) (h6 : NoSix (CEdge e))
+    (x : Qubit L (*@$\to$@*) ZMod 2)
+    (hk : (*@$\forall$@*) c, ((*@$\sum$@*) q,GeneralLP.HZ e c q*x q)=0)
+    (hw : (CoverWeight.support x).card(*@$\le$@*)11) (c : SourceModel.ZCheck L) :
+    ((CoverWeight.support x).filter (fun q => ZEdge e q c)).card=0 (*@$\lor$@*)
+      ((CoverWeight.support x).filter (fun q => ZEdge e q c)).card=2 := by
+  have hv (c : SourceModel.ZCheck L) (q : Qubit L) :
+      GeneralLP.HZ e c q = if ZEdge e q c then 1 else 0 := by
+    by_cases h : ZEdge e q c
+    (*@$\cdot$@*) simp only [h,if_true]
+      exact CoverWeight.nonzero_one _ ((quantum_incidence e q c).mpr h)
+    (*@$\cdot$@*) simp only [h,if_false]
+      exact not_ne_iff.mp (fun hn => h ((quantum_incidence e q c).mp hn))
+  apply LowWeightChecks.kernel_check_zero_or_two (ZEdge e)
+    (quantum_no_four e h4) (quantum_no_six e h6) (quantum_three_checks e) x ?_ hw c
+  intro d
+  simpa only [hv,ite_mul,one_mul,zero_mul] using hk d

@@ -1,0 +1,12 @@
+theorem source_transpose_zero_kernel_infinity (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (hz : (*@$\forall$@*) y : Fin 3 (*@$\times$@*) ZMod L (*@$\to$@*) ZMod 2,
+      ((*@$\forall$@*) q,((*@$\sum$@*) a,GeneralLP.C e a q*y a)=0) (*@$\to$@*) y=0) : sourceTransposeDistance e=(*@$\top$@*) := by
+  have hempty : {n | sourceTransposeHasWeight e n}=((*@$\varnothing$@*) : Set (*@$\mathbb N$@*)(*@$\infty$@*)) := by
+    ext n
+    constructor
+    (*@$\cdot$@*) rintro (*@$\langle$@*)y,hk,hn,he(*@$\rangle$@*)
+      exact False.elim (hn (hz y hk))
+    (*@$\cdot$@*) intro hn
+      exact False.elim (Set.notMem_empty n hn)
+  unfold sourceTransposeDistance
+  rw [hempty,sInf_empty]

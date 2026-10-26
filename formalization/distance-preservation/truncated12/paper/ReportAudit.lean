@@ -1,0 +1,155 @@
+import DistanceTwelve
+import CriterionScope
+set_option maxHeartbeats 0
+#check TruncatedDistance.classical_incidence
+#print axioms TruncatedDistance.classical_incidence
+#check TruncatedDistance.quantum_incidence
+#print axioms TruncatedDistance.quantum_incidence
+#check TruncatedDistance.quantum_no_four
+#print axioms TruncatedDistance.quantum_no_four
+#check TruncatedDistance.quantum_no_six
+#print axioms TruncatedDistance.quantum_no_six
+#check TruncatedDistance.source_kernel_zero_or_two
+#print axioms TruncatedDistance.source_kernel_zero_or_two
+#check TruncatedDistance.common_count_parity
+#print axioms TruncatedDistance.common_count_parity
+#check TruncatedDistance.common_block_parity
+#print axioms TruncatedDistance.common_block_parity
+#check TruncatedDistance.constant_singleton_rows
+#print axioms TruncatedDistance.constant_singleton_rows
+#check TruncatedDistance.eleven_left_marker
+#print axioms TruncatedDistance.eleven_left_marker
+#check TruncatedDistance.ten_left_marker
+#print axioms TruncatedDistance.ten_left_marker
+#check TruncatedDistance.ten_right_marker
+#print axioms TruncatedDistance.ten_right_marker
+#check TruncatedDistance.classified_of_mem_countCases
+#print axioms TruncatedDistance.classified_of_mem_countCases
+#check TruncatedDistance.count_cases_length
+#print axioms TruncatedDistance.count_cases_length
+#check KernelCatalog.complete_coverage10
+#print axioms KernelCatalog.complete_coverage10
+#check KernelCatalog.complete_coverage11
+#print axioms KernelCatalog.complete_coverage11
+#check KernelCatalog.Covered
+#print axioms KernelCatalog.Covered
+#check KernelCatalog.covered_append
+#print axioms KernelCatalog.covered_append
+#check KernelCatalog.covered_single
+#print axioms KernelCatalog.covered_single
+#check TruncatedDistance.no_full_row_of_no_triple
+#print axioms TruncatedDistance.no_full_row_of_no_triple
+#check TruncatedDistance.sourceClassicalDistance
+#print axioms TruncatedDistance.sourceClassicalDistance
+#check TruncatedDistance.sourceClassicalHasWeight
+#print axioms TruncatedDistance.sourceClassicalHasWeight
+#check TruncatedDistance.sourceQuantumDistance
+#print axioms TruncatedDistance.sourceQuantumDistance
+#check TruncatedDistance.sourceQuantumHasWeight
+#print axioms TruncatedDistance.sourceQuantumHasWeight
+#check TruncatedDistance.sourceTransposeDistance
+#print axioms TruncatedDistance.sourceTransposeDistance
+#check TruncatedDistance.sourceTransposeHasWeight
+#print axioms TruncatedDistance.sourceTransposeHasWeight
+#check TruncatedDistance.source_classical_minimum_lower
+#print axioms TruncatedDistance.source_classical_minimum_lower
+#check TruncatedDistance.source_classical_minimum_realized
+#print axioms TruncatedDistance.source_classical_minimum_realized
+#check TruncatedDistance.source_quantum_minimum_lower_iff
+#print axioms TruncatedDistance.source_quantum_minimum_lower_iff
+#check TruncatedDistance.source_transpose_zero_kernel_infinity
+#print axioms TruncatedDistance.source_transpose_zero_kernel_infinity
+#check TruncatedDistance.source_distance_bound_twelve
+#print axioms TruncatedDistance.source_distance_bound_twelve
+#check TruncatedDistance.eleven_geometry_encodes
+#print axioms TruncatedDistance.eleven_geometry_encodes
+#check TruncatedDistance.actual_eleven_geometry
+#print axioms TruncatedDistance.actual_eleven_geometry
+#check TruncatedDistance.exceptional_group_is_k23
+#print axioms TruncatedDistance.exceptional_group_is_k23
+#check GeneralLP.HX
+#print axioms GeneralLP.HX
+#check GeneralLP.HZ
+#print axioms GeneralLP.HZ
+#check GeneralLP.InSpanX
+#print axioms GeneralLP.InSpanX
+#check TruncatedDistance.fullSpanX
+#print axioms TruncatedDistance.fullSpanX
+#check TruncatedDistance.fullSpanZ
+#print axioms TruncatedDistance.fullSpanZ
+#check TruncatedDistance.full_span_swap
+#print axioms TruncatedDistance.full_span_swap
+#check TruncatedDistance.kernel_swap
+#print axioms TruncatedDistance.kernel_swap
+#check TruncatedDistance.swap_weight
+#print axioms TruncatedDistance.swap_weight
+#check TruncatedDistance.column_two_torsion_impossible
+#print axioms TruncatedDistance.column_two_torsion_impossible
+#check TruncatedDistance.integer_certificate_sound
+#print axioms TruncatedDistance.integer_certificate_sound
+#check TruncatedDistance.row_small_torsion_impossible
+#print axioms TruncatedDistance.row_small_torsion_impossible
+#check TruncatedDistance.actual_k23_numbering
+#print axioms TruncatedDistance.actual_k23_numbering
+#check KernelCatalog.checked_fast_equations
+#print axioms KernelCatalog.checked_fast_equations
+#check TruncatedDistance.source_left_local_mantel
+#print axioms TruncatedDistance.source_left_local_mantel
+#check TruncatedDistance.source_right_local_mantel
+#print axioms TruncatedDistance.source_right_local_mantel
+#check TruncatedDistance.PatternRealization
+#print axioms TruncatedDistance.PatternRealization
+#check TruncatedDistance.certified_pattern_has_no_source_realization
+#print axioms TruncatedDistance.certified_pattern_has_no_source_realization
+#check TruncatedDistance.pauli_bound_of_x_bound
+#print axioms TruncatedDistance.pauli_bound_of_x_bound
+#check TruncatedDistance.DistanceCriterion
+#print axioms TruncatedDistance.DistanceCriterion
+#check TruncatedDistance.normPerm_criterion
+#print axioms TruncatedDistance.normPerm_criterion
+#check TruncatedDistance.normPerm_kernel
+#print axioms TruncatedDistance.normPerm_kernel
+#check TruncatedDistance.normPerm_span
+#print axioms TruncatedDistance.normPerm_span
+#check TruncatedDistance.normPerm_weight
+#print axioms TruncatedDistance.normPerm_weight
+#check TruncatedDistance.pure_left_zero_below_classical
+#print axioms TruncatedDistance.pure_left_zero_below_classical
+#check TruncatedDistance.pure_right_zero_below_transpose
+#print axioms TruncatedDistance.pure_right_zero_below_transpose
+#check TruncatedDistance.single_exception_cancellation
+#print axioms TruncatedDistance.single_exception_cancellation
+#check TruncatedDistance.source_canonical_eleven_stabilizer
+#print axioms TruncatedDistance.source_canonical_eleven_stabilizer
+#check TruncatedDistance.source_mixed_count_profiles
+#print axioms TruncatedDistance.source_mixed_count_profiles
+#check TruncatedDistance.seven_certificates_complete
+#print axioms TruncatedDistance.seven_certificates_complete
+#check TruncatedDistance.source_seven_singleton_profile_stabilizer
+#print axioms TruncatedDistance.source_seven_singleton_profile_stabilizer
+#check TruncatedDistance.actual_singleton_label_alternative
+#print axioms TruncatedDistance.actual_singleton_label_alternative
+#check TruncatedDistance.source_target_obstruction
+#print axioms TruncatedDistance.source_target_obstruction
+#check TruncatedDistance.actual_canonical_ten_support_encodes
+#print axioms TruncatedDistance.actual_canonical_ten_support_encodes
+#check TruncatedDistance.ten_geometry_encodes
+#print axioms TruncatedDistance.ten_geometry_encodes
+#check TruncatedDistance.source_ten_geometry
+#print axioms TruncatedDistance.source_ten_geometry
+#check TruncatedDistance.tenRank_bound
+#print axioms TruncatedDistance.tenRank_bound
+#check TruncatedDistance.source_kernel_below_twelve_is_stabilizer
+#print axioms TruncatedDistance.source_kernel_below_twelve_is_stabilizer
+#check TruncatedDistance.source_pauli_bound_twelve
+#print axioms TruncatedDistance.source_pauli_bound_twelve
+#check TruncatedDistance.source_classical_word_le10
+#print axioms TruncatedDistance.source_classical_word_le10
+#check TruncatedDistance.torsionWord
+#print axioms TruncatedDistance.torsionWord
+#check TruncatedDistance.torsionWord_source_kernel
+#print axioms TruncatedDistance.torsionWord_source_kernel
+#check TruncatedDistance.torsion_card_le
+#print axioms TruncatedDistance.torsion_card_le
+#check TruncatedDistance.source_kernel_below_twelve_of_coverage
+#print axioms TruncatedDistance.source_kernel_below_twelve_of_coverage

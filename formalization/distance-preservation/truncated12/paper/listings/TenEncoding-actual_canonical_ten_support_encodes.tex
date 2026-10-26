@@ -1,0 +1,13 @@
+theorem actual_canonical_ten_support_encodes
+    (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : TannerSix.NoFour (CEdge e))
+    (hR0 : (*@$\forall$@*) k,e 0 k=0) (hC0 : (*@$\forall$@*) l,e l 0=0)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (hk : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*GeneralLP.join u v q)=0)
+    (hU0 : leftCount u 0=0) (hV0 : rightCount v 0=0)
+    (hU : (*@$\forall$@*) j : Fin 3,leftCount u j.succ=2)
+    (hV : (*@$\forall$@*) i : Fin 2,rightCount v i.succ=2) :
+    (*@$\exists$@*) p : Fin 124416,Nonempty (PatternRealization e 10 p.val) := by
+  obtain (*@$\langle$@*)d(*@$\rangle$@*) := source_ten_geometry e h4 hR0 hC0 u v hk hU0 hV0 hU hV
+  exact ten_geometry_encodes e hR0 hC0 u v d

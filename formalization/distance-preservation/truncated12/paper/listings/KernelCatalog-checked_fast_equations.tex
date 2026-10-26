@@ -1,0 +1,17 @@
+theorem checked_fast_equations {A : Type*} [AddCommGroup A]
+    (w p : Nat) (c : Certificate) (hc : checkCertificateFast w p c=true)
+    (x : Fin (w+6) (*@$\to$@*) A)
+    (hr : (*@$\forall$@*) i : Fin 18, TruncatedDistance.integerDot (sourceRow w p i) x=0) :
+    (*@$\forall$@*) t : Fin (targetArity c.kind),
+      TruncatedDistance.integerDot (certificateTarget w c t) x=0 := by
+  have hcert (t : Fin (targetArity c.kind)) (j : Fin (w+6)) :
+      certificateTarget w c t j=(*@$\sum$@*) i : Fin 18,c.coeff t.val i.val*sourceRow w p i j := by
+    have ht := List.all_eq_true.mp ((Bool.and_eq_true_iff.mp hc).2)
+      t.val (List.mem_range.mpr t.isLt)
+    have hj := List.all_eq_true.mp ht j.val (List.mem_range.mpr j.isLt)
+    have heq := of_decide_eq_true hj
+    simpa only [certificateTarget,certificateTargetNat,dotNat18_eq_sum,
+      sparseProduct_eq,sourceRowNat_eq] using heq
+  intro t
+  exact TruncatedDistance.integer_certificate_sound (sourceRow w p)
+    (fun i => c.coeff t.val i.val) (certificateTarget w c t) x hr (hcert t)

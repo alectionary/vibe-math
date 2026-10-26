@@ -1,0 +1,62 @@
+theorem source_ten_geometry (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L)
+    (h4 : TannerSix.NoFour (CEdge e))
+    (hR0 : (*@$\forall$@*) k,e 0 k=0) (hC0 : (*@$\forall$@*) l,e l 0=0)
+    (u : Fin 4 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (v : Fin 3 (*@$\to$@*) Fin 3 (*@$\to$@*) ZMod L (*@$\to$@*) ZMod 2)
+    (hk : (*@$\forall$@*) c,((*@$\sum$@*) q,GeneralLP.HZ e c q*GeneralLP.join u v q)=0)
+    (hU0 : leftCount u 0=0) (hV0 : rightCount v 0=0)
+    (hU : (*@$\forall$@*) j : Fin 3,leftCount u j.succ=2)
+    (hV : (*@$\forall$@*) i : Fin 2,rightCount v i.succ=2) : Nonempty (TenGeometry e u v) := by
+  classical
+  have hu0 : (*@$\forall$@*) k s,u 0 k s=0 := by
+    have h := zero_of_support_card_zero (fun q : Fin 4 (*@$\times$@*) ZMod L => u 0 q.1 q.2) hU0
+    intro k s
+    exact congrFun h (k,s)
+  have hv0 : (*@$\forall$@*) l s,v l 0 s=0 := by
+    have h := zero_of_support_card_zero (fun q : Fin 3 (*@$\times$@*) ZMod L => v q.1 0 q.2) hV0
+    intro l s
+    exact congrFun h (l,s)
+  have hleft (j : Fin 3) : (*@$\exists$@*) a b s,a<b (*@$\land$@*)
+      (*@$\forall$@*) k z,u j.succ k z=if (k=a (*@$\lor$@*) k=b) (*@$\land$@*) z=s then 1 else 0 := by
+    obtain (*@$\langle$@*)a,b,s,hab,hf(*@$\rangle$@*) := left_pair_same_fiber e hR0 u v hk hv0 j.succ (hU j)
+    rcases lt_or_gt_of_ne hab with h|h
+    (*@$\cdot$@*) exact (*@$\langle$@*)a,b,s,h,hf(*@$\rangle$@*)
+    (*@$\cdot$@*) exact (*@$\langle$@*)b,a,s,h,by simpa only [or_comm] using hf(*@$\rangle$@*)
+  have hright (i : Fin 2) : (*@$\exists$@*) a b s,a<b (*@$\land$@*)
+      (*@$\forall$@*) l z,v l i.succ z=if (l=a (*@$\lor$@*) l=b) (*@$\land$@*) z=s then 1 else 0 := by
+    obtain (*@$\langle$@*)a,b,s,hab,hf(*@$\rangle$@*) := right_pair_same_fiber e hC0 u v hk hu0 i.succ (hV i)
+    rcases lt_or_gt_of_ne hab with h|h
+    (*@$\cdot$@*) exact (*@$\langle$@*)a,b,s,h,hf(*@$\rangle$@*)
+    (*@$\cdot$@*) exact (*@$\langle$@*)b,a,s,h,by simpa only [or_comm] using hf(*@$\rangle$@*)
+  choose a b S hab hu using hleft
+  choose l m T hlm hv using hright
+  have hm (i : Fin 2) (j : Fin 3) : (*@$\exists$@*) f : Fin 2,(*@$\forall$@*) t : Fin 2,
+      S j+e i.succ ((![a j,b j]) t)=
+        T i-e ((![l i,m i]) (if t=f then 0 else 1)) j.succ := by
+    have hcase := source_pair_cross_matching e h4 hR0 hC0 u v hk j.succ (by simp)
+      i.succ (by simp) (a j) (b j) (ne_of_lt (hab j)) (l i) (m i) (ne_of_lt (hlm i))
+      (S j) (T i) (hu j) (hv i)
+    rcases hcase with (*@$\langle$@*)h0,h1(*@$\rangle$@*)|(*@$\langle$@*)h0,h1(*@$\rangle$@*)
+    (*@$\cdot$@*) refine (*@$\langle$@*)0,?_(*@$\rangle$@*)
+      intro t
+      fin_cases t
+      (*@$\cdot$@*) simpa using h0
+      (*@$\cdot$@*) simpa using h1
+    (*@$\cdot$@*) refine (*@$\langle$@*)1,?_(*@$\rangle$@*)
+      intro t
+      fin_cases t
+      (*@$\cdot$@*) simpa using h0
+      (*@$\cdot$@*) simpa using h1
+  choose flip hf using hm
+  exact (*@$\langle$@*){
+    K := fun j => ![a j,b j]
+    H := fun i => ![l i,m i]
+    S := S
+    T := T
+    orderedK := by simpa using hab
+    orderedH := by simpa using hlm
+    left_repr := by simpa using hu
+    right_repr := by simpa using hv
+    flip := flip
+    matching := hf
+  }(*@$\rangle$@*)

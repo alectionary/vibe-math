@@ -1,0 +1,9 @@
+structure DistanceCriterion (e : Fin 3 (*@$\to$@*) Fin 4 (*@$\to$@*) ZMod L) (D : (*@$\mathbb N$@*)) : Prop where
+  no_four : NoFour (CEdge e)
+  no_six : NoSix (CEdge e)
+  row_zero : (*@$\forall$@*) j,e 0 j=0
+  column_zero : (*@$\forall$@*) i,e i 0=0
+  no_column_partition : NoColumnPartition e
+  no_triple_row : NoTripleRow e
+  classical_bound : ClassicalAtLeast e D
+  transpose_bound : TransposeAtLeast e D
