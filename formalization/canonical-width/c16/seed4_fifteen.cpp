@@ -2,9 +2,9 @@
 // seed-4 X monomials. Bits set in omit_mask are left out; every other bit is
 // paired with one of its three forced Z partners. Assignments whose orthogonal
 // X pool spans the complementary space are searched for a dual basis of the
-// quotient. The search branches on the rarest surviving X coordinate and
-// rejects a branch whose surviving X pool or Z pool has rank short of the
-// remaining dimension.
+// quotient. The search branches on the rarest surviving X coordinate. A branch
+// dies when the pairs already chosen, together with the surviving pool, cannot
+// span the quotient.
 //
 //   g++ -O3 -std=c++17 seed4_fifteen.cpp -o seed4_fifteen
 //   ./seed4_fifteen pools/xcoords.txt pools/zcoords.txt [cap] [omit_mask]
@@ -77,9 +77,10 @@ static int rank_of(const std::vector<U>& rows) {
 }
 
 struct Bits {
-    uint64_t w[8]{};
+    static constexpr int NW = 16;  // 1024 indices; the pools have 720 vectors
+    uint64_t w[NW]{};
     void clear() {
-        for (int i = 0; i < 8; i++) w[i] = 0;
+        for (int i = 0; i < NW; i++) w[i] = 0;
     }
     void set(int i) { w[i >> 6] |= 1ull << (i & 63); }
     void reset(int i) { w[i >> 6] &= ~(1ull << (i & 63)); }
@@ -89,16 +90,19 @@ struct Bits {
         for (int i = 0; i < n; i++) set(i);
     }
     void keep(const Bits& o) {
-        for (int i = 0; i < 8; i++) w[i] &= o.w[i];
+        for (int i = 0; i < NW; i++) w[i] &= o.w[i];
+    }
+    void exclude(const Bits& o) {
+        for (int i = 0; i < NW; i++) w[i] &= ~o.w[i];
     }
     int count() const {
         int c = 0;
-        for (int i = 0; i < 8; i++) c += pop2(w[i]);
+        for (int i = 0; i < NW; i++) c += pop2(w[i]);
         return c;
     }
     template <class F>
     void each(F f) const {
-        for (int k = 0; k < 8; k++) {
+        for (int k = 0; k < NW; k++) {
             uint64_t m = w[k];
             while (m) {
                 int b = __builtin_ctzll(m);
@@ -109,103 +113,158 @@ struct Bits {
     }
 };
 
-// Search a  `need`-pair dual basis inside the given pools. Returns true if one
-// exists. `nodes` counts recursive calls and stops after `cap`. A capped search
-// returns false and sets `capped`.
-static bool complete(const std::vector<U>& X, const std::vector<U>& Z, int need, uint64_t cap,
+static int ctz128(U v) {
+    uint64_t lo = (uint64_t)v;
+    if (lo) return __builtin_ctzll(lo);
+    return 64 + __builtin_ctzll((uint64_t)(v >> 64));
+}
+
+// Echelon basis on lowest-bit pivots. Rank only; pivot rows stay triangular.
+struct GE {
+    U p[128]{};
+    int n = 0;
+    bool insert(U v) {
+        while (v) {
+            int b = ctz128(v);
+            if (p[b]) v ^= p[b];
+            else {
+                p[b] = v;
+                n++;
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
+static int extend_rank(const U* vecs, const Bits& avail, GE g, int atleast) {
+    int extra = 0;
+    for (int w = 0; w < Bits::NW && extra < atleast; w++) {
+        uint64_t m = avail.w[w];
+        while (m && extra < atleast) {
+            int i = (w << 6) + __builtin_ctzll(m);
+            m &= m - 1;
+            if (g.insert(vecs[i])) extra++;
+        }
+    }
+    return extra;
+}
+
+// Search a `need`-pair dual basis of the span of X (and of Z). Returns true
+// if one exists. `nodes` counts recursive calls and stops after `cap`. A
+// capped search returns false and sets `capped`.
+//
+// Completeness of the branch: every still-available X vector is independent
+// of the pairs already chosen, because it commutes with every chosen Z. If a
+// coordinate is set on any available vector, no completion can avoid it. An
+// avoiding completion would be a dual basis of the quotient in which every
+// available vector reduces into the zero-coordinate hyperplane, hence would
+// have 0 on that coordinate. Trying each available vector that carries the
+// rarest such coordinate, with each surviving anticommuting Z, is enough.
+static bool complete(const std::vector<U>& Xv, const std::vector<U>& Zv, int need, uint64_t cap,
                      uint64_t& nodes, bool& capped, std::vector<std::pair<int, int>>* out) {
-    const int nX = (int)X.size(), nZ = (int)Z.size();
-    if (rank_of(X) < need || rank_of(Z) < need) return false;
-    std::vector<Bits> anti(nX);
+    const int nX = (int)Xv.size(), nZ = (int)Zv.size();
+    if (nX > Bits::NW * 64 || nZ > Bits::NW * 64) {
+        std::cerr << "pool exceeds bitset capacity\n";
+        std::exit(1);
+    }
+    if (need > 128) return false;
+    std::vector<U> Xstor = Xv, Zstor = Zv;
+    const U* X = Xstor.data();
+    const U* Z = Zstor.data();
+    std::vector<Bits> xAnti(nX), zAnti(nZ);
     for (int i = 0; i < nX; i++)
         for (int j = 0; j < nZ; j++)
-            if (dot(X[i], Z[j])) anti[i].set(j);
+            if (dot(X[i], Z[j])) {
+                xAnti[i].set(j);
+                zAnti[j].set(i);
+            }
     Bits availX, availZ;
     availX.fill(nX);
     availZ.fill(nZ);
-    std::vector<int> cx, cz;
-    bool found = false;
     capped = false;
-    std::function<void()> rec;
-    rec = [&]() {
-        if (nodes >= cap) {
-            capped = true;
-            return;
-        }
-        nodes++;
-        int k = (int)cx.size();
-        if (found) return;
-        if (k == need) {
-            found = true;
-            if (out) {
-                out->clear();
-                for (int t = 0; t < need; t++) out->push_back({cx[t], cz[t]});
+    struct Search {
+        const U* X;
+        const U* Z;
+        const Bits* xAnti;
+        const Bits* zAnti;
+        int nX, nZ, need;
+        uint64_t cap;
+        uint64_t* nodes;
+        bool* capped;
+        std::vector<std::pair<int, int>>* out;
+        bool found = false;
+        int cx[128]{}, cz[128]{};
+        void rec(GE gx, GE gz, Bits ax, Bits az, int k) {
+            if (*nodes >= cap) {
+                *capped = true;
+                return;
             }
-            return;
-        }
-        int left = need - k;
-        if (availX.count() < left || availZ.count() < left) return;
-        std::vector<U> rows;
-        availX.each([&](int i) { rows.push_back(X[i]); });
-        if (rank_of(rows) < left) return;
-        rows.clear();
-        availZ.each([&](int j) { rows.push_back(Z[j]); });
-        if (rank_of(rows) < left) return;
-        int hits[128] = {};
-        availX.each([&](int i) {
-            U v = X[i];
-            uint64_t lo = (uint64_t)v, hi = (uint64_t)(v >> 64);
-            while (lo) {
-                hits[__builtin_ctzll(lo)]++;
-                lo &= lo - 1;
+            uint64_t nd = ++(*nodes);
+            if ((nd & 262143ull) == 0)
+                std::cerr << "progress nodes " << nd << " depth " << k << "\n";
+            if (found) return;
+            if (k == need) {
+                found = true;
+                if (out) {
+                    out->clear();
+                    for (int t = 0; t < need; t++) out->push_back({cx[t], cz[t]});
+                }
+                return;
             }
-            while (hi) {
-                hits[64 + __builtin_ctzll(hi)]++;
-                hi &= hi - 1;
-            }
-        });
-        int bstar = -1, bh = 1 << 30;
-        for (int b = 0; b < 128; b++)
-            if (hits[b] && hits[b] < bh) {
-                bh = hits[b];
-                bstar = b;
-            }
-        if (bstar < 0) return;
-        std::vector<int> cands;
-        availX.each([&](int i) {
-            if ((X[i] >> bstar) & 1) cands.push_back(i);
-        });
-        Bits savedX = availX, savedZ = availZ;
-        for (int i : cands) {
-            if (found || nodes > cap) return;
-            availX = savedX;
-            availZ = savedZ;
-            Bits zs = anti[i];
-            zs.keep(savedZ);
-            zs.each([&](int j) {
-                if (found || nodes > cap) return;
-                availX = savedX;
-                availZ = savedZ;
-                availX.reset(i);
-                availZ.reset(j);
-                for (int t = 0; t < nX; t++)
-                    if (availX.test(t) && dot(X[t], Z[j])) availX.reset(t);
-                for (int t = 0; t < nZ; t++)
-                    if (availZ.test(t) && dot(X[i], Z[t])) availZ.reset(t);
-                if (availX.count() < left - 1 || availZ.count() < left - 1) return;
-                cx.push_back(i);
-                cz.push_back(j);
-                rec();
-                cx.pop_back();
-                cz.pop_back();
+            int left = need - k;
+            if (ax.count() < left || az.count() < left) return;
+            // Survivors must extend the chosen pairs all the way to the quotient.
+            if (extend_rank(X, ax, gx, left) < left) return;
+            if (extend_rank(Z, az, gz, left) < left) return;
+            int hits[128] = {};
+            ax.each([&](int i) {
+                U v = X[i];
+                uint64_t lo = (uint64_t)v, hi = (uint64_t)(v >> 64);
+                while (lo) {
+                    hits[__builtin_ctzll(lo)]++;
+                    lo &= lo - 1;
+                }
+                while (hi) {
+                    hits[64 + __builtin_ctzll(hi)]++;
+                    hi &= hi - 1;
+                }
             });
+            int bstar = -1, bh = 1 << 30;
+            for (int b = 0; b < 128; b++)
+                if (hits[b] && hits[b] < bh) {
+                    bh = hits[b];
+                    bstar = b;
+                }
+            if (bstar < 0) return;
+            std::vector<int> cands;
+            ax.each([&](int i) {
+                if ((X[i] >> bstar) & 1) cands.push_back(i);
+            });
+            for (int i : cands) {
+                if (found || *capped) return;
+                Bits zs = xAnti[i];
+                zs.keep(az);
+                zs.each([&](int j) {
+                    if (found || *capped) return;
+                    Bits nx = ax, nz = az;
+                    nx.reset(i);
+                    nz.reset(j);
+                    nx.exclude(zAnti[j]);
+                    nz.exclude(xAnti[i]);
+                    if (nx.count() < left - 1 || nz.count() < left - 1) return;
+                    GE ngx = gx, ngz = gz;
+                    if (!ngx.insert(X[i]) || !ngz.insert(Z[j])) return;
+                    cx[k] = i;
+                    cz[k] = j;
+                    rec(ngx, ngz, nx, nz, k + 1);
+                });
+            }
         }
-        availX = savedX;
-        availZ = savedZ;
     };
-    // std::function needs the header; included below via a local prototype.
-    rec();
-    return found;
+    Search s{X, Z, xAnti.data(), zAnti.data(), nX, nZ, need, cap, &nodes, &capped, out};
+    s.rec(GE{}, GE{}, availX, availZ, 0);
+    return s.found;
 }
 
 static bool self_test() {
