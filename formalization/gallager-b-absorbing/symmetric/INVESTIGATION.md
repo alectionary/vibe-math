@@ -4,7 +4,7 @@ Canonical parent: L-P09-all-absorbing. Existing project-derived follow-up: RQ-P0
 Tracking issue: https://github.com/alectionary/vibe-math/issues/2
 Session: symmetric-20261026T175537Z-01a176d9; UTC start: 2026-10-26T17:55:37Z.
 Work branch: research/L-P09-symmetric-20261026T175537Z.
-Claim: refs/heads/claims/L-P09-all-absorbing; create-only acquisition pending.
+Claim: refs/heads/claims/L-P09-all-absorbing; owned by this session at a7374afb778176b6d6ae0161aba2344b77fe40f8; create-only API operation and exact read-back verified. An initial request used an invalid object SHA and was rejected422; absence was verified before the corrected creation.
 Authorization: user explicitly requested steps(1) and(2): formalize the parity obstruction and update the paper; formulate and screen the remaining symmetric-CSS question. No new elapsed-time budget was imposed. No even-support construction campaign, Project or delegation is authorized by this scope.
 
 ## Prior completed work
