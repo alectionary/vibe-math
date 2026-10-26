@@ -7,10 +7,14 @@
   "lean_certificate": false,
   "committed_checker": {
     "command": "python3 formalization/canonical-width/c16/verify_partial_frame.py",
-    "script_sha256": "1a7ee7da4f73d1a361e3ecb76d83e109f0bc3d25015b4425692379782984c9e5",
+    "command_88": "python3 formalization/canonical-width/c16/verify_partial_frame.py formalization/canonical-width/c16/partial-frame-88.json",
+    "script_sha256": "169b253e660ebc4111a7afdec2efd6a666f7811269816ac5cf2832e76f91e16f",
     "witness": "formalization/canonical-width/c16/partial-frame-84.json",
     "witness_sha256": "7823c6f7987daa8c35dc96a8f5ec381ead428531df6c129ba5788d63f6cce949",
     "witness_pairs": 84,
+    "witness_88": "formalization/canonical-width/c16/partial-frame-88.json",
+    "witness_88_sha256": "814fa6d137f3429b7a2cf34e28c254c0684c1f4441aa0701dc63a2edb68cc987",
+    "witness_88_pairs": 88,
     "operator_weight": 16,
     "expected_stdout": [
       "partial canonical frame ok: 84 pairs, weight 16, zero syndromes, Gram identity",
@@ -54,9 +58,20 @@
     "binary_sha256": "2dcb140e0a388557b7d89b2d3d5ce20de09291485e312872507b6b8b45516ab8",
     "stdout_sha256": "36dc5c723c0aba9f1f7de7aa87f06e7173afbc39bb8b3336d4fe72d9ef226536"
   },
+  "b_identity_matching": {
+    "evidence": "exact_finite_computation",
+    "solver": "OR-Tools CP-SAT 9.15.6755",
+    "statement": "No induced matching of B-carrying pool pairs has B-outer-products equal to I_32 in the three restricted pools named in INVESTIGATION.md. The seed-5 monomial matching is accepted. This does not decide f.",
+    "infeasible_pools": [
+      "seeds 4,5,6,7 only: 2208 pairs",
+      "seed 0 = 0: 2576 pairs",
+      "seed 1 = 0: 2208 pairs",
+      "phase-0 quotient, joint B and C: 8352 pairs"
+    ]
+  },
   "sampled_search": {
     "evidence": "sampled_experiment",
-    "best_partial_pairs": 84,
+    "best_partial_pairs": 88,
     "reduced_96_plateau": 48,
     "reduced_coloring_colors": 158,
     "reduced_coloring_max_degree": 8354,

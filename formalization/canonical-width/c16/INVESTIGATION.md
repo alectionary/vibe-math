@@ -19,6 +19,16 @@ This is a follow-up, not a new problem. The 2026-10-26 block recorded an 84-pair
 
 Question source: Jong Yeon Lee, arXiv:2610.06820v1, 5 October 2026, Proposition 9, Section IV.4; proof Appendix C.3; construction equation (50) and Appendix D.1.1. HTML https://arxiv.org/html/2610.06820v1, SHA-256 `3e4294e6e8c328eca1de101b04b1ad527e0ddae1fc9bc776e3037328ef22a37f`. Data repository https://github.com/yeon-lee/public-regular-logical-frames at `04ad4795ad15cb89ee47b7868ff925c30b2fc731` (2026-10-06).
 
+## Follow-up obstructions, 2026-10-26
+
+These checks use the saved logical coordinates of the weight-16 pools (720 classes on each side, standard dot product in the width-18 frame basis). They are exact finite computations on that coordinate model. They do not by themselves replace the physical checker, and they do not decide \(f\).
+
+A Z-pool translation orbit can belong to a 128-pair CSS frame only if its 16 translates are independent, the Z-pool vectors orthogonal to the orbit cover the quotient with the orbit, and the X-pool realizes every monomial pairing polynomial against the orbit. Only four orbits pass: the pure monomials on seeds 0, 1, 2, and 3. The other 41 orbits fail the quotient-span test. Seeds 2 and 3 together miss 16 monomial functionals. The joint sets \(\{0,1,2\}\) and \(\{0,1,3\}\) have one and three cyclic partner-orbit choices; every choice leaves a complementary pool whose rank is strictly below the remaining dimension. So no CSS frame contains either of those full triples. Mixed, non-cyclic choices of partner for a single monomial orbit were not all ruled out.
+
+An induced matching of pairs with nonzero \(B\)-components (seeds 4 and 5) is necessary for the block identity \(\sum \beta_j\alpha_j^{\mathsf T}=I_{32}\). OR-Tools CP-SAT 9.15 reports that matching infeasible in three pools: both sides supported only on seeds \(\{4,5,6,7\}\) (2208 candidate pairs); both sides with seed 0 equal to 0 (2576 pairs); both sides with seed 1 equal to 0 (2208 pairs). The same encoder accepts the 16 seed-5 monomials, whose outer products are the seed-5 coordinate projection, so it is not rejecting every partial identity. If every seed-0 monomial is paired with the matching seed-0 plus seed-1 monomial, the remaining carriers cannot realize the \(B\)-identity and the \(C\)-identity together (8352 pairs, infeasible). The global \(B\)-identity instance (43936 pairs) and the global joint \(B\) and \(C\) instance (62112 pairs) returned no decision within 180 seconds.
+
+Inside the quotient seed 0 = seed 1 = 0, the same solver found an induced matching of 56 pairs. Adding the 32 pure monomials on seeds 0 and 1, which commute with that quotient, gives 88 logical pairs with Gram identity. The physical supports are `partial-frame-88.json`. The committed checker reports weight 16, zero syndromes, and Gram identity. This is a larger partial frame than the 84-pair witness. It still does not extend to 128 pairs, and the search did not prove that 56 is the maximum in the quotient.
+
 ## Question still open
 
 The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. This block does not decide it. There is no Lean certificate.
@@ -39,18 +49,18 @@ The source hierarchy is \(d\le f_{\mathrm{span}}\le f\le f_{\mathrm{reg}}\le f_{
 
 ## Checked partial frame
 
-`partial-frame-84.json` is an explicit 84-pair pure-X / pure-Z frame. The committed checker reports:
+`partial-frame-88.json` is an explicit 88-pair pure-X / pure-Z frame: 32 monomial pairs on seeds 0 and 1, plus a 56-pair induced matching in the complementary quotient. `partial-frame-84.json` is an earlier 84-pair frame. The committed checker reports, for each witness:
 
 - each operator has weight 16 and distinct qubits in \(0,\ldots,1087\);
 - every X operator has syndrome 0 against the rebuilt Z checks, and every Z operator has syndrome 0 against the rebuilt X checks;
-- the \(84\times 84\) symplectic Gram matrix is the identity;
-- the 84 X operators are distinct and the 84 Z operators are distinct.
+- the symplectic Gram matrix is the identity;
+- the X operators are distinct and the Z operators are distinct.
 
-Witness SHA-256 `7823c6f7987daa8c35dc96a8f5ec381ead428531df6c129ba5788d63f6cce949`. Checker SHA-256 `1a7ee7da4f73d1a361e3ecb76d83e109f0bc3d25015b4425692379782984c9e5`.
+The 88-pair witness SHA-256 is `814fa6d137f3429b7a2cf34e28c254c0684c1f4441aa0701dc63a2edb68cc987`. The 84-pair witness SHA-256 is `7823c6f7987daa8c35dc96a8f5ec381ead428531df6c129ba5788d63f6cce949`. Checker SHA-256 `169b253e660ebc4111a7afdec2efd6a666f7811269816ac5cf2832e76f91e16f`.
 
-Evidence label: **exact finite computation** on this finite witness and the rebuilt checks.
+Evidence label: **exact finite computation** on these finite witnesses and the rebuilt checks.
 
-This improves an earlier 80-pair frame made from the logical monomials on seeds \(\{0,1,3,5,7\}\). The 84-pair object is still a partial frame. It does not answer Proposition 9.
+The 88-pair frame improves the 84-pair frame, which improved an earlier 80-pair frame made from the logical monomials on seeds \(\{0,1,3,5,7\}\). It is still a partial frame. It does not answer Proposition 9.
 
 A separate exact computation on the saved logical coordinates of the weight-16 pools, rerun from `/tmp/lf91/best-11.txt`, inverts the 128-column X basis and finds 84 dual vectors in the Z pool and 44 outside it. No Z-pool vector is orthogonal to all 84 of the corresponding X columns, so this particular 84-pair frame does not extend by one more pool pair. That non-extension check is not part of the committed checker. It does not say that every 84-pair partial frame, or some other 128-pair basis, fails.
 
@@ -91,6 +101,7 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 | Claim | Label |
 |---|---|
 | Rebuilt checks: 480 rows, weight at most 9, rank 480, \(k=128\), CSS commutation | Exact finite computation |
+| 88-pair witness: weight 16, zero syndromes, Gram identity | Exact finite computation |
 | 84-pair witness: weight 16, zero syndromes, Gram identity | Exact finite computation |
 | That 84-pair frame has no extending Z vector in the saved pool | Exact finite computation (scratch coordinates; not the committed checker) |
 | Pool sizes, span rank 128, \(\mu_{XZ}=26\), width-18 translate frame | Exact finite computation |
