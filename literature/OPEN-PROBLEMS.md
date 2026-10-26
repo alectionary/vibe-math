@@ -1,31 +1,31 @@
 # Expanded open-problem inventory
 
-Checked October 24, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Inventory updated October 25, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **319 canonical entries**: the original 40 dissertation targets and **279 additional article entries**. Of the additions, **105 are specific mathematical questions or tasks suitable for coverage tracking**; the other 174 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **338 canonical entries**: the original 40 dissertation targets and **298 additional article entries**. Of the additions, **109 are specific mathematical questions or tasks suitable for coverage tracking**; the other 189 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [94 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/144 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [98 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 5/148 after completion of the existing F16 target. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 105 |
-| Additional directions/formulation/method entries outside the denominator | 174 |
-| Combined eligible targets | 144 = 39 + 105 |
-| Eligible targets with an identified, verified proof-assistant statement | 5/144 (3.47%) |
-| Eligible targets with an identified, verified Lean statement | 5/144 (3.47%) |
-| Eligible targets with a complete checked Lean proof | 5/144 (3.47%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/144 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/144 |
-| Additional identified Lean statements without a build audit | 1/144 |
-| Eligible targets with Lean discovery still unassessed in this extension | 36/144 |
-| Articles/preprints in scope | 124 |
-| Full-text sources screened, including withdrawn history | 113/124 |
-| Current-publication full texts screened | 112 |
+| Additional article targets in the coverage denominator | 109 |
+| Additional directions/formulation/method entries outside the denominator | 189 |
+| Combined eligible targets | 148 = 39 + 109 |
+| Eligible targets with an identified, verified proof-assistant statement | 5/148 (3.38%) |
+| Eligible targets with an identified, verified Lean statement | 5/148 (3.38%) |
+| Eligible targets with a complete checked Lean proof | 5/148 (3.38%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/148 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/148 |
+| Additional identified Lean statements without a build audit | 1/148 |
+| Eligible targets with Lean discovery still unassessed in this extension | 40/148 |
+| Articles/preprints in scope | 128 |
+| Full-text sources screened, including withdrawn history | 117/128 |
+| Current-publication full texts screened | 116 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 11/124 |
+| Not fully assessed | 11/128 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -175,6 +175,10 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F88](https://arxiv.org/html/2605.16523v1) | full text screened | 6 | arXiv:2605.16523v1, 15 May 2026; full-document lexical target screen plus introduction/conclusion and matched-context review |
 | [F89](https://arxiv.org/html/2607.28621v1) | full text screened | 8 | arXiv:2607.28621v1, 30 July 2026; internal manuscript date 24 August 2026; full-document lexical target screen plus introduction/conclusion and matched-context review |
 | [F90](https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf) | full text screened | 0 | Complete single-page proceedings text and rendered page inspected, including all theorem statements, note, introduction and references. |
+| [F91](https://arxiv.org/html/2610.06820v1) | full text screened | 6 | arXiv:2610.06820v1, 5 October 2026; full-document lexical question screen and all matched-context review; not a proof-correctness audit. |
+| [F92](https://arxiv.org/html/2306.16400v1) | full text screened | 2 | arXiv:2306.16400v1, 28 June 2023; full DOM text and all question contexts screened; current resolution not assessed. |
+| [F93](https://arxiv.org/html/2610.13880v2) | full text screened | 10 | arXiv:2610.13880v2, 12 October 2026; full DOM text and all question contexts screened; current resolution not assessed. |
+| [F94](https://arxiv.org/html/2606.27130v2) | full text screened | 1 | arXiv:2606.27130v2, 5 September 2026; full DOM text and all question contexts screened; current resolution not assessed. |
 
 ## Reproducible evidence and limits
 
@@ -2343,8 +2347,20 @@ Find sufficient base-matrix constraints ensuring equality of the quantum and cla
   - [Complete Lean source](../formalization/distance-preservation/ParametricProjection.lean).
   - [Complete Lean source](../formalization/distance-preservation/ClassicalUpper20.lean).
   - [Complete Lean source](../formalization/distance-preservation/FinalAudit.lean).
+- Research progress: [Certificate-assisted truncated-bound argument and actual-source small-support classification](../formalization/distance-preservation/truncated12/RESEARCH-NOTE.txt) (written argument exact integer replay general lean structural bridges partial closed case replay). For the strengthened normalized 3x4 criterion, a certificate-assisted written argument gives dQ>=min(dC,12). Lean checks the actual-source mixed count-profile classification through weight11, induced K2,3 equality case, singleton support/label reduction, normalization and full-span bridges. Independent integer replay checks all183312 pattern certificates. The complete source-level distance theorem is not assembled; no qualifying counterexample and no canonical source completion is claimed.
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SourceProfiles.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/ExceptionalGraph.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SupportSingletons.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/FiniteLabels.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/Normalization.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/GaugeWeight.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/SpanCoefficients.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/KernelCatalog.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/TorsionClassical.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/GeneralSymmetry.lean).
+  - [Complete Lean source](../formalization/distance-preservation/truncated12/PauliBridge.lean).
 - Project-derived follow-up, outside the source-target denominator: **RQ-F25-exclude-mixed-patterns** — Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Open after a corrected frozen104-base diagnostic and separate finite/structural follow-ups; no general sufficient-condition theorem or discovery-time estimate assigned.
-- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Preferred bounded follow-up: classify mixed logical supports through11, with both actual source sectors and the full stabilizer quotient. Generic lemmas and finite diagnostics do not establish this universal bound.
+- Project-derived follow-up, outside the source-target denominator: **RQ-F25-truncated-distance-12** — For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Certificate-assisted written argument and actual-source count classification checked in Lean in the October25 round. Complete source support-to-pattern/cancellation and final distance assembly remain; see truncated12/verification.json. The source equality question is not marked solved.
 - [F25: Section VI, next-step and structured-code distance-preservation directions](https://arxiv.org/html/2503.07567v1); extraction lines 6829–6838; explicit future work target.
 - Related, not merged: L-P34-logical-partitions, L-P34-base-design.
 
@@ -3785,3 +3801,195 @@ Develop systematic nontransversal surgery constructions for general qLDPC codes 
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
 - [F89: Section IV](https://arxiv.org/html/2607.28621v1); extraction lines 6874–6879; explicit broad research or engineering direction.
+
+### L-F91-c16-unrestricted-width
+
+Determine whether the unrestricted canonical frame width of the fixed LP code C16,9 is 16 or 18.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Fixed source-defined construction and exact invariant/existence question; retain all construction and frame conventions.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F91: Section IV.4 and Appendix C.3, Proposition9; construction equation50](https://arxiv.org/html/2610.06820v1); extraction lines 585–586; explicit open math target.
+
+### L-F91-c20-unrestricted-width
+
+Determine the unrestricted canonical frame width of the fixed LP code C20,10.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Fixed source-defined construction and exact invariant/existence question; retain all construction and frame conventions.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F91: Section IV.4 and Appendix C.3, Proposition9; construction equation49](https://arxiv.org/html/2610.06820v1); extraction lines 575–585; explicit open math target.
+
+### L-F91-pp1024-joint-parameters
+
+Does the specified 1024-qubit PP family contain a code simultaneously attaining d=24, check weight w=10 and unrestricted frame width f=25?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Fixed source-defined construction and exact invariant/existence question; retain all construction and frame conventions.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F91: Section VI; PP construction in Section V and Appendix D.2](https://arxiv.org/html/2610.06820v1); extraction lines 726–726; explicit open math target.
+
+### L-F91-nonabelian-common-action
+
+Extend the non-Abelian constructions to full regular canonical frames with one physical group action preserving both CSS sectors.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad design or implementation direction without a complete bounded theorem; excluded from the target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F91: Section VI](https://arxiv.org/html/2610.06820v1); extraction lines 729–733; explicit broad research direction.
+
+### L-F91-rate-distance-frame-design
+
+Optimize distance and canonical frame width as the matrix dimensions and encoding rate vary.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad design or implementation direction without a complete bounded theorem; excluded from the target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F91: Section VI](https://arxiv.org/html/2610.06820v1); extraction lines 721–724; explicit broad research direction.
+
+### L-F91-measurement-interfaces
+
+Develop distance-preserving logical-measurement interfaces for the translated frames and assess their ancilla and circuit costs.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad design or implementation direction without a complete bounded theorem; excluded from the target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open as stated in source; current resolution: not independently established.
+- [F91: Section VI](https://arxiv.org/html/2610.06820v1); extraction lines 737–737; explicit broad research direction.
+
+### L-F92-distance-scaling
+
+Determine asymptotic distance scaling of fixed-check-weight two-block group-algebra codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Family and asymptotic quantifiers are not frozen by the numerical comparison; retain as a broad direction.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F92: SectionsV–VI; paragraph200; introductory comparison with GB scaling](https://arxiv.org/html/2306.16400v1); extraction lines 200–208; explicit source question or direction.
+- Related, not merged: L-F78-GB-scaling.
+
+### L-F92-ambient-search-bound
+
+Find a finite ambient-group search bound, up to the relevant equivalence, for fixed-length double-coset subcodes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The source reports no method of limiting ambient group sizes; equivalence and the exact search target need formulation.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F92: SectionV, paragraph194](https://arxiv.org/html/2306.16400v1); extraction lines 194–194; explicit source question or direction.
+
+### L-F93-weight5-square-root
+
+Does a universal square-root distance upper bound hold for binary weight-five two-block group-algebra codes?
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Source-speculative asymptotic conjecture d=O(sqrt(n)), not the empirical constants1.11,1.18 or1.6; retain source-defined binary 2BGA family and positive logical dimension. Current status unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: Section4, speculative square-root conjecture, paragraph86](https://arxiv.org/html/2610.13880v2); extraction lines 86–86; explicit source question or direction.
+- Related, not merged: L-F92-distance-scaling.
+
+### L-F93-complete-equivalence
+
+Find a complete set of equivalence moves for two-block group-algebra codes.
+
+- Type: classification or construction; written formulation: held formulation.
+- Coverage denominator: excluded. The paper distinguishes Tanner-graph equivalence from stabilizer-group equivalence; freeze the intended notion and allowed moves before formalizing.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: Section5 and AppendixC.1, paragraphs106/168](https://arxiv.org/html/2610.13880v2); extraction lines 106–168; explicit source question or direction.
+
+### L-F93-distance-preserving-circuits
+
+Design distance-preserving syndrome-extraction circuits for the highlighted [[102,20,10]] and [[120,24,10]] codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The existing source circuits have circuit distance8. Allowed resources, noise/fault model and optimization target need a bounded engineering formulation.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: Section3, paragraph58; Section5, paragraph107](https://arxiv.org/html/2610.13880v2); extraction lines 58–107; explicit source question or direction.
+
+### L-F93-covers-versus-primitive
+
+Explain when covers or primitive two-block codes produce better distance and code parameters.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. The source reports no consistent rule; no universal quantitative comparison is specified.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: Section4, paragraph85; Section5, paragraph106](https://arxiv.org/html/2610.13880v2); extraction lines 85–106; explicit source question or direction.
+
+### L-F93-group-distance-mechanism
+
+Explain the group structures that concentrate high-distance two-block codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. An empirical mechanism question, separate from the proved rank/dimension targeting statements.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: Introduction and Sections4–5, paragraphs7,87–88,106](https://arxiv.org/html/2610.13880v2); extraction lines 7–106; explicit source question or direction.
+
+### L-F93-logical-gadgets
+
+Co-design and assess logical gadgets for the highlighted two-block codes under neutral-atom device constraints.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad hardware/circuit design and performance direction; not a fixed mathematical theorem.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: Section5, paragraph107](https://arxiv.org/html/2610.13880v2); extraction lines 107–107; explicit source question or direction.
+
+### L-F93-distance-252-16
+
+Determine the exact distance of the fixed Aydin–Tamo–Barg [[252,16]] code reported with lower bound19.
+
+- Type: specific distance problem; written formulation: held formulation.
+- Coverage denominator: excluded. Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: AppendixE, paragraph292; original citationATB26](https://arxiv.org/html/2610.13880v2); extraction lines 292–292; explicit source question or direction.
+
+### L-F93-distance-306-22
+
+Determine the exact distance of the fixed Aydin–Tamo–Barg [[306,22]] code reported with lower bound23.
+
+- Type: specific distance problem; written formulation: held formulation.
+- Coverage denominator: excluded. Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: AppendixE, paragraph292; original citationATB26](https://arxiv.org/html/2610.13880v2); extraction lines 292–292; explicit source question or direction.
+
+### L-F93-distance-288-20
+
+Determine the exact distance of the fixed Symons-et-al. [[288,20]] code reported with lower bound20.
+
+- Type: specific distance problem; written formulation: held formulation.
+- Coverage denominator: excluded. Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: AppendixE, paragraph292; original citationSRB25](https://arxiv.org/html/2610.13880v2); extraction lines 292–292; explicit source question or direction.
+
+### L-F93-distance-288-14
+
+Determine the exact distance of the fixed Symons-et-al. [[288,14]] code reported with lower bound20.
+
+- Type: specific distance problem; written formulation: held formulation.
+- Coverage denominator: excluded. Hold until the exact block/database identifier and original source construction are frozen; n,k and a lower bound alone are insufficient.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F93: AppendixE, paragraph292; original citationSRB25](https://arxiv.org/html/2610.13880v2); extraction lines 292–292; explicit source question or direction.
+
+### L-F94-nonaffine-lifts
+
+Explore non-affine CPM shift functions for the fixed two-branch F19 base to avoid its forced affine weight18 logical mode.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. A proposed construction direction; retain CSS orthogonality and new girth/distance checks. No existence theorem for a distance improvement is claimed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in inspected source; current resolution: not independently established.
+- [F94: Section6, paragraph114](https://arxiv.org/html/2606.27130v2); extraction lines 114–114; explicit source question or direction.
