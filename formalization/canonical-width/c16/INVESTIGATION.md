@@ -90,7 +90,8 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 
 - Issue: https://github.com/alectionary/vibe-math/issues/3
 - Work branch: `cursor/l-f91-c16-unrestricted-width-1697`
-- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width`, created at `d417d1c9f811523120aa70caff10d517ed2af491`. Closeout deletes that ref with expected SHA `d417d1c9f811523120aa70caff10d517ed2af491` if a read-back still matches. The work branch stays.
+- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` was created at `d417d1c9f811523120aa70caff10d517ed2af491`. Closeout read that SHA back and deleted the ref with `--force-with-lease` on that expected SHA. A following read-back was empty. The work branch remains.
+- Issue comment on #3 is pending. `gh issue comment` and the issues comments API returned HTTP 403, `Resource not accessible by integration`. The result text is in this note and in pull request #4.
 - Session: `lf91-c16-20261026T174815Z-f4663e80`. Authorized start 2026-10-26T17:47:00Z. Deadline 2026-10-26T21:47:00Z.
 - X public search, `search_posts_all`, no posts written. Known-positive query `lifted product` returned posts. Query `"canonical width" OR "unrestricted canonical" OR C16,9 OR "1088,128,16"` returned result count 0. Query `2610.06820 OR "public-regular-logical-frames" OR "canonical frame width"` returned result count 0. A zero count is not a global absence.
 - GitHub issues before this block: #1 (`L-F25`, open) and #2 (`L-P09`, closed). No earlier claim ref for this target.
