@@ -173,3 +173,7 @@ October24 lift-label follow-up: [exact fixed-base counts and a support-free CSS 
 Lift-label paper: [PDF](papers/lift-label-elimination/main.pdf) · [TeX](papers/lift-label-elimination/main.tex) · [all checked proof files](formalization/lift-label-elimination/PROOFS.md). The manuscript includes the reference chronology and immutable Lean links.
 
 Paper-by-paper source audit: [all encountered absorbing-set papers, extracted questions and access gaps](literature/RESEARCH-QUESTION-SCREENING.md). The screen adds 62 canonical entries from 20 question-contributing papers, including 23 specific mathematical targets; present resolution and Lean discovery remain separately unassessed.
+
+## Structural equation modeling and CFA seed
+
+[89 SEM/CFA/growth/path measurement dissertations plus 10 adjacent IRT/latent-class/exploratory or planned-factor records](literature/unl-sem/README.md) · [CSV](literature/unl-sem/dissertations.csv) · [CFA expansion](literature/unl-sem/CFA-EXPANSION.md) · [Mathematical suitability](literature/unl-sem/FORMALIZATION.md). All 99 authors received downstream searches; 41 selected source works are linked and 24 associated full texts screened. Seven complete dissertations now have question screens; [the retrieval correction](literature/unl-sem/RETRIEVAL-REPAIR.md) distinguishes failed routes from actual access restrictions. Ten statistical methods directions are indexed; social theories and empirical-only questions are excluded. Dissertation metadata and the original 20 full reviews remain separate cohorts.
