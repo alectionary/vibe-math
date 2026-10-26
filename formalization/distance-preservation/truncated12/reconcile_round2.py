@@ -20,7 +20,7 @@ if __name__=='__main__':
  for q in parent['remaining_project_questions']:
   if q['id']=='RQ-F25-truncated-distance-12':q['status']=('Completed bounded min(D,12) follow-up in general Lean; the broader source equality question remains open.' if done else 'Second four-hour formalization block active; completed source bridges and remaining catalog/main-theorem coverage are recorded in truncated12/verification.json.')
  save('literature/open-problems.json',rows)
- plans=load('planning/current-difficulty-estimates.json');p=next(x for x in plans if x['target_id']==parent['id']);p['current_round']=note;p['first_milestone']=conclusion+' '+' '.join(v['remaining_formal_gaps']);save('planning/current-difficulty-estimates.json',plans)
+ plans=load('planning/current-difficulty-estimates.json');p=next(x for x in plans if x['target_id']==parent['id']);p['current_round']=note;p['first_milestone']=' '.join([conclusion,*v['remaining_formal_gaps']]);save('planning/current-difficulty-estimates.json',plans)
  rec=load('literature/research-reconciliation.json')
  for old in rec['research_blocks']:
   if old.get('id')=='truncated-distance12-four-hour-2026-10-25':old['verification']=BASE+'/round1-verification.json'

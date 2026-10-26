@@ -162,7 +162,7 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 ## Subsequent block: truncated-distance12-four-hour-round2-2026-10-25
 
-[L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation): Second authorized block develops actual weight-ten/eleven source support encodings and quantified finite coverage toward min(D,12); the exact main theorem remains incomplete. The previous complete min(D,10) theorem is preserved. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.. [Report](../formalization/distance-preservation/truncated12/ROUND2.txt) · [Verification](../formalization/distance-preservation/truncated12/verification.json).
+[L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation): The bounded strengthened criterion now has a general Lean Pauli bound min(D,12), with actual source supports, both full stabilizer spans, all finite certificates and source distance minima. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.. [Report](../formalization/distance-preservation/truncated12/ROUND2.txt) · [Verification](../formalization/distance-preservation/truncated12/verification.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 

@@ -2,6 +2,7 @@
 from pathlib import Path
 import argparse,datetime,hashlib,json,re
 from replay_round import local_import_order
+from build_round import PIN
 R=Path(__file__).resolve().parent
 ALLOWED={'propext','Classical.choice','Quot.sound'}
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -12,11 +13,12 @@ def build_status(src):
  try:x=read(p)
  except json.JSONDecodeError:return dict(status='record_write_in_progress',source_sha256=sha(src))
  matched=x['source_sha256']==sha(src) and x['log_sha256']==sha(log)
- good=matched and x['exit_code']==0 and not x['unexpected_axiom_or_error'] and not x.get('source_changed_during_build',False)
+ pinned=x.get('mathlib')==PIN and 'version 4.36.0-rc1,' in x.get('lean','') and 'commit c9afcddf514a6772bd4d649f7cfc04eff0b9f15e,' in x.get('lean','')
+ good=matched and pinned and x['exit_code']==0 and not x['unexpected_axiom_or_error'] and not x.get('source_changed_during_build',False)
  text=log.read_text();axioms=set()
  for a in re.findall(r'depends on axioms: \[([^\]]*)\]',text):axioms.update(v.strip() for v in a.split(',') if v.strip())
  good=good and axioms<=ALLOWED and not any(s in text for s in ['sorryAx','._native.','error:'])
- return dict(status='PASS' if good else 'not_admitted',source_sha256=sha(src),source_change_capture='before_and_after' if 'source_changed_during_build' in x else 'legacy_record_current_hash_matched',record=str(p.relative_to(R)),log_sha256=sha(log),axioms=sorted(axioms),finished_utc=x['finished_utc'],seconds=x['seconds'])
+ return dict(status='PASS' if good else 'not_admitted',source_sha256=sha(src),pinned_toolchain=pinned,source_change_capture='before_and_after' if 'source_changed_during_build' in x else 'legacy_record_current_hash_matched',record=str(p.relative_to(R)),log_sha256=sha(log),axioms=sorted(axioms),finished_utc=x['finished_utc'],seconds=x['seconds'])
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--final',action='store_true');ap.add_argument('--round-number',type=int,choices=[1,2],default=2);a=ap.parse_args()

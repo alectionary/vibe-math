@@ -4,41 +4,48 @@ This is the October 25, 2026 study of `RQ-F25-truncated-distance-12`, within
 `L-F25-distance-preservation`. The [issue](https://github.com/alectionary/vibe-math/issues/1)
 records coordination and the four-hour cap.
 
-**Completed general Lean result:** [ThroughNine.lean](ThroughNine.lean) proves
-`dQ >= min(dC,10)` under the stated girth/entry tests and transpose-distance
-comparison, using actual source matrices, both entire stabilizer row spans and
-Pauli union weight. Its predicate form assumes both classical kernel distances
-are at least `D` and proves the union-weight lower bound `min(D,10)`.
+**Completed general Lean result:** [DistanceTwelve.lean](DistanceTwelve.lean)
+proves `dQ >= min(dC,12)` for every normalized, fully populated monomial 3x4
+cyclic base satisfying classical girth at least eight, the exact strengthened
+column/triple-row entry tests, and `dTranspose >= dC`.
 
-The second authorized block has checked the full general reduction in
-[TwelveConditional.lean](TwelveConditional.lean), conditional only on the
-independent finite weight-ten certificate coverage. Both remaining actual
-support constructions are complete: [TenEncoding.lean](TenEncoding.lean)
-and [SourceEleven.lean](SourceEleven.lean). The latter includes the constant-label
-full-stabilizer branch and the actual colored K2,3 realization.
-[ProfileTransport.lean](ProfileTransport.lean) and
-[CountCanonical.lean](CountCanonical.lean) discharge arbitrary group placement
-and re-normalization. [DistanceMinima.lean](DistanceMinima.lean) checks the actual
-classical, transpose and quantum minimum definitions, including infinity.
-[CriterionScope.lean](CriterionScope.lean) checks the redundancy of the full-row
-RCPC premise under the stronger three-column test.
+The distances are minima for the actual expanded binary source matrices.
+Both entire stabilizer row spans are retained, and quantum weight is the
+ordinary Pauli union weight. The transpose distance is infinity when its
+kernel is zero. The proof applies to every positive cyclic modulus, including
+composite and small moduli; no prime-lift assumption or division by a cyclic
+group coefficient is used.
+This lower bound does not assert exact quantum distance or settle the broader
+source question asking for sufficient conditions for `dQ=dC`.
 
-The remaining work is the weight-ten closed-case replay and its unconditional
-assembly in [Coverage10.lean](Coverage10.lean),
-[ThroughEleven.lean](ThroughEleven.lean) and
-[DistanceTwelve.lean](DistanceTwelve.lean). Those source files are not yet
-admitted. The broader source question asking for sufficient conditions for
-`dQ=dC` remains distinct.
+[ThroughEleven.lean](ThroughEleven.lean) gives the general predicate version:
+actual classical and transpose kernel lower bounds `D` imply the Pauli bound
+`min(D,12)`. [TwelveConditional.lean](TwelveConditional.lean) supplies the source
+reduction; its finite-coverage premise is discharged in the public theorem.
+[TenEncoding.lean](TenEncoding.lean) and [SourceEleven.lean](SourceEleven.lean)
+construct actual support realizations, including the full constant-label
+stabilizer branch and the colored K2,3 case. [ProfileTransport.lean](ProfileTransport.lean)
+and [CountCanonical.lean](CountCanonical.lean) handle arbitrary group placement
+and re-normalization. [DistanceMinima.lean](DistanceMinima.lean) connects the
+result to literal distance minima. [CriterionScope.lean](CriterionScope.lean)
+checks that the stronger triple-row test subsumes full-row RCPC.
 
-[RESEARCH-NOTE.txt](RESEARCH-NOTE.txt) gives the mathematical argument;
-[CLAIM-AUDIT.txt](CLAIM-AUDIT.txt) traces the source hypotheses, actual objects,
-complete quotient and final statement.
-[verification.json](verification.json) is authoritative for exact-source build
-status and admitted intervals. The first block's manifest is preserved in
-[round1-verification.json](round1-verification.json). All 58,752 weight-eleven
-and all 144 weight-seven checks pass. The independent standard-library verifier
-checks all **183,312** integer pattern certificates; this is separate from Lean
-coverage and actual support coverage.
+All **183,312** finite pattern certificates pass both the independent integer
+verifier and Lean's closed-case replay: 144 at weight seven, 124,416 at weight
+ten and 58,752 at weight eleven. [Coverage10.lean](Coverage10.lean) and
+[Coverage11.lean](Coverage11.lean) assemble quantified coverage from the closed
+proofs. The entire final import closure, including the source-scope audit,
+contains **269 exact-source admitted research modules**. Only the standard
+axioms `propext`, `Classical.choice` and `Quot.sound` occur; no `sorry` or native
+decision oracle is admitted.
+
+[RESEARCH-NOTE.txt](RESEARCH-NOTE.txt) gives the proof;
+[CLAIM-AUDIT.txt](CLAIM-AUDIT.txt) traces the source hypotheses, actual objects
+and complete quotient; [verification.json](verification.json) records hashes,
+logs, finite intervals and every imported research module. The first block's
+completed weaker bound and its original coverage are preserved in
+[round1-verification.json](round1-verification.json). No additional canonical
+completion is credited to this project-proposed bounded follow-up.
 
 ## Reproduce the checks
 
@@ -52,14 +59,14 @@ child PID and accepts memory, thread, timeout and UTC deadline limits.
 python3 verify_catalog.py
 python3 replay_round.py --mathlib /path/to/pinned/mathlib4 \
   --lean-bin /path/to/pinned/lean/bin --build-dir /path/to/fresh/objects \
-  ThroughNine
-python3 verify_round.py --final
+  DistanceTwelve CriterionScope
+python3 verify_round.py --round-number 2 --final
 ```
 
 `replay_round.py` computes and builds the full local import closure in dependency
 order; `--plan` prints that order without compiling. With no module arguments it
-selects only exact-source modules admitted in the manifest, excluding deferred
-weight-ten chunks. Parent-directory modules are unchanged source dependencies.
+selects all exact-source modules admitted in the manifest. Parent-directory
+modules are unchanged source dependencies.
 Mathlib's pinned cache must be available.
 The closed catalog checker itself imports only Lean core definitions.
 
@@ -97,8 +104,8 @@ manifests have not been rewritten. The literature/source ledger records primary
 comparisons, newly harvested questions, held formulations and the native X
 access gap. No canonical source completion is credited to this block.
 
-Unchecked weight-ten chunk sources and their all-import wrapper are generated
-locally and omitted from version control. The encoded certificates, generator
-and exact source-hash plan are preserved; regenerate them with
-`python3 emit_kernel_chunks.py --fast`. Admitted weight-ten chunks are tracked
-explicitly. The verifier reports absent unperformed chunks as pending.
+All imported research sources, closed weight-ten chunks and catalog wrappers
+are tracked. The coefficient data and exact source-hash plan are preserved;
+`python3 emit_kernel_chunks.py --fast` regenerates the closed checks and
+`python3 emit_coverage.py 10` / `11` regenerate quantified coverage. Regeneration
+alone is not admission; matching successful build records remain required.

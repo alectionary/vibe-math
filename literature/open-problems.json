@@ -7222,12 +7222,12 @@
         "canonical_completion_delta": 0
       },
       {
-        "evidence": "general_lean_source_geometry_and_partial_closed_catalog_replay",
+        "evidence": "general_lean_complete_bounded_source_distance_theorem",
         "round_id": "truncated-distance12-four-hour-round2-2026-10-25",
         "title": "Second bounded distance-12 formalization block",
         "checked_on": "2026-10-25",
-        "round_status": "in_progress",
-        "contribution": "Second authorized block develops actual weight-ten/eleven source support encodings and quantified finite coverage toward min(D,12); the exact main theorem remains incomplete. The previous complete min(D,10) theorem is preserved. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.",
+        "round_status": "closed_with_completed_bounded_followup",
+        "contribution": "The bounded strengthened criterion now has a general Lean Pauli bound min(D,12), with actual source supports, both full stabilizer spans, all finite certificates and source distance minima. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.",
         "report": "formalization/distance-preservation/truncated12/ROUND2.txt",
         "verification": "formalization/distance-preservation/truncated12/verification.json",
         "lean_sources": [
@@ -7253,7 +7253,10 @@
           "formalization/distance-preservation/truncated12/CountCanonical.lean",
           "formalization/distance-preservation/truncated12/SourceTen.lean",
           "formalization/distance-preservation/truncated12/TwelveConditional.lean",
+          "formalization/distance-preservation/truncated12/Coverage10.lean",
+          "formalization/distance-preservation/truncated12/ThroughEleven.lean",
           "formalization/distance-preservation/truncated12/DistanceMinima.lean",
+          "formalization/distance-preservation/truncated12/DistanceTwelve.lean",
           "formalization/distance-preservation/truncated12/CriterionScope.lean"
         ],
         "kernel_case_counts": {
@@ -7262,7 +7265,7 @@
             "expected": 144
           },
           "10": {
-            "admitted": 80000,
+            "admitted": 124416,
             "expected": 124416
           },
           "11": {
@@ -7278,13 +7281,7 @@
             "scope": "Actual expanded source matrices, both full stabilizer spans and Pauli union weight; ClassicalAtLeast e D and TransposeAtLeast e D under the normalized girth/entry tests. This is strictly weaker than the requested min(D,12) result."
           }
         ],
-        "remaining_formal_gaps": [
-          "Finish the complete weight-10 closed-case kernel replay.",
-          "Assemble quantified finite coverage for the weight-10 catalog.",
-          "Discharge all finite coverage in the unconditional general min(D,12) source Pauli theorem.",
-          "Complete the literal source-distance minimum theorem and transpose infinity convention.",
-          "Admit every exact-source research dependency in the final theorem import closure; see main_import_closure.pending_modules."
-        ],
+        "remaining_formal_gaps": [],
         "canonical_completion_delta": 0
       }
     ],
@@ -7298,7 +7295,7 @@
       {
         "id": "RQ-F25-truncated-distance-12",
         "title": "For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12).",
-        "status": "Second four-hour formalization block active; completed source bridges and remaining catalog/main-theorem coverage are recorded in truncated12/verification.json."
+        "status": "Completed bounded min(D,12) follow-up in general Lean; the broader source equality question remains open."
       }
     ],
     "scope_comparison": "The statement/proof statuses concern the full positive source-condition target. The checked counterfamilies answer our narrower proposed criterion and supply a general obstruction template; they are not counted as a complete answer to the source design question."
