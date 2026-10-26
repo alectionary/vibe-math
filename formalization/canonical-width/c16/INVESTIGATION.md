@@ -2,6 +2,21 @@
 
 Canonical inventory identifier: `L-F91-c16-unrestricted-width`.
 
+## Follow-up session
+
+This is a follow-up, not a new problem. The 2026-10-26 block recorded an 84-pair partial frame and left \(f\in\{16,18\}\).
+
+- Session: `lf91-c16-answer-20261026T190534Z`
+- UTC start: 2026-10-26T19:05:34Z
+- Issue: https://github.com/alectionary/vibe-math/issues/3
+- Work branch: `cursor/l-f91-c16-unrestricted-width-1697`
+- Claim ref: `refs/heads/claims/L-F91-c16-unrestricted-width` (create-only, this commit)
+- Authorized by the user to answer Proposition 9. No paper, external post, or `master` push was requested.
+- Answer contract: exact value of \(f(C^{\mathrm{LP}}_{16,9})\). Either a checked 128-pair weight-16 canonical basis, or a checked proof that none exists. Mixed Paulis stay in scope through the already recomputed reduction, which still depends on the reproduced weight-17 pool.
+- Stopping point: a decisive value of \(f\), or a recorded obstruction that blocks both routes.
+
+
+
 Question source: Jong Yeon Lee, arXiv:2610.06820v1, 5 October 2026, Proposition 9, Section IV.4; proof Appendix C.3; construction equation (50) and Appendix D.1.1. HTML https://arxiv.org/html/2610.06820v1, SHA-256 `3e4294e6e8c328eca1de101b04b1ad527e0ddae1fc9bc776e3037328ef22a37f`. Data repository https://github.com/yeon-lee/public-regular-logical-frames at `04ad4795ad15cb89ee47b7868ff925c30b2fc731` (2026-10-06).
 
 ## Question still open
