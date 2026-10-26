@@ -1296,3 +1296,29 @@ R. W. Hamming. April1950. [Primary source](https://doi.org/10.1002/j.1538-7305.1
 - Comparison limit: Syndrome construction credited; full original article not retrieved, no complete question screen claimed.
 - Related canonical targets: .
 - Provenance: [source review ledger](../literature/gallager-absorbing-source-screening.json).
+
+## Fattal2004 — Entanglement in the stabilizer formalism
+
+David Fattal; Toby S. Cubitt; Yoshihisa Yamamoto; Sergey Bravyi; Isaac L. Chuang. 23 June 2004 arXiv v1. [Primary source](https://arxiv.org/html/quant-ph/0406168v1).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Main text, introduction and conclusion/Discussion; local anticommutation comparison.
+- Contribution: Classical projection obstruction; no general entanglement or nonlocality criterion is claimed new.
+- Comparison limit: Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical.
+- Related canonical targets: [L-F97-computation-entanglement](OPEN-PROBLEMS.md#l-f97-computation-entanglement), [L-F97-stabilizer-witnesses](OPEN-PROBLEMS.md#l-f97-stabilizer-witnesses), [L-F97-multipartite-conversion](OPEN-PROBLEMS.md#l-f97-multipartite-conversion).
+- Provenance: [source review ledger](../literature/connected-gallager-source-screening.json).
+
+- Question screen: [full text screened](../literature/connected-gallager-source-screening.json); 3 linked canonical targets.
+
+## MakutaAugusiak2025 — All genuinely entangled stabilizer subspaces are multipartite fully nonlocal
+
+Owidiusz Makuta; Remigiusz Augusiak. 23 August 2025 journal publication. [Primary source](https://www.nature.com/articles/s41534-025-01080-3).
+
+- Record type: academic source; access: relevant sections screened.
+- Inspected locator: Main text, introduction and conclusion/Discussion; local anticommutation comparison.
+- Contribution: Classical projection obstruction; no general entanglement or nonlocality criterion is claimed new.
+- Comparison limit: Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem.
+- Related canonical targets: [L-F98-entangled-nonlocal-classification](OPEN-PROBLEMS.md#l-f98-entangled-nonlocal-classification), [L-F98-pure-gme-gmnl](OPEN-PROBLEMS.md#l-f98-pure-gme-gmnl), [L-F98-qudit-gme-mfnl](OPEN-PROBLEMS.md#l-f98-qudit-gme-mfnl), [L-F98-bell-inequalities](OPEN-PROBLEMS.md#l-f98-bell-inequalities), [L-F98-experimental-nonlocality](OPEN-PROBLEMS.md#l-f98-experimental-nonlocality), [L-F98-tighter-nonlocality-bound](OPEN-PROBLEMS.md#l-f98-tighter-nonlocality-bound).
+- Provenance: [source review ledger](../literature/connected-gallager-source-screening.json).
+
+- Question screen: [relevant sections screened](../literature/connected-gallager-source-screening.json); 6 linked canonical targets.

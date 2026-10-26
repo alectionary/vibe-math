@@ -2,7 +2,7 @@
 from pathlib import Path
 import json,itertools,collections,time
 ROOT=Path(__file__).resolve().parent
-BASE=json.loads((ROOT.parent/'certificate.json').read_text())
+BASE=json.loads((ROOT/'predecessor-input.json').read_text())
 def mask(r):return sum(v<<i for i,v in enumerate(r))
 X0=[mask(r) for r in BASE['HX']];Z0=[mask(r) for r in BASE['HZ']]
 def cx(x,c,t):return x^((1<<t) if x>>c&1 else 0)

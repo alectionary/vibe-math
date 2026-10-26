@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable,xcolor,listings,xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A Connected CSS Absorbing Set Without Gallager-B Trapping},pdfauthor={}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\row}{\operatorname{row}}
+\newcommand{\maj}{\operatorname{maj}_0}
+\setlength{\emergencystretch}{3em}
+\lstset{basicstyle=\scriptsize\ttfamily,columns=fullflexible,keepspaces=true,
+ breaklines=true,breakatwhitespace=false,showstringspaces=false,frame=lines,lineskip=-0.4pt}
+\title{A Connected CSS Absorbing Set Without Gallager-B Trapping}
+\author{}
+\date{October 26, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We construct a fifteen-qubit CSS code with one encoded qubit and a
+$(7,0)$-absorbing set on which every supported binary $Z$-error is corrected
+by zero-initialized syndrome-based Gallager-B at initialization or after one
+iteration. Both the hard-decision syndrome and outgoing extrinsic-message
+parities accept the result. The actual decoding Tanner graph is connected,
+its fifteen checks are distinct, and the stabilizer space admits no direct
+product decomposition across any nontrivial partition of the physical qubits.
+Thus the successful absorbing support is not an isolated stabilizer-state
+factor. An explicit overlap spanning tree certifies the last assertion.
+The complete finite construction, graph connectivity, recovery modulo the
+whole opposite stabilizer span and unbounded stopped-execution properties
+are checked in Lean, and independently reconstructed from literal matrices.
+\end{abstract}
+
+\section{Result and motivating question}
+Morris, Pllaha and Kelley ask in Section VI of
+\emph{Absorbing Sets in Quantum LDPC Codes}, arXiv:2307.14532v2,
+May 10, 2024, whether every absorbing set is a trapping set for their
+syndrome-based Gallager-B decoder \cite{mpk}. Their Definition 5 compares
+even and odd induced check neighbors. Definition 3 describes persistent
+syndrome mismatch or nonconvergence for some error supported on the set.
+The simplex matrix already supplies an absorbing component with no such
+failure; a disconnected CSS embedding can also make all its supported
+errors correctable modulo stabilizers \cite{previous}. This motivates a
+stronger, project-derived question: can both properties hold in a connected
+code without an isolated stabilizer-state factor?
+
+\begin{theorem}\label{thm:main}
+There is a binary CSS pair $(H_X,H_Z)$ on fifteen physical qubits with
+$\operatorname{rank}H_X=\operatorname{rank}H_Z=7$ and the following properties.
+\begin{enumerate}
+\item The actual $H_X$ Tanner graph, including all fifteen distinct check
+vertices and all fifteen variable vertices, is connected.
+\item The first seven variables form a $(7,0)$-absorbing set $A$.
+\item Every $Z$-error supported on $A$ is accepted at initialization or
+within one full Gallager-B iteration, under both hard-decision and outgoing
+extrinsic-edge syndrome tests. Its residual belongs to $\row H_Z$.
+\item The binary stabilizer space has no product decomposition across any
+nonempty proper partition of the fifteen physical coordinates.
+\end{enumerate}
+In particular the code encodes one qubit, and $A$ is not trapping for the
+specified stopped decoder.
+\end{theorem}
+The matrices and decoder are given in Sections~\ref{sec:matrix}
+and~\ref{sec:decode}; connectivity and the product obstruction are proved
+in Section~\ref{sec:coupling}. Appendix~\ref{app:lean} gives the exact formal
+model, complete central proof bodies and current and immutable proof links.
+The complete source comparison and access ledger accompanies the artifact.
+
+The construction is asymmetric: the matrix detecting $Z$-errors is $H_X$,
+while successful recovery is measured modulo the entire span of $H_Z$.
+It permits redundant checks and four-cycles; the exterior auxiliary variable $C$ has degree one in the decoding graph. It asserts neither correction
+of both Pauli sectors nor a high-girth or degree-three counterexample.
+These qualifications determine the mathematical statement.
+
+\section{Literal CSS matrices}\label{sec:matrix}
+Let $H$ be the $7\times7$ matrix with $H_{a,v}=a\cdot v$, for nonzero
+$a,v\in\mathbb F_2^3$ in integer order $1,\ldots,7$, least significant
+binary digit first. Its rows, as integer bit masks, are
+\[
+ (85,102,51,120,45,30,75).
+\]
+Let $G$ consist of rows $1,2,4$ of $H$, set
+$K=\left(\begin{smallmatrix}G\\\mathbf1\end{smallmatrix}\right)$,
+$u=H\mathbf e_1^{\mathsf T}$ and $v=G\mathbf e_1^{\mathsf T}$.
+Order the physical coordinates as $A_1,\ldots,A_7,B_1,\ldots,B_7,C$.
+The actual matrices are
+\begin{equation}\label{eq:pair}
+H_X=\begin{pmatrix}
+ H&u\mathbf e_1&0\\
+ 0&H&0\\
+ 0&\mathbf e_1&1
+\end{pmatrix},\qquad
+H_Z=\begin{pmatrix}
+ K&0&0\\
+ v\mathbf e_1&G&v
+\end{pmatrix}.
+\end{equation}
+Here $\mathbf e_1$ is a row vector of length seven; block zero sizes are
+determined by the displayed matrices. $H_X$ has fifteen rows and $H_Z$
+has seven rows. For completely unambiguous reproduction, their row masks
+with coordinate $A_1$ as the least significant bit are
+\begin{align*}
+H_X:\quad &(213,102,179,120,173,30,203,\\[-2pt]
+           &\hspace{15mm}10880,13056,6528,15360,5760,3840,9600,16512),\\
+H_Z:\quad &(85,102,120,127,27265,13056,15360).
+\end{align*}
+They can also be obtained from the earlier two-block CSS pair, adjoining
+an $X$-stabilized qubit $C$, by CNOTs $A_1\to B_1$ and $C\to B_1$.
+The exact binary gate transformations are checked by
+\texttt{two\_CNOT\_X\_bridge} and \texttt{two\_CNOT\_Z\_bridge}; our claims
+are checked directly on the resulting matrices rather than inferred from
+an unspecified equivalence.
+
+\begin{lemma}\label{lem:css}
+The matrices in \eqref{eq:pair} commute as CSS checks and both have rank
+seven. All fifteen $X$ rows are distinct. The set $A$ is $(7,0)$-absorbing.
+\end{lemma}
+\begin{proof}
+The dot product of each of the fifteen displayed $X$ rows with each of
+the seven $Z$ rows is zero. A basis for the $X$ rows consists of masks
+\[
+ (213,102,120,10880,13056,15360,16512).
+\]
+Each actual $X$ row is a combination of these seven actual rows, and all
+$128$ combinations of the basis are distinct. The seven $Z$ rows likewise
+have $128$ distinct combinations. These are finite proofs of both ranks;
+they do not infer independence from merely having seven generators.
+The distinctness test compares all pairs of actual $X$ rows.
+
+The first seven checks restrict on $A$ to $H$, with induced degree four;
+the remaining checks have no neighbor in $A$. Each variable of $A$ has
+four even induced neighbors and no odd neighbor. Thus $A$ has seven
+variables and zero odd checks, and satisfies the strict absorbing inequality.
+All assertions are checked on the literal data by the declarations in the
+proof map of Appendix~\ref{app:lean}.
+\end{proof}
+The CSS dimension formula now gives $k=15-7-7=1$. Explicitly,
+$Z$ mask $32641$ commutes with every $X$ check and is outside $\row H_Z$.
+$X$ mask $16256$ commutes with every $Z$ check and anticommutes with that
+$Z$ word. These witnesses are checked in the same model.
+
+\section{Decoder and all supported errors}\label{sec:decode}
+All messages are binary. Variable-to-check messages start at zero. A check
+sends its input syndrome bit plus the XOR of its other incoming messages.
+A variable sends a strict majority of its other incoming check messages,
+with a tie returning zero; its hard decision uses all its check neighbors.
+These are the zero-initialized, extrinsic, zero-tie rules of Section II-B
+of \cite{mpk}. We test both the syndrome of the hard word and the parity
+of the outgoing variable messages at each check.
+
+\begin{lemma}\label{lem:recovery}
+For every error $e\in\mathbb F_2^7$ on $A$, the first hard output is
+$(\mathbf e_p,0,0)$ if $p=\sum_{i=1}^7 e_i i\ne0$ in $\mathbb F_2^3$,
+and zero otherwise. Its syndrome and the first outgoing-edge syndrome
+both equal the input syndrome. Its residual is in $\row H_Z$.
+\end{lemma}
+\begin{proof}
+The first seven input syndrome bits are $a\cdot p$; the other eight are
+zero. At $A_i$, the initial one-vote count is zero for $p=0$, four for
+$p=i$, and two otherwise. This follows by counting solutions of the two
+binary equations $a\cdot i=a\cdot p=1$. Consequently the hard output on
+$A$ is as stated. The target $B_1$ has nine neighbors with at most four
+one-votes, so its hard output is zero. Every other exterior variable
+receives only zeros.
+
+The extra check involving $B_1$ and $C$ is decisive for the extrinsic test:
+even after excluding a zero vote, $B_1$ sees at most four ones among eight
+votes and sends zero. Every exterior outgoing message is therefore zero.
+On $A$, variable $p$ sends one on every incident edge. When $i\ne p$,
+excluding a zero from two ones and two zeros sends one; excluding a one
+sends zero. A check with syndrome one receives exactly one one from $A$,
+and a check with syndrome zero receives either zero or four ones. Its
+outgoing parity is therefore the input syndrome in both cases.
+
+For the actual matrices, complete enumeration of $e\in\mathrm{BitVec}(7)$
+proves the hard-output formula, both syndrome equalities, and the existence
+of seven binary coefficients expressing $e+\hat e$ in the \emph{whole}
+$H_Z$ span. These are the Lean theorems \texttt{first\_output\_formula},
+\texttt{first\_hard\_matches}, \texttt{first\_edge\_matches} and
+\texttt{complete\_quantum\_recovery}. The independent verifier reconstructs
+all $128$ inputs with literal lists and independently enumerates the
+complete stabilizer spans. Thus the quantum conclusion does not confuse a
+zero residual syndrome with stabilizer equivalence.
+\end{proof}
+Zero syndromes are accepted at initialization; otherwise Lemma~\ref{lem:recovery}
+gives acceptance at the first step. A halted decoder is extended by its
+constant terminal output. For every input, every check is then correct and
+every variable constant at all times $t\ge1$. The structural Lean proofs
+\texttt{all\_checks\_eventually\_correct} and
+\texttt{all\_variables\_converge} imply \texttt{selected\_not\_trapping}.
+This is an infinite-time stopped-execution statement, not a finite
+observation of unhalted message dynamics.
+
+\section{Connectivity and intrinsic physical coupling}\label{sec:coupling}
+\begin{lemma}\label{lem:connected}
+The actual thirty-vertex bipartite decoding graph is connected.
+\end{lemma}
+\begin{proof}
+Every physical variable shares an actual $X$ check with $B_1$. Every check
+has at least one variable neighbor. Hence every variable has a walk of
+length at most two to $B_1$, and every check has a walk of length at most
+three. Reverse and concatenate these walks to connect any ordered pair
+of graph vertices. \texttt{decoding\_graph\_connected} constructs these
+walks with the literal adjacency relation.
+\end{proof}
+Connectivity of a chosen redundant check representation alone does not
+exclude a product stabilizer code. We therefore prove a representation
+independent obstruction. Write
+$S=(\row H_X)\times(\row H_Z)$ for the binary stabilizer space. For a cut
+$Q$, let $r_Q$ restrict both binary components to $Q$, zeroing the other
+coordinates. A direct product across $Q\mid Q^c$ requires $r_Q(S)\subseteq S$.
+We use this necessary closure property as the exact binary meaning of a
+physical product split in the formal theorem.
+
+\begin{lemma}\label{lem:cut}
+For every nonempty proper $Q\subset\{0,\ldots,14\}$, there are actual
+$X$ and $Z$ rows whose restrictions to $Q$ anticommute. In particular
+$r_Q(S)\not\subseteq S$.
+\end{lemma}
+\begin{proof}
+Table~\ref{tab:tree} gives fourteen pairs of rows whose support intersections
+are exactly the two coordinates in the first column. Those pairs form a
+spanning tree on all fifteen physical coordinates. A proper nonempty cut
+must cross an edge: if no edge crossed, equality of cut membership would
+propagate from vertex zero along the tree to every vertex, making the cut
+empty or full. At a crossed pair, the restricted $X/Z$ dot product is one.
+If the projected $X$ row belonged to $\row H_X$, it would commute with
+every $Z$ row, a contradiction. Thus projecting the corresponding pure
+$X$ stabilizer exits $S$.
+
+Lean checks each row-pair projection identity and proves the tree-cut
+argument by explicit Boolean propagation. \texttt{cut\_anticommutation}
+and \texttt{no\_physical\_product\_cut} quantify over all fifteen-bit cuts.
+No assumption about a preferred independent generating set is used.
+\end{proof}
+\begin{table}[ht]\centering\small
+\begin{tabular}{rrr@{\qquad}rrr}
+\toprule Edge & $X$ row & $Z$ row & Edge & $X$ row & $Z$ row\\\midrule
+$0,7$&0&4&$7,14$&14&4\\
+$0,4$&2&0&$4,5$&2&2\\
+$0,2$&4&0&$4,3$&5&2\\
+$0,6$&6&0&$2,1$&5&1\\
+$7,11$&9&4&$11,12$&9&6\\
+$7,9$&11&4&$11,10$&12&6\\
+$7,13$&13&4&$9,8$&12&5\\\bottomrule
+\end{tabular}
+\caption{Overlap spanning tree. All coordinate and row indices in this
+table are zero-based, matching the Lean file.}\label{tab:tree}
+\end{table}
+Lemmas~\ref{lem:css}--\ref{lem:cut} prove Theorem~\ref{thm:main}.
+The product obstruction concerns the given physical tensor factors; it does
+not assert an obstruction to global Clifford decoding.
+
+\section{Source interpretation and earlier ingredients}
+Hamming syndrome representatives and the simplex/Steane CSS ingredients
+are classical \cite{hamming,steane}. Local anticommutation of restricted
+stabilizers is also a standard tool in stabilizer entanglement
+\cite{fattal}. A modern statement for stabilizer subspaces is Lemma 1 of
+Makuta and Augusiak \cite{makuta}. We use the binary obstruction directly
+and claim no new general entanglement criterion. The concrete contribution
+is its coexistence with absorption and complete successful Gallager-B
+recovery in a connected actual decoding graph.
+
+The inspected source's dynamical Definition 3 and quantum logical failure
+must be distinguished. Here both dynamical success and recovery modulo
+actual opposite $Z$ stabilizers hold. The source also discusses logical
+miscorrections and uses a row-space expression involving its $H_A$ in
+Theorem 5. Our asymmetric pair does not settle an interpretation that
+requires that very decoded matrix to generate the error-type stabilizers,
+or requires $H_X=H_Z$. We assert the explicit theorem above rather than
+certify every possible reading of the author's blanket question.
+The positive-$b$ result in the source has different hypotheses; our example
+has $b=0$. The zero-tie and stopping conventions are essential specifications.
+
+The exact question inspected is arXiv v2, Sections II-B and VI and
+Definitions 3 and 5. Journal metadata gives March 3, 2026 publication, but
+the journal full text remained subscription restricted. The accompanying
+source ledger records this version gap and the scope of the prior-art
+comparison.
+
+\begin{table}[ht]\centering\small
+\begin{tabular}{p{.27\textwidth}p{.35\textwidth}p{.27\textwidth}}
+\toprule Source & Relevant dated milestone & Days to October 26, 2026\\\midrule
+Hamming & April 1950 publication & About 76.5 years\\
+Steane & January 29, 1996 preprint & 11,228\\
+Fattal et al. & June 23, 2004 preprint & 8,160\\
+Morris et al. & July 26, 2023 first preprint & 1,188\\
+Inspected question & May 10, 2024 arXiv v2 & 899\\
+Makuta--Augusiak & December 14, 2023 preprint & 1,047\\
+Inspected main article & August 23, 2025 journal & 429\\
+Morris et al. journal & March 3, 2026 metadata & 237\\
+This paper & October 26, 2026 & 0\\\bottomrule
+\end{tabular}
+\caption{Reference chronology, with day precision except Hamming (month
+precision). Ingredient age is not the time an open question remained unsolved.}
+\end{table}
+
+\section{Conclusion}
+A connected ambient decoding graph and absence of every physical product
+factor do not force this $(7,0)$-absorbing support to fail Gallager-B.
+Every supported $Z$-error is recovered modulo the entire opposite
+stabilizer span. Symmetric CSS pairs, prescribed girth or degree conditions,
+and both-sector recovery remain separate, unassessed variants.
+A requirement that $A$ carry a nontrivial $Z$ logical is incompatible with
+correcting every supported $Z$-error: identity and that logical have the
+same syndrome. The concrete theorem \texttt{no\_supported\_Z\_logical}
+checks this consequence for the present pair.
+
+\begin{thebibliography}{9}
+\bibitem{mpk} K. D. Morris, T. Pllaha and C. A. Kelley,
+\emph{Absorbing Sets in Quantum LDPC Codes}, arXiv:2307.14532v2,
+May 10, 2024, Sections II-B and VI, Definitions 3 and 5.
+\url{https://arxiv.org/html/2307.14532v2}.
+Journal metadata: \emph{Adv. Math. Commun.} 23 (2026), 234--254,
+\url{https://doi.org/10.3934/amc.2026023}.
+\bibitem{previous} \emph{An Absorbing Set Without Gallager-B Trapping},
+complete seven-variable proof and fourteen-coordinate CSS construction.
+\url{https://github.com/alectionary/vibe-math/tree/ff4172b090f4d38eadaf06fe419667f5b6bca585/formalization/gallager-b-absorbing}.
+\bibitem{hamming} R. W. Hamming, \emph{Error detecting and error correcting
+codes}, Bell Syst. Tech. J. 29 (1950), 147--160.
+\url{https://doi.org/10.1002/j.1538-7305.1950.tb00463.x}.
+\bibitem{steane} A. Steane, \emph{Multiple particle interference and quantum
+error correction}, arXiv:quant-ph/9601029, January 29, 1996.
+\url{https://arxiv.org/abs/quant-ph/9601029}.
+\bibitem{fattal} D. Fattal, T. S. Cubitt, Y. Yamamoto, S. Bravyi and
+I. L. Chuang, \emph{Entanglement in the stabilizer formalism},
+arXiv:quant-ph/0406168, June 23, 2004.
+\url{https://arxiv.org/abs/quant-ph/0406168}.
+\bibitem{makuta} O. Makuta and R. Augusiak,
+\emph{All genuinely entangled stabilizer subspaces are multipartite fully
+nonlocal}, arXiv:2312.08757, December 14, 2023; npj Quantum Information 11, 144 (2025), Lemma 1.
+\url{https://doi.org/10.1038/s41534-025-01080-3}.
+\end{thebibliography}
+\appendix
+\input{supplement.tex}
+\end{document}

@@ -2,30 +2,30 @@
 
 Inventory updated October 26, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **344 canonical entries**: the original 40 dissertation targets and **304 additional article entries**. Of the additions, **109 are specific mathematical questions or tasks suitable for coverage tracking**; the other 195 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **353 canonical entries**: the original 40 dissertation targets and **313 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 202 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [100 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/148 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [102 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/150 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 109 |
-| Additional directions/formulation/method entries outside the denominator | 195 |
-| Combined eligible targets | 148 = 39 + 109 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/148 (4.05%) |
-| Eligible targets with an identified, verified Lean statement | 6/148 (4.05%) |
-| Eligible targets with a complete checked Lean proof | 6/148 (4.05%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/148 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/148 |
-| Additional identified Lean statements without a build audit | 1/148 |
-| Eligible targets with Lean discovery still unassessed in this extension | 40/148 |
-| Articles/preprints in scope | 130 |
-| Full-text sources screened, including withdrawn history | 118/130 |
-| Current-publication full texts screened | 117 |
+| Additional article targets in the coverage denominator | 111 |
+| Additional directions/formulation/method entries outside the denominator | 202 |
+| Combined eligible targets | 150 = 39 + 111 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/150 (4.00%) |
+| Eligible targets with an identified, verified Lean statement | 6/150 (4.00%) |
+| Eligible targets with a complete checked Lean proof | 6/150 (4.00%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/150 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/150 |
+| Additional identified Lean statements without a build audit | 1/150 |
+| Eligible targets with Lean discovery still unassessed in this extension | 42/150 |
+| Articles/preprints in scope | 132 |
+| Full-text sources screened, including withdrawn history | 119/132 |
+| Current-publication full texts screened | 118 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 12/130 |
+| Not fully assessed | 13/132 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -181,6 +181,8 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F94](https://arxiv.org/html/2606.27130v2) | full text screened | 1 | arXiv:2606.27130v2, 5 September 2026; full DOM text and all question contexts screened; current resolution not assessed. |
 | [F95](https://arxiv.org/pdf/quant-ph/9601029v3) | full text screened | 6 | Inspected complete text-searchable v3, including same-text equal-distance resolution note; historical directions do not imply current open status. |
 | [F96](https://bioinfo.uib.es/~joemiro/comptrans/HammingIntro.pdf) | abstract or metadata only | Not assessed | Retrieved only a three-page introduction excerpt, not the full1950 article. No full question-screen or zero-question outcome claimed. |
+| [F97](https://arxiv.org/html/quant-ph/0406168v1) | full text screened | 3 | Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical. |
+| [F98](https://www.nature.com/articles/s41534-025-01080-3) | relevant sections screened | 6 | Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem. |
 
 ## Reproducible evidence and limits
 
@@ -839,7 +841,10 @@ Under the paper’s syndrome-based Gallager-B decoder, is every absorbing set a 
 - Proof-assistant statement: verified lean statement. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
 - Source-described status: open or proposed in source; current resolution: refuted by lean checked unrestricted counterexample.
 - Verified artifact: [GallagerAbsorbing.absorbing_not_trapping](../formalization/gallager-b-absorbing/README.md); Explicit connected (7,0)-absorbing component: all128 supported binary errors accepted at initialization or first iteration; actual fourteen-coordinate CSS embedding corrects all supported Z-errors modulo the complete opposite stabilizer span and has a nontrivial logical on the second component. Redundant checks and four-cycles allowed; ambient graph disconnected..
-- Scope comparison: Exact source compared: arXiv:2307.14532v2, SectionII-B, Definitions3/5 and SectionVI. Stopped outputs extend constantly. Both hard and outgoing-edge syndrome tests pass. The ordinary Steane pairing still permits logical miscorrections; the separate actual CSS pair eliminates these for every first-component Z-error. Connected-ambient, high-girth, column-weight3 and selected-logical-support variants are not answered. Journal full text was access restricted.
+- Scope comparison: The original fourteen-coordinate artifact is disconnected. The separate connected follow-up proves a fifteen-coordinate asymmetric CSS example with no physical product split and complete recovery of all128 supported Z-errors under both syndrome tests. Same-matrix/symmetric CSS, girth/degree restrictions and both-sector results remain unassessed; final journal full text is an access gap.
+- Research progress: [Connected fifteen-qubit CSS follow-up without any physical product cut](../formalization/gallager-b-absorbing/connected/README.md) (complete concrete lean proof). All128 supported Z-errors recover under both syndrome tests; actual decoding graph connected; no stabilizer-space split across any physical partition. Asymmetric CSS and four-cycles allowed. This is a project-derived strengthening, not another source target.
+  - [Complete Lean source](../formalization/gallager-b-absorbing/connected/Connected.lean).
+- Project-derived follow-up, outside the source-target denominator: **RQ-P09-symmetric-css** — Freeze and assess the exact symmetric-CSS/same-matrix stabilizer variant. Unassessed; not started in this block.
 - [P09: Section VI, Concluding Observations](https://arxiv.org/html/2307.14532); extraction lines 500–501; explicit open problem.
 
 ### L-P09-XZ
@@ -4094,3 +4099,93 @@ Historical experimental direction to implement three- or seven-qubit correction 
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F95: arXiv v3 PDF page 34](https://arxiv.org/pdf/quant-ph/9601029v3); extraction lines 485–494; historical author stated question or direction.
+
+### L-F97-computation-entanglement
+
+Historical direction: study entanglement in quantum computation involving stabilizer codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F97: concluding summary](https://arxiv.org/html/quant-ph/0406168v1); extraction lines 649–653; author stated question or direction.
+
+### L-F97-stabilizer-witnesses
+
+Historical direction: construct bipartite and multipartite entanglement witnesses from stabilizer generators.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F97: concluding summary](https://arxiv.org/html/quant-ph/0406168v1); extraction lines 652–656; author stated question or direction.
+
+### L-F98-entangled-nonlocal-classification
+
+Characterize which entangled states can yield Bell violations.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F98: Introduction, paragraph2](https://www.nature.com/articles/s41534-025-01080-3); extraction lines 744–748; author stated question or direction.
+
+### L-F98-pure-gme-gmnl
+
+Does every genuinely multipartite entangled pure state exhibit genuine multipartite nonlocality?
+
+- Type: question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source-stated mathematical question; modern resolution and Lean discovery remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F98: Introduction, paragraph3](https://www.nature.com/articles/s41534-025-01080-3); extraction lines 745–749; author stated question or direction.
+
+### L-F98-qudit-gme-mfnl
+
+Is every genuinely multipartite entangled qudit stabilizer subspace multipartite fully nonlocal?
+
+- Type: question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source-stated mathematical question; modern resolution and Lean discovery remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F98: Discussion, paragraph1](https://www.nature.com/articles/s41534-025-01080-3); extraction lines 900–904; author stated question or direction.
+
+### L-F98-bell-inequalities
+
+Construct Bell inequalities detecting genuine multipartite nonlocality of the stabilizer states or subspaces under discussion.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F98: Discussion, paragraph2](https://www.nature.com/articles/s41534-025-01080-3); extraction lines 901–905; author stated question or direction.
+
+### L-F98-experimental-nonlocality
+
+Experimentally determine the genuine nonlocality content of multipartite stabilizer mixed states using the bipartite bound.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F98: Discussion, paragraph3](https://www.nature.com/articles/s41534-025-01080-3); extraction lines 902–906; author stated question or direction.
+
+### L-F98-tighter-nonlocality-bound
+
+Improve the genuine nonlocality-content bound in Equation12 using measured m-party subsystems.
+
+- Type: held formulation; written formulation: formulation requires clarification.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F98: Discussion, paragraph4](https://www.nature.com/articles/s41534-025-01080-3); extraction lines 903–907; author stated question or direction.
+
+### L-F97-multipartite-conversion
+
+Historical direction: quantify multipartite entanglement resources and their interconversion relations.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F97: Introduction, multipartite pricing/interconversion paragraph](https://arxiv.org/html/quant-ph/0406168v1); extraction lines 162–167; author stated question or direction.

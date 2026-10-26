@@ -11,9 +11,9 @@ version=subprocess.check_output([a.lean,'--version'],text=True).strip()
 assert '4.36.0-rc1' in version,version
 start=time.time()
 with tempfile.TemporaryDirectory(prefix='gallager-clean-') as d:
- result=subprocess.run([a.lean,'-o',str(Path(d)/'Connected.olean'),str(source)],capture_output=True,text=True,timeout=900)
- log=result.stdout+result.stderr
- (R/'lean-build.log').write_text(log)
+ with (R/'lean-build.log').open('w') as output, (R/'lean-profile.log').open('w') as profile:
+  result=subprocess.run([a.lean,'-j','1','--profile','-o',str(Path(d)/'Connected.olean'),str(source)],stdout=output,stderr=profile,text=True,timeout=2400)
+ log=(R/'lean-build.log').read_text()
  assert result.returncode==0,log
  assert not re.search(r'sorryAx|error:|declaration uses',log),log
  assert (Path(d)/'Connected.olean').is_file()
@@ -39,7 +39,7 @@ record=dict(schema=1,checked_utc=datetime.datetime.now(datetime.timezone.utc).is
  no_sorry=True,no_native_decide=True,complete_research_import_closure=['Connected.lean'],
  claim_scope='15-coordinate CSS example; connected actual decoding graph; all 128 supported Z-errors recovered under both syndrome tests; no physical product cut; asymmetric CSS and four-cycles allowed; no both-sector result',
  declarations=coverage,source_sha256=sha(source),certificate_sha256=sha(R/'certificate.json'),
- verifier_sha256=sha(R/'verify.py'),build_log_sha256=sha(R/'lean-build.log'),
+ verifier_sha256=sha(R/'verify.py'),build_log_sha256=sha(R/'lean-build.log'),profile_log_sha256=sha(R/'lean-profile.log'),lean_workers=1,diagnostic_streams='stdout and profiling stderr captured separately',
  issue='https://github.com/alectionary/vibe-math/issues/2')
 (R/'verification.json').write_text(json.dumps(record,indent=2)+'\n')
 print('All',len(declarations),'theorems checked; independent 128-error certificate replay passed.')

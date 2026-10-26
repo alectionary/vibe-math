@@ -60,6 +60,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-exclude-mixed-patterns:** Prove or refute the strengthened condition excluding three-column partial row pairing and lighter transpose codes. Status: open_after_bounded_fresh_diagnostic
 - **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
+- **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -163,6 +164,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: truncated-distance12-four-hour-round2-2026-10-25
 
 [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation): The bounded strengthened criterion now has a general Lean Pauli bound min(D,12), with actual source supports, both full stabilizer spans, all finite certificates and source distance minima. Current exact admission and remaining obligations are in the verification manifest. The broader source sufficient-condition question for dQ=dC is not marked solved; no canonical completion is credited.. [Report](../formalization/distance-preservation/truncated12/paper/main.pdf) · [Verification](../formalization/distance-preservation/truncated12/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: connected-gallager-2026-10-26
+
+[L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): Connected actual Tanner graph, positive encoded dimension, no physical product cut, all128 supported Z-errors recovered under both syndrome tests. Remaining at that dated checkpoint: Symmetric CSS, prescribed girth/degree and both-sector variants; current status unassessed. [Report](../formalization/gallager-b-absorbing/connected/README.md) · [Verification](../formalization/gallager-b-absorbing/connected/verification.json) · [Prior art](../formalization/gallager-b-absorbing/connected/prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -414,6 +421,22 @@ P09 unrestricted statement refuted by checked counterexample. One complete histo
 - [L-F95-noisy-correction](OPEN-PROBLEMS.md#l-f95-noisy-correction): Historical direction on errors introduced during the quantum correction process.
 - [L-F95-small-experiments](OPEN-PROBLEMS.md#l-f95-small-experiments): Historical experimental direction to implement three- or seven-qubit correction schemes.
 
-Current cohort: **344 canonical entries,148 eligible targets,130 paper records,118 full-text screens**; **6/148 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: connected-gallager-sources-2026-10-26
 
-The current source index has **100** records, with actual access levels retained.
+Connected/coupled P09 follow-up adds no completed canonical source target. Two stabilizer-entanglement background sources contribute nine questions/directions; two precise questions enter the denominator with current status unassessed. One full main text and one relevant-section/supplement gap screen are distinguished.
+
+[Screen report](../literature/connected-gallager-source-screening.json). Added **9 entries**, **2 eligible targets**, **2 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F97-computation-entanglement](OPEN-PROBLEMS.md#l-f97-computation-entanglement): Historical direction: study entanglement in quantum computation involving stabilizer codes.
+- [L-F97-stabilizer-witnesses](OPEN-PROBLEMS.md#l-f97-stabilizer-witnesses): Historical direction: construct bipartite and multipartite entanglement witnesses from stabilizer generators.
+- [L-F98-entangled-nonlocal-classification](OPEN-PROBLEMS.md#l-f98-entangled-nonlocal-classification): Characterize which entangled states can yield Bell violations.
+- [L-F98-pure-gme-gmnl](OPEN-PROBLEMS.md#l-f98-pure-gme-gmnl): Does every genuinely multipartite entangled pure state exhibit genuine multipartite nonlocality?
+- [L-F98-qudit-gme-mfnl](OPEN-PROBLEMS.md#l-f98-qudit-gme-mfnl): Is every genuinely multipartite entangled qudit stabilizer subspace multipartite fully nonlocal?
+- [L-F98-bell-inequalities](OPEN-PROBLEMS.md#l-f98-bell-inequalities): Construct Bell inequalities detecting genuine multipartite nonlocality of the stabilizer states or subspaces under discussion.
+- [L-F98-experimental-nonlocality](OPEN-PROBLEMS.md#l-f98-experimental-nonlocality): Experimentally determine the genuine nonlocality content of multipartite stabilizer mixed states using the bipartite bound.
+- [L-F98-tighter-nonlocality-bound](OPEN-PROBLEMS.md#l-f98-tighter-nonlocality-bound): Improve the genuine nonlocality-content bound in Equation12 using measured m-party subsystems.
+- [L-F97-multipartite-conversion](OPEN-PROBLEMS.md#l-f97-multipartite-conversion): Historical direction: quantify multipartite entanglement resources and their interconversion relations.
+
+Current cohort: **353 canonical entries,150 eligible targets,132 paper records,119 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **102** records, with actual access levels retained.

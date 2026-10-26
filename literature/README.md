@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **85 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **98 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -853,6 +853,84 @@ Farzane Amirzade; Mohammad-Reza Sadeghi. 2017. [stronger stopping source screen]
 
 Primary PDF full-document question screen Classical single/multiple-edge QC-LDPC difference criteria and lifting-degree bounds, not a stated QC-GHP stopping theorem or companion CSS construction. Full-document target screen includes introduction,all question/unknown/future-work contexts,SectionV and appendices; no additional explicit unresolved target found. Search goals and reported finite optima are addressed results, not invented author conjectures.
 
+### F86 High-rate qLDPC processors
+
+Aditya Bhardwaj; Muzhou Ma; Nadine Meister; Robbie King; Dolev Bluvstein; John Preskill; Madelyn Cain; Qian Xu; Hsin-Yuan Huang. 2026. [distance preservation source screen](https://arxiv.org/html/2607.28795v1).
+
+Primary HTML full-document question screen Appendix G, Theorem 8 and Lemmas 5–6 give an upper bound under full binary row rank. Remark 12 shows the rank premise cannot generally be dropped. This is not the lower bound needed for equality in F25; fully populated monomial 3x4 bases are rank deficient at augmentation.
+
+### F87 Distance-Finding Algorithms for Quantum Codes and Circuits
+
+Mark Webster; Abraham Jacob; Oscar Higgott. 2026. [distance preservation source screen](https://arxiv.org/html/2603.22532v2).
+
+Primary HTML full-document question screen Exact connected-cluster, MIP, SAT and Brouwer–Zimmermann methods versus heuristic upper-bound methods. Supports method selection and evidence labels; does not give F25 base constraints or certify our inputs.
+
+### F88 End-to-End Formalization of Quantum Error Correction
+
+Mattias Ehatamm; Yi Lee; Xiaodi Wu; Runzhou Tao. 2026. [distance preservation source screen](https://arxiv.org/html/2605.16523v1).
+
+Primary HTML full-document question screen Verified CSS-to-SAT translation and concrete BB/GB distance certificates, with binary-symplectic/stabilizer bridge. The public README and paper were inspected; the repository was not built or axiom-audited here. No exact F25 LP-distance preservation theorem was identified in these inspected materials.
+
+### F89 Lifting Lifted Product Codes
+
+Yuta Hirasaki; Jong Yeon Lee. 2026. [distance preservation source screen](https://arxiv.org/html/2607.28621v1).
+
+Primary HTML full-document question screen Section II and Corollary 6 describe compatible group-extension lifts and chain/cochain transfer. For odd lift index, d_lift<=t*d_base; the reverse inequality stated there additionally assumes unchanged logical dimension. This does not settle our classical-distance versus quantum-distance equality question. Our candidate family has growing logical dimension.
+
+### F90 Pseudocodeword Weights and Stopping Sets
+
+Christine Kelley; Deepak Sridhara; Jun Xu; Joachim Rosenthal. 2004. [distance preservation source screen](https://user.math.uzh.ch/kelley/isit2004_Chicago.pdf).
+
+Complete one-page proceedings text and rendered page read Theorem III.1 and following note give the classical degree-three girth-eight stopping bound six; projected-support stopping is explicitly classical. No additional unresolved author target found in the complete one-page text.
+
+### F91 Designing Group-Valued Codes with Full Regular Low-Weight Bases
+
+Jong Yeon Lee. 2026. [truncated distance12 source screen](https://arxiv.org/html/2610.06820v1).
+
+Primary HTML full-document question screen and matched-context review. Full regularity and canonical-frame width concern complete logical bases, not the minimum distance lower bound in our strengthened 3x4 monomial LP target. Full-row-rank augmentation criteria do not apply to the all-one rank-one augmentation of our fully populated 3x4 base. Appendix A.4 supplies a related exhaustive-support-search completeness argument; its code-specific execution records do not certify our inputs.
+
+### F92 Quantum two-block group algebra codes
+
+Hsiang-Ku Lin; Leonid P. Pryadko. 2023. [truncated distance12 source screen](https://arxiv.org/html/2306.16400v1).
+
+Full DOM text keyword screen, introduction/conclusion and all question-context review; selected statements/proofs compared. Statement12 gives a support-intersection-size divisor in a two-group-algebra-element construction. Neither its construction hypotheses nor its numerical bound establish the strengthened normalized 3x4 matrix-base truncated-distance theorem. It is credited distance-bound background, not a newly discovered proof.
+
+### F93 Bicycle Race: small two-block codes on the Pareto frontier
+
+Gideon Lee. 2026. [truncated distance12 source screen](https://arxiv.org/html/2610.13880v2).
+
+Full DOM text keyword screen, introduction/conclusion and all question-context review; selected statements/proofs compared. Exact code-specific distance searches and group-algebra rank targeting do not establish our universal 3x4 criterion. This is relevant method/computational-completeness background. Four reported unresolved fixed-code distances are held until their exact database blocks and original source versions are frozen; parameters alone do not identify a code.
+
+### F94 Rate-2/3 Girth-8 (3,18)-Regular Quantum LDPC Codes from Two-Branch Finite-Field Bases and CPM Lifts
+
+Koki Okada; Kenta Kasai. 2026. [truncated distance12 source screen](https://arxiv.org/html/2606.27130v2).
+
+Full DOM text keyword screen, introduction/conclusion and all question-context review; selected statements/proofs compared. The v2 paper proves one 34542-qubit code has distance18 and a fixed-base affine-shift ceiling for primes greater than19. Its pair-at-check normal-graph enumeration and exact integer consistency certificates are related prior methods and are credited. Its different two-branch finite-field construction is not our monomial 3x4 symmetric LP family; its theorems do not imply our universal truncated bound. The earlier v1 distance-upper-bound language must not replace this v2 exact-distance result.
+
+### F95 Multiple Particle Interference and Quantum Error Correction
+
+Andrew Steane. 1996. [gallager counterexample background](https://arxiv.org/pdf/quant-ph/9601029v3).
+
+Complete source text and question contexts inspected. Inspected complete text-searchable v3, including same-text equal-distance resolution note; historical directions do not imply current open status.
+
+### F96 Error Detecting and Error Correcting Codes
+
+R. W. Hamming. 1950. [gallager counterexample background](https://bioinfo.uib.es/~joemiro/comptrans/HammingIntro.pdf).
+
+Introduction excerpt only. Retrieved only a three-page introduction excerpt, not the full1950 article. No full question-screen or zero-question outcome claimed.
+
+### F97 Entanglement in the stabilizer formalism
+
+David Fattal; Toby S. Cubitt; Yoshihisa Yamamoto; Sergey Bravyi; Isaac L. Chuang. 2004. [connected gallager background](https://arxiv.org/html/quant-ph/0406168v1).
+
+Primary text contexts inspected; bounded source comparison. Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical.
+
+### F98 All genuinely entangled stabilizer subspaces are multipartite fully nonlocal
+
+Owidiusz Makuta; Remigiusz Augusiak. 2025. [connected gallager background](https://www.nature.com/articles/s41534-025-01080-3).
+
+Primary text contexts inspected; bounded source comparison. Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem.
+
 ## Question by question cross references
 
 “Not verified” is a bounded search result. A related paper listed next to a question is not automatically evidence that the question itself was restated. The original page references and hypotheses remain in [the coverage ledger](../audit/claims.json). Research directions outside those 40 targets are described in the paper records, especially the Morris/Martinez and Grantham follow-ups.
@@ -903,15 +981,3 @@ Primary PDF full-document question screen Classical single/multiple-edge QC-LDPC
 ## Search gaps worth resolving next
 
 The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
-
-## Expanded spectral replacement checkpoint -24October2026 Pacific
-
-Useful spectral replacement existence is answered positively: the checked fourth-moment equality gives stopping distance at least gamma+1 on explicit sparse joint-Sidon QC-GHP families, without the original small-gap premise or a separate small-size exclusion. Source Lemma4.8 and classical overlap ingredients are credited. Incidence existence beyond B1 is positive too. Gram twins give an unbounded restricted obstruction; encoded dimension/binary rank/cross-sector data are outside that shared input. The original Proposition5.1 parameter question remains answered negatively. [Current paper/proofs](../formalization/stopping-bound/stronger/README.txt).
-
-The full17-page Xia-Fu v2 screen adds3 historical entries, one eligible and one paper/screen beyond the earlier20/8/4 extension. Current totals:290 entries,144 eligible targets,115 papers,102 full main-paper screens and5 complete canonical Lean targets. Present resolution, Lean discovery and difficulty of harvested questions remain unassessed. Existing F38 screening is reused without duplication. [Xia-Fu ledger](xia-fu-stopping-source-screening.json).
-
-## Final short-parameter checkpoint -24October2026 Pacific
-
-The explicit4/8 family has moment88n and stopping guarantee5 for every odd n>=37; the54-variable instance is checked separately. Both-sector kernel lower bounds and nontrivial logical content are checked. The n27 spectral certificate gives eta>=17/2 and a strict improvement over both Zhu-Chugg expressions under their required gap. Original parameter question: negative. Replacement existence: positive. [Current paper and complete proofs](../formalization/stopping-bound/stronger/README.txt).
-
-The final post-lemma cohort adds5 broad directions,0 eligible,4 primary papers/screens. Totals295canonical/144eligible/119papers/106full main-paper screens/5completed canonical targets. Current-resolution/Lean/difficulty checks for new targets remain unassessed. [Full source outcomes, hashes and access/version gaps](postlemma-stopping-source-screening.json).
