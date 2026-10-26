@@ -1,0 +1,60 @@
+\section{Lean interfaces, complete proofs and reproduction}\label{app:lean}
+The new proof closure consists of \texttt{OddSupport.lean}, \texttt{Question.lean}, \texttt{Consumers.lean} and the declaration audit. It imports only \texttt{Std} and builds cleanly with Lean 4.36.0-rc1. Every one of the 76 theorem declarations has an axiom report restricted to \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. No admitted proof or native computation oracle is used. Small Boolean cases and fixed finite consumers use kernel-evaluated \texttt{decide}; general implications use structural proofs.
+
+\subsection{Proof map and declaration links}
+The names below are in namespace \texttt{CSSOddSupport}, with \texttt{Question} or \texttt{Consumers} appended for their modules. Complete current and immutable declaration links follow the map.
+\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.61\textwidth}}
+\toprule Written proof & Exact Lean coverage\\\midrule\endhead
+Incidence/zero syndrome & \texttt{dot\_intersection\_weight}, \texttt{zero\_b\_iff\_induced\_even}, \texttt{zero\_b\_iff\_zero\_syndrome}\\
+Theorem~\ref{thm:parity} & \texttt{css\_spans\_commute}, \texttt{equal\_spans\_even\_stabilizers}, \texttt{odd\_zero\_syndrome\_logical}, \texttt{odd\_zero\_b\_logical}\\
+Theorem~\ref{thm:decoder} & \texttt{cannot\_correct\_identity\_and\_odd\_support}, \texttt{no\_universal\_supported\_recovery}\\
+Zero-stopping application & \texttt{zero\_stopping\_decoder\_fails\_odd\_support}, Question's two \texttt{zero\_syndrome\_*\_success\_iff}\\
+Proposition~\ref{prop:presentation} & \texttt{common\_matrix\_css}, \texttt{common\_matrix\_supported\_recovery\_iff}, \texttt{common\_matrix\_stabilizer\_iff}, \texttt{common\_matrix\_product\_cut\_iff}, \texttt{common\_matrix\_both\_sectors}\\
+Proposition~\ref{prop:gates} & Question's \texttt{full\_candidate\_no\_supported\_logical}, \texttt{full\_candidate\_support\_even}, \texttt{full\_question\_iff\_even}, \texttt{benchmark\_implies\_full}\\
+All boundary/consumer assertions & Complete \texttt{Consumers.lean} below; independent fixed-family replay in \texttt{verify.py}\\
+Question~\ref{q:full} & \texttt{Structural}, \texttt{FullCandidate}, \texttt{FullQuestion}; these are definitions, not an existence theorem.\\
+\bottomrule
+\end{longtable}
+\normalsize
+\noindent\texttt{dot\_self\_weight}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L89}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L89}{immutable}.\par
+\noindent\texttt{css\_spans\_commute}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L125}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L125}{immutable}.\par
+\noindent\texttt{odd\_zero\_b\_logical}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L174}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L174}{immutable}.\par
+\noindent\texttt{no\_universal\_supported\_recovery}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L238}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L238}{immutable}.\par
+\noindent\texttt{zero\_b\_iff\_induced\_even}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L272}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L272}{immutable}.\par
+\noindent\texttt{common\_matrix\_css}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L303}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L303}{immutable}.\par
+\noindent\texttt{common\_matrix\_product\_cut\_iff}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L335}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L335}{immutable}.\par
+\noindent\texttt{common\_matrix\_both\_sectors}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L351}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/OddSupport.lean#L351}{immutable}.\par
+\noindent\texttt{zero\_syndrome\_hard\_success\_iff}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Question.lean#L115}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Question.lean#L115}{immutable}.\par
+\noindent\texttt{full\_question\_iff\_even}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Question.lean#L199}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Question.lean#L199}{immutable}.\par
+\noindent\texttt{benchmark\_implies\_full}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Question.lean#L206}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Question.lean#L206}{immutable}.\par
+\noindent\texttt{seven\_no\_decoder\_corrects\_all}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L29}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L29}{immutable}.\par
+\noindent\texttt{permutation\_only\_spaces\_differ}: \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L109}{current}, \href{https://github.com/alectionary/vibe-math/blob/d4c02e802f12e3583309d6b38f6e818524b4333c/formalization/gallager-b-absorbing/symmetric/Consumers.lean#L109}{immutable}.\par
+
+The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/verification.json}{verification manifest} records every declaration, source hash and dependency. The \href{https://github.com/alectionary/vibe-math/blob/master/formalization/gallager-b-absorbing/symmetric/prior-art.json}{comparison ledger} and \href{https://github.com/alectionary/vibe-math/blob/master/literature/symmetric-css-source-screening.json}{source-question screen} retain access limits and question provenance. Running \texttt{build.py --lean /path/to/lean} checks a temporary clean import closure and independently replays the fixed certificate.
+
+\subsection{Finite binary interface and the general proof}
+\texttt{Word n} is an actual function on the finite physical coordinates, and \texttt{Span} is inductively generated by zero, actual rows and XOR. Orthogonality extends by induction. The complete module below includes the parity identity, no-decoder proof, incidence bridge and presentation/sector proofs. Its general theorem allows all finite lengths and arbitrary finite row lists, including empty and degenerate boundaries.
+\lstinputlisting[escapeinside={(*@}{@*)}]{OddSupport-listing.txt}
+
+\subsection{Actual messages and first stopping}
+Check indices enumerate the actual row list. Nonedges are set to zero; majority is strict, with zero on ties. The trajectory is defined unhalted only to locate the first accepting time. \texttt{Success} insists on that first time and its hard output. \texttt{FullQuestion} and \texttt{OneStepQuestion} remain unproved propositions; the only existence implication proved is from the benchmark to the full question.
+\lstinputlisting[escapeinside={(*@}{@*)}]{Question-listing.txt}
+
+\subsection{Fixed consumers and hypothesis guards}
+These controls test oddness, actual selected degrees, empty-coordinate boundaries, row-space equality versus literal equality, and permutation-only symmetry. The seven-coordinate consumer is a logical-failure control, not a successful even-support construction.
+\lstinputlisting[escapeinside={(*@}{@*)}]{Consumers-listing.txt}
+
+\section{Reference chronology}\label{app:dates}
+The manuscript date is October 26, 2026. Day counts below are exact differences from the explicitly dated preprint events. They measure source age, not how long a question was unsolved. The repository papers are mathematical predecessors cited at fixed revisions, not evidence of an external announcement date.
+\small
+\par\noindent
+\begin{tabular}{>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.29\textwidth}>{\raggedright\arraybackslash}p{.12\textwidth}}
+\toprule Source & Earliest preprint & Inspected milestone & Days since earliest\\\midrule
+Bravyi et al. & 2010-04-21 & v2 April 27, 2010; NJP 2010 & 6032\\
+Haah et al. & 2017-03-22 & v3 Sept. 29, 2017; Quantum Oct. 3, 2017 & 3505\\
+Morris et al. & 2023-07-26 & v2 May 10, 2024; public journal intro 2026 & 1188\\
+\bottomrule
+\end{tabular}
+\normalsize
+The BLT journal day is not asserted here; the year is sufficient for the inspected preprint comparison. The P09 final journal full-text access gap is retained in the comparison ledger. Earlier repository constructions are referenced at their immutable publication and proof commits in the bibliography.

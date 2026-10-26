@@ -61,6 +61,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
+- **RQ-P09-symmetric-css:** Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. Status: Precise statement and necessary odd-support/no-supported-logical gates proved; bounded primary-source comparison completed with named gaps. No even-support construction search performed.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -170,6 +171,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: connected-gallager-2026-10-26
 
 [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): Connected actual Tanner graph, positive encoded dimension, no physical product cut, all128 supported Z-errors recovered under both syndrome tests. Remaining at that dated checkpoint: Symmetric CSS, prescribed girth/degree and both-sector variants; current status unassessed. [Report](../formalization/gallager-b-absorbing/connected/README.md) · [Verification](../formalization/gallager-b-absorbing/connected/verification.json) · [Prior art](../formalization/gallager-b-absorbing/connected/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: symmetric-css-2026-10-26
+
+[L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): General odd-support quantum-recovery obstruction under equality of full stabilizer row spaces; exact full/benchmark question interfaces.. Remaining at that dated checkpoint: Even-support existence or nonexistence; no candidate search.. [Report](../formalization/gallager-b-absorbing/symmetric/README.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -437,6 +444,20 @@ Connected/coupled P09 follow-up adds no completed canonical source target. Two s
 - [L-F98-tighter-nonlocality-bound](OPEN-PROBLEMS.md#l-f98-tighter-nonlocality-bound): Improve the genuine nonlocality-content bound in Equation12 using measured m-party subsystems.
 - [L-F97-multipartite-conversion](OPEN-PROBLEMS.md#l-f97-multipartite-conversion): Historical direction: quantify multipartite entanglement resources and their interconversion relations.
 
-Current cohort: **353 canonical entries,150 eligible targets,132 paper records,119 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: symmetric-css-sources-2026-10-26
 
-The current source index has **102** records, with actual access levels retained.
+Two primary full texts; seven broad directions or held formulations, no precise-target denominator or completed-canonical-target delta.
+
+[Screen report](../literature/symmetric-css-source-screening.json). Added **7 entries**, **0 eligible targets**, **2 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F99-self-correction](OPEN-PROBLEMS.md#l-f99-self-correction): Historical direction: characterize robust quantum storage at nonzero temperature under geometric locality constraints.
+- [L-F99-physical-realization](OPEN-PROBLEMS.md#l-f99-physical-realization): Find physical mechanisms realizing interacting Majorana fermion codes.
+- [L-F99-emergent-order](OPEN-PROBLEMS.md#l-f99-emergent-order): Use the Majorana-code framework to explain emergence of topological order from microscopic interactions.
+- [L-F100-architecture-cost](OPEN-PROBLEMS.md#l-f100-architecture-cost): Compare realistic architecture-dependent costs of magic-state distillation and alternative gate constructions.
+- [L-F100-gamma-bound](OPEN-PROBLEMS.md#l-f100-gamma-bound): Historical conjecture: magic-state-distillation overhead exponent gamma cannot be below one.
+- [L-F100-explicit-good-families](OPEN-PROBLEMS.md#l-f100-explicit-good-families): Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.
+- [L-F100-ccz-normal-codes](OPEN-PROBLEMS.md#l-f100-ccz-normal-codes): Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.
+
+Current cohort: **360 canonical entries,150 eligible targets,134 paper records,121 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **105** records, with actual access levels retained.
