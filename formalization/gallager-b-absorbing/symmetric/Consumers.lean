@@ -56,6 +56,16 @@ theorem one_pair_row_css : CSS [pairRow] [pairRow] := by
   apply (css_iff_check_all _ _).mpr
   decide
 
+theorem even_zero_syndrome_stabilizer :
+  ZeroSyndrome [pairRow] pairRow ∧ Span [pairRow] pairRow ∧ weight pairRow % 2 = 0 := by
+  refine ⟨?_, Span.row (by simp), ?_⟩
+  · unfold ZeroSyndrome
+    intro r hr
+    simp only [List.mem_singleton] at hr
+    subst r
+    decide
+  · decide
+
 theorem duplicate_row_same_span : SameSpan [pairRow] [pairRow,pairRow] := by
   intro w
   constructor
