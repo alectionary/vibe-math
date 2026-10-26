@@ -999,3 +999,34 @@ Full primary accepted manuscript and exact decoder rules inspected. Sections2/3 
 ## Search gaps worth resolving next
 
 The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
+
+## October26 SEM dissertation seed
+
+[58 dissertation metadata records, 26 verified author/coauthor publications, 14 full-text article screens and eight gated statistical-method directions](unl-sem/README.md). Purely social theories and empirical questions are excluded from mathematical targets. The new seed does not change the earlier 20-dissertation full-review snapshot.
+
+- **F102**: [Regression-Based Multi-Trait QTL Mapping Using a Structural Equation Model](https://doi.org/10.2202/1544-6115.1552).
+- **F103**: [Bayesian mixture structural equation modelling in multiple-trait QTL mapping](https://doi.org/10.1017/S0016672310000236).
+- **F104**: [Analyzing Mixed-Dyadic Data Using Structural Equation Models](https://doi.org/10.1080/10705511.2013.769395).
+- **F105**: [“How Well Does Your Structural Equation Model Fit Your Data?”: Is Marcoulides and Yuan’s Equivalence Test the Answer?](https://doi.org/10.1187/cbe.20-01-0016).
+- **F106**: [The Answer is “No”: A Comment on Peugh and Feldon (2020)](https://doi.org/10.1187/cbe.24-07-0182).
+- **F107**: [Incorporating Molecular Markers and Causal Structure among Traits Using a Smith-Hazel Index and Structural Equation Models](https://doi.org/10.3390/agronomy11101953).
+- **F108**: [Developmental etiologies of alcohol use and their relations to parent and peer influences over adolescence and young adulthood: A genetically informed approach](https://doi.org/10.1111/acer.13506).
+- **F109**: [Future orientation in adolescent and young adult cancer survivors and unaffected peers](https://doi.org/10.1002/pon.4588).
+- **F110**: [Participatory modeling for high complexity, multi-system issues: challenges and recommendations for balancing qualitative understanding and quantitative questions](https://doi.org/10.1002/sdr.1765).
+- **F111**: [Comprehensive Sexuality Education Improves Primary Students’ Explicit and Implicit Attitudes Toward Homosexuality](https://doi.org/10.1080/19317611.2022.2067282).
+- **F112**: [Selection and socialization influences on adolescent alcohol use: The individual and joint contexts of neighborhood disadvantage and population density](https://doi.org/10.1080/10826084.2019.1608247).
+- **F113**: [Developing and validating a comprehensive measure of coordination in patient aligned care teams](https://doi.org/10.1186/s12913-022-08590-2).
+- **F114**: [Teacher Leadership, Wellbeing, and Intent to Leave in US Rural Schools: Evidence from the 2020–21 National Teacher and Principal Survey](https://doi.org/10.3390/educsci14070758).
+- **F115**: [D-Optimal Design for a Causal Structure for Completely Randomized and Random Blocked Experiments](https://doi.org/10.1155/2022/7299086).
+- **F116**: [Equivalence testing to judge model fit: A Monte Carlo simulation](https://doi.org/10.1037/met0000591).
+- **F117**: [When Nesting is Nuisance in Cluster Sampled Longitudinal Research](https://doi.org/10.1080/00273171.2026.2720958).
+- **F118**: [The Comparative Performance of Conditional Independence Indices](https://doi.org/10.1177/0146621611407909).
+- **F119**: [Examining the accuracy of orthogonal latent mean comparisons in unbalanced conditions](https://doi.org/10.1177/01466216261452255).
+- **F120**: [An ecological perspective on rural, low-income mothers' health](https://doi.org/10.1080/19371918.2014.969860).
+- **F121**: [Direct and Indirect Effects of Nebraska Motor Vehicle Drivers’ Characteristics on Inattentive Driving at Highway-Rail Grade Crossings](https://doi.org/10.1177/0361198118794067).
+- **F122**: [Communicative and Relational Dimensions of Shared Family Identity and Relational Intentions in Mother-in-Law/Daughter-in-Law Relationships: Developing a Conceptual Model for Mother-in-Law/Daughter-in-Law Research](https://doi.org/10.1080/10570310802636334).
+- **F123**: [Bridging the Gap: The Predictive Roles of Emotion Dysregulation and Stalking-related Attitudes on Offline and Online Stalking and Intrusive Harassment](https://doi.org/10.1177/08862605211043590).
+- **F124**: [Satisficing Among Reluctant Respondents in a Cross-National Context](https://academic.oup.com/poq/article/74/5/956/1816917).
+- **F125**: [Like night and day: a review of nocturnal predator communities and predation in annual row crop agroecosystems](https://pmc.ncbi.nlm.nih.gov/articles/PMC13186587/).
+- **F126**: [Structural equation modelling for studying genotype × environment interactions of physiological traits affecting yield in wheat](https://doi.org/10.1017/S0021859607006806).
+- **F127**: [Structural Equation Modeling of Gene–Environment Interactions in Coronary Heart Disease](https://doi.org/10.1111/j.1469-1809.2010.00634.x).
