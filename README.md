@@ -173,3 +173,7 @@ October24 lift-label follow-up: [exact fixed-base counts and a support-free CSS 
 Lift-label paper: [PDF](papers/lift-label-elimination/main.pdf) · [TeX](papers/lift-label-elimination/main.tex) · [all checked proof files](formalization/lift-label-elimination/PROOFS.md). The manuscript includes the reference chronology and immutable Lean links.
 
 Paper-by-paper source audit: [all encountered absorbing-set papers, extracted questions and access gaps](literature/RESEARCH-QUESTION-SCREENING.md). The screen adds 62 canonical entries from 20 question-contributing papers, including 23 specific mathematical targets; present resolution and Lean discovery remain separately unassessed.
+
+## Structural equation modeling seed
+
+[58 additional UNL dissertation metadata records and downstream author/coauthor research](literature/unl-sem/README.md) · [CSV](literature/unl-sem/dissertations.csv) · [Mathematical suitability and formalization gates](literature/unl-sem/FORMALIZATION.md). All 58 authors received downstream searches; 26 selected publications are linked and 14 full texts screened. Eight statistical method directions are indexed; social theories and empirical-only questions are excluded. The original 20 full dissertation reviews remain a separate cohort.

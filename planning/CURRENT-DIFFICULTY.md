@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 363 entries (182 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 26, 2026. Low-confidence planning priors for all 371 entries (190 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -5627,3 +5627,131 @@ First milestone: Verify exact scope and modern resolution.
 Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
 
 Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure).
+
+### L-F103-pleiotropy-linked
+
+Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify the competing latent-genotype models, priors, marginal likelihoods, and identifiability/separation assumptions.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-pleiotropy-linked).
+
+### L-F103-missing-phenotypes
+
+Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify missingness, imputation distribution, estimator, and a consistency or error guarantee; imputation itself is not a proof of validity.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-missing-phenotypes).
+
+### L-F103-mixed-outcomes
+
+Develop multi-trait SEM methods supporting mixed binary and continuous traits.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Fix latent/observed links and a joint probability model; choose an identifiable parameterization and a specific inferential guarantee.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-mixed-outcomes).
+
+### L-F103-experimental-design
+
+Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Fix random-effect covariance and interaction structure before stating identifiability or estimator guarantees.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-experimental-design).
+
+### L-F102-correlated-residuals
+
+Extend the multi-trait QTL SEM analysis to correlated residual errors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify a positive-definite residual covariance class and structural zero restrictions; unrestricted residual dependence can change identifiability.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f102-correlated-residuals).
+
+### L-F102-nonlinear-traits
+
+Extend the linear multi-trait QTL SEM to nonlinear trait relationships.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify the nonlinear family, noise assumptions, and the particular existence, identifiability or estimation claim; the source gives an allometric example, not a general theorem.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f102-nonlinear-traits).
+
+### L-F106-dynamic-fit-robustness
+
+Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Define a family of SEMs, null/alternative discrepancy thresholds, simulation calibration, and a finite-sample error/coverage criterion.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f106-dynamic-fit-robustness).
+
+### L-F106-dynamic-fit-multilevel
+
+Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: The authors identify unavailable multiple-group/multilevel support. Specify model class and a level/power guarantee before proposing a theorem.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f106-dynamic-fit-multilevel).

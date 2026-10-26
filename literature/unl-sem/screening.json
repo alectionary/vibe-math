@@ -1,0 +1,92 @@
+{
+  "checked_on": "2026-10-26",
+  "scope": "58 dissertation metadata seeds and bounded author/coauthor discovery; complete question screens only for retrieved readable article texts. This does not claim full dissertation screens.",
+  "baseline": {
+    "canonical_entries": 363,
+    "eligible_targets": 150,
+    "paper_records": 135,
+    "full_text_screens": 122,
+    "verified_complete_lean_targets": 6
+  },
+  "full_text_paper_screens": 14,
+  "access_gap_papers": 12,
+  "question_ids": [
+    "L-F103-pleiotropy-linked",
+    "L-F103-missing-phenotypes",
+    "L-F103-mixed-outcomes",
+    "L-F103-experimental-design",
+    "L-F102-correlated-residuals",
+    "L-F102-nonlinear-traits",
+    "L-F106-dynamic-fit-robustness",
+    "L-F106-dynamic-fit-multilevel"
+  ],
+  "excluded_passages": [
+    {
+      "locator": "Introduction; Additional Resources, PDF viewer pp23–24",
+      "reason": "Tutorial supplies dyadic specifications and model-fit corrections; no additional explicit unresolved mathematical target found in the full-text screen. Pedagogical questions answered by the paper are not open conjectures.",
+      "paper_id": "F104"
+    },
+    {
+      "locator": "Final caveats, extracted lines537–558",
+      "reason": "Small-sample/model/data robustness is a historical study request. The same authors’ 2024 letter reports later simulations and rejects their earlier recommendation. Kept as dated evidence, not added as a fresh open conjecture.",
+      "paper_id": "F105"
+    },
+    {
+      "locator": "Sections4–5, PDF viewer pp12–13",
+      "reason": "Reported efficiency improvements concern the evaluated wheat data. The paper does not pose a universal dominance conjecture, so no such conjecture is invented.",
+      "paper_id": "F107"
+    },
+    {
+      "locator": "Limitations and future directions, lines883–904",
+      "reason": "Age/sex-specific genetic and environmental effects are empirical questions. Reported non-convergence is an observation, not an author-stated impossibility or convergence conjecture.",
+      "paper_id": "F108"
+    },
+    {
+      "locator": "Section4.2 Study limitations, lines363–364",
+      "reason": "Replication, population diversity and clinical behavioral associations require observations; no purely mathematical open target recorded.",
+      "paper_id": "F109"
+    },
+    {
+      "locator": "Challenges/recommendations; final discussion, PDF viewer pp21–22",
+      "reason": "Stakeholder participation, aggregation choices and practical model-building recommendations do not supply an explicit mathematical statement. No formal guarantee is inferred from the word model.",
+      "paper_id": "F110"
+    },
+    {
+      "locator": "Limitations and Conclusion, lines1129–1134",
+      "reason": "Larger/more general samples and educational intervention effects are empirical and social-science questions.",
+      "paper_id": "F111"
+    },
+    {
+      "locator": "Limitations and Future Directions, lines1085–1104",
+      "reason": "Demographic/contextual differences and modern-sample replication are empirical. The paper’s four introductory research questions are addressed in its study, not leftover mathematical conjectures.",
+      "paper_id": "F112"
+    },
+    {
+      "locator": "Limitations and research/practice implications, lines173–185",
+      "reason": "Instrument validation, patient roles and links to healthcare outcomes are empirical. Low sample variability does not state a general identifiability theorem.",
+      "paper_id": "F113"
+    },
+    {
+      "locator": "Section7 Future Research, PDF viewer pp12–13",
+      "reason": "Leadership responsibilities, teacher/principal satisfaction and multilevel empirical follow-up do not pose a mathematical guarantee; multilevel terminology alone is insufficient.",
+      "paper_id": "F114"
+    },
+    {
+      "locator": "The Nocturnal Ecology Research Gap; Conclusion",
+      "reason": "Predator identification, diel ecology, sampling observations and climate responses need empirical ecological investigation; no explicit mathematical conjecture extracted.",
+      "paper_id": "F125"
+    }
+  ],
+  "screen_method": "Search complete extracted texts for questions, conjectures, unknown cases and future-work language; inspect introductions, relevant definitions and closing passages; read in-paper answers and later inspected continuations. Not line-by-line proof verification.",
+  "seed_full_text_screens": 0,
+  "seed_question_count": null,
+  "requirement_evidence": {
+    "all_58_seed_authors_searched": "met: authors.json and searches.json",
+    "downstream_author_or_coauthor_identity": "met for selected works; unverified search leads remain separate",
+    "full_text_question_harvest": "partial/access-limited: 14 article texts screened; dissertation texts and other article texts remain unavailable",
+    "social_empirical_filter": "met: excluded_passages plus per-question formalization_suitability",
+    "inventory_and_planning": "met after regeneration and validation",
+    "publication": "PR for user review; not merged",
+    "validation": "met: validate_unl_sem_seed.py, validate_open_problems.py, validate_current_difficulty.py, validate_literature.py, validate.py and git diff --check"
+  }
+}
