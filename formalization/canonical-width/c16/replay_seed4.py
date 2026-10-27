@@ -58,11 +58,14 @@ def main():
     ap.add_argument('--cap',type=int,default=1000000)
     ap.add_argument('--workers',type=int,default=4)
     ap.add_argument('--output',type=Path,required=True)
+    ap.add_argument('--source',type=Path,default=ROOT/'seed4_exact.cpp')
+    ap.add_argument('--dependency',type=Path,action='append',default=[])
     args=ap.parse_args()
     binary=args.binary.resolve();args.output.mkdir(parents=True,exist_ok=True)
     Z=[int(s,16) for s in (ROOT/'pools/zcoords.txt').read_text().split()]
     masks=masks_for(args.omitted)
-    inputs=[binary,ROOT/'seed4_exact.cpp',ROOT/'seed4_fifteen.cpp',ROOT/'pools/xcoords.txt',ROOT/'pools/zcoords.txt']
+    inputs=[binary,args.source.resolve(),ROOT/'seed4_fifteen.cpp',ROOT/'pools/xcoords.txt',ROOT/'pools/zcoords.txt']
+    inputs.extend(p.resolve() for p in args.dependency)
     manifest={'omitted_count':args.omitted,'node_cap':args.cap,'expected_masks':masks,
               'sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},'results':[]}
     def run(mask):
