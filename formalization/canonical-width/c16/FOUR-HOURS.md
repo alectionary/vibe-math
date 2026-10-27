@@ -16,3 +16,9 @@
 Independent physical pool completeness is now reproduced: all 68 roots through weight 17, 47,708,679 nodes, exactly 45 normalized weight-16 orbits. The sector exchange and mixed-Pauli bridge are checked separately. See `INDEPENDENT-ENUMERATION.md`; this removes dependence on the author's search implementation, but is not a Lean certificate.
 
 The twelve-monomial replay is continuing with complete corrected partner domains, a stronger prefix-rank bound, and mandatory-basis-member propagation. Completed classes have no caps. A 720-variable global CDCL model now learns directly certified binary-matroid and opposite-pool rank clauses; positive and negative toy controls pass. The global runs have not yet decided the question. Alternating full-basis construction reached Gram energy 176 (128 would be a full canonical frame), and did not improve the checked 88-pair partial frame. These are bounded experiments, not exclusions.
+
+## Intermediate checkpoint, 2026-10-27T03:24Z
+
+The corrected twelve-monomial replay is near completion, with no capped cases so far. One full eleven-monomial class (omitted mask4677) is excluded over all83,980,800 partner assignments,267,742 full quotient cases. An optional exact-monomial-count mode reduces its full quotient count to206,517; that narrower mode is useful only with the separately proved exclusion of larger counts.
+
+The full-pool backtracker is being tested alongside global SAT models, including a two-sector rank oracle. A capped root traversal now exports22,939 unvisited partitions; a bounded parallel campaign resolves tasks while preserving all unresolved descendants. No global decision has yet been obtained. The checkpoint mechanism has exhaustive small controls, and selected source tasks have independent Python replays. Remaining time is reserved for these complete-domain searches, validation and closeout at05:26:36UTC.

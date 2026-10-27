@@ -35,6 +35,7 @@ def main():
     assert all(v==min(shift(v,h) for h in range(16)) for v in found)
     assert rank(hz+[exchange(v) for v in hx])==480 and rank(hx+[exchange(v) for v in hz])==480
     assert all(exchange(exchange(1<<q))==1<<q for q in range(1088))
+    assert all(exchange(shift(1<<q,1))==shift(exchange(1<<q),1) for q in range(1088))
     assert all(any(v>>q&1 for v in hx) for q in range(1088))
     physicalZ=[shift(v,h) for v in found for h in range(16)]
     assert len(set(physicalZ))==720

@@ -65,6 +65,7 @@ def main():
     ap.add_argument('--masks',type=int,nargs='+')
     ap.add_argument('--stop-file',type=Path)
     ap.add_argument('--deadline-utc')
+    ap.add_argument('--exact-monomials',action='store_true')
     args=ap.parse_args()
     binary=args.binary.resolve();args.output.mkdir(parents=True,exist_ok=True)
     Z=[int(s,16) for s in (ROOT/'pools/zcoords.txt').read_text().split()]
@@ -77,12 +78,13 @@ def main():
         return (args.stop_file and args.stop_file.exists()) or (deadline and datetime.now(timezone.utc)>=deadline)
     inputs=[binary,args.source.resolve(),ROOT/'seed4_fifteen.cpp',ROOT/'pools/xcoords.txt',ROOT/'pools/zcoords.txt']
     inputs.extend(p.resolve() for p in args.dependency)
-    manifest={'omitted_count':args.omitted,'node_cap':args.cap,'expected_masks':masks,'runner_pid':os.getpid(),
+    manifest={'omitted_count':args.omitted,'node_cap':args.cap,'exact_monomials':args.exact_monomials,'expected_masks':masks,'runner_pid':os.getpid(),
               'sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},'results':[]}
     def run(mask):
         path=args.output/f'seed4-{16-args.omitted}-{mask}.log'
         if stopped():return {'omitted':mask,'outcome':'NOT_STARTED','log':path.name}
         command=[str(binary),str(ROOT/'pools/xcoords.txt'),str(ROOT/'pools/zcoords.txt'),str(mask),str(args.cap)]
+        if args.exact_monomials:command.append('--exact-monomials')
         with path.open('w') as out,path.with_suffix('.err').open('w') as err:
             process=subprocess.Popen(command,stdout=out,stderr=err)
             while True:
@@ -102,7 +104,7 @@ def main():
             (args.output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
             print(json.dumps(data),flush=True)
     assert {d['omitted'] for d in manifest['results']}==set(masks)
-    print('NO_FRAME_IN_THIS_MONOMIAL_CASE' if all(d['outcome']=='NO_FRAME' for d in manifest['results'])
+    print(('NO_FRAME_WITH_EXACT_MONOMIAL_COUNT' if args.exact_monomials else 'NO_FRAME_IN_THIS_MONOMIAL_CASE') if all(d['outcome']=='NO_FRAME' for d in manifest['results'])
           else 'CASE_UNRESOLVED')
 
 
