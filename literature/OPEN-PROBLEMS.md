@@ -2,9 +2,9 @@
 
 Inventory updated October 27, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **353 canonical entries**: the original 40 dissertation targets and **313 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 202 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **373 canonical entries**: the original 40 dissertation targets and **333 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 222 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [105 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/150 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [110 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/150 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 111 |
-| Additional directions/formulation/method entries outside the denominator | 202 |
+| Additional directions/formulation/method entries outside the denominator | 222 |
 | Combined eligible targets | 150 = 39 + 111 |
 | Eligible targets with an identified, verified proof-assistant statement | 6/150 (4.00%) |
 | Eligible targets with an identified, verified Lean statement | 6/150 (4.00%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/150 |
 | Additional identified Lean statements without a build audit | 1/150 |
 | Eligible targets with Lean discovery still unassessed in this extension | 42/150 |
-| Articles/preprints in scope | 134 |
-| Full-text sources screened, including withdrawn history | 119/134 |
-| Current-publication full texts screened | 118 |
+| Articles/preprints in scope | 178 |
+| Full-text sources screened, including withdrawn history | 146/178 |
+| Current-publication full texts screened | 145 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 15/134 |
+| Not fully assessed | 32/178 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -60,7 +60,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [P07](https://arxiv.org/abs/2408.01318) | full text screened | 2 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
 | [P08](https://arxiv.org/abs/2507.21308) | full text screened | 3 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
 | [P09](https://www.aimsciences.org/article/doi/10.3934/amc.2026023) | full text screened | 5 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
-| [P10](https://doi.org/10.1109/ISTC65386.2025.11154620) | abstract or metadata only | Not assessed | Still inaccessible: IEEE landing content empty, normal PDF request failed; authors link only DOI; OpenAlex lists closed access with no repository copy; ResearchGate explicitly reports no full text. A licensed or author-provided copy is needed. |
+| [P10](https://doi.org/10.1109/ISTC65386.2025.11154620) | abstract or metadata only | Not assessed | Still inaccessible: IEEE landing content empty, normal PDF request failed; authors link only DOI; OpenAlex lists closed access with no repository copy; ResearchGate explicitly reports no full text. A licensed or author-provided copy is needed. Editorial retry: IEEE landing202/empty and web JavaScript bot check; normal PDF route418. Authors link publisher only. IEEE-authored public abstract retrieved via INSPIRE. Full theorem comparison and source-question count remain unknown. |
 | [P11](https://arxiv.org/html/2605.01942) | full text screened | 7 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
 | [P12](https://arxiv.org/html/2601.22481) | full text screened | 0 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
 | [P13](https://arxiv.org/html/2609.28831) | full text screened | 1 | Full retrieved text screened for explicit questions/conjectures, concluding directions and their local context. Not a line-by-line correctness review or a guarantee of exhaustive extraction. |
@@ -183,8 +183,52 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F96](https://bioinfo.uib.es/~joemiro/comptrans/HammingIntro.pdf) | abstract or metadata only | Not assessed | Retrieved only a three-page introduction excerpt, not the full1950 article. No full question-screen or zero-question outcome claimed. |
 | [F97](https://arxiv.org/html/quant-ph/0406168v1) | full text screened | 3 | Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical. |
 | [F98](https://www.nature.com/articles/s41534-025-01080-3) | relevant sections screened | 6 | Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem. |
-| [F99](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
-| [F100](https://arxiv.org/html/2312.03859v1) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
+| [F143](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
+| [F144](https://arxiv.org/html/2312.03859v1) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
+| [F99](https://arxiv.org/pdf/1004.3791v2) | full text screened | 3 | Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law. |
+| [F100](https://arxiv.org/pdf/1703.07847v3) | full text screened | 4 | Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E. |
+| [F101](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content) | full text screened | 3 | Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted. |
+| [F102](https://doi.org/10.2202/1544-6115.1552) | full text screened | 4 | methodological_directions_recorded |
+| [F103](https://doi.org/10.1017/S0016672310000236) | full text screened | 4 | methodological_directions_recorded |
+| [F104](https://doi.org/10.1080/10705511.2013.769395) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F105](https://doi.org/10.1187/cbe.20-01-0016) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F106](https://doi.org/10.1187/cbe.24-07-0182) | full text screened | 2 | methodological_directions_recorded |
+| [F107](https://doi.org/10.3390/agronomy11101953) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F108](https://doi.org/10.1111/acer.13506) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F109](https://doi.org/10.1002/pon.4588) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F110](https://doi.org/10.1002/sdr.1765) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F111](https://doi.org/10.1080/19317611.2022.2067282) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F112](https://doi.org/10.1080/10826084.2019.1608247) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F113](https://doi.org/10.1186/s12913-022-08590-2) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F114](https://doi.org/10.3390/educsci14070758) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F115](https://doi.org/10.1155/2022/7299086) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F116](https://doi.org/10.1037/met0000591) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F117](https://doi.org/10.1080/00273171.2026.2720958) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F118](https://doi.org/10.1177/0146621611407909) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F119](https://doi.org/10.1177/01466216261452255) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F120](https://doi.org/10.1080/19371918.2014.969860) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F121](https://doi.org/10.1177/0361198118794067) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F122](https://doi.org/10.1080/10570310802636334) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F123](https://doi.org/10.1177/08862605211043590) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F124](https://academic.oup.com/poq/article/74/5/956/1816917) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F125](https://pmc.ncbi.nlm.nih.gov/articles/PMC13186587/) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F126](https://doi.org/10.1017/S0021859607006806) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F127](https://doi.org/10.1111/j.1469-1809.2010.00634.x) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F128](https://doi.org/10.3389/feduc.2023.1306532) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F129](https://doi.org/10.21500/20112084.5410) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F130](https://doi.org/10.3389/fcomp.2020.00011) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F131](https://doi.org/10.1007/s40653-024-00654-1) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F132](https://files.eric.ed.gov/fulltext/ED475369.pdf) | full text screened | 1 | methodological_directions_recorded |
+| [F133](https://www.mathematica.org/publications/measurement-models-for-behavioral-frequencies-a-comparison-between-numerically-and-vaguely-quantified-reports) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F134](https://doi.org/10.1093/poq/nfs072) | full text screened | 1 | methodological_directions_recorded |
+| [F135](https://doi.org/10.1007/s10943-013-9741-y) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F136](https://doi.org/10.1016/j.chiabu.2010.12.007) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F137](https://doi.org/10.1016/j.appdev.2016.01.009) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F138](https://doi.org/10.1177/028072700502300102) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F139](https://doi.org/10.1007/s11747-014-0420-7) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
+| [F140](https://doi.org/10.1016/j.alcr.2025.100708) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F141](https://doi.org/10.3389/fphys.2017.00331) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
+| [F142](https://doi.org/10.1177/0265407518787232) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
 
 ## Reproducible evidence and limits
 
@@ -843,10 +887,14 @@ Under the paper’s syndrome-based Gallager-B decoder, is every absorbing set a 
 - Proof-assistant statement: verified lean statement. Lean statement: verified lean statement. Lean proof: verified complete lean proof.
 - Source-described status: open or proposed in source; current resolution: refuted by lean checked unrestricted counterexample.
 - Verified artifact: [GallagerAbsorbing.absorbing_not_trapping](../formalization/gallager-b-absorbing/README.md); Explicit connected (7,0)-absorbing component: all128 supported binary errors accepted at initialization or first iteration; actual fourteen-coordinate CSS embedding corrects all supported Z-errors modulo the complete opposite stabilizer span and has a nontrivial logical on the second component. Redundant checks and four-cycles allowed; ambient graph disconnected..
-- Scope comparison: The original fourteen-coordinate artifact is disconnected. The separate connected follow-up proves a fifteen-coordinate asymmetric CSS example with no physical product split and complete recovery of all128 supported Z-errors under both syndrome tests. Same-matrix/symmetric CSS, girth/degree restrictions and both-sector results remain unassessed; final journal full text is an access gap.
+- Scope comparison: Unrestricted source question remains refuted; connected asymmetric example preserved. Equal-space CSS now has a general odd-support no-recovery theorem. The precise connected/coupled even-support existence question is frozen but unresolved. Degree/girth restrictions and final-journal full text retain their named limits.
 - Research progress: [Connected fifteen-qubit CSS follow-up without any physical product cut](../formalization/gallager-b-absorbing/connected/README.md) (complete concrete lean proof). All128 supported Z-errors recover under both syndrome tests; actual decoding graph connected; no stabilizer-space split across any physical partition. Asymmetric CSS and four-cycles allowed. This is a project-derived strengthening, not another source target.
   - [Complete Lean source](../formalization/gallager-b-absorbing/connected/Connected.lean).
-- Project-derived follow-up, outside the source-target denominator: **RQ-P09-symmetric-css** — Freeze and assess the exact symmetric-CSS/same-matrix stabilizer variant. Unassessed; not started in this block.
+- Research progress: [General odd-support obstruction and exact symmetric-CSS scope](../formalization/gallager-b-absorbing/symmetric/README.md) (general lean proof). Odd zero-syndrome supports cannot all recover when entire stabilizer spaces agree. Full eventual-success and one-step existence interfaces are frozen; even-support existence remains unresolved.
+  - [Complete Lean source](../formalization/gallager-b-absorbing/symmetric/OddSupport.lean).
+  - [Complete Lean source](../formalization/gallager-b-absorbing/symmetric/Question.lean).
+  - [Complete Lean source](../formalization/gallager-b-absorbing/symmetric/Consumers.lean).
+- Project-derived follow-up, outside the source-target denominator: **RQ-P09-symmetric-css** — Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. General odd-support and supported-logical obstructions proved. Precise even-support full/one-step questions formulated; existence unresolved. No even-support construction search performed.
 - [P09: Section VI, Concluding Observations](https://arxiv.org/html/2307.14532); extraction lines 500–501; explicit open problem.
 
 ### L-P09-XZ
@@ -4200,3 +4248,205 @@ Historical direction: quantify multipartite entanglement resources and their int
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F97: Introduction, multipartite pricing/interconversion paragraph](https://arxiv.org/html/quant-ph/0406168v1); extraction lines 162–167; author stated question or direction.
+
+### L-F99-self-correction
+
+Historical direction: characterize robust quantum storage at nonzero temperature under geometric locality constraints.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F99: Introduction, PDF p.2](https://arxiv.org/pdf/1004.3791v2); extraction lines 31–63; author stated question or direction.
+
+### L-F99-physical-realization
+
+Find physical mechanisms realizing interacting Majorana fermion codes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F99: Introduction, PDF p.3](https://arxiv.org/pdf/1004.3791v2); extraction lines 98–102; author stated question or direction.
+
+### L-F99-emergent-order
+
+Use the Majorana-code framework to explain emergence of topological order from microscopic interactions.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F99: Introduction, PDF p.3](https://arxiv.org/pdf/1004.3791v2); extraction lines 103–106; author stated question or direction.
+
+### L-F100-architecture-cost
+
+Compare realistic architecture-dependent costs of magic-state distillation and alternative gate constructions.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F100: Introduction, PDF p.2](https://arxiv.org/pdf/1703.07847v3); extraction lines 63–72; author stated question or direction.
+
+### L-F100-gamma-bound
+
+Historical conjecture: magic-state-distillation overhead exponent gamma cannot be below one.
+
+- Type: conjecture; written formulation: held formulation.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F100: Section4.1, Eq4.2, PDF p.11](https://arxiv.org/pdf/1703.07847v3); extraction lines 716–730; author stated question or direction.
+
+### L-F100-explicit-good-families
+
+Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F100: Section4.2, PDF pp.14-15](https://arxiv.org/pdf/1703.07847v3); extraction lines 855–877; author stated question or direction.
+
+### L-F100-ccz-normal-codes
+
+Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad direction or held formulation; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F100: End of Section2, PDF p.8](https://arxiv.org/pdf/1703.07847v3); extraction lines 472–479; author stated question or direction.
+
+### L-F101-prevalence
+
+Quantify the prevalence and influence of absorbing sets in decoder failure.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad author-stated direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F101: Section5 Conclusion, accepted manuscript PDF p18](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content); extraction lines 1098–1102; author stated question or direction.
+
+### L-F101-hybrid-decoding
+
+Develop hybrid decoding approaches combining strengths of multiple algorithms.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad author-stated direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F101: Section5 Conclusion, accepted manuscript PDF p18](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content); extraction lines 1101–1104; author stated question or direction.
+
+### L-F101-decoder-dependent-structure
+
+Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad author-stated direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F101: Section5 Conclusion, accepted manuscript PDF p18](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content); extraction lines 1102–1106; author stated question or direction.
+
+### L-F103-pleiotropy-linked
+
+Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F103: Section6 Discussion and conclusion, future-work paragraph](https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072); extraction lines 1553–1553; author stated question or direction.
+
+### L-F103-missing-phenotypes
+
+Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F103: Section6 Discussion and conclusion](https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072); extraction lines 1553–1559; author stated question or direction.
+
+### L-F103-mixed-outcomes
+
+Develop multi-trait SEM methods supporting mixed binary and continuous traits.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F103: Section6 Discussion and conclusion, final methodological paragraph](https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072); extraction lines 1559–1559; author stated question or direction.
+- [F102: Discussion, PDF viewer p21 (printed p19)](https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf); PDF pages 21; same target additional occurrence.
+
+### L-F103-experimental-design
+
+Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F103: Section6 Discussion and conclusion, final paragraph](https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072); extraction lines 1559–1559; author stated question or direction.
+- [F102: Discussion, PDF viewer pp20–21](https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf); PDF pages 20, 21; same target additional occurrence.
+
+### L-F102-correlated-residuals
+
+Extend the multi-trait QTL SEM analysis to correlated residual errors.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F102: Discussion, PDF viewer p20 (printed p18)](https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf); extraction lines 1930–1938; author stated question or direction.
+
+### L-F102-nonlinear-traits
+
+Extend the linear multi-trait QTL SEM to nonlinear trait relationships.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F102: Discussion, PDF viewer p20 (printed p18)](https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf); extraction lines 1939–1942; author stated question or direction.
+
+### L-F106-dynamic-fit-robustness
+
+Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F106: Letter, final paragraph before References](https://pmc.ncbi.nlm.nih.gov/articles/PMC11659859/); extraction lines 117–138; author stated question or direction.
+
+### L-F106-dynamic-fit-multilevel
+
+Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F106: Letter, final paragraph before References](https://pmc.ncbi.nlm.nih.gov/articles/PMC11659859/); extraction lines 126–138; author stated question or direction.
+
+### L-F132-subset-score-precision
+
+Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Source-stated statistical method direction; a precise model, quantifiers and success guarantee are needed. Not an empirical social-theory conjecture.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F132: Discussion, PDF viewer p13 (printed p12)](https://files.eric.ed.gov/fulltext/ED475369.pdf); extraction lines 352–364; author stated question or direction.
+
+### L-F134-interpretation-detection
+
+Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Source-stated statistical method direction; a precise model, quantifiers and success guarantee are needed. Not an empirical social-theory conjecture.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F134: Discussion, printed p142; author-uploaded transcription webL1579–1585](https://www.researchgate.net/publication/274557890_On_the_Use_of_Latent_Variable_Models_to_Detect_Differences_in_the_Interpretation_of_Vague_Quantifiers); extraction lines 1524–1530; author stated question or direction.
