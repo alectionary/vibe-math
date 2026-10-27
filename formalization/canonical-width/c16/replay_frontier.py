@@ -12,7 +12,7 @@ import time
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--binary',type=Path,required=True);ap.add_argument('--tasks',type=Path,required=True);ap.add_argument('--output',type=Path,required=True)
-    ap.add_argument('--workers',type=int,default=3);ap.add_argument('--node-cap',type=int,default=1000000);ap.add_argument('--seconds-per-task',type=float,default=30);ap.add_argument('--deadline-utc',required=True);ap.add_argument('--stop-file',type=Path);args=ap.parse_args()
+    ap.add_argument('--resume',action='store_true');ap.add_argument('--workers',type=int,default=3);ap.add_argument('--node-cap',type=int,default=1000000);ap.add_argument('--seconds-per-task',type=float,default=30);ap.add_argument('--deadline-utc',required=True);ap.add_argument('--stop-file',type=Path);args=ap.parse_args()
     root=Path(__file__).parent;args.output.mkdir(parents=True,exist_ok=True);deadline=datetime.fromisoformat(args.deadline_utc.replace('Z','+00:00'))
     records=[];queue=[];running={};counts={'nodes':0,'UNSAT':0,'expanded':0};started=time.monotonic();found=None
     manifest={'status':'RUNNING','initial_tasks':str(args.tasks),'initial_tasks_sha256':hashlib.sha256(args.tasks.read_bytes()).hexdigest(),'binary_sha256':hashlib.sha256(args.binary.read_bytes()).hexdigest(),'deadline_utc':args.deadline_utc,'workers':args.workers,'node_cap':args.node_cap,'seconds_per_task':args.seconds_per_task,'tasks':records}
@@ -23,8 +23,28 @@ def main():
     def snapshot():
         manifest['counts']=dict(counts,queued=len(queue),running=len(running),registered=len(records));manifest['wall_seconds']=time.monotonic()-started
         tmp=args.output/'manifest.tmp';tmp.write_text(json.dumps(manifest,indent=2)+'\n');tmp.replace(args.output/'manifest.json')
-    for line in args.tasks.read_text().splitlines():
-        if line.strip():add(line,None)
+    if args.resume:
+        previous=json.loads((args.output/'manifest.json').read_text())
+        assert previous['initial_tasks_sha256']==manifest['initial_tasks_sha256']
+        assert previous['binary_sha256']==manifest['binary_sha256']
+        assert previous['status']!='SAT'
+        records.extend(previous['tasks'])
+        counts['nodes']=sum(r.get('nodes',0) for r in records if r['status'] in ['UNSAT','EXPANDED'])
+        counts['UNSAT']=sum(r['status']=='UNSAT' for r in records)
+        counts['expanded']=sum(r['status']=='EXPANDED' for r in records)
+        for ident,rec in enumerate(records):
+            assert rec['id']==ident
+            if rec['status'] not in ['UNSAT','EXPANDED']:
+                fields=(args.output/rec['input']).read_text().split();remaining=int(fields[1]);a=int(fields[3],16);b=int(fields[4],16)
+                rec['status']='QUEUED';heapq.heappush(queue,(a.bit_count()+b.bit_count()-2*remaining,remaining,ident))
+        manifest['prior_checkpoint_sha256']=hashlib.sha256((args.output/'manifest.json').read_bytes()).hexdigest()
+        manifest['prior_wall_seconds']=previous.get('wall_seconds',0)+previous.get('prior_wall_seconds',0)
+        backup=args.output/f'checkpoint-{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")}.json'
+        backup.write_text(json.dumps(previous,indent=2)+'\n')
+    else:
+        assert not (args.output/'manifest.json').exists(),'Use --resume to preserve existing work.'
+        for line in args.tasks.read_text().splitlines():
+            if line.strip():add(line,None)
     snapshot();last=time.monotonic()
     def stopped():return datetime.now(timezone.utc)>=deadline or (args.stop_file and args.stop_file.exists())
     while queue or running:

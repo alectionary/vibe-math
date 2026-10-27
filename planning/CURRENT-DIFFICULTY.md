@@ -4934,9 +4934,9 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 
 The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Decide the complete twelve-monomial case with all allowed partners, or produce a global compatibility obstruction. Finishing only the old capped list is insufficient.
+First milestone: Find a physical128-pair weight16 frame or complete a global obstruction. Complete12-monomial exclusion and independent pool enumeration are now checked; eleven-and-fewer monomial cases remain.
 
-Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Independent all68-root enumeration visits47,708,679 nodes and recovers45 weight16 orbits. The four-hour block remains active; corrected twelve-monomial replay is in progress. [Checked artifact](../formalization/canonical-width/c16/FOUR-HOURS.md).
+Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Independent all68-root enumeration visits47,708,679 nodes and recovers45 weight16 orbits.  All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. [Checked artifact](../formalization/canonical-width/c16/FOUR-HOURS.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 

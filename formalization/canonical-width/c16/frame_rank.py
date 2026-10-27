@@ -22,7 +22,7 @@ from rank_oracle import RankOracle,basis,seed_clauses
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--seconds',type=float,default=1800)
-    ap.add_argument('--phase',choices=['negative','positive'],default='negative')
+    ap.add_argument('--cardinality',choices=['none','kmtotalizer','mtotalizer','cardnetwrk','seqcounter'],default='none');ap.add_argument('--phase',choices=['negative','positive'],default='negative')
     ap.add_argument('--seed4-cap',type=int,default=16);ap.add_argument('--fix-orbit',type=int)
     ap.add_argument('--exclude-orbits',nargs='*',type=int,default=[])
     ap.add_argument('--pool-directory',type=Path);ap.add_argument('--assume-frame',type=Path)
@@ -58,6 +58,9 @@ def main():
             row=tuple(sorted(a+b))
             if len(set(row))==4:circuits.add(row)
     clauses.extend([[-i-1 for i in row] for row in circuits]);top=n
+    if args.cardinality!='none':
+        enc=CardEnc.equals(list(range(1,n+1)),128,top_id=top,encoding=getattr(EncType,args.cardinality))
+        clauses.extend(enc.clauses);top=enc.nv
     if args.seed4_cap<16:
         mono=[i+1 for i,x in enumerate(X) if x.bit_count()==1 and ((x>>64)&65535)]
         enc=CardEnc.atmost(mono,args.seed4_cap,top_id=top,encoding=EncType.seqcounter)
@@ -73,7 +76,7 @@ def main():
     with cnf.open('w') as out:
         out.write(f'p cnf {top} {len(clauses)}\n')
         for c in clauses:out.write(' '.join(map(str,c))+' 0\n')
-    result={'status':'RUNNING','model':'rank_only','basis_propagation':args.basis_propagation,'opposite_units':args.opposite_units,'native_library':str(args.native_library) if args.native_library else None,'propagation_library':str(args.propagation_library) if args.propagation_library else None,'variables':top,'clauses':len(clauses),
+    result={'status':'RUNNING','model':'rank_only','cardinality':args.cardinality,'basis_propagation':args.basis_propagation,'opposite_units':args.opposite_units,'native_library':str(args.native_library) if args.native_library else None,'propagation_library':str(args.propagation_library) if args.propagation_library else None,'variables':top,'clauses':len(clauses),
             'phase':args.phase,'seed4_cap':args.seed4_cap,'fix_orbit':args.fix_orbit,'exclude_orbits':args.exclude_orbits}
     args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     oracle=RankOracle(X,Z,args.output.with_suffix('.lemmas.jsonl'),cyclic=args.cyclic_lemmas,basis_propagation=args.basis_propagation,opposite_units=args.opposite_units,native_library=args.native_library,propagation_library=args.propagation_library)

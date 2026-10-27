@@ -1,0 +1,132 @@
+{
+  "global_decision": null,
+  "best_checked_partial_pairs": 88,
+  "runs": [
+    {
+      "name": "c16-private-global-30min",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-private-global-30min.json",
+      "sha256": "9536357edf8c09c70ba2e0d90b3bc4a9b4340a54e2bb5c8483b37ffd70ab6c37",
+      "control": false
+    },
+    {
+      "name": "c16-private-minicard-count",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-private-minicard-count.json",
+      "sha256": "8d6013efecbb5371bac33476b2b18af91445488a23d6fc72c0d884233cdcbc7b",
+      "control": false
+    },
+    {
+      "name": "c16-oracle-global",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-oracle-global.json",
+      "sha256": "4436853cd0c992517cba1eb9ee5d32a5fc2e05108132411f3e637845bf56fd36",
+      "control": false
+    },
+    {
+      "name": "c16-rank-global-negative",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-global-negative.json",
+      "sha256": "8558d51c27ae59cdb18c79a530b32c02deb8ad4aa3423d9cab3c01b06735a3b1",
+      "control": true
+    },
+    {
+      "name": "c16-rank-global-positive",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-global-positive.json",
+      "sha256": "3bcfb5dd5e36d2b7612f4d0bdf143653ede42b1395d08a8d321e99dd74b07bd0",
+      "control": true
+    },
+    {
+      "name": "c16-private-cuts-global",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-private-cuts-global.json",
+      "sha256": "ad00451c137dde1f03875b23d712f3d24cbe46a3b417254899504ca336dcfa26",
+      "control": false
+    },
+    {
+      "name": "c16-rank-zero-cyclic",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-zero-cyclic.json",
+      "sha256": "8876131dd16c96cf90382fb00d6a3f3264aec36818c5aae347680946bb6ded7a",
+      "control": false
+    },
+    {
+      "name": "c16-rank-basis-propagation",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-basis-propagation.json",
+      "sha256": "fe60f788f37bc052e896ea26271d582ea107d56ec910fe8a24753f56a334e570",
+      "control": false
+    },
+    {
+      "name": "c16-rank-native-units",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-native-units.json",
+      "sha256": "0d54c54d3e6b1752c6c7ace9eb4d3c1109a658fdd24514d1a342d84d4224ef07",
+      "control": false
+    },
+    {
+      "name": "c16-rank-fixedpoint-fastverify",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-fixedpoint-fastverify.json",
+      "sha256": "5e67e5b245ac7dbb85c53fa32160c588e961ee1edd420734ca7629465c306435",
+      "control": false
+    },
+    {
+      "name": "c16-private-dual-global",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-private-dual-global.json",
+      "sha256": "38ff85b1a02b5a1595ef9c355ddb810d7a9565bf9930a4c30bf21d2a7e2a9276",
+      "control": false
+    },
+    {
+      "name": "c16-rank-count-global",
+      "status": "PROCESS_TIME_LIMIT",
+      "result": "c16-rank-count-global.json",
+      "sha256": "c04b483e4c09e605851a18f165dc2640f4c8210e4841b77d071e6e1658bc862b",
+      "control": false
+    },
+    {
+      "name": "c16-global-quotient-bounded",
+      "status": "NODE_LIMIT",
+      "result": "c16-global-quotient-bounded.json",
+      "sha256": "19e69ed11ad115a3db49d58f6489989e1582f23cd99a25ef009a6cf13803ad8f",
+      "control": false
+    },
+    {
+      "name": "c16-rank-count-positive",
+      "status": "SAT",
+      "result": "c16-rank-count-positive.json",
+      "sha256": "c28a5e51c29321fbb7a92284f3f730cdd3393e083dfedc3fb86c93fdfc5ba9ff",
+      "control": true
+    },
+    {
+      "name": "c16-rank-count-negative",
+      "status": "UNSAT",
+      "result": "c16-rank-count-negative.json",
+      "sha256": "0c9e88f17fae0d6a3f8da29fa52a44b195359fa587255877297f85d46835d38a",
+      "control": true
+    },
+    {
+      "name": "c16-dual-positive",
+      "status": "SAT",
+      "result": "c16-dual-positive.json",
+      "sha256": "b675ef5f33027f9085ffa3d496e1cff52c5e38d1372a7aa963410f699772199b",
+      "control": true
+    },
+    {
+      "name": "c16-dual-negative",
+      "status": "UNSAT",
+      "result": "c16-dual-negative.json",
+      "sha256": "a8498e582805454e62542db3eba90386f69521d3ad6c9f0458da8a4c22b773c8",
+      "control": true
+    },
+    {
+      "name": "Kissat static strengthened private model",
+      "status": "UNKNOWN",
+      "log": "kissat-static-3600s.log",
+      "partial_proof_is_not_a_certificate": true
+    }
+  ],
+  "notes": "SAT/UNSAT controls are synthetic. PROCESS_TIME_LIMIT, UNKNOWN, NODE_LIMIT and INCOMPLETE global runs prove no nonexistence claim. The two-stage fixed-point startup interrupted before solving is not counted as a completed solver run."
+}
