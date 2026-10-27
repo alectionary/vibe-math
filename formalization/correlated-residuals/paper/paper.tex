@@ -50,7 +50,10 @@ $13\%$ to $86\%$ in $1000$ replicates. No modeling choice the simulation
 paragraph leaves open closes the remaining multi-trait gap. The printed
 $77$ matches a $250$-line scan and a chi-square calculation in which the
 other QTL genotypes are controlled; both of those put the first QTL near
-$80\%$ rather than at the printed $64\%$. A
+$80\%$ rather than at the printed $64\%$. A search for the joint triple
+$64$, $77$, $96$ does not find a reading the simulation paragraph states.
+The smallest squared error is $65$, $73$, $99$, from a QTL at $24$~cM and
+$250$ lines. A
 bow-free Monte Carlo shows that the diagonal plug-in invents a direct edge
 and biases two QTL coefficients, while \texttt{recoverBow} covers the path
 and QTL coefficients at the delta-method rate. A third run replaces the path
@@ -506,6 +509,104 @@ genotypes are controlled and with the marker scan at $250$ lines. Both of
 those readings put the first QTL near $80\%$ rather than at the printed
 $64\%$. The single-trait QTL2 cell, $3$ against our $1.2$, is consistent
 with the algebraic total effect of zero.
+
+\subsection{A joint reading of 64, 77 and 96}
+\label{sec:qtl1}
+
+A second block asked which reading could produce the SEM triple $64$, $77$,
+$96$ together. Every entry of equation~(7) was measured again on PDF page 10.
+The minus signs are four glyphs. One ends at $x=250.7$ on $G_{11}=-1/8$.
+One ends at $x=194.5$ on $M_{23}=-1/2$. Two end at $x=316.7$, on
+$G_{22}=-1/2$ and $G_{32}=-1/8$. No other entry carries a minus, and there is
+no minus between the equals sign and $M$. The Table~1 digits are the
+characters 6 and 4, then 77, then 96. \ev{taken from a cited source}
+The scans below use $1000$ replicates. Squared error is the sum of squared
+differences of the three SEM percentages. The chi-square treats each printed
+percentage as a count out of $100$ draws from the simulated rate.
+\ev{our own simulation}
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\caption{SEM triples ranked by squared error against $64$, $77$, $96$.
+The chi-square is for those three cells. A text-consistent row is one the
+simulation paragraph on PDF page 10 states.}
+\label{tab:qtl1}
+\begin{tabular}{p{4.4cm}crrr p{3.2cm}}
+\hline
+Hypothesis & Family & SEM powers & SSE & $\chi^2$ & Consistent with the text \\
+\hline
+QTL1 at 24~cM, 250 lines & A+C & 65, 73, 99 & 26 & 16.4 & no \\
+QTL1 at 25~cM, 250 lines & A+C & 62, 69, 99 & 74 & 13.8 & no \\
+QTL1 at 23~cM, 250 lines & A+C & 72, 73, 99 & 80 & 8.6 & no \\
+Oracle genotype, 150 lines & A & 65, 64, 94 & 163 & 7.4 & no \\
+Threshold $\chi^2_{3,0.995}$ & B & 63, 65, 93 & 165 & 8.3 & no; printed value is 14.86 \\
+Marker gap around QTL1, 250 lines & A+C & 78, 76, 98 & 212 & 13.6 & no \\
+Printed positions, 250 lines & C & 82, 77, 99 & 317 & 26.3 & no; the sentence says 150 \\
+Two plots averaged, $\Psi$ at plot level & A & 63, 59, 100 & 341 & 174 & no \\
+Local allele frequency 0.30 at QTL1 & A & 62, 61, 85 & 392 & 20.8 & no \\
+$\Psi=I$ & A & 84, 80, 99 & 416 & 39.3 & no; contradicts (8) \\
+Glyph baseline, 150 lines & A & 51, 54, 86 & 824 & 37.4 & yes \\
+One peak on the chromosome & B & 16, 14, 65 & 4602 & --- & the printed sum is 237 \\
+14.86 applied to the LOD & B & 0, 0, 0 & --- & --- & 14.86 is the chi-square value \\
+$G$ transposed & A & 55, 94, 19 & 6308 & 441 & no; columns are labeled QTL \\
+\hline
+\end{tabular}
+\end{table}
+
+The smallest squared error is $65.2$, $73.3$, $99.3$. Single-trait powers on
+$Y_1$ are $2.6$, $1.9$, $99.1$ against $6$, $3$, $97$, and on $Y_2$ they are
+$22$, $37$, $33$ against $29$, $43$, $33$. QTL1's $65$ cannot be
+distinguished from the printed $64$ at the precision of $100$ replicates.
+QTL2 remains about four points low. QTL3 at $99.3$ makes a printed $96$
+unlikely if that rate were true: the lower-tail probability is about
+$0.006$. The position $24$~cM and the sample size $250$ are not the
+simulation sentence. Moving QTL1 from $22$ to $24$~cM is what pulls the
+first power down from the $82$ of the $250$-line scan at the printed
+positions. The same move pulls the second power down from $77$ to $73$.
+The two cells do not land on $64$ and $77$ together.
+\ev{our own simulation}
+
+Family A does not supply a text-consistent joint match. Flipping the sign
+of $G_{11}$, which the remeasured glyph does not support, gives $55$, $50$,
+$85$. Halving $G_{21}$ gives $17$, $53$, $87$. A residual heterozygosity of
+$0.15$ gives $20$, $18$, $57$. Placing QTL1 $10$~cM from QTL2 gives $24$,
+$22$, $84$. Kosambi interference was already inside a few points of the
+baseline. Standardizing the traits was $51$, $48$, $87$.
+
+Family B does not supply the triple either. Stepwise cofactors and a
+two-stage refit lower the first two powers and raise the third, to about
+$33$, $28$, $98$ and $29$, $28$, $98$. A marker-bracket window, a $20$~cM
+separation rule, and dropping the terminal $10$~cM leave the baseline near
+$51$, $54$, $86$. The $\chi^2_3$ threshold $12.84$ gives $63$, $65$, $93$:
+the first cell matches, and the second does not. The printed critical value
+is $14.86$, the $\chi^2_4$ quantile. Reading $14.86$ as a LOD multiplies the
+likelihood-ratio threshold by $2\log 10$ and the powers fall to zero. One
+peak per chromosome assigns the global maximum to a single QTL, so the three
+powers sum to at most $100$. On the baseline they are $16$, $14$, $65$.
+The printed powers sum to $237$, so that counting rule cannot be the source
+of all three cells. The flanking regressor has positive variance at every
+interior test point on this marker grid, so a singular fit does not arise
+and counting non-convergence as a miss does not change the powers.
+
+Family C. The probability of the printed counts $64$, $77$, $96$ as three
+independent $\mathrm{Bin}(100)$ draws from the baseline rates $0.51$,
+$0.54$, $0.86$ is about $10^{-12}$. Swapping the SEM and LS columns of
+Table~1 produces $57$, $69$, $94$, which is not a row of any scan here.
+The PDF prints the digit 6, not 8, so $64$ is not an OCR reading of $84$.
+The $250$-line scan at the printed positions is $82$, $77$, $99$. That
+matches the cell $77$. It is near $84$, $77$, $96$ in the first cell and
+not near $64$. The Genetics Research powers are $99$ and $100$ under a
+different design. The $300$-line three-QTL scan is $89$, $85$, $100$.
+
+The best joint account is negative. No tested reading that the simulation
+paragraph states produces $64$, $77$, and $96$ together. The closest
+percentage triple uses a QTL position and a sample size that paragraph does
+not state, and its third cell is still high relative to $96$. What remains
+is that gap: the first cell can be brought near $64$ by weakening QTL1 or
+by a lower threshold, and the second cell can be brought to $77$ by using
+$250$ lines or by controlling the other QTL genotypes, and those two
+adjustments have not been found together in one design the text states.
 
 \section{Correlated residuals}
 
