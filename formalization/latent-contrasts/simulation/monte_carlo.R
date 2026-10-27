@@ -1,7 +1,15 @@
-# Replay of the Jeffries (2024) four-group factor design.
+# Equal-loading reading of the Jeffries (2024) design.
+# Every indicator is generated at loading 0.7. That is the Chapter III sentence.
+# It is not the population lavaan builds from the Appendix A string, and it is
+# not the model in the public OSF analysis script. validate_gaps.R and
+# candidate_readings.R fit those. This file is kept so the earlier
+# out/monte_carlo.csv remains reproducible.
+#
 # lavaan 0.6.17 is the version named in the dissertation. The random-number
 # stream is R's, not simsem's, so replicates are not the printed ones.
-# Usage: Rscript monte_carlo.R [reps_n240] [reps_n960]
+# Usage: Rscript monte_carlo.R [reps_n240] [reps_n960] [out_dir]
+# Recorded run: Rscript monte_carlo.R 200 100 out
+# Seed: set.seed(13131) inside the script, after RNGkind("L'Ecuyer-CMRG").
 
 suppressPackageStartupMessages(library(lavaan))
 suppressPackageStartupMessages(library(parallel))
