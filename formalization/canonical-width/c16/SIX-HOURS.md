@@ -170,8 +170,10 @@ counted: cohort delta 0 entries, 0 eligible targets, 0 complete Lean targets.
 
 This is an unfinished research handoff on the separate work branch, not a claim
 that the canonical question or a final publication is complete. The ownership
-claim is released only after the final branch checkpoint is preserved and its
-remote commit verified, using the expected ownership SHA recorded above.
+claim was released after checkpoint `cc582e511d2b43efce952da9fbfad5a4c4f28ade`
+and its complete C16 artifact tree were verified on GitHub. The expected-SHA
+lease deletion succeeded; the server then returned zero exact claim matches.
+The release receipt and tool versions are in `six-hours-results/release.json`.
 
 The current inventory, planning and source-question-screening validators pass:
 353 canonical entries, 150 eligible targets and 6 completed Lean targets remain
