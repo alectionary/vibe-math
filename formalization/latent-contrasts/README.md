@@ -25,9 +25,11 @@ Rscript candidate_readings.R out
 Rscript mimic_large.R out
 Rscript validate_gaps.R 400 out
 Rscript score_gaps.R out/validate_gaps.csv out/gap_scores.csv
+Rscript validate_10k.R 10000 out
+Rscript score_gaps.R out/validate_10k.csv out/gap_scores_10k.csv
 ```
 
-`candidate_readings.R` fits each identification to the population moments. Its simulated samples use seed `13131`. `mimic_large.R` uses seed `7` and 100000 observations per group. `validate_gaps.R` sets `RNGkind("L'Ecuyer-CMRG")`, calls `set.seed(13131)`, and draws one seed per cell. The recorded Monte Carlo is 400 replicates. `score_gaps.R` classifies each gap against two combined standard errors at the printed count of 10000.
+`candidate_readings.R` fits each identification to the population moments. Its simulated samples use seed `13131`. `mimic_large.R` uses seed `7` and 100000 observations per group. `validate_gaps.R` sets `RNGkind("L'Ecuyer-CMRG")`, calls `set.seed(13131)`, and draws one seed per cell. The recorded short Monte Carlo is 400 replicates. `validate_10k.R` reruns the ten N=240 cells at 10000 replicates. Each cell sets one L'Ecuyer seed and draws its replicates in order. The seeds are `out/seeds_10k.csv`. `score_gaps.R` classifies each rejection-rate gap three ways: a two-combined-standard-error band, an uncorrected two-sided 5% test, and Bonferroni and Holm on the 30 rates. It also runs a binomial test of the uncorrected miss count. The dissertation's alpha=0.05 columns are single tests and are not part of that family.
 
 `monte_carlo.R` is the earlier equal-loading reading, every loading generated at 0.7. It is not the generation string. The recorded command is `Rscript monte_carlo.R 200 100 out`. `identification_check.R` is the same population: `Rscript identification_check.R 200 out`.
 
