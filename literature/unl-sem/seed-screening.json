@@ -1,6 +1,6 @@
 {
-  "checked_on": "2026-10-26",
-  "cohort": "Seven recovered full dissertations, separate from the original twenty full-review catalog records.",
+  "checked_on": "2026-10-27",
+  "cohort": "Eight recovered full dissertations, separate from the original twenty full-review catalog records.",
   "full_text_screens": [
     {
       "dissertation_id": "UNL-SEM-D016",
@@ -149,6 +149,29 @@
       ],
       "suitability_result": "Source passages propose empirical construct validation, population/longitudinal/intervention work or applied measurement development. No additional explicit unresolved mathematical target recorded; no universal guarantee inferred from these suggestions.",
       "ocr_visual_check": null
+    },
+    {
+      "dissertation_id": "UNL-SEM-D055",
+      "source_pdf_sha256": "a21df98c20401491e6b4a1d00a21b6f7cee5551a00c04a89fb414ec6cfd469b3",
+      "text_sha256": "904351aca4925414c9af87e02b77cb3ee99437f5ed8ea67072b49030573ce833",
+      "screen_status": "full_text_screened",
+      "question_count": 0,
+      "question_count_scope": "Suitable source-stated mathematical/statistical open targets, not a count of all empirical research questions.",
+      "recorded_target_ids": [],
+      "method": "Search complete extracted text for question/conjecture/unknown/future-work language; inspect research questions, Chapter V limitations, and Appendix A. This is a question screen, not line-by-line proof checking.",
+      "principal_locator": "Limitations and future directions, printed pp139–142 (PDF pp149–152)",
+      "principal_pdf_pages": [
+        149,
+        152
+      ],
+      "source_stated_research_directions": [
+        "Simulate non-normal and non-continuous indicators and inspect orthogonal contrast accuracy.",
+        "Simulate missingness under unbalanced groups, including deletion and full-information maximum likelihood.",
+        "Vary factor variance, loadings, and residuals to study partial strong invariance with unequal groups.",
+        "Ask whether formative or cross-loaded measurement models, and time-varying group membership, change the unbalanced contrast results."
+      ],
+      "suitability_result": "The future-work passages are empirical simulation extensions. No author-stated mathematical conjecture is recorded. The orthogonality arithmetic for this contrast code is a project-derived statement, proved in this repository, and is not an inventory target.",
+      "ocr_visual_check": "Prince PDF. Table 2.2, equation (2.4), the population parameters, equations (3.3)–(3.5), Tables 4.1 and 4.2, and the Appendix A intercept and c3 lines were checked on 600 dpi crops. Signs in the text layer match the ink."
     }
   ],
   "precise_targets_added": 0,
@@ -173,6 +196,17 @@
       "task": "Specify when a bridge-survey model identifies a cross-survey joint distribution and supports valid uncertainty estimates.",
       "gate": "Fix observation patterns, common variables, selection/missingness, conditional-independence or latent-model restrictions and estimand.",
       "eligible_for_coverage": false
+    },
+    {
+      "id": "RQ-D055-contrast-orthogonality",
+      "origin": "project_derived_followup",
+      "source_dissertation_id": "UNL-SEM-D055",
+      "source_locator": "Table 2.2 and equations (3.3)–(3.5); Chapter V discussion of non-orthogonality under imbalance",
+      "source_authors_asked_this_exact_mathematical_question": false,
+      "task": "For these four codes, determine which sample-size-weighted products vanish under equal sizes and under the pattern of two equal large groups and two equal small groups, and evaluate equations (3.3)–(3.5) on the printed means.",
+      "gate": "The codes and the means are the printed ones. The result is an identity for this design, not a general theorem about every contrast set.",
+      "eligible_for_coverage": false,
+      "status": "proved in formalization/latent-contrasts for the printed codes and means"
     }
   ]
 }

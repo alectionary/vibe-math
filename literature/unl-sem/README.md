@@ -2,7 +2,7 @@
 
 Checked October 26, 2026. [PR #6](https://github.com/alectionary/vibe-math/pull/6) · [Tracking issue #5](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [CFA expansion](CFA-EXPANSION.md) · [Retrieval correction](RETRIEVAL-REPAIR.md) · [Formalization suitability](FORMALIZATION.md) · [Shared questions](../OPEN-PROBLEMS.md).
 
-The expanded seed contains **89 SEM/CFA, growth/path or latent-measurement dissertations**, plus **10 explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** (99 records total). These are doctoral-dissertation records from 2001 onward; 7 now have complete-text question screens. All 99 authors have recorded downstream searches. The bibliography contains **49 selected source works**, with **30 readable full texts screened** and **13 source-stated statistical methods directions** indexed.
+The expanded seed contains **89 SEM/CFA, growth/path or latent-measurement dissertations**, plus **10 explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** (99 records total). These are doctoral-dissertation records from 2001 onward; 8 now have complete-text question screens. All 99 authors have recorded downstream searches. The bibliography contains **49 selected source works**, with **30 readable full texts screened** and **13 source-stated statistical methods directions** indexed.
 
 The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records. It corrects the initial literal-SEM search's omission of Daniel H. Abbott's 2010 dissertation. Public and ProQuest catalog copies are merged, not counted twice. [The original 58-record pass](FIRST-PASS.md) is a historical snapshot, not the current total.
 
@@ -15,17 +15,17 @@ The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records
 | Total deduplicated dissertation metadata records | 99 |
 | Authors with recorded downstream searches | 99 |
 | Authors linked to verified selected author/coauthor records | 29 |
-| Selected source works, including earlier background and independent citation followups | 41 |
-| Full source texts screened | 24 |
-| Selected source works with full-text gaps | 17 |
+| Selected source works, including earlier background and independent citation followups | 49 |
+| Full source texts screened | 30 |
+| Selected source works with full-text gaps | 19 |
 | Located public-copy dissertation records | 41 |
-| Completed dissertation full-text screens | 7 |
+| Completed dissertation full-text screens | 8 |
 | Front-matter-only previews, excluded from full screens | 1 |
-| Dissertation complete texts not yet recovered | 92 |
-| Statistical methods directions indexed | 10 |
+| Dissertation complete texts not yet recovered | 91 |
+| Statistical methods directions indexed | 13 |
 | Added precise theorem targets / completed proofs | 0 / 0 |
 
-**Corrected retrieval scope:** all 99 archive records and Download controls were revisited. Seven complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The 92 records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The 17 associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
+**Corrected retrieval scope:** all 99 archive records and Download controls were revisited. 8 complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The 91 records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The 19 associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
 
 ## Search and inclusion criteria
 
@@ -121,6 +121,30 @@ Source: [F134](https://www.researchgate.net/publication/274557890_On_the_Use_of_
 
 Statement gate: Specify ordinal responses, substantive factors, response-style factors/classes, identification constraints and a detection/error criterion. Separate identifiable model distinctions from labels that observations cannot distinguish.
 
+### L-F145-generic-mixed-graph
+
+Characterize the mixed graphs that yield generically identifiable linear structural equation models.
+
+Source: [F145](https://arxiv.org/pdf/1003.1146.pdf), Section 8 Conclusion; [F146](https://arxiv.org/pdf/1107.5552.pdf), Introduction: the generic-identifiability problem remains open.
+
+Statement gate: Specify the mixed-graph class, the directed and bidirected edge sets, the generic parameter domain, and the map from edge coefficients to the covariance.
+
+### L-F146-half-trek-gap
+
+Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
+
+Source: [F146](https://arxiv.org/pdf/1107.5552.pdf), Discussion: rationally identifiable but not HTC-identifiable graphs.
+
+Statement gate: Specify rational identifiability, the half-trek criterion, and an infinite graph family separating them.
+
+### L-F147-polytime-ancestral
+
+Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
+
+Source: [F147](https://arxiv.org/pdf/1504.02992.pdf), Final paragraph before Acknowledgments.
+
+Statement gate: Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.
+
 ## Selected source works and their outcomes
 
 | ID/year | Work | Relationship | Full-text outcome |
@@ -166,6 +190,14 @@ Statement gate: Specify ordinal responses, substantive factors, response-style f
 | F140/2025 | [More than intentions: Importance of motherhood predicts first but not subsequent births](https://doi.org/10.1016/j.alcr.2025.100708) | post_dissertation_author_work | No suitable additional explicit mathematical target recorded |
 | F141/2017 | [Greater Neural Adaptations following High- vs. Low-Load Resistance Training](https://doi.org/10.3389/fphys.2017.00331) | pre_dissertation_background | No suitable additional explicit mathematical target recorded |
 | F142/2019 | [Partner congruence on fertility intentions and values: Implications for birth outcomes](https://doi.org/10.1177/0265407518787232) | post_dissertation_author_work | No suitable additional explicit mathematical target recorded |
+| F143/2008 | [Multi-trait QTL mapping using a structural equation model](https://doi.org/10.4148/2475-7772.1095) | pre_dissertation_background | No suitable additional explicit mathematical target recorded |
+| F144/2002 | [A new identification condition for recursive models with correlated errors](https://doi.org/10.1207/S15328007SEM0904_1) | comparison_source | No suitable additional explicit mathematical target recorded |
+| F145/2011 | [Global identifiability of linear structural equation models](https://doi.org/10.1214/10-AOS859) | comparison_source | 1 method directions |
+| F146/2012 | [Half-trek criterion for generic identifiability of linear structural equation models](https://doi.org/10.1214/12-AOS1012) | comparison_source | 2 method directions |
+| F147/2016 | [Generic identifiability of linear structural equation models by ancestor decomposition](https://arxiv.org/abs/1504.02992) | comparison_source | 1 method directions |
+| F148/2006 | [Structural model analysis of multiple quantitative traits](https://doi.org/10.1371/journal.pgen.0020114) | comparison_source | No suitable additional explicit mathematical target recorded |
+| F150/2003 | [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493) | comparison_source | Unassessed: full-text gap |
+| F151/2010 | [Searching for recursive causal structures in multivariate quantitative genetics mixed models](https://doi.org/10.1534/genetics.109.112979) | comparison_source | Unassessed: full-text gap |
 
 ## Excluded or historical passages
 
@@ -188,10 +220,13 @@ Statement gate: Specify ordinal responses, substantive factors, response-style f
 - **F141, Discussion, PDF pp13–14:** Muscle glycogen/water and neural-adaptation questions require physiological observations; no explicit mathematical target recorded.
 - **F142, Discussion, PDF pp18–19:** Changes in partner intentions and values across time require couple-level longitudinal observations; no mathematical conjecture recorded.
 - **F139, Limitations and directions for future research, PDF p17 (printed p47):** Country/industry replication, additional capabilities and moderators, larger samples and longitudinal/network data are empirical research directions, not a mathematical theorem claim.
+- **F143, Discussion and Conclusion, PDF pp. 7–8:** Pleiotropy versus close linkage and gene-by-environment tests are named as possible applications. They are not left as an unsolved conjecture. Table 2 is an empirical power count.
+- **F144, Introduction:** The 2002 text says a necessary and sufficient criterion for recursive models with correlated errors was then unsolved. The global case was later characterized. The remaining generic characterization is recorded from the 2011 paper, not as a second target from this wording. A conjecture cited from Kenny, Kashy, and Bolger is theirs.
+- **F148, Discussion, PDF pp. 10–11:** Tight linkage versus pleiotropy, missing traits, and sample-size guidance are limitations of the mouse analysis. No author-stated mathematical conjecture is extracted.
 
 ## Dissertation registry
 
-Seven rows now have complete-text question screens, identified in the final column. The original 20 fully reviewed dissertations remain a separate historical cohort.
+8 rows now have complete-text question screens, identified in the final column. The original 20 fully reviewed dissertations remain a separate historical cohort.
 
 | Seed/year | Author and dissertation | Model family | Public-copy record | Full-text disposition |
 | --- | --- | --- | --- | --- |
@@ -249,7 +284,7 @@ Seven rows now have complete-text question screens, identified in the final colu
 | UNL-SEM-D052/2023 | Collins, Elizabeth I — [How to Do QuantCrit: A Reflexive Account of Applying Critical Quantitative Methods to a Study of Black Women in STEM](https://digitalcommons.unl.edu/cehsedaddiss/351/) | explicit_SEM | Located | Retrieval incomplete; unassessed |
 | UNL-SEM-D053/2023 | Dammann, Anna Johnson — [Moderators of the Associations Between Early Childhood Sleep Problems and Elementary School Developmental Outcomes](https://digitalcommons.unl.edu/dissertations/AAI30570301/) | explicit_SEM | Not located | Retrieval incomplete; unassessed |
 | UNL-SEM-D054/2024 | McGonigal, Patrick T — [Identity-Driven Targeted Violence: Attending to Identity, Emotion, and Personality-Related Predictors of Attitudinal and Behavioral Prejudice](https://digitalcommons.unl.edu/dissunl/64/) | explicit_SEM | Located | Retrieval incomplete; unassessed |
-| UNL-SEM-D055/2024 | Jeffries, Jay B. — [Navigating Non-Orthogonality: Exploring Latent Mean Differences in Unbalanced Conditions](https://digitalcommons.unl.edu/dissunl/216/) | explicit_SEM | Located | Retrieval incomplete; unassessed |
+| UNL-SEM-D055/2024 | Jeffries, Jay B. — [Navigating Non-Orthogonality: Exploring Latent Mean Differences in Unbalanced Conditions](https://digitalcommons.unl.edu/dissunl/216/) | explicit_SEM | Located | Complete text screened |
 | UNL-SEM-D056/2024 | Karen M. Alexander Glueckert — [The Relationship Between General and Content-Specific Classroom Practices and K-6 Student Math Achievement: A Multi-Method Analysis](https://digitalcommons.unl.edu/dissunl/60/) | explicit_SEM | Located | Retrieval incomplete; unassessed |
 | UNL-SEM-D057/2025 | Stowe, Hannah E. — [Landscape Effects on the Beneficial Arthropod Community in Agriculturally Dominated Environments](https://digitalcommons.unl.edu/dissunl/281/) | explicit_SEM | Located | Retrieval incomplete; unassessed |
 | UNL-SEM-D058/2025 | Miramonti, Amelia Anne — [Youth Sport Participation and Cognitive Development: The Need for Improved Measurement](https://digitalcommons.unl.edu/dissunl/314/) | explicit_SEM | Located | Retrieval incomplete; unassessed |
@@ -297,7 +332,7 @@ Seven rows now have complete-text question screens, identified in the final colu
 
 ## Inventory integration and verification
 
-Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→176 and full-text source screens 122→146. Seven recovered dissertation question screens are separate from article/work screen counts and from the original 20 complete dissertation reviews.
+Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→176 and full-text source screens 122→146. 8 recovered dissertation question screens are separate from article/work screen counts and from the original 20 complete dissertation reviews.
 
 Sources have versions, exact locators and hashes. F134's hash identifies a complete author-uploaded web transcription, not original PDF bytes. Copyrighted bodies remain in ignored storage. Current resolution, Lean discovery and implementation difficulty for the added directions remain unassessed; no mathematical result or priority claim is made.
 
