@@ -1,0 +1,135 @@
+{
+  "catalog_version": 1,
+  "temporary_hosts": ["media.proquest.com"],
+  "identifier_prefixes": [
+    {"prefix": "aai", "pattern": "^AAI\\d+$", "site": "unl-proquest"},
+    {"prefix": "bepress", "pattern": "^[a-z0-9]+/\\d+$", "site": "unl-proquest"},
+    {"prefix": "proquest-docview", "pattern": "^\\d+$", "site": "unl-proquest"},
+    {"prefix": "proquest-publication", "pattern": "^\\d+$", "site": "unl-proquest"},
+    {"prefix": "core", "pattern": "^\\d+$", "site": "unl-proquest"}
+  ],
+  "routes": [
+    {
+      "id": "doi-resolution@1",
+      "order": 10,
+      "scope": "generic",
+      "requires": ["doi"],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Resolve https://doi.org/<DOI> with curl and follow the landing page."
+    },
+    {
+      "id": "arxiv-pdf@1",
+      "order": 20,
+      "scope": "generic",
+      "requires": ["arxiv"],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Download the arXiv PDF for the id."
+    },
+    {
+      "id": "openalex-oa@1",
+      "order": 30,
+      "scope": "generic",
+      "requires": [],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Read OpenAlex open-access locations for the DOI, arXiv id, or title."
+    },
+    {
+      "id": "unpaywall-oa@1",
+      "order": 40,
+      "scope": "generic",
+      "requires": ["doi"],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Read Unpaywall open-access locations for the DOI."
+    },
+    {
+      "id": "publisher-landing@1",
+      "order": 50,
+      "scope": "generic",
+      "requires": [],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Open the publisher landing page with curl and follow its public download control."
+    },
+    {
+      "id": "proquest-openurl@1",
+      "order": 52,
+      "scope": "site",
+      "site": "unl-proquest",
+      "requires_prefixes": ["proquest-publication", "aai"],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Resolve a ProQuest publication number with the documented OpenURL syntax. Store the docview id, not a signed media URL."
+    },
+    {
+      "id": "institutional-repository@1",
+      "order": 60,
+      "scope": "generic",
+      "requires": [],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Fetch an institutional-repository record and its public file with curl."
+    },
+    {
+      "id": "unl-bepress-headless@1",
+      "order": 61,
+      "scope": "site",
+      "site": "unl-proquest",
+      "requires_prefixes": ["aai", "bepress"],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Headless request of a UNL bepress Download URL."
+    },
+    {
+      "id": "core-download@1",
+      "order": 62,
+      "scope": "site",
+      "site": "unl-proquest",
+      "requires_prefixes": ["core"],
+      "tool": "curl",
+      "status": "active",
+      "summary": "CORE download for a verified CORE id. A headless 403 is bot mitigation, not a missing file."
+    },
+    {
+      "id": "author-page@1",
+      "order": 70,
+      "scope": "generic",
+      "requires": [],
+      "tool": "curl",
+      "status": "active",
+      "summary": "Check the author or departmental page for a manuscript copy."
+    },
+    {
+      "id": "browser-download@1",
+      "order": 80,
+      "scope": "generic",
+      "requires": [],
+      "tool": "browser",
+      "status": "active",
+      "summary": "Open the record in a real browser, pass a cookie banner or bot check, and activate Download."
+    },
+    {
+      "id": "unl-bepress-browser@1",
+      "order": 81,
+      "scope": "site",
+      "site": "unl-proquest",
+      "requires_prefixes": ["aai", "bepress"],
+      "tool": "browser",
+      "status": "active",
+      "summary": "Browser Download on a UNL bepress record after a headless bot check. A later procedure is a new id, such as unl-bepress-browser@2."
+    },
+    {
+      "id": "proquest-browser@1",
+      "order": 82,
+      "scope": "site",
+      "site": "unl-proquest",
+      "requires_prefixes": ["proquest-docview", "proquest-publication"],
+      "tool": "browser",
+      "status": "active",
+      "summary": "Browser Download PDF on a ProQuest docview page."
+    }
+  ]
+}
