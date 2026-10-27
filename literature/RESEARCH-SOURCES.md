@@ -1335,3 +1335,29 @@ Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. 
 - Provenance: [source review ledger](../formalization/canonical-width/c16/prior-art.json).
 
 - Follow-up comparison: [dated source review](../formalization/canonical-width/c16/takeover-prior-art.json).
+
+## F99 — Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
+
+Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
+
+- Record type: academic source; access: full text retrieved screen pending.
+- Inspected locator: See candidate passages in c16-continuation-source-screening.json.
+- Contribution: Related terminology and support-rank obstruction route for the C16 pool matrix.
+- Comparison limit: No source-specific resolution. Exhaustive question harvest and present-status checks remain incomplete at the fixed deadline.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
+
+- Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.
+
+## F100 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. arXiv:2312.03859v1,6December2023. [Primary source](https://arxiv.org/html/2312.03859v1).
+
+- Record type: academic source; access: full text retrieved screen pending.
+- Inspected locator: See candidate passages in c16-continuation-source-screening.json.
+- Contribution: Related terminology and support-rank obstruction route for the C16 pool matrix.
+- Comparison limit: No source-specific resolution. Exhaustive question harvest and present-status checks remain incomplete at the fixed deadline.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
+
+- Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.

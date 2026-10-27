@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **98 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **100 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -930,6 +930,18 @@ Primary text contexts inspected; bounded source comparison. Complete main text, 
 Owidiusz Makuta; Remigiusz Augusiak. 2025. [connected gallager background](https://www.nature.com/articles/s41534-025-01080-3).
 
 Primary text contexts inspected; bounded source comparison. Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem.
+
+### F99 Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
+
+Angikar Ghosal; Andreas Karrenbauer. 2025. [c16 rank background](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
+
+SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. Relevant primary-text contexts were consulted; no theorem settling C16 was established. Canonical question reconciliation and current-resolution/Lean assessment remain incomplete; this is not a zero-question screen. See literature/c16-continuation-source-screening.json.
+
+### F100 Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. 2023. [c16 rank background](https://arxiv.org/html/2312.03859v1).
+
+arXiv:2312.03859v1,6December2023. Relevant primary-text contexts were consulted; no theorem settling C16 was established. Canonical question reconciliation and current-resolution/Lean assessment remain incomplete; this is not a zero-question screen. See literature/c16-continuation-source-screening.json.
 
 ## Question by question cross references
 
