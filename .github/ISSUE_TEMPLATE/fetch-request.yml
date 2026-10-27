@@ -1,0 +1,130 @@
+name: Document fetch request
+description: Queue retrieval of one complete public source for any retrieval worker.
+title: "fetch: "
+labels:
+  - fetch-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        File this when a research block needs a complete text and this environment cannot verify it. The source may be any public paper. One issue per stable source. Search open issues for that id before filing.
+
+        A retrieval worker claims the issue, fetches with ordinary tools, and posts an immutable manifest comment. It does not edit literature ledgers. The research agent merges the manifest and then closes the issue. Any agent may be the worker.
+
+        Identify the source by DOI, arXiv id, canonical URL, or archive record id, plus title, author, and year. Write ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview, a front-matter file, or an unreadable extraction is not a finished question screen.
+
+        Label lifecycle: `fetch-request` to `fetch-claimed`, then `fetched`, `restricted`, `needs-human`, or `not-found`. `not-found` means the applicable public routes found no copy and is reopened only when the route catalog gains a new applicable route.
+  - type: input
+    id: stable_source_id
+    attributes:
+      label: Stable source ID
+      description: DOI, arXiv id, canonical URL, or archive record id. This id stays the same when a mirror URL changes.
+      placeholder: 10.1000/example.doi
+    validations:
+      required: true
+  - type: textarea
+    id: stable_id_aliases
+    attributes:
+      label: Other stable IDs
+      description: One scheme and value per line. Schemes are doi, arxiv, url, archive_record, and campaign_record.
+      placeholder: |
+        arxiv 1234.56789
+        url https://example.test/paper
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Title as given by the publisher, repository, or preprint record.
+      placeholder: Example paper title
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      placeholder: Author Name
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      description: Four-digit publication year.
+      placeholder: "2020"
+    validations:
+      required: true
+  - type: dropdown
+    id: document_type
+    attributes:
+      label: Document type
+      options:
+        - article
+        - preprint
+        - doctoral_dissertation
+        - masters_thesis
+        - book
+        - report
+        - other
+    validations:
+      required: true
+  - type: input
+    id: campaign_id
+    attributes:
+      label: Campaign
+      description: Optional. Leave blank when the paper is not part of a campaign.
+      placeholder: CAMPAIGN-ID
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: High when the current answer depends on this text. Normal for a campaign gap. Low for a lead that can wait.
+      options:
+        - low
+        - normal
+        - high
+      default: 1
+    validations:
+      required: true
+  - type: dropdown
+    id: blocker_category
+    attributes:
+      label: Blocker category
+      description: Why this environment stopped. Bot mitigation is not an access restriction. No public copy is not a transport failure.
+      options:
+        - bot_mitigation
+        - browser_host_unavailable
+        - preview_or_front_matter
+        - no_public_copy_found
+        - extraction_unreadable
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: routes_attempted
+    attributes:
+      label: Routes already attempted
+      description: Each line is a catalog route id when known, a method, a durable https URL or stable id, and the result. Omit signed queries and cookies.
+      placeholder: |
+        doi-resolution@1 curl https://doi.org/10.1000/example.doi -> bot check
+        browser-download@1 browser did not start
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: What failed
+      description: The concrete failure in this environment, and which text is still needed.
+      placeholder: DOI resolution returned a bot check and the browser did not start.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Before filing
+      options:
+        - label: I searched existing issues for this stable source ID and its aliases.
+          required: true
+        - label: This request contains no signed URLs, cookies, or credentials.
+          required: true
+        - label: Routes already attempted are listed, including bot checks and browser failures.
+          required: true
