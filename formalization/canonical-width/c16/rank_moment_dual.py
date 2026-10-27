@@ -46,13 +46,27 @@ def rectangle_constraints(source,families,cuts):
     return ineq,rank_cases
 
 
-def verify(data,source):
+def verify(data,source,rational_psd=None):
     families=data['X_thin_families'];assert families==sorted(set(families)) and set(families)<=set(range(5))
     assert data['period']==16 and data['target']==128
     patterns=patterns_from_source(source,families)
     ineq,count=rectangle_constraints(source,families,data['rank_rectangles'])
-    result=verify_patterns(data,patterns,extra_inequalities=ineq)
+    p,C,V=layout(9*len(families)+45,16)
+    from moment_triangle_cuts import constraint as triangle_constraint,literal_control
+    from moment_circuit_cuts import constraint as circuit_constraint,validate as validate_circuit,source_vectors
+    literal_control()
+    for cut in data.get('moment_triangles',[]):ineq.add(triangle_constraint(cut,p,C,16))
+    from moment_integer_form_cuts import coefficients as integer_form_constraint
+    for cut in data.get('moment_integer_forms',[]):ineq.add(integer_form_constraint(cut,p,C,16))
+    checked_circuits=set();circuit_vectors={side:source_vectors(source,side) for side in ['X','Z']} if data.get('moment_circuits') else {}
+    for cut in data.get('moment_circuits',[]):
+        key=(cut['sector'],tuple(cut['circuit']))
+        if key not in checked_circuits:validate_circuit(cut,source,circuit_vectors[cut['sector']]);checked_circuits.add(key)
+        ineq.add(circuit_constraint(cut,p,C,families))
+    result=verify_patterns(data,patterns,extra_inequalities=ineq,rational_psd=rational_psd)
     result.update(X_thin_families=families,rank_rectangles_checked=count,
+        Boolean_triangle_inequalities=len(data.get('moment_triangles',[])),integer_affine_form_inequalities=len(data.get('moment_integer_forms',[])),
+        source_circuit_orbits_checked=len(checked_circuits),conditional_circuit_inequalities=len(data.get('moment_circuits',[])),
         scope='No full original C16 frame whose X thin support is contained in the listed families.',
         source_C16_answered=(families==list(range(5))))
     return result
@@ -61,8 +75,9 @@ def verify(data,source):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path)
     ap.add_argument('--source',type=Path,default=Path(__file__).parent/'inversion-results/normal-form.json')
-    ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
+    ap.add_argument('--rational-psd',type=Path);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
     raw=gzip.decompress(a.certificate.read_bytes()).decode() if a.certificate.suffix=='.gz' else a.certificate.read_text()
-    result=verify(json.loads(raw),json.loads(a.source.read_text()))
+    from rational_cyclic_psd import read
+    result=verify(json.loads(raw),json.loads(a.source.read_text()),rational_psd=read(a.rational_psd) if a.rational_psd else None)
     a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 if __name__=='__main__':main()

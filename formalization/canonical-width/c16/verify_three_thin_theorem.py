@@ -13,7 +13,7 @@ from verify_inverse_lift import vp,mp,pm,outer,shifts,vshifts,rank,mm,mat,pack,t
 from block_moment_dual import verify as verify_dual
 
 
-def verify(source,certificate):
+def verify(source,certificate,rational_psd=None):
     base=report(source)
     q=source['dictionary']
     A=list(map(vp,q['X_left_dictionary']))
@@ -42,7 +42,7 @@ def verify(source,certificate):
     # The 64 X vectors with thin B4 must pair to Z annihilating B3.
     assert viable[0]['opposite_thick_types'][0]==[3,5]
     assert certificate['block']==4 and certificate['target']==64 and certificate['period']==16
-    dual=verify_dual(certificate,source)
+    dual=verify_dual(certificate,source,rational_psd=rational_psd)
     # Physical sector exchange is beta-self-adjoint and transports each thin
     # owner to one owner. Thus (X,Z)->(L^-1 Z,L X) preserves the Gram matrix.
     P=transpose(list(map(vp,source['sector_exchange']['P_columns'])))
@@ -77,8 +77,9 @@ def verify(source,certificate):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path)
     ap.add_argument('--source',type=Path,default=Path(__file__).parent/'inversion-results/normal-form.json')
-    ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
-    result=verify(json.loads(a.source.read_text()),json.loads(a.certificate.read_text()))
+    ap.add_argument('--rational-psd',type=Path);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
+    from rational_cyclic_psd import read
+    result=verify(json.loads(a.source.read_text()),json.loads(a.certificate.read_text()),rational_psd=read(a.rational_psd) if a.rational_psd else None)
     result['source_SHA256']=hashlib.sha256(a.source.read_bytes()).hexdigest()
     result['dual_certificate_SHA256']=hashlib.sha256(a.certificate.read_bytes()).hexdigest()
     a.output.write_text(json.dumps(result,indent=2)+'\n')

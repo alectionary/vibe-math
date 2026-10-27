@@ -14,17 +14,23 @@ def source_patterns(source,families):
    for i,x in enumerate(xx):patterns[i][j]|=((x&cov).bit_count()%2)<<h
  return patterns
 
-def model(patterns,P,target):
+def model(patterns,P,target,normalize_equalities=False,fixed_margin=0,linear_slack=0):
  m=len(patterns);n=len(patterns[0]);N=m+n;p=cp.Variable(N,name='first');C={0:cp.Variable((N,N),symmetric=True,name='C0'),P//2:cp.Variable((N,N),symmetric=True,name='Chalf')}
  for h in range(1,P//2):C[h]=cp.Variable((N,N),name=f'C{h}');C[P-h]=C[h].T
- B0=sum(C.values());ones=np.ones((1,N));rows=cp.reshape(p,(N,1),order='C')@ones;cols=rows.T;con=[p>=0,p<=1,cp.diag(C[0])==p,P*cp.sum(p[:m])==target,P*cp.sum(p[m:])==target,cp.sum(B0[:,:m],axis=1)==target*p,cp.sum(B0[:,m:],axis=1)==target*p]
- for h in range(P//2+1):con.extend([C[h]>=0,C[h]<=rows,C[h]<=cols,C[h]>=rows+cols-1])
- G0=cp.bmat([[np.ones((1,1)),math.sqrt(P)*cp.reshape(p,(1,N),order='C')],[math.sqrt(P)*cp.reshape(p,(N,1),order='C'),B0]]);con.append(G0>>0)
+ B0=sum(C.values());ones=np.ones((1,N));rows=cp.reshape(p,(N,1),order='C')@ones;cols=rows.T;eta=linear_slack;con=[p>=eta,p<=1-eta,cp.diag(C[0])==p]
+ if normalize_equalities:con.extend([(P/target)*cp.sum(p[:m])==1,(P/target)*cp.sum(p[m:])==1,cp.sum(B0[:,:m],axis=1)/target==p,cp.sum(B0[:,m:],axis=1)/target==p])
+ else:con.extend([P*cp.sum(p[:m])==target,P*cp.sum(p[m:])==target,cp.sum(B0[:,:m],axis=1)==target*p,cp.sum(B0[:,m:],axis=1)==target*p])
+ for h in range(P//2+1):
+  upper_slack=eta*(np.ones((N,N))-np.eye(N) if h==0 else np.ones((N,N)));con.extend([C[h]>=eta,C[h]<=rows-upper_slack,C[h]<=cols-upper_slack,C[h]>=rows+cols-1+eta])
+ G0=cp.bmat([[np.ones((1,1)),math.sqrt(P)*cp.reshape(p,(1,N),order='C')],[math.sqrt(P)*cp.reshape(p,(N,1),order='C'),B0]]);
+ if fixed_margin:
+  U=np.zeros((N+1,2));U[0,:]=-target/math.sqrt(P);U[1:m+1,0]=1;U[m+1:,1]=1;projection=np.eye(N+1)-U@np.linalg.inv(U.T@U)@U.T;con.append(G0-fixed_margin*projection>>0)
+ else:con.append(G0>>0)
  for k in range(1,P//2+1):
   real=C[0]+((-1)**k)*C[P//2];imag=0*C[0]
   for h in range(1,P//2):
    c=(-1)**h if k==P//2 else math.cos(2*math.pi*k*h/P);s=0 if k==P//2 else math.sin(2*math.pi*k*h/P);real=real+c*(C[h]+C[h].T);imag=imag+s*(C[h]-C[h].T)
-  con.append((real if k==P//2 else cp.bmat([[real,-imag],[imag,real]]))>>0)
+  block=real if k==P//2 else cp.bmat([[real,-imag],[imag,real]]);con.append(block-fixed_margin*np.eye(block.shape[0])>>0)
  anti=[np.array([[patterns[a][b]>>h&1 for b in range(n)] for a in range(m)],dtype=float) for h in range(P)];cross=sum(cp.multiply(anti[h],C[h][:m,m:]) for h in range(P));con.extend([cp.sum(cross,axis=1)==p[:m],cp.sum(cross,axis=0)==p[m:]])
  return cp.Problem(cp.Minimize(0),con),p,C
 
