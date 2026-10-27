@@ -17,8 +17,8 @@ from pathlib import Path
 N = 3
 
 
-def F(x) -> Fraction:
-    return Fraction(x)
+def F(x, y=None) -> Fraction:
+    return Fraction(x) if y is None else Fraction(x, y)
 
 
 def eye(n: int = N):
