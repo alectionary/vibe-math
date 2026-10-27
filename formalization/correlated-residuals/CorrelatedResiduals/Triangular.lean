@@ -212,4 +212,108 @@ theorem recursive_residual_unique {n : ℕ}
   rw [Matrix.sub_apply, Matrix.sub_apply, sub_eq_add_neg, sub_eq_add_neg] at hentry
   exact neg_inj.mp (add_left_cancel hentry)
 
+/-- Joint blocks of a recursive pattern. `p` is the covariate dimension. -/
+@[ext]
+structure Joint (n p : ℕ) where
+  yy : Matrix (Fin n) (Fin n) ℝ
+  yx : Matrix (Fin n) (Fin p) ℝ
+  xx : Matrix (Fin p) (Fin p) ℝ
+
+/-- A recursive pattern: strictly upper `B`, positive diagonal residuals, rectangular `Γ`, and `Φ`. -/
+@[ext]
+structure RecModel (n p : ℕ) where
+  B : Matrix (Fin n) (Fin n) ℝ
+  d : Fin n → ℝ
+  gamma : Matrix (Fin n) (Fin p) ℝ
+  phi : Matrix (Fin p) (Fin p) ℝ
+
+def OnRec {n p : ℕ} (θ : RecModel n p) : Prop :=
+  StrictUpper θ.B ∧ (∀ i, 0 < θ.d i) ∧ θ.phi.PosDef
+
+noncomputable def sigmaRec {n p : ℕ} (θ : RecModel n p) : Joint n p :=
+  let L := (1 - θ.B)⁻¹
+  { yy := L * (θ.gamma * θ.phi * θ.gammaᵀ + diagonal θ.d) * Lᵀ
+    yx := L * θ.gamma * θ.phi
+    xx := θ.phi }
+
+/-- Cancelling a positive-definite exogenous block leaves the residual Gram matrix. -/
+lemma schur_noise_rect {n p : ℕ}
+    {L : Matrix (Fin n) (Fin n) ℝ} {G : Matrix (Fin n) (Fin p) ℝ}
+    {Φ : Matrix (Fin p) (Fin p) ℝ} {N : Matrix (Fin n) (Fin n) ℝ} (hΦ : Φ.PosDef) :
+    L * (G * Φ * Gᵀ + N) * Lᵀ - (L * G * Φ) * Φ⁻¹ * (L * G * Φ)ᵀ = L * N * Lᵀ := by
+  have hdet : IsUnit Φ.det := (isUnit_iff_isUnit_det Φ).1 hΦ.isUnit
+  have hsym : Φᵀ = Φ := by
+    simpa [conjTranspose_eq_transpose_of_trivial] using hΦ.isHermitian.eq
+  have hdist :
+      L * (G * Φ * Gᵀ + N) * Lᵀ = L * (G * Φ * Gᵀ) * Lᵀ + L * N * Lᵀ := by
+    rw [Matrix.mul_add, Matrix.add_mul]
+  rw [hdist]
+  have hyx : (L * G * Φ)ᵀ = Φᵀ * (Gᵀ * Lᵀ) := by
+    rw [Matrix.transpose_mul, Matrix.transpose_mul]
+  rw [hyx, hsym]
+  have hcancel :
+      (L * G * Φ) * Φ⁻¹ * (Φ * (Gᵀ * Lᵀ)) = L * (G * (Φ * Gᵀ)) * Lᵀ := by
+    rw [Matrix.mul_assoc (L * G * Φ) Φ⁻¹ (Φ * (Gᵀ * Lᵀ))]
+    rw [Matrix.mul_assoc (L * G) Φ (Φ⁻¹ * (Φ * (Gᵀ * Lᵀ)))]
+    rw [← Matrix.mul_assoc Φ Φ⁻¹ (Φ * (Gᵀ * Lᵀ))]
+    rw [mul_nonsing_inv Φ hdet]
+    rw [Matrix.one_mul]
+    rw [← Matrix.mul_assoc Φ Gᵀ Lᵀ]
+    rw [← Matrix.mul_assoc (L * G) (Φ * Gᵀ) Lᵀ]
+    rw [Matrix.mul_assoc L G (Φ * Gᵀ)]
+  have hblock : G * (Φ * Gᵀ) = G * Φ * Gᵀ := by
+    rw [← Matrix.mul_assoc G Φ Gᵀ]
+  rw [hcancel, hblock, add_sub_cancel_left]
+
+lemma schur_sigmaRec {n p : ℕ} (θ : RecModel n p) (hΦ : θ.phi.PosDef) :
+    (sigmaRec θ).yy - (sigmaRec θ).yx * (sigmaRec θ).xx⁻¹ * (sigmaRec θ).yxᵀ =
+      (1 - θ.B)⁻¹ * diagonal θ.d * ((1 - θ.B)⁻¹)ᵀ := by
+  simpa [sigmaRec] using
+    schur_noise_rect (L := (1 - θ.B)⁻¹) (G := θ.gamma) (Φ := θ.phi)
+      (N := diagonal θ.d) hΦ
+
+/-- `Φ` is the exogenous block, and `Γ = (I - B) Σ_yx Φ⁻¹`. -/
+theorem recover_exogenous {n p : ℕ} (θ : RecModel n p) (h : OnRec θ) :
+    θ.phi = (sigmaRec θ).xx ∧
+      θ.gamma = (1 - θ.B) * (sigmaRec θ).yx * (sigmaRec θ).xx⁻¹ := by
+  obtain ⟨hB, _, hΦ⟩ := h
+  haveI := invertible_one_sub hB
+  have hdet : IsUnit θ.phi.det := (isUnit_iff_isUnit_det θ.phi).1 hΦ.isUnit
+  refine ⟨rfl, ?_⟩
+  simp only [sigmaRec]
+  have hleft : (1 - θ.B) * (1 - θ.B)⁻¹ = (1 : Matrix (Fin n) (Fin n) ℝ) :=
+    mul_inv_of_invertible (1 - θ.B)
+  have hright : θ.phi * θ.phi⁻¹ = (1 : Matrix (Fin p) (Fin p) ℝ) :=
+    mul_nonsing_inv _ hdet
+  conv_rhs =>
+    rw [Matrix.mul_assoc (1 - θ.B)⁻¹ θ.gamma θ.phi]
+    rw [← Matrix.mul_assoc (1 - θ.B) (1 - θ.B)⁻¹ (θ.gamma * θ.phi)]
+    rw [hleft]
+    rw [Matrix.one_mul]
+    rw [Matrix.mul_assoc θ.gamma θ.phi θ.phi⁻¹]
+    rw [hright]
+    rw [Matrix.mul_one]
+
+/-- The joint covariance determines `(B, Ψ, Γ, Φ)` for every recursive pattern. -/
+theorem sigmaRec_injective {n p : ℕ} {θ θ' : RecModel n p}
+    (hθ : OnRec θ) (hθ' : OnRec θ') (h : sigmaRec θ = sigmaRec θ') : θ = θ' := by
+  have hθ0 := hθ
+  have hθ'0 := hθ'
+  obtain ⟨hB, hd, hΦ⟩ := hθ
+  obtain ⟨hC, he, hΦ'⟩ := hθ'
+  have hgram :
+      (1 - θ.B)⁻¹ * diagonal θ.d * ((1 - θ.B)⁻¹)ᵀ =
+        (1 - θ'.B)⁻¹ * diagonal θ'.d * ((1 - θ'.B)⁻¹)ᵀ := by
+    have hθs := schur_sigmaRec θ hΦ
+    have hθs' := schur_sigmaRec θ' hΦ'
+    rw [h] at hθs
+    exact hθs.symm.trans hθs'
+  obtain ⟨hBeq, hdeq⟩ := recursive_residual_unique hB hC hd he hgram
+  have hγ : θ.gamma = θ'.gamma := by
+    have hg := (recover_exogenous θ hθ0).2
+    have hg' := (recover_exogenous θ' hθ'0).2
+    rw [hg, hg', h, hBeq]
+  have hφ : θ.phi = θ'.phi := by simpa [sigmaRec] using congrArg Joint.xx h
+  exact RecModel.ext hBeq hdeq hγ hφ
+
 end CorrelatedResiduals
