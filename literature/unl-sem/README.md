@@ -2,7 +2,7 @@
 
 Checked October 26, 2026. [PR #6](https://github.com/alectionary/vibe-math/pull/6) · [Tracking issue #5](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [CFA expansion](CFA-EXPANSION.md) · [Retrieval correction](RETRIEVAL-REPAIR.md) · [Formalization suitability](FORMALIZATION.md) · [Shared questions](../OPEN-PROBLEMS.md).
 
-The expanded seed contains **89 SEM/CFA, growth/path or latent-measurement dissertations**, plus **10 explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** (99 records total). These are doctoral-dissertation records from 2001 onward; 7 now have complete-text question screens. All 99 authors have recorded downstream searches. The bibliography contains **41 selected source works**, with **24 readable full texts screened** and **10 source-stated statistical methods directions** indexed.
+The expanded seed contains **89 SEM/CFA, growth/path or latent-measurement dissertations**, plus **10 explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** (99 records total). These are doctoral-dissertation records from 2001 onward; 7 now have complete-text question screens. All 99 authors have recorded downstream searches. The bibliography contains **49 selected source works**, with **30 readable full texts screened** and **13 source-stated statistical methods directions** indexed.
 
 The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records. It corrects the initial literal-SEM search's omission of Daniel H. Abbott's 2010 dissertation. Public and ProQuest catalog copies are merged, not counted twice. [The original 58-record pass](FIRST-PASS.md) is a historical snapshot, not the current total.
 
