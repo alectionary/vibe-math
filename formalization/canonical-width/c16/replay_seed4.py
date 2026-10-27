@@ -5,9 +5,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 from itertools import combinations
 import json
+import os
 from math import prod
 from pathlib import Path
 import subprocess
+from datetime import datetime,timezone
 
 ROOT=Path(__file__).resolve().parent
 
@@ -60,20 +62,38 @@ def main():
     ap.add_argument('--output',type=Path,required=True)
     ap.add_argument('--source',type=Path,default=ROOT/'seed4_exact.cpp')
     ap.add_argument('--dependency',type=Path,action='append',default=[])
+    ap.add_argument('--masks',type=int,nargs='+')
+    ap.add_argument('--stop-file',type=Path)
+    ap.add_argument('--deadline-utc')
     args=ap.parse_args()
     binary=args.binary.resolve();args.output.mkdir(parents=True,exist_ok=True)
     Z=[int(s,16) for s in (ROOT/'pools/zcoords.txt').read_text().split()]
     masks=masks_for(args.omitted)
+    if args.masks:
+        assert set(args.masks)<=set(masks)
+        masks=sorted(set(args.masks))
+    deadline=datetime.fromisoformat(args.deadline_utc.replace('Z','+00:00')) if args.deadline_utc else None
+    def stopped():
+        return (args.stop_file and args.stop_file.exists()) or (deadline and datetime.now(timezone.utc)>=deadline)
     inputs=[binary,args.source.resolve(),ROOT/'seed4_fifteen.cpp',ROOT/'pools/xcoords.txt',ROOT/'pools/zcoords.txt']
     inputs.extend(p.resolve() for p in args.dependency)
-    manifest={'omitted_count':args.omitted,'node_cap':args.cap,'expected_masks':masks,
+    manifest={'omitted_count':args.omitted,'node_cap':args.cap,'expected_masks':masks,'runner_pid':os.getpid(),
               'sha256':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},'results':[]}
     def run(mask):
         path=args.output/f'seed4-{16-args.omitted}-{mask}.log'
+        if stopped():return {'omitted':mask,'outcome':'NOT_STARTED','log':path.name}
         command=[str(binary),str(ROOT/'pools/xcoords.txt'),str(ROOT/'pools/zcoords.txt'),str(mask),str(args.cap)]
         with path.open('w') as out,path.with_suffix('.err').open('w') as err:
-            result=subprocess.run(command,stdout=out,stderr=err)
-        data=check_log(path,Z,mask);data['returncode']=result.returncode;data['log']=path.name
+            process=subprocess.Popen(command,stdout=out,stderr=err)
+            while True:
+                try:code=process.wait(timeout=1);break
+                except subprocess.TimeoutExpired:
+                    if stopped():
+                        process.terminate()
+                        try:code=process.wait(timeout=3)
+                        except subprocess.TimeoutExpired:process.kill();code=process.wait()
+                        return {'omitted':mask,'outcome':'INTERRUPTED','returncode':code,'log':path.name}
+        data=check_log(path,Z,mask);data['returncode']=code;data['log']=path.name
         return data
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         for future in as_completed([pool.submit(run,m) for m in masks]):
