@@ -38,7 +38,7 @@ def main():
  A=[list(map(tuple,v)) for v in dic['X_left_dictionary']]
  for x in baseX+[exchange_inv(z) for z in baseZ]:
   a=fixed_factor(x,B,Abar)
-  if a not in A:A.append(a)
+  if not any(all(rotate_s(v,h)==w for v,w in zip(old,a)) for old in A for h in range(16)):A.append(a)
  phase_pairs=[];gammas=[]
  for b in B:
   pb=[rowcol(row,b) for row in P];hit=None

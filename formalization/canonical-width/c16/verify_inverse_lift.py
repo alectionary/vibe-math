@@ -65,13 +65,21 @@ def apply(cols,v):
 
 def verify(d,source):
  assert d['source_exact_720_pool_replaced'] is True and d['source_C16_answered'] is False
- dic=source['dictionary'];A=list(map(vp,d['X_thick_factors']));B=list(map(vp,d['X_thin_factors']));C=list(map(vp,d['Z_thin_factors']));D=list(map(vp,d['Z_thick_factors']));qB=vp(source['span_constraints']['thin_factors']['X']['trace_functional_q']);qC=vp(source['span_constraints']['thin_factors']['Z']['trace_functional_q']);alpha=eps(d['alpha']);P=transpose(list(map(vp,source['sector_exchange']['P_columns'])));Q=list(map(vp,source['sector_exchange']['Q_rows']));tiny=2|(2<<2)|(2<<4)
+ dic=source['dictionary'];A=list(map(vp,d['X_thick_factors']));B=list(map(vp,d['X_thin_factors']));C=list(map(vp,d['Z_thin_factors']));D=list(map(vp,d['Z_thick_factors']));qB=vp(source['span_constraints']['thin_factors']['X']['trace_functional_q']);qC=vp(source['span_constraints']['thin_factors']['Z']['trace_functional_q']);alpha=eps(d['alpha']);beta=eps(d.get('beta',d['alpha']));real_multiplier=eps(d.get('real_multiplier',[1,0]));P=transpose(list(map(vp,source['sector_exchange']['P_columns'])));Q=list(map(vp,source['sector_exchange']['Q_rows']));tiny=2|(2<<2)|(2<<4)
  assert d['qB']==source['span_constraints']['thin_factors']['X']['trace_functional_q'] and d['qC']==source['span_constraints']['thin_factors']['Z']['trace_functional_q']
+ if d.get('source_thin_factor_orbits_retained'):
+  assert B==list(map(vp,dic['X_right_factors']))
+  originalC=list(map(vp,dic['Z_left_factors']));assert len(C)==5
+  for c,(j,h) in zip(C,d['source_C_thin_phase_permutation']):
+   v=originalC[j]
+   for _ in range(h):v=phase_vec(v)
+   assert v==c
+  assert sorted(j for j,h in d['source_C_thin_phase_permutation'])==list(range(5))
  assert all((a[0]&3) or (a[1]&3) for a in A+B+C+D)
  assert all(not((pm(qB[0],b[0])^pm(qB[1],b[1]))&tiny) for b in B)
  assert all(not((pm(qC[0],c[0])^pm(qC[1],c[1]))&tiny) for c in C)
  r=[pm(qC[0],P[0][j])^pm(qC[1],P[1][j]) for j in range(2)]
- assert all(((r[i]^pm(alpha,qB[i]))&63)==0 for i in range(2))
+ assert all(((r[i]^pm(beta,qB[i]))&63)==0 for i in range(2));assert pm(alpha,real_multiplier)==beta and not(real_multiplier&42) and (real_multiplier&3)==1
  for i,b in enumerate(B):
   pb=[pm(P[k][0],b[0])^pm(P[k][1],b[1]) for k in range(2)];assert [pm(alpha,x) for x in C[i]]==pb
  for i,a in enumerate(A):assert D[i]==[pm(alpha,pm(Q[0][j],a[0])^pm(Q[1][j],a[1])) for j in range(2)]
@@ -97,14 +105,38 @@ def verify(d,source):
    assert w==res(mp(point))
  assert {vres(v) for v in A}=={vres(vp(v)) for v in dic['X_left_dictionary']};assert {vres(v) for v in B}=={vres(vp(v)) for v in dic['X_right_factors']};assert {vres(v) for v in C}=={vres(vp(v)) for v in dic['Z_left_factors']};assert {vres(v) for v in D}=={vres(vp(v)) for v in dic['Z_right_dictionary']}
  X=list(map(mp,d['X_frame']));Z=list(map(mp,d['Z_frame']));assert len(set(X))==len(set(Z))==128 and set(X)<=poolX and set(Z)<=poolZ
+ thin_counts=None
+ if d.get('source_thin_factor_orbits_retained'):
+  xowner={w:j for j,b in enumerate(B) for a in A for w in shifts(outer(a,b))};zowner={w:j for j,c in enumerate(C) for a in D for w in shifts(outer(c,a))}
+  assert len(xowner)==len(poolX) and len(zowner)==len(poolZ)
+  thin_counts=[len({xowner[x] for x in X}),len({zowner[z] for z in Z})]
  for v in X+Z:
   a,b,c,e=parts(v);assert pm(a,e)^pm(b,c)==0
  # Convert once to t coefficients, then check the literal trace products.
  xt=[[(a>>h&1)|((b>>h&1)<<1) for a,b in map(cyclic,parts(x)) for h in range(16)] for x in X];zt=[[(a>>h&1)|((b>>h&1)<<1) for a,b in map(cyclic,parts(z)) for h in range(16)] for z in Z]
  assert all(sum((F[a][b]>>1)&1 for a,b in zip(x,z))%2==(i==j) for i,x in enumerate(xt) for j,z in enumerate(zt))
  ranks=[rank(w for v in B for w in vshifts(v)),rank(w for v in C for w in vshifts(v))];assert ranks==[61,61]==d['thin_module_ranks']
+ # Classify the precise scalar restriction lost in the enlargement.
+ def ppow(a,n):
+  v=1
+  while n:
+   if n&1:v=pm(v,a)
+   a=pm(a,a);n>>=1
+  return v
+ def same_line(a,b):return pm(a[0],b[1])==pm(a[1],b[0])
+ originalA=list(map(vp,dic['X_left_dictionary']));omega_mask=sum(2<<(2*h) for h in range(16));new_projective=0;new_real_rays=0
+ for a in A:
+  matches=[old for old in originalA if same_line(a,old)]
+  if not matches:new_projective+=1;new_real_rays+=1;continue
+  real=False
+  for old in matches:
+   j=next(j for j in range(2) if old[j]&3);unit=pm(a[j],ppow(old[j],47));assert all(pm(unit,z)==x for x,z in zip(a,old))
+   if not(unit&omega_mask):real=True;break
+  if not real:new_real_rays+=1
+ if 'new_thick_projective_factors' in d:assert new_projective==d['new_thick_projective_factors']
+ orbits={min(vshifts(a)) for a in A};oldorbits={min(vshifts(a)) for a in originalA}
  members=[sum(x in sx for x in X),sum(z in sz for z in Z)];assert members==d['frame_source_membership_counts'];pairs=sum(x in sx and z in sz for x,z in zip(X,Z));assert pairs==d['original_source_pairs_retained']
- return {'status':'PASS','ambient_binary_dimension':128,'dictionary_sizes':[len(A),len(B)],'enlarged_pool_sizes':[len(poolX),len(poolZ)],'original720_pools_contained':True,'exact_source_residue_sets':[32,32],'Cartesian_transpose_exchange_checked':True,'primitive_free_cyclic_pool_points':len(poolX)+len(poolZ),'frame_determinants':256,'literal_trace_Gram_pairings':16384,'thin_module_ranks':ranks,'frame_original_pool_memberships':members,'original_pool_pairs':pairs,'source_C16_answered':False}
+ return {'status':'PASS','ambient_binary_dimension':128,'dictionary_sizes':[len(A),len(B)],'enlarged_pool_sizes':[len(poolX),len(poolZ)],'original720_pools_contained':True,'exact_source_residue_sets':[32,32],'Cartesian_transpose_exchange_checked':True,'primitive_free_cyclic_pool_points':len(poolX)+len(poolZ),'frame_determinants':256,'literal_trace_Gram_pairings':16384,'thin_module_ranks':ranks,'frame_original_pool_memberships':members,'original_pool_pairs':pairs,'new_thick_projective_factors':new_projective,'thick_factors_outside_original_real_rays':new_real_rays,'thick_phase_orbit_counts':[len(oldorbits),len(orbits)],'frame_exact_thin_family_counts':thin_counts,'source_C16_answered':False}
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path);ap.add_argument('--source',type=Path,default=Path(__file__).parent/'inversion-results/normal-form.json');ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();r=verify(json.loads(a.certificate.read_text()),json.loads(a.source.read_text()));a.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r),flush=True)
