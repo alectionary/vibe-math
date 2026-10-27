@@ -4,7 +4,7 @@ This is an independent finite computation, with a written completeness argument.
 
 ## Inputs and result
 
-`make_enumeration_input.py` reconstructs the binary checks directly from equation (50), without importing the author's search. Its balanced check matrices agree row-for-row with the released physical matrices. Each 32-row trace block is expanded to its 48 equivalent weight-six checks; the rank remains 480. The 128 independent detector rows complete the opposite stabilizer space to rank 608.
+`make_enumeration_input.py` reconstructs the binary checks directly from equation (50), without importing the author's search. Its balanced check matrices agree row-for-row with the released physical matrices. Each 32-row trace block is expanded to its 48 equivalent binary checks; the rank remains 480. The 128 independent detector rows complete the opposite stabilizer space to rank 608.
 
 `enumerate_physical.cpp` is a fresh implementation of the odd-check branching method in Appendix A of arXiv:2610.06820v1. The saved run processes all 68 roots at weight bound 17: 47,708,679 nodes in 56.1066 seconds. It finds exactly 45 normalized nontrivial physical orbits, all of weight 16, equal to the published orbit list. Each has 16 translates, giving 720 physical representatives. The implementation has a different traversal and node count from the author's program. It does not import that program's exclusions.
 
