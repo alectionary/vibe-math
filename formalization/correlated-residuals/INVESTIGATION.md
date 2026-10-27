@@ -467,3 +467,35 @@ UTC start 17:39:24. The shared script and the three studies finished as one proc
 **Question still open:** The parent request still needs the wheat residual matrix, the marker codes, and a printed edge set. The general mixed-graph characterization is not a theorem of this repository. The delta method is not a Lean central limit theorem. Issue #13 stays open.
 
 **Next proposed target (follow-up):** Fit `recoverBow` when the five wheat inputs listed in the previous block exist. A Lean central limit theorem for the second-moment matrix is a separate, larger development. No next block is reserved.
+
+## Block 2026-10-27T18:20Z: replication gaps
+
+Follow-up `RQ-F102-replication-gaps`. Session `1a831aa5-e49c-4b88-8374-2f117a9c2519`. Claim commit `d164f8295bb58b3f1ff6ad4c5536572a12834f04`. The simulation claim had already been released.
+
+The first reading put a minus in front of `M`. On PDF page 10 the equals sign ends at x=145.9 and M's parenthesis starts at x=148.1, so that minus does not fit. The minus at x=189.1 is M_{23} = −1/2. Three other minuses sit on G. Path arithmetic of that glyph reading matches Table 2, including the total 0.75, except QTL2 on Y2, where the exact values are −0.4375 and 0.0625 and the table prints −0.435 and 0.065. That rounding is a source discrepancy (our reading). `B = +M` gives 0.875, not 0.75.
+
+Seeded reruns are in `simulation/out/gaps.json`. Under the glyph reading, 1000 replicates give single-trait Y1 power 86.2% at QTL3 (interval 83.9–88.3) against 97, and SEM powers 51.8, 47.5, 86.5 against 64, 77, 96. The sign reading closes the 0.75 gap and most of the 97-versus-13 gap, and it widens the SEM gap for the first two QTLs. A ±5 cM window gives position SDs 2.80, 2.76, 2.03 against 2.83, 2.58, 2.16. The paper does not state the window. At 1000 replicates the first reading's SEM interval contains 64 and does not contain 77 or 96. A 100-shuffle 95% quantile of the maximum LR is 14.74, next to the printed 14.86. `Ψ = I` meets the single-trait 97% and contradicts the sentence that residuals are drawn from matrix (8).
+
+The bow rerun at the glyph coefficients (seed `20101028`) still has diagonal probability limit 0.20 and rejection rate 0.728 at ρ=0.25, and `recoverBow` covers the signed coefficients. The Campbell calibration with signed `G` has SEM powers 93%, 95%, and 99%. It remains a scale mixture.
+
+### Time
+
+UTC start 18:20:15. The gap grid, including two 1000-replicate scans, finished at 18:30. The bow and calibration rerun finished at 18:31. The paper update followed.
+
+### Requirement to evidence
+
+| Requirement | Status | Where |
+|---|---|---|
+| Each hypothesis seeded and cited | met | `gaps.py`, `gaps.json`, PDF section "Which hypothesis closes which gap" |
+| Gap-closure table | met | PDF Table of gap closure; `gaps_table.csv` |
+| Source-discrepancy label, not an author-error claim | met | the −0.435/−0.065 rounding sentence |
+| Bow and calibration rerun if the convention changes | met | `study2_glyph.json`, `study3_glyph_summary.json` |
+| Master untouched, no external post | met | this branch and PR #14 only |
+
+## Closeout of the gap block
+
+**Question answered:** The 0.75 cell and most of the single-trait QTL3 gap are the glyph reading of equation (7), not `B = +M` and not Monte Carlo error. The position SDs match a ±5 cM window the paper does not state. The SEM powers 77 and 96, and about eleven points of the single-trait power, remain under the printed cofactors, the printed `Ψ`, and the printed threshold.
+
+**Question still open:** Why the multi-trait powers for QTL2 and QTL3 sit near 48–87% in the glyph-reading scan and at 77 and 96 in Table 1. The wheat residual fit, the mixed-graph characterization, and a Lean central limit theorem are unchanged.
+
+**Next proposed target (follow-up):** The same wheat-data fit as before. No next block is reserved.

@@ -41,11 +41,13 @@ removed. On the three-trait pattern printed in their equations~(7)--(8), a
 diagonal residual matrix is globally identified, each single residual
 covariance on that pattern collides, and each of the three bow-free patterns
 is a left inverse of the covariance. Those statements are Lean proofs. This
-paper then runs three seeded simulations. The replication of their RIL
-experiment recovers the ordering of their multi-trait powers and the direct
-QTL coefficients, and it does not reproduce their single-trait power for the
-third QTL on the first trait. That discrepancy sits next to an arithmetic
-disagreement between equation~(7) and several cells of their Table~2. A
+paper then runs three seeded simulations. A first reading of equation~(7),
+with one minus in front of $M$, does not reproduce Table~2's total effect
+$0.75$ or the single-trait power $97\%$ for the third QTL on the first trait.
+The minus signs sit on individual entries. That glyph reading reproduces the
+parameter block, including $0.75$, and lifts the single-trait power from
+$13\%$ to $86\%$ in $1000$ replicates. The multi-trait powers $77$ and $96$,
+and the last eleven points of that single-trait power, remain. A
 bow-free Monte Carlo shows that the diagonal plug-in invents a direct edge
 and biases two QTL coefficients, while \texttt{recoverBow} covers the path
 and QTL coefficients at the delta-method rate. A third run replaces the path
@@ -111,17 +113,23 @@ consulted.
 
 \section{The restriction}
 
-Equation~(7) is the only fully printed structural pattern. With the sign
-convention of that display, $y=-My+Gx+\varepsilon$, the matrices on PDF
-page~10 are
+Equation~(7) is the only fully printed structural pattern. On PDF page~10
+the equals sign ends at $x=145.9$ points and the parenthesis of $M$ begins at
+$x=148.1$. No operator fits between them, so the display is
+$y=My+Gx+\varepsilon$. The minus at $x=189.1$ is inside $M$, on the middle
+row, and three further minuses sit on $G_{11}$, $G_{22}$, and $G_{32}$.
+\ev{our reading of the glyph positions}
 \[
-M=\begin{pmatrix}0&1/2&1/4\\0&0&1/2\\0&0&0\end{pmatrix},\qquad
-G=\begin{pmatrix}1/8&1/4&1/2\\1/2&1/2&1/2\\1/4&1/8&1/4\end{pmatrix},
+M=\begin{pmatrix}0&1/2&1/4\\0&0&-1/2\\0&0&0\end{pmatrix},\qquad
+G=\begin{pmatrix}-1/8&1/4&1/2\\1/2&-1/2&1/2\\1/4&-1/8&1/4\end{pmatrix}.
 \]
-and equation~(8) is $\Psi=\mathrm{diag}(1.6,1.8,2.5)$.
+Equation~(8) is $\Psi=\mathrm{diag}(1.6,1.8,2.5)$.
 \ev{taken from a cited source}
-In the regression form $y=By+Gx+\varepsilon$ one has $B=-M$.
-\ev{our assumption, read off the printed minus}
+In $y=By+Gx+\varepsilon$ one then has $B=M$. A first reading placed the
+interior minus in front of $M$ and took every entry of $G$ as positive.
+That reading is the population of the first replication below. The zero
+pattern is the same either way: the free positions are still $(1,2)$,
+$(1,3)$, and $(2,3)$.
 The wheat Figure~5 graph has four traits and is not this matrix. The
 restriction is covariance identification for this three-trait recursive
 pattern: diagonal $\Psi$, one extra residual covariance, and the three ways
@@ -199,9 +207,10 @@ genotypes are coded $+1$ and $-1$. Cofactors are all markers except the
 flanking markers. The printed critical values are 14.86 and 10.60.
 \ev{taken from a cited source}
 Those two numbers are the chi-square $0.005$ quantiles on 4 and 2 degrees of
-freedom ($14.860$ and $10.597$). The same paragraph also says the likelihood
-ratio has $p$ degrees of freedom for $p$ traits. We compare with the printed
-numbers. \ev{our own calculation of the printed thresholds}
+freedom ($14.860$ and $10.597$). The paragraph on PDF page~9 writes the
+Bonferroni approximation $\chi^2_{\alpha/M,\,m+1}$. Ten marker intervals and
+$\alpha=0.05$ give the tail probability $0.005$, with $m+1=4$ for three
+traits and $m+1=2$ for one trait. \ev{our own calculation, from the cited formula}
 
 The paper does not state the following, so each is our assumption.
 \ev{our assumption}
@@ -266,13 +275,8 @@ The algebraic total effects under $B=-M$ are, by columns of $G$,
 \ev{our own calculation}
 Table~2's parameter block matches this matrix on $Y_2$ and $Y_3$ for the
 first and third QTLs, and it does not match it on $Y_1$. The printed total
-effect of the third QTL on $Y_1$ is $0.75$, against $0.25$ from the display.
-A regression of $Y_1$ on the true third QTL genotype, with no cofactors, has
-power about $0.10$ at the threshold $10.60$ when the total effect is $0.25$
-($200$ further replicates, same generator). The printed 97\% is the power of
-a substantially larger effect. We did not find a sign convention that matches
-both the minus in equation~(7) and every parameter cell in Table~2. The
-simulation follows the equation.
+effect of the third QTL on $Y_1$ is $0.75$, against $0.25$ from this first
+reading. Section~\ref{sec:gaps} tests that disagreement directly.
 
 Direct-effect means at the SEM argmax are close to $G$ where the signal is
 large. For the third QTL they are $0.460$ ($0.175$), $0.476$ ($0.179$), and
@@ -285,6 +289,112 @@ The biases are small. Our standard deviations are larger. The mean profile
 exceeds $14.86$ only at 40~cM and on 75--82~cM. Figure~2 is described as one
 simulated population, with excursions on 16--28, 38--48, and 70--88~cM. An
 average profile is a different object, and ours is lower.
+
+\section{Which hypothesis closes which gap}
+\label{sec:gaps}
+
+Five changes were rerun from fixed seeds. The full grid is
+\texttt{simulation/out/gaps.json} and \texttt{gaps\_table.csv}. Closure is
+$1-|\hat p-p_{\mathrm{printed}}|/|p_{\mathrm{first}}-p_{\mathrm{printed}}|$,
+using the first reading's $100$-replicate powers as the denominator. A value
+of $1$ means the printed number is met. A negative value means the estimate
+moved away from the table. \ev{our own simulation}
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Gap closure. SEM powers are the three QTLs. ST$_3$ is single-trait
+power for QTL3 on $Y_1$ (printed 97). ST$_2$ is single-trait power for QTL2
+on $Y_1$ (printed 3). SDs are the three SEM position standard deviations.
+$T_{31}$ is the algebraic total effect of QTL3 on $Y_1$ (printed 0.75).}
+\label{tab:gaps}
+\begin{tabular}{lrrrrrrr}
+\hline
+Reading & SEM & ST$_3$ & ST$_2$ & position SD & $T_{31}$ & ST$_3$ closed & $T_{31}$ closed \\
+\hline
+Printed & 64, 77, 96 & 97 & 3 & 2.83, 2.58, 2.16 & 0.75 & --- & --- \\
+First, $n=100$ & 59, 61, 86 & 13 & 0 & 7.28, 5.25, 3.76 & 0.25 & 0 & 0 \\
+First, $n=1000$ & 65, 63, 87 & 9 & 1 & 6.20, 5.32, 4.38 & 0.25 & $-0.05$ & 0 \\
+$B=+M$, $G$ unsigned & 68, 57, 86 & 87 & 44 & 5.90, 5.33, 4.60 & 0.875 & 0.88 & 0.75 \\
+Glyph reading, $n=100$ & 46, 45, 80 & 85 & 1 & 5.57, 5.93, 5.10 & 0.75 & 0.86 & 1 \\
+Glyph, $n=1000$ & 52, 48, 87 & 86 & 1 & 5.15, 5.42, 3.47 & 0.75 & 0.87 & 1 \\
+Glyph, no cofactors & 46, 65, 100 & 100 & 65 & 6.99, 9.12, 3.80 & 0.75 & 0.96 & 1 \\
+Glyph, wheat cofactors & 34, 24, 89 & 95 & 1 & 7.33, 7.91, 3.77 & 0.75 & 0.98 & 1 \\
+Glyph, $\Psi=I$ & 80, 78, 98 & 97 & 2 & 4.86, 4.02, 2.79 & 0.75 & 1.00 & 1 \\
+Glyph, window $\pm 5$ cM & 43, 41, 80 & 83 & 1 & 2.80, 2.76, 2.03 & 0.75 & 0.83 & 1 \\
+Glyph, $\alpha=0.05$ & 77, 84, 98 & 95 & 14 & 5.57, 5.93, 5.10 & 0.75 & 0.98 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Sign convention.} $B=+M$ with unsigned $G$ gives total effect $0.875$
+on $Y_1$ for QTL3, not $0.75$. The glyph reading gives
+\[
+(I-M)^{-1}G
+=\begin{pmatrix}1/8&0&3/4\\ 3/8&-7/16&3/8\\ 1/4&-1/8&1/4\end{pmatrix}.
+\]
+\ev{our own calculation}
+Every Table~2 parameter cell matches this arithmetic except the QTL2 row for
+$Y_2$, where the exact values are $-7/16=-0.4375$ and $1/16=0.0625$ and the
+table prints $-0.435$ and $0.065$.
+\ev{source discrepancy (our reading)}
+The first reading's total of $0.25$ is what produced the single-trait power
+$13\%$. Under the glyph reading, $1000$ replicates (seed \texttt{20101041})
+give $86.2\%$ (Clopper--Pearson interval $83.9$--$88.3$). That closes most of
+the $97$ versus $13$ gap and does not meet $97$.
+
+\textbf{Scan method.} The simulation paragraph on PDF page~10 fits every
+marker except the flanking pair, and the methods section replaces the QTL
+genotype by its flanking-marker expectation (Haley and Knott, 1992).
+Dropping the cofactors, on the glyph reading, raises the single-trait QTL3
+power to $100\%$ and the SEM power for QTL3 to $100\%$, and it leaves the
+first SEM power at $46$. The wheat rule on PDF page~11, a $P<0.1$ screen
+with at most five cofactors and a $10$~cM window, gives single-trait power
+$95\%$ (interval $88.7$--$98.4$, which contains $97$) and SEM powers $34$,
+$24$, and $89$. Nearest-marker regression gives the same pattern as dropping
+cofactors. None of these is the sentence printed for the simulation, and
+none of them brings all three SEM powers onto $64$, $77$, and $96$.
+
+\textbf{Threshold and window.} One hundred phenotype shuffles of a glyph-reading
+replicate have $95\%$ quantile $14.74$ for the maximum likelihood ratio,
+next to the printed $14.86$. A permutation threshold at $\alpha=0.05$ does
+not move the powers. The $500$ permutations in the paper are in the wheat
+section. Replacing $14.86$ and $10.60$ by the $\alpha=0.05$ quantiles on 4
+and 2 degrees of freedom ($9.49$ and $5.99$) raises the glyph-reading SEM
+powers to $77$, $84$, and $98$ and the single-trait QTL3 power to $95$. That
+threshold is not the printed one. Taking the peak within $5$~cM of the true
+site, under the glyph reading, gives position standard deviations $2.80$,
+$2.76$, and $2.03$, against $2.83$, $2.58$, and $2.16$. The midpoint windows
+used in the first replication were our assumption. The paper does not name
+the window that assigns a peak to a named QTL.
+
+\textbf{Unprinted design.} Eleven evenly spaced markers on a segment of
+$100$~cM, with markers at the ends, are at $0,10,\ldots,100$. Shifting them
+to $5,15,\ldots,95$ does not close the SEM gap. Standardizing each trait to
+sample standard deviation $1$ leaves the likelihood ratio essentially
+unchanged. Replacing $\Psi$ by $I$ does close the single-trait QTL3 gap
+($97\%$) and puts the second and third SEM powers on $78$ and $98$, while the
+first SEM power rises to $80$ (interval $70.8$--$87.3$, which does not
+contain $64$). The simulation sentence says the residuals are drawn from
+matrix~(8). $\Psi=I$ contradicts that sentence. It is a sensitivity, not the
+display.
+
+\textbf{Monte Carlo error.} At $1000$ replicates the first reading gives SEM
+powers $65.1$, $62.5$, and $86.6$, with intervals $62.1$--$68.1$,
+$59.4$--$65.5$, and $84.3$--$88.7$. The printed $64$ lies in the first
+interval. The printed $77$ and $96$ do not. Single-trait power for QTL2 on
+$Y_1$ is $1.2\%$ (interval $0.6$--$2.1$) under that reading and $0.8\%$
+($0.3$--$1.6$) under the glyph reading. The printed $3$ is inside the
+$n=100$ interval for zero detections ($0$--$3.6$) and outside the
+$n=1000$ intervals. The discrepancy is three replicates in Table~1.
+
+The most likely account is the glyph reading of equation~(7), together with
+a peak window of about $5$~cM that the paper does not state. That reading
+removes the $0.75$ discrepancy and most of the single-trait QTL3 discrepancy,
+and the narrow window removes the position-SD discrepancy. It does not
+remove the SEM gap for QTL2 and QTL3. Those two percentages move onto the
+printed values only in runs that drop the printed cofactors or replace
+matrix~(8). Both of those runs conflict with a sentence on PDF page~10.
 
 \section{Correlated residuals}
 
@@ -322,6 +432,15 @@ these coefficients. Variance-component means sit a little low ($1.54$ against
 $1.6$ at $\rho=0$) because the likelihood uses divisor $n$; the probability
 limit is still the population value.
 
+The same seeds were rerun with the glyph-reading coefficients: $b_{12}=+1/2$,
+$b_{23}=-1/2$, the edge $b_{13}$ removed from $+1/4$, and the signed $G$.
+\ev{our own simulation}
+At $\rho=0.25$ the diagonal probability limit of the missing edge is again
+$0.20$ and the Wald rejection rate is $0.728$. \texttt{recoverBow} means are
+$b_{12}=0.493$, $b_{23}=-0.498$, $G_{11}=-0.123$, and $G_{22}=-0.508$, with
+coverage between $0.920$ and $0.955$. The sign reading changes the parameter
+values and does not change the bias or the coverage.
+
 \section{Calibration to three phenotypic correlations}
 
 Campbell et al., Crop Science~43 (2003), Table~2, print phenotypic
@@ -354,15 +473,17 @@ $0.10$ for the two coefficients in the first equation and $0.084$ for
 $0.590$. Campbell pooled seven environments, so those standard errors are not
 his sampling variances. The point fit does not depend on $N$.
 
-The scan of Section~5 was rerun with this $B$ and $\Psi$ and with $G$ copied
-from equation~(7). Seed \texttt{20101029}, 100 replicates. Those QTL
-coefficients were not estimated from the correlations, and on this residual
-scale they are large: multi-trait power is 100\%, 96\%, and 100\%. That is a
-consequence of the scale mixture, not evidence that the 2003 correlations
-produce Mi's powers. \ev{our own simulation, under an assumption we flag}
-The bow check at $\rho=0.25$ (seed \texttt{20101030}) again gives a diagonal
-probability limit $0.198$ for the missing edge and a rejection rate $0.74$,
-with bow coverage $0.935$ for the residual covariance.
+The scan was rerun with this $B$ and $\Psi$ and with the signed $G$ from the
+glyph reading of equation~(7). Seed \texttt{20101029}, 100 replicates. Those
+QTL coefficients were not estimated from the correlations, and on this
+residual scale they are large: multi-trait power is 93\%, 95\%, and 99\%.
+Single-trait power for QTL3 on $Y_1$ is 96\%. That is a consequence of the
+scale mixture, not evidence that the 2003 correlations produce Mi's powers.
+\ev{our own simulation, under an assumption we flag}
+The bow check at $\rho=0.25$ (seed \texttt{20101030}) gives a diagonal
+probability limit $0.198$ for the missing edge and a rejection rate $0.74$.
+The unsigned-$G$ run of the same seed had multi-trait powers 100\%, 96\%, and
+100\%. The sign change does not turn the calibration into a replication.
 
 \section{Limitations}
 
@@ -374,9 +495,11 @@ does not print that matrix. Campbell's Table~2 does not substitute for any
 of those columns.
 
 The Drton--Foygel--Sullivant criterion is not a theorem of this repository.
-The delta method is not a Lean central limit theorem. The replication does
-not reproduce Table~1's 97\% or Table~2's indirect-effect signs, because
-those cells disagree with equations~(7)--(8) under the printed minus. Twelve
+The delta method is not a Lean central limit theorem. The glyph reading of
+equation~(7) meets Table~2's parameter block up to the two rounded QTL2
+entries. It leaves the SEM powers for QTL2 and QTL3, and about eleven points
+of the single-trait QTL3 power, short of Table~1. Those leftovers are not
+Monte Carlo error at $1000$ replicates. Twelve
 generations of selfing, Haldane's map, the marker placement, and the
 detection windows are our assumptions. The 2021 Hidalgo-Contreras wheat SEM
 is a different experiment.
@@ -396,6 +519,7 @@ writes \texttt{study1.json}, \texttt{study2.json}, and
 \item Lean 4.22.0 and Mathlib v4.22.0, built with \texttt{lake build}.
 \item Theorem links are pinned to \texttt{\proofcommit}.
 \item This PDF is \texttt{pdflatex paper.tex}. The ledger is \texttt{SOURCES.md}.
+\item The gap grid is \texttt{python3 gaps.py} in the simulation directory. Seeds are \texttt{20101027} through \texttt{20101042}.
 \end{itemize}
 
 \appendix
