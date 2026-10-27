@@ -48,9 +48,11 @@ A sharper version retains the **five exact source thin-factor orbits** in each
 sector and adds thick scalar representatives only. Its enlarged pools have1680
 points per sector. No new thick S-projective direction is used: the difference
 is in the permitted scalar representatives on the existing directions. Its
-selected frame has no pair from the original pools. The separate independent
-consumer is being extended to check this sharper certificate before it is
-promoted to the final evidence bundle.
+selected frame has no pair from the original pools. The independent epsilon-polynomial consumer passes for this sharper certificate.
+Its thick dictionary has21 cyclic phase orbits, compared with9 in the source;
+12 factors lie on new R-scalar rays within the existing S-projective directions.
+Both sectors of its full frame use just two exact thin-factor families. Thus
+the original-pool restriction below depends on the finite thick dictionaries.
 
 Construction: first solve a binary16-pair rank-one frame over
 F4[eta]/eta^2, retaining source residue points and stated factor restrictions.
@@ -67,12 +69,14 @@ justify descent. A proof for the exact source must retain its fixed finite
 thick scalar choices; an argument using just projective directions is also
 insufficient. This result does not claim that exact-source descent is false.
 
-### An actual source restriction: two thin families in each sector are impossible
+### An actual source restriction: at least three thin families in each sector
 
 Use the unique thin projective family of each original pool point. A full frame
 needs at least two thin families per sector because one has binary span64.
-If X uses only two right thin lines, its128 selected X vectors split into two
-64-dimensional S-rank-two spaces and each subset spans its space. A selected
+The thin pair{1,2} shares a residue line and has total X span124, so it cannot
+support a basis. Every other pair is unimodular over S. If X uses such a pair,
+its128 selected X vectors split into two64-dimensional spaces and each subset
+spans its space. A selected
 Z vector in the dual part must therefore have its right thick line orthogonal
 to the other X thin line. Each dual part has64 independent Z vectors.
 
@@ -90,9 +94,45 @@ thin family4 and thick types{3,5}; only16 of its32 vectors have a unit pairing
 column against those32 X vectors (the other16 columns have weight2). Thus it
 cannot supply32 dual partners. This excludes the two-by-two thin-family case.
 The corresponding X-thin-family3 cell also has only16 unit columns among48
-Z candidates. Direct certificate replay and a separate source-pool bridge are
-being prepared. Frames using at least three thin families in one sector remain
-unresolved. Using just two in one sector alone is not yet excluded.
+Z candidates. An asymmetric128-vector X-basis control with just one critical
+monomial verifies that this argument assumes neither cyclic invariant bases
+nor a large critical monomial count.
+
+A stronger result excludes two thin families in **either sector individually**.
+If X uses only{3,4}, the64 selected points with thin factor B4 must pair to
+64 source Z points with right thick types{3,5}. This forced block has144
+candidate X points and160 candidate Z points. Its necessary degree-two cyclic
+moment SDP is infeasible, certified by `block4-dual64.json`. Cyclic averaging
+is applied to moments of a hypothetical arbitrary frame; no frame symmetry
+is assumed. One dummy X orbit pads the rectangular block to10-by10 orbits.
+
+The certificate uses denominator2^40 and12822 scalar linear terms. If Ax<=b
+are its source moment inequalities, Y is its rational PSD moment dual, and r
+is the exact stationarity residual, the0<=moment<=1 bounds give
+b dot y >= sum(min(r_j,0)). The certificate instead has
+
+    b dot y numerator = -1099511517836
+    residual box lower numerator = -35197114
+    contradiction gap numerator = -1099476320722 < 0.
+
+The independent consumer checks every scalar row against the source moment
+constraints and every integer residual exactly. It verifies the rational dual
+matrix is PSD using256-bit Arb interval arithmetic on nine Fourier blocks
+(dimensions21, then seven40s, then20). Rational preconditioning and strict
+Gershgorin bounds make this a checked interval proof, not an eigenvalue tolerance.
+The physical88-pair frame supplies a40-pair positive block control; all82 unique
+equalities and12740 unique inequalities pass at their exact moments. Four
+corrupted dual certificates are rejected.
+
+The physical sector exchange L(M)=P M^T Q is beta-self-adjoint (all16384
+binary-basis pairings checked) and bijects the original720 pools while preserving
+the thin owner labels. Therefore (X,Z)->(L^-1 Z,L X) preserves the canonical
+Gram matrix and transfers the one-sector obstruction to Z. The integrated
+consumer `verify_three_thin_theorem.py` rechecks all ten candidate thin pairs,
+the forced block, the exact dual and this exchange. Consequently every full
+original minimum-pool frame uses at least three thin families **in each sector**.
+This is an ordinary computer-assisted partial theorem, not a Lean completion.
+Three-to-five-family frames remain unresolved.
 
 ### One-sided inverse-pool cuts
 
@@ -126,3 +166,29 @@ least min{d_Z(w):w in W, w!=0}. Hamming sphere packing (and puncturing for even
 distance) therefore yields stronger subspace occupancy cuts. Their value on
 these source pools has not yet been established; they are a possible next
 mathematical strengthening, not a claimed obstruction.
+
+
+### Source binary-rank inequalities strengthen the moment model
+
+For any subset S of one source pool, a selected frame contains at most rank(S)
+points in S. Multiplying by another Boolean selection variable and averaging
+over cyclic shifts gives conditional inequalities as well as first-moment
+bounds. These preserve arbitrary asymmetric frames. The rank is the literal
+binary rank of finite source points, retaining the source scalar representatives.
+
+All nontrivial rectangular thick-by-thin subcollections were enumerated:6283
+per sector. In the first three-family model, X support contained in{0,1,2},
+8205 applicable rectangles plus120 conditional rectangle bounds make the
+necessary moment SDP infeasible. An exact rational dual has been checked by
+an independent epsilon-coordinate consumer, recomputing all8205 ranks and
+verifying its182807 scalar terms and nine PSD blocks. Its residual-corrected
+gap is -1099384680689/1099511627776. This excludes that support, not every
+three-family support. Other triples are being screened and only checked duals
+will be promoted to exclusions.
+
+A numerical full-five-family model with all12566 first-moment rank bounds and
+120 conditional rectangles is still feasible, with no remaining detected
+rectangle violation above2e-5. This is a floating-point result, not an exact
+feasible-point certificate or a physical frame. The linear-only version of
+the{0,1,2} model is numerically feasible, so the successful exclusion uses the
+PSD moment constraint. No general runtime gain has been demonstrated.
