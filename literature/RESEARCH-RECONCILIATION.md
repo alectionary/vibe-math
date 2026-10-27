@@ -217,6 +217,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: l-f91-c16-pool-inversion-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion.. Remaining at that dated checkpoint: No unrestricted-width or Lean completion. No full-C16 search resumed. Period-two quotient and alternative identity models UNKNOWN. Source-specific residue descent unproved; generic descent explicitly false. No new academic full text retrieved or screened; prior source/access gaps retained.. [Report](../formalization/canonical-width/c16/INVERSION.md) · [Verification](../formalization/canonical-width/c16/inversion-results/verification.json) · [Prior art](../formalization/canonical-width/c16/inversion-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.

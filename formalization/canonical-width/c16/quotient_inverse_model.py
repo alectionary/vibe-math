@@ -12,12 +12,12 @@ def fold(v,j):
  return out
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--period',type=int,choices=[1,2,4,8],required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=int,default=30);args=ap.parse_args();root=Path(__file__).parent;j=args.period;target=8*j
+ ap=argparse.ArgumentParser();ap.add_argument('--period',type=int,choices=[1,2,4,8],required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=int,default=30);ap.add_argument('--target',type=int);ap.add_argument('--kissat',type=Path,default=Path('/private/tmp/c16-kissat/build/kissat'));ap.add_argument('--drat-trim',type=Path,default=Path('/private/tmp/c16-drat-trim/drat-trim'));args=ap.parse_args();root=Path(__file__).parent;j=args.period;dimension=8*j;target=args.target if args.target is not None else dimension;assert 1<=target<=dimension
  X=sorted({fold(int(v,16),j) for v in (root/'pools/xcoords.txt').read_text().split()});Z=sorted({fold(int(v,16),j) for v in (root/'pools/zcoords.txt').read_text().split()});assert len(X)==len(Z) and 0 not in X and 0 not in Z
- patterns=[[(x&z).bit_count()%2 for z in Z] for x in X];clauses,top=encode(patterns,target,coverage=True);cnf=args.output.with_suffix('.cnf');proof=args.output.with_suffix('.drat');log=args.output.with_suffix('.log')
- cnf.write_text(f'p cnf {top} {len(clauses)}\n'+''.join(' '.join(map(str,c))+' 0\n' for c in clauses));r={'status':'RUNNING','period':j,'binary_dimension':target,'pool_sizes':[len(X),len(Z)],'variables':top,'clauses':len(clauses),'CNF_SHA256':hashlib.sha256(cnf.read_bytes()).hexdigest(),'source_question_answered':False,'scope':'projected cyclic quotient only; a generic full-frame descent implication is false'};args.output.write_text(json.dumps(r,indent=2)+'\n');start=time.monotonic()
+ patterns=[[(x&z).bit_count()%2 for z in Z] for x in X];clauses,top=encode(patterns,target,coverage=target==dimension);cnf=args.output.with_suffix('.cnf');proof=args.output.with_suffix('.drat');log=args.output.with_suffix('.log')
+ cnf.write_text(f'p cnf {top} {len(clauses)}\n'+''.join(' '.join(map(str,c))+' 0\n' for c in clauses));r={'status':'RUNNING','period':j,'binary_dimension':dimension,'target_pairs':target,'pool_sizes':[len(X),len(Z)],'variables':top,'clauses':len(clauses),'CNF_SHA256':hashlib.sha256(cnf.read_bytes()).hexdigest(),'source_question_answered':False,'scope':'projected cyclic quotient only; a generic full-frame descent implication is false'};args.output.write_text(json.dumps(r,indent=2)+'\n');start=time.monotonic()
  with log.open('w') as out:
-  try:proc=subprocess.run(['/private/tmp/c16-kissat/build/kissat',f'--time={args.seconds}',str(cnf),str(proof)],stdout=out,timeout=args.seconds+5);code=proc.returncode
+  try:proc=subprocess.run([str(args.kissat),f'--time={args.seconds}',str(cnf),str(proof)],stdout=out,timeout=args.seconds+5);code=proc.returncode
   except subprocess.TimeoutExpired:code=-15
  text=log.read_text();r.update(seconds=time.monotonic()-start,returncode=code)
  if 's SATISFIABLE' in text:
@@ -28,7 +28,7 @@ def main():
  elif 's UNSATISFIABLE' in text:
   r['status']='QUOTIENT_UNSAT_PENDING_CHECK';args.output.write_text(json.dumps(r,indent=2)+'\n')
   try:
-   checked=subprocess.run(['/private/tmp/c16-drat-trim/drat-trim',str(cnf),str(proof)],capture_output=True,text=True,timeout=60);args.output.with_suffix('.checked.log').write_text(checked.stdout+checked.stderr)
+   checked=subprocess.run([str(args.drat_trim),str(cnf),str(proof)],capture_output=True,text=True,timeout=60);args.output.with_suffix('.checked.log').write_text(checked.stdout+checked.stderr)
    if checked.returncode==0 and 's VERIFIED' in checked.stdout:r['status']='QUOTIENT_UNSAT_CHECKED'
   except subprocess.TimeoutExpired:r['proof_check']='TIME_LIMIT'
   r['proof_SHA256']=hashlib.sha256(proof.read_bytes()).hexdigest()

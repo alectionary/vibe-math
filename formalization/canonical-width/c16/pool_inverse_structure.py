@@ -296,11 +296,30 @@ def type_span_analysis(d):
  return {'thin_factors':thin,'type_spans':records,'subsets_independently_checked':1024,'source_question_answered':False}
 
 
+def exchange_normal_form(tensor):
+ # E exchanges physical sectors in the original logical coordinates.
+ C=tensor['binary_ring_coordinate_change'];D=tensor['dual_coordinate_change'];perm=[0,1,4,5,2,3,6,7]
+ E=[[int(j==perm[i]) for j in range(8)] for i in range(8)];H=[[0]*8 for _ in range(8)]
+ for i in range(4):H[2*i][2*i]=H[2*i][2*i+1]=H[2*i+1][2*i]=1
+ L=matmul(matmul(matmul(H,D),E),matinv(C))
+ V=[[tuple(L[i][2*j] for i in [2*k,2*k+1]) for k in range(4)] for j in range(4)]
+ assert all(tuple(L[i][2*j+1] for i in [2*k,2*k+1])==smul((0,1),V[j][k]) for k in range(4) for j in range(4))
+ v00,v10,v01,v11=V
+ i,j,value=next((i,j,v00[2*j+i]) for i in range(2) for j in range(2) if sunit(v00[2*j+i]))
+ p0=[v00[2*j+k] for k in range(2)];r0=[smul(v00[2*k+i],sinverse(value)) for k in range(2)]
+ i0=next(i for i in range(2) if sunit(p0[i]));j0=next(j for j in range(2) if sunit(r0[j]))
+ r1=[smul(v10[2*k+i0],sinverse(p0[i0])) for k in range(2)];p1=[smul(v01[2*j0+k],sinverse(r0[j0])) for k in range(2)]
+ assert [rank_one(p0,r0),rank_one(p0,r1),rank_one(p1,r0),rank_one(p1,r1)]==V
+ assert sunit(sadd(smul(p0[0],p1[1]),smul(p0[1],p1[0])))
+ assert sunit(sadd(smul(r0[0],r1[1]),smul(r0[1],r1[0])))
+ return {'R_matrix':L,'S_linear':True,'form':'P M^T Q','P_columns':[p0,p1],'Q_rows':[r0,r1],'P_Q_invertible':True}
+
+
 def main():
     import hashlib
     ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();root=Path(__file__).parent
     arrangement=analyze(root);tensor=tensor_analysis(root,arrangement);dictionary=tensor_dictionaries(tensor,arrangement['groups']);spans=type_span_analysis(dictionary)
-    result={'status':'EXACT_POOL_TENSOR_NORMAL_FORM','canonical_question_answered':False,'ring':'R=F2[t]/(t^16-1), S=F4 tensor R','arrangement':arrangement,'tensor':tensor,'dictionary':dictionary,'span_constraints':spans,'source_hashes':{side:hashlib.sha256((root/f'pools/{side}coords.txt').read_bytes()).hexdigest() for side in ['x','z']}}
+    result={'status':'EXACT_POOL_TENSOR_NORMAL_FORM','canonical_question_answered':False,'ring':'R=F2[t]/(t^16-1), S=F4 tensor R','arrangement':arrangement,'tensor':tensor,'dictionary':dictionary,'span_constraints':spans,'sector_exchange':exchange_normal_form(tensor),'source_hashes':{side:hashlib.sha256((root/f'pools/{side}coords.txt').read_bytes()).hexdigest() for side in ['x','z']}}
     args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'status':result['status'],'X_pool_rank_one':tensor['X_determinant_nonzero']==0,'Z_pool_rank_one':tensor['Z_determinant_nonzero']==0,'complete_cartesian_equality':dictionary['complete_cartesian_pool_equality'],'minimum_dictionary_types':4,'three_type_rank_bound':125,'canonical_question_answered':False}))
 
 if __name__=='__main__':main()

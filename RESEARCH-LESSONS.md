@@ -215,3 +215,22 @@ run into a quickly certifiable point. Local Hall pruning removed15.6% of phase
 choices in a conditional benchmark, but did not establish a global search speedup.
 These are bounded method results, while the original width question stays open.
 [Models, certificates and comparison scope](formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md).
+
+
+### Establish pool-preserving coordinate bridges before using module reductions
+
+The October27 C16 inversion study found an exact rank-one Cartesian description
+of both source pools over a finite local ring. Checking the adjoint coordinate
+map, every pool vector and every cross-pairing made the tensor interpretation
+usable for arbitrary binary bases. The thin-factor congruence then gave a
+written dimension formula and necessary type-spanning constraints without
+another global exhaustive search.
+
+A quotient's small maximum frame is not automatically a bound on the original
+frame. An explicit primitive free-cyclic counterexample has a full frame but no
+full residue frame. A separate trace-dual product basis refutes a generic
+half-basis-in-one-factor-line argument. Keep the source's joint hypotheses in
+the proposed lifting lemma, and test each claimed implication on small literal
+examples before transferring a reduced UNSAT certificate. Here the original
+question remains open, and no global solver speedup or Lean library reuse was
+established. [Proofs, counterexamples and scope](formalization/canonical-width/c16/INVERSION.md).
