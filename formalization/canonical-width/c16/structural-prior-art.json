@@ -1,0 +1,68 @@
+{
+  "checked_on": "2026-10-27",
+  "canonical_target": "L-F91-c16-unrestricted-width",
+  "task": "Read-only applicability assessment requested by user; no new search campaign or solver installation.",
+  "repository": "https://github.com/openai/math",
+  "commit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "inspected": [
+    {
+      "path": "lean/OAI/Algorithms/SubexponentialSAT/Main.lean",
+      "scope": "entire small import/interface module"
+    },
+    {
+      "path": "lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean",
+      "scope": "endpoint statements and proof assembly; not a transitive proof build"
+    },
+    {
+      "path": "lean/OAI/Algorithms/SubexponentialSAT/SqrtLog/StatementCanonical.lean",
+      "scope": "complete statement; exponent scale includes squared log-log"
+    },
+    {
+      "path": "lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/NativeLargeEntry.lean",
+      "scope": "complete endpoint and existential constants/cutoff construction"
+    },
+    {
+      "path": "lean/ComparatorChallenges/SubexponentialSAT.json",
+      "scope": "permitted axioms and named endpoint only; comparator not run"
+    },
+    {
+      "path": "lean/OAI/Combinatorics/MatroidCounting/CommonBases.lean",
+      "scope": "definitions and main theorem statement; remainder of large file not audited"
+    },
+    {
+      "path": "lean/OAI/Combinatorics/MatchingPSD/Main.lean",
+      "scope": "complete small endpoint: PSD-rank lower bound"
+    },
+    {
+      "path": "lean/OAI/Combinatorics/StableGraphs/ExteriorBounds.lean",
+      "scope": "scope comments and initial definitions; moduli-space stable graphs, not direct candidate-pair graph result"
+    },
+    {
+      "path": "lean/OAI/Algebra/FiniteTensor/Main.lean",
+      "scope": "single import only; no applicability established"
+    }
+  ],
+  "findings": [
+    "SAT formalization is the direct algorithmic lead, but no practical performance or executable extraction was established. SAT clause width differs from canonical frame width.",
+    "Common-basis independence conditions do not enforce an identity cross-pairing matrix; no reduction of the full C16 problem to two-matroid common bases was established.",
+    "MatchingPSD is a complexity lower-bound result, not an improved matching solver.",
+    "Recommend a bounded symmetry-reduced SOS/SDP certificate experiment and a separate algebraic cyclic-filtration analysis; neither has been run or shown decisive."
+  ],
+  "primary_tool_docs": [
+    "https://jump.dev/SumOfSquares.jl/stable/",
+    "https://doc.sagemath.org/html/en/reference/matroids/index.html",
+    "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Combinatorics/Matroid/Basic.html"
+  ],
+  "paper_screening": "Repository catalog abstracts were used for discovery. No additional manuscript full text was retrieved or claimed fully screened; no canonical inventory additions or resolution claims.",
+  "continuation": {
+    "start_UTC": "2026-10-27T17:32:45Z",
+    "scope": "bounded structural-method comparison, no new current-resolution literature campaign",
+    "source_version": "Lee arXiv:2610.06820v1 Proposition9 equation50",
+    "OpenAI_build_status": "selected source interfaces inspected; no transitive Lean build or executable extraction",
+    "X_coverage": "prior authenticated-access gap remains; no new coverage claimed",
+    "paper_screen_limit": "The OpenAI software library is not a full-text screen of its 721 manuscripts; their source questions remain unassessed. Prior F99/F100 and product-basis leads remain open screening tasks.",
+    "canonical_entry_delta": 0,
+    "eligible_target_delta": 0,
+    "completed_canonical_Lean_target_delta": 0
+  }
+}

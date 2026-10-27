@@ -1,0 +1,56 @@
+MODEL_BUILT {"status": "RUNNING", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 16, "orbit_types": 45, "target_pairs": 128, "control": null, "solver": "SCS", "iterations_limit": 5000, "model_seconds": 1.9732590410276316}
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+(CVXPY) Oct 27 11:22:14 AM: Your problem has 72990 variables, 535325 constraints, and 0 parameters.
+(CVXPY) Oct 27 11:22:14 AM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 27 11:22:14 AM: DCP verification time: 0.0000 seconds.
+(CVXPY) Oct 27 11:22:14 AM: Expression tree has 12 nodes.
+(CVXPY) Oct 27 11:22:14 AM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 27 11:22:14 AM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 27 11:22:14 AM: Your problem is compiled with the CPP canonicalization backend.
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+(CVXPY) Oct 27 11:22:14 AM: Using cached ASA map, for faster compilation (bypassing reduction chain).
+(CVXPY) Oct 27 11:22:14 AM: Finished problem compilation (took 1.510e-02 seconds).
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+(CVXPY) Oct 27 11:22:14 AM: Invoking solver SCS  to obtain a solution.
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 64980, constraints m: 414455
+cones: 	  z: primal zero / dual free vars: 362
+	  l: linear vars: 291782
+	  s: psd vars: 122311, ssize: 9
+settings: eps_abs: 1.0e-07, eps_rel: 1.0e-07, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 5000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 2.93e+02
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 2547868, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 1.34e+02  4.28e+02  6.00e+03 -3.00e+03  1.00e-01  1.88e+00 
+   250| 3.33e-06  1.31e-08  1.35e-08  6.75e-09  1.44e-05  1.94e+01 
+------------------------------------------------------------------
+status:  solved
+timings: total: 1.94e+01s = setup: 1.77e+00s + solve: 1.76e+01s
+	 lin-sys: 2.43e+00s, cones: 1.41e+01s, accel: 3.69e-01s
+------------------------------------------------------------------
+objective = 0.000000
+------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+(CVXPY) Oct 27 11:22:33 AM: Problem status: optimal
+(CVXPY) Oct 27 11:22:33 AM: Optimal value: 0.000e+00
+(CVXPY) Oct 27 11:22:33 AM: Compilation took 1.510e-02 seconds
+(CVXPY) Oct 27 11:22:33 AM: Solver (including time spent in interface) took 1.938e+01 seconds
+{"status": "optimal", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 16, "orbit_types": 45, "target_pairs": 128, "control": null, "solver": "SCS", "iterations_limit": 5000, "model_seconds": 1.9732590410276316, "total_seconds": 21.389980915992055, "solver_seconds": 17.593074958000003, "solver_iterations": 250, "maximize_margin": false, "objective": 0.0, "independent_numeric_check": {"linear_max_error": 5.224720212027023e-09, "errors": {"diagonal": 3.4049055241958115e-10, "cardinality": 9.778489129530499e-11, "cardinality_products": 5.224720212027023e-09, "selected_degrees": 3.6595496077929113e-10, "pair_bounds": 1.4889764421432972e-10, "transpose": 0.0, "monomial_cap": 0.0}, "minimum_frequency_eigenvalues": [6.823879972169152e-13, 9.988904184112436e-06, 1.0004131797031831e-05, 1.0001733874540147e-05, 1.0001091558587183e-05, 9.995657825904284e-06, 9.997222476079198e-06, 1.000014327724516e-05, 9.994445479280466e-06], "PSD_min_eigenvalue": 6.823879972169152e-13, "evidence": "floating-point residual check; no exact certificate"}, "shape_marginals": false}
