@@ -99,9 +99,6 @@ def analyze(root):
  result={'status':'EXACT_SUBSPACE_COORDINATES','groups':groups,'ambient_module_basis_orbits':chosen,'U':U,'U_inverse':Ui,'normalized_graphs':J,'graph_commutator_zero':not any(v for r in commutator for v in r),'J1_square_span_I_J1':ring_span_solve([I,J[1]],matmul(J[1],J[1])),'J2_span_I_J1':ring_span_solve([I,J[1]],J[2]),'root_coordinates':coordinates,'B_normalizer':normalizer}
  return result
 
-if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();result=analyze(Path(__file__).parent);args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k not in ['U','U_inverse','root_coordinates','B_normalizer','normalized_graphs']}))
-
 
 def ring_valuation(a):
  # Multiplicity of t+1, including16 for zero.
@@ -297,3 +294,13 @@ def type_span_analysis(d):
    profile.append(actual)
   records[side]={'type_rank_profile':profile,'augmentation_type_vectors':aug,'minimum_types_for_full_span':min(mask.bit_count() for mask,r in enumerate(profile) if r==128),'three_type_maximum':max(r for mask,r in enumerate(profile) if mask.bit_count()==3),'four_type_spanning_subsets':sum(r==128 and mask.bit_count()==4 for mask,r in enumerate(profile))}
  return {'thin_factors':thin,'type_spans':records,'subsets_independently_checked':1024,'source_question_answered':False}
+
+
+def main():
+    import hashlib
+    ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();root=Path(__file__).parent
+    arrangement=analyze(root);tensor=tensor_analysis(root,arrangement);dictionary=tensor_dictionaries(tensor,arrangement['groups']);spans=type_span_analysis(dictionary)
+    result={'status':'EXACT_POOL_TENSOR_NORMAL_FORM','canonical_question_answered':False,'ring':'R=F2[t]/(t^16-1), S=F4 tensor R','arrangement':arrangement,'tensor':tensor,'dictionary':dictionary,'span_constraints':spans,'source_hashes':{side:hashlib.sha256((root/f'pools/{side}coords.txt').read_bytes()).hexdigest() for side in ['x','z']}}
+    args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'status':result['status'],'X_pool_rank_one':tensor['X_determinant_nonzero']==0,'Z_pool_rank_one':tensor['Z_determinant_nonzero']==0,'complete_cartesian_equality':dictionary['complete_cartesian_pool_equality'],'minimum_dictionary_types':4,'three_type_rank_bound':125,'canonical_question_answered':False}))
+
+if __name__=='__main__':main()
