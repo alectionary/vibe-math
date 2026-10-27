@@ -1,6 +1,6 @@
 ---
 name: replication-paper
-description: "Replicate a dissertation or published result using a committed replication plan, a complete evidence handoff, standalone verdict-first manuscript, independent cold-reader review, and verified delivery. Use for full-design replications, claim inventories, numerical comparisons, uncertainty, availability audits, replication papers and authorized PRs or announcements."
+description: "Replicate a dissertation or published result using a committed replication plan, a complete evidence handoff, standalone verdict-first manuscript, independent cold-reader review, and verified delivery. Use for full-design replications, claim inventories, numerical comparisons, uncertainty, availability audits, author pronouns, replication papers and authorized PRs or announcements."
 ---
 
 # Replication paper
@@ -30,6 +30,14 @@ check. Details are in [CONTRIBUTING.md](../../../CONTRIBUTING.md).
 Use
 [open-question research](../open-question-research/SKILL.md) for proof methods
 when needed; keep its research chronology out of the manuscript.
+
+## Author pronouns
+
+Formal text refers to an author by surname. Where a sentence needs a pronoun,
+follow [author pronouns](references/author-pronouns.md). The lookup is WGND 2.0
+for the author's country of origin. A gendered pronoun requires a weight of at
+least 0.9 and a source count of at least 30. A pronoun the author states is
+the one the note uses.
 
 ## Full design
 
@@ -337,6 +345,7 @@ study considers the paper:
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
 - [ ] The paper is current: `paper_freshness.py check` reports `current` (packet, packet inputs, writer inputs and outputs re-hash; no committed evidence unread; fresh writer context), every study commit carries a `Paper:` trailer (`paper_freshness.py commits --since <merge-base>`), and while it was not current the pull request was a draft with the note.
 - [ ] The paper names no commit hash or working branch of this repository and links only to `blob/master`/`tree/master`; commit pins live in the delivery record and PR only (`scripts/commit_refs.py`, run by the done check; the PDF link policy refuses commit links).
+- [ ] An author is referred to by surname. A pronoun from a given name follows [author pronouns](references/author-pronouns.md) and cites WGND 2.0.
 - [ ] `preflight.py done` exits 0 (complete). Exit 3 means incomplete: no errors, but neither the source PDF nor a committed inventory of it is available, and that is recorded, or the paper is a shared-context draft; the study is not done. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
