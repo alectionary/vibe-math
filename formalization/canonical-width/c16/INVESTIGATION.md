@@ -1,5 +1,24 @@
 # Unrestricted canonical width of \(C^{\mathrm{LP}}_{16,9}\)
 
+
+## Current status after the 2026-10-27 audit
+
+The unrestricted width is still 16 or 18. The takeover found that the earlier
+three-partner domain was incomplete whenever monomials were omitted. Corrected
+complete-domain searches now exclude every listed-pool CSS frame containing
+13 or more seed-4 X monomials. They check 70,858,800, 1,117,382,040 and
+9,340,813,224 assignments for 15, 14 and 13 retained monomials, with 9, 6,897
+and 449,904 full-rank quotient cases respectively; all exhaust without a cap.
+
+The old claim that 33 twelve-monomial rotation orbits were excluded is
+retracted: only a restricted partner subfamily was searched. The original
+12-monomial accounting remains as a historical record, with that scope limit.
+See [the current report](TAKEOVER.md), [complete logs](takeover-results/manifest.json),
+[physical coordinate audit](audit_pools.py), and [combined verifier](verify_takeover.py).
+The narrative below records the earlier block; its three-prototype counts
+are superseded by the corrected-domain counts above. No exact value of f,
+independent pool-completeness proof or Lean certificate has been obtained.
+
 Canonical inventory identifier: `L-F91-c16-unrestricted-width`.
 
 ## Follow-up session
@@ -42,9 +61,9 @@ Any CSS canonical frame that contains all 16 seed-4 X monomials must pair them w
 
 Evidence label: **exact finite computation**. An independent Python rank on the three uniform assignments returns \((80,61)\), \((224,96)\), and \((272,96)\) for (pool count, rank), and the hill-climbed assignment \((2,1,2,2,1,2,2,1,2,1,1,2,1,2,2,1)\) returns rank 109. The C++ scan starts at the all-type-0 assignment with rank 61 and never exceeds 109. The same three uniform frames that do extend to a 32-pair block-\(B\) dual basis, by pairing the complementary seed-5 monomials with X vectors of seed-5 block a single bit, still leave an orthogonal X pool of rank 80.
 
-## Thirteen, fourteen, or fifteen seed-4 monomials also fail
+## Historical three-prototype searches for thirteen, fourteen, or fifteen monomials
 
-The same partner list is forced for any subset of the monomials. If a frame contains \(m\) of them, those partners are independent, the complementary X pool has to span a space of dimension \(128-m\), and the Z pool orthogonal to those monomials has to supply a dual basis of that space. Translation preserves the pools and the dot product, because it rotates every 16-bit seed by the same amount. So it is enough to omit one fixed bit when \(m=15\), and to omit a pair at cyclic distance \(1,\ldots,8\) when \(m=14\).
+The earlier search assumed the same three-partner list for a subset of the monomials. The 2026-10-27 audit found that assumption false: partners may also carry support on omitted bits. All counts in this historical section concern that restricted subfamily. If a frame contains \(m\) of them, those partners are independent, the complementary X pool has to span a space of dimension \(128-m\), and the Z pool orthogonal to those monomials has to supply a dual basis of that space. Translation preserves the pools and the dot product, because it rotates every 16-bit seed by the same amount. So it is enough to omit one fixed bit when \(m=15\), and to omit a pair at cyclic distance \(1,\ldots,8\) when \(m=14\).
 
 For \(m=15\), `seed4_fifteen.cpp` visits all \(3^{15}=14348907\) partner assignments with bit 0 omitted. The visit count matches. The maximum orthogonal X rank is 113, equal to the required dimension, and exactly nine assignments attain it:
 
@@ -69,21 +88,21 @@ That is 2930 full-rank assignments. Each quotient search exhausts. Most trees di
 
 For \(m=13\) there are 35 rotation orbits of omitted triples. Each orbit has \(3^{13}=1594323\) partner assignments, and every visit count matches. Every orbit attains orthogonal rank 115. Together they contain 96807 full-rank assignments, between 399 and 6760 in an orbit. The quotient search finds no dual basis. One assignment, `*1*212112112*211`, uses 318114 nodes; the other 96806 finish under 200000. Python reproduces the node counts 2 and 49 on two of those trees.
 
-Therefore no width-16 CSS canonical frame contains 13, 14, 15, or 16 of the seed-4 X monomials. Frames that use 12 or fewer of them are not settled by this count. The C++ sources under `search/` are the earlier sampled climbers. They read the same pool files and do not decide \(f\).
+These restricted searches did not justify the original full-domain inference. The corrected complete-domain search at the top of this note now excludes 13 or more seed-4 monomials. Frames using 12 or fewer remain unresolved. The C++ sources under `search/` are the earlier sampled climbers. They read the same pool files and do not decide \(f\).
 
 ## Twelve seed-4 monomials, stopped unfinished
 
-There are 116 rotation orbits of 4-subsets of the 16 seed-4 bits. With a zero node cap, `seed4_fifteen.cpp` ranked every orbit. Each orbit has \(3^{12}=531441\) partner assignments, and every visit count matches. Every orbit attains orthogonal X rank 116, the dimension a 12-monomial frame needs, so rank is not an obstruction. There are 1008952 full-rank assignments, from 1035 to 17143 in an orbit.
+This section concerns only the historical three-prototype partner subfamily. It does not exclude a complete-domain orbit. There are 116 rotation orbits of 4-subsets of the 16 seed-4 bits. With a zero node cap, `seed4_fifteen.cpp` ranked every orbit. Each orbit has \(3^{12}=531441\) partner assignments, and every visit count matches. Every orbit attains orthogonal X rank 116, the dimension a 12-monomial frame needs, so rank is not an obstruction. There are 1008952 full-rank assignments, from 1035 to 17143 in an orbit.
 
 The quotient search used the binary `complete_z` built at 2026-10-26T21:45:34Z, before the closeout edit of the same source, with a cap of 300000 nodes on four cores. It was killed at 2026-10-26T23:40:28Z. A finished orbit is one whose DEAD, CAPPED, and FOUND lines add up to its full-rank count and whose process exit is 2 or 3. Exit 143 is a killed process. The accounting is `seed4-twelve-partial.json`.
 
-- 33 orbits, containing 319061 full-rank assignments, exhaust with no dual basis.
+- The restricted partner subfamilies in 33 orbits, containing 319061 full-rank assignments, exhaust with no dual basis. Other allowed partners in those same orbits were not covered.
 - 48 further orbits were searched to the end of their assignment lists and contain 98 assignments that hit the cap, plus 545321 that died under it.
 - 7 orbits were interrupted, including 2 assignments that had already hit the cap. Rerun those orbits. Their partial logs are not a finished proof.
 - 28 orbits, containing 102838 full-rank assignments, were not started.
 - The logs contain no FOUND line. The 100 capped type strings are `seed4-twelve-capped.txt`.
 
-Evidence label: the rank scan, and the exhaustion of those 33 orbits, are **exact finite computation**. The capped, interrupted, and unstarted orbits are **not established**. Together they do not prove that every 12-monomial frame fails, and they do not exhibit a frame.
+Evidence label: the rank scan and exhaustion of the restricted subfamilies in those 33 orbits are **exact finite computation**. They do not exclude the whole orbits. The capped, interrupted, and unstarted orbits are **not established**. Together they do not prove that every 12-monomial frame fails, and they do not exhibit a frame.
 
 Rank-log mtimes run from 2026-10-26T21:57:37Z through 2026-10-26T22:02:35Z. The four quotient sessions were created at 2026-10-26T22:05:35Z and killed at 2026-10-26T23:40:28Z, about 95 minutes of wall time.
 
@@ -91,7 +110,7 @@ The closeout source rejects a branch when the pairs already chosen and the survi
 
 ## Question still open
 
-The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. No width-16 CSS frame contains 13 or more of the seed-4 X monomials. Thirty-three orbits of the 12-monomial case are impossible, and the other 12-monomial orbits are unfinished. Frames using fewer than 12 monomials, the global matching, and the conditional mixed-Pauli reduction remain open. There is no Lean certificate.
+The unrestricted canonical width \(f(C^{\mathrm{LP}}_{16,9})\) is still either 16 or 18. No width-16 CSS frame contains 13 or more of the seed-4 X monomials. No complete-domain twelve-monomial orbit is excluded by the old logs; their 33-orbit claim used incomplete partner domains. Frames using fewer than 12 monomials, the global matching, and the conditional mixed-Pauli reduction remain open. There is no Lean certificate.
 
 A pure CSS width-16 canonical basis would be an admissible unrestricted basis, so it would prove \(f\le 16\). No such 128-pair basis was found. Failure of the searches below is not a proof that none exists. Ruling out only CSS representatives does not prove \(f=18\) unless the mixed-Pauli reduction is accepted.
 
@@ -172,9 +191,9 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 | No width-16 CSS frame contains 15 seed-4 X monomials | Exact finite computation |
 | No width-16 CSS frame contains 14 seed-4 X monomials | Exact finite computation |
 | No width-16 CSS frame contains 13 seed-4 X monomials | Exact finite computation |
-| Every 12-monomial orbit attains orthogonal rank 116; 1008952 full-rank assignments | Exact finite computation |
-| 33 of 116 twelve-monomial orbits have no quotient dual basis | Exact finite computation |
-| The other 83 twelve-monomial orbits | Not established |
+| Historical three-prototype 12-monomial domains attain rank 116; 1008952 full-rank assignments in that subfamily | Exact finite computation |
+| Restricted partner subfamilies in 33 twelve-monomial orbits have no quotient dual basis | Exact finite computation on that subfamily; whole-orbit exclusion retracted |
+| Complete twelve-monomial partner domains | Not established |
 | No width-16 canonical basis exists | Not established |
 | \(f=16\) or \(f=18\) | Not established |
 | Lean certificate | None |
@@ -196,4 +215,4 @@ Our follow-up `RQ-F91-c16-css-frame` is a project-derived search task. It is not
 
 ## Next proposed target
 
-The user ended this block. The next useful piece is still the same question, not a new problem: finish the 12-monomial quotient, including the 100 capped assignments at a higher node cap, and then either continue to fewer monomials or replace the ladder with an argument that covers them. Do not move on to \(C_{20,10}\) or the 1024-qubit PP family while \(f\) is still open. This session does not hold the claim after closeout.
+The earlier block ended with a recommendation to finish its 100 capped trees. The later audit supersedes that recommendation: the complete partner domains must be used throughout. The next proposed target is a follow-up on the same question: decide the full twelve-monomial case or obtain a global compatibility obstruction. Merely finishing the old capped list is insufficient. Do not move on to \(C_{20,10}\) or the 1024-qubit PP family while \(f\) is still open. This session does not hold the claim after closeout.
