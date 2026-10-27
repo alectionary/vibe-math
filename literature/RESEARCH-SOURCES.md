@@ -1422,3 +1422,14 @@ OpenAI. commit7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a, inspected2026-10-27. [Pr
 - Comparison limit: No transitive Lean build or complete manuscript screen. Asymptotic constants/cutoffs do not establish finite-size gains; common-matroid-base constraints do not include the required identity cross-Gram condition. New experiments use independent available optimization libraries.
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).
+
+## PythonFlintIntervalSemantics2026 — python-flint0.9.0 general concepts and interval predicates
+
+python-flint developers. 0.9.0 documentation, inspected2026-10-27. [Primary source](https://python-flint.readthedocs.io/en/stable/general.html).
+
+- Record type: software source; access: relevant documentation read.
+- Inspected locator: Exact arithmetic, interval guarantees, precision and comparison semantics.
+- Contribution: Documents interval and comparison semantics used by the C16 rational/PSD certificate consumer.
+- Comparison limit: Software documentation, not an academic full-paper or theorem-library build; no new source-authored question screen.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).

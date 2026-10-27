@@ -119,3 +119,104 @@ the margin onto the complement of the two forced null vectors converged in250
 iterations, about21.4seconds including compilation. Rational recovery and the
 independent certificate consumer each took about2seconds. These timings diagnose
 this formulation; they are not a universal solver comparison.
+
+## Frozen Hall and flow comparison
+
+The allocator passes67072 complete small-graph/capacity controls. All saved
+phase-profile owner counts are independently reconstructed by literal integer
+adjacency multiplication. In the historical flow,6 of41 nonzero local rows
+admit510 phase choices; Hall removes none. The fresh conditional cohort uses
+seed202610271737:786 attempts produce200 accepted rows, each generated from an
+actual size4/6/8 phase shape passing individual zero/private-owner count tests.
+Hall was not used to accept rows. The baseline allows34116 phase choices;
+Hall retains28789, removing5327 (15.6%). Every removed choice has a checked
+literal Hall witness. Every row retains an alternative, so zero additional
+whole rows are excluded. This conditional cohort is not a sample of full frames.
+
+For the integer master, identical-pattern shared-owner sets yield822 exact
+supporting inequalities. A strengthened HiGHS run rejects8 flows with316 new
+common-shape cuts, then reaches a120-second step limit:435.6seconds total. The
+baseline without these inequalities rejects2 flows with81 cuts and reaches the
+same step limit:276.6seconds total. Different numbers of steps and total run
+times prevent a clean speedup claim. Neither run discovers a whole-row Hall
+cut. All397 generated shape cuts, all822 envelopes and the big-M boundaries
+pass independent finite replay. The new local constraints retain the known
+physical88-pair frame and all tested translates.
+
+## Cyclic filtration and library audit
+
+The exact substitution t=1+epsilon makes T+I the epsilon shift. Independent
+high- and low-pivot elimination agree: the entire pool projected modulo
+ epsilon^j has rank8j, while rank((T+I)^j)=8(16-j). Each of the five physical
+column groups has projected rank4j. The special pair of groups1/2 has rank
+8j-4 for j>=1; other group pairs fill8j. These finite identities give no new
+whole-pool obstruction. They remain diagnostic data, not a proof of width18.
+
+The OpenAI-library audit is preserved in `structural-prior-art.json` and linked
+in the shared source ledger. No OpenAI theorem was imported as a proof of this
+instance, no transitive Lean build was completed, and no full screen of its
+manuscript collection is claimed. Prior paper/question-screening and authenticated
+X access gaps remain explicit. The central inventory retains the same canonical
+question, eligible-target and complete Lean-target counts for this block.
+
+## Integration and next decision
+
+The work branch incorporates current upstream master before publication. Parallel
+source records and canonical targets are retained. A collision between historical
+C16 F99/F100 and already published unrelated source IDs is repaired centrally as
+F143/F144; immutable older reports keep their original names. The OpenAI audit is
+a software-source record, not an additional screened academic manuscript.
+
+The lessons update is limited to demonstrated results: certify relaxation
+strength, distinguish symmetry averaging from symmetric solutions, and retain
+local versus global comparison scope. It does not assert an overall search
+speedup or a newly solved canonical question.
+
+The strongest next bounded target is a manageable phase-enhanced relaxation with
+selective phase columns or additional higher-moment identities. The exact basic
+SDP point supplies a regression witness that any proposed strengthening should
+exclude or extend. The remaining half-turn case is a concrete restricted target,
+but extending its time limit alone would repeat the previous exhaustive approach.
+No new long campaign is silently started at this block's closeout.
+
+**Question answered:** the tested basic degree-two relaxation is exactly feasible
+at128, and no quarter-turn invariant full minimum-weight frame exists.
+**Question still open:** unrestricted width16 versus18, including half-turn and
+asymmetric full frames; no Lean completion.
+**Next proposed target:** reduce and certify the phase-enhanced necessary model,
+with the source question and physical witness checks unchanged.
+
+## Phase-enhanced attempts and experiment stop
+
+The full phase-marginal model adds a distribution over4116 rotation classes for
+each of90 sector/orbit types, linking first moments, all within-orbit second
+moments, individual zero/private-owner capacities and identical-pattern Hall
+capacities. The literal88-pair moment/distribution passes these constraints with
+zero residual. A first launch failed because CVXPY's HiGHS and OR-Tools' bundled
+HiGHS shared-library imports conflicted; the new SDP module removes that unused
+OR-Tools dependency.
+
+Two bounded full-size attempts, direct and indirect SCS, hit600-second parent
+wall limits without saving a solver point. The indirect formulation had435420
+variables,794197 conic rows and28291426 matrix coefficients. No infeasibility or
+feasibility certificate follows. Compilation was moved inside the measured wall
+budget, and a short save grace was added; the parent limit remains authoritative.
+
+A witness-support search using only phase shapes of size<=4 reduced setup cost.
+This support restriction is not a necessary full-frame condition. Its300-second
+run returned `optimal_inaccurate`; independent replay found a pair-bound residual
+about0.000771, a phase residual0.003857 and minimum frequency eigenvalue about
+-0.000208. It is not accepted as a feasible point or an obstruction. A separate
+physical4-pair control verifies the small-support phase formulas, while the
+88-pair control checks the unrestricted shape support.
+
+All experiments ended by18:35:04UTC, before the18:45 cutoff. Preservation and
+publication follow within the first90-minute review window. No additional solver
+campaign is running. The exact basic-SDP certificate and subgroup proofs are
+independent of these unsuccessful phase-enhanced numerical attempts.
+
+The interval predicate used in the PSD consumer is supported by python-flint's
+[primary documentation](https://python-flint.readthedocs.io/en/stable/general.html):
+its real/complex operations enclose rounding error, and a comparison returns true
+only when it holds throughout the input intervals. The documented semantics and
+installed0.9.0 version are recorded separately from our mathematical certificate.
