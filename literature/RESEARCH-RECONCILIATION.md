@@ -549,6 +549,16 @@ Source-question indexing extension.
 [Screen report](../literature/unl-sem/RETRIEVAL-REPAIR.md). Added **0 entries**, **0 eligible targets**, **2 paper records**, **3 full-text screens** and **0 completed proofs**.
 
 
-Current cohort: **373 canonical entries,150 eligible targets,178 paper records,146 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: l-f102-replication-sources-2026-10-27
+
+Source-question indexing extension.
+
+[Screen report](../formalization/correlated-residuals/INVESTIGATION.md). Added **3 entries**, **0 eligible targets**, **8 paper records**, **6 full-text screens** and **0 completed proofs**.
+
+- [L-F145-generic-mixed-graph](OPEN-PROBLEMS.md#l-f145-generic-mixed-graph): Characterize the mixed graphs that yield generically identifiable linear structural equation models.
+- [L-F146-half-trek-gap](OPEN-PROBLEMS.md#l-f146-half-trek-gap): Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
+- [L-F147-polytime-ancestral](OPEN-PROBLEMS.md#l-f147-polytime-ancestral): Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
+
+Current cohort: **376 canonical entries,150 eligible targets,186 paper records,152 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
 
 The current source index has **111** records, with actual access levels retained.

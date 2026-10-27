@@ -54,7 +54,7 @@ for task in seed_screens['project_derived_followups']:
 assert all(x['year']>=2001 and x['record_kind']=='doctoral_dissertation' for x in s)
 assert all(x['search_ids'] for x in a)
 searchids={x['id'] for x in search};assert all(set(x['search_ids'])<=searchids for x in a)
-assert len(w)==tot['selected_works']==41 and len({x['id'] for x in w})==41
+assert len(w)==tot['selected_works']==49 and len({x['id'] for x in w})==49
 allowed_work_retrieval={'retrieved','access_gap','acquisition_requested'}
 assert {x['retrieval']['status'] for x in w}<=allowed_work_retrieval
 for x in w:
@@ -62,9 +62,9 @@ for x in w:
   assert x['question_count'] is None and x['screen_status']=='full_text_access_gap'
 by={x['id']:x for x in w};seedids={x['id'] for x in s}
 assert all(set(x['seed_ids'])<=seedids and x['authors'] and x['title'] and x['url'].startswith('https://') for x in w)
-assert sum(x['screen_status']=='full_text_screened' for x in w)==screen['full_text_paper_screens']==tot['full_text_screens']==24
-assert sum(x['screen_status']=='full_text_access_gap' for x in w)==screen['access_gap_papers']==17
-assert len(q)==tot['method_directions']==10 and not any(x['eligible_for_coverage'] for x in q)
+assert sum(x['screen_status']=='full_text_screened' for x in w)==screen['full_text_paper_screens']==tot['full_text_screens']==30
+assert sum(x['screen_status']=='full_text_access_gap' for x in w)==screen['access_gap_papers']==19
+assert len(q)==tot['method_directions']==13 and not any(x['eligible_for_coverage'] for x in q)
 for author in a:
  for id in author['selected_work_ids']:
   assert author['seed_id'] in by[id]['seed_ids']
@@ -106,12 +106,17 @@ assert later['seed_records_added']==len(exp['added_seed_ids'])==41
 assert later['added_target_ids']==exp['new_target_ids'] and later['added_entries']==2
 assert later['full_text_screens_added']==7 and later['incomplete_paper_records_added']==6
 assert set(later['added_paper_ids'])==set(exp['new_work_ids'])
-repair=extensions[-1]
+repair=next(x for x in extensions if x['id']=='unl-sem-retrieval-repair-2026-10-26')
 assert repair['id']=='unl-sem-retrieval-repair-2026-10-26'
 assert repair['added_entries']==repair['added_eligible_targets']==0
 assert repair['full_text_screens_added']==3 and repair['incomplete_paper_records_added']==-1
 assert repair['existing_gap_sources_completed']==['F139']
-assert len(screen['excluded_passages'])==19
+idx=next(x for x in extensions if x['id']=='l-f102-replication-sources-2026-10-27')
+assert idx['added_entries']==3 and idx['added_eligible_targets']==0 and idx['completed_targets_added']==0
+assert idx['full_text_screens_added']==6 and idx['incomplete_paper_records_added']==2
+assert idx['added_target_ids']==['L-F145-generic-mixed-graph','L-F146-half-trek-gap','L-F147-polytime-ancestral']
+assert idx['added_paper_ids']==['F143','F144','F145','F146','F147','F148','F150','F151']
+assert len(screen['excluded_passages'])==22
 assert by['F134']['retrieval']['hash_scope'].startswith('UTF8 transcript')
 assert by['F132']['year']==2003 and by['F132']['relationship']=='pre_dissertation_background'
-print('PASS:99 dissertation route rechecks;7 complete dissertation screens;1 partial preview excluded;41 associated sources;24 article/work screens;10 gated directions;0 invented precise conjectures.')
+print('PASS:99 dissertation route rechecks;7 complete dissertation screens;1 partial preview excluded;49 associated sources;30 article/work screens;13 gated directions;0 invented precise conjectures.')

@@ -1,0 +1,1789 @@
+{
+  "meta": {
+    "thresholds": {
+      "multi": 14.860259000560243,
+      "single": 10.596634733096073
+    },
+    "algebraic_effects_from_equations_7_8": {
+      "direct": [
+        [
+          0.125,
+          0.25,
+          0.5
+        ],
+        [
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          0.25,
+          0.125,
+          0.25
+        ]
+      ],
+      "indirect": [
+        [
+          -0.25,
+          -0.25,
+          -0.25
+        ],
+        [
+          -0.125,
+          -0.0625,
+          -0.125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "total": [
+        [
+          -0.125,
+          0.0,
+          0.25
+        ],
+        [
+          0.375,
+          0.4375,
+          0.375
+        ],
+        [
+          0.25,
+          0.125,
+          0.25
+        ]
+      ]
+    },
+    "assumptions": [
+      "Map function is Haldane with no interference. The paper does not name one.",
+      "An RIL is an F1 selfed for 12 generations. Residual heterozygotes are coded \u00b11 with equal probability. The paper says RILs and does not give the generation or a segregation-distortion model.",
+      "Eleven markers sit at 0, 10, ..., 100 cM. The paper says 11 evenly spaced markers on a 100 cM segment.",
+      "QTL genotype codes are +1 and -1, as printed under equation (7). Which parent is +1 is arbitrary.",
+      "The analysis uses the centered ML covariance, divisor n, matching the fitting function (6). PROC TCALIS is not reimplemented.",
+      "Flanking-marker conditional expectations are computed from the same 12-generation law. Cofactors are every marker except the flanking pair. A 10 cM exclusion window is stated for the wheat scan, not for this simulation.",
+      "A QTL is counted as detected when the maximum LR in the midpoint window [0,32], (32,60], or (60,100] exceeds the printed threshold. The paper does not define the window.",
+      "The printed thresholds 14.86 and 10.60 equal chi-square 0.005 quantiles on 4 and 2 degrees of freedom. The simulation text also says the LR has p degrees of freedom for p traits.",
+      "Effects are the coefficients at the window argmax, not at the true position.",
+      "Study 2 treats the three QTL genotypes as the observed exogenous variables. It is not a marker scan.",
+      "Delta-method standard errors use the Gaussian Isserlis covariance of vech(zz^T). The QTL genotypes are \u00b11, so that covariance is an approximation.",
+      "Study 3 maps Y1, Y2, Y3 to TKWT, KPS, SPSM. GYLD is the fourth trait in the wheat application and is not in equation (7).",
+      "Study 3 copies the equation-(7) QTL coefficient matrix onto the correlation-scale path model. Those coefficients were not estimated from Campbell's correlations."
+    ],
+    "n_lines": 150,
+    "selfing_generations": 12,
+    "qtl_second_moment": [
+      [
+        0.9999999999999994,
+        0.5041203315276273,
+        0.19494285452184823
+      ],
+      [
+        0.5041203315276273,
+        0.9999999999999994,
+        0.3216606380921618
+      ],
+      [
+        0.19494285452184823,
+        0.3216606380921618,
+        0.9999999999999994
+      ]
+    ]
+  },
+  "rows": [
+    {
+      "rho": -0.6,
+      "c": -1.2,
+      "finite_reps": 400,
+      "diagonal_plim": {
+        "b12": -0.5000000000000001,
+        "b13": -0.4800000000000001,
+        "b23": -0.5,
+        "v1": 1.0239999999999996,
+        "v2": 1.7999999999999998,
+        "v3": 2.5,
+        "gamma_00": 0.24500000000000008,
+        "gamma_01": 0.3100000000000002,
+        "gamma_02": 0.62,
+        "gamma_10": 0.4999999999999999,
+        "gamma_11": 0.5000000000000002,
+        "gamma_12": 0.5,
+        "gamma_20": 0.25,
+        "gamma_21": 0.12500000000000008,
+        "gamma_22": 0.24999999999999997
+      },
+      "bow_plim_max_abs_error": 2.220446049250313e-16,
+      "diagonal_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "plim": -0.5000000000000001,
+          "mean": -0.5035153045774825,
+          "sd": 0.06457232869156466
+        },
+        {
+          "name": "b13",
+          "truth": 0.0,
+          "plim": -0.4800000000000001,
+          "mean": -0.48293939080368886,
+          "sd": 0.06287968015144785
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.5017647538126271,
+          "sd": 0.06462109111775846
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "plim": 1.0239999999999996,
+          "mean": 0.9745290844220651,
+          "sd": 0.11617354044229686
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "plim": 1.7999999999999998,
+          "mean": 1.7401811763294444,
+          "sd": 0.19870003061608155
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "plim": 2.5,
+          "mean": 2.4655680055527807,
+          "sd": 0.2886683296370297
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "plim": 0.24500000000000008,
+          "mean": 0.24623035699600557,
+          "sd": 0.09991792483480012
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "plim": 0.3100000000000002,
+          "mean": 0.3163401445913555,
+          "sd": 0.10931414927858912
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "plim": 0.62,
+          "mean": 0.6260856895463641,
+          "sd": 0.09345119323859426
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "plim": 0.4999999999999999,
+          "mean": 0.5056877390189483,
+          "sd": 0.13755720403641386
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "plim": 0.5000000000000002,
+          "mean": 0.4943826269758231,
+          "sd": 0.1337079375887357
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.499400697339169,
+          "sd": 0.11978756979251258
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "plim": 0.25,
+          "mean": 0.26700287944375894,
+          "sd": 0.15187194669413473
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "plim": 0.12500000000000008,
+          "mean": 0.12062939341361455,
+          "sd": 0.15734513937547479
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "plim": 0.24999999999999997,
+          "mean": 0.23661647281704604,
+          "sd": 0.14263042892226452
+        }
+      ],
+      "bow_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "mean": -0.5035153045774825,
+          "sd": 0.06457232869156466,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "mean": -0.5017647538126271,
+          "sd": 0.06462109111775846,
+          "delta_method_coverage": 0.9675
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "mean": 1.5594123391061603,
+          "sd": 0.19949878152509087,
+          "delta_method_coverage": 0.91
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "mean": 1.7401811763294444,
+          "sd": 0.19870003061608157,
+          "delta_method_coverage": 0.91
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "mean": 2.4655680055527807,
+          "sd": 0.2886683296370297,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "c",
+          "truth": -1.2,
+          "mean": -1.190962686154339,
+          "sd": 0.20980860010468322,
+          "delta_method_coverage": 0.9425
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "mean": 0.1171873052830053,
+          "sd": 0.11824818555226661,
+          "delta_method_coverage": 0.9525
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "mean": 0.2579283932403188,
+          "sd": 0.13301003820033752,
+          "delta_method_coverage": 0.9425
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "mean": 0.5118949996105315,
+          "sd": 0.1142785561398665,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "mean": 0.5056877390189483,
+          "sd": 0.13755720403641386,
+          "delta_method_coverage": 0.93
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "mean": 0.4943826269758231,
+          "sd": 0.1337079375887357,
+          "delta_method_coverage": 0.9425
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "mean": 0.499400697339169,
+          "sd": 0.11978756979251258,
+          "delta_method_coverage": 0.94
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "mean": 0.26700287944375894,
+          "sd": 0.15187194669413473,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "mean": 0.12062939341361455,
+          "sd": 0.15734513937547479,
+          "delta_method_coverage": 0.95
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "mean": 0.23661647281704604,
+          "sd": 0.14263042892226452,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "phi_00",
+          "truth": 0.9999999999999994,
+          "mean": 0.9945364444444447,
+          "sd": 0.007481961116277548,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_10",
+          "truth": 0.5041203315276273,
+          "mean": 0.5065377777777778,
+          "sd": 0.07326632422819976,
+          "delta_method_coverage": 0.9825
+        },
+        {
+          "name": "phi_11",
+          "truth": 0.9999999999999994,
+          "mean": 0.9938764444444445,
+          "sd": 0.008480402020469987,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_20",
+          "truth": 0.19494285452184823,
+          "mean": 0.19101288888888887,
+          "sd": 0.07923334092246113,
+          "delta_method_coverage": 0.9625
+        },
+        {
+          "name": "phi_21",
+          "truth": 0.3216606380921618,
+          "mean": 0.31635777777777774,
+          "sd": 0.07815497067886604,
+          "delta_method_coverage": 0.96
+        },
+        {
+          "name": "phi_22",
+          "truth": 0.9999999999999994,
+          "mean": 0.994268,
+          "sd": 0.007976253515463924,
+          "delta_method_coverage": 1.0
+        }
+      ],
+      "diagonal_b13_rejection_rate": 1.0,
+      "diagonal_gamma_wald_rejection_rate": 0.33,
+      "diagonal_b13_plim": -0.4800000000000001
+    },
+    {
+      "rho": -0.3,
+      "c": -0.6,
+      "finite_reps": 400,
+      "diagonal_plim": {
+        "b12": -0.5000000000000001,
+        "b13": -0.24000000000000005,
+        "b23": -0.5,
+        "v1": 1.456,
+        "v2": 1.7999999999999998,
+        "v3": 2.5,
+        "gamma_00": 0.1850000000000001,
+        "gamma_01": 0.28000000000000014,
+        "gamma_02": 0.56,
+        "gamma_10": 0.4999999999999999,
+        "gamma_11": 0.5000000000000002,
+        "gamma_12": 0.5,
+        "gamma_20": 0.25,
+        "gamma_21": 0.12500000000000008,
+        "gamma_22": 0.24999999999999997
+      },
+      "bow_plim_max_abs_error": 2.220446049250313e-16,
+      "diagonal_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "plim": -0.5000000000000001,
+          "mean": -0.49980643624383164,
+          "sd": 0.07348983352459243
+        },
+        {
+          "name": "b13",
+          "truth": 0.0,
+          "plim": -0.24000000000000005,
+          "mean": -0.23716549906978046,
+          "sd": 0.07316096709539674
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.5006711568472493,
+          "sd": 0.07043728185670811
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "plim": 1.456,
+          "mean": 1.4033190666840705,
+          "sd": 0.1679797203741923
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "plim": 1.7999999999999998,
+          "mean": 1.7408307120270587,
+          "sd": 0.2093577950448546
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "plim": 2.5,
+          "mean": 2.4451728720501404,
+          "sd": 0.28067028451231546
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "plim": 0.1850000000000001,
+          "mean": 0.1909889648211414,
+          "sd": 0.12540431079564657
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "plim": 0.28000000000000014,
+          "mean": 0.2789778368033379,
+          "sd": 0.12349798914062207
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "plim": 0.56,
+          "mean": 0.5621604688711872,
+          "sd": 0.10901824560107273
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "plim": 0.4999999999999999,
+          "mean": 0.4972310042802256,
+          "sd": 0.13334591712185598
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "plim": 0.5000000000000002,
+          "mean": 0.5104242000030361,
+          "sd": 0.13852190948978885
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.491581078059856,
+          "sd": 0.12186108635359374
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "plim": 0.25,
+          "mean": 0.25516524013438735,
+          "sd": 0.15541647440764164
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "plim": 0.12500000000000008,
+          "mean": 0.12077750364045706,
+          "sd": 0.1473839612631441
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "plim": 0.24999999999999997,
+          "mean": 0.24007101845543044,
+          "sd": 0.14112114273302934
+        }
+      ],
+      "bow_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "mean": -0.49980643624383164,
+          "sd": 0.07348983352459243,
+          "delta_method_coverage": 0.9425
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "mean": -0.5006711568472493,
+          "sd": 0.07043728185670811,
+          "delta_method_coverage": 0.9525
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "mean": 1.553447689705212,
+          "sd": 0.1958072014200725,
+          "delta_method_coverage": 0.9025
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "mean": 1.7408307120270587,
+          "sd": 0.20935779504485458,
+          "delta_method_coverage": 0.9025
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "mean": 2.4451728720501404,
+          "sd": 0.28067028451231546,
+          "delta_method_coverage": 0.92
+        },
+        {
+          "name": "c",
+          "truth": -0.6,
+          "mean": -0.579302444093764,
+          "sd": 0.18776807488162034,
+          "delta_method_coverage": 0.955
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "mean": 0.1311015504641384,
+          "sd": 0.1292172092303752,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "mean": 0.24989956513722625,
+          "sd": 0.12241501531366983,
+          "delta_method_coverage": 0.9525
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "mean": 0.5055596744371601,
+          "sd": 0.11002332021659517,
+          "delta_method_coverage": 0.955
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "mean": 0.4972310042802256,
+          "sd": 0.13334591712185598,
+          "delta_method_coverage": 0.945
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "mean": 0.5104242000030361,
+          "sd": 0.13852190948978885,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "mean": 0.491581078059856,
+          "sd": 0.12186108635359374,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "mean": 0.25516524013438735,
+          "sd": 0.15541647440764164,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "mean": 0.12077750364045706,
+          "sd": 0.1473839612631441,
+          "delta_method_coverage": 0.965
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "mean": 0.24007101845543044,
+          "sd": 0.14112114273302934,
+          "delta_method_coverage": 0.9425
+        },
+        {
+          "name": "phi_00",
+          "truth": 0.9999999999999994,
+          "mean": 0.9926484444444447,
+          "sd": 0.010107607977488093,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_10",
+          "truth": 0.5041203315276273,
+          "mean": 0.5021653333333334,
+          "sd": 0.07071259821434635,
+          "delta_method_coverage": 0.9775
+        },
+        {
+          "name": "phi_11",
+          "truth": 0.9999999999999994,
+          "mean": 0.9928706666666668,
+          "sd": 0.00947721763288573,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_20",
+          "truth": 0.19494285452184823,
+          "mean": 0.19548222222222222,
+          "sd": 0.0775918045537996,
+          "delta_method_coverage": 0.9575
+        },
+        {
+          "name": "phi_21",
+          "truth": 0.3216606380921618,
+          "mean": 0.31624755555555556,
+          "sd": 0.07792528657800284,
+          "delta_method_coverage": 0.9725
+        },
+        {
+          "name": "phi_22",
+          "truth": 0.9999999999999994,
+          "mean": 0.9939688888888889,
+          "sd": 0.008055240451302627,
+          "delta_method_coverage": 1.0
+        }
+      ],
+      "diagonal_b13_rejection_rate": 0.905,
+      "diagonal_gamma_wald_rejection_rate": 0.105,
+      "diagonal_b13_plim": -0.24000000000000005
+    },
+    {
+      "rho": 0.0,
+      "c": 0.0,
+      "finite_reps": 400,
+      "diagonal_plim": {
+        "b12": -0.5,
+        "b13": 0.0,
+        "b23": -0.5,
+        "v1": 1.6000000000000003,
+        "v2": 1.7999999999999998,
+        "v3": 2.5,
+        "gamma_00": 0.12499999999999997,
+        "gamma_01": 0.2500000000000001,
+        "gamma_02": 0.5,
+        "gamma_10": 0.4999999999999999,
+        "gamma_11": 0.5000000000000002,
+        "gamma_12": 0.5,
+        "gamma_20": 0.25,
+        "gamma_21": 0.12500000000000008,
+        "gamma_22": 0.24999999999999997
+      },
+      "bow_plim_max_abs_error": 2.220446049250313e-16,
+      "diagonal_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.4990432614342621,
+          "sd": 0.08000943772891984
+        },
+        {
+          "name": "b13",
+          "truth": 0.0,
+          "plim": 0.0,
+          "mean": 0.0021728864697251366,
+          "sd": 0.07841890594684564
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.49660264940523857,
+          "sd": 0.06693842733578444
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "plim": 1.6000000000000003,
+          "mean": 1.5362901697019564,
+          "sd": 0.17989419825920025
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "plim": 1.7999999999999998,
+          "mean": 1.7293004231706135,
+          "sd": 0.2021523303376334
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "plim": 2.5,
+          "mean": 2.4288245834402313,
+          "sd": 0.2807798186184572
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "plim": 0.12499999999999997,
+          "mean": 0.1343461305193261,
+          "sd": 0.13008720272253374
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "plim": 0.2500000000000001,
+          "mean": 0.25623285258262163,
+          "sd": 0.13282256834045686
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.4980565348181468,
+          "sd": 0.11489897989376048
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "plim": 0.4999999999999999,
+          "mean": 0.4878907921189887,
+          "sd": 0.1306177820304133
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "plim": 0.5000000000000002,
+          "mean": 0.5034607230052193,
+          "sd": 0.13022433906602016
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.5003114431450456,
+          "sd": 0.12042338580797676
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "plim": 0.25,
+          "mean": 0.2531532197724127,
+          "sd": 0.1485688161218603
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "plim": 0.12500000000000008,
+          "mean": 0.1269542147737615,
+          "sd": 0.15072077441377915
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "plim": 0.24999999999999997,
+          "mean": 0.2577974850975549,
+          "sd": 0.13706130659808982
+        }
+      ],
+      "bow_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "mean": -0.4990432614342621,
+          "sd": 0.08000943772891983,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "mean": -0.49660264940523857,
+          "sd": 0.06693842733578444,
+          "delta_method_coverage": 0.95
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "mean": 1.5512276269250724,
+          "sd": 0.18172938212827788,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "mean": 1.7293004231706135,
+          "sd": 0.2021523303376334,
+          "delta_method_coverage": 0.91
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "mean": 2.4288245834402313,
+          "sd": 0.2807798186184572,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "c",
+          "truth": 0.0,
+          "mean": 0.004037350626064833,
+          "sd": 0.19201448852824746,
+          "delta_method_coverage": 0.95
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "mean": 0.13536563917757233,
+          "sd": 0.12496129885720246,
+          "delta_method_coverage": 0.94
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "mean": 0.2561532539891865,
+          "sd": 0.1311332575898071,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "mean": 0.49844704938868567,
+          "sd": 0.11199947882471609,
+          "delta_method_coverage": 0.9575
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "mean": 0.4878907921189887,
+          "sd": 0.1306177820304133,
+          "delta_method_coverage": 0.9425
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "mean": 0.5034607230052193,
+          "sd": 0.13022433906602016,
+          "delta_method_coverage": 0.94
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "mean": 0.5003114431450456,
+          "sd": 0.12042338580797676,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "mean": 0.2531532197724127,
+          "sd": 0.1485688161218603,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "mean": 0.1269542147737615,
+          "sd": 0.15072077441377915,
+          "delta_method_coverage": 0.965
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "mean": 0.2577974850975549,
+          "sd": 0.13706130659808982,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "phi_00",
+          "truth": 0.9999999999999994,
+          "mean": 0.9932177777777779,
+          "sd": 0.00875971414908985,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_10",
+          "truth": 0.5041203315276273,
+          "mean": 0.5002048888888889,
+          "sd": 0.0677671766103412,
+          "delta_method_coverage": 0.9875
+        },
+        {
+          "name": "phi_11",
+          "truth": 0.9999999999999994,
+          "mean": 0.9932297777777777,
+          "sd": 0.009036192018050206,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_20",
+          "truth": 0.19494285452184823,
+          "mean": 0.2021951111111111,
+          "sd": 0.07505048171534691,
+          "delta_method_coverage": 0.9775
+        },
+        {
+          "name": "phi_21",
+          "truth": 0.3216606380921618,
+          "mean": 0.3262124444444444,
+          "sd": 0.07509732286791358,
+          "delta_method_coverage": 0.975
+        },
+        {
+          "name": "phi_22",
+          "truth": 0.9999999999999994,
+          "mean": 0.993826666666667,
+          "sd": 0.008784946154535516,
+          "delta_method_coverage": 1.0
+        }
+      ],
+      "diagonal_b13_rejection_rate": 0.0575,
+      "diagonal_gamma_wald_rejection_rate": 0.0625,
+      "diagonal_b13_plim": 0.0
+    },
+    {
+      "rho": 0.25,
+      "c": 0.5,
+      "finite_reps": 400,
+      "diagonal_plim": {
+        "b12": -0.5,
+        "b13": 0.2,
+        "b23": -0.5,
+        "v1": 1.5000000000000004,
+        "v2": 1.7999999999999998,
+        "v3": 2.5,
+        "gamma_00": 0.07499999999999994,
+        "gamma_01": 0.22500000000000012,
+        "gamma_02": 0.45,
+        "gamma_10": 0.4999999999999999,
+        "gamma_11": 0.5000000000000002,
+        "gamma_12": 0.5,
+        "gamma_20": 0.25,
+        "gamma_21": 0.12500000000000008,
+        "gamma_22": 0.24999999999999997
+      },
+      "bow_plim_max_abs_error": 2.220446049250313e-16,
+      "diagonal_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.5070945011955291,
+          "sd": 0.07905559548087385
+        },
+        {
+          "name": "b13",
+          "truth": 0.0,
+          "plim": 0.2,
+          "mean": 0.19271637395224567,
+          "sd": 0.07850690932117954
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.4976076244129658,
+          "sd": 0.07340870516622604
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "plim": 1.5000000000000004,
+          "mean": 1.439229524660889,
+          "sd": 0.16350078349749605
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "plim": 1.7999999999999998,
+          "mean": 1.7588160127509258,
+          "sd": 0.20246043008477974
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "plim": 2.5,
+          "mean": 2.4398285038875236,
+          "sd": 0.30443351011252867
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "plim": 0.07499999999999994,
+          "mean": 0.07810101748882203,
+          "sd": 0.12240169318852331
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "plim": 0.22500000000000012,
+          "mean": 0.22008211697189808,
+          "sd": 0.1199044422265599
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "plim": 0.45,
+          "mean": 0.4611068060175768,
+          "sd": 0.10807941061515652
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "plim": 0.4999999999999999,
+          "mean": 0.5051260765562592,
+          "sd": 0.13251603427753034
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "plim": 0.5000000000000002,
+          "mean": 0.49114240504301476,
+          "sd": 0.13828363056004028
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.4916637070994868,
+          "sd": 0.11672491132034826
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "plim": 0.25,
+          "mean": 0.24784718395723196,
+          "sd": 0.15367400820627347
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "plim": 0.12500000000000008,
+          "mean": 0.11998069368475067,
+          "sd": 0.15061366424001116
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "plim": 0.24999999999999997,
+          "mean": 0.24391684668078298,
+          "sd": 0.13272145614422118
+        }
+      ],
+      "bow_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "mean": -0.5070945011955291,
+          "sd": 0.07905559548087385,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "mean": -0.4976076244129658,
+          "sd": 0.07340870516622604,
+          "delta_method_coverage": 0.9325
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "mean": 1.5450672694541014,
+          "sd": 0.17703971388891768,
+          "delta_method_coverage": 0.9275
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "mean": 1.7588160127509258,
+          "sd": 0.20246043008477974,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "mean": 2.4398285038875236,
+          "sd": 0.30443351011252867,
+          "delta_method_coverage": 0.9
+        },
+        {
+          "name": "c",
+          "truth": 0.5,
+          "mean": 0.47101940341133036,
+          "sd": 0.20233905219623788,
+          "delta_method_coverage": 0.92
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "mean": 0.12687793393254732,
+          "sd": 0.12118029419125319,
+          "delta_method_coverage": 0.945
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "mean": 0.24342535700804505,
+          "sd": 0.12109867461695925,
+          "delta_method_coverage": 0.965
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "mean": 0.5087572220124116,
+          "sd": 0.10523385928221651,
+          "delta_method_coverage": 0.955
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "mean": 0.5051260765562592,
+          "sd": 0.13251603427753034,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "mean": 0.49114240504301476,
+          "sd": 0.13828363056004028,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "mean": 0.4916637070994868,
+          "sd": 0.11672491132034826,
+          "delta_method_coverage": 0.9525
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "mean": 0.24784718395723196,
+          "sd": 0.15367400820627347,
+          "delta_method_coverage": 0.9325
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "mean": 0.11998069368475067,
+          "sd": 0.15061366424001116,
+          "delta_method_coverage": 0.94
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "mean": 0.24391684668078298,
+          "sd": 0.13272145614422118,
+          "delta_method_coverage": 0.9575
+        },
+        {
+          "name": "phi_00",
+          "truth": 0.9999999999999994,
+          "mean": 0.9932062222222222,
+          "sd": 0.010363949197956194,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_10",
+          "truth": 0.5041203315276273,
+          "mean": 0.49818622222222225,
+          "sd": 0.06709006084208964,
+          "delta_method_coverage": 0.99
+        },
+        {
+          "name": "phi_11",
+          "truth": 0.9999999999999994,
+          "mean": 0.9934502222222225,
+          "sd": 0.008789873822510369,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_20",
+          "truth": 0.19494285452184823,
+          "mean": 0.19226266666666667,
+          "sd": 0.08104687295787853,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "phi_21",
+          "truth": 0.3216606380921618,
+          "mean": 0.32056533333333326,
+          "sd": 0.07787227512866124,
+          "delta_method_coverage": 0.9675
+        },
+        {
+          "name": "phi_22",
+          "truth": 0.9999999999999994,
+          "mean": 0.9932426666666668,
+          "sd": 0.00982883088516655,
+          "delta_method_coverage": 1.0
+        }
+      ],
+      "diagonal_b13_rejection_rate": 0.7275,
+      "diagonal_gamma_wald_rejection_rate": 0.065,
+      "diagonal_b13_plim": 0.2
+    },
+    {
+      "rho": 0.3,
+      "c": 0.6,
+      "finite_reps": 400,
+      "diagonal_plim": {
+        "b12": -0.5,
+        "b13": 0.24000000000000005,
+        "b23": -0.5,
+        "v1": 1.4560000000000004,
+        "v2": 1.7999999999999998,
+        "v3": 2.5,
+        "gamma_00": 0.06499999999999996,
+        "gamma_01": 0.22000000000000006,
+        "gamma_02": 0.44,
+        "gamma_10": 0.4999999999999999,
+        "gamma_11": 0.5000000000000002,
+        "gamma_12": 0.5,
+        "gamma_20": 0.25,
+        "gamma_21": 0.12500000000000008,
+        "gamma_22": 0.24999999999999997
+      },
+      "bow_plim_max_abs_error": 2.220446049250313e-16,
+      "diagonal_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.4998321550769977,
+          "sd": 0.07936369509246383
+        },
+        {
+          "name": "b13",
+          "truth": 0.0,
+          "plim": 0.24000000000000005,
+          "mean": 0.23412448907703032,
+          "sd": 0.07336878996456105
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.50126455754156,
+          "sd": 0.07250130275186518
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "plim": 1.4560000000000004,
+          "mean": 1.3790087937253594,
+          "sd": 0.17489198632079464
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "plim": 1.7999999999999998,
+          "mean": 1.7548876029776341,
+          "sd": 0.20991598128920483
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "plim": 2.5,
+          "mean": 2.445938254377655,
+          "sd": 0.28743142224404955
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "plim": 0.06499999999999996,
+          "mean": 0.07029397843354766,
+          "sd": 0.1197399838009249
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "plim": 0.22000000000000006,
+          "mean": 0.21162131360669204,
+          "sd": 0.12772518328630225
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "plim": 0.44,
+          "mean": 0.44190500450654185,
+          "sd": 0.11882350716514083
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "plim": 0.4999999999999999,
+          "mean": 0.4983822018885795,
+          "sd": 0.13487175570138699
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "plim": 0.5000000000000002,
+          "mean": 0.5007016875267517,
+          "sd": 0.13683484346488736
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.49957741665971506,
+          "sd": 0.11825147674980713
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "plim": 0.25,
+          "mean": 0.2588639223461847,
+          "sd": 0.14826112730937788
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "plim": 0.12500000000000008,
+          "mean": 0.11878834067086778,
+          "sd": 0.16059583703219132
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "plim": 0.24999999999999997,
+          "mean": 0.2529199309235421,
+          "sd": 0.1408690296255684
+        }
+      ],
+      "bow_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "mean": -0.4998321550769977,
+          "sd": 0.07936369509246383,
+          "delta_method_coverage": 0.9325
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "mean": -0.50126455754156,
+          "sd": 0.07250130275186518,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "mean": 1.526308605211013,
+          "sd": 0.18920704179974154,
+          "delta_method_coverage": 0.875
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "mean": 1.7548876029776341,
+          "sd": 0.20991598128920483,
+          "delta_method_coverage": 0.9125
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "mean": 2.445938254377655,
+          "sd": 0.28743142224404955,
+          "delta_method_coverage": 0.92
+        },
+        {
+          "name": "c",
+          "truth": 0.6,
+          "mean": 0.5731356342892642,
+          "sd": 0.19130393174179935,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "mean": 0.1306946837606037,
+          "sd": 0.12090836596309562,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "mean": 0.2385888427507729,
+          "sd": 0.1291299616142663,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "mean": 0.5014816597176499,
+          "sd": 0.12247019665773068,
+          "delta_method_coverage": 0.9275
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "mean": 0.4983822018885795,
+          "sd": 0.13487175570138699,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "mean": 0.5007016875267517,
+          "sd": 0.13683484346488736,
+          "delta_method_coverage": 0.9225
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "mean": 0.49957741665971506,
+          "sd": 0.11825147674980713,
+          "delta_method_coverage": 0.95
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "mean": 0.2588639223461847,
+          "sd": 0.14826112730937788,
+          "delta_method_coverage": 0.95
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "mean": 0.11878834067086778,
+          "sd": 0.16059583703219132,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "mean": 0.2529199309235421,
+          "sd": 0.1408690296255684,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "phi_00",
+          "truth": 0.9999999999999994,
+          "mean": 0.9942857777777779,
+          "sd": 0.007516429247707188,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_10",
+          "truth": 0.5041203315276273,
+          "mean": 0.4954057777777777,
+          "sd": 0.0685362021416699,
+          "delta_method_coverage": 0.9875
+        },
+        {
+          "name": "phi_11",
+          "truth": 0.9999999999999994,
+          "mean": 0.9933244444444445,
+          "sd": 0.00920005192784857,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_20",
+          "truth": 0.19494285452184823,
+          "mean": 0.1840146666666667,
+          "sd": 0.07885680283602425,
+          "delta_method_coverage": 0.96
+        },
+        {
+          "name": "phi_21",
+          "truth": 0.3216606380921618,
+          "mean": 0.3180253333333333,
+          "sd": 0.07893241831652703,
+          "delta_method_coverage": 0.97
+        },
+        {
+          "name": "phi_22",
+          "truth": 0.9999999999999994,
+          "mean": 0.9936431111111114,
+          "sd": 0.008634540815929646,
+          "delta_method_coverage": 1.0
+        }
+      ],
+      "diagonal_b13_rejection_rate": 0.8775,
+      "diagonal_gamma_wald_rejection_rate": 0.1075,
+      "diagonal_b13_plim": 0.24000000000000005
+    },
+    {
+      "rho": 0.6,
+      "c": 1.2,
+      "finite_reps": 400,
+      "diagonal_plim": {
+        "b12": -0.5,
+        "b13": 0.4800000000000001,
+        "b23": -0.5,
+        "v1": 1.0239999999999998,
+        "v2": 1.7999999999999998,
+        "v3": 2.5,
+        "gamma_00": 0.004999999999999933,
+        "gamma_01": 0.19000000000000006,
+        "gamma_02": 0.38,
+        "gamma_10": 0.4999999999999999,
+        "gamma_11": 0.5000000000000002,
+        "gamma_12": 0.5,
+        "gamma_20": 0.25,
+        "gamma_21": 0.12500000000000008,
+        "gamma_22": 0.24999999999999997
+      },
+      "bow_plim_max_abs_error": 2.220446049250313e-16,
+      "diagonal_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.4960956016022396,
+          "sd": 0.06531343349625067
+        },
+        {
+          "name": "b13",
+          "truth": 0.0,
+          "plim": 0.4800000000000001,
+          "mean": 0.4818307775549243,
+          "sd": 0.0662728219810303
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "plim": -0.5,
+          "mean": -0.5067789623844496,
+          "sd": 0.07033748930434247
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "plim": 1.0239999999999998,
+          "mean": 0.9752460727344497,
+          "sd": 0.1235885541208727
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "plim": 1.7999999999999998,
+          "mean": 1.7418979811669804,
+          "sd": 0.21702690631493485
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "plim": 2.5,
+          "mean": 2.415997092864202,
+          "sd": 0.29387238563492735
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "plim": 0.004999999999999933,
+          "mean": 0.006900959446543302,
+          "sd": 0.10254226121137092
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "plim": 0.19000000000000006,
+          "mean": 0.17807822445144525,
+          "sd": 0.10849372229765142
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "plim": 0.38,
+          "mean": 0.3814537984779178,
+          "sd": 0.09898692031785922
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "plim": 0.4999999999999999,
+          "mean": 0.4965310261888678,
+          "sd": 0.1343100137562404
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "plim": 0.5000000000000002,
+          "mean": 0.4985097079886727,
+          "sd": 0.1396129628212068
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "plim": 0.5,
+          "mean": 0.5034778733704264,
+          "sd": 0.11533738800395109
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "plim": 0.25,
+          "mean": 0.24160614249957374,
+          "sd": 0.16036113691294646
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "plim": 0.12500000000000008,
+          "mean": 0.12349966960089429,
+          "sd": 0.1665564444367404
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "plim": 0.24999999999999997,
+          "mean": 0.24997665835716945,
+          "sd": 0.13850206207347393
+        }
+      ],
+      "bow_monte_carlo": [
+        {
+          "name": "b12",
+          "truth": -0.5,
+          "mean": -0.4960956016022396,
+          "sd": 0.06531343349625067,
+          "delta_method_coverage": 0.9475
+        },
+        {
+          "name": "b23",
+          "truth": -0.5,
+          "mean": -0.5067789623844496,
+          "sd": 0.07033748930434247,
+          "delta_method_coverage": 0.94
+        },
+        {
+          "name": "v1",
+          "truth": 1.6,
+          "mean": 1.5464568615772618,
+          "sd": 0.20595590040172723,
+          "delta_method_coverage": 0.895
+        },
+        {
+          "name": "v2",
+          "truth": 1.8,
+          "mean": 1.7418979811669804,
+          "sd": 0.21702690631493485,
+          "delta_method_coverage": 0.8925
+        },
+        {
+          "name": "v3",
+          "truth": 2.5,
+          "mean": 2.415997092864202,
+          "sd": 0.29387238563492735,
+          "delta_method_coverage": 0.9
+        },
+        {
+          "name": "c",
+          "truth": 1.2,
+          "mean": 1.16395963103214,
+          "sd": 0.21342029745714383,
+          "delta_method_coverage": 0.93
+        },
+        {
+          "name": "gamma_00",
+          "truth": 0.125,
+          "mean": 0.1234551662160753,
+          "sd": 0.1309084796648241,
+          "delta_method_coverage": 0.9375
+        },
+        {
+          "name": "gamma_01",
+          "truth": 0.25,
+          "mean": 0.23643618282245243,
+          "sd": 0.1369657421594652,
+          "delta_method_coverage": 0.92
+        },
+        {
+          "name": "gamma_02",
+          "truth": 0.5,
+          "mean": 0.5024376711082403,
+          "sd": 0.11468946465654536,
+          "delta_method_coverage": 0.945
+        },
+        {
+          "name": "gamma_10",
+          "truth": 0.5,
+          "mean": 0.4965310261888678,
+          "sd": 0.1343100137562404,
+          "delta_method_coverage": 0.95
+        },
+        {
+          "name": "gamma_11",
+          "truth": 0.5,
+          "mean": 0.4985097079886727,
+          "sd": 0.1396129628212068,
+          "delta_method_coverage": 0.935
+        },
+        {
+          "name": "gamma_12",
+          "truth": 0.5,
+          "mean": 0.5034778733704264,
+          "sd": 0.11533738800395109,
+          "delta_method_coverage": 0.9625
+        },
+        {
+          "name": "gamma_20",
+          "truth": 0.25,
+          "mean": 0.24160614249957374,
+          "sd": 0.16036113691294646,
+          "delta_method_coverage": 0.915
+        },
+        {
+          "name": "gamma_21",
+          "truth": 0.125,
+          "mean": 0.12349966960089429,
+          "sd": 0.1665564444367404,
+          "delta_method_coverage": 0.925
+        },
+        {
+          "name": "gamma_22",
+          "truth": 0.25,
+          "mean": 0.24997665835716945,
+          "sd": 0.13850206207347393,
+          "delta_method_coverage": 0.945
+        },
+        {
+          "name": "phi_00",
+          "truth": 0.9999999999999994,
+          "mean": 0.992756,
+          "sd": 0.00945438413119036,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_10",
+          "truth": 0.5041203315276273,
+          "mean": 0.49929422222222214,
+          "sd": 0.07420306548514387,
+          "delta_method_coverage": 0.9825
+        },
+        {
+          "name": "phi_11",
+          "truth": 0.9999999999999994,
+          "mean": 0.9936346666666668,
+          "sd": 0.009256992062836965,
+          "delta_method_coverage": 1.0
+        },
+        {
+          "name": "phi_20",
+          "truth": 0.19494285452184823,
+          "mean": 0.19163555555555553,
+          "sd": 0.0796703775856303,
+          "delta_method_coverage": 0.9525
+        },
+        {
+          "name": "phi_21",
+          "truth": 0.3216606380921618,
+          "mean": 0.31856977777777773,
+          "sd": 0.08127056351182833,
+          "delta_method_coverage": 0.955
+        },
+        {
+          "name": "phi_22",
+          "truth": 0.9999999999999994,
+          "mean": 0.9934973333333335,
+          "sd": 0.008867697814636068,
+          "delta_method_coverage": 1.0
+        }
+      ],
+      "diagonal_b13_rejection_rate": 1.0,
+      "diagonal_gamma_wald_rejection_rate": 0.2975,
+      "diagonal_b13_plim": 0.4800000000000001
+    }
+  ]
+}
