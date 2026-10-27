@@ -61,7 +61,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
-- **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open follow-up. Checked 88-pair partial frame; Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The complete twelve-and-fewer monomial cases and global compatibility remain open. This derived task does not decide unrestricted f.
+- **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -183,6 +183,18 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: l-f91-c16-partner-domain-audit-2026-10-27
 
 [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18.. Remaining at that dated checkpoint: Exact unrestricted width; complete twelve-and-fewer monomial exclusions; independent pool-completeness proof; Lean certificate. Global finite models returned no decision. [Report](../formalization/canonical-width/c16/TAKEOVER.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/takeover-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-four-hour-continuation-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Global campaign preserved669,402,203 nodes with20,558 unresolved leaves; all global solver runs remained undecided. Closeout was late:07:12:57UTC and later, after the05:26:36 deadline.. Remaining at that dated checkpoint: Exact unrestricted width and Lean certificate remain open. Only one of273 eleven-monomial classes is excluded; no global conclusion follows from time limits. Exact-target Lean discovery and the named new literature leads remain unassessed.. [Report](../formalization/canonical-width/c16/FOUR-HOURS.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/four-hours-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-six-hour-continuation-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate.. Remaining at that dated checkpoint: No exact-width or Lean completion. The full frame question and proposed stronger phase/owner-allocation follow-up remain open. F99/F100 canonical question reconciliation and product-basis search-lead screening remain incomplete, explicitly preserved rather than counted as zero-question screens.. [Report](../formalization/canonical-width/c16/SIX-HOURS.md) · [Verification](../formalization/canonical-width/c16/six-hours-results/final/verification.json) · [Prior art](../formalization/canonical-width/c16/six-hours-prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -450,6 +462,13 @@ Connected/coupled P09 follow-up adds no completed canonical source target. Two s
 - [L-F98-tighter-nonlocality-bound](OPEN-PROBLEMS.md#l-f98-tighter-nonlocality-bound): Improve the genuine nonlocality-content bound in Equation12 using measured m-party subsystems.
 - [L-F97-multipartite-conversion](OPEN-PROBLEMS.md#l-f97-multipartite-conversion): Historical direction: quantify multipartite entanglement resources and their interconversion relations.
 
-Current cohort: **353 canonical entries,150 eligible targets,132 paper records,119 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-continuation-source-leads-2026-10-27
 
-The current source index has **103** records, with actual access levels retained.
+Two related primary full texts retrieved during C16 research. Relevant passages and candidate questions preserved; exhaustive screens interrupted by the fixed deadline. No zero-question, current-resolution or Lean claim.
+
+[Screen report](../literature/c16-continuation-source-screening.json). Added **0 entries**, **0 eligible targets**, **2 paper records**, **0 full-text screens** and **0 completed proofs**.
+
+
+Current cohort: **353 canonical entries,150 eligible targets,134 paper records,119 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **105** records, with actual access levels retained.
