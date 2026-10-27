@@ -132,3 +132,16 @@ is not a dissertation body. Check the contents, main chapters, references and fi
 pages. Text extraction can return many characters with a broken glyph mapping;
 inspect readability, OCR when necessary, and visually check relevant passages
 before interpreting a zero-result keyword search as a completed question screen.
+
+## Hand off a source this environment cannot finish
+
+After the attempts above, a missing complete PDF is a handoff, not a reason to
+keep retrying the same failure. Use the
+[document acquisition queue](../../document-acquisition-queue/SKILL.md): one
+`fetch-request` issue per stable source, then work that does not need that text.
+At the next research block, merge any manifest a retrieval worker has posted.
+The worker procedure is
+[document retrieval](../../document-retrieval-worker/SKILL.md). Site notes,
+read only when the source matches, are in
+[that skill's references](../../document-retrieval-worker/references/unl-proquest.md).
+The checks in this file are what to try before filing.
