@@ -4,9 +4,12 @@ The structural checker implements the JSON Schema subset used by
 .agents/skills/document-acquisition-queue/schema/fetch-manifest.schema.json
 (type, const, enum, required, properties, additionalProperties, pattern,
 numeric and length bounds, items, format, $ref, allOf, anyOf, oneOf, if/then/else).
-Semantic checks cover secrets, stable ids, completeness, OCR, question counts,
-and route outcomes. A front-matter preview or unreadable text cannot validate
-as a completed screen or a zero question count.
+Semantic checks cover secrets, stable ids, discovered identifiers, completeness,
+evidence units, OCR, question counts, and route outcomes. manifest_version 0.2
+requires discovered_identifiers and does not require issue.comment_url.
+Applicability reads document.stable_ids unless the route catalog sets
+discovered_identifiers_expand_routes. A front-matter preview or unreadable
+text cannot validate as a completed screen or a zero question count.
 
 Usage:
   python3 scripts/validate_fetch_manifest.py --self-check
@@ -56,9 +59,37 @@ EMBEDDED_SECRET = re.compile(
 )
 USERINFO = re.compile(r"https?://[^/\s:@]+:[^/\s@]+@")
 ROUTE_ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*@[1-9][0-9]*$")
+COUNT_WORD = re.compile(
+    r"(\d{1,3}(?:,\d{3})+|\d+)\s+(unicode\s+)?(characters|bytes)\b",
+    re.IGNORECASE,
+)
 TRANSPORT = {
     "bot_mitigation", "http_error", "browser_host_unavailable", "timeout",
     "network", "other",
+}
+LIFECYCLE_LABELS = (
+    "fetch-request",
+    "fetch-claimed",
+    "fetched",
+    "restricted",
+    "needs-human",
+    "not-found",
+)
+# Route ids that already validated posted manifests. Keep them in the catalog.
+PREVIOUS_ROUTE_IDS = {
+    "doi-resolution@1",
+    "arxiv-pdf@1",
+    "openalex-oa@1",
+    "unpaywall-oa@1",
+    "publisher-landing@1",
+    "proquest-openurl@1",
+    "institutional-repository@1",
+    "unl-bepress-headless@1",
+    "core-download@1",
+    "author-page@1",
+    "browser-download@1",
+    "unl-bepress-browser@1",
+    "proquest-browser@1",
 }
 ID_PATTERNS = {
     "doi": re.compile(r"^10\.\d{4,9}/\S+$"),
@@ -98,6 +129,22 @@ def load_catalog():
     catalog = json.loads(CATALOG_PATH.read_text())
     if not isinstance(catalog, dict) or not isinstance(catalog.get("routes"), list):
         raise SystemExit("route catalog has no routes")
+    version = catalog.get("catalog_version")
+    if not isinstance(version, int) or version < 1:
+        raise SystemExit("catalog_version")
+    if version >= 2:
+        applicability = catalog.get("applicability")
+        if not isinstance(applicability, dict):
+            raise SystemExit("catalog applicability")
+        if applicability.get("identifier_source") != "document.stable_ids":
+            raise SystemExit("catalog applicability.identifier_source")
+        for key in (
+            "discovered_identifiers_expand_routes",
+            "backfill_earlier_routes",
+            "log_skipped_routes_after_complete_bytes",
+        ):
+            if not isinstance(applicability.get(key), bool):
+                raise SystemExit(f"catalog applicability.{key}")
     seen = set()
     for item in catalog["routes"]:
         rid = item.get("id")
@@ -120,10 +167,19 @@ def load_catalog():
     return catalog
 
 
-def route_applies(route, manifest):
-    schemes, prefixes = set(), set()
+def identifier_items(manifest, expand_discovered):
     document = manifest.get("document") if isinstance(manifest.get("document"), dict) else {}
-    for item in document.get("stable_ids") or []:
+    items = list(document.get("stable_ids") or [])
+    if expand_discovered:
+        extra = manifest.get("discovered_identifiers") or []
+        if isinstance(extra, list):
+            items.extend(extra)
+    return items
+
+
+def route_applies(route, manifest, expand_discovered=False):
+    schemes, prefixes = set(), set()
+    for item in identifier_items(manifest, expand_discovered):
         if not isinstance(item, dict):
             continue
         schemes.add(item.get("scheme"))
@@ -138,6 +194,7 @@ def route_applies(route, manifest):
 
 def applicable_missing(manifest, catalog=None):
     catalog = catalog or load_catalog()
+    expand = bool((catalog.get("applicability") or {}).get("discovered_identifiers_expand_routes"))
     tried = {
         route.get("route") for route in (manifest.get("routes_tried") or [])
         if isinstance(route, dict) and route.get("route")
@@ -146,7 +203,7 @@ def applicable_missing(manifest, catalog=None):
     for item in sorted(catalog["routes"], key=lambda row: row.get("order", 0)):
         if item.get("status") != "active" or item["id"] in tried:
             continue
-        if route_applies(item, manifest):
+        if route_applies(item, manifest, expand_discovered=expand):
             missing.append(item["id"])
     return missing
 
@@ -313,6 +370,61 @@ def secret_errors(instance, path="$", hosts=()):
     return errors
 
 
+def check_identifier(item, path, prefix_rules, hosts, errors):
+    if not isinstance(item, dict):
+        return None
+    scheme, value = item.get("scheme"), item.get("value")
+    pattern = ID_PATTERNS.get(scheme)
+    if pattern and isinstance(value, str) and not pattern.fullmatch(value):
+        errors.append(f"{path}: {scheme} value does not match {pattern.pattern}")
+    if scheme == "archive_record" and isinstance(value, str) and ":" in value:
+        prefix, rest = value.split(":", 1)
+        rule = prefix_rules.get(prefix)
+        if rule and not rule.fullmatch(rest):
+            errors.append(f"{path}: prefix {prefix} does not match {rule.pattern}")
+    if scheme == "url" and isinstance(value, str):
+        errors.extend(secret_errors(value, f"{path}.value", hosts))
+    return (scheme, value)
+
+
+def evidence_count_errors(manifest):
+    """Flag 0.2 evidence that mixes Unicode text_characters with byte counts.
+
+    Version 0.1 manifests already posted are not re-litigated for wording.
+    """
+    if manifest.get("manifest_version") != "0.2":
+        return []
+    errors = []
+    completeness = manifest.get("completeness") if isinstance(manifest.get("completeness"), dict) else {}
+    evidence = completeness.get("evidence") if isinstance(completeness.get("evidence"), list) else []
+    extraction = manifest.get("extraction") if isinstance(manifest.get("extraction"), dict) else {}
+    artifact = manifest.get("artifact") if isinstance(manifest.get("artifact"), dict) else {}
+    text_chars = extraction.get("text_characters") if isinstance(extraction, dict) else None
+    byte_length = artifact.get("byte_length") if isinstance(artifact, dict) else None
+    for index, line in enumerate(evidence):
+        if not isinstance(line, str):
+            continue
+        for match in COUNT_WORD.finditer(line):
+            number = int(match.group(1).replace(",", ""))
+            kind = match.group(3).lower()
+            if kind == "characters":
+                if not isinstance(text_chars, int) or number != text_chars:
+                    errors.append(
+                        f"$.completeness.evidence[{index}]: {number} characters does not match "
+                        f"text_characters {text_chars} (Unicode code points, not bytes)"
+                    )
+            elif (
+                isinstance(text_chars, int)
+                and number == text_chars
+                and text_chars != byte_length
+            ):
+                errors.append(
+                    f"$.completeness.evidence[{index}]: {number} is text_characters, "
+                    "a Unicode character count, not a byte count"
+                )
+    return errors
+
+
 def semantic_errors(manifest, catalog):
     errors = []
     prefix_rules = {
@@ -325,25 +437,14 @@ def semantic_errors(manifest, catalog):
     seen = set()
     campaigns = 0
     for index, item in enumerate(ids):
-        if not isinstance(item, dict):
+        key = check_identifier(item, f"$.document.stable_ids[{index}]", prefix_rules, hosts, errors)
+        if key is None:
             continue
-        scheme, value = item.get("scheme"), item.get("value")
-        pattern = ID_PATTERNS.get(scheme)
-        if pattern and isinstance(value, str) and not pattern.fullmatch(value):
-            errors.append(f"$.document.stable_ids[{index}]: {scheme} value does not match {pattern.pattern}")
-        if scheme == "archive_record" and isinstance(value, str) and ":" in value:
-            prefix, rest = value.split(":", 1)
-            rule = prefix_rules.get(prefix)
-            if rule and not rule.fullmatch(rest):
-                errors.append(f"$.document.stable_ids[{index}]: prefix {prefix} does not match {rule.pattern}")
-        key = (scheme, value)
         if key in seen:
             errors.append(f"$.document.stable_ids[{index}]: duplicate stable id")
         seen.add(key)
-        if scheme == "campaign_record":
+        if key[0] == "campaign_record":
             campaigns += 1
-        if scheme == "url" and isinstance(value, str):
-            errors += secret_errors(value, f"$.document.stable_ids[{index}].value", hosts)
     if campaigns > 1:
         errors.append("$.document.stable_ids: more than one campaign_record")
     requested = manifest.get("requested_source_id")
@@ -351,7 +452,28 @@ def semantic_errors(manifest, catalog):
         errors.append("$.requested_source_id: not present in stable_ids")
     if manifest.get("supersedes") and manifest.get("supersedes") == manifest.get("manifest_id"):
         errors.append("$.supersedes: a manifest cannot replace itself")
+    discovered = manifest.get("discovered_identifiers")
+    discovered_items = discovered if isinstance(discovered, list) else []
     routes = manifest.get("routes_tried") if isinstance(manifest.get("routes_tried"), list) else []
+    tried_routes = {
+        route.get("route") for route in routes if isinstance(route, dict) and route.get("route")
+    }
+    seen_discovered = set()
+    for index, item in enumerate(discovered_items):
+        path = f"$.discovered_identifiers[{index}]"
+        key = check_identifier(item, path, prefix_rules, hosts, errors)
+        if key is None:
+            continue
+        if key in seen:
+            errors.append(f"{path}: discovered identifier repeats a request stable id")
+        if key in seen_discovered:
+            errors.append(f"{path}: duplicate discovered identifier")
+        seen_discovered.add(key)
+        route_name = item.get("route") if isinstance(item, dict) else None
+        if route_name not in catalog_ids:
+            errors.append(f"{path}.route: {route_name} is not in the route catalog")
+        elif route_name not in tried_routes:
+            errors.append(f"{path}.route: discovery route {route_name} is not in routes_tried")
     route_ids = [route.get("id") for route in routes if isinstance(route, dict)]
     if len(route_ids) != len(set(route_ids)):
         errors.append("$.routes_tried: duplicate route id")
@@ -458,10 +580,14 @@ def semantic_errors(manifest, catalog):
     producer = manifest.get("producer") if isinstance(manifest.get("producer"), dict) else {}
     if producer.get("role") == "retrieval_worker":
         issue = manifest.get("issue")
-        if not isinstance(issue, dict) or not all(issue.get(key) for key in ("number", "url", "comment_url")):
-            errors.append("$.issue: retrieval_worker manifests name the issue number, url, and comment_url")
+        if not isinstance(issue, dict) or not issue.get("number") or not issue.get("url"):
+            errors.append(
+                "$.issue: retrieval_worker manifests name the issue number and url; "
+                "omit comment_url and take it from the comment API"
+            )
         if screen.get("screen_owner") == "research_agent" and screen.get("status") == "completed":
             errors.append("$.question_screen: retrieval worker cannot set a completed screen while screen_owner is research_agent")
+    errors += evidence_count_errors(manifest)
     errors += secret_errors(manifest, hosts=hosts)
     return errors
 
@@ -472,6 +598,31 @@ def validate_manifest(manifest, schema=None, catalog=None):
     if not isinstance(manifest, dict):
         return ["$: manifest is not an object"]
     return check(manifest, schema, schema) + semantic_errors(manifest, catalog)
+
+
+def lifecycle_names(names):
+    return [name for name in names if name in LIFECYCLE_LABELS]
+
+
+def label_end_state_ok(names, intended):
+    """True when the issue has exactly one lifecycle label and it is intended."""
+    return lifecycle_names(names) == [intended]
+
+
+def replace_label_set(names, intended):
+    """Full label set for a replace-set write. Non-lifecycle labels stay."""
+    if intended not in LIFECYCLE_LABELS:
+        raise ValueError(intended)
+    kept = [name for name in names if name not in LIFECYCLE_LABELS]
+    return kept + [intended]
+
+
+def claim_blocked(names, resuming_handoff=False):
+    """True when a claim or a browser-handoff resume must not write labels."""
+    found = lifecycle_names(names)
+    if resuming_handoff:
+        return found != ["fetch-claimed"]
+    return found != ["fetch-request"]
 
 
 def terminal_label(manifest):
@@ -538,6 +689,26 @@ def active_manifests(manifests):
     return [item for item in manifests if item.get("manifest_id") not in replaced]
 
 
+def locate_manifests(comment):
+    """Pair each manifest in a comment body with the API comment URL.
+
+    The manifest body does not supply the URL. Pass the issue-comment object
+    (`body` and `html_url`). Match `manifest_id` to the marker in the body.
+    """
+    if not isinstance(comment, dict):
+        return [], ["comment is not an object"]
+    manifests, errors = parse_comment(comment.get("body") or "")
+    url = comment.get("html_url")
+    if manifests and (not isinstance(url, str) or not uri_ok(url)):
+        errors.append("comment html_url is missing; take it from the API, not the manifest body")
+        return [], errors
+    located = [
+        {"manifest_id": item.get("manifest_id"), "comment_url": url, "manifest": item}
+        for item in manifests
+    ]
+    return located, errors
+
+
 def validate_path(path, schema):
     try:
         manifest = json.loads(pathlib.Path(path).read_text())
@@ -591,6 +762,9 @@ def self_check():
     schema = load_schema()
     example = json.loads(EXAMPLE_PATH.read_text())
     expect_ok("positive control", example, schema)
+    assert example["manifest_version"] == "0.2"
+    assert example["discovered_identifiers"] == []
+    assert example.get("issue") is None
     seed = json.loads(SEED_MANIFEST.read_text())
     control = next(item for item in seed if item["dissertation_id"] == "UNL-SEM-D067")
     assert example["artifact"]["sha256"] == control["pdf_sha256"] == POSITIVE_SHA
@@ -604,8 +778,57 @@ def self_check():
     values = {item["value"] for item in example["document"]["stable_ids"]}
     assert {"aai:AAI3402936", "proquest-docview:305217740", "UNL-SEM-D067"} <= values
     catalog = load_catalog()
-    assert {route["route"] for route in example["routes_tried"]} <= {item["id"] for item in catalog["routes"]}
+    assert catalog["catalog_version"] == 2
+    assert catalog["applicability"] == {
+        "identifier_source": "document.stable_ids",
+        "discovered_identifiers_expand_routes": False,
+        "backfill_earlier_routes": False,
+        "log_skipped_routes_after_complete_bytes": False,
+    }
+    catalog_ids = {item["id"] for item in catalog["routes"]}
+    assert PREVIOUS_ROUTE_IDS <= catalog_ids
+    assert {route["route"] for route in example["routes_tried"]} <= catalog_ids
     assert should_reopen_not_found(example, catalog) is False
+    assert label_end_state_ok(["bug", "fetched"], "fetched")
+    assert label_end_state_ok(["fetched", "fetch-claimed"], "fetched") is False
+    assert label_end_state_ok(["fetch-request"], "fetch-claimed") is False
+    assert replace_label_set(["fetch-request", "bug"], "fetch-claimed") == ["bug", "fetch-claimed"]
+    assert replace_label_set(["needs-human", "fetched"], "not-found") == ["not-found"]
+    assert claim_blocked(["fetch-request"]) is False
+    assert claim_blocked(["fetch-claimed"]) is True
+    assert claim_blocked(["fetch-claimed"], resuming_handoff=True) is False
+    assert claim_blocked(["fetch-request"], resuming_handoff=True) is True
+    expect_fail(
+        "character count called bytes",
+        mutated(example, **{"completeness.evidence": ["Extracted text is 477024 bytes."]}),
+        "not a byte count", schema,
+    )
+    expect_fail(
+        "pdf bytes called characters",
+        mutated(example, **{"completeness.evidence": ["The file is 4629089 characters."]}),
+        "Unicode code points", schema,
+    )
+    expect_fail(
+        "evidence character count drift",
+        mutated(example, **{"completeness.evidence": ["Extracted text is 129072 characters."]}),
+        "Unicode code points", schema,
+    )
+    legacy_wording = copy.deepcopy(example)
+    legacy_wording["manifest_version"] = "0.1"
+    legacy_wording.pop("discovered_identifiers")
+    legacy_wording["manifest_id"] = "example-legacy-evidence-wording"
+    legacy_wording["completeness"]["evidence"] = ["Extracted text is 129072 characters."]
+    expect_ok("0.1 evidence wording stays valid", legacy_wording, schema)
+    dropped = copy.deepcopy(example)
+    dropped.pop("discovered_identifiers")
+    expect_fail("0.2 requires discovered_identifiers", dropped, "discovered_identifiers", schema)
+    repeated = copy.deepcopy(example)
+    repeated["discovered_identifiers"] = [{
+        "scheme": "archive_record",
+        "value": "aai:AAI3402936",
+        "route": "openalex-oa@1",
+    }]
+    expect_fail("discovered id repeats the request", repeated, "request stable id", schema)
     assert ledger_question_count(example, schema) is None
     assert terminal_label(example) == "fetched"
     assert any("example" in error for error in consumable(example, schema))
@@ -655,6 +878,7 @@ def self_check():
             "extraction.text_sha256": None,
             "extraction.text_characters": None,
             "extraction.unreadable_reason": "Synthetic fixture: glyph mapping still broken after OCR.",
+            "completeness.evidence": ["Synthetic unreadable extraction after OCR. Not a claim about Abbott's file."],
             "question_screen.status": "blocked",
             "notes": "Synthetic unreadable extraction. Not a claim about Abbott's file.",
         },
@@ -812,6 +1036,19 @@ def self_check():
     expect_ok("bot candidates", bot, schema)
     assert consumable(bot, schema) == []
     assert ledger_question_count(bot, schema) is None
+    no_comment_url = copy.deepcopy(bot)
+    no_comment_url["manifest_id"] = "bot-unl-aai3402936-no-comment-url"
+    no_comment_url["issue"].pop("comment_url")
+    expect_ok("worker manifest omits comment_url", no_comment_url, schema)
+    legacy = copy.deepcopy(bot)
+    legacy["manifest_version"] = "0.1"
+    legacy.pop("discovered_identifiers")
+    legacy["manifest_id"] = "bot-unl-aai3402936-legacy-v01"
+    expect_ok("legacy 0.1 with comment_url", legacy, schema)
+    missing_issue_url = copy.deepcopy(no_comment_url)
+    missing_issue_url["manifest_id"] = "bot-unl-aai3402936-missing-url"
+    del missing_issue_url["issue"]["url"]
+    expect_fail("worker manifest needs issue url", missing_issue_url, "issue number and url", schema)
     expect_fail(
         "bot completed screen",
         mutated(bot, **{"question_screen.status": "completed", "question_screen.question_count": 0, "question_screen.candidates": []}),
@@ -822,6 +1059,16 @@ def self_check():
     assert errors == [] and parsed == [example]
     _, mismatch = parse_comment(comment.replace("example-unl-aai3402936-verified -->", "other-manifest-id -->", 1))
     assert any("marker" in error for error in mismatch)
+    located, loc_errors = locate_manifests({
+        "html_url": "https://github.com/alectionary/vibe-math/issues/1000#issuecomment-1",
+        "body": comment,
+    })
+    assert loc_errors == []
+    assert located[0]["manifest_id"] == example["manifest_id"]
+    assert located[0]["comment_url"].endswith("#issuecomment-1")
+    assert located[0]["manifest"].get("issue") is None
+    _, missing_url = locate_manifests({"body": comment})
+    assert any("html_url" in error for error in missing_url)
     successor = mutated(example, **{"manifest_id": "example-unl-aai3402936-r2", "supersedes": example["manifest_id"]})
     active = active_manifests([example, successor])
     assert [item["manifest_id"] for item in active] == ["example-unl-aai3402936-r2"]
@@ -888,7 +1135,79 @@ def self_check():
     assert routes_to_retry(not_found, grown) == ["openalex-oa@2"]
     assert should_reopen_not_found(not_found, grown) is True
     assert should_reopen_not_found(example, grown) is False
-    print("PASS: fetch-manifest self-check (positive control, preview, unreadable, secrets, labels, not_found).")
+    discovered_case = copy.deepcopy(not_found)
+    discovered_case["manifest_id"] = "example-synthetic-discovered-doi"
+    discovered_case["requested_source_id"] = "2502.15166"
+    discovered_case["document"]["title"] = "Synthetic arXiv paper"
+    discovered_case["document"]["document_type"] = "preprint"
+    discovered_case["document"]["year"] = 2025
+    discovered_case["document"]["stable_ids"] = [
+        {"scheme": "arxiv", "value": "2502.15166"},
+        {"scheme": "url", "value": "https://arxiv.org/pdf/2502.15166"},
+    ]
+    discovered_case["discovered_identifiers"] = [{
+        "scheme": "doi",
+        "value": "10.37236/14245",
+        "route": "openalex-oa@1",
+    }]
+    discovered_case["notes"] = (
+        "DOI learned from OpenAlex. Earlier DOI routes are not backfilled, "
+        "and no open-access file was stored."
+    )
+    discovered_case["routes_tried"] = []
+    needed_arxiv = applicable_missing(discovered_case, catalog)
+    assert "doi-resolution@1" not in needed_arxiv
+    assert "unpaywall-oa@1" not in needed_arxiv
+    assert "arxiv-pdf@1" in needed_arxiv
+    assert "openalex-oa@1" in needed_arxiv
+    discovered_case["routes_tried"] = [
+        miss(route_id, index + 1) for index, route_id in enumerate(needed_arxiv)
+    ]
+    expect_ok("discovered doi does not backfill earlier routes", discovered_case, schema)
+    assert routes_to_retry(discovered_case, catalog) == []
+    expanded = copy.deepcopy(catalog)
+    expanded["applicability"]["discovered_identifiers_expand_routes"] = True
+    expanded_missing = applicable_missing(discovered_case, expanded)
+    assert "doi-resolution@1" in expanded_missing
+    assert "unpaywall-oa@1" in expanded_missing
+    on_request = copy.deepcopy(discovered_case)
+    on_request["manifest_id"] = "example-synthetic-doi-on-request"
+    on_request["document"]["stable_ids"] = list(discovered_case["document"]["stable_ids"]) + [
+        {"scheme": "doi", "value": "10.37236/14245"},
+    ]
+    on_request["discovered_identifiers"] = []
+    expect_fail("doi on the request stays applicable", on_request, "doi-resolution@1", schema)
+    verified_discovery = copy.deepcopy(example)
+    verified_discovery["manifest_id"] = "example-verified-discovered-doi"
+    verified_discovery["discovered_identifiers"] = [{
+        "scheme": "doi",
+        "value": "10.37236/14245",
+        "route": "openalex-oa@1",
+    }]
+    verified_discovery["routes_tried"] = list(example["routes_tried"]) + [{
+        "id": "openalex-discovered-doi",
+        "route": "openalex-oa@1",
+        "url": "https://api.openalex.org/works?search=example",
+        "resolved_url": "https://openalex.org/W7163670167",
+        "method": "headless",
+        "attempted_at": "2026-10-26T23:35:00Z",
+        "http_status": 200,
+        "error_category": None,
+        "obtained_bytes": False,
+        "notes": "Surfaced DOI 10.37236/14245 after complete bytes were stored. doi-resolution was not backfilled.",
+    }]
+    verified_discovery["notes"] = (
+        "Complete bytes were already stored. The OpenAlex DOI was recorded and "
+        "earlier DOI routes were not run."
+    )
+    expect_ok("verified manifest logs a lookup it actually ran", verified_discovery, schema)
+    assert "doi-resolution@1" not in routes_to_retry(verified_discovery, catalog)
+    assert "unpaywall-oa@1" not in routes_to_retry(verified_discovery, catalog)
+    print(
+        "PASS: fetch-manifest self-check "
+        "(positive control, preview, unreadable, secrets, labels, not_found, "
+        "comment_url, discovered identifiers, evidence units)."
+    )
 
 
 def main(argv):
