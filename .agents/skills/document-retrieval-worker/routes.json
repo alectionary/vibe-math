@@ -1,5 +1,11 @@
 {
-  "catalog_version": 1,
+  "catalog_version": 2,
+  "applicability": {
+    "identifier_source": "document.stable_ids",
+    "discovered_identifiers_expand_routes": false,
+    "backfill_earlier_routes": false,
+    "log_skipped_routes_after_complete_bytes": false
+  },
   "temporary_hosts": ["media.proquest.com"],
   "identifier_prefixes": [
     {"prefix": "aai", "pattern": "^AAI\\d+$", "site": "unl-proquest"},
@@ -119,7 +125,7 @@
       "requires_prefixes": ["aai", "bepress"],
       "tool": "browser",
       "status": "active",
-      "summary": "Browser Download on a UNL bepress record after a headless bot check. A later procedure is a new id, such as unl-bepress-browser@2."
+      "summary": "Browser Download on a UNL bepress record. The PDF may open inline in the viewer; save from the viewer. A bot check may be absent. The id stays unl-bepress-browser@1. A later procedure is a new id, such as unl-bepress-browser@2."
     },
     {
       "id": "proquest-browser@1",

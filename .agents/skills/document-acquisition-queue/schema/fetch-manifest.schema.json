@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "fetch-manifest.schema.json",
   "title": "FetchResultManifest",
-  "description": "Immutable result posted by a retrieval worker on a fetch-request issue. Version 0.1 stores artifact bytes only as worker-local provenance. Question count is null unless the screen status is completed on a verified, readable, complete text. Route ids come from the worker route catalog.",
+  "description": "Immutable result posted by a retrieval worker on a fetch-request issue. Versions 0.1 and 0.2 store artifact bytes only as worker-local provenance. Version 0.2 requires discovered_identifiers and does not require issue.comment_url; the consumer matches manifest_id to the comment API html_url. Applicability uses document.stable_ids only, so a discovered id does not backfill earlier routes. Question count is null unless the screen status is completed on a verified, readable, complete text. Route ids come from the worker route catalog. text_characters counts Unicode code points, not PDF bytes.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -26,7 +26,10 @@
     "notes"
   ],
   "properties": {
-    "manifest_version": {"const": "0.1"},
+    "manifest_version": {
+      "enum": ["0.1", "0.2"],
+      "description": "0.2 is what a worker posts. 0.1 remains valid for manifests already posted. 0.2 requires discovered_identifiers."
+    },
     "manifest_id": {
       "type": "string",
       "pattern": "^[a-z0-9][a-z0-9._-]{7,80}$",
@@ -59,6 +62,11 @@
       ]
     },
     "document": {"$ref": "#/$defs/document"},
+    "discovered_identifiers": {
+      "type": "array",
+      "description": "Stable ids learned during the run that were not on the request. Required on manifest_version 0.2, possibly empty. They do not expand route applicability and do not require earlier routes to be backfilled. Each entry names the catalog route that surfaced it, and that route must appear in routes_tried.",
+      "items": {"$ref": "#/$defs/discovered_identifier"}
+    },
     "routes_tried": {
       "type": "array",
       "minItems": 1,
@@ -76,6 +84,13 @@
     "notes": {"type": "string", "minLength": 1, "maxLength": 2000}
   },
   "allOf": [
+    {
+      "if": {
+        "properties": {"manifest_version": {"const": "0.2"}},
+        "required": ["manifest_version"]
+      },
+      "then": {"required": ["discovered_identifiers"]}
+    },
     {
       "if": {
         "properties": {"outcome": {"const": "verified"}},
@@ -329,12 +344,16 @@
     "issue": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "number", "url", "comment_url"],
+      "required": ["repository", "number", "url"],
       "properties": {
         "repository": {"const": "alectionary/vibe-math"},
         "number": {"type": "integer", "minimum": 1},
         "url": {"type": "string", "format": "uri"},
-        "comment_url": {"type": "string", "format": "uri"}
+        "comment_url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Omit or null. The comment URL is not known until the comment is posted, and the body is not edited afterward. Consumers match manifest_id to the comment API html_url."
+        }
       }
     },
     "document": {
@@ -379,6 +398,29 @@
           ]
         },
         "value": {"type": "string", "minLength": 1, "maxLength": 300}
+      }
+    },
+    "discovered_identifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "value", "route"],
+      "properties": {
+        "scheme": {
+          "enum": [
+            "doi",
+            "arxiv",
+            "url",
+            "archive_record",
+            "campaign_record",
+            "other"
+          ]
+        },
+        "value": {"type": "string", "minLength": 1, "maxLength": 300},
+        "route": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*@[1-9][0-9]*$",
+          "description": "Catalog route that surfaced this id. That route is already in routes_tried. It does not schedule earlier routes."
+        }
       }
     },
     "route": {
@@ -445,7 +487,11 @@
       "properties": {
         "media_type": {"const": "application/pdf"},
         "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-        "byte_length": {"type": "integer", "minimum": 1},
+        "byte_length": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "PDF file size in bytes. Not extraction.text_characters, and not the UTF-8 byte length of extracted text."
+        },
         "page_count": {"type": "integer", "minimum": 1},
         "committed_to_git": {"const": false},
         "storage": {
@@ -510,7 +556,11 @@
         "ocr_engine": {"type": ["string", "null"], "minLength": 1, "maxLength": 80},
         "readable": {"type": "boolean"},
         "text_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
-        "text_characters": {"type": ["integer", "null"], "minimum": 0},
+        "text_characters": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Unicode code points in the extracted text, the length of the Unicode string. Not artifact.byte_length and not the UTF-8 byte length of a text file."
+        },
         "unreadable_reason": {"type": ["string", "null"], "minLength": 1, "maxLength": 500}
       }
     },

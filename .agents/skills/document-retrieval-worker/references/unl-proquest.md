@@ -19,12 +19,19 @@ bot-mitigation 403. Record `error_category` `bot_mitigation`. Do not record
 institutional-access banner as the dissertation's own access.
 
 `unl-bepress-browser@1`: open the record, pass the bot check if one appears,
-and activate Download. A real browser on the retrieval machine passed these
-controls with no challenge and no sign-in. Five of six previously blocked
+and activate Download. If Download opens the PDF inline in the viewer, save
+the bytes from that viewer. A real browser on the retrieval machine passed
+these controls with no challenge and no sign-in. Five of six previously blocked
 dissertations came back complete: Zimmitti 2023, Volk 2022, Quaisley 2023,
 Kuzmanovski 2024, and Kmail 2019. Sainath 2014 (`aai:AAI3632751`, campaign
 record D025) showed a campus-access restriction on the checked route. That
 outcome is `restricted`, limited to the routes that were checked.
+
+On 27 October 2026 the same route id recovered `bepress:dissunl/339`. The PDF
+opened inline in the viewer, saving from the viewer stored the file, and no
+bot check appeared. The id stays `unl-bepress-browser@1`. A worker with no
+browser posts a browser handoff and leaves the issue `fetch-claimed`; that
+state is in the worker skill, not a new route.
 
 A changed browser procedure is a new catalog id, for example
 `unl-bepress-browser@2`. Do not reuse `@1` for a different procedure.
@@ -67,8 +74,13 @@ challenged, use `browser-download@1` on that same URL.
 
 ## Failed browser connection
 
-A browser that fails before any page loads is `browser_host_unavailable` on
-`browser-download@1`, outcome `transport_failure`. It is not a statement about
-the document. One observed failure, before navigation, was `The browser access
-host is unavailable`. Retry that route under the worker's retry bound. Do not
-relabel it `restricted` or `not-found`.
+A browser that was supposed to start and fails before any page loads is
+`browser_host_unavailable` on `browser-download@1`, outcome
+`transport_failure`. It is not a statement about the document. One observed
+failure, before navigation, was `The browser access host is unavailable`.
+Retry that route under the worker's retry bound. Do not relabel it
+`restricted` or `not-found`.
+
+A worker that has no browser does not record that category and does not post
+a final manifest. It posts a browser handoff and stays on `fetch-claimed`.
+That handoff is not a transport attempt.

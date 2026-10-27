@@ -13,7 +13,7 @@ body:
 
         Identify the source by DOI, arXiv id, canonical URL, or archive record id, plus title, author, and year. Write ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview, a front-matter file, or an unreadable extraction is not a finished question screen.
 
-        Label lifecycle: `fetch-request` to `fetch-claimed`, then `fetched`, `restricted`, `needs-human`, or `not-found`. `not-found` means the applicable public routes found no copy and is reopened only when the route catalog gains a new applicable route.
+        Label lifecycle: `fetch-request` to `fetch-claimed`, then `fetched`, `restricted`, `needs-human`, or `not-found`. Exactly one of those labels is on the issue. `not-found` means the applicable public routes found no copy and is reopened only when the route catalog gains a new applicable route. The blocker category uses the same names as a manifest `error_category`.
   - type: input
     id: stable_source_id
     attributes:
@@ -89,13 +89,19 @@ body:
     id: blocker_category
     attributes:
       label: Blocker category
-      description: Why this environment stopped. Bot mitigation is not an access restriction. No public copy is not a transport failure.
+      description: Same names as the manifest error_category. A browser that cannot start is browser_host_unavailable, not other. A preview or front-matter file is preview_only. No public copy is not_found. Bot mitigation is not an access restriction.
       options:
         - bot_mitigation
+        - http_error
         - browser_host_unavailable
-        - preview_or_front_matter
-        - no_public_copy_found
+        - timeout
+        - network
+        - preview_only
+        - restricted
+        - identity_mismatch
+        - incomplete_document
         - extraction_unreadable
+        - not_found
         - other
     validations:
       required: true
