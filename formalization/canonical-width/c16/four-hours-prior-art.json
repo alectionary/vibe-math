@@ -1,0 +1,48 @@
+{
+  "checked_on": "2026-10-27",
+  "canonical_target_id": "L-F91-c16-unrestricted-width",
+  "relation": "Continuation of the pinned source/prior-art audit, not a claim of a new mathematical question",
+  "source_reconsulted": {
+    "url": "https://arxiv.org/html/2610.06820v1",
+    "locator": "Appendix A, odd-check branching and packing bound",
+    "outcome": "Independent implementation of the described complete low-weight enumeration; no new paper/version or source question"
+  },
+  "bounded_vocabulary_search": {
+    "queries": [
+      "\"binary matroid\" \"dual bases\" vectors orthogonal",
+      "\"identity submatrix\" \"rank\" \"induced matching\" binary matrix"
+    ],
+    "service": "web search",
+    "outcome": "No source-specific solution found in returned results; bounded discovery only, not evidence of global absence",
+    "leads_not_consulted_as_full_text": [
+      {
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html",
+        "title": "Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices",
+        "status": "Search excerpt only; ordinary/Boolean biclique ranks differ from the present GF(2) dual-basis condition. Full-text question screen pending if this lead is pursued; excerpt includes a tensor-product multiplicativity conjecture, not assessed or added as a canonical target."
+      },
+      {
+        "url": "https://arxiv.org/abs/2312.03859",
+        "title": "Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters",
+        "status": "Author-page search excerpt only; induced matching vocabulary lead, no applicable theorem inspected; full text unassessed."
+      },
+      {
+        "url": "https://www.researchgate.net/publication/395418512_Boolean_Rank_via_Monomial_Ideals",
+        "title": "Boolean Rank via Monomial Ideals",
+        "status": "Secondary search excerpt only; primary full text not inspected, exact applicability and question harvesting unassessed."
+      }
+    ]
+  },
+  "software_primary_sources": [
+    {
+      "repository": "https://github.com/arminbiere/kissat",
+      "commit": "8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+      "consulted": "README and local command-line help; built from source for a separate static SAT run"
+    },
+    {
+      "repository": "https://github.com/marijnheule/drat-trim",
+      "consulted": "README and Makefile; built DRAT and LRAT checkers and verified a toy oracle-UNSAT proof",
+      "commit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985"
+    }
+  ],
+  "coverage_limits": "Prior GitHub/code and web audits are preserved in takeover-prior-art.json. Authenticated X coverage remains unavailable from the prior read-only access test; no change in access was observed. Search snippets and software READMEs are not counted as completed new paper screens. No current-resolution or exact-target Lean search completion is inferred."
+}
