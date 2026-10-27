@@ -10,9 +10,9 @@ Canonical target: `L-F102-correlated-residuals`. This note is a **new problem** 
 - Author request, not a numbered conjecture: extend the analysis to correlated residual errors. Historical status in the source: proposed. Current status of the parent request: partly answered by the bow-free specification below. The printed equation-(7) tournament has no globally identified one-edge residual extension.
 - Objects: real structural matrix `B`, exogenous coefficient `Γ`, residual covariance `Ψ`, exogenous covariance `Φ ≻ 0`, and the joint covariance of `(y, x)`.
 - Quantifiers for the restricted question: every positive diagonal `Ψ`, and each of the three single off-diagonal residual entries, on the equation-(7) zero pattern. The wheat Figure 5 graph is not part of the theorem. Singular `Ψ` is outside the claim. Zero structural coefficients are included, and every relabeling of this order is included.
-- Intended Lean interface: the block covariance map of equation (3). `recover_sigma` is a left inverse on that domain. `recover_bow` is the bow-free left inverse. `bow12_same_law` and its two siblings are the collisions, including an arbitrary exogenous `Γ`.
+- Intended Lean interface: the block covariance map of equation (3). `recover_sigma` is a left inverse on that domain. `recover_bow`, `recover_bow01`, and `recover_bow23` are the three bow-free left inverses. `unitUpper_factor_unique` is the general-`n` factorization. `plug_in_consistent` is continuous mapping for the diagonal plug-in. `bow12_same_law` and its two siblings are the collisions, including an arbitrary exogenous `Γ`.
 - Why this target: it is the latent-structure gate already named for this inventory entry, and the source prints a complete three-trait pattern. Runners-up are in the tracking issue.
-- Answer contract: the 2010 method request, restricted to covariance identification of equation (7) → diagonal parameters are a left inverse of `Σ` on the positive-definite domain; each one-edge residual extension collides for every exogenous `Γ`; the bow-free pattern with that direct edge removed is globally identified and is the plug-in estimator. Consistency of the plug-in map is the continuous-mapping argument in the continuation section. No imputation, mixed outcome, nonlinear trait map, or dynamic-fit simulation. Do not merge to `master`.
+- Answer contract: the 2010 method request, restricted to covariance identification of equation (7) → diagonal parameters are a left inverse of `Σ` on the positive-definite domain; each one-edge residual extension collides for every exogenous `Γ`; each of the three bow-free missing-edge patterns is globally identified. For every dimension, a recursive pattern with positive diagonal residuals has a unique unitriangular factorization. The plug-in map is continuous at that covariance, and its Gaussian delta-method variance is the derivative of `recover` times the Isserlis covariance of the second-moment matrix. No imputation, mixed outcome, nonlinear trait map, or dynamic-fit simulation. Do not merge to `master`. The Drton–Foygel–Sullivant characterization stays a note, with no inventory id and no new claim.
 
 ## Issue, claim and Project
 
@@ -184,10 +184,16 @@ No result in this table supplies an identified correlated-residual QTL procedure
 | Each one-edge residual extension contains a real line of positive-definite collisions. For every exogenous `Γ` and every `Φ`, adjusting `Γ` by the bow factor preserves the joint covariance, and the new `Γ` differs whenever `Γ` is invertible and the scale is nonzero. | General Lean proof | `CorrelatedResiduals/Collision.lean`, `bow12_same_law`, `bow13_same_law`, `bow23_same_law`, `exogenous_lift`, `bow12_gamma_diff` and siblings, `bow12_psi_posDef` and siblings | `Ψ` on the bow is `Γ₀ Γ₀ᵀ` for the explicit unitriangular factor. This is global, not generic. |
 | The same three integer points, with both products equal to the identity. | Concrete Lean certificate | `Witness.lean` | Integer special cases of the real lines. Axioms of the integer file: `propext` only. |
 | The 3,375-point integer box and the printed equation-(7) point recover. | Exact finite computation | `check_witness.py`, `witnesses.json` | A box, not the real domain. Superseded as a proof by `recover_sigma`. |
-| Dropping the direct edge into trait 0 from trait 2 and freeing that residual covariance identifies `(b12,b23,v1,v2,v3,c,Γ,Φ)`. | General Lean proof | `CorrelatedResiduals/BowFree.lean`, `recover_bow`, `bow_injective` | `noise.PosDef` and `phi.PosDef`. One missing-edge pattern, not all three. |
-| The plug-in estimator `recover` (diagonal) or `recoverBow` (bow-free) is consistent for iid samples with finite second moments. | Written proof | Continuation, "Estimator and consistency" | Population left inverse is the Lean theorem. LLN, continuity of inversion, and the continuous-mapping theorem are not formalized. |
+| Dropping the direct edge into trait 0 from trait 2 and freeing that residual covariance identifies `(b12,b23,v1,v2,v3,c,Γ,Φ)`. | General Lean proof | `CorrelatedResiduals/BowFree.lean`, `recover_bow`, `bow_injective` | `noise.PosDef` and `phi.PosDef`. |
+| Dropping the edge into trait 0 from trait 1 and freeing that residual covariance identifies the corresponding bow-free parameters. | General Lean proof | `CorrelatedResiduals/BowMissing.lean`, `recover_bow01`, `bow01_injective` | `noise.PosDef` and `phi.PosDef`. The only denominator is the last residual variance. |
+| Dropping the edge into trait 1 from trait 2 and freeing that residual covariance identifies the corresponding bow-free parameters. | General Lean proof | `CorrelatedResiduals/BowMissing.lean`, `recover_bow23`, `bow23_injective` | `noise.PosDef` and `phi.PosDef`. Positive-definiteness of the freed 2×2 block makes the denominator positive. |
+| A unit upper-triangular positive-diagonal factorization of a real Gram matrix is unique in every dimension, and therefore every recursive pattern with positive diagonal residuals is identified by `L Ψ Lᵀ`. | General Lean proof | `CorrelatedResiduals/Triangular.lean`, `unitUpper_factor_unique`, `recursive_residual_unique` | The topological order is fixed. Missing edges are zero entries of a strictly upper-triangular `B`. Mathlib's `LDL` existence proof is not used. The exogenous `Γ` step is the three-trait Schur argument, not a second general-`n` theorem. |
+| If the three empirical blocks converge to `sigma θ` for `θ` on the diagonal domain, every coordinate of `recover` converges to `θ`. | General Lean proof | `CorrelatedResiduals/Consistency.lean`, `recover_continuous_mapping`, `plug_in_consistent` | The law of large numbers that supplies block convergence is a hypothesis. It is not formalized. |
+| At a mean-zero Gaussian law, `√n` times the plug-in error is asymptotically normal with covariance `J V Jᵀ`, where `V` is the Isserlis covariance of `vech(zzᵀ)` and `J` is the derivative of `recover`. | Written proof | Continuation, "Delta method" | Fourth moments are Gaussian. No Lean proof of the central limit theorem. |
+| At the printed equation-(7) point, a central-difference `J` and a Monte Carlo of the plug-in agree with that formula at the recorded tolerances. | Sampled experiment | `delta_method.py`, `delta_check.json` | Seed 102. `n = 20000`, 2000 replicates for the plug-in; 20000 replicates of one outer product for `V`. The Schur differential and the `Φ` block are deterministic checks in the same script. |
+| The plug-in estimator `recover` (diagonal) or `recoverBow` (bow-free) is consistent for iid samples with finite second moments. | Written proof | Continuation, "Estimator and consistency" | The population left inverse and the continuous-mapping implication are Lean theorems. The weak law is not. |
 | Drton–Foygel–Sullivant Theorem 2 implies the endogenous diagonal and bow conclusions for this graph. | Search lead / unresolved as a formal translation | arXiv:1003.1146, Theorem 2 | Not replayed. The exogenous block is `exogenous_lift`. |
-| Brito–Pearl bow-free generic identification, the half-trek criterion, and a general-`n` LDL uniqueness proof. | Written proof for the `n`-induction sketch only; the criteria are citations | Continuation | Not Lean-proved. The three-trait case does not use them. |
+| Brito–Pearl bow-free generic identification and the half-trek criterion. | Search lead / unresolved as a formal translation | Continuation | Citations. The three bow-free patterns are proved directly. |
 
 ## Verification record
 
@@ -213,7 +219,7 @@ Approved block 2026-10-27T07:45Z through 2026-10-27T08:04Z. Mathlib v4.22.0 (`79
 
 `relabel e` is `Matrix.reindex e e`. It preserves products, the identity, transposes, and the covariance blocks (`sigma_relabel`). `recoverRelabeled e` conjugates the observation back by `e.symm` and applies `recover`. `recover_relabeled` returns the original ordered parameters.
 
-Every finite DAG has a topological order. On three labeled traits, conjugating that order to `0 ← 1 ← 2` puts `B` into the support of `Params`, with zeros on the missing forward edges. The Lean theorem takes the permutation as data. The existence of the order is this classical reduction, not a separate Lean proof. The same argument for general `n` is the unitriangular LDL factorization: the last diagonal entry of `Ω` is the last variance, the last column of `L` is that column of `Ω` divided by the variance, and the Schur complement of the leading block is the same factorization of size `n-1`. Mathlib's `LDL` development proves existence, not uniqueness, and leaves lower-triangularity of `LDL.lower` as a TODO, so it was not used as the proof.
+Every finite DAG has a topological order. On three labeled traits, conjugating that order to `0 ← 1 ← 2` puts `B` into the support of `Params`, with zeros on the missing forward edges. The Lean theorem takes the permutation as data. The existence of the order is this classical reduction, not a separate Lean proof. The same argument for general `n` is now `unitUpper_factor_unique`: the last diagonal entry of `Ω` is the last variance, the last column of `L` is that column of `Ω` divided by the variance, and the leading block differs by a common rank-one update. Mathlib's `LDL` development proves existence, not uniqueness, and leaves lower-triangularity of `LDL.lower` as a TODO, so it was not used as the proof.
 
 ### Freed residual covariances
 
@@ -234,13 +240,13 @@ c = (Ω02 Ω11 - Ω01 Ω12) Ω22 / den,
 v1 = Ω00 - b12² v2 - 2 b12 b23 c - b12² b23² v3.
 ```
 
-`recover_bow` applies these formulas to the Schur complement and then `Γ = (I-B) Σ_yx Φ⁻¹`. On `noise.PosDef` and `phi.PosDef`, the diagonal entries `v2` and `v3` are positive, the denominators are nonzero, and `recover_bow (sigma θ) = θ`. The other two missing-edge patterns are the same algebra after a permutation and are not separate Lean theorems.
+`recover_bow` applies these formulas to the Schur complement and then `Γ = (I-B) Σ_yx Φ⁻¹`. On `noise.PosDef` and `phi.PosDef`, the diagonal entries `v2` and `v3` are positive, the denominators are nonzero, and `recover_bow (sigma θ) = θ`. The other two missing-edge patterns are separate theorems in `BowMissing.lean`, recorded in the next block.
 
 ### Estimator and consistency
 
 For either identified specification, the estimator is the plug-in map: form the empirical second-moment blocks of iid mean-zero copies of `(y, x)`, and apply `recover` or `recoverBow`. The population identity is the corresponding Lean left inverse.
 
-At a true parameter in the open domain, `v2`, `v3`, and `det Φ` are positive. Each is a continuous function of the covariance blocks on a neighborhood where `Φ` stays invertible, and the recovery formulas divide only by those quantities. The plug-in map is therefore continuous at the true covariance. Finite second moments give the weak law for the empirical second moments. The continuous-mapping theorem gives consistency in probability. Those three analytic ingredients are not formalized. No rate, asymptotic variance, or wheat-data fit is claimed.
+At a true parameter in the open domain, `v2`, `v3`, and `det Φ` are positive. Each is a continuous function of the covariance blocks on a neighborhood where `Φ` stays invertible, and the recovery formulas divide only by those quantities. Finite second moments give the weak law for the empirical second moments. `plug_in_consistent` is the continuous-mapping half: convergence of the three blocks implies convergence of every coordinate of `recover`. The weak law itself is still a hypothesis. The Gaussian rate is the delta-method block below. No wheat-data fit is claimed.
 
 ### Verification record for the continuation
 
@@ -251,10 +257,79 @@ At a true parameter in the open domain, `v2`, `v3`, and `det Φ` are positive. E
 
 Mathlib was already cached at 07:45Z. The diagonal left inverse compiled before the bow-free file was started; the whole library was green at 08:04Z. About fifteen minutes of that interval is the diagonal proof and about ten minutes is the bow-free inverse, the three real bow lines, the exogenous lifting lemma, and the relabeling transport.
 
+## Block 2026-10-27T08:07Z: the other bows, the delta method, general `n`, and continuity
+
+### The other two bow-free patterns
+
+`Bow01` drops the edge from trait 1 into trait 0 and frees the residual covariance of that pair. With `L = [[1, 0, b13], [0, 1, b23], [0, 0, 1]]` and noise `[[v1, c, 0], [c, v2, 0], [0, 0, v3]]`,
+
+```text
+v3 = Ω22,  b13 = Ω02 / Ω22,  b23 = Ω12 / Ω22,
+v1 = Ω00 - b13² v3,  v2 = Ω11 - b23² v3,  c = Ω01 - b13 b23 v3.
+```
+
+Positive-definiteness gives `v3 > 0`. `recover_bow01` is the left inverse, and `bow01_injective` follows.
+
+`Bow23` drops the edge from trait 2 into trait 1 and frees that residual covariance. With `L = [[1, b12, b13], [0, 1, 0], [0, 0, 1]]` and noise `[[v1, 0, 0], [0, v2, c], [0, c, v3]]`,
+
+```text
+v2 = Ω11,  v3 = Ω22,  c = Ω12,  den = v2 v3 - c²,
+b12 = (Ω01 v3 - Ω02 c) / den,  b13 = (Ω02 v2 - Ω01 c) / den,
+v1 = Ω00 - b12 Ω01 - b13 Ω02.
+```
+
+The denominator is the trailing principal minor. The vector `(0, -c, v2)` has quadratic form `v2 den`, so positive-definiteness and `v2 > 0` force `den > 0`. `recover_bow23` and `bow23_injective` are the left inverse and the resulting injectivity.
+
+`#print axioms` on these four declarations reports `propext`, `Classical.choice`, and `Quot.sound`. There is no `sorryAx`.
+
+### Delta method
+
+Let `z = (y, x) ∈ ℝ⁶` be mean zero with covariance `Σ`, and let `S_n` be the average of `n` independent copies of `zzᵀ`. The plug-in estimator is `θ̂_n = recover(S_n)`, in the 21 coordinates `(b12, b13, b23, v1, v2, v3)`, row-major `Γ`, and lower `vech Φ`. Let `s_n` be the lower `vech` of `S_n`, diagonal included, with row index at least the column index.
+
+For a mean-zero Gaussian, Isserlis gives
+
+```text
+V_{(i,j),(k,l)} = Σ_ik Σ_jl + Σ_il Σ_jk.
+```
+
+On a neighborhood of a diagonal-domain covariance, `det Φ`, `v3`, and `v2` stay nonzero, so `recover` is `C¹` in these coordinates. If `J` is that derivative at the true `vech Σ`, then `√n (θ̂_n - θ) ⇒ N(0, J V Jᵀ)`.
+
+The differential of the Schur complement at symmetric increments `(A, C, H)` of `(Σ_yy, Σ_yx, Σ_xx)` is
+
+```text
+dΩ = A - C Φ⁻¹ Σ_yxᵀ - Σ_yx Φ⁻¹ Cᵀ + Σ_yx Φ⁻¹ H Φ⁻¹ Σ_yxᵀ.
+```
+
+`Φ` is copied from `Σ_xx`, and `Γ = (I - B) Σ_yx Φ⁻¹` is differentiated by the product rule. The same shape applies to `recoverBow`, `recoverBow01`, and `recoverBow23`; the numeric check is the diagonal map at equation (7).
+
+`delta_method.py` uses central differences of step `10⁻⁶`. Population recovery of the printed point has maximum absolute error `4.4×10⁻¹⁶`. One Gaussian symmetric increment matches the Schur differential with maximum absolute error `1.9×10⁻¹⁰`. The asymptotic block of `vech Φ` matches the corresponding Isserlis block with maximum absolute error `1.1×10⁻¹⁰`. A Monte Carlo of 20,000 outer products, seed 102, estimates `V` with relative Frobenius error `0.033`. A Monte Carlo of 2,000 samples of size 20,000 estimates the plug-in covariance with relative Frobenius error `0.073`, and `0.037` on the six endogenous coordinates. The endogenous asymptotic standard deviations at this point are approximately `0.943`, `0.929`, `0.849`, `2.263`, `2.546`, and `3.536` for `(b12, b13, b23, v1, v2, v3)`.
+
+### General `n`
+
+`UnitUpper` means zero strictly below the diagonal and ones on the diagonal. `StrictUpper` means zero on and below the diagonal, which is every recursive pattern in this order, missing edges included as zeros. `unitUpper_factor_unique` is induction on `n`. The last diagonal entry of `L D Lᵀ` is the last pivot. The last column of `L` is that column of the Gram matrix divided by the pivot. The leading principal block differs from the smaller factorization by the rank-one update from that column, so the inductive hypothesis applies.
+
+`det(I - B) = 1` because `I - B` is unit upper triangular. Its inverse is upper triangular, and the diagonal of the inverse is 1 because the only surviving term in `(L⁻¹ L)_{ii}` is the diagonal product. `recursive_residual_unique` therefore says that `L Ψ Lᵀ` determines `B` and the positive diagonal of `Ψ`. Mathlib's `LDL.lower` proves existence and leaves triangularity as a TODO; it is not used. Axioms are `propext`, `Classical.choice`, and `Quot.sound`.
+
+The three-trait passage from the joint blocks to `Ω`, and from `(B, Ω, Σ_yx, Φ)` to `Γ`, remains `schur_noise` and `recover_sigma`. It is not restated for a covariate dimension different from `n`.
+
+### Lean continuity
+
+`plug_in_consistent`: if `θ` is on the diagonal domain and the three blocks of `S_n` converge to the blocks of `sigma θ`, then the eight coordinates `(b12, b13, b23, v1, v2, v3, Γ, Φ)` of `recover(S_n)` converge to those of `θ`. The proof is continuity of the Schur complement where `det Φ` is a unit, continuity of the six rational recovery formulas where `v3` and `v2` are nonzero, and the population identity `recover_sigma`. Axioms are `propext`, `Classical.choice`, and `Quot.sound`. The weak law that turns iid second moments into that block convergence is not a Lean theorem.
+
+### Time
+
+This block ran from 08:07Z to about 08:30Z. The two bow-free proofs were already drafted and were checked by about 08:14Z. The delta-method script and its Monte Carlo finished in the same interval, and the writeup above is the rest of that part. The general-`n` induction was green by about 08:22Z. The continuous-mapping theorem was green by about 08:28Z. Roughly ten to fifteen minutes of compiler time went to each of the last two parts. The five-hour budget, through about 12:45Z, was not exhausted. The four requested items are the stopping point.
+
+### Verification for this block
+
+- `lake build` in `formalization/correlated-residuals`, Lean 4.22.0, Mathlib v4.22.0, exited 0. New modules: `BowMissing`, `Triangular`, `Consistency`.
+- `#print axioms` on `recover_bow01`, `bow01_injective`, `recover_bow23`, `bow23_injective`, `unitUpper_factor_unique`, `recursive_residual_unique`, `recover_continuous_mapping`, and `plug_in_consistent` reports only `propext`, `Classical.choice`, and `Quot.sound`.
+- `python3 formalization/correlated-residuals/delta_method.py` exited 0. The tolerances in the script are Schur and `Φ`-block errors below `10⁻⁶`, second-moment relative Frobenius below `0.08`, and plug-in relative Frobenius below `0.12`.
+
 ## Block closeout
 
-**Question answered:** For every real coefficient on the equation-(7) support, positive diagonal residuals and positive definite `Φ` are recovered from `Σ` by `recover_sigma` (general Lean proof). The same holds after any relabeling of the three traits. Freeing any one residual edge produces a real line of positive-definite joint-law collisions for every exogenous `Γ`. Dropping the direct edge from trait 2 into trait 0 and freeing that residual covariance is globally identified by `recover_bow`, which is the plug-in estimator; consistency is the written continuous-mapping argument above.
+**Question answered:** All three bow-free missing-edge patterns on the equation-(7) order are globally identified (`recover_bow`, `recover_bow01`, `recover_bow23`; general Lean proofs). Every unit upper-triangular positive-diagonal factorization is unique, and every recursive pattern in that order is identified by its residual Gram matrix (`unitUpper_factor_unique`, `recursive_residual_unique`; general Lean proofs). If the empirical blocks converge, the diagonal plug-in converges (`plug_in_consistent`; general Lean proof). For mean-zero Gaussian samples, the plug-in has delta-method covariance `J V Jᵀ` (written proof), and the equation-(7) numerical check matches that matrix (sampled experiment, `delta_check.json`).
 
-**Question still open:** The parent request is not a fitted QTL procedure for the wheat graph or for an arbitrary correlated pattern. The other two bow-free missing-edge patterns, general-`n` LDL uniqueness, and the sample continuous-mapping argument are not Lean theorems. The generic mixed-graph characterization of Drton, Foygel, and Sullivant, Section 8, is harvested and still has no canonical inventory id. Issue #13 could not be edited: the integration token returns 403.
+**Question still open:** The parent request is not a fitted QTL procedure for the wheat graph. The weak law behind `plug_in_consistent` is not formalized, and neither is the central limit theorem behind the delta method. General-`n` recovery of `Γ` from the joint blocks is the three-trait Schur argument rather than a separate theorem. The generic mixed-graph characterization of Drton, Foygel, and Sullivant, arXiv:1003.1146, Section 8, stays a harvested note with no canonical inventory id and no new claim. Issue #13 could not be edited: the integration token returns 403.
 
-**Next proposed target (follow-up):** Assign a canonical id to the Drton–Foygel–Sullivant generic-identifiability characterization and screen the full texts that were only opened. Inside this restriction, the next proof is either general-`n` uniqueness of the unitriangular LDL factorization or the continuous-mapping half of consistency. Neither is required to use the three-trait theorems above.
+**Next proposed target (follow-up):** Formalize the entrywise weak law used as the hypothesis of `plug_in_consistent`, or extend `recursive_residual_unique` by the Schur step that recovers a rectangular `Γ`. Neither changes the three-trait identification theorems above. The Drton–Foygel–Sullivant characterization remains uninventoried on purpose.
