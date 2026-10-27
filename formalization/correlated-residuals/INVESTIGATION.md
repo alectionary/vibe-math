@@ -188,7 +188,13 @@ No result in this table supplies an identified correlated-residual QTL procedure
 
 ## Verification record
 
-Commands and outcomes are filled in after the checkers run. Toolchain pin: `lean-toolchain` contains `leanprover/lean4:v4.22.0`.
+Run on 2026-10-27 from the worktree, after the statement commit.
+
+- `python3 formalization/correlated-residuals/check_witness.py` exited 0. Both covariance implementations agreed on the base point, the three collisions, and equation (7). All 3,375 grid points recovered. Equation (7) recovered `B`, `Ψ`, and `Γ`. `witnesses.json` records the matrices. The grid is exhaustive for that integer box and is not the real positive domain; the written proof covers that domain.
+- `lean Witness.lean` with Lean 4.22.0 (`ba2cbbf09d4978f416e0ebd1fceeebc2c4138c05`, Release), pinned by `lean-toolchain`, exited 0. `#print axioms` on `bow12_same_law`, `bow12_inverse`, and `base_pd` reports only `propext`. There is no `sorry` and no `sorryAx`.
+- GitHub code search was retried and again returned HTTP 429 for `"structural equation" language:Lean` and `"half-trek criterion"`. The repository search API query `linear structural equation identifiability lean` returned `total_count` 0 on 2026-10-27. That query matches repository text, not file contents, so it does not show that no Lean file exists. Authenticated issue and ref searches succeeded earlier.
+
+The collision row in the evidence table is therefore an exact finite computation and a concrete Lean certificate. The diagonal injectivity row remains a written proof.
 
 ## Block closeout
 
