@@ -1,5 +1,5 @@
 {
-  "manifest_version": "0.1",
+  "manifest_version": "0.2",
   "manifest_id": "example-unl-aai3402936-verified",
   "supersedes": null,
   "recorded_at": "2026-10-26T23:40:00Z",
@@ -41,6 +41,7 @@
       }
     ]
   },
+  "discovered_identifiers": [],
   "routes_tried": [
     {
       "id": "unl-viewcontent-cehsdiss-1067",
@@ -111,7 +112,8 @@
     "evidence": [
       "Title, author, and year match the UNL archive record and ProQuest docview 305217740.",
       "Page count is 283. Front matter, main chapters, references, and final pages are present.",
-      "SHA-256 matches the verified positive control. Born-digital extraction; OCR was not applied."
+      "SHA-256 matches the verified positive control. Born-digital extraction; OCR was not applied.",
+      "Extracted text is 477024 Unicode characters (text_characters), distinct from the PDF byte_length 4629089 bytes."
     ]
   },
   "extraction": {
@@ -130,5 +132,5 @@
     "candidates": [],
     "screen_owner": "research_agent"
   },
-  "notes": "Schema fixture for the verified positive control UNL AAI3402936 / ProQuest docview 305217740. Route timestamps are placeholders; the historical retrieval audit did not record clock times. Byte length, page count, PDF sha256, and text sha256 match literature/unl-sem/seed-source-manifest.json. Question count stays null: a verified PDF is not a completed question screen, and this fixture does not repeat the later ledger screen. producer.role example is not merged into a canonical ledger. Catalog route ids are unl-bepress-headless@1, proquest-openurl@1, and proquest-browser@1."
+  "notes": "Schema fixture for the verified positive control UNL AAI3402936 / ProQuest docview 305217740. manifest_version is 0.2. discovered_identifiers is empty. issue is null, so comment_url is omitted; a live posting also omits comment_url and the consumer reads the comment API html_url. Route timestamps are placeholders; the historical retrieval audit did not record clock times. Byte length, page count, PDF sha256, and text sha256 match literature/unl-sem/seed-source-manifest.json. Evidence states 477024 Unicode characters and 4629089 bytes as different counts. Question count stays null: a verified PDF is not a completed question screen, and this fixture does not repeat the later ledger screen. producer.role example is not merged into a canonical ledger. Catalog route ids are unl-bepress-headless@1, proquest-openurl@1, and proquest-browser@1."
 }
