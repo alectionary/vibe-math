@@ -5787,3 +5787,51 @@ First milestone: Freeze the mathematical model and desired guarantee; compare ex
 Gate: Specify ordinal responses, substantive factors, response-style factors/classes, identification constraints and a detection/error criterion. Separate identifiable model distinctions from labels that observations cannot distinguish.
 
 Basis: Source-stated statistical methods direction; not an assumed theorem or a timed effort estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f134-interpretation-detection).
+
+### L-F145-generic-mixed-graph
+
+Characterize the mixed graphs that yield generically identifiable linear structural equation models.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Section 8 of Drton, Foygel, and Sullivant leaves the generic characterization open after they settle the global case. Foygel, Draisma, and Drton restate that the problem remains open.
+
+First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
+
+Gate: Specify the mixed-graph class, the directed and bidirected edge sets, the generic parameter domain, and the map from edge coefficients to the covariance.
+
+Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+
+### L-F146-half-trek-gap
+
+Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Foygel, Draisma, and Drton ask for an infinite family in the gap between their necessary and sufficient conditions.
+
+First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
+
+Gate: Specify rational identifiability, the half-trek criterion, and an infinite graph family separating them.
+
+Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+
+### L-F147-polytime-ancestral
+
+Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Drton and Weihs leave the polynomial-time status of the ancestral search unresolved.
+
+First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
+
+Gate: Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.
+
+Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
