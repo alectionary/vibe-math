@@ -18,7 +18,7 @@ import numpy as np
 import cvxpy as cp
 
 
-def model(patterns,P,target,cap=None,maximize_margin=False,shape_inputs=None,fixed_margin=0):
+def model(patterns,P,target,cap=None,maximize_margin=False,shape_inputs=None,fixed_margin=0,shape_maxweight=16):
     m=len(patterns);N=2*m;assert P%2==0
     p=cp.Variable(N,name='first');C={0:cp.Variable((N,N),symmetric=True,name='C0'),P//2:cp.Variable((N,N),symmetric=True,name='Chalf')}
     for h in range(1,P//2):C[h]=cp.Variable((N,N),name=f'C{h}');C[P-h]=C[h].T
@@ -59,7 +59,7 @@ def model(patterns,P,target,cap=None,maximize_margin=False,shape_inputs=None,fix
         def canonical(f):
             return min(((f<<h)|(f>>(16-h)))&65535 for h in range(16))
         assert P==16 and m==45
-        masks=list(map(int,(shape_inputs/'masks.txt').read_text().split()));profiles={r['pattern']:r for r in json.loads((shape_inputs/'profiles.json').read_text())};S=len(masks)
+        all_masks=list(map(int,(shape_inputs/'masks.txt').read_text().split()));indices=[i for i,v in enumerate(all_masks) if v.bit_count()<=shape_maxweight];masks=[all_masks[i] for i in indices];profiles={r['pattern']:{key:[r[key][i] for i in indices] for key in ['zero','owners']} for r in json.loads((shape_inputs/'profiles.json').read_text())};S=len(masks)
         distribution=cp.Variable((N,S),nonneg=True,name='shape_distribution');weights=np.array([v.bit_count()/P for v in masks])
         constraints.extend([cp.sum(distribution,axis=1)==1,distribution@weights==p])
         for h in range(1,P//2+1):
@@ -129,7 +129,7 @@ def verify_shape_marginals(patterns,p,C,distribution,folder):
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--mapping',type=Path);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=300);ap.add_argument('--iterations',type=int,default=3000);ap.add_argument('--control',choices=['positive','negative']);ap.add_argument('--maximize-margin',action='store_true');ap.add_argument('--shape-inputs',type=Path);ap.add_argument('--fixed-margin',type=float,default=0);ap.add_argument('--eps',type=float,default=1e-5);ap.add_argument('--canonical-dump',action='store_true');ap.add_argument('--indirect',action='store_true');ap.add_argument('--child',action='store_true',help=argparse.SUPPRESS);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--mapping',type=Path);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=300);ap.add_argument('--iterations',type=int,default=3000);ap.add_argument('--control',choices=['positive','negative']);ap.add_argument('--maximize-margin',action='store_true');ap.add_argument('--shape-inputs',type=Path);ap.add_argument('--fixed-margin',type=float,default=0);ap.add_argument('--eps',type=float,default=1e-5);ap.add_argument('--canonical-dump',action='store_true');ap.add_argument('--indirect',action='store_true');ap.add_argument('--shape-maxweight',type=int,default=16,help='Restrict witness support; a bound below16 is not necessary for full frames');ap.add_argument('--child',action='store_true',help=argparse.SUPPRESS);args=ap.parse_args()
     if not args.child:
         child=subprocess.Popen([sys.executable,str(Path(__file__).resolve())]+sys.argv[1:]+['--child']);expired=False
         try:child.wait(timeout=args.seconds+10)
@@ -145,7 +145,9 @@ def main():
     elif args.control=='negative':P=2;cap=None;target=2;patterns=[[3,3],[3,3]]
     else:patterns=json.loads(args.mapping.read_text())['patterns']
     start=time.monotonic();result={'status':'RUNNING','scope':'necessary degree-two cyclic moment SDP','physical_frame':False,'P':P,'orbit_types':len(patterns),'target_pairs':target,'control':args.control,'solver':'SCS','iterations_limit':args.iterations};args.output.write_text(json.dumps(result,indent=2)+'\n')
-    problem,p,C=model(patterns,P,target,cap,args.maximize_margin,args.shape_inputs,args.fixed_margin)
+    result.update(fixed_margin=args.fixed_margin,requested_epsilon=args.eps,indirect_solver=args.indirect,shape_maxweight=args.shape_maxweight)
+    if args.shape_inputs and args.shape_maxweight<16:result['scope']='restricted feasible-point search inside the phase-enhanced necessary moment model'
+    problem,p,C=model(patterns,P,target,cap,args.maximize_margin,args.shape_inputs,args.fixed_margin,args.shape_maxweight)
     if args.control=='positive':
         known_p,known_C=moments_from_masks([15,0,0,15,0,0],4);check=verify_moments(patterns,P,target,known_p,known_C);assert check['linear_max_error']<1e-12 and check['PSD_min_eigenvalue']>-1e-10;result['explicit_positive_moment_check']=check
     # Compilation can dominate the shape model; include it in the wall budget.
@@ -156,6 +158,8 @@ def main():
     if p.value is not None:
         values={h:np.asarray(C[h].value) for h in range(P)};result['independent_numeric_check']=verify_moments(patterns,P,target,np.asarray(p.value),values,cap)
         extra={v.name():v.value for v in problem.variables() if v.name()=='shape_distribution'}
+        if extra and args.shape_maxweight<16:
+            masks=list(map(int,(args.shape_inputs/'masks.txt').read_text().split()));indices=[i for i,v in enumerate(masks) if v.bit_count()<=args.shape_maxweight];expanded=np.zeros((90,len(masks)));expanded[:,indices]=extra['shape_distribution'];extra['shape_distribution']=expanded
         if extra:result['independent_shape_check']=verify_shape_marginals(patterns,np.asarray(p.value),values,extra['shape_distribution'],args.shape_inputs)
         np.savez_compressed(args.output.with_suffix('.moments.npz'),first=p.value,**{f'C{h}':v for h,v in values.items()},**extra)
         if args.canonical_dump:
@@ -170,6 +174,7 @@ def main():
             metadata={'offsets':stuffing.var_offsets,'shapes':stuffing.var_shapes,'variables':{str(v.id):v.name() for v in problem.variables()},'equalities':count}
             args.output.with_suffix('.canonical.json').write_text(json.dumps(metadata,indent=2)+'\n')
     result['shape_marginals']=args.shape_inputs is not None
+    result['shape_maxweight']=args.shape_maxweight
     args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 
 

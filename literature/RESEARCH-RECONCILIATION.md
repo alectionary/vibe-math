@@ -545,4 +545,4 @@ Source-question indexing extension.
 
 Current cohort: **373 canonical entries,150 eligible targets,178 paper records,146 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
 
-The current source index has **110** records, with actual access levels retained.
+The current source index has **111** records, with actual access levels retained.
