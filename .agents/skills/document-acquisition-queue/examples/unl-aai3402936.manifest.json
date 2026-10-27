@@ -1,0 +1,115 @@
+{
+  "manifest_version": "0.1",
+  "manifest_id": "example-unl-aai3402936-verified",
+  "supersedes": null,
+  "recorded_at": "2026-10-26T23:40:00Z",
+  "producer": {
+    "role": "example",
+    "name": "document-acquisition-queue example"
+  },
+  "campaign_id": "UNL-SEM-2001",
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "UNL-SEM-D067",
+  "outcome": "verified",
+  "issue": null,
+  "document": {
+    "title": "CONSTRUCTING A CREATIVE SELF-EFFICACY INVENTORY: A MIXED METHODS INQUIRY",
+    "author": "Daniel H. Abbott",
+    "year": 2010,
+    "document_type": "doctoral_dissertation",
+    "stable_ids": [
+      {"scheme": "campaign_record", "value": "UNL-SEM-D067"},
+      {"scheme": "unl_aai", "value": "AAI3402936"},
+      {"scheme": "unl_bepress", "value": "cehsdiss/68"},
+      {"scheme": "proquest_docview", "value": "305217740"},
+      {"scheme": "proquest_publication", "value": "3402936"}
+    ]
+  },
+  "routes_tried": [
+    {
+      "id": "unl-viewcontent-cehsdiss-1067",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1067&context=cehsdiss",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-10-26T23:10:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "Bot-mitigation response on the bepress Download control. Not an access restriction."
+    },
+    {
+      "id": "unl-viewcontent-dissertations-12278",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=12278&context=dissertations",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-10-26T23:12:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "Bot-mitigation response on the AAI3402936 Download control."
+    },
+    {
+      "id": "proquest-openurl-3402936",
+      "url": "https://gateway.proquest.com/openurl?url_ver=Z39.88-2004&res_dat=xri:pqdiss&rft_val_fmt=info:ofi/fmt:kev:mtx:dissertation&rft_dat=xri:pqdiss:3402936",
+      "resolved_url": "https://www.proquest.com/docview/305217740",
+      "method": "openurl",
+      "attempted_at": "2026-10-26T23:20:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "OpenURL resolved publication 3402936 to docview 305217740. This route stored no PDF bytes."
+    },
+    {
+      "id": "proquest-docview-305217740",
+      "url": "https://www.proquest.com/docview/305217740",
+      "resolved_url": "https://www.proquest.com/docview/305217740",
+      "method": "browser",
+      "attempted_at": "2026-10-26T23:30:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Open-access Download PDF. The temporary media URL is omitted; only docview 305217740 is stored."
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "d39a696d20d6df6d9467a8906e67c40f336c3856ac74637f8db6629ca9fcc9d2",
+    "byte_length": 4629089,
+    "page_count": 283,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "bot_local",
+      "locator": "local-extraction/literature/unl-sem/retrieval-repair/UNL-SEM-D067.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "Title, author, and year match the UNL archive record and ProQuest docview 305217740.",
+      "Page count is 283. Front matter, main chapters, references, and final pages are present.",
+      "SHA-256 matches the verified positive control. Born-digital extraction; OCR was not applied."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "ed2977bdcd83119dfa4712654c2ce1e91b6af94934c6e4b8f4bf69a35b91a625",
+    "text_characters": 477024,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Schema fixture for the verified positive control UNL AAI3402936 / ProQuest docview 305217740. Route timestamps are placeholders; the historical retrieval audit did not record clock times. Byte length, page count, PDF sha256, and text sha256 match literature/unl-sem/seed-source-manifest.json. Question count stays null: a verified PDF is not a completed question screen, and this fixture does not repeat the later ledger screen. producer.role example is not merged into a canonical ledger."
+}

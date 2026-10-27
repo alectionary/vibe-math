@@ -1,0 +1,134 @@
+name: Document fetch request
+description: Queue retrieval of one complete source for the acquisition bot.
+title: "fetch: "
+labels:
+  - fetch-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        File this when a research block needs a complete text and this environment cannot verify it. One issue per stable source. Search open issues for that id before filing.
+
+        The retrieval bot claims the issue, fetches on its own VM, and posts an immutable manifest comment. It does not edit literature ledgers. The research agent merges the manifest and then closes the issue.
+
+        Write stable ids and ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview or unreadable file is not a finished question screen.
+
+        Label lifecycle, once those labels exist: `fetch-request` to `fetch-claimed` to `fetched`, `restricted`, or `needs-human`. The `fetch-request` label on this form applies only after the repository has that label.
+  - type: input
+    id: stable_source_id
+    attributes:
+      label: Stable source ID
+      description: Campaign or archive id that stays the same when a mirror URL changes. Example UNL-SEM-D067.
+      placeholder: UNL-SEM-D067
+    validations:
+      required: true
+  - type: textarea
+    id: stable_id_aliases
+    attributes:
+      label: Other stable IDs
+      description: One scheme and value per line. Example unl_aai AAI3402936, proquest_docview 305217740, proquest_publication 3402936, doi, or arXiv.
+      placeholder: |
+        unl_aai AAI3402936
+        proquest_docview 305217740
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Title as given by the archive or publisher record.
+      placeholder: CONSTRUCTING A CREATIVE SELF-EFFICACY INVENTORY
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      placeholder: Daniel H. Abbott
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      description: Four-digit publication year.
+      placeholder: "2010"
+    validations:
+      required: true
+  - type: dropdown
+    id: document_type
+    attributes:
+      label: Document type
+      options:
+        - doctoral_dissertation
+        - masters_thesis
+        - article
+        - preprint
+        - book
+        - report
+        - other
+    validations:
+      required: true
+  - type: input
+    id: campaign_id
+    attributes:
+      label: Campaign
+      description: Parent campaign id. Example UNL-SEM-2001.
+      placeholder: UNL-SEM-2001
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: High when the current answer depends on this text. Normal for a campaign gap. Low for a lead that can wait.
+      options:
+        - low
+        - normal
+        - high
+      default: 1
+    validations:
+      required: true
+  - type: dropdown
+    id: blocker_category
+    attributes:
+      label: Blocker category
+      description: Why this environment stopped. Bot mitigation is not an access restriction.
+      options:
+        - bot_mitigation
+        - browser_host_unavailable
+        - preview_or_front_matter
+        - no_public_copy_found
+        - extraction_unreadable
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: routes_attempted
+    attributes:
+      label: Routes already attempted
+      description: Each line is a method, a durable https URL or stable id, and the result. Omit signed queries and cookies.
+      placeholder: |
+        headless https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1067&context=cehsdiss -> 403 bot_mitigation
+        browser host unavailable before navigation
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: What failed
+      description: The concrete failure in this environment, and which text is still needed.
+      placeholder: Headless Download controls returned bot-mitigation responses and the browser host never connected.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Before filing
+      options:
+        - label: I searched existing issues for this stable source ID and its aliases.
+          required: true
+        - label: This request contains no signed URLs, cookies, or credentials.
+          required: true
+        - label: Routes already attempted are listed, including bot-mitigation and browser-host failures.
+          required: true

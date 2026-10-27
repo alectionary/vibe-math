@@ -1,0 +1,564 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fetch-manifest.schema.json",
+  "title": "FetchResultManifest",
+  "description": "Immutable result posted by the retrieval bot on a fetch-request issue. Version 0.1 stores artifact bytes only as bot-local provenance. Question count is null unless the screen status is completed on a verified, readable, complete text.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "manifest_id",
+    "supersedes",
+    "recorded_at",
+    "producer",
+    "campaign_id",
+    "priority",
+    "retryable",
+    "requested_source_id",
+    "outcome",
+    "issue",
+    "document",
+    "routes_tried",
+    "artifact",
+    "completeness",
+    "extraction",
+    "question_screen",
+    "notes"
+  ],
+  "properties": {
+    "manifest_version": {"const": "0.1"},
+    "manifest_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{7,80}$",
+      "description": "Stable id of this posting. A correction is a new id that names the replaced id in supersedes."
+    },
+    "supersedes": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9][a-z0-9._-]{7,80}$"
+    },
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "producer": {"$ref": "#/$defs/producer"},
+    "campaign_id": {"type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)+$"},
+    "priority": {"enum": ["low", "normal", "high"]},
+    "retryable": {
+      "type": "boolean",
+      "description": "True only while a transport failure is still the bot's to retry. Verified, preview, and restricted results are not retryable."
+    },
+    "requested_source_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,120}$"},
+    "outcome": {
+      "enum": ["verified", "preview_only", "restricted", "transport_failure", "needs_human"]
+    },
+    "issue": {
+      "anyOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/issue"}
+      ]
+    },
+    "document": {"$ref": "#/$defs/document"},
+    "routes_tried": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/route"}
+    },
+    "artifact": {
+      "anyOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/artifact"}
+      ]
+    },
+    "completeness": {"$ref": "#/$defs/completeness"},
+    "extraction": {"$ref": "#/$defs/extraction"},
+    "question_screen": {"$ref": "#/$defs/question_screen"},
+    "notes": {"type": "string", "minLength": 1, "maxLength": 2000}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"outcome": {"const": "verified"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {
+          "artifact": {"type": "object"},
+          "completeness": {
+            "properties": {
+              "classification": {"const": "complete_body"},
+              "identity_matched": {"const": true},
+              "front_matter_only": {"const": false},
+              "preview": {"const": false}
+            },
+            "required": ["classification", "identity_matched", "front_matter_only", "preview"]
+          }
+        },
+        "required": ["artifact", "completeness"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"const": "preview_only"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {
+          "artifact": {"type": "object"},
+          "completeness": {
+            "properties": {
+              "classification": {"enum": ["preview", "front_matter_only"]}
+            },
+            "required": ["classification"]
+          },
+          "question_screen": {
+            "properties": {
+              "status": {"enum": ["not_screened", "blocked"]},
+              "question_count": {"type": "null"}
+            },
+            "required": ["status", "question_count"]
+          }
+        },
+        "required": ["artifact", "completeness", "question_screen"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"enum": ["transport_failure", "restricted"]}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {
+          "artifact": {"type": "null"},
+          "completeness": {
+            "properties": {"classification": {"const": "not_obtained"}},
+            "required": ["classification"]
+          },
+          "extraction": {
+            "properties": {
+              "status": {"const": "not_attempted"},
+              "method": {"const": "not_extracted"},
+              "readable": {"const": false}
+            },
+            "required": ["status", "method", "readable"]
+          },
+          "question_screen": {
+            "properties": {
+              "status": {"enum": ["not_screened", "blocked"]},
+              "question_count": {"type": "null"}
+            },
+            "required": ["status", "question_count"]
+          }
+        },
+        "required": ["artifact", "completeness", "extraction", "question_screen"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"const": "needs_human"}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {
+          "question_screen": {
+            "properties": {
+              "status": {"enum": ["not_screened", "blocked"]},
+              "question_count": {"type": "null"}
+            },
+            "required": ["status", "question_count"]
+          }
+        },
+        "required": ["question_screen"]
+      }
+    },
+    {
+      "if": {
+        "properties": {"outcome": {"enum": ["verified", "preview_only", "restricted"]}},
+        "required": ["outcome"]
+      },
+      "then": {
+        "properties": {"retryable": {"const": false}},
+        "required": ["retryable"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question_screen": {
+            "properties": {"status": {"const": "not_screened"}},
+            "required": ["status"]
+          }
+        },
+        "required": ["question_screen"]
+      },
+      "then": {
+        "properties": {
+          "question_screen": {
+            "properties": {
+              "question_count": {"type": "null"},
+              "candidates": {"maxItems": 0}
+            },
+            "required": ["question_count", "candidates"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question_screen": {
+            "properties": {"status": {"const": "blocked"}},
+            "required": ["status"]
+          }
+        },
+        "required": ["question_screen"]
+      },
+      "then": {
+        "properties": {
+          "question_screen": {
+            "properties": {
+              "question_count": {"type": "null"},
+              "candidates": {"maxItems": 0}
+            },
+            "required": ["question_count", "candidates"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question_screen": {
+            "properties": {"status": {"const": "candidates_only"}},
+            "required": ["status"]
+          }
+        },
+        "required": ["question_screen"]
+      },
+      "then": {
+        "properties": {
+          "outcome": {"const": "verified"},
+          "extraction": {
+            "properties": {"readable": {"const": true}},
+            "required": ["readable"]
+          },
+          "completeness": {
+            "properties": {"classification": {"const": "complete_body"}},
+            "required": ["classification"]
+          },
+          "question_screen": {
+            "properties": {
+              "question_count": {"type": "null"},
+              "candidates": {"minItems": 1}
+            },
+            "required": ["question_count", "candidates"]
+          }
+        },
+        "required": ["outcome", "extraction", "completeness", "question_screen"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question_screen": {
+            "properties": {"status": {"const": "completed"}},
+            "required": ["status"]
+          }
+        },
+        "required": ["question_screen"]
+      },
+      "then": {
+        "properties": {
+          "outcome": {"const": "verified"},
+          "extraction": {
+            "properties": {"readable": {"const": true}},
+            "required": ["readable"]
+          },
+          "completeness": {
+            "properties": {"classification": {"const": "complete_body"}},
+            "required": ["classification"]
+          },
+          "question_screen": {
+            "properties": {
+              "question_count": {"type": "integer", "minimum": 0}
+            },
+            "required": ["question_count"]
+          }
+        },
+        "required": ["outcome", "extraction", "completeness", "question_screen"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "extraction": {
+            "properties": {"readable": {"const": false}},
+            "required": ["readable"]
+          }
+        },
+        "required": ["extraction"]
+      },
+      "then": {
+        "properties": {
+          "question_screen": {
+            "properties": {
+              "status": {"enum": ["not_screened", "blocked"]},
+              "question_count": {"type": "null"},
+              "candidates": {"maxItems": 0}
+            },
+            "required": ["status", "question_count", "candidates"]
+          }
+        },
+        "required": ["question_screen"]
+      }
+    }
+  ],
+  "$defs": {
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name"],
+      "properties": {
+        "role": {
+          "enum": ["retrieval_bot", "example"],
+          "description": "example marks the committed fixture. Do not merge it into a ledger."
+        },
+        "name": {"type": "string", "minLength": 1, "maxLength": 120}
+      }
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "number", "url", "comment_url"],
+      "properties": {
+        "repository": {"const": "alectionary/vibe-math"},
+        "number": {"type": "integer", "minimum": 1},
+        "url": {"type": "string", "format": "uri"},
+        "comment_url": {"type": "string", "format": "uri"}
+      }
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "author", "year", "document_type", "stable_ids"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1, "maxLength": 500},
+        "author": {"type": "string", "minLength": 1, "maxLength": 300},
+        "year": {"type": "integer", "minimum": 1500, "maximum": 2100},
+        "document_type": {
+          "enum": [
+            "doctoral_dissertation",
+            "masters_thesis",
+            "article",
+            "preprint",
+            "book",
+            "report",
+            "other"
+          ]
+        },
+        "stable_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/stable_id"}
+        }
+      }
+    },
+    "stable_id": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "value"],
+      "properties": {
+        "scheme": {
+          "enum": [
+            "unl_aai",
+            "unl_bepress",
+            "proquest_docview",
+            "proquest_publication",
+            "campaign_record",
+            "doi",
+            "arxiv",
+            "url",
+            "other"
+          ]
+        },
+        "value": {"type": "string", "minLength": 1, "maxLength": 300}
+      }
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "resolved_url",
+        "method",
+        "attempted_at",
+        "http_status",
+        "error_category",
+        "obtained_bytes",
+        "notes"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$"},
+        "url": {"type": "string", "format": "uri"},
+        "resolved_url": {"type": ["string", "null"], "format": "uri"},
+        "method": {"enum": ["headless", "browser", "openurl", "mirror", "manual"]},
+        "attempted_at": {"type": "string", "format": "date-time"},
+        "http_status": {"type": ["integer", "null"], "minimum": 100, "maximum": 599},
+        "error_category": {
+          "type": ["string", "null"],
+          "enum": [
+            null,
+            "bot_mitigation",
+            "http_error",
+            "browser_host_unavailable",
+            "timeout",
+            "network",
+            "preview_only",
+            "restricted",
+            "identity_mismatch",
+            "incomplete_document",
+            "extraction_unreadable",
+            "other"
+          ]
+        },
+        "obtained_bytes": {"type": "boolean"},
+        "notes": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Bytes the bot actually stored. bot_local locators are provenance for that machine, not a promise another checkout has the file. v0.1 has no release or bucket kind.",
+      "required": [
+        "media_type",
+        "sha256",
+        "byte_length",
+        "page_count",
+        "committed_to_git",
+        "storage"
+      ],
+      "properties": {
+        "media_type": {"const": "application/pdf"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "byte_length": {"type": "integer", "minimum": 1},
+        "page_count": {"type": "integer", "minimum": 1},
+        "committed_to_git": {"const": false},
+        "storage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "locator", "cross_machine"],
+          "properties": {
+            "kind": {"const": "bot_local"},
+            "locator": {"type": "string", "minLength": 1, "maxLength": 300},
+            "cross_machine": {"const": false}
+          }
+        }
+      }
+    },
+    "completeness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "identity_matched",
+        "front_matter_only",
+        "preview",
+        "evidence"
+      ],
+      "properties": {
+        "classification": {
+          "enum": [
+            "complete_body",
+            "preview",
+            "front_matter_only",
+            "identity_mismatch",
+            "not_obtained"
+          ]
+        },
+        "identity_matched": {"type": "boolean"},
+        "front_matter_only": {"type": "boolean"},
+        "preview": {"type": "boolean"},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1, "maxLength": 500}
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "method",
+        "ocr_applied",
+        "ocr_engine",
+        "readable",
+        "text_sha256",
+        "text_characters",
+        "unreadable_reason"
+      ],
+      "properties": {
+        "status": {"enum": ["not_attempted", "extracted", "unreadable", "partial"]},
+        "method": {"enum": ["born_digital", "ocr", "mixed", "not_extracted"]},
+        "ocr_applied": {"type": "boolean"},
+        "ocr_engine": {"type": ["string", "null"], "minLength": 1, "maxLength": 80},
+        "readable": {"type": "boolean"},
+        "text_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "text_characters": {"type": ["integer", "null"], "minimum": 0},
+        "unreadable_reason": {"type": ["string", "null"], "minLength": 1, "maxLength": 500}
+      }
+    },
+    "question_screen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "question_count", "candidates", "screen_owner"],
+      "properties": {
+        "status": {"enum": ["not_screened", "candidates_only", "completed", "blocked"]},
+        "question_count": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Null unless status is completed. Zero is a finished screen of a verified readable complete text, never a preview or an unreadable extraction."
+        },
+        "candidates": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/candidate"}
+        },
+        "screen_owner": {"enum": ["research_agent", "retrieval_bot"]}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A lead with a page locator. Not a canonical inventory id.",
+      "required": ["candidate_id", "kind", "statement", "page_locator", "counts_as_target"],
+      "properties": {
+        "candidate_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,80}$"},
+        "kind": {
+          "enum": [
+            "conjecture",
+            "open_question",
+            "unknown_case",
+            "future_work",
+            "empirical_direction",
+            "unclassified"
+          ]
+        },
+        "statement": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "page_locator": {"$ref": "#/$defs/page_locator"},
+        "counts_as_target": {"type": "boolean"}
+      }
+    },
+    "page_locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pdf_pages", "printed", "section"],
+      "properties": {
+        "pdf_pages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "printed": {"type": ["string", "null"], "minLength": 1, "maxLength": 120},
+        "section": {"type": ["string", "null"], "minLength": 1, "maxLength": 200}
+      }
+    }
+  }
+}
