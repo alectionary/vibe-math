@@ -173,7 +173,7 @@ Almost-sure consistency & \texttt{plug\_in\_consistent\_ae} and \texttt{plug\_in
 \end{tabular}
 \end{center}
 
-The links are pinned to commit \texttt{\proofcommit}, which contains these Lean files. The simulation script and this PDF are later commits on the same branch; their paths are in the reproducibility section. Appendix~\ref{app:lean} prints the central proof bodies.
+The links are pinned to commit \texttt{\proofcommit}, which contains these Lean files. The simulation script and the JSON outputs are commit \texttt{5cd3c9f6d2f6e38f25e32146d74d55f3778436e1}. Appendix~\ref{app:lean} prints the central proof bodies.
 
 Brito and Pearl (Structural Equation Modeling, 2002) prove that a recursive
 linear model is identifiable when no residual covariance joins a variable to
@@ -387,12 +387,16 @@ From \texttt{formalization/correlated-residuals/simulation},
 \begin{verbatim}
 python3 studies.py --reps 100 --bow-reps 400 --studies 1,2,3
 \end{verbatim}
-writes \texttt{out/study1.json}, \texttt{out/study2.json}, and
-\texttt{out/study3.json}. The CSV tables are built from those files. Lean
-proofs are built with Lean~4.22.0 and Mathlib~v4.22.0 by \texttt{lake build}
-in \texttt{formalization/correlated-residuals}. This PDF is produced by
-\texttt{pdflatex paper.tex} in \texttt{paper/}. The sources ledger is
-\texttt{SOURCES.md}.
+writes \texttt{study1.json}, \texttt{study2.json}, and
+\texttt{study3.json}. The CSV tables are built from those files.
+\begin{itemize}
+\item Simulation commit: \texttt{5cd3c9f}.
+\item Full hash: \texttt{5cd3c9f6d2f6e38f25e32146d74d55f3778436e1}.
+\item Branch: \texttt{cursor/l-f102-correlated-residuals-4c01}.
+\item Lean 4.22.0 and Mathlib v4.22.0, built with \texttt{lake build}.
+\item Theorem links are pinned to \texttt{\proofcommit}.
+\item This PDF is \texttt{pdflatex paper.tex}. The ledger is \texttt{SOURCES.md}.
+\end{itemize}
 
 \appendix
 \section{Central Lean proofs}
