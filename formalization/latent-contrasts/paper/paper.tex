@@ -5,10 +5,19 @@
 \usepackage{amsmath,amssymb,booktabs,array,graphicx}
 \usepackage{listings,hyperref}
 \setlength{\emergencystretch}{8em}
+\makeatletter
+\newcommand{\sha}{\begingroup\catcode`\_=12 \sha@read}
+\newcommand{\sha@read}[1]{\ttfamily\sha@loop#1\relax\endgroup}
+\def\sha@loop#1{%
+  \ifx\relax#1\else
+    #1\allowbreak
+    \expandafter\sha@loop
+  \fi}
+\makeatother
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,
   pdftitle={Replication of the orthogonal latent-mean contrasts in Jeffries (2024)},
   pdfauthor={}}
-\newcommand{\proofcommit}{PLACEHOLDER}
+\newcommand{\proofcommit}{2dcc1c414311c6a3a4d20cfe25ac390fb97a50cd}
 \newcommand{\proofbase}{https://github.com/alectionary/vibe-math/blob/\proofcommit/formalization/latent-contrasts}
 \newcommand{\lean}[2]{\href{\proofbase/LatentContrasts/Orthogonality.lean\#L#2}{\texttt{#2}}}
 \lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true,
@@ -451,8 +460,9 @@ Not installed. The authors' scripts are not those packages \\
 \end{tabular}
 \end{center}
 
-The dissertation file itself was retrieved from
-\url{https://web.archive.org/web/20250511025154id_/https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1215&context=dissunl}.
+The dissertation file itself was retrieved from the Wayback \texttt{id\_}
+object dated 2025-05-11, snapshot \texttt{20250511025154}, of the
+DigitalCommons \texttt{viewcontent} URL for \texttt{dissunl} article 1215.
 The archive landing page is
 \url{https://digitalcommons.unl.edu/dissunl/216/}.
 Direct \texttt{viewcontent} returned HTTP 403. The help request for the
@@ -503,31 +513,23 @@ proofs also depend on \texttt{Lean.ofReduceBool}.
 \section{Artifacts}
 \label{app:artifacts}
 
-\begin{center}
-\small
-\begin{tabular}{@{}p{0.28\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
-\toprule
-Claim & File & Command \\
-\midrule
-Products and population contrasts &
-\texttt{LatentContrasts/Orthogonality.lean} &
-\texttt{lake build} in \texttt{formalization/latent-contrasts} \\
-Main grid of marker and MIMIC fits &
-\texttt{simulation/out/monte\_carlo.csv} &
-\texttt{Rscript monte\_carlo.R 200 100 out} \\
-Identification toggle and the large sample &
-\texttt{simulation/out/identification\_check.csv} &
-\texttt{Rscript identification\_check.R 200 out} \\
-Page crops &
-\texttt{paper/figures/*.png} &
-\texttt{python3 paper/figures/crop\_pages.py} \\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{itemize}
+\item Products and population contrasts. File
+\path{LatentContrasts/Orthogonality.lean}.
+Command: \path{lake build} in \path{formalization/latent-contrasts}.
+\item Main grid of marker and MIMIC fits. File
+\path{simulation/out/monte_carlo.csv}.
+Command: \path{Rscript monte_carlo.R 200 100 out}.
+\item Identification toggle and the large sample. File
+\path{simulation/out/identification_check.csv}.
+Command: \path{Rscript identification_check.R 200 out}.
+\item Page crops. Files \path{paper/figures/*.png}.
+Command: \path{python3 paper/figures/crop_pages.py}.
+\end{itemize}
 
 The dissertation PDF is local and gitignored. Its sha256 is
-\texttt{a21df98c20401491e6b4a1d00a21b6f7cee5551a00c04a89fb414ec6cfd469b3}.
+\sha{a21df98c20401491e6b4a1d00a21b6f7cee5551a00c04a89fb414ec6cfd469b3}.
 The crop command expects that file at
-\texttt{local-extraction/literature/unl-sem/retrieval-repair/UNL-SEM-D055.pdf}.
+\url{local-extraction/literature/unl-sem/retrieval-repair/UNL-SEM-D055.pdf}.
 
 \end{document}
