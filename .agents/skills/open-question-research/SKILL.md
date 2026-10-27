@@ -64,6 +64,13 @@ checked-out branch is not a shared claim; issue assignees also cannot distinguis
 sessions using one account. Read [GitHub coordination](references/github-coordination.md)
 for access checks, setup, verification and handoff details.
 
+Before new full-text retrieval in that block, consume immutable fetch manifests
+already posted for the active campaign. Follow
+[document acquisition](../document-acquisition-queue/SKILL.md). This agent is
+the only writer of the canonical ledgers. Merging a fetched PDF does not
+complete a question screen. Unreadable text and a front-matter preview keep a
+null question count.
+
 Use one GitHub issue per canonical target for discussion, scope, progress and
 handoff; search open and closed issues before creating one. If using a Project,
 add that real issue and reuse the existing board rather than creating a board
@@ -206,8 +213,14 @@ that retrieval route, not evidence that a work is paywalled. Follow the archive'
 actual Download link and any publisher landing page; when available, attempt the
 user's supported browser extension before declaring an access gap. Distinguish
 browser-connection failure from site restrictions. See [full-text retrieval](references/research-access.md#retrieve-full-text-before-recording-an-access-gap)
-for redirects, cookie banners and temporary PDF links. Add the findings to the shared
-inventory and planning records, leave unperformed current-resolution/Lean checks
+for redirects, cookie banners and temporary PDF links. When those attempts still
+do not verify a complete text, hand the source to
+[document acquisition](../document-acquisition-queue/SKILL.md) instead of
+stalling. Search for an existing fetch issue, file a `fetch-request` when none
+exists, record `acquisition_requested` as that skill describes, and continue
+independent work. A preview or unreadable extraction stays a null question
+count. Add the findings to the shared inventory and planning records, leave
+unperformed current-resolution/Lean checks
 unassessed, regenerate reports and validate source coverage and cohort deltas.
 The [complete absorbing-set source screen](../../../literature/RESEARCH-QUESTION-SCREENING.md)
 illustrates this workflow and the distinction between downloaded, consulted,
