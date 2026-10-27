@@ -17,7 +17,7 @@ seed_screens=load(D/'seed-screening.json')
 screens_by={x['dissertation_id']:x for x in seed_screens['full_text_screens']}
 assert len(retrieval['rows'])==len({x['dissertation_id'] for x in retrieval['rows']})==len(s)
 assert {x['dissertation_id'] for x in retrieval['rows']}=={x['id'] for x in s}
-assert len(seed_manifest)==len(screens_by)==retrieval['complete_dissertations_screened']==7
+assert len(seed_manifest)==len(screens_by)==retrieval['complete_dissertations_screened']==8
 assert sum(x['retrieval_status']=='front_matter_only_preview' for x in s)==1
 for x in s:
  if x['id'] in seed_manifest:
@@ -119,4 +119,4 @@ assert idx['added_paper_ids']==['F143','F144','F145','F146','F147','F148','F150'
 assert len(screen['excluded_passages'])==22
 assert by['F134']['retrieval']['hash_scope'].startswith('UTF8 transcript')
 assert by['F132']['year']==2003 and by['F132']['relationship']=='pre_dissertation_background'
-print('PASS:99 dissertation route rechecks;7 complete dissertation screens;1 partial preview excluded;49 associated sources;30 article/work screens;13 gated directions;0 invented precise conjectures.')
+print('PASS:99 dissertation route rechecks;8 complete dissertation screens;1 partial preview excluded;49 associated sources;30 article/work screens;13 gated directions;0 invented precise conjectures.')
