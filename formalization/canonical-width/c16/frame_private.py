@@ -31,6 +31,7 @@ def main():
     ap.add_argument('--proof',action='store_true');ap.add_argument('--child',action='store_true',help=argparse.SUPPRESS)
     ap.add_argument('--private-count',action='store_true',help='Enforce exactly 128 private Z vectors (pool classes must be distinct).')
     ap.add_argument('--rank-oracle',action='store_true')
+    ap.add_argument('--both-seed4-caps',action='store_true');ap.add_argument('--dual-oracle',action='store_true');ap.add_argument('--basis-propagation',action='store_true');ap.add_argument('--propagation-library',type=Path)
     ap.add_argument('--private-rank-cuts',action='store_true')
     ap.add_argument('--cyclic-lemmas',action='store_true');ap.add_argument('--seed-lemmas',type=Path,nargs='*',default=[])
     args=ap.parse_args();root=Path(__file__).parent
@@ -44,6 +45,10 @@ def main():
             d=json.loads(args.output.read_text()) if args.output.exists() else {}
             if d.get('status')=='RUNNING':d['status']='PROCESS_TIME_LIMIT'
             d['outer_process_limit_seconds']=args.seconds+5;args.output.write_text(json.dumps(d,indent=2)+'\n')
+        d=json.loads(args.output.read_text()) if args.output.exists() else {}
+        if d.get('status')=='RUNNING':d['status']='ERROR'
+        d['child_returncode']=p.returncode
+        args.output.write_text(json.dumps(d,indent=2)+'\n')
         return
     pooldir=args.pool_directory or root/'pools'
     X=[int(s,16) for s in (pooldir/'xcoords.txt').read_text().split()]
@@ -74,6 +79,15 @@ def main():
         mono=[i+1 for i,x in enumerate(X) if x.bit_count()==1 and ((x>>64)&65535)]
         enc=CardEnc.atmost(mono,args.seed4_cap,top_id=top,encoding=EncType.seqcounter)
         clauses.extend(enc.clauses);top=enc.nv
+        if args.both_seed4_caps:
+            assert all((ax[i]>>j&1)==(az[i]>>j&1) for i in range(n) for j in range(n))
+            mono_indices=[i for i,x in enumerate(X) if x.bit_count()==1 and ((x>>64)&65535)]
+            constants=sum(degrees[j][1]==0 for j in mono_indices)
+            cap=args.seed4_cap-constants
+            if cap<0:clauses.append([])
+            else:
+                enc=CardEnc.atmost([-degrees[j][1] for j in mono_indices if degrees[j][1]],cap,top_id=top,encoding=EncType.seqcounter)
+                clauses.extend(enc.clauses);top=enc.nv
     if args.fix_orbit is not None:clauses.append([16*args.fix_orbit+1])
     for orbit in args.exclude_orbits:
         clauses.extend([[-(16*orbit+h+1)] for h in range(16)])
@@ -91,16 +105,22 @@ def main():
     result={'status':'RUNNING','model':'private_neighbors','solver':args.solver,'variables':top,
             'clauses':len(clauses),'counter_nodes':len(counter.cache),'build_seconds':time.monotonic()-start,
             'seed4_cap':args.seed4_cap,'fix_orbit':args.fix_orbit,'exclude_orbits':args.exclude_orbits}
+    result['both_seed4_caps']=args.both_seed4_caps;result['dual_oracle']=args.dual_oracle;result['basis_propagation']=args.basis_propagation;result['propagation_library']=str(args.propagation_library) if args.propagation_library else None
     result['private_count']=args.private_count
     result['private_rank_cuts']=args.private_rank_cuts
-    if args.private_rank_cuts:result['private_literals']=[-two if two else 0 for one,two in degrees]
+    if args.private_rank_cuts or args.dual_oracle:result['private_literals']=[-two if two else 0 for one,two in degrees]
     args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
     with Solver(name=args.solver,bootstrap_with=clauses,with_proof=args.proof) as solver:
         oracle=None
-        if args.rank_oracle or args.private_rank_cuts:
+        if args.rank_oracle or args.private_rank_cuts or args.dual_oracle:
             from rank_oracle import RankOracle
             private_literals=[-two if two else 0 for one,two in degrees] if args.private_rank_cuts else None
-            oracle=RankOracle(X,Z,args.output.with_suffix('.lemmas.jsonl'),private_literals,cyclic=args.cyclic_lemmas)
+            if args.dual_oracle:
+                from dual_rank_oracle import DualRankOracle
+                private_literals=[-two if two else 0 for one,two in degrees]
+                oracle=DualRankOracle(X,Z,args.output,private_literals,cyclic=args.cyclic_lemmas,basis_propagation=args.basis_propagation,propagation_library=args.propagation_library)
+            else:
+                oracle=RankOracle(X,Z,args.output.with_suffix('.lemmas.jsonl'),private_literals,cyclic=args.cyclic_lemmas,basis_propagation=args.basis_propagation,propagation_library=args.propagation_library)
             solver.connect_propagator(oracle)
             for i in range(1,n+1):solver.observe(i)
             if private_literals:

@@ -45,7 +45,7 @@ def main():
         assert all(parity(phys['X'][i],phys['Z'][j])==(a==b)
                    for a,(i,_) in enumerate(pairs) for b,(_,j) in enumerate(pairs))
         print(f"checked {name}: physical Gram identity on {len(pairs)} pairs")
-    print('Unrestricted width remains unresolved; no pool-completeness or Lean certificate claimed.')
+    print('Historical takeover audit passes; unrestricted width remains unresolved. This command does not check pool completeness; run verify_independent_enumeration.py for the later independent computation. No Lean certificate.')
 
 
 if __name__=='__main__':main()

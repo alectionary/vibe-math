@@ -155,6 +155,11 @@ int main(int argc, char** argv) {
         }
     };
     Bits all; all.fill(X.size());
+    if(argc>5 && std::string(argv[5])=="--exact-monomials"){
+        std::cout<<"EXACT_MONOMIAL_COUNT "<<m<<"\n";
+        for(int p=0;p<16;++p)if(omitted>>p&1)
+            for(int i=0;i<(int)X.size();++i)if(X[i]==(U(1)<<(64+p)))all.reset(i);
+    }
     rec(0,all);
     double seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
     std::cout << "SUMMARY omitted " << omitted << " kept " << m << " total " << total
