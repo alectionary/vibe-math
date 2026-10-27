@@ -1922,7 +1922,7 @@
       "immutable_commit": "2717b0ab2b59c2ccb71f0e369a9f21d80490c191",
       "issue_url": "https://github.com/alectionary/vibe-math/issues/2"
     },
-    "scope_comparison": "The original fourteen-coordinate artifact is disconnected. The separate connected follow-up proves a fifteen-coordinate asymmetric CSS example with no physical product split and complete recovery of all128 supported Z-errors under both syndrome tests. Same-matrix/symmetric CSS, girth/degree restrictions and both-sector results remain unassessed; final journal full text is an access gap.",
+    "scope_comparison": "Unrestricted source question remains refuted; connected asymmetric example preserved. Equal-space CSS now has a general odd-support no-recovery theorem. The precise connected/coupled even-support existence question is frozen but unresolved. Degree/girth restrictions and final-journal full text retain their named limits.",
     "research_progress": [
       {
         "title": "Connected fifteen-qubit CSS follow-up without any physical product cut",
@@ -1932,13 +1932,27 @@
           "formalization/gallager-b-absorbing/connected/Connected.lean"
         ],
         "contribution": "All128 supported Z-errors recover under both syndrome tests; actual decoding graph connected; no stabilizer-space split across any physical partition. Asymmetric CSS and four-cycles allowed. This is a project-derived strengthening, not another source target."
+      },
+      {
+        "title": "General odd-support obstruction and exact symmetric-CSS scope",
+        "report": "formalization/gallager-b-absorbing/symmetric/README.md",
+        "evidence": "general_lean_proof",
+        "lean_sources": [
+          "formalization/gallager-b-absorbing/symmetric/OddSupport.lean",
+          "formalization/gallager-b-absorbing/symmetric/Question.lean",
+          "formalization/gallager-b-absorbing/symmetric/Consumers.lean"
+        ],
+        "contribution": "Odd zero-syndrome supports cannot all recover when entire stabilizer spaces agree. Full eventual-success and one-step existence interfaces are frozen; even-support existence remains unresolved.",
+        "immutable_proof_commit": "d4c02e802f12e3583309d6b38f6e818524b4333c"
       }
     ],
     "remaining_project_questions": [
       {
         "id": "RQ-P09-symmetric-css",
-        "title": "Freeze and assess the exact symmetric-CSS/same-matrix stabilizer variant.",
-        "status": "Unassessed; not started in this block."
+        "title": "Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract.",
+        "status": "General odd-support and supported-logical obstructions proved. Precise even-support full/one-step questions formulated; existence unresolved. No even-support construction search performed.",
+        "report": "formalization/gallager-b-absorbing/symmetric/README.md",
+        "lean_interface": "formalization/gallager-b-absorbing/symmetric/Question.lean"
       }
     ],
     "prior_scope_comparison": "Exact source compared: arXiv:2307.14532v2, SectionII-B, Definitions3/5 and SectionVI. Stopped outputs extend constantly. Both hard and outgoing-edge syndrome tests pass. The ordinary Steane pairing still permits logical miscorrections; the separate actual CSS pair eliminates these for every first-component Z-error. Connected-ambient, high-girth, column-weight3 and selected-logical-support variants are not answered. Journal full text was access restricted."
@@ -12286,7 +12300,7 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "truncated_distance12_source_questions",
     "added_on": "2026-10-25",
-    "lean_discovery_note": "2026-10-27 takeover audited physical pool coordinates and repaired a missing-partner bug. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The four-hour continuation independently reimplements the complete weight-through-17 physical enumeration (47,708,679 nodes, all68 roots,45 weight16 orbits), checks the sector exchange and mixed-Pauli bridge, and retains the unresolved16-or18 width. No Lean certificate; exact-target Lean discovery remains unassessed. All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate.",
+    "lean_discovery_note": "2026-10-27 takeover audited physical pool coordinates and repaired a missing-partner bug. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The four-hour continuation independently reimplements the complete weight-through-17 physical enumeration (47,708,679 nodes, all68 roots,45 weight16 orbits), checks the sector exchange and mixed-Pauli bridge, and retains the unresolved16-or18 width. No Lean certificate; exact-target Lean discovery remains unassessed. All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate. The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion.",
     "research_progress": [
       {
         "title": "88-pair width-16 partial canonical frame; f still 16 or 18",
@@ -12351,7 +12365,12 @@
         "title": "Decide whether the 720-class weight-16 CSS pools contain a 128-pair canonical frame.",
         "status": "Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18."
       }
-    ]
+    ],
+    "structural_comparison": {
+      "report": "formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md",
+      "verification": "formalization/canonical-width/c16/structural-results/verification.json",
+      "canonical_target_answered": false
+    }
   },
   {
     "id": "L-F91-c20-unrestricted-width",
@@ -13454,5 +13473,740 @@
     "added_on": "2026-10-26",
     "search_family": "stabilizer_entanglement_background",
     "source_screening": "literature/connected-gallager-source-screening.json"
+  },
+  {
+    "id": "L-F99-self-correction",
+    "origin": "article_inventory_extension",
+    "title": "Historical direction: characterize robust quantum storage at nonzero temperature under geometric locality constraints.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F99",
+        "locator": "Introduction, PDF p.2",
+        "extracted_text_lines": [
+          31,
+          63
+        ],
+        "url": "https://arxiv.org/pdf/1004.3791v2",
+        "source_sha256": "e94dd10a1b10d63d1d9ccc4d2de670aff62fcc0a2057a953c0fe5c47732355ee",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v2, 27 April 2010; first submitted 21 April 2010",
+        "interpretation": "Broad physical-regime-dependent direction, with a partial negative 2D Majorana answer in the same paper; do not retain that answered restricted case as open."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F99-physical-realization",
+    "origin": "article_inventory_extension",
+    "title": "Find physical mechanisms realizing interacting Majorana fermion codes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F99",
+        "locator": "Introduction, PDF p.3",
+        "extracted_text_lines": [
+          98,
+          102
+        ],
+        "url": "https://arxiv.org/pdf/1004.3791v2",
+        "source_sha256": "e94dd10a1b10d63d1d9ccc4d2de670aff62fcc0a2057a953c0fe5c47732355ee",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v2, 27 April 2010; first submitted 21 April 2010",
+        "interpretation": "Explicit author-stated broad implementation problem; no fixed mathematical model is supplied; modern status unassessed."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F99-emergent-order",
+    "origin": "article_inventory_extension",
+    "title": "Use the Majorana-code framework to explain emergence of topological order from microscopic interactions.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F99",
+        "locator": "Introduction, PDF p.3",
+        "extracted_text_lines": [
+          103,
+          106
+        ],
+        "url": "https://arxiv.org/pdf/1004.3791v2",
+        "source_sha256": "e94dd10a1b10d63d1d9ccc4d2de670aff62fcc0a2057a953c0fe5c47732355ee",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v2, 27 April 2010; first submitted 21 April 2010",
+        "interpretation": "Broad physical explanation direction, not a fixed unresolved proposition."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F100-architecture-cost",
+    "origin": "article_inventory_extension",
+    "title": "Compare realistic architecture-dependent costs of magic-state distillation and alternative gate constructions.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F100",
+        "locator": "Introduction, PDF p.2",
+        "extracted_text_lines": [
+          63,
+          72
+        ],
+        "url": "https://arxiv.org/pdf/1703.07847v3",
+        "source_sha256": "4141582b22b7ae553f4924b29ec6f790ff6854d5b3e44c4437afd312afd48ef7",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v3, 29 September 2017; first submitted 22 March 2017; Quantum publication 3 October 2017",
+        "interpretation": "Authors explicitly defer architecture-dependent cost comparison to future work."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F100-gamma-bound",
+    "origin": "article_inventory_extension",
+    "title": "Historical conjecture: magic-state-distillation overhead exponent gamma cannot be below one.",
+    "kind": "conjecture",
+    "written_math_status": "held_formulation",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F100",
+        "locator": "Section4.1, Eq4.2, PDF p.11",
+        "extracted_text_lines": [
+          716,
+          730
+        ],
+        "url": "https://arxiv.org/pdf/1703.07847v3",
+        "source_sha256": "4141582b22b7ae553f4924b29ec6f790ff6854d5b3e44c4437afd312afd48ef7",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v3, 29 September 2017; first submitted 22 March 2017; Quantum publication 3 October 2017",
+        "interpretation": "Held formulation: source attributes the conjecture to Bravyi--Haah2012 ref12; the admissible protocol/resource/error class and original wording require direct verification before recommendation. Current resolution unassessed. Repeated abstract/discussion optimality mentions merged here."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F100-explicit-good-families",
+    "origin": "article_inventory_extension",
+    "title": "Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F100",
+        "locator": "Section4.2, PDF pp.14-15",
+        "extracted_text_lines": [
+          855,
+          877
+        ],
+        "url": "https://arxiv.org/pdf/1703.07847v3",
+        "source_sha256": "4141582b22b7ae553f4924b29ec6f790ff6854d5b3e44c4437afd312afd48ef7",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v3, 29 September 2017; first submitted 22 March 2017; Quantum publication 3 October 2017",
+        "interpretation": "The random/greedy existence bound is already established. The explicit/efficient construction request needs frozen algorithmic quantifiers; current resolution unassessed."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F100-ccz-normal-codes",
+    "origin": "article_inventory_extension",
+    "title": "Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad direction or held formulation; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F100",
+        "locator": "End of Section2, PDF p.8",
+        "extracted_text_lines": [
+          472,
+          479
+        ],
+        "url": "https://arxiv.org/pdf/1703.07847v3",
+        "source_sha256": "4141582b22b7ae553f4924b29ec6f790ff6854d5b3e44c4437afd312afd48ef7",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv v3, 29 September 2017; first submitted 22 March 2017; Quantum publication 3 October 2017",
+        "interpretation": "Speculative author direction, with the noncommuting rejection-probability limitation explicitly noted. Not a general CCZ construction question."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "symmetric_css_background",
+    "source_screening": "literature/symmetric-css-source-screening.json"
+  },
+  {
+    "id": "L-F101-prevalence",
+    "origin": "article_inventory_extension",
+    "title": "Quantify the prevalence and influence of absorbing sets in decoder failure.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F101",
+        "locator": "Section5 Conclusion, accepted manuscript PDF p18",
+        "extracted_text_lines": [
+          1098,
+          1102
+        ],
+        "url": "https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content",
+        "source_sha256": "b544ba76c7c936f98228bfac3f1a92d6ae96e8a9802e2e04820c1e867a176551",
+        "relation": "author_stated_question_or_direction",
+        "version": "Accepted manuscript; repository year2026, first public day unverified",
+        "interpretation": "Broad conclusion direction; source supplies no fixed ensemble, channel, estimator or theorem target."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "gallager_variant_background",
+    "source_screening": "literature/symmetric-css-editorial-source-screening.json"
+  },
+  {
+    "id": "L-F101-hybrid-decoding",
+    "origin": "article_inventory_extension",
+    "title": "Develop hybrid decoding approaches combining strengths of multiple algorithms.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F101",
+        "locator": "Section5 Conclusion, accepted manuscript PDF p18",
+        "extracted_text_lines": [
+          1101,
+          1104
+        ],
+        "url": "https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content",
+        "source_sha256": "b544ba76c7c936f98228bfac3f1a92d6ae96e8a9802e2e04820c1e867a176551",
+        "relation": "author_stated_question_or_direction",
+        "version": "Accepted manuscript; repository year2026, first public day unverified",
+        "interpretation": "Broad algorithm-design direction, without a specified hybrid protocol or performance criterion."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "gallager_variant_background",
+    "source_screening": "literature/symmetric-css-editorial-source-screening.json"
+  },
+  {
+    "id": "L-F101-decoder-dependent-structure",
+    "origin": "article_inventory_extension",
+    "title": "Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author-stated direction; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F101",
+        "locator": "Section5 Conclusion, accepted manuscript PDF p18",
+        "extracted_text_lines": [
+          1102,
+          1106
+        ],
+        "url": "https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content",
+        "source_sha256": "b544ba76c7c936f98228bfac3f1a92d6ae96e8a9802e2e04820c1e867a176551",
+        "relation": "author_stated_question_or_direction",
+        "version": "Accepted manuscript; repository year2026, first public day unverified",
+        "interpretation": "General direction beyond the source's proved Type1 classifications; no new unresolved classification theorem is inferred."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "gallager_variant_background",
+    "source_screening": "literature/symmetric-css-editorial-source-screening.json"
+  },
+  {
+    "id": "L-F103-pleiotropy-linked",
+    "origin": "article_inventory_extension",
+    "title": "Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F103",
+        "locator": "Section6 Discussion and conclusion, future-work paragraph",
+        "extracted_text_lines": [
+          1553,
+          1553
+        ],
+        "url": "https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072",
+        "source_sha256": "b87e74d713e1c6e68a62c88c6049079e6c0e7a0738f3ed4bceee3707baf7f869",
+        "relation": "author_stated_question_or_direction",
+        "version": "2010 article; inspected public full-text copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Specify the competing latent-genotype models, priors, marginal likelihoods, and identifiability/separation assumptions.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    }
+  },
+  {
+    "id": "L-F103-missing-phenotypes",
+    "origin": "article_inventory_extension",
+    "title": "Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F103",
+        "locator": "Section6 Discussion and conclusion",
+        "extracted_text_lines": [
+          1553,
+          1559
+        ],
+        "url": "https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072",
+        "source_sha256": "b87e74d713e1c6e68a62c88c6049079e6c0e7a0738f3ed4bceee3707baf7f869",
+        "relation": "author_stated_question_or_direction",
+        "version": "2010 article; inspected public full-text copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Specify missingness, imputation distribution, estimator, and a consistency or error guarantee; imputation itself is not a proof of validity.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    }
+  },
+  {
+    "id": "L-F103-mixed-outcomes",
+    "origin": "article_inventory_extension",
+    "title": "Develop multi-trait SEM methods supporting mixed binary and continuous traits.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F103",
+        "locator": "Section6 Discussion and conclusion, final methodological paragraph",
+        "extracted_text_lines": [
+          1559,
+          1559
+        ],
+        "url": "https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072",
+        "source_sha256": "b87e74d713e1c6e68a62c88c6049079e6c0e7a0738f3ed4bceee3707baf7f869",
+        "relation": "author_stated_question_or_direction",
+        "version": "2010 article; inspected public full-text copy"
+      },
+      {
+        "source_id": "F102",
+        "locator": "Discussion, PDF viewer p21 (printed p19)",
+        "pdf_pages": [
+          21
+        ],
+        "extracted_text_lines": [
+          1952,
+          1956
+        ],
+        "url": "https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf",
+        "source_sha256": "27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81",
+        "relation": "same_target_additional_occurrence",
+        "version": "2010 published PDF"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Fix latent/observed links and a joint probability model; choose an identifiable parameterization and a specific inferential guarantee.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    }
+  },
+  {
+    "id": "L-F103-experimental-design",
+    "origin": "article_inventory_extension",
+    "title": "Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F103",
+        "locator": "Section6 Discussion and conclusion, final paragraph",
+        "extracted_text_lines": [
+          1559,
+          1559
+        ],
+        "url": "https://www.cambridge.org/core/journals/genetics-research/article/bayesian-mixture-structural-equation-modelling-in-multipletrait-qtl-mapping/0F0C5E2E9FF8E6E2A1BFE0A4FF11C072",
+        "source_sha256": "b87e74d713e1c6e68a62c88c6049079e6c0e7a0738f3ed4bceee3707baf7f869",
+        "relation": "author_stated_question_or_direction",
+        "version": "2010 article; inspected public full-text copy"
+      },
+      {
+        "source_id": "F102",
+        "locator": "Discussion, PDF viewer pp20–21",
+        "pdf_pages": [
+          20,
+          21
+        ],
+        "extracted_text_lines": [
+          1943,
+          1953
+        ],
+        "url": "https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf",
+        "source_sha256": "27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81",
+        "relation": "same_target_additional_occurrence",
+        "version": "2010 published PDF"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Fix random-effect covariance and interaction structure before stating identifiability or estimator guarantees.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    },
+    "screening_note": "Mi et al. (2011), F127, develops two-level gene–environment SEM in coronary heart disease. Its inspected abstract is related progress; no full parameter-by-parameter equivalence with this QTL-mapping agenda is asserted."
+  },
+  {
+    "id": "L-F102-correlated-residuals",
+    "origin": "article_inventory_extension",
+    "title": "Extend the multi-trait QTL SEM analysis to correlated residual errors.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F102",
+        "locator": "Discussion, PDF viewer p20 (printed p18)",
+        "extracted_text_lines": [
+          1930,
+          1938
+        ],
+        "url": "https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf",
+        "source_sha256": "27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81",
+        "relation": "author_stated_question_or_direction",
+        "version": "2010 article; inspected public full-text copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Specify a positive-definite residual covariance class and structural zero restrictions; unrestricted residual dependence can change identifiability.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    }
+  },
+  {
+    "id": "L-F102-nonlinear-traits",
+    "origin": "article_inventory_extension",
+    "title": "Extend the linear multi-trait QTL SEM to nonlinear trait relationships.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F102",
+        "locator": "Discussion, PDF viewer p20 (printed p18)",
+        "extracted_text_lines": [
+          1939,
+          1942
+        ],
+        "url": "https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf",
+        "source_sha256": "27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81",
+        "relation": "author_stated_question_or_direction",
+        "version": "2010 article; inspected public full-text copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Specify the nonlinear family, noise assumptions, and the particular existence, identifiability or estimation claim; the source gives an allometric example, not a general theorem.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    }
+  },
+  {
+    "id": "L-F106-dynamic-fit-robustness",
+    "origin": "article_inventory_extension",
+    "title": "Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F106",
+        "locator": "Letter, final paragraph before References",
+        "extracted_text_lines": [
+          117,
+          138
+        ],
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11659859/",
+        "source_sha256": "2a2bd6db489d03424e7d2239370483c84520112da11b81469eb47f85b38aa25f",
+        "relation": "author_stated_question_or_direction",
+        "version": "2024 article; inspected public full-text copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Define a family of SEMs, null/alternative discrepancy thresholds, simulation calibration, and a finite-sample error/coverage criterion.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    }
+  },
+  {
+    "id": "L-F106-dynamic-fit-multilevel",
+    "origin": "article_inventory_extension",
+    "title": "Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.",
+    "occurrences": [
+      {
+        "source_id": "F106",
+        "locator": "Letter, final paragraph before References",
+        "extracted_text_lines": [
+          126,
+          138
+        ],
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11659859/",
+        "source_sha256": "2a2bd6db489d03424e7d2239370483c84520112da11b81469eb47f85b38aa25f",
+        "relation": "author_stated_question_or_direction",
+        "version": "2024 article; inspected public full-text copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/screening.json",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "The authors identify unavailable multiple-group/multilevel support. Specify model class and a level/power guarantee before proposing a theorem.",
+      "source_does_not_claim": "A universal theorem or a proved improvement in statistical power."
+    },
+    "screening_note": "This records an author-identified method gap, not a numbered conjecture or an assertion that such an extension is impossible."
+  },
+  {
+    "id": "L-F132-subset-score-precision",
+    "origin": "article_inventory_extension",
+    "title": "Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated statistical method direction; a precise model, quantifiers and success guarantee are needed. Not an empirical social-theory conjecture.",
+    "occurrences": [
+      {
+        "source_id": "F132",
+        "locator": "Discussion, PDF viewer p13 (printed p12)",
+        "extracted_text_lines": [
+          352,
+          364
+        ],
+        "url": "https://files.eric.ed.gov/fulltext/ED475369.pdf",
+        "source_sha256": "a12b5d24e395611ddb92f150cec1799fe240eab2c453c4b22929fcc7b1c39d1e",
+        "relation": "author_stated_question_or_direction",
+        "version": "April 2003 NCME conference paper; a later journal version appeared in 2005, DOI 10.1177/0013164404264852. Only the 2003 full text is screened."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/cfa-expansion.json",
+    "screening_note": "The source calls for generalizability and selection-sensitivity studies. Its observed success with 50% subsets is not a universal 50% sufficiency theorem; increasing the number of strata also needs explicit allocation/variance conditions.",
+    "formalization_suitability": {
+      "assessment": "Potential mathematical/statistical target; formulation required",
+      "objects_and_gate": "Specify the item-by-judge probability matrix, subset-sampling design, allocation/weighting and an error or coverage criterion relative to the full-test score.",
+      "source_does_not_claim": "A universal bound or already established theorem."
+    }
+  },
+  {
+    "id": "L-F134-interpretation-detection",
+    "origin": "article_inventory_extension",
+    "title": "Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source-stated statistical method direction; a precise model, quantifiers and success guarantee are needed. Not an empirical social-theory conjecture.",
+    "occurrences": [
+      {
+        "source_id": "F134",
+        "locator": "Discussion, printed p142; author-uploaded transcription webL1579–1585",
+        "extracted_text_lines": [
+          1524,
+          1530
+        ],
+        "url": "https://www.researchgate.net/publication/274557890_On_the_Use_of_Latent_Variable_Models_to_Detect_Differences_in_the_Interpretation_of_Vague_Quantifiers",
+        "source_sha256": "a1309a4720c928a93ec3ebab72396beb7e8bdf936adb5ffd0a70fd48271e0fb4",
+        "relation": "author_stated_question_or_direction",
+        "version": "2013 published article; author-uploaded full-text transcription posted 2016-06-09, web lines 56–1799 inspected. Snapshot hash identifies the transcription, not the original PDF."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-26",
+    "search_family": "structural_equation_modeling",
+    "source_screening": "literature/unl-sem/cfa-expansion.json",
+    "screening_note": "The author suggests simulation evaluation of detection ability. Population-specific collection, demographic prediction and scale validation requests are empirical and excluded. This is a cited follow-up to Marincic (2011); a Griffin/Marincic identity transition is not asserted.",
+    "formalization_suitability": {
+      "assessment": "Potential mathematical/statistical target; formulation required",
+      "objects_and_gate": "Specify ordinal responses, substantive factors, response-style factors/classes, identification constraints and a detection/error criterion. Separate identifiable model distinctions from labels that observations cannot distinguish.",
+      "source_does_not_claim": "A universal bound or already established theorem."
+    }
   }
 ]

@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,longtable,xcolor,listings,xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={An Odd-Support Obstruction to Symmetric CSS Recovery},pdfauthor={}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\row}{\operatorname{row}}
+\newcommand{\maj}{\operatorname{maj}_0}
+\setlength{\emergencystretch}{3em}
+\lstset{basicstyle=\scriptsize\ttfamily,columns=fullflexible,keepspaces=true,
+ breaklines=true,breakatwhitespace=false,showstringspaces=false,frame=lines,lineskip=-0.4pt}
+\title{An Odd-Support Obstruction to Symmetric CSS Recovery}
+\author{}
+\date{October 26, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a binary CSS code whose X- and Z-stabilizer row spaces agree, every odd-weight zero-syndrome word is a nontrivial logical operator. Consequently no deterministic syndrome-only decoder can correct every error supported on an odd-cardinality $(a,0)$ absorbing set. The obstruction applies to arbitrary code length and check presentations, independently of decoder dynamics. We give a general Lean proof, including the actual-check incidence bridge and recovery modulo the entire opposite stabilizer space. We then formulate the remaining even-support existence question for connected, physically inseparable, positive-dimension codes and zero-initialized syndrome-based Gallager-B. A separate one-iteration benchmark implies that question. Neither existence nor nonexistence of an even-support example is established.
+\end{abstract}
+
+\section{Result and motivating question}
+Morris, Pllaha and Kelley ask whether every absorbing set is trapping for their syndrome-based Gallager-B decoder \cite{mpk}, Section VI, arXiv v2, May 10, 2024. A seven-variable simplex matrix answers the unrestricted dynamical question negatively \cite{simplex}. A separate fifteen-qubit asymmetric CSS construction recovers all 128 errors on a $(7,0)$ support, with a connected actual decoding graph, one encoded qubit and no physical product cut \cite{connected}. These are cited results, with their complete checked proofs preserved separately.
+
+The Error Correction Zoo's \emph{Self-dual CSS code} entry \cite{eczoo} supplied the terminology and discovery route to the weakly self-dual code-conversion and quotient-form references. The primary sources \cite{blt,hhpw}, rather than the expository entry, supply the mathematical definitions and results compared below.
+
+The natural equal-stabilizer-space restriction has an elementary but decisive parity obstruction. We use \emph{weakly self-dual CSS} in the sense of Bravyi, Leemhuis and Terhal \cite{blt}, Section 3: the binary X- and Z-stabilizer spaces are equal. This is weaker than requiring identical generating matrices and stronger than allowing a coordinate permutation to exchange unequal spaces. It is distinct from the graph-partition notion of a \emph{symmetric stabilizer} in \cite{mpk}, Definition 6.
+
+\small
+\par\noindent
+\begin{tabular}{>{\raggedright\arraybackslash}p{.26\textwidth}>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.35\textwidth}}
+\toprule Question & Source and scope & Answer/evidence\\\midrule
+Every absorbing set traps? & Morris--Pllaha--Kelley, v2 Section VI & No, cited simplex counterexample \cite{simplex}.\\
+Can all errors on an odd $(a,0)$ support recover in equal spaces? & Project-derived restriction; quantum success, not merely syndrome acceptance & No, Theorems~\ref{thm:parity}--\ref{thm:decoder}.\\
+Can a suitable even support recover in a connected equal-space code? & Project-derived Question~\ref{q:full}, fixed decoder and physical-cut condition & Unresolved here; exact Lean interface and necessary gates.\\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\begin{theorem}[Odd-support obstruction]\label{thm:parity}
+Let $H_X,H_Z$ be finite binary check matrices on $n$ physical coordinates. Write $R_X=\row H_X$ and $R_Z=\row H_Z$. Suppose $H_XH_Z^T=0$ and $R_X=R_Z$. Every vector of $R_Z$ has even weight. If $a$ has odd weight and $H_Xa=0$, then $a\notin R_Z$ and represents a nontrivial logical Z operator. In particular this applies to the indicator of any odd-cardinality $(a,0)$ absorbing set in the actual $H_X$ graph.
+\end{theorem}
+Theorem~\ref{thm:parity} is the classical self-orthogonality parity argument applied to the decoding support. The formal contribution is a general proof with actual-matrix, induced-degree and recovery interfaces. The relevant quotient $R^\perp/R$ and its bilinear form are classical; see \cite{hhpw}, Section 3. The complete proof and source-comparison ledgers are signposted in Appendix~\ref{app:lean}; Section~\ref{sec:chronology} gives the main-text reference chronology.
+
+\section{Binary spaces, incidence and the proof}
+Vectors lie in $\F^n$, addition is XOR, and $u\cdot v=\sum_i u_iv_i$ in $\F$. Matrices are finite ordered lists of rows; redundant and zero rows are allowed in the general theorem. The row space is the least set containing zero and every actual row and closed under XOR. Thus it is the full stabilizer space, not a selected basis or a restricted submatrix.
+
+For a selected set $A$ with indicator $a$, the degree of an actual check $r$ into $A$ is $|\supp r\cap A|$. Its parity is $r\cdot a$. Let $b_H(a)$ count actual checks of odd induced degree, counting check vertices as presented. The Lean incidence bridge proves
+\[
+ b_H(a)=0\quad\Longleftrightarrow\quad Ha=0.
+\]
+An absorbing support is nonempty and each selected variable has strictly more adjacent even-induced checks than odd-induced checks, as in \cite{mpk}, Definition 5. The parity obstruction needs only oddness and $b_H(a)=0$, not the strict-majority property.
+
+\begin{proof}[Proof of Theorem~\ref{thm:parity}]
+Orthogonality of the actual X and Z rows extends to both row spaces by bilinearity. If $w\in R_Z=R_X$, then $w\cdot w=0$. But $w\cdot w=|w|\pmod 2$, so $w$ has even weight. An odd $a$ is therefore outside $R_Z$. If also $H_Xa=0$, its Z operator commutes with every X stabilizer and is not a Z stabilizer. The incidence identity gives the absorbing-set application.
+\end{proof}
+
+\begin{theorem}[No universal syndrome-only recovery]\label{thm:decoder}
+Under Theorem~\ref{thm:parity}'s hypotheses, fix an odd $a$ with $H_Xa=0$. No deterministic map $D:\F^m\to\F^n$ can correct both $0$ and $a$ modulo $R_Z$. Hence no such map corrects every error supported on $\supp a$.
+\end{theorem}
+\begin{proof}
+Both errors produce syndrome zero. If both were corrected, then $D(0)\in R_Z$ and $a+D(0)\in R_Z$, so their sum $a$ would belong to $R_Z$, contradicting Theorem~\ref{thm:parity}. Both $0$ and $a$ are supported on $\supp a$.
+\end{proof}
+For any decoder that stops at zero syndrome with correction zero, the particular full-support error $a$ fails logically at initialization. This is immediate logical miscorrection, not a proof of persistent syndrome mismatch or message nonconvergence. Quantum recovery and dynamical trapping must remain distinct.
+
+\section{Presentations and boundary checks}
+\begin{proposition}[Common presentation and sectors]\label{prop:presentation}
+If $R_X=R_Z$ and the CSS condition holds, replacing $H_Z$ by the existing $H_X$ preserves the full binary stabilizer group, success modulo Z stabilizers, and closure of the stabilizer space under restriction to any physical cut. It leaves the actual $H_X$ decoding graph and its message updates unchanged. For a common matrix $H$, a syndrome map that corrects every binary error on $A$ corrects both components of every Pauli error on $A$ when applied separately to the X and Z components.
+\end{proposition}
+\begin{proof}
+Membership in $R_Z$ can be replaced by membership in $R_X$. This identifies both factors of the binary stabilizer space $R_X\times R_Z$ with $R_X\times R_X$, including membership of their coordinate restrictions. Orthogonality extends to the common presentation. The decoder uses the unchanged X check list. Finally the two corrected binary residuals belong separately to $R$, so their pair belongs to $R\times R$.
+\end{proof}
+This preserves the chosen Z-error decoder; it does not claim that replacing the opposite check presentation preserves a previously different X-error decoder. In the common presentation both components can use the same rule.
+
+The hypotheses have concrete checked guards. On two coordinates the common row $(1,1)$ has an even zero-syndrome word that is itself a stabilizer: oddness is essential. On six coordinates take $H_X=(111000)$ and $H_Z=(000111)$. The rows commute and swapping the two halves exchanges them, but the odd word $000111$ is a Z stabilizer. Thus permutation-exchange symmetry does not imply the theorem's premise. Two distinct generating lists can also span the same space: identical matrices are sufficient, not necessary.
+
+For the seven-coordinate simplex consumer, the common rows are the masks $85$, $102$, $51$, $120$, $45$, $30$, $75$ (least-significant-bit coordinate convention). The full support is odd, every induced check has degree four, and each selected variable has four even and zero odd adjacent checks. It is absorbing and zero-syndrome, but logical in the common-matrix CSS code. The exact first-stopping definitions below reject quantum success for this word under both syndrome tests. It also supplies an anticommuting logical pair by pairing its binary vector with itself across the two sectors.
+
+An independent integer-mask implementation checks nine fixed boundary families, including the already published asymmetric example. Under the seven equal-space controls it examines all 167 words, 13 odd zero-syndrome cases and all 1,058 possible shared outputs for those cases. This is finite semantic validation, not a substitute for the arbitrary-length theorem and not an even-support construction search.
+
+\section{The remaining existence question}\label{sec:question}
+We now freeze a project-derived question rather than attribute it to the source authors. Use one actual binary row list $H$ in both CSS sectors and require $HH^T=0$. Check vertices are the actual list positions; their ordering affects only syndrome indexing. Distinct rows are required for the existence target, although linear redundancy is allowed.
+
+Use syndrome-based Gallager-B with variable-to-check messages initially zero. A check-to-variable message is its target syndrome bit XOR all other incident incoming messages. Hard output is the strict majority of all incoming check messages; a variable-to-check update uses the strict majority excluding that recipient check. Every tie returns zero. No channel-dependent prior vote is added. At time zero the hard output and all messages are zero. After each full iteration consider two separately stopped runs: the hard syndrome of the hard output, or the outgoing variable-to-check parity at each check. Each run accepts at initialization for syndrome zero, otherwise at its first matching iteration, returning that iteration's hard output. The two runs may stop at different times.
+
+\newtheorem{question}{Question}
+\begin{question}\label{q:full}
+Does there exist a finite common matrix $H$ and nonempty proper $(a,0)$ absorbing support $A$ such that:
+\begin{enumerate}
+\item the actual bipartite Tanner graph is connected and all check rows are distinct;
+\item there is a pair $x,z\in R^\perp\setminus R$ with $x\cdot z=1$, witnessing positive logical content;
+\item for every nontrivial physical coordinate cut $C$, the binary stabilizer space $R\times R$ is not closed under restriction to $C$;
+\item every binary error supported on $A$ reaches a finite first acceptance and is corrected modulo the entire $R$, under each of the two stopped rules?
+\end{enumerate}
+\end{question}
+There is no prescribed girth, row/column degree, bounded-degree family, distance, or asymptotic LDPC condition. Four-cycles and linearly redundant checks are allowed. Product separation refers to physical coordinate partitions, not arbitrary entangling Clifford changes of variables. Membership in the full opposite stabilizer span is the quantum success criterion; merely matching a syndrome is insufficient.
+
+\begin{proposition}[Necessary gates and benchmark]\label{prop:gates}
+Any candidate for Question~\ref{q:full} has even $|A|$. Every zero-syndrome error supported on $A$ must belong to $R$. Requiring every supported error to succeed at initialization or after one iteration under both tests implies Question~\ref{q:full}'s recovery condition. Thus the unrestricted support-parity version of Question~\ref{q:full} is equivalent to its even-support version.
+\end{proposition}
+\begin{proof}
+A zero-syndrome input first accepts at time zero and returns zero, so it succeeds exactly when the input lies in $R$. Apply this to the indicator of $A$ and use Theorem~\ref{thm:parity} to get evenness. For a nonzero syndrome, first-iteration acceptance is the first acceptance because initialization did not accept. The stated one-iteration conditions therefore give the respective first-stopped successes. The parity equivalence follows by adding the necessary evenness condition to every candidate.
+\end{proof}
+No converse from eventual success to one-iteration success is proved or assumed. Failure of a bounded search for the benchmark would leave Question~\ref{q:full} unresolved. Neither question is answered by the present paper. A future construction attempt should first reject supported nonstabilizer zero-syndrome words and then test complete supported-error trajectories; that attempt is outside this artifact.
+
+\section{Relation to existing results and limits}
+Bravyi--Leemhuis--Terhal \cite{blt}, Section 3, supplies precisely the equal-space/self-orthogonality framework. Their Section 5, Corollary 1 maps any $[[n,k,d]]$ stabilizer code to a $[[4n,2k,2d]]$ weakly self-dual CSS code while preserving geometric locality up to constants. Its proofs control code parameters and locality. Applying it here still requires a bridge preserving the selected absorbing support, the actual Gallager-B votes and first stopping, and recovery of every error on that support. We have not established those bridges; the code conversion alone is not a checked solution of Question~\ref{q:full}.
+
+Haah--Hastings--Poulin--Wecker \cite{hhpw}, Sections 3--4, studies self-orthogonal spaces, logical quotient forms and weakly self-dual code constructions for magic-state distillation. Its normal/hyperbolic distinction concerns the quotient bilinear form, not odd/even cardinality of an absorbing support. These results do not supply the particular stopped Gallager-B recovery certificate required here. Their algebraic framework supplies the relevant prior context.
+
+Morris--Pllaha--Kelley \cite{mpk}, Theorem 5, distinguishes logical and degenerate zero-syndrome patterns using the induced code. An induced submatrix's row space is not automatically the entire opposite ambient stabilizer space on a proper support; we explicitly use the latter. Its Definition 3 is dynamical, whereas our obstruction is logical. Section II-B also discusses same-syndrome logical errors; syndrome equality must not be substituted for stabilizer equivalence.
+
+Dhingra, Matthews, McDevitt and McMillon \cite{dhingra}, Section 2 (pp.~6--8), initialize variable states with the received word and use integer or fractional unsatisfied-check bit-flip rules. Section 3 studies fixed-state absorbing patterns for those variants. Our decoder instead uses zero-initialized extrinsic syndrome messages, and quantum success is measured modulo the full opposite stabilizer space.
+
+Morris, Pllaha and Kelley's related study \cite{redundancy} examines redundancy in syndrome-based quantum LDPC decoding. Its abstract describes sufficient graph conditions for convergence to the input syndrome. The distinction relevant here is between such syndrome convergence and quantum recovery: our parity obstruction concerns a nontrivial logical word sharing the identity's syndrome.
+
+The unrestricted absorbing-implies-trapping question is answered negatively by the cited counterexample. Theorem~\ref{thm:decoder} rules out universal recovery on odd zero-syndrome supports when the full X/Z stabilizer spaces agree. Question~\ref{q:full} asks for a connected, physically inseparable even-support example under the exact stated decoder; this paper establishes its necessary conditions and the benchmark implication, leaving its existence unresolved.
+
+\clearpage
+\section{Reference chronology and source roles}\label{sec:chronology}
+Table~\ref{tab:chronology} compares the central references and inspected milestones to this manuscript's date, October 26, 2026. The three roles are distinct: Morris--Pllaha--Kelley poses the motivating question; Error Correction Zoo supplies a discovery trail; the classical primary references supply the algebraic ingredients. The prior repository manuscripts supply the cited unrestricted and connected asymmetric witnesses.
+
+\begin{table}[ht]\centering\footnotesize
+\begin{tabular}{>{\raggedright\arraybackslash}p{.24\textwidth}>{\raggedright\arraybackslash}p{.48\textwidth}>{\raggedleft\arraybackslash}p{.16\textwidth}}
+\toprule Source & Dated milestone & Days to this manuscript\\\midrule
+Bravyi et al. \cite{blt} & 2010-04-21: First preprint & 6032\\
+Bravyi et al. \cite{blt} & 2010-04-27: Inspected arXiv v2; journal year 2010 & 6026\\
+Haah et al. \cite{hhpw} & 2017-03-22: First preprint & 3505\\
+Haah et al. \cite{hhpw} & 2017-09-29: Inspected arXiv v3 & 3314\\
+Haah et al. \cite{hhpw} & 2017-10-03: Quantum publication & 3310\\
+Morris et al. (absorbing) \cite{mpk} & 2023-07-26: First preprint & 1188\\
+Morris et al. (absorbing) \cite{mpk} & 2024-05-10: Inspected arXiv v2 & 899\\
+Morris et al. (absorbing) \cite{mpk} & 2026-03-03: Journal publication metadata & 237\\
+Morris et al. (redundancy) \cite{redundancy} & 2025-08-23: Author availability announcement & 429\\
+Dhingra et al. \cite{dhingra} & 2026: Accepted manuscript; repository year only & Not asserted\\
+Simplex manuscript \cite{simplex} & 2026-10-26: Dated repository manuscript; fixed cited revision & 0\\
+Connected manuscript \cite{connected} & 2026-10-26: Dated repository manuscript; fixed cited revision & 0\\
+This manuscript & 2026-10-26: Present dated manuscript & 0\\
+\bottomrule
+\end{tabular}
+\caption{Reference timeline. Day counts are exact for day-precision events. A source's age is not the duration of an unsolved problem.}\label{tab:chronology}
+\end{table}
+
+Dates are given at their available precision: the BLT journal and the Dhingra repository record supply years, while the redundancy-paper row uses the author's dated availability announcement. Error Correction Zoo was consulted on October 26, 2026 as a discovery source. Repository manuscript rows use the dates printed on the cited documents. Investigation and packaging times are recorded separately in the reproducibility records.
+
+\clearpage
+\appendix
+\input{supplement.tex}
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{eczoo} Error Correction Zoo contributors, \emph{Self-dual CSS code}, \url{https://errorcorrectionzoo.org/c/self_dual_css}, inspected October 26, 2026 (discovery and terminology source).
+\bibitem{dhingra} R. Dhingra, G. L. Matthews, C. McDevitt and E. McMillon, \emph{Absorbing Sets of LDPC Codes Under a Gallager B Decoding Variant}, accepted manuscript, \href{https://hdl.handle.net/10919/140590}{Virginia Tech repository} (2026; year precision).
+\bibitem{redundancy} K. D. Morris, T. Pllaha and C. A. Kelley, \emph{Effect of redundancy on syndrome-based decoding for QLDPC codes}, ISTC (2025), pp.~1--5, \href{https://doi.org/10.1109/ISTC65386.2025.11154620}{doi:10.1109/ISTC65386.2025.11154620}. \href{https://kirstendmorris.github.io/}{Author availability announcement}, August 23, 2025. Public IEEE-authored abstract at \href{https://inspirehep.net/literature/2971808}{INSPIRE 2971808}.
+\bibitem{mpk} K. D. Morris, T. Pllaha and C. A. Kelley, \emph{Absorbing Sets in Quantum LDPC Codes}, \href{https://arxiv.org/abs/2307.14532v2}{arXiv:2307.14532v2} (May 10, 2024). Journal metadata: \href{https://doi.org/10.3934/amc.2026023}{doi:10.3934/amc.2026023} (2026).
+\bibitem{blt} S. Bravyi, B. Leemhuis and B. M. Terhal, \emph{Majorana Fermion Codes}, \href{https://arxiv.org/abs/1004.3791v2}{arXiv:1004.3791v2} (April 27, 2010), New J. Phys. 12, 083039 (2010).
+\bibitem{hhpw} J. Haah, M. B. Hastings, D. Poulin and D. Wecker, \emph{Magic State Distillation with Low Space Overhead and Optimal Asymptotic Input Count}, \href{https://arxiv.org/abs/1703.07847v3}{arXiv:1703.07847v3} (September 29, 2017), Quantum 1, 31 (October 3, 2017).
+\bibitem{simplex} \emph{An Absorbing Set Without Gallager-B Trapping}, \href{https://github.com/alectionary/vibe-math/blob/ff4172b090f4d38eadaf06fe419667f5b6bca585/formalization/gallager-b-absorbing/paper/main.pdf}{paper and checked artifact}, vibe-math (2026).
+\bibitem{connected} \emph{A Connected CSS Absorbing Set Without Gallager-B Trapping}, \href{https://github.com/alectionary/vibe-math/blob/5a27bd061adfd3acdbf63580f99a030d430d9287/formalization/gallager-b-absorbing/connected/paper/main.pdf}{paper}; \href{https://github.com/alectionary/vibe-math/blob/65bcfe0d8573a392f250295fcfa3619b586e4159/formalization/gallager-b-absorbing/connected/Connected.lean}{immutable checked proof}, vibe-math (2026).
+\end{thebibliography}
+\end{document}
