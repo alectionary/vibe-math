@@ -210,8 +210,8 @@ about0.000771, a phase residual0.003857 and minimum frequency eigenvalue about
 physical4-pair control verifies the small-support phase formulas, while the
 88-pair control checks the unrestricted shape support.
 
-All experiments ended by18:35:04UTC, before the18:45 cutoff. Preservation and
-publication follow within the first90-minute review window. No additional solver
+All experiments ended by18:35:04UTC, before the18:45 cutoff. Preservation and pull-request preparation finish within the first90-minute
+review window; master integration is pending the repository-required review. No additional solver
 campaign is running. The exact basic-SDP certificate and subgroup proofs are
 independent of these unsuccessful phase-enhanced numerical attempts.
 
@@ -220,3 +220,7 @@ The interval predicate used in the PSD consumer is supported by python-flint's
 its real/complex operations enclose rounding error, and a comparison returns true
 only when it holds throughout the input intervals. The documented semantics and
 installed0.9.0 version are recorded separately from our mathematical certificate.
+
+## Publication handoff
+
+The verified work branch is preserved in [PR17](https://github.com/alectionary/vibe-math/pull/17). A direct master update was rejected by the repository rule requiring a pull request and one approving review. PR17 is open with `REVIEW_REQUIRED`; no rule override or issue comment is attempted. This bounded comparison is complete, while master publication and the canonical mathematical answer remain pending. The canonical research claim is released only with this session's expected ownership SHA after remote artifact verification.
