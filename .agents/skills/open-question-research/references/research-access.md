@@ -94,3 +94,54 @@ that depends on missing coverage; do not claim a complete prior-art audit.
 If that gap prevents the requested conclusion, explain the limitation directly.
 This accounting rule does not authorize an indefinite wait, background monitoring
 or a new scheduled task.
+
+## Retrieve full text before recording an access gap
+
+An archive landing record and its PDF may use different hosts and access routes.
+Follow the actual Download link through the publisher page, inspect any open-access
+notice, and try its Download PDF control. Do not infer access restrictions from
+an archive CGI returning403 or from the publisher's name. For example, an older
+UNL ProQuest record can lead to an openly downloadable dissertation.
+
+If direct tools fail, discover and attempt the supported browser extension,
+using the user's requested browser when specified and following its current
+connection/troubleshooting instructions. Handle ordinary cookie banners within
+the browser's authorization rules. Record a failed browser connection as a tool
+failure, not a restriction on the document; do not bypass browser security controls.
+
+Use user-supplied final download links as evidence-backed retrieval routes. Check
+for sentence punctuation accidentally included in a pasted URL without inventing
+or modifying its access token. Temporary signed links may expire; retain the
+stable document identifier, not a signed query string, in public provenance.
+Verify PDF bytes and the title/author/version before attributing the recovered
+text. Keep downloaded, selectively consulted and fully screened statuses distinct.
+When a route succeeds, correct the access record while preserving dated attempts.
+
+For UNL records linked to ProQuest, the archive's general institutional-access
+banner does not determine the individual dissertation's access. Resolve its AAI
+publication number using the publisher's [documented OpenURL syntax](https://supportcenter.clarivate.com/articledetail?id=kA0400000004JHqCAM),
+then inspect the actual destination for an open-access Download PDF control or
+an explicit preview/institutional-access notice. A route-specific preview does
+not rule out a public departmental or author copy. Use observed document IDs,
+not guessed publisher identifiers. Indexed CORE mirror links can also use an
+older download path; check the currently observed download route for the same
+verified CORE identifier rather than treating a stale URL as document unavailability.
+
+Validate completeness as well as PDF bytes: front matter or a publisher preview
+is not a dissertation body. Check the contents, main chapters, references and final
+pages. Text extraction can return many characters with a broken glyph mapping;
+inspect readability, OCR when necessary, and visually check relevant passages
+before interpreting a zero-result keyword search as a completed question screen.
+
+## Hand off a source this environment cannot finish
+
+After the attempts above, a missing complete PDF is a handoff, not a reason to
+keep retrying the same failure. Use the
+[document acquisition queue](../../document-acquisition-queue/SKILL.md): one
+`fetch-request` issue per stable source, then work that does not need that text.
+At the next research block, merge any manifest a retrieval worker has posted.
+The worker procedure is
+[document retrieval](../../document-retrieval-worker/SKILL.md). Site notes,
+read only when the source matches, are in
+[that skill's references](../../document-retrieval-worker/references/unl-proquest.md).
+The checks in this file are what to try before filing.

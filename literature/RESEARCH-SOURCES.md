@@ -144,8 +144,8 @@ Kirsten D. Morris; Tefjol Pllaha; Christine A. Kelley. ISTC 2025, pp.1-5. [Prima
 - Record type: academic source; access: author bibliographies only.
 - Inspected locator: Morris publication list; Pllaha publications.
 - Contribution: Directly relevant earlier source-author study.
-- Comparison limit: Publisher substantive text inaccessible; cannot assert transformation, theorem or exclude an exact match.
-- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design).
+- Comparison limit: Public IEEE-authored abstract and author bibliographies inspected; full theorem text not retrieved. No theorem attributed from the secondary code summary.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
 
 ## RaveendranEtAl2023 — Soft syndrome iterative decoding of quantum LDPC codes and hardware architectures
@@ -1336,7 +1336,7 @@ Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. 
 
 - Follow-up comparison: [dated source review](../formalization/canonical-width/c16/takeover-prior-art.json).
 
-## F99 — Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
+## F143 — Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
 
 Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
 
@@ -1349,7 +1349,7 @@ Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.S
 
 - Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.
 
-## F100 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
+## F144 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
 
 Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. arXiv:2312.03859v1,6December2023. [Primary source](https://arxiv.org/html/2312.03859v1).
 
@@ -1361,3 +1361,64 @@ Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski
 - Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
 
 - Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.
+
+## BravyiLeemhuisTerhal2010 — Majorana Fermion Codes
+
+Sergey Bravyi; Bernhard Leemhuis; Barbara M. Terhal. arXiv v2, 27 April 2010; first submitted 21 April 2010. [Primary source](https://arxiv.org/pdf/1004.3791v2).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections3/5/6 and Introduction.
+- Contribution: Classical algebra and weakly self-dual code conversions.
+- Comparison limit: Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-F99-self-correction](OPEN-PROBLEMS.md#l-f99-self-correction), [L-F99-physical-realization](OPEN-PROBLEMS.md#l-f99-physical-realization), [L-F99-emergent-order](OPEN-PROBLEMS.md#l-f99-emergent-order).
+- Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).
+
+- Question screen: [full text screened](../literature/symmetric-css-source-screening.json); 3 linked canonical targets.
+
+## HaahHastingsPoulinWecker2017 — Magic State Distillation with Low Space Overhead and Optimal Asymptotic Input Count
+
+Jeongwan Haah; Matthew B. Hastings; David Poulin; Dave Wecker. arXiv v3, 29 September 2017; first submitted 22 March 2017; Quantum publication 3 October 2017. [Primary source](https://arxiv.org/pdf/1703.07847v3).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections3/4 and introduction/discussion, appendices A-E screened.
+- Contribution: Classical algebra and weakly self-dual code conversions.
+- Comparison limit: Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-F100-architecture-cost](OPEN-PROBLEMS.md#l-f100-architecture-cost), [L-F100-gamma-bound](OPEN-PROBLEMS.md#l-f100-gamma-bound), [L-F100-explicit-good-families](OPEN-PROBLEMS.md#l-f100-explicit-good-families), [L-F100-ccz-normal-codes](OPEN-PROBLEMS.md#l-f100-ccz-normal-codes).
+- Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).
+
+- Question screen: [full text screened](../literature/symmetric-css-source-screening.json); 4 linked canonical targets.
+
+## ECZooSelfDualCSS — Self-dual CSS code
+
+Error Correction Zoo contributors. Entry inspected 26 October 2026. [Primary source](https://errorcorrectionzoo.org/c/self_dual_css).
+
+- Record type: non paper expository source; access: entry read.
+- Inspected locator: Definitions, aliases, parent relation and references.
+- Contribution: Terminology/discovery lead to BLT2010 and HHPW2017; primary theorems checked separately.
+- Comparison limit: Not used as primary proof evidence. Bibliography alone did not trigger recursive paper screening.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing).
+- Provenance: [source review ledger](../literature/symmetric-css-source-screening.json).
+
+## DhingraMatthewsMcDevittMcMillon2026 — Absorbing Sets of LDPC Codes Under a Gallager B Decoding Variant
+
+Renaya Dhingra; Gretchen L. Matthews; Collin McDevitt; Emily McMillon. Accepted manuscript; institutional repository year2026, first public day unverified. [Primary source](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections2/3 update rules, definitions/proofs; Section5 conclusion; full19-page manuscript screen.
+- Contribution: Different received-word bit-flip decoder; comparison clarifies scope.
+- Comparison limit: Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted.
+- Related canonical targets: [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing), [L-F101-prevalence](OPEN-PROBLEMS.md#l-f101-prevalence), [L-F101-hybrid-decoding](OPEN-PROBLEMS.md#l-f101-hybrid-decoding), [L-F101-decoder-dependent-structure](OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure).
+- Provenance: [source review ledger](../literature/symmetric-css-editorial-source-screening.json).
+
+- Question screen: [full text screened](../literature/symmetric-css-editorial-source-screening.json); 3 linked canonical targets.
+
+## OpenAIMathStructuralAudit2026 — OpenAI math library: selected SAT, matroid-counting and matching interfaces
+
+OpenAI. commit7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a, inspected2026-10-27. [Primary source](https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a).
+
+- Record type: software source; access: selected source interfaces read.
+- Inspected locator: SubexponentialSAT endpoint/constant construction; CommonBasesFPRAS definitions/statement; PerfectMatchingPSD endpoint; stable-graph namespace scope.
+- Contribution: Requested applicability audit motivating a bounded structural comparison for C16. No direct theorem-to-instance reduction or practical SAT executable was established.
+- Comparison limit: No transitive Lean build or complete manuscript screen. Asymptotic constants/cutoffs do not establish finite-size gains; common-matroid-base constraints do not include the required identity cross-Gram condition. New experiments use independent available optimization libraries.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).

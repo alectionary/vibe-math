@@ -1,0 +1,615 @@
+{
+  "independent_replay": true,
+  "certificate_sha256": "9011c8c3f820f67bcff79af37322e68881cd6f799a0cf3846b278455bdc9d202",
+  "verifier_sha256": "d1840640408ffd486eae35426982e811bd6610055cb0b077b77db08e0213196b",
+  "verification_inputs_sha256": "862dc635374c96cbaac982a8e17097a0b39ade575ce8dc27ecd213fcbc6279ab",
+  "schema": 1,
+  "checked_utc": "2026-10-26T18:49:00.827211+00:00",
+  "canonical_id": "L-P09-all-absorbing",
+  "followup_id": "RQ-P09-symmetric-css",
+  "lean_version": "Lean (version 4.36.0-rc1, arm64-apple-darwin24.6.0, commit c9afcddf514a6772bd4d649f7cfc04eff0b9f15e, Release)",
+  "lean_build_seconds": 4.910347938537598,
+  "lean_returncode": 0,
+  "module_returncodes": {
+    "OddSupport": 0,
+    "Question": 0,
+    "Consumers": 0,
+    "Audit": 0
+  },
+  "research_import_closure": [
+    "OddSupport.lean",
+    "Question.lean",
+    "Consumers.lean",
+    "Audit.lean"
+  ],
+  "external_imports": [
+    "Std"
+  ],
+  "source_sha256": {
+    "OddSupport.lean": "57e12eaf51f1d99e9b19e620c68dabceb3fa5210de425d2b3a45d5679178350d",
+    "Question.lean": "0ebec033c3d225cf0a9749ed4678392fc0f0716ae117773dba5699b59a1c8bec",
+    "Consumers.lean": "84ced04654b51fe64ee1c2acabf1570f6ae526e8f903a8b76981c419f608afcf",
+    "Audit.lean": "8a1f004d1f6dc43532f2a5782b919d2437464f6758dc98e8f0b1e67a894b5f8e"
+  },
+  "build_log_sha256": "4270c48cd1504ef62f68782f6139f5abfc5aeb7a730f8e4e66159e9afec4f711",
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "no_admitted_or_native_oracle_proofs": true,
+  "theorem_count": 76,
+  "declarations": {
+    "CSSOddSupport.bool_and_xor": {
+      "source": "OddSupport.lean",
+      "line": 26,
+      "axioms": []
+    },
+    "CSSOddSupport.xor_shuffle": {
+      "source": "OddSupport.lean",
+      "line": 29,
+      "axioms": []
+    },
+    "CSSOddSupport.dotOn_comm": {
+      "source": "OddSupport.lean",
+      "line": 33,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.dot_comm": {
+      "source": "OddSupport.lean",
+      "line": 39,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.dotOn_zero_left": {
+      "source": "OddSupport.lean",
+      "line": 41,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.dot_zero_left": {
+      "source": "OddSupport.lean",
+      "line": 47,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.dot_zero_right": {
+      "source": "OddSupport.lean",
+      "line": 49,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.dotOn_xor_left": {
+      "source": "OddSupport.lean",
+      "line": 52,
+      "axioms": []
+    },
+    "CSSOddSupport.dot_xor_left": {
+      "source": "OddSupport.lean",
+      "line": 61,
+      "axioms": []
+    },
+    "CSSOddSupport.dot_xor_right": {
+      "source": "OddSupport.lean",
+      "line": 64,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.parity_succ": {
+      "source": "OddSupport.lean",
+      "line": 68,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.dotOn_self_weight": {
+      "source": "OddSupport.lean",
+      "line": 73,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.dot_self_weight": {
+      "source": "OddSupport.lean",
+      "line": 89,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.odd_dot_self": {
+      "source": "OddSupport.lean",
+      "line": 92,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.span_minimal": {
+      "source": "OddSupport.lean",
+      "line": 102,
+      "axioms": []
+    },
+    "CSSOddSupport.row_orthogonal_span": {
+      "source": "OddSupport.lean",
+      "line": 117,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.css_spans_commute": {
+      "source": "OddSupport.lean",
+      "line": 125,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.equal_spans_self_orthogonal": {
+      "source": "OddSupport.lean",
+      "line": 132,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.equal_spans_even_stabilizers": {
+      "source": "OddSupport.lean",
+      "line": 137,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.odd_not_stabilizer": {
+      "source": "OddSupport.lean",
+      "line": 145,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.zero_b_iff_zero_syndrome": {
+      "source": "OddSupport.lean",
+      "line": 165,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.odd_zero_syndrome_logical": {
+      "source": "OddSupport.lean",
+      "line": 169,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.odd_zero_b_logical": {
+      "source": "OddSupport.lean",
+      "line": 174,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.identical_rows_same_span": {
+      "source": "OddSupport.lean",
+      "line": 180,
+      "axioms": []
+    },
+    "CSSOddSupport.identical_matrix_odd_zero_b": {
+      "source": "OddSupport.lean",
+      "line": 184,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.zero_syndrome_equal": {
+      "source": "OddSupport.lean",
+      "line": 192,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.xor_zero_left": {
+      "source": "OddSupport.lean",
+      "line": 198,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.xor_cancel_right": {
+      "source": "OddSupport.lean",
+      "line": 202,
+      "axioms": [
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.cannot_correct_identity_and_odd_support": {
+      "source": "OddSupport.lean",
+      "line": 213,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.zero_supported": {
+      "source": "OddSupport.lean",
+      "line": 230,
+      "axioms": []
+    },
+    "CSSOddSupport.self_supported": {
+      "source": "OddSupport.lean",
+      "line": 234,
+      "axioms": []
+    },
+    "CSSOddSupport.no_universal_supported_recovery": {
+      "source": "OddSupport.lean",
+      "line": 238,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.dotOn_intersection_self": {
+      "source": "OddSupport.lean",
+      "line": 250,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.dot_intersection_weight": {
+      "source": "OddSupport.lean",
+      "line": 256,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.dot_false_iff_even_intersection": {
+      "source": "OddSupport.lean",
+      "line": 262,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.zero_b_iff_induced_even": {
+      "source": "OddSupport.lean",
+      "line": 272,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.odd_absorbing_no_recovery": {
+      "source": "OddSupport.lean",
+      "line": 290,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.odd_stabilizer_forbids_equal_spaces": {
+      "source": "OddSupport.lean",
+      "line": 296,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.common_matrix_css": {
+      "source": "OddSupport.lean",
+      "line": 303,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.common_matrix_recovery_iff": {
+      "source": "OddSupport.lean",
+      "line": 308,
+      "axioms": []
+    },
+    "CSSOddSupport.common_matrix_supported_recovery_iff": {
+      "source": "OddSupport.lean",
+      "line": 313,
+      "axioms": []
+    },
+    "CSSOddSupport.common_matrix_stabilizer_iff": {
+      "source": "OddSupport.lean",
+      "line": 330,
+      "axioms": []
+    },
+    "CSSOddSupport.common_matrix_product_cut_iff": {
+      "source": "OddSupport.lean",
+      "line": 335,
+      "axioms": []
+    },
+    "CSSOddSupport.common_matrix_both_sectors": {
+      "source": "OddSupport.lean",
+      "line": 351,
+      "axioms": []
+    },
+    "CSSOddSupport.successful_zero_b_support_even": {
+      "source": "OddSupport.lean",
+      "line": 357,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.xor_zero_right": {
+      "source": "OddSupport.lean",
+      "line": 367,
+      "axioms": [
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.css_iff_check_all": {
+      "source": "OddSupport.lean",
+      "line": 371,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.zero_stopping_decoder_fails_odd_support": {
+      "source": "OddSupport.lean",
+      "line": 375,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.first_accept_at_zero": {
+      "source": "Question.lean",
+      "line": 108,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.zero_syndrome_hard_success_iff": {
+      "source": "Question.lean",
+      "line": 115,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.zero_syndrome_edge_success_iff": {
+      "source": "Question.lean",
+      "line": 129,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.one_step_hard_success": {
+      "source": "Question.lean",
+      "line": 143,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.one_step_edge_success": {
+      "source": "Question.lean",
+      "line": 161,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.one_step_candidate_full": {
+      "source": "Question.lean",
+      "line": 179,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.full_candidate_no_supported_logical": {
+      "source": "Question.lean",
+      "line": 188,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.full_candidate_support_even": {
+      "source": "Question.lean",
+      "line": 193,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.full_question_iff_even": {
+      "source": "Question.lean",
+      "line": 199,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Question.benchmark_implies_full": {
+      "source": "Question.lean",
+      "line": 206,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.simplex_css": {
+      "source": "Consumers.lean",
+      "line": 12,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_is_odd": {
+      "source": "Consumers.lean",
+      "line": 16,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_is_absorbing": {
+      "source": "Consumers.lean",
+      "line": 20,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_has_zero_odd_checks": {
+      "source": "Consumers.lean",
+      "line": 24,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_is_logical": {
+      "source": "Consumers.lean",
+      "line": 26,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_no_decoder_corrects_all": {
+      "source": "Consumers.lean",
+      "line": 29,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_hard_stopping_logical_failure": {
+      "source": "Consumers.lean",
+      "line": 34,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_edge_stopping_logical_failure": {
+      "source": "Consumers.lean",
+      "line": 39,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.seven_logical_pair": {
+      "source": "Consumers.lean",
+      "line": 44,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.zero_length_not_odd": {
+      "source": "Consumers.lean",
+      "line": 49,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.one_pair_row_css": {
+      "source": "Consumers.lean",
+      "line": 55,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.even_zero_syndrome_stabilizer": {
+      "source": "Consumers.lean",
+      "line": 59,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.duplicate_row_same_span": {
+      "source": "Consumers.lean",
+      "line": 69,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.duplicate_lists_differ": {
+      "source": "Consumers.lean",
+      "line": 79,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.permutation_only_css": {
+      "source": "Consumers.lean",
+      "line": 91,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.halves_exchange_rows": {
+      "source": "Consumers.lean",
+      "line": 95,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "CSSOddSupport.Consumers.permutation_only_has_odd_stabilizer": {
+      "source": "Consumers.lean",
+      "line": 103,
+      "axioms": [
+        "propext"
+      ]
+    },
+    "CSSOddSupport.Consumers.permutation_only_spaces_differ": {
+      "source": "Consumers.lean",
+      "line": 109,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  },
+  "proof_scope": "General arbitrary-length binary CSS odd-support obstruction under equality of stabilizer row spaces; arbitrary syndrome-only recovery maps; exact full and one-step question interfaces; presentation/Pauli-sector reductions; independent small consumers. No even-support existence result.",
+  "canonical_completion_delta": 0
+}

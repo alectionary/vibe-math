@@ -62,6 +62,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
 - **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18.
+- **RQ-P09-symmetric-css:** Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. Status: General odd-support and supported-logical obstructions proved; exact even-support full/one-step existence questions remain unresolved. No construction search performed.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -195,6 +196,24 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: l-f91-c16-six-hour-continuation-2026-10-27
 
 [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate.. Remaining at that dated checkpoint: No exact-width or Lean completion. The full frame question and proposed stronger phase/owner-allocation follow-up remain open. F99/F100 canonical question reconciliation and product-basis search-lead screening remain incomplete, explicitly preserved rather than counted as zero-question screens.. [Report](../formalization/canonical-width/c16/SIX-HOURS.md) · [Verification](../formalization/canonical-width/c16/six-hours-results/final/verification.json) · [Prior art](../formalization/canonical-width/c16/six-hours-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: symmetric-css-2026-10-26
+
+[L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): General odd-support quantum-recovery obstruction under equality of full stabilizer row spaces; exact full/benchmark question interfaces.. Remaining at that dated checkpoint: Even-support existence or nonexistence; no candidate search.. [Report](../formalization/gallager-b-absorbing/symmetric/README.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: symmetric-css-editorial-2026-10-26
+
+[L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): Main-text chronology, discovery citation, explanatory proof dependency appendix, targeted source review and evidence-backed skill closeout requirements.. Remaining at that dated checkpoint: Even-support construction search. [Report](../formalization/gallager-b-absorbing/symmetric/EDITORIAL-REPAIR.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-structural-comparison-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion.. Remaining at that dated checkpoint: No unrestricted-width or Lean completion. Historical C16 source IDs F99/F100 collided with parallel published additions and are centrally remapped to F143/F144; immutable earlier reports retain their historical names. Their question screens and prior product-basis leads remain incomplete.. [Report](../formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md) · [Verification](../formalization/canonical-width/c16/structural-results/verification.json) · [Prior art](../formalization/canonical-width/c16/structural-prior-art.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -469,6 +488,61 @@ Two related primary full texts retrieved during C16 research. Relevant passages 
 [Screen report](../literature/c16-continuation-source-screening.json). Added **0 entries**, **0 eligible targets**, **2 paper records**, **0 full-text screens** and **0 completed proofs**.
 
 
-Current cohort: **353 canonical entries,150 eligible targets,134 paper records,119 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: symmetric-css-sources-2026-10-26
 
-The current source index has **105** records, with actual access levels retained.
+Two primary full texts; seven broad directions or held formulations, no precise-target denominator or completed-canonical-target delta.
+
+[Screen report](../literature/symmetric-css-source-screening.json). Added **7 entries**, **0 eligible targets**, **2 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F99-self-correction](OPEN-PROBLEMS.md#l-f99-self-correction): Historical direction: characterize robust quantum storage at nonzero temperature under geometric locality constraints.
+- [L-F99-physical-realization](OPEN-PROBLEMS.md#l-f99-physical-realization): Find physical mechanisms realizing interacting Majorana fermion codes.
+- [L-F99-emergent-order](OPEN-PROBLEMS.md#l-f99-emergent-order): Use the Majorana-code framework to explain emergence of topological order from microscopic interactions.
+- [L-F100-architecture-cost](OPEN-PROBLEMS.md#l-f100-architecture-cost): Compare realistic architecture-dependent costs of magic-state distillation and alternative gate constructions.
+- [L-F100-gamma-bound](OPEN-PROBLEMS.md#l-f100-gamma-bound): Historical conjecture: magic-state-distillation overhead exponent gamma cannot be below one.
+- [L-F100-explicit-good-families](OPEN-PROBLEMS.md#l-f100-explicit-good-families): Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.
+- [L-F100-ccz-normal-codes](OPEN-PROBLEMS.md#l-f100-ccz-normal-codes): Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.
+
+## Separate indexing extension: symmetric-css-editorial-sources-2026-10-26
+
+One previously uninspected classical variant full text contributes three broad directions. Existing P10 quantum redundancy lead identified and deduplicated; full-text comparison remains access-limited.
+
+[Screen report](../literature/symmetric-css-editorial-source-screening.json). Added **3 entries**, **0 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F101-prevalence](OPEN-PROBLEMS.md#l-f101-prevalence): Quantify the prevalence and influence of absorbing sets in decoder failure.
+- [L-F101-hybrid-decoding](OPEN-PROBLEMS.md#l-f101-hybrid-decoding): Develop hybrid decoding approaches combining strengths of multiple algorithms.
+- [L-F101-decoder-dependent-structure](OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure): Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
+
+## Separate indexing extension: unl-sem-seed-2026-10-26
+
+58 dissertation metadata seeds, all-author discovery and mathematical/statistical question screening of selected subsequent works. Social and empirical-only questions excluded.
+
+[Screen report](../literature/unl-sem/README.md). Added **8 entries**, **0 eligible targets**, **26 paper records**, **14 full-text screens** and **0 completed proofs**.
+
+- [L-F103-pleiotropy-linked](OPEN-PROBLEMS.md#l-f103-pleiotropy-linked): Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.
+- [L-F103-missing-phenotypes](OPEN-PROBLEMS.md#l-f103-missing-phenotypes): Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.
+- [L-F103-mixed-outcomes](OPEN-PROBLEMS.md#l-f103-mixed-outcomes): Develop multi-trait SEM methods supporting mixed binary and continuous traits.
+- [L-F103-experimental-design](OPEN-PROBLEMS.md#l-f103-experimental-design): Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.
+- [L-F102-correlated-residuals](OPEN-PROBLEMS.md#l-f102-correlated-residuals): Extend the multi-trait QTL SEM analysis to correlated residual errors.
+- [L-F102-nonlinear-traits](OPEN-PROBLEMS.md#l-f102-nonlinear-traits): Extend the linear multi-trait QTL SEM to nonlinear trait relationships.
+- [L-F106-dynamic-fit-robustness](OPEN-PROBLEMS.md#l-f106-dynamic-fit-robustness): Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.
+- [L-F106-dynamic-fit-multilevel](OPEN-PROBLEMS.md#l-f106-dynamic-fit-multilevel): Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.
+
+## Separate indexing extension: unl-sem-cfa-expansion-2026-10-26
+
+Source-question indexing extension.
+
+[Screen report](../literature/unl-sem/CFA-EXPANSION.md). Added **2 entries**, **0 eligible targets**, **13 paper records**, **7 full-text screens** and **0 completed proofs**.
+
+- [L-F132-subset-score-precision](OPEN-PROBLEMS.md#l-f132-subset-score-precision): Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+- [L-F134-interpretation-detection](OPEN-PROBLEMS.md#l-f134-interpretation-detection): Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+## Separate indexing extension: unl-sem-retrieval-repair-2026-10-26
+
+Source-question indexing extension.
+
+[Screen report](../literature/unl-sem/RETRIEVAL-REPAIR.md). Added **0 entries**, **0 eligible targets**, **2 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+
+Current cohort: **373 canonical entries,150 eligible targets,178 paper records,146 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **110** records, with actual access levels retained.

@@ -64,6 +64,13 @@ checked-out branch is not a shared claim; issue assignees also cannot distinguis
 sessions using one account. Read [GitHub coordination](references/github-coordination.md)
 for access checks, setup, verification and handoff details.
 
+Before new full-text retrieval in that block, consume immutable fetch manifests
+already posted for the active campaign. Follow
+[document acquisition](../document-acquisition-queue/SKILL.md). This agent is
+the only writer of the canonical ledgers. Merging a fetched PDF does not
+complete a question screen. Unreadable text and a front-matter preview keep a
+null question count.
+
 Use one GitHub issue per canonical target for discussion, scope, progress and
 handoff; search open and closed issues before creating one. If using a Project,
 add that real issue and reuse the existing board rather than creating a board
@@ -201,8 +208,19 @@ entries, a completed screen with no additional explicit target found, or a named
 access/version gap. An abstract, empty successful response or unreadable scan
 cannot justify a zero-question result. Try reasonable primary/author copies,
 use OCR and visually check relevant pages when needed, and retain unresolved
-leads without inventing bibliographic details. Add the findings to the shared
-inventory and planning records, leave unperformed current-resolution/Lean checks
+leads without inventing bibliographic details. A failed HTTP fetch is a failure of
+that retrieval route, not evidence that a work is paywalled. Follow the archive's
+actual Download link and any publisher landing page; when available, attempt the
+user's supported browser extension before declaring an access gap. Distinguish
+browser-connection failure from site restrictions. See [full-text retrieval](references/research-access.md#retrieve-full-text-before-recording-an-access-gap)
+for redirects, cookie banners and temporary PDF links. When those attempts still
+do not verify a complete text, hand the source to
+[document acquisition](../document-acquisition-queue/SKILL.md) instead of
+stalling. Search for an existing fetch issue, file a `fetch-request` when none
+exists, record `acquisition_requested` as that skill describes, and continue
+independent work. A preview or unreadable extraction stays a null question
+count. Add the findings to the shared inventory and planning records, leave
+unperformed current-resolution/Lean checks
 unassessed, regenerate reports and validate source coverage and cohort deltas.
 The [complete absorbing-set source screen](../../../literature/RESEARCH-QUESTION-SCREENING.md)
 illustrates this workflow and the distinction between downloaded, consulted,
@@ -328,6 +346,10 @@ When writing or revising a research paper:
   priority disclaimers in the abstract, introduction and conclusion. An ordinary
   result claim does not require a universal claim to historical priority. Retain
   mathematical hypotheses and limits that determine what the theorem proves.
+  Keep routine retrieval failures in the supporting ledger. An unavailable source
+  alone is not a reason to cast doubt on a proved result, speculate that unseen
+  work invalidates or subsumes it, or hedge an ordinary theorem claim. Give
+  precise overlap attribution when an inspected source actually supports it.
 - Keep a proof-to-Lean table covering every proof created for the manuscript,
   including counting bijections, certificate soundness, matrix/source translations,
   finite-instance verification and applications. Give every such proof a faithful
@@ -347,16 +369,26 @@ When writing or revising a research paper:
   [stopping-bound paper's proof appendix](../../../formalization/stopping-bound/stronger/supplement.tex):
   explain the definitions and source bridges, print complete central proof bodies,
   show their dependency structure, and provide current and commit-pinned source
-  links with declaration-level anchors. A coverage table, external guide or source
-  archive supplements this exposition; it does not replace it. Review the rendered
-  appendix against that example before delivery.
-- Cite the discovery source, original question and applicable predecessors.
+  links with declaration-level anchors. Explain the chain from source definitions
+  through the decisive lemmas to the conclusion; place complete central proof
+  bodies beside that explanation. Whole-module listings alone do not satisfy this
+  requirement. Keep complete supporting sources available and linked. A coverage
+  table, external guide or source archive supplements this exposition; it does not
+  replace it. Review the rendered appendix against that example before delivery.
+- Cite the discovery source, original question and applicable predecessors in
+  the manuscript, distinguishing discovery credit from mathematical authority.
+  A discovery record only in a repository ledger is insufficient.
   Include a reference chronology table: source, earliest relevant preprint/date,
   inspected version/publication milestone, this paper's dated revision, and the
-  explicit elapsed-time delta. Put a readable central-source comparison near the
-  introduction or related work and explicitly signpost the complete ledger if it
-  is in an appendix. Measure deltas to the stated manuscript revision date, not a
-  moving reading date. Label date precision and approximation rather than
+  explicit elapsed-time delta. Place the chronology and a readable central-source
+  comparison in the main text by default, near the introduction or related work;
+  explain a necessary departure from this or the established manuscript style.
+  Account for central predecessors, inspected versions and the present manuscript,
+  including prior repository manuscripts when materially used. Label internal
+  manuscript dates as such, not external publication dates. Explicitly signpost
+  any complete supporting ledger kept in an appendix. Measure deltas to the
+  stated manuscript revision date, not a moving reading date. Label date precision
+  and approximation rather than
   inventing a day for a year-only source. Distinguish an ingredient's age from the
   duration of an unsolved problem. Record elapsed investigation time to the answer
   and later formalization/manuscript revisions separately in reproducibility
@@ -379,8 +411,26 @@ When writing or revising a research paper:
   signposting is not sufficient. Check the title/date line, abstract, introduction,
   conclusion, appendices and announcement for internal draft-history framing;
   preserve technical uses such as expanded matrices and cited source-version
-  dates. Commit/push only within the user's existing
+  dates. Test discoverability in the final rendered PDF: locate the question,
+  answer, chronology, proof explanation and remaining limitations without
+  searching long source listings. Format/presence validators alone do not
+  establish this reader-facing check. Commit/push only within the user's existing
   authorization.
+
+Before claiming a manuscript/research block complete, add a proportionate
+requirement-to-evidence table to its existing reproducibility report. For each
+applicable deliverable requirement, record **met**, **partial**, **access-limited**
+or **not applicable**, with a concrete final-PDF page/section or file/declaration
+and a reason for any exception. Check the locations against the final artifact.
+Surface an outstanding limitation in the user-facing handoff when it prevents a
+requested deliverable or affects a specific mathematical claim. Keep routine
+search coverage and unavailable-source records in the supporting ledger; do not
+turn an unavailable paper into speculative doubt about correctness, originality
+or publishability. State proved results with their mathematical hypotheses.
+Historical-priority claims require their own evidence, but an ordinary theorem
+claim does not require an exhaustive literature audit or a generic disclaimer.
+This table records evidence, not a new approval step or authorization to expand
+research indefinitely.
 
 When an announcement is requested, draft a short X post containing the exact
 answered question, the source authors and precise reference (DOI or arXiv,

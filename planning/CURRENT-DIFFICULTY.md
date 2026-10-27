@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 27, 2026. Low-confidence planning priors for all 353 entries (172 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 27, 2026. Low-confidence planning priors for all 373 entries (192 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -876,7 +876,7 @@ The original fourteen-coordinate artifact is disconnected. The separate connecte
 
 First milestone: Complete: checked counterexample and actual CSS recovery.
 
-Progress: Connected fifteen-coordinate strengthening also complete within its asymmetric-CSS scope; no physical product cut. [Checked artifact](../formalization/gallager-b-absorbing/connected/README.md).
+Progress: The connected asymmetric witness remains complete. A subsequent general proof rules out odd zero-syndrome supports under equality of full X/Z spaces, and freezes the unresolved even-support full/one-step questions. No even-support construction search performed. [Checked artifact](../formalization/gallager-b-absorbing/symmetric/README.md).
 
 Basis: Retained October 21 family prior with current eligibility/resolution checks; not a new implementation benchmark. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-p09-all-absorbing).
 
@@ -4934,9 +4934,9 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 
 The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Find a physically checked128-pair weight16 frame or a complete global obstruction. The proposed follow-up first decides a stronger common-phase/owner-allocation necessary model. No discovery-time estimate is justified.
+First milestone: Find a physically checked128-pair weight16 frame or a complete global obstruction. The basic degree-two moment relaxation is exactly feasible, so additional local phase identities or higher moments are needed to obtain a stronger obstruction by this route. Half-turn invariant and asymmetric frames remain unexcluded. No discovery-time estimate is justified.
 
-Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Independent all68-root enumeration visits47,708,679 nodes and recovers45 weight16 orbits.  All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate. [Checked artifact](../formalization/canonical-width/c16/SIX-HOURS.md).
+Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Independent all68-root enumeration visits47,708,679 nodes and recovers45 weight16 orbits.  All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate. The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion. [Checked artifact](../formalization/canonical-width/c16/SIX-HOURS.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
@@ -5469,3 +5469,323 @@ First milestone: Verify exact scope and modern resolution.
 Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
 
 Basis: Primary main-text question screen; present resolution and Lean discovery not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f97-multipartite-conversion).
+
+### L-F99-self-correction
+
+Historical direction: characterize robust quantum storage at nonzero temperature under geometric locality constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad physical-regime-dependent direction, with a partial negative 2D Majorana answer in the same paper; do not retain that answered restricted case as open.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f99-self-correction).
+
+### L-F99-physical-realization
+
+Find physical mechanisms realizing interacting Majorana fermion codes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Explicit author-stated broad implementation problem; no fixed mathematical model is supplied; modern status unassessed.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f99-physical-realization).
+
+### L-F99-emergent-order
+
+Use the Majorana-code framework to explain emergence of topological order from microscopic interactions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad physical explanation direction, not a fixed unresolved proposition.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f99-emergent-order).
+
+### L-F100-architecture-cost
+
+Compare realistic architecture-dependent costs of magic-state distillation and alternative gate constructions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Authors explicitly defer architecture-dependent cost comparison to future work.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-architecture-cost).
+
+### L-F100-gamma-bound
+
+Historical conjecture: magic-state-distillation overhead exponent gamma cannot be below one.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Held formulation: source attributes the conjecture to Bravyi--Haah2012 ref12; the admissible protocol/resource/error class and original wording require direct verification before recommendation. Current resolution unassessed. Repeated abstract/discussion optimality mentions merged here.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-gamma-bound).
+
+### L-F100-explicit-good-families
+
+Construct an explicit efficiently implementable weakly self-dual CSS family achieving the stated rate-distance bound.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The random/greedy existence bound is already established. The explicit/efficient construction request needs frozen algorithmic quantifiers; current resolution unassessed.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-explicit-good-families).
+
+### L-F100-ccz-normal-codes
+
+Investigate normal-code measurement routines using the described noncommuting CCZ stabilizers.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Speculative author direction, with the noncommuting rejection-probability limitation explicitly noted. Not a general CCZ construction question.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary full-text source screen; modern resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f100-ccz-normal-codes).
+
+### L-F101-prevalence
+
+Quantify the prevalence and influence of absorbing sets in decoder failure.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad conclusion direction; source supplies no fixed ensemble, channel, estimator or theorem target.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-prevalence).
+
+### L-F101-hybrid-decoding
+
+Develop hybrid decoding approaches combining strengths of multiple algorithms.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Broad algorithm-design direction, without a specified hybrid protocol or performance criterion.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-hybrid-decoding).
+
+### L-F101-decoder-dependent-structure
+
+Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+General direction beyond the source's proved Type1 classifications; no new unresolved classification theorem is inferred.
+
+First milestone: Verify exact scope and modern resolution.
+
+Gate: Check current resolution, precise source definitions and matching Lean statements before recommendation.
+
+Basis: Primary accepted-manuscript full-text screen; current resolution and Lean discovery unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure).
+
+### L-F103-pleiotropy-linked
+
+Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify the competing latent-genotype models, priors, marginal likelihoods, and identifiability/separation assumptions.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-pleiotropy-linked).
+
+### L-F103-missing-phenotypes
+
+Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify missingness, imputation distribution, estimator, and a consistency or error guarantee; imputation itself is not a proof of validity.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-missing-phenotypes).
+
+### L-F103-mixed-outcomes
+
+Develop multi-trait SEM methods supporting mixed binary and continuous traits.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Fix latent/observed links and a joint probability model; choose an identifiable parameterization and a specific inferential guarantee.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-mixed-outcomes).
+
+### L-F103-experimental-design
+
+Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Fix random-effect covariance and interaction structure before stating identifiability or estimator guarantees.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f103-experimental-design).
+
+### L-F102-correlated-residuals
+
+Extend the multi-trait QTL SEM analysis to correlated residual errors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify a positive-definite residual covariance class and structural zero restrictions; unrestricted residual dependence can change identifiability.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f102-correlated-residuals).
+
+### L-F102-nonlinear-traits
+
+Extend the linear multi-trait QTL SEM to nonlinear trait relationships.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Specify the nonlinear family, noise assumptions, and the particular existence, identifiability or estimation claim; the source gives an allometric example, not a general theorem.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f102-nonlinear-traits).
+
+### L-F106-dynamic-fit-robustness
+
+Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: Define a family of SEMs, null/alternative discrepancy thresholds, simulation calibration, and a finite-sample error/coverage criterion.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f106-dynamic-fit-robustness).
+
+### L-F106-dynamic-fit-multilevel
+
+Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Mathematical core can be specified independently of empirical social theories; estimand/model/guarantee must be fixed.
+
+First milestone: Formulate the mathematical model and inferential guarantee, then compare with current methods and existing formal definitions.
+
+Gate: The authors identify unavailable multiple-group/multilevel support. Specify model class and a level/power guarantee before proposing a theorem.
+
+Basis: Source-stated statistical method direction, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f106-dynamic-fit-multilevel).
+
+### L-F132-subset-score-precision
+
+Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source calls for generalizability and selection-sensitivity studies. Its observed success with 50% subsets is not a universal 50% sufficiency theorem; increasing the number of strata also needs explicit allocation/variance conditions.
+
+First milestone: Freeze the mathematical model and desired guarantee; compare existing mathematical/statistical results before recommending a proof target.
+
+Gate: Specify the item-by-judge probability matrix, subset-sampling design, allocation/weighting and an error or coverage criterion relative to the full-test score.
+
+Basis: Source-stated statistical methods direction; not an assumed theorem or a timed effort estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f132-subset-score-precision).
+
+### L-F134-interpretation-detection
+
+Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The author suggests simulation evaluation of detection ability. Population-specific collection, demographic prediction and scale validation requests are empirical and excluded. This is a cited follow-up to Marincic (2011); a Griffin/Marincic identity transition is not asserted.
+
+First milestone: Freeze the mathematical model and desired guarantee; compare existing mathematical/statistical results before recommending a proof target.
+
+Gate: Specify ordinal responses, substantive factors, response-style factors/classes, identification constraints and a detection/error criterion. Separate identifiable model distinctions from labels that observations cannot distinguish.
+
+Basis: Source-stated statistical methods direction; not an assumed theorem or a timed effort estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f134-interpretation-detection).
