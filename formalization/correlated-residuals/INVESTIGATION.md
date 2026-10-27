@@ -578,3 +578,24 @@ The replication sources are now ledger rows. PDFs are in ignored `local-extracti
 | F151 | Valente et al. 2010 | Access gap. Question count left null. |
 
 Jiang and Zeng (1995) and Churchill and Doerge (1994) stay bibliography-only. They were not re-read, and no zero question count was entered.
+
+
+## Fetch requests, 2026-10-27
+
+The investigation notes did not name a set of eight unread citing papers. OpenAlex lists the works that cite DOI 10.2202/1544-6115.1552. Issues were filed for the ones whose complete files were not stored. Three citing papers were downloaded and read far enough to see empirical discussions (Cai et al. 2013, Momen et al. 2018, Igolkina et al. 2018 Frontiers in Molecular Neuroscience) and were not given ledger rows in this pass. Wang et al., arXiv:1512.00947, was downloaded and not queued; it was not given a ledger row. No email was sent.
+
+| Issue | Source |
+|---|---|
+| https://github.com/alectionary/vibe-math/issues/18 | Mi 2009 dissertation, UNL-SEM-D013 |
+| https://github.com/alectionary/vibe-math/issues/19 | SAGMB version of record, 10.2202/1544-6115.1552. The author manuscript stays F102. |
+| https://github.com/alectionary/vibe-math/issues/20 | SAS PROC IML programs named in Man851 |
+| https://github.com/alectionary/vibe-math/issues/21 | 10.1016/j.pbi.2011.03.024 |
+| https://github.com/alectionary/vibe-math/issues/22 | 10.1111/age.13282 |
+| https://github.com/alectionary/vibe-math/issues/23 | 10.1007/s00438-021-01801-1 |
+| https://github.com/alectionary/vibe-math/issues/24 | 10.1007/s12652-020-02622-7 |
+| https://github.com/alectionary/vibe-math/issues/25 | 10.1002/sam.11450 |
+| https://github.com/alectionary/vibe-math/issues/26 | 10.1093/bib/bbt061 |
+| https://github.com/alectionary/vibe-math/issues/27 | 10.1111/jwas.12782 |
+| https://github.com/alectionary/vibe-math/issues/28 | 10.1186/s12918-015-0200-0 |
+| https://github.com/alectionary/vibe-math/issues/29 | 10.1186/s12864-020-06833-2 |
+| https://github.com/alectionary/vibe-math/issues/30 | Campbell et al. 2003, F150 |
