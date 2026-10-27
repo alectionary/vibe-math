@@ -33,6 +33,14 @@ for x in s:
   assert x['question_count'] is None
   assert x['full_text_screen_status'] in ('not_screened_retrieval_incomplete','not_screened_partial_preview')
  assert x['access_history'] and x['access']['scope_limit']
+allowed_retrieval={'not_retrieved_in_checked_routes','complete_pdf_retrieved','front_matter_only_preview','acquisition_requested'}
+assert {x['retrieval_status'] for x in s}<=allowed_retrieval
+assert {x['access']['retrieval_status'] for x in s}<=allowed_retrieval
+for x in s:
+ if x['retrieval_status']=='acquisition_requested' or x['access']['retrieval_status']=='acquisition_requested':
+  assert x['retrieval_status']==x['access']['retrieval_status']=='acquisition_requested'
+  assert x['question_count'] is None and x['full_text_screen_status']=='not_screened_retrieval_incomplete'
+  assert x['id'] not in seed_manifest
 assert seed_manifest['UNL-SEM-D084']['text_method']=='tesseract_ocr_all_188_pages'
 assert sum(x['publisher_open_access_notice'] is True for x in retrieval['rows'])==2
 assert sum(x['publisher_page_title'] is not None for x in retrieval['rows'])==94
@@ -47,6 +55,11 @@ assert all(x['year']>=2001 and x['record_kind']=='doctoral_dissertation' for x i
 assert all(x['search_ids'] for x in a)
 searchids={x['id'] for x in search};assert all(set(x['search_ids'])<=searchids for x in a)
 assert len(w)==tot['selected_works']==41 and len({x['id'] for x in w})==41
+allowed_work_retrieval={'retrieved','access_gap','acquisition_requested'}
+assert {x['retrieval']['status'] for x in w}<=allowed_work_retrieval
+for x in w:
+ if x['retrieval']['status']=='acquisition_requested':
+  assert x['question_count'] is None and x['screen_status']=='full_text_access_gap'
 by={x['id']:x for x in w};seedids={x['id'] for x in s}
 assert all(set(x['seed_ids'])<=seedids and x['authors'] and x['title'] and x['url'].startswith('https://') for x in w)
 assert sum(x['screen_status']=='full_text_screened' for x in w)==screen['full_text_paper_screens']==tot['full_text_screens']==24
