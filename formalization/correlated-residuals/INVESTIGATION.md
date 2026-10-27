@@ -499,3 +499,32 @@ UTC start 18:20:15. The gap grid, including two 1000-replicate scans, finished a
 **Question still open:** Why the multi-trait powers for QTL2 and QTL3 sit near 48–87% in the glyph-reading scan and at 77 and 96 in Table 1. The wheat residual fit, the mixed-graph characterization, and a Lean central limit theorem are unchanged.
 
 **Next proposed target (follow-up):** The same wheat-data fit as before. No next block is reserved.
+
+## Block 2026-10-27T18:49Z: assumption grid
+
+Follow-up `RQ-F102-assumption-grid`. Session `a42142f3-1c1c-4f9f-afc5-8c4316e76486`. Claim commit `76a03bee0b2a15c6f612afaef61a2fcd5ebc69c5`.
+
+Family A is one change at a time from the glyph reading, 1000 replicates, seeds `20101101` onward. The baseline SEM powers are 50.8, 53.5, 86.1. Infinite RIL and Kosambi move QTL2 by about one point. The flanking formula, standardization, scan step, and a second seed stay inside a few points. A 95% permutation quantile is 16.1, above 14.86. `Ψ = I`, an oracle genotype, QTLs moved onto markers, and dropping cofactors move the powers and each one contradicts a printed sentence or moves the single-trait QTL2 rate from about 1% to 66%.
+
+Family B: the noncentral chi-square approximation with the other QTL genotypes controlled gives 81%, 77%, 100% at n=150. The marker scan at 250 lines gives 81.6, 77.1, 98.7. Both match the printed 77 and miss the printed 64. Genetics Research (Man851, SHA-256 `630a5e7b90665fd680d58915f6f9fe45e5051e8a5f6fff6af2cf16f8ae3b3739`) is a two-QTL Bayesian design with powers 99 and 100; it repeats the glyph signs and the rounded pair −0.435, 0.065. The 2008 conference note is one QTL and 300 lines; its power counts were not in the text layer. Our three-QTL scan at 300 lines is 89.3, 85.0, 99.9.
+
+### Time
+
+UTC start 18:49:33. The 1000-replicate grid finished at about 19:01. The paper update followed.
+
+### Requirement to evidence
+
+| Requirement | Status | Where |
+|---|---|---|
+| Family A seeded at n=1000 | met | `simulation/out/assumptions/*.json` |
+| Family B companion comparison and chi-square powers | met | `analytic_controlled.json`, SOURCES.md rows for Man851 and the 2008 note |
+| Explanations table with graded verdicts | met | PDF section "Explanations considered" |
+| No author-error claim | met | verdicts use consistent-with and source-discrepancy labels |
+
+## Closeout of the assumption-grid block
+
+**Question answered:** No choice the simulation paragraph leaves open matches Table 1. The printed 77 is consistent with the chi-square power at 150 lines when the other QTL genotypes are controlled, and with the marker scan at 250 lines. Both put QTL1 near 80% rather than at 64%. The single-trait QTL2 cell is consistent with a total effect of zero.
+
+**Question still open:** Why Table 1's first SEM power is 64 while the two readings that produce 77 for QTL2 both put that first power near 80. The wheat residual fit, the mixed-graph characterization, and a Lean central limit theorem are unchanged.
+
+**Next proposed target (follow-up):** The wheat-data fit, once the residual matrix, marker codes, and edge set exist. No next block is reserved.
