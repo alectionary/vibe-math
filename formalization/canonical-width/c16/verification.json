@@ -243,7 +243,8 @@
     "physical_pool_checker": "formalization/canonical-width/c16/audit_pools.py",
     "combined_verifier": "formalization/canonical-width/c16/verify_takeover.py",
     "legacy_twelve_exclusions_retracted": true,
-    "pool_completeness_proved": false
+    "pool_completeness_proved": false,
+    "pool_completeness_status_update": "Historical audit checkpoint did not reimplement the enumerator. See independent_pool_enumeration for the subsequent independent computation and written bridge."
   },
   "corrected_seed4_search": {
     "evidence": "exact_finite_computation",
@@ -277,5 +278,24 @@
     ],
     "decision": "Two UNKNOWN runs; optimization kept best 88 and bound 128. No global exclusion.",
     "relaxations": "formalization/canonical-width/c16/takeover-results/global-relaxations.json"
+  },
+  "independent_pool_enumeration": {
+    "evidence": [
+      "independent_exact_finite_computation",
+      "written_completeness_argument"
+    ],
+    "manifest": "formalization/canonical-width/c16/four-hours-results/enumeration/manifest.json",
+    "report": "formalization/canonical-width/c16/INDEPENDENT-ENUMERATION.md",
+    "checker": "formalization/canonical-width/c16/verify_independent_enumeration.py",
+    "all_roots": 68,
+    "nodes": 47708679,
+    "maximum_weight": 17,
+    "normalized_orbits": 45,
+    "all_outputs_weight": 16,
+    "physical_representatives_per_sector": 720,
+    "minimum_cross_sector_support_union": 26,
+    "source_search_code_imported": false,
+    "lean_certificate": false,
+    "conclusion": "Complete low-weight pools independently reproduced in both sectors; mixed representatives through weight17 reduce to a pure pool frame. The exact width remains16 or18."
   }
 }

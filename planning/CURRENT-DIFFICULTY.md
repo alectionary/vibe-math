@@ -4936,11 +4936,11 @@ The source two-point gap remains open. Corrected finite exclusions are partial p
 
 First milestone: Decide the complete twelve-monomial case with all allowed partners, or produce a global compatibility obstruction. Finishing only the old capped list is insufficient.
 
-Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. [Checked artifact](../formalization/canonical-width/c16/TAKEOVER.md).
+Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Independent all68-root enumeration visits47,708,679 nodes and recovers45 weight16 orbits. The four-hour block remains active; corrected twelve-monomial replay is in progress. [Checked artifact](../formalization/canonical-width/c16/FOUR-HOURS.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
-Basis: 2026-10-27 takeover repaired the partner domain and checked the physical-coordinate bridge. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: 2026-10-27 takeover repaired the partner domain and checked the physical-coordinate bridge. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Effort remains unassessed. The continuation independently reproduces physical pool completeness through weight17 and the mixed-Pauli reduction; no Lean certificate or exact width decision. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 
