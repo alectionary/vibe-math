@@ -4439,3 +4439,34 @@ Evaluate when latent-variable models reliably detect individual differences in t
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F134: Discussion, printed p142; author-uploaded transcription webL1579–1585](https://www.researchgate.net/publication/274557890_On_the_Use_of_Latent_Variable_Models_to_Detect_Differences_in_the_Interpretation_of_Vague_Quantifiers); extraction lines 1524–1530; author stated question or direction.
+
+### L-F145-generic-mixed-graph
+
+Characterize the mixed graphs that yield generically identifiable linear structural equation models.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F145: Section 8 Conclusion](https://arxiv.org/pdf/1003.1146.pdf); author stated question or direction.
+- [F146: Introduction](https://arxiv.org/pdf/1107.5552.pdf); the same problem restated as still open.
+
+### L-F146-half-trek-gap
+
+Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F146: Discussion](https://arxiv.org/pdf/1107.5552.pdf); author stated question or direction.
+
+### L-F147-polytime-ancestral
+
+Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
+
+- Type: method request; written formulation: method request.
+- Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F147: Final paragraph before Acknowledgments](https://arxiv.org/pdf/1504.02992.pdf); author stated question or direction.
