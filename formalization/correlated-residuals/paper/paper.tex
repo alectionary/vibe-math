@@ -46,8 +46,11 @@ with one minus in front of $M$, does not reproduce Table~2's total effect
 $0.75$ or the single-trait power $97\%$ for the third QTL on the first trait.
 The minus signs sit on individual entries. That glyph reading reproduces the
 parameter block, including $0.75$, and lifts the single-trait power from
-$13\%$ to $86\%$ in $1000$ replicates. The multi-trait powers $77$ and $96$,
-and the last eleven points of that single-trait power, remain. A
+$13\%$ to $86\%$ in $1000$ replicates. No modeling choice the simulation
+paragraph leaves open closes the remaining multi-trait gap. The printed
+$77$ matches a $250$-line scan and a chi-square calculation in which the
+other QTL genotypes are controlled; both of those put the first QTL near
+$80\%$ rather than at the printed $64\%$. A
 bow-free Monte Carlo shows that the diagonal plug-in invents a direct edge
 and biases two QTL coefficients, while \texttt{recoverBow} covers the path
 and QTL coefficients at the delta-method rate. A third run replaces the path
@@ -396,6 +399,114 @@ remove the SEM gap for QTL2 and QTL3. Those two percentages move onto the
 printed values only in runs that drop the printed cofactors or replace
 matrix~(8). Both of those runs conflict with a sentence on PDF page~10.
 
+\section{Explanations considered}
+\label{sec:explanations}
+
+The gaps that remained after the glyph reading, on a fresh 1000-replicate
+run (seed \texttt{20101101}), are SEM powers $50.8$, $53.5$ and $86.1$
+against $64$, $77$ and $96$, single-trait power for QTL3 on $Y_1$ of $88.6$
+against $97$, and single-trait power for QTL2 on $Y_1$ of $1.2$ against $3$.
+The intervals are $50.4$--$56.6$, $83.8$--$88.2$, $86.5$--$90.5$ and
+$0.6$--$2.1$. A second seed (\texttt{20101102}) gives SEM powers $49.4$,
+$48.3$ and $84.6$. The QTL2 gap of about $24$ points is not a seed effect.
+Family A changes one modeling choice at a time. Family B compares the
+printed counts with the arithmetic, with a noncentral chi-square
+approximation, and with the companion designs. The grid is
+\texttt{simulation/out/assumptions/}. \ev{our own simulation}
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\caption{Explanations considered. Closure is the fraction of the
+seed-\texttt{20101101} gap removed. The four fractions are QTL2 SEM,
+QTL3 SEM, single-trait QTL3 on $Y_1$, and single-trait QTL2 on $Y_1$.}
+\label{tab:explanations}
+\begin{tabular}{p{3.3cm}cp{3.6cm}p{2.4cm}p{2.6cm}}
+\hline
+Hypothesis & Family & Evidence & Gap closed & Verdict \\
+\hline
+Infinite RIL, $2r/(1+2r)$ & A & SEM $56,55,91$ & $.07/.54/.36/-.06$ & open, and too small \\
+Kosambi, infinite RIL & A & SEM $56,54,91$ & $.03/.49/.31/-.06$ & open in SAGMB; not Table 1 \\
+Flanking formula & A & within the seed range & about $0$ & cannot be distinguished from the 12-generation expectation \\
+Per-equation tests & A & any equation above $10.60$ gives $52,52,78$ & negative on QTL3 & does not match \\
+Permutation threshold & A & $95\%$ quantile $16.1$ in 200 shuffles & power falls & $14.86$ is slightly liberal; the gap is not a low threshold \\
+$\Psi=I$ & A & SEM $84,80,99$; ST$_3=98$ & $.89/.70/.87/.06$ & contradicts matrix (8) \\
+Entries used as SDs & A & power falls to $24,25,59$ & negative & not the covariance sentence \\
+Half contrast, $0/1$ & A & power falls to $11,9,23$ & negative & the sentence says $+1$ and $-1$ \\
+F2 or backcross & A & power falls & negative & the sentence says RIL \\
+Oracle genotype & A & SEM $65,64,94$; ST$_3=95$ & $.46/.85/.80/.94$ & not the flanking expectation \\
+QTLs on markers & A & SEM $72,73,96$ & $.84/.97/.85/.22$ & contradicts $22,42,78$ \\
+No cofactors & A & ST$_2$ rises to $66$ & $.59/.65/.70$ and ST$_2$ breaks & contradicts the cofactor sentence \\
+$n=250$ & B & SEM $82,77,99$; $Y_2$ powers $31,38,32$ & $1.00/.73/.76/.56$ & matches QTL2, not QTL1 \\
+$n=300$ & B & SEM $89,85,100$ & overshoots QTL2 & above Table 1 \\
+Chi-square, QTLs controlled & B & powers $81,77,100$ at $n=150$ & QTL2 matches & not the marker-cofactor scan \\
+\hline
+\end{tabular}
+\end{table}
+
+No choice the simulation paragraph leaves open closes the QTL2 gap. The
+infinite-RIL formula is the one printed in the 2008 conference note, and
+Kosambi is unnamed in SAGMB; together they move QTL2 from $53.5$ to $54.2$.
+The no-double-crossover expectation in that note, and an F2 expectation
+applied to RIL data, stay inside the seed range of the baseline. A
+$95\%$ permutation threshold is $16.1$, and the median of $40$ per-replicate
+thresholds, each the maximum of $19$ null scans, is $16.9$. Both are above
+$14.86$, so a permutation rule makes the powers smaller ($43.5$, $44.2$,
+$82.0$ at $16.1$). Replacing $14.86$ by the $\alpha=0.05$ quantile $9.49$
+raises the baseline to $84.7$, $82.6$ and $98.5$, which is not the printed
+critical value. Standardizing the traits, scanning every $2$ or $5$~cM, and
+shifting the eleven markers off the ends do not close QTL2. The $\pm 1$ and
+$0/2$ codes have the same homozygote contrast, so they have the same
+likelihood ratio; a $0/1$ code with the printed $G$ halves that contrast and
+the power collapses. \ev{our own simulation}
+
+The printed $77$ is consistent with two calculations that are not the
+printed marker scan. With the three QTL genotypes in each structural
+equation, the noncentral chi-square approximation at $n=150$ and threshold
+$14.86$ gives joint powers $81\%$, $77\%$ and $100\%$. The partial
+single-trait power for QTL3 on $Y_1$ is $99.7\%$, and for QTL2 on $Y_1$ it
+is $0.1\%$. The same approximation at $n=250$ and $n=300$ is above $97\%$
+for every QTL. \ev{our own calculation}
+The marker-cofactor scan at $250$ lines, the sample size of Mi et al.\
+Genetics Research (2010), gives SEM powers $81.6$, $77.1$ and $98.7$,
+single-trait $Y_1$ powers $3.2$, $2.2$ and $99.0$, and single-trait $Y_2$
+powers $31$, $38$ and $32$ against the printed $29$, $43$ and $33$. QTL2's
+SEM cell matches. QTL1's SEM cell is $82$ against $64$. At $300$ lines, the
+sample size of the 2008 conference note, the three-QTL scan is $89.3$,
+$85.0$ and $99.9$, above Table 1. \ev{our own simulation}
+
+Those companion designs are not Table 1. Genetics Research simulates $250$
+lines and two QTLs, at $42$ and $78$~cM, with codes $2$ and $0$, and the
+detection rule is a posterior peak rather than the likelihood-ratio
+threshold. Its Table 2 powers are $99$ and $100$. Equation~(15) and Figure~2
+of that paper print the same path signs as the glyph reading, $1/2$, $1/4$
+and $-1/2$, and the same rounded QTL2 row $-0.435$ and $0.065$.
+\ev{taken from a cited source}
+The conference note simulates $300$ lines and one QTL at $42$~cM, names
+Haldane's map and the expansion $2r/(1+2r)$, and uses codes $2$ and $0$.
+Its power counts were not in the text layer we could read. Neither table is
+a relabeling of SAGMB Table 1. \ev{taken from a cited source, with that limit}
+
+Table 2's QTL2 row prints $-0.435$ and $0.065$ where the path product is
+$-7/16=-0.4375$ and $1/16=0.0625$. The same printed decimals appear in the
+Genetics Research table. \ev{source discrepancy (our reading)}
+On a complete recursive model the multi-trait SEM and multi-trait LS
+likelihood ratios are the same number, and in every run here their powers
+agree. Table 1 prints SEM powers $7$, $8$ and $2$ points above the LS
+powers, while the text says the two profiles are very close.
+\ev{source discrepancy (our reading)}
+Figure 2 is described as one simulated population and does not print a
+numeric likelihood-ratio scale, so the power counts cannot be read off the
+figure.
+
+The best account is that no open choice in the simulation paragraph
+produces Table 1, and that the cell $77$ is consistent both with the
+chi-square power of these direct effects at $150$ lines when the other QTL
+genotypes are controlled and with the marker scan at $250$ lines. Both of
+those readings put the first QTL near $80\%$ rather than at the printed
+$64\%$. The single-trait QTL2 cell, $3$ against our $1.2$, is consistent
+with the algebraic total effect of zero.
+
 \section{Correlated residuals}
 
 The bow drops the edge into trait~0 from trait~2, sets that structural
@@ -498,8 +609,10 @@ The Drton--Foygel--Sullivant criterion is not a theorem of this repository.
 The delta method is not a Lean central limit theorem. The glyph reading of
 equation~(7) meets Table~2's parameter block up to the two rounded QTL2
 entries. It leaves the SEM powers for QTL2 and QTL3, and about eleven points
-of the single-trait QTL3 power, short of Table~1. Those leftovers are not
-Monte Carlo error at $1000$ replicates. Twelve
+of the single-trait QTL3 power, short of Table~1. A second block tested
+the choices the simulation paragraph does not pin down. None of them
+closes the QTL2 gap. A $250$-line scan matches that one cell and misses
+the first QTL. Those leftovers are not Monte Carlo error at $1000$ replicates. Twelve
 generations of selfing, Haldane's map, the marker placement, and the
 detection windows are our assumptions. The 2021 Hidalgo-Contreras wheat SEM
 is a different experiment.

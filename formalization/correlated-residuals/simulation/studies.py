@@ -306,6 +306,7 @@ def _scan_position(y, qtl_reg, cof, threshold_joint):
         "total_ls": total_ls,
         "total_st": total_st,
         "paths": paths,
+        "lr_eq": n * (np.log(psi_r) - np.log(psi_u)),
     }
 
 
