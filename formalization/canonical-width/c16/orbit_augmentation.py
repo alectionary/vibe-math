@@ -16,15 +16,11 @@ def add_augmentation_constraints(model, flows, X, Z):
     az=[augmentation(Z[16*b]) for b in range(45)]
     assert all(augmentation(X[16*a+h]) == ax[a] for a in range(45) for h in range(16))
     assert all(augmentation(Z[16*b+h]) == az[b] for b in range(45) for h in range(16))
-    odd=[[model.new_bool_var(f'odd{a}_{b}') for b in range(45)] for a in range(45)]
-    for a in range(45):
-        for b in range(45):
-            half=model.new_int_var(0,8,f'half{a}_{b}')
-            model.add(flows[a][b] == 2*half+odd[a][b])
     equations=[]
     for u in range(8):
         for v in range(8):
-            terms=[odd[a][b] for a in range(45) for b in range(45) if (ax[a]>>u&1) and (az[b]>>v&1)]
-            model.add_bool_xor(terms+[True])  # XOR of the terms equals zero.
+            terms=[flows[a][b] for a in range(45) for b in range(45) if (ax[a]>>u&1) and (az[b]>>v&1)]
+            half=model.new_int_var(0,64,f'augmentation_half{u}_{v}')
+            model.add(sum(terms)==2*half)  # Total pair count is128.
             equations.append(len(terms))
     return equations
