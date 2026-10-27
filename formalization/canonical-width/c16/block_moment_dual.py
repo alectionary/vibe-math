@@ -9,7 +9,6 @@ from collections import defaultdict
 from itertools import product
 import argparse,json
 from flint import fmpq,arb,arb_mat,ctx
-from certify_moment_point import interval_pd
 from verify_inverse_lift import vp,outer,parts,cyclic,F
 
 def layout(N,P):
@@ -59,16 +58,18 @@ def patterns_from_source(source,block):
    z=sum((s^((s<<2)&((1<<32)-1)))<<(32*i) for i,s in enumerate(parts(z)))
  return patterns
 
-def verify(data,source,psd=True):
- return verify_patterns(data,patterns_from_source(source,data['block']),psd=psd)
+def verify(data,source,psd=True,rational_psd=None):
+ assert data['period']==16
+ return verify_patterns(data,patterns_from_source(source,data['block']),psd=psd,rational_psd=rational_psd)
 
-def verify_patterns(data,patterns,psd=True,extra_inequalities=()):
- P=data['period'];target=data['target'];assert patterns==data['patterns'];eq,ineq,(p,C,V)=source_constraints(patterns,P,target);ineq.update(extra_inequalities);N=len(p);den=data['denominator'];assert den>0;D={int(h):M for h,M in data['D'].items()};u=data['mean'];y00=data['constant'];assert len(u)==N
+def verify_patterns(data,patterns,psd=True,extra_inequalities=(),rational_psd=None):
+ P=data['period'];target=data['target'];assert patterns==data['patterns'];eq,ineq,(p,C,V)=source_constraints(patterns,P,target);ineq.update(extra_inequalities);N=len(p);den=data['denominator'];assert type(den) is int and den>0;D={int(h):M for h,M in data['D'].items()};u=data['mean'];y00=data['constant'];assert len(u)==N and type(y00) is int and all(type(v) is int for v in u)
+ assert all(type(v) is int for M in D.values() for r in M for v in r)
  for h in range(P//2+1,P):D[h]=list(map(list,zip(*D[P-h])))
  assert all(D[h][i][j]==D[(-h)%P][j][i] for h in range(P) for i,j in product(range(N),repeat=2))
  r=[0]*V;b=y00
  for term in data['linear_terms']:
-  kind=term['kind'];key=(tuple(map(tuple,term['coeff'])),term['rhs']);mult=term['multiplier'];assert key in (eq if kind=='eq' else ineq)
+  kind=term['kind'];assert kind in ['eq','ineq'];key=(tuple(map(tuple,term['coeff'])),term['rhs']);mult=term['multiplier'];assert type(mult) is int;assert key in (eq if kind=='eq' else ineq)
   if kind=='ineq':assert mult>=0
   for j,v in key[0]:r[j]+=v*mult
   b+=key[1]*mult
@@ -77,7 +78,11 @@ def verify_patterns(data,patterns,psd=True,extra_inequalities=()):
   for i,j in product(range(N),repeat=2):r[C[h][i][j]]-=P*D[h][i][j]
  lower=sum(min(0,v) for v in r);gap=b-lower;assert gap<0,(b,lower,gap)
  blocks=[]
- if psd:
+ if psd and rational_psd is not None:
+  from rational_cyclic_psd import verify as verify_rational_psd
+  blocks=verify_rational_psd(data,rational_psd)['PSD_blocks']
+ elif psd:
+  from certify_moment_point import interval_pd
   ctx.prec=256;G=[[arb(fmpq(y00,den)) if i==j==0 else arb(fmpq(4*u[j-1],den)) if i==0 else arb(fmpq(4*u[i-1],den)) if j==0 else arb(fmpq(sum(D[h][i-1][j-1] for h in range(P)),den)) for j in range(N+1)] for i in range(N+1)];blocks.append(interval_pd(arb_mat(G)))
   for k in range(1,P//2+1):
    real=[[arb(0) for _ in range(N)] for _ in range(N)];imag=[[arb(0) for _ in range(N)] for _ in range(N)]
@@ -85,8 +90,8 @@ def verify_patterns(data,patterns,psd=True,extra_inequalities=()):
     angle=arb.pi()*fmpq(k*h,8);c=angle.cos();s=angle.sin()
     for i,j in product(range(N),repeat=2):real[i][j]+=c*arb(fmpq(D[h][i][j],den));imag[i][j]+=s*arb(fmpq(D[h][i][j],den))
    M=real if k==P//2 else [real[i]+[-v for v in imag[i]] for i in range(N)]+[imag[i]+real[i] for i in range(N)];blocks.append(interval_pd(arb_mat(M)))
- return {'status':'PASS','evidence':'exact source inequalities, exact integer residual correction using0..1 bounds, and256-bit interval PSD','block':data.get('block'),'excluded_target_pairs':target,'moment_variables':V,'linear_terms':len(data['linear_terms']),'common_denominator':den,'b_dot_y_numerator':b,'box_residual_lower_numerator':lower,'strict_contradiction_gap_numerator':gap,'strict_contradiction_gap':str(fmpq(gap,den)),'PSD_blocks':blocks,'source_C16_answered':False}
+ return {'status':'PASS','evidence':'exact source inequalities, exact integer residual correction using0..1 bounds, and '+('integer rational PSD' if rational_psd is not None else '256-bit interval PSD'),'block':data.get('block'),'excluded_target_pairs':target,'moment_variables':V,'linear_terms':len(data['linear_terms']),'common_denominator':den,'b_dot_y_numerator':b,'box_residual_lower_numerator':lower,'strict_contradiction_gap_numerator':gap,'strict_contradiction_gap':str(fmpq(gap,den)),'PSD_blocks':blocks,'source_C16_answered':False}
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path);ap.add_argument('--source',type=Path,default=Path(__file__).parent/'inversion-results/normal-form.json');ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();r=verify(json.loads(a.certificate.read_text()),json.loads(a.source.read_text()));a.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r),flush=True)
+ ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path);ap.add_argument('--source',type=Path,default=Path(__file__).parent/'inversion-results/normal-form.json');ap.add_argument('--rational-psd',type=Path);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();from rational_cyclic_psd import read;r=verify(json.loads(a.certificate.read_text()),json.loads(a.source.read_text()),rational_psd=read(a.rational_psd) if a.rational_psd else None);a.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r),flush=True)
 if __name__=='__main__':main()
