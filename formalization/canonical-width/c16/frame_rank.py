@@ -27,7 +27,7 @@ def main():
     ap.add_argument('--exclude-orbits',nargs='*',type=int,default=[])
     ap.add_argument('--pool-directory',type=Path);ap.add_argument('--assume-frame',type=Path)
     ap.add_argument('--output',type=Path,required=True);ap.add_argument('--proof',action='store_true')
-    ap.add_argument('--basis-propagation',action='store_true');ap.add_argument('--cyclic-lemmas',action='store_true');ap.add_argument('--seed-lemmas',type=Path,nargs='*',default=[])
+    ap.add_argument('--propagation-library',type=Path);ap.add_argument('--native-library',type=Path);ap.add_argument('--opposite-units',action='store_true');ap.add_argument('--basis-propagation',action='store_true');ap.add_argument('--cyclic-lemmas',action='store_true');ap.add_argument('--seed-lemmas',type=Path,nargs='*',default=[])
     ap.add_argument('--child',action='store_true',help=argparse.SUPPRESS);args=ap.parse_args()
     if not args.child:
         p=subprocess.Popen([sys.executable,str(Path(__file__).resolve())]+sys.argv[1:]+['--child'])
@@ -73,10 +73,10 @@ def main():
     with cnf.open('w') as out:
         out.write(f'p cnf {top} {len(clauses)}\n')
         for c in clauses:out.write(' '.join(map(str,c))+' 0\n')
-    result={'status':'RUNNING','model':'rank_only','basis_propagation':args.basis_propagation,'variables':top,'clauses':len(clauses),
+    result={'status':'RUNNING','model':'rank_only','basis_propagation':args.basis_propagation,'opposite_units':args.opposite_units,'native_library':str(args.native_library) if args.native_library else None,'propagation_library':str(args.propagation_library) if args.propagation_library else None,'variables':top,'clauses':len(clauses),
             'phase':args.phase,'seed4_cap':args.seed4_cap,'fix_orbit':args.fix_orbit,'exclude_orbits':args.exclude_orbits}
     args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
-    oracle=RankOracle(X,Z,args.output.with_suffix('.lemmas.jsonl'),cyclic=args.cyclic_lemmas,basis_propagation=args.basis_propagation)
+    oracle=RankOracle(X,Z,args.output.with_suffix('.lemmas.jsonl'),cyclic=args.cyclic_lemmas,basis_propagation=args.basis_propagation,opposite_units=args.opposite_units,native_library=args.native_library,propagation_library=args.propagation_library)
     with Solver(name='cadical195',bootstrap_with=clauses,with_proof=args.proof) as solver:
         solver.connect_propagator(oracle)
         for i in range(1,n+1):solver.observe(i)
