@@ -285,3 +285,22 @@ that the missing theorem is true or quick.
 The canonical answer remains **16 or18**, best physical partial frame **88**,
 and completed Lean-target delta **0**. This block answers the requested first
 structural milestone, not the open question.
+
+
+## Preserved handoff, 2026-10-27 20:15:44 UTC
+
+The bounded structural pass concluded70minutes22seconds after its19:05:22UTC
+start, before the first review endpoint20:35:22UTC. No new experiment runs past
+the20:15 cutoff. Successful code/data and ordinary proofs are preserved on the
+inversion branch and in [PR17](https://github.com/alectionary/vibe-math/pull/17).
+The GitHub connector independently returned research snapshot
+`a59333233f9c4942c9a6e5ab1b858a94b41da480` with tree
+`23d1e891e71b48268589fb21622ceb7f506b895b`, matching the local tree.
+PR17 is OPEN, BLOCKED and REVIEW_REQUIRED; it has not been merged. No override
+was attempted. Issue8 remains open and unchanged, with zero comments.
+
+The canonical claim was released only after this preservation, using a lease
+against `d3c0bc0e6479a032ea2a1aae41c67fc96d9d8caf`; server matching-refs then
+returned an empty list. This session holds no claim. The final metadata commit
+records this handoff; all mathematical certificates remain those of the
+verified snapshot. [Structured handoff](inversion-results/handoff.json).
