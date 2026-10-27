@@ -422,3 +422,48 @@ This block ran from 08:44Z to about 08:52Z. The three consistency theorems were 
 ## Handoff
 
 Claim `refs/heads/claims/L-F102-correlated-residuals` was this session's reservation at `64f01d6b3b5b6da4a42c8edb183b3f802e717826` (session `c8f1c203-0ab7-4fd5-baca-667178087308`, start `2026-10-27T07:30:56Z`, issue #13, branch `cursor/l-f102-correlated-residuals-4c01`). It is released at this closeout by an expected-SHA delete. The work branch and draft PR #14 stay. No next block is reserved. The next action is the wheat-data fit described above, and it has no owner until someone holds those columns. Issue #13 was not closed and was not edited: earlier issue writes returned 403, and this environment's `gh` client is read-only. The handoff text for that issue is this section.
+
+## Block 2026-10-27T17:39Z: three simulation studies and the paper
+
+Follow-up `RQ-F102-simulation-studies`. Session `febd2771-c168-4e67-8ed4-277662d6eb85`. Claim commit `05d69ea141adf3d5ee936d3b48061bde241250dc` on `refs/heads/claims/L-F102-correlated-residuals`. The earlier claim `64f01d6` was already gone. This block did not change the Lean proofs.
+
+Answer contract: the printed simulation and Tables 1–2, plus one bow-free residual correlation, plus a calibration that uses Campbell et al. (2003) Table 2 as path values. Decisive evidence is `simulation/out/study1.json`, `study2.json`, `study3.json`, the CSV tables next to them, and `paper/paper.pdf`.
+
+The population is equations (7)–(8) with `B = -M`. Algebraic total effects under that sign do not match several parameter cells of Table 2, including the printed total effect 0.75 of QTL3 on Y1 against 0.25 from the display. The simulation follows the equation. Single-trait power for that cell is 13% here and 97% in Table 1. Multi-trait powers are 59, 61, and 86 against 64, 77, and 96. SEM and multivariate least squares have the same likelihood ratio on this complete recursive order (maximum absolute difference of the mean profiles `7e-14`).
+
+The bow drops the edge into trait 0 from trait 2. At residual correlation 0.25 the diagonal plug-in has probability limit 0.20 for that missing coefficient and rejects a zero-edge Wald test in 73% of 400 replicates. `recoverBow` covers the path and QTL coefficients near the nominal 95% rate. The Isserlis standard errors treat the `±1` genotypes as Gaussian. That is an assumption inside the standard error, checked by the coverage, not a Lean central limit theorem.
+
+Campbell Table 2 was read as correlations, not as a residual covariance. The direct PDF download returned HTTP 403, so there is no SHA-256 for that file. Signs that the prose states are used; the two cells the prose does not sign are an assumption. Copying equation (7)'s `G` onto that correlation scale makes the QTLs large. The third study is a realism check of the paths, not a replication of Table 1.
+
+Mi's 2009 dissertation was not consulted. No new inventory id was added. The Drton–Foygel–Sullivant characterization remains the harvested note from the previous block.
+
+### Time
+
+UTC start 17:39:24. The shared script and the three studies finished as one process in 22 seconds, before 18:01Z. The design reading and the script, which are mostly part 1, occupied the rest of that interval, including about eight minutes to install TeX. Part 2 is the 400-replicate bow sweep inside the same process. Part 3 is the correlation fit and its rerun, also inside that process. The paper, ledger, and PDF compile ran from 18:01Z to the commit of this block.
+
+### Requirement to evidence
+
+| Requirement | Status | Where |
+|---|---|---|
+| Mi's question, printed p. 18 | met | PDF, section "The question, as they pose it" |
+| Restriction and why | met | PDF, section "The restriction" |
+| Lean theorem names and bodies | met | PDF, "What we proved", and Appendix A, pinned to `05d69ea` |
+| Replication against Tables 1–2 | met | PDF, "Replication results"; `study1.json` |
+| Correlated-residual sweep | met | PDF, "Correlated residuals"; `study2.json` |
+| Campbell calibration, labeled as such | met | PDF, "Calibration"; `study3.json` |
+| Limitations, including wheat data, mixed graphs, Lean CLT | met | PDF, "Limitations" |
+| Reproducibility | met | PDF, "Reproducibility" |
+| JSON and tables | met | `simulation/out/*.json` and the three CSV files |
+| Sources ledger and hashes | partial | `SOURCES.md`. Mi and Brito–Pearl are hashed. Campbell and Hidalgo returned HTTP 403, so they have no hash. |
+| Evidence labels | met | italic labels in the PDF |
+| Citations checked, dissertation not used | met | `SOURCES.md` and the bibliography |
+| Draft branch only, no post outside the repo | met | PR #14; issue #13 was not edited, because the request forbade posts outside the repo |
+| `master` untouched | met | this branch only |
+
+## Closeout of the simulation block
+
+**Question answered:** On the equation-(7) pattern, the diagonal model and the three bow-free models are identified and the plug-ins are almost surely consistent (Lean theorems named above). The seeded replication does not reproduce Table 1's 97% or Table 2's indirect-effect signs, because those cells disagree with equations (7)–(8) under the printed minus (our own simulation, set next to the cited tables). The diagonal plug-in is biased and oversized once a bow-free residual correlation is present, and `recoverBow` recovers the coefficients at the delta-method coverage (our own simulation). The Campbell calibration is a path-value check on raw phenotypic correlations, not a wheat fit.
+
+**Question still open:** The parent request still needs the wheat residual matrix, the marker codes, and a printed edge set. The general mixed-graph characterization is not a theorem of this repository. The delta method is not a Lean central limit theorem. Issue #13 stays open.
+
+**Next proposed target (follow-up):** Fit `recoverBow` when the five wheat inputs listed in the previous block exist. A Lean central limit theorem for the second-moment matrix is a separate, larger development. No next block is reserved.

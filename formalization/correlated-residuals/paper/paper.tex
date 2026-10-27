@@ -1,0 +1,492 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage{listings,xcolor,hyperref}
+\setlength{\emergencystretch}{3em}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,
+  pdftitle={Correlated residuals in a three-trait QTL SEM},pdfauthor={}}
+\newcommand{\proofcommit}{05d69ea141adf3d5ee936d3b48061bde241250dc}
+\newcommand{\proofbase}{https://github.com/alectionary/vibe-math/blob/\proofcommit/formalization/correlated-residuals}
+\newcommand{\lean}[2]{\href{\proofbase/#1.lean\#L#2}{\texttt{#2}}}
+\lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true,
+  breaklines=true,showstringspaces=false,frame=single,framerule=.3pt,
+  literate={∀}{{$\forall$}}1 {∃}{{$\exists$}}1 {≠}{{$\ne$}}1 {≤}{{$\le$}}1
+  {≥}{{$\ge$}}1 {→}{{$\to$}}1 {←}{{$\leftarrow$}}1 {ℕ}{{$\mathbb{N}$}}1
+  {ℝ}{{$\mathbb{R}$}}1 {θ}{{$\theta$}}1 {μ}{{$\mu$}}1 {ω}{{$\omega$}}1
+  {φ}{{$\varphi$}}1 {γ}{{$\gamma$}}1
+  {Φ}{{$\Phi$}}1 {Ψ}{{$\Psi$}}1 {Γ}{{$\Gamma$}}1 {Σ}{{$\Sigma$}}1
+  {Ω}{{$\Omega$}}1 {∫}{{$\int$}}1 {∂}{{$\partial$}}1 {·}{{$\cdot$}}1
+  {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1
+  {ᵀ}{{$^{\mathsf{T}}$}}1 {ᵐ}{{$^{m}$}}1 {¹}{{$^{1}$}}1
+  {⁻}{{$^{-}$}}1 {₀}{{$_{0}$}}1 {₁}{{$_{1}$}}1 {₂}{{$_{2}$}}1 {₃}{{$_{3}$}}1
+  {∧}{{$\land$}}1 {∨}{{$\lor$}}1}
+
+\title{Correlated residuals in a three-trait QTL SEM:\\
+identification, a replication of Mi et al.\ (2010), and a bow-free estimator}
+\author{}
+\date{27 October 2026}
+
+\newcommand{\ev}[1]{\textup{\emph{(#1)}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Mi, Eskridge, Wang, Baenziger, Campbell, Gill, Dweikat, and Bovaird asked, in
+the discussion of their 2010 QTL structural-equation paper, whether trait
+residuals can be correlated after environment and block effects have been
+removed. On the three-trait pattern printed in their equations~(7)--(8), a
+diagonal residual matrix is globally identified, each single residual
+covariance on that pattern collides, and each of the three bow-free patterns
+is a left inverse of the covariance. Those statements are Lean proofs. This
+paper then runs three seeded simulations. The replication of their RIL
+experiment recovers the ordering of their multi-trait powers and the direct
+QTL coefficients, and it does not reproduce their single-trait power for the
+third QTL on the first trait. That discrepancy sits next to an arithmetic
+disagreement between equation~(7) and several cells of their Table~2. A
+bow-free Monte Carlo shows that the diagonal plug-in invents a direct edge
+and biases two QTL coefficients, while \texttt{recoverBow} covers the path
+and QTL coefficients at the delta-method rate. A third run replaces the path
+coefficients by a fit to three phenotypic correlations from Campbell et
+al.\ (2003). It is a realism check on raw correlations, not a replication and
+not a fit to the wheat sample.
+\end{abstract}
+
+\section*{Question, source, and answer}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.22\textwidth}p{0.72\textwidth}@{}}
+\toprule
+Question & Can the trait residuals in the Mi et al.\ (2010) QTL SEM be correlated after environment and block effects are removed? Printed page 18 (PDF page 20). \\
+Source & Mi et al., SAGMB 9 (2010), article 38. The request is not a numbered conjecture. \\
+Answer on the printed pattern & On equation (7), diagonal residuals are a left inverse of the covariance. Each single residual covariance collides. Each bow-free missing-edge pattern is a left inverse, and the plug-in is almost surely consistent. Theorems \lean{CorrelatedResiduals/Diagonal}{246}, \lean{CorrelatedResiduals/Collision}{114}, \lean{CorrelatedResiduals/BowFree}{187}, and \lean{CorrelatedResiduals/BowConsistency}{270}. \\
+What the simulations add & A seeded replication, the bias and size distortion of the diagonal fit, and coverage of \texttt{recoverBow}. These are sampled experiments, not Lean proofs. \\
+Still open & A fit to the wheat measurements, the general mixed-graph characterization, and a Lean central limit theorem. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The manuscript date 27 October 2026 is an internal date. It is not an external publication date. Elapsed times below are measured to that date. A year-only source is reported as a range.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.28\textwidth}p{0.22\textwidth}p{0.22\textwidth}p{0.20\textwidth}@{}}
+\toprule
+Source & Earliest date used & Inspected version & Elapsed to 27 Oct 2026 \\
+\midrule
+Brito and Pearl, bow-free identification & 2002 (year) & SEM 9, 459--474 & 23--24 years \\
+Campbell et al., chromosome 3A QTLs & 2003 (year) & Crop Sci.\ 43, 1493--1505 & 22--23 years \\
+Li et al., structural QTL model & 21 July 2006 & PLoS Genet.\ 2, e114 & 20 years, 3 months, 6 days \\
+Mi et al., the source question & 2010 (year) & SAGMB 9, article 38 & 15 years 10 months to 16 years 10 months \\
+Valente et al., recursive search & June 2010 (month) & Genetics 185, 633--644 & 16 years, 4 months (month precision) \\
+Drton, Foygel, and Sullivant & arXiv 4 Mar 2010; online 13 May 2011 & Ann.\ Statist.\ 39, 865--886 & 15 years, 5 months, 14 days from the journal date \\
+Foygel, Draisma, and Drton, half-trek & arXiv 27 July 2011; online 3 Oct 2012 & Ann.\ Statist.\ 40, 1682--1713 & 14 years, 24 days from the journal date \\
+Hidalgo-Contreras et al. & 28 September 2021 & Agronomy 11, 1953 & 5 years, 29 days \\
+This manuscript & 27 October 2026 & internal manuscript date & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The question, as they pose it}
+
+The source is Mi et al., Statistical Applications in Genetics and Molecular
+Biology~9 (2010), article~38. On printed page~18 (PDF page~20) they write:
+\begin{quote}
+Here, we assumed that the residual errors of the traits were independent
+which we believe is a reasonable assumption since we removed the effects of
+environment by using, for the $y$ values in equation~(2), the residuals from
+a main effects linear model with environment and block within environment as
+the main effects. However, even after removing environment main effects, the
+traits may still be correlated and the trait error terms can be modeled as
+being correlated with each other.
+\end{quote}
+\ev{taken from a cited source}
+The parent request is that extension. It is not a numbered conjecture. Mi's
+2009 dissertation (ProQuest AAI3350451) is the obvious place a fuller design
+might have been written. It is restricted to a ProQuest preview. It was not
+consulted.
+
+\section{The restriction}
+
+Equation~(7) is the only fully printed structural pattern. With the sign
+convention of that display, $y=-My+Gx+\varepsilon$, the matrices on PDF
+page~10 are
+\[
+M=\begin{pmatrix}0&1/2&1/4\\0&0&1/2\\0&0&0\end{pmatrix},\qquad
+G=\begin{pmatrix}1/8&1/4&1/2\\1/2&1/2&1/2\\1/4&1/8&1/4\end{pmatrix},
+\]
+and equation~(8) is $\Psi=\mathrm{diag}(1.6,1.8,2.5)$.
+\ev{taken from a cited source}
+In the regression form $y=By+Gx+\varepsilon$ one has $B=-M$.
+\ev{our assumption, read off the printed minus}
+The wheat Figure~5 graph has four traits and is not this matrix. The
+restriction is covariance identification for this three-trait recursive
+pattern: diagonal $\Psi$, one extra residual covariance, and the three ways
+to drop one edge and free the residual pair that edge had used. Singular
+$\Psi$ is outside the claim. The general mixed-graph characterization is not
+this restriction.
+
+\section{What we proved}
+
+The following are Lean proofs on the positive-definite domain. The axioms are
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}. There is
+no \texttt{sorry}. \ev{our own Lean proof}
+\begin{itemize}
+\item \texttt{recover\_sigma}: diagonal residuals and positive-definite $\Phi$
+are a left inverse of the joint covariance on the equation-(7) support.
+\item \texttt{bow12\_same\_law} and its two siblings: each one-edge residual
+extension collides, for every exogenous $\Gamma$.
+\item \texttt{recover\_bow}, \texttt{recover\_bow01}, \texttt{recover\_bow23}:
+each bow-free missing-edge pattern is a left inverse.
+\item \texttt{unitUpper\_factor\_unique} and \texttt{sigmaRec\_injective}:
+in every trait and covariate dimension, a recursive pattern with positive
+diagonal residuals has a unique unitriangular factorization, and the joint
+blocks determine $(B,\Psi,\Gamma,\Phi)$.
+\item \texttt{plug\_in\_consistent\_ae} and the three bow-free analogues
+\texttt{plug\_in\_bow\_consistent\_ae},
+\texttt{plug\_in\_bow01\_consistent\_ae},
+\texttt{plug\_in\_bow23\_consistent\_ae}: pairwise i.i.d.\ samples with
+integrable coordinate products make those plug-ins almost surely consistent.
+\end{itemize}
+The Gaussian delta-method formula for the diagonal plug-in is a written
+derivative together with Isserlis' covariance, checked numerically in
+\texttt{delta\_method.py}. \ev{our own written proof, and our own simulation}
+It is not a Lean central limit theorem, and it is not listed among the proved results.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}p{0.24\textwidth}p{0.34\textwidth}p{0.36\textwidth}@{}}
+\toprule
+Statement & Lean declaration & File and lines \\
+\midrule
+Diagonal left inverse & \texttt{recover\_sigma} & \href{\proofbase/CorrelatedResiduals/Diagonal.lean\#L246-L279}{\texttt{Diagonal.lean}, 246--279} \\
+One-edge collision & \texttt{bow12\_same\_law} and two siblings & \href{\proofbase/CorrelatedResiduals/Collision.lean\#L114-L160}{\texttt{Collision.lean}, 114--160} \\
+Bow-free left inverse & \texttt{recover\_bow} & \href{\proofbase/CorrelatedResiduals/BowFree.lean\#L187-L213}{\texttt{BowFree.lean}, 187--213} \\
+Other missing edges & \texttt{recover\_bow01}, \texttt{recover\_bow23} & \href{\proofbase/CorrelatedResiduals/BowMissing.lean\#L148}{\texttt{BowMissing.lean}, 148 and 353} \\
+Triangular factor & \texttt{unitUpper\_factor\_unique} & \href{\proofbase/CorrelatedResiduals/Triangular.lean\#L68-L135}{\texttt{Triangular.lean}, 68--135} \\
+Recursive identification & \texttt{sigmaRec\_injective} & \href{\proofbase/CorrelatedResiduals/Triangular.lean\#L298-L317}{\texttt{Triangular.lean}, 298--317} \\
+Almost-sure consistency & \texttt{plug\_in\_consistent\_ae} and \texttt{plug\_in\_bow\_consistent\_ae} & \href{\proofbase/CorrelatedResiduals/Law.lean\#L174-L199}{\texttt{Law.lean}, 174--199}; \href{\proofbase/CorrelatedResiduals/BowConsistency.lean\#L270-L304}{\texttt{BowConsistency.lean}, 270--304} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The links are pinned to commit \texttt{\proofcommit}, which contains these Lean files. The simulation script and this PDF are later commits on the same branch; their paths are in the reproducibility section. Appendix~\ref{app:lean} prints the central proof bodies.
+
+Brito and Pearl (Structural Equation Modeling, 2002) prove that a recursive
+linear model is identifiable when no residual covariance joins a variable to
+its direct effect. Our three bow-free left inverses are the three-trait case
+of that pattern, proved from the printed matrices rather than cited as a
+substitute for the algebra. Drton, Foygel, and Sullivant (Annals of
+Statistics, 2011) give a global criterion for mixed graphs; the half-trek
+criterion of Foygel, Draisma, and Drton (Annals of Statistics, 2012) is a
+generic sufficient condition. Neither is re-proved here, and the 2011
+characterization stays a note with no inventory id. Li et al.\ (PLoS
+Genetics, 2006) and Valente, Rosa, de los Campos, Gianola, and Silva
+(Genetics, 2010) are earlier structural and recursive treatments of multiple
+traits. Hidalgo-Contreras, Salinas-Ruiz, Eskridge, and Baenziger (Agronomy,
+2021) fit a later Nebraska wheat SEM; their lines are a 2013 F6 panel, not
+the 1999--2001 RICLs, and none of their estimates enter the simulations.
+
+\section{Replication design}
+
+The printed design, PDF pages~9--10, is 100 replicates of 150 RIL lines, one
+chromosome of 100~cM, 11 evenly spaced markers, additive QTLs at 22, 42, and
+78~cM, phenotypes from equations~(7)--(8), and a test every 1~cM. QTL
+genotypes are coded $+1$ and $-1$. Cofactors are all markers except the
+flanking markers. The printed critical values are 14.86 and 10.60.
+\ev{taken from a cited source}
+Those two numbers are the chi-square $0.005$ quantiles on 4 and 2 degrees of
+freedom ($14.860$ and $10.597$). The same paragraph also says the likelihood
+ratio has $p$ degrees of freedom for $p$ traits. We compare with the printed
+numbers. \ev{our own calculation of the printed thresholds}
+
+The paper does not state the following, so each is our assumption.
+\ev{our assumption}
+\begin{enumerate}
+\item The map function is Haldane, with no interference.
+\item An RIL is an F1 selfed for 12 generations. A leftover heterozygote is
+coded $\pm 1$ with equal probability. There is no segregation distortion.
+\item The eleven markers are at $0,10,\ldots,100$~cM.
+\item The analysis uses the centered covariance with divisor $n$, which is
+the fitting function~(6). We did not run SAS PROC TCALIS.
+\item The flanking expectation is the conditional mean of the QTL genotype
+under that same 12-generation law. The 10~cM window mentioned later in the
+paper is for the wheat scan, not for this simulation, and was not used.
+\item A named QTL is detected when the maximum likelihood ratio in
+$[0,32]$, $(32,60]$, or $(60,100]$ exceeds the threshold. Effects are read
+at that argmax.
+\end{enumerate}
+Seeds are \texttt{20101027} for this study. The outputs are
+\texttt{study1.json}, \texttt{study1\_power.csv}, and
+\texttt{study1\_effects.csv} under \texttt{simulation/out}.
+
+For a complete recursive order, the Gaussian likelihood of the diagonal
+structural model equals the likelihood of the multivariate regression on the
+same exogenous regressors: the sum of the successive residual log variances
+is the log determinant of the residual covariance. The two joint likelihood
+ratios are therefore the same number. In the run, the maximum absolute
+difference of the two mean profiles is $7\times 10^{-14}$.
+\ev{our own written proof, confirmed by our own simulation}
+Mi et al.\ describe the two profiles as very close (PDF page~14). Their
+Table~1 powers still differ by 7, 8, and 2 replicates out of 100.
+
+\section{Replication results}
+
+Table~\ref{tab:power} compares detection percentages. Our multi-trait powers
+keep the printed order, third QTL above the first two, and they sit 5 to 16
+points below Table~1. The single-trait column for the first trait at the
+first QTL matches Table~1 exactly (6\%). The single-trait column for the
+first trait at the third QTL does not: Table~1 prints 97\% and the
+replication gives 13\%.
+
+\begin{table}[ht]
+\centering
+\caption{Detection percentages. ``Mi'' is Table~1 on PDF page~12. ``Ours''
+is 100 replicates, seed \texttt{20101027}. SEM and LS coincide in our run.}
+\label{tab:power}
+\begin{tabular}{crrrrrr}
+\hline
+QTL & SEM Mi & SEM ours & LS Mi & ST $Y_1$ Mi & ST $Y_1$ ours & ST overall ours \\
+\hline
+1 & 64 & 59 & 57 & 6 & 6 & 24 \\
+2 & 77 & 61 & 69 & 3 & 0 & 35 \\
+3 & 96 & 86 & 94 & 97 & 13 & 34 \\
+\hline
+\end{tabular}
+\end{table}
+
+The algebraic total effects under $B=-M$ are, by columns of $G$,
+\[
+(I+M)^{-1}G
+=\begin{pmatrix}-1/8&0&1/4\\ 3/8&7/16&3/8\\ 1/4&1/8&1/4\end{pmatrix}.
+\]
+\ev{our own calculation}
+Table~2's parameter block matches this matrix on $Y_2$ and $Y_3$ for the
+first and third QTLs, and it does not match it on $Y_1$. The printed total
+effect of the third QTL on $Y_1$ is $0.75$, against $0.25$ from the display.
+A regression of $Y_1$ on the true third QTL genotype, with no cofactors, has
+power about $0.10$ at the threshold $10.60$ when the total effect is $0.25$
+($200$ further replicates, same generator). The printed 97\% is the power of
+a substantially larger effect. We did not find a sign convention that matches
+both the minus in equation~(7) and every parameter cell in Table~2. The
+simulation follows the equation.
+
+Direct-effect means at the SEM argmax are close to $G$ where the signal is
+large. For the third QTL they are $0.460$ ($0.175$), $0.476$ ($0.179$), and
+$0.242$ ($0.190$), against the printed SEM estimates $0.479$ ($0.176$),
+$0.527$ ($0.166$), and $0.257$ ($0.205$) and against $G=(1/2,1/2,1/4)$.
+\ev{our own simulation, set next to a cited source}
+Position means are $22.65$ ($7.28$), $41.26$ ($5.25$), and $79.85$ ($3.76$),
+against the printed $21.57$ ($2.83$), $41.95$ ($2.58$), and $78.03$ ($2.16$).
+The biases are small. Our standard deviations are larger. The mean profile
+exceeds $14.86$ only at 40~cM and on 75--82~cM. Figure~2 is described as one
+simulated population, with excursions on 16--28, 38--48, and 70--88~cM. An
+average profile is a different object, and ours is lower.
+
+\section{Correlated residuals}
+
+The bow drops the edge into trait~0 from trait~2, sets that structural
+coefficient to zero, and frees the residual covariance $c=\rho\sqrt{1.6\cdot 2.5}$.
+The other equation-(7) coefficients stay. The exogenous variables are the
+three QTL genotypes on the RIL map, not a marker scan.
+\ev{our assumption, matching \texttt{recoverBow}}
+The sample is the centered second-moment matrix, $n=150$, $400$ replicates,
+seed \texttt{20101028}.
+
+At the population covariance the bow plug-in recovers the parameter to
+machine precision. The diagonal plug-in does not. Its probability limit for
+the missing edge is $0.8\rho$: zero at $\rho=0$, $0.20$ at $\rho=0.25$, and
+$0.48$ at $\rho=0.6$. The QTL coefficient $G_{11}=1/8$ has probability limit
+$0.075$ at $\rho=0.25$ and $0.005$ at $\rho=0.6$. The coefficient $G_{13}=1/2$
+moves to $0.45$ and $0.38$. \ev{our own simulation}
+A Wald test that the missing edge is zero, using the diagonal delta-method
+standard error, rejects at rate $0.058$ when $\rho=0$ and at rate $0.728$,
+$0.877$, and $1$ at $\rho=0.25$, $0.30$, and $0.60$. The joint nine-degree
+Wald test of all QTL coefficients is only mildly inflated at $\rho=0.25$
+(rejection rate $0.065$) and reaches $0.297$ at $\rho=0.6$. The damage shows
+up first as bias in two coefficients and as a spurious edge, not as an
+immediate explosion of the joint QTL test.
+
+\texttt{recoverBow} is centered on the QTL and path coefficients. At
+$\rho=0.25$ the Monte Carlo means of $b_{12}$, $b_{23}$, $G_{11}$, and
+$G_{13}$ are $-0.507$, $-0.498$, $0.127$, and $0.509$. Coverage of the
+nominal 95\% delta-method intervals, with the Gaussian Isserlis covariance
+plugged into the sample, is between $0.915$ and $0.958$ across the reported
+coefficients and the six correlations. The genotypes are $\pm 1$, so
+Isserlis is an approximation. \ev{our assumption inside the standard error}
+The coverage near 95\% says the approximation is tolerable at $n=150$ for
+these coefficients. Variance-component means sit a little low ($1.54$ against
+$1.6$ at $\rho=0$) because the likelihood uses divisor $n$; the probability
+limit is still the population value.
+
+\section{Calibration to three phenotypic correlations}
+
+Campbell et al., Crop Science~43 (2003), Table~2, print phenotypic
+correlations for 95 recombinant inbred chromosome lines pooled across seven
+environments. There are no standard deviations and no environment or block
+adjustment. \ev{taken from a cited source, with the limits just stated}
+The text layer of the copy we could read dropped minus signs. The paragraph
+above the table says that SPSM and kernels per square meter were negatively
+correlated with thousand-kernel weight. We therefore use
+$\mathrm{Corr}(\mathrm{TKWT},\mathrm{SPSM})=-0.44$. The cells
+$\mathrm{Corr}(\mathrm{TKWT},\mathrm{KPS})=0.08$ and
+$\mathrm{Corr}(\mathrm{KPS},\mathrm{SPSM})=0.59$ are the signs in that text
+layer; the prose does not restate them. \ev{our assumption for those two signs}
+GYLD is the fourth trait in the application and is not in equation~(7). The
+three-trait order is $Y_1=\mathrm{TKWT}$, $Y_2=\mathrm{KPS}$,
+$Y_3=\mathrm{SPSM}$, which is the chain used in the indirect-effect
+arithmetic on PDF page~17 of Mi et al. \ev{our assumption}
+
+Treating the correlation matrix as a covariance, the diagonal recursive
+factorization is
+\[
+B=\begin{pmatrix}0&0.521&-0.747\\0&0&0.590\\0&0&0\end{pmatrix},\qquad
+\Psi=\mathrm{diag}(0.629,0.652,1).
+\]
+\ev{our own calculation}
+The eigenvalues of the correlation are $0.224$, $1.077$, and $1.699$, so
+this sign choice is positive definite. Naive Gaussian standard errors that
+pretend the matrix is a sample correlation of 95 i.i.d.\ lines are about
+$0.10$ for the two coefficients in the first equation and $0.084$ for
+$0.590$. Campbell pooled seven environments, so those standard errors are not
+his sampling variances. The point fit does not depend on $N$.
+
+The scan of Section~5 was rerun with this $B$ and $\Psi$ and with $G$ copied
+from equation~(7). Seed \texttt{20101029}, 100 replicates. Those QTL
+coefficients were not estimated from the correlations, and on this residual
+scale they are large: multi-trait power is 100\%, 96\%, and 100\%. That is a
+consequence of the scale mixture, not evidence that the 2003 correlations
+produce Mi's powers. \ev{our own simulation, under an assumption we flag}
+The bow check at $\rho=0.25$ (seed \texttt{20101030}) again gives a diagonal
+probability limit $0.198$ for the missing edge and a rejection rate $0.74$,
+with bow coverage $0.935$ for the residual covariance.
+
+\section{Limitations}
+
+The wheat fit is still blocked. It needs the 98 line identifiers, the ANOVA
+residuals of grain yield, thousand-kernel weight, kernels per spike, and
+spikes per square meter, the $\pm 1$ QTL and cofactor codes, the divisor-$n$
+sample covariance, and the edge set as a matrix. Figure~5 draws arrows and
+does not print that matrix. Campbell's Table~2 does not substitute for any
+of those columns.
+
+The Drton--Foygel--Sullivant criterion is not a theorem of this repository.
+The delta method is not a Lean central limit theorem. The replication does
+not reproduce Table~1's 97\% or Table~2's indirect-effect signs, because
+those cells disagree with equations~(7)--(8) under the printed minus. Twelve
+generations of selfing, Haldane's map, the marker placement, and the
+detection windows are our assumptions. The 2021 Hidalgo-Contreras wheat SEM
+is a different experiment.
+
+\section{Reproducibility}
+
+From \texttt{formalization/correlated-residuals/simulation},
+\begin{verbatim}
+python3 studies.py --reps 100 --bow-reps 400 --studies 1,2,3
+\end{verbatim}
+writes \texttt{out/study1.json}, \texttt{out/study2.json}, and
+\texttt{out/study3.json}. The CSV tables are built from those files. Lean
+proofs are built with Lean~4.22.0 and Mathlib~v4.22.0 by \texttt{lake build}
+in \texttt{formalization/correlated-residuals}. This PDF is produced by
+\texttt{pdflatex paper.tex} in \texttt{paper/}. The sources ledger is
+\texttt{SOURCES.md}.
+
+\appendix
+\section{Central Lean proofs}
+\label{app:lean}
+
+The diagonal model reads the structural coefficients from the Schur complement
+$\Omega=\Sigma_{yy}-\Sigma_{yx}\Sigma_{xx}^{-1}\Sigma_{yx}^{\mathsf T}$, then
+recovers $\Gamma=(I-B)\Sigma_{yx}\Sigma_{xx}^{-1}$ and $\Phi=\Sigma_{xx}$.
+The bow-free model drops the edge into the first trait from the third and
+reads the residual covariance $c$ from the same complement. The collision
+proofs exhibit, for an arbitrary exogenous coefficient, a second parameter
+point with the same joint blocks. Consistency is continuous mapping of those
+left inverses, composed with the strong law for the sample Gram matrix.
+The listings below are the theorem bodies. Their lemmas live in the linked files.
+
+\medskip
+\noindent\texttt{recover\_sigma}, \texttt{Diagonal.lean}, lines 246--279.
+\lstinputlisting[firstline=246,lastline=279]{../CorrelatedResiduals/Diagonal.lean}
+
+\medskip
+\noindent\texttt{recover\_bow}, \texttt{BowFree.lean}, lines 187--213.
+\lstinputlisting[firstline=187,lastline=213]{../CorrelatedResiduals/BowFree.lean}
+
+\medskip
+\noindent\texttt{bow12\_same\_law} in \texttt{Collision.lean}, lines 114--128.
+The siblings \texttt{bow13\_same\_law} and \texttt{bow23\_same\_law} repeat
+the argument on the other two pairs, lines 130--160.
+\lstinputlisting[firstline=114,lastline=128]{../CorrelatedResiduals/Collision.lean}
+
+\medskip
+\noindent\texttt{unitUpper\_factor\_unique}, \texttt{Triangular.lean}, lines 68--135.
+\lstinputlisting[firstline=68,lastline=135]{../CorrelatedResiduals/Triangular.lean}
+
+\medskip
+\noindent\texttt{sigmaRec\_injective}, \texttt{Triangular.lean}, lines 298--317.
+\lstinputlisting[firstline=298,lastline=317]{../CorrelatedResiduals/Triangular.lean}
+
+\medskip
+\noindent\texttt{plug\_in\_consistent\_ae}, \texttt{Law.lean}, lines 174--199.
+\lstinputlisting[firstline=174,lastline=199]{../CorrelatedResiduals/Law.lean}
+
+\medskip
+\noindent\texttt{plug\_in\_bow\_consistent\_ae}, \texttt{BowConsistency.lean}, lines 270--304.
+\lstinputlisting[firstline=270,lastline=304]{../CorrelatedResiduals/BowConsistency.lean}
+
+\begin{thebibliography}{9}
+\bibitem{brito2002}
+C.~Brito and J.~Pearl.
+A new identification condition for recursive models with correlated errors.
+\emph{Structural Equation Modeling} 9 (2002), 459--474.
+
+\bibitem{campbell2003}
+B.~T.~Campbell, P.~S.~Baenziger, K.~S.~Gill, K.~M.~Eskridge, H.~Budak,
+M.~Erayman, and Y.~Yen.
+Identification of QTLs and environmental interactions associated with
+agronomic traits on chromosome 3A of wheat.
+\emph{Crop Science} 43 (2003), 1493--1505.
+
+\bibitem{drton2011}
+M.~Drton, R.~Foygel, and S.~Sullivant.
+Global identifiability of linear structural equation models.
+\emph{Annals of Statistics} 39 (2011), 865--886.
+
+\bibitem{foygel2012}
+R.~Foygel, J.~Draisma, and M.~Drton.
+Half-trek criterion for generic identifiability of linear structural
+equation models.
+\emph{Annals of Statistics} 40 (2012), 1682--1713.
+
+\bibitem{hidalgo2021}
+J.~V.~Hidalgo-Contreras, J.~Salinas-Ruiz, K.~M.~Eskridge, and
+S.~P.~Baenziger.
+Incorporating molecular markers and causal structure among traits using a
+Smith--Hazel index and structural equation models.
+\emph{Agronomy} 11 (2021), 1953.
+
+\bibitem{li2006}
+R.~Li, S.-W.~Tsaih, K.~Shockley, I.~M.~Stylianou, J.~Wergedal, B.~Paigen,
+and G.~A.~Churchill.
+Structural model analysis of multiple quantitative traits.
+\emph{PLoS Genetics} 2 (2006), e114.
+
+\bibitem{mi2010}
+X.~Mi, K.~Eskridge, D.~Wang, P.~S.~Baenziger, B.~T.~Campbell, K.~S.~Gill,
+I.~Dweikat, and J.~Bovaird.
+Regression-based multi-trait QTL mapping using a structural equation model.
+\emph{Statistical Applications in Genetics and Molecular Biology} 9 (2010),
+article~38.
+
+\bibitem{valente2010}
+B.~D.~Valente, G.~J.~M.~Rosa, G.~de los Campos, D.~Gianola, and M.~A.~Silva.
+Searching for Recursive Causal Structures in Multivariate Quantitative
+Genetics Mixed Models.
+\emph{Genetics} 185 (2010), 633--644.
+\end{thebibliography}
+
+\end{document}
