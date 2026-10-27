@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 353 entries (172 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 27, 2026. Low-confidence planning priors for all 353 entries (172 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -4932,15 +4932,15 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-The source two-point gap is still open. A checked 88-pair partial frame and the seed-4 monomial obstructions for 13 through 16 monomials are not a difficulty assessment. The unfinished 12-monomial search is not one either.
+The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Finish the 12-monomial quotient, including the 100 capped assignments, or extend an obstruction to every dual basis.
+First milestone: Decide the complete twelve-monomial case with all allowed partners, or produce a global compatibility obstruction. Finishing only the old capped list is insufficient.
 
-Progress: Explicit 88-pair weight-16 partial CSS frame checked. No width-16 CSS frame contains 13 or more seed-4 X monomials. The 12-monomial rank scan is done and 33 of 116 orbits are impossible; 100 assignments are capped and 35 orbits are unfinished. Unrestricted width still 16 or 18. [Checked artifact](../formalization/canonical-width/c16/INVESTIGATION.md).
+Progress: 88-pair partial frame and width-18 upper frame checked. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. [Checked artifact](../formalization/canonical-width/c16/TAKEOVER.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
-Basis: 2026-10-26 block checked a width-16 partial frame, ruled out CSS frames with 13 or more seed-4 X monomials, left the 12-monomial quotient unfinished, and left f in {16, 18}. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: 2026-10-27 takeover repaired the partner domain and checked the physical-coordinate bridge. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Effort remains unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 

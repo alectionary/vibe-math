@@ -1329,7 +1329,9 @@ Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. 
 
 - Record type: software repository; access: cloned and enumerator executed.
 - Inspected locator: LPQ6 inputs and verification/regular_pairing enumerator through weight 17.
-- Contribution: Released operator lists and enumerator for the Proposition 9 code C^LP_16,9. Fresh execution reproduced 45 orbits.
+- Contribution: Released operator lists and enumerator for the Proposition 9 code C^LP_16,9. Fresh execution reproduced 45 orbits. The 2026-10-27 takeover independently bound all physical pool operators to saved coordinates and checked the width-18 frame.
 - Comparison limit: This is the author's program, not an independent enumerator. Completeness still uses the source Appendix A argument. The repository leaves unrestricted width-16 existence unresolved. No new author-posed inventory question is taken from the repository text.
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/prior-art.json).
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/takeover-prior-art.json).
