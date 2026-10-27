@@ -528,3 +528,32 @@ UTC start 18:49:33. The 1000-replicate grid finished at about 19:01. The paper u
 **Question still open:** Why Table 1's first SEM power is 64 while the two readings that produce 77 for QTL2 both put that first power near 80. The wheat residual fit, the mixed-graph characterization, and a Lean central limit theorem are unchanged.
 
 **Next proposed target (follow-up):** The wheat-data fit, once the residual matrix, marker codes, and edge set exist. No next block is reserved.
+
+## Block 2026-10-27T19:08Z: QTL1 joint power
+
+Follow-up `RQ-F102-qtl1-power`. Session `a1525409-6da7-4f1d-bc45-91b23f068223`. Claim commit `02283df7ef0a9a3a656e4a89bcb84b122dbc0af5`.
+
+Equation (7) was measured again. The four minuses are G11, M23, G22, and G32. Table 1's SEM digits are 6, 4, then 77, then 96. Seeded scans are in `simulation/out/qtl1/`.
+
+The smallest squared error against 64, 77, 96 is 26, from QTL1 at 24 cM and 250 lines: SEM 65.2, 73.3, 99.3. That position and sample size are not the simulation sentence. The chi-square for those three cells is 16.4, mostly because a 99.3% rate makes a printed 96 unlikely (lower tail about 0.006). The text-consistent baseline remains 51, 54, 86. A df-3 threshold gives 63, 65, 93 and is not the printed 14.86. One peak per chromosome gives 16, 14, 65; the printed powers sum to 237.
+
+### Time
+
+UTC start 19:08:25. The scans finished at about 19:20. The paper update followed.
+
+### Requirement to evidence
+
+| Requirement | Status | Where |
+|---|---|---|
+| Family A seeded at n=1000, glyphs remeasured | met | `out/qtl1/glyphs.json`, the JSON scans |
+| Family B counting rules and cofactor procedures | met | baseline profile post-processing and stepwise/twostage JSON |
+| Family C transposition, replicate noise, companion numbers | met | PDF digits; binomial probability; the ranked table |
+| Graded language, no author-error claim | met | PDF section "A joint reading of 64, 77 and 96" |
+
+## Closeout of the QTL1 block
+
+**Question answered:** No tested reading that the simulation paragraph states produces 64, 77, and 96 together. The closest percentage triple is 65, 73, 99, at 24 cM and 250 lines, and its third cell is still high relative to 96.
+
+**Question still open:** A design stated in the simulation paragraph whose three SEM powers are jointly near 64, 77, and 96. The wheat fit, the mixed-graph characterization, and a Lean central limit theorem are unchanged.
+
+**Next proposed target (follow-up):** The wheat-data fit, once the residual matrix, the marker codes, and a printed edge set exist. No next block is reserved.
