@@ -26,7 +26,10 @@ PORTRAIT = [
     (44, "Table 2.2", "table22.png", (8, 4, 520, 150)),
     (44, "(2.4)", "eq24.png", (20, 36, 400, 28)),
     (89, "0.70", "population.png", (12, 8, 400, 80)),
+    (90, "fixed to one", "marker.png", (175, 28, 300, 70)),
     (91, "(3.3)", "eq33.png", (8, 6, 400, 80)),
+    (109, "Table 4.5", "table45.png", (20, 8, 450, 530)),
+    (116, "data-generated", "generated_contrasts.png", (310, 20, 180, 80)),
 ]
 LANDSCAPE = [
     (104, "table41.png", (70, 250, 730, 445)),
