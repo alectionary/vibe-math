@@ -1,0 +1,63 @@
+MODEL_BUILT {"status": "RUNNING", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 16, "orbit_types": 45, "target_pairs": 128, "control": null, "solver": "SCS", "iterations_limit": 3000, "model_seconds": 0.008457041985820979}
+(CVXPY) Oct 27 10:44:13 AM: Your problem has 72990 variables, 535325 constraints, and 0 parameters.
+(CVXPY) Oct 27 10:44:13 AM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 27 10:44:13 AM: DCP verification time: 0.0034 seconds.
+(CVXPY) Oct 27 10:44:13 AM: Expression tree has 12 nodes.
+(CVXPY) Oct 27 10:44:13 AM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 27 10:44:13 AM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 27 10:44:13 AM: Your problem is compiled with the CPP canonicalization backend.
+(CVXPY) Oct 27 10:44:13 AM: Compiling problem (target solver=SCS).
+(CVXPY) Oct 27 10:44:13 AM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> ExactCone2Cone -> EliminateZeroSized -> ConeMatrixStuffing -> SCS
+(CVXPY) Oct 27 10:44:13 AM: Applying reduction Dcp2Cone
+(CVXPY) Oct 27 10:44:13 AM: Applying reduction CvxAttr2Constr
+(CVXPY) Oct 27 10:44:13 AM: Applying reduction ExactCone2Cone
+(CVXPY) Oct 27 10:44:13 AM: Applying reduction EliminateZeroSized
+(CVXPY) Oct 27 10:44:13 AM: Applying reduction ConeMatrixStuffing
+(CVXPY) Oct 27 10:44:15 AM: Applying reduction SCS
+(CVXPY) Oct 27 10:44:15 AM: Finished problem compilation (took 1.351e+00 seconds).
+(CVXPY) Oct 27 10:44:15 AM: Invoking solver SCS  to obtain a solution.
+(CVXPY) Oct 27 10:44:26 AM: Problem status: optimal
+(CVXPY) Oct 27 10:44:26 AM: Optimal value: 0.000e+00
+(CVXPY) Oct 27 10:44:26 AM: Compilation took 1.351e+00 seconds
+(CVXPY) Oct 27 10:44:26 AM: Solver (including time spent in interface) took 1.081e+01 seconds
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 64980, constraints m: 414455
+cones: 	  z: primal zero / dual free vars: 362
+	  l: linear vars: 291782
+	  s: psd vars: 122311, ssize: 9
+settings: eps_abs: 1.0e-05, eps_rel: 1.0e-05, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 3000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 2.95e+02
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 2547868, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 1.34e+02  4.28e+02  6.00e+03 -3.00e+03  1.00e-01  1.16e+00 
+   225| 1.13e-04  3.03e-06  1.14e-08 -5.72e-09  1.41e-05  1.08e+01 
+------------------------------------------------------------------
+status:  solved
+timings: total: 1.08e+01s = setup: 1.08e+00s + solve: 9.73e+00s
+	 lin-sys: 1.14e+00s, cones: 8.11e+00s, accel: 1.81e-01s
+------------------------------------------------------------------
+objective = -0.000000
+------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+{"status": "optimal", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 16, "orbit_types": 45, "target_pairs": 128, "control": null, "solver": "SCS", "iterations_limit": 3000, "model_seconds": 0.008457041985820979, "total_seconds": 12.187352957960684, "solver_seconds": 9.725832875, "solver_iterations": 225, "independent_numeric_check": {"linear_max_error": 8.685765051377597e-05, "errors": {"diagonal": 1.604938368315878e-08, "cardinality": 8.812406804281636e-09, "cardinality_products": 1.4382333546336667e-08, "selected_degrees": 2.463115628126289e-09, "pair_bounds": 8.685765051377597e-05, "transpose": 0.0, "monomial_cap": 0.0}, "minimum_frequency_eigenvalues": [-1.9383653345732983e-06, -7.399335891649428e-07, -2.523209313874212e-06, -7.876726423585574e-07, -7.432736630704147e-07, -1.0437618772290677e-06, -2.3091628322085053e-06, -1.2443602344786798e-06, -9.793745269025206e-07], "PSD_min_eigenvalue": -2.523209313874212e-06, "evidence": "floating-point residual check; no exact certificate"}}

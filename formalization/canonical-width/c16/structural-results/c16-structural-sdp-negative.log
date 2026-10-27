@@ -1,0 +1,63 @@
+MODEL_BUILT {"status": "RUNNING", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 2, "orbit_types": 2, "target_pairs": 2, "control": "negative", "solver": "SCS", "iterations_limit": 3000, "model_seconds": 0.0015390830230899155}
+(CVXPY) Oct 27 10:42:15 AM: Your problem has 36 variables, 195 constraints, and 0 parameters.
+(CVXPY) Oct 27 10:42:15 AM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 27 10:42:15 AM: DCP verification time: 0.0008 seconds.
+(CVXPY) Oct 27 10:42:15 AM: Expression tree has 12 nodes.
+(CVXPY) Oct 27 10:42:15 AM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 27 10:42:15 AM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 27 10:42:15 AM: Your problem is compiled with the CPP canonicalization backend.
+(CVXPY) Oct 27 10:42:15 AM: Compiling problem (target solver=SCS).
+(CVXPY) Oct 27 10:42:15 AM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> ExactCone2Cone -> EliminateZeroSized -> ConeMatrixStuffing -> SCS
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction Dcp2Cone
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction CvxAttr2Constr
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction ExactCone2Cone
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction EliminateZeroSized
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction ConeMatrixStuffing
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction SCS
+(CVXPY) Oct 27 10:42:15 AM: Finished problem compilation (took 1.155e-02 seconds).
+(CVXPY) Oct 27 10:42:15 AM: Invoking solver SCS  to obtain a solution.
+(CVXPY) Oct 27 10:42:15 AM: Problem status: infeasible
+(CVXPY) Oct 27 10:42:15 AM: Optimal value: inf
+(CVXPY) Oct 27 10:42:15 AM: Compilation took 1.155e-02 seconds
+(CVXPY) Oct 27 10:42:15 AM: Solver (including time spent in interface) took 3.333e-03 seconds
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 24, constraints m: 179
+cones: 	  z: primal zero / dual free vars: 18
+	  l: linear vars: 136
+	  s: psd vars: 25, ssize: 2
+settings: eps_abs: 1.0e-05, eps_rel: 1.0e-05, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 3000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 5.50e+01
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 372, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 1.53e+00  5.53e-01  9.47e+01  4.73e+01  1.00e-01  2.88e-03 
+    50| 3.99e+03  4.82e+03  8.00e+18  4.00e+18  1.00e-01  3.24e-03 
+------------------------------------------------------------------
+status:  infeasible
+timings: total: 3.24e-03s = setup: 1.09e-03s + solve: 2.15e-03s
+	 lin-sys: 5.82e-05s, cones: 2.05e-03s, accel: 3.99e-06s
+------------------------------------------------------------------
+objective = inf
+------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+{"status": "infeasible", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 2, "orbit_types": 2, "target_pairs": 2, "control": "negative", "solver": "SCS", "iterations_limit": 3000, "model_seconds": 0.0015390830230899155, "total_seconds": 0.01989854098064825, "solver_seconds": 0.0021539579999999997, "solver_iterations": 50}

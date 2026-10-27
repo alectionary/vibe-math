@@ -195,3 +195,23 @@ completed with stated scope or left as an explicit access gap at closeout.
 The [portable access guide](.agents/skills/open-question-research/references/research-access.md)
 describes setup on another machine and keeps installation, authentication and
 permission changes separate from routine research.
+
+### Certify the strength of a relaxation before extending its search
+
+The October27 C16 comparison produced an exact rational feasible point for the
+basic degree-two cyclic moment SDP, with independent source-pool equation replay
+and interval-checked positive semidefiniteness. This proves that this particular
+relaxation cannot exclude a128-pair frame. It does not construct such a frame.
+Separately, a checked UNSAT proof excluded quarter-turn invariant full frames;
+no theorem lets us impose that invariance on every possible frame.
+
+Average moments over a symmetry group when the necessary constraints allow it;
+keep the distinction from requiring a symmetric combinatorial solution. Use
+small literal controls and a known physical witness to check new constraints.
+If a numerical relaxation appears feasible, attempt exact reconstruction before
+calling its weakness established. Here, retaining the full matrix scaling while
+projecting out forced cardinality null directions changed a stalled numerical
+run into a quickly certifiable point. Local Hall pruning removed15.6% of phase
+choices in a conditional benchmark, but did not establish a global search speedup.
+These are bounded method results, while the original width question stays open.
+[Models, certificates and comparison scope](formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md).
