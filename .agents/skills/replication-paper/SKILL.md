@@ -1,6 +1,6 @@
 ---
 name: replication-paper
-description: "Replicate a published result and write the replication note and pull request. Use for the comparison table, page crops, graded claims, availability audit, and a pull request a reader can follow without the paper. A theorem-only writeup stays with open-question-research."
+description: "Replicate a published result and write the replication note and pull request. Use for the comparison table, page crops, graded claims, availability audit, author pronouns, and a pull request a reader can follow without the paper. A theorem-only writeup stays with open-question-research."
 ---
 
 # Replication paper
@@ -36,6 +36,14 @@ found.
 - Use plain words. Define a term the first time it appears.
 - Do not use internal shorthand. Write "measuring sign positions on the page",
   not "glyph reading". File names stay as paths.
+
+## Author pronouns
+
+Formal text refers to an author by surname. Where a sentence needs a pronoun,
+follow [author pronouns](references/author-pronouns.md). The lookup is WGND 2.0
+for the author's country of origin. A gendered pronoun requires a weight of at
+least 0.9 and a source count of at least 30. A pronoun the author states is
+the one the note uses.
 
 ## What we did, and what we took from others
 
@@ -177,6 +185,8 @@ acquisition or help issue when one is open.
 - [ ] The pull request can be followed without opening the PDF.
 - [ ] No language-model authorship statement appears in the note or the pull
       request.
+- [ ] An author is referred to by surname. A pronoun from a given name follows
+      [author pronouns](references/author-pronouns.md) and cites WGND 2.0.
 
 When editing this skill, validate its frontmatter with the `skill-creator`
 skill's `scripts/quick_validate.py`, using a Python that has PyYAML.
