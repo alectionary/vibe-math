@@ -28,8 +28,13 @@ def model(patterns,P,target,cap=None,maximize_margin=False,shape_inputs=None,fix
     for h in range(P//2+1):constraints.extend([C[h]>=0,C[h]<=rows,C[h]<=cols,C[h]>=rows+cols-1])
     G0=cp.bmat([[np.ones((1,1)),cp.reshape(mean,(1,N),order='C')],[cp.reshape(mean,(N,1),order='C'),B0]])
     margin=cp.Variable(name='margin') if maximize_margin else fixed_margin
-    if maximize_margin or fixed_margin:
-        if maximize_margin:constraints.extend([margin>=0,margin<=1])
+    if fixed_margin and not maximize_margin:
+        # Keep the full scaling while allowing the two forced null directions.
+        U=np.zeros((N+1,2));U[0,:]=-target/math.sqrt(P);U[1:m+1,0]=1;U[m+1:,1]=1
+        projection=np.eye(N+1)-U@np.linalg.inv(U.T@U)@U.T
+        constraints.append(G0-margin*projection>>0)
+    elif maximize_margin:
+        constraints.extend([margin>=0,margin<=1])
         # Exact cardinality identities already force two null vectors. Remove
         # one coordinate in each sector before asking for a strict PSD margin.
         keep=[i for i in range(N+1) if i not in [m,N]]
@@ -99,11 +104,35 @@ def moments_from_masks(masks,P):
     return p,C
 
 
+def verify_shape_marginals(patterns,p,C,distribution,folder):
+    """Replay the shape inequalities without CVXPY expressions."""
+    masks=list(map(int,(folder/'masks.txt').read_text().split()))
+    profiles={r['pattern']:r for r in json.loads((folder/'profiles.json').read_text())}
+    canonical=lambda f:min(((f<<h)|(f>>(16-h)))&65535 for h in range(16))
+    errors=[max(0,float(-distribution.min())),float(np.max(abs(distribution.sum(axis=1)-1))),float(np.max(abs(distribution@np.array([v.bit_count()/16 for v in masks])-p)))]
+    for h in range(1,9):
+        autocorrelation=np.array([sum(((v>>i)&1)*((v>>((i+h)%16))&1) for i in range(16))/16 for v in masks])
+        errors.append(float(np.max(abs(distribution@autocorrelation-np.diag(C[h])))))
+    flow=np.array([[16*sum(C[h][a,45+b] for h in range(16) if patterns[a][b]>>h&1) for b in range(45)] for a in range(45)])
+    for side in range(2):
+        for a in range(45):
+            groups={}
+            for b in range(45):
+                f=canonical(patterns[a][b]);groups.setdefault(f,[]).append(b)
+                e=flow[a,b] if side==0 else flow[b,a];mass=distribution[45*side+a]
+                errors.extend([e-float(mass@profiles[f]['owners']),16*p[45*(1-side)+b]-e-float(mass@profiles[f]['zero'])])
+            for f,bins in groups.items():
+                if len(bins)>1 and f.bit_count()>1:
+                    e=sum(flow[a,b] if side==0 else flow[b,a] for b in bins)
+                    errors.append(e-float(distribution[45*side+a]@profiles[f]['owners']))
+    return {'maximum_residual':max(0,max(errors)),'evidence':'independent floating-point replay, not an exact certificate'}
+
+
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--mapping',type=Path);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=300);ap.add_argument('--iterations',type=int,default=3000);ap.add_argument('--control',choices=['positive','negative']);ap.add_argument('--maximize-margin',action='store_true');ap.add_argument('--shape-inputs',type=Path);ap.add_argument('--fixed-margin',type=float,default=0);ap.add_argument('--eps',type=float,default=1e-5);ap.add_argument('--canonical-dump',action='store_true');ap.add_argument('--child',action='store_true',help=argparse.SUPPRESS);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--mapping',type=Path);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=300);ap.add_argument('--iterations',type=int,default=3000);ap.add_argument('--control',choices=['positive','negative']);ap.add_argument('--maximize-margin',action='store_true');ap.add_argument('--shape-inputs',type=Path);ap.add_argument('--fixed-margin',type=float,default=0);ap.add_argument('--eps',type=float,default=1e-5);ap.add_argument('--canonical-dump',action='store_true');ap.add_argument('--indirect',action='store_true');ap.add_argument('--child',action='store_true',help=argparse.SUPPRESS);args=ap.parse_args()
     if not args.child:
         child=subprocess.Popen([sys.executable,str(Path(__file__).resolve())]+sys.argv[1:]+['--child']);expired=False
-        try:child.wait(timeout=args.seconds)
+        try:child.wait(timeout=args.seconds+10)
         except subprocess.TimeoutExpired:
             expired=True;child.terminate()
             try:child.wait(timeout=3)
@@ -119,12 +148,15 @@ def main():
     problem,p,C=model(patterns,P,target,cap,args.maximize_margin,args.shape_inputs,args.fixed_margin)
     if args.control=='positive':
         known_p,known_C=moments_from_masks([15,0,0,15,0,0],4);check=verify_moments(patterns,P,target,known_p,known_C);assert check['linear_max_error']<1e-12 and check['PSD_min_eigenvalue']>-1e-10;result['explicit_positive_moment_check']=check
+    # Compilation can dominate the shape model; include it in the wall budget.
+    problem.get_problem_data(cp.SCS)
     result['model_seconds']=time.monotonic()-start;args.output.write_text(json.dumps(result,indent=2)+'\n');print('MODEL_BUILT',json.dumps(result),flush=True)
-    problem.solve(solver='SCS',eps=args.eps,max_iters=args.iterations,time_limit_secs=max(1,args.seconds-result['model_seconds']-5),verbose=True)
+    problem.solve(solver='SCS',use_indirect=args.indirect,eps=args.eps,max_iters=args.iterations,time_limit_secs=max(1,args.seconds-result['model_seconds']-5),verbose=True)
     result.update(status=str(problem.status),total_seconds=time.monotonic()-start,solver_seconds=problem.solver_stats.solve_time,solver_iterations=problem.solver_stats.num_iters,maximize_margin=args.maximize_margin,objective=problem.value)
     if p.value is not None:
         values={h:np.asarray(C[h].value) for h in range(P)};result['independent_numeric_check']=verify_moments(patterns,P,target,np.asarray(p.value),values,cap)
         extra={v.name():v.value for v in problem.variables() if v.name()=='shape_distribution'}
+        if extra:result['independent_shape_check']=verify_shape_marginals(patterns,np.asarray(p.value),values,extra['shape_distribution'],args.shape_inputs)
         np.savez_compressed(args.output.with_suffix('.moments.npz'),first=p.value,**{f'C{h}':v for h,v in values.items()},**extra)
         if args.canonical_dump:
             from scipy.sparse import save_npz
