@@ -145,7 +145,9 @@ seed \texttt{20101101}, and 1000 replicates.
 \begin{table}[ht]
 \centering
 \caption{Published claims and our calculations. Powers are percentages for
-the three loci, in order. Signs are those printed in equation~(7).}
+the three loci, in order. Signs are those printed in equation~(7).
+A 600-dpi rendering of the same pages prints these numbers
+(Section~\ref{sec:ink}).}
 \label{tab:compare}
 \small
 \begin{tabular}{@{}p{0.26\textwidth}p{0.20\textwidth}p{0.22\textwidth}p{0.22\textwidth}@{}}
@@ -284,9 +286,10 @@ matrix is not a reading of it.
 
 This section answers whether the minus signs in equation~(7) are ambiguous
 in print. They are not. Each minus is an ordinary unary sign against one
-entry. The printed signs reproduce Table~2's $0.75$ and remove most of the
-single-trait gap on the third locus. They do not produce the SEM powers in
-Table~1.
+entry. The text layer of the same page is a different matter: it separates
+those signs from the entries. The printed signs reproduce Table~2's $0.75$
+and remove most of the single-trait gap on the third locus. They do not
+produce the SEM powers in Table~1.
 
 \subsection{The sign in front of \(M\)}
 
@@ -325,13 +328,14 @@ equation at $112$--$520$ by $100$--$162$ points from the top of the page.
 The PDF is not in the repository. The copy used here has SHA-256
 \sha{27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81}.
 
-Our first reading was an extraction error. The text layer stores each minus
-as a private-use character, not as a hyphen, and in one place it returns a
-plus and the following minus as a single token. A program that saw one
-leading minus and unsigned magnitudes therefore disagreed with the ink.
-Character boxes confirm the same attachment the figure shows: the equals
-sign ends at $x=145.9$ points, the parenthesis of $M$ starts at $x=148.1$,
-and the four minuses end at $x=250.7$, $194.5$, $316.7$, and $316.7$.
+Our first reading was an extraction error.
+Section~\ref{sec:textlayer} shows the characters the text layer actually
+stores, and the row a text extractor returns once those signs have been
+detached. A program that saw one leading minus and unsigned magnitudes
+therefore disagreed with the ink. Character boxes confirm the same
+attachment the figure shows: the equals sign ends at $x=145.9$ points, the
+parenthesis of $M$ starts at $x=148.1$, and the four minuses end at
+$x=250.7$, $194.5$, $316.7$, and $316.7$.
 \ev{comparison of the text layer with the rendered page}
 The box check is
 \begin{quote}\noindent
@@ -375,6 +379,139 @@ $86.1$, not $64$, $77$, and $96$. The single-trait power for the third
 locus on the first trait is $86.2\%$ at $1000$ replicates, against the
 printed $97$.
 
+\subsection{The text layer on the same page}
+\label{sec:textlayer}
+
+Figure~\ref{fig:eq7} is unambiguous to a person looking at the page. The
+extracted text is not. The screenshot is the evidence for the signs. The
+text layer is evidence only for how an automated reader can be misled.
+
+\texttt{pdftotext -raw -f 10 -l 10} returns the two matrices as three
+numeric rows, with the signs removed:
+\begin{verbatim}
+0 0.5 0.25 0.125 0.25 0.5
+0 0 0.5 0.5 0.5 0.5
+0 0 0 0.25 0.125 0.25
+\end{verbatim}
+The middle line is the second row of $M$ followed by the second row of $G$.
+Both of its minuses are gone. The four minus codes are emitted on other
+lines. One of those lines is the operator string: an equals sign, a minus,
+two pluses, a minus, and two pluses.
+
+The coordinate reading keeps the private-use minus and matches the box.
+These are the constants and the box filter in
+\texttt{simulation/measure\_glyphs.py}:
+\begin{lstlisting}
+MINUS = "\uf02d"
+EQUALS = "\uf03d"
+LPAREN = "\uf0e6"
+    minuses = [
+        b
+        for b in boxes
+        if b["c"] == MINUS and 100 < b["y0"] < 160 and b["x0"] < 420
+    ]
+\end{lstlisting}
+Each of those four boxes ends on the first digit of one entry, which is
+what Figure~\ref{fig:eq7minuses} shows.
+
+Table~\ref{tab:pua} is every private-use character on page~10, plus the two
+Greek letters on that page. Counts are character boxes, not a search of
+the extracted prose. The minus, the plus, and the equals are Symbol-font
+slots \texttt{0x2D}, \texttt{0x2B}, and \texttt{0x3D}, stored in the
+private use area at \texttt{U+F000} plus that slot. The parenthesis and
+bracket pieces are the same shift of Symbol slots \texttt{0xE6} through
+\texttt{0xFB}. Psi and chi on this page are Times New Roman, not Symbol.
+Thirteen ASCII hyphens (\texttt{U+002D}), twelve of them in Times New Roman
+and one in Times, are ordinary text hyphens and are not the four equation
+minuses. Two ASCII equals signs in Times New Roman are likewise separate
+from the two Symbol equals signs.
+
+\begin{longtable}{@{}p{0.15\textwidth}p{0.24\textwidth}p{0.08\textwidth}p{0.20\textwidth}p{0.22\textwidth}@{}}
+\caption{Special characters on page~10 of Man850. The glyph column names
+the Symbol or Greek character. The font is the embedded name with the
+subset prefix removed.}
+\label{tab:pua}\\
+\toprule
+Codepoint & Glyph & Count & Font & Meaning \\
+\midrule
+\endfirsthead
+\toprule
+Codepoint & Glyph & Count & Font & Meaning \\
+\midrule
+\endhead
+\texttt{U+F02D} & minus & 4 & SymbolMT & Symbol \texttt{0x2D} \\
+\texttt{U+F02B} & plus & 4 & SymbolMT & Symbol \texttt{0x2B} \\
+\texttt{U+F03D} & equals & 2 & SymbolMT & Symbol \texttt{0x3D} \\
+\texttt{U+F065} & epsilon & 3 & SymbolMT & Symbol \texttt{0x65} \\
+\texttt{U+F0E6} & parenthesis, top left & 2 & SymbolMT & Symbol \texttt{0xE6} \\
+\texttt{U+F0E7} & parenthesis, extender, left & 6 & SymbolMT & Symbol \texttt{0xE7} \\
+\texttt{U+F0E8} & parenthesis, bottom left & 2 & SymbolMT & Symbol \texttt{0xE8} \\
+\texttt{U+F0F6} & parenthesis, top right & 2 & SymbolMT & Symbol \texttt{0xF6} \\
+\texttt{U+F0F7} & parenthesis, extender, right & 6 & SymbolMT & Symbol \texttt{0xF7} \\
+\texttt{U+F0F8} & parenthesis, bottom right & 2 & SymbolMT & Symbol \texttt{0xF8} \\
+\texttt{U+F0E9} & bracket, top left & 6 & SymbolMT & Symbol \texttt{0xE9} \\
+\texttt{U+F0EA} & bracket, extender, left & 18 & SymbolMT & Symbol \texttt{0xEA} \\
+\texttt{U+F0EB} & bracket, bottom left & 6 & SymbolMT & Symbol \texttt{0xEB} \\
+\texttt{U+F0F9} & bracket, top right & 6 & SymbolMT & Symbol \texttt{0xF9} \\
+\texttt{U+F0FA} & bracket, extender, right & 18 & SymbolMT & Symbol \texttt{0xFA} \\
+\texttt{U+F0FB} & bracket, bottom right & 6 & SymbolMT & Symbol \texttt{0xFB} \\
+\texttt{U+03A8} & Psi & 1 &
+{\raggedright\ttfamily TimesNewRomanPS-\allowbreak BoldMT} & not Symbol \\
+\texttt{U+03C7} & chi & 2 &
+{\raggedright\ttfamily TimesNewRoman\allowbreak PSMT} & not Symbol \\
+\bottomrule
+\end{longtable}
+
+Page~10's equation fonts are a Symbol subset and Times New Roman.
+\texttt{pdffonts -f 10 -l 10} lists \texttt{DPICPE+SymbolMT} as a CID
+TrueType font, encoding Identity-H, embedded and subsetted, beside
+\texttt{DPICJO+TimesNewRomanPSMT} in the same form, and the rest of the
+Times New Roman family. \texttt{pdfinfo} reports Creator Appligent
+AppendPDFPro~4.3, Producer SPDF, and CreationDate 19~October 2010.
+The clear text of the file does not contain the byte strings
+\texttt{MathType}, \texttt{DSMT}, \texttt{MT Extra}, \texttt{MT-Extra},
+\texttt{Equation}, \texttt{MTEF}, or \texttt{Cambria}. The decoded font
+resources do contain \texttt{DPIDAF+MT-Extra}, a CID TrueType subset.
+That font is used on pages~5, 6, and~9, and not on page~10. Cambria Math
+is not in the file. Computer Modern symbol fonts (\texttt{CMSY7},
+\texttt{CMSY8}, \texttt{CMSY10}) and Nimbus Roman appear on other pages
+and not on page~10.
+\ev{taken from the PDF font dictionaries and the character boxes}
+
+The page-10 equation is the Symbol-and-Times construction, with large
+brackets built from Symbol slots \texttt{0xE6}--\texttt{0xFB}. That
+delimiter map is the one published for the Symbol font, where
+\texttt{0xE6}--\texttt{0xE8} are the left parenthesis, \texttt{0xE9}--\texttt{0xEB}
+the left bracket, and \texttt{0xF6}--\texttt{0xFB} the matching right-hand
+pieces
+(\url{https://www-archive.mozilla.org/projects/mathml/fonts/encoding/}).
+Equation Editor~3.0 and MathType share the MTEF version~3 format, in which
+one typeface is Symbol and another is MT Extra
+(\url{https://rtf2latex2e.sourceforge.net/MTEF3.html}).
+Microsoft distributes MT Extra as the font Equation Editor~3.0 needs
+(\url{https://www.microsoft.com/en-us/download/details.aspx?id=56828}),
+so an MT Extra subset does not by itself select MathType. MathType's own
+MT Extra has 145 glyphs, against 43 in the font shipped with word
+processors
+(\url{https://docs.wiris.com/en_US/editing-formatting-equations/mathtype-requires-a-newer-version-of-mt-extra-warning-message}).
+This file uses five MT Extra characters. Four of them sit at slots
+\texttt{0x4B}, \texttt{0x4C}, \texttt{0x4D}, and \texttt{0x4F}, the
+ellipsis positions in that encoding
+(\url{https://www-archive.mozilla.org/projects/mathml/fonts/encoding/mtextra}).
+The fifth is slot \texttt{0x29}. Word~2007's own equation editor stores
+equations as OMML and sets them in Cambria Math
+(\url{https://learn.microsoft.com/en-us/archive/blogs/murrays/officemath}).
+
+The fonts are consistent with Microsoft Equation Editor~3.0. They are also
+consistent with MathType for an equation that uses only Symbol and Times.
+Page~10 does not use MT Extra, the clear text has no MathType or DSMT name,
+and the MT Extra glyphs that do appear are in the older ellipsis range.
+A compressed PDF can hide a product name, and an equation can avoid
+MT Extra, so those facts do not rule MathType out. They do rule out the
+Word~2007 OMML editor: Cambria Math is absent, and the brackets are Symbol
+pieces rather than a single math-font glyph.
+\ev{a graded reading of the font subset, not a record from the authors}
+
 \subsection{Table~2, including \(0.75\)}
 
 The position reading matches Table~2's total effect of $0.75$. Two other
@@ -415,11 +552,12 @@ $97$. \ev{our own simulation}
 The 2008 conference counts are a different experiment, so they do not
 relabel Table~1. The 2008 conference paper, DOI \texttt{10.4148/2475-7772.1095}, SHA-256
 \sha{ab2cc7ddc94025609cdaa83a6353b22dcdbb4693fedf2b70df71f5fc8aa1452a},
-is a different design: $300$ lines and one QTL at $42$~cM. Its Table~2 text
-layer gives multi-trait SEM overall power $91$, multi-trait least-squares
+is a different design: $300$ lines and one QTL at $42$~cM. Its Table~2
+gives multi-trait SEM overall power $91$, multi-trait least-squares
 overall power $90$, and single-trait powers $2$, $39$, $4$, and overall
-$42$. Trait-specific cells of the two multi-trait rows were not in the text
-layer. Those counts are not a relabelling of SAGMB Table~1. The file is
+$42$. The rendered table leaves the trait cells of the two multi-trait
+rows empty (Figure~\ref{fig:c2008}), so the text layer did not drop them.
+Those counts are not a relabelling of SAGMB Table~1. The file is
 recorded in \texttt{SOURCES.md}. Our three-QTL scan at $300$ lines, which is
 not the conference design, gave SEM powers $89.3$, $85.0$, and $99.9$.
 \ev{taken from a cited source, for the conference counts}
@@ -432,7 +570,103 @@ the printed signs are used. The answer is the SEM power triple, two
 decimals in Table~2, and the SEM-versus-LS gap. A difference between a
 printed number and a number computed here is a discrepancy under our reading,
 or a gap this search did not close. It is not, by itself, evidence that the
-printed number is a mistake.
+printed number is a mistake. The rendered pages agree with the text layer
+on every one of these printed numbers.
+
+\subsection{The rendered page matches the text layer}
+\label{sec:ink}
+
+A 600-dpi rendering of the pages agrees with the text layer on each item
+that was still open. No digit, footnote, or minus sign in these crops
+changes a verdict in Table~\ref{tab:compare}. The crops are
+\texttt{paper/figures/crop\_checks.py}, which runs
+\texttt{pdftoppm -png -r 600} on the named page and cuts the rectangle
+recorded in that script. From the repository root,
+\begin{quote}\noindent
+\sha{python3 formalization/correlated-residuals/paper/figures/crop_checks.py --man850 local-extraction/literature/unl-sem/mi-qtl2010.pdf --conference local-extraction/literature/unl-sem/mi-conference2008.pdf}
+\end{quote}
+
+Figure~\ref{fig:table1} is Table~1. The ink reads SEM $64$, $77$, $96$ and
+least squares $57$, $69$, $94$. The single-trait columns read $6$, $29$,
+$10$, $40$ for the first locus, $3$, $43$, $1$, $45$ for the second, and
+$97$, $33$, $17$, $97$ for the third. The first-trait series is the $6$,
+$3$, $97$ in Table~\ref{tab:compare}. There is no footnote under the table,
+and no superscript on these counts.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/table1.png}
+\caption{Table~1 of the ARS manuscript, page~12, rendered at 600 dpi.
+The counts match the text layer.}
+\label{fig:table1}
+\end{figure}
+
+Figure~\ref{fig:table2} is the parameter block of Table~2. The second-locus
+row reads $-0.435$, $-0.50$, and $0.065$. The third-locus total on the
+first trait reads $0.75$. The minus signs are printed. Neither disputed
+cell continues to another digit: the ink is not a clipped $-0.4375$ or a
+clipped $0.0625$. The note under the table says the estimates are means
+over $100$ replicates. It does not change the parameter cells. The verdict
+on $-0.435$ and $0.065$ stays the close pair in
+Section~\ref{sec:rounding}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/table2-parameters.png}
+\caption{The parameter block of Table~2, page~13, rendered at 600 dpi.
+The cells $-0.435$ and $0.065$ are printed as those digits.}
+\label{fig:table2}
+\end{figure}
+
+Figure~\ref{fig:design} is the simulation sentence. It prints $100$
+replicates of $150$ recombinant inbred lines, a chromosome of $100$~cM,
+eleven evenly spaced markers, and additive QTLs at $22$, $42$, and $78$~cM.
+The genotype codes are $1$ and $-1$, on a subscripted $x_s$.
+Figure~\ref{fig:thresholds} is the
+threshold sentence on the next page: $100$ replications, and critical
+values $14.86$ and $10.60$. No superscript or footnote in either crop
+changes a number. Both agree with the text layer.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/design-sentence.png}
+\caption{The simulation-design sentence, page~9 of the ARS manuscript,
+rendered at 600 dpi.}
+\label{fig:design}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/thresholds.png}
+\caption{The threshold sentence, page~10, rendered at 600 dpi. The printed
+critical values are $14.86$ and $10.60$.}
+\label{fig:thresholds}
+\end{figure}
+
+Figure~\ref{fig:c2008} is Table~2 of the 2008 conference paper. The ink
+reads multi-trait SEM overall power $91$, multi-trait least squares $90$,
+and single-trait powers $2$, $39$, $4$, with overall $42$. The trait cells
+in the two multi-trait rows are empty on the page. The text layer did not
+drop those numbers. They are not printed. Figure~\ref{fig:c2008design} is
+the conference design sentence: $100$ replicates of $300$ lines, eleven
+markers on $100$~cM, and one QTL at $42$~cM. The genotype codes in that
+paper's text are $2$ and $0$, not the $1$ and $-1$ of the 2010 sentence.
+Nothing here relabels the 2010 Table~1.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/conference2008-table2.png}
+\caption{Table~2 of Mi, Eskridge, and Wang (2008), rendered at 600 dpi.
+The multi-trait rows print an overall power and leave the trait cells blank.}
+\label{fig:c2008}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/conference2008-design.png}
+\caption{The 2008 simulation sentence: $300$ lines and one QTL at $42$~cM.}
+\label{fig:c2008design}
+\end{figure}
 
 \subsection{The gap between \(64/77/96\) and \(51/54/86\)}
 
@@ -523,9 +757,12 @@ triple. It does not say how the printed triple was obtained.
 \label{sec:rounding}
 
 These two cells are close to our arithmetic and are not a simple rounding
-of it. Table~2, and Table~3 of the Genetics Research companion (the ARS file
-Man851), print $-0.435$ and $0.065$ for the QTL2 effects that the position
-reading gives as $-7/16=-0.4375$ and $1/16=0.0625$. The same two
+of it. The rendered page prints the same digits the text layer does
+(Figure~\ref{fig:table2}): $-0.435$ and $0.065$, not $-0.4375$ or $0.0625$
+with a digit cut off. Table~2, and Table~3 of the Genetics Research
+companion (the ARS file Man851), print $-0.435$ and $0.065$ for the QTL2
+effects that the position reading gives as $-7/16=-0.4375$ and
+$1/16=0.0625$. The same two
 decimals appear in both papers we could read. Rounding $-0.4375$ to three
 decimals is $-0.438$, not $-0.435$, and rounding $0.0625$ to three decimals
 is $0.063$ or $0.062$ according to the tie rule, not $0.065$.

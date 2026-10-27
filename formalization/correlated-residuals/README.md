@@ -49,6 +49,14 @@ python3 formalization/correlated-residuals/simulation/measure_glyphs.py \
 ```
 
 ```bash
+python3 formalization/correlated-residuals/paper/figures/crop_equation7.py \
+  --pdf local-extraction/literature/unl-sem/mi-qtl2010.pdf
+python3 formalization/correlated-residuals/paper/figures/crop_checks.py \
+  --man850 local-extraction/literature/unl-sem/mi-qtl2010.pdf \
+  --conference local-extraction/literature/unl-sem/mi-conference2008.pdf
+```
+
+```bash
 python3 formalization/correlated-residuals/simulation/table2_totals.py
 ```
 
