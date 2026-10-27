@@ -20,15 +20,19 @@ UNL bepress and ProQuest, stay in the worker's
 read only when the source matches.
 
 The manifest contract is
-[fetch-manifest.schema.json](schema/fetch-manifest.schema.json). The committed
-fixture is
+[fetch-manifest.schema.json](schema/fetch-manifest.schema.json). Workers post
+`manifest_version` `0.2`. `0.1` stays valid for manifests already posted.
+The committed fixture is
 [unl-aai3402936.manifest.json](examples/unl-aai3402936.manifest.json): a verified
-positive control, 283 pages, born-digital, no OCR, question count null. It is
-`producer.role` `example`, not a live posting and not a question screen.
+positive control, 283 pages, born-digital, no OCR, question count null,
+`discovered_identifiers` empty. It is `producer.role` `example`, not a live
+posting and not a question screen.
 
 Check a file with `python3 scripts/validate_fetch_manifest.py`. `--self-check`
 covers that control, a front-matter preview, an unreadable extraction, a
-`not_found` result, catalog route ids, and secret rejection.
+`not_found` result, catalog route ids, secret rejection, an omitted
+`comment_url`, discovered identifiers that do not backfill earlier routes,
+and evidence that keeps Unicode `text_characters` distinct from byte counts.
 
 ## File a request or keep working
 
@@ -76,8 +80,10 @@ source. This draft has no batch issue.
 
 ## Dedup
 
-Search before creating an issue. Match the DOI, arXiv id, canonical URL, or
-archive record id, not a transient signed URL.
+Search before creating an issue, with the same authenticated transport. Match
+the DOI, arXiv id, canonical URL, or archive record id, not a transient signed
+URL. The `gh` search below is one variant; REST search is
+`GET /search/issues?q=repo:alectionary/vibe-math+FETCH_ID`.
 
 ```sh
 gh issue list --repo alectionary/vibe-math --state all \
@@ -104,10 +110,13 @@ that authorization already exists.
 ## Request template
 
 The GitHub form is
-[fetch-request.yml](../../../.github/ISSUE_TEMPLATE/fetch-request.yml). For
-`gh issue create`, write the same fields to a body file. Title:
-`fetch: 10.1000/example.doi`. Add `--label fetch-request` once that label
-exists.
+[fetch-request.yml](../../../.github/ISSUE_TEMPLATE/fetch-request.yml). Filing
+uses the authenticated transports and preflight in the
+[worker skill](../document-retrieval-worker/SKILL.md#github-transport). For
+`gh issue create`, write the same fields to a body file. REST is
+`POST /repos/alectionary/vibe-math/issues` with the same title, body, and
+`"labels": ["fetch-request"]`. Title: `fetch: 10.1000/example.doi`. The
+lifecycle label on a new issue is `fetch-request`.
 
 ```markdown
 <!-- fetch-request: 10.1000/example.doi -->
@@ -131,10 +140,14 @@ Stable ids use the manifest schemes `doi`, `arxiv`, `url`, `archive_record`,
 `prefix:value`. Prefixes for a particular archive are defined in that site's
 worker reference, not here.
 
-Blocker categories: `bot_mitigation`, `browser_host_unavailable`,
-`preview_or_front_matter`, `no_public_copy_found`, `extraction_unreadable`,
-`other`. Put durable https URLs in the routes. Omit signed queries, cookies,
-and passwords.
+Blocker categories are the manifest `error_category` names:
+`bot_mitigation`, `http_error`, `browser_host_unavailable`, `timeout`,
+`network`, `preview_only`, `restricted`, `identity_mismatch`,
+`incomplete_document`, `extraction_unreadable`, `not_found`, and `other`.
+A browser that cannot start is `browser_host_unavailable`, not `other`. A
+preview or front-matter file is `preview_only`. No public copy is `not_found`.
+Put durable https URLs in the routes. Omit signed queries, cookies, and
+passwords.
 
 Coordinate under the parent campaign claim when there is one. A fetch issue is
 not a new `refs/heads/claims/` reservation.
@@ -143,8 +156,12 @@ not a new `refs/heads/claims/` reservation.
 
 Lifecycle, exactly one at a time. The worker swaps the previous lifecycle label
 for the next. `not_found` uses `not-found`. A retryable transport failure stays
-on `fetch-claimed`. `terminal_label` in
-`scripts/validate_fetch_manifest.py` is the map.
+on `fetch-claimed`. A browser handoff also stays on `fetch-claimed`.
+`terminal_label` in `scripts/validate_fetch_manifest.py` is the outcome map.
+`label_end_state_ok` checks the end state, and `replace_label_set` is the
+full set a replace-set client writes. The read-then-write, and the `gh`,
+REST, and replace-set variants, are in the
+[worker skill](../document-retrieval-worker/SKILL.md#lifecycle-labels).
 
 | Outcome | Label |
 |---|---|
@@ -154,10 +171,10 @@ on `fetch-claimed`. `terminal_label` in
 | `not_found` | `not-found` |
 | `transport_failure` with `retryable` true | `fetch-claimed` |
 
-Creating the six labels from this environment returned HTTP 403. The exact
-`gh label create` commands are in the
-[worker skill](../document-retrieval-worker/SKILL.md#labels). The issue form
-names `fetch-request` so the label applies once it exists.
+The six names already exist. Check that they exist. Do not create them, and
+do not change their colors or descriptions. Filing uses the same authenticated
+transports and preflight as the worker. Do not assume `gh` is logged in. The
+issue form names `fetch-request` so that label applies when the form is used.
 
 The research agent closes the issue after a successful merge. The worker does
 not close it. The worker does reopen a closed `not-found` issue when the route
@@ -169,22 +186,34 @@ The worker posts one comment and does not edit it. Start the comment with
 `<!-- fetch-manifest: MANIFEST_ID -->`, then a `json` fence whose object has the
 same `manifest_id`. A correction is a later comment whose `supersedes` names
 the replaced id. The committed fixture is a complete example of the object.
+Live postings use `manifest_version` `0.2`.
 
 Required content:
 
 - `outcome`: `verified`, `preview_only`, `restricted`, `transport_failure`,
   `needs_human`, or `not_found`.
-- Stable ids actually checked. `campaign_id` is null when there is no campaign.
+- Stable ids from the request, on `document.stable_ids`. `campaign_id` is null
+  when there is no campaign.
+- `discovered_identifiers`: ids learned during the run, each with the catalog
+  route that surfaced it. Empty when nothing new appeared. They are not copied
+  into `document.stable_ids`, and they do not make earlier routes applicable.
 - `routes_tried`: catalog `route` (`openalex-oa@1`), attempt `id`, https URL,
   method, UTC `Z` timestamp, HTTP status, `error_category`, and whether that
   route obtained bytes. The route id must be in the worker
-  [route catalog](../document-retrieval-worker/routes.json).
+  [route catalog](../document-retrieval-worker/routes.json). Log a route only
+  when it was run. After complete bytes are stored, do not log a skipped route.
 - When bytes were stored: sha256, page count, byte length, and a `worker_local`
   locator. `committed_to_git` and `cross_machine` stay false. The locator is
   provenance for that machine. Another checkout reacquires the file from the
-  stable ids and checks the hash.
+  stable ids and checks the hash. `byte_length` is PDF bytes.
 - Completeness evidence. A title hit or a file header is not that evidence.
-- Extraction and OCR status.
+  On version `0.2`, a `characters` count in that evidence equals
+  `text_characters` (Unicode code points). Do not call that number bytes.
+  `byte_length` is the PDF size in bytes.
+- Extraction and OCR status. `text_characters` is Unicode code points, not
+  bytes.
+- `issue.repository`, `issue.number`, and `issue.url` on a live posting. Omit
+  `issue.comment_url`. The consumer takes the comment URL from the API.
 - Optional question candidates with pdf page locators. `candidate_id` is not a
   canonical inventory id.
 
@@ -193,7 +222,8 @@ Required content:
 is the fixture and must not be merged. `consumable()` reports that.
 `producer.role` for a live posting is `retrieval_worker`.
 
-Version `0.1` allows storage kind `worker_local` only.
+Versions `0.1` and `0.2` allow storage kind `worker_local` only. `0.2` requires
+`discovered_identifiers` and does not require `issue.comment_url`.
 
 ## Consume and merge
 
@@ -201,17 +231,25 @@ At the start of a research block, before new retrieval, consume manifests for
 the sources this block cares about.
 
 1. List issues labeled `fetched`, `restricted`, `needs-human`, `not-found`, and
-   `fetch-claimed` (a retryable transport failure stays claimed).
-2. Parse comments with `parse_comment`. Keep `active_manifests`. If more than
-   one active manifest remains, stop and report the conflict.
+   `fetch-claimed` (a retryable transport failure, and a browser handoff, stay
+   claimed). Use the same authenticated transport preflight as the worker.
+2. Parse comments with `parse_comment`. Take each comment URL from
+   `locate_manifests`, which reads the API object's `html_url` and matches
+   `manifest_id`. Do not require `issue.comment_url` inside the body. Keep
+   `active_manifests`. If more than one active manifest remains, stop and
+   report the conflict.
 3. Run `consumable`. Reject invalid JSON, an unknown catalog route, secret
-   material, a temporary media host, and `producer.role` `example`.
+   material, a temporary media host, and `producer.role` `example`. Accept a
+   `0.1` manifest that still has `comment_url`, and a `0.2` manifest that
+   omits it.
 4. Resolve an existing source from the stable ids. If none matches, record a
    lead in the working notes and do not create a canonical source from the
    manifest alone.
 5. Merge retrieval evidence only.
    - `verified` and `complete_body`: record the hash, page count, stable ids,
-     routes, and extraction status.
+     discovered identifiers, routes, and extraction status. Keep
+     `text_characters` as a Unicode character count and `byte_length` as PDF
+     bytes.
    - `verified` and `readable` false: keep the file hash and leave
      `question_count` null.
    - `preview_only` or front matter: store the partial hash so it cannot be
@@ -232,7 +270,10 @@ the sources this block cares about.
    new catalog route can reopen it.
 
 `routes_to_retry` lists active applicable catalog routes absent from a
-manifest. `should_reopen_not_found` is true only when the outcome is
+manifest. Applicability uses `document.stable_ids` only, unless the route
+catalog sets `discovered_identifiers_expand_routes`. The committed catalog
+leaves that flag false, so a DOI learned mid-run does not reopen earlier
+routes. `should_reopen_not_found` is true only when the outcome is
 `not_found` and that list is not empty. The worker performs the reopen. The
 research agent does not retry those routes itself.
 
@@ -271,10 +312,10 @@ python3 scripts/validate_fetch_manifest.py \
 
 ## Remaining for the finishing agent
 
-- [ ] Choose file storage. v0.1 is `worker_local` with `cross_machine` false. A release asset or bucket needs a schema bump.
+- [ ] Choose file storage. v0.1 and v0.2 are `worker_local` with `cross_machine` false. A release asset or bucket needs a schema bump.
 - [ ] Merge one real manifest into the ledgers under the research skill, then run the campaign validator.
 - [ ] Deploy a worker. Starting it on a timer or from a workflow is outside the worker skill.
 - [ ] Pilot one previously unresolved UNL dissertation and one paper that is not from UNL. Keep the committed fixture as the schema control.
-- [ ] Confirm labels exist; creation from this environment returned HTTP 403. Commands are in the worker skill.
-- [ ] Dry-run `parse_comment`, `routes_to_retry`, and a `not-found` reopen on a real issue thread.
+- [ ] Leave the six lifecycle labels as they are. Do not create or recolor them. The worker skill checks the names.
+- [ ] Dry-run `parse_comment`, `locate_manifests`, `routes_to_retry`, and a `not-found` reopen on a real issue thread.
 - [ ] Replace this script's schema subset if the schema grows past the keywords in `KNOWN`.
