@@ -14,6 +14,10 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('--drat-trim',type=Path);ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();root=Path(__file__).resolve().parent;results=root/'structural-results';steps=[]
  def run(name,command,seconds=300):
   print('CHECK',name,flush=True);r=subprocess.run(command,capture_output=True,text=True,timeout=seconds);assert r.returncode==0,(name,r.stdout[-1000:],r.stderr[-1000:]);steps.append({'name':name,'status':'PASS'})
+ manifest=results/'manifest.json'
+ if manifest.exists():
+  for item in json.loads(manifest.read_text())['files']:
+   path=root.parents[2]/item['path'];assert hashlib.sha256(path.read_bytes()).hexdigest()==item['sha256'],item['path']
  with tempfile.TemporaryDirectory(prefix='c16-structural-replay-') as folder:
   temp=Path(folder);inputs=temp/'inputs';inputs.mkdir()
   for p in (results/'inputs').iterdir():
@@ -30,6 +34,7 @@ def main():
   run('frozen conditional Hall comparison',[py,str(root/'compare_owner_hall.py'),str(inputs),'--output',str(temp/'hall.json')])
   fresh=json.loads((temp/'hall.json').read_text());old=json.loads(gzip.decompress((results/'c16-structural-hall.json.gz').read_bytes()))
   assert fresh['stats']==old['stats'] and fresh['rows']==old['rows']
+  run('cyclic filtration identities',[py,str(root/'cyclic_filtration_audit.py')])
   run('literal subgroup CNF controls',[py,str(root/'test_subgroup_frames.py')])
   for L in [4,8,16]:
    stem=f'c16-structural-subgroup-{L}';out=temp/(stem+'.json')
