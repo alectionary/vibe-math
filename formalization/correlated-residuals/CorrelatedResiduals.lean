@@ -5,3 +5,4 @@ import CorrelatedResiduals.Collision
 import CorrelatedResiduals.Relabel
 import CorrelatedResiduals.Triangular
 import CorrelatedResiduals.Consistency
+import CorrelatedResiduals.Law
