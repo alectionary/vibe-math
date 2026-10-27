@@ -12286,7 +12286,7 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "truncated_distance12_source_questions",
     "added_on": "2026-10-25",
-    "lean_discovery_note": "A 2026-10-26 research block checked an 88-pair width-16 partial frame, ruled out CSS frames that contain 13 or more seed-4 X monomials, and recomputed numerical hypotheses of the mixed reduction. A 12-monomial quotient search was stopped unfinished. The value of f is still not independently established. Exact-target Lean discovery remains unassessed.",
+    "lean_discovery_note": "2026-10-27 takeover audited physical pool coordinates and repaired a missing-partner bug. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. No Lean certificate or independent enumerator; exact-target Lean discovery remains unassessed.",
     "research_progress": [
       {
         "title": "88-pair width-16 partial canonical frame; f still 16 or 18",
@@ -12303,25 +12303,32 @@
         "contribution": "Every one of the 43046721 seed-4 partner assignments leaves the orthogonal X pool of rank at most 109, short of the 112 dimensions a frame containing those monomials would need. This does not decide f."
       },
       {
-        "title": "No width-16 CSS frame contains 13, 14, or 15 seed-4 X monomials",
-        "report": "formalization/canonical-width/c16/INVESTIGATION.md",
+        "title": "Complete partner-domain exclusions for 13 through 15 seed-4 monomials",
+        "report": "formalization/canonical-width/c16/TAKEOVER.md",
         "evidence": "exact_finite_computation",
         "lean_sources": [],
-        "contribution": "Up to translation, every partner assignment that keeps 13, 14, or 15 monomials either misses the complementary dimension or has a quotient with no dual basis in the weight-16 pools. The searched full-rank assignments number 9, 2930, and 96807. This does not decide f."
+        "contribution": "Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18."
       },
       {
-        "title": "Twelve seed-4 monomials: rank scan finished, quotient search stopped",
-        "report": "formalization/canonical-width/c16/INVESTIGATION.md",
+        "title": "Twelve-monomial whole-orbit exclusions retracted after domain audit",
+        "report": "formalization/canonical-width/c16/TAKEOVER.md",
         "evidence": "exact_finite_computation",
         "lean_sources": [],
-        "contribution": "All 116 rotation orbits attain orthogonal rank 116, with 1008952 full-rank partner assignments, so rank is not an obstruction. Thirty-three orbits, 319061 assignments, have no quotient dual basis. One hundred assignments hit a 300000-node cap, seven orbits were interrupted, and 28 orbits were not started. No frame was found. This does not decide f."
+        "contribution": "A physical weight-16 partner with seed-4 block 0x9 shows the old domain misses valid partners when bit 0 is omitted. The 33 old orbit exclusions cover only a subfamily. Complete twelve-monomial domains have 54,411,742,864 assignments across 116 rotation classes, before rank pruning. Full twelve-monomial nonexistence is not established."
+      },
+      {
+        "title": "Independent physical binding of the listed pools and width-18 upper frame",
+        "report": "formalization/canonical-width/c16/TAKEOVER.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "Rebuilt equation-(50) checks verify all 720 weight-16 operators per sector, every physical pairing against the saved logical coordinates, the 128-pair width-18 frame, and minimum X/Z support union 26. Listed-pool completeness is not independently proved."
       }
     ],
     "remaining_project_questions": [
       {
         "id": "RQ-F91-c16-css-frame",
         "title": "Decide whether the 720-class weight-16 CSS pools contain a 128-pair canonical frame.",
-        "status": "Open follow-up. The checked 88-pair frame is the best explicit partial CSS frame. No CSS frame contains 13 or more seed-4 X monomials. Thirty-three of 116 twelve-monomial orbits are impossible; the rest of the 12-monomial case, and every case with fewer monomials, remain open. This is not an author-posed question and does not decide f."
+        "status": "Open follow-up. Checked 88-pair partial frame; Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The complete twelve-and-fewer monomial cases and global compatibility remain open. This derived task does not decide unrestricted f."
       }
     ]
   },
