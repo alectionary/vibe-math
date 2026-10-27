@@ -1033,7 +1033,7 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 
 ## CFA and measurement-model continuation
 
-[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 dissertation records and 41 selected source works; the prior 58-record first pass remains a dated snapshot.
+[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 dissertation records and 49 selected source works; the prior 58-record first pass remains a dated snapshot.
 
 - **F128**: [Development and initial validation of a creative self-efficacy scale for undergraduates: categorical confirmatory factor analysis and multidimensional item response theory](https://doi.org/10.3389/feduc.2023.1306532).
 - **F129**: [Creative Self-Eﬃcacy Scale for Children and Adolescents (CASES): A Development and Validation Study](https://doi.org/10.21500/20112084.5410).
@@ -1055,3 +1055,17 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 
 - **F141**: [Greater Neural Adaptations following High- vs. Low-Load Resistance Training](https://doi.org/10.3389/fphys.2017.00331).
 - **F142**: [Partner congruence on fertility intentions and values: Implications for birth outcomes](https://doi.org/10.1177/0265407518787232).
+
+
+## L-F102 replication sources
+
+Sources read for the correlated-residual replication and the identification comparison. PDFs stay in local ignored storage.
+
+- **F143**: [Multi-trait QTL mapping using a structural equation model](https://doi.org/10.4148/2475-7772.1095).
+- **F144**: [A new identification condition for recursive models with correlated errors](https://doi.org/10.1207/S15328007SEM0904_1).
+- **F145**: [Global identifiability of linear structural equation models](https://doi.org/10.1214/10-AOS859).
+- **F146**: [Half-trek criterion for generic identifiability of linear structural equation models](https://doi.org/10.1214/12-AOS1012).
+- **F147**: [Generic identifiability of linear structural equation models by ancestor decomposition](https://arxiv.org/abs/1504.02992).
+- **F148**: [Structural model analysis of multiple quantitative traits](https://doi.org/10.1371/journal.pgen.0020114).
+- **F150**: [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493).
+- **F151**: [Searching for recursive causal structures in multivariate quantitative genetics mixed models](https://doi.org/10.1534/genetics.109.112979).
