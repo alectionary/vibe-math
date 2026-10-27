@@ -98,7 +98,12 @@ int main(int argc, char** argv) {
     std::function<void(int,Bits)> rec = [&](int depth, Bits active) {
         if (found) return;
         ++visited;
-        if (active.count() < need || ((depth >= 6 || depth == m) && extend_rank(X.data(),active,GE{},need) < need)) {
+        // The depth already-fixed monomial/partner pairs force the other
+        // 128-depth X basis vectors to lie in this surviving pool. Requiring
+        // only the final quotient dimension 128-m misses this stronger prefix
+        // obstruction. Every completion must span the WHOLE current kernel.
+        int prefix_need=128-depth;
+        if (active.count() < prefix_need || (depth >= 2 && extend_rank(X.data(),active,GE{},prefix_need) < prefix_need)) {
             covered += suffix[depth]; ++pruned; return;
         }
         if (depth == m) {
