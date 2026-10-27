@@ -8,8 +8,9 @@ is accepted as `(I - B)⁻¹` only after both products with `I - B` are the iden
 The joint covariance is the block map in the source:
 `Σ_yy = L (Γ Φ Γᵀ + Ψ) Lᵀ`, `Σ_yx = L Γ Φ`, `Σ_xx = Φ`.
 
-The diagonal-residual injectivity statement is recorded in `INVESTIGATION.md`.
-It is not claimed as a Lean theorem in this file.
+The diagonal-residual identification theorem is `CorrelatedResiduals.recover_sigma`
+in `CorrelatedResiduals/Diagonal.lean`. This file is the integer collision
+certificate and does not repeat that proof.
 -/
 
 abbrev Mat := Fin 3 → Fin 3 → Int

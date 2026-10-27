@@ -7,13 +7,12 @@ Canonical target: `L-F102-correlated-residuals`. This note is a **new problem** 
 - Canonical inventory identifier: `L-F102-correlated-residuals`, in `literature/open-problems.json` and `literature/unl-sem/questions.json`.
 - New problem. The 2026-10-26 UNL-SEM seed (issue #5, PR #6) indexed the direction and did not compute or prove it. No earlier finite search, partial proof, or completed result is in this repository.
 - Discovery source: the UNL-SEM screen. Question source: Mi, Eskridge, Wang, Baenziger, Campbell, Gill, Dweikat, and Bovaird, *Regression-Based Multi-Trait QTL Mapping Using a Structural Equation Model*, Statistical Applications in Genetics and Molecular Biology 9 (2010), article 38, DOI 10.2202/1544-6115.1552. Public PDF `https://www.ars.usda.gov/ARSUserFiles/60820000/Manuscripts/2010/Man850.pdf`, SHA-256 `27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81`, re-downloaded and matched on 2026-10-27. Discussion, PDF page 20 (printed page 18).
-- Author request, not a numbered conjecture: extend the analysis to correlated residual errors. Historical status in the source: proposed. Current status of the parent request: not settled here. Current status of the restricted identification question: decided for the equation-(7) pattern, below.
+- Author request, not a numbered conjecture: extend the analysis to correlated residual errors. Historical status in the source: proposed. Current status of the parent request: partly answered by the bow-free specification below. The printed equation-(7) tournament has no globally identified one-edge residual extension.
 - Objects: real structural matrix `B`, exogenous coefficient `Γ`, residual covariance `Ψ`, exogenous covariance `Φ ≻ 0`, and the joint covariance of `(y, x)`.
-- Quantifiers for the restricted question: every positive diagonal `Ψ`, and each of the three single off-diagonal residual entries, on the equation-(7) zero pattern. The wheat Figure 5 graph is not part of the theorem. Singular `Ψ` and other zero patterns are outside the claim.
-- Intended Lean interface: the block covariance map of equation (3), with `L = (I-B)⁻¹` proved by both products, and injectivity of that map on diagonal `Ψ`. This file proves the three collision instances. It does not yet prove the diagonal injectivity theorem.
+- Quantifiers for the restricted question: every positive diagonal `Ψ`, and each of the three single off-diagonal residual entries, on the equation-(7) zero pattern. The wheat Figure 5 graph is not part of the theorem. Singular `Ψ` is outside the claim. Zero structural coefficients are included, and every relabeling of this order is included.
+- Intended Lean interface: the block covariance map of equation (3). `recover_sigma` is a left inverse on that domain. `recover_bow` is the bow-free left inverse. `bow12_same_law` and its two siblings are the collisions, including an arbitrary exogenous `Γ`.
 - Why this target: it is the latent-structure gate already named for this inventory entry, and the source prints a complete three-trait pattern. Runners-up are in the tracking issue.
-- Answer contract: the 2010 method request, restricted to covariance identification of equation (7) → diagonal parameters are injective, and each one-edge residual extension collides → the written inverse below, the exact rational script, and the Lean witness theorems.
-- Stopping condition for this block: that decision for equation (7). No estimator, imputation, mixed outcome, nonlinear trait map, or dynamic-fit simulation. Do not merge to `master`.
+- Answer contract: the 2010 method request, restricted to covariance identification of equation (7) → diagonal parameters are a left inverse of `Σ` on the positive-definite domain; each one-edge residual extension collides for every exogenous `Γ`; the bow-free pattern with that direct edge removed is globally identified and is the plug-in estimator. Consistency of the plug-in map is the continuous-mapping argument in the continuation section. No imputation, mixed outcome, nonlinear trait map, or dynamic-fit simulation. Do not merge to `master`.
 
 ## Issue, claim and Project
 
@@ -173,18 +172,22 @@ No result in this table supplies an identified correlated-residual QTL procedure
 ## Proof development
 
 - Route chosen: explicit triangular inverse, then one rational collision per residual edge. The general Drton–Foygel–Sullivant argument is a comparison, not the proof used for the source pattern.
-- Obstruction: a Lean proof of the diagonal inverse still has to formalize the field arithmetic in the recovery formulas. The collision certificates do not need division.
+- Obstruction recorded before the continuation: a Lean proof of the diagonal inverse still had to formalize the field arithmetic. That proof is now `recover_sigma`. The integer collision certificates do not need division.
 - Domain of the exact script: every `B` entry in `{-2,-1,0,1,2}` and every variance in `{1,2,3}`, plus the equation-(7) rational point. Two implementations, Gauss–Jordan and the closed inverse.
 - Failed approach: dimension counting alone was not used as a proof. An early hand multiplication used a transposed factor and temporarily disagreed with the solved witness; the corrected multiplication matches both implementations.
 - Attempts to break the statement: the three positive-definite witnesses survive; the zero pattern is exactly equation (7); `Φ` is not fixed by a side condition that the collision violates; `Γ` is recovered in the diagonal case and genuinely changes in each collision.
 
 | Exact claim | Evidence label | Proof / data / source locator | Assumptions and unresolved bridge |
 | --- | --- | --- | --- |
-| On the equation-(7) zero pattern, positive diagonal `Ψ` and positive definite `Φ` make `(B,Γ,Ψ,Φ)` a function of `Σ`. | Written proof | This note, "Written proof of the diagonal case" | Not yet a Lean proof. The script checks a finite box and the printed equation-(7) point only. |
-| Each one-edge residual extension has two distinct positive-definite parameter points with the same `Σ`. | Exact finite computation | `check_witness.py`, output `witnesses.json` | The script's rational arithmetic is the check. It is not a measure-zero argument. |
-| The same three integer collisions, with `L` proved to be `(I-B)⁻¹` by both products. | Concrete Lean certificate, if `lean` accepts `Witness.lean` | `Witness.lean` theorems `bow12_same_law`, `bow13_same_law`, `bow23_same_law`, and the inverse, positive-definiteness, and difference theorems | Build result is recorded after the checker runs. A failed build leaves this row as a skeleton. |
-| Drton–Foygel–Sullivant Theorem 2 implies the endogenous diagonal and bow conclusions for this graph. | Search lead / unresolved as a formal translation | arXiv:1003.1146, Theorem 2 | We did not replay their proof. The exogenous block is our separate witness. |
-| A correlated-residual estimator for the source exists and is consistent. | Not claimed | — | Parent method request. |
+| On the equation-(7) zero pattern, including every zero coefficient, positive diagonal `Ψ` and positive definite `Φ` make `(B,Γ,Ψ,Φ)` a function of `Σ`. | General Lean proof | `CorrelatedResiduals/Diagonal.lean`, `recover_sigma`, `sigma_injective` | Domain `OnDomain`. Axioms `propext`, `Classical.choice`, `Quot.sound`. No `sorryAx`. |
+| The same left inverse, after an arbitrary relabeling of the three traits. | General Lean proof | `CorrelatedResiduals/Relabel.lean`, `recover_relabeled`, `sigma_relabel` | The topological order is an input. Existence of a topological order for an arbitrary DAG is the classical reduction in the continuation, not a separate Lean theorem. |
+| Each one-edge residual extension contains a real line of positive-definite collisions. For every exogenous `Γ` and every `Φ`, adjusting `Γ` by the bow factor preserves the joint covariance, and the new `Γ` differs whenever `Γ` is invertible and the scale is nonzero. | General Lean proof | `CorrelatedResiduals/Collision.lean`, `bow12_same_law`, `bow13_same_law`, `bow23_same_law`, `exogenous_lift`, `bow12_gamma_diff` and siblings, `bow12_psi_posDef` and siblings | `Ψ` on the bow is `Γ₀ Γ₀ᵀ` for the explicit unitriangular factor. This is global, not generic. |
+| The same three integer points, with both products equal to the identity. | Concrete Lean certificate | `Witness.lean` | Integer special cases of the real lines. Axioms of the integer file: `propext` only. |
+| The 3,375-point integer box and the printed equation-(7) point recover. | Exact finite computation | `check_witness.py`, `witnesses.json` | A box, not the real domain. Superseded as a proof by `recover_sigma`. |
+| Dropping the direct edge into trait 0 from trait 2 and freeing that residual covariance identifies `(b12,b23,v1,v2,v3,c,Γ,Φ)`. | General Lean proof | `CorrelatedResiduals/BowFree.lean`, `recover_bow`, `bow_injective` | `noise.PosDef` and `phi.PosDef`. One missing-edge pattern, not all three. |
+| The plug-in estimator `recover` (diagonal) or `recoverBow` (bow-free) is consistent for iid samples with finite second moments. | Written proof | Continuation, "Estimator and consistency" | Population left inverse is the Lean theorem. LLN, continuity of inversion, and the continuous-mapping theorem are not formalized. |
+| Drton–Foygel–Sullivant Theorem 2 implies the endogenous diagonal and bow conclusions for this graph. | Search lead / unresolved as a formal translation | arXiv:1003.1146, Theorem 2 | Not replayed. The exogenous block is `exogenous_lift`. |
+| Brito–Pearl bow-free generic identification, the half-trek criterion, and a general-`n` LDL uniqueness proof. | Written proof for the `n`-induction sketch only; the criteria are citations | Continuation | Not Lean-proved. The three-trait case does not use them. |
 
 ## Verification record
 
@@ -194,12 +197,64 @@ Run on 2026-10-27 from the worktree, after the statement commit.
 - `lean Witness.lean` with Lean 4.22.0 (`ba2cbbf09d4978f416e0ebd1fceeebc2c4138c05`, Release), pinned by `lean-toolchain`, exited 0. `#print axioms` on `bow12_same_law`, `bow12_inverse`, and `base_pd` reports only `propext`. There is no `sorry` and no `sorryAx`.
 - GitHub code search was retried and again returned HTTP 429 for `"structural equation" language:Lean` and `"half-trek criterion"`. The repository search API query `linear structural equation identifiability lean` returned `total_count` 0 on 2026-10-27. That query matches repository text, not file contents, so it does not show that no Lean file exists. Authenticated issue and ref searches succeeded earlier.
 
-The collision row in the evidence table is therefore an exact finite computation and a concrete Lean certificate. The diagonal injectivity row remains a written proof.
+The integer collisions remain an exact finite computation and a concrete Lean certificate. The diagonal identification theorem is now the general Lean proof `recover_sigma`.
+
+## Continuation: full domain, bows, and one correlated specification
+
+Approved block 2026-10-27T07:45Z through 2026-10-27T08:04Z. Mathlib v4.22.0 (`79e94a093aff4a60fb1b1f92d9681e407124c2ca`) is the dependency. Lake project `formalization/correlated-residuals`. `.lake/` is gitignored. There is no `sorry`.
+
+### Diagonal left inverse
+
+`OnDomain` is `v1 > 0`, `v2 > 0`, `v3 > 0`, and `Φ.PosDef`. `L` is the closed unitriangular inverse. Both products `(I-B) L` and `L (I-B)` are the identity by `mul_fin_three` and `ring`. The observed residual is `Ω = Σ_yy - Σ_yx Φ⁻¹ Σ_yxᵀ`, and `schur_noise` shows it equals `L Ψ Lᵀ` for an arbitrary noise matrix. The six recovery formulas in the written proof are `readDiag`. `recover_sigma` states `recover (sigma θ) = θ`. `sigma_injective` follows. Zero values of `b12`, `b13`, and `b23` are ordinary real inputs, so every directed subgraph of this order is included. `v1 > 0` is not a denominator; it is the remaining positive-diagonal hypothesis and is used to know `Ψ` is positive definite.
+
+`#print axioms recover_sigma` and `sigma_injective`: `[propext, Classical.choice, Quot.sound]`. `Classical.choice` is the matrix inverse and the positive-definite unit proof. `Quot.sound` is the construction of `ℝ`. There is no `sorryAx`.
+
+### Any recursive pattern on three traits
+
+`relabel e` is `Matrix.reindex e e`. It preserves products, the identity, transposes, and the covariance blocks (`sigma_relabel`). `recoverRelabeled e` conjugates the observation back by `e.symm` and applies `recover`. `recover_relabeled` returns the original ordered parameters.
+
+Every finite DAG has a topological order. On three labeled traits, conjugating that order to `0 ← 1 ← 2` puts `B` into the support of `Params`, with zeros on the missing forward edges. The Lean theorem takes the permutation as data. The existence of the order is this classical reduction, not a separate Lean proof. The same argument for general `n` is the unitriangular LDL factorization: the last diagonal entry of `Ω` is the last variance, the last column of `L` is that column of `Ω` divided by the variance, and the Schur complement of the leading block is the same factorization of size `n-1`. Mathlib's `LDL` development proves existence, not uniqueness, and leaves lower-triangularity of `LDL.lower` as a TODO, so it was not used as the proof.
+
+### Freed residual covariances
+
+`exogenous_lift`: if `L Γ = L' Γ'` and `L Ψ Lᵀ = L' Ψ' L'ᵀ`, then for every `Φ` the joint blocks agree. Unrestricted QTL coefficients do not repair an endogenous collision.
+
+For each of the three edges and every real scale `c`, the bow factor `G₀(c)` satisfies `L(c) G₀(c) = I` and `Ψ(c) = G₀(c) G₀(c)ᵀ`. Then `Ψ(c)` is positive definite because `G₀(c)` is invertible, by `posDef_iff_eq_conjTranspose_mul_self`. For every exogenous `Γ` and every `Φ`, the parameter point with structural matrix `B(c)`, coefficient `G₀(c) Γ`, and residual `Ψ(c)` has the same joint law as `B = 0`, coefficient `Γ`, and residual `I`. If `c ≠ 0`, then `B(c) ≠ 0`. If also `Γ` is invertible, then `G₀(c) Γ ≠ Γ`, so the QTL coefficients themselves move. The integer witnesses in `Witness.lean` are the cases `c = ±1` with `Γ = I` and `Φ = I`.
+
+The equation-(7) tournament has a directed edge on every trait pair, so it has no bow-free one-edge extension. Brito and Pearl's generic bow-free theorem and the half-trek criterion are comparisons. They are not replayed, and the collisions above are global rather than generic. Drton, Foygel, and Sullivant, Section 8, remains the harvested and uninventoried characterization question.
+
+### Bow-free correlated specification
+
+Remove the direct edge into trait 0 from trait 2 (`b13 = 0`) and free the residual covariance `c` of that pair. The other two directed edges remain, so the graph is recursive and bow-free. Symbolic solution of the six covariance equations produced one rational inverse; the Lean proof does not call that solver. With `den = Ω11 Ω22 - Ω12²`,
+
+```text
+v3 = Ω22,  b23 = Ω12 / Ω22,  v2 = den / Ω22,
+b12 = (Ω01 Ω22 - Ω02 Ω12) / den,
+c = (Ω02 Ω11 - Ω01 Ω12) Ω22 / den,
+v1 = Ω00 - b12² v2 - 2 b12 b23 c - b12² b23² v3.
+```
+
+`recover_bow` applies these formulas to the Schur complement and then `Γ = (I-B) Σ_yx Φ⁻¹`. On `noise.PosDef` and `phi.PosDef`, the diagonal entries `v2` and `v3` are positive, the denominators are nonzero, and `recover_bow (sigma θ) = θ`. The other two missing-edge patterns are the same algebra after a permutation and are not separate Lean theorems.
+
+### Estimator and consistency
+
+For either identified specification, the estimator is the plug-in map: form the empirical second-moment blocks of iid mean-zero copies of `(y, x)`, and apply `recover` or `recoverBow`. The population identity is the corresponding Lean left inverse.
+
+At a true parameter in the open domain, `v2`, `v3`, and `det Φ` are positive. Each is a continuous function of the covariance blocks on a neighborhood where `Φ` stays invertible, and the recovery formulas divide only by those quantities. The plug-in map is therefore continuous at the true covariance. Finite second moments give the weak law for the empirical second moments. The continuous-mapping theorem gives consistency in probability. Those three analytic ingredients are not formalized. No rate, asymptotic variance, or wheat-data fit is claimed.
+
+### Verification record for the continuation
+
+- `lake build` in `formalization/correlated-residuals`, Lean 4.22.0, Mathlib v4.22.0, exited 0 on 2026-10-27. Modules: `Diagonal`, `BowFree`, `Collision`, `Relabel`.
+- `#print axioms` on `recover_sigma`, `sigma_injective`, `recover_bow`, `bow_injective`, `bow12_same_law`, `bow12_psi_posDef`, `bow12_gamma_diff`, `exogenous_lift`, `recover_relabeled`, and `schur_noise` reports only `propext`, `Classical.choice`, and `Quot.sound`.
+
+### Time
+
+Mathlib was already cached at 07:45Z. The diagonal left inverse compiled before the bow-free file was started; the whole library was green at 08:04Z. About fifteen minutes of that interval is the diagonal proof and about ten minutes is the bow-free inverse, the three real bow lines, the exogenous lifting lemma, and the relabeling transport.
 
 ## Block closeout
 
-**Question answered:** For the equation-(7) pattern, positive diagonal residuals identify `(B, Γ, Ψ, Φ)` from `Σ` by the explicit inverse in this note, and each single residual covariance destroys that identification by an explicit positive-definite collision.
+**Question answered:** For every real coefficient on the equation-(7) support, positive diagonal residuals and positive definite `Φ` are recovered from `Σ` by `recover_sigma` (general Lean proof). The same holds after any relabeling of the three traits. Freeing any one residual edge produces a real line of positive-definite joint-law collisions for every exogenous `Γ`. Dropping the direct edge from trait 2 into trait 0 and freeing that residual covariance is globally identified by `recover_bow`, which is the plug-in estimator; consistency is the written continuous-mapping argument above.
 
-**Question still open:** The author request to extend the multi-trait QTL analysis to correlated residuals. No identified extension, estimator, or error guarantee is given. The diagonal inverse is not yet a Lean proof. The generic mixed-graph characterization of Drton, Foygel, and Sullivant remains a harvested lead, not a canonical inventory id.
+**Question still open:** The parent request is not a fitted QTL procedure for the wheat graph or for an arbitrary correlated pattern. The other two bow-free missing-edge patterns, general-`n` LDL uniqueness, and the sample continuous-mapping argument are not Lean theorems. The generic mixed-graph characterization of Drton, Foygel, and Sullivant, Section 8, is harvested and still has no canonical inventory id. Issue #13 could not be edited: the integration token returns 403.
 
-**Next proposed target (follow-up):** Prove the diagonal inverse in Lean 4 from the same formulas, on this claim. Separately, and only as inventory bookkeeping, add the generic-identifiability characterization as its own canonical id. Do not treat that characterization as the next theorem inside this restriction.
+**Next proposed target (follow-up):** Assign a canonical id to the Drton–Foygel–Sullivant generic-identifiability characterization and screen the full texts that were only opened. Inside this restriction, the next proof is either general-`n` uniqueness of the unitriangular LDL factorization or the continuous-mapping half of consistency. Neither is required to use the three-trait theorems above.
