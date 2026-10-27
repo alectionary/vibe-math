@@ -29,6 +29,45 @@ def annihilator(piv):
     return value
 
 
+def coloop_indices(values,indices):
+    rows={};original=[];used=0
+    for i in indices:
+        v=values[i];comb=0
+        while v:
+            p=v.bit_length()-1
+            if p not in rows:break
+            v^=rows[p][0];comb^=rows[p][1]
+        if v:
+            k=len(original);original.append(i);rows[v.bit_length()-1]=(v,comb^(1<<k))
+        else:used|=comb
+    return [i for k,i in enumerate(original) if not (used>>k&1)]
+
+
+def zero_exclusion(X,Z,az,chosen,truebits,zp):
+    tp=basis(X[i] for i in chosen);assert len(tp)==len(chosen)
+    w=None
+    for free in range(128):
+        if free in zp:continue
+        v=1<<free
+        for p in sorted(zp):
+            if (zp[p]&v).bit_count()%2:v^=1<<p
+        rem=v
+        while rem:
+            p=rem.bit_length()-1
+            if p not in tp:break
+            rem^=tp[p]
+        if rem:w=v;break
+    assert w is not None
+    js=[j for j,z in enumerate(Z) if (z&w).bit_count()%2]
+    degrees={j:(az[j]&truebits).bit_count() for j in js};core=chosen.copy()
+    for i in reversed(chosen):
+        affected=[j for j in js if (az[j]>>i)&1]
+        if all(degrees[j]>=2 for j in affected):
+            core.remove(i)
+            for j in affected:degrees[j]-=1
+    return {'kind':'z_zero','indices':core,'annihilator':hex(w),'clause':[-i-1 for i in core]}
+
+
 def rotate_value(v,h):
     if not h:return v
     out=0
@@ -42,7 +81,7 @@ def rotate_row(row,h,X,Z,private_literals=None):
     kind=row['kind'];out={'kind':kind}
     if 'indices' in row:out['indices']=sorted((i//16)*16+(i%16+h)%16 for i in row['indices'])
     if 'annihilator' in row:out['annihilator']=hex(rotate_value(int(row['annihilator'],16),h))
-    if kind in ['x_circuit','z_eligible','z_zero']:out['clause']=[-i-1 for i in out['indices']]
+    if kind in ['x_circuit','z_eligible','z_zero','forced_propagation']:out['clause']=[-i-1 for i in out['indices']]
     elif kind=='x_available':
         w=int(out['annihilator'],16);out['clause']=[i+1 for i,x in enumerate(X) if (x&w).bit_count()%2]
     elif kind=='z_private':
@@ -53,19 +92,28 @@ def rotate_row(row,h,X,Z,private_literals=None):
 
 
 class RankOracle(Propagator):
-    def __init__(self,X,Z,path,private_literals=None,cyclic=False,basis_propagation=False):
+    def __init__(self,X,Z,path,private_literals=None,cyclic=False,basis_propagation=False,opposite_units=False,native_library=None,propagation_library=None):
         super().__init__();self.X=X;self.Z=Z;self.n=len(X)
         self.az=[sum(((x&z).bit_count()%2)<<i for i,x in enumerate(X)) for z in Z]
         self.values=[0]*(self.n+1);self.fixed=set();self.trail=[];self.limits=[]
         self.dirty=True;self.last_true=None;self.last_available=None;self.pending=[]
         self.private_literals=private_literals
         self.basis_propagation=basis_propagation
+        self.opposite_units=opposite_units
+        self.propagation=None
+        if propagation_library:
+            from native_forced_propagation import NativeForcedPropagation
+            self.propagation=NativeForcedPropagation(X,Z,propagation_library)
+        self.native=None
+        if native_library:
+            from native_rank_units import NativeRankUnits
+            self.native=NativeRankUnits(X,Z,self.az,native_library)
         self.cyclic=cyclic;self.symmetry_bases=0;self.seen=set()
         if cyclic:
             assert len(X)%16==len(Z)%16==0
             assert all(rotate_value(v,h)==vs[(i//16)*16+(i%16+h)%16]
                        for vs in [X,Z] for i,v in enumerate(vs) for h in range(16))
-        self.log=path.open('w');self.stats={'checks':0,'clauses':0,'x_circuit':0,'z_eligible':0,'x_available':0,'z_private':0,'z_zero':0}
+        self.log=path.open('w');self.stats={'checks':0,'clauses':0,'x_circuit':0,'z_eligible':0,'x_available':0,'z_private':0,'z_zero':0,'forced_propagation':0}
     def on_assignment(self,lit,fixed=False):
         var=abs(lit)
         if var>self.n:return
@@ -111,35 +159,41 @@ class RankOracle(Propagator):
                     for j in ids:value^=self.X[j]
                     assert value==0
                     self.emit({'kind':'x_circuit','indices':ids,'clause':[-j-1 for j in ids]});return
-            if len(chosen)>=8:
-                zeros=[z for z,mask in zip(self.Z,self.az) if (mask&truebits)==0]
-                zp=basis(zeros)
+            if len(chosen)>=(2 if self.opposite_units or self.native else 8):
+                zeroids=[j for j,mask in enumerate(self.az) if (mask&truebits)==0]
+                zp=basis(self.Z[j] for j in zeroids)
                 if len(zp)<128-len(chosen):
-                    # Ann(zeros) properly contains span(T). Find a witness in
-                    # that difference. Each nullspace coordinate gives a
-                    # canonical annihilator, so one must be outside span(T).
-                    tp=basis(self.X[i] for i in chosen);w=None
-                    for free in range(128):
-                        if free in zp:continue
-                        v=1<<free
-                        for p in sorted(zp):
-                            if (zp[p]&v).bit_count()%2:v^=1<<p
-                        rem=v
+                    self.emit(zero_exclusion(self.X,self.Z,self.az,chosen,truebits,zp));return
+                if self.native and len(chosen)>=4 and len(chosen)%2==0:
+                    for i in self.native.extensions(truebits,128-len(chosen)):
+                        if self.values[i+1]:continue
+                        rem=self.X[i]
                         while rem:
                             p=rem.bit_length()-1
-                            if p not in tp:break
-                            rem^=tp[p]
-                        if rem:w=v;break
-                    assert w is not None and all((z&w).bit_count()%2==0 for z in zeros)
-                    js=[j for j,z in enumerate(self.Z) if (z&w).bit_count()%2]
-                    degrees={j:(self.az[j]&truebits).bit_count() for j in js};core=chosen.copy()
-                    for i in reversed(chosen):
-                        affected=[j for j in js if (self.az[j]>>i)&1]
-                        if all(degrees[j]>=2 for j in affected):
-                            core.remove(i)
-                            for j in affected:degrees[j]-=1
-                    self.emit({'kind':'z_zero','indices':core,'annihilator':hex(w),
-                               'clause':[-i-1 for i in core]});return
+                            if p not in piv:break
+                            rem^=piv[p][0]
+                        if not rem:continue
+                        ids=chosen+[i];bits=truebits|(1<<i)
+                        bp=basis(self.Z[j] for j in zeroids if not (self.az[j]>>i&1))
+                        assert len(bp)<128-len(ids)
+                        self.emit(zero_exclusion(self.X,self.Z,self.az,ids,bits,bp))
+                    if self.pending:return
+                if self.opposite_units:
+                    mandatory=coloop_indices(self.Z,zeroids)
+                    if len(mandatory)>=2:
+                        for i,x in enumerate(self.X):
+                            if self.values[i+1] or sum((x&self.Z[j]).bit_count()%2 for j in mandatory)<2:continue
+                            rem=x
+                            while rem:
+                                p=rem.bit_length()-1
+                                if p not in piv:break
+                                rem^=piv[p][0]
+                            if not rem:continue # handled by the circuit propagator
+                            ids=chosen+[i];bits=truebits|(1<<i)
+                            bp=basis(self.Z[j] for j in zeroids if not (self.az[j]>>i&1))
+                            assert len(bp)<128-len(ids)
+                            self.emit(zero_exclusion(self.X,self.Z,self.az,ids,bits,bp))
+                        if self.pending:return
                 eligible=[z for z,mask in zip(self.Z,self.az) if (mask&truebits).bit_count()<=1]
                 bp=basis(eligible)
                 if len(bp)<128:
@@ -161,6 +215,11 @@ class RankOracle(Propagator):
                     assert all((z&w).bit_count()%2==0 for z in eligible)
                     self.emit({'kind':'z_eligible','indices':core,'annihilator':hex(w),
                                'clause':[-i-1 for i in core]});return
+            if self.propagation and len(chosen)>=3:
+                core=self.propagation.exclusion(truebits)
+                if core is not None:
+                    assert core and set(core)<=set(chosen)
+                    self.emit({'kind':'forced_propagation','indices':core,'clause':[-i-1 for i in core]});return
         if self.basis_propagation and chosen:
             # Any unselected vector in span(T) would close a circuit. Emit a
             # unit clause with its exact XOR certificate, leaving CDCL to
@@ -230,17 +289,30 @@ class RankOracle(Propagator):
             return not self.pending
         finally:
             self.values=saved;self.dirty=True;self.last_true=None;self.last_available=None
-    def close(self):self.log.close()
+    def close(self):
+        self.log.close()
+        if self.propagation:self.propagation.close()
 
 
-def verify_log(X,Z,path,private_literals=None):
+def verify_log(X,Z,path,private_literals=None,equivariant=False):
     az=[sum(((x&z).bit_count()%2)<<i for i,x in enumerate(X)) for z in Z]
-    total=0
-    rows=[]
-    for line in path.read_text().splitlines():
-        row=json.loads(line)
-        rows.extend(rotate_row(row,h,X,Z,private_literals) for h in range(16)) if row.get('cyclic') else rows.append(row)
-    for row in rows:
+    total=0;prepared=None
+    if equivariant:
+        # Rotation is an orthogonal coordinate permutation. Checking its action
+        # on both entire pools transports each base certificate to all 16
+        # translated clauses, avoiding repeated rank checks of isomorphic data.
+        assert all(rotate_value(1<<p,h)==1<<((p//16)*16+(p%16+h)%16)
+                   for p in range(128) for h in range(16))
+        assert all(rotate_value(v,h)==vs[(i//16)*16+(i%16+h)%16]
+                   for vs in [X,Z] for i,v in enumerate(vs) for h in range(16))
+    def records():
+        with path.open() as source:
+            for line in source:
+                row=json.loads(line)
+                if row.get('cyclic') and not equivariant:
+                    for h in range(16):yield rotate_row(row,h,X,Z,private_literals)
+                else:yield row
+    for row in records():
         kind=row['kind'];clause=row['clause']
         if kind=='x_circuit':
             value=0
@@ -257,6 +329,14 @@ def verify_log(X,Z,path,private_literals=None):
             w=int(row['annihilator'],16);assert w and private_literals is not None
             js=[j for j,z in enumerate(Z) if (z&w).bit_count()%2]
             assert js and clause==[private_literals[j] for j in js] and 0 not in clause
+        elif kind=='forced_propagation':
+            if prepared is None:
+                from forced_propagation import propagate_prepared
+                axsets=[{j for j,z in enumerate(Z) if (x&z).bit_count()%2} for x in X]
+                azsets=[{i for i,x in enumerate(X) if (x&z).bit_count()%2} for z in Z]
+                prepared=(axsets,azsets)
+            assert clause==[-i-1 for i in row['indices']]
+            assert not propagate_prepared(X,Z,*prepared,row['indices'])['possible']
         elif kind=='z_zero':
             ids=row['indices'];bits=sum(1<<i for i in ids);w=int(row['annihilator'],16);assert w
             tp=basis(X[i] for i in ids);assert len(tp)==len(ids)
@@ -268,7 +348,7 @@ def verify_log(X,Z,path,private_literals=None):
             assert rem and clause==[-i-1 for i in ids]
             assert all((z&w).bit_count()%2==0 for z,mask in zip(Z,az) if (mask&bits)==0)
         else:raise ValueError(kind)
-        total+=1
+        total+=16 if equivariant and row.get('cyclic') else 1
     return total
 
 
@@ -286,7 +366,7 @@ def seed_clauses(X,Z,paths,snapshot,private_literals=None):
                 row=dict(row,clause=lits)
             rows.append(row)
     snapshot.write_text(''.join(json.dumps(row)+'\n' for row in rows))
-    verify_log(X,Z,snapshot,private_literals)
+    verify_log(X,Z,snapshot,private_literals,equivariant=True)
     clauses=[];seen=set()
     for row in rows:
         for h in range(16 if row.get('cyclic') else 1):
