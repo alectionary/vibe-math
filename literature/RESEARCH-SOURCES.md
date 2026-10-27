@@ -1336,7 +1336,7 @@ Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. 
 
 - Follow-up comparison: [dated source review](../formalization/canonical-width/c16/takeover-prior-art.json).
 
-## F143 — Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
+## F152 — Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
 
 Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
 
@@ -1349,7 +1349,7 @@ Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.S
 
 - Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.
 
-## F144 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
+## F153 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
 
 Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. arXiv:2312.03859v1,6December2023. [Primary source](https://arxiv.org/html/2312.03859v1).
 
