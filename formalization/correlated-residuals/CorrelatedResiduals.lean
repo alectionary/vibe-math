@@ -1,4 +1,7 @@
 import CorrelatedResiduals.Diagonal
 import CorrelatedResiduals.BowFree
+import CorrelatedResiduals.BowMissing
 import CorrelatedResiduals.Collision
 import CorrelatedResiduals.Relabel
+import CorrelatedResiduals.Triangular
+import CorrelatedResiduals.Consistency
