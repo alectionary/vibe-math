@@ -12,7 +12,7 @@ Canonical target: `L-F102-correlated-residuals`. This note is a **new problem** 
 - Quantifiers for the restricted question: every positive diagonal `Ψ`, and each of the three single off-diagonal residual entries, on the equation-(7) zero pattern. The wheat Figure 5 graph is not part of the theorem. Singular `Ψ` is outside the claim. Zero structural coefficients are included, and every relabeling of this order is included.
 - Intended Lean interface: the block covariance map of equation (3). `recover_sigma` is a left inverse on that domain. `recover_bow`, `recover_bow01`, and `recover_bow23` are the three bow-free left inverses. `unitUpper_factor_unique` is the general-`n` factorization. `sigmaRec_injective` recovers `(B, Ψ, Γ, Φ)` from the joint blocks at every dimension. `plug_in_consistent` is continuous mapping for the diagonal plug-in, and `plug_in_consistent_ae` supplies the strong law. `bow12_same_law` and its two siblings are the collisions, including an arbitrary exogenous `Γ`.
 - Why this target: it is the latent-structure gate already named for this inventory entry, and the source prints a complete three-trait pattern. Runners-up are in the tracking issue.
-- Answer contract: the 2010 method request, restricted to covariance identification of equation (7) → diagonal parameters are a left inverse of `Σ` on the positive-definite domain; each one-edge residual extension collides for every exogenous `Γ`; each of the three bow-free missing-edge patterns is globally identified. For every dimension, a recursive pattern with positive diagonal residuals has a unique unitriangular factorization, and the joint blocks determine `(B, Ψ, Γ, Φ)` whenever `Φ` is positive definite. The diagonal plug-in is almost surely consistent for pairwise i.i.d. samples whose coordinate products are integrable. Its Gaussian delta-method variance is the derivative of `recover` times the Isserlis covariance of the second-moment matrix. `fit_bow.py` simulates that bow at the printed equation-(7) coefficients with edge `2 → 0` removed and `ψ02 = 1/2`; it is not a fit to the wheat measurements, and Figure 5's GYLD arrows are not in the printed matrix. No imputation, mixed outcome, or nonlinear trait map. Do not merge to `master`. The Drton–Foygel–Sullivant characterization stays a note, with no inventory id and no new claim.
+- Answer contract: the 2010 method request, restricted to covariance identification of equation (7) → diagonal parameters are a left inverse of `Σ` on the positive-definite domain; each one-edge residual extension collides for every exogenous `Γ`; each of the three bow-free missing-edge patterns is globally identified. For every dimension, a recursive pattern with positive diagonal residuals has a unique unitriangular factorization, and the joint blocks determine `(B, Ψ, Γ, Φ)` whenever `Φ` is positive definite. The diagonal plug-in and all three bow-free plug-ins are almost surely consistent for pairwise i.i.d. samples whose coordinate products are integrable. Its Gaussian delta-method variance is the derivative of `recover` times the Isserlis covariance of the second-moment matrix. `fit_bow.py` simulates that bow at the printed equation-(7) coefficients with edge `2 → 0` removed and `ψ02 = 1/2`; it is not a fit to the wheat measurements, and Figure 5's GYLD arrows are not in the printed matrix. No imputation, mixed outcome, or nonlinear trait map. Do not merge to `master`. The Drton–Foygel–Sullivant characterization stays a note, with no inventory id and no new claim.
 
 ## Issue, claim and Project
 
@@ -377,3 +377,48 @@ This block ran from 08:30Z to about 08:44Z. The rectangular Schur identity was g
 **Question still open:** The parent request is not a fit to the wheat measurements, and Figure 5's GYLD arrows are still not a printed matrix. The central limit theorem behind the delta method is not a Lean theorem. Consistency is proved for the diagonal plug-in `recover`, not yet for `recoverBow`. The generic mixed-graph characterization of Drton, Foygel, and Sullivant, arXiv:1003.1146, Section 8, stays a harvested note with no canonical inventory id and no new claim. Issue #13 could not be edited: the integration token returns 403.
 
 **Next proposed target (follow-up):** Transport `plug_in_consistent_ae` from `recover` to `recoverBow`, which is continuity of the six bow formulas plus the same strong law. The Drton–Foygel–Sullivant characterization remains uninventoried on purpose.
+
+## Block 2026-10-27T08:44Z: bow consistency, and the wheat sample
+
+### Almost-sure consistency of the three bow plug-ins
+
+`bow_continuous_mapping`, `bow01_continuous_mapping`, and `bow23_continuous_mapping` are continuity of `recoverBow`, `recoverBow01`, and `recoverBow23` at a covariance whose exogenous block is invertible and whose Schur complement keeps the recovery denominators nonzero. For the missing edge `(0,2)` those denominators are the last pivot and `Ω11 Ω22 − Ω12²`. For the missing edge `(0,1)` the only denominator is the last pivot. For the missing edge `(1,2)` the only denominator is the trailing principal minor. On each positive-definite domain the population Schur complement makes that denominator nonzero, by `Bow.v2_pos`, `Bow.v3_pos`, `Bow01.v3_pos`, or `Bow23.den_pos`.
+
+`plug_in_bow_consistent_ae`, `plug_in_bow01_consistent_ae`, and `plug_in_bow23_consistent_ae` feed Mathlib's strong law, through `strong_gram`, into those continuous maps. The hypothesis is pairwise i.i.d. copies in `ℝ³ × ℝ³` with integrable coordinate products and population second moments equal to the model covariance. `plug_in_bow_consistent_ae_of_second` and `plug_in_bow_consistent_ae_of_fourth` are the second-moment and fourth-moment specializations for the first bow; the same two lemmas apply verbatim to the other two patterns. Axioms of the eight named theorems: `propext`, `Classical.choice`, `Quot.sound`. There is no `sorry`. This is almost-sure consistency. It is not a Lean central limit theorem.
+
+### Wheat data
+
+The public PDF of Mi et al. (2010), SHA-256 `27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81`, 645,949 bytes, was re-read on 2026-10-27. Equation (7) is the simulation population. The wheat section (PDF pages 8 and 13–16) prints LR statistics, standardized path coefficients at Xbarc12 and Xbarc67, and direct, indirect, and total effects. It does not print the sample covariance `S`, the ANOVA residuals, or the marker genotype matrix. The text says the phenotypes are the 98 chromosome-3A RICLs of Campbell et al., Crop Science 43 (2003), 1493–1505, after an ANOVA that removes environment and block main effects, with cofactors chosen by stepwise selection.
+
+Campbell et al. (2003), UNL copy `https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1026&context=agronomyfacpub`, Table 2 prints phenotypic correlations among eight traits for 95 lines pooled over seven environments. The table has no standard deviations, no marker columns, and it is not the residualized four-trait sample covariance used by Mi et al. A correlation matrix without scales does not determine `S`. No supplementary file or repository of the line-by-line residuals was found from the paper, the DOI page, or that UNL copy. Sections read in Campbell (abstract, experimental description, Table 2, QTL summary) state no additional open question; the paper was consulted as a data source, not entered as a new inventory id.
+
+A fit of `recoverBow` needs all of the following, with the trait order fixed:
+
+1. The 98 line identifiers.
+2. Residuals of GYLD, TKWT, KPS, and SPSM after the ANOVA that removes environment and block-within-environment main effects, as described on PDF page 8.
+3. The QTL indicator and the cofactors actually selected (at most five), coded `+1` and `-1`, at the position being fitted.
+4. The sample covariance of those columns, with the divisor used by the paper's likelihood (Bollen's `FML` uses the `1/n` second-moment matrix). The text calls this matrix `S`.
+5. The directed edge set as a matrix. Figure 5 draws arrows, including arrows into GYLD, and does not print that matrix. The three bow theorems apply only after one directed edge of a three-trait recursive pattern is removed and that residual entry is freed.
+
+Standardized path coefficients are not a substitute for `S`. No wheat fit was computed.
+
+### Time
+
+This block ran from 08:44Z to about 08:52Z. The three consistency theorems were green by 08:51Z. The PDF hash check and the Campbell table reading occupied the same interval. Roughly ten minutes for the proofs and the same ten minutes, overlapping, for the data search.
+
+### Verification
+
+- `lake build` of `CorrelatedResiduals`, Lean 4.22.0, Mathlib v4.22.0, exited 0. New modules: `BowConsistency`, `BowConsistencyMore`.
+- `#print axioms` on `bow_continuous_mapping`, `bow01_continuous_mapping`, `bow23_continuous_mapping`, `plug_in_bow_consistent_ae`, `plug_in_bow_consistent_ae_of_second`, `plug_in_bow_consistent_ae_of_fourth`, `plug_in_bow01_consistent_ae`, and `plug_in_bow23_consistent_ae` reports only `propext`, `Classical.choice`, and `Quot.sound`.
+
+## Final closeout
+
+**Question answered:** The three bow-free plug-ins are almost surely consistent on their positive-definite domains for pairwise i.i.d. samples with integrable coordinate products (`plug_in_bow_consistent_ae`, `plug_in_bow01_consistent_ae`, `plug_in_bow23_consistent_ae`; general Lean proofs). The diagonal plug-in, the general-`n` recovery of `(B, Ψ, Γ, Φ)`, the three bow-free left inverses, the unitriangular uniqueness theorem, and the Gaussian delta-method formula remain as in the earlier blocks. The wheat sample covariance is not in the public paper or in Campbell et al. (2003), Table 2 (search lead / unresolved for a data fit; the missing inputs are listed above).
+
+**Question still open:** The parent request, a fit under correlated residuals on the wheat measurements, still needs the residual matrix, the marker codes, and a printed edge set. The central limit theorem behind the delta method is not a Lean theorem. The Drton–Foygel–Sullivant generic mixed-graph characterization, arXiv:1003.1146, Section 8, stays a harvested note with no canonical inventory id and no new claim. Issue #13 stays open. Draft PR #14 is the delivery; `master` was not updated.
+
+**Next proposed target (follow-up):** Given the five inputs listed above, run `recoverBow` on that sample covariance. Until those columns exist, there is no further numerical fit to compute. A Lean central limit theorem for `vech(zzᵀ)` is a separate development, larger than these continuity files.
+
+## Handoff
+
+Claim `refs/heads/claims/L-F102-correlated-residuals` was this session's reservation at `64f01d6b3b5b6da4a42c8edb183b3f802e717826` (session `c8f1c203-0ab7-4fd5-baca-667178087308`, start `2026-10-27T07:30:56Z`, issue #13, branch `cursor/l-f102-correlated-residuals-4c01`). It is released at this closeout by an expected-SHA delete. The work branch and draft PR #14 stay. No next block is reserved. The next action is the wheat-data fit described above, and it has no owner until someone holds those columns. Issue #13 was not closed and was not edited: earlier issue writes returned 403, and this environment's `gh` client is read-only. The handoff text for that issue is this section.

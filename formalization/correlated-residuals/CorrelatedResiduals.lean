@@ -6,3 +6,5 @@ import CorrelatedResiduals.Relabel
 import CorrelatedResiduals.Triangular
 import CorrelatedResiduals.Consistency
 import CorrelatedResiduals.Law
+import CorrelatedResiduals.BowConsistency
+import CorrelatedResiduals.BowConsistencyMore
