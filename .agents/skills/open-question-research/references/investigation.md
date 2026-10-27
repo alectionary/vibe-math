@@ -51,7 +51,21 @@ lock status from independent observation, and screen lock from sleep.
 Include every actively encountered paper, even when used only for a method or
 counterexample. Screen outside the immediate target topic. Do not infer no
 questions from a partial read; record blocked versions and unverified leads.
-Update the shared inventory and its coverage ledger before closing the block.
+Add each source to the shared collection the day it is found, including a
+blocked source and its fetch-issue URL. Do not wait for closeout. Update the
+shared inventory and its coverage ledger before closing the block.
+
+## Code and supplementary material
+
+Fill this when a numerical or simulation claim depends on code or a supplement.
+The row format is the acquisition skill's
+[availability ledger](../../document-acquisition-queue/SKILL.md#code-and-supplementary-material-ledger).
+
+| Place checked | UTC date | Result |
+|---|---|---|
+
+"Not available" requires a row for every place the ledger names. File a help
+issue when the gap is not a missing paper.
 
 ## Literature comparison
 
@@ -73,6 +87,7 @@ as separate findings, without repeatedly restating generic uncertainty.
 - Formal representation bridges still needed:
 - Attempts to break the final statement; exceptional parameters and counterchecks:
 - Headline claim → source question → paper theorem → Lean statement → checked evidence:
+- Before any discrepancy label: rendered page versus text layer, and assumptions turned off one at a time:
 
 | Exact claim | Evidence label | Proof / data / source locator | Assumptions and unresolved bridge |
 |---|---|---|---|

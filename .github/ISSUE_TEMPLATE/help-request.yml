@@ -1,0 +1,42 @@
+name: Help request
+description: Ask for a missing program, supplement, or other file that a fetch request does not fit.
+title: "help: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        File this when the gap is not a missing paper. A missing paper uses the document fetch request. Search open issues for the same item before filing.
+
+        Copy the dated availability ledger into the routes field. "Not available" needs one row per place already checked. Write ordinary https URLs only. Do not paste signed URLs, cookies, or credentials.
+  - type: textarea
+    id: what_is_missing
+    attributes:
+      label: What is missing
+      description: The file or supplement, named precisely, and the source it belongs to.
+      placeholder: The SAS programs named in the 2010 paper, DOI 10.1000/example.doi
+    validations:
+      required: true
+  - type: textarea
+    id: why_it_matters
+    attributes:
+      label: Why it matters
+      description: The claim or comparison that stays open without this file.
+    validations:
+      required: true
+  - type: textarea
+    id: routes_tried
+    attributes:
+      label: Routes already tried
+      description: One line per place. Include the place, the UTC date, and the result.
+      placeholder: |
+        Publisher supplement tab, 2026-10-27, no supplement listed
+        Author manuscript Man850, 2026-10-27, no code in the PDF
+    validations:
+      required: true
+  - type: textarea
+    id: unblock
+    attributes:
+      label: What would unblock it
+      description: The document, dataset, or permission that would let the check run.
+    validations:
+      required: true
