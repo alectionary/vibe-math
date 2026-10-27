@@ -360,6 +360,8 @@ graded claims, the availability section, and the pull-request description.
 - Omit the manuscript author line unless the user explicitly requests one. Do not
   substitute a collective label such as "Project Contributors". Preserve source
   author attribution in citations and the question/source/answer table.
+- Refer to each author by surname. Where a sentence needs a pronoun, follow
+  [author pronouns](../replication-paper/references/author-pronouns.md).
 - Lead with the proved result, counterexample or completed characterization.
   Identify each motivating source question by author, date, version and exact
   remark/conjecture/section, then give its specific answer and theorem/proof link.
