@@ -22,8 +22,10 @@ from urllib.parse import parse_qs, urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SKILL = ROOT / ".agents/skills/document-acquisition-queue"
+WORKER = ROOT / ".agents/skills/document-retrieval-worker"
 SCHEMA_PATH = SKILL / "schema/fetch-manifest.schema.json"
 EXAMPLE_PATH = SKILL / "examples/unl-aai3402936.manifest.json"
+CATALOG_PATH = WORKER / "routes.json"
 SEED_MANIFEST = ROOT / "literature/unl-sem/seed-source-manifest.json"
 POSITIVE_SHA = "d39a696d20d6df6d9467a8906e67c40f336c3856ac74637f8db6629ca9fcc9d2"
 POSITIVE_TEXT_SHA = "ed2977bdcd83119dfa4712654c2ce1e91b6af94934c6e4b8f4bf69a35b91a625"
@@ -53,20 +55,17 @@ EMBEDDED_SECRET = re.compile(
     r"\bbearer\s+|\bAKIA[0-9A-Z]{16}\b"
 )
 USERINFO = re.compile(r"https?://[^/\s:@]+:[^/\s@]+@")
-TEMPORARY_HOSTS = ("media.proquest.com",)
+ROUTE_ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*@[1-9][0-9]*$")
 TRANSPORT = {
     "bot_mitigation", "http_error", "browser_host_unavailable", "timeout",
     "network", "other",
 }
 ID_PATTERNS = {
-    "unl_aai": re.compile(r"^AAI\d+$"),
-    "unl_bepress": re.compile(r"^[a-z0-9]+/\d+$"),
-    "proquest_docview": re.compile(r"^\d+$"),
-    "proquest_publication": re.compile(r"^\d+$"),
-    "campaign_record": re.compile(r"^[A-Z0-9]+(?:-[A-Z0-9]+)+$"),
     "doi": re.compile(r"^10\.\d{4,9}/\S+$"),
     "arxiv": re.compile(r"^(?:\d{4}\.\d{4,5}(?:v\d+)?|[a-z-]+(?:\.[A-Z]+)?/\d{7})$"),
     "url": re.compile(r"^https://\S+$"),
+    "archive_record": re.compile(r"^[a-z][a-z0-9-]{1,40}:\S+$"),
+    "campaign_record": re.compile(r"^[A-Z0-9]+(?:-[A-Z0-9]+)+$"),
     "other": re.compile(r"^[a-z0-9][a-z0-9.+-]{1,40}:\S+$"),
 }
 MARKER = re.compile(r"<!--\s*fetch-manifest:\s*([A-Za-z0-9][A-Za-z0-9._-]*)\s*-->")
@@ -93,6 +92,73 @@ def walk_schema(schema, path="$schema"):
         elif key in {"allOf", "anyOf", "oneOf"}:
             for index, sub in enumerate(value):
                 walk_schema(sub, f"{path}.{key}[{index}]")
+
+
+def load_catalog():
+    catalog = json.loads(CATALOG_PATH.read_text())
+    if not isinstance(catalog, dict) or not isinstance(catalog.get("routes"), list):
+        raise SystemExit("route catalog has no routes")
+    seen = set()
+    for item in catalog["routes"]:
+        rid = item.get("id")
+        if not isinstance(rid, str) or not ROUTE_ID.fullmatch(rid):
+            raise SystemExit(f"bad catalog route id {rid}")
+        if rid in seen:
+            raise SystemExit(f"duplicate catalog route {rid}")
+        seen.add(rid)
+        if item.get("status") not in ("active", "retired"):
+            raise SystemExit(f"{rid} status")
+        if item.get("scope") not in ("generic", "site"):
+            raise SystemExit(f"{rid} scope")
+        if not isinstance(item.get("order"), int):
+            raise SystemExit(f"{rid} order")
+        if item["scope"] == "site" and not item.get("requires_prefixes"):
+            raise SystemExit(f"{rid} requires_prefixes")
+    for host in catalog.get("temporary_hosts", []):
+        if not isinstance(host, str) or "/" in host or not host:
+            raise SystemExit(f"bad temporary host {host}")
+    return catalog
+
+
+def route_applies(route, manifest):
+    schemes, prefixes = set(), set()
+    document = manifest.get("document") if isinstance(manifest.get("document"), dict) else {}
+    for item in document.get("stable_ids") or []:
+        if not isinstance(item, dict):
+            continue
+        schemes.add(item.get("scheme"))
+        value = item.get("value") or ""
+        if item.get("scheme") == "archive_record" and isinstance(value, str) and ":" in value:
+            prefixes.add(value.split(":", 1)[0])
+    if route.get("scope") == "site":
+        return bool(prefixes & set(route.get("requires_prefixes") or []))
+    needed = set(route.get("requires") or [])
+    return True if not needed else bool(schemes & needed)
+
+
+def applicable_missing(manifest, catalog=None):
+    catalog = catalog or load_catalog()
+    tried = {
+        route.get("route") for route in (manifest.get("routes_tried") or [])
+        if isinstance(route, dict) and route.get("route")
+    }
+    missing = []
+    for item in sorted(catalog["routes"], key=lambda row: row.get("order", 0)):
+        if item.get("status") != "active" or item["id"] in tried:
+            continue
+        if route_applies(item, manifest):
+            missing.append(item["id"])
+    return missing
+
+
+def routes_to_retry(manifest, catalog=None):
+    """Active applicable catalog routes absent from this manifest."""
+    return applicable_missing(manifest, catalog)
+
+
+def should_reopen_not_found(manifest, catalog=None):
+    catalog = catalog or load_catalog()
+    return manifest.get("outcome") == "not_found" and bool(applicable_missing(manifest, catalog))
 
 
 def resolve(schema, ref):
@@ -220,17 +286,17 @@ def norm_key(key):
     return re.sub(r"[^a-z0-9]", "", key.lower())
 
 
-def secret_errors(instance, path="$"):
+def secret_errors(instance, path="$", hosts=()):
     errors = []
     if isinstance(instance, dict):
         for key, value in instance.items():
             if norm_key(key) in SECRET_KEY_NORMS:
                 errors.append(f"{path}.{key}: secret material in field name")
-            errors += secret_errors(value, f"{path}.{key}")
+            errors += secret_errors(value, f"{path}.{key}", hosts)
         return errors
     if isinstance(instance, list):
         for index, value in enumerate(instance):
-            errors += secret_errors(value, f"{path}[{index}]")
+            errors += secret_errors(value, f"{path}[{index}]", hosts)
         return errors
     if not isinstance(instance, str):
         return errors
@@ -239,7 +305,7 @@ def secret_errors(instance, path="$"):
     for url in re.findall(r"https?://[^\s\"'<>]+", instance):
         parts = urlsplit(url)
         host = (parts.hostname or "").lower()
-        if any(host == name or host.endswith("." + name) for name in TEMPORARY_HOSTS):
+        if any(host == name or host.endswith("." + name) for name in hosts):
             errors.append(f"{path}: temporary media host {host}")
         for query_key in parse_qs(parts.query, keep_blank_values=True):
             if query_key.lower() in SECRET_QUERY:
@@ -247,8 +313,13 @@ def secret_errors(instance, path="$"):
     return errors
 
 
-def semantic_errors(manifest):
+def semantic_errors(manifest, catalog):
     errors = []
+    prefix_rules = {
+        item["prefix"]: re.compile(item["pattern"]) for item in catalog.get("identifier_prefixes", [])
+    }
+    catalog_ids = {item["id"] for item in catalog["routes"]}
+    hosts = tuple(host.lower() for host in catalog.get("temporary_hosts", []))
     document = manifest.get("document") or {}
     ids = document.get("stable_ids") or []
     seen = set()
@@ -260,6 +331,11 @@ def semantic_errors(manifest):
         pattern = ID_PATTERNS.get(scheme)
         if pattern and isinstance(value, str) and not pattern.fullmatch(value):
             errors.append(f"$.document.stable_ids[{index}]: {scheme} value does not match {pattern.pattern}")
+        if scheme == "archive_record" and isinstance(value, str) and ":" in value:
+            prefix, rest = value.split(":", 1)
+            rule = prefix_rules.get(prefix)
+            if rule and not rule.fullmatch(rest):
+                errors.append(f"$.document.stable_ids[{index}]: prefix {prefix} does not match {rule.pattern}")
         key = (scheme, value)
         if key in seen:
             errors.append(f"$.document.stable_ids[{index}]: duplicate stable id")
@@ -267,7 +343,7 @@ def semantic_errors(manifest):
         if scheme == "campaign_record":
             campaigns += 1
         if scheme == "url" and isinstance(value, str):
-            errors += secret_errors(value, f"$.document.stable_ids[{index}].value")
+            errors += secret_errors(value, f"$.document.stable_ids[{index}].value", hosts)
     if campaigns > 1:
         errors.append("$.document.stable_ids: more than one campaign_record")
     requested = manifest.get("requested_source_id")
@@ -279,6 +355,9 @@ def semantic_errors(manifest):
     route_ids = [route.get("id") for route in routes if isinstance(route, dict)]
     if len(route_ids) != len(set(route_ids)):
         errors.append("$.routes_tried: duplicate route id")
+    for index, route in enumerate(routes):
+        if isinstance(route, dict) and route.get("route") not in catalog_ids:
+            errors.append(f"$.routes_tried[{index}].route: {route.get('route')} is not in the route catalog")
     outcome = manifest.get("outcome")
     complete_bytes = [
         route for route in routes
@@ -308,6 +387,14 @@ def semantic_errors(manifest):
             errors.append("$.routes_tried: transport_failure requires a transport error category")
     if outcome == "needs_human" and complete_bytes:
         errors.append("$.routes_tried: needs_human cannot record complete bytes; use verified")
+    if outcome == "not_found":
+        if any(isinstance(route, dict) and route.get("obtained_bytes") is True for route in routes):
+            errors.append("$.routes_tried: not_found stored no document bytes")
+        if any(isinstance(route, dict) and route.get("error_category") != "not_found" for route in routes):
+            errors.append("$.routes_tried: not_found routes use error_category not_found")
+        missing = applicable_missing(manifest, catalog)
+        if missing:
+            errors.append("$.routes_tried: not_found is missing " + ", ".join(missing))
     completeness = manifest.get("completeness") if isinstance(manifest.get("completeness"), dict) else {}
     classification = completeness.get("classification")
     flags = {
@@ -352,7 +439,7 @@ def semantic_errors(manifest):
     if isinstance(artifact, dict):
         locator = ((artifact.get("storage") or {}).get("locator")) or ""
         if locator.startswith("/") or "\\" in locator or ".." in pathlib.PurePosixPath(locator).parts or "://" in locator:
-            errors.append("$.artifact.storage.locator: bot_local locator is a relative path")
+            errors.append("$.artifact.storage.locator: worker_local locator is a relative path")
         page_count = artifact.get("page_count")
         if isinstance(page_count, int):
             for index, candidate in enumerate(candidates):
@@ -369,21 +456,22 @@ def semantic_errors(manifest):
                 f"{counted} counts_as_target candidate"
             )
     producer = manifest.get("producer") if isinstance(manifest.get("producer"), dict) else {}
-    if producer.get("role") == "retrieval_bot":
+    if producer.get("role") == "retrieval_worker":
         issue = manifest.get("issue")
         if not isinstance(issue, dict) or not all(issue.get(key) for key in ("number", "url", "comment_url")):
-            errors.append("$.issue: retrieval_bot manifests name the issue number, url, and comment_url")
+            errors.append("$.issue: retrieval_worker manifests name the issue number, url, and comment_url")
         if screen.get("screen_owner") == "research_agent" and screen.get("status") == "completed":
-            errors.append("$.question_screen: retrieval bot cannot set a completed screen while screen_owner is research_agent")
-    errors += secret_errors(manifest)
+            errors.append("$.question_screen: retrieval worker cannot set a completed screen while screen_owner is research_agent")
+    errors += secret_errors(manifest, hosts=hosts)
     return errors
 
 
-def validate_manifest(manifest, schema=None):
+def validate_manifest(manifest, schema=None, catalog=None):
     schema = schema or load_schema()
+    catalog = catalog or load_catalog()
     if not isinstance(manifest, dict):
         return ["$: manifest is not an object"]
-    return check(manifest, schema, schema) + semantic_errors(manifest)
+    return check(manifest, schema, schema) + semantic_errors(manifest, catalog)
 
 
 def terminal_label(manifest):
@@ -394,6 +482,8 @@ def terminal_label(manifest):
         return "restricted"
     if outcome in ("preview_only", "needs_human"):
         return "needs-human"
+    if outcome == "not_found":
+        return "not-found"
     if outcome == "transport_failure":
         return None if manifest["retryable"] else "needs-human"
     raise ValueError(outcome)
@@ -489,7 +579,7 @@ def synthetic_ids(data):
     data["requested_source_id"] = "UNL-SEM-TEST"
     data["document"]["stable_ids"] = [
         {"scheme": "campaign_record", "value": "UNL-SEM-TEST"},
-        {"scheme": "unl_aai", "value": "AAI99999999"},
+        {"scheme": "archive_record", "value": "aai:AAI99999999"},
     ]
     data["document"]["title"] = "Synthetic fixture"
     data["document"]["author"] = "Test Author"
@@ -512,7 +602,10 @@ def self_check():
     assert example["document"]["title"] == control["title"]
     assert example["document"]["author"] == control["author"] and example["document"]["year"] == control["year"]
     values = {item["value"] for item in example["document"]["stable_ids"]}
-    assert {"AAI3402936", "305217740", "UNL-SEM-D067"} <= values
+    assert {"aai:AAI3402936", "proquest-docview:305217740", "UNL-SEM-D067"} <= values
+    catalog = load_catalog()
+    assert {route["route"] for route in example["routes_tried"]} <= {item["id"] for item in catalog["routes"]}
+    assert should_reopen_not_found(example, catalog) is False
     assert ledger_question_count(example, schema) is None
     assert terminal_label(example) == "fetched"
     assert any("example" in error for error in consumable(example, schema))
@@ -671,6 +764,7 @@ def self_check():
             "question_screen.status": "blocked",
             "routes_tried": [{
                 "id": "browser-host-down",
+                "route": "browser-download@1",
                 "url": "https://digitalcommons.unl.edu/dissertations/AAI99999999/",
                 "resolved_url": None,
                 "method": "browser",
@@ -705,7 +799,7 @@ def self_check():
         leads_only,
         **{
             "manifest_id": "bot-unl-aai3402936-candidates",
-            "producer.role": "retrieval_bot",
+            "producer.role": "retrieval_worker",
             "producer.name": "retrieval-bot",
             "issue": {
                 "repository": "alectionary/vibe-math",
@@ -732,7 +826,69 @@ def self_check():
     active = active_manifests([example, successor])
     assert [item["manifest_id"] for item in active] == ["example-unl-aai3402936-r2"]
     assert len(active_manifests([example, mutated(example, **{"manifest_id": "example-unl-aai3402936-alt"})])) == 2
-    print("PASS: fetch-manifest self-check (positive control, preview, unreadable, secrets, labels).")
+    expect_fail(
+        "unknown route",
+        mutated(example, **{"routes_tried.0.route": "not-a-route@1"}),
+        "route catalog", schema,
+    )
+
+    def miss(route_id, number):
+        return {
+            "id": f"try-{route_id.split('@')[0]}-{number}",
+            "route": route_id,
+            "url": "https://example.test/source",
+            "resolved_url": None,
+            "method": "browser" if "browser" in route_id else "headless",
+            "attempted_at": "2026-10-26T23:10:00Z",
+            "http_status": 404,
+            "error_category": "not_found",
+            "obtained_bytes": False,
+            "notes": "No public copy from this route.",
+        }
+
+    not_found = synthetic_ids(mutated(
+        transport,
+        **{
+            "manifest_id": "example-synthetic-not-found",
+            "outcome": "not_found",
+            "retryable": False,
+            "campaign_id": None,
+            "notes": "Synthetic not_found fixture for a DOI with no public copy.",
+        },
+    ))
+    not_found["requested_source_id"] = "10.0000/example.notfound"
+    not_found["document"]["title"] = "Synthetic missing paper"
+    not_found["document"]["stable_ids"] = [
+        {"scheme": "doi", "value": "10.0000/example.notfound"},
+        {"scheme": "url", "value": "https://example.test/source"},
+    ]
+    needed = [
+        item["id"] for item in sorted(catalog["routes"], key=lambda row: row["order"])
+        if item["status"] == "active" and route_applies(item, not_found)
+    ]
+    not_found["routes_tried"] = [miss(route_id, index + 1) for index, route_id in enumerate(needed)]
+    expect_ok("not_found covers applicable routes", not_found, schema)
+    assert terminal_label(not_found) == "not-found"
+    assert ledger_question_count(not_found, schema) is None
+    assert routes_to_retry(not_found, catalog) == []
+    assert should_reopen_not_found(not_found, catalog) is False
+    short = copy.deepcopy(not_found)
+    short["routes_tried"] = short["routes_tried"][:-1]
+    expect_fail("not_found missing a route", short, "missing", schema)
+    grown = copy.deepcopy(catalog)
+    grown["routes"] = list(catalog["routes"]) + [{
+        "id": "openalex-oa@2",
+        "order": 31,
+        "scope": "generic",
+        "requires": [],
+        "tool": "curl",
+        "status": "active",
+        "summary": "Catalog bump used only by the self-check.",
+    }]
+    assert routes_to_retry(not_found, grown) == ["openalex-oa@2"]
+    assert should_reopen_not_found(not_found, grown) is True
+    assert should_reopen_not_found(example, grown) is False
+    print("PASS: fetch-manifest self-check (positive control, preview, unreadable, secrets, labels, not_found).")
 
 
 def main(argv):

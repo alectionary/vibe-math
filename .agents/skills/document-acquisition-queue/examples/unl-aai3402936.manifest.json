@@ -19,11 +19,26 @@
     "year": 2010,
     "document_type": "doctoral_dissertation",
     "stable_ids": [
-      {"scheme": "campaign_record", "value": "UNL-SEM-D067"},
-      {"scheme": "unl_aai", "value": "AAI3402936"},
-      {"scheme": "unl_bepress", "value": "cehsdiss/68"},
-      {"scheme": "proquest_docview", "value": "305217740"},
-      {"scheme": "proquest_publication", "value": "3402936"}
+      {
+        "scheme": "campaign_record",
+        "value": "UNL-SEM-D067"
+      },
+      {
+        "scheme": "archive_record",
+        "value": "aai:AAI3402936"
+      },
+      {
+        "scheme": "archive_record",
+        "value": "bepress:cehsdiss/68"
+      },
+      {
+        "scheme": "archive_record",
+        "value": "proquest-docview:305217740"
+      },
+      {
+        "scheme": "archive_record",
+        "value": "proquest-publication:3402936"
+      }
     ]
   },
   "routes_tried": [
@@ -36,7 +51,8 @@
       "http_status": 403,
       "error_category": "bot_mitigation",
       "obtained_bytes": false,
-      "notes": "Bot-mitigation response on the bepress Download control. Not an access restriction."
+      "notes": "Bot-mitigation response on the bepress Download control. Not an access restriction.",
+      "route": "unl-bepress-headless@1"
     },
     {
       "id": "unl-viewcontent-dissertations-12278",
@@ -47,7 +63,8 @@
       "http_status": 403,
       "error_category": "bot_mitigation",
       "obtained_bytes": false,
-      "notes": "Bot-mitigation response on the AAI3402936 Download control."
+      "notes": "Bot-mitigation response on the AAI3402936 Download control.",
+      "route": "unl-bepress-headless@1"
     },
     {
       "id": "proquest-openurl-3402936",
@@ -58,7 +75,8 @@
       "http_status": 200,
       "error_category": null,
       "obtained_bytes": false,
-      "notes": "OpenURL resolved publication 3402936 to docview 305217740. This route stored no PDF bytes."
+      "notes": "OpenURL resolved publication 3402936 to docview 305217740. This route stored no PDF bytes.",
+      "route": "proquest-openurl@1"
     },
     {
       "id": "proquest-docview-305217740",
@@ -69,7 +87,8 @@
       "http_status": 200,
       "error_category": null,
       "obtained_bytes": true,
-      "notes": "Open-access Download PDF. The temporary media URL is omitted; only docview 305217740 is stored."
+      "notes": "Open-access Download PDF. The temporary media URL is omitted; only docview 305217740 is stored.",
+      "route": "proquest-browser@1"
     }
   ],
   "artifact": {
@@ -79,7 +98,7 @@
     "page_count": 283,
     "committed_to_git": false,
     "storage": {
-      "kind": "bot_local",
+      "kind": "worker_local",
       "locator": "local-extraction/literature/unl-sem/retrieval-repair/UNL-SEM-D067.pdf",
       "cross_machine": false
     }
@@ -111,5 +130,5 @@
     "candidates": [],
     "screen_owner": "research_agent"
   },
-  "notes": "Schema fixture for the verified positive control UNL AAI3402936 / ProQuest docview 305217740. Route timestamps are placeholders; the historical retrieval audit did not record clock times. Byte length, page count, PDF sha256, and text sha256 match literature/unl-sem/seed-source-manifest.json. Question count stays null: a verified PDF is not a completed question screen, and this fixture does not repeat the later ledger screen. producer.role example is not merged into a canonical ledger."
+  "notes": "Schema fixture for the verified positive control UNL AAI3402936 / ProQuest docview 305217740. Route timestamps are placeholders; the historical retrieval audit did not record clock times. Byte length, page count, PDF sha256, and text sha256 match literature/unl-sem/seed-source-manifest.json. Question count stays null: a verified PDF is not a completed question screen, and this fixture does not repeat the later ledger screen. producer.role example is not merged into a canonical ledger. Catalog route ids are unl-bepress-headless@1, proquest-openurl@1, and proquest-browser@1."
 }

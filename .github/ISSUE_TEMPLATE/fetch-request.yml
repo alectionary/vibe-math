@@ -1,5 +1,5 @@
 name: Document fetch request
-description: Queue retrieval of one complete source for the acquisition bot.
+description: Queue retrieval of one complete public source for any retrieval worker.
 title: "fetch: "
 labels:
   - fetch-request
@@ -7,44 +7,42 @@ body:
   - type: markdown
     attributes:
       value: |
-        File this when a research block needs a complete text and this environment cannot verify it. One issue per stable source. Search open issues for that id before filing.
+        File this when a research block needs a complete text and this environment cannot verify it. The source may be any public paper. One issue per stable source. Search open issues for that id before filing.
 
-        The retrieval bot claims the issue, fetches on its own VM, and posts an immutable manifest comment. It does not edit literature ledgers. The research agent merges the manifest and then closes the issue.
+        A retrieval worker claims the issue, fetches with ordinary tools, and posts an immutable manifest comment. It does not edit literature ledgers. The research agent merges the manifest and then closes the issue. Any agent may be the worker.
 
-        Write stable ids and ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview or unreadable file is not a finished question screen.
+        Identify the source by DOI, arXiv id, canonical URL, or archive record id, plus title, author, and year. Write ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview, a front-matter file, or an unreadable extraction is not a finished question screen.
 
-        Label lifecycle, once those labels exist: `fetch-request` to `fetch-claimed` to `fetched`, `restricted`, or `needs-human`. The `fetch-request` label on this form applies only after the repository has that label.
+        Label lifecycle: `fetch-request` to `fetch-claimed`, then `fetched`, `restricted`, `needs-human`, or `not-found`. `not-found` means the applicable public routes found no copy and is reopened only when the route catalog gains a new applicable route.
   - type: input
     id: stable_source_id
     attributes:
       label: Stable source ID
-      description: Campaign or archive id that stays the same when a mirror URL changes. Example UNL-SEM-D067.
-      placeholder: UNL-SEM-D067
+      description: DOI, arXiv id, canonical URL, or archive record id. This id stays the same when a mirror URL changes.
+      placeholder: 10.1000/example.doi
     validations:
       required: true
   - type: textarea
     id: stable_id_aliases
     attributes:
       label: Other stable IDs
-      description: One scheme and value per line. Example unl_aai AAI3402936, proquest_docview 305217740, proquest_publication 3402936, doi, or arXiv.
+      description: One scheme and value per line. Schemes are doi, arxiv, url, archive_record, and campaign_record.
       placeholder: |
-        unl_aai AAI3402936
-        proquest_docview 305217740
-    validations:
-      required: true
+        arxiv 1234.56789
+        url https://example.test/paper
   - type: input
     id: title
     attributes:
       label: Title
-      description: Title as given by the archive or publisher record.
-      placeholder: CONSTRUCTING A CREATIVE SELF-EFFICACY INVENTORY
+      description: Title as given by the publisher, repository, or preprint record.
+      placeholder: Example paper title
     validations:
       required: true
   - type: input
     id: author
     attributes:
       label: Author
-      placeholder: Daniel H. Abbott
+      placeholder: Author Name
     validations:
       required: true
   - type: input
@@ -52,7 +50,7 @@ body:
     attributes:
       label: Year
       description: Four-digit publication year.
-      placeholder: "2010"
+      placeholder: "2020"
     validations:
       required: true
   - type: dropdown
@@ -60,10 +58,10 @@ body:
     attributes:
       label: Document type
       options:
-        - doctoral_dissertation
-        - masters_thesis
         - article
         - preprint
+        - doctoral_dissertation
+        - masters_thesis
         - book
         - report
         - other
@@ -73,10 +71,8 @@ body:
     id: campaign_id
     attributes:
       label: Campaign
-      description: Parent campaign id. Example UNL-SEM-2001.
-      placeholder: UNL-SEM-2001
-    validations:
-      required: true
+      description: Optional. Leave blank when the paper is not part of a campaign.
+      placeholder: CAMPAIGN-ID
   - type: dropdown
     id: priority
     attributes:
@@ -93,7 +89,7 @@ body:
     id: blocker_category
     attributes:
       label: Blocker category
-      description: Why this environment stopped. Bot mitigation is not an access restriction.
+      description: Why this environment stopped. Bot mitigation is not an access restriction. No public copy is not a transport failure.
       options:
         - bot_mitigation
         - browser_host_unavailable
@@ -107,10 +103,10 @@ body:
     id: routes_attempted
     attributes:
       label: Routes already attempted
-      description: Each line is a method, a durable https URL or stable id, and the result. Omit signed queries and cookies.
+      description: Each line is a catalog route id when known, a method, a durable https URL or stable id, and the result. Omit signed queries and cookies.
       placeholder: |
-        headless https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1067&context=cehsdiss -> 403 bot_mitigation
-        browser host unavailable before navigation
+        doi-resolution@1 curl https://doi.org/10.1000/example.doi -> bot check
+        browser-download@1 browser did not start
     validations:
       required: true
   - type: textarea
@@ -118,7 +114,7 @@ body:
     attributes:
       label: What failed
       description: The concrete failure in this environment, and which text is still needed.
-      placeholder: Headless Download controls returned bot-mitigation responses and the browser host never connected.
+      placeholder: DOI resolution returned a bot check and the browser did not start.
     validations:
       required: true
   - type: checkboxes
@@ -130,5 +126,5 @@ body:
           required: true
         - label: This request contains no signed URLs, cookies, or credentials.
           required: true
-        - label: Routes already attempted are listed, including bot-mitigation and browser-host failures.
+        - label: Routes already attempted are listed, including bot checks and browser failures.
           required: true

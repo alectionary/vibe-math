@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "fetch-manifest.schema.json",
   "title": "FetchResultManifest",
-  "description": "Immutable result posted by the retrieval bot on a fetch-request issue. Version 0.1 stores artifact bytes only as bot-local provenance. Question count is null unless the screen status is completed on a verified, readable, complete text.",
+  "description": "Immutable result posted by a retrieval worker on a fetch-request issue. Version 0.1 stores artifact bytes only as worker-local provenance. Question count is null unless the screen status is completed on a verified, readable, complete text. Route ids come from the worker route catalog.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -38,7 +38,11 @@
     },
     "recorded_at": {"type": "string", "format": "date-time"},
     "producer": {"$ref": "#/$defs/producer"},
-    "campaign_id": {"type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)+$"},
+    "campaign_id": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)+$",
+      "description": "Null when the source is not part of a campaign."
+    },
     "priority": {"enum": ["low", "normal", "high"]},
     "retryable": {
       "type": "boolean",
@@ -46,7 +50,7 @@
     },
     "requested_source_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{2,120}$"},
     "outcome": {
-      "enum": ["verified", "preview_only", "restricted", "transport_failure", "needs_human"]
+      "enum": ["verified", "preview_only", "restricted", "transport_failure", "needs_human", "not_found"]
     },
     "issue": {
       "anyOf": [
@@ -120,7 +124,7 @@
     },
     {
       "if": {
-        "properties": {"outcome": {"enum": ["transport_failure", "restricted"]}},
+        "properties": {"outcome": {"enum": ["transport_failure", "restricted", "not_found"]}},
         "required": ["outcome"]
       },
       "then": {
@@ -169,7 +173,7 @@
     },
     {
       "if": {
-        "properties": {"outcome": {"enum": ["verified", "preview_only", "restricted"]}},
+        "properties": {"outcome": {"enum": ["verified", "preview_only", "restricted", "not_found"]}},
         "required": ["outcome"]
       },
       "then": {
@@ -316,8 +320,8 @@
       "required": ["role", "name"],
       "properties": {
         "role": {
-          "enum": ["retrieval_bot", "example"],
-          "description": "example marks the committed fixture. Do not merge it into a ledger."
+          "enum": ["retrieval_worker", "example"],
+          "description": "retrieval_worker is any agent that posts a manifest. example marks the committed fixture and is not merged."
         },
         "name": {"type": "string", "minLength": 1, "maxLength": 120}
       }
@@ -366,14 +370,11 @@
       "properties": {
         "scheme": {
           "enum": [
-            "unl_aai",
-            "unl_bepress",
-            "proquest_docview",
-            "proquest_publication",
-            "campaign_record",
             "doi",
             "arxiv",
             "url",
+            "archive_record",
+            "campaign_record",
             "other"
           ]
         },
@@ -385,6 +386,7 @@
       "additionalProperties": false,
       "required": [
         "id",
+        "route",
         "url",
         "resolved_url",
         "method",
@@ -396,6 +398,11 @@
       ],
       "properties": {
         "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$"},
+        "route": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*@[1-9][0-9]*$",
+          "description": "Catalog id and version from the worker route list, such as openalex-oa@1."
+        },
         "url": {"type": "string", "format": "uri"},
         "resolved_url": {"type": ["string", "null"], "format": "uri"},
         "method": {"enum": ["headless", "browser", "openurl", "mirror", "manual"]},
@@ -415,6 +422,7 @@
             "identity_mismatch",
             "incomplete_document",
             "extraction_unreadable",
+            "not_found",
             "other"
           ]
         },
@@ -425,7 +433,7 @@
     "artifact": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Bytes the bot actually stored. bot_local locators are provenance for that machine, not a promise another checkout has the file. v0.1 has no release or bucket kind.",
+      "description": "Bytes the worker stored. worker_local locators are provenance for that machine, not a promise another checkout has the file. v0.1 has no release or bucket kind.",
       "required": [
         "media_type",
         "sha256",
@@ -445,7 +453,7 @@
           "additionalProperties": false,
           "required": ["kind", "locator", "cross_machine"],
           "properties": {
-            "kind": {"const": "bot_local"},
+            "kind": {"const": "worker_local"},
             "locator": {"type": "string", "minLength": 1, "maxLength": 300},
             "cross_machine": {"const": false}
           }
@@ -521,7 +529,7 @@
           "type": "array",
           "items": {"$ref": "#/$defs/candidate"}
         },
-        "screen_owner": {"enum": ["research_agent", "retrieval_bot"]}
+        "screen_owner": {"enum": ["research_agent", "retrieval_worker"]}
       }
     },
     "candidate": {

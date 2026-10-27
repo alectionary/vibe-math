@@ -139,7 +139,9 @@ After the attempts above, a missing complete PDF is a handoff, not a reason to
 keep retrying the same failure. Use the
 [document acquisition queue](../../document-acquisition-queue/SKILL.md): one
 `fetch-request` issue per stable source, then work that does not need that text.
-At the next research block, merge any manifest the retrieval bot has posted.
-Archive route notes for that handoff are in
-[archive routes](../../document-acquisition-queue/references/archive-routes.md).
+At the next research block, merge any manifest a retrieval worker has posted.
+The worker procedure is
+[document retrieval](../../document-retrieval-worker/SKILL.md). Site notes,
+read only when the source matches, are in
+[that skill's references](../../document-retrieval-worker/references/unl-proquest.md).
 The checks in this file are what to try before filing.
