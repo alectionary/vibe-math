@@ -75,6 +75,20 @@ def verify(data,root):
      v=simple([phase(v,h) for v in dictionary['X_left_dictionary'][a]],dictionary['X_right_factors'][c]) if side=='X' else simple(dictionary['Z_left_factors'][c],[phase(v,h) for v in dictionary['Z_right_dictionary'][a]])
      key=freeze(v);assert key in lookup and key not in seen;seen.add(key);mapping.append((lookup[key],a,c,h))
   assert len(seen)==720;maps[side]=mapping
+ # Independent physical sector exchange bridge, including every coefficient basis.
+ ex=data['sector_exchange'];ecols=columns(ex['R_matrix']);Pcols=ex['P_columns'];Qrows=ex['Q_rows']
+ assert all(any(a.bit_count()%2 or b.bit_count()%2 for a,b in [plus(product(M[0][0],M[1][1]),product(M[0][1],M[1][0]))]) for M in [Pcols,Qrows])
+ for i in range(128):
+  v=unpacked(1<<i);out=[(0,0)]*4
+  for r in range(2):
+   for c in range(2):
+    for a in range(2):
+     for b in range(2):out[2*c+r]=plus(out[2*c+r],product(product(Pcols[a][r],v[2*a+b]),Qrows[b][c]))
+  assert packed(out)==linear(ecols,1<<i)
+ perm=[0,1,4,5,2,3,6,7]
+ for i in range(128):
+  orig=1<<i;exorig=sum(((orig>>(16*perm[b]))&MASK)<<(16*b) for b in range(8));z=unpacked(linear(D,exorig));assert linear(ecols,linear(C,orig))==packed([(a^b,a) for a,b in z])
+ assert all(linear(ecols,x)==packed(z) for x,z in zip(sxpacked,SZ))
  # Independent thin-module and type-rank checks.
  for side in ['X','Z']:
   U=dictionary['X_left_dictionary'] if side=='X' else dictionary['Z_right_dictionary'];B=dictionary['X_right_factors'] if side=='X' else dictionary['Z_left_factors'];q=data['span_constraints']['thin_factors'][side]['trace_functional_q']
@@ -98,9 +112,11 @@ def verify(data,root):
  for side in ['X','Z']:
   for subset in range(512):assert sum(n for i,n in enumerate(counts[side]) if subset>>i&1)<=normal[side][subset]
  # The field operator gives the inverse identity K^2+K+I=0 in every full basis.
- O=columns(dictionary['Omega_original_coordinates']);assert all(linear(O,linear(O,1<<i))^linear(O,1<<i)^(1<<i)==0 for i in range(128))
+ O=columns(dictionary['Omega_original_coordinates'])
+ for i in range(128):assert linear(C,linear(O,1<<i))==packed([product((0,1),v) for v in unpacked(linear(C,1<<i))])
+ assert all(linear(O,linear(O,1<<i))^linear(O,1<<i)^(1<<i)==0 for i in range(128))
  for i in range(128):assert sum(((O[j]>>i)&1)*((O[i]>>j)&1) for j in range(128) if i!=j)%2==1
- return {'status':'PASS','exact_coordinate_basis_checks':16384,'pool_determinants_checked':1440,'full_pool_pairings_checked':518400,'complete_cartesian_pool_equality':True,'type_subsets_checked':1024,'partial88_rank_constraints':'PASS','field_operator_inverse_identity':'PASS','source_question_answered':False}
+ return {'status':'PASS','exact_coordinate_basis_checks':16384,'pool_determinants_checked':1440,'full_pool_pairings_checked':518400,'complete_cartesian_pool_equality':True,'sector_exchange_basis_checks':128,'type_subsets_checked':1024,'partial88_rank_constraints':'PASS','field_operator_inverse_identity':'PASS','source_question_answered':False}
 
 if __name__=='__main__':
  ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path);ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();result=verify(json.loads(args.certificate.read_text()),Path(__file__).parent);args.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result))
