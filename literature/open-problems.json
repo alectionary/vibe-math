@@ -12300,7 +12300,7 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "truncated_distance12_source_questions",
     "added_on": "2026-10-25",
-    "lean_discovery_note": "2026-10-27 takeover audited physical pool coordinates and repaired a missing-partner bug. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The four-hour continuation independently reimplements the complete weight-through-17 physical enumeration (47,708,679 nodes, all68 roots,45 weight16 orbits), checks the sector exchange and mixed-Pauli bridge, and retains the unresolved16-or18 width. No Lean certificate; exact-target Lean discovery remains unassessed. All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate. The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion.",
+    "lean_discovery_note": "2026-10-27 takeover audited physical pool coordinates and repaired a missing-partner bug. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The four-hour continuation independently reimplements the complete weight-through-17 physical enumeration (47,708,679 nodes, all68 roots,45 weight16 orbits), checks the sector exchange and mixed-Pauli bridge, and retains the unresolved16-or18 width. No Lean certificate; exact-target Lean discovery remains unassessed. All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate. The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion. Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion.",
     "research_progress": [
       {
         "title": "88-pair width-16 partial canonical frame; f still 16 or 18",
@@ -12357,6 +12357,13 @@
         "evidence": "exact_finite_computation",
         "lean_sources": [],
         "contribution": "Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate."
+      },
+      {
+        "title": "Exact pool tensor normal form and inverse restrictions; full frame unresolved",
+        "report": "formalization/canonical-width/c16/INVERSION.md",
+        "evidence": "written_proof_and_exact_finite_certificates",
+        "lean_sources": [],
+        "contribution": "Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion."
       }
     ],
     "remaining_project_questions": [
@@ -12369,6 +12376,11 @@
     "structural_comparison": {
       "report": "formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md",
       "verification": "formalization/canonical-width/c16/structural-results/verification.json",
+      "canonical_target_answered": false
+    },
+    "pool_inversion": {
+      "report": "formalization/canonical-width/c16/INVERSION.md",
+      "verification": "formalization/canonical-width/c16/inversion-results/verification.json",
       "canonical_target_answered": false
     }
   },
