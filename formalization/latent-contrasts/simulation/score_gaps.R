@@ -1,7 +1,14 @@
-# Compare validate_gaps.R to the printed N=240 tables.
+# Compare a Monte Carlo summary to the printed N=240 tables.
 # The printed SE is the standard error of the Monte Carlo mean
 # (sd / sqrt(10000) in the public summary script).
-# A gap is outside simulation noise when it exceeds two combined standard errors.
+#
+# The agreement check for the 30 rejection rates is a two-sided normal test
+# on each rate. The uncorrected 5% critical value is qnorm(0.975) = 1.96.
+# The paper's 2-SE band is that rule with 2 in place of 1.96.
+# Bonferroni and Holm are applied to those 30 two-sided p-values only.
+# qnorm(1 - 0.05/30) is about 2.94 and is the one-sided Bonferroni critical
+# value. The two-sided Bonferroni critical value is qnorm(1 - 0.05/(2*30)).
+# The dissertation's own Wald tests at alpha = 0.05 are not part of this family.
 #
 # Usage: Rscript score_gaps.R [validate_csv] [out_csv]
 
@@ -64,8 +71,8 @@ conv_printed <- data.frame(
   rate = c(98.86, 98.11, 89.29, 100, 100)
 )
 
-classify <- function(diff, se) {
-  ifelse(abs(diff) <= 2 * se, "within noise", "outside noise")
+classify <- function(diff, se, zcrit = 2) {
+  ifelse(abs(diff) <= zcrit * se, "within noise", "outside noise")
 }
 
 rows <- list()
@@ -93,9 +100,70 @@ for (i in seq_len(nrow(printed))) {
   )
 }
 tab <- do.call(rbind, rows)
+tab$z_pct <- tab$pct_diff / tab$pct_se
+tab$p_pct <- 2 * stats::pnorm(-abs(tab$z_pct))
+m <- nrow(tab)
+alpha <- 0.05
+z_unc <- stats::qnorm(1 - alpha / 2)
+z_bonf_one <- stats::qnorm(1 - alpha / m)
+z_bonf_two <- stats::qnorm(1 - alpha / (2 * m))
+tab$call_z2 <- classify(tab$pct_diff, tab$pct_se, 2)
+tab$call_unc <- ifelse(tab$p_pct <= alpha, "outside noise", "within noise")
+tab$call_bonf_two <- ifelse(tab$p_pct <= alpha / m, "outside noise", "within noise")
+tab$call_z294 <- classify(tab$pct_diff, tab$pct_se, z_bonf_one)
+ord <- order(tab$p_pct)
+holm_cut <- alpha / (m - seq_len(m) + 1)
+holm_reject <- rep(FALSE, m)
+for (i in seq_along(ord)) {
+  if (tab$p_pct[[ord[[i]]]] <= holm_cut[[i]]) {
+    holm_reject[[ord[[i]]]] <- TRUE
+  } else {
+    break
+  }
+}
+rank_of <- match(seq_len(m), ord)
+tab$holm_cut <- holm_cut[rank_of]
+tab$call_holm <- ifelse(holm_reject, "outside noise", "within noise")
+
+k_z2 <- sum(tab$call_z2 == "outside noise")
+k_unc <- sum(tab$call_unc == "outside noise")
+k_bonf <- sum(tab$call_bonf_two == "outside noise")
+k_z294 <- sum(tab$call_z294 == "outside noise")
+k_holm <- sum(tab$call_holm == "outside noise")
+# Upper-tail binomial test. Contrasts that share a cell are dependent, so this
+# p-value treats the 30 rates as independent and is not an exact test.
+bin_z2 <- stats::binom.test(k_z2, m, p = alpha, alternative = "greater")
+bin_unc <- stats::binom.test(k_unc, m, p = alpha, alternative = "greater")
+
 write.csv(tab, out, row.names = FALSE)
-print(tab[, c("kind", "cond", "setting", "contrast", "our_est", "est_call",
-              "our_pct", "printed_pct", "pct_diff", "pct_se", "pct_call")])
+summary_path <- sub("\\.csv$", "_multiplicity.csv", out)
+summary <- data.frame(
+  rule = c(
+    "two_se_band",
+    "uncorrected_two_sided_5pct",
+    "bonferroni_z_one_sided",
+    "bonferroni_two_sided",
+    "holm_two_sided"
+  ),
+  critical_z = c(2, z_unc, z_bonf_one, z_bonf_two, NA),
+  alpha_per_test = c(2 * stats::pnorm(-2), alpha, alpha / m, alpha / m, NA),
+  n_outside = c(k_z2, k_unc, k_z294, k_bonf, k_holm),
+  n_tests = m,
+  binomial_p_greater = c(
+    bin_z2$p.value, bin_unc$p.value, NA, NA, NA
+  ),
+  stringsAsFactors = FALSE
+)
+write.csv(summary, summary_path, row.names = FALSE)
+print(tab[, c("kind", "cond", "setting", "contrast", "z_pct", "p_pct",
+              "call_z2", "call_bonf_two", "call_holm")])
+cat("\n")
+print(summary)
+cat(sprintf(
+  "\nBinomial test of %d misses out of %d at p=0.05, two-SE band: p = %.4g\n",
+  k_z2, m, bin_z2$p.value
+))
+cat("Dependence: the three contrasts in a cell use the same replicates.\n")
 
 cat("\nconvergence, our optim rate versus Table 4.5\n")
 for (i in seq_len(nrow(conv_printed))) {
