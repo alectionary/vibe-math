@@ -557,3 +557,24 @@ UTC start 19:08:25. The scans finished at about 19:20. The paper update followed
 **Question still open:** A design stated in the simulation paragraph whose three SEM powers are jointly near 64, 77, and 96. The wheat fit, the mixed-graph characterization, and a Lean central limit theorem are unchanged.
 
 **Next proposed target (follow-up):** The wheat-data fit, once the residual matrix, the marker codes, and a printed edge set exist. No next block is reserved.
+
+
+## Literature index, 2026-10-27
+
+The replication sources are now ledger rows. PDFs are in ignored `local-extraction/` only.
+
+| Id | Source | Outcome |
+|---|---|---|
+| F102 | Man850, hash `27c4f3926c9b5af9b399c9b3ef36918c28e7967ef777444b620279dd91628a81` | Already screened. The supplied file matches that hash. No additional question. |
+| F103 | Genetics Research HTML, plus Man851 SHA-256 `630a5e7b90665fd680d58915f6f9fe45e5051e8a5f6fff6af2cf16f8ae3b3739` | The four method directions stay the recorded targets. The ARS manuscript repeats them, including the SAS email offer. No additional mathematical question. |
+| F107 | Hidalgo-Contreras et al. 2021 | Already screened. A second MDPI download was not substituted for the stored hash. No additional question. |
+| F143 | Mi, Eskridge, and Wang 2008, DOI 10.4148/2475-7772.1095, SHA-256 `ab2cc7ddc94025609cdaa83a6353b22dcdbb4693fedf2b70df71f5fc8aa1452a` | Full text screened. No additional mathematical target. Table 2 text layer: multi-trait SEM overall power 91, multi-trait LS overall 90, single-trait LS 2, 39, 4 and overall 42. |
+| F144 | Brito and Pearl 2002 | Full text screened. The unsolved-criterion sentence is the predecessor of L-F145-generic-mixed-graph, not a second target. |
+| F145 | Drton, Foygel, and Sullivant 2011 | Section 8 recorded as L-F145-generic-mixed-graph. |
+| F146 | Foygel, Draisma, and Drton 2012 | The same generic problem, plus L-F146-half-trek-gap. |
+| F147 | Drton and Weihs, arXiv:1504.02992v1 | L-F147-polytime-ancestral. |
+| F148 | Li et al. 2006 | Full text screened. No additional mathematical target. |
+| F150 | Campbell et al. 2003 | Access gap. Question count left null. |
+| F151 | Valente et al. 2010 | Access gap. Question count left null. |
+
+Jiang and Zeng (1995) and Churchill and Doerge (1994) stay bibliography-only. They were not re-read, and no zero question count was entered.
