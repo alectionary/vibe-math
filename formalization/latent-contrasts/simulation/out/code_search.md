@@ -22,11 +22,15 @@ Authenticated code and repository search, plus a shallow clone of every public r
 | `NA*i1 extension:R` | 1 hit, `Jacky222334/GCLS-CAT2` `analysis/factor_analysis/esem_analysis.R`. Not this study. |
 | `user:jjeffries13 set.seed(1313)` | 0 |
 | `"Navigating Non-Orthogonality"` | 6 hits, all in `alectionary/vibe-math` |
-| `user:jjeffries13 simsem` | HTTP 429, then not retried as a second code query. The clone grep below covers it. |
-| `"1*1" simsem extension:R` | HTTP 429 |
-| `set.seed(1313) extension:R` | HTTP 429 |
-| `"latent contrasts" Jeffries` | HTTP 429 |
-| `filename:mgcfa_model.R` | HTTP 429 |
+| `user:jjeffries13 simsem` | First try HTTP 429. Retry 2026-10-28: total 0. The clone of `jjeffries13/APA_2024` does contain `simsem` in `simulations/data_sims.R`, so this code-search index missed that file. |
+| `"1*1" simsem extension:R` | First try HTTP 429. Retry: total 5. `simsem/simsem` examples `ex6.R`, `ex12.R`, `ex25.R`, plus `cjrwebb/aqm-taster-sem` and `cjrwebb/sem-pgrt`. Not this dissertation. |
+| `set.seed(1313) extension:R` | First try HTTP 429. Retry: total 135. First page is `ModelOriented/DALEX`, `pbiecek/ema`, and `ModelOriented/iBreakDown`. The scoped query `user:jjeffries13 set.seed(1313)` is 0. |
+| `"latent contrasts" Jeffries` | First try HTTP 429. Retry: total 0. |
+| `filename:mgcfa_model.R` | First try HTTP 429. Retry: total 0. |
+| `filename:mimic_model.R` | Retry: total 8. ProtoMotions docs, `jinpeng01/AIG_CL`, and `soffiafdz` mediation scripts. Not this dissertation. |
+| `filename:mgcfa_results.R` | Retry: total 0. |
+| `exportData 13131 extension:R` | Retry: total 0. |
+| `"seed = 13131" extension:R` | Retry: total 3. `Permian-Global-Research/science-letter-west-et-al` and `itchyshin/gllvmTMB`. Code search did not return `jjeffries13/APA_2024`, which the clone shows does pass `seed = 13131` to `exportData`. |
 | `Jay Jeffries Bovaird` | 85 hits. First is `jjeffries13/ACEs_2025`, a different project. |
 | users `jeffries lavaan` | 0 |
 | repos `Navigating Non-Orthogonality Jeffries` | 0 |
@@ -48,6 +52,27 @@ Clone of all 20 `jjeffries13` repositories, then search for `NA*i1`, `set.seed(1
 | GitLab `GET /api/v4/projects?search=jeffries latent` | 0 projects |
 | Zenodo `q=Jeffries orthogonal latent mean contrasts` | No dissertation record. The hits are unrelated taxonomic and methods records. |
 | OSF `filter[title]=orthogonal latent` | One node, `q9yu8` |
+
+## Session files in the jjeffries13 repositories
+
+Checked 2026-10-28 on a shallow clone of every public repository, then the GitHub commit lists and file trees for `Dynamic-Fit-Indices`, `APA_2023`, `APA_2024`, and `APA_2024_Censored_Tobit_Model`.
+
+`Dynamic-Fit-Indices/DFI_Presentation.Rmd` (YAML date 3/9/2022) calls `sessionInfo()` and sinks it to `DFIsessionInfo.txt`. That text file is not in the tree. The commit that added the R Markdown file (`694df0cc`, 2022-03-25) added only `DFI_Presentation.Rmd`. The sixteen commits run from 2022-03-15 through 2022-10-23. `DynamicFitIndexSlides.pdf` is a 27-page Google-slides deck. Its text has no `sessionInfo` block and no R version. The working directory in the R Markdown file is `/Users/jayjeffries/Desktop/R Resources/Dynamic Fit Indices`.
+
+No repository contains `renv.lock`, `packrat.lock`, `.Rprofile`, or a package `DESCRIPTION`. The only `sessionInfo()` call found is the one above.
+
+Other environment traces, with the date of the latest commit on that repository:
+
+| Place | Date | What it shows |
+|---|---|---|
+| `MLM-In-R/README.md` badge `Rversion-4.2.1` | 2023-02-01 | A shield, not a `sessionInfo` dump. Paths in the learning checks are `/Users/jayjeffries/Desktop/`. |
+| `ParameterizedReports/README.md` same badge | 2023-06-20 | Same shield. Data paths are `/Users/jayjeffries/Desktop/`. |
+| `APA_2023` | 2023-08-02 | Mac paths under `/Users/jayjeffries/Desktop/Longitudinal/`. No package versions. |
+| `APA_2024/simulations/data_sims.R` | commits 2023-12-19 to 2023-12-22 | `simsem` and `lavaan` loaded with `pacman`. Uncommented `exportData(..., seed = 13131)`. Ten- and fifteen-indicator missing-data study, not the dissertation. No versions. |
+| `APA_2024_Censored_Tobit_Model` | 2024-07-29 to 2024-08-09 | README edits only in the commit subjects. No session file. |
+| `Technostress/Code/Technostress_Descriptives.Rmd` | file date 5/10/2022; repo tip 2022-05-27 | A commented `setwd("C:/Users/jjeffries8/OneDrive - University of Nebraska-Lincoln/...")`. The file that is read uses a relative path. A sibling file reads `/Users/jayjeffries/Desktop/`. |
+
+The dissertation text names R 4.2.2. The 2023 badges say 4.2.1, which is the previous patch release (2022-06-23; R 4.2.2 is 2022-10-31). That is a nearby Mac setup in the 4.2 series. It does not record the lavaan or simsem version, the BLAS, or the machine that ran the dissertation's 10,000 replicates. No cell was rerun from this pass.
 
 ## Versions named in the dissertation
 
