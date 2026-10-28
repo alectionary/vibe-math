@@ -159,6 +159,14 @@ access. Record actual successful operations, not just installed tools.
 - Record the source version/date, precise page or section, and the actual question.
   Credit the discovery source, the source posing the question and earlier applicable
   results separately. A paper's historical open label is not a current-status check.
+- Index each source the day it is found. Add it that day to the investigation
+  source ledger and to the shared collection, [literature/RESEARCH-SOURCES.md](../../../literature/RESEARCH-SOURCES.md)
+  or the campaign ledger such as `literature/unl-sem/`. Record the access
+  status, including an access gap. Do not leave new sources for a wrap-up pass.
+- Check code and supplementary material before treating a numerical result as
+  unavailable. Use the dated ledger in
+  [document acquisition](../document-acquisition-queue/SKILL.md#code-and-supplementary-material-ledger):
+  each place, the UTC date, and the result. "Not available" is that ledger.
 - Write the informal statement and intended Lean interface together. Check objects,
   field, quantifiers, every hypothesis, direction of implication, definitions,
   nonemptiness and boundary cases. An accidental strengthening of assumptions or
@@ -190,9 +198,9 @@ access. Record actual successful operations, not just installed tools.
 
 During each investigation, keep a deduplicated ledger of papers actually found
 or consulted, including classical predecessors, surveys, secondary leads and
-later versions. This happens automatically with the research; do not wait for a
-separate inventory request. Bibliography-only citations need not trigger an
-unbounded recursive search.
+later versions. Write the collection row the day the source is identified, not
+at wrap-up. Do not wait for a separate inventory request. Bibliography-only
+citations need not trigger an unbounded recursive search.
 
 For every accessible full text, screen numbered conjectures/questions, unknown
 existence cases, introductions, conclusions and future-work passages; read the
@@ -215,11 +223,12 @@ user's supported browser extension before declaring an access gap. Distinguish
 browser-connection failure from site restrictions. See [full-text retrieval](references/research-access.md#retrieve-full-text-before-recording-an-access-gap)
 for redirects, cookie banners and temporary PDF links. When those attempts still
 do not verify a complete text, hand the source to
-[document acquisition](../document-acquisition-queue/SKILL.md) instead of
-stalling. Search for an existing fetch issue, file a `fetch-request` when none
-exists, record `acquisition_requested` as that skill describes, and continue
-independent work. A preview or unreadable extraction stays a null question
-count. Add the findings to the shared inventory and planning records, leave
+[document acquisition](../document-acquisition-queue/SKILL.md) in the same step
+that records the block. Do not collect blocked sources for closeout. Search for
+an existing fetch issue, file a `fetch-request` when none exists, record
+`acquisition_requested` as that skill describes, and continue independent work.
+A preview or unreadable extraction stays a null question count. Index the
+blocked source that same day, with the issue URL and the access gap. Add the findings to the shared inventory and planning records, leave
 unperformed current-resolution/Lean checks
 unassessed, regenerate reports and validate source coverage and cohort deltas.
 The [complete absorbing-set source screen](../../../literature/RESEARCH-QUESTION-SCREENING.md)
@@ -297,6 +306,18 @@ Trace the headline claim through the source question, manuscript theorem,
 Lean statement, dependencies and verification record. Do not substitute a
 successful build for this semantic comparison.
 
+Check our side before calling a difference a discrepancy. Render the disputed
+page (`pdftoppm -png -r 600`) and compare the ink with the text layer. A text
+layer can drop signs that the rendered page shows. Then turn off, one at a
+time, the assumptions we supplied. Only after both checks, write "discrepancy"
+and "under our reading". Do not assert that the authors made an error. A
+probability claim states its sampling model and any independence assumption.
+The replication worked example is the order-of-\(10^{-12}\) product in
+[printed_probability.py](../../../formalization/correlated-residuals/simulation/printed_probability.py),
+which multiplies three counts from the same replicates. Follow
+[replication paper](../replication-paper/SKILL.md) when that comparison is the
+deliverable.
+
 Compare the final result directly with the source request: identify precisely what
 was answered, what was answered only partially, and what remains open. Measure
 progress by canonical mathematical targets, not declaration counts or paper pages.
@@ -315,6 +336,12 @@ integration. The [October 23 reconciliation](../../../literature/RESEARCH-RECONC
 illustrates the distinctions without changing frozen experiment inputs.
 
 When writing or revising a research paper:
+
+A replication of a published result, and the pull request that delivers it,
+follows [replication paper](../replication-paper/SKILL.md). Use the rules below
+for proofs, chronology, and Lean appendices when the replication contains
+them. The replication skill governs the comparison table, the page crops, the
+graded claims, the availability section, and the pull-request description.
 
 - Inspect representative earlier papers in the repository before choosing the
   manuscript format. Reuse their established typography, theorem/proof structure,

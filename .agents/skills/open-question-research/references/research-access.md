@@ -136,9 +136,13 @@ before interpreting a zero-result keyword search as a completed question screen.
 ## Hand off a source this environment cannot finish
 
 After the attempts above, a missing complete PDF is a handoff, not a reason to
-keep retrying the same failure. Use the
-[document acquisition queue](../../document-acquisition-queue/SKILL.md): one
-`fetch-request` issue per stable source, then work that does not need that text.
+keep retrying the same failure. File the
+[document acquisition queue](../../document-acquisition-queue/SKILL.md) issue
+the day the block is known: one `fetch-request` per stable source, then work
+that does not need that text. Index the source in the collection that same
+day, with the access gap, rather than at wrap-up. Check code and supplementary
+material with that skill's availability ledger before calling a numerical
+result unavailable.
 At the next research block, merge any manifest a retrieval worker has posted.
 The worker procedure is
 [document retrieval](../../document-retrieval-worker/SKILL.md). Site notes,

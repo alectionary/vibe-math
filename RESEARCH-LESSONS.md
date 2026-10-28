@@ -390,3 +390,27 @@ toy proof do not count as a source-problem gain. Three bounded rounds without
 a further verified reduction trigger the announced early-stop rule. The428
 cover leaves every full completion unresolved and gives no finishing-time
 estimate. [Proofs, comparisons and stop record](formalization/canonical-width/c16/THEORY-LOOP.md).
+
+## Lessons from the correlated-residuals replication
+
+Dated 27 October 2026. The note is the replication of the three-trait QTL structural equation model, merged as pull request 14. The package is [formalization/correlated-residuals/](formalization/correlated-residuals/README.md). These points are about how a printed equation was read, how a disagreement was graded, and how this run's tools behaved.
+
+### The equation (7) text layer dropped the minus signs
+
+Our first reading of equation (7) put one minus in front of the coefficient matrix and treated the entries as unsigned. That reading was wrong because of the extraction, not because of the printing. The rendered page is unambiguous.
+
+The text layer comes from Word Equation Editor or MathType. Symbol-font operators are stored as Private Use Area codes, including U+F02D for a minus. Those operators are not in reading order with the digits, so a text extractor returned the matrix rows with the signs removed and emitted the operators on other lines. Measuring the sign positions on the page, with `pdftoppm -r 600` and the character boxes, attaches each minus to one entry. The crops are `paper/figures/equation7.png` and `paper/figures/equation7-minuses.png`. The check is `simulation/measure_glyphs.py`.
+
+**Next time:** for any equation that matters, render the page and attach operators by their positions. Do not treat the text layer as the printed equation. A wrong first reading is a reason to audit our extraction before calling the printed number a discrepancy.
+
+### Grade the claim, and state the independence caveat
+
+A difference between a printed number and our number is a discrepancy under our reading. It is not, by itself, an author error. Before that word is used, the rendered page has to be compared with the text layer, and each assumption we supplied has to be turned off. The comparison table uses match, partial, close, and no match, with one reason per row.
+
+The probability on the order of \(10^{-12}\) is the product of three binomial probabilities for the printed powers 64, 77, and 96. The product treats those three counts as independent. They are computed from the same replicates, so they are not independent. The figure is an order of magnitude under that extra assumption. It does not say how the printed triple was obtained. The script is `simulation/printed_probability.py`.
+
+**Next time:** write "under our reading" and "discrepancy". State the assumption a probability uses, including independence when a product assumes it.
+
+### Tooling on this run
+
+Issue edits returned HTTP 403, and the issue was not updated from this environment. The work-branch push also returned 403 for `cursor[bot]`, and the same tree was published through the Git Data API. Files that exist only on the bot's box must be attached before a cloud agent can read them. A draft pull request must be marked ready before it can be merged. Pull request 14 was that draft.

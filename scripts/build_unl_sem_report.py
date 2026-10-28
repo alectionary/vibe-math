@@ -37,7 +37,7 @@ The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records
 | Statistical methods directions indexed | {len(questions)} |
 | Added precise theorem targets / completed proofs | 0 / 0 |
 
-**Corrected retrieval scope:** all {len(seed)} archive records and Download controls were revisited. Seven complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The {len(seed)-seed_full} records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The {len(works)-full} associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
+**Corrected retrieval scope:** all {len(seed)} archive records and Download controls were revisited. {seed_full} complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The {len(seed)-seed_full} records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The {len(works)-full} associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
 
 ## Search and inclusion criteria
 
@@ -63,12 +63,12 @@ for w in works:
  text+=f'| {w["id"]}/{w["year"]} | [{esc(w["title"])}]({w["url"]}) | {esc(w.get("relationship",w.get("temporal_relation","author/coauthor work")))} | {count} |\n'
 text+='\n## Excluded or historical passages\n\n'
 for x in screen['excluded_passages']:text+=f'- **{x["paper_id"]}, {x["locator"]}:** {x["reason"]}\n'
-text+='\n## Dissertation registry\n\nSeven rows now have complete-text question screens, identified in the final column. The original 20 fully reviewed dissertations remain a separate historical cohort.\n\n| Seed/year | Author and dissertation | Model family | Public-copy record | Full-text disposition |\n| --- | --- | --- | --- | --- |\n'
+text+=f'\n## Dissertation registry\n\n{seed_full} rows now have complete-text question screens, identified in the final column. The original 20 fully reviewed dissertations remain a separate historical cohort.\n\n| Seed/year | Author and dissertation | Model family | Public-copy record | Full-text disposition |\n| --- | --- | --- | --- | --- |\n'
 for s in seed:text+=f'| {s["id"]}/{s["year"]} | {esc(s["author"])} — [{esc(s["title"])}]({s["url"]}) | {esc(s.get("family","explicit SEM"))} | {"Located" if s["public_copy_record"] or s.get("located_public_copy_url") else "Not located"} | {"Complete text screened" if s["full_text_screen_status"]=="full_text_screened" else "Front matter only; unscreened" if s["full_text_screen_status"]=="not_screened_partial_preview" else "Retrieval incomplete; unassessed"} |\n'
-text+='''
+text+=f'''
 ## Inventory integration and verification
 
-Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→176 and full-text source screens 122→146. Seven recovered dissertation question screens are separate from article/work screen counts and from the original 20 complete dissertation reviews.
+Across both seed passes the shared inventory grows 363→373 entries, while precise eligible targets stay 150 and complete Lean targets stay 6. Source-work records grow 135→176 and full-text source screens 122→146. {seed_full} recovered dissertation question screens are separate from article/work screen counts and from the original 20 complete dissertation reviews.
 
 Sources have versions, exact locators and hashes. F134's hash identifies a complete author-uploaded web transcription, not original PDF bytes. Copyrighted bodies remain in ignored storage. Current resolution, Lean discovery and implementation difficulty for the added directions remain unassessed; no mathematical result or priority claim is made.
 
