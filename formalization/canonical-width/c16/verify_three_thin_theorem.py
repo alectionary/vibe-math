@@ -20,6 +20,7 @@ def verify(source,certificate,rational_psd=None):
     B=list(map(vp,q['X_right_factors']))
     C=list(map(vp,q['Z_left_factors']))
     D=list(map(vp,q['Z_right_dictionary']))
+    assert all((v[0]&3) or (v[1]&3) for v in A+B+C+D)
     # Only pair(1,2) shares a residue line; its total X span has rank124.
     # Every other pair is a unimodular S basis. A full frame cannot use(1,2).
     for thin in [B,C]:
@@ -65,7 +66,7 @@ def verify(source,certificate,rational_psd=None):
         assert len(owners)==1;permutation.append(owners.pop())
     assert sorted(permutation)==list(range(5))
     return {'status':'PASS','theorem':'Every full original C16 minimum-pool canonical frame uses at least three thin families in each sector.',
-        'source_C16_answered':False,'one_thin_family_X_span_ranks':one_ranks,'pairwise_thin_unimodularity_checks':20,'shared_residue_pair':[1,2],
+        'source_C16_answered':False,'primitive_dictionary_factors_checked':28,'one_thin_family_X_span_ranks':one_ranks,'pairwise_thin_unimodularity_checks':20,'shared_residue_pair':[1,2],
         'two_thin_annihilator_cases':annihilator_ranks,'forced_X_thin_pair':[3,4],
         'forced_64_pair_block_X_thin':4,'forced_64_pair_block_Z_thick_types':[3,5],
         'exact_block_dual':dual,'exchange_rank':128,'exchange_self_adjoint_basis_pairings':16384,

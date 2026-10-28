@@ -78,7 +78,10 @@ def verify_patterns(data,patterns,psd=True,extra_inequalities=(),rational_psd=No
   for i,j in product(range(N),repeat=2):r[C[h][i][j]]-=P*D[h][i][j]
  lower=sum(min(0,v) for v in r);gap=b-lower;assert gap<0,(b,lower,gap)
  blocks=[]
- if psd and rational_psd is not None:
+ zero_dual=(y00==0 and all(v==0 for v in u) and all(v==0 for M in D.values() for r0 in M for v in r0))
+ if psd and zero_dual:
+  blocks=[]
+ elif psd and rational_psd is not None:
   from rational_cyclic_psd import verify as verify_rational_psd
   blocks=verify_rational_psd(data,rational_psd)['PSD_blocks']
  elif psd:
@@ -90,7 +93,7 @@ def verify_patterns(data,patterns,psd=True,extra_inequalities=(),rational_psd=No
     angle=arb.pi()*fmpq(k*h,8);c=angle.cos();s=angle.sin()
     for i,j in product(range(N),repeat=2):real[i][j]+=c*arb(fmpq(D[h][i][j],den));imag[i][j]+=s*arb(fmpq(D[h][i][j],den))
    M=real if k==P//2 else [real[i]+[-v for v in imag[i]] for i in range(N)]+[imag[i]+real[i] for i in range(N)];blocks.append(interval_pd(arb_mat(M)))
- return {'status':'PASS','evidence':'exact source inequalities, exact integer residual correction using0..1 bounds, and '+('integer rational PSD' if rational_psd is not None else '256-bit interval PSD'),'block':data.get('block'),'excluded_target_pairs':target,'moment_variables':V,'linear_terms':len(data['linear_terms']),'common_denominator':den,'b_dot_y_numerator':b,'box_residual_lower_numerator':lower,'strict_contradiction_gap_numerator':gap,'strict_contradiction_gap':str(fmpq(gap,den)),'PSD_blocks':blocks,'source_C16_answered':False}
+ return {'status':'PASS','evidence':'exact source inequalities, exact integer residual correction using0..1 bounds, and '+('zero PSD dual' if zero_dual else 'integer rational PSD' if rational_psd is not None else '256-bit interval PSD'),'block':data.get('block'),'excluded_target_pairs':target,'moment_variables':V,'linear_terms':len(data['linear_terms']),'common_denominator':den,'b_dot_y_numerator':b,'box_residual_lower_numerator':lower,'strict_contradiction_gap_numerator':gap,'strict_contradiction_gap':str(fmpq(gap,den)),'PSD_blocks':blocks,'source_C16_answered':False}
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('certificate',type=Path);ap.add_argument('--source',type=Path,default=Path(__file__).parent/'inversion-results/normal-form.json');ap.add_argument('--rational-psd',type=Path);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();from rational_cyclic_psd import read;r=verify(json.loads(a.certificate.read_text()),json.loads(a.source.read_text()),rational_psd=read(a.rational_psd) if a.rational_psd else None);a.output.write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r),flush=True)

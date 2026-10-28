@@ -2,7 +2,7 @@
 
 The original C16 width remains **16 or18**, with a checked physical partial
 frame of88/128 pairs. No Lean target is completed here. The four-hour block
-runs2026-10-27T20:22:23Z through2026-10-28T00:22:23Z; this is its working
+runs2026-10-27T20:22:23Z through2026-10-28T00:22:23Z; this is its preserved
 artifact bundle. See `../INVERSE-FOUR-HOURS.md` for the mathematical statements.
 
 ## Checked results
@@ -88,3 +88,5 @@ before replay. The main proof consumers and reusable cut discovery modules use
 repository-relative sources. `prior-art-access.json` records actual bounded
 GitHub/X searches, the unopened academic lead and remaining coverage gaps.
 No OpenAI/math code was imported or built in this block.
+
+Final all-owner models remain uncertified. See `all-owner-indirect-SDP.json` and the explicit unknown direct-run records. No matching research processes were running at03:29:02Z on October28. The interrupted block is closed out; no original-width answer is claimed.

@@ -17,7 +17,7 @@ def unsvec(v,n):
  assert k==len(v);return M
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--families',type=int,nargs='+',required=True);ap.add_argument('--rank-X',type=Path,required=True);ap.add_argument('--rank-Z',type=Path,required=True);ap.add_argument('--conditional-cuts',type=Path,required=True);ap.add_argument('--integer-forms',type=Path);ap.add_argument('--triangles',type=Path);ap.add_argument('--circuits',type=Path);ap.add_argument('--linear',action='store_true');ap.add_argument('--seconds',type=float,default=120);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--families',type=int,nargs='+',required=True);ap.add_argument('--rank-X',type=Path,required=True);ap.add_argument('--rank-Z',type=Path,required=True);ap.add_argument('--conditional-cuts',type=Path,required=True);ap.add_argument('--owners',type=Path);ap.add_argument('--paths',type=Path);ap.add_argument('--integer-forms',type=Path);ap.add_argument('--triangles',type=Path);ap.add_argument('--circuits',type=Path);ap.add_argument('--linear',action='store_true');ap.add_argument('--seconds',type=float,default=120);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args()
  source=json.loads((Path(__file__).parent/'inversion-results/normal-form.json').read_text());patterns=source_patterns(source,a.families);P=16;m=len(patterns);n=len(patterns[0]);N=m+n;prob,p,C=model(patterns,P,128);B0=sum(C.values());con=list(prob.constraints);rectangles=[];conditional=json.loads(a.conditional_cuts.read_text());selected={(c['sector'],c['thin_mask'],c['thick_mask']) for c in conditional}
  for side,path in [('X',a.rank_X),('Z',a.rank_Z)]:
   fam=a.families if side=='X' else list(range(5));offset=0 if side=='X' else m
@@ -36,6 +36,15 @@ def main():
  from moment_integer_form_cuts import expression as integer_form_expression
  con.extend(integer_form_expression(c,p,C,16) for c in forms)
  if circuits:con.append(model_constraint(circuits,p,C,a.families))
+ paths=json.loads(a.paths.read_text()) if a.paths else []
+ if paths:
+  from moment_matching_path_cuts import model_constraint as path_model,validate as validate_path
+  for cut in paths:validate_path(cut,patterns,16)
+  con.append(path_model(paths,p,C,16))
+ owners=json.loads(a.owners.read_text()) if a.owners else []
+ if owners:
+  from moment_owner_cuts import model_constraint as owner_model
+  con.append(owner_model(owners,patterns,p,C,16))
  prob=cp.Problem(cp.Minimize(0),[c for c in con if not(a.linear and isinstance(c,cp.constraints.psd.PSD))])
  prob.solve(solver='SCS',eps=1e-9,max_iters=100000,time_limit_secs=a.seconds,verbose=False);print('NUMERICAL_STATUS',prob.status,flush=True)
  if prob.status not in ['infeasible','infeasible_inaccurate']:
@@ -69,10 +78,10 @@ def main():
   terms[(kind,key)]+=mult
  linear=[{'kind':kind,'coeff':key[0],'rhs':key[1],'multiplier':mult} for (kind,key),mult in sorted(terms.items()) if mult]
  # A small rational identity shift makes the entire dual moment matrix strict.
- for shift in [1e-7,1e-6,1e-5,1e-4]:
+ for shift in ([0.0,1e-7,1e-6,1e-5,1e-4] if a.linear else [1e-7,1e-6,1e-5,1e-4]):
   dd={h:[r[:] for r in M] for h,M in D.items()};delta=math.ceil(shift*den)
   for i in range(N):dd[0][i][i]+=delta
-  cert={'status':'RATIONAL_DUAL_CANDIDATE','source_C16_answered':False,'scope':'Source rank-rectangle moment obstruction for the listed X thin families','X_thin_families':a.families,'rank_rectangles':rectangles,'moment_triangles':triangles,'moment_circuits':circuits,'moment_integer_forms':forms,'target':128,'period':16,'patterns':patterns,'denominator':den,'constant':y00+delta,'mean':u,'D':dd,'linear_terms':linear,'identity_shift_numerator':delta}
+  cert={'status':'RATIONAL_DUAL_CANDIDATE','source_C16_answered':False,'scope':'Source rank-rectangle moment obstruction for the listed X thin families','X_thin_families':a.families,'rank_rectangles':rectangles,'moment_triangles':triangles,'moment_circuits':circuits,'moment_integer_forms':forms,'moment_matching_paths':paths,'moment_owner_cuts':owners,'target':128,'period':16,'patterns':patterns,'denominator':den,'constant':y00+delta,'mean':u,'D':dd,'linear_terms':linear,'identity_shift_numerator':delta}
   try:check=verify(cert,source)
   except (AssertionError,np.linalg.LinAlgError) as e:print('RETRY',shift,str(e)[:180],flush=True);continue
   cert['status']='EXACT_SOURCE_RANK_SDP_INFEASIBILITY_CERTIFICATE';a.output.write_text(json.dumps(cert)+'\n');a.output.with_suffix('.checked.json').write_text(json.dumps(check,indent=2)+'\n');print(json.dumps(check),flush=True);break

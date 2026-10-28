@@ -58,6 +58,12 @@ def verify(data,source,rational_psd=None):
     for cut in data.get('moment_triangles',[]):ineq.add(triangle_constraint(cut,p,C,16))
     from moment_integer_form_cuts import coefficients as integer_form_constraint
     for cut in data.get('moment_integer_forms',[]):ineq.add(integer_form_constraint(cut,p,C,16))
+    from moment_owner_cuts import coefficients as owner_constraint,neighbor_polynomials
+    owner_neighbors=neighbor_polynomials(patterns,16) if data.get('moment_owner_cuts') else None
+    for cut in data.get('moment_owner_cuts',[]):ineq.add(owner_constraint(cut,patterns,p,C,16,owner_neighbors))
+    from moment_matching_path_cuts import coefficients as path_constraint,validate as validate_path
+    for cut in data.get('moment_matching_paths',[]):
+        validate_path(cut,patterns,16);ineq.add(path_constraint(cut,p,C,16))
     checked_circuits=set();circuit_vectors={side:source_vectors(source,side) for side in ['X','Z']} if data.get('moment_circuits') else {}
     for cut in data.get('moment_circuits',[]):
         key=(cut['sector'],tuple(cut['circuit']))
@@ -65,7 +71,7 @@ def verify(data,source,rational_psd=None):
         ineq.add(circuit_constraint(cut,p,C,families))
     result=verify_patterns(data,patterns,extra_inequalities=ineq,rational_psd=rational_psd)
     result.update(X_thin_families=families,rank_rectangles_checked=count,
-        Boolean_triangle_inequalities=len(data.get('moment_triangles',[])),integer_affine_form_inequalities=len(data.get('moment_integer_forms',[])),
+        Boolean_triangle_inequalities=len(data.get('moment_triangles',[])),integer_affine_form_inequalities=len(data.get('moment_integer_forms',[])),matching_path_inequalities=len(data.get('moment_matching_paths',[])),private_partner_owner_inequalities=len(data.get('moment_owner_cuts',[])),
         source_circuit_orbits_checked=len(checked_circuits),conditional_circuit_inequalities=len(data.get('moment_circuits',[])),
         scope='No full original C16 frame whose X thin support is contained in the listed families.',
         source_C16_answered=(families==list(range(5))))
