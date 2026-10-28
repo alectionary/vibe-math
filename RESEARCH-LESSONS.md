@@ -320,3 +320,24 @@ degree profiles also rule out graph-isomorphism merging of the older1,082
 conditional graphs. These are useful limits on specific methods, while the
 source width remains16 or18.
 [Proofs, certificates and replay](formalization/canonical-width/c16/JOINT-COVER.md).
+
+### Combine identities with compatibility and select new formulas from residuals
+
+The next C16 block gives a proper505-case subcover of518 even though no single
+trace-one linear functional can give a proper subcover of that list. All sixteen
+translated dual identities must hold simultaneously. A partial induced matching
+inside thirteen removed classes cannot realize their target signature; a physical
+CNF rebuild and checkedDRAT proof certify the contradiction. The gain comes from
+the joint parity and compatibility condition. Removed representatives are not
+excluded from full frames, and fewer starting cases do not establish a runtime
+gain or answer the width question.
+
+Negative method results make the next gate specific. Broader matrix trials do not
+improve the single-witness cover, separate principal determinant-existence tests
+exclude no anchor, and all505 retained anchors have small partial signature
+witnesses. For a partial dual frame, its outer-product sum is a projector. The
+nonzero residual against the identity supplies a mandatory equation that rejects
+that particular spurious configuration. At the selected anchor this yields a
+checked source witness705/705 and increases the functional span16to32. Its solver
+comparison remains unrun; a separated partial witness is not an anchored frame
+obstruction. [Proof, tests and next gate](formalization/canonical-width/c16/NONLINEAR-COVER.md).
