@@ -180,3 +180,11 @@ equivalently whether the unrestricted width is16 or18.
 a globally different cover proposal, with a checked obstruction or a physical
 full frame as the acceptance gate. A timeout or an additional separated partial
 configuration is not a completed source case.
+
+## Later symmetry and exchange followup
+
+The [subsequent bounded loop](THEORY-LOOP.md) proves a428-case sufficient cover,
+net69 fewer than497. It restores one old omitted class and is not a proper
+subcover of this dated497 list. The new-class normalization lemma and exchange
+case split have independent physical certificate replay. Every428 full
+completion remains open; the unrestricted width remains16 or18.

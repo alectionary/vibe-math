@@ -361,3 +361,32 @@ free edges after subtracting the fixed anchor's contribution. Disjoint partial
 witness supports give a109-class lower bound for the original16-signature cover
 criterion; they do not bound arbitrary covers or prove a full frame exists.
 [Proofs, limits and replay](formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md).
+
+### Normalize a class forced by an earlier impossibility proof
+
+The next C16 block reduces the sufficient starting list from497 to428. If the
+old omitted set cannot support the required signature, any counterexample
+after adding a new class must use that class. Translation and sector exchange
+can normalize a selected pair from it without assuming symmetry of the frame.
+This gives smaller proof instances. The prior impossibility premise is
+essential. Seventeen such extensions reach480; physically checked positive
+witnesses show480 is inclusion minimal for fixed deletions, not globally
+smallest. Restoring one old class then permits a nonnested exchange cascade
+to428. A deletion barrier can therefore suggest an exchange, rather than
+establish a global optimum.
+
+Compression here preserves existence by deleting free selected edges while
+preserving their signature XOR and compatibility. Keep the fixed anchor
+outside the deletion and subtract its contribution first. Deleting zero-target
+groups is justified in the unit-signature model; do not export that rule to
+arbitrary signatures. Small literal controls cover all encoding variants.
+Independent physical regeneration and proof checking remain the acceptance gate.
+
+The stronger projected matrix block rejects saved small partial witnesses,
+and affine-span separators provide independently replayable conditional cuts.
+Neither completes a full source anchor. A newly consulted parity-clause solver
+also returnsUNKNOWN on the tested C16 inputs; building software and checking a
+toy proof do not count as a source-problem gain. Three bounded rounds without
+a further verified reduction trigger the announced early-stop rule. The428
+cover leaves every full completion unresolved and gives no finishing-time
+estimate. [Proofs, comparisons and stop record](formalization/canonical-width/c16/THEORY-LOOP.md).

@@ -259,6 +259,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-theory-loop-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Independent physical replay proves a428-case sufficient cover, net69 fewer than497 by symmetry normalization and nonnested exchange. Rank32 residual and conditional affine-span necessities are checked. F158 is fully screened and four broad research directions are indexed outside the eligible denominator. Remaining at that dated checkpoint: The original width remains16/18; physical partial frame88 and all428 full completions unresolved. Three bounded no-gain rounds trigger early stop; no Lean completion, minimum-cover claim, full-search speedup or finishing-time estimate. [Report](../formalization/canonical-width/c16/THEORY-LOOP.md) · [Verification](../formalization/canonical-width/c16/theory-loop-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
@@ -631,6 +637,17 @@ Recovered F153 and compared F157.15 canonical questions/directions/gates, includ
 - [L-F153-shannon-capacity-C7](OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7): Determine the Shannon capacity of the seven-cycle C7.
 - [L-F153-matrix-multiplication-exponent](OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent): Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
 
-Current cohort: **398 canonical entries,160 eligible targets,190 paper records,158 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-parity-cdcl-screen-20261028
 
-The current source index has **116** records, with actual access levels retained.
+Full21-page Beame-Sun SAT2026 screen: four broad/semantic source directions, present-resolution and Lean checks unassessed. Published theorem and pinned development solver do not settle a C16 case. Current cohort402 entries,160 eligible,191 paper records,159 full-text screens,6 completed Lean targets
+
+[Screen report](../formalization/canonical-width/c16/THEORY-LOOP.md). Added **4 entries**, **0 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F158-parity-heuristic-integration](OPEN-PROBLEMS.md#l-f158-parity-heuristic-integration): Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).
+- [L-F158-cnf-specific-parity-branching](OPEN-PROBLEMS.md#l-f158-cnf-specific-parity-branching): Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.
+- [L-F158-semantic-1uip](OPEN-PROBLEMS.md#l-f158-semantic-1uip): Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.
+- [L-F158-parity-clause-minimization](OPEN-PROBLEMS.md#l-f158-parity-clause-minimization): Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).
+
+Current cohort: **402 canonical entries,160 eligible targets,191 paper records,159 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **117** records, with actual access levels retained.

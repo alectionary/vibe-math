@@ -12392,6 +12392,13 @@
         "evidence": "written_proof_and_exact_finite_certificates",
         "lean_sources": [],
         "contribution": "Independent physical CNF regeneration andDRAT checking prove a497-case proper subcover of505, removing eight more representatives together. At anchorX03-Z03-h00,87 independent full-matrix equations are selected; partial solutions satisfy prefixes through86 and the87-equation call isUNKNOWN. This stronger identity model excludes no anchor and does not supply the cover reduction. A disjoint physical partial-witness packing raises the original16-signature proof-criterion lower bound from85 to109; this is not a bound for arbitrary covers. Width16/18, physical88 and Lean status remain unchanged."
+      },
+      {
+        "title": "Symmetry-normalized exchanges prove a428-case sufficient cover",
+        "report": "formalization/canonical-width/c16/THEORY-LOOP.md",
+        "evidence": "written_proof_and_independent_physical_certificate_replay",
+        "lean_sources": [],
+        "contribution": "A new-class normalization lemma and a nonnested exchange case split give a428-case sufficient cover, net69 fewer than497 (13.8833%). One formerly omitted class is restored, so this is not a proper subcover. Independent physical regeneration checks the base497 proof,17 extensions and53 exchange branches;480 deletion witnesses show only inclusion minimality. A rank32 projected residual requires33 total partial pairs and rejects all21 saved smaller witnesses, but the full-case solver isUNKNOWN. Conditional affine certificates replay; new native-parity solver comparisons areUNKNOWN. Three further bounded reduction rounds fail to improve428 and trigger the stated early-stop rule. Width16/18, physical88, all428 full completions unresolved; no Lean completion or measured full-search speedup."
       }
     ],
     "remaining_project_questions": [
@@ -12418,13 +12425,14 @@
       "completion_case_count": 518
     },
     "nonlinear_cover": {
-      "report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
-      "verification": "formalization/canonical-width/c16/residual-identity-results/verification.json",
+      "report": "formalization/canonical-width/c16/THEORY-LOOP.md",
+      "verification": "formalization/canonical-width/c16/theory-loop-results/verification.json",
       "canonical_target_answered": false,
-      "completion_case_count": 497,
-      "previous_report": "formalization/canonical-width/c16/NONLINEAR-COVER.md",
+      "completion_case_count": 428,
+      "previous_report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
       "proof_criterion_lower_bound": 109,
-      "lower_bound_scope": "Only covers certified by the original16-signature/induced-partial-matching UNSAT criterion; no arbitrary-cover or full-frame lower bound."
+      "lower_bound_scope": "Only covers certified by the original16-signature/induced-partial-matching UNSAT criterion; no arbitrary-cover or full-frame lower bound.",
+      "nested_in_previous_cover": false
     },
     "residual_matrix_identities": {
       "report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
@@ -12433,6 +12441,15 @@
       "positive_partial_matching_max_equations": 86,
       "last_call": "UNKNOWN",
       "new_completed_anchor_cases": 0
+    },
+    "theory_loop": {
+      "report": "formalization/canonical-width/c16/THEORY-LOOP.md",
+      "verification": "formalization/canonical-width/c16/theory-loop-results/verification.json",
+      "independent_cover_replay": "formalization/canonical-width/c16/theory-loop-results/final-independent.json",
+      "full_source_anchor_cases_completed": 0,
+      "scientific_stop_utc": "2026-10-28T20:17:24Z",
+      "early_stop": "three consecutive distinct bounded reduction rounds without a verified gain",
+      "canonical_target_answered": false
     }
   },
   {
@@ -15317,6 +15334,162 @@
     "formalization_suitability": {
       "assessment": "not_assessed",
       "objects_and_gate": "Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy."
+    }
+  },
+  {
+    "id": "L-F158-parity-heuristic-integration",
+    "origin": "article_inventory_extension",
+    "title": "Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, first conclusion direction",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          803,
+          807
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the heuristic variant, input family, resource measure and comparison baseline."
+    }
+  },
+  {
+    "id": "L-F158-cnf-specific-parity-branching",
+    "origin": "article_inventory_extension",
+    "title": "Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, second conclusion direction",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          808,
+          814
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas."
+    }
+  },
+  {
+    "id": "L-F158-semantic-1uip",
+    "origin": "article_inventory_extension",
+    "title": "Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, theoretical-side paragraph",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          815,
+          819
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting."
+    }
+  },
+  {
+    "id": "L-F158-parity-clause-minimization",
+    "origin": "article_inventory_extension",
+    "title": "Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, final paragraph",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          819,
+          822
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify classical minimization semantics and the required faithfulness of the parity extension."
     }
   }
 ]

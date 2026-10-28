@@ -18,23 +18,40 @@ from verify_signature_cover import independent_cnf,small_controls,rank
 ROOT=Path(__file__).resolve().parent
 
 
+def independent_signature_amo(clauses,n,E):
+    grouped={}
+    definitions=[]
+    for index,edge in enumerate(E,1):grouped.setdefault(edge[2],[]).append(index)
+    for signature in sorted(grouped):
+        variables=grouped[signature]
+        if len(variables)<=1:continue
+        n+=1;prefix=n;clauses.append([-variables[0],prefix]);definitions.append((prefix,'or',variables[:1]))
+        for j in range(1,len(variables)-1):
+            e=variables[j];n+=1;out=n
+            clauses.append([-e,out]);clauses.append([-prefix,out]);clauses.append([-e,-prefix]);definitions.append((out,'or',variables[:j+1]));prefix=out
+        clauses.append([-variables[-1],-prefix])
+    return n,definitions
+
+
 def canonical(i,j):
     a,b,h=i//16,j//16,(j-i)%16
     return min((a,b,h),(b,a,-h%16))
 
 
-def physical():
+def physical(witness_orbit=38):
     from audit_pools import exchange
     from verify_partial_frame import mask,shift
     source=json.loads((ROOT/'physical-pool-source.json').read_text())
     Z=[shift(mask(seed),h) for seed in source['Z_orbit_representatives'] for h in range(16)];X=list(map(exchange,Z))
     A=[sum(((x&z).bit_count()%2)<<j for j,z in enumerate(Z)) for x in X]
     assert rank(A)==128
-    F=[sum(((x&Z[608+t]).bit_count()%2)<<t for t in range(16)) for x in X]
-    G=[sum(((X[608+t]&z).bit_count()%2)<<t for t in range(16)) for z in Z]
+    root=16*witness_orbit
+    assert 0<=witness_orbit<45 and all((X[root+t]&Z[root+t]).bit_count()%2==1 for t in range(16))
+    F=[sum(((x&Z[root+t]).bit_count()%2)<<t for t in range(16)) for x in X]
+    G=[sum(((X[root+t]&z).bit_count()%2)<<t for t in range(16)) for z in Z]
     sig={(i,j):F[i]&G[j] for i in range(720) for j in range(720) if A[i]>>j&1}
     C=sorted({canonical(i,j) for (i,j),s in sig.items() if s});pos={c:k for k,c in enumerate(C)}
-    assert len(C)==518
+    if witness_orbit==38:assert len(C)==518
     shiftindex=lambda i:16*(i//16)+(i+1)%16
     for i in range(720):
         for j in range(720):
@@ -47,21 +64,24 @@ def physical():
 
 
 def check_proof(A,C,E,cert,path,checker,target=65535,allow=None,reject_empty=False):
-    clauses,n,_,_=independent_cnf(A,C,E,False,target=target,allow=allow)
+    clauses,n,_,_=independent_cnf(A,C,E,cert.get('signature_compression',False),target=target,allow=allow)
+    if cert.get('one_per_signature',False):n,_=independent_signature_amo(clauses,n,E)
     raw=(f'p cnf {n} {len(clauses)}\n'+''.join(' '.join(map(str,c))+' 0\n' for c in clauses)).encode()
     saved=gzip.decompress((path.parent/cert['cnf_file']).read_bytes());proof=gzip.decompress((path.parent/cert['proof_file']).read_bytes())
     assert raw==saved and hashlib.sha256(raw).hexdigest()==cert['cnf_sha256']
     assert n==cert['variables'] and len(clauses)==cert['clauses']
     assert hashlib.sha256(proof).hexdigest()==cert['proof_sha256']
+    trivial=any(not clause for clause in clauses)
     with tempfile.TemporaryDirectory(prefix='c16-chain-replay-') as folder:
         ip=Path(folder)/'input.cnf';pp=Path(folder)/'proof.drat';ip.write_bytes(raw);pp.write_bytes(proof)
-        check=subprocess.run([str(checker),str(ip),str(pp)],capture_output=True,text=True,timeout=180)
-        assert check.returncode==0 and 's VERIFIED' in check.stdout
-        if reject_empty:
+        if not trivial:
+            check=subprocess.run([str(checker),str(ip),str(pp)],capture_output=True,text=True,timeout=180)
+            assert check.returncode==0 and 's VERIFIED' in check.stdout
+        if reject_empty and not trivial:
             empty=Path(folder)/'empty.drat';empty.write_text('')
             bad=subprocess.run([str(checker),str(ip),str(empty)],capture_output=True,text=True,timeout=10)
             assert 's VERIFIED' not in bad.stdout
-    return {'variables':n,'clauses':len(clauses),'edges':len(E),'cnf_sha256':hashlib.sha256(raw).hexdigest(),'proof_sha256':hashlib.sha256(proof).hexdigest()}
+    return {'variables':n,'clauses':len(clauses),'edges':len(E),'cnf_sha256':hashlib.sha256(raw).hexdigest(),'proof_sha256':hashlib.sha256(proof).hexdigest(),'verification_kind':'literal_empty_input_clause' if trivial else 'DRAT'}
 
 
 def main():

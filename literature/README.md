@@ -1327,3 +1327,7 @@ Sources read for the correlated-residual replication and the identification comp
 - **F148**: [Structural model analysis of multiple quantitative traits](https://doi.org/10.1371/journal.pgen.0020114).
 - **F150**: [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493).
 - **F151**: [Searching for recursive causal structures in multivariate quantitative genetics mixed models](https://doi.org/10.1534/genetics.109.112979).
+
+## C16 parity reasoning comparison on October 28
+
+**F158:** Beame and Sun, [Extending CDCL to Disjunctions of Parity Equations](https://doi.org/10.4230/LIPIcs.SAT.2026.5), SAT2026. The full21-page screen records four broad conclusion directions outside the precise-target denominator. The pinned native-parity solver comparison completes no C16 source case. [Comparison and source screen](../formalization/canonical-width/c16/THEORY-LOOP.md).
