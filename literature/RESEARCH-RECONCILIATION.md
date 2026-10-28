@@ -223,6 +223,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: l-f91-c16-inverse-four-hours-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact integer certificates prove that every full original minimum-pool frame uses at least three thin families in each sector, and exclude supports{0,1,2},{0,1,4},{1,2,4} independently in either sector. A1680-point enlargement preserves the original residues, exact thin orbits, projective directions, thin modules and transpose exchange yet admits a full frame, refuting aggregate descent. Full width remains16 or18; best physical partial frame88; no Lean completion or demonstrated global speedup.. Remaining at that dated checkpoint: No unrestricted-width or Lean completion. Stronger numerical models remain uncertified; no new academic full text retrieved. Historical C16 background IDs are now centrally F152/F153, preserving published SEM F143/F144 and earlier immutable reports.. [Report](../formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md) · [Verification](../formalization/canonical-width/c16/inverse-four-hour-results/verification.json) · [Prior art](../formalization/canonical-width/c16/inverse-four-hour-results/prior-art-access.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.

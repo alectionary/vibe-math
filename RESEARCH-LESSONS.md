@@ -234,3 +234,31 @@ the proposed lifting lemma, and test each claimed implication on small literal
 examples before transferring a reduced UNSAT certificate. Here the original
 question remains open, and no global solver speedup or Lean library reuse was
 established. [Proofs, counterexamples and scope](formalization/canonical-width/c16/INVERSION.md).
+
+
+### Retain finite scalar representatives and certify the actual restriction
+
+The four-hour C16 inverse-pool continuation preserves the exact thin-factor
+orbits, residues, projective directions, thin modules and transpose exchange
+in an enlarged pool that admits a full frame. Those aggregate invariants do
+not justify residue descent. The finite thick scalar representatives matter.
+Keeping them gives checked original-pool restrictions: at least three thin
+families per sector and three excluded triple supports. The unrestricted
+question remains open. [Proof and counterexample](formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md).
+
+A numerical dual need not have exact stationarity to yield a proof. Compute
+its residual exactly and bound it using the known0..1 moment box. Here this
+produces strict rational contradictions. Integer periodic-difference bases
+and rational congruence preconditioners also replace transcendental PSD
+checks by exact integer diagonal-dominance checks. Identity, indefinite and
+corrupted-certificate controls accompany the replay.
+
+FLINT LLL finds valid integer-affine-form inequalities violated by tested
+fractional moments; it does not by itself find a frame or prove nonexistence.
+Private-partner ownership supplies another source-specific moment restriction,
+checked against every source common-neighbor set and the physical88-pair frame.
+Keep these separation results distinct from end-to-end progress: the original
+width stays16 or18, the new family condition removes zero frozen unresolved
+leaves, and no global runtime gain is demonstrated. Positive numerical margin
+objectives and `optimal_inaccurate` statuses still require independent checks;
+one such margin trial fails the full-PSD check.

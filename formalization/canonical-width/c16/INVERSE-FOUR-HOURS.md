@@ -20,9 +20,9 @@ Literature/source accounting: frozen source meaning is reused. Any new full text
 
 ## First-hour results (ordinary proofs and exact finite certificates)
 
-The unrestricted source question is still open. The principal completed result
-is a counterexample to proposed aggregate residue descent, not a counterexample
-to the C16 width question.
+The unrestricted source question is still open. The completed results are original-pool thin-family restrictions and a
+counterexample to aggregate residue descent. Neither settles the C16 width
+question.
 
 ### Aggregate residue descent fails in the same128-dimensional ring model
 
@@ -183,8 +183,12 @@ necessary moment SDP infeasible. An exact rational dual has been checked by
 an independent epsilon-coordinate consumer, recomputing all8205 ranks and
 verifying its182807 scalar terms and nine PSD blocks. Its residual-corrected
 gap is -1099384680689/1099511627776. This excludes that support, not every
-three-family support. Other triples are being screened and only checked duals
-will be promoted to exclusions.
+three-family support. The same independent process also certifies supports{0,1,4} and{1,2,4},
+with respective gaps -1099384671829/1099511627776 and
+-137423084475/137438953472. Physical sector exchange transfers all three
+exclusions to Z. Seven other exact three-family supports and four/five-family
+frames remain unresolved. The table of bounded numerical outcomes is preserved;
+`optimal_inaccurate` outcomes are not promoted to feasibility or exclusion.
 
 A numerical full-five-family model with all12566 first-moment rank bounds and
 120 conditional rectangles is still feasible, with no remaining detected
@@ -192,3 +196,119 @@ rectangle violation above2e-5. This is a floating-point result, not an exact
 feasible-point certificate or a physical frame. The linear-only version of
 the{0,1,2} model is numerically feasible, so the successful exclusion uses the
 PSD moment constraint. No general runtime gain has been demonstrated.
+
+
+### Integer-only positivity replay
+
+All four successful duals now have a second, entirely rational PSD certificate.
+For the cyclic16-dimensional phase representation, use the constant vector
+and periodic difference vectors with periods2,4,8,16. These give mutually
+orthogonal integer subspaces of dimensions1,1,2,4,8. Their cross-correlations
+at every shift vanish between distinct groups (2720 exact zero checks).
+A block-circulant dual matrix therefore splits by an invertible rational
+congruence. The mean coordinate couples only to the constant group.
+
+For the forced block, the resulting matrix dimensions are21,20,40,80,160;
+for each three-family dual, they are73,72,144,288,576. A supplied rational
+preconditioner R is untrusted: the consumer computes R B R^T by exact integer
+matrix multiplication and checks that every diagonal exceeds the sum of the
+absolute off-diagonal entries. This proves positive definiteness by the
+Gershgorin argument. It also implies R is invertible, so positivity transfers
+back to B. There are no floating-point operations or transcendental bounds
+in this consumer. The earlier256-bit Arb Fourier check remains a separate
+verification route for the same dual matrices.
+
+Identity and indefinite-matrix controls, a direct1089-entry integer congruence
+comparison of a nontrivial known Gram matrix, and rejected corrupted
+preconditioners pass. This is an exact arithmetic computer-assisted proof;
+it is not yet a Lean theorem.
+
+### Higher Boolean consistency and lattice cuts
+
+The full-source rank model returns numerical candidate moments that violate source
+circuit bounds. An independent enumeration finds80 three-circuits and176
+four-circuits per sector, grouped into16 cyclic classes. Conditional rank
+bounds from those circuits give46080 additional necessary inequalities.
+Structured thick-factor circuits through length6 and complete enumeration
+of the19-dimensional thin-factor relation code supply160 checked circuit
+classes in total. Their230400 conditional inequalities all pass exact controls
+from the physical88-pair frame. The thin relation code has minimum weight5;
+its nonzero524287 words are accounted for. This is a structured relation
+calculation, not an exhaustive full-frame search.
+
+For any integer affine form S=c+sum(b_i x_i) in Boolean selection variables,
+S(S-1)>=0. Its expectation is a valid degree-two inequality. Five-variable
+cuts and FLINT LLL on small moment submatrices discover violations of these
+inequalities. In the frozen first comparison,1500 LLL reductions give124
+candidate rows; combined with the pentagonal search there are185 distinct
+inequalities, checked by6148 exact Boolean and cyclic-translation expansion
+controls. The strongest LLL violation in that numerical point is about0.0156.
+No OpenAI/math source was imported: FLINT's lattice reduction and exact matrix
+arithmetic are the concrete software used here.
+
+These results demonstrate separation of tested fractional moments. The full
+question remains unresolved; neither a global obstruction nor a physical
+frame is obtained from those numerical models so far. A principal-block
+margin trial reports a positive numerical objective but fails the independent
+full-PSD check (minimum eigenvalue about-2.31); it is explicitly uncertified.
+A separate fixed-margin, normalized feasibility search is only a restricted
+feasible-point search and could not justify nonexistence even if it failed.
+
+### Reconciliation with concurrent work
+
+Upstream master7fbf525 is merged, preserving the independently published SEM
+research and its three additional non-denominator entries. The combined
+inventory now has376 entries,150 eligible targets and6 complete Lean targets;
+this C16 block contributes zero to all three deltas. Published SEM source IDs
+F143/F144 are retained. The branch-local C16 background papers are centrally
+reassigned to F152/F153; earlier immutable C16 reports retain their historical
+F99/F100 or F143/F144 labels. Their incomplete screens remain incomplete.
+
+
+## Closeout
+
+The source question remains **open: width16 or18**, best physical partial
+frame88/128, no Lean completion. The completed original-pool results are the
+at-least-three-thin-families theorem in each sector and the three independently
+excluded three-family supports. Exact integer proof replay is the decisive
+evidence. The1680-point enlarged-pool frame refutes the aggregate descent
+shortcut, and is not an original-pool counterexample.
+
+The final stronger model includes all64710 pairwise private-partner ownership
+inequalities. If distinct same-sector i,k are both selected, i's unique partner
+must distinguish them. Thus
+
+    C(i,k) + sum{C(i,z): z anticommutes with both i and k} <= p(i).
+
+All64710 common-neighbor sets were checked independently, and the physical88
+frame passes64710 exact averaged controls and1035360 direct translated controls.
+The earlier numerical point violates390 such bounds, with maximum violation
+about0.128. Individual forbidden-path triple bounds add no detected violation.
+These are valid strengthenings, without an established global speedup.
+
+The indirect all-owner model returns `optimal_inaccurate`, not a checked
+feasible point or obstruction. The two direct runs have no confirmed terminal
+solver result after interruption; their records are explicitly unknown. A stop
+attempt was denied by the sandbox and its escalation was interrupted. A later
+read-only check at2026-10-28T03:29:02Z found no matching research processes.
+No further experiments are launched after the authorized window. The normalized
+interior trial also fails exact Boolean bounds after equality recovery; its
+small numerical residual is not a feasibility certificate.
+
+The planned research window was20:22:23Z through00:22:23Z. The turn was interrupted
+around23:30Z; closeout resumed after the user's later status question. This
+record does not claim uninterrupted research for the elapsed wall time.
+
+Next mathematical step: retain the exact finite thick scalar rays and investigate
+higher-order consistency of private-partner ownership, or find a construction in
+the seven remaining three-family supports or four/five-family regimes. The
+aggregate residue/module/projective shortcut is disproved. Extending the old
+global exhaustive frontier has no demonstrated advantage: the new three-family
+condition excludes zero of its20380 frozen unresolved leaves. A bounded
+rank-guided local augmentation comparison also leaves the88-pair frame unchanged.
+
+An intended Lean statement is: every canonical128-pair frame selected from the
+frozen complete physical pools has thin-owner image cardinality at least3 in
+each sector. The source bridge, moment necessity, rational Farkas identity and
+integer congruence/Gershgorin proof must all be formalized before this is a Lean
+completion. No unchecked Lean source is presented as a completed proof.
