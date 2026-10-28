@@ -2,25 +2,25 @@
 
 Inventory updated October 28, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **396 canonical entries**: the original 40 dissertation targets and **356 additional article entries**. Of the additions, **122 are specific mathematical questions or tasks suitable for coverage tracking**; the other 234 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **398 canonical entries**: the original 40 dissertation targets and **358 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 237 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [116 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/161 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [116 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 122 |
-| Additional directions/formulation/method entries outside the denominator | 234 |
-| Combined eligible targets | 161 = 39 + 122 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/161 (3.73%) |
-| Eligible targets with an identified, verified Lean statement | 6/161 (3.73%) |
-| Eligible targets with a complete checked Lean proof | 6/161 (3.73%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/161 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/161 |
-| Additional identified Lean statements without a build audit | 1/161 |
-| Eligible targets with Lean discovery still unassessed in this extension | 53/161 |
+| Additional article targets in the coverage denominator | 121 |
+| Additional directions/formulation/method entries outside the denominator | 237 |
+| Combined eligible targets | 160 = 39 + 121 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/160 (3.75%) |
+| Eligible targets with an identified, verified Lean statement | 6/160 (3.75%) |
+| Eligible targets with a complete checked Lean proof | 6/160 (3.75%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/160 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/160 |
+| Additional identified Lean statements without a build audit | 1/160 |
+| Eligible targets with Lean discovery still unassessed in this extension | 52/160 |
 | Articles/preprints in scope | 190 |
 | Full-text sources screened, including withdrawn history | 158/190 |
 | Current-publication full texts screened | 157 |
@@ -184,7 +184,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F97](https://arxiv.org/html/quant-ph/0406168v1) | full text screened | 3 | Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical. |
 | [F98](https://www.nature.com/articles/s41534-025-01080-3) | relevant sections screened | 6 | Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem. |
 | [F152](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screened | 5 | Earlier pending question reconciliation completed in the literature-method review; present-status/Lean checks remain unassessed. |
-| [F153](https://arxiv.org/html/2312.03859v1) | full text screened | 13 | Recovered complete screen of the original arXiv version, including explicit borrowed projectivity/Ramsey questions. Repeated targets shared with F157. Current resolution and Lean discovery unassessed. |
+| [F153](https://arxiv.org/html/2312.03859v1) | full text screened | 15 | Full version-specific screen with canonical deduplication.15 targets in F153,11 repeated in F157, including two borrowed unresolved context targets. Current resolution and Lean discovery remain unassessed. |
 | [F99](https://arxiv.org/pdf/1004.3791v2) | full text screened | 3 | Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law. |
 | [F100](https://arxiv.org/pdf/1703.07847v3) | full text screened | 4 | Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E. |
 | [F101](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content) | full text screened | 3 | Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted. |
@@ -240,7 +240,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F154](https://zctaskin.github.io/files/MIM.pdf) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 | [F155](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf) | full text screened | 0 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 | [F156](https://arxiv.org/pdf/2010.16293) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
-| [F157](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf) | full text screened | 9 | Published shortened version; nine repeated canonical targets, not nine additional questions. Projectivity and Ramsey conclusion paragraphs occur only in F153. |
+| [F157](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf) | full text screened | 11 | Full version-specific screen with canonical deduplication.15 targets in F153,11 repeated in F157, including two borrowed unresolved context targets. Current resolution and Lean discovery remain unassessed. |
 
 ## Reproducible evidence and limits
 
@@ -4636,8 +4636,8 @@ Are mimsup and half-induced matching number functionally equivalent on finite bi
 
 Are mimsup and support rank functionally equivalent on finite binary matrices?
 
-- Type: specific question; written formulation: precise math in source.
-- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Type: question formulation gate; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F153: Introduction comparison; Conclusion final question](https://arxiv.org/html/2312.03859v1); extraction lines 216–219; author stated question or direction.
@@ -4647,8 +4647,8 @@ Are mimsup and support rank functionally equivalent on finite binary matrices?
 
 Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?
 
-- Type: conjecture or question; written formulation: precise math in source.
-- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Type: question formulation gate; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F153: Introduction inequality chain and proposed strictness](https://arxiv.org/html/2312.03859v1); extraction lines 214–219; author stated question or direction.
@@ -4704,3 +4704,25 @@ Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed in
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F153: Conclusion final Ramsey paragraph](https://arxiv.org/html/2312.03859v1); extraction lines 1155–1158; borrowed question explicitly discussed.
+
+### L-F153-shannon-capacity-C7
+
+Determine the Shannon capacity of the seven-cycle C7.
+
+- Type: borrowed context question; written formulation: precise math in source.
+- Coverage denominator: included. Explicitly described as an unresolved classic quantity in the source introduction; not attributed as a new question of these authors.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://arxiv.org/html/2312.03859v1); extraction lines 183–185; borrowed unresolved context target; discovery credit only.
+- [F157: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 384–390; borrowed unresolved context target; discovery credit only.
+
+### L-F153-matrix-multiplication-exponent
+
+Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
+
+- Type: borrowed context formulation gate; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Contextual classic target with arithmetic/field interface left to the cited original source; excluded from precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://arxiv.org/html/2312.03859v1); extraction lines 183–185; borrowed unresolved context target; discovery credit only.
+- [F157: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 384–390; borrowed unresolved context target; discovery credit only.

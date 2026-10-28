@@ -40,3 +40,15 @@ Acquire a new create-only fixed remote claim before substantial research. Keep
 required PR review intact; no bypass of repository protections. Publish through
 the existing research PR when safe, and release only the expected owner SHA at
 closeout. Keep external messages/posts outside the work scope.
+
+## Evaluation handoff
+
+New experiments stopped before the12:30Z cutoff. The remaining authorized
+window is for exact replay, source/record checks, freezing and preservation.
+Results: one new exact joint034/034 obstruction; an optimal12-orbit X-basis
+hitting cover and a complete1,082 selected-pair case cover; asymptotic-rank,
+reciprocal-parity and field-scope method audits. The unrestricted question
+remains16/18, physical88 is unchanged, and no new Lean completion is claimed.
+The report is `OVERNIGHT-RESEARCH.md`; readable questions are in
+`PAPER-QUESTIONS.md`; the exact replay is `replay_overnight.py`.
+All1,082 completion cases remain open. Required PR review is preserved.

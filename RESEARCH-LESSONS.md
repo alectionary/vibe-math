@@ -283,3 +283,19 @@ enumeration cap is needed. This is a restricted obstruction, not an answer to
 the unrestricted width question or evidence of a global runtime gain. The
 selected third-moment pilot produced no certified improvement and was closed
 at its stated gate. [Argument, certificate and limits](formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md).
+
+Nilpotent reduction remains useful for weaker, faithfully stated tasks. Every
+proper cyclic-invariant span has a nonzero fixed covector in its annihilator.
+Enumerating the255 fixed covectors gives an optimal12-orbit hitting set for
+all source X bases, hence a complete cover by12 phase-normalized frame-anchor
+cases. This uses spanning, without descending a full biorthogonal frame.
+All12 completion cases remain open; the smaller cover is not a demonstrated
+global solver speedup.
+
+Use the intended conditioning cost when choosing such a cover. Counting
+selected-pair cases modulo translation and sector exchange gives a different
+optimal hitting set:1,082 cases instead of all3,132 symmetry pair cases.
+The same fixed-covector lemma makes optimization over255 candidates complete
+within this basis-cover strategy. An independent physical-coordinate graph
+check confirms the manifest. Every completion is still open; a smaller
+case count is not a finishing-time guarantee.

@@ -237,7 +237,7 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 ## Subsequent block: c16-overnight-20261028
 
-[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact joint034/034 frame exclusion; exact finite premises for mimsup128 barrier and representative-row counterexample.. Remaining at that dated checkpoint: Unrestricted width remains16/18. No complete Lean target. No proven finishing runtime. Selected third-moment numerics do not supply a new certificate.. [Report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md) · [Verification](../formalization/canonical-width/c16/overnight-results/joint034-checked.json).
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact joint034/034 frame exclusion; optimal12-orbit hitting cover for all source X bases and12 normalized selected-vector frame cases; exact128 asymptotic-rank barrier and all6238 reciprocal-neighbor/parity moment cuts nonseparating at the saved rational point. Independently checked optimal1082 selected-pair completion cover within the whole-orbit X-basis-cover strategy; all1082 completions remain unresolved.. Remaining at that dated checkpoint: Unrestricted width remains16/18. No complete Lean target. No proven finishing runtime. Selected third-moment numerics do not supply a new certificate.. [Report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md) · [Verification](../formalization/canonical-width/c16/overnight-results/evaluation-replay.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -593,9 +593,9 @@ Four source screens: three new full texts and completion of the older F152 gap. 
 
 ## Separate indexing extension: c16-overnight-source-recovery-2026-10-28
 
-Recovered F153 full screen and compared F157 published version.13 canonical questions/directions/gates,7 precise source targets;9 repeated occurrences in F157. No present-status/Lean checks or incidental-question solutions claimed.
+Recovered F153 and compared F157.15 canonical questions/directions/gates, including2 borrowed context quantities;6 precise source targets.11 repeated occurrences in F157. Two support-rank targets held after a field-scope counterexample audit. No current-resolution/Lean checks or source-question completion claimed.
 
-[Screen report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md). Added **13 entries**, **7 eligible targets**, **1 paper records**, **2 full-text screens** and **0 completed proofs**.
+[Screen report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md). Added **15 entries**, **6 eligible targets**, **1 paper records**, **2 full-text screens** and **0 completed proofs**.
 
 - [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base): Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).
 - [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives): Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.
@@ -610,7 +610,9 @@ Recovered F153 full screen and compared F157 published version.13 canonical ques
 - [L-F153-nonprojective-lowerbounds](OPEN-PROBLEMS.md#l-f153-nonprojective-lowerbounds): Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.
 - [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle): Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.
 - [L-F153-multicolor-ramsey-growth](OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth): Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?
+- [L-F153-shannon-capacity-C7](OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7): Determine the Shannon capacity of the seven-cycle C7.
+- [L-F153-matrix-multiplication-exponent](OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent): Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
 
-Current cohort: **396 canonical entries,161 eligible targets,190 paper records,158 full-text screens**; **6/161 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+Current cohort: **398 canonical entries,160 eligible targets,190 paper records,158 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
 
 The current source index has **116** records, with actual access levels retained.

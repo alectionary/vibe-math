@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 28, 2026. Low-confidence planning priors for all 396 entries (215 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 28, 2026. Low-confidence planning priors for all 398 entries (217 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 28, 2026. Low-confidence planning priors for all 396 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 56 | 56 |
+| Unestimated / scope gate | 55 | 55 |
 
 ### 2026-Geraci-O01
 
@@ -4934,13 +4934,13 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 
 The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Resolve the remaining exact finite thick-scalar inverse-pool membership problem. Three-or-more thin families per sector are necessary; three specific triple supports are excluded. Analyze higher-order private-partner ownership or construct a physical128-pair frame. Aggregate residue descent is false under the tested joint hypotheses; half-turn and asymmetric frames remain unresolved. No discovery-time estimate is justified.
+First milestone: Follow-up: complete one explicitly listed selected-pair case from overnight-results/pair-case-cover.json using exact original dictionaries, with a checked obstruction or physical128-pair completion. Excluding all1082 cases would settle18; any completion settles16. The case cover does not provide a practical finishing-time bound.
 
-Progress: New exact joint034/034 obstruction, leaving90 exchange support cases. Unrestricted width16/18, best physical88 unchanged. Sector-exchange decomposition helped certification; selected third-moment pilot supplied no certified gain. Asymptotic rank route equals128 and cannot exclude128. [Checked artifact](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md).
+Progress: Exact joint034/034 obstruction leaves90 exchange support regimes. Alternative proved cover:12 selected-X anchor cases, optimal for orbit-union hitting sets of all X bases; all12 frame completions open. Unrestricted width16/18, physical88 unchanged. Asymptotic-rank and reciprocal-neighbor parity projections provably do not separate the saved128 moments. No finishing runtime or global speedup established. The optimal basis-cover strategy yields1082 explicit selected-pair completion cases modulo translation/exchange, all unresolved; no measured runtime gain. [Checked artifact](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md).
 
-Gate: Verify current status and exact source construction before estimating effort.
+Gate: Require a complete anchored-case obstruction or an actual source128-pair candidate before extrapolating finishing time.
 
-Basis: 2026-10-27 takeover repaired the partner domain and checked the physical-coordinate bridge. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. Effort remains unassessed. The continuation independently reproduces physical pool completeness through weight17 and the mixed-Pauli reduction; no Lean certificate or exact width decision. Six-hour exact searches remain incomplete; the finite symmetry group and structural relaxations are checked without deciding the canonical target. Exact tensor coordinates and thin-module restrictions are checked; no generic residue-frame descent is valid. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: Current source width is16 or18, physical partial frame88. Historical incomplete partner-domain claims remain retracted. Later complete-domain checks exclude all116 twelve-monomial classes; they do not cover unrestricted smaller occupancies. Exact pool completeness, tensor bridges and >=3 thin families per sector are preserved. Three one-sector triple supports and the new joint034/034 case are excluded. A proved optimal12-orbit X-basis hitting cover gives12 normalized frame-anchor cases, all still open. Aggregate residue descent and the tested asymptotic-rank/reciprocal-parity shortcuts do not decide the source problem. No Lean completion or justified discovery-time estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 
@@ -6056,9 +6056,9 @@ Are mimsup and support rank functionally equivalent on finite binary matrices?
 
 Retained for source accounting; ongoing work remains on the existing C16 target.
 
-First milestone: Freeze the source support-rank convention and coefficient field before formalization.
+First milestone: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
 
-Gate: Freeze the source support-rank convention and coefficient field before formalization.
+Gate: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
 
 Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-mimsup-support-functional).
 
@@ -6072,9 +6072,9 @@ Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-r
 
 Retained for source accounting; ongoing work remains on the existing C16 target.
 
-First milestone: Freeze the source support-rank coefficient-field convention; an exact strictness witness suffices.
+First milestone: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
 
-Gate: Freeze the source support-rank coefficient-field convention; an exact strictness witness suffices.
+Gate: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
 
 Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-strict-mimsup-support).
 
@@ -6157,3 +6157,35 @@ First milestone: Use the diagonal ell-color Ramsey number; borrowed classic ques
 Gate: Use the diagonal ell-color Ramsey number; borrowed classic question, not newly attributed to these authors.
 
 Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth).
+
+### L-F153-shannon-capacity-C7
+
+Determine the Shannon capacity of the seven-cycle C7.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Use the source Section7.3 strong-graph-product definition. Borrowed classic target; original cited full text not screened.
+
+Gate: Use the source Section7.3 strong-graph-product definition. Borrowed classic target; original cited full text not screened.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7).
+
+### L-F153-matrix-multiplication-exponent
+
+Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy.
+
+Gate: Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent).

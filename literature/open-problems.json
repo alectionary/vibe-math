@@ -14895,10 +14895,10 @@
     "id": "L-F153-mimsup-support-functional",
     "origin": "article_inventory_extension",
     "title": "Are mimsup and support rank functionally equivalent on finite binary matrices?",
-    "kind": "specific_question",
-    "written_math_status": "precise_math_in_source",
-    "eligible_for_coverage": true,
-    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "kind": "question_formulation_gate",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.",
     "occurrences": [
       {
         "source_id": "F153",
@@ -14936,17 +14936,17 @@
     "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
     "formalization_suitability": {
       "assessment": "not_assessed",
-      "objects_and_gate": "Freeze the source support-rank convention and coefficient field before formalization."
+      "objects_and_gate": "Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json."
     }
   },
   {
     "id": "L-F153-strict-mimsup-support",
     "origin": "article_inventory_extension",
     "title": "Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?",
-    "kind": "conjecture_or_question",
-    "written_math_status": "precise_math_in_source",
-    "eligible_for_coverage": true,
-    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "kind": "question_formulation_gate",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.",
     "occurrences": [
       {
         "source_id": "F153",
@@ -14984,7 +14984,7 @@
     "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
     "formalization_suitability": {
       "assessment": "not_assessed",
-      "objects_and_gate": "Freeze the source support-rank coefficient-field convention; an exact strictness witness suffices."
+      "objects_and_gate": "Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json."
     }
   },
   {
@@ -15177,6 +15177,102 @@
     "formalization_suitability": {
       "assessment": "not_assessed",
       "objects_and_gate": "Use the diagonal ell-color Ramsey number; borrowed classic question, not newly attributed to these authors."
+    }
+  },
+  {
+    "id": "L-F153-shannon-capacity-C7",
+    "origin": "article_inventory_extension",
+    "title": "Determine the Shannon capacity of the seven-cycle C7.",
+    "kind": "borrowed_context_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Explicitly described as an unresolved classic quantity in the source introduction; not attributed as a new question of these authors.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          183,
+          185
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          384,
+          390
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Use the source Section7.3 strong-graph-product definition. Borrowed classic target; original cited full text not screened."
+    }
+  },
+  {
+    "id": "L-F153-matrix-multiplication-exponent",
+    "origin": "article_inventory_extension",
+    "title": "Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.",
+    "kind": "borrowed_context_formulation_gate",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Contextual classic target with arithmetic/field interface left to the cited original source; excluded from precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          183,
+          185
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          384,
+          390
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy."
     }
   }
 ]
