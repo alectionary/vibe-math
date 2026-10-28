@@ -764,7 +764,7 @@
     "screen_status": "full_text_access_gap",
     "source_sha256": null,
     "retrieval": {
-      "status": "access_gap",
+      "status": "acquisition_requested",
       "attempts": [
         {
           "url": "https://doi.org/10.1177/01466216261452255",
@@ -774,8 +774,29 @@
           "key": "jeffries-contrasts2026",
           "url": "https://doi.org/10.1177/01466216261452255",
           "result": "HTTP Error 403: Forbidden"
+        },
+        {
+          "url": "https://api.unpaywall.org/v2/10.1177/01466216261452255",
+          "result": "2026-10-27: is_oa true, url_for_pdf null, green URL is the PubMed abstract."
+        },
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1177/01466216261452255",
+          "result": "2026-10-27: isOpenAccess N, hasPDF N."
+        },
+        {
+          "url": "https://archive.org/wayback/available?url=https://doi.org/10.1177/01466216261452255",
+          "result": "2026-10-27: no snapshot."
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13179297/",
+          "result": "2026-10-27: HTTP 403 page names an embargo through 2027-05-15."
+        },
+        {
+          "url": "https://github.com/alectionary/vibe-math/issues/34",
+          "result": "fetch-request filed 2026-10-27."
         }
-      ]
+      ],
+      "issue": "https://github.com/alectionary/vibe-math/issues/34"
     },
     "temporal_relation": "post_dissertation_publication",
     "author_link_evidence": "Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research.",
