@@ -253,6 +253,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-residual-identities-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): A complete497-case proper subcover of505 with independent physical CNF/DRAT replay;87 independent residual-guided matrix identities and physical positive witnesses through86 at one anchor;109 disjoint partial signature supports give a method-specific cover lower bound.. Remaining at that dated checkpoint: No source width answer, completed retained anchor or Lean completion. The final87-equation call and bounded compact proof timeouts remainUNKNOWN. No new research paper is acquired or counted; no numerical status is promoted to a proof.. [Report](../formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md) · [Verification](../formalization/canonical-width/c16/residual-identity-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
