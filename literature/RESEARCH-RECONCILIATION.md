@@ -247,6 +247,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-matrix-witnesses-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): A proved505-case proper nonlinear subcover of518 using16 simultaneous parity identities and induced-matching compatibility; physical CNF regeneration andDRAT replay. Bounded broader witness searches,26964 principal conditional minor witnesses,505 anchored partial signature certificates and a residual-selected independent witness are preserved. Remaining at that dated checkpoint: No full source completion case, original width answer or Lean completion. The witness705/705 doubles the functional span at the chosen anchor, but its next solver comparison is unrun. No new research paper was acquired or counted.. [Report](../formalization/canonical-width/c16/NONLINEAR-COVER.md) · [Verification](../formalization/canonical-width/c16/matrix-witness-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
