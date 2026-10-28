@@ -1,31 +1,31 @@
 # Expanded open-problem inventory
 
-Inventory updated October 27, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Inventory updated October 28, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **376 canonical entries**: the original 40 dissertation targets and **336 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 225 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **383 canonical entries**: the original 40 dissertation targets and **343 additional article entries**. Of the additions, **115 are specific mathematical questions or tasks suitable for coverage tracking**; the other 228 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [111 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/150 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [115 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/154 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 111 |
-| Additional directions/formulation/method entries outside the denominator | 225 |
-| Combined eligible targets | 150 = 39 + 111 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/150 (4.00%) |
-| Eligible targets with an identified, verified Lean statement | 6/150 (4.00%) |
-| Eligible targets with a complete checked Lean proof | 6/150 (4.00%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/150 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/150 |
-| Additional identified Lean statements without a build audit | 1/150 |
-| Eligible targets with Lean discovery still unassessed in this extension | 42/150 |
-| Articles/preprints in scope | 186 |
-| Full-text sources screened, including withdrawn history | 152/186 |
-| Current-publication full texts screened | 151 |
+| Additional article targets in the coverage denominator | 115 |
+| Additional directions/formulation/method entries outside the denominator | 228 |
+| Combined eligible targets | 154 = 39 + 115 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/154 (3.90%) |
+| Eligible targets with an identified, verified Lean statement | 6/154 (3.90%) |
+| Eligible targets with a complete checked Lean proof | 6/154 (3.90%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/154 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/154 |
+| Additional identified Lean statements without a build audit | 1/154 |
+| Eligible targets with Lean discovery still unassessed in this extension | 46/154 |
+| Articles/preprints in scope | 189 |
+| Full-text sources screened, including withdrawn history | 156/189 |
+| Current-publication full texts screened | 155 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 34/186 |
+| Not fully assessed | 33/189 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -183,7 +183,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F96](https://bioinfo.uib.es/~joemiro/comptrans/HammingIntro.pdf) | abstract or metadata only | Not assessed | Retrieved only a three-page introduction excerpt, not the full1950 article. No full question-screen or zero-question outcome claimed. |
 | [F97](https://arxiv.org/html/quant-ph/0406168v1) | full text screened | 3 | Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical. |
 | [F98](https://www.nature.com/articles/s41534-025-01080-3) | relevant sections screened | 6 | Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem. |
-| [F152](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
+| [F152](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screened | 5 | Earlier pending question reconciliation completed in the literature-method review; present-status/Lean checks remain unassessed. |
 | [F153](https://arxiv.org/html/2312.03859v1) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
 | [F99](https://arxiv.org/pdf/1004.3791v2) | full text screened | 3 | Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law. |
 | [F100](https://arxiv.org/pdf/1703.07847v3) | full text screened | 4 | Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E. |
@@ -237,6 +237,9 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F148](https://doi.org/10.1371/journal.pgen.0020114) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
 | [F150](https://doi.org/10.2135/cropsci2003.1493) | full text access gap | Not assessed | unassessed_full_text_access_gap |
 | [F151](https://doi.org/10.1534/genetics.109.112979) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F154](https://zctaskin.github.io/files/MIM.pdf) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
+| [F155](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf) | full text screened | 0 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
+| [F156](https://arxiv.org/pdf/2010.16293) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 
 ## Reproducible evidence and limits
 
@@ -4491,3 +4494,73 @@ Determine whether generic identifiability via ancestral decomposition can be dec
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F147: Final paragraph before Acknowledgments](https://arxiv.org/pdf/1504.02992.pdf); extraction lines 590–590; author stated question or direction.
+
+### L-F152-binary-rank-multiplicativity
+
+Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section3 Conjecture1](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 95–100; author stated question or direction.
+
+### L-F152-domino-asymptotic
+
+Determine the exact asymptotic fractional biclique partition number of the Domino matrix.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section3 before Theorem2](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 102–110; author stated question or direction.
+
+### L-F152-strict-cover-asymptotic-gap
+
+Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section3 after Theorem2, inequality chain and unknown strictness](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 108–111; author stated question or direction.
+
+### L-F152-domino-more-powers
+
+Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad method/computation/interpretation direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section5.4 final paragraph](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 240–240; author stated question or direction.
+
+### L-F152-domino-rational-interpretation
+
+Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad method/computation/interpretation direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section5.4 continued-fraction discussion](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 239–239; author stated question or direction.
+
+### L-F154-structured-mim-methods
+
+Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad method/computation/interpretation direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F154: Section6 Conclusions and Future Research](https://zctaskin.github.io/files/MIM.pdf); extraction lines 4001–4003; author stated question or direction.
+
+### L-F156-multipartite-separable-unit
+
+Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F156: Introduction S1 and its stated open status; Proposition4.6 is conditional](https://arxiv.org/pdf/2010.16293); extraction lines 28–55; author stated question or direction.

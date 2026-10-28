@@ -1340,14 +1340,16 @@ Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. 
 
 Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
 
-- Record type: academic source; access: full text retrieved screen pending.
-- Inspected locator: See candidate passages in c16-continuation-source-screening.json.
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections2–5.4, Conjecture1, Theorem2/Lemma3 and pricing algorithm.
 - Contribution: Related terminology and support-rank obstruction route for the C16 pool matrix.
-- Comparison limit: No source-specific resolution. Exhaustive question harvest and present-status checks remain incomplete at the fixed deadline.
+- Comparison limit: Ordinary-arithmetic binary rank is not F2 rank; isolation/fooling sets are weaker than induced matchings. The saved triangular128 minor prevents a fractional-biclique-cover upper bound below128.
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
 
-- Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 5 linked canonical targets.
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
 
 ## F153 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
 
@@ -1433,3 +1435,53 @@ python-flint developers. 0.9.0 documentation, inspected2026-10-27. [Primary sour
 - Comparison limit: Software documentation, not an academic full-paper or theorem-library build; no new source-authored question screen.
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).
+
+## F154 — Integer Programming Formulations and Benders Decomposition for the Maximum Induced Matching Problem
+
+Betül Ahat; Tınaz Ekim; Z. Caner Taşkın. Author manuscript JOC-2016-03-OA-049,26 PDF pages; published2018, DOI10.1287/ijoc.2017.0764. [Primary source](https://zctaskin.github.io/files/MIM.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections2.1/3/4.2/6, equations2/8–12/22.
+- Contribution: C16 theoretical-method literature comparison.
+- Comparison limit: The endpoint model is already implemented in frame_cpsat.py. For cardinality, use vertex weights1/2 and edge weights0; the paper’s Benders edge-weight subproblem supplies no missing feasibility oracle.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F154-structured-mim-methods](OPEN-PROBLEMS.md#l-f154-structured-mim-methods).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 1 linked canonical targets.
+
+## F155 — Block-diagonal semidefinite programming hierarchies for0/1 programming
+
+Nebojsa Gvozdenović; Monique Laurent; Frank Vallentin. Primary preprint dated19August2008,11 PDF pages; ORL37(2009),27–31; arXiv0712.3079. [Primary source](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Section2.3 Lemma2.2 and proof; Section2.5 Propositions2.5/2.6; Sections3/4.
+- Contribution: C16 theoretical-method literature comparison.
+- Comparison limit: Conditioned PSD blocks and coherent third moments are an applicable systematic lift. Selected principal blocks remain valid but do not inherit the complete hierarchy’s full strength or a low-level completion guarantee.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 0 linked canonical targets.
+
+## F156 — Maximum Dimension of Subspaces with No Product Basis
+
+Yuuya Yoshida. arXiv2010.16293v1,30October2020,14 PDF pages; LAA620(2021),228–241. [Primary source](https://arxiv.org/pdf/2010.16293).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Remark2.5; Proposition3.1 and its proof; Proposition3.2/Theorem3.3; Introduction S1 and Proposition4.6.
+- Contribution: C16 theoretical-method literature comparison.
+- Comparison limit: Includes finite-field product-basis theorems, but arbitrary product factors and invertible factor changes need not preserve the finite C16 dictionaries or trace-dual membership. The coefficient ring S has nilpotents and is not a field.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F156-multipartite-separable-unit](OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 1 linked canonical targets.
+
+## StacksNakayama — Nakayama’s lemma
+
+The Stacks Project Authors. Section10.20, inspected2026-10-28. [Primary source](https://stacks.math.columbia.edu/tag/07RC).
+
+- Record type: reference work; access: statement and proof read.
+- Inspected locator: Lemma10.20.1, especially parts9–12 and nilpotent-iteration proof.
+- Contribution: Classical justification of generation from nilpotent-ideal reduction; already used in our span argument.
+- Comparison limit: Does not preserve finite pools or lift binary trace-dual frames.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
