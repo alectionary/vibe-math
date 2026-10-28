@@ -1355,14 +1355,16 @@ Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.S
 
 Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. arXiv:2312.03859v1,6December2023. [Primary source](https://arxiv.org/html/2312.03859v1).
 
-- Record type: academic source; access: full text retrieved screen pending.
-- Inspected locator: See candidate passages in c16-continuation-source-screening.json.
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full text; Lemmas4.4/7.1, Observation4.6, Section8 including projectivity and Ramsey questions..
 - Contribution: Related terminology and support-rank obstruction route for the C16 pool matrix.
-- Comparison limit: No source-specific resolution. Exhaustive question harvest and present-status checks remain incomplete at the fixed deadline.
-- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Comparison limit: Exact C16 rank/mimsup barrier128; source row basis is not a simultaneous-partner representative set.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base), [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives), [L-F153-mimsup-computability](OPEN-PROBLEMS.md#l-f153-mimsup-computability), [L-F153-noninteger-mimsup](OPEN-PROBLEMS.md#l-f153-noninteger-mimsup), [L-F153-random-mimsup](OPEN-PROBLEMS.md#l-f153-random-mimsup), [L-F153-mimsup-him-functional](OPEN-PROBLEMS.md#l-f153-mimsup-him-functional), [L-F153-mimsup-support-functional](OPEN-PROBLEMS.md#l-f153-mimsup-support-functional), [L-F153-strict-mimsup-support](OPEN-PROBLEMS.md#l-f153-strict-mimsup-support), [L-F153-nonprojective-not-prime](OPEN-PROBLEMS.md#l-f153-nonprojective-not-prime), [L-F153-strong-projectivity](OPEN-PROBLEMS.md#l-f153-strong-projectivity), [L-F153-nonprojective-lowerbounds](OPEN-PROBLEMS.md#l-f153-nonprojective-lowerbounds), [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle), [L-F153-multicolor-ramsey-growth](OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth).
 - Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
 
-- Question screen: [incomplete deadline gap](../literature/c16-continuation-source-screening.json); 0 linked canonical targets.
+- Question screen: [full text screened](../formalization/canonical-width/c16/overnight-results/paper-screening.json); 13 linked canonical targets.
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/overnight-results/paper-screening.json).
 
 ## BravyiLeemhuisTerhal2010 — Majorana Fermion Codes
 
@@ -1485,3 +1487,16 @@ The Stacks Project Authors. Section10.20, inspected2026-10-28. [Primary source](
 - Comparison limit: Does not preserve finite pools or lift binary trace-dual frames.
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+## F157 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Matrix Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full21-page published version, especially Introduction and PDFp17 conclusion..
+- Contribution: Published version of F153; version-specific applicability and questions reconciled.
+- Comparison limit: Published shortening omits four arXiv-only question/direction paragraphs; source rank and mimsup barriers do not answer finite mim.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base), [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives), [L-F153-mimsup-computability](OPEN-PROBLEMS.md#l-f153-mimsup-computability), [L-F153-noninteger-mimsup](OPEN-PROBLEMS.md#l-f153-noninteger-mimsup), [L-F153-random-mimsup](OPEN-PROBLEMS.md#l-f153-random-mimsup), [L-F153-mimsup-him-functional](OPEN-PROBLEMS.md#l-f153-mimsup-him-functional), [L-F153-mimsup-support-functional](OPEN-PROBLEMS.md#l-f153-mimsup-support-functional), [L-F153-strict-mimsup-support](OPEN-PROBLEMS.md#l-f153-strict-mimsup-support), [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/overnight-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/overnight-results/paper-screening.json); 9 linked canonical targets.

@@ -262,3 +262,24 @@ width stays16 or18, the new family condition removes zero frozen unresolved
 leaves, and no global runtime gain is demonstrated. Positive numerical margin
 objectives and `optimal_inaccurate` statuses still require independent checks;
 one such margin trial fails the full-PSD check.
+
+### Test what a literature reduction preserves, then certify finite obstructions
+
+The overnight C16 literature comparison proves that the actual pool matrix has
+half-induced matching number, asymptotic induced matching number and binary
+support rank all exactly128. A triangular128 minor already lies in a restricted
+case that has no128-frame. Thus these asymptotic parameters lose the finite
+distinction needed here. A representative row basis also preserves existence of
+a compatible entry in a column, while a three-row example shows it can destroy
+simultaneous private partners. Apply representative-set results to their actual
+completion-compatibility interface, not directly to the pool matrix.
+
+A verified sector-exchange action separates cyclic moment PSD blocks into
+even and odd sector parts. Averaging moments does not impose symmetry on a
+selected frame. This reduction enabled a new exact exclusion of the joint
+thin-support034/034 case. Independent source-row regeneration, exact residual
+correction and integer PSD checks certify the result; no critical-monomial
+enumeration cap is needed. This is a restricted obstruction, not an answer to
+the unrestricted width question or evidence of a global runtime gain. The
+selected third-moment pilot produced no certified improvement and was closed
+at its stated gate. [Argument, certificate and limits](formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md).

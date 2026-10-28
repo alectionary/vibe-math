@@ -235,6 +235,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-overnight-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact joint034/034 frame exclusion; exact finite premises for mimsup128 barrier and representative-row counterexample.. Remaining at that dated checkpoint: Unrestricted width remains16/18. No complete Lean target. No proven finishing runtime. Selected third-moment numerics do not supply a new certificate.. [Report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md) · [Verification](../formalization/canonical-width/c16/overnight-results/joint034-checked.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
@@ -585,6 +591,26 @@ Four source screens: three new full texts and completion of the older F152 gap. 
 - [L-F154-structured-mim-methods](OPEN-PROBLEMS.md#l-f154-structured-mim-methods): Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
 - [L-F156-multipartite-separable-unit](OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit): Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
 
-Current cohort: **383 canonical entries,154 eligible targets,189 paper records,156 full-text screens**; **6/154 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-overnight-source-recovery-2026-10-28
 
-The current source index has **115** records, with actual access levels retained.
+Recovered F153 full screen and compared F157 published version.13 canonical questions/directions/gates,7 precise source targets;9 repeated occurrences in F157. No present-status/Lean checks or incidental-question solutions claimed.
+
+[Screen report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md). Added **13 entries**, **7 eligible targets**, **1 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base): Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).
+- [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives): Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.
+- [L-F153-mimsup-computability](OPEN-PROBLEMS.md#l-f153-mimsup-computability): Determine whether computing mimsup is decidable.
+- [L-F153-noninteger-mimsup](OPEN-PROBLEMS.md#l-f153-noninteger-mimsup): Does some finite binary matrix have a noninteger asymptotic induced-matching number mimsup?
+- [L-F153-random-mimsup](OPEN-PROBLEMS.md#l-f153-random-mimsup): Determine mimsup for an n by n matrix with independent Bernoulli-p entries.
+- [L-F153-mimsup-him-functional](OPEN-PROBLEMS.md#l-f153-mimsup-him-functional): Are mimsup and half-induced matching number functionally equivalent on finite binary matrices?
+- [L-F153-mimsup-support-functional](OPEN-PROBLEMS.md#l-f153-mimsup-support-functional): Are mimsup and support rank functionally equivalent on finite binary matrices?
+- [L-F153-strict-mimsup-support](OPEN-PROBLEMS.md#l-f153-strict-mimsup-support): Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?
+- [L-F153-nonprojective-not-prime](OPEN-PROBLEMS.md#l-f153-nonprojective-not-prime): Every non-projective non-bipartite core graph is not prime under the direct graph product.
+- [L-F153-strong-projectivity](OPEN-PROBLEMS.md#l-f153-strong-projectivity): Do the classes of projective and strongly projective graphs coincide?
+- [L-F153-nonprojective-lowerbounds](OPEN-PROBLEMS.md#l-f153-nonprojective-lowerbounds): Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.
+- [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle): Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.
+- [L-F153-multicolor-ramsey-growth](OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth): Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?
+
+Current cohort: **396 canonical entries,161 eligible targets,190 paper records,158 full-text screens**; **6/161 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **116** records, with actual access levels retained.

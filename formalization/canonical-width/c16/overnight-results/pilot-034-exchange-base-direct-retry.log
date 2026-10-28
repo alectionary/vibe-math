@@ -1,0 +1,65 @@
+CONTROLS_PASS {"matrix_order": 61, "triple_variables": 7606, "degree_equations": 120}
+MODEL_BUILT 2.7369040000485256
+(CVXPY) Oct 27 11:36:53 PM: Your problem has 13149 variables, 232250 constraints, and 0 parameters.
+(CVXPY) Oct 27 11:36:53 PM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 27 11:36:53 PM: DCP verification time: 0.1390 seconds.
+(CVXPY) Oct 27 11:36:54 PM: Expression tree has 13 nodes.
+(CVXPY) Oct 27 11:36:54 PM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 27 11:36:54 PM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 27 11:36:54 PM: Your problem is compiled with the CPP canonicalization backend.
+(CVXPY) Oct 27 11:36:54 PM: Compiling problem (target solver=SCS).
+(CVXPY) Oct 27 11:36:54 PM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> ExactCone2Cone -> EliminateZeroSized -> ConeMatrixStuffing -> SCS
+(CVXPY) Oct 27 11:36:54 PM: Applying reduction Dcp2Cone
+(CVXPY) Oct 27 11:36:54 PM: Applying reduction CvxAttr2Constr
+(CVXPY) Oct 27 11:36:56 PM: Applying reduction ExactCone2Cone
+(CVXPY) Oct 27 11:36:56 PM: Applying reduction EliminateZeroSized
+(CVXPY) Oct 27 11:36:56 PM: Applying reduction ConeMatrixStuffing
+(CVXPY) Oct 27 11:37:28 PM: Applying reduction SCS
+(CVXPY) Oct 27 11:37:28 PM: Finished problem compilation (took 3.460e+01 seconds).
+(CVXPY) Oct 27 11:37:28 PM: Invoking solver SCS  to obtain a solution.
+(CVXPY) Oct 27 11:38:38 PM: Problem status: infeasible
+(CVXPY) Oct 27 11:38:38 PM: Optimal value: inf
+(CVXPY) Oct 27 11:38:38 PM: Compilation took 3.460e+01 seconds
+(CVXPY) Oct 27 11:38:38 PM: Solver (including time spent in interface) took 6.937e+01 seconds
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 11745, constraints m: 210785
+cones: 	  z: primal zero / dual free vars: 109
+	  l: linear vars: 188346
+	  s: psd vars: 22330, ssize: 18
+settings: eps_abs: 1.0e-06, eps_rel: 1.0e-06, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 50000, normalize: 1, rho_x: 1.00e-02
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 1.80e+02
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 2059011, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 3.12e+02  4.79e+03  3.85e+04 -1.93e+04  1.00e-01  1.37e+01 
+   250| 8.06e-01  3.33e-02  5.78e+00  2.89e+00  6.84e-05  5.14e+01 
+   350| 1.27e+13  1.44e+10  3.90e+19  1.95e+19  1.10e-05  6.94e+01 
+------------------------------------------------------------------
+status:  infeasible
+timings: total: 6.94e+01s = setup: 1.35e+01s + solve: 5.58e+01s
+	 lin-sys: 1.11e+01s, cones: 2.81e+00s, accel: 1.78e-01s
+------------------------------------------------------------------
+objective = inf
+------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+RESULT {"status": "infeasible", "source_C16_answered": false, "exact_exclusion_certificate": false, "mode": "base", "protocol": {"X_families": [0, 3, 4], "Z_families": [0, 3, 4], "active_orbits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "anchors": [624, 1344], "rows": [0, 16, 32, 48, 64, 80, 96, 112, 128, 432, 448, 464, 480, 496, 512, 528, 544, 560, 576, 592, 608, 624, 625, 626, 628, 632, 640, 656, 672, 688, 704, 720, 736, 752, 768, 784, 800, 816, 832, 848, 1152, 1168, 1184, 1200, 1216, 1232, 1248, 1264, 1280, 1296, 1312, 1328, 1344, 1345, 1346, 1360, 1376, 1392, 1408, 1424], "matrix_order": 61, "triple_variables": 7606, "forbidden_triples": 670, "degree_equations": 120, "Boolean_cell_inequalities": 66208, "omitted_strength": "Only selected principal blocks and selected degree localizers; no full cubic cardinality localizers or full hierarchy claimed."}, "controls": {"status": "PASS", "physical88_input_pairs": 88, "retained_physical_control_pairs": 80, "new_degree_equalities": 120, "new_Boolean_cell_inequalities": 66208, "exact_linear_residual": 0.0, "PSD_numerical_minimum": -1.873014601194366e-15, "PSD_interpretation": "Matrices are exact orbit averages of nonnegative weighted outer products; eigenvalues are an additional numerical check."}, "source_pool_pairs": 99808, "exchange_model": {"moment_symmetry": "cyclic translation and physical sector exchange; no frame symmetry", "original_active_orbits": [0, 1, 2, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44], "sector_types": 27, "raw_model_variables": 13149, "PSD_max_real_order": 54, "zero_frequency_even_order": 28, "mapping_nonzeros": 26298}, "base_cuts": {"rank_rectangles": 12566, "conditional_rank_rectangles": 120, "triangles": 1230, "integer_forms": 416, "owner_cuts": 64710, "conditional_circuit_cuts": 46080, "critical_monomial_cap_types": [36, 81]}, "build_seconds": 2.7369040000485256, "numerical_settings": {"normalized": true, "rho_x": 0.01, "eps": 1e-06, "direct": true, "exchange": true}, "solve_seconds": 104.50972579198424, "total_seconds": 107.24691837502178, "maximum_constraint_violation": null, "scs_info": {"status_val": -2, "iter": 350, "scale_updates": 3, "scale": 1.1039657698194169e-05, "pobj": Infinity, "dobj": Infinity, "res_pri": NaN, "res_dual": NaN, "gap": NaN, "res_infeas": 3.6932034491403707e-10, "res_unbdd_a": NaN, "res_unbdd_p": NaN, "comp_slack": 0.0, "solve_time": 55817.752666, "setup_time": 13541.106541, "lin_sys_time": 11071.50942099999, "cone_time": 2807.1995059999977, "accel_time": 178.41418400000003, "rejected_accel_steps": 3, "accepted_accel_steps": 0, "status": "infeasible", "lin_sys_solver": "sparse-direct-amd-qdldl", "aa_stats": {"iter": 10, "n_accept": 3, "n_reject_lapack": 0, "n_reject_rank0": 0, "n_reject_nonfinite": 0, "n_reject_weight_cap": 0, "n_safeguard_reject": 3, "last_rank": 10, "last_aa_norm": 69.75632455788566, "last_regularization": 3.9337291448128345e-07}}, "evidence": "Numerical producer only. Neither solver status nor residuals are an exact exclusion or exact feasible certificate."}

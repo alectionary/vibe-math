@@ -1,0 +1,66 @@
+CONTROLS_PASS {"matrix_order": 61, "triple_variables": 7606, "degree_equations": 120}
+MODEL_BUILT 3.065414792043157
+(CVXPY) Oct 27 11:12:04 PM: Your problem has 26298 variables, 328695 constraints, and 0 parameters.
+(CVXPY) Oct 27 11:12:04 PM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 27 11:12:04 PM: DCP verification time: 0.1620 seconds.
+(CVXPY) Oct 27 11:12:04 PM: Expression tree has 13 nodes.
+(CVXPY) Oct 27 11:12:04 PM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 27 11:12:04 PM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 27 11:12:04 PM: Your problem is compiled with the CPP canonicalization backend.
+(CVXPY) Oct 27 11:12:04 PM: Compiling problem (target solver=SCS).
+(CVXPY) Oct 27 11:12:04 PM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> ExactCone2Cone -> EliminateZeroSized -> ConeMatrixStuffing -> SCS
+(CVXPY) Oct 27 11:12:04 PM: Applying reduction Dcp2Cone
+(CVXPY) Oct 27 11:12:04 PM: Applying reduction CvxAttr2Constr
+(CVXPY) Oct 27 11:12:05 PM: Applying reduction ExactCone2Cone
+(CVXPY) Oct 27 11:12:05 PM: Applying reduction EliminateZeroSized
+(CVXPY) Oct 27 11:12:05 PM: Applying reduction ConeMatrixStuffing
+(CVXPY) Oct 27 11:12:14 PM: Applying reduction SCS
+(CVXPY) Oct 27 11:12:15 PM: Finished problem compilation (took 1.065e+01 seconds).
+(CVXPY) Oct 27 11:12:15 PM: Invoking solver SCS  to obtain a solution.
+/private/tmp/c16-until-6am-20261028T053020/formalization/canonical-width/c16/conditioned_moment.py:362: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver='SCS', use_indirect=not a.direct, rho_x=a.rho_x, eps=a.eps, max_iters=50000, time_limit_secs=a.seconds, verbose=True)
+(CVXPY) Oct 27 11:17:10 PM: Problem status: optimal_inaccurate
+(CVXPY) Oct 27 11:17:10 PM: Optimal value: 0.000e+00
+(CVXPY) Oct 27 11:17:10 PM: Compilation took 1.065e+01 seconds
+(CVXPY) Oct 27 11:17:10 PM: Solver (including time spent in interface) took 2.950e+02 seconds
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 23436, constraints m: 285333
+cones: 	  z: primal zero / dual free vars: 218
+	  l: linear vars: 240888
+	  s: psd vars: 44227, ssize: 9
+settings: eps_abs: 1.0e-06, eps_rel: 1.0e-06, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 50000, normalize: 1, rho_x: 1.00e-01
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 2.40e+02
+lin-sys:  sparse-indirect-scs
+	  nnz(A): 2201661, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 1.10e+01  1.97e+02  2.38e+03 -1.19e+03  1.00e-01  2.94e+00 
+   125| 1.65e-02  1.43e-01  4.93e-01  2.46e-01  1.09e-02  2.95e+02 
+------------------------------------------------------------------
+status:  solved (inaccurate - reached time_limit_secs)
+timings: total: 2.95e+02s = setup: 1.90e-01s + solve: 2.95e+02s
+	 lin-sys: 2.74e+02s, cones: 3.73e+00s, accel: 3.18e-01s
+------------------------------------------------------------------
+objective = 0.246326 (inaccurate)
+------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+RESULT {"status": "optimal_inaccurate", "source_C16_answered": false, "exact_exclusion_certificate": false, "mode": "base", "protocol": {"X_families": [0, 3, 4], "Z_families": [0, 3, 4], "active_orbits": [0, 1, 2, 3, 4, 5, 6, 7, 8, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89], "anchors": [624, 1344], "rows": [0, 16, 32, 48, 64, 80, 96, 112, 128, 432, 448, 464, 480, 496, 512, 528, 544, 560, 576, 592, 608, 624, 625, 626, 628, 632, 640, 656, 672, 688, 704, 720, 736, 752, 768, 784, 800, 816, 832, 848, 1152, 1168, 1184, 1200, 1216, 1232, 1248, 1264, 1280, 1296, 1312, 1328, 1344, 1345, 1346, 1360, 1376, 1392, 1408, 1424], "matrix_order": 61, "triple_variables": 7606, "forbidden_triples": 670, "degree_equations": 120, "Boolean_cell_inequalities": 66208, "omitted_strength": "Only selected principal blocks and selected degree localizers; no full cubic cardinality localizers or full hierarchy claimed."}, "controls": {"status": "PASS", "physical88_input_pairs": 88, "retained_physical_control_pairs": 80, "new_degree_equalities": 120, "new_Boolean_cell_inequalities": 66208, "exact_linear_residual": 0.0, "PSD_numerical_minimum": -1.873014601194366e-15, "PSD_interpretation": "Matrices are exact orbit averages of nonnegative weighted outer products; eigenvalues are an additional numerical check."}, "source_pool_pairs": 99808, "base_cuts": {"rank_rectangles": 12566, "conditional_rank_rectangles": 120, "triangles": 1230, "integer_forms": 416, "owner_cuts": 64710, "conditional_circuit_cuts": 46080, "critical_monomial_cap_types": [36, 81]}, "build_seconds": 3.065414792043157, "numerical_settings": {"normalized": true, "rho_x": 0.1, "eps": 1e-06, "direct": false}, "solve_seconds": 306.98465012502857, "total_seconds": 310.0503984580282, "maximum_constraint_violation": 0.0340285012843602, "scs_info": {"status_val": 2, "iter": 125, "scale_updates": 1, "scale": 0.010931915033666546, "pobj": 0.0, "dobj": 0.4926516549257481, "res_pri": 0.016516627508278967, "res_dual": 0.1432129328660738, "gap": 0.4926516549257481, "res_infeas": 0.2906981666136059, "res_unbdd_a": NaN, "res_unbdd_p": NaN, "comp_slack": 6.050626666365133e-11, "solve_time": 294811.612125, "setup_time": 189.668375, "lin_sys_time": 273632.30158, "cone_time": 3731.8257070000004, "accel_time": 317.95662900000013, "rejected_accel_steps": 1, "accepted_accel_steps": 0, "status": "solved (inaccurate - reached time_limit_secs)", "lin_sys_solver": "sparse-indirect-scs", "aa_stats": {"iter": 5, "n_accept": 1, "n_reject_lapack": 0, "n_reject_rank0": 0, "n_reject_nonfinite": 0, "n_reject_weight_cap": 0, "n_safeguard_reject": 1, "last_rank": 10, "last_aa_norm": 9.111917048231403, "last_regularization": 0.0009971613386817741}}, "evidence": "Numerical producer only. Neither solver status nor residuals are an exact exclusion or exact feasible certificate."}
