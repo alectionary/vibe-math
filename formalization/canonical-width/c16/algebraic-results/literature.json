@@ -1,0 +1,198 @@
+{
+  "sources": [
+    {
+      "file": "c16-nulla-2009.pdf",
+      "pdf_bytes": 278609,
+      "pdf_pages": 27,
+      "sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+      "text_characters": 78871,
+      "text_sha256": "ee5ec7ed547fda072e81749a98ae2174b64b7153a3f2183a319ca25da6014d9f",
+      "first_page": "1\nComputing Infeasibility Certiﬁcates for Combinatorial Problems\nthrough Hilbert’s Nullstellensatz\nJes´us A. De Loera\nDepartment of Mathematics, University of California, Davis, Davis, CA\nJon Lee\nIBM T.J. Watson Research Center, Yorktown Heights, NY\nPeter N. Malkin\nDepartment of Mathematics, University of California, Davis, Davis, CA\nSusan Margulies\nComputational and Applied Math Department, Rice University, Houston, TX\nAbstract\nSystems of polynomial equations with coeﬃcients over a ﬁeld K can be used to concisely model\ncombinatorial problems. In this way, a combinatorial problem is feasible (e.g., a graph is 3-\ncolorable, hamiltonian, etc.) if and only if a related system of polynomial equations has a solu-\ntion over the algebraic closure of the ﬁeld K. In this paper, we investigate an algorithm aimed at\nproving combinatorial infeasibility based on the observed low degree of Hilbert’s Nullstellensatz\ncertiﬁcates for polynomial systems arising in combinatorics, and based on fast large-scale linear-\nalgebra computations over K. We also describe several mathematical ideas for optimizing our\nalgorithm, such as using alternative forms of the Nullstellensatz for computation, adding care-\nfully constructed polynomials to our system, branching and exploiting symmetry. We report on\nexperiments based on the problem of proving the non-3-colorability of graphs. We successfully\nsolved graph instances with almost two thousand nodes and tens of thousands of edges.\nKey words: combinatorics,",
+      "last_page": "s, “Computer Algebra, Combinatorics, and Complexity: Hilbert’s Nullstellensatz and NP-Complete\nProblems,” UC Davis Ph.D. dissertation, in preparation, (2008).\n[24] I. M´endez-D´ıaz and P. Zabala, “A branch-and-cut algorithm for graph coloring,” Discrete Applied Mathematics,\nVol. 154(5), (2006), 826–847.\n[25] K. Mizuno and S. Nishihara. Constructive generation of very hard 3-colorability instances. Discrete Applied\nMathematics, 156(2):218–229, 2008.\n[26] P. Parrilo, Semideﬁnite programming relaxations for semialgebraic problems,” Mathematical Programming, Series\nB, 96(2), (2003), 293–320.\n[27] R. Vlasie. Systematic generation of very hard cases for graph 3-colorability. In Tools with Artiﬁcial Intelligence,\npages 114–119. Seventh International Conference on Artiﬁcial Intelligence, 1995.\n27\n",
+      "source_id": "F159",
+      "title": "Computing Infeasibility Certificates for Combinatorial Problems through Hilbert’s Nullstellensatz",
+      "authors": [
+        "Jesús A. De Loera",
+        "Jon Lee",
+        "Peter N. Malkin",
+        "Susan Margulies"
+      ],
+      "version": "Author manuscript dated5January2009,27pages",
+      "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+      "retrieved_utc": "2026-10-28T20:49:46.461167+00:00",
+      "question_screen_status": "in_progress",
+      "question_count": null,
+      "comparison": "Candidate for bounded C16 algebraic or memory pilot; no source C16 conclusion",
+      "code_availability": [
+        {
+          "place": "paper",
+          "utc_date": "2026-10-28",
+          "result": "inspection in progress"
+        },
+        {
+          "place": "publisher or arXiv landing",
+          "utc_date": "2026-10-28",
+          "result": "not checked yet"
+        },
+        {
+          "place": "author manuscript/repository",
+          "utc_date": "2026-10-28",
+          "result": "complete PDF obtained; hash recorded"
+        },
+        {
+          "place": "named public code host",
+          "utc_date": "2026-10-28",
+          "result": "not checked yet"
+        }
+      ]
+    },
+    {
+      "file": "c16-lazyxor-2020.pdf",
+      "pdf_bytes": 548907,
+      "pdf_pages": 22,
+      "sha256": "3fd1c8883cd87e0473c02f3c32e6d978a1027f6b5538035eaec84bb4c560924d",
+      "text_characters": 60062,
+      "text_sha256": "39c37b50e4bb1650e728b2b64c936a8497d95a46525f513d3fc8d9e15e861d56",
+      "first_page": "Tinted, Detached, and Lazy CNF-XOR solving\nand its Applications to Counting and Sampling ⋆\nMate Soos1, Stephan Gocht2, and Kuldeep S. Meel1\n1 School of Computing, National University of Singapore\n2 Lund University\nAbstract. Given a Boolean formula, the problem of counting seeks to\nestimate the number of solutions of F while the problem of uniform\nsampling seeks to sample solutions uniformly at random. Counting and\nuniform sampling are fundamental problems in computer science with a\nwide range of applications ranging from constrained random simulation,\nprobabilistic inference to network reliability and beyond. The past few\nyears have witnessed the rise of hashing-based approaches that use XOR-\nbased hashing and employ SAT solvers to solve the resulting CNF formulas\nconjuncted with XOR constraints. Since over 99% of the runtime of\nhashing-based techniques is spent inside the SAT queries, improving\nCNF-XOR solvers has emerged as a key challenge.\nIn this paper, we identify the key performance bottlenecks in the recently\nproposed BIRD architecture, and we focus on overcoming these bottlenecks\nby accelerating the XOR handling within the SAT solver and on improving\nthe solver integration through a smarter use of (partial) solutions. We\nintegrate the resulting system, called BIRD2, with the state of the art\napproximate model counter, ApproxMC3, and the state of the art almost-\nuniform model sampler UniGen2. Through an extensive evaluation over a\nlarge benchmark set of over 1896 insta",
+      "last_page": "ligence\n82(1), 273–302 (1996)\n19. Soos, M., Meel, K.S.: BIRD: engineering an eﬃcient CNF-XOR SAT solver\nand its applications to approximate model counting. In: AAAI Conference\non Artiﬁcial Intelligence, AAAI. pp. 1592–1599. AAAI Press (2019)\n20. Soos, M., Nohl, K., Castelluccia, C.: Extending SAT Solvers to Cryptographic\nProblems. In: Proc. of SAT (2009)\n21. Stockmeyer, L.: The complexity of approximate counting. In: Proc. of STOC.\npp. 118–126 (1983)\n22. Toda, S.: On the computational power of PP and (+)P. In: Proc. of FOCS.\npp. 514–519. IEEE (1989)\n23. Vadhan, S.P., et al.: Pseudorandomness.\nFoundations and Trends R⃝in\nTheoretical Computer Science 7(1–3), 1–336 (2012)\n24. Valiant, L.G.: The complexity of enumeration and reliability problems. SIAM\nJournal on Computing 8(3), 410–421 (1979)\n",
+      "source_id": "F160",
+      "title": "Tinted, Detached, and Lazy CNF-XOR solving and its Applications to Counting and Sampling",
+      "authors": [
+        "Mate Soos",
+        "Stephan Gocht",
+        "Kuldeep S. Meel"
+      ],
+      "version": "Author CAV2020 manuscript,22pages",
+      "url": "https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf",
+      "retrieved_utc": "2026-10-28T20:49:46.461337+00:00",
+      "question_screen_status": "in_progress",
+      "question_count": null,
+      "comparison": "Candidate for bounded C16 algebraic or memory pilot; no source C16 conclusion",
+      "code_availability": [
+        {
+          "place": "paper",
+          "utc_date": "2026-10-28",
+          "result": "inspection in progress"
+        },
+        {
+          "place": "publisher or arXiv landing",
+          "utc_date": "2026-10-28",
+          "result": "not checked yet"
+        },
+        {
+          "place": "author manuscript/repository",
+          "utc_date": "2026-10-28",
+          "result": "complete PDF obtained; hash recorded"
+        },
+        {
+          "place": "named public code host",
+          "utc_date": "2026-10-28",
+          "result": "not checked yet"
+        }
+      ]
+    },
+    {
+      "file": "c16-proofgje-2023.pdf",
+      "pdf_bytes": 230539,
+      "pdf_pages": 12,
+      "sha256": "95420ba3fd95692f10216fda9559895ad4ac9597bd0304df53caf9923bb3ed1f",
+      "text_characters": 38945,
+      "text_sha256": "f21496cec2272070d1a017101a3326783c6b43507b101a30a9f4b3e354e5ec4b",
+      "first_page": "arXiv:2304.04292v1  [cs.LO]  9 Apr 2023\nProof Generation for CDCL Solvers Using\nGauss-Jordan Elimination\nMate Soos1 and Randal E. Bryant2 ∗\n1 National University of Singapore\nsoos.mate@gmail.com\n2 Computer Science Department\nCarnegie Mellon University, Pittsburgh, PA, United States\nRandy.Bryant@cs.cmu.edu\nAbstract\nTraditional Boolean satisﬁability (SAT) solvers based on the conﬂict-driven clause-\nlearning (CDCL) framework fare poorly on formulas involving large numbers of parity con-\nstraints. The CryptoMiniSat solver augments CDCL with Gauss-Jordan elimination to\ngreatly improve performance on these formulas. Integrating the tbuddy proof-generating\nBDD library into CryptoMiniSat enables it to generate unsatisﬁability proofs when us-\ning Gauss-Jordan elimination. These proofs are compatible with standard, clausal proof\nframeworks.\n1\nIntroduction\nConsider Boolean formulas over a set of variables X = {x1, x2, . . . , xn}. A k-way parity con-\nstraint, also known as an XOR constraint, is an equation of the form:\nxi1 ⊕xi2 ⊕· · · ⊕xik\n=\np\n(1)\nwhere the phase p can be 1 (odd parity) or 0 (even parity.)\nAlthough Boolean satisﬁability (SAT) solvers based on conﬂict-driven clause learning (CDCL)\nhave made steady improvements over the years, they fare poorly when the formula contains\nlarge numbers of parity constraints.\nAs an example, Urquhart devised a family of unsatisﬁable formulas, consisting entirely\nof parity constraints, where both the number of variables and the number of clause",
+      "last_page": "esting (SAT), volume 5584 of LNCS, pages 244–257,\n2009.\n[25] Y. K. Tan, M. J. H. Heule, and M. O. Myreen. cake_lpr: Veriﬁed propagation redundancy checking\nin CakeML. In Tools and Algorithms for the Construction and Analysis of Systems (TACAS), Part\nII, volume 12652 of LNCS, pages 223–241, 2021.\n[26] G. S. Tseitin. On the complexity of derivation in propositional calculus. In Automation of Rea-\nsoning: 2: Classical Papers on Computational Logic 1967–1970, pages 466–483. Springer, 1983.\n[27] A. Urquhart. Hard examples for resolution. J.ACM, 34(1):209–219, 1987.\n[28] N. D. Wetzler, M. J. H. Heule, and W. A. Hunt Jr. DRAT-trim: Eﬃcient checking and trimming\nusing expressive clausal proofs. In Theory and Applications of Satisﬁability Testing (SAT), volume\n8561 of LNCS, pages 422–429, 2014.\n12\n",
+      "source_id": "F161",
+      "title": "Proof Generation for CDCL Solvers Using Gauss-Jordan Elimination",
+      "authors": [
+        "Mate Soos",
+        "Randal E. Bryant"
+      ],
+      "version": "arXiv:2304.04292v1,9April2023,12pages",
+      "url": "https://arxiv.org/pdf/2304.04292",
+      "retrieved_utc": "2026-10-28T20:49:46.461339+00:00",
+      "question_screen_status": "in_progress",
+      "question_count": null,
+      "comparison": "Candidate for bounded C16 algebraic or memory pilot; no source C16 conclusion",
+      "code_availability": [
+        {
+          "place": "paper",
+          "utc_date": "2026-10-28",
+          "result": "inspection in progress"
+        },
+        {
+          "place": "publisher or arXiv landing",
+          "utc_date": "2026-10-28",
+          "result": "not checked yet"
+        },
+        {
+          "place": "author manuscript/repository",
+          "utc_date": "2026-10-28",
+          "result": "complete PDF obtained; hash recorded"
+        },
+        {
+          "place": "named public code host",
+          "utc_date": "2026-10-28",
+          "result": "not checked yet"
+        }
+      ]
+    },
+    {
+      "source_id": "F162",
+      "title": "BOSPHORUS: Bridging ANF and CNF Solvers",
+      "authors": [
+        "Davin Choo",
+        "Mate Soos",
+        "Kian Ming A. Chai",
+        "Kuldeep S. Meel"
+      ],
+      "version": "DATE2019 author manuscript,6pages",
+      "url": "https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf",
+      "file": "c16-bosphorus-2019.pdf",
+      "pdf_pages": 6,
+      "pdf_bytes": 245154,
+      "sha256": "4107c11fe4b0d8e1e10d265cc485d3b2ce8db98455de198951d211e22ff75af1",
+      "text_characters": 32858,
+      "text_sha256": "ae0e692f1f67b0115d14e103f61e9544a1438207870c0581ddb5e5742834b65b",
+      "question_screen_status": "in_progress",
+      "question_count": null,
+      "code_availability": [
+        {
+          "place": "paper",
+          "utc_date": "2026-10-28",
+          "result": "Official Bosphorus repository named; 2026v4.1.0 official mac-arm64 binary acquired and bounded ANF tests run. Release code features exceed this 2019 paper."
+        }
+      ]
+    }
+  ],
+  "fetch_queue_preflight": {
+    "issues_listed": "all repository issues; existing fetched manifests11 and12 read",
+    "relevant_matching_manifests": [],
+    "reason": "Existing manifested sources are unrelated dissertation339 and arXiv2502.15166, not these three papers",
+    "new_fetch_requests": 0
+  },
+  "software_leads": [
+    {
+      "name": "M4RI",
+      "url": "https://github.com/malb/m4ri",
+      "access": "official README inspected; no build yet",
+      "kind": "software_not_new_academic_paper"
+    },
+    {
+      "name": "Bosphorus",
+      "url": "https://github.com/meelgroup/bosphorus",
+      "access": "Official4.1.0 native binary acquired; sourcefc05ad6e50cc4dafa847ae68a8363f60e8156963; control and hard ANF UNSAT results, hard independently DRAT-reproduced",
+      "kind": "software_not_new_academic_paper"
+    },
+    {
+      "name": "CryptoMiniSat",
+      "url": "https://github.com/msoos/cryptominisat",
+      "access": "Official5.17.0 native binary acquired; source03954f7f7815ea3984774c95a66e7c224cd25952; Gaussian matrix initialization observed in actual full-anchor log",
+      "kind": "software_not_new_academic_paper"
+    },
+    {
+      "name": "F163 author blog",
+      "url": "https://www.msoos.org/2026/09/cryptominisat-on-xnf-benchmarks-revisited/",
+      "access": "Full text read through authenticated Edge and public web; author posthttps://x.com/SoosMate/status/2099226209603231975",
+      "kind": "technical_blog_not_academic_paper"
+    }
+  ]
+}
