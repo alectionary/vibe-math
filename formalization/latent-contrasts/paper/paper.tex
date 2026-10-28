@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,booktabs,array,graphicx}
-\usepackage{listings,hyperref}
+\usepackage{hyperref}
 \setlength{\emergencystretch}{8em}
 \makeatletter
 \newcommand{\sha}{\begingroup\catcode`\_=12 \sha@read}
@@ -20,690 +20,194 @@
 \newcommand{\proofcommit}{2dcc1c414311c6a3a4d20cfe25ac390fb97a50cd}
 \newcommand{\proofbase}{https://github.com/alectionary/vibe-math/blob/\proofcommit/formalization/latent-contrasts}
 \newcommand{\lean}[2]{\href{\proofbase/LatentContrasts/Orthogonality.lean\#L#2}{\texttt{#2}}}
-\lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true,
-  breaklines=true,showstringspaces=false,frame=single,framerule=.3pt}
 
 \title{Replication of the orthogonal latent-mean contrasts\\
 in Jeffries (2024)}
 \author{}
-\date{27 October 2026}
+\date{28 October 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 Do the latent-mean contrasts in Jeffries (2024) sit on the printed scale
-\(-0.40\), \(-0.20\), \(0\), and do the rejection rates in Tables~4.1 and~4.3
-follow from that model? Jeffries defines three codes for four groups, states
-that imbalance makes the set non-orthogonal, and reports multigroup and MIMIC
-averages near those three numbers when the generating means are
-\(1, 0.6, 0.8, 0.4\). The fitting was done in lavaan~0.6.17. Population
-contrasts were obtained by fitting each candidate identification to the
-population moments. A 400-replicate Monte Carlo then used the analysis string
-from the public OSF project. On a population in which every loading is \(0.70\),
-a marker loading of \(1\) produces \(-0.28\), \(-0.14\), and \(0\). On the
-population lavaan builds from the generation string, the first loading is \(1\)
-and the other three are \(0.70\), and the same marker model produces
-\(-0.40\), \(-0.20\), and \(0\). The second population matches the printed
-averages. At \(N=240\), a \(400\)-replicate screen put six of \(30\) rejection
-rates outside an uncorrected two-standard-error band, and one of those six
-outside Bonferroni and Holm: \(2.26\) against the printed \(5.18\). The same
-ten cells at \(10{,}000\) replicates put that rate at \(5.01\). Three rates
-remain outside the uncorrected band. None remain outside Bonferroni or Holm.
-A binomial count of those three misses does not exceed the \(5\%\) expectation.
-Redrawing the three cells with simsem~0.5.16 and the \texttt{exportData} seed
-puts two of them inside that band and leaves one outside: \(6.46\) against
-\(7.41\). The dissertation's percents are single Wald tests at \(\alpha=0.05\). The
-correction applies only to this agreement check. The unbalanced power rates
-come out \(49.35\), \(21.28\), and \(8.51\) against \(49.23\), \(21.08\), and
-\(7.77\). Multigroup convergence in the smallest groups is \(89.82\%\) against
-\(89.29\%\).
+\(-0.40\), \(-0.20\), \(0\), and do the rejection rates in Tables~4.1
+and~4.3 follow from that model? Jeffries defines three codes for four
+groups and reports multigroup and MIMIC averages near those three numbers
+when the generating means are \(1\), \(0.6\), \(0.8\), and \(0.4\).
+Fitting the marker model to the population that lavaan builds from the
+generation string returns exactly \(-0.40\), \(-0.20\), and \(0\).
+The unbalanced power rates at \(N=240\) come out \(49.35\), \(21.28\),
+and \(8.51\) against the printed \(49.23\), \(21.08\), and \(7.77\).
+Of thirty rejection-rate comparisons at \(10{,}000\) replicates, three
+miss an uncorrected two-standard-error band and none miss Bonferroni or
+Holm. A later draw with simsem~0.5.16 moves two of those three inside
+the band and leaves one: \(6.46\) against \(7.41\).
 \end{abstract}
 
-\section{What this replication did}
-\label{sec:did}
+\section{The question, and the headline}
+\label{sec:headline}
 
-This section answers what was fit, and in which program.
-lavaan~0.6.17 is the estimator named in the dissertation, and it is the
-program that produced every fitted number below. simsem~0.5.17, the installed
-successor of the named simsem~0.5.16, was used to parse the generation string.
-OpenMx and MplusAutomation are not installed. Mplus is not installed. The file
-\path{simulation/mgcfa_osf.inp} mirrors the multigroup string and was not
-executed. \texttt{exportData(program = "Mplus")} in the generation scripts
-writes data files. The estimation scripts call \texttt{lavaan::sem}.
+This section answers whether the printed contrasts and the printed
+rejection rates come from the model in the dissertation.
+The contrasts do. Most of the rates do. One rate, one average, and the
+MIMIC convergence counts are still open.
 
-Lean is used only for the code identities already proved in
-\path{LatentContrasts/Orthogonality.lean}: the products of the Table~2.2
-codes, the population values of equations~(3.3)--(3.5), and the treatment
-coding of those codes. The gap between \(-0.28\) and \(-0.40\) is a question
-about which population and which identification lavaan is fitting. That
-question is answered by the moment fits, not by a new proof.
+Jeffries (2024), \url{https://digitalcommons.unl.edu/dissunl/216/},
+studies one factor, four indicators, and four groups. The
+true-difference means are \(1\), \(0.6\), \(0.8\), and \(0.4\). The null
+means are all \(1\). Sample sizes are \(240\), \(480\), and \(960\), with
+group shares \(25/25/25/25\), \(35/35/15/15\), and \(45/45/5/5\).
+The fitting program named in the text is lavaan~0.6.17. The public
+analysis scripts are at \url{https://osf.io/q9yu8/}.
 
-The moment fits are \path{simulation/candidate_readings.R}. The short Monte
-Carlo is \path{simulation/validate_gaps.R}, \(400\) replicates, seed \(13131\)
-under R's L'Ecuyer generator, with one drawn seed per cell. The
-\(10{,}000\)-replicate rerun is \path{simulation/validate_10k.R}. Each of its
-ten cells has a fixed seed, set once, and the replicates are drawn in order on
-one core. The agreement classification, including the Bonferroni and Holm
-checks, is \path{simulation/score_gaps.R}. Package versions are in
-\path{simulation/out/session_info.txt}: R~4.3.3, lavaan~0.6.17, simsem~0.5.17.
-The miss-cell redraw is \path{simulation/env_miss.R}, simsem~0.5.16, seed
-\(13131\). The dissertation names R~4.2.2.
+The population fit of the marker model on the parsed generation string
+is \(-0.40\), \(-0.20\), \(0\). The same marker model on a population
+in which every loading is \(0.70\) is \(-0.28\), \(-0.14\), \(0\).
+The printed tables match the first of those. At \(N=240\) and
+\(10{,}000\) replicates, the unbalanced power rates match the page,
+and a Bonferroni or Holm correction of the thirty rate comparisons
+leaves no miss. The rate that remains outside an uncorrected band is
+the MIMIC model, shares \(45/45/5/5\), null means, contrast~2.
 
-Jeffries studies one factor with four indicators and four groups. The
-true-difference means are \(\alpha=(1,0.6,0.8,0.4)\). The null means are all
-\(1\). Total sample size is \(240\), \(480\), or \(960\). The group shares are
-\(25/25/25/25\), \(35/35/15/15\), and \(45/45/5/5\).
+The original work is the design, the codes, and the printed tables.
+The calculations below are ours: the moment fits, the Monte Carlo, and
+the code identities. The dissertation's percent columns are one Wald
+test per dataset at \(\alpha=0.05\). That is the design of those
+columns. Multiplicity is applied only to our check that a printed rate
+and our rate agree.
 
-\section{Comparison}
-\label{sec:compare}
+\section{What we replicated}
+\label{sec:replicated}
 
-Table~\ref{tab:compare} puts one published claim on each row. ``Match'' means
-the printed value and our value agree as exact numbers, as the same population
-target, or, for a Monte Carlo rate, as a gap no larger than two combined
-standard errors. That rate rule is one comparison at a time. The combined
-standard error uses the printed count of \(10{,}000\) and our count of
-converged replicates. ``Partial'' means one piece holds and another does not.
-``No match'' means the reading is on a different scale. The last two rows are
-the agreement check on all \(30\) rates, uncorrected and then corrected. The
-dissertation's own \(\alpha=0.05\) columns are single tests. They are not
-re-thresholded here.
+This section answers which printed claims agree with a direct
+calculation. Table~\ref{tab:compare} is that comparison.
+``Match'' means the same number, the same population target, or a Monte
+Carlo gap no larger than two combined standard errors.
+``Partial'' means one piece holds and another does not.
+``No match'' means a different scale.
+``Close'' means a gap sitting on the edge of that two-standard-error band.
+The combined standard error uses the printed count of \(10{,}000\) and
+our count of converged replicates.
 
 \begin{table}[ht]
 \centering
 \small
-\begin{tabular}{@{}p{0.28\textwidth}p{0.22\textwidth}p{0.24\textwidth}p{0.16\textwidth}@{}}
+\begin{tabular}{@{}p{0.30\textwidth}p{0.24\textwidth}p{0.22\textwidth}p{0.12\textwidth}@{}}
 \toprule
 Claim & Published & Ours & Verdict \\
 \midrule
+Defined contrasts on \((1, 3/5, 4/5, 2/5)\) &
+\(-0.40,\ -0.20,\ 0\) &
+\(-2/5,\ -1/5,\ 0\) &
+match \\
 Unweighted products of the Table~2.2 codes &
 Equation~(2.4) is zero &
 Proved zero &
 match \\
-Contrasts on \((1, 3/5, 4/5, 2/5)\) &
-\(-0.4,\ -0.2,\ 0\) &
-\(-2/5,\ -1/5,\ 0\) &
-match \\
-Third contrast while the means differ &
-Used as a null contrast &
-Proved equal to \(0\) &
-match \\
-Imbalance destroys orthogonality &
+Imbalance makes the set non-orthogonal &
 The set becomes non-orthogonal &
-Only code 1 with code 3 fails &
+Only code~1 with code~3 fails &
 partial \\
-OSF marker model, generation string as lavaan parses it &
+Marker model on the parsed generation population &
 Averages near \(-0.40,\ -0.20,\ 0\) &
 Population fit \(-0.40,\ -0.20,\ 0\) &
 match \\
-Every loading \(0.70\), then marker loading \(1\) &
+Every loading \(0.70\), then a marker loading of \(1\) &
 The same averages &
 Population fit \(-0.28,\ -0.14,\ 0\) &
 no match \\
-Table~4.1, \(N=240\), shares \(45/45/5/5\), percent significant &
+Power, Table~4.1, \(N=240\), shares \(45/45/5/5\) &
 \(49.23,\ 21.08,\ 7.77\) &
 \(49.35,\ 21.28,\ 8.51\) &
 match \\
-Table~4.3, same cell, percent significant &
+Null rates, Table~4.3, same cell &
 \(8.13,\ 8.59,\ 7.73\) &
 \(8.10,\ 8.33,\ 8.22\) &
 match \\
-Table~4.5, same cell, multigroup convergence &
-\(89.29\%\) &
-\(89.82\%\) of \(10{,}000\) &
-match \\
-Thirty rejection rates, two combined standard errors &
-Each printed percent is one test at \(\alpha=0.05\) &
-\(3\) of \(30\) outside the band &
+Thirty rejection rates, uncorrected &
+Each percent is one test at \(\alpha=0.05\) &
+\(3\) of \(30\) outside two combined SEs &
 partial \\
-Same \(30\) rates, Bonferroni \(z=2.94\) and Holm &
+Same thirty rates, Bonferroni and Holm &
 Those tests are a single-test design &
 \(0\) of \(30\) outside the band &
 match \\
+Multigroup convergence, Table~4.5, that cell &
+\(89.29\%\) &
+\(89.82\%\) of \(10{,}000\) &
+match \\
 \bottomrule
 \end{tabular}
-\caption{Published claims against this replication. Monte Carlo percent rows
-use \(10{,}000\) replicates at \(N=240\). The population fits use the moment
-matrices. The last two rows correct only the agreement check. The
-\(400\)-replicate screen is in Section~\ref{sec:gaps}.}
+\caption{Published claims against this replication. Monte Carlo rows use
+\(10{,}000\) replicates at \(N=240\). The population rows use moment
+matrices.}
 \label{tab:compare}
 \end{table}
 
-The product row is equation~(2.4), proved at \lean{}{103}. The population row
-is equations~(3.3)--(3.5) on the printed means, proved at \lean{}{123}. The
-third contrast is zero while the first two means differ, proved at
-\lean{}{127}. The imbalance row is partial because \lean{}{68} shows that sizes
-\((a,a,b,b)\) leave two of the three weighted products at zero and set the
-other to \(2(b-a)\). At \(N=240\) that product is \(-96\) in condition~2 and
-\(-192\) in condition~3.
+The contrast row is equations~(3.3)--(3.5) on the printed means, proved
+at \lean{}{123}. The product row is equation~(2.4), proved at
+\lean{}{103}. The imbalance row is partial because sizes \((a,a,b,b)\)
+leave two of the three weighted products at zero and set the other to
+\(2(b-a)\), proved at \lean{}{68}. At \(N=240\) that product is \(-96\)
+in condition~2 and \(-192\) in condition~3. The third contrast is zero
+while the first two means differ, proved at \lean{}{127}.
+The treatment-coefficient form of the same contrasts is proved at
+\lean{}{159}. The marker identity at \lean{}{131}, which multiplies the
+contrasts by \(7/10\), is the every-loading-\(0.70\) reading in the
+table. It is the population that misses \(-0.40\).
 
-The two scale rows are the gap that used to read as a no match for the whole
-table. They are different populations. Section~\ref{sec:gaps} scores every
-reading against the same printed target. The percent rows use the population
-that matches \(-0.40\). The old comparison of \(7.77\) with \(4.5\) was the
-every-loading-\(0.70\) marker run, whose \(z\) statistics sit on the rescaled
-contrasts. That run is not the row in Table~\ref{tab:compare}.
+The power row is the multigroup model in the smallest groups. The
+largest \(|z|\) among those three rates is \(1.85\). The averages in
+that cell are \(-0.403\), \(-0.215\), and \(0.0050\) against
+\(-0.404\), \(-0.218\), and \(0.0054\). The thirty-rate rows use one
+normal test per rate. The uncorrected cutoff is \(|z|>1.96\), and the
+two-standard-error band used in the first screen is the same rule with
+\(2\) in place of \(1.96\). Bonferroni on thirty tests uses
+\(z=\Phi^{-1}(1-0.05/30)=2.94\), and the two-sided threshold is
+\(z=\Phi^{-1}(1-0.05/60)=3.14\). Holm sorts the thirty two-sided
+\(p\)-values and stops at the first failure. At \(10{,}000\) replicates
+the smallest of those \(p\)-values is \(0.0083\), above
+\(0.05/30=0.00167\), so Holm stops immediately.
 
-\section{Where the gaps come from}
-\label{sec:gaps}
+A binomial test of three misses in thirty trials at \(p=0.05\) has
+upper tail \(0.19\). That figure treats the thirty indicators as
+independent. The three contrasts in a cell share replicates, so the
+count is dependent inside each cell and the binomial probability is the
+independent-trials calculation. The expected count under independence
+is \(1.5\). Three misses is an ordinary count for that band.
 
-The question is which population and which identification produce
-\(-0.40\), \(-0.20\), and \(0\), and whether that same fit reproduces the
-printed rejection rates.
+\section{What gave us trouble, and how it was resolved}
+\label{sec:trouble}
 
-The generation string in the public OSF script, and the repaired form of the
-appendix string, is
-\begin{lstlisting}
-eta =~ NA*i1 + 0.7*i1 + 0.7*i2 + 0.7*i3 + 0.7*i4
-eta ~~ .5*eta
-i1 ~ 1*1
-eta ~ c(1, .6, .8, .4)*1
-\end{lstlisting}
-with residual variances \(0.51\). lavaan~0.6.17 keeps a free loading on
-\texttt{i1} and drops the second modifier \(0.7\). \texttt{simulateData} fills
-the free loading with \(1\). A draw of \(20{,}000\) at factor mean \(1\) had
-mean \(1.996\) on \texttt{i1} and \(1.693\) on \texttt{i2}. The targets are
-\(2\) and \(1.7\). The variances were \(1.021\) and \(0.749\). The targets are
-\(1.01\) and \(0.755\). simsem~0.5.17 rejects the page's token
-\texttt{i1 \textasciitilde\ 1*} with the same parse error. The OSF generation
-script already writes \texttt{1*1}. The dissertation page writes \texttt{1*}
-for that one intercept. Figure~\ref{fig:intercept} is the page.
+This section answers why an earlier replay sat on \(-0.28\) and why a
+short Monte Carlo looked as if many rates had missed.
 
-The analysis string in \path{osf/analysis/mgcfa_model.R} is a marker loading of
-\(1\), free factor variances, four free means, and one intercept shared by all
-four indicators and all four groups. It does not constrain the loadings equal
-across groups, and it does not fix them at \(0.7\). The summary script sets the
-printed standard-error column to the standard deviation of the estimates divided
-by \(\sqrt{10{,}000}\).
+\subsection{The scale \(-0.28\) against \(-0.40\)}
 
-\subsection{Parameter ledger}
+The generation line is \texttt{eta =\textasciitilde\ NA*i1 + 0.7*i1 + 0.7*i2 + 0.7*i3 + 0.7*i4}.
+In lavaan~0.6.17 that line keeps a free loading on the first indicator
+and drops the duplicate \(0.7\). \texttt{simulateData} fills the free
+loading with \(1\). The other three loadings stay at \(0.70\).
+The factor variance in the syntax is \(0.50\) and the residual variances
+are \(0.51\). A large sample from that string has mean about \(2.00\)
+on the first indicator when the factor mean is \(1\), and means about
+\(1.70\) on the other three, which is \(1+0.70\times 1\).
 
-Status is what the source supports. ``Printed'' is on the page or in the public
-script. ``Inferred'' is a consequence of fitting that string in lavaan~0.6.17.
-``Assumed'' is a choice this replay still had to make.
-
-\begin{center}
-\footnotesize
-\begin{tabular}{@{}p{0.34\textwidth}p{0.14\textwidth}p{0.42\textwidth}@{}}
-\toprule
-Parameter & Status & Value and source \\
-\midrule
-Loadings in the Chapter~III sentence & printed &
-\(0.70\) for all four indicators. PDF page~89. \\
-Factor variance, residual, intercept & printed &
-\(0.50\), \(0.51\), and \(1\). The \(49\%\) sentence is \(1-\lambda^2\) and
-needs a unit factor variance. The appendix numbers do not. \\
-Latent means & printed &
-\((1, 0.6, 0.8, 0.4)\) and, in the null, all \(1\). \\
-Table~2.2 codes & printed &
-\(C_1=(-1,1,-1,1)\), \(C_2=(-1,-1,1,1)\), \(C_3=(1,-1,-1,1)\). \\
-Appendix and OSF code \texttt{c3} & printed &
-The opposite sign. Groups 1 and 4 are \(-1\). The population value is \(0\)
-either way. \\
-Marker sentence & printed &
-First loading fixed at \(1\), intercepts equated, latent variances free.
-PDF page~90. \\
-Analysis string & printed &
-OSF \path{mgcfa_model.R}. Marker \(1\), one common intercept, four free means. \\
-First loading under the generation string & inferred &
-Free, and filled with \(1\). Loadings 2--4 stay at \(0.7\).
-\path{out/appendix_lavaanify.csv}. \\
-\texttt{i1 \textasciitilde\ 1*} on the PDF page & printed &
-Does not parse in lavaan~0.6.17 or simsem~0.5.17. \\
-\texttt{i1 \textasciitilde\ 1*1} in the OSF script & printed &
-The token this replay generates from. \\
-Standard-error column & inferred &
-\texttt{sd(estimate) / sqrt(n)} in the OSF summary script. \\
-Significance & printed &
-Two-sided \(p < 0.05\) from the MLR parameter table. \\
-Software versions & printed &
-lavaan~0.6.17, simsem~0.5.16, R~4.2.2, MLR, \(10{,}000\) iterations.
-This replay uses lavaan~0.6.17, simsem~0.5.17, R~4.3.3, and
-\texttt{iter.max} \(10{,}000\). \\
-Random stream & assumed &
-L'Ecuyer, \texttt{set.seed(13131)}, then one seed per cell. Not the
-simsem stream. \\
-MIMIC latent intercept & inferred &
-The posted line \texttt{eta \textasciitilde\ c1 + c2 + c3} fixes it at \(0\).
-Adding an intercept matches the printed averages. \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{Each reading against the printed averages}
-
-Table~\ref{tab:readings} scores each reading against the printed target
-\(-0.40\), \(-0.20\), \(0\). Moment rows are the lavaan fit to the population
-mean vector and covariance, with \(10^{7}\) observations per group, so Monte
-Carlo error is not the comparison. MIMIC rows are one sample of \(100{,}000\)
-per group, seed \(7\), except the \texttt{contr.sum} row, which is the
-\(20{,}000\)-per-group sample from seed \(13131\).
-
-\begin{table}[ht]
-\centering
-\footnotesize
-\begin{tabular}{@{}p{0.34\textwidth}p{0.20\textwidth}p{0.22\textwidth}p{0.14\textwidth}@{}}
-\toprule
-Reading & Ours & Explanatory parameter & Verdict \\
-\midrule
-All loadings \(0.70\), marker, first intercept \(0\) &
-\(-0.280,\ -0.140,\ 0\) &
-Marker rescales by \(0.7\) &
-no match \\
-All loadings \(0.70\), OSF common-intercept marker &
-\(-0.280,\ -0.140,\ 0\) &
-Same rescaling &
-no match \\
-All loadings \(0.70\), loadings and intercepts fixed &
-\(-0.400,\ -0.200,\ 0\) &
-Measurement fixed at the population &
-match \\
-All loadings \(0.70\), factor variance fixed at \(0.5\), first loading free &
-\(-0.400,\ -0.200,\ 0\) &
-Scale set by \(\psi\) &
-match \\
-Parsed generation string, OSF marker &
-\(-0.400,\ -0.200,\ 0\) &
-First loading generated at \(1\) &
-match \\
-Parsed generation string, marker, first intercept \(0\) &
-\(-0.400,\ -0.200,\ 0\) &
-A common shift of the means &
-match \\
-Parsed string, group-1 mean fixed at \(0\) &
-\(-0.276\), \(-0.115\), \(-0.038\) &
-Reference mean under a shared intercept &
-no match \\
-Parsed string, loadings fixed at \(0.7\) &
-\(-0.431\), \(-0.215\), \(-0.001\) &
-The first loading is not \(0.7\) &
-no match \\
-Factor variance \(1\), loadings \(0.70\), marker &
-\(-0.280,\ -0.140,\ 0\) &
-Marker still rescales by \(0.7\) &
-no match \\
-Wishart likelihood versus normal, OSF model &
-Difference below \(10^{-13}\) &
-\(n\) against \(n-1\) &
-no move \\
-ML versus MLR, one large sample &
-Difference \(0\) &
-Robust standard errors &
-no move \\
-MIMIC, latent intercept free, factor codes &
-\(-0.399,\ -0.200,\ 0.000\) &
-Treatment contrast equals the defined contrast &
-match \\
-MIMIC, posted line, intercept fixed at \(0\) &
-\(-0.150,\ 0.062,\ 0.273\) &
-The fixed intercept &
-no match \\
-MIMIC, numeric codes \(\pm 1\), intercept free &
-\(-0.208,\ -0.097,\ 0.001\) &
-The code changes by \(2\) &
-no match \\
-MIMIC, numeric effects codes \(\pm 1\) &
-Half the contrast, sign follows the code &
-Code direction &
-no match \\
-MIMIC, \texttt{contr.sum} assigned to the factors &
-Same slope as treatment coding &
-lavaan did not switch the slope &
-no move \\
-\bottomrule
-\end{tabular}
-\caption{Candidate readings against the printed averages \(-0.40\), \(-0.20\),
-\(0\). The printed column is that target on every row.}
-\label{tab:readings}
-\end{table}
-
-Two different constraints land on \(-0.40\): fixing the measurement at the
-equal-loading population, and leaving the first loading at the value lavaan
-generates from \texttt{NA*i1}. The public analysis script is the second
-constraint. It is a marker model. On the equal-loading population that script
-returns \(-0.28\). On the parsed generation string it returns \(-0.40\). The
-printed tables match the second of those. The earlier replay generated every
-loading at \(0.70\) and then fixed the first at \(1\), which is the first row
-of Table~\ref{tab:readings}. Its Monte Carlo averages, \(-0.286\), \(-0.134\),
-and \(0.007\) at \(200\) replicates, are that row and not a failure of the
-optimizer.
-
-A free latent intercept is required for the MIMIC averages. The line in
-\path{osf/analysis/mimic_model.R} does not include one, and lavaan~0.6.17 then
-fixes the latent intercept at \(0\). The large-sample slopes are about
-\(-0.15\), \(0.06\), and \(0.27\). The saved summary is near \(-0.40\). The fit
-that adds the intercept lands on \(-0.399\), \(-0.200\), and \(0.000\). The
-posted loop also assigns the \(z\) statistic back onto the estimate before the
-row is stored. The saved summary contains values near \(-0.40\), so that
-summary was not produced by that assignment.
-
-\subsection{Monte Carlo noise}
-
-The question is whether the remaining percent gaps are the size of a
-\(400\)-replicate simulation. A gap is outside noise when it exceeds two
-combined standard errors. For a percent, the combined standard error is
-\[
-100\sqrt{\frac{\hat p(1-\hat p)}{10{,}000}+\frac{\tilde p(1-\tilde p)}{n}},
-\]
-with \(\hat p\) the printed rate and \(n\) our number of converged replicates.
-For an average, the printed standard error is already the standard error of the
-mean of \(10{,}000\) replicates, and ours is the standard deviation divided by
-\(\sqrt{n}\).
-
-All \(30\) averages in the \(N=240\) cells we ran, multigroup and free-intercept
-MIMIC, true and null, are inside that band. The sampling standard deviations
-match the printed standard errors times \(100\). In the multigroup
-\(45/45/5/5\) true-difference cell the printed standard errors are all
-\(0.0021\), so the implied standard deviations are \(0.210\). Ours were
-\(0.210\), \(0.221\), and \(0.206\).
-
-\begin{table}[ht]
-\centering
-\small
-\begin{tabular}{@{}p{0.40\textwidth}p{0.24\textwidth}p{0.22\textwidth}@{}}
-\toprule
-Printed cell, \(N=240\) & Ours & Verdict \\
-\midrule
-Table~4.1, equal groups, averages
-\(-0.4046,\ -0.2027,\ -0.0010\) &
-\(-0.412,\ -0.204,\ 0.004\) &
-within noise \\
-Table~4.1, shares \(45/45/5/5\), averages
-\(-0.4038,\ -0.2181,\ 0.0054\) &
-\(-0.394,\ -0.222,\ 0.011\) &
-within noise \\
-Table~4.1, that cell, percent significant
-\(49.23,\ 21.08,\ 7.77\) &
-\(48.16,\ 25.21,\ 7.08\) &
-within noise \\
-Table~4.3, that cell, percent significant
-\(8.13,\ 8.59,\ 7.73\) &
-\(10.80,\ 12.85,\ 9.77\) &
-partial \\
-Table~4.5, that cell, convergence &
-\(353/400 = 88.25\%\) against \(89.29\%\) &
-within noise \\
-\bottomrule
-\end{tabular}
-\caption{The cells that motivated the gap check. Multigroup model, parsed
-generation population, \(400\) attempted replicates.}
-\label{tab:noise}
-\end{table}
-
-The \(7.77\) against \(4.5\) comparison does not survive this population. The
-\(4.5\) was the third contrast's rejection rate in the equal-loading marker run.
-Here the same printed rate is \(7.77\) and ours is \(7.08\). The combined
-standard error is \(1.39\) points.
-
-Six of the \(30\) rejection rates are outside the uncorrected band. All six are
-percents. Their averages are inside it. The other \(24\) rates are inside the
-same band. \(|z|\) is the absolute difference divided by the combined standard
-error.
-\begin{center}
-\footnotesize
-\begin{tabular}{@{}llrrrl@{}}
-\toprule
-Cell & Contrast & Printed & Ours & \(|z|\) & Corrected \\
-\midrule
-Multigroup, equal, true difference & 3 & \(5.29\) & \(3.27\) & \(2.19\) & inside \\
-Multigroup, \(35/15\), null & 2 & \(5.15\) & \(9.02\) & \(2.67\) & inside \\
-Multigroup, \(45/5\), null & 2 & \(8.59\) & \(12.85\) & \(2.48\) & inside \\
-MIMIC, \(45/5\), true difference & 1 & \(62.98\) & \(57.89\) & \(2.02\) & inside \\
-MIMIC, \(45/5\), true difference & 2 & \(23.37\) & \(18.55\) & \(2.42\) & inside \\
-MIMIC, equal, null & 1 & \(5.18\) & \(2.26\) & \(3.77\) & outside \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The corrected column is the same under three rules: Bonferroni at
-\(z=\Phi^{-1}(1-0.05/30)=2.94\), the two-sided Bonferroni threshold
-\(z=\Phi^{-1}(1-0.05/60)=3.14\), and Holm. One rate stays outside. It is the
-MIMIC model, equal groups, null means, contrast~1: \(2.26\) against \(5.18\),
-\(z=-3.77\), two-sided \(p=0.00016\), from \(399\) converged replicates.
-
-\subsection{Multiplicity}
-
-The percent columns in Tables~4.1--4.4 are one Wald test on one dataset at
-\(\alpha=0.05\). That is the design of those columns. This replication leaves
-those tests at \(\alpha=0.05\). Multiplicity is a property of the agreement
-check only: thirty differences between a printed rate and our rate.
-
-The uncorrected check is a two-sided \(5\%\) test, \(|z|>1.96\). The
-two-combined-standard-error band is that rule with \(2\) in place of \(1.96\).
-On these thirty rates the two cutoffs select the same six rows.
-
-Bonferroni divides \(0.05\) by \(30\). The one-sided normal quantile of the
-remaining tail is \(2.94\). The two-sided quantile is \(3.14\). Holm sorts the
-thirty two-sided \(p\)-values and compares the \(i\)th with
-\(0.05/(31-i)\), then stops at the first \(p\)-value that fails its cutoff.
-The smallest \(p\)-value is \(0.00016\), below \(0.05/30=0.00167\), so Holm
-rejects that row. The next \(p\)-value is \(0.0076\), from the multigroup
-\(35/15\) null contrast~2. Holm's second cutoff is \(0.05/29=0.0017\). The
-step-down stops. Five of the six uncorrected misses are inside every corrected
-rule above.
-
-A binomial test asks whether six misses in thirty trials exceeds the count
-expected at \(p=0.05\). The upper tail is \(0.0033\). Under independence the
-expected count is \(1.5\). The thirty indicators are dependent. Each cell
-contributes three contrasts computed on the same replicates, so a miss on one
-contrast moves with the other two. Dependence of that kind widens the
-distribution of the miss count relative to a \(\mathrm{Bin}(30,0.05)\) draw.
-The binomial probability is the independent-trials figure. The ten cells use
-separate seeds, so the dependence sits inside cells. At \(400\) replicates the
-Table~4.3 contrast~2 rate, \(12.85\) against \(8.59\), is the uncorrected miss
-in that cell, and it is inside the corrected band.
-
-The multigroup null model at \(N=240\) and shares \(45/45/5/5\) converged in
-\(389\) of \(400\) replicates, \(97.25\%\). Table~4.5 prints \(9{,}675\) and
-\(95.75\%\) on that row. The count divided by \(10{,}000\) is \(96.75\).
-
-\subsection{Ten thousand replicates}
-
-The question is whether the six uncorrected misses, and the one corrected
-miss, were the length of the \(400\)-replicate screen. The rerun is
-\path{simulation/validate_10k.R}: the same ten cells, \(10{,}000\) attempts,
-\texttt{missing = "ML"}, MLR, and \texttt{iter.max} of \(10{,}000\). Each cell
-sets one L'Ecuyer seed and draws its replicates in order on one core. The
-seeds are in \path{simulation/out/seeds_10k.csv}. The scores are
-\path{simulation/out/gap_scores_10k.csv}.
-
-Five of the six short-run misses fall inside the uncorrected band.
-\begin{center}
-\footnotesize
-\begin{tabular}{@{}llrrrr@{}}
-\toprule
-Cell & Contrast & Printed & At \(400\) & At \(10{,}000\) & \(|z|\) \\
-\midrule
-Multigroup, equal, true difference & 3 & \(5.29\) & \(3.27\) & \(5.23\) & \(0.19\) \\
-Multigroup, \(35/15\), null & 2 & \(5.15\) & \(9.02\) & \(5.19\) & \(0.11\) \\
-Multigroup, \(45/5\), null & 2 & \(8.59\) & \(12.85\) & \(8.33\) & \(0.66\) \\
-MIMIC, \(45/5\), true difference & 1 & \(62.98\) & \(57.89\) & \(62.13\) & \(1.25\) \\
-MIMIC, \(45/5\), true difference & 2 & \(23.37\) & \(18.55\) & \(22.11\) & \(2.12\) \\
-MIMIC, equal, null & 1 & \(5.18\) & \(2.26\) & \(5.01\) & \(0.55\) \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The row that Bonferroni and Holm had kept outside, \(2.26\) against \(5.18\),
-is \(5.01\) against \(5.18\). One of the six stays outside the uncorrected band:
-MIMIC, shares \(45/45/5/5\), true difference, contrast~2, \(22.11\) against
-\(23.37\), \(|z|=2.12\). Its average is \(-0.2012\) against \(-0.2007\).
-
-Across all \(30\) rates, three miss the uncorrected band. The other two were
-inside it at \(400\) replicates. MIMIC, shares \(45/45/5/5\), null, contrast~2
-is \(6.46\) against \(7.41\), \(|z|=2.64\). MIMIC, equal groups, null,
-contrast~3 is \(4.53\) against \(5.32\), \(|z|=2.59\). The smallest two-sided
-\(p\)-value is \(0.0083\). Bonferroni's cutoff is \(0.05/30=0.00167\), and
-\(z=2.94\) and \(z=3.14\) are the normal quantiles named above. Holm compares
-\(0.0083\) with \(0.00167\) and stops. No rate is outside the corrected rules.
-
-A binomial test of three misses in thirty trials at \(p=0.05\) has upper tail
-\(0.19\). The expected count under independence is \(1.5\). The same
-within-cell dependence applies, so \(0.19\) is the independent-trials figure.
-On that calculation, three misses is within the count chance predicts.
-Three rates each miss their own \(5\%\) band, and three misses in thirty
-trials is an ordinary count for that band.
-
-The unbalanced power rates are \(49.35\), \(21.28\), and \(8.51\) against
-\(49.23\), \(21.08\), and \(7.77\). The largest \(|z|\) in that cell is
-\(1.85\), on the third rate. The averages are \(-0.403\), \(-0.215\), and
-\(0.0050\) against \(-0.404\), \(-0.218\), and \(0.0054\). Convergence there is
-\(8{,}982\) of \(10{,}000\), \(89.82\%\), against \(89.29\%\).
-
-Twenty-nine of the \(30\) averages are inside two combined standard errors.
-The exception is the multigroup equal-group null contrast~3: \(0.0023\) against
-\(-0.0021\), \(|z|=2.40\). The rejection rate in that cell is \(5.27\) against
-\(5.39\). The \(30\) averages were not the family that Bonferroni and Holm were
-applied to. The same \(z=2.94\) threshold would place this one average inside
-a corrected band.
-
-Table~4.5's multigroup null row at \(N=240\), condition~3, prints \(9{,}675\)
-and \(95.75\%\). Those two figures are not the same rate: \(9{,}675/10{,}000\)
-is \(96.75\). Our count is \(9{,}656\) of \(10{,}000\), \(96.56\%\). That rate
-is inside two combined standard errors of \(96.75\) and outside two combined
-standard errors of \(95.75\) (\(|z|=2.98\) against the printed percent). The
-MIMIC true-difference rows print \(10{,}000\) of \(10{,}000\). Ours are
-\(9{,}988\) and \(9{,}986\). The plug-in standard error gives a printed rate of
-\(100\%\) no variance, so those gaps exceed two combined standard errors. The
-rejection rates in those cells do not.
-
-\subsection{The named installation}
-
-The question is whether those gaps are the R installation. The dissertation
-names R~4.2.2, simsem~0.5.16, and lavaan~0.6.17, and it names \texttt{nlminb}
-with \(10{,}000\) iterations. It does not name an operating system, and it does
-not set \texttt{RNGkind}. The default in R since~3.6.0, and the default in the
-R~4.3.3 used here, is Mersenne-Twister, Inversion, and Rejection.
-\texttt{sim()} in simsem~0.5-16 replaces that generator with L'Ecuyer-CMRG and
-then applies the seed passed to \texttt{exportData}.
-
-The OSF node has no \texttt{sessionInfo}, no log, and no \texttt{.Rhistory}.
-The files were uploaded on 2025-09-20. The generation scripts call
-\texttt{set.seed(1313)} and pass seed \(13131\) to \texttt{exportData}. That
-call is commented out. \texttt{exportData(program = "Mplus")} writes
-\texttt{.dat} files. The estimation scripts call \texttt{lavaan::sem}.
-
-simsem~0.5-16 was the CRAN release from 2021-03-28 until 0.5-17 on 2025-04-02,
-after the November 2024 dissertation. For a lavaan script, its generator is
-\texttt{lavaan::simulateData}. The 0.5-17 change in that function is a class
-check. lavaan~0.6-17, the named version and the version used here, was
-published on 2023-12-20. R~4.2.2 was not installed. The redraw uses
-simsem~0.5-16, lavaan~0.6-17, and \texttt{sim(dataOnly = TRUE, seed = 13131)}.
-The script is \path{simulation/env_miss.R}. The summary is
-\path{simulation/out/env_miss.csv}.
-
-On that stream the three MIMIC rates are \(22.53\) against \(23.37\)
-(\(|z|=1.42\)), \(6.46\) against \(7.41\) (\(|z|=2.64\)), and \(4.86\) against
-\(5.32\) (\(|z|=1.49\)). Two fall inside the uncorrected band. The third, MIMIC
-with shares \(45/45/5/5\), null means, contrast~2, is the same \(6.46\) the
-hand-written generator produced. The lavaan converged flag and the finite
-standard-error rule selected the same replicates in every cell of this redraw.
-No captured warning contained the word ``gradient.'' Requiring nonnegative
-variances dropped replicates only in the multigroup cell, \(9{,}774\) of
-\(9{,}927\), and that subset does not move the rates onto the page.
-
-The multigroup equal-group null contrast~3 has average \(0.0015\) against
-\(-0.0021\). Taking the printed standard error \(0.0013\) as the replicate
-standard deviation, \(|z|\) is \(1.98\). The nonnegative-variance subset has
-average \(0.0014\), \(|z|=1.92\). The earlier stream's average was \(0.0023\),
-\(|z|=2.40\). The gap sits on the boundary of the uncorrected band. It is
-inside \(z=2.94\). Convergence in that cell is \(9{,}927\) of \(10{,}000\),
-against Table~4.5's \(9{,}932\) (\(99.32\%\)).
-
-The MIMIC rows of Table~4.5 print \(10{,}000\) of \(10{,}000\). This stream
-gives \(9{,}988\) and \(9{,}980\) in the two true-difference cells, and
-\(9{,}964\) and \(9{,}951\) in the two null cells. The finite-standard-error
-rule matches the converged flag, so the shortfall is not a stricter filter.
-
-Mplus was not the estimator. The page quotes a lavaan warning and names
-\texttt{nlminb}. The OSF estimation scripts call \texttt{lavaan::sem}. No
-Mplus output is on the node. Had Mplus been the estimator, its default would
-fix the first loading at \(1\), and a default summary prints a convergence
-criterion of \(0.00005\) with at most \(1{,}000\) iterations. A negative
-residual variance is reported and the solution is still returned. Those
-defaults are not the path that produced the tables.
-
-Public code search did not turn up the dissertation scripts. The record is
-\path{simulation/out/code_search.md}. The only related public file is
-\url{https://github.com/jjeffries13/APA_2024}, a ten-indicator simulation that
-reuses the loading idiom and seed \(13131\). It is not this design.
-
-\path{Dynamic-Fit-Indices/DFI_Presentation.Rmd} calls \texttt{sessionInfo()}
-and sinks the text to \texttt{DFIsessionInfo.txt}. That text file is not in
-the repository. The commits run from March through October 2022, the file is
-dated 9 March 2022, and the working directory is under
-\texttt{/Users/jayjeffries/}. The slides beside it are a Google deck and
-contain no session block. Two teaching repositories last changed in February
-and June 2023 carry a badge for R~4.2.1. A May 2022 file has a commented
-Windows path under a UNL OneDrive account. The paths that the same period
-actually reads sit on that Mac home directory. No repository from 2023 or
-2024 contains a saved \texttt{sessionInfo}, an \texttt{renv.lock}, a packrat
-file, or a package \texttt{DESCRIPTION}. The dissertation text remains the
-source for R~4.2.2. A Mac path in other projects does not name the machine
-that produced the \(10{,}000\)-replicate tables, and it supplies no lavaan or
-simsem version. A BLAS difference would move a converged estimate in the last
-digits. It would not move a rejection rate by a percentage point. Those cells
-were not rerun.
-
-\section{Assumptions}
-\label{sec:assumptions}
-
-\subsection{Random-number stream}
-
-Jeffries sets \texttt{set.seed(1313)} and passes seed \(13131\) to
-\texttt{exportData}. The \(400\)-replicate screen used the L'Ecuyer generator,
-\texttt{set.seed(13131)}, and one drawn seed per cell. The \(10{,}000\)-replicate
-run sets a separate fixed seed in each cell, listed in
-\path{simulation/out/seeds_10k.csv}. The replicates are not Jeffries's
-replicates. The \texttt{.dat} files are not in the OSF archives.
-
-\subsection{Package versions}
-
-The dissertation names R~4.2.2 and simsem~0.5.16. The ten-cell Monte Carlo
-used R~4.3.3 and simsem~0.5.17. The miss-cell redraw installed simsem~0.5-16
-and kept lavaan~0.6.17. R~4.2.2 was not installed. The optimizer is
-\texttt{nlminb}. A replicate counts as converged when
-\texttt{lavInspect(fit, "converged")} is true, which is the flag the OSF
-script reads from the summary header, and the three contrast standard errors
-are finite. In the simsem~0.5-16 redraw those two rules selected the same
-replicates.
-
-\subsection{Replicate count}
-
-The tables use \(10{,}000\) converged replicates. The first classification uses
-\(400\) attempts per cell. That length separates a rate of \(7.8\%\) from a
-rate of \(4.5\%\), and it leaves a wide standard error on our side of each
-comparison. The classification at the printed length uses \(10{,}000\) attempts
-in each of the ten cells. The seeds are fixed and are listed in
-\path{simulation/out/seeds_10k.csv}.
-
-\subsection{The first intercept}
-
-The PDF page writes \texttt{i1 \textasciitilde\ 1*}. The OSF generation script
-writes \texttt{i1 \textasciitilde\ 1*1}, as do the other three indicators and
-the null model on the page. We generated from \texttt{1*1}.
-
-\section{Ambiguities that were resolved}
-\label{sec:resolved}
-
-\subsection{The ink matches the text layer}
-
-The question was whether a sign or a printed average in the text extract
-disagreed with the page. On the pages checked here, it does not.
-Figure~\ref{fig:generated} has the minus signs on \(-0.40\), \(-0.20\), and
-\(0\).
-
-The crops are \path{paper/figures/}. The script is
-\path{paper/figures/crop_pages.py}. It runs \texttt{pdftoppm -png -r 600}.
-Pages whose rotation flag is \(90\) degrees are turned clockwise into reading
-order. The command is
-\path{python3 formalization/latent-contrasts/paper/figures/crop_pages.py}.
+The marker model fixes the first loading at \(1\). On this population
+the factor stays on the generating scale, and the three contrasts are
+\(-0.40\), \(-0.20\), and \(0\). If every loading is generated at
+\(0.70\) and the first is then fixed at \(1\), the same contrasts are
+rescaled by \(0.70\), which is \(-0.28\), \(-0.14\), and \(0\).
+The printed tables match the parsed string. The moment fits are
+\path{simulation/candidate_readings.R}, and the output is
+\path{simulation/out/candidate_readings.csv}.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.92\textwidth]{figures/marker.png}
-\caption{Marker identification. The first loading is fixed at \(1\), and the
-intercepts are equated. PDF page~90.}
+\caption{Marker identification. The first loading is fixed at \(1\), and
+the intercepts are equated. PDF page~90.}
 \label{fig:marker}
 \end{figure}
 
@@ -718,191 +222,358 @@ PDF page~116.}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{figures/appendix_intercept.png}
-\caption{Appendix~A. The first intercept is written \texttt{1*}. The loading
-line contains both \texttt{NA*i1} and \texttt{0.7*i1}.}
+\caption{Appendix~A. The first intercept is written \texttt{1*}. The
+loading line contains both \texttt{NA*i1} and \texttt{0.7*i1}.}
 \label{fig:intercept}
 \end{figure}
+
+The page writes \texttt{i1 \textasciitilde\ 1*}. That token does not
+parse in lavaan~0.6.17 or in simsem~0.5.17. The OSF generation script,
+and the null model on the same page, write \texttt{i1 \textasciitilde\ 1*1}.
+The Monte Carlo uses \texttt{1*1}.
+
+The MIMIC line in \path{osf/analysis/mimic_model.R} has no free latent
+intercept, and lavaan then fixes that intercept at \(0\). The slopes on
+a large sample are about \(-0.15\), \(0.06\), and \(0.27\). Adding the
+intercept returns \(-0.399\), \(-0.200\), and \(0.000\) on a sample of
+\(100{,}000\) per group (\path{simulation/mimic_large.R}, seed \(7\)).
+The saved MIMIC summary is near \(-0.40\), so the stored column is the
+free-intercept fit.
+
+\subsection{Six misses at \(400\) replicates, then three at \(10{,}000\)}
+
+A \(400\)-replicate screen of the ten \(N=240\) cells, multigroup and
+free-intercept MIMIC, true and null, put all \(30\) averages inside two
+combined standard errors and six rejection rates outside that band.
+The script is \path{simulation/validate_gaps.R}. The scores are
+\path{simulation/out/gap_scores.csv}. One of the six also missed
+Bonferroni and Holm: MIMIC, equal groups, null means, contrast~1,
+\(2.26\) against \(5.18\), \(|z|=3.77\). A binomial test of six misses
+in thirty trials at \(p=0.05\) has upper tail \(0.0033\) if the
+indicators are independent. The dependence caveat above applies to that
+figure as well.
+
+The same ten cells at \(10{,}000\) replicates are
+\path{simulation/validate_10k.R}, with one fixed L'Ecuyer seed per cell
+in \path{simulation/out/seeds_10k.csv}. Five of the six short-run misses
+fall inside the uncorrected band, including the corrected miss, which
+comes out \(5.01\) against \(5.18\). Three rates remain outside:
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llrrl@{}}
+\toprule
+Cell & Contrast & Printed & At \(10{,}000\) & \(|z|\) \\
+\midrule
+MIMIC, \(45/5\), true difference & 2 & \(23.37\) & \(22.11\) & \(2.12\) \\
+MIMIC, \(45/5\), null & 2 & \(7.41\) & \(6.46\) & \(2.64\) \\
+MIMIC, equal groups, null & 3 & \(5.32\) & \(4.53\) & \(2.59\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Their averages match the page. Bonferroni and Holm leave none of the
+thirty rates outside. The scores are
+\path{simulation/out/gap_scores_10k.csv}.
+
+\subsection{The simsem~0.5.16 redraw, and the convergence rule}
+
+The dissertation names simsem~0.5.16. For a lavaan script,
+\texttt{sim()} in that version draws the rows with
+\texttt{lavaan::simulateData}, after setting the generator to
+L'Ecuyer-CMRG and the seed to the \texttt{exportData} seed.
+\path{simulation/env_miss.R} reruns the miss cells that way, at seed
+\(13131\), with lavaan~0.6.17. The summary is
+\path{simulation/out/env_miss.csv}.
+
+On that stream the three rates are \(22.53\) against \(23.37\)
+(\(|z|=1.42\)), \(4.86\) against \(5.32\) (\(|z|=1.49\)), and \(6.46\)
+against \(7.41\) (\(|z|=2.64\)). Two fall inside the uncorrected band.
+The third is the same \(6.46\) the hand-written generator produced.
+The lavaan converged flag and the finite-standard-error rule selected
+the same replicates in every cell of this redraw. No captured warning
+contained the word ``gradient.'' Requiring nonnegative variances
+dropped replicates only in the multigroup equal-null cell, \(9{,}774\)
+of \(9{,}927\), and that subset does not move the rates onto the page.
+
+\section{What is still outstanding}
+\label{sec:open}
+
+This section answers which comparisons are still open after the
+\(10{,}000\)-replicate runs.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}p{0.42\textwidth}p{0.22\textwidth}p{0.24\textwidth}@{}}
+\toprule
+Comparison & Printed & Ours \\
+\midrule
+MIMIC, shares \(45/45/5/5\), null, contrast~2, percent significant &
+\(7.41\) &
+\(6.46\) (\(|z|=2.64\)) \\
+Multigroup, equal groups, null, contrast~3, average &
+\(-0.0021\) &
+\(0.0015\) (\(|z|=1.98\)) \\
+MIMIC convergence, four \(N=240\) cells in the redraw &
+\(10{,}000\) of \(10{,}000\) &
+\(9{,}988\), \(9{,}980\), \(9{,}964\), \(9{,}951\) \\
+Table~4.5, multigroup null, \(N=240\), condition~3 &
+\(9{,}675\) and \(95.75\%\) &
+\(9{,}656\) of \(10{,}000\) (\(96.56\%\)) \\
+MIMIC average, equal groups, true difference, contrast~1 &
+\(-0.4001\) on the page &
+\(-0.399094\) in the public file \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The \(6.46\) rate is outside the uncorrected band and inside Bonferroni
+and Holm on the family of thirty. Both generators produced it. The
+average \(0.0015\) uses the printed standard error \(0.0013\) as the
+standard deviation of one replicate. The nonnegative-variance subset of
+that cell is \(0.0014\), \(|z|=1.92\). An earlier stream of the same
+cell was \(0.0023\), \(|z|=2.40\). The gap sits on the boundary of the
+uncorrected band and inside \(z=2.94\).
+
+The MIMIC rows of Table~4.5 print \(10{,}000\) of \(10{,}000\). The
+redraw is short of that count by \(12\) to \(49\) attempts. The
+converged flag and the finite-standard-error rule agree, so the
+shortfall is not a stricter filter on our side.
+
+The multigroup null row at \(N=240\), condition~3, prints \(9{,}675\)
+and \(95.75\%\). Dividing \(9{,}675\) by \(10{,}000\) gives \(96.75\).
+The rendered glyphs are \(95.75\), and the count is \(9{,}675\).
+Our count in the hand-written generator is \(9{,}656\) of \(10{,}000\),
+which is \(96.56\%\). That rate is inside two combined standard errors
+of \(96.75\) and outside two combined standard errors of \(95.75\).
+
+The page prints \(-0.4001\) for the MIMIC average of contrast~1 at
+\(N=240\) in the equal true-difference cell. The public summary stores
+\(-0.399094\). The significance count in that cell is \(9{,}573\) on
+the page and in the file.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.78\textwidth]{figures/table45.png}
-\caption{Table~4.5. At \(N=240\) and condition~3 the multigroup significance
-model converged in \(8{,}929\) of \(10{,}000\) replicates.}
+\caption{Table~4.5. At \(N=240\) and condition~3 the multigroup
+significance model converged in \(8{,}929\) of \(10{,}000\) replicates.
+The null block of the same table prints \(9{,}675\) and \(95.75\%\).}
 \label{fig:t45}
 \end{figure}
 
+\section{What we tried on the outstanding gaps}
+\label{sec:tried}
+
+This section answers whether the software, the public scripts, or
+another public copy of the code accounts for the gaps in
+Section~\ref{sec:open}. They do not. The open gaps are the size of a
+different random stream, or of a detail that is not in the public
+record. The next check is the author's data files and session record.
+
+The dissertation names R~4.2.2, simsem~0.5.16, and lavaan~0.6.17, and
+\texttt{nlminb} with a maximum of \(10{,}000\) iterations. The operating
+system and \texttt{RNGkind} are absent from that description. The
+default since R~3.6.0, and the default here, is Mersenne-Twister,
+Inversion, and Rejection. \texttt{sim()} replaces that with
+L'Ecuyer-CMRG and then uses the \texttt{exportData} seed.
+simsem~0.5-16 was current from 2021-03-28 until 0.5-17 on 2025-04-02.
+lavaan~0.6-17 was published on 2023-12-20. The ten-cell Monte Carlo
+used R~4.3.3. R~4.2.2 was not installed. The L'Ecuyer generator is the
+one \texttt{sim()} sets in both of those R versions.
+
+\texttt{exportData(program = "Mplus")} writes data files. The
+estimation scripts call \texttt{lavaan::sem}. The page quotes a lavaan
+warning and names \texttt{nlminb}. No Mplus output is on the OSF node.
+Had Mplus been the estimator, its default would fix the first loading
+at \(1\), and a default summary prints a convergence criterion of
+\(0.00005\) with at most \(1{,}000\) iterations. A negative residual
+variance is reported and the solution is still returned. The tables
+come from the lavaan scripts above. Mplus is not installed.
+\path{simulation/mgcfa_osf.inp} mirrors the multigroup string and was
+not executed.
+
+The OSF node \texttt{q9yu8} was created on 2025-04-18. The files now on
+it were uploaded on 2025-09-20. They are the generation scripts, the
+lavaan analysis scripts, and the summary CSVs. There is no
+\texttt{sessionInfo}, no log, no \texttt{.Rhistory}, and no
+\texttt{.dat} replicate. The generation scripts call
+\texttt{set.seed(1313)} and pass seed \(13131\) to \texttt{exportData}.
+That call is commented out. One uncommented call, in the \(N=480\)
+condition-3 null script, names group sizes \((168,168,72,72)\), the
+\(35/15\) split. The Monte Carlo here uses the printed shares.
+
+GitHub, GitLab, and Zenodo searches, and a clone of the twenty public
+repositories under \texttt{jjeffries13}, are logged in
+\path{simulation/out/code_search.md}. Queries for the dissertation
+title, \texttt{mgcfa\_model.R}, and \texttt{set.seed(1313)} on that
+account returned no dissertation script.
+\path{jjeffries13/APA\_2024} reuses the loading idiom and seed
+\(13131\) for a ten- and fifteen-indicator missing-data study.
+\path{Dynamic-Fit-Indices/DFI\_Presentation.Rmd} calls
+\texttt{sessionInfo()} and sinks \texttt{DFIsessionInfo.txt}. That file
+is not in the repository. The commits run from March through October
+2022, the file is dated 9~March 2022, and the working directory is
+under \texttt{/Users/jayjeffries/}. Two teaching repositories last
+changed in February and June 2023 carry a badge for R~4.2.1. A May 2022
+file has a commented Windows path. The paths those years read sit on
+that Mac home directory. No 2023 or 2024 repository contains a saved
+\texttt{sessionInfo}, an \texttt{renv.lock}, a packrat file, or a
+package \texttt{DESCRIPTION}.
+
+The dissertation text remains the source for R~4.2.2. A Mac path in
+other projects leaves the simulation machine unnamed, and it supplies
+no lavaan or simsem version. A BLAS difference would move a converged
+estimate in the last
+digits. It would not move a rejection rate by a percentage point.
+The \(6.46\) against \(7.41\), the average on the boundary, and the
+MIMIC counts short of \(10{,}000\) are what a second generator and the
+public record left in place. The author's \texttt{.dat} files, or a
+\texttt{sessionInfo} from the run that wrote the tables, are the check
+that would tell those three apart from this stream.
+
+Jeffries and Bovaird (2026), DOI \texttt{10.1177/01466216261452255},
+was not obtained as a PDF. Unpaywall, Europe PMC, and the Wayback
+Machine had no PDF on 2026-10-27. The OSF node is the analysis record
+for that title.
+
+\section{Assumptions}
+\label{sec:assumptions}
+
+This section answers which choices were supplied here rather than read
+off the page.
+
+\subsection{Random-number stream}
+
+The \(400\)-replicate screen used L'Ecuyer-CMRG, \texttt{set.seed(13131)},
+and one drawn seed per cell. The \(10{,}000\)-replicate run sets a
+separate fixed seed in each cell. The simsem redraw uses seed \(13131\)
+inside \texttt{sim()}. These are not Jeffries's replicates.
+
+\subsection{Package versions}
+
+The ten-cell Monte Carlo used R~4.3.3 and simsem~0.5.17. The miss-cell
+redraw installed simsem~0.5-16 and kept lavaan~0.6.17. R~4.2.2 was not
+installed. Versions are in \path{simulation/out/session_info.txt} and
+\path{simulation/out/env_session.txt}.
+
+\subsection{Convergence}
+
+A replicate counts as converged when \texttt{lavInspect(fit, "converged")}
+is true and the three contrast standard errors are finite. That flag is
+the one the OSF script reads from the summary header. In the
+simsem~0.5-16 redraw the two rules selected the same replicates.
+
+\subsection{The first intercept}
+
+The Monte Carlo generates from \texttt{i1 \textasciitilde\ 1*1}, the
+token in the OSF script and in the null model on the page.
+
+\subsection{The MIMIC intercept}
+
+The MIMIC Monte Carlo frees the latent intercept. The posted line, which
+fixes it at \(0\), does not recover \(-0.40\).
+
+\section{Ambiguities that were resolved}
+\label{sec:resolved}
+
+This section answers which readings were settled by a file, a fit, and
+a command.
+
+\subsection{The minus signs on the generating contrasts}
+
+The question was whether the text extract had dropped the minus signs
+on \(-0.40\), \(-0.20\), and \(0\). Figure~\ref{fig:generated} is the
+rendered page. The crop script is \path{paper/figures/crop_pages.py},
+command \path{python3 formalization/latent-contrasts/paper/figures/crop_pages.py}.
+The output crops are in \path{paper/figures/}. The proof commit is
+\texttt{2dcc1c4}.
+
+\subsection{Which population produces \(-0.40\)}
+
+The question was whether the marker model on equal loadings \(0.70\) is
+the printed scale. The artifact is
+\path{simulation/out/candidate_readings.csv}, from
+\path{Rscript candidate_readings.R out}. The parsed string, with the
+first loading filled in as \(1\), matches. The equal-loading marker
+reading does not.
+
 \subsection{The public analysis script}
 
-The question was which identification produced Tables~4.1 and~4.3. The OSF
-project \url{https://osf.io/q9yu8/} contains the multigroup and MIMIC scripts
-and the summary files. The multigroup summary matches Table~4.1 to the printed
-digits, including \(8{,}723\) significant replicates of contrast~1 at \(N=240\)
-in the equal true-difference cell. The standard-error column in that file is
-the standard deviation divided by \(\sqrt{10{,}000}\).
-
-The artifact is \path{osf/analysis/mgcfa_model.R}, retrieved 2026-10-27. The
-moment fit of that string on the parsed generation population is the fifth row
-of Table~\ref{tab:readings}. The Monte Carlo is
-\path{simulation/out/validate_gaps.csv}, from
-\path{Rscript validate_gaps.R 400 out}.
-
-\subsection{The third code and the numeric codes}
-
-Appendix~A and the OSF generation script code \texttt{c3} with the opposite
-sign from Table~2.2. On the printed means the third contrast is zero, so the
-sign does not move a two-sided rejection rate for that contrast. Numeric
-codes \(\pm 1\) estimate half the defined contrast, because the code changes by
-\(2\). Factor codes with a free latent intercept estimate the full contrast.
-Theorem \lean{}{159} is the \(0/1\) form of that identity. The marker theorem at
-\lean{}{131} is the every-loading-\(0.70\) reading, and it is not the parsed
-generation population.
-
-\section{What remains unresolved}
-\label{sec:unresolved}
-
-One MIMIC rate stays outside two combined standard errors after the
-simsem~0.5-16 redraw: shares \(45/45/5/5\), null means, contrast~2, \(6.46\)
-against \(7.41\). Both generators produced that \(6.46\). The rate is inside
-Bonferroni and Holm on the family of thirty. The multigroup equal-group null
-contrast~3 has average \(0.0015\) against \(-0.0021\), on the boundary of the
-uncorrected band. The MIMIC convergence counts remain short of the printed
-\(10{,}000\) of \(10{,}000\). The \texttt{.dat} files are not on OSF, so this
-is not Jeffries's stream. R~4.2.2 was not the installed binary.
-
-The page prints \(-0.4001\) for the MIMIC average of contrast~1 at \(N=240\) in
-the equal true-difference cell. The public summary stores \(-0.399094\). The
-significance count in that cell is \(9{,}573\) on the page and in the file.
-The other MIMIC cells we checked round from the file onto the page.
-
-The PDF generation line \texttt{i1 \textasciitilde\ 1*} does not parse. The
-OSF script's line \texttt{i1 \textasciitilde\ 1*1} does. One uncommented
-\texttt{exportData} call, in the \(N=480\)
-condition-3 null script, names group sizes \((168, 168, 72, 72)\), which is
-the \(35/15\) split. Some commented calls name sizes from a different
-condition than the file name. The datasets those calls would have written are
-not in the archive. The Monte Carlo in Table~\ref{tab:noise} uses the printed
-shares, and the condition-3 averages and the \(89.29\%\) convergence rate agree
-with the page.
-
-Jeffries and Bovaird (2026), DOI \texttt{10.1177/01466216261452255}, was not
-obtained as a PDF. Unpaywall, Europe PMC, and the Wayback machine had no PDF on
-2026-10-27. The OSF node is the analysis record for that title. It does not
-contain the article.
+The question was which identification produced Tables~4.1 and~4.3.
+The artifact is \path{osf/analysis/mgcfa_model.R}, retrieved 2026-10-27.
+The multigroup summary matches Table~4.1 to the printed digits. The
+Monte Carlo of that string is \path{simulation/out/validate_10k.csv},
+from \path{Rscript validate_10k.R 10000 out}, scored by
+\path{Rscript score_gaps.R out/validate_10k.csv out/gap_scores_10k.csv}.
 
 \section{Code and source availability}
 \label{sec:availability}
 
+This section answers where each source was looked up, and what came back.
+
 \begin{center}
 \footnotesize
-\begin{tabular}{@{}p{0.40\textwidth}p{0.16\textwidth}p{0.36\textwidth}@{}}
+\begin{tabular}{@{}p{0.38\textwidth}p{0.16\textwidth}p{0.38\textwidth}@{}}
 \toprule
 Place & Date & Result \\
 \midrule
-Appendix~A of the dissertation PDF & 2026-10-27 &
-Generation syntax. sha256 of the PDF is
+Dissertation PDF, Appendix~A & 2026-10-27 &
+Generation syntax. sha256
 \texttt{a21df98c\ldots fd469b3} \\
-OSF \texttt{/v2/search/} for the title & 2026-10-27 & HTTP 404 \\
-OSF node \texttt{q9yu8} by title filter & 2026-10-27 &
-Public project, analysis scripts and summaries, no \texttt{.dat} files and no
-article PDF \\
+OSF node \texttt{q9yu8} & 2026-10-27 &
+Scripts and summaries. No \texttt{.dat} files, no \texttt{sessionInfo} \\
 DOI \texttt{10.1177/01466216261452255} & 2026-10-27 &
-No PDF from the publisher page, Unpaywall, Europe PMC, or Wayback \\
-lavaan 0.6.17 & 2026-10-27 & Installed and used for every fit \\
-simsem 0.5.17 & 2026-10-27 &
-Installed. Rejects \texttt{i1 \textasciitilde\ 1*}. \\
-simsem 0.5-16 from the CRAN archive & 2026-10-28 &
-Installed for \path{env_miss.R}. Generator is \texttt{lavaan::simulateData}. \\
-GitHub, GitLab, Zenodo code search & 2026-10-28 &
-No dissertation script. Record in \path{simulation/out/code_search.md}. \\
+No PDF from the publisher, Unpaywall, Europe PMC, or Wayback \\
+lavaan 0.6.17 & 2026-10-27 & Used for every fit \\
+simsem 0.5-16, CRAN archive & 2026-10-28 &
+Used in \path{env_miss.R}. Generator is \texttt{lavaan::simulateData} \\
+GitHub, GitLab, Zenodo & 2026-10-28 &
+No dissertation script. Log in \path{simulation/out/code_search.md} \\
 OpenMx, MplusAutomation, Mplus & 2026-10-27 & Not installed \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The dissertation file was retrieved from the Wayback \texttt{id\_} object dated
-2025-05-11, snapshot \texttt{20250511025154}. The help request for a script,
-filed before this OSF node was found, is
+The dissertation file was retrieved from the Wayback \texttt{id\_}
+object dated 2025-05-11, snapshot \texttt{20250511025154}.
+The help request filed before the OSF node was found is
 \url{https://github.com/alectionary/vibe-math/issues/33}.
 The fetch request for the 2026 article is
 \url{https://github.com/alectionary/vibe-math/issues/34}.
 
 \section{Next steps}
 
-The rate that both generators put at \(6.46\) against \(7.41\), the average
-on the boundary of the uncorrected band, and the MIMIC convergence counts
-short of \(10{,}000\) are the gaps the named simsem release did not close.
-The missing \texttt{.dat} files would be Jeffries's own stream. An R~4.2.2
-binary would test whether L'Ecuyer draws differ from R~4.3.3. The 2026 PDF
-would show whether the journal version uses these tables.
-
-\section{What we proved}
-
-The codes, in group order \((1,2,3,4)\), are
-\[
-c_1=(-1,1,-1,1),\qquad
-c_2=(-1,-1,1,1),\qquad
-c_3=(1,-1,-1,1).
-\]
-The weighted product is \(\sum_{g=1}^{4} n_g c_{jg} c_{kg}\). For equal sizes
-the three products are zero (\lean{}{107}). For sizes \((a,a,b,b)\) the
-products of \(c_1\) with \(c_2\) and of \(c_2\) with \(c_3\) stay zero, and the
-product of \(c_1\) with \(c_3\) equals \(2(b-a)\) (\lean{}{68}). The column sums
-are zero (\lean{}{99}).
-
-A defined contrast is the average of the means coded \(+1\), minus the average
-of the means coded \(-1\). On \(\kappa=(1,3/5,4/5,2/5)\) the three contrasts
-are \(-2/5\), \(-1/5\), and \(0\) (\lean{}{123}). The third is zero while
-\(\kappa_1\neq\kappa_2\) (\lean{}{127}). Multiplying every mean by \(7/10\)
-multiplies the contrasts by \(7/10\) (\lean{}{131}). That factor is the
-every-loading-\(0.70\) marker reading. It is not the population lavaan builds
-from \texttt{NA*i1}. The treatment-contrast form with coefficients \(-2/5\),
-\(-1/5\), and \(0\) reproduces \(\kappa\) (\lean{}{159}).
-
-The proofs are rational arithmetic. The \texttt{ring} proofs depend on
-\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}. The
-\texttt{native\_decide} proofs also depend on \texttt{Lean.ofReduceBool}.
-There is no \texttt{sorry}.
+The check that would close the three open comparisons is Jeffries's
+\texttt{.dat} files, or a \texttt{sessionInfo} from the run that wrote
+Tables~4.1 through~4.5. An R~4.2.2 binary would test whether the
+L'Ecuyer draws differ from R~4.3.3. The 2026 PDF would show whether the
+journal version uses these tables.
 
 \section{Artifacts}
 \label{app:artifacts}
 
 \begin{itemize}
 \item Code identities. File \path{LatentContrasts/Orthogonality.lean}.
-Command: \path{lake build}.
-\item Moment fits of every reading. File
-\path{simulation/out/candidate_readings.csv}.
+Command: \path{lake build}. Commit \texttt{2dcc1c4}.
+\item Moment fits. File \path{simulation/out/candidate_readings.csv}.
 Command: \path{Rscript candidate_readings.R out}.
-Seed \(13131\) for the simulated samples. Moment fits do not use a seed.
 \item Large-sample MIMIC. File \path{simulation/out/mimic_large.csv}.
 Command: \path{Rscript mimic_large.R out}. Seed \(7\).
-\item Monte Carlo. File \path{simulation/out/validate_gaps.csv}.
+\item Four-hundred-replicate screen.
+File \path{simulation/out/validate_gaps.csv}.
 Command: \path{Rscript validate_gaps.R 400 out}.
-\item Agreement classification, \(400\) replicates. File
-\path{simulation/out/gap_scores.csv}, with the family summary in
-\path{simulation/out/gap_scores_multiplicity.csv}.
-Command: \path{Rscript score_gaps.R out/validate_gaps.csv out/gap_scores.csv}.
-\item Ten-thousand-replicate rerun. File
-\path{simulation/out/validate_10k.csv}, with one checkpoint per cell in
-\path{simulation/out/cell10k_*.csv}. Seeds:
-\path{simulation/out/seeds_10k.csv}.
+Scores: \path{Rscript score_gaps.R out/validate_gaps.csv out/gap_scores.csv}.
+\item Ten-thousand-replicate run.
+File \path{simulation/out/validate_10k.csv}.
+Seeds: \path{simulation/out/seeds_10k.csv}.
 Command: \path{Rscript validate_10k.R 10000 out}.
-\item Agreement classification at that length. File
-\path{simulation/out/gap_scores_10k.csv}, with the family summary in
-\path{simulation/out/gap_scores_10k_multiplicity.csv}.
-Command: \path{Rscript score_gaps.R out/validate_10k.csv out/gap_scores_10k.csv}.
-\item simsem~0.5-16 redraw of the miss cells. File
-\path{simulation/out/env_miss.csv}.
-Command: \path{Rscript env_miss.R 10000 out}, with simsem~0.5-16 on the
-library path. Versions: \path{simulation/out/env_session.txt}.
+Scores: \path{Rscript score_gaps.R out/validate_10k.csv out/gap_scores_10k.csv}.
+\item simsem~0.5-16 redraw.
+File \path{simulation/out/env_miss.csv}.
+Command: \path{Rscript env_miss.R 10000 out}.
 \item Code search. File \path{simulation/out/code_search.md}.
-\item Equal-loading replay, kept so the old averages stay reproducible.
-File \path{simulation/out/monte_carlo.csv}.
-Command: \path{Rscript monte_carlo.R 200 100 out}.
-\item Parser checks. File \path{simulation/out/parser_checks.csv}.
-\item Session. File \path{simulation/out/session_info.txt}.
-Command: \path{Rscript session_info.R out}.
-\item OSF scripts and summaries. Directory \path{osf/}.
 \item Page crops. Directory \path{paper/figures/}.
+Command: \path{python3 formalization/latent-contrasts/paper/figures/crop_pages.py}.
 \end{itemize}
 
 The dissertation PDF is local and gitignored. Its sha256 is
