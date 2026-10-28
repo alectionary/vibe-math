@@ -162,6 +162,8 @@ def source_rows(source,families):
 
 
 def verify(data,psd,source):
+    from verify_pool_inverse_structure import verify as verify_source_bridge
+    bridge=verify_source_bridge(source,ROOT)
     families=data['X_thin_families']
     assert families==data['Z_thin_families']==sorted(set(families))
     assert set(families)<=set(range(5)) and data['target']==128 and data['period']==16
@@ -225,6 +227,7 @@ def verify(data,psd,source):
             'source_C16_answered':families==list(range(5)),
             'moment_symmetry':'Only moments averaged under verified cyclic translation and sector exchange; no frame symmetry assumed.',
             'critical_monomial_cap_used':False,'moment_variables':V,'linear_terms':len(data['linear_terms']),
+            'source_coordinate_bridge':bridge,
             'source_row_types':dict(counts),'rank_cases_checked':rank_cases,'circuit_cases_checked':circuits,
             'literal_owner_intersections_checked':owners,'integer_forms_checked':forms,
             'strict_box_corrected_gap_numerator':gap,'strict_gap':str(fmpq(gap,data['denominator'])),
