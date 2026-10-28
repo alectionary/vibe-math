@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 27, 2026. Low-confidence planning priors for all 376 entries (195 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 28, 2026. Low-confidence planning priors for all 383 entries (202 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 27, 2026. Low-confidence planning priors for all 376 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 45 | 45 |
+| Unestimated / scope gate | 49 | 49 |
 
 ### 2026-Geraci-O01
 
@@ -4936,7 +4936,7 @@ The source two-point gap remains open. Corrected finite exclusions are partial p
 
 First milestone: Resolve the remaining exact finite thick-scalar inverse-pool membership problem. Three-or-more thin families per sector are necessary; three specific triple supports are excluded. Analyze higher-order private-partner ownership or construct a physical128-pair frame. Aggregate residue descent is false under the tested joint hypotheses; half-turn and asymmetric frames remain unresolved. No discovery-time estimate is justified.
 
-Progress: Exact integer certificates prove that every full original minimum-pool frame uses at least three thin families in each sector, and exclude supports{0,1,2},{0,1,4},{1,2,4} independently in either sector. A1680-point enlargement preserves the original residues, exact thin orbits, projective directions, thin modules and transpose exchange yet admits a full frame, refuting aggregate descent. Full width remains16 or18; best physical partial frame88; no Lean completion or demonstrated global speedup. [Checked artifact](../formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md).
+Progress: Literature comparison recommends coherent conditional third moments. Endpoint MIM formulation already used; weighted Benders is not a feasibility shortcut. No new source exclusion or frame; width16/18 and physical88 remain. [Checked artifact](../formalization/canonical-width/c16/LITERATURE-TECHNIQUES.md).
 
 Gate: Verify current status and exact source construction before estimating effort.
 
@@ -5837,3 +5837,115 @@ First milestone: Freeze the graph class and the identifiability quantifiers, the
 Gate: Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.
 
 Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f147-polytime-ancestral).
+
+### L-F152-binary-rank-multiplicativity
+
+Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Freeze ordinary-arithmetic0/1 factorization; distinguish it from rank over F2.
+
+Gate: Freeze ordinary-arithmetic0/1 factorization; distinguish it from rank over F2.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-binary-rank-multiplicativity).
+
+### L-F152-domino-asymptotic
+
+Determine the exact asymptotic fractional biclique partition number of the Domino matrix.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Fix the displayed Domino matrix and the limit over all positive Kronecker powers.
+
+Gate: Fix the displayed Domino matrix and the limit over all positive Kronecker powers.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-domino-asymptotic).
+
+### L-F152-strict-cover-asymptotic-gap
+
+Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Prove equality for all binary matrices or exhibit a strictness witness with exact bounds.
+
+Gate: Prove equality for all binary matrices or exhibit a strictness witness with exact bounds.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-strict-cover-asymptotic-gap).
+
+### L-F152-domino-more-powers
+
+Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Choose a finite computational target, exact certificate format and resource budget.
+
+Gate: Choose a finite computational target, exact certificate format and resource budget.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-domino-more-powers).
+
+### L-F152-domino-rational-interpretation
+
+Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: First certify the exact rational optimum; specify what interpretation would constitute an answer.
+
+Gate: First certify the exact rational optimum; specify what interpretation would constitute an answer.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-domino-rational-interpretation).
+
+### L-F154-structured-mim-methods
+
+Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Specify a graph class and a correctness, bound-strength or runtime guarantee.
+
+Gate: Specify a graph class and a correctness, bound-strength or runtime guarantee.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f154-structured-mim-methods).
+
+### L-F156-multipartite-separable-unit
+
+Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Fix n>=3, all factor dimensions>=2, unit vectors, both signs and the cone generated by tensor products of positive semidefinite operators.
+
+Gate: Fix n>=3, all factor dimensions>=2, unit vectors, both signs and the cone generated by tensor products of positive semidefinite operators.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit).

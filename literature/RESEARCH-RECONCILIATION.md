@@ -229,6 +229,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-literature-method-comparison-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Primary literature applicability reviewed; coherent conditional moments recommended for a bounded pilot. Remaining at that dated checkpoint: No new solver campaign, C16 resolution, source exclusion or Lean completion. [Report](../formalization/canonical-width/c16/LITERATURE-TECHNIQUES.md) · [Verification](../formalization/canonical-width/c16/literature-techniques-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
@@ -565,6 +571,20 @@ Source-question indexing extension.
 - [L-F146-half-trek-gap](OPEN-PROBLEMS.md#l-f146-half-trek-gap): Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
 - [L-F147-polytime-ancestral](OPEN-PROBLEMS.md#l-f147-polytime-ancestral): Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
 
-Current cohort: **376 canonical entries,150 eligible targets,186 paper records,152 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-literature-techniques-2026-10-28
 
-The current source index has **111** records, with actual access levels retained.
+Four source screens: three new full texts and completion of the older F152 gap. Method recommendation, not C16 resolution. F153 remains an explicit separate incomplete record.
+
+[Screen report](../formalization/canonical-width/c16/LITERATURE-TECHNIQUES.md). Added **7 entries**, **4 eligible targets**, **3 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F152-binary-rank-multiplicativity](OPEN-PROBLEMS.md#l-f152-binary-rank-multiplicativity): Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.
+- [L-F152-domino-asymptotic](OPEN-PROBLEMS.md#l-f152-domino-asymptotic): Determine the exact asymptotic fractional biclique partition number of the Domino matrix.
+- [L-F152-strict-cover-asymptotic-gap](OPEN-PROBLEMS.md#l-f152-strict-cover-asymptotic-gap): Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.
+- [L-F152-domino-more-powers](OPEN-PROBLEMS.md#l-f152-domino-more-powers): Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.
+- [L-F152-domino-rational-interpretation](OPEN-PROBLEMS.md#l-f152-domino-rational-interpretation): Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.
+- [L-F154-structured-mim-methods](OPEN-PROBLEMS.md#l-f154-structured-mim-methods): Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
+- [L-F156-multipartite-separable-unit](OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit): Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
+
+Current cohort: **383 canonical entries,154 eligible targets,189 paper records,156 full-text screens**; **6/154 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **115** records, with actual access levels retained.
