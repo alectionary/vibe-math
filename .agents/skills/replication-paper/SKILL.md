@@ -90,6 +90,8 @@ its own subsection.
       and the command that regenerates it.
 - [ ] A README that runs every script, with the seeds and the output paths.
 
+Code and data links in papers point at master, never at a working branch.
+
 ## Check our side first
 
 A difference between a printed number and our number is not yet a discrepancy.
