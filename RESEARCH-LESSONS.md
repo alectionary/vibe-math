@@ -299,3 +299,24 @@ The same fixed-covector lemma makes optimization over255 candidates complete
 within this basis-cover strategy. An independent physical-coordinate graph
 check confirms the manifest. Every completion is still open; a smaller
 case count is not a finishing-time guarantee.
+
+### Use the dual expansion when a one sided basis cover stops improving
+
+The later C16 follow-up replaces the1,082-case X-basis cover by518 selected-pair
+cases. For any full dual frame, beta(u,v) is the binary sum of
+beta(u,z_i)beta(x_i,v). Witnesses with beta(u,v)=1 force a selected pair to
+pass both tests. This uses an inverse-basis identity rather than additional
+enumeration of candidate frames. All6,238 source-pair witness costs and the
+resulting cover are independently checked in physical coordinates. The smaller
+cover still leaves every completion open and supplies no runtime estimate.
+
+Check whether more linear combinations can actually help before expanding a
+search. Here83,504 atoms outside the518-case cover span16,368 of16,384 matrix
+dimensions. The sixteen translated witnesses form its full annihilator. Any
+trace-one combination is a unit cyclic convolution, so it preserves the same
+orbit support: no such linear functional gives a proper subcover of these518
+cases. Smaller nonnested or nonlinear covers remain possible. Distinct exact
+degree profiles also rule out graph-isomorphism merging of the older1,082
+conditional graphs. These are useful limits on specific methods, while the
+source width remains16 or18.
+[Proofs, certificates and replay](formalization/canonical-width/c16/JOINT-COVER.md).
