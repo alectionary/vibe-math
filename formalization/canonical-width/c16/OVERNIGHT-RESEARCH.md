@@ -17,6 +17,11 @@ per sector and sector exchange, it removes the self-paired034/034 case:
 169 ordered support pairs become168, or91 exchange representatives become90.
 The all-five/all-five case remains open.
 
+An alternative complete decomposition has **1,082 selected-pair completion
+cases**, all unresolved. It comes from an optimal source-X-basis hitting cover
+and the actual pool symmetries, rather than a new frame-existence assumption.
+The case-count reduction is proved; a runtime improvement is not established.
+
 The rational certificate is `overnight-results/joint034-dual-no-cap.json.gz`.
 Its independent consumer is `verify_exchange_dual.py`; its exact PSD witness is
 `overnight-results/joint034-dual.json.PSD.json.gz`. The checked contradiction
@@ -65,9 +70,9 @@ with a written argument; it is not a Lean proof.
 
 ## What the new literature can and cannot do
 
-Groenland–Mannens–Nederlof–Piecyk–Rzążewski, arXiv2312.03859v1,
+Groenland–Mannens–Nederlof–Piecyk–Rzążewski, [arXiv2312.03859v1](https://arxiv.org/html/2312.03859v1),
 Lemma7.1 and Observation4.6, compare half-induced matching, asymptotic induced
-matching and support rank. The published ICALP2024 version changes the title
+matching and support rank. The published [ICALP2024 version](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2024.77) changes the title
 from “Asymptotic Rank Parameters” to “Asymptotic Matrix Parameters”; source
 records F153/F157 distinguish the versions and share canonical question IDs.
 
@@ -106,6 +111,26 @@ proof of what its representative sets preserve.
 balanced-word controls. The limiting implication is the written argument
 above with primary attribution, not a finite enumeration of all tensor powers.
 
+### Coefficient-field scope of the harvested questions
+
+The final question ledger has15 canonical questions, directions or formulation
+gates, with11 repeated in the published version. This includes two explicitly
+unresolved borrowed quantities used as context (Shannon capacity of C7 and
+the matrix-multiplication exponent); they are not newly attributed questions
+of these authors. Six entries currently meet the precise-target criterion.
+Present resolution and Lean status of these targets remain unassessed.
+
+In particular, two source support-rank questions retain a coefficient-field
+gate. For every even q, over F2 the unique support matrix of K_q is A=I+J,
+and A²=I, so its binary support rank is q. Over Q, B_ij=i−j has the same
+support and rank2. A triangular2 minor (or the q=2 matching) and the cited
+rank upper bound therefore give mimsup(K_q)=2. Thus F2 support rank is
+already not functionally equivalent to mimsup, and strictness occurs at K4.
+The paper's displayed rank2 construction for K_q uses enough distinct field
+elements. Silently reading its unresolved questions over F2 would answer a
+different formulation. `verify_support_field_scope.py` checks32 even-q
+instances; the general statement follows from the displayed identities.
+
 ## Pilot outcomes and limits
 
 The coherent selected-third-moment pilot adds shared third moments, Boolean
@@ -128,6 +153,23 @@ linear rows and returned `solved (inaccurate - reached time_limit_secs)` after
 125 iterations and294 seconds. Its primal residual0.0193, dual residual0.0535
 and gap0.1445 establish neither feasibility nor exclusion. There is no global
 certificate from either run.
+
+The larger joint0234 case also returned `optimal_inaccurate`, with maximum
+constraint violation0.0188. Rational recovery left a positive residual gap
+(best tested0.08659), so no contradiction was obtained. A broad linear-multiplier
+repair reached its120-second limit without a dual. An active-row repair solved
+quickly but gave a positive fixed-PSD-pairing upper bound0.07230. Twelve bounded
+cut-generation rounds reduced this only to0.07142. These repairs produced no
+new certificate. The larger case remains unresolved.
+
+A short construction comparison retained most of the physical88 frame and
+released8,16,24 or32 pairs in24 seeded neighborhoods. There was no improvement:
+21 subproblems reported infeasible and3 were unknown. These solver outcomes
+do not exclude larger frames. Separately, an independent physical-coordinate
+check finds13 compatible additional X candidates and5 Z candidates with no
+cross-pairing edge. Thus88 is maximal under direct extension, not proved to be
+the maximum. `partial88-maximality.json` and `local-exchange.json` preserve the
+different exact and sampled scopes.
 
 ### A further inversion-identity test
 
@@ -195,10 +237,50 @@ is ruled out by X rank alone. A full frame must meet the cover; translating
 one selected point to phase zero proves coverage without assuming a
 translation-invariant frame. `verify_anchor_cover.py` verifies the finite
 premises, every fixed covector and the12 positive X-basis controls.
+An independent consumer uses an integer Walsh-Hadamard transform and a different
+binary-rank pivot convention to recheck all255 covectors and the minimum12.
 
 This supplies a small, proved conditional cover for future source-specific
 moment or exact-completion arguments. It does not justify imposing any
 particular anchor on all frames, or counting the12 open cases as solved.
+Only spanning and an invariant annihilator are used here. There is no claim
+that a full biorthogonal frame descends to a full residue frame; the earlier
+counterexamples to that stronger implication remain in force.
+
+### A concrete1,082-case completion manifest
+
+A selected X anchor must be paired with one of its source anticommuting Z
+points. There are6,238 pair orbits under common translation, or3,132 after
+sector exchange. A translated anchor pair (a,b,h) is equivalent to
+(b,a,−h mod16). For each fixed-covector hitting set H, retain the distinct
+pair orbits incident to an X orbit in H, identifying this exchange equivalence.
+Every full frame has an equivalent frame containing a retained pair.
+
+The number of retained cases is monotone in H. If any union S of X orbits
+meets every source X basis, the invariant-annihilator argument supplies a
+fixed-covector hitting set H contained in S. Hence the least case count within
+this strategy is attained among the255 fixed covectors. Its exact minimum is
+**1,082**, attained at fixed mask140, with pre-exchange X anchor orbits
+
+```
+{16,17,19,33,36,38,39,40,41,42,43,44}.
+```
+
+`pair-case-cover.json` lists every case with original pool indices and an
+unresolved status. It also records all255 cover costs. The independent cover
+consumer reconstructs the graph from1088-bit physical supports and checks the
+costs using integer incidence masks. This proves optimality within the stated
+whole-orbit X-basis-cover strategy; stronger joint-frame arguments could give
+a different decomposition. No whole selected-pair completion case has been
+excluded in this block.
+
+For a listed pair (x,z), a completion consists of127 further X points in
+ker(z) and127 further Z points in ker(x), with an identity cross-pairing after
+partner ordering. This is exactly equivalent to completing that selected pair
+to a source128-frame. Excluding every listed completion would prove width18;
+one verified completion would prove16. A conditional source solver must retain
+the exact finite dictionaries and preserve these equivalences. It must not
+replace the pair condition by a cyclic-invariant selected-frame assumption.
 
 ### Remaining work
 
@@ -212,7 +294,31 @@ particular anchor on all frames, or counting the12 open cases as solved.
 4. Representative-set search requires a proven boundary/completion interface;
    the source row-basis shortcut is invalid. No finishing runtime is established.
 
+The proposed next target is a **follow-up**, not a new canonical problem:
+complete one explicitly listed selected-pair case with a checked obstruction
+or an actual128-pair source frame, then assess the remaining case costs.
+The finite fallback of enumerating X subsets is complete because a chosen
+X basis determines its dual uniquely, but it has C(720,128) candidates
+(about2^481.45). This is not a practical finishing-time bound. Neither the
+case cover nor the present solver data justifies a reliable time estimate.
+
 Paper copies are collected in the shared workspace's `collected-c16-papers`.
 Hashes, version-specific question locators, exclusions and borrowed leads are
 recorded in `overnight-results/paper-screening.json`; full copyrighted source
 copies remain local rather than being republished with this repository.
+
+Readable source statements and formulation gates: [PAPER-QUESTIONS.md](PAPER-QUESTIONS.md).
+
+## Requirement-to-evidence check
+
+| Requirement | State | Evidence and limit |
+|---|---|---|
+| Collect primary sources | Met | Six source versions/five works and12 source/text files in the local collection; version hashes in the source ledgers. |
+| Parse questions beyond immediate methods | Met | Earlier7 entries plus15 overnight entries, with canonical version deduplication, borrowed attribution and field/formulation gates; current status and Lean discovery remain unassessed. |
+| Develop a proof or counterexample | Partial | Exact joint034/034 exclusion and complete conditional covers; unrestricted16/18 question remains open. |
+| Independently check the new mathematics | Met | `replay_overnight.py`: original-pool bridge, exact dual/PSD, six corruptions, independent cover check, method barriers and physical88. |
+| Preserve unsuccessful methods | Met | Terminal launch receipts and logs, inaccurate global/0234 runs, failed repairs and24 local construction trials. |
+| Honor bounded overnight scope | Recorded | `UNTIL-6AM.md`, hard launch limits, final verification and closeout records; deadline13:00 UTC, new-experiment cutoff12:30 UTC. |
+| Kernel-checked full answer | Not completed | No new Lean completion or unrestricted proof is claimed. |
+| Integrate on master | Pending required review | Research PR17 preserves the branch and artifacts; required review is retained. |
+| New PDF manuscript | Not applicable | This deliverable is a research report, source ledger and exact certificates. |
