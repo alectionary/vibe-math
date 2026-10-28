@@ -78,6 +78,8 @@ The cyclic paper completes the stated girth-condition criterion and supplies par
 
 For the next investigation, use the repo-local [Open Question Research skill](.agents/skills/open-question-research/SKILL.md): `Use $open-question-research to tackle <inventory target or source question>.` It applies the lessons below and provides a reusable investigation worksheet. For a continuation, name the existing target and the specific follow-up to keep the scope clear.
 
+When the task is to replicate a published result and write that note, use the [replication paper skill](.agents/skills/replication-paper/SKILL.md).
+
 For GitHub and X research, check available access early using the portable
 [research access and setup guide](.agents/skills/open-question-research/references/research-access.md).
 GitHub connectors or authenticated `gh` and signed-in browser extensions provide

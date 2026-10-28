@@ -1,6 +1,6 @@
 ---
 name: document-acquisition-queue
-description: "Queue a complete public source this environment cannot retrieve. File one GitHub issue labeled fetch-request for any paper, continue independent work, and later merge the retrieval worker's immutable manifest. Use during open-question-research when full text is still unverified after the documented routes."
+description: "Queue a complete public source this environment cannot retrieve. File one GitHub issue labeled fetch-request for any paper, keep a dated code and supplementary-material ledger, file a help issue when that form does not fit, continue independent work, and later merge the retrieval worker's immutable manifest. Use during open-question-research when full text is still unverified after the documented routes."
 ---
 
 # Document acquisition queue
@@ -33,6 +33,40 @@ covers that control, a front-matter preview, an unreadable extraction, a
 `not_found` result, catalog route ids, secret rejection, an omitted
 `comment_url`, discovered identifiers that do not backfill earlier routes,
 and evidence that keeps Unicode `text_characters` distinct from byte counts.
+
+## Code and supplementary-material ledger
+
+Start this ledger the day the first place is checked. "Not available" is a
+row in the ledger, not a recollection at wrap-up. Keep it in the
+investigation notes, next to the source ledger. One row per place:
+
+| Place checked | UTC date | Result |
+|---|---|---|
+
+Check these places before writing "not available":
+
+- The paper itself, including any sentence that names a supplement or a program.
+- The publisher's article page and its supplementary-material tab.
+- The author manuscript or repository copy, when that file is not the publisher's version.
+- A public code host named in the paper or the supplement.
+- The software the paper says it used, recorded as the product name on the page that names it.
+
+The result is one of: obtained, with a hash or a stable URL; absent on that
+page; paywalled or campus-only, with the route and the wall that was shown;
+or not checked yet. "Not available" is allowed only when every place above
+has a dated row and none of them obtained the file. A route that was not
+opened does not support that sentence.
+
+When the paper says the programs exist and names where they were deposited,
+record that sentence and whether this block obtained the file. A missing
+paper uses a `fetch-request`. A missing program, supplement, or other gap
+that the fetch form does not fit uses a [help issue](#help-issue).
+
+## File a request the day the source is blocked
+
+The steps under [File a request or keep working](#file-a-request-or-keep-working)
+run in the same step that records the block. Index the source that day, with
+the issue URL. Do not collect blocked sources for closeout.
 
 ## File a request or keep working
 
@@ -152,6 +186,37 @@ passwords.
 Coordinate under the parent campaign claim when there is one. A fetch issue is
 not a new `refs/heads/claims/` reservation.
 
+## Help issue
+
+Use a help issue when the gap is not a missing paper: code, a supplement, or
+another file the `fetch-request` form does not fit. Search open issues for the
+same missing item before filing. Title: `help: <what is missing>`. The GitHub
+form is [help-request.yml](../../../.github/ISSUE_TEMPLATE/help-request.yml).
+Filing uses the same authenticated transport as a fetch request. Paste this
+body when the form is not what the client sends:
+
+```markdown
+## What is missing
+
+The file or supplement, named precisely, and the source it belongs to.
+
+## Why it matters
+
+The claim or comparison that stays open without it.
+
+## Routes already tried
+
+One line per place: the place, the UTC date, and the result. Copy the
+availability ledger. Do not write "not available" without those rows.
+
+## What would unblock it
+
+The document, dataset, or permission that would let the check run.
+```
+
+A help issue does not use the fetch lifecycle labels and does not reserve a
+claim ref. Link it from the investigation notes the day it is filed.
+
 ## Labels
 
 Lifecycle, exactly one at a time. The worker swaps the previous lifecycle label
@@ -254,7 +319,9 @@ the sources this block cares about.
      `question_count` null.
    - `preview_only` or front matter: store the partial hash so it cannot be
      reused as the full text.
-   - `restricted`: record a restriction on the checked routes only.
+   - `restricted`: record a restriction on the checked routes only. Copy each
+     route id, the URL, the HTTP status, and how that route failed. A line
+     that says only "restricted" is not a merge.
    - `transport_failure`: record the error category. A failed route is not an
      access wall.
    - `not_found`: record that the applicable routes found no copy. Leave the
