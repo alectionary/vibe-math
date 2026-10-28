@@ -1,0 +1,48 @@
+TITLE: mirror of the OSF MGCFA string
+! Not executed. The dissertation estimates in lavaan.
+! simsem exportData(program = "Mplus") only writes the data files.
+
+DATA: FILE = sim.dat;
+VARIABLE:
+  NAMES = i1 i2 i3 i4 subgroup;
+  USEVARIABLES = i1 i2 i3 i4;
+  GROUPING = subgroup (1 = g1 2 = g2 3 = g3 4 = g4);
+ANALYSIS:
+  ESTIMATOR = MLR;
+MODEL:
+  eta BY i1@1 i2 i3 i4;
+  eta* (v1);
+  [eta] (a);
+  [i1] (eq);
+  [i2] (eq);
+  [i3] (eq);
+  [i4] (eq);
+MODEL g2:
+  eta BY i2 i3 i4;
+  eta* (v2);
+  [eta] (b);
+  [i1] (eq);
+  [i2] (eq);
+  [i3] (eq);
+  [i4] (eq);
+MODEL g3:
+  eta BY i2 i3 i4;
+  eta* (v3);
+  [eta] (c);
+  [i1] (eq);
+  [i2] (eq);
+  [i3] (eq);
+  [i4] (eq);
+MODEL g4:
+  eta BY i2 i3 i4;
+  eta* (v4);
+  [eta] (d);
+  [i1] (eq);
+  [i2] (eq);
+  [i3] (eq);
+  [i4] (eq);
+MODEL CONSTRAINT:
+  NEW(c1 c2 c3);
+  c1 = -1*((a + c)/2) + ((b + d)/2);
+  c2 = -1*((a + b)/2) + ((c + d)/2);
+  c3 = -1*((b + c)/2) + ((a + d)/2);
