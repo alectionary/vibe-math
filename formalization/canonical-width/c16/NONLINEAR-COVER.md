@@ -1,5 +1,9 @@
 # C16 nonlinear cover with 505 cases
 
+Follow-up: the [residual-identity comparison](RESIDUAL-IDENTITIES.md) proves a
+497-case proper subcover and runs the previously untested witness gate. This
+report preserves the earlier505-case result and its original stopping point.
+
 Every full original minimum-pool frame has a simultaneous cyclic translate and
 optional sector exchange containing one of **505 listed pairs**. This is a
 proper subcover of the earlier518-case cover: thirteen representatives can be
