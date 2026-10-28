@@ -1,6 +1,6 @@
 ---
 name: document-retrieval-worker
-description: "Retrieve a queued full text for any public source. Claim a fetch-request issue, try the versioned identifier-first routes with curl and a real browser, hand off when this worker has no browser, verify the PDF, extract or OCR it, and post an immutable manifest. Use for the retrieval worker, not for ledger edits or question screening."
+description: "Retrieve a queued full text for any public source. Claim a fetch-request issue, try the versioned identifier-first routes with curl and a real browser, fall back to the Wayback availability API when an open-access link has moved, hand off when this worker has no browser, verify the PDF, extract or OCR it, and for an equation that matters render the page and attach operators by glyph coordinates. Use for the retrieval worker, not for ledger edits or question screening."
 ---
 
 # Document retrieval worker
@@ -178,7 +178,13 @@ Identifier-first order:
    [UNL bepress, ProQuest, and CORE](references/unl-proquest.md).
 7. `institutional-repository@1`. `curl` a repository record and its public file.
 8. `author-page@1`. `curl` an author or departmental manuscript page.
-9. `browser-download@1`, and any site browser route, only when a page you
+9. `wayback-available@1` when an earlier curl route followed an open-access
+   link onto a redirect, an empty platform, or a page with no file. The
+   procedure is [Wayback fallback](#wayback-fallback). If no such link
+   appeared, log this route once with `error_category` `not_found` and say
+   that the availability API was not called. Do not invent a URL. If complete
+   bytes are already stored, skip this route and do not log it.
+10. `browser-download@1`, and any site browser route, only when a page you
    opened answered with a bot check, a cookie wall, or a challenge, and no
    route has obtained complete bytes. If no complete bytes were obtained and
    no such page remains, record the browser route once with `error_category`
@@ -192,6 +198,9 @@ Headless work uses `curl`. Follow redirects. A 403 challenge page is
 a browser that never loads a page is a transport error. A 404 or an API result
 with no open-access location is `not_found` on that route. A login, purchase,
 or campus-only wall on a page you actually opened is `restricted` on that route.
+Name that route, the URL, the HTTP status, and the wall the page showed. A
+restriction with no route is not a record. See
+[Restricted sources](#restricted-sources).
 
 Store ordinary https URLs and stable ids. Drop signed query strings, URL
 userinfo, cookies, and authorization headers. Hosts in the catalog's
@@ -329,6 +338,84 @@ Question screening stays with the research agent. Leave `question_screen.status`
 at `not_screened` or, when you only attach locator leads, `candidates_only`
 with `question_count` null. `screen_owner` is `research_agent`. Do not set
 `completed`.
+
+An equation the investigation will cite is not finished at `pdftotext`. Follow
+[Equations in the text layer](#equations-in-the-text-layer).
+
+## Equations in the text layer
+
+A PDF written with Word Equation Editor or MathType often stores Symbol-font
+operators in the Private Use Area. On the page, the glyph is a minus, a plus,
+an equals, or a piece of a bracket. In the text layer the same glyph is a
+private-use code:
+
+| Code | What the page shows |
+|---|---|
+| U+F02D | minus, Symbol slot `0x2D` |
+| U+F02B | plus, Symbol slot `0x2B` |
+| U+F03D | equals, Symbol slot `0x3D` |
+| U+F0E6–U+F0FB | parenthesis and bracket pieces, Symbol slots `0xE6`–`0xFB` |
+
+Those operators are not in reading order with the digits. A matrix row can
+come out of `pdftotext` with no signs, while the minus and plus codes are
+emitted on other lines. An extractor that then invents one leading minus, or
+that drops every sign, is reading the text layer. It is not reading the page.
+
+For any equation that matters, render the page and attach each operator by
+its glyph coordinates. `pdftotext` is not the evidence for a sign.
+
+```sh
+pdftoppm -png -r 600 -f PAGE -l PAGE SOURCE.pdf page
+```
+
+The worked checks are
+[measure_glyphs.py](../../../formalization/correlated-residuals/simulation/measure_glyphs.py),
+which compares stored character boxes with the PDF, and
+[crop_equation7.py](../../../formalization/correlated-residuals/paper/figures/crop_equation7.py),
+which runs `pdftoppm -png -r 600` and crops the equation. The replication
+skill says how those crops enter the note.
+
+## Wayback fallback
+
+`wayback-available@1` is the fallback for a moved open-access link. Use it
+after a curl route followed that link onto a redirect, an empty new journal
+platform, or a page that is not the file. Skip it when complete bytes are
+already stored, and do not log the skip.
+
+1. Take the ordinary https URL that moved. Drop signed query strings.
+2. Ask the availability API. Percent-encode the URL.
+
+```sh
+curl -fsSL "https://archive.org/wayback/available?url=ENCODED_URL"
+```
+
+3. Read `archived_snapshots.closest`. If `available` is not true, this
+   attempt is `not_found`. Say that the API returned no snapshot.
+4. Download the raw file, not the replay wrapper. `closest.url` is the
+   replay page. The `id_` form has no slash between the timestamp and `id_`:
+
+```text
+https://web.archive.org/web/TIMESTAMPid_/ORIGINAL_URL
+```
+
+5. Run `pdfinfo` on the bytes. An archived HTML landing page is not the
+   paper. Record the original URL, the timestamp, the `id_` URL, the HTTP
+   status, and whether the bytes were a complete PDF.
+
+The 2008 New Prairie Press paper, DOI `10.4148/2475-7772.1095`, is the case
+this fallback is for: its open-access URL redirected to an empty new journal
+platform. Query the availability API with the URL that moved, then fetch the
+snapshot with the `id_` form.
+
+## Restricted sources
+
+When the outcome is `restricted`, name every route that failed and how it
+failed. Each such `routes_tried` row has the catalog id, the https URL, the
+HTTP status, `error_category` `restricted`, and a note that names the wall
+actually shown: a login page, a purchase page, or a campus-only notice. A
+manifest note that says only "restricted" is not enough. A route that failed
+for another reason keeps its own `error_category`. A restriction on one route
+does not cover a route that was not opened.
 
 ## Post the manifest and relabel
 
