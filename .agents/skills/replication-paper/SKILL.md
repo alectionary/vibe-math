@@ -22,7 +22,12 @@ The abstract and the first paragraph answer four things, in this order: the
 research question, what the original work claims, what we did, and what we
 found.
 
-- Do not open with how the note was produced.
+Order the note as a story. Start with the research question and the headline
+findings, then what replicated, then what gave us trouble and how we fixed it,
+then what is still open together with what we tried.
+
+- Keep process details out of the abstract and the opening. That includes how
+  the note was produced.
 - Do not put a language-model authorship statement anywhere in the note, the
   pull request, the README, or a figure caption.
 - Omit the manuscript author line unless the user asks for one.
@@ -44,12 +49,36 @@ comparison. The original work's contribution is the model, the design, and the
 published tables. Each later number is labeled as one of: our calculation or
 simulation, an assumption we supplied, or a figure taken from a cited source.
 
+## Links and citations
+
+Code and data links in papers point at `master`.
+
+Cite every piece of software used, with its exact version, and link its CRAN
+page or repository. This covers R, lavaan, simsem, OpenMx, Lean, and Mathlib.
+Say why each tool was chosen. For example, R and lavaan because the original
+used them, simsem 0.5.16 because the dissertation names that version, and
+OpenMx as an independent check on the optimizer. Use Lean for the algebra, and
+R with an SEM package for statistical model fitting.
+
+Deep-link every script, output file, and key function from the text, with line
+anchors for theorems and functions.
+
 ## Comparison table
 
 Include a table with these columns: claim, published, ours, verdict. The
-verdict is one of `match`, `partial`, `close`, `no match`. Give each row one
-sentence that states the reason. Put that sentence in the row when it fits, or
-in the paragraph under the table that names the row.
+verdict is one of `match`, `partial`, `close`, `no match`. Each row gives the
+original value, our value, and that verdict. Give each row one sentence that
+states the reason. Put that sentence in the row when it fits, or in the
+paragraph under the table that names the row.
+
+Name any remaining gap by the cell, the value, and the band. Judge Monte Carlo
+agreement against a band of two standard errors, then apply Bonferroni or Holm.
+
+Keep small differences, such as typos, rounding, and boundary cases, in their
+own list, and say plainly whether they are replication failures.
+
+Give tables readable row spacing, for example `\arraystretch` 1.3 with
+booktabs, and keep the layout consistent with earlier papers.
 
 ## Page crops
 
@@ -94,16 +123,25 @@ Code and data links in papers point at master, never at a working branch.
 
 ## Check our side first
 
-A difference between a printed number and our number is not yet a discrepancy.
+A gap between a printed number and our number is the start of an investigation.
+It is not yet a discrepancy. Check these, in order.
 
-1. Render the page and compare the ink with the text layer. If they disagree,
-   the extraction was wrong. Say so, and do not attribute the difference to
-   the authors.
-2. List the assumptions we supplied. Turn them off one at a time. Record which
-   gaps each change closes and which it leaves.
-3. Only after both checks, write "discrepancy" and "under our reading".
-4. Do not assert that the authors made an error. A discrepancy is consistent
-   with more than one cause. Name the causes still open.
+1. How we read the source. Render the page and compare the ink with the text
+   layer. If they disagree, the extraction was wrong. Say so, and do not
+   attribute the difference to the authors. Also check how a model string is
+   parsed: lavaan reads `NA*i1 + 0.7*i1` as a first loading of 1.
+2. What we assumed. List the assumptions we supplied. Turn them off one at a
+   time. Record which gaps each change closes and which it leaves.
+3. The formulas we used.
+4. The software versions. Match the original's versions where possible.
+5. The optimizer. Try a second estimator or optimizer before blaming the data.
+6. Only after those checks, write "discrepancy" and "under our reading".
+7. Do not assert that the authors made an error. A discrepancy is consistent
+   with more than one cause. Name the causes still open, and point to what
+   would settle the question, such as the `.dat` files or a sessionInfo record.
+
+Estimate run time before a long simulation, and stay inside the research time
+budget.
 
 ## Probability claims
 
@@ -117,6 +155,10 @@ under that independence assumption
 The figure does not say how the printed numbers were obtained.
 
 ## Availability ledger
+
+Look for the original code before rebuilding it. Check the OSF project, the
+author's GitHub account, GitLab, and Zenodo. Clone every repository on that
+GitHub account, because code search misses files.
 
 Before calling code or a supplement unavailable, fill the dated ledger in
 [document acquisition](../document-acquisition-queue/SKILL.md#code-and-supplementary-material-ledger).
@@ -170,7 +212,19 @@ acquisition or help issue when one is open.
       the findings.
 - [ ] "Remove" was a deletion. Nothing that was removed was relocated.
 - [ ] The comparison table has claim, published, ours, and verdict, plus one
-      reason per row.
+      reason per row. A remaining gap names the cell, the value, and the band.
+      Monte Carlo agreement uses a two-standard-error band, then Bonferroni or
+      Holm. Typos, rounding, and boundary cases are listed on their own.
+- [ ] Tables use readable row spacing, in the layout of the earlier papers.
+- [ ] Every piece of software is cited with its exact version and a CRAN or
+      repository link, and the note says why that tool was chosen.
+- [ ] Every script, output file, and key function is deep-linked from the text,
+      with line anchors for theorems and functions.
+- [ ] A gap was checked in order: the reading of the source, our assumptions,
+      the formulas, the software versions, and the optimizer.
+- [ ] The original code was sought on OSF, the author's GitHub account (every
+      repository cloned), GitLab, and Zenodo before it was rebuilt.
+- [ ] Run time was estimated before any long simulation.
 - [ ] Every disputed number and equation has a 600 dpi crop.
 - [ ] Each resolved ambiguity has an artifact, a script, an output, a commit,
       and a command.
