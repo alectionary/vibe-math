@@ -341,3 +341,23 @@ that particular spurious configuration. At the selected anchor this yields a
 checked source witness705/705 and increases the functional span16to32. Its solver
 comparison remains unrun; a separated partial witness is not an anchored frame
 obstruction. [Proof, tests and next gate](formalization/canonical-width/c16/NONLINEAR-COVER.md).
+
+
+### Retry difficult proposals in compact proof models
+
+The next C16 follow-up proves a497-case proper subcover of505. The first new
+removed class came from a global proposal that timed out in the large incremental
+model; its compact uncompressed CNF produced a checked proof. Monotone extensions
+then removed seven further representatives. Fresh compact proof checks, rather
+than a global-optimum claim or the newly added matrix equations, produced this
+gain. Physical regeneration andDRAT checking remain the acceptance gate.
+
+Residual-guided equations separately increase the chosen anchor's functional
+span from16 to87, with compatible partial witnesses through86 andUNKNOWN at87.
+Every violated residual entry supplies an independent valid equation, but
+strictly stronger necessary conditions do not by themselves settle a case.
+Recompute the active source-edge set after each addition, and compress only
+free edges after subtracting the fixed anchor's contribution. Disjoint partial
+witness supports give a109-class lower bound for the original16-signature cover
+criterion; they do not bound arbitrary covers or prove a full frame exists.
+[Proofs, limits and replay](formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md).
