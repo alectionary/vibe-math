@@ -241,6 +241,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-joint-cover-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): A proved518-case paired-basis cover, minimum over6238 allowed source-pair witness orbits; no proper subcover from any trace-one linear functional; all1082 prior residual graphs pairwise nonisomorphic;91125 bounded joint-rank cuts exactly nonseparating. Remaining at that dated checkpoint: No conditional case completion, unrestricted width answer or Lean completion. Smaller nonnested/nonlinear covers and case-family obstructions remain open. No new source paper was acquired, and no novelty or current literature-completeness claim is made.. [Report](../formalization/canonical-width/c16/JOINT-COVER.md) · [Verification](../formalization/canonical-width/c16/joint-cover-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
