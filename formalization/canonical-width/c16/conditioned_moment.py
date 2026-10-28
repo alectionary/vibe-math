@@ -82,11 +82,12 @@ def source_data():
 
 
 class Lift:
-    def __init__(self, values, graph, anchors, rows, degree=True):
+    def __init__(self, values, graph, anchors, rows, degree=True, active=None):
         self.values = values
         self.graph = graph
         self.anchors = anchors
         self.rows = rows
+        self.active = set(range(N)) if active is None else set(active)
         self.keys = set()
         self.zero = set()
         self.degree_rows = []
@@ -99,13 +100,15 @@ class Lift:
             self.matrices.append(matrix)
             if degree:
                 for v in rows:
-                    terms = [self.ref([a, v, int(w)]) for w in np.flatnonzero(graph[v])]
+                    terms = [self.ref([a, v, int(w)]) for w in np.flatnonzero(graph[v]) if w // P in self.active]
                     self.degree_rows.append((terms, pair_index(a, v)))
         self.keys = sorted(self.keys)
         self.ids = {key: BASE + i for i, key in enumerate(self.keys)}
         self.all_keys = sorted(set(self.keys) | self.zero)
 
     def ref(self, events):
+        if any(v // P not in self.active for v in events):
+            return None
         key = canonical(events)
         if len(key) == 1:
             return key[0] // P
@@ -178,7 +181,7 @@ def sparse_rows(rows, width):
     return coo_matrix((val, (ri, ci)), shape=(len(rows), width)).tocsr(), np.array(rhs)
 
 
-def add_frozen_base(prob, p, C, patterns, target, mapping):
+def add_frozen_base(prob, p, C, patterns, target, mapping, normalized=False):
     import cvxpy as cp
     from scipy.sparse import csc_matrix
     from moment_triangle_cuts import expression as triangle
@@ -194,15 +197,22 @@ def add_frozen_base(prob, p, C, patterns, target, mapping):
             rectangles.append({**r, 'sector': side, 'columns': cols, 'conditional': (side, r['thin_mask'], r['thick_mask']) in conditional})
     K = csc_matrix((np.ones(sum(len(c['columns']) for c in rectangles)), ([j for c in rectangles for j in c['columns']], [k for k, c in enumerate(rectangles) for j in c['columns']])), shape=(N, len(rectangles)))
     rank = np.array([c['rank'] for c in rectangles])
-    con.append(P * K.T @ p <= rank)
+    con.append(cp.multiply(1 / rank, P * K.T @ p) <= 1 if normalized else P * K.T @ p <= rank)
     chosen = [i for i, r in enumerate(rectangles) if r['conditional']]
-    con.append(sum(C.values()) @ K[:, chosen] <= cp.reshape(p, (N, 1), order='C') @ rank[chosen].reshape(1, -1))
+    con.append(cp.multiply(1 / rank[chosen].reshape(1, -1), sum(C.values()) @ K[:, chosen]) <= cp.reshape(p, (N, 1), order='C') @ np.ones((1,len(chosen))) if normalized else sum(C.values()) @ K[:, chosen] <= cp.reshape(p, (N, 1), order='C') @ rank[chosen].reshape(1, -1))
     triangles = read(folder / 'lattice-source-triangles.json.gz')
     forms = read(folder / 'lattice-source-integer-forms.json.gz')
     con.extend(triangle(r, p, C, P) for r in triangles)
     con.extend(form(r, p, C, P) for r in forms)
     owner_cuts = read(folder / 'all-owner-cuts.json.gz')
-    con.append(owners(owner_cuts, patterns, p, C, P))
+    own = owners(owner_cuts, patterns, p, C, P)
+    if normalized:
+        from moment_owner_cuts import common_events, neighbor_polynomials
+        nb = neighbor_polynomials(patterns, P)
+        norms = np.array([math.sqrt(2 + len(common_events(c, patterns, P, nb))) for c in owner_cuts])
+        con.append(cp.multiply(1 / norms, own.args[0]) <= 0)
+    else:
+        con.append(own)
     # Previously frozen conditional short-circuit rank inequalities.
     circuits = []
     for r in read(folder / 'lattice-source-circuits.json.gz'):
@@ -214,7 +224,8 @@ def add_frozen_base(prob, p, C, patterns, target, mapping):
         circuits.append((dict(d), 0))
     A, b = sparse_rows(circuits, BASE)
     vec = cp.hstack([p] + [cp.vec(C[h], order='F') for h in range(9)])
-    con.append(A @ vec <= b)
+    norms = np.sqrt(np.asarray(A.multiply(A).sum(axis=1)).ravel()) if normalized else np.ones(A.shape[0])
+    con.append(cp.multiply(1 / norms, A @ vec) <= b / norms)
     cap_types = []
     if target == 128:
         for side in range(2):
@@ -251,11 +262,15 @@ def literal_controls(lift, eq, iq, mapping):
         pairs = [(xi[mask(r['X'])], zi[mask(r['Z'])]) for r in frame['pairs']]
     inverse = [{v: i for i, v in enumerate(ids)} for ids in mapping]
     masks = [0] * N
+    retained = []
     for a, b in pairs:
+        if inverse[0][a] // P not in lift.active or 45 + inverse[1][b] // P not in lift.active:
+            continue
+        retained.append((a,b))
         for side, v in enumerate([a, b]):
             event = inverse[side][v]
             masks[side * 45 + event // P] |= 1 << (event % P)
-    assert sum(m.bit_count() for m in masks) == 176
+    assert retained and sum(m.bit_count() for m in masks) == 2 * len(retained)
     x0 = orbit_moments(masks)
     x = np.r_[x0, [triple_value(k, masks) for k in lift.keys]]
     A, b = sparse_rows(eq, len(x))
@@ -275,7 +290,7 @@ def literal_controls(lift, eq, iq, mapping):
     for a, b, c in product([0, 1], repeat=3):
         t = a * b * c
         assert min(t, a*b-t, a*c-t, b*c-t, a-a*b-a*c+t, b-a*b-b*c+t, c-a*c-b*c+t, 1-a-b-c+a*b+a*c+b*c-t) >= 0
-    return {'status': 'PASS', 'physical88_pairs': len(pairs), 'new_degree_equalities': len(eq), 'new_Boolean_cell_inequalities': len(iq), 'exact_linear_residual': er, 'PSD_numerical_minimum': min(mins), 'PSD_interpretation': 'Matrices are exact orbit averages of nonnegative weighted outer products; eigenvalues are an additional numerical check.'}
+    return {'status': 'PASS', 'physical88_input_pairs': len(pairs), 'retained_physical_control_pairs': len(retained), 'new_degree_equalities': len(eq), 'new_Boolean_cell_inequalities': len(iq), 'exact_linear_residual': er, 'PSD_numerical_minimum': min(mins), 'PSD_interpretation': 'Matrices are exact orbit averages of nonnegative weighted outer products; eigenvalues are an additional numerical check.'}
 
 
 def main():
@@ -285,15 +300,28 @@ def main():
     ap.add_argument('--target', type=int, default=128)
     ap.add_argument('--output', type=Path, required=True)
     ap.add_argument('--direct', action='store_true')
+    ap.add_argument('--normalized', action='store_true')
+    ap.add_argument('--rho-x', type=float, default=1e-6)
+    ap.add_argument('--eps', type=float, default=1e-7)
+    ap.add_argument('--X-families', type=int, nargs='+', default=list(range(5)))
+    ap.add_argument('--Z-families', type=int, nargs='+', default=list(range(5)))
+    ap.add_argument('--exchange', action='store_true')
+    ap.add_argument('--linear-base', action='store_true')
+    ap.add_argument('--export-canonical', action='store_true')
+    ap.add_argument('--export-only', action='store_true')
     a = ap.parse_args()
     start = time.monotonic()
     source, patterns, values, mapping, graph = source_data()
     # Frozen before the first solve: two cyclic anchor orbits and97-row blocks.
     anchors = [39 * P, 84 * P]
-    rows = sorted(set([i * P for i in range(N)] + [39*P+h for h in [1, 2, 4, 8]] + [84*P+h for h in [1, 2]]))
-    lift = Lift(values, graph, anchors, rows)
+    active = [9*c+i for c in sorted(set(a.X_families)) for i in range(9)] + [45+9*c+i for c in sorted(set(a.Z_families)) for i in range(9)]
+    assert all(0 <= c < 5 for c in a.X_families+a.Z_families)
+    anchors = [v for v in anchors if v // P in active]
+    assert anchors
+    rows = sorted(set([i * P for i in active] + [v for v in [39*P+h for h in [1, 2, 4, 8]]+[84*P+h for h in [1, 2]] if v//P in active]))
+    lift = Lift(values, graph, anchors, rows, active=active)
     eq, iq = lift.linear_rows()
-    protocol = {'anchors': anchors, 'rows': rows, 'matrix_order': len(rows)+1, 'triple_variables': len(lift.keys), 'forbidden_triples': len(lift.zero), 'degree_equations': len(eq), 'Boolean_cell_inequalities': len(iq), 'omitted_strength': 'Only selected principal blocks and selected degree localizers; no full cubic cardinality localizers or full hierarchy claimed.'}
+    protocol = {'X_families':a.X_families,'Z_families':a.Z_families,'active_orbits':active,'anchors': anchors, 'rows': rows, 'matrix_order': len(rows)+1, 'triple_variables': len(lift.keys), 'forbidden_triples': len(lift.zero), 'degree_equations': len(eq), 'Boolean_cell_inequalities': len(iq), 'omitted_strength': 'Only selected principal blocks and selected degree localizers; no full cubic cardinality localizers or full hierarchy claimed.'}
     a.output.parent.mkdir(parents=True, exist_ok=True)
     controls = literal_controls(lift, eq, iq, mapping)
     result = {'status': 'CONTROLS_PASS', 'source_C16_answered': False, 'exact_exclusion_certificate': False, 'mode': a.mode, 'protocol': protocol, 'controls': controls, 'source_pool_pairs': int(graph.sum() // 2)}
@@ -303,15 +331,32 @@ def main():
         return
     import cvxpy as cp
     from rectangular_moment_sdp import model
-    prob, p, C = model(patterns, P, a.target)
-    con, old = add_frozen_base(prob, p, C, patterns, a.target, mapping)
+    xactive = [i for i in active if i < 45]
+    zactive = [i-45 for i in active if i >= 45]
+    compact_patterns = [[patterns[i][j] for j in zactive] for i in xactive]
+    if a.exchange:
+        assert sorted(a.X_families)==sorted(a.Z_families)
+        from exchange_moment_model import model as exchange_model
+        prob,p,C,exchange_info=exchange_model(ROOT,mapping,sorted(a.X_families),a.target,a.normalized)
+        result['exchange_model']=exchange_info
+    else:
+        prob, compact_p, compact_C = model(compact_patterns, P, a.target, normalize_equalities=a.normalized)
+        from scipy.sparse import csc_matrix
+        E = csc_matrix((np.ones(len(active)),(active,range(len(active)))),shape=(N,len(active)))
+        p = E @ compact_p
+        C = {h:E @ compact_C[h] @ E.T for h in range(P)}
+    con, old = add_frozen_base(prob, p, C, patterns, a.target, mapping, a.normalized)
+    if a.linear_base:
+        con=[c for c in con if not isinstance(c,cp.constraints.psd.PSD)]
     v0 = cp.hstack([p] + [cp.vec(C[h], order='F') for h in range(9)])
     if a.mode != 'base':
         t = cp.Variable(len(lift.keys), name='third')
         v = cp.hstack([v0, t])
         A, b = sparse_rows(eq, BASE+len(lift.keys))
         B, c = sparse_rows(iq, BASE+len(lift.keys))
-        con.extend([A @ v == b, B @ v <= c])
+        an = np.maximum(1, np.sqrt(np.asarray(A.multiply(A).sum(axis=1)).ravel())) if a.normalized else np.ones(A.shape[0])
+        bn = np.maximum(1, np.sqrt(np.asarray(B.multiply(B).sum(axis=1)).ravel())) if a.normalized else np.ones(B.shape[0])
+        con.extend([cp.multiply(1/an, A @ v) == b/an, cp.multiply(1/bn, B @ v) <= c/bn])
         if a.mode == 'psd':
             q = len(rows)+1
             refs = [pair_index(i, j) if i is not None and j is not None else (j if i is None else i) // P if (i is not None or j is not None) else None for i in [None]+rows for j in [None]+rows]
@@ -322,11 +367,22 @@ def main():
                 M = cp.reshape(lift.selector(refs, BASE+len(lift.keys)) @ v, (q, q), order='C')
                 con.extend([M >> 0, M0-M >> 0])
     prob = cp.Problem(cp.Minimize(0), con)
-    result.update(status='MODEL_BUILT', base_cuts=old, build_seconds=time.monotonic()-start)
+    result.update(status='MODEL_BUILT', base_cuts=old, build_seconds=time.monotonic()-start, numerical_settings={'normalized':a.normalized,'rho_x':a.rho_x,'eps':a.eps,'direct':a.direct,'exchange':a.exchange})
     a.output.write_text(json.dumps(result, indent=2)+'\n')
     print('MODEL_BUILT', result['build_seconds'], flush=True)
     solve_start = time.monotonic()
-    prob.solve(solver='SCS', use_indirect=not a.direct, eps=1e-7, max_iters=50000, time_limit_secs=a.seconds, verbose=True)
+    if a.export_canonical or a.export_only:
+        from scipy.sparse import save_npz
+        data,_,_=prob.get_problem_data(cp.SCS)
+        save_npz(a.output.with_suffix('.A.npz'),data['A'])
+        np.savez_compressed(a.output.with_suffix('.bc.npz'),b=data['b'],c=data['c'])
+        a.output.with_suffix('.canonical.json').write_text(json.dumps({'zero':data['dims'].zero,'nonneg':data['dims'].nonneg,'psd':data['dims'].psd,'variables':{v.id:v.name() for v in prob.variables()},'offsets':data['param_prob'].var_id_to_col,'shapes':{v.id:v.shape for v in prob.variables()}},indent=2)+'\n')
+    if a.export_only:
+        result.update(status='CANONICAL_EXPORTED_WITHOUT_SOLVE',total_seconds=time.monotonic()-start)
+        a.output.write_text(json.dumps(result,indent=2)+'\n')
+        print('CANONICAL_EXPORTED_WITHOUT_SOLVE',flush=True)
+        return
+    prob.solve(solver='SCS', use_indirect=not a.direct, rho_x=a.rho_x, eps=a.eps, max_iters=50000, time_limit_secs=a.seconds, verbose=True)
     violations = []
     if p.value is not None:
         for c in con:

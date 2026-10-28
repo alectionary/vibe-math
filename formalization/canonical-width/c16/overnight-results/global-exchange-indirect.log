@@ -1,0 +1,15 @@
+ROW_REDUCTION (343391, 32535) (259169, 32535) build_seconds 0.3276169169694185
+Traceback (most recent call last):
+  File "/private/tmp/c16-until-6am-20261028T053020/formalization/canonical-width/c16/solve_exchange_canonical.py", line 53, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-until-6am-20261028T053020/formalization/canonical-width/c16/solve_exchange_canonical.py", line 35, in main
+    out=scs.solve({'A':reduced,'b':b[keep],'c':c},cone,use_indirect=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/scs/__init__.py", line 219, in solve
+    solver = SCS(data, cone, **settings)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/scs/__init__.py", line 172, in __init__
+    self._solver = _scs.SCS(
+                   ^^^^^^^^^
+TypeError: 'use_indirect' is an invalid keyword argument for this function

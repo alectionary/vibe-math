@@ -2,30 +2,30 @@
 
 Inventory updated October 28, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **383 canonical entries**: the original 40 dissertation targets and **343 additional article entries**. Of the additions, **115 are specific mathematical questions or tasks suitable for coverage tracking**; the other 228 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **396 canonical entries**: the original 40 dissertation targets and **356 additional article entries**. Of the additions, **122 are specific mathematical questions or tasks suitable for coverage tracking**; the other 234 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [115 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/154 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [116 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/161 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 115 |
-| Additional directions/formulation/method entries outside the denominator | 228 |
-| Combined eligible targets | 154 = 39 + 115 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/154 (3.90%) |
-| Eligible targets with an identified, verified Lean statement | 6/154 (3.90%) |
-| Eligible targets with a complete checked Lean proof | 6/154 (3.90%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/154 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/154 |
-| Additional identified Lean statements without a build audit | 1/154 |
-| Eligible targets with Lean discovery still unassessed in this extension | 46/154 |
-| Articles/preprints in scope | 189 |
-| Full-text sources screened, including withdrawn history | 156/189 |
-| Current-publication full texts screened | 155 |
+| Additional article targets in the coverage denominator | 122 |
+| Additional directions/formulation/method entries outside the denominator | 234 |
+| Combined eligible targets | 161 = 39 + 122 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/161 (3.73%) |
+| Eligible targets with an identified, verified Lean statement | 6/161 (3.73%) |
+| Eligible targets with a complete checked Lean proof | 6/161 (3.73%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/161 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/161 |
+| Additional identified Lean statements without a build audit | 1/161 |
+| Eligible targets with Lean discovery still unassessed in this extension | 53/161 |
+| Articles/preprints in scope | 190 |
+| Full-text sources screened, including withdrawn history | 158/190 |
+| Current-publication full texts screened | 157 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 33/189 |
+| Not fully assessed | 32/190 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -184,7 +184,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F97](https://arxiv.org/html/quant-ph/0406168v1) | full text screened | 3 | Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical. |
 | [F98](https://www.nature.com/articles/s41534-025-01080-3) | relevant sections screened | 6 | Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem. |
 | [F152](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screened | 5 | Earlier pending question reconciliation completed in the literature-method review; present-status/Lean checks remain unassessed. |
-| [F153](https://arxiv.org/html/2312.03859v1) | full text screen pending | Not assessed | Full text retrieved and relevant passages read; the fixed research deadline interrupted exhaustive source-question reconciliation. Candidate passages preserved in c16-continuation-source-screening.json. This is not a zero-question outcome. |
+| [F153](https://arxiv.org/html/2312.03859v1) | full text screened | 13 | Recovered complete screen of the original arXiv version, including explicit borrowed projectivity/Ramsey questions. Repeated targets shared with F157. Current resolution and Lean discovery unassessed. |
 | [F99](https://arxiv.org/pdf/1004.3791v2) | full text screened | 3 | Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law. |
 | [F100](https://arxiv.org/pdf/1703.07847v3) | full text screened | 4 | Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E. |
 | [F101](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content) | full text screened | 3 | Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted. |
@@ -240,6 +240,7 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F154](https://zctaskin.github.io/files/MIM.pdf) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 | [F155](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf) | full text screened | 0 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 | [F156](https://arxiv.org/pdf/2010.16293) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
+| [F157](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf) | full text screened | 9 | Published shortened version; nine repeated canonical targets, not nine additional questions. Projectivity and Ramsey conclusion paragraphs occur only in F153. |
 
 ## Reproducible evidence and limits
 
@@ -4564,3 +4565,142 @@ Determine whether I plus or minus the projector onto any unit tensor vector is s
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F156: Introduction S1 and its stated open status; Proposition4.6 is conditional](https://arxiv.org/pdf/2010.16293); extraction lines 28–55; author stated question or direction.
+
+### L-F153-cutwidth-base
+
+Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Open Problem1](https://arxiv.org/html/2312.03859v1); extraction lines 130–138; author stated question or direction.
+- [F157: Open Problem1](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 163–170; author stated question or direction.
+
+### L-F153-fast-representatives
+
+Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction representative sets; Conclusion directions](https://arxiv.org/html/2312.03859v1); extraction lines 160–182; author stated question or direction.
+- [F157: Introduction representative sets; Conclusion directions](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 243–275; author stated question or direction.
+
+### L-F153-mimsup-computability
+
+Determine whether computing mimsup is decidable.
+
+- Type: question formulation gate; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction computability comparison](https://arxiv.org/html/2312.03859v1); extraction lines 183–185; author stated question or direction.
+- [F157: Introduction computability comparison](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 386–390; author stated question or direction.
+
+### L-F153-noninteger-mimsup
+
+Does some finite binary matrix have a noninteger asymptotic induced-matching number mimsup?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion first combinatorial question](https://arxiv.org/html/2312.03859v1); extraction lines 1149–1151; author stated question or direction.
+- [F157: Conclusion first combinatorial question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 1072–1074; author stated question or direction.
+
+### L-F153-random-mimsup
+
+Determine mimsup for an n by n matrix with independent Bernoulli-p entries.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion random-matrix question](https://arxiv.org/html/2312.03859v1); extraction lines 1151–1153; author stated question or direction.
+- [F157: Conclusion random-matrix question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 1074–1076; author stated question or direction.
+
+### L-F153-mimsup-him-functional
+
+Are mimsup and half-induced matching number functionally equivalent on finite binary matrices?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction comparison; Conclusion final question](https://arxiv.org/html/2312.03859v1); extraction lines 216–219; author stated question or direction.
+- [F157: Introduction comparison; Conclusion final question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 476–477; author stated question or direction.
+
+### L-F153-mimsup-support-functional
+
+Are mimsup and support rank functionally equivalent on finite binary matrices?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction comparison; Conclusion final question](https://arxiv.org/html/2312.03859v1); extraction lines 216–219; author stated question or direction.
+- [F157: Introduction comparison; Conclusion final question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 476–477; author stated question or direction.
+
+### L-F153-strict-mimsup-support
+
+Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction inequality chain and proposed strictness](https://arxiv.org/html/2312.03859v1); extraction lines 214–219; author stated question or direction.
+- [F157: Introduction inequality chain and proposed strictness](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 460–463; author stated question or direction.
+
+### L-F153-nonprojective-not-prime
+
+Every non-projective non-bipartite core graph is not prime under the direct graph product.
+
+- Type: borrowed conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion non-projective graphs, cited Larose-Tardif/Okrasa-Rzazewski](https://arxiv.org/html/2312.03859v1); extraction lines 1135–1141; borrowed question explicitly discussed.
+
+### L-F153-strong-projectivity
+
+Do the classes of projective and strongly projective graphs coincide?
+
+- Type: borrowed conjecture formulation gate; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion non-projective graphs, cited Larose](https://arxiv.org/html/2312.03859v1); extraction lines 1140–1143; borrowed question explicitly discussed.
+
+### L-F153-nonprojective-lowerbounds
+
+Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion non-projective graphs](https://arxiv.org/html/2312.03859v1); extraction lines 1135–1144; author stated question or direction.
+
+### L-F153-fine-grained-courcelle
+
+Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion directions](https://arxiv.org/html/2312.03859v1); extraction lines 1145–1149; author stated question or direction.
+- [F157: Conclusion directions](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 1058–1070; author stated question or direction.
+
+### L-F153-multicolor-ramsey-growth
+
+Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?
+
+- Type: borrowed specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion final Ramsey paragraph](https://arxiv.org/html/2312.03859v1); extraction lines 1155–1158; borrowed question explicitly discussed.
