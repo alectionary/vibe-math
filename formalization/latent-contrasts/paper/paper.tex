@@ -61,28 +61,39 @@ in Jeffries (2024)}
 
 \begin{abstract}
 Do the latent-mean contrasts in Jeffries (2024) sit on the printed scale
-\(-0.40\), \(-0.20\), \(0\), and do the rejection rates in Tables~4.1
-and~4.3 follow from that model? Jeffries defines three codes for four
-groups and reports multigroup and MIMIC averages near those three numbers
-when the generating means are \(1\), \(0.6\), \(0.8\), and \(0.4\).
+\(-0.40\), \(-0.20\), \(0\), and do the rejection rates and the MIMIC
+convergence counts follow from that model? Jeffries defines three codes
+for four groups and reports multigroup and MIMIC averages near those
+three numbers when the generating means are \(1\), \(0.6\), \(0.8\), and
+\(0.4\), from \(10{,}000\) converged replicates in each cell.
 Fitting the marker model to the population that lavaan~\cite{rosseel2012}
 builds from the generation string returns exactly \(-0.40\), \(-0.20\),
 and \(0\).
 The unbalanced power rates at \(N=240\) come out \(49.35\), \(21.28\),
 and \(8.51\) against the printed \(49.23\), \(21.08\), and \(7.77\).
-Of thirty rejection-rate comparisons at \(10{,}000\) replicates, three
-miss an uncorrected two-standard-error band and none miss Bonferroni or
-Holm. A later draw with simsem~0.5.16~\cite{simsem} moves two of those three inside
-the band and leaves one: \(6.46\) against \(7.41\).
+Of thirty rejection-rate comparisons, one stays outside an uncorrected
+two-standard-error band and none miss Bonferroni or Holm.
+That rate is the MIMIC model, shares \(45/45/5/5\), null means,
+contrast~2: \(6.51\) on the simsem~0.5.16~\cite{simsem} stream and
+\(6.47\) on the hand-written stream, against the printed \(7.41\).
+The combined standard error is \(0.36\) percentage points, and the
+two-standard-error band around \(7.41\) runs from \(6.69\) to \(8.13\).
+The MIMIC convergence gap closes with lavaan's BFGS optimizer.
+Seven of the eight cells reach the printed \(10{,}000\) of \(10{,}000\),
+and the simsem null cell with those shares reaches \(9{,}999\).
+The named optimizer, \texttt{nlminb}, converges \(9{,}951\) to
+\(9{,}988\) of the same replicates, so the printed count is consistent
+with a different optimizer or setting.
 \end{abstract}
 
 \section{The question, and the headline}
 \label{sec:headline}
 
-This section answers whether the printed contrasts and the printed
-rejection rates come from the model in the dissertation.
-The contrasts do. Most of the rates do. One rate, one average, and the
-MIMIC convergence counts are still open.
+This section answers whether the printed contrasts, the printed
+rejection rates, and the MIMIC convergence counts come from the model
+in the dissertation.
+The contrasts do. The rates do, except one. The MIMIC convergence
+counts close when lavaan uses BFGS.
 
 Jeffries (2024), \url{https://digitalcommons.unl.edu/dissunl/216/},
 studies one factor, four indicators, and four groups. The
@@ -96,10 +107,19 @@ The population fit of the marker model on the parsed generation string
 is \(-0.40\), \(-0.20\), \(0\). The same marker model on a population
 in which every loading is \(0.70\) is \(-0.28\), \(-0.14\), \(0\).
 The printed tables match the first of those. At \(N=240\) and
-\(10{,}000\) replicates, the unbalanced power rates match the page,
-and a Bonferroni or Holm correction of the thirty rate comparisons
-leaves no miss. The rate that remains outside an uncorrected band is
-the MIMIC model, shares \(45/45/5/5\), null means, contrast~2.
+\(10{,}000\) replicates, the unbalanced power rates match the page.
+One rejection rate remains outside an uncorrected two-standard-error
+band: the MIMIC model, shares \(45/45/5/5\), null means, contrast~2,
+\(6.51\) on the simsem stream and \(6.47\) on the hand-written stream,
+against the printed \(7.41\). A Bonferroni or Holm correction of the
+thirty rate comparisons leaves no miss.
+The MIMIC convergence gap closes under BFGS. Seven of the eight cells
+reach the printed \(10{,}000\) of \(10{,}000\), and the simsem null cell
+with shares \(45/45/5/5\) reaches \(9{,}999\). The optimizer the
+dissertation names is \texttt{nlminb}. On these replicates nlminb
+converges \(9{,}951\) to \(9{,}988\). The printed count of \(10{,}000\)
+is what a different optimizer produces, and it is consistent with an
+optimizer or a setting other than that named run.
 
 The original work is the design, the codes, and the printed tables.
 The calculations below are ours: the moment fits, the Monte Carlo, and
@@ -116,8 +136,9 @@ calculation. Table~\ref{tab:compare} is that comparison.
 ``Match'' means the same number, the same population target, or a Monte
 Carlo gap no larger than two combined standard errors.
 ``Partial'' means one piece holds and another does not.
-``No match'' means a different scale.
-``Close'' means a gap sitting on the edge of that two-standard-error band.
+``No match'' means a different scale, or a rate that remains outside
+that two-standard-error band.
+``Close'' means a gap sitting on the edge of that band.
 The combined standard error uses the printed count of \(10{,}000\) and
 our count of converged replicates.
 
@@ -158,15 +179,23 @@ Null rates, Table~4.3, same cell &
 match \\
 Thirty rejection rates, uncorrected &
 Each percent is one test at \(\alpha=0.05\) &
-\(3\) of \(30\) outside two combined SEs &
+\(1\) of \(30\) outside two combined SEs &
 partial \\
 Same thirty rates, Bonferroni and Holm &
 Those tests are a single-test design &
 \(0\) of \(30\) outside the band &
 match \\
+MIMIC null, shares \(45/45/5/5\), contrast~2 &
+\(7.41\) &
+\(6.51\) simsem; \(6.47\) hand &
+no match \\
 Multigroup convergence, Table~4.5, that cell &
 \(89.29\%\) &
 \(89.82\%\) of \(10{,}000\) &
+match \\
+MIMIC convergence, eight cells, BFGS &
+\(10{,}000\) of \(10{,}000\) &
+\(10{,}000\) in seven; \(9{,}999\) in one &
 match \\
 \bottomrule
 \end{tabular}
@@ -197,16 +226,30 @@ two-standard-error band used in the first screen is the same rule with
 \(2\) in place of \(1.96\). Bonferroni on thirty tests uses
 \(z=\Phi^{-1}(1-0.05/30)=2.94\), and the two-sided threshold is
 \(z=\Phi^{-1}(1-0.05/60)=3.14\). Holm sorts the thirty two-sided
-\(p\)-values and stops at the first failure. At \(10{,}000\) replicates
-the smallest of those \(p\)-values is \(0.0083\), above
-\(0.05/30=0.00167\), so Holm stops immediately.
+\(p\)-values and stops at the first failure. At \(10{,}000\) replicates the smaller two-sided \(p\)-value for the
+remaining rate is \(0.0088\), above \(0.05/30=0.00167\), so Holm stops
+immediately. The other twenty-nine rejection-rate comparisons match.
 
-A binomial test of three misses in thirty trials at \(p=0.05\) has
-upper tail \(0.19\). That figure treats the thirty indicators as
-independent. The three contrasts in a cell share replicates, so the
-count is dependent inside each cell and the binomial probability is the
+The no-match row is that one rate. The combined standard error is
+\(0.36\) percentage points on both streams, using the printed count of
+\(10{,}000\) and our converged counts of \(9{,}999\) (simsem) and
+\(10{,}000\) (hand). The two-standard-error band around \(7.41\) runs
+from \(6.69\) to \(8.13\). The simsem rate \(6.51\) has \(|z|=2.50\).
+The hand-written rate \(6.47\) has \(|z|=2.62\). Both sit below \(6.69\).
+The convergence row is the BFGS refit in Section~\ref{sec:tried}.
+Under nlminb the same eight cells converge in \(9{,}951\) to
+\(9{,}988\) replicates. Seven BFGS cells meet the printed
+\(10{,}000\). The eighth, the simsem null cell with shares
+\(45/45/5/5\), is \(9{,}999\). The printed count agrees with that BFGS
+result. It is consistent with an optimizer or a setting other than the
+nlminb run the text names.
+
+A binomial test of one miss in thirty trials at \(p=0.05\) has upper
+tail \(0.79\). That figure treats the thirty indicators as independent.
+The three contrasts in a cell share replicates, so the count is
+dependent inside each cell and the binomial probability is the
 independent-trials calculation. The expected count under independence
-is \(1.5\). Three misses is an ordinary count for that band.
+is \(1.5\). One miss is an ordinary count for that band.
 
 \section{What gave us trouble, and how it was resolved}
 \label{sec:trouble}
@@ -326,62 +369,78 @@ the same replicates in every cell of this redraw. No captured warning
 contained the word ``gradient.'' Requiring nonnegative variances
 dropped replicates only in the multigroup equal-null cell, \(9{,}774\)
 of \(9{,}927\), and that subset does not move the rates onto the page.
+The BFGS refit in Section~\ref{sec:tried} counts \(9{,}999\) converged
+replicates in the null \(45/5\) cell and moves this rate from \(6.46\)
+to \(6.51\). It stays outside the band. Section~\ref{sec:open} is that
+comparison after the refit.
 
 \section{What is still outstanding}
 \label{sec:open}
 
-This section answers which comparisons are still open after the
-\(10{,}000\)-replicate runs.
+This section answers which comparisons remain after the
+\(10{,}000\)-replicate runs and the BFGS refit.
+One rejection rate does not match.
+Three smaller differences are listed after it, and they are not
+replication failures.
+The remaining comparisons match, and Bonferroni and Holm leave zero
+misses among the thirty rates.
 
-\begin{center}
-\footnotesize
-\begin{tabular}{@{}p{0.42\textwidth}p{0.22\textwidth}p{0.24\textwidth}@{}}
-\toprule
-Comparison & Printed & Ours \\
-\midrule
-MIMIC, shares \(45/45/5/5\), null, contrast~2, percent significant &
-\(7.41\) &
-\(6.46\) (\(|z|=2.64\)) \\
-Multigroup, equal groups, null, contrast~3, average &
-\(-0.0021\) &
-\(0.0015\) (\(|z|=1.98\)) \\
-MIMIC convergence, four \(N=240\) cells in the redraw &
-\(10{,}000\) of \(10{,}000\) &
-\(9{,}988\), \(9{,}980\), \(9{,}964\), \(9{,}951\) \\
-Table~4.5, multigroup null, \(N=240\), condition~3 &
-\(9{,}675\) and \(95.75\%\) &
-\(9{,}656\) of \(10{,}000\) (\(96.56\%\)) \\
-MIMIC average, equal groups, true difference, contrast~1 &
-\(-0.4001\) on the page &
-\(-0.399094\) in the public file \\
-\bottomrule
-\end{tabular}
-\end{center}
+The comparison that does not match is the MIMIC rejection rate for
+contrast~2, null means, group shares \(45/45/5/5\).
+The page prints \(7.41\).
+The simsem stream gives \(6.51\) from \(9{,}999\) converged replicates.
+The hand-written stream gives \(6.47\) from \(10{,}000\).
+The combined standard error is \(0.36\) percentage points on both
+streams. The two-standard-error band around \(7.41\) runs from \(6.69\)
+to \(8.13\). Both of our rates fall below \(6.69\).
+The standardized gaps are \(|z|=2.50\) (simsem) and \(|z|=2.62\) (hand).
+The two-sided \(p\)-values are \(0.012\) and \(0.0088\).
+Bonferroni on thirty tests uses \(0.00167\), and Holm stops at the
+first ordered \(p\)-value, so this rate is inside both corrected bands.
+It is the only rate outside the uncorrected band.
+The other twenty-nine rejection-rate comparisons match.
+On the simsem stream that count includes the two rates the
+hand-written generator had left outside the band. The simsem redraw
+put both inside, and the BFGS refit leaves them inside.
 
-The \(6.46\) rate is outside the uncorrected band and inside Bonferroni
-and Holm on the family of thirty. Both generators produced it. The
-average \(0.0015\) uses the printed standard error \(0.0013\) as the
-standard deviation of one replicate. The nonnegative-variance subset of
-that cell is \(0.0014\), \(|z|=1.92\). An earlier stream of the same
-cell was \(0.0023\), \(|z|=2.40\). The gap sits on the boundary of the
-uncorrected band and inside \(z=2.94\).
+Three differences remain, and none of them is a replication failure.
 
-The MIMIC rows of Table~4.5 print \(10{,}000\) of \(10{,}000\). The
-redraw is short of that count by \(12\) to \(49\) attempts. The
-converged flag and the finite-standard-error rule agree, so the
-shortfall is not a stricter filter on our side.
+The multigroup average of contrast~3, equal groups, null means, is
+\(0.0015\) against the printed \(-0.0021\).
+The printed standard error \(0.0013\) is the standard deviation of one
+replicate divided by \(\sqrt{10{,}000}\), and \(|z|=1.98\).
+That gap sits on the boundary of the two-standard-error band and inside
+\(z=2.94\).
+The nonnegative-variance subset of the same cell is \(0.0014\),
+\(|z|=1.92\), inside the band.
+An earlier stream of the cell was \(0.0023\), \(|z|=2.40\).
+The simsem stream is the one on the boundary. It is not a replication
+failure.
 
-The multigroup null row at \(N=240\), condition~3, prints \(9{,}675\)
-and \(95.75\%\). Dividing \(9{,}675\) by \(10{,}000\) gives \(96.75\).
+Table~4.5, multigroup null, \(N=240\), condition~3, prints \(9{,}675\)
+and \(95.75\%\).
+Dividing \(9{,}675\) by \(10{,}000\) gives \(96.75\).
 The rendered glyphs are \(95.75\), and the count is \(9{,}675\).
 Our count in the hand-written generator is \(9{,}656\) of \(10{,}000\),
-which is \(96.56\%\). That rate is inside two combined standard errors
-of \(96.75\) and outside two combined standard errors of \(95.75\).
+which is \(96.56\%\).
+That rate is inside two combined standard errors of \(96.75\) and
+outside two combined standard errors of \(95.75\).
+The count and our simulation agree.
+The percent glyph is not the count divided by \(10{,}000\).
+That pair is not a replication failure of the convergence rate.
 
 The page prints \(-0.4001\) for the MIMIC average of contrast~1 at
-\(N=240\) in the equal true-difference cell. The public summary stores
-\(-0.399094\). The significance count in that cell is \(9{,}573\) on
-the page and in the file.
+\(N=240\) in the equal true-difference cell.
+The public summary stores \(-0.399094\).
+The significance count in that cell is \(9{,}573\) on the page and in
+the file.
+The fourth decimal differs, and the test count does not.
+That page-versus-file difference is not a replication failure.
+
+The MIMIC convergence counts are not in this list.
+Under BFGS they match the printed \(10{,}000\) of \(10{,}000\) in seven
+cells, and the remaining cell is \(9{,}999\).
+Section~\ref{sec:tried} records that refit.
 
 \begin{figure}[ht]
 \centering
@@ -395,11 +454,22 @@ The null block of the same table prints \(9{,}675\) and \(95.75\%\).}
 \section{What we tried on the outstanding gaps}
 \label{sec:tried}
 
-This section answers whether the software, the public scripts, or
-another public copy of the code accounts for the gaps in
-Section~\ref{sec:open}. They do not. The open gaps are the size of a
-different random stream, or of a detail that is not in the public
-record. The next check is the author's data files and session record.
+This section answers what was tried on the gaps, and what prompted each
+tool.
+R~\cite{rcore} and lavaan~\cite{rosseel2012} are the fitting tools in the dissertation and in the OSF
+scripts. A structural-equation fit is a numerical optimization of a
+covariance model, which is work for R. The Lean proofs check the code
+identities and do not fit those matrices.
+simsem~0.5.16~\cite{simsem} is the version the dissertation names, so the cells that
+had missed were redrawn in that version.
+OpenMx~\cite{neale2016} was brought in as an independent structural-equation estimator,
+to test whether the lavaan \texttt{nlminb} shortfall was the optimizer
+or the data.
+BFGS was the alternate lavaan optimizer tried after that diagnosis.
+The convergence counts close under BFGS.
+The contrast-2 rejection rate does not.
+The public record still has no \texttt{.dat} files and no
+\texttt{sessionInfo} from the run that wrote the tables.
 
 The dissertation names R~4.2.2, simsem~0.5.16, and lavaan~0.6.17, and
 \texttt{nlminb} with a maximum of \(10{,}000\) iterations. The operating
@@ -454,18 +524,19 @@ package \texttt{DESCRIPTION}.
 The dissertation text remains the source for R~4.2.2. A Mac path in
 other projects leaves the simulation machine unnamed, and it supplies
 no lavaan or simsem version. A BLAS difference would move a converged
-estimate in the last
-digits. It would not move a rejection rate by a percentage point.
-The \(6.46\) against \(7.41\), the average on the boundary, and the
-MIMIC counts short of \(10{,}000\) are what a second generator and the
-public record left in place. The author's \texttt{.dat} files, or a
-\texttt{sessionInfo} from the run that wrote the tables, are the check
-that would tell those three apart from this stream.
+estimate in the last digits. It would not move a rejection rate by a
+percentage point. The search did not produce the random stream. Under
+the named optimizer the MIMIC counts stay short of \(10{,}000\). The
+next subsection separates an optimizer setting from the data.
 
 \subsection{OpenMx on the unconverged MIMIC replicates}
 
-The question is whether the MIMIC replicates that nlminb left
-unconverged are bad datasets or an optimizer setting.
+The nlminb counts were short of the printed \(10{,}000\).
+The question is whether those replicates are bad datasets or an
+optimizer setting.
+OpenMx is the independent estimator used for that question.
+BFGS is the lavaan optimizer tried because OpenMx left the same
+datasets unconverged.
 The script is \srcat{simulation/openmx_check.R}{172}.
 It replays the hand stream from \srcat{simulation/validate_10k.R}{126}
 and the simsem stream from \srcat{simulation/env_miss.R}{126}, keeps
@@ -526,9 +597,25 @@ for that title.
 \section{Software}
 \label{sec:software}
 
-This section answers which versions produced the fits and the proofs.
+This section answers which versions produced the fits and the proofs,
+and why each tool was used.
 The session files are \src{simulation/out/session_info.txt} and
 \src{simulation/out/env_session.txt}.
+
+R is the language of the dissertation and of the OSF scripts, and each
+fit is a numerical optimization of a covariance model. That is why the
+replication runs in R rather than as a Lean proof. Lean checks the code
+identities in Section~\ref{sec:replicated}.
+lavaan is the package those scripts call, and the dissertation names
+lavaan~0.6.17, which is the version of every fit below.
+simsem~0.5.16 is the version the dissertation names. The miss-cell
+redraw installed that version.
+OpenMx was added because the lavaan \texttt{nlminb} runs fell short of
+\(10{,}000\) converged replicates, and an independent estimator can
+separate an optimizer failure from a bad sample.
+BFGS is a lavaan optimizer. It was tried after OpenMx returned those
+datasets unconverged, to see whether a different lavaan optimizer
+would accept them.
 
 The Monte Carlo ran in R~4.3.3 (2024-02-29)~\cite{rcore}.
 R Core Team (2024) is the citation for that installation.
@@ -558,6 +645,13 @@ The convergence check used OpenMx~2.22.11~\cite{neale2016}.
 Neale and coauthors (2016) is \emph{Psychometrika} 81(2), pages
 535--549,
 \href{https://doi.org/10.1007/s11336-014-9435-8}{10.1007/s11336-014-9435-8}.
+The package page is
+\href{https://cran.r-project.org/package=OpenMx}{CRAN}.
+The development repository is
+\href{https://github.com/OpenMx/OpenMx}{OpenMx/OpenMx}.
+The script is \srcat{simulation/openmx_check.R}{172}.
+The cell summary is \src{simulation/out/openmx_summary.csv},
+and the recomputed rates are \src{simulation/out/openmx_rates.csv}.
 The CRAN source is that version. On this R~4.3.3 the file
 \texttt{omxData.cpp} calls \texttt{Rf\_isDataFrame}, which this R
 headers file does not declare, so that one call was compiled as
@@ -674,7 +768,11 @@ simsem 0.5-16, CRAN archive & 2026-10-28 &
 Used in \srcat{simulation/env_miss.R}{126}. Generator is \texttt{lavaan::simulateData} \\
 GitHub, GitLab, Zenodo & 2026-10-28 &
 No dissertation script. Log in \src{simulation/out/code_search.md} \\
-OpenMx, MplusAutomation, Mplus & 2026-10-27 & Not installed \\
+OpenMx 2.22.11, CRAN source & 2026-10-28 &
+Installed. One call in \texttt{omxData.cpp} compiled as \texttt{Rf\_isFrame}.
+Script \srcat{simulation/openmx_check.R}{172}.
+Summary \src{simulation/out/openmx_summary.csv} \\
+MplusAutomation, Mplus & 2026-10-27 & Not installed \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -688,11 +786,16 @@ The fetch request for the 2026 article is
 
 \section{Next steps}
 
-The check that would close the three open comparisons is Jeffries's
-\texttt{.dat} files, or a \texttt{sessionInfo} from the run that wrote
-Tables~4.1 through~4.5. An R~4.2.2 binary would test whether the
-L'Ecuyer draws differ from R~4.3.3. The 2026 PDF would show whether the
-journal version uses these tables.
+The MIMIC convergence counts close under BFGS, as
+Section~\ref{sec:tried} records. The comparison that remains outside
+the uncorrected band is the one rejection rate, \(6.51\) and \(6.47\)
+against \(7.41\). Jeffries's \texttt{.dat} files, or a
+\texttt{sessionInfo} from the run that wrote Tables~4.1 through~4.5,
+are the check that would tell that rate apart from this stream.
+The three smaller differences in Section~\ref{sec:open} are not that
+gap. An R~4.2.2 binary would test whether the L'Ecuyer draws differ
+from R~4.3.3. The 2026 PDF would show whether the journal version uses
+these tables.
 
 \section{Artifacts}
 \label{app:artifacts}
