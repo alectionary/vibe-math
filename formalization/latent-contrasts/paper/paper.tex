@@ -44,6 +44,7 @@
 \catcode`\_=12
 \catcode`\#=12
 \gdef\apaurl{https://github.com/jjeffries13/APA_2024}
+\gdef\simsemtar{https://cran.r-project.org/src/contrib/Archive/simsem/simsem_0.5-16.tar.gz}
 \gdef\dfiurl{https://github.com/jjeffries13/Dynamic-Fit-Indices/blob/main/DFI_Presentation.Rmd#L43}
 \gdef\dfirepo{https://github.com/jjeffries13/Dynamic-Fit-Indices}
 \endgroup
@@ -64,13 +65,14 @@ Do the latent-mean contrasts in Jeffries (2024) sit on the printed scale
 and~4.3 follow from that model? Jeffries defines three codes for four
 groups and reports multigroup and MIMIC averages near those three numbers
 when the generating means are \(1\), \(0.6\), \(0.8\), and \(0.4\).
-Fitting the marker model to the population that lavaan builds from the
-generation string returns exactly \(-0.40\), \(-0.20\), and \(0\).
+Fitting the marker model to the population that lavaan~\cite{rosseel2012}
+builds from the generation string returns exactly \(-0.40\), \(-0.20\),
+and \(0\).
 The unbalanced power rates at \(N=240\) come out \(49.35\), \(21.28\),
 and \(8.51\) against the printed \(49.23\), \(21.08\), and \(7.77\).
 Of thirty rejection-rate comparisons at \(10{,}000\) replicates, three
 miss an uncorrected two-standard-error band and none miss Bonferroni or
-Holm. A later draw with simsem~0.5.16 moves two of those three inside
+Holm. A later draw with simsem~0.5.16~\cite{simsem} moves two of those three inside
 the band and leaves one: \(6.46\) against \(7.41\).
 \end{abstract}
 
@@ -175,7 +177,7 @@ matrices.}
 \end{table}
 
 The contrast row is equations~(3.3)--(3.5) on the printed means, proved
-at \lean{}{123}. The product row is equation~(2.4), proved at
+in Lean~\cite{demoura2021} at \lean{}{123}. The product row is equation~(2.4), proved at
 \lean{}{103}. The imbalance row is partial because sizes \((a,a,b,b)\)
 leave two of the three weighted products at zero and set the other to
 \(2(b-a)\), proved at \lean{}{68}. At \(N=240\) that product is \(-96\)
@@ -407,7 +409,7 @@ Inversion, and Rejection. \texttt{sim()} replaces that with
 L'Ecuyer-CMRG and then uses the \texttt{exportData} seed.
 simsem~0.5-16 was current from 2021-03-28 until 0.5-17 on 2025-04-02.
 lavaan~0.6-17 was published on 2023-12-20. The ten-cell Monte Carlo
-used R~4.3.3. R~4.2.2 was not installed. The L'Ecuyer generator is the
+used R~4.3.3~\cite{rcore}. R~4.2.2 was not installed. The L'Ecuyer generator is the
 one \texttt{sim()} sets in both of those R versions.
 
 \texttt{exportData(program = "Mplus")} writes data files. The
@@ -464,6 +466,55 @@ Jeffries and Bovaird (2026), DOI \texttt{10.1177/01466216261452255},
 was not obtained as a PDF. Unpaywall, Europe PMC, and the Wayback
 Machine had no PDF on 2026-10-27. The OSF node is the analysis record
 for that title.
+
+\section{Software}
+\label{sec:software}
+
+This section answers which versions produced the fits and the proofs.
+The session files are \src{simulation/out/session_info.txt} and
+\src{simulation/out/env_session.txt}.
+
+The Monte Carlo ran in R~4.3.3 (2024-02-29)~\cite{rcore}.
+R Core Team (2024) is the citation for that installation.
+The project page is \href{https://www.r-project.org/}{r-project.org}.
+
+Every fit used lavaan~0.6.17~\cite{rosseel2012}.
+Rosseel (2012) is \emph{Journal of Statistical Software} 48(2), pages
+1--36,
+\href{https://doi.org/10.18637/jss.v048.i02}{10.18637/jss.v048.i02}.
+The package page is
+\href{https://cran.r-project.org/package=lavaan}{CRAN}.
+The development repository is
+\href{https://github.com/yrosseel/lavaan}{yrosseel/lavaan}.
+
+The ten-cell run used simsem~0.5.17.
+The redraw used simsem~0.5-16~\cite{simsem}.
+The \texttt{citation} entry for that 0.5-16 install is Pornprasertmanit,
+Miller, Schoemann, and Jorgensen (2021), R package version 0.5-16.
+The package page is
+\href{https://cran.r-project.org/package=simsem}{CRAN}.
+The tarball installed for the redraw is
+\href{\simsemtar}{\texttt{simsem\_0.5-16.tar.gz}}.
+The development repository is
+\href{https://github.com/simsem/simsem}{simsem/simsem}.
+
+The code identities were checked with Lean~4.22.0~\cite{demoura2021}.
+The toolchain file \src{lean-toolchain} reads
+\texttt{leanprover/lean4:v4.22.0}.
+de~Moura and Ullrich (2021) is \emph{Automated Deduction -- CADE 28},
+Lecture Notes in Computer Science, Springer, pages 625--635,
+\href{https://doi.org/10.1007/978-3-030-79876-5_37}{10.1007/978-3-030-79876-5\_37}.
+The release is
+\href{https://github.com/leanprover/lean4/releases/tag/v4.22.0}{v4.22.0}.
+
+Mathlib~\cite{mathlib2020} is the tag v4.22.0.
+\src{lake-manifest.json} pins commit
+\href{https://github.com/leanprover-community/mathlib4/commit/79e94a093aff4a60fb1b1f92d9681e407124c2ca}{\texttt{79e94a09}},
+and that commit is the tag.
+The mathlib Community (2020) is the \emph{Proceedings of the 9th ACM
+SIGPLAN International Conference on Certified Programs and Proofs},
+pages 367--381,
+\href{https://doi.org/10.1145/3372885.3373824}{10.1145/3372885.3373824}.
 
 \section{Assumptions}
 \label{sec:assumptions}
@@ -607,5 +658,42 @@ Command: \texttt{python3}~\srcat{paper/figures/crop_pages.py}{90}.
 
 The dissertation PDF is local and gitignored. Its sha256 is
 \sha{a21df98c20401491e6b4a1d00a21b6f7cee5551a00c04a89fb414ec6cfd469b3}.
+
+\begin{thebibliography}{9}
+
+\bibitem{rcore}
+R Core Team.
+\emph{R: A Language and Environment for Statistical Computing}.
+R Foundation for Statistical Computing, Vienna, Austria, 2024.
+\url{https://www.R-project.org/}.
+
+\bibitem{rosseel2012}
+Yves Rosseel.
+lavaan: An R package for structural equation modeling.
+\emph{Journal of Statistical Software} 48(2) (2012), 1--36.
+\href{https://doi.org/10.18637/jss.v048.i02}{10.18637/jss.v048.i02}.
+
+\bibitem{simsem}
+Sunthud Pornprasertmanit, Patrick Miller, Alexander Schoemann, and
+Terrence D.\ Jorgensen.
+\emph{simsem: SIMulated Structural Equation Modeling}.
+R package version 0.5-16, 2021.
+\url{https://CRAN.R-project.org/package=simsem}.
+
+\bibitem{demoura2021}
+Leonardo de Moura and Sebastian Ullrich.
+The Lean 4 theorem prover and programming language.
+In \emph{Automated Deduction -- CADE 28}, Lecture Notes in Computer
+Science, Springer, 2021, pages 625--635.
+\href{https://doi.org/10.1007/978-3-030-79876-5_37}{10.1007/978-3-030-79876-5\_37}.
+
+\bibitem{mathlib2020}
+The mathlib Community.
+The lean mathematical library.
+In \emph{Proceedings of the 9th ACM SIGPLAN International Conference
+on Certified Programs and Proofs}, 2020, pages 367--381.
+\href{https://doi.org/10.1145/3372885.3373824}{10.1145/3372885.3373824}.
+
+\end{thebibliography}
 
 \end{document}
