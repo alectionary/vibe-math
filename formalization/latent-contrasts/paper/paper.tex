@@ -51,7 +51,9 @@ outside Bonferroni and Holm: \(2.26\) against the printed \(5.18\). The same
 ten cells at \(10{,}000\) replicates put that rate at \(5.01\). Three rates
 remain outside the uncorrected band. None remain outside Bonferroni or Holm.
 A binomial count of those three misses does not exceed the \(5\%\) expectation.
-The dissertation's percents are single Wald tests at \(\alpha=0.05\). The
+Redrawing the three cells with simsem~0.5.16 and the \texttt{exportData} seed
+puts two of them inside that band and leaves one outside: \(6.46\) against
+\(7.41\). The dissertation's percents are single Wald tests at \(\alpha=0.05\). The
 correction applies only to this agreement check. The unbalanced power rates
 come out \(49.35\), \(21.28\), and \(8.51\) against \(49.23\), \(21.08\), and
 \(7.77\). Multigroup convergence in the smallest groups is \(89.82\%\) against
@@ -85,7 +87,8 @@ ten cells has a fixed seed, set once, and the replicates are drawn in order on
 one core. The agreement classification, including the Bonferroni and Holm
 checks, is \path{simulation/score_gaps.R}. Package versions are in
 \path{simulation/out/session_info.txt}: R~4.3.3, lavaan~0.6.17, simsem~0.5.17.
-The dissertation names R~4.2.2.
+The miss-cell redraw is \path{simulation/env_miss.R}, simsem~0.5.16, seed
+\(13131\). The dissertation names R~4.2.2.
 
 Jeffries studies one factor with four indicators and four groups. The
 true-difference means are \(\alpha=(1,0.6,0.8,0.4)\). The null means are all
@@ -564,6 +567,67 @@ MIMIC true-difference rows print \(10{,}000\) of \(10{,}000\). Ours are
 \(100\%\) no variance, so those gaps exceed two combined standard errors. The
 rejection rates in those cells do not.
 
+\subsection{The named installation}
+
+The question is whether those gaps are the R installation. The dissertation
+names R~4.2.2, simsem~0.5.16, and lavaan~0.6.17, and it names \texttt{nlminb}
+with \(10{,}000\) iterations. It does not name an operating system, and it does
+not set \texttt{RNGkind}. The default in R since~3.6.0, and the default in the
+R~4.3.3 used here, is Mersenne-Twister, Inversion, and Rejection.
+\texttt{sim()} in simsem~0.5-16 replaces that generator with L'Ecuyer-CMRG and
+then applies the seed passed to \texttt{exportData}.
+
+The OSF node has no \texttt{sessionInfo}, no log, and no \texttt{.Rhistory}.
+The files were uploaded on 2025-09-20. The generation scripts call
+\texttt{set.seed(1313)} and pass seed \(13131\) to \texttt{exportData}. That
+call is commented out. \texttt{exportData(program = "Mplus")} writes
+\texttt{.dat} files. The estimation scripts call \texttt{lavaan::sem}.
+
+simsem~0.5-16 was the CRAN release from 2021-03-28 until 0.5-17 on 2025-04-02,
+after the November 2024 dissertation. For a lavaan script, its generator is
+\texttt{lavaan::simulateData}. The 0.5-17 change in that function is a class
+check. lavaan~0.6-17, the named version and the version used here, was
+published on 2023-12-20. R~4.2.2 was not installed. The redraw uses
+simsem~0.5-16, lavaan~0.6-17, and \texttt{sim(dataOnly = TRUE, seed = 13131)}.
+The script is \path{simulation/env_miss.R}. The summary is
+\path{simulation/out/env_miss.csv}.
+
+On that stream the three MIMIC rates are \(22.53\) against \(23.37\)
+(\(|z|=1.42\)), \(6.46\) against \(7.41\) (\(|z|=2.64\)), and \(4.86\) against
+\(5.32\) (\(|z|=1.49\)). Two fall inside the uncorrected band. The third, MIMIC
+with shares \(45/45/5/5\), null means, contrast~2, is the same \(6.46\) the
+hand-written generator produced. The lavaan converged flag and the finite
+standard-error rule selected the same replicates in every cell of this redraw.
+No captured warning contained the word ``gradient.'' Requiring nonnegative
+variances dropped replicates only in the multigroup cell, \(9{,}774\) of
+\(9{,}927\), and that subset does not move the rates onto the page.
+
+The multigroup equal-group null contrast~3 has average \(0.0015\) against
+\(-0.0021\). Taking the printed standard error \(0.0013\) as the replicate
+standard deviation, \(|z|\) is \(1.98\). The nonnegative-variance subset has
+average \(0.0014\), \(|z|=1.92\). The earlier stream's average was \(0.0023\),
+\(|z|=2.40\). The gap sits on the boundary of the uncorrected band. It is
+inside \(z=2.94\). Convergence in that cell is \(9{,}927\) of \(10{,}000\),
+against Table~4.5's \(9{,}932\) (\(99.32\%\)).
+
+The MIMIC rows of Table~4.5 print \(10{,}000\) of \(10{,}000\). This stream
+gives \(9{,}988\) and \(9{,}980\) in the two true-difference cells, and
+\(9{,}964\) and \(9{,}951\) in the two null cells. The finite-standard-error
+rule matches the converged flag, so the shortfall is not a stricter filter.
+
+Mplus was not the estimator. The page quotes a lavaan warning and names
+\texttt{nlminb}. The OSF estimation scripts call \texttt{lavaan::sem}. No
+Mplus output is on the node. Had Mplus been the estimator, its default would
+fix the first loading at \(1\), and a default summary prints a convergence
+criterion of \(0.00005\) with at most \(1{,}000\) iterations. A negative
+residual variance is reported and the solution is still returned. Those
+defaults are not the path that produced the tables.
+
+Public code search did not turn up the dissertation scripts. The record is
+\path{simulation/out/code_search.md}. The only related public file is
+\url{https://github.com/jjeffries13/APA_2024}, a ten-indicator simulation that
+reuses the loading idiom and seed \(13131\). It is not this design.
+
 \section{Assumptions}
 \label{sec:assumptions}
 
@@ -578,11 +642,14 @@ replicates. The \texttt{.dat} files are not in the OSF archives.
 
 \subsection{Package versions}
 
-The dissertation names R~4.2.2 and simsem~0.5.16. We used R~4.3.3 and
-simsem~0.5.17. lavaan is \(0.6.17\) in both. The optimizer is \texttt{nlminb}.
-A replicate counts as converged when \texttt{lavInspect(fit, "converged")} is
-true, which is the flag the OSF script reads from the summary header, and the
-three contrast standard errors are finite.
+The dissertation names R~4.2.2 and simsem~0.5.16. The ten-cell Monte Carlo
+used R~4.3.3 and simsem~0.5.17. The miss-cell redraw installed simsem~0.5-16
+and kept lavaan~0.6.17. R~4.2.2 was not installed. The optimizer is
+\texttt{nlminb}. A replicate counts as converged when
+\texttt{lavInspect(fit, "converged")} is true, which is the flag the OSF
+script reads from the summary header, and the three contrast standard errors
+are finite. In the simsem~0.5-16 redraw those two rules selected the same
+replicates.
 
 \subsection{Replicate count}
 
@@ -676,15 +743,14 @@ generation population.
 \section{What remains unresolved}
 \label{sec:unresolved}
 
-At \(10{,}000\) replicates, three rejection rates sit outside two combined
-standard errors, and none sit outside Bonferroni or Holm. The three are MIMIC
-rates. Their averages match the page. The binomial count of three misses in
-thirty trials has upper tail \(0.19\) under independence, and the contrasts
-that share a cell are dependent. One average, the multigroup equal-group null
-contrast~3, sits outside two combined standard errors. What was fit is the OSF
-multigroup string, the free-intercept MIMIC string, MLR, \(p < 0.05\),
-\texttt{iter.max} of \(10{,}000\), and the appendix factor codes. Jeffries's
-random stream was not refit. The \texttt{.dat} files are not on OSF.
+One MIMIC rate stays outside two combined standard errors after the
+simsem~0.5-16 redraw: shares \(45/45/5/5\), null means, contrast~2, \(6.46\)
+against \(7.41\). Both generators produced that \(6.46\). The rate is inside
+Bonferroni and Holm on the family of thirty. The multigroup equal-group null
+contrast~3 has average \(0.0015\) against \(-0.0021\), on the boundary of the
+uncorrected band. The MIMIC convergence counts remain short of the printed
+\(10{,}000\) of \(10{,}000\). The \texttt{.dat} files are not on OSF, so this
+is not Jeffries's stream. R~4.2.2 was not the installed binary.
 
 The page prints \(-0.4001\) for the MIMIC average of contrast~1 at \(N=240\) in
 the equal true-difference cell. The public summary stores \(-0.399094\). The
@@ -692,8 +758,8 @@ significance count in that cell is \(9{,}573\) on the page and in the file.
 The other MIMIC cells we checked round from the file onto the page.
 
 The PDF generation line \texttt{i1 \textasciitilde\ 1*} does not parse. The
-OSF script's line \texttt{i1 \textasciitilde\ 1*1} does. We did not run
-simsem~0.5.16. One uncommented \texttt{exportData} call, in the \(N=480\)
+OSF script's line \texttt{i1 \textasciitilde\ 1*1} does. One uncommented
+\texttt{exportData} call, in the \(N=480\)
 condition-3 null script, names group sizes \((168, 168, 72, 72)\), which is
 the \(35/15\) split. Some commented calls name sizes from a different
 condition than the file name. The datasets those calls would have written are
@@ -726,7 +792,11 @@ DOI \texttt{10.1177/01466216261452255} & 2026-10-27 &
 No PDF from the publisher page, Unpaywall, Europe PMC, or Wayback \\
 lavaan 0.6.17 & 2026-10-27 & Installed and used for every fit \\
 simsem 0.5.17 & 2026-10-27 &
-Installed. Rejects \texttt{i1 \textasciitilde\ 1*}. The named version is 0.5.16 \\
+Installed. Rejects \texttt{i1 \textasciitilde\ 1*}. \\
+simsem 0.5-16 from the CRAN archive & 2026-10-28 &
+Installed for \path{env_miss.R}. Generator is \texttt{lavaan::simulateData}. \\
+GitHub, GitLab, Zenodo code search & 2026-10-28 &
+No dissertation script. Record in \path{simulation/out/code_search.md}. \\
 OpenMx, MplusAutomation, Mplus & 2026-10-27 & Not installed \\
 \bottomrule
 \end{tabular}
@@ -741,12 +811,12 @@ The fetch request for the 2026 article is
 
 \section{Next steps}
 
-The three uncorrected MIMIC rates, and the one average at \(|z|=2.40\), are
-the numerical gaps that the printed replicate count did not close. A corrected
-reading of the thirty rates has no miss. The missing \texttt{.dat} files would
-be Jeffries's own stream. simsem~0.5.16, if obtained, would test whether that
-version fills the free loading with \(1\) in the same way lavaan~0.6.17 does.
-The 2026 PDF would show whether the journal version uses these tables.
+The rate that both generators put at \(6.46\) against \(7.41\), the average
+on the boundary of the uncorrected band, and the MIMIC convergence counts
+short of \(10{,}000\) are the gaps the named simsem release did not close.
+The missing \texttt{.dat} files would be Jeffries's own stream. An R~4.2.2
+binary would test whether L'Ecuyer draws differ from R~4.3.3. The 2026 PDF
+would show whether the journal version uses these tables.
 
 \section{What we proved}
 
@@ -803,6 +873,11 @@ Command: \path{Rscript validate_10k.R 10000 out}.
 \path{simulation/out/gap_scores_10k.csv}, with the family summary in
 \path{simulation/out/gap_scores_10k_multiplicity.csv}.
 Command: \path{Rscript score_gaps.R out/validate_10k.csv out/gap_scores_10k.csv}.
+\item simsem~0.5-16 redraw of the miss cells. File
+\path{simulation/out/env_miss.csv}.
+Command: \path{Rscript env_miss.R 10000 out}, with simsem~0.5-16 on the
+library path. Versions: \path{simulation/out/env_session.txt}.
+\item Code search. File \path{simulation/out/code_search.md}.
 \item Equal-loading replay, kept so the old averages stay reproducible.
 File \path{simulation/out/monte_carlo.csv}.
 Command: \path{Rscript monte_carlo.R 200 100 out}.
