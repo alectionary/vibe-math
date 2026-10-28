@@ -1,0 +1,13 @@
+{"phase": "imports", "elapsed_seconds": 6.16670586168766e-05, "resident_bytes": 25067520, "peak_resident_bytes": 25067520}
+{"phase": "native_solver_import", "elapsed_seconds": 0.007752833073027432, "resident_bytes": 25362432, "peak_resident_bytes": 25362432}
+{"phase": "physical_coordinates_and_equations", "elapsed_seconds": 0.08750562509521842, "resident_bytes": 31113216, "peak_resident_bytes": 31113216, "equations": 343}
+{"phase": "source_edges", "elapsed_seconds": 0.15245729207526892, "resident_bytes": 34439168, "peak_resident_bytes": 34439168, "edges": 30243}
+{"phase": "python_clause_encoding", "elapsed_seconds": 0.2157370001077652, "resident_bytes": 90390528, "peak_resident_bytes": 90390528, "variables": 90730, "clauses": 317520}
+Traceback (most recent call last):
+  File "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/profile_anchor_model.py", line 30, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/profile_anchor_model.py", line 18, in main
+    cnf,n,_,events=encode(A,[0],E,with_xor=False);mark('python_clause_encoding',variables=n,clauses=len(cnf));clause_count=len(cnf);solver=pycryptosat.Solver(threads=1,options={'minmatrixrows':'0','maxmatrixrows':'5000','autodisablegauss':'0' if a.gauss else '1','gaussuntil':'100000' if a.gauss else '0'})
+                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: unknown option: gaussuntil

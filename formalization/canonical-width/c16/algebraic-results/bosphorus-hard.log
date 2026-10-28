@@ -1,0 +1,170 @@
+c Bosphorus SHA revision fc05ad6e50cc4dafa847ae68a8363f60e8156963
+c Executed with command line: /private/tmp/c16-bosphorus-20261028/bosphorus formalization/canonical-width/c16/algebraic-results/hard.anf.gz --maxtime 300 --verb 1 --solvewrite /private/tmp/c16-bosphorus-hard.solution
+c Compilation env CMAKE_CXX_COMPILER = /usr/bin/c++ | CMAKE_CXX_FLAGS =  -Wall -Wextra -Wunused -pedantic -Wsign-compare -fno-omit-frame-pointer -Wtype-limits -Wuninitialized -Wno-deprecated -Wstrict-aliasing -Wpointer-arith -Wheader-guard -fno-stack-protector | COMPILE_DEFINES =  | STATICCOMPILE = ON | ONLY_SIMPLE =  | STATS = OFF | SQLITE3_FOUND =  | ZLIB_FOUND = TRUE | VALGRIND_FOUND =  | ENABLE_TESTING = OFF | M4RI_FOUND = TRUE | SLOW_DEBUG = OFF | ENABLE_ASSERTIONS = OFF | PYTHON_EXECUTABLE =  | PYTHON_LIBRARY =  | PYTHON_INCLUDE_DIRS =  | MY_TARGETS =  | LARGEMEM = OFF | LIMITMEM = OFF | compilation date time = Sep 19 2026 19:16:37
+c --- Configuration --
+c maxTime = 3.00e+02
+c Rewrite rules: 1 (binom-red 1 len 2, lin-gauss 1, poly-shorten 1, lit-probe 1 vars 8)
+c XL simp (deg = 1; s = 30.00+4.00): 0
+c EL simp (s = 30.00): 1
+c SAT simp (10000:100000): 1
+ using 1 threads
+c Cut num: 5
+c Partner strategies: 1
+c Linear-factor encoding: 1 xor clauses: 0
+c Brickenstein cutoff: 10
+c --------------------
+c setting projection set to ALL variables since we didn't find a 'c p show ... END'
+c [ANF Input] read in T: 0.67
+c ---- ANF stats -----
+c Num total vars: 1252
+c Num free vars: 1252
+c Num equations: 432197
+c Num monoms in eqs: 433537
+c Max deg in eqs: 2
+c Simple XORs: 16
+c Num vars set: 0
+c Num vars replaced: 0
+c Density: terms/eq 1.0 (max 132), vars/eq 2.0 (max 131), fill 0.250, distinct monoms 433434 (sharing 1.00x), active vars 1252, eqs/var 691.5 (max 871)
+c Degree histogram: deg1:16 deg2:432181
+c --------------------
+c [ANF hash] Calculating ANF hash...
+c [ANF hash] Done. T: 0.0
+c Simplifying....
+c [boshp] Running iterative simplification...
+c [simp-stats] bef anf-prop               eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 1.43 depth 0
+c [ANF prop] Running ANF propagation...
+c [ANF prop] Left eqs: 432197 T: 0.47
+c [simp-stats] aft anf-prop               eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 1.96 T-step: 0.53 depth 0
+c [iter-simp] ------ Iteration 0
+c [rewrite] 432181/432181 nonlinear eqs are products of linerals, product-preserving mode: 1
+c [simp-stats] bef lin-gauss              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 3.54 depth 0
+c [lin-gauss] linear 16 rank 16 deleted 0 shortened 0 T: 0.23
+c [simp-stats] aft lin-gauss              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 3.82 T-step: 0.28 depth 0
+c [simp-stats] bef binom-red              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 3.86 depth 0
+c [binom-red] rewrote 0 eqs (0 monomials) T: 0.44
+c [simp-stats] aft binom-red              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 4.33 T-step: 0.47 depth 0
+c [simp-stats] bef prod-split             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 4.35 depth 0
+c [simp-stats] aft prod-split             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 4.58 T-step: 0.23 depth 0
+c [simp-stats] bef poly-shorten           eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 4.62 depth 0
+c [poly-shorten] shortened 0 eqs budget-left 199998256 T: 0.34
+c [simp-stats] aft poly-shorten           eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 5.01 T-step: 0.40 depth 0
+c [simp-stats] bef mono-gauss             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 5.04 depth 0
+c [mono-gauss] eqs 2 monomials 100 rank 2 deleted 0 shortened 0 degree-falls 0 T: 0.21
+c [simp-stats] aft mono-gauss             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 5.31 T-step: 0.27 depth 0
+c [simp-stats] bef lit-probe              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 5.35 depth 0
+c [lit-probe] forced 0 equiv 0 impl 432181 scc-equiv 0 new-facts 0 T: 0.85
+c [simp-stats] aft lit-probe              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 6.25 T-step: 0.90 depth 0
+c [simp-stats] bef cnf-probe              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 6.32 depth 0
+c [cnf-probe] cnf vars 1568 cls 442573 probed 1252 units 0 equivs 0 bins 0 long-dropped 0 new 0 T: 3.76
+c [simp-stats] aft cnf-probe              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 10.12 T-step: 3.80 depth 0
+c [iter-simp] ------ Iteration 0
+c [iter-simp] ------ Iteration 0
+c [simp-stats] bef elimlin                eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 10.22 depth 0
+c [ElimLin] Running ElimLin... ring size: 1252
+c [ElimLin] Done. Learnt: 0 T: 7.90
+c [simp-stats] aft elimlin                eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 18.26 T-step: 8.04 depth 0
+c [iter-simp] ------ Iteration 0
+c [simp-stats] bef sat-simp               eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 18.30 depth 0
+c [CNF-gen] Number of value assignments = 0
+c Number of equiv assigments = 0
+c [simp-stats] aft sat-simp               eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 22.46 T-step: 4.16 depth 0
+c [iter-simp] ------ Iteration 1
+c [simp-stats] bef lin-gauss              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 22.54 depth 0
+c [lin-gauss] linear 16 rank 16 deleted 0 shortened 0 T: 0.30
+c [simp-stats] aft lin-gauss              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 22.89 T-step: 0.35 depth 0
+c [simp-stats] bef binom-red              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 22.92 depth 0
+c [binom-red] rewrote 0 eqs (0 monomials) T: 0.51
+c [simp-stats] aft binom-red              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 23.49 T-step: 0.57 depth 0
+c [simp-stats] bef prod-split             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 23.52 depth 0
+c [simp-stats] aft prod-split             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 23.82 T-step: 0.30 depth 0
+c [simp-stats] bef poly-shorten           eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 23.87 depth 0
+c [poly-shorten] shortened 0 eqs budget-left 199998256 T: 0.40
+c [simp-stats] aft poly-shorten           eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 24.32 T-step: 0.45 depth 0
+c [simp-stats] bef mono-gauss             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 24.36 depth 0
+c [mono-gauss] eqs 2 monomials 100 rank 2 deleted 0 shortened 0 degree-falls 0 T: 0.27
+c [simp-stats] aft mono-gauss             eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 24.67 T-step: 0.32 depth 0
+c [simp-stats] bef lit-probe              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 24.71 depth 0
+c [lit-probe] forced 0 equiv 0 impl 432181 scc-equiv 0 new-facts 0 T: 0.98
+c [simp-stats] aft lit-probe              eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 25.75 T-step: 1.04 depth 0
+c [iter-simp] ------ Iteration 1
+c [iter-simp] ------ Iteration 1
+c [simp-stats] bef elimlin                eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 25.86 depth 0
+c [simp-stats] aft elimlin                eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 25.93 T-step: 0.07 depth 0
+c [ElimLin] learnt nothing and the system has not changed since, not running it again
+c [iter-simp] ------ Iteration 1
+c [simp-stats] bef sat-simp               eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 25.96 depth 0
+c [simp-stats] aft sat-simp               eqs 432197 monoms 433537 lin_eqs 16 nonlin_eqs 432181 max_deg 2
+c [simp-stats]                            free_vars 1252 set_vars 0 repl_vars 0 mem_MB 0 T: 26.01 T-step: 0.05 depth 0
+c [SAT] learnt nothing and the system has not changed since, not running it again
+c [iter-simp] ------ Iteration 2
+c [Rewrite] waiting for 1 iteration(s).
+c [iter-simp] ------ Iteration 2
+c [XL] waiting for 1 iteration(s).
+c [iter-simp] ------ Iteration 2
+c [iter-simp] ------ Iteration 2
+c [ after 3.0 iteration(s) in 24.64 seconds.]
+c Simplifying finished.
+c ---- ANF stats -----
+c Num total vars: 1252
+c Num free vars: 1252
+c Num equations: 432197
+c Num monoms in eqs: 433537
+c Max deg in eqs: 2
+c Simple XORs: 16
+c Num vars set: 0
+c Num vars replaced: 0
+c Density: terms/eq 1.0 (max 132), vars/eq 2.0 (max 131), fill 0.250, distinct monoms 433434 (sharing 1.00x), active vars 1252, eqs/var 691.5 (max 871)
+c Degree histogram: deg1:16 deg2:432181
+c --------------------
+c ---- rule stats (nested rules are included in the rule that called them) ----
+c rule           calls   eff        T      eqs    monoms     lin    set   repl  T/call
+c anf-prop           1     0     0.53        0         0       0      0      0   0.532
+c binom-red          2     0     1.04        0         0       0      0      0   0.520
+c cnf-probe          1     0     3.80        0         0       0      0      0   3.801
+c elimlin            2     0     8.11        0         0       0      0      0   4.054
+c lin-gauss          2     0     0.63        0         0       0      0      0   0.317
+c lit-probe          2     0     1.94        0         0       0      0      0   0.968
+c mono-gauss         2     0     0.59        0         0       0      0      0   0.294
+c poly-shorten       2     0     0.85        0         0       0      0      0   0.424
+c prod-split         2     0     0.53        0         0       0      0      0   0.266
+c sat-simp           2     0     4.21        0         0       0      0      0   2.107
+c ------------------------------------------------------------------------------
+c [CNF-gen] Number of value assignments = 0
+c Number of equiv assigments = 0
+s ANF-UNSATISFIABLE
+c Learnt 16 fact(s) in 69.143 seconds using 0.000MB.
