@@ -45,14 +45,17 @@ a marker loading of \(1\) produces \(-0.28\), \(-0.14\), and \(0\). On the
 population lavaan builds from the generation string, the first loading is \(1\)
 and the other three are \(0.70\), and the same marker model produces
 \(-0.40\), \(-0.20\), and \(0\). The second population matches the printed
-averages. At \(N=240\), all \(30\) compared averages fall within two combined
-Monte Carlo standard errors of the page. The unbalanced power rates \(49.23\),
-\(21.08\), and \(7.77\) do as well. Six of the \(30\) rejection rates miss that
-uncorrected band. Bonferroni and Holm, on the same \(30\) rates, leave one
-miss: the equal-group MIMIC null rate \(2.26\) against the printed \(5.18\).
+averages. At \(N=240\), a \(400\)-replicate screen put six of \(30\) rejection
+rates outside an uncorrected two-standard-error band, and one of those six
+outside Bonferroni and Holm: \(2.26\) against the printed \(5.18\). The same
+ten cells at \(10{,}000\) replicates put that rate at \(5.01\). Three rates
+remain outside the uncorrected band. None remain outside Bonferroni or Holm.
+A binomial count of those three misses does not exceed the \(5\%\) expectation.
 The dissertation's percents are single Wald tests at \(\alpha=0.05\). The
-correction applies only to this agreement check. The multigroup convergence
-rate in the smallest groups is \(88.25\%\) against the printed \(89.29\%\).
+correction applies only to this agreement check. The unbalanced power rates
+come out \(49.35\), \(21.28\), and \(8.51\) against \(49.23\), \(21.08\), and
+\(7.77\). Multigroup convergence in the smallest groups is \(89.82\%\) against
+\(89.29\%\).
 \end{abstract}
 
 \section{What this replication did}
@@ -136,29 +139,30 @@ Population fit \(-0.28,\ -0.14,\ 0\) &
 no match \\
 Table~4.1, \(N=240\), shares \(45/45/5/5\), percent significant &
 \(49.23,\ 21.08,\ 7.77\) &
-\(48.16,\ 25.21,\ 7.08\) &
+\(49.35,\ 21.28,\ 8.51\) &
 match \\
 Table~4.3, same cell, percent significant &
 \(8.13,\ 8.59,\ 7.73\) &
-\(10.80,\ 12.85,\ 9.77\) &
-partial \\
+\(8.10,\ 8.33,\ 8.22\) &
+match \\
 Table~4.5, same cell, multigroup convergence &
 \(89.29\%\) &
-\(88.25\%\) of \(400\) &
+\(89.82\%\) of \(10{,}000\) &
 match \\
 Thirty rejection rates, two combined standard errors &
 Each printed percent is one test at \(\alpha=0.05\) &
-\(6\) of \(30\) outside the band &
+\(3\) of \(30\) outside the band &
 partial \\
 Same \(30\) rates, Bonferroni \(z=2.94\) and Holm &
 Those tests are a single-test design &
-\(1\) of \(30\) outside the band &
-partial \\
+\(0\) of \(30\) outside the band &
+match \\
 \bottomrule
 \end{tabular}
-\caption{Published claims against this replication. Monte Carlo rows use \(400\)
-replicates at \(N=240\). The population fits use the moment matrices, not a
-sample. The last two rows correct only the agreement check.}
+\caption{Published claims against this replication. Monte Carlo percent rows
+use \(10{,}000\) replicates at \(N=240\). The population fits use the moment
+matrices. The last two rows correct only the agreement check. The
+\(400\)-replicate screen is in Section~\ref{sec:gaps}.}
 \label{tab:compare}
 \end{table}
 
@@ -482,14 +486,83 @@ contributes three contrasts computed on the same replicates, so a miss on one
 contrast moves with the other two. Dependence of that kind widens the
 distribution of the miss count relative to a \(\mathrm{Bin}(30,0.05)\) draw.
 The binomial probability is the independent-trials figure. The ten cells use
-separate seeds, so the dependence sits inside cells. Table~4.3's partial mark
-in Table~\ref{tab:compare} is the uncorrected miss on contrast~2,
-\(12.85\) against \(8.59\), \(|z|=2.48\). That row is inside the corrected
-band.
+separate seeds, so the dependence sits inside cells. At \(400\) replicates the
+Table~4.3 contrast~2 rate, \(12.85\) against \(8.59\), is the uncorrected miss
+in that cell, and it is inside the corrected band.
 
 The multigroup null model at \(N=240\) and shares \(45/45/5/5\) converged in
-\(389\) of \(400\) replicates, \(97.25\%\), against Table~4.5's \(95.75\%\). The
-combined standard error is about \(0.8\) points.
+\(389\) of \(400\) replicates, \(97.25\%\). Table~4.5 prints \(9{,}675\) and
+\(95.75\%\) on that row. The count divided by \(10{,}000\) is \(96.75\).
+
+\subsection{Ten thousand replicates}
+
+The question is whether the six uncorrected misses, and the one corrected
+miss, were the length of the \(400\)-replicate screen. The rerun is
+\path{simulation/validate_10k.R}: the same ten cells, \(10{,}000\) attempts,
+\texttt{missing = "ML"}, MLR, and \texttt{iter.max} of \(10{,}000\). Each cell
+sets one L'Ecuyer seed and draws its replicates in order on one core. The
+seeds are in \path{simulation/out/seeds_10k.csv}. The scores are
+\path{simulation/out/gap_scores_10k.csv}.
+
+Five of the six short-run misses fall inside the uncorrected band.
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Cell & Contrast & Printed & At \(400\) & At \(10{,}000\) & \(|z|\) \\
+\midrule
+Multigroup, equal, true difference & 3 & \(5.29\) & \(3.27\) & \(5.23\) & \(0.19\) \\
+Multigroup, \(35/15\), null & 2 & \(5.15\) & \(9.02\) & \(5.19\) & \(0.11\) \\
+Multigroup, \(45/5\), null & 2 & \(8.59\) & \(12.85\) & \(8.33\) & \(0.66\) \\
+MIMIC, \(45/5\), true difference & 1 & \(62.98\) & \(57.89\) & \(62.13\) & \(1.25\) \\
+MIMIC, \(45/5\), true difference & 2 & \(23.37\) & \(18.55\) & \(22.11\) & \(2.12\) \\
+MIMIC, equal, null & 1 & \(5.18\) & \(2.26\) & \(5.01\) & \(0.55\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The row that Bonferroni and Holm had kept outside, \(2.26\) against \(5.18\),
+is \(5.01\) against \(5.18\). One of the six stays outside the uncorrected band:
+MIMIC, shares \(45/45/5/5\), true difference, contrast~2, \(22.11\) against
+\(23.37\), \(|z|=2.12\). Its average is \(-0.2012\) against \(-0.2007\).
+
+Across all \(30\) rates, three miss the uncorrected band. The other two were
+inside it at \(400\) replicates. MIMIC, shares \(45/45/5/5\), null, contrast~2
+is \(6.46\) against \(7.41\), \(|z|=2.64\). MIMIC, equal groups, null,
+contrast~3 is \(4.53\) against \(5.32\), \(|z|=2.59\). The smallest two-sided
+\(p\)-value is \(0.0083\). Bonferroni's cutoff is \(0.05/30=0.00167\), and
+\(z=2.94\) and \(z=3.14\) are the normal quantiles named above. Holm compares
+\(0.0083\) with \(0.00167\) and stops. No rate is outside the corrected rules.
+
+A binomial test of three misses in thirty trials at \(p=0.05\) has upper tail
+\(0.19\). The expected count under independence is \(1.5\). The same
+within-cell dependence applies, so \(0.19\) is the independent-trials figure.
+On that calculation, three misses is within the count chance predicts.
+Three rates each miss their own \(5\%\) band, and three misses in thirty
+trials is an ordinary count for that band.
+
+The unbalanced power rates are \(49.35\), \(21.28\), and \(8.51\) against
+\(49.23\), \(21.08\), and \(7.77\). The largest \(|z|\) in that cell is
+\(1.85\), on the third rate. The averages are \(-0.403\), \(-0.215\), and
+\(0.0050\) against \(-0.404\), \(-0.218\), and \(0.0054\). Convergence there is
+\(8{,}982\) of \(10{,}000\), \(89.82\%\), against \(89.29\%\).
+
+Twenty-nine of the \(30\) averages are inside two combined standard errors.
+The exception is the multigroup equal-group null contrast~3: \(0.0023\) against
+\(-0.0021\), \(|z|=2.40\). The rejection rate in that cell is \(5.27\) against
+\(5.39\). The \(30\) averages were not the family that Bonferroni and Holm were
+applied to. The same \(z=2.94\) threshold would place this one average inside
+a corrected band.
+
+Table~4.5's multigroup null row at \(N=240\), condition~3, prints \(9{,}675\)
+and \(95.75\%\). Those two figures are not the same rate: \(9{,}675/10{,}000\)
+is \(96.75\). Our count is \(9{,}656\) of \(10{,}000\), \(96.56\%\). That rate
+is inside two combined standard errors of \(96.75\) and outside two combined
+standard errors of \(95.75\) (\(|z|=2.98\) against the printed percent). The
+MIMIC true-difference rows print \(10{,}000\) of \(10{,}000\). Ours are
+\(9{,}988\) and \(9{,}986\). The plug-in standard error gives a printed rate of
+\(100\%\) no variance, so those gaps exceed two combined standard errors. The
+rejection rates in those cells do not.
 
 \section{Assumptions}
 \label{sec:assumptions}
@@ -497,10 +570,11 @@ combined standard error is about \(0.8\) points.
 \subsection{Random-number stream}
 
 Jeffries sets \texttt{set.seed(1313)} and passes seed \(13131\) to
-\texttt{exportData}. We drew normal factor scores and normal residuals in R
-with the L'Ecuyer generator and \texttt{set.seed(13131)}, then one seed per
-cell. The replicates are not Jeffries's replicates. The \texttt{.dat} files are
-not in the OSF archives.
+\texttt{exportData}. The \(400\)-replicate screen used the L'Ecuyer generator,
+\texttt{set.seed(13131)}, and one drawn seed per cell. The \(10{,}000\)-replicate
+run sets a separate fixed seed in each cell, listed in
+\path{simulation/out/seeds_10k.csv}. The replicates are not Jeffries's
+replicates. The \texttt{.dat} files are not in the OSF archives.
 
 \subsection{Package versions}
 
@@ -512,12 +586,11 @@ three contrast standard errors are finite.
 
 \subsection{Replicate count}
 
-The tables use \(10{,}000\) converged replicates. The classification above uses
+The tables use \(10{,}000\) converged replicates. The first classification uses
 \(400\) attempts per cell. That length separates a rate of \(7.8\%\) from a
-rate of \(4.5\%\). It leaves a wide standard error on our side of each
-comparison. The rerun at the printed length is
-\path{simulation/validate_10k.R}, ten cells, \(10{,}000\) attempts, one fixed
-L'Ecuyer seed per cell. The seeds are in
+rate of \(4.5\%\), and it leaves a wide standard error on our side of each
+comparison. The classification at the printed length uses \(10{,}000\) attempts
+in each of the ten cells. The seeds are fixed and are listed in
 \path{simulation/out/seeds_10k.csv}.
 
 \subsection{The first intercept}
@@ -603,15 +676,15 @@ generation population.
 \section{What remains unresolved}
 \label{sec:unresolved}
 
-At \(400\) replicates, six rejection rates sit outside two combined standard
-errors. After Bonferroni and after Holm, one of those six remains outside:
-MIMIC, equal groups, null means, contrast~1, \(2.26\) against \(5.18\). The
-averages in every compared cell are inside the uncorrected band. What was fit
-is the OSF multigroup string, the free-intercept MIMIC string, MLR,
-\(p < 0.05\), \texttt{iter.max} of \(10{,}000\), and the appendix factor codes.
-Jeffries's random stream was not refit. The \texttt{.dat} files are not on
-OSF. Whether the six rates, and the one corrected rate, stay outside at
-\(10{,}000\) replicates is the rerun in \path{simulation/validate_10k.R}.
+At \(10{,}000\) replicates, three rejection rates sit outside two combined
+standard errors, and none sit outside Bonferroni or Holm. The three are MIMIC
+rates. Their averages match the page. The binomial count of three misses in
+thirty trials has upper tail \(0.19\) under independence, and the contrasts
+that share a cell are dependent. One average, the multigroup equal-group null
+contrast~3, sits outside two combined standard errors. What was fit is the OSF
+multigroup string, the free-intercept MIMIC string, MLR, \(p < 0.05\),
+\texttt{iter.max} of \(10{,}000\), and the appendix factor codes. Jeffries's
+random stream was not refit. The \texttt{.dat} files are not on OSF.
 
 The page prints \(-0.4001\) for the MIMIC average of contrast~1 at \(N=240\) in
 the equal true-difference cell. The public summary stores \(-0.399094\). The
@@ -668,11 +741,10 @@ The fetch request for the 2026 article is
 
 \section{Next steps}
 
-The open numerical question is the rejection-rate agreement at the printed
-length of \(10{,}000\) replicates. The script is
-\path{simulation/validate_10k.R} and the seeds are
-\path{simulation/out/seeds_10k.csv}. That rerun does not replace the missing
-\texttt{.dat} files. simsem~0.5.16, if obtained, would test whether that
+The three uncorrected MIMIC rates, and the one average at \(|z|=2.40\), are
+the numerical gaps that the printed replicate count did not close. A corrected
+reading of the thirty rates has no miss. The missing \texttt{.dat} files would
+be Jeffries's own stream. simsem~0.5.16, if obtained, would test whether that
 version fills the free loading with \(1\) in the same way lavaan~0.6.17 does.
 The 2026 PDF would show whether the journal version uses these tables.
 
@@ -722,9 +794,15 @@ Command: \path{Rscript validate_gaps.R 400 out}.
 \path{simulation/out/gap_scores.csv}, with the family summary in
 \path{simulation/out/gap_scores_multiplicity.csv}.
 Command: \path{Rscript score_gaps.R out/validate_gaps.csv out/gap_scores.csv}.
-\item Ten-thousand-replicate rerun. Script \path{simulation/validate_10k.R}.
-Seeds: \path{simulation/out/seeds_10k.csv}.
+\item Ten-thousand-replicate rerun. File
+\path{simulation/out/validate_10k.csv}, with one checkpoint per cell in
+\path{simulation/out/cell10k_*.csv}. Seeds:
+\path{simulation/out/seeds_10k.csv}.
 Command: \path{Rscript validate_10k.R 10000 out}.
+\item Agreement classification at that length. File
+\path{simulation/out/gap_scores_10k.csv}, with the family summary in
+\path{simulation/out/gap_scores_10k_multiplicity.csv}.
+Command: \path{Rscript score_gaps.R out/validate_10k.csv out/gap_scores_10k.csv}.
 \item Equal-loading replay, kept so the old averages stay reproducible.
 File \path{simulation/out/monte_carlo.csv}.
 Command: \path{Rscript monte_carlo.R 200 100 out}.
