@@ -122,6 +122,12 @@ Two factor-margin cells do match, and two more sit just outside the
 band.
 \(U3\), computed from the same definition as PerFit~1.4.7, does not
 follow the printed \(U3\) column on either tail.
+The 2015 thesis cited for the moments was not available on the first
+attempt to fetch it.
+The copy obtained after that failure prints scale correlations and
+factor loadings, not graded thresholds.
+Using those correlations in place of Table~A1 moves the normed-Guttman
+rates by less than \(0.01\).
 
 The original work is the design, the bias definitions, and the printed
 tables.
@@ -587,8 +593,170 @@ The sentence that the socially desirable means lie one standard
 deviation below Table~A1 does not recover \(-0.982\), \(-0.964\),
 \(-0.903\), and \(-0.868\).
 The run uses those four printed numbers.
-Beck (2015), the master's thesis cited as the source of Table~A1 and of
-the ranges behind Tables~A2 and~A3, was not retrieved.
+
+\section{What the 2015 thesis supplies}
+\label{sec:thesis}
+
+This section answers whether Beck (2015) prints the moments and the
+item slopes the dissertation says it adapted.
+It prints scale means, scale correlations, and standardized factor
+loadings.
+It does not print graded-response boundaries.
+An earlier request for the UTSA file returned HTTP 403.
+The copy used here is the same bitstream, retrieved after that failure.
+Its sha256 is
+\sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}.
+The appendix numbers in the comparison were supplied by Nate as a
+transcription of that PDF.
+Figure~\ref{fig:thesis} is Table~A4 of the thesis.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/thesis_table_a4.png}
+\caption{Beck (2015), Table~A4. Scale means, standard deviations, and
+factor correlations for the MSARI-28. \(N=380\).}
+\label{fig:thesis}
+\end{figure}
+
+The dissertation's Table~A1 is not this table.
+The thesis correlations, in the order Anger, Avoid, Alcohol, Agora, are
+\(0.43\), \(0.29\), \(0.37\), \(0.28\), \(0.81\), and \(0.33\).
+The correlations implied by Table~A1, in the order printed there, are
+\(0.46\), \(0.32\), \(0.43\), \(0.37\), \(0.86\), and \(0.42\).
+The largest absolute difference is \(0.09\).
+The scale-score covariance, using the printed standard deviations
+\(0.91\), \(0.92\), \(0.98\), and \(0.72\), differs from Table~A1 by as
+much as \(0.44\).
+The scale means are \(2.30\), \(1.96\), \(1.85\), and \(1.53\).
+Table~A1's means are near zero.
+Substituting the scale means into the graded generator leaves every
+cell with fewer than \(900\) non-constant base rows, so that reading
+cannot be trimmed the way the dissertation describes.
+
+Substituting the thesis correlations, with unit variances and means
+zero, and with socially desirable means at \(-1\), does run.
+At \(20\) replications and \(\varepsilon=0.5\), the normed-Guttman grand
+sensitivities are \(0.063\), \(0.045\), \(0.004\), \(0.291\), \(0.032\),
+and \(0.499\), against \(0.062\), \(0.047\), \(0.003\), \(0.284\),
+\(0.031\), and \(0.500\) on Table~A1.
+No grand sensitivity moves by as much as \(0.01\).
+The file is \src{simulation/out/mc_ink_thesis_corr_eps0.5_c1_r20.csv}.
+
+A slope \(a=\lambda/\sqrt{\psi}\) from a standardized loading \(\lambda\)
+and residual \(\psi\), and the logistic form \(1.702\) times that slope,
+were applied to the seven CFA loadings on each factor.
+The logistic slopes run from \(1.28\) to \(3.76\).
+The dissertation's stated uniforms run from \(1.80\) to \(6.65\), and
+Table~A3 realizes slopes up to \(6.52\).
+No assignment of the four factors puts the converted ranges on those
+uniforms.
+The conversion is \src{simulation/thesis_map.py} and
+\src{simulation/out/thesis_lambda_to_a.csv}.
+Those \(28\) logistic slopes, with Table~A1 and \(\varepsilon=0.5\)
+held fixed, were run for eight replications.
+One cell, seven options and one dimension at length \(12\), kept \(885\)
+non-constant rows and was dropped.
+On the other \(31\) cells the normed-Guttman grand sensitivities are
+\(0.031\) for acquiescence, \(0.122\) for disacquiescence, \(0.001\) for
+midpoint responding, \(0.292\) for extreme responding, \(0.017\) for
+social desirability, and \(0.485\) for careless responding.
+Disacquiescence moves from \(0.047\) on Table~A3 to \(0.122\), against
+the printed \(0.13\).
+The combined standard error is \(0.0017\), so the cell remains outside
+the band.
+Acquiescence moves from \(0.062\) to \(0.031\), away from the printed
+\(0.05\).
+Careless responding stays near the \(0.50\) ceiling.
+The file is
+\src{simulation/out/mc_ink_tablea1_thesis_cfa_eps0.5_c1_r8.csv}.
+
+\section{Why the sensitivities miss}
+\label{sec:why}
+
+This section answers which missing input can account for the
+sensitivity gaps, and which inputs were checked and set aside.
+The ranking uses the size of the movement each input produced.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{0.22\textwidth}p{0.36\textwidth}p{0.34\textwidth}@{}}
+\toprule
+Cause & Evidence for it & Evidence against it \\
+\midrule
+Extreme-response constant &
+Extreme Guttman sensitivity moves from \(0.074\) at \(\varepsilon=2\) to \(0.284\) at \(\varepsilon=0.5\), toward the printed \(0.27\). &
+The closest of those three values is still \(0.014\) outside a band of width \(0.0018\). Acquiescence, disacquiescence, social desirability, and careless responding do not use \(\varepsilon\), and they miss. \\
+Item slopes and boundaries &
+Table~A3 slopes reach \(6.52\). Converting the thesis loadings gives slopes from \(1.28\) to \(3.76\). Using those slopes moves disacquiescence from \(0.047\) to \(0.122\), against \(0.13\). &
+The converted ranges are not the stated uniforms. The same run moves acquiescence from \(0.062\) to \(0.031\), away from \(0.05\), and careless responding stays at \(0.485\). The thesis has no graded thresholds. \\
+Careless-item fraction &
+The page does not say how many items are replaced. &
+Fractions \(1\), \(0.5\), \(0.2\), and \(0.1\) leave the rate between \(0.44\) and \(0.50\), against \(0.29\). \\
+Unprinted boundary draw &
+The band is for one fixed item set. A new draw from Table~A2 is a different experiment. &
+The gaps are several hundredths. That is possible for one unlucky draw, and it is large beside the redraw of the \(100\) biased respondents. \\
+Latent covariance &
+The dissertation says the moments were adapted from Beck (2015). &
+The thesis correlations move the six Guttman rates by less than \(0.01\). \\
+\(U3\) implementation &
+The printed \(U3\) column tracks the Guttman column. Our \(U3\) does not. &
+Our \(U3\) matches PerFit~1.4.7 before that package rounds to four decimals. The Guttman misses do not depend on \(U3\). \\
+Generator and the trim to \(900\) &
+The usual \texttt{mirt} intercept, and the thesis scale means, both fail the trim. &
+The printed-sum generator with Table~A1 completes the trim and still misses. The graded probabilities match a hand-written logistic to \(0\). \\
+Bootstrap median versus the sample quantile &
+The dissertation uses the bootstrap median. &
+On two samples of size \(1{,}000\) the two cutoffs differ by \(3\times 10^{-4}\) and \(6\times 10^{-4}\). \\
+Flagging direction &
+The low tail of the normed Guttman errors flags about \(283\) people and gives careless sensitivity \(0\). The high tail flags about \(51\) and puts midpoint responding on the floor, which is the shape on the page. &
+The high tail is the comparison in Table~\ref{tab:guttman}, and the level gaps remain on that tail. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The first row is the strongest lever that was actually in our hands,
+and it does not close the column.
+The slope and boundary row is the live remainder: the thesis does not
+contain the thresholds the dissertation says were fit with \texttt{ltm}.
+
+\section{Which checks were run}
+\label{sec:audit}
+
+This section answers which of the checks that have closed gaps in
+earlier replications were applied here.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{0.28\textwidth}p{0.14\textwidth}p{0.48\textwidth}@{}}
+\toprule
+Check & Before this note's follow-up & Result \\
+\midrule
+Reread the displayed equations and tables &
+Yes &
+Equation~23, Table~A1, and Table~A2 match the page images. The \(k=7\) row is absent. \\
+Swap one assumption at a time &
+Epsilon and the careless fraction &
+Thesis correlations and the loading-to-slope map were added. Correlations move rates by less than \(0.01\). The slopes move disacquiescence close to the printed value and move acquiescence away from it. \\
+Back-solve the unprinted constant from the margins &
+Yes, three values of \(\varepsilon\) &
+\(0.5\) is the closest for extreme responding and remains outside the band. \\
+Match the person-fit code to the packages &
+Yes &
+\(H_i^T\) matches \texttt{mokken}. \(U3\) and the normed Guttman errors match PerFit~1.4.7 before rounding. \\
+Hand-written generator against \texttt{mirt} &
+Probabilities only &
+One- and two-factor probabilities match to \(0\). A full rate grid on a second generator was not run. \\
+Package versions from 2022--2023 &
+No &
+The run is \texttt{mirt}~1.36 (March 2022), \texttt{mokken}~3.1.2, and PerFit~1.4.7. A May~2023 PerFit build was not installed. \\
+More replications &
+\(40\) &
+The combined standard errors on the grand rates are about \(10^{-3}\) or smaller. A gap of \(0.01\) stays outside two standard errors at any larger replication count. \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 The bootstrap-median cutoff was checked on two artificial samples, not
 on every replication of the grid.
@@ -599,6 +767,15 @@ The differences were \(3\times 10^{-4}\) and \(6\times 10^{-4}\).
 
 This section answers where the inputs and the outputs live.
 The dated ledger is in \src{INVESTIGATION.md}.
+
+An earlier fetch of the Beck (2015) thesis returned HTTP 403.
+The file later obtained from
+\url{https://rrpress.utsa.edu/server/api/core/bitstreams/4fbd58d2-5896-4dea-ab69-300c5c676a07/content}
+has sha256
+\sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}.
+It is not in git.
+The loadings used in Section~\ref{sec:thesis} are Nate's transcription
+of its appendix, checked against Table~A4 on that PDF.
 
 The dissertation PDF used here has sha256
 \sha{86c3bb482efadc385cd52f7ea12dc33c50b9b70b4ce6111aedb075a12968f62b}.
@@ -622,11 +799,10 @@ PerFit's source for the two polytomous statistics is the repository
 
 This section answers what would replace an assumption with a printed
 input.
-The Beck (2015) thesis, ProQuest 1588285, is the cited source of the
-means, the covariance, and the boundary ranges.
-A seed, a boundary matrix, or an R \texttt{sessionInfo} record from the
-dissertation run would decide whether the sensitivity gaps are the
-unpublished draw.
+The 2015 thesis is in hand and does not print the graded thresholds.
+A seed, the \texttt{ltm} boundary matrix, or an R \texttt{sessionInfo}
+record from the dissertation run would decide whether the sensitivity
+gaps are that unpublished fit.
 The check is the same Monte Carlo with those inputs in place of seed
 \(20230511\) and of \(\varepsilon=0.5\).
 
@@ -669,6 +845,15 @@ Comparison, \(\varepsilon=0.5\) &
 Quantile against bootstrap median &
 \src{simulation/out/bootstrap_cutoff.csv} &
 \texttt{Rscript bootstrap\_cutoff.R out} \\
+Loading-to-slope map &
+\src{simulation/out/thesis_lambda_to_a.csv} &
+\texttt{python3 thesis\_map.py} \\
+Thesis correlations, 20 replications &
+\src{simulation/out/mc_ink_thesis_corr_eps0.5_c1_r20.csv} &
+\texttt{Rscript monte\_carlo.R out 20 ink 0.5 2 1 thesis\_corr} \\
+CFA slopes, eight replications &
+\src{simulation/out/mc_ink_tablea1_thesis_cfa_eps0.5_c1_r8.csv} &
+\texttt{Rscript monte\_carlo.R out 8 ink 0.5 1 1 tablea1 thesis\_cfa} \\
 Crops &
 \srcdir{paper/figures} &
 \texttt{python3 paper/figures/crop\_pages.py PDF} \\

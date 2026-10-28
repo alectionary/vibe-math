@@ -18,7 +18,9 @@ PDF sha256 `86c3bb482efadc385cd52f7ea12dc33c50b9b70b4ce6111aedb075a12968f62b`, 2
 | OSF API search for the dissertation | 2026-10-28 | No matching records. |
 | Zenodo API search for this dissertation title | 2026-10-28 | No matching record. The unfiltered query returns unrelated works. |
 | GitLab API search `person-fit Beck` | 2026-10-28 | Empty project list. |
-| Beck (2015), master's thesis, ProQuest 1588285 | 2026-10-28 | Not retrieved. |
+| Beck (2015) UTSA bitstream, curl without a browser header | 2026-10-28 | HTTP 403. Not retrieved on that attempt. |
+| Same URL, `https://rrpress.utsa.edu/server/api/core/bitstreams/4fbd58d2-5896-4dea-ab69-300c5c676a07/content`, curl with a browser user agent | 2026-10-28 | PDF obtained. 120 pages, 2,046,526 bytes. sha256 `0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707`. Creation time in the file is 4 May 2015, 11:42 AM Pacific. |
+| Nate's transcription of the appendix tables of that PDF | 2026-10-28 | Used as the source of the loadings, residuals, means, SDs, and correlations below. Table A4 in the transcription matches the PDF page. |
 
 ## What the dissertation does not contain
 
