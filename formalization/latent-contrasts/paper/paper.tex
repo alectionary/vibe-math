@@ -462,6 +462,62 @@ public record left in place. The author's \texttt{.dat} files, or a
 \texttt{sessionInfo} from the run that wrote the tables, are the check
 that would tell those three apart from this stream.
 
+\subsection{OpenMx on the unconverged MIMIC replicates}
+
+The question is whether the MIMIC replicates that nlminb left
+unconverged are bad datasets or an optimizer setting.
+The script is \srcat{simulation/openmx_check.R}{172}.
+It replays the hand stream from \srcat{simulation/validate_10k.R}{126}
+and the simsem stream from \srcat{simulation/env_miss.R}{126}, keeps
+every replicate lavaan did not converge, and keeps 25 converged
+replicates in each of the eight cells as a control.
+OpenMx~2.22.11~\cite{neale2016} then fits the same free-intercept
+marker model. The CRAN build's default optimizer is SLSQP.
+NPSOL is not compiled into it. CSOLNP was run as a second optimizer.
+
+The indicator covariance of a failed replicate has a condition number
+between about \(3.6\) and \(5.4\), and its smallest eigenvalue is
+between about \(0.34\) and \(0.45\). The nlminb attempt did not return
+a negative variance, and it did not raise the gradient warning.
+Those replicates do not look like a singular sample or a Heywood case
+in the data.
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Stream and cell & nlminb failed & SLSQP code 0 & CSOLNP code 0 & BFGS recovered \\
+\midrule
+Hand, equal, true & 12 & 0 & 1 & 12 \\
+Hand, equal, null & 35 & 1 & 1 & 35 \\
+Hand, \(45/5\), true & 14 & 0 & 0 & 14 \\
+Hand, \(45/5\), null & 48 & 0 & 0 & 48 \\
+simsem, equal, true & 12 & 0 & 0 & 12 \\
+simsem, equal, null & 36 & 0 & 1 & 36 \\
+simsem, \(45/5\), true & 20 & 0 & 0 & 20 \\
+simsem, \(45/5\), null & 49 & 0 & 1 & 48 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+OpenMx status code 0 is a converged fit. Code 1 did not occur.
+The other failures returned code 6, the RED status: the first-order
+conditions were not met. On the control replicates the largest absolute
+gap between a lavaan contrast and the OpenMx SLSQP contrast is
+\(2.2\times 10^{-5}\).
+
+The same failed datasets were refit in lavaan with BFGS, with nlminb
+allowed \(50{,}000\) iterations, and with lavaan's simple starting
+values. The longer run and the simple starts converged none of them.
+BFGS converged 225 of the 226. Seven cells then have \(10{,}000\)
+converged replicates. The simsem null cell with shares \(45/45/5/5\)
+has \(9{,}999\). Counting those BFGS solutions, the contrast-2 rate in
+that cell is \(6.51\) in the simsem stream and \(6.47\) in the hand
+stream, against the printed \(7.41\). The printed convergence count of
+\(10{,}000\) is reached by changing lavaan's optimizer. The printed
+rejection rate is not. The dissertation names nlminb, and under nlminb
+the count stays short of \(10{,}000\).
+
 Jeffries and Bovaird (2026), DOI \texttt{10.1177/01466216261452255},
 was not obtained as a PDF. Unpaywall, Europe PMC, and the Wayback
 Machine had no PDF on 2026-10-27. The OSF node is the analysis record
@@ -497,6 +553,15 @@ The tarball installed for the redraw is
 \href{\simsemtar}{\texttt{simsem\_0.5-16.tar.gz}}.
 The development repository is
 \href{https://github.com/simsem/simsem}{simsem/simsem}.
+
+The convergence check used OpenMx~2.22.11~\cite{neale2016}.
+Neale and coauthors (2016) is \emph{Psychometrika} 81(2), pages
+535--549,
+\href{https://doi.org/10.1007/s11336-014-9435-8}{10.1007/s11336-014-9435-8}.
+The CRAN source is that version. On this R~4.3.3 the file
+\texttt{omxData.cpp} calls \texttt{Rf\_isDataFrame}, which this R
+headers file does not declare, so that one call was compiled as
+\texttt{Rf\_isFrame}. The default optimizer in the build is SLSQP.
 
 The code identities were checked with Lean~4.22.0~\cite{demoura2021}.
 The toolchain file \src{lean-toolchain} reads
@@ -648,6 +713,9 @@ File \src{simulation/out/validate_10k.csv}.
 Seeds: \src{simulation/out/seeds_10k.csv}.
 Command: \texttt{Rscript}~\srcat{simulation/validate_10k.R}{126}~\texttt{10000 out}.
 Scores: \texttt{Rscript}~\srcat{simulation/score_gaps.R}{103}~\src{simulation/out/validate_10k.csv}~\src{simulation/out/gap_scores_10k.csv}.
+\item OpenMx convergence check.
+File \src{simulation/out/openmx_summary.csv}.
+Command: \texttt{Rscript}~\srcat{simulation/openmx_check.R}{172}~\texttt{out}.
 \item simsem~0.5-16 redraw.
 File \src{simulation/out/env_miss.csv}.
 Command: \texttt{Rscript}~\srcat{simulation/env_miss.R}{126}~\texttt{10000 out}.
@@ -686,6 +754,14 @@ The Lean 4 theorem prover and programming language.
 In \emph{Automated Deduction -- CADE 28}, Lecture Notes in Computer
 Science, Springer, 2021, pages 625--635.
 \href{https://doi.org/10.1007/978-3-030-79876-5_37}{10.1007/978-3-030-79876-5\_37}.
+
+\bibitem{neale2016}
+Michael C.~Neale, Michael D.~Hunter, Joshua N.~Pritikin, Mahsa Zahery,
+Timothy R.~Brick, Robert M.~Kirkpatrick, Ryne Estabrook,
+Timothy C.~Bates, Hermine H.~Maes, and Steven M.~Boker.
+OpenMx 2.0: Extended structural equation and statistical modeling.
+\emph{Psychometrika} 81(2) (2016), 535--549.
+\href{https://doi.org/10.1007/s11336-014-9435-8}{10.1007/s11336-014-9435-8}.
 
 \bibitem{mathlib2020}
 The mathlib Community.
