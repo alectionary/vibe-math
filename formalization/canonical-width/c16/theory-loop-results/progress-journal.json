@@ -1,12 +1,12 @@
 {
-  "updated_utc": "2026-10-28T18:36:15.458633+00:00",
+  "updated_utc": "2026-10-28T20:20:05.356779+00:00",
   "deadline_utc": "2026-10-28T22:08:48Z",
   "claim_owner_sha": "1404a46e5a318549c145376023787e82714ccfbf",
   "source_C16_answered": false,
-  "verified_cover": 459,
-  "last_verified_prefix": "exchange/checkpoint-01.json",
-  "last_consumer": "exchange-checkpoint-independent.json",
-  "consecutive_no_progress_rounds": 0,
+  "verified_cover": 428,
+  "last_verified_prefix": "exchange/checkpoint-05.json",
+  "last_consumer": "exchange-round3-independent.json",
+  "consecutive_no_progress_rounds": 3,
   "rounds": [
     {
       "round": "projected inverse-matrix blocks",
@@ -35,6 +35,48 @@
       "outcome": "Verified480to459 via21 exchange steps and22 checked anchored branches. Continues with further unverified candidates.",
       "evidence": "exchange-checkpoint-independent.json",
       "qualifying_progress": true
+    },
+    {
+      "round": "global uncompressed900s",
+      "outcome": "Independently verified480to439, with41 exchange steps and42 anchored proofs.",
+      "evidence": "exchange-round1-independent.json",
+      "qualifying_progress": true
+    },
+    {
+      "round": "global compressed900s",
+      "outcome": "Verified439to435; compressed free signatures checked byte-for-byte and byDRAT.",
+      "evidence": "exchange-round2-independent.json",
+      "qualifying_progress": true
+    },
+    {
+      "round": "global compressed plus signatureAMO900s",
+      "outcome": "Verified435to428; all four encodings have160000 literal controls and5184 affine soundness controls.",
+      "evidence": "exchange-round3-independent.json",
+      "qualifying_progress": true
+    },
+    {
+      "round": "native parity method comparison",
+      "outcome": "Xorcle compiled and proof control passed strict independent kernel; compact hard source domain remainedUNKNOWN at30s, nativeCMS alsoUNKNOWN at5s. No search improvement claimed.",
+      "evidence": "native-hard-xorcle.json",
+      "qualifying_progress": false
+    },
+    {
+      "round": "old witness unit-only exchange",
+      "outcome": "No smaller verified cover; outcome preserved.",
+      "evidence": "exchange/round4-final.json",
+      "qualifying_progress": false
+    },
+    {
+      "round": "alternative witness36 full greedy unit screen",
+      "outcome": "No smaller verified cover; outcome preserved.",
+      "evidence": "witness36/chain.json",
+      "qualifying_progress": false
+    },
+    {
+      "round": "forced restoration of a nonunit class",
+      "outcome": "No smaller verified cover; outcome preserved.",
+      "evidence": "exchange/round5-final.json",
+      "qualifying_progress": false
     }
   ],
   "live_job": {
@@ -44,5 +86,18 @@
     "start_approx_utc": "2026-10-28T18:30:00Z"
   },
   "publication": "Work-branch checkpoint only; required PR review remains intact.",
-  "old_goal_tool_status": "A historical goal remains blocked in the tool and is not falsely marked complete; this new user-authorized bounded block is tracked by scope and UTC deadline."
+  "old_goal_tool_status": "A historical goal remains blocked in the tool and is not falsely marked complete; this new user-authorized bounded block is tracked by scope and UTC deadline.",
+  "live_jobs": [],
+  "new_source_screen": {
+    "id": "F158",
+    "paper_delta": 1,
+    "canonical_direction_delta": 4,
+    "eligible_delta": 0,
+    "full_text_screen_delta": 1,
+    "Lean_delta": 0
+  },
+  "new_inference": "Proof-producing affine-span node/pair consistency; physical control provesUNSAT withoutSAT on378nodes after30471 pair cuts; hard1252-node example reaches a fixed point with4816 pair cuts. No new cover gain from this inference yet.",
+  "scientific_stop_utc": "2026-10-28T20:17:24Z",
+  "status": "SCIENCE_STOPPED_PRESERVATION_ACTIVE",
+  "stop_reason": "Early stop after three consecutive substantive reduction rounds without improving the verified428-case cover. This is an operational stall, not a global impossibility claim."
 }

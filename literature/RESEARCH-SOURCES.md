@@ -1500,3 +1500,16 @@ Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski
 - Provenance: [source review ledger](../formalization/canonical-width/c16/overnight-results/paper-screening.json).
 
 - Question screen: [full text screened](../formalization/canonical-width/c16/overnight-results/paper-screening.json); 11 linked canonical targets.
+
+## F158 — Extending CDCL to Disjunctions of Parity Equations
+
+Paul Beame; Glenn Sun. SAT2026 LIPIcs377:5, published16July2026,21pages. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full21-page conference version; Section8 PDFp17 directions..
+- Contribution: Parity-clause solver and proof-format method comparison for the existing C16 target.
+- Comparison limit: No C16 conclusion follows from the general simulation theorem or published benchmarks; our native test outcome is recorded separately.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F158-parity-heuristic-integration](OPEN-PROBLEMS.md#l-f158-parity-heuristic-integration), [L-F158-cnf-specific-parity-branching](OPEN-PROBLEMS.md#l-f158-cnf-specific-parity-branching), [L-F158-semantic-1uip](OPEN-PROBLEMS.md#l-f158-semantic-1uip), [L-F158-parity-clause-minimization](OPEN-PROBLEMS.md#l-f158-parity-clause-minimization).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/theory-loop-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/theory-loop-results/paper-screening.json); 4 linked canonical targets.

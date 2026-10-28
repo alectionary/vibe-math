@@ -22,10 +22,25 @@ from exchange_signature_cover import representation
 ROOT=Path(__file__).resolve().parent
 
 
+def signature_amo(clauses,n,edges):
+    groups={}
+    for k,e in enumerate(edges,1):groups.setdefault(e[2],[]).append(k)
+    for s in sorted(groups):
+        vs=groups[s]
+        if len(vs)<2:continue
+        n+=1;old=n;clauses.append([-vs[0],old])
+        for v in vs[1:-1]:
+            n+=1;new=n;clauses.extend([[-v,new],[-old,new],[-v,-old]]);old=new
+        clauses.append([-vs[-1],-old])
+    return n
+
+
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--base-chain',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=900);ap.add_argument('--oracle-seconds',type=float,default=3);ap.add_argument('--master-seconds',type=float,default=.3);ap.add_argument('--seed',type=int,default=0);ap.add_argument('--drat-trim',type=Path,required=True);a=ap.parse_args();start=time.monotonic();a.output.parent.mkdir(parents=True,exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--base-chain',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=900);ap.add_argument('--oracle-seconds',type=float,default=3);ap.add_argument('--master-seconds',type=float,default=.3);ap.add_argument('--seed',type=int,default=0);ap.add_argument('--drat-trim',type=Path,required=True);ap.add_argument('--resume-chain',type=Path);ap.add_argument('--compressed',action='store_true');ap.add_argument('--one-per-signature',action='store_true');ap.add_argument('--unit-only',action='store_true');ap.add_argument('--force-restoration',action='store_true');ap.add_argument('--restore-nonunit',action='store_true');a=ap.parse_args();start=time.monotonic();a.output.parent.mkdir(parents=True,exist_ok=True)
     from ortools.sat.python import cp_model
     A,C,E=logical_data();position={c:k for k,c in enumerate(C)};edgeindex={e[:2]:k for k,e in enumerate(E)};sig={e[:2]:e[2] for e in E}
+    weights={e[3]:e[2].bit_count() for e in E}
+    assert all(weights[e[3]]==e[2].bit_count() for e in E)
     base=json.loads(a.base_chain.read_text());best={position[tuple(c)] for c in base['removed_case_tuples']};initial=sorted(best);cuts={};seed_witnesses=[]
     def addcut(pairs,save=False):
         support=frozenset(position[canonical(i,j)] for i,j in pairs)
@@ -41,10 +56,27 @@ def main():
         for r in d['trials']:
             if r['answer'] is True:addcut(r['counterexample_edges'])
     for r in json.loads((ROOT/'theory-loop-results/minimality-witnesses.json').read_text())['records']:addcut(r['partial_matching'])
+    previous=json.loads(a.resume_chain.read_text()) if a.resume_chain else None
+    if previous:
+        assert a.resume_chain.parent.resolve()==a.output.parent.resolve()
+        for pairs in previous['seed_witnesses']:addcut(pairs)
+        for r in previous['records']:
+            if r['answer'] is True:addcut(r['counterexample_edges'])
+        best={position[tuple(c)] for c in previous['removed_case_tuples']}
+        initial=[position[tuple(c)] for c in previous['initial_removed']]
     seed_witnesses=[pairs for support,pairs in sorted(cuts.items(),key=lambda kv:(len(kv[0]),sorted(kv[0])))];seed_count=len(cuts)
-    unknown=[];records=[];steps=[];master_history=[];stop='wall_bound'
+    unknown=[];records=list(previous['records']) if previous else [];steps=list(previous['steps']) if previous else [];master_history=list(previous['master_history']) if previous else [];stop='wall_bound'
+    prior_unknown=list(previous['unknown_candidates']) if previous else []
+    round_start={'initial_cover':518-len(best),'record_start':len(records),'step_start':len(steps),'compressed':a.compressed,'one_per_signature':a.one_per_signature,'unit_only':a.unit_only,'force_restoration':a.force_restoration,'restore_nonunit':a.restore_nonunit,'oracle_seconds':a.oracle_seconds}
     while time.monotonic()-start<a.seconds:
         master=cp_model.CpModel();x=[master.new_bool_var(f'removed_{k}') for k in range(518)]
+        if a.unit_only:
+            for k in range(518):
+                if weights[k]!=1:master.add(x[k]==0)
+        if a.force_restoration and len(steps)==round_start['step_start']:
+            choices=[k for k in best if not a.restore_nonunit or weights[k]>1]
+            assert choices,'no restoration class meets the requested mode'
+            master.add(sum(1-x[k] for k in choices)>=1)
         for cut in sorted(cuts,key=lambda s:(len(s),sorted(s))):master.add(sum(x[k] for k in cut)<=len(cut)-1)
         for trial in unknown:master.add_bool_or([x[k].Not() if k in trial else x[k] for k in range(518)])
         master.add(sum(x)==len(best)+1);master.maximize(sum(x[k] for k in best))
@@ -59,7 +91,8 @@ def main():
             if time.monotonic()-start>=a.seconds:r['answer']=None;break
             aa,bb,h=C[c];ax,az=16*aa,16*bb+h;target=65535^sig[ax,az]
             small=[(i,j,s,0) for i,j,s,k in E if k in trial and (i,j)!=(ax,az) and i!=ax and j!=az and not A[i]>>az&1 and not A[ax]>>j&1]
-            clauses,n,_,events=encode(A,[0],small,with_xor=False);n=parity_chains(clauses,n,events,target)
+            clauses,n,_,events=encode(A,[0],small,with_xor=False,compress_signatures=a.compressed);n=parity_chains(clauses,n,events,target)
+            if a.one_per_signature:n=signature_amo(clauses,n,small)
             raw=(f'p cnf {n} {len(clauses)}\n'+''.join(' '.join(map(str,c))+' 0\n' for c in clauses)).encode();call_start=time.monotonic();br={'case':C[c],'anchor':[ax,az],'free_edges':len(small),'answer':None}
             with tempfile.TemporaryDirectory(prefix='c16-exchange-oracle-') as folder:
                 ip=Path(folder)/'input.cnf';pp=Path(folder)/'proof.drat';mp=Path(folder)/'model.json';ip.write_bytes(raw)
@@ -78,7 +111,7 @@ def main():
                         addcut(pairs);r['counterexample_edges']=pairs;r['counterexample_classes']=[C[k] for k in sorted(support)];r['answer']=True
                     else:
                         check=subprocess.run([str(a.drat_trim),str(ip),str(pp)],capture_output=True,text=True,timeout=30);assert check.returncode==0 and 's VERIFIED' in check.stdout
-                        proof=pp.read_bytes();branchproofs.append(({'case':C[c],'anchor':[ax,az],'trial_removed':[C[k] for k in sorted(trial)],'anchor_signature':sig[ax,az],'free_target_signature':target,'free_edge_count':len(small),'variables':n,'clauses':len(clauses),'cnf_sha256':hashlib.sha256(raw).hexdigest(),'proof_sha256':hashlib.sha256(proof).hexdigest(),'proof_lines':len(proof.splitlines())},raw,proof))
+                        proof=pp.read_bytes();branchproofs.append(({'case':C[c],'anchor':[ax,az],'trial_removed':[C[k] for k in sorted(trial)],'anchor_signature':sig[ax,az],'free_target_signature':target,'free_edge_count':len(small),'signature_compression':a.compressed,'one_per_signature':a.one_per_signature,'variables':n,'clauses':len(clauses),'cnf_sha256':hashlib.sha256(raw).hexdigest(),'proof_sha256':hashlib.sha256(proof).hexdigest(),'proof_lines':len(proof.splitlines())},raw,proof))
                 except subprocess.TimeoutExpired:r['answer']=None
             br['call_seconds']=time.monotonic()-call_start;r['branches'].append(br)
             if br['answer'] is not False:break
@@ -90,7 +123,7 @@ def main():
             step={'parent_removed':[C[k] for k in sorted(best)],'trial_removed':[C[k] for k in sorted(trial)],'new_classes':[C[k] for k in new],'restored_classes':[C[k] for k in sorted(best-trial)],'branch_certificates':files,'retained_case_count':518-len(trial)};steps.append(step);best=trial;print('EXCHANGE candidate cover',518-len(best),'new',len(new),'restored',len(step['restored_classes']),flush=True)
         elif r['answer'] is None:unknown.append(trial)
         records.append(r)
-        result={'status':'EXCHANGE_CHAIN_CANDIDATE','source_C16_answered':False,'base_chain_c16_path':str(a.base_chain.resolve().relative_to(ROOT)),'initial_removed':[C[k] for k in initial],'retained_case_count':518-len(best),'removed_case_tuples':[C[k] for k in sorted(best)],'retained_case_tuples':[c for k,c in enumerate(C) if k not in best],'steps':steps,'seed_witnesses':seed_witnesses,'initial_cut_count':seed_count,'cut_count':len(cuts),'records':records,'master_history':master_history,'unknown_candidates':[[C[k] for k in sorted(trial)] for trial in unknown],'stop':stop,'elapsed_seconds':time.monotonic()-start,'scope':'Global proposals with a preference for fewer restorations, no hard exchange radius. Exact coverage requires independent physical replay of base and every successful branch. Unknown no-goods preclude an optimum claim.'}
+        result={'status':'EXCHANGE_CHAIN_CANDIDATE','source_C16_answered':False,'base_chain_c16_path':str(a.base_chain.resolve().relative_to(ROOT)),'initial_removed':[C[k] for k in initial],'retained_case_count':518-len(best),'removed_case_tuples':[C[k] for k in sorted(best)],'retained_case_tuples':[c for k,c in enumerate(C) if k not in best],'steps':steps,'seed_witnesses':seed_witnesses,'initial_cut_count':seed_count,'cut_count':len(cuts),'records':records,'master_history':master_history,'unknown_candidates':prior_unknown+[[C[k] for k in sorted(trial)] for trial in unknown],'stop':stop,'round_start':round_start,'elapsed_seconds':time.monotonic()-start,'scope':'Global proposals with a preference for fewer restorations, no hard exchange radius. Exact coverage requires independent physical replay of base and every successful branch. Unknown no-goods preclude an optimum claim.'}
         a.output.write_text(json.dumps(result,indent=2)+'\n')
         if len(records)%50==0:print(len(records),'proposals best',518-len(best),'cuts',len(cuts),'unknown',len(unknown),'seconds',time.monotonic()-start,flush=True)
 

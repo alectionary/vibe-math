@@ -1,0 +1,114 @@
+{
+  "source_id": "F158",
+  "title": "Extending CDCL to Disjunctions of Parity Equations",
+  "authors": [
+    "Paul Beame",
+    "Glenn Sun"
+  ],
+  "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+  "doi": "10.4230/LIPIcs.SAT.2026.5",
+  "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+  "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+  "pdf_pages": 21,
+  "pdf_bytes": 1226836,
+  "extracted_text_characters": 67531,
+  "retrieval": "Direct publisher PDF; complete body and final reference page verified; local PyMuPDF extraction. Source copies retained outside Git.",
+  "screen_status": "full_text_screened",
+  "sections_screened": "Introduction, definitions/theorems/algorithms, implementation and experiments, conclusion and references; all21pages searched for source questions.",
+  "target_count": 4,
+  "targets": [
+    {
+      "id": "L-F158-parity-heuristic-integration",
+      "title": "Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).",
+      "locator": "Section8, PDFp17, first conclusion direction",
+      "kind": "research_direction",
+      "counts_as_precise_target": false,
+      "gate": "Specify the heuristic variant, input family, resource measure and comparison baseline."
+    },
+    {
+      "id": "L-F158-cnf-specific-parity-branching",
+      "title": "Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.",
+      "locator": "Section8, PDFp17, second conclusion direction",
+      "kind": "research_direction",
+      "counts_as_precise_target": false,
+      "gate": "Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas."
+    },
+    {
+      "id": "L-F158-semantic-1uip",
+      "title": "Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.",
+      "locator": "Section8, PDFp17, theoretical-side paragraph",
+      "kind": "research_direction",
+      "counts_as_precise_target": false,
+      "gate": "Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting."
+    },
+    {
+      "id": "L-F158-parity-clause-minimization",
+      "title": "Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).",
+      "locator": "Section8, PDFp17, final paragraph",
+      "kind": "research_direction",
+      "counts_as_precise_target": false,
+      "gate": "Specify classical minimization semantics and the required faithfulness of the parity extension."
+    }
+  ],
+  "applicability": "General parity-clause reasoning is relevant to our XOR plus compatibility constraints. The solver and proof format are tested separately; no C16 consequence follows from the simulation theorem or benchmark results alone.",
+  "current_status_limit": "No exhaustive present-resolution or Lean search for these directions. Current upstream0.2-dev includes experimental restart options, a partial implementation fact rather than a resolution of the broad source direction.",
+  "software": {
+    "repository": "https://github.com/glenn-sun/xorcle",
+    "commit": "af93ea646a4237958e9925bc684dcd545e68de30",
+    "paper_benchmarked_version": "0.1",
+    "tested_version": "0.2.0-dev-af93ea6",
+    "gf2_commit": "0b09e44fd2c6615a6a1958c480650e207703b84c"
+  },
+  "retrieval_queue_preflight": {
+    "query": "label:fetched,label:restricted,label:needs-human,label:not-found,label:fetch-claimed",
+    "returned_issues": [
+      11,
+      12
+    ],
+    "matching_new_source_identifiers": []
+  },
+  "other_leads": [
+    {
+      "title": "Extending Clause Learning SAT Solvers with Complete Parity Reasoning (extended version)",
+      "url": "https://arxiv.org/abs/1207.0988v2",
+      "outcome": "abstract_metadata_only; body not needed for the selected Xorcle comparison",
+      "question_count": null
+    },
+    {
+      "title": "On SAT representations of XOR constraints",
+      "url": "https://arxiv.org/abs/1309.3060v4",
+      "outcome": "abstract and conference metadata only; conjecture lead not promoted without a full screen",
+      "question_count": null
+    },
+    {
+      "title": "A framework for good SAT translations, with applications to CNF representations of XOR constraints",
+      "url": "https://arxiv.org/abs/1406.7398v2",
+      "outcome": "search lead only; no full-text question count",
+      "question_count": null
+    },
+    {
+      "title": "Simulating Parity Reasoning (extended version)",
+      "outcome": "secondary search lead only; no primary body consulted",
+      "question_count": null
+    },
+    {
+      "title": "SAT-Based Syndrome Decoding and Low-Weight Codewords",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-032-26204-2_12",
+      "outcome": "search lead only; not pursued in this bounded comparison",
+      "question_count": null
+    },
+    {
+      "title": "Approximating Pareto frontiers in stochastic multi-objective optimization via hashing and randomization",
+      "url": "https://link.springer.com/article/10.1007/s10601-026-09410-8",
+      "outcome": "out-of-scope search result; body not consulted and no question screen claimed",
+      "question_count": null
+    }
+  ],
+  "deltas": {
+    "canonical": 4,
+    "eligible": 0,
+    "paper_records": 1,
+    "full_text_screens": 1,
+    "completed_Lean": 0
+  }
+}

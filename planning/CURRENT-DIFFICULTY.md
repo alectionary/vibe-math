@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 28, 2026. Low-confidence planning priors for all 398 entries (217 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 28, 2026. Low-confidence planning priors for all 402 entries (221 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -4934,13 +4934,13 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 
 The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Follow-up: replace isolated residual-entry refinements with a simultaneous projected matrix block. Choose32 independent auxiliary X vectors and an explicit dual auxiliary Z system; independently compute the fixed-anchor residual target rank before a bounded exact compatibility comparison. A rank-r target requires at least r free pairs. Accept only a checked anchored obstruction or a physical128-frame as a completed source case. The87-equation comparison is preserved withUNKNOWN, not promoted to an exclusion.
+First milestone: Follow-up: obtain a checked full-case obstruction at a retained anchor using stronger inverse-matrix information, or an actual original-pool128-pair frame. The tested rank32 block, affine closure, alternative unit witness and native parity solver have not completed a source case. Further cover reductions alone do not estimate the remaining time.
 
-Progress: The current sufficient cover has497 cases, a proper subcover of505 certified by physical CNF regeneration andDRAT replay, using the original16 simultaneous signatures and compatibility. Eight further representatives are unnecessary for coverage; zero full retained anchor cases are completed. Residual-guided full-matrix equations at anchorX03-Z03-h00 reach functional rank87, with physical partial matching witnesses through86 andUNKNOWN at87. Compact models recompute all newly active source edges and treat the fixed anchor separately. A disjoint partial-witness packing proves109 retained classes necessary for this particular16-signature cover criterion; no nonlinear-cover optimum is known. The oldjoint034/034 exclusion and90 support representatives remain. Width16/18, physical88 and Lean status are unchanged; no finishing-time estimate or measured full-search speedup. [Checked artifact](../formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md).
+Progress: Independent physical replay proves a428-case sufficient cover versus497, net69 fewer (13.8833%). It restores class(38,44,9), so it is not a proper subcover of497. A new-class symmetry lemma and nonnested exchange induction justify17 initial normalized proofs and53 exchange branches. The480 intermediate cover is only inclusion minimal for the old16-signature criterion. A rank32 projected residual forces33 total partial pairs and rejects all21 saved smaller witnesses; the source anchor remainsUNKNOWN. Conditional affine closure gives checkable node/pair cuts but no hard-domain contradiction. The alternative witness yields687 cases, worse than428; native-parity solver comparisons areUNKNOWN. Three distinct bounded no-gain rounds trigger early scientific stop at20:17:24UTC. All428 full completions are unresolved, width16/18 and physical88 unchanged; no new Lean completion, global speedup or finishing-time bound. [Checked artifact](../formalization/canonical-width/c16/THEORY-LOOP.md).
 
 Gate: Require a complete anchored-case obstruction or an actual source128-pair candidate before extrapolating finishing time.
 
-Basis: Current source width is16 or18, physical partial frame88. Historical incomplete partner-domain claims remain retracted. Later complete-domain checks exclude all116 twelve-monomial classes; they do not cover unrestricted smaller occupancies. Exact pool completeness, tensor bridges and >=3 thin families per sector are preserved. Three one-sector triple supports and the new joint034/034 case are excluded. A proved optimal12-orbit X-basis hitting cover gives12 normalized frame-anchor cases, all still open. Aggregate residue descent and the tested asymptotic-rank/reciprocal-parity shortcuts do not decide the source problem. No Lean completion or justified discovery-time estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Basis: Current source width is16 or18, physical partial frame88. Historical incomplete partner-domain claims remain retracted. Later complete-domain checks exclude all116 twelve-monomial classes; they do not cover unrestricted smaller occupancies. Exact pool completeness, tensor bridges and >=3 thin families per sector are preserved. Three one-sector triple supports and the new joint034/034 case are excluded. A proved optimal12-orbit X-basis hitting cover gives12 normalized frame-anchor cases, all still open. Aggregate residue descent and the tested asymptotic-rank/reciprocal-parity shortcuts do not decide the source problem. No Lean completion or justified discovery-time estimate. The later paired-basis and nonlinear criteria now prove a428-case sufficient selected-pair cover; every full completion remains open. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 
@@ -6189,3 +6189,67 @@ First milestone: Freeze coefficient field, arithmetic model and rank-to-exponent
 Gate: Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy.
 
 Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent).
+
+### L-F158-parity-heuristic-integration
+
+Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the heuristic variant, input family, resource measure and comparison baseline.
+
+Gate: Specify the heuristic variant, input family, resource measure and comparison baseline.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-parity-heuristic-integration).
+
+### L-F158-cnf-specific-parity-branching
+
+Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas.
+
+Gate: Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-cnf-specific-parity-branching).
+
+### L-F158-semantic-1uip
+
+Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting.
+
+Gate: Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-semantic-1uip).
+
+### L-F158-parity-clause-minimization
+
+Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify classical minimization semantics and the required faithfulness of the parity extension.
+
+Gate: Specify classical minimization semantics and the required faithfulness of the parity extension.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-parity-clause-minimization).
