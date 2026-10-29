@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 28, 2026. Low-confidence planning priors for all 408 entries (227 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 29, 2026. Low-confidence planning priors for all 424 entries (243 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -6349,3 +6349,259 @@ First milestone: Historical implementation direction, not an unsolved mathematic
 Gate: Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open.
 
 Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions).
+
+### L-F164-filtering-search-guarantees
+
+Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-filtering-search-guarantees).
+
+### L-F164-side-constraint-applications
+
+Develop solver integrations for richer subgraph variants and application side constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-side-constraint-applications).
+
+### L-F164-symmetry-implementation
+
+Improve practical input-specific symmetry handling without costly external dependencies.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-symmetry-implementation).
+
+### L-F164-faster-exact-counting
+
+Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-faster-exact-counting).
+
+### L-F164-approximate-counting
+
+Implement approximate counting for subgraph instances.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-approximate-counting).
+
+### L-F164-uniform-sampling
+
+Find practical uniform sampling methods that avoid full subgraph enumeration.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-uniform-sampling).
+
+### L-F164-special-pattern-detection
+
+Detect easy pattern classes and select specialized algorithms automatically.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-special-pattern-detection).
+
+### L-F164-proof-logging
+
+Extend independently checkable proof logging for strong subgraph inference.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Historical broad direction; modern Glasgow proof support is inspected, but no claim that every strong inference or proof feature is settled.
+
+Gate: Historical broad direction; modern Glasgow proof support is inspected, but no claim that every strong inference or proof feature is settled.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-proof-logging).
+
+### L-F164-automatic-configuration
+
+Choose supplemental graphs and solver configurations per instance.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-automatic-configuration).
+
+### L-F164-application-benchmarks
+
+Collect diverse application instances for subgraph-solver benchmarking.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-application-benchmarks).
+
+### L-F165-single-clause-inprocessing
+
+Combine incremental inprocessing efficiently with external clauses added individually during search.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-single-clause-inprocessing).
+
+### L-F165-external-proof-production
+
+Extend and evaluate proof production for external propagators and different external-clause kinds.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Historical interface/proof direction, related to L-F161-proof-producing-cdcl-t; not asserted to remain wholly unresolved in2026.
+
+Gate: Historical interface/proof direction, related to L-F161-proof-producing-cdcl-t; not asserted to remain wholly unresolved in2026.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-external-proof-production).
+
+### L-F165-restart-backtrack-control
+
+Investigate external control of restarts and conflict backtracking.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-restart-backtrack-control).
+
+### L-F165-solver-state-access
+
+Expose useful solver statistics and variable or clause scores through the interface.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-solver-state-access).
+
+### L-F165-further-applications
+
+Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-further-applications).
+
+### L-F165-cvc5-tuning
+
+Tune cvc5 internals for the IPASIR-UP integration.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-cvc5-tuning).

@@ -39,7 +39,7 @@ def export(a):
 def solve(a):
     from pysat.formula import CNF
     from pysat.solvers import Solver
-    from conditional_span_oracle import ConditionalSpanOracle
+    from bounded_span_oracle import BoundedSpanOracle
     X,Z,A=physical();meta=json.loads(a.instance.read_text());raw=gzip.decompress((a.instance.parent/meta['input_file']).read_bytes());assert hashlib.sha256(raw).hexdigest()==meta['input_sha256'];cnf=CNF(from_string=raw.decode());start=time.monotonic();d={'status':'RUNNING','answer':None,'source_C16_answered':False,'full_source_model':True,'anchor':meta['anchor'],'instance_c16_path':str(a.instance.resolve().relative_to(ROOT)),'input_sha256':meta['input_sha256'],'span_enabled':a.variant=='span','outer_wall_seconds':a.seconds,'span_clause_limit':a.clause_limit}
     def progress(stats):
         d.update(oracle_statistics=stats,elapsed_solve_seconds=time.monotonic()-start);temp=a.output.with_suffix('.checkpoint.tmp');temp.write_text(json.dumps(d,indent=2)+'\n');temp.replace(a.output)
@@ -61,7 +61,7 @@ def solve(a):
     observer=None
     with Solver(name='cadical195',bootstrap_with=cnf.clauses) as solver:
         if a.variant=='span':
-            assert a.native_library;d['native_library_sha256']=sha(a.native_library);oracle=ConditionalSpanOracle(X,Z,a.native_library,a.output.with_suffix('.lemmas.jsonl'),progress=progress,limit=a.clause_limit);solver.connect_propagator(oracle)
+            assert a.native_library;d['native_library_sha256']=sha(a.native_library);oracle=BoundedSpanOracle(X,Z,a.native_library,a.output.with_suffix('.lemmas.jsonl'),progress=progress,limit=a.clause_limit);solver.connect_propagator(oracle)
         else:
             observer=ObserveOnly();solver.connect_propagator(observer)
         for v in range(1,1441):solver.observe(v)

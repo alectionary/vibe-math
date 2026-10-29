@@ -1427,6 +1427,8 @@ OpenAI. commit7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a, inspected2026-10-27. [Pr
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).
 
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/strategy-results/literature-ledger.json).
+
 ## PythonFlintIntervalSemantics2026 — python-flint0.9.0 general concepts and interval predicates
 
 python-flint developers. 0.9.0 documentation, inspected2026-10-27. [Primary source](https://python-flint.readthedocs.io/en/stable/general.html).
@@ -1576,3 +1578,120 @@ Mate Soos. Author blog13September2026. [Primary source](https://www.msoos.org/20
 - Comparison limit: No source C16 conclusion or speedup follows from external benchmarks
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/literature.json).
+
+## F164 — The Glasgow Subgraph Solver: Using Constraint Programming to Tackle Hard Subgraph Isomorphism Problem Variants
+
+Ciaran McCreesh; Patrick Prosser; James Trimble. Author ICGT2020 manuscript,9pages. [Primary source](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full document; question locators in screen ledger.
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F164-filtering-search-guarantees](OPEN-PROBLEMS.md#l-f164-filtering-search-guarantees), [L-F164-side-constraint-applications](OPEN-PROBLEMS.md#l-f164-side-constraint-applications), [L-F164-symmetry-implementation](OPEN-PROBLEMS.md#l-f164-symmetry-implementation), [L-F164-faster-exact-counting](OPEN-PROBLEMS.md#l-f164-faster-exact-counting), [L-F164-approximate-counting](OPEN-PROBLEMS.md#l-f164-approximate-counting), [L-F164-uniform-sampling](OPEN-PROBLEMS.md#l-f164-uniform-sampling), [L-F164-special-pattern-detection](OPEN-PROBLEMS.md#l-f164-special-pattern-detection), [L-F164-proof-logging](OPEN-PROBLEMS.md#l-f164-proof-logging), [L-F164-automatic-configuration](OPEN-PROBLEMS.md#l-f164-automatic-configuration), [L-F164-application-benchmarks](OPEN-PROBLEMS.md#l-f164-application-benchmarks).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 10 linked canonical targets.
+
+## F165 — IPASIR-UP: User Propagators for CDCL
+
+Katalin Fazekas; Aina Niemetz; Mathias Preiner; Markus Kirchweger; Stefan Szeider; Armin Biere. Publisher SAT2023 version,13pages. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full document; question locators in screen ledger.
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F165-single-clause-inprocessing](OPEN-PROBLEMS.md#l-f165-single-clause-inprocessing), [L-F165-external-proof-production](OPEN-PROBLEMS.md#l-f165-external-proof-production), [L-F165-restart-backtrack-control](OPEN-PROBLEMS.md#l-f165-restart-backtrack-control), [L-F165-solver-state-access](OPEN-PROBLEMS.md#l-f165-solver-state-access), [L-F165-further-applications](OPEN-PROBLEMS.md#l-f165-further-applications), [L-F165-cvc5-tuning](OPEN-PROBLEMS.md#l-f165-cvc5-tuning).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 6 linked canonical targets.
+
+## F166 — A New Look at BDDs for Pseudo-Boolean Constraints
+
+Ignasi Abío; Robert Nieuwenhuis; Albert Oliveras; Enric Rodríguez-Carbonell; Valentin Mayer-Eichberger. JAIR45,2012; arXiv:1401.5860v1,23January2014. [Primary source](https://arxiv.org/abs/1401.5860).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F167 — On CNF Encodings of Decision Diagrams
+
+Ignasi Abío; Graeme Gange; Valentin Mayer-Eichberger; Peter J. Stuckey. CPAIOR2016,pp1–17,DOI10.1007/978-3-319-33954-2_1. [Primary source](https://research.monash.edu/en/publications/on-cnf-encodings-of-decision-diagrams/).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F168 — Compact-Table: Efficiently Filtering Table Constraints with Reversible Sparse Bit-Sets
+
+Jordan Demeulenaere; Renaud Hartert; Christophe Lecoutre; Guillaume Perez; Laurent Perron; Jean-Charles Régin; Pierre Schaus. arXiv:1604.06641v1,22April2016. [Primary source](https://arxiv.org/abs/1604.06641).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F169 — Quantum nonlocality without entanglement depending on nonzero prior probabilities in optimal unambiguous discrimination
+
+Donghoon Ha; Jeong San Kim. arXiv:2105.12284v1,26May2021; Scientific Reports DOI10.1038/s41598-021-97103-y. [Primary source](https://arxiv.org/abs/2105.12284).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F170 — Logic-Based Benders Decomposition
+
+John N. Hooker; Greger Ottosson. Mathematical Programming96,33–60,2003,DOI10.1007/s10107-003-0375-9. [Primary source](https://johnhooker.tepper.cmu.edu/papers.html).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F171 — Propagation via Lazy Clause Generation
+
+Olga Ohrimenko; Peter J. Stuckey; Michael Codish. Constraints14(3),357–391,2009,DOI10.1007/s10601-008-9064-x. [Primary source](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F172 — Nonseparating Cocircuits in Binary Matroids
+
+Donald K. Wagner. SIAM J.Discrete Math.35(4),3030–3049,publishedonline21December2021. [Primary source](https://epubs.siam.org/doi/10.1137/21M139339X).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
