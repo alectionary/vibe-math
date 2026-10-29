@@ -1,0 +1,56 @@
+{
+  "status": "FROZEN_BEFORE_SOLVING",
+  "frozen_utc": "2026-10-29T06:11:14.818143+00:00",
+  "source_C16_answered": false,
+  "domain_c16_path": "strategy-results/domain-single-415.json",
+  "domain_sha256": "55ed592b8f89b022930af0395b4a9c9cfa17d5a4c232fc292e3e944b33538e43",
+  "parent_cover_c16_path": "strategy-results/cover-416.json",
+  "parent_cover_sha256": "b7ced30d4be08d78c9f1701ef923c486a32fc854ccc2da1b8cedbcac4305df12",
+  "cases": [
+    [
+      26,
+      32,
+      1
+    ]
+  ],
+  "discovery_seconds_per_anchor": 600.0,
+  "proof_seconds_per_anchor": 300.0,
+  "verification_seconds_per_anchor": 300,
+  "workers": 1,
+  "seed_dependencies": [
+    {
+      "c16_path": "strategy-results/closure-cover-extension.json",
+      "sha256": "9000b5c535bfbf3f27796e2d9474ca550111b2dc4bebd0461d01c2db125d1930"
+    },
+    {
+      "c16_path": "strategy-results/closure-global.json",
+      "sha256": "b8b28aa53174d615c7ea91505cf4d34c331dc47aa7b324b6124945f5440efbdd"
+    },
+    {
+      "c16_path": "strategy-results/matroid-closure-global.json",
+      "sha256": "15fa2b7b299e793f2bcdcb0a9975a23e17464d522344a35c5a6f18d35c065c47"
+    },
+    {
+      "c16_path": "strategy-results/phase-matroid-closure-global.json",
+      "sha256": "f9c68555d93a48b73a683ef47b3ca801f1469efd65b61074b06eb870fe9ec983"
+    },
+    {
+      "c16_path": "strategy-results/rank-global.json",
+      "sha256": "4be9860770c3709cd039224a69f19eb7aad376a74db0878a44bb071442dbd240"
+    },
+    {
+      "c16_path": "strategy-results/domain-batch-408-rescoped.json",
+      "sha256": "d2c0fa925e403cc9f6b420c778b1bc144ca79234b7d4e17d732fa40ebed9c5b9"
+    }
+  ],
+  "native_library_sha256": "25101ca31f545e25b1478aa16b3128bdceff1a1b283b1faa220958c61733dc56",
+  "source_sha256": {
+    "kept_anchor_domain_signature.py": "7d6600beff204ac3a9d4bc77b6e217c231e3859048fd6b33425f5f107cd0d5dc",
+    "verify_kept_anchor_domain_signature.py": "7c5391161d6a5f5cc27495262312ede28cc71a57f98065c8923ef096f04914b5",
+    "verify_strategy_cover_bindings.py": "5788f436b21215ff336eb2289032e59aca98be3c7cb7583c3cdd62b481ca9332",
+    "fresh_strategy_proof.py": "d0acbc0a7b064c4fa92a54cc98630800b305520cace431be4da6698bef9dd0a8",
+    "domain_forced_propagation_native.cpp": "7fd3ff1b27e2ac133adbd3b29e63def3e0a8e880fc7f7c0368a0717607b43bea",
+    "domain_forced_propagation.h": "01ee6ff8807dd5478b896f33ecb4bfcafc3d91611ea6902df43814eb0b10a731"
+  },
+  "combination_rule": "Every accepted anchor is proved in the same common wider domain. Any subset of successful anchors can be removed together; discarded candidates remain retained. No domain clause is transferred to a wider domain without replay."
+}
