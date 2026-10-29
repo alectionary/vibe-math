@@ -109,6 +109,38 @@ simulation, an assumption we supplied, or a figure taken from a cited source.
 
 ## Links and citations
 
+Every replication note must have in-text scholarly citations and a References
+section, not just software hyperlinks or an uncited reading list. Cite the
+replicated work at the first substantive attribution and give page, table,
+equation, or appendix locators for borrowed numbers, designs, and formulas.
+Table captions must identify the source of published values separately from
+our calculations. Use one consistent citation style; author--year is a useful
+default unless the venue specifies another.
+
+Cite primary methodological literature for estimators, uncertainty calculations,
+multiple-testing procedures, and substantive interpretations actually used.
+Use official version-specific documentation for software defaults, plus the
+package's recommended academic citation where available. A software link and
+version do not replace a method citation. Do not add unrelated literature to
+inflate the bibliography. Distinguish our derivations and diagnostics from
+published results; a related citation does not validate a new assumption.
+
+Verify author, year, title, venue, and DOI or stable URL against the original
+publication, publisher, institutional record, or installed package citation
+metadata. Read the relevant source passage before attaching it to a claim.
+If only a secondary attribution or abstract was available, record that limit;
+never imply full-text verification or copy an unverified reference list.
+
+Before delivery, audit claim-to-source coverage and record it in the compliance
+ledger. Check that each citation resolves, every reference is used, links and
+source locators are correct, and the rendered bibliography is readable. Keep
+editable bibliography sources in the reproducible bundle and document the
+build command. For ordinary LaTeX cite/citep/citet with bibitem or BibTeX keys,
+run `scripts/check_citations.py PAPER --references REFERENCES --log BUILD_LOG`
+from this skill directory. This structural check does not establish that a
+source supports a claim; the source-reading audit remains mandatory. Other
+formats need equivalent checks and a recorded result.
+
 Code and data links in papers point at `master`.
 
 Cite every piece of software used, with its exact version, and link its CRAN

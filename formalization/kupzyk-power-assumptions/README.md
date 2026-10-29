@@ -55,8 +55,16 @@ The parser validates all29 normal/skew frequency rows against their intended clu
 
 The source BW extension to missing/unequal observations is derived as M-J-2, not verified by a matching SAS output fixture. Alternative df rules and original J-2 are computed explicitly. Statistical models use R mixed-model packages rather than forcing the source model into lavaan. For exemplary cells, dropout SD measures variation between designs, not confidence in our mean; original single-mask uncertainty is not divided by our mask count. All cells have limited reconstruction scope even when numbers match exactly.
 
-No skill changes, author contact, pushes, PRs, merges, or C16 work occurred.
+The computational run made no skill changes. A later user-authorized editorial revision strengthened citation requirements and added the scholarly references. No author contact, pushes, PRs, merges, or C16 work occurred.
 
 ## Source-evidence companion
 
 `kupzyk-source-evidence-appendix.pdf` is a separate9-page companion prepared and visually reviewed by the parent source reviewer, containing16 crops rendered at600 dpi. It includes the title/adviser page, source tables and code, and Table3 (.88187). It accompanies this report but is not embedded in this executor bundle; no blocked transfer was retried.
+
+## Citation revision
+
+`paper/references.tex` is the editable author–year bibliography, included by the generated manuscript. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. After building, run:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/report.log
+```
