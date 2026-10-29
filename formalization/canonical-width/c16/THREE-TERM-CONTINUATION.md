@@ -130,7 +130,8 @@ completion theorem.
 The small controls passed 2,019 native-versus-literal existence comparisons and
 544 independently checked certificates. Each sampled small-pool query exhausts
 all binary witness vectors. Known identity dual frames remain accepted. Four
-explicit examples distinguish order three from complete order two, including
+recorded control runs (three distinct settings; the four-dimensional empty-J
+case is repeated) distinguish order three from complete order two, including
 nonempty J and a direct-sum extension. Adding the missing unit vectors restores
 a known completion. This prevents a vacuous test that rejects every pool.
 
@@ -217,9 +218,13 @@ The native code was rebuilt from clean detached revision `2b2b7e0`. Fresh small
 controls and the independent complete source-gate replay passed; their receipts
 are in `three-term-results/clean-gate-replay/`. The 19-case propagation overlap
 and the deterministic trial summary were also rerun from clean revision
-`7c922a9`. The three final compact inputs are independently reconstructed from
-that revision by `replay_sparse_trials.py`; the final verification receipt records
-its outcome rather than relying on the solver's checkpoint status.
+`7c922a9`. All three final compact inputs independently reconstruct from that revision
+with `replay_sparse_trials.py`. Their source cuts, physical partial matchings and
+final CNFs pass, with no UNSAT/DRAT conclusion. A separate integration control,
+replayed from clean revision `ddaf569`, appends all 27 new sparse certificates
+and emits 11 additional clauses in the restricted model. Independent source and
+CNF reconstruction passes for that path too. This control makes no solver call
+and is not a fourth search trial. See `three-term-results/verification.json`.
 
 | Requirement | Evidence | Remaining limitation |
 |---|---|---|
