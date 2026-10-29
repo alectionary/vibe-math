@@ -1,0 +1,982 @@
+c CMS SHA1: 03954f7f7815ea3984774c95a66e7c224cd25952
+c CaDiCaL SHA1: 818c9562f114b315a9246ced943b66b60b38e8fb
+c CadiBack SHA1: 445ddc2f2b5e54421af64e0652c2eb8444175322
+c CryptoMiniSat version 5.17.0
+c CMS compilation env CMAKE_CXX_COMPILER = /usr/bin/c++ | CMAKE_CXX_FLAGS =  -fno-stack-protector -msse4.2 -mpopcnt -mpclmul -Wno-bitfield-constant-conversion -Wnull-dereference -Wdouble-promotion -Wshadow -Wformat=2 -Wextra-semi -pedantic | COMPILE_DEFINES =  -DNDEBUG -D_FORTIFY_SOURCE=0 -DUSE_ZLIB -DUSE_CADIBACK | BUILD_SHARED_LIBS = OFF | ONLY_SIMPLE =  | STATS = OFF | SQLITE3_FOUND =  | ZLIB_FOUND = TRUE | VALGRIND_FOUND =  | ENABLE_TESTING = OFF | SLOW_DEBUG = OFF | ENABLE_ASSERTIONS = OFF | PYTHON_EXECUTABLE =  | PYTHON_LIBRARY =  | PYTHON_INCLUDE_DIRS =  | MY_TARGETS =  | LARGEMEM = OFF | LIMITMEM = OFF | 
+c Using VMTF, picosat, CaDiCaL, and CadiBack code by Armin Biere
+c CMS is MIT licensed
+c Using code from 'When Boolean Satisfiability Meets Gauss-E. in a Simplex Way'
+c       by C.-S. Han and J.-H. Roland Jiang in CAV 2012. Fixes by M. Soos
+c Using CCAnr from 'CCAnr: A Conf. Checking Based Local Search Solver [...]'
+c       by Shaowei Cai, Chuan Luo, and Kaile Su, SAT 2015
+c Using Oracle code from 'Integrating Tree Decompositions [...]'
+c       by Tuukka Korhonen and Matti Jarvisalo, CP 2021
+c Using xnfSAT by @Vtec234 from 'XOR Local Search for
+c       Boolean Brent Equations' by W. Nawrocki, et al, SAT 2021
+c Using code extensively lifted via LLMs from CaDiCaL, originally by Armin Biere et al.
+c Executed with command line: /private/tmp/c16-cms-20261028/cryptominisat5 --maxtime 60 --threads 1 --verb 1 --autodisablegauss 0 --minmatrixrows 1 --maxmatrixrows 100000 --maxmatrixcols 100000 --maxnummatrices 1000000 --presimp 1 --xlrup 1 /private/tmp/c16-hard-native-compact.cnf /private/tmp/c16-hard-native-compact-proof.xlrup
+c Reading file '/private/tmp/c16-hard-native-compact.cnf'
+c -- header says num vars:           5009
+c -- header says num clauses:       28273
+c -- added: 28257 clauses, 16 xor clauses, 5009 vars
+c Parsing time: 0.01 s
+c [sls] 28273 cls, minimum 5 (new global minimum) T: 0.00
+c [sls] 28273 cls, minimum 4 (new global minimum) T: 0.01
+c --> Executing strategy token: [93msub-impl[0m
+c [simp-stats] bef [95msub-impl              [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.024 depth 0
+c [impl-sub] bin: 0 T: 0.00 T-out: N w-visit: 10018
+c [simp-stats] aft [32msub-impl              [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.025 T-step: 0.00 depth 0
+c Executing OCC strategy token(s): [93mocc-backw-sub[0m
+c [occ] Linked in IRRED BIN by default: 26964
+c [occ] Linked in RED   BIN by default: 0
+c Executing OCC strategy token: [93mocc-backw-sub[0m
+c [simp-stats] bef [95mocc-backw-sub         [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.026 depth 0
+c [occ-backw-sub-long-w-long] rem cl: 0 tried: 1293/1293 (100.0%) T: 0.00 T-out: N T-r: 99.93%
+c [simp-stats] aft [32mocc-backw-sub         [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.027 T-step: 0.00 depth 0
+c [simp-stats] bef [95mocc-finishup          [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.027 depth 0
+c [simp-stats] aft [32mocc-finishup          [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.027 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mscc-vrepl[0m
+c [simp-stats] bef [95mscc-vrepl             [0m irred_bins 26964 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 5009 elimed_vars 0 replaced_vars 0 mem_MB 0 T: 0.027 depth 0
+c [scc] new: 19 BP 0M T: 0.00
+c [vrep] vars 19 lits 409 rem-bin-cls 76 rem-long-cls 0 BP 0M T: 0.00
+c [simp-stats] aft [32mscc-vrepl             [0m irred_bins [32m26926[0m irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars [32m4990[0m elimed_vars 0 replaced_vars [91m19[0m mem_MB 0 T: 0.028 T-step: 0.00 depth 0
+c Executing OCC strategy token(s): [93mocc-sweep,occ-bve,occ-xor[0m
+c [occ] Linked in IRRED BIN by default: 26926
+c [occ] Linked in RED   BIN by default: 0
+c Executing OCC strategy token: [93mocc-sweep[0m
+c [simp-stats] bef [95mocc-sweep             [0m irred_bins 26926 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 4990 elimed_vars 0 replaced_vars 19 mem_MB 0 T: 0.029 depth 0
+c [occ-sweep] swept: 3663/4989 units: 0 equivs: 0 epoch: 0 solves: 32407 flips: 1161218 T: 0.22 T-out: Y T-r: -0.00%
+c [simp-stats] aft [32mocc-sweep             [0m irred_bins 26926 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 4990 elimed_vars 0 replaced_vars 19 mem_MB 0 T: 0.251 T-step: 0.22 depth 0
+c Executing OCC strategy token: [93mocc-bve[0m
+c [simp-stats] bef [95mocc-bve               [0m irred_bins 26926 irred_long_cls 1293 irred_long_lits 5030 units 0
+c [simp-stats]                            free_vars 4990 elimed_vars 0 replaced_vars 19 mem_MB 0 T: 0.251 depth 0
+c [occ-empty-res] Empty resolvent elimed: 1 T: 0.00 T-out: N
+c [occ-bve] irreg-gate-find lits: 10.04 / 6300.00 ticksM: 0.02
+c [occ-bve-wave] 1 tried 4929 elimed 2541 touched 4985 re-added 2386 heap 2386
+c [occ-bve] irreg-gate-find lits: 152.34 / 6300.00 ticksM: 0.17
+c [occ-bve-wave] 2 tried 2386 elimed 42 touched 1199 re-added 1134 heap 1134
+c [occ-bve] turning off kitten-based irreg gate detection, added lits: 210K
+c [occ-bve-wave] 3 tried 1134 elimed 39 touched 1114 re-added 1061 heap 1061
+c [occ-bve-wave] 4 tried 1061 elimed 24 touched 919 re-added 883 heap 883
+c [occ-bve-wave] 5 tried 883 elimed 16 touched 773 re-added 745 heap 745
+c [occ-bve-wave] 6 tried 745 elimed 12 touched 622 re-added 600 heap 600
+c [occ-bve-wave] 7 tried 600 elimed 10 touched 538 re-added 520 heap 520
+c [occ-bve-wave] 8 tried 520 elimed 9 touched 507 re-added 489 heap 489
+c [occ-bve-wave] 9 tried 489 elimed 6 touched 366 re-added 354 heap 354
+c [occ-bve-wave] 10 tried 354 elimed 5 touched 304 re-added 294 heap 294
+c [occ-bve-wave] 11 tried 294 elimed 5 touched 294 re-added 284 heap 284
+c [occ-bve-wave] 12 tried 284 elimed 3 touched 176 re-added 169 heap 169
+c [occ-bve-wave] 13 tried 169 elimed 2 touched 118 re-added 114 heap 114
+c [occ-bve-wave] 14 tried 114 elimed 1 touched 60 re-added 58 heap 58
+c [occ-bve-wave] 15 tried 58 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 0 v-elim 2715 -> 2274 vars 23669 cls cl_inc_rate: 0.88 var_dec_rate: 2.19
+c [occ-bve-round] 1 grow 0 tried 14020 elimed 2715 (tot 2715) cls 26967->23669 (init 26967, d -3298) vars 4989->2274 T: 0.60
+c [occ-bve-why] sched: seen 5009 added 4929 skip-cannot-elim 80 skip-not-cand 0
+c [occ-bve-why] test: entered 14020 ok-gate 253 ok-nogate 2462 pure 0
+c [occ-bve-why] rej: occ-lim 0 (avg max/min occ 0.0/0.0) cls-too-long 0 too-many-res 10823 (avg lim 31.1) res-too-large 482 (avg sz 111.2) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 6882 ite 0 xor 0 irreg 0
+c [occ-bve] new elimination bound 1
+c [occ-bve-wave] 1 tried 2214 elimed 63 touched 861 re-added 775 heap 775
+c [occ-bve-wave] 2 tried 775 elimed 10 touched 575 re-added 555 heap 555
+c [occ-bve-wave] 3 tried 555 elimed 5 touched 322 re-added 312 heap 312
+c [occ-bve-wave] 4 tried 312 elimed 4 touched 269 re-added 261 heap 261
+c [occ-bve-wave] 5 tried 261 elimed 3 touched 215 re-added 209 heap 209
+c [occ-bve-wave] 6 tried 209 elimed 2 touched 134 re-added 130 heap 130
+c [occ-bve-wave] 7 tried 130 elimed 1 touched 65 re-added 63 heap 63
+c [occ-bve-wave] 8 tried 63 elimed 1 touched 64 re-added 62 heap 62
+c [occ-bve-wave] 9 tried 62 elimed 1 touched 63 re-added 61 heap 61
+c [occ-bve-wave] 10 tried 61 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 1 v-elim 90 -> 2184 vars 23713 cls cl_inc_rate: 1.0 var_dec_rate: 1.0
+c [occ-bve-round] 2 grow 1 tried 18662 elimed 90 (tot 2805) cls 23669->23713 (init 26967, d 44) vars 2274->2184 T: 0.70
+c [occ-bve-why] sched: seen 5009 added 2214 skip-cannot-elim 2795 skip-not-cand 0
+c [occ-bve-why] test: entered 4642 ok-gate 44 ok-nogate 46 pure 0
+c [occ-bve-why] rej: occ-lim 0 (avg max/min occ 0.0/0.0) cls-too-long 0 too-many-res 4295 (avg lim 42.4) res-too-large 257 (avg sz 111.3) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 2416 ite 0 xor 0 irreg 0
+c [occ-bve] new elimination bound 2
+c [occ-bve-wave] 1 tried 2124 elimed 2 touched 77 re-added 74 heap 74
+c [occ-bve-wave] 2 tried 74 elimed 1 touched 63 re-added 61 heap 61
+c [occ-bve-wave] 3 tried 61 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 2 v-elim 3 -> 2181 vars 23709 cls cl_inc_rate: 1.0 var_dec_rate: 1.0
+c [occ-bve-round] 3 grow 2 tried   20K elimed 3 (tot 2808) cls 23713->23709 (init 26967, d -4) vars 2184->2181 T: 0.71
+c [occ-bve-why] sched: seen 5009 added 2124 skip-cannot-elim 2885 skip-not-cand 0
+c [occ-bve-why] test: entered 2259 ok-gate 3 ok-nogate 0 pure 0
+c [occ-bve-why] rej: occ-lim 0 (avg max/min occ 0.0/0.0) cls-too-long 0 too-many-res 2037 (avg lim 35.6) res-too-large 219 (avg sz 111.0) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 907 ite 0 xor 0 irreg 0
+c [occ-bve] new elimination bound 4
+c [occ-bve-wave] 1 tried 2121 elimed 284 touched 1590 re-added 1288 heap 1288
+c [occ-bve-wave] 2 tried 1288 elimed 5 touched 328 re-added 318 heap 318
+c [occ-bve-wave] 3 tried 318 elimed 3 touched 204 re-added 198 heap 198
+c [occ-bve-wave] 4 tried 198 elimed 2 touched 140 re-added 136 heap 136
+c [occ-bve-wave] 5 tried 136 elimed 1 touched 72 re-added 70 heap 70
+c [occ-bve-wave] 6 tried 70 elimed 1 touched 70 re-added 67 heap 67
+c [occ-bve-wave] 7 tried 67 elimed 1 touched 68 re-added 66 heap 66
+c [occ-bve-wave] 8 tried 66 elimed 1 touched 69 re-added 67 heap 67
+c [occ-bve-wave] 9 tried 67 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 4 v-elim 298 -> 1883 vars 24514 cls cl_inc_rate: 1.0 var_dec_rate: 1.2
+c [occ-bve-round] 4 grow 4 tried   25K elimed 298 (tot 3106) cls 23709->24514 (init 26967, d 805) vars 2181->1883 T: 0.80
+c [occ-bve-why] sched: seen 5009 added 2121 skip-cannot-elim 2888 skip-not-cand 0
+c [occ-bve-why] test: entered 4331 ok-gate 21 ok-nogate 277 pure 0
+c [occ-bve-why] rej: occ-lim 2 (avg max/min occ 132.5/79.5) cls-too-long 0 too-many-res 3651 (avg lim 51.1) res-too-large 380 (avg sz 111.0) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 2054 ite 0 xor 0 irreg 0
+c [occ-bve] new elimination bound 8
+c [occ-bve-wave] 1 tried 1823 elimed 113 touched 1174 re-added 1042 heap 1042
+c [occ-bve-wave] 2 tried 1042 elimed 12 touched 652 re-added 630 heap 630
+c [occ-bve-wave] 3 tried 630 elimed 7 touched 459 re-added 445 heap 445
+c [occ-bve-wave] 4 tried 445 elimed 8 touched 460 re-added 445 heap 445
+c [occ-bve-wave] 5 tried 445 elimed 5 touched 356 re-added 346 heap 346
+c [occ-bve-wave] 6 tried 346 elimed 4 touched 280 re-added 272 heap 272
+c [occ-bve-wave] 7 tried 272 elimed 2 touched 158 re-added 154 heap 154
+c [occ-bve-wave] 8 tried 154 elimed 2 touched 156 re-added 152 heap 152
+c [occ-bve-wave] 9 tried 152 elimed 2 touched 151 re-added 147 heap 147
+c [occ-bve-wave] 10 tried 147 elimed 1 touched 79 re-added 77 heap 77
+c [occ-bve-wave] 11 tried 77 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 8 v-elim 156 -> 1727 vars 25257 cls cl_inc_rate: 1.0 var_dec_rate: 1.1
+c [occ-bve-round] 5 grow 8 tried   30K elimed 156 (tot 3262) cls 24514->25257 (init 26967, d 743) vars 1883->1727 T: 1.05
+c [occ-bve-why] sched: seen 5009 added 1823 skip-cannot-elim 3186 skip-not-cand 0
+c [occ-bve-why] test: entered 5533 ok-gate 56 ok-nogate 100 pure 0
+c [occ-bve-why] rej: occ-lim 83 (avg max/min occ 142.3/94.2) cls-too-long 0 too-many-res 4950 (avg lim 72.0) res-too-large 344 (avg sz 110.8) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 3056 ite 0 xor 0 irreg 0
+c [occ-bve] new elimination bound 16
+c [occ-bve-wave] 1 tried 1667 elimed 158 touched 1332 re-added 1150 heap 1150
+c [occ-bve-wave] 2 tried 1150 elimed 9 touched 452 re-added 433 heap 433
+c [occ-bve-wave] 3 tried 433 elimed 4 touched 254 re-added 246 heap 246
+c [occ-bve-wave] 4 tried 246 elimed 3 touched 206 re-added 199 heap 199
+c [occ-bve-wave] 5 tried 199 elimed 2 touched 145 re-added 141 heap 141
+c [occ-bve-wave] 6 tried 141 elimed 2 touched 147 re-added 143 heap 143
+c [occ-bve-wave] 7 tried 143 elimed 1 touched 87 re-added 85 heap 85
+c [occ-bve-wave] 8 tried 85 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 16 v-elim 179 -> 1548 vars 27303 cls cl_inc_rate: 1.1 var_dec_rate: 1.1
+c [occ-bve-round] 6 grow 16 tried   34K elimed 179 (tot 3441) cls 25257->27303 (init 26967, d 2046) vars 1727->1548 T: 1.29
+c [occ-bve-why] sched: seen 5009 added 1667 skip-cannot-elim 3342 skip-not-cand 0
+c [occ-bve-why] test: entered 4064 ok-gate 33 ok-nogate 146 pure 0
+c [occ-bve-why] rej: occ-lim 187 (avg max/min occ 156.0/111.5) cls-too-long 0 too-many-res 3291 (avg lim 94.6) res-too-large 407 (avg sz 110.9) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 2088 ite 0 xor 0 irreg 0
+c [occ-bve-round] stop: cls 27303 over init 26967
+c [occ-bve] tried:   34K v-elim:  3441 free-vars: 1548 T: 1.29 T-out: N T-r: 99.54%
+c [occur] link-in T: 0.00 cleanup T: 0.00 overhead T: 0.00
+c [occ-xor-bve] elimed: 0 T: 0.00 T-out: N
+c [simp-stats] aft [32mocc-bve               [0m irred_bins [32m22775[0m irred_long_cls [91m4528[0m irred_long_lits [91m57537[0m units 0
+c [simp-stats]                            free_vars [32m1548[0m elimed_vars [91m3442[0m replaced_vars 19 mem_MB 0 T: 1.537 T-step: 1.29 depth 0
+c Executing OCC strategy token: [93mocc-xor[0m
+c [simp-stats] bef [95mocc-xor               [0m irred_bins 22775 irred_long_cls 4528 irred_long_lits 57537 units 0
+c [simp-stats]                            free_vars 1548 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 1.537 depth 0
+c [occ-xor] sort occur list T: 0.00
+c [occ-xor] found      0 T: 0.00 T-out: N T-r: 99.99%
+c [simp-stats] aft [32mocc-xor               [0m irred_bins 22775 irred_long_cls 4528 irred_long_lits 57537 units 0
+c [simp-stats]                            free_vars 1548 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 1.540 T-step: 0.00 depth 0
+c [simp-stats] bef [95mocc-finishup          [0m irred_bins 22775 irred_long_cls 4528 irred_long_lits 57537 units 0
+c [simp-stats]                            free_vars 1548 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 1.544 depth 0
+c [simp-stats] aft [32mocc-finishup          [0m irred_bins 22775 irred_long_cls 4528 irred_long_lits 57537 units 0
+c [simp-stats]                            free_vars 1548 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 1.545 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mmust-scc-vrepl[0m
+c [simp-stats] bef [95mmust-scc-vrepl        [0m irred_bins 22775 irred_long_cls 4528 irred_long_lits 57537 units 0
+c [simp-stats]                            free_vars 1548 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 1.545 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [vrep] vars 0 lits 0 rem-bin-cls 0 rem-long-cls 0 BP 0M T: 0.00
+c [simp-stats] aft [32mmust-scc-vrepl        [0m irred_bins 22775 irred_long_cls 4528 irred_long_lits 57537 units 0
+c [simp-stats]                            free_vars 1548 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 1.548 T-step: 0.00 depth 0
+c [mem] consolidate mini T: 0.00
+c [timeout] global_timeout_multiplier: 3.3000
+c [branch] rebuilding order heap for all branchings. Current branching: vsids
+c [lucky] no luck T: 0.00
+c [gauss] clauses deleted that are represented by XORs: 0 xorclauses: 16 GJ matrices: 0 T: 0.00
+c [matrix] performing matrix init
+c [matrix] Good   matrix  0     16 x   60  density:0.1083  xorlen avg:  6.50
+c [matrix] Using 1 matrices recovered from 16 xors T: 0.00 T-out: N
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c   res  pol bran  nres  conf freevar  IrrL  IrrB l/longC  l/allC RedL0 RedL1 RedL2  RedB l/longC  l/allC
+c rst   foc    -  vmt     1   162    1548  4528   22K   12.71    3.78   159     0     0     3   22.03   21.65
+c [reduce] 1 confl: 1001 red: 961->922 cands: 52 rem: 39 next: +1000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/39 live t1/t2/t3: 10/288/663 tiers: 2/6
+c [reduce]   kept-used: 904 kept-keep: 0 locked: 5 likely-kept lim glue/size: 131071/12
+c [reduce] 2 confl: 2001 red: 1886->1821 cands: 87 rem: 65 next: +1414 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/65 live t1/t2/t3: 23/561/1302 tiers: 2/6
+c [reduce]   kept-used: 1791 kept-keep: 0 locked: 8 likely-kept lim glue/size: 131071/11
+c rst   stb    -  vmt    20  2025    1548  4528   22K   12.71    3.78  1845     0     0    74   43.41   41.82
+c [branch] adjusting to: vsids (from: vmtf) var_decay:0.95
+c rst   foc    O   vs    21  3021    1548  4528   22K   12.71    3.78  2820     0     0    93   38.93   37.75
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c rst   foc    O  vmt    22  3024    1548  4528   22K   12.71    3.78  2823     0     0    93   38.98   37.80
+c [reduce] 3 confl: 3415 red: 3198->2451 cands: 997 rem: 747 next: +1732 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/747 live t1/t2/t3: 59/1001/2138 tiers: 2/6
+c [reduce]   kept-used: 2187 kept-keep: 0 locked: 14 likely-kept lim glue/size: 7/162
+c rst   foc    F  vmt    46  4278    1548  4528   22K   12.71    3.78  3271     0     0   152   33.32   31.92
+c [reduce] 4 confl: 5147 red: 4116->3091 cands: 1367 rem: 1025 next: +2000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/167/858 live t1/t2/t3: 85/1809/2222 tiers: 2/6
+c [reduce]   kept-used: 2734 kept-keep: 0 locked: 15 likely-kept lim glue/size: 6/162
+c [distill-long-red0] cls tried: 150/555 cl-rem: 177 cl-sh: 43 lit-rem: 133 0-depth-ass: 0
+c [distill-long-red0] budget(M): 0.70 used(M): 0.70 T: 0.01 T-out: Y T-r: -1.37%
+c [distill-long-irred] cls tried: 50/163 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.16 used(M): 0.17 T: 0.00 T-out: Y T-r: -5.96%
+c [distill-long-irred] cls tried: 41/136 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.14 used(M): 0.14 T: 0.00 T-out: Y T-r: -2.00%
+c rst   stb    F  vmt   140  7049    1548  4528   22K   12.71    3.78  4741     0     0   247   28.70   27.38
+c [branch] adjusting to: vsids (from: vmtf) var_decay:0.95
+c [reduce] 5 confl: 7148 red: 4838->3575 cands: 1685 rem: 1263 next: +2236 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/235/1028 live t1/t2/t3: 126/2284/2428 tiers: 2/6
+c [reduce]   kept-used: 3150 kept-keep: 0 locked: 3 likely-kept lim glue/size: 5/162
+c rst   stb    F   vs   141  9099    1548  4528   22K   12.71    3.78  5491     0     0   284   31.56   30.11
+c [reduce] 6 confl: 9385 red: 5770->4387 cands: 1845 rem: 1383 next: +2449 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/629/754 live t1/t2/t3: 140/2285/3345 tiers: 2/6
+c [reduce]   kept-used: 3924 kept-keep: 0 locked: 1 likely-kept lim glue/size: 5/162
+c rst   stb    I   vs   142 10120    1548  4528   22K   12.71    3.78  5115     0     0   297   37.60   35.64
+c [reduce] 7 confl: 11834 red: 6797->4889 cands: 2545 rem: 1908 next: +2645 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/661/1247 live t1/t2/t3: 167/1980/4650 tiers: 2/6
+c [reduce]   kept-used: 4244 kept-keep: 0 locked: 8 likely-kept lim glue/size: 4/100
+c [distill-bin] useful/checked/potential: 0/161/22775 lits-rem: 0 cl-rem: 0 0-depth-assigns: 0 T: 0.01 T-out: Y
+c [reduce] 8 confl: 14479 red: 7479->5197 cands: 3043 rem: 2282 next: +2828 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/134/2148 live t1/t2/t3: 190/1446/5843 tiers: 2/6
+c [reduce]   kept-used: 4423 kept-keep: 0 locked: 13 likely-kept lim glue/size: 5/139
+c rst   foc    B   vs   145 15000    1548  4528   22K   12.71    3.78  5706     0     0   390   32.06   30.14
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c rst   foc    B  vmt   146 15003    1548  4528   22K   12.71    3.78  5709     0     0   390   32.06   30.14
+c [reduce] 9 confl: 17307 red: 7957->5750 cands: 2943 rem: 2207 next: +3000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/279/1928 live t1/t2/t3: 222/2250/5485 tiers: 2/6
+c [reduce]   kept-used: 5002 kept-keep: 0 locked: 12 likely-kept lim glue/size: 4/115
+c rst   foc    #  vmt   315 18258    1548  4528   22K   12.71    3.78  6679     0     0   461   26.16   24.60
+c [reduce] 10 confl: 20307 red: 8696->6195 cands: 3335 rem: 2501 next: +3162 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/9/2492 live t1/t2/t3: 271/3282/5143 tiers: 2/6
+c [reduce]   kept-used: 5357 kept-keep: 0 locked: 4 likely-kept lim glue/size: 6/115
+c [distill-long-red0] cls tried: 157/610 cl-rem: 197 cl-sh: 24 lit-rem: 29 0-depth-ass: 0
+c [distill-long-red0] budget(M): 0.78 used(M): 0.79 T: 0.01 T-out: Y T-r: -2.27%
+c [distill-long-irred] cls tried: 49/181 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.18 used(M): 0.19 T: 0.00 T-out: Y T-r: -3.60%
+c [distill-long-irred] cls tried: 48/151 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.15 used(M): 0.16 T: 0.00 T-out: Y T-r: -5.20%
+c [reduce] 11 confl: 23472 red: 9084->6573 cands: 3349 rem: 2511 next: +3316 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/702/1809 live t1/t2/t3: 287/4449/4348 tiers: 2/6
+c [reduce]   kept-used: 5722 kept-keep: 0 locked: 13 likely-kept lim glue/size: 5/115
+c rst   foc    B  vmt   577   24K    1548  4528   22K   12.71    3.78  7457     0     0   586   27.56   25.70
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 126
+c [distill-with-bin-ext] T: 0.00 T-out: N T-r: 93.23%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 894
+c [distill-with-bin-ext] T: 0.02 T-out: N T-r: 79.62%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 86.84%
+c [distill-with-bin-ext] bin-based lit-rem: 12519 cl-sub: 0
+c [distill-with-bin-ext] T: 0.03 T-out: N T-r: 60.14%
+c [distill] watch-based irred-- cl tried     8930 cl-sh     0 cl-rem  126 lit-rem      0 T: 0.01 T-out: N
+c [distill] watch-based   red-- cl tried    11622 cl-sh  3368 cl-rem  894 lit-rem  12519 T: 0.04 T-out: N
+c [reduce] 12 confl: 26789 red: 8906->6460 cands: 3262 rem: 2446 next: +3464 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/851/1595 live t1/t2/t3: 334/4538/4034 tiers: 2/6
+c [reduce]   kept-used: 5637 kept-keep: 0 locked: 7 likely-kept lim glue/size: 5/111
+c [reduce] 13 confl: 30253 red: 9842->7254 cands: 3451 rem: 2588 next: +3605 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1003/1585 live t1/t2/t3: 377/5125/4340 tiers: 2/6
+c [reduce]   kept-used: 6384 kept-keep: 0 locked: 7 likely-kept lim glue/size: 4/104
+c rst   stb    B  vmt  1028   33K    1547  4402   22K   12.98    3.78 10230     0     0   778   28.36   26.50
+c [branch] adjusting to: vsids (from: vmtf) var_decay:0.95
+c [sls] 27178 cls, minimum 7 T: 0.00
+c [reduce] 14 confl: 33859 red: 10796->7808 cands: 3984 rem: 2988 next: +3741 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1312/1676 live t1/t2/t3: 425/4833/5538 tiers: 2/6
+c [reduce]   kept-used: 6797 kept-keep: 0 locked: 15 likely-kept lim glue/size: 4/112
+c rst   stb    W   vs  1029   34K    1547  4402   22K   12.98    3.78  8263     0     0   782   28.23   25.96
+c [distill-long-red0] cls tried: 98/764 cl-rem: 86 cl-sh: 3 lit-rem: 3 0-depth-ass: 0
+c [distill-long-red0] budget(M): 0.84 used(M): 0.85 T: 0.01 T-out: Y T-r: -1.83%
+c [distill-long-irred] cls tried: 28/195 cl-rem: 1 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.20 used(M): 0.21 T: 0.00 T-out: Y T-r: -7.23%
+c [distill-long-irred] cls tried: 25/163 cl-rem: 0 cl-sh: 4 lit-rem: 1 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.16 used(M): 0.18 T: 0.00 T-out: Y T-r: -7.88%
+c [reduce] 15 confl: 37601 red: 11438->8036 cands: 4537 rem: 3402 next: +3872 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1273/2129 live t1/t2/t3: 427/3702/7309 tiers: 2/6
+c [reduce]   kept-used: 6889 kept-keep: 0 locked: 12 likely-kept lim glue/size: 4/112
+c [reduce] 16 confl: 41473 red: 11889->8252 cands: 4850 rem: 3637 next: +4000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/564/3073 live t1/t2/t3: 457/3010/8422 tiers: 2/6
+c [reduce]   kept-used: 7032 kept-keep: 0 locked: 7 likely-kept lim glue/size: 4/112
+c [impl-str] lit bin: 0 set-var: 0 T: 0.00 T-out: N T-r: 99.83% w-visit: 10018
+c [impl-sub] bin: 1 T: 0.00 T-out: N w-visit: 10018
+c [reduce] 17 confl: 45474 red: 12226->8722 cands: 4673 rem: 3504 next: +4123 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/175/3329 live t1/t2/t3: 534/3403/8289 tiers: 2/6
+c [reduce]   kept-used: 7540 kept-keep: 0 locked: 13 likely-kept lim glue/size: 4/112
+c rst   stb    O   vs  1035   45K    1537  4400   22K   12.99    3.78  8825     0     0   846   24.04   22.11
+c [reduce] 18 confl: 49598 red: 12811->8962 cands: 5133 rem: 3849 next: +4242 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/352/3497 live t1/t2/t3: 563/3786/8462 tiers: 2/6
+c [reduce]   kept-used: 7670 kept-keep: 0 locked: 8 likely-kept lim glue/size: 5/124
+c rst   stb    O   vs  1036   53K    1537  4400   22K   12.99    3.78 13087     0     0   918   23.22   21.83
+c [distill-long-red0] cls tried: 121/1048 cl-rem: 65 cl-sh: 18 lit-rem: 31 0-depth-ass: 0
+c [distill-long-red0] budget(M): 1.09 used(M): 1.11 T: 0.01 T-out: Y T-r: -2.21%
+c [distill-long-irred] cls tried: 34/254 cl-rem: 3 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.25 used(M): 0.27 T: 0.00 T-out: Y T-r: -5.81%
+c [distill-long-irred] cls tried: 38/211 cl-rem: 0 cl-sh: 3 lit-rem: 1 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.21 used(M): 0.22 T: 0.00 T-out: Y T-r: -1.98%
+c [distill-bin] useful/checked/potential: 3/204/22782 lits-rem: 0 cl-rem: 3 0-depth-assigns: 0 T: 0.01 T-out: Y
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 14
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 92.87%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 4183
+c [distill-with-bin-ext] T: 0.03 T-out: N T-r: 59.89%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 86.91%
+c [distill-with-bin-ext] bin-based lit-rem: 9515 cl-sub: 0
+c [distill-with-bin-ext] T: 0.02 T-out: N T-r: 58.27%
+c [distill] watch-based irred-- cl tried     8648 cl-sh     0 cl-rem   14 lit-rem      0 T: 0.01 T-out: N
+c [distill] watch-based   red-- cl tried    13003 cl-sh  2550 cl-rem 4183 lit-rem   9515 T: 0.05 T-out: N
+c [scc] new: 0 BP 0M T: 0.00
+c [intree] Set 1 vars hyper-added: 12975 trans-irred: 435 trans-red: 24 budget(M): 34.99 used(M): 34.99 T: 0.05 T-out: Y T-r: -0.01%
+c [reduce] 19 confl: 53840 red: 6476->4156 cands: 3094 rem: 2320 next: +4358 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/315/2005 live t1/t2/t3: 501/1963/4012 tiers: 2/6
+c [reduce]   kept-used: 3370 kept-keep: 0 locked: 12 likely-kept lim glue/size: 4/108
+c rst   stb    B   vs  1037   54K    1536  4317   21K   13.07    3.82  5110     0     0 13835   22.84    7.62
+c recursive minimization cost OK: 208K cost/(% lits removed)
+c [g 0] 16x60 dens: 0.1229 find: 316K (prop 58.0% confl 2.1%) elim: 23K (prop 27.1% confl 0.8%)
+c --> Executing strategy token: [93mscc-vrepl[0m
+c [simp-stats] bef [95mscc-vrepl             [0m irred_bins 21564 irred_long_cls 4240 irred_long_lits 55241 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.4 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [simp-stats] aft [32mscc-vrepl             [0m irred_bins 21564 irred_long_cls 4240 irred_long_lits 55241 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.4 T-step: 0.00 depth 0
+c --> Executing strategy token: [93msub-impl[0m
+c [simp-stats] bef [95msub-impl              [0m irred_bins 21564 irred_long_cls 4240 irred_long_lits 55241 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.4 depth 0
+c [impl-sub] bin: 1 T: 0.00 T-out: N w-visit: 10018
+c [simp-stats] aft [32msub-impl              [0m irred_bins [32m21563[0m irred_long_cls 4240 irred_long_lits 55241 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.4 T-step: 0.00 depth 0
+c Executing OCC strategy token(s): [93mocc-backw-sub-str,occ-clean-implicit,occ-sweep,occ-bve,occ-ternary-res,occ-xor[0m
+c [occ] Linked in IRRED BIN by default: 21563
+c [occ] Linked in RED   BIN by default: 13454
+c [occ] Not linked in 188/6159 (3.05 %)
+c Executing OCC strategy token: [93mocc-backw-sub-str[0m
+c [simp-stats] bef [95mocc-backw-sub-str     [0m irred_bins 21563 irred_long_cls 4240 irred_long_lits 55241 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.408 depth 0
+c [occ-backw-sub-str-long-w-bins] subs: 53 str: 834 tried: 512780 0-depth-assigns: 0 T: 0.04 T-out: Y T-r: -0.00%
+c [occ-backw-sub-long-w-long] rem cl: 497 tried: 6268/6268 (100.0%) T: 0.00 T-out: N T-r: 98.42%
+c [occ-backw-sub-str-long-w-long] sub: 0 str: 75 tried: 18804/6268 (300.0%) T: 0.03 T-out: N T-r: 86.16%
+c [simp-stats] aft [32mocc-backw-sub-str     [0m irred_bins [91m21582[0m irred_long_cls [32m4152[0m irred_long_lits [32m52092[0m units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.477 T-step: 0.07 depth 0
+c Executing OCC strategy token: [93mocc-clean-implicit[0m
+c [simp-stats] bef [95mocc-clean-implicit    [0m irred_bins 21582 irred_long_cls 4152 irred_long_lits 52092 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.477 depth 0
+c [simp-stats] aft [32mocc-clean-implicit    [0m irred_bins 21582 irred_long_cls 4152 irred_long_lits 52092 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.477 T-step: 0.00 depth 0
+c Executing OCC strategy token: [93mocc-sweep[0m
+c [simp-stats] bef [95mocc-sweep             [0m irred_bins 21582 irred_long_cls 4152 irred_long_lits 52092 units 33
+c [simp-stats]                            free_vars 1515 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.477 depth 0
+c [occ-sweep] swept: 930/931 units: 1 equivs: 0 epoch: 0 solves: 10558 flips: 454448 T: 0.23 T-out: N T-r: 16.23%
+c [simp-stats] aft [32mocc-sweep             [0m irred_bins [32m21565[0m irred_long_cls [32m4151[0m irred_long_lits [32m52043[0m units [91m34[0m
+c [simp-stats]                            free_vars [32m1514[0m elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.706 T-step: 0.23 depth 0
+c Executing OCC strategy token: [93mocc-bve[0m
+c [simp-stats] bef [95mocc-bve               [0m irred_bins 21565 irred_long_cls 4151 irred_long_lits 52043 units 34
+c [simp-stats]                            free_vars 1514 elimed_vars 3442 replaced_vars 19 mem_MB 0 T: 5.706 depth 0
+c [occ-empty-res] Empty resolvent elimed: 4 T: 0.00 T-out: N
+c [occ-bve-wave] 1 tried 1452 elimed 63 touched 825 re-added 757 heap 757
+c [occ-bve] turning off kitten-based irreg gate detection, added lits: 232K
+c [occ-bve-wave] 2 tried 757 elimed 3 touched 218 re-added 212 heap 212
+c [occ-bve-wave] 3 tried 212 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 16 v-elim 66 -> 1444 vars 26286 cls cl_inc_rate: 1.02 var_dec_rate: 1.05
+c [occ-bve-round] 1 grow 16 tried  2421 elimed 66 (tot 66) cls 25714->26286 (init 25714, d 572) vars 1510->1444 T: 0.90
+c [occ-bve-why] sched: seen 5009 added 1452 skip-cannot-elim 3557 skip-not-cand 0
+c [occ-bve-why] test: entered 2421 ok-gate 6 ok-nogate 60 pure 0
+c [occ-bve-why] rej: occ-lim 90 (avg max/min occ 157.7/112.2) cls-too-long 0 too-many-res 1946 (avg lim 93.9) res-too-large 319 (avg sz 109.5) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 1197 ite 0 xor 0 irreg 0
+c [occ-bve-round] stop: cls 26286 over init 25714
+c [occ-bve] tried:  2421 v-elim:    66 free-vars: 1444 T: 0.90 T-out: N T-r: 99.81%
+c [occur] link-in T: 0.00 cleanup T: 0.00 overhead T: 0.00
+c [occ-xor-bve] elimed: 0 T: 0.00 T-out: N
+c [simp-stats] aft [32mocc-bve               [0m irred_bins [91m21882[0m irred_long_cls [91m4404[0m irred_long_lits [91m55075[0m units 34
+c [simp-stats]                            free_vars [32m1444[0m elimed_vars [91m3512[0m replaced_vars 19 mem_MB 0 T: 6.608 T-step: 0.90 depth 0
+c Executing OCC strategy token: [93mocc-ternary-res[0m
+c [simp-stats] bef [95mocc-ternary-res       [0m irred_bins 21882 irred_long_cls 4404 irred_long_lits 55075 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.608 depth 0
+c [occ-ternary-res] Ternary res-tri: 1060 res-bin: 0 sub: 335 str: 9 T: 0.01 T-out: N T-r: 94.74%
+c [simp-stats] aft [32mocc-ternary-res       [0m irred_bins 21882 irred_long_cls [32m4401[0m irred_long_lits [32m55051[0m units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.617 T-step: 0.01 depth 0
+c Executing OCC strategy token: [93mocc-xor[0m
+c [simp-stats] bef [95mocc-xor               [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.617 depth 0
+c [occ-xor] sort occur list T: 0.00
+c [occ-xor] found      0 T: 0.00 T-out: N T-r: 99.99%
+c [simp-stats] aft [32mocc-xor               [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.620 T-step: 0.00 depth 0
+c [simp-stats] bef [95mocc-finishup          [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.621 depth 0
+c [simp-stats] aft [32mocc-finishup          [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.622 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mmust-scc-vrepl[0m
+c [simp-stats] bef [95mmust-scc-vrepl        [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.623 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [vrep] vars 0 lits 0 rem-bin-cls 0 rem-long-cls 0 BP 0M T: 0.00
+c [simp-stats] aft [32mmust-scc-vrepl        [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mcard-find[0m
+c [simp-stats] bef [95mcard-find             [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 depth 0
+c [simp-stats] aft [32mcard-find             [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mcl-consolidate[0m
+c [simp-stats] bef [95mcl-consolidate        [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 depth 0
+c [mem] consolidate old-sz: 1168K new-sz:  509K new bits offs: 16 T: 0.00
+c [simp-stats] aft [32mcl-consolidate        [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mscc-vrepl[0m
+c [simp-stats] bef [95mscc-vrepl             [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [simp-stats] aft [32mscc-vrepl             [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mrenumber[0m
+c [simp-stats] bef [95mrenumber              [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 depth 0
+c [simp-stats] aft [32mrenumber              [0m irred_bins 21882 irred_long_cls 4401 irred_long_lits 55051 units 34
+c [simp-stats]                            free_vars 1444 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 6.626 T-step: 0.00 depth 0
+c [mem] consolidate mini T: 0.00
+c [timeout] global_timeout_multiplier: 3.6300
+c [branch] rebuilding order heap for all branchings. Current branching: vsids
+c [gauss] clauses deleted that are represented by XORs: 0 xorclauses: 16 GJ matrices: 0 T: 0.00
+c [matrix] performing matrix init
+c [matrix] Good   matrix  0     16 x   58  density:0.1078  xorlen avg:  6.25
+c [matrix] Using 1 matrices recovered from 16 xors T: 0.00 T-out: N
+c [reduce] 20 confl: 58198 red: 4416->2965 cands: 989 rem: 741 next: +4472 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/278/463 live t1/t2/t3: 461/1105/2850 tiers: 2/6
+c [reduce]   kept-used: 2649 kept-keep: 0 locked: 24 likely-kept lim glue/size: 3/23
+c [reduce] 21 confl: 62672 red: 7423->6572 cands: 1112 rem: 834 next: +4582 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1/833 live t1/t2/t3: 477/1662/5284 tiers: 2/6
+c [reduce]   kept-used: 6257 kept-keep: 0 locked: 8 likely-kept lim glue/size: 5/42
+c rst   foc    B   vs  1044   63K    1444  4401   21K   12.51    3.76  6909     0     0 13233   28.87   11.22
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c rst   foc    B  vmt  1045   63K    1444  4401   21K   12.51    3.76  6912     0     0 13233   28.88   11.22
+c [sls] 26299 cls, minimum 6 T: 0.00
+c rst   foc    W  vmt  1084   63K    1444  4401   21K   12.51    3.76  7695     0     0 13243   27.88   11.51
+c [reduce] 22 confl: 67254 red: 11127->9054 cands: 2752 rem: 2064 next: +4690 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/2064 live t1/t2/t3: 542/3615/6970 tiers: 2/6
+c [reduce]   kept-used: 8337 kept-keep: 0 locked: 10 likely-kept lim glue/size: 7/132
+c [distill-long-red0] cls tried: 404/2514 cl-rem: 883 cl-sh: 94 lit-rem: 413 0-depth-ass: 0
+c [distill-long-red0] budget(M): 3.34 used(M): 3.33 T: 0.04 T-out: Y T-r: -0.06%
+c [distill-long-irred] cls tried: 150/781 cl-rem: 17 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.78 used(M): 0.78 T: 0.01 T-out: Y T-r: -0.73%
+c [distill-long-irred] cls tried: 178/651 cl-rem: 0 cl-sh: 10 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.65 used(M): 0.65 T: 0.01 T-out: Y T-r: -0.72%
+c [hyper-bin-clean] removed: 8431 of: 12976 red-bins now: 4832 T: 0.00
+c [reduce] 23 confl: 71944 red: 12805->9208 cands: 4784 rem: 3588 next: +4795 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/3588 live t1/t2/t3: 617/4785/7403 tiers: 2/6
+c [reduce]   kept-used: 7986 kept-keep: 0 locked: 15 likely-kept lim glue/size: 7/175
+c   res  pol bran  nres  conf freevar  IrrL  IrrB l/longC  l/allC RedL0 RedL1 RedL2  RedB l/longC  l/allC
+c rst   foc    W  vmt  1452   72K    1442  4384   21K   12.55    3.76  9317     0     0  4871   23.55   16.15
+c rst   foc    F  vmt  1601   74K    1442  4384   21K   12.55    3.76 12031     0     0  4911   23.71   17.41
+c [reduce] 24 confl: 76739 red: 13948->10039 cands: 5206 rem: 3904 next: +4898 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1228/2676 live t1/t2/t3: 702/6982/6264 tiers: 2/6
+c [reduce]   kept-used: 8707 kept-keep: 0 locked: 24 likely-kept lim glue/size: 5/176
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 13
+c [distill-with-bin-ext] T: 0.00 T-out: N T-r: 86.43%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 1160
+c [distill-with-bin-ext] T: 0.02 T-out: N T-r: 70.28%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 73.43%
+c [distill-with-bin-ext] bin-based lit-rem: 15263 cl-sub: 7
+c [distill-with-bin-ext] T: 0.04 T-out: N T-r: 45.12%
+c [distill] watch-based irred-- cl tried     8749 cl-sh     0 cl-rem   13 lit-rem      0 T: 0.01 T-out: N
+c [distill] watch-based   red-- cl tried    16214 cl-sh  4364 cl-rem 1167 lit-rem  15263 T: 0.07 T-out: N
+c [reduce] 25 confl: 81638 red: 12479->9396 cands: 4110 rem: 3082 next: +5000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/941/2141 live t1/t2/t3: 671/6179/5629 tiers: 2/6
+c [reduce]   kept-used: 8352 kept-keep: 0 locked: 11 likely-kept lim glue/size: 5/172
+c rst   foc    F  vmt  2110   83K    1442  4368   21K   12.54    3.76 10745     0     0  4951   22.18   15.81
+c [distill-long-red0] cls tried: 122/971 cl-rem: 119 cl-sh: 11 lit-rem: 14 0-depth-ass: 0
+c [distill-long-red0] budget(M): 1.09 used(M): 1.11 T: 0.01 T-out: Y T-r: -2.13%
+c [distill-long-irred] cls tried: 45/254 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.25 used(M): 0.27 T: 0.00 T-out: Y T-r: -7.35%
+c [distill-long-irred] cls tried: 40/212 cl-rem: 0 cl-sh: 2 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.21 used(M): 0.22 T: 0.00 T-out: Y T-r: -4.78%
+c [reduce] 26 confl: 86638 red: 14222->10609 cands: 4816 rem: 3612 next: +5099 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1478/2134 live t1/t2/t3: 740/7583/5899 tiers: 2/6
+c [reduce]   kept-used: 9390 kept-keep: 0 locked: 11 likely-kept lim glue/size: 4/96
+c rst   foc    B  vmt  2242   86K    1441  4368   21K   12.54    3.76 10887     0     0  4986   22.20   15.86
+c [reduce] 27 confl: 91738 red: 15648->11328 cands: 5760 rem: 4320 next: +5196 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1645/2675 live t1/t2/t3: 838/8478/6332 tiers: 2/6
+c [reduce]   kept-used: 9865 kept-keep: 0 locked: 19 likely-kept lim glue/size: 4/121
+c rst   foc    B  vmt  2542   95K    1439  4368   21K   12.54    3.76 15034     0     0  5078   22.72   17.49
+c [reduce] 28 confl: 96934 red: 16476->11743 cands: 6309 rem: 4731 next: +5291 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/2182/2549 live t1/t2/t3: 1041/9405/6030 tiers: 2/6
+c [reduce]   kept-used: 10145 kept-keep: 0 locked: 18 likely-kept lim glue/size: 4/121
+c [distill-long-red0] cls tried: 141/740 cl-rem: 150 cl-sh: 10 lit-rem: 11 0-depth-ass: 0
+c [distill-long-red0] budget(M): 0.84 used(M): 0.84 T: 0.01 T-out: Y T-r: -0.29%
+c [distill-long-irred] cls tried: 38/196 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.20 used(M): 0.21 T: 0.00 T-out: Y T-r: -6.96%
+c [distill-long-irred] cls tried: 37/163 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.16 used(M): 0.17 T: 0.00 T-out: Y T-r: -1.94%
+c [sls] 26148 cls, minimum 6 T: 0.00
+c rst   foc    W  vmt  2722  100K    1439  4368   21K   12.54    3.76 14643     0     0  5102   21.97   16.81
+c [impl-str] lit bin: 0 set-var: 0 T: 0.00 T-out: N T-r: 99.82% w-visit: 10018
+c [impl-sub] bin: 17 T: 0.00 T-out: N w-visit: 10018
+c [reduce] 29 confl: 102225 red: 16830->11939 cands: 6522 rem: 4891 next: +5385 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/2245/2646 live t1/t2/t3: 1058/9619/6153 tiers: 2/6
+c [reduce]   kept-used: 10301 kept-keep: 0 locked: 5 likely-kept lim glue/size: 4/138
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 18
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 86.05%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 980
+c [distill-with-bin-ext] T: 0.03 T-out: N T-r: 68.16%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 72.62%
+c [distill-with-bin-ext] bin-based lit-rem: 13240 cl-sub: 0
+c [distill-with-bin-ext] T: 0.04 T-out: N T-r: 38.52%
+c [distill] watch-based irred-- cl tried     8706 cl-sh     0 cl-rem   18 lit-rem      0 T: 0.02 T-out: N
+c [distill] watch-based   red-- cl tried    18062 cl-sh  3938 cl-rem  980 lit-rem  13240 T: 0.07 T-out: N
+c [reduce] 30 confl: 107612 red: 14889->11123 cands: 5022 rem: 3766 next: +5477 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1604/2162 live t1/t2/t3: 1020/8081/5788 tiers: 2/6
+c [reduce]   kept-used: 9854 kept-keep: 0 locked: 11 likely-kept lim glue/size: 4/131
+c rst   foc    W  vmt  3192  108K    1438  4344   21K   12.56    3.76 12025     0     0  5106   20.68   15.11
+c [reduce] 31 confl: 113089 red: 16565->12180 cands: 5847 rem: 4385 next: +5567 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1847/2538 live t1/t2/t3: 1111/8822/6632 tiers: 2/6
+c [reduce]   kept-used: 10687 kept-keep: 0 locked: 29 likely-kept lim glue/size: 4/131
+c rst   foc    #  vmt  3566  114K    1437  4344   21K   12.56    3.76 13155     0     0  5138   19.31   14.45
+c [distill-long-red0] cls tried: 125/748 cl-rem: 170 cl-sh: 7 lit-rem: 7 0-depth-ass: 0
+c [distill-long-red0] budget(M): 0.88 used(M): 0.90 T: 0.01 T-out: Y T-r: -2.11%
+c [distill-long-irred] cls tried: 35/206 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.21 used(M): 0.21 T: 0.00 T-out: Y T-r: -2.87%
+c [distill-long-irred] cls tried: 31/171 cl-rem: 0 cl-sh: 2 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.17 used(M): 0.18 T: 0.00 T-out: Y T-r: -5.29%
+c [reduce] 32 confl: 118656 red: 17533->12744 cands: 6384 rem: 4788 next: +5656 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1986/2802 live t1/t2/t3: 1230/9567/6736 tiers: 2/6
+c [reduce]   kept-used: 11140 kept-keep: 0 locked: 7 likely-kept lim glue/size: 4/131
+c [scc] new: 0 BP 0M T: 0.00
+c [intree] Set 6 vars hyper-added: 13048 trans-irred: 112 trans-red: 158 budget(M): 43.98 used(M): 44.03 T: 0.07 T-out: Y T-r: -0.12%
+c rst   foc    #  vmt  3948  122K    1431  4344   21K   12.53    3.77 16388     0     0 18054   19.35   10.25
+c [reduce] 33 confl: 124312 red: 18390->13107 cands: 7045 rem: 5283 next: +5744 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/2244/3039 live t1/t2/t3: 1321/10202/6867 tiers: 2/6
+c [reduce]   kept-used: 11331 kept-keep: 0 locked: 13 likely-kept lim glue/size: 4/130
+c [reduce] 34 confl: 130056 red: 18842->13627 cands: 6954 rem: 5215 next: +5830 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/2670/2545 live t1/t2/t3: 1417/9674/7751 tiers: 2/6
+c [reduce]   kept-used: 11876 kept-keep: 0 locked: 11 likely-kept lim glue/size: 4/130
+c rst   stb    #  vmt  4244  130K    1431  4344   21K   12.53    3.77 13627     0     0 18060   20.87   10.12
+c [branch] adjusting to: vsids (from: vmtf) var_decay:0.95
+c [distill-long-red0] cls tried: 511/3484 cl-rem: 601 cl-sh: 166 lit-rem: 536 0-depth-ass: 0
+c [distill-long-red0] budget(M): 4.00 used(M): 3.98 T: 0.04 T-out: Y T-r: -0.15%
+c [distill-long-irred] cls tried: 189/933 cl-rem: 5 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.93 used(M): 0.94 T: 0.01 T-out: Y T-r: -1.09%
+c [distill-long-irred] cls tried: 246/778 cl-rem: 0 cl-sh: 8 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.78 used(M): 0.77 T: 0.01 T-out: Y T-r: -0.12%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 18
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 84.33%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 2064
+c [distill-with-bin-ext] T: 0.03 T-out: N T-r: 64.58%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 69.61%
+c [distill-with-bin-ext] bin-based lit-rem: 15619 cl-sub: 0
+c [distill-with-bin-ext] T: 0.04 T-out: N T-r: 40.87%
+c [distill] watch-based irred-- cl tried     8642 cl-sh     0 cl-rem   18 lit-rem      0 T: 0.01 T-out: N
+c [distill] watch-based   red-- cl tried    16032 cl-sh  3624 cl-rem 2064 lit-rem  15619 T: 0.07 T-out: N
+c [sls] 25816 cls, minimum 6 T: 0.00
+c rst   stb    W   vs  4245  131K    1430  4312   21K   12.54    3.76 11981     0     0 18027   20.77    9.49
+c [distill-bin] useful/checked/potential: 6/358/21488 lits-rem: 0 cl-rem: 6 0-depth-assigns: 0 T: 0.01 T-out: Y
+c [hyper-bin-clean] removed: 9324 of: 13055 red-bins now: 8703 T: 0.00
+c recursive minimization cost OK: 258K cost/(% lits removed)
+c [g 0] 16x58 dens: 0.1250 find: 425K (prop 53.4% confl 1.7%) elim: 30K (prop 26.0% confl 0.6%)
+c --> Executing strategy token: [93mscc-vrepl[0m
+c [simp-stats] bef [95mscc-vrepl             [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.7 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [simp-stats] aft [32mscc-vrepl             [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.7 T-step: 0.00 depth 0
+c --> Executing strategy token: [93msub-impl[0m
+c [simp-stats] bef [95msub-impl              [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.7 depth 0
+c [impl-sub] bin: 2 T: 0.00 T-out: N w-visit: 10018
+c [simp-stats] aft [32msub-impl              [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.7 T-step: 0.00 depth 0
+c Executing OCC strategy token(s): [93mocc-backw-sub-str,occ-clean-implicit,occ-sweep,occ-bve,occ-ternary-res,occ-xor[0m
+c [occ] Linked in IRRED BIN by default: 21464
+c [occ] Linked in RED   BIN by default: 8683
+c [occ] Not linked in 929/14927 (6.22 %)
+c Executing OCC strategy token: [93mocc-backw-sub-str[0m
+c [simp-stats] bef [95mocc-backw-sub-str     [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.727 depth 0
+c [occ-backw-sub-str-long-w-bins] subs: 0 str: 2515 tried: 592786 0-depth-assigns: 0 T: 0.05 T-out: Y T-r: -0.01%
+c [occ-backw-sub-long-w-long] rem cl: 2167 tried: 19612/19612 (100.0%) T: 0.01 T-out: N T-r: 94.24%
+c [occ-backw-sub-str-long-w-long] sub: 43 str: 1610 tried: 58836/19612 (300.0%) T: 0.10 T-out: N T-r: 61.55%
+c [simp-stats] aft [32mocc-backw-sub-str     [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.887 T-step: 0.16 depth 0
+c Executing OCC strategy token: [93mocc-clean-implicit[0m
+c [simp-stats] bef [95mocc-clean-implicit    [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.887 depth 0
+c [simp-stats] aft [32mocc-clean-implicit    [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.887 T-step: 0.00 depth 0
+c Executing OCC strategy token: [93mocc-sweep[0m
+c [simp-stats] bef [95mocc-sweep             [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 11.887 depth 0
+c [occ-sweep] swept: 289/1426 units: 0 equivs: 0 epoch: 1 solves: 8100 flips: 397099 T: 0.23 T-out: Y T-r: -0.00%
+c [simp-stats] aft [32mocc-sweep             [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 12.113 T-step: 0.23 depth 0
+c Executing OCC strategy token: [93mocc-bve[0m
+c [simp-stats] bef [95mocc-bve               [0m irred_bins 21464 irred_long_cls 4311 irred_long_lits 54021 units 48
+c [simp-stats]                            free_vars 1430 elimed_vars 3512 replaced_vars 19 mem_MB 0 T: 12.113 depth 0
+c [occ-empty-res] Empty resolvent elimed: 0 T: 0.00 T-out: N
+c [occ-bve-wave] 1 tried 1372 elimed 20 touched 275 re-added 253 heap 253
+c [occ-bve-wave] 2 tried 253 elimed 12 touched 166 re-added 153 heap 153
+c [occ-bve-wave] 3 tried 153 elimed 4 touched 132 re-added 127 heap 127
+c [occ-bve-wave] 4 tried 127 elimed 3 touched 125 re-added 121 heap 121
+c [occ-bve-wave] 5 tried 121 elimed 2 touched 106 re-added 103 heap 103
+c [occ-bve] turning off kitten-based irreg gate detection, added lits: 254K
+c [occ-bve-wave] 6 tried 103 elimed 2 touched 110 re-added 107 heap 107
+c [occ-bve-wave] 7 tried 107 elimed 2 touched 110 re-added 107 heap 107
+c [occ-bve-wave] 8 tried 107 elimed 1 touched 88 re-added 86 heap 86
+c [occ-bve-wave] 9 tried 86 elimed 0 touched 0 re-added 0 heap 0
+c [occ-bve] grow 16 v-elim 46 -> 1384 vars 25890 cls cl_inc_rate: 1.00 var_dec_rate: 1.03
+c [occ-bve-round] 1 grow 16 tried  2429 elimed 46 (tot 46) cls 25775->25890 (init 25775, d 115) vars 1430->1384 T: 1.27
+c [occ-bve-why] sched: seen 5009 added 1372 skip-cannot-elim 3637 skip-not-cand 0
+c [occ-bve-why] test: entered 2429 ok-gate 39 ok-nogate 7 pure 0
+c [occ-bve-why] rej: occ-lim 142 (avg max/min occ 152.8/116.1) cls-too-long 0 too-many-res 2106 (avg lim 101.5) res-too-large 135 (avg sz 116.0) t-out 0 gate-unit 0 unit-res 0
+c [occ-bve-why] gates: eq 0 or 1236 ite 0 xor 0 irreg 0
+c [occ-bve-round] stop: cls 25890 over init 25775
+c [occ-bve] tried:  2429 v-elim:    46 free-vars: 1384 T: 1.27 T-out: N T-r: 99.82%
+c [occur] link-in T: 0.01 cleanup T: 0.00 overhead T: 0.01
+c [occ-xor-bve] elimed: 0 T: 0.00 T-out: N
+c [simp-stats] aft [32mocc-bve               [0m irred_bins [32m21144[0m irred_long_cls [91m4746[0m irred_long_lits [91m64342[0m units 48
+c [simp-stats]                            free_vars [32m1384[0m elimed_vars [91m3558[0m replaced_vars 19 mem_MB 0 T: 13.380 T-step: 1.27 depth 0
+c Executing OCC strategy token: [93mocc-ternary-res[0m
+c [simp-stats] bef [95mocc-ternary-res       [0m irred_bins 21144 irred_long_cls 4746 irred_long_lits 64342 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.380 depth 0
+c [occ-ternary-res] Ternary res-tri: 117 res-bin: 0 sub: 37 str: 0 T: 0.00 T-out: N T-r: 98.74%
+c [simp-stats] aft [32mocc-ternary-res       [0m irred_bins 21144 irred_long_cls [32m4745[0m irred_long_lits [32m64335[0m units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.382 T-step: 0.00 depth 0
+c Executing OCC strategy token: [93mocc-xor[0m
+c [simp-stats] bef [95mocc-xor               [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.382 depth 0
+c [occ-xor] sort occur list T: 0.01
+c [occ-xor] found      0 T: 0.01 T-out: N T-r: 99.99%
+c [simp-stats] aft [32mocc-xor               [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.389 T-step: 0.01 depth 0
+c [simp-stats] bef [95mocc-finishup          [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.390 depth 0
+c [simp-stats] aft [32mocc-finishup          [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.396 T-step: 0.01 depth 0
+c --> Executing strategy token: [93mmust-scc-vrepl[0m
+c [simp-stats] bef [95mmust-scc-vrepl        [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.396 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [vrep] vars 0 lits 0 rem-bin-cls 0 rem-long-cls 0 BP 0M T: 0.01
+c [simp-stats] aft [32mmust-scc-vrepl        [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.405 T-step: 0.01 depth 0
+c --> Executing strategy token: [93mcard-find[0m
+c [simp-stats] bef [95mcard-find             [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.405 depth 0
+c [simp-stats] aft [32mcard-find             [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.405 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mcl-consolidate[0m
+c [simp-stats] bef [95mcl-consolidate        [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.405 depth 0
+c [mem] consolidate old-sz: 3152K new-sz: 1697K new bits offs: 18 T: 0.00
+c [simp-stats] aft [32mcl-consolidate        [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.406 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mscc-vrepl[0m
+c [simp-stats] bef [95mscc-vrepl             [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.406 depth 0
+c [scc] new: 0 BP 0M T: 0.00
+c [simp-stats] aft [32mscc-vrepl             [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.406 T-step: 0.00 depth 0
+c --> Executing strategy token: [93mrenumber[0m
+c [simp-stats] bef [95mrenumber              [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.406 depth 0
+c [simp-stats] aft [32mrenumber              [0m irred_bins 21144 irred_long_cls 4745 irred_long_lits 64335 units 48
+c [simp-stats]                            free_vars 1384 elimed_vars 3558 replaced_vars 19 mem_MB 0 T: 13.406 T-step: 0.00 depth 0
+c [mem] consolidate mini T: 0.00
+c [timeout] global_timeout_multiplier: 3.9930
+c [branch] rebuilding order heap for all branchings. Current branching: vsids
+c [gauss] clauses deleted that are represented by XORs: 0 xorclauses: 16 GJ matrices: 0 T: 0.00
+c [matrix] performing matrix init
+c [matrix] Good   matrix  0     16 x   58  density:0.1078  xorlen avg:  6.25
+c [matrix] Using 1 matrices recovered from 16 xors T: 0.00 T-out: N
+c [reduce] 35 confl: 135886 red: 13781->9100 cands: 6131 rem: 4598 next: +5916 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1724/2874 live t1/t2/t3: 1286/5264/7231 tiers: 2/6
+c [reduce]   kept-used: 7556 kept-keep: 0 locked: 11 likely-kept lim glue/size: 5/102
+c [reduce] 36 confl: 141803 red: 15005->11276 cands: 4972 rem: 3729 next: +6000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1021/2708 live t1/t2/t3: 1396/5017/8592 tiers: 2/6
+c [reduce]   kept-used: 10025 kept-keep: 0 locked: 8 likely-kept lim glue/size: 4/102
+c rst   stb    W   vs  4252  142K    1365  4745   21K   13.56    4.12 11816     0     0  8362   23.16   14.39
+c [reduce] 37 confl: 147803 red: 17270->13385 cands: 5181 rem: 3885 next: +6082 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/473/3412 live t1/t2/t3: 1466/4643/11161 tiers: 2/6
+c [reduce]   kept-used: 12068 kept-keep: 0 locked: 21 likely-kept lim glue/size: 5/102
+c rst   stb    W   vs  4253  150K    1365  4745   21K   13.56    4.12 16112     0     0  8368   31.00   21.08
+c [distill-long-red0] cls tried: 164/1890 cl-rem: 42 cl-sh: 44 lit-rem: 122 0-depth-ass: 0
+c [distill-long-red0] budget(M): 1.92 used(M): 1.93 T: 0.02 T-out: Y T-r: -0.70%
+c [distill-long-irred] cls tried: 70/449 cl-rem: 2 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.45 used(M): 0.46 T: 0.00 T-out: Y T-r: -1.97%
+c [distill-long-irred] cls tried: 99/374 cl-rem: 0 cl-sh: 10 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.37 used(M): 0.38 T: 0.00 T-out: Y T-r: -2.90%
+c [reduce] 38 confl: 153886 red: 19415->14030 cands: 7180 rem: 5385 next: +6164 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1135/4250 live t1/t2/t3: 1520/4856/13039 tiers: 2/6
+c [reduce]   kept-used: 12215 kept-keep: 0 locked: 20 likely-kept lim glue/size: 4/102
+c [reduce] 39 confl: 160052 red: 20190->14883 cands: 7077 rem: 5307 next: +6244 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/528/4779 live t1/t2/t3: 1547/3906/14737 tiers: 2/6
+c [reduce]   kept-used: 13095 kept-keep: 0 locked: 18 likely-kept lim glue/size: 4/102
+c [reduce] 40 confl: 166296 red: 21124->15553 cands: 7429 rem: 5571 next: +6324 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/615/4956 live t1/t2/t3: 1579/3738/15807 tiers: 2/6
+c [reduce]   kept-used: 13681 kept-keep: 0 locked: 14 likely-kept lim glue/size: 4/141
+c rst   stb    I   vs  4254  166K    1365  4743   21K   13.56    4.12 16177     0     0  8376   33.34   22.65
+c [distill-long-red0] cls tried: 69/1405 cl-rem: 0 cl-sh: 11 lit-rem: 16 0-depth-ass: 0
+c [distill-long-red0] budget(M): 1.41 used(M): 1.43 T: 0.01 T-out: Y T-r: -1.93%
+c [distill-long-irred] cls tried: 27/328 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.33 used(M): 0.36 T: 0.00 T-out: Y T-r: -9.05%
+c [distill-long-irred] cls tried: 31/273 cl-rem: 0 cl-sh: 2 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.27 used(M): 0.30 T: 0.00 T-out: Y T-r: -9.28%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 6
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 84.25%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 79
+c [distill-with-bin-ext] T: 0.04 T-out: N T-r: 46.10%
+c [distill-with-bin-ext] bin-based lit-rem: 5 cl-sub: 2
+c [distill-with-bin-ext] T: 0.01 T-out: N T-r: 68.57%
+c [distill-with-bin-ext] bin-based lit-rem: 38668 cl-sub: 0
+c [distill-with-bin-ext] T: 0.06 T-out: Y T-r: -0.02%
+c [distill] watch-based irred-- cl tried     9322 cl-sh     5 cl-rem    8 lit-rem      5 T: 0.02 T-out: N
+c [distill] watch-based   red-- cl tried    19728 cl-sh  6076 cl-rem   79 lit-rem  38668 T: 0.11 T-out: Y
+c [impl-str] lit bin: 0 set-var: 0 T: 0.00 T-out: N T-r: 99.83% w-visit: 10018
+c [impl-sub] bin: 9 T: 0.00 T-out: N w-visit: 10018
+c rst   stb    B   vs  4256  168K    1365  4655   20K   13.44    4.10 17552     0     0  8118   33.20   23.33
+c [reduce] 41 confl: 172620 red: 21199->15642 cands: 7410 rem: 5557 next: +6403 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/5557 live t1/t2/t3: 1441/2955/16803 tiers: 2/6
+c [reduce]   kept-used: 13768 kept-keep: 0 locked: 21 likely-kept lim glue/size: 10/141
+c [reduce] 42 confl: 179023 red: 22041->15810 cands: 8308 rem: 6231 next: +6480 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/6231 live t1/t2/t3: 1475/3796/16770 tiers: 2/6
+c [reduce]   kept-used: 13714 kept-keep: 0 locked: 19 likely-kept lim glue/size: 8/141
+c rst   stb    B   vs  4261  179K    1365  4655   20K   13.44    4.10 15995     0     0  8122   30.11   20.64
+c [distill-long-red0] cls tried: 84/1545 cl-rem: 0 cl-sh: 29 lit-rem: 67 0-depth-ass: 0
+c [distill-long-red0] budget(M): 1.55 used(M): 1.57 T: 0.02 T-out: Y T-r: -1.50%
+c [distill-long-irred] cls tried: 32/361 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.36 used(M): 0.39 T: 0.00 T-out: Y T-r: -7.64%
+c [distill-long-irred] cls tried: 35/301 cl-rem: 0 cl-sh: 5 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 0.30 used(M): 0.31 T: 0.00 T-out: Y T-r: -2.02%
+c [scc] new: 0 BP 0M T: 0.00
+c [intree] Set 9 vars hyper-added: 8630 trans-irred: 5 trans-red: 153 budget(M): 65.23 used(M): 49.59 T: 0.09 T-out: N T-r: 23.98%
+c [reduce] 43 confl: 185504 red: 12573->9499 cands: 4099 rem: 3074 next: +6557 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/429/2645 live t1/t2/t3: 1423/3470/7680 tiers: 2/6
+c [reduce]   kept-used: 8452 kept-keep: 0 locked: 22 likely-kept lim glue/size: 4/141
+c rst   stb    B   vs  4267  187K    1341  4604   20K   13.39    4.10 11396     0     0 16439   32.12   14.33
+c [sls] 24825 cls, minimum 6 T: 0.00
+c rst   stb    W   vs  4268  191K    1319  4604   20K   13.39    4.10 15481     0     0 16445   29.60   15.38
+c [reduce] 44 confl: 192061 red: 16044->13660 cands: 3179 rem: 2384 next: +6633 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/348/2036 live t1/t2/t3: 1551/4527/9966 tiers: 2/6
+c [reduce]   kept-used: 12857 kept-keep: 0 locked: 8 likely-kept lim glue/size: 3/43
+c [solve] 1 ret: l_False confl: 195593 assumps: 0 T: 18.09
+c ------- FINAL TOTAL SEARCH STATS ---------
+c UIP search time          : 13.59       (73.80     % time)
+c All times are for this thread only except if explicitly specified
+c restarts                 : 4269        (45.82     confls per restart)
+c time                     : 13.59       
+c decisions                : 381109      (0.00      % random)
+c propagations             : 29M         (2167K     props/s)
+c decisions/conflicts      : 1.95        
+c conflicts                : 195593      
+c LEARNT stats
+c units learnt             : 22          (0.01      % of conflicts)
+c bins learnt              : 1439        (0.74      % of conflicts)
+c long learnt              : 193967      (99.17     % of conflicts)
+c SEAMLESS HYPERBIN&TRANS-RED stats
+c advProp called           : 0           
+c hyper-bin add bin        : 0           (0.00      bin/call)
+c trans-red rem irred bin  : 0           (0.00      bin/call)
+c trans-red rem red bin    : 0           (0.00      bin/call)
+c CONFL LITS stats
+c orig                     : 17806552    (91.04     lit/confl)
+c recurs-min effective     : 166647      (85.20     % attempt successful)
+c recurs-min lits          : 10104471    (56.75     % less overall)
+c shrink effective         : 115657      (59.13     % attempt successful)
+c shrink lits              : 2381490     (13.37     % less overall)
+c otfs str/driving         : 413         (164       strengthened/driving)
+c permDiff call%           : 0.00        (0.00      % attempt successful)
+c permDiff lits-rem        : 0           (0.00      less lits/cl on attempts)
+c further-min call%        : 3.01        (63.71     % attempt successful)
+c bintri-min lits          : 11480       (0.06      % less overall)
+c final avg                : 27.20       
+c all-threads sum CPU time : 13.59        s
+c PROP stats
+c Mbogo-props              : 307.69      (22.64     / sec)
+c MHyper-props             : 11.20       (0.82      / sec)
+c Mprops                   : 29.46       (2.17      / sec)
+c -------- OccSimplifier STATS ----------
+c time                     : 0.22        (0.00      % var-elim)
+c called                   : 4           (0.06      s per call)
+c 0-depth assigns          : 1           (0.02      % vars)
+c -------- OccSimplifier STATS END ----------
+c -------- SubsumeStrengthen STATS ----------
+c cl-subs                  : 4020         Clauses
+c cl-str rem lit           : 43033        Lits
+c cl-sub T                 : 0.02         s
+c cl-str T                 : 0.15         s
+c -------- SubsumeStrengthen STATS END ----------
+c ----- SCC STATS --------
+c time                     : 0.00        (0.00      per call)
+c called                   : 11          (1.73      new found per call)
+c found                    : 19          (50.00     % of all found)
+c bogoprops                : 248248      % of all found
+c ----- SCC STATS END --------
+c --------- VAR REPLACE STATS ----------
+c time                     : 0.01        (0.00      per call)
+c trees' crown             : 19          (0.38      % of vars)
+c 0-depth assigns          : 0           (0.00      % vars)
+c lits replaced            : 409         
+c bin cls removed          : 76          
+c long cls removed         : 0           
+c long lits removed        : 0           
+c bogoprops                : 90833       
+c --------- VAR REPLACE STATS END ----------
+c vrep replace time        : 0.01        (0.08      % time)
+c vrep tree roots          : 19          
+c vrep trees' crown        : 19          (1.00      leafs/tree)
+c -------- DISTILL-BIN STATS --------
+c time                     : 0.03        (0.01      per call)
+c timed out                : 3           (100.00    % of calls)
+c distill/checked/potential: 0          /723/67045
+c lits-rem                 : 0           
+c 0-depth-assigns          : 0           (0.00      % of vars)
+c -------- DISTILL STATS END --------
+c -------- STRENGTHEN STATS --------
+c --> watch-based on irred cls
+c time                     : 0.08        (0.01      s/call)
+c shrinked/tried/total     : 5          /52997/52997
+c subsumed/tried/total     : 197        /52997/52997
+c lits-rem                 : 5           (0.00      % of lits tried)
+c called                   : 12          (0.00      % ran out of time)
+c --> watch-based on red cls
+c time                     : 0.40        (0.03      s/call)
+c shrinked/tried/total     : 23920      /94661/131342
+c subsumed/tried/total     : 9367       /94661/131342
+c lits-rem                 : 104824      (4.46      % of lits tried)
+c called                   : 12          (9783.33   % ran out of time)
+c -------- STRENGTHEN STATS END --------
+c -------- IMPLICIT SUB  STATS --------
+c time                     : 0.01        (0.00      per call)
+c timed out                : 0           (0.00      % of calls)
+c rem bins                 : 30          
+c -------- IMPLICIT SUB STATS END --------
+c Mem used                 : 0           MB
+c Mem for longclauses      : 0           MB (0.00      %)
+c [mem] watch alloc        : 4           MB (0.00      %)
+c [mem] watch array        : 0           MB (0.00      %)
+c Mem for assings&vardata  : 0           MB (0.00      %)
+c Mem for search&solve     : 0           MB (0.00      %)
+c Mem for renumberer       : 0           MB (0.00      %)
+c Mem for occsimplifier    : 1           MB (0.00      %)
+c Mem for var_replacer&SCC : 0           MB (0.00      %)
+c Mem for impl subsume     : 0           MB (0.00      %)
+c Mem for 3 distills       : 0           MB (0.00      %)
+c Accounted for mem (rss)  : 0.00        %
+c Accounted for mem (vm)   : 0.00        %
+c restarts                 : 4269        (45.82     confls per restart)
+c time                     : 13.59       
+c decisions                : 381109      (0.00      % random)
+c propagations             : 29M         (2167K     props/s)
+c decisions/conflicts      : 1.95        
+c conflicts                : 195593      
+c conf lits non-minim      : 17806552    (91.04     lit/confl)
+c conf lits final          : 27.20       
+c props/decision           : 0.00        
+c props/conflict           : 0.00        
+c 0-depth assigns          : 1077        (21.50     % vars)
+c 0-depth assigns by CNF   : 0           (0.00      % vars)
+c reduceDB time            : 0.09        (0.50      % time)
+c reductions               : 44          (12168.20  avg red cls at reduce)
+c reduce interval avg      : 4445        (4.45      x reduceint)
+c learnt cls uses          : 594169      (303.78    % of conflicts, as kissat's clauses_used)
+c reduce candidates        : 188810      (35.33     % of red cls seen)
+c reduce removed           : 141590      (74.99     % of candidates)
+c reduce removed tier1     : 0           (0.00      % of removed)
+c reduce removed tier2     : 35283       (24.92     % of removed)
+c reduce removed tier3     : 106307      (75.08     % of removed)
+c avg red cls in tier1     : 752.91      (6.19      % of red cls seen)
+c avg red cls in tier2     : 4543.77     (37.34     % of red cls seen)
+c avg red cls in tier3     : 6871.52     (56.47     % of red cls seen)
+c red cls used since last reduce: 190833      (35.68     % of red cls seen)
+c red cls with life 0      : 31722       (5.93      % of red cls seen)
+c reduce kept used         : 345065      (64.57     % of red cls seen)
+c reduce kept tier1-keep   : 0           (0.00      % of red cls seen)
+c reduce kept locked       : 555         (0.10      % of red cls seen)
+c OccSimplifier time       : 0.22        (1.21      % time)
+c [occur] link-in T: 0.01 cleanup T: 0.01 overhead T: 0.02
+c [occ-substr] long subBySub: 3161 subByStr: 859 lits-rem-str: 43033 T: 0.18
+c SCC time                 : 0.00        (0.02      % time)
+c [scc] new: 19 BP 0M T: 0.00
+c vrep replace time        : 0.01        (0.08      % time)
+c vrep tree roots          : 19          
+c vrep trees' crown        : 19          (1.00      leafs/tree)
+c distill long time        : 0.29        (1.55      % time)
+c distill bin time         : 0.03        (0.14      % time)
+c strength cache-irred time: 0.08        (0.45      % time)
+c strength cache-red time  : 0.40        (2.20      % time)
+c avg cls in red 0         : 12043.34    
+c Conflicts in UIP         : 195593      (10620.77  confl/time_this_thread)
+c Mem used                 : 0.00        MB
+c Total time (this thread) : 18.42       
+c focused  conflicts      85000 ( 43.5%) restarts     4222 ( 98.9%) confl/restart     20.1
+c stable   conflicts     110593 ( 56.5%) restarts       47 (  1.1%) confl/restart   2353.0
+c mode switches 7 rephased 18 eagerly subsumed learnts 32974
+c glue usage in focused mode, 204012 uses (final tier1 glue<=2 tier2 glue<=6)
+c focused glue  1  used      24365  11.94% accumulated  11.94%
+c focused glue  2  used      29803  14.61% accumulated  26.55% tier1
+c focused glue  3  used      27826  13.64% accumulated  40.19%
+c focused glue  4  used      28597  14.02% accumulated  54.21%
+c focused glue  5  used      28884  14.16% accumulated  68.37%
+c focused glue  6  used      23562  11.55% accumulated  79.92% tier2
+c focused glue  7  used      15803   7.75% accumulated  87.66%
+c focused glue  8  used       9438   4.63% accumulated  92.29%
+c focused glue  9  used       5534   2.71% accumulated  95.00%
+c glue usage in stable mode, 390157 uses (final tier1 glue<=2 tier2 glue<=6)
+c stable  glue  1  used      48906  12.53% accumulated  12.53%
+c stable  glue  2  used      41559  10.65% accumulated  23.19% tier1
+c stable  glue  3  used      39795  10.20% accumulated  33.39%
+c stable  glue  4  used      28775   7.38% accumulated  40.76%
+c stable  glue  5  used      28619   7.34% accumulated  48.10%
+c stable  glue  6  used      28706   7.36% accumulated  55.45% tier2
+c stable  glue  7  used      26407   6.77% accumulated  62.22%
+c stable  glue  8  used      23981   6.15% accumulated  68.37%
+c stable  glue  9  used      19500   5.00% accumulated  73.37%
+c stable  glue 10  used      17305   4.44% accumulated  77.80%
+c stable  glue 11  used      14438   3.70% accumulated  81.50%
+c stable  glue 12  used      12021   3.08% accumulated  84.58%
+c stable  glue 13  used      10008   2.57% accumulated  87.15%
+c stable  glue 14  used       8663   2.22% accumulated  89.37%
+c stable  glue 15  used       7322   1.88% accumulated  91.25%
+c stable  glue 16  used       6241   1.60% accumulated  92.85%
+c stable  glue 17  used       5280   1.35% accumulated  94.20%
+c stable  glue 18  used       4316   1.11% accumulated  95.31%
+c ------- SOLVE CALL STATS ---------
+c solve() calls            : 1           
+c solve() SAT/UNSAT/UNDEF  : 0/1/0       
+c conflicts per solve()    : 195593.00   (195593    max)
+c conflicts in UNSAT solve(): 195593      (100.00    % of conflicts)
+c solve() calls by conflicts: 0:0 <10:0 <100:0 <1K:0 <10K:0 10K+:1  
+c assumptions per solve()  : 0.00        
+c simplify() by user       : 0           (3         inprocess rounds)
+c search() calls           : 3           (65197.67  conflicts per call)
+c time in solve()/simplify(): 18.09       (99.94     % of process CPU time)
+c clauses added by user    : 28257       (2.09      avg lits)
+c xors added by user       : 16          (6.50      avg vars)
+c vars created by user     : 5009        
+c matrix inits             : 3           (2         matrices built)
+c matrix avg rows x cols   : 16.00       (59.00     cols)
+c matrices auto-disabled   : 0           (0.00      % of matrices)
+c gauss find-truth calls   : 742785      (57.20     % prop or confl)
+c gauss elim calls         : 53733       (27.17     % prop or confl)
+c gauss props              : 378755      (1.29      % of all props)
+c gauss conflicts          : 14145       (7.23      % of all conflicts)
+c ------- TIME BREAKDOWN -------
+c search                           12.53 s  69.26 %        3 calls
+c occ-bve                           3.46 s  19.11 %        3 calls
+c occ-sweep                         0.68 s   3.74 %        3 calls
+c sub-str-cls-with-bin              0.52 s   2.87 %        6 calls
+c distill-cls                       0.29 s   1.58 %       12 calls
+c occ-backw-sub-str                 0.23 s   1.27 %        2 calls
+c intree-probe                      0.23 s   1.25 %        3 calls
+c occ-other                         0.04 s   0.25 %        4 calls
+c distill-bins                      0.03 s   0.14 %        3 calls
+c must-scc-vrepl                    0.02 s   0.08 %        3 calls
+c occ-xor                           0.01 s   0.07 %        3 calls
+c occ-ternary-res                   0.01 s   0.06 %        2 calls
+c str-impl                          0.00 s   0.02 %        3 calls
+c sub-impl                          0.00 s   0.02 %        3 calls
+c hyper-bin-clean                   0.00 s   0.02 %        2 calls
+c scc-vrepl                         0.00 s   0.01 %        5 calls
+c cl-consolidate                    0.00 s   0.01 %        2 calls
+c occ-backw-sub                     0.00 s   0.00 %        1 calls
+c occ-clean-implicit                0.00 s   0.00 %        2 calls
+c card-find                         0.00 s   0.00 %        2 calls
+c renumber                          0.00 s   0.00 %        2 calls
+c other                             0.04 s   0.24 %
+s UNSATISFIABLE
+c [g 0] 16x58 dens: 0.1131 find: 320K (prop 43.8% confl 1.1%) elim: 22K (prop 21.0% confl 0.4%)
