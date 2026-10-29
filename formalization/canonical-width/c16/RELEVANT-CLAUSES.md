@@ -138,3 +138,35 @@ limit and a10,000-round ceiling. Their input hashes, source hashes, commands and
 budgets were frozen before either call in `relevant-results/comparison-frozen.json`.
 The comparison starts at2026-10-29T18:31:31Z, leaving time for proof replay and
 publication inside the approved overall deadline.
+
+A post-comparison diagnostic, without changing the frozen bank, replayed both
+existing propagation methods on each selected required subset. **All256 are
+accepted by unrestricted propagation and by propagation on the exact110-class
+pair domain.** The new small source restrictions therefore add information
+missed by both propagation checks on those subsets. This does not say that
+propagation accepts the larger saved matchings: it rejected those earlier,
+using additional requirements. The diagnostic checked1,620 physical forced-coloop
+covectors and is saved in `relevant-results/propagation-overlap.json`.
+
+## Solver outcomes and cost accounting
+
+Both frozen calls report UNSAT for the same compact cover case. The baseline
+used174.86 seconds and528 partial-match refinements; the seeded call used91.56
+seconds and267 refinements. The seeded call added527 dynamic cuts, versus1,039
+for baseline. These are single-instance observations, not a general performance
+estimate. Both calls finish well before the1,200-second limit.
+
+The baseline also reaches UNSAT, so the cover removal cannot be attributed
+solely to the new bank. The additional clauses improve this measured discovery
+run; they are not necessary to obtain a contradiction from the retained
+baseline after further refinement. Mining and the first independent gate replay
+took roughly563 seconds together, exceeding the approximately83 seconds saved
+in this one solver comparison. No net end-to-end speedup is established for a
+single case. Reuse of the source-valid bank across other cases is plausible but
+needs a separate fixed-bank comparison.
+
+Fresh ordinary CaDiCaL proofs were generated for both final CNFs. The seeded
+proof is259,758,654 uncompressed bytes (53,267,589 gzip bytes); the baseline
+proof is396,419,797 uncompressed bytes (79,439,475 gzip bytes). The frozen
+solver results remain distinct from the independent source/CNF/DRAT receipts.
+No cover count is changed until those checks and cover-domain induction pass.
