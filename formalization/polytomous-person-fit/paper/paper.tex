@@ -2,7 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{amsmath,amssymb,booktabs,array,graphicx}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,float}
 \usepackage{hyperref}
 \setlength{\emergencystretch}{8em}
 \renewcommand{\arraystretch}{1.3}
@@ -42,34 +42,73 @@
 \title{Replication of the polytomous person-fit Monte Carlo\\
 in Beck (2023)}
 \author{}
-\date{28 October 2026}
+\date{29 October 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Do the classification rates and the ANOVA tables in Beck (2023) follow
-from the Monte Carlo described there?
-All \(504\) partial omega squared values in Appendix~C agree with the
-printed \(F\) statistics at \(N=32{,}000\), to within \(0.005\).
-Specificity and negative predictive value in Tables~A24--A26 sit within
-\(0.006\) of the identity that holds when \(50\) of \(1{,}000\)
-respondents are flagged.
-The sensitivity levels do not.
-None of the eighteen grand sensitivities fall inside a two-standard-error
-band, before or after Holm.
-The nearest cells are normed Guttman errors for midpoint responding,
-\(0.0035\) against a printed \(0.00\), and for extreme responding,
-\(0.284\) against \(0.27\).
+Do the detection rates in Beck (2023) follow from the Monte Carlo
+described there?
+The dissertation's headline result is the sensitivity of \(U3\), the
+normed number of Guttman errors, and \(H_i^T\) for each of six bias
+types.
+This note recomputes the printed ANOVA tables and reruns the
+classification rates from that design, supplying the inputs the
+dissertation does not print.
+None of the eighteen grand sensitivities fall inside a
+two-standard-error band, before or after Holm.
+Careless responding comes out between \(0.44\) and \(0.50\), against
+the printed \(0.29\).
+The nearest misses, at an extreme-response constant \(\varepsilon=0.5\),
+are the normed Guttman errors for midpoint responding, \(0.0035\)
+against a printed \(0.00\), and for extreme responding, \(0.284\)
+against \(0.27\).
+The likely causes are unpublished inputs: the \texttt{ltm} thresholds
+and the missing seven-option boundary row, the boundary draw and its
+seed, the magnitude of \(\varepsilon\), and the fraction of items
+replaced when responding is careless.
+A second generator, the package versions current in May~2023, the
+Monte Carlo standard errors, and the person-fit formulas do not
+account for those misses.
+The ANOVA effect sizes do replicate.
+All \(504\) partial omega squared values agree with the printed \(F\)
+statistics at \(N=32{,}000\), to within \(0.005\).
+Specificity, negative predictive value, and positive predictive value
+largely follow from flagging \(5\%\) of respondents.
+Specificity and negative predictive value sit within \(0.006\) of that
+identity, and positive predictive value sits within \(0.02\).
 \end{abstract}
 
 \section{The question, and the headline}
 \label{sec:headline}
 
-This section answers whether the printed rates and the printed ANOVA
-tables come from the Monte Carlo in the dissertation.
-The ANOVA arithmetic and the relationship among the four rates do.
-The sensitivity levels do not, under the assumptions stated below.
+This section answers whether the printed detection rates come from the
+Monte Carlo in the dissertation.
+Beck's headline result is the sensitivity of \(U3\), the normed number
+of Guttman errors, and \(H_i^T\) for each of six bias types.
+The rerun uses the printed design and supplies the inputs the
+dissertation does not print.
+Beck's headline sensitivities did not replicate, under the assumptions
+stated below.
+None of the eighteen grand sensitivities fall inside a
+two-standard-error band, before or after Holm.
+Careless responding comes out between \(0.44\) and \(0.50\), against
+the printed \(0.29\).
+The nearest misses are the normed Guttman errors for midpoint
+responding, \(0.0035\) against \(0.00\), and for extreme responding,
+\(0.284\) against \(0.27\), at \(\varepsilon=0.5\).
+The likely causes are unpublished inputs: the \texttt{ltm} thresholds
+and the seven-option row, the boundary draw and its seed, the
+extreme-response constant \(\varepsilon\), and the careless-item
+fraction.
+The generator, the package versions, Monte Carlo noise, and the
+person-fit implementations were checked and do not account for the
+misses.
+The ANOVA effect sizes do replicate.
+Specificity, negative predictive value, and positive predictive value
+largely follow from flagging \(5\%\) of respondents, and those printed
+rates sit close to that identity.
 
 Beck (2023) \cite{beck2023} studies whether three nonparametric
 person-fit statistics detect response bias on ordered polytomous items.
@@ -86,17 +125,6 @@ Sensitivities run from \(0.00\), for midpoint responding on the normed
 Guttman errors and on \(U3\), to \(0.29\), for careless responding on
 the normed Guttman errors.
 Specificities run from \(0.94\) to \(0.98\).
-
-Two checks use only the printed numbers.
-Partial omega squared, computed from each printed \(F\) at
-\(N=32{,}000\), matches all \(504\) entries in Tables~C1--C18 to within
-\(0.005\), which is the half-unit of the printed two-decimal column.
-When exactly \(50\) of \(1{,}000\) people are flagged and \(100\) of them
-are the biased respondents, specificity, positive predictive value, and
-negative predictive value are functions of sensitivity.
-Specificity and negative predictive value in Tables~A24--A26 sit within
-\(0.006\) of that identity.
-Positive predictive value sits within \(0.02\).
 
 The generative rerun does not land on the sensitivity column.
 The reported run uses the linear predictor in Equation~23 as printed,
@@ -124,6 +152,18 @@ sensitivity is \(0.0041\).
 PerFit~1.4.6, the release current in May~2023, and mokken~3.0.6 score
 the same matrices as PerFit~1.4.7 and mokken~3.1.2.
 
+Two checks use only the printed numbers.
+Partial omega squared, computed from each printed \(F\) at
+\(N=32{,}000\), matches all \(504\) entries in Tables~C1--C18 to within
+\(0.005\), which is the half-unit of the printed two-decimal column.
+When exactly \(50\) of \(1{,}000\) people are flagged and \(100\) of them
+are the biased respondents, specificity, positive predictive value, and
+negative predictive value are functions of sensitivity.
+Those three rates largely follow from flagging \(5\%\) of respondents.
+Specificity and negative predictive value in Tables~A24--A26 sit within
+\(0.006\) of that identity.
+Positive predictive value sits within \(0.02\).
+
 The original work is the design, the bias definitions, and the printed
 tables.
 The calculations below are ours: the arithmetic checks, the Monte Carlo,
@@ -137,6 +177,13 @@ The dissertation's own tests are one classification per replication.
 
 This section answers which printed claims agree with a direct
 calculation.
+Beck's headline sensitivities do not.
+None of the eighteen grand sensitivities fall inside a
+two-standard-error band, before or after Holm.
+The ANOVA effect sizes do.
+Specificity, negative predictive value, and positive predictive value
+largely follow from flagging \(5\%\) of respondents, and those printed
+rates sit close to that identity.
 Table~\ref{tab:compare} is that comparison.
 ``Match'' means the same number, or a Monte Carlo gap no larger than
 two combined standard errors.
@@ -148,14 +195,50 @@ The combined standard error uses the printed count of \(1{,}000\)
 replications and our count of \(40\), with our within-cell standard
 deviation as the plug-in for both.
 
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \small
-\begin{tabular}{@{}p{0.30\textwidth}p{0.22\textwidth}p{0.24\textwidth}p{0.12\textwidth}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}@{}}
 \toprule
 Claim & Published & Ours & Verdict \\
 \midrule
-Partial omega squared, 504 effects &
+Eighteen grand sensitivities &
+Tables~A24--A26 &
+\(0\) of \(18\) inside two SE; Holm keeps the misses &
+no match \\
+Guttman grand, careless &
+\(0.29\) &
+\(0.444\) to \(0.500\) &
+no match \\
+Guttman grand, midpoint &
+\(0.00\) &
+\(0.0035\) at \(\varepsilon=0.5\) &
+no match \\
+Guttman grand, extreme &
+\(0.27\) &
+\(0.284\) at \(\varepsilon=0.5\) &
+no match \\
+\(U3\) grand column, either tail &
+Same shape as the Guttman column &
+Columns do not track &
+no match \\
+Guttman, acquiescence, length~36 &
+\(0.072\) &
+\(0.0718\) &
+match \\
+Guttman, midpoint, seven~options &
+\(0.0031\) &
+\(0.0026\) &
+match \\
+Guttman, extreme, three~dimensions &
+\(0.260\) &
+\(0.263\) &
+close \\
+Guttman, extreme, six~options &
+\(0.281\) &
+\(0.275\) &
+close \\
+Partial omega squared, 504~effects &
 Two decimals in Tables~C1--C18 &
 From the printed \(F\), within \(0.005\) &
 match \\
@@ -167,89 +250,34 @@ Grand positive predictive value &
 Tables~A24--A26 &
 Within \(0.02\) of that identity &
 close \\
-Guttman, acquiescence, length 36 &
-\(0.072\) &
-\(0.0718\) &
-match \\
-Guttman, midpoint, seven options &
-\(0.0031\) &
-\(0.0026\) &
-match \\
-Guttman, extreme, three dimensions &
-\(0.260\) &
-\(0.263\) &
-close \\
-Guttman, extreme, six options &
-\(0.281\) &
-\(0.275\) &
-close \\
-Guttman grand, midpoint &
-\(0.00\) &
-\(0.0035\) &
-no match \\
-Guttman grand, extreme &
-\(0.27\) &
-\(0.284\) &
-no match \\
-Guttman grand, careless, every item &
-\(0.29\) &
-\(0.500\) &
-no match \\
-Eighteen grand sensitivities &
-Tables~A24--A26 &
-\(0\) of \(18\) inside two SE; Holm keeps the misses &
-no match \\
-\(U3\) grand column, either tail &
-Same shape as the Guttman column &
-The two columns separate &
-no match \\
 \bottomrule
 \end{tabular}
 \caption{Printed claims against our calculations. Rates are proportions.
 The Monte Carlo rows use \(\varepsilon=0.5\) and the aberrant-direction
-tail: low \(H_i^T\), high normed Guttman errors, high \(U3\).}
+tail: low \(H_i^T\), high normed Guttman errors, high \(U3\).
+The careless interval also includes item fractions \(0.5\), \(0.2\), and
+\(0.1\) at \(\varepsilon=1\).}
 \label{tab:compare}
 \end{table}
 
-The omega squared row is an algebraic check, not a second simulation.
-For an effect with degrees of freedom \(\nu\) and printed \(F\),
-\[
-\hat\omega^2_p=\frac{\nu(F-1)}{\nu(F-1)+N},\qquad N=32{,}000.
-\]
-The largest absolute gap across the \(504\) effects is \(0.0050\).
-The script is \src{simulation/extract_published.py}, and the row-level
-file is \src{simulation/out/anova_check.csv}.
-
-The identity row uses a fixed flag count.
-With \(100\) biased respondents and \(50\) flags,
-\[
-\mathrm{TP}=100\,s,\quad
-\mathrm{FP}=50-\mathrm{TP},\quad
-\mathrm{spec}=\frac{900-\mathrm{FP}}{900},\quad
-\mathrm{PPV}=\frac{\mathrm{TP}}{50},\quad
-\mathrm{NPV}=\frac{850+\mathrm{TP}}{950},
-\]
-where \(s\) is sensitivity.
-A 5\% rule cannot produce a sensitivity above \(0.50\).
-Every printed grand sensitivity is at most \(0.29\), so the identity is
-inside that bound.
-The printed rows are averages of ratios, so the identity applied to the
-averaged sensitivity is an approximation.
-On the \(18\) grand rows other than the mean row, all three derived
-rates sit within \(0.02\) of the printed rates, and specificity and
-negative predictive value sit within \(0.006\).
-The file is \src{simulation/out/identity_residuals.csv}.
-
 Table~\ref{tab:guttman} is the normed-Guttman grand column at
 \(\varepsilon=0.5\).
-Midpoint responding is the floor in the dissertation and in the rerun.
+None of those six rates fall inside the two-standard-error band.
+Midpoint responding is the floor in the dissertation and in the rerun,
+and it is the nearest miss: \(0.0035\) against a printed \(0.00\), with
+combined standard error \(0.00018\).
 Extreme responding is the highest rate in that column once careless
-responding is set aside, in the dissertation and in the rerun.
-The levels still miss the two-standard-error band.
-Careless responding sits on the \(0.50\) ceiling, which is what perfect
-separation looks like when \(50\) flags are available for \(100\) biased
-respondents.
+responding is set aside, in the dissertation and in the rerun, and it
+is the other near miss: \(0.284\) against \(0.27\), with combined
+standard error \(0.00088\).
+Careless responding sits on the \(0.50\) ceiling when every item is
+replaced, which is what perfect separation looks like when \(50\) flags
+are available for \(100\) biased respondents.
 The printed careless rate is \(0.29\).
+Item fractions \(0.5\), \(0.2\), and \(0.1\), drawn at \(\varepsilon=1\),
+leave that sensitivity at \(0.500\), \(0.485\), and \(0.444\).
+Across these fractions the careless rate stays between \(0.44\) and
+\(0.50\).
 
 \begin{table}[ht]
 \centering
@@ -292,9 +320,43 @@ The rest of that lower-tail column does not follow the page.
 Of the \(60\) factor-margin sensitivities for the normed Guttman errors
 at \(\varepsilon=0.5\), two are inside the raw band and two are close.
 After Holm, three of the sixty are retained as matches.
-The two raw matches are Table~A6, test length \(36\), acquiescence, and
-Table~A12, seven options, midpoint responding.
+The two raw matches are Table~A6, test length \(36\), acquiescence,
+\(0.0718\) against \(0.072\), and Table~A12, seven options, midpoint
+responding, \(0.0026\) against \(0.0031\).
+The two close rows are extreme responding in three dimensions, \(0.263\)
+against \(0.260\), and in six options, \(0.275\) against \(0.281\).
 The full grid is \src{simulation/out/comparison_eps05.csv}.
+
+The omega squared row is an algebraic check, not a second simulation.
+For an effect with degrees of freedom \(\nu\) and printed \(F\),
+\[
+\hat\omega^2_p=\frac{\nu(F-1)}{\nu(F-1)+N},\qquad N=32{,}000.
+\]
+The largest absolute gap across the \(504\) effects is \(0.0050\).
+The script is \src{simulation/extract_published.py}, and the row-level
+file is \src{simulation/out/anova_check.csv}.
+
+Specificity, negative predictive value, and positive predictive value
+largely follow from flagging \(5\%\) of respondents.
+The identity row uses a fixed flag count.
+With \(100\) biased respondents and \(50\) flags,
+\[
+\mathrm{TP}=100\,s,\quad
+\mathrm{FP}=50-\mathrm{TP},\quad
+\mathrm{spec}=\frac{900-\mathrm{FP}}{900},\quad
+\mathrm{PPV}=\frac{\mathrm{TP}}{50},\quad
+\mathrm{NPV}=\frac{850+\mathrm{TP}}{950},
+\]
+where \(s\) is sensitivity.
+A 5\% rule cannot produce a sensitivity above \(0.50\).
+Every printed grand sensitivity is at most \(0.29\), so the identity is
+inside that bound.
+The printed rows are averages of ratios, so the identity applied to the
+averaged sensitivity is an approximation.
+On the \(18\) grand rows other than the mean row, all three derived
+rates sit within \(0.02\) of the printed rates, and specificity and
+negative predictive value sit within \(0.006\).
+The file is \src{simulation/out/identity_residuals.csv}.
 
 \section{What we did ourselves, and what we took from others}
 \label{sec:ours}
@@ -827,6 +889,32 @@ The combined standard errors on the grand rates are about \(10^{-3}\) or smaller
 The bootstrap-median cutoff was checked on two artificial samples, not
 on every replication of the grid.
 The differences were \(3\times 10^{-4}\) and \(6\times 10^{-4}\).
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This section answers whether the dissertation's headline detection
+rates were recovered.
+They were not.
+None of the eighteen grand sensitivities fall inside a
+two-standard-error band, before or after Holm.
+Careless responding comes out between \(0.44\) and \(0.50\), against
+the printed \(0.29\).
+The nearest misses, at \(\varepsilon=0.5\), are the normed Guttman
+errors for midpoint responding, \(0.0035\) against \(0.00\), and for
+extreme responding, \(0.284\) against \(0.27\).
+The likely causes are unpublished inputs: the \texttt{ltm} thresholds
+and the seven-option row, the boundary draw and its seed, the
+extreme-response constant, and the careless fraction.
+The generator, the package versions current in May~2023, Monte Carlo
+noise, and the person-fit implementations do not account for the
+misses.
+The ANOVA effect sizes do replicate: all \(504\) partial omega squared
+values agree with the printed \(F\) statistics at \(N=32{,}000\), to
+within \(0.005\).
+Specificity, negative predictive value, and positive predictive value
+largely follow from flagging \(5\%\) of respondents, and in the printed
+tables they sit close to that identity.
 
 \section{Code and source availability}
 \label{sec:availability}
