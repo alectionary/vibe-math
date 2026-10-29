@@ -2,9 +2,9 @@
 
 Inventory updated October 29, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **408 canonical entries**: the original 40 dissertation targets and **368 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 247 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **424 canonical entries**: the original 40 dissertation targets and **384 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 263 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [122 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [131 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 121 |
-| Additional directions/formulation/method entries outside the denominator | 247 |
+| Additional directions/formulation/method entries outside the denominator | 263 |
 | Combined eligible targets | 160 = 39 + 121 |
 | Eligible targets with an identified, verified proof-assistant statement | 6/160 (3.75%) |
 | Eligible targets with an identified, verified Lean statement | 6/160 (3.75%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/160 |
 | Additional identified Lean statements without a build audit | 1/160 |
 | Eligible targets with Lean discovery still unassessed in this extension | 52/160 |
-| Articles/preprints in scope | 195 |
-| Full-text sources screened, including withdrawn history | 163/195 |
-| Current-publication full texts screened | 162 |
+| Articles/preprints in scope | 204 |
+| Full-text sources screened, including withdrawn history | 165/204 |
+| Current-publication full texts screened | 164 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 32/195 |
+| Not fully assessed | 39/204 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -246,6 +246,15 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F160](https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf) | full text screened | 0 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
 | [F161](https://arxiv.org/pdf/2304.04292) | full text screened | 1 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
 | [F162](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf) | full text screened | 1 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F164](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf) | full text screened | 10 | Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed. |
+| [F165](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf) | full text screened | 6 | Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed. |
+| [F166](https://arxiv.org/abs/1401.5860) | metadata or selected passages only | Not assessed | Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed. |
+| [F167](https://research.monash.edu/en/publications/on-cnf-encodings-of-decision-diagrams/) | metadata or selected passages only | Not assessed | Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened. |
+| [F168](https://arxiv.org/abs/1604.06641) | metadata or selected passages only | Not assessed | Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed. |
+| [F169](https://arxiv.org/abs/2105.12284) | metadata or selected passages only | Not assessed | Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed. |
+| [F170](https://johnhooker.tepper.cmu.edu/papers.html) | metadata or selected passages only | Not assessed | Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup. |
+| [F171](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf) | metadata or selected passages only | Not assessed | Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure. |
+| [F172](https://epubs.siam.org/doi/10.1137/21M139339X) | metadata or selected passages only | Not assessed | Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established. |
 
 ## Reproducible evidence and limits
 
@@ -4837,3 +4846,164 @@ Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis com
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F162: SectionV discussion, PDFp5, fourth extension point](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf); PDF pages 5; author stated question or direction.
+
+### L-F164-filtering-search-guarantees
+
+Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.1 Search order, PDFp5](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 5; author stated question or direction.
+
+### L-F164-side-constraint-applications
+
+Develop solver integrations for richer subgraph variants and application side constraints.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Problem variants, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-symmetry-implementation
+
+Improve practical input-specific symmetry handling without costly external dependencies.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Symmetries, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-faster-exact-counting
+
+Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Faster counting, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-approximate-counting
+
+Implement approximate counting for subgraph instances.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Faster counting, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-uniform-sampling
+
+Find practical uniform sampling methods that avoid full subgraph enumeration.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Faster counting, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-special-pattern-detection
+
+Detect easy pattern classes and select specialized algorithms automatically.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Special classes of pattern, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F164-proof-logging
+
+Extend independently checkable proof logging for strong subgraph inference.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Proof logging, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F164-automatic-configuration
+
+Choose supplemental graphs and solver configurations per instance.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Automatic configuration, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F164-application-benchmarks
+
+Collect diverse application instances for subgraph-solver benchmarking.
+
+- Type: method request; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Benchmarking, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F165-single-clause-inprocessing
+
+Combine incremental inprocessing efficiently with external clauses added individually during search.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section2.4, PDFp5](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 5; author stated question or direction.
+
+### L-F165-external-proof-production
+
+Extend and evaluate proof production for external propagators and different external-clause kinds.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5; related cvc5 proof integration in Section4.2, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+- Related, not merged: L-F161-proof-producing-cdcl-t.
+
+### L-F165-restart-backtrack-control
+
+Investigate external control of restarts and conflict backtracking.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F165-solver-state-access
+
+Expose useful solver statistics and variable or clause scores through the interface.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F165-further-applications
+
+Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F165-cvc5-tuning
+
+Tune cvc5 internals for the IPASIR-UP integration.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section4.2 conclusion, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.

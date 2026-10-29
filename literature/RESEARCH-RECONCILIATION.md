@@ -668,6 +668,29 @@ Four complete algebraic/parity-method papers: six broad historical directions/fo
 - [L-F161-proof-producing-cdcl-t](OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t): Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
 - [L-F162-iterative-solver-extensions](OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions): Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
 
-Current cohort: **408 canonical entries,160 eligible targets,195 paper records,163 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-strategy-sources-screen-20261029
 
-The current source index has **122** records, with actual access levels retained.
+Two complete solver-method papers add sixteen historical broad directions/method requests. Seven gated primary metadata/selected-passage leads retain null question counts; none is called inaccessible merely because full retrieval was not prioritized. No new eligible target or Lean completion.
+
+[Screen report](../formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md). Added **16 entries**, **0 eligible targets**, **9 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F164-filtering-search-guarantees](OPEN-PROBLEMS.md#l-f164-filtering-search-guarantees): Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.
+- [L-F164-side-constraint-applications](OPEN-PROBLEMS.md#l-f164-side-constraint-applications): Develop solver integrations for richer subgraph variants and application side constraints.
+- [L-F164-symmetry-implementation](OPEN-PROBLEMS.md#l-f164-symmetry-implementation): Improve practical input-specific symmetry handling without costly external dependencies.
+- [L-F164-faster-exact-counting](OPEN-PROBLEMS.md#l-f164-faster-exact-counting): Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.
+- [L-F164-approximate-counting](OPEN-PROBLEMS.md#l-f164-approximate-counting): Implement approximate counting for subgraph instances.
+- [L-F164-uniform-sampling](OPEN-PROBLEMS.md#l-f164-uniform-sampling): Find practical uniform sampling methods that avoid full subgraph enumeration.
+- [L-F164-special-pattern-detection](OPEN-PROBLEMS.md#l-f164-special-pattern-detection): Detect easy pattern classes and select specialized algorithms automatically.
+- [L-F164-proof-logging](OPEN-PROBLEMS.md#l-f164-proof-logging): Extend independently checkable proof logging for strong subgraph inference.
+- [L-F164-automatic-configuration](OPEN-PROBLEMS.md#l-f164-automatic-configuration): Choose supplemental graphs and solver configurations per instance.
+- [L-F164-application-benchmarks](OPEN-PROBLEMS.md#l-f164-application-benchmarks): Collect diverse application instances for subgraph-solver benchmarking.
+- [L-F165-single-clause-inprocessing](OPEN-PROBLEMS.md#l-f165-single-clause-inprocessing): Combine incremental inprocessing efficiently with external clauses added individually during search.
+- [L-F165-external-proof-production](OPEN-PROBLEMS.md#l-f165-external-proof-production): Extend and evaluate proof production for external propagators and different external-clause kinds.
+- [L-F165-restart-backtrack-control](OPEN-PROBLEMS.md#l-f165-restart-backtrack-control): Investigate external control of restarts and conflict backtracking.
+- [L-F165-solver-state-access](OPEN-PROBLEMS.md#l-f165-solver-state-access): Expose useful solver statistics and variable or clause scores through the interface.
+- [L-F165-further-applications](OPEN-PROBLEMS.md#l-f165-further-applications): Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
+- [L-F165-cvc5-tuning](OPEN-PROBLEMS.md#l-f165-cvc5-tuning): Tune cvc5 internals for the IPASIR-UP integration.
+
+Current cohort: **424 canonical entries,160 eligible targets,204 paper records,165 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **131** records, with actual access levels retained.
