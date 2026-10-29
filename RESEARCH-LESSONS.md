@@ -517,3 +517,29 @@ placing it after another separator can leave it uncalled throughout a bounded
 run. Preserve small source certificates for later use as initial clauses, rather
 than assuming that a stronger oracle automatically improves search.
 [Written argument and checked source examples](formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md).
+
+## Lessons from mining relevant small C16 clauses
+
+A strong oracle can remain unused when an earlier separator rejects every
+visited model. Mining saved models offline and shrinking the required sets
+turns its conclusions into short initial clauses. On the actual hard C16 case,
+a fixed bank of one two-vector and255 three-vector patterns is source-valid;
+all256 smaller subsets pass both existing propagation checks. Independent
+replay verifies each selected certificate and all767 single-vector deletions.
+The precise claim is single-deletion irreducibility under the checked criterion,
+not globally shortest clauses or extendibility of every proper subset.
+
+Freeze the initial bank before measuring its effect. The relevant-clause
+comparison starts from the same checked baseline and changes only the initial
+clauses. Both methods prove the compact case: seeded discovery takes about92
+seconds versus175, with267 versus528 refinements. Both ordinary proofs and the
+cover-domain induction replay, reducing the sufficient cover409 to408. Because
+the baseline also solves, the new clauses are not necessary for that removal.
+The roughly563 seconds spent mining and checking the bank exceed the83-second
+discovery saving in this one case. A faster solver phase is not a net
+single-case speedup; reuse needs a frozen comparison on other cases.
+
+Universal source clauses transfer across pair domains. Conditional propagation
+clauses do not: revalidate or omit them when a new cover trial widens the
+allowed pair domain. Preserve that distinction when reusing a successful bank.
+[Source restrictions, matched proofs and cost accounting](formalization/canonical-width/c16/RELEVANT-CLAUSES.md).
