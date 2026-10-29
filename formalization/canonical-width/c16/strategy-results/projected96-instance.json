@@ -1,0 +1,45 @@
+{
+  "status": "FROZEN_HEREDITARY_PROJECTION_MODEL_REQUIRES_REPLAY",
+  "source_C16_answered": false,
+  "source_full_frame_size": 128,
+  "selected_pairs": 96,
+  "partial_frame_model": true,
+  "full_frame_projection_necessary": true,
+  "positive_full_basis_constraints_imported": false,
+  "variables": 12636,
+  "clauses": 1236818,
+  "input_file": "projected96-instance.cnf.gz",
+  "input_sha256": "5690bb9288d8c097cf7725f584f071334a7ad1a895aea713b8371810884ba5c8",
+  "details": {
+    "adder_gates": 5724,
+    "partner_label_variables": 5472,
+    "partner_clauses": 775872,
+    "source_negative_clauses": 425244,
+    "exact_count_in_each_sector": 96
+  },
+  "seed_dependencies": [
+    {
+      "c16_path": "strategy-results/closure-cover-extension.json",
+      "sha256": "9000b5c535bfbf3f27796e2d9474ca550111b2dc4bebd0461d01c2db125d1930"
+    },
+    {
+      "c16_path": "strategy-results/closure-global.json",
+      "sha256": "b8b28aa53174d615c7ea91505cf4d34c331dc47aa7b324b6124945f5440efbdd"
+    },
+    {
+      "c16_path": "strategy-results/matroid-closure-global.json",
+      "sha256": "15fa2b7b299e793f2bcdcb0a9975a23e17464d522344a35c5a6f18d35c065c47"
+    },
+    {
+      "c16_path": "strategy-results/phase-matroid-closure-global.json",
+      "sha256": "f9c68555d93a48b73a683ef47b3ca801f1469efd65b61074b06eb870fe9ec983"
+    },
+    {
+      "c16_path": "strategy-results/rank-global.json",
+      "sha256": "4be9860770c3709cd039224a69f19eb7aad376a74db0878a44bb071442dbd240"
+    }
+  ],
+  "phase_profiles_c16_path": "algebraic-results/orbit-rank-profiles.json.gz",
+  "phase_profiles_sha256": "6e4852d5a003c7c6877f22f03a1fe4f719e8152b709ab00b988a583de58d9439",
+  "acceptance": "SAT gives a physically replayed partial matching only; UNSAT plus independent model/source/proof replay excludes a128-pair source frame because deleting128-k pairs preserves every imported all-negative clause."
+}
