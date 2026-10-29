@@ -44,4 +44,50 @@ Decisive source endpoints remain a checked physical 128-pair construction or a
 complete global nonexistence certificate. A first full-anchor exclusion would
 be a stronger milestone than another sufficient-cover removal.
 
-Status: preparation; remote claim pending.
+Remote claim confirmed at ownership commit
+`5819f0d68c9dcce31657e3c1552521013194cb5c`.
+The frozen comparison is commit `424934e`; discovery began at 19:34:25Z.
+The common domain has 113 nonzero-signature classes, plus every physical
+zero-signature pair. The cohort is (6,28,13), (8,26,1), (32,32,3), selected by
+the least individual compatible edge count in three disjoint structural strata.
+This is a held-out, deliberately selected cohort, not a random sample. No old
+conditional domain cut is imported. Each variant starts with the same 7,474
+universal baseline certificate records; only the strengthened variant imports
+the unchanged 256-pattern bank. The preselected full-source anchor is (48,48).
+
+## Structural fallback: combine restrictions on detecting vectors
+
+This is a written implication considered while the frozen comparisons run;
+its strictness and usefulness on the source remain untested at this stage.
+
+Use the notation of THREE-TERM-CONTINUATION.md: J is a mandatory subset of
+the permitted Z basis, L=span(J), D_J(w) is the complete eligible X detecting
+pool for w outside L, and ell_J(w) is the least source Z word length modulo L.
+Let H be any family of certified forbidden simultaneous-use subsets of X.
+Let alpha_H(D) be the largest cardinality of a subset of D containing no
+member of H. Then
+
+    ell_J(w) > alpha_H(D_J(w))
+
+implies that no permitted full dual frame can contain J.
+
+Proof: expand w in a hypothetical permitted dual basis and pass to V/L.
+The remaining terms correspond exactly to selected X vectors in D_J(w).
+Their number is at least ell_J(w), but their set contains no certified
+forbidden subset, so its cardinality is at most alpha_H(D_J(w)). Contradiction.
+The sector-swapped statement is identical. Its conclusion is an all-negative
+source clause, preserved when pairs are deleted. Children in H must already
+have independent certificates; a cyclic chain of assumed exclusions proves
+nothing. A saved derivation should form a finite directed acyclic graph.
+
+For example, if D has three vectors and a certified forbidden pair or triple,
+at most two can be selected. Absence of a two-term representation modulo L
+would therefore exclude J even if a three-term representation exists. The
+old cardinality-only criterion would accept that particular witness. This is
+a conditional example, not yet a source instance or a claim that the complete
+old predicate accepts J using every possible witness.
+
+The bounded fallback gate is to find a source certificate of this type that
+passes the complete old order-three test and existing propagation. A larger
+bank or a restatement of an already detected exclusion would not meet that
+strictness gate. No mathematical library import is needed for this implication.
