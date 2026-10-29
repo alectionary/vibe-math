@@ -124,13 +124,13 @@ for r in x:tex+=f"{r['cell']}&{f(r['published'],5)}&{f(r['ours'],5)}&.00001&{r['
 tex+=r'''T3&.88187&.88491&.00001&mismatch&limited\\
 \bottomrule\end{longtable}\normalsize
 \section{Compliance ledger}
-The computational run used the pinned skill; its validator accepts the ledger. Supporting source pixels are supplied in the separate source-evidence companion. The engine and publication-related departures are deliberate and justified; the skill was unchanged during computation and revised afterward at the user's request to require scholarly citations. No numerical run was repeated for this editorial revision.
+The computational run used the pinned skill; its validator accepts the ledger. Supporting source pixels are supplied in the separate source-evidence companion. The engine departure is deliberate and justified; the skill was unchanged during computation and revised afterward at the user's request to require scholarly citations. No numerical run was repeated for this editorial revision.
 \small\begin{longtable}{p{.29\linewidth}p{.12\linewidth}p{.51\linewidth}}\toprule Requirement&Status&Evidence or justification\\\midrule\endhead
 '''
 for r in json.loads((b/'notes/compliance-ledger.json').read_text()):tex+=esc(r['requirement'])+'&'+r['status']+'&'+esc(r.get('justification', r['evidence']))+r'\\'+'\n'
 tex+=r'''\bottomrule\end{longtable}\normalsize
 \section{Artifacts and regeneration}
-Run commands from the repository root after sourcing the R environment, as documented in README. Paths below are relative to this investigation directory. Files are local deliverables; no new master-branch URL is represented as published.
+Run commands from the repository root after sourcing the R environment, as documented in README. Paths below are relative to this investigation directory. Artifact links target the master branch and will resolve after this PR is merged; the PR description provides branch links for review.
 \small\begin{longtable}{p{.22\linewidth}p{.35\linewidth}p{.35\linewidth}}\toprule Claim&Artifact&Regeneration\\\midrule\endhead
 Source visual evidence&kupzyk-source-evidence-appendix.pdf (separate 9-page companion,16 crops)&600-dpi source rendering and visual review; not generated in this executor\\
 Source arrays/targets&outputs/targets.csv; normsizes.csv; skewsizes.csv&python3 scripts/extract\_source.py\\
@@ -151,5 +151,6 @@ paired = ('On the same baseline coefficient draws, using the known population va
 tex=tex.replace('The null experiments compare BW', paired+'\n\nThe null experiments compare BW')
 tex=tex.replace('Poppler PDF tools','Poppler 25.03.0 PDF tools')
 tex=re.sub(r'(?<![a-z])[0-9a-f]{40,64}', lambda m:r'\allowbreak{}'.join(m.group()[i:i+8] for i in range(0, len(m.group()),8)), tex)
+tex=re.sub(r'\\href\{\.\./([^}]+)\}', lambda m: r'\href{https://github.com/alectionary/vibe-math/blob/master/formalization/kupzyk-power-assumptions/' + m.group(1) + '}', tex)
 (b/'paper/report.tex').write_text(tex)
 print(b/'paper/report.tex')

@@ -1,6 +1,6 @@
 # Kupzyk (2011): simplifying assumptions in power analysis
 
-This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. It is a local research deliverable; no publication or exact SAS replay is claimed.
+This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. This PR provides the research report and reproducible artifacts; exact SAS replay is not claimed.
 
 Start with `paper/report.pdf` or its editable LaTeX source `paper/report.tex`. The exact manuscript is generated from saved results by `scripts/build_report.py`. `notes/compliance-ledger.json` records adherence and justified departures from the pinned replication skill. `notes/availability.csv` records what source/code was and was not obtained.
 
@@ -55,7 +55,7 @@ The parser validates all29 normal/skew frequency rows against their intended clu
 
 The source BW extension to missing/unequal observations is derived as M-J-2, not verified by a matching SAS output fixture. Alternative df rules and original J-2 are computed explicitly. Statistical models use R mixed-model packages rather than forcing the source model into lavaan. For exemplary cells, dropout SD measures variation between designs, not confidence in our mean; original single-mask uncertainty is not divided by our mask count. All cells have limited reconstruction scope even when numbers match exactly.
 
-The computational run made no skill changes. A later user-authorized editorial revision strengthened citation requirements and added the scholarly references. No author contact, pushes, PRs, merges, or C16 work occurred.
+The computational run made no skill changes. A later user-authorized editorial revision strengthened citation requirements and added the scholarly references. The user subsequently authorized a PR containing the research and citation revisions. No author contact, merge, or C16 work occurred.
 
 ## Source-evidence companion
 
