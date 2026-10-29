@@ -1,0 +1,107 @@
+{
+  "checked_on": "2026-10-29",
+  "canonical_id": "L-F91-c16-unrestricted-width",
+  "campaign_fetch_manifest_preflight": {
+    "fetched_issues": [
+      11,
+      12
+    ],
+    "relevant_to_selected_C16_routes": [],
+    "issue12_manifest_read": true,
+    "note": "Both queued sources concern the separate UNL/Macaulay campaign; no C16 source retrieval depends on them."
+  },
+  "sources": [
+    {
+      "reserved_source_id": "F164",
+      "title": "The Glasgow Subgraph Solver: Using Constraint Programming to Tackle Hard Subgraph Isomorphism Problem Variants",
+      "authors": [
+        "Ciaran McCreesh",
+        "Patrick Prosser",
+        "James Trimble"
+      ],
+      "year": 2020,
+      "doi": "10.1007/978-3-030-51372-6_19",
+      "retrieval_url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+      "worker_local_pdf": "/private/tmp/c16-strategy-gss2020.pdf",
+      "pages": 9,
+      "screen_status": "full_text_read_question_screen_completed",
+      "question_count": null,
+      "sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+      "local_extraction": "local-extraction/literature/c16-strategy/F164.pdf",
+      "question_count_note": "Detailed directions being reconciled into canonical inventory; no zero-question claim."
+    },
+    {
+      "reserved_source_id": "F165",
+      "title": "IPASIR-UP: User Propagators for CDCL",
+      "authors": [
+        "Katalin Fazekas",
+        "Aina Niemetz",
+        "Mathias Preiner",
+        "Markus Kirchweger",
+        "Stefan Szeider",
+        "Armin Biere"
+      ],
+      "year": 2023,
+      "doi": "10.4230/LIPIcs.SAT.2023.8",
+      "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.SAT.2023.8",
+      "screen_status": "full_text_read_question_screen_completed",
+      "question_count": null,
+      "sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+      "local_extraction": "local-extraction/literature/c16-strategy/F165.pdf",
+      "question_count_note": "Detailed directions being reconciled into canonical inventory; no zero-question claim.",
+      "pages": 13
+    },
+    {
+      "title": "A New Look at BDDs for Pseudo-Boolean Constraints",
+      "arxiv": "1401.5860",
+      "doi": "10.1613/jair.3653",
+      "screen_status": "lead_not_retrieved",
+      "question_count": null,
+      "applicability": "No primary-propagation gain from reencoding the already complete local negative clause families; not prioritized for full-text retrieval."
+    },
+    {
+      "title": "On CNF Encodings of Decision Diagrams",
+      "doi": "10.1007/978-3-319-33954-2_1",
+      "screen_status": "primary_metadata_only",
+      "question_count": null
+    },
+    {
+      "title": "Compact-Table: Efficiently Filtering Table Constraints with Reversible Sparse Bit-Sets",
+      "arxiv": "1604.06641",
+      "screen_status": "lead_not_retrieved",
+      "question_count": null
+    },
+    {
+      "title": "Quantum nonlocality without entanglement depending on nonzero prior probabilities in optimal unambiguous discrimination",
+      "doi": "10.1038/s41598-021-97103-y",
+      "screen_status": "primary_relevant_passage_only",
+      "question_count": null,
+      "applicability": "Complex factor-wise orthogonality does not transfer to binary trace pairings; Tr_F4/F2(1)=0 despite nonzero factors. No source implication claimed."
+    },
+    {
+      "title": "Logic-Based Benders Decomposition",
+      "doi": "10.1007/s10107-003-0375-9",
+      "screen_status": "lead_primary_copy_search_pending",
+      "question_count": null
+    },
+    {
+      "title": "Propagation via Lazy Clause Generation",
+      "doi": "10.1007/s10601-008-9064-x",
+      "url": "https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf",
+      "screen_status": "author_copy_identified_not_retrieved",
+      "question_count": null
+    }
+  ],
+  "code_places_checked": [
+    {
+      "place": "https://github.com/ciaranm/glasgow-subgraph-solver",
+      "utc_date": "2026-10-29",
+      "result": "Official README and proof-logging documentation inspected. Induced mode exists; proof mode currently omits less-than symmetry constraints. No C16 run or speedup claimed."
+    },
+    {
+      "place": "https://github.com/arminbiere/cadical",
+      "utc_date": "2026-10-29",
+      "result": "Named by IPASIR-UP paper. Existing local PySAT CaDiCaL195 and user-propagator infrastructure available; exact upstream pin inspection pending."
+    }
+  ]
+}

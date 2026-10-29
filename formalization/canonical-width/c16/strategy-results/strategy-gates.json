@@ -1,0 +1,32 @@
+{
+  "started_utc": "2026-10-29T03:21:21Z",
+  "deadline_utc": "2026-10-29T09:21:21Z",
+  "canonical_id": "L-F91-c16-unrestricted-width",
+  "source_width": [
+    16,
+    18
+  ],
+  "cover": 418,
+  "gates": [
+    {
+      "route": "Generic Arf obstruction from primal and polar-dual isotropic bases",
+      "status": "REFUTED_BEFORE_C16_IMPLEMENTATION",
+      "counterexample": "In F2^6, q(x)=sum_{i<j}x_i*x_j, J=I+11^T. J^2=I; q(e_i)=q(J e_i)=0 for every i, but q has28 zeros, so Arf(q)=1.",
+      "scope": "Refutes this proposed generic implication, not a source-width claim."
+    },
+    {
+      "route": "BDD replacement of the complete single-orbit minimal-negative-clause table",
+      "status": "NO_PRIMARY_PROPAGATION_STRENGTHENING",
+      "argument": "For a downward-closed Boolean family, all minimal forbidden subsets give its prime all-negative CNF. A fixed1 set is inconsistent iff it contains such a subset; a variable is forced0 iff adding it contains one. Unit propagation therefore enforces domain consistency. A BDD can change size or branching, but does not strengthen these local primary-variable inferences.",
+      "prior_code": "full_anchor_model.py already adds every saved single-orbit minimal bad certificate, not just the4102 new short original cuts."
+    },
+    {
+      "route": "Adaptive mixed-rank separation on compact global signature necessity",
+      "status": "SELECTED_FOR_BOUNDED_PILOT",
+      "reason": "All24 recent replacement partial matchings violate original full-basis rank completion. Learn certified mixed-orbit clauses rather than discard a witness and stop. Global UNSAT would settle original nonexistence; SAT only supplies a stronger necessary-condition witness.",
+      "budget": "Two frozen domains,600 wall seconds each, at most500 SAT refinements. One global full-class domain and one R100+single-class cover-extension domain.",
+      "decisive_evidence": "Independent physical reconstruction of every cut, final CNF and DRAT proof for accepted UNSAT; actual physical full frame required for width16."
+    }
+  ],
+  "no_subagents": true
+}
