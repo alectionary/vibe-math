@@ -100,6 +100,33 @@ opening, then states the tolerance again.
 - Do not use internal shorthand. Write "measuring sign positions on the page",
   not "glyph reading". File names stay as paths.
 
+## Explain findings before execution details
+
+Write the main paper for a reader who has not seen the working conversation.
+State what was checked, what the check found, and why it matters; link the
+supporting filename. Do not replace a result with "evaluated in the outputs"
+or direct readers to "the manifest", "recorded below", or "per README"
+without an exact filename or section link. Use scientific roles such as
+"independent source reviewer", not internal roles such as "parent" or
+"executor". Retain consequential access limits and verification boundaries;
+omit operational chatter that does not affect interpretation.
+
+Keep three distinct records:
+- Main text: scientific claim, method, finding, implication, and evidence link.
+- Reproduction appendix/README: prerequisites (including unavailable inputs),
+  exact command and working directory, expected output, checkpoint behavior,
+  and a revision that actually contains the required code and inputs.
+- Provenance: the starting repository revision and original workflow version,
+  labeled as historical context rather than runnable reproduction targets.
+
+A link to master is a navigation aid, not an immutable reproduction version.
+Verify the stated reproduction revision contains the files before giving it.
+Name a specific README subsection when the complete recipe lives there.
+Separate rebuilding a report from saved outputs, rerunning simulations, and
+re-extracting source data. Do not imply a missing source file is bundled.
+Before delivery, read the rendered paper for vague destinations, unexplained
+internal terms, and execution instructions misplaced in scientific prose.
+
 ## What we did, and what we took from others
 
 One section states our contribution: the proofs, the simulations, and the
@@ -331,9 +358,9 @@ its own subsection.
 - [ ] What we did ourselves, and what we took from others.
 - [ ] Assumptions. One subsection per assumption we supplied. A choice the
       source states is not an assumption.
-- [ ] Ambiguities that were resolved. Each subsection names the artifact, the
-      script, the output file, the commit, and the command that regenerates
-      the output.
+- [ ] Ambiguities that were resolved. Each subsection explains the ambiguity,
+      the check, the finding, and its implication, with links to named evidence.
+      Put the complete execution recipe in the artifacts appendix or README.
 - [ ] What remains unresolved. For each open gap, the stopping statement from
       [Check our side first](#check-our-side-first): the candidates, what each
       attempt gave, the rank of the remaining causes, and the artifact that
@@ -556,8 +583,9 @@ rendered PDF to confirm that links remain readable and clickable.
       attempt is in the dated ledger.
 - [ ] Run time was estimated before any long simulation.
 - [ ] Every disputed number and equation has a 600 dpi crop.
-- [ ] Each resolved ambiguity has an artifact, a script, an output, a commit,
-      and a command.
+- [ ] Each resolved ambiguity states a finding and links its evidence. Its
+      reproduction entry identifies prerequisites, script, expected output,
+      exact command, working directory, and a revision containing the code.
 - [ ] The README runs every script.
 - [ ] The pull request can be followed without opening the PDF. Its findings
       open with the headline verdict.
