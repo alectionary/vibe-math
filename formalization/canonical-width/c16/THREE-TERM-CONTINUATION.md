@@ -150,3 +150,21 @@ old output cap can all matter.
 This is a stronger source obstruction, not 19 removed cover classes. No
 probabilistic population estimate or general solver-speedup claim is made from
 this deterministic cohort.
+
+A post-gate overlap diagnostic checked exactly those 19 strict improvements
+against the existing unrestricted mandatory-vector propagation, without changing
+the frozen cohort. **All 19 pass both individual-sector propagation and joint
+propagation.** Thus the new certificates add information beyond both the complete
+two-term criterion and the existing unrestricted closure. This remains a local
+nonextendibility result. The diagnostic is independently replayed in
+`three-term-results/sparse-propagation-overlap.json` (412 physical forced-coloop
+covectors checked). Its required subsets have four, five or six selected pairs.
+
+For a faithful future Lean interface, the lemma quantifies over a finite binary
+vector space, a nondegenerate bilinear pairing, two finite source pools, an
+independent subset J of the opposite pool and a vector w outside its span.
+The conclusion is absence of **any** pair of source-pool dual bases containing J
+when the full eligible detecting support is smaller than the minimum quotient
+word length. The source-pool completeness bridge and the 128-dimensional C16
+application remain separate obligations. Neither this interface nor the full
+source question is claimed as completed Lean work in this block.
