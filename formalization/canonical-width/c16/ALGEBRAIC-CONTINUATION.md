@@ -3,7 +3,7 @@
 Research started2026-10-28T20:40:04Z; absolute endpoint2026-10-29T02:40:04Z.
 New scientific work stopped2026-10-29T01:16:13.574583Z; final replay and
 publication occupy the remaining bounded closeout.
-Stop new experiments by02:10:04Z. Canonical target remains
+The precommitted experiment cutoff was02:10:04Z. Canonical target remains
 `L-F91-c16-unrestricted-width`, Lee arXiv:2610.06820v1 Proposition9/equation50.
 This is a continuation under the user's six-hour limit. The source answer is
 still **16 or18**, the sufficient completion cover **418**, and the best checked
@@ -369,20 +369,40 @@ experiments and the older OpenAI-library audit retain their distinct scopes.
 
 ## Preservation and publication
 
-Work branch `research/c16-algebraic-20261028T2040`, ownership commit
-`5fa8a68dc6aa50f53fb9515102c9a611cfad8f04`. The remote canonical claim is fixed
-at that commit until closeout. Issues3/8 remain read-only. Completed evidence
-will be integrated into existing PR17 within the authorized scope; required
-review remains a real master-publication gate. No master delivery or Lean
-completion is currently claimed. All four complete paper screens and their six gated historical directions are
-reconciled with the central inventory. Final manifests and clean-checkout replay
-remain in progress.
+The scientific inputs were frozen at commit
+`a913021` on `research/c16-algebraic-20261028T2040`. A clean detached checkout
+rebuilds the native profile controls and passes all45 replay stages in832.13s.
+It remains clean. Source code is unchanged in the final report/manifest commits.
+The complete replay is in `algebraic-results/clean-replay/summary.json`;
+`verification.json` summarizes claims and explicit limits. The final scientific
+manifest records file hashes and Git blob identifiers at its stated revision.
+
+The canonical claim was reserved at ownership commit
+`5fa8a68dc6aa50f53fb9515102c9a611cfad8f04`, then deleted using an exact expected-SHA
+lease after preservation and clean replay. The server readback is empty at
+2026-10-29T01:39:14Z; `claim-release.json` records it. Issues3/8 remain read-only.
+The completed package is submitted through existing PR17. Required review
+remains the master-publication gate; no master merge or Lean completion is
+claimed. Remote Git blob/size checks are recorded at closeout separately from
+the scientific manifest.
+
+All four complete paper screens and their six gated historical directions are
+reconciled with the central inventory. New source records are not promoted to
+precise solved targets; the160 eligible targets and6 complete Lean targets stay
+unchanged. No source-problem computation remains running after the bounded pilots.
 
 ## Bounded next follow-up
 
 The exact local-hull point gives a reason to stop adding more inequalities from
 the same selected-anchor/one-orbit families: all their linear inequalities are
-already satisfied. The remaining44 anchor-absent deletion dictionaries are a bounded remaining
+already satisfied. One bounded practical follow-up is to add the frozen original-coordinate rank
+nogoods to the **compact anchored cover oracles**, filtering their positive
+witness cuts to the stronger criterion and using matched budgets. Any resulting
+cover must be physically regenerated and proof-checked; the121 lower bound for
+the old criterion would not automatically transfer. This comparison has not yet
+been run.
+
+The remaining44 anchor-absent deletion dictionaries are a bounded remaining
 check within local rank reasoning. A specific next test is to require a **common unconditional phase distribution**
 for one counted orbit, with compatible conditional subdistributions for all
 anchor types. The current certificates supply separate decompositions only.
@@ -404,10 +424,23 @@ specific missing joint constraint.
 |---|---|---|
 | Exact source answer contract | Partial | Original width16/18; no full128-pair source witness or global obstruction |
 | Bounded theoretical progress | Met | Quotient rank proof, weighted local inequalities, exact strengthened feasible points, short original rank witnesses and121 packing bound |
-| Original-pool binding and independent consumers | Met for completed certificates | Physical reconstruction, direct128-bit witnesses, rational local decompositions, DRAT and official XLRUP replay; clean-checkout summary records the final run |
+| Original-pool binding and independent consumers | Met for completed certificates | Physical reconstruction, direct128-bit witnesses, rational local decompositions, DRAT and official XLRUP replay; [clean-checkout summary](algebraic-results/clean-replay/summary.json) records all45 passing stages |
 | Memory diagnosis and controlled pilots | Met | Resource receipts and allocation cap; C++ does not remove polynomial growth; no universal language or solver speedup claim |
 | Literature and question harvest | Met in the bounded scope | Four complete exact-version screens, six gated directions, source/code/X search audit; no priority census or complete new Lean search claimed |
 | Lean/PDF manuscript | Not applicable | Research report and external exact certificates; no new Lean theorem or requested PDF paper |
 | Shared inventory and planning | Met |408 canonical entries,160 eligible,195 paper records,163 full screens;6 historical complete Lean targets unchanged |
 | Publication | Partial until required review | Existing PR17; no master bypass or auto-merge |
-| Claim release and time limit | Pending final closeout | Expected owner SHA in scope; final server readback and stop time recorded separately |
+| Claim release and time limit | Met | Exact-SHA release and empty server readback in `claim-release.json`; science stopped01:16:13Z before the02:40:04Z deadline |
+
+
+**Question answered:** the auxiliary cover/rank statements and the stated local
+relaxation limitations, by written arguments and independently checked exact
+certificates. No original full completion case was settled.
+
+**Question still open:** unrestricted C16 width16 versus18; best physical partial
+frame88/128. Separate local distributions do not give a full frame, and the
+untested deletion dictionaries and common-distribution constraints remain gaps.
+
+**Next proposed target — follow-up:** a matched compact-oracle comparison using
+the frozen short full-basis nogoods, or the single-orbit27 common-distribution
+LP described above. Neither is presented as a guaranteed finishing method.
