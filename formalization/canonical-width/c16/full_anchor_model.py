@@ -9,6 +9,7 @@ bounds the matching size above by127. SAT is thus a physical128-frame candidate.
 from pathlib import Path
 import argparse,collections,gc,gzip,hashlib,json,resource,subprocess,tempfile,time
 import psutil
+from itertools import combinations
 from signature_cover import logical_data,encode
 from adaptive_matrix_identities import parity
 ROOT=Path(__file__).resolve().parent
@@ -35,7 +36,7 @@ def at_least_network(literals,bound,top):
   previous=current
  cnf.append([previous[bound]]);return cnf,n
 
-def build(block,anchor=(48,48),parities=True,basis_coverage=False):
+def build(block,anchor=(48,48),parities=True,basis_coverage=False,profile_cuts=None,critical_cap=None):
  A,_,_=logical_data();X,Z=[[int(s,16) for s in (ROOT/f'pools/{side}coords.txt').read_text().split()] for side in ['x','z']];a,b=anchor;assert A[a]>>b&1
  eq=[]
  if parities:
@@ -53,14 +54,31 @@ def build(block,anchor=(48,48),parities=True,basis_coverage=False):
    if not A[i]>>b&1:cnf.append([qv[j] for j in sorted(qv) if A[i]>>j&1])
   for j in range(720):
    if not A[a]>>j&1:cnf.append([pv[i] for i in sorted(pv) if A[i]>>j&1])
+ if profile_cuts:
+  raw=profile_cuts.read_bytes();data=json.loads(gzip.decompress(raw) if profile_cuts.suffix=='.gz' else raw)
+  if data.get('conditioned_on_anchor') is not None:assert data['conditioned_on_anchor']==list(anchor)
+  for record in data['records']:
+   assert record['complete'];orbit=record['orbit']
+   for cut in record['minimal_bad_certificates']:
+    ids=[16*orbit+h for h in range(16) if cut['mask']>>h&1]
+    for owners,fixed in [(pv,a),(qv,b)]:
+     if any(i!=fixed and i not in owners for i in ids):continue
+     cnf.append([-owners[i] for i in ids if i!=fixed])
+ if critical_cap is not None:
+  assert critical_cap==11
+  ids=[i for i,x in enumerate(X) if x.bit_count()==1 and (x>>64)&65535];assert ids==list(range(192,208))
+  for subset in combinations(ids,12):
+   for owners,fixed in [(pv,a),(qv,b)]:
+    if any(i!=fixed and i not in owners for i in subset):continue
+    cnf.append([-owners[i] for i in subset if i!=fixed])
  counter,n=at_least_network(list(pv.values()),127,n);cnf+=counter
  return A,X,Z,E,cnf,n,events,target,eq,pv,qv
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--block',type=Path,default=ROOT/'theory-loop-results/block-16.json');ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=600);ap.add_argument('--mode',choices=['cms','export'],default='cms');ap.add_argument('--no-parities',action='store_true');ap.add_argument('--basis-coverage',action='store_true');ap.add_argument('--anchor',type=int,nargs=2,default=[48,48]);a=ap.parse_args();start=time.monotonic();proc=psutil.Process();phases=[]
+ ap=argparse.ArgumentParser();ap.add_argument('--block',type=Path,default=ROOT/'theory-loop-results/block-16.json');ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seconds',type=float,default=600);ap.add_argument('--mode',choices=['cms','export'],default='cms');ap.add_argument('--no-parities',action='store_true');ap.add_argument('--basis-coverage',action='store_true');ap.add_argument('--anchor',type=int,nargs=2,default=[48,48]);ap.add_argument('--profile-cuts',type=Path);ap.add_argument('--critical-cap',type=int,choices=[11]);a=ap.parse_args();start=time.monotonic();proc=psutil.Process();phases=[]
  def mark(name,**kw):
   d={'phase':name,'elapsed_seconds':time.monotonic()-start,'resident_bytes':proc.memory_info().rss,'peak_resident_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,**kw};phases.append(d);a.output.write_text(json.dumps({'status':'RUNNING','phases':phases},indent=2)+'\n');print(json.dumps(d),flush=True)
- mark('start');A,X,Z,E,cnf,n,events,t,eq,pv,qv=build(a.block,anchor=a.anchor,parities=not a.no_parities,basis_coverage=a.basis_coverage);mark('encoded',free_edges=len(E),variables=n,clauses=len(cnf),equations=len(eq),X_owners=len(pv),Z_owners=len(qv));count=len(cnf);result={'source_C16_answered':False,'anchor':a.anchor,'basis_coverage':a.basis_coverage,'all_source_edges_retained':True,'zero_signature_edges':sum(not e[2] for e in E),'free_edges':len(E),'variables':n,'clauses':count,'equations':len(eq),'equation_uv_hex':[[hex(u),hex(v)] for u,v in eq],'free_target_hex':hex(t),'free_owner_lower_bound':127,'source_rank_upper_bound':127,'counter':'saturated prefix threshold recurrence with full Boolean equivalence','signature_compression':False,'answer':None,'partial_frame_allowed':False,'source_block':str(a.block),'phases':phases}
+ mark('start');A,X,Z,E,cnf,n,events,t,eq,pv,qv=build(a.block,anchor=a.anchor,parities=not a.no_parities,basis_coverage=a.basis_coverage,profile_cuts=a.profile_cuts,critical_cap=a.critical_cap);mark('encoded',free_edges=len(E),variables=n,clauses=len(cnf),equations=len(eq),X_owners=len(pv),Z_owners=len(qv));count=len(cnf);result={'source_C16_answered':False,'anchor':a.anchor,'basis_coverage':a.basis_coverage,'profile_cuts_file':a.profile_cuts.name if a.profile_cuts else None,'profile_cuts_c16_path':str(a.profile_cuts.resolve().relative_to(ROOT)) if a.profile_cuts else None,'critical_cap':a.critical_cap,'all_source_edges_retained':True,'zero_signature_edges':sum(not e[2] for e in E),'free_edges':len(E),'variables':n,'clauses':count,'equations':len(eq),'equation_uv_hex':[[hex(u),hex(v)] for u,v in eq],'free_target_hex':hex(t),'free_owner_lower_bound':127,'source_rank_upper_bound':127,'counter':'saturated prefix threshold recurrence with full Boolean equivalence','signature_compression':False,'answer':None,'partial_frame_allowed':False,'source_block':str(a.block),'phases':phases}
  if a.mode=='export':
   lines=[' '.join(map(str,c))+' 0' for c in cnf]
   for k in range(len(eq)):

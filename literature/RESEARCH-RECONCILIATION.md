@@ -63,6 +63,7 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
 - **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18.
 - **RQ-P09-symmetric-css:** Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. Status: General odd-support and supported-logical obstructions proved; exact even-support full/one-step existence questions remain unresolved. No construction search performed.
+- **RQ-F91-c16-algebraic-full-anchor:** Combine exact inverse identities, compatibility and bounded algebraic certificates to settle a retained original full-frame anchor. Status: Active bounded follow-up. Exact auxiliary restrictions and strengthened-relaxation feasible point established; full anchor cases remain undecided.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -648,6 +649,19 @@ Full21-page Beame-Sun SAT2026 screen: four broad/semantic source directions, pre
 - [L-F158-semantic-1uip](OPEN-PROBLEMS.md#l-f158-semantic-1uip): Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.
 - [L-F158-parity-clause-minimization](OPEN-PROBLEMS.md#l-f158-parity-clause-minimization): Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).
 
-Current cohort: **402 canonical entries,160 eligible targets,191 paper records,159 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-algebraic-sources-screen-20261028
 
-The current source index has **117** records, with actual access levels retained.
+Four complete algebraic/parity-method papers: six broad historical directions/formulation gates; no additional precise target or Lean completion. NulLA symmetry requires an invertible group order in the coefficient field. Current-resolution followthrough finds later leads but is not a complete census.
+
+[Screen report](../formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md). Added **6 entries**, **0 eligible targets**, **4 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F159-certificate-degree-lower-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-lower-bounds): Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.
+- [L-F159-certificate-degree-upper-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-upper-bounds): Find tighter practical upper bounds on certificate degree for concrete polynomial families.
+- [L-F159-clique-degree-cutters](OPEN-PROBLEMS.md#l-f159-clique-degree-cutters): Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.
+- [L-F159-coloring-degree-growth](OPEN-PROBLEMS.md#l-f159-coloring-degree-growth): Explain which graph structures force higher-degree certificates for3-colorability.
+- [L-F161-proof-producing-cdcl-t](OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t): Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
+- [L-F162-iterative-solver-extensions](OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions): Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
+
+Current cohort: **408 canonical entries,160 eligible targets,195 paper records,163 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **122** records, with actual access levels retained.

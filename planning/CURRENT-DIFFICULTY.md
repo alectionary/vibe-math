@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 28, 2026. Low-confidence planning priors for all 402 entries (221 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 28, 2026. Low-confidence planning priors for all 408 entries (227 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -6253,3 +6253,99 @@ First milestone: Specify classical minimization semantics and the required faith
 Gate: Specify classical minimization semantics and the required faithfulness of the parity extension.
 
 Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-parity-clause-minimization).
+
+### L-F159-certificate-degree-lower-bounds
+
+Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the polynomial encoding, coefficient field, family and asymptotic degree measure.
+
+Gate: Specify the polynomial encoding, coefficient field, family and asymptotic degree measure.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-certificate-degree-lower-bounds).
+
+### L-F159-certificate-degree-upper-bounds
+
+Find tighter practical upper bounds on certificate degree for concrete polynomial families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the family and field; a broad request for better bounds is not a single theorem.
+
+Gate: Specify the family and field; a broad request for better bounds is not a single theorem.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-certificate-degree-upper-bounds).
+
+### L-F159-clique-degree-cutters
+
+Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: The phrase may decrease does not specify a universal strict statement; the paper itself gives a non-decreasing3-coloring example. Fix the intended family, field and quantifiers first.
+
+Gate: The phrase may decrease does not specify a universal strict statement; the paper itself gives a non-decreasing3-coloring example. Fix the intended family, field and quantifiers first.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-clique-degree-cutters).
+
+### L-F159-coloring-degree-growth
+
+Explain which graph structures force higher-degree certificates for3-colorability.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify a structural class and encoding; the historical open direction is not a complete current-status census.
+
+Gate: Specify a structural class and encoding; the historical open direction is not a complete current-status census.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-coloring-degree-growth).
+
+### L-F161-proof-producing-cdcl-t
+
+Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the theory, proof rules, input family and correctness/comparison objective.
+
+Gate: Specify the theory, proof rules, input family and correctness/comparison objective.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t).
+
+### L-F162-iterative-solver-extensions
+
+Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open.
+
+Gate: Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions).

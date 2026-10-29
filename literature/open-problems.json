@@ -12399,6 +12399,13 @@
         "evidence": "written_proof_and_independent_physical_certificate_replay",
         "lean_sources": [],
         "contribution": "A new-class normalization lemma and a nonnested exchange case split give a428-case sufficient cover, net69 fewer than497 (13.8833%). One formerly omitted class is restored, so this is not a proper subcover. Independent physical regeneration checks the base497 proof,17 extensions and53 exchange branches;480 deletion witnesses show only inclusion minimality. A rank32 projected residual requires33 total partial pairs and rejects all21 saved smaller witnesses, but the full-case solver isUNKNOWN. Conditional affine certificates replay; new native-parity solver comparisons areUNKNOWN. Three further bounded reduction rounds fail to improve428 and trigger the stated early-stop rule. Width16/18, physical88, all428 full completions unresolved; no Lean completion or measured full-search speedup."
+      },
+      {
+        "title": "Algebraic phase restrictions and exact strengthened-relaxation barrier",
+        "report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
+        "evidence": "written_proof_and_independent_physical_certificate_replay",
+        "lean_sources": [],
+        "contribution": "Independent physical phase witnesses remove1105671/2545497 basic local masks (43.436%); fixed48/48 conditioning removes119919/688994 more (17.405%). All45 X-only conditional capacity rows replay, strengthening711/2025 bounds. A rational point with43473 nonnegative local convex weights proves the full phase-hull plus6075-capacity degree-two relaxation remains feasible at128. New valid inequalities exclude the earlier exact basic point (112 violations;56 after sector exchange). All428 starting anchors admit checked full residual-identity XOR decompositions, so pure inverse-linear separators cannot exclude them. A418-case sufficient cover is independently checked,10 fewer than428. Width16/18, physical88, full cases completed0 and Lean status unchanged."
       }
     ],
     "remaining_project_questions": [
@@ -12425,11 +12432,11 @@
       "completion_case_count": 518
     },
     "nonlinear_cover": {
-      "report": "formalization/canonical-width/c16/THEORY-LOOP.md",
-      "verification": "formalization/canonical-width/c16/theory-loop-results/verification.json",
+      "report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
+      "verification": "formalization/canonical-width/c16/algebraic-results/cover-418-independent.json",
       "canonical_target_answered": false,
-      "completion_case_count": 428,
-      "previous_report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
+      "completion_case_count": 418,
+      "previous_report": "formalization/canonical-width/c16/THEORY-LOOP.md",
       "proof_criterion_lower_bound": 109,
       "lower_bound_scope": "Only covers certified by the original16-signature/induced-partial-matching UNSAT criterion; no arbitrary-cover or full-frame lower bound.",
       "nested_in_previous_cover": false
@@ -12450,6 +12457,15 @@
       "scientific_stop_utc": "2026-10-28T20:17:24Z",
       "early_stop": "three consecutive distinct bounded reduction rounds without a verified gain",
       "canonical_target_answered": false
+    },
+    "algebraic_comparison": {
+      "report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
+      "exact_relaxation_point": "formalization/canonical-width/c16/algebraic-results/profile-moment-rational.json.gz",
+      "exact_point_replay": "formalization/canonical-width/c16/algebraic-results/profile-moment-rational-independent.json",
+      "cover_replay": "formalization/canonical-width/c16/algebraic-results/cover-418-independent.json",
+      "canonical_target_answered": false,
+      "full_source_anchor_cases_completed": 0,
+      "scope": "Active six-hour continuation; exact auxiliary restrictions and method barriers, no source-width answer."
     }
   },
   {
@@ -15490,6 +15506,241 @@
     "formalization_suitability": {
       "assessment": "not_assessed",
       "objects_and_gate": "Specify classical minimization semantics and the required faithfulness of the parity extension."
+    }
+  },
+  {
+    "id": "L-F159-certificate-degree-lower-bounds",
+    "origin": "article_inventory_extension",
+    "title": "Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "PDFp6, theoretical questions after the NulLA algorithm",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          289,
+          296
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the polynomial encoding, coefficient field, family and asymptotic degree measure."
+    }
+  },
+  {
+    "id": "L-F159-certificate-degree-upper-bounds",
+    "origin": "article_inventory_extension",
+    "title": "Find tighter practical upper bounds on certificate degree for concrete polynomial families.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "PDFp6, theoretical questions after the NulLA algorithm",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          296,
+          298
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the family and field; a broad request for better bounds is not a single theorem."
+    }
+  },
+  {
+    "id": "L-F159-clique-degree-cutters",
+    "origin": "article_inventory_extension",
+    "title": "Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.",
+    "kind": "conjecture",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "Section3.2 PDFp9, conjectural degree-cutter passage and following counterexample",
+        "pdf_pages": [
+          9
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          437,
+          453
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "The phrase may decrease does not specify a universal strict statement; the paper itself gives a non-decreasing3-coloring example. Fix the intended family, field and quantifiers first."
+    }
+  },
+  {
+    "id": "L-F159-coloring-degree-growth",
+    "origin": "article_inventory_extension",
+    "title": "Explain which graph structures force higher-degree certificates for3-colorability.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "PDFpp23-26 hard graph families; final paragraph before conclusion",
+        "pdf_pages": [
+          23,
+          26
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          2689,
+          2692
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify a structural class and encoding; the historical open direction is not a complete current-status census."
+    }
+  },
+  {
+    "id": "L-F161-proof-producing-cdcl-t",
+    "origin": "article_inventory_extension",
+    "title": "Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F161",
+        "locator": "Section4 conclusion, PDFp11",
+        "pdf_pages": [
+          11
+        ],
+        "url": "https://arxiv.org/pdf/2304.04292",
+        "source_sha256": "95420ba3fd95692f10216fda9559895ad4ac9597bd0304df53caf9923bb3ed1f",
+        "version": "arXiv:2304.04292v1,9April2023,12pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          876,
+          886
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the theory, proof rules, input family and correctness/comparison objective."
+    }
+  },
+  {
+    "id": "L-F162-iterative-solver-extensions",
+    "origin": "article_inventory_extension",
+    "title": "Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F162",
+        "locator": "SectionV discussion, PDFp5, fourth extension point",
+        "pdf_pages": [
+          5
+        ],
+        "url": "https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf",
+        "source_sha256": "4107c11fe4b0d8e1e10d265cc485d3b2ce8db98455de198951d211e22ff75af1",
+        "version": "DATE2019 author manuscript,6pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          650,
+          656
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open."
     }
   }
 ]

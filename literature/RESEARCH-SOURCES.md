@@ -1513,3 +1513,66 @@ Paul Beame; Glenn Sun. SAT2026 LIPIcs377:5, published16July2026,21pages. [Primar
 - Provenance: [source review ledger](../formalization/canonical-width/c16/theory-loop-results/paper-screening.json).
 
 - Question screen: [full text screened](../formalization/canonical-width/c16/theory-loop-results/paper-screening.json); 4 linked canonical targets.
+
+## F159 — Computing Infeasibility Certificates for Combinatorial Problems through Hilbert’s Nullstellensatz
+
+Jesús A. De Loera; Jon Lee; Peter N. Malkin; Susan Margulies. Author manuscript dated5January2009,27pages. [Primary source](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full27-page author version; method and all question/direction contexts screened..
+- Contribution: Bounded C16 algebraic-certificate and native parity/memory comparison
+- Comparison limit: No C16 transfer, full case completion or source-question count established by retrieval alone
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F159-certificate-degree-lower-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-lower-bounds), [L-F159-certificate-degree-upper-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-upper-bounds), [L-F159-clique-degree-cutters](OPEN-PROBLEMS.md#l-f159-clique-degree-cutters), [L-F159-coloring-degree-growth](OPEN-PROBLEMS.md#l-f159-coloring-degree-growth).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 4 linked canonical targets.
+
+## F160 — Tinted, Detached, and Lazy CNF-XOR solving and its Applications to Counting and Sampling
+
+Mate Soos; Stephan Gocht; Kuldeep S. Meel. Author CAV2020 manuscript,22pages. [Primary source](https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full22-page author version; method and all question/direction contexts screened..
+- Contribution: Bounded C16 algebraic-certificate and native parity/memory comparison
+- Comparison limit: No C16 transfer, full case completion or source-question count established by retrieval alone
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 0 linked canonical targets.
+
+## F161 — Proof Generation for CDCL Solvers Using Gauss-Jordan Elimination
+
+Mate Soos; Randal E. Bryant. arXiv:2304.04292v1,9April2023,12pages. [Primary source](https://arxiv.org/pdf/2304.04292).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full12-page author version; method and all question/direction contexts screened..
+- Contribution: Bounded C16 algebraic-certificate and native parity/memory comparison
+- Comparison limit: No C16 transfer, full case completion or source-question count established by retrieval alone
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F161-proof-producing-cdcl-t](OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 1 linked canonical targets.
+
+## F162 — BOSPHORUS: Bridging ANF and CNF Solvers
+
+Davin Choo; Mate Soos; Kian Ming A. Chai; Kuldeep S. Meel. DATE2019 author manuscript,6pages. [Primary source](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full6-page author version; method and all question/direction contexts screened..
+- Contribution: C16 algebraic solver comparison
+- Comparison limit: No source C16 conclusion or speedup follows from external benchmarks
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F162-iterative-solver-extensions](OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 1 linked canonical targets.
+
+## F163 — CryptoMiniSat on XNF Benchmarks, Revisited
+
+Mate Soos. Author blog13September2026. [Primary source](https://www.msoos.org/2026/09/cryptominisat-on-xnf-benchmarks-revisited/).
+
+- Record type: technical blog; access: full text read.
+- Inspected locator: Full source inspected; method and author-question accounting in progress.
+- Contribution: C16 algebraic solver comparison
+- Comparison limit: No source C16 conclusion or speedup follows from external benchmarks
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/literature.json).

@@ -2,9 +2,9 @@
 
 Inventory updated October 28, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **402 canonical entries**: the original 40 dissertation targets and **362 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 241 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **408 canonical entries**: the original 40 dissertation targets and **368 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 247 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [117 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [122 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 121 |
-| Additional directions/formulation/method entries outside the denominator | 241 |
+| Additional directions/formulation/method entries outside the denominator | 247 |
 | Combined eligible targets | 160 = 39 + 121 |
 | Eligible targets with an identified, verified proof-assistant statement | 6/160 (3.75%) |
 | Eligible targets with an identified, verified Lean statement | 6/160 (3.75%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/160 |
 | Additional identified Lean statements without a build audit | 1/160 |
 | Eligible targets with Lean discovery still unassessed in this extension | 52/160 |
-| Articles/preprints in scope | 191 |
-| Full-text sources screened, including withdrawn history | 159/191 |
-| Current-publication full texts screened | 158 |
+| Articles/preprints in scope | 195 |
+| Full-text sources screened, including withdrawn history | 163/195 |
+| Current-publication full texts screened | 162 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 32/191 |
+| Not fully assessed | 32/195 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -242,6 +242,10 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F156](https://arxiv.org/pdf/2010.16293) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
 | [F157](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf) | full text screened | 11 | Full version-specific screen with canonical deduplication.15 targets in F153,11 repeated in F157, including two borrowed unresolved context targets. Current resolution and Lean discovery remain unassessed. |
 | [F158](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf) | full text screened | 4 | Full21-page paper screened. Four broad/semantic conclusion directions; precise mathematical formulations, present-resolution and Lean checks remain unassessed. Primary software comparison gives no completed C16 case. |
+| [F159](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf) | full text screened | 4 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F160](https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf) | full text screened | 0 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F161](https://arxiv.org/pdf/2304.04292) | full text screened | 1 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F162](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf) | full text screened | 1 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
 
 ## Reproducible evidence and limits
 
@@ -3933,6 +3937,7 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Research progress: [Nonlinear505-case cover from simultaneous dual identities and compatibility](../formalization/canonical-width/c16/NONLINEAR-COVER.md) (written proof and exact finite certificates). A checkedUNSAT proof gives a proper505-case subcover of the518-case list, removing13 representatives together without excluding those classes from full frames. Physical CNF regeneration and235298 literal controls pass. Broader auxiliary-vector/structured-matrix searches find no cover below518;26964 principal conditional minor-existence tests exclude no anchor. All505 retained anchors have explicit compatible partial signature matchings, so none is a completed full-frame case. A residual-selected source witness705/705 rejects the saved8-pair matching at anchorX03-Z03-h00 and increases the functional span16to32; the next solver gate is unrun. Width16/18, physical88 and Lean status unchanged.
 - Research progress: [Compact proof cover497 and87 independent residual-guided matrix identities](../formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md) (written proof and exact finite certificates). Independent physical CNF regeneration andDRAT checking prove a497-case proper subcover of505, removing eight more representatives together. At anchorX03-Z03-h00,87 independent full-matrix equations are selected; partial solutions satisfy prefixes through86 and the87-equation call isUNKNOWN. This stronger identity model excludes no anchor and does not supply the cover reduction. A disjoint physical partial-witness packing raises the original16-signature proof-criterion lower bound from85 to109; this is not a bound for arbitrary covers. Width16/18, physical88 and Lean status remain unchanged.
 - Research progress: [Symmetry-normalized exchanges prove a428-case sufficient cover](../formalization/canonical-width/c16/THEORY-LOOP.md) (written proof and independent physical certificate replay). A new-class normalization lemma and a nonnested exchange case split give a428-case sufficient cover, net69 fewer than497 (13.8833%). One formerly omitted class is restored, so this is not a proper subcover. Independent physical regeneration checks the base497 proof,17 extensions and53 exchange branches;480 deletion witnesses show only inclusion minimality. A rank32 projected residual requires33 total partial pairs and rejects all21 saved smaller witnesses, but the full-case solver isUNKNOWN. Conditional affine certificates replay; new native-parity solver comparisons areUNKNOWN. Three further bounded reduction rounds fail to improve428 and trigger the stated early-stop rule. Width16/18, physical88, all428 full completions unresolved; no Lean completion or measured full-search speedup.
+- Research progress: [Algebraic phase restrictions and exact strengthened-relaxation barrier](../formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md) (written proof and independent physical certificate replay). Independent physical phase witnesses remove1105671/2545497 basic local masks (43.436%); fixed48/48 conditioning removes119919/688994 more (17.405%). All45 X-only conditional capacity rows replay, strengthening711/2025 bounds. A rational point with43473 nonnegative local convex weights proves the full phase-hull plus6075-capacity degree-two relaxation remains feasible at128. New valid inequalities exclude the earlier exact basic point (112 violations;56 after sector exchange). All428 starting anchors admit checked full residual-identity XOR decompositions, so pure inverse-linear separators cannot exclude them. A418-case sufficient cover is independently checked,10 fewer than428. Width16/18, physical88, full cases completed0 and Lean status unchanged.
 - Project-derived follow-up, outside the source-target denominator: **RQ-F91-c16-css-frame** — Decide whether the 720-class weight-16 CSS pools contain a 128-pair canonical frame. Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18.
 - [F91: Section IV.4 and Appendix C.3, Proposition9; construction equation50](https://arxiv.org/html/2610.06820v1); extraction lines 585–586; explicit open math target.
 
@@ -4771,3 +4776,63 @@ Semantically characterize clause minimization and generalize it faithfully to CD
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F158: Section8, PDFp17, final paragraph](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf); PDF pages 17; author stated question or direction.
+
+### L-F159-certificate-degree-lower-bounds
+
+Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: PDFp6, theoretical questions after the NulLA algorithm](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 6; author stated question or direction.
+
+### L-F159-certificate-degree-upper-bounds
+
+Find tighter practical upper bounds on certificate degree for concrete polynomial families.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: PDFp6, theoretical questions after the NulLA algorithm](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 6; author stated question or direction.
+
+### L-F159-clique-degree-cutters
+
+Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.
+
+- Type: conjecture; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: Section3.2 PDFp9, conjectural degree-cutter passage and following counterexample](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 9; author stated question or direction.
+
+### L-F159-coloring-degree-growth
+
+Explain which graph structures force higher-degree certificates for3-colorability.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: PDFpp23-26 hard graph families; final paragraph before conclusion](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 23, 26; author stated question or direction.
+
+### L-F161-proof-producing-cdcl-t
+
+Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F161: Section4 conclusion, PDFp11](https://arxiv.org/pdf/2304.04292); PDF pages 11; author stated question or direction.
+
+### L-F162-iterative-solver-extensions
+
+Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F162: SectionV discussion, PDFp5, fourth extension point](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf); PDF pages 5; author stated question or direction.

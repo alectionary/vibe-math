@@ -414,3 +414,31 @@ The probability on the order of \(10^{-12}\) is the product of three binomial pr
 ### Tooling on this run
 
 Issue edits returned HTTP 403, and the issue was not updated from this environment. The work-branch push also returned 403 for `cursor[bot]`, and the same tree was published through the Git Data API. Files that exist only on the bot's box must be attached before a cloud agent can read them. A draft pull request must be marked ready before it can be merged. Pull request 14 was that draft.
+
+### Separate a stronger relaxation from a stronger source conclusion
+
+The C16 algebraic continuation gives two exact comparisons. Physical rank
+witnesses remove43.436% of the frozen basic one-orbit phase masks; fixed-pair
+conditioning removes a further17.405% in its separately defined cohort. These
+are local necessary-condition counts, not fractions of complete frames or
+predictions of a global speedup. Conditional capacities strengthen711 of2025
+orbit-count bounds. Their source-to-moment implication must be proved before
+adding them to an optimizer.
+
+The new occupancy inequalities reject the old certified rational basic point,
+yet another exact rational point satisfies the stronger phase-hull/capacity
+relaxation. Both findings are useful: the model is strictly stronger, and this
+particular degree-two approach still cannot exclude128. Preserve a positive
+relaxation certificate when it gives a reason to stop increasing time on an
+insufficient model. Full residual-identity XOR decompositions for all428 starting
+anchors similarly rule out pure inverse-linear separators, while leaving
+compatibility unresolved.
+
+Profile the representation before choosing a language. The compact native
+phase-mask calculation repeats all45 records at2.656MiB sampled RSS; a separate
+C++ polynomial lift stores hundreds of millions of terms. C++ does not remove
+that growth. Track allocated vector capacity and proof-file size as well as
+resident memory. Accept native-XOR UNSAT only after rebuilding the physical
+input and replaying its proof; checking the solver exit status alone is
+insufficient, including for a checker that can return zero on rejection.
+[Results, certificates and scope](formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md).
