@@ -1,0 +1,33 @@
+{
+  "status": "FROZEN_BEFORE_NUMERICAL_PILOT",
+  "utc": "2026-10-29T20:47:26.075457+00:00",
+  "command": [
+    "/private/tmp/c16-venv/bin/python",
+    "profile_moment_model.py",
+    "--hulls",
+    "algebraic-results/hulls-16-rank.json.gz",
+    "--capacity-cuts",
+    "algebraic-results/orbit-rank-profiles-independent.json",
+    "--conditional-matrix",
+    "algebraic-results/conditional-capacity/independent.json",
+    "--conditional-cross-matrix",
+    "algebraic-results/conditional-cross-capacity/independent.json",
+    "--conditional-linear-cuts",
+    "algebraic-results/conditional-facets-round1-independent.json",
+    "transfer-results/pair-moment-cuts.json",
+    "--certificate-margin",
+    "--eps",
+    "1e-8",
+    "--iterations",
+    "100000",
+    "--seconds",
+    "300",
+    "--output",
+    "transfer-results/moment-pair-faces.json"
+  ],
+  "scope": "Strict margin feasibility search with both additional pair zero faces. Numerical status alone is neither proof nor source answer.",
+  "source_hashes": {
+    "profile_moment_model.py": "c014356645fc1ff58a5c8ea16fa5a7975f5d8edf55a4559368a030b298049016",
+    "transfer-results/pair-moment-cuts.json": "b30ea4b309dd0e823bc08a51e78c8afcba3a0a2a1681eba0be7d9168c781a544"
+  }
+}

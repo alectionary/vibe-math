@@ -12434,6 +12434,13 @@
         "evidence": "written_source_obstructions_and_clean_physical_CNF_DRAT_replays",
         "lean_sources": [],
         "contribution": "Mining1688 saved hard-case matchings gives6921 checked source-certificate orbits; a frozen256-core bank contains one pair and255 triples. All selected cores strictly shrink their starting sets, and767 single-vector deletions independently fail the complete order3 criterion;120 cores are missed by complete order2. All256 pass both existing unrestricted and exact-domain propagation. In one sequential matched comparison, both variants prove the same compact cover case UNSAT; the seeded run takes91.56s versus174.86s and267 versus528 refinements. Both ordinary proofs independently replay from a clean checkout. Cover-domain induction reduces409 to408. Baseline also solves, and roughly563s preprocessing exceeds the83s discovery saving, so neither necessity of new seeds nor net single-case or general speedup is claimed. Width16/18, physical88/128, zero full source anchors solved and Lean status remain unchanged."
+      },
+      {
+        "title": "Held-out transfer, a405-case sufficient cover and a strict fourth-order source obstruction",
+        "report": "formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md",
+        "evidence": "written_implications_independent_source_checks_and_clean_CNF_DRAT_replays",
+        "lean_sources": [],
+        "contribution": "Three frozen held-out baseline/seeded pairs all independently prove UNSAT; clean physical/CNF/DRAT replay and domain inclusion reduce the sufficient cover408 to405. Seeded discovery totals319.46s versus787.57s on the three selected cases; this is limited reuse evidence, not a general or end-to-end speedup claim. A complete independent384-case screen finds one strict order4 forbidden pair, missed by complete order3. A16200-pair producer screen completes with four positive word classes independently checked, while its full negative replay is pending. Two full/global trials areUNKNOWN.31408 conditioned moment inequalities separate the old rational point in47 rows, but the strengthened relaxation has no exact feasibility or infeasibility certificate. Research paused at user request; width16/18, physical88/128, zero full source anchors solved, and Lean status unchanged."
       }
     ],
     "remaining_project_questions": [
@@ -12460,11 +12467,11 @@
       "completion_case_count": 518
     },
     "nonlinear_cover": {
-      "report": "formalization/canonical-width/c16/RELEVANT-CLAUSES.md",
-      "verification": "formalization/canonical-width/c16/relevant-results/cover-bindings.json",
+      "report": "formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md",
+      "verification": "formalization/canonical-width/c16/transfer-results/cover-bindings.json",
       "canonical_target_answered": false,
-      "completion_case_count": 408,
-      "previous_report": "formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md",
+      "completion_case_count": 405,
+      "previous_report": "formalization/canonical-width/c16/RELEVANT-CLAUSES.md",
       "proof_criterion_lower_bound": null,
       "lower_bound_scope": "The121 bound applies only to the older unstrengthened signature criterion, not this source-closure/quotient-word sufficient cover.",
       "nested_in_previous_cover": true,
@@ -12557,6 +12564,24 @@
       "full_source_anchor_cases_completed": 0,
       "general_speedup_established": false,
       "net_single_case_end_to_end_speedup_established": false
+    },
+    "transfer_followup": {
+      "report": "formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md",
+      "verification": "formalization/canonical-width/c16/transfer-results/verification.json",
+      "resume": "formalization/canonical-width/c16/TRANSFER-RESUME.md",
+      "canonical_target_answered": false,
+      "cover_before": 408,
+      "cover_after": 405,
+      "matched_verified_UNSAT_calls": 6,
+      "new_strict_order4_forbidden_pair": [
+        416,
+        512
+      ],
+      "full_source_anchor_cases_completed": 0,
+      "research_status": "paused_at_user_request",
+      "global_trial": "UNKNOWN",
+      "full_anchor_trial": "UNKNOWN",
+      "new_Lean_completion": false
     }
   },
   {
