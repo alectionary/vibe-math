@@ -151,7 +151,17 @@ OpenMx as an independent check on the optimizer. Use Lean for the algebra, and
 R with an SEM package for statistical model fitting.
 
 Deep-link every script, output file, and key function from the text, with line
-anchors for theorems and functions.
+anchors for theorems and functions. The visible link text must include the
+actual filename and extension (for example, `model.R: empirical fits`, not
+just `empirical fits`). Descriptive wording may accompany the filename.
+
+In the artifacts appendix, make each repository file and regeneration script
+a clickable `master` link; a plain path or command is not sufficient. Use
+`blob/master` for files and `tree/master` for directories. Preserve filename
+extensions in visible labels and check function line anchors against the
+actual source. Label external or separately delivered artifacts explicitly;
+do not invent a repository URL for a file that is not included. Inspect the
+rendered PDF to confirm that links remain readable and clickable.
 
 ## Engine
 
@@ -503,7 +513,17 @@ pull request.
 - [ ] Links point at master. Every piece of software is cited with its exact
       version, a CRAN or repository link, and why it was chosen. Every
       script, output file, and key function is deep-linked from the text,
-      with line anchors for theorems and functions.
+      with line anchors for theorems and functions. The visible link text must include the
+actual filename and extension (for example, `model.R: empirical fits`, not
+just `empirical fits`). Descriptive wording may accompany the filename.
+
+In the artifacts appendix, make each repository file and regeneration script
+a clickable `master` link; a plain path or command is not sufficient. Use
+`blob/master` for files and `tree/master` for directories. Preserve filename
+extensions in visible labels and check function line anchors against the
+actual source. Label external or separately delivered artifacts explicitly;
+do not invent a repository URL for a file that is not included. Inspect the
+rendered PDF to confirm that links remain readable and clickable.
 - [ ] "Remove" was a deletion. Nothing that was removed was relocated.
 - [ ] The comparison table has claim, published, ours, precision,
       numerical, and scope, plus one reason per row. A remaining gap names
