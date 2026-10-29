@@ -32,31 +32,20 @@ four estimators for structural equation models with small samples}
 \maketitle
 
 \begin{abstract}
-Chumney (2013) claims that, on normal data, maximum likelihood is generally
-the most robust of four estimators of a three-factor structural equation
-model: maximum likelihood, Bayesian Markov chain Monte Carlo, partial least
-squares, and generalized structured component analysis.
-The headline numbers are the mean absolute percent bias of the measurement
-loadings at sample size 1000, three reflective indicators, correct model.
-A match is a difference inside two standard errors of the two Monte Carlo
-means.
-Maximum likelihood is 2.712 published and 2.730 here: match.
-Markov chain Monte Carlo is 2.738 published and 2.902 here: match.
-Partial least squares is 15.896 published and 15.919 here: match.
-Generalized structured component analysis is 15.918 published and 15.938
-here: match.
-The ordering is the same: maximum likelihood and Markov chain Monte Carlo
-are both far more accurate than partial least squares and generalized
-structured component analysis, and maximum likelihood is not separated from
-Markov chain Monte Carlo.
-Direction differs for generalized structured component analysis as the
-number of indicators grows, at the same sample size and the same correct
-reflective model: the published bias falls from three items to five
-(15.918 to 9.734) and then rises at seven items (13.667), and our bias
-falls at both steps (15.938, 9.850, 7.189).
-Overall: direction replicated for maximum likelihood and Markov chain Monte
-Carlo over partial least squares and generalized structured component
-analysis; maximum likelihood versus Markov chain Monte Carlo not separated.
+We replicated the headline result of Chumney (2013): on normal data at
+$n = 1000$, maximum likelihood and Bayesian Markov chain Monte Carlo recover
+measurement loadings far more accurately than partial least squares and
+generalized structured component analysis, with all four published bias
+values matched within two standard errors of the Monte Carlo means
+(maximum likelihood 2.712 versus 2.730, Markov chain Monte Carlo 2.738
+versus 2.902, partial least squares 15.896 versus 15.919, generalized
+structured component analysis 15.918 versus 15.938).
+Maximum likelihood is not separated from Markov chain Monte Carlo, so the
+further conclusion that maximum likelihood is the single most robust of the
+four is not established.
+The one reversal is the generalized structured component analysis trend at
+seven indicators: Chumney reported a rise from 9.734 at five items to
+13.667 at seven, and our bias falls from 9.850 to 7.189.
 \end{abstract}
 
 \begin{center}
@@ -92,39 +81,20 @@ GSCA from five items to seven, $n=1000$ & rises, 9.734 to 13.667 & falls, 9.850 
 \section{The headline}
 \label{sec:headline}
 
-Chumney (2013) claims that, on normal data, maximum likelihood is generally
-the most robust of the four estimators.
-Overall verdict: direction replicated for maximum likelihood and Markov
-chain Monte Carlo over partial least squares and generalized structured
-component analysis; maximum likelihood versus Markov chain Monte Carlo not
-separated.
+We replicated the headline result of Chumney (2013): on normal data at
+$n=1000$, maximum likelihood and Bayesian Markov chain Monte Carlo recover
+measurement loadings far more accurately than partial least squares and
+generalized structured component analysis, and all four published bias
+values match within two standard errors (2.712 versus 2.730, 2.738 versus
+2.902, 15.896 versus 15.919, and 15.918 versus 15.938).
+Maximum likelihood is not separated from Markov chain Monte Carlo, so the
+further conclusion that maximum likelihood is the single most robust of the
+four is not established.
+The one reversal is generalized structured component analysis at seven
+indicators: the reported bias rises from 9.734 to 13.667, and ours falls
+from 9.850 to 7.189.
 A match in Table~\ref{tab:headline} is a difference inside two standard
 errors of the two Monte Carlo means.
-
-The headline cell is mean absolute percent bias of the measurement loadings
-at $n=1000$, three reflective indicators, correct model.
-Maximum likelihood is 2.712 published and 2.730 here: match.
-Markov chain Monte Carlo is 2.738 published and 2.902 here: match.
-Partial least squares is 15.896 published and 15.919 here: match.
-Generalized structured component analysis is 15.918 published and 15.938
-here: match.
-Published and ours put maximum likelihood and Markov chain Monte Carlo
-together, well below partial least squares and generalized structured
-component analysis.
-That pair of gaps has the same direction.
-The small gap between maximum likelihood and Markov chain Monte Carlo also
-has the same direction, maximum likelihood a little lower, and it sits
-inside the two-standard-error tolerance, so the two estimators are not
-separated.
-
-Direction differs for generalized structured component analysis as the
-number of indicators increases, still at $n=1000$ and still on the correct
-reflective model.
-Published bias falls from three items (15.918) to five (9.734) and then
-rises at seven (13.667).
-Our bias falls from three items (15.938) to five (9.850) and falls again
-at seven (7.189).
-The five-to-seven step rises in the dissertation and falls here.
 
 Chumney's dissertation asks how sample size, the number of items, omitted
 cross-loadings, and reflective versus formative indicators change the
@@ -153,7 +123,7 @@ Section~\ref{sec:gof}. Counts of converged replications are out of 150.
 
 \begin{table}[ht]
 \centering
-\caption{Printed claims and our Monte Carlo means. The three-indicator
+\caption{Printed results and our Monte Carlo means. The three-indicator
 cells are from Tables~1--4. The seven-indicator cells are from Tables~3
 and~4. Standard errors and the Holm labels are in
 \linkcsv.}
