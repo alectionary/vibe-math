@@ -496,3 +496,24 @@ UNKNOWN. A native-XOR discovery comparison solved the same small case more
 slowly in this trial. Record failed routes and exact limits, and prioritize a
 new source obstruction over a new encoding based only on size.
 [Proofs, controlled trials and continuation plan](formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md).
+
+## Lessons from complete sparse quotient discovery
+
+Testing the fundamental dual rows of one residual basis is not a complete
+search for sparse detecting functionals. A weight-at-most-three evaluation has
+at most three nonzero basis coordinates. Single columns, column-pair distances,
+and hash lookups for zero-sum triples therefore give a complete existence test
+for this criterion, without enumerating source bases. Compare quotient word
+length with the actual detecting support size, not merely the maximum order
+requested from the routine.
+
+Separate three claims: a mathematically stronger criterion, a useful place to
+invoke it in the solver, and a completed source case. The frozen C16 gate finds
+19 source partial matchings rejected at order three but accepted by complete
+order two and by joint mandatory-vector propagation. This establishes new local
+information. It does not establish a cover reduction or a full-frame obstruction.
+Record how often a new oracle is actually reached in a controlled solver trial;
+placing it after another separator can leave it uncalled throughout a bounded
+run. Preserve small source certificates for later use as initial clauses, rather
+than assuming that a stronger oracle automatically improves search.
+[Written argument and checked source examples](formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md).
