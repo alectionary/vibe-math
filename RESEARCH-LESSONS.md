@@ -462,3 +462,37 @@ confirm the restriction identity. A rational fractional packing also raises the
 old signature-cover lower bound109 to121, while the upper cover is418. State the
 proof criterion: a bound for partial-signature covers does not bound arbitrary
 full-frame covers using the new basis restrictions.
+
+## Lessons from the C16 strategy reassessment
+
+Pair-domain restrictions must remain explicit in every learned clause. A
+hypothetical frame avoiding a proposed cover can use all zero-signature pairs
+and only the specified nonzero-signature classes. Rank and commutation use the
+physical graph; private partners use the allowed graph. Of860 domain cores,
+788 are independently contradictory in the unrestricted graph and72 remain
+unproved by that propagation. Recheck a core before transferring it to a wider
+domain. To combine cover removals, each proof domain must contain the actual
+avoidance domain of the combined cover.
+
+Preserving an arbitrary designated anchor changes signature normalization.
+Delete dependent subsets only among the free pairs. There can be16 independent
+free signatures plus the anchor, and a free signature may equal the anchor's.
+Imposing total independence or a15-free-pair bound would lose the required
+projection argument. Both the source bridge and the independent CNF consumer
+must enforce the same convention.
+
+A full-basis theory clause need not survive deleting pairs. Conditional
+short-word rules often have positive literals and cannot enter the compact
+partial-matching model. Their all-negative instances can: three saved C16
+closure fixed points are rejected by source-valid quotient-word certificates
+even though mandatory propagation accepts them. Check the sign and source
+scope of the actual clause before reusing it. Preserve its small algebraic
+certificate as well as any solver proof.
+
+Fewer solver variables do not establish a speedup. Dynamic owner matching
+generated millions of clauses and completed no full case; static binary
+partner labels reduced model size but its bounded pilots also remained
+UNKNOWN. A native-XOR discovery comparison solved the same small case more
+slowly in this trial. Record failed routes and exact limits, and prioritize a
+new source obstruction over a new encoding based only on size.
+[Proofs, controlled trials and continuation plan](formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md).
