@@ -30,11 +30,14 @@ Later phases pursue the best-supported route, with explicit stop conditions
 and time reserved for independent replay, source/question accounting,
 preservation, required-review publication and expected-SHA claim release.
 
-The current independently certified sufficient cover is **411**. This removes
-seven of the418 cover cases at the start (1.675%). The physical frame remains
-88/128, the width remains16 or18, and zero full source anchors have been solved.
+The final independently certified sufficient cover is **409 cases**, down from
+418 at the start: nine fewer cases, or 2.153%. The physical frame remains
+88/128, the width remains 16 or 18, and zero full source anchors have been solved.
 These are separate measures: a smaller sufficient cover does not prove that
 its removed classes can never occur in a full frame.
+The [final cover](strategy-results/final-cover.json) and
+[composition check](strategy-results/final-cover-bindings.json) record the
+accepted result. The remaining trial is UNKNOWN at its frozen time limit.
 
 No sub-agents, issue messages, new schedules, master bypass or auto-merge.
 Use the existing PR17 for authorized repository publication. Read-only issue
@@ -311,7 +314,13 @@ mixed-sign short-word clauses used by the full solver generally cannot.
 imports only these independently checked all-negative instances. A frozen
 three-case follow-up uses the same110-class domain,600 seconds per discovery,
 300 seconds for ordinary proof generation, and explicit independent replay.
-Its final outcomes are recorded separately in `word-followup.json`.
+Its final outcomes are recorded separately in `word-followup.json`: two
+independently certified UNSATs, removing (26,26,5) and (5,26,12) from cover411,
+and one UNKNOWN at600 seconds for (26,32,3). Thus the final cover is409.
+The UNKNOWN trial checks2561 partial models and records13 short-word
+certificate rows, corresponding to11 distinct sector-specific mandatory subsets
+and10 cyclic/sector-swap orbits. The initial three seeds represent two such
+orbits. These certificate counts are not counts of excluded full source cases.
 
 ## Route to a decisive answer
 
@@ -331,8 +340,9 @@ bounded pilot is UNKNOWN.
 The next structural follow-up is to strengthen the now effective quotient-word
 obstruction. For any d, absence of a representation with at most d source terms
 in the quotient, together with at most d possible detecting vectors, gives the
-same contradiction. The next bounded gate should test d=3 on saved surviving
-candidates, using exact pair-sum tables and an independent consumer. A pair-sum
+same contradiction. The next bounded gate should first collect candidates that
+survive the present two-term rule, then test d=3 using exact pair-sum tables and
+an independent consumer. A pair-sum
 table has at most259,561 entries for720 labels; three-term membership is a
 single-label scan against that table. This is a specific algebraic test, not a
 proposal to enumerate every basis. Its payoff is untested, and finding suitable
@@ -351,8 +361,16 @@ the pinned version recorded in the manifest, the cover replay is:
 
 ```sh
 python formalization/canonical-width/c16/replay_strategy_cover.py \
+  --cover formalization/canonical-width/c16/strategy-results/final-cover.json \
   --drat-trim /path/to/drat-trim \
   --output-directory /tmp/c16-fresh-cover-replay --workers 2
+```
+
+First restore the proof that is partitioned to fit the repository's file limit:
+
+```sh
+python formalization/canonical-width/c16/hydrate_strategy_proofs.py \
+  --manifest formalization/canonical-width/c16/strategy-results/split-proof-archives.json
 ```
 
 The output directory must not already exist. Immutable original receipts are
@@ -360,6 +378,14 @@ not overwritten: fresh results compare source, input, proof and certificate
 counts with the canonical records. `strategy-results/clean-cover-replay/manifest.json`
 records a complete replay of cover411 from detached commit a5d8bd2. This includes
 the entire parent418 proof chain and all seven subsequent removal proofs.
+Both additional short-word proofs subsequently replay from detached commit
+0d41985, after integration of master f96d1ea. The merge changes no C16 source.
+`clean-word-replay/manifest.json` records these checks and verifies that all
+previously replayed parent inputs, consumers and canonical receipts are
+byte-identical. The final [verification record](strategy-results/verification.json)
+combines those checks with the409-case induction and the independently rebuilt
+UNKNOWN trial. Its18,294 source cuts and2561 partial-model records replay; its
+UNKNOWN status still excludes no case.
 
 The large static theory logs are stored losslessly. Restore them before replaying
 the full-frame model consumers:
