@@ -1,0 +1,117 @@
+{
+  "id": "c16-algebraic-sources-screen-20261028",
+  "checked_on": "2026-10-28",
+  "canonical_target_id": "L-F91-c16-unrestricted-width",
+  "baseline": {
+    "canonical_entries": 402,
+    "eligible_targets": 160,
+    "paper_records": 191,
+    "full_text_screens": 159,
+    "verified_complete_lean_targets": 6
+  },
+  "papers": [
+    {
+      "paper_id": "F159",
+      "title": "Computing Infeasibility Certificates for Combinatorial Problems through Hilbert’s Nullstellensatz",
+      "version": "Author manuscript dated5January2009,27pages",
+      "status": "full_text_screened",
+      "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+      "extracted_text_sha256": "ee5ec7ed547fda072e81749a98ae2174b64b7153a3f2183a319ca25da6014d9f",
+      "extracted_lines": 2765,
+      "source_url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+      "target_count": 4,
+      "recorded_target_ids": [
+        "L-F159-certificate-degree-lower-bounds",
+        "L-F159-certificate-degree-upper-bounds",
+        "L-F159-clique-degree-cutters",
+        "L-F159-coloring-degree-growth"
+      ],
+      "outcome": "historical_broad_directions_or_formulation_gates"
+    },
+    {
+      "paper_id": "F160",
+      "title": "Tinted, Detached, and Lazy CNF-XOR solving and its Applications to Counting and Sampling",
+      "version": "Author CAV2020 manuscript,22pages",
+      "status": "full_text_screened",
+      "source_sha256": "3fd1c8883cd87e0473c02f3c32e6d978a1027f6b5538035eaec84bb4c560924d",
+      "extracted_text_sha256": "39c37b50e4bb1650e728b2b64c936a8497d95a46525f513d3fc8d9e15e861d56",
+      "extracted_lines": 1190,
+      "source_url": "https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf",
+      "target_count": 0,
+      "recorded_target_ids": [],
+      "outcome": "no_additional_explicit_question_identified"
+    },
+    {
+      "paper_id": "F161",
+      "title": "Proof Generation for CDCL Solvers Using Gauss-Jordan Elimination",
+      "version": "arXiv:2304.04292v1,9April2023,12pages",
+      "status": "full_text_screened",
+      "source_sha256": "95420ba3fd95692f10216fda9559895ad4ac9597bd0304df53caf9923bb3ed1f",
+      "extracted_text_sha256": "f21496cec2272070d1a017101a3326783c6b43507b101a30a9f4b3e354e5ec4b",
+      "extracted_lines": 984,
+      "source_url": "https://arxiv.org/pdf/2304.04292",
+      "target_count": 1,
+      "recorded_target_ids": [
+        "L-F161-proof-producing-cdcl-t"
+      ],
+      "outcome": "historical_broad_directions_or_formulation_gates"
+    },
+    {
+      "paper_id": "F162",
+      "title": "BOSPHORUS: Bridging ANF and CNF Solvers",
+      "version": "DATE2019 author manuscript,6pages",
+      "status": "full_text_screened",
+      "source_sha256": "4107c11fe4b0d8e1e10d265cc485d3b2ce8db98455de198951d211e22ff75af1",
+      "extracted_text_sha256": "ae0e692f1f67b0115d14e103f61e9544a1438207870c0581ddb5e5742834b65b",
+      "extracted_lines": 857,
+      "source_url": "https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf",
+      "target_count": 1,
+      "recorded_target_ids": [
+        "L-F162-iterative-solver-extensions"
+      ],
+      "outcome": "historical_broad_directions_or_formulation_gates"
+    }
+  ],
+  "added_target_ids": [
+    "L-F159-certificate-degree-lower-bounds",
+    "L-F159-certificate-degree-upper-bounds",
+    "L-F159-clique-degree-cutters",
+    "L-F159-coloring-degree-growth",
+    "L-F161-proof-producing-cdcl-t",
+    "L-F162-iterative-solver-extensions"
+  ],
+  "cohort_delta": {
+    "canonical_entries": 6,
+    "eligible_targets": 0,
+    "paper_records": 4,
+    "full_text_screens": 4,
+    "complete_lean_targets": 0
+  },
+  "held_conjectures": [
+    "L-F159-clique-degree-cutters"
+  ],
+  "excluded_or_resolved_passages": [
+    {
+      "source_id": "F160",
+      "locator": "Full22-page paper, introduction/methods/conclusion",
+      "reason": "The stated bottlenecks and algorithmic questions motivate methods supplied in this paper; no further explicit unresolved question was identified after full screening."
+    },
+    {
+      "source_id": "F162",
+      "locator": "SectionI author question",
+      "reason": "The paper explicitly answers its question about combining ANF/CNF methods; do not re-inventory that answered question as open."
+    },
+    {
+      "source_id": "F162",
+      "locator": "SectionV extension suggestion",
+      "reason": "Indexed only as a broad historical implementation direction; current4.1.0 code already contains Groebner-related components."
+    }
+  ],
+  "current_resolution_and_lean_scope": "Six entries are historical broad/gated directions. No claim that all remain currently open, and no matching Lean-statement search or completion is assigned. Modern coloring-degree results were found as leads, not transferred to this different encoding.",
+  "method_transfer": {
+    "F159": "Boolean quotient NulLA pilot; degree2 formal witnesses and degree3 resource limits recorded. Symmetry characteristic hypothesis retained.",
+    "F160": "Native GJE flags and matrix statistics inspected on the actual C16 model; no global speedup guarantee.",
+    "F161": "Proof-producing parity motivation; independent current XLRUP pipeline tested, not presented as the same2023 BDD implementation.",
+    "F162": "Actual ANF/CNF hybrid tests; ElimLin learned no new facts on the two fixed C16 conditional controls."
+  }
+}

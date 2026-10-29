@@ -25,6 +25,7 @@ def main():
    if not A[ax]>>j&1:cnf.append([ownX[i] for i in sorted(ownX) if A[i]>>j&1])
  if d.get('profile_cuts_c16_path'):
   file=ROOT/d['profile_cuts_c16_path'];payload=file.read_bytes();cuts=json.loads(gzip.decompress(payload) if file.suffix=='.gz' else payload)
+  if cuts.get('conditioned_on_anchor') is not None:assert cuts['conditioned_on_anchor']==d['anchor']
   for r in cuts['records']:
    for cut in r['minimal_bad_certificates']:
     selected={16*r['orbit']+h for h in range(16) if cut['mask']>>h&1}

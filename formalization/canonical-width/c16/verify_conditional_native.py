@@ -4,10 +4,16 @@ from pathlib import Path
 import argparse,gzip,hashlib,json,lzma,shutil,subprocess,tempfile,time
 from verify_algebraic_model import domain
 from verify_signature_cover import independent_cnf
+from verify_anchored_cover_chain import independent_signature_amo
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--domain',type=Path,required=True);ap.add_argument('--metadata',type=Path,required=True);ap.add_argument('--proof',type=Path,required=True);ap.add_argument('--checker',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();start=time.monotonic();source=json.loads(a.domain.read_text());A,E,t,r=domain(source);d=json.loads(a.metadata.read_text());assert d['anchor']==source['anchor'] and d['trial_removed']==source['removed_classes'];cnf,n,_,_=independent_cnf(A,[0],[(*e,0) for e in E],False,nbits=0);lines=[' '.join(map(str,c))+' 0' for c in cnf]
+ ap=argparse.ArgumentParser();ap.add_argument('--domain',type=Path,required=True);ap.add_argument('--metadata',type=Path,required=True);ap.add_argument('--proof',type=Path,required=True);ap.add_argument('--checker',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();start=time.monotonic();source=json.loads(a.domain.read_text());A,E,t,r=domain(source);d=json.loads(a.metadata.read_text());assert d['anchor']==source['anchor'] and d['trial_removed']==source['removed_classes'];compressed=d.get('signature_compression',False);cnf,n,_,_=independent_cnf(A,[0],[(*e,0) for e in E],compressed,nbits=0)
+ if compressed:
+  signatures=sorted({e[2] for e in E});events=[(n-len(signatures)+k+1,s) for k,s in enumerate(signatures)]
+ else:events=[(k,e[2]) for k,e in enumerate(E,1)]
+ if d.get('one_per_signature',False):n,_=independent_signature_amo(cnf,n,[(*e,0) for e in E])
+ lines=[' '.join(map(str,c))+' 0' for c in cnf]
  for k in range(r):
-  lits=[i for i,(_,_,s) in enumerate(E,1) if s>>k&1];assert lits
+  lits=[i for i,s in events if s>>k&1];assert lits
   if not t>>k&1:lits[0]=-lits[0]
   lines.append('x'+' '.join(map(str,lits))+' 0')
  raw=(f'p cnf {n} {len(lines)}\n'+'\n'.join(lines)+'\n').encode();assert n==d['variables'] and len(cnf)==d['CNF_clauses'] and r==d['native_XORs'];assert hashlib.sha256(raw).hexdigest()==d['input_sha256'] and gzip.decompress((a.metadata.parent/d['input_file']).read_bytes())==raw;assert all(cnf)
