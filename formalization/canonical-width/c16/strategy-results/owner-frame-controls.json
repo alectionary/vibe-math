@@ -1,0 +1,137 @@
+{
+  "status": "PASS",
+  "adder_input_truth_checks": 2046,
+  "fixed_owner_extension_truth_checks": 1344,
+  "callback_integrations": [
+    {
+      "pool": "all2",
+      "variant": "matching",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 10,
+        "clauses": 2,
+        "conflicts": 2,
+        "units": 0,
+        "native_and_certificate_seconds": 5.462602712213993e-05,
+        "cut_limit_reached": false,
+        "matching_clauses": 2,
+        "span_clauses": 0,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "all2",
+      "variant": "span",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 8,
+        "clauses": 2,
+        "conflicts": 1,
+        "units": 1,
+        "native_and_certificate_seconds": 6.26248074695468e-05,
+        "cut_limit_reached": false,
+        "matching_clauses": 1,
+        "span_clauses": 1,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "nonsplit4",
+      "variant": "matching",
+      "answer": false,
+      "oracle_statistics": {
+        "checks": 34,
+        "clauses": 16,
+        "conflicts": 8,
+        "units": 8,
+        "native_and_certificate_seconds": 8.779217023402452e-05,
+        "cut_limit_reached": false,
+        "matching_clauses": 16,
+        "span_clauses": 0,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "nonsplit4",
+      "variant": "span",
+      "answer": false,
+      "oracle_statistics": {
+        "checks": 2,
+        "clauses": 2,
+        "conflicts": 1,
+        "units": 1,
+        "native_and_certificate_seconds": 9.812507778406143e-05,
+        "cut_limit_reached": false,
+        "matching_clauses": 0,
+        "span_clauses": 2,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "all4",
+      "variant": "matching",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 159,
+        "clauses": 108,
+        "conflicts": 21,
+        "units": 87,
+        "native_and_certificate_seconds": 0.0007855800213292241,
+        "cut_limit_reached": false,
+        "matching_clauses": 108,
+        "span_clauses": 0,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "all4",
+      "variant": "span",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 170,
+        "clauses": 151,
+        "conflicts": 16,
+        "units": 135,
+        "native_and_certificate_seconds": 0.001710878568701446,
+        "cut_limit_reached": false,
+        "matching_clauses": 124,
+        "span_clauses": 27,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "canonical4",
+      "variant": "matching",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 2,
+        "clauses": 0,
+        "conflicts": 0,
+        "units": 0,
+        "native_and_certificate_seconds": 6.375019438564777e-06,
+        "cut_limit_reached": false,
+        "matching_clauses": 0,
+        "span_clauses": 0,
+        "cap_reported": false
+      }
+    },
+    {
+      "pool": "canonical4",
+      "variant": "span",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 2,
+        "clauses": 0,
+        "conflicts": 0,
+        "units": 0,
+        "native_and_certificate_seconds": 1.1999858543276787e-05,
+        "cut_limit_reached": false,
+        "matching_clauses": 0,
+        "span_clauses": 0,
+        "cap_reported": false
+      }
+    }
+  ],
+  "native_library_sha256": "1a45fdac112461068d15a2196e03684051434a1eec625ae83a8b2a23e29039d2",
+  "scope": "Exact small Boolean-adder and model equivalence controls, plus actual direct-owner matching/span callbacks. No C16 satisfiability conclusion."
+}
