@@ -2,7 +2,7 @@
 # Two combined standard errors, then Holm on the normal two-sided p-values.
 # The plug-in variance is our within-cell variance. Their replication count is 1000.
 #
-# Rscript score_gaps.R out/mc_ink_eps1_c1_r40.csv out
+# Rscript score_gaps.R mc.csv out [sens|spec|ppv|npv|all] [outname.csv]
 
 args <- commandArgs(trailingOnly = TRUE)
 mc_path <- args[[1]]
@@ -11,7 +11,11 @@ pub_path <- file.path(out_dir, "published_classification.csv")
 if (!file.exists(pub_path)) pub_path <- file.path("out", "published_classification.csv")
 
 mc <- read.csv(mc_path, stringsAsFactors = FALSE)
+if ("bias" %in% names(mc)) mc <- mc[!is.na(mc$bias), ]
 pub <- read.csv(pub_path, stringsAsFactors = FALSE)
+suffixes <- c(sens = "sensitivity", spec = "specificity", ppv = "ppv", npv = "npv")
+which_out <- if (length(args) >= 3 && args[[3]] %in% c(names(suffixes), "all")) args[[3]] else "sens"
+outs <- if (which_out == "all") names(suffixes) else which_out
 
 # Tables A6-A23 are three statistics cycling through six biases.
 bias_of <- c(A6 = "acquiescence", A7 = "acquiescence", A8 = "acquiescence",
@@ -73,25 +77,28 @@ one_comparison <- function(dat, column, published, margin, level) {
 }
 
 rows <- list()
-for (reading_name in c("upper", "lower")) {
-  for (table in names(stat_of)) {
-    st <- stat_of[[table]]
-    cols <- readings[[st]]
-    if (!reading_name %in% names(cols)) next
-    column <- paste0(cols[[reading_name]], "_sens")
-    bias <- bias_of[[table]]
-    block <- pub[pub$table == table, ]
-    for (i in seq_len(nrow(block))) {
-      rec <- block[i, ]
-      use_bias <- if (bias == "grand") level_bias[[as.character(rec$level)]] else bias
-      dat <- if (identical(use_bias, "all")) mc else mc[mc$bias == use_bias, ]
-      cmp <- one_comparison(dat, column, rec$sensitivity, rec$margin, rec$level)
-      rows[[length(rows) + 1L]] <- data.frame(
-        reading = paste0(st, "_", reading_name),
-        table = table, margin = rec$margin, level = rec$level,
-        bias = if (bias == "grand") rec$level else bias,
-        cmp, stringsAsFactors = FALSE
-      )
+for (outcome in outs) {
+  for (reading_name in c("upper", "lower")) {
+    for (table in names(stat_of)) {
+      st <- stat_of[[table]]
+      cols <- readings[[st]]
+      if (!reading_name %in% names(cols)) next
+      column <- paste0(cols[[reading_name]], "_", outcome)
+      bias <- bias_of[[table]]
+      block <- pub[pub$table == table, ]
+      for (i in seq_len(nrow(block))) {
+        rec <- block[i, ]
+        use_bias <- if (bias == "grand") level_bias[[as.character(rec$level)]] else bias
+        dat <- if (identical(use_bias, "all")) mc else mc[mc$bias == use_bias, ]
+        cmp <- one_comparison(dat, column, rec[[suffixes[[outcome]]]], rec$margin, rec$level)
+        rows[[length(rows) + 1L]] <- data.frame(
+          outcome = outcome,
+          reading = paste0(st, "_", reading_name),
+          table = table, margin = rec$margin, level = rec$level,
+          bias = if (bias == "grand") rec$level else bias,
+          cmp, stringsAsFactors = FALSE
+        )
+      }
     }
   }
 }
@@ -102,23 +109,26 @@ cmp$family <- ifelse(cmp$margin == "aberrancy" & cmp$level != "MEAN", "grand",
                      ifelse(cmp$level == "MEAN", "mean_row", "margin"))
 cmp$p_holm <- NA_real_
 cmp$p_bonferroni <- NA_real_
-for (rd in unique(cmp$reading)) {
-  for (fam in c("grand", "margin")) {
-    ix <- cmp$reading == rd & cmp$family == fam
-    if (!any(ix)) next
-    cmp$p_holm[ix] <- p.adjust(cmp$p[ix], method = "holm")
-    cmp$p_bonferroni[ix] <- p.adjust(cmp$p[ix], method = "bonferroni")
+for (oc in unique(cmp$outcome)) {
+  for (rd in unique(cmp$reading)) {
+    for (fam in c("grand", "margin")) {
+      ix <- cmp$outcome == oc & cmp$reading == rd & cmp$family == fam
+      if (!any(ix)) next
+      cmp$p_holm[ix] <- p.adjust(cmp$p[ix], method = "holm")
+      cmp$p_bonferroni[ix] <- p.adjust(cmp$p[ix], method = "bonferroni")
+    }
   }
 }
 cmp$raw_band <- ifelse(!is.finite(cmp$z), "no match",
                        ifelse(cmp$z <= 2, "match", ifelse(cmp$z <= 3, "close", "no match")))
 cmp$holm_band <- ifelse(is.na(cmp$p_holm), "",
                         ifelse(cmp$p_holm >= 0.05, "match", "no match"))
-utils::write.csv(cmp, file.path(out_dir, "comparison.csv"), row.names = FALSE)
+out_name <- if (length(args) >= 4) args[[4]] else if (which_out == "all") "comparison_all.csv" else "comparison.csv"
+utils::write.csv(cmp, file.path(out_dir, out_name), row.names = FALSE)
 
 grand <- cmp[cmp$family == "grand", ]
-cat("Grand sensitivities\n")
-print(grand[, c("reading", "bias", "published", "ours", "diff", "se", "raw_band", "holm_band")],
+cat("Grand rates\n")
+print(grand[, c("outcome", "reading", "bias", "published", "ours", "diff", "se", "raw_band", "holm_band")],
       digits = 3, row.names = FALSE)
 cat("\nCounts by reading and raw band, grand family\n")
 print(table(grand$reading, grand$raw_band))
