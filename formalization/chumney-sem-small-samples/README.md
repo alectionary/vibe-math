@@ -48,6 +48,36 @@ A cell is a match when the difference of Monte Carlo means is inside a
 two-standard-error band and the Holm adjustment within that outcome
 does not reject it.
 
+## Bayesian subset
+
+Thirty replications. Two chains, 500 burn-in iterations, 500 retained
+draws, potential scale reduction below 1.05. blavaan defaults for the
+priors. The cells are the four three-indicator conditions at n = 50 and
+n = 1000, plus the seven-indicator correct reflective cells.
+
+```bash
+R_LIBS_USER=/tmp/rlib Rscript simulation/bayes_subset.R --reps 30
+```
+
+writes `simulation/out/bayes-reps30.rds`. The run that produced the note
+took 6731 seconds.
+
+## Formative structural readings
+
+```bash
+R_LIBS_USER=/tmp/rlib Rscript simulation/investigate_formative.R
+```
+
+writes `simulation/out/formative_readings.txt`.
+
+## GSCA implementations
+
+```bash
+R_LIBS_USER=/tmp/rlib Rscript simulation/investigate_gsca.R --reps 40
+```
+
+writes `simulation/out/gsca_compare.rds`.
+
 ## Page crops
 
 ```bash
