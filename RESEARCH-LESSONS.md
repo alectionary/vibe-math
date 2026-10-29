@@ -415,6 +415,8 @@ The probability on the order of \(10^{-12}\) is the product of three binomial pr
 
 Issue edits returned HTTP 403, and the issue was not updated from this environment. The work-branch push also returned 403 for `cursor[bot]`, and the same tree was published through the Git Data API. Files that exist only on the bot's box must be attached before a cloud agent can read them. A draft pull request must be marked ready before it can be merged. Pull request 14 was that draft.
 
+## Lessons from the C16 algebraic continuation
+
 ### Separate a stronger relaxation from a stronger source conclusion
 
 The C16 algebraic continuation gives two exact comparisons. Physical rank
