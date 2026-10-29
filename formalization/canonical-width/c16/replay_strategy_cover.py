@@ -40,9 +40,11 @@ def main():
         if 'parent_cover_file' in d:
             visit(path.parent/d['parent_cover_file'])
             for item in d['accepted_anchor_proofs']:
-                tasks.append((path.parent/item['metadata_file'],
-                              path.parent/item['replay_file'],
-                              'verify_kept_anchor_domain_signature_long.py'))
+                metadata = path.parent/item['metadata_file']
+                word = json.loads(metadata.read_text()).get('universal_short_word_enabled', False)
+                consumer = ('verify_word_kept_anchor_domain_signature.py' if word else
+                            'verify_kept_anchor_domain_signature_long.py')
+                tasks.append((metadata, path.parent/item['replay_file'], consumer))
         else:
             assert d['new_case_count'] == 417
             tasks.append((ROOT/'algebraic-results/exchange/chain.json',
