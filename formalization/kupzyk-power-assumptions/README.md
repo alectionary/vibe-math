@@ -2,7 +2,7 @@
 
 This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. This PR provides the research report and reproducible artifacts; exact SAS replay is not claimed.
 
-Start with `paper/report.pdf` or its editable LaTeX source `paper/report.tex`. The exact manuscript is generated from saved results by `scripts/build_report.py`. `notes/compliance-ledger.json` records adherence and justified departures from the pinned replication skill. `notes/availability.csv` records what source/code was and was not obtained.
+Start with `paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf` or its editable LaTeX source `paper/report.tex`. The exact manuscript is generated from saved results by `scripts/build_report.py`. `notes/compliance-ledger.json` records adherence and justified departures from the pinned replication skill. `notes/availability.csv` records what source/code was and was not obtained.
 
 ## Environment
 
@@ -32,7 +32,7 @@ Rscript --vanilla formalization/kupzyk-power-assumptions/scripts/baseline_diagno
 Rscript --vanilla formalization/kupzyk-power-assumptions/scripts/summarize.R
 python3 formalization/kupzyk-power-assumptions/scripts/compliance.py
 python3 formalization/kupzyk-power-assumptions/scripts/build_report.py
-(cd formalization/kupzyk-power-assumptions/paper && pdflatex -interaction=nonstopmode -halt-on-error report.tex && pdflatex -interaction=nonstopmode -halt-on-error report.tex)
+(cd formalization/kupzyk-power-assumptions/paper && pdflatex -jobname=simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011 -interaction=nonstopmode -halt-on-error report.tex && pdflatex -jobname=simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011 -interaction=nonstopmode -halt-on-error report.tex)
 ```
 
 Budget: 38,000 empirical fits, 1000 masks per final nonzero-attrition cell, 500 masks per initial nonzero-attrition cell, 200 masks per threshold, plus documented gap diagnostics. A 54-cell pilot estimated roughly61 CPU minutes for the empirical run, or20 elapsed minutes with three workers before contention/retries. Expected precision and stopping policy are in `notes/budget.md`. All original headline arms run at documented reduced scale. The full original empirical study is not reproduced.
@@ -66,5 +66,7 @@ The computational run made no skill changes. A later user-authorized editorial r
 `paper/references.tex` is the editable author–year bibliography, included by the generated manuscript. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. After building, run:
 
 ```sh
-python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/report.log
+python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.log
 ```
+
+The published PDF uses the descriptive filename `simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf`. The former generic `report.pdf` is superseded. Inline code links display literal filenames with extensions, and Appendix C links repository files and scripts to master.

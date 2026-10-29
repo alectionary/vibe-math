@@ -153,7 +153,12 @@ R with an SEM package for statistical model fitting.
 Deep-link every script, output file, and key function from the text, with line
 anchors for theorems and functions. The visible link text must include the
 actual filename and extension (for example, `model.R: empirical fits`, not
-just `empirical fits`). Descriptive wording may accompany the filename.
+just `empirical fits`). Prefer a literal filename label, with any description
+outside the link: `empirical fits ([model.R](...#L68))`. Preserve underscores
+and extensions in rendered text, using an appropriate code/path font.
+Verify the final PDF's visible link text and hyperlink annotations, not just
+the manuscript source. Deliver a link to the newly built artifact; updating
+source alone does not update previously downloaded or separately saved PDFs.
 
 In the artifacts appendix, make each repository file and regeneration script
 a clickable `master` link; a plain path or command is not sufficient. Use
@@ -307,6 +312,16 @@ Symbol-font equations from Word Equation Editor or MathType store operators as
 Private Use Area codes. The retrieval skill records the codes and the
 out-of-order text layer under
 [equations in the text layer](../document-retrieval-worker/SKILL.md#equations-in-the-text-layer).
+
+## Deliverable filenames
+
+Name the final PDF descriptively from the paper title and subject, for example
+`simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf`,
+not `report.pdf` or `paper.pdf`. Use a stable, filesystem-safe name with the
+`.pdf` extension. Update build commands, artifact tables, README, and PR links
+when renaming it; keep one clearly identified current published PDF. Verify
+that the linked or uploaded bytes are the newly rendered document. Preserve
+historical copies separately and do not present an older download as current.
 
 ## Required sections
 
@@ -515,7 +530,12 @@ pull request.
       script, output file, and key function is deep-linked from the text,
       with line anchors for theorems and functions. The visible link text must include the
 actual filename and extension (for example, `model.R: empirical fits`, not
-just `empirical fits`). Descriptive wording may accompany the filename.
+just `empirical fits`). Prefer a literal filename label, with any description
+outside the link: `empirical fits ([model.R](...#L68))`. Preserve underscores
+and extensions in rendered text, using an appropriate code/path font.
+Verify the final PDF's visible link text and hyperlink annotations, not just
+the manuscript source. Deliver a link to the newly built artifact; updating
+source alone does not update previously downloaded or separately saved PDFs.
 
 In the artifacts appendix, make each repository file and regeneration script
 a clickable `master` link; a plain path or command is not sufficient. Use
