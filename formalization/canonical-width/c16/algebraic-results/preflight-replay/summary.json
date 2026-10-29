@@ -1,0 +1,451 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "records": [
+    {
+      "name": "physical88",
+      "status": "PASS",
+      "elapsed_seconds": 0.0858500829199329,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_partial_frame.py",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/partial-frame-88.json"
+      ],
+      "report_sha256": null
+    },
+    {
+      "name": "formal-control",
+      "status": "PASS",
+      "elapsed_seconds": 0.425567707978189,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_algebraic_model.py",
+        "--domain",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/control.json",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/quadratic-control.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/formal-control.json"
+      ],
+      "report_sha256": "8a3aebbafb06a234b2d26d63ac095f802c077df0fb495c98789ee0173e09d787"
+    },
+    {
+      "name": "formal-control-amo",
+      "status": "PASS",
+      "elapsed_seconds": 0.42000716691836715,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_algebraic_model.py",
+        "--domain",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/control.json",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/quadratic-control-amo.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/formal-control-amo.json"
+      ],
+      "report_sha256": "eb08089a0e671f2ed2fb82a292f1da47e9ecc332041c1db5bfb4b480f9b04ad3"
+    },
+    {
+      "name": "formal-hard",
+      "status": "PASS",
+      "elapsed_seconds": 0.42500962503254414,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_algebraic_model.py",
+        "--domain",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard.json",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/quadratic-hard.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/formal-hard.json"
+      ],
+      "report_sha256": "e57c1d396ee02fb0b50dba212f408aca4fe424f5ada5a0a6143d25c34b826eba"
+    },
+    {
+      "name": "formal-hard-amo",
+      "status": "PASS",
+      "elapsed_seconds": 0.4908827090403065,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_algebraic_model.py",
+        "--domain",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard.json",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/quadratic-hard-amo.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/formal-hard-amo.json"
+      ],
+      "report_sha256": "549d1fd0e471b6a1ea2ea18a47da5af671d08d372fffe036fc5158879cb6ad80"
+    },
+    {
+      "name": "affine-degree-cutters",
+      "status": "PASS",
+      "elapsed_seconds": 2.26963483390864,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_affine_degree_cutters.py",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/affine-degree-cutters.json"
+      ],
+      "report_sha256": "86049a0f7d944db22e157f11f3b065c9085ea7ac473ef2cef426a6fd8ad9bfb5"
+    },
+    {
+      "name": "inverse-linear-all428",
+      "status": "PASS",
+      "elapsed_seconds": 5.052612166036852,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_conditional_spans.py",
+        "--survey",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/span-survey.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/inverse-linear-all428.json"
+      ],
+      "report_sha256": "e3e761442a6455c69b5f31e2289394ed24a6ee11cf7b2d99481ab6053c734527"
+    },
+    {
+      "name": "inverse-flats",
+      "status": "PASS",
+      "elapsed_seconds": 3.7905671250773594,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_inverse_flat_cuts.py",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/inverse-flats.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/inverse-flats.json"
+      ],
+      "report_sha256": "75f2a1ca81058e9fac3abe72529456cefc20d0e6883e48c7b3dc54e05e996a84"
+    },
+    {
+      "name": "inverse-flats-triples",
+      "status": "PASS",
+      "elapsed_seconds": 61.18335949990433,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_inverse_flat_cuts.py",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/inverse-flats-triples.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/inverse-flats-triples.json"
+      ],
+      "report_sha256": "74e354907b4a2b15005c4477046f1cca54b8b05402ccc4f6eb500889564ffcd2"
+    },
+    {
+      "name": "phase-unconditioned",
+      "status": "PASS",
+      "elapsed_seconds": 18.510074667050503,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_orbit_rank_profiles.py",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/orbit-rank-profiles.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/phase-unconditioned.json"
+      ],
+      "report_sha256": "90c00b0d3ff2c932920ec0ff206705c5d98b6a0210dce0cbc608636053991712"
+    },
+    {
+      "name": "quotient-anchor48",
+      "status": "PASS",
+      "elapsed_seconds": 0.6140808750642464,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_anchor_quotient.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/anchor48-quotient.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/quotient-anchor48.json"
+      ],
+      "report_sha256": "954aecec43a29a6cebcf4c66881da6518689d6bf2833ac0ca66644e89a079b66"
+    },
+    {
+      "name": "phase-anchor48",
+      "status": "PASS",
+      "elapsed_seconds": 6.951698792050593,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_orbit_rank_profiles.py",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/anchor48-rank-profiles.json",
+        "--quotient-metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/anchor48-quotient.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/phase-anchor48.json"
+      ],
+      "report_sha256": "5732cabf701638857c93ffb9fc8643d9e3cccd38343df6c959e2b41143dd21a9"
+    },
+    {
+      "name": "quotient-xonly-48",
+      "status": "PASS",
+      "elapsed_seconds": 0.9899098330643028,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_anchor_quotient.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/xonly-48-quotient.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/quotient-xonly-48.json"
+      ],
+      "report_sha256": "c00ccd5bfcc2e1cbfc8e448eaea7ae4b8508ede34041f4556bbbbe0f97247f90"
+    },
+    {
+      "name": "phase-xonly-48",
+      "status": "PASS",
+      "elapsed_seconds": 20.052533583017066,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_orbit_rank_profiles.py",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/xonly-48-rank-profiles.json",
+        "--quotient-metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/xonly-48-quotient.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/phase-xonly-48.json"
+      ],
+      "report_sha256": "7fdc9051ce7cab67aa2c7237d9dca1774ead158c3e2ecd4a2282e7d0fb678d43"
+    },
+    {
+      "name": "quotient-xonly-192",
+      "status": "PASS",
+      "elapsed_seconds": 1.0569329159334302,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_anchor_quotient.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/xonly-192-quotient.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/quotient-xonly-192.json"
+      ],
+      "report_sha256": "40c26958b5c2a7a8ea604da6d705127591d9034cfd1b63872ad22ae43ded3cfd"
+    },
+    {
+      "name": "phase-xonly-192",
+      "status": "PASS",
+      "elapsed_seconds": 27.287725041038357,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_orbit_rank_profiles.py",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/xonly-192-rank-profiles.json",
+        "--quotient-metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/xonly-192-quotient.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/phase-xonly-192.json"
+      ],
+      "report_sha256": "5e694b3b468ff9a53636d504ade54f177836942bf67ab331a71ac90f026117b2"
+    },
+    {
+      "name": "anchor-profile-comparison",
+      "status": "PASS",
+      "elapsed_seconds": 8.754436957999133,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/compare_anchor_profiles.py",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/anchor-profile-comparison.json"
+      ],
+      "report_sha256": "2835bc24b994c7b6cb1ae19b7e7ecec269ffd77b725a702ba05f3487440f6b71"
+    },
+    {
+      "name": "profile-hulls",
+      "status": "PASS",
+      "elapsed_seconds": 57.87923945893999,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_profile_hulls.py",
+        "--profiles",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/orbit-rank-profiles.json",
+        "--hulls",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hulls-8-basic.json.gz",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hulls-8-rank.json.gz",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hulls-16-basic.json.gz",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hulls-16-rank.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/profile-hulls.json"
+      ],
+      "report_sha256": "268ddb9c50c2dafbcd6fd4dc8e8d0a822380fb590d9d24db32b6f610c99285ee"
+    },
+    {
+      "name": "exact-basic-point-strengthening",
+      "status": "PASS",
+      "elapsed_seconds": 25.98116983298678,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_exact_capacity_strengthening.py",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/exact-basic-point-strengthening.json"
+      ],
+      "report_sha256": "a4dcb4936205c09dcb3d68924d87a0b96919d5e907ef02238e66ff5af5f67799"
+    },
+    {
+      "name": "characteristic-two-guard",
+      "status": "PASS",
+      "elapsed_seconds": 0.04486125009134412,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_symmetry_characteristic_guard.py",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/characteristic-two-guard.json"
+      ],
+      "report_sha256": "76d9fccdb280b88c7d7e080700477a00dafcacd243a729cd3085942b362e0d3a"
+    },
+    {
+      "name": "halfturn-added-clauses",
+      "status": "PASS",
+      "elapsed_seconds": 0.6692375000566244,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_halfturn_profiles.py",
+        "--base",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/halfturn-baseline.cnf",
+        "--cnf",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/halfturn-profiles.cnf",
+        "--profiles",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/orbit-rank-profiles.json",
+        "--replay",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/orbit-rank-profiles-independent.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/halfturn-added-clauses.json"
+      ],
+      "report_sha256": "38e55d6b1243c89d1ddbe9b7ae51c94d856dc9a1156fa9b205092d30ee233a99"
+    },
+    {
+      "name": "full-anchor-xnf",
+      "status": "PASS",
+      "elapsed_seconds": 4.3210914169903845,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_full_anchor_model.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/full-anchor-xnf.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/full-anchor-xnf.json"
+      ],
+      "report_sha256": "83f0e24842b2343149341ff5630c1c057035212de06c953d5c2926e346703798"
+    },
+    {
+      "name": "full-anchor-coverage",
+      "status": "PASS",
+      "elapsed_seconds": 4.951542834052816,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_full_anchor_model.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/full-anchor-coverage.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/full-anchor-coverage.json"
+      ],
+      "report_sha256": "964a5bb05232aa5735b23749b3723c2413372a10daa1811a57539963d65c95c5"
+    },
+    {
+      "name": "full-anchor-profiles",
+      "status": "PASS",
+      "elapsed_seconds": 4.474546707933769,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_full_anchor_model.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/full-anchor-profiles.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/full-anchor-profiles.json"
+      ],
+      "report_sha256": "166b9a34b127fcd85511cb4952bad6159fa9c5cfddf32b33c9f07180aed228e7"
+    },
+    {
+      "name": "full-anchor-conditioned-profiles",
+      "status": "PASS",
+      "elapsed_seconds": 3.75681995798368,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_full_anchor_model.py",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/full-anchor-conditioned-profiles.json",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/full-anchor-conditioned-profiles.json"
+      ],
+      "report_sha256": "e410aa5ba68e3a689e4f62f890200110ed7a1feaf6670e9a3baa8d75a6922d2f"
+    },
+    {
+      "name": "quotient-literal-controls",
+      "status": "PASS",
+      "elapsed_seconds": 0.073999666958116,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/profile_quotient_controls.py",
+        "--binary",
+        "/private/tmp/c16-profile-final",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/quotient-literal-controls.json"
+      ],
+      "report_sha256": "df813922aaad9eaa8898b2a32c9934316dd99e093ace2a54644edfa995cc010e"
+    },
+    {
+      "name": "hard-native",
+      "status": "PASS",
+      "elapsed_seconds": 17.80285495799035,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_conditional_native.py",
+        "--domain",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard.json",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard-native.cnf.json",
+        "--proof",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard-native-trimmed.xlrup.xz",
+        "--checker",
+        "/private/tmp/c16-cake_xlrup",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/hard-native.json"
+      ],
+      "report_sha256": "8135dcda91cae9f719abaeb46be3d197e1941cefdf81189c5a73c40fb71a6fe5"
+    },
+    {
+      "name": "hard-native-compact",
+      "status": "PASS",
+      "elapsed_seconds": 12.374038042034954,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/verify_conditional_native.py",
+        "--domain",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard.json",
+        "--metadata",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard-native-compact.cnf.json",
+        "--proof",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hard-native-compact.xlrup.xz",
+        "--checker",
+        "/private/tmp/c16-cake_xlrup",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/hard-native-compact.json"
+      ],
+      "report_sha256": "af7c470c20b3190622d7365f63d919c7311aa30464677f8e3ab1902aff37f364"
+    },
+    {
+      "name": "exact-profile-relaxation",
+      "status": "PASS",
+      "elapsed_seconds": 4.43185616703704,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/certify_profile_moment_point.py",
+        "--hulls",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/hulls-16-rank.json.gz",
+        "--capacities",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/orbit-rank-profiles-independent.json",
+        "--conditional",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/conditional-capacity/independent.json",
+        "--certificate",
+        "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/algebraic-results/profile-moment-rational.json.gz",
+        "--verify-only",
+        "--output",
+        "formalization/canonical-width/c16/algebraic-results/preflight-replay/exact-profile-relaxation.json"
+      ],
+      "report_sha256": "6ee655a822a8310488b6506b1cc0f6d14bdaf9d004b33502c73f901e2671bab0"
+    }
+  ],
+  "source_commit": "4f3ea9ed2f38b869a7d3c4a7c7deabba9a425c93",
+  "dirty_checkout": true,
+  "elapsed_seconds": 295.34271608293056,
+  "cover_replayed": false,
+  "conditional_cohort_replayed": false,
+  "scope": "Independent exact consumers only; bounded solver UNKNOWN and numerical feasible experiments remain unresolved. Prior physical-pool completeness and source-to-width bridge remain separately pinned dependencies."
+}

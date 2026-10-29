@@ -56,6 +56,7 @@ def build(block,anchor=(48,48),parities=True,basis_coverage=False,profile_cuts=N
    if not A[a]>>j&1:cnf.append([pv[i] for i in sorted(pv) if A[i]>>j&1])
  if profile_cuts:
   raw=profile_cuts.read_bytes();data=json.loads(gzip.decompress(raw) if profile_cuts.suffix=='.gz' else raw)
+  assert data.get('conditioned_on_X_absent') is None and data.get('conditioned_on_X_index') is None and data.get('selected_quotient_sector','X')=='X'
   if data.get('conditioned_on_anchor') is not None:assert data['conditioned_on_anchor']==list(anchor)
   for record in data['records']:
    assert record['complete'];orbit=record['orbit']
