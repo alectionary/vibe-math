@@ -12413,6 +12413,13 @@
         "evidence": "exact_physical_rank_certificates_and_independent_SAT_assignment_replay",
         "lean_sources": [],
         "contribution": "The4102 frozen rank certificates reject40/2552 recorded partial witnesses. Two frozen28-case matched cohorts, the second using47 new mixed-rank certificates, each find28 baseline SAT and24 strengthened SAT with4 UNKNOWN; no UNSAT or cover reduction. All24 first-cohort replacement witnesses are proved nonextendible to full frames. Rank variants take more summed solver-call time in these pilots. Width16/18, physical88, cover418 and full completions0 unchanged."
+      },
+      {
+        "title": "Domain-aware propagation and quotient-word obstructions prove a409-case sufficient cover",
+        "report": "formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md",
+        "evidence": "written_proofs_and_independent_physical_CNF_DRAT_replays",
+        "lean_sources": [],
+        "contribution": "The sufficient selected-pair cover shrinks418 to409. A kept-anchor projection preserves up to16 independent free signatures, and domain inclusion permits sound composition. Domain-aware propagation supplies the first seven removals; all-negative quotient-word obstructions support two further removals and reject three saved partial candidates. The411-case parent chain fully replays from a clean checkout; fresh checks of the two new word leaves are recorded separately. Static owner and native-XOR trials do not establish a full-case speedup. Source width16/18, physical88/128, zero full anchors solved and Lean coverage remain unchanged."
       }
     ],
     "remaining_project_questions": [
@@ -12439,14 +12446,15 @@
       "completion_case_count": 518
     },
     "nonlinear_cover": {
-      "report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
-      "verification": "formalization/canonical-width/c16/algebraic-results/cover-418-independent.json",
+      "report": "formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md",
+      "verification": "formalization/canonical-width/c16/strategy-results/final-cover-bindings.json",
       "canonical_target_answered": false,
-      "completion_case_count": 418,
-      "previous_report": "formalization/canonical-width/c16/THEORY-LOOP.md",
-      "proof_criterion_lower_bound": 121,
-      "lower_bound_scope": "Only covers certified by the original16-signature/induced-partial-matching UNSAT criterion; no arbitrary-cover or full-frame lower bound.",
-      "nested_in_previous_cover": true
+      "completion_case_count": 409,
+      "previous_report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
+      "proof_criterion_lower_bound": null,
+      "lower_bound_scope": "The121 bound applies only to the older unstrengthened signature criterion, not this source-closure/quotient-word sufficient cover.",
+      "nested_in_previous_cover": true,
+      "old_signature_criterion_lower_bound": 121
     },
     "residual_matrix_identities": {
       "report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
@@ -12492,6 +12500,17 @@
       "SAT_calls": 104,
       "UNKNOWN_calls": 8,
       "UNSAT_calls": 0
+    },
+    "strategy_reassessment": {
+      "report": "formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md",
+      "cover": "formalization/canonical-width/c16/strategy-results/final-cover.json",
+      "parent_clean_replay": "formalization/canonical-width/c16/strategy-results/clean-cover-replay/manifest.json",
+      "word_clean_replay": "formalization/canonical-width/c16/strategy-results/clean-word-replay/manifest.json",
+      "canonical_target_answered": false,
+      "cover_before": 418,
+      "cover_after": 409,
+      "physical_partial_pairs": 88,
+      "full_source_anchor_cases_completed": 0
     }
   },
   {

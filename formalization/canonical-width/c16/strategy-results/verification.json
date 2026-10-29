@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-10-29T11:01:52.401180+00:00",
+  "source_C16_answered": false,
+  "source_width_candidates": [
+    16,
+    18
+  ],
+  "physical_partial_pairs": 88,
+  "full_source_anchor_cases_completed": 0,
+  "cover_before": 418,
+  "cover_after": 409,
+  "cover_removed": 9,
+  "cover_reduction_percent": 2.15311004784689,
+  "cover": {
+    "case_count": 409,
+    "accepted_after_root": 8,
+    "root417_bound": true
+  },
+  "parent_clean_replay_sha256": "5e63a46e8854bdcb980b6d54110ce10d9670b26d698ceee38562b2027df9a81b",
+  "word_clean_replay_sha256": "ecf5d24dbf153203b41a61548334ac68716d5ac9a2bb48478d0536712787a0ed",
+  "fresh_leaf_fingerprints_match_canonical_receipts": true,
+  "final_cover_sha256": "493ce510bb62e8ddc8ff227f62cfd0b70f8688f46b132f544c26165c4eb3dda9",
+  "unknown_trial_input_sha256": "906c138233f1df3619c939212fc7708f45eb0ef04683c1e0c5e2c04dc0d54cfc",
+  "source_code_unchanged_by_master_merge": true,
+  "bookkeeping_checks": [
+    {
+      "script": "validate_literature.py",
+      "status": "PASS",
+      "stdout": "Validated 20 author records, 34 author-paper records, 172 related-paper/talk records, and the preserved 40-question dissertation cross-reference snapshot."
+    },
+    {
+      "script": "validate_open_problems.py",
+      "status": "PASS",
+      "stdout": "Validated 424 canonical entries, 160 eligible targets, 204 paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.\nResearch reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.\nBeezer extension:187\u2192190 entries,111\u2192112 eligible,60\u219261 papers,57\u219258 full-text screens; three historical complete Lean targets retained; one existing F16 target completed."
+    },
+    {
+      "script": "validate_current_difficulty.py",
+      "status": "PASS",
+      "stdout": "Validated 424 planning records, including 243 explicitly unassessed additions, 160 eligible targets and 6 completed targets."
+    },
+    {
+      "script": "validate_research_question_screening.py",
+      "status": "PASS",
+      "stdout": "PASS: 43 paper works accounted for; 36 full texts, 7 paper gaps, 4 version gaps; 62 additions, 23 eligible; no new proof claims."
+    }
+  ],
+  "scope": "Written source bridges and independently checked finite certificates; no Lean completion. The411 parent chain and both additional word leaves have fresh clean-checkout source/CNF/DRAT replays. One further600-second trial isUNKNOWN and excludes no case."
+}
