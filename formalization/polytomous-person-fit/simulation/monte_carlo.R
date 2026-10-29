@@ -113,7 +113,8 @@ if (disc_mode == "tablea3") {
   A <- as.matrix(disc[, c("a1", "a2", "a3", "a4")])
   factor_items <- split(disc$item, disc$factor)
 } else {
-  # Nate's transcription of Beck (2015) Table A3, CFA loadings and residuals.
+  # Transcription of Beck (2015) Table A3, CFA loadings and residuals,
+  # checked against the thesis PDF.
   cfa <- list(
     c(0.61, 0.68, 0.71, 0.78, 0.81, 0.83, 0.78),
     c(0.77, 0.76, 0.88, 0.73, 0.86, 0.81, 0.84),
