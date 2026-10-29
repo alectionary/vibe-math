@@ -1,6 +1,6 @@
 ---
 name: replication-paper
-description: "Replicate a published result and write the replication note and pull request. Use for the comparison table, page crops, graded claims, availability audit, the answer-first abstract, and a pull request a reader can follow without the paper. When an announcement is requested, use the single-post template. A theorem-only writeup stays with open-question-research."
+description: "Replicate a published result and write the replication note and pull request. Use for the comparison table, page crops, graded claims, availability audit, the answer-first abstract, the engine preflight, the two-axis numerical check, and a pull request a reader can follow without the paper. When an announcement is requested, use the single-post template. A theorem-only writeup stays with open-question-research."
 ---
 
 # Replication paper
@@ -121,17 +121,45 @@ R with an SEM package for statistical model fitting.
 Deep-link every script, output file, and key function from the text, with line
 anchors for theorems and functions.
 
+## Engine
+
+Fit the statistical models in R with lavaan. Use OpenMx as the second
+optimizer. Before the first fit, run this from the repository root:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/preflight.py
+```
+
+The script uses the Python standard library. It runs on Linux and on
+macOS. It does not call GNU-only commands. It records the operating
+system, whether `Rscript` is on the path, and the lavaan and OpenMx
+versions.
+
+If `Rscript`, lavaan, or OpenMx is missing, install them when the
+machine allows it. Another engine is a departure. It is allowed only
+when the preflight record contains a justification and a separate
+validation, such as a second optimizer agreeing on a known value. Put
+that departure in the compliance ledger. Do not switch to a custom fit
+because a package was absent from the path.
+
+## Compliance ledger
+
+Keep a short ledger. Each row is one requirement, the status
+`followed`, `departed`, or `not applicable`, and the evidence. A
+departure needs a justification. The engine row comes from the
+preflight. Copy the ledger into the note. `validate_ledger` in
+[checks.py](scripts/checks.py) rejects a departure that has no
+justification.
+
 ## Comparison table
 
-The headline table immediately after the abstract is specified above. The
-comparison table later in the note uses the same verdicts and these columns:
-claim, published, ours, verdict. It may repeat the same-direction column.
-It does not replace the headline table.
-
-Each row of either table gives the original value, our value, and the
-verdict. Give each row one sentence that states the reason. Put that
-sentence in the row when it fits, or in the paragraph under the table that
-names the row.
+The headline table immediately after the abstract is specified above.
+The comparison table later in the note does not replace it. The later
+table has these columns: claim, published, ours, precision, numerical,
+scope. It may repeat the same-direction column. The numerical and scope
+labels are defined below. Give each row one sentence that states the
+reason. Put that sentence in the row when it fits, or in the paragraph
+under the table that names the row.
 
 Name any remaining gap by the cell, the value, and the band. Judge Monte Carlo
 agreement against a band of two standard errors, then apply Bonferroni or Holm.
@@ -141,6 +169,82 @@ own list, and say plainly whether they are replication failures.
 
 Give tables readable row spacing, for example `\arraystretch` 1.3 with
 booktabs, and keep the layout consistent with earlier papers.
+
+Numerical agreement and reconstruction scope are different columns.
+The headline table above is unchanged. These columns are for each
+published number.
+
+Numerical is `match`, `close`, or `mismatch`, at a stated precision.
+`match` means our value rounds half up to the printed value. At two
+decimal places, .8602 and .86 are a match. `close` means it does not
+round to the printed value, and the absolute gap is at most one unit
+in the last printed place, unless the row states another band.
+`mismatch` means the gap is larger than that.
+
+Scope is `exact`, `limited`, or `unavailable`. `exact` means the same
+data, estimator, and procedure the source used. `limited` means a
+reconstruction, such as a fit to rounded summary statistics.
+`unavailable` means the input for that number was not obtained.
+Limited scope does not change a numerical match. Do not write
+`partial` in the numerical column. `partial` remains available in the
+headline table for a mixed headline claim, and only after these two
+columns are filled.
+
+Before either verdict, fill one comparability record for each side:
+estimator, missingness, \(N\), whether the fit function is multiplied
+by \(N\) or by \(N-1\), mean structure, observed-variable set, degrees
+of freedom, baseline model, robust correction, and the definition of
+the fit index. The checker withholds a numerical verdict when the
+sides differ in a way that changes the index. A core-model index
+against an auxiliary-model index is withheld. A plain
+maximum-likelihood chi-square, comparative fit index, Tucker–Lewis
+index, or root mean square error of approximation against the robust
+version of that index is withheld. The standardized root mean square
+residual may be compared across plain and robust fits when the
+variable sets match and the record says the index comes from the
+correlation residuals.
+
+If the headline comparison is withheld, the opening sentence says the
+indices are not comparable. It does not call that pair a match or a
+mismatch.
+
+```sh
+python3 .agents/skills/replication-paper/scripts/checks.py
+python3 -m unittest discover -s .agents/skills/replication-paper/tests -v
+```
+
+## Recovering a printed number is not the procedure
+
+An expression that returns a printed number shows that the number is
+that function of the printed inputs. It does not show that the
+expression is the procedure the source names. Cite the formula.
+Compute it. If a second expression also returns the printed number,
+report that recovery on its own row. Do not give it the procedure's
+verdict.
+
+For a Satorra–Bentler scaled difference, Satorra and Bentler (2001)
+put the normal-theory chi-square difference in the numerator and
+divide by \(c_d=(d_0 c_0-d_1 c_1)/(d_0-d_1)\). The Mplus hand
+calculation,
+[Chi-square difference testing](https://www.statmodel.com/chidiff.shtml),
+writes the same quantity as \((T_0 c_0-T_1 c_1)/c_d\) when \(T\) is
+the scaled chi-square and \(c\) is the scaling correction, because
+that product is the normal-theory chi-square. The quotient
+\((T_0-T_1)/c_d\), using those scaled values, is a different
+expression. `scaled_chi_square_difference` in
+[checks.py](scripts/checks.py) computes both and does not call the
+second one the procedure.
+
+## What a diagnostic is
+
+Report how many perturbation draws were requested, how many
+converged, and how many failed. Those draws are exploratory. They are
+not a confidence interval and not a standard error. A draw that does
+not converge is a failed attempt. It is not evidence that a band is
+wide, and it is not evidence that the estimate is unstable. A check
+that a standard deviation cannot arise from a stated response range
+is conditional on that range. Put the draws and the range check in a
+supporting section. They do not lead the note.
 
 ## Page crops
 
@@ -207,10 +311,15 @@ could apply. If an item cannot apply, name it and say why.
    parsed: lavaan reads `NA*i1 + 0.7*i1` as a first loading of 1.
 2. Identification or scaling.
 3. The metric, such as a signed error versus an absolute error.
-4. The handling of non-converged or improper solutions.
+4. The handling of non-converged or improper solutions. Report the
+   counts. A failed draw is not a band. See
+   [What a diagnostic is](#what-a-diagnostic-is).
 5. What we assumed. List the assumptions we supplied. Turn them off one at a
    time. Record which gaps each change closes and which it leaves.
-6. The formulas we used.
+6. The formulas we used. Cite the formula the source names, and compute
+   that formula. An expression that recovers a printed number is not,
+   by that recovery, the procedure. Use the check in
+   [Recovering a printed number is not the procedure](#recovering-a-printed-number-is-not-the-procedure).
 7. Software defaults, versions, priors, and seeds. Match the original's
    versions where possible.
 8. The optimizer or estimator. Try a second estimator or optimizer before
@@ -364,10 +473,11 @@ pull request.
       script, output file, and key function is deep-linked from the text,
       with line anchors for theorems and functions.
 - [ ] "Remove" was a deletion. Nothing that was removed was relocated.
-- [ ] The comparison table has claim, published, ours, and verdict, plus one
-      reason per row. A remaining gap names the cell, the value, and the band.
-      Monte Carlo agreement uses a two-standard-error band, then Bonferroni or
-      Holm. Typos, rounding, and boundary cases are listed on their own.
+- [ ] The comparison table has claim, published, ours, precision,
+      numerical, and scope, plus one reason per row. A remaining gap names
+      the cell, the value, and the band. Monte Carlo agreement uses a
+      two-standard-error band, then Bonferroni or Holm. Typos, rounding,
+      and boundary cases are listed on their own.
 - [ ] Tables use readable row spacing, in the layout of the earlier papers.
 - [ ] The original code was sought on OSF, the author's GitHub account (every
       repository cloned), GitLab, and Zenodo before it was rebuilt, and that
@@ -385,6 +495,23 @@ pull request.
       above: the work, the verdict with numbers, the limit or reversal with
       the interpretation, and the master link. No hype. No thread. It has
       not been posted unless posting was requested.
+- [ ] The engine preflight was run. The fits use lavaan and OpenMx, or
+      the compliance ledger records a departure with a justification and
+      a separate validation.
+- [ ] Each published number has a stated precision, a numerical verdict,
+      and a separate scope. A value that rounds to the printed value is
+      a numerical match. `partial` is not used in place of either column.
+- [ ] A comparability record was filled before the verdicts. A core-model
+      index against an auxiliary-model index, and a plain maximum-likelihood
+      chi-square, comparative fit index, Tucker–Lewis index, or root mean
+      square error of approximation against its robust counterpart, are
+      flagged and have no numerical verdict.
+- [ ] A printed number recovered from an expression is not given the
+      procedure's verdict unless that expression is the cited formula.
+- [ ] Perturbation draws report how many were requested, how many
+      converged, and how many failed. Exploratory draws are not described
+      as confidence bounds. A conditional range check states the range it
+      assumes.
 
 When editing this skill, validate its frontmatter with the `skill-creator`
 skill's `scripts/quick_validate.py`, using a Python that has PyYAML.
