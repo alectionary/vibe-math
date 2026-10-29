@@ -6,6 +6,11 @@ University of Nebraska–Lincoln, 2010). The note is `paper/paper.pdf`.
 The fits are lavaan 0.6.17 and OpenMx 2.21.11 on the correlation matrix
 in Table 3.2. The interview phase is not refit.
 
+The note and the fit outputs are unchanged. A correction dated 29
+October 2026, on the scaled-difference formula, is
+`paper/CORRECTIONS.md`. Grokbot's assessment of the paired reports is
+`GROKBOT-ASSESSMENT.md`.
+
 The dissertation PDF is not in git. Place it at
 `local-extraction/literature/unl-sem/abbott-2010-unl.pdf` before
 regenerating the matrix or the crops. The copy used for this note has
