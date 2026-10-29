@@ -26,6 +26,10 @@ Order the note as a story. Start with the research question and the headline
 findings, then what replicated, then what gave us trouble and how we fixed it,
 then what is still open together with what we tried.
 
+The original work's headline result is the answer to its main research
+question. Report that result first, whether it matched or not. Supporting
+results that matched never lead when the headline missed.
+
 - Keep process details out of the abstract and the opening. That includes how
   the note was produced.
 - Do not put a language-model authorship statement anywhere in the note, the
@@ -210,6 +214,9 @@ acquisition or help issue when one is open.
 
 - [ ] The abstract leads with the question, the original claim, our work, and
       the findings.
+- [ ] The original work's headline result, the answer to its main research
+      question, is reported first, matched or not. Supporting results that
+      matched do not lead when the headline missed.
 - [ ] "Remove" was a deletion. Nothing that was removed was relocated.
 - [ ] The comparison table has claim, published, ours, and verdict, plus one
       reason per row. A remaining gap names the cell, the value, and the band.
