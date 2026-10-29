@@ -266,6 +266,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-rank-cover-20261029
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Independent physical replay checks112 frozen oracle calls and47 mixed-rank obstruction certificates. Both28-case cohorts have24 strengthened SAT and4 UNKNOWN versus28 baseline SAT; no checked cover reduction. Remaining at that dated checkpoint: Source width remains16/18, physical partial frame88 and cover418. No full source anchor is completed, no new source or Lean target is added, and pilot runtimes show no acceleration. [Report](../formalization/canonical-width/c16/RANK-COVER-CONTINUATION.md) · [Verification](../formalization/canonical-width/c16/rank-cover-results/refined-independent-check.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
