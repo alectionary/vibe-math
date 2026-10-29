@@ -206,7 +206,7 @@ for commutation/rank tests, but uses this allowed graph for private partners.
 A mandatory pair through a forbidden edge is impossible, and a candidate that
 could only pair to a forbidden mandatory neighbor is removed. Rank and coloop
 steps are unchanged. All4,096 tiny domain/mandatory-set combinations retain the
-721 feasible completions;512 native queries independently replay.
+721 combinations admitting a full completion;512 native queries independently replay.
 
 The first anchored version yields UNSAT after431 partial models and860 learned
 domain nogoods. Its fresh static proof and75-second independent replay pass.
