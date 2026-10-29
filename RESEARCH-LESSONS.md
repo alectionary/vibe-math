@@ -543,3 +543,37 @@ Universal source clauses transfer across pair domains. Conditional propagation
 clauses do not: revalidate or omit them when a new cover trial widens the
 allowed pair domain. Preserve that distinction when reusing a successful bank.
 [Source restrictions, matched proofs and cost accounting](formalization/canonical-width/c16/RELEVANT-CLAUSES.md).
+
+## C16 transfer and a stronger word-length test
+
+Reusing the unchanged256-pattern bank on three frozen, deliberately selected
+held-out cases reduces discovery time in all three pairs, from787.57s total
+to319.46s. Both variants solve every case, and all six ordinary proofs replay
+cleanly. The resulting sufficient cover is405. This establishes useful reuse
+on those cases; it does not establish a population speedup or recover all
+preprocessing and verification costs. Keep the common avoidance domain large
+enough to support the final composed cover.
+
+A failed structural gate can identify the right next lemma. Combining old
+forbidden children with detecting-support capacity gives no gain on384
+selected smaller subsets: only eight have support at most4, and none contains
+a known small child. Checking direct four-term representability instead finds
+one universal forbidden pair that the complete order3 test misses. Its proof
+uses four possible detecting vectors against a required minimum of five
+source terms. Attribute that success to the new direct word-length bound,
+not to the failed child-capacity composition.
+
+Translate source clauses into other exact models. A forbidden m-set gives
+conditioned moment inequalities sum_b E[x_a x_b]≤(m-2)E[x_a]. Here31408 rows
+give47 exact violations of an earlier fractional point. This separates that
+point; it does not decide the strengthened relaxation. A numerical positive
+margin still needs exact recovery: the subsequent candidate has a negative
+profile weight and must remain rejected. Symmetric forced-zero moment entries
+also require symmetric exceptions in an optional strict-margin search mask.
+
+At a requested pause, preserve completed proofs, failed numerical candidates,
+untested code and exact next steps under distinct evidence labels. Stop the
+research processes and release only the owned claim. A completed producer
+screen and an independently replayed positive certificate do not amount to
+independent replay of every negative result in the screen.
+[Results and resumable checkpoint](formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md).
