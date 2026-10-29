@@ -2,6 +2,12 @@
 
 Replication note for Mark F. Beck, *The Examination of Nonparametric Person-Fit Statistics as Appropriate Measures of Response Bias in Ordered Polytomous Items* (Ph.D. dissertation, University of Nebraska–Lincoln, 2023). The note is `paper/paper.pdf`.
 
+Beck's headline result is the sensitivity of U3, normed Guttman errors, and H^T for each bias type. None of the 18 grand sensitivities fall inside a two-standard-error band, before or after Holm. Careless responding comes out between 0.44 and 0.50, against the printed 0.29. The nearest misses, at an extreme-response constant of 0.5, are normed Guttman errors for midpoint responding, 0.0035 against 0.00, and for extreme responding, 0.284 against 0.27.
+
+The likely causes are unpublished inputs: the `ltm` thresholds and the missing seven-option boundary row, the boundary draw and its seed, the extreme-response constant, and the careless-item fraction. A second generator, the package versions current in May 2023, Monte Carlo noise, and the person-fit implementations do not account for the misses.
+
+The 504 partial omega squared values agree with the printed F statistics at N = 32,000, to within 0.005. Specificity, negative predictive value, and positive predictive value largely follow from flagging 5 percent of respondents. Specificity and negative predictive value sit within 0.006 of that identity, and positive predictive value sits within 0.02.
+
 The dissertation PDF is not in git. Place it at the path passed to `extract_published.py`. The copy used here has sha256 `86c3bb482efadc385cd52f7ea12dc33c50b9b70b4ce6111aedb075a12968f62b`.
 
 ## Packages
