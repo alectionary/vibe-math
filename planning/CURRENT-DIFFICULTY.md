@@ -4934,9 +4934,9 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 
 The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Follow-up: test exact three-term quotient representations on candidates surviving the two-term obstruction, then seek a verified full source anchor exclusion or physical128-pair frame. Keep cover reductions separate from full completions.
+First milestone: Follow-up: derive small three-term quotient obstruction clauses from a frozen cohort drawn from the actual hard anchor, minimize their required subsets with independent replay, then compare initial seeding against the same baseline. Require a verified cover removal or full source anchor exclusion before scaling; order4 and longer runs are not yet justified.
 
-Progress: Source-aware mandatory propagation and independently checked quotient-word obstructions reduce the sufficient selected-pair cover418 to409. The new word rule rejects saved propagation fixed points, but no full source anchor is solved. Static full-frame and global96-pair pilots areUNKNOWN, and native XOR provides no measured improvement in the fixed comparison. The old121 signature-criterion lower bound does not transfer to the stronger cover. Width16/18 and physical88/128 remain unchanged; no justified finishing-time estimate. [Checked artifact](../formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md).
+Progress: The complete order3 quotient criterion adds19 checked local exclusions over complete order2 and joint mandatory propagation on512 generated physical partial matchings. Three matched600-second compact trials are allUNKNOWN and never reach the new oracle; the new generated patterns also hit none of their visited matchings. This is new structural information without a demonstrated cover or full-case gain. The sufficient cover stays409, physical partial frame88/128 and width16/18; zero full anchors solved and no justified finishing-time estimate. The old121 bound remains limited to the older signature criterion. [Checked artifact](../formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md).
 
 Gate: Require a complete anchored-case obstruction or an actual source128-pair candidate before extrapolating finishing time.
 
