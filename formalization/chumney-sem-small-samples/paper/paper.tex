@@ -16,6 +16,11 @@
 \gdef\linkcsv{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/out/comparison_i3.csv}{\texttt{simulation/out/comparison_i3.csv}}}
 \gdef\linkcheck{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/check_standardized.R}{\texttt{simulation/check_standardized.R}}}
 \gdef\linkcrop{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/paper/figures/crop_pages.py}{\texttt{paper/figures/crop_pages.py}}}
+\gdef\linkbayes{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/bayes_subset.R}{\texttt{simulation/bayes_subset.R}}}
+\gdef\linkform{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/investigate_formative.R}{\texttt{investigate\_formative.R}}}
+\gdef\linkformout{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/out/formative_readings.txt}{\texttt{formative\_readings.txt}}}
+\gdef\linkgsca{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/investigate_gsca.R}{\texttt{investigate\_gsca.R}}}
+\gdef\linkgscaout{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples/simulation/out/gsca_compare.rds}{\texttt{gsca\_compare.rds}}}
 \endgroup
 
 \title{A replication of Chumney (2013):\\
@@ -32,26 +37,29 @@ sample is small? Chumney (2013) compared maximum likelihood, partial least
 squares, generalized structured component analysis, and Bayesian Markov chain
 Monte Carlo on normal data, and concluded that maximum likelihood is generally
 the most robust of the four and the approach of choice for applied
-researchers. We regenerated the 36 data conditions in the dissertation and
-refit maximum likelihood, partial least squares, and generalized structured
-component analysis, with 150 replications in each cell. The ordering of
-percent bias in the measurement and structural parameters matches the printed
-tables for maximum likelihood and partial least squares, including the cells
-in which partial least squares is less biased. The R implementation of
-generalized structured component analysis matches those tables at three and
-five indicators per factor and misses the printed seven-indicator column.
-The Bayesian arm was not refit.
+researchers. We regenerated the 36 data conditions and refit maximum likelihood, partial
+least squares, and generalized structured component analysis, with 150
+replications in each cell. A documented Bayesian subset, 30 replications
+at the sample sizes 50 and 1000, was fit in blavaan with a 1000-iteration
+cap. Maximum likelihood and the Bayesian estimator have similar percent
+bias, and both are more accurate than the two component methods on
+reflective measurement parameters. The printed seven-indicator rise in
+generalized structured component analysis is absent from both R
+implementations we ran. One printed maximum likelihood cell, structural
+percent bias 1.196, was not reproduced under the readings we tried.
 \end{abstract}
 
 \section{The headline}
 \label{sec:headline}
 
 Does maximum likelihood dominate the other three estimators on normal data
-from this three-factor model? In the slice we refit, it dominates partial
-least squares and generalized structured component analysis on measurement
-percent bias when the indicators are reflective, and the dissertation's own
-exceptions are reproduced. The Bayesian estimator was not refit, so the
-headline sentence, which names four methods, is a partial match.
+from this three-factor model? The comparison is a partial match. On
+reflective measurement percent bias, maximum likelihood and the Bayesian
+estimator sit together near 2.7 to 2.9 at $n=1000$, and partial least
+squares and generalized structured component analysis sit near 15.9. The
+dissertation's own exceptions, where the component methods are less biased
+for the paths, are reproduced. The runs do not separate maximum likelihood
+from the Bayesian estimator.
 
 Chumney's dissertation asks how sample size, the number of items, omitted
 cross-loadings, and reflective versus formative indicators change the
@@ -103,20 +111,49 @@ ML GoF bias, correct reflective, $n=1000$, minus 0.600 & $-0.180$ & $-0.179$ & M
 ML GoF bias, same cell, minus the standardized population value 0.420 & $-0.180$ & $+0.001$ & No match \\
 ML convergence, misspecified formative, $n=50$ & 35 & 21 & Close \\
 ML convergence, misspecified formative, $n=1000$ & 119 & 102 & Close \\
-ML structural bias, correct formative, $n=1000$ & 1.196 & 2.601 & No match \\
+ML structural bias, correct formative, $n=1000$, three items & 1.196 & 2.601 & No match \\
+ML structural bias, same row, five items & 2.623 & 2.516 & Match \\
+ML structural bias, same row, seven items & 2.623 & 2.628 & Match \\
 GSCA measurement bias, correct reflective, $n=1000$, seven items & 13.667 & 7.189 & No match \\
-GSCA structural bias, same seven-item cell & 4.747 & 12.811 & No match \\
+cSEM GSCA, same seven-item cell, 40 replications & 13.667 & 7.040 & No match \\
 ML convergence, misspecified reflective, $n=50$, seven items & 102 & 150 & No match \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:bayes} is the Bayesian subset. Thirty replications, two
+chains, 500 burn-in iterations and 500 retained draws, potential scale
+reduction below 1.05. The printed counts are out of 150. Ours are out of
+30, so the convergence comparison is on the proportion.
+
+\begin{table}[ht]
+\centering
+\caption{Bayesian subset against the printed Markov chain Monte Carlo
+column. Measurement percent bias uses equation~(15).}
+\label{tab:bayes}
+\small
+\begin{tabular}{@{}p{0.32\textwidth}p{0.18\textwidth}p{0.22\textwidth}p{0.16\textwidth}@{}}
+\toprule
+Claim & Published & Ours & Verdict \\
+\midrule
+MCMC measurement bias, $n=1000$, three items, correct, reflective & 2.738 & 2.902 & Match \\
+MCMC structural bias, same cell & 4.272 & 3.847 & Match \\
+MCMC measurement bias, $n=50$, seven items, correct, reflective & 10.202 & 10.596 & Match \\
+MCMC convergence, same seven-item cell & 51/150 & 30/30 & No match \\
+MCMC convergence, $n=50$, three items, misspecified formative & 149/150 & 22/30 & No match \\
+Bayes measurement bias vs printed ML, $n=1000$, misspecified formative & 21.643 & 21.481 & Close \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 The first measurement row is the headline comparison in numbers. At
 $n=1000$ with three reflective indicators and a correct model, maximum
-likelihood's mean absolute percent bias is about 2.7 and the two component
-methods sit at about 15.9. Our means are 2.730, 15.919, and 15.938.
-Section~\ref{sec:matched} records the same ordering at five and seven
-indicators for maximum likelihood and partial least squares.
+likelihood's mean absolute percent bias is 2.730, the Bayesian subset is
+2.902, and the two component methods are 15.919 and 15.938. The printed
+maximum likelihood and Markov chain Monte Carlo values in that cell are
+2.712 and 2.738. Section~\ref{sec:bayes} gives the iteration cap and the
+prior. Section~\ref{sec:matched} records the same ordering at five and
+seven indicators for maximum likelihood and partial least squares.
 
 The misspecified reflective structural rows are the exception Chapter~5
 states in words: partial least squares and generalized structured component
@@ -129,18 +166,15 @@ benchmarks. Subtracting 0.600 from our mean goodness of fit reproduces
 $-0.179$. Subtracting the standardized population value 0.420 produces
 $+0.001$. Section~\ref{sec:gof} says what 0.600 is.
 
-The formative structural row for maximum likelihood is a real gap in an
-otherwise matched cell. Our partial least squares mean in that same cell is
-2.605, next to the printed partial least squares value 2.768, while the
-printed maximum likelihood value is 1.196. Our two estimators agree with
-each other and with the printed partial least squares cell.
+The formative structural row at three items and $n=1000$ stays at 2.601
+under every reading in Section~\ref{sec:formative}. The five-item and
+seven-item cells of that same printed row are 2.623 and 2.623, and our
+means are 2.516 and 2.628.
 
-The seven-indicator generalized structured component analysis rows are the
-place the R package and the printed column separate. At three indicators the
-same package matches the printed measurement bias of 15.918 with 15.938.
-At seven indicators the printed measurement bias rises to 13.667, and our
-mean falls to 7.189, in line with our partial least squares mean of 7.184
-and the printed partial least squares mean of 7.064.
+The seven-indicator generalized structured component analysis rows are
+where the printed column and the R implementations separate.
+Section~\ref{sec:gsca7} records that gesca and cSEM's GSCA agree with each
+other, at 7.189 and 7.040, while the printed value rises to 13.667.
 
 \section{What we did ourselves, and what we took from others}
 \label{sec:did}
@@ -218,13 +252,13 @@ The full grid of 36 conditions and three estimators took 929 seconds and is
 stored in \filelink{simulation/out/reps150-full.rds}, commit
 \texttt{06b39790bc2c658b40b6942f6c2e69bcc80a8a3b}.
 
-The Bayesian arm is outstanding. blavaan 0.6-1 depends on rstan, and that
-toolchain was not built here. The dissertation estimates the Bayesian model
-in Mplus~6, names a maximum of 1000 iterations, and includes Markov chain
-Monte Carlo in the parenthetical list of methods that use 500 bootstrap
-samples for standard errors. Priors, the number of chains, and whether the
-standard errors are posterior standard deviations or bootstrap standard
-errors are not stated beyond that sentence.
+The Bayesian fits use blavaan 0.6-1
+(\url{https://cran.r-project.org/package=blavaan}) with rstan 2.32.7
+(\url{https://cran.r-project.org/package=rstan}), because the dissertation
+estimates this arm in Mplus~6 and blavaan is the R package for Bayesian
+structural equation models. The iteration cap, the prior, and the
+convergence rule are in Section~\ref{sec:bayes} and in
+\linkbayes.
 
 \section{What matched}
 \label{sec:matched}
@@ -427,15 +461,147 @@ numbering of the body. Absolute percent bias.}
 \label{fig:eq15}
 \end{figure}
 
+\section{The Bayesian subset}
+\label{sec:bayes}
+
+Do posterior means from a 1000-iteration chain recover the printed Markov
+chain Monte Carlo column? The percent biases do, on the cells where the
+chain mixes. The convergence counts do not, on the cells where Table~1
+shows the chain failing or where the unique variances are 0.001.
+
+The procedures section sets the maximum number of iterations to 1000 for
+every estimator and estimates the Bayesian model in Mplus~6. It discusses
+noninformative priors in the literature review and does not name a numeric
+prior, a chain count, or a cutoff. Mplus's default priors in the Bayesian
+notes the dissertation cites are a flat prior on loadings and an
+inverse-gamma $(-1, 0)$ prior on variances. A Stan translation of that
+variance prior, \texttt{gamma(0.01, 0.01)} on the standard deviation with
+\texttt{normal(0, 1e4)} loadings, produced divergent transitions and a
+potential scale reduction of 2.39 on one $n=50$ fit. The subset uses
+blavaan's proper defaults instead: normal priors with mean 0 and standard
+deviation 10 on loadings and regressions, and \texttt{gamma(1, 0.5)} on
+residual standard deviations. Two chains, 500 burn-in iterations, and 500
+retained draws make 1000 iterations. A replication counts as converged when
+the largest potential scale reduction is below 1.05, Mplus's default
+\texttt{BCONVERGENCE} of 0.05. The script is
+\linkbayes. The run is 30 replications, the
+sample sizes 50 and 1000, all four three-indicator conditions, and the
+seven-indicator correct reflective cells. It took 6731 seconds. Output is
+\filelink{simulation/out/bayes-reps30.rds}.
+
+At $n=1000$ with three reflective indicators the measurement percent bias
+is 2.902 (standard deviation 0.734) against the printed 2.738 (standard
+deviation 0.706). The structural percent bias is 3.847 against 4.272.
+Both differences are inside two standard errors. At $n=50$ with seven
+reflective indicators the measurement percent bias is 10.596 against the
+printed 10.202. The same cell's convergence is 30 of 30 here and 51 of 150
+in Table~1. Stan's sampler reached the cutoff inside 1000 iterations on
+every replication of that cell. The printed column did not.
+
+Under formative misspecification the cutoff is missed more often here than
+in Table~1: 22 of 30 at $n=50$ against 149 of 150, and 25 of 30 at
+$n=1000$ against 150 of 150. The measurement percent bias among the
+replications that did converge is 21.481 at $n=1000$, next to the printed
+maximum likelihood value 21.643 in that cell. The dissertation pooled
+maximum likelihood and Markov chain Monte Carlo for the measurement-bias
+follow-ups because those two columns agreed. The subset agrees with that
+pooling on the bias, and it does not agree with Table~1 on the
+formative-misspecification counts.
+
+\section{Readings of the formative structural cell}
+\label{sec:formative}
+
+Which reading of equation~(15) and of the formative model produces the
+printed structural percent bias 1.196 at $n=1000$ with three items? None of
+the readings below. The five-item and seven-item cells of the same printed
+row, 2.623 and 2.623, are reproduced by the baseline reading.
+
+The baseline is absolute percent bias of the two standardized paths against
+0.60, factor variances fixed at 1, Heywood replications dropped. That mean
+is 2.601 (standard deviation 1.447) on 150 replications, seed
+\texttt{20441915}. The same seed and the same draws were refit under these
+readings, in \linkform, with the
+console record in \linkformout.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{0.62\textwidth}p{0.22\textwidth}@{}}
+\toprule
+Reading & Mean percent bias \\
+\midrule
+Factor variances fixed at 1, absolute, paths versus 0.60 & 2.601 \\
+Marker identification, first loading fixed at 1, absolute & 2.601 \\
+Signed percent bias, factor variances fixed at 1 & $-0.166$ \\
+Signed percent bias, marker identification & $-0.166$ \\
+Column-standardized data, then the baseline & 2.601 \\
+Baseline, keeping replications with a nonpositive variance & 2.601 \\
+Absolute bias of the mean path, rather than the mean of absolute biases & 0.166 \\
+Unstandardized marker paths versus 0.60 & 3.257 \\
+Paths and the two standardized residual variances & 2.761 \\
+Each path alone & 2.603 and 2.599 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The marker parameterization and the fixed-factor-variance parameterization
+return the same standardized paths on these draws. Keeping the Heywood
+replications changes nothing in this cell, because all 150 replications
+had positive variances. The signed mean is $-0.166$, so the paths are
+nearly unbiased and the absolute percent bias is the average size of the
+sampling error. The bias of the mean path is 0.166. That summary is 0.166, and the
+printed cell is 1.196.
+
+The same baseline at five items is 2.516 against the printed 2.623, and at
+seven items it is 2.628 against the printed 2.623. At $n=300$ and five
+items it is 4.660 against the printed 4.658. The specification, the
+absolute percent, and the treatment of improper solutions reproduce the
+rest of that row. The open piece is the single printed value 1.196.
+
+\section{Two implementations of generalized structured component analysis}
+\label{sec:gsca7}
+
+Does the printed rise at seven indicators depend on the GeSCA program?
+Both R implementations we can run decline with the number of indicators,
+in step with each other.
+
+On 40 replications at $n=1000$, correct reflective model, measurement
+percent bias from gesca 1.0.5 and from cSEM's GSCA option is 15.825 and
+15.825 at three items, 9.838 and 9.838 at five items, and 7.040 and 7.040
+at seven items
+(\linkgsca,
+\linkgscaout).
+The 150-replication gesca means are 15.938, 9.850, and 7.189. The printed
+column is 15.918, 9.734, and 13.667. Three and five items match. Seven
+items is the rise that neither R implementation produces.
+
+Turning on cSEM's disattenuation changes the seven-item mean from 7.040 to
+2.106, which tracks maximum likelihood (2.085 in the 150-replication run)
+rather than the printed generalized structured component analysis column.
+The dissertation's component loadings are the undisattenuated ones: that
+is what matches 15.9 at three items.
+
+The host named in the dissertation, \url{http://www.sem-gesca.org}, did
+not resolve on 29 October 2026. A Wayback snapshot of that host from
+29 July 2023 is an HTML landing page, not a batch estimator. The successor
+site \url{https://www.gscapro.com/} answered HTTP 200 and is a product
+page, not a program we could run on these draws. The seven-indicator
+difference is a dependence on software we cannot execute here. It is open
+whether the 2013 GeSCA program would reproduce 13.667 on these draws.
+
 \section{What remains unresolved}
 \label{sec:open}
 
-The Bayesian comparison is open. The dissertation's Markov chain Monte Carlo
-convergence rate in the prose is 87.7 percent, and the sum of Table~1 is
-4769 of 5400, which is 88.3 percent. We did not refit that arm. A blavaan
-run with a stated prior, a stated iteration cap of 1000, and the same seeds
-would settle whether the posterior means track maximum likelihood as
-closely as Table~3's pairing of the two methods suggests.
+The Bayesian percent biases in Table~\ref{tab:bayes} are inside the band
+where the chain mixes. The convergence proportions are not. Table~1's
+Markov chain Monte Carlo count at $n=50$ with seven reflective indicators
+is 51 of 150. The Stan run accepted 30 of 30. The formative
+misspecification counts go the other way. A Mplus~6 input with
+\texttt{BITERATIONS} set to 1000, on these seeds, would show whether the
+difference is the Gibbs sampler, the improper variance prior, or the
+potential scale reduction rule. The prose rate 87.7 percent and the
+Table~1 sum 88.3 percent remain an internal difference in the
+dissertation, as in the list below.
 
 The goodness-of-fit bias under misspecification is open. Both benchmarks in
 Section~\ref{sec:gof} miss the printed positive biases, by about 0.08 to
@@ -471,15 +637,12 @@ $n=1000$ in that specification, so the covariance is not wildly wrong. The
 open piece is again the improper-solution rule at the smallest sample.
 
 The seven-indicator generalized structured component analysis column remains
-open as a software difference. gesca 1.0.5 tracks the printed column at
-three and five indicators and then keeps declining, as partial least
-squares does. The printed column rises at seven indicators: measurement
-percent bias 13.667 against our 7.189, structural percent bias 4.747
-against our 12.811. Our structural mean of 12.811 sits next to our partial
-least squares mean of 12.747 and the printed partial least squares mean of
-12.153. A run of the 2013 GeSCA program on the same draws would show
-whether the printed uptick is the web program. The host named in the
-dissertation did not resolve.
+a software difference, now checked against a second implementation.
+Section~\ref{sec:gsca7} records that gesca and cSEM agree and that the
+2013 GeSCA program was not runnable from this environment. The structural
+percent bias in that printed cell is 4.747, and our gesca mean is 12.811,
+next to our partial least squares mean of 12.747 and the printed partial
+least squares mean of 12.153.
 
 The printed structural percent bias 4.747 in that seven-indicator cell is
 also the printed structural percent bias for generalized structured
@@ -519,7 +682,8 @@ Place checked & UTC date & Result \\
 Dissertation PDF, procedures and references & 2026-10-29 & Obtained. The PDF contains no program file. \\
 Digital Commons record cehsdiss/189 & 2026-10-29 & HTML 200. The PDF is the file. No separate code file. \\
 Wayback raw file of the viewcontent PDF & 2026-10-29 & PDF obtained, 146 pages. \\
-sem-gesca.org & 2026-10-29 & The host name did not resolve. \\
+sem-gesca.org and its 2023 Wayback snapshot & 2026-10-29 & Host did not resolve. The snapshot is an HTML page. \\
+gscapro.com & 2026-10-29 & HTTP 200. A product page, not a batch program. \\
 GitHub user search, Frances Chumney & 2026-10-29 & No user. No repository to clone. \\
 GitHub repository search for chumney & 2026-10-29 & Unrelated repositories only. \\
 GitHub code search for the dissertation & 2026-10-29 & HTTP 429. The search did not finish. \\
@@ -539,14 +703,16 @@ The file stays outside git. The sha256 is
 
 \section{Next steps}
 
-The missing piece for the headline's fourth method is a Bayesian refit with
-a stated prior and an iteration cap of 1000, on the same seeds, scored with
-equation~(15). blavaan is the R package set up for that comparison. The
-missing piece for the seven-indicator generalized structured component
-analysis column is a run in the GeSCA program the dissertation used, on
-draws from \filelink{simulation/population.R}. The missing piece for the
-goodness-of-fit sign under misspecification is the code that computed the
-population goodness of fit, or the Mplus output that stored it.
+The Bayesian subset leaves the convergence proportions open. A Mplus~6 run
+with the iteration cap at 1000, on the seeds in
+\linkbayes, would show whether Table~1's counts
+are the Gibbs sampler. The seven-indicator generalized structured component
+analysis column needs the 2013 GeSCA program on draws from
+\filelink{simulation/population.R}. The single printed structural percent
+bias 1.196 needs the Mplus output for that cell; the readings in
+Section~\ref{sec:formative} did not produce it, and the neighboring cells
+did match. The goodness-of-fit sign under misspecification still needs the
+program that computed the population goodness of fit.
 
 \section*{Appendix: artifacts}
 
@@ -561,6 +727,9 @@ Table~\ref{tab:compare}, three-indicator bands & \path{simulation/out/comparison
 All 36 cells, three estimators & \path{simulation/out/reps150-full.rds} & \path{Rscript simulation/replicate.R --reps 150} \\
 Standardized loadings 0.70 and 0.21 & \path{simulation/out/standardized_check.json} & \path{Rscript simulation/check_standardized.R} \\
 Headline, Table~1, equation~(15), cross-loading & \path{paper/figures/*.png} & \path{python3 paper/figures/crop_pages.py} \\
+Bayesian subset, 30 replications & \path{simulation/out/bayes-reps30.rds} & \path{Rscript simulation/bayes_subset.R --reps 30} \\
+Formative structural readings & \path{simulation/out/formative_readings.txt} & \path{Rscript simulation/investigate_formative.R} \\
+gesca and cSEM GSCA at three, five, and seven items & \path{simulation/out/gsca_compare.rds} & \path{Rscript simulation/investigate_gsca.R --reps 40} \\
 \bottomrule
 \end{tabular}
 \end{center}
