@@ -1,0 +1,71 @@
+{
+  "source": "report/replication_note.md",
+  "source_sha256": "d186f5b9873e2cd99887f965a5974324f0420198acfa905f509fc360ff37c482",
+  "output": "report/abbott_replication.pdf",
+  "output_sha256": "bdf6d8d110046b4464feee6433bf5f940585f17e91202b492273182c7989300c",
+  "builder": "scripts/build_report.py",
+  "builder_sha256": "24dfbeda5f2ad06258ba62f07d954e7947f8eae4078b6d14b490bd1264bc1f34",
+  "pages": 11,
+  "page_size": "US Letter portrait",
+  "software": {
+    "python": "3.12.14",
+    "reportlab": "4.4.9",
+    "Pillow": "12.3.0"
+  },
+  "fonts": {
+    "ReportSerif": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    "ReportSerif-Bold": "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+    "ReportSerif-Italic": "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf",
+    "ReportSerif-BoldItalic": "/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf",
+    "ReportSans": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "ReportSans-Bold": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    "ReportSans-Italic": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf",
+    "ReportSans-BoldItalic": "/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf",
+    "ReportMono": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+  },
+  "external_hyperlinks": [
+    "https://digitalcommons.unl.edu/cehsdiss/68/",
+    "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1067&context=cehsdiss",
+    "https://github.com/numpy/numpy",
+    "https://github.com/pandas-dev/pandas",
+    "https://github.com/python-pillow/Pillow",
+    "https://github.com/python/cpython",
+    "https://github.com/scipy/scipy",
+    "https://gitlab.freedesktop.org/poppler/poppler",
+    "https://www.statmodel.com/chidiff.shtml"
+  ],
+  "figures": [
+    "outputs/crops/refinement-sb-p130.png",
+    "outputs/crops/general-sb-p131.png"
+  ],
+  "availability_appendix": {
+    "source": "sources/availability_ledger.md",
+    "source_sha256": "bf03b60b5d46bcbd51ed63aaf5e9d2ed966102a28592b66c9fd62c0299f68d70",
+    "rows": 22,
+    "columns": [
+      "Place checked",
+      "UTC date",
+      "Result and limit"
+    ],
+    "omitted_column": "Exact route/query or local evidence; retained in full source ledger"
+  },
+  "local_links": "Displayed as bundle-relative paths; not file hyperlinks",
+  "visual_qa": {
+    "status": "passed",
+    "record": "outputs/report_qa.json",
+    "pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "independent_review": "passed"
+  }
+}
