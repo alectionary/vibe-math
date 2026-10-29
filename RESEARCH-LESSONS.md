@@ -442,3 +442,21 @@ resident memory. Accept native-XOR UNSAT only after rebuilding the physical
 input and replaying its proof; checking the solver exit status alone is
 insufficient, including for a checker that can return zero on rejection.
 [Results, certificates and scope](formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md).
+
+
+Count bounds can miss a local phase relation. Testing the complete conditional
+one-orbit convex hull first found six rows that excluded the initial exact point.
+Integer support maximization verified the resulting weighted inequalities;
+one forced a zero pair correlation. A new rational point then admitted4050
+selected-anchor and4050 original-family anchor-absent local decompositions.
+This certifies a limit of the stated local relaxation, not a common distribution
+or a full frame. A stronger deleted-vector absence pilot removes830 more masks
+and still admits the point; the other44 deletion dictionaries remain untested.
+
+The opposite-side X-only quotient tests can be reused: projection removes the
+fixed vector from a zero domain that already contains it, lowering both rank
+and dimension by one, while private profiles stay unchanged. Exact tables
+confirm the restriction identity. A rational fractional packing also raises the
+old signature-cover lower bound109 to121, while the upper cover is418. State the
+proof criterion: a bound for partial-signature covers does not bound arbitrary
+full-frame covers using the new basis restrictions.

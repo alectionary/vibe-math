@@ -8,7 +8,7 @@ from pathlib import Path
 import argparse,gzip,hashlib,json,time
 from verify_algebraic_model import physical
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--certificate',type=Path,required=True);ap.add_argument('--quotient-metadata',type=Path);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();start=time.monotonic();qd=None
+ ap=argparse.ArgumentParser();ap.add_argument('--certificate',type=Path,required=True);ap.add_argument('--quotient-metadata',type=Path);ap.add_argument('--absent-X-index',type=int);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();start=time.monotonic();qd=None
  if a.quotient_metadata:
   from verify_anchor_quotient import quotient
   X,Z,A,qd=quotient(a.quotient_metadata)
@@ -21,7 +21,10 @@ def main():
   if qd.get('fixed_X_only',False):assert d.get('conditioned_on_X_index')==qd['anchor'][0]
   else:assert d.get('conditioned_on_anchor')==qd['anchor']
  selected_sector=d.get('selected_quotient_sector','X');assert selected_sector in ['X','Z']
- if selected_sector=='Z':
+ if a.absent_X_index is not None:
+  assert qd is None and N==128 and selected_sector=='Z' and 0<=a.absent_X_index<720 and d['conditioned_on_X_absent']==a.absent_X_index
+  X,Z=Z,X;Z[a.absent_X_index]=0;A=[sum(((x&z).bit_count()%2)<<j for j,z in enumerate(Z)) for x in X]
+ elif selected_sector=='Z':
   assert qd and qd.get('fixed_X_only',False)
   X,Z=Z,X;A=[sum(((x&z).bit_count()%2)<<j for j,z in enumerate(Z)) for x in X]
  for r in d['records']:
@@ -107,5 +110,5 @@ def main():
   records.append({'orbit':orbit,'eligible_mask':eligible,'full_frame_count_upper_bound':cap,'minimal_witnesses_checked':len(r['minimal_bad_certificates']),'witness_kinds':kinds,'basic_count_owner_profiles':baseline,'profiles_unexcluded_by_rank_cuts':survivors,'additional_basic_profiles_excluded':cut_baseline,'survivors_by_weight':allowed});totals[0]+=baseline;totals[1]+=survivors;totals[2]+=cut_baseline
   print('PHYSICAL ORBIT',orbit,'cap',cap,'profile reduction',baseline,'->',survivors,flush=True)
  assert len({r['orbit'] for r in records})==len(records)==d['completed_orbits'];assert totals[0]-totals[1]==totals[2]
- out={'status':'PASS','source_C16_answered':False,'conditioned_on_anchor':qd['anchor'] if qd and not qd.get('fixed_X_only',False) else None,'conditioned_on_X_index':qd['anchor'][0] if qd and qd.get('fixed_X_only',False) else None,'selected_quotient_sector':selected_sector,'effective_dimension':N,'quotient_metadata_sha256':hashlib.sha256(a.quotient_metadata.read_bytes()).hexdigest() if qd else None,'certificate_sha256':hashlib.sha256(raw).hexdigest(),'physical_pairings_rebuilt':518400,'orbits_checked':len(records),'phase_masks_per_orbit':65536,'basic_count_owner_profiles':totals[0],'profiles_unexcluded_by_rank_cuts':totals[1],'additional_basic_profiles_excluded':totals[2],'empty_witness_rejected':bool(negative_empty),'span_witness_rejected':bool(negative_span),'sector_transfer':'Original physical transpose and cyclic symmetry checked. X-only conditioning transfers to the corresponding Z-only conditioning. Fixed-pair conditioning transfers within the equal-index anchor.','records':records,'elapsed_seconds':time.monotonic()-start,'scope':'Certified full-frame upper bounds and phase nogoods, restricted to the stated X-only or fixed-pair condition when present. Local counts are not global frame counts or a number of solved retained anchors. Unexcluded masks are not certified completable.'};a.output.write_text(json.dumps(out,indent=2)+'\n');print('PASS profile totals',totals,flush=True)
+ out={'status':'PASS','source_C16_answered':False,'conditioned_on_anchor':qd['anchor'] if qd and not qd.get('fixed_X_only',False) else None,'conditioned_on_X_index':qd['anchor'][0] if qd and qd.get('fixed_X_only',False) else None,'conditioned_on_X_absent':a.absent_X_index,'selected_quotient_sector':selected_sector,'effective_dimension':N,'quotient_metadata_sha256':hashlib.sha256(a.quotient_metadata.read_bytes()).hexdigest() if qd else None,'certificate_sha256':hashlib.sha256(raw).hexdigest(),'physical_pairings_rebuilt':518400,'orbits_checked':len(records),'phase_masks_per_orbit':65536,'basic_count_owner_profiles':totals[0],'profiles_unexcluded_by_rank_cuts':totals[1],'additional_basic_profiles_excluded':totals[2],'empty_witness_rejected':bool(negative_empty),'span_witness_rejected':bool(negative_span),'sector_transfer':'Original physical transpose and cyclic symmetry checked. X-only conditioning transfers to the corresponding Z-only conditioning. Fixed-pair conditioning transfers within the equal-index anchor.','records':records,'elapsed_seconds':time.monotonic()-start,'scope':('The original X dictionary omits the stated absent vector. ' if a.absent_X_index is not None else '')+'Certified full-frame upper bounds and phase nogoods, restricted to the stated X-only or fixed-pair condition when present. Local counts are not global frame counts or a number of solved retained anchors. Unexcluded masks are not certified completable.'};a.output.write_text(json.dumps(out,indent=2)+'\n');print('PASS profile totals',totals,flush=True)
 if __name__=='__main__':main()
