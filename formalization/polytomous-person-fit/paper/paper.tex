@@ -69,8 +69,12 @@ not recover the sensitivity levels.
 The nearest cells are normed Guttman errors for midpoint responding,
 \(0.0035\) against a printed \(0.00\), and for extreme responding,
 \(0.284\) against \(0.27\).
-Both sit outside a two-standard-error band, and a Holm correction on
-the eighteen grand sensitivities leaves the misses in place.
+A hand-written graded sampler on the same design, and the May~2023
+releases of PerFit and mokken, do not put a grand sensitivity inside
+the band.
+Those two cells sit outside a two-standard-error band, and a Holm
+correction on the eighteen grand sensitivities leaves the misses in
+place.
 \end{abstract}
 
 \section{The question, and the headline}
@@ -128,6 +132,12 @@ The copy obtained after that failure prints scale correlations and
 factor loadings, not graded thresholds.
 Using those correlations in place of Table~A1 moves the normed-Guttman
 rates by less than \(0.01\).
+A hand-written graded sampler, run for the same \(40\) replications,
+puts none of the eighteen grand sensitivities inside the band.
+The largest gap between that sampler and \texttt{mirt} on a grand
+sensitivity is \(0.0041\).
+PerFit~1.4.6, the release current in May~2023, and mokken~3.0.6 score
+the same matrices as PerFit~1.4.7 and mokken~3.1.2.
 
 The original work is the design, the bias definitions, and the printed
 tables.
@@ -701,10 +711,10 @@ The dissertation says the moments were adapted from Beck (2015). &
 The thesis correlations move the six Guttman rates by less than \(0.01\). \\
 \(U3\) implementation &
 The printed \(U3\) column tracks the Guttman column. Our \(U3\) does not. &
-Our \(U3\) matches PerFit~1.4.7 before that package rounds to four decimals. The Guttman misses do not depend on \(U3\). \\
+Our \(U3\) matches PerFit~1.4.7 and PerFit~1.4.6 before those packages round to four decimals. The Guttman misses do not depend on \(U3\). \\
 Generator and the trim to \(900\) &
 The usual \texttt{mirt} intercept, and the thesis scale means, both fail the trim. &
-The printed-sum generator with Table~A1 completes the trim and still misses. The graded probabilities match a hand-written logistic to \(0\). \\
+The printed-sum generator with Table~A1 completes the trim and still misses. A hand-written sampler matches \texttt{mirt}'s category probabilities to \(2\times 10^{-16}\) and its grand sensitivities to within \(0.0041\). \\
 Bootstrap median versus the sample quantile &
 The dissertation uses the bootstrap median. &
 On two samples of size \(1{,}000\) the two cutoffs differ by \(3\times 10^{-4}\) and \(6\times 10^{-4}\). \\
@@ -719,6 +729,70 @@ The first row is the strongest lever that was actually in our hands,
 and it does not close the column.
 The slope and boundary row is the live remainder: the thesis does not
 contain the thresholds the dissertation says were fit with \texttt{ltm}.
+
+\section{A second generator, and the May 2023 packages}
+\label{sec:two}
+
+This section answers whether the sensitivity misses are the choice of
+\texttt{mirt::simdata} or the 2025 release of PerFit.
+They are not.
+No grand sensitivity enters the two-standard-error band under the
+second generator.
+
+The hand-written sampler is
+\srcat{simulation/monte_carlo.R}{171}.
+It draws one uniform per person and item from the linear predictor in
+Equation~23.
+Its category probabilities match \texttt{mirt} with a maximum absolute
+difference of \(2\times 10^{-16}\), in
+\src{simulation/out/generator_probs.csv}.
+The same \(40\) replications, the same \(192\) conditions, and the same
+four rates were then drawn with that sampler.
+Against the printed tables, none of the eighteen aberrant-direction
+grand sensitivities, and none of the matching specificity, positive
+predictive value, or negative predictive value rows, fall inside the
+band, before or after Holm.
+The file is \src{simulation/out/comparison_hand_all.csv}.
+The two generators' grand sensitivities differ by at most \(0.0041\).
+Eight of those eighteen pairs sit outside two standard errors of each
+other.
+Three of the eight have a \(z\) between \(2\) and \(3\), and Holm brings
+those three inside.
+Five remain outside.
+The largest absolute gap is extreme responding on the normed Guttman
+errors, \(0.284\) on the \texttt{mirt} stream and \(0.280\) on the
+hand-written stream, both against the printed \(0.27\).
+Careless responding on that statistic differs by \(0.0003\) and is one
+of the five, because both rates sit on \(0.50\) and the standard error
+is about \(6\times 10^{-5}\).
+On the other three rates the largest absolute gap is \(0.0089\), for
+\(H_i^T\) positive predictive value under acquiescence.
+The comparison is \src{simulation/out/generator_compare.csv}.
+
+PerFit~1.4.6, dated 15~October~2021, was the release current through
+May~2023.
+PerFit~1.4.7 is the 2025 release used in the first grid.
+\texttt{Gnormed.poly} and \texttt{U3poly} are the same in the two
+releases.
+mokken~3.0.6, dated 8~March~2021, was current until mokken~3.1.0 on
+26~June~2023.
+Its \texttt{coefH} branch with standard errors turned off is the same
+rearrangement as mokken~3.1.2.
+\texttt{mirt}~1.39 was packaged on 29~May~2023 (Pacific).
+Its \texttt{simdata} body differs from \texttt{mirt}~1.36 by one
+example, and the two \texttt{src} trees match.
+Eight complete matrices, with four, five, six, and seven options and
+with \(12\) and \(36\) items, scored by PerFit~1.4.6 and by mokken~3.0.6,
+match the fast functions that match the later packages.
+Every maximum absolute difference in
+\src{simulation/out/version_check.csv} is \(0\).
+The \(40\)-replication grid is already scored by those functions.
+Installing the May~2023 releases and rescoring matrices of this
+design's sizes therefore does not move a rate.
+No grand sensitivity enters the band under those releases.
+A second random grid under the old package names would redraw the
+respondents.
+It would not change the scoring rule that produced the misses.
 
 \section{Which checks were run}
 \label{sec:audit}
@@ -747,10 +821,10 @@ Yes &
 \(H_i^T\) matches \texttt{mokken}. \(U3\) and the normed Guttman errors match PerFit~1.4.7 before rounding. \\
 Hand-written generator against \texttt{mirt} &
 Probabilities only &
-One- and two-factor probabilities match to \(0\). A full rate grid on a second generator was not run. \\
-Package versions from 2022--2023 &
+Full \(40\)-replication grid now run. Probabilities match to \(2\times 10^{-16}\). No grand sensitivity enters the printed band. The largest generator gap on a grand sensitivity is \(0.004\). \\
+Package versions from May~2023 &
 No &
-The run is \texttt{mirt}~1.36 (March 2022), \texttt{mokken}~3.1.2, and PerFit~1.4.7. A May~2023 PerFit build was not installed. \\
+PerFit~1.4.6 and mokken~3.0.6 are the releases current then. \texttt{mirt}~1.39 (29~May~2023, Pacific) has the same \texttt{simdata} body and the same \texttt{src} as 1.36, apart from one example. Same-matrix score differences are \(0\). The grid is already scored by those functions, so no grand sensitivity enters the band. \\
 More replications &
 \(40\) &
 The combined standard errors on the grand rates are about \(10^{-3}\) or smaller. A gap of \(0.01\) stays outside two standard errors at any larger replication count. \\
@@ -854,6 +928,21 @@ Thesis correlations, 20 replications &
 CFA slopes, eight replications &
 \src{simulation/out/mc_ink_tablea1_thesis_cfa_eps0.5_c1_r8.csv} &
 \texttt{Rscript monte\_carlo.R out 8 ink 0.5 1 1 tablea1 thesis\_cfa} \\
+Hand-written generator, 40 replications &
+\src{simulation/out/mc_hand_ink_tablea1_tablea3_eps0.5_c1_r40.csv} &
+\texttt{Rscript monte\_carlo.R out 40 ink 0.5 2 1 tablea1 tablea3 hand} \\
+Hand generator against the printed tables &
+\src{simulation/out/comparison_hand_all.csv} &
+{\raggedright\texttt{Rscript score\_gaps.R out/}\allowbreak\texttt{mc\_hand\_ink\_tablea1\_}\allowbreak\texttt{tablea3\_eps0.5\_c1\_r40.csv}\ \texttt{out all}\ \allowbreak\texttt{comparison\_hand\_all.csv}\par} \\
+Category probabilities, hand against \texttt{mirt} &
+\src{simulation/out/generator_probs.csv} &
+\texttt{Rscript check\_generator.R out} \\
+Generator comparison &
+\src{simulation/out/generator_compare.csv} &
+{\raggedright\texttt{Rscript compare\_generators.R}\ \allowbreak\texttt{out/mc\_ink\_eps0.5\_c1\_r40.csv}\ \allowbreak\texttt{out/mc\_hand\_ink\_tablea1\_}\allowbreak\texttt{tablea3\_eps0.5\_c1\_r40.csv out}\par} \\
+May 2023 package scores &
+\src{simulation/out/version_check.csv} &
+\texttt{Rscript version\_check.R out} \\
 Crops &
 \srcdir{paper/figures} &
 \texttt{python3 paper/figures/crop\_pages.py PDF} \\
@@ -881,14 +970,14 @@ Version 1.36, 21~March~2022.
 L.~A. van der Ark.
 New developments in Mokken scale analysis in R.
 \emph{Journal of Statistical Software}, 48:1--27, 2012.
-Package \texttt{mokken}, version 3.1.2.
+Package \texttt{mokken}, versions 3.1.2 and 3.0.6.
 \url{https://cran.r-project.org/package=mokken}.
 
 \bibitem{tendeiro2016}
 J.~N. Tendeiro, R.~R. Meijer, and A.~S.~M. Niessen.
 PerFit: An R package for person-fit analysis in IRT.
 \emph{Journal of Statistical Software}, 74:1--27, 2016.
-Version 1.4.7.
+Versions 1.4.7 and 1.4.6.
 \url{https://cran.r-project.org/package=PerFit}.
 
 \bibitem{venables2002}

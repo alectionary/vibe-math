@@ -7,6 +7,9 @@
 #     thesis_scale uses Beck (2015) Table A4 scale means, SDs, and correlations
 #     thesis_corr uses those correlations with unit variances and means 0
 #   disc: tablea3 | thesis_cfa
+#   generator: mirt | hand
+#     hand draws the graded response with one uniform per person-item
+#     from the same linear predictor passed to mirt::simdata
 #     thesis_cfa uses the 28 CFA loadings in Beck (2015) Table A3,
 #     a = 1.702 * lambda / sqrt(residual), simple structure, dimensions in
 #     Table A4 order (Anger, Avoid, Alcohol, Agora). Tests longer than 7 items
@@ -30,9 +33,11 @@ cores <- if (length(args) >= 5) as.integer(args[[5]]) else 4L
 care_frac <- if (length(args) >= 6) as.numeric(args[[6]]) else 1
 moments <- if (length(args) >= 7) args[[7]] else "tablea1"
 disc_mode <- if (length(args) >= 8) args[[8]] else "tablea3"
+generator <- if (length(args) >= 9) args[[9]] else "mirt"
 if (!predictor %in% c("ink", "standard")) stop("predictor must be ink or standard")
 if (!moments %in% c("tablea1", "thesis_scale", "thesis_corr")) stop("unknown moments")
 if (!disc_mode %in% c("tablea3", "thesis_cfa")) stop("unknown disc")
+if (!generator %in% c("mirt", "hand")) stop("unknown generator")
 
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 .libPaths(c("/tmp/beck/Rlib", .libPaths()))
@@ -163,9 +168,23 @@ save_world <- function() {
                    row.names = FALSE)
 }
 
+sample_mgrm <- function(a, b, theta) {
+  asums <- rowSums(a)
+  lin <- theta %*% t(a)
+  u <- matrix(stats::runif(nrow(theta) * nrow(a)), nrow(theta), nrow(a))
+  Y <- matrix(0L, nrow(theta), nrow(a))
+  for (m in seq_len(ncol(b))) {
+    shift <- if (predictor == "ink") b[, m] * asums else b[, m]
+    pk <- stats::plogis(D_CONST * sweep(lin, 2L, shift, "-"))
+    Y <- Y + (u < pk)
+  }
+  Y
+}
+
 respond <- function(items, b_item, theta, k) {
   a <- A[items, , drop = FALSE]
   b <- b_item[items, , drop = FALSE]
+  if (generator == "hand") return(sample_mgrm(a, b, theta))
   a_use <- D_CONST * a
   if (predictor == "ink") {
     d <- -D_CONST * sweep(b, 1, rowSums(a), "*")
@@ -266,8 +285,8 @@ one_cell <- function(i) {
 }
 
 save_world()
-cat(sprintf("running %d cells x %d reps, predictor %s, epsilon %s, moments %s, cores %d\n",
-            nrow(cell_grid), reps, predictor, epsilon, moments, cores))
+cat(sprintf("running %d cells x %d reps, generator %s, predictor %s, epsilon %s, moments %s, cores %d\n",
+            nrow(cell_grid), reps, generator, predictor, epsilon, moments, cores))
 cat("means", paste(round(BASE_MEAN, 3), collapse = " "), "\n")
 cat("sdr", paste(round(SDR_MEAN, 3), collapse = " "), "\n")
 t0 <- proc.time()
@@ -288,8 +307,8 @@ parts <- lapply(parts, function(p) {
   p[, cols, drop = FALSE]
 })
 tab <- do.call(rbind, parts)
-fn <- file.path(out_dir, sprintf("mc_%s_%s_%s_eps%s_c%s_r%d.csv",
-                                 predictor, moments, disc_mode, epsilon, care_frac, reps))
+fn <- file.path(out_dir, sprintf("mc_%s_%s_%s_%s_eps%s_c%s_r%d.csv",
+                                 generator, predictor, moments, disc_mode, epsilon, care_frac, reps))
 utils::write.csv(tab, fn, row.names = FALSE)
 if ("nkeep" %in% names(tab)) {
   failed <- tab[is.na(tab$bias), c("cell", "k", "dim", "length", "nkeep")]
