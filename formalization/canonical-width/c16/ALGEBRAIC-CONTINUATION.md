@@ -373,6 +373,7 @@ The scientific inputs were frozen at commit
 `a913021` on `research/c16-algebraic-20261028T2040`. A clean detached checkout
 rebuilds the native profile controls and passes all45 replay stages in832.13s.
 It remains clean. Source code is unchanged in the final report/manifest commits.
+Current master055e330 is integrated, preserving its unrelated Beck replication.
 The complete replay is in `algebraic-results/clean-replay/summary.json`;
 `verification.json` summarizes claims and explicit limits. The final scientific
 manifest records file hashes and Git blob identifiers at its stated revision.
