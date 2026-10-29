@@ -1,0 +1,24 @@
+{
+  "provenance": "Abbott (2010), Appendix J printed pp253-261; plain ML reconstruction of rounded Table3.2, NOT MLR/FIML replication",
+  "revised_groups": {
+    "CTFLUE": ["CTFLUE2", "CTFLUE3", "CTFLUE4"],
+    "CTFLEX": ["CTFLEX1", "CTFLEX2", "CTFLEX3"],
+    "CTORIG": ["CTORIG2", "CTORIG3", "CTORIG4"],
+    "CTELAB": ["CTELAB3", "CTELAB4", "CTELAB5"],
+    "CPDOMA": ["CPDOMA1", "CPDOMA3", "CPDOMA4"],
+    "CPFIEL": ["CPFIEL2", "CPFIEL3", "CPFIEL4"],
+    "CPPERS": ["CPPERS1", "CPPERS2", "CPPERS4"]
+  },
+  "second_order": {"CTSE": ["CTFLUE", "CTFLEX", "CTORIG", "CTELAB"], "CPSE": ["CPDOMA", "CPFIEL", "CPPERS"]},
+  "refined_residual_covariances": [["CTELAB4", "CTELAB5"], ["CPDOMA1", "CPDOMA4"], ["CPPERS2", "CPFIEL2"]],
+  "external_groups": {"BCSE": ["BCSE1", "BCSE2", "BCSE3"], "OPEN": ["Open1", "Open2", "Open3", "Open4"]},
+  "external_residual_covariances": [["BCSE1", "BCSE3"], ["BCSE3", "CPFIEL4"], ["Open1", "BCSE1"], ["Open1", "BCSE3"], ["Open2", "Open1"], ["Open3", "Open2"], ["Open4", "BCSE2"], ["Open4", "BCSE3"]],
+  "general_factor_constraint": "CTSE and CPSE variances and covariance fixed1, all secondorder loadings free; equivalently one common higher-order factor",
+  "table_n": 296,
+  "original_fiml_n": 308,
+  "published_h1": {
+    "unrefined": {"chi_square_MLR":350.161,"df":181,"scale":1.456,"CFI":0.934,"RMSEA":0.055,"SRMR":0.061,"AIC":52830.056},
+    "refined": {"chi_square_MLR":295.571,"df":178,"scale":1.463,"CFI":0.954,"RMSEA":0.046,"SRMR":0.057,"AIC":52758.669},
+    "general": {"chi_square_MLR":319.462,"df":179,"scale":1.488,"CFI":0.945,"RMSEA":0.050,"SRMR":0.055,"AIC":52799.519}
+  }
+}
