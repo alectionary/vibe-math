@@ -50,31 +50,17 @@ in Beck (2023)}
 \begin{abstract}
 Do the classification rates and the ANOVA tables in Beck (2023) follow
 from the Monte Carlo described there?
-Beck simulates six response biases on ordered items with four, five,
-six, or seven options, one to four dimensions, and tests of 12 or 36
-items, scores \(U3\), normed Guttman errors, and \(H_i^T\) against a
-bootstrapped 5th-percentile cutoff, and reports sensitivities from
-\(0\) to \(0.29\) with specificities from \(0.94\) to \(0.98\).
-The partial omega squared values in Appendix~C were recomputed from
-the printed \(F\) statistics at \(N=32{,}000\), and the four rates in
-Tables~A24--A26 were checked against the identity that holds when 50
-of \(1{,}000\) respondents are flagged.
-All \(504\) omega squared values agree with that formula to within
-\(0.005\).
-Specificity and negative predictive value in the three grand tables
-sit within \(0.006\) of the identity.
-A \(40\)-replication rerun under the linear predictor printed in
-Equation~23, with the extreme-response constant set to \(0.5\), does
-not recover the sensitivity levels.
+All \(504\) partial omega squared values in Appendix~C agree with the
+printed \(F\) statistics at \(N=32{,}000\), to within \(0.005\).
+Specificity and negative predictive value in Tables~A24--A26 sit within
+\(0.006\) of the identity that holds when \(50\) of \(1{,}000\)
+respondents are flagged.
+The sensitivity levels do not.
+None of the eighteen grand sensitivities fall inside a two-standard-error
+band, before or after Holm.
 The nearest cells are normed Guttman errors for midpoint responding,
 \(0.0035\) against a printed \(0.00\), and for extreme responding,
 \(0.284\) against \(0.27\).
-A hand-written graded sampler on the same design, and the May~2023
-releases of PerFit and mokken, do not put a grand sensitivity inside
-the band.
-Those two cells sit outside a two-standard-error band, and a Holm
-correction on the eighteen grand sensitivities leaves the misses in
-place.
 \end{abstract}
 
 \section{The question, and the headline}
@@ -85,9 +71,8 @@ tables come from the Monte Carlo in the dissertation.
 The ANOVA arithmetic and the relationship among the four rates do.
 The sensitivity levels do not, under the assumptions stated below.
 
-Beck (2023), \url{https://digitalcommons.unl.edu/cehsdiss/425}, studies
-whether three nonparametric person-fit statistics detect response bias
-on ordered polytomous items.
+Beck (2023) \cite{beck2023} studies whether three nonparametric
+person-fit statistics detect response bias on ordered polytomous items.
 The design is six bias types, four numbers of response options, four
 dimensionalities, and two test lengths: \(192\) conditions.
 Each condition has \(900\) ordinary respondents and \(100\) biased
@@ -126,8 +111,8 @@ Two factor-margin cells do match, and two more sit just outside the
 band.
 \(U3\), computed from the same definition as PerFit~1.4.7, does not
 follow the printed \(U3\) column on either tail.
-The 2015 thesis cited for the moments was not available on the first
-attempt to fetch it.
+Beck (2015) \cite{beck2015}, cited for the moments, was not available
+on the first attempt to fetch it.
 The copy obtained after that failure prints scale correlations and
 factor loadings, not graded thresholds.
 Using those correlations in place of Table~A1 moves the normed-Guttman
@@ -345,6 +330,8 @@ The current \texttt{mirt} asks for \texttt{Deriv}, and the current
 \texttt{mokken} and PerFit are the scoring packages the dissertation
 names.
 MASS~7.3-60.0.1 \cite{venables2002} draws the latent normal vectors.
+There is no Lean component: the checks are a statistical Monte Carlo,
+so R is the right tool.
 Versions are in \src{simulation/out/session_info.txt}.
 
 \section{Assumptions}
@@ -607,17 +594,22 @@ The run uses those four printed numbers.
 \section{What the 2015 thesis supplies}
 \label{sec:thesis}
 
-This section answers whether Beck (2015) prints the moments and the
-item slopes the dissertation says it adapted.
+This section answers whether Beck (2015) \cite{beck2015} prints the
+moments and the item slopes the dissertation says it adapted.
 It prints scale means, scale correlations, and standardized factor
 loadings.
 It does not print graded-response boundaries.
+Beck, Albano, and Smith (2019) \cite{beck2019} compare these statistics
+on polytomous survey data.
+The dissertation attributes the boundary and discrimination ranges to
+fits in \texttt{ltm} \cite{rizopoulos2006}, not to that article.
 An earlier request for the UTSA file returned HTTP 403.
 The copy used here is the same bitstream, retrieved after that failure.
 Its sha256 is
 \sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}.
-The appendix numbers in the comparison were supplied by Nate as a
-transcription of that PDF.
+The appendix numbers in the comparison are a transcription of the thesis
+appendix, checked against the PDF (sha256
+\sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}).
 Figure~\ref{fig:thesis} is Table~A4 of the thesis.
 
 \begin{figure}[ht]
@@ -728,7 +720,7 @@ The high tail is the comparison in Table~\ref{tab:guttman}, and the level gaps r
 The first row is the strongest lever that was actually in our hands,
 and it does not close the column.
 The slope and boundary row is the live remainder: the thesis does not
-contain the thresholds the dissertation says were fit with \texttt{ltm}.
+contain the thresholds the dissertation says were fit with \texttt{ltm}~\cite{rizopoulos2006}.
 
 \section{A second generator, and the May 2023 packages}
 \label{sec:two}
@@ -740,7 +732,7 @@ No grand sensitivity enters the two-standard-error band under the
 second generator.
 
 The hand-written sampler is
-\srcat{simulation/monte_carlo.R}{171}.
+\srcat{simulation/monte_carlo.R}{172}.
 It draws one uniform per person and item from the linear predictor in
 Equation~23.
 Its category probabilities match \texttt{mirt} with a maximum absolute
@@ -821,7 +813,7 @@ Yes &
 \(H_i^T\) matches \texttt{mokken}. \(U3\) and the normed Guttman errors match PerFit~1.4.7 before rounding. \\
 Hand-written generator against \texttt{mirt} &
 Probabilities only &
-Full \(40\)-replication grid now run. Probabilities match to \(2\times 10^{-16}\). No grand sensitivity enters the printed band. The largest generator gap on a grand sensitivity is \(0.004\). \\
+Full \(40\)-replication grid now run. Probabilities match to \(2\times 10^{-16}\). No grand sensitivity enters the printed band. The largest generator gap on a grand sensitivity is \(0.0041\). \\
 Package versions from May~2023 &
 No &
 PerFit~1.4.6 and mokken~3.0.6 are the releases current then. \texttt{mirt}~1.39 (29~May~2023, Pacific) has the same \texttt{simdata} body and the same \texttt{src} as 1.36, apart from one example. Same-matrix score differences are \(0\). The grid is already scored by those functions, so no grand sensitivity enters the band. \\
@@ -842,22 +834,26 @@ The differences were \(3\times 10^{-4}\) and \(6\times 10^{-4}\).
 This section answers where the inputs and the outputs live.
 The dated ledger is in \src{INVESTIGATION.md}.
 
-An earlier fetch of the Beck (2015) thesis returned HTTP 403.
-The file later obtained from
-\url{https://rrpress.utsa.edu/server/api/core/bitstreams/4fbd58d2-5896-4dea-ab69-300c5c676a07/content}
-has sha256
-\sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}.
-It is not in git.
-The loadings used in Section~\ref{sec:thesis} are Nate's transcription
-of its appendix, checked against Table~A4 on that PDF.
-
-The dissertation PDF used here has sha256
+The dissertation is Beck (2023) \cite{beck2023},
+\url{https://digitalcommons.unl.edu/cehsdiss/425}.
+The PDF used here has sha256
 \sha{86c3bb482efadc385cd52f7ea12dc33c50b9b70b4ce6111aedb075a12968f62b}.
 It is the Wayback snapshot \texttt{20240907085051} of
 \url{https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1436&context=cehsdiss}.
 A direct request for that URL on 28~October~2026 returned a Cloudflare
 challenge page.
 The PDF is not in git.
+
+The thesis is Beck (2015) \cite{beck2015},
+\url{https://rrpress.utsa.edu/server/api/core/bitstreams/4fbd58d2-5896-4dea-ab69-300c5c676a07/content},
+ProQuest No.~1588285.
+An earlier fetch of that file returned HTTP 403.
+The copy obtained after that failure has sha256
+\sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}.
+It is not in git.
+The loadings used in Section~\ref{sec:thesis} are a transcription of the
+thesis appendix, checked against the PDF (sha256
+\sha{0425870dc5f65ce8ca1d0c0d80b646e12d81a4c8bf2b2cc0c5dc80084c98c707}).
 
 No sentence in the dissertation names a script archive.
 The public GitHub account \texttt{MFBeck} has two repositories,
@@ -874,7 +870,7 @@ PerFit's source for the two polytomous statistics is the repository
 This section answers what would replace an assumption with a printed
 input.
 The 2015 thesis is in hand and does not print the graded thresholds.
-A seed, the \texttt{ltm} boundary matrix, or an R \texttt{sessionInfo}
+A seed, the \texttt{ltm} \cite{rizopoulos2006} boundary matrix, or an R \texttt{sessionInfo}
 record from the dissertation run would decide whether the sensitivity
 gaps are that unpublished fit.
 The check is the same Monte Carlo with those inputs in place of seed
@@ -951,6 +947,34 @@ Crops &
 \end{center}
 
 \begin{thebibliography}{9}
+\bibitem{beck2023}
+M.~F. Beck.
+\emph{The Examination of Nonparametric Person-Fit Statistics as
+Appropriate Measures of Response Bias in Ordered Polytomous Items}.
+Ph.D.\ dissertation, University of Nebraska--Lincoln, May 2023.
+\url{https://digitalcommons.unl.edu/cehsdiss/425}.
+
+\bibitem{beck2015}
+M.~F. Beck.
+\emph{The Multidimensional Social Anxiety Response Inventory (MSARI):
+Development and Preliminary Examination of Psychometric Properties}.
+Master's thesis, The University of Texas at San Antonio, 2015.
+ProQuest No.~1588285.
+\url{https://rrpress.utsa.edu/server/api/core/bitstreams/4fbd58d2-5896-4dea-ab69-300c5c676a07/content}.
+
+\bibitem{beck2019}
+M.~F. Beck, A.~D. Albano, and W.~M. Smith.
+Person-fit as an index of inattentive responding: A comparison of
+methods using polytomous survey data.
+\emph{Applied Psychological Measurement}, 43:374--387, 2019.
+
+\bibitem{rizopoulos2006}
+D.~Rizopoulos.
+ltm: An R package for latent variable modeling and item response
+theory analyses.
+\emph{Journal of Statistical Software}, 17(5):1--25, 2006.
+\url{https://doi.org/10.18637/jss.v017.i05}.
+
 \bibitem{rcore}
 R Core Team.
 \emph{R: A Language and Environment for Statistical Computing}.

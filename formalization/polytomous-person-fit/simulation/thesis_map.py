@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compare Beck (2015) Table A3 loadings with the dissertation discrimination ranges.
 
-The loadings and residuals are Nate's transcription of the thesis appendix.
+The loadings and residuals are a transcription of the thesis appendix, checked against the PDF.
 a = lambda / sqrt(residual), and the logistic form multiplies by 1.702.
 """
 
