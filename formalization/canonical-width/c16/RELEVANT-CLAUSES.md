@@ -50,3 +50,91 @@ screen or Lean completion is planned. Existing source and X-access limits remain
 Publish through PR17 under required review; no auto-merge, issue messages,
 schedules or sub-agents. Acquire a fresh create-only remote claim before research,
 and release only its expected owner SHA when the block ends.
+
+Before either matched solver trial, cap its additional seed bank at256 cores.
+Select the first accepted cores in increasing cardinality and canonical-orbit
+order that strictly shrink their recorded starting set. Independently replay all
+final mined certificates and clause-subsumption checks, and replay every single
+remaining deletion for these selected comparison cores. This cap bounds proof
+replay and initial-input growth within the two-hour budget. The selection uses
+no solver-trial outcome. The precise minimality claim is single-deletion
+irreducibility for the order3 criterion, not inclusion minimality for arbitrary
+nonexistence or a globally shortest clause.
+
+## Source-clause gate
+
+The gate completed before its45-minute endpoint. It processed all1,688 shared
+hard-case matchings in400.63 seconds, making65,925 exact sparse queries with
+97,464 cache hits. Starting sets were the selected vectors in each sector and
+the associated saved propagation cores. A bounded one-deletion neighborhood
+was available when these starting sets gave no certificate. This was not an
+enumeration of full frames or of every source subset.
+
+The miner found6,921 distinct required-set orbits under the checked cyclic and
+sector symmetries. All final source certificates independently replayed. Of
+these,6,576 passed the sequential syntactic-subsumption filter. This is not a
+claim that all retained clauses are logically independent, globally minimal,
+or pairwise irredundant after every later addition.
+
+The frozen comparison uses only256 of these orbits: one two-vector pattern and
+255 three-vector patterns. Their recorded starting sets had four to ten vectors.
+All256 strictly shrink their starting set. Independent complete-predicate replay
+checks all767 single-vector deletions and finds none still rejected by the
+order3 criterion. Among the256 certificates,20 have detecting support1,115
+have support2 and121 have support3. Of the selected patterns,120 are strictly
+missed by the complete order2 criterion; one of the support3 certificates also
+has a different order2 witness. Thus the gain must not all be attributed to
+raising the order from two to three.
+
+The independent gate reconstructed every physical source matching, every final
+certificate, the exact cyclic/sector clause expansions, and the sequential
+subsumption decisions. It used808 independent complete-predicate queries for
+the selected cores and their single deletions, in addition to the direct
+certificate checks. The full gate replay took162.60 seconds. See
+`relevant-results/independent-gate.json`.
+
+### A two-vector restriction
+
+Using zero-based indices in the original source pools, let
+J = {z_411,z_507} and
+w = 0x408249940900c810012008201100100.
+The complete set of X-pool vectors orthogonal to J and pairing to1 with w is
+{x_325,x_425,x_709}. The independently checked quotient computation proves that
+w + span(J) has no representation using at most three Z-pool vectors.
+
+Suppose a full source dual frame contained both required Z vectors. Expand w
+in its Z basis and pass to the quotient by span(J). At least four outside-J
+basis terms would be required. Their four corresponding X basis vectors would
+all have to belong to the three-element detecting set, a contradiction.
+Therefore no full source dual frame contains both z_411 and z_507.
+
+Checked cyclic symmetry translates this to every pair
+{z_(400+h),z_(496+h)}, h=0,...,15. Checked sector exchange gives the same
+restriction on the X side. This excludes simultaneous use within a dual frame;
+it does not assert that the two vectors cannot extend to a one-sided source
+basis. The certificate was shrunk from {411,501,507,515,517}, associated with
+saved hard-case record486. Neither single-vector requirement is rejected by
+the complete order3 criterion.
+
+### Frozen practical comparison
+
+The additional256 patterns reject898 of the1,688 saved partial matchings before
+propagation. These matchings supplied the candidate clauses, so this is
+retrospective training-cohort coverage, not a holdout success rate or a measured
+reduction in the remaining global search space.
+
+The baseline has7,845 variables and136,063 clauses, exactly the final checked
+CNF of the preceding longest trial. Adding all applicable instances of the
+selected patterns introduces2,896 unique clauses and leaves the variable count
+unchanged. The strengthened initial input has138,959 clauses. Some introduced
+clauses are already syntactically subsumed;2,620 newly uncovered clauses were
+counted at the selected cores' acceptance steps in the larger mining order.
+That latter count is not an irredundant-clause count for the final256-core bank.
+
+Both calls use the same existing dynamic propagation and fundamental-row word
+separator (`sparse-order0`). The sole model change is the initial source-clause
+bank. The calls are sequential, baseline first, each with a1,200-second discovery
+limit and a10,000-round ceiling. Their input hashes, source hashes, commands and
+budgets were frozen before either call in `relevant-results/comparison-frozen.json`.
+The comparison starts at2026-10-29T18:31:31Z, leaving time for proof replay and
+publication inside the approved overall deadline.
