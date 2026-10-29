@@ -1,6 +1,6 @@
 # Kupzyk (2011): simplifying assumptions in power analysis
 
-This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. This PR provides the research report and reproducible artifacts; exact SAS replay is not claimed.
+This investigation reconstructs the dissertation's 54 final exemplary-data cells and runs a reduced empirical simulation across all 54 initial-stage cells. The report separates numerical agreement from reconstruction scope. This PR provides the research report and reproducible artifacts; exact SAS replay is not claimed. Reusable skill improvements are reviewed separately in [PR #56](https://github.com/alectionary/vibe-math/pull/56).
 
 Start with `paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf` or its editable LaTeX source `paper/report.tex`. The exact manuscript is generated from saved results by `scripts/build_report.py`. `notes/compliance-ledger.json` records adherence and justified departures from the pinned replication skill. `notes/availability.csv` records what source/code was and was not obtained.
 
@@ -33,10 +33,9 @@ No simulation or dissertation-text download is needed. With the document-build p
 ```sh
 python3 formalization/kupzyk-power-assumptions/scripts/build_report.py
 (cd formalization/kupzyk-power-assumptions/paper && pdflatex -jobname=simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011 -interaction=nonstopmode -halt-on-error report.tex && pdflatex -jobname=simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011 -interaction=nonstopmode -halt-on-error report.tex)
-python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.log
 ```
 
-This regenerates `paper/report.tex`, the descriptive `paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf`, and its LaTeX auxiliary files from the saved results and editable `paper/references.tex`. The citation checker reports unresolved or unused citations. The earlier analysis revision can rebuild its own manuscript; the current PR revision includes the latest editorial changes.
+This regenerates `paper/report.tex`, the descriptive `paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf`, and its LaTeX auxiliary files from the saved results and editable `paper/references.tex`. The final LaTeX log should contain no undefined-citation or undefined-reference warnings. The optional citation checker is described below and is supplied by the separate skill PR. The earlier analysis revision can rebuild its own manuscript; the current PR revision includes the latest editorial changes.
 
 ## Regenerate numerical results
 
@@ -91,10 +90,14 @@ The computational run made no skill changes. A later user-authorized editorial r
 
 ## Citation revision
 
-`paper/references.tex` is the editable author–year bibliography, included by the generated manuscript. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. After building, run:
+`paper/references.tex` is the editable author–year bibliography, included by the generated manuscript. `notes/citation-audit.md` documents the gap, claim coverage, and source verification limits. All numerical output hashes were compared before and after this editorial change. The existing two-pass LaTeX build resolves citations without BibTeX. Optional citation validation requires [skill PR #56](https://github.com/alectionary/vibe-math/pull/56), which supplies `check_citations.py`. It is not part of this replication-only diff. After that PR is merged or its checker is available in the working checkout, run:
 
 ```sh
 python3 .agents/skills/replication-paper/scripts/check_citations.py formalization/kupzyk-power-assumptions/paper/report.tex --references formalization/kupzyk-power-assumptions/paper/references.tex --log formalization/kupzyk-power-assumptions/paper/simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.log
 ```
 
 The published PDF uses the descriptive filename `simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf`. The former generic `report.pdf` is superseded. Inline code links display literal filenames with extensions, and Appendix C links repository files and scripts to master.
+
+## Independent PR scope
+
+PR #55 contains only this research directory. PR #56 contains the reusable skill instructions, citation checker, and its tests. Rebuilding the paper and running the numerical scripts require no new files from PR #56. The historical combined review passed 25 skill tests; this replication branch retains the 19 pre-existing tests, while the separate skill branch passes all 25. The final paper and numerical outputs are unchanged by this split.
