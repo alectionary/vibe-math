@@ -1,0 +1,81 @@
+{
+  "status": "PASS_MATCHED_EXACT_NATIVE_GATE",
+  "source_C16_answered": false,
+  "frozen_sha256": "c1ef421c3a661d306d523161f1407c4b728525487e8e2ba51371df6ab4572273",
+  "source_hashes": {
+    "coupling-results/full-partner-projection-wolfe-strengthen-witness2.json": "01ccca8c4457192ed82923faff6856cf30f0f5a2d382a5fdb67c4bdbe990762a",
+    "full_partner_anchor_native.cpp": "3f0bc8f2cbb7c8c2eb87c9a07fe43620ef7ecaa626680be69dc96daf6183efdf",
+    "full_partner_anchor_native.py": "15ae173c0f847c6f38b820cb2f23404b72469a51a38d135829057bdba59be7e4",
+    "full_partner_anchor_basis_oracle.py": "891bdfa89ca56d49785436232df3c66aa8f8e0a060e2d63b20fb4f2c260e6aac",
+    "full_partner_basis_oracle.py": "0b2093c783ba71a670a74bec27cc3d90a9409057edd40905e2c6af5cd87e8a24",
+    "full_partner_projection_features.py": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa",
+    "verify_full_partner_anchor_basis_oracle.py": "12916cbff440e080ec240bd41f54a0fc5b54b3c478280586fd8f4c901c712d9f",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d",
+    "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "verify_partial_frame.py": "169b253e660ebc4111a7afdec2efd6a666f7811269816ac5cf2832e76f91e16f",
+    "audit_pools.py": "376794bbc25144a4d0247bc4fd5d64ab83cf3d2c64d2249471f5d5f043dd028b",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "verify_full_partner_anchor_native.py": "65ee2b2aaafa2596f26d10e448b84ccd4b54c0b1fa68567ebe2114aad3509b87"
+  },
+  "native_library_path": "/private/tmp/c16-anchor-native.dylib",
+  "native_library_sha256": "2debccace3daab20d4eafc6f8ade4fb6f892fb4249eaf1a2b1a9556f7e2ab16f",
+  "arrays_path": "coupling-results/anchor-native-matched-accepted.npz",
+  "arrays_sha256": "d44fcf39020f52e150bf3cb8c837d79cdb2e2beb4caab67217fd8e4301ff56d4",
+  "mask_count": 4597,
+  "branch_count": 9194,
+  "feasible_branches": 5782,
+  "excluded_branches": 3412,
+  "all_values_fullscores_and_basis_orders_identical": true,
+  "native_preparation_seconds": 0.1773932499345392,
+  "python_and_independent_preparation_seconds": 14.53445966693107,
+  "cohort_timings": [
+    {
+      "cohort": "zero",
+      "native_whole_pricing_seconds": 0.07174529100302607,
+      "python_whole_pricing_seconds": 3.866790874977596,
+      "speedup": 53.896092982806394,
+      "native_prebuilt_weight_batch_seconds": 0.06182374991476536,
+      "independent_replay_seconds": 4.369160917005502,
+      "feasible_queries": 5782
+    },
+    {
+      "cohort": "negative",
+      "native_whole_pricing_seconds": 0.10286762495525181,
+      "python_whole_pricing_seconds": 4.005388665944338,
+      "speedup": 38.93731062311113,
+      "native_prebuilt_weight_batch_seconds": 0.09057704091537744,
+      "independent_replay_seconds": 4.744694333057851,
+      "feasible_queries": 5782
+    },
+    {
+      "cohort": "signed",
+      "native_whole_pricing_seconds": 0.10999374999664724,
+      "python_whole_pricing_seconds": 4.398459332995117,
+      "speedup": 39.988265998106144,
+      "native_prebuilt_weight_batch_seconds": 0.14654329197946936,
+      "independent_replay_seconds": 6.44109437498264,
+      "feasible_queries": 5782
+    },
+    {
+      "cohort": "wolfe",
+      "native_whole_pricing_seconds": 0.1427635420113802,
+      "python_whole_pricing_seconds": 5.470015500090085,
+      "speedup": 38.315212854932184,
+      "native_prebuilt_weight_batch_seconds": 0.14276970806531608,
+      "independent_replay_seconds": 6.326183292083442,
+      "feasible_queries": 5782
+    }
+  ],
+  "independent_prefix_rank_checks": 5720960,
+  "controls": {
+    "exact_tiny_value_and_basis_comparisons": 1857,
+    "excluded_tiny_branches": 1685,
+    "exact_overflow_or_rational_fallback_controls": 34,
+    "float_inputs_rejected": true
+  },
+  "elapsed_seconds": 56.24863200006075,
+  "scope": "Exact native match against frozen Python oracle plus independent low-pivot prefix-rank source replay for all4 frozen coefficient cohorts. Measured local speedup only; no projected separator or source frame claimed. Native int64 overflow/rational input falls back to exact Python."
+}
