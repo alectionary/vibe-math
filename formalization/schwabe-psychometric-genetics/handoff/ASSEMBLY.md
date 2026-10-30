@@ -87,6 +87,15 @@ contrasts/tolerances, unsupported prespecification and stale input/artifact hash
 Synthetic reviewer labels are explicitly fixtures and are never written into
 an actual study packet. No baseline or production outcomes are read.
 
+## Preserve source-audit inputs
+
+`coverage.csv` is the legacy inventory hashed by the source specification.
+Preserve it as that historical input. Generate the current adjudicated inventory
+as `coverage-v2.csv` from the final evidence packet and point the study README
+to that file and the packet. This avoids silently changing an input after the
+source audit. Neither inventory-record counts nor shared component rows are
+counts of independent scientific replications.
+
 ## Source hierarchy and non-scalar results
 
 Every source-owned claim field is copied, including parent/component links,

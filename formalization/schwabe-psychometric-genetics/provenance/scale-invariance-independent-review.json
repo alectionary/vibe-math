@@ -1,0 +1,126 @@
+{
+  "reviewer": "Independent mathematical reviewer (/root/production_guards)",
+  "reviewed_utc": "2026-10-30T22:15:08.377021+00:00",
+  "status": "Accepted as a restricted ordinary written mathematical argument after provenance correction; no Lean certification, universal invariance, empirical replication or finite-MLE/significance conclusion",
+  "reviewed_path": "provenance/scale-invariance-check.json",
+  "reviewed_sha256": "d3c457ee865283b52a3feddaaf0519bfc31ef9924da8a989ef5d5af3493d2e28",
+  "initial_reviewed_sha256": "b248d6092152d7604f3dc9212c66b5f0faa4a4d9858f0fd61fd44d573794ab20",
+  "dependency_hashes_verified": {
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+    "provenance/joint-item-identification-check.json": "7af0254e5b8c3b77385eba63b92b64fa05e761ae1b01c8342bb337c3456be732",
+    "simulation/joint_item_identification_check.py": "8b23601aa5dedb4ff251e9c39810f300efcb6549c9606fa2706d00b62031e5e3",
+    "provenance/joint-item-identification-independent-review.json": "ac4fb8f4f88080cb1c4ca721e04ff1ca58b485c5f07612ab748fdb661b35f283",
+    "provenance/marginal-identification-check.json": "a733bca2b04315b22d4ec8f940d11f101c4fe2e2d42209362b3160a6dda4fe0f",
+    "provenance/marginal-identification-independent-review.json": "deddb2780c3c50953c60046efaa42061e9b6bea22d4ac975cbf1c51d48f40529",
+    "provenance/identification-check.json": "528804e4c6106cd3e0d290b93dd2536b21fc7c9c128bbad885d74b37c410e250"
+  },
+  "source_hashes_verified": {
+    "/tmp/schwabe.txt": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "/tmp/schwabe-thesis/thesis_I_Schwabe.pdf": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28"
+  },
+  "source_reading": [
+    {
+      "printed_page": 5,
+      "pdf_zero_based_page": 13,
+      "finding": "The source uses changed item-subset score skewness to motivate broad invariance wording for biometric conclusions. The restricted population claim is narrower and the finite witness must not be presented as a demonstrated opposite significance decision."
+    },
+    {
+      "printed_page": 51,
+      "pdf_zero_based_page": 59,
+      "finding": "The source expressly conditions comparability on identifying the latent scale in the same way using the same IRT model. Common known calibration is a stronger sufficient mathematical hypothesis, not independently validated empirical evidence."
+    },
+    {
+      "printed_page": 107,
+      "pdf_zero_based_page": 115,
+      "finding": "The source acknowledges poor tail information, need for reliable validated measurement and limits concerning systematic self-report bias."
+    },
+    {
+      "printed_page": 108,
+      "pdf_zero_based_page": 116,
+      "finding": "Same population and identified IRT model qualify comparability; other measurement models may give different results. The review preserves these qualifications."
+    }
+  ],
+  "population_bridge_review": [
+    {
+      "step": "common target and marginalization",
+      "verdict": "accepted conditionally",
+      "reason": "For prespecified subsets of one correctly specified anchored latent model, the subset marginal true distribution is P_eta0^S. This does not equate realized sufficient statistics, finite estimates or uncertainty across subsets."
+    },
+    {
+      "step": "within-person two-observation identification",
+      "verdict": "accepted",
+      "reason": "Two distinct conditionally independent observations with known finite positive logistic slopes supply p=Ef and q=Efg. Relabeling a>=b>0 gives positive derivative of hprime/fprime along theta. Independent odds-coordinate algebra gives b*w*(1+z)*[(a+b)+(a-b)*w]/[a*(1+w)^3]>0. On each fixed-p mean curve this makes q strictly increase with latent SD. Identical calibration is allowed because distinct draws give q=Ef^2, not Y^2=Y."
+    },
+    {
+      "step": "integrability and global injectivity",
+      "verdict": "accepted",
+      "reason": "Although the derivative ratio can be unbounded, fprime*r=hprime is bounded. Weighted first moments and independent-copy covariance expansion are integrable. Positive Gaussian weighted density and strict monotonicity give positive covariance for every s>0; connectedness yields global injectivity rather than merely local rank."
+    },
+    {
+      "step": "cross-twin Gaussian covariance and ACE",
+      "verdict": "accepted conditionally",
+      "reason": "With mu,T known, partial_K E[f(theta1)g(theta2)]=E[fprime(theta1)gprime(theta2)]>0 on |K|<T. Both MZ and DZ conditional distributions at each moderator value recover A=2(KMZ-KDZ), C=2KDZ-KMZ, E=T-KMZ. Positive joint support at both distinct moderator levels, not marginal support alone, is essential."
+    },
+    {
+      "step": "moderator coefficients",
+      "verdict": "accepted conditionally",
+      "reason": "Two distinct observed moderator levels identify linear means and the intercept/slope of each positive log variance. Shared observed family moderator, invariant calibration and common conditional mean/variance across zygosity remain explicit assumptions."
+    },
+    {
+      "step": "population KL criterion",
+      "verdict": "accepted conditionally",
+      "reason": "At the two supported moderator values and both zygosities, conditional response spaces are finite and every pattern has positive probability for finite interior parameters. The expected log-likelihood difference from truth equals minus the positive-weighted sum of KL(P_eta0^S || P_eta^S). It is zero exactly when all these distributions agree; subset injectivity then yields eta=eta0. This is a unique population criterion maximum, not finite-sample maximum existence/uniqueness or estimator consistency. Any observation/selection mechanism must preserve identification of the stated moments or be correctly modeled; this is not inferred from calibration alone."
+    }
+  ],
+  "finite_witness_review": {
+    "parameters_exact": "P=(A,C,E)=(1/4,1/4,1/2); Q=(1/2,1/8,3/8). All positive, both total variance1; at both moderator levels means0 and all moderation slopes0.",
+    "covariance_arithmetic": "KDZ(P)=1/8+1/4=3/8; KDZ(Q)=1/4+1/8=3/8. KMZ(P)=1/2; KMZ(Q)=5/8. All strictly inside(-1,1). Heritability A/T changes from1/4 to1/2.",
+    "admissible_design": "Four distinct calibrated slope1/difficulty0 Bernoulli observations per twin, locally independent; S={1,2},U={3,4} are fixed before responses. Both zygosities occur at each M=0,1; same families retained by both subsets. Each subset separately retains required within-person and cross-twin moments at population level.",
+    "Price_identity": "For centered bivariate Gaussian covariance[[T,K],[K,T]], independently checked partial_K(logphi)=partial_xy(logphi)+partial_x(logphi)*partial_y(logphi), hence partial_K phi=partial_xy phi; no factor2 missing. On compactK interval[1/2,5/8] density derivatives have uniformly Gaussian integrable tails; bounded logistic products/derivatives justify differentiation and both integrations by parts.",
+    "strict_derivative_signs": "With z=exp(theta)>0, v=f^2=z^2/(1+z)^2 has vprime=2z^2/(1+z)^3>0; u=(1-f)^2=1/(1+z)^2 has uprime=-2z/(1+z)^3<0. Thus the MZ S event probability E[v1*v2] strictly increases withK, while U event E[v1*u2] strictly decreases. These are exact sign arguments, not quadrature.",
+    "DZ_cancellation": "P andQ have identical mean, marginalvariance and covariance for every DZ family, hence identical full latent Gaussian law. Fixed calibrated response kernels then give exactly equal likelihood contributions for any fixed DZ response vector in each subset. Positive DZ factors cancel in each Q/P ratio.",
+    "full_data_positivity": "For every finite latent pair all conditional Bernoulli factors for the specified four-item-per-twin MZ pattern lie strictly between0and1. Their product and its Gaussian expectation are strictly positive. Arbitrary fixed DZ patterns also have positive probability. The witness is a possible finite dataset, not a zero-probability limit.",
+    "conclusion": "Independent positive family factors imply L_S(Q)>L_S(P) and L_U(Q)<L_U(P). This refutes exact equality of finite likelihood evidence across admissible subsets while remaining compatible with their identical population target.",
+    "limits": "Neither compared point is asserted to be a global MLE. The witness does not establish opposite fitted heritabilities, posterior summaries, interaction slopes, likelihood-ratio significance decisions or source error. Both points have zero moderation slopes; the witness concerns biometric parameter evidence, especially heritability, rather than demonstrating a changed interaction decision."
+  },
+  "scale_and_information_review": {
+    "conditional_information": "Sum_j a_j^2 p_j(theta)(1-p_j(theta)) is the conditional known-calibration measurement information under local independence; it is not a biometric-SE formula. Item subsets may differ in information even when population targets agree.",
+    "affine_bookkeeping": "For theta*=c theta+d with c>0 and coherent transformed calibration, ACE variances multiply byc^2 and heritability staysfixed. At fixed observed moderator coding, logvariance intercepts gain2logc and slopes stayfixed. This does not assert that raw variances are unchanged.",
+    "nonlinear_and_other_families": "A general nonlinear transformation need not preserve the Gaussian/loglinear family. Chapter2 nonzero latent-genetic variance moderation generally yields a non-Gaussian marginal family; its full injectivity is not proved here. Ordinal/polytomous/multidimensional or unknown-calibration models remain uncovered."
+  },
+  "actual_computational_checks": {
+    "method": "Python standard-library Fraction and already installed SymPy1.14.0 exact identities; source PDF/text reads with no new numerical integrations, simulations or model fits",
+    "checks": [
+      "All positive fractions and totalvariance1 atP,Q",
+      "KDZexactly3/8 atboth; KMZexactly1/2 and5/8",
+      "ACE inversion atboth points",
+      "Exact logistic squared success/failure derivative identities and signs",
+      "Exact Gaussian covariance-density derivative identity",
+      "Independent odds-coordinate derivative for dependencyjoint-item argument",
+      "All current mathematical dependency and source hashes",
+      "Current canonical C1 claim object digest using sortedcompactJSON",
+      "Historical record reconstruction after restoring oldhandoffpin/removing snapshot-history exactly reproduces initialb248...hash"
+    ],
+    "all_mathematical_assertions_passed": true
+  },
+  "provenance_finding_and_correction": {
+    "finding": "Initial record pinned handoff/claim-specification.json to3961cd4080acfaae4a219e755b71c551ec9d46c666e2fb83647b9a2bc98ff8a8 while current bytes had ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f. The initial pin assertion actually failed; it was not silently waived.",
+    "correction": "Root updated current pin and preserved input_snapshot_history. Independently checked all current pins, source-classification audit hash and metadata_followups, and canonical current C1 claim-object hash. Reconstructing the previous record by restoring oldpin and removing added history gives the exact initialb248...hash, proving the mathematical content was unchanged.",
+    "classification_audit_path": "handoff/source-classification-audit.json",
+    "classification_audit_sha256": "6f38fcb3cbe7acb0498911476306951335b8de58e26bdb791d0eae146f943445",
+    "claim_object_sha256": "5dc569fa3eec0e8c79b6ac983d7b2e5683ae57cc83d22c4894bbc3809fc74aff",
+    "status": "resolved for reviewed d3c457...record"
+  },
+  "failures_remaining": [],
+  "formalization_and_scope": "Ordinary mathematical review accepted with hypotheses and limits. No faithful Lean proof/bridge is supplied; this does not clear the formal proved-results manuscript gate. Actual calibration, local independence, moderator/group support, missingness and empirical model correctness are not verified. No globalnovelty or whole-dissertation completion claim.",
+  "operations": {
+    "new_models": 0,
+    "new_simulations": 0,
+    "numerical_integrations": 0,
+    "installs": 0,
+    "network": 0,
+    "git": 0,
+    "manuscript_or_production_changes": 0,
+    "only_written_artifact": "provenance/scale-invariance-independent-review.json"
+  }
+}
