@@ -9,6 +9,21 @@
       "id": "chapter5-analytical-evidence",
       "path": "handoff/chapter5-analytical-evidence.json",
       "sha256": "fd64977485893903c9f64593dc123c82994d56ee257694a795a85a3a3d97c663"
+    },
+    {
+      "id": "chapter5-free-mean-audit",
+      "path": "provenance/chapter5-free-mean-source-check.json",
+      "sha256": "cdc9085886d5d2414f12f2d2c72a22e471b83d0934d8082100a94762f0abf470"
+    },
+    {
+      "id": "chapter5-dz-scaling-audit",
+      "path": "provenance/eq5-14-visual-check.json",
+      "sha256": "3beaf1248bec7e6275172a3ae84b19f68b91343def3f4ae96715a578a088ba31"
+    },
+    {
+      "id": "chapter5-dz-scaling-crop",
+      "path": "evidence/eq5-14-scaling.png",
+      "sha256": "e9c171a3cfdf868146b88d1efc6c56d58d2736ec6c0b64f0111c76658d726b9a"
     }
   ],
   "claims": [
@@ -20,13 +35,13 @@
         "unavailable_reason": null
       },
       "methods": "For path a+b*m with a>0 and shared m in{0,1}, bstar=-2*a-b leaves a fixed and maps the other endpoint a+b to -(a+b). Squared paths, component variances and within-pair covariance contributions are unchanged. With independent Gaussian ACE components, equal means and residual structure, the complete observed Gaussian phenotype distribution is unchanged, and so is its probability after the same measurement kernel. Existing symbolic difference -4*a*m*(a+b)*(m-1) vanishes at both endpoints.",
-      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "uncertainty": "Exact ordinary mathematical argument under the stated assumptions; no sampling interval or empirical calibration guarantee is implied.",
       "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
       "status": "replicated",
       "status_reason": "Established by ordinary exact analytical replication under the explicit shared-binary-moderator assumptions; no substantive remaining algebraic obligation for this narrow target.",
-      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "numerical": "Source proposition is analytical; printed-decimal rounding and a numerical aggregate comparison are inapplicable.",
       "reconstruction_scope": "Exact symbolic/rational check and ordinary argument, not Lean certification or separate-twin moderator theorem.",
-      "reproduction_deviation": "Not computed as an independent source-target error. Exact symbolic/rational check and ordinary argument, not Lean certification or separate-twin moderator theorem.",
+      "reproduction_deviation": "No scalar numeric deviation applies to this analytical proposition. The exact interpretation, conditions and limits are stated separately.",
       "limitations": [
         "Distinct alternative slopes require a+b!=0; a zero endpoint coalesces the two roots. The source wording of always two distinct combinations needs this ordinary degeneracy qualification.",
         "No path-positivity constraint at both endpoints; adding that extra constraint would eliminate the reflected endpoint.",
@@ -67,13 +82,13 @@
         "unavailable_reason": null
       },
       "methods": "Unrestricted (a,b) and(-a,-b) yield exactly the same squared path for every real m; simultaneously changing both twin loadings also preserves their products. Each independent ACE component has this global sign symmetry. Conversely if squared affine paths agree at three distinct moderator values, their degree-at-most-two difference is identically zero. Factoring it implies the paths are identical or globally negative. With strictly positive intercepts only the identical solution remains. Existing exact midpoint witness 9/25 versus1/100 shows the binary reflection generally fails between endpoints.",
-      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "uncertainty": "Exact ordinary mathematical argument under the stated assumptions; no sampling interval or empirical calibration guarantee is implied.",
       "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
       "status": "partly_replicated",
       "status_reason": "Established for the source global-sign nonidentification extension on unrestricted paths; positive-baseline residual nonidentification does not extend from binary to rich continuous support. Keep these readings separate rather than mark the whole algebra unresolved.",
-      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "numerical": "Source proposition is analytical; printed-decimal rounding and a numerical aggregate comparison are inapplicable.",
       "reconstruction_scope": "Conditional ordinary qualification of continuous extension; does not deny global sign symmetry without constraints.",
-      "reproduction_deviation": "Not computed as an independent source-target error. Conditional ordinary qualification of continuous extension; does not deny global sign symmetry without constraints.",
+      "reproduction_deviation": "No scalar numeric deviation applies to this analytical proposition. The exact interpretation, conditions and limits are stated separately.",
       "limitations": [
         "Three distinct support values suffice for the path polynomial result; continuous support supplies them. Equality of component variance functions is assumed/identified before invoking this algebra.",
         "If a=0, a nonnegative rather than strictly positive convention may leave a slope sign ambiguity.",
@@ -113,13 +128,13 @@
         "unavailable_reason": null
       },
       "methods": "For V(m)=exp(beta0+beta1*m), Vprime=beta1*exp(beta0+beta1*m). It is strictly increasing for beta1>0, strictly decreasing for beta1<0 and constant for beta1=0. A squared affine path has derivative 2*b*(a+b*m), which changes sign at its vertex when that vertex is inside the moderator domain.",
-      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "uncertainty": "Exact ordinary mathematical argument under the stated assumptions; no sampling interval or empirical calibration guarantee is implied.",
       "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
       "status": "replicated",
       "status_reason": "Established by exact derivative; narrow target fully addressed by ordinary analysis.",
-      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "numerical": "Source proposition is analytical; printed-decimal rounding and a numerical aggregate comparison are inapplicable.",
       "reconstruction_scope": "Ordinary symbolic derivative identity, not a likelihood-convexity or formal-certification result.",
-      "reproduction_deviation": "Not computed as an independent source-target error. Ordinary symbolic derivative identity, not a likelihood-convexity or formal-certification result.",
+      "reproduction_deviation": "No scalar numeric deviation applies to this analytical proposition. The exact interpretation, conditions and limits are stated separately.",
       "limitations": [
         "Finite real coefficients and real moderator. Constant zero-slope case is included in weak monotonicity.",
         "A squared-affine curve can itself be monotone on a restricted moderator domain; the comparison does not say every observed squared-path curve turns.",
@@ -159,13 +174,13 @@
         "unavailable_reason": null
       },
       "methods": "Fix M=m and abbreviate exp(beta0a+beta1a*m)=A, similarly C,E. Under the stated independent innovations, MZ traits equal mu+beta1m*m+U_C+U_A+U_Ej, with innovation variances C,A,E. Hence both means are mu+beta1m*m, both variances T=A+C+E, and covariance K_MZ=A+C. For DZ, Eq5.12 gives a shared genetic innovation of variance1/2 and Eq5.13 adds an independent individual innovation of variance1/2. Multiplying by sqrt(A) in Eq5.14 gives each genetic variance A and cross-twin genetic covariance A/2. Adding the common C and independent E innovations yields the same mean and T, and K_DZ=A/2+C. This also verifies the inverse identities A=2*(K_MZ-K_DZ), C=2*K_DZ-K_MZ, E=T-K_MZ already independently symbolically checked.",
-      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "uncertainty": "Exact ordinary mathematical argument under the stated assumptions; no sampling interval or empirical calibration guarantee is implied.",
       "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
       "status": "replicated",
       "status_reason": "Established by ordinary hierarchical variance/covariance calculation for the specified shared-moderator Gaussian model. Do not conflate this narrow target with the separate full observed-item identification claim.",
-      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "numerical": "Source proposition is analytical; printed-decimal rounding and a numerical aggregate comparison are inapplicable.",
       "reconstruction_scope": "Restricted latent covariance algebra checked; empirical model validation and finite-data inference separate.",
-      "reproduction_deviation": "Not computed as an independent source-target error. Restricted latent covariance algebra checked; empirical model validation and finite-data inference separate.",
+      "reproduction_deviation": "No scalar numeric deviation applies to this analytical proposition. The exact interpretation, conditions and limits are stated separately.",
       "limitations": [
         "Shared moderator, common component functions across zygosity, independent family/component/individual innovations as specified by the hierarchy; genetic correlation1 or1/2.",
         "Correct square-root scaling in Eq5.14 matters: text extraction separates its radical; the prose explicitly describes scaling by the standard deviation.",
@@ -186,7 +201,9 @@
         "historical-provenance-formalization-feasibility-json",
         "historical-provenance-R-session-txt",
         "historical-diagnostic-evidence",
-        "chapter5-analytical-evidence"
+        "chapter5-analytical-evidence",
+        "chapter5-dz-scaling-audit",
+        "chapter5-dz-scaling-crop"
       ],
       "contrasts": [],
       "stopping": {
@@ -205,12 +222,12 @@
         "unavailable_reason": "At-most-one finite maximum has neither been proved nor refuted. The all-zero example only refutes universal finite-MLE existence; population injectivity is a separate conditional result."
       },
       "methods": "The source free-common-mean assumption is confirmed by the saved independent source audit: mu is a fitted parameter; setting mu=0 in data generation is not a fitted constraint. The existing all-zero-response argument shows likelihood strictly improves as free mu decreases and tends to supremum1 without attainment. It is a valid counterexample to universal existence of a finite MLE, including when both zygosities and both moderator levels are represented. The example does not produce two local or global maxima. If only one maximum is read as at most one when one exists, no counterexample to that claim has been supplied. The independently reviewed joint-item argument establishes population parameter injectivity under known finite positive logistic calibrations, two distinct conditionally independent observations, positive Gaussian ACE components, observed moments and joint zygosity/moderator support. Together with correct specification this yields a unique population expected-log-likelihood maximizer via KL divergence. It does not yield finite-likelihood concavity or global uniqueness.",
-      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "uncertainty": "Exact ordinary mathematical argument under the stated assumptions; no sampling interval or empirical calibration guarantee is implied. Numerical quadrature illustrates the nonexistence example but is not its proof.",
       "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
       "status": "not_established",
       "status_reason": "Partially addressed; finite-sample at-most-one-maximum claim remains unresolved. Do not label it disproved solely by a no-finite-maximum example, and do not infer it from population injectivity.",
-      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
-      "reconstruction_scope": "Ordinary counterexample to unqualified finite-MLE implication, distinct from population injectivity, proper-prior posterior behavior or source empirical likelihood.",
+      "numerical": "Source proposition is analytical; printed-decimal rounding and a numerical aggregate comparison are inapplicable.",
+      "reconstruction_scope": "The source model permits the all-zero-response finite-MLE nonexistence example. This does not test at-most-one-maximum uniqueness when a maximum exists; conditional population injectivity is a different result.",
       "reproduction_deviation": "No numerical deviation applies. A no-finite-maximum example does not contradict at-most-one-maximum wording; the universal-existence interpretation is explicitly stronger than the source wording.",
       "limitations": [
         "Proof or counterexample for at-most-one finite local/global likelihood maximum under a precisely specified nondegenerate observation design and parameter constraints. Neither existing sign-symmetry removal nor monotone variance curves proves it.",
@@ -232,7 +249,8 @@
         "historical-provenance-formalization-feasibility-json",
         "historical-provenance-R-session-txt",
         "historical-diagnostic-evidence",
-        "chapter5-analytical-evidence"
+        "chapter5-analytical-evidence",
+        "chapter5-free-mean-audit"
       ],
       "contrasts": [],
       "stopping": {
