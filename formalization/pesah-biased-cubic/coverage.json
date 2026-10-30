@@ -1709,7 +1709,8 @@
       ],
       "evidence": [
         "expansion/ranking-comparisons.json",
-        "expansion/cubic-Z-eta100-confirm-analysis.json"
+        "expansion/cubic-Z-eta100-confirm-analysis.json",
+        "followup/cubic-Z-eta100-D-analysis.json"
       ]
     },
     {
@@ -1773,7 +1774,7 @@
       "claim": "Hadamard conjugation preserves code parameters; transformed stabilizers and noise",
       "source": "Sections 2.3.3,3.2 p.44",
       "kind": "analytical",
-      "status": "finite-checked; general proof pending",
+      "status": "general-binary-or-restricted-formula-proof; semantic/full-code obligations pending",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1793,15 +1794,17 @@
       ],
       "evidence": [
         "expansion/geometry-check.json",
-        "expansion/distance-certificates.json"
-      ]
+        "expansion/distance-certificates.json",
+        "followup/README.md"
+      ],
+      "followup_limit": "See proof-to-source table: no full Hilbert-space/lattice/counting/probability theorem claimed."
     },
     {
       "id": "cubic-Z-chain",
       "claim": "Pure-Z cubic deformed point sector reduces to repetition chains, asymptotic 50%",
       "source": "Section 3.2.1 p.44;3.4.1 pp.49\u201350",
       "kind": "analytical",
-      "status": "finite-and-analytic-audit; general formal proof pending",
+      "status": "general-binary-or-restricted-formula-proof; semantic/full-code obligations pending",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1821,15 +1824,17 @@
       ],
       "evidence": [
         "expansion/geometry-check.json",
-        "expansion/sector-limits.json"
-      ]
+        "expansion/sector-limits.json",
+        "followup/README.md"
+      ],
+      "followup_limit": "See proof-to-source table: no full Hilbert-space/lattice/counting/probability theorem claimed."
     },
     {
       "id": "cubic-X-plane",
       "claim": "Pure-X cubic deformed point sector reduces to 2D toric decoding; loop sector admits 50% limit",
       "source": "Section 3.2.1 p.44;3.4.2 p.51",
       "kind": "analytical",
-      "status": "finite-and-analytic-audit; general formal proof pending",
+      "status": "general-binary-or-restricted-formula-proof; semantic/full-code obligations pending",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1849,15 +1854,17 @@
       ],
       "evidence": [
         "expansion/geometry-check.json",
-        "expansion/sector-limits.json"
-      ]
+        "expansion/sector-limits.json",
+        "followup/README.md"
+      ],
+      "followup_limit": "See proof-to-source table: no full Hilbert-space/lattice/counting/probability theorem claimed."
     },
     {
       "id": "rhombic-X-loop",
       "claim": "Pure-X deformed rhombic loop errors uniquely reconstructible in stated geometry",
       "source": "Section 3.5.2 pp.55\u201356",
       "kind": "analytical",
-      "status": "finite-checked; general proof pending",
+      "status": "general-binary-or-restricted-formula-proof; semantic/full-code obligations pending",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1877,8 +1884,10 @@
       ],
       "evidence": [
         "expansion/geometry-check.json",
-        "expansion/distance-certificates.json"
-      ]
+        "expansion/distance-certificates.json",
+        "followup/README.md"
+      ],
+      "followup_limit": "See proof-to-source table: no full Hilbert-space/lattice/counting/probability theorem claimed."
     },
     {
       "id": "bp-osd-equations",
@@ -2192,5 +2201,6 @@
     "review": "paper/expanded-review.json",
     "delivery": "expanded-delivery.json",
     "main_pdf": "paper/biased_noise_thresholds_of_cubic_and_rhombic_codes__replication_of_pesah_2021.pdf"
-  }
+  },
+  "followup": "112000 fresh trials; general binary algebra and restricted kernels checked in Lean4.22.0; whole-dissertation status remains open."
 }
