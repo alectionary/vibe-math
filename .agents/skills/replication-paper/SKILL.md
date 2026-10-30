@@ -17,6 +17,81 @@ The worked example is
 [formalization/correlated-residuals/](../../../formalization/correlated-residuals/README.md),
 merged as pull request 14. Commands below are from the repository root.
 
+## Manuscript and delivery acceptance
+
+Reuse the latest user-approved manuscript template. Record its path and revision;
+compare the rendered main paper against it. The bundled
+[approved preamble](assets/approved-preamble.tex) preserves the Kupzyk layout.
+Keep semantic subject-specific adaptations separate from style changes. Record
+and justify necessary deviations; do not silently invent a new layout.
+
+Before declaring delivery complete, independently review the rendered **main
+manuscript**, not merely its source, helper tests, or appendix. Check first-page
+findings, tables, scalable fonts, citations, copied compliance and availability
+rows, filename links, and the distinction between findings and execution details.
+Record reviewer, PDF hash, source hash, and evidence for each review item.
+Passing helper tests never establishes manuscript compliance.
+
+When a draft PR is authorized, put an accessible current-commit primary PDF link
+first, followed by editable source/bibliography and linked evidence. Fetch the
+remote primary PDF and evidence, compare their hashes with local artifacts, and
+record the URLs and downloaded paths. An appendix never substitutes for the
+main paper. If a transfer channel fails, use another authorized channel; otherwise
+report delivery incomplete. Do not request publication approval again when given.
+Run [delivery_check.py](scripts/delivery_check.py) on the delivery record using
+`python3 scripts/delivery_check.py RECORD.json --root STUDY_ROOT` from this skill.
+The checker validates files/hashes and required review records, not scientific
+truth or whether a reviewer actually read a page. A fresh independent manual
+review remains required. Manually verify the declared build inputs are complete,
+all URLs belong to the intended repository, and the reproduction revision contains
+the documented code and inputs. Revalidate after any manuscript/PDF change.
+
+Record the historical run baseline separately from the immutable revision that
+actually contains reproducible code and inputs. Preserve prior analysis when
+adding confirmation or diagnostics. Never silently replace the primary result.
+For each independent check, name shared inputs, engine, graph, and implementation;
+qualify partial independence instead of claiming a second end-to-end replication.
+Justify a tolerance by source precision or scientific consequences, and distinguish
+it from sampling uncertainty. Label margins selected after inspection exploratory;
+use direct resource/performance tradeoffs when no equivalence margin is justified.
+
+## Headline, direction and uncertainty inventory
+
+Before drafting, list every scientific claim as headline or supporting. Split a
+composite headline into its components (for example resource savings and error
+performance); a matching code parameter or secondary experiment cannot replace
+a missed performance component. Record a signed scientific contrast once, with
+units, subtraction order and the meaning of positive. Keep ours-minus-source
+reproduction deviations in a different column. Never mix those meanings under
+"direction" or use unexplained Higher/Lower labels.
+
+Declare the expected analysis/condition inventory, including preserved baseline
+points, and check coverage with `validate_contrast_coverage`. Compute source and
+replicated contrasts at every reported condition; detect
+point-estimate sign reversals and disclose consequential reversals in the opening
+after the headline and evidence limit. A preserved ordering at one point is not
+a grid-wide claim. Missing source uncertainty means a source point ordering,
+not an established source ranking.
+
+Keep three decisions separate: numerical agreement at stated precision,
+reconstruction scope, and uncertainty compatibility. Reserve `close` for the
+rounding criterion below; call other results `inside/outside conditional band`
+or `within exploratory margin`, with a named criterion. Display rounding of a
+figure-derived estimate is not original measurement precision. Do not relabel a
+rounding mismatch as a numerical match because its interval overlaps.
+
+Declare each multiplicity family, its size, alpha and correction before computing
+bands. Save unadjusted and adjusted endpoints/statuses and the count of tests in
+each family. Separate our Monte Carlo error, bounded extraction uncertainty and
+unknown original Monte Carlo error. Explain approximation assumptions; use
+appropriate binomial intervals or withhold inference for rare-event supporting
+rows. Bonferroni controls a specified family under those assumptions; it does not
+recover missing source counts, correct systematic differences or prove equivalence.
+Use [contrast_checks.py](scripts/contrast_checks.py) for signed contrast, conditional
+bands and inventory validation; its regression fixtures include reversal and
+inconsistent-label cases. Manual review must still decide which results are
+headline, whether contrasts are meaningful, and whether the uncertainty model fits.
+
 ## Abstract and opening
 
 The original work's headline result is the answer to its main research
@@ -252,7 +327,7 @@ Numerical is `match`, `close`, or `mismatch`, at a stated precision.
 `match` means our value rounds half up to the printed value. At two
 decimal places, .8602 and .86 are a match. `close` means it does not
 round to the printed value, and the absolute gap is at most one unit
-in the last printed place, unless the row states another band.
+in the last printed place, Other bands must be named as separate uncertainty or sensitivity decisions; they do not reuse the numerical `close` label.
 `mismatch` means the gap is larger than that.
 
 Scope is `exact`, `limited`, or `unavailable`. `exact` means the same
