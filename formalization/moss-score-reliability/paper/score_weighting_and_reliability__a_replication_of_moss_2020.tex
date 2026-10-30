@@ -1,0 +1,102 @@
+\input{preamble.tex}
+\newcommand{\file}[2]{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/moss-score-reliability/#1}{\nolinkurl{#2}}}
+\title{Score weighting and reliability:\\a bounded replication of Moss (2020)}
+\date{October 30, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We replicated the selected empirical score-weighting result in Moss (2020), Paper I, Table 3: across five personality traits, residual-standardized reliability exceeds ordinary-standardized reliability (reported gains .020, .002, .007, .021, .012; ours .019998, .002526, .007331, .020635, .012171), and exceeds equal-weight reliability in every trait. All 20 underlying estimates match at the printed three-decimal precision. This establishes a same-data numerical reproduction, not population superiority, model validity, the paper's general advice about alpha, or the whole dissertation. There are no source-to-replication sign reversals among the 20 declared contrasts. Numerical match means half-up rounding to the published value; reconstruction scope remains limited because the thesis does not pin its historical engine and data snapshot. The comparison uses the complete author-repository thesis version, whose equivalence to the final deposited edition is unverified.
+\end{abstract}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrrll}\toprule
+Claim & Published & Ours & Same direction? & Verdict\\\midrule
+\input{headline.tex}
+\end{tabular}
+\caption{Headline gains in reliability units from \citet[Paper I, Table 3, p.19]{moss} and our fitted models. $R$: equal-weight score; $R_S$: ordinary-standardized score; $R_\sigma$: residual-standardized score. A, C, E, N, O denote agreeableness, conscientiousness, extraversion, neuroticism, and openness. Positive means the first score has higher model-based reliability. ``Match'' refers to both underlying Table 3 cells rounding correctly, not independent rounding of their derived difference. Each source difference has up to .001 rounding uncertainty.}
+\end{table}
+\section{What replicated}
+The selected empirical ordering replicated: residual standardization improves the five fitted reliabilities relative to ordinary standardization by .020, .002, .007, .021 and .012 in the source, versus .019998, .002526, .007331, .020635 and .012171 here. The evidence is conditional on the same data and congeneric models; it does not establish that these models fit adequately or that the gains generalize. No contrast changes sign. Our question is whether the numerical example supporting the score-weighting argument in \citet[Paper I, Example 11]{moss} can be recovered from its public data and procedure.
+
+All twenty estimates reproduce the published rounding. The largest absolute ours-minus-source deviation is .000437, for agreeableness coefficient $H$. This is a rounding difference, not a replication failure. The smallest headline gain is conscientiousness $R_\sigma-R_S=.002526$. Supporting comparisons also agree: $H$ exceeds $R_\sigma$ in all five traits, while $R_S-R$ is negative only for extraversion (source $-.004$, ours $-.004274$). The full inventory is \file{outputs/contrasts.json}{contrasts.json}; source evidence is \file{source-evidence/table_3.png}{table_3.png}.
+
+\section{What we did ourselves, and what we took from others}
+The source supplies the statistical model, score definitions, empirical example and published numbers. The data are the 2,800-person, 25-item \texttt{bfi} demonstration dataset in \citet{revelle}, not the differently named Big Five Inventory of John and colleagues. We used the unchanged psychTools 1.9.12 file and retained its provenance and GPL notice in \file{inputs/NOTICE.md}{NOTICE.md}. We independently implemented the weighted-score calculation, fitted all five models in lavaan, built separate OpenMx covariance models, and compared every published cell and declared contrast.
+
+The model relates five observed items to one unit-variance factor: $X=\lambda Z+\epsilon$, with diagonal residual covariance $\Theta$. After aligning the item directions, $a=|\lambda|$, the reliability of a weighted score is
+\[
+\mathcal R(w)=\frac{(w^T a)^2}{(w^T a)^2+w^T\Theta w}.
+\]
+This is the source's Equation (5), with its Table 3 sign convention. The four weights are $1$ for $R$, $a_i/\Theta_{ii}$ for $H$, $(a_i^2+\Theta_{ii})^{-1/2}$ for $R_S$, and $\Theta_{ii}^{-1/2}$ for $R_\sigma$ \citep[Paper I, Equations 7--9,18]{moss}. These are model-based plug-in score reliabilities, not coefficient alpha, CFA fit indices, or correlations with an observed criterion.
+
+Normal-theory maximum likelihood matches the recovered analysis. Each model uses its own five-item complete cases: $N=2709,2707,2713,2694,2726$. The observed variables are the corresponding A1--A5 through O1--O5 items. There is no fitted mean structure or robust correction, each covariance model has five degrees of freedom, and its saturated likelihood uses $N$-normalized moments. A baseline model does not enter these reliability formulas. The recovered source code uses marker-variable identification; ours fixes factor variance to one, an equivalent reparameterization. Source-side defaults and counts are reconstructed by replay, not printed in Table 3; \file{outputs/comparability.json}{comparability.json} records that limit.
+
+R 4.5.0 provides the execution environment \citep{rcore}; lavaan 0.6-19 matches the source's named fitting engine \citep{rosseel}. OpenMx 2.21.13 supplies a separate optimizer and matrix representation \citep{neale}. The implementations share data, factor model and target definitions. They are not independent empirical replications. The original public formulas were also executed externally, without redistributing that code. Their maximum difference from our estimates is $3.79\times10^{-7}$; OpenMx differs by at most $3.06\times10^{-7}$, with all five status codes zero. Independent Python arithmetic reproduces our saved formulas within $5.56\times10^{-16}$. See \file{outputs/independent.csv}{independent.csv} and \file{provenance/numerical-review.json}{numerical-review.json}.
+
+\section{Numerical comparison and uncertainty}
+Every underlying value matches the printed precision, while each reconstruction remains limited in scope. Table~\ref{tab:all} separates those judgments. Each row has the same reason: the named data and recovered procedure are reproduced, but the thesis does not identify the original package build or data-file hash. Agreement is not a claim of historical bitwise replay.
+\begin{longtable}{llrrrll}
+\caption{\citet[Paper I, Table 3]{moss} versus our lavaan calculation. $\Delta$ is ours minus source, distinct from a score-weighting gain. Precision is decimal places. All matches round half up; ``close'' would require a nonmatching gap at most .001.}\label{tab:all}\\
+\toprule Claim & Published & Ours & $\Delta$ & Precision & Numerical & Scope\\\midrule\endfirsthead
+\toprule Claim & Published & Ours & $\Delta$ & Precision & Numerical & Scope\\\midrule\endhead
+\input{comparison.tex}
+
+\end{longtable}
+
+There is no independent-sample uncertainty comparison in this study. We recompute point estimates from the same named observations, without Monte Carlo sampling or bootstrap perturbations. Sampling uncertainty about reliability in a population is not reported by Table 3 and is not recovered by a rounding match. Nor are model misspecification or missing-data selection quantified by a numerical tolerance. The three descriptive families are 20 rounding comparisons, 10 headline gains and 10 supporting contrasts. No hypothesis tests are made, so alpha and multiplicity correction are not applicable; Bonferroni bands would manufacture an inferential interpretation that this calculation does not have.
+
+The source contrasts are differences between rounded cells. Their bounded rounding error is at most .001, separate from unknown sampling uncertainty. We therefore withhold independent numerical-rounding verdicts for those derived differences. Our optimizer diagnostic threshold of $10^{-5}$ is one hundredth of a printed .001 unit; it checks computation at a scale substantially smaller than reporting precision and is not a scientific equivalence margin. \file{outputs/validation.json}{validation.json} records the full checks.
+
+\section{Assumptions}
+\subsection{Historical data snapshot}
+We use psychTools 1.9.12, dated December 31, 2019, because the source cites the 2019 package. Its release date was January 8, 2020. This is an explicit reconstruction choice, not a recovered lockfile. The unchanged input is hash-pinned in \file{provenance/input-hashes.json}{input-hashes.json}; no claim is made that a later data revision would produce the same estimates.
+\subsection{Conditional interpretation of reliability}
+The calculation inherits a one-factor model with uncorrelated item residuals. Treating six-category items as continuous and using trait-wise listwise deletion follows the recovered source code rather than constituting an additional replication choice. Interpreting these estimates beyond that model would require evidence about fit and selection. Our supporting plain-ML fit diagnostics include RMSEA .109 for conscientiousness and .163 for neuroticism, with five degrees of freedom in each case. These values warrant caution about the model; we do not use a cutoff test to certify or reject validity. They have no source counterparts here and receive no reproduction verdict. See \file{outputs/fit-diagnostics.csv}{fit-diagnostics.csv}.
+
+\section{Ambiguities that were resolved}
+\subsection{Item signs and score identity}
+The original reliability functions use absolute loadings, equivalent to aligning item directions before forming scores. Reading ``sum score'' as a literal sum of mixed-sign raw items would change the target. We checked the original functions and the data documentation, and made sign alignment explicit in \file{scripts/replicate.R\#L11}{replicate.R}. This resolves the scoring ambiguity without inferring a new scoring rule from the numerical answer.
+\subsection{Identification and likelihood normalization}
+Marker-factor and unit-factor fits yield the same reliability ratios. The external original-formula replay checks both the identification and scoring choices. OpenMx accepts the unbiased sample covariance and applies the normal-ML moment normalization internally; its fitted covariance differs from lavaan by at most $3.39\times10^{-6}$. An initial diagnostic that supplied an already-normalized covariance applied the scale twice; it moved covariance entries by about .001 but reliability ratios by less than $3.2\times10^{-7}$. We corrected the input before the final run. This explains an implementation diagnostic, not a disagreement in the source table.
+\subsection{What version of the dissertation is being checked}
+The complete author repository contains the thesis source, four papers, two software papers and appendices. Institutional pages corroborate the title, 2020 date and supervisors Riccardo de Bin and Nils Lid Hjort. Repository frontmatter still contains placeholder series metadata; we do not identify it as a verified final deposited edition. A reviewer read the entire obtained source collection and visually checked Table 3. Detailed component hashes and reading limits are in \file{provenance/source-review.json}{source-review.json}.
+
+\section{What remains unresolved}
+No numerical gap remains at the source's stated precision. Original-formula replay, separate OpenMx fits and independent arithmetic all support the twenty-cell reconstruction. The largest remaining historical uncertainty is the missing original session and data snapshot; the next is final deposited-edition equivalence. The full generating bundle, including session information and the data hash, would settle the first. We stopped after all selected fits, replay, covariance normalization checks and independent review agreed; expanding to ordinal reliability or other thesis chapters would answer a different question.
+
+\section{Code and source availability}
+The following dated ledger records obtained evidence and bounded search limits. The full thesis and upstream analysis code are external; they are unnecessary for recomputing our fitted results from the retained input. The companion code's DESCRIPTION says CC BY-SA 4.0 while its LICENSE.md says CC BY 4.0. That unresolved inconsistency is why we link and replay it externally rather than redistribute it. The limited source crop retains its underlying rights. New R files, data, prose, manuscript and evidence remain outside the root Apache grant as required by LICENSING.md and THIRD\_PARTY.md.
+\begin{longtable}{p{.21\linewidth}p{.14\linewidth}p{.57\linewidth}}
+\toprule Place & UTC date & Result\\\midrule\endhead
+\input{availability.tex}
+\end{longtable}
+
+\section{Compliance ledger}
+The ledger separates numerical validation from manuscript and delivery validation. Its source is \file{provenance/compliance.json}{compliance.json}; the rendered-paper reviewer and remote-byte receipt are separate records.
+\begin{longtable}{p{.24\linewidth}p{.14\linewidth}p{.54\linewidth}}
+\toprule Requirement & Status & Evidence\\\midrule\endhead
+\input{compliance.tex}
+\end{longtable}
+
+\section{Next steps}
+The most useful artifact is the original Table 3 generating bundle with its session information and data hash. It would allow a historical replay rather than the present matched reconstruction. Establishing population score-weighting differences would additionally require justified sampling uncertainty and sensitivity to the factor model and missingness; this paper makes neither claim.
+
+\appendix
+\section{Artifacts and exact reproduction}
+\input{revision.tex}
+All commands run from the repository root. With R 4.5.0, lavaan 0.6-19 and OpenMx 2.21.13, execute \texttt{Rscript formalization/moss-score-reliability/scripts/replicate.R}, then the comparison command in \file{README.md\#recompute}{README.md}. The first command regenerates all twenty estimates and independent fits in seconds, using one thread and no random seeds. The comparison command also checks the preserved external-code replay. The README separately documents optional fresh upstream replay and source re-extraction, whose external prerequisites are not falsely described as bundled.
+
+\begin{longtable}{p{.25\linewidth}p{.65\linewidth}}
+\toprule Claim or artifact & File and regeneration route\\\midrule\endhead
+Model fits and score formula & \file{scripts/replicate.R\#L11}{replicate.R}; generates \file{outputs/results.csv}{results.csv}, \file{outputs/parameters.csv}{parameters.csv}, \file{outputs/fit-diagnostics.csv}{fit-diagnostics.csv} and \file{outputs/independent.csv}{independent.csv}.\\
+All values and signed contrasts & \file{scripts/compare.py}{compare.py}; generates \file{outputs/comparison.json}{comparison.json}, \file{outputs/comparability.json}{comparability.json}, \file{outputs/contrasts.json}{contrasts.json}, \file{outputs/validation.json}{validation.json}.\\
+External original-code replay & \file{scripts/replay_original.R}{replay_original.R}; external checkout required; generates \file{outputs/original-replay.csv}{original-replay.csv}.\\
+Visible source evidence & \file{scripts/crop_source.py}{crop_source.py}; external hash-pinned Paper I required; generates \file{source-evidence/table_3.png}{table_3.png} and \file{source-evidence/crop.json}{crop.json}.\\
+Editable paper and bibliography & \file{paper/score_weighting_and_reliability__a_replication_of_moss_2020.tex}{score_weighting_and_reliability__a_replication_of_moss_2020.tex}; \file{paper/references.tex}{references.tex}; build via \file{scripts/build_tables.py}{build_tables.py} and \file{scripts/build_paper.sh}{build_paper.sh}.\\
+Main report & \file{paper/score_weighting_and_reliability__a_replication_of_moss_2020.pdf}{score_weighting_and_reliability__a_replication_of_moss_2020.pdf}.\\
+Review and delivery & \file{provenance/manuscript-review.json}{manuscript-review.json}; \file{provenance/delivery-record.json}{delivery-record.json}.\\
+\bottomrule\end{longtable}
+
+The main layout reuses the approved preamble at historical baseline \texttt{69a290d}, without a style redesign; only subject-specific mathematical content changes. Tooling was Python 3.12.14 (comparison and table generation; \url{https://github.com/python/cpython}), Pillow for source cropping (version recorded in README; \url{https://github.com/python-pillow/Pillow}), Poppler 26.05.0 (600-dpi rendering; \url{https://gitlab.freedesktop.org/poppler/poppler}), and pdfTeX 1.40.26/TeX Live 2025 (paper build; \url{https://tug.org/texlive/}). Software bibliographic metadata was checked against installed citation records; full external method-article retrieval limits are recorded in \file{provenance/citation-audit.json}{citation-audit.json}.
+\input{references.tex}
+\end{document}
