@@ -1,0 +1,86 @@
+{
+  "claim_id": "C1.scale-invariance",
+  "source_reading": [
+    {
+      "locator": "Chapter1 printed p5, Figure1.2 and following paragraph",
+      "finding": "The source motivates its claim by changing item subsets and sum-score skewness; it says Chapters2/5 yield the same heritability or interaction conclusions regardless of the subset when items measure the trait. This is broader wording than the conditional population result established below."
+    },
+    {
+      "locator": "Chapter4 printed p51, immediately before Section4.1.4",
+      "finding": "The source acknowledges that the interaction scale remains arbitrary and conditions across-study comparability on identifying the scale in the same way using the same IRT model."
+    },
+    {
+      "locator": "Chapter7 printed p107",
+      "finding": "The source explicitly says IRT does not solve poor scaling: ceiling effects leave little right-tail information and limit conclusions about high ability; reliable validated measurement remains necessary. It also excludes correction of systematic self-report bias."
+    },
+    {
+      "locator": "Chapter7 printed pp107-108, The (remaining) arbitrariness of scaling",
+      "finding": "The source asserts item-choice-independent statistical inference but qualifies comparability by the same identified IRT model and same population. It acknowledges other measurement models can yield different results."
+    },
+    {
+      "locator": "Chapter2 printed p15 Eq2.1; Chapter5 pp75-77 Eqs5.9-5.10 and simulation design",
+      "finding": "Chapter2 permits environmental variance depending exponentially on latent genetic influence; this is not the fixed-observed-moderator Gaussian marginal family used in the earlier Chapter5 identification argument."
+    }
+  ],
+  "restricted_population_statement": {
+    "statement": "Any two prespecified subsets satisfying the conditions below identify the same true latent Gaussian ACE parameter at each supported observed moderator value, and hence the same heritability and log-variance moderator coefficients, on the common anchored scale.",
+    "hypotheses": [
+      "One correctly specified common scalar latent Gaussian twin ACE model, with finite mean and strictly positive A(M), C(M), E(M); independent families; M is a shared observed family moderator. Conditional latent means and total variances agree across zygosity; genetic correlations are 1 for MZ and 1/2 for DZ.",
+      "Each retained subset contains at least two distinct binary item observations conditionally independent given the latent trait, with known finite strictly positive logistic slopes and known finite intercepts on the SAME fixed common scale. The two item calibrations may coincide, but the binary observations must be distinct. Cross-twin measurement errors are conditionally independent.",
+      "Each subset supplies identifiable population within-person marginal and joint probabilities and cross-twin joint probabilities. These must be observable under the administration/missingness/selection scheme, or separately justified; item calibration alone does not identify missing joint moments.",
+      "Both MZ and DZ have positive joint support at EACH of two distinct moderator levels. For the coefficient conclusion, means are linear and positive ACE variances log-linear in the moderator. No change of population, ascertainment or moderator coding between subsets.",
+      "Subsets are fixed independently of the realized responses for the population sampling statement, or an appropriate observation/selection model is correctly included. These are sufficient added mathematical hypotheses, not an assertion that the source verified them in every application."
+    ],
+    "derivation": [
+      "Let eta0 be the true common model parameter and P_eta^S the marginal response distribution for subset S. Correct specification and marginalization give P_true^S=P_eta0^S for every admissible S.",
+      "The previously independently reviewed joint-item argument identifies (mu,sqrt(T)) from p=E f(theta) and q=E[f(theta)g(theta)] for two calibrated positive-slope conditionally independent observations. Relabel so f has the larger slope. The fixed-p curve has strictly increasing q in s>0. This argument permits equal item calibration.",
+      "With mu,T fixed, a cross-twin item joint probability is strictly increasing in interior Gaussian covariance K, since its derivative is E[fprime(theta1)gprime(theta2)]>0. Thus both K_MZ and K_DZ are identified.",
+      "Recover A=2(K_MZ-K_DZ), C=2*K_DZ-K_MZ, E=T-K_MZ at each supported moderator value. Two moderator values identify the stated log-linear component and linear mean coefficients.",
+      "Consequently P_eta^S=P_eta0^S implies eta=eta0 for every admissible subset separately. Hence subsets share the population parameter and any fixed function of it, including A/T and the measured-moderator log-variance slopes. This is a corollary of existing conditional identification, not a new general theorem about all IRT models.",
+      "Equivalently, at two supported moderator values, the population expected conditional log likelihood difference is minus the positively weighted sum of finite-response-space KL divergences. Its unique maximizer is eta0 by injectivity. This establishes a population criterion, not finite-sample MLE existence/uniqueness or consistency without further regularity."
+    ]
+  },
+  "finite_likelihood_counterexample": {
+    "purpose": "Refute a literal equality of finite-data biometric likelihood evidence across subsets even in a correctly calibrated model. This does not assert that the dissertation intended exact finite-sample equality.",
+    "design": "Four distinct conditionally independent Rasch observations per twin, all with known slope1 and difficulty0; subsets S={1,2}, U={3,4}. At least one independent MZ family and one independent DZ family are observed at EACH of M=0 and M=1. Subsets use the same fully observed families. This supplies all four joint-support cells required by the conditional population identification argument.",
+    "parameters": "At BOTH moderator levels, mu=0 and T=1. Point P: A=1/4,C=1/4,E=1/2. Point Q: A=1/2,C=1/8,E=3/8. All moderator slopes are0; log intercepts are finite. Both points have strictly positive components summing to1. K_DZ=A/2+C=3/8 at BOTH points, while K_MZ=A+C rises from1/2 at P to5/8 at Q. All covariances are interior. Means, total variance, calibration, observation design and moderator support are unchanged.",
+    "realized_full_data": "In every MZ family, items1/2 are both1 in both twins, whereas items3/4 are both1 in twin1 and both0 in twin2. DZ families can have ANY fixed binary response vectors, with identical realized data retained for the comparison of P against Q. At least one family is present in each of the four support cells.",
+    "exact_derivation": [
+      "Write f(x)=logistic(x), v(x)=f(x)^2, u(x)=(1-f(x))^2. Both functions and their derivatives are bounded, with vprime>0 and uprime<0 at every finite x.",
+      "For an MZ family the S pattern probability is E[v(theta1)v(theta2)] and the U pattern probability is E[v(theta1)u(theta2)]. Holding mu=0,T=1 fixed, their derivatives with respect to interior K are respectively E[vprime(theta1)vprime(theta2)]>0 and E[vprime(theta1)uprime(theta2)]<0. The Gaussian covariance derivative identity and integration by parts apply because of bounded derivatives and Gaussian tails.",
+      "Every DZ family has the exact SAME bivariate latent Gaussian distribution at P and Q: same means, variances and covariance3/8. With the same calibrated response kernels, every DZ response-vector probability is therefore identical at P and Q. This remains true after taking either item subset and for arbitrary fixed DZ response data. Positive DZ likelihood factors cancel separately in each P-versus-Q likelihood ratio.",
+      "The MZ covariance increases from1/2 to5/8. Multiplying independent positive family probabilities gives L_S(Q)>L_S(P), while L_U(Q)<L_U(P). Hence two admissible subsets give opposite finite likelihood orderings of the same two biometric parameter points, which differ in heritability A/T as well as C/T and E/T.",
+      "Every specified full-data pattern, including arbitrary DZ vectors, has strictly positive probability at each interior parameter point: all conditional Bernoulli factors lie strictly between0 and1 and the expectation of their product is positive.",
+      "Each two-item subset nevertheless retains two distinct conditionally independent known positive-slope observations, and the design retains both zygosities at both moderator levels. The conditional population identification theorem applies to each subset; it is compatible with these different finite-data likelihood orderings."
+    ],
+    "exact_arithmetic_check": {
+      "method": "Python standard-library Fraction assertions; no model fitting, simulation or numerical integration",
+      "positive_components_and_total_variance": "passed",
+      "equal_DZ_covariance": "3/8 at P and Q",
+      "MZ_covariances": "1/2 at P;5/8 at Q"
+    },
+    "limits": "No optimizer, posterior, simulation or numerical approximation is used. These strict fixed-parameter likelihood comparisons do NOT establish opposite unconstrained global MLEs, posterior summaries or significance decisions; such a stronger claim is unnecessary and is not made."
+  },
+  "precision_and_selection": [
+    "The information about a fixed latent theta from a conditionally independent calibrated subset is sum_j a_j^2*p_j(theta)*(1-p_j(theta)); changing item count, difficulty or discrimination generally changes it. This is conditional measurement information, not a formula for biometric standard errors.",
+    "Population-target invariance does not imply identical finite estimates, intervals, power, likelihood ratios, or significance decisions. The exact example supplies a finite-likelihood failure of invariance; the source itself acknowledges poor-tail information on p107.",
+    "Response-dependent subset selection, unmodeled informative missingness, changing ascertainment/population, calibration error, conditional dependence or misspecification can break the stated bridge. Such violations are not asserted to have occurred in the source data."
+  ],
+  "scale_distinction": {
+    "common_scale": "The result compares subsets on one anchored measurement scale, not arbitrary transformations.",
+    "affine_bookkeeping": "If theta_star=c*theta+d with c>0 and the known item calibration is transformed coherently, ACE variances multiply by c^2, while heritability remains unchanged. For the stated measured-M log-linear variances, intercepts shift by 2*log(c) and slopes remain unchanged when moderator coding is fixed. Thus even affine changes do not preserve raw variance values.",
+    "nonlinear": "A nonlinear latent transformation generally changes the Gaussian/log-linear model family. No invariance to such transformations is established; the source acknowledges arbitrary scale choice on pp107-108."
+  },
+  "remaining_gaps": [
+    "Chapter2 and related latent-genetic interaction models need identification of their non-Gaussian latent response distribution and biometric parameters for each proposed subset. The reviewed conditional Gaussian two-item argument does not supply it. Common IRT scaling alone is not this missing injectivity proof.",
+    "The dichotomous logistic proof does not certify every ordinal, polytomous or multidimensional measurement model used elsewhere, nor arbitrary subsets lacking the requisite observable moments.",
+    "Actual empirical calibration, local independence, joint support, missingness and correct latent model are not independently verified here; unavailable empirical inputs remain separate blockers.",
+    "No faithful Lean formalization/bridge is supplied. This ordinary written analytical check does not clear the formal proved-results manuscript gate and has not yet received a separate independent review."
+  ],
+  "scope_notice": "No claim of global novelty, universal item-subset invariance, finite-sample unique MLE, formal certification or whole-dissertation completion. Existing evidence and production files preserved.",
+  "evidence_identity": {
+    "source_record_sha256": "d3c457ee865283b52a3feddaaf0519bfc31ef9924da8a989ef5d5af3493d2e28",
+    "independent_review_sha256": "b8cff28d033f298bf6d137dae9c039b963833622ba6341844680335f7a95e77a",
+    "scope": "Current mathematical content copied verbatim; ordinary argument only, not formal certification."
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "reviewer": "Independent mapping reviewer /root/analysis_validation",
+  "reviewed_utc": "2026-10-30T22:32:07.643386+00:00",
+  "status": "accepted for immutable terminal-analysis evidence joining; no scientific verdict or whole-dissertation completion certified",
+  "files": {
+    "handoff/map_chapter6_results.py": "901d206bea30bedce702165da74b765a7d8b7dfe95fc0547f2ccd2d35b664259",
+    "handoff/CHAPTER6-MAPPING.md": "3e2e07c79d7b294ae4ed1b6b1a6f292ce03e40122c107a99bee143a22a854c36",
+    "handoff/test_chapter6_mapping.py": "24bb38ba8d2374675c7824144e8133171c575658bdf424a77d3060e61e6d7245",
+    "handoff/test_chapter6_mapping_independent.py": "2af0a48656304a23fec997401fd85a56bdcb730838464494b1539923fe673b10",
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+    "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518",
+    "simulation/build_production_report.py": "6cc15c120e618700b7bc0c64cd5e041b1a6224709a031accc165131c848694b5",
+    "production/analysis-plan.json": "d8112ba65868f54035f5258c560821080e4d3588e6b9dfe01e8a7894f2f2fa1a"
+  },
+  "scope": "Source/code review and preserved20-repetition baseline plus synthetic tiny failure/pending fixtures only. No live Chapter6 exports/effects read, no model execution, no git/network/manuscript mutation. Nonfixture acceptance test used a clearly synthetic terminal record in a temporary directory, not actual production evidence.",
+  "independent_validation": {
+    "passed": true,
+    "scope": "Preserved baseline and synthetic temporary fixtures only; valid terminal record is synthetic, not actual production evidence.",
+    "checks": [
+      {
+        "test": "baseline_complete_inventory_relationships_and_no_verdicts",
+        "passed": true
+      },
+      {
+        "test": "baseline_signed_contrast_values_and_full_denominators",
+        "passed": true
+      },
+      {
+        "test": "baseline_same_label_value_joins_and_metric_or_missingness",
+        "passed": true
+      },
+      {
+        "test": "tiny_complete_inventory_relationships_and_no_verdicts",
+        "passed": true
+      },
+      {
+        "test": "tiny_signed_contrast_values_and_full_denominators",
+        "passed": true
+      },
+      {
+        "test": "tiny_same_label_value_joins_and_metric_or_missingness",
+        "passed": true
+      },
+      {
+        "test": "wrong_source_method",
+        "passed": true
+      },
+      {
+        "test": "wrong_source_q",
+        "passed": true
+      },
+      {
+        "test": "wrong_source_units",
+        "passed": true
+      },
+      {
+        "test": "wrong_precision_direction",
+        "passed": true
+      },
+      {
+        "test": "wrong_MAR_parent_N",
+        "passed": true
+      },
+      {
+        "test": "wrong_MAR_units",
+        "passed": true
+      },
+      {
+        "test": "wrong_source_value",
+        "passed": true
+      },
+      {
+        "test": "duplicate_source_ID",
+        "passed": true
+      },
+      {
+        "test": "missing_source_ID",
+        "passed": true
+      },
+      {
+        "test": "duplicate_precision_source_cell",
+        "passed": true
+      },
+      {
+        "test": "duplicate_bias_source_cell",
+        "passed": true
+      },
+      {
+        "test": "cross_condition_precision_source_cell",
+        "passed": true
+      },
+      {
+        "test": "wrong_analysis_figure",
+        "passed": true
+      },
+      {
+        "test": "duplicate_analysis_row",
+        "passed": true
+      },
+      {
+        "test": "missing_bias_row",
+        "passed": true
+      },
+      {
+        "test": "wrong_analysis_method",
+        "passed": true
+      },
+      {
+        "test": "snapshot_mismatch",
+        "passed": true
+      },
+      {
+        "test": "absent_terminal",
+        "passed": true
+      },
+      {
+        "test": "null_terminal_state",
+        "passed": true
+      },
+      {
+        "test": "active_worker",
+        "passed": true
+      },
+      {
+        "test": "boolean_process_count",
+        "passed": true
+      },
+      {
+        "test": "invalid_timestamp",
+        "passed": true
+      },
+      {
+        "test": "completed_but_incomplete",
+        "passed": true
+      },
+      {
+        "test": "terminal_snapshot_mismatch",
+        "passed": true
+      },
+      {
+        "test": "synthetic_wallcap_terminal_accepts_partial_snapshot_without_success",
+        "passed": true
+      },
+      {
+        "test": "wrong_analyzer_provenance",
+        "passed": true
+      },
+      {
+        "test": "preserved_baseline_unchanged",
+        "passed": true
+      }
+    ]
+  },
+  "implementation_validation_rerun": {
+    "passed": true,
+    "scope": "Preserved baseline/synthetic fixtures only; no actual terminal mapping",
+    "checks": [
+      "All408IDs,288sourcepoints,108uniquevarianceSE,72bias cells; no empirical/power substitution",
+      "Variance/path and2%/3% sensitivity remain distinct",
+      "Rejected wrong snapshot",
+      "Rejected absent terminal attestation",
+      "Rejected boolean process count",
+      "Rejected non-UTC observed time",
+      "Rejected false completed target",
+      "Rejected missing source ID",
+      "Rejected wrong source method",
+      "Rejected source value mismatch",
+      "Rejected duplicate contrast grid"
+    ]
+  },
+  "findings_resolved": [
+    {
+      "finding": "Initial mapper pinned only report builder and did not establish frozen analyzer provenance.",
+      "resolution": "Now pins local analyzer and unique analyzer digest recorded in analysis provenance; mismatched lineage rejects even with refreshed snapshot digest."
+    },
+    {
+      "finding": "Initial terminal record accepted booleanFalse as process count0 and arbitrary truthy timestamp; completed did not require target completion.",
+      "resolution": "Strict integer0, explicit parsed ISO UTC timestamp and completed=>complete_attempted_grid guard added. Partial wallcap may still join, without success status."
+    },
+    {
+      "finding": "Source identity, parent design conditions and units/direction needed explicit protection.",
+      "resolution": "Nonfixture source SHA pinned. Direct source labels/design/values/units and paired/bias parent grids, units,directions and source bounds checked; fixture changes reject."
+    }
+  ],
+  "scientific_checks": [
+    "Exact408 source-ID coverage,288 same-label direct figure points,108unique primary pairedvariance-SE contrasts and72MARbias cells established in baseline and tiny fixtures.",
+    "Every mapped direct value and every signed contrast independently keyed back to its raw analyzerCSV row; full uncertainty and requested/completed/invalid/failure denominators retained.",
+    "All108 principal precision contrasts preserve explicit source links; shared parent/child rows do not become independent observations.",
+    "Variance SE and exploratory path SE remain different estimands;72sensitivity rows include both metrics at3percent and do not replace2percent primary results.",
+    "All336beta parameter summaries retained as descriptive grid; unquantified trends/recovery retain grids with no invented criterion.",
+    "Source methods/figure/value/units,duplicate/missing rows,cross-condition definitions,parentN and contrastdirection mutations reject.",
+    "Empirical coefficients/counts,actual power and nonquantified analytical/software conclusions remain null with reasons; mapper assigns no scientific status.",
+    "Guard-empty tiny conditions retain nulls with explicit reasons; snapshot integrity checked before and after mapping; old baseline unchanged."
+  ],
+  "limitations": [
+    "Terminal JSON is an explicit root-supplied observation, not independent process inspection by this helper; root must verify supervisor/workers are actually terminal first.",
+    "Source and analysis directories must stay immutable during use. Hashes prove byte identity, not scientific validity or truthful external process observation.",
+    "Fixture mode intentionally bypasses terminal and pinned-source requirements to test mutations; fixture output must never be used as actual production evidence. Analyzer and builder remain pinned even in fixtures.",
+    "No actual terminal production mapping or effect adjudication was performed. Original source Monte Carlo uncertainty and unspecified SE procedure remain unresolved.",
+    "Final scientific statuses, synthesis, tolerances, full evidence-packet integration and rendered main-PDF review remain root responsibilities."
+  ]
+}
