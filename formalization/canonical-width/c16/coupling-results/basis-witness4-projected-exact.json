@@ -1,0 +1,606 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "scope": "Projected row translation and exact row evaluation only. Arbitrary binary selections are translation controls, not source frames. This receipt does not establish point feasibility or source infeasibility.",
+  "matrix_shape": [
+    3,
+    36495
+  ],
+  "matrix_nonzeros": 399,
+  "matrix_dtype": "int64",
+  "rhs": [
+    1,
+    0,
+    0
+  ],
+  "row_metadata": [
+    {
+      "certificate": "moment-resumption-results/common-profile32-projected-pruned.json",
+      "certificate_sha256": "ec8e34b6902147095bb90b8f226e991c2ef14a48008f80ef8f577737bb80f764",
+      "independent_replay": "moment-resumption-results/common-profile32-projected-pruned-independent.json",
+      "independent_replay_sha256": "954d25adc3c0828a9df408bd9eb2c17676947e5dd935831abc4761741ebe3614",
+      "cut_index": 0,
+      "orbit": 32,
+      "anchors": 12,
+      "nonzero_coefficients": 133,
+      "constant": -1,
+      "inequality": "matrix @ owner_vector <= rhs",
+      "profile_weights_fixed": false
+    },
+    {
+      "certificate": "coupling-results/joint-anchor-matched-exact.json",
+      "certificate_sha256": "985da16ea65eaec6c511ba898ccfdcd2273476793b49081e9c21fdedd610d672",
+      "independent_replay": "coupling-results/joint-anchor-matched-exact-independent.json",
+      "independent_replay_sha256": "01c8b3846dd3d14a75b479792a5dc37b9b8745bdfc6c915f184133968d60e682",
+      "cut_index": 0,
+      "orbit": 32,
+      "anchors": 12,
+      "nonzero_coefficients": 133,
+      "constant": 0,
+      "inequality": "matrix @ owner_vector <= rhs",
+      "profile_weights_fixed": false
+    },
+    {
+      "certificate": "coupling-results/joint-anchor-conditional-exact.json",
+      "certificate_sha256": "240106943c84ad843802b270179e67330165b98684b4085046cce3c97653a065",
+      "independent_replay": "coupling-results/joint-anchor-conditional-exact-independent.json",
+      "independent_replay_sha256": "a2bcc78119600926aedd8329a31297183497d8f5635eb0d8944f5a3eed30b15c",
+      "cut_index": 0,
+      "orbit": 32,
+      "anchors": 12,
+      "nonzero_coefficients": 133,
+      "constant": 0,
+      "inequality": "matrix @ owner_vector <= rhs",
+      "profile_weights_fixed": false
+    }
+  ],
+  "point_sha256": "eef02f627aa2af615379bff42d6ddd768ed6e91871a5e6554573fcb71439a79d",
+  "exact_residuals_lhs_minus_rhs": [
+    "-1649149497059535/1125899906842624",
+    "-195298080605482055/35184372088832",
+    "-104679385029188415/35184372088832"
+  ],
+  "exact_slacks_rhs_minus_lhs": [
+    "1649149497059535/1125899906842624",
+    "195298080605482055/35184372088832",
+    "104679385029188415/35184372088832"
+  ],
+  "all_projected_rows_satisfied": true,
+  "baseline_claims_checked": 0,
+  "saved_reference_row": null,
+  "literal32_action_controls": [
+    {
+      "name": "empty",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "full",
+      "action_count": 32,
+      "exact_residuals": [
+        "-402",
+        "-4727120",
+        "-2546960"
+      ]
+    },
+    {
+      "name": "X-only",
+      "action_count": 32,
+      "exact_residuals": [
+        "527/2",
+        "3142040",
+        "1702520"
+      ]
+    },
+    {
+      "name": "Z-only",
+      "action_count": 32,
+      "exact_residuals": [
+        "527/2",
+        "3142040",
+        "1702520"
+      ]
+    },
+    {
+      "name": "opposite-parity",
+      "action_count": 32,
+      "exact_residuals": [
+        "-333/2",
+        "-1974216",
+        "-1065864"
+      ]
+    },
+    {
+      "name": "same-parity",
+      "action_count": 32,
+      "exact_residuals": [
+        "-415/2",
+        "-2459656",
+        "-1328264"
+      ]
+    },
+    {
+      "name": "orbit32-X-only",
+      "action_count": 32,
+      "exact_residuals": [
+        "311",
+        "3704440",
+        "2006520"
+      ]
+    },
+    {
+      "name": "orbit32-both",
+      "action_count": 32,
+      "exact_residuals": [
+        "623",
+        "7408880",
+        "4013040"
+      ]
+    },
+    {
+      "name": "random-0-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-19/2",
+        "-100270",
+        "-54200"
+      ]
+    },
+    {
+      "name": "random-1-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-627/32",
+        "-224233",
+        "-121277"
+      ]
+    },
+    {
+      "name": "random-2-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1899/32",
+        "-690526",
+        "-373074"
+      ]
+    },
+    {
+      "name": "random-3-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1255/8",
+        "-1838732",
+        "-992988"
+      ]
+    },
+    {
+      "name": "random-4-density-0.75",
+      "action_count": 32,
+      "exact_residuals": [
+        "-9061/32",
+        "-3328481",
+        "-1794469"
+      ]
+    },
+    {
+      "name": "random-5-density-0.9",
+      "action_count": 32,
+      "exact_residuals": [
+        "-5603/16",
+        "-4118536",
+        "-2219564"
+      ]
+    },
+    {
+      "name": "random-6-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "random-7-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-431/32",
+        "-147260",
+        "-79600"
+      ]
+    },
+    {
+      "name": "random-8-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-723/8",
+        "-1048052",
+        "-566088"
+      ]
+    },
+    {
+      "name": "random-9-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-5825/32",
+        "-2136886",
+        "-1152524"
+      ]
+    },
+    {
+      "name": "random-10-density-0.75",
+      "action_count": 32,
+      "exact_residuals": [
+        "-4755/16",
+        "-3493247",
+        "-1883843"
+      ]
+    },
+    {
+      "name": "random-11-density-0.9",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1565/4",
+        "-4601516",
+        "-2481854"
+      ]
+    },
+    {
+      "name": "random-12-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-19/2",
+        "-100270",
+        "-54200"
+      ]
+    },
+    {
+      "name": "random-13-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1195/32",
+        "-431367",
+        "-232883"
+      ]
+    },
+    {
+      "name": "random-14-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-323/4",
+        "-938129",
+        "-506871"
+      ]
+    },
+    {
+      "name": "random-15-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-2383/16",
+        "-1746553",
+        "-941457"
+      ]
+    },
+    {
+      "name": "random-16-density-0.75",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1827/8",
+        "-2676561",
+        "-1441389"
+      ]
+    },
+    {
+      "name": "random-17-density-0.9",
+      "action_count": 32,
+      "exact_residuals": [
+        "-783/2",
+        "-4607533",
+        "-2484887"
+      ]
+    },
+    {
+      "name": "random-18-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "random-19-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-119/4",
+        "-338756",
+        "-183354"
+      ]
+    },
+    {
+      "name": "random-20-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-711/16",
+        "-513626",
+        "-277324"
+      ]
+    },
+    {
+      "name": "random-21-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1139/8",
+        "-1661990",
+        "-895730"
+      ]
+    },
+    {
+      "name": "random-22-density-0.75",
+      "action_count": 32,
+      "exact_residuals": [
+        "-7663/32",
+        "-2806303",
+        "-1510727"
+      ]
+    },
+    {
+      "name": "random-23-density-0.9",
+      "action_count": 32,
+      "exact_residuals": [
+        "-10803/32",
+        "-3969118",
+        "-2138692"
+      ]
+    },
+    {
+      "name": "random-24-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "random-25-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-579/16",
+        "-415597",
+        "-224913"
+      ]
+    },
+    {
+      "name": "random-26-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-2191/32",
+        "-793016",
+        "-427454"
+      ]
+    },
+    {
+      "name": "random-27-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-727/4",
+        "-2144185",
+        "-1159185"
+      ]
+    },
+    {
+      "name": "random-28-density-0.75",
+      "action_count": 32,
+      "exact_residuals": [
+        "-529/2",
+        "-3101932",
+        "-1671318"
+      ]
+    },
+    {
+      "name": "random-29-density-0.9",
+      "action_count": 32,
+      "exact_residuals": [
+        "-2415/8",
+        "-3541640",
+        "-1906160"
+      ]
+    },
+    {
+      "name": "random-30-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-601/32",
+        "-209790",
+        "-113400"
+      ]
+    },
+    {
+      "name": "random-31-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-527/16",
+        "-376306",
+        "-203094"
+      ]
+    },
+    {
+      "name": "random-32-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-551/8",
+        "-803119",
+        "-433761"
+      ]
+    },
+    {
+      "name": "random-33-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-661/4",
+        "-1940861",
+        "-1046009"
+      ]
+    },
+    {
+      "name": "random-34-density-0.75",
+      "action_count": 32,
+      "exact_residuals": [
+        "-6945/32",
+        "-2538542",
+        "-1365968"
+      ]
+    },
+    {
+      "name": "random-35-density-0.9",
+      "action_count": 32,
+      "exact_residuals": [
+        "-12009/32",
+        "-4414364",
+        "-2381156"
+      ]
+    },
+    {
+      "name": "random-36-density-0.03",
+      "action_count": 32,
+      "exact_residuals": [
+        "-283/32",
+        "-92500",
+        "-50000"
+      ]
+    },
+    {
+      "name": "random-37-density-0.1",
+      "action_count": 32,
+      "exact_residuals": [
+        "-85/8",
+        "-113590",
+        "-61400"
+      ]
+    },
+    {
+      "name": "random-38-density-0.25",
+      "action_count": 32,
+      "exact_residuals": [
+        "-643/8",
+        "-933711",
+        "-504219"
+      ]
+    },
+    {
+      "name": "random-39-density-0.5",
+      "action_count": 32,
+      "exact_residuals": [
+        "-1519/8",
+        "-2223562",
+        "-1199878"
+      ]
+    }
+  ],
+  "literal32_action_control_count": 48,
+  "alias_identity_checks": 36630,
+  "rejected_corrupted_input_controls": [
+    {
+      "case": "stale-source-bank-hash",
+      "rejected": true,
+      "reason": "independent replay bank SHA-256 mismatch"
+    },
+    {
+      "case": "non-PASS-receipt",
+      "rejected": true,
+      "reason": "independent replay must have status PASS"
+    },
+    {
+      "case": "wrong-source-bank-hash",
+      "rejected": true,
+      "reason": "independent replay bank SHA-256 mismatch"
+    },
+    {
+      "case": "wrong-cut-count",
+      "rejected": true,
+      "reason": "independent replay cut count mismatch"
+    },
+    {
+      "case": "fixed-weight-receipt",
+      "rejected": true,
+      "reason": "independent replay must confirm projected, free-weight separation"
+    },
+    {
+      "case": "fixed-weight-bank-format",
+      "rejected": true,
+      "reason": "bank must declare free profile weights"
+    },
+    {
+      "case": "shape-bounds-in-projected-cut",
+      "rejected": true,
+      "reason": "fixed-shape bounds are not projected moment cuts"
+    },
+    {
+      "case": "short-unconditional-vector",
+      "rejected": true,
+      "reason": "projected cut requires ten unconditional coefficients"
+    },
+    {
+      "case": "short-anchor-vector",
+      "rejected": true,
+      "reason": "each anchor requires seventeen coefficients"
+    },
+    {
+      "case": "float-coefficient",
+      "rejected": true,
+      "reason": "unconditional coefficient must be an integer"
+    },
+    {
+      "case": "invalid-anchor-sector",
+      "rejected": true,
+      "reason": "invalid anchor sector/orbit"
+    },
+    {
+      "case": "invalid-anchor-orbit",
+      "rejected": true,
+      "reason": "invalid anchor sector/orbit"
+    },
+    {
+      "case": "unsafe-integer",
+      "rejected": true,
+      "reason": "unconditional coefficient exceeds safe int64 range"
+    },
+    {
+      "case": "false-claimed-violation",
+      "rejected": true,
+      "reason": "independent replay claimed exact violation mismatch"
+    }
+  ],
+  "rejected_translation_mutations": [
+    {
+      "case": "changed-row-coefficient",
+      "rejected": true,
+      "detected_by": "full"
+    },
+    {
+      "case": "changed-RHS-sign",
+      "rejected": true,
+      "detected_by": "empty"
+    },
+    {
+      "case": "wrong-phase-transpose",
+      "rejected": true,
+      "detected_by": "random-2-density-0.25"
+    },
+    {
+      "case": "cross-sector-diagonal-confused-with-marginal",
+      "rejected": true,
+      "detected_by": "X-only"
+    }
+  ],
+  "source_hashes": {
+    "projected_profile_moment_matrix.py": "882e48f9191eadf04bbabadbf439aa8c104c6da745502cad106a9f392529f736",
+    "verify_projected_profile_moment_rows.py": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+  },
+  "elapsed_seconds": 0.43403645791113377
+}

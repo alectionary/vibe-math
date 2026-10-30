@@ -1,0 +1,73 @@
+{
+  "status": "PASS_ADVERSARIAL_AND_DEPENDENT_RECOVERY_CONTROLS_ONLY",
+  "source_C16_answered": false,
+  "witness2_membership_asserted": false,
+  "sample_column_ids": [
+    0,
+    34250,
+    68500
+  ],
+  "archive_sha256": "eb84730ea1b683eba7aa8e15e90c18fb7753b350eaa98ff46eab26557ed4cf56",
+  "point_sha256": "5e77854cbd40ddf6f8c9b4146c49b5050aed25bbf34c024a71c991b188538efa",
+  "code_sha256": "e50922f8c29f0e01a7e082ed361a560a5ba07d3bb1f7a8939d43d9cfd66589fd",
+  "dependencies": {
+    "recover_full_partner_mixture.py": "31fbdcc5a3a3ff9f57cf89221861a4581239eb2ed7e6b009b99fbbf557662e5b",
+    "verify_full_partner_mixture.py": "54accb8e04ff5099dba285c8a5d41179340c5d1291aa1cefdd6c3644a60d4850"
+  },
+  "rejections": [
+    {
+      "control": "distinct_full_rank_Z_but_wrong_unit_owners",
+      "reason": "unit_owner_and_zero_partition_failed"
+    },
+    {
+      "control": "128_distinct_Z_but_rank127",
+      "reason": "Z_full_rank_required"
+    },
+    {
+      "control": "point_binding",
+      "reason": "point_binding_failed"
+    },
+    {
+      "control": "saved_target_normalization",
+      "reason": "saved_target_mismatch"
+    }
+  ],
+  "dependent_column_recovery": {
+    "exact_column_rank": 3,
+    "pivot_rows": [
+      25,
+      14,
+      351
+    ],
+    "pivot_columns": [
+      0,
+      2,
+      1
+    ],
+    "rounding_denominator": 4398046511104,
+    "remaining_nonzero_equations": [],
+    "min_exact_weight": "1/6",
+    "exact_weight_sum": "1",
+    "max_exact_correction": "1/13194139533312",
+    "status": "EXACT_NONNEGATIVE_MIXTURE_RECOVERED_REQUIRES_PHYSICAL_REPLAY"
+  },
+  "negative_weight_recovery": {
+    "exact_column_rank": 3,
+    "pivot_rows": [
+      25,
+      14,
+      351
+    ],
+    "pivot_columns": [
+      0,
+      2,
+      1
+    ],
+    "rounding_denominator": 4398046511104,
+    "remaining_nonzero_equations": [],
+    "min_exact_weight": "-1",
+    "exact_weight_sum": "1",
+    "max_exact_correction": "0",
+    "status": "EXACT_EQUATIONS_BUT_NEGATIVE_RECOVERED_WEIGHTS"
+  }
+}

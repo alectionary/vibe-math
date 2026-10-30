@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "frozen_sha256": "3bd8d72d1a7adddf1d77b2c0cb63fd46c5470798d68140af992ae42dcee187f1",
+  "source_hashes": {
+    "full_partner_safe_pricing.py": "c11ec4e2d24150347779d126a692b6cb7d35d66ca4675b17433564772abb1630",
+    "verify_full_partner_safe_pricing.py": "fff965cd7a3dc33d8aaf96695e6b5a453b1a769652ee067e9616c3a3ff3188c8",
+    "full_partner_batched_weights.py": "d7aa8dc01cfb8686e84d0957039efae8b0fbc9339ebba39c3a6226357c5066ae",
+    "full_partner_projection.py": "de20cee0899ccf422d541ec82841918278ef9119bd0a664c8537536fe44796a1",
+    "full_partner_projection_features.py": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa",
+    "full_partner_basis_oracle.py": "0b2093c783ba71a670a74bec27cc3d90a9409057edd40905e2c6af5cd87e8a24",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "algebraic-results/orbit-rank-profiles.json.gz": "6e4852d5a003c7c6877f22f03a1fe4f719e8152b709ab00b988a583de58d9439",
+    "algebraic-results/hulls-16-rank.json.gz": "39c476bb85b799a7e60c20dacadab9fd63fe43d1dc0f9d2893a0a42630b3525c",
+    "coupling-results/full-partner-projection-wolfe-witness2.json": "162d19fc5bc9825f45eff49bd9de5805890c41667330946d662de9f79e1a92e0"
+  },
+  "records": [
+    {
+      "cohort": "accepted_Wolfe_coefficients",
+      "mode": "exact_int64_batch",
+      "all291_values_witnesses_features_match": true,
+      "exact_global_support": "2155958"
+    },
+    {
+      "cohort": "huge_signed_integer_control",
+      "mode": "exact_python_integer_overflow_fallback",
+      "all291_values_witnesses_features_match": true,
+      "exact_global_support": "50470291785669333221376"
+    }
+  ],
+  "malformed_input_rejections": [
+    "floating_coefficients",
+    "wrong_length"
+  ],
+  "elapsed_seconds": 1.9601721660001203,
+  "scope": "Exact batch/fallback value,witness,andfeature controls only; the source-cut independent consumer remains unchanged."
+}
