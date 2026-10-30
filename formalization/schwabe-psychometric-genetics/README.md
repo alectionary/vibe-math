@@ -553,3 +553,30 @@ process-only fixtures (no R/model/sampling) can be replayed with:
 ```sh
 python3 simulation/test_jags_dispatch.py
 ```
+
+
+## Calibrated item identification arguments
+
+The independently reviewed ordinary argument in
+[provenance/joint-item-identification-check.json](provenance/joint-item-identification-check.json)
+uses one item marginal and a within-person two-item joint probability. It
+conditionally covers known finite positive unequal item slopes; identical
+calibrations require distinct conditionally independent item observations. The
+empirical observation/calibration/support assumptions remain unverified, and
+Lean formalization is absent. This is not a finite-sample maximum or convergence
+claim. The independent review is
+[provenance/joint-item-identification-independent-review.json](provenance/joint-item-identification-independent-review.json).
+
+The preserved known-Rasch marginal-probability argument is in
+[provenance/marginal-identification-check.json](provenance/marginal-identification-check.json).
+Re-execute the symbolic identities with Python 3.12 and SymPy 1.14.0:
+
+```sh
+python3 simulation/marginal_identification_check.py
+python3 simulation/joint_item_identification_check.py
+```
+
+These start no model fits or simulations. They regenerate dated argument
+records; historical independent-review hashes identify the saved reviewed
+records, not newly timestamped regenerations. The likelihood counterexample
+and covariance/path identities remain in the separate identification audit.

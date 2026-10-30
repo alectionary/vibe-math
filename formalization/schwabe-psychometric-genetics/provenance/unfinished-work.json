@@ -182,21 +182,22 @@
       "id": "C5-1",
       "source_locator": "Section5.1.2 p72; Eqs5.3-5.15 pp75-76; p84; AppC pp138-139",
       "status": "attempted/unresolved",
-      "classification": "known-Rasch population identification addressed by reviewed ordinary argument; faithful Lean bridge and other calibration/design cases remain open",
-      "actual_evidence": "outputs/analytic-checks.json; provenance/identification-check.json; simulation/identification_check.py; evidence/p72-identification-claim.png; provenance/marginal-identification-check.json; simulation/marginal_identification_check.py; provenance/marginal-identification-independent-review.json; provenance/proof-toolchain-observation.json",
-      "remaining": "Formalize a faithful Lean bridge before any fully proved manuscript-result claim. Unequal OPLM discrimination, other calibration/support designs and nondegenerate finite-sample interior likelihood behavior remain open; population identification does not establish unique MLEs, posterior unimodality or convergence.",
-      "completed_followup": "Restricted covariance/logvariance and sign algebra is checked. The known-Rasch simulation model identification is addressed by an independently reviewed ordinary argument: two distinct calibrated items and both zygosities at each of two moderator levels identify all eight coefficients. This is not Lean-certified. A separate all-zero-response example qualifies finite-sample MLE existence; neither result asserts empirical posterior validity.",
+      "classification": "calibrated positive-slope population identification addressed by reviewed ordinary arguments; empirical assumptions, faithful Lean bridge and unsupported model/design cases remain open",
+      "actual_evidence": "outputs/analytic-checks.json; provenance/identification-check.json; simulation/identification_check.py; evidence/p72-identification-claim.png; provenance/marginal-identification-check.json; simulation/marginal_identification_check.py; provenance/marginal-identification-independent-review.json; provenance/proof-toolchain-observation.json; provenance/joint-item-identification-check.json; simulation/joint_item_identification_check.py; provenance/joint-item-identification-independent-review.json",
+      "remaining": "Develop a faithful Lean bridge before a fully proved manuscript-result claim; verify actual empirical calibration, joint item/zygosity/moderator support and observation assumptions. Unknown calibration, conditional dependence or other unsupported designs and nondegenerate finite-sample likelihood behavior remain open; unequal known positive slopes alone are conditionally covered.",
+      "completed_followup": "Restricted covariance/logvariance and sign algebra is checked. Independently reviewed ordinary arguments address population identification, including unequal known positive OPLM slopes, using two conditionally independent item observations and both zygosities at each of two moderator levels. Actual empirical calibration/observation/support assumptions remain unverified. Lean certification is absent. The separate all-zero-response example qualifies finite-sample MLE existence, not population identification or empirical posterior validity.",
       "qualification": {
         "known_Rasch_population_identification": "Addressed under explicit joint support, known distinct finite difficulties and common unit discrimination; reviewed ordinary argument and symbolic identities, not a formally certified theorem.",
         "finite_sample_MLE": "All-zero-response existence counterexample is logically separate; no general finite-sample unique-maximizer conclusion.",
         "uncovered_cases": [
-          "known unequal OPLM discrimination",
-          "unknown or alternative calibration constraints",
-          "insufficient joint zygosity-moderator support",
-          "separate-twin moderators or unsupported missingness/ascertainment assumptions",
+          "unverified actual empirical calibration, latent model and jointly observed within-person/cross-twin moments",
+          "unknown calibration or alternative constraints",
+          "unverified joint zygosity-moderator support or unsupported observation/ascertainment mechanism",
+          "conditional item dependence or separate-twin moderator extensions",
           "nondegenerate finite-sample interior likelihood modes"
         ],
-        "formalization": "Lean bridge absent; toolchain observation is an environment fact, not proof of impossibility."
+        "formalization": "Lean bridge absent; toolchain observation is an environment fact, not proof of impossibility.",
+        "known_positive_slopes_population_identification": "Conditionally addressed, including unequal known positive OPLM slopes and identical calibrations for distinct item draws. Uses one item marginal and the within-person two-item joint probability; requires conditional independence and explicit joint support. Reviewed ordinary argument, not Lean certification or empirical assumption verification."
       }
     },
     {
@@ -350,7 +351,7 @@
     "Chapter6 bounded checkpoint batches, validate Hessian/SE and source-design sensitivity",
     "Chapter2 independent chains and tail convergence before100-dataset grid",
     "Chapter5 measured benchmarks and validated acceleration before250-dataset grid",
-    "Faithful Lean bridge and unequal-OPLM/other calibration identification cases remain open; known-Rasch population identification has reviewed ordinary argument, distinct from finite-sample MLE qualification",
+    "Faithful Lean bridge and verification of empirical calibration/observation/joint-support assumptions remain open; calibrated positive-slope identification, including unequal known OPLM slopes, has reviewed ordinary arguments distinct from finite-sample MLE qualification",
     "Empirical inputs require permitted public acquisition; author contact remains unauthorized"
   ],
   "resource_evidence": "outputs/production-resource-plan.json",

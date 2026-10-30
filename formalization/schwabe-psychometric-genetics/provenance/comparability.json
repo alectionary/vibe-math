@@ -115,14 +115,14 @@
     "ours": {
       "target": "Conditional latent covariance inversion and polynomial/log-map algebra; separate finite-sample MLE existence counterexample"
     },
-    "decision": "This algebra and finite-sample counterexample establish limited analytical statements under named assumptions. The all-zero finite-item example qualifies an unqualified finite-maximizer implication, not population identifiability or empirical posteriors. The separate marginal-identification record addresses known-Rasch population identification by reviewed ordinary argument; other calibration and interior-likelihood cases remain open."
+    "decision": "This algebra and finite-sample counterexample establish limited analytical statements under named assumptions. The all-zero finite-item example qualifies an unqualified finite-maximizer implication, not population identification or empirical posteriors. Separate reviewed ordinary arguments address known-Rasch and unequal known positive-slope population identification conditionally; empirical assumptions, unknown calibration, other unsupported designs and interior-likelihood cases remain unresolved."
   },
   {
     "inventory_id": "C5-1",
     "rows": "provenance/marginal-identification-check.json; provenance/marginal-identification-independent-review.json",
     "source": {
       "target": "Chapter5 pp75-80 known-Rasch simulation model; positive A/C/E loglinear in shared binary moderator, both zygosities, known finite distinct difficulties",
-      "excluded_empirical_case": "Chapter5 p81 known but unequal OPLM item discrimination parameters"
+      "excluded_empirical_case": "Unequal OPLM discrimination is outside this two-marginal route, but known finite positive slopes are conditionally covered by the separate joint-item-identification argument; actual empirical assumptions remain unverified."
     },
     "ours": {
       "target": "Population injectivity of eight mean/logvariance coefficients in marginal observed-item distributions",
@@ -131,5 +131,20 @@
       "validation": "Independent written-argument review and exact symbolic identities; no new simulations or model fits"
     },
     "decision": "Known-Rasch simulation identification addressed under explicit hypotheses as a reviewed ordinary argument. Faithful Lean coverage is absent and the fully proved manuscript-result gate is unmet. Neither this argument nor its comparison certifies finite-sample MLE existence/uniqueness, posterior unimodality, MCMC convergence, empirical OPLM identification or whole-dissertation replication."
+  },
+  {
+    "inventory_id": "C5-1",
+    "rows": "provenance/joint-item-identification-check.json; provenance/joint-item-identification-independent-review.json",
+    "source": {
+      "target": "Chapter5 calibrated logistic item model; p81 OPLM parameters treated as known; Chapter3 p36 Eq3.3 uses logitP=a(theta-b)",
+      "reported_positive_slopes": "Independent source reviewer reports Chapter3 p40 discrimination range[1,9]; calibration file itself remains unavailable"
+    },
+    "ours": {
+      "target": "Population injectivity from one item marginal plus a within-person two-item joint probability; known finite positive slopes may differ and calibrations may coincide for distinct item draws",
+      "required_assumptions": "Conditional item independence, Gaussian positive-variance trait, fixed calibration, identifiable within-person/cross-twin moments and both MZ/DZ groups at EACH of two moderator levels",
+      "argument": "Hold the higher-slope item marginal fixed; joint-probability derivative is a strictly positive weighted covariance. Cross-twin covariance and ACE/logvariance inversions follow under the explicit bridge hypotheses.",
+      "validation": "Independent odds-coordinate derivative, positive-factorization and integrability review; exact symbolic checks; no simulations or model fits"
+    },
+    "decision": "Unequal known positive OPLM slopes are conditionally covered, not an intrinsic mathematical obstruction. Empirical model/calibration/observation/joint-support assumptions are not validated by the argument. No Lean certification, fully proved manuscript result, finite-sample unique-MLE conclusion, posterior/convergence claim or whole-dissertation completion."
   }
 ]
