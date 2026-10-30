@@ -705,3 +705,13 @@ use the complete positive-basis graph or directly verify the proposed rank
 gap. In this block one conditional law becomes exact while a second remains
 inconclusive under its cap. Preserve both states, and do not infer a general
 runtime bound or a shared global distribution from individual memberships.
+
+A saved column archive can lie on a proper face of the intended relaxation.
+Its nullspace is a list of hypotheses, not a list of universal equations.
+Here14 apparent extra identities were individual coordinates that happened
+to remain zero in the sample; every one had a source-valid physical
+counterexample. Adding those columns and checking modular rank established
+the full auxiliary affine dimension771, matching the upper bound from three
+known identities. This closes further affine elimination for that relaxation
+and supplies a better spanning seed, without proving target membership or
+changing the source problem's bounds.

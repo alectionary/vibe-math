@@ -6,7 +6,7 @@ Work branch: `research/c16-coupling-20261030T0514`.
 Source issue: <https://github.com/alectionary/vibe-math/issues/8>.
 Prior research checkpoint: `794ebbb9b37f677f51482155ae441470b273d74e`.
 
-**Current checkpoint, 10:26 UTC:** the source width remains unresolved between
+**Current checkpoint, 10:42 UTC:** the source width remains unresolved between
 16 and 18. The latest exactly accepted global relaxation point is
 `integer-witness15`, with 54 partner inequalities, 234 additional integer-form
 rows and 308 rank rows. The source cover is still 405; no full source anchor
@@ -704,3 +704,45 @@ scientific input hashes before and after execution and requires byte-identical
 rational recovery. Its first replay passes, with receipts in
 `coupling-results/portable-point15-replay1032/`. It changes no mathematical
 consumer and does not replace the broader 36-stage source-certificate replay.
+
+## 10:42 UTC: complete auxiliary affine hull and next structural gate
+
+The 6,980 saved witness10 columns initially have modular linear rank758.
+Exact nullspace recovery finds 14 apparent additional relations beyond the
+three known homogeneous counting identities. Every extra relation is merely
+one d-coordinate being zero throughout that saved sample. Exact pricing
+produces a physical counterexample to each relation; independent both-sign
+replay checks 1,990,464 rank prefixes. Every affected witness15 coordinate
+is strictly positive, with exact values in
+`coupling-results/saved-span-affine-final-inventory.json`.
+
+The 758 independently verified spanning columns and 14 physical
+counterexamples have modular rank772. Together with the three source-proved
+homogeneous identities and the constant coordinate, this proves that the
+full775 auxiliary hull has **exact affine dimension771**. There is no
+additional affine identity to eliminate in this relaxation. This statement
+concerns the one-orbit compatible-basis hull, not the hull of actual full
+source frames. The compact772-column seed spans the auxiliary affine hull;
+its uniform initialization is not a representation of witness15.
+
+The next structural proposal upgrades the existing two-X/two-Z count model
+to full physical bases in both sectors. For a fixed four-bit anchor pattern,
+all7,211 features become constants or linear functions of the two sector
+selection vectors. Their signed support therefore separates into two exact
+matroid basis optimizations; maximize their sum over the16 feasible patterns.
+Each sector jointly contracts forced zero-pool anchors, fixes forced owner
+choices, deletes absent anchors and rejects incompatible or rank-deficient
+domains. Unanchored mutual X/Z pairing is still relaxed. This is a written
+derivation and implementation plan, not a completed oracle or new experiment.
+See `two_sided_full_basis_next_gate.md` for the proof, mapping and required
+independent controls.
+
+The clean checkout of `043a5bdca1b1691dee56e8ea164d959776729680` passes
+fourteen fresh stages: seven exchange checks and seven point15 acceptance
+checks. It reproduces point15 byte-for-byte; all689 original scientific
+inputs,1,422 resolved earlier declarations, four additional source bindings
+and187 new bindings match. The transfer40 implementation has the same
+reviewed exchange-class AST. The archive
+`coupling-results/final-clean-checkpoint043a5bd/` records a clean checkout
+before and after. The later affine diagnostic is separately certified and
+is not silently included in that checkpoint's coverage.
