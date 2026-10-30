@@ -24,13 +24,13 @@ All these general statements compile with Lean4.22.0/Std. Reported axioms now in
 
 `HomologyConsumer.lean` constructs periodic gradients plus seam representatives for all8labels, two input potentials, and L2,3,4,5,6. Its exported potential, holonomy and weight are checked independently with Python's actual V/F/logical-string matrices. All80fields and21120gradient entries pass; period jumps equal the claimed labels, source F syndromes vanish, source logical strings read the same labels, and all nonzero-label weights satisfy the bound. Odd and even sizes and nonzero holonomies are included. This is not exhaustive finite enumeration; the general claim rests on the kernel proof. Inputs and periodic/axis conventions are shared; the matrix implementation and Lean path integration are distinct.
 
-The prior609792entry consumer check remains separate evidence. The actual finite Python code is indexed by axis-major Fin-L triples; the new proofs use periodic Nat-coordinate functions. Restriction to a fundamental cell and periodic extension are mathematically inverse, and the plaquette formulas agree, but this adapter and arbitrary-size array flattening are **not yet formalized in Lean**. The physical source matrix claim excludes L1, where repeated-edge assignment differs from the abstract XOR convention. No rhombic result follows from this cubic theorem.
+The prior609792entry consumer check remains separate evidence. The actual finite Python code is indexed by axis-major Fin-L triples; the new proofs use periodic Nat-coordinate functions. The subsequent `CubicLift.lean` now formalizes modulo-coordinate lifting, finite/periodic gradient transport including the wrap boundary, and `finite_exact_iff_zero_holonomy`: an actual finite-coordinate closed edge field is a finite vertex gradient exactly when its three lifted cycle sums vanish. Arbitrary-size NumPy array flattening and finite matrix rank/counting conversion remain distinct unformalized bridges. The physical source matrix claim excludes L1, where repeated-edge assignment differs from the abstract XOR convention. No rhombic result follows from this cubic theorem.
 
 ## Written rank consequence (not a Lean matrix-rank theorem)
 
 For L>=2, identify periodic functions with their values on the L³ vertices. The vertex-gradient kernel is the one-dimensional constant subspace (proved separately in CubicIncidence.lean). Thus the vertex row space has dimension L³-1 by rank-nullity. The holonomy map is linear (XOR cycle sums), onto F2³, with kernel exactly the periodic gradients. The new classification therefore gives dim ker(F)=L³-1+3=L³+2. Rank-nullity on the 3L³ edges gives rank(F)=2L³-2. Since face/vertex incidence products vanish, the CSS count is 3L³-(L³-1)-(2L³-2)=3.
 
-The general mathematical argument is explicit, but finite-dimensional rank-nullity, linearity/cardinality conversion, the Nat-periodic/finite-matrix adapter and the CSS Hilbert-space interpretation are not all kernel-checked. Do not label the numerical rank formulas as a completed Lean theorem.
+The general mathematical argument is explicit, but finite-dimensional rank-nullity, linearity/cardinality conversion, the finite-array/rank adapter and the CSS Hilbert-space interpretation are not all kernel-checked. Do not label the numerical rank formulas as a completed Lean theorem.
 
 ## Written X-distance consequence (not a Lean cycle-distance theorem)
 
@@ -40,7 +40,7 @@ This argument identifies the missing proof interfaces: finite bilinear annihilat
 
 ## Remaining obligations
 
-- Formal finite-coordinate/source-matrix adapter, rank/counting conversion and quantum CSS/Hilbert interpretation.
+- Formal array-index/matrix rank/counting conversion and quantum CSS/Hilbert interpretation. The Fin-coordinate/periodic potential adapter is now proved.
 - General Lean cycle duality/X-distance bridge described above.
 - Full rhombic parity closure, cube/triangle commutation, homology, rank and distances under the disclosed Pauli convention.
 - Ideal repetition-component counting, majority/tie behavior and Bernoulli asymptotic probability bounds. Actual BP-OSD thresholds are distinct.
@@ -50,3 +50,17 @@ This argument identifies the missing proof interfaces: finite bilinear annihilat
 ## PR-description failure
 
 The earlier metadata call retained only isError=true; its raw reason was not saved. Available tool discovery exposes no tool-call-history retrieval, and the available stored results are subsequent read-only PR snapshots, not that failed response. No prohibited session files were inspected. Readback showed the branch updated but description unchanged. It cannot be classified safely as an ordinary API error versus approval denial, so the description write remains paused and has not been retried. The prepared corrected description is /tmp/pesah-proof-pr-body.md; publication of later scientific artifacts remains separately authorized.
+
+## Reproduce this milestone
+
+From the repository root, use Lean4.22.0 and the study Python dependencies:
+
+```sh
+LEAN=/path/to/lean sh formalization/pesah-biased-cubic/followup/lean/build.sh
+cd formalization/pesah-biased-cubic/followup/lean
+LEAN_PATH=. /path/to/lean --run HomologyConsumer.lean > /tmp/pesah-homology-consumer.txt
+cd ../../../..
+python formalization/pesah-biased-cubic/followup/check_homology_bridge.py /tmp/pesah-homology-consumer.txt
+```
+
+The consumer is a separate executable check; kernel proofs are compiled by build.sh. The printed axiom reports must match the declared standard axioms and contain no sorryAx.
