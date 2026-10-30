@@ -1,0 +1,18 @@
+# Frozen analysis before fresh production
+
+The pilot estimates cost only; its outcomes are excluded. The source printed thresholds are not inputs to grids or optimization. Preserve all earlier primary/normalized/wider results and these new raw outputs.
+
+For cubic Z eta5 U and rhombic X eta100 U:
+
+1. Combine the two independent generators only within each identical code/size/rate condition. Report generator-specific frequencies and total/point/loop/joint counts; never drop a failed correction.
+2. For each of six size pairs, compute larger-size minus smaller-size failure probability at each of the five frozen rates. Linearly interpolate every negative-to-positive sign change; retain all roots. A missing or multiple root is unidentified, not replaced by a source value. Use10000 independent binomial bootstrap draws from empirical rates and report missing/multiple-root fractions. Nominal Bonferroni percentile bands use alpha=.05/12 for the12 source-independent pairwise crossings across the two families. Withhold a crossing confidence claim if over5% of draws have no unique root; even otherwise these are finite-grid interpolation bands, not asymptotic threshold coverage.
+3. Fit the original quadratic FSS through the preserved normalized implementation, retaining all physicality/extrapolation/bound flags. This is an exploratory follow-on, not replacement of the published primary estimate.
+4. Independently fit a monotone bounded alternative: expit(a+b*((p-t)/median(p))*(L/6)^(1/nu)), binomial deviance objective, parameters t in the entire frozen rate interval, nu in[.1,20], a in[-8,8], b in[.001,30]. Starts nu=.5,1,2,4,8; smallest deviance selected. No source-centered start or window. Profile t over101 equally spaced grid points with remaining parameters optimized. The likelihood-ratio3.841459 cutoff is an approximate one-parameter95% profile diagnostic, not exact coverage. Report bounds, deviance and approximate chi-square goodness-of-fit withNconditions-4 degrees of freedom; if p<.01, reject this scaling model for a threshold claim. Preserve fits omittingL4 andL10 as sensitivity, without selecting the favorable one. Do not treat a physical logistic curve as proof of correct scaling.
+
+For cubic Z eta100 D:
+
+No forced global threshold estimate. Report total, point, loop and joint failure at all eight rates and four sizes. The exact identity joint=point+loop-total applies after verifying zero residual syndromes. Compare three adjacent size pairs at each rate for each of the three marginal sectors, a72-member family. Each difference interval is formed from two Clopper-Pearson component intervals, each with alpha=.05/(2*72); subtract endpoints conservatively, preserving unadjusted counterparts. Report plateau and separated sector transitions descriptively, not as a causal mechanism or asymptotic proof. Joint-rate deviations from product of marginal rates are descriptive because sectors share each trial.
+
+Prospective integrity: configs/hashes and fresh seeds recorded in fresh-plan.json; no prior seed overlap; all L4,6,8,10, actual supplied ten-iteration BP/OSD implementation unchanged. Two production workers maximum, each2GiB/2400CPU seconds, checkpoint/resume. Known source settings/runtime gaps remain; no denied-source retry.
+
+Pre-analysis clarification (before inspecting fresh rate outcomes): an upward root accompanied by a downward root or incompatible endpoint signs does not identify a single transition. Apply this conservative guard to point and bootstrap curves; count those draws as ambiguous. Profile optimization uses the baseline solution plus the same five nu starts. This does not change any grid, sample, source target or tolerance.

@@ -1,0 +1,5 @@
+# Historical runtime attempts
+
+2026-10-30: pip install PyMatching==0.2.4 in an isolated target failed during source metadata: its setup calls pip from an isolated environment without pip. A dedicated Python3.12 virtual environment with CMake3.31.10 and no build isolation got further, but the PyPI source distribution lacks lib/pybind11, so CMake cannot build it. This is a packaging failure, not a policy denial. Next attempt: original GitHub v0.2.4 with its declared submodules. No claim of exact historical Python runtime (Python3.8 is unavailable).
+
+The original GitHub v0.2.4 source and pybind11 submodule were accessible. Its setup then attempted `http://lemon.cs.elte.hu/hg/lemon-1.3/archive/e5af35e6c93f.tar.gz` and received HTTP 403 Forbidden under the enforced restricted network policy. This dependency acquisition is blocked; no retry or alternate host for that dependency is attempted. Exact PyMatching0.2.4 execution remains blocked. A separately labeled reconstruction using PyMatching2.3.1 (different matching engine, available as a wheel) is being assessed; it does not establish historical equivalence or retrieve the denied dependency.
