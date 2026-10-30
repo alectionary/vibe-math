@@ -16,6 +16,9 @@ record their original path/revision separately; all manifest paths are relative
 to the study root. The limitation map covers
 every packet limitation by zero-based index. The claim map covers every claim,
 including blocked ones; a dedicated inventory appendix may carry supporting detail.
+Record the first-page excerpts and table regions using the
+[first-page contract](first-page-contract.md). Identify/cite the original work,
+state its headline finding, and show signed effects, magnitude and direction.
 These maps are audit aids, not proof of completeness. Same-context work sets
 `context: "shared"` and is a draft pending an isolated writing pass.
 
