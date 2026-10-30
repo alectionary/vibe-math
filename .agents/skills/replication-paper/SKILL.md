@@ -55,6 +55,41 @@ Justify a tolerance by source precision or scientific consequences, and distingu
 it from sampling uncertainty. Label margins selected after inspection exploratory;
 use direct resource/performance tradeoffs when no equivalence margin is justified.
 
+## Headline, direction and uncertainty inventory
+
+Before drafting, list every scientific claim as headline or supporting. Split a
+composite headline into its components (for example resource savings and error
+performance); a matching code parameter or secondary experiment cannot replace
+a missed performance component. Record a signed scientific contrast once, with
+units, subtraction order and the meaning of positive. Keep ours-minus-source
+reproduction deviations in a different column. Never mix those meanings under
+"direction" or use unexplained Higher/Lower labels.
+
+Compute source and replicated contrasts at every reported condition; detect
+point-estimate sign reversals and disclose consequential reversals in the opening
+after the headline and evidence limit. A preserved ordering at one point is not
+a grid-wide claim. Missing source uncertainty means a source point ordering,
+not an established source ranking.
+
+Keep three decisions separate: numerical agreement at stated precision,
+reconstruction scope, and uncertainty compatibility. Reserve `close` for the
+rounding criterion below; call other results `inside/outside conditional band`
+or `within exploratory margin`, with a named criterion. Display rounding of a
+figure-derived estimate is not original measurement precision. Do not relabel a
+rounding mismatch as a numerical match because its interval overlaps.
+
+Declare each multiplicity family, its size, alpha and correction before computing
+bands. Save unadjusted and adjusted endpoints/statuses and the count of tests in
+each family. Separate our Monte Carlo error, bounded extraction uncertainty and
+unknown original Monte Carlo error. Explain approximation assumptions; use
+appropriate binomial intervals or withhold inference for rare-event supporting
+rows. Bonferroni controls a specified family under those assumptions; it does not
+recover missing source counts, correct systematic differences or prove equivalence.
+Use [contrast_checks.py](scripts/contrast_checks.py) for signed contrast, conditional
+bands and inventory validation; its regression fixtures include reversal and
+inconsistent-label cases. Manual review must still decide which results are
+headline, whether contrasts are meaningful, and whether the uncertainty model fits.
+
 ## Abstract and opening
 
 The original work's headline result is the answer to its main research
@@ -290,7 +325,7 @@ Numerical is `match`, `close`, or `mismatch`, at a stated precision.
 `match` means our value rounds half up to the printed value. At two
 decimal places, .8602 and .86 are a match. `close` means it does not
 round to the printed value, and the absolute gap is at most one unit
-in the last printed place, unless the row states another band.
+in the last printed place, Other bands must be named as separate uncertainty or sensitivity decisions; they do not reuse the numerical `close` label.
 `mismatch` means the gap is larger than that.
 
 Scope is `exact`, `limited`, or `unavailable`. `exact` means the same
