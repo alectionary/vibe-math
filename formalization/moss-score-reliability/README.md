@@ -63,3 +63,14 @@ The two numerical routes share data and model; OpenMx supplies a different optim
 Scheduled slot1, latent factors,2026-10-30T09:13:16Z; task moss-score-reliability. [scope.json](provenance/scope.json) and the repository scheduled-run register record the deduplication identity and final PR. No merge or external announcement is included.
 
 Pillow version used: 12.3.0.
+
+## Verify published delivery
+
+After publishing an artifact commit, the following fetches15 immutable remote files, checks each against local bytes, and writes the delivery receipt. Substitute the actual full artifact SHA and a distinct download directory. The independent rendered-manuscript review must already exist and match the current paper/build inputs.
+
+```sh
+python3 formalization/moss-score-reliability/scripts/verify_remote.py ARTIFACT_SHA --download-dir /tmp/moss-remote-verification
+python3 .agents/skills/replication-paper/scripts/delivery_check.py formalization/moss-score-reliability/provenance/delivery-record.json --root formalization/moss-score-reliability
+```
+
+Downloaded copies are external receipt evidence, not bundled inputs. Re-running the verification reconstructs them. The checker validates hashes and review records, not scientific truth or actual review depth.
