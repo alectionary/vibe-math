@@ -1,0 +1,73 @@
+{
+  "status": "PASS_EXACT_INTERMEDIATE_CASE_FLOOR",
+  "source_C16_answered": false,
+  "consumer_sha256": "a1e36591e0afd220768e6a22580720da0f4512346224f4d6f461f6c568c6e3cf",
+  "point_sha256": "0de147655ecccfd41ca3586279cd6f2de6f1aa6b9ac0349587d09b17b7cba5b8",
+  "bridge_sha256": "f1202d87ddc8ff2e547e4a80da6cf93d8a0bb6c0d9af33be8b72dea381e3b88b",
+  "bridge_replay_sha256": "4c2c40713a71c88fe0e289a4f99055a763d6ef0e441ddce748060405e95fccb2",
+  "bridge_consumer_sha256": "33db5316353662187f6eee720ca90aececd65dc6938fc9afca891f5040a0aea3",
+  "cover_sha256": "27cd5cbdb266a6019c6ec2c3dd8da4edc658eb3843baf86c89b902c8b74ae763",
+  "cover_bindings_sha256": "fdfae80f0cb474fd5e9cee4a5150c778482822f955beaa294bc73f38ac2896db",
+  "case": [
+    32,
+    32,
+    0
+  ],
+  "physical_symmetry_bridge": {
+    "physical_pairings_rebuilt": 518400,
+    "sector_and_rotation_comparisons": 1036800,
+    "graph_ranks": {
+      "sector_swap": 128,
+      "X_rotation": 128,
+      "Z_rotation": 128
+    }
+  },
+  "geometry": {
+    "X_index": 512,
+    "Z_index": 512,
+    "owner_coordinate": 19742,
+    "folded_T_coordinate": [
+      0,
+      32,
+      32
+    ],
+    "edge_orbit_size": 16,
+    "edge_stabilizer_size": 2,
+    "literal_32_action_numerator": 2
+  },
+  "exact_point_moment": "4469538790061/562949953421312",
+  "floor_multiplier": "1/8",
+  "exact_trial_floor": "1/128",
+  "exact_true_source_floor": "1/16",
+  "exact_trial_floor_slack": "71492278957/562949953421312",
+  "exact_true_floor_slack": "-30714833298771/562949953421312",
+  "trial_floor_satisfied": true,
+  "true_source_floor_satisfied": false,
+  "trial_equals_true_floor": false,
+  "model_execution": {
+    "frozen_sha256": "92d5718cd88a78ad2d2c5214d0d053cd80f2aaa907ebaed125854a7c109e8686",
+    "source_bindings_checked": 182,
+    "effective_margins": {
+      "--psd-interior-epsilon": 1e-05,
+      "--boolean-margin": 1.0000000000000002e-06,
+      "--projected-margin": 1.0000000000000002e-06
+    },
+    "search_sufficient_only": true
+  },
+  "corruption_controls_rejected": [
+    "corrupted_owner_coordinate",
+    "corrupted_necessary_floor",
+    "corrupted_edge_orbit_size"
+  ],
+  "seven_listed_families_receipts_bound": true,
+  "listed_weaker_case_relaxation_feasible": true,
+  "listed_true_case_relaxation_feasible": false,
+  "physical_source_frame_verified": false,
+  "source_case_excluded": false,
+  "dependencies": {
+    "verify_two_sided_full_basis_oracle.py": "e6342b1f16ce5902a4f2a2601407e77b35b58bab7a66f51b39ab59510a4f49b0",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "complete_boolean_triples.py": "1d9780b7e7ade4214c2535d915801888d3ed4508fcae1f523d121ff1ee3b8f69"
+  },
+  "scope": "The point satisfies an intermediate weaker selected-case floor but fails the true source floor. Even with all seven listed families accepted, it is not a feasible point of the true-floor case relaxation. It is a continuation witness only; no source frame or case exclusion follows."
+}
