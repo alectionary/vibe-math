@@ -580,27 +580,66 @@ when one is open.
 
 ## Announcement post
 
-When an announcement is requested, draft one post. Not a thread. Specific
-to the paper. No hype. Drafting the post does not authorize posting it.
+When an X announcement is requested, draft one substantive single post, not a
+thread or an artificially terse teaser. Use clear, natural prose, no hype and no
+model-authorship statement. Give the findings enough room to be understood;
+there is no fixed word quota. Drafting never authorizes posting.
 
 The post has four parts, in this order:
 
-1. The work: author, year, institution, adviser, and full title.
-2. Our verdict on the headline, with the published-versus-ours numbers.
-3. What we could not establish, and any reversal, with numbers, and how we
-   interpret it.
-4. A master-branch link to the paper, code, and data.
+1. Identify the dissertation author, full title, institutional year, institution
+   and verified adviser(s). Verify names and roles from the source; do not guess.
+   If these facts are unresolved, mark the draft incomplete rather than inventing
+   them. State the bounded replication scope, not a whole-dissertation claim.
+2. Give the composite headline verdict and published-versus-replicated numbers,
+   with unambiguous scientific direction. Distinguish exact resource/result
+   agreement from performance or other claims not established. Supporting checks
+   do not substitute for an unreplicated headline component.
+3. Explain the relevant uncertainty and multiplicity families in plain language.
+   Separate our sampling error, extraction bounds and unknown original sampling
+   uncertainty. Mention material point-estimate reversals and unresolved inputs;
+   do not infer a statistically established source ranking from missing counts,
+   establish equivalence from overlapping bands, or allege author error.
+4. Close with the published **main-paper PDF**, using the GitHub page URL below.
+   A repository folder, source appendix or editable source is not that deliverable.
 
-The Chumney note is the example:
+### Public announcement URL
+
+Use exactly this public-link form:
 
 ```text
-Frances L. Chumney, Structural equation models with small samples: A comparative study of four approaches (Ph.D. dissertation, University of Nebraska–Lincoln, 2013; adviser James Bovaird).
+https://github.com/<owner>/<repo>/blob/master/<path>/<descriptive_filename>.pdf
+```
 
-We replicated the headline. On normal data at n = 1000, maximum likelihood and Bayesian Markov chain Monte Carlo recover measurement loadings far more accurately than partial least squares and generalized structured component analysis. Published versus ours, within two standard errors: maximum likelihood 2.712 versus 2.730, Markov chain Monte Carlo 2.738 versus 2.902, partial least squares 15.896 versus 15.919, generalized structured component analysis 15.918 versus 15.938.
+Use the actual verified PDF path on master. Do not substitute
+`raw.githubusercontent.com`, a working branch, a commit-pinned review URL,
+private/sandbox URLs, download URLs, query parameters or fragments. Confirm the
+GitHub PDF page resolves to the intended published main paper before describing
+it as available. A successful format check alone is not publication verification.
+If the paper is not merged, prepare the draft with the intended master PDF link
+and explicitly mark it not yet available; do not claim publication.
 
-Maximum likelihood is not separated from Markov chain Monte Carlo, so the further conclusion that maximum likelihood is the single most robust of the four is not established. The one reversal is generalized structured component analysis from five indicators to seven: Chumney reported a rise from 9.734 to 13.667, and our bias falls from 9.850 to 7.189. gesca and cSEM's GSCA both fall, and the 2013 GeSCA program could not be run on these draws, so the difference is a dependence on software we cannot execute here.
+This rule applies only to the public announcement. Preserve immutable commit
+links and downloaded-byte checks for pre-merge artifact review; raw URLs remain
+appropriate for that internal verification. Use
+[announcement_url.py](scripts/announcement_url.py) to check the announcement URL
+against the known repository and PDF path; manually verify destination, current
+publication status, adviser facts and scientific accuracy.
 
-Paper, code, and data: https://github.com/alectionary/vibe-math/blob/master/formalization/chumney-sem-small-samples
+### Substantive example draft
+
+This Higgott example illustrates the content and approved closing URL. It is
+incomplete until the adviser placeholder is replaced with verified names; it is
+not permission to post. Adapt scope, numbers and uncertainty to the actual study.
+
+```text
+Oscar Higgott's Practical and Efficient Quantum Error Correction (Ph.D. dissertation, University College London, institutional year 2024; advisers: [insert source-verified names]) examines quantum error correction. We replicated a bounded small-code comparison in Chapter 7, principally Figure 7.14a, rather than the whole dissertation.
+
+We partly replicated the headline. The Bolza memory protects four logical qubits with 16 rather than 96 physical qubits—an exact sixfold saving—but comparable failure-rate performance is not established. At physical error probability .001, the published figure gives Bolza .13390 and four planar copies .12977; our fresh estimates are .13772 and .12925. Bolza therefore has higher estimated failure risk in both comparisons at this point.
+
+Our reconstructed difference is .00847 with a simultaneous half-width .00135 across five selected contrasts. Six of ten source comparisons exceed Bonferroni-adjusted conditional bands based on our sampling uncertainty plus extraction bounds. Original simulation counts are unavailable, so these are not complete two-sample uncertainty comparisons or evidence of author error. At .01, the source point estimates put Bolza below planar (.73440 versus .74158), while ours put it above (.74941 versus .74040); the source ranking is not statistically established. The exact production configuration and published logical-path correspondence remain unresolved. The result supports a resource/performance tradeoff, not established equivalence.
+
+Replication paper: https://github.com/alectionary/vibe-math/blob/master/formalization/higgott-quantum-decoding/paper/sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.pdf
 ```
 
 ## Before reporting the replication done
@@ -667,8 +706,10 @@ rendered PDF to confirm that links remain readable and clickable.
 - [ ] No language-model authorship statement appears in the note, the pull
       request, or the announcement post.
 - [ ] If an announcement was requested, it is the single post in the template
-      above: the work, the verdict with numbers, the limit or reversal with
-      the interpretation, and the master link. No hype. No thread. It has
+      above: verified dissertation/adviser details and bounded scope, the composite
+      verdict with numbers and direction, uncertainty families and material
+      reversals/limits, and the verified github.com/blob/master main-PDF link.
+      Substantive prose, no fixed word quota, no hype or thread. It has
       not been posted unless posting was requested.
 - [ ] The engine preflight was run. The fits use lavaan and OpenMx, or
       the compliance ledger records a departure with a justification and
