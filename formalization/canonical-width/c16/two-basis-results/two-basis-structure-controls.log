@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two_basis_structure_controls.py", line 136, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two_basis_structure_controls.py", line 127, in main
+    for b in points:assert normal_member(data,G,caps,b)==exact_box_member(G,caps,b);tests+=1
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two_basis_structure_controls.py", line 15, in exact_box_member
+    if rank(G+[list(b)])>r:return False
+       ^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two_basis_structure_controls.py", line 10, in rank
+    def rank(rows):return fmpq_mat(rows).rank() if rows else 0
+                          ^^^^^^^^^^^^^^
+  File "flint/types/fmpq_mat.pyx", line 75, in flint.types.fmpq_mat.fmpq_mat.__init__
+  File "flint/types/fmpq.pyx", line 90, in flint.types.fmpq.fmpq.__init__
+TypeError: cannot create fmpq from object of type <class 'fractions.Fraction'>
