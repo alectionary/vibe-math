@@ -1,0 +1,83 @@
+--- verify_singleton_archive_cg.py
++++ verify_singleton_geometry_archive.py
+@@ -16,25 +16,31 @@
+ def read(p):
+     p=Path(p);return json.loads(gzip.decompress(p.read_bytes()) if p.suffix=='.gz' else p.read_bytes())
+ def context(manifest):
+-    m=read(manifest);assert m['status']=='EXACT_SINGLETON_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
++    m=read(manifest);assert m['status']=='EXACT_SINGLETON_GEOMETRY_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
+     assert sha(m['semantic'])==m['semantic_sha256'] and sha(m['lp'])==m['lp_sha256']
+-    s=read(m['semantic']);assert s['status']=='FROZEN_SINGLETON_PHYSICAL_BASIS_ARCHIVE'
++    s=read(m['semantic']);assert s['status']=='FROZEN_SINGLETON_GEOMETRY_BASIS_ARCHIVE' and s['seed_kind']=='GEOMETRY_SEED'
++    assert s['old_weights_used'] is False and s['old_target_claims_used'] is False
+     assert all(sha(ROOT/p)==h for p,h in s['source_hashes'].items())
+-    c=read(s['endpoint']);r=read(s['endpoint_receipt'])
+-    assert r['status']=='PASS_EXACT_GLOBAL_SINGLETON_PARTIAL_STATE'
+-    assert sha(s['endpoint'])==s['endpoint_sha256']==r['certificate_sha256'] and sha(s['endpoint_receipt'])==s['endpoint_receipt_sha256']
+-    assert r['consumer_sha256']==sha(ROOT/'verify_singleton_global_rank_early.py')
++    c=read(s['geometry_seed']);r=read(s['geometry_receipt'])
++    assert c['status']=='GEOMETRY_SEED' and c['seed_kind']=='LEGACY_PHYSICAL_COLUMNS_ONLY'
++    assert c['old_weights_used'] is False and c['old_target_claims_used'] is False and c['current_point_membership_claimed'] is False
++    assert r['status']=='PASS_EXACT_SINGLETON_GEOMETRY_SEED'
++    assert sha(s['geometry_seed'])==s['geometry_seed_sha256']==r['seed_sha256'] and sha(s['geometry_receipt'])==s['geometry_receipt_sha256']
++    assert r['consumer_sha256']==sha(ROOT/'verify_singleton_geometry_seed.py')
++    assert all(sha(ROOT/p)==h for p,h in {**c['source_hashes'],**r['source_hashes']}.items())
+     X,Z,_=physical();assert rank(X)==rank(Z)==128
+-    k=s['anchor_orbit'];owner,target=point_data(s['point'],k);p=owner[k];q=[v/(16*p) for v in target[55:]]
+-    assert sha(s['point'])==m['point_sha256']==s['point_sha256'] and Q(s['conditional_probability'])==p and 0<p<1
+-    assert list(map(Q,s['conditional_target']))==q and all(0<=v<=1 for v in q)
++    k=s['anchor_orbit'];assert type(k)is int and k==32==c['anchor_orbit']
++    owner,target=point_data(s['point'],k);p=owner[k];q=[v/(16*p) for v in target[55:]]
++    assert sha(s['point'])==m['point_sha256']==s['point_sha256']==c['point_sha256']==r['point_sha256']
++    assert Q(s['conditional_probability'])==Q(c['conditional_probability'])==p and 0<p<1
++    assert list(map(Q,s['conditional_target']))==list(map(Q,c['conditional_target']))==q and all(0<=v<=1 for v in q)
+     E=[j for j in range(720) if (X[16*k]&Z[j]).bit_count()%2==0]
+-    assert E==s['physical_zero_ground_indices'] and rank(Z[j] for j in E)==sum(q[j] for j in E)==127
++    assert E==s['physical_zero_ground_indices']==c['physical_zero_ground_indices']
++    assert rank(Z[j] for j in E)==sum(q[j] for j in E)==127
+     U=sorted(set(range(720))-set(E));assert sum(q[j] for j in U)==1
+-    B=s['physical_bases'];initial=[b['indices'] for b in c['zero_bases']];assert B[:len(initial)]==initial and len(initial)<=len(B)<=5000 and len({tuple(b) for b in B})==len(B)
+-    column_bank=read(s['column_bank']);assert sha(s['column_bank'])==s['column_bank_sha256'] and column_bank['physical_bases']==B
+-    assert column_bank['initial_endpoint_sha256']==s['endpoint_sha256'] and column_bank['initial_receipt_sha256']==s['endpoint_receipt_sha256']
+-    for b in B:assert b==sorted(set(b)) and len(b)==127 and set(b)<=set(E) and rank(Z[j] for j in b)==127
++    B=s['physical_bases'];assert B==c['physical_bases'] and 1<=len(B)<=5000 and len({tuple(b) for b in B})==len(B)
++    for b in B:assert b==sorted(set(b)) and len(b)==127 and all(type(j)is int and j in E for j in b) and rank(Z[j] for j in b)==127
++    assert s['unit_probabilities']==c['unit_probabilities']
+     units={b['index']:Q(b['probability']) for b in s['unit_probabilities']}
+     assert len(units)==len(s['unit_probabilities']) and set(units)<=set(U) and all(0<w<=1 for w in units.values())
+     assert all(units.get(j,0)==q[j] for j in U)
+@@ -85,7 +91,7 @@
+             try:parse(bad.split(),expected,2)
+             except (AssertionError,IndexError,ValueError):rejected.append(label)
+             else:raise AssertionError(label)
+-        out=dict(status='PASS_EXACT_SINGLETON_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS',rows_checked=count,physical_bases_checked=n,nonzeros=m['nonzeros'],negative_controls_rejected=rejected)
++        out=dict(status='PASS_EXACT_SINGLETON_GEOMETRY_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS',rows_checked=count,physical_bases_checked=n,nonzeros=m['nonzeros'],negative_controls_rejected=rejected)
+     elif a.primal:
+         f=read(a.solver_frozen);assert f['input_manifest_sha256']==sha(a.manifest) and f['input_lp_sha256']==m['lp_sha256']
+         assert any(v=='-X='+str(a.primal.resolve()) for v in f['command'])
+--- run_singleton_archive_cg_soplex_generic.py
++++ run_singleton_geometry_archive_soplex.py
+@@ -14,9 +14,9 @@
+ def main():
+     ap=argparse.ArgumentParser();ap.add_argument('--manifest',type=Path,required=True);ap.add_argument('--receipt',type=Path,required=True);ap.add_argument('--output-prefix',type=Path,required=True);a=ap.parse_args()
+     m=read(a.manifest);r=read(a.receipt)
+-    assert m['status']=='EXACT_SINGLETON_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
+-    assert r['status']=='PASS_EXACT_SINGLETON_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS'
+-    assert r['manifest_sha256']==sha(a.manifest) and r['consumer_sha256']==sha(ROOT/'verify_singleton_archive_cg.py')
++    assert m['status']=='EXACT_SINGLETON_GEOMETRY_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
++    assert r['status']=='PASS_EXACT_SINGLETON_GEOMETRY_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS'
++    assert r['manifest_sha256']==sha(a.manifest) and r['consumer_sha256']==sha(ROOT/'verify_singleton_geometry_archive.py')
+     assert r['lp_sha256']==m['lp_sha256']==sha(m['lp']) and r['semantic_sha256']==m['semantic_sha256']==sha(m['semantic'])
+     semantic=read(m['semantic']);n=m['variable_count'];E=semantic['physical_zero_ground_indices']
+     assert type(semantic['anchor_orbit'])is int and 0<=semantic['anchor_orbit']<45
+--- price_singleton_archive_cg.py
++++ price_singleton_geometry_archive.py
+@@ -18,7 +18,7 @@
+     ap=argparse.ArgumentParser();ap.add_argument('--manifest',type=Path,required=True);ap.add_argument('--farkas-receipt',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();assert not a.output.exists()
+     m=read(a.manifest);s=read(m['semantic']);r=read(a.farkas_receipt)
+     assert r['status']=='PASS_EXACT_RESTRICTED_SINGLETON_ARCHIVE_INFEASIBILITY' and r['manifest_sha256']==sha(a.manifest)
+-    assert r['consumer_sha256']==sha(ROOT/'verify_singleton_archive_cg.py') and sha(m['semantic'])==r['semantic_sha256']==m['semantic_sha256']
++    assert r['consumer_sha256']==sha(ROOT/'verify_singleton_geometry_archive.py') and sha(m['semantic'])==r['semantic_sha256']==m['semantic_sha256']
+     assert all(sha(ROOT/p)==h for p,h in s['source_hashes'].items())
+     X,Z,_=physical();k=s['anchor_orbit'];owner,target=point_data(s['point'],k);p=owner[k];q=[v/(16*p) for v in target[55:]]
+     E=[j for j in range(720) if (X[16*k]&Z[j]).bit_count()%2==0];assert E==s['physical_zero_ground_indices']
