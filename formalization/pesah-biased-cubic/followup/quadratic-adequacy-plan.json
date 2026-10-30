@@ -1,0 +1,17 @@
+{
+  "status": "frozen before pilot and bootstrap draws",
+  "question": "Does the source-family unweighted quadratic FSS describe the two fixed fresh local grids? Logistic rejection does not answer this.",
+  "families": ["cubic-Z-eta5-U", "rhombic-X-eta100-U"],
+  "model": "Preserved normalized quadratic fit, five fixed exponent starts; no source values, new windows or new physical trials",
+  "statistic": "Binomial deviance of counts from unweighted least-squares fitted probabilities",
+  "calibration": "Parametric bootstrap from the fitted quadratic probabilities, refit identical estimator to each count draw. This plug-in model diagnostic is not exact finite-sample calibration or threshold coverage.",
+  "draws_per_family": 2000,
+  "seeds": [305010001, 305020001],
+  "pilot_draws_per_family": 20,
+  "pilot_seeds": [305010000, 305020000],
+  "pilot_excluded": true,
+  "multiplicity": "Two-model family, alpha0.05 Bonferroni: each model tested at0.025. Also report conservative0.005 sensitivity. Conditional on successful physical observed fit.",
+  "failures": "Retain failed, boundary, nonphysical or nonmonotone bootstrap fits as unresolved calibration draws. Report p-value lower/upper bounds counting unresolved draws as none/all exceedances; do not discard or resample.",
+  "stopping": "Fixed2000 draws, no sequential significance stopping. Report MonteCarlo Clopper-Pearson95percent bounds for exceedance lower/upper indicators. Reject only if upper uncertainty bound is below stated alpha; otherwise do not claim adequacy.",
+  "resources": "Pilot20 refits per family; one worker, 2GiB address space and2400CPU seconds. If projected total exceeds1800seconds, stop and report cost before production; no silent sample reduction."
+}
