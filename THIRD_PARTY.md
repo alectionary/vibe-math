@@ -129,12 +129,12 @@ No whole dissertation or new content license is included; see this study's
 
 ## Pesah 2021 MRes replication (scheduled slot 2)
 
-`formalization/pesah-biased-cubic/evidence/` contains two attributed 600-dpi
+`formalization/pesah-biased-cubic/evidence/` contains six attributed 600-dpi
 excerpts from Arthur Pesah's *Tailoring 3D topological codes and decoders to
 biased noise* (UCL Master of Research dissertation, 2021). These are limited
 research evidence, excluded from the Apache grant. The full dissertation is
 not redistributed; its immutable author-hosted source, hash and crop
-coordinates are in `evidence/manifest.json`. Public access does not confer
+coordinates are in `evidence/manifest.json` and `evidence/expansion-manifest.json`. Public access does not confer
 relicensing rights.
 
 The historical `bn3d` implementation at PanQEC commit

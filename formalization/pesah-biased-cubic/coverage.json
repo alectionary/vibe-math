@@ -1,0 +1,2189 @@
+{
+  "objective": "Whole-dissertation replication; PR64 is a partial milestone",
+  "status": "open",
+  "source_revision": "b4f401e0c12b44be4c69318e0015f70d8a3d3f98",
+  "preserved_stage1_revision": "47f111b60fbf668edc8fa6dfb4fb6a398d6da933",
+  "completion_rule": "Every substantive item requires a verified result or explicit attempted blocker; pending feasible items keep the study open.",
+  "items": [
+    {
+      "id": "cubic-BP-OSD-X-0",
+      "claim": "cubic BP-OSD X, deformed=False",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "completed-limited",
+      "attempts": [],
+      "published_percent": 2.9,
+      "relation": "point estimate",
+      "evidence": [
+        "results/primary.json",
+        "results/analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-BP-OSD-X-1",
+      "claim": "cubic BP-OSD X, deformed=True",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "completed-limited",
+      "attempts": [],
+      "published_percent": 7.4,
+      "relation": "point estimate",
+      "evidence": [
+        "results/primary.json",
+        "results/analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-BP-OSD-Z-0",
+      "claim": "cubic BP-OSD Z, deformed=False",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Pure-Z pilot and historical reference validation",
+          "result": "80 pilot trials; zero invalid corrections; 480/480 generalized decoder reference matches; production checkpoints running",
+          "evidence": [
+            "expansion/pure-z-pilot.json",
+            "expansion/validation.json",
+            "expansion/pure-z-preflight.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/pure-z-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 21.7,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/pure-z-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-BP-OSD-Z-1",
+      "claim": "cubic BP-OSD Z, deformed=True",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Pure-Z pilot and historical reference validation",
+          "result": "80 pilot trials; zero invalid corrections; 480/480 generalized decoder reference matches; production checkpoints running",
+          "evidence": [
+            "expansion/pure-z-pilot.json",
+            "expansion/validation.json",
+            "expansion/pure-z-preflight.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/pure-z-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 36,
+      "relation": "greater-than; unresolved, not exact threshold",
+      "evidence": [
+        "expansion/pure-z-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-BP-OSD-depolarizing-0",
+      "claim": "cubic BP-OSD depolarizing, deformed=False",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-depolarizing-analysis.json",
+            "expansion/cubic-depolarizing-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 4.3,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/cubic-depolarizing-analysis.json",
+        "expansion/cubic-depolarizing-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-BP-OSD-depolarizing-1",
+      "claim": "cubic BP-OSD depolarizing, deformed=True",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-depolarizing-analysis.json",
+            "expansion/cubic-depolarizing-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 4.2,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/cubic-depolarizing-analysis.json",
+        "expansion/cubic-depolarizing-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-SweepMatch-X-0",
+      "claim": "cubic SweepMatch X, deformed=False",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "reconstructed-limited; historical matching blocked",
+      "attempts": [
+        {
+          "action": "Install historical PyMatching0.2.4 (PyPI, then original GitHub with submodules)",
+          "result": "PyPI sdist lacks pybind11. Original GitHub setup requires LEMON archive from lemon.cs.elte.hu, denied HTTP403. Exact historical runtime blocked; alternative matching implementation pending assessment.",
+          "state": "denied dependency access; not retried",
+          "evidence": [
+            "expansion/historical-runtime-attempts.md"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/sweep-X-analysis.json",
+            "expansion/sweep-X-normalized-analysis.json",
+            "expansion/matching-validation.json"
+          ]
+        }
+      ],
+      "published_percent": 2.9,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/sweep-X-analysis.json",
+        "expansion/sweep-X-normalized-analysis.json",
+        "expansion/matching-validation.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-SweepMatch-X-1",
+      "claim": "cubic SweepMatch X, deformed=True",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "reconstructed-limited; historical matching blocked",
+      "attempts": [
+        {
+          "action": "Install historical PyMatching0.2.4 (PyPI, then original GitHub with submodules)",
+          "result": "PyPI sdist lacks pybind11. Original GitHub setup requires LEMON archive from lemon.cs.elte.hu, denied HTTP403. Exact historical runtime blocked; alternative matching implementation pending assessment.",
+          "state": "denied dependency access; not retried",
+          "evidence": [
+            "expansion/historical-runtime-attempts.md"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/sweep-X-analysis.json",
+            "expansion/sweep-X-normalized-analysis.json",
+            "expansion/matching-validation.json"
+          ]
+        }
+      ],
+      "published_percent": 7.1,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/sweep-X-analysis.json",
+        "expansion/sweep-X-normalized-analysis.json",
+        "expansion/matching-validation.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-SweepMatch-Z-0",
+      "claim": "cubic SweepMatch Z, deformed=False",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "reconstructed-limited; historical matching blocked",
+      "attempts": [
+        {
+          "action": "Install historical PyMatching0.2.4 (PyPI, then original GitHub with submodules)",
+          "result": "PyPI sdist lacks pybind11. Original GitHub setup requires LEMON archive from lemon.cs.elte.hu, denied HTTP403. Exact historical runtime blocked; alternative matching implementation pending assessment.",
+          "state": "denied dependency access; not retried",
+          "evidence": [
+            "expansion/historical-runtime-attempts.md"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/sweep-Z-analysis.json",
+            "expansion/sweep-Z-normalized-analysis.json",
+            "expansion/matching-validation.json"
+          ]
+        }
+      ],
+      "published_percent": 14.7,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/sweep-Z-analysis.json",
+        "expansion/sweep-Z-normalized-analysis.json",
+        "expansion/matching-validation.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-SweepMatch-Z-1",
+      "claim": "cubic SweepMatch Z, deformed=True",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "reconstructed-limited; historical matching blocked",
+      "attempts": [
+        {
+          "action": "Install historical PyMatching0.2.4 (PyPI, then original GitHub with submodules)",
+          "result": "PyPI sdist lacks pybind11. Original GitHub setup requires LEMON archive from lemon.cs.elte.hu, denied HTTP403. Exact historical runtime blocked; alternative matching implementation pending assessment.",
+          "state": "denied dependency access; not retried",
+          "evidence": [
+            "expansion/historical-runtime-attempts.md"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/sweep-Z-analysis.json",
+            "expansion/sweep-Z-normalized-analysis.json",
+            "expansion/matching-validation.json"
+          ]
+        }
+      ],
+      "published_percent": 22.2,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/sweep-Z-analysis.json",
+        "expansion/sweep-Z-normalized-analysis.json",
+        "expansion/matching-validation.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-SweepMatch-depolarizing-0",
+      "claim": "cubic SweepMatch depolarizing, deformed=False",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "reconstructed-limited; historical matching blocked",
+      "attempts": [
+        {
+          "action": "Install historical PyMatching0.2.4 (PyPI, then original GitHub with submodules)",
+          "result": "PyPI sdist lacks pybind11. Original GitHub setup requires LEMON archive from lemon.cs.elte.hu, denied HTTP403. Exact historical runtime blocked; alternative matching implementation pending assessment.",
+          "state": "denied dependency access; not retried",
+          "evidence": [
+            "expansion/historical-runtime-attempts.md"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/sweep-depolarizing-analysis.json",
+            "expansion/sweep-depolarizing-normalized-analysis.json",
+            "expansion/matching-validation.json"
+          ]
+        }
+      ],
+      "published_percent": 4.4,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/sweep-depolarizing-analysis.json",
+        "expansion/sweep-depolarizing-normalized-analysis.json",
+        "expansion/matching-validation.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-SweepMatch-depolarizing-1",
+      "claim": "cubic SweepMatch depolarizing, deformed=True",
+      "source": "Table 3.1 p.48",
+      "kind": "numerical",
+      "status": "reconstructed-limited; historical matching blocked",
+      "attempts": [
+        {
+          "action": "Install historical PyMatching0.2.4 (PyPI, then original GitHub with submodules)",
+          "result": "PyPI sdist lacks pybind11. Original GitHub setup requires LEMON archive from lemon.cs.elte.hu, denied HTTP403. Exact historical runtime blocked; alternative matching implementation pending assessment.",
+          "state": "denied dependency access; not retried",
+          "evidence": [
+            "expansion/historical-runtime-attempts.md"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/sweep-depolarizing-analysis.json",
+            "expansion/sweep-depolarizing-normalized-analysis.json",
+            "expansion/matching-validation.json"
+          ]
+        }
+      ],
+      "published_percent": 4.7,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/sweep-depolarizing-analysis.json",
+        "expansion/sweep-depolarizing-normalized-analysis.json",
+        "expansion/matching-validation.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "cubic-sectors-X-0",
+      "claim": "Total, point and loop crossover curves for pure X, deformed=False",
+      "source": "Figures 3.4\u20133.5",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-broad.json"
+          ]
+        }
+      ],
+      "note": "Stage 1 covers a narrow threshold grid, not the full sector-limit range.",
+      "evidence": [
+        "expansion/cubic-X-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-1-0",
+      "claim": "cubic BP-OSD X bias eta=1, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta1-analysis.json",
+            "expansion/cubic-X-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.035219078862458696,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta1-analysis.json",
+        "expansion/cubic-X-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-5-0",
+      "claim": "cubic BP-OSD X bias eta=5, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta5-analysis.json",
+            "expansion/cubic-X-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/cubic-X-eta5-analysis.json",
+        "expansion/cubic-X-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-10-0",
+      "claim": "cubic BP-OSD X bias eta=10, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta10-analysis.json",
+            "expansion/cubic-X-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.030382468408002447,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta10-analysis.json",
+        "expansion/cubic-X-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-30-0",
+      "claim": "cubic BP-OSD X bias eta=30, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta30-analysis.json",
+            "expansion/cubic-X-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.02855079640079347,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta30-analysis.json",
+        "expansion/cubic-X-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-100-0",
+      "claim": "cubic BP-OSD X bias eta=100, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta100-analysis.json",
+            "expansion/cubic-X-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.028883764481041324,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta100-analysis.json",
+        "expansion/cubic-X-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-sectors-X-1",
+      "claim": "Total, point and loop crossover curves for pure X, deformed=True",
+      "source": "Figures 3.4\u20133.5",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-broad.json"
+          ]
+        }
+      ],
+      "note": "Stage 1 covers a narrow threshold grid, not the full sector-limit range.",
+      "evidence": [
+        "expansion/cubic-X-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-1-1",
+      "claim": "cubic BP-OSD X bias eta=1, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta1-analysis.json",
+            "expansion/cubic-X-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.04122559595377745,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta1-analysis.json",
+        "expansion/cubic-X-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-5-1",
+      "claim": "cubic BP-OSD X bias eta=5, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta5-analysis.json",
+            "expansion/cubic-X-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/cubic-X-eta5-analysis.json",
+        "expansion/cubic-X-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-10-1",
+      "claim": "cubic BP-OSD X bias eta=10, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta10-analysis.json",
+            "expansion/cubic-X-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.056762136825551375,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta10-analysis.json",
+        "expansion/cubic-X-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-30-1",
+      "claim": "cubic BP-OSD X bias eta=30, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta30-analysis.json",
+            "expansion/cubic-X-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.06749902507780262,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta30-analysis.json",
+        "expansion/cubic-X-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-100-1",
+      "claim": "cubic BP-OSD X bias eta=100, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta100-analysis.json",
+            "expansion/cubic-X-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.06806022806343957,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-X-eta100-analysis.json",
+        "expansion/cubic-X-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-sectors-Z-0",
+      "claim": "Total, point and loop crossover curves for pure Z, deformed=False",
+      "source": "Figures 3.4\u20133.5",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "attempted-running",
+          "evidence": [
+            "expansion/cubic-Z-broad.json"
+          ]
+        }
+      ],
+      "note": "",
+      "evidence": [
+        "expansion/cubic-Z-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-1-0",
+      "claim": "cubic BP-OSD Z bias eta=1, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta1-analysis.json",
+            "expansion/cubic-Z-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.055613431705280846,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta1-analysis.json",
+        "expansion/cubic-Z-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-5-0",
+      "claim": "cubic BP-OSD Z bias eta=5, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta5-analysis.json",
+            "expansion/cubic-Z-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/cubic-Z-eta5-analysis.json",
+        "expansion/cubic-Z-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-10-0",
+      "claim": "cubic BP-OSD Z bias eta=10, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta10-analysis.json",
+            "expansion/cubic-Z-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.22352376620496792,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta10-analysis.json",
+        "expansion/cubic-Z-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-30-0",
+      "claim": "cubic BP-OSD Z bias eta=30, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta30-analysis.json",
+            "expansion/cubic-Z-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.21738633264507573,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta30-analysis.json",
+        "expansion/cubic-Z-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-100-0",
+      "claim": "cubic BP-OSD Z bias eta=100, deformed=False",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta100-analysis.json",
+            "expansion/cubic-Z-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.21710242927672244,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta100-analysis.json",
+        "expansion/cubic-Z-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-sectors-Z-1",
+      "claim": "Total, point and loop crossover curves for pure Z, deformed=True",
+      "source": "Figures 3.4\u20133.5",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "attempted-running",
+          "evidence": [
+            "expansion/cubic-Z-broad.json"
+          ]
+        }
+      ],
+      "note": "",
+      "evidence": [
+        "expansion/cubic-Z-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-1-1",
+      "claim": "cubic BP-OSD Z bias eta=1, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta1-analysis.json",
+            "expansion/cubic-Z-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.050819919415700104,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta1-analysis.json",
+        "expansion/cubic-Z-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-5-1",
+      "claim": "cubic BP-OSD Z bias eta=5, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta5-analysis.json",
+            "expansion/cubic-Z-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/cubic-Z-eta5-analysis.json",
+        "expansion/cubic-Z-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-10-1",
+      "claim": "cubic BP-OSD Z bias eta=10, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta10-analysis.json",
+            "expansion/cubic-Z-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.12436798047328736,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta10-analysis.json",
+        "expansion/cubic-Z-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-30-1",
+      "claim": "cubic BP-OSD Z bias eta=30, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta30-analysis.json",
+            "expansion/cubic-Z-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.15999996756052107,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta30-analysis.json",
+        "expansion/cubic-Z-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-100-1",
+      "claim": "cubic BP-OSD Z bias eta=100, deformed=True",
+      "source": "Figure 3.6 p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta100-analysis.json",
+            "expansion/cubic-Z-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.23754978591102455,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/cubic-Z-eta100-analysis.json",
+        "expansion/cubic-Z-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-BP-OSD-X-0",
+      "claim": "rhombic BP-OSD X, deformed=False",
+      "source": "Table 3.2 p.53",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-pure-analysis.json",
+            "expansion/rhombic-X-pure-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 1.0,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/rhombic-X-pure-analysis.json",
+        "expansion/rhombic-X-pure-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "rhombic-BP-OSD-X-1",
+      "claim": "rhombic BP-OSD X, deformed=True",
+      "source": "Table 3.2 p.53",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-pure-analysis.json",
+            "expansion/rhombic-X-pure-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 1.7,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/rhombic-X-pure-analysis.json",
+        "expansion/rhombic-X-pure-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "rhombic-BP-OSD-Z-0",
+      "claim": "rhombic BP-OSD Z, deformed=False",
+      "source": "Table 3.2 p.53",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-pure-analysis.json",
+            "expansion/rhombic-Z-pure-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 28.4,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/rhombic-Z-pure-analysis.json",
+        "expansion/rhombic-Z-pure-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "rhombic-BP-OSD-Z-1",
+      "claim": "rhombic BP-OSD Z, deformed=True",
+      "source": "Table 3.2 p.53",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-pure-analysis.json",
+            "expansion/rhombic-Z-pure-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 6.5,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/rhombic-Z-pure-analysis.json",
+        "expansion/rhombic-Z-pure-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "rhombic-BP-OSD-depolarizing-0",
+      "claim": "rhombic BP-OSD depolarizing, deformed=False",
+      "source": "Table 3.2 p.53",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-depolarizing-analysis.json",
+            "expansion/rhombic-depolarizing-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 1.5,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/rhombic-depolarizing-analysis.json",
+        "expansion/rhombic-depolarizing-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "rhombic-BP-OSD-depolarizing-1",
+      "claim": "rhombic BP-OSD depolarizing, deformed=True",
+      "source": "Table 3.2 p.53",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-depolarizing-analysis.json",
+            "expansion/rhombic-depolarizing-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_percent": 1.7,
+      "relation": "point estimate",
+      "evidence": [
+        "expansion/rhombic-depolarizing-analysis.json",
+        "expansion/rhombic-depolarizing-normalized-analysis.json"
+      ],
+      "planned_sizes": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "rhombic-sectors-X-0",
+      "claim": "Total, point and loop crossover curves for pure X, deformed=False",
+      "source": "Figures 3.7\u20133.8",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-broad.json"
+          ]
+        }
+      ],
+      "note": "",
+      "evidence": [
+        "expansion/rhombic-X-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-1-0",
+      "claim": "rhombic BP-OSD X bias eta=1, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta1-analysis.json",
+            "expansion/rhombic-X-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.012712104953763315,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta1-analysis.json",
+        "expansion/rhombic-X-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-5-0",
+      "claim": "rhombic BP-OSD X bias eta=5, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta5-analysis.json",
+            "expansion/rhombic-X-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/rhombic-X-eta5-analysis.json",
+        "expansion/rhombic-X-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-10-0",
+      "claim": "rhombic BP-OSD X bias eta=10, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta10-analysis.json",
+            "expansion/rhombic-X-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.010936275192441416,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta10-analysis.json",
+        "expansion/rhombic-X-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-30-0",
+      "claim": "rhombic BP-OSD X bias eta=30, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta30-analysis.json",
+            "expansion/rhombic-X-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.01066969218873567,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta30-analysis.json",
+        "expansion/rhombic-X-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-100-0",
+      "claim": "rhombic BP-OSD X bias eta=100, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta100-analysis.json",
+            "expansion/rhombic-X-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.009999932803936485,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta100-analysis.json",
+        "expansion/rhombic-X-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-sectors-X-1",
+      "claim": "Total, point and loop crossover curves for pure X, deformed=True",
+      "source": "Figures 3.7\u20133.8",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-broad.json"
+          ]
+        }
+      ],
+      "note": "",
+      "evidence": [
+        "expansion/rhombic-X-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-1-1",
+      "claim": "rhombic BP-OSD X bias eta=1, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta1-analysis.json",
+            "expansion/rhombic-X-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.014445995103028944,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta1-analysis.json",
+        "expansion/rhombic-X-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-5-1",
+      "claim": "rhombic BP-OSD X bias eta=5, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta5-analysis.json",
+            "expansion/rhombic-X-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/rhombic-X-eta5-analysis.json",
+        "expansion/rhombic-X-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-10-1",
+      "claim": "rhombic BP-OSD X bias eta=10, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta10-analysis.json",
+            "expansion/rhombic-X-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.01467955935138652,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta10-analysis.json",
+        "expansion/rhombic-X-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-30-1",
+      "claim": "rhombic BP-OSD X bias eta=30, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta30-analysis.json",
+            "expansion/rhombic-X-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.015895923956300316,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta30-analysis.json",
+        "expansion/rhombic-X-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-100-1",
+      "claim": "rhombic BP-OSD X bias eta=100, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta100-analysis.json",
+            "expansion/rhombic-X-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.01630929560220301,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-X-eta100-analysis.json",
+        "expansion/rhombic-X-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-sectors-Z-0",
+      "claim": "Total, point and loop crossover curves for pure Z, deformed=False",
+      "source": "Figures 3.7\u20133.8",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "attempted-running",
+          "evidence": [
+            "expansion/rhombic-Z-broad.json"
+          ]
+        }
+      ],
+      "note": "",
+      "evidence": [
+        "expansion/rhombic-Z-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-1-0",
+      "claim": "rhombic BP-OSD Z bias eta=1, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta1-analysis.json",
+            "expansion/rhombic-Z-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.020942927602729457,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta1-analysis.json",
+        "expansion/rhombic-Z-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-5-0",
+      "claim": "rhombic BP-OSD Z bias eta=5, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta5-analysis.json",
+            "expansion/rhombic-Z-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/rhombic-Z-eta5-analysis.json",
+        "expansion/rhombic-Z-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-10-0",
+      "claim": "rhombic BP-OSD Z bias eta=10, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta10-analysis.json",
+            "expansion/rhombic-Z-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.11143882064884056,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta10-analysis.json",
+        "expansion/rhombic-Z-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-30-0",
+      "claim": "rhombic BP-OSD Z bias eta=30, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta30-analysis.json",
+            "expansion/rhombic-Z-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.28937034739669704,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta30-analysis.json",
+        "expansion/rhombic-Z-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-100-0",
+      "claim": "rhombic BP-OSD Z bias eta=100, deformed=False",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta100-analysis.json",
+            "expansion/rhombic-Z-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.2799999721947323,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta100-analysis.json",
+        "expansion/rhombic-Z-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-sectors-Z-1",
+      "claim": "Total, point and loop crossover curves for pure Z, deformed=True",
+      "source": "Figures 3.7\u20133.8",
+      "kind": "numerical",
+      "status": "computed-limited-curve-compatibility",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "attempted-running",
+          "evidence": [
+            "expansion/rhombic-Z-broad.json"
+          ]
+        }
+      ],
+      "note": "",
+      "evidence": [
+        "expansion/rhombic-Z-broad.json",
+        "expansion/curve-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-1-1",
+      "claim": "rhombic BP-OSD Z bias eta=1, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta1-analysis.json",
+            "expansion/rhombic-Z-eta1-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.018046082133516723,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta1-analysis.json",
+        "expansion/rhombic-Z-eta1-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-5-1",
+      "claim": "rhombic BP-OSD Z bias eta=5, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta5-analysis.json",
+            "expansion/rhombic-Z-eta5-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "Section3.3 lists eta5, but plotted logarithmic positions indicate eta3. Run eta5 as source-method alternative, not a fabricated figure value.",
+      "evidence": [
+        "expansion/rhombic-Z-eta5-analysis.json",
+        "expansion/rhombic-Z-eta5-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-10-1",
+      "claim": "rhombic BP-OSD Z bias eta=10, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta10-analysis.json",
+            "expansion/rhombic-Z-eta10-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.03897742420805384,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta10-analysis.json",
+        "expansion/rhombic-Z-eta10-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-30-1",
+      "claim": "rhombic BP-OSD Z bias eta=30, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta30-analysis.json",
+            "expansion/rhombic-Z-eta30-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.05113064328181867,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta30-analysis.json",
+        "expansion/rhombic-Z-eta30-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-100-1",
+      "claim": "rhombic BP-OSD Z bias eta=100, deformed=True",
+      "source": "Figure 3.9 p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta100-analysis.json",
+            "expansion/rhombic-Z-eta100-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "published_figure_estimate": 0.059965071949605736,
+      "extraction_bound": 0.001,
+      "evidence": [
+        "expansion/rhombic-Z-eta100-analysis.json",
+        "expansion/rhombic-Z-eta100-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cross-code-ranking",
+      "claim": "Undeformed rhombic best among studied codes for Z bias around 30\u2013100",
+      "source": "Section 3.5.3 p.56",
+      "kind": "derived contrast",
+      "status": "computed-unresolved-ranking",
+      "attempts": [
+        {
+          "action": "All six source ranking contrasts and wider-grid diagnostic",
+          "result": "One point reversal at eta100; unstable cubic fit prevents reliable ranking."
+        }
+      ],
+      "evidence": [
+        "expansion/ranking-comparisons.json",
+        "expansion/cubic-Z-eta100-confirm-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-code",
+      "claim": "Cubic stabilizers/logicals, n=3L^3,k=3,d_X=L,d_Z=L^2",
+      "source": "Section 2.4.1 pp.28\u201329",
+      "kind": "analytical",
+      "status": "finite-checked; general proof pending",
+      "attempts": [
+        {
+          "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
+          "result": "Passed finite algebra checks; asymptotic proofs and complete distance lower bounds still pending",
+          "evidence": [
+            "expansion/geometry-check.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "finite-checks-awaiting-review",
+          "evidence": [
+            "expansion/geometry-check.json",
+            "expansion/distance-certificates.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/geometry-check.json",
+        "expansion/distance-certificates.json"
+      ]
+    },
+    {
+      "id": "rhombic-code",
+      "claim": "Rhombic stabilizers/logicals, n=3L^3,k=3 and reported distance asymmetry; resolve axis-label conflicts",
+      "source": "Section 2.4.2 pp.30\u201332",
+      "kind": "analytical",
+      "status": "finite-checked; general proof pending",
+      "attempts": [
+        {
+          "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
+          "result": "Passed finite algebra checks; asymptotic proofs and complete distance lower bounds still pending",
+          "evidence": [
+            "expansion/geometry-check.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "finite-checks-awaiting-review",
+          "evidence": [
+            "expansion/geometry-check.json",
+            "expansion/distance-certificates.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/geometry-check.json",
+        "expansion/distance-certificates.json"
+      ]
+    },
+    {
+      "id": "hadamard",
+      "claim": "Hadamard conjugation preserves code parameters; transformed stabilizers and noise",
+      "source": "Sections 2.3.3,3.2 p.44",
+      "kind": "analytical",
+      "status": "finite-checked; general proof pending",
+      "attempts": [
+        {
+          "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
+          "result": "Passed finite algebra checks; asymptotic proofs and complete distance lower bounds still pending",
+          "evidence": [
+            "expansion/geometry-check.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "finite-checks-awaiting-review",
+          "evidence": [
+            "expansion/geometry-check.json",
+            "expansion/distance-certificates.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/geometry-check.json",
+        "expansion/distance-certificates.json"
+      ]
+    },
+    {
+      "id": "cubic-Z-chain",
+      "claim": "Pure-Z cubic deformed point sector reduces to repetition chains, asymptotic 50%",
+      "source": "Section 3.2.1 p.44;3.4.1 pp.49\u201350",
+      "kind": "analytical",
+      "status": "finite-and-analytic-audit; general formal proof pending",
+      "attempts": [
+        {
+          "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
+          "result": "Passed finite algebra checks; asymptotic proofs and complete distance lower bounds still pending",
+          "evidence": [
+            "expansion/geometry-check.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "finite-and-analytic-audit-awaiting-review",
+          "evidence": [
+            "expansion/geometry-check.json",
+            "expansion/sector-limits.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/geometry-check.json",
+        "expansion/sector-limits.json"
+      ]
+    },
+    {
+      "id": "cubic-X-plane",
+      "claim": "Pure-X cubic deformed point sector reduces to 2D toric decoding; loop sector admits 50% limit",
+      "source": "Section 3.2.1 p.44;3.4.2 p.51",
+      "kind": "analytical",
+      "status": "finite-and-analytic-audit; general formal proof pending",
+      "attempts": [
+        {
+          "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
+          "result": "Passed finite algebra checks; asymptotic proofs and complete distance lower bounds still pending",
+          "evidence": [
+            "expansion/geometry-check.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "finite-and-analytic-audit-awaiting-review",
+          "evidence": [
+            "expansion/geometry-check.json",
+            "expansion/sector-limits.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/geometry-check.json",
+        "expansion/sector-limits.json"
+      ]
+    },
+    {
+      "id": "rhombic-X-loop",
+      "claim": "Pure-X deformed rhombic loop errors uniquely reconstructible in stated geometry",
+      "source": "Section 3.5.2 pp.55\u201356",
+      "kind": "analytical",
+      "status": "finite-checked; general proof pending",
+      "attempts": [
+        {
+          "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
+          "result": "Passed finite algebra checks; asymptotic proofs and complete distance lower bounds still pending",
+          "evidence": [
+            "expansion/geometry-check.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "finite-checks-awaiting-review",
+          "evidence": [
+            "expansion/geometry-check.json",
+            "expansion/distance-certificates.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/geometry-check.json",
+        "expansion/distance-certificates.json"
+      ]
+    },
+    {
+      "id": "bp-osd-equations",
+      "claim": "BP message equations and order-zero OSD algebra and correction validity",
+      "source": "Section 2.5.2 pp.34\u201340",
+      "kind": "analytical",
+      "status": "validated-finite-cases",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "validated-finite-cases",
+          "evidence": [
+            "expansion/validation.json",
+            "expansion/rhombic-validation.json",
+            "expansion/native-validation.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/validation.json",
+        "expansion/rhombic-validation.json",
+        "expansion/native-validation.json"
+      ]
+    },
+    {
+      "id": "osd-speedup",
+      "claim": "Reported factor 10 speedup by reusing row reduction",
+      "source": "Section 3.3.2 p.46",
+      "kind": "performance",
+      "status": "reconstructed-baseline-limited",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "reconstructed-baseline-limited",
+          "evidence": [
+            "expansion/osd-benchmark.json"
+          ]
+        }
+      ],
+      "missing": "Original benchmark inputs, timing protocol, hardware and naive baseline implementation",
+      "evidence": [
+        "expansion/osd-benchmark.json"
+      ]
+    },
+    {
+      "id": "gui",
+      "claim": "3D GUI selection/rendering, manual errors/syndromes, random noise/deformations and decoder controls",
+      "source": "Section 3.1 pp.41\u201342",
+      "kind": "software",
+      "status": "backend-tested-renderer-blocked",
+      "attempts": [
+        {
+          "action": "Original Flask API in reconstructed runtime, four code/size settings and24 zero-syndrome BP-OSD requests",
+          "result": "28/28 HTTP200 responses; commuting matrices. Zero-syndrome tests do not establish full noisy-decoder behavior.",
+          "evidence": [
+            "expansion/gui-backend.json"
+          ]
+        },
+        {
+          "action": "Original browser frontend",
+          "result": "Local HTML/JS serve. External Three.js imports require cdn.skypack.dev, denied CONNECT403. No retry or alternate CDN. Browser rendering/controls remain unverified.",
+          "state": "denied dependency access",
+          "evidence": [
+            "expansion/gui-browser.json"
+          ]
+        },
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "backend-tested-renderer-blocked",
+          "evidence": [
+            "expansion/gui-backend.json",
+            "expansion/gui-browser.json"
+          ]
+        }
+      ],
+      "evidence": [
+        "expansion/gui-backend.json",
+        "expansion/gui-browser.json"
+      ]
+    },
+    {
+      "id": "background",
+      "claim": "Inherited classical/stabilizer/surface-code theory and cited prior numerical results",
+      "source": "Chapter 2",
+      "kind": "background",
+      "status": "background",
+      "attempts": [],
+      "note": "Audit definitions and dependencies used; distinguish inherited results from dissertation experiments. Original analytical applications listed separately."
+    },
+    {
+      "id": "future",
+      "claim": "Measurement errors/circuit-level studies, coprime dimensions, nonperiodic boundaries, higher-order OSD, statistical-mechanics threshold and new 2D/3D resource comparison",
+      "source": "Chapter 4 pp.57\u201359",
+      "kind": "future work",
+      "status": "future-work",
+      "attempts": [],
+      "note": "Not completed dissertation experiments; not counted as replication failures."
+    },
+    {
+      "id": "gui-usefulness",
+      "claim": "Reported debugging/intuition/educational usefulness of GUI",
+      "source": "Section 3.1 p.42",
+      "kind": "qualitative",
+      "status": "qualitative-not-quantitatively-testable",
+      "attempts": [],
+      "note": "Functional replication does not establish historical personal utility; assess what evidence is available.",
+      "evidence": []
+    },
+    {
+      "id": "cubic-bias-X-3-1",
+      "claim": "cubic BP-OSD X bias eta=3, deformed=True",
+      "source": "Figure on p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta3-analysis.json",
+            "expansion/cubic-X-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.04696645688364585,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/cubic-X-eta3-analysis.json",
+        "expansion/cubic-X-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-3-1",
+      "claim": "cubic BP-OSD Z bias eta=3, deformed=True",
+      "source": "Figure on p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta3-analysis.json",
+            "expansion/cubic-Z-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.07254301648690174,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/cubic-Z-eta3-analysis.json",
+        "expansion/cubic-Z-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-X-3-0",
+      "claim": "cubic BP-OSD X bias eta=3, deformed=False",
+      "source": "Figure on p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-X-eta3-analysis.json",
+            "expansion/cubic-X-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.03327201499445401,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/cubic-X-eta3-analysis.json",
+        "expansion/cubic-X-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "cubic-bias-Z-3-0",
+      "claim": "cubic BP-OSD Z bias eta=3, deformed=False",
+      "source": "Figure on p.52",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/cubic-Z-eta3-analysis.json",
+            "expansion/cubic-Z-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.12116938992230514,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/cubic-Z-eta3-analysis.json",
+        "expansion/cubic-Z-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-3-1",
+      "claim": "rhombic BP-OSD Z bias eta=3, deformed=True",
+      "source": "Figure on p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta3-analysis.json",
+            "expansion/rhombic-Z-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.024650528334842155,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/rhombic-Z-eta3-analysis.json",
+        "expansion/rhombic-Z-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-3-1",
+      "claim": "rhombic BP-OSD X bias eta=3, deformed=True",
+      "source": "Figure on p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta3-analysis.json",
+            "expansion/rhombic-X-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.01500001506118665,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/rhombic-X-eta3-analysis.json",
+        "expansion/rhombic-X-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-Z-3-0",
+      "claim": "rhombic BP-OSD Z bias eta=3, deformed=False",
+      "source": "Figure on p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-Z-eta3-analysis.json",
+            "expansion/rhombic-Z-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.039999962926309786,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/rhombic-Z-eta3-analysis.json",
+        "expansion/rhombic-Z-eta3-normalized-analysis.json"
+      ]
+    },
+    {
+      "id": "rhombic-bias-X-3-0",
+      "claim": "rhombic BP-OSD X bias eta=3, deformed=False",
+      "source": "Figure on p.56",
+      "kind": "numerical",
+      "status": "computed-limited; fit diagnostics retained",
+      "attempts": [
+        {
+          "action": "Whole-dissertation continuation",
+          "result": "computed-awaiting-scientific-review",
+          "evidence": [
+            "expansion/rhombic-X-eta3-analysis.json",
+            "expansion/rhombic-X-eta3-normalized-analysis.json"
+          ]
+        }
+      ],
+      "published_figure_estimate": 0.01159815641806981,
+      "extraction_bound": 0.001,
+      "published_value_status": "vector extraction cross-checked against rendered legend/axes; figure-derived estimate, not original measurement precision",
+      "evidence": [
+        "expansion/rhombic-X-eta3-analysis.json",
+        "expansion/rhombic-X-eta3-normalized-analysis.json"
+      ]
+    }
+  ],
+  "review_state": "Numerical inventory, signed contrasts, source ambiguities, implementation checks and model limits manually reviewed. Whole dissertation remains open: finite checks are not general proofs, and blocked historical/frontend equivalence is not complete.",
+  "remaining_feasible_work": [
+    "General analytical proofs beyond finite computational certificates, including faithful formal validation if presented as proofs.",
+    "Investigate unstable finite-bias scaling using justified local windows/model checks; current fits are not established asymptotic thresholds.",
+    "Finalize current-hash rendered-main-PDF review and remote delivery checks for this partial milestone."
+  ]
+}
