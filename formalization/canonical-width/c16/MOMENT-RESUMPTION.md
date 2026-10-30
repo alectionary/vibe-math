@@ -1,5 +1,15 @@
 # C16 resumed moment and obstruction investigation
 
+Current verified result (30 October, 03:53Z): the user-restored goal is active.
+Width remains 16 or 18, the sufficient cover 405, best physical partial frame
+88/128, and zero full source anchors excluded. A single exact rational point
+satisfies the combined finite moment families, 280 closed-span rank rows,
+213,662 saved global-obstruction conditional rows, and every Boolean triple.
+A new shared orbit-distribution inequality using only first/second moments
+strictly excludes that point, independently of auxiliary profile weights.
+Five further independently checked rank cuts also exclude it. The intersection
+with these final new inequalities has not yet been decided.
+
 Canonical target: `L-F91-c16-unrestricted-width` (issues3 and8).
 Session: `c16-moments-20261030T0025`.
 Branch: `research/c16-moments-20261030T0025`.
@@ -336,3 +346,275 @@ a concrete next mathematical direction: conditional rank inequalities on
 arbitrary physical subsets, selected by a greedy basis oracle. It neither
 constructs a joint distribution on frames nor reduces the 405-case cover.
 No full source anchor or the source width is settled.
+
+## Conditional faces and span closure, 30 October 02:54Z
+
+Selecting a physical X vector a forces exactly one selected Z vector to pair
+nontrivially with it. The other 127 selected Z vectors lie in its orthogonal
+pool and form a basis of that rank-127 hyperplane. Conversely, any basis of the
+orthogonal pool together with one nonorthogonal vector is a basis of the whole
+space. This does not guarantee compatibility with the rest of an X frame, but
+it identifies the exact face relevant to this conditional basis relaxation.
+The separator can work directly in the orthogonal pool instead of approaching
+that face through convex combinations of off-face bases.
+
+`verify_zero_pool_face.py` checks this decomposition on all bases in the complete
+binary pools of dimensions 2, 3 and 4, and independently recomputes all 90
+representative physical orthogonal-pool ranks. The first source pilot finds
+24 further rank cuts in 54.28 seconds; every cut passes the unchanged independent
+rank consumer. It is a bounded separation result, not full polytope membership.
+An eight-round controller alternates this search with the broader basis search,
+checks every new bank exactly, and screens each numerical point against all
+saved circuit and legacy rows. It has its own 03:25Z stopping boundary, before
+the block's verification reserve. Intermediate candidates are not source frames.
+
+There is also an exact strengthening that needs no numerical optimization.
+Replace a rank subset K by all physical pool vectors in its span. The rank is
+unchanged while the left side increases by nonnegative moments. For a selected
+same-sector anchor, first include the anchor in K; its new diagonal term equals
+its marginal and cancels the one-unit bound adjustment. Then close the augmented
+span. A full-rank closure is the whole pool and its inequality follows from fixed
+cardinality. This dominance argument is replayed coefficient by coefficient.
+
+On the first 149 accumulated rank cuts, closure gives 131 unique nontrivial
+cuts: seven inputs are already implied by cardinality and the rest of the
+reduction comes from duplicate closures. It strengthens 133 inputs by a total
+of 1,814 additional nonnegative moment terms. Independent low-pivot replay
+reconstructs every complete closure and verifies every dominance relation.
+Evidence: `closed-rank-bank0-independent.json` and
+`closed-rank-bank0-dominance.json`. The closed bank numerically rejects 63 rows
+at the later loop-2 candidate, by up to 0.57784. This last separation is numerical;
+the rank bounds and dominance statement are exact. The 149-to-131 reduction is
+in a relaxation row bank, **not** in the 405-case source cover.
+
+The exact older-family feasible point and its 41 strict rank-cut separations
+also pass in a detached clean checkout of
+`a423fbe913ea02a7fa536e6994151fe65100f9d6`; that worktree remains clean.
+See `clean-unified-replay.json` and `clean-replay-provenance.json`.
+Current planning now records the explicit resumption rather than the historical
+pause. Reconciliation and planning validators pass with unchanged counts:
+424 canonical entries, 160 eligible targets, 204 paper records, 165 full-text
+screens and six complete Lean targets. The source index has one new software-
+documentation record (132 total); that does not add an academic paper or question.
+
+## Consolidated rank point and complete Boolean-triple checks, 03:30Z
+
+The eight-round rank loop ended after its fixed eight rounds. Its 311 raw rank
+rows reduce by exact closure and deduplication to 260 proper-span rows. A frozen
+comparison of corrective and ordinary zero-pool projections found 21 cuts at
+the same 21 anchors in both runs. Corrective projection took 217.87 seconds
+versus 96.32 seconds, with different subsets at 15 anchors; it did not improve
+anchor coverage on this cohort and is not adopted as a general improvement.
+Both banks pass independent physical-rank replay. Adding them and closing spans
+gives 280 distinct proper-span rows. “Proper-span” only means rank below 128;
+it does not assert irredundancy relative to every other constraint family.
+
+The resulting combined model has an exact feasible point,
+`consolidated-small-pivot-rational.json.gz`, SHA-256
+`c2a8629cdf85e41c15705b2b51749ae680d7ded24108f15f02f8cc66c066f4c1`.
+The standard profile/physical/interval-PSD consumer passes, and
+`consolidated-unified-exact.json` passes every ownership, circuit, legacy and
+280 closed-rank row. An earlier recovery excluded small positive pivot weights
+and failed rank recovery; retaining weights above 1e-10 instead of 1e-6 fixes
+that producer issue without changing any exact acceptance condition. The earlier
+closed-final candidate's failed PSD recovery is also preserved.
+
+An additional exact screen consumes all 26,735 source obstructions from the
+independently replayed unrestricted global run and its 4,102 initial rank
+obstructions. For a forbidden event set E and an event a in E,
+
+    sum_{b in E, b != a} E[a b] <= (|E| - 2) E[a].
+
+This follows pointwise: if a is selected, not every other event can be selected.
+The formula also applies to mixed X/Z forbidden sets. Under simultaneous phase
+rotation and sector swap, E[a b] is the S or T moment at relative phase b-a.
+All 213,662 rows, including duplicates, pass exactly. Signature circuits of the
+selected projection are deliberately excluded: they are not full-frame forbidden
+sets. The global certificate and its independent replay are byte-bound to their
+immutable published a423fbe revision. Independent literal group-average controls
+cover 16,788 comparisons on 541 selected obstruction sets, including all saved
+mixed and fourth-order kinds. See `consolidated-global-moment-screen.json` and
+`new-moment-translations-independent.json`.
+
+A bounded joint-marginal probe then tested 128 frozen sets of 12 events. It
+enumerates all 4,096 local patterns and retains those meeting necessary physical
+independence and cross-pairing degree restrictions. One LP dual yields an exact
+separation. Its support simplifies to the ordinary Boolean triangle
+
+    E[a b] + E[a c] - E[b c] <= E[a].
+
+Independent replay checks that particular cut on all 4,096 assignments, without
+trusting the producer's physical filtering. This is a missing elementary row,
+not a new structural theorem. The other 127 numerical zero objectives are not
+exact local-feasibility certificates.
+
+That observation motivates a complete, rather than sampled, three-event screen.
+For marginals p_a,p_b,p_c and pair moments q_ab,q_ac,q_bc, let t be the probability
+of all three events. The eight atom probabilities are nonnegative exactly when
+
+    max(0, q_ab+q_ac-p_a, q_ab+q_bc-p_b, q_ac+q_bc-p_c)
+      <= t <= min(q_ab, q_ac, q_bc, 1-p_a-p_b-p_c+q_ab+q_ac+q_bc).
+
+Given the existing pair bounds, this interval is nonempty precisely when the
+three triangle inequalities and the union inequality hold. Each comes directly
+from the eight Boolean assignments. This characterizes a distribution for each
+triple separately, not one consistent distribution over all 1,440 events.
+
+`complete_boolean_triples.py` checks all centers in the 45 representative X
+orbits and all distinct other event pairs. Cyclic rotation and sector symmetry
+cover every physical center. It checks 93,117,690 rows including symmetry
+duplicates. Integer lower/upper enclosures at denominator 2^50 certify negative
+slacks in batches; every uncertain row uses exact rational arithmetic. This is
+not a floating tolerance test. The consolidated point violates exactly 118
+rows, all saved. The initial strengthened solve is numerical only and exposes
+one omitted legacy row plus two further triangles; the next trial includes them.
+No new full source exclusion follows from any of these separation results.
+
+## Exact triple-consistent point and a shared-profile obstruction, 03:45Z
+
+The corrected Boolean trial has an accepted rational point,
+`boolean-rational1.json.gz`, SHA-256
+`d1b45692b268f5618b9ea710befcc5f1bdacbd86ef4014da354e2a1b492011b8`.
+The profile/physical/interval consumer, full ownership/circuit/legacy/280-rank
+consumer, and all 213,662 global conditional rows pass. The complete triangle
+and union screen also passes all 93,117,690 checked rows.
+
+A second consumer, `verify_all_triple_distributions.py`, imports neither that
+screen nor its compiler. It uses a common exact integer denominator and directly
+constructs the eight atom probabilities at the lower endpoint of the interval
+above. It checks 46,558,845 triple representatives including symmetry duplicates,
+with 372,470,760 nonnegative atom checks, in 27.34 seconds. Thus each physical
+triple separately admits a rational distribution. No common distribution over
+all events is implied. The 128-set local 12-event follow-up finds no further
+exact cut; its numerical zero objectives do not certify feasibility.
+
+The next coupling uses an entire orbit's 16 phase indicators, not just triples.
+Let P be its selected phase mask, s(P) its autocorrelation shape, and A_a the
+selection indicator of an anchor in either sector. A full frame induces a single
+unconditional distribution g(P), shared by all the subdistributions
+Pr(P,A_a=1). Those subdistributions are dominated by g(P), reproduce the pair
+moments, and vanish whenever physical rank or cross-pairing rules make that
+anchor incompatible with P. Cyclic averaging makes g constant on each rotation
+class. The old relaxation fixed only shape weights and separate moment bounds;
+it did not require these common subdistributions.
+
+For integer affine functions L_a(P), define a bound B_s by
+
+    B_s >= max_{rotation classes C of shape s}
+             (1/|C|) sum_{P in C} sum_{a compatible with P} max(0,L_a(P)).
+
+Then every source frame satisfies
+
+    sum_a E[A_a L_a(P)] <= sum_s B_s Pr(s(P)=s).
+
+This follows pointwise from A_a L_a(P) <= max(0,L_a(P)), with zero contribution
+for physically incompatible selected anchors, followed by cyclic averaging.
+The left side uses only anchor marginals and phase pair moments; the right side
+uses the existing shape weights. This derivation does not assume independence
+of anchors, and the bound is valid even though the LP permits such independence.
+
+The all-90-anchor orbit32 pilot yields an integer functional with 14 nonzero
+anchor rows. Independent replay enumerates all 65,536 phase masks by direct
+contained-obstruction tests, retains the same 4,597 allowed masks, recomputes
+physical ranks with the opposite pivot convention, and checks every allowed
+mask's 16-rotation bound. Its exact violation at the accepted point is
+
+    1837544431757296417 / 72345824414079647744 = approximately 0.02539945.
+
+Evidence: `common-profile32-all.json` and
+`common-profile32-independent.json`. The positive result is a strict
+strengthening of the **extended** moment/profile relaxation: changing auxiliary
+shape weights while keeping the same first/second moments might remove it.
+A separate bounded pilot frees those weights to test that distinction; it is
+not presumed infeasible. Orbit27's ten-anchor and all-90-anchor pilots produce
+no exact cut. Their near-zero, slightly negative numerical phase-I objectives
+are solver-tolerance effects, not exact feasibility certificates.
+
+The free-profile-weight 90-anchor orbit32 LP reached its 120-second solver
+limit (122.02 seconds total) without a primal solution or exact cut. This is
+UNKNOWN, not feasibility or infeasibility. A final 180-second conditional-rank
+probe completed 61 of the 90 ordered anchor queries and found five further cuts.
+All five independently replay and strictly reject the exact Boolean-consistent
+point, with maximum violation `33902180140403/562949953421312`, approximately
+0.06022237. The frozen settings were recorded at launch after the process started
+but before its result; this is an exploratory probe, not a preregistered holdout.
+Neither the finite 280-row bank nor the bounded rank separator is complete for
+all conditional matroid inequalities. See `final-point-rank-separation-exact.json`.
+
+## Next bounded follow-up and stopping gate
+
+This is a **follow-up** to the same source question. The next model should combine
+the five newly checked rank rows with the shared-profile inequality, keeping the
+complete triple screen as an acceptance gate. Recover an exact feasible point
+before enlarging that model again; alternatively, recover an exact dual
+infeasibility certificate for the necessary model. A failed strict-interior
+search is not such a certificate. The numerical generator may retain its
+interior margins only for witness production.
+
+The central structural question is whether orbit32 admits a shared unconditional
+phase distribution when its shape weights are allowed to vary at the saved
+first/second moments. A bounded sparse LP or its explicit hinge-function dual
+is the next focused test. A certificate involving only first/second moments
+would remove the current auxiliary-weight caveat. A numerical timeout or a
+successful fixed-weight separation does not remove it.
+
+No further cover sweep, broad literature campaign or runtime rewrite is warranted
+by this block. The finite constraints now have exact feasibility evidence, while
+the coupled distribution and still-incomplete conditional matroid families have
+concrete separating certificates to work from. Neither route has a demonstrated
+end-to-end finishing bound. A full physically checked 128-pair frame or a complete
+source-valid obstruction is still required to answer width16 versus18.
+
+## Removing the profile-weight caveat, 03:53Z
+
+The large free-weight pilot's timeout is not the endpoint. Restricting its
+anchor list to the 14 rows supporting the earlier functional gives a much
+smaller necessary model (32,107 variables) while retaining a potential
+infeasibility implication. That free-weight LP returns a separating candidate
+in 8.35 seconds. The exact consumer then verifies it independently. Its
+unconditional coefficients apply to
+
+    (1, E|P|, E|P intersect (P+1)|, ..., E|P intersect (P+8)|)
+
+and are `[-1,-16,8,8,6,7,8,7,7,4]`. These expectations equal 1,16p_32, and
+16S_h[32,32]. Together with the saved anchor linear forms, the resulting
+functional is at most zero for every allowed cyclic mask class. The source
+inequality therefore involves **only first and second moments**, without fixing
+the shape weights. The earlier projection caveat is resolved for this new cut;
+it remains a correct limitation of the first fixed-weight certificate.
+
+The exact violation is
+`5539176242857167/565201753234997248`, approximately 0.0098003522. Removing
+entirely nonpositive anchor functionals leaves their hinge contribution zero;
+replaying the unchanged class bound yields a cleaner 12-anchor certificate with
+the same violation. The primary final pair is
+`common-profile32-projected-pruned.json` and
+`common-profile32-projected-pruned-independent.json`. The consumer enumerates
+all 4,597 allowed masks, checks every 16-rotation class bound, independently
+recomputes 482 physical ranks, and rejects a lowered tight bound. The unpruned
+free-weight result and the earlier timeout remain saved.
+
+This proves a strict strengthening of the finite relaxation even after
+projection to its first/second moments. Equivalently, this particular accepted
+moment point cannot have the shared orbit32/anchor distributions required by
+full source frames, despite every triple having a distribution. It does not
+prove that all feasible points of the old relaxation fail, or that the newly
+strengthened relaxation is infeasible. No source frame or complete obstruction
+has been produced. The next solve should include this projected inequality
+and the five final rank rows; the earlier fixed-weight inequality is optional
+additional information. No solve of that final intersection is claimed here.
+
+## Requirement-to-evidence record
+
+| Requirement | Status | Evidence and limit |
+|---|---|---|
+| Restore goal and continue authorized block | Met | Goal read back active; pause explicitly revoked; timed block and owned remote claim recorded |
+| Answer width16 versus18 | Partial | Still open; no full128-pair witness or complete obstruction; cover405 and partial88 unchanged |
+| Exact structural progress | Met | Conditional zero-pool face, span-closure dominance, exact finite-relaxation feasibility, complete triple distributions, and projected shared-profile separating inequality |
+| Independent source binding and acceptance | Met for stated auxiliary claims | Physical rank/closure consumers, exact rational and interval PSD replay, immutable global source replay, all-mask shared-profile consumer |
+| Preserve failed and limited trials | Met | Recovery rejections, full-model timeouts, negative detector cohorts, unhelpful corrective comparison, numerical-only local probes, free90-anchor timeout |
+| Clean-checkout final replay | Pending at this scientific checkpoint | Initial a423fbe clean replay already passes; final immutable replay receipt will be added at closeout |
+| Inventory and source reconciliation | Met |424 canonical,160 eligible,204 papers,165 full screens,6 Lean complete; zero source-resolution delta, one software-doc index row |
+| Literature harvest | Not applicable to new papers | No new paper acquired in this block; Sage documentation indexed as software, not a paper or author question |
+| Publication on master | Pending required review | PR17 is the authorized integration route; work branch is a checkpoint until master integration |
+| Resumable next action | Met | Final exact point and separating cuts, bounded next necessary-model solve and explicit source acceptance gate |

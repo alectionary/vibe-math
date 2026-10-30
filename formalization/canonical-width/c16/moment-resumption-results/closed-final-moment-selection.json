@@ -1,0 +1,46 @@
+{
+  "scores": [
+    {
+      "candidate": "moment-resumption-results/closed-moment0.npz",
+      "positive_squared_residual": 0.2953592490837273,
+      "maximum": 0.22669603472946626,
+      "violated_above_1e_7": 78
+    },
+    {
+      "candidate": "moment-resumption-results/rank-loop-model-7.npz",
+      "positive_squared_residual": 1.0735254644684744,
+      "maximum": 0.30214756913546614,
+      "violated_above_1e_7": 96
+    }
+  ],
+  "selection_rule": "Minimum squared positive violation on the new260closed rows among the two recorded candidates.",
+  "chosen": "moment-resumption-results/closed-moment0.npz",
+  "command": [
+    "/private/tmp/c16-venv/bin/python",
+    "-u",
+    "run_moment_variant.py",
+    "--parent",
+    "moment-resumption-results/unified-physical-frozen.json",
+    "--model",
+    "unified_warm_matroid_mapped_model.py",
+    "--name",
+    "closed-final-moment",
+    "--seconds",
+    "300",
+    "--outer-seconds",
+    "420",
+    "--scope",
+    "Replace311 prior rank rows by260 independently checked span-closed rows that dominate them using nonnegativity,anchor diagonals,andfixedcardinality. Other full profile/ownership/forbidden andactive circuit/legacy constraints retained. Numeric result alone is unproved.",
+    "--extra",
+    "--active-cuts",
+    "moment-resumption-results/rank-loop-active-7.json",
+    "--matroid-cuts",
+    "moment-resumption-results/closed-rank-bank-final.json",
+    "--matroid-replays",
+    "moment-resumption-results/closed-rank-bank-final-independent.json",
+    "--warm-point",
+    "moment-resumption-results/closed-moment0.npz",
+    "--eps",
+    "1e-10"
+  ]
+}

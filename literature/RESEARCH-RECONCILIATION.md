@@ -278,6 +278,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-moments-20261030
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The user explicitly revoked the pause. Exact rational feasibility now covers the combined finite profile/capacity/weighted/forbidden/ownership/circuit/legacy families,280 closed-rank rows,213662 saved global-obstruction conditional rows,and all Boolean triples. An independent direct integer consumer constructs46558845 local triple distributions including symmetry duplicates. Five further exact rank cuts and a shared orbit32 profile-distribution inequality strictly separate this point; the latter fixes auxiliary profile weights, and its free-weight90-anchor pilot timed out. No source answer follows. Global continuation remainsUNKNOWN with complete replay. Width16/18,cover405,physical88/128,zero full-source anchors excluded,and Lean status stay unchanged. A smaller14-anchor free-weight follow-up now succeeds: an independently checked12-anchor projected inequality separates the same first/second moments by5539176242857167/565201753234997248, resolving the auxiliary-weight caveat for this new cut. The final intersection has not yet been solved.. Remaining at that dated checkpoint: No source width or Lean resolution. The SageMath software-documentation reference does not add a paper or question. No exact feasibility is inferred from numerical common-profile pilots or bounded rank nonseparation. Full-source finishing time remains unknown.. [Report](../formalization/canonical-width/c16/MOMENT-RESUMPTION.md) · [Verification](../formalization/canonical-width/c16/moment-resumption-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.
@@ -699,4 +705,4 @@ Two complete solver-method papers add sixteen historical broad directions/method
 
 Current cohort: **424 canonical entries,160 eligible targets,204 paper records,165 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
 
-The current source index has **131** records, with actual access levels retained.
+The current source index has **132** records, with actual access levels retained.

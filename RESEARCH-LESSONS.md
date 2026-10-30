@@ -577,3 +577,56 @@ research processes and release only the owned claim. A completed producer
 screen and an independently replayed positive certificate do not amount to
 independent replay of every negative result in the screen.
 [Results and resumable checkpoint](formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md).
+
+## C16: certify the relaxation before expanding it
+
+Combining individually feasible relaxations can still yield a stronger model;
+the earlier candidates must be checked against every added family. In this
+continuation, physical-coordinate translation exposed violations of ownership,
+circuit, rectangle, triangle and integer-form restrictions that separate models
+had omitted. A recovered rational point eventually passed their entire finite
+intersection, including profile weights and interval PSD checks. That certificate
+rules out an infeasibility proof using exactly those constraints. It does not
+construct a frame or prove that a higher-order relaxation is feasible.
+
+Use a structural optimization oracle to propose inequalities, then separate
+its numerical role from proof. Here a greedy linear-matroid basis oracle finds
+conditional rank subsets without enumerating subsets. Each retained cut is
+validated by an independent integer rank computation. Forty-one new cuts
+strictly exclude the certified point, giving an exact strengthening. A bounded
+search that returns no cut does not certify matroid-polytope membership.
+
+Exploit a condition's exact face before optimizing. Selecting one X vector
+forces exactly127 selected Z vectors into its rank127 orthogonal pool; their
+basis problem can be separated there. Span closure also enlarges a rank subset
+without increasing its rank. With nonnegative moments and the anchor diagonal
+identity, the enlarged inequality dominates the original. These operations
+strengthen or simplify a relaxation; they do not by themselves reduce a
+sufficient cover of unresolved source cases.
+
+Inspect solver diagnostics before treating a wall limit as mathematical
+resistance. Repeated scaling updates were costly in the large combined model.
+Adaptive row generation, explicit warm-start coordinate mapping and a fixed
+scale produced accurate candidates in later bounded trials. Both the failed
+mapping attempt and successful runs are retained; no matched or general
+runtime speedup is inferred. Exact recovery and a clean-checkout replay remain
+the acceptance gates. [Evidence and limits](formalization/canonical-width/c16/MOMENT-RESUMPTION.md).
+
+A sampled local-distribution failure can expose a missing elementary inequality.
+In this block the first such cut was an ordinary Boolean triangle. Complete the
+structured family when practical: exact screening of every physical triple then
+produced a certified triple-consistent point. That gives a precise reason to seek
+compatibility on larger collections, rather than repeatedly rediscovering missing
+triangle rows. A common orbit-distribution test subsequently separated the saved
+profile weights. State the projection caveat: rejecting one choice of auxiliary
+weights does not automatically reject its first and second moments under every
+other choice of those weights.
+
+When a coupled LP is too large, retain the anchors used by its first separating
+functional and free the auxiliary weights in that smaller necessary model. Here
+the full90-anchor free-weight pilot timed out, but the14-anchor support pilot
+produced an independently checked projected inequality in8.35seconds. Pruning
+nonpositive anchor forms left12 active anchors. This is a concrete way to turn
+a failed large test into a smaller mathematical question; it is one measured
+instance, not a universal speedup claim. The final inequality separates a point
+that has passed all Boolean triples, without relying on its chosen profile weights.

@@ -1,0 +1,36 @@
+FORBIDDEN CONDITIONED ROWS 31408
+PHYSICAL OWNER ROWS 32355
+PHYSICAL CIRCUIT ROWS 115200
+LEGACY LINEAR ROWS 12849
+MATROID ROWS 280
+BOOLEAN ROWS 120
+PROFILE MOMENT prepared 16 rank 43473 shape variables 572 constraint objects
+WARMSTART {'warm_point_sha256': '6403c83564b1318a6ba31c4acf7e78db8338028db0d1ca68e1c8d64ef88ac7bb', 'canonical_variables_mapped': 76008, 'max_initial_equality_residual': 8.689160502228788e-13, 'max_initial_linear_inequality_violation': 0.0005849614361527878, 'scale': 1e-06, 'adaptive_scale': False}
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 76008, constraints m: 323936
+cones: 	  z: primal zero / dual free vars: 636
+	  l: linear vars: 261875
+	  s: psd vars: 61425, ssize: 18
+settings: eps_abs: 1.0e-11, eps_rel: 1.0e-11, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-06, adaptive_scale: 0
+	  max_iters: 100000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 1.80e+02
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 4008595, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 5.85e-04  8.97e-10  2.65e-15 -1.32e-15  1.00e-06  1.47e+01 
+    50| 1.43e-11  5.23e-16  1.75e-15 -8.74e-16  1.00e-06  1.72e+01 
+------------------------------------------------------------------
+status:  solved
+timings: total: 1.72e+01s = setup: 1.45e+01s + solve: 2.66e+00s
+	 lin-sys: 1.47e+00s, cones: 1.03e+00s, accel: 1.89e-02s
+------------------------------------------------------------------
+objective = -0.000000
+------------------------------------------------------------------
+{'status': 'optimal', 'source_C16_answered': False, 'fixed_PSD_interior_margin': 1e-07, 'boolean_rows': 120, 'fixed_boolean_row_margin': 1e-08, 'boolean_bank_hashes': {'moment-resumption-results/consolidated-all-triples.json': '6eb35434a51e86b36de4f472fcab9af7cd27ff0b8a9ce3bc3688b22e4980fbec', 'moment-resumption-results/boolean-all-triples0.json': '7da845a8a97fb0ee35621b6dd949ecb59b68dc4535baa36c997ae3c56866113c'}, 'boolean_compiler_sha256': '1d9780b7e7ade4214c2535d915801888d3ed4508fcae1f523d121ff1ee3b8f69', 'interior_search_is_sufficient_only': True, 'scope': 'Sufficient interior-witness search with fixed positive PSD margin. Failure or infeasibility does not exclude source frames or the original necessary relaxation. Exact recovery and all-family replay are required for feasibility.', 'physical_target': 128, 'restricted_to_halfturn': False, 'period': 16, 'mode': 'rank', 'shape_variables': 43473, 'strict_margin_witness_search': False, 'capacity_RLT_scalar_inequalities': 4050, 'conditional_RLT_inequalities': 2025, 'conditional_nonpartner_RLT_inequalities': 2025, 'conditional_weighted_phase_inequalities': 10, 'additional_legacy_linear_rows': 217, 'active_bank_sha256': 'd31fc5a837527dd8fc17188803b44e963eef44dfe21e466b4e4432e51479c462', 'conditional_matroid_rows': 280, 'fixed_SCS_scale': 1e-06, 'warm_point_sha256': '6403c83564b1318a6ba31c4acf7e78db8338028db0d1ca68e1c8d64ef88ac7bb', 'full_circuit_rows': 115200, 'full_legacy_rows': 12849, 'known_cardinality_null_directions_removed': True, 'physical_conditioned_circuit_inequalities': 22, 'physical_private_partner_inequalities': 32355, 'forbidden_pattern_distinct_coefficient_inequalities': 31408, 'forbidden_pattern_bank_sha256': {'relevant-results/seed-cuts.json': '615e7df8b837e5de7ee9552f0936e176f12408ae7c885428f0dea8b921ebdc63', 'moment-resumption-results/all-pair-word-cuts.json': '059f902dba87797dcce04943bf13cedece32d8ee4656924ec52b0339aa4a56e7'}, 'wall_seconds': 24.012530333013274, 'solver_seconds': 2.661821375, 'iterations': 50, 'objective': 0.0, 'margin': None, 'max_constraint_violation': 5.734857033701246e-13, 'omitted_family_numeric_screen': {'circuit': {'max_violation': 0.0, 'above_1e_5': 0, 'above_1e_7': 0}, 'legacy': {'max_violation': 0.0, 'above_1e_5': 0, 'above_1e_7': 0}}, 'solver_info': {'status_val': 1, 'iter': 50, 'scale_updates': 0, 'scale': 1e-06, 'pobj': 0.0, 'dobj': -1.7477023527384886e-15, 'res_pri': 1.4345130058808723e-11, 'res_dual': 5.229403384169148e-16, 'gap': 1.7477023527384886e-15, 'res_infeas': None, 'res_unbdd_a': None, 'res_unbdd_p': None, 'comp_slack': 8.304558606025075e-15, 'solve_time': 2661.821375, 'setup_time': 14526.636583, 'lin_sys_time': 1472.954857, 'cone_time': 1029.044441, 'accel_time': 18.854491, 'rejected_accel_steps': 0, 'accepted_accel_steps': 0, 'status': 'solved', 'lin_sys_solver': 'sparse-direct-amd-qdldl', 'aa_stats': {'iter': 10, 'n_accept': 0, 'n_reject_lapack': 0, 'n_reject_rank0': 0, 'n_reject_nonfinite': 0, 'n_reject_weight_cap': 0, 'n_safeguard_reject': 0, 'last_rank': 0, 'last_aa_norm': None, 'last_regularization': 0.0}}}
