@@ -1,0 +1,50 @@
+{
+  "status": "BOTH_FROZEN_POINT12_TWO_SIDED_COUNT_GATES_HAVE_EXACT_MEMBERSHIP",
+  "source_C16_answered": false,
+  "point": "coupling-results/anchor-witness12-rational.json.gz",
+  "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4",
+  "previous_numerical_inventory": "coupling-results/two-sided-count-inventory.json",
+  "previous_numerical_inventory_sha256": "c1e39e1c607bc812ab8db909d51edd5443e2fe464728500e794ba2f809d4cf4c",
+  "records": [
+    {
+      "bank": "coupling-results/two-sided-count-32x27-exact-v4-witness12.json.gz",
+      "bank_sha256": "7bec7833e9e762aaa8695bbdc1edc6a20ead93943d9ca7ec8f0c33512a989311",
+      "receipt": "coupling-results/two-sided-count-32x27-exact-v4-independent.json",
+      "receipt_sha256": "7d19b11fb8291e3e9c27774649e6ec91a7f50c7b3124484a82c43bece9abe12d",
+      "anchors": [
+        80,
+        512,
+        186,
+        433
+      ],
+      "exact_variables": 20584,
+      "exact_equalities": 7259,
+      "exact_upper_rows": 20568,
+      "positive_patterns": 12
+    },
+    {
+      "bank": "coupling-results/two-sided-count-27x32-exact-v2-witness12.json.gz",
+      "bank_sha256": "d214e4e8d4250736fc3a9dd77145ba59ed55452b31c2c219bba4ecf2d363af8b",
+      "receipt": "coupling-results/two-sided-count-27x32-exact-v2-independent.json",
+      "receipt_sha256": "d747c182f7eb6ad58e3dcee4518fa87e2811b79142ba1bfda752f0e3fece456f",
+      "anchors": [
+        80,
+        432,
+        186,
+        514
+      ],
+      "exact_variables": 20584,
+      "exact_equalities": 7259,
+      "exact_upper_rows": 20568,
+      "positive_patterns": 12
+    }
+  ],
+  "accepted_projected_cuts": 0,
+  "scope": "For these two fixed sets of 2X+2Z anchors, exact shared-pattern mass and full-cardinality eligible conditional marginals exist at point12. No rank condition on zero pools and no unanchored X/Z mutual pairing condition is enforced. These auxiliary memberships do not give a physical frame or a source obstruction.",
+  "next_structural_gate": "Physical zero-pool rank constraints in each conditional pattern require contraction by forced own-sector zero vectors. A violated row at one exact extension alone excludes that extension, not the projected point; the common mass/marginal LP must be re-solved, and a projected exclusion needs an exact full-LP certificate.",
+  "preserved_invalid_attempt": {
+    "path": "coupling-results/two-sided-count-exact-inventory-incomplete-attempt.json",
+    "sha256": "9a0f7307ce208a3df34a26ba6c35ef059220fad9d5b92019bdcac5cf52be3f9c",
+    "reason": "Inventory writer incorrectly wrote inside the two-record loop, then refused replacement. Its one-record inventory is incomplete and is not accepted; this final inventory checks two records."
+  }
+}

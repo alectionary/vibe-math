@@ -284,6 +284,12 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: c16-coupling-20261030
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The exact compatible-basis method and counting-identity simplification give independently accepted joint-profile separators, including coefficient64 variants. A refreshed bounded five-event Boolean search adds234 distinct exact integer-form inequalities; a fresh45-anchor conditional-rank cohort yields27 complete lattice certificates,12 span-closed cuts,and6 inconclusive anchors at witness12. The latest combined point remains exactly feasible with54 partner inequalities,234 added integer-form rows,308 rank rows,all older global conditional families,and all Boolean triples. Exact physical basis mixtures prove every unconditional rank inequality at witness12; exact four-X and two-X/two-Z count extensions close those selected count-only gates. Two full-selector120second sourcecase trials remainUNKNOWN. Width16/18,cover405,physical88/128,zero full source anchors excluded,and Lean status stay unchanged. No general finishing-time estimate or source-search speedup is established.. [Report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md) · [Verification](../formalization/canonical-width/c16/coupling-results/integer-witness15-checks-summary.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Separate indexing extension: beezer-final-journal-2026-10-24
 
 Beezer's final journal was fully read. One precise conjecture and two broad directions were added. The cohort after this screen was 190 entries, 112 eligible targets, 61 paper records and 58 full-text screens.

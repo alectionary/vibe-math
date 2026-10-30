@@ -630,3 +630,67 @@ nonpositive anchor forms left12 active anchors. This is a concrete way to turn
 a failed large test into a smaller mathematical question; it is one measured
 instance, not a universal speedup claim. The final inequality separates a point
 that has passed all Boolean triples, without relying on its chosen profile weights.
+
+## C16: make basis coupling exact, then simplify its certificates
+
+A full compatible opposite basis has more structure than a set of allowed
+vectors. For selected independent X vectors, every required unit-evaluation
+owner bin contributes exactly one Z vector; the zero-evaluation pool must
+contribute a basis of its full remaining rank. Optimize the latter with
+linear-matroid greedy selection and retain negative weights. Dropping the
+rank requirement can destroy a valid separation even when cardinality and
+owner conditions are retained. Opposite-anchor presence uses contraction or
+a fixed owner choice; absence uses deletion. A fixed physical phase also
+changes which symmetry reduction is valid.
+
+Separate a new joint-profile condition from simpler explanations. An exact
+rational-lattice certificate can establish all subset-rank inequalities
+without enumerating subsets: if a rational vector with denominator D is
+within positive-coordinate error less than1/D of a nonnegative mixture of
+physical bases, any positive integral-rank violation is impossible. Here
+this certifies an entire one-anchor rank family at points still excluded by
+a joint-profile cut. It does not certify arbitrary projected-polytope
+membership or a common distribution across all anchors.
+
+Use exact affine identities before trying to round a dense numerical
+separator. Direct rounding failed on the tested cohort. Subtracting proven
+counting identities first removed a common coefficient background, after
+which independent repricing accepted separators with coefficients at most64
+instead of millions. Every rounded or thresholded vector is a new functional
+and needs fresh exact support. A near-zero support bound alone does not
+prove an affine identity; price both signs.
+
+An optimization method's failure can be algorithmic rather than structural.
+The bounded Wolfe projection succeeded after large L1 master problems had
+failed to decide the same target. The independently matched native oracle
+then reduced pricing-kernel time. These are measured algorithm/kernel
+results, not a general source-search speedup. Keep frozen sources, failed
+exports, exact acceptance consumers and recovery artifacts. Repair a
+provenance or serialization failure with a new version, rather than
+overwriting files referenced by an accepted certificate.
+
+Before installing a signed full-basis inequality into a compact source model,
+check what its Boolean flags actually mean. A retained partial matching
+omits zero-signature members of a full completion. Substitution of partial
+owner flags is unsound. Use existential full-selection flags or a certified
+lower bound over all completions, and compare the resulting pruning against
+ordinary propagation. All newly detected saved configurations in this
+block were already excluded by rank; that is a useful negative gate.
+[Evidence and limitations](formalization/canonical-width/c16/COUPLING-CONTINUATION.md).
+
+Refresh cheap established families after the candidate changes. A point that
+passes every Boolean triple and hundreds of saved integer-form rows can
+still violate other five-event inequalities. Here an existing coordinate
+search found 207 distinct rows quickly, followed by 25 and two after model
+updates; the existing LLL neighborhood search found none in its bounded
+cohort. This is a measured follow-up, not a new inequality theorem or an
+exhaustive certificate for all five-event forms.
+
+A numerical infeasibility report can be false even for a modest linear
+extension. Presolve reported two four-anchor count models infeasible, while
+presolve-disabled solves suggested feasibility. Block elimination by the
+physical vector reduced exact recovery to fewer than40 parameters; released
+near-zero variables then produced independently checked rational feasible
+points. Exact replay settles that discrepancy. It also gives a stopping
+criterion for a proposed relaxation: once an exact extension exists, repeating
+that same count-only test cannot exclude the point.

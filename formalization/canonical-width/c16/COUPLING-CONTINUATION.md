@@ -453,3 +453,134 @@ The clean2e5f314 checkpoint replay passes20 declared stages and708 source
 bindings; its explicit coverage and omissions are recorded under
 `coupling-results/new-clean-checkpoint0826/`. Newer witness9/10 and case
 results will be included in the final preservation/replay gate.
+
+## 09:21 UTC: second native gate and cross-orbit diagnostics
+
+The accepted witness10 point is separated by two further native775 cuts,
+with normalized gaps0.0694672 and0.0694579. Five coefficient-rounded variants
+also pass independent support and matrix checks; the smallest successful
+scale is256. Adding these seven rows gives54 partner rows. A search with
+positive projected margin0.01 returns a candidate, `anchor-witness11`, that
+fails84 previously omitted Boolean triangles and one legacy row. That
+candidate is explicitly NOT fully accepted. Adding the exposed rows yields
+`anchor-witness12`, whose seven exact acceptance stages all pass. Its point
+SHA256 is `7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4`.
+The full finite relaxation therefore remains feasible after the54 partner
+rows and296 rank rows.
+
+Literal coefficient transfer to other orbits does not succeed on the frozen
+pilot orbits24,27,31. All2098 support queries match the original Python
+oracle and pass492266 independent rank checks. The negative gaps concern
+only the two transferred templates. The authorized early stop leaves40
+other frozen targets unpriced. An exact symmetry replay also confirms that
+the full finite pairing graph admits only common rotations and sector
+exchange; all45 orbit blocks are fixed. There is no verified global orbit
+permutation transporting the orbit32 functional to another orbit.
+
+The small-integer row's direct source-model pilot is also negative. On
+selected cover case(32,32,0), a sound existential full-selection extension
+links736 flags to the compact partial matching and imposes cardinality and
+conditional degree restrictions. The baseline and added-cut models are SAT
+in0.254s and4.282s, respectively. Neither assignment is a source frame: the
+selected opposite vectors have ranks101 and108. Moreover, a deterministic
+extension preserves every variable of the baseline assignment and satisfies
+all412351 augmented clauses, so the added row does not remove that saved
+baseline witness. Independent literal gate and model controls pass. No
+source pruning or speedup is claimed.
+
+Two four-X-anchor pilots use two phases from each of orbits32 and27. The
+necessary full-basis support has just16 selection patterns and3611 features.
+Literal32-action mapping and signed physical support controls pass. Both
+120-second Wolfe pilots remain inconclusive, with no accepted separator;
+independent replay checks all2570 archived physical columns. Exact four-event
+Boolean distributions reproduce the respective P/PP targets, ruling out
+separation by a quadratic inequality on those four X events alone.
+
+A small count-only common-pattern LP initially reports both cases infeasible
+with presolve enabled, but presolve-disabled HiGHS runs produce feasible
+numerical candidates. The disagreement is preserved. There is no accepted
+infeasibility certificate or cut from these statuses; exact primal checking
+is pending. This is why the initial numerical result was not integrated.
+
+A separate shared-profile extension now uses133070 variables,2302 equality
+rows and72487 inequality rows, including1399 physical rank-prefix rows
+extracted from the successful small64 normals. Its literal feature map and
+rotation-class mass interpretation are under independent audit. The
+120-second presolve-disabled pilot is discovery only; a floating status is
+neither a source proof nor exact full-basis membership.
+
+## 09:55 UTC: exact barriers and inexpensive Boolean-family refresh
+
+Both four-X-anchor count-only models at witness10 now have independently
+checked exact rational feasible solutions. Per-Z block elimination reduces
+the large sparse recovery systems to 38 and 35 parameters. The final
+certificates check every equality, nonnegative variable and upper bound.
+The earlier presolve infeasibility reports are therefore false for these
+exact systems; they did not indicate a new source obstruction. Both selected
+two-X/two-Z count models at witness12 also have exact feasible extensions,
+with 20,584 variables, 7,259 equalities and 20,568 upper rows checked each.
+These models retain common anchor-pattern probabilities but omit physical
+basis-rank and unanchored mutual-pairing constraints. Their feasibility does
+not establish full-frame feasibility.
+
+A separate exact mixture of 45 physical full Z bases reproduces every
+orbit occupancy of witness12. Uniform rotation gives every one of its 720
+physical first marginals. Independent physical rank and rational arithmetic
+checks, including six corrupted-input controls, pass. Hence **every
+unconditional matroid-rank inequality holds at witness12**; adding further
+first-moment rank inequalities cannot exclude that point. This conclusion
+does not extend to conditional or joint-profile constraints.
+
+The full shared-profile prefix extension passes independent reconstruction
+of all 1,227,154 sparse entries, 1,399 physical rank rows, profile exclusions
+and rotation normalization. Both 120-second LP variants time out without
+valid primal or dual vectors. No numerical decision is accepted. The model,
+audits and a residual-safe exact dual route are preserved for later work.
+
+Refreshing older inexpensive Boolean methods at witness12 produces a more
+useful immediate gate. The existing LLL search finds no cuts in 1,500 bounded
+reductions. The existing five-event coordinate search finds 299 candidates,
+which exact owner-row deduplication reduces to 207 distinct inequalities.
+Every one follows from L(L−1)/2 >= 0 for an integer affine Boolean form.
+Independent verification checks 6,624 truth assignments and exact point
+violations. A separate symbolic review expands all 32 symmetry actions and
+checks 78,208 Boolean monomial terms against the compiled owner rows. This is
+a follow-up using an existing inequality family, not a new source theorem.
+
+The combined `integer-witness13` point passes all seven exact stages with
+54 full-partner inequalities, 207 added integer-form rows and 296 rank rows.
+Its SHA256 is `709a6487b4be6dae640a47e9f0f680e06ca4947639791395c54760c1e6f173cb`.
+A repeated bounded five-event search then finds 25 further accepted rows.
+
+A fresh conditional-rank cohort checks all 45 anchors at the single fixed
+witness12 point. It yields 27 complete all-subset-rank lattice certificates,
+12 independently accepted span-closed rank cuts, and six inconclusive
+anchors: 5, 16, 17, 40, 43 and 44. None is unqueried. All 12 new cuts also
+violate witness13; no certificate from an earlier point is reused to claim
+coverage at this one. Adding them and the 25 Boolean rows yields the exactly
+accepted `integer-witness14` point with 308 rank rows and 232 added integer
+forms. Its SHA256 is
+`945824f4f478c39270b201d436fec05707da89ce6b708c89bb6d6cf96b12c8ed`.
+A further refresh finds only two new five-event rows; their combined-model
+check is running at this checkpoint. These counts are relaxation rows, not
+source cases eliminated. The source cover remains 405.
+
+The final new mathematical gate is an exact basis-mixture repair by exchange
+paths. A positive-mass basis permits an edge i->j when replacing i by j
+preserves independence. Moving rational mass along a surplus-to-deficit path
+changes only its endpoints; simultaneous splits are bounded by the mass of
+each reused basis divided by its number of uses. If no such path exists, the
+complement of the surplus-reachable set is saturated by every positive basis
+but has larger target mass, giving a directly checkable rank violation. No
+polynomial runtime or automatic convergence is asserted. The bounded test
+targets two inconclusive conditional anchors, with independent proof review.
+
+At 09:57 UTC, `integer-witness15` passes all seven exact acceptance stages,
+with 54 partner rows, 234 added integer-form rows and 308 rank rows. Its
+SHA256 is `5f9a622e68a3c1e842ae13a5a5b18cf06b388515b5821d17eda2389375b290ef`.
+The actual full-selector case X512/Z512 is separately tested with and
+without small64 cut0. Both 120-second trials end UNKNOWN. The independent
+bridge reconstructs 518,400 physical pairings, both 128-cardinalities and
+the fixed source case; the baseline has 842,378 clauses and the augmented
+model 990,227. Neither a model nor a proof is produced. No source gain or
+runtime benefit is claimed.
