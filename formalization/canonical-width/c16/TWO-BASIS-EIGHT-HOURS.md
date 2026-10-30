@@ -106,3 +106,90 @@ remains required.
 Source and inventory status have not changed. No new paper, full-text screen,
 Lean completion or source answer is claimed. The initial independent evidence
 inventory is `two-basis-results/independent-first-hour-inventory.json`.
+
+### Structural allocation checkpoint, 16:25Z
+
+The original question, cover405 and physical88/128 frame are unchanged.
+No complete source anchor is excluded. The latest global exact point remains18.
+
+The complete fixed-law sector affine span has dimension3583 of3600, with exactly
+17 identities. An independent implementation and a separate conceptual review
+verify this for both sectors and both the16-pattern and11-positive-pattern
+domains. This rules out a large reduction by affine identities alone. It does
+not lower-bound the number of bases needed in a particular convex mixture.
+
+Two bounded fixed-law L2 searches reduce numerical residuals but produce neither
+separators nor exact memberships. Their full physical archives and final exact
+support bounds replay independently. A single X-sector batch interior-point
+phase-I solve terminates in18.08seconds with restricted objective1.3098; its
+5,225 physical columns, exact strict feasible start and final16 support values
+are independently verified. The restricted optimum is not a full-hull distance.
+
+A more useful structural reformulation follows from the nearest exact law's
+zero mass on every pattern of size at least3. Keep only the six pair-pattern
+allocation vectors. The four singleton vectors and empty vector are explicit
+affine functions of these and the target moments. For the tested Z sector,
+local elimination leaves3,901 variables and only10 global bucket equations.
+A bounded solve and10-by10 rational correction produce an independently
+accepted exact allocation in10.37seconds. All3,600 target equations,11,520
+boxes, pattern cardinalities, forced coordinates and owner/zero-bin counts pass.
+This is an exact count-allocation certificate. Each conditional zero-bin
+allocation must still satisfy every matroid rank inequality before it becomes
+a full-basis certificate. The direct five-pattern repair of the older mixtures
+failed boxes (53 negative X coordinates,33 negative Z coordinates), and those
+failed attempts are retained. See `two_basis_structure_direct_result.md` and
+`two-basis-results/two-basis-direct-allocation-inventory-point15.json`.
+
+The source-case X512/Z512 investigation remains inconclusive. The direct
+zero-margin, rescaled and linear-only bounded solves all return invalid or
+unfinished iterates. Gradual weaker floors1/256 and1/128 do have exact feasible
+points passing all seven screens and a separate exact floor consumer. These
+floors are below the true necessary1/16 and do not establish feasibility of
+the selected source case. The next1/64 step stalls with max constraint error
+about0.007675. Two bounded maximization diagnostics also fail numerical
+acceptance; the rescaled objective reaches T≈0.014635 with error≈4.56e-5 and
+has no certified upper bound. No exact source dual is inferred from any status.
+
+A distinct bounded LLL scout uses complete orbit counts and phase-class counts,
+rather than small Boolean supports. Its nine fixed embeddings at moduli1,2,4
+find no candidate integer-form cut at point18. This is not complete separation.
+The first attempt confused compact and expanded point layouts and was stopped
+without accepting output; its source/frozen input and failure manifest remain.
+Version2 uses the independently tested expanded-point loader and literal
+phase-sum controls. Exact cut evaluation always uses the unperturbed target;
+the Gram ridge is only a discovery aid.
+
+The original arXiv abstract still lists only version1, and the author's current
+data-repository main is identical to pinned04ad4795ad15cb89ee47b7868ff925c30b2fc731.
+These are dated source-version checks, not new full-text screens or proofs.
+No new paper, canonical question or Lean completion is counted here.
+
+### Missing affine templates and exact successor19, 16:34Z
+
+A targeted local-distribution gate stops after three LPs with two separating
+rows. Independent polynomial conversion shows these are ordinary integer forms
+with weights(1,1,1,-1) and(1,1,1,1,-1), constant0. They need no physical pattern
+filtering and are not new inequality theorems. They expose a gap in the earlier
+balanced-sign template cohort. Both separate point18 and the two weaker-floor
+continuation points; the latter therefore certify only their original finite
+262-row models, not the stronger model below.
+
+Seven explicitly frozen unbalanced templates find658 additional unique rows at
+point18. Merging the two local rows gives660 distinct new rows. Independent
+verification checks34,784 Boolean assignments and274,288 symbolic monomial terms
+under all32 physical symmetry actions. Every accepted inequality is universal
+for Boolean selections. The fast discovery time is not a source-search speedup.
+
+The combined successor19 passes all seven exact screens, including all Boolean
+triples and direct triple distributions. Its certificate is
+`coupling-results/two-basis-integer-witness19-rational.json.gz`, SHA256
+`60ff55349408e6ada0619eded0135ddc0ae620e25a7806eeae6e13deb1e1a56c`.
+It retains54 partner rows and308 rank rows, with922 added integer-form rows.
+Thus the new rows strengthen the relaxation but still do not establish a
+contradiction. The source cover remains405 and zero complete anchors are excluded.
+
+In the separate point15 allocation lane, exact small-flat tests reject the first
+accepted Z count allocation with24 rank rows. The first successor obeys those
+24 rows but violates23 further ones. A bounded five-successor cut loop is active.
+All rank acceptance statements here concern the explicitly listed finite rows;
+complete matroid membership remains unproved.
