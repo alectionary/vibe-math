@@ -739,3 +739,43 @@ star rows. The useful change is the exact solving and verification path, not
 the implementation language by itself. This allocation is subsequently
 separated again. The source width remains16 or18, with no full source anchor
 excluded. [Proofs, measured comparisons and limits](formalization/canonical-width/c16/TWO-BASIS-EIGHT-HOURS.md).
+
+### Measure archive progress and retain shared information
+
+Exact infeasibility of a saved basis archive is not matroid separation. Price
+its dual over the entire physical matroid before drawing a global conclusion.
+In the current-point orbit40 test, the initial archive omitted one coordinate
+with positive target mass. One valid coverage column made exact reweighting
+possible, and a literal basis checker then established every selected-conditioned
+rank inequality for that orbit. An older archive can supply useful geometry,
+but its weights, target-dependent errors and membership claims do not transfer
+to a changed point. Rebuild and bind the fresh target explicitly.
+
+When feasibility-only column generation stalls, a phase-I L1 objective gives
+a comparable distance and a bounded dual. The restricted optimum is an upper
+bound on the full-hull distance; exact greedy support supplies a lower bound.
+Only a positive full-domain separation gap gives a rank obstruction. In one
+matched trial, a maximizing basis and 64 valid exchange columns reduced the
+exact restricted distance by 3.579%. This measures archive improvement, not
+source-case elimination or an end-to-end speedup. Independent exchange
+directions within a batch do not imply new affine dimension modulo the old
+archive, and adding columns need not strictly improve the next optimum.
+
+A fixed auxiliary allocation may fail a simple conditional Boolean identity
+even after much stronger-looking rank computations. Retaining the global
+same-sector pair moment exposed such a failure in the shared-owner model.
+An exact free eight-event law then repaired it. Use that free reallocation
+test to distinguish an allocation defect from a global moment obstruction.
+When coupling the local law back to the larger model, share its actual
+conditional masses and owner variables. Also exclude joint atoms that conflict
+with the old anchors: separately valid one-probe domains can miss two new
+probes competing for the same mandatory owner.
+
+Keep exact replay portable without changing frozen mathematics. The final
+owner checkpoint passed 34 consumers after explicit path relocation, with
+every original helper body retained, all input hashes and Git blobs checked,
+and outside-copy research reads denied. A solver's alternate rational-output
+footer required a narrowly versioned parser; old source and failed output
+were preserved. Complete stationarity and primal/dual equality, rather than
+the solver label or parser acceptance, established the phase-I result.
+[Results, exact evidence and source limits](formalization/canonical-width/c16/TWO-BASIS-EIGHT-HOURS-FINAL.md).
