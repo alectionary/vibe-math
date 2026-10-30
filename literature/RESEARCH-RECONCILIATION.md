@@ -286,7 +286,7 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 ## Subsequent block: c16-coupling-20261030
 
-[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The exact compatible-basis method and counting-identity simplification give independently accepted joint-profile separators, including coefficient64 variants. A refreshed bounded five-event Boolean search adds234 distinct exact integer-form inequalities; a fresh45-anchor conditional-rank cohort yields27 complete lattice certificates,12 span-closed cuts,and6 inconclusive anchors at witness12. The latest combined point remains exactly feasible with54 partner inequalities,234 added integer-form rows,308 rank rows,all older global conditional families,and all Boolean triples. Exact physical basis mixtures prove every unconditional rank inequality at witness12; exact four-X and two-X/two-Z count extensions close those selected count-only gates. Two full-selector120second sourcecase trials remainUNKNOWN. Width16/18,cover405,physical88/128,zero full source anchors excluded,and Lean status stay unchanged. No general finishing-time estimate or source-search speedup is established.. [Report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md) · [Verification](../formalization/canonical-width/c16/coupling-results/integer-witness15-checks-summary.json).
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The exact compatible-basis method and counting-identity simplification give independently accepted joint-profile separators, including coefficient64 variants. A refreshed bounded five-event Boolean search adds234 distinct exact integer-form inequalities; a fresh45-anchor conditional-rank cohort yields27 complete lattice certificates,12 span-closed cuts,and6 inconclusive anchors at witness12. The latest combined point remains exactly feasible with54 partner inequalities,234 added integer-form rows,308 rank rows,all older global conditional families,and all Boolean triples. Exact physical basis mixtures prove every unconditional rank inequality at witness12; exact four-X and two-X/two-Z count extensions close those selected count-only gates. Two full-selector120second sourcecase trials remainUNKNOWN. Width16/18,cover405,physical88/128,zero full source anchors excluded,and Lean status stay unchanged. No general finishing-time estimate or source-search speedup is established. Exact exchange repair and independent terminal replay add anchor40 to the witness12 singleton membership cohort: 28 accepted rank laws, 12 cuts and five inconclusive anchors. Two capped anchor17 states are exact and resumable but do not equal the target. The 36-stage clean checkpoint replay passes 1,422 source bindings and recovers witness15 byte-for-byte. Cunningham1984 is indexed as F173 with fulltext acquisition requested in issue63; no algorithmic complexity transfer or fulltext question screen is claimed.. [Report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md) · [Verification](../formalization/canonical-width/c16/coupling-results/integer-witness15-checks-summary.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -709,6 +709,13 @@ Two complete solver-method papers add sixteen historical broad directions/method
 - [L-F165-further-applications](OPEN-PROBLEMS.md#l-f165-further-applications): Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
 - [L-F165-cvc5-tuning](OPEN-PROBLEMS.md#l-f165-cvc5-tuning): Tune cvc5 internals for the IPASIR-UP integration.
 
-Current cohort: **424 canonical entries,160 eligible targets,204 paper records,165 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-cunningham-membership-method-lead-20261030
 
-The current source index has **132** records, with actual access levels retained.
+One publisher-indexed abstract/author-metadata membership-method lead. Full text and source questions remain unassessed; no canonical question or Lean result added.
+
+[Screen report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md). Added **0 entries**, **0 eligible targets**, **1 paper records**, **0 full-text screens** and **0 completed proofs**.
+
+
+Current cohort: **424 canonical entries,160 eligible targets,205 paper records,165 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **133** records, with actual access levels retained.

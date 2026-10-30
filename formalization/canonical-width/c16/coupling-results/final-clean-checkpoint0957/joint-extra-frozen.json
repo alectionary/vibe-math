@@ -1,0 +1,37 @@
+{
+  "commands": [
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_joint_anchor_profile_bound.py",
+      "--certificate",
+      "coupling-results/joint-anchor-matched-exact.json",
+      "--parent",
+      "moment-resumption-results/common-profile32-projected-pruned.json",
+      "--point",
+      "moment-resumption-results/boolean-rational1.json.gz",
+      "--output",
+      "/private/tmp/c16-clean-replay0957/joint-matched-source.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_joint_anchor_profile_bound.py",
+      "--certificate",
+      "coupling-results/joint-anchor-conditional-exact.json",
+      "--parent",
+      "moment-resumption-results/common-profile32-projected-pruned.json",
+      "--point",
+      "moment-resumption-results/boolean-rational1.json.gz",
+      "--output",
+      "/private/tmp/c16-clean-replay0957/joint-conditional-source.json"
+    ]
+  ],
+  "controller_sha256": "2686d2e2290ec94193527d9e1f5a6126ed3efd6e31235d28035720e5a49659d2",
+  "input_and_source_hashes": {
+    "verify_joint_anchor_profile_bound.py": "ee33acd13b3dd6bba4b4384073ee3f3ed8ab71fcc89f78532373ec74aeb05be7",
+    "coupling-results/joint-anchor-producer-v2.py": "6731839e3d753b9ad135fdfd77e7c53da8b1addca033c06c05b30f195bc11286",
+    "joint_anchor_profile_bound.py": "47430739e8d4cbe6589d37f5c3ce86a4d4ef01bb3ad4acf9af9c1d0383f2072b",
+    "moment-resumption-results/boolean-rational1.json.gz": "d1b45692b268f5618b9ea710befcc5f1bdacbd86ef4014da354e2a1b492011b8"
+  }
+}
