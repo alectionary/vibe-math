@@ -100,6 +100,33 @@ opening, then states the tolerance again.
 - Do not use internal shorthand. Write "measuring sign positions on the page",
   not "glyph reading". File names stay as paths.
 
+## Explain findings before execution details
+
+Write the main paper for a reader who has not seen the working conversation.
+State what was checked, what the check found, and why it matters; link the
+supporting filename. Do not replace a result with "evaluated in the outputs"
+or direct readers to "the manifest", "recorded below", or "per README"
+without an exact filename or section link. Use scientific roles such as
+"independent source reviewer", not internal roles such as "parent" or
+"executor". Retain consequential access limits and verification boundaries;
+omit operational chatter that does not affect interpretation.
+
+Keep three distinct records:
+- Main text: scientific claim, method, finding, implication, and evidence link.
+- Reproduction appendix/README: prerequisites (including unavailable inputs),
+  exact command and working directory, expected output, checkpoint behavior,
+  and a revision that actually contains the required code and inputs.
+- Provenance: the starting repository revision and original workflow version,
+  labeled as historical context rather than runnable reproduction targets.
+
+A link to master is a navigation aid, not an immutable reproduction version.
+Verify the stated reproduction revision contains the files before giving it.
+Name a specific README subsection when the complete recipe lives there.
+Separate rebuilding a report from saved outputs, rerunning simulations, and
+re-extracting source data. Do not imply a missing source file is bundled.
+Before delivery, read the rendered paper for vague destinations, unexplained
+internal terms, and execution instructions misplaced in scientific prose.
+
 ## What we did, and what we took from others
 
 One section states our contribution: the proofs, the simulations, and the
@@ -108,6 +135,38 @@ published tables. Each later number is labeled as one of: our calculation or
 simulation, an assumption we supplied, or a figure taken from a cited source.
 
 ## Links and citations
+
+Every replication note must have in-text scholarly citations and a References
+section, not just software hyperlinks or an uncited reading list. Cite the
+replicated work at the first substantive attribution and give page, table,
+equation, or appendix locators for borrowed numbers, designs, and formulas.
+Table captions must identify the source of published values separately from
+our calculations. Use one consistent citation style; author--year is a useful
+default unless the venue specifies another.
+
+Cite primary methodological literature for estimators, uncertainty calculations,
+multiple-testing procedures, and substantive interpretations actually used.
+Use official version-specific documentation for software defaults, plus the
+package's recommended academic citation where available. A software link and
+version do not replace a method citation. Do not add unrelated literature to
+inflate the bibliography. Distinguish our derivations and diagnostics from
+published results; a related citation does not validate a new assumption.
+
+Verify author, year, title, venue, and DOI or stable URL against the original
+publication, publisher, institutional record, or installed package citation
+metadata. Read the relevant source passage before attaching it to a claim.
+If only a secondary attribution or abstract was available, record that limit;
+never imply full-text verification or copy an unverified reference list.
+
+Before delivery, audit claim-to-source coverage and record it in the compliance
+ledger. Check that each citation resolves, every reference is used, links and
+source locators are correct, and the rendered bibliography is readable. Keep
+editable bibliography sources in the reproducible bundle and document the
+build command. For ordinary LaTeX cite/citep/citet with bibitem or BibTeX keys,
+run `scripts/check_citations.py PAPER --references REFERENCES --log BUILD_LOG`
+from this skill directory. This structural check does not establish that a
+source supports a claim; the source-reading audit remains mandatory. Other
+formats need equivalent checks and a recorded result.
 
 Code and data links in papers point at `master`.
 
@@ -119,7 +178,22 @@ OpenMx as an independent check on the optimizer. Use Lean for the algebra, and
 R with an SEM package for statistical model fitting.
 
 Deep-link every script, output file, and key function from the text, with line
-anchors for theorems and functions.
+anchors for theorems and functions. The visible link text must include the
+actual filename and extension (for example, `model.R: empirical fits`, not
+just `empirical fits`). Prefer a literal filename label, with any description
+outside the link: `empirical fits ([model.R](...#L68))`. Preserve underscores
+and extensions in rendered text, using an appropriate code/path font.
+Verify the final PDF's visible link text and hyperlink annotations, not just
+the manuscript source. Deliver a link to the newly built artifact; updating
+source alone does not update previously downloaded or separately saved PDFs.
+
+In the artifacts appendix, make each repository file and regeneration script
+a clickable `master` link; a plain path or command is not sufficient. Use
+`blob/master` for files and `tree/master` for directories. Preserve filename
+extensions in visible labels and check function line anchors against the
+actual source. Label external or separately delivered artifacts explicitly;
+do not invent a repository URL for a file that is not included. Inspect the
+rendered PDF to confirm that links remain readable and clickable.
 
 ## Engine
 
@@ -266,6 +340,16 @@ Private Use Area codes. The retrieval skill records the codes and the
 out-of-order text layer under
 [equations in the text layer](../document-retrieval-worker/SKILL.md#equations-in-the-text-layer).
 
+## Deliverable filenames
+
+Name the final PDF descriptively from the paper title and subject, for example
+`simplifying_assumptions_in_power_analysis__a_replication_of_kupzyk_2011.pdf`,
+not `report.pdf` or `paper.pdf`. Use a stable, filesystem-safe name with the
+`.pdf` extension. Update build commands, artifact tables, README, and PR links
+when renaming it; keep one clearly identified current published PDF. Verify
+that the linked or uploaded bytes are the newly rendered document. Preserve
+historical copies separately and do not present an older download as current.
+
 ## Required sections
 
 Each item is its own section. Each assumption and each resolved ambiguity is
@@ -274,9 +358,9 @@ its own subsection.
 - [ ] What we did ourselves, and what we took from others.
 - [ ] Assumptions. One subsection per assumption we supplied. A choice the
       source states is not an assumption.
-- [ ] Ambiguities that were resolved. Each subsection names the artifact, the
-      script, the output file, the commit, and the command that regenerates
-      the output.
+- [ ] Ambiguities that were resolved. Each subsection explains the ambiguity,
+      the check, the finding, and its implication, with links to named evidence.
+      Put the complete execution recipe in the artifacts appendix or README.
 - [ ] What remains unresolved. For each open gap, the stopping statement from
       [Check our side first](#check-our-side-first): the candidates, what each
       attempt gave, the rank of the remaining causes, and the artifact that
@@ -471,7 +555,22 @@ pull request.
 - [ ] Links point at master. Every piece of software is cited with its exact
       version, a CRAN or repository link, and why it was chosen. Every
       script, output file, and key function is deep-linked from the text,
-      with line anchors for theorems and functions.
+      with line anchors for theorems and functions. The visible link text must include the
+actual filename and extension (for example, `model.R: empirical fits`, not
+just `empirical fits`). Prefer a literal filename label, with any description
+outside the link: `empirical fits ([model.R](...#L68))`. Preserve underscores
+and extensions in rendered text, using an appropriate code/path font.
+Verify the final PDF's visible link text and hyperlink annotations, not just
+the manuscript source. Deliver a link to the newly built artifact; updating
+source alone does not update previously downloaded or separately saved PDFs.
+
+In the artifacts appendix, make each repository file and regeneration script
+a clickable `master` link; a plain path or command is not sufficient. Use
+`blob/master` for files and `tree/master` for directories. Preserve filename
+extensions in visible labels and check function line anchors against the
+actual source. Label external or separately delivered artifacts explicitly;
+do not invent a repository URL for a file that is not included. Inspect the
+rendered PDF to confirm that links remain readable and clickable.
 - [ ] "Remove" was a deletion. Nothing that was removed was relocated.
 - [ ] The comparison table has claim, published, ours, precision,
       numerical, and scope, plus one reason per row. A remaining gap names
@@ -484,8 +583,9 @@ pull request.
       attempt is in the dated ledger.
 - [ ] Run time was estimated before any long simulation.
 - [ ] Every disputed number and equation has a 600 dpi crop.
-- [ ] Each resolved ambiguity has an artifact, a script, an output, a commit,
-      and a command.
+- [ ] Each resolved ambiguity states a finding and links its evidence. Its
+      reproduction entry identifies prerequisites, script, expected output,
+      exact command, working directory, and a revision containing the code.
 - [ ] The README runs every script.
 - [ ] The pull request can be followed without opening the PDF. Its findings
       open with the headline verdict.
