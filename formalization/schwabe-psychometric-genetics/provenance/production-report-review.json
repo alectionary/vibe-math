@@ -1,0 +1,114 @@
+{
+  "reviewer": "Independent report reviewer (/root/analysis_validation)",
+  "reviewed_utc": "2026-10-30T19:45:23.189754+00:00",
+  "status": "accepted for report generation from a stable frozen-analysis snapshot; terminal scientific and rendered main-PDF review still required",
+  "scope": "Code/schema review and preserved 20-replicate baseline plus synthetic failure/pending fixtures only. No live production effect outputs inspected; no model fits or actual JAGS chains run; no git/network mutations.",
+  "files": {
+    "simulation/build_production_report.py": "ef5eed67accf758dd16e920dec51842f69b12f5bb8913fd39f67f717e02772f1",
+    "simulation/test_production_report.py": "d5284cfb0930171398dd8ac4ee7cdd3721ad95a396c3e063fcbbd3b7ac4d8844",
+    "simulation/test_production_report_independent.py": "765671cc530bb7ce7829df5821bd0b88c0cb5ca58f02d960ca9de2ed29988b9e",
+    "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518",
+    "production/analysis-plan.json": "d8112ba65868f54035f5258c560821080e4d3588e6b9dfe01e8a7894f2f2fa1a",
+    "outputs/source-figure-values.csv": "84ac71c9222f9a0868e5b9da4d6dfe7c3ed4fa7f199be9e249a53003375c41a7",
+    "outputs/trial-records.csv": "13278fb81fd2bf3d258dee482624859a98e16e2bf7469aec1b8fe6e065fdac4c",
+    "outputs/condition-summary.csv": "39a2bc9d40321b3673010253c2731c7d56fe343b3163b93a1e6283b5a8e5f9ae"
+  },
+  "independent_validation": {
+    "checks": [
+      {
+        "test": "baseline_input_output_hashes",
+        "passed": true
+      },
+      {
+        "test": "baseline_counts_estimands_and_signed_bias",
+        "passed": true
+      },
+      {
+        "test": "baseline_overwrite_rejected",
+        "passed": true
+      },
+      {
+        "test": "tiny_input_output_hashes",
+        "passed": true
+      },
+      {
+        "test": "tiny_failure_pending_counts_and_nonestimability",
+        "passed": true
+      },
+      {
+        "test": "tiny_overwrite_rejected",
+        "passed": true
+      },
+      {
+        "test": "duplicate_contrast_rejected",
+        "passed": true
+      },
+      {
+        "test": "duplicate_bias_rejected",
+        "passed": true
+      },
+      {
+        "test": "duplicate_comparison_rejected",
+        "passed": true
+      },
+      {
+        "test": "wrong_family_rejected",
+        "passed": true
+      },
+      {
+        "test": "negative_denominator_rejected",
+        "passed": true
+      },
+      {
+        "test": "mismatched_summary_reversal_rejected",
+        "passed": true
+      },
+      {
+        "test": "baseline_files_unchanged",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "scope": "Preserved baseline and synthetic bookkeeping only; no live production effects or fits."
+  },
+  "baseline_compile_validation": {
+    "status": "passed",
+    "checks": [
+      "Preserved baseline counts, repetitions and 23 point reversals match",
+      "Variance/path distinction and residual h2 truth preserved",
+      "Input hashes match exact frozen analyzer files",
+      "Existing generated outputs protected",
+      "All generated LaTeX compiles in temporary document"
+    ],
+    "scope": "Preserved baseline and temporary files only"
+  },
+  "findings_and_fixes": [
+    {
+      "finding": "Initial builder accepted duplicated unselected contrast/bias/source rows because inventory validation checked lengths only; independently reproduced duplicate-contrast acceptance.",
+      "resolution": "Exact unique canonical inventories now required for all 720 parameter groups, 288 paired SE contrasts, 504 source comparisons and 72 MAR bias cells. Independent duplicate fixtures now reject."
+    },
+    {
+      "finding": "Initial builder lacked per-cell arithmetic and summary signed-count consistency checks.",
+      "resolution": "Nonnegative denominator identities, comparison/bias denominator consistency, paired counts, replay/new completion counts, family/alpha checks, signed reversal/status checks and summary-counter crosschecks added. Independent malformed denominator/family/summary fixtures reject."
+    },
+    {
+      "finding": "Multiplicity families and repetition-range meaning needed explicit rendered explanation.",
+      "resolution": "Rendered notes name 108 primary and 36 sensitivity SE families separately per metric, 72 bias cells, 216 source comparisons per SE metric and 72 source-estimate comparisons. Min/max repetitions explicitly mean method-fit counts per cell, not seed-index ranges."
+    }
+  ],
+  "scientific_checks": [
+    "Baseline produces 1920 completed/valid fits, per-cell count20, variance-SE outside191 versus exploratory path-SE outside0, 108 positive primary points/104 adjusted-positive contrasts and23 MAR point-bias reversals.",
+    "Tiny fixture retains8 requested,4 completed,3 valid,1 invalid,2 failed,2 pending; includes unrequested conditions so per-cell completed min/max0/2 and nonestimable representative values NA.",
+    "Printed variance SE and exploratory path SE remain distinct; source-comparison intervals concern ours-minus-source with extraction bounds, whereas signed bias concerns estimate-minus-truth (residual h2 truth0.5).",
+    "SE reversal contrasts use deletion-minus-full; MAR bias uses estimate-minus-truth; point reversals are not labeled significant reversals. Source sign exceeding extraction bound does not settle unknown source Monte Carlo uncertainty.",
+    "Primary2percent and alternative3percent sensitivity readings stay separate; source uncertainty omitted explicitly, with no equivalence, power, rounding or whole-dissertation success claim.",
+    "Exact input-byte hashes and generated output hashes match fixtures; representative rows and numeric macros are retained in build manifest; existing generated destinations refuse overwrite; old baseline hashes unchanged."
+  ],
+  "limitations": [
+    "Builder is a formatter and structural consistency guard, not an independent recomputation of every analyzer estimate or an authentication/signature system. It records upstream provenance; stable input snapshot and reviewed analyzer identity must be enforced by production workflow.",
+    "Input hashing occurs before file reads; concurrent replacement of the analysis directory is unsupported. Use an immutable terminal/cap snapshot.",
+    "Ten significant digits preserve reporting detail but do not increase source precision. All valid-fit summaries retain potential selection limitations.",
+    "Temporary LaTeX compilation passed, but this is not visual review of the integrated main paper. Terminal outputs need scientific review, final main-PDF rendering/inspection, actual filenames/links and committed immutable evidence.",
+    "Acceptance concerns this reporting tool only; remaining dissertation items and unsuccessful/incomplete replications remain open."
+  ]
+}

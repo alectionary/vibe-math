@@ -182,10 +182,22 @@
       "id": "C5-1",
       "source_locator": "Section5.1.2 p72; Eqs5.3-5.15 pp75-76; p84; AppC pp138-139",
       "status": "attempted/unresolved",
-      "classification": "restricted algebra and finite-sample counterexample established; full marginal identification/interior likelihood work remains",
-      "actual_evidence": "outputs/analytic-checks.json; provenance/identification-check.json; simulation/identification_check.py; evidence/p72-identification-claim.png",
-      "remaining": "Establish full marginal item-model identifiability under explicit calibration/support assumptions and assess interior likelihood behavior for nondegenerate data. Restricted algebra/counterexample does not close the whole result group.",
-      "completed_followup": "Exact algebra verifies conditional ACE covariance inversion, two-level logvariance identification and monotonicity. Binary path reflection is distinguished from continuous-support global sign ambiguity. A written all-zero Rasch-response counterexample shows that population injectivity does not ensure a finite sample likelihood maximum; this does not contradict the empirical posterior fits."
+      "classification": "known-Rasch population identification addressed by reviewed ordinary argument; faithful Lean bridge and other calibration/design cases remain open",
+      "actual_evidence": "outputs/analytic-checks.json; provenance/identification-check.json; simulation/identification_check.py; evidence/p72-identification-claim.png; provenance/marginal-identification-check.json; simulation/marginal_identification_check.py; provenance/marginal-identification-independent-review.json; provenance/proof-toolchain-observation.json",
+      "remaining": "Formalize a faithful Lean bridge before any fully proved manuscript-result claim. Unequal OPLM discrimination, other calibration/support designs and nondegenerate finite-sample interior likelihood behavior remain open; population identification does not establish unique MLEs, posterior unimodality or convergence.",
+      "completed_followup": "Restricted covariance/logvariance and sign algebra is checked. The known-Rasch simulation model identification is addressed by an independently reviewed ordinary argument: two distinct calibrated items and both zygosities at each of two moderator levels identify all eight coefficients. This is not Lean-certified. A separate all-zero-response example qualifies finite-sample MLE existence; neither result asserts empirical posterior validity.",
+      "qualification": {
+        "known_Rasch_population_identification": "Addressed under explicit joint support, known distinct finite difficulties and common unit discrimination; reviewed ordinary argument and symbolic identities, not a formally certified theorem.",
+        "finite_sample_MLE": "All-zero-response existence counterexample is logically separate; no general finite-sample unique-maximizer conclusion.",
+        "uncovered_cases": [
+          "known unequal OPLM discrimination",
+          "unknown or alternative calibration constraints",
+          "insufficient joint zygosity-moderator support",
+          "separate-twin moderators or unsupported missingness/ascertainment assumptions",
+          "nondegenerate finite-sample interior likelihood modes"
+        ],
+        "formalization": "Lean bridge absent; toolchain observation is an environment fact, not proof of impossibility."
+      }
     },
     {
       "id": "C5-2",
@@ -338,7 +350,7 @@
     "Chapter6 bounded checkpoint batches, validate Hessian/SE and source-design sensitivity",
     "Chapter2 independent chains and tail convergence before100-dataset grid",
     "Chapter5 measured benchmarks and validated acceleration before250-dataset grid",
-    "Full marginal item-model identification and nondegenerate interior likelihood behavior remain open; restricted covariance proofs and finite-sample uniqueness counterexample recorded",
+    "Faithful Lean bridge and unequal-OPLM/other calibration identification cases remain open; known-Rasch population identification has reviewed ordinary argument, distinct from finite-sample MLE qualification",
     "Empirical inputs require permitted public acquisition; author contact remains unauthorized"
   ],
   "resource_evidence": "outputs/production-resource-plan.json",

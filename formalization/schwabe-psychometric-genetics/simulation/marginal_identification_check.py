@@ -1,0 +1,84 @@
+"""Algebra supporting population identification of a calibrated Rasch ACE model.
+
+No simulation, likelihood fitting or model process is started. The written proof
+in the emitted record uses monotonicity and Gaussian integration by parts;
+computer algebra checks its two rational identities, not the full theorem.
+Run from the study root. Existing evidence and numerical baselines are untouched.
+"""
+import datetime, hashlib, json, pathlib
+import sympy as sp
+
+# Two known item difficulties b2>b1; t=exp(theta-b1)>0,d=exp(b2-b1)>1.
+t,d=sp.symbols('t d',positive=True)
+first_derivative=t/(1+t)**2
+second_derivative=t*d/(d+t)**2
+ratio=sp.cancel(second_derivative/first_derivative)
+expected=2*d*(d-1)*(t+1)/(d+t)**3
+assert sp.simplify(sp.diff(ratio,t)-expected)==0
+
+# Centered bivariate normal with equal diagonal variance T and covariance K.
+# Derivative of its density wrt K equals the mixed x,y derivative.
+x,y,K=sp.symbols('x y K',real=True);T=sp.symbols('T',positive=True)
+D=T*T-K*K
+log_density=-sp.log(D)/2-(T*(x*x+y*y)-2*K*x*y)/(2*D)
+price_identity=sp.factor(sp.diff(log_density,K)-sp.diff(log_density,x)*sp.diff(log_density,y)-sp.diff(log_density,x,y))
+assert price_identity==0
+
+# Exact covariance-map identities and a missing-zygosity counterexample.
+A,C,E=sp.symbols('A C E',positive=True)
+variance=A+C+E;mz=A+C;dz=A/2+C
+assert sp.simplify(2*(mz-dz)-A)==0
+assert sp.simplify(2*dz-mz-C)==0
+assert sp.simplify(variance-mz-E)==0
+triples=[(sp.Rational(1,4),sp.Rational(1,4),sp.Rational(1,2)),(sp.Rational(1,8),sp.Rational(3,8),sp.Rational(1,2))]
+MZ=[sp.Matrix([[a+c+e,a+c],[a+c,a+c+e]])for a,c,e in triples]
+assert MZ[0]==MZ[1]
+assert triples[0][0]/2+triples[0][1]!=triples[1][0]/2+triples[1][1]
+
+proof=[
+ {'step':1,'name':'Mean is identified conditional on latent standard deviation',
+  'statement':'For a known finite difficulty b1, define p1(mu,s)=E[L(mu+sZ-b1)] with Z standard normal, L logistic and s>0. For fixed s, p1 is continuous strictly increasing in mu, with limits0and1. Thus for any p in(0,1), a unique mu_p(s) exists. Its derivative is mu_p\'(s)=-E[Z L\'(mu_p(s)+sZ-b1)]/E[L\'(mu_p(s)+sZ-b1)].',
+  'justification':'L\'>0 everywhere and is bounded; dominated convergence gives limits and differentiation. E|Z| is finite; the implicit derivative is legitimate since denominator>0.'},
+ {'step':2,'name':'A second distinct calibrated difficulty identifies the standard deviation',
+  'statement':'Let b2>b1. Define f\'(z)=L\'(mu_p(s)+sz-b1), g\'(z)=L\'(mu_p(s)+sz-b2), and probability weight w_s(z) proportional to f\'(z)phi(z). Along the p1=p curve, d p2(mu_p(s),s)/ds = E[f\'] Cov_w(Z, g\'/f\'). The ratio is r(t)=d(1+t)^2/(d+t)^2, where t=exp(mu_p(s)+sZ-b1), d=exp(b2-b1)>1. Its derivative wrt t is2d(d-1)(t+1)/(d+t)^3>0. Hence r is strictly increasing in Z when s>0.',
+  'strictness':'Under w_s the variable Z has a positive density onR. For independent Z,Z\', Cov_w(Z,r(Z))=E[(Z-Z\')(r(Z)-r(Z\'))]/2>0. Therefore p2 is strictly increasing along the fixed-p1 curve. Equal pairs(p1,p2) imply equal s, then equal mu.',
+  'limit':'The two difficulties must be known, finite and distinct, with the same fixed unit discrimination. This step uses population item probabilities, not observed finite-sample proportions.'},
+ {'step':3,'name':'Cross-twin item probability identifies latent covariance',
+  'statement':'With identified mu and T=s^2, fix any known item difficulty for each twin. For jointly Gaussian centered(X,Y) of variances T and covariance K with |K|<T, define q(K)=E[L(mu+X-bj)L(mu+Y-bk)]. Then q\'(K)=E[L\'(mu+X-bj)L\'(mu+Y-bk)]>0.',
+  'derivation':'For the bivariate normal density phi_K, direct differentiation gives partial_K phi_K=partial_x partial_y phi_K. Differentiating the integral and integrating by parts twice moves derivatives to the two logistic factors. Gaussian tails, bounded logistic factors and bounded derivatives make boundary terms vanish and justify the operations on compact subsets of|K|<T. The integrand product of derivatives is strictly positive.',
+  'consequence':'Population joint response probability for a chosen cross-twin item pair therefore determines K uniquely. This uses one such probability in each zygosity group, after mean and variance are identified.'},
+ {'step':4,'name':'Recover A,C,E at each moderator level',
+  'statement':'At fixed m, T=A+C+E, K_MZ=A+C, K_DZ=A/2+C. Hence A=2(K_MZ-K_DZ), C=2K_DZ-K_MZ and E=T-K_MZ uniquely.',
+  'assumptions':'Common latent mean/variance across zygosity groups at the same shared family moderator; known genetic correlations1and1/2; both groups observable at EACH moderator level used for coefficient recovery. PositiveA,C,E imply0<K_DZ<K_MZ<T, within step3 domain.'},
+ {'step':5,'name':'Recover moderator coefficients',
+  'statement':'At two distinct moderator levels m0,m1, with both MZ and DZ groups observed at EACH level, recovered positive variances V_r determine beta1r=[logV_r(m1)-logV_r(m0)]/(m1-m0) and beta0r=logV_r(m0)-beta1r*m0 for r=A,C,E. The recovered means similarly determine mu and beta1m. Consequently the8-dimensional population parameter vector is injectively mapped to the observed item-vector distributions under the listed design/calibration assumptions.',
+  'scope':'For binary shared moderator0/1 this is directly constructive. Continuous moderator generalization requires identifiable conditional distributions at enough support points or continuity plus equality almost everywhere; no unsupported extrapolation from missing moderator support.'}
+]
+record={
+ 'canonical_result':'C5-1',
+ 'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ 'status':'Restricted population identification supported by an independently reviewed ordinary monotonicity/inversion argument; symbolic identities checked; Lean formalization absent, so no fully proved manuscript-result claim. Not a finite-sample likelihood uniqueness or convergence result',
+ 'source_sha256':'67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28',
+ 'source_assumptions_read':[
+  {'locator':'Chapter5 p75 Eqs5.9-5.10 and p76','content':'Fixed Rasch unit-discrimination logistic measurement; simulation item difficulties treated as known.'},
+  {'locator':'Chapter5 pp77-78 simulation design and Tables5.1-5.2 pp79-80','content':'Both MZ and DZ groups (28%/72%); shared binary moderator; known difficulties evenly spread-3.2to3.2; J20/60/100/250. These item counts provide at least two distinct finite difficulties.'},
+  {'locator':'Chapter5 p81 empirical measurement specification','content':'Empirical model uses known OPLM item discrimination parameters. The equal-discrimination proof below does not automatically cover unequal discrimination.'},
+  {'locator':'Chapter5 p72','content':'Our argument separates population identification from the source statement about one likelihood maximum.'}],
+ 'theorem':{
+  'target':'Population/global injectivity of the eight biometric/mean coefficients in the observed calibrated Rasch item-vector distribution, restricted to the source simulation model/design assumptions.',
+  'parameters':['mu','beta1m','beta0a','beta1a','beta0c','beta1c','beta0e','beta1e'],
+  'required_assumptions':['Gaussian latent twin trait at each moderator value with shared mean and variance across zygosity','A(m),C(m),E(m)>0 finite and loglinear in shared moderator','Known MZ/DZ genetic correlations1and1/2; no other covariance components','Both MZ and DZ groups have positive observed support at EACH of the two distinct moderator levels: all four zygosity-by-moderator cells, not merely positive marginal support','At least two known finite distinct difficulties with common fixed Rasch discrimination1; same calibration across groups/moderator','Population item marginals and at least one cross-twin joint item probability identifiable from observations; complete item/pair observation or justified missingness conditions sufficient for those probabilities','Conditional independence of item responses given latent traits, as in the stated Rasch measurement model'],
+  'proof':proof,
+  'conclusion':'Two parameter vectors satisfying these assumptions with equal observed distributions have equal mean/variance at each moderator level, equal MZ/DZ covariance, equalA/C/E and equal mean/logvariance coefficients.'},
+ 'constructive_design_failures':[
+  {'design':'Only MZ families observed, any number of known Rasch items, two moderator levels, all moderation slopes0 and equal means','parameters':[[str(z)for z in tr]for tr in triples],'common_latent_covariance':[[str(z)for z in row]for row in MZ[0].tolist()],'reason':'The two distinct(A,C,E)triples give exactly the same joint latent Gaussian distribution and therefore every observed item-vector probability. This is a direct equality argument, not parameter counting.','exclusion':'The source simulation includes both zygosity groups, so this is a design-necessity example, not its counterexample.'},
+  {'design':'Moderator observed only at0','reason':'Every variance slope and the mean slope multiply0, so arbitrary distinct finite slopes give the same observed distribution.','exclusion':'The source simulation uses both binary levels.'},
+  {'design':'Item difficulties not externally fixed and their common location unconstrained','reason':'Adding c to mu and every difficulty leaves all Rasch probabilities invariant; prior/constraint choices must be considered separately.','exclusion':'The source simulation treats difficulties as known.'}],
+ 'attempted_steps':[{'attempt':'Re-read calibration, latent Gaussian, moderator and zygosity design assumptions','outcome':'Source simulation fits the restricted known-Rasch conditions; empirical OPLM has different slopes.'},{'attempt':'Investigate whether two calibrated item marginals identify logistic-normal mean/SD','outcome':'Obtained strict covariance derivative proof; no numerical optimizer, parameter-count argument or simulation used.'},{'attempt':'Bridge item-pair probabilities to latent MZ/DZ covariance','outcome':'Derived Gaussian density derivative identity and positive derivative of logistic cross-moment; algebra checked exactly.'},{'attempt':'Finish component and regression inversion','outcome':'Explicit ACE and two-level loglinear formulas; exact symbolic checks.'}],
+ 'verification':{'sympy_version':sp.__version__,'logistic_derivative_ratio_identity':'passed','gaussian_density_derivative_identity':'passed','ACE_inversion':'passed','MZ_only_exact_counterexample':'passed','model_fits_or_simulations_started':0,'parameter_counting_used_as_proof':False,'proof_assistant':'Not Lean-formalized; symbolic checks support ordinary written proof, not formal certification.','independent_review':'Separate reviewer judged the core ordinary argument correct conditional on explicit joint support and accurate attribution; final hash-matched review is maintained separately. This record is not its own independent review.'},
+ 'remaining':['Final hash-matched independent review must confirm the joint-support and source-attribution corrections; Lean formalization is absent, and the proof gate for a fully proved manuscript result remains unmet.','Unequal known OPLM discrimination, unknown calibration, separate-twin moderators and informative missingness require separate proofs or counterexamples.','Positive-support population identification does not establish uniqueness/existence of finite-sample maxima, posterior unimodality, MCMC convergence or parameter recovery at the source sample sizes.','The all-zero finite-sample no-maximizer example in identification-check.json remains valid and logically separate.'],
+ 'scope_note':'This restricted result addresses the full marginal observed-item model for the source known-Rasch simulation assumptions, rather than merely assuming latent covariance identified. It does not complete all C5-1 assertions or the entire dissertation. No novelty claim or new prior-art campaign is made.',
+ 'script':'simulation/marginal_identification_check.py'
+}
+pathlib.Path('provenance/marginal-identification-check.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record['verification'],indent=2))

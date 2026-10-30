@@ -1,0 +1,139 @@
+{
+  "reviewer": "Independent scientific reviewer (/root/guard_validation)",
+  "reviewed_utc": "2026-10-30T19:42:45.949151+00:00",
+  "status": "Accepted as an ordinary written conditional identification argument after wording corrections; Lean formalization absent and proved-results manuscript gate remains unmet",
+  "reviewed_hashes": {
+    "provenance/marginal-identification-check.json": "a733bca2b04315b22d4ec8f940d11f101c4fe2e2d42209362b3160a6dda4fe0f",
+    "simulation/marginal_identification_check.py": "85bbf632fa6145bcdab39fab60ee4f38b0ae4e8364fd1a85251a862d3c08dfa6"
+  },
+  "source_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+  "source_read": [
+    "Chapter5 p72 Section5.1.2: source equates logvariance identification with one likelihoodmaximum; review does not accept that implication",
+    "pp73,75-76 Eqs5.2-5.15: Rasch unit discrimination, known simulationdifficulty calibration, conditional Gaussian ACE andcommonfamilymoderator",
+    "pp77-78:28%MZ/72%DZ,dichotomousmoderator, finite distinct difficulties equallyspaced[-3.2,3.2],J20/60/100/250",
+    "p81: empiricalOPLM uses known itemdiscriminationparameters, outside the common-unit-slope proof",
+    "AppendixC pp138-139: binary squaredpath sign indeterminacy, distinct from identification of the logvariance marginalitemmodel"
+  ],
+  "accepted_assumptions": [
+    "Finite Gaussian latent traits with common conditionalmean and variance acrosszygosity at eachmoderatorlevel; conditional ACE model correctlyspecified",
+    "Finite strictlypositive A,C,E, loglinear in the same observed familymoderator; conditional measurementindependence acrossitems/twins",
+    "Both MZ andDZ groups have positive probability at EACH of two distinct observed moderatorlevels, not merely positive marginal support ofgroupandmoderator",
+    "Known finite distinct itemdifficulties, commonfixed unitRaschdiscrimination, invariant calibration acrossgroups/moderator",
+    "The relevant within-twin itemmarginals and cross-twin itempair probabilities are observed/identified; no unsupported missingness orascertainment assumptions",
+    "Population distributions, rather than noisy finite-sample empirical proportions, are the object of the theorem"
+  ],
+  "step_reviews": [
+    {
+      "step": 1,
+      "verdict": "accepted",
+      "reason": "For each s>0, mu\u21a6E logistic(mu+sZ-b1) is C1, strictly increasing with limits0 and1. Logistic derivative is bounded and strictlypositive, and E|Z|<infinity. Thus the implicit derivative is valid locally; uniqueness patches the local curves into one C1 curve for every finite s>0."
+    },
+    {
+      "step": 2,
+      "verdict": "accepted",
+      "reason": "Write A=E fprime>0 and weight w=fprime*phi/A. Substitution of muprime=-E[Z fprime]/A gives dp2/ds=A Cov_w(Z,gprime/fprime). Independently computed d log[r(t)]/dt=2(d-1)/((d+t)(1+t))>0 for d>1,t>0; multiplying by r gives the stated derivative. Since dt/dZ=s*t>0 and weighted Z has a positive density, the independent-copy covariance identity is strictly positive. The ratio is bounded between1/d and d, ensuring integrability. Strict increase over the connected s>0 domain proves global injectivity of the two-marginal map, not merely local nonzeroJacobian."
+    },
+    {
+      "step": 3,
+      "verdict": "accepted",
+      "reason": "Independent matrix-calculus calculation gives partial_K log phi=-tr(Sigma^-1 D)/2+x^T Sigma^-1 D Sigma^-1 x/2, with D offdiagonal ones. It equals phi_xy/phi, so no missing factor2 occurs. On compact |K|<T subdomains the density derivatives are polynomial times a uniformly Gaussian tail; bounded logistic factors/derivatives justify differentiation and both integrations byparts. Product logistic derivatives is everywherepositive, hence qprime(K)>0 and globalinjectivity."
+    },
+    {
+      "step": 4,
+      "verdict": "accepted under positive joint support",
+      "reason": "At each of two moderatorlevels BOTH MZ andDZ conditional distributions must be observed. T and bothK then give A=2(KMZ-KDZ), C=2KDZ-KMZ, E=T-KMZ. Allpositive ACE imply0<KDZ<KMZ<T, inside the Gaussian derivative domain."
+    },
+    {
+      "step": 5,
+      "verdict": "accepted",
+      "reason": "Two distinct moderatorlevels make the affine-design determinant nonzero. Taking logs of each positive recoveredvariance identifies its two coefficients, and the two recoveredmeans identify the mean intercept/slope. For continuous support, common conditional support and equality-a.e./continuity need explicit treatment; point conditioning at unsupported values is not valid."
+    }
+  ],
+  "required_wording_corrections": [
+    {
+      "location": "theorem.required_assumptions joint-support sentence",
+      "reason": "Current wording can be read as marginalpositivity only. Step4 implicitly needs everyzygosity\u00d7moderatorcombination observed.",
+      "replacement": "Both MZ andDZ groups have positive observed support at EACH of two distinct moderatorlevels."
+    },
+    {
+      "location": "source_assumptions_read Chapter5p72 content",
+      "reason": "The source itself equates identification with a single likelihoodmaximum; the separation is our qualification, not something established by that sourcepassage.",
+      "replacement": "Our argument separates population identification from the source claim of a single likelihoodmaximum."
+    }
+  ],
+  "joint_support_counterexample": {
+    "purpose": "Demonstrates why marginalpositivity alone is insufficient, not a counterexample to the corrected theorem or stated source design",
+    "observed_design": "OnlyMZ at m=0 andonlyDZ at m=1, both cellspositive",
+    "base_ACE_at_both_levels": [
+      "1/4",
+      "1/4",
+      "1/2"
+    ],
+    "alternative_ACE_at_m0": [
+      "1/8",
+      "3/8",
+      "1/2"
+    ],
+    "alternative_ACE_at_m1": [
+      "1/8",
+      "5/16",
+      "9/16"
+    ],
+    "shared_observed_variance": "1",
+    "shared_observed_MZ_m0_covariance": "1/2",
+    "shared_observed_DZ_m1_covariance": "3/8",
+    "conclusion": "Distinct positive endpointtriples have loglinearinterpolations with differentcoefficients but identical observedGaussian/item distributions; commonmeans may beheldfixed."
+  },
+  "boundary_and_scope_review": [
+    "s=0 is excluded by strictlypositive finiteACE. At that endpoint the step2derivative iszero; the currentproof makes no separate boundaryclaim.",
+    "K=\u00b1T makes theGaussian density singular and is outside the displayed derivative argument; strictlypositiveE excludes these modelboundaries.",
+    "Identical difficulties make the two-marginal argument fail; this does not prove the FULL observeditemmodel is unidentifiable with identical difficulties, since other response moments might help.",
+    "Probability0/1, infinite means/variances/difficulties and zero variancecomponents are outside thefiniteinterior assumptions. Numerical saturation is not mathematical nonidentification.",
+    "Known unequal OPLM slopes are not covered. For unequal positive slopes, the log derivative of the ratio of itemresponse derivatives generally changes sign between the two traittails, so the presented monotone-ratio argument cannot be carried over unchanged. No claim of empiricalOPLM nonidentifiability follows.",
+    "Unknown common itemlocation permits the stated mean/difficulty shiftinvariance; other unknown-calibration cases require separate constraints/proofs.",
+    "Separate-twin moderators, informative missingness and rACE-M departures are not covered.",
+    "Populationinjectivity does not establish existence or uniqueness of a finite-sample MLE, posteriorunimodality, chainconvergence, parameterrecovery at source samplesizes or whole-dissertation replication. The all-zero likelihoodsupremum counterexample remains logicallycompatible."
+  ],
+  "independent_checks": {
+    "symbolic_system": "SymPy1.14.0",
+    "log_derivative_ratio_checked_by_independent_logarithmic_derivative": "passed",
+    "Gaussian_identity_checked_by_matrix_precision_derivative": "passed",
+    "joint_support_counterexample_checked_exact_rational_arithmetic": "passed",
+    "new_model_fits": 0,
+    "new_simulations": 0,
+    "production_files_or_processes_modified": false,
+    "proof_assistant_formalization": false
+  },
+  "errors_found": "No mathematical algebraicerror found in steps1-5 under the strengthened explicit assumptions. Required clarifications concern joint support and attribution of the identification-versus-likelihood distinction.",
+  "formalization_and_manuscript_status": {
+    "written_argument": "Accepted as an ordinary written mathematical argument under the explicit assumptions; both wordingclarifications verified resolved.",
+    "Lean_formalization": "Absent. This review neither supplies nor certifies faithful Lean theorem coverage.",
+    "manuscript_gate": "Parent reports open-question-research/SKILL.md requires faithful Lean coverage before claims enter proved-results manuscript sections. Thus ordinary written-argument acceptance does NOT clear that manuscript proved-results gate.",
+    "permitted_current_description": "Reviewed conditional identification argument with symbolic checks and explicit formalization gap; do not call Lean-verified or formally certified.",
+    "task_scope": "No new formalization project or production interference undertaken by this reviewer."
+  },
+  "initial_reviewed_hashes": {
+    "provenance/marginal-identification-check.json": "43196f97c8c919eba2445a6c061458ecbe56ba64549d6116229df8f84a379310",
+    "simulation/marginal_identification_check.py": "8b631599e8fa200e0dd6a506ed6e53925e9256964411642680a3e5e532bfae3e"
+  },
+  "final_reviewed_utc": "2026-10-30T19:45:31.643163+00:00",
+  "initial_status": "Mathematical result accepted under explicit positive joint-support assumptions; two wording clarifications required before manuscript integration",
+  "wording_correction_closures": [
+    {
+      "location": "theorem.required_assumptions joint support",
+      "status": "resolved",
+      "evidence": "Final record and generator explicitly require positive observed support for MZ andDZ at EACH moderatorlevel, allfour jointcells, not merely marginalsupport."
+    },
+    {
+      "location": "source_assumptions_read Chapter5p72",
+      "status": "resolved",
+      "evidence": "Final record and generator now attribute the distinction to our argument; no implication the source itself separated identification from singlemaximum."
+    },
+    {
+      "location": "status and verification",
+      "status": "resolved",
+      "evidence": "Explicit ordinaryargument/symbolicchecks label, Leanabsent, no fullyprovedmanuscriptclaim, finite-sampleMLE/posterior/MCMC exclusions retained."
+    }
+  ],
+  "final_review_actions": "Read corrected record and matching generator text; verified hash changes and preservation of prior step1-5 assumptions and exclusions. No new experiments, model fits, simulations, git or network operations."
+}
