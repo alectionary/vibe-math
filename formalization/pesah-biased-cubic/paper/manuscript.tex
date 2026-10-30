@@ -62,7 +62,7 @@ The thesis does not identify production seeds, trial counts, exact package versi
 Each physical qubit receives an independent X error with probability $p$; trials and arm-specific seeds are independent. These are code-capacity experiments with exact syndromes, not circuit-level or repeated noisy-measurement thresholds. Neither the bootstrap nor the code checks extends the finding to correlated noise or hardware.
 
 \subsection{Local scaling and finite resources}
-A quadratic scaling form is assumed valid over each selected window. We use bounded numerical optimization to avoid nonphysical exponents, then examine alternative objective functions, removal of extreme lattice sizes and exclusion of probability-grid endpoints. Bootstrap bands exclude finite-size systematic uncertainty. The pilot timed both arms before production; the largest condition took about 0.18 seconds per trial with about 59 MiB resident memory. A 2 GiB address-space limit and 2,400-second CPU limit bound the primary process. Actual production used \RunSeconds\ seconds and \RunMemory\ MiB maximum resident memory.
+A quadratic scaling form is assumed valid over each selected window. We use bounded numerical optimization to avoid nonphysical exponents, then examine alternative objective functions, removal of extreme lattice sizes and exclusion of probability-grid endpoints. Bootstrap bands exclude finite-size systematic uncertainty. The pilot timed both arms before production; the largest condition took about 0.18 seconds per trial with about 59 MiB resident memory. A 2 GiB address-space limit and 2,400-second CPU limit bound the primary process. Actual production used \RunSeconds\ wall seconds and \RunMemory\ MiB maximum resident memory.
 
 \section{Ambiguities checked and resolved}
 \subsection{Printed values versus extracted text}
@@ -96,7 +96,7 @@ Obtain the production archive just named, then rerun the selected grid with its 
 
 \appendix
 \section{Artifacts and execution}
-The historical repository baseline is \texttt{e2b553c06c872d8008061a26d05831e572e54789}. The runnable reproduction revision is \ReproductionRevision. New \texttt{master} navigation links in this manuscript await merge; use the immutable reproduction link for review. The complete commands, prerequisites, output paths and seeds are in \repo{README.md}{README.md}. Main manuscript source is \repo{paper/manuscript.tex}{manuscript.tex}, with \repo{paper/references.bib}{references.bib} and \repo{paper/approved-preamble.tex}{approved-preamble.tex}.
+The historical repository baseline is \texttt{e2b553c06c872d8008061a26d05831e572e54789}. The runnable reproduction revision is \ReproductionRevision. The immutable reproduction revision is available on GitHub for review. New \texttt{master} navigation links in this manuscript await merge. The complete commands, prerequisites, output paths and seeds are in \repo{README.md}{README.md}. Main manuscript source is \repo{paper/manuscript.tex}{manuscript.tex}, with \repo{paper/references.bib}{references.bib} and \repo{paper/approved-preamble.tex}{approved-preamble.tex}.
 
 \begin{longtable}{p{.24\linewidth}p{.30\linewidth}p{.38\linewidth}}
 \toprule Claim/artifact & File & Regeneration from study root\\\midrule\endhead
