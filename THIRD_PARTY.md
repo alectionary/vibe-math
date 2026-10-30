@@ -126,3 +126,23 @@ One limited attributed Table3 source crop, the manuscript, data, results and all
 new R wrappers remain outside the root Apache grant under LICENSING.md.
 No whole dissertation or new content license is included; see this study's
 `provenance/rights.json` and `inputs/NOTICE.md`.
+
+## Pesah 2021 MRes replication (scheduled slot 2)
+
+`formalization/pesah-biased-cubic/evidence/` contains six attributed 600-dpi
+excerpts from Arthur Pesah's *Tailoring 3D topological codes and decoders to
+biased noise* (UCL Master of Research dissertation, 2021). These are limited
+research evidence, excluded from the Apache grant. The full dissertation is
+not redistributed; its immutable author-hosted source, hash and crop
+coordinates are in `evidence/manifest.json` and `evidence/expansion-manifest.json`. Public access does not confer
+relicensing rights.
+
+The historical `bn3d` implementation at PanQEC commit
+`686560e5d03c2e5d31f6c6260b03756af03a7e93` is downloaded separately for
+reference execution, not vendored. No license is inferred from its public
+availability. The original reconstruction Python files implement the described
+algorithms independently; `validate.py` loads external historical functions
+without copying them into this repository. The approved preamble is copied
+from this repository's existing skill asset. Manuscripts, figures, results and
+source evidence remain outside the original-code grant as specified in
+`LICENSING.md`.

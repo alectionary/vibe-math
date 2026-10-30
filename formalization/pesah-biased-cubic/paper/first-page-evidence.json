@@ -1,0 +1,94 @@
+{
+  "source_identity": {
+    "author": "Arthur Pesah",
+    "year": 2021,
+    "title": "Tailoring 3D topological codes and decoders to biased noise",
+    "degree": "Master of Research",
+    "institution": "University College London",
+    "supervisor": "Dan Browne",
+    "submitted": "2021-09-01",
+    "bibtex_key": "pesah2021",
+    "metadata_locator": "titlepage1,visuallychecked",
+    "source_url": "https://github.com/artix41/artix41.github.io/blob/b4f401e0c12b44be4c69318e0015f70d8a3d3f98/assets/pdf/master-thesis-ucl.pdf",
+    "source_sha256": "f08f3ede0cfbd5411ca20cc223d5bed079fa9aefd1484805ba80cfc1360a4ea0"
+  },
+  "source_headline": {
+    "statement": "Hadamard deformation combined with BP-OSD increases cubic-code threshold under strongly Z-biased noise.",
+    "abstract_locator": "p3:approximately22percent to greaterthan36percent",
+    "comparison_locator": "Table3.1p48:pureZ21.7percent undeformed and greaterthan36percent deformed;captioncallsdeformedvalueimprecise",
+    "claim_type": "reported numerical improvement; deformed endpoint is a lower-bound report, not a precise point estimate"
+  },
+  "comparison_rule": {
+    "estimand": "deformed minus undeformed physical-error threshold",
+    "units": "percentage points",
+    "positive_meaning": "deformation improves tolerance",
+    "magnitude": "absolute value of signed effect, compared separately from direction",
+    "source_endpoint_rounding_pp": "0.1",
+    "same_magnitude_tolerance_pp": "0.10",
+    "same_rule": "abs(abs(ours)-abs(source))<=0.10pp, inclusive conservative rounding allowance",
+    "tolerance_justification": "Two source endpoints each rounded to0.1pp contribute up to0.05pp each. Derived from printed precision, not tuned to observed effects.",
+    "same_is_not": "statistical equivalence, confidence-interval overlap, or established population equality",
+    "withhold": "Unresolved effect or unreliable fitted estimate; retain diagnostic sign separately"
+  },
+  "rows": [
+    {
+      "claim_id": "cubic-Z-BP-OSD",
+      "source_signed_effect_pp": null,
+      "ours_signed_effect_pp": null,
+      "source_effect_relation": "lower bound >14.3 from displayed endpoint values",
+      "signed_direction": "not established",
+      "magnitude_comparison": "not established",
+      "point_estimate_eligible_for_magnitude_label": false,
+      "evidence": "expansion/pure-z-analysis.json",
+      "evidence_sha256": "b7069fffb0ea15cd6f54966d9ea769df1f272dc3c26807fc40c563723221bd3e",
+      "population_magnitude_comparison": "not established: original uncertainty unknown; conditional reconstruction only",
+      "withholding_reason": "deformed estimate unresolved"
+    },
+    {
+      "claim_id": "cubic-X-BP-OSD",
+      "source_signed_effect_pp": 4.5,
+      "ours_signed_effect_pp": 5.18159861137897,
+      "source_effect_relation": "point contrast of rounded endpoints",
+      "signed_direction": "same",
+      "magnitude_comparison": "larger",
+      "point_estimate_eligible_for_magnitude_label": true,
+      "evidence": "results/analysis.json",
+      "evidence_sha256": "cddc48358902f58c6dcac57e1a09a09dfebb4d7332ad15ceaaa79fcbdc019177",
+      "population_magnitude_comparison": "not established: original uncertainty unknown; conditional reconstruction only",
+      "withholding_reason": null
+    },
+    {
+      "claim_id": "rhombic-Z-BP-OSD",
+      "source_signed_effect_pp": -21.9,
+      "ours_signed_effect_pp": -20.91623254681793,
+      "source_effect_relation": "point contrast of rounded endpoints",
+      "signed_direction": "same",
+      "magnitude_comparison": "smaller",
+      "point_estimate_eligible_for_magnitude_label": true,
+      "evidence": "expansion/rhombic-Z-pure-analysis.json",
+      "evidence_sha256": "b01249075bc3735f3d31f7e3d47f5cf93ac0ba16b23f3540f61fd2d4571d9fdf",
+      "population_magnitude_comparison": "not established: original uncertainty unknown; conditional reconstruction only",
+      "withholding_reason": null
+    },
+    {
+      "claim_id": "cubic-depolarizing-Sweep-Match",
+      "source_signed_effect_pp": 0.3,
+      "ours_signed_effect_pp": -0.13435560152920828,
+      "source_effect_relation": "point contrast of rounded endpoints",
+      "signed_direction": "reversed point estimate",
+      "magnitude_comparison": "not established",
+      "point_estimate_eligible_for_magnitude_label": false,
+      "evidence": "expansion/threshold-comparisons.json",
+      "evidence_sha256": "855c086673610e0b6c048802a755ed8afe27156a6593fffe49a6731dfa919685",
+      "population_magnitude_comparison": "not established: original uncertainty unknown; conditional reconstruction only",
+      "withholding_reason": "bootstrap/model instability and historical-engine departure"
+    }
+  ],
+  "checks": {
+    "numerical_labels": true,
+    "abstract_source_identity_and_citation": true,
+    "source_headline_before_ours": true,
+    "unresolved_verdict_not_no_match": true
+  },
+  "review_limit": "Structural/text checks do not verify source interpretation or rendered readability; separate source and rendered review required."
+}
