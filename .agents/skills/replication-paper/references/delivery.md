@@ -26,7 +26,9 @@ manuscript**, not merely its source, helper tests, or appendix. Check first-page
 findings, tables, scalable fonts, citations, copied compliance and availability
 rows, filename links, and the distinction between findings and execution details.
 Record reviewer, PDF hash, source hash, and evidence for each review item.
-Passing helper tests never establishes manuscript compliance.
+Passing helper tests never establishes manuscript compliance. Apply the
+[final-PDF link audit](pdf-link-review.md); a nonempty links note does not
+replace extraction and validation of the actual URI annotations.
 
 When a draft PR is authorized, put an accessible current-commit primary PDF link
 first, followed by editable source/bibliography and linked evidence. Fetch the
