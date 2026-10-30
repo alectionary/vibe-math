@@ -46,7 +46,11 @@ then obtain review bound to the exact new PDF, source and build inputs.
 ## 4. Authorized delivery
 
 Read [delivery requirements](references/delivery.md) for template, citations,
-remote-byte verification, PR and announcement rules. Run the numerical and
+remote-byte verification, PR and announcement rules. Apply the mandatory
+[final-PDF link audit](references/pdf-link-review.md): generate and independently
+review an annotation inventory, then re-extract destinations during delivery
+acceptance. Master navigation and commit-pinned review delivery are separate.
+Run the numerical and
 citation helpers appropriate to the study, plus `scripts/delivery_check.py
 RECORD.json --root STUDY_ROOT`. Use delivery contract version 2; see the editorial
 reference for migration of historical records. Helper passes establish neither
@@ -67,6 +71,7 @@ quietly invent missing evidence while writing.
 
 ## Skill maintenance
 
+Install `scripts/requirements.txt` for final-PDF annotation extraction.
 Run `python3 -m unittest discover -s .agents/skills/replication-paper/tests -v`
 from the repository root and the skill-creator `scripts/quick_validate.py` with
 PyYAML. Test rejected as well as accepted evidence/review records. Phrase scans

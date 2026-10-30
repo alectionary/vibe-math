@@ -15,10 +15,13 @@ import importlib.util
 _spec = importlib.util.spec_from_file_location('replication_stages', Path(__file__).with_name('stage_checks.py'))
 _stages = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_stages)
+_link_spec = importlib.util.spec_from_file_location('replication_pdf_links', Path(__file__).with_name('pdf_links.py'))
+_links = importlib.util.module_from_spec(_link_spec)
+_link_spec.loader.exec_module(_links)
 REVIEW_ITEMS=('layout','headline_and_tolerance','citations','ledgers','links','independence_limits')
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def sha(value):return isinstance(value,str) and bool(re.fullmatch('[0-9a-f]{40}',value))
-def check(record,root,legacy_audit=False):
+def check(record,root,legacy_audit=False,details=None):
  root=Path(root).resolve();errors=[]
  if not isinstance(record,dict):return ['record must be an object']
  def obj(value,label):
@@ -48,6 +51,9 @@ def check(record,root,legacy_audit=False):
    if remote:
     url=item.get('url','');match=re.fullmatch(r'https://(?:raw\.githubusercontent\.com/[^/]+/[^/]+/|github\.com/[^/]+/[^/]+/blob/)([0-9a-f]{40})/(.+)',url) if isinstance(url,str) else None
     if not match or match[1]!=revision or match[2]!=p.relative_to(repo).as_posix():errors.append(label+': URL must pin artifact revision and path')
+    if not legacy_audit and isinstance(url,str):
+     declared=record.get('repository')
+     if not isinstance(declared,str) or not (url.startswith('https://raw.githubusercontent.com/'+declared+'/') or url.startswith('https://github.com/'+declared+'/blob/')):errors.append(label+': delivery URL differs from declared repository')
     download=(root/item['downloaded_path']).resolve()
     if download==p:errors.append(label+': downloaded copy must have distinct path')
     if digest(download)!=actual:errors.append(label+': remote bytes differ')
@@ -76,9 +82,13 @@ def check(record,root,legacy_audit=False):
   if not isinstance(items.get(key),str) or not items[key].strip():errors.append('manual review missing: '+key)
  if not legacy_audit:
   errors.extend(_stages.stage_errors(record,root))
-  for name in ('packet','writer_manifest'):
+  link_errors=_links.audit(record,root)
+  errors.extend(_links.format_issue(item) for item in link_errors)
+  if details is not None:details['pdf_link_failures']=link_errors
+  for name in ('packet','writer_manifest','link_inventory'):
    artifact(record.get(name),name,revision_check=revision if sha(revision) else None)
  return errors
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('record');p.add_argument('--root',required=True);p.add_argument('--legacy-audit',action='store_true');a=p.parse_args()
- errors=check(json.loads(Path(a.record).read_text()),a.root,legacy_audit=a.legacy_audit);print(json.dumps({'errors':errors,'structural_check_only':True,'current_acceptance':not errors and not a.legacy_audit,'legacy_audit':a.legacy_audit},indent=2));raise SystemExit(bool(errors))
+ details={}
+ errors=check(json.loads(Path(a.record).read_text()),a.root,legacy_audit=a.legacy_audit,details=details);print(json.dumps({'errors':errors,'pdf_link_failures':details.get('pdf_link_failures',[]),'structural_check_only':True,'current_acceptance':not errors and not a.legacy_audit,'legacy_audit':a.legacy_audit},indent=2));raise SystemExit(bool(errors))

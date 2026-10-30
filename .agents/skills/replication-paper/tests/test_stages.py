@@ -3,6 +3,7 @@ import importlib.util
 import json
 import subprocess
 import sys
+import fitz
 import tempfile
 import unittest
 from pathlib import Path
@@ -116,8 +117,15 @@ class Stages(unittest.TestCase):
             (self.root / name).write_text(content)
             return dict(path=name, sha256=m.digest(self.root / name))
         source = save('source.tex', case['abstract'] + '\n' + case['introduction'])
-        # Synthetic bytes intentionally test hash contracts, not rendering quality.
-        pdf = save('main.pdf', '%PDF-1.4\n' + case['abstract'])
+        # A real PDF is required because acceptance extracts its link annotations.
+        with fitz.open() as document:
+            page = document.new_page()
+            page.insert_textbox(fitz.Rect(50, 50, 550, 350), case['abstract'])
+            page.insert_text((50, 400), 'results.txt')
+            page.insert_link({'kind':fitz.LINK_URI, 'from':fitz.Rect(50, 385, 150, 405), 'uri':'https://github.com/a/b/blob/master/results.txt'})
+            document.save(self.root / 'main.pdf')
+        pdf = dict(path='main.pdf', sha256=m.digest(self.root / 'main.pdf'))
+        inventory = save('links.json', json.dumps(d._links.extract(self.root / 'main.pdf')))
         packet = save('packet.json', json.dumps(self.packet))
         template = save('template.tex', 'approved template fixture')
         writer = save('writer.json', json.dumps(dict(writer='writer', context='fresh', packet_sha256=packet['sha256'],
@@ -132,13 +140,15 @@ class Stages(unittest.TestCase):
             item.update(url=f'https://raw.githubusercontent.com/a/b/{rev}/'+item['path'], downloaded_path='remote-'+item['path'])
             (self.root / item['downloaded_path']).write_bytes((self.root / item['path']).read_bytes())
             return item
-        r = dict(contract_version=2, primary=dict(remote(pdf), role='manuscript'), source=remote(source),
+        r = dict(contract_version=2, repository='a/b', link_inventory=inventory, link_provenance=[], primary=dict(remote(pdf), role='manuscript'), source=remote(source),
                  evidence=[remote(self.artifact)], packet=packet, writer_manifest=writer,
                  artifact_revision=rev, reproduction_revision=rev, baseline_revision=rev,
                  template=dict(template, revision=rev), build_inputs=[source])
         r['review'] = dict(reviewer='independent reviewer', pdf_sha256=pdf['sha256'], source_sha256=source['sha256'],
                            build_inputs={source['path']:source['sha256']}, packet_sha256=packet['sha256'],
                            writer_manifest_sha256=writer['sha256'], items={k:'p1 specific review fixture' for k in d.REVIEW_ITEMS}, editorial=review())
+        r['review']['pdf_links'] = dict(verdict='pass', inventory_sha256=inventory['sha256'], pdf_sha256=pdf['sha256'],
+                                        findings=[dict(page=1, finding='results.txt points to master; visible filename inspected.')])
         return r
 
     def test_complete_delivery_and_stale_packet(self):

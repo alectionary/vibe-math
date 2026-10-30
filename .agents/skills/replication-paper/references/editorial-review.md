@@ -60,7 +60,8 @@ and editorial judgment. Human review is still needed before relying on the paper
 ## Migration and testing
 
 Default delivery checks require version 2. Historical records lacking this
-contract fail current acceptance. For reproducibility audits only, use
+contract fail current acceptance. Version 2 also requires the
+[final-PDF link inventory and review](pdf-link-review.md). For reproducibility audits only, use
 `delivery_check.py RECORD --root STUDY_ROOT --legacy-audit`: it runs the historical
 structural checks and reports `current_acceptance: false`, even if they pass.
 Do not edit historical study artifacts or add fictional fresh-context attestations.
