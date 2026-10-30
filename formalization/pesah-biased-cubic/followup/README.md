@@ -57,7 +57,7 @@ argument, ideal-majority probabilities and limit, OSD consistency proof and
 quantum interpretation. These are written proofs, not additional Lean coverage.
 `acceptance-scope.json` states original-claim acceptance criteria and distinguishes
 optional background formalization. The existing primary numerical results remain
-unchanged. At this checkpoint the manuscript integration is still pending.
+unchanged. The analytical findings are integrated in Section 7 of the reviewed 20-page main paper; remote verification is recorded in `../analytical-delivery.json`.
 
 Run from the repository root:
 

@@ -1,6 +1,6 @@
 {
   "objective": "Whole-dissertation replication; PR64 is a partial milestone",
-  "status": "open",
+  "status": "assessed-with-unresolved-outcomes",
   "source_revision": "b4f401e0c12b44be4c69318e0015f70d8a3d3f98",
   "preserved_stage1_revision": "47f111b60fbf668edc8fa6dfb4fb6a398d6da933",
   "completion_rule": "Every substantive item requires a verified result or explicit attempted blocker; pending feasible items keep the study open.",
@@ -1718,7 +1718,7 @@
       "claim": "Cubic stabilizers/logicals, n=3L^3,k=3,d_X=L,d_Z=L^2",
       "source": "Section 2.4.1 pp.28\u201329",
       "kind": "analytical",
-      "status": "general coordinate cohomology and cocycle distance proved; written rank/X-distance; formal source/duality bridges pending",
+      "status": "analytically-verified; Lean core and written rank/distance/quantum bridges",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1733,6 +1733,14 @@
           "evidence": [
             "expansion/geometry-check.json",
             "expansion/distance-certificates.json"
+          ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "analytically-verified; Lean core and written rank/distance/quantum bridges",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
           ]
         }
       ],
@@ -1740,16 +1748,17 @@
         "expansion/geometry-check.json",
         "expansion/distance-certificates.json",
         "followup/cubic-proof-bridge.md",
-        "followup/cubic-homology.md"
-      ],
-      "followup_limit": "Three-bit classification and minimum nontrivial cocycle weight L\u00b2 kernel-checked; finite-matrix adapter, rank conversion, X-distance duality and quantum semantics remain distinct obligations."
+        "followup/cubic-homology.md",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
+      ]
     },
     {
       "id": "rhombic-code",
       "claim": "Rhombic stabilizers/logicals, n=3L^3,k=3 and reported distance asymmetry; resolve axis-label conflicts",
       "source": "Section 2.4.2 pp.30\u201332",
       "kind": "analytical",
-      "status": "finite-checked; general proof pending",
+      "status": "analytically-verified; written FCC cellulation/rank/distance and independent finite geometry",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1765,11 +1774,21 @@
             "expansion/geometry-check.json",
             "expansion/distance-certificates.json"
           ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "analytically-verified; written FCC cellulation/rank/distance and independent finite geometry",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
+          ]
         }
       ],
       "evidence": [
         "expansion/geometry-check.json",
-        "expansion/distance-certificates.json"
+        "expansion/distance-certificates.json",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
       ]
     },
     {
@@ -1777,7 +1796,7 @@
       "claim": "Hadamard conjugation preserves code parameters; transformed stabilizers and noise",
       "source": "Sections 2.3.3,3.2 p.44",
       "kind": "analytical",
-      "status": "general-binary-or-restricted-formula-proof; semantic/full-code obligations pending",
+      "status": "analytically-verified; Lean binary transport and written quantum bridge",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1793,21 +1812,30 @@
             "expansion/geometry-check.json",
             "expansion/distance-certificates.json"
           ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "analytically-verified; Lean binary transport and written quantum bridge",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
+          ]
         }
       ],
       "evidence": [
         "expansion/geometry-check.json",
         "expansion/distance-certificates.json",
-        "followup/README.md"
-      ],
-      "followup_limit": "See proof-to-source table: no full Hilbert-space/lattice/counting/probability theorem claimed."
+        "followup/README.md",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
+      ]
     },
     {
       "id": "cubic-Z-chain",
       "claim": "Pure-Z cubic deformed point sector reduces to repetition chains, asymptotic 50%",
       "source": "Section 3.2.1 p.44;3.4.1 pp.49\u201350",
       "kind": "analytical",
-      "status": "general incidence/kernel formulas proved; full homology/counting/probability obligations pending",
+      "status": "ideal-majority verified; actual BP-OSD asymptotic endpoint unresolved",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1823,22 +1851,31 @@
             "expansion/geometry-check.json",
             "expansion/sector-limits.json"
           ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "ideal-majority verified; actual BP-OSD asymptotic endpoint unresolved",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
+          ]
         }
       ],
       "evidence": [
         "expansion/geometry-check.json",
         "expansion/sector-limits.json",
         "followup/README.md",
-        "followup/cubic-proof-bridge.md"
-      ],
-      "followup_limit": "General formula proofs plus609792finite cross-language entry matches; no general k/d or probability limit claimed."
+        "followup/cubic-proof-bridge.md",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
+      ]
     },
     {
       "id": "cubic-X-plane",
       "claim": "Pure-X cubic deformed point sector reduces to 2D toric decoding; loop sector admits 50% limit",
       "source": "Section 3.2.1 p.44;3.4.2 p.51",
       "kind": "analytical",
-      "status": "general incidence/kernel formulas proved; full homology/counting/probability obligations pending",
+      "status": "layer reduction and ideal-majority verified; actual BP-OSD endpoint unresolved",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1854,22 +1891,31 @@
             "expansion/geometry-check.json",
             "expansion/sector-limits.json"
           ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "layer reduction and ideal-majority verified; actual BP-OSD endpoint unresolved",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
+          ]
         }
       ],
       "evidence": [
         "expansion/geometry-check.json",
         "expansion/sector-limits.json",
         "followup/README.md",
-        "followup/cubic-proof-bridge.md"
-      ],
-      "followup_limit": "General formula proofs plus609792finite cross-language entry matches; no general k/d or probability limit claimed."
+        "followup/cubic-proof-bridge.md",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
+      ]
     },
     {
       "id": "rhombic-X-loop",
       "claim": "Pure-X deformed rhombic loop errors uniquely reconstructible in stated geometry",
       "source": "Section 3.5.2 pp.55\u201356",
       "kind": "analytical",
-      "status": "general-binary-or-restricted-formula-proof; semantic/full-code obligations pending",
+      "status": "restricted uniqueness verified; universal unrestricted implementation qualified by stress witnesses",
       "attempts": [
         {
           "action": "Independent incidence, commutation, ranks, logical operators and restricted-axis nullities at L=2,4,6,8,10",
@@ -1885,21 +1931,30 @@
             "expansion/geometry-check.json",
             "expansion/distance-certificates.json"
           ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "restricted uniqueness verified; universal unrestricted implementation qualified by stress witnesses",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
+          ]
         }
       ],
       "evidence": [
         "expansion/geometry-check.json",
         "expansion/distance-certificates.json",
-        "followup/README.md"
-      ],
-      "followup_limit": "See proof-to-source table: no full Hilbert-space/lattice/counting/probability theorem claimed."
+        "followup/README.md",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
+      ]
     },
     {
       "id": "bp-osd-equations",
       "claim": "BP message equations and order-zero OSD algebra and correction validity",
       "source": "Section 2.5.2 pp.34\u201340",
       "kind": "analytical",
-      "status": "validated-finite-cases",
+      "status": "OSD consistency verified under consistent-syndrome premise; BP finite validation only, no convergence guarantee",
       "attempts": [
         {
           "action": "Whole-dissertation continuation",
@@ -1909,12 +1964,22 @@
             "expansion/rhombic-validation.json",
             "expansion/native-validation.json"
           ]
+        },
+        {
+          "action": "Written source-linked analytical proof and independent checks",
+          "result": "OSD consistency verified under consistent-syndrome premise; BP finite validation only, no convergence guarantee",
+          "evidence": [
+            "followup/analytical-completion.md",
+            "followup/analytical-science-review.json"
+          ]
         }
       ],
       "evidence": [
         "expansion/validation.json",
         "expansion/rhombic-validation.json",
-        "expansion/native-validation.json"
+        "expansion/native-validation.json",
+        "followup/analytical-completion.md",
+        "followup/analytical-science-review.json"
       ]
     },
     {
@@ -2194,18 +2259,16 @@
       ]
     }
   ],
-  "review_state": "Numerical inventory, signed contrasts, source ambiguities, implementation checks and model limits manually reviewed. Whole dissertation remains open: finite checks are not general proofs, and blocked historical/frontend equivalence is not complete.",
-  "remaining_feasible_work": [
-    "General analytical proofs beyond finite computational certificates, including faithful formal validation if presented as proofs.",
-    "Investigate unstable finite-bias scaling using justified local windows/model checks; current fits are not established asymptotic thresholds."
-  ],
-  "milestone_delivery": {
-    "status": "expanded partial milestone published and39 remote artifacts hash-verified",
-    "artifact_revision": "3ec14c45596056ce7694367292b5c02d2c82ba7e",
-    "reproduction_revision": "d1a437af56a24b4d35f6511f6be0d84d86a7157c",
-    "review": "paper/expanded-review.json",
-    "delivery": "expanded-delivery.json",
-    "main_pdf": "paper/biased_noise_thresholds_of_cubic_and_rhombic_codes__replication_of_pesah_2021.pdf"
-  },
-  "followup": "112000 fresh trials; general binary algebra and restricted kernels checked in Lean4.22.0; whole-dissertation status remains open."
+  "review_state": "Written science and all20renderedpages reviewed; remote delivery is recorded separately",
+  "remaining_feasible_work": [],
+  "milestone_delivery": "analytical-delivery.json",
+  "followup": "112000 fresh trials; general binary algebra and restricted kernels checked in Lean4.22.0; whole-dissertation status remains open.",
+  "analytical_stopping": "All seven analytical families assessed. Written proofs count as analytical checks; optional textbook Lean formalization is not a pending original claim. Actual BP-OSD asymptotic limits and historical production/frontend claims remain explicitly limited or blocked.",
+  "remaining_inputs": [
+    "Original production counts/seeds/decoder settings/fit configuration",
+    "Justified revised scaling model and prospective size/grid design for unstable thresholds",
+    "Original OSD benchmark baseline/workload/hardware",
+    "Authorized original frontend dependency access; no policy bypass",
+    "Actual BP-OSD asymptotic proof not supplied by ideal-majority argument"
+  ]
 }

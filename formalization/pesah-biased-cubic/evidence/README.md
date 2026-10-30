@@ -5,3 +5,5 @@ Arthur Pesah, *Tailoring 3D topological codes and decoders to biased noise*, UCL
 These two minimal 600 dpi crops document the printed comparison and fitted equation. They are retained as limited attributed research evidence, not original project code; they are excluded from the repository's Apache grant. No full dissertation is redistributed. Public accessibility is not a relicensing grant. Full source remains at the author's repository.
 
 Run `python simulation/crops.py /absolute/path/to/master-thesis-ucl.pdf` from the study root. Coordinates, source SHA-256 and crop hashes are recorded in `manifest.json`.
+
+The analytical continuation adds two narrow 600-dpi excerpts from printed pages55–56 for the restricted-loop guarantee; coordinates, source SHA and attribution are in `analytical-manifest.json`. They remain excluded from the repository code license.
