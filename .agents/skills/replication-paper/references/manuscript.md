@@ -164,7 +164,10 @@ from this skill directory. This structural check does not establish that a
 source supports a claim; the source-reading audit remains mandatory. Other
 formats need equivalent checks and a recorded result.
 
-Code and data links in papers point at `master`.
+Code and data links in papers point at `master`. An immutable reproduction
+revision is separate provenance, not a substitute for file navigation. Follow
+the narrow labeled commit-link rules in the
+[final-PDF link audit](pdf-link-review.md).
 
 Cite every piece of software used, with its exact version, and link its CRAN
 page or repository. This covers R, lavaan, simsem, OpenMx, Lean, and Mathlib.
