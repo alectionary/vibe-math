@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-10-30T22:51:54.917024+00:00",
+  "reviewer": "root source-assumption audit",
+  "source_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+  "claim_id": "C5-1.one-likelihood-maximum",
+  "locators": [
+    "Chapter5 p75 Eq5.3 and p76 Eq5.11",
+    "Chapter5 p77 Sections5.2.2 and5.3",
+    "AppendixD p141 lines66\u201368 and84"
+  ],
+  "findings": [
+    "The fitted latent mean contains a free common intercept mu and moderator slope beta_1m.",
+    "Section5.2.2 assigns mu a normal prior; AppendixD line84 explicitly samples mu.",
+    "Section5.3 fixes mu=0 for data generation, which does not constrain the fitted model to mu=0."
+  ],
+  "conclusion": "The free-common-mean assumption of the all-zero-response likelihood counterexample is supported by the source model. No change to that ordinary mathematical argument is required.",
+  "limitations": [
+    "The argument concerns existence of a finite likelihood maximum for a possible degenerate response dataset; it does not establish multiple interior maxima in the observed source samples.",
+    "A proper prior changes the posterior objective. This is not a claim of posterior impropriety or Bayesian nonidentification."
+  ],
+  "method": "Read source text for the explicit mean parameterization, prior and AppendixD code; no numerical refit."
+}
