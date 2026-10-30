@@ -1,0 +1,1768 @@
+......F.F.FFFFFF.FF...F.F.FFFFFF.FF..................................... [ 24%]
+........................................................................ [ 49%]
+........................................................................ [ 74%]
+........................................................................ [ 99%]
+..                                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_graphlike_code_distances[8-12-10-SI1000-H-5-6] ______________
+
+data_width = 8, data_height = 12, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'H', ignored_graphlike_code_distance = 6
+decomposed_graphlike_code_distance = 5
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 6 == 5
+E        +  where 6 = len(stim.DetectorErrorModel('''\n    error(1) D0 D21\n    error(1) D0 D23\n    error(1) D3 D23\n    error(1) D3 D54 L1\n    error(1) D21\n    error(1) D54\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[12-18-10-SI1000-H-8-9] _____________
+
+data_width = 12, data_height = 18, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'H', ignored_graphlike_code_distance = 9
+decomposed_graphlike_code_distance = 8
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 9 == 8
+E        +  where 9 = len(stim.DetectorErrorModel('''\n    error(1) D0 D44\n    error(1) D0 D114\n    error(1) D1 D43 L1\n    error(1) D1 D45\n    error(1) D41 D43\n    error(1) D41 D141\n    error(1) D44\n    error(1) D45 D114\n    error(1) D141\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+____________ test_graphlike_code_distances[16-24-10-SI1000-H-11-12] ____________
+
+data_width = 16, data_height = 24, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'H', ignored_graphlike_code_distance = 12
+decomposed_graphlike_code_distance = 11
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 12 == 11
+E        +  where 12 = len(stim.DetectorErrorModel('''\n    error(1) D0 D75\n    error(1) D0 D200\n    error(1) D1 D76\n    error(1) D1 D80\n    error...rror(1) D7 D81\n    error(1) D7 D206\n    error(1) D75\n    error(1) D76 D200\n    error(1) D81 D205\n    error(1) D206\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[8-12-10-SI1000-V-5-7] ______________
+
+data_width = 8, data_height = 12, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'V', ignored_graphlike_code_distance = 7
+decomposed_graphlike_code_distance = 5
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 7 == 5
+E        +  where 7 = len(stim.DetectorErrorModel('''\n    error(1) D34\n    error(1) D34 D49\n    error(1) D38 D49\n    error(1) D38 D52 L0\n    error(1) D42 D52\n    error(1) D42 D55\n    error(1) D55\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[10-15-10-SI1000-V-7-9] _____________
+
+data_width = 10, data_height = 15, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'V', ignored_graphlike_code_distance = 9
+decomposed_graphlike_code_distance = 7
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 9 == 7
+E        +  where 9 = len(stim.DetectorErrorModel('''\n    error(1) D55 D92\n    error(1) D55 D95\n    error(1) D60 D92\n    error(1) D60 D94 L0\n    error(1) D65 D94\n    error(1) D65 D97\n    error(1) D70\n    error(1) D70 D97\n    error(1) D95\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+____________ test_graphlike_code_distances[12-18-10-SI1000-V-9-11] _____________
+
+data_width = 12, data_height = 18, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'V', ignored_graphlike_code_distance = 11
+decomposed_graphlike_code_distance = 9
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 11 == 9
+E        +  where 11 = len(stim.DetectorErrorModel('''\n    error(1) D75\n    error(1) D75 D110\n    error(1) D81 D110\n    error(1) D81 D115\n    err... D120 L0\n    error(1) D93 D120\n    error(1) D93 D125\n    error(1) D99 D125\n    error(1) D99 D130\n    error(1) D130\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+____________ test_graphlike_code_distances[14-21-10-SI1000-V-11-13] ____________
+
+data_width = 14, data_height = 21, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'V', ignored_graphlike_code_distance = 13
+decomposed_graphlike_code_distance = 11
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 13 == 11
+E        +  where 13 = len(stim.DetectorErrorModel('''\n    error(1) D105 D186\n    error(1) D105 D188\n    error(1) D112 D186\n    error(1) D112 D18...D126 D194\n    error(1) D133 D189\n    error(1) D133 D194\n    error(1) D140\n    error(1) D140 D189\n    error(1) D188\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+____________ test_graphlike_code_distances[16-24-10-SI1000-V-13-15] ____________
+
+data_width = 16, data_height = 24, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'V', ignored_graphlike_code_distance = 15
+decomposed_graphlike_code_distance = 13
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 15 == 13
+E        +  where 15 = len(stim.DetectorErrorModel('''\n    error(1) D132\n    error(1) D132 D195\n    error(1) D140 D195\n    error(1) D140 D202\n   ...D223\n    error(1) D172 D223\n    error(1) D172 D230\n    error(1) D180 D230\n    error(1) D180 D237\n    error(1) D237\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+____________ test_graphlike_code_distances[8-15-10-SI1000-EPR-6-7] _____________
+
+data_width = 8, data_height = 15, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'EPR', ignored_graphlike_code_distance = 7
+decomposed_graphlike_code_distance = 6
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 7 == 6
+E        +  where 7 = len(stim.DetectorErrorModel('''\n    error(1) D162\n    error(1) D162 D204\n    error(1) D167 D204\n    error(1) D167 D208 L0\n    error(1) D172 D208\n    error(1) D172 D212\n    error(1) D212\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+____________ test_graphlike_code_distances[10-18-10-SI1000-EPR-8-9] ____________
+
+data_width = 10, data_height = 18, rounds = 10, gate_set = 'SI1000'
+tested_observable = 'EPR', ignored_graphlike_code_distance = 9
+decomposed_graphlike_code_distance = 8
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 9 == 8
+E        +  where 9 = len(stim.DetectorErrorModel('''\n    error(1) D246 D326\n    error(1) D246 D328\n    error(1) D252 D326\n    error(1) D252 D327 L0\n    error(1) D258 D327\n    error(1) D258 D330\n    error(1) D264\n    error(1) D264 D330\n    error(1) D328\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_______________ test_graphlike_code_distances[8-12-10-SD6-H-5-6] _______________
+
+data_width = 8, data_height = 12, rounds = 10, gate_set = 'SD6'
+tested_observable = 'H', ignored_graphlike_code_distance = 6
+decomposed_graphlike_code_distance = 5
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 6 == 5
+E        +  where 6 = len(stim.DetectorErrorModel('''\n    error(1) D0 D21\n    error(1) D0 D23\n    error(1) D3 D23\n    error(1) D3 D54 L1\n    error(1) D21\n    error(1) D54\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+______________ test_graphlike_code_distances[12-18-10-SD6-H-8-9] _______________
+
+data_width = 12, data_height = 18, rounds = 10, gate_set = 'SD6'
+tested_observable = 'H', ignored_graphlike_code_distance = 9
+decomposed_graphlike_code_distance = 8
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 9 == 8
+E        +  where 9 = len(stim.DetectorErrorModel('''\n    error(1) D0 D44\n    error(1) D0 D114\n    error(1) D1 D43 L1\n    error(1) D1 D45\n    error(1) D41 D43\n    error(1) D41 D141\n    error(1) D44\n    error(1) D45 D114\n    error(1) D141\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[16-24-10-SD6-H-11-12] ______________
+
+data_width = 16, data_height = 24, rounds = 10, gate_set = 'SD6'
+tested_observable = 'H', ignored_graphlike_code_distance = 12
+decomposed_graphlike_code_distance = 11
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 12 == 11
+E        +  where 12 = len(stim.DetectorErrorModel('''\n    error(1) D0 D75\n    error(1) D0 D200\n    error(1) D1 D76\n    error(1) D1 D80\n    error...rror(1) D7 D81\n    error(1) D7 D206\n    error(1) D75\n    error(1) D76 D200\n    error(1) D81 D205\n    error(1) D206\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_______________ test_graphlike_code_distances[8-12-10-SD6-V-5-7] _______________
+
+data_width = 8, data_height = 12, rounds = 10, gate_set = 'SD6'
+tested_observable = 'V', ignored_graphlike_code_distance = 7
+decomposed_graphlike_code_distance = 5
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 7 == 5
+E        +  where 7 = len(stim.DetectorErrorModel('''\n    error(1) D34\n    error(1) D34 D49\n    error(1) D38 D49\n    error(1) D38 D52 L0\n    error(1) D42 D52\n    error(1) D42 D55\n    error(1) D55\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+______________ test_graphlike_code_distances[10-15-10-SD6-V-7-9] _______________
+
+data_width = 10, data_height = 15, rounds = 10, gate_set = 'SD6'
+tested_observable = 'V', ignored_graphlike_code_distance = 9
+decomposed_graphlike_code_distance = 7
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 9 == 7
+E        +  where 9 = len(stim.DetectorErrorModel('''\n    error(1) D55 D92\n    error(1) D55 D95\n    error(1) D60 D92\n    error(1) D60 D94 L0\n    error(1) D65 D94\n    error(1) D65 D97\n    error(1) D70\n    error(1) D70 D97\n    error(1) D95\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+______________ test_graphlike_code_distances[12-18-10-SD6-V-9-11] ______________
+
+data_width = 12, data_height = 18, rounds = 10, gate_set = 'SD6'
+tested_observable = 'V', ignored_graphlike_code_distance = 11
+decomposed_graphlike_code_distance = 9
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 11 == 9
+E        +  where 11 = len(stim.DetectorErrorModel('''\n    error(1) D75\n    error(1) D75 D110\n    error(1) D81 D110\n    error(1) D81 D115\n    err... D120 L0\n    error(1) D93 D120\n    error(1) D93 D125\n    error(1) D99 D125\n    error(1) D99 D130\n    error(1) D130\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[14-21-10-SD6-V-11-13] ______________
+
+data_width = 14, data_height = 21, rounds = 10, gate_set = 'SD6'
+tested_observable = 'V', ignored_graphlike_code_distance = 13
+decomposed_graphlike_code_distance = 11
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 13 == 11
+E        +  where 13 = len(stim.DetectorErrorModel('''\n    error(1) D105 D186\n    error(1) D105 D188\n    error(1) D112 D186\n    error(1) D112 D18...D126 D194\n    error(1) D133 D189\n    error(1) D133 D194\n    error(1) D140\n    error(1) D140 D189\n    error(1) D188\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[16-24-10-SD6-V-13-15] ______________
+
+data_width = 16, data_height = 24, rounds = 10, gate_set = 'SD6'
+tested_observable = 'V', ignored_graphlike_code_distance = 15
+decomposed_graphlike_code_distance = 13
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 15 == 13
+E        +  where 15 = len(stim.DetectorErrorModel('''\n    error(1) D132\n    error(1) D132 D195\n    error(1) D140 D195\n    error(1) D140 D202\n   ...D223\n    error(1) D172 D223\n    error(1) D172 D230\n    error(1) D180 D230\n    error(1) D180 D237\n    error(1) D237\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+______________ test_graphlike_code_distances[8-15-10-SD6-EPR-6-7] ______________
+
+data_width = 8, data_height = 15, rounds = 10, gate_set = 'SD6'
+tested_observable = 'EPR', ignored_graphlike_code_distance = 7
+decomposed_graphlike_code_distance = 6
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 7 == 6
+E        +  where 7 = len(stim.DetectorErrorModel('''\n    error(1) D162\n    error(1) D162 D204\n    error(1) D167 D204\n    error(1) D167 D208 L0\n    error(1) D172 D208\n    error(1) D172 D212\n    error(1) D212\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+_____________ test_graphlike_code_distances[10-18-10-SD6-EPR-8-9] ______________
+
+data_width = 10, data_height = 18, rounds = 10, gate_set = 'SD6'
+tested_observable = 'EPR', ignored_graphlike_code_distance = 9
+decomposed_graphlike_code_distance = 8
+
+    @pytest.mark.parametrize("data_width,data_height,rounds,gate_set,tested_observable,decomposed_graphlike_code_distance,ignored_graphlike_code_distance", [
+        (8, 12, 10, 'SI1000', 'H', 5, 6),
+        (10, 15, 10, 'SI1000', 'H', 7, 7),
+        (12, 18, 10, 'SI1000', 'H', 8, 9),
+        (14, 21, 10, 'SI1000', 'H', 10, 10),
+        (16, 24, 10, 'SI1000', 'H', 11, 12),
+    
+        (8, 12, 10, 'SI1000', 'V', 5, 7),
+        (10, 15, 10, 'SI1000', 'V', 7, 9),
+        (12, 18, 10, 'SI1000', 'V', 9, 11),
+        (14, 21, 10, 'SI1000', 'V', 11, 13),
+        (16, 24, 10, 'SI1000', 'V', 13, 15),
+    
+        (7, 12, 10, 'SI1000', 'EPR', 6, 6),
+        (8, 15, 10, 'SI1000', 'EPR', 6, 7),
+        (10, 18, 10, 'SI1000', 'EPR', 8, 9),
+        (11, 21, 10, 'SI1000', 'EPR', 10, 10),
+        (13, 24, 10, 'SI1000', 'EPR', 12, 12),
+        (25, 48, 10, 'SI1000', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'SD6', 'H', 5, 6),
+        (10, 15, 10, 'SD6', 'H', 7, 7),
+        (12, 18, 10, 'SD6', 'H', 8, 9),
+        (14, 21, 10, 'SD6', 'H', 10, 10),
+        (16, 24, 10, 'SD6', 'H', 11, 12),
+    
+        (8, 12, 10, 'SD6', 'V', 5, 7),
+        (10, 15, 10, 'SD6', 'V', 7, 9),
+        (12, 18, 10, 'SD6', 'V', 9, 11),
+        (14, 21, 10, 'SD6', 'V', 11, 13),
+        (16, 24, 10, 'SD6', 'V', 13, 15),
+    
+        (7, 12, 10, 'SD6', 'EPR', 6, 6),
+        (8, 15, 10, 'SD6', 'EPR', 6, 7),
+        (10, 18, 10, 'SD6', 'EPR', 8, 9),
+        (11, 21, 10, 'SD6', 'EPR', 10, 10),
+        (13, 24, 10, 'SD6', 'EPR', 12, 12),
+        (25, 48, 10, 'SD6', 'EPR', 24, 24),
+    
+        (8, 12, 10, 'EM3_v1', 'H', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'H', 5, 5),
+        (10, 12, 10, 'EM3_v1', 'H', 4, 4),
+    
+        (8, 12, 10, 'EM3_v1', 'V', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'V', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'V', 5, 5),
+    
+        (8, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (8, 15, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 12, 10, 'EM3_v1', 'EPR', 4, 4),
+        (10, 15, 10, 'EM3_v1', 'EPR', 5, 5),
+    
+        (8, 12, 10, 'EM3_v2', 'EPR', 4, 4),
+    ])
+    def test_graphlike_code_distances(*,
+                                      data_width: int,
+                                      data_height: int,
+                                      rounds: int,
+                                      gate_set: str,
+                                      tested_observable: str,
+                                      ignored_graphlike_code_distance: int,
+                                      decomposed_graphlike_code_distance: int):
+        layout = HoneycombLayout(data_width=data_width,
+                                 data_height=data_height,
+                                 rounds=rounds,
+                                 noise_level=0.001,
+                                 noisy_gate_set=gate_set,
+                                 tested_observable=tested_observable)
+        circuit = layout.noisy_circuit()
+    
+        err = circuit.shortest_graphlike_error(ignore_ungraphlike_errors=True)
+        assert len(err) == ignored_graphlike_code_distance, "ignored"
+    
+        dem = circuit.detector_error_model(decompose_errors=True)
+        err = dem.shortest_graphlike_error(ignore_ungraphlike_errors=False)
+>       assert len(err) == decomposed_graphlike_code_distance, "decomposed"
+E       AssertionError: decomposed
+E       assert 9 == 8
+E        +  where 9 = len(stim.DetectorErrorModel('''\n    error(1) D246 D326\n    error(1) D246 D328\n    error(1) D252 D326\n    error(1) D252 D327 L0\n    error(1) D258 D327\n    error(1) D258 D330\n    error(1) D264\n    error(1) D264 D330\n    error(1) D328\n'''))
+
+src/hcb/codes/honeycomb/circuit_maker_test.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[8-12-10-SI1000-H-5-6]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[12-18-10-SI1000-H-8-9]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[16-24-10-SI1000-H-11-12]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[8-12-10-SI1000-V-5-7]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[10-15-10-SI1000-V-7-9]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[12-18-10-SI1000-V-9-11]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[14-21-10-SI1000-V-11-13]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[16-24-10-SI1000-V-13-15]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[8-15-10-SI1000-EPR-6-7]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[10-18-10-SI1000-EPR-8-9]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[8-12-10-SD6-H-5-6]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[12-18-10-SD6-H-8-9]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[16-24-10-SD6-H-11-12]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[8-12-10-SD6-V-5-7]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[10-15-10-SD6-V-7-9]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[12-18-10-SD6-V-9-11]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[14-21-10-SD6-V-11-13]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[16-24-10-SD6-V-13-15]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[8-15-10-SD6-EPR-6-7]
+FAILED src/hcb/codes/honeycomb/circuit_maker_test.py::test_graphlike_code_distances[10-18-10-SD6-EPR-8-9]
+20 failed, 270 passed in 120.43s (0:02:00)
