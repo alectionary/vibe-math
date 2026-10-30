@@ -1,0 +1,39 @@
+
+==================================== ERRORS ====================================
+_ ERROR collecting honeycomb-boundaries/src/hcb/codes/honeycomb/circuit_maker_test.py _
+ImportError while importing test module '/workspace/honeycomb-boundaries/src/hcb/codes/honeycomb/circuit_maker_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+honeycomb-boundaries/src/hcb/codes/__init__.py:1: in <module>
+    from .surface.memory import generate_surface_code_memory_problem
+honeycomb-boundaries/src/hcb/codes/surface/memory.py:4: in <module>
+    from hcb.tools.analysis.collecting import (
+honeycomb-boundaries/src/hcb/tools/analysis/collecting.py:13: in <module>
+    from .probability_util import log_binomial, binary_search
+honeycomb-boundaries/src/hcb/tools/analysis/probability_util.py:7: in <module>
+    from scipy.stats._stats_mstats_common import LinregressResult
+E   ImportError: cannot import name 'LinregressResult' from 'scipy.stats._stats_mstats_common' (/workspace/higgott-venv/lib/python3.12/site-packages/scipy/stats/_stats_mstats_common.py)
+_ ERROR collecting honeycomb-boundaries/src/hcb/codes/honeycomb/layout_test.py _
+ImportError while importing test module '/workspace/honeycomb-boundaries/src/hcb/codes/honeycomb/layout_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+honeycomb-boundaries/src/hcb/codes/__init__.py:1: in <module>
+    from .surface.memory import generate_surface_code_memory_problem
+honeycomb-boundaries/src/hcb/codes/surface/memory.py:4: in <module>
+    from hcb.tools.analysis.collecting import (
+honeycomb-boundaries/src/hcb/tools/analysis/collecting.py:13: in <module>
+    from .probability_util import log_binomial, binary_search
+honeycomb-boundaries/src/hcb/tools/analysis/probability_util.py:7: in <module>
+    from scipy.stats._stats_mstats_common import LinregressResult
+E   ImportError: cannot import name 'LinregressResult' from 'scipy.stats._stats_mstats_common' (/workspace/higgott-venv/lib/python3.12/site-packages/scipy/stats/_stats_mstats_common.py)
+=========================== short test summary info ============================
+ERROR honeycomb-boundaries/src/hcb/codes/honeycomb/circuit_maker_test.py
+ERROR honeycomb-boundaries/src/hcb/codes/honeycomb/layout_test.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 1.01s
