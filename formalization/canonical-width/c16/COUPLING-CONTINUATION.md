@@ -371,19 +371,85 @@ are not needed to separate this particular point. The source question is not
 resolved by either observation.
 
 `anchor-witness9` now includes31 partner inequalities and296 rank rows, plus
-the new universal Boolean triangle found by the case-floor pilot. Numerical
-feasibility is observed; its exact acceptance is the next pending check at
-this checkpoint.
+the new universal Boolean triangle found by the case-floor pilot. All seven exact acceptance stages pass, including every Boolean triple
+and the direct triple-distribution consumer. Its rational point SHA256 is
+`d0558127b2aad27f8513688643d83ca1291a19350528b6fdb8d8c2646d0b18e2`.
 
 The selected-cover-pair bridge is also established: a selected pair in a
 32-action symmetry orbit forces its averaged pair moment to be at least the
 stabilizer size divided by32. Of405 cover cases,390 give floor1/32 and15 give
 floor1/16. One bounded case(5,11,10) has an exact feasible point for its finite
 moment model plus the floor, but violates one omitted Boolean triangle; the
-complete-triple case remains unresolved. No source case is excluded. The
+complete-triple follow-up is also exactly feasible after adding the missing
+triangle and all31 partner/296 rank rows. The selected-pair moment is
+4775404919177/140737488355328, with positive slack
+377358408073/140737488355328 above1/32. Its point SHA256 is
+`dba2b32d731892d4292be8e3ba5e8878cfebc876cec81ae331134310b48ea503`.
+This is a feasible relaxation, not a physical completion. No source case is
+excluded. The
 residual-corrected, interval-safe dual route is written down for a future
 numerically infeasible case, without treating solver output as a proof.
 
 Source status remains width16 or18, cover405, best checked physical partial
 88/128, and zero full source anchors excluded. No new paper, source question,
 or Lean completion has been added during this continuation.
+
+## 08:55 UTC: smaller integer cuts and another exact feasible point
+
+The native unconditioned775 oracle is independently matched against the
+original Python support consumer. A180-second producer run completed many
+rounds but failed while serializing a NumPy diagnostic scalar. Its source,
+log and archive are preserved. A separately versioned serialization fix
+restarted from the saved corral, and the unchanged independent consumer
+accepted two cuts excluding witness9. Their normalized gaps are0.06847
+and0.06845. These are the recovered run's cuts, not a claimed historical
+optimum of the failed export.
+
+A bounded simplification study first found that direct coefficient rounding
+at scales1 through512 did not preserve separation. Two exact counting
+identities supply the useful change of coordinates. Writing k=|P|, d[j,h]
+for the cyclic joint counts and A32[j,h] for physical pairings, every column
+satisfies sum(d)=128k and sum(A32*d)=k. Shifting the mixed coefficients
+separately on pairing-zero and pairing-one classes and compensating the
+k coefficient therefore leaves the functional unchanged. Both identities
+also pass exact support in both signs over all291 representatives.
+
+After this shift,14 rounded functionals are independently valid separators.
+The smallest pair has coefficient magnitude at most64,301 nonzero feature
+coefficients, gcd1 and upper bound0. They have k coefficient−64, eight
+autocorrelation coefficients [46,40,29,29,56,28,38,27], and292 mixed
+coefficients between−10 and7. Their owner-moment form divides out a common16:
+weighted within-orbit and cross-orbit correlations are at most64*p32.
+The exact bank is `coupling-results/native775-witness9-gauge-rounded.json.gz`
+and its independent receipt has the matching `-independent.json` basename.
+The raw normals have wide ranges under both-sign pricing, so these are
+one-sided inequalities, not newly discovered affine identities.
+
+`anchor-witness10` adds both raw cuts and all14 rounded cuts:47 partner
+inequalities and296 rank rows. The positive projected-row margin is raised
+from0.000001 to0.001 solely to seek an interior feasible point; infeasibility
+of that margin-restricted search would not prove a source obstruction.
+The numeric solve completes in35.3seconds and all seven exact stages pass.
+The rational point SHA256 is
+`e84ed943072c65ceaa14e921388f8d7ec41d79d4320bcbec6f08439335c3493a`.
+Thus these additional cuts strengthen the relaxation without yet making it
+infeasible.
+
+The two new word clauses also pass all5762 first/second-moment consequences
+at witness9. Exact local distributions on each clause's events reproduce
+all first/second moments while avoiding the forbidden assignment. This
+rules out a separating quadratic inequality supported on either individual
+clause alone; it does not establish a common global distribution.
+
+A direct partial-configuration application needs care: current compact
+source models select only the nonzero-signature matching, not every vector
+of a full basis. Plugging those partial owner flags into signed full-basis
+inequalities is unsound. An independently checked lower bound over full
+completions tests129 saved configurations and three accepted inequalities.
+Its four positive tests concern two old configurations already excluded by
+ordinary domain/rank propagation. No new source pruning is claimed.
+
+The clean2e5f314 checkpoint replay passes20 declared stages and708 source
+bindings; its explicit coverage and omissions are recorded under
+`coupling-results/new-clean-checkpoint0826/`. Newer witness9/10 and case
+results will be included in the final preservation/replay gate.
