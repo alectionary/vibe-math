@@ -1,0 +1,7 @@
+source('formalization/kupzyk-power-assumptions/scripts/model.R')
+set.seed(20261029)
+targets<-read.csv(file.path(base,'outputs/targets.csv'))
+res<-lapply(1:54,function(i){r<-targets[i,];J<-c(16,22,28)[match(r$icc,c(.05,.1,.15))];d<-design(J,r$icc,r$attrition,r$treat,r$size,FALSE);z<-generate(d,r$icc);c(cell=i,fit_empirical(z))})
+write.csv(do.call(rbind,res),file.path(base,'outputs/pilot.csv'),row.names=FALSE)
+t<-system.time(for(i in 1:100){d<-design(25,.15,.15,.7,3);v<-exemplary(d,.15)})
+writeLines(c(capture.output(summary(do.call(rbind,res)[,'seconds'])),capture.output(t)),file.path(base,'outputs/pilot-runtime.txt'))
