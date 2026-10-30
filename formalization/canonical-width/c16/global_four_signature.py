@@ -124,9 +124,10 @@ def run(a):
     result['universal_short_word_enabled']=True
     result['word_native_library_sha256']=hashlib.sha256(a.word_library.read_bytes()).hexdigest()
     from sparse_quotient_oracle import SparseQuotientOracle
-    from verify_sparse_quotient import SparseQuotientConsumer
+    from verify_four_term import FourTermConsumer
     sparse=SparseQuotientOracle(X,Z,a.sparse_library) if a.sparse_order else None
-    sparse_consumer=SparseQuotientConsumer(X,Z)
+    sparse_consumer=FourTermConsumer(X,Z)
+    from minimize_four_witness import minimize as minimize_witness
     result['sparse_quotient_order']=a.sparse_order;result['additional_complete_order_four_enabled']=True
     result['universal_sparse_quotient_enabled']=bool(a.sparse_order)
     result['sparse_library_sha256']=hashlib.sha256(a.sparse_library.read_bytes()).hexdigest()
@@ -151,6 +152,12 @@ def run(a):
             assert 'domain' not in cut['kind'], 'Only universal initial seeds are allowed'
             result['cuts'].append(cut)
             for clause in sorted(expand(cut,owners,anchor)-base_set-added):cnf.append(list(clause));added.add(clause)
+    if a.seed_circuits:
+        previous=json.loads(a.seed_circuits.read_text());result['seed_circuits_dependency']={'c16_path':str(a.seed_circuits.resolve().relative_to(ROOT)),'sha256':hashlib.sha256(a.seed_circuits.read_bytes()).hexdigest()}
+        result['signature_circuits']=previous['signature_circuits']
+        for circuit in result['signature_circuits']:
+            for clause in sorted(expand_circuit(circuit,events,None)-base_set-added):cnf.append(list(clause));added.add(clause)
+    result['seed_signature_circuit_count']=len(result['signature_circuits'])
     result['seed_cut_count']=len(result['cuts']);initial=(f'p cnf {n} {len(cnf)}\n'+''.join(' '.join(map(str,c))+' 0\n' for c in cnf)).encode();result['initial_input_sha256']=hashlib.sha256(initial).hexdigest();solver=Solver(name='cadical195',bootstrap_with=cnf)
     def checkpoint():
         result['elapsed_seconds']=time.monotonic()-start;result['clauses']=len(cnf);result['added_clauses']=len(added);temp=a.output.with_suffix('.checkpoint.tmp');temp.write_text(json.dumps(result,indent=2)+'\n');temp.replace(a.output)
@@ -194,8 +201,10 @@ def run(a):
                     ids=[pair[1-detecting_side] for pair in pairs]
                     for row in sparse.probe(detecting_side,ids,a.sparse_order):
                         assert sparse_consumer.check(row)==row['clause']
+                        row,shrink=minimize_witness(X if detecting_side==0 else Z,Z if detecting_side==0 else X,row)
+                        assert sparse_consumer.check(row)==row['clause']
                         side=1-detecting_side
-                        new.append({'kind':'universal_sparse_quotient','sector':side,'indices':ids,'certificate':row})
+                        new.append({'kind':'universal_sparse_quotient','sector':side,'indices':row['mandatory_opposite'],'certificate':row,'fixed_witness_minimization':shrink})
             else:
                 values=[0]*1440
                 for x,z in pairs:values[x]=values[z+720]=1
@@ -216,7 +225,8 @@ def run(a):
                     row={'kind':'sparse_quotient_obstruction','side':detecting_side,**result4,
                          'clause':[-j-1-(720 if detecting_side==0 else 0) for j in ids]}
                     assert sparse_consumer.check(row)==row['clause']
-                    new.append({'kind':'universal_sparse_quotient_four','sector':1-detecting_side,'indices':ids,'certificate':row})
+                    row,shrink=minimize_witness(U,V,row);assert sparse_consumer.check(row)==row['clause']
+                    new.append({'kind':'universal_sparse_quotient_four','sector':1-detecting_side,'indices':row['mandatory_opposite'],'certificate':row,'fixed_witness_minimization':shrink})
             diag.append({'order_four_exclusions':len(new)})
         record={'iteration':iteration,'pairs':pairs,'solve_seconds':solve_time,'rank_checks':diag,'cut_indices':[]}
         if not new:
@@ -233,7 +243,7 @@ def run(a):
     result['input_file']=a.output.with_suffix('.cnf.gz').name;result['input_sha256']=dump_input(a.output.with_suffix('.cnf.gz'),n,cnf);checkpoint();solver.delete();print('RANK END',a.mode,result['status'],len(result['records']),flush=True)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--mode',choices=['global'],required=True);ap.add_argument('--anchor',type=int,nargs=2);ap.add_argument('--parent-cover',type=Path);ap.add_argument('--restricted-classes',type=Path);ap.add_argument('--seed-cuts',type=Path,nargs='*',default=[]);ap.add_argument('--seconds',type=float,default=600);ap.add_argument('--rounds',type=int,default=500);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--separator',choices=['rank','closure'],default='rank');ap.add_argument('--native-library',type=Path);ap.add_argument('--word-library',type=Path,required=True);ap.add_argument('--sparse-library',type=Path,required=True);ap.add_argument('--sparse-order',type=int,choices=[0,2,3],required=True);ap.add_argument('--signature-independent',action='store_true');ap.add_argument('--projection-count',action='store_true');ap.add_argument('--phase-profiles',type=Path);ap.add_argument('--child',action='store_true');a=ap.parse_args();assert a.anchor is None and a.parent_cover is None and a.restricted_classes is None;a.output.parent.mkdir(exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--mode',choices=['global'],required=True);ap.add_argument('--seed-circuits',type=Path);ap.add_argument('--anchor',type=int,nargs=2);ap.add_argument('--parent-cover',type=Path);ap.add_argument('--restricted-classes',type=Path);ap.add_argument('--seed-cuts',type=Path,nargs='*',default=[]);ap.add_argument('--seconds',type=float,default=600);ap.add_argument('--rounds',type=int,default=500);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--separator',choices=['rank','closure'],default='rank');ap.add_argument('--native-library',type=Path);ap.add_argument('--word-library',type=Path,required=True);ap.add_argument('--sparse-library',type=Path,required=True);ap.add_argument('--sparse-order',type=int,choices=[0,2,3],required=True);ap.add_argument('--signature-independent',action='store_true');ap.add_argument('--projection-count',action='store_true');ap.add_argument('--phase-profiles',type=Path);ap.add_argument('--child',action='store_true');a=ap.parse_args();assert a.anchor is None and a.parent_cover is None and a.restricted_classes is None;a.output.parent.mkdir(exist_ok=True)
     if a.child:run(a);return
     child=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),*sys.argv[1:],'--child']);expired=False
     try:child.wait(timeout=a.seconds)
