@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "folded_owner_inequalities": 32355,
+  "unfolded_sector_rows": 64710,
+  "matrix_nonzeros": 1038545,
+  "physical_common_neighbor_sets_compared_to_prior_formula": 32355,
+  "physical88_sector_and_cyclic_average_controls": 32355,
+  "old_and_new_candidate_screens": [
+    {
+      "point_c16_path": "algebraic-results/profile-moment-face1.json.gz",
+      "sha256": "d817c76386119980acf6592d6447b6cd009459cececb8c84bca0d8a86b02631e",
+      "violated_rows": 213,
+      "maximum_exact_violation": "290690619348464874862037/1602176456820975556624384",
+      "minimum_exact_slack": "-290690619348464874862037/1602176456820975556624384"
+    },
+    {
+      "point_c16_path": "moment-resumption-results/interior-pivots-point.json.gz",
+      "sha256": "4cf379ebe3631e99769a77789753d0a6fcff8fe0235a93909ffc924e9041699f",
+      "violated_rows": 248,
+      "maximum_exact_violation": "162318033789611/1125899906842624",
+      "minimum_exact_slack": "-162318033789611/1125899906842624"
+    }
+  ],
+  "source_hashes": {
+    "physical_owner_moment_matrix.py": "698888cd3f16919fffa2443ffcdbc212895c974fa5852d8a764f7dfc9fecd0fc",
+    "prepare_physical_owner_moments.py": "2086ae85fe77d05f31d40234ad79be35d4eaddd8e1446c9209b188decd3e2b57",
+    "moment_owner_cuts.py": "36bf036396998ea60ff483500c62d84ade53fd01f45ade9a8b7440b8e521a3c9",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+  },
+  "elapsed_seconds": 6.968290625023656,
+  "scope": "Reuses the previously justified private-partner ownership theorem. New physical-coordinate compiler is compared against the old polynomial-neighbor formula for every row and tested on the verified88-pair matching. This prepares combination with profile/capacity/forbidden-pattern moments, not a new ownership theorem or source answer."
+}
