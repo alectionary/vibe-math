@@ -1,0 +1,72 @@
+{
+  "status": "PASS_CONTROL_ONLY",
+  "source_C16_answered": false,
+  "consumer_sha256": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+  "records": [
+    {
+      "name": "positive",
+      "expected_returncode": 0,
+      "returncode": 0,
+      "bank_sha256": "034f965ccaffa890876d9fb2f3dd0ce7cb8964cacaeee5d449bbedba027110e6",
+      "point_sha256": "eeb52ff562713f7aaf196960be521c6f03f540bd2864d1b2d62e6821cad129ef",
+      "log_sha256": "6e3ebf26413f17c97871489690a401769b31b19aab93e1072eacb613799380c3",
+      "elapsed_seconds": 10.273311749915592,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "verify_full_partner_projection.py",
+        "--certificate",
+        "coupling-results/full-partner-projection-control-bank.json",
+        "--point",
+        "coupling-results/full-partner-projection-control-point.json.gz",
+        "--output",
+        "coupling-results/full-partner-projection-control-positive-replay.json"
+      ]
+    },
+    {
+      "name": "invalid-bound",
+      "expected_returncode": 1,
+      "returncode": 1,
+      "bank_sha256": "2b7d6fd4a2cbd73014f58541cf286bcba126e047c39e23d97bfab1e4f2f75f6a",
+      "point_sha256": "eeb52ff562713f7aaf196960be521c6f03f540bd2864d1b2d62e6821cad129ef",
+      "log_sha256": "de51bbd356ea5046574624eaf0ce8f17d6ebd08148a1c01848ac431170e6d1f0",
+      "elapsed_seconds": 10.225396165973507,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "verify_full_partner_projection.py",
+        "--certificate",
+        "coupling-results/full-partner-projection-control-invalid-bound.json",
+        "--point",
+        "coupling-results/full-partner-projection-control-point.json.gz",
+        "--output",
+        "coupling-results/full-partner-projection-control-invalid-bound-replay.json"
+      ]
+    },
+    {
+      "name": "zero-gap",
+      "expected_returncode": 1,
+      "returncode": 1,
+      "bank_sha256": "14c831810a31700db5dcbfcb6423b6192dd406b9ee1eee0c36048efd4a4004df",
+      "point_sha256": "6a8a23dfa1399b67144110bf6dd5d757d5c29603903034b55ec3badc5c747532",
+      "log_sha256": "4d2ef707e6fa6fb2af3be4b8546a4934224bb26a474a8c5492b726cfaa782a5b",
+      "elapsed_seconds": 10.292946542031132,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "verify_full_partner_projection.py",
+        "--certificate",
+        "coupling-results/full-partner-projection-control-zero-gap.json",
+        "--point",
+        "coupling-results/necessary0-rational.json.gz",
+        "--output",
+        "coupling-results/full-partner-projection-control-zero-gap-replay.json"
+      ]
+    }
+  ],
+  "accepted_matrix_shape": [
+    1,
+    36495
+  ],
+  "accepted_matrix_nonzeros": 45,
+  "nonzero_constant_rhs": 128,
+  "exact_synthetic_matrix_violation": "1",
+  "scope": "Synthetic acceptance-path control of the known cardinality bound; invalid bound and zero-gap target are rejected. No new research separation."
+}
