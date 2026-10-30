@@ -42,7 +42,9 @@ Run [delivery_check.py](scripts/delivery_check.py) on the delivery record using
 `python3 scripts/delivery_check.py RECORD.json --root STUDY_ROOT` from this skill.
 The checker validates files/hashes and required review records, not scientific
 truth or whether a reviewer actually read a page. A fresh independent manual
-review remains required. Revalidate after any manuscript/PDF change.
+review remains required. Manually verify the declared build inputs are complete,
+all URLs belong to the intended repository, and the reproduction revision contains
+the documented code and inputs. Revalidate after any manuscript/PDF change.
 
 Record the historical run baseline separately from the immutable revision that
 actually contains reproducible code and inputs. Preserve prior analysis when
