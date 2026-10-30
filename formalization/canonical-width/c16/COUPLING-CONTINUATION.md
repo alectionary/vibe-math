@@ -97,3 +97,24 @@ being built before using291 representatives for a source-valid projected row.
 Source status is unchanged: width16 versus18, cover405, physical partial88/128,
 zero full source anchors excluded, and no new Lean completion. No new paper or
 source inventory entry has been added in this block.
+
+## Combined intersection certified feasible, 05:49Z
+
+`witness2-rational.json.gz` has SHA256
+`5e77854cbd40ddf6f8c9b4146c49b5050aed25bbf34c024a71c991b188538efa`.
+The exact acceptance pipeline passes all six stages: profile/affine/interval
+PSD, full ownership/circuit/legacy/285-rank checks, all three projected rows,
+all213662 saved global conditional rows, complete Boolean screening, and the
+independent direct triple-distribution consumer. The numerical discovery used
+positive margins only to obtain an interior witness; the exact certificate
+is checked against the actual necessary inequalities without artificial
+margins. Thus the previously outstanding combined intersection is nonempty.
+This certifies a fractional relaxation point, not a physical128-pair frame.
+
+The full-basis projection bridge now has independent physical, phase and
+sector checks. Its first accepted row rejects `necessary0`, but a matched
+support calculation shows that separate anchor hinges give the same bound.
+This row therefore does not demonstrate a gain from full-basis coupling.
+The later exact `witness2` satisfies it. A broad775-coordinate separation
+pilot and smaller fixed-form optimizations are being evaluated with bounded
+runtimes. Numerical nonseparation will not be called projected membership.
