@@ -1,9 +1,15 @@
 """Consolidate all trial-level evidence and compute predeclared paired contrasts."""
-import csv,glob,json,pathlib,math,statistics,collections
+import csv,glob,json,pathlib,math,statistics,collections,argparse
 import numpy as np
 from scipy.stats import t
+p=argparse.ArgumentParser();p.add_argument('--include-full',action='store_true');p.add_argument('--output-dir',default='outputs');args=p.parse_args()
+OUT=pathlib.Path(args.output_dir)
+if args.include_full and OUT.resolve()==pathlib.Path('outputs').resolve():p.error('Continuation summaries require a distinct output directory to preserve baseline')
+OUT.mkdir(parents=True,exist_ok=True)
 rows=[];errors=[]
-for f in sorted(glob.glob('outputs/pilot-c6-*-full.csv')+glob.glob('outputs/pilot-c6-*-deletion.csv')):
+files=sorted(glob.glob('outputs/pilot-c6-*-full.csv')+glob.glob('outputs/pilot-c6-*-deletion.csv'))
+if args.include_full: files+=sorted(glob.glob('outputs/full-c6-*-full.csv')+glob.glob('outputs/full-c6-*-deletion.csv'))
+for f in files:
  trial=pathlib.Path(f).name.split('-r')[-1].split('-')[0]
  for r in csv.DictReader(open(f)):
   if 'error'in r:errors.append(dict(file=f,**r));continue
@@ -12,10 +18,18 @@ for f in sorted(glob.glob('outputs/pilot-c6-*-full.csv')+glob.glob('outputs/pilo
   for k in ['q','N','seed','status']:r[k]=int(r[k])
   r['path_se']=r['se']/(2*math.sqrt(r['estimate'])) if r['parameter'] in ['A','C','E'] and r['estimate']>0 else ''
   rows.append(r)
+# Exact seed/condition/parameter duplicates are the same dataset, not extra replication.
+unique={}
+for r in rows:
+ key=tuple(r[k] for k in ['mechanism','q','missing','seed','parameter','method'])
+ if key in unique and any(r[k]!=unique[key][k]for k in ['estimate','se','status']): raise ValueError('Conflicting duplicate: '+str(key))
+ unique[key]=r
+rows=list(unique.values())
 def save(path,rs):
+ path=OUT/pathlib.Path(path).name
  if not rs:return
  with open(path,'w')as f:w=csv.DictWriter(f,fieldnames=list(rs[0]));w.writeheader();w.writerows(rs)
-save('outputs/trial-records.csv',rows);pathlib.Path('outputs/fit-errors.json').write_text(json.dumps(errors,indent=2))
+save('outputs/trial-records.csv',rows);(OUT/'fit-errors.json').write_text(json.dumps(errors,indent=2))
 groups=collections.defaultdict(list)
 for r in rows:groups[(r['mechanism'],r['q'],r['missing'],r['parameter'],r['method'])].append(r)
 summary=[]
@@ -55,6 +69,6 @@ save('outputs/source-comparisons.csv',comparisons)
 # Cost is explicitly an extrapolation, not observed production runtime.
 timing=list(csv.DictReader(open('outputs/timing-c5-largest-timing.csv')))[0];rate=(float(timing['burn_seconds'])+float(timing['draw_seconds']))/20
 cost={'largest_Chapter5_observed_seconds_per_sampling_iteration':rate,'source_iterations_per_replication':80000,'source_replications':250,'projected_single_worker_days_for_N8000_condition_sampling_only':rate*80000*250/86400,'caveat':'Extrapolated from10burn+10retained iterations; adaptation, compile, parallel scaling and mixing can change cost; not a hard execution denial. Full production remains unresolved.'}
-pathlib.Path('outputs/resource-projection.json').write_text(json.dumps(cost,indent=2))
+(OUT/'resource-projection.json').write_text(json.dumps(cost,indent=2))
 info={'trial_fits':len(set((r['mechanism'],r['q'],r['missing'],r['method'],r['replicate'])for r in rows)),'failed_fit_files':len(errors),'min_replicates':min(r['requested']for r in summary),'max_replicates':max(r['requested']for r in summary),'source_SE_variance_outside':sum(r['conditional_status']=='outside'for r in comparisons if r['metric']=='se'),'source_SE_path_outside':sum(r['conditional_status']=='outside'for r in comparisons if r['metric']=='path_se'),'published_grid_nonpositive_variance_SE_contrasts':sum(r['contrast_delete_minus_full']<=0 for r in contrasts if r['metric']=='se' and r['missing']!=.03),'published_grid_simultaneously_positive_variance_SE_contrasts':sum(r['adjusted_low']>0 for r in contrasts if r['metric']=='se' and r['missing']!=.03),'inventory_groups':len(list(csv.DictReader(open('coverage.csv'))))}
-pathlib.Path('outputs/summary.json').write_text(json.dumps(info,indent=2));print(json.dumps(info,indent=2))
+(OUT/'summary.json').write_text(json.dumps(info,indent=2));print(json.dumps(info,indent=2))

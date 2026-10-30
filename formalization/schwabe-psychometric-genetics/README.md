@@ -26,8 +26,9 @@ Short JAGS chains are resource and execution diagnostics, **not convergence,
 power, or table-replication evidence**. Full-length Chapter2 fits are separate
 from the short grid. Chapter6 runs are a smaller Monte Carlo checkpoint than the
 original1000 repetitions per condition. Full production targets stay open.
-Independent scientific and rendered-manuscript review is also still required;
-self-review and structural checks do not satisfy that requirement.
+Independent scientific and rendered-manuscript reviews are recorded in
+[provenance/review.json](provenance/review.json), including initial findings and
+final artifact hashes. Review does not close unfinished replication items.
 
 ## Source and immutable provenance
 
@@ -204,6 +205,44 @@ package code or private empirical data is included. Root [LICENSING.md](../../LI
 excludes R files, prose, results and source evidence from its original-code grant.
 No new content license is asserted here.
 
-The independent review requirement is pending. The draft must not be described
-as a verified final delivery or successful whole-dissertation replication until
-that review and the open production/data items are resolved.
+Independent reviewers found missing signed bias contrasts and continuation defects.
+The revisions preserve the original numerical baseline and record all 72 bias
+contrasts, including 23 inconclusive point-sign reversals. Whole-dissertation
+replication remains incomplete after review; see
+[unfinished-work.json](provenance/unfinished-work.json).
+
+## Reviewed continuation and bounded resource plan
+
+The baseline20-replicate outputs remain unchanged. The default summarizer still
+recreates that baseline. Continuation outputs must go to a separate directory;
+identical seed/condition duplicates are not counted as new data. Failed or
+incomplete checkpoints now stop rather than silently count as successful resumes.
+The full-mode item/sum arms now share generated-data seeds within each condition;
+the historical pilot-grid arms did not and cannot support paired contrasts.
+The saved full-length confirmation already used a shared dataset.
+
+```sh
+python3 simulation/bias_contrasts.py
+python3 simulation/resource_plan.py
+python3 simulation/check_continuation.py
+Rscript simulation/openmx_batch.R outputs/batch-validation.tsv
+python3 simulation/run_grid.py --engine openmx --mode full --replicates 1000 --start-replicate 20 --max-jobs 48 --dry-run
+python3 simulation/summarize.py --include-full --output-dir outputs/continuation-summary
+```
+
+The batch wrapper refuses to overwrite existing outputs. For replay, use a clean
+worktree or preserve/remove only the already recorded batch-validation outputs
+before running. Its12 existing datasets/24fits matched recorded estimates, SEs
+and likelihoods exactly; this is execution equivalence on shared inputs, not an
+independent scientific replication. The batch validation does not add datasets
+to the1920-fit baseline. Source-count Chapter6 continuation projects25.7fit-worker
+hours or45.5process-worker hours from the saved timings; ideal4-worker division
+is not measured scaling. Chapter2/5 total-pilot extrapolations include startup
+and are rough; the separate largest-Chapter5 sampling benchmark remains primary.
+
+Before production, record finite estimates, Hessian/covariance validity and
+nonnegative delta-method variances in addition to optimizerstatus. The old
+`pmax(0, ...)` code must not conceal invalid variances in a production analysis.
+No invalid/nonpositive SE was found in the14400 saved baseline parameter rows.
+JAGS continuation needs independent chains and bulk/tail convergence checks;
+source-length execution alone is not convergence. No unbounded job was launched.
