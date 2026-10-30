@@ -145,3 +145,9 @@ deviation prioritizes working reader-facing references and the user's standalone
 paper requirement. Publication status and template/engine-preflight provenance
 are documented outside the scientific narrative. No source or engine change is
 hidden by removing workflow wording.
+
+A further wording risk is the skill's line123 story cue, 'what gave us trouble
+and how we fixed it'. It can be read as a progress narrative unless constrained
+to scientific problems, diagnostic evidence and methodological consequences.
+That interpretation does not override the explicit standalone-reader requirement;
+the proposed phase guide should state the distinction at the composition gate.
