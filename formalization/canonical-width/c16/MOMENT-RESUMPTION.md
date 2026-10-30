@@ -646,3 +646,56 @@ violation, and a wrong point hash. These are rejection controls, not source
 certificates. Their separate receipt is `final-negative-controls/summary.json`.
 [Exact resumption instructions](MOMENT-RESUME.md) give the next row translation,
 model-scope distinction, acceptance commands and remaining gap.
+
+## Finite mathematical kernel and formalization boundary
+
+The shared-profile argument can be stated without any LP. Let M be a finite
+rotation-stable mask set, G the16 cyclic rotations, and I a finite anchor set.
+Let g:M→Q be nonnegative and rotation invariant. For each anchor a, let
+q_a:M→Q satisfy0<=q_a(P)<=g(P), with q_a(P)=0 whenever the physical compatibility
+predicate K_a(P) is false. Let F be rotation invariant and L_a any rational
+function on masks. Define
+
+    H(P) = F(P) + sum_{a:K_a(P)} max(0,L_a(P)).
+
+If sum_{h in G} H(hP)<=0 for every P in M, then
+
+    sum_P g(P) F(P) + sum_{a,P} q_a(P) L_a(P) <= 0.
+
+Proof: for compatible masks, q_a L_a<=g max(0,L_a) by splitting on the sign
+of L_a and using0<=q_a<=g; for incompatible masks q_a=0. Summing bounds the
+left side by sum_P g(P)H(P). Reindexing each finite rotation sum and using
+invariance of g shows that16 times this bound equals
+sum_P g(P) sum_h H(hP), which is nonpositive. Divide by16. Normalization of g
+is needed to interpret probabilities, but not for this inequality.
+
+For the projected certificate, F is the saved linear combination of the constant,
+mask weight and eight autocorrelations; L_a are the saved affine phase forms.
+The consumer checks the hypothesis for every allowed mask exactly. A full frame
+provides g and q after cyclic/sector averaging. This is the explicit bridge
+between the finite certificate and the necessary source moment inequality.
+
+An intended Lean interface would take finite types M/I/G, a finite group action
+on M, rational g/q/F/L, invariance, domination and compatibility hypotheses,
+then conclude the displayed finite-sum inequality. Its proof needs finite-sum
+reindexing and ordered-ring inequalities. The physical pool-to-mask hypotheses
+and the concrete all-mask certificate would be separate declarations. This
+interface and written proof are not a compiled Lean result, and no Lean coverage
+count changes.
+
+The published70ab504 tree contains all567 manifest artifacts with matching Git
+blob identifiers and byte sizes (170,645,233 bytes total). The recursive GitHub
+tree is untruncated. `remote-publication.json` records this check. Both research
+and PR branches point to the validated checkpoint; master remains pending review.
+
+A final source-bridge audit checks sector averaging explicitly, rather than
+leaving it implicit in the older folded-coordinate consumers. The two physical
+pools each have rank128. The256-bit graph sets for X_i→Z_i and for one phase
+rotation in each pool also each have rank128, proving those index maps extend
+to linear isomorphisms. All518,400 cross pairings agree under sector swap, and
+all518,400 agree under the phase generator. Therefore both operations map every
+full Gram-identity source frame to another such frame. Averaging over their32
+actions preserves all source-valid necessities and justifies the common S/T
+coordinates used by the new projected inequality. The exact standalone receipt
+is `symmetry-bridge-independent.json`; no assertion of physical completion or
+new source resolution is involved.
