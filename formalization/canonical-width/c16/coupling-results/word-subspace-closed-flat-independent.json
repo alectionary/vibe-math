@@ -1,0 +1,121 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "bank_sha256": "7c45b2c6e8480c283970cee27d92f7de087d8132a51aad46813f636d9a0d4a4e",
+  "frozen_sha256": "b42830350f63067f306d9169c17013e3cc27fd96e7a27bf22b5b9a0cad640996",
+  "consumer_sha256": "caa38a54f5a5621e30f48058c2fee7c2fe568df0fb20b28b711a4f068dc4ed94",
+  "source_hashes": {
+    "transfer-results/capacity/frozen.json": "0cd6fb1f40c87fe276f3fb8f1b8182c4fa5fe0d2c2150e0b0f5f15228df34541",
+    "moment-resumption-results/physical-rank-moment-bank.json": "8a7c6e806ca0eda3cf44635b3720ef381a3966439688645cd320ee592d54b17f",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+  },
+  "statistics": {
+    "cases": 383,
+    "residual_closed_flats": 403457,
+    "shortened_dimension_at_least_two": 0
+  },
+  "physical_circuits_checked": 1280,
+  "evaluation_code_orthogonality_and_rank_replayed": true,
+  "global_closed_flats_independently_reconstructed": 1280,
+  "literal_controls": {
+    "positive_controls": [
+      {
+        "ambient_dimension": 3,
+        "witness_space_dimension": 2,
+        "U": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "V": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "witnesses": [
+          1,
+          2,
+          3
+        ],
+        "exact_word_demands": [
+          2,
+          2,
+          2
+        ],
+        "individual_detector_ranks": [
+          2,
+          2,
+          2
+        ],
+        "detector_union_rank": 2,
+        "selected_detector_lower_bound": 3,
+        "literal_full_frame_count": 0
+      },
+      {
+        "ambient_dimension": 4,
+        "witness_space_dimension": 3,
+        "U": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "V": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "witnesses": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "exact_word_demands": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "individual_detector_ranks": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "detector_union_rank": 3,
+        "selected_detector_lower_bound": 4,
+        "literal_full_frame_count": 0
+      }
+    ],
+    "literal_nonzero_evaluation_incidence_checks": 809,
+    "quotient_subspace_full_frame_controls": 59,
+    "false_demand_and_dependent_witness_controls_rejected": 2,
+    "single_word_detector_rank_bounds_all_pass_positive_examples": true
+  },
+  "elapsed_seconds": 6.724249457940459,
+  "comparison_to_previous_rules": "Existing detecting_capacity variants use one quotient witness and a previously forbidden child inside its detecting support. They do not sum demands over a witness subspace. The positive controls pass every individual word-demand versus physical-detector-rank inequality but violate the new summed bound.",
+  "scope": "Exact screening of the declared finite raw-circuit or closed-flat domains. Zero shortened dimension>=2 excludes any witness subspace supported inside these domains on the processed mandatory sets, irrespective of word demands. It says nothing about unions extending beyond this library, source extendibility, or the original width."
+}

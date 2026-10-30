@@ -1,0 +1,2737 @@
+{
+  "status": "PASS_BOUNDED_INDEPENDENT_MAPPING_AND_SUPPORT_AUDIT",
+  "source_C16_answered": false,
+  "source_hashes": {
+    "full_partner_projection.py": "de20cee0899ccf422d541ec82841918278ef9119bd0a664c8537536fe44796a1",
+    "full_partner_projection_features.py": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa",
+    "full_partner_projection_incremental.py": "d991b33c4b576523bbcdd2408325abcde46ab21adc09a2ab6fdfe3ee54eca66d",
+    "full_partner_projection_primal.py": "abb45ba12bfb351cf7e6f678e795b0e4956c0dd26022444e4ed0d06824183c9d",
+    "full_partner_projection_active.py": "add9db08ccc21292023c735c4f77c7761f77ef110644b50ca770db35a9276e83",
+    "full_partner_basis_oracle.py": "0b2093c783ba71a670a74bec27cc3d90a9409057edd40905e2c6af5cd87e8a24",
+    "verify_anchored_full_partner_template.py": "f0b101af32f85e47739b4900da52151fb2a28dd42340de96974118de72a9a901",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "certify_profile_moment_point.py": "aece54e97ad90ac6fa3c8f13829493f91134bfd356699db580acf37feb004150",
+    "verify_projected_profile_moment_rows.py": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "algebraic-results/orbit-rank-profiles.json.gz": "6e4852d5a003c7c6877f22f03a1fe4f719e8152b709ab00b988a583de58d9439",
+    "algebraic-results/hulls-16-rank.json.gz": "39c476bb85b799a7e60c20dacadab9fd63fe43d1dc0f9d2893a0a42630b3525c",
+    "coupling-results/witness2-rational.json.gz": "5e77854cbd40ddf6f8c9b4146c49b5050aed25bbf34c024a71c991b188538efa",
+    "coupling-results/full-partner-projection-independent-audit.py": "217f1fd1186573e46420516718f1cb9040c5b731b292ebe0e8c59148b65f365e",
+    "coupling-results/full-partner-projection-incremental-witness2.json": "aee91d88195b08a6c8349c473c8a2ef86e3825036e4dfad324a88cd218cbe9b4",
+    "coupling-results/full-partner-projection-incremental-witness2.columns.npz": "679da8699abeb2e4bed0d9e4752e2fbd8f68284bbda9558934c0e9d510b94ac6",
+    "coupling-results/full-partner-projection-primal-witness2.json": "224d154b9bf4300b5f0036980c9de32630ac48a1fc4a33276f6686735fd3bcdf",
+    "coupling-results/full-partner-projection-primal-witness2.columns.npz": "f35d7ab8191f74bf20d8d2278b0ea9f71fb556c2a05d4413838e67ed15124e6d",
+    "coupling-results/full-partner-projection-active-witness2.json": "fbf818754bdd3d3a1586f74edd5bfdc3629dca6cd63559561ae0ddd41f5f7eec",
+    "coupling-results/full-partner-projection-active-witness2.columns.npz": "eb84730ea1b683eba7aa8e15e90c18fb7753b350eaa98ff46eab26557ed4cf56"
+  },
+  "source_files_unchanged": {
+    "full_partner_projection.py": true,
+    "full_partner_projection_features.py": true,
+    "full_partner_projection_incremental.py": true,
+    "full_partner_projection_primal.py": true,
+    "full_partner_projection_active.py": true,
+    "full_partner_basis_oracle.py": true,
+    "verify_anchored_full_partner_template.py": true,
+    "verify_algebraic_model.py": true,
+    "certify_profile_moment_point.py": true,
+    "verify_projected_profile_moment_rows.py": true,
+    "physical-pool-source.json": true,
+    "pools/xcoords.txt": true,
+    "pools/zcoords.txt": true,
+    "algebraic-results/orbit-rank-profiles.json.gz": true,
+    "algebraic-results/hulls-16-rank.json.gz": true,
+    "coupling-results/witness2-rational.json.gz": true,
+    "coupling-results/full-partner-projection-independent-audit.py": true,
+    "coupling-results/full-partner-projection-incremental-witness2.json": true,
+    "coupling-results/full-partner-projection-incremental-witness2.columns.npz": true,
+    "coupling-results/full-partner-projection-primal-witness2.json": true,
+    "coupling-results/full-partner-projection-primal-witness2.columns.npz": true,
+    "coupling-results/full-partner-projection-active-witness2.json": true,
+    "coupling-results/full-partner-projection-active-witness2.columns.npz": true
+  },
+  "exact_target_translation_checked": true,
+  "saved_column_samples": [
+    {
+      "master": "incremental",
+      "archive_columns": 16005,
+      "last_optimal_round": 53,
+      "sample_column_ids": [
+        0,
+        359,
+        512,
+        612,
+        873,
+        957,
+        1020,
+        1034,
+        1081,
+        1455,
+        1598,
+        1746,
+        3600,
+        4291,
+        4424,
+        5468,
+        6747,
+        8469,
+        8934,
+        9178,
+        9685,
+        10397,
+        12023,
+        12996,
+        13861,
+        14180,
+        16004
+      ],
+      "sample_physical_columns_checked": 27,
+      "mass": 0.9999999999996998,
+      "min_weight": 0.0,
+      "l1_residual": 0.3970561532735048,
+      "dual_value": 0.39705615295925156,
+      "record_objective": 0.3970561529591805,
+      "max_feature_residual": 0.0520677138005827,
+      "solved_cohort_prefix_columns": 15714,
+      "max_dual_constraint_violation_solved_cohort": 3.365386191944708e-09
+    },
+    {
+      "master": "primal",
+      "archive_columns": 18619,
+      "last_optimal_round": 9,
+      "sample_column_ids": [
+        0,
+        517,
+        712,
+        873,
+        1330,
+        1455,
+        1746,
+        2216,
+        2330,
+        2635,
+        2636,
+        2667,
+        2798,
+        2823,
+        2899,
+        3989,
+        4149,
+        4165,
+        4503,
+        4544,
+        5186,
+        6016,
+        6563,
+        8878,
+        11768,
+        16913,
+        18618
+      ],
+      "sample_physical_columns_checked": 27,
+      "mass": 0.9999999999999987,
+      "min_weight": 0.0,
+      "l1_residual": 0.3401691730507681,
+      "dual_value": 0.3401691722413581,
+      "record_objective": 0.3401691722413592,
+      "max_feature_residual": 0.05320330036399171,
+      "solved_cohort_prefix_columns": 18329,
+      "max_dual_constraint_violation_solved_cohort": 1.2603251775544777e-12,
+      "error_reconstruction_max": 1.8829382497642655e-13,
+      "complementarity_sign_max": 0.0
+    },
+    {
+      "master": "active",
+      "archive_columns": 68501,
+      "last_optimal_round": 172,
+      "sample_column_ids": [
+        0,
+        873,
+        1455,
+        1746,
+        2037,
+        2328,
+        2635,
+        2667,
+        2798,
+        2910,
+        4187,
+        5899,
+        7701,
+        9518,
+        10110,
+        14567,
+        18015,
+        18843,
+        24726,
+        39245,
+        44820,
+        48463,
+        53769,
+        55404,
+        61358,
+        68500
+      ],
+      "sample_physical_columns_checked": 26,
+      "mass": 1.0,
+      "min_weight": 0.0,
+      "l1_residual": 0.3323473771233362,
+      "dual_value": 0.3323473759765595,
+      "record_objective": 0.3323473759765537,
+      "max_feature_residual": 0.05294301793870697,
+      "restricted_dual_cohort_replay": "NOT_AVAILABLE_LAST_SOLVED_ACTIVE_IDS_NOT_SAVED",
+      "final_active_ids_are_post_pricing_not_last_solved_cohort": true,
+      "error_reconstruction_max": 2.5091040356528538e-14,
+      "complementarity_sign_max": 1.8962609260597674e-12
+    }
+  ],
+  "final_active_pricing_replay": {
+    "allowed_masks": 4597,
+    "representatives_checked": 291,
+    "physical_prefix_ranks_checked": 71088,
+    "per_mask": [
+      {
+        "mask": 0,
+        "physical_prefix_ranks_checked": 720,
+        "basis_support": "0",
+        "full_support": "0"
+      },
+      {
+        "mask": 1,
+        "physical_prefix_ranks_checked": 522,
+        "basis_support": "860563",
+        "full_support": "795027"
+      },
+      {
+        "mask": 3,
+        "physical_prefix_ranks_checked": 384,
+        "basis_support": "933552",
+        "full_support": "868016"
+      },
+      {
+        "mask": 5,
+        "physical_prefix_ranks_checked": 377,
+        "basis_support": "937031",
+        "full_support": "871495"
+      },
+      {
+        "mask": 7,
+        "physical_prefix_ranks_checked": 288,
+        "basis_support": "866177",
+        "full_support": "866177"
+      },
+      {
+        "mask": 9,
+        "physical_prefix_ranks_checked": 405,
+        "basis_support": "892465",
+        "full_support": "826929"
+      },
+      {
+        "mask": 11,
+        "physical_prefix_ranks_checked": 300,
+        "basis_support": "870681",
+        "full_support": "870681"
+      },
+      {
+        "mask": 13,
+        "physical_prefix_ranks_checked": 301,
+        "basis_support": "799938",
+        "full_support": "799938"
+      },
+      {
+        "mask": 15,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "566718",
+        "full_support": "697790"
+      },
+      {
+        "mask": 17,
+        "physical_prefix_ranks_checked": 396,
+        "basis_support": "917733",
+        "full_support": "852197"
+      },
+      {
+        "mask": 19,
+        "physical_prefix_ranks_checked": 308,
+        "basis_support": "769744",
+        "full_support": "769744"
+      },
+      {
+        "mask": 21,
+        "physical_prefix_ranks_checked": 293,
+        "basis_support": "814477",
+        "full_support": "814477"
+      },
+      {
+        "mask": 23,
+        "physical_prefix_ranks_checked": 239,
+        "basis_support": "526433",
+        "full_support": "657505"
+      },
+      {
+        "mask": 25,
+        "physical_prefix_ranks_checked": 313,
+        "basis_support": "824562",
+        "full_support": "824562"
+      },
+      {
+        "mask": 27,
+        "physical_prefix_ranks_checked": 247,
+        "basis_support": "552313",
+        "full_support": "683385"
+      },
+      {
+        "mask": 29,
+        "physical_prefix_ranks_checked": 243,
+        "basis_support": "582935",
+        "full_support": "714007"
+      },
+      {
+        "mask": 33,
+        "physical_prefix_ranks_checked": 373,
+        "basis_support": "905170",
+        "full_support": "839634"
+      },
+      {
+        "mask": 35,
+        "physical_prefix_ranks_checked": 296,
+        "basis_support": "766924",
+        "full_support": "766924"
+      },
+      {
+        "mask": 37,
+        "physical_prefix_ranks_checked": 292,
+        "basis_support": "820008",
+        "full_support": "820008"
+      },
+      {
+        "mask": 39,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "535447",
+        "full_support": "666519"
+      },
+      {
+        "mask": 41,
+        "physical_prefix_ranks_checked": 292,
+        "basis_support": "832555",
+        "full_support": "832555"
+      },
+      {
+        "mask": 43,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "544829",
+        "full_support": "675901"
+      },
+      {
+        "mask": 45,
+        "physical_prefix_ranks_checked": 235,
+        "basis_support": "522775",
+        "full_support": "653847"
+      },
+      {
+        "mask": 49,
+        "physical_prefix_ranks_checked": 294,
+        "basis_support": "835501",
+        "full_support": "835501"
+      },
+      {
+        "mask": 51,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "507612",
+        "full_support": "638684"
+      },
+      {
+        "mask": 53,
+        "physical_prefix_ranks_checked": 236,
+        "basis_support": "527791",
+        "full_support": "658863"
+      },
+      {
+        "mask": 57,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "598287",
+        "full_support": "729359"
+      },
+      {
+        "mask": 59,
+        "physical_prefix_ranks_checked": 206,
+        "basis_support": "-27449",
+        "full_support": "300231"
+      },
+      {
+        "mask": 65,
+        "physical_prefix_ranks_checked": 409,
+        "basis_support": "914763",
+        "full_support": "849227"
+      },
+      {
+        "mask": 67,
+        "physical_prefix_ranks_checked": 302,
+        "basis_support": "862439",
+        "full_support": "862439"
+      },
+      {
+        "mask": 69,
+        "physical_prefix_ranks_checked": 312,
+        "basis_support": "855236",
+        "full_support": "855236"
+      },
+      {
+        "mask": 71,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "636727",
+        "full_support": "767799"
+      },
+      {
+        "mask": 73,
+        "physical_prefix_ranks_checked": 332,
+        "basis_support": "821289",
+        "full_support": "821289"
+      },
+      {
+        "mask": 75,
+        "physical_prefix_ranks_checked": 249,
+        "basis_support": "605935",
+        "full_support": "737007"
+      },
+      {
+        "mask": 77,
+        "physical_prefix_ranks_checked": 258,
+        "basis_support": "572656",
+        "full_support": "703728"
+      },
+      {
+        "mask": 81,
+        "physical_prefix_ranks_checked": 312,
+        "basis_support": "860022",
+        "full_support": "860022"
+      },
+      {
+        "mask": 83,
+        "physical_prefix_ranks_checked": 244,
+        "basis_support": "523627",
+        "full_support": "654699"
+      },
+      {
+        "mask": 85,
+        "physical_prefix_ranks_checked": 248,
+        "basis_support": "600991",
+        "full_support": "732063"
+      },
+      {
+        "mask": 89,
+        "physical_prefix_ranks_checked": 260,
+        "basis_support": "603448",
+        "full_support": "734520"
+      },
+      {
+        "mask": 93,
+        "physical_prefix_ranks_checked": 215,
+        "basis_support": "128431",
+        "full_support": "456111"
+      },
+      {
+        "mask": 97,
+        "physical_prefix_ranks_checked": 299,
+        "basis_support": "784008",
+        "full_support": "784008"
+      },
+      {
+        "mask": 99,
+        "physical_prefix_ranks_checked": 243,
+        "basis_support": "576109",
+        "full_support": "707181"
+      },
+      {
+        "mask": 101,
+        "physical_prefix_ranks_checked": 247,
+        "basis_support": "510728",
+        "full_support": "641800"
+      },
+      {
+        "mask": 103,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "83154",
+        "full_support": "410834"
+      },
+      {
+        "mask": 105,
+        "physical_prefix_ranks_checked": 248,
+        "basis_support": "596243",
+        "full_support": "727315"
+      },
+      {
+        "mask": 113,
+        "physical_prefix_ranks_checked": 242,
+        "basis_support": "560700",
+        "full_support": "691772"
+      },
+      {
+        "mask": 117,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "40",
+        "full_support": "327720"
+      },
+      {
+        "mask": 121,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "105743",
+        "full_support": "433423"
+      },
+      {
+        "mask": 129,
+        "physical_prefix_ranks_checked": 390,
+        "basis_support": "919834",
+        "full_support": "854298"
+      },
+      {
+        "mask": 131,
+        "physical_prefix_ranks_checked": 310,
+        "basis_support": "786281",
+        "full_support": "786281"
+      },
+      {
+        "mask": 133,
+        "physical_prefix_ranks_checked": 281,
+        "basis_support": "777252",
+        "full_support": "777252"
+      },
+      {
+        "mask": 135,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "557611",
+        "full_support": "688683"
+      },
+      {
+        "mask": 137,
+        "physical_prefix_ranks_checked": 315,
+        "basis_support": "852812",
+        "full_support": "852812"
+      },
+      {
+        "mask": 139,
+        "physical_prefix_ranks_checked": 254,
+        "basis_support": "658495",
+        "full_support": "789567"
+      },
+      {
+        "mask": 141,
+        "physical_prefix_ranks_checked": 239,
+        "basis_support": "484380",
+        "full_support": "615452"
+      },
+      {
+        "mask": 143,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "97226",
+        "full_support": "424906"
+      },
+      {
+        "mask": 145,
+        "physical_prefix_ranks_checked": 311,
+        "basis_support": "814542",
+        "full_support": "814542"
+      },
+      {
+        "mask": 147,
+        "physical_prefix_ranks_checked": 256,
+        "basis_support": "579104",
+        "full_support": "710176"
+      },
+      {
+        "mask": 149,
+        "physical_prefix_ranks_checked": 233,
+        "basis_support": "537091",
+        "full_support": "668163"
+      },
+      {
+        "mask": 153,
+        "physical_prefix_ranks_checked": 255,
+        "basis_support": "591665",
+        "full_support": "722737"
+      },
+      {
+        "mask": 155,
+        "physical_prefix_ranks_checked": 215,
+        "basis_support": "139548",
+        "full_support": "467228"
+      },
+      {
+        "mask": 161,
+        "physical_prefix_ranks_checked": 278,
+        "basis_support": "749439",
+        "full_support": "749439"
+      },
+      {
+        "mask": 163,
+        "physical_prefix_ranks_checked": 238,
+        "basis_support": "478084",
+        "full_support": "609156"
+      },
+      {
+        "mask": 165,
+        "physical_prefix_ranks_checked": 221,
+        "basis_support": "458718",
+        "full_support": "589790"
+      },
+      {
+        "mask": 169,
+        "physical_prefix_ranks_checked": 234,
+        "basis_support": "480780",
+        "full_support": "611852"
+      },
+      {
+        "mask": 177,
+        "physical_prefix_ranks_checked": 233,
+        "basis_support": "530461",
+        "full_support": "661533"
+      },
+      {
+        "mask": 193,
+        "physical_prefix_ranks_checked": 315,
+        "basis_support": "828228",
+        "full_support": "828228"
+      },
+      {
+        "mask": 195,
+        "physical_prefix_ranks_checked": 251,
+        "basis_support": "613728",
+        "full_support": "744800"
+      },
+      {
+        "mask": 197,
+        "physical_prefix_ranks_checked": 243,
+        "basis_support": "637322",
+        "full_support": "768394"
+      },
+      {
+        "mask": 199,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "201244",
+        "full_support": "528924"
+      },
+      {
+        "mask": 201,
+        "physical_prefix_ranks_checked": 268,
+        "basis_support": "705136",
+        "full_support": "836208"
+      },
+      {
+        "mask": 203,
+        "physical_prefix_ranks_checked": 218,
+        "basis_support": "268751",
+        "full_support": "596431"
+      },
+      {
+        "mask": 205,
+        "physical_prefix_ranks_checked": 216,
+        "basis_support": "201445",
+        "full_support": "529125"
+      },
+      {
+        "mask": 209,
+        "physical_prefix_ranks_checked": 257,
+        "basis_support": "624740",
+        "full_support": "755812"
+      },
+      {
+        "mask": 211,
+        "physical_prefix_ranks_checked": 213,
+        "basis_support": "87463",
+        "full_support": "415143"
+      },
+      {
+        "mask": 213,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "3630",
+        "full_support": "331310"
+      },
+      {
+        "mask": 217,
+        "physical_prefix_ranks_checked": 221,
+        "basis_support": "210755",
+        "full_support": "538435"
+      },
+      {
+        "mask": 225,
+        "physical_prefix_ranks_checked": 235,
+        "basis_support": "535004",
+        "full_support": "666076"
+      },
+      {
+        "mask": 233,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "17269",
+        "full_support": "344949"
+      },
+      {
+        "mask": 257,
+        "physical_prefix_ranks_checked": 378,
+        "basis_support": "777072",
+        "full_support": "777072"
+      },
+      {
+        "mask": 259,
+        "physical_prefix_ranks_checked": 290,
+        "basis_support": "658118",
+        "full_support": "723654"
+      },
+      {
+        "mask": 261,
+        "physical_prefix_ranks_checked": 303,
+        "basis_support": "734151",
+        "full_support": "799687"
+      },
+      {
+        "mask": 263,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "475163",
+        "full_support": "671771"
+      },
+      {
+        "mask": 265,
+        "physical_prefix_ranks_checked": 293,
+        "basis_support": "624520",
+        "full_support": "690056"
+      },
+      {
+        "mask": 267,
+        "physical_prefix_ranks_checked": 230,
+        "basis_support": "407526",
+        "full_support": "604134"
+      },
+      {
+        "mask": 269,
+        "physical_prefix_ranks_checked": 245,
+        "basis_support": "451825",
+        "full_support": "648433"
+      },
+      {
+        "mask": 273,
+        "physical_prefix_ranks_checked": 305,
+        "basis_support": "695213",
+        "full_support": "760749"
+      },
+      {
+        "mask": 275,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "472012",
+        "full_support": "668620"
+      },
+      {
+        "mask": 277,
+        "physical_prefix_ranks_checked": 250,
+        "basis_support": "542745",
+        "full_support": "739353"
+      },
+      {
+        "mask": 279,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "43140",
+        "full_support": "436356"
+      },
+      {
+        "mask": 281,
+        "physical_prefix_ranks_checked": 245,
+        "basis_support": "388873",
+        "full_support": "585481"
+      },
+      {
+        "mask": 285,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "53362",
+        "full_support": "446578"
+      },
+      {
+        "mask": 289,
+        "physical_prefix_ranks_checked": 294,
+        "basis_support": "693068",
+        "full_support": "758604"
+      },
+      {
+        "mask": 291,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "440942",
+        "full_support": "637550"
+      },
+      {
+        "mask": 293,
+        "physical_prefix_ranks_checked": 248,
+        "basis_support": "542370",
+        "full_support": "738978"
+      },
+      {
+        "mask": 297,
+        "physical_prefix_ranks_checked": 232,
+        "basis_support": "405742",
+        "full_support": "602350"
+      },
+      {
+        "mask": 305,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "420557",
+        "full_support": "617165"
+      },
+      {
+        "mask": 309,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-52513",
+        "full_support": "340703"
+      },
+      {
+        "mask": 321,
+        "physical_prefix_ranks_checked": 296,
+        "basis_support": "650022",
+        "full_support": "715558"
+      },
+      {
+        "mask": 323,
+        "physical_prefix_ranks_checked": 230,
+        "basis_support": "360574",
+        "full_support": "557182"
+      },
+      {
+        "mask": 325,
+        "physical_prefix_ranks_checked": 252,
+        "basis_support": "509493",
+        "full_support": "706101"
+      },
+      {
+        "mask": 329,
+        "physical_prefix_ranks_checked": 243,
+        "basis_support": "436722",
+        "full_support": "633330"
+      },
+      {
+        "mask": 333,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "-39625",
+        "full_support": "353591"
+      },
+      {
+        "mask": 337,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "515149",
+        "full_support": "711757"
+      },
+      {
+        "mask": 345,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "-108113",
+        "full_support": "285103"
+      },
+      {
+        "mask": 353,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "372752",
+        "full_support": "569360"
+      },
+      {
+        "mask": 385,
+        "physical_prefix_ranks_checked": 292,
+        "basis_support": "639714",
+        "full_support": "705250"
+      },
+      {
+        "mask": 387,
+        "physical_prefix_ranks_checked": 247,
+        "basis_support": "433787",
+        "full_support": "630395"
+      },
+      {
+        "mask": 389,
+        "physical_prefix_ranks_checked": 235,
+        "basis_support": "391139",
+        "full_support": "587747"
+      },
+      {
+        "mask": 391,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "-34677",
+        "full_support": "358539"
+      },
+      {
+        "mask": 393,
+        "physical_prefix_ranks_checked": 239,
+        "basis_support": "419080",
+        "full_support": "615688"
+      },
+      {
+        "mask": 401,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "416663",
+        "full_support": "613271"
+      },
+      {
+        "mask": 403,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "-65285",
+        "full_support": "327931"
+      },
+      {
+        "mask": 409,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-214095",
+        "full_support": "179121"
+      },
+      {
+        "mask": 417,
+        "physical_prefix_ranks_checked": 230,
+        "basis_support": "314305",
+        "full_support": "510913"
+      },
+      {
+        "mask": 419,
+        "physical_prefix_ranks_checked": 205,
+        "basis_support": "-282937",
+        "full_support": "110279"
+      },
+      {
+        "mask": 449,
+        "physical_prefix_ranks_checked": 241,
+        "basis_support": "419033",
+        "full_support": "615641"
+      },
+      {
+        "mask": 453,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "-1155",
+        "full_support": "392061"
+      },
+      {
+        "mask": 457,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "77697",
+        "full_support": "470913"
+      },
+      {
+        "mask": 465,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "-12143",
+        "full_support": "381073"
+      },
+      {
+        "mask": 517,
+        "physical_prefix_ranks_checked": 295,
+        "basis_support": "854769",
+        "full_support": "854769"
+      },
+      {
+        "mask": 519,
+        "physical_prefix_ranks_checked": 233,
+        "basis_support": "441699",
+        "full_support": "638307"
+      },
+      {
+        "mask": 521,
+        "physical_prefix_ranks_checked": 326,
+        "basis_support": "800238",
+        "full_support": "800238"
+      },
+      {
+        "mask": 523,
+        "physical_prefix_ranks_checked": 250,
+        "basis_support": "516765",
+        "full_support": "713373"
+      },
+      {
+        "mask": 525,
+        "physical_prefix_ranks_checked": 251,
+        "basis_support": "584471",
+        "full_support": "715543"
+      },
+      {
+        "mask": 529,
+        "physical_prefix_ranks_checked": 297,
+        "basis_support": "765449",
+        "full_support": "765449"
+      },
+      {
+        "mask": 531,
+        "physical_prefix_ranks_checked": 236,
+        "basis_support": "303849",
+        "full_support": "500457"
+      },
+      {
+        "mask": 533,
+        "physical_prefix_ranks_checked": 232,
+        "basis_support": "458782",
+        "full_support": "589854"
+      },
+      {
+        "mask": 537,
+        "physical_prefix_ranks_checked": 256,
+        "basis_support": "579298",
+        "full_support": "710370"
+      },
+      {
+        "mask": 539,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "-110170",
+        "full_support": "283046"
+      },
+      {
+        "mask": 541,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "-27960",
+        "full_support": "299720"
+      },
+      {
+        "mask": 545,
+        "physical_prefix_ranks_checked": 293,
+        "basis_support": "796738",
+        "full_support": "796738"
+      },
+      {
+        "mask": 547,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "466061",
+        "full_support": "662669"
+      },
+      {
+        "mask": 549,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "568153",
+        "full_support": "699225"
+      },
+      {
+        "mask": 551,
+        "physical_prefix_ranks_checked": 203,
+        "basis_support": "-158920",
+        "full_support": "234296"
+      },
+      {
+        "mask": 553,
+        "physical_prefix_ranks_checked": 250,
+        "basis_support": "570384",
+        "full_support": "701456"
+      },
+      {
+        "mask": 555,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "32092",
+        "full_support": "425308"
+      },
+      {
+        "mask": 557,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "42780",
+        "full_support": "370460"
+      },
+      {
+        "mask": 561,
+        "physical_prefix_ranks_checked": 239,
+        "basis_support": "532526",
+        "full_support": "663598"
+      },
+      {
+        "mask": 569,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "260927",
+        "full_support": "588607"
+      },
+      {
+        "mask": 577,
+        "physical_prefix_ranks_checked": 325,
+        "basis_support": "792179",
+        "full_support": "792179"
+      },
+      {
+        "mask": 579,
+        "physical_prefix_ranks_checked": 247,
+        "basis_support": "446299",
+        "full_support": "642907"
+      },
+      {
+        "mask": 581,
+        "physical_prefix_ranks_checked": 254,
+        "basis_support": "575351",
+        "full_support": "706423"
+      },
+      {
+        "mask": 585,
+        "physical_prefix_ranks_checked": 278,
+        "basis_support": "593544",
+        "full_support": "724616"
+      },
+      {
+        "mask": 589,
+        "physical_prefix_ranks_checked": 220,
+        "basis_support": "142739",
+        "full_support": "470419"
+      },
+      {
+        "mask": 593,
+        "physical_prefix_ranks_checked": 251,
+        "basis_support": "529766",
+        "full_support": "660838"
+      },
+      {
+        "mask": 601,
+        "physical_prefix_ranks_checked": 223,
+        "basis_support": "213666",
+        "full_support": "541346"
+      },
+      {
+        "mask": 609,
+        "physical_prefix_ranks_checked": 248,
+        "basis_support": "534469",
+        "full_support": "665541"
+      },
+      {
+        "mask": 611,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-70809",
+        "full_support": "322407"
+      },
+      {
+        "mask": 613,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "23502",
+        "full_support": "351182"
+      },
+      {
+        "mask": 617,
+        "physical_prefix_ranks_checked": 219,
+        "basis_support": "135700",
+        "full_support": "463380"
+      },
+      {
+        "mask": 643,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "369341",
+        "full_support": "565949"
+      },
+      {
+        "mask": 645,
+        "physical_prefix_ranks_checked": 223,
+        "basis_support": "356196",
+        "full_support": "487268"
+      },
+      {
+        "mask": 649,
+        "physical_prefix_ranks_checked": 257,
+        "basis_support": "639847",
+        "full_support": "770919"
+      },
+      {
+        "mask": 651,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "58301",
+        "full_support": "451517"
+      },
+      {
+        "mask": 657,
+        "physical_prefix_ranks_checked": 235,
+        "basis_support": "525154",
+        "full_support": "656226"
+      },
+      {
+        "mask": 673,
+        "physical_prefix_ranks_checked": 227,
+        "basis_support": "442303",
+        "full_support": "573375"
+      },
+      {
+        "mask": 705,
+        "physical_prefix_ranks_checked": 257,
+        "basis_support": "659042",
+        "full_support": "790114"
+      },
+      {
+        "mask": 707,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "-65605",
+        "full_support": "327611"
+      },
+      {
+        "mask": 721,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "-40110",
+        "full_support": "287570"
+      },
+      {
+        "mask": 737,
+        "physical_prefix_ranks_checked": 205,
+        "basis_support": "-188194",
+        "full_support": "139486"
+      },
+      {
+        "mask": 771,
+        "physical_prefix_ranks_checked": 230,
+        "basis_support": "188474",
+        "full_support": "450618"
+      },
+      {
+        "mask": 773,
+        "physical_prefix_ranks_checked": 250,
+        "basis_support": "540936",
+        "full_support": "737544"
+      },
+      {
+        "mask": 775,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-25582",
+        "full_support": "433170"
+      },
+      {
+        "mask": 777,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "408576",
+        "full_support": "605184"
+      },
+      {
+        "mask": 781,
+        "physical_prefix_ranks_checked": 216,
+        "basis_support": "101442",
+        "full_support": "494658"
+      },
+      {
+        "mask": 785,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "425148",
+        "full_support": "621756"
+      },
+      {
+        "mask": 789,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "84334",
+        "full_support": "477550"
+      },
+      {
+        "mask": 793,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "24903",
+        "full_support": "418119"
+      },
+      {
+        "mask": 801,
+        "physical_prefix_ranks_checked": 239,
+        "basis_support": "415100",
+        "full_support": "611708"
+      },
+      {
+        "mask": 805,
+        "physical_prefix_ranks_checked": 215,
+        "basis_support": "161469",
+        "full_support": "554685"
+      },
+      {
+        "mask": 809,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-93365",
+        "full_support": "299851"
+      },
+      {
+        "mask": 817,
+        "physical_prefix_ranks_checked": 204,
+        "basis_support": "-119715",
+        "full_support": "273501"
+      },
+      {
+        "mask": 833,
+        "physical_prefix_ranks_checked": 245,
+        "basis_support": "411808",
+        "full_support": "608416"
+      },
+      {
+        "mask": 837,
+        "physical_prefix_ranks_checked": 218,
+        "basis_support": "137577",
+        "full_support": "530793"
+      },
+      {
+        "mask": 841,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "-78387",
+        "full_support": "314829"
+      },
+      {
+        "mask": 865,
+        "physical_prefix_ranks_checked": 205,
+        "basis_support": "-319001",
+        "full_support": "74215"
+      },
+      {
+        "mask": 899,
+        "physical_prefix_ranks_checked": 204,
+        "basis_support": "-288189",
+        "full_support": "170563"
+      },
+      {
+        "mask": 961,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "790",
+        "full_support": "394006"
+      },
+      {
+        "mask": 1041,
+        "physical_prefix_ranks_checked": 333,
+        "basis_support": "787925",
+        "full_support": "787925"
+      },
+      {
+        "mask": 1043,
+        "physical_prefix_ranks_checked": 269,
+        "basis_support": "631844",
+        "full_support": "762916"
+      },
+      {
+        "mask": 1045,
+        "physical_prefix_ranks_checked": 251,
+        "basis_support": "507398",
+        "full_support": "704006"
+      },
+      {
+        "mask": 1047,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "34729",
+        "full_support": "427945"
+      },
+      {
+        "mask": 1049,
+        "physical_prefix_ranks_checked": 268,
+        "basis_support": "625501",
+        "full_support": "756573"
+      },
+      {
+        "mask": 1051,
+        "physical_prefix_ranks_checked": 223,
+        "basis_support": "311630",
+        "full_support": "639310"
+      },
+      {
+        "mask": 1053,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "107210",
+        "full_support": "500426"
+      },
+      {
+        "mask": 1057,
+        "physical_prefix_ranks_checked": 291,
+        "basis_support": "793799",
+        "full_support": "793799"
+      },
+      {
+        "mask": 1059,
+        "physical_prefix_ranks_checked": 245,
+        "basis_support": "556899",
+        "full_support": "687971"
+      },
+      {
+        "mask": 1061,
+        "physical_prefix_ranks_checked": 232,
+        "basis_support": "433154",
+        "full_support": "629762"
+      },
+      {
+        "mask": 1065,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "534969",
+        "full_support": "666041"
+      },
+      {
+        "mask": 1067,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "-51855",
+        "full_support": "275825"
+      },
+      {
+        "mask": 1073,
+        "physical_prefix_ranks_checked": 249,
+        "basis_support": "621829",
+        "full_support": "752901"
+      },
+      {
+        "mask": 1075,
+        "physical_prefix_ranks_checked": 218,
+        "basis_support": "246396",
+        "full_support": "574076"
+      },
+      {
+        "mask": 1081,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "143008",
+        "full_support": "470688"
+      },
+      {
+        "mask": 1091,
+        "physical_prefix_ranks_checked": 255,
+        "basis_support": "610354",
+        "full_support": "741426"
+      },
+      {
+        "mask": 1093,
+        "physical_prefix_ranks_checked": 257,
+        "basis_support": "483847",
+        "full_support": "680455"
+      },
+      {
+        "mask": 1095,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "25889",
+        "full_support": "419105"
+      },
+      {
+        "mask": 1097,
+        "physical_prefix_ranks_checked": 276,
+        "basis_support": "648917",
+        "full_support": "779989"
+      },
+      {
+        "mask": 1099,
+        "physical_prefix_ranks_checked": 219,
+        "basis_support": "193266",
+        "full_support": "520946"
+      },
+      {
+        "mask": 1101,
+        "physical_prefix_ranks_checked": 219,
+        "basis_support": "87973",
+        "full_support": "481189"
+      },
+      {
+        "mask": 1105,
+        "physical_prefix_ranks_checked": 275,
+        "basis_support": "622935",
+        "full_support": "754007"
+      },
+      {
+        "mask": 1107,
+        "physical_prefix_ranks_checked": 224,
+        "basis_support": "252608",
+        "full_support": "580288"
+      },
+      {
+        "mask": 1109,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "190211",
+        "full_support": "583427"
+      },
+      {
+        "mask": 1113,
+        "physical_prefix_ranks_checked": 231,
+        "basis_support": "320000",
+        "full_support": "647680"
+      },
+      {
+        "mask": 1121,
+        "physical_prefix_ranks_checked": 248,
+        "basis_support": "566040",
+        "full_support": "697112"
+      },
+      {
+        "mask": 1123,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "174310",
+        "full_support": "501990"
+      },
+      {
+        "mask": 1125,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-59440",
+        "full_support": "333776"
+      },
+      {
+        "mask": 1129,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "118893",
+        "full_support": "446573"
+      },
+      {
+        "mask": 1155,
+        "physical_prefix_ranks_checked": 267,
+        "basis_support": "649562",
+        "full_support": "780634"
+      },
+      {
+        "mask": 1157,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "439624",
+        "full_support": "636232"
+      },
+      {
+        "mask": 1161,
+        "physical_prefix_ranks_checked": 268,
+        "basis_support": "612696",
+        "full_support": "743768"
+      },
+      {
+        "mask": 1163,
+        "physical_prefix_ranks_checked": 225,
+        "basis_support": "230973",
+        "full_support": "558653"
+      },
+      {
+        "mask": 1165,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "-39712",
+        "full_support": "353504"
+      },
+      {
+        "mask": 1169,
+        "physical_prefix_ranks_checked": 274,
+        "basis_support": "612940",
+        "full_support": "744012"
+      },
+      {
+        "mask": 1171,
+        "physical_prefix_ranks_checked": 232,
+        "basis_support": "228400",
+        "full_support": "556080"
+      },
+      {
+        "mask": 1173,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "17683",
+        "full_support": "410899"
+      },
+      {
+        "mask": 1177,
+        "physical_prefix_ranks_checked": 227,
+        "basis_support": "289229",
+        "full_support": "616909"
+      },
+      {
+        "mask": 1185,
+        "physical_prefix_ranks_checked": 235,
+        "basis_support": "496960",
+        "full_support": "628032"
+      },
+      {
+        "mask": 1219,
+        "physical_prefix_ranks_checked": 220,
+        "basis_support": "199486",
+        "full_support": "527166"
+      },
+      {
+        "mask": 1221,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "15313",
+        "full_support": "408529"
+      },
+      {
+        "mask": 1225,
+        "physical_prefix_ranks_checked": 233,
+        "basis_support": "337439",
+        "full_support": "665119"
+      },
+      {
+        "mask": 1233,
+        "physical_prefix_ranks_checked": 233,
+        "basis_support": "317156",
+        "full_support": "644836"
+      },
+      {
+        "mask": 1249,
+        "physical_prefix_ranks_checked": 206,
+        "basis_support": "-46273",
+        "full_support": "281407"
+      },
+      {
+        "mask": 1285,
+        "physical_prefix_ranks_checked": 242,
+        "basis_support": "337767",
+        "full_support": "599911"
+      },
+      {
+        "mask": 1287,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "-14020",
+        "full_support": "444732"
+      },
+      {
+        "mask": 1289,
+        "physical_prefix_ranks_checked": 241,
+        "basis_support": "426991",
+        "full_support": "623599"
+      },
+      {
+        "mask": 1291,
+        "physical_prefix_ranks_checked": 206,
+        "basis_support": "-167676",
+        "full_support": "225540"
+      },
+      {
+        "mask": 1297,
+        "physical_prefix_ranks_checked": 261,
+        "basis_support": "536998",
+        "full_support": "733606"
+      },
+      {
+        "mask": 1299,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "211122",
+        "full_support": "604338"
+      },
+      {
+        "mask": 1301,
+        "physical_prefix_ranks_checked": 216,
+        "basis_support": "40683",
+        "full_support": "499435"
+      },
+      {
+        "mask": 1305,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "-18644",
+        "full_support": "374572"
+      },
+      {
+        "mask": 1313,
+        "physical_prefix_ranks_checked": 236,
+        "basis_support": "497020",
+        "full_support": "693628"
+      },
+      {
+        "mask": 1329,
+        "physical_prefix_ranks_checked": 206,
+        "basis_support": "-137132",
+        "full_support": "256084"
+      },
+      {
+        "mask": 1347,
+        "physical_prefix_ranks_checked": 206,
+        "basis_support": "-125947",
+        "full_support": "267269"
+      },
+      {
+        "mask": 1349,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "-37497",
+        "full_support": "421255"
+      },
+      {
+        "mask": 1353,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "-17685",
+        "full_support": "375531"
+      },
+      {
+        "mask": 1361,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "144001",
+        "full_support": "537217"
+      },
+      {
+        "mask": 1411,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "219447",
+        "full_support": "612663"
+      },
+      {
+        "mask": 1417,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "-16178",
+        "full_support": "377038"
+      },
+      {
+        "mask": 1425,
+        "physical_prefix_ranks_checked": 221,
+        "basis_support": "107603",
+        "full_support": "500819"
+      },
+      {
+        "mask": 1549,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "-9049",
+        "full_support": "384167"
+      },
+      {
+        "mask": 1553,
+        "physical_prefix_ranks_checked": 254,
+        "basis_support": "522873",
+        "full_support": "653945"
+      },
+      {
+        "mask": 1555,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "-55351",
+        "full_support": "337865"
+      },
+      {
+        "mask": 1561,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "227595",
+        "full_support": "555275"
+      },
+      {
+        "mask": 1569,
+        "physical_prefix_ranks_checked": 236,
+        "basis_support": "568028",
+        "full_support": "699100"
+      },
+      {
+        "mask": 1571,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "1336",
+        "full_support": "394552"
+      },
+      {
+        "mask": 1585,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "206850",
+        "full_support": "534530"
+      },
+      {
+        "mask": 1603,
+        "physical_prefix_ranks_checked": 215,
+        "basis_support": "52672",
+        "full_support": "445888"
+      },
+      {
+        "mask": 1617,
+        "physical_prefix_ranks_checked": 223,
+        "basis_support": "190608",
+        "full_support": "518288"
+      },
+      {
+        "mask": 1633,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "83160",
+        "full_support": "410840"
+      },
+      {
+        "mask": 1673,
+        "physical_prefix_ranks_checked": 225,
+        "basis_support": "347665",
+        "full_support": "675345"
+      },
+      {
+        "mask": 1681,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "61032",
+        "full_support": "388712"
+      },
+      {
+        "mask": 1801,
+        "physical_prefix_ranks_checked": 209,
+        "basis_support": "-19019",
+        "full_support": "374197"
+      },
+      {
+        "mask": 1809,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "97202",
+        "full_support": "490418"
+      },
+      {
+        "mask": 2115,
+        "physical_prefix_ranks_checked": 237,
+        "basis_support": "571295",
+        "full_support": "702367"
+      },
+      {
+        "mask": 2117,
+        "physical_prefix_ranks_checked": 231,
+        "basis_support": "467926",
+        "full_support": "598998"
+      },
+      {
+        "mask": 2121,
+        "physical_prefix_ranks_checked": 242,
+        "basis_support": "460324",
+        "full_support": "656932"
+      },
+      {
+        "mask": 2129,
+        "physical_prefix_ranks_checked": 234,
+        "basis_support": "554682",
+        "full_support": "685754"
+      },
+      {
+        "mask": 2181,
+        "physical_prefix_ranks_checked": 224,
+        "basis_support": "443238",
+        "full_support": "574310"
+      },
+      {
+        "mask": 2185,
+        "physical_prefix_ranks_checked": 246,
+        "basis_support": "478463",
+        "full_support": "675071"
+      },
+      {
+        "mask": 2187,
+        "physical_prefix_ranks_checked": 212,
+        "basis_support": "-54442",
+        "full_support": "338774"
+      },
+      {
+        "mask": 2193,
+        "physical_prefix_ranks_checked": 243,
+        "basis_support": "547334",
+        "full_support": "678406"
+      },
+      {
+        "mask": 2195,
+        "physical_prefix_ranks_checked": 215,
+        "basis_support": "49204",
+        "full_support": "376884"
+      },
+      {
+        "mask": 2201,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "-97335",
+        "full_support": "295881"
+      },
+      {
+        "mask": 2211,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "8478",
+        "full_support": "336158"
+      },
+      {
+        "mask": 2243,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "83298",
+        "full_support": "410978"
+      },
+      {
+        "mask": 2249,
+        "physical_prefix_ranks_checked": 213,
+        "basis_support": "94785",
+        "full_support": "488001"
+      },
+      {
+        "mask": 2257,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "-49614",
+        "full_support": "278066"
+      },
+      {
+        "mask": 2313,
+        "physical_prefix_ranks_checked": 234,
+        "basis_support": "307630",
+        "full_support": "569774"
+      },
+      {
+        "mask": 2317,
+        "physical_prefix_ranks_checked": 203,
+        "basis_support": "-334256",
+        "full_support": "124496"
+      },
+      {
+        "mask": 2321,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "420724",
+        "full_support": "617332"
+      },
+      {
+        "mask": 2323,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "11434",
+        "full_support": "404650"
+      },
+      {
+        "mask": 2339,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "53310",
+        "full_support": "446526"
+      },
+      {
+        "mask": 2595,
+        "physical_prefix_ranks_checked": 207,
+        "basis_support": "62719",
+        "full_support": "455935"
+      },
+      {
+        "mask": 3121,
+        "physical_prefix_ranks_checked": 208,
+        "basis_support": "115342",
+        "full_support": "443022"
+      },
+      {
+        "mask": 3145,
+        "physical_prefix_ranks_checked": 213,
+        "basis_support": "67068",
+        "full_support": "460284"
+      },
+      {
+        "mask": 3153,
+        "physical_prefix_ranks_checked": 215,
+        "basis_support": "230289",
+        "full_support": "557969"
+      },
+      {
+        "mask": 3209,
+        "physical_prefix_ranks_checked": 217,
+        "basis_support": "41163",
+        "full_support": "434379"
+      },
+      {
+        "mask": 3217,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "285636",
+        "full_support": "613316"
+      },
+      {
+        "mask": 3345,
+        "physical_prefix_ranks_checked": 216,
+        "basis_support": "101466",
+        "full_support": "494682"
+      },
+      {
+        "mask": 4369,
+        "physical_prefix_ranks_checked": 256,
+        "basis_support": "440978",
+        "full_support": "703122"
+      },
+      {
+        "mask": 4371,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "-42684",
+        "full_support": "416068"
+      },
+      {
+        "mask": 4373,
+        "physical_prefix_ranks_checked": 222,
+        "basis_support": "98132",
+        "full_support": "556884"
+      },
+      {
+        "mask": 4377,
+        "physical_prefix_ranks_checked": 210,
+        "basis_support": "-128594",
+        "full_support": "330158"
+      },
+      {
+        "mask": 4389,
+        "physical_prefix_ranks_checked": 220,
+        "basis_support": "159633",
+        "full_support": "552849"
+      },
+      {
+        "mask": 4421,
+        "physical_prefix_ranks_checked": 232,
+        "basis_support": "238519",
+        "full_support": "631735"
+      },
+      {
+        "mask": 4425,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "73",
+        "full_support": "393289"
+      },
+      {
+        "mask": 4645,
+        "physical_prefix_ranks_checked": 214,
+        "basis_support": "91354",
+        "full_support": "419034"
+      },
+      {
+        "mask": 4649,
+        "physical_prefix_ranks_checked": 211,
+        "basis_support": "1357",
+        "full_support": "329037"
+      },
+      {
+        "mask": 4677,
+        "physical_prefix_ranks_checked": 232,
+        "basis_support": "291164",
+        "full_support": "618844"
+      },
+      {
+        "mask": 4681,
+        "physical_prefix_ranks_checked": 240,
+        "basis_support": "321023",
+        "full_support": "648703"
+      }
+    ],
+    "coefficients": [
+      0,
+      -65536,
+      65536,
+      65536,
+      65536,
+      65536,
+      65536,
+      65536,
+      65536,
+      65536,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6236,
+      -550,
+      -3748,
+      5848,
+      -3442,
+      -638,
+      1426,
+      -1198,
+      -2005,
+      -4552,
+      -3656,
+      -7153,
+      -445,
+      3468,
+      1756,
+      -159,
+      -6455,
+      -6893,
+      -660,
+      268,
+      -1985,
+      2859,
+      555,
+      3050,
+      -302,
+      1726,
+      6066,
+      -3386,
+      3075,
+      2719,
+      -1712,
+      -8112,
+      4495,
+      1549,
+      -509,
+      -1060,
+      -5809,
+      7642,
+      -553,
+      5257,
+      -7137,
+      2956,
+      -3713,
+      -4811,
+      2489,
+      -21,
+      -102,
+      3230,
+      -7689,
+      3756,
+      -2868,
+      -21013,
+      30440,
+      31324,
+      4199,
+      6926,
+      -1304,
+      4518,
+      6623,
+      -3973,
+      2610,
+      4876,
+      8886,
+      -65536,
+      -6394,
+      77,
+      16727,
+      51981,
+      2136,
+      -6221,
+      5791,
+      6210,
+      32664,
+      -5514,
+      6858,
+      -15138,
+      280,
+      65536,
+      -28601,
+      -14294,
+      4052,
+      -2563,
+      65536,
+      12280,
+      -65536,
+      -65536,
+      -19289,
+      5056,
+      -36896,
+      10654,
+      18947,
+      64759,
+      1863,
+      -50052,
+      5511,
+      -21970,
+      7495,
+      896,
+      34061,
+      26654,
+      8199,
+      -10810,
+      8495,
+      4324,
+      -11010,
+      -13603,
+      -5998,
+      -1133,
+      63802,
+      -1237,
+      22086,
+      65536,
+      -2148,
+      9005,
+      -3627,
+      3517,
+      5597,
+      -65536,
+      -1737,
+      4132,
+      46068,
+      -15063,
+      -4230,
+      -65536,
+      -5934,
+      -2536,
+      65536,
+      -422,
+      -1277,
+      1671,
+      65536,
+      52365,
+      1303,
+      65536,
+      9923,
+      2585,
+      14493,
+      65536,
+      -2173,
+      949,
+      50464,
+      1890,
+      635,
+      43724,
+      27317,
+      3684,
+      -65536,
+      -65536,
+      -1448,
+      61368,
+      -28872,
+      -7486,
+      6464,
+      2823,
+      -7595,
+      9264,
+      -1803,
+      4894,
+      -11290,
+      65536,
+      51355,
+      -11279,
+      9673,
+      65536,
+      14460,
+      -29988,
+      32092,
+      422,
+      3163,
+      65536,
+      -3348,
+      -3614,
+      65536,
+      23985,
+      -65536,
+      65536,
+      10768,
+      -606,
+      34441,
+      1196,
+      1097,
+      12393,
+      -11192,
+      4471,
+      37768,
+      13998,
+      1895,
+      -9317,
+      38713,
+      5423,
+      36763,
+      3190,
+      65536,
+      6215,
+      -9004,
+      -1012,
+      12898,
+      -337,
+      -65536,
+      6708,
+      -65536,
+      5693,
+      -1369,
+      -5294,
+      -65536,
+      -9019,
+      -10077,
+      1141,
+      4601,
+      3051,
+      25331,
+      6868,
+      6001,
+      -314,
+      43163,
+      -1525,
+      4883,
+      7059,
+      2092,
+      -15208,
+      58252,
+      -3660,
+      16655,
+      8632,
+      6981,
+      9360,
+      54040,
+      -9682,
+      61361,
+      2357,
+      4534,
+      -8404,
+      65536,
+      -7916,
+      5539,
+      -13036,
+      -12837,
+      -7073,
+      48461,
+      -5142,
+      2640,
+      5389,
+      -4829,
+      3992,
+      -4236,
+      4525,
+      3154,
+      -357,
+      -6062,
+      -519,
+      5675,
+      -1315,
+      3159,
+      794,
+      371,
+      -1985,
+      5913,
+      -5056,
+      1020,
+      1077,
+      -233,
+      -608,
+      7442,
+      1485,
+      -3885,
+      -2353,
+      -4535,
+      -3956,
+      882,
+      2962,
+      253,
+      -9156,
+      4003,
+      3821,
+      -4699,
+      -516,
+      -50,
+      1269,
+      3200,
+      -8709,
+      -3063,
+      -1946,
+      3605,
+      -1147,
+      6140,
+      1192,
+      239,
+      3117,
+      5502,
+      -4754,
+      -92,
+      -10886,
+      1471,
+      3706,
+      998,
+      148,
+      2153,
+      4171,
+      2732,
+      2832,
+      -5940,
+      3773,
+      -736,
+      -228,
+      1103,
+      -5234,
+      -5867,
+      -6229,
+      2262,
+      -1631,
+      1428,
+      1943,
+      367,
+      5435,
+      2145,
+      2450,
+      -1575,
+      1688,
+      -2066,
+      -2769,
+      6939,
+      -3036,
+      430,
+      -4630,
+      -1045,
+      864,
+      4596,
+      5039,
+      -1828,
+      -6477,
+      -9866,
+      609,
+      -4417,
+      -2711,
+      -7610,
+      115,
+      -1525,
+      -6265,
+      -6624,
+      -13676,
+      -654,
+      -255,
+      10758,
+      60331,
+      -470,
+      59355,
+      6863,
+      -2686,
+      246,
+      2122,
+      30532,
+      -2159,
+      -7043,
+      -14892,
+      39123,
+      40746,
+      9355,
+      -8082,
+      62171,
+      -1112,
+      65536,
+      -1996,
+      -3140,
+      63076,
+      -2526,
+      65536,
+      63497,
+      6670,
+      -10866,
+      44219,
+      65536,
+      7312,
+      57590,
+      3079,
+      -6215,
+      57632,
+      6888,
+      49935,
+      -8728,
+      5799,
+      10933,
+      -1280,
+      53427,
+      -3555,
+      54297,
+      -2838,
+      745,
+      -1972,
+      421,
+      -1093,
+      46923,
+      -567,
+      -18521,
+      -11746,
+      -4656,
+      65536,
+      65536,
+      -6904,
+      -16152,
+      49400,
+      -14071,
+      -1270,
+      -11296,
+      1208,
+      -10689,
+      -3746,
+      -4978,
+      -10090,
+      827,
+      -15687,
+      1887,
+      -10919,
+      5743,
+      -3095,
+      43737,
+      53833,
+      33483,
+      53272,
+      -1686,
+      7395,
+      -11076,
+      -9438,
+      -10486,
+      -6057,
+      -4200,
+      737,
+      65536,
+      -2202,
+      -18260,
+      31414,
+      -8113,
+      65536,
+      -5038,
+      63786,
+      65536,
+      -3508,
+      -304,
+      58818,
+      117,
+      -6716,
+      5888,
+      -2409,
+      6575,
+      65536,
+      -1267,
+      -644,
+      35794,
+      12233,
+      8451,
+      49342,
+      56700,
+      52183,
+      3372,
+      65536,
+      -18070,
+      245,
+      65536,
+      49522,
+      -11726,
+      3191,
+      14139,
+      -7506,
+      43838,
+      -14551,
+      -1960,
+      41054,
+      -5027,
+      -3040,
+      -5916,
+      65536,
+      -6230,
+      305,
+      -9381,
+      65536,
+      6095,
+      65536,
+      -2208,
+      2036,
+      55554,
+      -667,
+      5057,
+      -3716,
+      37279,
+      -9030,
+      -1272,
+      -2756,
+      324,
+      6644,
+      65536,
+      44713,
+      -4384,
+      -3032,
+      -5662,
+      1600,
+      -3605,
+      -5049,
+      2166,
+      -244,
+      55860,
+      16651,
+      -2257,
+      -6749,
+      1419,
+      6358,
+      44650,
+      -4785,
+      -1498,
+      3397,
+      65536,
+      -7394,
+      -10379,
+      -1195,
+      56208,
+      -19662,
+      -10723,
+      65536,
+      -10796,
+      9261,
+      37068,
+      -8738,
+      -14692,
+      -36336,
+      65536,
+      -1179,
+      -11726,
+      65536,
+      1977,
+      2280,
+      2739,
+      -4691,
+      -6032,
+      -2968,
+      7519,
+      -581,
+      2084,
+      -10060,
+      32938,
+      5810,
+      -124,
+      -8122,
+      -10064,
+      5859,
+      33840,
+      10524,
+      9446,
+      -34941,
+      -18744,
+      -4421,
+      -7589,
+      -5068,
+      -22917,
+      8259,
+      65536,
+      55677,
+      -6297,
+      -9205,
+      -41285,
+      -65536,
+      1181,
+      7304,
+      13618,
+      -2995,
+      42296,
+      -9169,
+      -5512,
+      31380,
+      45018,
+      684,
+      53412,
+      -3299,
+      -1095,
+      -8712,
+      64152,
+      4875,
+      -3706,
+      397,
+      61567,
+      5697,
+      51294,
+      51817,
+      -2395,
+      -2738,
+      2678,
+      -5117,
+      27659,
+      58140,
+      4585,
+      -12623,
+      -12299,
+      -5581,
+      -786,
+      8833,
+      35341,
+      9125,
+      33885,
+      22812,
+      2020,
+      932,
+      55882,
+      6829,
+      3916,
+      -10371,
+      -2104,
+      -5557,
+      64711,
+      -18325,
+      -10086,
+      30576,
+      44474,
+      61321,
+      -8642,
+      65536,
+      65536,
+      1255,
+      2991,
+      64208,
+      -7386,
+      12481,
+      -10827,
+      5782,
+      -5332,
+      65536,
+      -14309,
+      -5676,
+      9222,
+      6242,
+      65536,
+      7638,
+      -17929,
+      -65536,
+      -8464,
+      -65536,
+      -65536,
+      64133,
+      7055,
+      65536,
+      4270,
+      11715,
+      -65536,
+      -15376,
+      -3565,
+      -2084,
+      -2665,
+      -2542,
+      -3763,
+      2059,
+      -7671,
+      -2235,
+      65536,
+      -4998,
+      -4115,
+      19534,
+      53277,
+      -869,
+      -544,
+      -9356,
+      10046,
+      3020,
+      2777,
+      583,
+      65536,
+      2587,
+      -65536,
+      65536,
+      -62616,
+      -5597,
+      -1356,
+      21692,
+      -4584,
+      -1113,
+      -7868,
+      -5019,
+      6404,
+      -1833,
+      3160,
+      55022,
+      -7285,
+      -10864,
+      59900,
+      7876,
+      -13688,
+      4996,
+      -3027,
+      28891,
+      65536,
+      -2034,
+      -320,
+      48044,
+      65536,
+      -12512,
+      1902,
+      4342,
+      -2956,
+      -2018,
+      65536,
+      6046,
+      65536,
+      -6777,
+      -2158,
+      -15380,
+      -6238,
+      -5386,
+      -65536,
+      -9716,
+      9574,
+      5026,
+      11639,
+      -6997,
+      65536,
+      -9163,
+      61211,
+      65536,
+      -14652,
+      65536,
+      -6884,
+      -3069,
+      -17244,
+      -65536,
+      4877,
+      65536
+    ],
+    "pricing_scale": 65536,
+    "integer_support": "871495",
+    "exact_integer_target": "194654841818306898231/8936830510563328",
+    "exact_integer_gap": "-7593748263985080637129/8936830510563328",
+    "scaled_support": 13.297958374023438,
+    "scaled_target": 0.3323546494239851,
+    "scaled_gap": -12.965603724599452
+  },
+  "provenance_gap": "The active archive stores IDs after final pricing. Last-solved active IDs were not saved; complete final restricted-dual cohort feasibility is not claimed or retrofitted.",
+  "scope": "Read-only audit of mapping, sampled physical columns, numerical primal/dual identities, and one full exact pricing call. Does not certify source obstruction, physical frame, exact mixture membership, or whole optimization trace.",
+  "mathematical_review": {
+    "features": "d[j,h]=sum_t P[t] Z[j,t+h]; target=16*T[h,32,j].",
+    "weights": "Z[j,b] receives v[j]+sum_{t in P}w[j,b-t].",
+    "primal_dual": "min ||F*lambda-b||_1, lambda>=0,sum(lambda)=1; dual max c*b-gamma with c*F_j<=gamma, |c_i|<=1.",
+    "active_pruning": "Deleting exact-zero nonbasic columns preserves an optimal primal and its feasible dual; implementation uses numerical zero tolerances and final source cuts still require exact global pricing.",
+    "diagnosis": "No mapping/sign/pruning bug found; large global pricing gaps are compatible with unstable extreme box-duals on restricted column sets.",
+    "wolfe_gate": "For f(x)=0.5*(x-b)^T D*(x-b), c=D*(b-x); maximize c*phi. Wolfe gap=h(c)-c*x; separating target gap=c*b-h(c). They are distinct.",
+    "wolfe_safeguards": "Feasible normalized nonnegative start, decreasing minor-cycle objective, mass/nonnegativity checks, corral stationarity, rank-loss stop, true-gradient witness comparisons, and explicit quantization-error bound before convergence claims."
+  }
+}
