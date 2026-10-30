@@ -1,0 +1,25 @@
+{
+  "status": "LOSSLESS_ARCHIVE_SHARDS",
+  "source_C16_answered": false,
+  "format": "ordered_raw_byte_shards_v1",
+  "original_relative_path": "coupling-results/full-partner-orbit24-wolfe-witness7.columns.npz",
+  "original_bytes": 51786793,
+  "original_sha256": "f569da66f3c540756e034be885a787b5e58b810455b967cf1c537c7cd6e84032",
+  "maximum_shard_bytes": 40000000,
+  "parts": [
+    {
+      "file": "part-000.bin",
+      "offset": 0,
+      "bytes": 40000000,
+      "sha256": "b71f84fd35b9c8e97ef3ed2dd0ed3189f62ae42f29275188175d831abd96cac1"
+    },
+    {
+      "file": "part-001.bin",
+      "offset": 40000000,
+      "bytes": 11786793,
+      "sha256": "d440507b7c00454b8f0487c6930fb6c50f66bcc99de9c5400cf0c9a1a07ab934"
+    }
+  ],
+  "reassembly_command": "python -B reassemble_full_partner_archive.py --manifest coupling-results/full-partner-orbit24-wolfe-witness7.columns.parts/manifest.json --output coupling-results/full-partner-orbit24-wolfe-witness7.columns.npz",
+  "scope": "Byte-for-byte archival packaging only; accepted bank and receipt unchanged."
+}

@@ -1,0 +1,113 @@
+{
+  "status": "PASS_FINITE_NEGATIVE_PREFIX_SCREEN",
+  "source_C16_answered": false,
+  "certificate_sha256": "2e53cebc9a9042ee3537fcd3f5c8c5d564359660dcd1bf6c3db5c866a0746273",
+  "consumer_sha256": "f39b64d9ffe6b289e970a7ff73509dbe645be9ec387be101f9c396f2df45d19c",
+  "chains_checked": 1527,
+  "physical_prefix_ranks_checked": 716280,
+  "exact_inequalities_checked": 10695600,
+  "points": [
+    {
+      "name": "witness2-rational.json.gz",
+      "acceptance": "ACCEPTED_EXACT_LISTED_RELAXATION",
+      "sha256": "5e77854cbd40ddf6f8c9b4146c49b5050aed25bbf34c024a71c991b188538efa"
+    },
+    {
+      "name": "basis-necessary3-rational.json.gz",
+      "acceptance": "UNACCEPTED_RECOVERY_FAILED_PSD",
+      "sha256": "3e6f74df29a3c9fef4263ed2bdaf4dcb0d84e8667cdbddfee8cb3c52a7a3dc10"
+    },
+    {
+      "name": "basis-witness4-rational.json.gz",
+      "acceptance": "ACCEPTED_EXACT_LISTED_RELAXATION",
+      "sha256": "eef02f627aa2af615379bff42d6ddd768ed6e91871a5e6554573fcb71439a79d"
+    }
+  ],
+  "summary": [
+    {
+      "point": "witness2-rational.json.gz",
+      "condition": 0,
+      "checks": 1782600,
+      "positive": 0,
+      "zero": 16,
+      "maximum": "0",
+      "maximum_location": {
+        "record": 0,
+        "anchor_phase": 0,
+        "prefix_length": 720
+      }
+    },
+    {
+      "point": "witness2-rational.json.gz",
+      "condition": 1,
+      "checks": 1782600,
+      "positive": 0,
+      "zero": 1253,
+      "maximum": "0",
+      "maximum_location": {
+        "record": 0,
+        "anchor_phase": 0,
+        "prefix_length": 720
+      }
+    },
+    {
+      "point": "basis-necessary3-rational.json.gz",
+      "condition": 0,
+      "checks": 1782600,
+      "positive": 0,
+      "zero": 16,
+      "maximum": "0",
+      "maximum_location": {
+        "record": 0,
+        "anchor_phase": 0,
+        "prefix_length": 720
+      }
+    },
+    {
+      "point": "basis-necessary3-rational.json.gz",
+      "condition": 1,
+      "checks": 1782600,
+      "positive": 0,
+      "zero": 1253,
+      "maximum": "0",
+      "maximum_location": {
+        "record": 0,
+        "anchor_phase": 0,
+        "prefix_length": 720
+      }
+    },
+    {
+      "point": "basis-witness4-rational.json.gz",
+      "condition": 0,
+      "checks": 1782600,
+      "positive": 0,
+      "zero": 16,
+      "maximum": "0",
+      "maximum_location": {
+        "record": 0,
+        "anchor_phase": 0,
+        "prefix_length": 720
+      }
+    },
+    {
+      "point": "basis-witness4-rational.json.gz",
+      "condition": 1,
+      "checks": 1782600,
+      "positive": 0,
+      "zero": 1253,
+      "maximum": "0",
+      "maximum_location": {
+        "record": 0,
+        "anchor_phase": 0,
+        "prefix_length": 720
+      }
+    }
+  ],
+  "dependencies": {
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d"
+  },
+  "elapsed_seconds": 7.671938000014052,
+  "scope": "All full-mask zero-pool weight prefixes tested against all16 orbit32 anchor phases, plus selected singleton-anchor zero-pool prefixes; both present and absent conditioning. Finite negative screen only, not completeness of conditional rank inequalities. necessary3 remains an unaccepted PSD-failed candidate."
+}

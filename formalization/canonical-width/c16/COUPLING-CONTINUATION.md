@@ -274,3 +274,116 @@ on either of those cores can separate witness2. A static scan finds127 usable
 rotated occurrences across31 of the405 restricted cover domains; no SAT solve
 or cover reduction follows from eligibility. The only two saved partial
 matchings directly excluded were already rejected by older source cuts.
+
+### 07:32Z — stronger orbit32 rows remain jointly feasible
+
+A180-second continuation of the Wolfe search retains eight independently
+accepted stronger rows. Each separates `basis-witness4`, with coefficient-scale
+normalized gaps0.04828–0.04979. Their directions are close, so this is a stronger
+cut batch rather than eight demonstrably different structural mechanisms.
+`basis-witness5` nevertheless passes all seven exact acceptance stages with
+all nine accumulated unpriced basis rows. Its exact-point SHA256 is
+`3204bb67c2f5bd01218fd08ad2c4eaf0653ec8c80ee792653c007197e1639c43`.
+
+Nonnegative orbit-capacity and forbidden-pair prices provide a further exact
+support bound: subtract each price from its incident vector weights, optimize
+the signed full-basis functional, then add price times its proved capacity.
+Independent replay accepts all291 class bounds. The original functional's
+global bound falls2155958→2094559; the strongest continuation functional's
+bound falls1157219→1132359. These are valid upper bounds, without any claim
+that the priced optimizers satisfy the capacity restrictions or that the
+prices are optimal. Both strengthened rows pass at `basis-witness5`; the
+guarded combined compiler and independent literal feature evaluation verify
+all11 accumulated rows exactly. Thus this intersection is still nonempty.
+
+An independent conditional-rank-prefix diagnostic checks10695600 inequalities
+on three named points, including an explicitly unaccepted recovered candidate,
+without a violation. This finite test does not establish all conditional-rank
+inequalities. A bounded singleton-distribution recovery is testing that
+stronger auxiliary membership statement directly.
+
+The314126 saved physical Z bases were also screened for an actual inverse in
+the X pool. Native exact inversion and an independent physical-pairing bitset
+consumer agree on every count. The best saved basis has64 pool duals, below
+the existing88-pair construction. None of these saved bases is a full frame;
+this is only an archive screen and supplies no global upper bound.
+
+The next projection uses orbit27, whose4765 allowed masks form303 rotation
+classes, to seek a distinct structural row. A separate support lemma is being
+developed for a full opposite basis conditioned on one selected or absent
+opposite anchor. Both are bounded follow-ups, not source conclusions.
+
+### 08:26Z — three orbit families, elementary rank certificates, and anchored support
+
+Independent complete profile/basis replay accepts eight new orbit27 rows and
+eight new orbit24 rows. Their owner directions are nearly orthogonal to the
+earlier32 family; fixed-coefficient transfer to five other orbits was negative,
+whereas fresh optimization on24 succeeded. All negative transfer queries and
+their independent prefix-rank checks are preserved. An initial combined point
+failed three omitted Boolean triangles; after adding those universal rows,
+`partner-witness7` passes the complete acceptance suite.
+
+An elementary rational-lattice argument provides a stronger negative result
+for further single-anchor rank searches. Let q have common denominator D and
+let x be the exact marginal vector of a nonnegative mixture of physical full
+bases. If D times the sum of positive coordinates of q−x is strictly below1,
+then q satisfies every subset-rank inequality. Otherwise a positive rational
+rank violation would be at least1/D, while the nearby physical mixture bounds
+it by a strictly smaller number. This proves all such inequalities without
+enumerating subsets or claiming that the approximate mixture equals q.
+Independent certificates apply to orbit32 at both witness2 and witness5. Thus
+the first accepted joint-profile cut separates a point whose entire orbit32
+single-anchor cross-rank family holds.
+
+The same approach identifies missing simple rank inequalities at other anchors.
+A span-closed row at anchor15 uses284 Z vectors of rank90. Incorporating it and
+all three orbit families produces the fully accepted `multi-witness8` point:
+SHA256 `7b5c1df2bc4c7790dc569b6d6920cde6cc28341e1aaf5622c18f384cee74c930`.
+Its seven acceptance stages include27 partner rows,286 saved rank rows, the
+complete Boolean-triple family and all older global conditional rows.
+
+A fixed witness8 cohort on anchors16–44 then yields10 additional independently
+accepted span-closed rank rows,17 complete all-rank lattice certificates, and
+two inconclusive anchors(17,40). Anchors0–15 were not queried at witness8, so
+results from earlier points must not be combined into an all45-anchor claim.
+The nine-row batch and separate anchor31 row remain separately frozen.
+
+The opposite-anchor support lemma is independently verified. A selected
+zero-evaluation Z anchor is contracted into the zero-pool matroid; a selected
+unit-evaluation anchor fixes its owner bin; absence deletes the anchor. A
+multibit selected anchor is impossible. Signed greedy optimization still
+completes the full remaining rank. Fixed phase0 breaks the291-class shortcut:
+the full1512-feature search covers all4597 masks and both states, with5782
+feasible branches and3412 certified exclusions. The737 added degree-two
+features are q_a, q_a P_t and q_a Z_jb; their expectations have factor1, while
+the original775 features retain factor16.
+
+The native implementation matches four frozen exact source cohorts, including
+independent prefix-rank checks and overflow/rational fallbacks. Full pricing
+takes0.07–0.14seconds versus3.9–5.5seconds in the matched Python cohort. This is
+a pricing-kernel comparison, not an end-to-end source-search speedup. A
+300-second anchored projection produces two independently accepted cuts at
+witness8, with normalized gaps0.03858 and0.03645. Synthetic positive and
+corrupted-input controls also pass. Dropping the737 extra coordinates still
+gives two independently accepted775-only cuts, with smaller gaps0.02963 and
+0.02752. Hence the added coordinates strengthen these matched functionals but
+are not needed to separate this particular point. The source question is not
+resolved by either observation.
+
+`anchor-witness9` now includes31 partner inequalities and296 rank rows, plus
+the new universal Boolean triangle found by the case-floor pilot. Numerical
+feasibility is observed; its exact acceptance is the next pending check at
+this checkpoint.
+
+The selected-cover-pair bridge is also established: a selected pair in a
+32-action symmetry orbit forces its averaged pair moment to be at least the
+stabilizer size divided by32. Of405 cover cases,390 give floor1/32 and15 give
+floor1/16. One bounded case(5,11,10) has an exact feasible point for its finite
+moment model plus the floor, but violates one omitted Boolean triangle; the
+complete-triple case remains unresolved. No source case is excluded. The
+residual-corrected, interval-safe dual route is written down for a future
+numerically infeasible case, without treating solver output as a proof.
+
+Source status remains width16 or18, cover405, best checked physical partial
+88/128, and zero full source anchors excluded. No new paper, source question,
+or Lean completion has been added during this continuation.
