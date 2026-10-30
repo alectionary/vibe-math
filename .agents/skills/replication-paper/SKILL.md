@@ -17,6 +17,42 @@ The worked example is
 [formalization/correlated-residuals/](../../../formalization/correlated-residuals/README.md),
 merged as pull request 14. Commands below are from the repository root.
 
+## Manuscript and delivery acceptance
+
+Reuse the latest user-approved manuscript template. Record its path and revision;
+compare the rendered main paper against it. The bundled
+[approved preamble](assets/approved-preamble.tex) preserves the Kupzyk layout.
+Keep semantic subject-specific adaptations separate from style changes. Record
+and justify necessary deviations; do not silently invent a new layout.
+
+Before declaring delivery complete, independently review the rendered **main
+manuscript**, not merely its source, helper tests, or appendix. Check first-page
+findings, tables, scalable fonts, citations, copied compliance and availability
+rows, filename links, and the distinction between findings and execution details.
+Record reviewer, PDF hash, source hash, and evidence for each review item.
+Passing helper tests never establishes manuscript compliance.
+
+When a draft PR is authorized, put an accessible current-commit primary PDF link
+first, followed by editable source/bibliography and linked evidence. Fetch the
+remote primary PDF and evidence, compare their hashes with local artifacts, and
+record the URLs and downloaded paths. An appendix never substitutes for the
+main paper. If a transfer channel fails, use another authorized channel; otherwise
+report delivery incomplete. Do not request publication approval again when given.
+Run [delivery_check.py](scripts/delivery_check.py) on the delivery record using
+`python3 scripts/delivery_check.py RECORD.json --root STUDY_ROOT` from this skill.
+The checker validates files/hashes and required review records, not scientific
+truth or whether a reviewer actually read a page. A fresh independent manual
+review remains required. Revalidate after any manuscript/PDF change.
+
+Record the historical run baseline separately from the immutable revision that
+actually contains reproducible code and inputs. Preserve prior analysis when
+adding confirmation or diagnostics. Never silently replace the primary result.
+For each independent check, name shared inputs, engine, graph, and implementation;
+qualify partial independence instead of claiming a second end-to-end replication.
+Justify a tolerance by source precision or scientific consequences, and distinguish
+it from sampling uncertainty. Label margins selected after inspection exploratory;
+use direct resource/performance tradeoffs when no equivalence margin is justified.
+
 ## Abstract and opening
 
 The original work's headline result is the answer to its main research
