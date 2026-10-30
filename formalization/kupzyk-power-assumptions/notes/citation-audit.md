@@ -1,0 +1,33 @@
+# Citation gap and source audit — 29 October 2026
+
+The original report named Kupzyk and linked software and documentation, but had no formal in-text citation commands or bibliography. This made it hard to distinguish intellectual provenance from executable reproducibility. The skill required software attribution and formula citations, but lacked a mandatory scholarly bibliography, claim-to-source coverage audit, or citation integrity gate. This was a reporting omission, not a new numerical failure.
+
+The revised skill requires all three. The paper now uses author–year citations, source page/table/appendix locators, 14 used references, and editable references.tex. The citation checker catches absent, undefined, duplicated, or unused references and unresolved build warnings; it does not certify claim support. The following audit supplies the separate semantic review.
+
+## Coverage and verification
+
+| Source/key | Claim supported and inspected evidence | Access/verification limit |
+| --- | --- | --- |
+| Kupzyk 2011 / kupzyk2011 | Full dissertation text already read; pp.79–90 design/stages; Table1 p.92; headline pp.93–96; Table3 p.94; Table5 p.97; Eq4.1 pp.85–86; Appendices A/B pp.124–129; Appendix D empirical targets. Official UNL record reconfirmed title/year/adviser. Captions and comparison appendix now cite these locators. | Local PDF access remained blocked; original source pixels independently reviewed by parent. Original seeds/software unavailable. |
+| O'Brien & Muller 1993 / obrien1993 | Kupzyk pp.53–54 credits exemplary-data terminology; bibliographic metadata corroborated in official SAS/STAT14.1 POWER References, https://support.sas.com/documentation/cdl/en/statug/68162/HTML/default/statug_power_references.htm . | Chapter full text not obtained; explicit secondary attribution through Kupzyk, no claim of independently checking chapter formulas. No DOI invented. Link labeled bibliographic record. |
+| Stroup 2002 / stroup2002 | Publisher title, author, year, volume, pages, DOI and abstract read at https://link.springer.com/article/10.1198/108571102780 . Kupzyk pp.55–56 describes its relation to fixed-effect-only outcomes and PROC MIXED power. | Subscription full text not obtained; detailed method attribution explicitly through Kupzyk. Correct publisher title replaces the altered title in Kupzyk's bibliography. |
+| Raudenbush & Liu 2001 / raudenbush2001 | Author-hosted paper inspected at https://cpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/6/1063/files/2018/11/EffectsStudyDuration2001-R-1oqnhmw.pdf ; pp.387–389 establish group differences in change, reliability and noncentrality. | Background only: paper explicitly distinguishes its two-level complete-data model from our three-level dropout reconstruction. No formula equivalence implied. |
+| Bates et al.2015 / bates2015 | Publisher abstract describes ML/REML linear mixed-model fitting; metadata and installed citation('lme4') agree. https://www.jstatsoft.org/article/view/v067i01 | Citation supports lme4 implementation, not SAS df equivalence or our numerical findings. |
+| Pinheiro et al.2025 / nlme2025 | Installed citation('nlme') gives authors/year/version3.1-168 and CRAN package DOI. | Installed metadata preferred over a possibly newer current CRAN version. |
+| R Core Team2025 / rcore2025 | Installed citation('base') and R4.5.0 manifest. | Software attribution only. |
+| Kuznetsova et al.2017 / kuznetsova2017 | JSS abstract explicitly describes Satterthwaite df and pbkrtest connection; installed citation agrees. https://www.jstatsoft.org/article/view/v082i13 | Supports diagnostic implementation, not exact small-budget Type I estimates. |
+| Halekoh & Højsgaard2014 / halekoh2014 | JSS abstract describes Kenward–Roger and bootstrap implementations; installed citation confirms authors/year. https://www.jstatsoft.org/article/view/v059i09 | Installed citation says1–30 while some institutional records say1–32; bibliography uses verified volume/issue/DOI without an unverified page range. No bootstrap claimed as run. |
+| Morris et al.2019 / morris2019 | Publisher metadata and authors' full text at https://pmc.ncbi.nlm.nih.gov/articles/PMC6492164/ ; Table1 and sections5–6 distinguish performance estimates and Monte Carlo SE. | Supports precision reporting; does not prescribe our predictive mask band or supply our findings. |
+| Holm1979 / holm1979 | Primary journal archive record/indexed abstract, https://www.jstor.org/stable/4615733 ; sequentially rejective procedure,6(2),65–70. | Full text not retrieved; only the established procedure attribution is used. Four headline contrasts and54 cell comparisons remain separately identified families; our approximate tail assumptions are not validated by the citation. |
+| SAS / sasreml | Official PROC MIXED statement (SAS/STAT9.3) retrieved; METHOD option attribution is specific to MIXED, replacing erroneous VARCOMP URL. | Original source release unknown; no execution equivalence asserted. |
+| SAS / sasbw, sasprofile | Parent documentation audit read archived MODEL/BETWITHIN and covariance-estimation/profiling sections; exact URLs in references.tex. | Repeat executor retrieval timed out. Explicit attributed source review, n.d. plus retrieval date; M-J-2 remains our derived extension. |
+
+Our dense/block GLS derivation, new simulated outputs, paired variance diagnostic, threshold sensitivity, and unresolved Table3 gap remain labeled as our calculations. Academic citations do not turn those results into borrowed evidence. Exact versions and software links remain in the software section; preflight-only lavaan/OpenMx are not misrepresented as fitting engines.
+
+## Provenance and validation
+
+The numerical experiment used master dbbdda83d1acce5ddd86e9ab7c27d79f2f300e12 and the then-frozen skill SHA256 1fd5e51cda8b58c8bcda00c3c43f521a7b1c791771067f1bb3b2125ea572bde3. Original local implementation/artifact commit: ec340c7702a2924a1807269baf5ab686b88d0398.
+
+The subsequent citation revision was explicitly requested by the user. It changes manuscript attribution, corrects the SAS link, and strengthens future skill requirements. It does not rerun simulations, change an estimator, or retroactively claim the experiment used the updated skill. All433 numerical output files were checked against pre-revision SHA256 values and remained byte-identical.
+
+Validation: 25 skill tests pass (19 existing and6 citation tests); the citation gate checks every used reference and the final LaTeX log. Two-pass PDF build and rendered-page inspection cover opening citations, methods, bibliography, comparison appendix and artifact pages. Editable bibliography and regenerated manuscript/PDF accompany this audit. The original local deliverables remain preserved separately.
