@@ -1,0 +1,53 @@
+SoPlex version 8.1.0 [mode: optimized] [precision: 8 byte] [rational: GMP 6.3.0] [PaPILO n/a] [GitHash: a0061053]
+Copyright (c) 1996-2026 Zuse Institute Berlin (ZIB)
+
+External libraries:
+  Boost 1.92.0         Boost C++ Libraries (boost.org)
+  GMP 6.3.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+  MPFR 4.2.2           GNU Multiple Precision Floating-Point Reliable Library (mpfr.org)
+  ZLIB 1.2.12          General Purpose Compression Library by J. Gailly and M. Adler (zlib.net)
+
+Error parsing setting string: no ':' separating parameter type and name.
+invalid option "--help"
+
+usage: /private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex [options] <lpfile>
+  <lpfile>               linear program as .mps[.gz] or .lp[.gz] file
+
+general options:
+  --version              print version and compiler information
+  --readbas=<basfile>    read starting basis from file
+  --writebas=<basfile>   write terminal basis to file
+  --writefile=<lpfile>   write LP to file in LP or MPS format depending on extension
+  --writedual=<lpfile>   write the dual LP to a file in LP or MPS formal depending on extension
+  --<type>:<name>=<val>  change parameter value using syntax of settings file entries
+  --loadset=<setfile>    load parameters from settings file (overruled by command line parameters)
+  --saveset=<setfile>    save parameters to settings file
+  --diffset=<setfile>    save modified parameters to settings file
+  --extsol=<value>       external solution for soplex to use for validation
+
+limits and tolerances:
+  -t<s>                  set time limit to <s> seconds
+  -i<n>                  set iteration limit to <n>
+  -f<eps>                set primal feasibility tolerance to <eps>
+  -o<eps>                set dual feasibility (optimality) tolerance to <eps>
+  -l<eps>                set validation tolerance to <eps>
+
+algorithmic settings (* indicates default):
+  --readmode=<value>     choose reading mode for <lpfile> (0* - floating-point, 1 - rational)
+  --solvemode=<value>    choose solving mode (0 - floating-point solve, 1* - auto, 2 - exact rational solve)
+  --arithmetic=<value>   choose base arithmetic type (0 - double, 1 - quadprecision, 2 - higher multiprecision)
+  --precision=<value>    choose precision for multiprecision solve (only active when arithmetic=2 minimal value = 50)
+  -s<value>              choose simplifier/presolver (0 - off, 1* - internal, 2*- PaPILO)
+  -g<value>              choose scaling (0 - off, 1 - uni-equilibrium, 2* - bi-equilibrium, 3 - geometric, 4 - iterated geometric, 5 - least squares, 6 - geometric-equilibrium)
+  -p<value>              choose pricing (0* - auto, 1 - dantzig, 2 - parmult, 3 - devex, 4 - quicksteep, 5 - steep)
+  -r<value>              choose ratio tester (0 - textbook, 1 - harris, 2 - fast, 3* - boundflipping)
+
+display options:
+  -v<level>              set verbosity to <level> (0 - error, 3 - normal, 5 - high)
+  -x=<solfile>           print primal solution to file (or just -x to print to terminal)
+  -y=<solfile>           print dual multipliers to file (or just -y to print to terminal)
+  -X=<solfile>           print primal solution in rational numbers to file (or just -X to print to terminal)
+  -Y=<solfile>           print dual multipliers in rational numbers to file (or just -Y to print to terminal)
+  -q                     display detailed statistics
+  -c                     perform final check of optimal solution in original problem
+

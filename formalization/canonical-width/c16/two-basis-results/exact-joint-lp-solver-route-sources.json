@@ -1,0 +1,54 @@
+{
+  "status": "READ_ONLY_EXACT_LP_ROUTE_RESEARCH",
+  "accessed_date": "2026-10-30",
+  "scope": "Official solver documentation, source interfaces and package metadata; no installation, solve or certificate acceptance",
+  "local_activity": "Small static code reads and note writes only; no local brew invocation",
+  "local_binding": {
+    "producer": "two_basis_joint_fixed_star.py",
+    "producer_sha256": "dec073fc5f2784bc29a0e50be5e0fc88d6ced202a2c48acb3fab9cd0524b5573",
+    "frozen": "two-basis-results/joint-fixed-star-original-cuts-point22.frozen.json",
+    "frozen_sha256": "386b94a5f491ad66d044f109ff796e3ab491c922b7b24a59d4693494962464e3"
+  },
+  "sources": [
+    {"url":"https://soplex.zib.de/doc/html/EXACT.php","role":"Exact-mode settings and documented refinement/boosting"},
+    {"url":"https://raw.githubusercontent.com/scipopt/soplex/master/README.md","role":"Sparse methods, hot bases, rational factorization"},
+    {"url":"https://raw.githubusercontent.com/scipopt/soplex/master/INSTALL.md","role":"macOS build and arithmetic dependencies"},
+    {"url":"https://raw.githubusercontent.com/scipopt/soplex/master/src/soplex.h","role":"Rational input/output, Farkas and basis APIs"},
+    {"url":"https://raw.githubusercontent.com/scipopt/soplex/master/src/soplexmain.cpp","role":"CLI exact output and basis options"},
+    {"url":"https://www.math.uwaterloo.ca/~bico/qsopt/ex/","role":"Original QSopt_ex author claims; old platform evidence only"},
+    {"url":"https://raw.githubusercontent.com/jonls/qsopt-ex/master/README.md","role":"Maintained fork dependencies and license declaration"},
+    {"url":"https://raw.githubusercontent.com/jonls/qsopt-ex/master/esolver/esolver.c","role":"CLI basis and resource options"},
+    {"url":"https://raw.githubusercontent.com/jonls/qsopt-ex/master/qsopt_ex/exact.c","role":"Exact primal/infeasibility check and output implementation"},
+    {"url":"https://sources.debian.org/src/qsopt-ex/2.5.10.3-2/qsopt_ex/exact.h","role":"Versioned exact API header mirror"},
+    {"url":"https://ergo-code.github.io/HiGHS/dev/guide/advanced/","role":"Basic-variable indexing and numerical basis operations"},
+    {"url":"https://formulae.brew.sh/formula/soplex","role":"Current HTML Apple Silicon packaging listing; reports8.1.0"},
+    {"url":"https://formulae.brew.sh/api/formula/soplex.json","role":"Cached2026-07-20 metadata reports8.0.3; not a current installation pin"},
+    {"url":"https://raw.githubusercontent.com/Homebrew/homebrew-core/master/Formula/s/soplex.rb","role":"Cached8.0.3 formula tests exact mode and provides Apple Silicon bottles"}
+  ],
+  "homebrew_metadata_snapshot": {
+    "json_generated_date": "2026-07-20",
+    "json_version": "8.0.3",
+    "html_version": "8.1.0",
+    "version_discrepancy_preserved": true,
+    "json_tap_git_head": "c3a3048a868d157937c22afb5bed7f71437aff55",
+    "json_formula_sha256": "8121bacc4dea5dc0cc35cb7b9224540a73ed3d8896abfd128a3b7d86c11a620f",
+    "bottles": {
+      "arm64_tahoe": "683aace3a66e35fd99172eaf1608253eff103abb7fb83e2d47a630f88f8ce620",
+      "arm64_sequoia": "87d025017dd3ab6c7f793a27b7fa7f80e8e06c654eeb40322339add7850d9e9c",
+      "arm64_sonoma": "c0fae1c0717700b652668c2aedd692ab1df6af0dc3ddfe4bd195004c16ea5c7d"
+    },
+    "dependencies": ["boost", "gmp", "mpfr"],
+    "formula_exact_test": "soplex test.lp -f0 -o0 --readmode=1 --solvemode=2",
+    "platform_readiness_only": true,
+    "actual_machine_architecture_or_os_checked": false,
+    "bottles_downloaded": false
+  },
+  "unverified": [
+    "Actual installed binary and arithmetic build configuration",
+    "This machine's matching current bottle and dependency availability",
+    "Peak exact-factorization memory and running time",
+    "Exact LP/MPS slash-fraction grammar (use rational API or rowwise integer denominator clearing)",
+    "Cross-library basis format/status compatibility",
+    "A real exact feasible or infeasible endpoint for the joint model"
+  ]
+}

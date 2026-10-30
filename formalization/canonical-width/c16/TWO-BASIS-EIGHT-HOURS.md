@@ -325,3 +325,153 @@ permutation of four forced-zero equality rows between two exports. The current
 numerical dual fails its preliminary sign/residual gate; no certificate is
 attempted from that direction. This prepares a verification route without
 mislabeling the current numerical failure as a proof.
+
+### Coupling the two allocations and the temporary resource hold
+
+The single authorized repair admits exact X and Z allocations satisfying the
+complete rank-at-most-three geometry and the first accepted higher-rank closures.
+Both dyadic recoveries pass. The subsequent22-pattern physical cohort finishes
+in133.45seconds with nine exact mixtures and thirteen exact rank obstructions,
+all independently replayed. The saved closure contains397 actual files/79MB,
+and a separate-copy smoke replay passes. This is a different allocation, so the
+change from fifteen to thirteen obstructed patterns is not a monotone reduction
+of source cases. No second rank-only repair was launched.
+
+The new conditional owner-star test is a bounded transportation problem. It
+enforces pairing-one ownership, prescribed unconditional cross moments, exact
+Fréchet bounds, and anchor-forced zeros. Every failed flow gives an independently
+reconstructed symbolic inequality in the two allocations, pattern masses, and
+canonical owner moments. The original allocation gives1,429 cuts/11 feasible
+flows across all1,440 probes; the repaired allocation gives1,423 cuts/17 flows.
+Both complete cohorts pass independent exact replay. These reject allocations,
+not the shared law, the global moment point, or a source case.
+
+One attribution is stronger than a raw failure count: original cut612 uses only
+pattern2, where both sectors already have exact full-basis mixtures. For X
+probe614 and
+J={51,56,194,230,485,492,501,547,588,642,646}, the valid inequality is
+
+    10*yX[2,614] + sum(j in J)yZ[2,j] - 11*lambda[2] <= 0.
+
+Its exact violation is6268396875783/1125899906842624. Thus this obstruction
+comes from cross-sector ownership compatibility, even after individual basis
+membership has been certified for that pattern. Changing the allocations may
+still repair it.
+
+A joint fixed-law LP with all1,429 original star cuts has7,943 variables,
+20 equations and35,898 inequalities. It finishes numerically in14.35seconds,
+but equation-only exact recovery fails four boxes and one rank row, with a
+largest violation about1.04e-13. The original failure is preserved and no exact
+joint allocation is accepted. The mapping/zero-star reconstruction control
+passes independently; a future recovery must pass the full consumer. Dense
+projection onto thousands of numerically active rows has not been attempted.
+
+The general shared-law model is prepared with13,393 variables,84 equations,
+51,581 inequalities and all sixteen patterns. Its source controls reconstruct
+all7,200 feature equations and the accepted reference allocations exactly.
+Read-only independent review finds no structural issue, but the full independent
+model replay is held. Its new owner-star/dual-ray adapter is explicitly unrun.
+Any accepted projected cut must come from exact source-row combination and
+exact variable cancellation or the proved0..1 residual correction.
+
+The user requested reduced CPU and memory use while doing word processing.
+All three agents report their local jobs exited, and the process check finds
+no active research solver. New heavy local computation is held until the user
+indicates Mac availability. The research itself remains active within the
+original eight-hour block; current work is mathematical review, small source
+edits and remote literature reading.
+
+That review proves a further local reduction. The selected/residual opposite
+basis split has weighted rank
+
+    a*r_selected + (lambda-a)*r_original.
+
+Its subset inequalities strengthen the corresponding local star inequalities.
+The proof, physical domain-rank formula, scope and counterexamples are in
+`CONDITIONAL-OWNER-LIFT.md` and the independent review notes. Cross-pattern
+prescribed moments remain necessary. A colored version of the exact
+push/relabel producer has been drafted, without import, execution, controls,
+or a claimed runtime bound. The first cheap augmented-domain screen, completed
+before the hold, found no empty domain among15,121 positive coordinates.
+
+All source-level bounds remain unchanged: width16 or18, sufficient cover405,
+best checked partial frame88/128, zero full source anchors excluded, and no new
+Lean completion. The new literature leads from the low-load interval are pending
+screening/accounting and do not change the426/160/209/168/6 canonical counts.
+
+### Resumed computation at verified low priority
+
+The user released the Mac resource hold and requested that research processes
+remain at lower priority. All computational workers now verify niceness19,
+with one-thread numerical-library settings and bounded child processes.
+The sandbox initially rejected `nice` while still executing a small read at
+normal priority. Escalated priority setup succeeds; fail-closed priority guards
+prevent scientific jobs from silently running at normal priority.
+
+The general shared-law model passes a complete independent replay in106seconds:
+all sixteen Möbius masses,7,200 local symbolic moment identities,2,472 structural
+coordinates,5,485 physical rank rows,23,040 reference allocation coordinates,
+84 equations,51,581 inequalities and336,633 sparse coefficients. The owner-star
+adapter separately passes the extended owner-coordinate mapping,2,852 initial
+star translations, signed dual combinations and interval-residual controls.
+
+SoPlex8.1.0 is available from an isolated, verified official bottle, with exact
+GMP/MPFR arithmetic. The system Homebrew installation was not modified. Tiny
+rational primal/Farkas controls, corruption checks, basis-file reading, sparse
+zero output and100-bit input controls pass. Exact fraction input is supported;
+the solver's ordinary LP re-export rounds coefficients and is deliberately not
+used as an exact roundtrip. The isolated runtime and license provenance are
+recorded in `two-basis-results/soplex-setup/`.
+
+The original joint fixed-law model is exported without its artificial margin,
+using exact semantic rational rows. Its7,943 variables,20 equations and35,898
+inequalities contain138,713 nonzeros. SoPlex finds an exact objective-zero
+candidate in1.53seconds at a sampled peak of143.7MB, below the120/150-second and
+2GB limits. Exact reconstruction and a separate physical consumer both pass:
+all7,200 target equations,23,040 boxes,4,229 rank rows and1,429 star inequalities.
+Parameter denominators have up to403 bits. The earlier floating-recovery failure
+is preserved; it was not an infeasibility result.
+
+This accepted allocation is still separated by stronger necessary constraints.
+A complete fresh cohort finishes in155.36seconds with1,417 independently accepted
+star cuts/23 flows and six exact conditional basis mixtures/sixteen rank cuts.
+All22 rank endpoints are resolved, with no caps or rounding. The26 raw/closed
+rank rows and the full393-file/73.96MB closure are preserved under
+`joint-soplex0-separation-point22-complete-inventory.json`. These figures describe
+the new allocation and do not change the source-case count.
+
+The colored weighted-rank implementation also passes558 tiny cases and49,420
+exhaustive subset checks, with independent physical representation and endpoint
+controls. Its single physical pilot, original pattern2/Z with Xprobe614, finds
+a valid cut in2.89seconds:
+
+    sum(j in {51,194,230,492,547})yZ[2,j] + 4*yX[2,614] <= 5*lambda[2].
+
+The exact violation is253441620387/1125899906842624, and the consumer checks573
+physical full bases in the colored certificate. In this pilot the known
+eleven-index inequality is unchanged by rank lifting, and its common closure
+adds only absent anchors. This validates the new method on the physical pool
+without claiming an improvement over the existing star obstruction. The pilot
+stops after this one endpoint.
+
+The next bounded gate uses the general model with all five high moments pinned
+to zero, all4,269 accepted star cuts, and45 further verified rank/closure rows.
+Its13,393 variables and55,984 rows retain the original exact source semantics.
+An infeasibility result with those pins would reject only that chosen law;
+removing the pins and independently replaying a general-law certificate is
+required before excluding the global moment target.
+
+The low-load literature work is now reconciled as F178–F181. Two papers are
+fully screened and two later papers provide targeted follow-up evidence. The
+weighted M-convex square-minimization question is not retained as currently
+open: a later primary source states it is known solvable. One precise M2
+algorithm question and three broad directions are added with current resolution,
+Lean status and planning difficulty unassessed. Current totals are430 canonical
+entries,161 eligible,213 paper records,170 full-text screens,141 central records
+(140 distinct source IDs), and six Lean completions. Four current validators
+pass; two unchanged historical bookkeeping anomalies are documented in
+`literature/owner-lift-20261030/validation.json`. Ignored full-text acquisition
+files remain local, following the repository's established storage policy.
+
+The source answer is still open: width16 or18, cover405, physical partial88/128,
+zero full source anchors excluded, no new Lean completion.

@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 30, 2026. Low-confidence planning priors for all 426 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 30, 2026. Low-confidence planning priors for all 430 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 30, 2026. Low-confidence planning priors for all 426 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 55 | 55 |
+| Unestimated / scope gate | 56 | 56 |
 
 ### 2026-Geraci-O01
 
@@ -6637,3 +6637,67 @@ First milestone: Specify the network class, submodular oracle model, tight-set c
 Gate: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
 
 Basis: Dated full-text author-direction extraction only; present-day resolution and Lean-discovery searches not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow).
+
+### L-F178-m2-square-strong-polynomial
+
+Find a strongly polynomial algorithm minimizing the ordinary sum of squares over a nonempty M2-convex set.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: The source fixes the objective and the integral intersection of two base-polyhedra. Before implementation, make the supermodular evaluation-oracle and arithmetic model explicit; check later resolution and Lean evidence.
+
+Gate: The source fixes the objective and the integral intersection of two base-polyhedra. Before implementation, make the supermodular evaluation-oracle and arithmetic model explicit; check later resolution and Lean evidence.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f178-m2-square-strong-polynomial).
+
+### L-F178-box-tdi-algorithms
+
+Develop strongly polynomial combinatorial algorithms from discrete box-TDI min-max formulas.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: Choose a polyhedral subclass, objective and oracle/input model; the paper supplies a general algorithm-development program rather than one fixed theorem.
+
+Gate: Choose a polyhedral subclass, objective and oracle/input model; the paper supplies a general algorithm-development program rather than one fixed theorem.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f178-box-tdi-algorithms).
+
+### L-F178-inverse-optimization-algorithms
+
+Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: Fix an inverse problem and representation, including bounded cost vectors, deviation from a box or linear deviation costs; audit prior algorithms before selecting a claim.
+
+Gate: Fix an inverse problem and representation, including bounded cost vectors, deviation from a box or linear deviation costs; audit prior algorithms before selecting a claim.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms).
+
+### L-F179-polymatroid-norm-constraints
+
+Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question.
+
+Gate: Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints).

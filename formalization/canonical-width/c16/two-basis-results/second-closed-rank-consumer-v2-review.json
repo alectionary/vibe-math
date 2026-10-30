@@ -1,0 +1,36 @@
+{
+  "status": "PASS_SECOND_CLOSED_RANK_CONSUMER_ADAPTER",
+  "base_consumer": "two_basis_structure_verify_physical_closed_rank_bank.py",
+  "base_sha256": "9196d937745a58c1e2fa39fd73b9a66ac720254db4b2ae51762ef63686c10428",
+  "new_consumer": "two_basis_structure_verify_physical_closed_rank_bank_v2.py",
+  "new_sha256": "1fd1497a6e2d7fc016b8d160502233f890faa8cc5371bd22dba252461d839ae7",
+  "changes": "Only both endpoint consumer-name bindings early\u2192closed; all independent low-pivot physical contraction and full-pool span closure checks unchanged.",
+  "priority": 19,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "replays": [
+    {
+      "side": "X",
+      "bank": "two-basis-results/two-basis-point22-X-second-closed-rank-bank.json",
+      "bank_sha256": "8d777e11907cb6efbcdd314013e9002fd12c75fe2513ee7c7430ec38aa565158",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7601551660336554,
+      "output": "two-basis-results/two-basis-point22-X-second-closed-rank-bank-independent.json",
+      "output_sha256": "ceecdb7546a8e9ce61c7b19df9c3dd67abc8ac8b09e11c83469185c012c4d9a3"
+    },
+    {
+      "side": "Z",
+      "bank": "two-basis-results/two-basis-point22-Z-second-closed-rank-bank.json",
+      "bank_sha256": "0aaf11ceb6ca62f23f58b4ee8a1185085c3b210d3004b77ae55aec2c43b9a182",
+      "exit_code": 0,
+      "elapsed_seconds": 0.7682959159137681,
+      "output": "two-basis-results/two-basis-point22-Z-second-closed-rank-bank-independent.json",
+      "output_sha256": "98150dfa25a3fda578d6e292b1920b3eccd2a3f16fd3b824ab6bb468bbf1412d"
+    }
+  ],
+  "source_C16_answered": false
+}

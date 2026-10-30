@@ -1,0 +1,52 @@
+{
+  "status": "PASS_EXACT_PHYSICAL_CONDITIONAL_CLOSED_RANK_ROWS",
+  "bank_sha256": "97f0777f73abb54c5117193359ef04100813caab6a27e680ae0e83cae164d6ed",
+  "consumer_sha256": "9196d937745a58c1e2fa39fd73b9a66ac720254db4b2ae51762ef63686c10428",
+  "producer_sha256": "e69d7b0f5c2510a4104429dc80ce170eadadaa782debebf99581829455c1e8ce",
+  "point_sha256": "4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f",
+  "allocation_sha256": "8d969496d45feccf05b28c0301e2e4287bd60fe94b489e9a3a0b74341cc9e6ba",
+  "side": "Z",
+  "X_anchors": [
+    80,
+    512
+  ],
+  "Z_anchors": [
+    186,
+    433
+  ],
+  "cuts_checked": 12,
+  "literal_rows": 4,
+  "closed_rows": 8,
+  "violating_patterns": [
+    1,
+    3,
+    5,
+    6,
+    8,
+    9,
+    10,
+    12
+  ],
+  "minimum_exact_gap": "11568758165/1125899906842624",
+  "maximum_exact_gap": "934033258799135/2251799813685248",
+  "endpoints_bound": 8,
+  "corruptions_rejected": [
+    "rank",
+    "outside-domain",
+    "span-rank"
+  ],
+  "dependencies": {
+    "verify_two_sided_full_basis_oracle.py": "e6342b1f16ce5902a4f2a2601407e77b35b58bab7a66f51b39ab59510a4f49b0",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "two_basis_structure_verify_physical_push_early.py": "27eafafc6477ec631e590a1c72a19cc6fed288731cd541af69fe34a45b2da4e4",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+  },
+  "all_subset_rank_membership_proved": false,
+  "shared_lambda_nonmembership_proved": false,
+  "global_target_nonmembership_proved": false,
+  "source_C16_answered": false,
+  "scope": "Each listed conditional rank inequality is checked directly in the source physical pool after joint contraction. Exact positive discovery gaps reject this supplied allocation only. The row geometry remains valid for later allocations with the same anchors/sector.",
+  "elapsed_seconds": 0.3704573749564588
+}

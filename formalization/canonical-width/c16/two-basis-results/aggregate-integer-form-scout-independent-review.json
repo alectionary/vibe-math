@@ -1,0 +1,79 @@
+{
+  "status": "PASS_AGGREGATE_MAPPING_AND_DISCOVERY_SEMANTICS_NO_CUT",
+  "source_C16_answered": false,
+  "reviewer_sha256": "b923a80cad108b267a558676838d34e914bfdcf9e79743c331fa041a358b8a50",
+  "producer_v2_sha256": "05cda9c32bcb801da4ac006cfeffc92036fbcf7438a29545525b23651a70954a",
+  "point_sha256": "f1d9feac7ccef7afdd982b2661401a9805a4d23c20e02e60a0ce50d1f119e858",
+  "physical_symmetry_bridge": {
+    "physical_pairings_rebuilt": 518400,
+    "sector_and_rotation_comparisons": 1036800,
+    "graph_ranks": {
+      "sector_swap": 128,
+      "X_rotation": 128,
+      "Z_rotation": 128
+    }
+  },
+  "independent_owner_loader_coordinates_compared": 36495,
+  "phase_difference_multiplicity_identities": 21,
+  "literal_group_moment_checks": 420,
+  "exact_block_embedding_and_reflection_controls": 36,
+  "discarded_v1_attempt_sha256": "d393280e56bd10bfcd0b9813b3417b411eb02ac00c5abb0cf524e9a49255030c",
+  "v1_wrong_layout_coordinate_mismatches": 36405,
+  "v1_first_wrong_owner_coordinate": 90,
+  "v1_any_cut_accepted": false,
+  "reports": [
+    {
+      "phase_modulus": 1,
+      "report_sha256": "be28dec74009049f58c318a25bb591cb9e8c2ee79fe1589c6706cd4ebf109e1f",
+      "frozen_sha256": "105a19a2450babfcacc67cc54d3ff6d16ed511e4b4c734ff47a28b539964704a",
+      "gram_dimension": 89,
+      "reported_seconds": 0.46549337508622557,
+      "reported_odd_rows": [
+        1,
+        42,
+        42
+      ],
+      "cuts": 0,
+      "LLL_transforms_independently_replayed": false
+    },
+    {
+      "phase_modulus": 2,
+      "report_sha256": "7fbdc2d6dc34264e5e7779bd4f24696421951812737a70ce576e066382dfec14",
+      "frozen_sha256": "32de28144945713ca8c073c9496ff1026c78fcdbbc3bd96653e5fc1a2941da06",
+      "gram_dimension": 179,
+      "reported_seconds": 3.2737367920344695,
+      "reported_odd_rows": [
+        1,
+        48,
+        43
+      ],
+      "cuts": 0,
+      "LLL_transforms_independently_replayed": false
+    },
+    {
+      "phase_modulus": 4,
+      "report_sha256": "091e62da6da6dfcebf8bbe8d06c9cb86f036883f096aa5f8bcb7f3916b483d46",
+      "frozen_sha256": "f665006dc50455bd23910207e31ba2d63e918a3edbabf5cfd53bc08ff8d23eae",
+      "gram_dimension": 359,
+      "reported_seconds": 41.8324946250068,
+      "reported_odd_rows": [
+        1,
+        1,
+        34
+      ],
+      "cuts": 0,
+      "LLL_transforms_independently_replayed": false
+    }
+  ],
+  "proof_review": [
+    "For group N_(s,o,r)=sum_{h=r modq}X_(s,o,h), E[N]=n p_o with n=16/q. Every relative phase delta congruentu-r modq occurs exactlyn times, hence E[N_i N_j]=n sum_delta S_or_T(delta,o,p), including the diagonal self-indicator terms.",
+    "The expanded36495-owner loader is required: compact certificate values contain symmetric upper triangles and then profile weights. The old direct prefix was not that layout.",
+    "Omitting one count group per sector loses no arbitrary integer affine count form: N_omitted=128-sumN_other, so eliminating its integer weight shifts c by128 times that weight and subtracts that weight from all remaining sector coefficients. This is an exact full-cardinality substitution, not a sparse \u00b11-template or event-complement equivalence.",
+    "For an embedding row(z,k), the Gram value is(2z+k e0)^T(G+I)(2z+k e0)+D k\u00b2/alpha_den\u00b2. Oddk gives the integer affine vector a=z+(k+1)e0/2, with2a-e0=2z+k e0.",
+    "The ridge and embedding penalty are discovery devices only. The proposed gap is computed from the original exactG as -(a^T G a-a^T G e0)/(2D); reflectiona\u2192e0-a preserves it exactly.",
+    "Group counts are integer but not Boolean. Their diagonal second moments must remain E[N_i\u00b2]; an eventual compiler must expand each count into physical indicators or derive the group polynomial directly, rather than substituteN_i\u00b2=N_i.",
+    "No-cut at three LLL embeddings checks only the inspected odd transform rows. It is neither complete count-form separation nor target convex membership. Saved reports do not containU, so this review does not independently reproduce the reported LLL congruences or short-vector minima."
+  ],
+  "future_positive_acceptance_gate": "Preserve integer constant and every group weight; independently expand physical indicator coefficients, reconstruct all diagonal/cross count moments, check exact rational gap and symbolic32-action translation. Large expanded supports need a general integer-form consumer, since the existing literal-event consumer caps arity12.",
+  "scope": "Layout, phase-count translation, embedding algebra and scope review of bounded negative discovery. No new scout/LLL/solver run, accepted aggregate row, source frame or case exclusion."
+}
