@@ -725,6 +725,17 @@ Three full primary texts screened and one later proceedings metadata record. Two
 - [L-F176-avoid-smallest-tight-sets](OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets): Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
 - [L-F176-simpler-submodular-flow](OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow): Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
 
-Current cohort: **426 canonical entries,160 eligible targets,209 paper records,168 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-owner-lift-source-screening-20261030
 
-The current source index has **137** records, with actual access levels retained.
+Two complete primary screens add one specific M2 square-minimization algorithm question and three broad directions. Two targeted-only follow-ups have null question counts. Weighted M-convex square minimization is known solvable according to later primary evidence; no new resolution or Lean completion is claimed.
+
+[Screen report](../literature/owner-lift-20261030/ACCOUNTING.md). Added **4 entries**, **1 eligible targets**, **4 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F178-m2-square-strong-polynomial](OPEN-PROBLEMS.md#l-f178-m2-square-strong-polynomial): Find a strongly polynomial algorithm minimizing the ordinary sum of squares over a nonempty M2-convex set.
+- [L-F178-box-tdi-algorithms](OPEN-PROBLEMS.md#l-f178-box-tdi-algorithms): Develop strongly polynomial combinatorial algorithms from discrete box-TDI min-max formulas.
+- [L-F178-inverse-optimization-algorithms](OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms): Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.
+- [L-F179-polymatroid-norm-constraints](OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints): Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.
+
+Current cohort: **430 canonical entries,161 eligible targets,213 paper records,170 full-text screens**; **6/161 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **141** records, with actual access levels retained.

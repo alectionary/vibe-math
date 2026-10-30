@@ -28,7 +28,7 @@ See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more
 
 The historical [Lean coverage assessment](LEAN-COVERAGE.md) reviewed the earlier discovery backlog with one complete proof at that stage. Current counts, including subsequent proofs and the new source cohort, are in [the expanded inventory](OPEN-PROBLEMS.md). Related source-level infrastructure is distinguished from exact target coverage.
 
-The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 187 inventory entries, including six additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 430 inventory entries, with new source-question additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
 
 The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is recorded in the regenerated expanded inventory, including the separate P11 completeness result. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; the full girth characterization is the earliest complete answer known to us; its established ingredients and first-formalization status are distinguished. Other graph properties remain separate.
 
@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **175 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **179 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -1392,6 +1392,30 @@ All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. 
 Emanuel F. Olariu; Cristian Frasinaru. 2014. [c16 exact matroid membership methods](https://doi.org/10.1109/SYNASC.2014.21).
 
 Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F178 A Discrete Convex Min-Max Formula for Box-TDI Polyhedra
+
+András Frank; Kazuo Murota. 2021. [c16 owner lift discrete convex methods](https://arxiv.org/html/2007.03507v3).
+
+Complete v3 HTML screened: abstract, introduction, Sections2–6, appendix and references. Three linked entries: one specific M2 algorithm question and two broad algorithm directions. Weighted M-convex quadratic minimization is recorded as later known solvable in F180 Remark4.4, not a new open target. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F179 Matroid bases with cardinality constraints on the intersection
+
+Stefan Lendl; Britta Peis; Veerle Timmermans. 2022. [c16 owner lift discrete convex methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/).
+
+Complete publisher text screened: introduction, Sections2–6, both appendices and references. One norm-generalization direction, including its Euclidean subcase. The recoverable-robust strongly-polynomial question is answered in this paper. Direct PMC acquisition failed; Europe PMC full-text XML was retained. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F180 Decreasing Minimization on Base-Polyhedra: Relation Between Discrete and Continuous Cases
+
+András Frank; Kazuo Murota. 2022. [c16 owner lift discrete convex methods](https://arxiv.org/html/2202.06561v2).
+
+Targeted reading of Remark4.4 and its cited context only. Later primary evidence says weighted discrete quadratic minimization over an integral base-polyhedron is known strongly polynomial. Complete HTML acquired, but complete question screening remains unassessed. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F181 A Generalized-Polymatroid Approach to Disjoint Common Independent Sets in Two Matroids
+
+Kenjiro Takazawa; Yu Yokoi. 2019. [c16 owner lift discrete convex methods](https://arxiv.org/html/1805.05528v3).
+
+Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
 
 ## Question by question cross references
 

@@ -715,3 +715,27 @@ the full auxiliary affine dimension771, matching the upper bound from three
 known identities. This closes further affine elimination for that relaxation
 and supplies a better spanning seed, without proving target membership or
 changing the source problem's bounds.
+
+### Match exact algorithms to the certificate actually needed
+
+Matroid membership needs any positive subset-rank defect, not necessarily the
+maximum defect. An independently proved earlier empty-level stopping rule and
+cached circuit updates decide a previously capped physical case in2.61seconds
+on the same target and initial basis. Keep that combined implementation result
+distinct from a general runtime bound. Colored mixtures extend the certificate
+to weighted sums of two domain-matroid ranks; a physical pilot validates the
+extension but does not strengthen its existing star obstruction.
+
+Individual basis mixtures do not establish cross-sector ownership compatibility.
+An exact conditional transportation cut rejects a pattern where both separate
+basis mixtures are already certified. Retain the prescribed cross moments;
+local weighted-rank elimination cannot replace those cross-pattern constraints.
+
+Use an exact sparse LP solver before treating tiny floating recovery failures
+as mathematical evidence. Here SoPlex gives an exact feasible allocation for
+7,943 variables and35,898 inequalities in1.53seconds at roughly144MB sampled
+peak memory. A separate physical consumer checks all target, rank and supplied
+star rows. The useful change is the exact solving and verification path, not
+the implementation language by itself. This allocation is subsequently
+separated again. The source width remains16 or18, with no full source anchor
+excluded. [Proofs, measured comparisons and limits](formalization/canonical-width/c16/TWO-BASIS-EIGHT-HOURS.md).
