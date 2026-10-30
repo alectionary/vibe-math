@@ -1,0 +1,238 @@
+{
+  "reviewer": "Independent Bayesian gate reviewer (/root/analysis_validation)",
+  "reviewed_utc": "2026-10-30T19:05:34.561240+00:00",
+  "status": "accepted for preparation and bounded four-chain diagnostic execution after OpenMx terminal state; no actual-chain convergence certified",
+  "files": {
+    "simulation/jags_convergence_gate.R": "d48ce9fe65009aa72393c4aea5d5a63d0712a6b8a64556f3a192d22df6924f8e",
+    "simulation/diagnose_jags_gate.R": "9641a2a0642000aca7c32ebc98a7b8c5c278da0b08cad28cb7a3e65882db734a",
+    "simulation/test_jags_gate_setup.R": "8b1da904c6a036198e87bafd1cc70959886e875171162f4bd97f505b26c7d93d",
+    "simulation/test_jags_gate_independent.R": "188247cd11f7f5c3d4a09a223b03cd6ac0312acef8f9da179f9c1f32172277c6",
+    "simulation/bootstrap_posterior_library.py": "eeaa57118ab02edd71b2cb5ea8c9a07064f4c02f88c4f5a91b8ee57b40a7a677",
+    "provenance/posterior-runtime-packages.json": "13c016c589c916ab5ddf6caa1a6538110331aba4b91598fe62da95f1db26e9eb",
+    "provenance/bayesian-convergence-plan.json": "8b9cc97df9e1f3dbd2690dac80192d9db7daa34deaec0cbbcbdf6443bde2608b",
+    "provenance/jags-gate-setup.json": "8d01368a26c319eb66c4dfca2906955831d1d0c1bd4cbe05568bc6d06a0abcef",
+    "outputs/jags-gate-independent-fixtures.csv": "566c1019209de2b4d4b831c31192ccd65d78b967e2720e00945554b15e4ee7ad"
+  },
+  "new_JAGS_chains_run_by_reviewer": 0,
+  "scope": "Read baseline generator/model, new gate, diagnostic script, fixture and package bootstrap code, predeclared convergence plan and setup record. Independently ran prepare and synthetic diagnostics only. No jags.model or sampling action was invoked.",
+  "verified": {
+    "data_seed": 301,
+    "N": 500,
+    "J": 60,
+    "data_sha256": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+    "model_sha256": "65ae9f0cd26e420d4dec7d325cc577f9c70f51251b249c78ce27e810085649cf",
+    "baseline_source_sha256": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+    "requested_chains": 4,
+    "chain_RNG_seeds": [
+      830101,
+      830102,
+      830103,
+      830104
+    ],
+    "adaptation_iterations": 1000,
+    "burn_in_iterations": 7000,
+    "retained_draws_per_chain": 12000,
+    "thin": 1,
+    "posterior_version": "1.6.1",
+    "posterior_library": "/workspace/slot3-posterior-library",
+    "verified_package_archives": 14,
+    "actual_chain_runtime_test": "not performed, per instruction"
+  },
+  "checks": [
+    {
+      "test": "prepared_data_identity",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "prepared_model_identity",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "fixed_chain_protocol",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "explicit_dispersed_initials",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "iid_gate_behavior",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "iid_detection_withheld",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "missing_chain_rejected",
+      "passed": "TRUE",
+      "detail": "Error: All four requested chains must complete; incomplete denominator retained | Execution halted"
+    },
+    {
+      "test": "missing_chain_no_completion_claim",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "missing_chain_denominator_four",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "wrong_initials_rejected",
+      "passed": "TRUE",
+      "detail": "Error in FUN(X[[i]], ...) : Chain initialization/RNG identity mismatch | Calls: lapply -> FUN | Execution halted"
+    },
+    {
+      "test": "wrong_initials_no_completion_claim",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "wrong_retained_rejected",
+      "passed": "TRUE",
+      "detail": "Error in FUN(X[[i]], ...) : Unexpected or contradictory retained count | Calls: lapply -> FUN | Execution halted"
+    },
+    {
+      "test": "wrong_retained_no_completion_claim",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "data_tampered_rejected",
+      "passed": "TRUE",
+      "detail": "Error: Prepared file checksum mismatch | Execution halted"
+    },
+    {
+      "test": "data_tampered_no_completion_claim",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "adaptation_failed_gate_behavior",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "adaptation_failed_detection_withheld",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "shifted_chain_gate_behavior",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "shifted_chain_detection_withheld",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "nonfinite_draw_gate_behavior",
+      "passed": "TRUE",
+      "detail": ""
+    },
+    {
+      "test": "nonfinite_draw_detection_withheld",
+      "passed": "TRUE",
+      "detail": ""
+    }
+  ],
+  "archive_checks": [
+    {
+      "archive": "r-cran-posterior_1.6.1+dfsg-1_all.deb",
+      "sha256": "f22942f94d78e049df7c2c968f32df5f21ff84afa8459818c53e50b67444fe01"
+    },
+    {
+      "archive": "r-cran-distributional_0.5.0-1_all.deb",
+      "sha256": "6d83f3659fed3395bd3b22cb2956e9be1389eced67b815e883d43697fe570b21"
+    },
+    {
+      "archive": "r-cran-pillar_1.10.1+dfsg-1_all.deb",
+      "sha256": "38f2f8295de963e25eb83ff2bb30cc14447e3dc4632ef95237b5150bea5abf6d"
+    },
+    {
+      "archive": "r-cran-vctrs_0.6.5-1_amd64.deb",
+      "sha256": "695e25e0199719e282bed2e97e2bbd273f8c96aed6e4a52c1b2e43541f6d49ad"
+    },
+    {
+      "archive": "r-cran-utf8_1.2.4-1_amd64.deb",
+      "sha256": "6ff7270f823c04b0a9c77852d1896e837874e614b683edcd800bda3ab609f00c"
+    },
+    {
+      "archive": "r-cran-generics_0.1.3-1_all.deb",
+      "sha256": "2aafe9864c4df3992f38db0febe62eae72dbfa8edeaed61f2c05e71a0697d2eb"
+    },
+    {
+      "archive": "r-cran-tensora_0.36.2.1-1_amd64.deb",
+      "sha256": "8e9de66e6f343377dac61e1a3f097b7162fcf274a75b0283902e506289403005"
+    },
+    {
+      "archive": "r-cran-tibble_3.2.1+dfsg-3_amd64.deb",
+      "sha256": "ccbe25c2d2759eeafb0b3a7918b62e74aac0d52d3b71ffde966a09d276faeb44"
+    },
+    {
+      "archive": "r-cran-pkgconfig_2.0.3-2_all.deb",
+      "sha256": "216c55f07f52af65355c41ee92dd4a889ac71fe47e6b38a992e17ff55d6b5870"
+    },
+    {
+      "archive": "r-cran-magrittr_2.0.3-1_amd64.deb",
+      "sha256": "70044d07379db701c8ebd0d0f16709638641913e5ed51b66cd915ad5e9747f20"
+    },
+    {
+      "archive": "r-cran-fansi_1.0.6-2_amd64.deb",
+      "sha256": "2e3b9f091a2098e91c3ff7a7904eeebb8c41d13ad4f58ca36c11c1e2ac64b1bb"
+    },
+    {
+      "archive": "r-cran-checkmate_2.3.2-1_amd64.deb",
+      "sha256": "0237669c06c0d3b93b41a15f015da834e9bd09f576b3d24573eeb16d35c223ac"
+    },
+    {
+      "archive": "r-cran-backports_1.5.0-2_amd64.deb",
+      "sha256": "9b87e94275c4605194c63eeea863c2a3532d6e0cc319e6ce96b5818720460b83"
+    },
+    {
+      "archive": "r-cran-abind_1.4-8-1_all.deb",
+      "sha256": "f2547111d94ddf3818769a9539c89f1f61ff833805b72290639124bf353f025a"
+    }
+  ],
+  "findings_and_fixes": [
+    {
+      "finding": "Joint diagnostics lacked prepared-file and exact chain-initialization verification",
+      "resolution": "Diagnostic now checks required four-file manifest, hashes against nested protocol, wrapper/source hashes, prescribed distinct seeds and each request initialization against its prepared chain-specific values."
+    },
+    {
+      "finding": "Result metadata could contradict actual retained draws or finite flags",
+      "resolution": "Diagnostic checks actual matrix rows and result retained against12000/protocol and verifies all_finite matches actual draws."
+    }
+  ],
+  "scientific_assessment": [
+    "Prepare evaluates only source expressions preceding sampling-start assignment. Independent fresh preparation matches fixed data/model hashes exactly and preserves seed301 draw order.",
+    "Explicit global initial values match predeclared dispersed starts; latent initialization remains JAGS default. Four distinct prescribed RNG seeds are recorded with every request.",
+    "Adaptation is explicit1000 iterations and its return status is retained. Incomplete adaptation makes all operational gates fail without changing the four-chain denominator.",
+    "Rank-normalized split/folded Rhat<1.01, bulkESS>=400, tailESS>=400, finite draws and meanMCSE/posteriorSD<=.05 are fixed operational criteria, not guarantees of convergence.",
+    "QuantileESS/MCSE at.025/.975 and chain/half HPD intervals are separately recorded. QuantileMCSE is not mislabeled HPD endpoint MCSE; detection classification remains withheld pending manual endpoint/tail precision review.",
+    "Missing chain, wronginitials, contradictoryretainedcount and tamperedprepareddata fixtures reject without emitting a completed-gate record. Shiftedchain, nonfinite draw and incompleteadaptation fixtures do not pass the gate.",
+    "Gate bootstrap verifies14 archive hashes and uses a fresh separate library. It does not write production runtime or change its package manifest. Installed-package mutation outside recorded archives is not cryptographically ruled out by version checking alone."
+  ],
+  "dispatch_conditions": [
+    "Only after existing OpenMx production terminal state, as parent instructed; inspect running processes before launch.",
+    "Use a fresh permanent prepared namespace and commit/freeze exact reviewed code/input/runtime identities before launching chainIDs1\u20134.",
+    "Enforce external1800-second per-chain wall limits and total7200worker-second initial-batch ceiling; capture logs and terminate full processgroups on timeout. Wrapper itself does not enforce OS wall limits.",
+    "No replacement chains, significance-based early stopping, automatic indefinite extensions or silent fresh-chain concatenation. Preserve failed requests and partial logs.",
+    "After actual execution, inspect all trace/rank pages and HPD endpoint sensitivity, document worst diagnostics and perform an independent scientific outcome review before claiming gate success."
+  ],
+  "remaining_limits": [
+    "No actual JAGS graph compilation or new sampling occurred in this review; executable sampling success remains to be established.",
+    "Single fixed dataset is not the100dataset Chapter2 simulation, any Chapter5 production, empirical refit, or successful whole-dissertation replication.",
+    "No automatic HPD detection certification exists; manual precision review remains mandatory even if operational gates pass."
+  ],
+  "reproduction_command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 /workspace/slot3-runtime/bin/Rscript simulation/test_jags_gate_independent.R"
+}

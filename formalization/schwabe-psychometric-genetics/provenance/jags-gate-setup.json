@@ -1,0 +1,66 @@
+{
+  "created_utc": "2026-10-30T18:57:44.863215+00:00",
+  "status": "Independent setup review accepted; no actual chains started. Dispatch only after OpenMx terminal state.",
+  "new_JAGS_chains_started": 0,
+  "data_seed": 301,
+  "N": 500,
+  "J": 60,
+  "data_sha256": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+  "model_sha256": "65ae9f0cd26e420d4dec7d325cc577f9c70f51251b249c78ce27e810085649cf",
+  "baseline_source_sha256": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+  "code_hashes": {
+    "simulation/jags_convergence_gate.R": "d48ce9fe65009aa72393c4aea5d5a63d0712a6b8a64556f3a192d22df6924f8e",
+    "simulation/diagnose_jags_gate.R": "9641a2a0642000aca7c32ebc98a7b8c5c278da0b08cad28cb7a3e65882db734a",
+    "simulation/test_jags_gate_setup.R": "8b1da904c6a036198e87bafd1cc70959886e875171162f4bd97f505b26c7d93d",
+    "provenance/posterior-runtime-packages.json": "13c016c589c916ab5ddf6caa1a6538110331aba4b91598fe62da95f1db26e9eb",
+    "simulation/bootstrap_posterior_library.py": "eeaa57118ab02edd71b2cb5ea8c9a07064f4c02f88c4f5a91b8ee57b40a7a677"
+  },
+  "dependency": {
+    "package": "posterior",
+    "version": "1.6.1",
+    "debian_package_version": "1.6.1+dfsg-1",
+    "library": "/workspace/slot3-posterior-library",
+    "archive_count": 14,
+    "manifest": "provenance/posterior-runtime-packages.json",
+    "shared_production_runtime_modified": false,
+    "source_api_verified": "https://raw.githubusercontent.com/stan-dev/posterior/v1.6.1/R/convergence.R",
+    "documentation_1_7_1_not_used_as_version_claim": true,
+    "rebuild_command": "python simulation/bootstrap_posterior_library.py --library /workspace/slot3-posterior-library --cache /tmp/slot3-posterior-debs (fresh destination required)"
+  },
+  "checks": [
+    "Prepare extracts only expressions preceding the baseline start<-proc.time sampling boundary; never calls jags.model.",
+    "Independently reconstructed seed301 generator exactly matches y,b,rho,M andN/J. Model string comes unchanged from original wrapper.",
+    "Eight posterior numerical fixtures and full14parameter synthetic diagnostic pipeline passed; no fixture data is scientific evidence.",
+    "Independent-review requested hardening: diagnostic verifies prepared manifest and nested hashes, source/wrapper identity, exact per-chain initialization/RNG, retained count and all_finite consistency."
+  ],
+  "gate_design": {
+    "chains": 4,
+    "seeds": [
+      830101,
+      830102,
+      830103,
+      830104
+    ],
+    "adaptation": 1000,
+    "burn_in": 7000,
+    "retained": 12000,
+    "explicit_initials": "Existing bayesian-convergence-plan.json values; no replacement or outcome-dependent selection",
+    "monitors": "mu,va,vc,ve,beta1; two theta,onea,onec,two conditional predictive probabilities; log variances derived post-sampling",
+    "adaptation_incomplete": "Record and withhold gate acceptance; still preserve requested four-chain denominator",
+    "diagnostics": "posterior ranknormalized splitfoldedRhat,bulk/tailESS,meanMCSE,2.5/97.5quantileESS+MCSE; trace/rankPDF; perchain/half HPD sensitivity",
+    "detection": "Always withheld pending manual intervalendpoint review; gate passing is not a proof of convergence"
+  },
+  "commands": [
+    "/workspace/slot3-runtime/bin/Rscript simulation/jags_convergence_gate.R prepare /tmp/schwabe-gate-preparation-final-v4",
+    "/workspace/slot3-runtime/bin/Rscript simulation/test_jags_gate_setup.R",
+    "After independent review and CPUavailability: prepare a NEW permanent gate namespace, freeze/hash its inputs, then run chainIDs1-4 each with external1800s timeout and properlogcapture.",
+    "/workspace/slot3-runtime/bin/Rscript simulation/diagnose_jags_gate.R GATE_DIR"
+  ],
+  "limitations": [
+    "No actual JAGS graph compilation or sampling test was permitted; source parsing/generator and diagnostic fixtures alone do not establish successful chain execution.",
+    "The final gate needs independent review and frozen prepared namespace before any run.",
+    "The gate is one dataset, not100dataset power/recovery or whole-dissertation replication."
+  ],
+  "initial_status": "setup validated without actual chains; independent code review pending",
+  "independent_review": "provenance/jags-gate-independent-review.json"
+}
