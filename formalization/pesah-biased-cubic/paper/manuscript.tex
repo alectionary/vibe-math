@@ -1,0 +1,112 @@
+\input{approved-preamble.tex}
+\newcommand{\repo}[2]{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/pesah-biased-cubic/#1}{\nolinkurl{#2}}}
+\input{numbers.tex}
+\title{Pure-X thresholds of deformed cubic codes:\\a replication of Pesah (2021)}
+\author{}
+\date{30 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\OpeningVerdict\ the selected pure-X result of Pesah's 2021 MRes dissertation: the reported undeformed and deformed thresholds are 2.9\% and 7.4\%, versus \ThreshU\% and \ThreshD\% in our reconstruction. The reported deformation advantage is $+4.5$ percentage points (pp); ours is $+\Advantage$ pp. This supports the direction of improvement, but does not establish the exact published magnitudes or the dissertation's larger pure-Z result. No headline sign reversal occurs. Numerical agreement uses half-up rounding to 0.1 pp, separately from sampling uncertainty and reconstruction scope. Our three simultaneous source comparisons are conditional on unknown original uncertainty; finite-size fitting choices remain material: excluding one probability endpoint moves the undeformed estimate to 2.805--2.850\%.
+\end{abstract}
+\begin{center}
+\begin{tabular}{p{0.27\linewidth}rrp{0.13\linewidth}p{0.13\linewidth}}
+\toprule Claim & Published & Ours & Same direction? & Verdict\\\midrule
+Undeformed threshold & 2.9\% & \ThreshU\% & --- & \VerdictU\\
+Deformed threshold & 7.4\% & \ThreshD\% & --- & \VerdictD\\
+Deformed minus undeformed & $+4.5$ pp & $+\Advantage$ pp & Yes & partial\\\bottomrule
+\end{tabular}
+\end{center}
+The first two verdicts concern rounding only. All three reconstructions have \emph{limited} scope. Positive signed difference favors deformation; reproduction deviations are reported separately below.
+
+\section{What the comparison establishes}
+\OpeningVerdict\ the selected pure-X headline: 2.9\% versus \ThreshU\% without deformation, and 7.4\% versus \ThreshD\% with deformation. Our evidence does not settle the exact production configuration or the asymptotic threshold, and shows no reversal of the positive deformation contrast. The question is whether changing a cubic code's stabilizer measurements improves its tolerance of independent bit flips when the decoder is held fixed.
+
+\citet{pesah2021}, supervised by Dan Browne at University College London, studied bias-tailored three-dimensional codes. The title page identifies this work as a \emph{Master of Research dissertation}, submitted 1 September 2021. It is distinct from Pesah's later PhD thesis. We read the complete 66-page source and selected the substantive cubic, pure-X BP-OSD comparison in Table 3.1 and Figure 3.5. The dissertation's principal broader finding also includes a pure-Z improvement from 21.7\% to greater than 36\%; that result, the rhombic code, other biases, and SweepMatch are not replicated here.
+
+Both constructions retain 192, 648, 1,536 and 3,000 physical qubits at the four sizes: the signed deformation cost is exactly zero qubits at each size. This supporting resource check does not replace the performance comparison.
+
+The code uses $n=3L^3$ physical qubits and three logical qubits with periodic boundaries. A Hadamard deformation on x-directed edges swaps the X and Z error channels there. We simulate perfect syndrome measurements and count a failure if the residual correction has a nontrivial logical action or an unsatisfied syndrome. There are 500 independent trials at each of 32 code/size/noise conditions: 16,000 primary trials in total. Two generators supply 250 trials each. Every selected arm is evaluated at the published sizes $L=4,6,8,10$; the new probability grid is narrower than the source's complete sweep.
+
+\begin{figure}[ht]
+\centering\includegraphics[width=\linewidth]{figures/crossovers.pdf}
+\caption{Fresh pure-X logical-failure estimates. Bars are pointwise two-standard-error Monte Carlo bars, not source-comparison or simultaneous intervals. Dashed vertical lines show the printed thresholds; connected points guide the eye. The deformed and undeformed panels use different horizontal ranges to resolve their respective crossovers.}
+\end{figure}
+
+\section{Numerical agreement, scope, and uncertainty}
+\input{comparison-table.tex}
+Source precision is 0.1 pp for each threshold. A numerical match rounds to the source value; \emph{close} is reserved for one last-place unit after rounding. The difference of two rounded source values has at most 0.1 pp of rounding uncertainty. This is not an estimate of source Monte Carlo uncertainty. Missing original trial counts prevent a two-sample comparison, a statistically established source ranking, or an equivalence conclusion.
+
+We fit the source's equations (3.1)--(3.2),
+\[
+ y=A+Bx+Cx^2,\qquad x=(p-p_{\rm th})L^{1/\nu},
+\]
+by unweighted least squares, as described on page 45. The source attributes its finite-size-scaling approach to \citet{tuckett2020}. Our new grid is $p=0.02,0.03,0.04,0.05$ without deformation and $p=0.05,0.065,0.08,0.095$ with deformation. The fit uses three initial values of $\nu$ and selects the smallest residual sum of squares. Parameter bounds and starts are exposed in \repo{simulation/analyze.py\#L16}{analyze.py}.
+
+The 400 binomial bootstrap draws resample each observed cell at its empirical failure rate and refit both arms. \BootstrapStatus\ They measure sampling variation conditional on this graph, decoder, grid and scaling form; they do not include model bias. We report the ordinary two-standard-error comparison first and then a Bonferroni correction for three quantities: both thresholds and their signed difference. The corrected half-width is $z_{1-0.05/6}\,\widehat{\rm SE}$ plus the source rounding bound. Correlation among the three comparisons does not invalidate the Bonferroni bound, although normal bootstrap-SE calibration is approximate. The simultaneous interval for our deformation advantage is \DeltaInterval\ pp, conditional on the chosen fit.
+
+\section{What we did ourselves, and what we took from others}
+We independently constructed the periodic vertex/edge and face/edge incidence matrices, sparse min-sum messages, integer-row GF(2) order-zero OSD, Monte Carlo driver, fitting and uncertainty analysis. \repo{simulation/engine.py\#L7}{engine.py} implements the graph and decoder, while \repo{simulation/run.py\#L7}{run.py} records seeds, counts, decoding failures and costs for every condition. The thesis supplies the scientific comparison, noise model, deformation, code family and scaling expression. The BP-OSD method builds on \citet{roffe2020}.
+
+The collaboration's original \texttt{bn3d} is preserved in PanQEC history \citep{bn3d}. We obtained revision \texttt{686560e5d03c2e5d31f6c6260b03756af03a7e93}, the latest pre-submission commit found; it is a historically plausible reference, not a proven production revision. Our validator executes its original dense decoder functions, without redistributing that source. For $L=2,3,4$, both deformation arms, the independent matrices and logical operators match exactly, and all 240 tested syndrome corrections agree. The independent implementation shares the published definitions, test error vectors, NumPy and host with the reference; this is not a second independent end-to-end replication.
+
+NumPy's PCG64 and Python's scalar MT19937 generators independently generate Bernoulli errors, sharing our graph and decoder. \GeneratorStatus\ These 32 comparisons form their own Bonferroni family. Shared decoder bugs would not be detected by this generator check.
+
+Python 3.12.14 provides exact integer bit operations and the standard-library generator \citep{python}. NumPy 2.3.5 provides array arithmetic and PCG64, and SciPy 1.17.0 supplies sparse syndrome multiplication and optimization \citep{numpy,scipy}. Historical qecsim 1.0b9 and NetworkX 2.6.2 are used only to load the reference code's interfaces \citep{qecsim,networkx}. Matplotlib 3.10.8 produces the figures and Pillow 12.3.0 crops source evidence \citep{matplotlib,pillow}. The latter operates on 600-dpi Poppler renders. No SEM estimator is relevant to this binary stabilizer problem.
+
+\section{Assumptions supplied by this replication}
+\subsection{Unspecified production settings}
+The thesis does not identify production seeds, trial counts, exact package versions, BP iteration count, tie handling, or the fitting window. We use the public reference default of ten BP iterations, its $10^{-8}$ prior regularizer and reliability ordering, and order-zero OSD. NumPy's current quicksort ordering resolves equal reliabilities, with stable sorting examined as a sensitivity; exact historical floating-point and sorting behavior is not established. Python 3.8, requested by the old README, is absent from this environment. We do not label current-runtime reference execution an exact historical-runtime reproduction.
+
+\subsection{Independent trials and perfect measurements}
+Each physical qubit receives an independent X error with probability $p$; trials and arm-specific seeds are independent. These are code-capacity experiments with exact syndromes, not circuit-level or repeated noisy-measurement thresholds. Neither the bootstrap nor the code checks extends the finding to correlated noise or hardware.
+
+\subsection{Local scaling and finite resources}
+A quadratic scaling form is assumed valid over each selected window. We use bounded numerical optimization to avoid nonphysical exponents, then examine alternative objective functions, removal of extreme lattice sizes and exclusion of probability-grid endpoints. Bootstrap bands exclude finite-size systematic uncertainty. The pilot timed both arms before production; the largest condition took about 0.18 seconds per trial with about 59 MiB resident memory. A 2 GiB address-space limit and 2,400-second CPU limit bound the primary process. Actual production used \RunSeconds\ seconds and \RunMemory\ MiB maximum resident memory.
+
+\section{Ambiguities checked and resolved}
+\subsection{Printed values versus extracted text}
+We rendered source pages 45 and 48 at 600 dpi and visually checked both selected thresholds and every sign/exponent in the fitted equations. The table gives 2.9\% and 7.4\%; the scaling variable contains $p-p_{\rm th}$ and exponent $1/\nu$. \repo{evidence/table3_1.png}{table3_1.png} and \repo{evidence/scaling_equations.png}{scaling_equations.png}, with coordinates and hashes in \repo{evidence/manifest.json}{manifest.json}, preserve those checks. The full source is not redistributed.
+
+\subsection{Channel labels and logical success}
+The source uses Z vertex stabilizers and X face stabilizers. We check those operators directly against historical code, rather than relying on prose that sometimes interchanges sector labels. The error/correction pairing is tested through syndrome cancellation and the three logical membranes/strings. \InvalidStatus\ The zero-loop contribution under undeformed pure-X noise is a structural consequence of the selected channel, not discarded failed trials.
+
+\subsection{Iteration and fitting choices}
+\input{sensitivity-table.tex}
+We rerun 100 BP iterations at $L=4,6$, $p=0.03$ undeformed and $p=0.08$ deformed, retaining the original primary run. Those diagnostic runs share error seeds with separate ten-iteration and stable-sorting baselines; they are not a full threshold re-estimation. We also fit binomial likelihood with a separate optimizer, drop $L=4$, drop $L=10$, exclude each probability-grid endpoint, and fit each generator independently. Removing a probability endpoint moves the undeformed estimate from 2.388\% to 2.805--2.850\%, explaining much of the primary numerical gap without changing the decoder. Stable reliability ordering is also checked at the same finite points. These alternatives probe remaining causes of numerical differences and are exploratory; none silently replaces the primary estimator. A repeated implementation check cannot resolve an unspecified production configuration.
+
+\section{What remains unresolved}
+The principal remaining gap is whether this historically plausible decoder configuration is the one used for the printed numbers. Candidates, in descending practical priority, are (1) original fitting window and finite-size effects, examined by changing objective and size range; (2) decoder production settings and historical tie behavior, partly examined by the 100-iteration and stable-sorting reruns and dense-reference validation; and (3) Monte Carlo variation, examined by two generators and 400 bootstrap draws. The sensitivity table records how much the first candidate moves each threshold; the iteration table records the second candidate's finite-point effect. These checks do not prove a cause or establish author error.
+
+Our side was checked for source transcription, channel identification, metric, uncorrected syndromes, original algorithm, independent implementation, generator effects and optimizer dependence. The source's actual trial-level production archive---including job inputs, software environment and the fit selection---is the single artifact that would settle the largest remaining uncertainty. Until that is available, the comparison is a limited reconstruction, with conditional uncertainty and no claim that the source values are wrong. The source itself describes the numerical study as preliminary and calls for refined scaling and error bars on pages 57--58.
+
+\section{Code and source availability}
+The dated rows below are copied from \repo{availability.md}{availability.md}; they distinguish obtained material from searches that did not identify a relevant record. No author contact was made.
+\input{availability-table.tex}
+
+\section{Compliance record}
+These rows are copied from \repo{compliance.md}{compliance.md}. The approved layout is preserved without subject-specific style changes; quantum methods replace the inapplicable SEM engine, with preflight justification and separate validation.
+\input{compliance-table.tex}
+
+\section{Next steps}
+Obtain the production archive just named, then rerun the selected grid with its exact settings and reapply both the source estimator and the independent fitting diagnostics. Larger sizes and a preregistered, narrower crossover window could test finite-size bias, but would be a new computational study. The current source uncertainty cannot be filled in by assuming the original run was effectively noiseless.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\section{Artifacts and execution}
+The historical repository baseline is \texttt{e2b553c06c872d8008061a26d05831e572e54789}. The runnable reproduction revision is \ReproductionRevision. New \texttt{master} navigation links in this manuscript await merge; use the immutable reproduction link for review. The complete commands, prerequisites, output paths and seeds are in \repo{README.md}{README.md}. Main manuscript source is \repo{paper/manuscript.tex}{manuscript.tex}, with \repo{paper/references.bib}{references.bib} and \repo{paper/approved-preamble.tex}{approved-preamble.tex}.
+
+\begin{longtable}{p{.24\linewidth}p{.30\linewidth}p{.38\linewidth}}
+\toprule Claim/artifact & File & Regeneration from study root\\\midrule\endhead
+Primary 16,000 trials & \repo{results/primary.json}{primary.json} & \texttt{python simulation/run.py --output results/primary.json}\\
+Original-source agreement & \repo{results/validation.json}{validation.json} & \repo{simulation/validate.py}{validate.py}; source checkout and historical dependencies required\\
+Thresholds, uncertainty, coverage & \repo{results/analysis.json}{analysis.json} & \texttt{python simulation/analyze.py}\\
+Iteration sensitivity & \repo{results/iterations100.json}{iterations100.json} & \repo{simulation/run.py}{run.py} with \texttt{--iterations 100 --sizes 4 6 --sensitivity}\\
+Source evidence & \repo{evidence/manifest.json}{manifest.json} & \repo{simulation/crops.py}{crops.py} with external full PDF path\\
+Figures and manuscript tables & \repo{simulation/paper_assets.py}{paper_assets.py} & \texttt{python simulation/paper\_assets.py}\\
+Engine departure & \repo{results/preflight.json}{preflight.json} & Skill \href{https://github.com/alectionary/vibe-math/blob/master/.agents/skills/replication-paper/scripts/preflight.py}{\nolinkurl{preflight.py}} with \repo{preflight-departure.json}{preflight-departure.json}\\
+Main PDF & \repo{paper/pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf}{pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf} & \repo{paper/build.sh}{build.sh}; requires pdfLaTeX and BibTeX\\\bottomrule
+\end{longtable}
+\end{document}
