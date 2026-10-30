@@ -1,0 +1,57 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 263718 rows; 76008 cols; 3415115 nonzeros
+Coefficient ranges:
+  Matrix  [6e-08, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e-05, 8e+00]
+WARNING: Problem has some excessively small row bounds
+Presolving model
+183496 rows, 75958 cols, 3333844 nonzeros 0s
+Dependent equations search running on 586 equations with time limit of 1.20s
+Dependent equations search removed 0 rows and 0 nonzeros in 0.00s (limit = 1.20s)
+168761 rows, 75958 cols, 3215025 nonzeros 1s
+Presolve reductions: rows 168761(-94957); columns 75958(-50); nonzeros 3215025(-200090) 
+Solving the presolved LP
+IPX model has 168761 rows, 75958 columns and 3215025 nonzeros
+Input
+    Number of variables:                                75958
+    Number of free variables:                           0
+    Number of constraints:                              168761
+    Number of equality constraints:                     586
+    Number of matrix entries:                           3215025
+    Matrix range:                                       [6e-08, 1e+02]
+    RHS range:                                          [1e-05, 8e+00]
+    Objective range:                                    [0e+00, 0e+00]
+    Bounds range:                                       [6e-02, 1e+00]
+Preprocessing
+    Dualized model:                                     yes
+    Number of dense columns:                            36
+    Range of scaling factors:                           [2.50e-01, 4.00e+00]
+    Scaled cost norm:                                   8
+    Scaled bounds norm:                                 0
+IPX version 1.0
+Interior point solve
+ Iter       primal obj         dual obj       pinf       dinf       gap      time
+   0    0.00000000e+00   0.00000000e+00   1.50e+00   2.35e+00  0.00e+00       2.4
+   1    1.57997699e+04   0.00000000e+00   1.42e+00   2.30e+00  2.00e+00       4.1
+ Constructing starting basis...
+ Iter       primal obj         dual obj       pinf       dinf       gap      time
+   2    1.15837342e+05   0.00000000e+00   8.98e-01   1.95e+00  2.00e+00       9.8
+   3    2.49753255e+05   0.00000000e+00   1.37e-01   1.31e+00  2.00e+00      12.6
+   4    3.27971322e+05   0.00000000e+00   1.37e-07   9.63e-01  2.00e+00      20.3
+   5    2.86683185e+05   0.00000000e+00   7.74e-11   2.90e-01  2.00e+00      31.5
+   6    2.61575965e+05   0.00000000e+00   7.30e-10   1.31e-01  2.00e+00      58.0
+   7    2.05403833e+05   0.00000000e+00   2.45e-09   7.43e-02  2.00e+00     119.9
+Summary
+    Runtime:                                            120.01s
+    Status interior point solve:                        time limit
+    Status crossover:                                   not run
+WARNING: Ipx: Stopped
+WARNING: Ipx: IPM       reached time limit
+Model status        : Time limit reached
+IPM       iterations: 7
+Objective value     :  0.0000000000e+00
+HiGHS run time      :        120.02
+{'status': 'NUMERICAL_DENSE_OUTER_APPROXIMATION_ONLY', 'source_C16_answered': False, 'source_anchor_excluded': False, 'model_status': 'HighsModelStatus.kTimeLimit', 'solver_seconds': 120.02895854099188, 'settings': {'output_flag': True, 'threads': 1, 'solver': 'ipm', 'presolve': 'on', 'run_crossover': 'off', 'time_limit': 120.0, 'primal_feasibility_tolerance': 1e-09, 'dual_feasibility_tolerance': 1e-09, 'ipm_optimality_tolerance': 1e-09, 'small_matrix_value': 1e-12}, 'variables': 76008, 'rows': 263718, 'dense_integer_rows': 36, 'dense_compiled_nonzeros': 1163986, 'ipm_iterations': 7, 'value_valid': False, 'dual_valid': False, 'scope': 'Source-valid added integer forms in a numerical necessary-case LP. A numerical endpoint is not an exact primal or obstruction.', 'original_numeric_residuals': {'equalities': 33.771810414812, 'inequalities': 16251859.31795155, 'lower': 2.2247060177117, 'upper': 1.04043663579233}, 'scaled_numeric_residuals': {'equalities': 4.69242505163392, 'inequalities': 7.749490412688995}}

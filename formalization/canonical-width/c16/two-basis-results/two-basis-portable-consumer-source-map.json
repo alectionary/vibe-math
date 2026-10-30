@@ -1,0 +1,83 @@
+{
+  "status": "EXPLICIT_PATH_REWRITE_ONLY_ADAPTERS",
+  "modules": [
+    {
+      "original": "audit_two_sided_full_basis_endpoint.py",
+      "original_sha256": "66c1d15b7541ccb9851d3a2655d311b6a089e27af0fa2a863efe7367942bc628",
+      "portable": "audit_two_sided_full_basis_endpoint_portable.py",
+      "portable_sha256": "7de9ed1a17cf46f943bfc1fbff079934141461f56301edf66496ca052fe1547b",
+      "path_substitutions": [
+        {
+          "before": "ROOT/report['columns_artifact']",
+          "after": "paths.resolve(report['columns_artifact'])"
+        }
+      ]
+    },
+    {
+      "original": "audit_two_basis_fixed_lambda_endpoint.py",
+      "original_sha256": "4dfea33fb6af589d07ba3a99990a6edd19a64fa8a67f53798ca2ed33971774c3",
+      "portable": "audit_two_basis_fixed_lambda_endpoint_portable.py",
+      "portable_sha256": "493eee420bc583e5d1ebe9a27327aff060b905ee3ac8ca14832e3a61fa52b0fa",
+      "path_substitutions": [
+        {
+          "before": "Path(report['columns_artifact'])",
+          "after": "paths.resolve(report['columns_artifact'])"
+        }
+      ]
+    },
+    {
+      "original": "audit_two_basis_inner_initial.py",
+      "original_sha256": "2a4ad40cf9cda25418949b0ae8161b8684fb24985c3db0a71b75219e63dceada",
+      "portable": "audit_two_basis_inner_initial_portable.py",
+      "portable_sha256": "41077b907b7c5c546ed24befacf0a6fd4c56d4bcfe0cca8f8bd1d0923815eeb3",
+      "path_substitutions": [
+        {
+          "before": "Path(report['columns_artifact'])",
+          "after": "paths.resolve(report['columns_artifact'])"
+        }
+      ]
+    },
+    {
+      "original": "verify_two_basis_batch_ipm.py",
+      "original_sha256": "effc7262a5657c0e19df051471d0b0eb2a96111346b4fad031642ec89071390a",
+      "portable": "verify_two_basis_batch_ipm_portable.py",
+      "portable_sha256": "f478e64c150c8cd5ab59dbaac55f95be7f3577c575cd359bb386335fd5ed4996",
+      "path_substitutions": [
+        {
+          "before": "Path(report['exact_initial_witness'])",
+          "after": "paths.resolve(report['exact_initial_witness'])"
+        },
+        {
+          "before": "Path(report['solution_artifact'])",
+          "after": "paths.resolve(report['solution_artifact'])"
+        }
+      ]
+    },
+    {
+      "original": "verify_two_basis_phase_I_start.py",
+      "original_sha256": "b5c9d743a97d4700a300e48ad5046c4e51e4a5d689cea24e9615e6283dc9abc2",
+      "portable": "verify_two_basis_phase_I_start_portable.py",
+      "portable_sha256": "785cf8edb736810be937a1ed1e951a6422c24ef1ff29b04e1c89529bd55b89a6",
+      "path_substitutions": [
+        {
+          "before": "Path(report['columns_artifact'])",
+          "after": "paths.resolve(report['columns_artifact'])"
+        }
+      ]
+    },
+    {
+      "original": "verify_two_basis_five_pattern_repair.py",
+      "original_sha256": "c2f04df48f0614934d77d0ea7895c0c1edf1c64e85bb2e895415a7ba61c537b3",
+      "portable": "verify_two_basis_five_pattern_repair_portable.py",
+      "portable_sha256": "c03fef860b29a4a6767814f101708c0e0cef32d9c4aa45fdce27f538cf492d1e",
+      "path_substitutions": [
+        {
+          "before": "Path(r['columns_artifact'])",
+          "after": "paths.resolve(r['columns_artifact'])"
+        }
+      ]
+    }
+  ],
+  "unchanged_frozen_reports": true,
+  "unchanged_frozen_consumers": true
+}

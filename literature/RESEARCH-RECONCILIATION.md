@@ -716,6 +716,15 @@ One publisher-indexed abstract/author-metadata membership-method lead. Full text
 [Screen report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md). Added **0 entries**, **0 eligible targets**, **1 paper records**, **0 full-text screens** and **0 completed proofs**.
 
 
-Current cohort: **424 canonical entries,160 eligible targets,205 paper records,165 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: c16-push-relabel-source-screening-20261030
 
-The current source index has **133** records, with actual access levels retained.
+Three full primary texts screened and one later proceedings metadata record. Two broad TR13-02 directions are inventoried without current-resolution or Lean claims. TR13-01 adaptation is addressed in TR13-02 and is not added as an open target. Frank–Miklós Section6.2 question is answered within its own paper.
+
+[Screen report](../formalization/canonical-width/c16/two-basis-results/literature/canonical-source-accounting.json). Added **2 entries**, **0 eligible targets**, **4 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+- [L-F176-avoid-smallest-tight-sets](OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets): Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
+- [L-F176-simpler-submodular-flow](OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow): Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
+
+Current cohort: **426 canonical entries,160 eligible targets,209 paper records,168 full-text screens**; **6/160 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **137** records, with actual access levels retained.

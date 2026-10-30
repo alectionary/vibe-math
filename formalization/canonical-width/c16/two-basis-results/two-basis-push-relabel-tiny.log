@@ -1,0 +1,46 @@
+SOLVED 250 elapsed 0.017410125001333654
+SOLVED 500 elapsed 0.04788762493990362
+SOLVED 750 elapsed 0.07502954103983939
+SOLVED 1000 elapsed 0.1045115829911083
+SOLVED 1250 elapsed 0.1378530409419909
+SOLVED 1500 elapsed 0.18175687501206994
+SOLVED 1750 elapsed 0.21667008299846202
+SOLVED 2000 elapsed 0.2512038330314681
+SOLVED 2250 elapsed 0.28172287496272475
+{
+  "status": "PASS_EXHAUSTIVE_TINY_PUSH_RELABEL_ENDPOINTS",
+  "producer_sha256": "32a3ad3690eba960b593e566ee18d172d7acf17a692c658cff883ecef4289ee4",
+  "consumer_sha256": "3ac5cf794ce390c0baf7b30cfa044f61322e29d2105094a43e415f88498dedb9",
+  "bank_sha256": "3e21a27d414a36cfd96649d18f779d0d4062e7e763a8c1cf2ec77cd1215c9f68",
+  "cases": 2374,
+  "outcomes": {
+    "EXACT_BASE_MIXTURE": 1304,
+    "EXACT_RANK_VIOLATION": 1069,
+    "BOUNDED_PUSH_RELABEL_INCONCLUSIVE": 1
+  },
+  "exhaustive_subset_checks": 461318,
+  "physical_basis_records_checked": 4073,
+  "total_steps": 15107,
+  "maximum_case_steps": 28,
+  "maximum_case_active_bases": 9,
+  "corrupt_certificates_rejected": [
+    "negative-weight",
+    "wrong-achieved",
+    "wrong-denominator",
+    "dependent-basis",
+    "wrong-cut-rank",
+    "wrong-cut-gap",
+    "empty-cut"
+  ],
+  "invalid_inputs_rejected": [
+    "negative-target",
+    "wrong-total",
+    "negative-vector",
+    "dependent-initial",
+    "negative-initial-weight"
+  ],
+  "errors": [],
+  "elapsed_seconds": 2.7229426249396056,
+  "source_C16_answered": false,
+  "scope": "Finite tiny endpoint agreement with exhaustive subset ranks, all basis/mass/marginal checks, and producer invariants enabled. Not a global termination proof or physical C16 membership."
+}

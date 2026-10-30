@@ -2,9 +2,9 @@
 
 Inventory updated October 30, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **424 canonical entries**: the original 40 dissertation targets and **384 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 263 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **426 canonical entries**: the original 40 dissertation targets and **386 additional article entries**. Of the additions, **121 are specific mathematical questions or tasks suitable for coverage tracking**; the other 265 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [133 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [137 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/160 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
@@ -12,7 +12,7 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
 | Additional article targets in the coverage denominator | 121 |
-| Additional directions/formulation/method entries outside the denominator | 263 |
+| Additional directions/formulation/method entries outside the denominator | 265 |
 | Combined eligible targets | 160 = 39 + 121 |
 | Eligible targets with an identified, verified proof-assistant statement | 6/160 (3.75%) |
 | Eligible targets with an identified, verified Lean statement | 6/160 (3.75%) |
@@ -21,11 +21,11 @@ The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later traject
 | Eligible targets with only finite-case proofs (no general supporting proof) | 0/160 |
 | Additional identified Lean statements without a build audit | 1/160 |
 | Eligible targets with Lean discovery still unassessed in this extension | 52/160 |
-| Articles/preprints in scope | 205 |
-| Full-text sources screened, including withdrawn history | 165/205 |
-| Current-publication full texts screened | 164 |
+| Articles/preprints in scope | 209 |
+| Full-text sources screened, including withdrawn history | 168/209 |
+| Current-publication full texts screened | 167 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 40/205 |
+| Not fully assessed | 41/209 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -256,6 +256,10 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F171](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf) | metadata or selected passages only | Not assessed | Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure. |
 | [F172](https://epubs.siam.org/doi/10.1137/21M139339X) | metadata or selected passages only | Not assessed | Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established. |
 | [F173](https://www.sciencedirect.com/science/article/pii/0095895684900236) | metadata or selected passages only | Not assessed | Indexed abstract and author metadata inspected. Full-text retrieval routes and browser challenge are recorded; acquisition requested in issue63. Question screen remains unassessed with null target count. |
+| [F174](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF) | full text screened | 0 | All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found. |
+| [F175](https://publications.info.uaic.ro/files/tr/tr13-01.pdf) | full text screened | 0 | All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target. |
+| [F176](https://publications.info.uaic.ro/files/tr/tr13-02.pdf) | full text screened | 2 | All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed. |
+| [F177](https://doi.org/10.1109/SYNASC.2014.21) | metadata or selected passages only | Not assessed | Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used. |
 
 ## Reproducible evidence and limits
 
@@ -5013,3 +5017,25 @@ Tune cvc5 internals for the IPASIR-UP integration.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F165: Section4.2 conclusion, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F176-avoid-smallest-tight-sets
+
+Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical algorithmic direction without a fixed theorem/oracle model; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F176: Section6 Conclusions, printedp6/PDFp7](https://publications.info.uaic.ro/files/tr/tr13-02.pdf); PDF pages 7; explicit research direction.
+- Related, not merged: L-F176-simpler-submodular-flow.
+
+### L-F176-simpler-submodular-flow
+
+Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical algorithmic direction without a fixed theorem/oracle model; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F176: Section6 Conclusions, printedp6/PDFp7](https://publications.info.uaic.ro/files/tr/tr13-02.pdf); PDF pages 7; explicit research direction.
+- Related, not merged: L-F176-avoid-smallest-tight-sets.
