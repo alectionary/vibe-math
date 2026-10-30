@@ -6,6 +6,8 @@
 
 # vibe-math
 
+Original code is licensed under [Apache-2.0](LICENSE), within the [defined code scope and exclusions](LICENSING.md). Papers, data, third-party inputs and other excluded material are not covered by that new grant; see the [rights and provenance inventory](THIRD_PARTY.md).
+
 Latest bounded distance-preservation theorem: [the strengthened normalized 3x4 cyclic criterion implies dQ≥min(dC,12)](formalization/distance-preservation/truncated12/README.md). Lean checks the actual source matrices, all support cases through weight eleven, both entire stabilizer spans and ordinary Pauli union weight, including literal distance minima and the transpose infinity convention. All 183,312 finite certificates and the complete 269-module research closure pass. The broader equality question remains open. [Exact-source verification](formalization/distance-preservation/truncated12/verification.json).
 
 Truncated-distance research report: [PDF](formalization/distance-preservation/truncated12/paper/main.pdf) · [TeX](formalization/distance-preservation/truncated12/paper/main.tex) · [complete proof guide](formalization/distance-preservation/truncated12/paper/PROOF-GUIDE.html) · [source archive](formalization/distance-preservation/truncated12/paper/truncated-distance-source.zip).
