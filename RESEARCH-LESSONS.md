@@ -779,3 +779,27 @@ footer required a narrowly versioned parser; old source and failed output
 were preserved. Complete stationarity and primal/dual equality, rather than
 the solver label or parser acceptance, established the phase-I result.
 [Results, exact evidence and source limits](formalization/canonical-width/c16/TWO-BASIS-EIGHT-HOURS-FINAL.md).
+
+### Separate source-valid projection from optimizer certification
+
+An interrupted solver can suggest source-row multipliers without certifying an
+optimum. Convert those suggestions to exact rational numbers, enforce valid
+inequality signs, and retain every coefficient that fails to cancel. In the
+shared C16 master, explicit source-row sums prove `0 <= v <= lambda[m]` for all
+22,508 non-tau coordinates. Thus `r*v >= min(0,r)*lambda[m]`; higher joint
+moments contribute to every containing pattern. These bounds make an arbitrary
+source combination projectable after full physical-domain pricing, without
+silently treating it as an exact dual. The actual trial passed independent
+checks of all 32 domain prices and its optimal quadratic minorant, but its
+final gap was negative. It supplied no source exclusion or exact master optimum.
+
+Initialization matters separately from the mathematics of the relaxation.
+Two capped SoPlex runs supplied no exact endpoint; a checked HiGHS floating
+view supplied candidate weights, but substantial sign and residual corrections
+made them ineffective for separation. The master also has an explicit
+unimodular, dual-feasible starting basis: basic artificial-error columns and
+all other row activities give dual weights -1 on error-nonnegativity rows and
+zero elsewhere. That basis is proved; its runtime benefit is untested. Prefer
+a bounded test of this specific initialization before expanding the archive
+or attributing the difficulty to memory or language choice.
+[Checked model, negative projection and next basis test](formalization/canonical-width/c16/SHARED-MASTER-TWO-HOURS-RESULT.md).
