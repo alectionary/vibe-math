@@ -25,6 +25,17 @@ def main():
             conditional_exceedance=abs(g['rate']-ref)>z*g['se']+extract,exploratory_002_margin=abs(g['rate']-ref)<=.02,scope='limited'))
     with (ROOT/'results'/'figure_comparison.csv').open('w') as f:
         w=csv.DictWriter(f,fieldnames=list(comparisons[0]));w.writeheader();w.writerows(comparisons)
+    table = r"""Each row compares a source-vector estimate with our calculation. Numerical ``close'' uses the explicitly stated .02 absolute margin; five displayed decimals describe our presentation, not five-decimal precision claimed by the dissertation. Every row has limited reconstruction scope because the original sampling stream and configuration were not obtained. The reason for every ``close'' label is that its absolute difference is below .02. Conditional statistical exceedances remain separately recorded in \file{results/figure_comparison.csv}{figure_comparison.csv}.
+\begin{longtable}{llrrrrll}
+\toprule Code & $p$ & Source & Ours & Difference & Precision & Numerical & Scope\\\midrule
+\endhead
+"""
+    for r in comparisons:
+        name='Bolza' if r['series']=='bolza' else 'Planar'
+        verdict='close' if r['exploratory_002_margin'] else 'mismatch'
+        table += f"{name} & {r['p']:.5f} & {r['source_figure']:.5f} & {r['ours']:.5f} & {r['difference']:+.5f} & 5 d.p. & {verdict} & limited " + r"\\" + "\n"
+    table += "\\bottomrule\n\\end{longtable}\n"
+    (ROOT/'paper'/'comparison_table.tex').write_text(table)
     secondary=[]
     for s in [48,96]:
         for p in [.001,.002,.005,.01,.02]:
