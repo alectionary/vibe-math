@@ -1,0 +1,79 @@
+"""Exact algebra for calibrated positive-slope item identification using a joint moment.
+
+No model fit, simulation or numerical integration is run. Existing identification
+records are preserved. The emitted evidence contains an ordinary analytic argument
+and symbolic checks, not a Lean-certified theorem or empirical replication.
+"""
+import datetime, hashlib, json, pathlib
+import sympy as sp
+
+f,g,a,b=sp.symbols('f g a b',positive=True)
+fprime=a*f*(1-f);gprime=b*g*(1-g)
+hprime=sp.expand(fprime*g+f*gprime)
+r=sp.cancel(hprime/fprime)
+expected_ratio=g+(b/a)*g*(1-g)/(1-f)
+assert sp.simplify(r-expected_ratio)==0
+chain_derivative=sp.diff(r,f)*fprime+sp.diff(r,g)*gprime
+expected_derivative=b*g*(1-g)*(1+(b/a)*(1-2*g))/(1-f)
+assert sp.simplify(chain_derivative-expected_derivative)==0
+assert sp.simplify((1+(b/a)*(1-2*g))-((1-b/a)+2*(b/a)*(1-g)))==0
+assert sp.simplify(expected_derivative.subs({g:f,b:a})-2*a*f*(1-f))==0
+# Gaussian covariance derivative: phi_K = partial_x partial_y phi.
+x,y,K=sp.symbols('x y K',real=True);T=sp.symbols('T',positive=True)
+D=T*T-K*K
+log_phi=-sp.log(D)/2-(T*(x*x+y*y)-2*K*x*y)/(2*D)
+assert sp.simplify(sp.diff(log_phi,K)-sp.diff(log_phi,x)*sp.diff(log_phi,y)-sp.diff(log_phi,x,y))==0
+
+record={
+ 'canonical_result':'C5-1',
+ 'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ 'status':'Derivative identity and ordinary monotonicity argument independently checked by delegated analyst; final independent acceptance pending. No Lean certification or fully proved manuscript-result claim.',
+ 'proposal_origin':'Primary investigator proposed the within-person joint-moment route; delegated analytical worker independently derived and checked it.',
+ 'relation_to_existing_argument':'Preserves marginal-identification-check.json. The earlier two-separate-marginals route required equal slopes and distinct difficulties. This different route uses one marginal plus a within-person two-item joint probability, allowing unequal known positive slopes and even identical item calibrations.',
+ 'source_context':{
+  'sha256':'67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28',
+  'locators':['Chapter5 pp75-76 Eqs5.9-5.10: conditional logistic item measurement','Chapter5 p81 Section5.4.2: OPLM calibration treated as known; missing SES separately modeled','Chapter3 pp34-35: externally calibrated item difficulties/discriminations imputed into measurement model'],
+  'qualification':'The source uses fixed calibration in the analysis. The actual calibration file and empirical responses are unavailable, so this argument does not verify that every required calibration/support/observation assumption holds for those data. Our separation of population identification from finite-sample likelihood uniqueness remains explicit.'},
+ 'conditional_statement':{
+  'measurement':'Y1,Y2 are two distinct conditionally independent binary observations given theta; P(Y1=1|theta)=f(theta)=L(a1*theta-d1), P(Y2=1|theta)=g(theta)=L(a2*theta-d2), with known finite d1,d2 and known finite positive slopes. Reorder the two items so0<a2<=a1. If the source writes L(a_j*(theta-b_j)), set d_j=a_j*b_j.',
+  'latent':'theta=mu+sZ with Z standard normal, finite mu and s>0.',
+  'observed_target':'Population p=E[Y1]=E[f(theta)] and q=E[Y1Y2]=E[f(theta)g(theta)]. The joint equality requires conditional independence; two repeated labels of the same binary draw do not suffice.',
+  'claim':'The mapping(mu,s) to(p,q) is globally injective onR times(0,infinity) under these conditions. No difference between d1 and d2 or between slopes is required.',
+  'not_a_parameter_count_argument':True},
+ 'derivation':[
+  {'step':1,'name':'Fixed marginal determines a mean curve',
+   'argument':'For every finite s>0,p(mu,s)=E f(mu+sZ) is continuous and strictly increasing in mu because fprime>0. Its limits as mu tends to minus/plus infinity are0/1. Hence every p in(0,1) defines one mu_p(s). The implicit derivative is mu_pprime(s)=-E[Z fprime]/E[fprime]. Differentiation is justified by fprime<=a1/4 and finite E|Z|; positive denominator yields localC1 curves that agree globally by uniqueness.'},
+  {'step':2,'name':'Derivative of the within-person joint probability',
+   'argument':'Let h=fg and w_s(z)=fprime(mu_p(s)+sz)phi(z)/E[fprime]. Differentiating q along the fixed-p curve gives E[Z hprime]-E[hprime]E[Z fprime]/E[fprime] = E[fprime]Cov_w(Z,r(mu_p(s)+sZ)), where r=hprime/fprime.'},
+  {'step':3,'name':'Positive-slope ordering makes the ratio strictly increasing',
+   'ratio':'r=g+(a2/a1)*g*(1-g)/(1-f)',
+   'derivative':'rprime(theta)=a2*g*(1-g)*[1+(a2/a1)*(1-2*g)]/(1-f)',
+   'strict_sign':'With c=a2/a1 in(0,1],the bracket=(1-c)+2c(1-g)>0 because0<g<1. Also a2>0,0<f<1. Thus rprime(theta)>0 for every finite theta, including equal slopes. Since s>0,r(mu_p(s)+sZ) is strictly increasing inZ.',
+   'symbolic_validation':'Independent chain-rule differentiation using fprime=a1*f*(1-f),gprime=a2*g*(1-g) equals the displayed expression exactly. Identical-calibration limit g=f,a2=a1 gives rprime=2*a1*f*(1-f)>0.'},
+  {'step':4,'name':'Integrability and strict covariance',
+   'argument':'For unequal slopes r may be unbounded, so bounded-r reasoning would be invalid. Instead fprime*r=hprime=fprime*g+f*gprime satisfies0<hprime<=(a1+a2)/4. Thus E_w[r]=E[hprime]/E[fprime] and E_w[|Z|r]=E[|Z|hprime]/E[fprime] are finite, as is E_w|Z|. The independent-copy identity Cov_w(Z,r(Z))=E[(Z-Zprime)(r(Z)-r(Zprime))]/2 is therefore valid. Weight w has positive density on allR and r is strictly increasing, making this covariance strictly positive.'},
+  {'step':5,'name':'Global identification of latent mean and variance',
+   'argument':'Consequently q(mu_p(s),s) is strictly increasing over the connected domain s>0. Two parameter vectors with equalp andq must have equals and then equalmu. This is global injectivity, not just a nonsingular Jacobian at one point.'},
+  {'step':6,'name':'Cross-twin covariance and ACE bridge',
+   'argument':'After mean and T=s^2 are identified at a fixed moderator level, a cross-twin item joint probability is strictly increasing in latent covarianceK for|K|<T: its derivative equals E[fjprime(theta1)*fkprime(theta2)]>0. The Gaussian identity partial_Kphi=partial_xpartial_yphi, followed by two justified integrations byparts, is unchanged by known positive unequal slopes since logistic factors and derivatives are bounded. MZ/DZ covariances then yield A=2(KMZ-KDZ),C=2KDZ-KMZ,E=T-KMZ. Two moderator levels recover all logvariance and mean coefficients.',
+   'required_joint_support':'Both MZ andDZ groups must have positive observed support at EACH of the two distinct moderator levels. Within-person p/q and cross-twin item probabilities must be identifiable at those levels. Positive marginal support alone is insufficient.',
+   'other_bridge_assumptions':'Same finite Gaussian mean/variance across zygosity at each shared moderator level; finite strictlypositive ACE; known genetic correlations1/.5; fixed invariant calibration and conditional measurement independence. The previously reviewed explicit inversion and support limits remain applicable.'}
+ ],
+ 'boundary_and_scope_checks':[
+  {'case':'Equal slopes and identical difficulties','finding':'Allowed for two distinct conditionally independent item draws; q is the second conditional-probability moment, not a duplicate of p.'},
+  {'case':'Only one observed item or joint item probability unavailable','finding':'This argument cannot identify(mu,s) from p alone; it makes no automatic claim about other available response moments.'},
+  {'case':'Conditional item dependence','finding':'Then E[Y1Y2] need not equalE[fg]; proof fails unless a specified dependence model supplies an alternative identifiable relation.'},
+  {'case':'Zero or negative slope','finding':'Excluded from this positive-slope statement. Zero-slope item cannot supply the strict derivative; no blanket negative-slope extension asserted.'},
+  {'case':'Ordering reversed without relabeling','finding':'The displayed derivative need not remain positive if a2>a1. Relabeling is essential and always possible for two known positive slopes.'},
+  {'case':'s=0,zero variancecomponents or singular twin covariance','finding':'Outside the stated positive interior. No separate boundary theorem is asserted.'},
+  {'case':'Infinite calibration/parameters or probabilities exactly0/1','finding':'Excluded. Numerical saturation does not establish mathematical nonidentification.'},
+  {'case':'Unknown calibration','finding':'Known finite calibration anchors trait scale/location. Unknown parameters can restore location/scale invariances and need explicit constraints and separate arguments.'},
+  {'case':'Empirical OPLM and missing SES/responses','finding':'Unequal known positive slopes alone are no longer an obstacle to this conditional argument. Actual positive calibration, jointly observed moments/support, latent Gaussian specification and missingness/ascertainment assumptions still require evidence; no empirical refit or model-validity claim.'},
+  {'case':'Likelihood/posterior or MCMC conclusions','finding':'Population injectivity neither gives finite-sample MLE existence/uniqueness nor posterior unimodality/convergence. The existing all-zero-response MLE counterexample remains compatible.'}
+ ],
+ 'actual_checks':{'sympy_version':sp.__version__,'joint_derivative_ratio_identity':'passed','ratio_chain_derivative_identity':'passed','strict_positive_bracket_decomposition':'passed','identical_calibration_limit':'passed','Gaussian_covariance_derivative_identity':'passed','new_simulations':0,'new_model_fits':0,'numerical_quadrature':0,'network_operations':0,'git_operations':0},
+ 'formalization_status':{'ordinary_argument':'Separate record, awaiting final independent acceptance and parent review before inventory/manuscript integration.','Lean':'No Lean theorem or bridge produced; not formally certified and proved-results manuscript gate remains unmet.','claim_scope':'No novel-theorem or whole-dissertation-completion claim.'},
+ 'script':'simulation/joint_item_identification_check.py'
+}
+pathlib.Path('provenance/joint-item-identification-check.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps(record['actual_checks'],indent=2))

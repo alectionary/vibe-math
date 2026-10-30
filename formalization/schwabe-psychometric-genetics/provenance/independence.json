@@ -52,7 +52,14 @@
     "check": "C5-1 known-Rasch marginal identification argument",
     "shared_inputs": "Same source Gaussian latent ACE/Rasch model, fixed calibration and joint-support hypotheses; no empirical data or independent fitted model",
     "independent": "Separate reviewer checked logistic-ratio monotonicity via a logarithmic derivative, Gaussian covariance derivative via precision-matrix calculus, and the missing-joint-support witness by exact rational arithmetic",
-    "limit": "Independent mathematical review of ordinary argument, not Lean certification or independent empirical replication. Unequal OPLM slopes and other calibration/design cases remain outside this argument; finite-sample likelihood conclusions remain separate.",
+    "limit": "Independent ordinary-argument review, not Lean certification or empirical replication. Unequal slopes are outside this specific two-marginal route but known positive slopes are conditionally covered by the separate joint-item route. Actual calibration/observation/support assumptions and finite-sample likelihood conclusions remain separate.",
     "evidence": "provenance/marginal-identification-check.json; simulation/marginal_identification_check.py; provenance/marginal-identification-independent-review.json; provenance/proof-toolchain-observation.json"
+  },
+  {
+    "check": "C5-1 calibrated positive-slope joint-item identification argument",
+    "shared_inputs": "Source conditional Gaussian latent model and calibrated logistic measurement; known positive slopes, local independence and joint-support hypotheses; no empirical responses or independently fitted model",
+    "independent": "Primary investigator proposed the route; delegated analyst derived it via f/g chain rule, and a separate reviewer used exponential odds coordinates and positive numerator factorization, checking unbounded-ratio integrability and the conditional ACE bridge",
+    "limit": "Reviewed ordinary conditional argument with symbolic identities; no Lean certification. Unequal known positive slopes are covered under the hypotheses, but actual empirical calibration, local independence, observed moments and joint support remain unverified. Finite-sample MLE/posterior/MCMC conclusions do not follow.",
+    "evidence": "provenance/joint-item-identification-check.json; simulation/joint_item_identification_check.py; provenance/joint-item-identification-independent-review.json"
   }
 ]

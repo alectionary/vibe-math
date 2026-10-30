@@ -1,0 +1,374 @@
+{
+  "canonical_result": "C5-1",
+  "created_utc": "2026-10-30T20:20:23.644644+00:00",
+  "status": "Read-only formalization feasibility preparation; no compilation, installation, proof execution, model start, network or Git operation. No new Lean proof file created.",
+  "scope": "Existing dissertation analytical arguments only; no new problem, branch, issue or broad research campaign. Four OpenMx workers may remain active; this preparation launches no competing proof build.",
+  "input_records": [
+    {
+      "path": "provenance/identification-check.json",
+      "sha256": "528804e4c6106cd3e0d290b93dd2536b21fc7c9c128bbad885d74b37c410e250"
+    },
+    {
+      "path": "provenance/marginal-identification-check.json",
+      "sha256": "a733bca2b04315b22d4ec8f940d11f101c4fe2e2d42209362b3160a6dda4fe0f"
+    },
+    {
+      "path": "provenance/marginal-identification-independent-review.json",
+      "sha256": "deddb2780c3c50953c60046efaa42061e9b6bea22d4ac975cbf1c51d48f40529"
+    },
+    {
+      "path": "provenance/joint-item-identification-check.json",
+      "sha256": "7af0254e5b8c3b77385eba63b92b64fa05e761ae1b01c8342bb337c3456be732"
+    },
+    {
+      "path": "provenance/joint-item-identification-independent-review.json",
+      "sha256": "ac4fb8f4f88080cb1c4ca721e04ff1ca58b485c5f07612ab748fdb661b35f283"
+    },
+    {
+      "path": "provenance/proof-toolchain-observation.json",
+      "sha256": "7fc330b4432e60fac92d28d2992fd55ed5e651dc035a071a3c3716bb3ec6d258"
+    }
+  ],
+  "environment": {
+    "PATH_lookup": {
+      "lean": null,
+      "lake": null,
+      "elan": null
+    },
+    "repository_toolchain_groups": {
+      "leanprover/lean4:v4.36.0-rc1": [
+        "formalization/absorbing-four-two/lean-toolchain",
+        "formalization/absorbing-four-zero/lean-toolchain",
+        "formalization/dyadic-rank/lean-toolchain",
+        "formalization/gallager-b-absorbing/lean-toolchain",
+        "formalization/stopping-bound/lean-toolchain",
+        "formalization/absorbing-four-two/followup-complex/lean-toolchain",
+        "formalization/absorbing-four-two/followup-complex/first-block/lean-toolchain",
+        "formalization/absorbing-four-zero/prior/lean-toolchain",
+        "formalization/absorbing-four-zero/prior/first-block/lean-toolchain",
+        "formalization/cyclic-lifts/paper/artifact/formalization/dyadic-rank/lean-toolchain",
+        "formalization/distance-preservation/paper/lean-environment/lean-toolchain",
+        "formalization/dyadic-rank/paper/artifact/lean-toolchain",
+        "formalization/gallager-b-absorbing/connected/lean-toolchain",
+        "formalization/gallager-b-absorbing/symmetric/lean-toolchain",
+        "formalization/stopping-bound/classification/lean-toolchain",
+        "formalization/stopping-bound/incidence/lean-toolchain",
+        "formalization/stopping-bound/source-answer/lean-toolchain",
+        "formalization/stopping-bound/stronger/lean-toolchain"
+      ],
+      "leanprover/lean4:v4.22.0": [
+        "formalization/correlated-residuals/lean-toolchain",
+        "formalization/latent-contrasts/lean-toolchain"
+      ]
+    },
+    "manifests_read": [
+      {
+        "path": "formalization/correlated-residuals/lakefile.toml",
+        "sha256": "eae0c1d5ce4ad6046e9800e1adac705ff62b66ab873f019f3c1dd9cc000b20ef",
+        "contents": "name = \"correlated-residuals\"\nversion = \"0.1.0\"\ndefaultTargets = [\"CorrelatedResiduals\"]\n\n[[require]]\nname = \"mathlib\"\ngit = \"https://github.com/leanprover-community/mathlib4\"\nrev = \"v4.22.0\"\n\n[[lean_lib]]\nname = \"CorrelatedResiduals\"\n"
+      },
+      {
+        "path": "formalization/correlated-residuals/lake-manifest.json",
+        "sha256": "ecba95a7446c083e8c8e6c1d0ede8a21a056060ebe9deb3eb5b5b53497178baf",
+        "manifest_version": "1.1.0",
+        "packages_directory": ".lake/packages",
+        "mathlib": [
+          {
+            "name": "mathlib",
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "rev": "79e94a093aff4a60fb1b1f92d9681e407124c2ca",
+            "inputRev": "v4.22.0"
+          }
+        ]
+      },
+      {
+        "path": "formalization/latent-contrasts/lakefile.toml",
+        "sha256": "682bc08d2b3340def14af3b76f2c38e4ee42b750c069b8b5ae611e846beb23f6",
+        "contents": "name = \"latent-contrasts\"\nversion = \"0.1.0\"\ndefaultTargets = [\"LatentContrasts\"]\n\n[[require]]\nname = \"mathlib\"\ngit = \"https://github.com/leanprover-community/mathlib4\"\nrev = \"v4.22.0\"\n\n[[lean_lib]]\nname = \"LatentContrasts\"\n"
+      },
+      {
+        "path": "formalization/latent-contrasts/lake-manifest.json",
+        "sha256": "ab256eb2328ffff67cffd10554d5d2dadcbbce41a4106eefc93247280f966efd",
+        "manifest_version": "1.1.0",
+        "packages_directory": ".lake/packages",
+        "mathlib": [
+          {
+            "name": "mathlib",
+            "url": "https://github.com/leanprover-community/mathlib4",
+            "rev": "79e94a093aff4a60fb1b1f92d9681e407124c2ca",
+            "inputRev": "v4.22.0"
+          }
+        ]
+      },
+      {
+        "path": "formalization/dyadic-rank/lakefile.toml",
+        "sha256": "31f0e109ea20bb8d1ae4f3ec465163955c2b24d29b508f6a8ae80b174c93a77d",
+        "contents": "name = \"dyadicRank\"\nversion = \"0.1.0\"\ndefaultTargets = [\"DyadicRank\"]\n\n[[require]]\nname = \"mathlib\"\ngit = \"https://github.com/leanprover-community/mathlib4.git\"\nrev = \"5f7b4198d22a9c82e1c698a379334fe128095c82\"\n\n[[lean_lib]]\nname = \"DyadicRank\"\n"
+      },
+      {
+        "path": "formalization/dyadic-rank/lake-manifest.json",
+        "sha256": "2df78ebbe40bc72129461827774a34ade3b7b80616d28f5389c0a91217397963",
+        "manifest_version": "1.3.0",
+        "packages_directory": ".lake/packages",
+        "mathlib": [
+          {
+            "name": "mathlib",
+            "url": "https://github.com/leanprover-community/mathlib4.git",
+            "rev": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+            "inputRev": "5f7b4198d22a9c82e1c698a379334fe128095c82"
+          }
+        ]
+      }
+    ],
+    "local_source_cache_scan": [
+      {
+        "root": "/workspace/vibe-math",
+        "matches": [],
+        "olean_count": 0,
+        "errors": [],
+        "excluded_directory_names": [
+          ".git",
+          "node_modules",
+          "production",
+          "__pycache__"
+        ],
+        "exists": true,
+        "readable": true
+      },
+      {
+        "root": "/workspace/shared",
+        "matches": [],
+        "olean_count": 0,
+        "errors": [],
+        "excluded_directory_names": [
+          ".git",
+          "node_modules",
+          "production",
+          "__pycache__"
+        ],
+        "exists": true,
+        "readable": true
+      },
+      {
+        "root": "/workspace/scratch",
+        "matches": [],
+        "olean_count": 0,
+        "errors": [],
+        "excluded_directory_names": [
+          ".git",
+          "node_modules",
+          "production",
+          "__pycache__"
+        ],
+        "exists": true,
+        "readable": true
+      },
+      {
+        "root": "/opt",
+        "matches": [],
+        "olean_count": 0,
+        "errors": [
+          "[Errno 13] Permission denied: '/opt/containerd'"
+        ],
+        "excluded_directory_names": [
+          ".git",
+          "node_modules",
+          "production",
+          "__pycache__"
+        ],
+        "exists": true,
+        "readable": true
+      },
+      {
+        "root": "/root/.elan",
+        "matches": [],
+        "olean_count": 0,
+        "errors": [
+          "[Errno 13] Permission denied: '/root/.elan'"
+        ],
+        "excluded_directory_names": [
+          ".git",
+          "node_modules",
+          "production",
+          "__pycache__"
+        ],
+        "exists": "not determined due access denial",
+        "readable": false
+      }
+    ],
+    "additional_filename_scan": "rg --files --hidden --no-ignore for Mathlib.lean,*.olean,*.ltar,*mathlib*.zip,*mathlib*.tar* under /workspace and /tmp returned no matching paths; contents of arbitrarily named archives were not searched.",
+    "access_limits": [
+      "/root/.elan could not be inspected by this worker: PermissionError; do not interpret as confirmed absence.",
+      "/opt/containerd was not readable; no access bypass or escalation attempted."
+    ],
+    "interpretation": "No Lean/lake/elan executable on current PATH and no Mathlib source/.lake/olean/cache match in the readable scanned locations. Existing project sources and manifests are present. This is bounded absence-of-observation, not proof of global absence, toolchain unavailability through approved installation, or mathematical/formalization impossibility."
+  },
+  "local_reusable_patterns": [
+    {
+      "path": "formalization/latent-contrasts/LatentContrasts/Orthogonality.lean",
+      "observed": "Imports Mathlib.Tactic.NormNum and Mathlib.Tactic.Ring; exact rational arithmetic/cross-product proofs. This is a local source pattern, not a currently compiled dependency."
+    },
+    {
+      "path": "formalization/correlated-residuals/CorrelatedResiduals/Diagonal.lean",
+      "observed": "Explicit covariance recovery and injectivity overReal; observed imports Mathlib.Data.Real.StarOrdered,Mathlib.Tactic.FieldSimp,Mathlib.Tactic.Ring. Suitable proof-structure reference for ACE inversion, not a substitute theorem."
+    },
+    {
+      "path": "formalization/correlated-residuals/CorrelatedResiduals/Law.lean",
+      "observed": "Imports measure/probability integrability and strong-law modules and uses integrability lemmas. This shows repository precedent for analytic Mathlib use, but does not establish Gaussian/logistic derivative infrastructure is present or ready."
+    }
+  ],
+  "source_to_Lean_obligations": [
+    {
+      "id": "LEAN-ACE",
+      "source": "Chapter5 Eqs5.3-5.15 pp75-76; identification-check.json latent covariance inversion",
+      "faithful_target": "For real A,C,E define T=A+C+E, KMZ=A+C, KDZ=A/2+C. Prove 2(KMZ-KDZ)=A,2KDZ-KMZ=C,T-KMZ=E and injectivity of the explicit map(A,C,E)\u2192(T,KMZ,KDZ).",
+      "proposed_representation": "A triple of real scalars and explicit arithmetic functions; later connect this map to actual conditional Gaussian covariances.",
+      "assumptions": "Real scalars suffice for the identities; strict positivity belongs to the statistical domain/bridge, not this ring calculation.",
+      "proof_route": "Unfold definitions; ring for left-inverse identities; apply equality of observed triples and the left inverse to get injectivity.",
+      "likely_infrastructure": "Real field arithmetic and Ring/NormNum tactics; nearby repo sources use these imports.",
+      "faithfulness_limit": "This only formalizes the ACE covariance map. Do not name it identification of observed item data or assume the item-to-covariance bridge.",
+      "priority": "First compilation target; no analytic infrastructure needed."
+    },
+    {
+      "id": "LEAN-BINARY-PATH",
+      "source": "AppendixC pp138-139; identification-check.json binary path sign indeterminacy",
+      "faithful_target": "For all real a,b, the paths a+b*m and a+(-2*a-b)*m have equal squares at m=0 andm=1. Prove a concrete positive-intercept witness with distinct slopes: a=1/2,b=1/5,bprime=-6/5; endpoint variances1/4,49/100 but midpoint variances9/25 and1/100.",
+      "proposed_representation": "Squared affine real functions with explicitly named moderator values, exact rational constants cast toReal.",
+      "assumptions": "Shared binary moderator; no condition requiring path positivity at both endpoints. Include distinct-slope proof in witness; degenerate a+b=0 does not produce two distinct slopes.",
+      "proof_route": "Ring for universal endpoint equalities; norm_num for exact witness and distinctness.",
+      "likely_infrastructure": "Real field arithmetic, Ring and NormNum only.",
+      "faithfulness_limit": "Equality of endpoint variances supports the shared-moderator covariance symmetry; separate-twin moderators require cross-products, not just squares.",
+      "priority": "First compilation target besideACE."
+    },
+    {
+      "id": "LEAN-CONTINUOUS-PATH",
+      "source": "AppendixC p139 continuous extension; identification-check.json continuous moderator qualification",
+      "faithful_target": "If two squared affine real paths agree at three distinct real moderator values, their coefficient pairs are equal or global negatives. With both intercepts strictly positive, only equality remains.",
+      "proposed_representation": "PolynomialR of degree\u22642, or exact Vandermonde interpolation of the squared difference followed by factorization into two affine polynomials.",
+      "assumptions": "Three distinct actual support values; an integral domain of coefficients, hereReal. Strictlypositive intercepts only for removing the global negative solution.",
+      "proof_route": "Derive the polynomial iszero from three roots and degree\u22642; factor p\u00b2-q\u00b2=(p-q)(p+q), use no-zero-divisors, then coefficient equality. Alternatively derive all coefficients via explicit nonzero Vandermonde determinant.",
+      "likely_infrastructure": "Polynomial degree/root bounds or finite interpolation; exact API unavailable locally and must be inspected after source availability.",
+      "faithfulness_limit": "Do not replace three-support-point premise with equality for allm without proving that bridge. Does not prove finite-sample likelihood uniqueness.",
+      "priority": "Small second-stage algebraic target after first successful compile."
+    },
+    {
+      "id": "LEAN-LOGVAR",
+      "source": "Chapter5 Eq5.1p72,Eqs5.5-5.8p75,p84; identification-check.json two-level logvariance",
+      "faithful_target": "Equality of exp(beta0+beta1*m) at two distinct real m values implies equality of both coefficients. For positive V0,V1 verify the explicit log-based inverse. Establish increasing/decreasing/constant variance curve according to slope sign.",
+      "proposed_representation": "Real.exp of affine functions, a two-level observation map, and an explicit Real.log inverse on strictlypositive endpoints.",
+      "assumptions": "Distinct moderator levels; positive finite endpoints for log formula. No item-data identifiability assumed or inferred by this lemma.",
+      "proof_route": "Use injectivity/order of exp to reduce equalities/monotonicity to affine algebra; use exp/log inverse identities with positivity for reconstruction.",
+      "likely_infrastructure": "Real exponential/logarithm algebra and order; FieldSimp/Ring; exact Mathlib lemma names and imports must be checked, not guessed.",
+      "faithfulness_limit": "This is coefficient identification after variances are known; full observation-model bridge remains separate.",
+      "priority": "Next tractable analytic-algebra target; modest compared with integration arguments."
+    },
+    {
+      "id": "LEAN-NO-FINITE-MLE",
+      "source": "Chapter5p72 likelihood-maximum statement; identification-check.json finite_sample_counterexample",
+      "faithful_target": "For a nonempty finite set of observed all-zero Rasch responses, fixed finite difficulties and any probability law for finite latent residual vectorZ independent of mu, define Q(mu,Z)=product logistic(b-mu-Z). Show L(mu)=integral Q(mu,Z) strictly increases when mu decreases, so it has no finite maximizer. Optionally prove supremum1 as mu\u2192\u2212infinity.",
+      "proposed_representation": "A finite nonempty index type of observations, a probability measure on a finite-dimensional real residual space, explicit logistic/product kernel and integral likelihood. Connect residual distribution shift to the actual Gaussian model separately.",
+      "assumptions": "Measurable finite-valued residuals, probabilitymass1, finite known difficulties, nonempty observation set, conditional Bernoulli independence. No arbitrary strict-monotonicity assumption onL.",
+      "proof_route": "Prove0<Q<1 and pointwise strict improvement for mu-d with d>0; boundedness gives integrability; strict integral inequality gives no maximizer. Supremum1 additionally needs dominated convergence along mu=-n.",
+      "likely_infrastructure": "Finite products, measurable logistic functions, probability integrals, strict-integral inequality and bounded domination. A Gaussian integration library is not needed for the general fixed-Z lemma, but the Gaussian-model likelihood bridge must be supplied.",
+      "faithfulness_limit": "Do not assume a conclusion-bearing likelihood monotonicity hypothesis. Proper priors change the posterior objective; no posterior impropriety or empirical contradiction follows.",
+      "priority": "Bounded medium-size analytic target after basic integrals are available; not part of first compile."
+    },
+    {
+      "id": "LEAN-JOINT-ITEM-ALGEBRA",
+      "source": "joint-item-identification-check.json steps2-3; known positive OPLM slopes",
+      "faithful_target": "For0<b\u2264a and0<f,g<1, define r=g+(b/a)g(1-g)/(1-f). Verify the chain-rule rational identity for rprime and prove b*g(1-g)*[(1-b/a)+2(b/a)(1-g)]/(1-f)>0. Include identical-calibration limit.",
+      "proposed_representation": "An algebraic identity in real variables a,b,f,g plus positivity; later substitute actual logistic functions and prove their derivatives.",
+      "assumptions": "Nonzero positive denominators; a\u2265b>0; f,g strictlybetween0and1.",
+      "proof_route": "FieldSimp and Ring for equality, positivity decomposition and ordered-field arithmetic for strict sign.",
+      "likely_infrastructure": "Real ordered field; FieldSimp/Ring/Positivity or explicit inequalities. Local API inspection remains needed.",
+      "faithfulness_limit": "A scalar rational certificate is useful but does not prove population identification without the derivative/integral/observation bridges.",
+      "priority": "Optional small first/second compilation target after ACE/binary witness."
+    },
+    {
+      "id": "LEAN-MEAN-CURVE",
+      "source": "joint-item-identification-check.json steps1-2",
+      "faithful_target": "For logistic f with known positive slope and standard-normal Z, construct the unique mean mu_p(s) at each finite s>0 giving p=E f(mu+sZ); prove differentiability and the derivative formula.",
+      "proposed_representation": "An explicit standard Gaussian probability measure, integral-defined item probability, unique-choice inverse inmu and a differentiable curve parameterized bys.",
+      "assumptions": "p\u2208(0,1),s>0,known finite calibration; Gaussian first absolute moment finite.",
+      "proof_route": "Establish measurable bounded integrands, parameter differentiation under integral with uniform local bounds, strictmonotonicity/limits inmu, existence by intermediate value, and differentiability of the implicit curve. Patch local uniqueness globally.",
+      "likely_infrastructure": "Gaussian measure/moments, dominated differentiation, intermediate value and real implicit/inverse-function machinery. Exact availability/API not inspected because Mathlib sources absent in readable scan.",
+      "faithfulness_limit": "Do not assume existence/differentiability of the desired mean curve or its formula in the final observation-model theorem. Those can be intermediate abstract lemmas only if discharged for the actual logistic-Gaussian functions.",
+      "priority": "Major missing analytic bridge."
+    },
+    {
+      "id": "LEAN-WEIGHTED-COVARIANCE",
+      "source": "joint-item-identification-check.json steps2-5 and independent review",
+      "faithful_target": "Define probability weightw proportional to positive fprime times Gaussian density; prove weighted moments involving the potentially unbounded ratio r are integrable, covariance double-integral identity, strict positivity, and global injectivity of(mu,s)\u2192(E f,E fg).",
+      "proposed_representation": "Density-weighted Gaussian measure; normalized finite measure; product measure for independent copies; integral covariance and selected observed moments.",
+      "assumptions": "The actual logistic derivatives and calibrated positive slopes, not an assumed strict covariance result. Explicit normalizationE fprime>0; s>0.",
+      "proof_route": "Use fprime*r=(fg)prime bounded to prove weighted integrability; Fubini to derive the independent-copy identity; strictly increasingr and non-atomic/full-support weighted Gaussian yield positive covariance. Combine with mean-curve derivative and connected-domain strict monotonicity to prove injectivity.",
+      "likely_infrastructure": "withDensity/change-of-measure integrals, Fubini/product probability measures, strict integral positivity, Gaussian absolute moments and non-atomic/full support, derivative-to-strict-monotonicity theorem.",
+      "faithfulness_limit": "Do not claim r bounded; it can grow for unequal slopes. Do not replace the full theorem with assumptions that the moment map is injective or that its decisive derivative is positive.",
+      "priority": "Major missing analytic bridge."
+    },
+    {
+      "id": "LEAN-GAUSSIAN-COVARIANCE",
+      "source": "joint-item-identification-check.json step6; marginal-identification independent review step3",
+      "faithful_target": "For an explicit bivariate Gaussian density with variancesT>0 and |K|<T, prove the covariance-parameter density derivative identity, justify differentiation/integration byparts, and show logistic cross-moment strictly increases inK for fixed identified mean/variance.",
+      "proposed_representation": "Either existing multivariate Gaussian API or explicit normalized density onReal\u00d7Real, with proven probability normalization and integrability.",
+      "assumptions": "Finite known positive item slopes, positive-definite Gaussian covariance; no singular-boundary claim.",
+      "proof_route": "First rational identity for log-density derivatives; then local uniform Gaussian domination for parameter differentiation; two integrations byparts with vanishing tails; positive logistic derivative product gives strict increase.",
+      "likely_infrastructure": "Multivariate Gaussian density/normalization, matrix inverse/determinant, dominated parameter differentiation, improper integration byparts and Gaussian tail estimates. Readable local sources did not establish whether all of this is already packaged in the pinned Mathlib version.",
+      "faithfulness_limit": "Symbolic density identity is not the integral identity. Do not assume the Price-type derivative formula or cross-moment injectivity as an unexplained hypothesis of the final theorem.",
+      "priority": "Major missing analytic bridge; resource estimate unknown before API inspection."
+    },
+    {
+      "id": "LEAN-OBSERVED-LAW-BRIDGE",
+      "source": "Chapter5 known-calibration Gaussian ACE model and joint-item-identification-check.json full conditional statement",
+      "faithful_target": "Encode the calibrated conditional Bernoulli item law over both twins. Equality of observed response laws at each of four supported zygosity\u00d7moderator cells implies equality of within-person marginal/joint and cross-twin moments. Apply the proved moment-injectivity and ACE/logvariance inversions to identify all eight coefficients.",
+      "proposed_representation": "A parameter structure with eight reals and positive-domain conditions; known calibration arrays; Gaussian latent law; conditionally independent finite binary response kernel; four conditional observed laws, or a joint law with explicit positive cell weights and a conditioning bridge.",
+      "assumptions": "Two distinct item observations, known finite positive slopes (calibrations may coincide), local independence, positive finiteACE, same family moderator, both MZ/DZ at EACH of two distinct levels, justified identification of observed moments.",
+      "proof_route": "Construct laws and marginalization identities, prove equal laws give equal integrals of bounded binary products, discharge actual logistic-Gaussian moment lemmas, then algebraic inversions.",
+      "likely_infrastructure": "Finite Bernoulli product kernels, measure integration/disintegration or direct finite-pattern likelihood, Gaussian latent parameterization and joint-support conditioning.",
+      "faithfulness_limit": "Do not replace the observation law by a vector of already-identified latent covariances or assume the final moment map injective. A theorem about an abstract injective summary map alone is not faithful coverage of full item-model identification.",
+      "priority": "Final composition target, only after analytic bridges; not feasible to certify in this preparation-only block."
+    }
+  ],
+  "first_compilation_target": {
+    "name": "Study-scoped ACE and binary-path algebra certificate",
+    "proposed_file": "formalization/schwabe-psychometric-genetics/lean/SchwabeAlgebra.lean (not created)",
+    "claims": [
+      "LEAN-ACE left-inverse identities and covariance-map injectivity",
+      "LEAN-BINARY-PATH universal endpoint reflection plus exact nontrivial rational witness"
+    ],
+    "small_optional_addition": "LEAN-JOINT-ITEM-ALGEBRA rational derivative/sign certificate only if the first file compiles within the bounded budget.",
+    "candidate_imports_observed_in_existing_projects": [
+      "Mathlib.Data.Real.StarOrdered",
+      "Mathlib.Tactic.Ring",
+      "Mathlib.Tactic.NormNum",
+      "Mathlib.Tactic.FieldSimp"
+    ],
+    "candidate_pinned_environment": "Lean4.22.0 with Mathlib79e94a093aff4a60fb1b1f92d9681e407124c2ca, matching existing latent/correlated-residual projects. This is a compatible manifest candidate, not an installed/tested environment; do not silently mix with newer4.36.0-rc1/mathlib5f7b4198d22a9c82e1c698a379334fe128095c82.",
+    "example_exact_statement": "For A,C,E:Real, 2*((A+C)-(A/2+C))=A and 2*(A/2+C)-(A+C)=C and (A+C+E)-(A+C)=E. The corresponding explicit triple map has the displayed left inverse.",
+    "validation_after_resources_available": [
+      "First inspect available toolchain and exact pinned dependencies; no installation/build was attempted here.",
+      "Compile only the study file with one proof worker after production frees a core, using a capped process timeout; capture exact command, exitcode, versions, source/manifest hashes and complete log.",
+      "Check theorem statements against source locators, all hypotheses and boundary exclusions; inspect final theorem axioms and prohibit sorry/admit/new axioms as proof evidence.",
+      "Treat successful algebra compilation only as algebra coverage. Retain the entire missing analytic/law bridge inventory and do not label full item-model identification formally proved."
+    ],
+    "suggested_bound": "Once the correct runtime/cache is available, allow one worker and at most10minutes for the first small-file compile/debug block; cache acquisition or build cost must be piloted separately. This is a proposed bound, not measured runtime or authorization to consume occupied production cores."
+  },
+  "remaining_blockers_and_next_evidence": [
+    {
+      "type": "environment observation",
+      "item": "No executable/cache found in readable inspected locations; inaccessible paths recorded.",
+      "next": "Root may inspect or provision a permitted pinned runtime after production frees resources; no conclusion of impossibility."
+    },
+    {
+      "type": "library/API uncertainty",
+      "item": "Mathlib analytic sources not locally available to inspect; exact lemma coverage for Gaussian parameter differentiation, implicit curves and weighted strict covariance not verified.",
+      "next": "Read pinned Mathlib source and map each analytic obligation before committing to a build; distinguish existing lemmas from new proof work."
+    },
+    {
+      "type": "proof gap",
+      "item": "No Lean theorem, analytic bridge or observed-law identification theorem compiled for this study.",
+      "next": "Start with faithful algebraic claims, then measure actual effort for missing analytic obligations without assuming their conclusions."
+    }
+  ],
+  "preservation_and_claim_limit": "Only provenance/formalization-feasibility.json written. Existing ordinary arguments, independent reviews, inventory/audits, manuscript, README, baseline results and production files remain unchanged. No sorry-filled draft code was created or presented as proof. The fully proved manuscript-result gate remains unmet."
+}

@@ -1,0 +1,126 @@
+{
+  "reviewer": "Independent scientific reviewer (/root/guard_validation)",
+  "reviewed_utc": "2026-10-30T20:11:17.505526+00:00",
+  "status": "Accepted as an ordinary written conditional identification argument; no Lean certification and proved-results manuscript gate remains unmet",
+  "reviewed_hashes": {
+    "provenance/joint-item-identification-check.json": "7af0254e5b8c3b77385eba63b92b64fa05e761ae1b01c8342bb337c3456be732",
+    "simulation/joint_item_identification_check.py": "8b23601aa5dedb4ff251e9c39810f300efcb6549c9606fa2706d00b62031e5e3"
+  },
+  "source_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+  "source_checks": [
+    {
+      "locator": "Chapter5 pp75-76 Eqs5.9-5.10",
+      "finding": "Source specifies logistic item responses and fixed simulation calibration; latent shared-moderator Gaussian ACE model supports the conditional Gaussian theorem assumptions."
+    },
+    {
+      "locator": "Chapter5 p81, Section5.4.2",
+      "finding": "Empirical OPLM calibration is treated as known; missing SES is separately modeled. The new theorem does not itself resolve missingness or identify all required observed conditional moments."
+    },
+    {
+      "locator": "Chapter3 pp34-35 and p36 Eq3.3",
+      "finding": "Source describes external linking/calibration across test versions, imputed difficulty and discrimination parameters, and logitP=a(theta-b), agreeing with d=a*b mapping."
+    },
+    {
+      "locator": "Chapter3 p37 local-independence discussion and p40 prior discussion",
+      "finding": "Local independence is explicitly discussed. Source reports discrimination values in range[1,9], supporting positive finite slopes as reported. The unavailable calibration file and response data prevent independent verification of every input or observation/support assumption."
+    }
+  ],
+  "accepted_assumptions": [
+    "Two distinct binary observations, conditionally independent given the same scalar theta; repeating the same binary outcome is not a second observation.",
+    "Known finite slopes a1>=a2>0 and finite d1,d2; relabel the higher-slope item to provide the held-fixed marginal p. The population joint probability q is for these same two item observations.",
+    "theta=mu+sZ with standardnormal Z, finite mu and s>0; relevant population p andq are identifiable from the observation design.",
+    "For the ACE bridge: finite strictlypositive conditional ACE variances, shared familymoderator, known MZ/DZ correlations1and1/2, common conditional latent mean/variance acrosszygosity, fixed anchored calibration and conditional measurement independence.",
+    "For each of two distinct moderatorlevels, both MZ andDZ groups and the needed within-person/cross-twin moments have positive observed support or separately justified identification. Positive marginal group/moderator support alone is insufficient."
+  ],
+  "step_reviews": [
+    {
+      "step": 1,
+      "verdict": "accepted",
+      "reason": "The held-fixed higher-slope marginal is C1 and strictlyincreasing inmu, tending0/1 at the two infinities. fprime<=a1/4 justifies differentiation and limits; the denominator Efprime is positive at every finite(mu,s). The implicit derivative and global gluing of unique mean curves are valid."
+    },
+    {
+      "step": 2,
+      "verdict": "accepted",
+      "reason": "With h=fg, substituting muprime=-E[Zfprime]/Efprime in E[hprime(muprime+Z)] gives Efprime*Cov_w(Z,hprime/fprime). No factor s or slope is missing; fprime andhprime denote derivatives with respect to theta."
+    },
+    {
+      "step": 3,
+      "verdict": "accepted",
+      "reason": "Independent exponential-coordinate differentiation yields rprime=b*v*(1+u)*[(a+b)+(a-b)*v]/[a*(1+v)^3], where u=exp(a*theta-d1),v=exp(b*theta-d2),a=a1>=b=a2>0. Every factor is positive, including at a=b. This exactly equals the recorded derivative. Relabeling matters; without it the bracket may change sign."
+    },
+    {
+      "step": 4,
+      "verdict": "accepted",
+      "reason": "Although r can grow without bound when a1>a2, r>0 and fprime*r=hprime=fprime*g+f*gprime<=(a1+a2)/4. Therefore Ew r,Ew|Z|r andEw|Z| are finite. All four terms in the independent-copy covariance expansion are absolutely integrable, including cross terms factored by independence. Positive weighted density and strictlyincreasing r(mu+sZ) for s>0 make covariance strictlypositive."
+    },
+    {
+      "step": 5,
+      "verdict": "accepted",
+      "reason": "q along the fixed-p curve is C1 and has positive derivative at every finite s>0. The domain is connected, so it is globally strictlyincreasing. Equal(p,q) imply equals and thenequalmu, establishing global injectivity rather than merely local rank."
+    },
+    {
+      "step": 6,
+      "verdict": "accepted conditionally",
+      "reason": "Known finite positive unequal slopes keep all logistic factors and derivatives bounded and positive. The previously independently checked Gaussian density identity partial_Kphi=partial_xpartial_yphi and dominated integration byparts yield qprime(K)>0 for|K|<T. Both zygosity covariances recoverA,C,E; positive endpoints at two observed moderatorlevels recoverlogvariance/mean coefficients. Actual empirical observation/support/model assumptions are not proven by this algebra."
+    }
+  ],
+  "boundary_checks": [
+    {
+      "case": "Identical calibration",
+      "verdict": "allowed",
+      "reason": "For distinct independent observations with f=g, r=2f andrprime=2*a*f*(1-f)>0. q=Ef^2 is notp and contains the requisite within-person information."
+    },
+    {
+      "case": "One item reused twice",
+      "verdict": "excluded",
+      "reason": "Y^2=Y, so the observedjoint moment equalsp, notEf^2. Distinct conditionally independent draws are essential."
+    },
+    {
+      "case": "Zero slope",
+      "verdict": "excluded and strictness genuinely fails",
+      "reason": "If the second item has slope0, g isconstant andq=g*p; there is no additional variance information in these two moments. Other available items could still identify thefullmodel."
+    },
+    {
+      "case": "Negative slopes",
+      "verdict": "outside the stated theorem",
+      "reason": "The positive-slope derivative argument does not cover them as written. No blanket nonidentification claim or unproved extension is made."
+    },
+    {
+      "case": "s=0,zero components,K=plus/minusT",
+      "verdict": "outside the positive interior statement",
+      "reason": "At s=0 the Z-r covariance strictness argument no longer applies; singularGaussian covariance invalidates the density calculation. The current theorem asserts no separateboundaryresult."
+    },
+    {
+      "case": "Unknown calibration or conditional dependence",
+      "verdict": "excluded",
+      "reason": "Unknown location/scale parameters or failure ofq=Efg require additional constraints and distinct identification arguments."
+    },
+    {
+      "case": "Unobserved/missing item pairs or moderator support",
+      "verdict": "not resolved",
+      "reason": "Known calibration alone cannot recover a jointmoment unidentifiable under the actual observation/ascertainment mechanism."
+    }
+  ],
+  "independent_symbolic_checks": {
+    "system": "SymPy1.14.0",
+    "method": "Derived ratio using odds coordinates u,v and differentiation operator a*u*d/du+b*v*d/dv, independently of the submitted f,g chain-rule route.",
+    "ratio_derivative_identity": "passed",
+    "positive_numerator_factorization": "passed for a>=b>0,u>0,v>0 by explicit factors",
+    "identical_calibration_ratio_and_derivative": "passed",
+    "integrability_cancellation_fprime_times_ratio_equals_hprime": "passed",
+    "Gaussian_identity": "Previously independently checked by precision-matrix differentiation; written bounded-derivative extension to unequal finite positive slopes checked here.",
+    "new_model_fits": 0,
+    "new_simulations": 0,
+    "numerical_quadrature": 0,
+    "network_operations": 0,
+    "git_operations": 0
+  },
+  "findings": "No mathematical error or required correction found in the new conditional argument. The earlier equal-slope/distinct-difficulty requirement belongs to its separate two-marginal route; it is not needed for this within-person-joint-moment route.",
+  "formalization_and_scope": {
+    "ordinary_argument": "Accepted with the explicit assumptions above.",
+    "Lean": "No Lean theorem/bridge supplied or certified; ordinary written-argument review does not clear the skill proved-results manuscript gate.",
+    "empirical_limit": "Unequal known positive OPLM slopes are no longer a mathematical obstacle in this conditional theorem. It does not validate the empirical latent Gaussian model, item calibration, missingness, joint support, or recovered parameters.",
+    "likelihood_limit": "Population injectivity does not establish existence/uniqueness of finite-sample MLEs, posterior unimodality, MCMC convergence, or successful whole-dissertation replication. The existing all-zero finite-sample MLE counterexample remains compatible.",
+    "preservation": "Prior identification evidence preserved; no coverage, manuscript or production files changed by this review."
+  }
+}
