@@ -1,0 +1,30 @@
+[
+  {
+    "check": "lavaan versus OpenMx ACE baseline",
+    "shared_inputs": "same generated4000-pair R dataset and ACE covariance model",
+    "independent": "different model interfaces and optimizers",
+    "limit": "No item-response likelihood, variance moderator, missing covariates or empirical data; not an independent whole-dissertation replication",
+    "evidence": "outputs/engine-agreement.csv"
+  },
+  {
+    "check": "OpenMx SLSQP versus CSOLNP",
+    "shared_inputs": "same generated Chapter6 data, covariance graph and OpenMx likelihood",
+    "independent": "optimizer only",
+    "limit": "Cannot detect a shared model/design error",
+    "evidence": "outputs/check-c6-CSOLNP-full.csv and outputs/pilot-c6-full.csv"
+  },
+  {
+    "check": "Python versus R generators",
+    "shared_inputs": "stated ACE parameters and covariance design",
+    "independent": "Python direct multivariate normal versus R conditional Gaussian/hierarchical construction",
+    "limit": "Moment checks only; finite Monte Carlo variation and no empirical-data independence",
+    "evidence": "outputs/analytic-checks.json"
+  },
+  {
+    "check": "Original JAGS versus new noncentred model",
+    "shared_inputs": "JAGS engine and model equations/prior specifications",
+    "independent": "Centred original program versus independently written noncentred graph, on same generated data, source-length chains",
+    "limit": "JAGS likelihood engine, model and priors shared. Five posterior means agree within exploratory conditional MC bands; finite effective samples and Rhat diagnostics do not prove convergence or empirical validity.",
+    "evidence": "outputs/posterior-comparison.csv; outputs/original-c2-confirmation.csv"
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "requirement": "Whole dissertation is the unit",
+    "status": "followed",
+    "evidence": "coverage.csv inventories all original result groups in Chapters1-7 and AppendicesA-G; background and future proposals distinguished in source.json. Feasible production work remains open, never out of scope."
+  },
+  {
+    "requirement": "Original code and source audit",
+    "status": "followed",
+    "evidence": "availability.json and author-repositories.json; all12 author repositories cloned; OSF/GitLab/Zenodo indexed searches and publisher supplement checked."
+  },
+  {
+    "requirement": "Preferred engine preflight",
+    "status": "followed",
+    "evidence": "preflight.json passes R4.5.0, lavaan0.6.19, OpenMx2.21.13; local package hashes recorded."
+  },
+  {
+    "requirement": "JAGS for Chapters2-5",
+    "status": "departed",
+    "justification": "The thesis jointly fits non-Gaussian item likelihoods with latent variance moderation in JAGS. A covariance-only lavaan fit would change the statistical model. JAGS4.3.2/rjags4-16 used; original programs replayed, independent noncentred generator/covariance checks and lavaan/OpenMx baseline provided. These do not independently validate the full posterior.",
+    "evidence": "original-programs.csv; engine-agreement.csv; analytic-checks.json"
+  },
+  {
+    "requirement": "Original Monte Carlo repetition and chain counts",
+    "status": "departed",
+    "justification": "All stated conditions attempted with short diagnostics; a full-length Chapter2 case and expanded Chapter6 runs retained separately. Production counts are unresolved, not waived: the N8000 Chapter5 timing pilot projects months of single-worker elapsed computation for that condition alone.",
+    "evidence": "pilot-jags-planned.json; pilot-openmx-planned.json; timing-c5-largest-timing.csv; coverage.csv"
+  },
+  {
+    "requirement": "Signed contrasts and two-axis decisions",
+    "status": "followed",
+    "evidence": "uncertainty-plan.json; Chapter6 deletion-minus-full SE contrast positive means smaller full-information SE. Source reproduction deviation is separate. Source rounded-summary reconstructions are not posterior refits."
+  },
+  {
+    "requirement": "Approved manuscript layout",
+    "status": "followed",
+    "evidence": "Approved preamble at baseline e2b553c06c87; full revision in provenance/delivery.json. Semantic subject changes only."
+  },
+  {
+    "requirement": "Independent scientific and rendered-manuscript review",
+    "status": "departed",
+    "justification": "A separate reviewer has not yet reviewed this checkpoint. Self-review and structural checks cannot substitute. Delivery remains incomplete until independent review is recorded.",
+    "evidence": "provenance/review.json records pending independent review; no fabricated reviewer approval."
+  },
+  {
+    "requirement": "Scope and licensing",
+    "status": "followed",
+    "evidence": "Source PDF/unlicensed original programs kept local. Only original wrappers, results and limited attributed scholarly evidence crops included. No source-policy denial bypass; no author contact, merge, social post or reusable skill edits."
+  },
+  {
+    "requirement": "Runnable immutable version and remote byte verification",
+    "status": "followed",
+    "evidence": "README.md reproduction recipe; delivery.json records immutable code/artifact revisions and remote downloads when uploaded. Master navigation links await merge."
+  }
+]

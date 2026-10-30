@@ -1,0 +1,72 @@
+[
+  {
+    "previous": {
+      "tag": "pilot-c6-MCAR-q5-m0.02-r4",
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/openmx_replication.R",
+        "5",
+        "0.02",
+        "MCAR",
+        "34204",
+        "pilot-c6-MCAR-q5-m0.02-r4"
+      ],
+      "returncode": 1,
+      "elapsed_seconds": 1.3451476097106934,
+      "meaning": "Execution only; inspect estimation diagnostics before any scientific verdict",
+      "log": "Warning messages:\n1: In loadTbbLibrary(\"tbb\") : TBB library 'tbb' not found.\n2: In loadTbbLibrary(\"tbbmalloc\") : TBB library 'tbbmalloc' not found.\nError: unexpected string constant in:\n\" for(twin in 1:2){bad<-!complete.cases(x[,((twin-1)*q+seq_len(q)),drop=FALSE]);dat[bad,twin]<-NA}\n model<-mxModel('joint',mxMatrix('Full',1,1,TRUE,sqrt(.5),name='a'),mxMatrix('Full',1,1,TRUE,sqrt(.3),name='c'),m',1,1,TRUE,sqrt(.3),name='\"\nExecution halted\n",
+      "reason": "Transient parse failure while the working source file was being edited; no fitted result. Retried identical seed/condition after source was stable."
+    },
+    "retry": {
+      "tag": "pilot-c6-MCAR-q5-m0.02-r4",
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/openmx_replication.R",
+        "5",
+        "0.02",
+        "MCAR",
+        "34204",
+        "pilot-c6-MCAR-q5-m0.02-r4"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 4.480628728866577,
+      "script_sha256": "818c0d9873d0950fb80bb320ee51754c41a0b6e675ec1462b80649d6595d031e",
+      "meaning": "Same seed and condition retried after startup parse failure; fitted results inspected separately"
+    }
+  },
+  {
+    "previous": {
+      "tag": "pilot-c6-MCAR-q2-m0.03-r10",
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/openmx_replication.R",
+        "2",
+        "0.03",
+        "MCAR",
+        "34481",
+        "pilot-c6-MCAR-q2-m0.03-r10"
+      ],
+      "returncode": 1,
+      "elapsed_seconds": 1.397902250289917,
+      "meaning": "Execution only; inspect estimation diagnostics before any scientific verdict",
+      "log": "Warning messages:\n1: In loadTbbLibrary(\"tbb\") : TBB library 'tbb' not found.\n2: In loadTbbLibrary(\"tbbmalloc\") : TBB library 'tbbmalloc' not found.\nError: unexpected symbol in:\n\" for(twin in 1:2){bad<-!complete.cases(x[,((twin-1)*q+seq_len(q)),drop=FALSE]);dat[bad,twin]<-NA}\n model<-mxModel('joint',mxMatrix('Full',1,1,TRUE,sqrt(.5),name='a'),mxMatrix('FullMatrix('Full\"\nExecution halted\n",
+      "reason": "Transient parse failure while the working source file was being edited; no fitted result. Retried identical seed/condition after source was stable."
+    },
+    "retry": {
+      "tag": "pilot-c6-MCAR-q2-m0.03-r10",
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/openmx_replication.R",
+        "2",
+        "0.03",
+        "MCAR",
+        "34481",
+        "pilot-c6-MCAR-q2-m0.03-r10"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 2.3610172271728516,
+      "script_sha256": "818c0d9873d0950fb80bb320ee51754c41a0b6e675ec1462b80649d6595d031e",
+      "meaning": "Same seed and condition retried after startup parse failure; fitted results inspected separately"
+    }
+  }
+]
