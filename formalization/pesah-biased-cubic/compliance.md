@@ -1,0 +1,17 @@
+# Compliance and comparability ledger
+
+Baseline master: e2b553c06c872d8008061a26d05831e572e54789. Skill: `.agents/skills/replication-paper/SKILL.md`, revision 1e69e2c0e6fa2f42d0879d48936561df02659add. Template: `.agents/skills/replication-paper/assets/approved-preamble.tex`, same skill revision, derived from approved Kupzyk ca1d062 layout. No reusable skill edits.
+
+| Requirement | Execution and limit |
+|---|---|
+| New scheduled quantum dissertation | Slot 2; prior studies/register/all-state PRs checked against current master. Pesah 2021 MRes is distinct from excluded Higgott, Denys, and the inaccessible Pesah 2026 PhD. |
+| Full source and bounded headline | Complete 66-page text read, selected methods/results visually checked. Selected substantive pure-X cubic threshold comparison in Table 3.1/Figure 3.5. Pure-Z, rhombic, circuit noise, and SweepMatch claims remain outside this study. |
+| Engine preflight | Preflight accepted justified quantum departure: binary stabilizer/BP-OSD decoding is not an SEM estimand. R/lavaan/OpenMx unavailable and scientifically inapplicable. |
+| Independent checks | Independent incidence construction and sparse/integer decoder compared with historical dense source: 240 identical syndromes, sizes 2/3/4, both deformation arms. Shared source definitions, error inputs, NumPy, and machine; partial implementation independence only. PCG64 and standard-library MT19937 provide separate Monte Carlo generators, sharing decoder and graph. |
+| Resource pilot | 20 shots per arm at L=4/6/8 and 10 per arm at L=10. Largest pilot about 0.18 seconds/shot and 59 MiB resident memory. Production bound: one process, 2400 CPU seconds, 2 GiB address space; checkpoints per condition. |
+| Comparable estimand | Perfect-syndrome independent pure-X Pauli channel, periodic cubic sizes 4/6/8/10, Hadamard on x edges, full logical failure, order-zero OSD. Both source arms are run. Comparison is limited by missing production configuration, counts, seeds, runtime pins and fitting window. |
+| Supplied defaults | Historical public default 10 BP iterations; 100-iteration sensitivity at L=4/6. Source epsilon 1e-8 retained. Selection moved from initially screened doctoral works to an accessible MRes dissertation that bears the requested dissertation designation; no PhD status or user-specific Pesah selection is implied. New probability grid brackets each crossover; 250 shots per generator per condition. |
+| Agreement and uncertainty | Source thresholds printed to 0.1 percentage point; half-up rounding evaluated independently of scope and uncertainty. Three threshold comparisons form a Bonferroni family. Unknown source uncertainty makes source bands conditional. A separate 32-cell family tests generator differences. |
+| Signed effects | Primary contrast is deformed minus undeformed threshold in percentage points; positive favors deformation. Ours-minus-source deviations use a separate field. Inventory and coverage helper checks required. |
+| Source evidence and rights | 600-dpi table and equation crops, hash/coordinate manifest, no complete dissertation or third-party source in git. New original Python code follows repository scope; imported research evidence is excluded. |
+| Manuscript and delivery | Approved preamble retained, main manuscript leads with selected headline and limits. Final artifact/reproduction revisions, rendered-PDF review and remote byte hashes recorded separately after build. Master navigation is prospective until merge. |
