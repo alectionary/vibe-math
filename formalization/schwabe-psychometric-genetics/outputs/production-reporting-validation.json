@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "test": "requested_includes_complete_failed_inflight",
+      "passed": true
+    },
+    {
+      "test": "no_baseline_audit_double_count",
+      "passed": true
+    },
+    {
+      "test": "guard_valid_and_invalid_both_retained",
+      "passed": true
+    },
+    {
+      "test": "process_failed_and_uncheckpointed_counts",
+      "passed": true
+    },
+    {
+      "test": "completed_valid_and_invalid_parameter_rows_exported",
+      "passed": true
+    },
+    {
+      "test": "partial_process_failure_evidence_archived",
+      "passed": true,
+      "files": [
+        "partial-failure-manifest.json",
+        "partial-failure-evidence.tar.gz"
+      ]
+    }
+  ],
+  "scope": "Temporary synthetic bookkeeping fixtures only; not simulation evidence.",
+  "fixture_report": {
+    "new_completed_datasets": 1,
+    "guarded_baseline_replay_datasets": 1,
+    "guard_valid_method_fits": 3,
+    "guard_invalid_method_fits": 1,
+    "process_failed_datasets": 1,
+    "in_flight_or_uncheckpointed_requested": 1
+  },
+  "condition_rows": [
+    {
+      "mechanism": "MCAR",
+      "q": "2",
+      "missing": "0.1",
+      "method": "deletion",
+      "target": "1000",
+      "requested": "4",
+      "completed": "2",
+      "guard_valid": "1",
+      "guard_invalid": "1",
+      "process_failed": "1",
+      "in_flight_or_uncheckpointed": "1"
+    },
+    {
+      "mechanism": "MCAR",
+      "q": "2",
+      "missing": "0.1",
+      "method": "full",
+      "target": "1000",
+      "requested": "4",
+      "completed": "2",
+      "guard_valid": "2",
+      "guard_invalid": "0",
+      "process_failed": "1",
+      "in_flight_or_uncheckpointed": "1"
+    }
+  ]
+}

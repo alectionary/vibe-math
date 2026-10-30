@@ -1,0 +1,80 @@
+{
+  "reviewer": "Independent production guard reviewer (/root/guard_validation)",
+  "reviewed_utc": "2026-10-30T18:36:09.107646+00:00",
+  "status": "accepted for finite unattended continuation under declared operational bounds",
+  "code_hashes": {
+    "simulation/production_status.py": "3c20d047ad661bfa6ae74aa518be51050f23b865e509646cc2a6cb2a8fa3da28",
+    "simulation/production_supervisor.py": "c8178e442075620b65ec27a8c9bba50b8ff9174caa83086b92a38476eeeb86c7",
+    "simulation/test_production_reporting.py": "786fe4172a80dbf72bfabef8d8a0d9db579348b18e4c5a5505bf738b4483f731"
+  },
+  "frozen_core_unchanged": true,
+  "checks": {
+    "reporting_adversarial_fixtures": 6,
+    "supervisor_bound_rejection_tests": [
+      {
+        "arguments": [
+          "--batch-jobs",
+          "481"
+        ],
+        "returncode": 2,
+        "passed": true
+      },
+      {
+        "arguments": [
+          "--hours",
+          "12.1"
+        ],
+        "returncode": 2,
+        "passed": true
+      },
+      {
+        "arguments": [
+          "--max-batches",
+          "111"
+        ],
+        "returncode": 2,
+        "passed": true
+      }
+    ],
+    "evidence": "outputs/production-reporting-validation.json"
+  },
+  "findings_and_fixes": [
+    {
+      "finding": "Per-condition requested denominator excluded process failures/in-flight requests",
+      "resolution": "Count every request receipt; distinguish completed, valid, invalid, process-failed and in-flight/uncheckpointed."
+    },
+    {
+      "finding": "Partial failed-process CSV evidence omitted from export",
+      "resolution": "Archive partial job directories and export file hashes separately; never promote unverified partial outputs into valid-fit summaries."
+    },
+    {
+      "finding": "Supervisor timeout could orphan R descendants",
+      "resolution": "New process session per runner; TERM process group, bounded grace, unconditional KILL attempt for surviving descendants, then reap leader."
+    },
+    {
+      "finding": "Target selector trusted completed state without final integrity audit",
+      "resolution": "Check checkpoint identity during selection; target-reached path validates every complete checkpoint and performs hash-verified export."
+    },
+    {
+      "finding": "Batch argument exceeded stated480-dataset cap",
+      "resolution": "Reject batch-jobs>480; CLI bounds tests also reject hours>12 and batches>110."
+    },
+    {
+      "finding": "Final audit/reporting could overrun continuation deadline",
+      "resolution": "Deadline checked per final-audit job; reporting subprocess timeout bounded by remaining allowance and600seconds."
+    }
+  ],
+  "operational_review": [
+    "At most110 runner invocations and12hours; each runner uses at most480datasets,4workers,12dataset chunks and1800seconds. Runner independently enforces CPU quota,1thread per worker, namespace lock and memory threshold.",
+    "Supervisor dispatch examines completed identities, states and fixed target membership only, never estimates, uncertainty intervals or significance. Invalid completed fits do not trigger favorable-selection retries.",
+    "Baseline0-19 is a guarded audit, not additional unique datasets; new20-999 is counted separately.",
+    "Fixed process/code/memory/time limits can stop continuation with unfinished target; no claim these stopping rules establish scientific completion.",
+    "Snapshot checkpoint paths before request scan avoids common concurrent-report negative-inflight race; reporting remains an interim snapshot."
+  ],
+  "limits": [
+    "Failure and process-group behavior were reviewed in code; no live forced-timeout production job was injected. Reporting, denominator and CLI limits were exercised with isolated synthetic fixtures.",
+    "Status reporting without --export reads receipts; --export verifies completed output hashes and retains partial failures separately.",
+    "Hash identity binds reviewed sources; later edits require re-review before continuation.",
+    "This acceptance covers orchestration and bookkeeping only; model assumptions, missing original empirical data, unknown source uncertainty and whole-dissertation incompleteness remain."
+  ]
+}
