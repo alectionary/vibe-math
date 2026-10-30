@@ -5,6 +5,7 @@ from scipy.stats import norm
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams["pdf.fonttype"] = 42
 ROOT=Path(__file__).parent
 rows=[json.loads(p.read_text()) for p in (ROOT/'results').glob('*_n100000.json')]
 def group(family,p,s=48):
