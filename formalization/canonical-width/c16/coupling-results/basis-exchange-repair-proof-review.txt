@@ -1,0 +1,109 @@
+Independent review of the exact basis-mixture exchange repair
+
+Scope and assumptions
+
+Let E be a finite set of physical binary vectors of rank r. Let q_j be an
+exact target in [0,1] with sum r, and let x be the incidence marginal of a
+finite distribution on bases B of E. Every retained weight w_B is positive
+and their sum is one. Repeated copies of the same basis are first merged.
+All statements below are exact. An approximate target, negative weight or
+incomplete collection of exchange edges does not support the no-path proof.
+
+Local augmentation lemma
+
+Put an edge i -> j whenever some positive-weight B contains i, excludes j,
+and B-i+j is a basis. A simple path from a surplus coordinate s (x_s>q_s)
+to a deficit coordinate t (x_t<q_t) has a chosen original basis B_e for
+each edge. Let m_B count how many path edges use B. Set
+
+  delta = min(x_s-q_s, q_t-x_t, min_B w_B/m_B).
+
+Subtract m_B*delta from each original B and add delta to each exchanged
+basis B_e-i_e+j_e, merging duplicates. Each new basis is independently
+rank checked. The weights remain nonnegative and have total one. The
+incidence changes telescope along the path, leaving only -delta at s and
++delta at t. The positive marginal error decreases by delta and the L1
+error by 2*delta. The multiplicity divisor is required because an original
+basis can witness more than one edge. It is conservative if new bases
+coincide with old ones, which does not invalidate the update.
+
+The supplementary literal boundary has binary vectors [1,3,2,3,1], original
+bases B=(0,2) of weight 1/3 and C=(1,4) of weight 2/3, and path
+0->1->2->3 witnessed by [B,C,B]. Endpoint discrepancies are both 1/4.
+The valid delta is 1/6; ignoring multiplicity would use 1/4 and subtract
+the original B weight to -1/6. None of the three new bases equals B, so
+this remains a negative final weight even after incoming weights are
+added. The earlier four-vector control separately checks the conservative
+bound in the case where a newly generated basis equals an original one.
+
+Complete-graph no-path lemma
+
+Let S contain every surplus coordinate, D every deficit, and R be all
+vertices reachable from S in the complete positive-basis exchange graph.
+If no S-to-D path exists and x differs from q, then D lies in C=E\R.
+No surplus lies in C, so q(C)>x(C).
+
+Fix any positive B. For j in C\B, its fundamental circuit in B+j has no
+element i in B intersect R: such an i would give an outgoing edge i->j.
+Thus j lies in span(B intersect C). Vectors already in B intersect C do
+too. Consequently span(B intersect C)=span(C). Since B is independent,
+|B intersect C|=rank(C) for every positive B. Averaging gives
+
+  x(C)=rank(C)<q(C).
+
+This is an exact violated matroid rank inequality. The implementation
+also directly computes rank(C) and checks |B intersect C|=rank(C) for
+every retained positive B before exporting a cut. This is an additional
+check of the final certificate, independent of the search heuristic.
+The source inequality is sum_{j in C} T(anchor,j) <= rank(C)*p_anchor.
+
+Restricted graphs may propose valid paths. Failure to find a path in
+only the 8 or 32 largest-weight bases proves nothing. The lazy successor
+correctly falls back to the complete graph before its rank-cut branch.
+Both versions perform the same direct rank and target checks at that
+branch. An incomplete-graph control explicitly manufactures a purported
+closed set at a feasible target; direct rank rejects its supposed cut.
+
+Termination is separate
+
+Every accepted step is valid and strictly decreases the exact error.
+No positive lower bound on the step size has been established. Therefore
+these observations do not prove finite or polynomial global termination.
+Timeout and iteration-limit outcomes remain inconclusive. Search paths
+are not needed to accept a terminal certificate.
+
+Independent terminal mixture proof for anchor40 at point12
+
+For selected X anchor x, split all 720 Z vectors by the evaluation x.z.
+The zero pool is a rank127 hyperplane. The candidate supplies a probability
+distribution on its physical rank127 bases and a separate probability
+distribution on the unit-evaluation vectors. Every product component
+B union {u} has rank128: u has evaluation one while every vector in
+span(B) has evaluation zero. The product probabilities are nonnegative,
+sum to one, and give the specified zero and unit marginals.
+
+The fresh direct terminal consumer reconstructs the physical source,
+checks every one of 956 zero bases with a low-pivot rank routine, checks
+96 unit probabilities, and reproduces all 720 exact conditional targets
+q_j=T(anchor,j)/p_anchor. This represents 91,776 implicit full128 bases;
+there is no need to expand their product list. The target has zero and
+unit masses 127 and 1. No discovery trajectory is used. Five mutations
+are rejected: negative basis weight, short basis, negative unit mass,
+changed exact target and wrong point binding.
+
+This proves singleton present-conditioned opposite-basis membership.
+The existing generic consumer separately checks the rotation and sector
+maps to transfer the singleton conclusion to all phases. Neither this
+terminal mixture nor the exchange lemma establishes a joint profile law,
+a complete compatible X/Z frame, a selected cover case, or an answer to
+the source width problem. Cover405 and partial88 remain unchanged.
+
+Finite independent controls
+
+The independent local consumer constructs every exchange edge by literal
+rank testing rather than by the producer's fundamental-circuit routine.
+It checks 2,944 states over four small binary matroids, including loops
+and parallel elements, and 21,732 literal edges. Results: 2,642 exact
+path steps, 250 directly verified closed-set rank cuts and 52 matched
+states. Controls support the implementation; the general proofs above
+are what justify the lemmas beyond these finite examples.

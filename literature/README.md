@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **170 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **171 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -1362,6 +1362,12 @@ Author-copy lead identified, not retrieved or screened; no full-text access deni
 Donald K. Wagner. 2021. [c16 strategy reassessment](https://epubs.siam.org/doi/10.1137/21M139339X).
 
 Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F173 Testing membership in matroid polyhedra
+
+William H. Cunningham. 1984. [c16 coupling membership methods](https://www.sciencedirect.com/science/article/pii/0095895684900236).
+
+Publisher-indexed abstract and author bibliographic entry inspected. Publisher landing/PDF reader returned403; connected Edge browser displayed a CAPTCHA. Author available-papers index and Bonn report81207 index supplied no full text. OpenAlex identifies the publisher PDF as open access but supplies no repository PDF. Retrieval request63 is open; full text remains unverified. No full-text question screen or implementation/complexity transfer is claimed. The current exchange repair has independent local/terminal certificates but no polynomial termination guarantee.
 
 ## Question by question cross references
 

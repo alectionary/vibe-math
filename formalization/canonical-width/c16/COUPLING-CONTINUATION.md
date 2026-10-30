@@ -6,6 +6,16 @@ Work branch: `research/c16-coupling-20261030T0514`.
 Source issue: <https://github.com/alectionary/vibe-math/issues/8>.
 Prior research checkpoint: `794ebbb9b37f677f51482155ae441470b273d74e`.
 
+**Current checkpoint, 10:26 UTC:** the source width remains unresolved between
+16 and 18. The latest exactly accepted global relaxation point is
+`integer-witness15`, with 54 partner inequalities, 234 additional integer-form
+rows and 308 rank rows. The source cover is still 405; no full source anchor
+has been excluded and the best physical partial frame remains 88/128.
+The dated sections below distinguish relaxation cuts, exact membership
+barriers and source results. None of the auxiliary membership certificates
+is a physical frame. The final thirty minutes of this block are reserved
+for verification, preservation and a resumable handoff.
+
 The user explicitly resumed and authorized the next six hours. Start:
 2026-10-30T05:14:33Z. Hard deadline:2026-10-30T11:14:33Z. Reserve the final
 30minutes, starting10:44:33Z, for verification and preservation. The earlier
@@ -584,3 +594,113 @@ bridge reconstructs 518,400 physical pairings, both 128-cardinalities and
 the fixed source case; the baseline has 842,378 clauses and the augmented
 model 990,227. Neither a model nor a proof is produced. No source gain or
 runtime benefit is claimed.
+
+## 10:20 UTC: exact exchange repair and checkpoint replay
+
+The independently reviewed exchange lemma supports a concrete exact
+membership certificate at witness12, anchor40. In 8.41 seconds the repair
+finds a rational mixture of 956 physical rank127 zero-pool bases. Combined
+with 96 positive unit-owner probabilities, its product represents 91,776
+implicit compatible full128 bases. Both the existing generic consumer and
+a separate terminal consumer verify all 720 conditional marginals exactly,
+physical ranks, source bindings and corrupted-input controls. Thus every
+conditional matroid-rank inequality holds for this anchor law, including
+its checked rotations. The certificate does not couple the other anchor
+laws or certify a full source frame.
+
+The witness12 cohort now has 28 accepted singleton rank-law certificates
+(27 lattice certificates and this exact mixture), 12 independently checked
+rank cuts, and five inconclusive anchors: 5, 16, 17, 43 and 44. These counts
+refer to the single frozen witness12 point. They are not coverage claims
+for witness15, whose anchor40 law is being tested separately.
+
+Anchor17 remains inconclusive after the planned 480-second eager and
+400-second lazy runs. Both start from the same numerical seed; the lazy
+run does not continue the eager endpoint. Their independently replayed
+exact states contain 600 and 723 bases, with positive-coordinate errors
+approximately 0.00991779 and 0.00712024. These are valid resumable mixtures,
+not exact target representations or rank-violation certificates.
+The frozen exchange gate is indexed by
+`coupling-results/singleton-exchange-witness12-inventory.json`, SHA256
+`89f27ee7771707a26c7363faf6ba5e863246861e4b67e5653fbf4e6995f2c2e7`.
+
+The proof review establishes the mass-transfer step, the complete-exchange-
+graph no-path rank obstruction and terminal-certificate soundness.
+When one original basis witnesses several path edges, its allowed transfer
+is divided by its multiplicity. A partial lazy graph can find a valid
+augmentation but cannot justify a no-path obstruction. The review and
+negative controls include both errors. No finite or polynomial termination
+claim is made for the implemented repair.
+
+A clean checkout of commit `1e852eea43956cbc38759e5182e6f3df9bb782d7`
+passes all 36 declared acceptance stages and 1,422 source bindings. It
+recovers witness15 byte-for-byte, replays all 54 partner and 234 new
+integer-form rows, the latest rank cuts, the exact unconditional mixture,
+both four-X and both two-X/two-Z count memberships, and the prefix/source-CNF
+bridges. Its inventory and explicit omissions are under
+`coupling-results/final-clean-checkpoint0957/`. This checkpoint precedes the
+exchange additions, which require a separate clean replay before handoff.
+The final bounded five-event refresh at witness15 produces no candidate
+in 3,000 restarts; this is not exhaustive five-event feasibility.
+
+## Focused classical-method lead
+
+Cunningham's *Testing membership in matroid polyhedra* (1984), bibliography
+F173, has a publisher-indexed abstract describing a polynomial membership
+algorithm that returns a decomposition or violated rank inequality. The
+present exchange repair was derived and independently checked before this
+lookup. Its implementation has not been identified with Cunningham's
+algorithm and inherits no complexity bound from the abstract.
+
+The author publication list and Bonn report81207 index confirm the reference.
+The publisher reader returns403, and a connected Edge browser displays a
+CAPTCHA. OpenAlex identifies the same publisher PDF as open access; these
+route failures are not evidence of a paywall. Full-text acquisition is
+requested in [issue63](https://github.com/alectionary/vibe-math/issues/63).
+The question screen remains unassessed, with null question count. The dated
+access and code/supplement ledger is
+`coupling-results/cunningham-membership-reference.json`.
+
+This adds one incomplete paper record and one central source reference.
+The canonical inventory remains 424 targets, 160 eligible targets and six
+completed canonical Lean targets. There are now 205 paper records, 165 full
+text screens and 133 central source records. No new author-posed question,
+source resolution or Lean completion is credited.
+
+## 10:34 UTC: latest-point and smaller-master negative gates
+
+The witness12 anchor40 exact certificate does not transfer to witness15:
+all 720 conditional target coordinates differ. A separately frozen repair
+starts from its 956-basis mixture and the new target. Its 540-second cap
+ends after 2,701 exact exchanges with positive-coordinate error reduced
+from 0.2220614092 to 0.0472435720. The saved 1,445-basis state and 96 owner
+probabilities pass the unchanged independent state consumer. It remains
+inconclusive: no exact membership and no rank cut. The seven-file inventory
+is `coupling-results/singleton-exchange-witness15-inventory.json`.
+
+For witness12 anchor17, the union of the two saved trajectories contains
+814 distinct physical bases, including 509 common bases. A bounded
+fixed-column LP has 557 equalities and returns UNKNOWN without a primal
+vector in 1.05 seconds. No exact recovery is attempted. This is not an
+infeasibility certificate, even for that finite column hull.
+
+A revised shared-profile phase-I trial uses the existing 775 features,
+removes only three proved gauge coordinates, starts with 665 positive
+warm columns, prices through the native physical oracle, adds only the best
+column each round and prunes inactive columns. This is a bounded successor
+to the earlier L1 method, not a different relaxation. In 180.17 seconds it
+tests 767 exact-priced dual proposals and accepts no separator. The active
+master finishes with 312 columns; 1,431 historical columns are retained.
+Its numerical restricted L1 objective falls from 10.8430 to 1.6420, which
+does not prove projected membership. The final negative support value has
+an independent 291-domain, 71,088-rank-check replay. No source gain or
+general speedup follows. See
+`coupling-results/native775-phase-one-witness15.json` and
+`coupling-results/exchange-to-joint-profile-next-gate.txt`.
+
+The portable `replay_coupling_point15.py` wrapper now reruns the seven frozen
+acceptance stages into a new output directory. It verifies all 689 original
+scientific input hashes before and after execution and requires byte-identical
+rational recovery. Its first replay passes, with receipts in
+`coupling-results/portable-point15-replay1032/`. It changes no mathematical
+consumer and does not replace the broader 36-stage source-certificate replay.

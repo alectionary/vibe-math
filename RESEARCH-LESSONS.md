@@ -694,3 +694,14 @@ near-zero variables then produced independently checked rational feasible
 points. Exact replay settles that discrepancy. It also gives a stopping
 criterion for a proposed relaxation: once an exact extension exists, repeating
 that same count-only test cannot exclude the point.
+
+For a conditional matroid law, an exact basis mixture can settle every rank
+inequality at once. A surplus-to-deficit exchange path repairs an existing
+mixture with rational arithmetic; a terminal exact mixture is independently
+checkable regardless of the search history. Account for repeated use of a
+basis when bounding transferred mass. Lazy exchange graphs are safe for
+finding augmentations, but a failed lazy search is not a rank obstruction:
+use the complete positive-basis graph or directly verify the proposed rank
+gap. In this block one conditional law becomes exact while a second remains
+inconclusive under its cap. Preserve both states, and do not infer a general
+runtime bound or a shared global distribution from individual memberships.

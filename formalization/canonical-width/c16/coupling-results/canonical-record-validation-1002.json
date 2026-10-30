@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "checks": [
+    {
+      "script": "scripts/validate_open_problems.py",
+      "source_sha256": "dec6c8ed438f2aced51efb7d57fad42aff327efcf92f68667081519b19f5ad04",
+      "returncode": 0,
+      "output": "Validated 424 canonical entries, 160 eligible targets, 204 paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.\nResearch reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.\nBeezer extension:187\u2192190 entries,111\u2192112 eligible,60\u219261 papers,57\u219258 full-text screens; three historical complete Lean targets retained; one existing F16 target completed.\n",
+      "seconds": 0.19623033399693668
+    },
+    {
+      "script": "scripts/validate_current_difficulty.py",
+      "source_sha256": "31c82eb96d38cd838e3838d62eb73d61f5e09fbff46be3b715c9f6ba5238f8c5",
+      "returncode": 0,
+      "output": "Validated 424 planning records, including 243 explicitly unassessed additions, 160 eligible targets and 6 completed targets.\n",
+      "seconds": 0.13408862496726215
+    }
+  ],
+  "inventory": {
+    "checked_on": "2026-10-30",
+    "canonical_inventory_entries": 424,
+    "legacy_entries": 40,
+    "additional_entries": 384,
+    "additional_eligible_targets": 121,
+    "additional_non_denominator_entries": 263,
+    "eligible_targets": 160,
+    "eligible_verified_proof_assistant_statements": 6,
+    "eligible_verified_lean_statements": 6,
+    "eligible_verified_lean_proofs": 6,
+    "eligible_targets_with_supporting_lean_proofs": 0,
+    "eligible_identified_unverified_lean_statements": 1,
+    "eligible_lean_discovery_unassessed": 52,
+    "eligible_targets_with_verified_finite_cases": 0,
+    "article_records": 204,
+    "full_text_screened": 165,
+    "current_publication_full_text_screened": 164,
+    "historical_withdrawn_full_text_screened": 1,
+    "not_fully_assessed": 39,
+    "article_records_with_recorded_targets": 116,
+    "canonical_targets_with_article_occurrences": 399,
+    "legacy_targets_with_article_occurrences": 15,
+    "new_entry_kinds": {
+      "conjecture_or_question": 53,
+      "research_direction": 208,
+      "classification_or_construction": 20,
+      "extremal_or_classification": 10,
+      "proof_method_request": 4,
+      "algorithmic_question": 1,
+      "mathematical_question": 4,
+      "conjecture": 21,
+      "specific_distance_problem": 5,
+      "specific_question": 23,
+      "method_request": 16,
+      "open_question": 6,
+      "held_formulation": 3,
+      "question": 2,
+      "question_formulation_gate": 3,
+      "borrowed_conjecture": 1,
+      "borrowed_conjecture_formulation_gate": 1,
+      "borrowed_specific_question": 1,
+      "borrowed_context_question": 1,
+      "borrowed_context_formulation_gate": 1
+    },
+    "new_written_math_statuses": {
+      "precise_math_in_source": 123,
+      "research_direction": 144,
+      "formulation_needs_clarification": 20,
+      "proof_method_request": 4,
+      "formulation_requires_scope_check": 3,
+      "method_request": 15,
+      "broad_direction": 33,
+      "held_formulation": 7,
+      "formulation_requires_clarification": 3,
+      "research_direction_or_formulation_gate": 32
+    },
+    "related_author_reported_lean_constructions": 1
+  },
+  "scope": "Canonical record, counts, historical evidence and link checks; not a new theorem or Lean build."
+}

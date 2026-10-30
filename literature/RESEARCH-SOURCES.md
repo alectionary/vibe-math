@@ -1706,3 +1706,16 @@ SageMath developers. Official API documentation inspected 2026-10-30. [Primary s
 - Comparison limit: Sage itself was not executed or installed. No paper was acquired, no academic full-text screen or author-posed question is added, and no historical-priority or full-frame conclusion follows.
 - Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../formalization/canonical-width/c16/moment-resumption-results/software-reference.json).
+
+## F173 — Testing membership in matroid polyhedra
+
+William H. Cunningham. Journal of Combinatorial Theory, Series B36(2),161–188,April1984. [Primary source](https://www.sciencedirect.com/science/article/pii/0095895684900236).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Publisher-indexed abstract; author publication entry18; author available-papers index; Bonn report81207 index; OpenAlex W2080656989; connected-browser publisher challenge. Fulltext request63 pending..
+- Contribution: Prospective exact matroid-membership algorithm reference after the independently derived C16 exchange-repair gate.
+- Comparison limit: Full text not retrieved or question-screened. Current implementation is not identified with Cunningham's algorithm and inherits no complexity guarantee.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json); 0 linked canonical targets.
