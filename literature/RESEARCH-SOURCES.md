@@ -1696,6 +1696,13 @@ Donald K. Wagner. SIAM J.Discrete Math.35(4),3030–3049,publishedonline21Decemb
 
 - Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
 
-### C16 matroid implementation reference, 30 October 2026
+## SageMatroidGreedy2026 — The abstract Matroid class: maximum-weight independent sets
 
-SageMath, [abstract Matroid class, `max_weight_independent`](https://doc.sagemath.org/html/en/reference/matroids/sage/matroids/matroid.html#sage.matroids.matroid.Matroid.max_weight_independent), accessed 2026-10-30. Official API documentation states the descending-weight greedy independence algorithm for nonnegative weights. Used as an implementation reference for a new conditional rank-cut separator in `formalization/canonical-width/c16/weighted_matroid_separator.py`; Sage itself is not installed or executed for this experiment. For a fixed-rank basis, adding a constant to all weights preserves the maximizing bases, so signed weights can be shifted to the documented nonnegative case. A required independent element is handled by contraction, justified separately in the investigation. This is software documentation, not a newly acquired research paper; no paper-screen or canonical-question count is added. Query: `site:doc.sagemath.org matroid max_weight_independent greedy`. No broad literature or historical-priority claim is made.
+SageMath developers. Official API documentation inspected 2026-10-30. [Primary source](https://doc.sagemath.org/html/en/reference/matroids/sage/matroids/matroid.html#sage.matroids.matroid.Matroid.max_weight_independent).
+
+- Record type: software source; access: relevant documentation read.
+- Inspected locator: max_weight_independent: nonnegative weights and descending-weight greedy independence algorithm.
+- Contribution: Implementation reference for the C16 conditional rank separator. Signed weights are shifted by a constant at fixed basis rank; a mandatory independent vector is contracted. Final cut validity uses independently recomputed integer ranks.
+- Comparison limit: Sage itself was not executed or installed. No paper was acquired, no academic full-text screen or author-posed question is added, and no historical-priority or full-frame conclusion follows.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/moment-resumption-results/software-reference.json).
