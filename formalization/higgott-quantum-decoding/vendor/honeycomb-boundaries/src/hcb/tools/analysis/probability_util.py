@@ -1,3 +1,6 @@
+# Modified in VibeMath: import LinregressResult from scipy.stats._stats_py
+# instead of scipy.stats._stats_mstats_common for SciPy compatibility.
+# See provenance/honeycomb_scipy_compat.patch in the containing investigation.
 import math
 from typing import Union, Callable, Sequence, Tuple
 
