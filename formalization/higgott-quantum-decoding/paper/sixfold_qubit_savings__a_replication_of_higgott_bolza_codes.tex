@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,graphicx,array,xurl}
+\usepackage[round,authoryear]{natbib}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+
+\newcommand{\file}[2]{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/higgott-quantum-decoding/#1}{\nolinkurl{#2}}}
+\renewcommand{\arraystretch}{1.25}
+
+\setlength{\emergencystretch}{1em}
+\setlength{\parskip}{5pt}\setlength{\parindent}{0pt}
+\title{Sixfold qubit savings with small Bolza codes:\\a replication of Higgott's quantum coding study}
+\date{30 October 2026}
+\begin{document}\maketitle\vspace{-2em}
+\begin{abstract}
+We partly replicated the composite headline of \citet{thesis}: the Bolza memory uses 16 rather than 96 physical qubits, an exact sixfold saving, but comparable failure-rate performance is not established. At $p=.001$, fresh Bolza and planar block-failure probabilities are .13772 and .12925, versus figure-derived .13390 and .12977; their reconstructed difference is $.00847\pm.00135$ under a simultaneous five-comparison band. We cannot replay the original simulations or make a two-sample source comparison because their counts and run bundle were not recovered. A point-estimate ordering reverses at $p=.01$: source Bolza .73440 is below planar .74158, whereas ours .74941 is above .74040; unknown source uncertainty prevents a statistically established source ranking. Six of ten confirmation source differences exceed adjusted conditional bands based on our Monte Carlo error and bounded figure extraction. The resource saving therefore accompanies a measured performance cost in our reconstruction. Code-distance checks and second-size simulations are supporting results; this study does not replicate the whole dissertation.
+\end{abstract}
+\begin{center}\small
+\begin{tabular}{p{.24\linewidth}rrp{.21\linewidth}l}
+\toprule Headline component & Source & Ours & Effect direction & Conclusion\\\midrule
+Physical qubit ratio & 6 & 6 & Bolza uses fewer & Match\\
+Failure contrast, $p=.001$ & +.00414 & +.00847 & Bolza higher, both & Partial\\
+Failure contrast, $p=.01$ & -.00718 & +.00900 & Point ordering reverses & Partial\\\bottomrule
+\end{tabular}
+\end{center}
+\noindent\small Source: \citet[pp.~177--178, Figure~7.14a]{thesis}. Failure contrast always means Bolza minus four planar copies; positive means higher Bolza failure risk. ``Effect direction'' never means ours minus source. Contrast half-widths are .00135 and .00143, Bonferroni-adjusted over five reconstructed contrasts. These intervals do not establish source rankings or equivalence. Resource equality is exact.\normalsize
+
+\section{What replicated?}
+The resource component replicated exactly; the performance component remains a limited reconstruction, not established equivalence. At $p=.001$, fresh Bolza and planar rates .13772 and .12925 exceed and fall below their respective source estimates .13390 and .12977. Both comparisons have Bolza higher at this point, but that local ordering does not describe the whole grid: at $p=.01$ the source point estimates put Bolza lower, while our confirmation puts it higher. Unknown source sampling uncertainty prevents treating that reversal as a demonstrated reversal of true source risks. The research question is whether a four-logical-qubit hyperbolic memory can save physical qubits at comparable failure risk; our answer is an exact resource saving with a measured reconstructed risk cost.
+
+The selected result is a bounded study within a much larger dissertation. Higgott's thesis was submitted on October 1, 2023; UCL catalogs the doctorate as 2024. Chapter~7 studies hyperbolic Floquet codes, whose two-qubit parity measurements change the represented logical operators over time. We read that chapter, the decoder definitions on pp.~41--56, and Appendix~E. Larger code families, thresholds, the 48-fold saving, real-time decoding speed, and other chapters are outside this replication. The closely related preprint provides the vector figure used in the independent source extraction \citep{construction}.
+
+\begin{figure}[ht]\centering
+\includegraphics[width=\linewidth]{figure_7_14a_replication.pdf}
+\caption{Figure~7.14a reconstructed at 16 physical-noise probabilities. Open circles are independently extracted source-vector coordinates; lines are the preserved baseline of 100,000 shots per basis. Fresh confirmation is reported separately in Table~\ref{tab:confirm}. The right panel gives differences with Bonferroni bands for our sampling uncertainty only. Source sampling uncertainty is unknown. The dotted horizontal lines mark the exploratory 0.02 absolute margin. Data: \file{results/figure_comparison.csv}{figure_comparison.csv}.}
+\end{figure}
+
+\section{What we did and what came from the source}
+We independently reconstructed noise, checked code parameters, simulated circuits, and compared the resulting curves. The source supplied the Bolza edge schedules, detector definitions, and observable parities as Stim circuit data; the planar geometry and schedules came from the comparator generator cited by the thesis \citep{honeycomb}. We did not independently regenerate the hyperbolic tiling from a group presentation. Our parameter check instead reconstructed the three edge matchings and their faces from the supplied noiseless circuits.
+
+Supporting code-structure checks verify that both small lattices have Euler characteristic $-2$ and encode four logical qubits. The 16-qubit lattice has 24 edges and six faces; its 64-qubit refinement has 96 edges and 30 faces. Exhaustive low-weight searches in all three restricted codes recover embedded distances 2 and 3, independently of Stim's circuit-distance routine. For the 64-qubit code, one sector has no logical vector through weight four; the complementary sector has distance three, which suffices to establish the minimum. See \file{code_parameters.py}{code_parameters.py} and \file{provenance/independent_code_parameters.json}{independent_code_parameters.json}.
+
+Stim's graphlike circuit distances independently agree with those embedded minima for reconstructed EM3 circuits. The supplied 16-qubit SD6 circuits also give distance two and use 40 physical qubits. The $l=2$ SD6 total of 160 follows from the source's $n+3n/2$ resource formula, but we have not independently reconstructed its SD6 circuit distance four. That cell is not a numerical replication result.
+
+\section{Methods and uncertainty}
+The comparison uses the probability of at least one logical failure, not a mean of four observable error indicators. The thesis defines this convention in Figure~7.11's caption and illustrates independent-patch aggregation in Figure~7.12. If $r_X,r_Z$ are single-patch planar failure probabilities, our four-copy quantity is
+\[
+ R_{\mathrm{planar}}=\tfrac12\{1-(1-r_X)^4+1-(1-r_Z)^4\}.
+\]
+For Bolza, each experiment already encodes four logical qubits; we average its X- and Z-basis block probabilities. The four copies are assumed independent, but the four observables within Bolza are not.
+
+We ran 226 conditions with 100,000 shots each, totaling 22.6 million primary and diagnostic shots. This includes both durations, both planar noise variants, both bases, and all planar comparator sizes for the second Bolza code. Seeds, counts, circuit hashes, and processing times are saved for every condition by \file{run_replication.py}{run_replication.py}. Separate historical and generator checks add further samples; these are not silently pooled into the primary estimates.
+
+Our uncertainty calculations separate three sources of error. For an independently sampled basis with empirical rate $r$ and $N$ shots, the estimated variance is $r(1-r)/N$. We propagate the planar transformation with derivative $4(1-r)^3$ and divide the sum of independent basis variances by four when averaging. The two-standard-error bands and Bonferroni bands with multiplier 3.16282 are both saved. Three families are specified separately: 32 baseline source comparisons, 10 confirmation source comparisons, and five within-reconstruction Bolza--planar contrasts. Their two-sided normal multipliers at familywise $\alpha=.05$ are 3.16282, 2.80703 and 2.57583, respectively. This is the single-step Bonferroni union-bound calculation \citep{multiple}, applied separately within each family, not one simultaneous guarantee over all reported analyses. For source differences, we add the bounded extraction allowance to either $2\mathrm{SE}$ or the adjusted Monte Carlo half-width; it is not treated as a Gaussian error. Original Monte Carlo uncertainty is missing from both bands. These normal/delta-method approximations apply to the high-count first-size curves. We withhold interval-based claims for rare-event second-size supporting rows; their point estimates and counts do not establish equivalence or zero risk.
+
+Vector-coordinate bounds are not statistical error bars. The independent source reviewer allowed $\pm .05$ original PDF points and propagated that interval through the logarithmic axes. All 32 marker centers were independently aligned to the thesis panel, with maximum residual $1.47\times10^{-5}$ thesis PDF points. Original simulation shot counts were not recovered. Consequently, the 16 conditional band exceedances are differences relative to our precision, not 16 demonstrated failures of the original sampling procedure. A two-sample Monte Carlo test is unavailable. Bonferroni cannot supply the missing original shot counts, remove systematic method differences, or establish equivalence. Numerical rounding agreement, reconstruction scope and conditional uncertainty decisions are separate labels.
+
+The baseline .02 absolute margin is retained only as a named exploratory sensitivity. It was chosen after pilots, was not source-specified, and supplies no equivalence acceptance criterion. Every baseline point difference lies inside it; we no longer label this descriptive observation a numerical ``close'' verdict. The largest baseline Bolza--planar point difference is .01638. That descriptive maximum does not establish uniform equivalence across the grid.
+
+\section{Assumptions supplied in this replication}
+\subsection{A finite grid and finite sampling budget}
+Our numerical scope is the 16 plotted probabilities from .001 to about .03162 for the first size. The second size is a five-point extension at .001, .002, .005, .01, and .02. Each baseline basis uses a fixed 100,000 shots; zero failures, if present, would not imply zero risk. Finite sampling budgets define our precision, not the original study's uncertainty; seeds and workload details are supplied in the reproduction appendix.
+
+\subsection{Modern and historical software}
+Our primary implementation uses Stim 1.16.0 and PyMatching 2.4.0 because the thesis specifies stabilizer simulation and minimum-weight perfect matching \citep{stim,matching}. A separate Python 3.10 environment uses Stim 1.12.0 and PyMatching 2.1.0, representative of the thesis period, on all 64 primary basis circuits. These are sensitivity versions, not a recovered original environment. Python 3.12.14, NumPy 2.5.4, SciPy 1.18.1, NetworkX 3.7, and Matplotlib 3.11.2 support array calculations, uncertainty, independent graph optimization, and figures \citep{numpy,scipy,networkx,matplotlib,software}. Exact dependencies are in \file{provenance/requirements-lock.txt}{requirements-lock.txt}.
+
+\section{Ambiguities resolved by checks}
+\subsection{Measurement duration}
+Forty-eight subrounds are the source-consistent duration for Figure~7.14a. Page~157 defines a round as three subrounds, and page~162 describes six subrounds as two rounds. The figure caption says 16 rounds, while the supplied circuit filenames and actual schedules contain 96 subrounds. We reduced the bulk repeat count from 15 to seven, preserving initial and final boundary operations. Both versions were run; the longer circuit substantially raises the low-noise failure probability. The mismatch is an input-selection issue, not evidence that the plotted simulation used the supplied template unchanged. See \file{circuits.py\#L6}{circuits.py}: \texttt{with\_duration}.
+
+\subsection{Correlated EM3 events and a simulation helper}
+The EM3 channel requires a correlated event, not independent depolarization and measurement noise. Section~7.2.5.1 samples uniformly from 32 two-qubit Pauli/measurement-flip possibilities with probability $p$, including the identity outcome. A channel with all 31 nonzero binary generators applied independently at probability
+\[
+ q=\frac{1-(1-p)^{1/16}}2
+\]
+has the same distribution: every nontrivial character encounters 16 generators, giving $(1-2q)^{16}=1-p$. The implementation is \file{circuits.py\#L19}{circuits.py}: \texttt{em3}. Direct convolution agrees within $7.8\times10^{-16}$. Every one of the 768 event blocks in each supplied EM3 basis circuit contains precisely those 31 generators. Stored $q=.0000312647$ implies $p=.00100000134578$; this rounding is immaterial at our precision. The extra simulation qubit is a noiseless parity-measurement helper, not a seventeenth physical EM3 qubit.
+
+\subsection{Boundary noise in the planar comparator}
+The generator's plotting scripts map the displayed label EM3 to its \texttt{EM3\_v3} model. An example collection command uses \texttt{EM3\_v2}; the two models differ at single-qubit boundary measurements. Running both changes the four-copy result at $p=.001$ from .15755 (v2) to .13030 (v3), the latter close to the figure's .12977. We retained all v2 results as a failed reconstruction diagnostic rather than discarding them. This correction follows inspected source code and improves source alignment; it does not constitute fitted calibration of $p$.
+
+\subsection{Logical representatives: what the algebra establishes}
+The supplied observables can be paired into a canonical basis, but the exact published-path mapping remains unresolved. At two matching bulk phases, ticks 7 and 43, we explicitly invert the four-by-four cross-commutation matrix and construct transformed Z representatives that pair with the supplied X representatives. The transformation and Pauli strings are in \file{revision2/basis_mapping.json}{basis_mapping.json}; \file{revision2/basis_mapping.py}{basis_mapping.py} regenerates them. For an invertible within-sector map $A$, $e=0$ if and only if $Ae=0$, so consistent relabeling of observed and predicted errors preserves block failure.
+
+This algebra does not identify the illustrated paths in Figure~7.6 with circuit vertex labels, nor independently reconstruct their initial and final readout paths. The source gives the path construction and six-subround evolution (pp.~161--163), while the data README warns that its representatives differ. No explicit figure-to-circuit vertex correspondence was recovered. We therefore retain this as a source-equivalence limitation. Canonical pairing alone is not a proof that a rebuilt decoder makes the same correction decisions.
+
+\section{Independent correctness checks}
+Independent checks support the implementation, while bounding what they verify. A mutually exclusive categorical representation of the noise was compared with the independent-generator representation on ten code/basis arms with 100,000 shots per generator. The largest standardized difference was 2.962, below a Bonferroni-adjusted threshold for ten two-sided comparisons. All ten noiseless circuits produced zero detector and observable events in 4096 samples each. Exact no-correction probabilities computed from the detector-model characteristic function provide another control, independent of decoding (\file{run_replication.py\#L8}{run_replication.py}: \texttt{no\_correction\_exact}).
+
+A separate NetworkX shortest-path and matching calculation (\file{independent_checks.py\#L26}{independent_checks.py}: \nolinkurl{independent_minimum}) checked 100 syndromes per arm. Its minimum objective differed from PyMatching by at most $1.26\times10^{-6}$ across 1000 cases. This checks optimization on the same graph; it does not independently derive that graph or rule out alternative equal-weight logical corrections. The categorical sampler still uses Stim's stabilizer engine. These are complementary checks, not entirely independent end-to-end implementations. Results and algorithms: \file{independent_checks.py}{independent_checks.py} and \file{provenance/independent_checks.json}{independent_checks.json}.
+
+The external generator's relevant tests pass, but its entire selected suite does not. After one SciPy import-location compatibility change, 270 tests passed and 20 failed; the failures concern SD6/SI1000 decomposed-distance expectations under the modern Stim version. The EM3 subset passes all 122 selected tests. Those unrelated failures remain recorded and were not edited away. The workflow's own 25 tests also pass.
+
+\section{What did fresh confirmation and decoder checks change?}
+Fresh samples sharpen the resource--performance tradeoff without closing every source gap. We fixed five original grid indices and one million new shots per basis before the follow-up, with new seeds and no significance-based stopping. These 20 million shots remain separate from the original baseline. Table~\ref{tab:confirm} reports the resulting probabilities and simultaneous intervals for the five Bolza--planar differences. Every difference is positive under the reconstructed model; no application-specific acceptable loss was supplied, so we report these costs directly rather than assert equivalence under a new margin.
+
+\begin{table}[ht]\centering\small
+\input{confirmation_table.tex}
+\caption{Fresh confirmation, one million shots per basis. Difference means Bolza minus four planar copies; half-widths use a normal approximation and Bonferroni correction over five differences. They describe our reconstructed models, not source uncertainty. Data: \file{revision2/followup_summary.json}{followup_summary.json}.}\label{tab:confirm}
+\end{table}
+
+The scientific contrast reverses point-estimate ordering at $p=.01$. The figure has Bolza .734398 versus planar .741583, a contrast of -.007185; fresh simulation has .749409 versus .740405, a contrast of +.009004 with simultaneous half-width .001434. All five reconstructed contrast intervals are positive, but original sampling uncertainty is unknown, so the source contrast sign is descriptive only.
+
+Six of ten confirmation differences lie outside their adjusted conditional source bands. At $p=.001$, the Bolza difference +.003818 exceeds both the two-SE-plus-extraction half-width .000543 and the adjusted half-width .000739. The planar difference -.000517 lies inside its corresponding .000977 and .001350 bands. This conditional compatibility does not make the planar number a rounding match or establish equivalence. Every endpoint and decision is saved in \file{revision3/comparison_decisions.json}{comparison_decisions.json}, generated from unchanged counts by \file{revision3/comparisons.py}{comparisons.py}.
+
+The largest source difference among these selected confirmation points is .01501, for Bolza at $p=.01$ (.74941 versus .73440). Additional samples therefore did not remove that residual. The original exploratory .02 band remains a description of the baseline analysis; it is not a scientifically established equivalence tolerance. The fixed protocol and selection rationale are in \file{revision2/protocol.md}{protocol.md}; \file{revision2/confirm_and_decode.py}{confirm_and_decode.py} contains the sampler and paired checks.
+
+Equal-cost decoder ties exist but have a small observed effect in this diagnostic. Reversing graph-edge insertion changed 508 logical predictions across twenty 10,000-shot batches, all at identical objective value. The largest basis failure-count change was six in 10,000. Adding an invertible observable relabeling produced the same total disagreement count in fifteen eligible batches. This tests graph ordering and label consistency on the same sampled syndromes, not every possible decomposition or historical convention. Full paired results are in \file{revision2/decoder_diagnostics.json}{decoder_diagnostics.json}.
+
+An independent Pauli-frame pilot also supports the small-code noise implementation. It propagates binary Pauli errors directly through pair measurements and samples the 32-category EM3 event with NumPy; it does not call Stim's sampler or detector-model builder. All 32 selected X/Z fault injections agreed exactly with Stim's detector and observable predictions. At $p=.001$, its two basis failure rates were .13954 and .13796, compared with fresh Stim rates .14155 and .13663 at 100,000 shots each. Neither difference exceeds two estimated standard errors. Source schedules and detector annotations are still shared, and decoding still uses the same matching graph. This is a differential error-propagation check, not an independent construction of the ideal quantum state. See \file{revision2/independent_frame.py}{independent_frame.py} and \file{revision2/independent_frame_results.json}{independent_frame_results.json}.
+
+The actual comparator repository pins also permit a stronger historical diagnostic. Using Stim 1.8.0, PyMatching 0.6.0, NumPy 1.22.1, SciPy 1.7.3 and Matplotlib 3.5.1, we executed the original graph-import path including its large dummy edges. A fixed 100,000 shots per basis at $p=.001$ gives Bolza .13869 and four planar copies .13323. These repository pins are not a recovered Higgott environment; only the runtime subset needed for this serialized-circuit check was installed, with NetworkX 2.8.8 supplied because the repository did not pin it. The result does not recover both source values and differs substantially from the modern adapter's planar .10321. Thus that adapter was not a faithful historical-pipeline proxy. See \file{revision2/source_pinned_check.py}{source_pinned_check.py}, \file{revision2/source_pinned_results.json}{source_pinned_results.json}, and \file{revision2/source-pinned-requirements-lock.txt}{source-pinned-requirements-lock.txt}.
+
+\section{What remains unresolved}
+The remaining curve differences cannot yet be assigned to one cause, even after fresh confirmation and independent error propagation. The largest original-baseline modern difference from a source point is .01334; the historical-version maximum is .01346, so a broad change in library vintage does not close the gap. At $p=.001$, historical software gives Bolza .13803 and planar .13017, close to the modern values. The duration correction and planar boundary model resolve much larger gaps, but do not recover every source marker.
+
+We rank the remaining causes by available evidence rather than claiming an author error. First, the original run manifest, circuits, graph-conversion choices, seeds, and shot counts are missing; that single run bundle would allow an exact procedural comparison and a legitimate two-sample uncertainty calculation. Second, small boundary or tie-handling differences may survive despite matching code distances and graph objectives. Third, source Monte Carlo fluctuation is plausible but cannot be quantified without counts. The historical graph-import policy was also tested on all 64 primary basis circuits using identical samples for the native and alternative decoders. At $p=.001$, its planar four-copy rate is .10321, farther from the figure than the native .13050 in that paired diagnostic; Bolza changes only from .13749 to .13828. This does not close the source gap. The adapter omits artificial weight-$10^{10}$ dummy edges rejected by modern PyMatching; the diagnostic therefore isolates the graph policy rather than reproducing the entire old decoder unchanged. See \file{provenance/graph_conversion_results.json}{graph_conversion_results.json}. The observed vector-extraction bounds and stored channel rounding are much too small to explain the larger residuals. Numerical optimizers and alternative noise-generation representations agree sufficiently well to make a large implementation fault less plausible.
+
+The second size is supporting evidence, not a complete numerical replication of Figure~7.14b. We ran the reconstructed 64-qubit code and all three planar sizes at five noise strengths and both durations. At $p=.001$ and 48 subrounds, rates are .00209 for Bolza, .13030 for four distance-two patches, .00489 for four distance-three patches, and .00056 for four distance-four patches. The 216/64 ratio is exactly 3.375, but those new simulations do not establish pointwise recovery of the second published panel. Nor do we claim to have reproduced the 64-qubit SD6 distance.
+
+\section{Code and source availability}
+The supplied circuit data and comparator source are available locally with their licenses and pinned upstream revisions. The Bolza source revision is \nolinkurl{457975f0d6c67b3a505aacf44589d36779f5dcc1}; the comparator revision is \nolinkurl{cc33baac44c7831bd643db81d0053f8ec6eae9d8}. The latter includes a documented one-line compatibility patch. The five-page companion \file{source-evidence/Higgott_Chapter_7_Figure_7_14_Source_Evidence_Appendix.pdf}{Higgott_Chapter_7_Figure_7_14_Source_Evidence_Appendix.pdf} supplies six reviewed source crops; \file{source-evidence/README.md}{README.md} links their files and provenance. The source dissertation PDF was read through Library after the direct local download returned HTTP~403. The full copyrighted dissertation is not bundled. The 600-dpi crops, vector-coordinate CSV, hashes and \file{source-evidence/extract_figure_points.py}{extract_figure_points.py} are bundled; re-extraction requires the source PDF bytes identified in that evidence directory.
+
+The dated search ledger distinguishes not recovered from nonexistent. Targeted searches covered the identified GitHub data and comparator repositories, OSF, Zenodo, and GitLab. We did not clone every unrelated repository on the author's account; that workflow departure is recorded. The extended public-history search covered 11 hyperbolic and 52 comparator commits plus the v2 arXiv archive; no original production bundle was found. The publisher supplemental endpoint was inaccessible, not proven absent. The dated findings are in \file{revision2/public_archival_audit.md}{public_archival_audit.md}. See \file{provenance/availability_and_compliance.json}{availability_and_compliance.json} and \file{source/figure_provenance.json}{figure_provenance.json}.
+
+\section{Next steps}
+The original Figure~7.14 run bundle and explicit published-path correspondence remain the most useful next inputs. The bounded public archival search did not recover them, and no author contact was made. With its per-basis counts, exact circuits, software versions, and decoder settings, the residual differences can be separated into sampling fluctuation and procedural differences. Independent vector extraction of Figure~7.14b would extend the second-size comparison, and an independently reconstructed SD6 circuit would test its distance-four cell. Neither missing input is necessary to verify the sixfold integer resource ratio, but both matter for stronger replication claims.
+
+\input{references.tex}
+
+\appendix
+\section{Artifacts and reproduction}
+The local package contains the runnable inputs, code, outputs, and editable manuscript. The starting master revision \nolinkurl{ca1d06209b03cad666db0a2ffb9678abc89a6b71} records workflow provenance only; it does not contain this new study. The precise local snapshot and commands are documented in \file{README.md}{README.md}. Repository links are intended master navigation paths and resolve there after merge. Draft PR~57 supplies current-commit review links. The README identifies immutable baseline and reproducible-code revisions separately.
+
+\begin{longtable}{p{.29\linewidth}p{.62\linewidth}}
+\toprule Claim or task & Evidence and regeneration\\\midrule
+Resource and embedded distance & \file{code_parameters.py}{code_parameters.py}; run with \texttt{--source inputs/bolza}.\\
+Curve simulations & \file{run_replication.py}{run_replication.py}; fixed shots and seed rules in README, ``Rerun simulations.''\\
+All source comparisons & \file{results/figure_comparison.csv}{figure_comparison.csv}; regenerate with \file{summarize.py}{summarize.py}.\\
+Initial supplied-data pilot & \file{audit_supplied_circuits.py}{audit_supplied_circuits.py}; explicit source and output arguments in README.\\
+Independent checks & \file{independent_checks.py}{independent_checks.py}; \file{provenance/independent_checks.json}{independent_checks.json}.\\
+Historical version sensitivity & \file{historical_check.py}{historical_check.py}; \file{provenance/historical_results.json}{historical_results.json}.\\
+Graph import sensitivity & \file{graph_conversion_check.py}{graph_conversion_check.py}; \file{provenance/graph_conversion_results.json}{graph_conversion_results.json}.\\
+Source estimates & \file{source/figure_7_14a_vector_values.csv}{figure_7_14a_vector_values.csv}; supplied source extraction; raw shot arrays absent.\\
+Software and compatibility & \file{provenance/requirements-lock.txt}{requirements-lock.txt}; \file{provenance/honeycomb_scipy_compat.patch}{honeycomb_scipy_compat.patch}.\\
+Follow-up checks & \file{revision2/protocol.md}{protocol.md}; \file{revision2/confirm_and_decode.py}{confirm_and_decode.py}; README, Follow-up checks.\\
+Source evidence & \file{source-evidence/README.md}{README.md}; \file{source-evidence/extract_figure_points.py}{extract_figure_points.py}; source PDFs required for re-extraction.\\
+Paper rebuild & \file{paper/sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex}{sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex}; two \texttt{pdflatex} passes from the paper directory.\\\bottomrule
+\end{longtable}
+
+\section{Numerical comparisons and reconstruction scope}
+For both tables, $\Delta$ is ours minus source; this is a source-reproduction deviation, not the scientific Bolza--planar contrast. ``Band'' is the adjusted conditional half-width: our Monte Carlo term plus extraction bound. ``Status'' says whether $|\Delta|$ lies inside that band. ``Display'' is a separate numerical verdict using half-up rounding to five displayed decimals and one last-place unit for ``close.'' Those decimals describe presentation, not precision supplied by the source. ``Scope'' is limited because original counts/configuration are unavailable. A display mismatch can coexist with conditional compatibility. Each outside row has $|\Delta|$ greater than its stated band; every inside row has the opposite relation. No row adjudicates original Monte Carlo uncertainty.
+
+\subsection{Confirmation source comparisons: family of ten}
+\input{confirmation_decisions.tex}
+\subsection{Preserved baseline source comparisons: family of 32}
+\input{baseline_decisions.tex}
+The original table and original .02 classifications remain in the baseline Git revision and saved outputs. All 32 baseline gaps fall inside that exploratory sensitivity margin; it is no longer used as the numerical ``close'' criterion. Sixteen baseline gaps exceed adjusted conditional bands. The full baseline contrast inventory also records point-ordering reversals at $p\approx.007943$ (source -.003955, ours +.010748) and $p\approx.01$ (source -.007185, ours +.008343). The former was not included in fresh confirmation. These baseline contrasts are descriptive point estimates, not an additional simultaneous inference family; source sampling uncertainty remains unknown.
+
+\section{Workflow compliance and availability}
+The following rows distinguish implemented checks from remaining limitations. Passing helper tests alone does not establish manuscript or scientific compliance.
+\input{compliance_table.tex}
+\input{availability_table.tex}
+
+
+\end{document}
