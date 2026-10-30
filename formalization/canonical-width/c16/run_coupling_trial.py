@@ -39,13 +39,24 @@ def main():
              'physical_circuit_moment_matrix.py','physical_legacy_linear_moments.py',
              'conditional_matroid_moment_matrix.py','complete_boolean_triples.py',
              'projected_profile_moment_matrix.py','verify_algebraic_model.py',
-             'pools/xcoords.txt','pools/zcoords.txt',old+'physical-rank-moment-bank.json']
+             'pools/xcoords.txt','pools/zcoords.txt',old+'physical-rank-moment-bank.json',
+             'block_moment_dual.py','moment_triangle_cuts.py','moment_integer_form_cuts.py',
+             'inverse-four-hour-results/lattice-source-rankcuts.json.gz',
+             'inverse-four-hour-results/rank-rectangle-X.json',
+             'inverse-four-hour-results/rank-rectangle-Z.json',
+             'inverse-four-hour-results/lattice-source-triangles.json.gz',
+             'inverse-four-hour-results/lattice-source-integer-forms.json.gz']
     paths=modules+[x for x in cmd if x.endswith(('.json','.gz','.npz')) and x!=str(output.relative_to(ROOT))]
     hashes={p:sha(ROOT/p) for p in dict.fromkeys(paths)}
     limits={k:'1' for k in ['OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','VECLIB_MAXIMUM_THREADS','MKL_NUM_THREADS']}
+    margin_flags=['--psd-interior-epsilon','--boolean-margin','--projected-margin']
+    effective_margins={flag:float(cmd[max(i for i,v in enumerate(cmd) if v==flag)+1]) for flag in margin_flags}
+    assert all(value>=0 for value in effective_margins.values())
+    assert not any(any(token.startswith(flag+'=') for flag in margin_flags) for token in a.extra), 'Use separate flag and value for audited margin overrides'
     frozen.write_text(json.dumps({'status':'FROZEN_BEFORE_COUPLING_TRIAL','utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                      'command':cmd,'input_and_source_hashes':hashes,'thread_limits':limits,'outer_seconds':a.outer_seconds,
-                     'source_C16_answered':False,'mode':'necessary_numeric' if a.witness_margin==0 else 'sufficient_witness_search',
+                     'source_C16_answered':False,'mode':'necessary_numeric' if not any(effective_margins.values()) else 'sufficient_witness_search',
+                     'effective_margins':effective_margins,
                      'concurrent_context':'Other independent research/verification tasks may run; wall times are not matched speedup evidence.'},indent=2)+'\n')
     env=os.environ.copy();env.update(limits);start=time.monotonic()
     with (folder/(a.name+'.log')).open('w') as log:

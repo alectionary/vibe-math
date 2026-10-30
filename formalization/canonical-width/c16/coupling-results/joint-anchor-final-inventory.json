@@ -1,0 +1,239 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "source_resolution_delta": 0,
+  "producer_sha256": "47430739e8d4cbe6589d37f5c3ce86a4d4ef01bb3ad4acf9af9c1d0383f2072b",
+  "consumer_sha256": "ee33acd13b3dd6bba4b4384073ee3f3ed8ab71fcc89f78532373ec74aeb05be7",
+  "accepted_proofs": [
+    {
+      "bank": "coupling-results/joint-anchor-matched-exact.json",
+      "bank_sha256": "985da16ea65eaec6c511ba898ccfdcd2273476793b49081e9c21fdedd610d672",
+      "receipt": "coupling-results/joint-anchor-matched-exact-independent.json",
+      "receipt_sha256": "01c8b3846dd3d14a75b479792a5dc37b9b8745bdfc6c915f184133968d60e682",
+      "proof_kind": "joint_anchor_partial_matching",
+      "cuts_checked": 1,
+      "normalized_exact_violation": "26969527493546155957119/26767955033209469665280",
+      "exact_joint_gain_over_matched_hinge_optimum": "22992947555376601097/70265881962174857871360"
+    },
+    {
+      "bank": "coupling-results/joint-anchor-conditional-exact.json",
+      "bank_sha256": "240106943c84ad843802b270179e67330165b98684b4085046cce3c97653a065",
+      "receipt": "coupling-results/joint-anchor-conditional-exact-independent.json",
+      "receipt_sha256": "a2bcc78119600926aedd8329a31297183497d8f5635eb0d8944f5a3eed30b15c",
+      "proof_kind": "joint_anchor_partial_matching",
+      "cuts_checked": 1,
+      "normalized_exact_violation": "14642897101787005187431/14469164882815929548800",
+      "exact_joint_gain_over_matched_hinge_optimum": "0"
+    }
+  ],
+  "negative_controls": [
+    {
+      "kind": "class-bound",
+      "certificate": "coupling-results/joint-anchor-negative-class-bound.json",
+      "certificate_sha256": "683064e46bfeaa35590bf0ca07dc184d0e3d5c292ee3c0e430a1daabf828230f",
+      "log": "coupling-results/joint-anchor-negative-class-bound-final.log",
+      "log_sha256": "28682eed4a512cbbb1c7309f51e9360a1099b23385054eb458fc3cbdb48dcc1b",
+      "observed_exit_code": 1,
+      "last_line": "AssertionError: ('joint_class_bound_failed', 0, 16)"
+    },
+    {
+      "kind": "claimed-violation",
+      "certificate": "coupling-results/joint-anchor-negative-claimed-violation.json",
+      "certificate_sha256": "8f17277def1ae8e75235fef8d88ffec792b2a91330dcc27c20ecde24401d804a",
+      "log": "coupling-results/joint-anchor-negative-claimed-violation-final.log",
+      "log_sha256": "b366ba23cd23bb4e24097651291d4ac5bf894c5801af302e7cc0480b8119db36",
+      "observed_exit_code": 1,
+      "last_line": "AssertionError"
+    },
+    {
+      "kind": "point-binding",
+      "certificate": "coupling-results/joint-anchor-negative-point-binding.json",
+      "certificate_sha256": "96013269eb7815196bff6f7fd9bd350f4e1d591b193483403040ec28358b0583",
+      "log": "coupling-results/joint-anchor-negative-point-binding-final.log",
+      "log_sha256": "555aed006b87e628f0818b44724e52472f11301ab5cc9b4e30bae27c3fd61289",
+      "observed_exit_code": 1,
+      "last_line": "AssertionError"
+    }
+  ],
+  "strategy_note": "coupling-results/joint-anchor-strategy.md",
+  "source_dependencies": "Each accepted bank input_hashes binds its parent, point, physical pools, orbit profiles and hulls. Conditional bank additionally binds conditional-compat-orbit32.json and its complete physical-witness receipt. All source dependency hashes were rechecked in final replay.",
+  "replay_command_template": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /private/tmp/c16-venv/bin/python verify_joint_anchor_profile_bound.py --certificate coupling-results/joint-anchor-{matched,conditional}-exact.json --parent moment-resumption-results/common-profile32-projected-pruned.json --point moment-resumption-results/boolean-rational1.json.gz --output <fresh-output>",
+  "historical_producer_versions": "joint-anchor-producer-v1.py and v2.py preserve the producer hashes of earlier saved banks. Current producer handles optional conditional compatibility.",
+  "files": [
+    {
+      "path": "joint_anchor_profile_bound.py",
+      "sha256": "47430739e8d4cbe6589d37f5c3ce86a4d4ef01bb3ad4acf9af9c1d0383f2072b",
+      "bytes": 14650
+    },
+    {
+      "path": "verify_joint_anchor_profile_bound.py",
+      "sha256": "ee33acd13b3dd6bba4b4384073ee3f3ed8ab71fcc89f78532373ec74aeb05be7",
+      "bytes": 15175
+    },
+    {
+      "path": "coupling-results/joint-anchor-conditional-exact-final.log",
+      "sha256": "a2bcc78119600926aedd8329a31297183497d8f5635eb0d8944f5a3eed30b15c",
+      "bytes": 2744
+    },
+    {
+      "path": "coupling-results/joint-anchor-conditional-exact-independent.json",
+      "sha256": "a2bcc78119600926aedd8329a31297183497d8f5635eb0d8944f5a3eed30b15c",
+      "bytes": 2744
+    },
+    {
+      "path": "coupling-results/joint-anchor-conditional-exact-independent.log",
+      "sha256": "79315ff04a8923bcd6cc1359593eb4fda61d4e8a2896ca86f141ddfc5eb80903",
+      "bytes": 2744
+    },
+    {
+      "path": "coupling-results/joint-anchor-conditional-exact.frozen.json",
+      "sha256": "a0bde6b2ca247e052bafd3598f9d84dd865487bf112d128e912711c9d9a04cd8",
+      "bytes": 1771
+    },
+    {
+      "path": "coupling-results/joint-anchor-conditional-exact.json",
+      "sha256": "240106943c84ad843802b270179e67330165b98684b4085046cce3c97653a065",
+      "bytes": 563305
+    },
+    {
+      "path": "coupling-results/joint-anchor-conditional-exact.log",
+      "sha256": "7a5008e048f169ffcc9e28e2f6990b79278be75b66063f4f83ea143e954da2bc",
+      "bytes": 15151
+    },
+    {
+      "path": "coupling-results/joint-anchor-consumer-v1.py",
+      "sha256": "1118291d7f8c711d0e1ec0588aff8a3fd1bafb8aa811658f059538ff0c14bfc6",
+      "bytes": 10301
+    },
+    {
+      "path": "coupling-results/joint-anchor-consumer-v2.py",
+      "sha256": "d51072fc9e18e96ac881f8dfb5eb42d86233e72e08bfe1e9d973de37a972296a",
+      "bytes": 13102
+    },
+    {
+      "path": "coupling-results/joint-anchor-existing-functional-independent.json",
+      "sha256": "599f999b7825bcbabae2ce891c35b17c357a9b3240f86a36960e2a94044aca87",
+      "bytes": 1729
+    },
+    {
+      "path": "coupling-results/joint-anchor-existing-functional-independent.log",
+      "sha256": "599f999b7825bcbabae2ce891c35b17c357a9b3240f86a36960e2a94044aca87",
+      "bytes": 1729
+    },
+    {
+      "path": "coupling-results/joint-anchor-existing-functional.frozen.json",
+      "sha256": "af7758903d397608b612897a4647ed0932792c2a4d6a1e26e4d9f7216454439d",
+      "bytes": 1293
+    },
+    {
+      "path": "coupling-results/joint-anchor-existing-functional.json",
+      "sha256": "9c2646e328cc19ecf9483f527fbfaaded57daf31f6f112fd06304e828036f00f",
+      "bytes": 526880
+    },
+    {
+      "path": "coupling-results/joint-anchor-existing-functional.log",
+      "sha256": "82c164971583f610cc0ac50865c94355e18b00635ba7257d92637341e6bfe950",
+      "bytes": 2922
+    },
+    {
+      "path": "coupling-results/joint-anchor-matched-exact-final.log",
+      "sha256": "01c8b3846dd3d14a75b479792a5dc37b9b8745bdfc6c915f184133968d60e682",
+      "bytes": 2355
+    },
+    {
+      "path": "coupling-results/joint-anchor-matched-exact-independent.json",
+      "sha256": "01c8b3846dd3d14a75b479792a5dc37b9b8745bdfc6c915f184133968d60e682",
+      "bytes": 2355
+    },
+    {
+      "path": "coupling-results/joint-anchor-matched-exact-independent.log",
+      "sha256": "7bd20f566cd273803f6509546e198581905d28627a6ee2e2e2dd99b91bb42630",
+      "bytes": 2313
+    },
+    {
+      "path": "coupling-results/joint-anchor-matched-exact.frozen.json",
+      "sha256": "4dd866b614595d10668eeac0450a7a7445f1be3e81f6f06bb5fa16fcf705cc8c",
+      "bytes": 1293
+    },
+    {
+      "path": "coupling-results/joint-anchor-matched-exact.json",
+      "sha256": "985da16ea65eaec6c511ba898ccfdcd2273476793b49081e9c21fdedd610d672",
+      "bytes": 562645
+    },
+    {
+      "path": "coupling-results/joint-anchor-matched-exact.log",
+      "sha256": "44e110fd6dafd897db7f5ec4bfcf51d6af20aedeb54712eac73dc7098c41310c",
+      "bytes": 14798
+    },
+    {
+      "path": "coupling-results/joint-anchor-necessary0-all-evaluation.json",
+      "sha256": "cca5c1ac9e7f9462f71776765e4603c586e039adaa96ba02d43a4f26b911c80c",
+      "bytes": 2708
+    },
+    {
+      "path": "coupling-results/joint-anchor-necessary0-evaluation.json",
+      "sha256": "e8f14b316999ef5cc1e507c2e49efd3f7de78529f292beb490b12277a5fff6b7",
+      "bytes": 950
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-claimed-violation-final.log",
+      "sha256": "b366ba23cd23bb4e24097651291d4ac5bf894c5801af302e7cc0480b8119db36",
+      "bytes": 435
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-claimed-violation.json",
+      "sha256": "8f17277def1ae8e75235fef8d88ffec792b2a91330dcc27c20ecde24401d804a",
+      "bytes": 326005
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-claimed-violation.log",
+      "sha256": "d13554b3eece4f999506cfc5017c0843bd5ce5e80fb0dd02143c509d66643886",
+      "bytes": 435
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-class-bound-final.log",
+      "sha256": "28682eed4a512cbbb1c7309f51e9360a1099b23385054eb458fc3cbdb48dcc1b",
+      "bytes": 476
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-class-bound.json",
+      "sha256": "683064e46bfeaa35590bf0ca07dc184d0e3d5c292ee3c0e430a1daabf828230f",
+      "bytes": 326089
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-class-bound.log",
+      "sha256": "8b498ce6e38efa816d9731d2be78d55da19b0b0016c5acacbb5a2e9068afe354",
+      "bytes": 476
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-point-binding-final.log",
+      "sha256": "555aed006b87e628f0818b44724e52472f11301ab5cc9b4e30bae27c3fd61289",
+      "bytes": 504
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-point-binding.json",
+      "sha256": "96013269eb7815196bff6f7fd9bd350f4e1d591b193483403040ec28358b0583",
+      "bytes": 326089
+    },
+    {
+      "path": "coupling-results/joint-anchor-negative-point-binding.log",
+      "sha256": "cea6c354a2c45d9604e98e68ebb8a805fdea5ee767641d37a53f5df35ee6baa9",
+      "bytes": 504
+    },
+    {
+      "path": "coupling-results/joint-anchor-producer-v1.py",
+      "sha256": "96ad5b4aa91dab8df36f2281aa6df98522a0d3bb76904974e25c9fbe25fd5be2",
+      "bytes": 10021
+    },
+    {
+      "path": "coupling-results/joint-anchor-producer-v2.py",
+      "sha256": "6731839e3d753b9ad135fdfd77e7c53da8b1addca033c06c05b30f195bc11286",
+      "bytes": 12957
+    },
+    {
+      "path": "coupling-results/joint-anchor-strategy.md",
+      "sha256": "3825e2eb98e433aa97c9bbbff6a244338ecb60747d15430b69a6ab30b62d0db1",
+      "bytes": 11557
+    }
+  ]
+}
