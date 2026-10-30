@@ -31,3 +31,14 @@ class Contrasts(unittest.TestCase):
  def test_invalid_family(self):
   for n in [0,-1,True,1.5]:
    with self.assertRaises(ValueError):source_band(0,.1,0,n)
+
+class Coverage(unittest.TestCase):
+ def test_baseline_condition_cannot_be_omitted(self):
+  from contrast_checks import validate_contrast_coverage
+  expected=[('baseline','.007943'),('confirmation','.01')]
+  rows=[dict(analysis='confirmation',condition='.01')]
+  self.assertTrue(validate_contrast_coverage(rows,expected))
+  rows.append(dict(analysis='baseline',condition='.007943'));self.assertEqual(validate_contrast_coverage(rows,expected),[])
+ def test_duplicate_condition(self):
+  from contrast_checks import validate_contrast_coverage
+  r=dict(analysis='baseline',condition='.01');self.assertTrue(validate_contrast_coverage([r,r],[('baseline','.01')]))
