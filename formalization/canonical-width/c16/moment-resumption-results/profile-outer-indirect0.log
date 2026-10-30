@@ -1,0 +1,69 @@
+FORBIDDEN CONDITIONED ROWS 31408
+PHYSICAL OWNER ROWS 32355
+PHYSICAL CIRCUIT ROWS 115200
+LEGACY LINEAR ROWS 12849
+PROFILE MOMENT prepared 16 rank 0 auxiliary profile weights 121 constraint objects
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+(CVXPY) Oct 29 06:46:17 PM: Your problem has 36495 variables, 474699 constraints, and 0 parameters.
+(CVXPY) Oct 29 06:46:17 PM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 29 06:46:17 PM: DCP verification time: 0.0444 seconds.
+(CVXPY) Oct 29 06:46:17 PM: Expression tree has 13 nodes.
+(CVXPY) Oct 29 06:46:17 PM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 29 06:46:17 PM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 29 06:46:17 PM: Your problem is compiled with the CPP canonicalization backend.
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+(CVXPY) Oct 29 06:46:17 PM: Compiling problem (target solver=SCS).
+(CVXPY) Oct 29 06:46:17 PM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> ExactCone2Cone -> EliminateZeroSized -> ConeMatrixStuffing -> SCS
+(CVXPY) Oct 29 06:46:17 PM: Applying reduction Dcp2Cone
+(CVXPY) Oct 29 06:46:17 PM: Applying reduction CvxAttr2Constr
+(CVXPY) Oct 29 06:46:17 PM: Applying reduction ExactCone2Cone
+(CVXPY) Oct 29 06:46:17 PM: Applying reduction EliminateZeroSized
+(CVXPY) Oct 29 06:46:17 PM: Applying reduction ConeMatrixStuffing
+(CVXPY) Oct 29 06:46:33 PM: Applying reduction SCS
+(CVXPY) Oct 29 06:46:36 PM: Finished problem compilation (took 1.892e+01 seconds).
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+(CVXPY) Oct 29 06:46:36 PM: Invoking solver SCS  to obtain a solution.
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 32535, constraints m: 414713
+cones: 	  z: primal zero / dual free vars: 186
+	  l: linear vars: 353102
+	  s: psd vars: 61425, ssize: 18
+settings: eps_abs: 1.0e-06, eps_rel: 1.0e-06, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 100000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 3.00e+02
+lin-sys:  sparse-indirect-scs
+	  nnz(A): 4942934, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 2.15e+02  5.39e+03  4.52e+04 -2.26e+04  1.00e-01  2.79e+01 
+    50| 1.08e-01  1.07e+01  8.64e+00  4.32e+00  1.00e-01  4.12e+02 
+------------------------------------------------------------------
+status:  solved (inaccurate - reached time_limit_secs)
+timings: total: 4.12e+02s = setup: 1.36e+00s + solve: 4.10e+02s
+	 lin-sys: 3.77e+02s, cones: 4.30e+00s, accel: 9.86e-01s
+------------------------------------------------------------------
+objective = 4.320060 (inaccurate)
+------------------------------------------------------------------
+/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/profile_outer_indirect_model.py:113: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  value=problem.solve(solver='SCS',use_indirect=True,max_iters=a.iterations,eps=a.eps,time_limit_secs=a.seconds,verbose=True);stats=problem.solver_stats;out={'status':problem.status,'source_C16_answered':False,'scope':'Sufficient strict-margin witness search; failure or infeasibility does not exclude source frames.' if a.certificate_margin else 'Numerical outer relaxation using checked local support bounds in place of exact profile-hull memberships; no original exclusion without exact source-binding and dual replay, no construction from moments.','physical_target':128,'restricted_to_halfturn':P==8,'period':P,'mode':data['mode'],'shape_variables':0,'source_local_shapes':data['shape_variables'],'profile_support_inequalities':len(support_rows),'profile_support_bank_sha256':__import__('hashlib').sha256(a.profile_support_cuts.read_bytes()).hexdigest(),'independent_moment_variables':32535,'SCS_linear_system':'indirect','strict_margin_witness_search':a.certificate_margin,'capacity_RLT_scalar_inequalities':capacity_constraints,'conditional_RLT_inequalities':conditional_constraints,'conditional_nonpartner_RLT_inequalities':cross_constraints,'conditional_weighted_phase_inequalities':weighted_cuts,'additional_legacy_linear_rows':LM.shape[0],'known_cardinality_null_directions_removed':True,'physical_conditioned_circuit_inequalities':CM.shape[0],'physical_private_partner_inequalities':OM.shape[0],'forbidden_pattern_distinct_coefficient_inequalities':FM.shape[0],'forbidden_pattern_bank_sha256':{str(path):__import__('hashlib').sha256(path.read_bytes()).hexdigest() for path in a.forbidden_patterns},'wall_seconds':time.monotonic()-start,'solver_seconds':stats.solve_time,'iterations':stats.num_iters,'objective':value,'margin':float(margin.value) if a.certificate_margin and margin.value is not None else None}
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+(CVXPY) Oct 29 06:53:28 PM: Problem status: optimal_inaccurate
+(CVXPY) Oct 29 06:53:28 PM: Optimal value: 0.000e+00
+(CVXPY) Oct 29 06:53:28 PM: Compilation took 1.892e+01 seconds
+(CVXPY) Oct 29 06:53:28 PM: Solver (including time spent in interface) took 4.121e+02 seconds
+{'status': 'optimal_inaccurate', 'source_C16_answered': False, 'scope': 'Numerical outer relaxation using checked local support bounds in place of exact profile-hull memberships; no original exclusion without exact source-binding and dual replay, no construction from moments.', 'physical_target': 128, 'restricted_to_halfturn': False, 'period': 16, 'mode': 'rank', 'shape_variables': 0, 'source_local_shapes': 43473, 'profile_support_inequalities': 7290, 'profile_support_bank_sha256': '51b0a2db12ababfb17b0374f4d2a16fefbc147207d99f165f6073f87c9743621', 'independent_moment_variables': 32535, 'SCS_linear_system': 'indirect', 'strict_margin_witness_search': False, 'capacity_RLT_scalar_inequalities': 4050, 'conditional_RLT_inequalities': 2025, 'conditional_nonpartner_RLT_inequalities': 2025, 'conditional_weighted_phase_inequalities': 10, 'additional_legacy_linear_rows': 12849, 'known_cardinality_null_directions_removed': True, 'physical_conditioned_circuit_inequalities': 115200, 'physical_private_partner_inequalities': 32355, 'forbidden_pattern_distinct_coefficient_inequalities': 31408, 'forbidden_pattern_bank_sha256': {'relevant-results/seed-cuts.json': '615e7df8b837e5de7ee9552f0936e176f12408ae7c885428f0dea8b921ebdc63', 'moment-resumption-results/all-pair-word-cuts.json': '059f902dba87797dcce04943bf13cedece32d8ee4656924ec52b0339aa4a56e7'}, 'wall_seconds': 439.3702180829132, 'solver_seconds': 410.172710916, 'iterations': 50, 'objective': 0.0, 'margin': None, 'max_constraint_violation': 0.1605970400110816, 'solver_info': {'status_val': 2, 'iter': 50, 'scale_updates': 0, 'scale': 0.1, 'pobj': 0.0, 'dobj': 8.640120532555192, 'res_pri': 0.1075476938674982, 'res_dual': 10.722704843351242, 'gap': 8.640120532555192, 'res_infeas': 1.2410364882004898, 'res_unbdd_a': None, 'res_unbdd_p': None, 'comp_slack': 6.104983185650781e-11, 'solve_time': 410172.710916, 'setup_time': 1355.7035, 'lin_sys_time': 377402.855024, 'cone_time': 4302.1879420000005, 'accel_time': 985.7886120000003, 'rejected_accel_steps': 0, 'accepted_accel_steps': 0, 'status': 'solved (inaccurate - reached time_limit_secs)', 'lin_sys_solver': 'sparse-indirect-scs', 'aa_stats': {'iter': 10, 'n_accept': 0, 'n_reject_lapack': 0, 'n_reject_rank0': 0, 'n_reject_nonfinite': 0, 'n_reject_weight_cap': 0, 'n_safeguard_reject': 0, 'last_rank': 0, 'last_aa_norm': None, 'last_regularization': 0.0}}}
