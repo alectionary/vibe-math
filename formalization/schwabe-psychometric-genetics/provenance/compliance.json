@@ -29,7 +29,7 @@
   {
     "requirement": "Signed contrasts and two-axis decisions",
     "status": "followed",
-    "evidence": "uncertainty-plan.json; Chapter6 deletion-minus-full SE contrast positive means smaller full-information SE. Source reproduction deviation is separate. Source rounded-summary reconstructions are not posterior refits. Bias contrasts added during review in bias-contrasts.csv; exploratory72-comparison family preserves23 inconclusive point reversals."
+    "evidence": "production/analysis-plan.json and provenance/uncertainty-plan.json. Deletion-minus-full SE contrasts, ours-minus-source deviations and estimate-minus-truth bias are separate. Variance and path standard errors are distinct estimands. Source rounded-summary reconstructions are not posterior refits."
   },
   {
     "requirement": "Approved manuscript layout",
@@ -38,9 +38,9 @@
   },
   {
     "requirement": "Independent scientific and rendered-manuscript review",
-    "status": "followed",
-    "justification": "Separate reviewers inspected scientific evidence and rendered pages. Initial findings required bias-inventory, continuation and nonexistent-PR wording fixes; final hash-matched review records govern acceptance. Review does not close unreplicated results.",
-    "evidence": "provenance/scientific-review.json; provenance/rendered-review.json; provenance/review.json"
+    "status": "departed",
+    "justification": "The saved baseline PDF has independent hash-matched reviews. Integrated manuscript sources require fresh scientific and rendered-main-PDF reviews after terminal results are incorporated; not yet a reviewed new PDF deliverable.",
+    "evidence": "provenance/manuscript-work-in-progress.json; provenance/scientific-review.json; provenance/rendered-review.json"
   },
   {
     "requirement": "Scope and licensing",
@@ -51,5 +51,11 @@
     "requirement": "Runnable immutable version and remote byte verification",
     "status": "followed",
     "evidence": "README.md reproduction recipe; delivery.json records immutable code/artifact revisions and remote downloads when uploaded. Master navigation links await merge."
+  },
+  {
+    "requirement": "Faithful Lean coverage for manuscript proofs",
+    "status": "departed",
+    "justification": "The conditional identification and likelihood arguments have written and symbolic evidence, with independent mathematical review. Lean formalization remains absent and these arguments are outside formally proved manuscript results. No installation or formal compilation has been attempted; missing local binaries are an environment observation, not a claim of impossibility.",
+    "evidence": "provenance/proof-toolchain-observation.json; provenance/marginal-identification-independent-review.json; provenance/identification-check.json"
   }
 ]
