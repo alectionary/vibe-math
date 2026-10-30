@@ -628,12 +628,13 @@ publication status, adviser facts and scientific accuracy.
 
 ### Substantive example draft
 
-This Higgott example illustrates the content and approved closing URL. It is
-incomplete until the adviser placeholder is replaced with verified names; it is
-not permission to post. Adapt scope, numbers and uncertainty to the actual study.
+This Higgott example illustrates the content and approved closing URL. The
+supervisors are verified in the institutional dissertation acknowledgments,
+printed page 6 ([dissertation](https://discovery.ucl.ac.uk/id/eprint/10186408/)).
+It is not permission to post. Adapt scope, numbers and uncertainty to the actual study.
 
 ```text
-Oscar Higgott's Practical and Efficient Quantum Error Correction (Ph.D. dissertation, University College London, institutional year 2024; advisers: [insert source-verified names]) examines quantum error correction. We replicated a bounded small-code comparison in Chapter 7, principally Figure 7.14a, rather than the whole dissertation.
+Oscar Higgott's Practical and Efficient Quantum Error Correction (Ph.D. dissertation, University College London, institutional year 2024; supervisors Nikolas Breuckmann and Dan Browne) examines quantum error correction. We replicated a bounded small-code comparison in Chapter 7, principally Figure 7.14a, rather than the whole dissertation.
 
 We partly replicated the headline. The Bolza memory protects four logical qubits with 16 rather than 96 physical qubits—an exact sixfold saving—but comparable failure-rate performance is not established. At physical error probability .001, the published figure gives Bolza .13390 and four planar copies .12977; our fresh estimates are .13772 and .12925. Bolza therefore has higher estimated failure risk in both comparisons at this point.
 
