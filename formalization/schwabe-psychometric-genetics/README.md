@@ -498,3 +498,58 @@ Inspect every trace/rank page and interval-endpoint sensitivity, retain failed o
 incomplete-chain outcomes, and obtain independent scientific outcome review.
 Even acceptable diagnostics on this one dataset would not establish100-dataset
 Chapter2 power/recovery, Chapter5 production, or whole-dissertation success.
+
+### Bounded JAGS dispatcher (awaiting independent dispatcher review)
+
+The study-specific dispatcher keeps the frozen gate wrappers unchanged. It must
+be independently reviewed before use. The following are future execution commands,
+not evidence of a started gate. Run from this study directory:
+
+```sh
+python3 simulation/dispatch_jags_gate.py check --namespace production/jags-gate-v1
+python3 simulation/dispatch_jags_gate.py dispatch --namespace production/jags-gate-v1
+# Only after all four outcomes have been recorded:
+python3 simulation/dispatch_jags_gate.py diagnose --namespace production/jags-gate-v1
+```
+
+`check` is read-only and refuses active OpenMx supervisor/runner/batch or JAGS
+processes. `dispatch` requires at least four CPU slots under both affinity and cgroup quotas, and an empty/new
+namespace. It requires1GiB initial/serial cgroup memory headroom; this allocation floor
+is operational policy, not a measured requirement or sufficient-memory guarantee. It records current and ancestor memory
+limits/usage, takes a separate study dispatcher lock, checks pinned code/runtime
+identities, and prepares its inputs inside `production/jags-gate-v1/prepared`.
+Do not use the earlier manual preparation command on the dispatcher namespace.
+The dispatcher records exact commands, environment overrides, full installed
+runtime/library file hashes and prepared identities, rechecking these runtime bytes
+and dispatcher/protocol hashes at phase boundaries, before launching the prescribed chain1 alone. The dispatcher samples its
+process-tree RSS every0.2seconds through initialization/adaptation, then considers
+launching prescribed chains2–4. Readiness uses only existence of `adaptation.rds`,
+never adaptation success or posterior effects. Parallel release requires a positive
+RSS sample and headroom for every remaining chain at `max(2 * measured peak RSS,
+1 GiB)` each. This safety factor is policy; sampled RSS is not a peak guarantee and
+can double-count shared pages. Otherwise the remaining chains run serially, with
+headroom checked again before each launch. No extra model or replacement chain is
+used to measure resources. All chains remain single-threaded. Each has a1800-second wall allowance
+(including startup), totaling7200 planned worker-seconds. A timeout sends TERM
+to the whole process group, then KILL after five seconds; cleanup overhead is
+recorded separately from the allocation. The batch has a7220-second wall ceiling
+with five seconds reserved for cleanup (subject to0.05-second polling precision);
+if that bound or resources prevent launch, requested chains remain explicitly
+`not_launched`. Actual maximum concurrency and release decisions are recorded. No retries, extensions or replacements
+are performed. Logs, wrapper requests and all four requested outcomes survive
+failure or interruption. An uncatchable OS kill/power loss can leave a running
+ledger; inspect processes and preserved files manually before taking any action.
+Process scans prevent dispatch alongside observed OpenMx jobs and abort if one
+appears later; they cannot prevent an independently started external process
+between scans. Do not start another workload during this gate.
+
+`diagnose` is a separate bounded command and preserves its own exit status/log;
+it does not certify convergence. Read the actual diagnostic artifacts and retain
+all incomplete-chain denominators. Manual interval precision review and independent
+scientific review remain required. The dispatch protocol is
+[jags-dispatch-protocol.json](provenance/jags-dispatch-protocol.json). Harmless
+process-only fixtures (no R/model/sampling) can be replayed with:
+
+```sh
+python3 simulation/test_jags_dispatch.py
+```

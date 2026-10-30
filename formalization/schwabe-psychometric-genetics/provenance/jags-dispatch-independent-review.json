@@ -1,0 +1,322 @@
+{
+  "reviewer": "Independent dispatcher reviewer (/root/production_guards)",
+  "reviewed_utc": "2026-10-30T20:07:01Z",
+  "status": "accepted for future bounded execution after all conflicting OpenMx processes reach terminal state; no actual model execution or convergence certified",
+  "files": {
+    "simulation/dispatch_jags_gate.py": "17e871664ad57b99c33241e406c81df073c52b209492fa3330b848160958e94d",
+    "simulation/test_jags_dispatch.py": "f8f89f6df47e826064f447bfabf5591e416fd285edd0f58dcf463d636c737603",
+    "simulation/test_jags_dispatch_independent.py": "f1cf6b9706cc8a238d51abfa6b6bb7fc4c0003f2c4da2f4f49b04c47431eb1ca",
+    "provenance/jags-dispatch-protocol.json": "d640460c8262352071a70b8e71923c3fb25ba2470e5f8e2c211e7f74dd60ea13",
+    "simulation/jags_convergence_gate.R": "d48ce9fe65009aa72393c4aea5d5a63d0712a6b8a64556f3a192d22df6924f8e",
+    "simulation/diagnose_jags_gate.R": "9641a2a0642000aca7c32ebc98a7b8c5c278da0b08cad28cb7a3e65882db734a",
+    "provenance/bayesian-convergence-plan.json": "8b9cc97df9e1f3dbd2690dac80192d9db7daa34deaec0cbbcbdf6443bde2608b",
+    "outputs/jags-dispatch-independent-fixtures.json": "23ab0a68f42c9101d82b38c325136d25044405db1d1ab0f386040923fbfab857"
+  },
+  "new_R_JAGS_OpenMx_processes_started": 0,
+  "permanent_gate_namespace_created": false,
+  "git_or_network_actions": false,
+  "actual_busy_refusal": {
+    "pid": 23297,
+    "check_returncode": 1,
+    "busy_reason_matched": true,
+    "namespace_absent_before_and_after": true
+  },
+  "resource_snapshot": {
+    "cpu_max": "400000 100000",
+    "memory_max_bytes": 17179869184,
+    "memory_current_bytes": 3761205248,
+    "meaning": "Time-specific cgroup snapshot during ongoing OpenMx work, not launch-time availability or a JAGS requirement estimate"
+  },
+  "fixtures": {
+    "implementation_suite": {
+      "checks": [
+        {
+          "test": "four_successful_processes",
+          "passed": true
+        },
+        {
+          "test": "four_denominators",
+          "passed": true
+        },
+        {
+          "test": "timeout_failure",
+          "passed": true
+        },
+        {
+          "test": "grandchild_no_longer_running",
+          "passed": true
+        },
+        {
+          "test": "timeout_recorded",
+          "passed": true
+        },
+        {
+          "test": "launch_failure_preserves_four",
+          "passed": true
+        },
+        {
+          "test": "failed_launch_denominators",
+          "passed": true
+        },
+        {
+          "test": "interrupt_preserves_four_cancelled",
+          "passed": true
+        },
+        {
+          "test": "exited_leader_cleaned",
+          "passed": true
+        },
+        {
+          "test": "exited_leader_descendant_stopped",
+          "passed": true
+        },
+        {
+          "test": "midlaunch_failure",
+          "passed": true
+        },
+        {
+          "test": "midlaunch_four_denominators",
+          "passed": true
+        },
+        {
+          "test": "ancestor_cgroup_quota",
+          "passed": true
+        },
+        {
+          "test": "runtime_mutation_refused",
+          "passed": true
+        },
+        {
+          "test": "empty_identity_refused",
+          "passed": true
+        },
+        {
+          "test": "changed_grace_refused",
+          "passed": true
+        },
+        {
+          "test": "duplicate_ids_refused",
+          "passed": true
+        },
+        {
+          "test": "unknown_state_refused",
+          "passed": true
+        },
+        {
+          "test": "changed_command_refused",
+          "passed": true
+        },
+        {
+          "test": "minimum_ancestor_memory_headroom",
+          "passed": true
+        },
+        {
+          "test": "low_headroom_refused",
+          "passed": true
+        },
+        {
+          "test": "stagger_parallel_concurrency",
+          "passed": true
+        },
+        {
+          "test": "stagger_parallel_all_four_attempted",
+          "passed": true
+        },
+        {
+          "test": "zero_rss_serial_concurrency",
+          "passed": true
+        },
+        {
+          "test": "zero_rss_serial_all_four_attempted",
+          "passed": true
+        },
+        {
+          "test": "early_failure_serial_concurrency",
+          "passed": true
+        },
+        {
+          "test": "early_failure_serial_all_four_attempted",
+          "passed": true
+        },
+        {
+          "test": "resource_guard_failure",
+          "passed": true
+        },
+        {
+          "test": "resource_guard_four_outcomes",
+          "passed": true
+        },
+        {
+          "test": "readiness_final_rss_recorded",
+          "passed": true
+        },
+        {
+          "test": "readiness_growth_blocks_parallel",
+          "passed": true
+        },
+        {
+          "test": "busy_process_detected",
+          "passed": true
+        },
+        {
+          "test": "busy_refused",
+          "passed": true
+        },
+        {
+          "test": "namespace_escape_refused",
+          "passed": true
+        },
+        {
+          "test": "namespace_restriction",
+          "passed": true
+        }
+      ],
+      "actual_R_or_JAGS_processes_started": 0
+    },
+    "independent_suite": {
+      "checks": [
+        {
+          "test": "refuse_protocol_chain_ids",
+          "passed": true
+        },
+        {
+          "test": "refuse_protocol_per_chain_wall_seconds",
+          "passed": true
+        },
+        {
+          "test": "refuse_protocol_planned_worker_seconds",
+          "passed": true
+        },
+        {
+          "test": "refuse_protocol_preparation_wall_seconds",
+          "passed": true
+        },
+        {
+          "test": "refuse_protocol_diagnostic_wall_seconds",
+          "passed": true
+        },
+        {
+          "test": "refuse_protocol_termination_grace_seconds",
+          "passed": true
+        },
+        {
+          "test": "refuse_protocol_pinned_runtime",
+          "passed": true
+        },
+        {
+          "test": "refuse_changed_pinned_wrapper",
+          "passed": true
+        },
+        {
+          "test": "actual_fixed_protocol_valid",
+          "passed": true
+        },
+        {
+          "test": "refuse_symlink_namespace",
+          "passed": true
+        },
+        {
+          "test": "refuse_parent_production_namespace",
+          "passed": true
+        },
+        {
+          "test": "refuse_outside_namespace",
+          "passed": true
+        },
+        {
+          "test": "normal_namespace_resolution_no_creation",
+          "passed": true
+        },
+        {
+          "test": "ancestor_cpu_quota_not_host_affinity",
+          "passed": true
+        },
+        {
+          "test": "ancestor_memory_headroom_not_host_memory",
+          "passed": true
+        },
+        {
+          "test": "harmless_env_process",
+          "passed": true
+        },
+        {
+          "test": "single_thread_overrides_inherited",
+          "passed": true
+        },
+        {
+          "test": "existing_namespace_refused",
+          "passed": true
+        },
+        {
+          "test": "existing_ledger_unchanged",
+          "passed": true
+        },
+        {
+          "test": "small_fixed_wall_bound_no_extension",
+          "passed": true
+        },
+        {
+          "test": "bounded_abort_four_denominators",
+          "passed": true
+        },
+        {
+          "test": "no_unmeasured_parallel_release",
+          "passed": true
+        }
+      ],
+      "new_R_JAGS_OpenMx_processes": 0,
+      "fixtures_only": true
+    }
+  },
+  "findings_and_corrections": [
+    {
+      "finding": "Affinity-only CPU check ignored cgroup quota",
+      "correction": "Current and ancestor cgroup-v2 quota plus affinity checked; fewer than four effective slots rejected."
+    },
+    {
+      "finding": "Full runtime/library identities were recorded but not rechecked at phase boundaries",
+      "correction": "verify_phase validates pinned inputs plus exact dispatcher/protocol hashes and all recorded installed runtime/library files before preparation, chains and diagnostics."
+    },
+    {
+      "finding": "Protocol pin sets and auxiliary time allocations accepted incomplete mappings or altered limits",
+      "correction": "Exact required pin sets and fixed120-second preparation/300-second diagnostic/5-second cleanup allocations required alongside four1800-second chain budgets."
+    },
+    {
+      "finding": "Diagnostic outcome gate lacked unique chain IDs/terminal-state/command verification",
+      "correction": "Exactly four unique IDs1-4, known terminal states and original command identities required; failed/nonlaunched denominators remain explicit."
+    },
+    {
+      "finding": "No empirical JAGS RSS available from saved timing logs despite frozen measure-first plan",
+      "correction": "Only prescribed chain1 starts initially; process-tree RSS sampled through initialization/adaptation, then sampled freshly when adaptation.rds existence is observed. No file contents or posterior effects are used to schedule. Remaining prescribedchains run concurrently only with positive readinessRSS and cgroupheadroom >= pending*max(2*measuredpeak,1GiB); otherwise serialize or retain resourceblocked not_launched rows."
+    },
+    {
+      "finding": "Readiness could release chains using an earlier pre-adaptation sample",
+      "correction": "Mandatory fresh readiness-stage sample added and independently inspected; fixture32MiBstartup->2GiBreadiness under3GiBheadroom refuses parallelrelease."
+    },
+    {
+      "finding": "Timer started after Popen returned",
+      "correction": "Timeout clock now starts before Popen; includes startup."
+    }
+  ],
+  "verified_invariants": [
+    "No source/model/R wrapper changes; frozen gate and diagnostic hashes verified.",
+    "Namespace restricted to nonsymlink study production subdirectories; existing nonempty namespaces and duplicate output directories refused.",
+    "Four requested chains and fixed seeds/lengths remain; no replacement chains, retry, automatic extension or effect-based stopping.",
+    "Per-chain1800-second timeout,7200nominalworker-seconds and7220-second batchwall allocation;5-second per-processgroup cleanup grace is separate. Polling/OS scheduling adds small timing jitter; this is not a real-time operating-system guarantee.",
+    "Single-thread environment overrides passed to harmless child and checked; maximum four active chain processes, serial-leading memory measurement first.",
+    "Timeout/cancel kills full processgroups, including surviving descendants after leader exit; partiallogs, returncodes and four requested outcomes survive launchfailures, interrupts, resourceguard exceptions and boundedabort.",
+    "Dispatch writes execution accounting only. Diagnostics are a separate bounded action after four terminal outcome records; scientific convergence and HPD detection still require independent outcome/manual review."
+  ],
+  "limitations": [
+    "No actual R/JAGS graph compilation, chain sampling, permanent preparation or diagnosticmodel process was started during this review.",
+    "Measured process-treeRSS is conservative sum-of-resident-pages and may doublecount sharedmemory; observed earlypeak plus2xsafetyfactor/1GiBfloor is an operational allocationpolicy, not a guaranteed futurepeak.",
+    "Abrupt SIGKILL of dispatcher or host failure cannot run Python cleanup; original requested-chain ledger remains evidence and activeprocesses require inspection before any furtheraction.",
+    "Full runtime snapshot covers designated runtime/library trees and resolved filebytes, not every hostOSdependency.",
+    "Acceptance is conditional on OpenMxterminalstate, fresh resourcechecks and unchanged reviewedhashes; no whole-dissertation or convergence completion claim."
+  ],
+  "reproduction_commands": [
+    "python simulation/test_jags_dispatch.py",
+    "python simulation/test_jags_dispatch_independent.py",
+    "python simulation/dispatch_jags_gate.py check (must refuse while PID23297 is active)"
+  ]
+}
