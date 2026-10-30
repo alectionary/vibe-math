@@ -35,6 +35,9 @@ All 281 uploaded study files were downloaded from the immutable artifact commit 
 
 ## Open issues and next steps
 
-**Independent scientific and rendered-main-PDF review is still pending.** Self-review is not a substitute; the delivery checker deliberately reports that requirement unmet. This is not a verified final scientific delivery.
+Independent scientific and rendered-main-PDF reviews are recorded for the revised checkpoint, including initial findings and corrections. Their acceptance is limited to the checkpoint, not whole-dissertation replication or production readiness.
 
-Continue source-count simulations, obtain the original Chapter 6 simulation/SE-summary driver, recover permitted empirical inputs, resolve the undocumented curvilinear design and broader identification assertions, and complete independent review. No open feasible production item is closed as outside scope. Master navigation links await merge. No merge, author contact, social post or reusable skill edit was performed.
+Continue source-count simulations, obtain the original Chapter 6 simulation/SE-summary driver, recover permitted empirical inputs, resolve the undocumented curvilinear design and broader identification assertions, and complete the remaining production-validity checks. No open feasible production item is closed as outside scope. Master navigation links await merge. No merge, author contact, social post or reusable skill edit was performed.
+
+
+Review follow-up: the whole-dissertation checkpoint now includes all72 Figure6.5 signed biases,23 inconclusive point-sign reversals, and corrected continuation aggregation. Original numerical baseline files are byte-identical. Source-count production and empirical inputs remain unresolved; production safeguards must precede any continuation. New draft PR creation remains denied; this is a prepared description, not an existing PR.

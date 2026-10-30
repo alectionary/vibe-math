@@ -1,0 +1,113 @@
+{
+  "reviewer": "Independent scientific reviewer (/root/scientific_review)",
+  "review_type": "scientific evidence and reproducibility review; independent of implementation author",
+  "reviewed_revision": "c9607c37a97f7cb96ac1b9de701598e56f85d78e",
+  "review_time_utc": "2026-10-30T18:17:18.471191+00:00",
+  "pdf_sha256": "f905ce351d0eaecc9df92971545d53b88091bfda8318788931db76193ed8d7ab",
+  "source_sha256": "237bd68a7e5ec8bd71da92592456a45e010fc5f46b5fb77d77af126a52fba08d",
+  "status": "passed for accurately bounded checkpoint after corrections; whole-dissertation replication incomplete",
+  "scope": "Read main manuscript source, comparison/coverage/uncertainty records, Chapter2/5/6 generators/fitters, aggregation and posterior-comparison code; independently recalculated key Chapter6 summaries from all14400 trial-level parameter rows; checked original thesis source passages pp19\u201324,77\u201380,91\u201396,138\u2013139 and rendered Figures6.3, Eq3.4, Eqs4.6\u20134.9. This is not a fresh line-by-line reread of all164 thesis pages or independent empirical replication. Separate rendered-main-PDF review required.",
+  "checks": [
+    {
+      "item": "Missing-data primary direction",
+      "status": "verified at saved checkpoint",
+      "evidence": "Independently grouped outputs/trial-records.csv;1920method/datasetfits,14400parameterrows allstatus0 with positive finiteSE;108/108primarySEpointdifferencespositive;104/108Bonferroni108-familyStudentbandspositive. No saved row has nonpositiveSE."
+    },
+    {
+      "item": "Covariance and missingness implementation",
+      "status": "no critical mismatch found in audited code",
+      "evidence": "Chapter6 source pp91\u201392 uses N1000,28%MZ,ACE(.5,.3,.2),Wdiag1/offdiag.1,Bdiag1/offdiag.5,explainedvariance.64, weighted sample logistic(-2-1.7y/x); independent comparison with openmx_replication.R finds matching primary construction. Equal beta allocation and means constraint remain declared supplied assumptions."
+    },
+    {
+      "item": "Variance/path-SE hypothesis",
+      "status": "appropriately distinguished",
+      "evidence": "Rendered Figure6.3 labels variance-component SEs. Reconstruction delta Jacobian2*a is appropriate for variance=a\u00b2. path_se=variance_se/(2sqrt(estimate)) is differentestimand;0/216outsidepathbands does not establish sourceprocedure.191/216variancepointsoutsideconditionalbands retained. Need originaldriver to settle."
+    },
+    {
+      "item": "JAGS mechanism and convergence scope",
+      "status": "limited evidence accurately qualified",
+      "evidence": "Source-length19kpostadaptationiterations matchCh2; same-data originalcentred and newnoncentred means agreewithin5-familyexploratoryMCbands. LowestESS112.709; pointRhatmax1.009557,upper1.031418 fromtwo differentlyrepresentedchains. These do not establish independentconvergence acrossallconditions or source100datasetmeans."
+    },
+    {
+      "item": "Literal equations",
+      "status": "source ink confirms counterexamples",
+      "evidence": "Viewed eq3-information.png and eq4-probabilities.png. a=2,P=.5 implies scoreinformation1 vsprinted.25; printedthreeprobabilitiesatzeroinput .5,.5,.25sum1.25. Scopecorrectlylimited toprintedexpressions; no evidenceempiricalprogramsusedthem."
+    },
+    {
+      "item": "Source edition and broad coverage",
+      "status": "inventory useful but grouped; full completion unestablished",
+      "evidence": "coverage.csv41groups includesoriginalempiricaltables,softwareappendices,originalnumericalgridsandanalyticalassertions; empiricalinputsblockedafterdocumentedacquisitionaudit. No broadgroup is markedreplicated fromsmoketests. This review doesnot certify exhaustiveness of everyuntabulatedthesisclaim."
+    }
+  ],
+  "findings": [
+    {
+      "id": "SCI-1",
+      "severity": "major",
+      "status": "required manuscript correction; supplementary inventory implemented by reviewer",
+      "finding": "Headline C6-3 MAR bias/recovery was missing from signedscientificcontrastinventory and opening; onlySEorderings were discussed.23/72sourceversusoursbias-signreversals exist;19surviveextractionbounds,none hasoursadjustedbandexcludingzero.",
+      "evidence": "outputs/bias-contrasts.csv; outputs/bias-contrast-validation.json; simulation/bias_contrasts.py",
+      "required_fix": "Discuss all72bias/recoverycells separately fromSEcomparisons; disclose consequentialdeletionh2q5missing.10source.533154vsours.497505againsttruth.5 inopening withuncertainty. Oursbias\u2212.002495 adjusted72familyinterval[\u2212.098004,.093014]; noestablishedscientificreversal. Preservebaseline."
+    },
+    {
+      "id": "SCI-2",
+      "severity": "major",
+      "status": "required continuation correction",
+      "finding": "summarize.py atreviewedrevisiononlyloadsoutputs/pilot-c6-*.csv; README fullproductioncommandswritefull-c6-* and thereforecannotupdate aggregate. run_grid.py also skipsanyexistingcheckpointincludingfailure anddoesnotbindcheckpointtoverifiedcommand/code.",
+      "evidence": "simulation/summarize.py lines5\u20136; simulation/run_grid.py run(); READMEproductioncommands",
+      "required_fix": "Makeproductionaggregationandresumebehaviorexplicit;preserve20repbaseline,avoidduplicatepilot/fullseedcounts,inspectprocessandfitstatus,do notskipfailed/stalecheckpointascompleted."
+    },
+    {
+      "id": "SCI-3",
+      "severity": "moderate",
+      "status": "recommended wording correction",
+      "finding": "Firstpagetablelabelsunavailableempiricalfits \"no match\", requiringfootnotetoexplainnotestablished. This conflatesabsencewithnumericalfailure.",
+      "required_fix": "Use \"not established\" or \"not attempted: inputs unavailable\" for empiricalrow; retainnumericverdictnotcomparable/unavailable separately."
+    },
+    {
+      "id": "SCI-4",
+      "severity": "moderate",
+      "status": "prospective validation required",
+      "finding": "OpenMx se=sqrt(pmax(0,diag(J V Jt))) silentlyclipsnegativeestimatedvariance. AllsavedSEspositive, so nocurrentobservedclipping; optimizerstatus0alone doesnotfullyvalidateHessian/solution.",
+      "required_fix": "Beforeproductionrecordfiniteestimates,positive-definiteinformation/parametercovarianceorconditiondiagnostics,andflagnegativeSEvariance ratherthanclipping. Do notalterpreservednumericalbaselines."
+    },
+    {
+      "id": "SCI-5",
+      "severity": "moderate",
+      "status": "open analytical work",
+      "finding": "AppendixC finitebinaryexample establishesnonidentifiabilitycounterexample; it doesnot settle loglinearparametrization global likelihooduniqueness or continuousmoderatorassertions. These arefeasibleanalyticalinvestigationitems,notmissingempiricaldata blockers.",
+      "required_fix": "Keep explicit feasibleunfinished inventory and provide algebraic proof/counterexample orboundedattempt; do not classify asmissingdata."
+    }
+  ],
+  "new_deliverables": [
+    "simulation/bias_contrasts.py",
+    "outputs/bias-contrasts.csv",
+    "outputs/bias-contrast-validation.json"
+  ],
+  "not_done": "No rerun of allJAGS grids or fullproduction; no empiricaldata recovery; no certifiedwhole-dissertationreplication; no networkmutation/PRoperation; no baselinefile modified. Fixes require finalre-review againstnewsource/PDFhashes.",
+  "initial_review_status": "changes_required; not certification of scientific completion",
+  "initial_pdf_sha256": "5d4b13306e2bb2e89ad0ae39e17b80462f56fb15c2034771d1d7dd8837831bfb",
+  "initial_source_sha256": "4849a445cd0bd1d90f7f4c66b0024c48dd122b69135d6fd93c200ae7d57b7fb7",
+  "final_review": {
+    "time_utc": "2026-10-30T18:19:25.653830+00:00",
+    "reviewer": "Independent scientific reviewer (/root/scientific_review)",
+    "pdf_sha256": "f905ce351d0eaecc9df92971545d53b88091bfda8318788931db76193ed8d7ab",
+    "source_sha256": "237bd68a7e5ec8bd71da92592456a45e010fc5f46b5fb77d77af126a52fba08d",
+    "pages": 16,
+    "status": "checkpoint scientific reporting accepted with explicit open work; not production readiness or whole-replication certification",
+    "evidence": [
+      "Read revised manuscript source and extracted final16pagePDF; viewed renderedpage1",
+      "SCI-1 resolved: abstract,headline table,introduction andsection4 discloseMARbias reversal;72cellinventory andexploratory family withunknownsourceMCerror explicit",
+      "SCI-3 resolved: empirical row now not established",
+      "SCI-2 addressed for documentedcontinuation: --include-full requiresnewoutputdirectory,deduplicatescondition/seed/parameter/method;runner rejectsfailed/mismatched/incompletecheckpoints; fullfutureitems/sums sharedata seeds; baseline retained",
+      "SCI-4 remainsprospective: READMEexplicitlyrequiresfiniteestimates,Hessian/covariancevalidity,nonnegativeSEvariancebeforeproduction; no newproductionrun claimed",
+      "SCI-5 remainsfeasibleanalyticalwork, expresslyseparatedfrommissingempiricalinputs in unfinished-work.json"
+    ],
+    "limits": [
+      "Checkpointcommandidentitydoesnotbindscriptsha;runonlyfrozenrevisionornewoutputnamespace",
+      "RunnercheckpointCSVexistenceisnotfitvalidation;recordedmeaning executiononly;checkfiterrors/nonfinite/Hessianbeforefutureproduction",
+      "Noempiricalrefits,source-countproduction,orproofofglobalidentificationcompleted",
+      "SeparateindependentrenderedPDFreviewcoversallpages; thisreviewvisuallycheckedpage1andscientifictext"
+    ],
+    "minor_nonblocking": "Resolved: first-page source list now includesFigures6.3and6.5; checked inrebuiltPDFtext."
+  }
+}

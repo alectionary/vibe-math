@@ -1,0 +1,181 @@
+{
+  "reviewer": "Independent rendered-main-PDF reviewer (/root/pdf_review), separate from implementation author",
+  "status": "accepted as an incomplete checkpoint presentation; not successful whole-dissertation replication",
+  "pdf_sha256": "f905ce351d0eaecc9df92971545d53b88091bfda8318788931db76193ed8d7ab",
+  "source_sha256": "237bd68a7e5ec8bd71da92592456a45e010fc5f46b5fb77d77af126a52fba08d",
+  "build_inputs": {
+    "paper/approved-preamble.tex": "03e1b01590e4268de4a2ab4600db045f327b803c3bf44a4fadf9942ed8cf345e",
+    "paper/availability.tex": "d084ed0c5755710ea0934dbcdec63cf074f8645ce887f81e8b44e03fb7b8bd92",
+    "paper/comparison.tex": "41ff19ffa756d38cfbf633e641eee494375a34d0fd20a643725c334c5b56c2f7",
+    "paper/compliance.tex": "c5198e4914ffb11679c06f66a5e1e45902fb2e8caa50531cb343f385b05afec9",
+    "paper/coverage.tex": "6a347315eb2ad3b338f8338335abceaf82825c7fcf7e0f8327d225430f5e1735",
+    "paper/paper.tex": "237bd68a7e5ec8bd71da92592456a45e010fc5f46b5fb77d77af126a52fba08d",
+    "paper/results.tex": "30a61e449f5e8ce5be99dfa56032ae5fb8405cbe1773de54ebfbb76378b63113",
+    "paper/reversals.tex": "d9a9a3b895e6615ca403006cc5c187dedbb0b31dd4df49effda5e44ede6d204c",
+    "paper/references.bib": "367a0662200d86bad6b482c6b413c2b1a496dcbd6e6cee5180db0c3fa301cd7e",
+    "simulation/build_report.py": "a415d390aabb120c06cef3d2e8510358a256ad51233632838904996c48c7bfd3",
+    "coverage.csv": "ce7da1e390cba9ca1eace871dd09778d6f4b5c67dd12a9ef12069fc14049f4b1",
+    "outputs/summary.json": "232b373dbebee2a392b1c33923db9e581cace7d2e0cfa8778f6535840e67ecbd",
+    "outputs/condition-summary.csv": "39a2bc9d40321b3673010253c2731c7d56fe343b3163b93a1e6283b5a8e5f9ae",
+    "outputs/signed-contrasts.csv": "d7ea8cc0892edbd2d7cd2e8e20459d203d366888cb71a44bc455ad98a5ac8e26",
+    "outputs/source-comparisons.csv": "f00799347b40e4a130b30cf46ae37376d1fb78edba458f95a876e9db6ad76d7e",
+    "outputs/resource-projection.json": "ad44cb9e4320ecedf928c13d1e008002c67c3f3c002e73416bba5b76c87d2557",
+    "provenance/compliance.json": "c666dc6680d7e1aeaefa2581e5727ae2069fc23e3697e509ecabdee231606186",
+    "provenance/availability.json": "116c26e77522f1e2e16213e39265096fb7ffa7860a89ff6c2152164e787a10fc",
+    "evidence/eq3-information.png": "b72cb9c876a0b282fe563383c1a04afcad8459a62d9840b5abfaa854d0413c35",
+    "evidence/eq4-probabilities.png": "b85aeea6186bbce72fa16343ff3307e9c048d958234bbbd8bb4a0312dd1b887b",
+    "evidence/fig6-3.png": "ae2f2bfe08cd18069698a092e8315b6df412aad6b6dea723560020e342f90508",
+    "outputs/bias-contrasts.csv": "c9c60fae289a8da9d5d96fb5fd1c579a76a23d7a981882ae45b42b643c284c34",
+    "outputs/bias-contrast-validation.json": "186a9602a5393a1907905a8fd261cc00741946f87537e4cd6a1d78e3493e686f"
+  },
+  "method": "Every final page rendered using PyMuPDF at 1.5x and individually viewed. Final citation-only rebuild was rerendered and compared pixel-by-pixel; only page 1 changed and was visually reinspected. Hyperlink targets, filenames, line anchors, font metadata and source inclusions checked.",
+  "items": {
+    "layout": "All 16 final pages rendered at 1.5x and visually inspected individually. The final citation-only rebuild changed page 1 pixels only; page 1 was reinspected. Approved preamble remains byte-identical. All text fonts are embedded Type1. Tables, coverage rows, captions and references are readable without clipping or overlap. Some long filenames wrap within words but retain their extensions. Three 600-dpi source crops are embedded legibly on page 15.",
+    "headline_and_tolerance": "Page 1 contains the partial verdict, published floor slopes 1.05/.03 versus 1.095/−.105, one-dataset limit, item interval [−.698,.439], 108 positive precision contrasts, MAR heritability .533 versus .498 against truth .500, and variance/path SE distinction. The bias reversal is explicitly inconclusive. Rounding criterion and conditional uncertainty limitation appear immediately below the table; original figure numbers 6.3 and 6.5 are now cited. Page 4 separates the 72-cell bias inventory and 23 point reversals from SE direction, with adjusted interval and exploratory-family caveat.",
+    "citations": "Nine bibliography entries on page 16 are readable and in-text citations have no unresolved markers. Page 1 now locates both source Figures 6.3 and 6.5. Page 15 captions attribute printed equations and Figure 6.3 to Schwabe (2016); full-resolution crops remain linked. Citation scientific accuracy is covered by the separate scientific review.",
+    "ledgers": "Availability rows on pages 7–8 and compliance rows on pages 8–9 remain readable. The review row now records separate reviewers and required corrections, without declaring whole-dissertation replication complete. The 41-group inventory on pages 10–13 retains attempted/unresolved and blocked statuses; the new C6-3 bias evidence is visible. Next steps name unfinished-work and production-resource-plan files.",
+    "links": "242 URI annotations inspected; all repository master-file targets exist locally, and the three function anchors retain their previously checked correct destinations. Visible labels include actual filenames and extensions. Page 13 correctly says the delivery record supplies commit-pinned links, PR creation remains denied, and no PR exists. Master links explicitly await merge; their current public availability is not certified.",
+    "independence_limits": "This reviewer is separate from the implementation author and visually inspected the rendered main manuscript, rather than treating helper checks or source review as sufficient. Numerical validation is delegated to the separate scientific reviewer. Page 2 discloses shared data, graph, engines and priors in implementation checks. This acceptance applies to checkpoint presentation only, not successful whole-dissertation replication, completed production counts, empirical refits, a created PR, or publication on master."
+  },
+  "pages": [
+    {
+      "page": 1,
+      "evidence": "Abstract and complete headline table stay on page 1; new inconclusive MAR bias reversal and source Figure 6.5 locator readable; no overflow.",
+      "image": "/tmp/schwabe-independent-review/final/page-01.png"
+    },
+    {
+      "page": 2,
+      "evidence": "Opening now includes MAR reversal and source uncertainty limit; contribution and engine-independence paragraphs readable.",
+      "image": "/tmp/schwabe-independent-review/final/page-02.png"
+    },
+    {
+      "page": 3,
+      "evidence": "Bayesian one-dataset checks, incomplete repeated simulations and measured resource warning retained; SE contrast definition and 104/108 intervals readable.",
+      "image": "/tmp/schwabe-independent-review/final/page-03.png"
+    },
+    {
+      "page": 4,
+      "evidence": "Variance/path comparison and separately scoped SE ordering table readable; new 72-cell bias paragraph gives 23 reversals, adjusted interval and exploratory caveat.",
+      "image": "/tmp/schwabe-independent-review/final/page-04.png"
+    },
+    {
+      "page": 5,
+      "evidence": "Assumptions and executable repairs readable; equation checks preserve empirical-fit limitation.",
+      "image": "/tmp/schwabe-independent-review/final/page-05.png"
+    },
+    {
+      "page": 6,
+      "evidence": "Finite identification check, unavailable empirical inputs, summary reconstruction and detailed numerical/scope table readable.",
+      "image": "/tmp/schwabe-independent-review/final/page-06.png"
+    },
+    {
+      "page": 7,
+      "evidence": "Unresolved section distinguishes review fixes from successful whole replication; availability ledger starts legibly.",
+      "image": "/tmp/schwabe-independent-review/final/page-07.png"
+    },
+    {
+      "page": 8,
+      "evidence": "Availability continuation and compliance ledger readable with no overlap.",
+      "image": "/tmp/schwabe-independent-review/final/page-08.png"
+    },
+    {
+      "page": 9,
+      "evidence": "Review row cites both independent review files; next steps retain open production/data items; inventory introduction clear.",
+      "image": "/tmp/schwabe-independent-review/final/page-09.png"
+    },
+    {
+      "page": 10,
+      "evidence": "Coverage C1-1 through C3-3 readable with genuine attempt/blocker status and evidence filenames.",
+      "image": "/tmp/schwabe-independent-review/final/page-10.png"
+    },
+    {
+      "page": 11,
+      "evidence": "Coverage C3-4 through C4-7 readable, preserving unavailable empirical inputs.",
+      "image": "/tmp/schwabe-independent-review/final/page-11.png"
+    },
+    {
+      "page": 12,
+      "evidence": "Coverage C5-1 through C6-4 readable; C6-3 now records all 72 MAR bias cells and inconclusive reversals.",
+      "image": "/tmp/schwabe-independent-review/final/page-12.png"
+    },
+    {
+      "page": 13,
+      "evidence": "Coverage remaining rows readable; artifact section correctly states no PR exists and delivery record supplies immutable review links.",
+      "image": "/tmp/schwabe-independent-review/final/page-13.png"
+    },
+    {
+      "page": 14,
+      "evidence": "Artifact table includes new bias/resource scripts; crop appendix attributes source and states full dissertation is not redistributed.",
+      "image": "/tmp/schwabe-independent-review/final/page-14.png"
+    },
+    {
+      "page": 15,
+      "evidence": "Both equation crops and Figure 6.3 crop visibly legible, with attribution and interpretation-limiting captions; no crop overlaps.",
+      "image": "/tmp/schwabe-independent-review/final/page-15.png"
+    },
+    {
+      "page": 16,
+      "evidence": "All nine references and URLs remain readable with no unresolved citations.",
+      "image": "/tmp/schwabe-independent-review/final/page-16.png"
+    }
+  ],
+  "original_findings": [
+    {
+      "id": "PDF-1",
+      "severity": "required",
+      "page": 13,
+      "finding": "DraftPR supplies current-commit links implies nonexistent PR.",
+      "fix": "Replace with deliveryrecord oruploadedbranch supplyingimmutablecommitreviewlinks."
+    },
+    {
+      "id": "PDF-2",
+      "severity": "required-after-review",
+      "pages": [
+        7,
+        8,
+        9
+      ],
+      "finding": "Pending independentreview descriptions will be stale when reviews resolved.",
+      "fix": "Update to factual reviewedstatus, preservewhole-replicationunfinished distinction, rebuild and re-review."
+    },
+    {
+      "id": "PDF-3",
+      "severity": "suggestion",
+      "pages": [
+        4,
+        5
+      ],
+      "finding": "Disputedsourceequations andFigure6evidence are linked as crops, but not embedded as mainpaperfigures.",
+      "fix": "Consider one evidenceplate containing eq3-information.png, eq4-probabilities.png, fig6-3.png, with sourcepage attribution and nofullpage reproduction. This improves inspectability; existingfilecrop availability isnotabsent."
+    }
+  ],
+  "closures": [
+    {
+      "id": "PDF-1",
+      "status": "closed",
+      "evidence": "Page 13 explicitly says PR creation remains denied and no PR exists; immutable links come from delivery.json."
+    },
+    {
+      "id": "PDF-2",
+      "status": "closed",
+      "evidence": "Pages 7 and 9 now describe the completed review and corrections without closing production/data work."
+    },
+    {
+      "id": "PDF-3",
+      "status": "implemented",
+      "evidence": "Page 15 embeds two equation crops and Figure 6.3 with readable source attribution and empirical/metric limitations."
+    }
+  ],
+  "unresolved_presentation_findings": [],
+  "uri_count": 242,
+  "missing_local_link_targets": [],
+  "original_review_pdf_sha256": "5d4b13306e2bb2e89ad0ae39e17b80462f56fb15c2034771d1d7dd8837831bfb",
+  "original_review_source_sha256": "4849a445cd0bd1d90f7f4c66b0024c48dd122b69135d6fd93c200ae7d57b7fb7",
+  "claims_not_certified": [
+    "Successful whole-dissertation replication",
+    "Completion of production simulation counts",
+    "Empirical refits",
+    "Remote master availability",
+    "Draft PR creation"
+  ]
+}

@@ -6,7 +6,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We partly replicate Schwabe's dissertation-level results, but do not establish a successful whole-dissertation replication: the published floor-effect slopes of 1.05 for sum scores and 0.03 for item-level analysis become 1.095 and $-0.105$ in one new full-length fit, and the missing-covariate precision ordering is preserved in all 108 primary point contrasts. These are limited reconstructions: original empirical inputs are unavailable, the Bayesian simulation grids remain diagnostic attempts, and our smaller missing-data experiment does not replace the original 1,000 repetitions per condition. The floor item-level slope changes point-estimate sign, but its 95\% posterior interval $[-0.698,0.439]$ includes zero. A separate scale ambiguity matters: a published standard error of \SourceAse{} becomes \OursAse{} on the stated variance scale, versus \PathAse{} on the square-root path scale. The latter is an exploratory reconstruction, not the same estimand. Entire-dissertation coverage and unfinished work remain explicit.
+We partly replicate Schwabe's dissertation-level results: published floor-effect slopes of 1.05 for sum scores and .03 for item analysis become 1.095 and $-.105$ in one full-length fit; the missing-covariate precision ordering agrees in all 108 primary point contrasts. Whole-dissertation replication remains incomplete: empirical inputs are unavailable and production simulation counts unfinished. The item-slope sign reversal is inconclusive, with posterior interval $[-.698,.439]$. MAR heritability overestimation is not established: at five covariates and 10\% missingness, the source gives .533 versus our .498 against truth .500; this opposite bias sign is also inconclusive. A published standard error of \SourceAse{} becomes \OursAse{} on the variance scale, versus \PathAse{} on the square-root path scale. The latter is an exploratory different-estimand reconstruction, not a reproduced procedure.
 \end{abstract}
 
 \begin{center}\small
@@ -14,15 +14,16 @@ We partly replicate Schwabe's dissertation-level results, but do not establish a
 \toprule Claim & Published & Ours & Same direction? & Verdict\\\midrule
 Floor spurious interaction: sum minus item slope & $1.05-.03=1.02$ & $1.095-(-.105)=1.200$; one dataset & Yes & partial\\
 Missing-covariate precision: deletion minus full SE & Positive point contrasts & Positive at all 108 primary cells & Yes & partial\\
-Empirical interaction findings, Chapters 3--5 & Math $\beta_1=2.0837$; liberalism $-2.81$; SES $\beta_{1c}=-3.0777$ & No raw-data refits & Unknown & no match\\
+MAR deletion heritability bias, $q=5$, 10\% missing & $.533-.500=+.033$ & $.498-.500=-.002$ & No; inconclusive & partial\\
+Empirical interaction findings, Chapters 3--5 & Math $\beta_1=2.0837$; liberalism $-2.81$; SES $\beta_{1c}=-3.0777$ & No raw-data refits & Unknown & not established\\
 Missing-data standard-error magnitude, one example & \SourceAse{} & \OursAse{} (variance); \PathAse{} (path) & Metric unresolved & partial\\
 \bottomrule
 \end{tabular}
 \end{center}
-\noindent\small The source values are from \citet[Tables 2.1, 3.2, 4.3, 5.4 and Figure 6.3]{schwabe2016}. ``No match'' for unavailable empirical fits means not established, not contradicted. Rounding agreement requires the same estimand to round half up to the printed value; the figure has no printed decimal precision. Conditional bands use our Monte Carlo error plus extraction bounds and do not recover source uncertainty. Positive deletion-minus-full SE means greater precision with full information.\normalsize
+\noindent\small The source values are from \citet[Tables 2.1, 3.2, 4.3, 5.4 and Figures 6.3 and 6.5]{schwabe2016}. Unavailable empirical fits are not established, not contradicted. Rounding agreement requires the same estimand to round half up to the printed value; the figure has no printed decimal precision. Conditional bands use our Monte Carlo error plus extraction bounds and do not recover source uncertainty. Positive deletion-minus-full SE means greater precision with full information.\normalsize
 
 \section{What replicated, and what remains unestablished}
-The measurement and missingness mechanisms receive partial support, while the dissertation's empirical conclusions remain unreplicated. The floor comparison gives a positive spurious sumscore slope and an item-level interval containing zero; the source's item-level point estimate is positive and ours negative, an inconclusive point reversal. The missing-data comparisons favor full information at every primary point contrast. Neither result establishes the whole dissertation: original repeated-simulation summaries, several analytical assertions, and all empirical refits remain open.
+The measurement and missingness mechanisms receive partial support, while the dissertation's empirical conclusions remain unreplicated. The floor comparison gives a positive spurious sumscore slope and an item-level interval containing zero; the source's item-level point estimate is positive and ours negative, an inconclusive point reversal. The standard-error comparisons favor full information at every primary point contrast, but MAR heritability bias reverses point sign at five covariates and 10\% missingness: .533 in the source versus .498 here, against truth .500. Our adjusted bias interval includes zero, so the source overestimation finding is not established by this checkpoint. Neither result establishes the whole dissertation: original repeated-simulation summaries, several analytical assertions, and all empirical refits remain open.
 
 The dissertation asks how measurement and incomplete covariates change genetic and environmental inference from twin data. It was awarded as a University of Twente PhD on 24 March 2016, supervised by C.A.W. Glas with adviser St\'ephanie M. van den Berg; the final published version has 154 numbered pages and 164 PDF pages. We read the full document, including all seven chapters and Appendices A--G. The 41-group inventory in Appendix~\ref{sec:coverage} treats every substantive original result as in scope. Cited background models and future extensions are distinguished from completed original work.
 
@@ -53,8 +54,10 @@ The plotted magnitudes remain unresolved on the printed variance scale. For exam
 
 An exploratory change of metric explains much of the difference. For a positive path $a$ with variance $V=a^2$, the delta-method relation is $\mathrm{SE}(V)=2|a|\mathrm{SE}(a)$. Reconstructing path SEs gives \PathAse{} in the example, and \PathOutside{} of the 216 path-scale comparisons lie outside the corresponding conditional bands. These are different estimands. Agreement with a transformed expression does not prove that it was the source procedure; the original plotting and standard-error extraction code would settle that question. The printed variance-scale comparison is preserved in \artifact{outputs/source-comparisons.csv}.
 
-The extraction retains every source curve, not just the illustrative example. We read vector paths for Figures 6.3--6.6, calibrated their axes against tick labels, and checked rendered evidence. The CSV retains coordinates, drawing identifiers and extraction bounds: \artifact{outputs/source-figure-values.csv}. Source point orderings have unknown uncertainty. Any point-sign reversals in the primary or sensitivity grid are listed below rather than suppressed.
+The extraction retains every source curve, not just the illustrative example. We read vector paths for Figures 6.3--6.6, calibrated their axes against tick labels, and checked rendered evidence. The CSV retains coordinates, drawing identifiers and extraction bounds: \artifact{outputs/source-figure-values.csv}. Source point orderings have unknown uncertainty. The table below concerns standard-error ordering only. The bias inventory is separate.
 {\small\input{reversals.tex}}
+
+Figure 6.5's bias findings require a separate signed contrast: estimate minus generating truth, with positive meaning overestimation. All 72 MAR method/parameter/condition cells are in \artifact{outputs/bias-contrasts.csv}. There are 23 source-versus-ours point-sign reversals; 19 source signs exceed the extraction bound. None of these reversals has our Bonferroni-adjusted 72-comparison interval excluding zero. For deletion heritability at five covariates and 10\% missingness, source .533154 and ours .497505 lie on opposite sides of truth .5. Our bias $-.002495$ has adjusted interval $[-.098004,.093014]$. This is an inconclusive point reversal, not evidence of an opposite established bias. The family was added during independent review and is exploratory; source Monte Carlo uncertainty remains unknown. \artifact{simulation/bias_contrasts.py} retains two-SE and adjusted intervals, extraction bounds and separate ours-minus-source deviations.
 
 \section{Assumptions}
 \subsection{Regression coefficients and covariate means}
@@ -92,7 +95,7 @@ The largest remaining causes differ by result, and the stopping statements prese
 
 For the Chapter 6 magnitude gap, the standard-error estimand currently ranks ahead of optimizer differences. We checked vector extraction against the ink, retained variance versus path metrics, compared SLSQP with CSOLNP, checked covariance algebra independently, and ran unequal-coefficient and shared-mean sensitivities. These checks do not recover the original random seeds, beta allocation, session versions or plotting driver. The most informative single artifact would be the original Chapter 6 simulation-and-summary script. No author contact was made.
 
-Independent scientific and rendered-main-manuscript review remains pending. This checkpoint has a documented self-review and structural checks; those are not an independent review. Completion of execution attempts is also distinct from successful replication. None of the open production or empirical items is closed as outside a selected scope.
+Independent scientific review identified missing bias contrasts and continuation bookkeeping defects; these have been corrected while preserving the original numerical baseline. Independent rendered-manuscript review checks the final PDF, source hashes and evidence in \artifact{provenance/review.json}. This review does not establish successful whole-dissertation replication. Completion of execution attempts is also distinct from successful replication. None of the open production or empirical items is closed as outside a selected scope.
 
 \section{Code and source availability}
 The dated availability audit below is part of the evidence, not a claim that every possible repository was exhaustively searched. Institutional metadata and the author-hosted source identify the edition; source hashes and repository revisions are in \artifact{provenance/source.json} and \artifact{provenance/author-repositories.json}. Full copyrighted source files remain local. The following rows copy \artifact{provenance/availability.json}.
@@ -103,7 +106,7 @@ The ledger preserves departures rather than converting an unfinished checkpoint 
 {\small\input{compliance.tex}}
 
 \section{Next steps}
-The next checks require specific missing artifacts or production runs. Obtain the original Chapter 6 driver through a permitted public source, then test the standard-error metric and exact missingness design. Continue the Bayesian grid with source-length chains and independent convergence checks, using measured costs and checkpoints. Recover authorized empirical response/calibration/linkage inputs before claiming any empirical replication. Complete the independent scientific and rendered-PDF review before declaring verified delivery.
+The next checks require specific missing artifacts or production runs. Obtain the original Chapter 6 driver through a permitted public source, then test the standard-error metric and exact missingness design. Continue the Bayesian grid with source-length chains and independent convergence checks, using measured costs and checkpoints. Recover authorized empirical response/calibration/linkage inputs before claiming any empirical replication. The remaining feasible work and measured resource needs are enumerated in \artifact{provenance/unfinished-work.json} and \artifact{outputs/production-resource-plan.json}. Review of this checkpoint does not close those items.
 
 \appendix
 \section{Whole-dissertation coverage inventory}\label{sec:coverage}
@@ -111,17 +114,31 @@ Every listed result remains in scope. ``Attempted/unresolved'' includes genuine 
 {\footnotesize\input{coverage.tex}}
 
 \section{Artifacts and reproduction}
-The runnable recipe is \artifact{README.md}, sections ``Re-extract source targets and replay software'', ``Rerun simulations and resume checkpoints'', and ``Rebuild the report from saved outputs''. The historical baseline is distinct from the immutable runnable code revision in \artifact{provenance/delivery.json}. Rebuilding this manuscript from saved outputs does not rerun simulations. Master links below are intended navigation and await merge; the draft PR supplies current-commit review links.
+The runnable recipe is \artifact{README.md}, sections ``Re-extract source targets and replay software'', ``Rerun simulations and resume checkpoints'', and ``Rebuild the report from saved outputs''. The historical baseline is distinct from the immutable runnable code revision in \artifact{provenance/delivery.json}. Rebuilding this manuscript from saved outputs does not rerun simulations. Master links below are intended navigation and await merge; \artifact{provenance/delivery.json} supplies commit-pinned review links. PR creation remains denied; no PR exists for this checkpoint.
 \begin{longtable}{p{2.4in}p{3.8in}}\toprule Claim/evidence & File and regeneration entry\\\midrule\endhead
 Whole-dissertation accounting & \artifact{coverage.csv}; audited against the entire source.\\
 Bayesian grids and source targets & \artifact{simulation/jags_replication.R}; \artifact{simulation/run_grid.py}; \artifact{simulation/extract_tables.py}.\\
 Missing-data fits and all trial results & \artifact{simulation/openmx_replication.R}; \artifact{outputs/trial-records.csv}; \artifact{simulation/summarize.py}.\\
+Signed bias and resource evidence & \artifact{outputs/bias-contrasts.csv}; \artifact{simulation/bias_contrasts.py}; \artifact{simulation/resource_plan.py}.\\
 Signed contrasts and source comparisons & \artifact{outputs/signed-contrasts.csv}; \artifact{outputs/source-comparisons.csv}.\\
 Vector extraction and evidence & \artifact{simulation/extract_figures.py}; \artifact{provenance/figure-extraction.json}; \artifact{provenance/source-crops.json}.\\
 Original program and historical package checks & \artifact{simulation/original_programs.R}; \artifact{simulation/original_confirmation.R}; \artifact{simulation/appendix_g_check.R}; \artifact{simulation/bayestwin_check.R}; \artifact{simulation/historical_bayestwin.R}.\\
 Analytical and engine checks & \artifact{simulation/analytic_checks.py}; \artifact{simulation/engine_checks.R}; \artifact{outputs/engine-agreement.csv}.\\
 Editable manuscript and tables & \artifact{paper/paper.tex}; \artifact{paper/references.bib}; \artifact{simulation/build_report.py}.\\
 \bottomrule\end{longtable}
+
+\section{Selected source evidence}
+These limited attributed crops show the printed expressions and standard-error labels discussed above. Copyright remains with Schwabe (2016). Full-resolution evidence and the remaining crops are linked in \artifact{provenance/source-crops.json}; the full dissertation is not redistributed.
+\begin{figure}[p]\centering
+\includegraphics[width=.92\textwidth]{../evidence/eq3-information.png}\\[1em]
+\includegraphics[width=.92\textwidth]{../evidence/eq4-probabilities.png}
+\caption{Schwabe (2016), printed Equation 3.4 and Equations 4.6--4.9. Literal-expression checks do not establish which expressions the empirical analysis used.}
+\end{figure}
+\begin{figure}[p]\centering
+\includegraphics[width=.94\textwidth,height=.74\textheight,keepaspectratio]{../evidence/fig6-3.png}
+\caption{Schwabe (2016), Figure 6.3, printed page 93. The source labels variance-component standard errors; reconstruction of path standard errors remains a distinct, exploratory hypothesis.}
+\end{figure}
+\clearpage
 
 \bibliographystyle{plainnat}
 \bibliography{references}
