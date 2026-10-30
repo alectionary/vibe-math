@@ -65,7 +65,9 @@ units, subtraction order and the meaning of positive. Keep ours-minus-source
 reproduction deviations in a different column. Never mix those meanings under
 "direction" or use unexplained Higher/Lower labels.
 
-Compute source and replicated contrasts at every reported condition; detect
+Declare the expected analysis/condition inventory, including preserved baseline
+points, and check coverage with `validate_contrast_coverage`. Compute source and
+replicated contrasts at every reported condition; detect
 point-estimate sign reversals and disclose consequential reversals in the opening
 after the headline and evidence limit. A preserved ordering at one point is not
 a grid-wide claim. Missing source uncertainty means a source point ordering,

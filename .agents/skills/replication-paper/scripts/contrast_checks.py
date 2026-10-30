@@ -38,3 +38,11 @@ def validate_inventory(rows):
   if r.get('numerical')=='close' and r.get('numerical_criterion')!='rounding_one_unit':errors.append(f'{i}: close must use rounding_one_unit; name statistical/margin decisions separately')
   if 'uncertainty_decision' not in r:errors.append(f'{i}: separate uncertainty decision required')
  return errors
+
+def validate_contrast_coverage(records,expected_conditions):
+ """Compare declared (analysis,condition) keys; expected scope needs human review."""
+ keys=[(r['analysis'],r['condition']) for r in records];expected=set(expected_conditions);actual=set(keys);errors=[]
+ if len(keys)!=len(actual):errors.append('duplicate contrast conditions')
+ if expected-actual:errors.append('missing declared contrast conditions')
+ if actual-expected:errors.append('undeclared contrast conditions')
+ return errors
