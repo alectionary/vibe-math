@@ -49,3 +49,31 @@ Remaining feasible work: arbitrary-L cubic/rhombic commutation/homology/rank and
 Coordination: after the initial denial, the user explicitly authorized the exact public claim branch. A single authorized retry succeeded and remote readback verified claims/quantum-slot2-20261030 at edb0cb62e0f09d8287a07f017613a06461070644. The prerequisite is now met; no denied dependency was retried. Proposed upfront authorization guidance is in proposed-skill-improvements.md; no reusable skill edit. See cubic-proof-bridge.md for new general cubic incidence/kernel proofs and609792finite cross-language entry matches. Whole-study scope remains open.
 
 Newest cubic proof continuation: see `cubic-homology.md` for the kernel-checked three-bit cohomology classification, exact minimum nontrivial cocycle weight L², and finite-coordinate zero-holonomy adapter. Rank/X-distance written consequences remain distinguished from general Lean proofs. Full dissertation remains open.
+
+## Remaining analytical claims: written verification
+
+`analytical-completion.md` gives the general rhombic cellulation/rank/distance
+argument, ideal-majority probabilities and limit, OSD consistency proof and
+quantum interpretation. These are written proofs, not additional Lean coverage.
+`acceptance-scope.json` states original-claim acceptance criteria and distinguishes
+optional background formalization. The existing primary numerical results remain
+unchanged. At this checkpoint the manuscript integration is still pending.
+
+Run from the repository root:
+
+```sh
+OPENBLAS_NUM_THREADS=1 python formalization/pesah-biased-cubic/followup/check_rhombic_cellulation.py
+OPENBLAS_NUM_THREADS=1 python formalization/pesah-biased-cubic/followup/check_cubic_layers.py
+python formalization/pesah-biased-cubic/followup/check_majority_exact.py
+OPENBLAS_NUM_THREADS=1 python formalization/pesah-biased-cubic/followup/check_rhombic_loop.py
+PYTHONPATH=/tmp/slot2-deps OPENBLAS_NUM_THREADS=1 python formalization/pesah-biased-cubic/followup/check_loop_reference.py
+PYTHONPATH=/tmp/slot2-deps OPENBLAS_NUM_THREADS=1 python formalization/pesah-biased-cubic/followup/check_osd_exhaustive.py
+```
+
+The last two commands require the external historical checkout at
+`/tmp/bn3d-2021` and qecsim dependencies as described in the main README. They
+save JSON checks in this directory; expected outcomes are 48 majority matches,
+all five geometry/layer sizes matched, four tiny-prior stress witnesses replayed,
+and 20,748 OSD cases across three implementations. The stress case is outside
+the thesis's production grid. Resource costs are seconds, not a new Monte Carlo
+campaign. All scripts and results are included; the historical source is not.
