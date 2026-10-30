@@ -771,7 +771,7 @@ bounded investigation's deliverables from a conclusive width answer.
 | Literature method check and question screening | **Access-limited** | F173 abstract/metadata inspected; complete text requested in issue63. Question count null; no algorithm/complexity transfer. Existing full-text screens are unchanged. |
 | Reconcile source inventory and planning | **Met** | Existing canonical target updated;424 entries,160 eligible,205 paper records,165 full-text screens,6 completed Lean targets. Bookkeeping validators pass; no new source question or Lean completion. |
 | Provide a concrete continuation route | **Met** | `COUPLING-RESUME.md`, exact775 span seed, and independently reviewed `two_sided_full_basis_next_gate.md`. The proposed multi-anchor oracle and controls remain future work. |
-| Preserve and publish the authorized branch/issue handoff | **Partial until final readback** | Immutable scientific checkpoints043a5bd/c1d2396 and branch preservation; final PR/issue and expected-SHA claim release are recorded at closeout. Required master review is not bypassed. |
+| Preserve and publish the authorized branch/issue handoff | **Met** | Both research branches and PR17 contain scientific checkpoint2c4c8b7; issue8 and PR17 descriptions read back exactly at11:01Z. The owned claim was released with its exact expected-SHA lease and verified absent at10:59:03Z. Master integration still awaits required review. |
 | New formal manuscript or Lean proof | **Not applicable to this block** | No new manuscript was requested; no source theorem or new Lean completion is claimed. Written auxiliary proofs and exact finite consumers are distinguished from kernel-checked formalization. |
 
 **Question answered:** the combined recorded finite relaxation is nonempty;
@@ -788,3 +788,22 @@ the16-pattern two-sided full-basis support oracle, then run one bounded
 separation/membership test at the latest exact point. Its omission of
 unanchored mutual pairing must remain explicit. No finishing-time estimate
 for the original question is justified.
+
+## Publication and coordination closeout
+
+All scientific results and the reviewed handoff are preserved at
+`2c4c8b7d5eb88bc2f722b13dd0ed8ca24d289c55` on both
+`research/c16-coupling-20261030T0514` and the existing PR17 branch. This
+includes concurrent master `e2b553c06c872d8008061a26d05831e572e54789`;
+the unrelated Moss replication was preserved without changing any C16
+scientific or canonical-record input. The issue and PR descriptions have
+exact readback checks. A later documentation-only commit records these
+publication facts without changing the scientific endpoints.
+
+The fixed claim owner `323b30e3b51546cf752603e61c63da2f6e3b7434` was released
+using its exact expected-SHA lease; absence was verified at10:59:03Z.
+This is coordination housekeeping, not a pause or source completion.
+No research search process remains running. The six-hour authorized
+window ends11:14:33Z; no automatic extension is implied. PR17 is open and
+master integration remains pending required review, which was not bypassed.
+Publication details are recorded in `coupling-results/publication-readback.json`.
