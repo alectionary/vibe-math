@@ -11,14 +11,14 @@ for c in ct:
  if c['role']=='headline':
   a,b=c['analysis'].split('-minus-')
   s.append(f"{c['condition']}: {label(a)} $-$ {label(b)} & {c['source_contrast']:.3f} & {c['ours_contrast']:.6f} & Yes & match \\\\")
-(p/'headline.tex').write_text('\n'.join(s)+'\n')
+(p/'headline.tex').write_text('\n'.join(s)+'\n'+r'\bottomrule'+'\n')
 s=[]
 for x in rows:
  s.append(f"{x['trait']}: {label(x['metric'])} & {x['published']:.3f} & {x['ours']:.6f} & {x['ours_minus_source']:+.6f} & 3 & match & limited \\\\")
-(p/'comparison.tex').write_text('\n'.join(s)+'\n')
+(p/'comparison.tex').write_text('\n'.join(s)+'\n'+r'\bottomrule'+'\n')
 for name in ['availability','compliance']:
  out=[]
  for x in json.loads((r/f'provenance/{name}.json').read_text()):
   if name=='availability':out.append(tex(x['place'])+' & '+tex(x['date_utc'])+' & '+tex(x['result'])+r' \\')
   else:out.append(tex(x['requirement'])+' & '+tex(x['status'])+' & '+tex(x['evidence'])+r' \\')
- (p/f'{name}.tex').write_text('\n'.join(out)+'\n')
+ (p/f'{name}.tex').write_text('\n'.join(out)+'\n'+r'\bottomrule'+'\n')
