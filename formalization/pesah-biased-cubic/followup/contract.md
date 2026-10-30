@@ -2,7 +2,7 @@
 
 Canonical target: quantum-slot2-20261030. Existing parent research issue/PR: https://github.com/alectionary/vibe-math/pull/64 (GitHub issue64). This continues the MRes dissertation audit, not a new author-posed conjecture. Published partial milestone d821676 remains frozen.
 
-Session: codex-pesah-followup-20261030T1655Z. Worktree /workspace/pesah-followup, work branch replication/pesah2021-proof-fit-followup. Claim refs/heads/claims/quantum-slot2-20261030 is initially unreserved; begin substantial proof/experiment work only after create-only acquisition and readback. All64 open/closed issue records were inspected by title/body filter; only PR64 matches Pesah/canonical target. No duplicate issue or new project is needed.
+Session: codex-pesah-followup-20261030T1655Z. Worktree /workspace/pesah-followup, work branch replication/pesah2021-proof-fit-followup. Claim refs/heads/claims/quantum-slot2-20261030 was denied by automatic approval review; it is not reserved and was not retried. See coordination.json. Local preparation/diagnostics continued within the explicit parent instruction; the remote-claim skill prerequisite is unmet and no reservation is asserted. All64 open/closed issue records were inspected by title/body filter; only PR64 matches Pesah/canonical target. No duplicate issue or new project is needed.
 
 ## Exact open obligations
 
