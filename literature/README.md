@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **171 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **175 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -1368,6 +1368,30 @@ Primary abstract read. Early source gate finds all45 representative listed cocir
 William H. Cunningham. 1984. [c16 coupling membership methods](https://www.sciencedirect.com/science/article/pii/0095895684900236).
 
 Publisher-indexed abstract and author bibliographic entry inspected. Publisher landing/PDF reader returned403; connected Edge browser displayed a CAPTCHA. Author available-papers index and Bonn report81207 index supplied no full text. OpenAlex identifies the publisher PDF as open access but supplies no repository PDF. Retrieval request63 is open; full text remains unverified. No full-text question screen or implementation/complexity transfer is claimed. The current exchange repair has independent local/terminal certificates but no polynomial termination guarantee.
+
+### F174 Simple push-relabel algorithms for matroids and submodular flows
+
+András Frank; Zoltán Miklós. 2012. [c16 exact matroid membership methods](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF).
+
+All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F175 A New Strategy for Push-Relabel Algorithm Framework for Matroid Optimization
+
+Emanuel Florentin Olariu. 2013. [c16 exact matroid membership methods](https://publications.info.uaic.ro/files/tr/tr13-01.pdf).
+
+All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F176 A simple push-relabel algorithm for sub-modular flows
+
+Cristian Frasinaru; Emanuel F. Olariu. 2013. [c16 exact matroid membership methods](https://publications.info.uaic.ro/files/tr/tr13-02.pdf).
+
+All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F177 A Lowest Level Rule Push-Relabel Algorithm for Submodular Flows and Matroid Optimization
+
+Emanuel F. Olariu; Cristian Frasinaru. 2014. [c16 exact matroid membership methods](https://doi.org/10.1109/SYNASC.2014.21).
+
+Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
 
 ## Question by question cross references
 

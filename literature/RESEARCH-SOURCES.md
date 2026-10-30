@@ -1719,3 +1719,55 @@ William H. Cunningham. Journal of Combinatorial Theory, Series B36(2),161–188,
 - Provenance: [source review ledger](../formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json).
 
 - Question screen: [not assessed](../formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json); 0 linked canonical targets.
+
+## F174 — Simple push-relabel algorithms for matroids and submodular flows
+
+András Frank; Zoltán Miklós. Author manuscript dated 11 January 2012; Japan Journal of Industrial and Applied Mathematics29(3),419–439; DOI10.1007/s13160-012-0076-y. [Primary source](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/frank-miklos-2012-fulltext-screen.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/two-basis-results/literature/frank-miklos-2012-fulltext-screen.json); 0 linked canonical targets.
+
+## F175 — A New Strategy for Push-Relabel Algorithm Framework for Matroid Optimization
+
+Emanuel Florentin Olariu. Technical report TR13-01, June2013,6PDFpages. [Primary source](https://publications.info.uaic.ro/files/tr/tr13-01.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/olariu-2013-fulltext-screen.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/two-basis-results/literature/olariu-2013-fulltext-screen.json); 0 linked canonical targets.
+
+## F176 — A simple push-relabel algorithm for sub-modular flows
+
+Cristian Frasinaru; Emanuel F. Olariu. Technical report TR13-02, October2013,7PDFpages. [Primary source](https://publications.info.uaic.ro/files/tr/tr13-02.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F176-avoid-smallest-tight-sets](OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets), [L-F176-simpler-submodular-flow](OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/tr13-02-fulltext-screen.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/two-basis-results/literature/tr13-02-fulltext-screen.json); 2 linked canonical targets.
+
+## F177 — A Lowest Level Rule Push-Relabel Algorithm for Submodular Flows and Matroid Optimization
+
+Emanuel F. Olariu; Cristian Frasinaru. SYNASC2014,97–102; Crossref conference publication date September2014; IEEE document7034671. [Primary source](https://doi.org/10.1109/SYNASC.2014.21).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/olariu-direction-followup-resolution.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/two-basis-results/literature/olariu-direction-followup-resolution.json); 0 linked canonical targets.
