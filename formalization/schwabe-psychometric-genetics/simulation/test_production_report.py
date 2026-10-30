@@ -20,6 +20,24 @@ with tempfile.TemporaryDirectory(prefix='schwabe-report-fixture-') as td:
  assert float(m['AvarianceOurs'])!=float(m['ApathOurs'])
  assert m['HbiasGeneratingTruth']=='0.5'
  checks.append('Variance/path distinction and residual h2 truth preserved')
+ effect=manifest['representative_input_rows']['variance_precision_effect']
+ assert m['AprecisionEffectOurs']==b.number(effect['contrast_delete_minus_full'])
+ assert m['AprecisionEffectSource']==b.number(effect['source_deletion_minus_full'])
+ assert m['AprecisionEffectExtractionBound']==b.number(effect['source_contrast_extraction_bound'])
+ assert m['AprecisionEffectOursDirection']=='positive'
+ assert m['HbiasEffectOurs']==m['HbiasOursBiasEstimateMinusTruth']
+ assert b.magnitude_label(2,1,.1)=='larger point magnitude'
+ assert b.magnitude_label(-.5,-1,.1)=='smaller point magnitude'
+ assert b.magnitude_label(-1,1,.1)=='not established at extraction resolution'
+ assert b.magnitude_label(1.25,1,.25)=='not established at extraction resolution'
+ assert b.magnitude_label(.75,1,.25)=='not established at extraction resolution'
+ assert b.magnitude_label(.4,.3,.1)=='not established at extraction resolution'
+ assert b.magnitude_label(.3,.4,.1)=='not established at extraction resolution'
+ assert b.magnitude_label('',1,.1)=='not established'
+ assert b.magnitude_label(2,1,.1,comparable=False)=='not established'
+ for prefix in ('AprecisionEffect','HbiasEffect'):
+  assert 'same' not in m[prefix+'MagnitudeLabel']
+ checks.append('Signed scientific effects and descriptive magnitude rule, boundary/missing/incomparable fixtures')
  assert all(b.sha(p/'analysis'/name)==value for name,value in manifest['input_sha256'].items())
  checks.append('Input hashes match exact frozen analyzer files')
  try: b.build(p/'analysis',p/'paper')

@@ -1,12 +1,12 @@
 {
   "reviewer": "Independent report reviewer (/root/analysis_validation)",
-  "reviewed_utc": "2026-10-30T19:45:23.189754+00:00",
+  "reviewed_utc": "2026-10-30T20:58:06.869460+00:00",
   "status": "accepted for report generation from a stable frozen-analysis snapshot; terminal scientific and rendered main-PDF review still required",
   "scope": "Code/schema review and preserved 20-replicate baseline plus synthetic failure/pending fixtures only. No live production effect outputs inspected; no model fits or actual JAGS chains run; no git/network mutations.",
   "files": {
-    "simulation/build_production_report.py": "ef5eed67accf758dd16e920dec51842f69b12f5bb8913fd39f67f717e02772f1",
-    "simulation/test_production_report.py": "d5284cfb0930171398dd8ac4ee7cdd3721ad95a396c3e063fcbbd3b7ac4d8844",
-    "simulation/test_production_report_independent.py": "765671cc530bb7ce7829df5821bd0b88c0cb5ca58f02d960ca9de2ed29988b9e",
+    "simulation/build_production_report.py": "6cc15c120e618700b7bc0c64cd5e041b1a6224709a031accc165131c848694b5",
+    "simulation/test_production_report.py": "a5e371fb3552acc1f60708e06b977eb2f9996c69be2a311e1abb58d4b8d8427f",
+    "simulation/test_production_report_independent.py": "af2c47984f45e9be3fe644afcb176b069020ca0133d271f3b86337102550aa86",
     "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518",
     "production/analysis-plan.json": "d8112ba65868f54035f5258c560821080e4d3588e6b9dfe01e8a7894f2f2fa1a",
     "outputs/source-figure-values.csv": "84ac71c9222f9a0868e5b9da4d6dfe7c3ed4fa7f199be9e249a53003375c41a7",
@@ -15,6 +15,14 @@
   },
   "independent_validation": {
     "checks": [
+      {
+        "test": "independent_signed_magnitude_decimal_boundaries_missing_and_invalid",
+        "passed": true
+      },
+      {
+        "test": "baseline_signed_effect_macro_mapping",
+        "passed": true
+      },
       {
         "test": "baseline_input_output_hashes",
         "passed": true
@@ -25,6 +33,10 @@
       },
       {
         "test": "baseline_overwrite_rejected",
+        "passed": true
+      },
+      {
+        "test": "tiny_signed_effect_macro_mapping",
         "passed": true
       },
       {
@@ -76,6 +88,7 @@
     "checks": [
       "Preserved baseline counts, repetitions and 23 point reversals match",
       "Variance/path distinction and residual h2 truth preserved",
+      "Signed scientific effects and descriptive magnitude rule, boundary/missing/incomparable fixtures",
       "Input hashes match exact frozen analyzer files",
       "Existing generated outputs protected",
       "All generated LaTeX compiles in temporary document"
@@ -94,6 +107,10 @@
     {
       "finding": "Multiplicity families and repetition-range meaning needed explicit rendered explanation.",
       "resolution": "Rendered notes name 108 primary and 36 sensitivity SE families separately per metric, 72 bias cells, 216 source comparisons per SE metric and 72 source-estimate comparisons. Min/max repetitions explicitly mean method-fit counts per cell, not seed-index ranges."
+    },
+    {
+      "finding": "New descriptive magnitude rule initially used binary float subtraction, misclassifying an inclusive decimal boundary (.4 minus .3 versus .1).",
+      "resolution": "Threshold comparisons now use Decimal(str(value)); independent nonbinary decimal boundaries, opposite signs, absent/incomparable effects and invalid inputs pass. Scientific numeric outputs are unchanged."
     }
   ],
   "scientific_checks": [
@@ -102,7 +119,11 @@
     "Printed variance SE and exploratory path SE remain distinct; source-comparison intervals concern ours-minus-source with extraction bounds, whereas signed bias concerns estimate-minus-truth (residual h2 truth0.5).",
     "SE reversal contrasts use deletion-minus-full; MAR bias uses estimate-minus-truth; point reversals are not labeled significant reversals. Source sign exceeding extraction bound does not settle unknown source Monte Carlo uncertainty.",
     "Primary2percent and alternative3percent sensitivity readings stay separate; source uncertainty omitted explicitly, with no equivalence, power, rounding or whole-dissertation success claim.",
-    "Exact input-byte hashes and generated output hashes match fixtures; representative rows and numeric macros are retained in build manifest; existing generated destinations refuse overwrite; old baseline hashes unchanged."
+    "Exact input-byte hashes and generated output hashes match fixtures; representative rows and numeric macros are retained in build manifest; existing generated destinations refuse overwrite; old baseline hashes unchanged.",
+    "New AprecisionEffect macros map the representative MCAR q2,2percent,A variance SE deletion-minus-full scientific contrast, not ours-minus-source reconstruction discrepancy. Positive means lower full-information estimated SE, not power.",
+    "New HbiasEffect macros map MAR q5,10percent,deletion residual h2 estimate-minus-truth. Source and ours directions retained separately, including reversals; h2 truth remains0.5.",
+    "Absolute point-magnitude classifications are descriptive: abs(ours)-abs(source) beyond plus/minus extraction bound; inclusive bounds, missing or incomparable effects do not establish magnitude ordering. No same/equivalence or inferential source ranking is claimed; original Monte Carlo uncertainty remains unknown.",
+    "Extra baseline and tiny fixtures verify both signed-effect macro mappings and raw representative row provenance; all16 independent checks and6 implementation baseline/temporary compile checks passed."
   ],
   "limitations": [
     "Builder is a formatter and structural consistency guard, not an independent recomputation of every analyzer estimate or an authentication/signature system. It records upstream provenance; stable input snapshot and reviewed analyzer identity must be enforced by production workflow.",
@@ -110,5 +131,6 @@
     "Ten significant digits preserve reporting detail but do not increase source precision. All valid-fit summaries retain potential selection limitations.",
     "Temporary LaTeX compilation passed, but this is not visual review of the integrated main paper. Terminal outputs need scientific review, final main-PDF rendering/inspection, actual filenames/links and committed immutable evidence.",
     "Acceptance concerns this reporting tool only; remaining dissertation items and unsuccessful/incomplete replications remain open."
-  ]
+  ],
+  "previous_accepted_builder_sha256": "ef5eed67accf758dd16e920dec51842f69b12f5bb8913fd39f67f717e02772f1"
 }

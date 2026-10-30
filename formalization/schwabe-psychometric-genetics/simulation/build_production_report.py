@@ -3,6 +3,7 @@ CLI: python3 simulation/build_production_report.py --analysis-dir DIR --output-d
 Use a temporary output directory for fixtures. Existing generated files are refused.
 """
 import argparse, csv, hashlib, json, math, pathlib
+from decimal import Decimal
 
 FILES = ('summary.json', 'condition-summary.csv', 'signed-SE-contrasts.csv',
          'source-comparisons.csv', 'signed-bias-contrasts.csv', 'provenance.json')
@@ -17,6 +18,25 @@ def number(x):
     if not math.isfinite(value):
         raise ValueError('Nonfinite report number')
     return format(value, '.10g')
+
+def magnitude_label(ours, source, extraction_bound, comparable=True):
+    """Descriptive absolute point magnitude only; never an equivalence decision."""
+    if not comparable or any(x is None or x == '' for x in (ours,source,extraction_bound)):
+        return 'not established'
+    # Compare supplied decimal values exactly at the inclusive geometric bound.
+    ours,source,bound=(Decimal(str(x)) for x in (ours,source,extraction_bound))
+    if not all(x.is_finite() for x in (ours,source,bound)) or bound<0:
+        raise ValueError('Invalid magnitude-label inputs')
+    delta=abs(ours)-abs(source)
+    if delta>bound: return 'larger point magnitude'
+    if delta < -bound: return 'smaller point magnitude'
+    return 'not established at extraction resolution'
+
+def signed_direction(value):
+    if value is None or value=='': return 'not established'
+    value=float(value)
+    if not math.isfinite(value): raise ValueError('Nonfinite direction')
+    return 'positive' if value>0 else 'negative' if value<0 else 'zero'
 
 def escape(x):
     return ''.join({'&':r'\&', '%':r'\%', '_':r'\_', '#':r'\#', '$':r'\$',
@@ -108,6 +128,7 @@ def build(analysis, out):
     path=one(comparisons,mechanism='MCAR',q=2,missing=.02,method='full',parameter='A',metric='path_se')
     h=one(comparisons,mechanism='MAR',q=5,missing=.1,method='deletion',parameter='h2',metric='estimate')
     hb=one(biases,mechanism='MAR',q=5,missing=.1,method='deletion',parameter='h2')
+    effect=one(contrasts,mechanism='MCAR',q=2,missing=.02,parameter='A',metric='se')
     cells={}
     denoms=('target','requested','completed','guard_valid','guard_invalid','process_failed','in_flight_or_uncheckpointed','not_yet_requested')
     for r in conditions:
@@ -154,6 +175,16 @@ def build(analysis, out):
              (h,'Hestimate',('source','ours','ours_minus_source','mcse','source_extraction_bound','two_se_low','two_se_high','conditional_adjusted_low','conditional_adjusted_high')),
              (hb,'Hbias',('generating_truth','source_bias_estimate_minus_truth','ours_bias_estimate_minus_truth','mcse','two_se_low','two_se_high','adjusted_low','adjusted_high'))]:
         for field in fields: macros[prefix+''.join(x.capitalize() for x in field.split('_'))]=number(row[field])
+    for prefix,row,ours,source,bound in [
+        ('AprecisionEffect',effect,'contrast_delete_minus_full','source_deletion_minus_full','source_contrast_extraction_bound'),
+        ('HbiasEffect',hb,'ours_bias_estimate_minus_truth','source_bias_estimate_minus_truth','source_extraction_bound')]:
+        macros[prefix+'Ours']=number(row[ours])
+        macros[prefix+'Source']=number(row[source])
+        macros[prefix+'ExtractionBound']=number(row[bound])
+        macros[prefix+'OursDirection']=signed_direction(row[ours])
+        macros[prefix+'SourceDirection']=signed_direction(row[source])
+        macros[prefix+'MagnitudeLabel']=magnitude_label(row[ours],row[source],row[bound])
+        macros[prefix+'AbsoluteMagnitudeDifference']=number(abs(float(row[ours]))-abs(float(row[source]))) if row[ours]!='' and row[source]!='' else 'NA'
     def band(r,lo,hi): return '['+number(r[lo])+', '+number(r[hi])+']'
     representative=[]
     for label,r in [('MCAR q2 .02 full A variance SE',var),('MCAR q2 .02 full A path SE (exploratory)',path),('MAR q5 .10 deletion residual heritability',h)]:
@@ -174,7 +205,7 @@ def build(analysis, out):
       'production-results.tex':caveat+'\n'.join('\\newcommand{\\Prod'+k+'}{'+v+'}' for k,v in macros.items())+'\n',
       'production-comparison.tex':caveat+table(['Condition/metric','Source','Ours','Difference','Two-SE band','Adjusted band'],representative,['1.6in','.65in','.65in','.65in','1.1in','1.1in']),
       'production-reversals.tex':caveat+table(['Signed contrast','Source','Ours','Adjusted ours band','Source sign exceeds extraction bound'],reversals or [('No point reversals','--','--','--','--')],['2in','.7in','.7in','1.4in','1in']),
-      'production-notes.tex':('All summaries condition on guard-valid fits; denominators include invalid, failed and pending fits. Source-comparison bands are ours-minus-source, with source extraction bounds added. Unknown original Monte Carlo uncertainty is not included: these are not complete two-sample intervals or rounding verdicts. Path SE is an exploratory different estimand from the printed variance SE. Bias intervals describe ours-minus-truth, using residual heritability truth 0.5. Point-sign reversals alone do not establish significant reversals. Adjusted Bonferroni families contain 108 primary and 36 sensitivity SE contrasts separately for each metric, 72 bias contrasts, 216 source comparisons separately for each SE metric, and 72 source-estimate comparisons. Minimum/maximum repetition macros count method fits per condition, not seed-index ranges. The 2 percent primary and 3 percent sensitivity readings remain separate. Whole-dissertation replication remains incomplete.\n'),
+      'production-notes.tex':('All summaries condition on guard-valid fits; denominators include invalid, failed and pending fits. Source-comparison bands are ours-minus-source, with source extraction bounds added. Unknown original Monte Carlo uncertainty is not included: these are not complete two-sample intervals or rounding verdicts. Path SE is an exploratory different estimand from the printed variance SE. Bias intervals describe ours-minus-truth, using residual heritability truth 0.5. Point-sign reversals alone do not establish significant reversals. Adjusted Bonferroni families contain 108 primary and 36 sensitivity SE contrasts separately for each metric, 72 bias contrasts, 216 source comparisons separately for each SE metric, and 72 source-estimate comparisons. Minimum/maximum repetition macros count method fits per condition, not seed-index ranges. The 2 percent primary and 3 percent sensitivity readings remain separate. The representative MCAR q2, 2 percent missing, A precision effect is variance-scale SE(deletion) minus SE(full): positive means lower full-information SE, not a direct power result. MAR q5, 10 percent missing, deletion residual h2 bias is estimate minus truth: positive means overestimation. Descriptive absolute point-magnitude labels are larger or smaller only when absolute ours minus absolute source exceeds plus or minus the source extraction bound; otherwise the label is not established at extraction resolution. This geometric threshold is not an equivalence tolerance and never establishes same. Missing or incomparable effects are not established. These point labels do not rank source effects inferentially: original Monte Carlo uncertainty is unknown. Whole-dissertation replication remains incomplete.\n'),
       'production-bias-example.tex':table(['MAR q5 .10 deletion h2','Source bias','Ours bias','Two-SE ours band','Adjusted ours band'],[('Truth '+number(hb['generating_truth']),number(hb['source_bias_estimate_minus_truth']),number(hb['ours_bias_estimate_minus_truth']),band(hb,'two_se_low','two_se_high'),band(hb,'adjusted_low','adjusted_high'))],['1.2in','.8in','.8in','1.4in','1.4in']),
       'production-denominators.tex':table(['Condition/method','Requested','Completed','Valid','Invalid','Failed','Pending','Unrequested'],[( '/'.join(k),)+v[1:] for k,v in sorted(cells.items())],['1.5in','.6in','.6in','.5in','.5in','.5in','.6in','.7in'])}
     manifest_name='production-build-provenance.json'
@@ -184,7 +215,7 @@ def build(analysis, out):
     for name,value in generated.items(): (out/name).write_text(value)
     manifest={'analysis_directory':str(analysis),'input_sha256':hashes,'analysis_provenance':provenance,
       'builder_sha256':sha(pathlib.Path(__file__)),'command':['python3','simulation/build_production_report.py','--analysis-dir',str(analysis),'--output-dir',str(out)],
-      'representative_input_rows':{'variance':var,'path':path,'heritability':h,'heritability_bias':hb},
+      'representative_input_rows':{'variance':var,'path':path,'heritability':h,'heritability_bias':hb,'variance_precision_effect':effect},
       'numeric_macros':macros,'format':'10 significant digits; exact input bytes retained and hashed; display precision is not source precision',
       'output_sha256':{n:sha(out/n) for n in generated},'complete_attempted_grid':summary['complete_attempted_grid'],
       'scope':'Generated tables only; no new fits, convergence or whole-dissertation success certified'}
