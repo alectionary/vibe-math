@@ -45,7 +45,14 @@
     "check": "C5-1 algebra and finite-sample counterexample",
     "shared_inputs": "Stated latent model and Rasch likelihood; no original empirical data",
     "independent": "Written derivation checked with symbolic identities/exact rational witnesses; Gaussian quadrature illustrates, but does not prove, the separate monotonic likelihood argument",
-    "limit": "No Lean formalization or full marginal item-identifiability proof; source-model assumptions shared; formal source conclusions remain qualified",
+    "limit": "This algebra alone does not establish full observed-item identification. Source-model assumptions are shared; no Lean formalization. The separate marginal-identification ordinary argument addresses the known-Rasch case under additional explicit support/calibration hypotheses.",
     "evidence": "provenance/identification-check.json; simulation/identification_check.py"
+  },
+  {
+    "check": "C5-1 known-Rasch marginal identification argument",
+    "shared_inputs": "Same source Gaussian latent ACE/Rasch model, fixed calibration and joint-support hypotheses; no empirical data or independent fitted model",
+    "independent": "Separate reviewer checked logistic-ratio monotonicity via a logarithmic derivative, Gaussian covariance derivative via precision-matrix calculus, and the missing-joint-support witness by exact rational arithmetic",
+    "limit": "Independent mathematical review of ordinary argument, not Lean certification or independent empirical replication. Unequal OPLM slopes and other calibration/design cases remain outside this argument; finite-sample likelihood conclusions remain separate.",
+    "evidence": "provenance/marginal-identification-check.json; simulation/marginal_identification_check.py; provenance/marginal-identification-independent-review.json; provenance/proof-toolchain-observation.json"
   }
 ]

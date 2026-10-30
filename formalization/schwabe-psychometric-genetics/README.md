@@ -400,6 +400,25 @@ python3 simulation/analyze_production.py \
   --plan production/analysis-plan.json
 ```
 
+To generate separate manuscript macros and tables from that saved analysis:
+
+```sh
+python3 simulation/build_production_report.py --analysis-dir production/chapter6-v1/terminal-analysis --output-dir paper
+```
+
+This creates `production-results.tex` (`\Prod...` macros),
+`production-comparison.tex`, `production-reversals.tex`,
+`production-bias-example.tex`, `production-denominators.tex` and
+`production-notes.tex`. Include the notes with the tables so metric and source
+uncertainty limits remain visible. `production-build-provenance.json` records
+the exact command, input/output SHA256s, analyzer provenance and representative
+unrounded input rows. Display numbers use ten significant digits; this does not
+assert that the source has that precision. Existing generated files are refused.
+The builder does not edit `paper.tex` or the baseline builder. Replaying
+`OPENBLAS_NUM_THREADS=1 python3 simulation/test_production_report.py` uses only
+the preserved baseline and temporary outputs, including a temporary LaTeX build.
+These commands do not imply that terminal analysis or paper integration is done.
+
 The analyzer verifies exported hashes and ledger identities, retains all96
 condition/method cells, and counts historical guarded replays exactly once.
 Requested, completed, guard-valid, guard-invalid, process-failed, pending and
