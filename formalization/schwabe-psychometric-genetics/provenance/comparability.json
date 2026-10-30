@@ -1,7 +1,120 @@
 [
- {"rows":"outputs/source-comparisons.csv, metric=se","source":{"sample_size":1000,"replications":1000,"estimator":"OpenMx maximum likelihood","model":"Joint Gaussian ACE/covariates for full information; conditional twin phenotype model after deletion","scale":"Figure labels say SE of variance components","missingness":"MCAR/MAR/MNAR weighted sample; 2% design versus3% plot labels","reported_uncertainty":"None for plotted Monte Carlo mean SEs"},"ours":{"sample_size":1000,"replications":"Per-row n; checkpoint smaller than1000","estimator":"OpenMx2.21.13/SLSQP maximum likelihood","model":"Independently constructed joint/conditional models; covariate means free by variable, shared-mean sensitivity separately","scale":"Delta-method SE of variances","missingness":"Both2% and3% explicitly fitted; weighted sampling without replacement"},"decision":"Limited reconstruction. Figure values have no printed decimal precision; numerical rounding verdict withheld. Conditional uncertainty band is not source-aware two-sample inference."},
- {"rows":"outputs/source-comparisons.csv, metric=path_se","source":{"scale":"Printed labels say variance SE, original extraction script unavailable"},"ours":{"scale":"SE of square-root variance path computed from variance SE"},"decision":"Different estimand under literal labels. Exploratory reconstruction only; no numerical replication verdict."},
- {"rows":"Chapter2 full-length confirmation versus Table2.1 and untabulated ceiling/symmetric summaries","source":{"replications":100,"estimator":"Mean across posterior means using JAGS; separate replication SD and posterior SD","chains":"One chain per dataset after historical convergence pilots","priors":"Specified in Chapter2"},"ours":{"replications":1,"estimator":"Posterior mean on one new generated dataset; source-length7000burn+12000retained","parameterization":"Noncentred original reconstruction; centred upstream model separately replayed","priors":"Same stated priors","missing_inputs":"Original seeds and simulation driver"},"decision":"Not the same aggregation target; compare qualitative mechanism, not rounding of Monte Carlo means."},
- {"rows":"Chapters3-6 empirical tables and curves","source":{"input":"Original NTR/Cito/Virginia/school responses and linkage","estimator":"Chapter-specific original likelihood and priors"},"ours":{"input":"Not obtained; published means available only"},"decision":"Unavailable empirical reconstruction. Ratios/curves from rounded means are limited arithmetic checks, not fitted posterior quantities."},
- {"rows":"Chapter3 reported one-SD interaction ratios","source":{"formula":"exp(slope*sqrt(Avariance))","precision":"Two decimals"},"ours":{"formula":"Same formula inserted with published rounded posterior means","values":[1.63159595997728,1.8489119679275539]},"decision":"Numerical match at two decimals; limited printed-summary reconstruction, not empirical refit."}
+  {
+    "rows": "outputs/source-comparisons.csv, metric=se",
+    "source": {
+      "sample_size": 1000,
+      "replications": 1000,
+      "estimator": "OpenMx maximum likelihood",
+      "model": "Joint Gaussian ACE/covariates for full information; conditional twin phenotype model after deletion",
+      "scale": "Figure labels say SE of variance components",
+      "missingness": "MCAR/MAR/MNAR weighted sample; 2% design versus3% plot labels",
+      "reported_uncertainty": "None for plotted Monte Carlo mean SEs"
+    },
+    "ours": {
+      "sample_size": 1000,
+      "replications": "Per-row n; checkpoint smaller than1000",
+      "estimator": "OpenMx2.21.13/SLSQP maximum likelihood",
+      "model": "Independently constructed joint/conditional models; covariate means free by variable, shared-mean sensitivity separately",
+      "scale": "Delta-method SE of variances",
+      "missingness": "Both2% and3% explicitly fitted; weighted sampling without replacement"
+    },
+    "decision": "Limited reconstruction. Figure values have no printed decimal precision; numerical rounding verdict withheld. Conditional uncertainty band is not source-aware two-sample inference."
+  },
+  {
+    "rows": "outputs/source-comparisons.csv, metric=path_se",
+    "source": {
+      "scale": "Printed labels say variance SE, original extraction script unavailable"
+    },
+    "ours": {
+      "scale": "SE of square-root variance path computed from variance SE"
+    },
+    "decision": "Different estimand under literal labels. Exploratory reconstruction only; no numerical replication verdict."
+  },
+  {
+    "rows": "Chapter2 full-length confirmation versus Table2.1 and untabulated ceiling/symmetric summaries",
+    "source": {
+      "replications": 100,
+      "estimator": "Mean across posterior means using JAGS; separate replication SD and posterior SD",
+      "chains": "One chain per dataset after historical convergence pilots",
+      "priors": "Specified in Chapter2"
+    },
+    "ours": {
+      "replications": 1,
+      "estimator": "Posterior mean on one new generated dataset; source-length7000burn+12000retained",
+      "parameterization": "Noncentred original reconstruction; centred upstream model separately replayed",
+      "priors": "Same stated priors",
+      "missing_inputs": "Original seeds and simulation driver"
+    },
+    "decision": "Not the same aggregation target; compare qualitative mechanism, not rounding of Monte Carlo means."
+  },
+  {
+    "rows": "Chapters3-6 empirical tables and curves",
+    "source": {
+      "input": "Original NTR/Cito/Virginia/school responses and linkage",
+      "estimator": "Chapter-specific original likelihood and priors"
+    },
+    "ours": {
+      "input": "Not obtained; published means available only"
+    },
+    "decision": "Unavailable empirical reconstruction. Ratios/curves from rounded means are limited arithmetic checks, not fitted posterior quantities."
+  },
+  {
+    "rows": "Chapter3 reported one-SD interaction ratios",
+    "source": {
+      "formula": "exp(slope*sqrt(Avariance))",
+      "precision": "Two decimals"
+    },
+    "ours": {
+      "formula": "Same formula inserted with published rounded posterior means",
+      "values": [
+        1.63159595997728,
+        1.8489119679275539
+      ]
+    },
+    "decision": "Numerical match at two decimals; limited printed-summary reconstruction, not empirical refit."
+  },
+  {
+    "inventory_id": "C1-2",
+    "rows": "provenance/illustration-followup.json, figure1_3",
+    "source": {
+      "target": "Rendered source Figure1.3 curves; unprinted model parameters",
+      "precision": "No printed parameter precision; quarter-PDF-point geometric extraction bound"
+    },
+    "ours": {
+      "target": "Same source vectors fitted by probability-space nonlinear and central-logit linear methods",
+      "reconstructed_parameters": "Equal discrimination2; difficulties-2,-.5",
+      "comparison": "Maximum vertical residual below.0073PDFpoints"
+    },
+    "decision": "Limited source-figure reconstruction, not independent generated-data replication. Our unit-slope illustration is qualitative. Geometric fit does not identify original true or estimated item parameters."
+  },
+  {
+    "inventory_id": "C7-1",
+    "rows": "provenance/illustration-followup.json, figure7_1",
+    "source": {
+      "target": "Two source scatter panels,10000markers each; approximate heritability scenarios"
+    },
+    "ours": {
+      "target": "Deterministic marker geometry and sample moments from the same figures",
+      "correlations": [
+        0.9994996935035558,
+        0.7095481285116491
+      ],
+      "residual_sample_variances": [
+        0.0010008554769774275,
+        0.5024660882349107
+      ]
+    },
+    "decision": "Source point statistics, not independent simulation/population estimates. First-panel residual coordinate envelope includeszero despite noncollinearity of the joint marker boxes. Candidate generating values remain hypotheses; no significance/equivalence or decimal-match claim."
+  },
+  {
+    "inventory_id": "C5-1",
+    "rows": "provenance/identification-check.json",
+    "source": {
+      "target": "Logvariance identification, path-sign indeterminacy, and one-likelihood-maximum statement; p72,pp75-76,p84,AppC"
+    },
+    "ours": {
+      "target": "Conditional latent covariance inversion and polynomial/log-map algebra; separate finite-sample MLE existence counterexample"
+    },
+    "decision": "Limited analytical claims established under named assumptions. All-zero finite-item data refute an unqualified finite-maximizer implication, not population identifiability or source empirical posterior conclusions. Full marginal item identifiability and nondegenerate interior modes remain unresolved."
+  }
 ]

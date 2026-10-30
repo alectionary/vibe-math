@@ -45,10 +45,28 @@ final artifact hashes. Review does not close unfinished replication items.
   `a8e5d6b5ee6a8c76bdd0234a00fbcc809712ac08`.
 - Historical repository baseline and approved layout:
   `e2b553c06c872d8008061a26d05831e572e54789`.
-- Runnable reviewed replication revision: `69a9ed24224be8e0958074c24ea04777c7d1f9db`.
+- Runnable reviewed baseline replication revision: `69a9ed24224be8e0958074c24ea04777c7d1f9db`.
   Preserved baseline revision: `9c91e89e3f3327dd9dcc3ea96fa47ef84f1e8e4b`.
   This is distinct from the historical baseline. The artifact revision and
   remote-byte checks are recorded in [provenance/delivery.json](provenance/delivery.json).
+
+The following later immutable commits contain the continuation tools; the
+baseline revision above does not contain all of them:
+
+- Guarded model/runner and identification audit:
+  `59dfd3f69d6ba5ce6d942d63dfff1f367d8f80fc`.
+- Frozen production analysis and independent validation:
+  `08e0d9747175e924c1f2c7e5dbe5658deb4d1a15`.
+- Prepared, independently reviewed JAGS gate:
+  `94da8ffb9bdb84fab1e81387dca145d93878779c`.
+- Illustration audit: `66a896f2844c1fb5bfb1fed0f4e8e927f5e73e5e`.
+- A common runnable checkpoint containing all these tools, the archive saver,
+  and dated production evidence:
+  `6b4e010302a4c916b46153476df4c1e6c80957e1`.
+
+These identify available code and saved evidence, not completed production or a
+passed Bayesian gate. Use a separate checkout when replaying commands that write
+outputs. The existing manuscript still describes the preserved baseline.
 
 ## Prerequisites and local runtime
 
@@ -171,10 +189,10 @@ python3 simulation/run_grid.py --engine jags --chapter 5 --mode full --replicate
 python3 simulation/run_grid.py --engine openmx --mode full --replicates 1000 --workers 2
 ```
 
-These are unfinished production targets, not claims that the full runs were performed. The largest Chapter5 condition alone projects to months of single-worker elapsed
+These are historical source-count command interfaces, not claims that full runs were performed. For the active Chapter6 continuation use the guarded supervisor below, rather than starting a second legacy grid. The largest Chapter5 condition alone projects to months of single-worker elapsed
 work from an actual timing pilot. No production-completion claim is made.
 
-## Rebuild the report from saved outputs
+## Rebuild the baseline report from saved outputs
 
 The following does not refit any model or recover unavailable empirical inputs:
 
@@ -241,12 +259,14 @@ hours or45.5process-worker hours from the saved timings; ideal4-worker division
 is not measured scaling. Chapter2/5 total-pilot extrapolations include startup
 and are rough; the separate largest-Chapter5 sampling benchmark remains primary.
 
-Before production, record finite estimates, Hessian/covariance validity and
-nonnegative delta-method variances in addition to optimizerstatus. The old
-`pmax(0, ...)` code must not conceal invalid variances in a production analysis.
+The guarded production implementation below records finite estimates,
+Hessian/covariance validity and nonnegative delta-method variances in addition
+to optimizer status. Its separate analysis excludes guard-invalid fits from
+parameter summaries while retaining their denominators; the old baseline
+`pmax(0, ...)` behavior is not used to admit production fits.
 No invalid/nonpositive SE was found in the14400 saved baseline parameter rows.
 JAGS continuation needs independent chains and bulk/tail convergence checks;
-source-length execution alone is not convergence. No unbounded job was launched.
+source-length execution alone is not convergence. The active guarded continuation has a fixed wall-time cap.
 
 ## Guarded Chapter 6 production continuation
 
@@ -281,11 +301,58 @@ active processes to avoid duplicating an existing supervisor.
 `production/chapter6-v1/reports/progress.json` is the dated progress snapshot.
 `guarded-trials.csv.gz` retains valid and invalid parameter rows, and
 `checkpoint-ledger.jsonl.gz` retains exact commands/conditions and hashes.
-The raw `checkpoint-bundle.tar.gz` includes ignored job directories, run logs,
-receipts, identity and frozen inputs. Extract it into `production/chapter6-v1/`
-to restore exact completed-job resume state in a fresh checkout. Check its hash
-against [recovery-save.json](provenance/recovery-save.json) first. Never overwrite
-an active or newer job directory with an older bundle.
+The initial `checkpoint-bundle.tar.gz` includes ignored job directories, run
+logs, receipts, identity and frozen inputs. Its hash is recorded in
+[recovery-save.json](provenance/recovery-save.json). Later completed invocations
+are saved separately in `archives/`, with hashes and counts in
+[archive-index.json](production/chapter6-v1/archive-index.json). The initial
+bundle alone does not restore the later production progress.
+
+To save a checkpoint without launching fits:
+
+```sh
+python3 simulation/save_production_checkpoint.py --namespace production/chapter6-v1
+```
+
+This archives completed runner invocations, exports dated reports, and copies
+active logs. An active log snapshot may end mid-line; it is not a completed
+checkpoint. Active chunks remain local until completed and archived. Neither
+archive counts nor log snapshots establish the target has finished.
+
+For recovery, use a fresh checkout of the matching immutable code and pinned
+runtime, with no active supervisor and no existing `jobs/` or `runs/`. Verify
+both the initial bundle and every indexed archive before extraction:
+
+```sh
+python3 - <<'PYVERIFY'
+import hashlib, json, pathlib
+root = pathlib.Path('production/chapter6-v1')
+initial = json.loads(pathlib.Path('provenance/recovery-save.json').read_text())
+records = [{'path': initial['bundle_path'], 'sha256': initial['bundle_sha256']}]
+records += json.loads((root / 'archive-index.json').read_text())['archives']
+for record in records:
+    path = pathlib.Path(record['path'])
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == record['sha256'], path
+print('All recovery archive hashes match')
+PYVERIFY
+tar -xzf production/chapter6-v1/checkpoint-bundle.tar.gz -C production/chapter6-v1
+python3 - <<'PYRESTORE'
+import json, pathlib, subprocess
+root = pathlib.Path('production/chapter6-v1')
+for record in json.loads((root / 'archive-index.json').read_text())['archives']:
+    subprocess.run(['tar', '--skip-old-files', '-xzf', record['path'],
+                    '-C', str(root)], check=True)
+PYRESTORE
+python3 simulation/production_status.py --namespace production/chapter6-v1 --export
+```
+
+`--skip-old-files` preserves overlap with the initial immutable bundle. The
+export validates restored checkpoint identities and output hashes; any mismatch
+requires diagnosis before resuming. This procedure is only for a fresh recovery
+checkout, never for overwriting active or newer local work. Pending requests and
+partial logs without archived completion are not recovered successful fits.
+Inspect the dated status and failed requests, then use the bounded supervisor
+command above to continue only eligible jobs.
 
 The separate analytical check is
 [identification-check.json](provenance/identification-check.json), regenerated by
@@ -303,3 +370,112 @@ Validation replay commands are listed in the independent review records:
 `Rscript simulation/validate_guarded_replays.R /tmp/schwabe-independent-guard-check`.
 The latter requires the separately generated validation fits identified in the
 review; do not replace them with production estimates.
+
+
+## Frozen production analysis, separate from the baseline
+
+[analysis-plan.json](production/analysis-plan.json) was recorded before inspecting
+new production effect summaries; baseline results and operational counts were
+already known. Independent validation is recorded in
+[production-analysis-review.json](provenance/production-analysis-review.json)
+and [production-analysis-independent-validation.json](outputs/production-analysis-independent-validation.json).
+The 13 checks include exact baseline agreement and adversarial input validation.
+Replaying the validation starts no fits:
+
+```sh
+python3 simulation/test_production_analysis.py
+```
+
+After the supervisor has reached its terminal state (completed target or fixed
+cap/failure), export its final checkpoint and analyze into a **new, empty**
+directory. A terminal state at the cap is still an incomplete simulation grid.
+These commands are the planned terminal analysis, not a statement it has run:
+
+```sh
+python3 simulation/production_status.py --namespace production/chapter6-v1 --export
+python3 simulation/analyze_production.py \
+  --reports production/chapter6-v1/reports \
+  --output-dir production/chapter6-v1/terminal-analysis \
+  --source outputs/source-figure-values.csv \
+  --plan production/analysis-plan.json
+```
+
+The analyzer verifies exported hashes and ledger identities, retains all96
+condition/method cells, and counts historical guarded replays exactly once.
+Requested, completed, guard-valid, guard-invalid, process-failed, pending and
+not-yet-requested denominators remain separate. Its720 parameter summaries,
+288 signed SE contrasts,504 source comparisons and72 signed MAR bias contrasts
+are saved separately from baseline `outputs/`. Variance SE and exploratory path
+SE comparisons remain distinct; the2% primary and3% sensitivity conditions are
+not pooled. The declared families, two-MCSE intervals, adjusted intervals and
+source extraction bounds do not recover unknown source Monte Carlo error.
+Interim summaries are descriptive and never a significance-based stopping rule.
+Passing numerical guards is not proof of global convergence, and completion of
+attempts is distinct from successful whole-dissertation replication. The baseline
+report builder does not automatically incorporate these production outputs;
+scientific and rendered-PDF review is required before a revised paper is delivered.
+
+## Analytical and source-illustration audits
+
+```sh
+python3 simulation/identification_check.py --source-pdf /tmp/schwabe-thesis/thesis_I_Schwabe.pdf
+OPENBLAS_NUM_THREADS=1 python3 simulation/illustration_followup.py /tmp/schwabe-thesis/thesis_I_Schwabe.pdf --render-crops
+```
+
+The first writes `provenance/identification-check.json` and the attributed p72
+crop. Its algebraic covariance checks and likelihood counterexample do not
+establish full marginal item-model identification or empirical consequences.
+The second writes `provenance/illustration-followup.json` and limited source
+crops for Figures1.3 and7.1. It checks source curve/marker geometry with explicit
+coordinate bounds. Plot-derived sample moments and plausible generating values
+do not recover an original seed, driver, or raw-data simulation. Both audits
+preserve the numerical baseline; they require the locally acquired, hash-checked
+thesis for source evidence.
+
+## Prepared JAGS convergence gate: no new chains run
+
+[jags-gate-setup.json](provenance/jags-gate-setup.json) and
+[jags-gate-independent-review.json](provenance/jags-gate-independent-review.json)
+record accepted setup and diagnostic-fixture review. No actual JAGS compilation,
+new chain execution, or convergence success is established by those tests.
+The separate `posterior`1.6.1 library and exact package hashes are recorded in
+[posterior-runtime-packages.json](provenance/posterior-runtime-packages.json);
+the shared production R runtime is unchanged. Rebuild that separate library only
+in a fresh destination using the permitted archives and bootstrap manifest:
+
+```sh
+python3 simulation/bootstrap_posterior_library.py --library /workspace/slot3-posterior-library --cache /tmp/slot3-posterior-debs
+R_LIBS_USER=/workspace/slot3-posterior-library Rscript simulation/jags_convergence_gate.R prepare /tmp/schwabe-gate-preparation-final-v4
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 Rscript simulation/test_jags_gate_setup.R
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 Rscript simulation/test_jags_gate_independent.R
+```
+
+The setup fixture uses the exact temporary preparation path above, which must
+be absent or empty; preparation refuses to overwrite an existing namespace.
+These fixture scripts also use the pinned `/workspace/slot3-runtime/bin/Rscript`
+launcher internally. Skip bootstrap if that verified library already exists.
+
+Only after OpenMx reaches its terminal state and CPU availability is checked,
+prepare a new permanent namespace and freeze its exact input/code/runtime hashes:
+
+```sh
+R_LIBS_USER=/workspace/slot3-posterior-library Rscript simulation/jags_convergence_gate.R prepare production/jags-gate-v1
+```
+
+Preparation generates the fixed seed301 dataset, model, four initial states and
+hash manifest without sampling. The reviewed execution interface is
+`Rscript simulation/jags_convergence_gate.R run production/jags-gate-v1 CHAIN_ID`
+for each of chain IDs1–4. Dispatch must externally enforce1800seconds per chain,
+a7200worker-second initial-batch ceiling, full-process-group termination on
+timeout and retained logs/exit status; the wrapper does not enforce wall limits.
+No replacement chains, automatic extensions, or favorable-result stopping is
+permitted. Once all four requested outcomes are preserved, diagnostics run via:
+
+```sh
+R_LIBS_USER=/workspace/slot3-posterior-library Rscript simulation/diagnose_jags_gate.R production/jags-gate-v1
+```
+
+Inspect every trace/rank page and interval-endpoint sensitivity, retain failed or
+incomplete-chain outcomes, and obtain independent scientific outcome review.
+Even acceptable diagnostics on this one dataset would not establish100-dataset
+Chapter2 power/recovery, Chapter5 production, or whole-dissertation success.

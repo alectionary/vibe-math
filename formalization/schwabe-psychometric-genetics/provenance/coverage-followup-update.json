@@ -1,0 +1,147 @@
+{
+  "created_utc": "2026-10-30T19:32:52.933238+00:00",
+  "scope": "Inventory-only integration of completed analytical/illustration audits; no new experiments or changes to production, numerical baselines, paper/PDF, review acceptance or Git state.",
+  "changes": [
+    {
+      "id": "C1-2",
+      "before": {
+        "id": "C1-2",
+        "chapter": "1",
+        "locator": "Fig1.3 p8",
+        "kind": "Illustration",
+        "claim": "Two logistic item characteristic curves",
+        "dependencies": "Specified logistic model",
+        "status": "attempted/unresolved",
+        "attempt_evidence": "outputs/analytic-checks.json",
+        "result": "Qualitative logistic ordering verified; exact source item difficulties and random seed are unreported.",
+        "next_action": "Exact curve coordinates remain unresolved.",
+        "role": "supporting"
+      },
+      "after": {
+        "id": "C1-2",
+        "chapter": "1",
+        "locator": "Fig1.3 p8",
+        "kind": "Illustration",
+        "claim": "Two logistic item characteristic curves",
+        "dependencies": "Specified logistic model",
+        "status": "attempted/unresolved",
+        "attempt_evidence": "outputs/analytic-checks.json; provenance/illustration-followup.json; provenance/illustration-independent-review.json; evidence/fig1-3-icc-source.png",
+        "result": "Source vector curves reconstructed with discrimination2 and difficulties-2,-.5; maximum vertical residuals .0073 PDF points, within the .25-point geometry criterion. Independent central-logit fit agrees. Our unit-slope illustration is qualitative only; inferred figure parameters are not verified generating parameters.",
+        "next_action": "Original simulated responses, item estimates and plot driver remain unavailable. Source curve geometry is now reconstructed; no source decimal-precision or independent simulation-replication verdict.",
+        "role": "supporting"
+      },
+      "changed_fields": [
+        "attempt_evidence",
+        "result",
+        "next_action"
+      ],
+      "status_unchanged": true
+    },
+    {
+      "id": "C5-1",
+      "before": {
+        "id": "C5-1",
+        "chapter": "5",
+        "locator": "Eqs5.3-5.15 pp74-77; AppC pp138-139",
+        "kind": "Headline analytical",
+        "claim": "Logvariance ACE-by-M identification; squared-path sign ambiguity; monotonicity",
+        "dependencies": "Model equations",
+        "status": "attempted/unresolved",
+        "attempt_evidence": "outputs/analytic-checks.json",
+        "result": "Binary-moderator sign ambiguity verified by two equal-variance parameterizations; loglinear endpoint mapping checked.",
+        "next_action": "Global likelihood uniqueness and continuous-moderator extension not established by this finite check.",
+        "role": "headline"
+      },
+      "after": {
+        "id": "C5-1",
+        "chapter": "5",
+        "locator": "Section5.1.2 p72; Eqs5.3-5.15 pp75-76; p84; AppC pp138-139",
+        "kind": "Headline analytical",
+        "claim": "Logvariance ACE-by-M identification; squared-path sign ambiguity; monotonicity",
+        "dependencies": "Model equations",
+        "status": "attempted/unresolved",
+        "attempt_evidence": "outputs/analytic-checks.json; provenance/identification-check.json; simulation/identification_check.py; evidence/p72-identification-claim.png",
+        "result": "Exact algebra verifies conditional ACE covariance inversion, two-level logvariance identification and monotonicity. Binary path reflection is distinguished from continuous-support global sign ambiguity. A written all-zero Rasch-response counterexample shows that population injectivity does not ensure a finite sample likelihood maximum; this does not contradict the empirical posterior fits.",
+        "next_action": "Establish full marginal item-model identifiability under explicit calibration/support assumptions and assess interior likelihood behavior for nondegenerate data. Restricted algebra/counterexample does not close the whole result group.",
+        "role": "headline"
+      },
+      "changed_fields": [
+        "locator",
+        "attempt_evidence",
+        "result",
+        "next_action"
+      ],
+      "status_unchanged": true
+    },
+    {
+      "id": "C7-1",
+      "before": {
+        "id": "C7-1",
+        "chapter": "7",
+        "locator": "Fig7.1 p110",
+        "kind": "Illustration",
+        "claim": "10k genetic/phenotypic scatter: h2=1 and .5",
+        "dependencies": "Specified simulation",
+        "status": "attempted/unresolved",
+        "attempt_evidence": "outputs/ch7-illustration.pdf; outputs/analytic-checks.json",
+        "result": "Both10,000-individual illustrations regenerated with theoretical correlations1 andsqrt(.5).",
+        "next_action": "Exact source points require original seed; mechanism checked.",
+        "role": "supporting"
+      },
+      "after": {
+        "id": "C7-1",
+        "chapter": "7",
+        "locator": "Fig7.1 p110",
+        "kind": "Illustration",
+        "claim": "10k genetic/phenotypic scatter: heritability approximately1 and .5",
+        "dependencies": "Specified simulation",
+        "status": "attempted/unresolved",
+        "attempt_evidence": "outputs/ch7-illustration.pdf; outputs/analytic-checks.json; provenance/illustration-followup.json; provenance/illustration-independent-review.json; evidence/fig7-1-source.png",
+        "result": "Both source panels contain10000 markers. Extracted correlations are .99950/.70955; residual sample variances approximately .001/.502. Exact-noise-free baseline is an idealized limit. First-panel residual coordinate envelope includes zero, although joint geometry excludes exact collinearity; these are plot reconstructions, not population estimates or new simulations.",
+        "next_action": "Original generation seed/driver still needed to repeat the source simulation. Plot-derived moments and plausible1/.001 or .5/.5 component variances do not identify the original generating parameters.",
+        "role": "supporting"
+      },
+      "changed_fields": [
+        "claim",
+        "attempt_evidence",
+        "result",
+        "next_action"
+      ],
+      "status_unchanged": true
+    }
+  ],
+  "files": [
+    {
+      "path": "coverage.csv",
+      "before_sha256": "ce7da1e390cba9ca1eace871dd09778d6f4b5c67dd12a9ef12069fc14049f4b1",
+      "after_sha256": "9b45b6f366d30fa18dc7900776ec9d2d679147f1c0ae59d3326f254fd897c1d6"
+    },
+    {
+      "path": "provenance/unfinished-work.json",
+      "before_sha256": "c72137e54458121414104a1aee9390f09afb44561c9453b92a9d00a196df7c6a",
+      "after_sha256": "481df49e8d809edf5cc6ce6b0ca9c36621624e05d009def712cc46a6531277ee"
+    },
+    {
+      "path": "provenance/comparability.json",
+      "before_sha256": "95e3bcd7af421ab2ca485aea65395dda4559f1dc0cc7818cb02acdc49a298858",
+      "after_sha256": "3ef36461ea140edbb0fc98cf83eb364730c12473cff3b8276f28b30bb2312c1f"
+    },
+    {
+      "path": "provenance/independence.json",
+      "before_sha256": "ba27577e21d378f1b2d6c9139346ec2ccd60d90e5c53c5d138ab2c383c3c7338",
+      "after_sha256": "03db609b5a9171ba7af13bc53a977e36ce9eeda73f47a6ca4a08b7fc3685bd57"
+    },
+    {
+      "path": "provenance/source-crops.json",
+      "before_sha256": "d0737bbdecd59b805422516ca8fcea1ea833375b95815aba770bf64a41b8cd08",
+      "after_sha256": "7e4c53802b356592fe4104b8fc2e8513c300a9ef9fd57a7fd98b8728382f4c56"
+    }
+  ],
+  "validation": {
+    "coverage_groups": 41,
+    "statuses_unchanged": true,
+    "evidence_paths_exist": true,
+    "all_source_crop_hashes_verified": true
+  },
+  "manuscript_note": "Reviewed PDF and generated coverage.tex remain unchanged. Manuscript source integration is in progress and requires fresh scientific and rendered review before delivery."
+}
