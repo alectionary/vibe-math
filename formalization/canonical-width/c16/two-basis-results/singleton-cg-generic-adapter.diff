@@ -1,0 +1,125 @@
+--- singleton_exact_column_gate.py
++++ singleton_exact_column_gate_generic.py
+@@ -72,9 +72,13 @@
+     ap=argparse.ArgumentParser();ap.add_argument('--initial-manifest',type=Path,required=True);ap.add_argument('--initial-receipt',type=Path,required=True);ap.add_argument('--prefix',type=Path,required=True);a=ap.parse_args();start=time.monotonic();deadline=start+600
+     m=read(a.initial_manifest);ir=read(a.initial_receipt);assert ir['manifest_sha256']==sha(a.initial_manifest) and ir['status']=='PASS_EXACT_SINGLETON_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS'
+     assert ir['consumer_sha256']==sha(ROOT/'verify_singleton_archive_lp.py') and m['status']=='EXACT_SINGLETON_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
+-    s=read(m['semantic']);assert sha(m['semantic'])==m['semantic_sha256'];assert s['anchor_orbit']==40 and s['point_sha256']=='4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f'
+-    X,Z,_=physical();owner,target=point_data(s['point'],40);p=owner[40];q=[v/(16*p) for v in target[55:]];E=s['physical_zero_ground_indices']
+-    B=[list(b) for b in s['physical_bases']];initial_count=len(B);assert initial_count==3067
++    s=read(m['semantic']);assert sha(m['semantic'])==m['semantic_sha256'];orbit=s['anchor_orbit'];assert type(orbit)is int and 0<=orbit<45 and s['point_sha256']=='4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f'
++    X,Z,_=physical();owner,target=point_data(s['point'],orbit);p=owner[orbit];q=[v/(16*p) for v in target[55:]];E=s['physical_zero_ground_indices']
++    assert E==[j for j in range(720) if (X[16*orbit]&Z[j]).bit_count()%2==0]
++    assert list(map(Q,s['conditional_target']))==q and Q(s['conditional_probability'])==p
++    B=[list(b) for b in s['physical_bases']];initial_count=len(B)
++    assert 1<=initial_count<=5000 and initial_count==s['variable_count']==m['variable_count']
++    assert s['equality_count']==1+len(E) and m['row_count']==initial_count+s['equality_count']
+     covered=set(j for b in B for j in b);common=set(B[0]).intersection(*map(set,B[1:]))
+     missing=[j for j in E if q[j]>0 and j not in covered];universal=[j for j in sorted(common) if q[j]<1]
+     origins=[dict(kind='initial_archive',index=i) for i in range(len(B))];seen=set(map(tuple,B));seeds=[];seedcut=None
+@@ -84,17 +88,17 @@
+             assert rank(Z[t] for t in b)==len(b)
+             if len(b)<127:
+                 assert kind=='omit_nonunit_universal';J=[t for t in E if t!=j]
+-                seedcut=dict(sector='T',anchor_orbit=40,mandatory_index=None,indices=J,bound=len(b));break
++                seedcut=dict(sector='T',anchor_orbit=orbit,mandatory_index=None,indices=J,bound=len(b));break
+             assert (j in b)==(kind=='cover_positive')
+             record=dict(kind=kind,index=j,basis=b,rank=127,target=str(q[j]))
+             seeds.append(record)
+             if tuple(b) not in seen:seen.add(tuple(b));B.append(b);origins.append(record)
+         if seedcut:break
+     paths=[Path(__file__),a.initial_manifest,a.initial_receipt,Path(m['semantic']),
+-           *[ROOT/n for n in ('export_singleton_archive_cg.py','verify_singleton_archive_cg.py','price_singleton_archive_cg.py','run_singleton_archive_cg_soplex.py','verify_singleton_exact_pricing.py')]]
++           *[ROOT/n for n in ('export_singleton_archive_cg.py','verify_singleton_archive_cg.py','price_singleton_archive_cg.py','run_singleton_archive_cg_soplex_generic.py','verify_singleton_exact_pricing.py')]]
+     sources=dict(s['source_hashes']);sources.update({str(path.resolve().relative_to(ROOT)):sha(path) for path in paths})
+     frozen=dict(status='FROZEN_BOUNDED_SINGLETON_EXACT_COLUMN_GATE',source_hashes=sources,initial_manifest_sha256=sha(a.initial_manifest),
+-                point_sha256=s['point_sha256'],anchor_orbit=40,maximum_rounds=20,total_seconds=600,solver_internal_seconds=60,solver_external_seconds=90,
++                point_sha256=s['point_sha256'],anchor_orbit=orbit,maximum_rounds=20,total_seconds=600,solver_internal_seconds=60,solver_external_seconds=90,
+                 coverage_audit=dict(uncovered_positive=missing,universal_nonunit=universal),seed_columns=seeds,initial_columns=initial_count,seeded_columns=len(B),nice=19,threads=1)
+     fp=str(a.prefix)+'.frozen.json';write(fp,frozen);records=[];stop=None;result=None
+     if seedcut:result=accept_cut(seedcut,Z,q,p,s['point'],owner,a.prefix,sources);stop='EXACT_GLOBAL_RANK_CUT'
+@@ -107,7 +111,7 @@
+         r=dict(iteration=iteration,columns=len(B),column_bank=column_bank,column_bank_sha256=sha(column_bank),stages=[])
+         r['stages'].append(run(['export_singleton_archive_cg.py','--endpoint',s['endpoint'],'--receipt',s['endpoint_receipt'],'--columns',column_bank,'--prefix',stem],stem+'-export.log',20))
+         r['stages'].append(run(['verify_singleton_archive_cg.py','--manifest',stem+'.json','--output',stem+'-independent.json'],stem+'-independent.log',20))
+-        r['stages'].append(run(['run_singleton_archive_cg_soplex.py','--manifest',stem+'.json','--receipt',stem+'-independent.json','--output-prefix',stem+'-solve'],stem+'-solve-supervisor.log',min(100,deadline-time.monotonic())))
++        r['stages'].append(run(['run_singleton_archive_cg_soplex_generic.py','--manifest',stem+'.json','--receipt',stem+'-independent.json','--output-prefix',stem+'-solve'],stem+'-solve-supervisor.log',min(100,deadline-time.monotonic())))
+         solve=read(stem+'-solve.json');r['solver_report']=stem+'-solve.json';r['solver_status']=solve['reported_solver_status']
+         if solve['external_stop'] is not None or solve['returncode']!=0:stop='BOUNDED_SOLVER_RESULT'
+         elif r['solver_status']=='problem is solved [optimal]':
+@@ -133,7 +137,7 @@
+         print(json.dumps(dict(iteration=iteration,columns=r['columns'],solver_status=r['solver_status'],stop=stop)),flush=True)
+     if stop is None:stop='MAXIMUM_20_ROUNDS'
+     out=dict(status='BOUNDED_EXACT_SINGLETON_COLUMN_GATE_FINISHED',stop_reason=stop,result=result,records=records,
+-             frozen_sha256=sha(fp),elapsed_seconds=time.monotonic()-start,point_sha256=s['point_sha256'],anchor_orbit=40,
++             frozen_sha256=sha(fp),elapsed_seconds=time.monotonic()-start,point_sha256=s['point_sha256'],anchor_orbit=orbit,
+              initial_columns=initial_count,final_columns=len(B),source_C16_answered=False,no_broad_anchor_cohort=True)
+     assert all(sha(ROOT/name)==h for name,h in sources.items());write(str(a.prefix)+'.json',out);print(json.dumps({k:v for k,v in out.items() if k!='records'}),flush=True)
+ if __name__=='__main__':main()
+--- run_singleton_archive_cg_soplex.py
++++ run_singleton_archive_cg_soplex_generic.py
+@@ -4,12 +4,13 @@
+ assert os.getpriority(os.PRIO_PROCESS,0)==19
+ for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','VECLIB_MAXIMUM_THREADS','NUMEXPR_NUM_THREADS','BLIS_NUM_THREADS'):os.environ[k]='1'
+ from pathlib import Path
+-import argparse,hashlib,json,re,signal,subprocess,time
++import argparse,gzip,hashlib,json,re,signal,subprocess,time
+ import psutil
+ 
+ ROOT=Path(__file__).resolve().parent
+ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+-def read(p):return json.loads(Path(p).read_text())
++def read(p):
++    p=Path(p);raw=p.read_bytes();return json.loads(gzip.decompress(raw) if p.suffix=='.gz' else raw)
+ def main():
+     ap=argparse.ArgumentParser();ap.add_argument('--manifest',type=Path,required=True);ap.add_argument('--receipt',type=Path,required=True);ap.add_argument('--output-prefix',type=Path,required=True);a=ap.parse_args()
+     m=read(a.manifest);r=read(a.receipt)
+@@ -17,7 +18,10 @@
+     assert r['status']=='PASS_EXACT_SINGLETON_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS'
+     assert r['manifest_sha256']==sha(a.manifest) and r['consumer_sha256']==sha(ROOT/'verify_singleton_archive_cg.py')
+     assert r['lp_sha256']==m['lp_sha256']==sha(m['lp']) and r['semantic_sha256']==m['semantic_sha256']==sha(m['semantic'])
+-    assert 3067<=m['variable_count']<=5000 and m['row_count']==m['variable_count']+625
++    semantic=read(m['semantic']);n=m['variable_count'];E=semantic['physical_zero_ground_indices']
++    assert type(semantic['anchor_orbit'])is int and 0<=semantic['anchor_orbit']<45
++    assert 1<=n<=5000 and n==semantic['variable_count']==len(semantic['physical_bases'])
++    assert semantic['equality_count']==1+len(E) and m['row_count']==n+semantic['equality_count']
+     setup=ROOT/'two-basis-results/soplex-setup/setup-ready.json';s=read(setup)
+     assert s['status']=='PASS_SOPLEX_SETUP_AND_SUPPLEMENTAL_EXACT_CONTROLS'
+     tiny=ROOT/'two-basis-results/soplex-setup/tiny-independent.json'
+@@ -30,7 +34,7 @@
+              f'-X={prefix}.primal',f'-Y={prefix}.dual',f'--writebas={prefix}.bas',str(Path(m['lp']).resolve())]
+     frozen=dict(status='FROZEN_EXACT_SINGLETON_ARCHIVE_SOPLEX_TRIAL',command=command,
+                 input_manifest=str(a.manifest),input_manifest_sha256=sha(a.manifest),input_lp_sha256=m['lp_sha256'],
+-                semantic_sha256=m['semantic_sha256'],prep_receipt=str(a.receipt),prep_receipt_sha256=sha(a.receipt),
++                semantic_sha256=m['semantic_sha256'],anchor_orbit=semantic['anchor_orbit'],physical_ground_count=len(E),variable_count=n,prep_receipt=str(a.receipt),prep_receipt_sha256=sha(a.receipt),
+                 setup=str(setup.relative_to(ROOT)),setup_sha256=sha(setup),tiny_receipt_sha256=sha(tiny),
+                 runner_sha256=sha(__file__),runtime_files=s['runtime_files'],priority=19,threads=1,
+                 internal_seconds=60,external_seconds=90,soft_rss_bytes=2*1024**3,no_automatic_retry=True,
+--- run_singleton_exact_column_gate.py
++++ run_singleton_exact_column_gate_generic.py
+@@ -1,18 +1,19 @@
+ #!/usr/bin/env python3
+-"""Hard600-second process-tree cap for the single authorized orbit40 gate."""
++"""Hard600-second process-tree cap for the single explicitly supplied singleton gate."""
+ import os
+ assert os.getpriority(os.PRIO_PROCESS,0)==19
+ for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','VECLIB_MAXIMUM_THREADS','NUMEXPR_NUM_THREADS','BLIS_NUM_THREADS'):os.environ[k]='1'
+ os.environ['PYTHONDONTWRITEBYTECODE']='1'
+-import hashlib,json,subprocess,sys,time
++import argparse,hashlib,json,subprocess,sys,time
+ from pathlib import Path
+ import psutil
+ ROOT=Path(__file__).resolve().parent
+-PREFIX=ROOT/'two-basis-results/singleton-cg-point22-o40'
+ def main():
+-    log=Path(str(PREFIX)+'.supervisor.log');out=Path(str(PREFIX)+'.supervisor.json');assert not log.exists() and not out.exists()
+-    command=[sys.executable,'-B','singleton_exact_column_gate.py','--initial-manifest','two-basis-results/singleton-archive-point22-o40.json',
+-             '--initial-receipt','two-basis-results/singleton-archive-point22-o40-independent.json','--prefix',str(PREFIX.relative_to(ROOT))]
++    ap=argparse.ArgumentParser();ap.add_argument('--initial-manifest',type=Path,required=True);ap.add_argument('--initial-receipt',type=Path,required=True);ap.add_argument('--prefix',type=Path,required=True);a=ap.parse_args()
++    prefix=a.prefix.resolve();assert prefix.is_relative_to(ROOT)
++    log=Path(str(prefix)+'.supervisor.log');out=Path(str(prefix)+'.supervisor.json');assert not log.exists() and not out.exists()
++    command=[sys.executable,'-B','singleton_exact_column_gate_generic.py','--initial-manifest',str(a.initial_manifest),
++             '--initial-receipt',str(a.initial_receipt),'--prefix',str(prefix.relative_to(ROOT))]
+     start=time.monotonic()
+     with log.open('w') as stream:
+         p=subprocess.Popen(command,cwd=ROOT,env=os.environ,stdout=stream,stderr=subprocess.STDOUT);assert psutil.Process(p.pid).nice()==19

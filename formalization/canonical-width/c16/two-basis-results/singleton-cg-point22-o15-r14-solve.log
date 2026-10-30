@@ -1,0 +1,101 @@
+SoPlex version 8.1.0 [mode: optimized] [precision: 8 byte] [rational: GMP 6.3.0] [PaPILO n/a] [GitHash: a0061053]
+Copyright (c) 1996-2026 Zuse Institute Berlin (ZIB)
+
+External libraries:
+  Boost 1.92.0         Boost C++ Libraries (boost.org)
+  GMP 6.3.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+  MPFR 4.2.2           GNU Multiple Precision Floating-Point Reliable Library (mpfr.org)
+  ZLIB 1.2.12          General Purpose Compression Library by J. Gailly and M. Adler (zlib.net)
+
+int:simplifier = 0
+int:syncmode = 1
+int:readmode = 1
+int:solvemode = 2
+int:checkmode = 2
+real:feastol = 0.00000000e+00
+real:opttol = 0.00000000e+00
+real:timelimit = 6.00000000e+01
+
+Reading (rational) LP file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-cg-point22-o15-r14.lp> . . .
+Reading took 0.88 seconds.
+
+LP has 3721 rows 3154 columns and 406866 nonzeros.
+
+Initial floating-point solve . . .
+Equilibrium scaling LP
+
+type |   time |   iters | facts |    shift | viol sum | viol num | obj value 
+  L  |0.0     |0        | 1     | 0.00e+00 | 1.28e+02 | 567      | 0.00000000e+00
+  L  |0.0     |199      | 7     | 0.00e+00 | 1.18e+02 | 524      | 0.00000000e+00
+  L  |0.0     |399      | 9     | 0.00e+00 | 9.14e+01 | 517      | 0.00000000e+00
+  L  |0.1     |599      | 11    | 0.00e+00 | 1.25e+02 | 512      | 0.00000000e+00
+  L  |0.1     |799      | 13    | 0.00e+00 | 1.32e+02 | 507      | 0.00000000e+00
+  L  |0.1     |999      | 14    | 0.00e+00 | 1.96e+02 | 501      | 0.00000000e+00
+  L  |0.2     |1199     | 16    | 0.00e+00 | 1.48e+02 | 495      | 0.00000000e+00
+  L  |0.2     |1399     | 18    | 0.00e+00 | 2.37e+02 | 495      | 0.00000000e+00
+  L  |0.3     |1599     | 19    | 0.00e+00 | 2.40e+02 | 490      | 0.00000000e+00
+  L  |0.4     |1799     | 21    | 0.00e+00 | 2.91e+02 | 480      | 0.00000000e+00
+  L  |0.4     |1999     | 22    | 0.00e+00 | 3.23e+02 | 477      | 0.00000000e+00
+  L  |0.5     |2199     | 23    | 0.00e+00 | 3.34e+02 | 471      | 0.00000000e+00
+  L  |0.6     |2399     | 24    | 1.02e-04 | 4.29e+02 | 453      | 0.00000000e+00
+  L  |0.7     |2599     | 25    | 1.17e-04 | 2.53e+02 | 461      | 0.00000000e+00
+  L  |0.7     |2799     | 26    | 1.32e-04 | 1.89e+02 | 457      | 0.00000000e+00
+  L  |0.9     |2999     | 28    | 1.44e-04 | 3.71e+02 | 460      | 0.00000000e+00
+  L  |1.0     |3199     | 30    | 1.50e-04 | 4.16e+02 | 461      | 1.44206761e-08
+  L  |1.1     |3399     | 31    | 1.50e-04 | 6.03e+02 | 462      | 1.56687468e-07
+  L  |1.2     |3599     | 32    | 1.50e-04 | 1.58e+03 | 450      | 1.11162153e-06
+  L  |1.3     |3674     | 34    | 1.50e-04 | 2.09e+06 | 439      | 9.72986923e-04
+
+Store basis as old basis (from solver)
+Floating-point infeasible.
+Setting up LP to test for feasibility.
+Initial floating-point solve . . .
+
+  L  |0.1     |0        | 3     | 0.00e+00 | 2.09e+06 | 439      | -1.00000000e+00
+  L  |0.1     |1        | 4     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+
+Store basis as old basis (from solver - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 0, ofm = 1e0
+Max. reduced cost violation = 8281/576460752303423488, ofm = 1e-14
+Max. dual violation = 253/72057594037927936, ofm = 1e-14
+Performing rational reconstruction . . .
+Reconstructed solution dual infeasible (3).
+Refined floating-point solve . . .
+
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+
+Store basis as old basis (from solver - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 0, ofm = 1e0
+Max. reduced cost violation = 8527/40564819207303340847894502572032, ofm = 1e-28
+Max. dual violation = 117/2535301200456458802993406410752, ofm = 1e-28
+Performing rational reconstruction . . .
+Reconstructed solution dual infeasible (4).
+Refined floating-point solve . . .
+
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+
+Store basis as old basis (from solver - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 0, ofm = 1e0
+Max. reduced cost violation = 3211/1427247692705959881058285969449495136382746624, ofm = 1e-42
+Max. dual violation = 219/178405961588244985132285746181186892047843328, ofm = 1e-42
+Performing rational reconstruction . . .
+Reconstructed solution dual infeasible (4).
+Performing rational factorization . . .
+Tolerances reached.
+Primal infeasible.  Dual Farkas ray available.
+
+SoPlex status       : problem is solved [infeasible]
+Solving time (sec)  : 3.06
+Iterations          : 3675
+Objective value     : 1.00000000e+100
+
+Written basis information to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-cg-point22-o15-r14-solve.bas>.
+
