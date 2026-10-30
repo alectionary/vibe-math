@@ -1,0 +1,83 @@
+{
+  "version": "chapter6-guarded-analysis-v1",
+  "status": "Analysis specification prepared during production; no adaptive stopping or favorable-cell selection",
+  "inputs": [
+    "guarded-trials.csv.gz",
+    "checkpoint-ledger.jsonl.gz",
+    "condition-counts.csv",
+    "outputs/source-figure-values.csv"
+  ],
+  "population": "48 conditions,1000 fixed datasets each,full/deletion methods; historical0-19 guarded replays included exactly once, not pooled again with preserved unguarded baseline",
+  "target_method_fits": 96000,
+  "denominators": "For each condition/method preserve target1000,actual requested,completed,guard-valid,guard-invalid,process-failed,in-flight/uncheckpointed and not-yet-requested. Complete parameter rows are mandatory even for recorded invalid fits. Invalid outcomes never enter valid-only numeric estimates; their denominator and reasons remain visible. No replacement seeds or favorable retry selection.",
+  "unique_key": "mechanism,q,missing,replicate,method,parameter; fixed seed rule is checked. Duplicate ledger datasets or duplicate parameter rows cause an error, not implicit weighting or silent replacement.",
+  "inventory": {
+    "condition_methods": 96,
+    "parameter_groups": 720,
+    "paired_SE_contrasts": 288,
+    "source_comparisons": 504,
+    "MAR_signed_bias_cells": 72
+  },
+  "truths": {
+    "A": 0.5,
+    "C": 0.3,
+    "E": 0.2,
+    "h2": 0.5,
+    "beta_rule": "Each beta=sqrt(.64/(q*(2+.6*(q-1)))); h2 is residual A/(A+C+E), not A/1.64"
+  },
+  "parameter_summary": "For every A,C,E,h2,beta parameter retain estimate mean,between-dataset SD,MCSE,bias,RMSE,model-SE mean/SD/MCSE; path-SE summaries only for A,C,E with explicit different-estimand label. All numeric summaries condition on guard-valid fits.",
+  "families": [
+    {
+      "name": "Primary paired variance-SE contrast deletion minus full",
+      "size": 108,
+      "alpha": 0.05,
+      "conditions": "3mechanisms x4q xmissing(.02,.06,.10) x3variancecomponents",
+      "positive": "Full information has lower estimated variance-component SE",
+      "interval": "Paired Student t Bonferroni mean intervals; also two-MCSE intervals"
+    },
+    {
+      "name": "3percent sensitivity paired variance-SE",
+      "size": 36,
+      "alpha": 0.05,
+      "interval": "Separate Bonferroni Student t family"
+    },
+    {
+      "name": "Exploratory paired path-SE contrasts",
+      "size": "108primary plus36sensitivity separately",
+      "alpha": 0.05,
+      "interval": "Same rules but separate metric; not variance-SE reproduction"
+    },
+    {
+      "name": "Source variance-SE reproduction deviations",
+      "size": 216,
+      "alpha": 0.05,
+      "interval": "Bonferroni Student t for our mean plus source extraction bound; source Monte Carlo error unknown"
+    },
+    {
+      "name": "Exploratory source path-SE reconstruction",
+      "size": 216,
+      "alpha": 0.05,
+      "interval": "Separate same-shaped conditional band; not same estimand as printed variance labels"
+    },
+    {
+      "name": "MAR estimate reproduction deviations",
+      "size": 72,
+      "alpha": 0.05,
+      "interval": "Bonferroni Student t plus extraction bound; exploratory as established in prior checkpoint"
+    },
+    {
+      "name": "MAR signed estimate-minus-truth biases",
+      "size": 72,
+      "alpha": 0.05,
+      "interval": "Bonferroni Student t for our signed bias; source extraction sign uncertainty separate, source Monte Carlo unknown"
+    }
+  ],
+  "source_mapping": "Figure low-missingness label maps to.02 in primary source comparisons; .03 sensitivity stays separate. Source display rounding is not measurement precision; numerical rounding verdict withheld for figure-derived targets.",
+  "signs": "Scientific paired contrast is SE(deletion)-SE(full),positive means full information more precise. Scientific bias is estimate-generating truth,positive means overestimation. Ours-minus-source is a separate reproduction deviation. Report all point-sign reversals with extraction-bound robustness and our interval status; do not promote a source point sign to an established source ranking.",
+  "uncertainty_limits": "Intervals describe independent generated datasets conditional on declared model and guard-valid subset. Missing or invalid fits can induce selection; no general all-requested inference is claimed. Normal-mean/Student approximations may be poor at small n; n<2 yields no interval. Source Monte Carlo uncertainty is unknown; extraction bounds are not confidence intervals. These are not equivalence tests or directly estimated power.",
+  "interim": "All interim analyses are descriptive fixed-n checkpoints, not sequential confidence procedures or stopping rules. A complete attempted grid may still have invalid fits and does not establish successful source replication or whole-dissertation completion.",
+  "preservation": "Write only a distinct output directory; do not overwrite outputs/ baseline or running report inputs. Record source/input/code/plan hashes with every analysis. Final analysis requires independently reviewed frozen code and validated exported checkpoint data.",
+  "recorded_before_new_production_effect_summary_inspection": true,
+  "recorded_utc": "2026-10-30T18:51:29.629969+00:00",
+  "prior_information": "Preserved20-replicate baseline and operational progress/guard counts were known; no new production effect summaries inspected when specifying this plan."
+}

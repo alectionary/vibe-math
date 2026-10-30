@@ -1,0 +1,129 @@
+{
+  "reviewer": "Independent production analysis reviewer (/root/analysis_validation)",
+  "reviewed_utc": "2026-10-30T18:52:43.979465+00:00",
+  "status": "accepted for frozen guarded-production analysis; not scientific completion certification",
+  "files": {
+    "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518",
+    "production/analysis-plan.json": "d8112ba65868f54035f5258c560821080e4d3588e6b9dfe01e8a7894f2f2fa1a",
+    "simulation/test_production_analysis.py": "97ad64593d24bf8ece7b71bd6338cccc78ad08380d27df304793debd5b9d07c1",
+    "outputs/production-analysis-independent-validation.json": "5cc17e1c3375d2d7d17b7e5dbe0149f6dd024c7a34e5b0980fb3978146357700",
+    "outputs/source-figure-values.csv": "84ac71c9222f9a0868e5b9da4d6dfe7c3ed4fa7f199be9e249a53003375c41a7",
+    "outputs/trial-records.csv": "13278fb81fd2bf3d258dee482624859a98e16e2bf7469aec1b8fe6e065fdac4c"
+  },
+  "scope": "Read original Chapter6 pp91\u201396, existing uncertainty and bias plans, production protocol and new analysis source. Independently validated preserved20-replicate baseline plus synthetic adversarial bookkeeping fixtures; no new production effect summaries or fits were used.",
+  "checks": {
+    "passed": true,
+    "checks": [
+      {
+        "test": "preserved20repbaseline_numeric_and_inventory",
+        "passed": true
+      },
+      {
+        "test": "duplicate_dataset_rejected",
+        "passed": true,
+        "rejection": "Duplicate dataset checkpoint; retry selection requires separate audited policy"
+      },
+      {
+        "test": "duplicate_parameter_rejected",
+        "passed": true,
+        "rejection": "Duplicate/unexpected parameter row"
+      },
+      {
+        "test": "wrong_seed_rejected",
+        "passed": true,
+        "rejection": "Row/ledger identity mismatch"
+      },
+      {
+        "test": "nonfinite_valid_estimate_rejected",
+        "passed": true,
+        "rejection": "Invalid numeric guard-valid row"
+      },
+      {
+        "test": "negative_delta_rejected",
+        "passed": true,
+        "rejection": "Invalid numeric guard-valid row"
+      },
+      {
+        "test": "missing_parameter_rejected",
+        "passed": true,
+        "rejection": "Missing parameter row in completed fit"
+      },
+      {
+        "test": "mixed_frozen_identity_rejected",
+        "passed": true,
+        "rejection": "Mixed frozen identities"
+      },
+      {
+        "test": "invalid_failed_inflight_denominators_and_paired_filter",
+        "passed": true
+      },
+      {
+        "test": "string_baseline_boolean_rejected",
+        "passed": true,
+        "rejection": "Wrong condition/seed/baseline classification"
+      },
+      {
+        "test": "wrong_ledger_sample_size_rejected",
+        "passed": true,
+        "rejection": "Wrong ledger design/tag"
+      },
+      {
+        "test": "wrong_source_condition_inventory_rejected",
+        "passed": true,
+        "rejection": "Source condition inventory mismatch"
+      },
+      {
+        "test": "tampered_export_digest_rejected",
+        "passed": true
+      }
+    ],
+    "scope": "Copied baseline and deliberately synthetic temporary fixtures; no new scientific fits or production outcome inspection."
+  },
+  "baseline_recovery": {
+    "method_fits": 1920,
+    "guarded_baseline_datasets": 960,
+    "new_datasets": 0,
+    "parameter_groups": 720,
+    "paired_SE_contrasts": 288,
+    "source_comparisons": 504,
+    "MAR_bias_cells": 72,
+    "source_variance_SE_outside": 191,
+    "source_path_SE_outside": 0,
+    "primary_variance_SE_positive_points": 108,
+    "primary_variance_SE_adjusted_positive": 104,
+    "MAR_point_bias_reversals": 23,
+    "mean_comparison_tolerance": "1e-12 across all previously reported parameter/metric means; fixture mean/SD/MCSE independently checked"
+  },
+  "findings_and_fixes": [
+    {
+      "finding": "String baseline boolean could pass validation then miscount baseline/new via truthiness",
+      "resolution": "Ledger requires actual JSON boolean and checks againstreplicate<20."
+    },
+    {
+      "finding": "Ledger model design/tag and exact source inventory insufficiently constrained",
+      "resolution": "N1000, equalbeta, canonicaltag, exact288sourcecells and figurelabels/finitevalues/nonnegativeextractionbounds checked."
+    },
+    {
+      "finding": "Need immutable export integrity and row/ledger status alignment",
+      "resolution": "Export SHA256s checked before analysis; optimizer status matched when recorded; mixed identities rejected."
+    }
+  ],
+  "scientific_review": [
+    "Target1000 percondition and allrequested/completed/guardvalid/invalid/processfailed/inflight/notrequested denominators remain separate. Historical0\u201319 replays enter once, unguarded baseline is not pooled again.",
+    "Paired SE analysis uses only datasets valid under both methods; requested pairs and excluded/pending pairs remain explicit. With n<2, intervals are withheld.",
+    "All720parameter groups are descriptive; only declared72MAR family receives signed-bias intervals. Covariate beta truth and residual h2=.5 match source design.",
+    "108primary and36sensitivity SE contrast families remain separate;216variance-SE source comparisons,216exploratorypath-SE comparisons and72MAR source estimate comparisons retain their distinct interpretations.",
+    "Scientific contrasts and estimate-minus-truth bias differ from ours-minus-source deviations. Allpoint reversals retained; original figureprecision and unknownsourceMonteCarlo error are not invented.",
+    "Data-dependent invalidfit selection limits valid-only inference. Student/normalmean approximations are conditional; bands are not equivalence, power or sequential stopping procedures."
+  ],
+  "remaining_limits": [
+    "Analyze a stable exported snapshot after frozen checks. Parent should export only at a consistent checkpoint or terminal state, not while input files are being replaced.",
+    "Acceptance validates analysis logic and specified fixtures, not exhaustive software correctness, true model specification, global optimizer convergence, source driver equivalence or empirical replication.",
+    "OriginalsourceMonteCarlo error, exactbetaallocation/SE extraction and source-era runtime remain unresolved. Path-SEagreement does not identify the original procedure.",
+    "Terminal production counts and numerical findings still require outcome review; mainpaper must be rebuilt and independently rendered-reviewed for material updates. Whole dissertation remains incomplete."
+  ],
+  "commands": [
+    "python simulation/test_production_analysis.py",
+    "python simulation/analyze_production.py --reports SNAPSHOT_REPORTS --output-dir NEW_ANALYSIS_DIRECTORY --source outputs/source-figure-values.csv --plan production/analysis-plan.json"
+  ]
+}

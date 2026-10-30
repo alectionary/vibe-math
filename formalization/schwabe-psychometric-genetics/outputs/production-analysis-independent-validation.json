@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "test": "preserved20repbaseline_numeric_and_inventory",
+      "passed": true
+    },
+    {
+      "test": "duplicate_dataset_rejected",
+      "passed": true,
+      "rejection": "Duplicate dataset checkpoint; retry selection requires separate audited policy"
+    },
+    {
+      "test": "duplicate_parameter_rejected",
+      "passed": true,
+      "rejection": "Duplicate/unexpected parameter row"
+    },
+    {
+      "test": "wrong_seed_rejected",
+      "passed": true,
+      "rejection": "Row/ledger identity mismatch"
+    },
+    {
+      "test": "nonfinite_valid_estimate_rejected",
+      "passed": true,
+      "rejection": "Invalid numeric guard-valid row"
+    },
+    {
+      "test": "negative_delta_rejected",
+      "passed": true,
+      "rejection": "Invalid numeric guard-valid row"
+    },
+    {
+      "test": "missing_parameter_rejected",
+      "passed": true,
+      "rejection": "Missing parameter row in completed fit"
+    },
+    {
+      "test": "mixed_frozen_identity_rejected",
+      "passed": true,
+      "rejection": "Mixed frozen identities"
+    },
+    {
+      "test": "invalid_failed_inflight_denominators_and_paired_filter",
+      "passed": true
+    },
+    {
+      "test": "string_baseline_boolean_rejected",
+      "passed": true,
+      "rejection": "Wrong condition/seed/baseline classification"
+    },
+    {
+      "test": "wrong_ledger_sample_size_rejected",
+      "passed": true,
+      "rejection": "Wrong ledger design/tag"
+    },
+    {
+      "test": "wrong_source_condition_inventory_rejected",
+      "passed": true,
+      "rejection": "Source condition inventory mismatch"
+    },
+    {
+      "test": "tampered_export_digest_rejected",
+      "passed": true
+    }
+  ],
+  "scope": "Copied baseline and deliberately synthetic temporary fixtures; no new scientific fits or production outcome inspection."
+}
