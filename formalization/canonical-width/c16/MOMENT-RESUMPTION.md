@@ -699,3 +699,23 @@ actions preserves all source-valid necessities and justifies the common S/T
 coordinates used by the new projected inequality. The exact standalone receipt
 is `symmetry-bridge-independent.json`; no assertion of physical completion or
 new source resolution is involved.
+
+The additional physical-symmetry consumer also passes from a clean detached
+checkout of `fdb305e080590c4dfc4f77a903198b0866c8ea21`;
+`symmetry-bridge-clean-provenance.json` binds its receipt. At04:15:19Z the owned
+claim was deleted with its exact expected-SHA lease and verified absent, after
+both branches held the published results. This releases the bounded block's
+coordination claim; it does **not** pause or complete the user's original goal.
+No research computation remains running. A continuation should acquire a fresh
+create-only claim and use the saved exact point and final new cuts.
+
+**Question answered:** the listed finite moment relaxation, including every
+Boolean triple, is exactly feasible; the final projected shared-orbit inequality
+and five new rank inequalities strictly strengthen it.
+
+**Question still open:** the original width16 versus18, and feasibility of the
+intersection after those final added inequalities. No full source anchor is solved.
+
+**Next proposed target:** follow-up, compile the final projected row and rank
+bank into the necessary model, with exact translation controls and a capped
+solve/recovery gate as described in `MOMENT-RESUME.md`.
