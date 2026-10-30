@@ -1,0 +1,5 @@
+library(coda)
+a<-readRDS('outputs/confirmation-c2-floor-draws.rds');b<-readRDS('outputs/original-c2-confirmation-draws.rds');aa<-as.matrix(a);bb<-as.matrix(b);bb<-bb[,colnames(aa)]
+chains<-mcmc.list(mcmc(aa),mcmc(bb));rhat<-gelman.diag(chains,autoburnin=FALSE,multivariate=FALSE)$psrf
+A<-read.csv('outputs/confirmation-c2-floor.csv');B<-read.csv('outputs/original-c2-confirmation.csv');m<-merge(A,B,by='parameter',suffixes=c('_reconstruction','_original'));m$difference<-m$mean_reconstruction-m$mean_original;m$mcse_difference<-sqrt(m$mcse_reconstruction^2+m$mcse_original^2);m$two_mcse_low<-m$difference-2*m$mcse_difference;m$two_mcse_high<-m$difference+2*m$mcse_difference;m$bonferroni_halfwidth<-qnorm(1-.05/(2*nrow(m)))*m$mcse_difference;m$within_conditional_MC_band<-abs(m$difference)<=m$bonferroni_halfwidth;m$rhat<-rhat[m$parameter,1];m$rhat_upper<-rhat[m$parameter,2]
+write.csv(m,'outputs/posterior-comparison.csv',row.names=FALSE);print(m[,c('parameter','difference','mcse_difference','within_conditional_MC_band','rhat','rhat_upper')])
