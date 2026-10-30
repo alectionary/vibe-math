@@ -1,0 +1,53 @@
+{
+  "status": "BOUNDED_EXACT_SINGLETON_COLUMN_GATE_FINISHED",
+  "stop_reason": "EXACT_GLOBAL_SINGLETON_MEMBERSHIP",
+  "result": {
+    "receipt": "two-basis-results/singleton-cg-point22-o40-r01-membership-independent.json",
+    "receipt_sha256": "10ee61c1cccf61af07b0ff0a031090c3f4cf5666fc9128e312acc1713003484c",
+    "positive_basis_count": 624
+  },
+  "records": [
+    {
+      "iteration": 1,
+      "columns": 3068,
+      "column_bank": "two-basis-results/singleton-cg-point22-o40-r01-columns.json.gz",
+      "column_bank_sha256": "b28c3f33e929fd43da7d3f4f9e032cfdad625364eaa71d623e5397f1ef90bb00",
+      "stages": [
+        {
+          "source": "export_singleton_archive_cg.py",
+          "seconds": 0.6161891670199111,
+          "log": "two-basis-results/singleton-cg-point22-o40-r01-export.log",
+          "log_sha256": "1883392013ea16d58674060f22d9dec55cf46412dab2ee1e5a89c98967c940c0"
+        },
+        {
+          "source": "verify_singleton_archive_cg.py",
+          "seconds": 1.4504787079058588,
+          "log": "two-basis-results/singleton-cg-point22-o40-r01-independent.log",
+          "log_sha256": "c59c1130b2d359fcc09a58cbbaa1fbe5709d920395137e5d56c9e74c00a46d12"
+        },
+        {
+          "source": "run_singleton_archive_cg_soplex.py",
+          "seconds": 45.385255125002004,
+          "log": "two-basis-results/singleton-cg-point22-o40-r01-solve-supervisor.log",
+          "log_sha256": "937629375604ef1c4cbb3539499145dd6503839d13126fb020486b4375948e33"
+        },
+        {
+          "source": "verify_singleton_archive_cg.py",
+          "seconds": 1.3522604170721024,
+          "log": "two-basis-results/singleton-cg-point22-o40-r01-membership-independent.log",
+          "log_sha256": "9f67ab712ed1bb4228298eef0244dae802ce79d9d7fbf3fba854341a7846ff10"
+        }
+      ],
+      "solver_report": "two-basis-results/singleton-cg-point22-o40-r01-solve.json",
+      "solver_status": "problem is solved [optimal]"
+    }
+  ],
+  "frozen_sha256": "fd649acf725bd259e46863b460cbb626cf5aa564d47d79263b51ef0b10a8de59",
+  "elapsed_seconds": 49.47360929206479,
+  "point_sha256": "4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f",
+  "anchor_orbit": 40,
+  "initial_columns": 3067,
+  "final_columns": 3068,
+  "source_C16_answered": false,
+  "no_broad_anchor_cohort": true
+}
