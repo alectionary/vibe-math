@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_full_basis_boolean_cnf.py", line 91, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_full_basis_boolean_cnf.py", line 14, in main
+    ap=argparse.ArgumentParser();ap.add_argument('--directory',type=Path,required=True);a=ap.parse_args();D=a.directory;out=D/'bridge-controls.json';assert not out.exists();t0=time.monotonic();d=load(D/'frozen.json.gz');X,Z,A=physical();assert all(sha(ROOT/p)==h for p,h in d['source_hashes'].items());assert all(sha(ROOT/p)==h for p,h in d['input_hashes'].items())
+                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
