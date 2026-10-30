@@ -1,0 +1,91 @@
+[
+  {
+    "requirement": "Pinned skill and immutable historical work",
+    "status": "followed",
+    "evidence": "Master dbbdda83d1acce5ddd86e9ab7c27d79f2f300e12; isolated worktree; skill SHA256 1fd5e51cda8b58c8bcda00c3c43f521a7b1c791771067f1bb3b2125ea572bde3. The skill was unchanged during the numerical run. Computational phase only; subsequent user-authorized citation revision changes the skill and report, preserving all numerical outputs."
+  },
+  {
+    "requirement": "Preflight and regression suite",
+    "status": "followed",
+    "evidence": "run-preparation/preflight.json accepted;19 tests passed."
+  },
+  {
+    "requirement": "R lavaan fits and OpenMx second optimizer",
+    "status": "departed",
+    "evidence": "R mixed-model REML with lme4 and nlme; fixed-covariance power via two independent GLS implementations.",
+    "justification": "The source uses nested mixed models with variance components, not a CFA; lme4/nlme are appropriate established engines. Both packages locally installed;60 same-data cross-engine fits and54 dense/block checks validate translation. lavaan/OpenMx are installed; departure is applicability, not missing packages."
+  },
+  {
+    "requirement": "Source PDF local hash and page crops",
+    "status": "departed",
+    "evidence": "Library full-text6713 indexed lines obtained; independent source reviewer verifies PDF hash143pages and source-page pixels. Direct PDF access failed.",
+    "justification": "A supported transfer was attempted and failed; independent source review supplies visual verification and crops. The numerical analysis environment claims no local PDF hash or pixel inspection."
+  },
+  {
+    "requirement": "All headline arms",
+    "status": "followed",
+    "evidence": "All54 final exemplary and54 initial empirical conditions; original OD/BW formula arms; threshold and oversampling checks. Empirical budget reduced and explicit."
+  },
+  {
+    "requirement": "Runtime estimate and checkpoints",
+    "status": "followed",
+    "evidence": "54-cell pilot;notes/budget.md;100-draw checkpoints."
+  },
+  {
+    "requirement": "Independent generators and optimizers",
+    "status": "followed",
+    "evidence": "Component and dense Gaussian generators; dense/block GLS; lme4 bobyqa/nloptwrap and nlme REML."
+  },
+  {
+    "requirement": "Exact original software versions",
+    "status": "departed",
+    "evidence": "SAS and Optimal Design2.0 not installed; official SAS methods reviewed; source exact SAS version/seeds not recorded.",
+    "justification": "No licensed source runtime supplied. R translations are explicitly limited-scope; original executable replay is not claimed."
+  },
+  {
+    "requirement": "Availability searches before reconstruction",
+    "status": "followed",
+    "evidence": "notes/availability.csv records printed source and searches across official page, GitHub,OSF,GitLab,Zenodo."
+  },
+  {
+    "requirement": "Clone every author GitHub repository",
+    "status": "departed",
+    "evidence": "No verified author account found through domain/name search.",
+    "justification": "Cannot identify repositories to clone without inventing account ownership. Search limitation recorded; no blanket unavailability claim."
+  },
+  {
+    "requirement": "Numerical and scope columns",
+    "status": "followed",
+    "evidence": "comparison.csv and numerical-verdicts.csv; all reconstructed cells limited scope; five-decimal rounding independent of mask compatibility."
+  },
+  {
+    "requirement": "Gap checks and uncertainty",
+    "status": "followed",
+    "evidence": "Source reading, model/scaling, rounding, failure policy, covariance formula, seeds, optimizer and df alternatives recorded. Dropout SD is predictive variation, not a confidence interval."
+  },
+  {
+    "requirement": "Master links for artifacts",
+    "status": "followed",
+    "evidence": "User subsequently authorized a PR. Manuscript artifact links target master and will resolve after merge; PR description provides branch links for review."
+  },
+  {
+    "requirement": "Lean algebra formalization",
+    "status": "not applicable",
+    "evidence": "No theorem or formal proof claimed; numerical matrix identities independently checked."
+  },
+  {
+    "requirement": "PR and announcement",
+    "status": "followed",
+    "evidence": "User subsequently requested a PR with full narrative; branch publication and PR are authorized. No announcement or merge requested."
+  },
+  {
+    "requirement": "Scholarly citations and claim-to-source audit",
+    "status": "followed",
+    "evidence": "paper/references.tex contains 14 cited sources; notes/citation-audit.md records coverage and access limits. Citation checker and final PDF build validate references; numerical hashes unchanged."
+  },
+  {
+    "requirement": "Reader-facing explanation and reproducible instructions",
+    "status": "followed",
+    "evidence": "Main text states checks and findings with named evidence files. README separates code revision, prerequisites, targeted design checks, PDF build, and optional source extraction from historical provenance."
+  }
+]
