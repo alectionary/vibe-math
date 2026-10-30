@@ -1695,3 +1695,7 @@ Donald K. Wagner. SIAM J.Discrete Math.35(4),3030–3049,publishedonline21Decemb
 - Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
 
 - Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+### C16 matroid implementation reference, 30 October 2026
+
+SageMath, [abstract Matroid class, `max_weight_independent`](https://doc.sagemath.org/html/en/reference/matroids/sage/matroids/matroid.html#sage.matroids.matroid.Matroid.max_weight_independent), accessed 2026-10-30. Official API documentation states the descending-weight greedy independence algorithm for nonnegative weights. Used as an implementation reference for a new conditional rank-cut separator in `formalization/canonical-width/c16/weighted_matroid_separator.py`; Sage itself is not installed or executed for this experiment. For a fixed-rank basis, adding a constant to all weights preserves the maximizing bases, so signed weights can be shifted to the documented nonnegative case. A required independent element is handled by contraction, justified separately in the investigation. This is software documentation, not a newly acquired research paper; no paper-screen or canonical-question count is added. Query: `site:doc.sagemath.org matroid max_weight_independent greedy`. No broad literature or historical-priority claim is made.
