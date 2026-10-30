@@ -31,10 +31,13 @@ Add `packet_sha256`, `writer_manifest_sha256`, and:
 }
 ```
 
-Require the same explicit pass/fail findings structure for all seven checks:
+Require the same explicit pass/fail findings structure for all nine checks:
 `abstract_verdict_first`, `introduction_verdict_first`, `standalone_prose`,
 `headline_fidelity`, `claim_coverage`, `limitations_preserved`,
-`scientific_process_distinction`. Each needs positive PDF page numbers, specific
+`scientific_process_distinction`, `abstract_source_fidelity`, and
+`effect_magnitude_fidelity`. Use the [first-page contract](first-page-contract.md)
+to review original-source identity/finding and effect magnitude, direction,
+tolerance and uncertainty interpretation. Each needs positive PDF page numbers, specific
 locations and observations, including at least one finding even on pass. Check
 both the abstract and introduction independently. For a missing item, cite the
 page/section where it should appear. A summary "looks good" is inadequate.

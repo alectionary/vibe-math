@@ -6,7 +6,9 @@ description: "Replicate a dissertation or published result using a complete evid
 # Replication paper
 
 Work in this order. Load only the current stage's instructions and required
-artifacts. For a dissertation, cover the whole dissertation: inventory every
+artifacts. Apply the [first-page contract](references/first-page-contract.md)
+for source identification, original findings and effect-magnitude comparisons.
+For a dissertation, cover the whole dissertation: inventory every
 substantive original claim, including theory, empirical results, simulations,
 negative results and unavailable inputs. Do not substitute a convenient table
 for its research questions. Complete coverage means every claim is accounted

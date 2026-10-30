@@ -1,15 +1,20 @@
 """Structural stage contracts and phrase review cues; never a semantic certifier."""
 import argparse
+import importlib.util
 import hashlib
 import json
 import math
 import re
 from pathlib import Path
 
+_first_spec = importlib.util.spec_from_file_location('replication_first_page', Path(__file__).with_name('first_page.py'))
+_first = importlib.util.module_from_spec(_first_spec)
+_first_spec.loader.exec_module(_first)
+
 EDITORIAL_CHECKS = (
     'abstract_verdict_first', 'introduction_verdict_first', 'standalone_prose',
     'headline_fidelity', 'claim_coverage', 'limitations_preserved',
-    'scientific_process_distinction',
+    'scientific_process_distinction', 'abstract_source_fidelity', 'effect_magnitude_fidelity',
 )
 STATUSES = {'replicated', 'partly_replicated', 'not_replicated', 'not_established', 'blocked'}
 CUES = re.compile(
@@ -164,6 +169,7 @@ def packet_errors(packet, root):
         refs = audit.get('source_artifact_ids')
         if not strings(refs) or not set(refs).issubset(ids):
             errors.append('packet: inventory source artifacts required')
+    errors.extend(_first.packet_errors(packet))
     return errors
 
 

@@ -82,6 +82,7 @@ def check(record,root,legacy_audit=False,details=None):
   if not isinstance(items.get(key),str) or not items[key].strip():errors.append('manual review missing: '+key)
  if not legacy_audit:
   errors.extend(_stages.stage_errors(record,root))
+  errors.extend(_stages._first.check(record,root))
   link_errors=_links.audit(record,root)
   errors.extend(_links.format_issue(item) for item in link_errors)
   if details is not None:details['pdf_link_failures']=link_errors
