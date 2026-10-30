@@ -128,6 +128,10 @@ End each research block with these three lines:
 >
 > **Next proposed target:** the bounded next task, explicitly labeled as a new problem or a follow-up.
 
+## Scheduled quantum replication: Pesah (2021)
+
+[Main paper: pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf](formalization/pesah-biased-cubic/paper/pure_x_thresholds_of_deformed_cubic_codes__replication_of_pesah_2021.pdf) · [Reproduction README](formalization/pesah-biased-cubic/README.md). This bounded study concerns the pure-X cubic-code comparison in Pesah’s UCL **MRes dissertation**, not his later PhD thesis. The deformation advantage is preserved; exact threshold magnitudes depend on reconstruction and fitting choices.
+
 ## Reviews
 
 | Year | Dissertation review | Author |
