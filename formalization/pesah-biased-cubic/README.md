@@ -1,3 +1,5 @@
+Expanded partial milestone: [biased_noise_thresholds_of_cubic_and_rhombic_codes__replication_of_pesah_2021.pdf](paper/biased_noise_thresholds_of_cubic_and_rhombic_codes__replication_of_pesah_2021.pdf). The whole-dissertation objective remains open; see [coverage.json](coverage.json), the [expanded execution guide](expansion/README.md), and the preserved pure-X milestone below. General proofs, historical production equivalence and frontend rendering are not complete. New master navigation awaits merge.
+
 # Pure-X thresholds of deformed cubic codes
 
 Replication of Arthur Pesah, *Tailoring 3D topological codes and decoders to biased noise* (UCL **Master of Research dissertation**, 1 September 2021; supervisor Dan Browne). This is not the later PhD thesis. Initial screening prioritized doctoral sources; the selected accessible work genuinely bears the requested dissertation designation. The scope is Table 3.1 / Figure 3.5's pure-X cubic BP-OSD comparison, not the whole dissertation.
