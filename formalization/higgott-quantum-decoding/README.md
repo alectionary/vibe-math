@@ -8,7 +8,7 @@ The bundled [Higgott_Chapter_7_Figure_7_14_Source_Evidence_Appendix.pdf](source-
 
 ## Snapshot and scope
 
-The original numerical baseline is immutable at `8cbde40ad9db1b314e19e5878f2a8148ce2d958d`; its result files remain unchanged. Source evidence was added at `6fb8e490467cca4d208c191c8616626455d46031`. These are historical provenance, not the revision for new follow-up code. For the revised study, use the artifact/reproduction revision in [delivery_record.json](revision2/delivery_record.json), or checkout the exact current-commit links in [draft PR57](https://github.com/alectionary/vibe-math/pull/57). That revision contains the code, saved outputs, manuscript and required local inputs; the later delivery-record commit documents verification without changing those artifacts. Starting master `ca1d06209b03cad666db0a2ffb9678abc89a6b71` identifies the original workflow version. Research and skill changes have separate draft PRs; no merge is authorized.
+The original numerical baseline is immutable at `8cbde40ad9db1b314e19e5878f2a8148ce2d958d`; its result files remain unchanged. Source evidence was added at `6fb8e490467cca4d208c191c8616626455d46031`. These are historical provenance, not the revision for new follow-up code. For the revised study, use the artifact/reproduction revision in [delivery_record.json](revision3/delivery_record.json), or checkout the exact current-commit links in [draft PR57](https://github.com/alectionary/vibe-math/pull/57). That revision contains the code, saved outputs, manuscript and required local inputs; the later delivery-record commit documents verification without changing those artifacts. Starting master `ca1d06209b03cad666db0a2ffb9678abc89a6b71` identifies the original workflow version. Research and skill changes have separate draft PRs; no merge is authorized.
 
 Manuscript links retain intended master paths and resolve there after merge. PR links pin current review artifacts. The approved Kupzyk preamble supplies the letter page size, margins, paragraph style and scalable body fonts.
 
@@ -36,12 +36,13 @@ This does not rerun simulations or acquire missing source PDFs.
 .venv/bin/python summarize.py
 .venv/bin/python revision2/summarize_followup.py
 .venv/bin/python revision2/build_ledgers.py
+python revision3/comparisons.py
 cd paper
 pdflatex -interaction=nonstopmode -halt-on-error sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex
 pdflatex -interaction=nonstopmode -halt-on-error sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex
 ```
 
-Expected outputs: `results/figure_comparison.csv`, `results/aggregated_rates.json`, `results/summary.json`, the comparison plot PDF/PNG, and the descriptively named twelve-page paper PDF (page count may vary with TeX fonts). The bibliography is editable in `paper/references.tex`; BibTeX is not required. Build used pdfTeX 1.40.26, TeX Live 2025/dev, with geometry, amsmath, booktabs, longtable, graphicx, array, xurl, natbib and hyperref.
+Expected outputs: `results/figure_comparison.csv`, `results/aggregated_rates.json`, `results/summary.json`, the comparison plot PDF/PNG, and the descriptively named thirteen-page paper PDF (page count may vary with TeX fonts). The bibliography is editable in `paper/references.tex`; BibTeX is not required. Build used pdfTeX 1.40.26, TeX Live 2025/dev, with geometry, amsmath, booktabs, longtable, graphicx, array, xurl, natbib and hyperref.
 
 ## Rerun simulations
 
@@ -136,11 +137,24 @@ The bounded archival result is [public_archival_audit.md](revision2/public_archi
 
 ## Verify published delivery
 
-The independent rendered review is [manuscript_review.json](revision2/manuscript_review.json). The delivery record pins the artifact revision and records downloaded-byte checks for the main PDF, editable source, bibliography, README and every source-evidence file. `revision2/verify_delivery.py` reproduces those downloads (network and curl required), writing temporary copies under `/tmp/higgott-verified-delivery` and refreshing only delivery metadata:
+The independent rendered review is [manuscript_review.json](revision3/manuscript_review.json). The delivery record pins the artifact revision and records downloaded-byte checks for the main PDF, editable source, bibliography, README and every source-evidence file. `revision2/verify_delivery.py` reproduces those downloads (network and curl required), writing temporary copies under `/tmp/higgott-verified-delivery` and refreshing only delivery metadata:
 
 ```sh
-python revision2/verify_delivery.py ARTIFACT_COMMIT_FROM_DELIVERY_RECORD
-python /path/to/replication-paper/scripts/delivery_check.py revision2/delivery_record.json --root .
+python revision2/verify_delivery.py ARTIFACT_COMMIT_FROM_DELIVERY_RECORD revision3
+python /path/to/replication-paper/scripts/delivery_check.py revision3/delivery_record.json --root .
 ```
 
 Use the checker from the separate skill draft PR58. Its test success is not manuscript acceptance: the independent review separately records layout, findings/tolerances, citations, ledger rows, links and independence limits against the PDF and all LaTeX/figure build inputs. Artifact review URLs use immutable commits; paper navigation links continue to target master after merge.
+
+## Headline and uncertainty reporting audit
+
+The scientific headline has two components: exact resource savings and failure-rate performance. Embedded distance and second-size simulations are supporting checks. [claim_inventory.json](revision3/claim_inventory.json) records roles and signed contrasts. The p=.01 source point ordering reverses in fresh simulation; source ranking inference remains withheld because original counts are unavailable.
+
+To recompute reporting from preserved counts (no simulation):
+
+```sh
+python revision3/comparisons.py
+python -m unittest discover -s revision3 -v
+```
+
+Outputs: `revision3/comparison_decisions.json`, `revision3/calculation_check.json` when stdout is saved, and `paper/confirmation_decisions.tex` / `paper/baseline_decisions.tex`. Run this before the two PDF build passes. Families are 32 baseline source comparisons, 10 confirmation source comparisons and five reconstructed contrasts. The detailed tables separate display-rounding verdict, reconstruction scope and conditional band status. The old `.02` classification in saved baseline outputs/table is preserved as historical exploratory sensitivity, not the criterion used by current tables. Source uncertainty remains unknown; normal/delta approximations are restricted to high-count first-size comparisons, and rare-event supporting inference is withheld.
