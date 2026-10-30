@@ -1,0 +1,79 @@
+{
+  "status": "BOUNDED_EXACT_JOINT_SEPARATION_COHORT_FINISHED",
+  "frozen_sha256": "fef1cc302776a16871a3f77cff803f5c51e5388dc16fe87c59932d6a086ecab7",
+  "jobs": [
+    {
+      "name": "stars",
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "conditional_owner_star_v2.py",
+        "--point",
+        "coupling-results/two-basis-integer-witness22-rational.json.gz",
+        "--X-allocation",
+        "two-basis-results/joint-general-refine1-sector-point22-X.json.gz",
+        "--X-receipt",
+        "two-basis-results/joint-general-refine1-sector-point22-X-independent.json",
+        "--Z-allocation",
+        "two-basis-results/joint-general-refine1-sector-point22-Z.json.gz",
+        "--Z-receipt",
+        "two-basis-results/joint-general-refine1-sector-point22-Z-independent.json",
+        "--seconds",
+        "300",
+        "--output",
+        "two-basis-results/joint-general-refine1-separation-point22-stars.json.gz"
+      ],
+      "returncode": 0,
+      "external_cap_seconds": 330,
+      "elapsed_seconds": 4.277710999944247,
+      "log": "two-basis-results/joint-general-refine1-separation-point22-stars.log",
+      "log_sha256": "08d615bec1984b9c68819f71beb5fdb21f36273a5e004c10382cb2c150c22816",
+      "nice": 19
+    },
+    {
+      "name": "star-replay",
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "verify_conditional_owner_star_v2.py",
+        "--bank",
+        "two-basis-results/joint-general-refine1-separation-point22-stars.json.gz",
+        "--output",
+        "two-basis-results/joint-general-refine1-separation-point22-stars-independent.json"
+      ],
+      "returncode": 0,
+      "external_cap_seconds": 180,
+      "elapsed_seconds": 12.863753749988973,
+      "log": "two-basis-results/joint-general-refine1-separation-point22-star-replay.log",
+      "log_sha256": "98d8ba3c353e33e66d1f372ce7b2e1392519c8d2f433572710e54ee48abee8f3",
+      "nice": 19
+    },
+    {
+      "name": "ranks",
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "two_basis_physical_closed_batch.py",
+        "--config",
+        "two-basis-results/joint-general-refine1-separation-point22-config.json",
+        "--output-prefix",
+        "two-basis-results/joint-general-refine1-separation-point22-ranks"
+      ],
+      "returncode": 0,
+      "external_cap_seconds": 1530,
+      "elapsed_seconds": 135.77426404098514,
+      "log": "two-basis-results/joint-general-refine1-separation-point22-ranks.log",
+      "log_sha256": "87c82ff66a5e06305fc17be60b6439b081f9f6d65e46a180934f2858e2c5ac59",
+      "nice": 19
+    }
+  ],
+  "stop_reason": null,
+  "elapsed_seconds": 152.94954566599336,
+  "nice": 19,
+  "star_bank": "two-basis-results/joint-general-refine1-separation-point22-stars.json.gz",
+  "star_receipt": "two-basis-results/joint-general-refine1-separation-point22-stars-independent.json",
+  "rank_batch": "two-basis-results/joint-general-refine1-separation-point22-ranks.json",
+  "source_C16_answered": false,
+  "fixed_allocation_only": true,
+  "no_automatic_repair": true
+}
