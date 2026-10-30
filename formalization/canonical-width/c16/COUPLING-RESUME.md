@@ -26,7 +26,7 @@ This is a fractional necessary-model point, not a full frame.
 
 The complete effective discovery command and all source bindings are in
 `coupling-results/integer-witness15-frozen.json`; the human-readable lineage
-is `integer-witness15-derived-command.json`. Last command-line overrides
+is `coupling-results/integer-witness15-derived-command.json`. Last command-line overrides
 control the effective margins. Positive margins are sufficient-only aids
 to rational recovery: their infeasibility cannot prove the necessary model
 infeasible. Use a new trial name and new files for any successor.
@@ -109,8 +109,8 @@ The two sector optimizations separate within a fixed pattern; the shared
 pattern weights remain coupled in the master. This retains rank on both
 sides while still relaxing unanchored mutual pairing. The derivation and
 required source/mapping controls are in `two_sided_full_basis_next_gate.md`;
-complete those controls before a timed pilot. No multi-anchor full-basis
-oracle has yet been implemented.
+complete those controls before a timed pilot. No two-sided2X+2Z full-basis
+oracle has yet been implemented; the existing four-X oracle is one-sided.
 
 Set a finite gate budget before running it. Accept either an exact projected
 cut, exact membership in the stated relaxation, or an explicit inconclusive

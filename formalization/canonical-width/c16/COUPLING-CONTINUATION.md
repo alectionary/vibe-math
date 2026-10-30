@@ -729,7 +729,8 @@ The next structural proposal upgrades the existing two-X/two-Z count model
 to full physical bases in both sectors. For a fixed four-bit anchor pattern,
 all7,211 features become constants or linear functions of the two sector
 selection vectors. Their signed support therefore separates into two exact
-matroid basis optimizations; maximize their sum over the16 feasible patterns.
+matroid basis optimizations; maximize their sum over all16 patterns,
+discarding infeasible patterns.
 Each sector jointly contracts forced zero-pool anchors, fixes forced owner
 choices, deletes absent anchors and rejects incompatible or rank-deficient
 domains. Unanchored mutual X/Z pairing is still relaxed. This is a written
@@ -746,3 +747,44 @@ reviewed exchange-class AST. The archive
 `coupling-results/final-clean-checkpoint043a5bd/` records a clean checkout
 before and after. The later affine diagnostic is separately certified and
 is not silently included in that checkpoint's coverage.
+
+The final affine consumers also pass from clean commit
+`c1d2396154b77b9531cc1cb9a8f6abe703f441c1` in25.24 seconds, with all772 seed
+columns physically checked and prior inputs unchanged. The archive is
+`coupling-results/final-clean-checkpointc1d239/`. The two-sided next-gate
+derivation has a separate peer review in
+`coupling-results/two-sided-full-basis-next-gate-peer-review.json`.
+The consolidated evidence index is `coupling-results/verification.json`.
+
+## Final handoff requirements and evidence
+
+The source question is still open. The table separates completion of this
+bounded investigation's deliverables from a conclusive width answer.
+
+| Requirement | Status | Evidence and limitation |
+|---|---|---|
+| Decide the source width by a frame or complete obstruction | **Partial** | No128-pair frame or complete obstruction; width16/18, cover405 and physical88/128 remain unchanged. |
+| Establish useful exact mathematical progress | **Met** | Signed full-basis pricing,54 accepted partner rows,234 added integer forms,28 conditional rank-law certificates at witness12, and exact auxiliary affine dimension771; scoped receipts under `coupling-results/`. |
+| Check the combined necessary model | **Met** | `coupling-results/integer-witness15-checks-summary.json`; seven exact stages and portable byte-identical recovery. This proves relaxation feasibility only. |
+| Independent source/physical/moment acceptance | **Met** | 36-stage `coupling-results/final-clean-checkpoint0957/accepted-summary.json`;14-stage `coupling-results/final-clean-checkpoint043a5bd/summary.json`;2-stage `coupling-results/final-clean-checkpointc1d239/summary.json`. Stages overlap in their declared point checks; they are not disjoint source cases. |
+| Retain failed or inconclusive work | **Met** | Rejected witness11, failed PSD recoveries, bounded LP/SAT/exchange endpoints, union17 and phase-I inventories, and the documented presolve discrepancy remain preserved. |
+| Literature method check and question screening | **Access-limited** | F173 abstract/metadata inspected; complete text requested in issue63. Question count null; no algorithm/complexity transfer. Existing full-text screens are unchanged. |
+| Reconcile source inventory and planning | **Met** | Existing canonical target updated;424 entries,160 eligible,205 paper records,165 full-text screens,6 completed Lean targets. Bookkeeping validators pass; no new source question or Lean completion. |
+| Provide a concrete continuation route | **Met** | `COUPLING-RESUME.md`, exact775 span seed, and independently reviewed `two_sided_full_basis_next_gate.md`. The proposed multi-anchor oracle and controls remain future work. |
+| Preserve and publish the authorized branch/issue handoff | **Partial until final readback** | Immutable scientific checkpoints043a5bd/c1d2396 and branch preservation; final PR/issue and expected-SHA claim release are recorded at closeout. Required master review is not bypassed. |
+| New formal manuscript or Lean proof | **Not applicable to this block** | No new manuscript was requested; no source theorem or new Lean completion is claimed. Written auxiliary proofs and exact finite consumers are distinguished from kernel-checked formalization. |
+
+**Question answered:** the combined recorded finite relaxation is nonempty;
+the stated individual rank/count barriers and exact775 auxiliary affine
+dimension are established. No new complete canonical source question is
+answered.
+
+**Question still open:** whether the720-class physical pools contain a
+compatible128-pair canonical frame, equivalently the source width16 versus18
+under the previously verified source bridge.
+
+**Next proposed target (follow-up):** implement and independently validate
+the16-pattern two-sided full-basis support oracle, then run one bounded
+separation/membership test at the latest exact point. Its omission of
+unanchored mutual pairing must remain explicit. No finishing-time estimate
+for the original question is justified.
