@@ -1,16 +1,16 @@
 # Small Bolza quantum memories: a bounded replication
 
-The sixfold physical-qubit saving replicates exactly. Performance curves are close but are not identical: at physical error probability 0.001, our four-logical-qubit block failure rates are 0.13822 for 16-qubit Bolza and 0.13030 for four planar patches using 96 qubits. The corresponding figure-derived values are 0.13390 and 0.12977. This study covers Higgott's Figure 7.14a and small-code parameters, with supporting second-size simulations. It does not replicate the whole dissertation.
+The sixfold physical-qubit saving replicates exactly. Fresh fixed-budget confirmation gives Bolza .13772 versus planar .12925 at p=.001, a difference .00847 with simultaneous half-width .00135 over five selected comparisons. This supports a resource/performance tradeoff, not equal error rates. In the preserved original baseline: at physical error probability 0.001, our four-logical-qubit block failure rates are 0.13822 for 16-qubit Bolza and 0.13030 for four planar patches using 96 qubits. The corresponding figure-derived values are 0.13390 and 0.12977. This study covers Higgott's Figure 7.14a and small-code parameters, with supporting second-size simulations. It does not replicate the whole dissertation.
 
 Read [sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.pdf](paper/sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.pdf), or edit [sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex](paper/sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex).
 
-The separate **Higgott_Chapter_7_Figure_7_14_Source_Evidence_Appendix.pdf** contains five pages and six independently checked source crops. It is delivered separately through Library, identity `libfile_00168a0941b881918bd1d5086249da3a`; its pixels are not included in this local bundle. The original thesis PDF and vector-extraction program are also not bundled. Rebuilding our paper or rerunning simulations does not require them; independently repeating source extraction does.
+The bundled [Higgott_Chapter_7_Figure_7_14_Source_Evidence_Appendix.pdf](source-evidence/Higgott_Chapter_7_Figure_7_14_Source_Evidence_Appendix.pdf) contains five pages and six source crops. [source-evidence/README.md](source-evidence/README.md) links the crops, hashes, CSV and extraction program. Full source PDF bytes are external prerequisites for re-extraction, not for rebuilding the report.
 
 ## Snapshot and scope
 
-The local archive contains all simulation prerequisites, including selected upstream circuit data and the comparator generator's source and licenses. `SNAPSHOT.json` identifies a local Git revision containing the runnable code and inputs. It is the reproduction revision. Starting master `ca1d06209b03cad666db0a2ffb9678abc89a6b71` is historical workflow provenance, **not** a runnable revision of this new study. The replication skill SHA-256 is `28332faba7f168d0b2d42e7815dc20021fbe8bd3968fd763e57d94a4986544ab`; it was not modified.
+The original numerical baseline is immutable at `8cbde40ad9db1b314e19e5878f2a8148ce2d958d`; its result files remain unchanged. Source evidence was added at `6fb8e490467cca4d208c191c8616626455d46031`. These are historical provenance, not the revision for new follow-up code. For the revised study, use the artifact/reproduction revision in [delivery_record.json](revision2/delivery_record.json), or checkout the exact current-commit links in [draft PR57](https://github.com/alectionary/vibe-math/pull/57). That revision contains the code, saved outputs, manuscript and required local inputs; the later delivery-record commit documents verification without changing those artifacts. Starting master `ca1d06209b03cad666db0a2ffb9678abc89a6b71` identifies the original workflow version. Research and skill changes have separate draft PRs; no merge is authorized.
 
-No new study files are on GitHub master yet. Manuscript links intentionally point to intended master paths under repository conventions; they are navigation placeholders until publication, not immutable reproduction links. No PR, publication, or merge occurred.
+Manuscript links retain intended master paths and resolve there after merge. PR links pin current review artifacts. The approved Kupzyk preamble supplies the letter page size, margins, paragraph style and scalable body fonts.
 
 ## Prerequisites and setup
 
@@ -34,12 +34,14 @@ This does not rerun simulations or acquire missing source PDFs.
 
 ```sh
 .venv/bin/python summarize.py
+.venv/bin/python revision2/summarize_followup.py
+.venv/bin/python revision2/build_ledgers.py
 cd paper
 pdflatex -interaction=nonstopmode -halt-on-error sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex
 pdflatex -interaction=nonstopmode -halt-on-error sixfold_qubit_savings__a_replication_of_higgott_bolza_codes.tex
 ```
 
-Expected outputs: `results/figure_comparison.csv`, `results/aggregated_rates.json`, `results/summary.json`, the comparison plot PDF/PNG, and the descriptively named eight-page paper PDF (page count may vary with TeX fonts). The bibliography is editable within the `.tex` source; BibTeX is not required. Build used pdfTeX 1.40.26, TeX Live 2025/dev, with geometry, amsmath, booktabs, longtable, graphicx, array, xurl, natbib, hyperref and fontenc.
+Expected outputs: `results/figure_comparison.csv`, `results/aggregated_rates.json`, `results/summary.json`, the comparison plot PDF/PNG, and the descriptively named twelve-page paper PDF (page count may vary with TeX fonts). The bibliography is editable in `paper/references.tex`; BibTeX is not required. Build used pdfTeX 1.40.26, TeX Live 2025/dev, with geometry, amsmath, booktabs, longtable, graphicx, array, xurl, natbib and hyperref.
 
 ## Rerun simulations
 
@@ -102,6 +104,32 @@ python3 .agents/skills/replication-paper/scripts/check_citations.py formalizatio
 
 ## Source extraction and uncertainty
 
-[figure_7_14a_vector_values.csv](source/figure_7_14a_vector_values.csv) contains independently supplied figure coordinates converted to probabilities, not original shot arrays. [figure_provenance.json](source/figure_provenance.json) records source hashes and extraction bounds. Exact re-extraction requires the separately held thesis PDF, arXiv v1 figure PDF, and source review extraction program. Our report rebuild uses the saved CSV and does not pretend to recreate those inputs.
+[figure_7_14a_vector_values.csv](source/figure_7_14a_vector_values.csv) contains independently supplied figure coordinates converted to probabilities, not original shot arrays. [figure_provenance.json](source/figure_provenance.json) records source hashes and extraction bounds. Exact re-extraction requires external thesis and arXiv v1 figure PDF bytes; the source review extraction program is bundled under source-evidence. Our report rebuild uses the saved CSV and does not pretend to recreate those inputs.
 
 Our Monte Carlo uncertainty, vector extraction bounds, and unknown original-source Monte Carlo uncertainty remain distinct. The .02 margin is an exploratory practical comparison, not a hypothesis-test standard error or a source-specified tolerance. The exact sixfold resource ratio is independent of this margin. The second-size run is supporting simulation evidence; Figure 7.14b was not numerically digitized here.
+
+## Follow-up checks
+
+The fixed protocol is [protocol.md](revision2/protocol.md); original outputs are never pooled with confirmation. Commands run from this study directory after primary setup:
+
+```sh
+.venv/bin/python revision2/confirm_and_decode.py
+.venv/bin/python revision2/independent_frame.py
+.venv/bin/python revision2/basis_mapping.py
+.venv/bin/python revision2/summarize_followup.py
+.venv/bin/python -m unittest discover -s revision2 -p 'test_*.py' -v
+```
+
+Outputs are respectively `revision2/confirmation.json` plus `decoder_diagnostics.json`, `independent_frame_results.json`, `basis_mapping.json`, and `followup_summary.json` plus `paper/confirmation_table.tex`. Confirmation uses twenty fixed one-million-shot arms and seeds 710000 onward. Scripts overwrite only their own follow-up outputs; they do not resume partial runs. The independent pilot uses ten fixed 10,000-shot batches per basis with seeds 811–820, plus separate Stim comparison seed820. Its source parser shares Stim syntax handling, while its sampler uses NumPy and no Stim detector model. Geometry, detector annotations and decoding remain shared.
+
+The source-pinned diagnostic needs Python3.10 and the runtime lock. It executes the original comparator graph converter including dummy edges on four saved p=.001 circuits, using 100,000 shots each and seeds93000–93003:
+
+```sh
+python3.10 -m venv .source-pinned
+.source-pinned/bin/python -m pip install -r revision2/source-pinned-requirements-lock.txt
+.source-pinned/bin/python revision2/source_pinned_check.py
+```
+
+Output: `revision2/source_pinned_results.json`. A separate 10,000-shot pilot is retained as `source_pinned_pilot.json`, not pooled. Repository pins are not Higgott's recovered production environment. StimCirq/cirq-web/pytest were unnecessary for this serialized-circuit diagnostic and were not installed; NetworkX2.8.8 supplies an otherwise unpinned dependency. Installation and execution logs are retained.
+
+The bounded archival result is [public_archival_audit.md](revision2/public_archival_audit.md). Exact illustrated logical-path correspondence remains unavailable; the explicit canonical mapping in `basis_mapping.json` is not substituted for it. No author contact occurred. Additional full simulator work is not needed for this bounded pilot; independent geometry and ideal-state synthesis would be a larger separate task.
