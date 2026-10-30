@@ -1,0 +1,229 @@
+{
+  "status": "UNRUN_POST_B6_SUPPLEMENTAL_REPLAY_PLAN",
+  "requires_new_explicit_checkpoint": true,
+  "driver": "replay_final_supplement_checkpoint.py",
+  "worker": "final_owner_replay_worker_v2.py",
+  "inventory_files": [
+    "two-basis-results/singleton-o15-phase-one-complete-inventory.json",
+    "two-basis-results/singleton-phase-one-matched-complete-inventory.json",
+    "two-basis-results/singleton-geometry-point22-o32-complete-inventory.json",
+    "two-basis-results/owner-k22-eight-probe-complete-inventory.json",
+    "two-basis-results/joint-owner-k22-eight-point22-complete-inventory-v2.json",
+    "two-basis-results/shared-basis-phase-one-point22-seed-complete-inventory.json"
+  ],
+  "stages": [
+    {
+      "name": "phase-one-baseline",
+      "consumer": "verify_singleton_phase_one_v2.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/singleton-o15-batch64-phase-one-point22.json",
+        "--primal",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-o15-batch64-phase-one-point22-solve.primal",
+        "--dual",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-o15-batch64-phase-one-point22-solve.dual",
+        "--solver-frozen",
+        "two-basis-results/singleton-o15-batch64-phase-one-point22-solve.frozen.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_SINGLETON_PHASE_ONE_OPTIMUM_AND_FULL_GREEDY_PRICING"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": true
+    },
+    {
+      "name": "phase-one-matched",
+      "consumer": "verify_singleton_phase_one_v2.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/singleton-phase-one-matched-point22.json",
+        "--primal",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-phase-one-matched-point22-solve.primal",
+        "--dual",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-phase-one-matched-point22-solve.dual",
+        "--solver-frozen",
+        "two-basis-results/singleton-phase-one-matched-point22-solve.frozen.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_SINGLETON_PHASE_ONE_OPTIMUM_AND_FULL_GREEDY_PRICING"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": true
+    },
+    {
+      "name": "phase-one-matched-batch",
+      "consumer": "verify_singleton_phase_one_exchange_batch.py",
+      "arguments": [
+        "--bank",
+        "two-basis-results/singleton-phase-one-matched-batch-point22.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_PHASE_ONE_IMPROVING_EXCHANGE_BATCH"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "geometry-seed",
+      "consumer": "verify_singleton_geometry_seed.py",
+      "arguments": [
+        "--seed",
+        "two-basis-results/singleton-geometry-point22-o32.json.gz"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_SINGLETON_GEOMETRY_SEED"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "geometry-archive-text",
+      "consumer": "verify_singleton_geometry_archive.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/singleton-geometry-archive-point22-o32.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_SINGLETON_GEOMETRY_ARCHIVE_LP_TEXT_AND_PHYSICAL_COLUMNS"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "geometry-restricted-farkas",
+      "consumer": "verify_singleton_geometry_archive.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/singleton-geometry-archive-point22-o32.json",
+        "--farkas",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-geometry-archive-point22-o32-solve.dual",
+        "--solver-frozen",
+        "two-basis-results/singleton-geometry-archive-point22-o32-solve.frozen.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_RESTRICTED_SINGLETON_ARCHIVE_INFEASIBILITY"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": true
+    },
+    {
+      "name": "geometry-full-pricing",
+      "consumer": "verify_singleton_geometry_pricing.py",
+      "arguments": [
+        "--pricing",
+        "two-basis-results/singleton-geometry-archive-point22-o32-pricing.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_SINGLETON_PHYSICAL_BASIS_PRICING"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "global-eight-preparation",
+      "consumer": "verify_global_eight_probe_law.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/global-eight-probe-point22.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_GLOBAL_EIGHT_PROBE_LP"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "global-eight-local-law",
+      "consumer": "verify_global_eight_probe_law.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/global-eight-probe-point22.json",
+        "--primal",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/global-eight-probe-point22-solve.primal",
+        "--solver-frozen",
+        "two-basis-results/global-eight-probe-point22-solve.frozen.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_GLOBAL_EIGHT_PROBE_LOCAL_LAW"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": true
+    },
+    {
+      "name": "conditional-union",
+      "consumer": "verify_owner_k22_conditional_union.py",
+      "arguments": [
+        "--bank",
+        "two-basis-results/owner-k22-conditional-union-point22.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_CONDITIONAL_BOOLEAN_UNION_AUXILIARY_ROW"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "coupled-eight-preparation",
+      "consumer": "verify_owner_k22_capacity_extension.py",
+      "arguments": [
+        "--manifest",
+        "two-basis-results/joint-owner-k22-eight-point22.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_OWNER_K22_CAPACITY_MODEL"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "coupled-capacity-parent",
+      "consumer": "verify_owner_capacity_joint_literal.py",
+      "arguments": [
+        "--certificate",
+        "two-basis-results/joint-owner-k22-eight-point22-parent-projection.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_LITERAL_OWNER_FLOW_CAPACITY_JOINT_ALLOCATION"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "coupled-eight-local-law",
+      "consumer": "verify_owner_k22_capacity_endpoint.py",
+      "arguments": [
+        "--certificate",
+        "two-basis-results/joint-owner-k22-eight-point22-exact.json",
+        "--parent-receipt",
+        "two-basis-results/joint-owner-k22-eight-point22-parent-independent.json"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_LITERAL_OWNER_K22_CAPACITY_ALLOCATION"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    },
+    {
+      "name": "shared-basis-preparation-seed",
+      "consumer": "verify_shared_basis_phase_one_seed.py",
+      "arguments": [
+        "--certificate",
+        "two-basis-results/shared-basis-phase-one-point22-seed.json.gz"
+      ],
+      "accepted_statuses": [
+        "PASS_EXACT_SHARED_BASIS_PHASE_ONE_SEED"
+      ],
+      "seconds": 180,
+      "requires_raw_path_adapter": false
+    }
+  ],
+  "total_seconds": 900,
+  "default_stage_seconds": 180,
+  "priority": 19,
+  "threads": 1,
+  "raw_CLI_paths": "Original recorded absolute paths are passed unchanged so frozen solver command comparisons remain literal; only original read_named_rational path argument is relocated.",
+  "source_JSON_and_solver_commands_rewritten": false,
+  "inventory_note": "Use final coupled v2 closure; retain v1 inventory as preserved obsolete log-binding evidence without re-enforcing its superseded log hash.",
+  "scope": "Exact finite endpoint, literal geometry, objective, source-bound local-law, and preparation-only shared-basis seed replays. No solver, rank cohort, shared master, or global source claim.",
+  "static_import_closure": "two-basis-results/final-supplement-checkpoint-import-closure.json"
+}

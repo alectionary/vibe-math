@@ -1,0 +1,18 @@
+{
+  "status": "PRESERVED_ENDPOINT_REPLAY_FORMAT_FAILURE",
+  "manifest": "two-basis-results/singleton-o15-batch64-phase-one-point22.json",
+  "manifest_sha256": "22f8958c2058c02ccd17fc07b9429447f1d3347e20bbc7c51b47f9542ae4dfab",
+  "consumer": "verify_singleton_phase_one.py",
+  "consumer_sha256": "f4d092c96558846850300c0c6479b5eca6f9b32233037a13d928c4b5cf3560a8",
+  "reader": "read_soplex_exact_output.py",
+  "reader_sha256": "b32214d2646d5211fb5831cdf0110e9ff83a1ae07145d700ecb54782e8ec26aa",
+  "raw_dual": "two-basis-results/singleton-o15-batch64-phase-one-point22-solve.dual",
+  "raw_dual_sha256": "cfeab3b664b9158563c1a00daee638e80a56299f850dcd946658600927da44e4",
+  "exception": "ValueError: unexpected rational output line",
+  "actual_dual_terminator": "All other dual values are zero.",
+  "trailing_section": ["Reduced costs (name, value):", "All other reduced costs are zero."],
+  "diagnosis": "Frozen sparse reader accepts primal/generic zero terminators, but not the distinct optimal dual terminator. No endpoint mathematics was accepted or rejected.",
+  "solver_calls": 1,
+  "mathematical_result": "UNACCEPTED_PENDING_STRICT_FORMAT_ADAPTER",
+  "source_C16_answered": false
+}
