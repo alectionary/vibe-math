@@ -193,3 +193,135 @@ accepted Z count allocation with24 rank rows. The first successor obeys those
 24 rows but violates23 further ones. A bounded five-successor cut loop is active.
 All rank acceptance statements here concern the explicitly listed finite rows;
 complete matroid membership remains unproved.
+
+### Exact membership algorithm and latest-point transfer, 17:30Z
+
+The original width16/18 question remains open. Cover405, physical88/128 and zero
+complete source-anchor exclusions are unchanged. The latest independently
+accepted global relaxation point is now22, SHA256
+`4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f`.
+It retains54 partner and308 rank rows and now990 integer-form rows. All seven
+exact stages pass. A complete parameter classification of signed-unit affine
+integer forms of arity3–12 gives275 classes up to permutation/reflection and
+trivial tails. Bounded event-placement scouts add47,17,4 rows successively;
+parameter completeness does not make the placement search exhaustive.
+
+The five-attempt direct-allocation loop stops at its stated cap. One numerical
+successor fails exact box recovery and is retained as rejected. A separate
+target-independent geometry proof covers every contracted rank-at-most-three
+inequality using parallel classes, line closures and rank-three closures.
+The original Z target admits an exact allocation satisfying all those rows.
+The same reduction transfers to point22 with one exact zero-higher-moment law:
+X has4,042 variables,10 global equations and2,209 positive-pattern low-rank rows;
+Z has3,901 variables,10 equations and1,997 such rows. Both original rational
+and solver-free dyadic50 allocations pass independent literal replay. The
+point22 source/data closure contains99 actual files, not just referenced hashes.
+
+Frank–Miklós Section3 supplies an exact rational push–relabel membership method.
+Our implementation maintains a nonnegative mixture of physical bases on one
+common integer denominator. Independent controls cover2,374 tiny cases and
+461,318 exhaustive subset-rank comparisons. Physical lifting contracts forced
+anchors and combines owner-bin choices through common interval refinement,
+avoiding a Cartesian-product expansion. Literal physical replay checks every
+basis, rational weight and marginal.
+
+For the old point15 Z allocation, four patterns(0,2,4,8) have exact basis-mixture
+certificates; seven hit the original time cap. A subsequent independent screen
+finds positive higher-rank violations in every capped target. It checks22 saved
+level upper sets and seven span closures in2.36seconds. Strongest closure ranks
+are38,8,8,4,9,5,31 for patterns1,3,5,6,9,10,12. These are obstructions to the
+supplied allocations, not to the shared law, the global point, or a source case.
+
+The reason for the delay is mathematical: the paper's stopping rule certifies
+a maximum-defect set and requires every deficit to lie above an empty level.
+For membership alone, any deficit above an empty level suffices. The maintained
+circuit invariant makes each active basis intersect that upper set in a spanning
+basis; its mixture mass equals the rank, while the target mass is larger. Our
+versioned successor still recomputes the literal rank and positive exact gap.
+All2,374 independent tiny controls pass, including37 cases where the early cut
+has a smaller positive gap than the maximum defect. A separate cache update
+reuses echelon physical rows and changes their basis-coordinate masks in one
+pass over the rank. Its algebra and all original tiny endpoints replay exactly.
+The original algorithm and capped endpoints remain immutable.
+
+At the current point22, both empty-pattern pilots already have independently
+verified full physical mixtures:718 X bases and743 Z bases. The other20 positive
+sector-pattern pairs are the next bounded gate after the optimized pilot passes.
+No full two-sector extension or compatibility between unanchored pairs is
+claimed. This algorithmic route replaces guessed finite rank banks with exact
+membership/separation endpoints when a run terminates.
+
+Portable replay is also complete. Eleven earlier two-basis/phase-I/L2 consumers
+pass from a relocated checkout, then pass again from that relocated checkout to
+a second location. Explicit path adapters retain all source hashes and physical
+checks. The final portable inventory lists193 actual files and retains the two
+initial failed relocation attempts.
+
+### Source-case numerical boundary and literature accounting, 17:30Z
+
+Positive binary row scaling and HiGHS interior-point solving resolve the earlier
+linear-only timeout: the true X512/Z512 case floor has numerically feasible
+linear relaxations, including the latest990-row model, in about21 and31seconds.
+These are numerical diagnostics, not exact source-frame certificates. The
+semidefinite conditions remain essential: the first full1441-dimensional moment
+matrix has a negative eigenvalue about−3.86.
+
+Three bounded rounds produce36 dense integer-form rows from those numerical
+defects. A new independent consumer proves the full-support Boolean expansion,
+checks all1,037,520 unordered degree-two monomials including diagonals under
+the32-action averaging map, and rejects corrupted rows. The first12- and24-row
+LPs are numerically feasible; the36-row solve hits120seconds with an invalid
+iterate. No source exclusion follows. All36 inequalities also hold exactly at
+the existing global point22. The bounded dense-LP pilot therefore stops; simply
+adding more dense rows is not an accepted finishing strategy.
+
+An independent semantic linear compiler reconstructs636 exact equations and
+263,046 exact inequalities on76,008 variables and matches every exported
+canonical row under its declared positive normalization. A separate rational
+Farkas consumer combines source rows and rigorously absorbs residual coefficients
+using0..1 bounds. This prepares an exact acceptance path for a future obstruction;
+no contradictory certificate has been supplied. A bounded conic scaling
+diagnostic also ends inconclusively:325 iterations, about169seconds including
+setup, original linear inequality error0.354 and positive bᵀy. These multipliers
+cannot certify a contradiction. Its first invocation used an unsupported SCS
+keyword and failed before solving; that attempt is retained, and a versioned
+caller uses the installed API. No further extension of this pilot is implied.
+
+Three primary papers were fully read and question-screened: Frank–Miklós2012,
+Olariu TR13-01 and Frasinaru–Olariu TR13-02. A fourth later proceedings paper is
+metadata-only. TR13-02 explicitly addresses TR13-01's proposed submodular-flow
+adaptation, so that historical direction is not added as an unresolved target.
+Two broader TR13-02 directions are inventoried with current resolution, Lean
+discovery and planning difficulty unassessed. The central cohort is426 entries,
+160 eligible targets,209 paper records,168 full-text screens,137 source records
+and six complete Lean targets. Bibliography, question and planning validators
+pass. No C16 answer or new Lean completion is counted.
+
+The optimized physical regression then decides old point15 pattern1 in2.61seconds:
+a literal rank26 cut on54 free physical indices has exact raw gap
+435700847943/35184372088832. The original60-second run on the same input and
+initial basis was inconclusive. This compares the combined cache improvement
+and earlier valid stopping rule, not either change in isolation. The20-pattern
+current-point cohort is now authorized with independent replay after each
+endpoint and a25-minute total cap.
+
+### Three-hour checkpoint, 17:38Z
+
+The20-pattern current-point cohort finishes with no unresolved endpoint: X has
+three additional exact mixtures and seven exact rank violations; Z has two
+additional mixtures and eight rank violations. Including the two empty-pattern
+pilots gives seven mixture certificates and fifteen rank obstructions. These
+decide membership of the supplied22 conditional allocations. The same global
+point and shared law may admit different allocations, so neither is excluded.
+One successor allocation gate is authorized for both sectors using the new
+verified span-closure inequalities, followed by another bounded membership
+cohort if exact allocation recovery succeeds.
+
+The exact conic-dual recovery design also has a useful reduction:
+L²=binomial(L,2)+binomial(−L,2). Rounded physical square forms therefore use the
+already independently checked dense-integer consumer. Source-lifting factors,
+signs and all18 canonical PSD blocks were checked, including an explicit
+permutation of four forced-zero equality rows between two exports. The current
+numerical dual fails its preliminary sign/residual gate; no certificate is
+attempted from that direction. This prepares a verification route without
+mislabeling the current numerical failure as a proof.

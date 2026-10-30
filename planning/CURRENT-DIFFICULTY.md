@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 29, 2026. Low-confidence planning priors for all 424 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 30, 2026. Low-confidence planning priors for all 426 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -6605,3 +6605,35 @@ First milestone: Specify the instance family, algorithm/interface, correctness c
 Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
 
 Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-cvc5-tuning).
+
+### L-F176-avoid-smallest-tight-sets
+
+Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on the existing C16 width target.
+
+First milestone: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Gate: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Basis: Dated full-text author-direction extraction only; present-day resolution and Lean-discovery searches not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets).
+
+### L-F176-simpler-submodular-flow
+
+Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on the existing C16 width target.
+
+First milestone: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Gate: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Basis: Dated full-text author-direction extraction only; present-day resolution and Lean-discovery searches not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow).
