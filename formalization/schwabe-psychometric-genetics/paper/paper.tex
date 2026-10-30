@@ -1,0 +1,128 @@
+\input{approved-preamble.tex}
+\input{results.tex}
+\newcommand{\artifact}[1]{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/#1}{\nolinkurl{#1}}}
+\title{Measurement, missingness, and twin models:\\a whole-dissertation replication checkpoint\\of Schwabe (2016)}
+\date{30 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We partly replicate Schwabe's dissertation-level results, but do not establish a successful whole-dissertation replication: the published floor-effect slopes of 1.05 for sum scores and 0.03 for item-level analysis become 1.095 and $-0.105$ in one new full-length fit, and the missing-covariate precision ordering is preserved in all 108 primary point contrasts. These are limited reconstructions: original empirical inputs are unavailable, the Bayesian simulation grids remain diagnostic attempts, and our smaller missing-data experiment does not replace the original 1,000 repetitions per condition. The floor item-level slope changes point-estimate sign, but its 95\% posterior interval $[-0.698,0.439]$ includes zero. A separate scale ambiguity matters: a published standard error of \SourceAse{} becomes \OursAse{} on the stated variance scale, versus \PathAse{} on the square-root path scale. The latter is an exploratory reconstruction, not the same estimand. Entire-dissertation coverage and unfinished work remain explicit.
+\end{abstract}
+
+\begin{center}\small
+\begin{tabular}{p{1.65in}p{1.25in}p{1.55in}p{.65in}p{.65in}}
+\toprule Claim & Published & Ours & Same direction? & Verdict\\\midrule
+Floor spurious interaction: sum minus item slope & $1.05-.03=1.02$ & $1.095-(-.105)=1.200$; one dataset & Yes & partial\\
+Missing-covariate precision: deletion minus full SE & Positive point contrasts & Positive at all 108 primary cells & Yes & partial\\
+Empirical interaction findings, Chapters 3--5 & Math $\beta_1=2.0837$; liberalism $-2.81$; SES $\beta_{1c}=-3.0777$ & No raw-data refits & Unknown & no match\\
+Missing-data standard-error magnitude, one example & \SourceAse{} & \OursAse{} (variance); \PathAse{} (path) & Metric unresolved & partial\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\small The source values are from \citet[Tables 2.1, 3.2, 4.3, 5.4 and Figure 6.3]{schwabe2016}. ``No match'' for unavailable empirical fits means not established, not contradicted. Rounding agreement requires the same estimand to round half up to the printed value; the figure has no printed decimal precision. Conditional bands use our Monte Carlo error plus extraction bounds and do not recover source uncertainty. Positive deletion-minus-full SE means greater precision with full information.\normalsize
+
+\section{What replicated, and what remains unestablished}
+The measurement and missingness mechanisms receive partial support, while the dissertation's empirical conclusions remain unreplicated. The floor comparison gives a positive spurious sumscore slope and an item-level interval containing zero; the source's item-level point estimate is positive and ours negative, an inconclusive point reversal. The missing-data comparisons favor full information at every primary point contrast. Neither result establishes the whole dissertation: original repeated-simulation summaries, several analytical assertions, and all empirical refits remain open.
+
+The dissertation asks how measurement and incomplete covariates change genetic and environmental inference from twin data. It was awarded as a University of Twente PhD on 24 March 2016, supervised by C.A.W. Glas with adviser St\'ephanie M. van den Berg; the final published version has 154 numbered pages and 164 PDF pages. We read the full document, including all seven chapters and Appendices A--G. The 41-group inventory in Appendix~\ref{sec:coverage} treats every substantive original result as in scope. Cited background models and future extensions are distinguished from completed original work.
+
+The central decomposition separates additive genetic variance $A$, shared environmental variance $C$, and individual environmental variance $E$. Monozygotic twins share genetic effects; dizygotic twins have genetic correlation one half. Item-response models connect latent phenotypes to observed item responses. Chapters 2--5 let environmental or genetic variance depend on a genotype or measured moderator; Chapter 6 models covariates jointly to retain incomplete observations.
+
+\section{What we did ourselves, and what we took from others}
+Our contribution is an auditable reconstruction and a full coverage inventory, not new empirical twin data. Schwabe supplied the models, designs, reported results and original programs. We wrote the simulation generators, fitting wrappers, source-vector extraction, comparisons, diagnostics and report. Original unlicensed programs and the full dissertation remain local; only limited attributed source crops are included. The Chapter 4 publisher supplement was checked separately \citep{schwabeConservatism}.
+
+The statistical engines preserve the important model distinctions. R 4.5.0 \citep{r2025} runs JAGS 4.3.2 through rjags 4-16 for the Bayesian item-level models \citep{rjags2024}; coda 0.19-4.1 supplies posterior intervals and effective sample sizes \citep{coda2006}. OpenMx 2.21.13 fits the Chapter 6 Gaussian likelihoods \citep{neale2016}. lavaan 0.6-19 provides a second baseline ACE fit \citep{rosseel2012}. A covariance-only lavaan model would not reproduce the jointly moderated item likelihood, so that part explicitly uses the original JAGS engine family. The fitted likelihoods are implemented in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/simulation/openmx_replication.R\#L15}{\nolinkurl{openmx_replication.R:15}} (joint model), \href{https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/simulation/openmx_replication.R\#L31}{\nolinkurl{openmx_replication.R:31}} (conditional deletion model), and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/simulation/jags_replication.R\#L24}{\nolinkurl{jags_replication.R:24}} (moderated item model).
+
+The independent checks have limited independence. lavaan and OpenMx share one generated dataset and the ACE model; their baseline variance estimates differ by at most about $5\times10^{-8}$. SLSQP and CSOLNP share the Chapter 6 graph and data, checking optimization rather than model validity. Python's multivariate-normal generator checks R's conditional Gaussian generator through covariance moments. Original and reconstructed JAGS models share the engine and priors. Python 3.12.14 with \href{https://numpy.org/}{NumPy 2.3.5}, \href{https://scipy.org/}{SciPy 1.17.0}, \href{https://matplotlib.org/}{Matplotlib 3.10.8} and \href{https://pymupdf.readthedocs.io/}{PyMuPDF 1.26.6} supplies scalar checks, bands, plots and PDF inspection. R dependencies include \href{https://CRAN.R-project.org/package=MASS}{MASS 7.3-65} for Gaussian generation, \href{https://CRAN.R-project.org/package=matrixStats}{matrixStats 1.5.0} and \href{https://CRAN.R-project.org/package=foreign}{foreign 0.8-90} for package replay. These checks do not provide independent empirical evidence; \artifact{provenance/independence.json} states each boundary.
+
+\section{Measurement effects: what the Bayesian attempts show}
+The full-length floor example reproduces the qualitative contrast but not the published repeated-simulation estimates. At 500 pairs and 60 items, our sumscore slope is 1.095 with posterior standard deviation .181; the item-level slope is $-.105$ with posterior standard deviation .297. Both use the same generated response matrix. The repaired original centred JAGS program gives an item-level slope of $-.139$, compared with $-.105$ from the new non-centred representation. All five monitored posterior means fall inside exploratory five-comparison Monte Carlo bands; the largest point potential scale-reduction factor is 1.010, with upper bound 1.031. Effective sample sizes remain finite, so this is implementation agreement rather than proof of convergence or a repeated-simulation result (\artifact{outputs/posterior-comparison.csv}). The source reported averages over 100 datasets, 1.05 and .03, so these are not like-for-like Monte Carlo means. The difference is evidence to investigate, not a rounding discrepancy.
+
+The ceiling and symmetric sumscore fits supply supporting directional checks. Our ceiling slope is $-.857$, versus the reported $-1.08$; the symmetric case is .100, versus the reported mean .03 and between-replication standard deviation .24. Our posterior standard deviations are not substitutes for that between-replication standard deviation. Full results, intervals, effective sample sizes and chain lengths are in \artifact{outputs/confirmation-c2-floor.csv}, \artifact{outputs/confirmation-c2-floor-sums.csv}, \artifact{outputs/confirmation-c2-ceiling-sums.csv}, and \artifact{outputs/confirmation-c2-symmetric-sums.csv}.
+
+Every published Bayesian simulation arm was attempted, and most remain unresolved. The twelve sample-size/effect cells of Tables 2.2--2.3 and all seven sample-size/item-count cells of Tables 5.1--5.2 have actual full-size-data pilot fits. Their short chains cannot establish power, parameter recovery, or convergence. The original curvilinear experiment on page 26 lacks a recoverable design and numerical results. Its absence is retained as a blocker, not converted to an excluded result. The source numerical targets are in \artifact{outputs/source-simulation-targets.csv} and \artifact{outputs/source-power-targets.csv}.
+
+The production cost is substantial, rather than a reason to redefine the dissertation. At 8,000 pairs, a separate timing run used ten burn-in and ten retained iterations; the measured sampling cost projects to about \CostDays{} single-worker elapsed days for that condition's 250 source-length repetitions alone. This is a rough extrapolation, not a hard execution denial or a completed attempt at those repetitions. Initialization, adaptation, parallel scaling and mixing can change it. The production target remains open in \artifact{outputs/resource-projection.json}.
+
+\section{Missing covariates: direction and numerical scale}
+Full information reduces the estimated variance-component standard errors in all 108 primary point contrasts at this checkpoint. The complete grid includes three missingness mechanisms, four covariate counts and three stated missingness proportions; a fourth, 3\%, tests the conflicting plot labels. There are \Trials{} method-by-dataset fits, with \MinRep{} repetitions per condition at the recorded checkpoint. The original used 1,000 per condition. The primary contrast is $\mathrm{SE}_{\mathrm{deletion}}-\mathrm{SE}_{\mathrm{full}}$; its sign is separate from an ours-minus-source reproduction deviation.
+
+The mean contrast is simultaneously positive in \PositiveBands{} of the 108 primary comparisons under the stated approximation. We use paired differences across independently generated datasets, save two-standard-error intervals, and apply Bonferroni-adjusted Student intervals across the 108 primary contrasts \citep{dunn1961}; the 36 extra 3\% contrasts form a separate family. Small-sample normal-mean approximations and selection of assumptions after the initial pilots limit these bands. They are not equivalence tests. The complete records are \artifact{outputs/signed-contrasts.csv} and \artifact{provenance/uncertainty-plan.json}.
+
+The plotted magnitudes remain unresolved on the printed variance scale. For example, with two covariates and low MCAR missingness, the source's additive-genetic standard error is approximately \SourceAse{}, whereas ours is \OursAse{}. Across the 216 source SE values, \VarianceOutside{} lie outside conditional adjusted bands for variance SEs. Those bands include our Monte Carlo error and a conservative quarter-PDF-point extraction bound, but omit unknown source Monte Carlo error; they cannot establish an author error or a complete two-sample disagreement.
+
+An exploratory change of metric explains much of the difference. For a positive path $a$ with variance $V=a^2$, the delta-method relation is $\mathrm{SE}(V)=2|a|\mathrm{SE}(a)$. Reconstructing path SEs gives \PathAse{} in the example, and \PathOutside{} of the 216 path-scale comparisons lie outside the corresponding conditional bands. These are different estimands. Agreement with a transformed expression does not prove that it was the source procedure; the original plotting and standard-error extraction code would settle that question. The printed variance-scale comparison is preserved in \artifact{outputs/source-comparisons.csv}.
+
+The extraction retains every source curve, not just the illustrative example. We read vector paths for Figures 6.3--6.6, calibrated their axes against tick labels, and checked rendered evidence. The CSV retains coordinates, drawing identifiers and extraction bounds: \artifact{outputs/source-figure-values.csv}. Source point orderings have unknown uncertainty. Any point-sign reversals in the primary or sensitivity grid are listed below rather than suppressed.
+{\small\input{reversals.tex}}
+
+\section{Assumptions}
+\subsection{Regression coefficients and covariate means}
+The stated explained variance fixes a quadratic form, not the individual coefficients. We use equal positive coefficients satisfying $\beta^\mathsf{T}(\Sigma_W+\Sigma_B)\beta=.64$, yielding total variance 1.64 and explained fraction .39024. A distinct unequal-coefficient sensitivity retains the same explained variance. The main reconstruction estimates a mean for each covariate; the Appendix F script ties them together. We test the shared-mean restriction separately. Neither supplied choice establishes the missing original driver.
+
+\subsection{Low missingness and moderator allocation}
+The thesis gives 2\% in the Chapter 6 design and captions but 3\% in plots and parts of the discussion. Both are retained; neither is silently selected because it agrees better. For Chapter 5 we assume a balanced binary moderator, consistent with a .7 main effect explaining approximately 11\% of variance. The exact moderator allocation and random seeds were not recovered. The alternative sample-size reading of 80,000 in the prose is not a completed arm: Table 5.1 and its discussion specify 8,000, which is the implemented primary reading.
+
+\subsection{Priors, initialization, and historical software}
+The reconstructed Bayesian priors follow the source precision/variance conventions. The current and pre-defense BayesTwin repositories were both tested; an exact source-era session specification remains unavailable. New random seeds and a non-centred parameterization are explicit departures from unavailable original drivers. They must not be used to claim identical stochastic output. The full-length original-program comparison tests the same posterior on the same generated input, while source-length repeated grids remain open.
+
+\section{Ambiguities that were resolved locally}
+\subsection{Program identifiers and modern R conditions}
+Appendix A fails with its documented inputs because it references \texttt{ndz}, \texttt{n.items} and \texttt{Ydz} instead of the documented names. Repairing only those identifiers allows sampling. Appendices B, D and E compile without those repairs, and Appendix G samples after local PDF whitespace/page-label normalization. These are executable checks, not empirical validation: \artifact{outputs/original-programs.csv} and \artifact{outputs/appendix-g-result.txt}.
+
+The current BayesTwin code encounters a vector-condition error under R 4.5.0. Applying an explicit scalar test to the initialization check permits all twelve model/item-family smoke tests to return. The pre-defense revision has separate failures, including inconsistent-category initialization and a missing ADE prior argument. These are recorded alongside successes in \artifact{outputs/bayestwin-checks.csv} and \artifact{outputs/historical-bayestwin.csv}; the later package \citep{bayestwin} is not substituted silently for the 2016 source.
+
+\subsection{Printed probability and information expressions}
+Two literal printed expressions do not match the implemented models under simple checks. At zero trait and thresholds with unit discrimination, Equations 4.6--4.9 give probabilities summing to 1.25; the Appendix B cumulative-softmax program gives probabilities summing to one. For Equation 3.4, a discrimination of two at response probability one half gives printed information .25, while finite-difference score information is 1.00. The usual discrimination-squared factor explains this difference. We checked the rendered expressions in \artifact{evidence/eq4-probabilities.png} and \artifact{evidence/eq3-information.png}. Neither check establishes that the empirical fitted programs or Figure 3.2 used those literal expressions.
+
+\subsection{Identification versus likelihood uniqueness}
+The binary-moderator sign ambiguity can be checked directly. Paths $(b_2,b_3)=(.5,.2)$ and $(.5,-1.2)$ give the same endpoint variances .25 and .49. Positive loglinear variances uniquely determine the intercept and slope at those two endpoints. This finite check supports the stated parameterization distinction, but does not prove a unique global likelihood maximum or the unrestricted continuous-moderator extension. Those broader assertions remain unresolved; \artifact{outputs/analytic-checks.json} records the check and its limits.
+
+\section{Empirical results and summary reconstructions}
+The original empirical conclusions cannot be refitted from the obtained materials. Chapter 3 requires NTR responses and Cito calibration; Chapter 4 requires Virginia30K responses; Chapter 5 additionally requires linked SES; Chapter 6 requires linked school and twin records. All twelve public author repositories were cloned and audited before these gaps were declared. The available BayesTwin example is explicitly simulated output, not a substitute empirical dataset.
+
+Published-mean calculations provide limited checks with a different scope. The Chapter 3 one-standard-deviation environmental ratios reconstruct as 1.6316 and 1.8489, rounding to 1.63 and 1.85. A ratio of the printed variance means gives heritability .7292, whereas the reported posterior mean is .7286; these need not be equal because expectation and nonlinear division do not commute. The same distinction applies to Chapter 4. The sign reversals between its item and sumscore analyses are source-reported findings, not fresh empirical replications.
+
+The illustrative figures can be partly regenerated without raw data. We simulated 10,000 MZ pairs from the Chapter 3 printed mean parameters, reconstructed conditional variance curves, and generated both Chapter 7 genetic/phenotypic illustrations. Original posterior bands and score histograms remain blocked. See \artifact{outputs/ch3-mz-illustration.pdf}, \artifact{outputs/conditional-variance.pdf} and \artifact{outputs/ch7-illustration.pdf}.
+{\small\input{comparison.tex}}
+The first two rows separate a labelled variance SE from an exploratory path SE; neither inherits a decimal tolerance from a figure-derived display. The next three rows compare a single dataset with a source Monte Carlo average and therefore have no numerical verdict. The ratio rows use the source formula and round to the printed values, but retain limited scope. Empirical fits have unavailable scope. Per-family comparability records are in \artifact{provenance/comparability.json}.
+
+\section{What remains unresolved}
+The largest remaining causes differ by result, and the stopping statements preserve that distinction. For empirical claims, missing raw responses, calibration and linkage inputs rank ahead of software choices; repository and supplement searches did not recover them. For Bayesian simulation summaries, insufficient repeated converged fits rank ahead of numerical discrepancies; all cells were piloted, source-length cases and original-program checks were attempted, and actual resource costs were measured. The exact curvilinear design remains unavailable.
+
+For the Chapter 6 magnitude gap, the standard-error estimand currently ranks ahead of optimizer differences. We checked vector extraction against the ink, retained variance versus path metrics, compared SLSQP with CSOLNP, checked covariance algebra independently, and ran unequal-coefficient and shared-mean sensitivities. These checks do not recover the original random seeds, beta allocation, session versions or plotting driver. The most informative single artifact would be the original Chapter 6 simulation-and-summary script. No author contact was made.
+
+Independent scientific and rendered-main-manuscript review remains pending. This checkpoint has a documented self-review and structural checks; those are not an independent review. Completion of execution attempts is also distinct from successful replication. None of the open production or empirical items is closed as outside a selected scope.
+
+\section{Code and source availability}
+The dated availability audit below is part of the evidence, not a claim that every possible repository was exhaustively searched. Institutional metadata and the author-hosted source identify the edition; source hashes and repository revisions are in \artifact{provenance/source.json} and \artifact{provenance/author-repositories.json}. Full copyrighted source files remain local. The following rows copy \artifact{provenance/availability.json}.
+{\small\input{availability.tex}}
+
+\section{Compliance ledger}
+The ledger preserves departures rather than converting an unfinished checkpoint into completion. The following rows copy \artifact{provenance/compliance.json}; justifications describe the current evidence boundary.
+{\small\input{compliance.tex}}
+
+\section{Next steps}
+The next checks require specific missing artifacts or production runs. Obtain the original Chapter 6 driver through a permitted public source, then test the standard-error metric and exact missingness design. Continue the Bayesian grid with source-length chains and independent convergence checks, using measured costs and checkpoints. Recover authorized empirical response/calibration/linkage inputs before claiming any empirical replication. Complete the independent scientific and rendered-PDF review before declaring verified delivery.
+
+\appendix
+\section{Whole-dissertation coverage inventory}\label{sec:coverage}
+Every listed result remains in scope. ``Attempted/unresolved'' includes genuine diagnostic or reconstruction work whose evidence does not establish the entire result group; ``blocked'' identifies missing inputs or an undocumented design after an actual acquisition audit. No successful smoke test closes a broader empirical claim.
+{\footnotesize\input{coverage.tex}}
+
+\section{Artifacts and reproduction}
+The runnable recipe is \artifact{README.md}, sections ``Re-extract source targets and replay software'', ``Rerun simulations and resume checkpoints'', and ``Rebuild the report from saved outputs''. The historical baseline is distinct from the immutable runnable code revision in \artifact{provenance/delivery.json}. Rebuilding this manuscript from saved outputs does not rerun simulations. Master links below are intended navigation and await merge; the draft PR supplies current-commit review links.
+\begin{longtable}{p{2.4in}p{3.8in}}\toprule Claim/evidence & File and regeneration entry\\\midrule\endhead
+Whole-dissertation accounting & \artifact{coverage.csv}; audited against the entire source.\\
+Bayesian grids and source targets & \artifact{simulation/jags_replication.R}; \artifact{simulation/run_grid.py}; \artifact{simulation/extract_tables.py}.\\
+Missing-data fits and all trial results & \artifact{simulation/openmx_replication.R}; \artifact{outputs/trial-records.csv}; \artifact{simulation/summarize.py}.\\
+Signed contrasts and source comparisons & \artifact{outputs/signed-contrasts.csv}; \artifact{outputs/source-comparisons.csv}.\\
+Vector extraction and evidence & \artifact{simulation/extract_figures.py}; \artifact{provenance/figure-extraction.json}; \artifact{provenance/source-crops.json}.\\
+Original program and historical package checks & \artifact{simulation/original_programs.R}; \artifact{simulation/original_confirmation.R}; \artifact{simulation/appendix_g_check.R}; \artifact{simulation/bayestwin_check.R}; \artifact{simulation/historical_bayestwin.R}.\\
+Analytical and engine checks & \artifact{simulation/analytic_checks.py}; \artifact{simulation/engine_checks.R}; \artifact{outputs/engine-agreement.csv}.\\
+Editable manuscript and tables & \artifact{paper/paper.tex}; \artifact{paper/references.bib}; \artifact{simulation/build_report.py}.\\
+\bottomrule\end{longtable}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

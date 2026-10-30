@@ -1,0 +1,47 @@
+{
+  "time_utc": "2026-10-30T17:36:13.353160+00:00",
+  "stage": "After single-replicate pilots; before inspecting expanded-run aggregate",
+  "families": [
+    {
+      "name": "Published-grid paired SE differences deletion minus full",
+      "size": 108,
+      "alpha": 0.05,
+      "correction": "Bonferroni Student t intervals for means across independent generated datasets; also two-SE intervals saved",
+      "positive": "Full-information SE is lower",
+      "conditions": "3mechanisms x4q x3missing(.02,.06,.10) x3variance components"
+    },
+    {
+      "name": "3-percent sensitivity SE differences",
+      "size": 36,
+      "alpha": 0.05,
+      "correction": "Bonferroni t"
+    },
+    {
+      "name": "Source SE mean reproduction deviations",
+      "size": 216,
+      "alpha": 0.05,
+      "correction": "Bonferroni t plus source extraction bound; conditional on unknown source MC error being zero, not a two-sample comparison"
+    }
+  ],
+  "limitations": "Pilot-derived analytic directions already inspected; bands are conditional approximate normal means with small replicate count, not equivalence tests. Source 2/3percent ambiguity considered both ways. MCMC pilot outputs receive no power/precision verdict; insufficient effective samples. Rounded table matching separate from uncertainty.",
+  "exploratory_additions": [
+    {
+      "family": "Path-SE source comparisons",
+      "size": 216,
+      "reason": "Added after noticing variance-scale mismatch in pilot aggregates; exploratory, noncomparable estimand",
+      "correction": "Bonferroni Student intervals plus extraction bound; source MC error unknown"
+    },
+    {
+      "family": "MAR mean estimates in Figure6.5",
+      "size": 72,
+      "reason": "All24sourcecurves*3parameters? precisely3parameters x4q x3missing x2methods=72; supporting exploratory comparison",
+      "correction": "Bonferroni Student intervals plus extraction bound"
+    },
+    {
+      "family": "Five original-versus-reconstructed posterior means",
+      "size": 5,
+      "correction": "Bonferroni normal MC-error bands from two effective sample-size estimates",
+      "stage": "Diagnostic specified after inspecting posterior summaries; exploratory, not equivalence or production validation"
+    }
+  ]
+}
