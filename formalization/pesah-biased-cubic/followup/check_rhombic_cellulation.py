@@ -36,13 +36,14 @@ for L in sizes:
   for a in [b for b in range(3) if b!=normal]:
    transverse=[b for b in range(3) if b!=normal]
    for uv in itertools.product(range(L),repeat=2):
-    displacement=np.zeros(3,int)
+    displacement=np.zeros(3,int);oriented=[]
     for t0 in range(L):
      v=[0,0,0];v[normal]=t0
      for b,s in zip(transverse,uv):v[b]=s
      key=q(a,v);assert key not in used;used.add(key);b,c=ends(a,v,False)
      if b[normal]>c[normal]:b,c=c,b
-     displacement+=np.array(c)-np.array(b)
+     displacement+=np.array(c)-np.array(b);oriented.append((tuple(x%L for x in b),tuple(x%L for x in c)))
+    assert all(oriented[t][1]==oriented[(t+1)%L][0] for t in range(L))
     expected=np.zeros(3,int);expected[normal]=L;assert np.array_equal(displacement,expected);cycles+=1
   assert len(used)==2*N
  rows.append(dict(L=L,FCC_vertices=len(black),edges=E,tetrahedral_triangles=len(F),cube_incidence_exact=True,triangle_multiset_exact=True,disjoint_winding_cycles=cycles,seconds=time.perf_counter()-t))
