@@ -1,0 +1,12 @@
+POSITIVE_PIVOT_RECOVERY (638, 76008) 638 minimum_variable 1.1215849803464387e-06
+Traceback (most recent call last):
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/recover_active_face_point.py", line 63, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/recover_active_face_point.py", line 51, in main
+    result=verify(data,hulls,caps,cond,cross,weighted)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/certify_profile_moment_point.py", line 81, in verify
+    i=cut['anchor_orbit'];o=cut['orbit'];side='S' if cut['sector']=='X' else 'T';assert sum(int(c)*v[m(side,h,i,o)] for h,c in enumerate(cut['coefficients']))<=cut['bound']*p[i],('weighted_conditional',i,o);weighted_checked+=1
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('weighted_conditional', 21, 27)

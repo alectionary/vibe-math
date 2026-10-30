@@ -1,0 +1,16 @@
+PIVOT_RANK 639 639 0.16743400214964518
+POSITIVE_PIVOT_RECOVERY (639, 76008) 639 minimum_variable 4.053859931610638e-10
+Traceback (most recent call last):
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/recover_boundary_point.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/recover_boundary_point.py", line 54, in main
+    result=verify(data,hulls,caps,cond,cross,weighted)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/certify_profile_moment_point.py", line 84, in verify
+    old=old_verify({'p':list(map(str,p+p)),'C':C},ROOT)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/verify_moment_certificate.py", line 24, in verify
+    v=C[h][a][b];assert max(fmpq(0),p[a]+p[b]-1)<=v<=min(p[a],p[b]);assert v==C[(-h)%16][b][a]
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
