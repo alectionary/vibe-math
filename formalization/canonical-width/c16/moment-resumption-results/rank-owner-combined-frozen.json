@@ -1,0 +1,42 @@
+{
+  "status": "FROZEN_BEFORE_RANK_OWNER_COMBINED_TRIAL",
+  "utc": "2026-10-30T01:24:00.045015+00:00",
+  "command": [
+    "/private/tmp/c16-venv/bin/python",
+    "moment_rank_owner_combined_model.py",
+    "--hulls",
+    "algebraic-results/hulls-16-rank.json.gz",
+    "--capacity-cuts",
+    "algebraic-results/orbit-rank-profiles-independent.json",
+    "--conditional-matrix",
+    "algebraic-results/conditional-capacity/independent.json",
+    "--conditional-cross-matrix",
+    "algebraic-results/conditional-cross-capacity/independent.json",
+    "--conditional-linear-cuts",
+    "algebraic-results/conditional-facets-round1-independent.json",
+    "moment-resumption-results/all-pair-moment-faces.json",
+    "--eps",
+    "1e-8",
+    "--iterations",
+    "100000",
+    "--seconds",
+    "900",
+    "--output",
+    "moment-resumption-results/rank-owner-combined-necessary.json",
+    "--forbidden-patterns",
+    "relevant-results/seed-cuts.json",
+    "moment-resumption-results/all-pair-word-cuts.json"
+  ],
+  "source_C16_answered": false,
+  "seconds": 900,
+  "source_hashes": {
+    "moment_rank_owner_combined_model.py": "3c15334e548b069365a19523195c3dffdc417cb178d90f2837caf68228f35ce4",
+    "physical_circuit_moment_matrix.py": "bdcd2fcf47819cdf1059806a6eb602a14a7352c6d7e3252daa7a5ee75b69ad1c",
+    "physical_owner_moment_matrix.py": "698888cd3f16919fffa2443ffcdbc212895c974fa5852d8a764f7dfc9fecd0fc",
+    "canonical_forbidden_moment_matrix.py": "8e7d4cfc0259108d45252bfbad9563d52e5191528c7be7f34dc3581edc4320a0"
+  },
+  "rank_bank_sha256": "8a7c6e806ca0eda3cf44635b3720ef381a3966439688645cd320ee592d54b17f",
+  "independent_control_sha256": "c3cb46d1cbec0371678442de8ec50ed524cddf40171d3815c5d7f79b7b6fc92b",
+  "parent_frozen_sha256": "e8da9c6ad9fa4f9c3243a0c56ec7821ff91da6d1bfa9ffda76467cc91be991f9",
+  "scope": "Necessary full128-source-frame model combining profile/capacity/weighted/forbidden-pattern,32355 ownership and115200 source-circuit inequalities. Known exact cardinality null directions are removed by equivalent principal blocks. Numerical status alone is not a proof."
+}
