@@ -7,6 +7,14 @@ s=(root/'simulation/test_production_analysis.py').read_text(); f={};exec(compile
 exec(compile(s[s.index('small_records=[]'):s.index("run('invalid_failed_inflight_denominators_and_paired_filter'")],'tiny-fixture','exec'),f)
 spec=importlib.util.spec_from_file_location('builder',root/'simulation/build_production_report.py');b=importlib.util.module_from_spec(spec);spec.loader.exec_module(b)
 checks=[]
+# Independently specified decimal boundaries, signs and absent/incomparable effects.
+for args,expected in [((.4,.3,.1),'not established at extraction resolution'),((.3,.4,.1),'not established at extraction resolution'),((-2,1,.1),'larger point magnitude'),((-.25,1,.1),'smaller point magnitude'),((-1,1,0),'not established at extraction resolution'),((None,1,.1),'not established'),((2,1,.1,False),'not established')]:
+ assert b.magnitude_label(*args)==expected,(args,b.magnitude_label(*args))
+for args in [(1,1,-.1),(float('nan'),1,.1),(1,float('inf'),.1)]:
+ try:b.magnitude_label(*args)
+ except ValueError:pass
+ else:raise AssertionError('invalid magnitude inputs accepted')
+checks.append({'test':'independent_signed_magnitude_decimal_boundaries_missing_and_invalid','passed':True})
 def record(name): checks.append({'test':name,'passed':True})
 baselinepaths=[root/'outputs/trial-records.csv',root/'outputs/condition-summary.csv'];before={str(p):b.sha(p) for p in baselinepaths}
 with tempfile.TemporaryDirectory(prefix='independent-report-') as td:
@@ -15,6 +23,13 @@ with tempfile.TemporaryDirectory(prefix='independent-report-') as td:
   reports=p/(label+'-reports');analysis=p/(label+'-analysis');out=p/(label+'-paper')
   f['write'](reports,rs,rows,counts);f['a'].analyze(reports,analysis,root/'outputs/source-figure-values.csv',root/'production/analysis-plan.json')
   m=b.build(analysis,out);x=m['numeric_macros']
+  effect=m['representative_input_rows']['variance_precision_effect'];hb=m['representative_input_rows']['heritability_bias']
+  for prefix,row,ours,source,bound in [('AprecisionEffect',effect,'contrast_delete_minus_full','source_deletion_minus_full','source_contrast_extraction_bound'),('HbiasEffect',hb,'ours_bias_estimate_minus_truth','source_bias_estimate_minus_truth','source_extraction_bound')]:
+   assert x[prefix+'Ours']==format(float(row[ours]),'.10g') if row[ours]!='' else x[prefix+'Ours']=='NA'
+   assert x[prefix+'Source']==format(float(row[source]),'.10g')
+   assert x[prefix+'ExtractionBound']==format(float(row[bound]),'.10g')
+   assert 'same' not in x[prefix+'MagnitudeLabel']
+  record(label+'_signed_effect_macro_mapping')
   assert all(b.sha(analysis/n)==h for n,h in m['input_sha256'].items());assert all(b.sha(out/n)==h for n,h in m['output_sha256'].items());record(label+'_input_output_hashes')
   if label=='baseline':
    assert [x[k] for k in ['CompletedFits','ValidFits','VarianceOutside','PathOutside','PositivePoints','PositiveBands','BiasReversals']]==['1920','1920','191','0','108','104','23']
