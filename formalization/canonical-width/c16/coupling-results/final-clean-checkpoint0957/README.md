@@ -1,0 +1,7 @@
+# Clean checkpoint replay 1e852ee
+
+The authoritative acceptance receipt is `accepted-summary.json`. All36 replay stages passed and integer-witness15 recovered byte-identically. The54 partner source inequalities,234 integer-form inequalities,12 new rank inequalities, unconditional45-basis mixture, two4X count memberships, two2X2Z count memberships, prefix formulation and full-selector CNF bridge are included. The auxiliary memberships retain their original points and do not imply a physical frame. No source case is newly excluded; cover405 remains.
+
+The first controller summary is deliberately preserved with16 apparent missing-path entries. Those entries are schema labels, not paths. `resolve_bindings.py` explicitly resolves them against actual files, including the saved historical producer snapshot; `resolved-source-bindings.json` checks all1,422 digests with no unresolved mismatch. `accepted-summary.json` combines those resolutions with all successful stages. No failed mathematical check was waived.
+
+Outputs were written outside the detached clean checkout. `inventory.json` binds every replay artifact before archiving, and the final copy receipt verifies identical archive bytes. Both solver trials and all long SAT searches were not repeated. Historical source CNF/cover-chain UNSAT replay, all singleton numerical trajectories/lattice cohorts and extra corruption suites beyond the invoked consumers were not repeated; see the precise omissions in `accepted-summary.json`.
