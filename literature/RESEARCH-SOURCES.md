@@ -1771,3 +1771,55 @@ Emanuel F. Olariu; Cristian Frasinaru. SYNASC2014,97–102; Crossref conference 
 - Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/olariu-direction-followup-resolution.json).
 
 - Question screen: [not assessed](../formalization/canonical-width/c16/two-basis-results/literature/olariu-direction-followup-resolution.json); 0 linked canonical targets.
+
+## F178 — A Discrete Convex Min-Max Formula for Box-TDI Polyhedra
+
+András Frank; Kazuo Murota. arXiv:2007.03507v3, 27 January 2021; DOI10.1287/moor.2021.1160. [Primary source](https://arxiv.org/html/2007.03507v3).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Complete v3 HTML screened: abstract, introduction, Sections2–6, appendix and references. Three linked entries: one specific M2 algorithm question and two broad algorithm directions. Weighted M-convex quadratic minimization is recorded as later known solvable in F180 Remark4.4, not a new open target..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F178-m2-square-strong-polynomial](OPEN-PROBLEMS.md#l-f178-m2-square-strong-polynomial), [L-F178-box-tdi-algorithms](OPEN-PROBLEMS.md#l-f178-box-tdi-algorithms), [L-F178-inverse-optimization-algorithms](OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F178-screen.json).
+
+- Question screen: [full text screened](../literature/owner-lift-20261030/F178-screen.json); 3 linked canonical targets.
+
+## F179 — Matroid bases with cardinality constraints on the intersection
+
+Stefan Lendl; Britta Peis; Veerle Timmermans. Publisher full text, online29 March2021, issue2022; Mathematical Programming194,661–684; DOI10.1007/s10107-021-01642-1. [Primary source](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Complete publisher text screened: introduction, Sections2–6, both appendices and references. One norm-generalization direction, including its Euclidean subcase. The recoverable-robust strongly-polynomial question is answered in this paper. Direct PMC acquisition failed; Europe PMC full-text XML was retained..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F179-polymatroid-norm-constraints](OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F179-screen.json).
+
+- Question screen: [full text screened](../literature/owner-lift-20261030/F179-screen.json); 1 linked canonical targets.
+
+## F180 — Decreasing Minimization on Base-Polyhedra: Relation Between Discrete and Continuous Cases
+
+András Frank; Kazuo Murota. arXiv:2202.06561v2, 12 April2022. [Primary source](https://arxiv.org/html/2202.06561v2).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Targeted reading of Remark4.4 and its cited context only. Later primary evidence says weighted discrete quadratic minimization over an integral base-polyhedron is known strongly polynomial. Complete HTML acquired, but complete question screening remains unassessed..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F180-screen.json).
+
+- Question screen: [not assessed](../literature/owner-lift-20261030/F180-screen.json); 0 linked canonical targets.
+
+## F181 — A Generalized-Polymatroid Approach to Disjoint Common Independent Sets in Two Matroids
+
+Kenjiro Takazawa; Yu Yokoi. arXiv:1805.05528v3, 28 January2019. [Primary source](https://arxiv.org/html/1805.05528v3).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F181-screen.json).
+
+- Question screen: [not assessed](../literature/owner-lift-20261030/F181-screen.json); 0 linked canonical targets.
