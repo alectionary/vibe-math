@@ -118,8 +118,15 @@ checkpoint. The historical `validate_difficulty.py` related-ID equality failure
 was reproduced and preserved; it is not counted as a pass. The exact replay
 scope and logs are in the
 [clean-checkpoint inventory](two-basis-results/final-clean-checkpoint-b6ed9a0-inventory.json).
-Later gates have their own independent source, LP, primal/dual and physical
-receipts; they are not silently included in the earlier 34-stage replay.
+Checkpoint `45873144ca36684562c235fc68db41c0b06a95c3` then passed a separate
+14-stage supplemental replay in 39.11 seconds. Its 2,060 declared files
+(836,860,691 bytes) matched their hashes and Git blobs. The isolated replay
+checked both orbit 15 phase-I endpoints and their exchange batch, the orbit 32
+geometry gate, Boolean union and eight-event laws, the complete coupled
+capacity endpoint, and the preparation-only shared-basis seed. It made zero
+original-input reads, preserved source/copy bytes, and ran no optimization.
+The [supplemental inventory](two-basis-results/final-supplement-checkpoint-4587314-inventory.json)
+records its distinct scope; the stage counts are not counts of solved questions.
 
 Known failed, capped and rejected attempts are retained, including the first
 unreduced owner-flow timeout, orbit 15 round cap, exact restricted-archive
@@ -165,15 +172,46 @@ signed prefix ranks. The artificial L1 errors total about 289.056; they remain
 explicit. This is a feasible initialization for the proposed phase-I model,
 not a solved shared master or a conditional membership certificate.
 
-Before a contradiction can reject the global point, either free the five law
-parameters or prove that their pins have zero coefficients in an exact dual.
+Before a contradiction can reject the global point, remove its dependence on
+the five pinned law parameters. One route is to free them in the master; another
+is an exact dual whose pin coefficients vanish. A third prepared route is the
+[pattern-cost projection lemma](SHARED-BASIS-PATTERN-COST-PROJECTION.md): after
+exact pricing and symbolic removal of pins, express the five higher joint
+moments as sums of pattern masses and minorize the resulting sixteen pattern
+costs by a quadratic Boolean function. This produces a necessary inequality
+in the already recorded first and second moments. The algebra controls check
+the actual model's moment map, signed toy pricing and six rejected mutations.
+No actual C16 dual, minorant optimization or new separating row is claimed.
 A complete source-case exclusion additionally needs a certified solve with
 the global moments free and the correct case floor imposed. The phase-I method
 supplies a better-defined diagnostic and a measured archive improvement, but
 further batches need an explicit budget and a stopping rule; one 3.58%
 improvement does not justify extrapolating a solution time.
 
-Publication is through existing PR #17. Master integration remains subject to its
-required approving review; a pushed work branch is a checkpoint rather than
-completed master publication. Final remote readbacks and claim release will be
-recorded at the end of this authorized block.
+## Deliverable accounting
+
+| Requirement | Status | Evidence and remaining limit |
+| --- | --- | --- |
+| Proof or disproof of the source question | Partial | Width 16/18, cover 405 and physical 88/128 are unchanged; no complete source exclusion |
+| Structural progress beyond exhaustive search | Met for the bounded gates | Fixed-owner residual theorem, exact capacity reduction, complete local laws, measured phase-I improvement, and prepared shared-basis projection |
+| Independent verification | Met for declared scopes | 34-stage and 14-stage isolated replays linked above; historical pool/cover chains were preserved rather than rerun in full |
+| Literature and question accounting | Met with recorded access limits | 430 canonical entries, 161 eligible, 213 papers, 170 full-text screens; dated ledgers retain unread full-text and authenticated-X gaps |
+| Lean completion | Not completed | Six earlier canonical completions remain; this block adds none |
+| Reproducible continuation | Met | [Resume guide](TWO-BASIS-RESUME.md), frozen inventories and explicit next-gate acceptance criteria |
+| Publication to master | Pending required review | Existing [PR #17](https://github.com/alectionary/vibe-math/pull/17); the pushed research branch is a checkpoint |
+
+Final remote readbacks and coordination-claim status are recorded in
+[issue #8](https://github.com/alectionary/vibe-math/issues/8) and the local handoff.
+The original research objective is unresolved; closing this bounded block is
+not a user-requested pause.
+
+**Question answered:** the stated finite capacity/eight-event model admits an
+exact compatible allocation; orbit 40 at point 22 admits its complete
+selected-conditioned opposite-sector T basis law.
+
+**Question still open:** whether the source admits a full 128-pair width-16
+frame, or every such frame can be excluded.
+
+**Next proposed target — follow-up:** build and independently check one bounded
+shared basis-column phase-I master, with full-domain pricing and exact
+projection acceptance.
