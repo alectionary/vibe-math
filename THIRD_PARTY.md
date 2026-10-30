@@ -113,3 +113,16 @@ Separate the Higgott wrappers/outputs if a narrower future inclusion is desired.
 Choose content licenses separately if wanted, and establish scholarly citation
 credits before adding CFF metadata. None of these exclusions removes or changes
 research evidence, package versions, proof behavior or existing permissions.
+
+## Moss score-reliability replication (2026-10-30)
+
+`formalization/moss-score-reliability/inputs/` retains unmodified `bfi.rda`,
+`bfi.Rd` and DESCRIPTION from William Revelle's psychTools1.9.12, CRAN mirror
+revision `eeb778ab5e334c454ccb6a87de0c9d7cafe1da73`, with its GPL(>=2)
+declaration and GPL-2 text. Source attribution and file hashes are retained.
+The original analysis code is **not copied**: its DESCRIPTION and LICENSE.md
+conflict (CC BY-SA4.0 versus CC BY4.0); a hash-pinned external replay is documented.
+One limited attributed Table3 source crop, the manuscript, data, results and all
+new R wrappers remain outside the root Apache grant under LICENSING.md.
+No whole dissertation or new content license is included; see this study's
+`provenance/rights.json` and `inputs/NOTICE.md`.

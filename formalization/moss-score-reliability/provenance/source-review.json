@@ -1,0 +1,59 @@
+{
+  "reviewer": "independent scientific and source reviewer",
+  "review_date_utc": "2026-10-30",
+  "source_repository": "https://github.com/JonasMoss/phd-thesis",
+  "source_revision": "c539b0bc4ab1424352ab93f5aaae5150f02fa9e3",
+  "title": "Psychometrics and the modelling of publication bias",
+  "author": "Jonas Moss",
+  "institution": "University of Oslo",
+  "year": 2020,
+  "metadata_sources": [
+    "https://www.mn.uio.no/math/english/research/projects/focustat/who-we-are/",
+    "https://www.mn.uio.no/math/english/research/projects/focustat/masters-and-phds-with-nils-lid-hjort/"
+  ],
+  "metadata_evidence": "Official UiO pages record August 2020 submission, exact thesis title and advisers Riccardo de Bin (main) and Nils Lid Hjort (co-supervisor); author acknowledgements agree.",
+  "availability": "Complete author-repository source tree and all six incorporated article PDFs obtained. No identity comparison to a final institutional deposited PDF is established.",
+  "contents_audit": "All main.tex include/input targets and all six article PDFs exist and yield readable text. One appendix code filename is case-mismatched: code/plot.R refers to present code/plot.r. Article page counts: I=44, II=26, III=31, IV=13, software I=3, software II=2. Frontmatter contains placeholder ISSN/series.",
+  "reading_scope": "Independent reviewer read all introductory source chapters, frontmatter, appendices and all six incorporated article texts in full at scholarly reading depth. Paper I was read completely in four bounded untruncated page batches, with definitions, formulas and empirical Example11/Table3 closely checked. Reading unrelated proofs does not constitute independent proof verification or replication of their numerical claims.",
+  "visual_check": {
+    "path": "/tmp/moss-source-table3-review.png",
+    "sha256": "7f0aa8cfac17fc164e62172123521b081176cebf3c2cf881d8c0a05e30fcf3c2",
+    "evidence": "Rendered PDF page18 (printed19), visually verified all20 Table3 values, four row labels and five trait columns. This inspection image is100dpi; final source crops must use600dpi per skill."
+  },
+  "scientific_checks": [
+    "Table3 is20 model-based plug-in score reliabilities from five separate one-factor models, not alpha or fit indices.",
+    "Source says sigma reliability exceeds standardized and congeneric reliabilities for all5 traits, and standardized exceeds congeneric except extraversion.",
+    "Original code example.R uses raw bfi items with default lavaan::cfa and transforms loadings by sqrt(psi). Reliability code uses abs(lambda), aligning item signs. Literal raw mixed-sign sum scores are not the target.",
+    "Reliability reproduction does not establish model fit or construct validity.",
+    "Table3 is a bounded selected empirical finding, not the entire thesis headline or proof of universal advice against standardized/ordinal alpha."
+  ],
+  "source_hashes": {
+    "main.tex": "ead88cb7dd3e080bda45aa0bbc2a2f2fb78537809cd184f2e36e36c61ca24b13",
+    "sections/acknowledgements.tex": "38fc32f213c466cdedbf674263b7f999b49389601384a3c2a82198ea462a2b37",
+    "sections/papers.tex": "2774c8bed3f8331122aa92ac08158c159845bd95ad8040abc4422d1561bf0c46",
+    "sections/paper-summaries.tex": "d756246ff1577aa5fbfc3daef73d5782691866327c90994df1a68a92a0a517d2",
+    "introduction/psychometrics.tex": "2a8f4b1a28c04a9b4a3e3ca7ae94458a9f74a77ad1d7b376ed79380581993621",
+    "papers/paperI.pdf": "0d4aa07b8fef0df14b47a43412a3356d652afed80e371a4be2712c417a5ad458",
+    "papers/paperII.pdf": "31880fca4bbde0716490c95a306aad79d04507588f7b219a88eb803cd8b76b55",
+    "papers/paperIII.pdf": "03524e1fd8ee2d922562e381cb33815fa940ea367f1c45a58990c3b58bb3e8a4",
+    "papers/paperIV.pdf": "43e219ef73d386099fb1a76709033ac970302f4397fa6c3c0440cedcf9b5f617",
+    "swpapers/swpaperI.pdf": "ae8fbbd7ba9ff71e3f7867558d3aca8f7e19a37476c8524f9ab841dc2d4dbe8a",
+    "swpapers/swpaperII.pdf": "70fa8587474439031a3b7b7f1a7fbb5c912582c4096bf6192ccf8addf9c32acd",
+    "appendices/appendixA.tex": "bf5c8f8222d0930b1e45b9e4119dd9f55bac04decaec03bd1372f0a39841e186",
+    "appendices/appendixB.tex": "b683c5102c73096678d7185854d9fa3be24b5d2ec6722fc827cc7766222dc920",
+    "introduction/inference.tex": "0270c80a7e45ad8aa34520221c70a84c2291ca639c5149356e5904e1e89582bf",
+    "introduction/partial-identification.tex": "f9267d752bfbce4594cf673a989cbf31f997798ab823bb1da27ce6c32b2cf4bb",
+    "introduction/introduction.tex": "b4dacdd0b3a2ec9521d709eee30e794eb324d0922689a7564b64d2778c9c3c1c",
+    "introduction/replication-crisis.tex": "5e83a001464a61350bab79812038597f6164d69a3efa22e33b4fc847eb37f2f9"
+  },
+  "component_reading_notes": {
+    "introduction": "Inference; replication crisis; psychometrics; partial identification: complete source reading. Reliability does not imply fit/validity; distributional identification assumptions are substantive.",
+    "paperII": "Complete 26-page text: partially identified latent correlations, marginal distribution assumptions, copula bounds, examples, proofs and reference sections.",
+    "paperIII": "Complete 31-page text: publication selection versus p-hacking generative models, Bayesian estimation, simulations and empirical meta-analysis examples, appendices/references.",
+    "paperIV": "Complete 13-page text: Gleser-Hwang argument for infinite-diameter confidence sets in Hedges selection models, proofs and references.",
+    "softwareI": "Complete 3-page kdensity article: parametric-start/asymmetric kernel package.",
+    "softwareII": "Complete 2-page univariateML article: convenient univariate maximum-likelihood fitting.",
+    "depth_limit": "Reading is not a claim of reproducing all numerical results, verifying all mathematical proofs, or matching the final institutional deposited version.",
+    "paperI": "Complete 44-page text read, including both proof appendices and references. Table3 independently visually checked; general reliability Eq5 and weighted forms inspected against original code. Other theoretical results and simulation claims are not replicated."
+  }
+}
