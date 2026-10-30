@@ -98,7 +98,7 @@ independent choices, so for N components its probability is
 P_fail = (1-(1-2q_m)^N)/2.
 
 Here (m,N)=(L,L^2) or (L^2,L). For fixed p<1/2, Hoeffding's bound gives
-q_m <= exp(-2m(1/2-p)^2), and P_fail <= N q_m tends to zero. At p=1/2,
+q_m <= exp(-2m(1/2-p)^2), and P_fail <= N q_m tends to zero. A self-contained derivation uses exponential Markov with t=log((1-p)/p): Pr[B>=m/2] <= [2 sqrt(p(1-p))]^m <= exp(-2m(1/2-p)^2) for 0<p<1/2; p=0 is immediate. At p=1/2,
 complementary errors have equal probability, q_m=1/2 and P_fail=1/2.
 This establishes the ideal decoder's 50% endpoint on the conventional
 0<=p<=1/2 range. It is not an impossibility assertion for known p>1/2 (where
