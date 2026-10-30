@@ -1,0 +1,251 @@
+{
+  "document_kind": "explicit_root_scientific_overrides",
+  "complete_packet": false,
+  "source_specification_sha256": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+  "reviewed_utc": "2026-10-30T22:55:04.749707+00:00",
+  "adjudicator": "root investigator after source reading and separate guard_validation mathematical audit",
+  "artifacts": [
+    {
+      "id": "chapter5-analytical-evidence",
+      "path": "handoff/chapter5-analytical-evidence.json",
+      "sha256": "fd64977485893903c9f64593dc123c82994d56ee257694a795a85a3a3d97c663"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C5-1.binary-path",
+      "ours": {
+        "value": "For path a+b*m with a>0 and shared m in{0,1}, bstar=-2*a-b leaves a fixed and maps the other endpoint a+b to -(a+b). Squared paths, component variances and within-pair covariance contributions are unchanged. With independent Gaussian ACE components, equal means and residual structure, the complete observed Gaussian phenotype distribution is unchanged, and so is its probability after the same measurement kernel. Existing symbolic difference -4*a*m*(a+b)*(m-1) vanishes at both endpoints.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "For path a+b*m with a>0 and shared m in{0,1}, bstar=-2*a-b leaves a fixed and maps the other endpoint a+b to -(a+b). Squared paths, component variances and within-pair covariance contributions are unchanged. With independent Gaussian ACE components, equal means and residual structure, the complete observed Gaussian phenotype distribution is unchanged, and so is its probability after the same measurement kernel. Existing symbolic difference -4*a*m*(a+b)*(m-1) vanishes at both endpoints.",
+      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
+      "status": "replicated",
+      "status_reason": "Established by ordinary exact analytical replication under the explicit shared-binary-moderator assumptions; no substantive remaining algebraic obligation for this narrow target.",
+      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "reconstruction_scope": "Exact symbolic/rational check and ordinary argument, not Lean certification or separate-twin moderator theorem.",
+      "reproduction_deviation": "Not computed as an independent source-target error. Exact symbolic/rational check and ordinary argument, not Lean certification or separate-twin moderator theorem.",
+      "limitations": [
+        "Distinct alternative slopes require a+b!=0; a zero endpoint coalesces the two roots. The source wording of always two distinct combinations needs this ordinary degeneracy qualification.",
+        "No path-positivity constraint at both endpoints; adding that extra constraint would eliminate the reflected endpoint.",
+        "Shared moderator is essential to this endpoint argument; arbitrary separate-twin moderator cross-products are not covered.",
+        "Identical likelihood parameterizations do not ensure a maximizer exists for every finite dataset. If an optimum with nonzero endpoints exists, its reflected unrestricted point shares its likelihood."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-provenance-identification-check-json",
+        "historical-simulation-identification_check-py",
+        "historical-evidence-p72-identification-claim-png",
+        "historical-provenance-marginal-identification-check-json",
+        "historical-simulation-marginal_identification_check-py",
+        "historical-provenance-marginal-identification-independent-review-json",
+        "historical-provenance-proof-toolchain-observation-json",
+        "historical-provenance-joint-item-identification-check-json",
+        "historical-simulation-joint_item_identification_check-py",
+        "historical-provenance-joint-item-identification-independent-review-json",
+        "historical-provenance-formalization-feasibility-json",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "chapter5-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Established by ordinary exact analytical replication under the explicit shared-binary-moderator assumptions; no substantive remaining algebraic obligation for this narrow target.",
+        "attempted": "Exact ordinary algebra, existing symbolic verification, source reading and separate mathematical audit; no empirical refit.",
+        "untested": "No new empirical data or numerical fit is required to verify this symmetry. Formal certification is separate.",
+        "resource_basis": "The stated exact identities require no additional numerical production. Broader likelihood geometry and model assumptions are distinct unresolved targets, not demonstrated computational impossibilities.",
+        "next_evidence": "No additional experiment is required for the established narrow identities; resolving finite-likelihood uniqueness requires an explicit uniqueness proof or counterexample under a specified nondegenerate observation design."
+      }
+    },
+    {
+      "id": "C5-1.continuous-path",
+      "ours": {
+        "value": "Unrestricted (a,b) and(-a,-b) yield exactly the same squared path for every real m; simultaneously changing both twin loadings also preserves their products. Each independent ACE component has this global sign symmetry. Conversely if squared affine paths agree at three distinct moderator values, their degree-at-most-two difference is identically zero. Factoring it implies the paths are identical or globally negative. With strictly positive intercepts only the identical solution remains. Existing exact midpoint witness 9/25 versus1/100 shows the binary reflection generally fails between endpoints.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "Unrestricted (a,b) and(-a,-b) yield exactly the same squared path for every real m; simultaneously changing both twin loadings also preserves their products. Each independent ACE component has this global sign symmetry. Conversely if squared affine paths agree at three distinct moderator values, their degree-at-most-two difference is identically zero. Factoring it implies the paths are identical or globally negative. With strictly positive intercepts only the identical solution remains. Existing exact midpoint witness 9/25 versus1/100 shows the binary reflection generally fails between endpoints.",
+      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
+      "status": "partly_replicated",
+      "status_reason": "Established for the source global-sign nonidentification extension on unrestricted paths; positive-baseline residual nonidentification does not extend from binary to rich continuous support. Keep these readings separate rather than mark the whole algebra unresolved.",
+      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "reconstruction_scope": "Conditional ordinary qualification of continuous extension; does not deny global sign symmetry without constraints.",
+      "reproduction_deviation": "Not computed as an independent source-target error. Conditional ordinary qualification of continuous extension; does not deny global sign symmetry without constraints.",
+      "limitations": [
+        "Three distinct support values suffice for the path polynomial result; continuous support supplies them. Equality of component variance functions is assumed/identified before invoking this algebra.",
+        "If a=0, a nonnegative rather than strictly positive convention may leave a slope sign ambiguity.",
+        "The polynomial argument is not an assertion of full observed-item model likelihood unimodality."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-provenance-identification-check-json",
+        "historical-simulation-identification_check-py",
+        "historical-evidence-p72-identification-claim-png",
+        "historical-provenance-marginal-identification-check-json",
+        "historical-simulation-marginal_identification_check-py",
+        "historical-provenance-marginal-identification-independent-review-json",
+        "historical-provenance-proof-toolchain-observation-json",
+        "historical-provenance-joint-item-identification-check-json",
+        "historical-simulation-joint_item_identification_check-py",
+        "historical-provenance-joint-item-identification-independent-review-json",
+        "historical-provenance-formalization-feasibility-json",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "chapter5-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Established for the source global-sign nonidentification extension on unrestricted paths; positive-baseline residual nonidentification does not extend from binary to rich continuous support. Keep these readings separate rather than mark the whole algebra unresolved.",
+        "attempted": "Exact ordinary algebra, existing symbolic verification, source reading and separate mathematical audit; no empirical refit.",
+        "untested": "Source interpretation should be qualified explicitly: unrestricted global symmetry replicated; any stronger reading retaining the positive-baseline binary ambiguity on continuous support is not supported and is contradicted at the variance-function level under the stated support and sign convention.",
+        "resource_basis": "The stated exact identities require no additional numerical production. Broader likelihood geometry and model assumptions are distinct unresolved targets, not demonstrated computational impossibilities.",
+        "next_evidence": "No additional experiment is required for the established narrow identities; resolving finite-likelihood uniqueness requires an explicit uniqueness proof or counterexample under a specified nondegenerate observation design."
+      }
+    },
+    {
+      "id": "C5-1.monotone",
+      "ours": {
+        "value": "For V(m)=exp(beta0+beta1*m), Vprime=beta1*exp(beta0+beta1*m). It is strictly increasing for beta1>0, strictly decreasing for beta1<0 and constant for beta1=0. A squared affine path has derivative 2*b*(a+b*m), which changes sign at its vertex when that vertex is inside the moderator domain.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "For V(m)=exp(beta0+beta1*m), Vprime=beta1*exp(beta0+beta1*m). It is strictly increasing for beta1>0, strictly decreasing for beta1<0 and constant for beta1=0. A squared affine path has derivative 2*b*(a+b*m), which changes sign at its vertex when that vertex is inside the moderator domain.",
+      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
+      "status": "replicated",
+      "status_reason": "Established by exact derivative; narrow target fully addressed by ordinary analysis.",
+      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "reconstruction_scope": "Ordinary symbolic derivative identity, not a likelihood-convexity or formal-certification result.",
+      "reproduction_deviation": "Not computed as an independent source-target error. Ordinary symbolic derivative identity, not a likelihood-convexity or formal-certification result.",
+      "limitations": [
+        "Finite real coefficients and real moderator. Constant zero-slope case is included in weak monotonicity.",
+        "A squared-affine curve can itself be monotone on a restricted moderator domain; the comparison does not say every observed squared-path curve turns.",
+        "Variance-curve monotonicity says nothing about concavity or uniqueness of a likelihood maximum."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-provenance-identification-check-json",
+        "historical-simulation-identification_check-py",
+        "historical-evidence-p72-identification-claim-png",
+        "historical-provenance-marginal-identification-check-json",
+        "historical-simulation-marginal_identification_check-py",
+        "historical-provenance-marginal-identification-independent-review-json",
+        "historical-provenance-proof-toolchain-observation-json",
+        "historical-provenance-joint-item-identification-check-json",
+        "historical-simulation-joint_item_identification_check-py",
+        "historical-provenance-joint-item-identification-independent-review-json",
+        "historical-provenance-formalization-feasibility-json",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "chapter5-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Established by exact derivative; narrow target fully addressed by ordinary analysis.",
+        "attempted": "Exact ordinary algebra, existing symbolic verification, source reading and separate mathematical audit; no empirical refit.",
+        "untested": "None for the elementary variance-curve property; no simulation or formal proof assistant needed to consider this replication attempted and established.",
+        "resource_basis": "The stated exact identities require no additional numerical production. Broader likelihood geometry and model assumptions are distinct unresolved targets, not demonstrated computational impossibilities.",
+        "next_evidence": "No additional experiment is required for the established narrow identities; resolving finite-likelihood uniqueness requires an explicit uniqueness proof or counterexample under a specified nondegenerate observation design."
+      }
+    },
+    {
+      "id": "C5-1.full-model",
+      "ours": {
+        "value": "Fix M=m and abbreviate exp(beta0a+beta1a*m)=A, similarly C,E. Under the stated independent innovations, MZ traits equal mu+beta1m*m+U_C+U_A+U_Ej, with innovation variances C,A,E. Hence both means are mu+beta1m*m, both variances T=A+C+E, and covariance K_MZ=A+C. For DZ, Eq5.12 gives a shared genetic innovation of variance1/2 and Eq5.13 adds an independent individual innovation of variance1/2. Multiplying by sqrt(A) in Eq5.14 gives each genetic variance A and cross-twin genetic covariance A/2. Adding the common C and independent E innovations yields the same mean and T, and K_DZ=A/2+C. This also verifies the inverse identities A=2*(K_MZ-K_DZ), C=2*K_DZ-K_MZ, E=T-K_MZ already independently symbolically checked.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "Fix M=m and abbreviate exp(beta0a+beta1a*m)=A, similarly C,E. Under the stated independent innovations, MZ traits equal mu+beta1m*m+U_C+U_A+U_Ej, with innovation variances C,A,E. Hence both means are mu+beta1m*m, both variances T=A+C+E, and covariance K_MZ=A+C. For DZ, Eq5.12 gives a shared genetic innovation of variance1/2 and Eq5.13 adds an independent individual innovation of variance1/2. Multiplying by sqrt(A) in Eq5.14 gives each genetic variance A and cross-twin genetic covariance A/2. Adding the common C and independent E innovations yields the same mean and T, and K_DZ=A/2+C. This also verifies the inverse identities A=2*(K_MZ-K_DZ), C=2*K_DZ-K_MZ, E=T-K_MZ already independently symbolically checked.",
+      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
+      "status": "replicated",
+      "status_reason": "Established by ordinary hierarchical variance/covariance calculation for the specified shared-moderator Gaussian model. Do not conflate this narrow target with the separate full observed-item identification claim.",
+      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "reconstruction_scope": "Restricted latent covariance algebra checked; empirical model validation and finite-data inference separate.",
+      "reproduction_deviation": "Not computed as an independent source-target error. Restricted latent covariance algebra checked; empirical model validation and finite-data inference separate.",
+      "limitations": [
+        "Shared moderator, common component functions across zygosity, independent family/component/individual innovations as specified by the hierarchy; genetic correlation1 or1/2.",
+        "Correct square-root scaling in Eq5.14 matters: text extraction separates its radical; the prose explicitly describes scaling by the standard deviation.",
+        "These are model-implied moments, not a claim that observed empirical responses satisfy the model or that a sampler converged."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-provenance-identification-check-json",
+        "historical-simulation-identification_check-py",
+        "historical-evidence-p72-identification-claim-png",
+        "historical-provenance-marginal-identification-check-json",
+        "historical-simulation-marginal_identification_check-py",
+        "historical-provenance-marginal-identification-independent-review-json",
+        "historical-provenance-proof-toolchain-observation-json",
+        "historical-provenance-joint-item-identification-check-json",
+        "historical-simulation-joint_item_identification_check-py",
+        "historical-provenance-joint-item-identification-independent-review-json",
+        "historical-provenance-formalization-feasibility-json",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "chapter5-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Established by ordinary hierarchical variance/covariance calculation for the specified shared-moderator Gaussian model. Do not conflate this narrow target with the separate full observed-item identification claim.",
+        "attempted": "Exact ordinary algebra, existing symbolic verification, source reading and separate mathematical audit; no empirical refit.",
+        "untested": "No outstanding substantive calculation for the narrow moment target. Estimation, empirical validity and full observation-model identification are separate targets.",
+        "resource_basis": "The stated exact identities require no additional numerical production. Broader likelihood geometry and model assumptions are distinct unresolved targets, not demonstrated computational impossibilities.",
+        "next_evidence": "No additional experiment is required for the established narrow identities; resolving finite-likelihood uniqueness requires an explicit uniqueness proof or counterexample under a specified nondegenerate observation design."
+      }
+    },
+    {
+      "id": "C5-1.one-likelihood-maximum",
+      "ours": {
+        "value": null,
+        "units": "exact textual proposition",
+        "unavailable_reason": "At-most-one finite maximum has neither been proved nor refuted. The all-zero example only refutes universal finite-MLE existence; population injectivity is a separate conditional result."
+      },
+      "methods": "The source free-common-mean assumption is confirmed by the saved independent source audit: mu is a fitted parameter; setting mu=0 in data generation is not a fitted constraint. The existing all-zero-response argument shows likelihood strictly improves as free mu decreases and tends to supremum1 without attainment. It is a valid counterexample to universal existence of a finite MLE, including when both zygosities and both moderator levels are represented. The example does not produce two local or global maxima. If only one maximum is read as at most one when one exists, no counterexample to that claim has been supplied. The independently reviewed joint-item argument establishes population parameter injectivity under known finite positive logistic calibrations, two distinct conditionally independent observations, positive Gaussian ACE components, observed moments and joint zygosity/moderator support. Together with correct specification this yields a unique population expected-log-likelihood maximizer via KL divergence. It does not yield finite-likelihood concavity or global uniqueness.",
+      "uncertainty": "Mathematical claims are conditional exact arguments, not sampling estimates. Numerical quadrature illustrates rather than proves the MLE counterexample. The supplied result is limited to the stated check/reconstruction; no additional target sampling interval is inferred.",
+      "multiplicity": "No new significance or equivalence verdict. Preserve source condition/parameter families and dependencies; neither inventory rows nor parent/component links count as independent replications. No new familywise inference or significance claim.",
+      "status": "not_established",
+      "status_reason": "Partially addressed; finite-sample at-most-one-maximum claim remains unresolved. Do not label it disproved solely by a no-finite-maximum example, and do not infer it from population injectivity.",
+      "numerical": "No source-target rounding verdict for an unavailable aggregate. Reported values describe the explicitly qualified historical check only.",
+      "reconstruction_scope": "Ordinary counterexample to unqualified finite-MLE implication, distinct from population injectivity, proper-prior posterior behavior or source empirical likelihood.",
+      "reproduction_deviation": "No numerical deviation applies. A no-finite-maximum example does not contradict at-most-one-maximum wording; the universal-existence interpretation is explicitly stronger than the source wording.",
+      "limitations": [
+        "Proof or counterexample for at-most-one finite local/global likelihood maximum under a precisely specified nondegenerate observation design and parameter constraints. Neither existing sign-symmetry removal nor monotone variance curves proves it.",
+        "Verification of actual source empirical calibration, missingness, support and model assumptions remains separate; no empirical likelihood landscape was certified.",
+        "A proper prior changes the objective; no conclusion about posterior unimodality, propriety or MCMC convergence follows from the all-zero likelihood example."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-provenance-identification-check-json",
+        "historical-simulation-identification_check-py",
+        "historical-evidence-p72-identification-claim-png",
+        "historical-provenance-marginal-identification-check-json",
+        "historical-simulation-marginal_identification_check-py",
+        "historical-provenance-marginal-identification-independent-review-json",
+        "historical-provenance-proof-toolchain-observation-json",
+        "historical-provenance-joint-item-identification-check-json",
+        "historical-simulation-joint_item_identification_check-py",
+        "historical-provenance-joint-item-identification-independent-review-json",
+        "historical-provenance-formalization-feasibility-json",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "chapter5-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Partially addressed; finite-sample at-most-one-maximum claim remains unresolved. Do not label it disproved solely by a no-finite-maximum example, and do not infer it from population injectivity.",
+        "attempted": "Exact ordinary algebra, existing symbolic verification, source reading and separate mathematical audit; no empirical refit.",
+        "untested": [
+          "Proof or counterexample for at-most-one finite local/global likelihood maximum under a precisely specified nondegenerate observation design and parameter constraints. Neither existing sign-symmetry removal nor monotone variance curves proves it.",
+          "Verification of actual source empirical calibration, missingness, support and model assumptions remains separate; no empirical likelihood landscape was certified.",
+          "A proper prior changes the objective; no conclusion about posterior unimodality, propriety or MCMC convergence follows from the all-zero likelihood example."
+        ],
+        "resource_basis": "The stated exact identities require no additional numerical production. Broader likelihood geometry and model assumptions are distinct unresolved targets, not demonstrated computational impossibilities.",
+        "next_evidence": "No additional experiment is required for the established narrow identities; resolving finite-likelihood uniqueness requires an explicit uniqueness proof or counterexample under a specified nondegenerate observation design."
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "source_sha256": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+  "claims": [
+    {
+      "id": "C5-1.binary-path",
+      "proposed_adjudication": "Established by ordinary exact analytical replication under the explicit shared-binary-moderator assumptions; no substantive remaining algebraic obligation for this narrow target.",
+      "source_locators": [
+        "AppendixC pp138-139 Eqs4-15",
+        "Chapter5 p72 Section5.1.2"
+      ],
+      "source_reading": "The appendix first gives simultaneous global sign symmetry, then shows that requiring the baseline genetic path positive still permits two moderation slopes at binary moderator endpoints.",
+      "argument": "For path a+b*m with a>0 and shared m in{0,1}, bstar=-2*a-b leaves a fixed and maps the other endpoint a+b to -(a+b). Squared paths, component variances and within-pair covariance contributions are unchanged. With independent Gaussian ACE components, equal means and residual structure, the complete observed Gaussian phenotype distribution is unchanged, and so is its probability after the same measurement kernel. Existing symbolic difference -4*a*m*(a+b)*(m-1) vanishes at both endpoints.",
+      "assumptions_limits": [
+        "Distinct alternative slopes require a+b!=0; a zero endpoint coalesces the two roots. The source wording of always two distinct combinations needs this ordinary degeneracy qualification.",
+        "No path-positivity constraint at both endpoints; adding that extra constraint would eliminate the reflected endpoint.",
+        "Shared moderator is essential to this endpoint argument; arbitrary separate-twin moderator cross-products are not covered.",
+        "Identical likelihood parameterizations do not ensure a maximizer exists for every finite dataset. If an optimum with nonzero endpoints exists, its reflected unrestricted point shares its likelihood."
+      ],
+      "remaining": "No new empirical data or numerical fit is required to verify this symmetry. Formal certification is separate."
+    },
+    {
+      "id": "C5-1.continuous-path",
+      "proposed_adjudication": "Established for the source global-sign nonidentification extension on unrestricted paths; positive-baseline residual nonidentification does not extend from binary to rich continuous support. Keep these readings separate rather than mark the whole algebra unresolved.",
+      "source_locators": [
+        "AppendixC p139 last sentence",
+        "AppendixC pp138-139 global-sign argument and positive-baseline paragraph"
+      ],
+      "source_reading": "The final sentence says the proof extends to ACE models and continuous covariates, without restating whether positive-baseline restrictions are imposed. The preceding text contains both global symmetry and the stronger binary positive-baseline claim.",
+      "argument": "Unrestricted (a,b) and(-a,-b) yield exactly the same squared path for every real m; simultaneously changing both twin loadings also preserves their products. Each independent ACE component has this global sign symmetry. Conversely if squared affine paths agree at three distinct moderator values, their degree-at-most-two difference is identically zero. Factoring it implies the paths are identical or globally negative. With strictly positive intercepts only the identical solution remains. Existing exact midpoint witness 9/25 versus1/100 shows the binary reflection generally fails between endpoints.",
+      "assumptions_limits": [
+        "Three distinct support values suffice for the path polynomial result; continuous support supplies them. Equality of component variance functions is assumed/identified before invoking this algebra.",
+        "If a=0, a nonnegative rather than strictly positive convention may leave a slope sign ambiguity.",
+        "The polynomial argument is not an assertion of full observed-item model likelihood unimodality."
+      ],
+      "remaining": "Source interpretation should be qualified explicitly: unrestricted global symmetry replicated; any stronger reading retaining the positive-baseline binary ambiguity on continuous support is not supported and is contradicted at the variance-function level under the stated support and sign convention."
+    },
+    {
+      "id": "C5-1.monotone",
+      "proposed_adjudication": "Established by exact derivative; narrow target fully addressed by ordinary analysis.",
+      "source_locators": [
+        "Chapter5 p72 Eq5.1",
+        "Chapter5 pp83-84 discussion"
+      ],
+      "argument": "For V(m)=exp(beta0+beta1*m), Vprime=beta1*exp(beta0+beta1*m). It is strictly increasing for beta1>0, strictly decreasing for beta1<0 and constant for beta1=0. A squared affine path has derivative 2*b*(a+b*m), which changes sign at its vertex when that vertex is inside the moderator domain.",
+      "assumptions_limits": [
+        "Finite real coefficients and real moderator. Constant zero-slope case is included in weak monotonicity.",
+        "A squared-affine curve can itself be monotone on a restricted moderator domain; the comparison does not say every observed squared-path curve turns.",
+        "Variance-curve monotonicity says nothing about concavity or uniqueness of a likelihood maximum."
+      ],
+      "remaining": "None for the elementary variance-curve property; no simulation or formal proof assistant needed to consider this replication attempted and established."
+    },
+    {
+      "id": "C5-1.full-model",
+      "proposed_adjudication": "Established by ordinary hierarchical variance/covariance calculation for the specified shared-moderator Gaussian model. Do not conflate this narrow target with the separate full observed-item identification claim.",
+      "source_locators": [
+        "Chapter5 p75 Eqs5.3-5.8",
+        "Chapter5 p76 Eqs5.11-5.15",
+        "AppendixD pp140-142 corresponding generative hierarchy"
+      ],
+      "argument": [
+        "Fix M=m and abbreviate exp(beta0a+beta1a*m)=A, similarly C,E. Under the stated independent innovations, MZ traits equal mu+beta1m*m+U_C+U_A+U_Ej, with innovation variances C,A,E. Hence both means are mu+beta1m*m, both variances T=A+C+E, and covariance K_MZ=A+C.",
+        "For DZ, Eq5.12 gives a shared genetic innovation of variance1/2 and Eq5.13 adds an independent individual innovation of variance1/2. Multiplying by sqrt(A) in Eq5.14 gives each genetic variance A and cross-twin genetic covariance A/2. Adding the common C and independent E innovations yields the same mean and T, and K_DZ=A/2+C.",
+        "This also verifies the inverse identities A=2*(K_MZ-K_DZ), C=2*K_DZ-K_MZ, E=T-K_MZ already independently symbolically checked."
+      ],
+      "assumptions_limits": [
+        "Shared moderator, common component functions across zygosity, independent family/component/individual innovations as specified by the hierarchy; genetic correlation1 or1/2.",
+        "Correct square-root scaling in Eq5.14 matters: text extraction separates its radical; the prose explicitly describes scaling by the standard deviation.",
+        "These are model-implied moments, not a claim that observed empirical responses satisfy the model or that a sampler converged."
+      ],
+      "remaining": "No outstanding substantive calculation for the narrow moment target. Estimation, empirical validity and full observation-model identification are separate targets."
+    },
+    {
+      "id": "C5-1.one-likelihood-maximum",
+      "proposed_adjudication": "Partially addressed; finite-sample at-most-one-maximum claim remains unresolved. Do not label it disproved solely by a no-finite-maximum example, and do not infer it from population injectivity.",
+      "source_locators": [
+        "Chapter5 p72 Section5.1.2, sentence linking uniquely identified to only one likelihood maximum",
+        "Chapter5 p83 discussion",
+        "Chapter5 pp75-77 free mean and prior",
+        "AppendixD p141 lines66-68 and84"
+      ],
+      "source_reading": "The exact source wording asserts only one maximum in the likelihood function. It links this to identification, but does not explicitly quantify existence of a finite optimum for every possible dataset. The stronger universal existence reading is our interpretation and must be labeled accordingly.",
+      "established": [
+        "The source free-common-mean assumption is confirmed by the saved independent source audit: mu is a fitted parameter; setting mu=0 in data generation is not a fitted constraint.",
+        "The existing all-zero-response argument shows likelihood strictly improves as free mu decreases and tends to supremum1 without attainment. It is a valid counterexample to universal existence of a finite MLE, including when both zygosities and both moderator levels are represented.",
+        "The example does not produce two local or global maxima. If only one maximum is read as at most one when one exists, no counterexample to that claim has been supplied.",
+        "The independently reviewed joint-item argument establishes population parameter injectivity under known finite positive logistic calibrations, two distinct conditionally independent observations, positive Gaussian ACE components, observed moments and joint zygosity/moderator support. Together with correct specification this yields a unique population expected-log-likelihood maximizer via KL divergence. It does not yield finite-likelihood concavity or global uniqueness."
+      ],
+      "genuinely_remaining": [
+        "Proof or counterexample for at-most-one finite local/global likelihood maximum under a precisely specified nondegenerate observation design and parameter constraints. Neither existing sign-symmetry removal nor monotone variance curves proves it.",
+        "Verification of actual source empirical calibration, missingness, support and model assumptions remains separate; no empirical likelihood landscape was certified.",
+        "A proper prior changes the objective; no conclusion about posterior unimodality, propriety or MCMC convergence follows from the all-zero likelihood example."
+      ],
+      "recommended_report": "Population identification conditionally established; universal finite-MLE existence fails for possible all-zero data with free mean; uniqueness of a finite maximum when one exists remains unresolved. This qualifies the source wording without silently strengthening it."
+    }
+  ],
+  "formalization": "Ordinary mathematical arguments only; no proof-assistant certificate."
+}
