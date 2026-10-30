@@ -1,0 +1,20 @@
+{
+  "source": {
+    "estimand": "Maximum entanglement fidelity for fixed encoding under independent two-mode pure loss",
+    "loss": 0.01,
+    "normalizer": "Normalized two-qubit maximally entangled state; F=1 for identity",
+    "encoding": "group representation identity, Sigma=|0>, fixed alpha seed",
+    "optimizer": "Recovery-only semidefinite program; original implementation/settings unknown",
+    "source": "Fig3.2, pp148--151; numerical values extracted, not raw output"
+  },
+  "ours": {
+    "estimand": "same",
+    "loss": 0.01,
+    "normalizer": "Tr(JH) with trace_output(J)=I and H=channel Choi/4",
+    "encoding": "explicit group-sum normalized in coherent Gram metric",
+    "optimizer": "CLARABEL through CVXPY; independent Fock/SCS"
+  },
+  "scope": "limited",
+  "rounding_verdict": "withheld",
+  "reason": "Same stated mathematical estimand, reconstructed implementation, no original decimal precision or solver error bounds"
+}
