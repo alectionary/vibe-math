@@ -237,3 +237,102 @@ including one triple. A full independent physical/CNF/record replay is running.
 No source anchor is excluded and there is no full frame. These additional
 clauses are reusable proof-search input, not a mathematical resolution or a
 measured reduction of the sufficient cover.
+
+## Adaptive basis inequalities, 30 October 02:25Z
+
+A new separation routine uses the basis requirement directly. Let I be a
+selected independent set in one physical pool. For any subset K, `|I∩K|` is at
+most `rank(K)`. If a same-sector vector a is required to be selected, the
+stronger bound is `rank(K∪{a}) − 1[a∉K]`: when a is outside K, its inclusion
+uses one dimension of that union. Multiplying by the selection indicator for a
+and averaging gives a necessary degree-two moment inequality. For an opposite-
+sector K, the unconditioned rank bound is valid after conditioning on a.
+
+The previous rectangle bounds use particular subsets K. The new routine chooses
+arbitrary K from a fractional candidate without enumerating all subsets. It
+approximates projection onto the convex hull of basis indicators, using a
+maximum-weight basis oracle at each step. The oracle sorts weights and accepts
+independent vectors greedily; requiring a fixes that element first, equivalently
+contracting it. Adding a constant to all weights preserves the maximizing bases
+because their cardinality is fixed. The implementation reference is SageMath's
+[greedy maximum-weight independent-set documentation](https://doc.sagemath.org/html/en/reference/matroids/sage/matroids/matroid.html#sage.matroids.matroid.Matroid.max_weight_independent),
+recorded in the shared source ledger; Sage itself was not run. No new research
+paper or author-posed question was acquired in this block.
+
+At each projection step, threshold prefixes of the residual weight ordering
+are tested for rank violations. Floating-point optimization only proposes K.
+The saved inequality uses an integer rank, checked independently by low-pivot
+elimination from the physical source. Thus a faulty or prematurely stopped
+projection can miss a cut, but cannot validate an incorrect bound through the
+consumer. This bounded implementation is not a complete matroid-polytope
+membership algorithm, and nonseparation is not a feasibility certificate.
+
+The first exploratory screen of the older ownership-combined candidate took
+59.06 seconds across 90 conditioned queries and found 45 rank inequalities:
+20 same-sector and 25 opposite-sector. Of these, 38 have numerical violations
+above 1e-4; the maximum is about 1.09434. The remaining seven are near the older
+solver's tolerance. All 45 pass 1,440 independent shifted/sector rank checks;
+reduced-bound corruptions are rejected. The compiler also agrees with literal
+32-symmetry averaging on 540 arbitrary-selection controls. Small literal
+matroids check 17,496 greedy optima, 122,472 prefix bounds and 17,024 conditional
+independent-set inequalities, including positive and nonviolating controls.
+The exploratory run was recorded after completion, explicitly not presented as
+preregistered or as a runtime comparison. Files: `matroid-owner0*.json`,
+`matroid-small-controls.json`, and `matroid-matrix-independent.json`.
+
+Loading all 115,200 circuit rows and 12,849 legacy rows had been expensive.
+An adaptive model retains full ownership/profile/forbidden constraints and adds
+only violated rows from those two fixed families, then screens the result
+against every omitted row. Its first round added 9 circuit and 181 legacy rows;
+a 600-second run remained inaccurate, with another 13 circuit and 31 legacy
+rows above 1e-5. Repeated solver rescaling consumed substantial time.
+
+A fixed-scale warm start was then tested with the expanded active rows and the
+45 checked rank cuts. The first attempt stopped before solving because CVXPY
+had replaced the IDs of nonnegative profile-weight variables. Its failure is
+preserved as `unified-matroid-warm0`; the corrected mapping follows the recorded
+attribute-reduction map and checks every canonical coordinate exactly once.
+The corrected `warm1` trial returned numerical `optimal` in 39.59 seconds
+including preparation, with maximum reported violation 6.75e-13. Its candidate
+passes all 115,200 circuit rows numerically but violates two omitted legacy rows,
+by up to 0.09003. The next active trial includes those two rows. This is a useful
+working numerical route, not an exact feasible point or a proof of the source
+answer, and no matched speedup factor is claimed.
+
+The earlier global trial now has a complete independent PASS: all 26,735 source
+cuts, 529 signature circuits, 3,557 saved partial records, and the final
+1,346,804-clause input were reconstructed. It checked 820,012 forced covectors.
+The run's outcome remains UNKNOWN; no UNSAT proof was produced.
+
+## Exact checkpoint, 30 October 02:30Z
+
+**The previously combined finite relaxation is feasible, and the new conditional
+rank family strictly strengthens it.** This is an exact result about the
+relaxation; the original width is still 16 or 18.
+
+The `warm2` candidate was recovered as 76,008 rational values. The unchanged
+profile consumer rechecks all 636 affine equations, 43,473 nonnegative profile
+weights, capacity/conditional/weighted constraints, the physical moment
+conditions and 256-bit interval PSD certificates. A separate exact consumer
+then checks every one of the 31,683 raw conditioned forbidden-pattern rows,
+32,355 ownership rows, 115,200 circuit rows, 12,849 legacy linear rows and the
+first 45 conditional matroid rows. Every check passes. The feasible certificate
+hash is `21f3d329f66e5f7c57dd51d9c66a7157dc0c40a2e822374f7e7ea90ef1b818aa`.
+Evidence: `warm2-rational-candidate.json.gz`,
+`warm2-rational-old-family-replay.json`, and `warm2-unified-exact.json`.
+
+Consequently, further numerical effort on exactly those finite constraint
+families cannot yield a valid infeasibility proof. A stronger necessary
+condition is required. The broader conditional-rank search supplies one:
+42 further independently checked inequalities were found from `warm1`, and
+41 of them strictly reject the recovered `warm2` rational point. The largest
+exact violation is `500387259403211/1125899906842624`, approximately 0.444433.
+This proves strict strengthening, without claiming the new intersection is
+infeasible. The new bank is `matroid-warm1.json`; its independent rank consumer
+is `matroid-warm1-independent.json`. A bounded model now includes both banks.
+
+This closes the earlier exact-recovery gap for the listed relaxation and gives
+a concrete next mathematical direction: conditional rank inequalities on
+arbitrary physical subsets, selected by a greedy basis oracle. It neither
+constructs a joint distribution on frames nor reduces the 405-case cover.
+No full source anchor or the source width is settled.
