@@ -150,3 +150,90 @@ One3600-second run began at01:02:07Z, frozen in
 at this checkpoint. A complete independently checked UNSAT proof would exclude
 all full source frames. A partial SAT witness or timeout would leave width16
 versus18 open. No matched runtime-speedup claim is made.
+
+## Active checkpoint,30 October02:04Z
+
+The source answer and cover are unchanged. The ownership-combined numerical
+model returned `optimal` after209.73seconds, with maximum reported violation
+1.97e-6. That numerical point violates11 of the older conditioned circuit rows
+and182 other older linear rows (6rank-rectangle,118Boolean-triangle,58integer-form).
+Thus the separate successful numerical relaxations cannot be substituted for
+their intersection. This is a checked reason to combine the restrictions, not
+an infeasibility result.
+
+### Physical combination of existing degree-two restrictions
+
+The polynomial-coordinate circuit classes were translated through the checked
+normal form back to physical pool indices. The160old sector classes fold to80.
+Their zero sums and minimal ranks were recomputed in both physical pools under
+all16shifts (2560checks). The115200 distinct conditioned circuit rows agree
+coefficient-wise with the old compiler; all pass the exact averaged88-pair
+control. `physical-rank-preparation.json` and `physical-circuit-independent.json`
+record the checks. The physical rank bank hash is
+`8a7c6e806ca0eda3cf44635b3720ef381a3966439688645cd320ee592d54b17f`.
+
+The older rank-rectangle, Boolean-triangle and integer-form restrictions were
+also translated, including orbit rephasing. There are12849distinct rows:
+11773rectangle rows,739triangle rows and337integer-form rows. Independent
+physical checks cover6283rectangles in both sectors,16literal triangle truth
+checks,10612integer-form Boolean checks and72900old-coordinate moment entries.
+Every row passes the exact88-pair control. See
+`physical-legacy-linear-preparation.json`. These are reused theorems and sources;
+this block's contribution is their checked combination with the newer profile,
+capacity and forbidden-pattern restrictions.
+
+The cardinality equations force known null vectors of the zero-frequency PSD
+blocks. Deleting their final coordinates is an equivalent PSD test: if a known
+kernel vector has nonzero last coordinate, the whole symmetric matrix is
+`B P B^T` for its retained principal block P and
+`B = [I; -v_prefix^T/v_last]`. Exact reconstruction was checked on the existing
+affine-feasible candidate. That candidate still fails PSD; this reconstruction
+does not certify it.
+
+The circuit/ownership combination and the full listed-family combination each
+hit a1020-second outer limit before a terminal solver result. Their status files
+now say `UNKNOWN_OUTER_WALL_LIMIT`, linked to their exit records. No numeric
+infeasibility or feasible point was obtained from these two runs.
+
+### Removing profile auxiliary variables, and solver diagnostics
+
+The full profile model uses43473convex-combination weights in addition to32535
+independent moment variables. An outer formulation replaces those weights by
+supporting inequalities. Its initial7290inequalities use every signed single
+coordinate and signed pair of the9local profile features for each of45orbits.
+Every bound is recomputed as an exact integer maximum over all shapes of its
+own orbit;7042626shape/cut instances were checked. Across the45orbits there are
+43473shapes. This removes the43473auxiliary variables but initially weakens the
+relaxation. It is not a reduction in the405cover cases, nor a same-strength
+runtime improvement. Future separation can add valid integer support directions;
+failure of a numerical separator is not exact hull membership.
+
+The fresh unchanged hull consumer passes all43473shapes,1437309unexcluded phase
+patterns and518400physical pairings, with the prior critical cap11 as an explicit
+dependency. An initial replay failed its hash guard because the compressed
+profile file was supplied instead of the recorded uncompressed file. Decoded
+JSON equality was checked and the correct dependency passed in48.17seconds.
+Both attempts are retained in `profile-hull-audit-input-correction.json` and
+`profile-hulls-corrected-independent.json`; no data or hash guard was weakened.
+
+The direct outer-model solver hit its900-second outer limit. The indirect
+pilot returned `optimal_inaccurate` after50iterations and445.66seconds total,
+with maximum constraint violation0.1606. It spent377.40of410.17solver seconds
+in linear solves. The configured300-second solver cap was only checked at
+coarse iteration boundaries. This candidate is neither a feasible point nor
+an obstruction. A separately frozen180-second pilot tests `rho_x=0.01` on the
+same outer constraint set. A separately frozen300-second HiGHS run tests the
+full-profile **linear** relaxation, dropping all PSD blocks. Both are pending
+at this checkpoint; neither numerical status alone can settle the source.
+
+### Completed global trial, replay pending
+
+The3600-second global run ended `UNKNOWN_OUTER_WALL_LIMIT` after3557saved
+records. It emitted6713new same-sector closure obstructions and198new signature
+circuits, for26735total source cuts and529total signature circuits. Every new
+source cut came from closure; the order-four stage and fixed-witness minimizer
+were not reached for new cuts. The new cut cardinalities range from3through13,
+including one triple. A full independent physical/CNF/record replay is running.
+No source anchor is excluded and there is no full frame. These additional
+clauses are reusable proof-search input, not a mathematical resolution or a
+measured reduction of the sufficient cover.
