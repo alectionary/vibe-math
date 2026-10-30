@@ -1,0 +1,164 @@
+{
+  "document_kind": "explicit_root_scientific_overrides",
+  "complete_packet": false,
+  "source_specification_sha256": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+  "reviewed_utc": "2026-10-30T23:25:25.106940+00:00",
+  "adjudicator": "root investigator after separate guard_validation ordinary mathematical audit",
+  "artifacts": [
+    {
+      "id": "narrow-analytical-evidence",
+      "path": "handoff/narrow-analytical-evidence.json",
+      "sha256": "868f66ebf63fee0ba8c71bac641a78d8f87635ee63fe196ac7d952577e6fe00c"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C2-1.positive",
+      "ours": {
+        "value": "For any finite real beta0,beta1 and genetic value g, exp(beta0+beta1*g)>0. If g is a finite-variance Gaussian variable it is finite almost surely, so the environmental variance is strictly positive almost surely.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "Independent ordinary algebra, inspected source equations/code and existing deterministic computational checks.",
+      "uncertainty": "Exact real-arithmetic statements under the stated assumptions. Finite-difference checks illustrate the algebra; no sampling interval, posterior convergence or empirical uncertainty claim.",
+      "multiplicity": "No sampling hypothesis-test family applies to these deterministic identities and counterexamples.",
+      "status": "replicated",
+      "status_reason": "Established by ordinary exact analysis; narrow mathematical target fully addressed.",
+      "numerical": "No source-target rounded aggregate comparison applies. Any displayed finite-difference value or inverse-ratio example is a numerical illustration of the exact argument.",
+      "reconstruction_scope": "Established by ordinary exact analysis; narrow mathematical target fully addressed.",
+      "reproduction_deviation": "No single scalar reproduction deviation is meaningful; printed-expression and implemented-model statements are distinguished explicitly.",
+      "limitations": [
+        "This concerns variance, not standard deviation; it does not establish empirical fit or any bias-removal claim.",
+        "Finite-precision overflow or underflow is a separate implementation issue, not a counterexample to positivity over real numbers."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-outputs-engine-agreement-csv",
+        "historical-simulation-analytic_checks-py",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "narrow-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Established by ordinary exact analysis; narrow mathematical target fully addressed.",
+        "attempted": "Read source text and existing analytical output/script; visually inspected both saved formula crops. Independent ordinary derivations below; no new numerical runs.",
+        "untested": "No substantive algebraic gap; Lean absence is only a separate formal-certification limitation.",
+        "resource_basis": "The exact algebra requires no repeated-dataset fit. Unavailable empirical/calibration inputs and unperformed convergence experiments concern distinct targets.",
+        "next_evidence": "No additional computation is necessary for the stated identities or literal formula counterexamples. Source implementation/calibration records are needed to determine whether empirical plotted calculations used the displayed formulas."
+      }
+    },
+    {
+      "id": "C2-1.delta",
+      "ours": {
+        "value": "Let V_A>0 denote the genetic variance, s_A=sqrt(V_A), and v_E(g)=exp(beta0+beta1*g). Then v_E(g+s_A)/v_E(g)=exp(beta1*s_A)=Delta>0 for any g. Taking logarithms uniquely gives beta1=log(Delta)/s_A. In particular the source comparison uses g=0 and g=s_A; its baseline environmental variance is exp(beta0), not beta0 itself.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "Independent ordinary algebra, inspected source equations/code and existing deterministic computational checks.",
+      "uncertainty": "Exact real-arithmetic statements under the stated assumptions. Finite-difference checks illustrate the algebra; no sampling interval, posterior convergence or empirical uncertainty claim.",
+      "multiplicity": "No sampling hypothesis-test family applies to these deterministic identities and counterexamples.",
+      "status": "replicated",
+      "status_reason": "Established by ordinary exact analysis with positive genetic variance; numerical illustration and empirical power are separate.",
+      "numerical": "No source-target rounded aggregate comparison applies. Any displayed finite-difference value or inverse-ratio example is a numerical illustration of the exact argument.",
+      "reconstruction_scope": "Established by ordinary exact analysis with positive genetic variance; numerical illustration and empirical power are separate.",
+      "reproduction_deviation": "No single scalar reproduction deviation is meaningful; printed-expression and implemented-model statements are distinguished explicitly.",
+      "limitations": [
+        "For V_A=0, Delta=1 for any finite beta1 and the inverse formula divides by zero; beta1 is not identified by this ratio.",
+        "This is an environmental-VARIANCE ratio. The environmental-SD ratio for the same genetic shift is sqrt(Delta).",
+        "The adjacent source example for Delta1.5 writes 0.5*1.5=0.75, while the preceding example uses environmental baseline0.2. The general identity does not validate a common-baseline reading of those numerical examples; that arithmetic/source-context discrepancy is a separate target."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-outputs-engine-agreement-csv",
+        "historical-simulation-analytic_checks-py",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "narrow-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Established by ordinary exact analysis with positive genetic variance; numerical illustration and empirical power are separate.",
+        "attempted": "Read source text and existing analytical output/script; visually inspected both saved formula crops. Independent ordinary derivations below; no new numerical runs.",
+        "untested": "No outstanding mathematical obligation for the stated identity under V_A>0,Delta>0; simulation recovery/power remains separate.",
+        "resource_basis": "The exact algebra requires no repeated-dataset fit. Unavailable empirical/calibration inputs and unperformed convergence experiments concern distinct targets.",
+        "next_evidence": "No additional computation is necessary for the stated identities or literal formula counterexamples. Source implementation/calibration records are needed to determine whether empirical plotted calculations used the displayed formulas."
+      }
+    },
+    {
+      "id": "C3-2.information",
+      "ours": {
+        "value": "For Y~Bernoulli(p(theta)), p=logistic(a*(theta-b)), the theta score is a*(Y-p). Thus Fisher information for theta is E[score^2]=a^2*p*(1-p), also equal to minus expected second derivative. The crop confirms Eq3.4 actually prints p*(1-p), without a^2. At a=2,theta=b, true theta information is1, whereas the printed expression is1/4. Existing finite-difference output 0.9999999999131821 independently corroborates this exact discrepancy. For unit positive slope a=1, Eq3.4 is correct. It also equals information for each item-specific logit coordinate eta=a*(theta-b), but those differently scaled coordinates cannot be treated as a single common theta without Jacobian factors. Under fixed known calibration and conditional item independence, the likelihood factors and the total theta score is the sum of independent mean-zero item scores. Its variance equals the sum of the correct item information values, establishing Eq3.5. TI(theta)^(-1/2) is the conventional information-based conditional standard-error function for TI>0. If interpreted as an exact finite-sample sampling SD or an arbitrary posterior SD, Eq3.6 is not generally established: equality with actual estimator variance requires efficiency/appropriate approximation, and posterior uncertainty depends on the prior.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "Independent ordinary algebra, inspected source equations/code and existing deterministic computational checks.",
+      "uncertainty": "Exact real-arithmetic statements under the stated assumptions. Finite-difference checks illustrate the algebra; no sampling interval, posterior convergence or empirical uncertainty claim.",
+      "multiplicity": "No sampling hypothesis-test family applies to these deterministic identities and counterexamples.",
+      "status": "partly_replicated",
+      "status_reason": "Analytical audit completed with a literal formula discrepancy: Eq3.4 is correct for unit slope, but not for general source OPLM slopes. Additivity and inverse-information uncertainty require their stated interpretation.",
+      "numerical": "No source-target rounded aggregate comparison applies. Any displayed finite-difference value or inverse-ratio example is a numerical illustration of the exact argument.",
+      "reconstruction_scope": "Analytical audit completed with a literal formula discrepancy: Eq3.4 is correct for unit slope, but not for general source OPLM slopes. Additivity and inverse-information uncertainty require their stated interpretation.",
+      "reproduction_deviation": "No single scalar reproduction deviation is meaningful; printed-expression and implemented-model statements are distinguished explicitly.",
+      "limitations": [
+        "No missing discrimination factor can be excused merely because the OPLM slopes are treated as known; their derivatives with respect to theta still enter information.",
+        "Actual Figure3.2 computations/calibration files were not obtained. A printed error does not establish that its plotted implementation omitted a^2.",
+        "Information additivity and normalization of SE cannot validate the source empirical biometric conclusions."
+      ],
+      "artifact_ids": [
+        "historical-outputs-analytic-checks-json",
+        "historical-evidence-eq3-information-png",
+        "historical-simulation-analytic_checks-py",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "narrow-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Analytical audit completed with a literal formula discrepancy: Eq3.4 is correct for unit slope, but not for general source OPLM slopes. Additivity and inverse-information uncertainty require their stated interpretation.",
+        "attempted": "Read source text and existing analytical output/script; visually inspected both saved formula crops. Independent ordinary derivations below; no new numerical runs.",
+        "untested": "Actual plotted implementation remains unresolved; no additional algebra or model run is needed to establish the printed unit-slope versus OPLM distinction.",
+        "resource_basis": "The exact algebra requires no repeated-dataset fit. Unavailable empirical/calibration inputs and unperformed convergence experiments concern distinct targets.",
+        "next_evidence": "No additional computation is necessary for the stated identities or literal formula counterexamples. Source implementation/calibration records are needed to determine whether empirical plotted calculations used the displayed formulas."
+      }
+    },
+    {
+      "id": "C4-4.probabilities",
+      "ours": {
+        "value": "AppendixB defines eta_k=alpha*(theta-beta_k), s_k=sum_{l=1}^k eta_l, and p_k=exp(s_k)/sum_{j=1}^3 exp(s_j). For finite real inputs each term is positive, the denominator is positive, and sum_k p_k=1 exactly. For k=2,3, log(p_k/p_{k-1})=s_k-s_{k-1}=alpha*(theta-beta_k). Thus adjacent-category logits agree with the implemented cumulative-exponential model. The common eta_1 factor cancels from all probabilities: after cancellation weights are 1, exp(eta_2), exp(eta_2+eta_3). beta_1 fixed at0 is a redundant reference contribution, with effective transitions at beta_2,beta_3. The inspected crop instead prints p_no=1/(1+u*v), p_question=p_no*u, p_yes=p_no*p_question*v, with u=exp(alpha*(theta-beta_1)), v=exp(alpha*(theta-beta_2)). At theta=0 and both displayed thresholds0, alpha=1, these probabilities are1/2,1/2,1/4, summing to5/4. The discrepancy is in the source ink, not merely text extraction. At that zero setting, the AppendixB cumulative-exponential model gives three probabilities1/3. Its indexing uses beta_2,beta_3 as transitions; one cannot silently identify these with the literal printed beta_1,beta_2 expressions without explaining the remapping.",
+        "units": "exact textual proposition",
+        "unavailable_reason": null
+      },
+      "methods": "Independent ordinary algebra, inspected source equations/code and existing deterministic computational checks.",
+      "uncertainty": "Exact real-arithmetic statements under the stated assumptions. Finite-difference checks illustrate the algebra; no sampling interval, posterior convergence or empirical uncertainty claim.",
+      "multiplicity": "No sampling hypothesis-test family applies to these deterministic identities and counterexamples.",
+      "status": "replicated",
+      "status_reason": "Normalized AppendixB probability/adjacent-logit target established by ordinary algebra. Literal printed equations fail normalization; do not collapse these two verdicts.",
+      "numerical": "No source-target rounded aggregate comparison applies. Any displayed finite-difference value or inverse-ratio example is a numerical illustration of the exact argument.",
+      "reconstruction_scope": "Normalized AppendixB probability/adjacent-logit target established by ordinary algebra. Literal printed equations fail normalization; do not collapse these two verdicts.",
+      "reproduction_deviation": "No single scalar reproduction deviation is meaningful; printed-expression and implemented-model statements are distinguished explicitly.",
+      "limitations": [
+        "This certifies the mathematical probability kernel specified by the printed AppendixB code, not that empirical fits ran that exact source version or converged.",
+        "Floating-point exponentials can overflow; the ordinary real-arithmetic identity is not a numerical-stability certification.",
+        "The normalized implementation must not be described as faithful reproduction of Eqs4.6-4.9 as literally printed."
+      ],
+      "artifact_ids": [
+        "historical-outputs-original-programs-csv",
+        "historical-outputs-analytic-checks-json",
+        "historical-evidence-eq4-probabilities-png",
+        "historical-simulation-analytic_checks-py",
+        "historical-provenance-R-session-txt",
+        "historical-diagnostic-evidence",
+        "narrow-analytical-evidence"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "Normalized AppendixB probability/adjacent-logit target established by ordinary algebra. Literal printed equations fail normalization; do not collapse these two verdicts.",
+        "attempted": "Read source text and existing analytical output/script; visually inspected both saved formula crops. Independent ordinary derivations below; no new numerical runs.",
+        "untested": "No substantive algebraic gap for implemented normalization/adjacent logits. Empirical implementation provenance, fitted results and unrelated posterior uncertainty remain separate.",
+        "resource_basis": "The exact algebra requires no repeated-dataset fit. Unavailable empirical/calibration inputs and unperformed convergence experiments concern distinct targets.",
+        "next_evidence": "No additional computation is necessary for the stated identities or literal formula counterexamples. Source implementation/calibration records are needed to determine whether empirical plotted calculations used the displayed formulas."
+      }
+    }
+  ]
+}
