@@ -613,8 +613,36 @@ additional information. No solve of that final intersection is claimed here.
 | Exact structural progress | Met | Conditional zero-pool face, span-closure dominance, exact finite-relaxation feasibility, complete triple distributions, and projected shared-profile separating inequality |
 | Independent source binding and acceptance | Met for stated auxiliary claims | Physical rank/closure consumers, exact rational and interval PSD replay, immutable global source replay, all-mask shared-profile consumer |
 | Preserve failed and limited trials | Met | Recovery rejections, full-model timeouts, negative detector cohorts, unhelpful corrective comparison, numerical-only local probes, free90-anchor timeout |
-| Clean-checkout final replay | Pending at this scientific checkpoint | Initial a423fbe clean replay already passes; final immutable replay receipt will be added at closeout |
+| Clean-checkout final replay | Met | Ten consumers pass from immutable2c0824788c162ab24579c7311b08f112ec9d747b in44.46seconds; clean before/after; `final-clean-replay/summary.json` |
 | Inventory and source reconciliation | Met |424 canonical,160 eligible,204 papers,165 full screens,6 Lean complete; zero source-resolution delta, one software-doc index row |
 | Literature harvest | Not applicable to new papers | No new paper acquired in this block; Sage documentation indexed as software, not a paper or author question |
 | Publication on master | Pending required review | PR17 is the authorized integration route; work branch is a checkpoint until master integration |
 | Resumable next action | Met | Final exact point and separating cuts, bounded next necessary-model solve and explicit source acceptance gate |
+
+## Preservation and independent replay
+
+The scientific checkpoint is `2c0824788c162ab24579c7311b08f112ec9d747b`.
+Ten independently callable consumers pass in a detached clean checkout, with
+outputs kept outside that checkout. The replay covers augmented rank validity,
+span-closure dominance, final rank validity and strict separation, full combined
+exact moments/PSD, global-obstruction moment consequences, the complete Boolean
+triple screen, direct exact triple distributions, and fixed/projected/pruned
+shared-profile inequalities. The checkout is clean before and after all checks.
+Elapsed replay time is44.46seconds. Commands, logs and hash-bound receipts are
+in `moment-resumption-results/final-clean-replay/`. The earlier global physical
+CNF replay remains an unchanged immutable dependency; its430-second replay is
+not silently counted as part of this44-second check.
+
+Concurrent master `4c78e0d9ec4fcdc0289d17b90e5ac40f0eaf5d4c` was merged without
+conflicts as `4d390f38df27407a5e5d5815931ded931119f1e3`. Those independent
+replication changes do not touch the C16 scientific inputs or central ledgers.
+The exact research artifacts remain identical to the scientific checkpoint.
+PR17 still reports `REVIEW_REQUIRED`, so publication to master is pending.
+The user-restored goal has not been marked paused or mathematically complete.
+
+Three deliberately corrupted copies of the final projected certificate are
+also rejected from the clean checkout: an invalid class bound, a false claimed
+violation, and a wrong point hash. These are rejection controls, not source
+certificates. Their separate receipt is `final-negative-controls/summary.json`.
+[Exact resumption instructions](MOMENT-RESUME.md) give the next row translation,
+model-scope distinction, acceptance commands and remaining gap.
