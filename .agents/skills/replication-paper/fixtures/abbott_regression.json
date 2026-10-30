@@ -1,0 +1,127 @@
+{
+  "rounding_match": {
+    "published": "0.86",
+    "ours": "0.8602",
+    "decimals": 2,
+    "scope": "limited",
+    "note": "Printed two-decimal correlation. 0.8602 rounds half up to 0.86. Scope stays limited because the input is a rounded summary matrix."
+  },
+  "third_decimal_close": {
+    "published": "0.057",
+    "ours": "0.0578",
+    "decimals": 3,
+    "scope": "limited",
+    "note": "0.0578 rounds half up to 0.058, so it is not a match at three decimals. The gap is under one unit in the last place."
+  },
+  "scaled_difference": {
+    "source": "https://www.statmodel.com/chidiff.shtml",
+    "procedure": "Satorra and Bentler (2001): numerator is the normal-theory chi-square difference. With Mplus scaled chi-squares that numerator is T*c.",
+    "initial_versus_refined": {
+      "t0": "350.161",
+      "df0": 181,
+      "c0": "1.456",
+      "t1": "295.571",
+      "df1": 178,
+      "c1": "1.463",
+      "printed": "52.457",
+      "printed_df": 3,
+      "decimals": 3
+    },
+    "general_versus_refined": {
+      "t0": "319.462",
+      "df0": 179,
+      "c0": "1.488",
+      "t1": "295.571",
+      "df1": 178,
+      "c1": "1.463",
+      "printed": "-21.803",
+      "printed_df": 2,
+      "decimals": 3
+    }
+  },
+  "incomparable": [
+    {
+      "name": "core plain ML CFI against auxiliary robust CFI",
+      "index": "cfi",
+      "left": {
+        "estimator": "ML",
+        "missingness": "complete summary matrix",
+        "n": 296,
+        "normalizer": "N-1",
+        "mean_structure": "saturated",
+        "variable_set": "core-21",
+        "df": 178,
+        "baseline": "independence",
+        "robust_correction": "none",
+        "fit_index": "CFI from plain ML chi-square"
+      },
+      "right": {
+        "estimator": "MLR",
+        "missingness": "FIML",
+        "n": 308,
+        "normalizer": "N",
+        "mean_structure": "saturated",
+        "variable_set": "auxiliary-saturated",
+        "df": 326,
+        "baseline": "independence",
+        "robust_correction": "MLR",
+        "fit_index": "CFI from the scaled chi-square"
+      }
+    },
+    {
+      "name": "plain ML chi-square against robust chi-square, same variables",
+      "index": "chisq",
+      "left": {
+        "estimator": "ML",
+        "missingness": "complete summary matrix",
+        "n": 296,
+        "normalizer": "N-1",
+        "mean_structure": "saturated",
+        "variable_set": "core-21",
+        "df": 178,
+        "baseline": "independence",
+        "robust_correction": "none",
+        "fit_index": "normal-theory chi-square"
+      },
+      "right": {
+        "estimator": "MLR",
+        "missingness": "FIML",
+        "n": 308,
+        "normalizer": "N",
+        "mean_structure": "saturated",
+        "variable_set": "core-21",
+        "df": 178,
+        "baseline": "independence",
+        "robust_correction": "MLR",
+        "fit_index": "scaled chi-square"
+      }
+    }
+  ],
+  "comparable_srmr": {
+    "index": "srmr",
+    "left": {
+      "estimator": "ML",
+      "missingness": "complete summary matrix",
+      "n": 296,
+      "normalizer": "N-1",
+      "mean_structure": "saturated",
+      "variable_set": "core-21",
+      "df": 178,
+      "baseline": "independence",
+      "robust_correction": "none",
+      "fit_index": "SRMR from correlation residuals"
+    },
+    "right": {
+      "estimator": "MLR",
+      "missingness": "FIML",
+      "n": 308,
+      "normalizer": "N",
+      "mean_structure": "saturated",
+      "variable_set": "core-21",
+      "df": 178,
+      "baseline": "independence",
+      "robust_correction": "MLR",
+      "fit_index": "SRMR from correlation residuals"
+    }
+  }
+}
