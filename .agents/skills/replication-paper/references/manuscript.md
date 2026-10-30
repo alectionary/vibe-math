@@ -22,7 +22,11 @@ The abstract, and the first paragraph of the introduction, open with our
 verdict on that headline. The first sentence is the verdict, one of
 replicated, partly replicated, not replicated, or not established (including
 blocked comparisons), followed by the
-published-versus-ours headline numbers. When the headline missed, that
+published-versus-ours headline numbers. Identify and cite the replicated work
+and state its original headline finding in the abstract opening; combine this
+with the verdict in one readable sentence. Verify the source metadata rather
+than inventing it. Apply the [first-page contract](first-page-contract.md).
+When the headline missed, that
 sentence says so. A matching supporting result does not take its place.
 
 The next sentence is what we could not establish, phrased as the limit of
@@ -35,11 +39,18 @@ on page 1, in the abstract or in the headline table. Use "reported" or
 "concluded". Do not write "the author claims".
 
 Put the headline table immediately after the abstract, before the
-introduction. Columns: claim, published, ours, same direction?, verdict.
+introduction. Columns: scientific estimand/claim, published signed effect, ours,
+Effect magnitude, direction, scientific verdict. Magnitude is smaller/same/larger
+at the declared rounding-aware or prespecified tolerance, or not established
+for unresolved/unstable estimates. Keep reversals explicit even when absolute
+magnitudes agree. These are descriptive point estimates, not equivalence; keep
+uncertainty-supported inferences separate. See the first-page contract for the
+structured fields and rendered checks.
 The verdict is one of `match`, `partial`, `close`, `no match`,
-`not separated`. Use `not separated` when the direction agrees and the
-difference sits inside the tolerance, so a ranking of the two numbers is
-not established. The caption or the abstract states the tolerance.
+`not separated`. Use `not separated` when a ranking is not established under
+the stated uncertainty analysis; a descriptive magnitude label of `same` does
+not establish that result or equivalence. The caption or abstract states the
+comparison tolerance and distinguishes it from sampling uncertainty.
 
 After that opening, organize by scientific questions, findings, methods, and
 evidence limits. Explain diagnostics only when they affect interpretation;

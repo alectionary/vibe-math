@@ -130,8 +130,10 @@ class PDFLinks(unittest.TestCase):
 
     def test_bad_pdf_target_fails_even_with_updated_hashes_and_good_source(self):
         fixture, record = self.fixture(); root = fixture.root
-        (root / 'source.tex').write_text('Visible source destination: '+MASTER)
-        make_pdf(root / 'main.pdf', [('results.txt', MASTER.replace('/master/', '/feature/'))])
+        with fitz.open(root/'main.pdf') as doc:
+            page=doc[0]; link=page.get_links()[0]; link['uri']=MASTER.replace('/master/','/feature/')
+            page.update_link(link); doc.save(root/'modified.pdf')
+        (root/'modified.pdf').replace(root/'main.pdf')
         (root / 'links.json').write_text(json.dumps(m.extract(root / 'main.pdf')))
         record['link_inventory']['sha256'] = m.digest(root / 'links.json')
         for key in ('primary','source'):

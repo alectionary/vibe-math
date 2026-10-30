@@ -3,6 +3,8 @@
 Read the research reference for domain checks. Freeze `evidence-packet.json`
 with `schema_version: 1`, using the contract below. Paths are relative to the
 study root; retain reproducible files there. Validate with `stage_checks.py`.
+Include the verified `replicated_work` metadata and signed `headline_effects`
+rows defined by the [first-page contract](first-page-contract.md).
 The validator checks declared coverage and file hashes, not whether an author
 has omitted a claim. A source-reading inventory audit is mandatory.
 

@@ -62,6 +62,21 @@ class Stages(unittest.TestCase):
                            synthesis='Partly replicated: conditional lower error, cross-population robustness not established',
                            limitations=['C1: unknown original counts', 'C2: two populations unavailable'])
 
+        self.packet['replicated_work'] = dict(kind='dissertation', authors='Ada Smith', year='2020',
+            title='Estimation accuracy', institution_or_venue='Example University', identifier='https://example.org/source',
+            verification_locator='Title page and chapter 2', artifact_ids=['results'])
+        self.packet['headline_effects'] = [dict(id='E1', claim_id='C1', contrast_index=0,
+            estimand='B minus A', units='percent', positive_means='A has lower error',
+            published_effect=13.184, ours_effect=13.208, estimate_status='resolved',
+            tolerance=dict(kind='rounding', value=0.0005, decimals=3, basis='Half of the source printed unit'),
+            magnitude='larger', direction='same direction', display_decimals=3,
+            interpretation='descriptive point estimates; not equivalence', uncertainty_statement='Source simulation error unknown'),
+            dict(id='E2', claim_id='C2', contrast_index=None, estimand='Robustness across populations', units='percent',
+            positive_means='A has lower error', published_effect=None, ours_effect=None, estimate_status='unresolved',
+            unresolved_reason='Two populations unavailable', tolerance=dict(kind='prespecified',value=0.01,basis='Planned comparison threshold'),
+            magnitude='not established', direction='not established', display_decimals=3,
+            interpretation='descriptive point estimates; not equivalence', uncertainty_statement='No cross-population estimate')]
+
     def test_valid_packet_keeps_blocked_headline(self):
         self.assertEqual(m.packet_errors(self.packet, self.root), [])
 
@@ -116,11 +131,16 @@ class Stages(unittest.TestCase):
         def save(name, content):
             (self.root / name).write_text(content)
             return dict(path=name, sha256=m.digest(self.root / name))
-        source = save('source.tex', case['abstract'] + '\n' + case['introduction'])
+        abstract_text = case['abstract'] + ' Smith (2020) reported lower error for A and robustness across populations.'
+        source = save('source.tex', r'\begin{abstract}'+abstract_text+r' \cite{smith2020}\end{abstract}'+case['introduction'])
         # A real PDF is required because acceptance extracts its link annotations.
         with fitz.open() as document:
             page = document.new_page()
-            page.insert_textbox(fitz.Rect(50, 50, 550, 350), case['abstract'])
+            page.insert_textbox(fitz.Rect(50, 50, 550, 220), abstract_text)
+            page.insert_text((50,250),'Effect magnitude (percent)', fontsize=9)
+            page.insert_text((50,270),'B minus A 13.184 13.208 larger same direction tol 0.0005', fontsize=9)
+            page.insert_text((50,290),'Robustness not established not established not established not established tol 0.01', fontsize=9)
+            page.insert_text((50,310),'Descriptive point estimates; not equivalence.', fontsize=9)
             page.insert_text((50, 400), 'results.txt')
             page.insert_link({'kind':fitz.LINK_URI, 'from':fitz.Rect(50, 385, 150, 405), 'uri':'https://github.com/a/b/blob/master/results.txt'})
             document.save(self.root / 'main.pdf')
@@ -130,7 +150,15 @@ class Stages(unittest.TestCase):
         template = save('template.tex', 'approved template fixture')
         writer = save('writer.json', json.dumps(dict(writer='writer', context='fresh', packet_sha256=packet['sha256'],
                      inputs=[packet, template, self.artifact], claim_map={'C1': 'p1 table', 'C2': 'p1 limit'},
-                     limitations_map={'0': 'p1 uncertainty', '1': 'p1 missing inputs'})))
+                     limitations_map={'0': 'p1 uncertainty', '1': 'p1 missing inputs'},
+                     first_page=dict(abstract=dict(bbox=[45,45,555,225], citation_key='smith2020',
+                         source_identification='Smith (2020)', source_citation='Smith (2020)',
+                         original_finding='reported lower error for A and robustness across populations',
+                         verdict_evidence=case['abstract'].split('. ')[0], claim_ids=['C1','C2']),
+                         table=dict(bbox=[45,235,555,320], magnitude_heading='Effect magnitude',
+                         comparison_note='Descriptive point estimates; not equivalence.', rows=[
+                         dict(effect_id='E1',bbox=[45,255,555,275],estimand_text='B minus A',tolerance_text='tol 0.0005'),
+                         dict(effect_id='E2',bbox=[45,280,555,295],estimand_text='Robustness',tolerance_text='tol 0.01')])))))
         def git(*args):
             return subprocess.check_output(['git', '-C', str(self.root), *args], stderr=subprocess.DEVNULL).decode().strip()
         git('init'); git('config', 'user.name', 'Test'); git('config', 'user.email', 'test@example.invalid')
