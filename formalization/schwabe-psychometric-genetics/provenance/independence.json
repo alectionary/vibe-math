@@ -26,5 +26,26 @@
     "independent": "Centred original program versus independently written noncentred graph, on same generated data, source-length chains",
     "limit": "JAGS likelihood engine, model and priors shared. Five posterior means agree within exploratory conditional MC bands; finite effective samples and Rhat diagnostics do not prove convergence or empirical validity.",
     "evidence": "outputs/posterior-comparison.csv; outputs/original-c2-confirmation.csv"
+  },
+  {
+    "check": "Figure1.3 two curve reconstruction methods",
+    "shared_inputs": "Same PDF source vectors and axis calibration",
+    "independent": "Nonlinear probability-space fit versus central-logit linear fit",
+    "limit": "Method crosscheck only; neither recovers independent responses or verifies the source generating procedure",
+    "evidence": "provenance/illustration-followup.json; provenance/illustration-independent-review.json"
+  },
+  {
+    "check": "Figure7.1 marker and coordinate audit",
+    "shared_inputs": "Same plotted marker centers; same underlying source simulation",
+    "independent": "Bounding-box versus Bezier-anchor centers; all-tick versus endpoint calibration; joint coordinate-box feasibility fixtures",
+    "limit": "Geometric reconstruction and sensitivity checks, not independent simulation or statistical population inference",
+    "evidence": "provenance/illustration-followup.json; provenance/illustration-independent-review.json"
+  },
+  {
+    "check": "C5-1 algebra and finite-sample counterexample",
+    "shared_inputs": "Stated latent model and Rasch likelihood; no original empirical data",
+    "independent": "Written derivation checked with symbolic identities/exact rational witnesses; Gaussian quadrature illustrates, but does not prove, the separate monotonic likelihood argument",
+    "limit": "No Lean formalization or full marginal item-identifiability proof; source-model assumptions shared; formal source conclusions remain qualified",
+    "evidence": "provenance/identification-check.json; simulation/identification_check.py"
   }
 ]

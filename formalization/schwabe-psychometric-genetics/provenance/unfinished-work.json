@@ -13,9 +13,10 @@
       "id": "C1-2",
       "source_locator": "Fig1.3 p8",
       "status": "attempted/unresolved",
-      "classification": "partially feasible validation; original stochastic or empirical inputs may limit exact recovery",
-      "actual_evidence": "outputs/analytic-checks.json",
-      "remaining": "Exact curve coordinates remain unresolved."
+      "classification": "source-figure reconstruction established within geometric bounds; original generation procedure remains unavailable",
+      "actual_evidence": "outputs/analytic-checks.json; provenance/illustration-followup.json; provenance/illustration-independent-review.json; evidence/fig1-3-icc-source.png",
+      "remaining": "Original simulated responses, item estimates and plot driver remain unavailable. Source curve geometry is now reconstructed; no source decimal-precision or independent simulation-replication verdict.",
+      "completed_followup": "Source vector curves reconstructed with discrimination2 and difficulties-2,-.5; maximum vertical residuals .0073 PDF points, within the .25-point geometry criterion. Independent central-logit fit agrees. Our unit-slope illustration is qualitative only; inferred figure parameters are not verified generating parameters."
     },
     {
       "id": "C2-1",
@@ -179,11 +180,12 @@
     },
     {
       "id": "C5-1",
-      "source_locator": "Eqs5.3-5.15 pp74-77; AppC pp138-139",
+      "source_locator": "Section5.1.2 p72; Eqs5.3-5.15 pp75-76; p84; AppC pp138-139",
       "status": "attempted/unresolved",
-      "classification": "feasible analytical proof/counterexample work remains; finite check insufficient",
-      "actual_evidence": "outputs/analytic-checks.json",
-      "remaining": "Global likelihood uniqueness and continuous-moderator extension not established by this finite check."
+      "classification": "restricted algebra and finite-sample counterexample established; full marginal identification/interior likelihood work remains",
+      "actual_evidence": "outputs/analytic-checks.json; provenance/identification-check.json; simulation/identification_check.py; evidence/p72-identification-claim.png",
+      "remaining": "Establish full marginal item-model identifiability under explicit calibration/support assumptions and assess interior likelihood behavior for nondegenerate data. Restricted algebra/counterexample does not close the whole result group.",
+      "completed_followup": "Exact algebra verifies conditional ACE covariance inversion, two-level logvariance identification and monotonicity. Binary path reflection is distinguished from continuous-support global sign ambiguity. A written all-zero Rasch-response counterexample shows that population injectivity does not ensure a finite sample likelihood maximum; this does not contradict the empirical posterior fits."
     },
     {
       "id": "C5-2",
@@ -301,9 +303,10 @@
       "id": "C7-1",
       "source_locator": "Fig7.1 p110",
       "status": "attempted/unresolved",
-      "classification": "partially feasible validation; original stochastic or empirical inputs may limit exact recovery",
-      "actual_evidence": "outputs/ch7-illustration.pdf; outputs/analytic-checks.json",
-      "remaining": "Exact source points require original seed; mechanism checked."
+      "classification": "source-figure reconstruction established within geometric bounds; original generation procedure remains unavailable",
+      "actual_evidence": "outputs/ch7-illustration.pdf; outputs/analytic-checks.json; provenance/illustration-followup.json; provenance/illustration-independent-review.json; evidence/fig7-1-source.png",
+      "remaining": "Original generation seed/driver still needed to repeat the source simulation. Plot-derived moments and plausible1/.001 or .5/.5 component variances do not identify the original generating parameters.",
+      "completed_followup": "Both source panels contain10000 markers. Extracted correlations are .99950/.70955; residual sample variances approximately .001/.502. Exact-noise-free baseline is an idealized limit. First-panel residual coordinate envelope includes zero, although joint geometry excludes exact collinearity; these are plot reconstructions, not population estimates or new simulations."
     },
     {
       "id": "C7-2",
@@ -335,7 +338,7 @@
     "Chapter6 bounded checkpoint batches, validate Hessian/SE and source-design sensitivity",
     "Chapter2 independent chains and tail convergence before100-dataset grid",
     "Chapter5 measured benchmarks and validated acceleration before250-dataset grid",
-    "Analytical global-identification/likelihood assertions need proof or counterexamples",
+    "Full marginal item-model identification and nondegenerate interior likelihood behavior remain open; restricted covariance proofs and finite-sample uniqueness counterexample recorded",
     "Empirical inputs require permitted public acquisition; author contact remains unauthorized"
   ],
   "resource_evidence": "outputs/production-resource-plan.json",
