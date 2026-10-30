@@ -1,0 +1,76 @@
+{
+  "verdict": "pass",
+  "necessary_fixes": [],
+  "pdf_sha256": "4b2ab41046cac820d4aa231837898c506095dfe53322db574eede303ed44afdc",
+  "rendered_pages_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "unchanged_render_pages_verified_byte_identical": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "source_checks": [
+    "Title page 1 image: Arthur Pesah, exact title, UCL MRes, 1 September 2021",
+    "Abstract page 3 image: reported cubic improvement from approximately 22% to more than 36%",
+    "Source text Table 3.1 page 48: cubic BP X 2.9/7.4, Z 21.7/>36, Sweep depolarizing 4.4/4.7; caption says deformed Z imprecise",
+    "Source text Table 3.2 page 53: rhombic Z 28.4/6.5"
+  ],
+  "saved_evidence_hash_checks": {
+    "expansion/pure-z-analysis.json": true,
+    "results/analysis.json": true,
+    "expansion/rhombic-Z-pure-analysis.json": true,
+    "expansion/threshold-comparisons.json": true
+  },
+  "numerical_checks": {
+    "cubic_X_signed_effect_pp": 5.18159861137897,
+    "cubic_X_magnitude_difference_pp": 0.68159861137897,
+    "cubic_X_label": "larger",
+    "rhombic_Z_signed_effect_pp": -20.91623254681793,
+    "rhombic_Z_magnitude_difference_pp": -0.98376745318207,
+    "rhombic_Z_label": "smaller",
+    "same_tolerance_pp": 0.1,
+    "cubic_Z": "unresolved; no magnitude label",
+    "Sweep": "diagnostic sign reversal +0.300 to -0.134 pp; magnitude withheld for unreliable fit"
+  },
+  "findings": [
+    "Abstract explicitly identifies and cites source and states its reported improvement.",
+    "Greater-than-36 is preserved as reported lower-bound statement, not precise threshold.",
+    "Point-estimate magnitude labels are explicitly separated from direction, CI/population claims and equivalence.",
+    "Sweep sign is explicit in direction column and signed footnote; unstable magnitude withheld.",
+    "First-page table and reflowed pages 2-6 are readable, with no clipping or overlap.",
+    "No scientific claim changes detected outside requested abstract and first-page comparison framing."
+  ],
+  "inputs": [
+    "current PDF",
+    "/tmp/pesah-firstpage-render/page-01.png through page-21.png",
+    "/tmp/pesah-master-link-render/page-07.png through page-21.png",
+    "/tmp/pesah-source-check-1.png",
+    "/tmp/pesah-source-check-3.png",
+    "/tmp/pesah2021.txt pages 48 and 53",
+    "paper/first-page-evidence.json",
+    "results/analysis.json selected comparisons/fits",
+    "expansion/rhombic-Z-pure-analysis.json fit and contrast summary",
+    "expansion/pure-z-analysis.json source_deformed summary",
+    "expansion/threshold-comparisons.json Sweep D-U row"
+  ],
+  "limits": "Independent scoped editorial/source/saved-evidence review; no new simulations, research, remote publication, repository edits or proof reruns.",
+  "blockers": []
+}
