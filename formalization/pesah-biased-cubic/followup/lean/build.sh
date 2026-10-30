@@ -6,3 +6,4 @@ LEAN=${LEAN:-lean}
 "$LEAN" -o Hadamard.olean Hadamard.lean
 "$LEAN" -o CyclicKernel.olean CyclicKernel.lean
 LEAN_PATH=. "$LEAN" SourceBridge.lean
+LEAN_PATH=. "$LEAN" -o CubicIncidence.olean CubicIncidence.lean
