@@ -1,5 +1,5 @@
 \input{approved-preamble.tex}
-\newcommand{\repo}[2]{\href{https://github.com/alectionary/vibe-math/blob/ae9d1e896cf77623f9fae754e55f1e437535413e/formalization/pesah-biased-cubic/#1}{\nolinkurl{#2}}}
+\newcommand{\repo}[2]{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/pesah-biased-cubic/#1}{\nolinkurl{#2}}}
 \title{Biased-noise thresholds of cubic and rhombic codes:\\a whole-dissertation replication audit of Pesah (2021)}
 \author{}
 \date{30 October 2026}
@@ -171,11 +171,11 @@ Analytical verification explains several structural properties without resolving
 \bibliography{expanded-references}
 \appendix
 \section{Reproduction artifacts}
-The complete numerical and analytical reproduction code, saved outputs and prerequisites are available at immutable revision \nolinkurl{ed52777cee600ce33e24d45a43f8938d8cc5d15d}: \href{https://github.com/alectionary/vibe-math/blob/ed52777cee600ce33e24d45a43f8938d8cc5d15d/formalization/pesah-biased-cubic/expansion/README.md}{\nolinkurl{expansion/README.md}} describes the experiments and \href{https://github.com/alectionary/vibe-math/blob/ed52777cee600ce33e24d45a43f8938d8cc5d15d/formalization/pesah-biased-cubic/followup/README.md}{\nolinkurl{followup/README.md}} describes the proof and diagnostic checks. The historical dissertation and reference code are external prerequisites with pinned revisions and hashes. Regenerating tables from saved outputs, rerunning simulations and extracting source evidence are separate commands in those instructions.
+The complete numerical and analytical reproduction code, saved outputs and prerequisites are available at immutable reproduction revision \href{https://github.com/alectionary/vibe-math/commit/ed52777cee600ce33e24d45a43f8938d8cc5d15d}{\nolinkurl{ed52777cee600ce33e24d45a43f8938d8cc5d15d}}: \repo{expansion/README.md}{expansion/README.md} describes the experiments and \repo{followup/README.md}{followup/README.md} describes the proof and diagnostic checks. The historical dissertation and reference code are external prerequisites with pinned revisions and hashes. Regenerating tables from saved outputs, rerunning simulations and extracting source evidence are separate commands in those instructions.
 
 The computations use Python 3.12.14 for the runtime and integer binary elimination, NumPy 2.3.5 for arrays and sampling, and SciPy 1.17.0 for sparse arithmetic and fitting \citep{python,numpy,scipy}. Historical reference validation uses qecsim 1.0b9 with its NetworkX 2.6.2 dependency \citep{qecsim,networkx}. Matplotlib 3.10.8 produces the scientific figures; Pillow 12.3.0 processes raster evidence \citep{matplotlib,pillow}. These are the reconstruction environment versions, not an assertion of the source's production environment.
 
-The accompanying editable manuscript and bibliography are \nolinkurl{expanded-manuscript.tex} and \nolinkurl{expanded-references.bib}; \repo{paper/expanded-build.sh}{expanded-build.sh} builds the main PDF. Evidence and comparison data are linked in the relevant sections. The scientific code and evidence links identify immutable repository snapshots.
+The accompanying editable manuscript and bibliography are \repo{paper/expanded-manuscript.tex}{expanded-manuscript.tex} and \repo{paper/expanded-references.bib}{expanded-references.bib}; \repo{paper/expanded-build.sh}{expanded-build.sh} builds the main PDF. Evidence and comparison data are linked in the relevant sections. Repository file links provide navigation; the labeled reproduction revision identifies the fixed computational record.
 
 \section{General algebra: proof-to-source correspondence}
 Lean 4.22.0 with Std verifies the statements below without admitted proofs or added axioms. Standard dependencies are \texttt{propext}, \texttt{Quot.sound} and, for existence and classification, \texttt{Classical.choice}. The executable build is \repo{followup/lean/build.sh}{build.sh}; the exact source-to-formal correspondence is documented in \repo{followup/cubic-proof-bridge.md}{cubic-proof-bridge.md}. These are formal reconstructions of standard code properties, not mathematical novelty claims.
