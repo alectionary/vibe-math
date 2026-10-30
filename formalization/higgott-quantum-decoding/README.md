@@ -133,3 +133,14 @@ python3.10 -m venv .source-pinned
 Output: `revision2/source_pinned_results.json`. A separate 10,000-shot pilot is retained as `source_pinned_pilot.json`, not pooled. Repository pins are not Higgott's recovered production environment. StimCirq/cirq-web/pytest were unnecessary for this serialized-circuit diagnostic and were not installed; NetworkX2.8.8 supplies an otherwise unpinned dependency. Installation and execution logs are retained.
 
 The bounded archival result is [public_archival_audit.md](revision2/public_archival_audit.md). Exact illustrated logical-path correspondence remains unavailable; the explicit canonical mapping in `basis_mapping.json` is not substituted for it. No author contact occurred. Additional full simulator work is not needed for this bounded pilot; independent geometry and ideal-state synthesis would be a larger separate task.
+
+## Verify published delivery
+
+The independent rendered review is [manuscript_review.json](revision2/manuscript_review.json). The delivery record pins the artifact revision and records downloaded-byte checks for the main PDF, editable source, bibliography, README and every source-evidence file. `revision2/verify_delivery.py` reproduces those downloads (network and curl required), writing temporary copies under `/tmp/higgott-verified-delivery` and refreshing only delivery metadata:
+
+```sh
+python revision2/verify_delivery.py ARTIFACT_COMMIT_FROM_DELIVERY_RECORD
+python /path/to/replication-paper/scripts/delivery_check.py revision2/delivery_record.json --root .
+```
+
+Use the checker from the separate skill draft PR58. Its test success is not manuscript acceptance: the independent review separately records layout, findings/tolerances, citations, ledger rows, links and independence limits against the PDF and all LaTeX/figure build inputs. Artifact review URLs use immutable commits; paper navigation links continue to target master after merge.
