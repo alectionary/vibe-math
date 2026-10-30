@@ -1,0 +1,111 @@
+{
+  "checks": [
+    {
+      "test": "complete_guard_valid_receipt",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "test": "reject_estimate_NaN",
+      "passed": true,
+      "result": "ValueError: Contradictory valid output"
+    },
+    {
+      "test": "reject_se_NaN",
+      "passed": true,
+      "result": "ValueError: Contradictory valid output"
+    },
+    {
+      "test": "reject_se_0",
+      "passed": true,
+      "result": "ValueError: Contradictory valid output"
+    },
+    {
+      "test": "reject_delta_variance_-1",
+      "passed": true,
+      "result": "ValueError: Invalid delta variance or SE relationship"
+    },
+    {
+      "test": "reject_delta_variance_NaN",
+      "passed": true,
+      "result": "ValueError: Contradictory valid output"
+    },
+    {
+      "test": "reject_delta_variance_2",
+      "passed": true,
+      "result": "ValueError: Invalid delta variance or SE relationship"
+    },
+    {
+      "test": "reject_status_6",
+      "passed": true,
+      "result": "ValueError: Contradictory valid output"
+    },
+    {
+      "test": "reject_seed_1",
+      "passed": true,
+      "result": "ValueError: Wrong seed"
+    },
+    {
+      "test": "reject_parameter_alignment_valid_FALSE",
+      "passed": true,
+      "result": "ValueError: Missing guard version/alignment"
+    },
+    {
+      "test": "invalid_fit_retained_in_two_method_denominator",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "test": "missing_method_rejected",
+      "passed": true,
+      "result": "ValueError: Missing method output deletion"
+    },
+    {
+      "test": "missing_receipt_rejected",
+      "passed": true,
+      "result": "ValueError: Missing completion receipt"
+    },
+    {
+      "test": "matching_frozen_identity",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "test": "frozen_hash_reject_simulation/production_guards.R",
+      "passed": true,
+      "result": "ValueError: Frozen code/protocol/runtime identity mismatch; no dispatch or resume allowed"
+    },
+    {
+      "test": "frozen_hash_reject_production/protocol.json",
+      "passed": true,
+      "result": "ValueError: Frozen code/protocol/runtime identity mismatch; no dispatch or resume allowed"
+    },
+    {
+      "test": "unchanged_checkpoint_resumes",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "test": "tampered_output_digest_rejected",
+      "passed": true,
+      "result": "ValueError: Checkpoint output hash mismatch"
+    },
+    {
+      "test": "failed_attempt_preserved",
+      "passed": true,
+      "result": "accepted"
+    },
+    {
+      "test": "unknown_checkpoint_state_rejected",
+      "passed": true,
+      "result": "ValueError: Unknown checkpoint state"
+    },
+    {
+      "test": "48_unique_seeded_conditions_per_replicate",
+      "passed": true,
+      "result": "seed/condition inventory"
+    }
+  ],
+  "passed": true,
+  "scope": "Temporary adversarial fixtures only; no new scientific fits or altered baseline."
+}

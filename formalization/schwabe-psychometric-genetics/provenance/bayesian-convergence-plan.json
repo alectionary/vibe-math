@@ -1,0 +1,124 @@
+{
+  "status": "protocol recorded before new four-chain execution; no new JAGS run launched by this task",
+  "recorded_utc": "2026-10-30T18:28:40.432795+00:00",
+  "canonical_results": [
+    "A-1",
+    "C2-2",
+    "C2-3",
+    "C5-2",
+    "C5-3"
+  ],
+  "initial_gate": {
+    "target": "Chapter2 floor item-level posterior on the same fixed N500/J60 generated dataset, data seed301",
+    "model": "simulation/jags_replication.R at frozen production revision; reconstruct and hash data once, reuse unchanged across chains",
+    "number_of_chains": 4,
+    "chain_rng_seeds": [
+      830101,
+      830102,
+      830103,
+      830104
+    ],
+    "iterations_per_chain": {
+      "adaptation": 1000,
+      "burn_in": 7000,
+      "retained": 12000,
+      "thinning": 1
+    },
+    "initialization": "Add explicit, independently specified valid overdispersed starts for mu,beta0,beta1,ta,tc and record them; fix generated data, b and moderator values. Do not change data seed between chains. Existing RNG-only wrapper needs this small implementation before dispatch.",
+    "proposed_initial_global_values": [
+      {
+        "mu": -1,
+        "beta0": -2.5,
+        "beta1": -1.5,
+        "ta": 2,
+        "tc": 5
+      },
+      {
+        "mu": 1,
+        "beta0": -0.5,
+        "beta1": 1.5,
+        "ta": 5,
+        "tc": 2
+      },
+      {
+        "mu": -0.5,
+        "beta0": -1,
+        "beta1": 0.5,
+        "ta": 1,
+        "tc": 10
+      },
+      {
+        "mu": 0.5,
+        "beta0": -2,
+        "beta1": -0.5,
+        "ta": 10,
+        "tc": 1
+      }
+    ],
+    "monitor": [
+      "mu",
+      "va",
+      "vc",
+      "ve",
+      "beta1",
+      "log_variance_components",
+      "selected latent and posterior-predictive summaries"
+    ],
+    "adaptation_rule": "Record whether adaptation completes; if incomplete, flag nonvalid diagnostic run. Do not discard an unfavorable chain or replace its seed."
+  },
+  "diagnostics_and_acceptance": {
+    "implementation": "Use verified posterior package implementation (version and source hash pinned at execution) or independently validate equivalent code; coda effectiveSize alone is insufficient.",
+    "required_all_parameters": {
+      "all_draws_finite": true,
+      "rank_normalized_split_folded_Rhat_less_than": 1.01,
+      "bulk_ESS_at_least": 400,
+      "tail_ESS_at_least": 400,
+      "mean_MCSE_over_posterior_SD_at_most": 0.05
+    },
+    "manual": "Inspect rank plots and traces for every monitored global parameter; report worst parameter/chain, adaptation messages and chain-specific summaries. Finite or passing diagnostics do not prove convergence.",
+    "interval_precision": "Compute 2.5% and97.5% quantile MCSE and tail ESS separately. Preserve source HPD summaries and evaluate HPD endpoint sensitivity by chain and equal-length splits; rank diagnostics for means do not certify HPD precision. If interval-edge noise affects zero-exclusion conclusions, withhold detection classification.",
+    "threshold_scope": "Operational diagnostic thresholds chosen in advance for this follow-up, not scientific agreement/equivalence margins. Not asserted as a theorem guaranteeing convergence."
+  },
+  "resource_and_stopping": {
+    "observed_one_chain_elapsed_seconds": 831.778,
+    "projected_four_chains_worker_seconds": 3327.112,
+    "initial_fixed_batch": "All4 chains at stated source length; no early stopping based on sign, significance, numerical match, favorable ordering or interim ESS.",
+    "wall_clock_budget_per_chain_seconds": 1800,
+    "maximum_initial_batch_worker_seconds": 7200,
+    "parallelism": "Chapter6production has priority. Run at most1JAGS chain while at most3OpenMx workers are active, or wait for a bounded OpenMx batch boundary. Never exceed cgroup4CPU quota. Measure JAGS RSS first and require memory headroom before concurrency.",
+    "timeout_or_failure": "Preserve failed chain logs, exact arguments/RNG/init state and elapsed time; denominator remains4 requested. Do not count partial chains as full source-length evidence or silently refill failures.",
+    "if_gate_fails": "Report unresolved. Prespecify a later fixed longer batch or validated reparameterization after diagnosis; preserve failed gate. No automatic indefinite extension.",
+    "checkpoint": "Freeze script/model/runtime/data hashes and all RNG/init records before dispatch; append chain files atomically; continuation must restore actual sampler state or be labelled a fresh chain, not concatenated as if uninterrupted."
+  },
+  "later_stages": [
+    "Only after four-chain gate, perform independent original-centred representation chains on the same fixed data, retaining separate diagnostics and shared-engine/model limitations.",
+    "For Chapter2power/recovery, keep100 fixed generated datasets per condition and both floor/ceiling/symmetric arms. Record all failed/nonvalid datasets and report intended,attempted,valid counts; no stopping when desired power/significance is reached.",
+    "Before Chapter5production, repeat timing and mixing diagnostics at representative N/J using prespecified small resource batches. The N8000condition estimate of213worker-days forbids an automatic unbounded launch; validated acceleration must preserve the target posterior."
+  ],
+  "primary_method_sources": [
+    {
+      "url": "https://arxiv.org/abs/1903.08008v5",
+      "title": "Vehtari et al. (2021), Rank-normalization, folding, and localization",
+      "doi": "10.1214/20-BA1221",
+      "use": "Motivation for rank-normalized/folded diagnostics and localized efficiency, not a claim that finite diagnostics prove convergence."
+    },
+    {
+      "url": "https://mc-stan.org/posterior/reference/rhat.html",
+      "accessed_utc": "2026-10-30",
+      "documented_version": "1.7.1",
+      "use": "Rhat is max of rank-normalized split and folded-split; nonfinite/constant chains returnNA."
+    },
+    {
+      "url": "https://mc-stan.org/posterior/reference/ess_bulk.html",
+      "accessed_utc": "2026-10-30",
+      "use": "Bulk ESS uses rank-normalized split chains."
+    },
+    {
+      "url": "https://mc-stan.org/posterior/reference/ess_tail.html",
+      "accessed_utc": "2026-10-30",
+      "use": "Tail ESS is min of5%and95%quantile ESS."
+    }
+  ],
+  "existing_baseline_limit": "The current two-representation Rhat and ESS are preserved; they are not four independently initialized chains and do not establish the production grid.",
+  "source_script_sha256": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20"
+}

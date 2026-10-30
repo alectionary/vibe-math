@@ -1,0 +1,73 @@
+{
+  "reviewer": "Independent production guard reviewer (/root/guard_validation)",
+  "reviewed_utc": "2026-10-30T18:29:48.095276+00:00",
+  "status": "accepted for bounded guarded Chapter6 production with recorded limits",
+  "code_hashes": {
+    "simulation/production_guards.R": "e52084a124cea9029c4e07ee69db1ff2403b1e1e7c7803fb8b7fd3a3b5a25545",
+    "simulation/openmx_production.R": "d9faa0924c9fb719d59704c4447a1e5c44a9a68846507dc7d130e2571cba2a56",
+    "simulation/production_runner.py": "cc5a9be8a4b7fb53a3a927a24135547cbec6570951c396ea70c7c3d904773c76",
+    "simulation/production_batch.R": "e6d37c2508dec0ac509eb435e6e2257652c12bf56229cc9f4ee6e587ef227a08",
+    "production/protocol.json": "07beafeacc00c6118ac6f2e5f4503bb7ca9520a6e1830b4eadadda0687cf531c",
+    "simulation/validate_production_guards.R": "71cdb27d29e735b284c9a3e4d6b6855adc4fdeac34846496d5ed0df346c50da2",
+    "simulation/test_production_runner.py": "1378285738fab6c5255b4ca6fd3c340455ee225d1833dff909f2f39f074b5192",
+    "simulation/validate_guarded_replays.R": "8698d23d607b7729c62dc1aef6a48cb434a6d385f11df02a6bc2a95b2c01473f"
+  },
+  "evidence": [
+    "outputs/production-guard-fixtures.csv",
+    "outputs/production-runner-validation.json",
+    "outputs/independent-guard-replays.csv"
+  ],
+  "checks": {
+    "guard_fixtures": 30,
+    "runner_fixtures": 21,
+    "independent_same_data_method_fits": 6,
+    "same_data_replay_designs": [
+      "q2 MCAR .10 seed34003",
+      "q2 MAR .10 seed34019",
+      "q5 MNAR .10 seed34047"
+    ],
+    "largest_baseline_estimate_SE_likelihood_difference": 0.0,
+    "largest_independent_inverse_covariance_difference": 5.20417042793042e-18,
+    "largest_independent_delta_SE_difference": 5.55111512312578e-17
+  },
+  "findings_and_fixes": [
+    {
+      "finding": "Expected covariance list could be empty",
+      "resolution": "Guard now requires both MZ and DZ matrices; missing/indefinite/NaN/asymmetric matrices rejected."
+    },
+    {
+      "finding": "Raw symmetry threshold could hide asymmetry under tiny or disparate units",
+      "resolution": "Added diagonal-scaled symmetry check; adversarial tiny/mixed units rejected, valid rescaling accepted."
+    },
+    {
+      "finding": "Jacobian output rows not aligned to estimated parameters",
+      "resolution": "Requires exact row/column parameter alignment."
+    },
+    {
+      "finding": "Runner accepted contradictory valid=True delta fields",
+      "resolution": "Checks nonnegative finite delta variance, SE-squared relation and full declared guard metrics."
+    },
+    {
+      "finding": "Unknown checkpoint state/process errors might be silently accepted",
+      "resolution": "Unknown states reject; nonzero process exit/receipt errors pause dispatch while preserving output records."
+    }
+  ],
+  "scientific_limits": [
+    "Model, data, seeds, R/OpenMx engine and numerical graph are shared with the baseline; this is independent code review and numerical validation, not independent empirical replication.",
+    "Thirty fixtures cover specified failure classes, not exhaustive formal verification. Six independently replayed fits do not establish validity of every baseline fit.",
+    "Protocol audits baseline replicates0-19 separately and never counts them as additional unique data; invalid and interrupted attempts remain in requested denominators.",
+    "Guard validity establishes numerical admissibility under declared thresholds, not global optimum, correct missingness assumptions, unbiasedness, or successful whole-dissertation replication.",
+    "Frozen identity binds code, protocol, runtime manifest and R launcher; package runtime mutation outside these records would require separately verifying installed package files.",
+    "Whole-dissertation empirical inputs, Bayesian production and analytical claims remain unresolved."
+  ],
+  "dispatch_review": "Fixed requested job/wall limits, max4workers with1thread and memory threshold; no estimates, intervals or significance determine dispatch. Partial process failure stops future dispatch and retains evidence. Frozen code/protocol and completed-output mutation fixtures reject resume.",
+  "reproduction_commands": [
+    "Rscript simulation/validate_production_guards.R",
+    "OUTPUT_DIR=/tmp/schwabe-independent-guard-check SAVE_DIAGNOSTICS=1 Rscript simulation/openmx_production.R 2 .10 MCAR 34003 independent-q2-MCAR",
+    "OUTPUT_DIR=/tmp/schwabe-independent-guard-check SAVE_DIAGNOSTICS=1 Rscript simulation/openmx_production.R 2 .10 MAR 34019 independent-q2-MAR",
+    "OUTPUT_DIR=/tmp/schwabe-independent-guard-check SAVE_DIAGNOSTICS=1 Rscript simulation/openmx_production.R 5 .10 MNAR 34047 independent-q5-MNAR-v2",
+    "Rscript simulation/validate_guarded_replays.R /tmp/schwabe-independent-guard-check",
+    "python simulation/test_production_runner.py"
+  ],
+  "reproduction_note": "Use a fresh output directory (or preserve completed validation artifacts first); guarded fitter refuses to overwrite outputs. All commands from study root; Rscript refers to pinned realR launcher."
+}
