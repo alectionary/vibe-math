@@ -1,0 +1,23 @@
+{
+  "protocol_version": "chapter6-guarded-v1",
+  "scope": "Chapter6 Gaussian simulation only; whole dissertation remains open",
+  "recorded_before_production_outcomes": true,
+  "target": {"replicates_per_condition":1000,"conditions":48,"method_fits":96000,"baseline_replicates_per_condition":20,"new_method_fits_remaining":94080},
+  "conditions": {"mechanisms":["MCAR","MAR","MNAR"],"q":[2,3,4,5],"missing":[0.02,0.03,0.06,0.10]},
+  "seed_rule": "34000 + replicate*48 + mechanism_index*16 + (q-2)*4 + missing_index; same as preserved baseline",
+  "methods": ["full","deletion"],
+  "N":1000,
+  "beta_shape":"equal",
+  "optimizer":"SLSQP",
+  "threads_per_worker":1,
+  "max_workers":4,
+  "maximum_batch_wall_seconds":1800,
+  "maximum_worker_chunk_seconds":600,
+  "operational_stop_rules":["Stop dispatch at fixed requested walltime or jobcount, independent of estimates/significance", "Refuse code/protocol/runtime identity mismatch", "Pause dispatch on missing/corrupt outputs or systemic process failure", "Pause dispatch when cgroup memory exceeds85percent", "Resume only from hash-verified checkpoints; preserve failed attempts and all requested denominators"],
+  "scientific_stop_rule":"Attempt all1000 datasets per condition; no optional early stopping on favorable significance. Invalid fits remain in requested denominators; their estimates do not enter valid-fit summaries.",
+  "fit_validity":"Declared production_guards.R thresholds; status0, finite estimates/objective/Jacobian, finite symmetric positive-definite Hessian and parameter/expected covariances, acceptable conditioning, nonnegative untruncated delta variances. Failures retained, no silent clipping or dropping.",
+  "baseline":"Preserve all original1920fits and summaries byte-for-byte. Refit0-19 only as guarded validity audit; those are repeated datasets, not additional replication counts. Report old baseline, new unique trials and guarded replays separately.",
+  "uncertainty":"Preserve prior108primarySE,36sensitivitySE,216sourceSE and72MARbias families; transformations and bias additions remain exploratory. At interim checkpoints, intervals are descriptive fixed-n summaries, not sequential testing rules. Unknown source Monte Carlo uncertainty remains missing.",
+  "failure_policy":"A completed invalid fit is a recorded attempt, not automatically retried. Errors/timeouts remain in manifests and checkpoints. Any later retry requires a new attempt directory, retained original failure, declared change and deduplication by dataset/method. Do not replace unsuccessful datasets with new seeds.",
+  "independence":"Guarded fitter, batch execution and baseline share model, data, engines and seeds; this is numerical validation and production continuation, not independent empirical replication."
+}

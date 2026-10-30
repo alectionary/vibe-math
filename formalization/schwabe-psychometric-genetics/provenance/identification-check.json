@@ -1,0 +1,135 @@
+{
+  "canonical_result": "C5-1",
+  "status": "restricted algebra verified; unrestricted finite-sample unique-maximum assertion needs qualification; full observed-item identifiability remains unresolved",
+  "created_utc": "2026-10-30T18:29:07.501077+00:00",
+  "source": {
+    "thesis": "Schwabe (2016), Nature, Nurture and Item Response Theory",
+    "sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+    "locators": [
+      "Chapter5 p72 Section5.1.2 (unique likelihood maximum claim)",
+      "pp75-76 Eqs5.3-5.15 (latent covariance model)",
+      "p84 (monotone logvariance curves)",
+      "AppendixC pp138-139 (binary argument and continuous extension)"
+    ]
+  },
+  "contract": "C5-1 continuation: distinguish covariance-map injectivity, sign indeterminacy and finite-sample likelihood existence/uniqueness. Preserve broader item-model identification as unresolved.",
+  "coordination": "Internal delegated audit within the already selected whole-dissertation branch. No new research issue, claim, PR or network mutation; parent explicitly prohibited network mutations.",
+  "verified_statements": [
+    {
+      "name": "Latent covariance inversion",
+      "assumptions": "Known conditional latent phenotype variance V(m), both zygosity covariances K_MZ(m),K_DZ(m), common family moderator, equal A/C/E across zygosity, genetic correlations1/.5; model correctly specified and variances positive.",
+      "derivation": "V=A+C+E, K_MZ=A+C, K_DZ=A/2+C. Thus A=2(K_MZ-K_DZ), C=2K_DZ-K_MZ, E=V-K_MZ. Substitution gives the identity exactly.",
+      "verification": "SymPy simplifies each substituted difference to0.",
+      "limit": "This assumes latent covariance functions are identified/known; it does not prove their identifiability from finite binary item vectors."
+    },
+    {
+      "name": "Logvariance coefficients at two moderator levels",
+      "assumptions": "Two distinct m0,m1; known positive variance values V0,V1 for a component; V(m)=exp(beta0+beta1*m).",
+      "proof": "Take logs. The2x2 design matrix has determinant m1-m0\u22600, hence beta1=(log(V1)-log(V0))/(m1-m0), beta0=log(V0)-beta1*m0 uniquely. Same argument covers continuous support containing two distinct levels, conditional on known variance function.",
+      "limit": "One moderator value does not identify both coefficients. Injectivity does not ensure a finite or unique likelihood maximum."
+    },
+    {
+      "name": "Binary path sign indeterminacy",
+      "assumptions": "Shared binary moderator0/1; component path a+b*m; variance is its square; no restriction requiring the path positive at both endpoints.",
+      "proof": "Replace b by -2a-b while keeping a fixed. Endpoints are a and -(a+b), so both squared endpoint values are unchanged. Global(a,b)\u2192(-a,-b) is an additional symmetry. With nonzero a and a+b there are four sign combinations before restrictions; a>0 removes only the global pair. Degenerate zero endpoints can merge solutions.",
+      "symbolic_difference": "-4*a*m*(a + b)*(m - 1)",
+      "exact_witness": [
+        {
+          "M": "0",
+          "original_variance": "1/4",
+          "reflected_variance": "1/4"
+        },
+        {
+          "M": "1/2",
+          "original_variance": "9/25",
+          "reflected_variance": "1/100"
+        },
+        {
+          "M": "1",
+          "original_variance": "49/100",
+          "reflected_variance": "49/100"
+        }
+      ],
+      "limit": "Equality is for shared-moderator covariance endpoints, not arbitrary separate-twin moderator cross-products."
+    },
+    {
+      "name": "Continuous moderator qualification",
+      "assumptions": "Two affine paths agree after squaring at at least three distinct real moderator values.",
+      "proof": "Their squared difference is degree\u22642 with at least three roots, so it is the zero polynomial. Its factorization is [(a-u)+(b-w)m][(a+u)+(b+w)m]. R[m] is an integral domain, so one affine factor is identically0: (u,w)=(a,b) or(-a,-b). If both intercepts are strictly positive, only equality remains.",
+      "verification": "Symbolic polynomial factorization identity passes; exact midpoint witness distinguishes the binary-only reflection:9/25 vs1/100.",
+      "limit": "Global sign ambiguity persists on continuous support unless a sign convention is imposed. This does not say the source global-sign statement is false, nor address all full-model likelihood modes."
+    },
+    {
+      "name": "Monotonicity of loglinear variance",
+      "proof": "d exp(beta0+beta1*m)/dm=beta1*exp(beta0+beta1*m), with strictly positive exponential. Thus increasing when beta1>0,decreasing when beta1<0,constant when beta1=0.",
+      "limit": "Monotonicity of a variance curve is unrelated to convexity/concavity of the marginal likelihood."
+    }
+  ],
+  "finite_sample_counterexample": {
+    "target": "Unqualified assertion that the logvariance parametrization gives one finite maximum for every data set, p72; not an allegation about the empirical fits.",
+    "data": "Any finite nonempty collection of twins with every observed Rasch item response0; include both MZ/DZ and both binary moderator levels if desired. Known finite item difficulties; finite model parameters with positive variances.",
+    "proof": "Write each latent trait theta_ij=mu+Z_ij, with joint distribution of Z fixed when other parameters are fixed. Conditional probability of all observed zeros is Q(mu,Z)=product_ijk logistic(b_k-mu-Z_ij). Every factor lies strictly between0and1 and strictly increases as mu decreases, so E[Q] is strictly increasing as mu decreases for every finite parameter vector. By dominated convergence E[Q]\u21921 as mu\u2192\u2212infinity. At any finite mu,E[Q]<1. Hence the likelihood has supremum1 but no finite maximum; adjusting mu improves every finite candidate even in the full model. This disproves the unqualified existence-and-uniqueness implication, not population identifiability.",
+    "Bayesian_limit": "A proper normal prior on mu changes the posterior objective; this likelihood counterexample neither proves posterior impropriety nor multimodality. Source Bayesian fits and population identification are separate questions.",
+    "illustration": [
+      {
+        "mu": 0,
+        "MZ_pair_probability": 0.09835739444033052,
+        "DZ_pair_probability": 0.09313506773021976,
+        "four_family_likelihood": 8.391517417627944e-05
+      },
+      {
+        "mu": -1,
+        "MZ_pair_probability": 0.27556489137558715,
+        "DZ_pair_probability": 0.2689531778971204,
+        "four_family_likelihood": 0.005492892889490534
+      },
+      {
+        "mu": -4,
+        "MZ_pair_probability": 0.8847869702034981,
+        "DZ_pair_probability": 0.8843092294982646,
+        "four_family_likelihood": 0.6121893248715354
+      },
+      {
+        "mu": -8,
+        "MZ_pair_probability": 0.9975146023586403,
+        "DZ_pair_probability": 0.9975143059253797,
+        "four_family_likelihood": 0.9900948228132413
+      },
+      {
+        "mu": -16,
+        "MZ_pair_probability": 0.9999991631260625,
+        "DZ_pair_probability": 0.9999991631260283,
+        "four_family_likelihood": 0.9999966525083838
+      }
+    ],
+    "quadrature_order_per_dimension": 60,
+    "illustration_not_proof": true
+  },
+  "remaining": [
+    "Establish injectivity of the full marginal item-response model under explicit calibration/support assumptions.",
+    "Analyze finite-sample interior likelihood stationary points under nondegenerate data; this counterexample does not show multiple maxima for the source samples.",
+    "Empirical posterior and production recovery remain dependent on missing data/converged chains."
+  ],
+  "verification": {
+    "python": "3.12",
+    "sympy": "1.14.0",
+    "exact_symbolic_assertions": "passed",
+    "rational_witness": "passed",
+    "finite_quadrature_monotonic_illustration": "passed",
+    "Lean_formalization": "not performed; ordinary written proof plus computer algebra, no formal certification claim"
+  },
+  "source_ink": {
+    "path": "evidence/p72-identification-claim.png",
+    "page": "printed72/PDF81",
+    "render_dpi": 600,
+    "crop_points": [
+      86,
+      380,
+      433.89,
+      415
+    ],
+    "sha256": "fb6e0d0845fc077f45f8b64f905344383798bb1b901b963802f30d0eae34a40e",
+    "rights": "Limited attributed scholarly crop; copyright remains with Schwabe (2016); not full-source redistribution."
+  },
+  "script": "simulation/identification_check.py"
+}
