@@ -1,5 +1,9 @@
 # Final-PDF link acceptance
 
+- [Generate and review the inventory](#generate-and-review-the-inventory)
+- [One acceptance command](#one-acceptance-command)
+- [Navigation, delivery, and provenance](#separate-navigation-review-delivery-and-provenance)
+
 Inspect actual URI annotations in the rendered main PDF. A correct TeX URL,
 passing numerical checks, matching PDF bytes or a nonempty `links` review note
 cannot establish that the PDF points to the right destination.
