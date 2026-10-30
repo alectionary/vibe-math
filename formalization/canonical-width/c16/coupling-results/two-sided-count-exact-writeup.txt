@@ -1,0 +1,44 @@
+Point12 has exact nonnegative extensions for both tested2X+2Z count models:
+X anchors[80,512], Z anchors[186,433], and X anchors[80,432], Z anchors
+[186,514]. These are free-source auxiliary models, not selected covercases.
+Each independent receipt checks20,584 rational variables,7,259 exact
+equalities,20,568 upper rows, and all forbidden-pattern masses. Both
+extensions have12 positive pattern masses.
+
+For pattern m, lambda_m is its mass. Selected fixed anchors contribute
+lambda_m directly; absent anchors contribute zero. Each unfixed eligible
+physical vector has a joint-selection variable y_(m,j). Opposite selected
+anchors determine zero/unit evaluation bins; forced anchors reduce their
+remaining cardinalities. Each sector totals128 selected vectors. Free
+variables obey0<=y<=lambda, and each bucket has its prescribed remaining
+mass. Physical zero-pool independence and pairings between two unfixed
+vectors are deliberately omitted. Thus exact membership here does not
+prove full-basis auxiliary membership or existence of a source frame.
+
+The recovery independently reconstructs the sparse rows from the literal
+physical domain consumer. All matrices and variable orders match the
+saved numerical exports exactly. The1440 per-vector blocks each have five
+unconditional/anchor-joint marginal equations. Forced-anchor contributions
+are retained as lambda terms in their right-hand sides. Local rational
+elimination expresses pivot y values in shared lambda variables and a few
+free y values; global pattern and bucket equations then determine a small
+Schur system. Every final variable, equation and bound is replayed against
+the original literal system, independently of the recovery algorithm.
+
+For orientation27x32, one exact positive marginal had been dropped to zero
+by the floating solver. Releasing that variable yielded36 parameters and
+rank36. For32x27, three such zeros were released. Forty further values
+lay within1.73e-15 of their lambda upper bounds, while the next genuinely
+interior gap exceeded4.86e-6. Setting those40 bounds tight was a recovery
+face hypothesis, not an additional source axiom. It yielded35 parameters
+and rank35. The final exact verification discharges every face hypothesis:
+all original equalities and bounds hold, with no feasibility tolerance.
+
+Failed initial faces and tiny-bound-violation attempts remain immutable.
+Four fresh corruption controls reject a negative variable, changed total
+mass, wrong point binding and wrong source binding. The inventory lists
+all accepted certificates, receipts, source versions and failed attempts.
+
+The exact proofs close these two count-only membership gates at point12.
+They neither assert rank feasibility nor answer the source width problem,
+and they do not reduce the source cover.
