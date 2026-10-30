@@ -1,0 +1,39 @@
+{
+  "reviewer": "Separate cold-reader agent /root/cold_reader; no shared drafting history; not external human peer review",
+  "inputs": "Current manuscript, included tables, current rendered PDF, local dissertation text and selected saved result JSON; excluded chat history, git history and prior review records",
+  "initial_findings": [
+    {
+      "location": "compliance table pp16\u201317",
+      "finding": "Unexplained template/SEM/preflight and editorial/remote-byte workflow language",
+      "action": "Replaced with direct decoder/validation descriptions; removed publication-workflow sentence"
+    },
+    {
+      "location": "Appendix A p18 in20pageversion",
+      "finding": "Pending-merge navigation presupposes project state",
+      "action": "Scientific links use immutable snapshots; current paper links supplied outside manuscript"
+    },
+    {
+      "location": "analytical table",
+      "finding": "Existing kernel proofs could imply prior work state",
+      "action": "Replaced with Restricted-kernel proofs"
+    },
+    {
+      "location": "availability introduction",
+      "finding": "Copying provenance instead of scientific role",
+      "action": "Introduces tables as artifact availability and methodological checks"
+    }
+  ],
+  "scientific_checks": [
+    "Source Tables3.1\u20133.2 support endpoints",
+    "pure-z-analysis.json supports21.908,20.884\u201324.996 interval and4boundaryfits",
+    "rhombic-Z-pure-analysis.json supports27.407/6.490 and-20.916pp",
+    "threshold-comparisons.json supportsSweep-0.134pp with inference withheld",
+    "quadratic adequacy output supports2000draws,0exceedances,.000500tail estimate,.001843upper"
+  ],
+  "full_read_hash": "b8c9e6de0b4dc92ed2b9675d66a7011e9298bb3dae8047608194787d05f705a1",
+  "final_pdf_sha256": "8f827b4640eeadcc5f781e68584193e3079b1c468aa04efa7d343b9d9ea19e58",
+  "pages": 21,
+  "final_recheck": "Rendered pages16,17,19 and extracted text rechecked after minor polish; other rendered page bytes unchanged. No substantive regression. Negligible remaining spacing typo and21,120 noted.",
+  "decision": "Pass: outcome-first standalone paper with mutually consistent abstract/introduction/conclusion and qualified findings",
+  "limits": "No new simulations, theorem reproofs, remote verification or independent installation-metadata audit by cold reader. Root reviewer separately checked all pages, installed metadata and remote delivery."
+}
