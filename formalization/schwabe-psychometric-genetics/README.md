@@ -44,7 +44,7 @@ self-review and structural checks do not satisfy that requirement.
   `a8e5d6b5ee6a8c76bdd0234a00fbcc809712ac08`.
 - Historical repository baseline and approved layout:
   `e2b553c06c872d8008061a26d05831e572e54789`.
-- Runnable replication revision: `677059a7edc087c2ee2a9b1ae96d7588aad67562`.
+- Runnable replication revision: `9c91e89e3f3327dd9dcc3ea96fa47ef84f1e8e4b`.
   This is distinct from the historical baseline. The artifact revision and
   remote-byte checks are recorded in [provenance/delivery.json](provenance/delivery.json).
 
