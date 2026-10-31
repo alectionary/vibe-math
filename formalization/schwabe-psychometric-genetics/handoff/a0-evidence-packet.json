@@ -32206,7 +32206,7 @@
     {
       "id": "a0-input-03",
       "path": "provenance/score-a0-coverage-status.json",
-      "sha256": "103a6edf6e19dce4f39ef32da26288a443cfb861c13a4dfe0f425fc5d92ca028"
+      "sha256": "e0a10c0d9e159d866bb95343498f04846d694d9cfda485fa7152f1f7f4eadd62"
     },
     {
       "id": "a0-input-04",
@@ -32217,6 +32217,11 @@
       "id": "a0-input-05",
       "path": "provenance/score-a0-terminal-independent-review.json",
       "sha256": "719711de5170018a919fc45acd6d85a26a44b2a487ce1c19c8e311eaa64db4f7"
+    },
+    {
+      "id": "a0-hpd-clarification",
+      "path": "handoff/hpd-mean-clarification.json",
+      "sha256": "94d9c99459e3e2f14f57b614f94599ec46407a0bca36a2df9bfeca60a0110e87"
     }
   ],
   "claims": [
@@ -85756,7 +85761,8 @@
         "historical-outputs-analytic-checks-json",
         "historical-simulation-analytic_checks-py",
         "historical-provenance-R-session-txt",
-        "historical-diagnostic-evidence"
+        "historical-diagnostic-evidence",
+        "a0-hpd-clarification"
       ],
       "published": {
         "value": 0.54,
@@ -85791,7 +85797,7 @@
       "source_multiplicity": "No additional correction reported for this claim; design-cell or parameter family and dependence must be retained in final adjudication.",
       "limitations": [
         "Source-only specification; no replication result, verdict, convergence judgment, or empirical access conclusion is inferred here.",
-        "Source mean .54 lies above reported HPD upper .51. Do not silently repair this inconsistency.",
+        "The source mean .54 is above the reported95%HPD upper endpoint .51. A posterior mean can lie outside a95%HPD interval; these summaries alone do not establish an inconsistency. Preserve both reported values; original posterior draws are unavailable.",
         "No independent estimate of this exact source target; diagnostic evidence is recorded separately."
       ],
       "parent_claim_ids": [
@@ -146026,7 +146032,7 @@
     {
       "id": "A05",
       "locator": "Chapter4 p64",
-      "issue": "IRT h2mean.54 is outside printed95%HPD[.34,.51].",
+      "issue": "Reported IRT heritability mean0.54 and95%HPD[0.34,0.51] are retained literally. Mean containment is not required, so no contradiction or corrected summary is inferred; original posterior draws are unavailable.",
       "claim_ids": [
         "C4-5.heritability-IRT.h2"
       ]
@@ -197346,6 +197352,7 @@
     "compliance_to_copy": "handoff/a0-scientific-compliance.json",
     "reproduction": "handoff/score-a0-reproduction.md",
     "reproduction_revision": "7ddf23f40124239a8f245de7c71540b0c80216bf",
-    "scope": "Auxiliary implementation-feasibility evidence only; all996originalclaimverdicts and exact-source target counts retained."
+    "scope": "Auxiliary implementation-feasibility evidence only; all996originalclaimverdicts and exact-source target counts retained.",
+    "interpretation_clarification": "handoff/hpd-mean-clarification.json"
   }
 }
