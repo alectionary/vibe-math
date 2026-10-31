@@ -1,0 +1,58 @@
+{
+  "purpose": "Our exact fixed-parameter latent-moment algebra; conditional independence and Gaussian moments are proved/discussed in the accompanying ordinary proof. No finite item-response identification asserted.",
+  "checks": {
+    "gaussian_mgf_derivative": true,
+    "third_central_moment": true,
+    "recover_va": true,
+    "recover_vc": true,
+    "recover_R": true,
+    "recover_beta": true,
+    "recover_ve": true,
+    "beta_zero_gaussian_variance": true,
+    "beta_zero_third_moment": true,
+    "va_zero_beta_disappears": true,
+    "conditional_cubic": true,
+    "conditional_cross_covariance": true,
+    "positive_negative_zero_exact_witnesses": true
+  },
+  "all_passed": true,
+  "exact_examples": [
+    {
+      "beta": "-2/3",
+      "R": "2*exp(1/3)/5",
+      "third_central_moment": "-6*exp(1/3)/5",
+      "recovered": [
+        "3/2",
+        "1/4",
+        "-2/3",
+        "2/5"
+      ]
+    },
+    {
+      "beta": "0",
+      "R": "2/5",
+      "third_central_moment": "0",
+      "recovered": [
+        "3/2",
+        "1/4",
+        "0",
+        "2/5"
+      ]
+    },
+    {
+      "beta": "2/3",
+      "R": "2*exp(1/3)/5",
+      "third_central_moment": "6*exp(1/3)/5",
+      "recovered": [
+        "3/2",
+        "1/4",
+        "2/3",
+        "2/5"
+      ]
+    }
+  ],
+  "sympy_version": "1.14.0",
+  "model_fits": 0,
+  "numerical_integration": 0,
+  "monte_carlo": 0
+}
