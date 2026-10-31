@@ -1,0 +1,32 @@
+{
+  "status": "PASS_CURRENT_V3_WITH_HISTORY_PRESERVED",
+  "current_consumer": {
+    "path": "verify_two_sided_full_basis_oracle.py",
+    "sha256": "e6342b1f16ce5902a4f2a2601407e77b35b58bab7a66f51b39ab59510a4f49b0"
+  },
+  "accepted_receipt": {
+    "path": "two-basis-results/two-sided-full-basis-controls-v3-independent.json",
+    "sha256": "29d3b56893ec9e51c6c0e52bc588099647d4f5a098b1c330c1dafbfd7dd43954"
+  },
+  "initial_pass": {
+    "path": "two-basis-results/two-sided-full-basis-controls-independent.json",
+    "sha256": "60808112ddb0d4a026977a767c26afd03564caffc8de0ec059dfcab310cd2c8b"
+  },
+  "initial_consumer_snapshot": {
+    "path": "two-basis-results/verify_two_sided_full_basis_oracle-v1.py",
+    "sha256": "bc775b71bf6e86fcfb6e4860c00992013c54fc2ac0bc771cbabeea54dd61f380"
+  },
+  "intermediate_attempt": {
+    "status": "EXPECTED_OVERFLOW_REJECTION_ESCAPED_CONTROL_HARNESS",
+    "consumer_snapshot": {
+      "path": "two-basis-results/verify_two_sided_full_basis_oracle-attempt2.py",
+      "sha256": "2b53ecd5cc929e8f880100fecd0b44dfb8411a34656383cbe3fba8a8b455fce5"
+    },
+    "log": {
+      "path": "two-basis-results/two-sided-full-basis-controls-v2-independent.log",
+      "sha256": "de988e52e6dc29a45095d9e76fe5e484d1d79e476e883ef7f45c395e34acc95d"
+    },
+    "explanation": "The producer correctly rejected a2^100owner coefficient before int64 conversion. The control harness originally caughtTypeError/ValueError/etc but omittedOverflowError; execution stopped without a receipt. The current harness explicitly acceptsOverflowError as the expected rejection and all controls pass. No incorrect numerical or source support was accepted."
+  },
+  "scientific_source_answered": false
+}

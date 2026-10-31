@@ -1,0 +1,60 @@
+{
+  "status": "ONE_NEGATIVE_EXCHANGE_BATCH_LP_FINISHED",
+  "outcome": "EXACT_RESTRICTED_ARCHIVE_INFEASIBLE_WITH_MISSING_COLUMN",
+  "result": {
+    "pricing": "two-basis-results/singleton-o15-batch64-point22-pricing.json",
+    "pricing_sha256": "682186671498995aab2917e9f69d7ff4c9a24e39c66844ee95ccba5639d6873f",
+    "pricing_receipt": "two-basis-results/singleton-o15-batch64-point22-pricing-independent.json",
+    "pricing_receipt_sha256": "3f414289603aac205788eff8880a7f2dd43eae7f1b149c12dde8ad85540edd19",
+    "new_minimizing_basis_unsolved": true,
+    "last_solved_columns": 3225,
+    "discovered_columns": 3226,
+    "minimum_affine_value": "-143149927802532089784981632355011623668659391626605879279798089568765773308702616944/8660729316992193364291787723605587708358634064906043180940818999487773741629963763"
+  },
+  "frozen_sha256": "9043094d1bff34e77d8560a56954477b5e66a2bbcc15d2f050eb9145588426a7",
+  "stages": [
+    {
+      "source": "export_singleton_archive_cg.py",
+      "seconds": 0.6291239169659093,
+      "log": "two-basis-results/singleton-o15-batch64-point22-export.log",
+      "log_sha256": "b0ff6e8f5fe8a2c1de21e38587d80754959efd27d8a73c3247238d8e9439d9ed"
+    },
+    {
+      "source": "verify_singleton_archive_cg.py",
+      "seconds": 1.58377045893576,
+      "log": "two-basis-results/singleton-o15-batch64-point22-model-independent.log",
+      "log_sha256": "63140d897b205a1610d5b4307ce712497690828a5b4a5a17fbd294e8ccd99b03"
+    },
+    {
+      "source": "run_singleton_archive_cg_soplex_generic.py",
+      "seconds": 3.1488405829295516,
+      "log": "two-basis-results/singleton-o15-batch64-point22-solve-supervisor.log",
+      "log_sha256": "45b92f9ce350420c59072a37c7b76c781fdd28e18992185331e80e175837afdd"
+    },
+    {
+      "source": "verify_singleton_archive_cg.py",
+      "seconds": 1.133114582975395,
+      "log": "two-basis-results/singleton-o15-batch64-point22-farkas-independent.log",
+      "log_sha256": "0550993ed44d38705858797505ded398d43ea1367a85492b9197ea08fb23c00c"
+    },
+    {
+      "source": "price_singleton_archive_cg.py",
+      "seconds": 0.5674587499815971,
+      "log": "two-basis-results/singleton-o15-batch64-point22-pricing.log",
+      "log_sha256": "58ba92cb2b23203f6fcfd08d787f90bc13678bc2c23ae9c5184895063726df2f"
+    },
+    {
+      "source": "verify_singleton_exact_pricing.py",
+      "seconds": 1.7415817079599947,
+      "log": "two-basis-results/singleton-o15-batch64-point22-pricing-independent.log",
+      "log_sha256": "c0e6e13179ae34a476c79679f728f224f39494e684c2655762eda699eddc835c"
+    }
+  ],
+  "lp_calls": 1,
+  "post_lp_pricing_calls": 1,
+  "point_sha256": "4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f",
+  "anchor_orbit": 15,
+  "elapsed_seconds": 9.294529624981806,
+  "source_C16_answered": false,
+  "no_automatic_extension": true
+}

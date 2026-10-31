@@ -1,0 +1,94 @@
+{
+  "central_inventory_modified": false,
+  "interpretation": "The adaptation requested in the earlier report is explicitly supplied and analyzed in a subsequent primary report. It should not remain classified as currently unresolved solely because TR13-01 calls it future work. This evidence establishes that the direction was addressed; it does not certify the printed pseudocode as executable or transfer its operation bound to C16.",
+  "later_proceedings": {
+    "DOI": "10.1109/synasc.2014.21",
+    "author_institutional_list_sha256": "d19a9c5d77224871bcd202ff5b844b3d866d72410bad94063025e24dd7b2f80b",
+    "author_list_link": "https://ieeexplore.ieee.org/document/7034671",
+    "authors": [
+      "Emanuel F. Olariu",
+      "Cristian Frasinaru"
+    ],
+    "event": {
+      "end": {
+        "date-parts": [
+          [
+            2014,
+            9,
+            25
+          ]
+        ]
+      },
+      "location": "Romania",
+      "name": "2014 16th International Symposium on Symbolic and Numeric Algorithms for Scientific Computing (SYNASC)",
+      "start": {
+        "date-parts": [
+          [
+            2014,
+            9,
+            22
+          ]
+        ]
+      }
+    },
+    "full_text_status": "NOT_ACQUIRED_NOT_FULL_TEXT_SCREENED",
+    "metadata_sha256": "6d5f5937a34e6d0d6680db5e6fc7d2e771feda71cfc86b013fdbd7bad8ff4218",
+    "pages": "97-102",
+    "published": {
+      "date-parts": [
+        [
+          2014,
+          9
+        ]
+      ]
+    },
+    "publisher": "IEEE",
+    "scope": "The primary institutional publication list and registrar metadata confirm the later combined-title paper. The TR13-02 full text, not an inaccessible proceedings abstract, supports the mathematical relationship.",
+    "title": "A Lowest Level Rule Push-Relabel Algorithm for Submodular Flows and Matroid Optimization"
+  },
+  "new_directions_status": "Two related followup directions extracted from TR13-02; present-day resolution not assessed in this bounded review.",
+  "old_direction": {
+    "old_screen_sha256": "fe73aa8f0fc12e3d9f92c2fe689782a58ba88df5cf91b875d999bd8867040582",
+    "paraphrase": "Adapt the lowest-level/BFS rule to submodular flow.",
+    "source": "Olariu TR13-01, June 2013, Conclusion"
+  },
+  "primary_resolution_evidence": {
+    "locations": [
+      "Section 4: queue-based lowest-level/BFS submodular-flow procedure",
+      "Section 5: cites TR13-01 as [9] and analyzes the same phase/wave approach",
+      "Theorem 5.1: states O(n^5) complexity",
+      "References: [9] identifies TR13-01 explicitly"
+    ],
+    "pdf_sha256": "2c87b61291e0bf20016884ef988a6fae424bee5b1d8668e303b5d25efa71672f",
+    "source": "Frasinaru and Olariu TR13-02, October 2013"
+  },
+  "printed_source_issues": [
+    {
+      "issue": "The prose says m remains unchanged, but Section 4 and Algorithm 1 explicitly change m in node pushes. Treat fixed-m as an inconsistent sentence.",
+      "pdf_page": 3
+    },
+    {
+      "issue": "Displayed push-loop conditions omit the positive-excess guard present in the preceding prose. After a neutralizing push with residual arc capacity, literal transcription may repeat a zero push indefinitely.",
+      "pdf_page": 5
+    },
+    {
+      "issue": "The node-push block alternates t/u variable names; its intended selected neighbor must be used consistently.",
+      "pdf_page": 5
+    },
+    {
+      "issue": "The arc direction in the non-neutralizing-push proof has a reversed level equality relative to the operation definition.",
+      "pdf_page": 6
+    },
+    {
+      "issue": "A runtime bound requires specifying tight-set/exchange-capacity oracle costs. Do not silently identify operation counts with the implemented cost.",
+      "pdf_pages": [
+        3,
+        7
+      ]
+    }
+  ],
+  "schema": "c16-literature-direction-resolution-v1",
+  "source_C16_answered": false,
+  "status": "EARLIER_DIRECTION_ADDRESSED_BY_LATER_PRIMARY_ALGORITHM",
+  "utc": "2026-10-30T17:04:23.033903+00:00"
+}

@@ -1,0 +1,41 @@
+{
+  "status": "FROZEN_EXACT_SINGLETON_ARCHIVE_SOPLEX_TRIAL",
+  "command": [
+    "/private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex",
+    "--readmode=1",
+    "--solvemode=2",
+    "--int:syncmode=1",
+    "--int:checkmode=2",
+    "-f0",
+    "-o0",
+    "-s0",
+    "-t60",
+    "-X=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-archive-point22-o40-solve.primal",
+    "-Y=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-archive-point22-o40-solve.dual",
+    "--writebas=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-archive-point22-o40-solve.bas",
+    "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/singleton-archive-point22-o40.lp"
+  ],
+  "input_manifest": "two-basis-results/singleton-archive-point22-o40.json",
+  "input_manifest_sha256": "747132845249dea7967341e87839c576b37e446d29b7b2b6edcd068880876dde",
+  "input_lp_sha256": "41b42e4605e6bc7ff3f113a59c2f0fd4a5b4a2da476fe903324baca813d76113",
+  "semantic_sha256": "6f8ce7b9f2be25f4d99454ef115b2b4450a38674e32a816b4d4e83dc19ba7fdf",
+  "prep_receipt": "two-basis-results/singleton-archive-point22-o40-independent.json",
+  "prep_receipt_sha256": "4fadf7c0925c8176025d85bc3a1071523a8c168981145b3c836f7585c78dbef2",
+  "setup": "two-basis-results/soplex-setup/setup-ready.json",
+  "setup_sha256": "b80ecbb76fd0b4836197fd44b310c3f6d7e03dcce7f7f32a3191c65154a264c7",
+  "tiny_receipt_sha256": "1237217dd53c14aa23a895247e8e3474fc07b532d975fc317f7784018810c244",
+  "runner_sha256": "ff5b66028dd52658de6d3bd9f4d3831944145499ca6c3f7e32f5f702ded6fe2e",
+  "runtime_files": {
+    "/private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex": "fa62759749a44617b1e1f2c38fbcfe5dc0cd658045f95c4d2f851f9577813732",
+    "/opt/homebrew/opt/gmp/lib/libgmp.10.dylib": "9e9030352a38d1397fd23dccec5397c260890d2a54e9164b579c96548a9fd531",
+    "/opt/homebrew/opt/gmp/lib/libgmpxx.4.dylib": "eaaec4b35d906f1e5a715a2d5ec013b543a61dd9e811bd2c33c760cdbe4679f7",
+    "/private/tmp/c16-soplex-8.1.0-20261030/mpfr/4.2.2/lib/libmpfr.6.dylib": "45cae5b7974f864fbfa614940265232f188ca726cf4b66b06b5eca322b7e52ab"
+  },
+  "priority": 19,
+  "threads": 1,
+  "internal_seconds": 60,
+  "external_seconds": 90,
+  "soft_rss_bytes": 2147483648,
+  "no_automatic_retry": true,
+  "scope": "Fixed finite basis archive only. Infeasibility does not imply a physical rank violation."
+}

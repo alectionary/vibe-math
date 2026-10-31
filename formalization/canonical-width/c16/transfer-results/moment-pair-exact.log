@@ -1,0 +1,12 @@
+EXACT_RECOVERY (634, 76008) rank 634 residual 188
+Traceback (most recent call last):
+  File "/private/tmp/c16-transfer-20261029T1930/formalization/canonical-width/c16/certify_profile_moment_point.py", line 114, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-transfer-20261029T1930/formalization/canonical-width/c16/certify_profile_moment_point.py", line 111, in main
+    cross=json.loads(a.conditional_cross.read_text()) if a.conditional_cross else None;weighted=[json.loads(p.read_text()) for p in a.weighted_cuts];result=verify(data,hulls,caps,cond,cross,weighted);result['weighted_cut_report_hashes']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in a.weighted_cuts};
+                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-transfer-20261029T1930/formalization/canonical-width/c16/certify_profile_moment_point.py", line 58, in verify
+    if key[0]=='w':assert v[k]>=0,('negative_weight',key,str(v[k]))
+                          ^^^^^^^
+AssertionError: ('negative_weight', ('w', 18, 252), '-226505/2199023255552')

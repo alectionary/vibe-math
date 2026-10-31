@@ -1,0 +1,3545 @@
+{
+  "status": "PASS_EXACT_INTERMEDIATE_CASE_FLOOR",
+  "source_C16_answered": false,
+  "consumer_sha256": "a1e36591e0afd220768e6a22580720da0f4512346224f4d6f461f6c568c6e3cf",
+  "point_sha256": "1c2e4b1dcf251a526ddb7ec67fcd4be398a4595a6e43df4097074334c2440e66",
+  "bridge_sha256": "f1202d87ddc8ff2e547e4a80da6cf93d8a0bb6c0d9af33be8b72dea381e3b88b",
+  "bridge_replay_sha256": "4c2c40713a71c88fe0e289a4f99055a763d6ef0e441ddce748060405e95fccb2",
+  "bridge_consumer_sha256": "33db5316353662187f6eee720ca90aececd65dc6938fc9afca891f5040a0aea3",
+  "bridge_source_hashes": {
+    "cover_case_moment_bridge.py": "6760689ef9f99545b9acd3095d26554801de62d074441691c297eb86c7c85d76",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d",
+    "verify_full_partner_projection_generic.py": "6a6d8c89e09a6337840b2e636ecea4069997f295abd20b609e2923afea68108f",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "transfer-results/cover-405.json": "27cd5cbdb266a6019c6ec2c3dd8da4edc658eb3843baf86c89b902c8b74ae763",
+    "transfer-results/cover-bindings.json": "fdfae80f0cb474fd5e9cee4a5150c778482822f955beaa294bc73f38ac2896db"
+  },
+  "cover_sha256": "27cd5cbdb266a6019c6ec2c3dd8da4edc658eb3843baf86c89b902c8b74ae763",
+  "cover_bindings_sha256": "fdfae80f0cb474fd5e9cee4a5150c778482822f955beaa294bc73f38ac2896db",
+  "case": [
+    32,
+    32,
+    0
+  ],
+  "physical_symmetry_bridge": {
+    "physical_pairings_rebuilt": 518400,
+    "sector_and_rotation_comparisons": 1036800,
+    "graph_ranks": {
+      "sector_swap": 128,
+      "X_rotation": 128,
+      "Z_rotation": 128
+    }
+  },
+  "geometry": {
+    "X_index": 512,
+    "Z_index": 512,
+    "owner_coordinate": 19742,
+    "folded_T_coordinate": [
+      0,
+      32,
+      32
+    ],
+    "edge_orbit_size": 16,
+    "edge_stabilizer_size": 2,
+    "literal_32_action_numerator": 2
+  },
+  "exact_point_moment": "2588150979793/562949953421312",
+  "floor_multiplier": "1/16",
+  "exact_trial_floor": "1/256",
+  "exact_true_source_floor": "1/16",
+  "exact_trial_floor_slack": "389127724241/562949953421312",
+  "exact_true_floor_slack": "-32596221109039/562949953421312",
+  "trial_floor_satisfied": true,
+  "true_source_floor_satisfied": false,
+  "trial_equals_true_floor": false,
+  "model_execution": {
+    "frozen_sha256": "1f5ec14d0ecc28296fe5d8229cca201fe35072dff1bb1898b247dfdb97d0d898",
+    "source_bindings_checked": 182,
+    "effective_margins": {
+      "--psd-interior-epsilon": 1e-05,
+      "--boolean-margin": 1.0000000000000002e-06,
+      "--projected-margin": 1.0000000000000002e-06
+    },
+    "search_sufficient_only": true
+  },
+  "selected_boolean_coverage": {
+    "status": "PASS_ALL_SELECTED_BOOLEAN_ROWS_COVERED",
+    "checked_summary_sha256": "853e645880d8a5bdaa19ae197da1d6e7ab3ffc947e63dd85d981aa3a61403fc1",
+    "checked_summary_frozen_sha256": "ded014960b5b5c87744846d3674a5f9016db06fa11ebeb05c9e3f1d06769c236",
+    "seven_stage_receipts": {
+      "old-replay": {
+        "path": "coupling-results/sourcecase323200-homotopy1-old-replay.json",
+        "sha256": "829989097339c67ab91b88267ec513140549bfa7f5ec121405a1d815a2539a2a"
+      },
+      "unified-exact": {
+        "path": "coupling-results/sourcecase323200-homotopy1-unified-exact.json",
+        "sha256": "a944cf4495567eb8cff3273850207bfdf73711cabea087f1dca0ccc625514e70"
+      },
+      "projected-exact": {
+        "path": "coupling-results/sourcecase323200-homotopy1-projected-exact.json",
+        "sha256": "42b5bfb8f821ffe8a186653f4ef0786378f94220372b58a5aee0e122021d693c"
+      },
+      "basis-exact": {
+        "path": "coupling-results/sourcecase323200-homotopy1-basis-exact.json",
+        "sha256": "903926d298f30c764e2be83f85f2f6ccbf3bf0eef6b00d8e1db203135823f1b2"
+      },
+      "global-moment-screen": {
+        "path": "coupling-results/sourcecase323200-homotopy1-global-moment-screen.json",
+        "sha256": "3561be42f58bf84c14e66c6836bd24558379db3b3ec9b6dfab8db47da02a09a9"
+      },
+      "all-triples": {
+        "path": "coupling-results/sourcecase323200-homotopy1-all-triples.json",
+        "sha256": "c021c3e93bdc518c542cde07d38848b47d17344117eca8e66d963c5a6fffc9ac"
+      },
+      "triple-distributions": {
+        "path": "coupling-results/sourcecase323200-homotopy1-triple-distributions.json",
+        "sha256": "01ee086b99da9062bb0a3941113af953de7766c2365a6a1c5dd672800a8ca5c0"
+      }
+    },
+    "selected_banks": {
+      "moment-resumption-results/consolidated-all-triples.json": "6eb35434a51e86b36de4f472fcab9af7cd27ff0b8a9ce3bc3688b22e4980fbec",
+      "moment-resumption-results/boolean-all-triples0.json": "7da845a8a97fb0ee35621b6dd949ecb59b68dc4535baa36c997ae3c56866113c",
+      "coupling-results/necessary0-all-triples.json": "2047472ea2f54b39ee6da76f63e18b0e5b19e73c21a55bfd344fa57d59de013b",
+      "coupling-results/necessary1-candidate-triples.json": "9189fef379f6260f71ff4ae3d022f896023cb89bbce34d3825af3e0efbc82aee",
+      "coupling-results/partner-witness6-all-triples.json": "b8fa3e9dcafe5a29b1bc03ae098097145647f22cef93060895f33ff9e29812cf",
+      "coupling-results/cover-case051110-mixed-checks-all-triples.json": "9c1e7a596fe14abb86ce7417376e1acf7cb283449ed5936bf1e69c0416ed2ecb",
+      "coupling-results/anchor-witness11-all-triples.json": "d4b664beef7214c1a061f972cd506e9ee4b0898f9e2599052bd02cab0d9b6124"
+    },
+    "selected_rows_including_duplicates": 213,
+    "unique_owner_rows": 213,
+    "distinct_event_gate": true,
+    "cyclic_sector_action_to_complete_screen_replayed": true,
+    "all_selected_rows_also_evaluated_exactly": true,
+    "minimum_exact_selected_row_slack": "1337056505/1125899906842624",
+    "rows": [
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          304,
+          490,
+          887
+        ],
+        "screen_events": [
+          304,
+          490,
+          887
+        ],
+        "exact_slack": "758694835123/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 1,
+        "kind": "triangle",
+        "events": [
+          320,
+          168,
+          1023
+        ],
+        "screen_events": [
+          320,
+          168,
+          1023
+        ],
+        "exact_slack": "3328056866631/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 2,
+        "kind": "triangle",
+        "events": [
+          352,
+          178,
+          1301
+        ],
+        "screen_events": [
+          352,
+          178,
+          1301
+        ],
+        "exact_slack": "5505081561/70368744177664"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 3,
+        "kind": "triangle",
+        "events": [
+          352,
+          128,
+          756
+        ],
+        "screen_events": [
+          352,
+          128,
+          756
+        ],
+        "exact_slack": "165773357203/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 4,
+        "kind": "triangle",
+        "events": [
+          352,
+          255,
+          939
+        ],
+        "screen_events": [
+          352,
+          255,
+          939
+        ],
+        "exact_slack": "159798967147/70368744177664"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 5,
+        "kind": "triangle",
+        "events": [
+          368,
+          123,
+          875
+        ],
+        "screen_events": [
+          368,
+          123,
+          875
+        ],
+        "exact_slack": "149071769301865/142989288169013248"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 6,
+        "kind": "triangle",
+        "events": [
+          384,
+          179,
+          1334
+        ],
+        "screen_events": [
+          384,
+          179,
+          1334
+        ],
+        "exact_slack": "835442346399/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 7,
+        "kind": "triangle",
+        "events": [
+          384,
+          115,
+          879
+        ],
+        "screen_events": [
+          384,
+          115,
+          879
+        ],
+        "exact_slack": "684484748441/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 8,
+        "kind": "triangle",
+        "events": [
+          384,
+          77,
+          1214
+        ],
+        "screen_events": [
+          384,
+          77,
+          1214
+        ],
+        "exact_slack": "1092413297/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 9,
+        "kind": "triangle",
+        "events": [
+          384,
+          294,
+          899
+        ],
+        "screen_events": [
+          384,
+          294,
+          899
+        ],
+        "exact_slack": "693025106725/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 10,
+        "kind": "triangle",
+        "events": [
+          384,
+          506,
+          887
+        ],
+        "screen_events": [
+          384,
+          506,
+          887
+        ],
+        "exact_slack": "511935125573/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 11,
+        "kind": "triangle",
+        "events": [
+          384,
+          179,
+          1318
+        ],
+        "screen_events": [
+          384,
+          179,
+          1318
+        ],
+        "exact_slack": "1376121321505/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 12,
+        "kind": "triangle",
+        "events": [
+          384,
+          486,
+          879
+        ],
+        "screen_events": [
+          384,
+          486,
+          879
+        ],
+        "exact_slack": "1453785766587/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 13,
+        "kind": "triangle",
+        "events": [
+          384,
+          480,
+          905
+        ],
+        "screen_events": [
+          384,
+          480,
+          905
+        ],
+        "exact_slack": "1879571577985/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 14,
+        "kind": "triangle",
+        "events": [
+          400,
+          115,
+          879
+        ],
+        "screen_events": [
+          400,
+          115,
+          879
+        ],
+        "exact_slack": "1229359004153/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 15,
+        "kind": "triangle",
+        "events": [
+          400,
+          77,
+          843
+        ],
+        "screen_events": [
+          400,
+          77,
+          843
+        ],
+        "exact_slack": "303306935085/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 16,
+        "kind": "triangle",
+        "events": [
+          400,
+          594,
+          1298
+        ],
+        "screen_events": [
+          400,
+          594,
+          1298
+        ],
+        "exact_slack": "2260608093/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 17,
+        "kind": "triangle",
+        "events": [
+          400,
+          490,
+          887
+        ],
+        "screen_events": [
+          400,
+          490,
+          887
+        ],
+        "exact_slack": "1047415970699/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 18,
+        "kind": "triangle",
+        "events": [
+          400,
+          506,
+          887
+        ],
+        "screen_events": [
+          400,
+          506,
+          887
+        ],
+        "exact_slack": "124095204289/70368744177664"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 19,
+        "kind": "triangle",
+        "events": [
+          400,
+          586,
+          887
+        ],
+        "screen_events": [
+          400,
+          586,
+          887
+        ],
+        "exact_slack": "306688459471/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 20,
+        "kind": "triangle",
+        "events": [
+          400,
+          304,
+          905
+        ],
+        "screen_events": [
+          400,
+          304,
+          905
+        ],
+        "exact_slack": "834026708271/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 21,
+        "kind": "triangle",
+        "events": [
+          400,
+          77,
+          795
+        ],
+        "screen_events": [
+          400,
+          77,
+          795
+        ],
+        "exact_slack": "1868775203009/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 22,
+        "kind": "triangle",
+        "events": [
+          400,
+          77,
+          1214
+        ],
+        "screen_events": [
+          400,
+          77,
+          1214
+        ],
+        "exact_slack": "2828222071155/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 23,
+        "kind": "triangle",
+        "events": [
+          416,
+          163,
+          1018
+        ],
+        "screen_events": [
+          416,
+          163,
+          1018
+        ],
+        "exact_slack": "619200771547/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 24,
+        "kind": "triangle",
+        "events": [
+          416,
+          171,
+          1010
+        ],
+        "screen_events": [
+          416,
+          171,
+          1010
+        ],
+        "exact_slack": "175980142549/70368744177664"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 25,
+        "kind": "triangle",
+        "events": [
+          416,
+          173,
+          1012
+        ],
+        "screen_events": [
+          416,
+          173,
+          1012
+        ],
+        "exact_slack": "1021455555237/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 26,
+        "kind": "triangle",
+        "events": [
+          416,
+          610,
+          652
+        ],
+        "screen_events": [
+          416,
+          610,
+          652
+        ],
+        "exact_slack": "2925555433089/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 27,
+        "kind": "triangle",
+        "events": [
+          416,
+          621,
+          1395
+        ],
+        "screen_events": [
+          416,
+          621,
+          1395
+        ],
+        "exact_slack": "1091202357601/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 28,
+        "kind": "triangle",
+        "events": [
+          416,
+          621,
+          880
+        ],
+        "screen_events": [
+          416,
+          621,
+          880
+        ],
+        "exact_slack": "878504924027/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 29,
+        "kind": "triangle",
+        "events": [
+          416,
+          163,
+          323
+        ],
+        "screen_events": [
+          416,
+          163,
+          323
+        ],
+        "exact_slack": "83477866715/70368744177664"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 30,
+        "kind": "triangle",
+        "events": [
+          416,
+          621,
+          1248
+        ],
+        "screen_events": [
+          416,
+          621,
+          1248
+        ],
+        "exact_slack": "3833277437003/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 31,
+        "kind": "triangle",
+        "events": [
+          416,
+          173,
+          765
+        ],
+        "screen_events": [
+          416,
+          173,
+          765
+        ],
+        "exact_slack": "1580909288283/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 32,
+        "kind": "triangle",
+        "events": [
+          416,
+          173,
+          989
+        ],
+        "screen_events": [
+          416,
+          173,
+          989
+        ],
+        "exact_slack": "811582254525/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 33,
+        "kind": "triangle",
+        "events": [
+          416,
+          330,
+          928
+        ],
+        "screen_events": [
+          416,
+          330,
+          928
+        ],
+        "exact_slack": "1664044165103/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 34,
+        "kind": "triangle",
+        "events": [
+          416,
+          173,
+          329
+        ],
+        "screen_events": [
+          416,
+          173,
+          329
+        ],
+        "exact_slack": "1741318875647/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 35,
+        "kind": "triangle",
+        "events": [
+          416,
+          227,
+          1017
+        ],
+        "screen_events": [
+          416,
+          227,
+          1017
+        ],
+        "exact_slack": "1302957551125/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 36,
+        "kind": "triangle",
+        "events": [
+          416,
+          678,
+          966
+        ],
+        "screen_events": [
+          416,
+          678,
+          966
+        ],
+        "exact_slack": "742626776967/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 37,
+        "kind": "triangle",
+        "events": [
+          416,
+          675,
+          963
+        ],
+        "screen_events": [
+          416,
+          675,
+          963
+        ],
+        "exact_slack": "4280888791649/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 38,
+        "kind": "triangle",
+        "events": [
+          416,
+          610,
+          1201
+        ],
+        "screen_events": [
+          416,
+          610,
+          1201
+        ],
+        "exact_slack": "3128381590773/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 39,
+        "kind": "triangle",
+        "events": [
+          416,
+          227,
+          1001
+        ],
+        "screen_events": [
+          416,
+          227,
+          1001
+        ],
+        "exact_slack": "1317647228845/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 40,
+        "kind": "triangle",
+        "events": [
+          416,
+          175,
+          1014
+        ],
+        "screen_events": [
+          416,
+          175,
+          1014
+        ],
+        "exact_slack": "429705645623/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 41,
+        "kind": "triangle",
+        "events": [
+          416,
+          173,
+          1028
+        ],
+        "screen_events": [
+          416,
+          173,
+          1028
+        ],
+        "exact_slack": "1504174703299/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 42,
+        "kind": "triangle",
+        "events": [
+          416,
+          149,
+          1016
+        ],
+        "screen_events": [
+          416,
+          149,
+          1016
+        ],
+        "exact_slack": "208471796005/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 43,
+        "kind": "triangle",
+        "events": [
+          416,
+          621,
+          1299
+        ],
+        "screen_events": [
+          416,
+          621,
+          1299
+        ],
+        "exact_slack": "1198922111753/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 44,
+        "kind": "triangle",
+        "events": [
+          416,
+          681,
+          969
+        ],
+        "screen_events": [
+          416,
+          681,
+          969
+        ],
+        "exact_slack": "3203012556975/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 45,
+        "kind": "triangle",
+        "events": [
+          416,
+          684,
+          972
+        ],
+        "screen_events": [
+          416,
+          684,
+          972
+        ],
+        "exact_slack": "4125112074123/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 46,
+        "kind": "triangle",
+        "events": [
+          416,
+          621,
+          1203
+        ],
+        "screen_events": [
+          416,
+          621,
+          1203
+        ],
+        "exact_slack": "818629343957/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 47,
+        "kind": "triangle",
+        "events": [
+          416,
+          173,
+          333
+        ],
+        "screen_events": [
+          416,
+          173,
+          333
+        ],
+        "exact_slack": "2890672792383/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 48,
+        "kind": "triangle",
+        "events": [
+          416,
+          594,
+          731
+        ],
+        "screen_events": [
+          416,
+          594,
+          731
+        ],
+        "exact_slack": "2547767192349/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 49,
+        "kind": "triangle",
+        "events": [
+          416,
+          680,
+          968
+        ],
+        "screen_events": [
+          416,
+          680,
+          968
+        ],
+        "exact_slack": "313506125341/70368744177664"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 50,
+        "kind": "triangle",
+        "events": [
+          416,
+          618,
+          1325
+        ],
+        "screen_events": [
+          416,
+          618,
+          1325
+        ],
+        "exact_slack": "1867479972343/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 51,
+        "kind": "triangle",
+        "events": [
+          416,
+          621,
+          1332
+        ],
+        "screen_events": [
+          416,
+          621,
+          1332
+        ],
+        "exact_slack": "1622103224101/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 52,
+        "kind": "triangle",
+        "events": [
+          416,
+          614,
+          1202
+        ],
+        "screen_events": [
+          416,
+          614,
+          1202
+        ],
+        "exact_slack": "97054936069/35184372088832"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 53,
+        "kind": "triangle",
+        "events": [
+          416,
+          219,
+          1007
+        ],
+        "screen_events": [
+          416,
+          219,
+          1007
+        ],
+        "exact_slack": "5127738227321/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 54,
+        "kind": "triangle",
+        "events": [
+          416,
+          603,
+          731
+        ],
+        "screen_events": [
+          416,
+          603,
+          731
+        ],
+        "exact_slack": "268207039331/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 55,
+        "kind": "triangle",
+        "events": [
+          416,
+          227,
+          1011
+        ],
+        "screen_events": [
+          416,
+          227,
+          1011
+        ],
+        "exact_slack": "667451262681/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 56,
+        "kind": "triangle",
+        "events": [
+          448,
+          128,
+          724
+        ],
+        "screen_events": [
+          448,
+          128,
+          724
+        ],
+        "exact_slack": "568846187/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 57,
+        "kind": "triangle",
+        "events": [
+          448,
+          128,
+          762
+        ],
+        "screen_events": [
+          448,
+          128,
+          762
+        ],
+        "exact_slack": "933589453/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 58,
+        "kind": "triangle",
+        "events": [
+          448,
+          128,
+          852
+        ],
+        "screen_events": [
+          448,
+          128,
+          852
+        ],
+        "exact_slack": "1337056505/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 59,
+        "kind": "triangle",
+        "events": [
+          448,
+          128,
+          756
+        ],
+        "screen_events": [
+          448,
+          128,
+          756
+        ],
+        "exact_slack": "698006766419/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 60,
+        "kind": "triangle",
+        "events": [
+          448,
+          128,
+          720
+        ],
+        "screen_events": [
+          448,
+          128,
+          720
+        ],
+        "exact_slack": "711318358045/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 61,
+        "kind": "triangle",
+        "events": [
+          496,
+          51,
+          869
+        ],
+        "screen_events": [
+          496,
+          51,
+          869
+        ],
+        "exact_slack": "4982688870149/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 62,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          730
+        ],
+        "screen_events": [
+          512,
+          592,
+          730
+        ],
+        "exact_slack": "3825420580933/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 63,
+        "kind": "triangle",
+        "events": [
+          512,
+          677,
+          965
+        ],
+        "screen_events": [
+          512,
+          677,
+          965
+        ],
+        "exact_slack": "5498156828227/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 64,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          720
+        ],
+        "screen_events": [
+          512,
+          592,
+          720
+        ],
+        "exact_slack": "55255904657/17592186044416"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 65,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1215
+        ],
+        "screen_events": [
+          512,
+          608,
+          1215
+        ],
+        "exact_slack": "7030689943809/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 66,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          976
+        ],
+        "screen_events": [
+          512,
+          592,
+          976
+        ],
+        "exact_slack": "6468837918449/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 67,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          986
+        ],
+        "screen_events": [
+          512,
+          592,
+          986
+        ],
+        "exact_slack": "3217668876139/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 68,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1222
+        ],
+        "screen_events": [
+          512,
+          608,
+          1222
+        ],
+        "exact_slack": "1629860692179/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 69,
+        "kind": "triangle",
+        "events": [
+          512,
+          149,
+          1022
+        ],
+        "screen_events": [
+          512,
+          149,
+          1022
+        ],
+        "exact_slack": "4708624116297/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 70,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          752
+        ],
+        "screen_events": [
+          512,
+          592,
+          752
+        ],
+        "exact_slack": "7162046190839/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 71,
+        "kind": "triangle",
+        "events": [
+          512,
+          611,
+          1215
+        ],
+        "screen_events": [
+          512,
+          611,
+          1215
+        ],
+        "exact_slack": "2858847113827/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 72,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          762
+        ],
+        "screen_events": [
+          512,
+          592,
+          762
+        ],
+        "exact_slack": "6419477322223/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 73,
+        "kind": "triangle",
+        "events": [
+          512,
+          683,
+          971
+        ],
+        "screen_events": [
+          512,
+          683,
+          971
+        ],
+        "exact_slack": "151725257525/17592186044416"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 74,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          1213
+        ],
+        "screen_events": [
+          512,
+          592,
+          1213
+        ],
+        "exact_slack": "3976243449987/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 75,
+        "kind": "triangle",
+        "events": [
+          512,
+          678,
+          966
+        ],
+        "screen_events": [
+          512,
+          678,
+          966
+        ],
+        "exact_slack": "3754030516483/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 76,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          1013
+        ],
+        "screen_events": [
+          512,
+          495,
+          1013
+        ],
+        "exact_slack": "5802404264251/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 77,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          842
+        ],
+        "screen_events": [
+          512,
+          592,
+          842
+        ],
+        "exact_slack": "7627551067191/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 78,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          997
+        ],
+        "screen_events": [
+          512,
+          495,
+          997
+        ],
+        "exact_slack": "2147370855171/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 79,
+        "kind": "triangle",
+        "events": [
+          512,
+          175,
+          1014
+        ],
+        "screen_events": [
+          512,
+          175,
+          1014
+        ],
+        "exact_slack": "1304208946235/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 80,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          832
+        ],
+        "screen_events": [
+          512,
+          592,
+          832
+        ],
+        "exact_slack": "8141018318317/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 81,
+        "kind": "triangle",
+        "events": [
+          512,
+          326,
+          944
+        ],
+        "screen_events": [
+          512,
+          326,
+          944
+        ],
+        "exact_slack": "1143453256803/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 82,
+        "kind": "triangle",
+        "events": [
+          512,
+          617,
+          1215
+        ],
+        "screen_events": [
+          512,
+          617,
+          1215
+        ],
+        "exact_slack": "3976957737195/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 83,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          965
+        ],
+        "screen_events": [
+          512,
+          495,
+          965
+        ],
+        "exact_slack": "4737812328477/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 84,
+        "kind": "triangle",
+        "events": [
+          512,
+          677,
+          1036
+        ],
+        "screen_events": [
+          512,
+          677,
+          1036
+        ],
+        "exact_slack": "2508490273921/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 85,
+        "kind": "triangle",
+        "events": [
+          512,
+          588,
+          742
+        ],
+        "screen_events": [
+          512,
+          588,
+          742
+        ],
+        "exact_slack": "691712964225/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 86,
+        "kind": "triangle",
+        "events": [
+          512,
+          674,
+          962
+        ],
+        "screen_events": [
+          512,
+          674,
+          962
+        ],
+        "exact_slack": "2057963061809/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 87,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          820
+        ],
+        "screen_events": [
+          512,
+          592,
+          820
+        ],
+        "exact_slack": "1377878638459/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 88,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1251
+        ],
+        "screen_events": [
+          512,
+          608,
+          1251
+        ],
+        "exact_slack": "3192861921595/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 89,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1206
+        ],
+        "screen_events": [
+          512,
+          608,
+          1206
+        ],
+        "exact_slack": "2173478061449/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 90,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1411
+        ],
+        "screen_events": [
+          512,
+          608,
+          1411
+        ],
+        "exact_slack": "5846462790819/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 91,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          738
+        ],
+        "screen_events": [
+          512,
+          495,
+          738
+        ],
+        "exact_slack": "10537856779033/2251799813685248"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 92,
+        "kind": "triangle",
+        "events": [
+          512,
+          673,
+          961
+        ],
+        "screen_events": [
+          512,
+          673,
+          961
+        ],
+        "exact_slack": "8018653582823/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 93,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          962
+        ],
+        "screen_events": [
+          512,
+          495,
+          962
+        ],
+        "exact_slack": "173017113561/35184372088832"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 94,
+        "kind": "triangle",
+        "events": [
+          512,
+          152,
+          1009
+        ],
+        "screen_events": [
+          512,
+          152,
+          1009
+        ],
+        "exact_slack": "2069465740541/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 95,
+        "kind": "triangle",
+        "events": [
+          512,
+          686,
+          974
+        ],
+        "screen_events": [
+          512,
+          686,
+          974
+        ],
+        "exact_slack": "9961230515199/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 96,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          1052
+        ],
+        "screen_events": [
+          512,
+          592,
+          1052
+        ],
+        "exact_slack": "4577644510205/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 97,
+        "kind": "triangle",
+        "events": [
+          512,
+          175,
+          1030
+        ],
+        "screen_events": [
+          512,
+          175,
+          1030
+        ],
+        "exact_slack": "8701582530815/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 98,
+        "kind": "triangle",
+        "events": [
+          512,
+          588,
+          1023
+        ],
+        "screen_events": [
+          512,
+          588,
+          1023
+        ],
+        "exact_slack": "7666740064795/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 99,
+        "kind": "triangle",
+        "events": [
+          512,
+          601,
+          722
+        ],
+        "screen_events": [
+          512,
+          601,
+          722
+        ],
+        "exact_slack": "3829307514579/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 100,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          844
+        ],
+        "screen_events": [
+          512,
+          608,
+          844
+        ],
+        "exact_slack": "4505471460211/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 101,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          835
+        ],
+        "screen_events": [
+          512,
+          608,
+          835
+        ],
+        "exact_slack": "4842452940863/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 102,
+        "kind": "triangle",
+        "events": [
+          512,
+          149,
+          1016
+        ],
+        "screen_events": [
+          512,
+          149,
+          1016
+        ],
+        "exact_slack": "2931835552469/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 103,
+        "kind": "triangle",
+        "events": [
+          512,
+          149,
+          741
+        ],
+        "screen_events": [
+          512,
+          149,
+          741
+        ],
+        "exact_slack": "7059843406221/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 104,
+        "kind": "triangle",
+        "events": [
+          512,
+          706,
+          1409
+        ],
+        "screen_events": [
+          512,
+          706,
+          1409
+        ],
+        "exact_slack": "1297370722497/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 105,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          748
+        ],
+        "screen_events": [
+          512,
+          495,
+          748
+        ],
+        "exact_slack": "6868768474343/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 106,
+        "kind": "triangle",
+        "events": [
+          512,
+          293,
+          965
+        ],
+        "screen_events": [
+          512,
+          293,
+          965
+        ],
+        "exact_slack": "5579955051893/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 107,
+        "kind": "triangle",
+        "events": [
+          512,
+          713,
+          1164
+        ],
+        "screen_events": [
+          512,
+          713,
+          1164
+        ],
+        "exact_slack": "2348079539115/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 108,
+        "kind": "triangle",
+        "events": [
+          512,
+          149,
+          1038
+        ],
+        "screen_events": [
+          512,
+          149,
+          1038
+        ],
+        "exact_slack": "8826798889587/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 109,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1231
+        ],
+        "screen_events": [
+          512,
+          608,
+          1231
+        ],
+        "exact_slack": "1198015031871/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 110,
+        "kind": "triangle",
+        "events": [
+          512,
+          620,
+          1211
+        ],
+        "screen_events": [
+          512,
+          620,
+          1211
+        ],
+        "exact_slack": "4569140391917/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 111,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          1411
+        ],
+        "screen_events": [
+          512,
+          592,
+          1411
+        ],
+        "exact_slack": "4394020002673/562949953421312"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 112,
+        "kind": "triangle",
+        "events": [
+          512,
+          335,
+          592
+        ],
+        "screen_events": [
+          512,
+          335,
+          592
+        ],
+        "exact_slack": "13185516237677/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 113,
+        "kind": "triangle",
+        "events": [
+          512,
+          620,
+          888
+        ],
+        "screen_events": [
+          512,
+          620,
+          888
+        ],
+        "exact_slack": "14115540554783/2251799813685248"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 114,
+        "kind": "triangle",
+        "events": [
+          608,
+          159,
+          741
+        ],
+        "screen_events": [
+          608,
+          159,
+          741
+        ],
+        "exact_slack": "11302993261/140737488355328"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 115,
+        "kind": "triangle",
+        "events": [
+          608,
+          591,
+          612
+        ],
+        "screen_events": [
+          608,
+          591,
+          612
+        ],
+        "exact_slack": "2755298510059/1125899906842624"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 116,
+        "kind": "triangle",
+        "events": [
+          608,
+          591,
+          735
+        ],
+        "screen_events": [
+          608,
+          591,
+          735
+        ],
+        "exact_slack": "16283282573/4398046511104"
+      },
+      {
+        "bank": "moment-resumption-results/consolidated-all-triples.json",
+        "cut_index": 117,
+        "kind": "triangle",
+        "events": [
+          608,
+          591,
+          615
+        ],
+        "screen_events": [
+          608,
+          591,
+          615
+        ],
+        "exact_slack": "209872667155/35184372088832"
+      },
+      {
+        "bank": "moment-resumption-results/boolean-all-triples0.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          352,
+          80,
+          1009
+        ],
+        "screen_events": [
+          352,
+          80,
+          1009
+        ],
+        "exact_slack": "237751061623/281474976710656"
+      },
+      {
+        "bank": "moment-resumption-results/boolean-all-triples0.json",
+        "cut_index": 1,
+        "kind": "triangle",
+        "events": [
+          368,
+          605,
+          906
+        ],
+        "screen_events": [
+          368,
+          605,
+          906
+        ],
+        "exact_slack": "242614007217599/71494644084506624"
+      },
+      {
+        "bank": "coupling-results/necessary0-all-triples.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          416,
+          293,
+          681
+        ],
+        "screen_events": [
+          416,
+          293,
+          681
+        ],
+        "exact_slack": "5545945168647/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/necessary1-candidate-triples.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          320,
+          620,
+          1343
+        ],
+        "screen_events": [
+          320,
+          620,
+          1343
+        ],
+        "exact_slack": "2451748477273/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/necessary1-candidate-triples.json",
+        "cut_index": 1,
+        "kind": "triangle",
+        "events": [
+          320,
+          620,
+          1334
+        ],
+        "screen_events": [
+          320,
+          620,
+          1334
+        ],
+        "exact_slack": "1700452950441/562949953421312"
+      },
+      {
+        "bank": "coupling-results/necessary1-candidate-triples.json",
+        "cut_index": 2,
+        "kind": "triangle",
+        "events": [
+          416,
+          618,
+          1421
+        ],
+        "screen_events": [
+          416,
+          618,
+          1421
+        ],
+        "exact_slack": "2745538262947/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/necessary1-candidate-triples.json",
+        "cut_index": 3,
+        "kind": "triangle",
+        "events": [
+          416,
+          615,
+          890
+        ],
+        "screen_events": [
+          416,
+          615,
+          890
+        ],
+        "exact_slack": "2921390864667/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/partner-witness6-all-triples.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          320,
+          303,
+          732
+        ],
+        "screen_events": [
+          320,
+          303,
+          732
+        ],
+        "exact_slack": "1041078182847/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/partner-witness6-all-triples.json",
+        "cut_index": 1,
+        "kind": "triangle",
+        "events": [
+          352,
+          262,
+          538
+        ],
+        "screen_events": [
+          352,
+          262,
+          538
+        ],
+        "exact_slack": "1823687792697/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/partner-witness6-all-triples.json",
+        "cut_index": 2,
+        "kind": "triangle",
+        "events": [
+          416,
+          334,
+          938
+        ],
+        "screen_events": [
+          416,
+          334,
+          938
+        ],
+        "exact_slack": "1083677465471/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/cover-case051110-mixed-checks-all-triples.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          256,
+          556,
+          1439
+        ],
+        "screen_events": [
+          256,
+          556,
+          1439
+        ],
+        "exact_slack": "353957733939/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 0,
+        "kind": "triangle",
+        "events": [
+          320,
+          299,
+          704
+        ],
+        "screen_events": [
+          320,
+          299,
+          704
+        ],
+        "exact_slack": "27230476195/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 1,
+        "kind": "triangle",
+        "events": [
+          320,
+          303,
+          1017
+        ],
+        "screen_events": [
+          320,
+          303,
+          1017
+        ],
+        "exact_slack": "178042276941/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 2,
+        "kind": "triangle",
+        "events": [
+          320,
+          704,
+          1219
+        ],
+        "screen_events": [
+          320,
+          704,
+          1219
+        ],
+        "exact_slack": "137034958485/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 3,
+        "kind": "triangle",
+        "events": [
+          352,
+          254,
+          926
+        ],
+        "screen_events": [
+          352,
+          254,
+          926
+        ],
+        "exact_slack": "5202601288405/17873661021126656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 4,
+        "kind": "triangle",
+        "events": [
+          400,
+          54,
+          872
+        ],
+        "screen_events": [
+          400,
+          54,
+          872
+        ],
+        "exact_slack": "2160833500635/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 5,
+        "kind": "triangle",
+        "events": [
+          400,
+          240,
+          922
+        ],
+        "screen_events": [
+          400,
+          240,
+          922
+        ],
+        "exact_slack": "2790160363815/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 6,
+        "kind": "triangle",
+        "events": [
+          416,
+          611,
+          1254
+        ],
+        "screen_events": [
+          416,
+          611,
+          1254
+        ],
+        "exact_slack": "2046340780327/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 7,
+        "kind": "triangle",
+        "events": [
+          416,
+          716,
+          1263
+        ],
+        "screen_events": [
+          416,
+          716,
+          1263
+        ],
+        "exact_slack": "267229094211/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 8,
+        "kind": "triangle",
+        "events": [
+          416,
+          293,
+          612
+        ],
+        "screen_events": [
+          416,
+          293,
+          612
+        ],
+        "exact_slack": "4741157433829/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 9,
+        "kind": "triangle",
+        "events": [
+          416,
+          608,
+          1395
+        ],
+        "screen_events": [
+          416,
+          608,
+          1395
+        ],
+        "exact_slack": "856564553443/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 10,
+        "kind": "triangle",
+        "events": [
+          416,
+          615,
+          1395
+        ],
+        "screen_events": [
+          416,
+          615,
+          1395
+        ],
+        "exact_slack": "3387063024935/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 11,
+        "kind": "triangle",
+        "events": [
+          416,
+          293,
+          1010
+        ],
+        "screen_events": [
+          416,
+          293,
+          1010
+        ],
+        "exact_slack": "3554601513587/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 12,
+        "kind": "triangle",
+        "events": [
+          416,
+          612,
+          1395
+        ],
+        "screen_events": [
+          416,
+          612,
+          1395
+        ],
+        "exact_slack": "1525421566159/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 13,
+        "kind": "triangle",
+        "events": [
+          416,
+          716,
+          1167
+        ],
+        "screen_events": [
+          416,
+          716,
+          1167
+        ],
+        "exact_slack": "29316405497/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 14,
+        "kind": "triangle",
+        "events": [
+          416,
+          293,
+          741
+        ],
+        "screen_events": [
+          416,
+          293,
+          741
+        ],
+        "exact_slack": "2891386831785/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 15,
+        "kind": "triangle",
+        "events": [
+          416,
+          611,
+          1299
+        ],
+        "screen_events": [
+          416,
+          611,
+          1299
+        ],
+        "exact_slack": "3618096137565/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 16,
+        "kind": "triangle",
+        "events": [
+          496,
+          486,
+          879
+        ],
+        "screen_events": [
+          496,
+          486,
+          879
+        ],
+        "exact_slack": "34369019909/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 17,
+        "kind": "triangle",
+        "events": [
+          512,
+          620,
+          1406
+        ],
+        "screen_events": [
+          512,
+          620,
+          1406
+        ],
+        "exact_slack": "3983072191/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 18,
+        "kind": "triangle",
+        "events": [
+          512,
+          960,
+          1406
+        ],
+        "screen_events": [
+          512,
+          960,
+          1406
+        ],
+        "exact_slack": "1334296628659/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 19,
+        "kind": "triangle",
+        "events": [
+          512,
+          614,
+          1400
+        ],
+        "screen_events": [
+          512,
+          614,
+          1400
+        ],
+        "exact_slack": "1021293517521/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 20,
+        "kind": "triangle",
+        "events": [
+          512,
+          620,
+          1400
+        ],
+        "screen_events": [
+          512,
+          620,
+          1400
+        ],
+        "exact_slack": "198886212741/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 21,
+        "kind": "triangle",
+        "events": [
+          512,
+          966,
+          1406
+        ],
+        "screen_events": [
+          512,
+          966,
+          1406
+        ],
+        "exact_slack": "10289855813/17592186044416"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 22,
+        "kind": "triangle",
+        "events": [
+          512,
+          623,
+          1406
+        ],
+        "screen_events": [
+          512,
+          623,
+          1406
+        ],
+        "exact_slack": "1164146329083/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 23,
+        "kind": "triangle",
+        "events": [
+          512,
+          620,
+          1374
+        ],
+        "screen_events": [
+          512,
+          620,
+          1374
+        ],
+        "exact_slack": "3011732235/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 24,
+        "kind": "triangle",
+        "events": [
+          512,
+          963,
+          1406
+        ],
+        "screen_events": [
+          512,
+          963,
+          1406
+        ],
+        "exact_slack": "537504215037/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 25,
+        "kind": "triangle",
+        "events": [
+          512,
+          960,
+          1400
+        ],
+        "screen_events": [
+          512,
+          960,
+          1400
+        ],
+        "exact_slack": "1968406488453/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 26,
+        "kind": "triangle",
+        "events": [
+          512,
+          1021,
+          1406
+        ],
+        "screen_events": [
+          512,
+          1021,
+          1406
+        ],
+        "exact_slack": "408645150499/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 27,
+        "kind": "triangle",
+        "events": [
+          512,
+          621,
+          783
+        ],
+        "screen_events": [
+          512,
+          621,
+          783
+        ],
+        "exact_slack": "1680264772619/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 28,
+        "kind": "triangle",
+        "events": [
+          512,
+          973,
+          1400
+        ],
+        "screen_events": [
+          512,
+          973,
+          1400
+        ],
+        "exact_slack": "1418204943999/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 29,
+        "kind": "triangle",
+        "events": [
+          512,
+          963,
+          1400
+        ],
+        "screen_events": [
+          512,
+          963,
+          1400
+        ],
+        "exact_slack": "512086396365/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 30,
+        "kind": "triangle",
+        "events": [
+          512,
+          611,
+          1267
+        ],
+        "screen_events": [
+          512,
+          611,
+          1267
+        ],
+        "exact_slack": "570997547637/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 31,
+        "kind": "triangle",
+        "events": [
+          512,
+          611,
+          1302
+        ],
+        "screen_events": [
+          512,
+          611,
+          1302
+        ],
+        "exact_slack": "531421797407/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 32,
+        "kind": "triangle",
+        "events": [
+          512,
+          617,
+          1400
+        ],
+        "screen_events": [
+          512,
+          617,
+          1400
+        ],
+        "exact_slack": "1166947548505/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 33,
+        "kind": "triangle",
+        "events": [
+          512,
+          1015,
+          1400
+        ],
+        "screen_events": [
+          512,
+          1015,
+          1400
+        ],
+        "exact_slack": "2136321955827/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 34,
+        "kind": "triangle",
+        "events": [
+          512,
+          686,
+          1406
+        ],
+        "screen_events": [
+          512,
+          686,
+          1406
+        ],
+        "exact_slack": "398482686209/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 35,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1302
+        ],
+        "screen_events": [
+          512,
+          608,
+          1302
+        ],
+        "exact_slack": "123346218537/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 36,
+        "kind": "triangle",
+        "events": [
+          512,
+          610,
+          1406
+        ],
+        "screen_events": [
+          512,
+          610,
+          1406
+        ],
+        "exact_slack": "2446959771167/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 37,
+        "kind": "triangle",
+        "events": [
+          512,
+          713,
+          1400
+        ],
+        "screen_events": [
+          512,
+          713,
+          1400
+        ],
+        "exact_slack": "875736805861/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 38,
+        "kind": "triangle",
+        "events": [
+          512,
+          1021,
+          1400
+        ],
+        "screen_events": [
+          512,
+          1021,
+          1400
+        ],
+        "exact_slack": "63978790201/35184372088832"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 39,
+        "kind": "triangle",
+        "events": [
+          512,
+          970,
+          1400
+        ],
+        "screen_events": [
+          512,
+          970,
+          1400
+        ],
+        "exact_slack": "4918218171557/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 40,
+        "kind": "triangle",
+        "events": [
+          512,
+          1018,
+          1406
+        ],
+        "screen_events": [
+          512,
+          1018,
+          1406
+        ],
+        "exact_slack": "895949619993/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 41,
+        "kind": "triangle",
+        "events": [
+          512,
+          1011,
+          1406
+        ],
+        "screen_events": [
+          512,
+          1011,
+          1406
+        ],
+        "exact_slack": "80659394597/35184372088832"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 42,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1362
+        ],
+        "screen_events": [
+          512,
+          608,
+          1362
+        ],
+        "exact_slack": "2031685072921/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 43,
+        "kind": "triangle",
+        "events": [
+          512,
+          969,
+          1406
+        ],
+        "screen_events": [
+          512,
+          969,
+          1406
+        ],
+        "exact_slack": "3429838149033/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 44,
+        "kind": "triangle",
+        "events": [
+          512,
+          709,
+          1406
+        ],
+        "screen_events": [
+          512,
+          709,
+          1406
+        ],
+        "exact_slack": "1952471362249/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 45,
+        "kind": "triangle",
+        "events": [
+          512,
+          326,
+          1400
+        ],
+        "screen_events": [
+          512,
+          326,
+          1400
+        ],
+        "exact_slack": "2407302208649/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 46,
+        "kind": "triangle",
+        "events": [
+          512,
+          619,
+          1406
+        ],
+        "screen_events": [
+          512,
+          619,
+          1406
+        ],
+        "exact_slack": "2942029580919/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 47,
+        "kind": "triangle",
+        "events": [
+          512,
+          597,
+          1400
+        ],
+        "screen_events": [
+          512,
+          597,
+          1400
+        ],
+        "exact_slack": "1399729647477/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 48,
+        "kind": "triangle",
+        "events": [
+          512,
+          616,
+          1406
+        ],
+        "screen_events": [
+          512,
+          616,
+          1406
+        ],
+        "exact_slack": "492146160293/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 49,
+        "kind": "triangle",
+        "events": [
+          512,
+          716,
+          1406
+        ],
+        "screen_events": [
+          512,
+          716,
+          1406
+        ],
+        "exact_slack": "1183970207813/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 50,
+        "kind": "triangle",
+        "events": [
+          512,
+          960,
+          1374
+        ],
+        "screen_events": [
+          512,
+          960,
+          1374
+        ],
+        "exact_slack": "106203080695/70368744177664"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 51,
+        "kind": "triangle",
+        "events": [
+          512,
+          610,
+          783
+        ],
+        "screen_events": [
+          512,
+          610,
+          783
+        ],
+        "exact_slack": "2024683938385/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 52,
+        "kind": "triangle",
+        "events": [
+          512,
+          614,
+          1302
+        ],
+        "screen_events": [
+          512,
+          614,
+          1302
+        ],
+        "exact_slack": "4211710023361/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 53,
+        "kind": "triangle",
+        "events": [
+          512,
+          719,
+          1406
+        ],
+        "screen_events": [
+          512,
+          719,
+          1406
+        ],
+        "exact_slack": "3211838948161/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 54,
+        "kind": "triangle",
+        "events": [
+          512,
+          611,
+          1394
+        ],
+        "screen_events": [
+          512,
+          611,
+          1394
+        ],
+        "exact_slack": "3039198186889/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 55,
+        "kind": "triangle",
+        "events": [
+          512,
+          614,
+          1362
+        ],
+        "screen_events": [
+          512,
+          614,
+          1362
+        ],
+        "exact_slack": "913440582271/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 56,
+        "kind": "triangle",
+        "events": [
+          512,
+          603,
+          1406
+        ],
+        "screen_events": [
+          512,
+          603,
+          1406
+        ],
+        "exact_slack": "2836438037059/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 57,
+        "kind": "triangle",
+        "events": [
+          512,
+          680,
+          1400
+        ],
+        "screen_events": [
+          512,
+          680,
+          1400
+        ],
+        "exact_slack": "3525032152771/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 58,
+        "kind": "triangle",
+        "events": [
+          512,
+          710,
+          1400
+        ],
+        "screen_events": [
+          512,
+          710,
+          1400
+        ],
+        "exact_slack": "1546823559013/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 59,
+        "kind": "triangle",
+        "events": [
+          512,
+          995,
+          1400
+        ],
+        "screen_events": [
+          512,
+          995,
+          1400
+        ],
+        "exact_slack": "3129042389355/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 60,
+        "kind": "triangle",
+        "events": [
+          512,
+          706,
+          1406
+        ],
+        "screen_events": [
+          512,
+          706,
+          1406
+        ],
+        "exact_slack": "1431927123697/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 61,
+        "kind": "triangle",
+        "events": [
+          512,
+          1008,
+          1406
+        ],
+        "screen_events": [
+          512,
+          1008,
+          1406
+        ],
+        "exact_slack": "2902998001983/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 62,
+        "kind": "triangle",
+        "events": [
+          512,
+          610,
+          1374
+        ],
+        "screen_events": [
+          512,
+          610,
+          1374
+        ],
+        "exact_slack": "100691024721/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 63,
+        "kind": "triangle",
+        "events": [
+          512,
+          998,
+          1406
+        ],
+        "screen_events": [
+          512,
+          998,
+          1406
+        ],
+        "exact_slack": "1812799874651/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 64,
+        "kind": "triangle",
+        "events": [
+          512,
+          495,
+          783
+        ],
+        "screen_events": [
+          512,
+          495,
+          783
+        ],
+        "exact_slack": "3033394803405/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 65,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1394
+        ],
+        "screen_events": [
+          512,
+          608,
+          1394
+        ],
+        "exact_slack": "722883756169/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 66,
+        "kind": "triangle",
+        "events": [
+          512,
+          604,
+          1400
+        ],
+        "screen_events": [
+          512,
+          604,
+          1400
+        ],
+        "exact_slack": "4445071239335/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 67,
+        "kind": "triangle",
+        "events": [
+          512,
+          614,
+          771
+        ],
+        "screen_events": [
+          512,
+          614,
+          771
+        ],
+        "exact_slack": "595221228383/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 68,
+        "kind": "triangle",
+        "events": [
+          512,
+          594,
+          1406
+        ],
+        "screen_events": [
+          512,
+          594,
+          1406
+        ],
+        "exact_slack": "4373519730327/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 69,
+        "kind": "triangle",
+        "events": [
+          512,
+          677,
+          1400
+        ],
+        "screen_events": [
+          512,
+          677,
+          1400
+        ],
+        "exact_slack": "4628322612157/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 70,
+        "kind": "triangle",
+        "events": [
+          512,
+          621,
+          1369
+        ],
+        "screen_events": [
+          512,
+          621,
+          1369
+        ],
+        "exact_slack": "541509875461/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 71,
+        "kind": "triangle",
+        "events": [
+          512,
+          982,
+          1406
+        ],
+        "screen_events": [
+          512,
+          982,
+          1406
+        ],
+        "exact_slack": "1747004035525/562949953421312"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 72,
+        "kind": "triangle",
+        "events": [
+          512,
+          620,
+          1308
+        ],
+        "screen_events": [
+          512,
+          620,
+          1308
+        ],
+        "exact_slack": "3745613907509/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 73,
+        "kind": "triangle",
+        "events": [
+          512,
+          522,
+          783
+        ],
+        "screen_events": [
+          512,
+          522,
+          783
+        ],
+        "exact_slack": "10736671176013837/3823556083637551104"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 74,
+        "kind": "triangle",
+        "events": [
+          512,
+          604,
+          783
+        ],
+        "screen_events": [
+          512,
+          604,
+          783
+        ],
+        "exact_slack": "4092702172971/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 75,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          771
+        ],
+        "screen_events": [
+          512,
+          592,
+          771
+        ],
+        "exact_slack": "2348428906053/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 76,
+        "kind": "triangle",
+        "events": [
+          512,
+          549,
+          783
+        ],
+        "screen_events": [
+          512,
+          549,
+          783
+        ],
+        "exact_slack": "1074383922677/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 77,
+        "kind": "triangle",
+        "events": [
+          512,
+          586,
+          1373
+        ],
+        "screen_events": [
+          512,
+          586,
+          1373
+        ],
+        "exact_slack": "1716693308823/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 78,
+        "kind": "triangle",
+        "events": [
+          512,
+          149,
+          771
+        ],
+        "screen_events": [
+          512,
+          149,
+          771
+        ],
+        "exact_slack": "921046601421/281474976710656"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 79,
+        "kind": "triangle",
+        "events": [
+          512,
+          610,
+          1400
+        ],
+        "screen_events": [
+          512,
+          610,
+          1400
+        ],
+        "exact_slack": "4867247889163/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 80,
+        "kind": "triangle",
+        "events": [
+          512,
+          603,
+          783
+        ],
+        "screen_events": [
+          512,
+          603,
+          783
+        ],
+        "exact_slack": "3415577737219/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 81,
+        "kind": "triangle",
+        "events": [
+          512,
+          608,
+          1308
+        ],
+        "screen_events": [
+          512,
+          608,
+          1308
+        ],
+        "exact_slack": "1842533702669/1125899906842624"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 82,
+        "kind": "triangle",
+        "events": [
+          512,
+          592,
+          1363
+        ],
+        "screen_events": [
+          512,
+          592,
+          1363
+        ],
+        "exact_slack": "198123663217/140737488355328"
+      },
+      {
+        "bank": "coupling-results/anchor-witness11-all-triples.json",
+        "cut_index": 83,
+        "kind": "triangle",
+        "events": [
+          512,
+          588,
+          783
+        ],
+        "screen_events": [
+          512,
+          588,
+          783
+        ],
+        "exact_slack": "694815462535/281474976710656"
+      }
+    ],
+    "scope": "All selected triangle/union cuts are among the complete physical three-distinct-event families after an explicit allowed symmetry. Separate exact triple distributions imply these rows, without requiring a common global distribution."
+  },
+  "corruption_controls_rejected": [
+    "corrupted_owner_coordinate",
+    "corrupted_necessary_floor",
+    "corrupted_edge_orbit_size"
+  ],
+  "seven_listed_families_receipts_bound": true,
+  "listed_weaker_case_relaxation_feasible": true,
+  "listed_true_case_relaxation_feasible": false,
+  "physical_source_frame_verified": false,
+  "source_case_excluded": false,
+  "dependencies": {
+    "verify_two_sided_full_basis_oracle.py": "e6342b1f16ce5902a4f2a2601407e77b35b58bab7a66f51b39ab59510a4f49b0",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "complete_boolean_triples.py": "1d9780b7e7ade4214c2535d915801888d3ed4508fcae1f523d121ff1ee3b8f69"
+  },
+  "scope": "The point satisfies an intermediate weaker selected-case floor but fails the true source floor. Even with all seven listed families accepted, it is not a feasible point of the true-floor case relaxation. It is a continuation witness only; no source frame or case exclusion follows."
+}

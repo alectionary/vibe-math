@@ -1,0 +1,56 @@
+{
+  "status": "UNRUN_SHARED_MASTER_CHECKPOINT_REPLAY_PLAN",
+  "stages": [
+    {
+      "name": "master-preparation",
+      "consumer": "verify_shared_master_preparation.py",
+      "arguments": [
+        "--manifest",
+        "shared-master-results/phase-one-v1.json"
+      ],
+      "accepted_status": "PASS_EXACT_SHARED_BASIS_PHASE_ONE_MODEL",
+      "seconds": 180
+    },
+    {
+      "name": "pattern-bounds",
+      "consumer": "verify_shared_master_projection_bounds.py",
+      "arguments": [
+        "--certificate",
+        "shared-master-results/pattern-local-probability-bounds-v1.json.gz"
+      ],
+      "accepted_status": "PASS_EXACT_SHARED_MASTER_PATTERN_LOCAL_PROBABILITY_BOUNDS",
+      "seconds": 180
+    },
+    {
+      "name": "numeric-view",
+      "consumer": "verify_shared_master_numeric_view_v2.py",
+      "arguments": [
+        "--manifest",
+        "shared-master-results/highs-view-v1.json"
+      ],
+      "accepted_status": "PASS_EXACT_TO_FLOAT_SHARED_MASTER_VIEW",
+      "seconds": 180
+    },
+    {
+      "name": "residual-full-pricing",
+      "consumer": "verify_shared_master_residual_projection.py",
+      "arguments": [
+        "--pricing",
+        "shared-master-results/phase-one-v1-residual-pricing-v2.json.gz"
+      ],
+      "accepted_status": "PASS_EXACT_SHARED_MASTER_RESIDUAL_FULL_DOMAIN_PRICING",
+      "seconds": 180
+    },
+    {
+      "name": "exact-owner-projection",
+      "consumer": "verify_shared_master_residual_minorant.py",
+      "arguments": [
+        "--certificate",
+        "shared-master-results/phase-one-v1-residual-projection.json"
+      ],
+      "accepted_status": "PASS_EXACT_PIN_FREE_SHARED_MASTER_RESIDUAL_OWNER_PROJECTION",
+      "seconds": 180
+    }
+  ],
+  "scope": "New model, probability bounds, numeric view, full-domain pricing and exact final projection only. No optimization or old source-proof count changes."
+}

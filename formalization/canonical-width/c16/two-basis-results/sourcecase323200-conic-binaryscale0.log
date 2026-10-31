@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/probe_case_conic_scaled.py", line 67, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/probe_case_conic_scaled.py", line 56, in main
+    if a.worker:return worker(a)
+                       ^^^^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/probe_case_conic_scaled.py", line 32, in worker
+    result=scs.solve({'A':B,'b':right,'c':c,'x':warm,'y':np.zeros(len(b)),'s':right-B@warm},cone,**settings)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/scs/__init__.py", line 219, in solve
+    solver = SCS(data, cone, **settings)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/scs/__init__.py", line 172, in __init__
+    self._solver = _scs.SCS(
+                   ^^^^^^^^^
+TypeError: 'use_indirect' is an invalid keyword argument for this function

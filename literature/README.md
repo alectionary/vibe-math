@@ -28,7 +28,7 @@ See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more
 
 The historical [Lean coverage assessment](LEAN-COVERAGE.md) reviewed the earlier discovery backlog with one complete proof at that stage. Current counts, including subsequent proofs and the new source cohort, are in [the expanded inventory](OPEN-PROBLEMS.md). Related source-level infrastructure is distinguished from exact target coverage.
 
-The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 187 inventory entries, including six additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 430 inventory entries, with new source-question additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
 
 The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is recorded in the regenerated expanded inventory, including the separate P11 completeness result. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; the full girth characterization is the earliest complete answer known to us; its established ingredients and first-formalization status are distinguished. Other graph properties remain separate.
 
@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **101 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **179 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -931,6 +931,18 @@ Owidiusz Makuta; Remigiusz Augusiak. 2025. [connected gallager background](https
 
 Primary text contexts inspected; bounded source comparison. Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem.
 
+### F152 Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
+
+Angikar Ghosal; Andreas Karrenbauer. 2025. [c16 rank background](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
+
+SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. Relevant primary-text contexts were consulted; no theorem settling C16 was established. Canonical question reconciliation and current-resolution/Lean assessment remain incomplete; this is not a zero-question screen. See literature/c16-continuation-source-screening.json.
+
+### F153 Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. 2023. [c16 rank background](https://arxiv.org/html/2312.03859v1).
+
+arXiv:2312.03859v1,6December2023. Relevant primary-text contexts were consulted; no theorem settling C16 was established. Canonical question reconciliation and current-resolution/Lean assessment remain incomplete; this is not a zero-question screen. See literature/c16-continuation-source-screening.json.
+
 ### F99 Majorana Fermion Codes
 
 Sergey Bravyi; Bernhard Leemhuis; Barbara M. Terhal. 2010. [symmetric css background](https://arxiv.org/pdf/1004.3791v2).
@@ -948,6 +960,462 @@ Primary full-text source screen and definitions/proofs comparison. Section3 self
 Renaya Dhingra; Gretchen L. Matthews; Collin McDevitt; Emily McMillon. 2026. [gallager variant background](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content).
 
 Full primary accepted manuscript and exact decoder rules inspected. Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted.
+
+### F102 Regression-Based Multi-Trait QTL Mapping Using a Structural Equation Model
+
+Xiaojuan Mi; Kent Eskridge; Dong Wang; P. Stephen Baenziger; B. Todd Campbell; Kulvinder S. Gill; Ismail Dweikat; James Bovaird. 2010. [unl sem author coauthor expansion](https://doi.org/10.2202/1544-6115.1552).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. methodological_directions_recorded
+
+### F103 Bayesian mixture structural equation modelling in multiple-trait QTL mapping
+
+XIAOJUAN MI; KENT ESKRIDGE; DONG WANG; P. STEPHEN BAENZIGER; B. TODD CAMPBELL; KULVINDER S. GILL; ISMAIL DWEIKAT. 2010. [unl sem author coauthor expansion](https://doi.org/10.1017/S0016672310000236).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. methodological_directions_recorded
+
+### F104 Analyzing Mixed-Dyadic Data Using Structural Equation Models
+
+James L. Peugh; David DiLillo; Jillian Panuzio. 2013. [unl sem author coauthor expansion](https://doi.org/10.1080/10705511.2013.769395).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F105 “How Well Does Your Structural Equation Model Fit Your Data?”: Is Marcoulides and Yuan’s Equivalence Test the Answer?
+
+James Peugh; David F Feldon. 2020. [unl sem author coauthor expansion](https://doi.org/10.1187/cbe.20-01-0016).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F106 The Answer is “No”: A Comment on Peugh and Feldon (2020)
+
+James L Peugh; David F Feldon. 2024. [unl sem author coauthor expansion](https://doi.org/10.1187/cbe.24-07-0182).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. methodological_directions_recorded
+
+### F107 Incorporating Molecular Markers and Causal Structure among Traits Using a Smith-Hazel Index and Structural Equation Models
+
+Juan Valente Hidalgo-Contreras; Josafhat Salinas-Ruiz; Kent M. Eskridge; Stephen P. Baenziger. 2021. [unl sem author coauthor expansion](https://doi.org/10.3390/agronomy11101953).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F108 Developmental etiologies of alcohol use and their relations to parent and peer influences over adolescence and young adulthood: A genetically informed approach
+
+Arielle R Deutsch; Phillip K Wood; Wendy S Slutske. 2017. [unl sem author coauthor expansion](https://doi.org/10.1111/acer.13506).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F109 Future orientation in adolescent and young adult cancer survivors and unaffected peers
+
+Sarah J Beal; Rachel Tillery; Yelena P Wu; Aimee N Thompson; Ahna Pai. 2018. [unl sem author coauthor expansion](https://doi.org/10.1002/pon.4588).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F110 Participatory modeling for high complexity, multi-system issues: challenges and recommendations for balancing qualitative understanding and quantitative questions
+
+Arielle R. Deutsch; Leah Frerichs; Madeleine Perry; Mohammad S. Jalali. 2024. [unl sem author coauthor expansion](https://doi.org/10.1002/sdr.1765).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F111 Comprehensive Sexuality Education Improves Primary Students’ Explicit and Implicit Attitudes Toward Homosexuality
+
+Li Hong; Xiangyu He; Lian Xue; Lingfeng Guo; Wenli Liu. 2022. [unl sem author coauthor expansion](https://doi.org/10.1080/19317611.2022.2067282).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F112 Selection and socialization influences on adolescent alcohol use: The individual and joint contexts of neighborhood disadvantage and population density
+
+Arielle R Deutsch. 2019. [unl sem author coauthor expansion](https://doi.org/10.1080/10826084.2019.1608247).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F113 Developing and validating a comprehensive measure of coordination in patient aligned care teams
+
+Amspoker, Amber B.; Lester, Houston F.; Spitzmueller, Christiane; Thomas, Candice L.; Hysong, Sylvia J.. 2022. [unl sem author coauthor expansion](https://doi.org/10.1186/s12913-022-08590-2).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F114 Teacher Leadership, Wellbeing, and Intent to Leave in US Rural Schools: Evidence from the 2020–21 National Teacher and Principal Survey
+
+Jordan Engle; Jiangang Xia; Sam J. Butler. 2024. [unl sem author coauthor expansion](https://doi.org/10.3390/educsci14070758).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F115 D-Optimal Design for a Causal Structure for Completely Randomized and Random Blocked Experiments
+
+Zaher Kmail; Kent Eskridge. 2022. [unl sem author coauthor expansion](https://doi.org/10.1155/2022/7299086).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F116 Equivalence testing to judge model fit: A Monte Carlo simulation
+
+James L. Peugh; Kaylee Litson; David F. Feldon. 2023. [unl sem author coauthor expansion](https://doi.org/10.1037/met0000591).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F117 When Nesting is Nuisance in Cluster Sampled Longitudinal Research
+
+James Peugh; Francis Huang; Sonja D. Winter. 2026. [unl sem author coauthor expansion](https://doi.org/10.1080/00273171.2026.2720958).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F118 The Comparative Performance of Conditional Independence Indices
+
+Doyoung Kim; R. J. De Ayala; Abdullah A. Ferdous; Michael L. Nering. 2011. [unl sem author coauthor expansion](https://doi.org/10.1177/0146621611407909).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F119 Examining the accuracy of orthogonal latent mean comparisons in unbalanced conditions
+
+Jay B. Jeffries; James A. Bovaird. 2026. [unl sem author coauthor expansion](https://doi.org/10.1177/01466216261452255).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F120 An ecological perspective on rural, low-income mothers' health
+
+Tiffany Bice-Wigington; Leigh Ann Simmons; Catherine Huddleston-Casas. 2015. [unl sem author coauthor expansion](https://doi.org/10.1080/19371918.2014.969860).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F121 Direct and Indirect Effects of Nebraska Motor Vehicle Drivers’ Characteristics on Inattentive Driving at Highway-Rail Grade Crossings
+
+Shanshan Zhao; Aemal J. Khattak. 2018. [unl sem author coauthor expansion](https://doi.org/10.1177/0361198118794067).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F122 Communicative and Relational Dimensions of Shared Family Identity and Relational Intentions in Mother-in-Law/Daughter-in-Law Relationships: Developing a Conceptual Model for Mother-in-Law/Daughter-in-Law Research
+
+Christine E. Rittenour; Jordan Soliz. 2009. [unl sem author coauthor expansion](https://doi.org/10.1080/10570310802636334).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F123 Bridging the Gap: The Predictive Roles of Emotion Dysregulation and Stalking-related Attitudes on Offline and Online Stalking and Intrusive Harassment
+
+Elisha Chan; Maria Rosa Viñas-Racionero; Mario J. Scalora. 2022. [unl sem author coauthor expansion](https://doi.org/10.1177/08862605211043590).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F124 Satisficing Among Reluctant Respondents in a Cross-National Context
+
+Olena Kaminska; Allan L. McCutcheon; Jaak Billiet. 2010. [unl sem author coauthor expansion](https://academic.oup.com/poq/article/74/5/956/1816917).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F125 Like night and day: a review of nocturnal predator communities and predation in annual row crop agroecosystems
+
+Hannah E Stowe; Robert Pfannenstiel; John Ruberson; Julie A Peterson. 2026. [unl sem author coauthor expansion](https://pmc.ncbi.nlm.nih.gov/articles/PMC13186587/).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. no_additional_suitable_explicit_math_target_recorded
+
+### F126 Structural equation modelling for studying genotype × environment interactions of physiological traits affecting yield in wheat
+
+M. Vargas; J. Crossa; M. P. Reynolds; P. Dhungana; K. M. Eskridge. 2007. [unl sem author coauthor expansion](https://doi.org/10.1017/S0021859607006806).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F127 Structural Equation Modeling of Gene–Environment Interactions in Coronary Heart Disease
+
+Xiaojuan Mi; Kent M. Eskridge; Varghese George; Dong Wang. 2011. [unl sem author coauthor expansion](https://doi.org/10.1111/j.1469-1809.2010.00634.x).
+
+Seed author appears in the verified primary article metadata/full text; topic and coauthors match the seed research. unassessed_full_text_access_gap
+
+### F128 Development and initial validation of a creative self-efficacy scale for undergraduates: categorical confirmatory factor analysis and multidimensional item response theory
+
+Abulela, Mohammed A. A. . 2024. [unl sem CFA measurement expansion](https://doi.org/10.3389/feduc.2023.1306532).
+
+Reference Abbott (2010) explicitly names the seed dissertation; Abbott is not an author of this article. no_additional_suitable_explicit_math_target_recorded
+
+### F129 Creative Self-Eﬃcacy Scale for Children and Adolescents (CASES): A Development and Validation Study
+
+Andreia Valquaresma; Joaquim Luís Coimbra; Patrício Costa. 2022. [unl sem CFA measurement expansion](https://doi.org/10.21500/20112084.5410).
+
+The instrument-development text and bibliography explicitly credit Abbott (2010); Abbott is not an author. no_additional_suitable_explicit_math_target_recorded
+
+### F130 Development and Evaluation of the Nebraska Assessment of Computing Knowledge
+
+Peteranetz, Markeya S. ; Albano, Anthony D. . 2020. [unl sem CFA measurement expansion](https://doi.org/10.3389/fcomp.2020.00011).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. no_additional_suitable_explicit_math_target_recorded
+
+### F131 Adverse Childhood Experiences among Adolescent Girls in Residential Treatment: Relationship with Trauma Symptoms, Substance Use, and Delinquency
+
+Akemi E Mii; Brittany S Erskine; Melanie C Willis; Darian Draft; Emily Sonnen; Mary Fran Flood; David J Hansen. 2024. [unl sem CFA measurement expansion](https://doi.org/10.1007/s40653-024-00654-1).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. no_additional_suitable_explicit_math_target_recorded
+
+### F132 The Use of Subsets of Test Questions in an Angoff Standard Setting Method
+
+Abdullah Ferdous; Barbara Plake. 2003. [unl sem CFA measurement expansion](https://files.eric.ed.gov/fulltext/ED475369.pdf).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. methodological_directions_recorded
+
+### F133 Measurement Models for Behavioral Frequencies: A Comparison Between Numerically and Vaguely Quantified Reports
+
+Jamie Lynn Marincic. 2012. [unl sem CFA measurement expansion](https://www.mathematica.org/publications/measurement-models-for-behavioral-frequencies-a-comparison-between-numerically-and-vaguely-quantified-reports).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. unassessed_full_text_access_gap
+
+### F134 On the Use of Latent Variable Models to Detect Differences in the Interpretation of Vague Quantifiers
+
+Jamie Griffin. 2013. [unl sem CFA measurement expansion](https://doi.org/10.1093/poq/nfs072).
+
+Introduction and bibliography explicitly cite Marincic (2011) and reuse its NSSE data/model comparison. The Griffin/Marincic name transition is not asserted without a verified primary identity bridge. methodological_directions_recorded
+
+### F135 Aging and religious participation in late life
+
+Kuan-Yuan Wang; Kyle Kercher; Jui-Yen Huang; Karl Kosloski. 2014. [unl sem CFA measurement expansion](https://doi.org/10.1007/s10943-013-9741-y).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. unassessed_full_text_access_gap
+
+### F136 Children's participation in foster care hearings
+
+Vicky Weisz; Twila Wingrove; Sarah J. Beal; April Faith-Slaker. 2011. [unl sem CFA measurement expansion](https://doi.org/10.1016/j.chiabu.2010.12.007).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. unassessed_full_text_access_gap
+
+### F137 Peer victimization and prosocial behavior trajectories: Exploring sources of resilience for victims
+
+Emily R. Griese; Eric S. Buhs; Houston F. Lester. 2016. [unl sem CFA measurement expansion](https://doi.org/10.1016/j.appdev.2016.01.009).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. unassessed_full_text_access_gap
+
+### F138 Flood and Psychological Well-Being: Direct, Mediating, and Moderating Effects
+
+Jim P. Stimpson. 2005. [unl sem CFA measurement expansion](https://doi.org/10.1177/028072700502300102).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. unassessed_full_text_access_gap
+
+### F139 Dispersion of marketing capabilities: Impact on marketing’s influence and business unit outcomes
+
+Michael T. Krush; Ravipreet S. Sohi; Amit Saini. 2015. [unl sem CFA measurement expansion](https://doi.org/10.1007/s11747-014-0420-7).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. no_additional_suitable_explicit_math_target_recorded
+
+### F140 More than intentions: Importance of motherhood predicts first but not subsequent births
+
+Arthur L Greil; Karina M Shreffler; Stacy M Tiemeyer; Julia McQuillan. 2025. [unl sem CFA measurement expansion](https://doi.org/10.1016/j.alcr.2025.100708).
+
+Primary metadata/full text includes the seed author and matches the dissertation topic/affiliation or established coauthors. no_additional_suitable_explicit_math_target_recorded
+
+### F141 Greater Neural Adaptations following High- vs. Low-Load Resistance Training
+
+Nathaniel D. M. Jenkins; Amelia A. Miramonti; Ethan C. Hill; Cory M. Smith; Kristen C. Cochrane-Snyman; Terry J. Housh; Joel T. Cramer. 2017. [unl sem retrieval repair](https://doi.org/10.3389/fphys.2017.00331).
+
+Author list printed on recovered publisher/repository PDF matches the seed author and established topic/coauthors. no_additional_suitable_explicit_math_target_recorded
+
+### F142 Partner congruence on fertility intentions and values: Implications for birth outcomes
+
+Karina M. Shreffler; Stacy Tiemeyer; Julia McQuillan; Arthur L. Greil; Tiffany Spierling. 2019. [unl sem retrieval repair](https://doi.org/10.1177/0265407518787232).
+
+Author list printed on recovered publisher/repository PDF matches the seed author and established topic/coauthors. no_additional_suitable_explicit_math_target_recorded
+
+### F143 Multi-trait QTL mapping using a structural equation model
+
+Xiaojuan Mi; Kent M. Eskridge; Dong Wang. 2008. [l f102 replication source](https://doi.org/10.4148/2475-7772.1095).
+
+Xiaojuan Mi is an author. The 2008 conference paper precedes the 2009 dissertation and uses the same multi-trait SEM QTL design. no_additional_suitable_explicit_math_target_recorded
+
+### F144 A new identification condition for recursive models with correlated errors
+
+Carlos Brito; Judea Pearl. 2002. [l f102 replication source](https://doi.org/10.1207/S15328007SEM0904_1).
+
+Comparison source read for the L-F102 replication and identification notes. The dissertation author is not an author of this paper. no_additional_suitable_explicit_math_target_recorded
+
+### F145 Global identifiability of linear structural equation models
+
+Mathias Drton; Rina Foygel; Seth Sullivant. 2011. [l f102 replication source](https://doi.org/10.1214/10-AOS859).
+
+Comparison source read for the L-F102 replication and identification notes. The dissertation author is not an author of this paper. methodological_directions_recorded
+
+### F146 Half-trek criterion for generic identifiability of linear structural equation models
+
+Rina Foygel; Jan Draisma; Mathias Drton. 2012. [l f102 replication source](https://doi.org/10.1214/12-AOS1012).
+
+Comparison source read for the L-F102 replication and identification notes. The dissertation author is not an author of this paper. methodological_directions_recorded
+
+### F147 Generic identifiability of linear structural equation models by ancestor decomposition
+
+Mathias Drton; Luca Weihs. 2016. [l f102 replication source](https://arxiv.org/abs/1504.02992).
+
+Comparison source read for the L-F102 replication and identification notes. The dissertation author is not an author of this paper. methodological_directions_recorded
+
+### F148 Structural model analysis of multiple quantitative traits
+
+Renhua Li; Shirng-Wern Tsaih; Keith Shockley; Ioannis M. Stylianou; Jon Wergedal; Beverly Paigen; Gary A. Churchill. 2006. [l f102 replication source](https://doi.org/10.1371/journal.pgen.0020114).
+
+Comparison source read for the L-F102 replication and identification notes. The dissertation author is not an author of this paper. no_additional_suitable_explicit_math_target_recorded
+
+### F150 Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat
+
+B. T. Campbell; P. S. Baenziger; K. S. Gill; K. M. Eskridge; H. Budak; M. Erayman; Y. Yen. 2003. [l f102 replication source](https://doi.org/10.2135/cropsci2003.1493).
+
+Comparison or data source named in the L-F102 replication ledger. The complete file was not stored. unassessed_full_text_access_gap
+
+### F151 Searching for recursive causal structures in multivariate quantitative genetics mixed models
+
+Bruno D. Valente; Guilherme J. M. Rosa; Gustavo de los Campos; Daniel Gianola; Martinho A. Silva. 2010. [l f102 replication source](https://doi.org/10.1534/genetics.109.112979).
+
+Comparison or data source named in the L-F102 replication ledger. The complete file was not stored. unassessed_full_text_access_gap
+
+### F154 Integer Programming Formulations and Benders Decomposition for the Maximum Induced Matching Problem
+
+Betül Ahat; Tınaz Ekim; Z. Caner Taşkın. 2018. [c16 method comparison](https://zctaskin.github.io/files/MIM.pdf).
+
+Sections2.1/3/4.2/6, equations2/8–12/22 The endpoint model is already implemented in frame_cpsat.py. For cardinality, use vertex weights1/2 and edge weights0; the paper’s Benders edge-weight subproblem supplies no missing feasibility oracle.
+
+### F155 Block-diagonal semidefinite programming hierarchies for0/1 programming
+
+Nebojsa Gvozdenović; Monique Laurent; Frank Vallentin. 2009. [c16 method comparison](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf).
+
+Section2.3 Lemma2.2 and proof; Section2.5 Propositions2.5/2.6; Sections3/4 Conditioned PSD blocks and coherent third moments are an applicable systematic lift. Selected principal blocks remain valid but do not inherit the complete hierarchy’s full strength or a low-level completion guarantee.
+
+### F156 Maximum Dimension of Subspaces with No Product Basis
+
+Yuuya Yoshida. 2020. [c16 method comparison](https://arxiv.org/pdf/2010.16293).
+
+Remark2.5; Proposition3.1 and its proof; Proposition3.2/Theorem3.3; Introduction S1 and Proposition4.6 Includes finite-field product-basis theorems, but arbitrary product factors and invertible factor changes need not preserve the finite C16 dictionaries or trace-dual membership. The coefficient ring S has nilpotents and is not a field.
+
+### F157 Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Matrix Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. 2024. [c16 method comparison](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf).
+
+Introduction, representative-set lemmas, support-rank comparison and conclusion; complete21-page text. Same work as F153, shortened published version. mimsup/source support-rank bounds equal128 on C16; representative row bases do not preserve private partner sets.
+
+### F158 Extending CDCL to Disjunctions of Parity Equations
+
+Paul Beame; Glenn Sun. 2026. [c16 parity method comparison](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf).
+
+Complete21-page published paper, especially algorithms and Section8 PDFp17. General parity-clause reasoning is relevant to our XOR plus compatibility constraints. The solver and proof format are tested separately; no C16 consequence follows from the simulation theorem or benchmark results alone.
+
+### F159 Computing Infeasibility Certificates for Combinatorial Problems through Hilbert’s Nullstellensatz
+
+Jesús A. De Loera; Jon Lee; Peter N. Malkin; Susan Margulies. 2009. [c16 algebraic method comparison](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf).
+
+Complete27-page exact author version; hashes and question locators in screen ledger. No C16 consequence follows from general algorithms or external benchmarks alone. Historical broad directions have no new current-resolution or Lean-completion claim.
+
+### F160 Tinted, Detached, and Lazy CNF-XOR solving and its Applications to Counting and Sampling
+
+Mate Soos; Stephan Gocht; Kuldeep S. Meel. 2020. [c16 algebraic method comparison](https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf).
+
+Complete22-page exact author version; hashes and question locators in screen ledger. No C16 consequence follows from general algorithms or external benchmarks alone. Historical broad directions have no new current-resolution or Lean-completion claim.
+
+### F161 Proof Generation for CDCL Solvers Using Gauss-Jordan Elimination
+
+Mate Soos; Randal E. Bryant. 2023. [c16 algebraic method comparison](https://arxiv.org/pdf/2304.04292).
+
+Complete12-page exact author version; hashes and question locators in screen ledger. No C16 consequence follows from general algorithms or external benchmarks alone. Historical broad directions have no new current-resolution or Lean-completion claim.
+
+### F162 BOSPHORUS: Bridging ANF and CNF Solvers
+
+Davin Choo; Mate Soos; Kian Ming A. Chai; Kuldeep S. Meel. 2019. [c16 algebraic method comparison](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf).
+
+Complete6-page exact author version; hashes and question locators in screen ledger. No C16 consequence follows from general algorithms or external benchmarks alone. Historical broad directions have no new current-resolution or Lean-completion claim.
+
+### F164 The Glasgow Subgraph Solver: Using Constraint Programming to Tackle Hard Subgraph Isomorphism Problem Variants
+
+Ciaran McCreesh; Patrick Prosser; James Trimble. 2020. [c16 strategy reassessment](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf).
+
+Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed. No C16 source answer or performance gain follows from external methods alone. No newly eligible precise target or Lean completion.
+
+### F165 IPASIR-UP: User Propagators for CDCL
+
+Katalin Fazekas; Aina Niemetz; Mathias Preiner; Markus Kirchweger; Stefan Szeider; Armin Biere. 2023. [c16 strategy reassessment](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf).
+
+Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed. No C16 source answer or performance gain follows from external methods alone. No newly eligible precise target or Lean completion.
+
+### F166 A New Look at BDDs for Pseudo-Boolean Constraints
+
+Ignasi Abío; Robert Nieuwenhuis; Albert Oliveras; Enric Rodríguez-Carbonell; Valentin Mayer-Eichberger. 2012. [c16 strategy reassessment](https://arxiv.org/abs/1401.5860).
+
+Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F167 On CNF Encodings of Decision Diagrams
+
+Ignasi Abío; Graeme Gange; Valentin Mayer-Eichberger; Peter J. Stuckey. 2016. [c16 strategy reassessment](https://research.monash.edu/en/publications/on-cnf-encodings-of-decision-diagrams/).
+
+Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F168 Compact-Table: Efficiently Filtering Table Constraints with Reversible Sparse Bit-Sets
+
+Jordan Demeulenaere; Renaud Hartert; Christophe Lecoutre; Guillaume Perez; Laurent Perron; Jean-Charles Régin; Pierre Schaus. 2016. [c16 strategy reassessment](https://arxiv.org/abs/1604.06641).
+
+Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F169 Quantum nonlocality without entanglement depending on nonzero prior probabilities in optimal unambiguous discrimination
+
+Donghoon Ha; Jeong San Kim. 2021. [c16 strategy reassessment](https://arxiv.org/abs/2105.12284).
+
+Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F170 Logic-Based Benders Decomposition
+
+John N. Hooker; Greger Ottosson. 2003. [c16 strategy reassessment](https://johnhooker.tepper.cmu.edu/papers.html).
+
+Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F171 Propagation via Lazy Clause Generation
+
+Olga Ohrimenko; Peter J. Stuckey; Michael Codish. 2009. [c16 strategy reassessment](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf).
+
+Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F172 Nonseparating Cocircuits in Binary Matroids
+
+Donald K. Wagner. 2021. [c16 strategy reassessment](https://epubs.siam.org/doi/10.1137/21M139339X).
+
+Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established. No C16 source answer or performance gain follows from external methods alone. Question count remains null; full text intentionally not prioritized.
+
+### F173 Testing membership in matroid polyhedra
+
+William H. Cunningham. 1984. [c16 coupling membership methods](https://www.sciencedirect.com/science/article/pii/0095895684900236).
+
+Publisher-indexed abstract and author bibliographic entry inspected. Publisher landing/PDF reader returned403; connected Edge browser displayed a CAPTCHA. Author available-papers index and Bonn report81207 index supplied no full text. OpenAlex identifies the publisher PDF as open access but supplies no repository PDF. Retrieval request63 is open; full text remains unverified. No full-text question screen or implementation/complexity transfer is claimed. The current exchange repair has independent local/terminal certificates but no polynomial termination guarantee.
+
+### F174 Simple push-relabel algorithms for matroids and submodular flows
+
+András Frank; Zoltán Miklós. 2012. [c16 exact matroid membership methods](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF).
+
+All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F175 A New Strategy for Push-Relabel Algorithm Framework for Matroid Optimization
+
+Emanuel Florentin Olariu. 2013. [c16 exact matroid membership methods](https://publications.info.uaic.ro/files/tr/tr13-01.pdf).
+
+All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F176 A simple push-relabel algorithm for sub-modular flows
+
+Cristian Frasinaru; Emanuel F. Olariu. 2013. [c16 exact matroid membership methods](https://publications.info.uaic.ro/files/tr/tr13-02.pdf).
+
+All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F177 A Lowest Level Rule Push-Relabel Algorithm for Submodular Flows and Matroid Optimization
+
+Emanuel F. Olariu; Cristian Frasinaru. 2014. [c16 exact matroid membership methods](https://doi.org/10.1109/SYNASC.2014.21).
+
+Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used. No C16 source answer or implemented asymptotic runtime bound follows. Printed algorithm details and scope are audited separately.
+
+### F178 A Discrete Convex Min-Max Formula for Box-TDI Polyhedra
+
+András Frank; Kazuo Murota. 2021. [c16 owner lift discrete convex methods](https://arxiv.org/html/2007.03507v3).
+
+Complete v3 HTML screened: abstract, introduction, Sections2–6, appendix and references. Three linked entries: one specific M2 algorithm question and two broad algorithm directions. Weighted M-convex quadratic minimization is recorded as later known solvable in F180 Remark4.4, not a new open target. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F179 Matroid bases with cardinality constraints on the intersection
+
+Stefan Lendl; Britta Peis; Veerle Timmermans. 2022. [c16 owner lift discrete convex methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/).
+
+Complete publisher text screened: introduction, Sections2–6, both appendices and references. One norm-generalization direction, including its Euclidean subcase. The recoverable-robust strongly-polynomial question is answered in this paper. Direct PMC acquisition failed; Europe PMC full-text XML was retained. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F180 Decreasing Minimization on Base-Polyhedra: Relation Between Discrete and Continuous Cases
+
+András Frank; Kazuo Murota. 2022. [c16 owner lift discrete convex methods](https://arxiv.org/html/2202.06561v2).
+
+Targeted reading of Remark4.4 and its cited context only. Later primary evidence says weighted discrete quadratic minimization over an integral base-polyhedron is known strongly polynomial. Complete HTML acquired, but complete question screening remains unassessed. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F181 A Generalized-Polymatroid Approach to Disjoint Common Independent Sets in Two Matroids
+
+Kenjiro Takazawa; Yu Yokoi. 2019. [c16 owner lift discrete convex methods](https://arxiv.org/html/1805.05528v3).
+
+Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
 
 ## Question by question cross references
 
@@ -999,73 +1467,3 @@ Full primary accepted manuscript and exact decoder rules inspected. Sections2/3 
 ## Search gaps worth resolving next
 
 The full-text access gap for Le Tran Tinh’s article is closed: its weak-uniqueness theorem requires alpha >= 5/4 and does not cover alpha=1. The remaining article access gap is P10, the IEEE redundancy paper; it needs a licensed or author-provided copy. See [gap closure evidence](COVERAGE-GAPS.md). For the secluded-partition work, a public Lean repository with declaration names and an axiom report would allow a formalization audit of the claimed construction. The October 22 coauthor and citation expansion is documented in [the new search report](SCHOLARLY-EXPANSION.md); pending candidates and remaining limits are explicit there. The current Lean audit remains a historical snapshot and is not overwritten by author-reported mechanization in a different, related paper.
-
-## October26 SEM dissertation seed
-
-[58 dissertation metadata records, 26 verified author/coauthor publications, 14 full-text article screens and eight gated statistical-method directions](unl-sem/README.md). Purely social theories and empirical questions are excluded from mathematical targets. The new seed does not change the earlier 20-dissertation full-review snapshot.
-
-- **F102**: [Regression-Based Multi-Trait QTL Mapping Using a Structural Equation Model](https://doi.org/10.2202/1544-6115.1552).
-- **F103**: [Bayesian mixture structural equation modelling in multiple-trait QTL mapping](https://doi.org/10.1017/S0016672310000236).
-- **F104**: [Analyzing Mixed-Dyadic Data Using Structural Equation Models](https://doi.org/10.1080/10705511.2013.769395).
-- **F105**: [“How Well Does Your Structural Equation Model Fit Your Data?”: Is Marcoulides and Yuan’s Equivalence Test the Answer?](https://doi.org/10.1187/cbe.20-01-0016).
-- **F106**: [The Answer is “No”: A Comment on Peugh and Feldon (2020)](https://doi.org/10.1187/cbe.24-07-0182).
-- **F107**: [Incorporating Molecular Markers and Causal Structure among Traits Using a Smith-Hazel Index and Structural Equation Models](https://doi.org/10.3390/agronomy11101953).
-- **F108**: [Developmental etiologies of alcohol use and their relations to parent and peer influences over adolescence and young adulthood: A genetically informed approach](https://doi.org/10.1111/acer.13506).
-- **F109**: [Future orientation in adolescent and young adult cancer survivors and unaffected peers](https://doi.org/10.1002/pon.4588).
-- **F110**: [Participatory modeling for high complexity, multi-system issues: challenges and recommendations for balancing qualitative understanding and quantitative questions](https://doi.org/10.1002/sdr.1765).
-- **F111**: [Comprehensive Sexuality Education Improves Primary Students’ Explicit and Implicit Attitudes Toward Homosexuality](https://doi.org/10.1080/19317611.2022.2067282).
-- **F112**: [Selection and socialization influences on adolescent alcohol use: The individual and joint contexts of neighborhood disadvantage and population density](https://doi.org/10.1080/10826084.2019.1608247).
-- **F113**: [Developing and validating a comprehensive measure of coordination in patient aligned care teams](https://doi.org/10.1186/s12913-022-08590-2).
-- **F114**: [Teacher Leadership, Wellbeing, and Intent to Leave in US Rural Schools: Evidence from the 2020–21 National Teacher and Principal Survey](https://doi.org/10.3390/educsci14070758).
-- **F115**: [D-Optimal Design for a Causal Structure for Completely Randomized and Random Blocked Experiments](https://doi.org/10.1155/2022/7299086).
-- **F116**: [Equivalence testing to judge model fit: A Monte Carlo simulation](https://doi.org/10.1037/met0000591).
-- **F117**: [When Nesting is Nuisance in Cluster Sampled Longitudinal Research](https://doi.org/10.1080/00273171.2026.2720958).
-- **F118**: [The Comparative Performance of Conditional Independence Indices](https://doi.org/10.1177/0146621611407909).
-- **F119**: [Examining the accuracy of orthogonal latent mean comparisons in unbalanced conditions](https://doi.org/10.1177/01466216261452255).
-- **F120**: [An ecological perspective on rural, low-income mothers' health](https://doi.org/10.1080/19371918.2014.969860).
-- **F121**: [Direct and Indirect Effects of Nebraska Motor Vehicle Drivers’ Characteristics on Inattentive Driving at Highway-Rail Grade Crossings](https://doi.org/10.1177/0361198118794067).
-- **F122**: [Communicative and Relational Dimensions of Shared Family Identity and Relational Intentions in Mother-in-Law/Daughter-in-Law Relationships: Developing a Conceptual Model for Mother-in-Law/Daughter-in-Law Research](https://doi.org/10.1080/10570310802636334).
-- **F123**: [Bridging the Gap: The Predictive Roles of Emotion Dysregulation and Stalking-related Attitudes on Offline and Online Stalking and Intrusive Harassment](https://doi.org/10.1177/08862605211043590).
-- **F124**: [Satisficing Among Reluctant Respondents in a Cross-National Context](https://academic.oup.com/poq/article/74/5/956/1816917).
-- **F125**: [Like night and day: a review of nocturnal predator communities and predation in annual row crop agroecosystems](https://pmc.ncbi.nlm.nih.gov/articles/PMC13186587/).
-- **F126**: [Structural equation modelling for studying genotype × environment interactions of physiological traits affecting yield in wheat](https://doi.org/10.1017/S0021859607006806).
-- **F127**: [Structural Equation Modeling of Gene–Environment Interactions in Coronary Heart Disease](https://doi.org/10.1111/j.1469-1809.2010.00634.x).
-
-## CFA and measurement-model continuation
-
-[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 dissertation records and 49 selected source works; the prior 58-record first pass remains a dated snapshot.
-
-- **F128**: [Development and initial validation of a creative self-efficacy scale for undergraduates: categorical confirmatory factor analysis and multidimensional item response theory](https://doi.org/10.3389/feduc.2023.1306532).
-- **F129**: [Creative Self-Eﬃcacy Scale for Children and Adolescents (CASES): A Development and Validation Study](https://doi.org/10.21500/20112084.5410).
-- **F130**: [Development and Evaluation of the Nebraska Assessment of Computing Knowledge](https://doi.org/10.3389/fcomp.2020.00011).
-- **F131**: [Adverse Childhood Experiences among Adolescent Girls in Residential Treatment: Relationship with Trauma Symptoms, Substance Use, and Delinquency](https://doi.org/10.1007/s40653-024-00654-1).
-- **F132**: [The Use of Subsets of Test Questions in an Angoff Standard Setting Method](https://files.eric.ed.gov/fulltext/ED475369.pdf).
-- **F133**: [Measurement Models for Behavioral Frequencies: A Comparison Between Numerically and Vaguely Quantified Reports](https://www.mathematica.org/publications/measurement-models-for-behavioral-frequencies-a-comparison-between-numerically-and-vaguely-quantified-reports).
-- **F134**: [On the Use of Latent Variable Models to Detect Differences in the Interpretation of Vague Quantifiers](https://doi.org/10.1093/poq/nfs072).
-- **F135**: [Aging and religious participation in late life](https://doi.org/10.1007/s10943-013-9741-y).
-- **F136**: [Children's participation in foster care hearings](https://doi.org/10.1016/j.chiabu.2010.12.007).
-- **F137**: [Peer victimization and prosocial behavior trajectories: Exploring sources of resilience for victims](https://doi.org/10.1016/j.appdev.2016.01.009).
-- **F138**: [Flood and Psychological Well-Being: Direct, Mediating, and Moderating Effects](https://doi.org/10.1177/028072700502300102).
-- **F139**: [Dispersion of marketing capabilities: Impact on marketing’s influence and business unit outcomes](https://doi.org/10.1007/s11747-014-0420-7).
-- **F140**: [More than intentions: Importance of motherhood predicts first but not subsequent births](https://doi.org/10.1016/j.alcr.2025.100708).
-
-## Dissertation retrieval correction
-
-[All99 route rechecks and seven complete dissertation screens](unl-sem/RETRIEVAL-REPAIR.md). Existing F139 is now fully screened.
-
-- **F141**: [Greater Neural Adaptations following High- vs. Low-Load Resistance Training](https://doi.org/10.3389/fphys.2017.00331).
-- **F142**: [Partner congruence on fertility intentions and values: Implications for birth outcomes](https://doi.org/10.1177/0265407518787232).
-
-
-## L-F102 replication sources
-
-Sources read for the correlated-residual replication and the identification comparison. PDFs stay in local ignored storage.
-
-- **F143**: [Multi-trait QTL mapping using a structural equation model](https://doi.org/10.4148/2475-7772.1095).
-- **F144**: [A new identification condition for recursive models with correlated errors](https://doi.org/10.1207/S15328007SEM0904_1).
-- **F145**: [Global identifiability of linear structural equation models](https://doi.org/10.1214/10-AOS859).
-- **F146**: [Half-trek criterion for generic identifiability of linear structural equation models](https://doi.org/10.1214/12-AOS1012).
-- **F147**: [Generic identifiability of linear structural equation models by ancestor decomposition](https://arxiv.org/abs/1504.02992).
-- **F148**: [Structural model analysis of multiple quantitative traits](https://doi.org/10.1371/journal.pgen.0020114).
-- **F150**: [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493).
-- **F151**: [Searching for recursive causal structures in multivariate quantitative genetics mixed models](https://doi.org/10.1534/genetics.109.112979).

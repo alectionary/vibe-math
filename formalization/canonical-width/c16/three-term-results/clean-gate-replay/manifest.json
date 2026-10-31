@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "git_revision": "2b2b7e09dd50e044d4315b8ea0e6d53211729828",
+  "commands": [
+    [
+      "/usr/bin/clang++",
+      "-std=c++20",
+      "-O3",
+      "-DNDEBUG",
+      "-shared",
+      "-fPIC",
+      "/private/tmp/c16-three-term-clean-20261029/formalization/canonical-width/c16/sparse_quotient_native.cpp",
+      "-o",
+      "/private/tmp/c16-sparse-clean-results/sparse-quotient.dylib"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "/private/tmp/c16-three-term-clean-20261029/formalization/canonical-width/c16/control_sparse_quotient.py",
+      "--library",
+      "/private/tmp/c16-sparse-clean-results/sparse-quotient.dylib",
+      "--output",
+      "/private/tmp/c16-sparse-clean-results/controls.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "/private/tmp/c16-three-term-clean-20261029/formalization/canonical-width/c16/verify_sparse_gate.py",
+      "--gate",
+      "/private/tmp/c16-three-term-clean-20261029/formalization/canonical-width/c16/three-term-results/sparse-gate.json",
+      "--output",
+      "/private/tmp/c16-sparse-clean-results/gate-independent.json"
+    ]
+  ],
+  "native_library_sha256": "f5fb59c0f5de90b5497e0df0b20c9e4647bf5ccba09e7dba86a447ed8707a345",
+  "source_hashes": {
+    "sparse_quotient_native.cpp": "3dadb9da3f63565cb7e90f901190ba7f031d8f83659eef9b05cbe9d2c632553a",
+    "sparse_quotient_oracle.py": "4f63f867a9dc7808308e13206e41ce043e2cb76e680611f0c453f4536fad1013",
+    "verify_sparse_quotient.py": "4f6ee99bf5a46dcaddcf063f663c09c10c91b53c9658e7951ad8c67ea5c34b92",
+    "control_sparse_quotient.py": "07a3b16abe58bd474195c4af2d9719cf6441027adf3f8c80e321aa94696b05cf",
+    "verify_sparse_gate.py": "af96983dd5299947926ad6fc072c7de3da7245ff331c171dabfd2d17b9d48a1b"
+  },
+  "receipts": {
+    "controls.json": "c7dfe838d1846faaccf8005f63ba570d25befe82e43f6ad565ee423fc6885019",
+    "gate-independent.json": "c5ee6b04617602f83e8b667a794c55424898d1003cf25b53a83d8416b270ca21"
+  },
+  "elapsed_seconds": 69.44544708298054,
+  "source_C16_answered": false
+}

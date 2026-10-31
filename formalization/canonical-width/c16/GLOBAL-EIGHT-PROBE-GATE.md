@@ -1,0 +1,15 @@
+# Direct global eight-event marginal gate
+
+The fixed events are the original anchor quad X80,X512,Z186,Z433 followed by X614,X281,Z51,Z83. All eight indicators are free. The old conditional masses, allocations, edge flows, and zero-high pins are not inputs to the feasible set.
+
+Enumerate every one of the256 assignments. Retain a state when its selected vectors are independent in each sector and its selected cross-pairing graph has maximum degree at most one. These are necessary conditions for a restriction of any actual source frame: subsets of each physical basis are independent, and the full selected cross-pairing graph is a perfect matching. No converse or completion claim is used. A missing owner among the eight events may lie outside the support, so degree zero is allowed. No optional full-basis completion filter is applied.
+
+For each retained state, use the37 features consisting of1, its8 bits, and its28 distinct pair products. Target the fresh point22 values with factor1 in the canonical p/S/T layout. The existing32-action averaging bridge supplies the necessary invariant moment point for every hypothetical source frame. A valid physical polynomial on these states can therefore be averaged without an additional factor32 in its target.
+
+The exact LP seeks nonnegative state masses reproducing all37 target features, including total mass1. Its input coefficients are0/1 and its right sides are exact fractions. The producer freezes all256 acceptance decisions, physical ranks/degrees, every retained feature column, target coordinates, LP text, and source hashes before any solver invocation.
+
+An exact nonnegative primal proves a local eight-bit law with all37 moments. It does not prove a global Boolean law, full-basis completion, or a source frame. An exact Farkas ray is stronger: after independent source-state and LP replay, reverse its equality normal to obtain a polynomial nonpositive on every retained state and positive at the global target. Exhaustive256-state support verification and exact canonical owner-row compilation then give a direct source-valid global moment inequality. This would reject point22 while leaving the original source question open until a complete necessary model were exactly excluded.
+
+The earlier `local_joint_moment_probe.py` used the same independent-selection/degree-one relaxation on128 prescribed12-event supports, and `local_joint_targeted_probe.py` used it on seven selected supports. Their numerical zero objectives were not local membership certificates. This gate adds no new source hypothesis; it is a precise fixed support selected by the recent conditional-union obstruction, with an exact finite endpoint intended from the outset. In particular, it tests whether that obstruction survives complete reallocation of the original anchor law and all conditional variables.
+
+Preparation only is authorized here. The root owns independent preparation/endpoint acceptance and any later bounded exact solve. No solver or continuation is launched by the producer.

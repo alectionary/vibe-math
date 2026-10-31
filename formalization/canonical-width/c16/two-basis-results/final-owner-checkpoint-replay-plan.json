@@ -1,0 +1,79 @@
+{
+  "status": "UNRUN_FINAL_OWNER_CHECKPOINT_REPLAY_PLAN",
+  "requires_explicit_frozen_checkpoint_before_execution": true,
+  "source_directory": "formalization/canonical-width/c16",
+  "driver": "replay_final_owner_checkpoint.py",
+  "relocation_worker": "final_owner_replay_worker.py",
+  "execution_model": "Sequential exact consumers; no optimizer, search, fresh source download, Git checkout or remote write.",
+  "declared_inventory_union": [
+    "two-basis-results/owner-flow-capacity-zero-face-inventory.json",
+    "two-basis-results/joint-capacity-rank-closure-supplement.json",
+    "two-basis-results/fixed-owner-residual-capacity-point22-Z-m02-X614-v1-inventory.json",
+    "two-basis-results/singleton-global-point22-o40-complete-inventory.json"
+  ],
+  "checkpoint_guards": [
+    "Current HEAD equals explicit checkpoint; tracked worktree clean.",
+    "Every copied scientific input matches both frozen inventory SHA256 and exact Git blob at the checkpoint.",
+    "No symlink inputs; copy/output directories are new and outside original scientific root.",
+    "Source bytes rechecked in original and copy after every declared replay cohort."
+  ],
+  "relocation_guards": [
+    "Frozen JSON and scientific source bytes unchanged.",
+    "Only one-argument JSON-read and SHA256 helpers receive an explicit original-C16-prefix to copy-C16-prefix resolver.",
+    "Every old-prefix rewrite recorded separately from path-control rewrites.",
+    "Audit guard rejects scientific-file reads outside copy/output/runtime and denies copied-input writes.",
+    "No fallback to original research files. Any unadapted original-path read fails the stage."
+  ],
+  "stages": {
+    "total": 34,
+    "owner_flow_capacity_face_literal_and_handoff": 5,
+    "exact_sector_allocations": 2,
+    "completed_physical_rank_endpoints": 22,
+    "fixed_owner_tiny_preparation_screen_endpoint": 4,
+    "orbit40_old_direct_terminal": 1
+  },
+  "point": "coupling-results/two-basis-integer-witness22-rational.json.gz",
+  "point_sha256": "4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f",
+  "expected_scope": [
+    "Source model and optional zero-law pins remain explicit.",
+    "Capacity target has6 exact single-pattern mixtures and16 exact allocation rank obstructions across22 outcomes; no common all-pattern basis law is claimed.",
+    "Fixed-owner pattern2/X614 exact retained-flow mixture is local.",
+    "Orbit40 selected-conditioned T law has624 zero bases and96 unit probabilities, reproducing720 exact marginals; no absent/S or joint-profile law is claimed."
+  ],
+  "resource_limits": {
+    "priority": 19,
+    "six_thread_environment_variables": 1,
+    "sequential": true,
+    "default_stage_seconds": 180,
+    "default_total_seconds": 1200,
+    "maximum_total_seconds": 1800,
+    "maximum_declared_files": 2500,
+    "maximum_copy_bytes": 2000000000
+  },
+  "canonical_validator_plan": {
+    "run_from": "Separate clean repository checkout at the exact same checkpoint, under verified nice19 and six threadenvs1.",
+    "required_current_commands": [
+      "/private/tmp/c16-venv/bin/python -B scripts/validate_literature.py",
+      "/private/tmp/c16-venv/bin/python -B scripts/validate_open_problems.py",
+      "/private/tmp/c16-venv/bin/python -B scripts/validate_current_difficulty.py",
+      "/private/tmp/c16-venv/bin/python -B scripts/validate_research_question_screening.py"
+    ],
+    "supplemental_historical_command": "/private/tmp/c16-venv/bin/python -B scripts/validate_difficulty.py",
+    "supplemental_known_failure": "Existing L-P09-XZ/L-P09-structured related-ID discrepancies are documented in literature/owner-lift-20261030/validation.json; preserve and report the actual result rather than declaring all validators pass.",
+    "expected_current_counts": {
+      "canonical_entries": 430,
+      "eligible_targets": 161,
+      "paper_records": 213,
+      "full_text_screens": 170,
+      "complete_lean_targets": 6
+    },
+    "builders_not_run": "Do not regenerate or edit hash-bound reports during the final replay."
+  },
+  "excluded": [
+    "Fresh proof of every historical model family or prior source cover chain.",
+    "Discovery SoPlex rerun, absolute saved solver-command interpretation, all-anchor/owner cohort, or new source-case search.",
+    "Orbit15 capped CG and any future geometry/batch gates unless separately added in a new plan."
+  ],
+  "command_template": "nice -n 19 env PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 BLIS_NUM_THREADS=1 /private/tmp/c16-venv/bin/python -B replay_final_owner_checkpoint.py --checkpoint EXACT_COMMIT --copy-root NEW_COPY_C16 --output-dir NEW_OUTPUT_DIRECTORY",
+  "source_C16_answered": false
+}

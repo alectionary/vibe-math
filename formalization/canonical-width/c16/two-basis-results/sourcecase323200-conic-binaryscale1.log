@@ -1,0 +1,29 @@
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 76008, constraints m: 325107
+cones: 	  z: primal zero / dual free vars: 636
+	  l: linear vars: 263046
+	  s: psd vars: 61425, ssize: 18
+settings: eps_abs: 1.0e-07, eps_rel: 1.0e-07, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 100000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 1.20e+02
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 4064161, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 6.07e-01  7.72e-01  3.16e-04 -1.58e-04  1.00e-01  3.51e+01 
+   250| 7.54e-03  3.35e-03  1.40e-03 -6.98e-04  7.18e-04  1.28e+02 
+   325| 6.48e-02  3.26e-04  6.35e-03 -3.18e-03  2.03e-05  1.69e+02 
+------------------------------------------------------------------
+status:  solved (inaccurate - reached time_limit_secs)
+timings: total: 1.69e+02s = setup: 3.48e+01s + solve: 1.34e+02s
+	 lin-sys: 1.72e+01s, cones: 8.39e+00s, accel: 5.53e-01s
+------------------------------------------------------------------
+objective = -0.003177 (inaccurate)
+------------------------------------------------------------------
+{'status': 'NUMERICAL_CONE_SCALED_DIAGNOSTIC_ONLY', 'source_C16_answered': False, 'source_anchor_excluded': False, 'solver_info': {'status_val': 2, 'iter': 325, 'scale_updates': 3, 'scale': 2.0343807605831956e-05, 'pobj': 0.0, 'dobj': -0.006354810049281186, 'res_pri': 0.06478761613439854, 'res_dual': 0.0003261258529073648, 'gap': 0.006354810049281186, 'res_infeas': None, 'res_unbdd_a': None, 'res_unbdd_p': None, 'comp_slack': 7.457856554538012e-11, 'solve_time': 134112.621791, 'setup_time': 34820.921666, 'lin_sys_time': 17179.44997300001, 'cone_time': 8394.547061999994, 'accel_time': 553.4372160000007, 'rejected_accel_steps': 3, 'accepted_accel_steps': 0, 'status': 'solved (inaccurate - reached time_limit_secs)', 'lin_sys_solver': 'sparse-direct-amd-qdldl', 'aa_stats': {'iter': 5, 'n_accept': 3, 'n_reject_lapack': 0, 'n_reject_rank0': 0, 'n_reject_nonfinite': 0, 'n_reject_weight_cap': 0, 'n_safeguard_reject': 3, 'last_rank': 10, 'last_aa_norm': 11.507440187740992, 'last_regularization': 1.927459513491872e-06}}, 'solver_wall_seconds': 168.9622657080181, 'settings': {'max_iters': 100000, 'eps_abs': 1e-07, 'eps_rel': 1e-07, 'time_limit_secs': 120.0, 'verbose': True, 'normalize': True, 'scale': 0.1, 'adaptive_scale': True, 'linear_solver': 'qdldl'}, 'PSD_cone_common_binary_exponents': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'scalar_row_binary_exponent_range': [0, 22], 'scope': 'Positive binary scaling preserves each original necessary cone. Numerical endpoint only; exact semantic primal or dual remains required.', 'original_linear_residuals': {'equalities': 0.00019566878691314334, 'inequalities': 0.35364268757815304, 'lower_box': 0.029715048481720404, 'upper_box': 0.0}, 'case_moment': 0.06520541676096622}

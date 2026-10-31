@@ -1,0 +1,102 @@
+{
+  "status": "PASS_OWNER_LIFT_SOURCE_ACCOUNTING",
+  "priority": 19,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "scripts": [
+    {
+      "script": "scripts/build_literature_report.py",
+      "source_sha256": "0f847540ec6eb1a23bdf64199c20ec148fc2bfef853aa2b25ef2efd1c204f883",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/build_literature_report.py.log",
+      "log_sha256": "0f7dbc3ae139e3ec58285f5db8b3ff63923a9a12fd9a7668249178133ffe017d"
+    },
+    {
+      "script": "scripts/build_research_reconciliation.py",
+      "source_sha256": "649af01bdc3dd17dc21b7625072c0d4c4479224465ca9101ef08c54f71db7d72",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/build_research_reconciliation.py.log",
+      "log_sha256": "270738e875c3721be7d67bb78719a7e1de08cb85dfa6f17a7ea15c8c59071d34"
+    },
+    {
+      "script": "scripts/build_open_problem_report.py",
+      "source_sha256": "230b71aecaef0f9590c3a3312f2f71de083bb08b6a5e725ec071e8d2dffa4b14",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/build_open_problem_report.py.log",
+      "log_sha256": "4638e21c76ca2fc13ca09b6fdcc967da3b02a472e6a1bcae11149af3ddbabcee"
+    },
+    {
+      "script": "scripts/build_current_difficulty_report.py",
+      "source_sha256": "cb1054b87363620a5e4e19f4f2abcd85b4c6e85f7ef6ed603f3733f3476373d9",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/build_current_difficulty_report.py.log",
+      "log_sha256": "4efc3d3c98d42aaf6c93fec6843341d2d0aa074f6885467900830024b58151f9"
+    },
+    {
+      "script": "scripts/validate_literature.py",
+      "source_sha256": "3ca25675332508f007d24192daeffea16874512f43a326dfc479e8ac90c674f6",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/validate_literature.py.log",
+      "log_sha256": "ecc30b3f9269a1bc469f70f3daaab2a5a6effdeb2037b5e821c57fcbe91c822e"
+    },
+    {
+      "script": "scripts/validate_open_problems.py",
+      "source_sha256": "dec6c8ed438f2aced51efb7d57fad42aff327efcf92f68667081519b19f5ad04",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/validate_open_problems.py.log",
+      "log_sha256": "bf399aa45635e71438920b7129ca0e778865b69209184ad3e118f4fb03d88846"
+    },
+    {
+      "script": "scripts/validate_current_difficulty.py",
+      "source_sha256": "31c82eb96d38cd838e3838d62eb73d61f5e09fbff46be3b715c9f6ba5238f8c5",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/validate_current_difficulty.py.log",
+      "log_sha256": "37f08bfe11bca60cfb3aa2ed13690dfd18555dcc0f881677c7c085f044677c91"
+    },
+    {
+      "script": "scripts/validate_research_question_screening.py",
+      "source_sha256": "19f59141a788e0a2629bb09c5e06e84428f7f5a5d4f56c6215767c8f44614740",
+      "exit_code": 0,
+      "log": "literature/owner-lift-20261030/checks/validate_research_question_screening.py.log",
+      "log_sha256": "f5c73d5eda5c1328a84d31b3036f4885ac61a4b92d2b3bace9f6c3f01700c136"
+    },
+    {
+      "script": "scripts/validate_difficulty.py",
+      "source_sha256": "9d6b03a13edb69335e9ba3e5b717a36eccbe65ff7dfe2feb54c05719e97d9c86",
+      "exit_code": 1,
+      "log": "literature/owner-lift-20261030/checks/validate_difficulty.py.log",
+      "log_sha256": "901566560a10c5d55ed30b32875ce5fe48e3ac6b7f52fe5f7aa0da99d5aac44d"
+    }
+  ],
+  "source_specific_checks": "Four source hashes/text hashes, exact delta, occurrence lines, null-versus-zero counts, unassessed statuses, known-resolution exclusions and six preserved Lean completions checked.",
+  "supplemental_preexisting_failures": {
+    "historical_difficulty_related_id_mismatches": [
+      "L-P09-XZ",
+      "L-P09-structured"
+    ],
+    "supplemental_validator": "scripts/validate_difficulty.py",
+    "supplemental_exit_code": 1,
+    "duplicate_source_id": "OkadaKasai2026",
+    "source_records_before": 137,
+    "distinct_source_ids_before": 136,
+    "source_records_after": 141,
+    "distinct_source_ids_after": 140,
+    "provenance": "Compared with current HEAD; all preexisting source rows and affected canonical relationship lists are unchanged.",
+    "initial_own_assertion_failure": "The first supplemental controller asserted source ID uniqueness by collapsing to a dictionary; corrected to distinguish record count from preexisting duplicate ID. No ledger data changed to hide the duplicate."
+  },
+  "final_cohort": {
+    "canonical_entries": 430,
+    "eligible_targets": 161,
+    "paper_records": 213,
+    "full_text_screens": 170,
+    "central_source_records": 141,
+    "verified_complete_lean_targets": 6
+  },
+  "inventory_sha256": "597f5f93ed5c75746181231900a2c80e978989a908cc5febad5f7b26ca97278f",
+  "omitted": "No theorem/Lean rebuild, new solver, current-resolution proof, C16 claim change, publication or GitHub write.",
+  "provenance": "Raw HTML/XML/text are ignored local files; portable metadata hashes remain committed-source candidates."
+}

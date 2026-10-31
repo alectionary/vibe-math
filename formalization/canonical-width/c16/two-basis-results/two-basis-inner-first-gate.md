@@ -1,0 +1,13 @@
+# First fixed-pattern-mass sector allocation attempt
+
+The first inner attempt is inconclusive for both sectors. It produced no exact pattern-mass separator and no feasible target mixture.
+
+The point15 seed from `two-basis-structure-zonotope-32x27-point15.lambda.json` passes exact nonnegativity, total mass one, and all eleven anchor feature equations. For each sector, the first implementation loaded all 7,600 physical basis columns from the independently checked joint archive. The phase-I model has sixteen fixed pattern-mass equations, 3,600 feature equations, nonnegative basis weights, and positive/negative feature-error variables. Error variables do not relax the pattern masses.
+
+Both default-simplex solves stopped with `HighsModelStatus.kTimeLimit` in the first LP. The requested HiGHS limit was 120 seconds. The calls returned after 141.729 seconds (X) and 135.367 seconds (Z), an actual cooperative-limit overrun rather than an authorized extension. Full solver-gate elapsed times including serialization were 142.371 and 136.057 seconds. These overruns are preserved in the original frozen reports.
+
+The saved feature-dual vectors are zero. HiGHS' `value_valid` flag reports that values are available; it does not assert primal feasibility. The saved X values have minimum basis weight about −0.599 and pattern-mass residual about 0.253. The Z values have minimum weight about −0.403 and mass residual about 0.168. They are not physical mixtures. The original stopping string `ZERO_FEATURE_DUAL_REQUIRES_EXACT_PRIMAL_RECOVERY` must therefore be read as **zero dual, inconclusive, no feasible primal**; there is no candidate exact recovery result here. The reports explicitly set exact membership and global moment-cut claims to false. Frozen outputs and source have not been changed.
+
+The phase-I formulation itself has a simple exact feasible initialization. Choose one physical basis per pattern with its exact pattern mass. In each feature equation, assign the exact residual to one of the two signed error variables. The sixteen chosen basis columns pivot on the mass rows, and the 3,600 signed error columns pivot on the feature rows, giving a block-triangular square basis. This proves feasibility of the phase-I model with errors; it does not prove membership of the target in the sector hull.
+
+A separately authorized diagnostic uses a new driver, explicit primal simplex, this initial basis, only sixteen initial physical columns, and subsequent exact-pricing columns. Its solver budget is thirty seconds per sector and an external supervisor enforces a forty-five-second process cap. Its outputs and acceptance are separate from this failed initialization attempt.

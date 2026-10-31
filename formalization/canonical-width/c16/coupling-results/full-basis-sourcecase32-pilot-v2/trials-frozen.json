@@ -1,0 +1,32 @@
+{
+  "status": "FROZEN_BEFORE_MATCHED_SOURCE_TRIALS",
+  "source_C16_answered": false,
+  "controller_sha256": "445f7a9cf106ec8bb6f253e151541e4a58c6eb1538004e8cc6334df222d2830c",
+  "model_frozen_sha256": "ccc7e76cdc2260e7eb1b1f95eca9738c76f0a58d5a859b0b0105a27955cb6c93",
+  "bridge_controls_sha256": "e9e04d654f5294c24f4acfcbf0047542227bcc5858140cdcec25c057dfe60a62",
+  "solver": "cadical195",
+  "python_sat_version": "1.9.dev17",
+  "solver_seed": 20261030,
+  "solve_wall_seconds": 20,
+  "commands": [
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/run_full_basis_boolean_sat_pilot.py",
+      "--directory",
+      "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/coupling-results/full-basis-sourcecase32-pilot-v2",
+      "--worker",
+      "baseline"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/run_full_basis_boolean_sat_pilot.py",
+      "--directory",
+      "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/coupling-results/full-basis-sourcecase32-pilot-v2",
+      "--worker",
+      "small64"
+    ]
+  ],
+  "difference": "The two inputs share an identical baselineprefix. Augmented adds onlyexactacceptedscale64row0 productdefinitions andPB circuit."
+}

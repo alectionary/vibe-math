@@ -196,6 +196,201 @@ The [portable access guide](.agents/skills/open-question-research/references/res
 describes setup on another machine and keeps installation, authentication and
 permission changes separate from routine research.
 
+### Certify the strength of a relaxation before extending its search
+
+The October27 C16 comparison produced an exact rational feasible point for the
+basic degree-two cyclic moment SDP, with independent source-pool equation replay
+and interval-checked positive semidefiniteness. This proves that this particular
+relaxation cannot exclude a128-pair frame. It does not construct such a frame.
+Separately, a checked UNSAT proof excluded quarter-turn invariant full frames;
+no theorem lets us impose that invariance on every possible frame.
+
+Average moments over a symmetry group when the necessary constraints allow it;
+keep the distinction from requiring a symmetric combinatorial solution. Use
+small literal controls and a known physical witness to check new constraints.
+If a numerical relaxation appears feasible, attempt exact reconstruction before
+calling its weakness established. Here, retaining the full matrix scaling while
+projecting out forced cardinality null directions changed a stalled numerical
+run into a quickly certifiable point. Local Hall pruning removed15.6% of phase
+choices in a conditional benchmark, but did not establish a global search speedup.
+These are bounded method results, while the original width question stays open.
+[Models, certificates and comparison scope](formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md).
+
+
+### Establish pool-preserving coordinate bridges before using module reductions
+
+The October27 C16 inversion study found an exact rank-one Cartesian description
+of both source pools over a finite local ring. Checking the adjoint coordinate
+map, every pool vector and every cross-pairing made the tensor interpretation
+usable for arbitrary binary bases. The thin-factor congruence then gave a
+written dimension formula and necessary type-spanning constraints without
+another global exhaustive search.
+
+A quotient's small maximum frame is not automatically a bound on the original
+frame. An explicit primitive free-cyclic counterexample has a full frame but no
+full residue frame. A separate trace-dual product basis refutes a generic
+half-basis-in-one-factor-line argument. Keep the source's joint hypotheses in
+the proposed lifting lemma, and test each claimed implication on small literal
+examples before transferring a reduced UNSAT certificate. Here the original
+question remains open, and no global solver speedup or Lean library reuse was
+established. [Proofs, counterexamples and scope](formalization/canonical-width/c16/INVERSION.md).
+
+
+### Retain finite scalar representatives and certify the actual restriction
+
+The four-hour C16 inverse-pool continuation preserves the exact thin-factor
+orbits, residues, projective directions, thin modules and transpose exchange
+in an enlarged pool that admits a full frame. Those aggregate invariants do
+not justify residue descent. The finite thick scalar representatives matter.
+Keeping them gives checked original-pool restrictions: at least three thin
+families per sector and three excluded triple supports. The unrestricted
+question remains open. [Proof and counterexample](formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md).
+
+A numerical dual need not have exact stationarity to yield a proof. Compute
+its residual exactly and bound it using the known0..1 moment box. Here this
+produces strict rational contradictions. Integer periodic-difference bases
+and rational congruence preconditioners also replace transcendental PSD
+checks by exact integer diagonal-dominance checks. Identity, indefinite and
+corrupted-certificate controls accompany the replay.
+
+FLINT LLL finds valid integer-affine-form inequalities violated by tested
+fractional moments; it does not by itself find a frame or prove nonexistence.
+Private-partner ownership supplies another source-specific moment restriction,
+checked against every source common-neighbor set and the physical88-pair frame.
+Keep these separation results distinct from end-to-end progress: the original
+width stays16 or18, the new family condition removes zero frozen unresolved
+leaves, and no global runtime gain is demonstrated. Positive numerical margin
+objectives and `optimal_inaccurate` statuses still require independent checks;
+one such margin trial fails the full-PSD check.
+
+### Test what a literature reduction preserves, then certify finite obstructions
+
+The overnight C16 literature comparison proves that the actual pool matrix has
+half-induced matching number, asymptotic induced matching number and binary
+support rank all exactly128. A triangular128 minor already lies in a restricted
+case that has no128-frame. Thus these asymptotic parameters lose the finite
+distinction needed here. A representative row basis also preserves existence of
+a compatible entry in a column, while a three-row example shows it can destroy
+simultaneous private partners. Apply representative-set results to their actual
+completion-compatibility interface, not directly to the pool matrix.
+
+A verified sector-exchange action separates cyclic moment PSD blocks into
+even and odd sector parts. Averaging moments does not impose symmetry on a
+selected frame. This reduction enabled a new exact exclusion of the joint
+thin-support034/034 case. Independent source-row regeneration, exact residual
+correction and integer PSD checks certify the result; no critical-monomial
+enumeration cap is needed. This is a restricted obstruction, not an answer to
+the unrestricted width question or evidence of a global runtime gain. The
+selected third-moment pilot produced no certified improvement and was closed
+at its stated gate. [Argument, certificate and limits](formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md).
+
+Nilpotent reduction remains useful for weaker, faithfully stated tasks. Every
+proper cyclic-invariant span has a nonzero fixed covector in its annihilator.
+Enumerating the255 fixed covectors gives an optimal12-orbit hitting set for
+all source X bases, hence a complete cover by12 phase-normalized frame-anchor
+cases. This uses spanning, without descending a full biorthogonal frame.
+All12 completion cases remain open; the smaller cover is not a demonstrated
+global solver speedup.
+
+Use the intended conditioning cost when choosing such a cover. Counting
+selected-pair cases modulo translation and sector exchange gives a different
+optimal hitting set:1,082 cases instead of all3,132 symmetry pair cases.
+The same fixed-covector lemma makes optimization over255 candidates complete
+within this basis-cover strategy. An independent physical-coordinate graph
+check confirms the manifest. Every completion is still open; a smaller
+case count is not a finishing-time guarantee.
+
+### Use the dual expansion when a one sided basis cover stops improving
+
+The later C16 follow-up replaces the1,082-case X-basis cover by518 selected-pair
+cases. For any full dual frame, beta(u,v) is the binary sum of
+beta(u,z_i)beta(x_i,v). Witnesses with beta(u,v)=1 force a selected pair to
+pass both tests. This uses an inverse-basis identity rather than additional
+enumeration of candidate frames. All6,238 source-pair witness costs and the
+resulting cover are independently checked in physical coordinates. The smaller
+cover still leaves every completion open and supplies no runtime estimate.
+
+Check whether more linear combinations can actually help before expanding a
+search. Here83,504 atoms outside the518-case cover span16,368 of16,384 matrix
+dimensions. The sixteen translated witnesses form its full annihilator. Any
+trace-one combination is a unit cyclic convolution, so it preserves the same
+orbit support: no such linear functional gives a proper subcover of these518
+cases. Smaller nonnested or nonlinear covers remain possible. Distinct exact
+degree profiles also rule out graph-isomorphism merging of the older1,082
+conditional graphs. These are useful limits on specific methods, while the
+source width remains16 or18.
+[Proofs, certificates and replay](formalization/canonical-width/c16/JOINT-COVER.md).
+
+### Combine identities with compatibility and select new formulas from residuals
+
+The next C16 block gives a proper505-case subcover of518 even though no single
+trace-one linear functional can give a proper subcover of that list. All sixteen
+translated dual identities must hold simultaneously. A partial induced matching
+inside thirteen removed classes cannot realize their target signature; a physical
+CNF rebuild and checkedDRAT proof certify the contradiction. The gain comes from
+the joint parity and compatibility condition. Removed representatives are not
+excluded from full frames, and fewer starting cases do not establish a runtime
+gain or answer the width question.
+
+Negative method results make the next gate specific. Broader matrix trials do not
+improve the single-witness cover, separate principal determinant-existence tests
+exclude no anchor, and all505 retained anchors have small partial signature
+witnesses. For a partial dual frame, its outer-product sum is a projector. The
+nonzero residual against the identity supplies a mandatory equation that rejects
+that particular spurious configuration. At the selected anchor this yields a
+checked source witness705/705 and increases the functional span16to32. Its solver
+comparison remains unrun; a separated partial witness is not an anchored frame
+obstruction. [Proof, tests and next gate](formalization/canonical-width/c16/NONLINEAR-COVER.md).
+
+
+### Retry difficult proposals in compact proof models
+
+The next C16 follow-up proves a497-case proper subcover of505. The first new
+removed class came from a global proposal that timed out in the large incremental
+model; its compact uncompressed CNF produced a checked proof. Monotone extensions
+then removed seven further representatives. Fresh compact proof checks, rather
+than a global-optimum claim or the newly added matrix equations, produced this
+gain. Physical regeneration andDRAT checking remain the acceptance gate.
+
+Residual-guided equations separately increase the chosen anchor's functional
+span from16 to87, with compatible partial witnesses through86 andUNKNOWN at87.
+Every violated residual entry supplies an independent valid equation, but
+strictly stronger necessary conditions do not by themselves settle a case.
+Recompute the active source-edge set after each addition, and compress only
+free edges after subtracting the fixed anchor's contribution. Disjoint partial
+witness supports give a109-class lower bound for the original16-signature cover
+criterion; they do not bound arbitrary covers or prove a full frame exists.
+[Proofs, limits and replay](formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md).
+
+### Normalize a class forced by an earlier impossibility proof
+
+The next C16 block reduces the sufficient starting list from497 to428. If the
+old omitted set cannot support the required signature, any counterexample
+after adding a new class must use that class. Translation and sector exchange
+can normalize a selected pair from it without assuming symmetry of the frame.
+This gives smaller proof instances. The prior impossibility premise is
+essential. Seventeen such extensions reach480; physically checked positive
+witnesses show480 is inclusion minimal for fixed deletions, not globally
+smallest. Restoring one old class then permits a nonnested exchange cascade
+to428. A deletion barrier can therefore suggest an exchange, rather than
+establish a global optimum.
+
+Compression here preserves existence by deleting free selected edges while
+preserving their signature XOR and compatibility. Keep the fixed anchor
+outside the deletion and subtract its contribution first. Deleting zero-target
+groups is justified in the unit-signature model; do not export that rule to
+arbitrary signatures. Small literal controls cover all encoding variants.
+Independent physical regeneration and proof checking remain the acceptance gate.
+
+The stronger projected matrix block rejects saved small partial witnesses,
+and affine-span separators provide independently replayable conditional cuts.
+Neither completes a full source anchor. A newly consulted parity-clause solver
+also returnsUNKNOWN on the tested C16 inputs; building software and checking a
+toy proof do not count as a source-problem gain. Three bounded rounds without
+a further verified reduction trigger the announced early-stop rule. The428
+cover leaves every full completion unresolved and gives no finishing-time
+estimate. [Proofs, comparisons and stop record](formalization/canonical-width/c16/THEORY-LOOP.md).
+
 ## Lessons from the correlated-residuals replication
 
 Dated 27 October 2026. The note is the replication of the three-trait QTL structural equation model, merged as pull request 14. The package is [formalization/correlated-residuals/](formalization/correlated-residuals/README.md). These points are about how a printed equation was read, how a disagreement was graded, and how this run's tools behaved.
@@ -219,3 +414,392 @@ The probability on the order of \(10^{-12}\) is the product of three binomial pr
 ### Tooling on this run
 
 Issue edits returned HTTP 403, and the issue was not updated from this environment. The work-branch push also returned 403 for `cursor[bot]`, and the same tree was published through the Git Data API. Files that exist only on the bot's box must be attached before a cloud agent can read them. A draft pull request must be marked ready before it can be merged. Pull request 14 was that draft.
+
+## Lessons from the C16 algebraic continuation
+
+### Separate a stronger relaxation from a stronger source conclusion
+
+The C16 algebraic continuation gives two exact comparisons. Physical rank
+witnesses remove43.436% of the frozen basic one-orbit phase masks; fixed-pair
+conditioning removes a further17.405% in its separately defined cohort. These
+are local necessary-condition counts, not fractions of complete frames or
+predictions of a global speedup. Conditional capacities strengthen711 of2025
+orbit-count bounds. Their source-to-moment implication must be proved before
+adding them to an optimizer.
+
+The new occupancy inequalities reject the old certified rational basic point,
+yet another exact rational point satisfies the stronger phase-hull/capacity
+relaxation. Both findings are useful: the model is strictly stronger, and this
+particular degree-two approach still cannot exclude128. Preserve a positive
+relaxation certificate when it gives a reason to stop increasing time on an
+insufficient model. Full residual-identity XOR decompositions for all428 starting
+anchors similarly rule out pure inverse-linear separators, while leaving
+compatibility unresolved.
+
+Profile the representation before choosing a language. The compact native
+phase-mask calculation repeats all45 records at2.656MiB sampled RSS; a separate
+C++ polynomial lift stores hundreds of millions of terms. C++ does not remove
+that growth. Track allocated vector capacity and proof-file size as well as
+resident memory. Accept native-XOR UNSAT only after rebuilding the physical
+input and replaying its proof; checking the solver exit status alone is
+insufficient, including for a checker that can return zero on rejection.
+[Results, certificates and scope](formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md).
+
+
+Count bounds can miss a local phase relation. Testing the complete conditional
+one-orbit convex hull first found six rows that excluded the initial exact point.
+Integer support maximization verified the resulting weighted inequalities;
+one forced a zero pair correlation. A new rational point then admitted4050
+selected-anchor and4050 original-family anchor-absent local decompositions.
+This certifies a limit of the stated local relaxation, not a common distribution
+or a full frame. A stronger deleted-vector absence pilot removes830 more masks
+and still admits the point; the other44 deletion dictionaries remain untested.
+
+The opposite-side X-only quotient tests can be reused: projection removes the
+fixed vector from a zero domain that already contains it, lowering both rank
+and dimension by one, while private profiles stay unchanged. Exact tables
+confirm the restriction identity. A rational fractional packing also raises the
+old signature-cover lower bound109 to121, while the upper cover is418. State the
+proof criterion: a bound for partial-signature covers does not bound arbitrary
+full-frame covers using the new basis restrictions.
+
+## Lessons from the C16 strategy reassessment
+
+Pair-domain restrictions must remain explicit in every learned clause. A
+hypothetical frame avoiding a proposed cover can use all zero-signature pairs
+and only the specified nonzero-signature classes. Rank and commutation use the
+physical graph; private partners use the allowed graph. Of860 domain cores,
+788 are independently contradictory in the unrestricted graph and72 remain
+unproved by that propagation. Recheck a core before transferring it to a wider
+domain. To combine cover removals, each proof domain must contain the actual
+avoidance domain of the combined cover.
+
+Preserving an arbitrary designated anchor changes signature normalization.
+Delete dependent subsets only among the free pairs. There can be16 independent
+free signatures plus the anchor, and a free signature may equal the anchor's.
+Imposing total independence or a15-free-pair bound would lose the required
+projection argument. Both the source bridge and the independent CNF consumer
+must enforce the same convention.
+
+A full-basis theory clause need not survive deleting pairs. Conditional
+short-word rules often have positive literals and cannot enter the compact
+partial-matching model. Their all-negative instances can: three saved C16
+closure fixed points are rejected by source-valid quotient-word certificates
+even though mandatory propagation accepts them. Check the sign and source
+scope of the actual clause before reusing it. Preserve its small algebraic
+certificate as well as any solver proof.
+
+Fewer solver variables do not establish a speedup. Dynamic owner matching
+generated millions of clauses and completed no full case; static binary
+partner labels reduced model size but its bounded pilots also remained
+UNKNOWN. A native-XOR discovery comparison solved the same small case more
+slowly in this trial. Record failed routes and exact limits, and prioritize a
+new source obstruction over a new encoding based only on size.
+[Proofs, controlled trials and continuation plan](formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md).
+
+## Lessons from complete sparse quotient discovery
+
+Testing the fundamental dual rows of one residual basis is not a complete
+search for sparse detecting functionals. A weight-at-most-three evaluation has
+at most three nonzero basis coordinates. Single columns, column-pair distances,
+and hash lookups for zero-sum triples therefore give a complete existence test
+for this criterion, without enumerating source bases. Compare quotient word
+length with the actual detecting support size, not merely the maximum order
+requested from the routine.
+
+Separate three claims: a mathematically stronger criterion, a useful place to
+invoke it in the solver, and a completed source case. The frozen C16 gate finds
+19 source partial matchings rejected at order three but accepted by complete
+order two and by joint mandatory-vector propagation. This establishes new local
+information. It does not establish a cover reduction or a full-frame obstruction.
+Record how often a new oracle is actually reached in a controlled solver trial;
+placing it after another separator can leave it uncalled throughout a bounded
+run. Preserve small source certificates for later use as initial clauses, rather
+than assuming that a stronger oracle automatically improves search.
+[Written argument and checked source examples](formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md).
+
+## Lessons from mining relevant small C16 clauses
+
+A strong oracle can remain unused when an earlier separator rejects every
+visited model. Mining saved models offline and shrinking the required sets
+turns its conclusions into short initial clauses. On the actual hard C16 case,
+a fixed bank of one two-vector and255 three-vector patterns is source-valid;
+all256 smaller subsets pass both existing propagation checks. Independent
+replay verifies each selected certificate and all767 single-vector deletions.
+The precise claim is single-deletion irreducibility under the checked criterion,
+not globally shortest clauses or extendibility of every proper subset.
+
+Freeze the initial bank before measuring its effect. The relevant-clause
+comparison starts from the same checked baseline and changes only the initial
+clauses. Both methods prove the compact case: seeded discovery takes about92
+seconds versus175, with267 versus528 refinements. Both ordinary proofs and the
+cover-domain induction replay, reducing the sufficient cover409 to408. Because
+the baseline also solves, the new clauses are not necessary for that removal.
+The roughly563 seconds spent mining and checking the bank exceed the83-second
+discovery saving in this one case. A faster solver phase is not a net
+single-case speedup; reuse needs a frozen comparison on other cases.
+
+Universal source clauses transfer across pair domains. Conditional propagation
+clauses do not: revalidate or omit them when a new cover trial widens the
+allowed pair domain. Preserve that distinction when reusing a successful bank.
+[Source restrictions, matched proofs and cost accounting](formalization/canonical-width/c16/RELEVANT-CLAUSES.md).
+
+## C16 transfer and a stronger word-length test
+
+Reusing the unchanged256-pattern bank on three frozen, deliberately selected
+held-out cases reduces discovery time in all three pairs, from787.57s total
+to319.46s. Both variants solve every case, and all six ordinary proofs replay
+cleanly. The resulting sufficient cover is405. This establishes useful reuse
+on those cases; it does not establish a population speedup or recover all
+preprocessing and verification costs. Keep the common avoidance domain large
+enough to support the final composed cover.
+
+A failed structural gate can identify the right next lemma. Combining old
+forbidden children with detecting-support capacity gives no gain on384
+selected smaller subsets: only eight have support at most4, and none contains
+a known small child. Checking direct four-term representability instead finds
+one universal forbidden pair that the complete order3 test misses. Its proof
+uses four possible detecting vectors against a required minimum of five
+source terms. Attribute that success to the new direct word-length bound,
+not to the failed child-capacity composition.
+
+Translate source clauses into other exact models. A forbidden m-set gives
+conditioned moment inequalities sum_b E[x_a x_b]≤(m-2)E[x_a]. Here31408 rows
+give47 exact violations of an earlier fractional point. This separates that
+point; it does not decide the strengthened relaxation. A numerical positive
+margin still needs exact recovery: the subsequent candidate has a negative
+profile weight and must remain rejected. Symmetric forced-zero moment entries
+also require symmetric exceptions in an optional strict-margin search mask.
+
+At a requested pause, preserve completed proofs, failed numerical candidates,
+untested code and exact next steps under distinct evidence labels. Stop the
+research processes and release only the owned claim. A completed producer
+screen and an independently replayed positive certificate do not amount to
+independent replay of every negative result in the screen.
+[Results and resumable checkpoint](formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md).
+
+## C16: certify the relaxation before expanding it
+
+Combining individually feasible relaxations can still yield a stronger model;
+the earlier candidates must be checked against every added family. In this
+continuation, physical-coordinate translation exposed violations of ownership,
+circuit, rectangle, triangle and integer-form restrictions that separate models
+had omitted. A recovered rational point eventually passed their entire finite
+intersection, including profile weights and interval PSD checks. That certificate
+rules out an infeasibility proof using exactly those constraints. It does not
+construct a frame or prove that a higher-order relaxation is feasible.
+
+Use a structural optimization oracle to propose inequalities, then separate
+its numerical role from proof. Here a greedy linear-matroid basis oracle finds
+conditional rank subsets without enumerating subsets. Each retained cut is
+validated by an independent integer rank computation. Forty-one new cuts
+strictly exclude the certified point, giving an exact strengthening. A bounded
+search that returns no cut does not certify matroid-polytope membership.
+
+Exploit a condition's exact face before optimizing. Selecting one X vector
+forces exactly127 selected Z vectors into its rank127 orthogonal pool; their
+basis problem can be separated there. Span closure also enlarges a rank subset
+without increasing its rank. With nonnegative moments and the anchor diagonal
+identity, the enlarged inequality dominates the original. These operations
+strengthen or simplify a relaxation; they do not by themselves reduce a
+sufficient cover of unresolved source cases.
+
+Inspect solver diagnostics before treating a wall limit as mathematical
+resistance. Repeated scaling updates were costly in the large combined model.
+Adaptive row generation, explicit warm-start coordinate mapping and a fixed
+scale produced accurate candidates in later bounded trials. Both the failed
+mapping attempt and successful runs are retained; no matched or general
+runtime speedup is inferred. Exact recovery and a clean-checkout replay remain
+the acceptance gates. [Evidence and limits](formalization/canonical-width/c16/MOMENT-RESUMPTION.md).
+
+A sampled local-distribution failure can expose a missing elementary inequality.
+In this block the first such cut was an ordinary Boolean triangle. Complete the
+structured family when practical: exact screening of every physical triple then
+produced a certified triple-consistent point. That gives a precise reason to seek
+compatibility on larger collections, rather than repeatedly rediscovering missing
+triangle rows. A common orbit-distribution test subsequently separated the saved
+profile weights. State the projection caveat: rejecting one choice of auxiliary
+weights does not automatically reject its first and second moments under every
+other choice of those weights.
+
+When a coupled LP is too large, retain the anchors used by its first separating
+functional and free the auxiliary weights in that smaller necessary model. Here
+the full90-anchor free-weight pilot timed out, but the14-anchor support pilot
+produced an independently checked projected inequality in8.35seconds. Pruning
+nonpositive anchor forms left12 active anchors. This is a concrete way to turn
+a failed large test into a smaller mathematical question; it is one measured
+instance, not a universal speedup claim. The final inequality separates a point
+that has passed all Boolean triples, without relying on its chosen profile weights.
+
+## C16: make basis coupling exact, then simplify its certificates
+
+A full compatible opposite basis has more structure than a set of allowed
+vectors. For selected independent X vectors, every required unit-evaluation
+owner bin contributes exactly one Z vector; the zero-evaluation pool must
+contribute a basis of its full remaining rank. Optimize the latter with
+linear-matroid greedy selection and retain negative weights. Dropping the
+rank requirement can destroy a valid separation even when cardinality and
+owner conditions are retained. Opposite-anchor presence uses contraction or
+a fixed owner choice; absence uses deletion. A fixed physical phase also
+changes which symmetry reduction is valid.
+
+Separate a new joint-profile condition from simpler explanations. An exact
+rational-lattice certificate can establish all subset-rank inequalities
+without enumerating subsets: if a rational vector with denominator D is
+within positive-coordinate error less than1/D of a nonnegative mixture of
+physical bases, any positive integral-rank violation is impossible. Here
+this certifies an entire one-anchor rank family at points still excluded by
+a joint-profile cut. It does not certify arbitrary projected-polytope
+membership or a common distribution across all anchors.
+
+Use exact affine identities before trying to round a dense numerical
+separator. Direct rounding failed on the tested cohort. Subtracting proven
+counting identities first removed a common coefficient background, after
+which independent repricing accepted separators with coefficients at most64
+instead of millions. Every rounded or thresholded vector is a new functional
+and needs fresh exact support. A near-zero support bound alone does not
+prove an affine identity; price both signs.
+
+An optimization method's failure can be algorithmic rather than structural.
+The bounded Wolfe projection succeeded after large L1 master problems had
+failed to decide the same target. The independently matched native oracle
+then reduced pricing-kernel time. These are measured algorithm/kernel
+results, not a general source-search speedup. Keep frozen sources, failed
+exports, exact acceptance consumers and recovery artifacts. Repair a
+provenance or serialization failure with a new version, rather than
+overwriting files referenced by an accepted certificate.
+
+Before installing a signed full-basis inequality into a compact source model,
+check what its Boolean flags actually mean. A retained partial matching
+omits zero-signature members of a full completion. Substitution of partial
+owner flags is unsound. Use existential full-selection flags or a certified
+lower bound over all completions, and compare the resulting pruning against
+ordinary propagation. All newly detected saved configurations in this
+block were already excluded by rank; that is a useful negative gate.
+[Evidence and limitations](formalization/canonical-width/c16/COUPLING-CONTINUATION.md).
+
+Refresh cheap established families after the candidate changes. A point that
+passes every Boolean triple and hundreds of saved integer-form rows can
+still violate other five-event inequalities. Here an existing coordinate
+search found 207 distinct rows quickly, followed by 25 and two after model
+updates; the existing LLL neighborhood search found none in its bounded
+cohort. This is a measured follow-up, not a new inequality theorem or an
+exhaustive certificate for all five-event forms.
+
+A numerical infeasibility report can be false even for a modest linear
+extension. Presolve reported two four-anchor count models infeasible, while
+presolve-disabled solves suggested feasibility. Block elimination by the
+physical vector reduced exact recovery to fewer than40 parameters; released
+near-zero variables then produced independently checked rational feasible
+points. Exact replay settles that discrepancy. It also gives a stopping
+criterion for a proposed relaxation: once an exact extension exists, repeating
+that same count-only test cannot exclude the point.
+
+For a conditional matroid law, an exact basis mixture can settle every rank
+inequality at once. A surplus-to-deficit exchange path repairs an existing
+mixture with rational arithmetic; a terminal exact mixture is independently
+checkable regardless of the search history. Account for repeated use of a
+basis when bounding transferred mass. Lazy exchange graphs are safe for
+finding augmentations, but a failed lazy search is not a rank obstruction:
+use the complete positive-basis graph or directly verify the proposed rank
+gap. In this block one conditional law becomes exact while a second remains
+inconclusive under its cap. Preserve both states, and do not infer a general
+runtime bound or a shared global distribution from individual memberships.
+
+A saved column archive can lie on a proper face of the intended relaxation.
+Its nullspace is a list of hypotheses, not a list of universal equations.
+Here14 apparent extra identities were individual coordinates that happened
+to remain zero in the sample; every one had a source-valid physical
+counterexample. Adding those columns and checking modular rank established
+the full auxiliary affine dimension771, matching the upper bound from three
+known identities. This closes further affine elimination for that relaxation
+and supplies a better spanning seed, without proving target membership or
+changing the source problem's bounds.
+
+### Match exact algorithms to the certificate actually needed
+
+Matroid membership needs any positive subset-rank defect, not necessarily the
+maximum defect. An independently proved earlier empty-level stopping rule and
+cached circuit updates decide a previously capped physical case in2.61seconds
+on the same target and initial basis. Keep that combined implementation result
+distinct from a general runtime bound. Colored mixtures extend the certificate
+to weighted sums of two domain-matroid ranks; a physical pilot validates the
+extension but does not strengthen its existing star obstruction.
+
+Individual basis mixtures do not establish cross-sector ownership compatibility.
+An exact conditional transportation cut rejects a pattern where both separate
+basis mixtures are already certified. Retain the prescribed cross moments;
+local weighted-rank elimination cannot replace those cross-pattern constraints.
+
+Use an exact sparse LP solver before treating tiny floating recovery failures
+as mathematical evidence. Here SoPlex gives an exact feasible allocation for
+7,943 variables and35,898 inequalities in1.53seconds at roughly144MB sampled
+peak memory. A separate physical consumer checks all target, rank and supplied
+star rows. The useful change is the exact solving and verification path, not
+the implementation language by itself. This allocation is subsequently
+separated again. The source width remains16 or18, with no full source anchor
+excluded. [Proofs, measured comparisons and limits](formalization/canonical-width/c16/TWO-BASIS-EIGHT-HOURS.md).
+
+### Measure archive progress and retain shared information
+
+Exact infeasibility of a saved basis archive is not matroid separation. Price
+its dual over the entire physical matroid before drawing a global conclusion.
+In the current-point orbit40 test, the initial archive omitted one coordinate
+with positive target mass. One valid coverage column made exact reweighting
+possible, and a literal basis checker then established every selected-conditioned
+rank inequality for that orbit. An older archive can supply useful geometry,
+but its weights, target-dependent errors and membership claims do not transfer
+to a changed point. Rebuild and bind the fresh target explicitly.
+
+When feasibility-only column generation stalls, a phase-I L1 objective gives
+a comparable distance and a bounded dual. The restricted optimum is an upper
+bound on the full-hull distance; exact greedy support supplies a lower bound.
+Only a positive full-domain separation gap gives a rank obstruction. In one
+matched trial, a maximizing basis and 64 valid exchange columns reduced the
+exact restricted distance by 3.579%. This measures archive improvement, not
+source-case elimination or an end-to-end speedup. Independent exchange
+directions within a batch do not imply new affine dimension modulo the old
+archive, and adding columns need not strictly improve the next optimum.
+
+A fixed auxiliary allocation may fail a simple conditional Boolean identity
+even after much stronger-looking rank computations. Retaining the global
+same-sector pair moment exposed such a failure in the shared-owner model.
+An exact free eight-event law then repaired it. Use that free reallocation
+test to distinguish an allocation defect from a global moment obstruction.
+When coupling the local law back to the larger model, share its actual
+conditional masses and owner variables. Also exclude joint atoms that conflict
+with the old anchors: separately valid one-probe domains can miss two new
+probes competing for the same mandatory owner.
+
+Keep exact replay portable without changing frozen mathematics. The final
+owner checkpoint passed 34 consumers after explicit path relocation, with
+every original helper body retained, all input hashes and Git blobs checked,
+and outside-copy research reads denied. A solver's alternate rational-output
+footer required a narrowly versioned parser; old source and failed output
+were preserved. Complete stationarity and primal/dual equality, rather than
+the solver label or parser acceptance, established the phase-I result.
+[Results, exact evidence and source limits](formalization/canonical-width/c16/TWO-BASIS-EIGHT-HOURS-FINAL.md).
+
+### Separate source-valid projection from optimizer certification
+
+An interrupted solver can suggest source-row multipliers without certifying an
+optimum. Convert those suggestions to exact rational numbers, enforce valid
+inequality signs, and retain every coefficient that fails to cancel. In the
+shared C16 master, explicit source-row sums prove `0 <= v <= lambda[m]` for all
+22,508 non-tau coordinates. Thus `r*v >= min(0,r)*lambda[m]`; higher joint
+moments contribute to every containing pattern. These bounds make an arbitrary
+source combination projectable after full physical-domain pricing, without
+silently treating it as an exact dual. The actual trial passed independent
+checks of all 32 domain prices and its optimal quadratic minorant, but its
+final gap was negative. It supplied no source exclusion or exact master optimum.
+
+Initialization matters separately from the mathematics of the relaxation.
+Two capped SoPlex runs supplied no exact endpoint; a checked HiGHS floating
+view supplied candidate weights, but substantial sign and residual corrections
+made them ineffective for separation. The master also has an explicit
+unimodular, dual-feasible starting basis: basic artificial-error columns and
+all other row activities give dual weights -1 on error-nonnegativity rows and
+zero elsewhere. That basis is proved; its runtime benefit is untested. Prefer
+a bounded test of this specific initialization before expanding the archive
+or attributing the difficulty to memory or language choice.
+[Checked model, negative projection and next basis test](formalization/canonical-width/c16/SHARED-MASTER-TWO-HOURS-RESULT.md).

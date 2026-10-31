@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/certify_profile_moment_point.py", line 85, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-algebraic-20261028T2040/formalization/canonical-width/c16/certify_profile_moment_point.py", line 80, in main
+    cols=np.unique(candidates);_,R,perm=qr(Ar[:,cols].toarray().astype(float),pivoting=True,mode='economic');assert abs(R[rank-1,rank-1])>1e-8;cols=cols[perm[:rank]];D=1<<42;n=np.rint(x*D).astype(np.int64);res=b*D-A@n;B=Ar[:,cols].toarray();print('EXACT_RECOVERY',A.shape,'rank',rank,'residual',int(max(abs(res))),flush=True);delta=fmpq_mat(B.tolist()).solve(fmpq_mat([[int(t)] for t in res[rr]]));values=[fmpq(int(t),D) for t in n]
+                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

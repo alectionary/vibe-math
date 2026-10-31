@@ -61,7 +61,9 @@ planning records are explicitly unassessed rather than assigned invented estimat
 - **RQ-F25-weight7-RCPC-converse:** Audit and formalize the source recipe’s claimed exclusion of stabilizer-weight7 logicals in the normalized3x4 girth8 case. Status: source_claim_verification_followup_not_new_open_math
 - **RQ-F25-truncated-distance-12:** For normalized fully populated source3x4 cyclic bases satisfying the strengthened entry tests and dTranspose>=dC, prove or refute dQ>=min(dC,12). Status: open_truncated_lower_bound_with_partial_generic_lean_and_finite_evidence
 - **RQ-P09-connected-coupled:** Construct a connected CSS absorbing-support example with successful recovery and no physical product factor. Status: Complete for the explicit15-coordinate asymmetric pair; see connected artifact.
+- **RQ-F91-c16-css-frame:** Decide whether the 720-class weight-16 CSS pools of C^LP_16,9 contain a 128-pair canonical frame. Status: Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18.
 - **RQ-P09-symmetric-css:** Construct or rule out an even-support connected common-matrix CSS example satisfying the exact stopped Gallager-B recovery contract. Status: General odd-support and supported-logical obstructions proved; exact even-support full/one-step existence questions remain unresolved. No construction search performed.
+- **RQ-F91-c16-algebraic-full-anchor:** Combine exact inverse identities, compatibility and bounded algebraic certificates to settle a retained original full-frame anchor. Status: Partial: this bounded block completes controlled comparisons and exact auxiliary results, but no full source anchor is settled. Width16/18 remains open; follow-up tests are specified in the report.
 
 These remain attached to their recorded parent targets and outside the coverage denominator.
 Their wording is ours; it is not attributed as an exact question from the source authors.
@@ -174,6 +176,30 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
+## Subsequent block: l-f91-c16-unrestricted-width-2026-10-26
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Historical block checked an 88-pair partial frame and three-prototype partner searches. The 2026-10-27 audit found missing partners: its 13-15 monomial inferences needed the corrected replay, and its 33 twelve-monomial whole-orbit exclusions are retracted. Unrestricted width remains 16 or 18. Remaining at that dated checkpoint: Complete partner-domain searches (later repaired for 13-15); exact f; independent enumerator; Lean certificate; global compatibility. [Report](../formalization/canonical-width/c16/INVESTIGATION.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-partner-domain-audit-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18.. Remaining at that dated checkpoint: Exact unrestricted width; complete twelve-and-fewer monomial exclusions; independent pool-completeness proof; Lean certificate. Global finite models returned no decision. [Report](../formalization/canonical-width/c16/TAKEOVER.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/takeover-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-four-hour-continuation-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Global campaign preserved669,402,203 nodes with20,558 unresolved leaves; all global solver runs remained undecided. Closeout was late:07:12:57UTC and later, after the05:26:36 deadline.. Remaining at that dated checkpoint: Exact unrestricted width and Lean certificate remain open. Only one of273 eleven-monomial classes is excluded; no global conclusion follows from time limits. Exact-target Lean discovery and the named new literature leads remain unassessed.. [Report](../formalization/canonical-width/c16/FOUR-HOURS.md) · [Verification](../formalization/canonical-width/c16/verification.json) · [Prior art](../formalization/canonical-width/c16/four-hours-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-six-hour-continuation-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate.. Remaining at that dated checkpoint: No exact-width or Lean completion. The full frame question and proposed stronger phase/owner-allocation follow-up remain open. F99/F100 canonical question reconciliation and product-basis search-lead screening remain incomplete, explicitly preserved rather than counted as zero-question screens.. [Report](../formalization/canonical-width/c16/SIX-HOURS.md) · [Verification](../formalization/canonical-width/c16/six-hours-results/final/verification.json) · [Prior art](../formalization/canonical-width/c16/six-hours-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
 ## Subsequent block: symmetric-css-2026-10-26
 
 [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): General odd-support quantum-recovery obstruction under equality of full stabilizer row spaces; exact full/benchmark question interfaces.. Remaining at that dated checkpoint: Even-support existence or nonexistence; no candidate search.. [Report](../formalization/gallager-b-absorbing/symmetric/README.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
@@ -183,6 +209,84 @@ Canonical entry delta **0**, eligible-target delta **0**, completed canonical Le
 ## Subsequent block: symmetric-css-editorial-2026-10-26
 
 [L-P09-all-absorbing](OPEN-PROBLEMS.md#l-p09-all-absorbing): Main-text chronology, discovery citation, explanatory proof dependency appendix, targeted source review and evidence-backed skill closeout requirements.. Remaining at that dated checkpoint: Even-support construction search. [Report](../formalization/gallager-b-absorbing/symmetric/EDITORIAL-REPAIR.md) · [Verification](../formalization/gallager-b-absorbing/symmetric/verification.json) · [Prior art](../formalization/gallager-b-absorbing/symmetric/prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-structural-comparison-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion.. Remaining at that dated checkpoint: No unrestricted-width or Lean completion. Historical C16 source IDs F99/F100 collided with parallel published additions and are centrally remapped to F143/F144; immutable earlier reports retain their historical names. Their question screens and prior product-basis leads remain incomplete.. [Report](../formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md) · [Verification](../formalization/canonical-width/c16/structural-results/verification.json) · [Prior art](../formalization/canonical-width/c16/structural-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-pool-inversion-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion.. Remaining at that dated checkpoint: No unrestricted-width or Lean completion. No full-C16 search resumed. Period-two quotient and alternative identity models UNKNOWN. Source-specific residue descent unproved; generic descent explicitly false. No new academic full text retrieved or screened; prior source/access gaps retained.. [Report](../formalization/canonical-width/c16/INVERSION.md) · [Verification](../formalization/canonical-width/c16/inversion-results/verification.json) · [Prior art](../formalization/canonical-width/c16/inversion-prior-art.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: l-f91-c16-inverse-four-hours-2026-10-27
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact integer certificates prove that every full original minimum-pool frame uses at least three thin families in each sector, and exclude supports{0,1,2},{0,1,4},{1,2,4} independently in either sector. A1680-point enlargement preserves the original residues, exact thin orbits, projective directions, thin modules and transpose exchange yet admits a full frame, refuting aggregate descent. Full width remains16 or18; best physical partial frame88; no Lean completion or demonstrated global speedup.. Remaining at that dated checkpoint: No unrestricted-width or Lean completion. Stronger numerical models remain uncertified; no new academic full text retrieved. Historical C16 background IDs are now centrally F152/F153, preserving published SEM F143/F144 and earlier immutable reports.. [Report](../formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md) · [Verification](../formalization/canonical-width/c16/inverse-four-hour-results/verification.json) · [Prior art](../formalization/canonical-width/c16/inverse-four-hour-results/prior-art-access.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-literature-method-comparison-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Primary literature applicability reviewed; coherent conditional moments recommended for a bounded pilot. Remaining at that dated checkpoint: No new solver campaign, C16 resolution, source exclusion or Lean completion. [Report](../formalization/canonical-width/c16/LITERATURE-TECHNIQUES.md) · [Verification](../formalization/canonical-width/c16/literature-techniques-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-overnight-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact joint034/034 frame exclusion; optimal12-orbit hitting cover for all source X bases and12 normalized selected-vector frame cases; exact128 asymptotic-rank barrier and all6238 reciprocal-neighbor/parity moment cuts nonseparating at the saved rational point. Independently checked optimal1082 selected-pair completion cover within the whole-orbit X-basis-cover strategy; all1082 completions remain unresolved.. Remaining at that dated checkpoint: Unrestricted width remains16/18. No complete Lean target. No proven finishing runtime. Selected third-moment numerics do not supply a new certificate.. [Report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md) · [Verification](../formalization/canonical-width/c16/overnight-results/evaluation-replay.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-joint-cover-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): A proved518-case paired-basis cover, minimum over6238 allowed source-pair witness orbits; no proper subcover from any trace-one linear functional; all1082 prior residual graphs pairwise nonisomorphic;91125 bounded joint-rank cuts exactly nonseparating. Remaining at that dated checkpoint: No conditional case completion, unrestricted width answer or Lean completion. Smaller nonnested/nonlinear covers and case-family obstructions remain open. No new source paper was acquired, and no novelty or current literature-completeness claim is made.. [Report](../formalization/canonical-width/c16/JOINT-COVER.md) · [Verification](../formalization/canonical-width/c16/joint-cover-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-matrix-witnesses-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): A proved505-case proper nonlinear subcover of518 using16 simultaneous parity identities and induced-matching compatibility; physical CNF regeneration andDRAT replay. Bounded broader witness searches,26964 principal conditional minor witnesses,505 anchored partial signature certificates and a residual-selected independent witness are preserved. Remaining at that dated checkpoint: No full source completion case, original width answer or Lean completion. The witness705/705 doubles the functional span at the chosen anchor, but its next solver comparison is unrun. No new research paper was acquired or counted.. [Report](../formalization/canonical-width/c16/NONLINEAR-COVER.md) · [Verification](../formalization/canonical-width/c16/matrix-witness-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-residual-identities-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): A complete497-case proper subcover of505 with independent physical CNF/DRAT replay;87 independent residual-guided matrix identities and physical positive witnesses through86 at one anchor;109 disjoint partial signature supports give a method-specific cover lower bound.. Remaining at that dated checkpoint: No source width answer, completed retained anchor or Lean completion. The final87-equation call and bounded compact proof timeouts remainUNKNOWN. No new research paper is acquired or counted; no numerical status is promoted to a proof.. [Report](../formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md) · [Verification](../formalization/canonical-width/c16/residual-identity-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-theory-loop-20261028
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Independent physical replay proves a428-case sufficient cover, net69 fewer than497 by symmetry normalization and nonnested exchange. Rank32 residual and conditional affine-span necessities are checked. F158 is fully screened and four broad research directions are indexed outside the eligible denominator. Remaining at that dated checkpoint: The original width remains16/18; physical partial frame88 and all428 full completions unresolved. Three bounded no-gain rounds trigger early stop; no Lean completion, minimum-cover claim, full-search speedup or finishing-time estimate. [Report](../formalization/canonical-width/c16/THEORY-LOOP.md) · [Verification](../formalization/canonical-width/c16/theory-loop-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-rank-cover-20261029
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Independent physical replay checks112 frozen oracle calls and47 mixed-rank obstruction certificates. Both28-case cohorts have24 strengthened SAT and4 UNKNOWN versus28 baseline SAT; no checked cover reduction. Remaining at that dated checkpoint: Source width remains16/18, physical partial frame88 and cover418. No full source anchor is completed, no new source or Lean target is added, and pilot runtimes show no acceleration. [Report](../formalization/canonical-width/c16/RANK-COVER-CONTINUATION.md) · [Verification](../formalization/canonical-width/c16/rank-cover-results/refined-independent-check.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-transfer-20261029
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Three frozen held-out baseline/seeded pairs all independently prove UNSAT; clean physical/CNF/DRAT replay and domain inclusion reduce the sufficient cover408 to405. Seeded discovery totals319.46s versus787.57s on the three selected cases; this is limited reuse evidence, not a general or end-to-end speedup claim. A complete independent384-case screen finds one strict order4 forbidden pair, missed by complete order3. A16200-pair producer screen completes with four positive word classes independently checked, while its full negative replay is pending. Two full/global trials areUNKNOWN.31408 conditioned moment inequalities separate the old rational point in47 rows, but the strengthened relaxation has no exact feasibility or infeasibility certificate. Research paused at user request; width16/18, physical88/128, zero full source anchors solved, and Lean status unchanged.. Remaining at that dated checkpoint: No original width or Lean answer. Research paused at user request; stronger moment and order4 global models prepared but not run. Full16200 negative pair-catalog replay and new clean-checkout theory replay remain pending.. [Report](../formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md) · [Verification](../formalization/canonical-width/c16/transfer-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-moments-20261030
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): The user explicitly revoked the pause. Exact rational feasibility now covers the combined finite profile/capacity/weighted/forbidden/ownership/circuit/legacy families,280 closed-rank rows,213662 saved global-obstruction conditional rows,and all Boolean triples. An independent direct integer consumer constructs46558845 local triple distributions including symmetry duplicates. Five further exact rank cuts and a shared orbit32 profile-distribution inequality strictly separate this point; the latter fixes auxiliary profile weights, and its free-weight90-anchor pilot timed out. No source answer follows. Global continuation remainsUNKNOWN with complete replay. Width16/18,cover405,physical88/128,zero full-source anchors excluded,and Lean status stay unchanged. A smaller14-anchor free-weight follow-up now succeeds: an independently checked12-anchor projected inequality separates the same first/second moments by5539176242857167/565201753234997248, resolving the auxiliary-weight caveat for this new cut. The final intersection has not yet been solved.. Remaining at that dated checkpoint: No source width or Lean resolution. The SageMath software-documentation reference does not add a paper or question. No exact feasibility is inferred from numerical common-profile pilots or bounded rank nonseparation. Full-source finishing time remains unknown.. [Report](../formalization/canonical-width/c16/MOMENT-RESUMPTION.md) · [Verification](../formalization/canonical-width/c16/moment-resumption-results/verification.json).
+
+Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
+
+## Subsequent block: c16-coupling-20261030
+
+[L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width): Exact signed compatible-basis pricing and counting identities yield54 accepted partner inequalities, including coefficient64 forms. Refreshing an existing five-event method adds234 exact integer-form rows, and the combined model contains308 rank rows. The latest global relaxation point15 is still exactly feasible, including all older conditional families and every Boolean triple. At witness12, an exact45-basis unconditional mixture and28 individual conditional rank-law certificates establish whole-family feasibility barriers;12 conditional cuts and5 unresolved anchors are separately recorded. Both four-X and both two-X/two-Z count-only extensions have exact feasible solutions at their recorded points. The full775 auxiliary hull has exact affine dimension771:14 apparent saved-sample identities have physical counterexamples, and772 verified columns span the full hull. Latest-point exchange, small phase-I and direct full-selector trials remain inconclusive. A written follow-up derives two-sided full-basis support over16 anchor patterns; implementation and unanchored mutual pairing remain open. Source width16/18, cover405, physical88/128, zero full source anchors excluded and Lean status are unchanged. No finishing-time bound or general source-search speedup is established. Cunningham1984 is indexed as F173, with fulltext acquisition requested in issue63 and no complexity transfer claimed.. [Report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md) · [Verification](../formalization/canonical-width/c16/coupling-results/verification.json).
 
 Canonical entry delta **0**, eligible-target delta **0**, completed canonical Lean-target delta **0**. Consult this dated artifact for its exact source and proof scope.
 
@@ -450,6 +554,13 @@ Connected/coupled P09 follow-up adds no completed canonical source target. Two s
 - [L-F98-tighter-nonlocality-bound](OPEN-PROBLEMS.md#l-f98-tighter-nonlocality-bound): Improve the genuine nonlocality-content bound in Equation12 using measured m-party subsystems.
 - [L-F97-multipartite-conversion](OPEN-PROBLEMS.md#l-f97-multipartite-conversion): Historical direction: quantify multipartite entanglement resources and their interconversion relations.
 
+## Separate indexing extension: c16-continuation-source-leads-2026-10-27
+
+Two related primary full texts retrieved during C16 research. Relevant passages and candidate questions preserved; exhaustive screens interrupted by the fixed deadline. No zero-question, current-resolution or Lean claim.
+
+[Screen report](../literature/c16-continuation-source-screening.json). Added **0 entries**, **0 eligible targets**, **2 paper records**, **0 full-text screens** and **0 completed proofs**.
+
+
 ## Separate indexing extension: symmetric-css-sources-2026-10-26
 
 Two primary full texts; seven broad directions or held formulations, no precise-target denominator or completed-canonical-target delta.
@@ -474,6 +585,157 @@ One previously uninspected classical variant full text contributes three broad d
 - [L-F101-hybrid-decoding](OPEN-PROBLEMS.md#l-f101-hybrid-decoding): Develop hybrid decoding approaches combining strengths of multiple algorithms.
 - [L-F101-decoder-dependent-structure](OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure): Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
 
-Current cohort: **363 canonical entries,150 eligible targets,135 paper records,122 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: unl-sem-seed-2026-10-26
 
-The current source index has **106** records, with actual access levels retained.
+58 dissertation metadata seeds, all-author discovery and mathematical/statistical question screening of selected subsequent works. Social and empirical-only questions excluded.
+
+[Screen report](../literature/unl-sem/README.md). Added **8 entries**, **0 eligible targets**, **26 paper records**, **14 full-text screens** and **0 completed proofs**.
+
+- [L-F103-pleiotropy-linked](OPEN-PROBLEMS.md#l-f103-pleiotropy-linked): Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.
+- [L-F103-missing-phenotypes](OPEN-PROBLEMS.md#l-f103-missing-phenotypes): Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.
+- [L-F103-mixed-outcomes](OPEN-PROBLEMS.md#l-f103-mixed-outcomes): Develop multi-trait SEM methods supporting mixed binary and continuous traits.
+- [L-F103-experimental-design](OPEN-PROBLEMS.md#l-f103-experimental-design): Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.
+- [L-F102-correlated-residuals](OPEN-PROBLEMS.md#l-f102-correlated-residuals): Extend the multi-trait QTL SEM analysis to correlated residual errors.
+- [L-F102-nonlinear-traits](OPEN-PROBLEMS.md#l-f102-nonlinear-traits): Extend the linear multi-trait QTL SEM to nonlinear trait relationships.
+- [L-F106-dynamic-fit-robustness](OPEN-PROBLEMS.md#l-f106-dynamic-fit-robustness): Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.
+- [L-F106-dynamic-fit-multilevel](OPEN-PROBLEMS.md#l-f106-dynamic-fit-multilevel): Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.
+
+## Separate indexing extension: unl-sem-cfa-expansion-2026-10-26
+
+Source-question indexing extension.
+
+[Screen report](../literature/unl-sem/CFA-EXPANSION.md). Added **2 entries**, **0 eligible targets**, **13 paper records**, **7 full-text screens** and **0 completed proofs**.
+
+- [L-F132-subset-score-precision](OPEN-PROBLEMS.md#l-f132-subset-score-precision): Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+- [L-F134-interpretation-detection](OPEN-PROBLEMS.md#l-f134-interpretation-detection): Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+## Separate indexing extension: unl-sem-retrieval-repair-2026-10-26
+
+Source-question indexing extension.
+
+[Screen report](../literature/unl-sem/RETRIEVAL-REPAIR.md). Added **0 entries**, **0 eligible targets**, **2 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+
+## Separate indexing extension: l-f102-replication-sources-2026-10-27
+
+Source-question indexing extension.
+
+[Screen report](../formalization/correlated-residuals/INVESTIGATION.md). Added **3 entries**, **0 eligible targets**, **8 paper records**, **6 full-text screens** and **0 completed proofs**.
+
+- [L-F145-generic-mixed-graph](OPEN-PROBLEMS.md#l-f145-generic-mixed-graph): Characterize the mixed graphs that yield generically identifiable linear structural equation models.
+- [L-F146-half-trek-gap](OPEN-PROBLEMS.md#l-f146-half-trek-gap): Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
+- [L-F147-polytime-ancestral](OPEN-PROBLEMS.md#l-f147-polytime-ancestral): Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
+
+## Separate indexing extension: c16-literature-techniques-2026-10-28
+
+Four source screens: three new full texts and completion of the older F152 gap. Method recommendation, not C16 resolution. F153 remains an explicit separate incomplete record.
+
+[Screen report](../formalization/canonical-width/c16/LITERATURE-TECHNIQUES.md). Added **7 entries**, **4 eligible targets**, **3 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F152-binary-rank-multiplicativity](OPEN-PROBLEMS.md#l-f152-binary-rank-multiplicativity): Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.
+- [L-F152-domino-asymptotic](OPEN-PROBLEMS.md#l-f152-domino-asymptotic): Determine the exact asymptotic fractional biclique partition number of the Domino matrix.
+- [L-F152-strict-cover-asymptotic-gap](OPEN-PROBLEMS.md#l-f152-strict-cover-asymptotic-gap): Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.
+- [L-F152-domino-more-powers](OPEN-PROBLEMS.md#l-f152-domino-more-powers): Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.
+- [L-F152-domino-rational-interpretation](OPEN-PROBLEMS.md#l-f152-domino-rational-interpretation): Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.
+- [L-F154-structured-mim-methods](OPEN-PROBLEMS.md#l-f154-structured-mim-methods): Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
+- [L-F156-multipartite-separable-unit](OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit): Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
+
+## Separate indexing extension: c16-overnight-source-recovery-2026-10-28
+
+Recovered F153 and compared F157.15 canonical questions/directions/gates, including2 borrowed context quantities;6 precise source targets.11 repeated occurrences in F157. Two support-rank targets held after a field-scope counterexample audit. No current-resolution/Lean checks or source-question completion claimed.
+
+[Screen report](../formalization/canonical-width/c16/OVERNIGHT-RESEARCH.md). Added **15 entries**, **6 eligible targets**, **1 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base): Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).
+- [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives): Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.
+- [L-F153-mimsup-computability](OPEN-PROBLEMS.md#l-f153-mimsup-computability): Determine whether computing mimsup is decidable.
+- [L-F153-noninteger-mimsup](OPEN-PROBLEMS.md#l-f153-noninteger-mimsup): Does some finite binary matrix have a noninteger asymptotic induced-matching number mimsup?
+- [L-F153-random-mimsup](OPEN-PROBLEMS.md#l-f153-random-mimsup): Determine mimsup for an n by n matrix with independent Bernoulli-p entries.
+- [L-F153-mimsup-him-functional](OPEN-PROBLEMS.md#l-f153-mimsup-him-functional): Are mimsup and half-induced matching number functionally equivalent on finite binary matrices?
+- [L-F153-mimsup-support-functional](OPEN-PROBLEMS.md#l-f153-mimsup-support-functional): Are mimsup and support rank functionally equivalent on finite binary matrices?
+- [L-F153-strict-mimsup-support](OPEN-PROBLEMS.md#l-f153-strict-mimsup-support): Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?
+- [L-F153-nonprojective-not-prime](OPEN-PROBLEMS.md#l-f153-nonprojective-not-prime): Every non-projective non-bipartite core graph is not prime under the direct graph product.
+- [L-F153-strong-projectivity](OPEN-PROBLEMS.md#l-f153-strong-projectivity): Do the classes of projective and strongly projective graphs coincide?
+- [L-F153-nonprojective-lowerbounds](OPEN-PROBLEMS.md#l-f153-nonprojective-lowerbounds): Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.
+- [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle): Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.
+- [L-F153-multicolor-ramsey-growth](OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth): Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?
+- [L-F153-shannon-capacity-C7](OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7): Determine the Shannon capacity of the seven-cycle C7.
+- [L-F153-matrix-multiplication-exponent](OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent): Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
+
+## Separate indexing extension: c16-parity-cdcl-screen-20261028
+
+Full21-page Beame-Sun SAT2026 screen: four broad/semantic source directions, present-resolution and Lean checks unassessed. Published theorem and pinned development solver do not settle a C16 case. Current cohort402 entries,160 eligible,191 paper records,159 full-text screens,6 completed Lean targets
+
+[Screen report](../formalization/canonical-width/c16/THEORY-LOOP.md). Added **4 entries**, **0 eligible targets**, **1 paper records**, **1 full-text screens** and **0 completed proofs**.
+
+- [L-F158-parity-heuristic-integration](OPEN-PROBLEMS.md#l-f158-parity-heuristic-integration): Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).
+- [L-F158-cnf-specific-parity-branching](OPEN-PROBLEMS.md#l-f158-cnf-specific-parity-branching): Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.
+- [L-F158-semantic-1uip](OPEN-PROBLEMS.md#l-f158-semantic-1uip): Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.
+- [L-F158-parity-clause-minimization](OPEN-PROBLEMS.md#l-f158-parity-clause-minimization): Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).
+
+## Separate indexing extension: c16-algebraic-sources-screen-20261028
+
+Four complete algebraic/parity-method papers: six broad historical directions/formulation gates; no additional precise target or Lean completion. NulLA symmetry requires an invertible group order in the coefficient field. Current-resolution followthrough finds later leads but is not a complete census.
+
+[Screen report](../formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md). Added **6 entries**, **0 eligible targets**, **4 paper records**, **4 full-text screens** and **0 completed proofs**.
+
+- [L-F159-certificate-degree-lower-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-lower-bounds): Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.
+- [L-F159-certificate-degree-upper-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-upper-bounds): Find tighter practical upper bounds on certificate degree for concrete polynomial families.
+- [L-F159-clique-degree-cutters](OPEN-PROBLEMS.md#l-f159-clique-degree-cutters): Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.
+- [L-F159-coloring-degree-growth](OPEN-PROBLEMS.md#l-f159-coloring-degree-growth): Explain which graph structures force higher-degree certificates for3-colorability.
+- [L-F161-proof-producing-cdcl-t](OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t): Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
+- [L-F162-iterative-solver-extensions](OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions): Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
+
+## Separate indexing extension: c16-strategy-sources-screen-20261029
+
+Two complete solver-method papers add sixteen historical broad directions/method requests. Seven gated primary metadata/selected-passage leads retain null question counts; none is called inaccessible merely because full retrieval was not prioritized. No new eligible target or Lean completion.
+
+[Screen report](../formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md). Added **16 entries**, **0 eligible targets**, **9 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F164-filtering-search-guarantees](OPEN-PROBLEMS.md#l-f164-filtering-search-guarantees): Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.
+- [L-F164-side-constraint-applications](OPEN-PROBLEMS.md#l-f164-side-constraint-applications): Develop solver integrations for richer subgraph variants and application side constraints.
+- [L-F164-symmetry-implementation](OPEN-PROBLEMS.md#l-f164-symmetry-implementation): Improve practical input-specific symmetry handling without costly external dependencies.
+- [L-F164-faster-exact-counting](OPEN-PROBLEMS.md#l-f164-faster-exact-counting): Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.
+- [L-F164-approximate-counting](OPEN-PROBLEMS.md#l-f164-approximate-counting): Implement approximate counting for subgraph instances.
+- [L-F164-uniform-sampling](OPEN-PROBLEMS.md#l-f164-uniform-sampling): Find practical uniform sampling methods that avoid full subgraph enumeration.
+- [L-F164-special-pattern-detection](OPEN-PROBLEMS.md#l-f164-special-pattern-detection): Detect easy pattern classes and select specialized algorithms automatically.
+- [L-F164-proof-logging](OPEN-PROBLEMS.md#l-f164-proof-logging): Extend independently checkable proof logging for strong subgraph inference.
+- [L-F164-automatic-configuration](OPEN-PROBLEMS.md#l-f164-automatic-configuration): Choose supplemental graphs and solver configurations per instance.
+- [L-F164-application-benchmarks](OPEN-PROBLEMS.md#l-f164-application-benchmarks): Collect diverse application instances for subgraph-solver benchmarking.
+- [L-F165-single-clause-inprocessing](OPEN-PROBLEMS.md#l-f165-single-clause-inprocessing): Combine incremental inprocessing efficiently with external clauses added individually during search.
+- [L-F165-external-proof-production](OPEN-PROBLEMS.md#l-f165-external-proof-production): Extend and evaluate proof production for external propagators and different external-clause kinds.
+- [L-F165-restart-backtrack-control](OPEN-PROBLEMS.md#l-f165-restart-backtrack-control): Investigate external control of restarts and conflict backtracking.
+- [L-F165-solver-state-access](OPEN-PROBLEMS.md#l-f165-solver-state-access): Expose useful solver statistics and variable or clause scores through the interface.
+- [L-F165-further-applications](OPEN-PROBLEMS.md#l-f165-further-applications): Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
+- [L-F165-cvc5-tuning](OPEN-PROBLEMS.md#l-f165-cvc5-tuning): Tune cvc5 internals for the IPASIR-UP integration.
+
+## Separate indexing extension: c16-cunningham-membership-method-lead-20261030
+
+One publisher-indexed abstract/author-metadata membership-method lead. Full text and source questions remain unassessed; no canonical question or Lean result added.
+
+[Screen report](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md). Added **0 entries**, **0 eligible targets**, **1 paper records**, **0 full-text screens** and **0 completed proofs**.
+
+
+## Separate indexing extension: c16-push-relabel-source-screening-20261030
+
+Three full primary texts screened and one later proceedings metadata record. Two broad TR13-02 directions are inventoried without current-resolution or Lean claims. TR13-01 adaptation is addressed in TR13-02 and is not added as an open target. Frank–Miklós Section6.2 question is answered within its own paper.
+
+[Screen report](../formalization/canonical-width/c16/two-basis-results/literature/canonical-source-accounting.json). Added **2 entries**, **0 eligible targets**, **4 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+- [L-F176-avoid-smallest-tight-sets](OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets): Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
+- [L-F176-simpler-submodular-flow](OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow): Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
+
+## Separate indexing extension: c16-owner-lift-source-screening-20261030
+
+Two complete primary screens add one specific M2 square-minimization algorithm question and three broad directions. Two targeted-only follow-ups have null question counts. Weighted M-convex square minimization is known solvable according to later primary evidence; no new resolution or Lean completion is claimed.
+
+[Screen report](../literature/owner-lift-20261030/ACCOUNTING.md). Added **4 entries**, **1 eligible targets**, **4 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F178-m2-square-strong-polynomial](OPEN-PROBLEMS.md#l-f178-m2-square-strong-polynomial): Find a strongly polynomial algorithm minimizing the ordinary sum of squares over a nonempty M2-convex set.
+- [L-F178-box-tdi-algorithms](OPEN-PROBLEMS.md#l-f178-box-tdi-algorithms): Develop strongly polynomial combinatorial algorithms from discrete box-TDI min-max formulas.
+- [L-F178-inverse-optimization-algorithms](OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms): Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.
+- [L-F179-polymatroid-norm-constraints](OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints): Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.
+
+Current cohort: **430 canonical entries,161 eligible targets,213 paper records,170 full-text screens**; **6/161 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **141** records, with actual access levels retained.

@@ -1,0 +1,81 @@
+{
+  "status": "PASS_TINY_EXACT_SOPLEX_PRIMAL_FARKAS_CONTROLS",
+  "checks": [
+    {
+      "name": "fraction-feasible",
+      "values": {
+        "x": "1299/1001",
+        "y": "1/13"
+      }
+    },
+    {
+      "name": "free-negative-feasible",
+      "values": {
+        "x": "-145/231",
+        "y": "3/11"
+      }
+    },
+    {
+      "name": "fraction-infeasible",
+      "multipliers": {
+        "lo": "3/2",
+        "hi": "-3/2"
+      },
+      "exact_contradiction": "1/2"
+    },
+    {
+      "name": "tiny-gap-infeasible",
+      "multipliers": {
+        "lo": "3",
+        "hi": "-3"
+      },
+      "exact_contradiction": "1/9007199254740991"
+    }
+  ],
+  "corruptions_rejected": [
+    "unknown-name",
+    "duplicate-name",
+    "decimal-value",
+    "nan-value",
+    "missing-header",
+    "missing-zero-terminator",
+    "tiny-primal-error",
+    "reversed-farkas-sign",
+    "dropped-farkas-row"
+  ],
+  "fraction_input_grammar_verified": true,
+  "cli_writefile_exact_roundtrip": false,
+  "cli_writefile_failure": "Rounded decimal real-LP export; must not substitute for rational source input",
+  "priority": 19,
+  "source_model_solved": false,
+  "parser_sha256": "b32214d2646d5211fb5831cdf0110e9ff83a1ae07145d700ecb54782e8ec26aa",
+  "input_output_sha256": {
+    "acquire.log": "a140185f670d8eb6132fb5eddaa047ccf29ca61683b5afb82db254c329383a47",
+    "fraction-feasible.bas": "134fcac0091649b3045da5320ff07f5f38eff210f6283c863105a99f88458554",
+    "fraction-feasible.dual": "691d5b41dcd413d521f171a674e610a2b09d14fa5bb8556bc38b937f35c1f08a",
+    "fraction-feasible.log": "48afb35ed337f4063497cd1bddd8a59d98fe802694ab880850aa41d088d3881c",
+    "fraction-feasible.lp": "48cc9b9956156e4f6269381444f656bffcdcd34769728ed03c5e7ad648f6c58b",
+    "fraction-feasible.primal": "1fe794e5c457551405e34df716413053b6ce7e8ae4be69dca145c8f3c1c35ad7",
+    "fraction-feasible.roundtrip.lp": "066ba15689148646911b8b92792d9ca2eff5c7442b351e69d0b8ac7572791ed4",
+    "fraction-infeasible.bas": "966ffb902c9bfde465e8408c837f9875c73a78c93073d9f874fa0f5a003a1744",
+    "fraction-infeasible.dual": "b615d4f42b3b03864c3f642f3eb389671b7ba84c6674be2427764cd62e13b6b2",
+    "fraction-infeasible.log": "5de2c2f1f9f1184e5b5a5dfb6a6cd6b6d2f26ef96c15159d760d9b5615521468",
+    "fraction-infeasible.lp": "c60abbae95cece676b58aa73d50252c2b3611429314e325d273e3ae10105c362",
+    "fraction-infeasible.primal": "9d3e40416e7fa0fd13e91d345dddd78b8873df8074ed04829790bfa7f95042c5",
+    "fraction-infeasible.roundtrip.lp": "a70ed5fa25c7cbad107383daba0e523bee40cd08e4e7830ec2ea43ab417b08be",
+    "free-negative-feasible.bas": "b7900e549ff68401272626c4cd634c5d8c4e85ea90cbb55e1eae6043a40e09a5",
+    "free-negative-feasible.dual": "691d5b41dcd413d521f171a674e610a2b09d14fa5bb8556bc38b937f35c1f08a",
+    "free-negative-feasible.log": "861d2a08b3fe33b9a8e5c07e8083c23d2d133c3785a274d28bb10c106ecfc704",
+    "free-negative-feasible.lp": "c72fe75fcce61490493a87b97a1e3f30ac1e3e848c2b1025283de91731223418",
+    "free-negative-feasible.primal": "d382f6dee5c1858c622362e72d8cf0c368b6268ae02aa7f40565acbddf5edbd9",
+    "free-negative-feasible.roundtrip.lp": "6d8567850d0b718884f611cbf53d0bde317c9b908d9dddaa529a70e9056e24a2",
+    "tiny-gap-infeasible.bas": "966ffb902c9bfde465e8408c837f9875c73a78c93073d9f874fa0f5a003a1744",
+    "tiny-gap-infeasible.dual": "8c4199ed566c8f8e59f46fb3acdd2974cb7267f6400e04a1edd3c508519226b0",
+    "tiny-gap-infeasible.log": "fe2dd35a23a4eb8a0546e4f410803d9f09c8968fc073ea9be929470404b00780",
+    "tiny-gap-infeasible.lp": "ec041d5af5e897ac6ece1f2c3a5f2f9f14bd8d398212d74b0da8ed7c7d34a92f",
+    "tiny-gap-infeasible.primal": "9d3e40416e7fa0fd13e91d345dddd78b8873df8074ed04829790bfa7f95042c5",
+    "tiny-gap-infeasible.roundtrip.lp": "e38d8cb389b1ba1c1810c9859dc5c565256c087aa9048ef5f90c40763c69c2cb",
+    "tiny-independent.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tiny-run.log": "c32b9f3e730401b2b2ae0c40b2e98f403c1be8347c4b0791398e7209b0763b46"
+  }
+}

@@ -1,0 +1,182 @@
+fraction-feasible 0 s (boost.org)
+  GMP 6.3.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+  MPFR 4.2.2           GNU Multiple Precision Floating-Point Reliable Library (mpfr.org)
+  ZLIB 1.2.12          General Purpose Compression Library by J. Gailly and M. Adler (zlib.net)
+
+int:simplifier = 0
+int:syncmode = 1
+int:readmode = 1
+int:solvemode = 2
+int:checkmode = 2
+real:feastol = 0.00000000e+00
+real:opttol = 0.00000000e+00
+real:timelimit = 1.50000000e+01
+
+Reading (rational) LP file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/fraction-feasible.lp> . . .
+Written LP to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/fraction-feasible.roundtrip.lp>.
+
+Reading took 0.00 seconds.
+
+LP has 2 rows 2 columns and 3 nonzeros.
+
+Initial floating-point solve . . .
+Equilibrium scaling LP
+
+type |   time |   iters | facts |    shift | viol sum | viol num | obj value 
+  L  |0.0     |0        | 1     | 0.00e+00 | 9.86e-01 | 2        | 0.00000000e+00
+  L  |0.0     |2        | 2     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+
+Store basis as old basis (from solver)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 59/2080663027845169152, ofm = 1e-17
+Max. reduced cost violation = 0, ofm = 1e0
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Tolerances reached.
+Solved to optimality.
+
+SoPlex status       : problem is solved [optimal]
+Solving time (sec)  : 0.00
+Iterations          : 2
+Objective value     : 0.00000000e+00
+
+Written basis information to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/fraction-feasible.bas>.
+
+
+fraction-infeasible 0 lvemode = 2
+int:checkmode = 2
+real:feastol = 0.00000000e+00
+real:opttol = 0.00000000e+00
+real:timelimit = 1.50000000e+01
+
+Reading (rational) LP file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/fraction-infeasible.lp> . . .
+Written LP to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/fraction-infeasible.roundtrip.lp>.
+
+Reading took 0.00 seconds.
+
+LP has 2 rows 1 columns and 2 nonzeros.
+
+Initial floating-point solve . . .
+Equilibrium scaling LP
+
+type |   time |   iters | facts |    shift | viol sum | viol num | obj value 
+  L  |0.0     |0        | 1     | 0.00e+00 | 6.67e-01 | 1        | 0.00000000e+00
+  L  |0.0     |1        | 1     | 0.00e+00 | 3.33e-01 | 1        | 0.00000000e+00
+
+Store basis as old basis (from solver)
+Floating-point infeasible.
+Setting up LP to test for feasibility.
+Initial floating-point solve . . .
+
+  L  |0.0     |0        | 1     | 0.00e+00 | 3.33e-01 | 1        | -1.00000000e+00
+  L  |0.0     |1        | 2     | 0.00e+00 | 0.00e+00 | 0        | -5.00000000e-01
+
+Store basis as old basis (from solver - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 1/54043195528445952, ofm = 1e-16
+Max. reduced cost violation = 0, ofm = 1e0
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Tolerances reached.
+Primal infeasible.  Dual Farkas ray available.
+
+SoPlex status       : problem is solved [infeasible]
+Solving time (sec)  : 0.00
+Iterations          : 2
+Objective value     : 1.00000000e+100
+
+Written basis information to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/fraction-infeasible.bas>.
+
+
+tiny-gap-infeasible 0  - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 3002399751580331/162259276829213345377179500806144, ofm = 1e-17
+Max. reduced cost violation = 0, ofm = 1e0
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Reconstructed solution primal infeasible (4).
+Refined floating-point solve . . .
+
+  L  |0.0     |0        | 0     | 0.00e+00 | 2.67e+00 | 1        | 0.00000000e+00
+  L  |0.0     |1        | 1     | 0.00e+00 | 0.00e+00 | 0        | 5.76460752e+17
+
+Store basis as old basis (from solver - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 5/973555660975280180349468061728768, ofm = 1e-32
+Max. reduced cost violation = 0, ofm = 1e0
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Reconstructed solution primal infeasible (4).
+Refined floating-point solve . . .
+
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | -1.29807421e+33
+  L  |0.0     |0        | 0     | 0.00e+00 | 0.00e+00 | 0        | -1.29807421e+33
+
+Store basis as old basis (from solver - testing feasibility)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 7/17538019647970835018444217992595396235871190515712, ofm = 1e-49
+Max. reduced cost violation = 0, ofm = 1e0
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Tolerances reached.
+Primal infeasible.  Dual Farkas ray available.
+
+SoPlex status       : problem is solved [infeasible]
+Solving time (sec)  : 0.00
+Iterations          : 2
+Objective value     : 1.00000000e+100
+
+Written basis information to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/tiny-gap-infeasible.bas>.
+
+
+free-negative-feasible 0 )
+  GMP 6.3.0            GNU Multiple Precision Arithmetic Library developed by T. Granlund (gmplib.org)
+  MPFR 4.2.2           GNU Multiple Precision Floating-Point Reliable Library (mpfr.org)
+  ZLIB 1.2.12          General Purpose Compression Library by J. Gailly and M. Adler (zlib.net)
+
+int:simplifier = 0
+int:syncmode = 1
+int:readmode = 1
+int:solvemode = 2
+int:checkmode = 2
+real:feastol = 0.00000000e+00
+real:opttol = 0.00000000e+00
+real:timelimit = 1.50000000e+01
+
+Reading (rational) LP file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/free-negative-feasible.lp> . . .
+Written LP to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/free-negative-feasible.roundtrip.lp>.
+
+Reading took 0.00 seconds.
+
+LP has 2 rows 2 columns and 3 nonzeros.
+
+Initial floating-point solve . . .
+Equilibrium scaling LP
+
+type |   time |   iters | facts |    shift | viol sum | viol num | obj value 
+  L  |0.0     |0        | 1     | 0.00e+00 | 9.39e-01 | 2        | 0.00000000e+00
+  L  |0.0     |2        | 2     | 0.00e+00 | 0.00e+00 | 0        | 0.00000000e+00
+
+Store basis as old basis (from solver)
+Floating-point optimal.
+Max. bound violation = 0, ofm = 1e0
+Max. row violation = 5/94575592174780416, ofm = 1e-16
+Max. reduced cost violation = 0, ofm = 1e0
+Max. dual violation = 0, ofm = 1e0
+Performing rational reconstruction . . .
+Tolerances reached.
+Solved to optimality.
+
+SoPlex status       : problem is solved [optimal]
+Solving time (sec)  : 0.00
+Iterations          : 2
+Objective value     : 0.00000000e+00
+
+Written basis information to file </private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/soplex-setup/free-negative-feasible.bas>.
+
+

@@ -1,0 +1,47 @@
+{
+  "status": "PASS_EXACT_VERSIONED_PUSH_RELABEL_TINY_ENDPOINTS",
+  "producer": "exact_matroid_push_relabel_early.py",
+  "producer_sha256": "548cc1d73593ebd5ccf8a6620a4e350a5d328159c57be4b1087d68c0ca7d7b4f",
+  "consumer_sha256": "10a0935ab83c63ec87b545904405d38ff69f615d41deaeb980bf12c3c871b0bb",
+  "endpoint_checker_sha256": "3ac5cf794ce390c0baf7b30cfa044f61322e29d2105094a43e415f88498dedb9",
+  "parent_bank_sha256": "3e21a27d414a36cfd96649d18f779d0d4062e7e763a8c1cf2ec77cd1215c9f68",
+  "parent_receipt_sha256": "3df28beb94d8167f781cd9b83d95c1a2ee5deb53c87f8d761fd19c5a328c4187",
+  "bank_sha256": "9b6f155c42bc8690e527d32691adfde582669b1de0218be0cd5255a26dd87bef",
+  "cases": 2374,
+  "outcomes": {
+    "EXACT_BASE_MIXTURE": 1304,
+    "EXACT_RANK_VIOLATION": 1069,
+    "BOUNDED_PUSH_RELABEL_INCONCLUSIVE": 1
+  },
+  "exhaustive_subset_checks": 461318,
+  "physical_basis_records_checked": 3775,
+  "total_steps": 11658,
+  "maximum_case_steps": 22,
+  "cache_algebra_controls": {
+    "exchanges": 720,
+    "physical_row_identities": 2124,
+    "ground_coordinate_identities": 5388
+  },
+  "corrupt_certificates_rejected": [
+    "negative-weight",
+    "wrong-achieved",
+    "wrong-denominator",
+    "dependent-basis",
+    "wrong-cut-rank",
+    "wrong-cut-gap",
+    "empty-cut"
+  ],
+  "invalid_inputs_rejected": [
+    "negative-target",
+    "wrong-total",
+    "negative-vector",
+    "dependent-initial",
+    "negative-initial-weight"
+  ],
+  "cap_exit_controls": 3,
+  "duplicate_warm_basis_lcm": 30,
+  "maximum_defect_required": false,
+  "source_C16_answered": false,
+  "elapsed_seconds": 1.5643660420319065,
+  "scope": "Finite exhaustive tiny endpoint checks plus independent cache algebra, with producer invariants enabled. Any positive literal rank gap suffices; maximum-defect optimality is neither required nor claimed. No physical large-instance or global termination claim."
+}

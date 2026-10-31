@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/verify_two_sided_full_basis_oracle.py", line 634, in <module>
+    main()
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/verify_two_sided_full_basis_oracle.py", line 572, in main
+    row_controls = row_translation_controls(producer, quads, args.point)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/verify_two_sided_full_basis_oracle.py", line 389, in row_translation_controls
+    rejected.append(expect_rejection(lambda: producer.compile_row(large, 0, xx, zz), 'owner coefficient overflow'))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/verify_two_sided_full_basis_oracle.py", line 423, in expect_rejection
+    call()
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/verify_two_sided_full_basis_oracle.py", line 389, in <lambda>
+    rejected.append(expect_rejection(lambda: producer.compile_row(large, 0, xx, zz), 'owner coefficient overflow'))
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two_sided_full_basis_oracle.py", line 146, in compile_row
+    raise OverflowError('owner row exceeds signed int64 range')
+OverflowError: owner row exceeds signed int64 range

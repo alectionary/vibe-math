@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 373 entries (192 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated October 30, 2026. Low-confidence planning priors for all 430 entries. [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 26, 2026. Low-confidence planning priors for all 373 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 45 | 45 |
+| Unestimated / scope gate | 56 | 56 |
 
 ### 2026-Geraci-O01
 
@@ -4932,13 +4932,15 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-A source-stated open target is not a present-resolution or difficulty assessment.
+The source two-point gap remains open. Corrected finite exclusions are partial progress and do not estimate the time needed for unrestricted width or its Lean proof.
 
-First milestone: Verify the fixed source model, current resolution and formalization coverage.
+First milestone: Follow-up: implement and independently validate the16-pattern two-X/two-Z full-basis support oracle, retaining rank in both sectors while relaxing unanchored mutual pairings. Then perform one bounded projected separation/membership gate at the latest exact moment point. Reuse the verified772-column full-span seed only for the separate775 projection, without treating it as target membership. Accept exact certificates; cap inconclusive searches.
 
-Gate: Verify current status and exact source construction before estimating effort.
+Progress: Exact signed compatible-basis pricing and counting identities yield54 accepted partner inequalities, including coefficient64 forms. Refreshing an existing five-event method adds234 exact integer-form rows, and the combined model contains308 rank rows. The latest global relaxation point15 is still exactly feasible, including all older conditional families and every Boolean triple. At witness12, an exact45-basis unconditional mixture and28 individual conditional rank-law certificates establish whole-family feasibility barriers;12 conditional cuts and5 unresolved anchors are separately recorded. Both four-X and both two-X/two-Z count-only extensions have exact feasible solutions at their recorded points. The full775 auxiliary hull has exact affine dimension771:14 apparent saved-sample identities have physical counterexamples, and772 verified columns span the full hull. Latest-point exchange, small phase-I and direct full-selector trials remain inconclusive. A written follow-up derives two-sided full-basis support over16 anchor patterns; implementation and unanchored mutual pairing remain open. Source width16/18, cover405, physical88/128, zero full source anchors excluded and Lean status are unchanged. No finishing-time bound or general source-search speedup is established. Cunningham1984 is indexed as F173, with fulltext acquisition requested in issue63 and no complexity transfer claimed. [Checked artifact](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md).
 
-Basis: New primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+Gate: Require a complete anchored-case obstruction or an actual source128-pair candidate before extrapolating finishing time.
+
+Basis: Current source width is16 or18, physical partial frame88. Historical incomplete partner-domain claims remain retracted. Later complete-domain checks exclude all116 twelve-monomial classes; they do not cover unrestricted smaller occupancies. Exact pool completeness, tensor bridges and >=3 thin families per sector are preserved. Three one-sector triple supports and the new joint034/034 case are excluded. A proved optimal12-orbit X-basis hitting cover gives12 normalized frame-anchor cases, all still open. Aggregate residue descent and the tested asymptotic-rank/reciprocal-parity shortcuts do not decide the source problem. No Lean completion or justified discovery-time estimate. The later paired-basis and nonlinear criteria now prove a405-case sufficient selected-pair cover; every full completion remains open. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 
 ### L-F91-c20-unrestricted-width
 
@@ -5796,13 +5798,13 @@ Characterize the mixed graphs that yield generically identifiable linear structu
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Section 8 of Drton, Foygel, and Sullivant leaves the generic characterization open after they settle the global case. Foygel, Draisma, and Drton restate that the problem remains open.
+The statement is mathematical. The model class and the success criterion still have to be fixed before it is a theorem target.
 
 First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
 
 Gate: Specify the mixed-graph class, the directed and bidirected edge sets, the generic parameter domain, and the map from edge coefficients to the covariance.
 
-Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f145-generic-mixed-graph).
 
 ### L-F146-half-trek-gap
 
@@ -5812,13 +5814,13 @@ Find an infinite family of mixed graphs that is rationally identifiable but not 
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Foygel, Draisma, and Drton ask for an infinite family in the gap between their necessary and sufficient conditions.
+The statement is mathematical. The model class and the success criterion still have to be fixed before it is a theorem target.
 
 First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
 
 Gate: Specify rational identifiability, the half-trek criterion, and an infinite graph family separating them.
 
-Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f146-half-trek-gap).
 
 ### L-F147-polytime-ancestral
 
@@ -5828,10 +5830,874 @@ Determine whether generic identifiability via ancestral decomposition can be dec
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Drton and Weihs leave the polynomial-time status of the ancestral search unresolved.
+The statement is mathematical. The model class and the success criterion still have to be fixed before it is a theorem target.
 
 First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
 
 Gate: Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.
 
-Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f147-polytime-ancestral).
+
+### L-F152-binary-rank-multiplicativity
+
+Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Freeze ordinary-arithmetic0/1 factorization; distinguish it from rank over F2.
+
+Gate: Freeze ordinary-arithmetic0/1 factorization; distinguish it from rank over F2.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-binary-rank-multiplicativity).
+
+### L-F152-domino-asymptotic
+
+Determine the exact asymptotic fractional biclique partition number of the Domino matrix.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Fix the displayed Domino matrix and the limit over all positive Kronecker powers.
+
+Gate: Fix the displayed Domino matrix and the limit over all positive Kronecker powers.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-domino-asymptotic).
+
+### L-F152-strict-cover-asymptotic-gap
+
+Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Prove equality for all binary matrices or exhibit a strictness witness with exact bounds.
+
+Gate: Prove equality for all binary matrices or exhibit a strictness witness with exact bounds.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-strict-cover-asymptotic-gap).
+
+### L-F152-domino-more-powers
+
+Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Choose a finite computational target, exact certificate format and resource budget.
+
+Gate: Choose a finite computational target, exact certificate format and resource budget.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-domino-more-powers).
+
+### L-F152-domino-rational-interpretation
+
+Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: First certify the exact rational optimum; specify what interpretation would constitute an answer.
+
+Gate: First certify the exact rational optimum; specify what interpretation would constitute an answer.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f152-domino-rational-interpretation).
+
+### L-F154-structured-mim-methods
+
+Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Specify a graph class and a correctness, bound-strength or runtime guarantee.
+
+Gate: Specify a graph class and a correctness, bound-strength or runtime guarantee.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f154-structured-mim-methods).
+
+### L-F156-multipartite-separable-unit
+
+Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; this review recommends work on the existing C16 target rather than starting this different problem.
+
+First milestone: Fix n>=3, all factor dimensions>=2, unit vectors, both signs and the cone generated by tensor products of positive semidefinite operators.
+
+Gate: Fix n>=3, all factor dimensions>=2, unit vectors, both signs and the cone generated by tensor products of positive semidefinite operators.
+
+Basis: Newly screened source question/direction, not a claim of current resolution or formalization readiness. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit).
+
+### L-F153-cutwidth-base
+
+Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Fix H, input ordering width k, algorithm model, and SETH quantifiers.
+
+Gate: Fix H, input ordering width k, algorithm model, and SETH quantifiers.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-cutwidth-base).
+
+### L-F153-fast-representatives
+
+Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Specify input/output representation and the desired uniform runtime.
+
+Gate: Specify input/output representation and the desired uniform runtime.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-fast-representatives).
+
+### L-F153-mimsup-computability
+
+Determine whether computing mimsup is decidable.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Specify exact real output versus threshold decision or approximation with an accuracy parameter.
+
+Gate: Specify exact real output versus threshold decision or approximation with an accuracy parameter.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-mimsup-computability).
+
+### L-F153-noninteger-mimsup
+
+Does some finite binary matrix have a noninteger asymptotic induced-matching number mimsup?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Fix the tensor-product definition and exhibit a matrix with certified noninteger value, or prove integrality.
+
+Gate: Fix the tensor-product definition and exhibit a matrix with certified noninteger value, or prove integrality.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-noninteger-mimsup).
+
+### L-F153-random-mimsup
+
+Determine mimsup for an n by n matrix with independent Bernoulli-p entries.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Fix p versus n, the asymptotic regime, success probability and desired precision.
+
+Gate: Fix p versus n, the asymptotic regime, success probability and desired precision.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-random-mimsup).
+
+### L-F153-mimsup-him-functional
+
+Are mimsup and half-induced matching number functionally equivalent on finite binary matrices?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Use the source definition: mutual bounds by functions uniform over finite binary matrices.
+
+Gate: Use the source definition: mutual bounds by functions uniform over finite binary matrices.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-mimsup-him-functional).
+
+### L-F153-mimsup-support-functional
+
+Are mimsup and support rank functionally equivalent on finite binary matrices?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
+
+Gate: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-mimsup-support-functional).
+
+### L-F153-strict-mimsup-support
+
+Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
+
+Gate: Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-strict-mimsup-support).
+
+### L-F153-nonprojective-not-prime
+
+Every non-projective non-bipartite core graph is not prime under the direct graph product.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Fix finite graph, core, projectivity and nontrivial direct-product factorization definitions.
+
+Gate: Fix finite graph, core, projectivity and nontrivial direct-product factorization definitions.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-nonprojective-not-prime).
+
+### L-F153-strong-projectivity
+
+Do the classes of projective and strongly projective graphs coincide?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Retrieve the omitted technical definition of strong projectivity from the primary cited source.
+
+Gate: Retrieve the omitted technical definition of strong projectivity from the primary cited source.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-strong-projectivity).
+
+### L-F153-nonprojective-lowerbounds
+
+Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Specify graph class, parameter and runtime lower-bound target; some conditional extension is already described.
+
+Gate: Specify graph class, parameter and runtime lower-bound target; some conditional extension is already described.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-nonprojective-lowerbounds).
+
+### L-F153-fine-grained-courcelle
+
+Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Specify logic fragment, decomposition parameter and runtime guarantee.
+
+Gate: Specify logic fragment, decomposition parameter and runtime guarantee.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle).
+
+### L-F153-multicolor-ramsey-growth
+
+Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Use the diagonal ell-color Ramsey number; borrowed classic question, not newly attributed to these authors.
+
+Gate: Use the diagonal ell-color Ramsey number; borrowed classic question, not newly attributed to these authors.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth).
+
+### L-F153-shannon-capacity-C7
+
+Determine the Shannon capacity of the seven-cycle C7.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Use the source Section7.3 strong-graph-product definition. Borrowed classic target; original cited full text not screened.
+
+Gate: Use the source Section7.3 strong-graph-product definition. Borrowed classic target; original cited full text not screened.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7).
+
+### L-F153-matrix-multiplication-exponent
+
+Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; ongoing work remains on the existing C16 target.
+
+First milestone: Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy.
+
+Gate: Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy.
+
+Basis: Version-specific explicit source-question accounting; not a present-status or new-research claim. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent).
+
+### L-F158-parity-heuristic-integration
+
+Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the heuristic variant, input family, resource measure and comparison baseline.
+
+Gate: Specify the heuristic variant, input family, resource measure and comparison baseline.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-parity-heuristic-integration).
+
+### L-F158-cnf-specific-parity-branching
+
+Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas.
+
+Gate: Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-cnf-specific-parity-branching).
+
+### L-F158-semantic-1uip
+
+Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting.
+
+Gate: Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-semantic-1uip).
+
+### L-F158-parity-clause-minimization
+
+Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify classical minimization semantics and the required faithfulness of the parity extension.
+
+Gate: Specify classical minimization semantics and the required faithfulness of the parity extension.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f158-parity-clause-minimization).
+
+### L-F159-certificate-degree-lower-bounds
+
+Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the polynomial encoding, coefficient field, family and asymptotic degree measure.
+
+Gate: Specify the polynomial encoding, coefficient field, family and asymptotic degree measure.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-certificate-degree-lower-bounds).
+
+### L-F159-certificate-degree-upper-bounds
+
+Find tighter practical upper bounds on certificate degree for concrete polynomial families.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the family and field; a broad request for better bounds is not a single theorem.
+
+Gate: Specify the family and field; a broad request for better bounds is not a single theorem.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-certificate-degree-upper-bounds).
+
+### L-F159-clique-degree-cutters
+
+Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: The phrase may decrease does not specify a universal strict statement; the paper itself gives a non-decreasing3-coloring example. Fix the intended family, field and quantifiers first.
+
+Gate: The phrase may decrease does not specify a universal strict statement; the paper itself gives a non-decreasing3-coloring example. Fix the intended family, field and quantifiers first.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-clique-degree-cutters).
+
+### L-F159-coloring-degree-growth
+
+Explain which graph structures force higher-degree certificates for3-colorability.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify a structural class and encoding; the historical open direction is not a complete current-status census.
+
+Gate: Specify a structural class and encoding; the historical open direction is not a complete current-status census.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f159-coloring-degree-growth).
+
+### L-F161-proof-producing-cdcl-t
+
+Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Specify the theory, proof rules, input family and correctness/comparison objective.
+
+Gate: Specify the theory, proof rules, input family and correctness/comparison objective.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t).
+
+### L-F162-iterative-solver-extensions
+
+Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Retained for source accounting; active research stays on the existing C16 target.
+
+First milestone: Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open.
+
+Gate: Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open.
+
+Basis: Exact source-direction accounting; current-resolution and Lean transfer have not been assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions).
+
+### L-F164-filtering-search-guarantees
+
+Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-filtering-search-guarantees).
+
+### L-F164-side-constraint-applications
+
+Develop solver integrations for richer subgraph variants and application side constraints.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-side-constraint-applications).
+
+### L-F164-symmetry-implementation
+
+Improve practical input-specific symmetry handling without costly external dependencies.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-symmetry-implementation).
+
+### L-F164-faster-exact-counting
+
+Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-faster-exact-counting).
+
+### L-F164-approximate-counting
+
+Implement approximate counting for subgraph instances.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-approximate-counting).
+
+### L-F164-uniform-sampling
+
+Find practical uniform sampling methods that avoid full subgraph enumeration.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-uniform-sampling).
+
+### L-F164-special-pattern-detection
+
+Detect easy pattern classes and select specialized algorithms automatically.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-special-pattern-detection).
+
+### L-F164-proof-logging
+
+Extend independently checkable proof logging for strong subgraph inference.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Historical broad direction; modern Glasgow proof support is inspected, but no claim that every strong inference or proof feature is settled.
+
+Gate: Historical broad direction; modern Glasgow proof support is inspected, but no claim that every strong inference or proof feature is settled.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-proof-logging).
+
+### L-F164-automatic-configuration
+
+Choose supplemental graphs and solver configurations per instance.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-automatic-configuration).
+
+### L-F164-application-benchmarks
+
+Collect diverse application instances for subgraph-solver benchmarking.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f164-application-benchmarks).
+
+### L-F165-single-clause-inprocessing
+
+Combine incremental inprocessing efficiently with external clauses added individually during search.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-single-clause-inprocessing).
+
+### L-F165-external-proof-production
+
+Extend and evaluate proof production for external propagators and different external-clause kinds.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Historical interface/proof direction, related to L-F161-proof-producing-cdcl-t; not asserted to remain wholly unresolved in2026.
+
+Gate: Historical interface/proof direction, related to L-F161-proof-producing-cdcl-t; not asserted to remain wholly unresolved in2026.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-external-proof-production).
+
+### L-F165-restart-backtrack-control
+
+Investigate external control of restarts and conflict backtracking.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-restart-backtrack-control).
+
+### L-F165-solver-state-access
+
+Expose useful solver statistics and variable or clause scores through the interface.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-solver-state-access).
+
+### L-F165-further-applications
+
+Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-further-applications).
+
+### L-F165-cvc5-tuning
+
+Tune cvc5 internals for the IPASIR-UP integration.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active mathematical research remains on the existing C16 width target.
+
+First milestone: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Gate: Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed.
+
+Basis: Dated author-direction extraction; no current-resolution or Lean-discovery assessment. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f165-cvc5-tuning).
+
+### L-F176-avoid-smallest-tight-sets
+
+Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on the existing C16 width target.
+
+First milestone: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Gate: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Basis: Dated full-text author-direction extraction only; present-day resolution and Lean-discovery searches not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets).
+
+### L-F176-simpler-submodular-flow
+
+Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on the existing C16 width target.
+
+First milestone: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Gate: Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target.
+
+Basis: Dated full-text author-direction extraction only; present-day resolution and Lean-discovery searches not assessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow).
+
+### L-F178-m2-square-strong-polynomial
+
+Find a strongly polynomial algorithm minimizing the ordinary sum of squares over a nonempty M2-convex set.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: The source fixes the objective and the integral intersection of two base-polyhedra. Before implementation, make the supermodular evaluation-oracle and arithmetic model explicit; check later resolution and Lean evidence.
+
+Gate: The source fixes the objective and the integral intersection of two base-polyhedra. Before implementation, make the supermodular evaluation-oracle and arithmetic model explicit; check later resolution and Lean evidence.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f178-m2-square-strong-polynomial).
+
+### L-F178-box-tdi-algorithms
+
+Develop strongly polynomial combinatorial algorithms from discrete box-TDI min-max formulas.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: Choose a polyhedral subclass, objective and oracle/input model; the paper supplies a general algorithm-development program rather than one fixed theorem.
+
+Gate: Choose a polyhedral subclass, objective and oracle/input model; the paper supplies a general algorithm-development program rather than one fixed theorem.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f178-box-tdi-algorithms).
+
+### L-F178-inverse-optimization-algorithms
+
+Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: Fix an inverse problem and representation, including bounded cost vectors, deviation from a box or linear deviation costs; audit prior algorithms before selecting a claim.
+
+Gate: Fix an inverse problem and representation, including bounded cost vectors, deviation from a box or linear deviation costs; audit prior algorithms before selecting a claim.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms).
+
+### L-F179-polymatroid-norm-constraints
+
+Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+Source accounting only; active research remains on C16.
+
+First milestone: Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question.
+
+Gate: Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question.
+
+Basis: Dated full-text source-question accounting; no current-resolution, Lean-discovery or effort assessment claimed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints).

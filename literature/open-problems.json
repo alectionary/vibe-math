@@ -12300,7 +12300,317 @@
     "current_resolution_status": "not_independently_established",
     "search_family": "truncated_distance12_source_questions",
     "added_on": "2026-10-25",
-    "lean_discovery_note": "Full-document question harvesting only; no current-resolution, exact-target Lean discovery or difficulty assessment."
+    "lean_discovery_note": "2026-10-27 takeover audited physical pool coordinates and repaired a missing-partner bug. Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18. The four-hour continuation independently reimplements the complete weight-through-17 physical enumeration (47,708,679 nodes, all68 roots,45 weight16 orbits), checks the sector exchange and mixed-Pauli bridge, and retains the unresolved16-or18 width. No Lean certificate; exact-target Lean discovery remains unassessed. All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate. Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate. The structural comparison excludes quarter-turn invariant full frames by checked DRAT certificates and certifies an exact rational feasible point of the basic degree-two cyclic moment SDP. That particular relaxation cannot exclude128. Local Hall tests remove5327 of34116 conditional phase choices, with no newly excluded whole holdout row or established global speedup. Unrestricted width remains16 or18, best physical partial frame88, no Lean completion. Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion. Exact integer certificates prove that every full original minimum-pool frame uses at least three thin families in each sector, and exclude supports{0,1,2},{0,1,4},{1,2,4} independently in either sector. A1680-point enlargement preserves the original residues, exact thin orbits, projective directions, thin modules and transpose exchange yet admits a full frame, refuting aggregate descent. Full width remains16 or18; best physical partial frame88; no Lean completion or demonstrated global speedup.",
+    "research_progress": [
+      {
+        "title": "88-pair width-16 partial canonical frame; f still 16 or 18",
+        "report": "formalization/canonical-width/c16/INVESTIGATION.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "Rebuilt checks have weight at most 9 and rank 480. An explicit 88-pair pure CSS frame has weight 16, zero syndromes and Gram identity. An earlier 84-pair frame does not extend inside the weight-16 pools. The unrestricted width remains unresolved, including for mixed Paulis."
+      },
+      {
+        "title": "No width-16 CSS frame contains all 16 seed-4 X monomials",
+        "report": "formalization/canonical-width/c16/INVESTIGATION.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "Every one of the 43046721 seed-4 partner assignments leaves the orthogonal X pool of rank at most 109, short of the 112 dimensions a frame containing those monomials would need. This does not decide f."
+      },
+      {
+        "title": "Complete partner-domain exclusions for 13 through 15 seed-4 monomials",
+        "report": "formalization/canonical-width/c16/TAKEOVER.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18."
+      },
+      {
+        "title": "Twelve-monomial whole-orbit exclusions retracted after domain audit",
+        "report": "formalization/canonical-width/c16/TAKEOVER.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "A physical weight-16 partner with seed-4 block 0x9 shows the old domain misses valid partners when bit 0 is omitted. The 33 old orbit exclusions cover only a subfamily. Complete twelve-monomial domains have 54,411,742,864 assignments across 116 rotation classes, before rank pruning. Full twelve-monomial nonexistence is not established."
+      },
+      {
+        "title": "Independent physical binding of the listed pools and width-18 upper frame",
+        "report": "formalization/canonical-width/c16/TAKEOVER.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "Rebuilt equation-(50) checks verify all 720 weight-16 operators per sector, every physical pairing against the saved logical coordinates, the 128-pair width-18 frame, and minimum X/Z support union 26. Listed-pool completeness is not independently proved."
+      },
+      {
+        "title": "Independent complete low-weight pool enumeration and mixed-Pauli bridge",
+        "report": "formalization/canonical-width/c16/INDEPENDENT-ENUMERATION.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "A fresh syndrome-directed enumerator covers all68 roots through weight17, visits47,708,679 nodes and recovers45 normalized weight16 physical orbits. Written completeness and physical sector-exchange checks give720 representatives per sector and mixed support-union minimum26. This independently reproduces the reduction to the finite pool problem, without deciding the128-pair frame question."
+      },
+      {
+        "title": "Complete corrected twelve-monomial exclusion",
+        "report": "formalization/canonical-width/c16/FOUR-HOURS.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate."
+      },
+      {
+        "title": "Six-hour global search and finite structural certificates; exact width still open",
+        "report": "formalization/canonical-width/c16/SIX-HOURS.md",
+        "evidence": "exact_finite_computation",
+        "lean_sources": [],
+        "contribution": "Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate."
+      },
+      {
+        "title": "Exact pool tensor normal form and inverse restrictions; full frame unresolved",
+        "report": "formalization/canonical-width/c16/INVERSION.md",
+        "evidence": "written_proof_and_exact_finite_certificates",
+        "lean_sources": [],
+        "contribution": "Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion."
+      },
+      {
+        "title": "Exact inverse-pool thin-family obstructions; original width still open",
+        "report": "formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md",
+        "evidence": "written_proof_and_exact_integer_certificates",
+        "lean_sources": [],
+        "contribution": "Exact integer certificates prove that every full original minimum-pool frame uses at least three thin families in each sector, and exclude supports{0,1,2},{0,1,4},{1,2,4} independently in either sector. A1680-point enlargement preserves the original residues, exact thin orbits, projective directions, thin modules and transpose exchange yet admits a full frame, refuting aggregate descent. Full width remains16 or18; best physical partial frame88; no Lean completion or demonstrated global speedup."
+      },
+      {
+        "title": "Paired-basis cover518 and exact limits of linear subcovers",
+        "report": "formalization/canonical-width/c16/JOINT-COVER.md",
+        "evidence": "written_proof_and_exact_finite_certificates",
+        "lean_sources": [],
+        "contribution": "The dual-expansion identity gives a complete518-case selected-pair cover, independently checked from all518400 physical pairings and minimal over6238 source-pair witnesses. The83504 atoms outside this cover span dimension16368; sixteen translated annihilators prove no trace-one linear functional gives a proper subcover of this list. All1082 older residual graphs are pairwise nonisomorphic, and91125 tested joint-rank cuts pass the old rational128 point. Every completion remains open; width16/18 and physical88 unchanged; no Lean completion or measured runtime gain."
+      },
+      {
+        "title": "Nonlinear505-case cover from simultaneous dual identities and compatibility",
+        "report": "formalization/canonical-width/c16/NONLINEAR-COVER.md",
+        "evidence": "written_proof_and_exact_finite_certificates",
+        "lean_sources": [],
+        "contribution": "A checkedUNSAT proof gives a proper505-case subcover of the518-case list, removing13 representatives together without excluding those classes from full frames. Physical CNF regeneration and235298 literal controls pass. Broader auxiliary-vector/structured-matrix searches find no cover below518;26964 principal conditional minor-existence tests exclude no anchor. All505 retained anchors have explicit compatible partial signature matchings, so none is a completed full-frame case. A residual-selected source witness705/705 rejects the saved8-pair matching at anchorX03-Z03-h00 and increases the functional span16to32; the next solver gate is unrun. Width16/18, physical88 and Lean status unchanged."
+      },
+      {
+        "title": "Compact proof cover497 and87 independent residual-guided matrix identities",
+        "report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
+        "evidence": "written_proof_and_exact_finite_certificates",
+        "lean_sources": [],
+        "contribution": "Independent physical CNF regeneration andDRAT checking prove a497-case proper subcover of505, removing eight more representatives together. At anchorX03-Z03-h00,87 independent full-matrix equations are selected; partial solutions satisfy prefixes through86 and the87-equation call isUNKNOWN. This stronger identity model excludes no anchor and does not supply the cover reduction. A disjoint physical partial-witness packing raises the original16-signature proof-criterion lower bound from85 to109; this is not a bound for arbitrary covers. Width16/18, physical88 and Lean status remain unchanged."
+      },
+      {
+        "title": "Symmetry-normalized exchanges prove a428-case sufficient cover",
+        "report": "formalization/canonical-width/c16/THEORY-LOOP.md",
+        "evidence": "written_proof_and_independent_physical_certificate_replay",
+        "lean_sources": [],
+        "contribution": "A new-class normalization lemma and a nonnested exchange case split give a428-case sufficient cover, net69 fewer than497 (13.8833%). One formerly omitted class is restored, so this is not a proper subcover. Independent physical regeneration checks the base497 proof,17 extensions and53 exchange branches;480 deletion witnesses show only inclusion minimality. A rank32 projected residual requires33 total partial pairs and rejects all21 saved smaller witnesses, but the full-case solver isUNKNOWN. Conditional affine certificates replay; new native-parity solver comparisons areUNKNOWN. Three further bounded reduction rounds fail to improve428 and trigger the stated early-stop rule. Width16/18, physical88, all428 full completions unresolved; no Lean completion or measured full-search speedup."
+      },
+      {
+        "title": "Algebraic phase restrictions and exact strengthened-relaxation barrier",
+        "report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
+        "evidence": "written_proof_and_independent_physical_certificate_replay",
+        "lean_sources": [],
+        "contribution": "Independent physical phase witnesses remove1105671/2545497 basic local masks (43.436%); fixed48/48 conditioning removes119919/688994 more (17.405%). All45 X-only conditional capacity rows replay, strengthening711/2025 bounds. Exact weighted local inequalities exclude an initial rational point; a new rational point passes8100 occupancy/nonpartner inequalities, six weighted cuts and4050 selected-anchor plus4050 original-family anchor-absent convex decompositions. A deleted-X336 pilot removes830 additional local masks and still admits the same point. All428 starting anchors have checked full residual-identity XOR decompositions, ruling out pure inverse-linear separators.4102 direct original-coordinate witnesses give22414 short full-anchor clauses. A418-case sufficient cover and121 fractional-packing lower bound for its old proof criterion are independently checked. Width16/18, physical88, full cases completed0 and Lean status unchanged."
+      },
+      {
+        "title": "Rank-strengthened compact-cover comparison; cover418 unchanged",
+        "report": "formalization/canonical-width/c16/RANK-COVER-CONTINUATION.md",
+        "evidence": "exact_physical_rank_certificates_and_independent_SAT_assignment_replay",
+        "lean_sources": [],
+        "contribution": "The4102 frozen rank certificates reject40/2552 recorded partial witnesses. Two frozen28-case matched cohorts, the second using47 new mixed-rank certificates, each find28 baseline SAT and24 strengthened SAT with4 UNKNOWN; no UNSAT or cover reduction. All24 first-cohort replacement witnesses are proved nonextendible to full frames. Rank variants take more summed solver-call time in these pilots. Width16/18, physical88, cover418 and full completions0 unchanged."
+      },
+      {
+        "title": "Domain-aware propagation and quotient-word obstructions prove a409-case sufficient cover",
+        "report": "formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md",
+        "evidence": "written_proofs_and_independent_physical_CNF_DRAT_replays",
+        "lean_sources": [],
+        "contribution": "The sufficient selected-pair cover shrinks418 to409. A kept-anchor projection preserves up to16 independent free signatures, and domain inclusion permits sound composition. Domain-aware propagation supplies the first seven removals; all-negative quotient-word obstructions support two further removals and reject three saved partial candidates. The411-case parent chain fully replays from a clean checkout; fresh checks of the two new word leaves are recorded separately. Static owner and native-XOR trials do not establish a full-case speedup. Source width16/18, physical88/128, zero full anchors solved and Lean coverage remain unchanged."
+      },
+      {
+        "title": "Complete sparse quotient obstructions strengthen the local test through order three",
+        "report": "formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md",
+        "evidence": "written_proof_and_independent_physical_certificate_replay",
+        "lean_sources": [],
+        "contribution": "A complete sparse detecting-support criterion through order3 rejects262/512 frozen generated partial matchings, versus243 for complete order2 and237 for the old fundamental-row implementation. All19 strict order3 improvements pass existing joint mandatory propagation; independent replay checks their order2 non-rejection. Small controls pass2019 exhaustive-vector comparisons and544 certificate checks. Three matched600-second compact trials on the remaining anchor416/515 are allUNKNOWN; they share1688 partial matchings and never invoke the new quotient gate because prior propagation already rejects each visited candidate. None of the generated gate patterns occurs as a subset of those visited matchings. Cover409, physical88/128, zero full anchors solved and source width16/18 remain unchanged; no Lean completion or finishing-time estimate."
+      },
+      {
+        "title": "Relevant two- and three-vector source clauses and a408-case sufficient cover",
+        "report": "formalization/canonical-width/c16/RELEVANT-CLAUSES.md",
+        "evidence": "written_source_obstructions_and_clean_physical_CNF_DRAT_replays",
+        "lean_sources": [],
+        "contribution": "Mining1688 saved hard-case matchings gives6921 checked source-certificate orbits; a frozen256-core bank contains one pair and255 triples. All selected cores strictly shrink their starting sets, and767 single-vector deletions independently fail the complete order3 criterion;120 cores are missed by complete order2. All256 pass both existing unrestricted and exact-domain propagation. In one sequential matched comparison, both variants prove the same compact cover case UNSAT; the seeded run takes91.56s versus174.86s and267 versus528 refinements. Both ordinary proofs independently replay from a clean checkout. Cover-domain induction reduces409 to408. Baseline also solves, and roughly563s preprocessing exceeds the83s discovery saving, so neither necessity of new seeds nor net single-case or general speedup is claimed. Width16/18, physical88/128, zero full source anchors solved and Lean status remain unchanged."
+      },
+      {
+        "title": "Held-out transfer, a405-case sufficient cover and a strict fourth-order source obstruction",
+        "report": "formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md",
+        "evidence": "written_implications_independent_source_checks_and_clean_CNF_DRAT_replays",
+        "lean_sources": [],
+        "contribution": "Three frozen held-out baseline/seeded pairs all independently prove UNSAT; clean physical/CNF/DRAT replay and domain inclusion reduce the sufficient cover408 to405. Seeded discovery totals319.46s versus787.57s on the three selected cases; this is limited reuse evidence, not a general or end-to-end speedup claim. A complete independent384-case screen finds one strict order4 forbidden pair, missed by complete order3. A16200-pair producer screen completes with four positive word classes independently checked, while its full negative replay is pending. Two full/global trials areUNKNOWN.31408 conditioned moment inequalities separate the old rational point in47 rows, but the strengthened relaxation has no exact feasibility or infeasibility certificate. Research paused at user request; width16/18, physical88/128, zero full source anchors solved, and Lean status unchanged."
+      },
+      {
+        "title": "Full-basis coupling, exact rank-family barriers and smaller integer separators",
+        "report": "formalization/canonical-width/c16/COUPLING-CONTINUATION.md",
+        "evidence": "written_source_validity_proofs_and_independent_exact_physical_moment_replays",
+        "lean_sources": [],
+        "contribution": "Exact signed compatible-basis pricing and counting identities yield54 accepted partner inequalities, including coefficient64 forms. Refreshing an existing five-event method adds234 exact integer-form rows, and the combined model contains308 rank rows. The latest global relaxation point15 is still exactly feasible, including all older conditional families and every Boolean triple. At witness12, an exact45-basis unconditional mixture and28 individual conditional rank-law certificates establish whole-family feasibility barriers;12 conditional cuts and5 unresolved anchors are separately recorded. Both four-X and both two-X/two-Z count-only extensions have exact feasible solutions at their recorded points. The full775 auxiliary hull has exact affine dimension771:14 apparent saved-sample identities have physical counterexamples, and772 verified columns span the full hull. Latest-point exchange, small phase-I and direct full-selector trials remain inconclusive. A written follow-up derives two-sided full-basis support over16 anchor patterns; implementation and unanchored mutual pairing remain open. Source width16/18, cover405, physical88/128, zero full source anchors excluded and Lean status are unchanged. No finishing-time bound or general source-search speedup is established. Cunningham1984 is indexed as F173, with fulltext acquisition requested in issue63 and no complexity transfer claimed."
+      }
+    ],
+    "remaining_project_questions": [
+      {
+        "id": "RQ-F91-c16-css-frame",
+        "title": "Decide whether the 720-class weight-16 CSS pools contain a 128-pair canonical frame.",
+        "status": "Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18."
+      }
+    ],
+    "structural_comparison": {
+      "report": "formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md",
+      "verification": "formalization/canonical-width/c16/structural-results/verification.json",
+      "canonical_target_answered": false
+    },
+    "pool_inversion": {
+      "report": "formalization/canonical-width/c16/INVERSION.md",
+      "verification": "formalization/canonical-width/c16/inversion-results/verification.json",
+      "canonical_target_answered": false
+    },
+    "joint_cover": {
+      "report": "formalization/canonical-width/c16/JOINT-COVER.md",
+      "verification": "formalization/canonical-width/c16/joint-cover-results/verification.json",
+      "canonical_target_answered": false,
+      "completion_case_count": 518
+    },
+    "nonlinear_cover": {
+      "report": "formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md",
+      "verification": "formalization/canonical-width/c16/transfer-results/cover-bindings.json",
+      "canonical_target_answered": false,
+      "completion_case_count": 405,
+      "previous_report": "formalization/canonical-width/c16/RELEVANT-CLAUSES.md",
+      "proof_criterion_lower_bound": null,
+      "lower_bound_scope": "The121 bound applies only to the older unstrengthened signature criterion, not this source-closure/quotient-word sufficient cover.",
+      "nested_in_previous_cover": true,
+      "old_signature_criterion_lower_bound": 121
+    },
+    "residual_matrix_identities": {
+      "report": "formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md",
+      "independent_verification": "formalization/canonical-width/c16/residual-identity-results/independent-check.json",
+      "independent_functionals": 87,
+      "positive_partial_matching_max_equations": 86,
+      "last_call": "UNKNOWN",
+      "new_completed_anchor_cases": 0
+    },
+    "theory_loop": {
+      "report": "formalization/canonical-width/c16/THEORY-LOOP.md",
+      "verification": "formalization/canonical-width/c16/theory-loop-results/verification.json",
+      "independent_cover_replay": "formalization/canonical-width/c16/theory-loop-results/final-independent.json",
+      "full_source_anchor_cases_completed": 0,
+      "scientific_stop_utc": "2026-10-28T20:17:24Z",
+      "early_stop": "three consecutive distinct bounded reduction rounds without a verified gain",
+      "canonical_target_answered": false
+    },
+    "algebraic_comparison": {
+      "report": "formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md",
+      "exact_relaxation_point": "formalization/canonical-width/c16/algebraic-results/profile-moment-face1.json.gz",
+      "exact_point_replay": "formalization/canonical-width/c16/algebraic-results/profile-moment-face1-independent.json",
+      "cover_replay": "formalization/canonical-width/c16/algebraic-results/cover-418-independent.json",
+      "canonical_target_answered": false,
+      "full_source_anchor_cases_completed": 0,
+      "scope": "Bounded six-hour continuation; exact auxiliary restrictions and method barriers, no source-width answer.",
+      "fractional_lower_bound_replay": "formalization/canonical-width/c16/algebraic-results/fractional-cover-packing-independent.json",
+      "small_original_rank_cuts": "formalization/canonical-width/c16/algebraic-results/small-conditional-original-independent.json",
+      "selected_anchor_local_hulls": "formalization/canonical-width/c16/algebraic-results/conditional-hulls-face1-recheck.json",
+      "absent_anchor_original_local_hulls": "formalization/canonical-width/c16/algebraic-results/conditional-hulls-absent-independent.json",
+      "deleted_vector_pilot": "formalization/canonical-width/c16/algebraic-results/absent336-hulls-independent.json"
+    },
+    "rank_cover_comparison": {
+      "report": "formalization/canonical-width/c16/RANK-COVER-CONTINUATION.md",
+      "independent_verification": "formalization/canonical-width/c16/rank-cover-results/independent-check.json",
+      "mixed_rank_verification": "formalization/canonical-width/c16/rank-cover-results/mixed-rank-independent.json",
+      "refinement_verification": "formalization/canonical-width/c16/rank-cover-results/refined-independent-check.json",
+      "canonical_target_answered": false,
+      "cover_before": 418,
+      "cover_after": 418,
+      "full_source_anchor_cases_completed": 0,
+      "matched_oracle_calls": 112,
+      "SAT_calls": 104,
+      "UNKNOWN_calls": 8,
+      "UNSAT_calls": 0
+    },
+    "strategy_reassessment": {
+      "report": "formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md",
+      "cover": "formalization/canonical-width/c16/strategy-results/final-cover.json",
+      "parent_clean_replay": "formalization/canonical-width/c16/strategy-results/clean-cover-replay/manifest.json",
+      "word_clean_replay": "formalization/canonical-width/c16/strategy-results/clean-word-replay/manifest.json",
+      "canonical_target_answered": false,
+      "cover_before": 418,
+      "cover_after": 409,
+      "physical_partial_pairs": 88,
+      "full_source_anchor_cases_completed": 0
+    },
+    "sparse_quotient_followup": {
+      "report": "formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md",
+      "verification": "formalization/canonical-width/c16/three-term-results/verification.json",
+      "gate_replay": "formalization/canonical-width/c16/three-term-results/clean-gate-replay/manifest.json",
+      "trial_replay": "formalization/canonical-width/c16/three-term-results/clean-trial-replay/manifest.json",
+      "canonical_target_answered": false,
+      "cover_before": 409,
+      "cover_after": 409,
+      "full_source_anchor_cases_completed": 0,
+      "strict_order3_source_improvements": 19,
+      "generated_partial_matchings": 512,
+      "matched_compact_trials": 3,
+      "matched_trials_UNKNOWN": 3,
+      "new_oracle_invocations_in_matched_trials": 0
+    },
+    "relevant_clause_followup": {
+      "report": "formalization/canonical-width/c16/RELEVANT-CLAUSES.md",
+      "verification": "formalization/canonical-width/c16/relevant-results/verification.json",
+      "cover": "formalization/canonical-width/c16/relevant-results/cover-408.json",
+      "clean_gate_replay": "formalization/canonical-width/c16/relevant-results/clean-gate-replay/manifest.json",
+      "clean_comparison_replay": "formalization/canonical-width/c16/relevant-results/clean-comparison-replay/manifest.json",
+      "canonical_target_answered": false,
+      "cover_before": 409,
+      "cover_after": 408,
+      "source_clause_orbits_selected": 256,
+      "strict_order3_selected_orbits": 120,
+      "selected_orbits_accepted_by_existing_domain_propagation": 256,
+      "matched_verified_UNSAT_calls": 2,
+      "full_source_anchor_cases_completed": 0,
+      "general_speedup_established": false,
+      "net_single_case_end_to_end_speedup_established": false
+    },
+    "transfer_followup": {
+      "report": "formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md",
+      "verification": "formalization/canonical-width/c16/transfer-results/verification.json",
+      "resume": "formalization/canonical-width/c16/TRANSFER-RESUME.md",
+      "canonical_target_answered": false,
+      "cover_before": 408,
+      "cover_after": 405,
+      "matched_verified_UNSAT_calls": 6,
+      "new_strict_order4_forbidden_pair": [
+        416,
+        512
+      ],
+      "full_source_anchor_cases_completed": 0,
+      "research_status": "paused_at_user_request",
+      "global_trial": "UNKNOWN",
+      "full_anchor_trial": "UNKNOWN",
+      "new_Lean_completion": false
+    },
+    "coupling_followup": {
+      "report": "formalization/canonical-width/c16/COUPLING-CONTINUATION.md",
+      "verification": "formalization/canonical-width/c16/coupling-results/verification.json",
+      "canonical_target_answered": false,
+      "full_source_anchor_cases_completed": 0,
+      "cover_before": 405,
+      "cover_after": 405,
+      "physical_partial_pairs": 88,
+      "latest_exact_point": "formalization/canonical-width/c16/coupling-results/integer-witness15-rational.json.gz",
+      "exact_partner_rows": 54,
+      "exact_rank_rows": 308,
+      "research_status": "bounded_followup_saved_source_open",
+      "new_Lean_completion": false,
+      "additional_integer_form_rows": 234,
+      "exchange_membership_inventory": "formalization/canonical-width/c16/coupling-results/singleton-exchange-witness12-inventory.json",
+      "clean_checkpoint_replay": "formalization/canonical-width/c16/coupling-results/final-clean-checkpoint0957/accepted-summary.json",
+      "resume": "formalization/canonical-width/c16/COUPLING-RESUME.md",
+      "auxiliary_affine_dimension": 771,
+      "auxiliary_feature_count": 775,
+      "affine_certificate": "formalization/canonical-width/c16/coupling-results/saved-span-affine-completion-independent.json"
+    }
   },
   {
     "id": "L-F91-c20-unrestricted-width",
@@ -14260,6 +14570,2186 @@
       "assessment": "mathematical/statistical core potentially formalizable; statement required",
       "objects_and_gate": "Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.",
       "source_does_not_claim": "A runtime theorem."
+    }
+  },
+  {
+    "id": "L-F152-binary-rank-multiplicativity",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise source mathematical target; present resolution and formalization remain unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F152",
+        "locator": "Section3 Conjecture1",
+        "extracted_text_lines": [
+          95,
+          100
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html",
+        "source_sha256": "99c050ce060d181eb5a37bce65f8a3413f715ba1312803dd1292f6ad3b11938f",
+        "relation": "author_stated_question_or_direction",
+        "version": "SEA2025 publisher HTML"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Freeze ordinary-arithmetic0/1 factorization; distinguish it from rank over F2."
+    }
+  },
+  {
+    "id": "L-F152-domino-asymptotic",
+    "origin": "article_inventory_extension",
+    "title": "Determine the exact asymptotic fractional biclique partition number of the Domino matrix.",
+    "kind": "specific_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise source mathematical target; present resolution and formalization remain unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F152",
+        "locator": "Section3 before Theorem2",
+        "extracted_text_lines": [
+          102,
+          110
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html",
+        "source_sha256": "99c050ce060d181eb5a37bce65f8a3413f715ba1312803dd1292f6ad3b11938f",
+        "relation": "author_stated_question_or_direction",
+        "version": "SEA2025 publisher HTML"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix the displayed Domino matrix and the limit over all positive Kronecker powers."
+    }
+  },
+  {
+    "id": "L-F152-strict-cover-asymptotic-gap",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.",
+    "kind": "specific_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise source mathematical target; present resolution and formalization remain unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F152",
+        "locator": "Section3 after Theorem2, inequality chain and unknown strictness",
+        "extracted_text_lines": [
+          108,
+          111
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html",
+        "source_sha256": "99c050ce060d181eb5a37bce65f8a3413f715ba1312803dd1292f6ad3b11938f",
+        "relation": "author_stated_question_or_direction",
+        "version": "SEA2025 publisher HTML"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Prove equality for all binary matrices or exhibit a strictness witness with exact bounds."
+    }
+  },
+  {
+    "id": "L-F152-domino-more-powers",
+    "origin": "article_inventory_extension",
+    "title": "Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad method/computation/interpretation direction; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F152",
+        "locator": "Section5.4 final paragraph",
+        "extracted_text_lines": [
+          240,
+          240
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html",
+        "source_sha256": "99c050ce060d181eb5a37bce65f8a3413f715ba1312803dd1292f6ad3b11938f",
+        "relation": "author_stated_question_or_direction",
+        "version": "SEA2025 publisher HTML"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Choose a finite computational target, exact certificate format and resource budget."
+    }
+  },
+  {
+    "id": "L-F152-domino-rational-interpretation",
+    "origin": "article_inventory_extension",
+    "title": "Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad method/computation/interpretation direction; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F152",
+        "locator": "Section5.4 continued-fraction discussion",
+        "extracted_text_lines": [
+          239,
+          239
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html",
+        "source_sha256": "99c050ce060d181eb5a37bce65f8a3413f715ba1312803dd1292f6ad3b11938f",
+        "relation": "author_stated_question_or_direction",
+        "version": "SEA2025 publisher HTML"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "First certify the exact rational optimum; specify what interpretation would constitute an answer."
+    }
+  },
+  {
+    "id": "L-F154-structured-mim-methods",
+    "origin": "article_inventory_extension",
+    "title": "Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad method/computation/interpretation direction; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F154",
+        "locator": "Section6 Conclusions and Future Research",
+        "extracted_text_lines": [
+          4001,
+          4003
+        ],
+        "url": "https://zctaskin.github.io/files/MIM.pdf",
+        "source_sha256": "573f5648c4d4c2eb92d2356e8921e457021c98150fc641423c80f424fcbb6dd3",
+        "relation": "author_stated_question_or_direction",
+        "version": "Author manuscript JOC-2016-03-OA-049,26 PDF pages; published2018, DOI10.1287/ijoc.2017.0764"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify a graph class and a correctness, bound-strength or runtime guarantee."
+    }
+  },
+  {
+    "id": "L-F156-multipartite-separable-unit",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.",
+    "kind": "conjecture_or_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Precise source mathematical target; present resolution and formalization remain unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F156",
+        "locator": "Introduction S1 and its stated open status; Proposition4.6 is conditional",
+        "extracted_text_lines": [
+          28,
+          55
+        ],
+        "url": "https://arxiv.org/pdf/2010.16293",
+        "source_sha256": "d46782e6be4ae139996f36e8d8fad7657fcf934f718d9333c05d7fd67053ed81",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv2010.16293v1,30October2020,14 PDF pages; LAA620(2021),228–241"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/literature-techniques-results/sources.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix n>=3, all factor dimensions>=2, unit vectors, both signs and the cone generated by tensor products of positive semidefinite operators."
+    }
+  },
+  {
+    "id": "L-F153-cutwidth-base",
+    "origin": "article_inventory_extension",
+    "title": "Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).",
+    "kind": "specific_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Open Problem1",
+        "extracted_text_lines": [
+          130,
+          138
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Open Problem1",
+        "extracted_text_lines": [
+          163,
+          170
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix H, input ordering width k, algorithm model, and SETH quantifiers."
+    }
+  },
+  {
+    "id": "L-F153-fast-representatives",
+    "origin": "article_inventory_extension",
+    "title": "Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or unresolved statement/computability interface; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction representative sets; Conclusion directions",
+        "extracted_text_lines": [
+          160,
+          182
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction representative sets; Conclusion directions",
+        "extracted_text_lines": [
+          243,
+          275
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify input/output representation and the desired uniform runtime."
+    }
+  },
+  {
+    "id": "L-F153-mimsup-computability",
+    "origin": "article_inventory_extension",
+    "title": "Determine whether computing mimsup is decidable.",
+    "kind": "question_formulation_gate",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or unresolved statement/computability interface; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction computability comparison",
+        "extracted_text_lines": [
+          183,
+          185
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction computability comparison",
+        "extracted_text_lines": [
+          386,
+          390
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify exact real output versus threshold decision or approximation with an accuracy parameter."
+    }
+  },
+  {
+    "id": "L-F153-noninteger-mimsup",
+    "origin": "article_inventory_extension",
+    "title": "Does some finite binary matrix have a noninteger asymptotic induced-matching number mimsup?",
+    "kind": "specific_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion first combinatorial question",
+        "extracted_text_lines": [
+          1149,
+          1151
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Conclusion first combinatorial question",
+        "extracted_text_lines": [
+          1072,
+          1074
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix the tensor-product definition and exhibit a matrix with certified noninteger value, or prove integrality."
+    }
+  },
+  {
+    "id": "L-F153-random-mimsup",
+    "origin": "article_inventory_extension",
+    "title": "Determine mimsup for an n by n matrix with independent Bernoulli-p entries.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or unresolved statement/computability interface; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion random-matrix question",
+        "extracted_text_lines": [
+          1151,
+          1153
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Conclusion random-matrix question",
+        "extracted_text_lines": [
+          1074,
+          1076
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix p versus n, the asymptotic regime, success probability and desired precision."
+    }
+  },
+  {
+    "id": "L-F153-mimsup-him-functional",
+    "origin": "article_inventory_extension",
+    "title": "Are mimsup and half-induced matching number functionally equivalent on finite binary matrices?",
+    "kind": "specific_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction comparison; Conclusion final question",
+        "extracted_text_lines": [
+          216,
+          219
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction comparison; Conclusion final question",
+        "extracted_text_lines": [
+          476,
+          477
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Use the source definition: mutual bounds by functions uniform over finite binary matrices."
+    }
+  },
+  {
+    "id": "L-F153-mimsup-support-functional",
+    "origin": "article_inventory_extension",
+    "title": "Are mimsup and support rank functionally equivalent on finite binary matrices?",
+    "kind": "question_formulation_gate",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction comparison; Conclusion final question",
+        "extracted_text_lines": [
+          216,
+          219
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction comparison; Conclusion final question",
+        "extracted_text_lines": [
+          476,
+          477
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json."
+    }
+  },
+  {
+    "id": "L-F153-strict-mimsup-support",
+    "origin": "article_inventory_extension",
+    "title": "Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?",
+    "kind": "question_formulation_gate",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction inequality chain and proposed strictness",
+        "extracted_text_lines": [
+          214,
+          219
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction inequality chain and proposed strictness",
+        "extracted_text_lines": [
+          460,
+          463
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix the intended coefficient field and its quantifiers from the source. The F2 specialization already has mimsup(K_(2m))=2 and support-rank_F2(K_(2m))=2m, so it is not the unresolved intended question. See overnight-results/support-field-scope.json."
+    }
+  },
+  {
+    "id": "L-F153-nonprojective-not-prime",
+    "origin": "article_inventory_extension",
+    "title": "Every non-projective non-bipartite core graph is not prime under the direct graph product.",
+    "kind": "borrowed_conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion non-projective graphs, cited Larose-Tardif/Okrasa-Rzazewski",
+        "extracted_text_lines": [
+          1135,
+          1141
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_question_explicitly_discussed"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix finite graph, core, projectivity and nontrivial direct-product factorization definitions."
+    }
+  },
+  {
+    "id": "L-F153-strong-projectivity",
+    "origin": "article_inventory_extension",
+    "title": "Do the classes of projective and strongly projective graphs coincide?",
+    "kind": "borrowed_conjecture_formulation_gate",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or unresolved statement/computability interface; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion non-projective graphs, cited Larose",
+        "extracted_text_lines": [
+          1140,
+          1143
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_question_explicitly_discussed"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Retrieve the omitted technical definition of strong projectivity from the primary cited source."
+    }
+  },
+  {
+    "id": "L-F153-nonprojective-lowerbounds",
+    "origin": "article_inventory_extension",
+    "title": "Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or unresolved statement/computability interface; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion non-projective graphs",
+        "extracted_text_lines": [
+          1135,
+          1144
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify graph class, parameter and runtime lower-bound target; some conditional extension is already described."
+    }
+  },
+  {
+    "id": "L-F153-fine-grained-courcelle",
+    "origin": "article_inventory_extension",
+    "title": "Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Direction or unresolved statement/computability interface; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion directions",
+        "extracted_text_lines": [
+          1145,
+          1149
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "author_stated_question_or_direction"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Conclusion directions",
+        "extracted_text_lines": [
+          1058,
+          1070
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "author_stated_question_or_direction"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify logic fragment, decomposition parameter and runtime guarantee."
+    }
+  },
+  {
+    "id": "L-F153-multicolor-ramsey-growth",
+    "origin": "article_inventory_extension",
+    "title": "Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?",
+    "kind": "borrowed_specific_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Source-stated definite mathematical target; current resolution and formalization are not assessed here.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Conclusion final Ramsey paragraph",
+        "extracted_text_lines": [
+          1155,
+          1158
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_question_explicitly_discussed"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Use the diagonal ell-color Ramsey number; borrowed classic question, not newly attributed to these authors."
+    }
+  },
+  {
+    "id": "L-F153-shannon-capacity-C7",
+    "origin": "article_inventory_extension",
+    "title": "Determine the Shannon capacity of the seven-cycle C7.",
+    "kind": "borrowed_context_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Explicitly described as an unresolved classic quantity in the source introduction; not attributed as a new question of these authors.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          183,
+          185
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          384,
+          390
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Use the source Section7.3 strong-graph-product definition. Borrowed classic target; original cited full text not screened."
+    }
+  },
+  {
+    "id": "L-F153-matrix-multiplication-exponent",
+    "origin": "article_inventory_extension",
+    "title": "Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.",
+    "kind": "borrowed_context_formulation_gate",
+    "written_math_status": "formulation_needs_clarification",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Contextual classic target with arithmetic/field interface left to the cited original source; excluded from precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F153",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          183,
+          185
+        ],
+        "url": "https://arxiv.org/html/2312.03859v1",
+        "source_sha256": "f657ce4bcbfa5a6f991e67f1b7dd125282af2af4e7a505fcb937aa727975dbdf",
+        "version": "arXiv2312.03859v1,6December2023",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      },
+      {
+        "source_id": "F157",
+        "locator": "Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities",
+        "extracted_text_lines": [
+          384,
+          390
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf",
+        "source_sha256": "3f4f683b36e512068fddedfe57cd90858ac56f5f35b71cf5d626b6064a5b31f5",
+        "version": "ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77",
+        "relation": "borrowed_unresolved_context_target; discovery_credit_only"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/overnight-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Freeze coefficient field, arithmetic model and rank-to-exponent convention from the cited original source; this version uses a contextual analogy."
+    }
+  },
+  {
+    "id": "L-F158-parity-heuristic-integration",
+    "origin": "article_inventory_extension",
+    "title": "Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, first conclusion direction",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          803,
+          807
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the heuristic variant, input family, resource measure and comparison baseline."
+    }
+  },
+  {
+    "id": "L-F158-cnf-specific-parity-branching",
+    "origin": "article_inventory_extension",
+    "title": "Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, second conclusion direction",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          808,
+          814
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify a CNF family and parity branching objective, including the proposed role of bijective pigeonhole formulas."
+    }
+  },
+  {
+    "id": "L-F158-semantic-1uip",
+    "origin": "article_inventory_extension",
+    "title": "Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, theoretical-side paragraph",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          815,
+          819
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Define the parity implication/cut semantics and the exact1-UIP property beyond being asserting."
+    }
+  },
+  {
+    "id": "L-F158-parity-clause-minimization",
+    "origin": "article_inventory_extension",
+    "title": "Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated direction or semantic formulation gate, outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F158",
+        "locator": "Section8, PDFp17, final paragraph",
+        "pdf_pages": [
+          17
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf",
+        "source_sha256": "fa0a5b926e90efe5e4e0690bce0ed36d821207acf20851084eace77b8b455ff6",
+        "version": "SAT2026 LIPIcs377:5, published16July2026,21pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          819,
+          822
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/theory-loop-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify classical minimization semantics and the required faithfulness of the parity extension."
+    }
+  },
+  {
+    "id": "L-F159-certificate-degree-lower-bounds",
+    "origin": "article_inventory_extension",
+    "title": "Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "PDFp6, theoretical questions after the NulLA algorithm",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          289,
+          296
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the polynomial encoding, coefficient field, family and asymptotic degree measure."
+    }
+  },
+  {
+    "id": "L-F159-certificate-degree-upper-bounds",
+    "origin": "article_inventory_extension",
+    "title": "Find tighter practical upper bounds on certificate degree for concrete polynomial families.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "PDFp6, theoretical questions after the NulLA algorithm",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          296,
+          298
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the family and field; a broad request for better bounds is not a single theorem."
+    }
+  },
+  {
+    "id": "L-F159-clique-degree-cutters",
+    "origin": "article_inventory_extension",
+    "title": "Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.",
+    "kind": "conjecture",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "Section3.2 PDFp9, conjectural degree-cutter passage and following counterexample",
+        "pdf_pages": [
+          9
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          437,
+          453
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "The phrase may decrease does not specify a universal strict statement; the paper itself gives a non-decreasing3-coloring example. Fix the intended family, field and quantifiers first."
+    }
+  },
+  {
+    "id": "L-F159-coloring-degree-growth",
+    "origin": "article_inventory_extension",
+    "title": "Explain which graph structures force higher-degree certificates for3-colorability.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F159",
+        "locator": "PDFpp23-26 hard graph families; final paragraph before conclusion",
+        "pdf_pages": [
+          23,
+          26
+        ],
+        "url": "https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf",
+        "source_sha256": "f63a38bd96a2a71ab6e1b9d1aa1830967a25b7096797ec7006d63c22516eae1c",
+        "version": "Author manuscript dated5January2009,27pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          2689,
+          2692
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify a structural class and encoding; the historical open direction is not a complete current-status census."
+    }
+  },
+  {
+    "id": "L-F161-proof-producing-cdcl-t",
+    "origin": "article_inventory_extension",
+    "title": "Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F161",
+        "locator": "Section4 conclusion, PDFp11",
+        "pdf_pages": [
+          11
+        ],
+        "url": "https://arxiv.org/pdf/2304.04292",
+        "source_sha256": "95420ba3fd95692f10216fda9559895ad4ac9597bd0304df53caf9923bb3ed1f",
+        "version": "arXiv:2304.04292v1,9April2023,12pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          876,
+          886
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the theory, proof rules, input family and correctness/comparison objective."
+    }
+  },
+  {
+    "id": "L-F162-iterative-solver-extensions",
+    "origin": "article_inventory_extension",
+    "title": "Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad author direction or imprecise conjectural wording; outside the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F162",
+        "locator": "SectionV discussion, PDFp5, fourth extension point",
+        "pdf_pages": [
+          5
+        ],
+        "url": "https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf",
+        "source_sha256": "4107c11fe4b0d8e1e10d265cc485d3b2ce8db98455de198951d211e22ff75af1",
+        "version": "DATE2019 author manuscript,6pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          650,
+          656
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-28",
+    "search_family": "c16_literature_methods",
+    "source_screening": "formalization/canonical-width/c16/algebraic-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Historical implementation direction, not an unsolved mathematical conjecture. Current Bosphorus4.1.0 already includes Groebner-related components; no claim that the whole historical direction remains open."
+    }
+  },
+  {
+    "id": "L-F164-filtering-search-guarantees",
+    "origin": "article_inventory_extension",
+    "title": "Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.1 Search order, PDFp5",
+        "pdf_pages": [
+          5
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          190,
+          200
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-side-constraint-applications",
+    "origin": "article_inventory_extension",
+    "title": "Develop solver integrations for richer subgraph variants and application side constraints.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Problem variants, PDFp6",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          218,
+          232
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-symmetry-implementation",
+    "origin": "article_inventory_extension",
+    "title": "Improve practical input-specific symmetry handling without costly external dependencies.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Symmetries, PDFp6",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          233,
+          239
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-faster-exact-counting",
+    "origin": "article_inventory_extension",
+    "title": "Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Faster counting, PDFp6",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          240,
+          246
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-approximate-counting",
+    "origin": "article_inventory_extension",
+    "title": "Implement approximate counting for subgraph instances.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Faster counting, PDFp6",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          246,
+          247
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-uniform-sampling",
+    "origin": "article_inventory_extension",
+    "title": "Find practical uniform sampling methods that avoid full subgraph enumeration.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Faster counting, PDFp6",
+        "pdf_pages": [
+          6
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          247,
+          248
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-special-pattern-detection",
+    "origin": "article_inventory_extension",
+    "title": "Detect easy pattern classes and select specialized algorithms automatically.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Special classes of pattern, PDFp7",
+        "pdf_pages": [
+          7
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          249,
+          258
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-proof-logging",
+    "origin": "article_inventory_extension",
+    "title": "Extend independently checkable proof logging for strong subgraph inference.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Proof logging, PDFp7",
+        "pdf_pages": [
+          7
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          260,
+          267
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Historical broad direction; modern Glasgow proof support is inspected, but no claim that every strong inference or proof feature is settled."
+    }
+  },
+  {
+    "id": "L-F164-automatic-configuration",
+    "origin": "article_inventory_extension",
+    "title": "Choose supplemental graphs and solver configurations per instance.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Automatic configuration, PDFp7",
+        "pdf_pages": [
+          7
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          268,
+          276
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F164-application-benchmarks",
+    "origin": "article_inventory_extension",
+    "title": "Collect diverse application instances for subgraph-solver benchmarking.",
+    "kind": "method_request",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F164",
+        "locator": "Section3.2 Benchmarking, PDFp7",
+        "pdf_pages": [
+          7
+        ],
+        "url": "https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf",
+        "source_sha256": "ac6e956234ea0dfe3f7c0e2ccf77871cc660a5a1318f6f32a04652518b4d3c43",
+        "version": "Author ICGT2020 manuscript,9pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          277,
+          285
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F165-single-clause-inprocessing",
+    "origin": "article_inventory_extension",
+    "title": "Combine incremental inprocessing efficiently with external clauses added individually during search.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F165",
+        "locator": "Section2.4, PDFp5",
+        "pdf_pages": [
+          5
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf",
+        "source_sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+        "version": "Publisher SAT2023 version,13pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          235,
+          244
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F165-external-proof-production",
+    "origin": "article_inventory_extension",
+    "title": "Extend and evaluate proof production for external propagators and different external-clause kinds.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F165",
+        "locator": "Section5; related cvc5 proof integration in Section4.2, PDFp10",
+        "pdf_pages": [
+          10
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf",
+        "source_sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+        "version": "Publisher SAT2023 version,13pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          471,
+          477
+        ]
+      }
+    ],
+    "related_target_ids": [
+      "L-F161-proof-producing-cdcl-t"
+    ],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Historical interface/proof direction, related to L-F161-proof-producing-cdcl-t; not asserted to remain wholly unresolved in2026."
+    }
+  },
+  {
+    "id": "L-F165-restart-backtrack-control",
+    "origin": "article_inventory_extension",
+    "title": "Investigate external control of restarts and conflict backtracking.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F165",
+        "locator": "Section5, PDFp10",
+        "pdf_pages": [
+          10
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf",
+        "source_sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+        "version": "Publisher SAT2023 version,13pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          478,
+          481
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F165-solver-state-access",
+    "origin": "article_inventory_extension",
+    "title": "Expose useful solver statistics and variable or clause scores through the interface.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F165",
+        "locator": "Section5, PDFp10",
+        "pdf_pages": [
+          10
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf",
+        "source_sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+        "version": "Publisher SAT2023 version,13pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          481,
+          483
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F165-further-applications",
+    "origin": "article_inventory_extension",
+    "title": "Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F165",
+        "locator": "Section5, PDFp10",
+        "pdf_pages": [
+          10
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf",
+        "source_sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+        "version": "Publisher SAT2023 version,13pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          483,
+          485
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F165-cvc5-tuning",
+    "origin": "article_inventory_extension",
+    "title": "Tune cvc5 internals for the IPASIR-UP integration.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical research or implementation direction; no precise mathematical target is added to the denominator.",
+    "occurrences": [
+      {
+        "source_id": "F165",
+        "locator": "Section4.2 conclusion, PDFp10",
+        "pdf_pages": [
+          10
+        ],
+        "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf",
+        "source_sha256": "0d650dfe32da768fa8149674299053cad68203f3b02b9c2510e16afb19dda1d0",
+        "version": "Publisher SAT2023 version,13pages",
+        "relation": "author_stated_question_or_direction",
+        "extracted_text_lines": [
+          464,
+          467
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-29",
+    "search_family": "c16_strategy_methods",
+    "source_screening": "formalization/canonical-width/c16/strategy-results/paper-screening.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the instance family, algorithm/interface, correctness criterion and comparison objective; current implementation status and Lean transfer remain unassessed."
+    }
+  },
+  {
+    "id": "L-F176-avoid-smallest-tight-sets",
+    "origin": "article_inventory_extension",
+    "title": "Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical algorithmic direction without a fixed theorem/oracle model; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F176",
+        "locator": "Section6 Conclusions, printedp6/PDFp7",
+        "pdf_pages": [
+          7
+        ],
+        "url": "https://publications.info.uaic.ro/files/tr/tr13-02.pdf",
+        "source_sha256": "2c87b61291e0bf20016884ef988a6fae424bee5b1d8668e303b5d25efa71672f",
+        "version": "Technical report TR13-02, October2013,7PDFpages",
+        "relation": "explicit_research_direction",
+        "extracted_text_lines": [
+          263,
+          274
+        ]
+      }
+    ],
+    "related_target_ids": [
+      "L-F176-simpler-submodular-flow"
+    ],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-30",
+    "search_family": "c16_exact_matroid_membership_methods",
+    "source_screening": "formalization/canonical-width/c16/two-basis-results/literature/tr13-02-fulltext-screen.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target."
+    }
+  },
+  {
+    "id": "L-F176-simpler-submodular-flow",
+    "origin": "article_inventory_extension",
+    "title": "Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad historical algorithmic direction without a fixed theorem/oracle model; excluded from the precise-target denominator.",
+    "occurrences": [
+      {
+        "source_id": "F176",
+        "locator": "Section6 Conclusions, printedp6/PDFp7",
+        "pdf_pages": [
+          7
+        ],
+        "url": "https://publications.info.uaic.ro/files/tr/tr13-02.pdf",
+        "source_sha256": "2c87b61291e0bf20016884ef988a6fae424bee5b1d8668e303b5d25efa71672f",
+        "version": "Technical report TR13-02, October2013,7PDFpages",
+        "relation": "explicit_research_direction",
+        "extracted_text_lines": [
+          263,
+          274
+        ]
+      }
+    ],
+    "related_target_ids": [
+      "L-F176-avoid-smallest-tight-sets"
+    ],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-10-30",
+    "search_family": "c16_exact_matroid_membership_methods",
+    "source_screening": "formalization/canonical-width/c16/two-basis-results/literature/tr13-02-fulltext-screen.json",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the network class, submodular oracle model, tight-set computation and the meaning of the complexity comparison; check later resolution before selecting a proof target."
+    }
+  },
+  {
+    "id": "L-F178-m2-square-strong-polynomial",
+    "origin": "article_inventory_extension",
+    "title": "Find a strongly polynomial algorithm minimizing the ordinary sum of squares over a nonempty M2-convex set.",
+    "kind": "question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Fixed square-sum objective and M2-convex domain identify a specific algorithmic task; present-day resolution and formalization remain unassessed.",
+    "occurrences": [
+      {
+        "source_id": "F178",
+        "locator": "Section1.2 final paragraph, following Theorems1.2–1.3",
+        "url": "https://arxiv.org/html/2007.03507v3",
+        "source_sha256": "767bf9dfed5c9b4691128c159027c8ccac1607bb93d8570fd4fd99c838187e4e",
+        "version": "arXiv:2007.03507v3, 27 January 2021; DOI10.1287/moor.2021.1160",
+        "relation": "explicit_open_algorithm_question",
+        "extracted_text_lines": [
+          394,
+          409
+        ]
+      }
+    ],
+    "related_target_ids": [
+      "L-F178-box-tdi-algorithms",
+      "L-F178-inverse-optimization-algorithms"
+    ],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "current_resolution_status": "not_independently_established",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "added_on": "2026-10-30",
+    "search_family": "c16_owner_lift_discrete_convex_methods",
+    "source_screening": "literature/owner-lift-20261030/F178-screen.json",
+    "screening_note": "Source-open only. Bounded primary-source resolution searches did not establish a current resolution; this is not evidence that the problem remains open.",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "The source fixes the objective and the integral intersection of two base-polyhedra. Before implementation, make the supermodular evaluation-oracle and arithmetic model explicit; check later resolution and Lean evidence."
+    }
+  },
+  {
+    "id": "L-F178-box-tdi-algorithms",
+    "origin": "article_inventory_extension",
+    "title": "Develop strongly polynomial combinatorial algorithms from discrete box-TDI min-max formulas.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad algorithm/formulation program; excluded from precise-target denominator until its oracle, data and output model is fixed.",
+    "occurrences": [
+      {
+        "source_id": "F178",
+        "locator": "Introduction and Section5.3 final discussion",
+        "url": "https://arxiv.org/html/2007.03507v3",
+        "source_sha256": "767bf9dfed5c9b4691128c159027c8ccac1607bb93d8570fd4fd99c838187e4e",
+        "version": "arXiv:2007.03507v3, 27 January 2021; DOI10.1287/moor.2021.1160",
+        "relation": "explicit_research_direction",
+        "extracted_text_lines": [
+          159,
+          164
+        ]
+      }
+    ],
+    "related_target_ids": [
+      "L-F178-m2-square-strong-polynomial",
+      "L-F178-inverse-optimization-algorithms"
+    ],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "current_resolution_status": "not_independently_established",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "added_on": "2026-10-30",
+    "search_family": "c16_owner_lift_discrete_convex_methods",
+    "source_screening": "literature/owner-lift-20261030/F178-screen.json",
+    "screening_note": "Source-open only. Bounded primary-source resolution searches did not establish a current resolution; this is not evidence that the problem remains open.",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Choose a polyhedral subclass, objective and oracle/input model; the paper supplies a general algorithm-development program rather than one fixed theorem."
+    }
+  },
+  {
+    "id": "L-F178-inverse-optimization-algorithms",
+    "origin": "article_inventory_extension",
+    "title": "Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad algorithm/formulation program; excluded from precise-target denominator until its oracle, data and output model is fixed.",
+    "occurrences": [
+      {
+        "source_id": "F178",
+        "locator": "Section6 introduction and Remark6.5",
+        "url": "https://arxiv.org/html/2007.03507v3",
+        "source_sha256": "767bf9dfed5c9b4691128c159027c8ccac1607bb93d8570fd4fd99c838187e4e",
+        "version": "arXiv:2007.03507v3, 27 January 2021; DOI10.1287/moor.2021.1160",
+        "relation": "explicit_research_direction",
+        "extracted_text_lines": [
+          2030,
+          2050
+        ]
+      }
+    ],
+    "related_target_ids": [
+      "L-F178-m2-square-strong-polynomial",
+      "L-F178-box-tdi-algorithms"
+    ],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "current_resolution_status": "not_independently_established",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "added_on": "2026-10-30",
+    "search_family": "c16_owner_lift_discrete_convex_methods",
+    "source_screening": "literature/owner-lift-20261030/F178-screen.json",
+    "screening_note": "Source-open only. Bounded primary-source resolution searches did not establish a current resolution; this is not evidence that the problem remains open.",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Fix an inverse problem and representation, including bounded cost vectors, deviation from a box or linear deviation costs; audit prior algorithms before selecting a claim."
+    }
+  },
+  {
+    "id": "L-F179-polymatroid-norm-constraints",
+    "origin": "article_inventory_extension",
+    "title": "Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction_or_formulation_gate",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Broad algorithm/formulation program; excluded from precise-target denominator until its oracle, data and output model is fixed.",
+    "occurrences": [
+      {
+        "source_id": "F179",
+        "locator": "Section5, discussion following Theorem4",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/",
+        "source_sha256": "eb7b73ac99cfd36d544a84fde0c788f19e253401ba5e3a573cbd04db0f6aa6b1",
+        "version": "Publisher full text, online29 March2021, issue2022; Mathematical Programming194,661–684; DOI10.1007/s10107-021-01642-1",
+        "relation": "explicit_research_direction",
+        "extracted_text_lines": [
+          298,
+          300
+        ]
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "current_resolution_status": "not_independently_established",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "added_on": "2026-10-30",
+    "search_family": "c16_owner_lift_discrete_convex_methods",
+    "source_screening": "literature/owner-lift-20261030/F179-screen.json",
+    "screening_note": "Source-open only. Bounded primary-source resolution searches did not establish a current resolution; this is not evidence that the problem remains open.",
+    "formalization_suitability": {
+      "assessment": "not_assessed",
+      "objects_and_gate": "Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question."
     }
   }
 ]

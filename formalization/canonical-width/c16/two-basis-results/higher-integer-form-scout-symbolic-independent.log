@@ -1,0 +1,28 @@
+{
+  "status": "PASS_SYMBOLIC_PHYSICAL_INTEGER_FORM_REVIEW",
+  "source_C16_answered": false,
+  "bank_sha256": "88531dac0e0fb5b6873d7b928f8d13c80b0aab94e7f4773313120277e4937a39",
+  "receipt_sha256": "501eb9b75070f9da5038116e06f278b6e4196ffc2b6892c04d4c969109c72caf",
+  "point_sha256": "5f9a622e68a3c1e842ae13a5a5b18cf06b388515b5821d17eda2389375b290ef",
+  "reviewer_sha256": "f4e17dc6e56449665b466e97389815841032dc6d9a52ade3254039b66b1c17b2",
+  "source_hashes": {
+    "verify_physical_integer_forms.py": "3bcd4633cbfdde6b948f30b1d4e2f3a831e7c61f3fc7b9cd537ff1c860f0e8a3",
+    "physical_integer_form_rows.py": "58a041bda9ebe6db05728ddf1bbf71a195d7e6a15cca5c9abb6eec754657df1a",
+    "verify_projected_profile_moment_rows.py": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e",
+    "separate_higher_integer_forms.cpp": "39be7f4dcc25f6561ce9ac6e5d3040c9468912d2a91ce4d27e82afd0f76156ad"
+  },
+  "cuts_checked": 22,
+  "symbolic32_action_polynomials_checked": 22,
+  "exact_truth_assignments": 6272,
+  "symbolic_monomial_terms": 19744,
+  "compiled_matrix_nonzeros": 618,
+  "scanner_review": {
+    "normalization_preserves_exact_signed_polynomial": true,
+    "coefficient_slot_permutation": "Only equal signed weights are permuted; arbitraryK1..12 is handled.",
+    "current_templates_arithmetic_safe": true,
+    "arbitrary_integer_input_limitation": "C++int products constant*(constant-1), constant*w and w_i*w_j can overflow for large signed inputs. The current frozen small templates are safe; arbitrary-size coefficients would need guarded wider arithmetic. Discovery remains heuristic and every accepted row is independently evaluated with Python integers/Fractions.",
+    "completeness_claimed": false
+  },
+  "elapsed_seconds": 0.6808248340385035,
+  "scope": "Universal binomial(L,2)>=0 for integerL; literal32-action Boolean polynomials equal the folded moment rows. Exact positive gaps are only at the named frozen point. No complete family separation, source obstruction or frame is claimed."
+}

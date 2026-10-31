@@ -1,0 +1,71 @@
+{
+  "status": "FROZEN_ENVIRONMENT",
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "executable": "/private/tmp/c16-venv/bin/python",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "python-flint": "0.9.0",
+    "cvxpy": "1.9.3",
+    "scs": "3.3.1",
+    "psutil": "7.2.2",
+    "ortools": "9.15.6755",
+    "python-sat": "1.9.dev17",
+    "pycryptosat": "5.17.0"
+  },
+  "file_hashes": [
+    {
+      "path": "formalization/canonical-width/c16/orbit_rank_profiles.cpp",
+      "bytes": 4285,
+      "sha256": "7e89bc8d2d3288974080dbeaf70c10a0704f37e620ec3d6857493230c5f7ba06"
+    },
+    {
+      "path": "formalization/canonical-width/c16/prune_linear_cover.cpp",
+      "bytes": 5422,
+      "sha256": "239ab55e62616808372ae833276cb4126e7279d807c90c4b8e694d50498d17ab"
+    },
+    {
+      "path": "/private/tmp/c16-profile-final",
+      "bytes": 60512,
+      "sha256": "57d885d30e50b790f6015acafe17c2c87d0dea6fde19d81cac2eed0f6729d3f9"
+    },
+    {
+      "path": "/private/tmp/c16-cake_xlrup",
+      "bytes": 424984,
+      "sha256": "bf0ddfc20cfb7af69647274800d14685cbeec2c2e7b663cc0bbe897a413b5d02"
+    },
+    {
+      "path": "/private/tmp/c16-cake_xlrup.S",
+      "bytes": 1834494,
+      "sha256": "4e08862087314ba00b72917214ea82f1c16c5d0063a12e0d72c8231252adcc2a"
+    },
+    {
+      "path": "/private/tmp/c16-cake_basis_ffi.c",
+      "bytes": 9636,
+      "sha256": "bd498883fdc0577d734a771fe8197c5ff571f2abdd769b8dc95d46818db5cbbc"
+    },
+    {
+      "path": "/private/tmp/c16-drat-trim/drat-trim",
+      "bytes": 70120,
+      "sha256": "86a8209e667de72bc68ba43575faff85ecdfc2afa45d14d04cfd57df0d701e1d"
+    },
+    {
+      "path": "/private/tmp/c16-cms-20261028/cryptominisat5",
+      "bytes": 3524720,
+      "sha256": "54d694187e677d39138bf40afe8490bf02fb0a834e583163fa7007e56491507b"
+    },
+    {
+      "path": "/private/tmp/c16-bosphorus-20261028/bosphorus",
+      "bytes": 8391512,
+      "sha256": "7372e27fd6de2587948f9758404e95d230be86c13a42c4f6661d860e9dcb2b2f"
+    }
+  ],
+  "profile_build": "/usr/bin/clang++ -std=c++20 -O3 -DNDEBUG orbit_rank_profiles.cpp -o profile-final",
+  "official_checker_build": "clang -arch x86_64 -std=c11 -O2 -DCML_HEAP_SIZE=512 -DCML_STACK_SIZE=512 basis_ffi.c cake_xlrup.S -o cake_xlrup",
+  "checker_pin": "meelgroup/frat-xor@18cd6bc17af10a9891c10a846ce966166f9fe0dc",
+  "checker_architecture": "official unmodified x86_64 assembly under existing macOS Rosetta",
+  "independent_replay": "replay_algebraic.py --drat-trim /path/to/drat-trim --xlrup-checker /path/to/cake_xlrup --profile-binary /path/to/rebuilt/profile-final --output /outside/checkout/summary.json",
+  "limit": "Sparse-lift historical pre-cap source was not separately frozen; its unknown runs do not certify a degree barrier. Exact mathematical certificates are consumed without those binaries.",
+  "python_distribution_snapshot": "python-environment.txt"
+}

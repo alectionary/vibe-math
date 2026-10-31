@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "adder_input_truth_checks": 2046,
+  "fixed_owner_extension_truth_checks": 1344,
+  "static_binary_model": true,
+  "fixed_assignment_checks_use_static_model_without_added_matching_clauses": true,
+  "callback_integrations": [
+    {
+      "pool": "all2",
+      "variant": "baseline",
+      "answer": true,
+      "oracle_statistics": null
+    },
+    {
+      "pool": "all2",
+      "variant": "span",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 6,
+        "clauses": 1,
+        "conflicts": 0,
+        "units": 1,
+        "native_and_certificate_seconds": 9.979214519262314e-05,
+        "cut_limit_reached": false
+      }
+    },
+    {
+      "pool": "nonsplit4",
+      "variant": "baseline",
+      "answer": false,
+      "oracle_statistics": null
+    },
+    {
+      "pool": "nonsplit4",
+      "variant": "span",
+      "answer": false,
+      "oracle_statistics": {
+        "checks": 2,
+        "clauses": 2,
+        "conflicts": 1,
+        "units": 1,
+        "native_and_certificate_seconds": 9.862496517598629e-05,
+        "cut_limit_reached": false
+      }
+    },
+    {
+      "pool": "all4",
+      "variant": "baseline",
+      "answer": true,
+      "oracle_statistics": null
+    },
+    {
+      "pool": "all4",
+      "variant": "span",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 117,
+        "clauses": 10,
+        "conflicts": 2,
+        "units": 8,
+        "native_and_certificate_seconds": 0.0010683313012123108,
+        "cut_limit_reached": false
+      }
+    },
+    {
+      "pool": "canonical4",
+      "variant": "baseline",
+      "answer": true,
+      "oracle_statistics": null
+    },
+    {
+      "pool": "canonical4",
+      "variant": "span",
+      "answer": true,
+      "oracle_statistics": {
+        "checks": 2,
+        "clauses": 0,
+        "conflicts": 0,
+        "units": 0,
+        "native_and_certificate_seconds": 9.834067896008492e-06,
+        "cut_limit_reached": false
+      }
+    }
+  ],
+  "native_library_sha256": "07edcd71b50e12a022ed2e4786155735e1da4fd66966c7b1ca293f5a4994d74c",
+  "scope": "Exact small Boolean-adder and model equivalence controls, plus actual direct-owner matching/span callbacks. No C16 satisfiability conclusion."
+}

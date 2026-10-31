@@ -1,0 +1,10 @@
+EXACT PASS ownership 32355
+EXACT PASS circuit 115200
+Traceback (most recent call last):
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_unified_moment_point.py", line 36, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_unified_moment_point.py", line 31, in main
+    residual=evaluate(matrix,rhs);bad=[i for i,r in enumerate(residual) if r>0];checks[key]={'rows':len(residual),'violations':len(bad),'maximum_exact_violation':str(Fraction(max(residual),D)),'first_violated_rows':bad[:12]};assert not bad,(key,checks[key]);print('EXACT PASS',key,len(residual),flush=True)
+                                                                                                                                                                                                                                        ^^^^^^^
+AssertionError: ('legacy', {'rows': 12849, 'violations': 1, 'maximum_exact_violation': '927959107832529428231985293/531255100784436982736536731648', 'first_violated_rows': [12230]})

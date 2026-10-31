@@ -1,0 +1,56 @@
+{
+  "status": "FROZEN_BEFORE_ONE_GLOBAL_FOUR_TRIAL",
+  "utc": "2026-10-30T01:02:07.895974+00:00",
+  "source_C16_answered": false,
+  "seconds": 3600,
+  "command": [
+    "/private/tmp/c16-venv/bin/python",
+    "global_four_signature.py",
+    "--mode",
+    "global",
+    "--seed-cuts",
+    "moment-resumption-results/global-all-seeds.json",
+    "--separator",
+    "closure",
+    "--native-library",
+    "/private/tmp/c16-domain-propagation.dylib",
+    "--word-library",
+    "/private/tmp/c16-conditional-word.dylib",
+    "--sparse-library",
+    "/private/tmp/c16-sparse-quotient.dylib",
+    "--sparse-order",
+    "3",
+    "--signature-independent",
+    "--projection-count",
+    "--phase-profiles",
+    "algebraic-results/orbit-rank-profiles.json.gz",
+    "--rounds",
+    "100000",
+    "--seconds",
+    "3600",
+    "--output",
+    "moment-resumption-results/global-four-trial.json",
+    "--seed-circuits",
+    "transfer-results/global-trial.json"
+  ],
+  "zero_round_frozen_sha256": "46c22d29b6819b6b0f5e874db291c5758fcbe8a2c3ac448587937bae0f0a5437",
+  "zero_round_independent_sha256": "03bf7b3beda5d1db58b60f547d967f4c57befe4c54f4fd45b5fce1ca8eab30de",
+  "initial_input_sha256": "02499f07955d1dd3db63a69175d30381af08b8e613c4ef1c3614b2ea669aa0cb",
+  "source_hashes": {
+    "global_four_signature.py": "e2dd9961d3876f1a70a191c980c590bc527c431a4f542fb029489ca2213954e8",
+    "verify_global_four_signature.py": "8ca6cc5a439281d949d739249b92cca36e363d58e1fb1aeb679730ad167ecd0c",
+    "minimize_four_witness.py": "b071acb63daf8ca6f2dca8db283d1a9d535ec770094a185d1e7f3598d3f2b363",
+    "sparse_quotient_four.py": "fba39e1fef7608bd981deff249999ae379d44bf760124265c77e2b33d341b11b",
+    "verify_four_term.py": "6397e7d8a0e1d00d7ced703ede914804aa058afba211e555922e595581529603"
+  },
+  "inputs": {
+    "moment-resumption-results/global-all-seeds.json": "540866ae730fd990eac86ed66fb8e1d6a8b9715092ecdb2907c731ca73706a0e",
+    "transfer-results/global-trial.json": "63311f746bf41f7d4760419defb584b8beaf70f5170feb2f88322a91450bb628"
+  },
+  "library_hashes": {
+    "/private/tmp/c16-domain-propagation.dylib": "25101ca31f545e25b1478aa16b3128bdceff1a1b283b1faa220958c61733dc56",
+    "/private/tmp/c16-conditional-word.dylib": "72f32857e3807a57430c3500bf570d7bf91fc45cf0e1d7eb351e169ed309d058",
+    "/private/tmp/c16-sparse-quotient.dylib": "58ecd639d29dd893bb8c1aa5ddfb89901164087dfacf2d3df48b0dcb08855960"
+  },
+  "scope": "One full source-domain global necessary model. Prior clauses and circuits retained; complete order4 runs after closure and order3, and fixed-witness hitting sets shorten newly emitted word clauses. No matched runtime or source-resolution claim without complete independent proof."
+}

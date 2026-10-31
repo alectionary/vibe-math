@@ -1,0 +1,9 @@
+# Exact complete shared eight-event capacity allocation
+
+The single authorized repair is exactly feasible. SoPlex returned optimal in28.715 seconds. The adapter reconstructed all22513 full rational parameters and checked all98868 semantic rows. The unchanged independent parent consumer then accepted the original22481-parameter projection and all old capacity constraints in9.40 seconds. The separate new consumer accepted all176 conditional atom slots,24 forbidden-state zeros,138 appended rows, and all37 fresh global eight-event moments in1.29 seconds.
+
+The resulting shared eight-event law has47 positive atoms and uses the same pinned sixteen-pattern law as the earlier accepted capacity allocation. It retains all98730 old source rows, including the listed ranks, owner-star constraints, complete selected flows, and neighbor capacities. Thus the conditional Boolean-union obstruction has been repaired within this larger finite coupled model. Its old exact branch choices are reevaluated at the new endpoint in the matched comparison artifact; no coefficient normalization or changed target is used to credit the repair.
+
+The accepted endpoint is `two-basis-results/joint-owner-k22-eight-point22-exact.json`; its final receipt is `two-basis-results/joint-owner-k22-eight-point22-exact-independent.json`, status `PASS_EXACT_LITERAL_OWNER_K22_CAPACITY_ALLOCATION`. The old-model projection has its own unchanged-consumer receipt at the same prefix with `-parent-independent.json`.
+
+This is a precise finite-relaxation barrier. The new allocation has not undergone an all-subset conditional matroid cohort, and no full compatible X/Z frame or global Boolean law is established. There is no source-case exclusion or global target separation. No additional optimization, rank cohort, or automatic continuation was launched after this endpoint.

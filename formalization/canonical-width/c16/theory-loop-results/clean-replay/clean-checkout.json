@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "scientific_commit": "bfc58d42ce21d83529f5e36d86a63d1be79448fa",
+  "clean_detached_checkout": "/private/tmp/c16-theory-clean-20261028",
+  "discovery_dependency_guard": "pysat import rejected; numerical/discovery packages blocked by frozen exact-only-sitecustomize.py",
+  "frozen_file_hashes_checked": 630,
+  "checks": [
+    {
+      "name": "cover428",
+      "status": "PASS",
+      "output_sha256": "0b6b1bfa8e13d3a7eef00d37aaade51b5d86fc81d75e14a70ed821babb130aad",
+      "elapsed_seconds": 130.53969745803624,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_cover_exchanges.py",
+        "--chain",
+        "formalization/canonical-width/c16/theory-loop-results/exchange/chain.json",
+        "--drat-trim",
+        "/private/tmp/c16-drat-trim/drat-trim",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/cover428.json"
+      ]
+    },
+    {
+      "name": "rank-minimality",
+      "status": "PASS",
+      "output_sha256": "fcf37804d3f416bfd369f3dfd5982d22c5fa66a12fc77d7768eba6f7a33472e6",
+      "elapsed_seconds": 0.21183574991300702,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_theory_loop.py",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/rank-minimality.json"
+      ]
+    },
+    {
+      "name": "encoding-controls",
+      "status": "PASS",
+      "output_sha256": "b732f67fcda64377bce834cf5c9bf281555ecdbbc373c70d2718da9bec529558",
+      "elapsed_seconds": 1.9381060000741854,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/check_theory_controls.py",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/encoding-controls.json"
+      ]
+    },
+    {
+      "name": "affine-control",
+      "status": "PASS",
+      "output_sha256": "7915a6b97813839cc2ab00a607fd8c162117de1d83cd411824b846c747f5910a",
+      "elapsed_seconds": 0.5899462910601869,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_affine_signature_closure.py",
+        "--certificate",
+        "formalization/canonical-width/c16/theory-loop-results/affine-control.json.gz",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/affine-control.json"
+      ]
+    },
+    {
+      "name": "affine-hard",
+      "status": "PASS",
+      "output_sha256": "b946d7965fdbb21e5fb97d29295752d8ffc252f9c452bdee91c9f6591a839c4d",
+      "elapsed_seconds": 1.1210037090349942,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_affine_signature_closure.py",
+        "--certificate",
+        "formalization/canonical-width/c16/theory-loop-results/affine-hard.json.gz",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/affine-hard.json"
+      ]
+    },
+    {
+      "name": "witness36",
+      "status": "PASS",
+      "output_sha256": "20a6d714ee25a6e9cac51db44b5bec1c8c688052075c4fa14b343aafc6ae520e",
+      "elapsed_seconds": 19.14708154089749,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_unit_witness_cover.py",
+        "--chain",
+        "formalization/canonical-width/c16/theory-loop-results/witness36/chain.json",
+        "--drat-trim",
+        "/private/tmp/c16-drat-trim/drat-trim",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/witness36.json"
+      ]
+    },
+    {
+      "name": "native-parity-control",
+      "status": "PASS",
+      "output_sha256": "145c04a0f4ade00c4a6ab3b0661a4105e5e2f3e8b68a0e9197a76fa8f23f8348",
+      "elapsed_seconds": 0.08472724992316216,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/check_native_parity_proof.py",
+        "formalization/canonical-width/c16/theory-loop-results/native-toy.xnf",
+        "formalization/canonical-width/c16/theory-loop-results/native-toy.lrup",
+        "--output",
+        "/private/tmp/c16-theory-clean-results/native-parity-control.json"
+      ]
+    }
+  ],
+  "validators": [
+    {
+      "name": "validate_open_problems.py",
+      "returncode": 0,
+      "output": "Validated 402 canonical entries, 160 eligible targets, 191 paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.\nResearch reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.\nBeezer extension:187\u2192190 entries,111\u2192112 eligible,60\u219261 papers,57\u219258 full-text screens; three historical complete Lean targets retained; one existing F16 target completed.\n"
+    },
+    {
+      "name": "validate_current_difficulty.py",
+      "returncode": 0,
+      "output": "Validated 402 planning records, including 221 explicitly unassessed additions, 160 eligible targets and 6 completed targets.\n"
+    }
+  ],
+  "git_diff_check_returncode": 0,
+  "clean_at_end": true,
+  "source_C16_answered": false,
+  "verified_cover": 428,
+  "elapsed_seconds": 132.3900680000661
+}

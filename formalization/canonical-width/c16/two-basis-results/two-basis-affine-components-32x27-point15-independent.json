@@ -1,0 +1,151 @@
+{
+  "status": "PASS_EXACT_COMPLETE_SECTOR_AFFINE_SPANS",
+  "certificate_sha256": "94fe2f02225a2491e4bf0b2424893d9e91fbd95514c14ae5b0113122d1f1a6de",
+  "point_sha256": "5f9a622e68a3c1e842ae13a5a5b18cf06b388515b5821d17eda2389375b290ef",
+  "lambda_seed_sha256": "cd9e879fbb02a42cb4b5d77b5359d449d01583d0eb5aade79b111d9aa15cb78a",
+  "consumer_sha256": "957c2c580766d4cff4798113216ec80588e9c7d7752736e955a08d1ec4fb3d41",
+  "source_hashes": {
+    "two_sided_full_basis_oracle.py": "6ca7d87156938304edfc86241e9e7bb568e46749e675425a377941ac1e521830",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+  },
+  "consumer_dependencies": {
+    "verify_two_sided_full_basis_oracle.py": "e6342b1f16ce5902a4f2a2601407e77b35b58bab7a66f51b39ab59510a4f49b0",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f"
+  },
+  "sectors": {
+    "X": {
+      "all_patterns": {
+        "rank": 3583,
+        "nullity": 17,
+        "target_residual_count": 0,
+        "generators": 10504,
+        "null_indicators_partition_coordinates": true
+      },
+      "positive_lambda_patterns": {
+        "rank": 3583,
+        "nullity": 17,
+        "target_residual_count": 0,
+        "generators": 7617,
+        "null_indicators_partition_coordinates": true
+      }
+    },
+    "Z": {
+      "all_patterns": {
+        "rank": 3583,
+        "nullity": 17,
+        "target_residual_count": 0,
+        "generators": 10016,
+        "null_indicators_partition_coordinates": true
+      },
+      "positive_lambda_patterns": {
+        "rank": 3583,
+        "nullity": 17,
+        "target_residual_count": 0,
+        "generators": 7477,
+        "null_indicators_partition_coordinates": true
+      }
+    }
+  },
+  "physical": {
+    "physical_pairings_rebuilt": 518400,
+    "sector_and_rotation_comparisons": 1036800,
+    "graph_ranks": {
+      "sector_swap": 128,
+      "X_rotation": 128,
+      "Z_rotation": 128
+    }
+  },
+  "tiny_controls": [
+    {
+      "pool": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "forced": [],
+      "bases": 4,
+      "affine_dimension": 2,
+      "components": 2
+    },
+    {
+      "pool": [
+        1,
+        2,
+        3,
+        4,
+        4
+      ],
+      "forced": [],
+      "bases": 6,
+      "affine_dimension": 3,
+      "components": 2
+    },
+    {
+      "pool": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "forced": [
+        0
+      ],
+      "bases": 12,
+      "affine_dimension": 5,
+      "components": 1
+    },
+    {
+      "pool": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "forced": [
+        0
+      ],
+      "bases": 2,
+      "affine_dimension": 1,
+      "components": 1
+    },
+    {
+      "pool": [
+        1,
+        2
+      ],
+      "forced": [
+        0,
+        1
+      ],
+      "bases": 1,
+      "affine_dimension": 0,
+      "components": 0
+    },
+    {
+      "pool": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "forced": [],
+      "bases": 3,
+      "affine_dimension": 2,
+      "components": 1
+    }
+  ],
+  "negative_controls_rejected": [
+    "X_wrong_component_rank",
+    "X_wrong_annihilator",
+    "Z_wrong_component_rank",
+    "Z_wrong_annihilator"
+  ],
+  "elapsed_seconds": 6.6188965839101,
+  "scope": "Complete real affine spans for the declared conditional full-basis sector relaxation. No inequalities or target membership proved; no source case excluded."
+}

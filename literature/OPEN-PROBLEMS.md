@@ -1,31 +1,31 @@
 # Expanded open-problem inventory
 
-Inventory updated October 26, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
+Inventory updated October 30, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **373 canonical entries**: the original 40 dissertation targets and **333 additional article entries**. Of the additions, **111 are specific mathematical questions or tasks suitable for coverage tracking**; the other 222 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **430 canonical entries**: the original 40 dissertation targets and **390 additional article entries**. Of the additions, **122 are specific mathematical questions or tasks suitable for coverage tracking**; the other 268 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [106 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/150 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [141 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/161 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 111 |
-| Additional directions/formulation/method entries outside the denominator | 222 |
-| Combined eligible targets | 150 = 39 + 111 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/150 (4.00%) |
-| Eligible targets with an identified, verified Lean statement | 6/150 (4.00%) |
-| Eligible targets with a complete checked Lean proof | 6/150 (4.00%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/150 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/150 |
-| Additional identified Lean statements without a build audit | 1/150 |
-| Eligible targets with Lean discovery still unassessed in this extension | 42/150 |
-| Articles/preprints in scope | 176 |
-| Full-text sources screened, including withdrawn history | 146/176 |
-| Current-publication full texts screened | 145 |
+| Additional article targets in the coverage denominator | 122 |
+| Additional directions/formulation/method entries outside the denominator | 268 |
+| Combined eligible targets | 161 = 39 + 122 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/161 (3.73%) |
+| Eligible targets with an identified, verified Lean statement | 6/161 (3.73%) |
+| Eligible targets with a complete checked Lean proof | 6/161 (3.73%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/161 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/161 |
+| Additional identified Lean statements without a build audit | 1/161 |
+| Eligible targets with Lean discovery still unassessed in this extension | 53/161 |
+| Articles/preprints in scope | 213 |
+| Full-text sources screened, including withdrawn history | 170/213 |
+| Current-publication full texts screened | 169 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 30/176 |
+| Not fully assessed | 43/213 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -183,6 +183,8 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F96](https://bioinfo.uib.es/~joemiro/comptrans/HammingIntro.pdf) | abstract or metadata only | Not assessed | Retrieved only a three-page introduction excerpt, not the full1950 article. No full question-screen or zero-question outcome claimed. |
 | [F97](https://arxiv.org/html/quant-ph/0406168v1) | full text screened | 3 | Complete main text, introduction, proofs and conclusion read. Pure full-rank stabilizer-state entropy formulas are not applied to a code subspace. The local anticommutation ingredient is classical. |
 | [F98](https://www.nature.com/articles/s41534-025-01080-3) | relevant sections screened | 6 | Complete main-article introduction, results and Discussion screened; Lemma1 and definitions compared. Supplementary proofs not inspected. Web tool cookie redirect failed, but direct primary HTML retrieval supplied the main article. No full supplementary-version or zero-question claim. We do not claim a new GME/nonlocality theorem. |
+| [F152](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html) | full text screened | 5 | Earlier pending question reconciliation completed in the literature-method review; present-status/Lean checks remain unassessed. |
+| [F153](https://arxiv.org/html/2312.03859v1) | full text screened | 15 | Full version-specific screen with canonical deduplication.15 targets in F153,11 repeated in F157, including two borrowed unresolved context targets. Current resolution and Lean discovery remain unassessed. |
 | [F99](https://arxiv.org/pdf/1004.3791v2) | full text screened | 3 | Section3 defines equality of X/Z spaces. Section5 Lemmas1/2 and Corollary1 prove a locality-preserving [[n,k,d]] to [[4n,2k,2d]] weakly self-dual conversion. Its preservation of the selected absorbing support, Gallager-B votes, first stopping and every supported error recovery has not been established. Section6 Proposition1 concerns Majorana parity and a different commutation law. |
 | [F100](https://arxiv.org/pdf/1703.07847v3) | full text screened | 4 | Section3 self-orthogonal-space quotient form and normal/hyperbolic classification; Section4.2 code families and the BLT conversion. No checked bridge to the full frozen actual-check Gallager-B target. Normal/hyperbolic classifications do not concern the parity of the selected support. Full PDF includes appendices A-E. |
 | [F101](https://vtechworks.lib.vt.edu/server/api/core/bitstreams/ff553a24-ba94-42ac-a63a-20ee9d7f8694/content) | full text screened | 3 | Sections2/3 initialize received-word states and use integer/fractional unsatisfied-check bit-flip rules and codeword stopping. This differs from our zero-initialized extrinsic syndrome-message trajectory and success modulo the entire opposite stabilizer space. Definitions and relevant proofs read; no theorem transfer asserted. |
@@ -227,6 +229,41 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F140](https://doi.org/10.1016/j.alcr.2025.100708) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
 | [F141](https://doi.org/10.3389/fphys.2017.00331) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
 | [F142](https://doi.org/10.1177/0265407518787232) | full text screened | 0 | Complete recovered PDF screened, including limitations/future-work. Empirical study requests are excluded. |
+| [F143](https://doi.org/10.4148/2475-7772.1095) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F144](https://doi.org/10.1207/S15328007SEM0904_1) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F145](https://doi.org/10.1214/10-AOS859) | full text screened | 1 | methodological_directions_recorded |
+| [F146](https://doi.org/10.1214/12-AOS1012) | full text screened | 2 | methodological_directions_recorded |
+| [F147](https://arxiv.org/abs/1504.02992) | full text screened | 1 | methodological_directions_recorded |
+| [F148](https://doi.org/10.1371/journal.pgen.0020114) | full text screened | 0 | no_additional_suitable_explicit_math_target_recorded |
+| [F150](https://doi.org/10.2135/cropsci2003.1493) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F151](https://doi.org/10.1534/genetics.109.112979) | full text access gap | Not assessed | unassessed_full_text_access_gap |
+| [F154](https://zctaskin.github.io/files/MIM.pdf) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
+| [F155](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf) | full text screened | 0 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
+| [F156](https://arxiv.org/pdf/2010.16293) | full text screened | 1 | Primary theorem/proof applicability and explicit source-question screen completed for this version. |
+| [F157](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf) | full text screened | 11 | Full version-specific screen with canonical deduplication.15 targets in F153,11 repeated in F157, including two borrowed unresolved context targets. Current resolution and Lean discovery remain unassessed. |
+| [F158](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf) | full text screened | 4 | Full21-page paper screened. Four broad/semantic conclusion directions; precise mathematical formulations, present-resolution and Lean checks remain unassessed. Primary software comparison gives no completed C16 case. |
+| [F159](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf) | full text screened | 4 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F160](https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf) | full text screened | 0 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F161](https://arxiv.org/pdf/2304.04292) | full text screened | 1 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F162](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf) | full text screened | 1 | Broad historical directions or formulation gates only; no newly eligible precise target. Full source, all method and question contexts screened. |
+| [F164](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf) | full text screened | 10 | Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed. |
+| [F165](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf) | full text screened | 6 | Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed. |
+| [F166](https://arxiv.org/abs/1401.5860) | metadata or selected passages only | Not assessed | Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed. |
+| [F167](https://research.monash.edu/en/publications/on-cnf-encodings-of-decision-diagrams/) | metadata or selected passages only | Not assessed | Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened. |
+| [F168](https://arxiv.org/abs/1604.06641) | metadata or selected passages only | Not assessed | Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed. |
+| [F169](https://arxiv.org/abs/2105.12284) | metadata or selected passages only | Not assessed | Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed. |
+| [F170](https://johnhooker.tepper.cmu.edu/papers.html) | metadata or selected passages only | Not assessed | Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup. |
+| [F171](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf) | metadata or selected passages only | Not assessed | Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure. |
+| [F172](https://epubs.siam.org/doi/10.1137/21M139339X) | metadata or selected passages only | Not assessed | Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established. |
+| [F173](https://www.sciencedirect.com/science/article/pii/0095895684900236) | metadata or selected passages only | Not assessed | Indexed abstract and author metadata inspected. Full-text retrieval routes and browser challenge are recorded; acquisition requested in issue63. Question screen remains unassessed with null target count. |
+| [F174](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF) | full text screened | 0 | All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found. |
+| [F175](https://publications.info.uaic.ro/files/tr/tr13-01.pdf) | full text screened | 0 | All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target. |
+| [F176](https://publications.info.uaic.ro/files/tr/tr13-02.pdf) | full text screened | 2 | All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed. |
+| [F177](https://doi.org/10.1109/SYNASC.2014.21) | metadata or selected passages only | Not assessed | Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used. |
+| [F178](https://arxiv.org/html/2007.03507v3) | full text screened | 3 | Complete v3 HTML screened: abstract, introduction, Sections2–6, appendix and references. Three linked entries: one specific M2 algorithm question and two broad algorithm directions. Weighted M-convex quadratic minimization is recorded as later known solvable in F180 Remark4.4, not a new open target. |
+| [F179](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/) | full text screened | 1 | Complete publisher text screened: introduction, Sections2–6, both appendices and references. One norm-generalization direction, including its Euclidean subcase. The recoverable-robust strongly-polynomial question is answered in this paper. Direct PMC acquisition failed; Europe PMC full-text XML was retained. |
+| [F180](https://arxiv.org/html/2202.06561v2) | metadata or selected passages only | Not assessed | Targeted reading of Remark4.4 and its cited context only. Later primary evidence says weighted discrete quadratic minimization over an integral base-polyhedron is known strongly polynomial. Complete HTML acquired, but complete question screening remains unassessed. |
+| [F181](https://arxiv.org/html/1805.05528v3) | metadata or selected passages only | Not assessed | Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication. |
 
 ## Reproducible evidence and limits
 
@@ -261,6 +298,9 @@ The original 39 targets retain the earlier audit’s search evidence. Earlier ar
 - **F50 — Introduction and final paragraph:** The introductory spectrum/dual-spectrum questions motivate the identity proved in the paper. Only the explicitly proposed broader computer-study program is retained, outside the coverage denominator.
 - **F54 — Introduction and principal complete-graph representation/count theorems:** Introductory questions describe the problem answered in the article; no additional explicit unresolved target was identified in the screened publisher HTML and preprint.
 - **F34 — AppendixK.2 and K.7:** TheoremK.2 is presented as a conditional theorem. Its own hypotheses are not silently dropped or promoted into an extra open integrality conjecture. The broader ConjectureK.3 is indexed with the scope warning.
+- **F178 — Section1.2 weighted M-convex square-sum question:** Later primary F180 Remark4.4 explicitly reports this weighted discrete quadratic problem as known strongly polynomial; retained as known-solvable follow-up, not a current open inventory addition.
+- **F178 — Section5.3 concrete-conjugate examples and Remark6.4:** The appendix supplies the concrete conjugates; Remark6.4 explains the multi-input extension. Neither is harvested as an unresolved question.
+- **F179 — Abstract/introduction and Section2:** The historical strongly polynomial recoverable-robust matroid question is answered in this paper; not added as currently open.
 
 ## Canonical inventory
 
@@ -3904,6 +3944,28 @@ Determine whether the unrestricted canonical frame width of the fixed LP code C1
 - Coverage denominator: included. Fixed source-defined construction and exact invariant/existence question; retain all construction and frame conventions.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open as stated in source; current resolution: not independently established.
+- Research progress: [88-pair width-16 partial canonical frame; f still 16 or 18](../formalization/canonical-width/c16/INVESTIGATION.md) (exact finite computation). Rebuilt checks have weight at most 9 and rank 480. An explicit 88-pair pure CSS frame has weight 16, zero syndromes and Gram identity. An earlier 84-pair frame does not extend inside the weight-16 pools. The unrestricted width remains unresolved, including for mixed Paulis.
+- Research progress: [No width-16 CSS frame contains all 16 seed-4 X monomials](../formalization/canonical-width/c16/INVESTIGATION.md) (exact finite computation). Every one of the 43046721 seed-4 partner assignments leaves the orthogonal X pool of rank at most 109, short of the 112 dimensions a frame containing those monomials would need. This does not decide f.
+- Research progress: [Complete partner-domain exclusions for 13 through 15 seed-4 monomials](../formalization/canonical-width/c16/TAKEOVER.md) (exact finite computation). Corrected complete-domain searches exclude listed-pool CSS frames with 13 or more seed-4 X monomials: 9, 6897 and 449904 full-rank quotient cases for 15, 14 and 13 monomials. The old 33 twelve-monomial orbit exclusions are retracted because their partner domain was incomplete. The unrestricted width remains 16 or 18.
+- Research progress: [Twelve-monomial whole-orbit exclusions retracted after domain audit](../formalization/canonical-width/c16/TAKEOVER.md) (exact finite computation). A physical weight-16 partner with seed-4 block 0x9 shows the old domain misses valid partners when bit 0 is omitted. The 33 old orbit exclusions cover only a subfamily. Complete twelve-monomial domains have 54,411,742,864 assignments across 116 rotation classes, before rank pruning. Full twelve-monomial nonexistence is not established.
+- Research progress: [Independent physical binding of the listed pools and width-18 upper frame](../formalization/canonical-width/c16/TAKEOVER.md) (exact finite computation). Rebuilt equation-(50) checks verify all 720 weight-16 operators per sector, every physical pairing against the saved logical coordinates, the 128-pair width-18 frame, and minimum X/Z support union 26. Listed-pool completeness is not independently proved.
+- Research progress: [Independent complete low-weight pool enumeration and mixed-Pauli bridge](../formalization/canonical-width/c16/INDEPENDENT-ENUMERATION.md) (exact finite computation). A fresh syndrome-directed enumerator covers all68 roots through weight17, visits47,708,679 nodes and recovers45 normalized weight16 physical orbits. Written completeness and physical sector-exchange checks give720 representatives per sector and mixed support-union minimum26. This independently reproduces the reduction to the finite pool problem, without deciding the128-pair frame question.
+- Research progress: [Complete corrected twelve-monomial exclusion](../formalization/canonical-width/c16/FOUR-HOURS.md) (exact finite computation). All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate.
+- Research progress: [Six-hour global search and finite structural certificates; exact width still open](../formalization/canonical-width/c16/SIX-HOURS.md) (exact finite computation). Six-hour continuation preserves an incomplete global search with3,451,122,187 nodes and20,380 unresolved leaves. Both exact static SAT models returned UNKNOWN. Complete finite graph-symmetry and orbit-profile certificates, checked rank/shape cuts and reproducible model inputs are preserved. The unrestricted width remains16 or18; best physical partial frame88; no Lean certificate.
+- Research progress: [Exact pool tensor normal form and inverse restrictions; full frame unresolved](../formalization/canonical-width/c16/INVERSION.md) (written proof and exact finite certificates). Exact source coordinate changes identify both720-vector pools with nine-by-five cyclic Cartesian dictionaries of primitive rank-one2-by2 matrices over F4[epsilon]/epsilon^16, with transpose sector exchange. A written thin-module dimension formula gives a four-type augmentation spanning condition for every full basis; any three types span at most125. Reduced dimension8 pools have maximum frame7 by checked SAT/DRAT, but a source-specific descent theorem is missing. Explicit counterexamples refute generic descent and generic half-basis ruling arguments. Original width remains16 or18, physical partial frame88, no Lean completion.
+- Research progress: [Exact inverse-pool thin-family obstructions; original width still open](../formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md) (written proof and exact integer certificates). Exact integer certificates prove that every full original minimum-pool frame uses at least three thin families in each sector, and exclude supports{0,1,2},{0,1,4},{1,2,4} independently in either sector. A1680-point enlargement preserves the original residues, exact thin orbits, projective directions, thin modules and transpose exchange yet admits a full frame, refuting aggregate descent. Full width remains16 or18; best physical partial frame88; no Lean completion or demonstrated global speedup.
+- Research progress: [Paired-basis cover518 and exact limits of linear subcovers](../formalization/canonical-width/c16/JOINT-COVER.md) (written proof and exact finite certificates). The dual-expansion identity gives a complete518-case selected-pair cover, independently checked from all518400 physical pairings and minimal over6238 source-pair witnesses. The83504 atoms outside this cover span dimension16368; sixteen translated annihilators prove no trace-one linear functional gives a proper subcover of this list. All1082 older residual graphs are pairwise nonisomorphic, and91125 tested joint-rank cuts pass the old rational128 point. Every completion remains open; width16/18 and physical88 unchanged; no Lean completion or measured runtime gain.
+- Research progress: [Nonlinear505-case cover from simultaneous dual identities and compatibility](../formalization/canonical-width/c16/NONLINEAR-COVER.md) (written proof and exact finite certificates). A checkedUNSAT proof gives a proper505-case subcover of the518-case list, removing13 representatives together without excluding those classes from full frames. Physical CNF regeneration and235298 literal controls pass. Broader auxiliary-vector/structured-matrix searches find no cover below518;26964 principal conditional minor-existence tests exclude no anchor. All505 retained anchors have explicit compatible partial signature matchings, so none is a completed full-frame case. A residual-selected source witness705/705 rejects the saved8-pair matching at anchorX03-Z03-h00 and increases the functional span16to32; the next solver gate is unrun. Width16/18, physical88 and Lean status unchanged.
+- Research progress: [Compact proof cover497 and87 independent residual-guided matrix identities](../formalization/canonical-width/c16/RESIDUAL-IDENTITIES.md) (written proof and exact finite certificates). Independent physical CNF regeneration andDRAT checking prove a497-case proper subcover of505, removing eight more representatives together. At anchorX03-Z03-h00,87 independent full-matrix equations are selected; partial solutions satisfy prefixes through86 and the87-equation call isUNKNOWN. This stronger identity model excludes no anchor and does not supply the cover reduction. A disjoint physical partial-witness packing raises the original16-signature proof-criterion lower bound from85 to109; this is not a bound for arbitrary covers. Width16/18, physical88 and Lean status remain unchanged.
+- Research progress: [Symmetry-normalized exchanges prove a428-case sufficient cover](../formalization/canonical-width/c16/THEORY-LOOP.md) (written proof and independent physical certificate replay). A new-class normalization lemma and a nonnested exchange case split give a428-case sufficient cover, net69 fewer than497 (13.8833%). One formerly omitted class is restored, so this is not a proper subcover. Independent physical regeneration checks the base497 proof,17 extensions and53 exchange branches;480 deletion witnesses show only inclusion minimality. A rank32 projected residual requires33 total partial pairs and rejects all21 saved smaller witnesses, but the full-case solver isUNKNOWN. Conditional affine certificates replay; new native-parity solver comparisons areUNKNOWN. Three further bounded reduction rounds fail to improve428 and trigger the stated early-stop rule. Width16/18, physical88, all428 full completions unresolved; no Lean completion or measured full-search speedup.
+- Research progress: [Algebraic phase restrictions and exact strengthened-relaxation barrier](../formalization/canonical-width/c16/ALGEBRAIC-CONTINUATION.md) (written proof and independent physical certificate replay). Independent physical phase witnesses remove1105671/2545497 basic local masks (43.436%); fixed48/48 conditioning removes119919/688994 more (17.405%). All45 X-only conditional capacity rows replay, strengthening711/2025 bounds. Exact weighted local inequalities exclude an initial rational point; a new rational point passes8100 occupancy/nonpartner inequalities, six weighted cuts and4050 selected-anchor plus4050 original-family anchor-absent convex decompositions. A deleted-X336 pilot removes830 additional local masks and still admits the same point. All428 starting anchors have checked full residual-identity XOR decompositions, ruling out pure inverse-linear separators.4102 direct original-coordinate witnesses give22414 short full-anchor clauses. A418-case sufficient cover and121 fractional-packing lower bound for its old proof criterion are independently checked. Width16/18, physical88, full cases completed0 and Lean status unchanged.
+- Research progress: [Rank-strengthened compact-cover comparison; cover418 unchanged](../formalization/canonical-width/c16/RANK-COVER-CONTINUATION.md) (exact physical rank certificates and independent SAT assignment replay). The4102 frozen rank certificates reject40/2552 recorded partial witnesses. Two frozen28-case matched cohorts, the second using47 new mixed-rank certificates, each find28 baseline SAT and24 strengthened SAT with4 UNKNOWN; no UNSAT or cover reduction. All24 first-cohort replacement witnesses are proved nonextendible to full frames. Rank variants take more summed solver-call time in these pilots. Width16/18, physical88, cover418 and full completions0 unchanged.
+- Research progress: [Domain-aware propagation and quotient-word obstructions prove a409-case sufficient cover](../formalization/canonical-width/c16/STRATEGY-REASSESSMENT.md) (written proofs and independent physical CNF DRAT replays). The sufficient selected-pair cover shrinks418 to409. A kept-anchor projection preserves up to16 independent free signatures, and domain inclusion permits sound composition. Domain-aware propagation supplies the first seven removals; all-negative quotient-word obstructions support two further removals and reject three saved partial candidates. The411-case parent chain fully replays from a clean checkout; fresh checks of the two new word leaves are recorded separately. Static owner and native-XOR trials do not establish a full-case speedup. Source width16/18, physical88/128, zero full anchors solved and Lean coverage remain unchanged.
+- Research progress: [Complete sparse quotient obstructions strengthen the local test through order three](../formalization/canonical-width/c16/THREE-TERM-CONTINUATION.md) (written proof and independent physical certificate replay). A complete sparse detecting-support criterion through order3 rejects262/512 frozen generated partial matchings, versus243 for complete order2 and237 for the old fundamental-row implementation. All19 strict order3 improvements pass existing joint mandatory propagation; independent replay checks their order2 non-rejection. Small controls pass2019 exhaustive-vector comparisons and544 certificate checks. Three matched600-second compact trials on the remaining anchor416/515 are allUNKNOWN; they share1688 partial matchings and never invoke the new quotient gate because prior propagation already rejects each visited candidate. None of the generated gate patterns occurs as a subset of those visited matchings. Cover409, physical88/128, zero full anchors solved and source width16/18 remain unchanged; no Lean completion or finishing-time estimate.
+- Research progress: [Relevant two- and three-vector source clauses and a408-case sufficient cover](../formalization/canonical-width/c16/RELEVANT-CLAUSES.md) (written source obstructions and clean physical CNF DRAT replays). Mining1688 saved hard-case matchings gives6921 checked source-certificate orbits; a frozen256-core bank contains one pair and255 triples. All selected cores strictly shrink their starting sets, and767 single-vector deletions independently fail the complete order3 criterion;120 cores are missed by complete order2. All256 pass both existing unrestricted and exact-domain propagation. In one sequential matched comparison, both variants prove the same compact cover case UNSAT; the seeded run takes91.56s versus174.86s and267 versus528 refinements. Both ordinary proofs independently replay from a clean checkout. Cover-domain induction reduces409 to408. Baseline also solves, and roughly563s preprocessing exceeds the83s discovery saving, so neither necessity of new seeds nor net single-case or general speedup is claimed. Width16/18, physical88/128, zero full source anchors solved and Lean status remain unchanged.
+- Research progress: [Held-out transfer, a405-case sufficient cover and a strict fourth-order source obstruction](../formalization/canonical-width/c16/TRANSFER-FOUR-HOURS.md) (written implications independent source checks and clean CNF DRAT replays). Three frozen held-out baseline/seeded pairs all independently prove UNSAT; clean physical/CNF/DRAT replay and domain inclusion reduce the sufficient cover408 to405. Seeded discovery totals319.46s versus787.57s on the three selected cases; this is limited reuse evidence, not a general or end-to-end speedup claim. A complete independent384-case screen finds one strict order4 forbidden pair, missed by complete order3. A16200-pair producer screen completes with four positive word classes independently checked, while its full negative replay is pending. Two full/global trials areUNKNOWN.31408 conditioned moment inequalities separate the old rational point in47 rows, but the strengthened relaxation has no exact feasibility or infeasibility certificate. Research paused at user request; width16/18, physical88/128, zero full source anchors solved, and Lean status unchanged.
+- Research progress: [Full-basis coupling, exact rank-family barriers and smaller integer separators](../formalization/canonical-width/c16/COUPLING-CONTINUATION.md) (written source validity proofs and independent exact physical moment replays). Exact signed compatible-basis pricing and counting identities yield54 accepted partner inequalities, including coefficient64 forms. Refreshing an existing five-event method adds234 exact integer-form rows, and the combined model contains308 rank rows. The latest global relaxation point15 is still exactly feasible, including all older conditional families and every Boolean triple. At witness12, an exact45-basis unconditional mixture and28 individual conditional rank-law certificates establish whole-family feasibility barriers;12 conditional cuts and5 unresolved anchors are separately recorded. Both four-X and both two-X/two-Z count-only extensions have exact feasible solutions at their recorded points. The full775 auxiliary hull has exact affine dimension771:14 apparent saved-sample identities have physical counterexamples, and772 verified columns span the full hull. Latest-point exchange, small phase-I and direct full-selector trials remain inconclusive. A written follow-up derives two-sided full-basis support over16 anchor patterns; implementation and unanchored mutual pairing remain open. Source width16/18, cover405, physical88/128, zero full source anchors excluded and Lean status are unchanged. No finishing-time bound or general source-search speedup is established. Cunningham1984 is indexed as F173, with fulltext acquisition requested in issue63 and no complexity transfer claimed.
+- Project-derived follow-up, outside the source-target denominator: **RQ-F91-c16-css-frame** — Decide whether the 720-class weight-16 CSS pools contain a 128-pair canonical frame. Open follow-up. Independent physical pool completeness through weight17 and the mixed-Pauli bridge reduce unrestricted width<=17 to a128-pair frame in the720-class pools. All twelve-and-more seed4 monomial cases are excluded; eleven-and-fewer and global compatibility remain unresolved. The six-hour archive preserves20,380 unresolved leaves after3,451,122,187 nodes. A full pool frame would give width16; a complete global obstruction would give width18.
 - [F91: Section IV.4 and Appendix C.3, Proposition9; construction equation50](https://arxiv.org/html/2610.06820v1); extraction lines 585–586; explicit open math target.
 
 ### L-F91-c20-unrestricted-width
@@ -4448,8 +4510,8 @@ Characterize the mixed graphs that yield generically identifiable linear structu
 - Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
-- [F145: Section 8 Conclusion](https://arxiv.org/pdf/1003.1146.pdf); author stated question or direction.
-- [F146: Introduction](https://arxiv.org/pdf/1107.5552.pdf); the same problem restated as still open.
+- [F145: Section 8 Conclusion](https://arxiv.org/pdf/1003.1146.pdf); extraction lines 1305–1305; author stated question or direction.
+- [F146: Introduction: the generic-identifiability problem remains open](https://arxiv.org/pdf/1107.5552.pdf); extraction lines 260–260; author stated question or direction.
 
 ### L-F146-half-trek-gap
 
@@ -4459,7 +4521,7 @@ Find an infinite family of mixed graphs that is rationally identifiable but not 
 - Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
-- [F146: Discussion](https://arxiv.org/pdf/1107.5552.pdf); author stated question or direction.
+- [F146: Discussion: rationally identifiable but not HTC-identifiable graphs](https://arxiv.org/pdf/1107.5552.pdf); extraction lines 1553–1553; author stated question or direction.
 
 ### L-F147-polytime-ancestral
 
@@ -4469,4 +4531,561 @@ Determine whether generic identifiability via ancestral decomposition can be dec
 - Coverage denominator: excluded. Author-stated statistical method direction; a precise model class, estimand and success guarantee must be selected before this becomes a theorem target. Social/empirical hypotheses are excluded.
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
-- [F147: Final paragraph before Acknowledgments](https://arxiv.org/pdf/1504.02992.pdf); author stated question or direction.
+- [F147: Final paragraph before Acknowledgments](https://arxiv.org/pdf/1504.02992.pdf); extraction lines 590–590; author stated question or direction.
+
+### L-F152-binary-rank-multiplicativity
+
+Determine whether ordinary-arithmetic binary factorization rank is multiplicative under every Kronecker product of binary matrices.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section3 Conjecture1](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 95–100; author stated question or direction.
+
+### L-F152-domino-asymptotic
+
+Determine the exact asymptotic fractional biclique partition number of the Domino matrix.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section3 before Theorem2](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 102–110; author stated question or direction.
+
+### L-F152-strict-cover-asymptotic-gap
+
+Determine whether fractional biclique cover can be strictly smaller than asymptotic fractional biclique partition for some binary matrix.
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section3 after Theorem2, inequality chain and unknown strictness](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 108–111; author stated question or direction.
+
+### L-F152-domino-more-powers
+
+Compute further Domino Kronecker powers, particularly the sixth, to improve the asymptotic bounds.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad method/computation/interpretation direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section5.4 final paragraph](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 240–240; author stated question or direction.
+
+### L-F152-domino-rational-interpretation
+
+Find a combinatorial interpretation for the suggested2059/149 third-power fractional partition value.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad method/computation/interpretation direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F152: Section5.4 continued-fraction discussion](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html); extraction lines 239–239; author stated question or direction.
+
+### L-F154-structured-mim-methods
+
+Develop induced-matching inequalities, preprocessing and heuristics exploiting particular graph classes.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Broad method/computation/interpretation direction; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F154: Section6 Conclusions and Future Research](https://zctaskin.github.io/files/MIM.pdf); extraction lines 4001–4003; author stated question or direction.
+
+### L-F156-multipartite-separable-unit
+
+Determine whether I plus or minus the projector onto any unit tensor vector is separable for every multipartite complex tensor space.
+
+- Type: conjecture or question; written formulation: precise math in source.
+- Coverage denominator: included. Precise source mathematical target; present resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F156: Introduction S1 and its stated open status; Proposition4.6 is conditional](https://arxiv.org/pdf/2010.16293); extraction lines 28–55; author stated question or direction.
+
+### L-F153-cutwidth-base
+
+Characterize the optimal cutwidth exponential base c_H for each fixed non-bipartite H, with a c_H^k n^O(1) algorithm and SETH lower bounds excluding (c_H-epsilon)^k n^O(1).
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Open Problem1](https://arxiv.org/html/2312.03859v1); extraction lines 130–138; author stated question or direction.
+- [F157: Open Problem1](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 163–170; author stated question or direction.
+
+### L-F153-fast-representatives
+
+Find faster representative-set construction for the graph-homomorphism cutwidth dynamic program.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction representative sets; Conclusion directions](https://arxiv.org/html/2312.03859v1); extraction lines 160–182; author stated question or direction.
+- [F157: Introduction representative sets; Conclusion directions](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 243–275; author stated question or direction.
+
+### L-F153-mimsup-computability
+
+Determine whether computing mimsup is decidable.
+
+- Type: question formulation gate; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction computability comparison](https://arxiv.org/html/2312.03859v1); extraction lines 183–185; author stated question or direction.
+- [F157: Introduction computability comparison](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 386–390; author stated question or direction.
+
+### L-F153-noninteger-mimsup
+
+Does some finite binary matrix have a noninteger asymptotic induced-matching number mimsup?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion first combinatorial question](https://arxiv.org/html/2312.03859v1); extraction lines 1149–1151; author stated question or direction.
+- [F157: Conclusion first combinatorial question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 1072–1074; author stated question or direction.
+
+### L-F153-random-mimsup
+
+Determine mimsup for an n by n matrix with independent Bernoulli-p entries.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion random-matrix question](https://arxiv.org/html/2312.03859v1); extraction lines 1151–1153; author stated question or direction.
+- [F157: Conclusion random-matrix question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 1074–1076; author stated question or direction.
+
+### L-F153-mimsup-him-functional
+
+Are mimsup and half-induced matching number functionally equivalent on finite binary matrices?
+
+- Type: specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction comparison; Conclusion final question](https://arxiv.org/html/2312.03859v1); extraction lines 216–219; author stated question or direction.
+- [F157: Introduction comparison; Conclusion final question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 476–477; author stated question or direction.
+
+### L-F153-mimsup-support-functional
+
+Are mimsup and support rank functionally equivalent on finite binary matrices?
+
+- Type: question formulation gate; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction comparison; Conclusion final question](https://arxiv.org/html/2312.03859v1); extraction lines 216–219; author stated question or direction.
+- [F157: Introduction comparison; Conclusion final question](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 476–477; author stated question or direction.
+
+### L-F153-strict-mimsup-support
+
+Does some finite binary matrix satisfy mimsup(A) strictly smaller than support-rank(A)?
+
+- Type: question formulation gate; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Source support-rank questions retained with a coefficient-field gate. Finite-field and sufficiently large/infinite-field readings differ; do not count the trivial F2 specialization as solving the authors question.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction inequality chain and proposed strictness](https://arxiv.org/html/2312.03859v1); extraction lines 214–219; author stated question or direction.
+- [F157: Introduction inequality chain and proposed strictness](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 460–463; author stated question or direction.
+
+### L-F153-nonprojective-not-prime
+
+Every non-projective non-bipartite core graph is not prime under the direct graph product.
+
+- Type: borrowed conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion non-projective graphs, cited Larose-Tardif/Okrasa-Rzazewski](https://arxiv.org/html/2312.03859v1); extraction lines 1135–1141; borrowed question explicitly discussed.
+
+### L-F153-strong-projectivity
+
+Do the classes of projective and strongly projective graphs coincide?
+
+- Type: borrowed conjecture formulation gate; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion non-projective graphs, cited Larose](https://arxiv.org/html/2312.03859v1); extraction lines 1140–1143; borrowed question explicitly discussed.
+
+### L-F153-nonprojective-lowerbounds
+
+Establish fine-grained Hom(H) lower bounds for non-projective non-bipartite cores.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion non-projective graphs](https://arxiv.org/html/2312.03859v1); extraction lines 1135–1144; author stated question or direction.
+
+### L-F153-fine-grained-courcelle
+
+Develop a fine-grained Courcelle-type theorem or a broader asymptotic-parameter dynamic-programming framework.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Direction or unresolved statement/computability interface; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion directions](https://arxiv.org/html/2312.03859v1); extraction lines 1145–1149; author stated question or direction.
+- [F157: Conclusion directions](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 1058–1070; author stated question or direction.
+
+### L-F153-multicolor-ramsey-growth
+
+Is limsup as ell tends to infinity of R(t;ell)^(1/ell) finite for every fixed integer t>=3?
+
+- Type: borrowed specific question; written formulation: precise math in source.
+- Coverage denominator: included. Source-stated definite mathematical target; current resolution and formalization are not assessed here.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Conclusion final Ramsey paragraph](https://arxiv.org/html/2312.03859v1); extraction lines 1155–1158; borrowed question explicitly discussed.
+
+### L-F153-shannon-capacity-C7
+
+Determine the Shannon capacity of the seven-cycle C7.
+
+- Type: borrowed context question; written formulation: precise math in source.
+- Coverage denominator: included. Explicitly described as an unresolved classic quantity in the source introduction; not attributed as a new question of these authors.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://arxiv.org/html/2312.03859v1); extraction lines 183–185; borrowed unresolved context target; discovery credit only.
+- [F157: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 384–390; borrowed unresolved context target; discovery credit only.
+
+### L-F153-matrix-multiplication-exponent
+
+Determine the matrix-multiplication exponent omega discussed in the asymptotic-tensor analogy.
+
+- Type: borrowed context formulation gate; written formulation: formulation needs clarification.
+- Coverage denominator: excluded. Contextual classic target with arithmetic/field interface left to the cited original source; excluded from precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F153: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://arxiv.org/html/2312.03859v1); extraction lines 183–185; borrowed unresolved context target; discovery credit only.
+- [F157: Introduction, Coping Algorithmically with the Mimsup Parameter: explicit unresolved illustrative quantities](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf); extraction lines 384–390; borrowed unresolved context target; discovery credit only.
+
+### L-F158-parity-heuristic-integration
+
+Adapt and evaluate additional classical CDCL heuristics for CDCL(⊕).
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Author-stated direction or semantic formulation gate, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F158: Section8, PDFp17, first conclusion direction](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf); PDF pages 17; author stated question or direction.
+
+### L-F158-cnf-specific-parity-branching
+
+Develop CNF-specific parity branching and adaptive clause-versus-variable heuristics.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Author-stated direction or semantic formulation gate, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F158: Section8, PDFp17, second conclusion direction](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf); PDF pages 17; author stated question or direction.
+
+### L-F158-semantic-1uip
+
+Characterize a semantic parity analogue of1-UIP for the output of Algorithm3.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Author-stated direction or semantic formulation gate, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F158: Section8, PDFp17, theoretical-side paragraph](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf); PDF pages 17; author stated question or direction.
+
+### L-F158-parity-clause-minimization
+
+Semantically characterize clause minimization and generalize it faithfully to CDCL(⊕).
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Author-stated direction or semantic formulation gate, outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F158: Section8, PDFp17, final paragraph](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf); PDF pages 17; author stated question or direction.
+
+### L-F159-certificate-degree-lower-bounds
+
+Find lower bounds on Nullstellensatz certificate degree for concrete combinatorial polynomial families.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: PDFp6, theoretical questions after the NulLA algorithm](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 6; author stated question or direction.
+
+### L-F159-certificate-degree-upper-bounds
+
+Find tighter practical upper bounds on certificate degree for concrete polynomial families.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: PDFp6, theoretical questions after the NulLA algorithm](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 6; author stated question or direction.
+
+### L-F159-clique-degree-cutters
+
+Clarify when (k-1)-clique equations lower the minimum certificate degree for k-coloring.
+
+- Type: conjecture; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: Section3.2 PDFp9, conjectural degree-cutter passage and following counterexample](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 9; author stated question or direction.
+
+### L-F159-coloring-degree-growth
+
+Explain which graph structures force higher-degree certificates for3-colorability.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F159: PDFpp23-26 hard graph families; final paragraph before conclusion](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf); PDF pages 23, 26; author stated question or direction.
+
+### L-F161-proof-producing-cdcl-t
+
+Explore CDCL(T) integrations that retain independently checkable unsatisfiability proofs.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F161: Section4 conclusion, PDFp11](https://arxiv.org/pdf/2304.04292); PDF pages 11; author stated question or direction.
+
+### L-F162-iterative-solver-extensions
+
+Extend the iterative ANF/CNF framework with lookahead SAT and Groebner-basis components.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad author direction or imprecise conjectural wording; outside the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F162: SectionV discussion, PDFp5, fourth extension point](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf); PDF pages 5; author stated question or direction.
+
+### L-F164-filtering-search-guarantees
+
+Determine how stronger filtering affects the search-order guarantees for special subgraph patterns.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.1 Search order, PDFp5](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 5; author stated question or direction.
+
+### L-F164-side-constraint-applications
+
+Develop solver integrations for richer subgraph variants and application side constraints.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Problem variants, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-symmetry-implementation
+
+Improve practical input-specific symmetry handling without costly external dependencies.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Symmetries, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-faster-exact-counting
+
+Exploit nearly disconnected patterns and low-degree vertices for faster exact counting.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Faster counting, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-approximate-counting
+
+Implement approximate counting for subgraph instances.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Faster counting, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-uniform-sampling
+
+Find practical uniform sampling methods that avoid full subgraph enumeration.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Faster counting, PDFp6](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 6; author stated question or direction.
+
+### L-F164-special-pattern-detection
+
+Detect easy pattern classes and select specialized algorithms automatically.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Special classes of pattern, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F164-proof-logging
+
+Extend independently checkable proof logging for strong subgraph inference.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Proof logging, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F164-automatic-configuration
+
+Choose supplemental graphs and solver configurations per instance.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Automatic configuration, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F164-application-benchmarks
+
+Collect diverse application instances for subgraph-solver benchmarking.
+
+- Type: method request; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F164: Section3.2 Benchmarking, PDFp7](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf); PDF pages 7; author stated question or direction.
+
+### L-F165-single-clause-inprocessing
+
+Combine incremental inprocessing efficiently with external clauses added individually during search.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section2.4, PDFp5](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 5; author stated question or direction.
+
+### L-F165-external-proof-production
+
+Extend and evaluate proof production for external propagators and different external-clause kinds.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5; related cvc5 proof integration in Section4.2, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+- Related, not merged: L-F161-proof-producing-cdcl-t.
+
+### L-F165-restart-backtrack-control
+
+Investigate external control of restarts and conflict backtracking.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F165-solver-state-access
+
+Expose useful solver statistics and variable or clause scores through the interface.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F165-further-applications
+
+Develop interface extensions through MaxSAT, compilation and quantified-Boolean applications.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section5, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F165-cvc5-tuning
+
+Tune cvc5 internals for the IPASIR-UP integration.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical research or implementation direction; no precise mathematical target is added to the denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F165: Section4.2 conclusion, PDFp10](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf); PDF pages 10; author stated question or direction.
+
+### L-F176-avoid-smallest-tight-sets
+
+Avoid explicitly computing smallest tight sets in a submodular-flow feasibility algorithm.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical algorithmic direction without a fixed theorem/oracle model; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F176: Section6 Conclusions, printedp6/PDFp7](https://publications.info.uaic.ro/files/tr/tr13-02.pdf); PDF pages 7; explicit research direction.
+- Related, not merged: L-F176-simpler-submodular-flow.
+
+### L-F176-simpler-submodular-flow
+
+Develop a simpler O(n²m) submodular-flow feasibility algorithm, at least for specified network classes.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad historical algorithmic direction without a fixed theorem/oracle model; excluded from the precise-target denominator.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F176: Section6 Conclusions, printedp6/PDFp7](https://publications.info.uaic.ro/files/tr/tr13-02.pdf); PDF pages 7; explicit research direction.
+- Related, not merged: L-F176-avoid-smallest-tight-sets.
+
+### L-F178-m2-square-strong-polynomial
+
+Find a strongly polynomial algorithm minimizing the ordinary sum of squares over a nonempty M2-convex set.
+
+- Type: question; written formulation: precise math in source.
+- Coverage denominator: included. Fixed square-sum objective and M2-convex domain identify a specific algorithmic task; present-day resolution and formalization remain unassessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F178: Section1.2 final paragraph, following Theorems1.2–1.3](https://arxiv.org/html/2007.03507v3); extraction lines 394–409; explicit open algorithm question.
+- Related, not merged: L-F178-box-tdi-algorithms, L-F178-inverse-optimization-algorithms.
+
+### L-F178-box-tdi-algorithms
+
+Develop strongly polynomial combinatorial algorithms from discrete box-TDI min-max formulas.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad algorithm/formulation program; excluded from precise-target denominator until its oracle, data and output model is fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F178: Introduction and Section5.3 final discussion](https://arxiv.org/html/2007.03507v3); extraction lines 159–164; explicit research direction.
+- Related, not merged: L-F178-m2-square-strong-polynomial, L-F178-inverse-optimization-algorithms.
+
+### L-F178-inverse-optimization-algorithms
+
+Develop efficient or strongly polynomial inverse-optimization algorithms using the box-TDI framework.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad algorithm/formulation program; excluded from precise-target denominator until its oracle, data and output model is fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F178: Section6 introduction and Remark6.5](https://arxiv.org/html/2007.03507v3); extraction lines 2030–2050; explicit research direction.
+- Related, not merged: L-F178-m2-square-strong-polynomial, L-F178-box-tdi-algorithms.
+
+### L-F179-polymatroid-norm-constraints
+
+Determine tractability of two-polymatroid-base cost minimization with an arbitrary-norm distance bound, especially the Euclidean norm.
+
+- Type: research direction; written formulation: research direction or formulation gate.
+- Coverage denominator: excluded. Broad algorithm/formulation program; excluded from precise-target denominator until its oracle, data and output model is fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F179: Section5, discussion following Theorem4](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/); extraction lines 298–300; explicit research direction.

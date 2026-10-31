@@ -1,0 +1,885 @@
+{
+  "status": "PASS_INDEPENDENT_EXCHANGE_ENDPOINT_SCOPE_PROVENANCE_AUDIT",
+  "source_C16_answered": false,
+  "physical_full_frame": false,
+  "latest_accepted_point_at_audit": {
+    "name": "integer-witness15",
+    "sha256": "5f9a622e68a3c1e842ae13a5a5b18cf06b388515b5821d17eda2389375b290ef"
+  },
+  "exchange_point": {
+    "name": "anchor-witness12",
+    "sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4"
+  },
+  "anchor40_conditional_targets_differ_between_point12_and_point15": 720,
+  "scope_warning": "The anchor40 mixture does not reproduce the latest point15 conditional target. Its conclusion is point12 singleton present-conditioned T rank membership only, transferred to16 phases by the separately checked physical symmetries. No joint profile, all45 membership, source frame or cover-case exclusion follows.",
+  "banks": [
+    {
+      "path": "coupling-results/singleton-exchange-witness12-o40.json",
+      "sha256": "e0e30250f6bba5d91272296c901f1bb88f4820aed9bdeecc47e8cb52e7a0c0ff",
+      "anchor": 40,
+      "status": "EXACT_SINGLETON_CONDITIONAL_BASIS_MIXTURE_CANDIDATE",
+      "bases": 956,
+      "initial_positive_error": "349832184108264110278726131199351831069/977823809422191149704698920573780784230816566443840",
+      "final_positive_error": "0",
+      "repair_seconds": 8.412614749977365
+    },
+    {
+      "path": "coupling-results/singleton-exchange-witness12-o17.json",
+      "sha256": "3211498c80a2555de47cd636e9f59eb10b1f37c5ad228eb234ae86a19e440b43",
+      "anchor": 17,
+      "status": "BOUNDED_EXCHANGE_REPAIR_INCONCLUSIVE",
+      "bases": 600,
+      "initial_positive_error": "18845020868403595762277879617676571/1329954703787530566511356798828311392",
+      "final_positive_error": "26380410902096527738039226858931089/2659909407575061133022713597656622784",
+      "repair_seconds": 480.11222670797724
+    },
+    {
+      "path": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "sha256": "aee130a857cbc7d9f602918025c2fa7372d216cb3d3af769629d81407a4f89fd",
+      "anchor": 17,
+      "status": "BOUNDED_EXCHANGE_REPAIR_INCONCLUSIVE",
+      "bases": 723,
+      "initial_positive_error": "18845020868403595762277879617676571/1329954703787530566511356798828311392",
+      "final_positive_error": "4734795210329293246607520153040825/664977351893765283255678399414155696",
+      "repair_seconds": 400.1073899579933
+    }
+  ],
+  "seed_bindings": {
+    "singleton-exchange-witness12-o40": {
+      "seed_path": "coupling-results/singleton-rank-refresh-witness12-o40-numeric.json",
+      "seed_sha256": "b16257ebefd55cfe6c678792a8174147b751dc0a053528b946dcd1e04b37f487",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4"
+    },
+    "singleton-exchange-witness12-o17": {
+      "seed_path": "coupling-results/singleton-rank-refresh-witness12-o17-numeric.json",
+      "seed_sha256": "8efd5aaf7c4550e9e74c907303a984efd1dbe2f04accbdd22ac2ed0f40785479",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4"
+    },
+    "singleton-exchange-lazy-witness12-o17": {
+      "seed_path": "coupling-results/singleton-rank-refresh-witness12-o17-numeric.json",
+      "seed_sha256": "8efd5aaf7c4550e9e74c907303a984efd1dbe2f04accbdd22ac2ed0f40785479",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4"
+    }
+  },
+  "anchor17_lazy_is_independent_comparison_from_same_numeric_seed": true,
+  "proof_review": {
+    "local_path_update": "PASS; original-basis multiplicity divisor prevents overspending and telescoping preserves all intermediate marginals",
+    "no_path_rank_cut": "PASS; reachability means union from the set of all surplus vertices in the complete positive-basis exchange graph",
+    "restricted_graph_failure_is_not_a_certificate": true,
+    "zero_basis_times_unit_law": "PASS; evaluation-zero rank127 basis plus evaluation-one vector has rank128",
+    "finite_or_polynomial_termination_claimed": false
+  },
+  "cohort_scope": {
+    "point": "witness12",
+    "all_rank_certified": 28,
+    "verified_rank_cut_anchors": 12,
+    "remaining_inconclusive": [
+      5,
+      16,
+      17,
+      43,
+      44
+    ],
+    "all45_joint_membership_claimed": false
+  },
+  "cohort_binding_resolution": {
+    "original_cohort_path": "coupling-results/singleton-rank-refresh-witness12.json",
+    "independent_summary_path": "coupling-results/singleton-rank-refresh-witness12-independent-summary.json",
+    "note": "The initial audit harness incorrectly interpreted original_cohort_sha256 as the independent-summary hash. The checked binding is supplement -> producer cohort <- independent summary; both digests agree."
+  },
+  "inventory_sha256": "89f27ee7771707a26c7363faf6ba5e863246861e4b67e5653fbf4e6995f2c2e7",
+  "proof_review_sha256": "b7dbe09c318b0de141cf1960b4b8ce727c995acf69f78aae1b2ca79b13a92833",
+  "inventory_and_proof_bindings_all_match": true,
+  "recursive_binding_count": 86,
+  "recursive_bindings": [
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "singleton_basis_exchange_repair_lazy.py",
+      "sha256": "f20a0ab7ecb7bf77e13f846fe2129ba868c97ca5c35452ee281bbe1c1d2424bf"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "verify_singleton_exchange_state.py",
+      "sha256": "aad117bccb568a7c261419c8ac19f2cb037a9007bc79436db6171f301559de35"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "singleton_basis_exchange_repair.md",
+      "sha256": "dea90201a985ced8a8b9f79c1fc2051ac7fa85d65b6545c95c295b6d696c4f13"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "verify_basis_exchange_repair_lemma.py",
+      "sha256": "036cb354402eb575dbf0d2acccc2795a10c85b0dee15e7ca8a7ad6f4c80f2730"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "verify_singleton_exchange_terminal.py",
+      "sha256": "f5a020f1804e709c2b0552b00a24a8f70b6252f46e7c342af41377e10f75cd1b"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-lazy-local-controls.json",
+      "sha256": "b7049965f37a5a3fdd0d0c3ff5f289fdf65be24a19ad0fd8ff96ff070f6cafc9"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-lazy-witness12-o17-state-independent.json",
+      "sha256": "81de3988fb9ef15cf9a6a9ef83f85ee118c583394b73a3a503be5720068bcfd7"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "sha256": "c04cdefa70685aefa8d63c32eb5c9941b591ecb04162052b1333765515b7856a"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "sha256": "aee130a857cbc7d9f602918025c2fa7372d216cb3d3af769629d81407a4f89fd"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-lazy-witness12-o17.log",
+      "sha256": "4fd3c170181cff7e5d97207ac172b247ee07ee654b3272906ca07934bb8361e7"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-local-controls.json",
+      "sha256": "019c7739584e3d0338cb543e45157fe167dc81d999500e2ac05ab35c68c79c06"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-cohort-supplement.json",
+      "sha256": "fce0e960dc5fecf1ad30ef482bb1290348f02034e1fad43616888a1c11eeac61"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o17-state-independent.json",
+      "sha256": "a1dfe6367b56fe8b35935fc6632c5aa7c8b46ec7428ece3a18dd48e7af6596b0"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "sha256": "9459750fa2c67caf3ce6628a3b55f843b9576cb85ebd1b69a2ef27caee241a95"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o17.json",
+      "sha256": "3211498c80a2555de47cd636e9f59eb10b1f37c5ad228eb234ae86a19e440b43"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o17.log",
+      "sha256": "d57d83e8636749cb2d6618ee991c7a4c5e69c32d8d287efbf9fbc2bf09158e1b"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o40-independent.json",
+      "sha256": "22e92cc138882c19c1756dd2ebb78f0b7e09452b061ebe31894462ac3c2bdfa5"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o40-independent.log",
+      "sha256": "f43f56181536bd8018bcc06c9ca7f8af6561e12de08105c63de127e73a09b95a"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "sha256": "1f529a2ef1e09ce29ff7f9cfff2595a0475b3e7c2ca47109cc5737d825de50bf"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "sha256": "9fc9f8582ddbec14b1e1f3ac7b5e8964cbd87281918c3ec1aaf5956792aed10b"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o40.json",
+      "sha256": "e0e30250f6bba5d91272296c901f1bb88f4820aed9bdeecc47e8cb52e7a0c0ff"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/singleton-exchange-witness12-o40.log",
+      "sha256": "c500746dc36b6907379a620f98bff9ca87f6940d406fb80e45c35610a7f3fa85"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/basis-exchange-repair-lemma-independent.json",
+      "sha256": "f6ddee658e26e976e50ee5fd942564a0d8d0d1a96e0fdc2fbb09d72cae1d36c4"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/basis-exchange-repair-multiplicity-boundary.json",
+      "sha256": "945fa1895c67cf79a15900b5ae2cf79f96ccdeb6643913af4009df4428b95cc3"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/basis-exchange-repair-proof-review.json",
+      "sha256": "b7dbe09c318b0de141cf1960b4b8ce727c995acf69f78aae1b2ca79b13a92833"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-inventory.json",
+      "field": "files_sha256",
+      "path": "coupling-results/basis-exchange-repair-proof-review.txt",
+      "sha256": "ec499c243b3c721a505edd0a108578cffb39f1f39e80a7092c51208e49d164a2"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/basis-exchange-repair-proof-review.txt",
+      "sha256": "ec499c243b3c721a505edd0a108578cffb39f1f39e80a7092c51208e49d164a2"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "verify_basis_exchange_repair_lemma.py",
+      "sha256": "036cb354402eb575dbf0d2acccc2795a10c85b0dee15e7ca8a7ad6f4c80f2730"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/basis-exchange-repair-lemma-independent.json",
+      "sha256": "f6ddee658e26e976e50ee5fd942564a0d8d0d1a96e0fdc2fbb09d72cae1d36c4"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "verify_basis_exchange_multiplicity_boundary.py",
+      "sha256": "4bd8627ef04837f922b6dca07e3bca12b871782cc96e7383bf7ff82329ebf201"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/basis-exchange-repair-multiplicity-boundary.json",
+      "sha256": "945fa1895c67cf79a15900b5ae2cf79f96ccdeb6643913af4009df4428b95cc3"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "singleton_basis_exchange_repair_lazy.py",
+      "sha256": "f20a0ab7ecb7bf77e13f846fe2129ba868c97ca5c35452ee281bbe1c1d2424bf"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "verify_singleton_exchange_terminal.py",
+      "sha256": "f5a020f1804e709c2b0552b00a24a8f70b6252f46e7c342af41377e10f75cd1b"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/singleton-exchange-witness12-o40.json",
+      "sha256": "e0e30250f6bba5d91272296c901f1bb88f4820aed9bdeecc47e8cb52e7a0c0ff"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "sha256": "9fc9f8582ddbec14b1e1f3ac7b5e8964cbd87281918c3ec1aaf5956792aed10b"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/singleton-exchange-witness12-o40-independent.json",
+      "sha256": "22e92cc138882c19c1756dd2ebb78f0b7e09452b061ebe31894462ac3c2bdfa5"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "sha256": "1f529a2ef1e09ce29ff7f9cfff2595a0475b3e7c2ca47109cc5737d825de50bf"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-proof-review.json",
+      "field": "bindings",
+      "path": "coupling-results/full-partner-singleton-independent-generic.py",
+      "sha256": "460b0c5213fa3b37094be7ce1e1227e75bfba3ed5853c80b25a36ecc66211454"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "field": "source_hashes",
+      "path": "verify_algebraic_model.py",
+      "sha256": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "field": "source_hashes",
+      "path": "verify_full_partner_projection.py",
+      "sha256": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-terminal-review.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-independent.json",
+      "field": "dependencies",
+      "path": "verify_algebraic_model.py",
+      "sha256": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-independent.json",
+      "field": "dependencies",
+      "path": "verify_full_partner_projection.py",
+      "sha256": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40-independent.json",
+      "field": "dependencies",
+      "path": "verify_full_partner_basis_oracle.py",
+      "sha256": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "field": "source_hashes",
+      "path": "verify_projected_profile_moment_rows.py",
+      "sha256": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.frozen.json",
+      "field": "source_hashes",
+      "path": "full_partner_projection_features.py",
+      "sha256": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.json",
+      "field": "source_hashes",
+      "path": "verify_projected_profile_moment_rows.py",
+      "sha256": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o40.json",
+      "field": "source_hashes",
+      "path": "full_partner_projection_features.py",
+      "sha256": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-multiplicity-boundary.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/basis-exchange-repair-multiplicity-boundary.json",
+      "field": "source_hashes",
+      "path": "verify_basis_exchange_repair_lemma.py",
+      "sha256": "036cb354402eb575dbf0d2acccc2795a10c85b0dee15e7ca8a7ad6f4c80f2730"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "verify_projected_profile_moment_rows.py",
+      "sha256": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "full_partner_projection_features.py",
+      "sha256": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair.py",
+      "sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "verify_projected_profile_moment_rows.py",
+      "sha256": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "full_partner_projection_features.py",
+      "sha256": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair_lazy.py",
+      "sha256": "f20a0ab7ecb7bf77e13f846fe2129ba868c97ca5c35452ee281bbe1c1d2424bf"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "verify_projected_profile_moment_rows.py",
+      "sha256": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "field": "source_hashes",
+      "path": "full_partner_projection_features.py",
+      "sha256": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "singleton_basis_exchange_repair_lazy.py",
+      "sha256": "f20a0ab7ecb7bf77e13f846fe2129ba868c97ca5c35452ee281bbe1c1d2424bf"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "physical-pool-source.json",
+      "sha256": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "pools/xcoords.txt",
+      "sha256": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "pools/zcoords.txt",
+      "sha256": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "verify_projected_profile_moment_rows.py",
+      "sha256": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e"
+    },
+    {
+      "owner": "coupling-results/singleton-exchange-lazy-witness12-o17.frozen.json",
+      "field": "source_hashes",
+      "path": "full_partner_projection_features.py",
+      "sha256": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa"
+    }
+  ],
+  "independent_replay_commands": [
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_singleton_exchange_terminal.py",
+      "--certificate",
+      "coupling-results/singleton-exchange-witness12-o40.json",
+      "--point",
+      "coupling-results/anchor-witness12-rational.json.gz",
+      "--output",
+      "/private/tmp/c16-exchange-audit1021/anchor40-terminal.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "coupling-results/full-partner-singleton-independent-generic.py",
+      "--certificate",
+      "coupling-results/singleton-exchange-witness12-o40.json",
+      "--point",
+      "coupling-results/anchor-witness12-rational.json.gz",
+      "--output",
+      "/private/tmp/c16-exchange-audit1021/anchor40-generic.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_singleton_exchange_state.py",
+      "--certificate",
+      "coupling-results/singleton-exchange-witness12-o17.json",
+      "--point",
+      "coupling-results/anchor-witness12-rational.json.gz",
+      "--output",
+      "/private/tmp/c16-exchange-audit1021/anchor17-state.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_singleton_exchange_state.py",
+      "--certificate",
+      "coupling-results/singleton-exchange-lazy-witness12-o17.json",
+      "--point",
+      "coupling-results/anchor-witness12-rational.json.gz",
+      "--output",
+      "/private/tmp/c16-exchange-audit1021/anchor17-lazy-state.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_basis_exchange_repair_lemma.py",
+      "--output",
+      "/private/tmp/c16-exchange-audit1021/local-lemma.json"
+    ],
+    [
+      "/private/tmp/c16-venv/bin/python",
+      "-u",
+      "verify_basis_exchange_multiplicity_boundary.py",
+      "--output",
+      "/private/tmp/c16-exchange-audit1021/multiplicity.json"
+    ]
+  ],
+  "independent_replay_results": {
+    "anchor40-terminal": {
+      "zero_bases": 956,
+      "unit_probabilities": 96,
+      "implicit_full_basis_components": 91776,
+      "exact_marginals": 720,
+      "anchor_orbit": 40,
+      "status": "PASS_DIRECT_TERMINAL_SINGLETON_BASIS_MIXTURE_REVIEW",
+      "source_C16_answered": false,
+      "physical_full_frame": false,
+      "certificate_sha256": "e0e30250f6bba5d91272296c901f1bb88f4820aed9bdeecc47e8cb52e7a0c0ff",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4",
+      "consumer_sha256": "f5a020f1804e709c2b0552b00a24a8f70b6252f46e7c342af41377e10f75cd1b",
+      "negative_controls_rejected": [
+        "negative_basis_weight",
+        "rank_cardinality",
+        "negative_unit_probability",
+        "changed_exact_target",
+        "wrong_point"
+      ],
+      "source_hashes": {
+        "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+        "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+        "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+        "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+        "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+      },
+      "scope": "Direct phase-zero singleton conditional law only. Product weights of each rank127 zero basis and each unit vector give full128 bases. No search trajectory, global termination, joint-profile law or source-frame claim is used.",
+      "elapsed_seconds": 1.811716332915239
+    },
+    "anchor40-generic": {
+      "status": "PASS_EXACT_SINGLETON_CONDITIONAL_MATROID_MEMBERSHIP",
+      "zero_bases_physically_checked": 956,
+      "zero_basis_rank": 127,
+      "unit_probability_support": 96,
+      "implicit_full128_basis_components": 91776,
+      "exact_zero_mixture_mass": "1",
+      "exact_unit_probability_mass": "1",
+      "exact_conditional_marginals_checked": 720,
+      "consequence": "All physical Z-matroid rank inequalities hold for the present-conditioned T law of the stated anchor orbit, and hence all16 phases by checked rotation. This is a singleton conditional law, not a joint the stated anchor orbit profile distribution or a full source frame.",
+      "source_C16_answered": false,
+      "physical_full_frame": false,
+      "certificate_sha256": "e0e30250f6bba5d91272296c901f1bb88f4820aed9bdeecc47e8cb52e7a0c0ff",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4",
+      "consumer_sha256": "460b0c5213fa3b37094be7ce1e1227e75bfba3ed5853c80b25a36ecc66211454",
+      "symmetry_graph_ranks": [
+        128,
+        128,
+        128
+      ],
+      "negative_controls_rejected": [],
+      "dependencies": {
+        "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+        "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+        "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d"
+      },
+      "elapsed_seconds": 0.9021343750646338
+    },
+    "anchor17-state": {
+      "status": "PASS_VALID_EXACT_REPAIR_STATE_AND_RESIDUAL",
+      "source_C16_answered": false,
+      "certificate_sha256": "3211498c80a2555de47cd636e9f59eb10b1f37c5ad228eb234ae86a19e440b43",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4",
+      "consumer_sha256": "aad117bccb568a7c261419c8ac19f2cb037a9007bc79436db6171f301559de35",
+      "anchor_orbit": 17,
+      "basis_count": 600,
+      "zero_basis_rank": 127,
+      "zero_mixture_mass": "1",
+      "unit_probability_mass": "1",
+      "conditional_target_coordinates_checked": 720,
+      "exact_positive_error": "26380410902096527738039226858931089/2659909407575061133022713597656622784",
+      "approximate_positive_error": 0.009917785480576405,
+      "exact_target_mixture": false,
+      "resumable_exact_physical_basis_mixture": true,
+      "elapsed_seconds": 0.6043704160256311,
+      "scope": "Validatesexactphysicalmixturestate anditsdistancefromconditionaltarget. Nonzeroerror isnotrankmembership andnotaseparator; no globalterminationclaim."
+    },
+    "anchor17-lazy-state": {
+      "status": "PASS_VALID_EXACT_REPAIR_STATE_AND_RESIDUAL",
+      "source_C16_answered": false,
+      "certificate_sha256": "aee130a857cbc7d9f602918025c2fa7372d216cb3d3af769629d81407a4f89fd",
+      "point_sha256": "7230467da979f8c16cc1074cde3776c7d202af3025331ab436b16270fde4ebb4",
+      "consumer_sha256": "aad117bccb568a7c261419c8ac19f2cb037a9007bc79436db6171f301559de35",
+      "anchor_orbit": 17,
+      "basis_count": 723,
+      "zero_basis_rank": 127,
+      "zero_mixture_mass": "1",
+      "unit_probability_mass": "1",
+      "conditional_target_coordinates_checked": 720,
+      "exact_positive_error": "4734795210329293246607520153040825/664977351893765283255678399414155696",
+      "approximate_positive_error": 0.007120235293495694,
+      "exact_target_mixture": false,
+      "resumable_exact_physical_basis_mixture": true,
+      "elapsed_seconds": 0.6730644580675289,
+      "scope": "Validatesexactphysicalmixturestate anditsdistancefromconditionaltarget. Nonzeroerror isnotrankmembership andnotaseparator; no globalterminationclaim."
+    },
+    "local-lemma": {
+      "status": "PASS_LOCAL_EXCHANGE_REPAIR_LEMMA_CONTROLS",
+      "source_C16_answered": false,
+      "producer_sha256": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17",
+      "consumer_sha256": "036cb354402eb575dbf0d2acccc2795a10c85b0dee15e7ca8a7ad6f4c80f2730",
+      "state_results": {
+        "path_step": 2642,
+        "matched": 52,
+        "rank_cut": 250
+      },
+      "total_states": 2944,
+      "literal_exchange_edges_checked": 21732,
+      "repeated_basis_multiplicity_control": {
+        "path_length": 3,
+        "maximum_multiplicity": 2,
+        "safe_delta": "1/6",
+        "unsafe_delta_without_multiplicity": "1/4",
+        "unsafe_old_basis_weight": "-1/6"
+      },
+      "closed_reachability_control": {
+        "complement": [
+          1,
+          3
+        ],
+        "physical_rank": 1,
+        "exact_target_mass": "3/2"
+      },
+      "incomplete_graph_false_cut_rejected_by_direct_rank": true,
+      "elapsed_seconds": 0.2724848750513047,
+      "scope": "One-step validity and closed-set rank certificate only. Complete exchange reachability, exact positive basis weights and equal totalmasses are required. Strict L1decrease gives no finite orpolynomial globaltermination claim."
+    },
+    "multiplicity": {
+      "status": "PASS_LITERAL_MULTIPLICITY_BOUNDARY",
+      "source_C16_answered": false,
+      "binary_vectors": [
+        1,
+        3,
+        2,
+        3,
+        1
+      ],
+      "path": [
+        [
+          0,
+          1,
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          1,
+          2,
+          [
+            1,
+            4
+          ]
+        ],
+        [
+          2,
+          3,
+          [
+            0,
+            2
+          ]
+        ]
+      ],
+      "original_weights": {
+        "(0, 2)": "1/3",
+        "(1, 4)": "2/3"
+      },
+      "safe_delta": "1/6",
+      "unclamped_delta": "1/4",
+      "unclamped_final_basis_weight": "-1/6",
+      "new_bases": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "source_hashes": {
+        "singleton_basis_exchange_repair.py": "dca4448012617ed6c336d96f032f658d70c574ec39a0fe0a5947566d7884eb17",
+        "verify_basis_exchange_repair_lemma.py": "036cb354402eb575dbf0d2acccc2795a10c85b0dee15e7ca8a7ad6f4c80f2730"
+      },
+      "consumer_sha256": "4bd8627ef04837f922b6dca07e3bca12b871782cc96e7383bf7ff82329ebf201"
+    }
+  },
+  "independent_replay_summary_sha256": "e5f9a303c0aa234e8880f48d34742581bb250157fee7fdf5c799315fd384e1d6",
+  "independent_replay_controller_sha256": "96cdad75b881272aee32c2048aca4ae5c5338743d6ae264124c369f0a9aaf17e",
+  "audit_driver_sha256": "1a6ce08d29534d029e66bd4c288e7e6f2ba7f3f9e44b17de6fb2cec67ecedebb",
+  "scientific_core_checkpoint": {
+    "commit": "1e852eea43956cbc38759e5182e6f3df9bb782d7",
+    "accepted_summary_sha256": "a390857c5b01dd26dc8955fbeece10896a0b480ed7ef5ffd25a459ad7f7238a7",
+    "all_bound_core_inputs_currently_unchanged": 689,
+    "prior36_stages_remain_applicable_by_unchanged_inputs": true,
+    "omissions": [
+      "Historical source CNF and cover-chain UNSAT proof replay, including original 405 cover derivation.",
+      "SAT searches and both full-selector 120-second solver trials; only their exact CNF bridge is replayed.",
+      "All 45 singleton numeric trajectories and 27 lattice certificates; the12 accepted new rank cuts are independently replayed.",
+      "Global optimization, Wolfe searches, transfer negatives, and partial SAT discovery.",
+      "Additional corrupt-input suites beyond controls invoked in listed consumers."
+    ]
+  },
+  "final_clean_replay_requirements": [
+    "After committing exchange artifacts, create a detached clean checkout and recheck every689 inherited core input hash; rerun any scientific stage whose bound input changed.",
+    "Replay the two anchor40 consumers, both anchor17 state consumers, local exchange controls and multiplicity boundary from the committed checkout, with outputs outside it.",
+    "Verify exchange inventory/proof/seed bindings, cohort partition and point12 versus latestpoint distinction. Preserve original frozen receipts and confirm checkout cleanliness.",
+    "For a final source obstruction claim, a replayable exclusion covering everyremaining source case is still missing. For a source existence claim, an independently checked full128-pair physical frame is still missing. The present closeout is a validated research checkpoint with source problem open."
+  ]
+}

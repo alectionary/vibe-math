@@ -1,0 +1,67 @@
+{
+  "status": "PASS_CASE_FLOOR_COPY_SEMANTICS_SOURCE_NECESSITY",
+  "source_C16_answered": false,
+  "reviewer_sha256": "c86af09546aa8ef260070896c988c302ead79846d0966c812c61393cdb6486f1",
+  "baseline_sha256": "71415c0a402a48c6c68d6eba0ea2130c78aa6999d2c27042766b17e3f9a3c14d",
+  "case_model_sha256": "0f6f4a870b4193a951b6b523ae4999cb7eb5c72c5bdaeac4b9e8c715f8fea5ad",
+  "diff_sha256": "6356801b64fddc314ba9f86d78be9293db0509096a0539f92f164aed264ebded",
+  "bridge_sha256": "f1202d87ddc8ff2e547e4a80da6cf93d8a0bb6c0d9af33be8b72dea381e3b88b",
+  "bridge_replay_sha256": "4c2c40713a71c88fe0e289a4f99055a763d6ef0e441ddce748060405e95fccb2",
+  "point_sha256": "f1d9feac7ccef7afdd982b2661401a9805a4d23c20e02e60a0ce50d1f119e858",
+  "physical_consumer_sha256": "e6342b1f16ce5902a4f2a2601407e77b35b58bab7a66f51b39ab59510a4f49b0",
+  "physical_symmetry_bridge": {
+    "physical_pairings_rebuilt": 518400,
+    "sector_and_rotation_comparisons": 1036800,
+    "graph_ranks": {
+      "sector_swap": 128,
+      "X_rotation": 128,
+      "Z_rotation": 128
+    }
+  },
+  "inherited_AST_identical_after_removing_declared_case_additions": true,
+  "new_arguments": [
+    "--case",
+    "--case-bridge",
+    "--case-replay"
+  ],
+  "new_case_block": [
+    "bridge = json.loads(a.case_bridge.read_text())",
+    "assert bridge['status'] == 'PASS_SELECTED_PAIR_MOMENT_BRIDGE'",
+    "assert all((__import__('hashlib').sha256((ROOT / f).read_bytes()).hexdigest() == s for f, s in bridge['source_hashes'].items()))",
+    "replay = json.loads(a.case_replay.read_text())",
+    "assert replay['status'] == 'PASS' and replay['bridge_sha256'] == __import__('hashlib').sha256(a.case_bridge.read_bytes()).hexdigest() and (replay['consumer_sha256'] == __import__('hashlib').sha256((ROOT / 'verify_cover_case_moment_bridge.py').read_bytes()).hexdigest())",
+    "case_record = next((r for r in bridge['records'] if r['case'] == a.case))",
+    "ci, cj, ch = a.case",
+    "case_orbit_size = case_record['edge_orbit_size']",
+    "assert case_orbit_size in (16, 32)",
+    "assert case_record['X_index'] == 16 * ci and case_record['Z_index'] == 16 * cj + ch",
+    "assert physical_A[16 * ci] >> 16 * cj + ch & 1",
+    "con.append(T[ch][ci, cj] >= 1 / case_orbit_size)",
+    "case_scope = {'case': a.case, 'anchor': [16 * ci, 16 * cj + ch], 'edge_orbit_size': case_orbit_size, 'necessary_floor': '1/' + str(case_orbit_size), 'owner_coordinate': case_record['owner_coordinate'], 'bridge_sha256': __import__('hashlib').sha256(a.case_bridge.read_bytes()).hexdigest(), 'replay_sha256': __import__('hashlib').sha256(a.case_replay.read_bytes()).hexdigest()}",
+    "scope = 'Case-conditioned: ' + scope"
+  ],
+  "all_cover_case_floors_rederived": 405,
+  "floor_histogram": {
+    "1/16": 15,
+    "1/32": 390
+  },
+  "selected_case": {
+    "case": [
+      32,
+      32,
+      0
+    ],
+    "X_index": 512,
+    "Z_index": 512,
+    "owner_column": 19742,
+    "floor": "1/16",
+    "previous_exact_point_moment": "317277179177/1125899906842624",
+    "previous_exact_point_floor_slack": "-70051466998487/1125899906842624"
+  },
+  "necessary_execution_condition": "Allthree artificial margins(PSD,Boolean,projected)zero; --certificate-margin remains forbidden. Actual command/flags must be checked against its frozen execution manifest.",
+  "exact_dyadic_floor": true,
+  "warm_point_is_initialization_only": true,
+  "feasibility_scope": "An exact feasible moment certificate preserves this case relaxation; it is not a physical source frame.",
+  "obstruction_scope": "A source exclusion needs independently replayed exact infeasibility for the original zero-margin source-necessary rows, including exact Fourier/cyclotomic PSD meanings. A floating canonicalA dual alone is insufficient. Apositive-margin failure cannot exclude a source case.",
+  "scientific_case_exclusions_claimed": 0
+}

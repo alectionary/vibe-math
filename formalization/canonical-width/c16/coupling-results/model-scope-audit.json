@@ -1,0 +1,148 @@
+{
+  "status": "PASS_WITH_SCOPE_LIMITATIONS",
+  "source_C16_answered": false,
+  "audit_utc": "2026-10-30T05:29:04.909375+00:00",
+  "scope": "Independent read-only review of the actual necessary0 numerical model and runner versus the preceding interior model. No model or compiler was changed, no solver was run, and no exact feasibility or source infeasibility is certified by this audit.",
+  "fatal_mathematical_issue_found_in_necessary0": false,
+  "audited_source_hashes": {
+    "unified_coupling_moment_model.py": "ba3276d242c17d99b76a467481ce62248d1d08bd76b2e37cf954e74c413a56fe",
+    "run_coupling_trial.py": "c88efb572264b5e53974d7e632381ef9277f4694c2ab25b9dff88f8f21c1dbf8",
+    "unified_boolean_interior_model.py": "fdc252aa1972a5aaf8fe4e0b1fe270272fff7b21307c8587a6675fcfed7ad8c4",
+    "projected_profile_moment_matrix.py": "882e48f9191eadf04bbabadbf439aa8c104c6da745502cad106a9f392529f736",
+    "conditional_matroid_moment_matrix.py": "e6377cca4bec9bf832b45a0701372d8419f0f5b3c8cdf4d496abac0274e7a12e",
+    "complete_boolean_triples.py": "1d9780b7e7ade4214c2535d915801888d3ed4508fcae1f523d121ff1ee3b8f69",
+    "verify_unified_moment_point.py": "413bed9b120d2d01f7bbe4897dad3f7ab4ed6f9bf5dd384df6bf28bfce39021a",
+    "verify_moment_certificate.py": "169a996d53f7c5d287883b9476c8ff0542a5b85f5f508777a1c9f6fee8b525b3",
+    "certify_profile_moment_point.py": "aece54e97ad90ac6fa3c8f13829493f91134bfd356699db580acf37feb004150",
+    "check_global_conditioned_moments.py": "0183061a71058fd98e26b167a08e5adc2b46ef2263fa1e41636f6a89d0d6acbf",
+    "verify_all_triple_distributions.py": "5e01528def0df2694e98fc1be6f502a0b5777423b9304b9c50b9a9a26d167ebc",
+    "coupling-results/necessary0.json": "3111a7076f0ee1ff78383daa3b321b273444d0c2b3f5379946af5a856c8d3002",
+    "coupling-results/necessary0-frozen.json": "adfe7d5b6666ffaadf7095d2d26a46d4322cacffa226eb96e86b4890d12ad610",
+    "coupling-results/necessary0-exit.json": "863e0ad5225314fa7b8356b1e0d65fdcf4fde3756e5bee0dbd88c199063e6bb7",
+    "coupling-results/necessary0.npz": "b68a267eeb1d7ff648644b4fd5ad901692862c160d62a4b0344ab55c4ff75d54",
+    "moment-resumption-results/symmetry-bridge-independent.json": "59f16313089e8fde24a14f20c218b60b25fa70a2aa62208dc1faa36ef3550b94"
+  },
+  "necessary0_checks": {
+    "all_listed_frozen_hashes_match_current_files": true,
+    "actual_PSD_boolean_projected_margins": [
+      0,
+      0,
+      0
+    ],
+    "certificate_margin_path_rejected_by_assertion": true,
+    "period16_enforced": true,
+    "physical_target_pairs": 128,
+    "halfturn_restriction": false,
+    "profile_weights_free": true,
+    "hull_and_capacity_records_have_orbit_order_0_through_44": true,
+    "source_C16_answered_flag_false": true,
+    "numerical_status_is_approximation_only": true,
+    "new_model_diff_preserves_old_constraint_construction_except_removing_artificial_margins_and_adding_projected_cut": true,
+    "owner_layout": "p[45], then S[h].ravel(C), h=0..8, then T[h].ravel(C), h=0..8; 36495 columns",
+    "source_coordinates": "Rows use the physical pools directly. The legacy bank is separately mapped from historical indexing through its physical mapping. Rank and projected compilers consume matching independent PASS receipts.",
+    "independently_recomputed_numeric_screens": {
+      "projected": {
+        "rows": 1,
+        "max_lhs_minus_rhs": -1.8723972395551236e-05
+      },
+      "rank": {
+        "rows": 285,
+        "max_lhs_minus_rhs": -8.645493475289978e-08
+      },
+      "selected_Boolean": {
+        "rows": 120,
+        "max_lhs_minus_rhs": -1.4892625786223912e-07
+      }
+    },
+    "retained_circuit_rows": 22,
+    "full_circuit_rows": 115200,
+    "retained_legacy_rows": 217,
+    "full_legacy_rows": 12849,
+    "PSD_zero_mode_reduction": {
+      "G": "G=[[1,p^T],[p,(sum_h S_h+sum_h T_h)/32]] has exact null vector (-8,1,...,1) from sum(p)=8 and both row-sum identities 128p.",
+      "D0": "sum_h S_h-sum_h T_h has exact null vector (1,...,1).",
+      "deleting_one_coordinate": "The deleted coordinate has nonzero coefficient in each known null vector; the full matrices are congruent to their retained principal blocks plus zero directions. At zero margin this loses no PSD condition.",
+      "numeric_G_null_residual": 2.5202062658991053e-14,
+      "numeric_D0_null_residual": 6.426525978042719e-13
+    },
+    "nonzero_PSD_modes": "Sector +/- splitting and realification of modes k=1..8 agree with the original model. Floating cos/sin coefficients approximate the exact cyclotomic model; solver status alone is never an exact source obstruction."
+  },
+  "scope_limitations_and_findings": [
+    {
+      "severity": "acceptance_gate",
+      "issue": "Only 120 saved Boolean rows are imposed. The solve and omitted-family numeric screen do not establish every Boolean triple.",
+      "required_action": "Re-run the complete triple screen and preferably direct exact triple-distribution consumer on the recovered rational point before claiming all-triple feasibility."
+    },
+    {
+      "severity": "acceptance_gate",
+      "issue": "The 213662 saved global-obstruction conditional rows are not imposed or screened by this model.",
+      "required_action": "Run check_global_conditioned_moments.py with the immutable source obstruction certificate/replay on the recovered rational point."
+    },
+    {
+      "severity": "acceptance_gate",
+      "issue": "Only active circuit/legacy subsets are solved; full-family numeric screens are diagnostic.",
+      "required_action": "Exact replay must check all 115200 circuit and 12849 legacy rows, ownership, capacity, conditional, weighted, forbidden, all 285 rank rows, the projected row, exact equalities, nonnegative weights, and rigorous PSD blocks."
+    },
+    {
+      "severity": "provenance",
+      "issue": "The runner freezes direct sources and command-line files but omits eight transitive legacy compiler sources/banks.",
+      "affected_files": [
+        "block_moment_dual.py",
+        "moment_triangle_cuts.py",
+        "moment_integer_form_cuts.py",
+        "inverse-four-hour-results/lattice-source-rankcuts.json.gz",
+        "inverse-four-hour-results/rank-rectangle-X.json",
+        "inverse-four-hour-results/rank-rectangle-Z.json",
+        "inverse-four-hour-results/lattice-source-triangles.json.gz",
+        "inverse-four-hour-results/lattice-source-integer-forms.json.gz"
+      ],
+      "necessary0_effect": "No evidence of change: these files currently equal HEAD 323b30e3b51546cf752603e61c63da2f6e3b7434; direct frozen dependencies match. This is not an exhaustive before/after freeze of all dependencies.",
+      "required_action": "Include these dependencies in future frozen manifests, or bind and verify an immutable tree containing them. This audit records their current hashes."
+    },
+    {
+      "severity": "metadata_edge_case",
+      "issue": "--extra can append overriding PSD/Boolean/projected margin flags, while the runner frozen.mode is computed only from --witness-margin.",
+      "necessary0_effect": "Unaffected: necessary0 contains no overriding duplicate margin flags and all actual margins are zero. The model result computes its scope from parsed actual values.",
+      "required_action": "Before future overridden runs, derive frozen mode from effective arguments or forbid margin overrides. The model-result scope and actual margins take precedence."
+    },
+    {
+      "severity": "numerical_boundary",
+      "issue": "Floating Fourier constants mean the exported canonical A matrix is not the exact source cone.",
+      "required_action": "Reconstruct source-native exact or rigorously enclosed coefficients for any primal/dual acceptance; do not accept an infeasibility status or rounded SCS stationarity as proof."
+    }
+  ],
+  "current_hashes_of_transitive_dependencies_omitted_from_frozen_manifest": {
+    "block_moment_dual.py": "f4a94ba8ee09eb76bcace8f0596c6f3025357768a23f2a096107f7b1023b677a",
+    "moment_triangle_cuts.py": "fe713c2fe3eca8a165c48263d23b332bab04b8edea0551dd963ea961e09730cf",
+    "moment_integer_form_cuts.py": "f3d2c6aa3dc3f19b335d964671280736488216b8c7ced0d5c3db1961badd50e5",
+    "inverse-four-hour-results/lattice-source-rankcuts.json.gz": "8f634e33927a107e2e1d0f563c8564103aa163c1ead0498e05e09b770808a8ae",
+    "inverse-four-hour-results/rank-rectangle-X.json": "fae17050df982e154aba7df59f373f0b0db74c354a80c029b549896d17f2c491",
+    "inverse-four-hour-results/rank-rectangle-Z.json": "fae17050df982e154aba7df59f373f0b0db74c354a80c029b549896d17f2c491",
+    "inverse-four-hour-results/lattice-source-triangles.json.gz": "10730602380a3904350b0e9c18c035234e3b1ce78ed37546efe72e73fda20e31",
+    "inverse-four-hour-results/lattice-source-integer-forms.json.gz": "342c0148298c55923a50424da2abe24ca2d5ea128b41f5cd306c476fa3dc0a94"
+  },
+  "exact_dual_proof_route": {
+    "status": "Outline only; no new source retrieval or implementation performed.",
+    "preconditions": [
+      "Reject every positive artificial PSD, Boolean, or projected margin for a source-obstruction certificate.",
+      "Reconstruct and independently accept the exact source rows, physical coordinate mapping, source symmetry averaging, and profile-hull support. A valid subset suffices for an obstruction; an invalid row does not.",
+      "Use SCS dual output only to suggest multipliers. Reconstruct native constraint duals or explicitly undo canonical vectorization, off-diagonal sqrt(2) factors, symmetry-variable packing, sign conventions, and removed null directions."
+    ],
+    "exact_Fourier_coefficients": "All cos(k*h*pi/8) and sin(k*h*pi/8), including sqrt(2) canonical scaling if used, lie in K=Q(alpha), alpha=2*cos(pi/8), alpha^4-4*alpha^2+2=0 with the real root isolated in (1.84,1.85). Rebuild coefficients in this exact field or rigorously enclose the exact trigonometric values using directed interval arithmetic. Decimal math.cos/math.sin outputs and canonical-A.npz are search data only.",
+    "dual_cones": "Use nonnegative rational multipliers for inequalities and arbitrary rational multipliers for equalities. For each native PSD constraint choose a rational PSD dual matrix with exact Gram/LDL evidence, or rigorously verify the candidate matrix PSD. A PSD factor R*R^T guarantees this exactly; a numerical eigenvalue is insufficient.",
+    "residual_correction": "Write source constraints Ax<=b, Ex=f and F_l(x)=F_l0+sum_i x_i F_li >=0. With lambda>=0, nu free, Z_l>=0, q(x)=lambda^T(b-Ax)+nu^T(f-Ex)+sum_l <Z_l,F_l(x)> is nonnegative at every feasible point. Compute its constant c and coefficient residual r exactly (in K if using Fourier-native blocks). All p, pair moments, and profile weights satisfy 0<=x_i<=1. Thus q(x)<=c+sum_i max(0,r_i). A strictly negative rigorous upper bound on this last quantity is a contradiction; exact stationarity is unnecessary. Alternatively, correct r to zero exactly and prove c<0.",
+    "interval_acceptance": "Directed intervals may enclose algebraic residual coefficients and the final upper bound. Require a strict negative upper endpoint and independently certified PSD duals. If intervals straddle zero, increase precision or reject the candidate; never replace uncertainty with a tolerance.",
+    "rational_time_domain_alternative": "Recover rational block-circulant physical dual coefficients, preserving transpose/sector symmetries, and pair them directly with physical rational moments. This makes the residual arithmetic rational. Certify its full cyclic PSD using exact Gram/rational PSD evidence or independently computed rigorous Fourier enclosures. block_moment_dual.py already illustrates residual correction and full16-term interval PSD verification, but its block-specific source/layout cannot be reused unchanged for this coupled profile model.",
+    "accepted_scope": "Only a successful independently replayed strict contradiction from zero-margin source-valid rows would certify infeasibility of the necessary relaxation and, after its source bridge is checked, exclude corresponding full source frames. Nothing in necessary0 or this outline establishes such a contradiction."
+  },
+  "original_source_state_unchanged": {
+    "width_alternatives": [
+      16,
+      18
+    ],
+    "sufficient_cover": 405,
+    "physical_partial_pairs": 88,
+    "full_frame_pairs": 128,
+    "full_source_anchors_excluded": 0
+  }
+}

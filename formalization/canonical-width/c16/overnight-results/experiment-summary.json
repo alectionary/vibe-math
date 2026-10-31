@@ -1,0 +1,757 @@
+{
+  "status": "TERMINAL_RECORDS_PRESERVED",
+  "source_C16_answered": false,
+  "receipts": [
+    {
+      "file": "anchor-cover-retry.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 2.1444445829838514,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_anchor_cover.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/anchor-cover.json"
+      ]
+    },
+    {
+      "file": "anchor-cover.exit.json",
+      "status": "EXITED",
+      "exit_code": 1,
+      "wall_seconds": 0.02619587490335107,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_anchor_cover.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/anchor-cover.json"
+      ]
+    },
+    {
+      "file": "cert-0234-integer-compile.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 63.40184954192955,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "2",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "2",
+        "3",
+        "4",
+        "--exchange",
+        "--export-only",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/cert-0234-integer-compile.json"
+      ]
+    },
+    {
+      "file": "cert-034-integer-compile.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 48.80810820800252,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--exchange",
+        "--export-only",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/cert-034-integer-compile.json"
+      ]
+    },
+    {
+      "file": "cert-034-normalized-compile.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 48.858875458012335,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--exchange",
+        "--export-only",
+        "--normalized",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/cert-034-normalized-compile.json"
+      ]
+    },
+    {
+      "file": "evaluation-replay.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 81.51240733300801,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/replay_overnight.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/evaluation-replay.json"
+      ]
+    },
+    {
+      "file": "exact-replay-final.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 83.18023737496696,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/replay_overnight.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/exact-replay-final.json"
+      ]
+    },
+    {
+      "file": "exact-replay.exit.json",
+      "status": "EXITED",
+      "exit_code": 1,
+      "wall_seconds": 85.93872716708574,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/replay_overnight.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/exact-replay.json"
+      ]
+    },
+    {
+      "file": "exchange-controls.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 15.452587874955498,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_moments.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/exchange-controls.json"
+      ]
+    },
+    {
+      "file": "global-exchange-base.exit.json",
+      "status": "WALL_LIMIT",
+      "exit_code": -15,
+      "wall_seconds": 480.2062060419703,
+      "termination_confirmed": true,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--exchange",
+        "--direct",
+        "--normalized",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "240",
+        "--export-canonical",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/global-exchange-base.json"
+      ]
+    },
+    {
+      "file": "global-exchange-indirect-retry.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 294.1204265420092,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/solve_exchange_canonical.py",
+        "formalization/canonical-width/c16/overnight-results/global-exchange-base",
+        "--seconds",
+        "210",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/global-exchange-indirect.json"
+      ]
+    },
+    {
+      "file": "global-exchange-indirect.exit.json",
+      "status": "EXITED",
+      "exit_code": 1,
+      "wall_seconds": 0.6008154170121998,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/solve_exchange_canonical.py",
+        "formalization/canonical-width/c16/overnight-results/global-exchange-base",
+        "--seconds",
+        "210",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/global-exchange-indirect.json"
+      ]
+    },
+    {
+      "file": "joint0234-exchange-base.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 297.11159424996004,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "2",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "2",
+        "3",
+        "4",
+        "--exchange",
+        "--direct",
+        "--normalized",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "180",
+        "--export-canonical",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base.json"
+      ]
+    },
+    {
+      "file": "joint034-controls-final.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 80.32801858300809,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_dual_controls.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-controls-final.json"
+      ]
+    },
+    {
+      "file": "joint034-controls.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 42.72342624992598,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_dual_controls.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-controls.json"
+      ]
+    },
+    {
+      "file": "local-exchange.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 11.56871154194232,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/local_frame_exchange.py",
+        "--seconds",
+        "2",
+        "--trials",
+        "24",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/local-exchange.json"
+      ]
+    },
+    {
+      "file": "normal-form-fresh.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 2.825055666966364,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_pool_inverse_structure.py",
+        "formalization/canonical-width/c16/inversion-results/normal-form.json",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/normal-form-fresh.json"
+      ]
+    },
+    {
+      "file": "omega-moment-screen-final.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 4.328926042071544,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/screen_omega_moment_cuts.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/omega-moment-screen-final.json"
+      ]
+    },
+    {
+      "file": "omega-moment-screen.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 3.0788311660289764,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/screen_omega_moment_cuts.py",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/omega-moment-screen.json"
+      ]
+    },
+    {
+      "file": "pilot-034-base.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 311.0122171670664,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--normalized",
+        "--rho-x",
+        "0.1",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "240",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-034-base.json"
+      ]
+    },
+    {
+      "file": "pilot-034-exchange-LP.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 56.273516957997344,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--exchange",
+        "--direct",
+        "--linear-base",
+        "--export-canonical",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "240",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-034-exchange-LP.json"
+      ]
+    },
+    {
+      "file": "pilot-034-exchange-base-direct-retry.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 107.85669933399186,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--exchange",
+        "--direct",
+        "--normalized",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "180",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-034-exchange-base-direct-retry.json"
+      ]
+    },
+    {
+      "file": "pilot-034-exchange-base-direct.exit.json",
+      "status": "FAILED_TO_START",
+      "exit_code": 1,
+      "wall_seconds": null,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--exchange",
+        "--direct",
+        "--normalized",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "180",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-034-exchange-base-direct.json"
+      ]
+    },
+    {
+      "file": "pilot-034-psd.exit.json",
+      "status": "WALL_LIMIT",
+      "exit_code": -15,
+      "wall_seconds": 480.08143599994946,
+      "termination_confirmed": true,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "psd",
+        "--X-families",
+        "0",
+        "3",
+        "4",
+        "--Z-families",
+        "0",
+        "3",
+        "4",
+        "--normalized",
+        "--rho-x",
+        "0.1",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "240",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-034-psd.json"
+      ]
+    },
+    {
+      "file": "pilot-base-first.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 275.5230670829769,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--seconds",
+        "180",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-base-first.json"
+      ]
+    },
+    {
+      "file": "pilot-base-normalized.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 218.17563883401453,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "base",
+        "--normalized",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "180",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-base-normalized.json"
+      ]
+    },
+    {
+      "file": "pilot-linear-first.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 356.67950112500694,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "linear",
+        "--seconds",
+        "180",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-linear-first.json"
+      ]
+    },
+    {
+      "file": "pilot-psd-normalized.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 252.81983879196923,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/conditioned_moment.py",
+        "--mode",
+        "psd",
+        "--normalized",
+        "--rho-x",
+        "0.01",
+        "--eps",
+        "0.000001",
+        "--seconds",
+        "180",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/pilot-psd-normalized.json"
+      ]
+    },
+    {
+      "file": "polish-0234-active.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 2.0240355000132695,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/polish_exchange_ray.py",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base",
+        "--ray",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base.scs.npz",
+        "--active-only",
+        "--seconds",
+        "90",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/polish-0234-active.json"
+      ]
+    },
+    {
+      "file": "polish-0234-cuts.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 23.396993834059685,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/polish_exchange_ray.py",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base",
+        "--ray",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base.scs.npz",
+        "--active-only",
+        "--rounds",
+        "12",
+        "--batch",
+        "200",
+        "--seconds",
+        "150",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/polish-0234-cuts.json"
+      ]
+    },
+    {
+      "file": "polish-0234.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 120.92987774999347,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/polish_exchange_ray.py",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base",
+        "--ray",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base.scs.npz",
+        "--seconds",
+        "120",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/polish-0234.json"
+      ]
+    },
+    {
+      "file": "recover-0234.exit.json",
+      "status": "EXITED",
+      "exit_code": 1,
+      "wall_seconds": 8.680493875057437,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/recover_exchange_dual.py",
+        "--normalized",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base",
+        "--integer",
+        "formalization/canonical-width/c16/overnight-results/cert-0234-integer-compile",
+        "--ray",
+        "formalization/canonical-width/c16/overnight-results/joint0234-exchange-base.scs.npz",
+        "--families",
+        "0",
+        "2",
+        "3",
+        "4",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint0234-dual.json.gz"
+      ]
+    },
+    {
+      "file": "recover-034.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 7.61656374996528,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/recover_exchange_dual.py",
+        "--normalized",
+        "formalization/canonical-width/c16/overnight-results/cert-034-normalized-compile",
+        "--integer",
+        "formalization/canonical-width/c16/overnight-results/cert-034-integer-compile",
+        "--ray",
+        "formalization/canonical-width/c16/overnight-results/pilot-034-exchange-base-direct-retry.scs.npz",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual.json.gz"
+      ]
+    },
+    {
+      "file": "three-thin-fresh.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 0.9707253749947995,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_three_thin_theorem.py",
+        "formalization/canonical-width/c16/inverse-four-hour-results/block4-dual64.json",
+        "--rational-psd",
+        "formalization/canonical-width/c16/inverse-four-hour-results/block4-rational-PSD.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/three-thin-fresh.json"
+      ]
+    },
+    {
+      "file": "verify-joint034-final.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 10.70271587499883,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_dual.py",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual-no-cap.json.gz",
+        "--psd",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual.json.PSD.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-checked-final.json"
+      ]
+    },
+    {
+      "file": "verify-joint034-retry.exit.json",
+      "status": "EXITED",
+      "exit_code": 1,
+      "wall_seconds": 1.879875750048086,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_dual.py",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual-no-cap.json.gz",
+        "--psd",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual.json.PSD.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-checked.json"
+      ]
+    },
+    {
+      "file": "verify-joint034-retry2.exit.json",
+      "status": "EXITED",
+      "exit_code": 0,
+      "wall_seconds": 8.869331083958969,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_dual.py",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual-no-cap.json.gz",
+        "--psd",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual.json.PSD.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-checked.json"
+      ]
+    },
+    {
+      "file": "verify-joint034.exit.json",
+      "status": "EXITED",
+      "exit_code": 1,
+      "wall_seconds": 0.024937791051343083,
+      "termination_confirmed": null,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "formalization/canonical-width/c16/verify_exchange_dual.py",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual-no-cap.json.gz",
+        "--psd",
+        "formalization/canonical-width/c16/overnight-results/joint034-dual.json.PSD.json.gz",
+        "--output",
+        "formalization/canonical-width/c16/overnight-results/joint034-checked.json"
+      ]
+    }
+  ],
+  "expired_launch": "expired-launch-note.json",
+  "limit": "Elapsed child wall times may overlap and are not CPU hours. MODEL_BUILT is an intermediate snapshot; the separate terminal receipt determines whether a solver returned. Numerical feasibility/infeasibility is not a checked source result."
+}

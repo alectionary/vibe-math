@@ -1230,8 +1230,8 @@ Jong Yeon Lee. arXiv:2610.06820v1, 5 October 2026. [Primary source](https://arxi
 - Record type: academic source; access: full text.
 - Inspected locator: Sections IV.4, VI and Appendices A.4/C.3.
 - Contribution: Issue1 primary comparison and question harvesting.
-- Comparison limit: Full regularity and canonical-frame width concern complete logical bases, not the minimum distance lower bound in our strengthened 3x4 monomial LP target. Full-row-rank augmentation criteria do not apply to the all-one rank-one augmentation of our fully populated 3x4 base. Appendix A.4 supplies a related exhaustive-support-search completeness argument; its code-specific execution records do not certify our inputs.
-- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation).
+- Comparison limit: Full regularity and canonical-frame width concern complete logical bases, not the minimum distance lower bound in our strengthened 3x4 monomial LP target. Full-row-rank augmentation criteria do not apply to the all-one rank-one augmentation of our fully populated 3x4 base. Appendix A.4 supplies a related exhaustive-support-search completeness argument; its code-specific execution records do not certify our inputs. A 2026-10-26 re-read of the same HTML found no author-posed question beyond the six harvested targets. Proposition 9 for C16,9 remains unresolved here.
+- Related canonical targets: [L-F25-distance-preservation](OPEN-PROBLEMS.md#l-f25-distance-preservation), [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
 - Provenance: [source review ledger](../literature/truncated-distance12-source-screening.json).
 
 - Question screen: [full text screened](../literature/RESEARCH-QUESTION-SCREENING.md); 6 linked canonical targets.
@@ -1323,6 +1323,49 @@ Owidiusz Makuta; Remigiusz Augusiak. 23 August 2025 journal publication. [Primar
 
 - Question screen: [relevant sections screened](../literature/connected-gallager-source-screening.json); 6 linked canonical targets.
 
+## Lee2026FramesData — public-regular-logical-frames
+
+Jong Yeon Lee. Commit 04ad4795ad15cb89ee47b7868ff925c30b2fc731, 6 October 2026. [Primary source](https://github.com/yeon-lee/public-regular-logical-frames).
+
+- Record type: software repository; access: cloned and enumerator executed.
+- Inspected locator: LPQ6 inputs and verification/regular_pairing enumerator through weight 17.
+- Contribution: Released operator lists and enumerator for the Proposition 9 code C^LP_16,9. Fresh execution reproduced 45 orbits. The 2026-10-27 takeover independently bound all physical pool operators to saved coordinates and checked the width-18 frame.
+- Comparison limit: This is the author's program, not an independent enumerator. Completeness still uses the source Appendix A argument. The repository leaves unrestricted width-16 existence unresolved. No new author-posed inventory question is taken from the repository text.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/prior-art.json).
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/takeover-prior-art.json).
+
+## F152 — Engineering Insights into Biclique Partitions and Fractional Binary Ranks of Matrices
+
+Angikar Ghosal; Andreas Karrenbauer. SEA2025 publisher HTML, DOI10.4230/LIPIcs.SEA.2025.18. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol338-sea2025/html/LIPIcs.SEA.2025.18/LIPIcs.SEA.2025.18.html).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections2–5.4, Conjecture1, Theorem2/Lemma3 and pricing algorithm.
+- Contribution: Related terminology and support-rank obstruction route for the C16 pool matrix.
+- Comparison limit: Ordinary-arithmetic binary rank is not F2 rank; isolation/fooling sets are weaker than induced matchings. The saved triangular128 minor prevents a fractional-biclique-cover upper bound below128.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 5 linked canonical targets.
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+## F153 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Rank Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. arXiv:2312.03859v1,6December2023. [Primary source](https://arxiv.org/html/2312.03859v1).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full text; Lemmas4.4/7.1, Observation4.6, Section8 including projectivity and Ramsey questions..
+- Contribution: Related terminology and support-rank obstruction route for the C16 pool matrix.
+- Comparison limit: Exact C16 rank/mimsup barrier128; source row basis is not a simultaneous-partner representative set.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base), [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives), [L-F153-mimsup-computability](OPEN-PROBLEMS.md#l-f153-mimsup-computability), [L-F153-noninteger-mimsup](OPEN-PROBLEMS.md#l-f153-noninteger-mimsup), [L-F153-random-mimsup](OPEN-PROBLEMS.md#l-f153-random-mimsup), [L-F153-mimsup-him-functional](OPEN-PROBLEMS.md#l-f153-mimsup-him-functional), [L-F153-mimsup-support-functional](OPEN-PROBLEMS.md#l-f153-mimsup-support-functional), [L-F153-strict-mimsup-support](OPEN-PROBLEMS.md#l-f153-strict-mimsup-support), [L-F153-nonprojective-not-prime](OPEN-PROBLEMS.md#l-f153-nonprojective-not-prime), [L-F153-strong-projectivity](OPEN-PROBLEMS.md#l-f153-strong-projectivity), [L-F153-nonprojective-lowerbounds](OPEN-PROBLEMS.md#l-f153-nonprojective-lowerbounds), [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle), [L-F153-multicolor-ramsey-growth](OPEN-PROBLEMS.md#l-f153-multicolor-ramsey-growth), [L-F153-shannon-capacity-C7](OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7), [L-F153-matrix-multiplication-exponent](OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent).
+- Provenance: [source review ledger](../literature/c16-continuation-source-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/overnight-results/paper-screening.json); 15 linked canonical targets.
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/overnight-results/paper-screening.json).
+
 ## BravyiLeemhuisTerhal2010 — Majorana Fermion Codes
 
 Sergey Bravyi; Bernhard Leemhuis; Barbara M. Terhal. arXiv v2, 27 April 2010; first submitted 21 April 2010. [Primary source](https://arxiv.org/pdf/1004.3791v2).
@@ -1372,3 +1415,411 @@ Renaya Dhingra; Gretchen L. Matthews; Collin McDevitt; Emily McMillon. Accepted 
 - Provenance: [source review ledger](../literature/symmetric-css-editorial-source-screening.json).
 
 - Question screen: [full text screened](../literature/symmetric-css-editorial-source-screening.json); 3 linked canonical targets.
+
+## OpenAIMathStructuralAudit2026 — OpenAI math library: selected SAT, matroid-counting and matching interfaces
+
+OpenAI. commit7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a, inspected2026-10-27. [Primary source](https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a).
+
+- Record type: software source; access: selected source interfaces read.
+- Inspected locator: SubexponentialSAT endpoint/constant construction; CommonBasesFPRAS definitions/statement; PerfectMatchingPSD endpoint; stable-graph namespace scope.
+- Contribution: Requested applicability audit motivating a bounded structural comparison for C16. No direct theorem-to-instance reduction or practical SAT executable was established.
+- Comparison limit: No transitive Lean build or complete manuscript screen. Asymptotic constants/cutoffs do not establish finite-size gains; common-matroid-base constraints do not include the required identity cross-Gram condition. New experiments use independent available optimization libraries.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).
+
+- Follow-up comparison: [dated source review](../formalization/canonical-width/c16/strategy-results/literature-ledger.json).
+
+## PythonFlintIntervalSemantics2026 — python-flint0.9.0 general concepts and interval predicates
+
+python-flint developers. 0.9.0 documentation, inspected2026-10-27. [Primary source](https://python-flint.readthedocs.io/en/stable/general.html).
+
+- Record type: software source; access: relevant documentation read.
+- Inspected locator: Exact arithmetic, interval guarantees, precision and comparison semantics.
+- Contribution: Documents interval and comparison semantics used by the C16 rational/PSD certificate consumer.
+- Comparison limit: Software documentation, not an academic full-paper or theorem-library build; no new source-authored question screen.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/structural-prior-art.json).
+
+## F154 — Integer Programming Formulations and Benders Decomposition for the Maximum Induced Matching Problem
+
+Betül Ahat; Tınaz Ekim; Z. Caner Taşkın. Author manuscript JOC-2016-03-OA-049,26 PDF pages; published2018, DOI10.1287/ijoc.2017.0764. [Primary source](https://zctaskin.github.io/files/MIM.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Sections2.1/3/4.2/6, equations2/8–12/22.
+- Contribution: C16 theoretical-method literature comparison.
+- Comparison limit: The endpoint model is already implemented in frame_cpsat.py. For cardinality, use vertex weights1/2 and edge weights0; the paper’s Benders edge-weight subproblem supplies no missing feasibility oracle.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F154-structured-mim-methods](OPEN-PROBLEMS.md#l-f154-structured-mim-methods).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 1 linked canonical targets.
+
+## F155 — Block-diagonal semidefinite programming hierarchies for0/1 programming
+
+Nebojsa Gvozdenović; Monique Laurent; Frank Vallentin. Primary preprint dated19August2008,11 PDF pages; ORL37(2009),27–31; arXiv0712.3079. [Primary source](https://optimization-online.org/wp-content/uploads/2007/12/1859.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Section2.3 Lemma2.2 and proof; Section2.5 Propositions2.5/2.6; Sections3/4.
+- Contribution: C16 theoretical-method literature comparison.
+- Comparison limit: Conditioned PSD blocks and coherent third moments are an applicable systematic lift. Selected principal blocks remain valid but do not inherit the complete hierarchy’s full strength or a low-level completion guarantee.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 0 linked canonical targets.
+
+## F156 — Maximum Dimension of Subspaces with No Product Basis
+
+Yuuya Yoshida. arXiv2010.16293v1,30October2020,14 PDF pages; LAA620(2021),228–241. [Primary source](https://arxiv.org/pdf/2010.16293).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Remark2.5; Proposition3.1 and its proof; Proposition3.2/Theorem3.3; Introduction S1 and Proposition4.6.
+- Contribution: C16 theoretical-method literature comparison.
+- Comparison limit: Includes finite-field product-basis theorems, but arbitrary product factors and invertible factor changes need not preserve the finite C16 dictionaries or trace-dual membership. The coefficient ring S has nilpotents and is not a field.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F156-multipartite-separable-unit](OPEN-PROBLEMS.md#l-f156-multipartite-separable-unit).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/literature-techniques-results/sources.json); 1 linked canonical targets.
+
+## StacksNakayama — Nakayama’s lemma
+
+The Stacks Project Authors. Section10.20, inspected2026-10-28. [Primary source](https://stacks.math.columbia.edu/tag/07RC).
+
+- Record type: reference work; access: statement and proof read.
+- Inspected locator: Lemma10.20.1, especially parts9–12 and nilpotent-iteration proof.
+- Contribution: Classical justification of generation from nilpotent-ideal reduction; already used in our span argument.
+- Comparison limit: Does not preserve finite pools or lift binary trace-dual frames.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/literature-techniques-results/sources.json).
+
+## F157 — Towards Tight Bounds for the Graph Homomorphism Problem Parameterized by Cutwidth via Asymptotic Matrix Parameters
+
+Carla Groenland; Isja Mannens; Jesper Nederlof; Marta Piecyk; Paweł Rzążewski. ICALP2024 LIPIcs297:77,21-page published version, DOI10.4230/LIPIcs.ICALP.2024.77. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.77/LIPIcs.ICALP.2024.77.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full21-page published version, especially Introduction and PDFp17 conclusion..
+- Contribution: Published version of F153; version-specific applicability and questions reconciled.
+- Comparison limit: Published shortening omits four arXiv-only question/direction paragraphs; source rank and mimsup barriers do not answer finite mim.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F153-cutwidth-base](OPEN-PROBLEMS.md#l-f153-cutwidth-base), [L-F153-fast-representatives](OPEN-PROBLEMS.md#l-f153-fast-representatives), [L-F153-mimsup-computability](OPEN-PROBLEMS.md#l-f153-mimsup-computability), [L-F153-noninteger-mimsup](OPEN-PROBLEMS.md#l-f153-noninteger-mimsup), [L-F153-random-mimsup](OPEN-PROBLEMS.md#l-f153-random-mimsup), [L-F153-mimsup-him-functional](OPEN-PROBLEMS.md#l-f153-mimsup-him-functional), [L-F153-mimsup-support-functional](OPEN-PROBLEMS.md#l-f153-mimsup-support-functional), [L-F153-strict-mimsup-support](OPEN-PROBLEMS.md#l-f153-strict-mimsup-support), [L-F153-fine-grained-courcelle](OPEN-PROBLEMS.md#l-f153-fine-grained-courcelle), [L-F153-shannon-capacity-C7](OPEN-PROBLEMS.md#l-f153-shannon-capacity-c7), [L-F153-matrix-multiplication-exponent](OPEN-PROBLEMS.md#l-f153-matrix-multiplication-exponent).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/overnight-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/overnight-results/paper-screening.json); 11 linked canonical targets.
+
+## F158 — Extending CDCL to Disjunctions of Parity Equations
+
+Paul Beame; Glenn Sun. SAT2026 LIPIcs377:5, published16July2026,21pages. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.5/LIPIcs.SAT.2026.5.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full21-page conference version; Section8 PDFp17 directions..
+- Contribution: Parity-clause solver and proof-format method comparison for the existing C16 target.
+- Comparison limit: No C16 conclusion follows from the general simulation theorem or published benchmarks; our native test outcome is recorded separately.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F158-parity-heuristic-integration](OPEN-PROBLEMS.md#l-f158-parity-heuristic-integration), [L-F158-cnf-specific-parity-branching](OPEN-PROBLEMS.md#l-f158-cnf-specific-parity-branching), [L-F158-semantic-1uip](OPEN-PROBLEMS.md#l-f158-semantic-1uip), [L-F158-parity-clause-minimization](OPEN-PROBLEMS.md#l-f158-parity-clause-minimization).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/theory-loop-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/theory-loop-results/paper-screening.json); 4 linked canonical targets.
+
+## F159 — Computing Infeasibility Certificates for Combinatorial Problems through Hilbert’s Nullstellensatz
+
+Jesús A. De Loera; Jon Lee; Peter N. Malkin; Susan Margulies. Author manuscript dated5January2009,27pages. [Primary source](https://www.math.ucdavis.edu/~deloera/RECENT_WORK/jsc09_issac08.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full27-page author version; method and all question/direction contexts screened..
+- Contribution: Bounded C16 algebraic-certificate and native parity/memory comparison
+- Comparison limit: No C16 transfer, full case completion or source-question count established by retrieval alone
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F159-certificate-degree-lower-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-lower-bounds), [L-F159-certificate-degree-upper-bounds](OPEN-PROBLEMS.md#l-f159-certificate-degree-upper-bounds), [L-F159-clique-degree-cutters](OPEN-PROBLEMS.md#l-f159-clique-degree-cutters), [L-F159-coloring-degree-growth](OPEN-PROBLEMS.md#l-f159-coloring-degree-growth).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 4 linked canonical targets.
+
+## F160 — Tinted, Detached, and Lazy CNF-XOR solving and its Applications to Counting and Sampling
+
+Mate Soos; Stephan Gocht; Kuldeep S. Meel. Author CAV2020 manuscript,22pages. [Primary source](https://www.cs.toronto.edu/~meel/Papers/cav20-sgm.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full22-page author version; method and all question/direction contexts screened..
+- Contribution: Bounded C16 algebraic-certificate and native parity/memory comparison
+- Comparison limit: No C16 transfer, full case completion or source-question count established by retrieval alone
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 0 linked canonical targets.
+
+## F161 — Proof Generation for CDCL Solvers Using Gauss-Jordan Elimination
+
+Mate Soos; Randal E. Bryant. arXiv:2304.04292v1,9April2023,12pages. [Primary source](https://arxiv.org/pdf/2304.04292).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full12-page author version; method and all question/direction contexts screened..
+- Contribution: Bounded C16 algebraic-certificate and native parity/memory comparison
+- Comparison limit: No C16 transfer, full case completion or source-question count established by retrieval alone
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F161-proof-producing-cdcl-t](OPEN-PROBLEMS.md#l-f161-proof-producing-cdcl-t).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 1 linked canonical targets.
+
+## F162 — BOSPHORUS: Bridging ANF and CNF Solvers
+
+Davin Choo; Mate Soos; Kian Ming A. Chai; Kuldeep S. Meel. DATE2019 author manuscript,6pages. [Primary source](https://www.cs.toronto.edu/~meel/Papers/date-cscm19.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full6-page author version; method and all question/direction contexts screened..
+- Contribution: C16 algebraic solver comparison
+- Comparison limit: No source C16 conclusion or speedup follows from external benchmarks
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F162-iterative-solver-extensions](OPEN-PROBLEMS.md#l-f162-iterative-solver-extensions).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/algebraic-results/paper-screening.json); 1 linked canonical targets.
+
+## F163 — CryptoMiniSat on XNF Benchmarks, Revisited
+
+Mate Soos. Author blog13September2026. [Primary source](https://www.msoos.org/2026/09/cryptominisat-on-xnf-benchmarks-revisited/).
+
+- Record type: technical blog; access: full text read.
+- Inspected locator: Full source inspected; method and author-question accounting in progress.
+- Contribution: C16 algebraic solver comparison
+- Comparison limit: No source C16 conclusion or speedup follows from external benchmarks
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/algebraic-results/literature.json).
+
+## F164 — The Glasgow Subgraph Solver: Using Constraint Programming to Tackle Hard Subgraph Isomorphism Problem Variants
+
+Ciaran McCreesh; Patrick Prosser; James Trimble. Author ICGT2020 manuscript,9pages. [Primary source](https://ciaranm.github.io/papers/icgt2020-glasgow-subgraph-solver.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full document; question locators in screen ledger.
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F164-filtering-search-guarantees](OPEN-PROBLEMS.md#l-f164-filtering-search-guarantees), [L-F164-side-constraint-applications](OPEN-PROBLEMS.md#l-f164-side-constraint-applications), [L-F164-symmetry-implementation](OPEN-PROBLEMS.md#l-f164-symmetry-implementation), [L-F164-faster-exact-counting](OPEN-PROBLEMS.md#l-f164-faster-exact-counting), [L-F164-approximate-counting](OPEN-PROBLEMS.md#l-f164-approximate-counting), [L-F164-uniform-sampling](OPEN-PROBLEMS.md#l-f164-uniform-sampling), [L-F164-special-pattern-detection](OPEN-PROBLEMS.md#l-f164-special-pattern-detection), [L-F164-proof-logging](OPEN-PROBLEMS.md#l-f164-proof-logging), [L-F164-automatic-configuration](OPEN-PROBLEMS.md#l-f164-automatic-configuration), [L-F164-application-benchmarks](OPEN-PROBLEMS.md#l-f164-application-benchmarks).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 10 linked canonical targets.
+
+## F165 — IPASIR-UP: User Propagators for CDCL
+
+Katalin Fazekas; Aina Niemetz; Mathias Preiner; Markus Kirchweger; Stefan Szeider; Armin Biere. Publisher SAT2023 version,13pages. [Primary source](https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.8/LIPIcs.SAT.2023.8.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Full document; question locators in screen ledger.
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Complete source screened, including all question and future-direction passages. Historical directions are not asserted currently open or Lean-assessed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F165-single-clause-inprocessing](OPEN-PROBLEMS.md#l-f165-single-clause-inprocessing), [L-F165-external-proof-production](OPEN-PROBLEMS.md#l-f165-external-proof-production), [L-F165-restart-backtrack-control](OPEN-PROBLEMS.md#l-f165-restart-backtrack-control), [L-F165-solver-state-access](OPEN-PROBLEMS.md#l-f165-solver-state-access), [L-F165-further-applications](OPEN-PROBLEMS.md#l-f165-further-applications), [L-F165-cvc5-tuning](OPEN-PROBLEMS.md#l-f165-cvc5-tuning).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 6 linked canonical targets.
+
+## F166 — A New Look at BDDs for Pseudo-Boolean Constraints
+
+Ignasi Abío; Robert Nieuwenhuis; Albert Oliveras; Enric Rodríguez-Carbonell; Valentin Mayer-Eichberger. JAIR45,2012; arXiv:1401.5860v1,23January2014. [Primary source](https://arxiv.org/abs/1401.5860).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary abstract/metadata only. Complete local negative mask clauses already provide their primary-variable domain propagation; no BDD speedup claimed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F167 — On CNF Encodings of Decision Diagrams
+
+Ignasi Abío; Graeme Gange; Valentin Mayer-Eichberger; Peter J. Stuckey. CPAIOR2016,pp1–17,DOI10.1007/978-3-319-33954-2_1. [Primary source](https://research.monash.edu/en/publications/on-cnf-encodings-of-decision-diagrams/).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary institutional abstract read. Author copy identified at https://people.eng.unimelb.edu.au/pstuckey/mddenc/mddenc.pdf; full text not retrieved or screened.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F168 — Compact-Table: Efficiently Filtering Table Constraints with Reversible Sparse Bit-Sets
+
+Jordan Demeulenaere; Renaud Hartert; Christophe Lecoutre; Guillaume Perez; Laurent Perron; Jean-Charles Régin; Pierre Schaus. arXiv:1604.06641v1,22April2016. [Primary source](https://arxiv.org/abs/1604.06641).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary abstract only. GAC/table data structures are a possible engineering route; no implementation or gain claimed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F169 — Quantum nonlocality without entanglement depending on nonzero prior probabilities in optimal unambiguous discrimination
+
+Donghoon Ha; Jeong San Kim. arXiv:2105.12284v1,26May2021; Scientific Reports DOI10.1038/s41598-021-97103-y. [Primary source](https://arxiv.org/abs/2105.12284).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary metadata and selected proof passages inspected. Complex factor-wise orthogonality does not imply binary trace orthogonality; no C16 transfer. Full question screen not performed.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F170 — Logic-Based Benders Decomposition
+
+John N. Hooker; Greger Ottosson. Mathematical Programming96,33–60,2003,DOI10.1007/s10107-003-0375-9. [Primary source](https://johnhooker.tepper.cmu.edu/papers.html).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Author bibliography confirms metadata and original1995 version; published primary PDF identified but not retrieved. Not relied on for a C16 theorem or speedup.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F171 — Propagation via Lazy Clause Generation
+
+Olga Ohrimenko; Peter J. Stuckey; Michael Codish. Constraints14(3),357–391,2009,DOI10.1007/s10601-008-9064-x. [Primary source](https://people.eng.unimelb.edu.au/pstuckey/COMP90046/resources/lazyj.pdf).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Author-copy lead identified, not retrieved or screened; no full-text access denial inferred from a DOI web-tool failure.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## F172 — Nonseparating Cocircuits in Binary Matroids
+
+Donald K. Wagner. SIAM J.Discrete Math.35(4),3030–3049,publishedonline21December2021. [Primary source](https://epubs.siam.org/doi/10.1137/21M139339X).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established..
+- Contribution: C16 strategy and method applicability comparison.
+- Comparison limit: Primary abstract read. Early source gate finds all45 representative listed cocircuits nonseparating, so no pruning follows from a theorem merely requiring nonseparating fundamental cocircuits. Full paper not prioritized or retrieved; 3-connectivity not established.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/strategy-results/paper-screening.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/strategy-results/paper-screening.json); 0 linked canonical targets.
+
+## SageMatroidGreedy2026 — The abstract Matroid class: maximum-weight independent sets
+
+SageMath developers. Official API documentation inspected 2026-10-30. [Primary source](https://doc.sagemath.org/html/en/reference/matroids/sage/matroids/matroid.html#sage.matroids.matroid.Matroid.max_weight_independent).
+
+- Record type: software source; access: relevant documentation read.
+- Inspected locator: max_weight_independent: nonnegative weights and descending-weight greedy independence algorithm.
+- Contribution: Implementation reference for the C16 conditional rank separator. Signed weights are shifted by a constant at fixed basis rank; a mandatory independent vector is contracted. Final cut validity uses independently recomputed integer ranks.
+- Comparison limit: Sage itself was not executed or installed. No paper was acquired, no academic full-text screen or author-posed question is added, and no historical-priority or full-frame conclusion follows.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/moment-resumption-results/software-reference.json).
+
+## F173 — Testing membership in matroid polyhedra
+
+William H. Cunningham. Journal of Combinatorial Theory, Series B36(2),161–188,April1984. [Primary source](https://www.sciencedirect.com/science/article/pii/0095895684900236).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Publisher-indexed abstract; author publication entry18; author available-papers index; Bonn report81207 index; OpenAlex W2080656989; connected-browser publisher challenge. Fulltext request63 pending..
+- Contribution: Prospective exact matroid-membership algorithm reference after the independently derived C16 exchange-repair gate.
+- Comparison limit: Full text not retrieved or question-screened. Current implementation is not identified with Cunningham's algorithm and inherits no complexity guarantee.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json); 0 linked canonical targets.
+
+## F174 — Simple push-relabel algorithms for matroids and submodular flows
+
+András Frank; Zoltán Miklós. Author manuscript dated 11 January 2012; Japan Journal of Industrial and Applied Mathematics29(3),419–439; DOI10.1007/s13160-012-0076-y. [Primary source](https://andrasfrank.web.elte.hu/cikkek/FrankJ62.PDF).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: All15pages read. Section3 supplies the exact rational basis-mixture push–relabel method. The question in Section6.2 is answered by the paper itself; no unresolved question or future direction was found..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/frank-miklos-2012-fulltext-screen.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/two-basis-results/literature/frank-miklos-2012-fulltext-screen.json); 0 linked canonical targets.
+
+## F175 — A New Strategy for Push-Relabel Algorithm Framework for Matroid Optimization
+
+Emanuel Florentin Olariu. Technical report TR13-01, June2013,6PDFpages. [Primary source](https://publications.info.uaic.ro/files/tr/tr13-01.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: All6pages read. One historical direction asks to adapt the lowest-level/BFS strategy to submodular flow. The later primary TR13-02 explicitly supplies that adaptation, so this passage is not added as an unresolved inventory target..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/olariu-2013-fulltext-screen.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/two-basis-results/literature/olariu-2013-fulltext-screen.json); 0 linked canonical targets.
+
+## F176 — A simple push-relabel algorithm for sub-modular flows
+
+Cristian Frasinaru; Emanuel F. Olariu. Technical report TR13-02, October2013,7PDFpages. [Primary source](https://publications.info.uaic.ro/files/tr/tr13-02.pdf).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: All7pages read. Sections4–5 address the earlier TR13-01 adaptation direction. Section6 contains two linked broad directions concerning smallest tight sets and an O(n²m) feasibility method. Their present-day status and Lean discovery remain unassessed..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F176-avoid-smallest-tight-sets](OPEN-PROBLEMS.md#l-f176-avoid-smallest-tight-sets), [L-F176-simpler-submodular-flow](OPEN-PROBLEMS.md#l-f176-simpler-submodular-flow).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/tr13-02-fulltext-screen.json).
+
+- Question screen: [full text screened](../formalization/canonical-width/c16/two-basis-results/literature/tr13-02-fulltext-screen.json); 2 linked canonical targets.
+
+## F177 — A Lowest Level Rule Push-Relabel Algorithm for Submodular Flows and Matroid Optimization
+
+Emanuel F. Olariu; Cristian Frasinaru. SYNASC2014,97–102; Crossref conference publication date September2014; IEEE document7034671. [Primary source](https://doi.org/10.1109/SYNASC.2014.21).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Institutional author bibliography and DOI registrar metadata inspected. Proceedings full text was not acquired or question-screened; the earlier primary TR13-02 supplies the resolution evidence actually used..
+- Contribution: Exact matroid-membership method and its later strategy variants; methodological comparison for the C16 conditional-rank problem.
+- Comparison limit: Only named source versions were read. No C16 theorem, full two-basis membership or practical operation bound is inferred from the cited algorithm.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../formalization/canonical-width/c16/two-basis-results/literature/olariu-direction-followup-resolution.json).
+
+- Question screen: [not assessed](../formalization/canonical-width/c16/two-basis-results/literature/olariu-direction-followup-resolution.json); 0 linked canonical targets.
+
+## F178 — A Discrete Convex Min-Max Formula for Box-TDI Polyhedra
+
+András Frank; Kazuo Murota. arXiv:2007.03507v3, 27 January 2021; DOI10.1287/moor.2021.1160. [Primary source](https://arxiv.org/html/2007.03507v3).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Complete v3 HTML screened: abstract, introduction, Sections2–6, appendix and references. Three linked entries: one specific M2 algorithm question and two broad algorithm directions. Weighted M-convex quadratic minimization is recorded as later known solvable in F180 Remark4.4, not a new open target..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F178-m2-square-strong-polynomial](OPEN-PROBLEMS.md#l-f178-m2-square-strong-polynomial), [L-F178-box-tdi-algorithms](OPEN-PROBLEMS.md#l-f178-box-tdi-algorithms), [L-F178-inverse-optimization-algorithms](OPEN-PROBLEMS.md#l-f178-inverse-optimization-algorithms).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F178-screen.json).
+
+- Question screen: [full text screened](../literature/owner-lift-20261030/F178-screen.json); 3 linked canonical targets.
+
+## F179 — Matroid bases with cardinality constraints on the intersection
+
+Stefan Lendl; Britta Peis; Veerle Timmermans. Publisher full text, online29 March2021, issue2022; Mathematical Programming194,661–684; DOI10.1007/s10107-021-01642-1. [Primary source](https://pmc.ncbi.nlm.nih.gov/articles/PMC9237001/).
+
+- Record type: academic source; access: full text screened.
+- Inspected locator: Complete publisher text screened: introduction, Sections2–6, both appendices and references. One norm-generalization direction, including its Euclidean subcase. The recoverable-robust strongly-polynomial question is answered in this paper. Direct PMC acquisition failed; Europe PMC full-text XML was retained..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width), [L-F179-polymatroid-norm-constraints](OPEN-PROBLEMS.md#l-f179-polymatroid-norm-constraints).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F179-screen.json).
+
+- Question screen: [full text screened](../literature/owner-lift-20261030/F179-screen.json); 1 linked canonical targets.
+
+## F180 — Decreasing Minimization on Base-Polyhedra: Relation Between Discrete and Continuous Cases
+
+András Frank; Kazuo Murota. arXiv:2202.06561v2, 12 April2022. [Primary source](https://arxiv.org/html/2202.06561v2).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Targeted reading of Remark4.4 and its cited context only. Later primary evidence says weighted discrete quadratic minimization over an integral base-polyhedron is known strongly polynomial. Complete HTML acquired, but complete question screening remains unassessed..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F180-screen.json).
+
+- Question screen: [not assessed](../literature/owner-lift-20261030/F180-screen.json); 0 linked canonical targets.
+
+## F181 — A Generalized-Polymatroid Approach to Disjoint Common Independent Sets in Two Matroids
+
+Kenjiro Takazawa; Yu Yokoi. arXiv:1805.05528v3, 28 January2019. [Primary source](https://arxiv.org/html/1805.05528v3).
+
+- Record type: academic source; access: metadata or selected passages only.
+- Inspected locator: Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication..
+- Contribution: Primary methodological context for conditional owner lifts, with dated open-question and resolution evidence kept distinct.
+- Comparison limit: Two-base structure does not imply the extra cross-pattern system is box-TDI, integral, or a source frame.
+- Related canonical targets: [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/owner-lift-20261030/F181-screen.json).
+
+- Question screen: [not assessed](../literature/owner-lift-20261030/F181-screen.json); 0 linked canonical targets.
