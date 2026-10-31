@@ -11,7 +11,7 @@ assert p['headline_effects']==b['headline_effects'] and sum(len(x.get('component
 assert p['sections']==b['sections'] and p['inventory_audit']==b['inventory_audit']
 assert len(p['claims'])==996
 for new,old in zip(p['claims'],b['claims']):
- assert {k:v for k,v in new.items() if k!='current_work'}==old
+ assert {k:v for k,v in new.items() if k not in ['current_work','current_bayesian_scope']}==old
 checks['all_996_claim_adjudications_26_headlines_187_components_preserved']=True
 rows=list(csv.DictReader((R/'coverage-v4.csv').open()))
 for claim,row,projected in zip(p['claims'],rows,c['current_coverage']):
@@ -35,6 +35,14 @@ a=load('handoff/continuation-writer-allowlist.json')
 for entry in a['allowed_inputs']:assert sha(entry['path'])==entry['sha256']
 assert a['packet_sha256']==sha('handoff/continuation-evidence-packet.json')
 checks['writer_allowlist_hashes_verified']=True
+terminal=c['scientific_evidence']['jags-centered-extended-recovery']
+assert terminal['joint_operational_gate_pass'] and terminal['completion']['completed']==4
+assert terminal['design']['retained_per_chain']==28000 and len(terminal['parameter_summaries'])==14
+assert terminal['beta1_assessment']['intervals_excluding_zero']==0
+assert c['scientific_evidence']['runtime-versions']['R_package_version']=='0.19.4.1'
+assert c['recovery_evidence_reservation']['state']=='reviewed_terminal_evidence_incorporated'
+assert not any('pending terminal review' in x or 'withheld pending' in x for x in p['limitations'])
+checks['terminal_scope_counts_and_runtime']=True
 commit=c['contract_commit']
 with tempfile.TemporaryDirectory() as td:
  for name in ['stage_checks.py','first_page.py']:

@@ -2,49 +2,49 @@
   {
     "requirement": "Whole-dissertation coverage",
     "status": "followed",
-    "evidence": "coverage-v4.csv and handoff/continuation-evidence-packet.json cover 19 sections, 996 dependent source records, 26 headline claims and 187 effect components. Exact-target work: 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed and 310 completed under declared reconstruction. Coverage is not whole-study replication."
+    "evidence": "The source inventory covers 19 sections, 996 dependent source records, 26 headline claims and 187 effect components. Exact-target work comprises 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed and 310 completed under the declared reconstruction (coverage-v4.csv). Inventory coverage does not establish whole-study replication."
   },
   {
     "requirement": "Original-source and input audit",
     "status": "followed",
-    "evidence": "handoff/scientific-availability.json records dated permitted acquisition attempts. All12public author repositories were examined. Unavailable empirical inputs and simulation specifications retain unresolved targets."
+    "evidence": "The input audit examined all 12 public author repositories. Original empirical responses, linked calibration and some simulation specifications were unavailable; their associated targets remain unresolved (handoff/scientific-availability.json)."
   },
   {
     "requirement": "Preferred statistical engines",
     "status": "followed",
-    "evidence": "provenance/preflight.json records R4.5.0,lavaan0.6.19 andOpenMx2.21.13. OpenMx implements the Chapter6 Gaussian likelihood; outputs/engine-agreement.csv supplies independent baseline checks."
+    "evidence": "R 4.5.0, lavaan 0.6.19 and OpenMx 2.21.13 were available. OpenMx implements the Chapter 6 Gaussian likelihood, with independent baseline engine checks recorded in outputs/engine-agreement.csv; package versions are recorded in provenance/preflight.json."
   },
   {
     "requirement": "JAGS for non-Gaussian latent item models",
     "status": "departed",
-    "justification": "A covariance-only SEM would change the source likelihood. JAGS4.3.2/rjags4-16 reconstructs the item-level models; posterior1.6.1 computes diagnostics. Independent generator, baseline engine and model-semantic checks do not independently validate the full posterior.",
-    "evidence": "The continuation packet embeds the original and centered four-chain diagnostic evidence and their scientific limits. JAGS preserves the non-Gaussian item-level likelihood."
+    "justification": "A covariance-only SEM would change the source likelihood. JAGS 4.3.2 with rjags 4-16 reconstructs the item-level models; posterior 1.6.1 computes diagnostics. Generator, baseline engine and model-semantics checks do not independently validate the full posterior.",
+    "evidence": "The item-level posterior and its diagnostic limits are specified in handoff/jags-gate-scientific-evidence.json and handoff/jags-centered-scientific-evidence.json. The extended one-dataset result and runtime versions, including coda 0.19.4.1, are recorded in handoff/jags-centered-extended-recovery-scientific-evidence.json."
   },
   {
     "requirement": "Original repetition counts and adequate posterior convergence",
     "status": "departed",
-    "justification": "Chapter 6 completes 1000 datasets in 36 primary and 12 sensitivity conditions, 96000 method fits. Response generation completes 2650 datasets across 19 Chapter 2/5 conditions; alpha sensitivity reuses those datasets with zero additional independent datasets and zero posterior fits. Source-count Bayesian recovery/power aggregates remain incomplete. Both completed original and centered 12000-retained-draw-per-chain diagnostics fail their joint convergence gate. Final recovery outcome awaits terminal independent review.",
-    "evidence": "handoff/continuation-evidence-packet.json: continuation.scientific_evidence and current_coverage; final recovery reservation."
+    "justification": "Chapter 6 completes 1000 datasets in 36 primary and 12 sensitivity conditions, totaling 96000 method fits. Response generation completes 2650 datasets across 19 Chapter 2/5 conditions; alpha sensitivity adds zero independent datasets and zero posterior fits. Shorter original and centered diagnostics failed their joint criteria. The completed four-chain centered diagnostic with 28000 retained draws per chain passes the operational criteria for all 14 monitored quantities on one fixed Chapter 2 N500/J60 floor dataset; its interaction HPD includes zero. This does not establish the source 100/250-dataset posterior recovery or power aggregates, other designs, or empirical refits.",
+    "evidence": "production/chapter6-v1/terminal-analysis/summary.json; handoff/generator-summary-scientific-evidence.json; handoff/generator-alpha-sensitivity-scientific-evidence.json; handoff/jags-centered-extended-recovery-scientific-evidence.json."
   },
   {
     "requirement": "Signed estimands, uncertainty and multiplicity",
     "status": "followed",
-    "evidence": "production/analysis-plan.json separates variance/pathSE, deletion-minus-full contrasts, estimate-minus-truth bias and source deviations. Geometric extraction margins, ourMonteCarlo error and unknownsourceMCerror remain distinct; descriptive magnitude is not equivalence."
+    "evidence": "The analysis distinguishes variance and path SEs, deletion-minus-full contrasts, estimate-minus-truth bias and source deviations (production/analysis-plan.json). Geometric extraction uncertainty, our Monte Carlo error and unknown source Monte Carlo error remain distinct. Descriptive magnitude is not equivalence."
   },
   {
     "requirement": "Analytical verification and formal proof",
     "status": "departed",
-    "justification": "Reviewed ordinary mathematical arguments and exact algebra checks are available; no Lean certificate is claimed. Conditional population identification, fixed-parameter latent moment inversion and exact Rasch score-likelihood sufficiency do not establish finite-likelihood uniqueness, non-Gaussian observed-item identification, empirical recovery, power or convergence. Absence of formal certification does not prevent reporting a scoped ordinary proof.",
-    "evidence": "Continuation packet embeds the ordinary proofs, assumptions, source locators and reviewed scientific limits."
+    "justification": "Ordinary mathematical arguments and exact algebra checks support the explicitly conditional results; no Lean certificate is claimed. Population identification, fixed-parameter latent moment inversion and exact Rasch score-likelihood sufficiency do not establish finite-likelihood uniqueness, non-Gaussian observed-item identification, empirical recovery, power or convergence.",
+    "evidence": "The derivations and assumptions appear in handoff/chapter5-analytical-evidence.json, handoff/chapter6-analytical-evidence.json, provenance/continuous-moderator-identification-check.json, provenance/non-gaussian-latent-moment-check.json and provenance/rasch-sufficiency-derivation.json."
   },
   {
     "requirement": "Source attribution and permitted redistribution",
     "status": "followed",
-    "evidence": "Verified replicated_work identity, source_pdf/source_text hashes and claim-level source locators in the continuation packet. Dissertation and original programs remain local; source attribution must be preserved in new writing."
+    "evidence": "Schwabe (2016) is identified by verified bibliographic metadata and claim-specific dissertation locators. The full dissertation and unlicensed original programs remain local; redistributed materials comprise original replication code, generated results and limited attributed source extracts (handoff/scientific-availability.json)."
   },
   {
     "requirement": "Reproducible versions and commands",
     "status": "followed",
-    "evidence": "handoff/terminal-reproduction.md specifies immutable completed-analysis commit and commands; README.md documents runtime, simulation and diagnostic execution. Navigation links to master are separate from immutable reproduction revisions."
+    "evidence": "Immutable repository revision 2424e0f4d67929ba72255ef6f546ba2a72c25df0 contains completed scientific outputs, diagnostic draws, reviewed checks and original replication code. Saved-output validation and fixed-diagnostic rerun commands are specified in handoff/current-reproduction.md; handoff/terminal-reproduction.md supplies the Chapter 6 recipe. Full copyrighted dissertation text and unlicensed original programs remain separate inputs."
   }
 ]

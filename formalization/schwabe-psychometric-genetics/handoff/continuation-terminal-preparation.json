@@ -1,0 +1,73 @@
+{
+  "scope": "Read-only terminal CSV preparation; independent scientific review and manual HPD assessment pending. Not final writer evidence.",
+  "chains": [
+    {
+      "chain": "1",
+      "status": "completed",
+      "adaptation_complete": "TRUE",
+      "retained": "28000"
+    },
+    {
+      "chain": "2",
+      "status": "completed",
+      "adaptation_complete": "TRUE",
+      "retained": "28000"
+    },
+    {
+      "chain": "3",
+      "status": "completed",
+      "adaptation_complete": "TRUE",
+      "retained": "28000"
+    },
+    {
+      "chain": "4",
+      "status": "completed",
+      "adaptation_complete": "TRUE",
+      "retained": "28000"
+    }
+  ],
+  "monitored_columns": 14,
+  "all_operational_pass": true,
+  "max_Rhat": 1.00167323513699,
+  "min_bulk_ESS": 685.762093042391,
+  "min_tail_ESS": 1407.53202977834,
+  "max_MCSE_over_SD": 0.0382113430327667,
+  "beta1": {
+    "hpd_pooled_low": "-0.684694095732425",
+    "hpd_pooled_high": "0.430699184552315",
+    "parameter": "beta1",
+    "all_finite": "TRUE",
+    "rhat_rank_split_folded": "1.00149768494104",
+    "ess_bulk": "2202.202335116",
+    "ess_tail": "4023.36729947861",
+    "mean": "-0.123382651354335",
+    "sd": "0.284612932541088",
+    "mcse_mean": "0.00610643835629536",
+    "mcse_over_sd": "0.021455238529661",
+    "ess_q025": "4202.6791951722",
+    "ess_q975": "5120.59330556012",
+    "mcse_q025": "0.0127760723029424",
+    "mcse_q975": "0.0112193798283455",
+    "operational_gate_pass": "TRUE",
+    "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+  },
+  "sources": [
+    {
+      "path": "production/jags-centered-extended-recovery-v1/prepared/diagnostics/diagnostics.csv",
+      "sha256": "61dd75a63341e899ee5945f73f427e625a2f2ac3734cd71acef1b86fa12b29db"
+    },
+    {
+      "path": "production/jags-centered-extended-recovery-v1/prepared/diagnostics/chain-accounting.csv",
+      "sha256": "77613ee1cc9e5db80034f3bc38f118d46a12370711414ce845d39bfed0760ff9"
+    },
+    {
+      "path": "production/jags-centered-extended-recovery-v1/prepared/diagnostics/hpd-segment-sensitivity.csv",
+      "sha256": "d1dbfa8178a660019ebcf6dfba05007ac827d57d5067eb590487c821f8de3388"
+    }
+  ],
+  "limits": [
+    "Operational criteria alone do not establish finite-sample recovery or power.",
+    "The same centered 12000-draw prefixes cannot be pooled as independent draws.",
+    "Source-count 100/250-dataset posterior recovery/power aggregates remain incomplete."
+  ]
+}
