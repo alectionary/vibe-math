@@ -1,0 +1,129 @@
+{
+  "reviewer": "Independent pre-handoff reviewer /root/analysis_validation",
+  "reviewed_utc": "2026-10-31T01:09:47.535367+00:00",
+  "status": "Scientific override scopes accepted; one current contract correction and limited wording cleanup identified before handoff",
+  "inputs": {
+    "handoff/historical-source-adjudications-root-wording.json": "aede3752e115b6f8fe8d89f3176bb4b69035e37497be1b32c5dd54f572400dee",
+    "handoff/root-adjudication-overrides.json": "64a5bdb916ec1944c2b5b529c5deb1bf4980ed08cc43aefd3fe56e7b94bfc236",
+    "handoff/chapter5-root-adjudication-overrides.json": "61e080f25d9f795bea7dc287d2a853df4e5c65b1b644b425d4e2184a51910f30",
+    "handoff/narrow-root-adjudication-overrides.json": "de38879ff47bccf6f0a619de6c439ff7b83a2e3cacbf2a16791f703c77a34076",
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+    "handoff/chapter5-analytical-evidence.json": "fd64977485893903c9f64593dc123c82994d56ee257694a795a85a3a3d97c663",
+    "handoff/narrow-analytical-evidence.json": "868f66ebf63fee0ba8c71bac641a78d8f87635ee63fe196ac7d952577e6fe00c",
+    "provenance/narrow-analytical-adjudication-guidance.json": "7f9d9b86333faf3892a6ed29c0b79ec41b75962b4f7c99c6f650364397b84bdc",
+    "provenance/chapter5-analytical-adjudication-guidance.json": "cc48cf35741e2ecdd350764346221c09a6e6edb40cca1c1d041f3bbae9f2e72a",
+    "provenance/scale-invariance-independent-review.json": "b8cff28d033f298bf6d137dae9c039b963833622ba6341844680335f7a95e77a",
+    "handoff/ASSEMBLY.md": "7de5b349df021d099d38d819f0522eda9645534034f4e33d5d42051f4a1904f3"
+  },
+  "scope": "Read-only audit of588 historical rows with10 explicit root overrides; source schema/contrast order, separately reviewed ordinary arguments, result units and residual template language. No live Chapter6 effects, model/numerical production, edits to audited inputs, git or network actions.",
+  "checks": {
+    "historical_ID_count": 588,
+    "override_count": 10,
+    "unknown_or_duplicate_override_ids": [],
+    "source_contrast_count_and_order": "matched for all588 merged rows; all10 overrides legitimately have empty source contrast arrays",
+    "unchanged_unoverridden_results_statuses": true,
+    "override_artifact_hash_mismatches": [],
+    "stopping_contract_errors": [
+      {
+        "id": "C5-1.one-likelihood-maximum",
+        "field": "stopping.untested",
+        "actual_type": "list"
+      }
+    ],
+    "replicated_ids": [
+      "C2-1.positive",
+      "C2-1.delta",
+      "C4-4.probabilities",
+      "C5-1.binary-path",
+      "C5-1.monotone",
+      "C5-1.full-model"
+    ],
+    "unrelated_empirical_or_power_replication_inferred": false
+  },
+  "scientific_scope_checks": [
+    "C1 conditional common-population identification/KL bridge and opposite fixed-parameter finite-likelihood ordering are consistent with separate review; no opposite global-MLE, significance, non-Gaussian interaction-family or empirical claim inferred.",
+    "Binary squared-path symmetry retains shared moderator, no both-endpoint positivity constraint and zero-endpoint degeneracy. Continuous rich-support/global-sign qualification stays partly_replicated.",
+    "Monotone variance and shared-moderator covariance moments match the exact derivative/hierarchical arguments; no observed-response identification, MLE uniqueness or empirical fit inferred from them.",
+    "Positivity and delta use environmental variance, not SD; inverse delta requires positive genetic variance. Source baseline-example discrepancy remains separate.",
+    "C3 theta-information uses a-squared Jacobian; item-specific logit information is not substituted for common-theta information. Conventional inverse-information SE is not claimed exact posterior/sampling SD.",
+    "C4 normalized AppendixB probability-kernel/adjacent-logit target is established; literally printed equations fail normalization and threshold-index remapping is explicit. No empirical code execution/convergence verdict follows.",
+    "Likelihood uniqueness remains not_established with null target: no-finite-MLE example does not refute at-most-one maximum when it exists; population KL uniqueness and proper-prior posterior objective remain separate."
+  ],
+  "units_and_estimands": {
+    "override_units": "All10 retain exact textual proposition units; no silent scalar-unit substitution.",
+    "existing_qualified_exceptions": [
+      {
+        "ids": [
+          "C3-4.ratio.AxE",
+          "C3-4.ratio.AxC"
+        ],
+        "assessment": "Source variance-ratio units retained in substance, with explicit calculated-from-published-means qualifier. Values1.63159595997728 and1.8489119679275539 and ratio-minus1 contrasts unchanged; not independently refitted empirical ratios. Legacy raw key E_SD_ratio/C_SD_ratio does not change the scientifically stated variance-ratio estimand."
+      },
+      {
+        "ids": [
+          "C4-7.all-category-plots"
+        ],
+        "assessment": "Ours explicitly labeled supplement availability/inspection rather than fitted plot replication; no hidden switch, but generic uncertainty/stopping wording needs cleanup as listed."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "severity": "blocking_contract",
+      "claim_ids": [
+        "C5-1.one-likelihood-maximum"
+      ],
+      "field": "stopping.untested",
+      "finding": "List-valued field conflicts with current ASSEMBLY and stage_checks nonempty-text requirement. Scientific content is appropriate.",
+      "recommended_action": "Join the three existing strings into one prose string without dropping qualifications. No scientific status/value change needed."
+    },
+    {
+      "severity": "wording",
+      "claim_ids": [
+        "C5-1.monotone",
+        "C5-1.full-model"
+      ],
+      "field": "stopping.next_evidence",
+      "finding": "Shared final sentence discusses finite-likelihood uniqueness although these narrow derivative/moment targets are established. It is explicitly a separate problem, so this does not overturn the statuses, but it obscures what remains for each claim.",
+      "recommended_action": "State no further calculation is needed for the narrow identity; refer to the separate one-likelihood-maximum claim only if desired."
+    },
+    {
+      "severity": "wording",
+      "claim_ids": [
+        "C2-1.positive",
+        "C2-1.delta"
+      ],
+      "field": "uncertainty; numerical; stopping.next_evidence",
+      "finding": "Shared narrow-override boilerplate mentions finite-difference illustrations and source empirical plotted calculations. Positivity requires neither; delta has inverse-ratio evaluations, not a finite-difference experiment. No numerical result is wrong, but the evidence description is broader than the claim.",
+      "recommended_action": "Use claim-specific exact-identity wording; reserve the finite-difference/plot-implementation language for C3-2.information."
+    },
+    {
+      "severity": "wording",
+      "claim_ids": [
+        "C4-7.all-category-plots"
+      ],
+      "field": "uncertainty; stopping.attempted; stopping.untested",
+      "finding": "The result and status_reason explicitly establish supplement availability/28-item plot inspection, but generic fields call the source target unavailable and restate plot coverage as wholly untested. The unresolved operation is independent refitting, not document existence.",
+      "recommended_action": "Say no sampling interval applies to document inspection; availability/inspection completed, original fitted category coordinates not independently recovered."
+    },
+    {
+      "severity": "wording",
+      "claim_ids": [
+        "C1-2.iccs",
+        "A-1.implementation",
+        "B.implementation",
+        "D-1.implementation",
+        "E.implementation"
+      ],
+      "field": "stopping.untested",
+      "finding": "Generic remaining-target restatement includes curve ordering or program availability/execution already demonstrated by ours. Partial statuses correctly retain generation, provenance, correctness or convergence limits, but the untested field should name only those residual obligations.",
+      "recommended_action": "Replace blanket restatement with original generator/estimation for ICCs and implementation provenance/recovery/convergence where those are separate substantive targets; do not require100/250 datasets merely to verify a program is provided."
+    }
+  ],
+  "no_input_mutations": true,
+  "limits": [
+    "Not full evidence-packet assembly, first-page/nonscalar contract review or rendered-PDF certification.",
+    "No tolerances or skill edits proposed; separate nonscalar-schema work remains outside this review.",
+    "Findings refer to exact input hashes above; any subsequent root correction needs a narrow readback check."
+  ]
+}

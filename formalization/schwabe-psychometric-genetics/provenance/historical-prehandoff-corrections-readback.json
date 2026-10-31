@@ -1,0 +1,69 @@
+{
+  "reviewer": "Independent readback reviewer /root/analysis_validation",
+  "reviewed_utc": "2026-10-31T01:11:55.755390+00:00",
+  "status": "accepted: targeted type and wording corrections verified at the exact hashes below",
+  "scope": "Narrow readback of the recorded corrections only; prior scientific review retained. No broader review, production effects, model runs, input edits, git or network operations.",
+  "correction_log": {
+    "path": "provenance/historical-prehandoff-corrections.json",
+    "sha256": "bafaa589c94b670b1fa7fd8ad831fb4f22b893587f5e0db926934871f2819cb5"
+  },
+  "prior_review": {
+    "path": "provenance/historical-prehandoff-independent-review.json",
+    "sha256": "ed4fa0b6e5da2ec11f6ef50c3669c6c981ddc1f909e71f1c57d4d4abe8958fb8"
+  },
+  "accepted_inputs": [
+    {
+      "path": "handoff/historical-source-adjudications-root-wording.json",
+      "before_sha256": "aede3752e115b6f8fe8d89f3176bb4b69035e37497be1b32c5dd54f572400dee",
+      "accepted_sha256": "5fe27a4072e46934eb2fb36788afb228cc0cd98a60ad3c3254e4020392282d25",
+      "changed_rows": 10,
+      "before_bytes_reconstructed_to_prior_review_hash": true,
+      "all_current_stopping_fields_nonempty_text": true,
+      "only_recorded_corrections": true
+    },
+    {
+      "path": "handoff/chapter5-root-adjudication-overrides.json",
+      "before_sha256": "61e080f25d9f795bea7dc287d2a853df4e5c65b1b644b425d4e2184a51910f30",
+      "accepted_sha256": "fe17cbe24393ec3afd25b86ab31650e5ba14148f5b9c3b1a2680bc6fc3855417",
+      "changed_rows": 3,
+      "before_bytes_reconstructed_to_prior_review_hash": true,
+      "all_current_stopping_fields_nonempty_text": true,
+      "only_recorded_corrections": true
+    },
+    {
+      "path": "handoff/narrow-root-adjudication-overrides.json",
+      "before_sha256": "de38879ff47bccf6f0a619de6c439ff7b83a2e3cacbf2a16791f703c77a34076",
+      "accepted_sha256": "eb1308e74723813c83358eb0b4d3c854b1483d4a6533ea20d230dfe20460b446",
+      "changed_rows": 2,
+      "before_bytes_reconstructed_to_prior_review_hash": true,
+      "all_current_stopping_fields_nonempty_text": true,
+      "only_recorded_corrections": true
+    }
+  ],
+  "unchanged_C1_override": {
+    "path": "handoff/root-adjudication-overrides.json",
+    "sha256": "64a5bdb916ec1944c2b5b529c5deb1bf4980ed08cc43aefd3fe56e7b94bfc236"
+  },
+  "unchanged_source_specification": {
+    "path": "handoff/claim-specification.json",
+    "sha256": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f"
+  },
+  "verified_preservation": [
+    "Every corrected row matches the recorded after object. Replacing changed rows with their before objects reconstructs the exact prior-reviewed file hash for each of the three inputs, establishing no unrecorded top-level or other-row changes.",
+    "All source IDs, ours values/units/null reasons, scientific statuses/status reasons, contrast arrays/order, artifact references and source relationships remain unchanged.",
+    "Only numerical/uncertainty wording and stopping fields changed as recorded; scopes remain claim-specific and do not promote empirical/power conclusions.",
+    "The former list-valued likelihood-maximum untested field is exactly the space-joined original three strings; no qualification lost.",
+    "All five stopping fields are nonempty strings in all three corrected files and the final588-row view after the10 root overrides take precedence.",
+    "C1 override and source specification retain their previously reviewed exact hashes."
+  ],
+  "resolved_findings": [
+    "list-valued stopping.untested",
+    "unrelated finite-likelihood next-evidence wording for established derivative/moment identities",
+    "finite-difference/empirical-plot boilerplate for positivity and delta",
+    "already-established document/geometry/program checks restated as wholly untested"
+  ],
+  "remaining_blockers_within_this_readback": [],
+  "limits": [
+    "Acceptance is for these corrections, not full packet assembly, nonscalar-schema resolution, terminal scientific outcomes or rendered manuscript review."
+  ]
+}
