@@ -1,0 +1,50 @@
+[
+  {
+    "requirement": "Whole-dissertation coverage",
+    "status": "followed",
+    "evidence": "coverage-v2.csv and handoff/evidence-packet.json cover all chapters and appendices,996linked source records and26principal claims. Inventory coverage is not independent replication or whole-study success."
+  },
+  {
+    "requirement": "Original-source and input audit",
+    "status": "followed",
+    "evidence": "handoff/scientific-availability.json records dated permitted acquisition attempts. All12public author repositories were examined. Unavailable empirical inputs and simulation specifications retain unresolved targets."
+  },
+  {
+    "requirement": "Preferred statistical engines",
+    "status": "followed",
+    "evidence": "provenance/preflight.json records R4.5.0,lavaan0.6.19 andOpenMx2.21.13. OpenMx implements the Chapter6 Gaussian likelihood; outputs/engine-agreement.csv supplies independent baseline checks."
+  },
+  {
+    "requirement": "JAGS for non-Gaussian latent item models",
+    "status": "departed",
+    "justification": "A covariance-only SEM would change the source likelihood. JAGS4.3.2/rjags4-16 reconstructs the item-level models; posterior1.6.1 computes diagnostics. Independent generator, baseline engine and model-semantic checks do not independently validate the full posterior.",
+    "evidence": "provenance/runtime-packages.json; provenance/posterior-runtime-packages.json; handoff/jags-gate-scientific-evidence.json."
+  },
+  {
+    "requirement": "Original repetition counts and adequate posterior convergence",
+    "status": "departed",
+    "justification": "Chapter6 completes1000datasets in36primary and12sensitivity conditions,96000method fits. Chapters2\u20135source100/250dataset aggregates remain incomplete. The bounded4chain one-dataset diagnostic completed but failed joint convergence. Short diagnostics and source-only arithmetic are not production estimates.",
+    "evidence": "production/chapter6-v1/terminal-analysis/summary.json; handoff/jags-gate-scientific-evidence.json; outputs/resource-projection.json."
+  },
+  {
+    "requirement": "Signed estimands, uncertainty and multiplicity",
+    "status": "followed",
+    "evidence": "production/analysis-plan.json separates variance/pathSE, deletion-minus-full contrasts, estimate-minus-truth bias and source deviations. Geometric extraction margins, ourMonteCarlo error and unknownsourceMCerror remain distinct; descriptive magnitude is not equivalence."
+  },
+  {
+    "requirement": "Analytical verification and formal proof",
+    "status": "departed",
+    "justification": "Ordinary analytical and exact-arithmetic checks are independently reviewed; Leanformalization is absent. Population identification, finite-likelihood uniqueness and empirical inference remain distinct. No toolchain install or source build was attempted; missing local binaries do not prove mathematical or computational impossibility.",
+    "evidence": "handoff/chapter5-analytical-evidence.json; handoff/chapter6-analytical-evidence.json; provenance/formalization-environment-check.json."
+  },
+  {
+    "requirement": "Source attribution and permitted redistribution",
+    "status": "followed",
+    "evidence": "paper/references.bib and provenance/citation-audit.json identify source support. Full copyrighted dissertation and unlicensed original programs stay local; only original replication code, generated results and limited attributed source crops are redistributed."
+  },
+  {
+    "requirement": "Reproducible versions and commands",
+    "status": "followed",
+    "evidence": "handoff/terminal-reproduction.md specifies immutable completed-analysis commit and commands; README.md documents runtime, simulation and diagnostic execution. Navigation links to master are separate from immutable reproduction revisions."
+  }
+]

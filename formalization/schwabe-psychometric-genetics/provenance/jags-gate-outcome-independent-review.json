@@ -1,0 +1,422 @@
+{
+  "reviewed_utc": "2026-10-31T02:14:20.402788+00:00",
+  "reviewer": "Independent saved-outcome and rendered-diagnostic reviewer /root/bayesian_gate_setup",
+  "scope": "Read-only review of saved four-chain gate; no fitting, diagnostic rerun, extensions or replacements. Python cross-check reads saved RDS via base R export only.",
+  "status": "Accept evidence as an honestly failed joint convergence gate; do not accept converged joint inference or replication completion.",
+  "requested_chains": 4,
+  "completed_chains": 4,
+  "chain_accounting": [
+    {
+      "chain": 1,
+      "status": "completed",
+      "adaptation_complete": true,
+      "retained": 12000
+    },
+    {
+      "chain": 2,
+      "status": "completed",
+      "adaptation_complete": true,
+      "retained": 12000
+    },
+    {
+      "chain": 3,
+      "status": "completed",
+      "adaptation_complete": true,
+      "retained": 12000
+    },
+    {
+      "chain": 4,
+      "status": "completed",
+      "adaptation_complete": true,
+      "retained": 12000
+    }
+  ],
+  "thresholds": {
+    "rhat_less_than": 1.01,
+    "bulk_ESS_at_least": 400,
+    "tail_ESS_at_least": 400,
+    "mean_MCSE_over_SD_at_most": 0.05,
+    "all_draws_finite": true,
+    "all_chains_adaptation_complete": true
+  },
+  "failed_parameters": {
+    "va": [
+      "Rhat",
+      "bulk_ESS",
+      "tail_ESS",
+      "MCSE_over_SD"
+    ],
+    "vc": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ],
+    "ve": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ],
+    "log_va": [
+      "Rhat",
+      "bulk_ESS",
+      "tail_ESS",
+      "MCSE_over_SD"
+    ],
+    "log_vc": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ],
+    "log_ve": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ]
+  },
+  "shared_dependencies": "Six failing columns represent three variance quantities and their deterministic logarithms; they are not six independent failures. Selected p nodes are monotone transforms of selected theta nodes for fixed b. Neither operational pass counts nor failures are independent hypothesis tests.",
+  "raw_draw_checks": {
+    "maximum_absolute_discrepancies": {
+      "rhat": 4.6629367034256575e-15,
+      "pooled_mean": 4.218847493575595e-15,
+      "pooled_sd": 4.440892098500626e-16,
+      "pooled_hpd": 0.0,
+      "segment_hpd": 0.0,
+      "log_transforms": 8.881784197001252e-15,
+      "conditional_probability_transform": 5.828670879282072e-16
+    },
+    "hpd_sensitivity": {
+      "a[1,1]": {
+        "chain_mean_range": [
+          -0.861012041381268,
+          -0.768881949236064
+        ],
+        "segment_lower_endpoint_range": [
+          -1.96137102558498,
+          -1.74935434181945
+        ],
+        "segment_upper_endpoint_range": [
+          0.113105172500948,
+          0.356763430912821
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "beta1": {
+        "chain_mean_range": [
+          -0.118347704039845,
+          -0.107708287170703
+        ],
+        "segment_lower_endpoint_range": [
+          -0.761460074722077,
+          -0.611865544540984
+        ],
+        "segment_upper_endpoint_range": [
+          0.3845987759979,
+          0.537054373602686
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "c[1]": {
+        "chain_mean_range": [
+          -0.69761827235023,
+          -0.612395991605182
+        ],
+        "segment_lower_endpoint_range": [
+          -1.75753750178222,
+          -1.57334793297778
+        ],
+        "segment_upper_endpoint_range": [
+          0.297340180257421,
+          0.418841964211987
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "mu": {
+        "chain_mean_range": [
+          -0.0429080030000925,
+          -0.0403434950191321
+        ],
+        "segment_lower_endpoint_range": [
+          -0.131315305422043,
+          -0.11554065382779
+        ],
+        "segment_upper_endpoint_range": [
+          0.0360415225064252,
+          0.0496063296652779
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "p[1,1,1]": {
+        "chain_mean_range": [
+          0.0574139012347555,
+          0.0585386188408771
+        ],
+        "segment_lower_endpoint_range": [
+          0.0232983559252395,
+          0.0251839171612273
+        ],
+        "segment_upper_endpoint_range": [
+          0.0957369499540744,
+          0.0986944693992561
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "p[1,2,1]": {
+        "chain_mean_range": [
+          0.0283673143295096,
+          0.0292942062337811
+        ],
+        "segment_lower_endpoint_range": [
+          0.0080512943273739,
+          0.0091421551686607
+        ],
+        "segment_upper_endpoint_range": [
+          0.0511636717003071,
+          0.0533514606034746
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "theta[1,1]": {
+        "chain_mean_range": [
+          -1.33765471097267,
+          -1.31671615650622
+        ],
+        "segment_lower_endpoint_range": [
+          -2.07313197528842,
+          -2.00050696583927
+        ],
+        "segment_upper_endpoint_range": [
+          -0.668456476109559,
+          -0.594319426777052
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "theta[1,2]": {
+        "chain_mean_range": [
+          -2.10341972717253,
+          -2.0669361277068
+        ],
+        "segment_lower_endpoint_range": [
+          -3.01501784099129,
+          -2.89151433244519
+        ],
+        "segment_upper_endpoint_range": [
+          -1.31051716160923,
+          -1.22818844162924
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "va": {
+        "chain_mean_range": [
+          0.443994614030082,
+          0.501674323725707
+        ],
+        "segment_lower_endpoint_range": [
+          0.227570019945598,
+          0.332780319589246
+        ],
+        "segment_upper_endpoint_range": [
+          0.613163571496138,
+          0.672691533520743
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "vc": {
+        "chain_mean_range": [
+          0.373407986793691,
+          0.417172729486048
+        ],
+        "segment_lower_endpoint_range": [
+          0.212667304899772,
+          0.267096933363466
+        ],
+        "segment_upper_endpoint_range": [
+          0.521106414759353,
+          0.600345457658701
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "ve": {
+        "chain_mean_range": [
+          0.191141483855813,
+          0.209603816243652
+        ],
+        "segment_lower_endpoint_range": [
+          0.128866924244437,
+          0.144714916859421
+        ],
+        "segment_upper_endpoint_range": [
+          0.253569776433697,
+          0.29047473832858
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "log_va": {
+        "chain_mean_range": [
+          -0.837510961758476,
+          -0.705700033462092
+        ],
+        "segment_lower_endpoint_range": [
+          -1.38964366751663,
+          -1.05209536684
+        ],
+        "segment_upper_endpoint_range": [
+          -0.443917950026318,
+          -0.352544552135045
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "log_vc": {
+        "chain_mean_range": [
+          -1.00912892302083,
+          -0.895928172695157
+        ],
+        "segment_lower_endpoint_range": [
+          -1.49108748543958,
+          -1.29437847193173
+        ],
+        "segment_upper_endpoint_range": [
+          -0.609517425903004,
+          -0.463108759514741
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "log_ve": {
+        "chain_mean_range": [
+          -1.67001275897895,
+          -1.57828203930897
+        ],
+        "segment_lower_endpoint_range": [
+          -2.01871298416238,
+          -1.90996145185612
+        ],
+        "segment_upper_endpoint_range": [
+          -1.35050380904835,
+          -1.21419087485849
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      }
+    }
+  },
+  "raw_check_command": "OPENBLAS_NUM_THREADS=1 python simulation/validate_saved_jags_outcome.py",
+  "raw_check_limits": "Independent Python formulas recheck pooled moments, rank-normalized split/folded Rhat, pooled/chain/half HPDs, and exact transforms. ESS and MCSE use the previously verified posterior1.6.1 implementation; this review does not independently reimplement them. CSV export introduces negligible decimal roundoff.",
+  "visual_review": {
+    "pdf_pages": 14,
+    "all_pages_reviewed": true,
+    "legibility": "All trace/rank panels, axes, legends and titles readable; no clipping or missing page observed. Dense overplotted traces can obscure chain differences; accompanying ranks and numerical summaries inform assessment.",
+    "pages": [
+      {
+        "page": 1,
+        "parameter": "a[1,1]",
+        "assessment": "Overlapping traces; mild opposing rank slopes for chains3/4 remain visible despite operational pass."
+      },
+      {
+        "page": 2,
+        "parameter": "beta1",
+        "assessment": "Overlapping traces with local serial dependence and some endpoint rank-bin imbalance; no visually isolated chain. Individual gate passes."
+      },
+      {
+        "page": 3,
+        "parameter": "c[1]",
+        "assessment": "Overlapping traces; chain4 favors higher ranks and chain3 lower ranks mildly. Individual gate passes."
+      },
+      {
+        "page": 4,
+        "parameter": "mu",
+        "assessment": "Overlapping traces and no strong persistent chain separation; individual gate passes."
+      },
+      {
+        "page": 5,
+        "parameter": "p[1,1,1]",
+        "assessment": "Overlapping traces and relatively balanced ranks. Deterministic monotone transform of theta[1,1], not an independent diagnostic finding."
+      },
+      {
+        "page": 6,
+        "parameter": "p[1,2,1]",
+        "assessment": "Overlapping traces and relatively balanced ranks. Deterministic monotone transform of theta[1,2], not an independent diagnostic finding."
+      },
+      {
+        "page": 7,
+        "parameter": "theta[1,1]",
+        "assessment": "Overlapping traces; rank panel matches p[1,1,1] as expected for fixed item difficulty."
+      },
+      {
+        "page": 8,
+        "parameter": "theta[1,2]",
+        "assessment": "Overlapping traces; rank panel matches p[1,2,1] as expected for fixed item difficulty."
+      },
+      {
+        "page": 9,
+        "parameter": "va",
+        "assessment": "Slow persistent excursions, with chain4 biased toward higher ranks and chains2/3 toward lower ranks; clear mixing concern."
+      },
+      {
+        "page": 10,
+        "parameter": "vc",
+        "assessment": "Slow excursions and chain4 biased toward lower ranks, with chains2/3 toward higher ranks; clear mixing concern."
+      },
+      {
+        "page": 11,
+        "parameter": "ve",
+        "assessment": "Slow excursions and substantial chain4 excess at lower ranks; mixing concern."
+      },
+      {
+        "page": 12,
+        "parameter": "log_va",
+        "assessment": "Same rank imbalance and underlying trajectory as va, under a monotone log transform; not an independent failure."
+      },
+      {
+        "page": 13,
+        "parameter": "log_vc",
+        "assessment": "Same rank imbalance and underlying trajectory as vc, under a monotone log transform; not an independent failure."
+      },
+      {
+        "page": 14,
+        "parameter": "log_ve",
+        "assessment": "Same rank imbalance and underlying trajectory as ve, under a monotone log transform; not an independent failure."
+      }
+    ]
+  },
+  "interval_review": "beta1 pooled95%HPD[-0.6718279892,0.4709817227] and all12 whole/half-chain HPDs contain zero; lower endpoints span[-0.7614600747,-0.6118655445], upper[0.3845987760,0.5370543736]. This descriptive stability does not certify joint convergence or detection/non-detection. Quantile MCSE at2.5/97.5% is not HPD endpoint MCSE. va lower HPD endpoint varies0.2275700199\u20130.3327803196 across segments, consistent with unstable variance exploration.",
+  "detection_classification": "withheld: failed joint gate; no power, false-positive, detection or equivalence claim",
+  "remaining_limits": [
+    "One fixed N500/J60 null-effect dataset does not reproduce100-dataset Chapter2 power/recovery, Chapter5 production or the whole dissertation.",
+    "Passing individual beta1 criteria and all adaptation flags does not establish joint convergence.",
+    "Variance and log-variance intervals remain diagnostic summaries, not certified inferential results.",
+    "No extension or retry is authorized by this review."
+  ],
+  "artifact_sha256": {
+    "production/jags-gate-v1/prepared/diagnostics/traces-and-ranks.pdf": "f363cbb2ad81fa76bfe00a796e0304ce920933ff2f2dc42bd127e2ddced4391d",
+    "production/jags-gate-v1/prepared/diagnostics/diagnostics.csv": "0da14b8ee570fcdda6b6ee730575707599d19de36cb5782c639d7256f9575fa3",
+    "production/jags-gate-v1/prepared/diagnostics/chain-accounting.csv": "2c903d5b87a176e9413b7b1e5249e714cf7e5a93ae70b9c46deba8da58bb2886",
+    "production/jags-gate-v1/prepared/diagnostics/chain-summaries.csv": "59b12582ecde6a12c44c8f9037cb303abacdc3046c6bf8d89f2ce58f24c03929",
+    "production/jags-gate-v1/prepared/diagnostics/hpd-segment-sensitivity.csv": "3f4c4d3318d7be7e45b8dcf3fa9b7fffe0468ce4ac54c99bbe7ecd0591471891",
+    "production/jags-gate-v1/prepared/diagnostics/review-record.rds": "fe7c9fe968941212cee01938d3478374a7e26b0b2ff0b5aeb46bf95eb4da6f98",
+    "production/jags-gate-v1/chains/outcomes.json": "82e436819ddcebe6407efe4ae9fd4e098b421984eb9dca1372ffe54e5c6021a1",
+    "production/jags-gate-v1/dispatch.json": "cf9c05fe91f1e7becc9b90af89a190e8c51fef9d31202cfe07b6327438064e3b",
+    "simulation/validate_saved_jags_outcome.py": "56e632149afafaebd58c44c30779234244d67174816823318c4358aa6e9bb066",
+    "production/jags-gate-v1/prepared/chain-1/draws.rds": "aedfe8cad8c1d7f65f7f40e27a2d7dfd4af2c317fe6eb8cd1081f13a159d1834",
+    "production/jags-gate-v1/prepared/chain-2/draws.rds": "78809d24987c42a1bfbf01e09463a01dd9796e40ccfc4fd0ba5e6881189b7b50",
+    "production/jags-gate-v1/prepared/chain-3/draws.rds": "2cba96b7ff0b6b7b990354f68670dbea42047b93bc0d6580c934842e18a0833c",
+    "production/jags-gate-v1/prepared/chain-4/draws.rds": "8b0265175c3cbbcb76e71285ccc49e8a0d80ec89e719341dbec322541f7f1c99"
+  },
+  "preflight_identity_review": {
+    "all_prepared_hashes_match": true,
+    "all_recorded_runtime_files_match": true,
+    "runtime_file_count": 23257,
+    "runtime_bytes_checked": 287496811
+  }
+}
