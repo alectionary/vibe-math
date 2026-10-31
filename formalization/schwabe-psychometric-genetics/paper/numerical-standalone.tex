@@ -1,0 +1,697 @@
+% Layout extracted from Kupzyk report at ca1d062; retain a descriptive title.
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage{booktabs,longtable,array,graphicx,amsmath,xcolor,hyperref,xurl}
+\usepackage[authoryear,round]{natbib}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\emergencystretch}{1em}
+\setlength{\parskip}{5pt}\setlength{\parindent}{0pt}
+% Use scalable fonts; inspect pdffonts output after building. Avoid adding T1
+% fontenc without an installed scalable font family. Add title/date in manuscript.
+\usepackage{float}
+\newcommand{\file}[1]{\href{https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/#1}{\nolinkurl{#1}}}
+\begin{document}
+\begin{center}{\Large\bfseries Measurement, moderation and missingness in twin models}\\[3pt]
+{\large A partial replication of Schwabe (2016)}\end{center}
+\vspace{-10pt}
+\begin{abstract}\small
+We partly replicated Schwabe's (2016) finding that psychometric modelling improves behavioural-genetic inference \citep{schwabe2016}: all 108 reconstructed precision contrasts favour full information, with an illustrative published standard-error gain of 0.00356296 versus our 0.00490662. Whole-dissertation replication is incomplete: original empirical refits, repeated-dataset Bayesian recovery and direct power are not established. All 216 literal source variance-standard-error values disagree with our conditional comparison bands, and their comparability remains unresolved. Eleven full-information bias signs reverse the source; none excludes zero after adjustment. The numerical comparisons below preserve the estimates separately from those limits; conditional mathematics and a single completed posterior diagnostic do not establish the broader claims.
+\end{abstract}
+\vspace{-7pt}
+{\small\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.25}
+\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{99pt}r r >{\raggedright\arraybackslash}p{45pt}>{\raggedright\arraybackslash}p{85pt}>{\raggedright\arraybackslash}p{110pt}@{}}\toprule
+Condition / estimand & Source & Ours & Direction & Point magnitude & Specific limit\\\midrule
+MCAR: A variance SE gain & 0.00356296 & 0.00490662 & + / + & Unresolved; point larger & Original SE definition unknown\\
+MAR: A bias, deletion & -0.01093086 & -0.01374588 & - / - & larger & Source MC error unknown\\
+MAR: A bias, full info. & 0.00254044 & 0.00023544 & + / + & smaller & Zero bias not established\\
+MAR: C bias, deletion & -0.02936369 & -0.02857453 & - / - & smaller & Source MC error unknown\\
+MAR: C bias, full info. & -0.00261399 & -0.00155888 & - / - & smaller & Zero bias not established\\
+MAR: $h^2$ bias, deletion & 0.01059974 & 0.00882709 & + / + & smaller & Source MC error unknown\\
+MAR: $h^2$ bias, full info. & 0.00284939 & 0.00129508 & + / + & smaller & Zero bias not established\\
+Power: $N=500$, $\Delta=1.3$ & 0.48 & \shortstack{not\\estimated} & Not compared & Not compared & 100-dataset detection fraction incomplete\\
+\bottomrule\end{tabular}\par}
+\vspace{3pt}
+{\small All seven paired rows use two covariates and 6\% missingness. The first is deletion minus full-information (FI) standard error of A variance; positive means greater precision with FI. Bias is estimate minus generating value; positive means upward bias. The SE gain uses squared phenotype units. A and C biases use phenotype variance units; heritability uses proportions. Signed direction lists source / ours. Power is the source detection probability, not a precision measure.
+
+Source estimates are figure-derived (Chapter 6, Figs. 6.3 and 6.5, pp. 93--95), not reported to eight decimals. Display precision does not represent source accuracy. Geometric extraction margins are 0.00023667095 for the SE contrast, 0.00059075350 for A bias, 0.00066544857 for C bias and 0.00027219390 for heritability bias. Magnitude compares absolute signed effects at those margins. Descriptive point estimates; not equivalence. Unknown source Monte Carlo error is separate from these margins. The SE point is larger arithmetically, but unknown source SE implementation prevents an established magnitude comparison.
+
+Selection is post hoc for presentation, by condition rather than outcome: smallest covariate count, interior 6\% missingness, first mechanism (MCAR), all MAR bias components and both methods. The power example is the smallest sample and first non-null interaction alternative (Chapter 2, Table 2.2, p. 22). Seven pairs illustrate the 180-pair audit; they are not pooled or representative of the grids. Source power and empirical values follow; the full claim hierarchy and components remain in the appendices.}
+
+\newpage
+\section*{Further reported numerical findings}
+The source reports empirical slopes and a full interaction-detection grid; our missing refits do not make those source results unknown. Their independent replication is not established. These tables preserve source values while the principal scientific claims retain their separate assessments in Appendix A.
+{\small\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{155pt}rp{85pt}p{125pt}@{}}\toprule
+Empirical result & Source & Ours & Source locator / units\\\midrule
+Mathematics AxE slope & 2.0837 & not estimated & Table 3.2, p. 42; log-variance slope\\
+Mathematics AxC slope & 2.6159 & not estimated & Table 3.2, p. 42; log-variance slope\\
+Liberalism AxE slope & -2.81 & not estimated & Table 4.3, p. 63; log-variance slope\\
+Liberalism AxC slope & 0.54 & not estimated & Table 4.3, p. 63; log-variance slope\\
+High-SES C moderation & -3.0777 & not estimated & Table 5.4, p. 82; log-variance ratio\\\bottomrule
+\end{tabular}}
+
+The first four slopes are per genetic-score unit on their respective source scales. The final slope is the log shared-environmental-variance ratio for high versus low/average socioeconomic status. The source reports HPDs excluding zero for mathematics AxE, both liberalism interactions and SES moderation, but not mathematics AxC. Original responses, linkage/calibration and posterior inputs were unavailable. Consequently direction agreement and magnitude comparisons with our independent estimates cannot be computed. Rounding margins, where comparison becomes possible, are 0.00005 for four-decimal slopes and 0.005 for two-decimal slopes.
+
+{\small\setlength{\tabcolsep}{12pt}\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}rrrrrl@{}}\toprule
+Twin pairs & $\Delta=1$ & $\Delta=1.3$ & $\Delta=1.5$ & $\Delta=1.7$ & Our fractions\\\midrule
+500 & 0.03 & 0.48 & 0.57 & 0.81 & not estimated\\
+1000 & 0.07 & 0.57 & 0.92 & 0.99 & not estimated\\
+2000 & 0.07 & 0.92 & 1.00 & 1.00 & not estimated\\\bottomrule
+\end{tabular}}
+
+All 12 source detection fractions are from Schwabe (2016), Chapter 2, Table 2.2, p. 22, for the 60-item design and 100 datasets per cell. The variance-ratio design parameter $\Delta=1$ is the null-interaction condition; its rejection rate is not nonzero-effect power. A single posterior interval or an operational convergence result does not reproduce these fractions. The source-wide assertion of useful detection power remains unresolved in our work; no source-count posterior aggregate is completed.
+
+The seven paired examples on page 1 belong to the 108 precision and 72 MAR bias contrasts. All 108 reconstructed precision differences favour full information under adjusted Monte Carlo intervals, but the source's stronger power assertion is not tested by precision. The remaining chapters include conditional scale/identification arguments, measurement-bias prevention, item-count sufficiency and empirical findings; none is replaced by the displayed examples. The 996 dependent source records define no replication success fraction.
+\newpage
+\section{Introduction}\label{sec:intro}
+We partly replicated Schwabe's (2016) finding that psychometric modelling improves behavioural-genetic inference: the reconstructed missing-covariate experiment supports the full-information precision ordering across all 108 comparisons, but does not establish direct power, empirical applications, or the complete Bayesian recovery claims. At two covariates and 6\% MCAR missingness, the published and reconstructed deletion-minus-full-information A-variance standard-error gains are 0.00356296 and 0.00490662. The point magnitude is larger at the geometric extraction margin 0.00023667095, but scientific comparability remains unresolved because the source SE implementation is unknown. The six accompanying MAR bias rows report both methods and all three components at the same covariate count and missingness. Across the full bias grid, eleven full-information point signs reverse the source; none is supported by an adjusted exclusion of zero. All 216 literal source variance-standard-error points disagree with conditional comparison bands. These limits are not erased by the favourable precision ordering.
+
+The scientific question is whether modelling measurement and missingness changes conclusions about genetic and environmental variation. The 2016 University of Twente dissertation, \emph{Nature, Nurture and Item Response Theory: A Psychometric Approach to Behaviour Genetics}, combines item response theory (IRT), twin variance models, simulations, empirical applications and software \citep{schwabe2016}. IRT models the probability of each item response given a latent trait. The twin model separates additive genetic variance ($A$), shared environmental variance ($C$) and individual environmental variance ($E$); monozygotic and dizygotic genetic correlations are fixed at 1 and $1/2$. These model assumptions matter as much as numerical agreement.
+
+The unit of scientific replication is a substantive proposition and its design, not an inventory row. Our coverage includes all seven chapters and Appendices A--G, with 996 linked original-claim records, 26 principal claims, two preselected numerical illustrations and 187 retained headline component comparisons. Parents share their constituent datasets, estimates and assumptions. The records therefore define neither 996 independent findings nor a replication success fraction. Translated summaries and repeated conclusions map to their original chapters; cited background and future proposals are not new completed experiments.
+
+\section{What we did ourselves, and what we took from others}\label{sec:contribution}
+We reconstructed the missing-data experiment, checked mathematical and software semantics, generated response datasets and evaluated bounded posterior implementations. The dissertation supplied the models, designs, source tables and figures. Our work supplied original reconstruction code, generated data, fitted values, analytical arguments, uncertainty calculations and explicitly stated choices where source details were absent. Reading a number from a figure or evaluating a formula using printed parameters is source-based arithmetic, not an independent empirical refit.
+
+The primary Gaussian experiment used 1,000 datasets in each of 36 conditions and 12 additional sensitivity conditions. Full-information and deletion fits on the same dataset give 96,000 method fits: 72,000 primary and 24,000 sensitivity fits. All completed without a failed or guard-invalid fit in the saved analysis. Separately, response generation produced 2,650 datasets across 19 Chapter 2/5 conditions; paired reliability sensitivity reused those datasets and fitted no posteriors. A four-chain posterior diagnostic concerns only one fixed Chapter 2 dataset. The bounded score-likelihood implementation uses that same observed dataset and adds no independent dataset.
+
+The primary outcomes and exact design accounting are in \file{production/chapter6-v1/terminal-analysis/summary.json}, \file{production/chapter6-v1/terminal-analysis/condition-summary.csv} and \file{production/analysis-plan.json}. The complete source-linked inventory is \file{coverage-v4.csv}; \file{handoff/a0-evidence-packet.json} preserves each claim's published quantity, our evidence, uncertainty, source locator, dependencies and missing inputs. The auxiliary feasibility outcome leaves the original claim verdicts unchanged, as specified in \file{provenance/score-a0-coverage-status.json}.
+
+\section{Missing covariates: precision, bias and power}\label{sec:ch6}
+Full information improves precision in the reconstructed Chapter 6 design, while the source's broader power assertion is not established. The primary grid crosses missing completely at random (MCAR), missing at random (MAR) and missing not at random (MNAR), two through five covariates, and missing fractions 0.02, 0.06 and 0.10. An additional 0.03 grid addresses the source's conflict between 2\% prose and 3\% plot labels. It does not silently replace the primary design. The comparison concerns residual ACE components, not phenotype variance inclusive of covariate explanation.
+
+\subsection{The precision ordering is reproduced, its literal magnitude is unresolved}
+All 108 signed variance-standard-error contrasts, deletion minus full information, are positive. Each of the 108 Bonferroni-adjusted Student-$t$ Monte Carlo intervals also lies above zero. Pairing preserves the fact that both methods fit the same generated dataset; the Monte Carlo standard error (MCSE) is the standard deviation of replicate differences divided by the square root of the replicate count. Familywise adjustment is over the 108 primary contrasts, using the Bonferroni principle \citep{dunn1961}. This is evidence about the reconstructed grid's mean precision ordering.
+
+All 216 literal plotted variance-standard-error points fall outside the conditional source-comparison bands. That diagnostic disagreement cannot by itself establish failure to reproduce the original estimand: original standard-error implementation and source Monte Carlo uncertainty are unavailable. A path standard error concerns a different parameter from a variance standard error. Its exploratory agreement must not replace the dissertation's stated variance estimand. The full signed values and conditional comparison records are retained in \file{production/chapter6-v1/terminal-analysis/signed-SE-contrasts.csv} and \file{production/chapter6-v1/terminal-analysis/source-comparisons.csv}.
+
+For MCAR, two covariates and 2\% missingness, the source A-variance SE gain is 0.0010635603 and ours is 0.0015023487. Our paired MCSE is 0.0000223093; the 108-family adjusted interval is [0.0014239767, 0.0015807208]. Both point signs favour full information. The geometric source margin is 0.0002366710, but source-estimand comparability is unresolved, so the magnitude label remains not established. The conditional point difference of 0.0004387884 is not a new scientific contrast or evidence of equivalence.
+
+\subsection{MAR bias directions agree without establishing full-information unbiasedness}
+Deletion underestimates A and C and overestimates residual heritability in all 12 MAR cells for each component. Adjusted intervals exclude zero in the stated direction in 10 A cells, all 12 C cells and nine heritability cells. The point ranges are respectively [-0.07283115, -0.00621756], [-0.11495778, -0.00766858] and [0.00141622, 0.03118039]. The complete 36-cell directional finding is not 36 independent discoveries.
+
+Full-information point biases are much nearer zero in this reconstruction, with ranges [-0.00319176, 0.00133589] for A, [-0.00261639, 0.00101715] for C and [-0.00139029, 0.00265364] for heritability. None of their adjusted intervals excludes zero. This does not establish zero bias or the source's qualitative claim of closeness: no scientific equivalence margin was specified. Eleven full-information point signs reverse their source signs; none of those reversals is supported by an adjusted exclusion of zero. Two conditional MAR deviations from source estimates occur at the ambiguous low missingness level.
+
+For deletion with five covariates and 10\% MAR missingness, the generating residual heritability is 0.5. The source mean 0.53315402 gives signed bias 0.03315402; our mean 0.53118039 gives bias 0.03118039. Our point magnitude is smaller at the geometric margin 0.0002721939, and the direction is the same. Our MCSE is 0.00304897 and the exploratory 72-family adjusted interval is [0.02080654, 0.04155423]. The magnitude label is descriptive, not a test of a difference from the source. All 72 signed MAR bias comparisons are retained in \file{production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv}.
+
+\subsection{Uncertainty for the displayed numerical slice}
+The seven displayed pairs retain the original multiplicity families; selecting them for presentation creates no new inferential family. Our intervals below are adjusted Monte Carlo intervals for the reconstructed estimands, not source-versus-ours difference intervals. All three selected deletion-bias intervals exclude zero in the expected direction; all three full-information intervals include zero, which does not establish unbiasedness or closeness. Source Monte Carlo uncertainty is unavailable.
+{\small\setlength{\tabcolsep}{6pt}\begin{tabular}{@{}lrrr@{}}\toprule
+Displayed row & Our MCSE & Adjusted lower & Adjusted upper\\\midrule
+MCAR A variance SE gain & 0.00004572 & 0.00474601 & 0.00506722\\
+MAR A bias, deletion & 0.00201635 & -0.02060633 & -0.00688544\\
+MAR A bias, full information & 0.00190795 & -0.00625618 & 0.00672706\\
+MAR C bias, deletion & 0.00198959 & -0.03534394 & -0.02180512\\
+MAR C bias, full information & 0.00187803 & -0.00794870 & 0.00483094\\
+MAR heritability bias, deletion & 0.00214346 & 0.00153416 & 0.01612002\\
+MAR heritability bias, full information & 0.00193884 & -0.00530164 & 0.00789180\\
+\bottomrule\end{tabular}}\par
+
+The precision interval uses the 108-contrast Bonferroni family; bias intervals use the exploratory 72-contrast family. The positive precision interval supports our within-reconstruction ordering, not an established source-relative magnitude comparison or direct power.
+
+\subsection{Additional trends do not settle power or adequacy}
+All 81 adjacent-covariate-count deletion variance-SE point differences in the saved assessment are positive. Absolute C bias exceeds absolute A bias in all 12 primary MAR cells, but no new cross-parameter interval or test was run. With 10\% MNAR missingness, full-information E means for two through five covariates are 0.20821236, 0.20733095, 0.20619935 and 0.20476346. The last is nearer 0.20 than 0.21, unlike the first three. The source's per-condition outputs are unavailable.
+
+Twenty-one of 26 saved targets have complete descriptive assessments. Direct MCAR, MAR and MNAR power targets, unequal zygosity structure, and the broad power assertion remain pending. The recommendation-relevant subset has 54 positive adjusted precision contrasts out of 54, but this does not establish an optimal threshold of more than 3\% missingness and more than two covariates. A power comparison needs a specified nonzero alternative, test and rejection rule, followed by repeated-dataset rejection rates. Precision alone does not supply it. The signed assessment is \file{outputs/chapter6-saved-target-assessment.json}.
+
+\section{Measurement scales and mathematical identification}\label{sec:theory}
+Conditional population results support parts of the dissertation's mathematical argument, but do not establish universal item-subset invariance or a unique finite-sample likelihood maximum. These are ordinary mathematical derivations, not proof-assistant certificates. They neither verify source empirical assumptions nor supply missing posterior experiments.
+
+\subsection{A common scale identifies a target, not identical sample evidence}
+With known positive logistic calibrations, distinct locally independent item observations, positive Gaussian ACE components and both zygosities at two shared moderator levels, admissible item subsets identify the same population parameter on the common anchored scale. Within-person marginal and joint probabilities identify the mean and total latent variance. Cross-twin response probabilities then identify latent covariances, because their Gaussian covariance derivative is positive for positive-slope response functions. The covariance derivative identity is a form of Price's theorem; the evidence uses its bounded smooth-function setting \citep{voigtlaender2020}. Recover
+\[
+ A=2(K_{\rm MZ}-K_{\rm DZ}),\quad C=2K_{\rm DZ}-K_{\rm MZ},\quad E=T-K_{\rm MZ}.
+\]
+Two moderator values identify the log-linear variance and affine mean coefficients under the stated common functions. Unknown calibration or unobserved joint response moments break this argument.
+
+Equal population targets do not imply equal likelihood evidence in a finite sample. An exact example holds total variance at 1 and compares $(A,C,E)=(1/4,1/4,1/2)$ with $(1/2,1/8,3/8)$. DZ covariance is $3/8$ at both points while MZ covariance rises from $1/2$ to $5/8$. Two admissible Rasch subsets with different observed concordance patterns yield opposite likelihood orderings of these parameter points. This establishes neither opposite unrestricted maximum-likelihood estimates nor opposite significance decisions. The dissertation itself qualifies scaling by common identification and acknowledges weak tail information (pp. 51, 107--108). See \file{handoff/scale-invariance-evidence.json}.
+
+\subsection{Log-variance moderation removes one symmetry, not all inferential difficulties}
+For a shared binary moderator $m\in\{0,1\}$ and path $a+bm$ with $a>0$, the reflected slope $b^*=-2a-b$ leaves both endpoint squared paths unchanged. The alternatives coalesce if $a+b=0$. With three distinct moderator values, equality of two squared affine paths implies equality up to a global sign; strict positive intercepts remove that global ambiguity. Thus the binary reflection need not extend to rich continuous support. Unrestricted global sign symmetry does extend. These are distinct interpretations of Appendix C.
+
+Log-linear variance $V(m)=\exp(\beta_0+\beta_1m)$ has derivative $\beta_1V(m)$, establishing monotonicity for a fixed slope. It does not establish likelihood concavity. The Gaussian model with common component functions has within-twin variance $T=A+C+E$ and cross-twin covariance $A+C$ for MZ and $A/2+C$ for DZ. Source square-root scaling in Eq. 5.14 is essential to this calculation. The verified moments and symmetry arguments are in \file{handoff/chapter5-analytical-evidence.json}.
+
+A separate sufficient identification condition uses common exact log-linear component functions and affine mean functions over moderator laws that, within each zygosity, are not concentrated on three or fewer values. Four distinct atoms suffice, and the two zygosity supports may be disjoint. It does not justify arbitrary smooth extrapolation across disjoint supports, binary supports, noisy separate-twin moderators or unknown calibration. Failure to satisfy a sufficient condition is not proof of nonidentification. The explicit support assumptions and result are retained in \file{provenance/continuous-moderator-identification-check.json}.
+
+\subsection{Population identification does not prove one finite likelihood maximum}
+The source links unique identification to one likelihood maximum (Chapter 5, p. 72). Under a free common mean, an all-zero response sample has likelihood increasing toward its supremum as that mean decreases, without attaining a finite maximum. This refutes universal finite-maximum existence, a stronger interpretation than at-most-one maximum when one exists. It is not a multiple-maximum example. Neither a proof nor a counterexample for the general at-most-one finite local or global maximum claim is supplied.
+
+The Chapter 2 genetic moderation model also requires a distinct observation argument. Nonzero interaction gives non-Gaussian marginal traits. A conditional fixed-parameter latent-moment inversion can identify latent components under known genetic correlations, common component laws and independent innovations. It does not show that finitely many calibrated Rasch response patterns identify those latent moments. The Gaussian item argument cannot supply that missing bridge. Fixed-parameter moment existence also does not imply finite prior-predictive moments under inverse-gamma$(1,1)$ variance priors. See \file{provenance/non-gaussian-latent-moment-check.json}.
+
+\section{Response generation and Bayesian feasibility}\label{sec:bayes}
+The reconstructed generators and one completed posterior diagnostic provide limited evidence about feasibility, not the dissertation's repeated-dataset recovery or power claims. Chapter 2's 100-dataset and Chapter 5's 250-dataset posterior aggregates remain incomplete. Generation counts, retained draws and completed source-target experiments are different quantities.
+
+\subsection{Generation matches some descriptors and leaves the source estimand uncertain}
+The response experiment comprises 14 Chapter 2 cells with 100 datasets each and five Chapter 5 cells with 250 datasets each. The seed rule is $910000+1000c+r$, with condition $c$ and replicate $r$ fixed before generation. The initial pilot duplicates each cell's first seed and is not 19 extra observations. All 19 conditions, including unfavourable descriptor comparisons, are reported in \file{handoff/generator-summary-scientific-evidence.json}.
+
+For Chapter 2 floor and ceiling designs, source reliability is approximately 0.90, whereas our raw-alpha means are 0.90802950 and 0.90753316 (MCSEs 0.00059652 and 0.00050631). All 12 power-design means round to the reported 0.92. Chapter 5's four 60-item cells round to 0.90, while the 20-item mean 0.73819631 rounds to 0.74 rather than the quoted 0.75. Source aggregation, calibration and participant subset are not determined sufficiently to turn these descriptors into exact-source verdicts.
+
+For item covariance $V$, raw alpha is $J[1-\operatorname{tr}(V)/\sum V]/(J-1)$; standardized alpha is $J\bar r/[1+(J-1)\bar r]$. Reusing the same 2,650 generated datasets gives floor and ceiling standardized means 0.90697262 and 0.90645093. For 20 items, standardization lowers 0.73819631 to 0.73109750, a paired change of -0.00709880 with MCSE 0.00010938. This does not explain the descriptor gap. The paired calculation adds zero independent datasets and zero posterior fits; see \file{handoff/generator-alpha-sensitivity-scientific-evidence.json}.
+
+The source floor skewness endpoints 0.630 and 0.632 and ceiling endpoints -0.435 and -0.434 refer to different estimators on an unknown illustrative sample. They are not across-replicate extrema. Our replicate skewness means and observed extrema cannot be substituted for those endpoints. Reconstructed positive floor and negative ceiling skew support qualitative directions, not the exact figure or an undefined qualification such as slight.
+
+\subsection{One completed centered diagnostic supports only its fixed case}
+The completed centered item-Bernoulli model uses one $N=500$, $J=60$ floor dataset, seed 301, unchanged priors and known calibration. Four chains each have 1,000 adaptation, 7,000 burn-in and 28,000 retained iterations. All 14 monitored quantities pass the declared joint operational criteria: rank-normalized split/folded $\widehat R<1.01$, bulk and tail effective sample sizes at least 400, and mean MCSE/posterior SD at most 0.05. These diagnostics follow the rank-based approach of \citet{vehtari2021}; they are finite diagnostics, not a proof of convergence.
+
+The worst $\widehat R$ is 1.001673, minimum bulk effective sample size 685.762, minimum tail effective sample size 1407.532, and maximum relative mean MCSE 0.038211. Interaction mean is -0.12338265, with pooled 95\% highest-posterior-density (HPD) interval [-0.68469410, 0.43069918]. All 12 whole/half-chain interaction HPDs contain zero. This is non-exclusion on one dataset, not equality to zero, unbiasedness, a calibrated detection rate or replication of the source's aggregate. Equal-tailed quantile MCSE is not HPD endpoint MCSE.
+
+Shorter original and centered diagnostics failed their joint criteria. The first 12,000 retained draws of each completed longer chain repeat the shorter centered run exactly; those prefixes must not be pooled or counted as independent evidence. The independently checked result still shares data, model, backend and some diagnostic-library computations. Variance components retain serial correlation and rank differences. The full summaries and limitations are in \file{handoff/jags-centered-extended-recovery-scientific-evidence.json}.
+
+\subsection{An exact score representation did not complete the fixed workload}
+For known Rasch difficulties, the likelihood of a response vector depends on the latent trait through its canonical score, up to a known parameter-independent factor. The exact calibrated score likelihood therefore preserves the physical latent model and priors. It is not the dissertation's Gaussian analysis of sum scores. Exact target preservation does not promise computational acceleration; see \file{provenance/rasch-sufficiency-derivation.json}.
+
+The bounded score-model test requested the same four-chain, 28,000-retained-draw workload on the same fixed dataset, using JAGS 4.3.2. All four chains adapted, but each retained only 16,000 draws before the predetermined summed-process budget ended: 64,000 saved draws and zero completed fixed-length chains. Chain/cleanup time was 6419.751313 seconds; all-phase summed time was 6420.894927 seconds and elapsed wall time 1606.104006 seconds. These are distinct resource measures, not CPU seconds.
+
+The completed item-Bernoulli reference used 4927.558112 summed chain-process seconds for four chains of 28,000 retained draws. The score implementation consumed more chain/cleanup time while retaining fewer draws. This is neither equal-work benchmarking nor proof that score methods cannot accelerate other implementations: starts, random streams and runtime epochs differ. Computational acceleration and posterior agreement are not established.
+
+The full fixed-draw joint diagnostic and five-global MCSE comparisons are ineligible and were not run. Adaptation and finite checkpoints do not substitute for convergence evidence. Incomplete chains are not pooled with historical chains. This same-backend feasibility test contributes no new dataset, no completed source-count aggregate and no change to the original scientific verdicts. Exact outcome evidence is \file{handoff/score-a0-scientific-evidence.json} and \file{provenance/score-a0-terminal-outcome.json}.
+
+\section{Empirical findings and software semantics}\label{sec:empirical}
+Independent empirical replication is blocked by missing source responses, linkage and calibration inputs. The available source reports remain scientifically important, but source arithmetic cannot replace their refitting. In Chapter 3 mathematics, the published genetic-by-individual-environment slope is 2.0837 and the genetic-by-shared-environment slope is 2.6159; the source reports the former HPD excluding zero and the latter including zero (Table 3.2, p. 42). Our independent slopes are not established.
+
+Chapter 4 reports a two-dimensional interpretation of 28 items and a nine-item social-liberalism subscale. Its IRT AxE slope is -2.81 and AxC slope 0.54 (Table 4.3, p. 63), both with reported HPDs excluding zero. The directions change in the sum-score analysis. Comparing absolute values across differently identified scales would conceal the substantive sign reversal; subtracting those unstandardized slopes would not create a justified scalar effect. Neither dimensional interpretation, scale selection nor interaction reversal was independently refitted. The published article and supplement are distinct source materials \citep{schwabeConservatism}; accessible plots and programs do not supply Virginia30K responses.
+
+Chapter 5 reports shared-environment variance decreasing in high-SES families, with log-variance slope -3.0777 and an HPD excluding zero (Table 5.4, p. 82). Chapter 6 reports no detected coefficient among 13 measured covariates under its 99.6\% HPD criterion (Table 6.3, p. 100). These application results require the original linked NTR/Cito data; the simulated Gaussian missingness experiment cannot reproduce them. Nondetection does not imply all 13 population effects are zero.
+
+Some software propositions can be evaluated without the empirical data. For positive-slope logistic items, conditional information is $a_j^2p_j(1-p_j)$; Eq. 3.4 omits the squared discrimination factor present in Eq. 3.3. Printed Chapter 4 probability equations and the normalized cumulative-exponential Appendix B implementation differ. The implemented probabilities sum to one, but that fact is not faithful reproduction of the literal printed formula. These analytical findings are detailed in \file{handoff/narrow-analytical-evidence.json}.
+
+Appendix G has probabilistic observation links. The binary link is $P(X=1\mid L)=0.001+0.998\,1\{L\geq0\}$, not a deterministic threshold. For a nondegenerate Gaussian liability it gives $0.001+0.998\Phi(\mu/\sigma)$ and scales binary cross-covariance by $0.998^2$ under conditional independence. The continuous school-size observation has precision 100, adding variance 0.01 on its standardized scale. The regression uses observed or imputed covariates rather than simply their latent expectations. Thus the mixed-data application is not identical to the continuous joint-Gaussian simulation. See \file{handoff/chapter6-analytical-evidence.json}.
+
+Chapter 7's software contribution is assessed separately from its empirical illustrations. BayesTwin version 1.0 is dated 2017; the available pre-defense revision is from 15 October 2015. Its example posterior data are simulated, not the dissertation's original empirical data \citep{bayestwin}. Version-aware software replay and probability-kernel checks establish only those specific implementation properties.
+
+\section{Assumptions}\label{sec:assumptions}
+Our reconstruction needs explicit choices where the source does not uniquely specify an executable procedure. The following assumptions are supplied by the replication; source-stated Gaussian covariance structure and genetic correlations are model premises rather than newly inferred facts.
+\subsection{Low-missingness design}
+We use 2\% as the primary low-missingness level and 3\% as a separate sensitivity level because both appear in the source. Conclusions do not silently merge these designs.
+\subsection{Response-generator calibration and reliability summaries}
+We declare a fixed reconstructed calibration and reproducible seed rule. Raw and standardized reliability, participant subsets and across-dataset aggregation are alternative descriptors, not recovered historical choices. For Chapter 5, Bernoulli moderator probability 0.5 is consistent with approximately 11\% explained variance but is not explicitly supplied by the source.
+\subsection{Sufficient conditions for identification}
+Known finite positive logistic calibrations, distinct conditionally independent observations, accessible joint moments and appropriate shared moderator/zygosity support are added sufficient mathematical hypotheses. They have not been empirically verified for the original applications. The common scale cannot be replaced by arbitrary nonlinear transformations.
+\subsection{Comparison margins and uncertainty}
+Source-coordinate bounds use 0.25 PDF point transformed through the source axes and summed across a linear contrast. Those bounds predate the guarded production experiment, although the full plan was not wholly preregistered and earlier outcomes were known. They bound extraction, not scientific equivalence or source Monte Carlo error. Printed scalar slopes instead use half their last printed unit. No pooled margin is invented for multicomponent propositions or qualitative adequacy.
+
+\section{Ambiguities that were resolved or retained}\label{sec:ambiguities}
+The source contains distinctions that materially affect interpretation. An inconsistency is not automatically a replication failure; the following checks identify what can be resolved and what must stay uncertain.
+\subsection{A 01: Chapter 2 p 21 Eq 2.16 worked example}
+For Delta 1.5 prose multiplies .5$\times$1.5=.75 though environmental baseline was .2; slope/ratio formula and baseline example conflict. Use the variance-ratio formula and retain the conflicting baseline example; the arithmetic discrepancy does not establish a posterior recovery result.
+\subsection{A 02: Chapter 3 p 37 Eq 3.4}
+OPLM information formula omits discrimination squared although Eq 3.3 has item discrimination; plot implementation unavailable from dissertation. The logistic derivative requires squared discrimination in information. The literal printed equation and model-implied information are distinct; the unavailable plot implementation is not inferred.
+\subsection{A 03: Chapter 3 p 41 versus p 42}
+Text defines effect at $A=\sigma_A^2$, but reported ratios 1.63/1.85 agree with one standard deviation. The reported ratios agree with one standard deviation rather than one variance unit; these are arithmetic checks on source parameters, not empirical re-estimation.
+\subsection{A 04: Chapter 4 p 56 Eqs 4.6--4.10 versus Appendix B}
+Printed GPCM normalization/threshold equations differ from cumulative-exponential code. The Appendix B cumulative-exponential implementation normalizes; the literal displayed expression does not generally define the same probability kernel.
+\subsection{A 05: Chapter 4 p 64}
+IRT $h^2$ mean .54 is outside printed 95\% HPD [.34,.51]. The reported mean and HPD are retained without inferring a corrected posterior summary. A posterior mean can lie outside a highest-posterior-density interval; this alone does not establish an inconsistency.
+\subsection{A 06: Chapter 5 p 78 versus Table 5.1}
+Design prose says 80000 pairs but table and results say 8000. Preserve both; no silent replacement. The reconstruction uses the table/results value of 8,000 pairs and flags the 80,000 prose value. Neither choice recovers missing historical simulation records.
+\subsection{A 07: Chapter 5 p 74 versus p 84}
+Separate-moderator script referred to as Appendix F on p 74 but is Appendix E on p 84 and in contents. Appendix E contains the separate-moderator implementation; the Appendix F reference is a locator discrepancy.
+\subsection{A 08: Chapter 6 pp 91--95,101--102; Figs 6.3--6.6}
+Methods/captions say 2\% at lowest missingness; plot labels/results/recommendation say 3\%. Both levels are retained as distinct primary and sensitivity designs. The source-specific low-missingness comparison remains ambiguous.
+\subsection{A 09: Chapter 6 p 97 versus Table 6.1}
+Text says five pedagogical categories but enumerates six, which table confirms; Table 6.3 calls Reformed liberated Reformed liberal. The enumerated six categories and labels are preserved, with the wording discrepancy recorded; no independent application dataset is inferred.
+\subsection{A 10: Chapter 7 p 104 and Dutch summary p 117}
+Summaries list 2,3,4 covariates; primary Chapter 6 includes 5 as well. Do not omit q 5. All four primary covariate counts, including five, are retained. Shortened summary wording does not remove that design.
+\subsection{A 11: Dutch summary p 116 versus Chapter 4 abstract/results}
+Dutch wording says shared variance lower for genetic liberalism, opposite to primary Chapter 4 positive AxC result. Primary tables retained; translation discrepancy not treated as an independent experiment. The primary positive shared-environment slope is retained alongside the translation discrepancy; the summary is not an independent experiment.
+\subsection{A 12: Chapter 6 p 97 versus Appendix G pp 153--154}
+Prose deterministic threshold differs from .999/.001 binary link; program adds .01 continuous observation variance. The exact 0.999/0.001 binary kernel and 0.01 continuous observation variance are verified. Neither is silently replaced by deterministic observations.
+\subsection{A 13: Chapter 5 p 72 and Appendix C}
+Source equates unique model identification with a single finite-sample likelihood maximum; binary-reflection and continuous-moderator claims need different hypotheses. Population injectivity and finite-sample maximum existence/uniqueness are separate propositions. Binary reflection and rich continuous support require distinct hypotheses.
+\section{Availability of original inputs}\label{sec:availability}
+The acquisition audit recovered the dissertation and model programs, but not the original empirical datasets or complete historical simulation environment. This is a documented search boundary, not proof that the missing inputs do not exist. The dated audit below is copied from \file{handoff/scientific-availability.json}; the original full dissertation and unlicensed programs are separate local inputs, not bundled reproduction files.
+\paragraph{Institutional final-version record} 2026-10-30. Verified PhD, institution, advisers, date, DOI, ISBN and final-version designation. \href{https://research.utwente.nl/en/publications/nature-nurture-and-item-response-theory-a-psychometric-approach-t/}{Source location}.
+\paragraph{Author dissertation GitHub repository} 2026-10-30. Full 164-page thesis and five model programs obtained at 6 c 2 c 48901209 fc 76 ba 932 bb 094 c 61 abba 5 ef 160 d. No raw empirical datasets or Monte Carlo driver/seeds. Full text read. Original files kept local; rights reserved/no code license. \href{https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory}{Source location}.
+\paragraph{All 12 public author GitHub repositories} 2026-10-30. All cloned; immutable hashes in author-repositories.json. Data-file and code audit found workshop data, BayesTwin simulated posterior example and unrelated projects; no matching NTR/Cito/Virginia study inputs or curvilinear simulation driver. This is a search limit, not proof of absence. \href{https://github.com/ingaschwabe}{Source location}.
+\paragraph{OSF indexed search} 2026-10-30. Queries site:osf.io Schwabe twin and exact Inga Schwabe 2016 found later unrelated projects/preprints, no matching dissertation simulation or empirical input. No identified thesis OSF project. \href{https://osf.io/}{Source location}.
+\paragraph{GitLab indexed search} 2026-10-30. Queries Schwabe and exact ingaschwabe returned unrelated authors/no matching repository. No claim of exhaustive private-site search. \href{https://gitlab.com/}{Source location}.
+\paragraph{Zenodo indexed search} 2026-10-30. Queries Schwabe twin and exact Inga Schwabe returned unrelated records/later projects; no matching dissertation data/code record. \href{https://zenodo.org/}{Source location}.
+\paragraph{Chapter 4 article and supplement} 2026-10-30. Publisher confirms CC BY 4.0 article and links ten-page supplement. Supplement accessible through browser; contains category plots, fit plots and JAGS program, not raw responses. Original thesis code replayed locally. Supplement findings cannot be refitted without Virginia30K responses. \href{https://link.springer.com/article/10.1007/s10519-015-9768-9}{Source location}.
+\paragraph{BayesTwin repository history} 2026-10-30. Current code 656 afd 72 d 45 ecd 13 f 54 b 72 c 9400 cceface 8 d 423 f, version 1.0 dated 2017, GPL>=2. Fetched full history; last pre-defense revision \nolinkurl{a8e5d6b5ee6a8c76bdd0234a00fbcc809712ac08} dated 2015-10-15 available for separate replay. Example results.rda explicitly simulated, not dissertation empirical data. \href{https://github.com/ingaschwabe/BayesTwin}{Source location}.
+\paragraph{Historical statistical engine specification} 2026-10-30. Thesis cites R/rjags 2013 and OpenMx 2011/JAGS 2003 publications but no complete sessionInfo, engine patch versions, random seeds or driver. Exact historical environment not determined. Current pinned versions and original-model replay used with explicit scope limit. \href{https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory}{Source location}.
+\section{Limits and unanswered questions}\label{sec:limits}
+The evidence supports a partial replication under declared reconstruction assumptions. The following fourteen limits apply jointly; a completed calculation in one chapter does not close an empirical or posterior target elsewhere.
+\begin{enumerate}
+\item\label{lim:0} \nolinkurl{H2.IRT-bias-remedy}, \nolinkurl{H2.power-grid} and Chapter 5 Bayesian targets: the single fixed Chapter 2 floor case passes the extended operational diagnostic; repeated-dataset uncertainty and source 100/250-dataset posterior recovery/power remain unestablished. Other source designs and the distinct Chapter 5 model are not validated by this case.
+\item\label{lim:1} Unavailable original empirical responses, calibration/linkage records, joint posterior draws and underreported designs prevent the corresponding independent empirical or exact-design comparisons.
+\item\label{lim:2} Figure geometry and arithmetic from printed parameters reuse source evidence; they do not reproduce original data generation or empirical fits.
+\item\label{lim:3} Conditional ordinary mathematical arguments do not supply formal certification or verify empirical calibration, observation and support assumptions.
+\item\label{lim:4} \nolinkurl{H6.precision-grid}: 36 primary conditions and 12 additional 3\% missingness sensitivity conditions are distinct; low-missingness source 2\% prose/3\% plot ambiguity remains. Source-derived geometric bounds are neither original Monte Carlo uncertainty nor equivalence margins.
+\item\label{lim:5} \nolinkurl{C6-3.MAR-bias.A}, \nolinkurl{C6-3.MAR-bias.C}, \nolinkurl{C6-3.MAR-bias.h2}: 11 point sign reversals occur under full information; none excludes zero after adjustment. Both conditional MAR source-estimate deviations occur at ambiguous low missingness.
+\item\label{lim:6} \nolinkurl{H2.IRT-bias-remedy} and \nolinkurl{H2.power-grid}: shorter original and centered gates failed, whereas the reviewed extended fixed-case gate passes. This does not complete any source 100/250-dataset posterior aggregate, power fraction or empirical effect.
+\item\label{lim:7} \nolinkurl{C1.scale-invariance} and Chapter 5/6 analytical claims: ordinary arguments are assumption-bound and not Lean-certified. Population identification is not finite-sample likelihood uniqueness.
+\item\label{lim:8} Whole-dissertation inventory: 996 linked records include shared components, source-only arithmetic and parents; they are not 996 independent findings and no replication success fraction is defined.
+\item\label{lim:9} \nolinkurl{C2-2.design.alpha}, \nolinkurl{C2-3.alpha}, \nolinkurl{C5-2.alpha.J60} and \nolinkurl{C5-2.alpha.J20}: source alpha formula/aggregation/calibration remain ambiguous; rounding of reconstructed means is not an exact source-estimand verdict. Standardization does not close the floor/ceiling or J 20 descriptor gaps.
+\item\label{lim:10} \nolinkurl{C6-2.SE-trend.MCAR.A} and other saved-target assessments: qualitative constancy, slightness, closeness and adequacy lack justified equivalence margins. Descriptive trends cannot settle those qualifications or \nolinkurl{H6.power-assertion}.
+\item\label{lim:11} \nolinkurl{C5-1.logvariance-identification} and \nolinkurl{C2-1.construction}: conditional ordinary proofs do not establish finite-sample maximum existence/uniqueness or observed-response identification of non-Gaussian latent moments.
+\item\label{lim:12} \nolinkurl{H2.power-grid} and \nolinkurl{H2.IRT-bias-remedy}: all 12 whole/half-chain interaction HPDs include zero on this fixed null-interaction dataset; non-exclusion does not establish the null, unbiasedness or detection calibration. Equal-tailed quantile MCSE is not HPD endpoint MCSE. The identical shorter-run prefixes are dependent and are not pooled.
+\item\label{lim:13} \nolinkurl{H2.IRT-bias-remedy} and \nolinkurl{H2.power-grid}: exact calibrated score likelihood is posterior-equivalent under fixed calibration, but its same-JAGS one-dataset pilot completed 0 of 4 prescribed 28000-draw chains within the fixed budget, retaining 16000 per chain. Full diagnostics/posterior comparison are ineligible; acceleration is not established. Historical timing is unequal-work and confounded, not a causal speed comparison. No source-count target is completed.
+\end{enumerate}
+\section{Conclusion}\label{sec:conclusion}
+The reconstructed Chapter 6 experiment supports the direction of the full-information precision advantage and the deletion-bias pattern, while leaving literal precision magnitudes and the direct power assertion unresolved. Conditional mathematics clarifies scale and identification claims without proving a unique finite-sample likelihood maximum. Empirical interaction findings remain blocked by unavailable original inputs. Response generation and the completed single-case posterior diagnostic do not supply repeated-dataset recovery, and the bounded exact-score implementation did not complete its prescribed workload. Whole-dissertation replication is incomplete.
+
+\appendix
+\section{Headline definitions and source comparisons}\label{sec:definitions}
+The complete principal-claim overview in Appendix B contains all 26 headlines and the two additional scalar illustrations. The numerical opening separately selects eight examples by the explicitly post-hoc condition rule stated on page 1. A nonscalar parent can be partly supported while its scalar magnitude is inapplicable. No average replaces its component evidence. Published values are from \citet{schwabe2016}, with the specific locators below; our values are reconstructed results or explicitly conditional analytical findings.
+\subsection{HE 01 Common-scale item subsets}\label{head:HE01}
+Under a common appropriately identified IRT measurement scale, biometric conclusions are asserted to be independent of the particular item subset. Source: Chapter 1 p 5; Chapter 4 p 51; Chapter 7 pp 107--108.
+
+\textbf{Assessment:} partly replicated. A conditional Gaussian population-target version is supported by an independently reviewed ordinary argument. Literal finite-likelihood invariance does not follow. This does not assert that the dissertation intended exact finite-sample equality, and does not settle its non-Gaussian latent-genetic interaction models.
+
+\textbf{Comparison applicability:} Conditional invariance under a common identified measurement scale is a theoretical relation across item sets, not one signed scalar effect. The proposition and its assumptions must be judged separately from any numeric magnitude. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No statistical interval applies to the conditional written argument. Exact rational covariance identities and strict derivative signs establish the stated restricted comparison; empirical assumptions and broader models are not validated by it.
+\subsection{HE 02 IRT recovery across designs}\label{head:HE02}
+Incorporating an IRT measurement model remedies the scale-induced interaction bias and recovers generating parameters in the studied designs. Source: Chapter 2 abstract p 11; aim p 24; discussion p 25.
+
+\textbf{Assessment:} not established. The completed extended diagnostic addresses one floor dataset only. The source 100-dataset parameter/scenario summaries, ceiling recovery and power calibration remain unresolved.
+
+\textbf{Comparison applicability:} The remedy and recovery conclusion covers multiple parameters, units and scenarios, including unreported ceiling values. No scientifically justified scalar aggregate is published. Retain all component-specific source uncertainty and missing uncertainty; a qualitative conjunction has no invented pooled standard error. Constituents share model, generated data and sampling assumptions. No pooled uncertainty; source Monte Carlo and convergence gaps remain. One-dataset credible intervals are not across-replication uncertainty.
+\subsection{HE 03 Interaction power grid}\label{head:HE03}
+The proposed method has useful power to detect genotype--environment interaction under the investigated sample-size and effect-size conditions. Source: Chapter 2 abstract p 11; results p 22; discussion p 25.
+
+\textbf{Assessment:} not established. Short pilots are not 100-dataset detection fractions; no source-count posterior power grid is complete. The curvilinear extension design is unavailable.
+
+\textbf{Comparison applicability:} The detection-performance conclusion concerns a grid of sample sizes and interaction effect sizes. All original detection rates and signed comparisons remain linked; no single grid average or selected cell is the whole headline. Retain all component-specific source uncertainty and missing uncertainty; a qualitative conjunction has no invented pooled standard error. Constituents share model, generated data and sampling assumptions. No pooled uncertainty; source Monte Carlo and convergence gaps remain. One-dataset credible intervals are not across-replication uncertainty.
+\subsection{HE 04 Sum-score scale artifacts}\label{head:HE04}
+Sum-score analysis can produce spurious genotype--environment interaction from measurement-scale properties. Source: Chapter 2 abstract p 11; results pp 21--22; discussion pp 24--25.
+
+\textbf{Assessment:} not established. Historical source-length one-dataset floor/ceiling/symmetric sumscore beta 1 means 1.0951643,-.8566462,.1003354 supply diagnostic patterns only. Source 100-dataset full constituent summaries and convergence are incomplete; no pooled artifact magnitude or component match fraction used.
+
+\textbf{Comparison applicability:} Scale-induced spurious interaction has opposite signed floor and ceiling examples plus a symmetric control. No unique scalar can represent this multi-condition proposition; preserve each signed component. Retain all component-specific source uncertainty and missing uncertainty; a qualitative conjunction has no invented pooled standard error. Constituents share model, generated data and sampling assumptions. No pooled uncertainty; source Monte Carlo and convergence gaps remain. One-dataset credible intervals are not across-replication uncertainty.
+\subsection{HE 05 Mathematics: AxE slope}\label{head:HE05}
+Unique-environmental variance increases with genetic mathematics ability; the AxE 95\% HPD excludes zero. Source: Chapter 3 p 42, Table 3.2.
+
+\textbf{Assessment:} blocked. Independent target C3-4.3.2.beta1 requires original NTR/Cito/SES responses, linkage/calibration or posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} Half the last printed decimal unit; descriptive point estimates, not equivalence. Published signed value 2.0837; ours not established. Units: log-variance slope per genetic-score unit. Posterior SD=0.4939; 95\% HPD=[1.0886,3.0344]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 06 Mathematics: AxC slope}\label{head:HE06}
+The AxC point estimate is positive but its 95\% HPD includes zero; shared-environment moderation is not detected. Source: Chapter 3 p 42, Table 3.2.
+
+\textbf{Assessment:} blocked. Independent target C3-4.3.2.gamma1 requires original NTR/Cito/SES responses, linkage/calibration or posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} Half the last printed decimal unit; descriptive point estimates, not equivalence. Published signed value 2.6159; ours not established. Units: log-variance slope per genetic-score unit. Posterior SD=1.3503; 95\% HPD=[-0.1358,5.2189]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 07 Response dimensions}\label{head:HE07}
+The 28-item scale measures two distinct dimensions: liberalism--conservatism and use of the question-mark response. Source: Chapter 4 abstract p 47, pp 58--61, Figs 4.1--4.4.
+
+\textbf{Assessment:} blocked. Independent target C4-2.two-dimensions requires Virginia30K responses and fitted/posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} The principal finding is the substantive two-dimensional interpretation of response behavior. The number two is a model-description count, not a signed scalar scientific contrast. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 08 Social-liberalism subscale}\label{head:HE08}
+Nine selected items constitute the proposed ordinal social-liberalism subscale. Source: Chapter 4 pp 62,66.
+
+\textbf{Assessment:} blocked. Independent target C4-3.subscale requires Virginia30K responses and fitted/posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} Construction and psychometric interpretation of the nine-item social-liberalism scale is a multicomponent methodological result. Item count nine is not an effect magnitude or a scalar adequacy contrast. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 09 Liberalism: AxE slope}\label{head:HE09}
+Unique-environmental variance decreases with genetic liberalism; the negative AxE 95\% HPD excludes zero. Source: Chapter 4 p 63, Table 4.3.
+
+\textbf{Assessment:} blocked. Independent target C4-5.4.3.beta1 requires Virginia30K responses and fitted/posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} Half the last printed decimal unit; descriptive point estimates, not equivalence. Published signed value -2.81; ours not established. Units: log-variance slope per genetic-score unit. Posterior SD=0.21; 95\% HPD=[-3.22,-2.39]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 10 Liberalism: AxC slope}\label{head:HE10}
+Shared-environmental variance increases with genetic liberalism; the positive AxC 95\% HPD excludes zero. Source: Chapter 4 p 63, Table 4.3.
+
+\textbf{Assessment:} blocked. Independent target C4-5.4.3.gamma1 requires Virginia30K responses and fitted/posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} Half the last printed decimal unit; descriptive point estimates, not equivalence. Published signed value 0.54; ours not established. Units: log-variance slope per genetic-score unit. Posterior SD=0.14; 95\% HPD=[0.31,0.84]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 11 AxE scale reversal}\label{head:HE11}
+The interaction point-estimate direction changes between IRT and sum-score analyses: $\beta_1$. Source: Chapter 4 pp 63--64,66--67, Tables 4.3--4.4.
+
+\textbf{Assessment:} blocked. Independent target C4-5.reversal.beta1 requires Virginia30K responses and fitted/posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} The finding concerns the relationship between two signed AxE slopes estimated on different scales. Both slopes and their individual rounding tolerances remain available, but neither averaging nor subtraction of unstandardized cross-scale slopes represents this sign-reversal proposition. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 12 AxC scale reversal}\label{head:HE12}
+The interaction point-estimate direction changes between IRT and sum-score analyses: $\gamma_1$. Source: Chapter 4 pp 63--64,66--67, Tables 4.3--4.4.
+
+\textbf{Assessment:} blocked. Independent target C4-5.reversal.gamma1 requires Virginia30K responses and fitted/posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} The finding concerns the relationship between two signed AxC slopes estimated on different scales. Retain both scalar comparisons individually; no scientifically justified single aggregate expresses the reversal. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 13 Log-variance identification}\label{head:HE13}
+The alternative logvariance ACE$\times$M model is asserted to be uniquely identified. Source: Chapter 5 pp 69,72--77,83--84; Appendix C pp 138--139.
+
+\textbf{Assessment:} partly replicated. Conditional theorem only; empirical calibration/observation/support assumptions unverified and faithful Lean bridge absent.
+
+\textbf{Comparison applicability:} Population model identification is an injectivity proposition conditional on model and observation assumptions, not a scalar effect size. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. A conditional exact ordinary argument under stated calibration, Gaussian model and observation-support assumptions; no sampling interval applies. Empirical validity of those assumptions and formal certification remain separate.
+\subsection{HE 14 Measurement-bias prevention}\label{head:HE14}
+Simultaneous IRT and ACE$\times$M modelling is asserted to prevent spurious moderation arising from heterogeneous measurement error. Source: Chapter 5 pp 69,72--77,83--84; Appendix C pp 138--139.
+
+\textbf{Assessment:} not established. A general prevention claim is not established by single-dataset Chapter 2 diagnostics or conditional identification; further model/design checks remain feasible.
+
+\textbf{Comparison applicability:} The principal method-level prevention-of-spurious-moderation claim ranges over measurement and biometric assumptions; no unique scalar bias reduction is published for this Chapter 5 assertion. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. Target uncertainty unestimated; no inference from adjacent diagnostics.
+\subsection{HE 15 Unique finite likelihood maximum}\label{head:HE15}
+The source states the logvariance model has only one maximum in its likelihood function. Source: Chapter 5 pp 69,72--77,83--84; Appendix C pp 138--139.
+
+\textbf{Assessment:} not established. Partially addressed; finite-sample at-most-one-maximum claim remains unresolved. Do not label it disproved solely by a no-finite-maximum example, and do not infer it from population injectivity.
+
+\textbf{Comparison applicability:} Existence and uniqueness of a sample-likelihood maximum is a mathematical proposition, distinct from identification and from a numerical effect magnitude. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. Exact ordinary mathematical argument under the stated assumptions; no sampling interval or empirical calibration guarantee is implied. Numerical quadrature illustrates the nonexistence example but is not its proof.
+\subsection{HE 16 Sample size: A moderation}\label{head:HE16}
+Large samples are said to be necessary to detect $\beta_{1a}$ moderation. Source: Chapter 5 abstract p 69, pp 78,83.
+
+\textbf{Assessment:} not established. No calibrated nonzero-effect power/adequacy experiment, decision criterion or justified adequacy margin has been run; null-interaction short pilots cannot establish detection or 20-item sufficiency. Feasible assessment remains pending.
+
+\textbf{Comparison applicability:} The need for large samples to detect genetic moderation is an adequacy assertion inferred from uncertainty under null effects. No nonzero alternative, sufficient-power threshold or uniquely determined required sample size is reported, so it is not a single scalar power contrast. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No 250-dataset means/SDs or valid recovery uncertainty. Pilot ESS values are low and cannot establish convergence.
+\subsection{HE 17 Sample size: C moderation}\label{head:HE17}
+Large samples are said to be necessary to detect $\beta_{1c}$ moderation. Source: Chapter 5 abstract p 69, pp 78,83.
+
+\textbf{Assessment:} not established. No calibrated nonzero-effect power/adequacy experiment, decision criterion or justified adequacy margin has been run; null-interaction short pilots cannot establish detection or 20-item sufficiency. Feasible assessment remains pending.
+
+\textbf{Comparison applicability:} The need for large samples to detect shared-environment moderation is an adequacy assertion inferred from null-effect uncertainty. No quantitative sufficient-power threshold or uniquely determined sample-size effect is supplied. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No 250-dataset means/SDs or valid recovery uncertainty. Pilot ESS values are low and cannot establish convergence.
+\subsection{HE 18 Twenty-item sufficiency}\label{head:HE18}
+As few as 20 phenotypic items are asserted sufficient to find moderation effects. Source: Chapter 5 pp 80,83.
+
+\textbf{Assessment:} not established. No calibrated nonzero-effect power/adequacy experiment, decision criterion or justified adequacy margin has been run; null-interaction short pilots cannot establish detection or 20-item sufficiency. Feasible assessment remains pending.
+
+\textbf{Comparison applicability:} Twenty items is a design condition, not the magnitude of the claim that this condition suffices for detecting interactions. Source adequacy lacks a specified power threshold and alternative; retain the full item-count evidence without inventing an effect. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. No 250-dataset means/SDs or valid recovery uncertainty. Pilot ESS values are low and cannot establish convergence.
+\subsection{HE 19 SES: C moderation}\label{head:HE19}
+Shared-environmental variance is lower for high-SES families; the negative C$\times$SES 95\% HPD excludes zero. Source: Chapter 5 p 82, Table 5.4.
+
+\textbf{Assessment:} blocked. Independent target C5-5.5.4.beta1c requires original NTR/Cito/SES responses, linkage/calibration or posterior inputs absent after documented public-source acquisition. Printed numbers or source-only arithmetic are not independent empirical results.
+
+\textbf{Comparison applicability:} Half the last printed decimal unit; descriptive point estimates, not equivalence. Published signed value -3.0777; ours not established. Units: log shared-environmental-variance ratio high versus low/average SES. Posterior SD=1.928; 95\% HPD=[-7.3886,-0.03]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target.
+\subsection{HE 20 Thirteen covariate nondetections}\label{head:HE20}
+None of the thirteen measured covariate coefficients was detected in the educational-achievement application using the reported 99.6\% HPD criterion. Source: Chapter 6 abstract p 86; results p 99 and Table 6.3 p 100; discussion p 102.
+
+\textbf{Assessment:} blocked. The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter 6 simulations.
+
+\textbf{Comparison applicability:} The principal application finding is a conjunction of thirteen individual coefficient nondetections with different reference contrasts. No joint test or scalar average is reported. Retain every coefficient and interval; nondetection is not equivalence or zero effect. Retain all component-specific source uncertainty and missing uncertainty; a qualitative conjunction has no invented pooled standard error. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\subsection{HE 21 Full-information power}\label{head:HE21}
+The source asserts that full information is more powerful than deletion regardless of the investigated missingness mechanism, covariate count or amount of missingness. Source: Chapter 6 abstract pp 85--86; pp 91,101--102; Chapter 7 p 104.
+
+\textbf{Assessment:} not established. Lower estimated SE is not rejection-rate power. Chapter 6 provides no unique nonzero alternative, test/rejection rule or source power fractions. This production grid estimates precision and bias, not a direct power experiment; no new test definition is invented.
+
+\textbf{Comparison applicability:} The source-wide greater-power assertion spans three mechanisms and a design grid and has no justified scalar aggregate. Its three retained scalar power-difference contrasts are separately classified scalar\_unestablished because the source supplies no power precision or defensible comparison margin, not because replication results are missing. Retain all component-specific source uncertainty and missing uncertainty; a qualitative conjunction has no invented pooled standard error. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\subsection{HE 22 Full-information precision grid}\label{head:HE22}
+Full information gives lower variance-component standard errors than deletion across the investigated missingness mechanisms and design grid. Source: Chapter 6 results pp 93--95; discussion p 101.
+
+\textbf{Assessment:} partly replicated. All 108 signed deletion-minus-full variance-SE differences are positive and all 108 Bonferroni-adjusted intervals exclude zero positively. The precision ordering is reproduced in the complete primary grid. Published literal variance-SE points differ from our estimates in all 216 conditional comparison bands; scientific comparability remains unresolved because original SE implementation and original Monte Carlo uncertainty are unavailable. Path SE is an exploratory different estimand. This does not establish rejection-rate power.
+
+\textbf{Comparison applicability:} The principal precision conclusion spans 108 signed SE contrasts across three mechanisms, three variance components, four covariate counts and three missingness levels. All 108 parent contrasts and their existing extraction bounds remain; no pooled precision gain is invented. Retain all component-specific source uncertainty and missing uncertainty; a qualitative conjunction has no invented pooled standard error. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\subsection{HE 23 Observed-data likelihood}\label{head:HE23}
+The full-information model uses all observed phenotype and covariate components when covariate data are incomplete. Source: Chapter 6 pp 88--91; Appendix F.
+
+\textbf{Assessment:} partly replicated. The specified Gaussian construction and computational realization are supported. This restricted model-level result does not establish correct population distribution, empirical data validity or universal inference improvements.
+
+\textbf{Comparison applicability:} Using all observed phenotype and covariate components is a likelihood-construction property, not a scalar effect. Its operational validity must be adjudicated independently of precision or power. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\subsection{HE 24 MAR: A bias pattern}\label{head:HE24}
+MAR deletion underestimates A variance while full information remains close to the generating value. Source: Chapter 6 pp 94--95, Fig 6.5.
+
+\textbf{Assessment:} partly replicated. Deletion bias is negative in 12/12 conditions, with 10/12 adjusted intervals excluding 0 in that direction; bias range [-0.0728311524251116,-0.0062175646058198804]. Full-information bias range [-0.0031917638748272703,0.0013358851221280952], with 0/12 adjusted intervals excluding 0. Thus deletion-bias direction is reproduced descriptively and supported in the stated subset. The full-information close-to-truth/unbiasedness component has no prespecified equivalence margin and is not established by intervals containing 0.
+
+\textbf{Comparison applicability:} The MAR bias conclusion for A spans 12 design cells and two methods, retaining all 24 signed contrasts. Each contrast has its existing source extraction bound; no single scalar aggregate represents the complete bias pattern. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\subsection{HE 25 MAR: C bias pattern}\label{head:HE25}
+MAR deletion underestimates C variance while full information remains close to the generating value. Source: Chapter 6 pp 94--95, Fig 6.5.
+
+\textbf{Assessment:} partly replicated. Deletion bias is negative in 12/12 conditions, with 12/12 adjusted intervals excluding 0 in that direction; bias range [-0.11495778041479585,-0.007668582657040717]. Full-information bias range [-0.002616392569283762,0.0010171452728346302], with 0/12 adjusted intervals excluding 0. Thus deletion-bias direction is reproduced descriptively and supported in the stated subset. The full-information close-to-truth/unbiasedness component has no prespecified equivalence margin and is not established by intervals containing 0.
+
+\textbf{Comparison applicability:} The MAR bias conclusion for C spans 12 design cells and two methods, retaining all 24 signed contrasts. Each contrast has its existing source extraction bound; no single scalar aggregate represents the complete bias pattern. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\subsection{HE 26 MAR: heritability bias pattern}\label{head:HE26}
+MAR deletion overestimates heritability while full information remains close to the generating value. Source: Chapter 6 pp 94--95, Fig 6.5.
+
+\textbf{Assessment:} partly replicated. Deletion bias is positive in 12/12 conditions, with 9/12 adjusted intervals excluding 0 in that direction; bias range [0.001416215315186544,0.031180388166267718]. Full-information bias range [-0.001390288356138391,0.0026536390348624117], with 0/12 adjusted intervals excluding 0. Thus deletion-bias direction is reproduced descriptively and supported in the stated subset. The full-information close-to-truth/unbiasedness component has no prespecified equivalence margin and is not established by intervals containing 0.
+
+\textbf{Comparison applicability:} The MAR bias conclusion for h 2 spans 12 design cells and two methods, retaining all 24 signed contrasts. Each contrast has its existing source extraction bound; no single scalar aggregate represents the complete bias pattern. No uncertainty estimate is published for this particular quantity; source numerical rounding is separate from uncertainty. Each numeric component retains its own Monte Carlo and extraction uncertainty; no pooled effect or pooled uncertainty is invented.
+\section{Complete component evidence and inventory coverage}\label{sec:inventory}
+\subsection{Complete principal-claim overview}\label{sec:headlineoverview}
+{\fontsize{8}{9.1}\selectfont\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.0}
+\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{95pt}>{\raggedright\arraybackslash}p{105pt}>{\raggedright\arraybackslash}p{105pt}rrl@{}}\toprule
+Scientific estimand / claim & Published finding & Our finding & Effect magnitude & Direction & Verdict\\\midrule
+HE01 Subsets [N] & Item-subset invariance & Conditional population support & not established & not established & partial\\
+HE02 IRT recovery [N] & IRT remedies scale bias & Aggregate recovery incomplete & not established & not established & unresolved\\
+HE03 Power [N] & Useful detection power & Detection rates not established & not established & not established & unresolved\\
+HE04 Sum scores [N] & Spurious interactions & Single-case diagnostics only & not established & not established & unresolved\\
+HE05 Math AxE [S] & 2.0837 & not established & not established & not established & blocked\\
+HE06 Math AxC [S] & 2.6159 & not established & not established & not established & blocked\\
+HE07 Dimensions [N] & Two response dimensions & Original inputs unavailable & not established & not established & blocked\\
+HE08 Subscale [N] & Nine-item subscale & Original inputs unavailable & not established & not established & blocked\\
+HE09 Liberalism AxE [S] & -2.81 & not established & not established & not established & blocked\\
+HE10 Liberalism AxC [S] & 0.54 & not established & not established & not established & blocked\\
+HE11 AxE reversal [N] & AxE direction reverses & Original inputs unavailable & not established & not established & blocked\\
+HE12 AxC reversal [N] & AxC direction reverses & Original inputs unavailable & not established & not established & blocked\\
+HE13 Identification [N] & Uniquely identified model & Conditional identification only & not established & not established & partial\\
+HE14 Bias prevention [N] & Prevents measurement bias & General prevention untested & not established & not established & unresolved\\
+HE15 One maximum [N] & One likelihood maximum & Finite-maximum uniqueness unresolved & not established & not established & unresolved\\
+HE16 A moderation [N] & Large samples needed & Direct power untested & not established & not established & unresolved\\
+HE17 C moderation [N] & Large samples needed & Direct power untested & not established & not established & unresolved\\
+HE18 20 items [N] & Twenty items sufficient & Sufficiency untested & not established & not established & unresolved\\
+HE19 SES C slope [S] & -3.0777 & not established & not established & not established & blocked\\
+HE20 Nondetection [N] & 13 effects not detected & Original inputs unavailable & not established & not established & blocked\\
+HE21 Power gain [N] & FI more powerful & Direct power untested & not established & not established & unresolved\\
+HE22 Precision [N] & FI gives lower variance SE & 108 positive SE contrasts & not established & not established & partial\\
+HE23 Likelihood [N] & All observed components & Gaussian construction verified & not established & not established & partial\\
+HE24 MAR A bias [N] & Deletion A low; FI close to truth & Sign agrees; closeness untested & not established & not established & partial\\
+HE25 MAR C bias [N] & Deletion C low; FI close to truth & Sign agrees; closeness untested & not established & not established & partial\\
+HE26 MAR h2 bias [N] & Deletion heritability high; FI close to truth & Sign agrees; closeness untested & not established & not established & partial\\
+HE27 A SE gain [S] & 0.00106356 & 0.00150235 & not established & same direction & partial\\
+HE28 h2 bias [S] & 0.03315402 & 0.03118039 & smaller & same direction & point only\\
+\bottomrule\end{tabular}
+\par\vspace{2pt}\noindent N denotes a nonscalar claim; S a scalar effect; FI full information. Descriptive point estimates; not equivalence. Nonscalar rows have no pooled effect or numeric margin; their scientific verdict is separate. Scalar slopes are in log-variance units; rounding tolerances: HE05--06,19, 0.00005; HE09--10, 0.005. HE27 is deletion minus full-information variance SE (squared phenotype units), positive favouring full information, tolerance 0.00023667095377570213. HE28 is estimate minus generating heritability (proportion), positive indicating upward bias, tolerance 0.00027219389842495325. These two margins bound source-figure extraction, not source Monte Carlo error. Definitions, source locators and all component comparisons follow.
+}
+
+
+All 996 original records are mapped to their scientific chapter or appendix below and retained, without dropping unresolved targets, in \file{coverage-v4.csv} and \file{handoff/a0-evidence-packet.json}. The inventory's exact-target work counts are 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed, and 310 completed under the declared reconstruction. These are work-scope counts, not scientific verdict totals or a success fraction. Source-only arithmetic and shared parent/component records cannot be counted as independent experiments.
+
+The 187 signed headline components are retained in \file{paper/a0-component-comparisons.json}, a lossless extraction of each parent's comparison records with exact definitions, source values, our values, tolerances and uncertainty. The table below prints their scalar values and point labels without inventing a grid-level scalar. For the 108 precision components, magnitude is unresolved even where a conditional arithmetic label could be computed. For MAR bias components, extraction-based labels are descriptive; source Monte Carlo uncertainty is unknown. For the three power contrasts, the source reports a full-information power advantage but supplies no quantified power differences. Their Published cells therefore say not numerically reported; our direct power comparison is not established. These contrasts have no defensible source precision or prespecified margin. These cannot be tested by substituting precision.
+\begin{longtable}{p{90pt}p{225pt}r}
+\toprule Source section & Coverage and scientific discussion & Records\\\midrule\endhead
+chapter 1 & PDF pages 10--18; printed pages 1--9 & 7\\
+chapter 2 & PDF pages 20--36; printed pages 11--27 & 223\\
+chapter 3 & PDF pages 38--55; printed pages 29--46 & 54\\
+chapter 4 & PDF pages 56--77; printed pages 47--68 & 98\\
+chapter 5 & PDF pages 78--93; printed pages 69--84 & 206\\
+chapter 6 & PDF pages 94--111; printed pages 85--102 & 408\\
+chapter 7 & PDF pages 112--123; printed pages 103--114 & 8\\
+appendix A & PDF pages 140--142; printed pages 131--133 & 3\\
+appendix B & PDF pages 143--146; printed pages 134--137 & 8\\
+appendix C & PDF pages 147--148; printed pages 138--139 & 4\\
+appendix D & PDF pages 149--151; printed pages 140--142 & 1\\
+appendix E & PDF pages 152--155; printed pages 143--146 & 2\\
+appendix F & PDF pages 156--158; printed pages 147--149 & 2\\
+appendix G & PDF pages 159--163; printed pages 150--154 & 3\\
+frontmatter & PDF pages 1--9. Degree/title/edition metadata and table of contents; no original scientific result. & 0\\
+dutch summary & PDF pages 124--126. Translated summaries duplicate mapped Chapter 2--6 claims; no new experiment. Wording discrepancies retained in ambiguities. & 0\\
+bibliography & PDF pages 128--136. Cited prior works are background; their scientific results are not original dissertation replication targets. & 0\\
+acknowledgements & PDF pages 138--138. Acknowledgements of collaborators/funding, not original scientific results. & 0\\
+backcover & PDF pages 164--164. Print production marks, not a scientific result. & 0\\
+\bottomrule\end{longtable}
+\subsection{Signed component table}
+Each row key gives its parent headline and zero-based contrast index. The exact scientific definition and units are in the linked component file. HE11--12 retain separately scaled interaction slopes; HE21 retains missing power differences; HE22 is deletion minus full-information variance SE; HE24--26 are estimate-minus-generating-value biases for A, C and heritability. Positive HE22 means full information has lower SE; positive HE24--26 means upward bias. Row-specific extraction tolerances apply to magnitude arithmetic, not inference. NE in Our finding, magnitude or direction means not established by this replication; it does not describe the source claim. S means same direction; R means reversed direction; Z means zero versus nonzero.
+{\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrrrll}
+\toprule Parent & Index & Published & Ours & Margin & Magnitude & Direction\\\midrule\endhead
+HE11 & 0 & -2.81000000 & NE & 0.00500000 & NE & NE\\
+HE11 & 1 & 0.10000000 & NE & 0.00500000 & NE & NE\\
+HE12 & 0 & 0.54000000 & NE & 0.00500000 & NE & NE\\
+HE12 & 1 & -2.21000000 & NE & 0.00500000 & NE & NE\\
+HE21 & 0 & \shortstack{not numerically\\reported} & NE & NE & NE & NE\\
+HE21 & 1 & \shortstack{not numerically\\reported} & NE & NE & NE & NE\\
+HE21 & 2 & \shortstack{not numerically\\reported} & NE & NE & NE & NE\\
+HE22 & 0 & 0.00106356 & 0.00150235 & 0.00023667 & NE & S\\
+HE22 & 1 & 0.00356296 & 0.00490662 & 0.00023667 & NE & S\\
+HE22 & 2 & 0.00654293 & 0.00911630 & 0.00023667 & NE & S\\
+HE22 & 3 & 0.00194661 & 0.00276225 & 0.00023667 & NE & S\\
+HE22 & 4 & 0.00658042 & 0.00922015 & 0.00023667 & NE & S\\
+HE22 & 5 & 0.01236273 & 0.01701897 & 0.00023667 & NE & S\\
+HE22 & 6 & 0.00282129 & 0.00408378 & 0.00023667 & NE & S\\
+HE22 & 7 & 0.00991674 & 0.01383328 & 0.00023667 & NE & S\\
+HE22 & 8 & 0.01880491 & 0.02593898 & 0.00023667 & NE & S\\
+HE22 & 9 & 0.00390503 & 0.00540764 & 0.00023667 & NE & S\\
+HE22 & 10 & 0.01343646 & 0.01881441 & 0.00023667 & NE & S\\
+HE22 & 11 & 0.02703050 & 0.03632223 & 0.00023667 & NE & S\\
+HE22 & 12 & 0.00140397 & 0.00142765 & 0.00027646 & NE & S\\
+HE22 & 13 & 0.00442406 & 0.00462077 & 0.00027646 & NE & S\\
+HE22 & 14 & 0.00831621 & 0.00843680 & 0.00027646 & NE & S\\
+HE22 & 15 & 0.00231474 & 0.00245377 & 0.00027646 & NE & S\\
+HE22 & 16 & 0.00777751 & 0.00818103 & 0.00027646 & NE & S\\
+HE22 & 17 & 0.01493045 & 0.01522838 & 0.00027646 & NE & S\\
+HE22 & 18 & 0.00349311 & 0.00356375 & 0.00027646 & NE & S\\
+HE22 & 19 & 0.01183299 & 0.01206663 & 0.00027646 & NE & S\\
+HE22 & 20 & 0.02264228 & 0.02266608 & 0.00027646 & NE & S\\
+HE22 & 21 & 0.00440404 & 0.00459668 & 0.00027646 & NE & S\\
+HE22 & 22 & 0.01577396 & 0.01611550 & 0.00027646 & NE & S\\
+HE22 & 23 & 0.03074147 & 0.03127694 & 0.00027646 & NE & S\\
+HE22 & 24 & 0.00038198 & 0.00033850 & 0.00015467 & NE & S\\
+HE22 & 25 & 0.00128720 & 0.00113664 & 0.00015467 & NE & S\\
+HE22 & 26 & 0.00273035 & 0.00219713 & 0.00015467 & NE & S\\
+HE22 & 27 & 0.00076970 & 0.00073041 & 0.00015467 & NE & S\\
+HE22 & 28 & 0.00263221 & 0.00241177 & 0.00015467 & NE & S\\
+HE22 & 29 & 0.00498241 & 0.00434776 & 0.00015467 & NE & S\\
+HE22 & 30 & 0.00118334 & 0.00110027 & 0.00015467 & NE & S\\
+HE22 & 31 & 0.00415224 & 0.00373305 & 0.00015467 & NE & S\\
+HE22 & 32 & 0.00791956 & 0.00710514 & 0.00015467 & NE & S\\
+HE22 & 33 & 0.00172214 & 0.00152493 & 0.00015467 & NE & S\\
+HE22 & 34 & 0.00593494 & 0.00532185 & 0.00015467 & NE & S\\
+HE22 & 35 & 0.01182568 & 0.01008825 & 0.00015467 & NE & S\\
+HE22 & 36 & 0.00106794 & 0.00124866 & 0.00015771 & NE & S\\
+HE22 & 37 & 0.00319499 & 0.00364190 & 0.00015771 & NE & S\\
+HE22 & 38 & 0.00541063 & 0.00566546 & 0.00015771 & NE & S\\
+HE22 & 39 & 0.00194052 & 0.00235636 & 0.00015771 & NE & S\\
+HE22 & 40 & 0.00557137 & 0.00637341 & 0.00015771 & NE & S\\
+HE22 & 41 & 0.00902209 & 0.00927196 & 0.00015771 & NE & S\\
+HE22 & 42 & 0.00274663 & 0.00336987 & 0.00015771 & NE & S\\
+HE22 & 43 & 0.00784172 & 0.00885134 & 0.00015771 & NE & S\\
+HE22 & 44 & 0.01236331 & 0.01258415 & 0.00015771 & NE & S\\
+HE22 & 45 & 0.00361450 & 0.00439310 & 0.00015771 & NE & S\\
+HE22 & 46 & 0.00997268 & 0.01081951 & 0.00015771 & NE & S\\
+HE22 & 47 & 0.01553050 & 0.01489491 & 0.00015771 & NE & S\\
+HE22 & 48 & 0.00182794 & 0.00099990 & 0.00031543 & NE & S\\
+HE22 & 49 & 0.00562604 & 0.00280105 & 0.00031543 & NE & S\\
+HE22 & 50 & 0.00990351 & 0.00417290 & 0.00031543 & NE & S\\
+HE22 & 51 & 0.00299204 & 0.00178769 & 0.00031543 & NE & S\\
+HE22 & 52 & 0.00944778 & 0.00467169 & 0.00031543 & NE & S\\
+HE22 & 53 & 0.01679175 & 0.00637724 & 0.00031543 & NE & S\\
+HE22 & 54 & 0.00404840 & 0.00251474 & 0.00031543 & NE & S\\
+HE22 & 55 & 0.01273575 & 0.00628138 & 0.00031543 & NE & S\\
+HE22 & 56 & 0.02283779 & 0.00830730 & 0.00031543 & NE & S\\
+HE22 & 57 & 0.00553384 & 0.00317116 & 0.00031543 & NE & S\\
+HE22 & 58 & 0.01670179 & 0.00747473 & 0.00031543 & NE & S\\
+HE22 & 59 & 0.03189262 & 0.00928477 & 0.00031543 & NE & S\\
+HE22 & 60 & 0.00036873 & 0.00032371 & 0.00011829 & NE & S\\
+HE22 & 61 & 0.00105491 & 0.00092911 & 0.00011829 & NE & S\\
+HE22 & 62 & 0.00174826 & 0.00145989 & 0.00011829 & NE & S\\
+HE22 & 63 & 0.00071796 & 0.00063713 & 0.00011829 & NE & S\\
+HE22 & 64 & 0.00203470 & 0.00178975 & 0.00011829 & NE & S\\
+HE22 & 65 & 0.00324186 & 0.00276531 & 0.00011829 & NE & S\\
+HE22 & 66 & 0.00109308 & 0.00095173 & 0.00011829 & NE & S\\
+HE22 & 67 & 0.00301325 & 0.00264961 & 0.00011829 & NE & S\\
+HE22 & 68 & 0.00462801 & 0.00388141 & 0.00011829 & NE & S\\
+HE22 & 69 & 0.00152248 & 0.00132513 & 0.00011829 & NE & S\\
+HE22 & 70 & 0.00401475 & 0.00331059 & 0.00011829 & NE & S\\
+HE22 & 71 & 0.00606742 & 0.00497513 & 0.00011829 & NE & S\\
+HE22 & 72 & 0.00082977 & 0.00109008 & 0.00022548 & NE & S\\
+HE22 & 73 & 0.00270859 & 0.00358782 & 0.00022548 & NE & S\\
+HE22 & 74 & 0.00495257 & 0.00640264 & 0.00022548 & NE & S\\
+HE22 & 75 & 0.00166820 & 0.00237452 & 0.00022548 & NE & S\\
+HE22 & 76 & 0.00548090 & 0.00755345 & 0.00022548 & NE & S\\
+HE22 & 77 & 0.00973640 & 0.01338838 & 0.00022548 & NE & S\\
+HE22 & 78 & 0.00261919 & 0.00365077 & 0.00022548 & NE & S\\
+HE22 & 79 & 0.00843331 & 0.01165845 & 0.00022548 & NE & S\\
+HE22 & 80 & 0.01460104 & 0.02072288 & 0.00022548 & NE & S\\
+HE22 & 81 & 0.00368420 & 0.00497937 & 0.00022548 & NE & S\\
+HE22 & 82 & 0.01161689 & 0.01592383 & 0.00022548 & NE & S\\
+HE22 & 83 & 0.02043990 & 0.02829504 & 0.00022548 & NE & S\\
+HE22 & 84 & 0.00115151 & 0.00113577 & 0.00022548 & NE & S\\
+HE22 & 85 & 0.00366410 & 0.00377388 & 0.00022548 & NE & S\\
+HE22 & 86 & 0.00651262 & 0.00664253 & 0.00022548 & NE & S\\
+HE22 & 87 & 0.00204781 & 0.00221637 & 0.00022548 & NE & S\\
+HE22 & 88 & 0.00661665 & 0.00708443 & 0.00022548 & NE & S\\
+HE22 & 89 & 0.01299785 & 0.01256046 & 0.00022548 & NE & S\\
+HE22 & 90 & 0.00309548 & 0.00328351 & 0.00022548 & NE & S\\
+HE22 & 91 & 0.01043490 & 0.01049286 & 0.00022548 & NE & S\\
+HE22 & 92 & 0.01982926 & 0.01856977 & 0.00022548 & NE & S\\
+HE22 & 93 & 0.00430912 & 0.00433691 & 0.00022548 & NE & S\\
+HE22 & 94 & 0.01390567 & 0.01401259 & 0.00022548 & NE & S\\
+HE22 & 95 & 0.02525541 & 0.02491638 & 0.00022548 & NE & S\\
+HE22 & 96 & 0.00027269 & 0.00017863 & 0.00022548 & NE & S\\
+HE22 & 97 & 0.00090630 & 0.00060187 & 0.00022548 & NE & S\\
+HE22 & 98 & 0.00167548 & 0.00114072 & 0.00022548 & NE & S\\
+HE22 & 99 & 0.00065222 & 0.00053424 & 0.00022548 & NE & S\\
+HE22 & 100 & 0.00215024 & 0.00172841 & 0.00022548 & NE & S\\
+HE22 & 101 & 0.00388469 & 0.00308362 & 0.00022548 & NE & S\\
+HE22 & 102 & 0.00108962 & 0.00092365 & 0.00022548 & NE & S\\
+HE22 & 103 & 0.00352839 & 0.00300368 & 0.00022548 & NE & S\\
+HE22 & 104 & 0.00616347 & 0.00541729 & 0.00022548 & NE & S\\
+HE22 & 105 & 0.00161347 & 0.00135791 & 0.00022548 & NE & S\\
+HE22 & 106 & 0.00514465 & 0.00426028 & 0.00022548 & NE & S\\
+HE22 & 107 & 0.00899626 & 0.00758239 & 0.00022548 & NE & S\\
+HE24 & 0 & -0.00605332 & -0.00621756 & 0.00059075 & NE & S\\
+HE24 & 1 & -0.00288567 & -0.00156831 & 0.00059075 & NE & S\\
+HE24 & 2 & -0.01093086 & -0.01374588 & 0.00059075 & larger & S\\
+HE24 & 3 & 0.00254044 & 0.00023544 & 0.00059075 & smaller & S\\
+HE24 & 4 & -0.02759837 & -0.02699159 & 0.00059075 & smaller & S\\
+HE24 & 5 & -0.00173849 & -0.00144257 & 0.00059075 & same & S\\
+HE24 & 6 & -0.00590924 & -0.00642497 & 0.00059075 & NE & S\\
+HE24 & 7 & -0.00012927 & -0.00082666 & 0.00059075 & NE & S\\
+HE24 & 8 & -0.02173952 & -0.02168936 & 0.00059075 & same & S\\
+HE24 & 9 & 0.00041893 & -0.00003080 & 0.00059075 & same & R\\
+HE24 & 10 & -0.04342901 & -0.04647127 & 0.00059075 & larger & S\\
+HE24 & 11 & -0.00245962 & -0.00274859 & 0.00059075 & same & S\\
+HE24 & 12 & -0.00752494 & -0.00712869 & 0.00059075 & NE & S\\
+HE24 & 13 & 0.00077236 & 0.00045296 & 0.00059075 & NE & S\\
+HE24 & 14 & -0.03178341 & -0.03114017 & 0.00059075 & smaller & S\\
+HE24 & 15 & -0.00076452 & 0.00004929 & 0.00059075 & smaller & R\\
+HE24 & 16 & -0.05655388 & -0.05309082 & 0.00059075 & smaller & S\\
+HE24 & 17 & -0.00067063 & 0.00133589 & 0.00059075 & larger & R\\
+HE24 & 18 & -0.00731596 & -0.01474011 & 0.00059075 & NE & S\\
+HE24 & 19 & 0.00290101 & -0.00319176 & 0.00059075 & NE & R\\
+HE24 & 20 & -0.04070882 & -0.03988467 & 0.00059075 & smaller & S\\
+HE24 & 21 & -0.00143503 & -0.00132062 & 0.00059075 & same & S\\
+HE24 & 22 & -0.07050127 & -0.07283115 & 0.00059075 & larger & S\\
+HE24 & 23 & 0.00306737 & 0.00044195 & 0.00059075 & smaller & S\\
+HE25 & 0 & -0.00913151 & -0.00766858 & 0.00066545 & NE & S\\
+HE25 & 1 & -0.00054502 & 0.00010051 & 0.00066545 & NE & R\\
+HE25 & 2 & -0.02936369 & -0.02857453 & 0.00066545 & smaller & S\\
+HE25 & 3 & -0.00261399 & -0.00155888 & 0.00066545 & smaller & S\\
+HE25 & 4 & -0.04861458 & -0.04813777 & 0.00066545 & same & S\\
+HE25 & 5 & -0.00103566 & -0.00011525 & 0.00066545 & smaller & S\\
+HE25 & 6 & -0.01508538 & -0.01533751 & 0.00066545 & NE & S\\
+HE25 & 7 & -0.00292494 & -0.00176942 & 0.00066545 & NE & S\\
+HE25 & 8 & -0.04162193 & -0.04254259 & 0.00066545 & larger & S\\
+HE25 & 9 & -0.00072446 & -0.00093569 & 0.00066545 & same & S\\
+HE25 & 10 & -0.07321303 & -0.06918151 & 0.00066545 & smaller & S\\
+HE25 & 11 & -0.00128894 & 0.00025119 & 0.00066545 & smaller & R\\
+HE25 & 12 & -0.01775067 & -0.01971251 & 0.00066545 & NE & S\\
+HE25 & 13 & -0.00199224 & -0.00200231 & 0.00066545 & NE & S\\
+HE25 & 14 & -0.05260500 & -0.05656576 & 0.00066545 & larger & S\\
+HE25 & 15 & 0.00041156 & -0.00202670 & 0.00066545 & larger & R\\
+HE25 & 16 & -0.09284027 & -0.09768223 & 0.00066545 & larger & S\\
+HE25 & 17 & -0.00119081 & -0.00087975 & 0.00066545 & same & S\\
+HE25 & 18 & -0.02784206 & -0.02054156 & 0.00066545 & NE & S\\
+HE25 & 19 & -0.00515686 & 0.00101715 & 0.00066545 & NE & R\\
+HE25 & 20 & -0.06913269 & -0.07073267 & 0.00066545 & larger & S\\
+HE25 & 21 & -0.00074144 & -0.00043337 & 0.00066545 & same & S\\
+HE25 & 22 & -0.11634371 & -0.11495778 & 0.00066545 & smaller & S\\
+HE25 & 23 & -0.00324353 & -0.00261639 & 0.00066545 & same & S\\
+HE26 & 0 & 0.00172809 & 0.00141622 & 0.00027219 & NE & S\\
+HE26 & 1 & -0.00117418 & -0.00031479 & 0.00027219 & NE & S\\
+HE26 & 2 & 0.01059974 & 0.00882709 & 0.00027219 & smaller & S\\
+HE26 & 3 & 0.00284939 & 0.00129508 & 0.00027219 & smaller & S\\
+HE26 & 4 & 0.01338730 & 0.01327260 & 0.00027219 & same & S\\
+HE26 & 5 & 0.00013556 & -0.00029792 & 0.00027219 & same & R\\
+HE26 & 6 & 0.00532734 & 0.00554308 & 0.00027219 & NE & S\\
+HE26 & 7 & 0.00187285 & 0.00116057 & 0.00027219 & NE & S\\
+HE26 & 8 & 0.01249201 & 0.01262482 & 0.00027219 & same & S\\
+HE26 & 9 & 0.00129049 & 0.00087666 & 0.00027219 & smaller & S\\
+HE26 & 10 & 0.01919505 & 0.01551671 & 0.00027219 & smaller & S\\
+HE26 & 11 & -0.00059174 & -0.00105639 & 0.00027219 & larger & S\\
+HE26 & 12 & 0.00674144 & 0.00767138 & 0.00027219 & NE & S\\
+HE26 & 13 & 0.00248891 & 0.00197966 & 0.00027219 & NE & S\\
+HE26 & 14 & 0.01367013 & 0.01627894 & 0.00027219 & larger & S\\
+HE26 & 15 & -0.00000213 & 0.00190514 & 0.00027219 & larger & R\\
+HE26 & 16 & 0.02494554 & 0.03061640 & 0.00027219 & larger & S\\
+HE26 & 17 & 0.00071111 & 0.00211800 & 0.00027219 & larger & S\\
+HE26 & 18 & 0.01252875 & 0.00410212 & 0.00027219 & NE & S\\
+HE26 & 19 & 0.00521278 & -0.00139029 & 0.00027219 & NE & R\\
+HE26 & 20 & 0.01952200 & 0.02096849 & 0.00027219 & larger & S\\
+HE26 & 21 & 0.00066423 & 0.00068233 & 0.00027219 & same & S\\
+HE26 & 22 & 0.03315402 & 0.03118039 & 0.00027219 & smaller & S\\
+HE26 & 23 & 0.00413201 & 0.00265364 & 0.00027219 & smaller & S\\
+\bottomrule\end{longtable}}
+\section{Reproduction, software and artifacts}\label{sec:reproduction}
+Rebuilding this manuscript from saved evidence is separate from regenerating datasets, refitting models or obtaining the original source data. Work from \nolinkurl{formalization/schwabe-psychometric-genetics}. The editable manuscript is \file{paper/numerical-standalone.tex}; its bibliography is \file{paper/references.bib}. Run \file{paper/build-numerical.sh} to build \file{paper/numerical-main.pdf}. The build uses the supplied preamble, pdfLaTeX and BibTeX; it does not execute a study.
+
+\href{https://github.com/alectionary/vibe-math/commit/7ddf23f40124239a8f245de7c71540b0c80216bf}{Reproduction revision} identifies the immutable scientific inputs and outputs, including the bounded score-model code, four incomplete chains, saved states and terminal resource records. It is a scientific snapshot; the manuscript rendering has its own hash-bound build record. The exact read-only hash verification recipe is \file{handoff/score-a0-reproduction.md}. Its expected result is zero completed fixed-length chains, 6419.751313023 summed chain/cleanup seconds and 1606.104005898 elapsed seconds. No sampling or full diagnostic computation is needed to verify these saved hashes.
+
+The Gaussian experiment recipe is \file{handoff/terminal-reproduction.md}; the completed diagnostic and analytical-output recipe is \file{handoff/current-reproduction.md}. Source-text-dependent checks require the separately held dissertation with its recorded hash. Saved-output validation and deterministic algebra checks do not recreate original empirical data. A new sampling run is a distinct experiment; the incomplete score chains are not a basis for extending or pooling the recorded result.
+
+R 4.5.0 supplies the statistical runtime \citep{r2025}. OpenMx 2.21.13 implements the Gaussian raw-data likelihood \citep{neale2016}; lavaan 0.6.19 supplies baseline engine comparison \citep{rosseel2012}. The item-level non-Gaussian hierarchy uses JAGS 4.3.2 through rjags 4-16 rather than a covariance-only approximation \citep{rjags2024}. Posterior 1.6.1 supplies effective-sample-size and MCSE calculations; coda 0.19.4.1 supplies HPD summaries \citep{coda2006}. R package version and Debian packaging version are different identifiers. Python 3.12.14 performs saved-output and exact-arithmetic checks; no Lean or Mathlib formal certificate is supplied. Runtime identities are retained in \file{provenance/continuation-python-runtime.json}, \file{handoff/continuation-runtime-version-evidence.json} and the reproduction records.
+
+Software distribution links are \href{https://www.r-project.org/}{R}, \href{https://CRAN.R-project.org/package=OpenMx}{OpenMx}, \href{https://CRAN.R-project.org/package=lavaan}{lavaan}, \href{https://mcmc-jags.sourceforge.io/}{JAGS}, \href{https://CRAN.R-project.org/package=rjags}{rjags}, \href{https://CRAN.R-project.org/package=posterior}{posterior}, \href{https://CRAN.R-project.org/package=coda}{coda} and \href{https://www.python.org/}{Python}. These links identify tools; they do not establish the correctness of a reconstruction.
+
+\section{Compliance ledger}\label{sec:compliance}
+The following ledger preserves the declared scope and departures of the scientific work. Completion of document checks is not scientific validation.
+\paragraph{Whole-dissertation coverage -- followed}  The source inventory covers 19 sections, 996 dependent source records, 26 headline claims and 187 effect components. Exact-target work comprises 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed and 310 completed under the declared reconstruction (coverage-v4.csv). Inventory coverage does not establish whole-study replication.
+\paragraph{Original-source and input audit -- followed}  The input audit examined all 12 public author repositories. Original empirical responses, linked calibration and some simulation specifications were unavailable; their associated targets remain unresolved (handoff/scientific-availability.json).
+\paragraph{Preferred statistical engines -- followed}  R 4.5.0, lavaan 0.6.19 and OpenMx 2.21.13 were available. OpenMx implements the Chapter 6 Gaussian likelihood, with independent baseline engine checks recorded in outputs/engine-agreement.csv; package versions are recorded in provenance/preflight.json.
+\paragraph{JAGS for non-Gaussian latent item models -- departed} A covariance-only SEM would change the source likelihood. JAGS 4.3.2 with rjags 4-16 reconstructs the item-level models; posterior 1.6.1 computes diagnostics. Generator, baseline engine and model-semantics checks do not independently validate the full posterior. The item-level posterior and its diagnostic limits are specified in handoff/jags-gate-scientific-evidence.json and handoff/jags-centered-scientific-evidence.json. The extended one-dataset result and runtime versions, including coda 0.19.4.1, are recorded in handoff/jags-centered-extended-recovery-scientific-evidence.json.
+\paragraph{Original repetition counts and adequate posterior convergence -- departed} Chapter 6 completes 1000 datasets in 36 primary and 12 sensitivity conditions, totaling 96000 method fits. Response generation completes 2650 datasets across 19 Chapter 2/5 conditions; alpha sensitivity adds zero independent datasets and zero posterior fits. Shorter original and centered diagnostics failed their joint criteria. The completed four-chain centered diagnostic with 28000 retained draws per chain passes the operational criteria for all 14 monitored quantities on one fixed Chapter 2 N 500/J 60 floor dataset; its interaction HPD includes zero. This does not establish the source 100/250-dataset posterior recovery or power aggregates, other designs, or empirical refits. production/chapter6-v1/terminal-analysis/summary.json; handoff/generator-summary-scientific-evidence.json; handoff/generator-alpha-sensitivity-scientific-evidence.json; handoff/jags-centered-extended-recovery-scientific-evidence.json.
+\paragraph{Signed estimands, uncertainty and multiplicity -- followed}  The analysis distinguishes variance and path SEs, deletion-minus-full contrasts, estimate-minus-truth bias and source deviations (production/analysis-plan.json). Geometric extraction uncertainty, our Monte Carlo error and unknown source Monte Carlo error remain distinct. Descriptive magnitude is not equivalence.
+\paragraph{Analytical verification and formal proof -- departed} Ordinary mathematical arguments and exact algebra checks support the explicitly conditional results; no Lean certificate is claimed. Population identification, fixed-parameter latent moment inversion and exact Rasch score-likelihood sufficiency do not establish finite-likelihood uniqueness, non-Gaussian observed-item identification, empirical recovery, power or convergence. The derivations and assumptions appear in handoff/chapter5-analytical-evidence.json, handoff/chapter6-analytical-evidence.json, provenance/continuous-moderator-identification-check.json, provenance/non-gaussian-latent-moment-check.json and provenance/rasch-sufficiency-derivation.json.
+\paragraph{Source attribution and permitted redistribution -- followed}  Schwabe (2016) is identified by verified bibliographic metadata and claim-specific dissertation locators. The full dissertation and unlicensed original programs remain local; redistributed materials comprise original replication code, generated results and limited attributed source extracts (handoff/scientific-availability.json).
+\paragraph{Reproducible versions and commands -- followed}  Immutable repository revision \nolinkurl{2424e0f4d67929ba72255ef6f546ba2a72c25df0} contains completed scientific outputs, diagnostic draws, reviewed checks and original replication code. Saved-output validation and fixed-diagnostic rerun commands are specified in handoff/current-reproduction.md; handoff/terminal-reproduction.md supplies the Chapter 6 recipe. Full copyrighted dissertation text and unlicensed original programs remain separate inputs.
+\paragraph{Equivalent score-likelihood implementation feasibility -- departed} The same-JAGS exact calibrated score representation was tested on one saved dataset with fixed starts and priors; it is not independent-engine validation. All four chains adapted and retained 16000 of 28000 requested draws before the preset summed-process ceiling; zero fixed-length chains completed. 6419.751313 chain/cleanup seconds and 6420.894927 all-phase seconds were consumed. Full joint diagnostic and five-global comparison were ineligible. Source-count targets remain pending. handoff/score-a0-scientific-evidence.json; provenance/score-a0-terminal-independent-review.json.
+\paragraph{Manuscript layout -- departed}
+The approved article preamble is retained. The numerical opening uses 10-point type and eight condition-selected rows. A separate 28-row appendix overview retains the full headline set; definitions and complete component evidence remain available. This presentation separates numerical illustrations from complete headline coverage. Nonscalar rows preserve unavailable magnitudes separately from scientific assessments. The full inventory is provided as a source-linked artifact and chapter map rather than 996 repeated prose paragraphs.
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

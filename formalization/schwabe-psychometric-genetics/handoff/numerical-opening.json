@@ -1,0 +1,1007 @@
+{
+  "schema": "study-specific-numerical-opening-v1",
+  "status": "final_scientific_values_and_authorized_presentation_contract",
+  "parent_packet": "handoff/a0-evidence-packet.json",
+  "parent_packet_sha256": "9cb20cc372d0da790faf0885ae091e9c6ead748aa1cca85fa07cc9d6bed05da7",
+  "selection": {
+    "timing": "post-hoc presentation selection",
+    "rule": "Smallest q=2; unambiguous interior missingness=.06; first listed precision mechanism MCAR; all MAR bias components under deletion and full information; smallest N=500 and first non-null interaction alternative Delta=1.3.",
+    "outcome_based": false,
+    "paired_full_audit_count": 180,
+    "pooled_effect": false,
+    "source_counts_not_independent_findings": true
+  },
+  "first_page_rows": [
+    {
+      "row_id": "N01",
+      "source_effect_id": "HE22.C002",
+      "claim_id": "H6.precision-grid",
+      "contrast_index": 1,
+      "label": "MCAR: A variance SE gain",
+      "id": "HE22.C002",
+      "comparison_kind": "scalar",
+      "estimand": "Mean SE of A variance under deletion minus full information, MCAR,q=2,missing=0.06",
+      "units": "SE of variance component in squared phenotype units",
+      "positive_means": "Full information has smaller variance-component SE.",
+      "published_effect": 0.003562963913674194,
+      "ours_effect": 0.004906616932492357,
+      "estimate_status": "unresolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.00023667095377570213,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "not established",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Paired valid replicates=1000/1000; excluded/pending=0; paired MCSE=4.5717237576484896e-05; Bonferroni family108 Student-t interval=[0.004746013616939668,0.005067220248045045]. Original source Monte Carlo uncertainty and exact SE implementation are unavailable. Path SE is an exploratory different estimand; not substituted. Source extraction margin is geometric, not inferential.",
+      "source_contrast": {
+        "definition": "Mean SE of A variance under deletion minus full information, MCAR,q=2,missing=0.06",
+        "units": "SE of variance component in squared phenotype units",
+        "positive_means": "Full information has smaller variance-component SE.",
+        "published": {
+          "value": 0.003562963913674194,
+          "units": "SE of variance component in squared phenotype units",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.00023667095377570213,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        },
+        "conditions": {
+          "mechanism": "MCAR",
+          "q": 2,
+          "missing_fraction": 0.06
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 1,
+        "source": {
+          "definition": "Mean SE of A variance under deletion minus full information, MCAR,q=2,missing=0.06",
+          "units": "SE of variance component in squared phenotype units",
+          "positive_means": "Full information has smaller variance-component SE.",
+          "published": {
+            "value": 0.003562963913674194,
+            "units": "SE of variance component in squared phenotype units",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.00023667095377570213,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          },
+          "conditions": {
+            "mechanism": "MCAR",
+            "q": 2,
+            "missing_fraction": 0.06
+          }
+        },
+        "table": "signed-SE-contrasts.csv",
+        "row_key": {
+          "mechanism": "MCAR",
+          "q": "2",
+          "missing": "0.06",
+          "parameter": "A",
+          "metric": "se"
+        },
+        "value_field": "contrast_delete_minus_full",
+        "computed_value": 0.004906616932492357,
+        "kind": "signed variance-SE deletion minus full",
+        "unavailable_reason": null,
+        "row": {
+          "mechanism": "MCAR",
+          "q": "2",
+          "missing": "0.06",
+          "parameter": "A",
+          "metric": "se",
+          "target_pairs": "1000",
+          "requested_pairs": "1000",
+          "valid_pairs": "1000",
+          "excluded_or_pending_pairs": "0",
+          "not_yet_requested_pairs": "0",
+          "full_valid": "1000",
+          "deletion_valid": "1000",
+          "contrast_delete_minus_full": "0.004906616932492357",
+          "source_deletion_minus_full": "0.003562963913674194",
+          "source_contrast_extraction_bound": "0.00023667095377570213",
+          "source_sign_robust_to_extraction": "True",
+          "point_sign_reversal": "False",
+          "positive_means": "Full-information estimated SE lower",
+          "family_size": "108",
+          "alpha": "0.05",
+          "correction": "Bonferroni Student t; path metric exploratory",
+          "source_scope": "Source point ordering only; unknown source Monte Carlo error",
+          "sd": "0.0014457059907272856",
+          "mcse": "4.5717237576484896e-05",
+          "two_se_low": "0.004815182457339387",
+          "two_se_high": "0.004998051407645326",
+          "adjusted_low": "0.004746013616939668",
+          "adjusted_high": "0.005067220248045045",
+          "adjusted_halfwidth": "0.0001606033155526886",
+          "adjusted_status": "positive"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication",
+        "exploratory_path_SE": {
+          "table": "signed-SE-contrasts.csv",
+          "row_key": {
+            "mechanism": "MCAR",
+            "q": "2",
+            "missing": "0.06",
+            "parameter": "A",
+            "metric": "path_se"
+          },
+          "value_field": "contrast_delete_minus_full",
+          "computed_value": 0.0035215262569364024,
+          "kind": "EXPLORATORY DIFFERENT ESTIMAND",
+          "unavailable_reason": null,
+          "row": {
+            "mechanism": "MCAR",
+            "q": "2",
+            "missing": "0.06",
+            "parameter": "A",
+            "metric": "path_se",
+            "target_pairs": "1000",
+            "requested_pairs": "1000",
+            "valid_pairs": "1000",
+            "excluded_or_pending_pairs": "0",
+            "not_yet_requested_pairs": "0",
+            "full_valid": "1000",
+            "deletion_valid": "1000",
+            "contrast_delete_minus_full": "0.0035215262569364024",
+            "source_deletion_minus_full": "0.003562963913674194",
+            "source_contrast_extraction_bound": "0.00023667095377570213",
+            "source_sign_robust_to_extraction": "True",
+            "point_sign_reversal": "False",
+            "positive_means": "Full-information estimated SE lower",
+            "family_size": "108",
+            "alpha": "0.05",
+            "correction": "Bonferroni Student t; path metric exploratory",
+            "source_scope": "Source point ordering only; unknown source Monte Carlo error",
+            "sd": "0.001350932164856544",
+            "mcse": "4.272022605328756e-05",
+            "two_se_low": "0.003436085804829827",
+            "two_se_high": "0.0036069667090429776",
+            "adjusted_low": "0.003371451355016971",
+            "adjusted_high": "0.003671601158855834",
+            "adjusted_halfwidth": "0.00015007490191943173",
+            "adjusted_status": "positive"
+          },
+          "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+        }
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "unresolved_reason": "All108 precision comparisons and the preselected precision example unresolved magnitude: original SE implementation and source low-missingness labels remain ambiguous. Keep printed variance-SE estimand, finite values, direction and existing extraction margin.",
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": 0.0013436530188181625,
+        "absolute_magnitude_difference": 0.0013436530188181625,
+        "conditional_descriptive_label_if_comparability_were_resolved": "larger",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "+ / +",
+      "point_magnitude_display": "Unresolved; point larger",
+      "specific_limit_display": "Original SE definition unknown",
+      "result_id": "HE22.C002"
+    },
+    {
+      "row_id": "N02",
+      "source_effect_id": "HE24.C003",
+      "claim_id": "C6-3.MAR-bias.A",
+      "contrast_index": 2,
+      "label": "MAR: A bias, deletion",
+      "id": "HE24.C003",
+      "comparison_kind": "scalar",
+      "estimand": "Mean estimate ofA minus generatingA,method=deletion,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": -0.010930861504939271,
+      "ours_effect": -0.013745884381599918,
+      "estimate_status": "resolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.0005907534962770575,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "larger",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0020163502287951197; exploratory Bonferroni family72 interval=[-0.0206063276407779,-0.006885441122421937]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "source_contrast": {
+        "definition": "Mean estimate ofA minus generatingA,method=deletion,MAR,q=2,missing=0.06",
+        "units": "phenotype variance units",
+        "positive_means": "Upward bias relative to the fixed generating value.",
+        "published": {
+          "value": -0.010930861504939271,
+          "units": "phenotype variance units",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.0005907534962770575,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 2,
+        "source": {
+          "definition": "Mean estimate ofA minus generatingA,method=deletion,MAR,q=2,missing=0.06",
+          "units": "phenotype variance units",
+          "positive_means": "Upward bias relative to the fixed generating value.",
+          "published": {
+            "value": -0.010930861504939271,
+            "units": "phenotype variance units",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.0005907534962770575,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          }
+        },
+        "table": "signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "A"
+        },
+        "value_field": "ours_bias_estimate_minus_truth",
+        "computed_value": -0.013745884381599918,
+        "kind": "signed estimate minus residual ACE generating truth",
+        "unavailable_reason": null,
+        "row": {
+          "figure": "6.5",
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "A",
+          "requested": "1000",
+          "completed": "1000",
+          "guard_valid": "1000",
+          "guard_invalid": "0",
+          "process_failed": "0",
+          "in_flight_or_uncheckpointed": "0",
+          "target": "1000",
+          "not_yet_requested": "0",
+          "generating_truth": "0.5",
+          "source_estimate": "0.48906913849506073",
+          "ours_estimate": "0.4862541156184001",
+          "source_bias_estimate_minus_truth": "-0.010930861504939271",
+          "ours_bias_estimate_minus_truth": "-0.013745884381599918",
+          "positive_means": "Overestimation of generating truth",
+          "point_sign_reversal": "False",
+          "source_extraction_bound": "0.0005907534962770575",
+          "source_sign_robust_to_extraction": "True",
+          "ours_minus_source": "-0.0028150228766606333",
+          "family_size": "72",
+          "alpha": "0.05",
+          "n": "1000",
+          "sd": "0.06376259283594207",
+          "mcse": "0.0020163502287951197",
+          "two_se_low": "-0.01777858483919016",
+          "two_se_high": "-0.009713183924009678",
+          "adjusted_low": "-0.0206063276407779",
+          "adjusted_high": "-0.006885441122421937",
+          "adjusted_halfwidth": "0.006860443259177981",
+          "scope": "Exploratory signed bias; source Monte Carlo uncertainty unknown"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": -0.002815022876660647,
+        "absolute_magnitude_difference": 0.002815022876660647,
+        "conditional_descriptive_label_if_comparability_were_resolved": "larger",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "- / -",
+      "point_magnitude_display": "larger",
+      "specific_limit_display": "Source MC error unknown",
+      "result_id": "HE24.C003"
+    },
+    {
+      "row_id": "N03",
+      "source_effect_id": "HE24.C004",
+      "claim_id": "C6-3.MAR-bias.A",
+      "contrast_index": 3,
+      "label": "MAR: A bias, full info.",
+      "id": "HE24.C004",
+      "comparison_kind": "scalar",
+      "estimand": "Mean estimate ofA minus generatingA,method=full,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": 0.0025404383460163604,
+      "ours_effect": 0.00023543933144523854,
+      "estimate_status": "resolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.0005907534962770575,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0019079497412483543; exploratory Bonferroni family72 interval=[-0.0062561813970723815,0.006727060059962859]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "source_contrast": {
+        "definition": "Mean estimate ofA minus generatingA,method=full,MAR,q=2,missing=0.06",
+        "units": "phenotype variance units",
+        "positive_means": "Upward bias relative to the fixed generating value.",
+        "published": {
+          "value": 0.0025404383460163604,
+          "units": "phenotype variance units",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.0005907534962770575,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 3,
+        "source": {
+          "definition": "Mean estimate ofA minus generatingA,method=full,MAR,q=2,missing=0.06",
+          "units": "phenotype variance units",
+          "positive_means": "Upward bias relative to the fixed generating value.",
+          "published": {
+            "value": 0.0025404383460163604,
+            "units": "phenotype variance units",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.0005907534962770575,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          }
+        },
+        "table": "signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "A"
+        },
+        "value_field": "ours_bias_estimate_minus_truth",
+        "computed_value": 0.00023543933144523854,
+        "kind": "signed estimate minus residual ACE generating truth",
+        "unavailable_reason": null,
+        "row": {
+          "figure": "6.5",
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "A",
+          "requested": "1000",
+          "completed": "1000",
+          "guard_valid": "1000",
+          "guard_invalid": "0",
+          "process_failed": "0",
+          "in_flight_or_uncheckpointed": "0",
+          "target": "1000",
+          "not_yet_requested": "0",
+          "generating_truth": "0.5",
+          "source_estimate": "0.5025404383460164",
+          "ours_estimate": "0.5002354393314452",
+          "source_bias_estimate_minus_truth": "0.0025404383460163604",
+          "ours_bias_estimate_minus_truth": "0.00023543933144523854",
+          "positive_means": "Overestimation of generating truth",
+          "point_sign_reversal": "False",
+          "source_extraction_bound": "0.0005907534962770575",
+          "source_sign_robust_to_extraction": "True",
+          "ours_minus_source": "-0.002304999014571152",
+          "family_size": "72",
+          "alpha": "0.05",
+          "n": "1000",
+          "sd": "0.0603346684347371",
+          "mcse": "0.0019079497412483543",
+          "two_se_low": "-0.00358046015105147",
+          "two_se_high": "0.0040513388139419475",
+          "adjusted_low": "-0.0062561813970723815",
+          "adjusted_high": "0.006727060059962859",
+          "adjusted_halfwidth": "0.00649162072851762",
+          "scope": "Exploratory signed bias; source Monte Carlo uncertainty unknown"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": -0.002304999014571122,
+        "absolute_magnitude_difference": -0.002304999014571122,
+        "conditional_descriptive_label_if_comparability_were_resolved": "smaller",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "+ / +",
+      "point_magnitude_display": "smaller",
+      "specific_limit_display": "Zero bias not established",
+      "result_id": "HE24.C004"
+    },
+    {
+      "row_id": "N04",
+      "source_effect_id": "HE25.C003",
+      "claim_id": "C6-3.MAR-bias.C",
+      "contrast_index": 2,
+      "label": "MAR: C bias, deletion",
+      "id": "HE25.C003",
+      "comparison_kind": "scalar",
+      "estimand": "Mean estimate ofC minus generatingC,method=deletion,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": -0.029363685904258696,
+      "ours_effect": -0.028574530077796065,
+      "estimate_status": "resolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.0006654485702751597,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0019895943394892487; exploratory Bonferroni family72 interval=[-0.035343938923502405,-0.021805121232089726]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "source_contrast": {
+        "definition": "Mean estimate ofC minus generatingC,method=deletion,MAR,q=2,missing=0.06",
+        "units": "phenotype variance units",
+        "positive_means": "Upward bias relative to the fixed generating value.",
+        "published": {
+          "value": -0.029363685904258696,
+          "units": "phenotype variance units",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.0006654485702751597,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 2,
+        "source": {
+          "definition": "Mean estimate ofC minus generatingC,method=deletion,MAR,q=2,missing=0.06",
+          "units": "phenotype variance units",
+          "positive_means": "Upward bias relative to the fixed generating value.",
+          "published": {
+            "value": -0.029363685904258696,
+            "units": "phenotype variance units",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.0006654485702751597,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          }
+        },
+        "table": "signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "C"
+        },
+        "value_field": "ours_bias_estimate_minus_truth",
+        "computed_value": -0.028574530077796065,
+        "kind": "signed estimate minus residual ACE generating truth",
+        "unavailable_reason": null,
+        "row": {
+          "figure": "6.5",
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "C",
+          "requested": "1000",
+          "completed": "1000",
+          "guard_valid": "1000",
+          "guard_invalid": "0",
+          "process_failed": "0",
+          "in_flight_or_uncheckpointed": "0",
+          "target": "1000",
+          "not_yet_requested": "0",
+          "generating_truth": "0.3",
+          "source_estimate": "0.2706363140957413",
+          "ours_estimate": "0.2714254699222039",
+          "source_bias_estimate_minus_truth": "-0.029363685904258696",
+          "ours_bias_estimate_minus_truth": "-0.028574530077796065",
+          "positive_means": "Overestimation of generating truth",
+          "point_sign_reversal": "False",
+          "source_extraction_bound": "0.0006654485702751597",
+          "source_sign_robust_to_extraction": "True",
+          "ours_minus_source": "0.0007891558264626064",
+          "family_size": "72",
+          "alpha": "0.05",
+          "n": "1000",
+          "sd": "0.06291649732564314",
+          "mcse": "0.0019895943394892487",
+          "two_se_low": "-0.03255371875677456",
+          "two_se_high": "-0.02459534139881757",
+          "adjusted_low": "-0.035343938923502405",
+          "adjusted_high": "-0.021805121232089726",
+          "adjusted_halfwidth": "0.0067694088457063385",
+          "scope": "Exploratory signed bias; source Monte Carlo uncertainty unknown"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": 0.0007891558264626307,
+        "absolute_magnitude_difference": -0.0007891558264626307,
+        "conditional_descriptive_label_if_comparability_were_resolved": "smaller",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "- / -",
+      "point_magnitude_display": "smaller",
+      "specific_limit_display": "Source MC error unknown",
+      "result_id": "HE25.C003"
+    },
+    {
+      "row_id": "N05",
+      "source_effect_id": "HE25.C004",
+      "claim_id": "C6-3.MAR-bias.C",
+      "contrast_index": 3,
+      "label": "MAR: C bias, full info.",
+      "id": "HE25.C004",
+      "comparison_kind": "scalar",
+      "estimand": "Mean estimate ofC minus generatingC,method=full,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": -0.0026139855760420327,
+      "ours_effect": -0.0015588778116801642,
+      "estimate_status": "resolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.0006654485702751597,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0018780293898552972; exploratory Bonferroni family72 interval=[-0.007948697340140693,0.004830941716780364]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "source_contrast": {
+        "definition": "Mean estimate ofC minus generatingC,method=full,MAR,q=2,missing=0.06",
+        "units": "phenotype variance units",
+        "positive_means": "Upward bias relative to the fixed generating value.",
+        "published": {
+          "value": -0.0026139855760420327,
+          "units": "phenotype variance units",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.0006654485702751597,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 3,
+        "source": {
+          "definition": "Mean estimate ofC minus generatingC,method=full,MAR,q=2,missing=0.06",
+          "units": "phenotype variance units",
+          "positive_means": "Upward bias relative to the fixed generating value.",
+          "published": {
+            "value": -0.0026139855760420327,
+            "units": "phenotype variance units",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.0006654485702751597,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          }
+        },
+        "table": "signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "C"
+        },
+        "value_field": "ours_bias_estimate_minus_truth",
+        "computed_value": -0.0015588778116801642,
+        "kind": "signed estimate minus residual ACE generating truth",
+        "unavailable_reason": null,
+        "row": {
+          "figure": "6.5",
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "C",
+          "requested": "1000",
+          "completed": "1000",
+          "guard_valid": "1000",
+          "guard_invalid": "0",
+          "process_failed": "0",
+          "in_flight_or_uncheckpointed": "0",
+          "target": "1000",
+          "not_yet_requested": "0",
+          "generating_truth": "0.3",
+          "source_estimate": "0.29738601442395796",
+          "ours_estimate": "0.2984411221883198",
+          "source_bias_estimate_minus_truth": "-0.0026139855760420327",
+          "ours_bias_estimate_minus_truth": "-0.0015588778116801642",
+          "positive_means": "Overestimation of generating truth",
+          "point_sign_reversal": "False",
+          "source_extraction_bound": "0.0006654485702751597",
+          "source_sign_robust_to_extraction": "True",
+          "ours_minus_source": "0.0010551077643618512",
+          "family_size": "72",
+          "alpha": "0.05",
+          "n": "1000",
+          "sd": "0.05938850384679058",
+          "mcse": "0.0018780293898552972",
+          "two_se_low": "-0.0053149365913907586",
+          "two_se_high": "0.00219718096803043",
+          "adjusted_low": "-0.007948697340140693",
+          "adjusted_high": "0.004830941716780364",
+          "adjusted_halfwidth": "0.0063898195284605285",
+          "scope": "Exploratory signed bias; source Monte Carlo uncertainty unknown"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": 0.0010551077643618685,
+        "absolute_magnitude_difference": -0.0010551077643618685,
+        "conditional_descriptive_label_if_comparability_were_resolved": "smaller",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "- / -",
+      "point_magnitude_display": "smaller",
+      "specific_limit_display": "Zero bias not established",
+      "result_id": "HE25.C004"
+    },
+    {
+      "row_id": "N06",
+      "source_effect_id": "HE26.C003",
+      "claim_id": "C6-3.MAR-bias.h2",
+      "contrast_index": 2,
+      "label": "MAR: heritability bias, deletion",
+      "id": "HE26.C003",
+      "comparison_kind": "scalar",
+      "estimand": "Mean estimate ofh2 minus generatingh2,method=deletion,MAR,q=2,missing=0.06",
+      "units": "heritability proportion",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": 0.010599739482706427,
+      "ours_effect": 0.008827092930129822,
+      "estimate_status": "resolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.00027219389842495325,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.002143461892715822; exploratory Bonferroni family72 interval=[0.0015341641109265017,0.016120021749333142]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "source_contrast": {
+        "definition": "Mean estimate ofh2 minus generatingh2,method=deletion,MAR,q=2,missing=0.06",
+        "units": "heritability proportion",
+        "positive_means": "Upward bias relative to the fixed generating value.",
+        "published": {
+          "value": 0.010599739482706427,
+          "units": "heritability proportion",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.00027219389842495325,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 2,
+        "source": {
+          "definition": "Mean estimate ofh2 minus generatingh2,method=deletion,MAR,q=2,missing=0.06",
+          "units": "heritability proportion",
+          "positive_means": "Upward bias relative to the fixed generating value.",
+          "published": {
+            "value": 0.010599739482706427,
+            "units": "heritability proportion",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.00027219389842495325,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          }
+        },
+        "table": "signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "h2"
+        },
+        "value_field": "ours_bias_estimate_minus_truth",
+        "computed_value": 0.008827092930129822,
+        "kind": "signed estimate minus residual ACE generating truth",
+        "unavailable_reason": null,
+        "row": {
+          "figure": "6.5",
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "h2",
+          "requested": "1000",
+          "completed": "1000",
+          "guard_valid": "1000",
+          "guard_invalid": "0",
+          "process_failed": "0",
+          "in_flight_or_uncheckpointed": "0",
+          "target": "1000",
+          "not_yet_requested": "0",
+          "generating_truth": "0.5",
+          "source_estimate": "0.5105997394827064",
+          "ours_estimate": "0.5088270929301298",
+          "source_bias_estimate_minus_truth": "0.010599739482706427",
+          "ours_bias_estimate_minus_truth": "0.008827092930129822",
+          "positive_means": "Overestimation of generating truth",
+          "point_sign_reversal": "False",
+          "source_extraction_bound": "0.00027219389842495325",
+          "source_sign_robust_to_extraction": "True",
+          "ours_minus_source": "-0.0017726465525765844",
+          "family_size": "72",
+          "alpha": "0.05",
+          "n": "1000",
+          "sd": "0.06778221658757475",
+          "mcse": "0.002143461892715822",
+          "two_se_low": "0.004540169144698178",
+          "two_se_high": "0.013114016715561467",
+          "adjusted_low": "0.0015341641109265017",
+          "adjusted_high": "0.016120021749333142",
+          "adjusted_halfwidth": "0.00729292881920332",
+          "scope": "Exploratory signed bias; source Monte Carlo uncertainty unknown"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": -0.0017726465525766053,
+        "absolute_magnitude_difference": -0.0017726465525766053,
+        "conditional_descriptive_label_if_comparability_were_resolved": "smaller",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "+ / +",
+      "point_magnitude_display": "smaller",
+      "specific_limit_display": "Source MC error unknown",
+      "result_id": "HE26.C003"
+    },
+    {
+      "row_id": "N07",
+      "source_effect_id": "HE26.C004",
+      "claim_id": "C6-3.MAR-bias.h2",
+      "contrast_index": 3,
+      "label": "MAR: heritability bias, full info.",
+      "id": "HE26.C004",
+      "comparison_kind": "scalar",
+      "estimand": "Mean estimate ofh2 minus generatingh2,method=full,MAR,q=2,missing=0.06",
+      "units": "heritability proportion",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": 0.0028493903651514163,
+      "ours_effect": 0.0012950789816316701,
+      "estimate_status": "resolved",
+      "display_decimals": 8,
+      "tolerance": {
+        "kind": "prespecified",
+        "value": 0.00027219389842495325,
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered."
+      },
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0019388386107533602; exploratory Bonferroni family72 interval=[-0.005301638239327085,0.007891796202590425]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "source_contrast": {
+        "definition": "Mean estimate ofh2 minus generatingh2,method=full,MAR,q=2,missing=0.06",
+        "units": "heritability proportion",
+        "positive_means": "Upward bias relative to the fixed generating value.",
+        "published": {
+          "value": 0.0028493903651514163,
+          "units": "heritability proportion",
+          "unavailable_reason": null
+        },
+        "tolerance": {
+          "kind": "source_extraction_bound",
+          "value": 0.00027219389842495325,
+          "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+        }
+      },
+      "result_evidence": {
+        "contrast_index": 3,
+        "source": {
+          "definition": "Mean estimate ofh2 minus generatingh2,method=full,MAR,q=2,missing=0.06",
+          "units": "heritability proportion",
+          "positive_means": "Upward bias relative to the fixed generating value.",
+          "published": {
+            "value": 0.0028493903651514163,
+            "units": "heritability proportion",
+            "unavailable_reason": null
+          },
+          "tolerance": {
+            "kind": "source_extraction_bound",
+            "value": 0.00027219389842495325,
+            "basis": "Sum of input PDF-coordinate extraction bounds, not printed decimal precision or a scientific equivalence margin."
+          }
+        },
+        "table": "signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "h2"
+        },
+        "value_field": "ours_bias_estimate_minus_truth",
+        "computed_value": 0.0012950789816316701,
+        "kind": "signed estimate minus residual ACE generating truth",
+        "unavailable_reason": null,
+        "row": {
+          "figure": "6.5",
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "h2",
+          "requested": "1000",
+          "completed": "1000",
+          "guard_valid": "1000",
+          "guard_invalid": "0",
+          "process_failed": "0",
+          "in_flight_or_uncheckpointed": "0",
+          "target": "1000",
+          "not_yet_requested": "0",
+          "generating_truth": "0.5",
+          "source_estimate": "0.5028493903651514",
+          "ours_estimate": "0.5012950789816317",
+          "source_bias_estimate_minus_truth": "0.0028493903651514163",
+          "ours_bias_estimate_minus_truth": "0.0012950789816316701",
+          "positive_means": "Overestimation of generating truth",
+          "point_sign_reversal": "False",
+          "source_extraction_bound": "0.00027219389842495325",
+          "source_sign_robust_to_extraction": "True",
+          "ours_minus_source": "-0.001554311383519691",
+          "family_size": "72",
+          "alpha": "0.05",
+          "n": "1000",
+          "sd": "0.06131146025457247",
+          "mcse": "0.0019388386107533602",
+          "two_se_low": "-0.0025825982398750506",
+          "two_se_high": "0.00517275620313839",
+          "adjusted_low": "-0.005301638239327085",
+          "adjusted_high": "0.007891796202590425",
+          "adjusted_halfwidth": "0.006596717220958755",
+          "scope": "Exploratory signed bias; source Monte Carlo uncertainty unknown"
+        },
+        "row_scope": "Shared guarded simulation evidence, not an independent claim-specific replication"
+      },
+      "scientific_status_adjudicated_by_this_proposal": false,
+      "diagnostic_point_comparison": {
+        "signed_ours_minus_published": -0.0015543113835197462,
+        "absolute_magnitude_difference": -0.0015543113835197462,
+        "conditional_descriptive_label_if_comparability_were_resolved": "smaller",
+        "qualification": "Diagnostic point arithmetic only; the actual magnitude field retains the approved applicability/comparability status."
+      },
+      "tolerance_provenance": {
+        "recorded_utc": "2026-10-30T18:02:00Z",
+        "prespecification_scope": "Geometric extraction bound committed before guarded production; earlier baseline outcomes known. Complete analysis plan recorded after launch but before new-production effect inspection. Not fully preregistered.",
+        "basis": "Pre-production geometric extraction bound: axis transformation slope times0.25PDFpoint per source coordinate, summed over linear-contrast inputs; exact numeric bound retained from source specification. Timing verified in provenance/extraction-tolerance-timing-audit.json. Descriptive source-reconstruction margin, not printed decimal precision, source Monte Carlo error or an equivalence margin. Full plan was not wholly preregistered.",
+        "artifact_ids": [
+          "extraction-tolerance-timing",
+          "source_figures"
+        ]
+      },
+      "signed_direction_display": "+ / +",
+      "point_magnitude_display": "smaller",
+      "specific_limit_display": "Zero bias not established",
+      "result_id": "HE26.C004"
+    },
+    {
+      "row_id": "N08",
+      "claim_id": "C2-3.power.N500.delta1.3",
+      "label": "Power: N=500, Delta=1.3",
+      "source_locator": "Chapter 2 p22, Table2.2",
+      "published_effect": 0.48,
+      "ours_effect": null,
+      "units": "probability",
+      "display_decimals": 2,
+      "signed_direction_display": "Not compared",
+      "point_magnitude_display": "Not compared",
+      "specific_limit_display": "100-dataset detection fraction incomplete",
+      "source_uncertainty": "100 repetitions per cell; original uncertainty interval for the detection fraction not printed.",
+      "ours_unavailable_reason": "Exact source target C2-3.power.N500.delta1.3 requires the source 100-dataset design/aggregate or validated associated qualitative inference. Existing 100adapt/100burn/100retained pilots and selected seed301 source-length single-dataset runs do not supply that target; no validated repeated-dataset aggregate is available.",
+      "result_id": "C2-3.power.N500.delta1.3"
+    }
+  ],
+  "continuation_empirical_effect_ids": [
+    "HE05",
+    "HE06",
+    "HE09",
+    "HE10",
+    "HE19"
+  ],
+  "continuation_power_claim_ids": [
+    "C2-3.power.N500.delta1",
+    "C2-3.power.N500.delta1.3",
+    "C2-3.power.N500.delta1.5",
+    "C2-3.power.N500.delta1.7",
+    "C2-3.power.N1000.delta1",
+    "C2-3.power.N1000.delta1.3",
+    "C2-3.power.N1000.delta1.5",
+    "C2-3.power.N1000.delta1.7",
+    "C2-3.power.N2000.delta1",
+    "C2-3.power.N2000.delta1.3",
+    "C2-3.power.N2000.delta1.5",
+    "C2-3.power.N2000.delta1.7"
+  ],
+  "source_ownership": "Published entries are source estimates/findings, never our evidence status.",
+  "scope": "Whole-dissertation incomplete; original 26 principal claims, 28 overview rows, 187 component comparisons and 996 records retained.",
+  "display": "10-point opening; full 28-row overview relocated to coverage appendix.",
+  "delivery_contract": "handoff/numerical-delivery-contract.json",
+  "scientific_review": "provenance/numerical-opening-scientific-review.json"
+}

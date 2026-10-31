@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-31T15:36:28.222988+00:00",
+  "status": "accepted_scientific_numerical_contract_and_final_rendered_readback",
+  "branch_reviewed": "f277ad6",
+  "scope": "Read-only existing-evidence audit; no new science, fits, reanalysis, manuscript edits or reusable changes.",
+  "evidence_sha256": {
+    "handoff/continuation-evidence-packet.json": "f53db03552cfae2c5f77c0d0797b879f6ed341ad1aafb4bb66ee0b5a134a311e",
+    "production/chapter6-v1/terminal-analysis/signed-SE-contrasts.csv": "abc538715dab7dc504dc4fd7b0e7d96d43f3ff3e28cd1b8d113f4b4ba10ec519",
+    "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv": "e2323b15f2dec4f6ac1b0883c522c8e097d0a9dadce8753c3a3b2bcf068b9a4a",
+    "source-local/schwabe.txt": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa"
+  },
+  "verified_opening_pairs": [
+    {
+      "id": "HE22.C002",
+      "estimand": "Mean SE of A variance under deletion minus full information, MCAR,q=2,missing=0.06",
+      "units": "SE of variance component in squared phenotype units",
+      "positive_means": "Full information has smaller variance-component SE.",
+      "published_effect": 0.003562963913674194,
+      "ours_effect": 0.004906616932492357,
+      "estimate_status": "unresolved",
+      "magnitude": "not established",
+      "direction": "same direction",
+      "uncertainty_statement": "Paired valid replicates=1000/1000; excluded/pending=0; paired MCSE=4.5717237576484896e-05; Bonferroni family108 Student-t interval=[0.004746013616939668,0.005067220248045045]. Original source Monte Carlo uncertainty and exact SE implementation are unavailable. Path SE is an exploratory different estimand; not substituted. Source extraction margin is geometric, not inferential.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE22.C002",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-SE-contrasts.csv",
+        "row_key": {
+          "mechanism": "MCAR",
+          "q": "2",
+          "missing": "0.06",
+          "parameter": "A",
+          "metric": "se"
+        },
+        "value_field": "contrast_delete_minus_full"
+      },
+      "adjusted_interval": [
+        0.004746013616939668,
+        0.005067220248045045
+      ],
+      "geometric_extraction_bound": 0.00023667095377570213
+    },
+    {
+      "id": "HE24.C003",
+      "estimand": "Mean estimate ofA minus generatingA,method=deletion,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": -0.010930861504939271,
+      "ours_effect": -0.013745884381599918,
+      "estimate_status": "resolved",
+      "magnitude": "larger",
+      "direction": "same direction",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0020163502287951197; exploratory Bonferroni family72 interval=[-0.0206063276407779,-0.006885441122421937]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE24.C003",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "A"
+        },
+        "value_field": "ours_bias_estimate_minus_truth"
+      },
+      "adjusted_interval": [
+        -0.0206063276407779,
+        -0.006885441122421937
+      ],
+      "geometric_extraction_bound": 0.0005907534962770575
+    },
+    {
+      "id": "HE24.C004",
+      "estimand": "Mean estimate ofA minus generatingA,method=full,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": 0.0025404383460163604,
+      "ours_effect": 0.00023543933144523854,
+      "estimate_status": "resolved",
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0019079497412483543; exploratory Bonferroni family72 interval=[-0.0062561813970723815,0.006727060059962859]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE24.C004",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "A"
+        },
+        "value_field": "ours_bias_estimate_minus_truth"
+      },
+      "adjusted_interval": [
+        -0.0062561813970723815,
+        0.006727060059962859
+      ],
+      "geometric_extraction_bound": 0.0005907534962770575
+    },
+    {
+      "id": "HE25.C003",
+      "estimand": "Mean estimate ofC minus generatingC,method=deletion,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": -0.029363685904258696,
+      "ours_effect": -0.028574530077796065,
+      "estimate_status": "resolved",
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0019895943394892487; exploratory Bonferroni family72 interval=[-0.035343938923502405,-0.021805121232089726]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE25.C003",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "C"
+        },
+        "value_field": "ours_bias_estimate_minus_truth"
+      },
+      "adjusted_interval": [
+        -0.035343938923502405,
+        -0.021805121232089726
+      ],
+      "geometric_extraction_bound": 0.0006654485702751597
+    },
+    {
+      "id": "HE25.C004",
+      "estimand": "Mean estimate ofC minus generatingC,method=full,MAR,q=2,missing=0.06",
+      "units": "phenotype variance units",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": -0.0026139855760420327,
+      "ours_effect": -0.0015588778116801642,
+      "estimate_status": "resolved",
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0018780293898552972; exploratory Bonferroni family72 interval=[-0.007948697340140693,0.004830941716780364]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE25.C004",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "C"
+        },
+        "value_field": "ours_bias_estimate_minus_truth"
+      },
+      "adjusted_interval": [
+        -0.007948697340140693,
+        0.004830941716780364
+      ],
+      "geometric_extraction_bound": 0.0006654485702751597
+    },
+    {
+      "id": "HE26.C003",
+      "estimand": "Mean estimate ofh2 minus generatingh2,method=deletion,MAR,q=2,missing=0.06",
+      "units": "heritability proportion",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": 0.010599739482706427,
+      "ours_effect": 0.008827092930129822,
+      "estimate_status": "resolved",
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.002143461892715822; exploratory Bonferroni family72 interval=[0.0015341641109265017,0.016120021749333142]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE26.C003",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "deletion",
+          "parameter": "h2"
+        },
+        "value_field": "ours_bias_estimate_minus_truth"
+      },
+      "adjusted_interval": [
+        0.0015341641109265017,
+        0.016120021749333142
+      ],
+      "geometric_extraction_bound": 0.00027219389842495325
+    },
+    {
+      "id": "HE26.C004",
+      "estimand": "Mean estimate ofh2 minus generatingh2,method=full,MAR,q=2,missing=0.06",
+      "units": "heritability proportion",
+      "positive_means": "Upward bias relative to the fixed generating value.",
+      "published_effect": 0.0028493903651514163,
+      "ours_effect": 0.0012950789816316701,
+      "estimate_status": "resolved",
+      "magnitude": "smaller",
+      "direction": "same direction",
+      "uncertainty_statement": "Guard-valid replicates=1000/1000; guard-invalid=0; process-failed=0; MCSE=0.0019388386107533602; exploratory Bonferroni family72 interval=[-0.005301638239327085,0.007891796202590425]. Original source Monte Carlo uncertainty unknown. A point-size label is not a test of difference, equivalence or zero bias.",
+      "exact_data_reference": {
+        "packet": "handoff/continuation-evidence-packet.json",
+        "headline_component": "HE26.C004",
+        "csv": "production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "row_key": {
+          "mechanism": "MAR",
+          "q": "2",
+          "missing": "0.06",
+          "method": "full",
+          "parameter": "h2"
+        },
+        "value_field": "ours_bias_estimate_minus_truth"
+      },
+      "adjusted_interval": [
+        -0.005301638239327085,
+        0.007891796202590425
+      ],
+      "geometric_extraction_bound": 0.00027219389842495325
+    }
+  ],
+  "source_only_power": {
+    "claim_id": "C2-3.power.N500.delta1.3",
+    "source_locator": "Chapter 2 p22, Table2.2",
+    "published_probability": 0.48,
+    "ours": null,
+    "conditions": {
+      "N_pairs": 500,
+      "Delta": 1.3,
+      "J": 60,
+      "replications": 100,
+      "decision": "95% HPD interval for beta1 excludes zero"
+    },
+    "uncertainty": "100 repetitions per cell; original uncertainty interval for the detection fraction not printed.",
+    "source_readback": "Table2.2 p22 rowN500 columnDelta1.30 is.48;100 repeated datasets,95%HPD beta1 zero-exclusion decision. No new binomial interval calculated."
+  },
+  "five_source_only_slopes": [
+    {
+      "id": "HE05",
+      "claim_id": "C3-4.3.2.beta1",
+      "estimand": "3.2: posterior mean of beta1 relative to zero",
+      "units": "log-variance slope per genetic-score unit",
+      "published_effect": 2.0837,
+      "ours_effect": null,
+      "uncertainty_statement": "Posterior SD=0.4939; 95% HPD=[1.0886,3.0344]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target."
+    },
+    {
+      "id": "HE06",
+      "claim_id": "C3-4.3.2.gamma1",
+      "estimand": "3.2: posterior mean of gamma1 relative to zero",
+      "units": "log-variance slope per genetic-score unit",
+      "published_effect": 2.6159,
+      "ours_effect": null,
+      "uncertainty_statement": "Posterior SD=1.3503; 95% HPD=[-0.1358,5.2189]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target."
+    },
+    {
+      "id": "HE09",
+      "claim_id": "C4-5.4.3.beta1",
+      "estimand": "4.3: posterior mean of beta1 relative to zero",
+      "units": "log-variance slope per genetic-score unit",
+      "published_effect": -2.81,
+      "ours_effect": null,
+      "uncertainty_statement": "Posterior SD=0.21; 95% HPD=[-3.22,-2.39]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target."
+    },
+    {
+      "id": "HE10",
+      "claim_id": "C4-5.4.3.gamma1",
+      "estimand": "4.3: posterior mean of gamma1 relative to zero",
+      "units": "log-variance slope per genetic-score unit",
+      "published_effect": 0.54,
+      "ours_effect": null,
+      "uncertainty_statement": "Posterior SD=0.14; 95% HPD=[0.31,0.84]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target."
+    },
+    {
+      "id": "HE19",
+      "claim_id": "C5-5.5.4.beta1c",
+      "estimand": "5.4: posterior mean of beta1c relative to zero",
+      "units": "log shared-environmental-variance ratio high versus low/average SES",
+      "published_effect": -3.0777,
+      "ours_effect": null,
+      "uncertainty_statement": "Posterior SD=1.928; 95% HPD=[-7.3886,-0.03]. This is not Monte Carlo uncertainty or evidence of equivalence. No empirical sampling uncertainty or reproduction interval estimated for unavailable source target."
+    }
+  ],
+  "source_readback": {
+    "HE05_HE06": "Table3.2 p42:2.0837,2.6159;SD .4939,1.3503;HPDs[1.0886,3.0344],[-.1358,5.2189].",
+    "HE09_HE10": "Table4.3 p63:-2.81,.54;SD .21,.14;HPDs[-3.22,-2.39],[.31,.84].",
+    "HE19": "Table5.4 p82:-3.0777;SD1.9280;HPD[-7.3886,-.0300].",
+    "role": "Source posterior slopes only; no independent empirical estimates. HPDs are posterior uncertainty, not sourceMCSE or replication intervals."
+  },
+  "necessary_qualifications": [
+    "Explicitly call this post-hoc presentation selection, not preregistration or statistically representative sampling. q2/6percent is one fixed slice;6percent avoids low2/3percent ambiguity but not other source-procedure uncertainties. MCAR A is one precision example, not summary of all mechanisms/components.",
+    "HE22.C002 retains magnitude not established/estimate_status unresolved: source .0035629639 versus ours .0049066169 is legitimate point comparison, but original SE implementation and source MonteCarlo uncertainty remain unavailable. The paired adjusted interval supports positive deletion-minus-full SE under our reconstruction, not a source-relative magnitude or power verdict.",
+    "Use variance-SE units (squared phenotype units), not latent path SD units. Bias A/C units are phenotype variance; h2 bias is a proportion, not percentage unless explicitly multiplied by100. Heritability refers to residual ACE definition in source comparison.",
+    "For MAR rows positive means estimate above generating truth. A/C deletion biases are negative, h2 deletion bias positive. Point-size larger/smaller compares absolute magnitudes, not signed ordering; e.g. more-negative A bias is larger in magnitude.",
+    "Bias point-size labels use geometric source extraction bounds only. They are not confidence/equivalence margins, and unknown sourceMC uncertainty prevents an inferential claim of agreement/difference. Retain existing family108 precision and exploratory family72 bias intervals; do not recorrect only the selected7.",
+    "Three selected deletion-bias intervals exclude0 in expected direction; three full-information intervals include0. The latter does not establish zero bias, closeness, equivalence or superiority on a new test.",
+    "All7 selected pairs agree in sign. Full72 bias grid contains11 full-information point reversals (none adjusted significant); full216 absolute plottedSE comparisons differ outside conditional bands. State these alongside illustrative opening to prevent favorable-slice inference.",
+    "Preserve all180 Chapter6 precision/bias pairs and all12 source-only power cells; this opening does not replace parent grids. Five empirical slopes remain source-only and original broad/source-count claims remain unfinished.",
+    "Power .48 is an absolute detection proportion with ours unavailable, not a signed source-vs-ours effect, zero, or failed replication. Do not substitute one-dataset diagnostic for it. NullDelta1 rows in continuation are null rejection fractions."
+  ],
+  "writer_handoff_readback": "Completed: first7row dictionaries preserve every original component field exactly; eighth row retains source.48/oursnull. Five empirical slope IDs and12power IDs correct.",
+  "no_new_calculations_beyond_verification": true,
+  "final_readback_utc": "2026-10-31T15:43:42.316843+00:00",
+  "actual_review_hashes": {
+    "handoff/numerical-opening.json": "a7d6d78a7cbc47709f352f6f1badd575e118cd5999e08a79d7a9e9f2effc79fe",
+    "handoff/numerical-delivery-contract.json": "c8f7f71364bdacd1b1157319964c14532c5e7a70940228768d09b2de548a952d",
+    "handoff/a0-evidence-packet.json": "9cb20cc372d0da790faf0885ae091e9c6ead748aa1cca85fa07cc9d6bed05da7",
+    "simulation/numerical_contract_checks.py": "48907a9539478b8a4acc7f21206919bd261f7d05773b4b3315846f508854aead",
+    "simulation/check_numerical_delivery.py": "cd0e290ddd0f9076e97ca252f4a0ff0db322b9b8657de9e45a582176344d3d36",
+    "simulation/test_numerical_contract.py": "1061eb832a4140a4725cc68ccc81208dc40b18f3af70fabb0e1870d1d136382e",
+    "paper/numerical-main.pdf": "1576567b47f4acd21bbeb3d6ae76d6f89e69abfc191d2a801738f5f973e2cc3b"
+  },
+  "rendered_readback": {
+    "pdf": "paper/numerical-main.pdf",
+    "reviewed_sha256": "1576567b47f4acd21bbeb3d6ae76d6f89e69abfc191d2a801738f5f973e2cc3b",
+    "pages_visually_inspected": [
+      1,
+      2,
+      5
+    ],
+    "opening8": "All7 source/ours pairs and.48/source-only row visually match reviewed values rounded8/2decimals. Signed labels, magnitude and unresolved precision row correct. Source/Ours columns do not substitute statuses for available source values.",
+    "continuation17": "Five slopes2.0837,2.6159,-2.81,.54,-3.0777 plus all12 fractions [.03,.48,.57,.81;.07,.57,.92,.99;.07,.92,1,1] match source. All corresponding ours unavailable. No direction/magnitude comparison invented. NullDelta1 distinction and original posteriorHPD exclusion statements correct.",
+    "adjusted_intervals7": "Each MCSE/lower/upper onpage5 equals ledger value rounded8decimals. Precision family108, exploratory bias family72 retained. Text correctly says ours estimand intervals, not source-minus-ours intervals; deletion3 exclude0/full3 include0, not unbiasedness.",
+    "disclosures": "Posthoc bycondition/nonrepresentative slice explicit;180pairs/108precision/72bias/11reversals/216SEgaps retained; sourcefigure8decimal display not sourceaccuracy, geometricmargins not sourceMCuncertainty; whole-dissertation/source-count incompleteness retained.",
+    "layout_issue": "Resolved in final render: page5interval-table followup sentence begins below table. Independently re-rendered and visually inspected correctedpage5; pages1and2pixel-identical to initially inspected render.",
+    "scope_limit": "This readback is bound to reviewed PDFhash, not any subsequent render; no claim to remote delivery or complete32page editorial/annotation audit.",
+    "initial_reviewed_sha256": "105271d81ff1a3a1293f5d877bee7f27c70d36d645789acca3d1cc9935ad59ec",
+    "opening_continuation_pages_pixel_identical_after_reflow": [
+      true,
+      true
+    ]
+  },
+  "validator_review": {
+    "scope": "Study-specific separation of8numericalopening from28coverage is explicitly user-authorized; not a weakened scientific inventory requirement. Reusable skill files unchanged by reviewed adapter.",
+    "accepted_checks": [
+      "Declared8ordered IDs and17continuation IDs verified against parentpacket; finite geometry, source/ours bounding cells, actualPDFexcerpts and rounding checks present.",
+      "Unavailable ours must display Not estimated; source column cannot replace known estimates with ours-status words.",
+      "Complete claim/limitations maps and28headlinecoverage maps required; continuing-writer lineage disclosed; independent-review identity required.",
+      "Delivery checker retains local/git/remote hash and revision checks, artifact/source/build inputs, independent review and PDFannotation policy; legacy audit cannot report current acceptance."
+    ],
+    "material_limits_requiring_manual_review": [
+      "first_number validates first numeric token only; does not validate all extra numeric text or semantic row label/units/direction/magnitude.",
+      "Missingness/selection qualifiers use sparse text markers rather than a semantic guarantee; page5intervaltable not mechanically compared toledger in these checks.",
+      "Nonempty mapping/review strings cannot establish actual coverage or honest review. Hash-bound manual scientific/rendered review is necessary; performed for this candidate."
+    ],
+    "conclusion": "No material blocker for this reviewed candidate; do not describe automated checks alone as scientific certification. No code changes made.",
+    "test_review": {
+      "file": "simulation/test_numerical_contract.py",
+      "count": 10,
+      "reviewed": "All10 test definitions reviewed; parent-reported10passing result not rerun. Tests cover positive/negative rounding, forbidden source-status labels, wrongvalue/wrongsign,nonzero hiddenbyrounding, valid geometry, overlap and rowescape.",
+      "limits": "These are unit regressions, not full end-to-end PDF/delivery/source-semantic tests; no implication they verify uncertainty, scientific interpretation, all intervals or honest independent review. Separate manual review completed here."
+    }
+  },
+  "scientifically_necessary_corrections": [],
+  "numerical_opening": {
+    "verdict": "pass",
+    "reviewer": "Independent continuation science reviewer",
+    "pdf_sha256": "1576567b47f4acd21bbeb3d6ae76d6f89e69abfc191d2a801738f5f973e2cc3b",
+    "findings": {
+      "source_ownership": "All8opening rows and17continuation entries preserve actual source quantities in Source; missing independent estimates remain not estimated in Ours. No source value replaced with our evidence status.",
+      "units_direction_and_interpretation": "VarianceSE squaredphenotype units, A/C variancebias, h2proportion and signed estimate-minus-truth meanings correct. Pointabsolute-magnitude labels descriptive at geometric margins; unknown sourceSEimplementation keeps precisionmagnitude unresolved. SourceMC uncertainty not replaced by extraction bounds or oursMC intervals.",
+      "source_only_pending": "Five empirical slopes and12power fractions remain source-only; no ours invented. Delta1nullrejection separated from nonzeroeffect power. Source100/250posterior aggregates and empirical replication remain incomplete.",
+      "full_scope": "Posthoc q2/6percent condition slice explicitly illustrative/nonrepresentative and not pooled.108precision/72bias full180pairs,11biasreversals,216sourceSEgaps and996dependent-record limitation retained;28overview may remain separate under explicit userauthorization.",
+      "adjusted_intervals": "Seven MCSE/adjusted intervals visually and numerically agree with ledgers onpage5, using original108/72families. All3FIintervals include0 without zero-bias assertion.",
+      "rendered": "Pages1/2 visually inspected and pixelidentical after final reflow; finalpage5visually inspected, layout issue resolved.",
+      "checker_scope": "Numeric and geometry checks support, but do not replace, this independent semantic review.10testdefinitions reviewed; no material scientific blocker."
+    },
+    "observed_pre_rebind_manifest_sha256": "e967e670c3281e00c133c56da00489f7094a16aeeacab49baffec8ea83bb740c"
+  },
+  "remaining_blockers": [],
+  "observed_pre_rebind_manifest_sha256": "e967e670c3281e00c133c56da00489f7094a16aeeacab49baffec8ea83bb740c",
+  "manifest_binding_note": "The manifest hash is historical inspected-only, not an exact final-manifest binding. This scientific review binds the reviewed PDF. Final writer readback updates only the scientific-review input hash in its manifest; it does not change the PDF or scientific content. This avoids circular hashing because this review is itself a writer input."
+}
