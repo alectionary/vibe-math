@@ -1,0 +1,659 @@
+{
+  "reviewed_utc": "2026-10-31T04:44:06.928126+00:00",
+  "reviewer": "/root/recovery_diagnostics",
+  "status": "Accepted as a completed fixed one-dataset experiment passing all14 unchanged operational gates. No source-count power or whole-dissertation replication claim.",
+  "namespace": "production/jags-centered-extended-recovery-v1",
+  "requested_chains": 4,
+  "completed_chains": 4,
+  "retained_per_chain": 28000,
+  "all_adapted_and_finite": true,
+  "criteria": {
+    "rank_split_folded_rhat_strict_upper": 1.01,
+    "bulk_ESS_min": 400,
+    "tail_ESS_min": 400,
+    "mean_MCSE_over_SD_max": 0.05
+  },
+  "gate_results": {
+    "passing_parameters": 14,
+    "failed_parameters": [],
+    "maximum_Rhat": 1.00167323513699,
+    "minimum_bulk_ESS": 685.762093042391,
+    "minimum_tail_ESS": 1407.53202977834,
+    "maximum_MCSE_over_SD": 0.0382113430327667
+  },
+  "identity_checks": "Recovery data, model and initials byte-identical to completed centered gate; recovery preparation matches dispatch manifest; pinned source/runtime identities and dispatcher hash match; four command identities and terminal log hashes verified.",
+  "model_equivalence": "Inspected fixed wrapper and earlier independent reviews. Centered MZ a2=a1; DZ a2|a1 mean0.5a1, precision ta/0.75; marginal genetic covariance0.5/ta. Shared centered C and theta residual precision exp(-beta0-beta1*a) retain baseline priors and target. No model/prior/data/seed/monitor changes for recovery.",
+  "numerical_checks": {
+    "additional_descriptive_drift_review": {
+      "a[1,1]": {
+        "last_half_rhat": 1.0007985823744183,
+        "half_mean_drift_over_pooled_sd": [
+          -0.0030719889366808834,
+          0.013150185066850546,
+          0.01854324980476088,
+          0.05212032748514707
+        ],
+        "lag100_correlation": [
+          0.03367729821397659,
+          0.03948360100886783,
+          0.039981909553307486,
+          0.03878423097187111
+        ]
+      },
+      "beta1": {
+        "last_half_rhat": 1.0035886820885074,
+        "half_mean_drift_over_pooled_sd": [
+          -0.08795135155876257,
+          -0.09365193653160749,
+          0.14146943088839364,
+          0.02247315357496503
+        ],
+        "lag100_correlation": [
+          -0.04049912154066505,
+          0.027396462599037493,
+          0.050669242994423686,
+          -0.002707420164095455
+        ]
+      },
+      "c[1]": {
+        "last_half_rhat": 1.000694227093355,
+        "half_mean_drift_over_pooled_sd": [
+          0.023419926261302976,
+          -0.008096336040560677,
+          -0.031855477839225814,
+          -0.023477525172007765
+        ],
+        "lag100_correlation": [
+          0.031501419218078495,
+          0.03365157070423272,
+          0.03185057254796814,
+          0.023090669690858448
+        ]
+      },
+      "mu": {
+        "last_half_rhat": 1.0007401219518741,
+        "half_mean_drift_over_pooled_sd": [
+          -0.01433076904700611,
+          -0.00417767901963572,
+          0.0936282169835119,
+          -0.04930212823845203
+        ],
+        "lag100_correlation": [
+          0.009693211678524778,
+          0.041580553328287355,
+          0.017515636202955338,
+          0.004483891034133148
+        ]
+      },
+      "p[1,1,1]": {
+        "last_half_rhat": 1.000142702083475,
+        "half_mean_drift_over_pooled_sd": [
+          0.014059317003537594,
+          0.011469952379260455,
+          -0.0208822989169178,
+          0.010629311558439873
+        ],
+        "lag100_correlation": [
+          0.0028431989081602253,
+          0.011611563685690269,
+          0.009653429296292645,
+          -0.00029727849084271385
+        ]
+      },
+      "p[1,2,1]": {
+        "last_half_rhat": 1.000043043696705,
+        "half_mean_drift_over_pooled_sd": [
+          -0.007598028614648568,
+          -0.012292023547620197,
+          -0.0017351763174311653,
+          0.024137914634402305
+        ],
+        "lag100_correlation": [
+          -0.004606931477574319,
+          -0.009888669394469534,
+          -0.00970743709882744,
+          0.007239738584365635
+        ]
+      },
+      "theta[1,1]": {
+        "last_half_rhat": 1.0001313395100146,
+        "half_mean_drift_over_pooled_sd": [
+          0.016305353934848058,
+          0.009754941560714117,
+          -0.029252099084761167,
+          0.012246154780652559
+        ],
+        "lag100_correlation": [
+          0.0041545618903315795,
+          0.010692388610114508,
+          0.005690287654282045,
+          -0.0012497044982494661
+        ]
+      },
+      "theta[1,2]": {
+        "last_half_rhat": 1.000043043696705,
+        "half_mean_drift_over_pooled_sd": [
+          -0.009973869529461906,
+          -0.013833207933876083,
+          0.009694429499399535,
+          0.030598125746874164
+        ],
+        "lag100_correlation": [
+          -0.002173955441040752,
+          -0.006723551867915982,
+          -0.005512561310470068,
+          0.0077335672107107815
+        ]
+      },
+      "va": {
+        "last_half_rhat": 1.007756573016297,
+        "half_mean_drift_over_pooled_sd": [
+          0.0022267074981938122,
+          0.059909075196307254,
+          -0.0903313528469259,
+          -0.09172383584505481
+        ],
+        "lag100_correlation": [
+          0.321574625043782,
+          0.3096788560405545,
+          0.33709275175909925,
+          0.29943137128438047
+        ]
+      },
+      "vc": {
+        "last_half_rhat": 1.0058589692091908,
+        "half_mean_drift_over_pooled_sd": [
+          -0.06719036692120645,
+          -0.040290689559818106,
+          0.11766499213656303,
+          0.06343728570687564
+        ],
+        "lag100_correlation": [
+          0.2611364964297189,
+          0.25012280942202686,
+          0.2489999486246353,
+          0.22841733392734384
+        ]
+      },
+      "ve": {
+        "last_half_rhat": 1.002129594575543,
+        "half_mean_drift_over_pooled_sd": [
+          0.06202759662626182,
+          0.025628474905295764,
+          0.03341262234328928,
+          0.030315221702553706
+        ],
+        "lag100_correlation": [
+          0.15572122968912733,
+          0.1758275739961078,
+          0.2032329483971304,
+          0.09627046593556796
+        ]
+      },
+      "log_va": {
+        "last_half_rhat": 1.007756573016297,
+        "half_mean_drift_over_pooled_sd": [
+          -0.012858797614088077,
+          0.06824320771236414,
+          -0.0686120531678914,
+          -0.10950317227167079
+        ],
+        "lag100_correlation": [
+          0.3372115785347646,
+          0.3170034020851379,
+          0.34065060236500966,
+          0.3000127110194166
+        ]
+      },
+      "log_vc": {
+        "last_half_rhat": 1.0058589692091908,
+        "half_mean_drift_over_pooled_sd": [
+          -0.06680210266430966,
+          -0.03337010484827819,
+          0.13825357973453534,
+          0.04933192701990981
+        ],
+        "lag100_correlation": [
+          0.26433844044277793,
+          0.2488012601465865,
+          0.24844673562310352,
+          0.23914461027223557
+        ]
+      },
+      "log_ve": {
+        "last_half_rhat": 1.002129594575543,
+        "half_mean_drift_over_pooled_sd": [
+          0.05700426850533781,
+          0.02683024397866068,
+          0.04681487994177131,
+          0.02341335062651456
+        ],
+        "lag100_correlation": [
+          0.14606014534844344,
+          0.17449685148047558,
+          0.2076092725555798,
+          0.08707287883602624
+        ]
+      }
+    },
+    "namespace": "production/jags-centered-extended-recovery-v1",
+    "requested_chains": 4,
+    "completed_chains": 4,
+    "retained_per_chain": 28000,
+    "all_adapted_and_finite": true,
+    "all_operational_gates_pass": true,
+    "failed_parameters": [],
+    "maximum_absolute_discrepancies": {
+      "rhat": 4.884981308350689e-15,
+      "pooled_mean": 4.6629367034256575e-15,
+      "pooled_sd": 4.440892098500626e-16,
+      "pooled_hpd": 4.6629367034256575e-15,
+      "segment_hpd": 4.884981308350689e-15,
+      "log_transforms": 2.220446049250313e-16,
+      "conditional_probability_transform": 0.0,
+      "chain_summary": 4.884981308350689e-15
+    },
+    "hpd_sensitivity": {
+      "a[1,1]": {
+        "chain_mean_range": [
+          -0.821298178840381,
+          -0.804341210886326
+        ],
+        "segment_lower_endpoint_range": [
+          -1.91589081533309,
+          -1.79027028521169
+        ],
+        "segment_upper_endpoint_range": [
+          0.154810519026401,
+          0.295815383143858
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "beta1": {
+        "chain_mean_range": [
+          -0.13131188526823,
+          -0.112100855063866
+        ],
+        "segment_lower_endpoint_range": [
+          -0.708275160284674,
+          -0.638553772601125
+        ],
+        "segment_upper_endpoint_range": [
+          0.391656294877783,
+          0.501479098745058
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "c[1]": {
+        "chain_mean_range": [
+          -0.669613402622569,
+          -0.651730812539153
+        ],
+        "segment_lower_endpoint_range": [
+          -1.74140686850652,
+          -1.61380271957645
+        ],
+        "segment_upper_endpoint_range": [
+          0.299762750974579,
+          0.377230439933139
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "mu": {
+        "chain_mean_range": [
+          -0.0424816556490966,
+          -0.0410384345470454
+        ],
+        "segment_lower_endpoint_range": [
+          -0.130380357988073,
+          -0.121324894075631
+        ],
+        "segment_upper_endpoint_range": [
+          0.0390272995685542,
+          0.0446864593665675
+        ],
+        "segments_excluding_zero": 0,
+        "segments": 12
+      },
+      "p[1,1,1]": {
+        "chain_mean_range": [
+          0.0581272395396019,
+          0.0586629083660685
+        ],
+        "segment_lower_endpoint_range": [
+          0.0227526374556179,
+          0.0252704366067412
+        ],
+        "segment_upper_endpoint_range": [
+          0.0962035650036688,
+          0.0982941724902339
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "p[1,2,1]": {
+        "chain_mean_range": [
+          0.0287277248014533,
+          0.0289366163179103
+        ],
+        "segment_lower_endpoint_range": [
+          0.0081160907024689,
+          0.0096799633613046
+        ],
+        "segment_upper_endpoint_range": [
+          0.0521128051987782,
+          0.0536709160187299
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "theta[1,1]": {
+        "chain_mean_range": [
+          -1.32482183783884,
+          -1.31349125447569
+        ],
+        "segment_lower_endpoint_range": [
+          -2.0462272253827,
+          -1.99508907491998
+        ],
+        "segment_upper_endpoint_range": [
+          -0.644863382241143,
+          -0.59146494870387
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "theta[1,2]": {
+        "chain_mean_range": [
+          -2.08929433239275,
+          -2.08382132126171
+        ],
+        "segment_lower_endpoint_range": [
+          -2.99404121869954,
+          -2.91260318443704
+        ],
+        "segment_upper_endpoint_range": [
+          -1.29699071507679,
+          -1.2053070920634
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "va": {
+        "chain_mean_range": [
+          0.462265638630625,
+          0.470682319203011
+        ],
+        "segment_lower_endpoint_range": [
+          0.266684136343951,
+          0.300002816281267
+        ],
+        "segment_upper_endpoint_range": [
+          0.636494227983782,
+          0.667265735417772
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "vc": {
+        "chain_mean_range": [
+          0.396108760619682,
+          0.403941724094105
+        ],
+        "segment_lower_endpoint_range": [
+          0.223250268753723,
+          0.247250477759064
+        ],
+        "segment_upper_endpoint_range": [
+          0.558640971265983,
+          0.571928276124157
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "ve": {
+        "chain_mean_range": [
+          0.200824009444345,
+          0.202583880333834
+        ],
+        "segment_lower_endpoint_range": [
+          0.129676285933044,
+          0.139208168049715
+        ],
+        "segment_upper_endpoint_range": [
+          0.270497581624643,
+          0.279074695376522
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "log_va": {
+        "chain_mean_range": [
+          -0.795358478449792,
+          -0.77658339571674
+        ],
+        "segment_lower_endpoint_range": [
+          -1.2558214175662,
+          -1.15941554365282
+        ],
+        "segment_upper_endpoint_range": [
+          -0.417989474522372,
+          -0.369536781819247
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "log_vc": {
+        "chain_mean_range": [
+          -0.950899966988915,
+          -0.929594217619757
+        ],
+        "segment_lower_endpoint_range": [
+          -1.45505622440876,
+          -1.35141560822667
+        ],
+        "segment_upper_endpoint_range": [
+          -0.555470786176053,
+          -0.506889063401101
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      },
+      "log_ve": {
+        "chain_mean_range": [
+          -1.62137310579109,
+          -1.61342414718118
+        ],
+        "segment_lower_endpoint_range": [
+          -1.99361056463478,
+          -1.93467457721053
+        ],
+        "segment_upper_endpoint_range": [
+          -1.28901301921441,
+          -1.24078715501726
+        ],
+        "segments_excluding_zero": 12,
+        "segments": 12
+      }
+    }
+  },
+  "shared_dependency_check": {
+    "method": "Recomputed ESS bulk/tail and mean MCSE directly from saved RDS using posterior1.6.1; compared exported CSV. This is a shared-library cross-check, not an independent algorithm implementation.",
+    "evidence": "provenance/jags-centered-extended-recovery-shared-posterior-check.csv"
+  },
+  "validator_transport_correction": {
+    "initial_result": "Failed assertion; maximum Rhat discrepancy1.3943414844952429e-07, other differences <=9.325873406851315e-15. Initial stdout report was empty because assertion failed before JSON printing; traceback retained in tool transcript and recorded here.",
+    "cause": "Default R write.table decimal export and pandas parse did not preserve exact saved doubles; rank/folded-rank comparisons are sensitive to transport rounding.",
+    "correction": "Only additive validator export changed to sprintf %.17g and pandas float_precision round_trip. Same gate tolerance1e-10, saved draws, original validator, model and scientific thresholds unchanged.",
+    "corrected_max_Rhat_error": 4.884981308350689e-15
+  },
+  "prefix_dependence": {
+    "evidence": "provenance/jags-centered-extended-recovery-prefix-check.csv",
+    "completed_12000_prefixes_identical": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "interrupted_prefix_lengths": [
+      12000,
+      8000,
+      8000,
+      8000
+    ],
+    "interrupted_prefixes_identical": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "maximum_absolute_difference": 0,
+    "interpretation": "Do not pool old and recovery runs. One dataset, four distinct seed trajectories extended by deterministic rerun; earlier saved portions duplicate recovery rows. Interrupted chain1 stale manifest remains preserved.",
+    "schema_clarity_fix": "Added reference_namespace and reference_file to distinguish completed and interrupted references. All8 original scientific rows unchanged. Initial schema preserved in provenance/jags-centered-extended-recovery-prefix-check-initial-schema.csv."
+  },
+  "rendered_review": {
+    "source": "production/jags-centered-extended-recovery-v1/prepared/diagnostics/traces-and-ranks.pdf",
+    "pages_inspected": 14,
+    "rendering": "pdftoppm PNG at1000px; all14 pages visually inspected",
+    "pages": [
+      {
+        "page": 1,
+        "parameter": "a[1,1]",
+        "assessment": "Overlapping traces, no persistent chain separation; small rank fluctuations including chain3 lowest-bin excess."
+      },
+      {
+        "page": 2,
+        "parameter": "beta1",
+        "assessment": "Overlapping traces with serial dependence; chain4 lowest-rank deficit and chain2 highest-rank excess remain visible, without a gate failure."
+      },
+      {
+        "page": 3,
+        "parameter": "c[1]",
+        "assessment": "Overlapping traces; modest rank fluctuations and chain3 lower-tail deficit."
+      },
+      {
+        "page": 4,
+        "parameter": "mu",
+        "assessment": "Overlapping traces and modest rank-bin variation; no persistent chain separation."
+      },
+      {
+        "page": 5,
+        "parameter": "p[1,1,1]",
+        "assessment": "Overlapping conditional probability traces; ranks match theta[1,1] under the fixed monotone transformation."
+      },
+      {
+        "page": 6,
+        "parameter": "p[1,2,1]",
+        "assessment": "Overlapping conditional probability traces; ranks match theta[1,2] under the fixed monotone transformation."
+      },
+      {
+        "page": 7,
+        "parameter": "theta[1,1]",
+        "assessment": "Overlapping theta traces; same ranks as p[1,1,1], not independent confirmation."
+      },
+      {
+        "page": 8,
+        "parameter": "theta[1,2]",
+        "assessment": "Overlapping theta traces; same ranks as p[1,2,1], not independent confirmation."
+      },
+      {
+        "page": 9,
+        "parameter": "va",
+        "assessment": "Slow correlated excursions remain, with visible chain1 lowest-bin excess and chain3 highest-bin excess; all chains traverse overlapping regions. Full operational gate passes; finite diagnostics do not prove convergence."
+      },
+      {
+        "page": 10,
+        "parameter": "vc",
+        "assessment": "Slow correlated excursions remain. Chain1 has upper-rank excess and chain3 lower-rank excess; no lasting trace separation. Full operational gate passes."
+      },
+      {
+        "page": 11,
+        "parameter": "ve",
+        "assessment": "Overlapping but correlated traces; chain3 highest-bin excess remains. Full operational gate passes."
+      },
+      {
+        "page": 12,
+        "parameter": "log_va",
+        "assessment": "Log transform repeats va trajectory and rank structure; not a separate independent success."
+      },
+      {
+        "page": 13,
+        "parameter": "log_vc",
+        "assessment": "Log transform repeats vc trajectory and rank structure; not a separate independent success."
+      },
+      {
+        "page": 14,
+        "parameter": "log_ve",
+        "assessment": "Log transform repeats ve trajectory and rank structure; not a separate independent success."
+      }
+    ]
+  },
+  "HPD_assessment": {
+    "beta1_pooled_95_HPD": [
+      -0.684694095732425,
+      0.430699184552315
+    ],
+    "all12_beta1_chain_half_HPDs_include_zero": true,
+    "beta1_lower_endpoint_range": [
+      -0.708275160284674,
+      -0.638553772601125
+    ],
+    "beta1_upper_endpoint_range": [
+      0.391656294877783,
+      0.501479098745058
+    ],
+    "conclusion": "Interval inclusion of zero is stable across all12 whole-chain/half-chain summaries. Accept the descriptive statement that this one dataset does not yield a beta1 95% HPD excluding zero. This does not establish beta1=0, frequentist power, source simulation recovery, or an exact HPD endpoint precision guarantee.",
+    "precision_limit": "Quantile MCSE is not HPD endpoint MCSE. Endpoint variation is reported rather than hidden; no formal HPD-endpoint MCSE implementation or independent dataset replication performed."
+  },
+  "resources": {
+    "chain_elapsed_seconds": [
+      1240.3066974320027,
+      1226.5553184730015,
+      1234.522328578998,
+      1226.1737671349983
+    ],
+    "summed_chain_process_wall_seconds": 4927.558111619001,
+    "authorized_recovery_cap_including_cleanup": 5500,
+    "remaining_under_that_cap_seconds": 572.4418883809994,
+    "all_saved_attempt_chain_seconds": {
+      "production/jags-centered-extended-recovery-v1": 4927.558111619001,
+      "production/jags-centered-extended-v1": 2616.4881290859994,
+      "production/jags-centered-gate-v1": 2667.7162271179914,
+      "production/jags-gate-v1": 2899.0723325030012,
+      "production/jags-long-gate-recovery-v1": 1030.4480555280024,
+      "production/jags-long-gate-v1": 2691.530247063012
+    },
+    "all_attempts_total_seconds": 16832.813102917007,
+    "scope": "Sum of chain-process elapsed time, not CPU time or whole workflow wall time. Preparation and diagnostics separately accounted; unused allocation does not authorize more sampling.",
+    "preparation_seconds": 0.7509855070020421,
+    "diagnostics_seconds": 8.26168227600283
+  },
+  "limits": [
+    "Operational pass for fixed14 monitored quantities does not prove global convergence.",
+    "Variance components retain serial correlation and rank-bin differences despite passing unchanged thresholds.",
+    "Logs and probabilities are deterministic transformations, not additional independent validation targets.",
+    "One generated dataset is not100-dataset source-count power/recovery and not whole-dissertation replication.",
+    "No additional sampling, source-count grid, model launch or publication undertaken by reviewer."
+  ],
+  "artifact_sha256": {
+    "production/jags-centered-extended-recovery-v1/prepared/diagnostics/traces-and-ranks.pdf": "9e8ac218b4f73bab013bf2bab548ac40266930674f681b6c7d3c7adda59d1691",
+    "production/jags-centered-extended-recovery-v1/prepared/diagnostics/diagnostics.csv": "61dd75a63341e899ee5945f73f427e625a2f2ac3734cd71acef1b86fa12b29db",
+    "production/jags-centered-extended-recovery-v1/prepared/diagnostics/hpd-segment-sensitivity.csv": "d1dbfa8178a660019ebcf6dfba05007ac827d57d5067eb590487c821f8de3388",
+    "production/jags-centered-extended-recovery-v1/prepared/diagnostics/chain-summaries.csv": "cc74ce67767b591585deff9cdd3e7f293727bf2cf122369915443e64145dc227",
+    "production/jags-centered-extended-recovery-v1/chains/outcomes.json": "35e435b8d11f4f520efdecbd7da1e0e531472c4635630bf3c7c6e3736d1657d4",
+    "production/jags-centered-extended-recovery-v1/dispatch.json": "204de0b2f8c2ec97acf7a77b26c6ece2c649bbdcd4ca69d0f48bd42e0fca513b",
+    "provenance/jags-centered-extended-recovery-independent-numerical-check.json": "51b12a5aac58a15f0145045ed546d3ad928a31f95bf6f76ba0a887ae6d3b79c3",
+    "provenance/jags-centered-extended-recovery-prefix-check.csv": "9a37019be1bcef5049d0d39f658fb077af0f1c0ef938da379c0ea453f93bfbae",
+    "provenance/jags-centered-extended-recovery-shared-posterior-check.csv": "1f505eb179388f0d16864b9bedd815aa15f50009b32cdf1d149b92aaffcc7444",
+    "simulation/validate_saved_centered_extended_recovery_outcome.py": "710c1997eea5f2322bd890c1f5cc47e8c32618cdcd08f1036ff54bf14104fe10",
+    "simulation/check_centered_recovery_trajectory_prefix.R": "4bd8a771a9ba58454fd35e24e9610a7906899f8ac71b4e10bbb1aa2961599acf",
+    "simulation/check_centered_recovery_shared_posterior.R": "a0eb384ef654ad6cee55b9a96506c575e7dc523123796b403a7c6c4e9608a80a",
+    "production/jags-centered-extended-recovery-v1/prepared/chain-1/draws.rds": "0e9933747545732af3376e00ed2fc2f03bfc1cb457a8069e8002f7e94b365274",
+    "production/jags-centered-extended-recovery-v1/prepared/chain-2/draws.rds": "cc81c830dfd217f72110b2386c4fc9da49a4ce3d1f723e3b6cd34db3051edefd",
+    "production/jags-centered-extended-recovery-v1/prepared/chain-3/draws.rds": "9a652fdad4a541b484957f8c815aa894ad9153a3e7da224bf7744d2a7c30fa41",
+    "production/jags-centered-extended-recovery-v1/prepared/chain-4/draws.rds": "3342674c5c6ec304ee633b86d16f5a148a935adf265144fb65c5e47d16cfba54"
+  }
+}

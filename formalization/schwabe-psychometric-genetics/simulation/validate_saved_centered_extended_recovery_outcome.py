@@ -18,16 +18,16 @@ assert all(r['state']=='exited' and r['returncode']==0 for r in ledger['outcomes
 requests=json.loads((namespace/'requested-chains.json').read_text())
 assert requests['requested']==4 and len(requests['commands'])==4
 workspace=tempfile.TemporaryDirectory(prefix='schwabe-saved-draw-check-');atexit.register(workspace.cleanup);tmp=Path(workspace.name)
-export="root <- commandArgs(TRUE)[1]\np <- readRDS(file.path(root,'protocol.rds')); ins<-readRDS(file.path(root,'initials.rds')); d<-readRDS(file.path(root,'data.rds'))\nfor(i in 1:4){\n req<-readRDS(file.path(root,paste0('chain-',i),'request.rds'));res<-readRDS(file.path(root,paste0('chain-',i),'result.rds'));m<-readRDS(file.path(root,paste0('chain-',i),'draws.rds'))\n stopifnot(p$requested_chains==4L,p$retained==28000L,p$adaptation==1000L,p$burn_in==7000L,p$thin==1L,identical(as.integer(p$chain_seeds),830101:830104),res$status=='completed',identical(req$protocol,p),identical(req$initials,ins[[i]]),req$chain==i,res$chain==i,nrow(m)==28000,ncol(m)==14,all(is.finite(m)),res$adaptation_complete,res$retained==28000,res$all_finite,res$draws_sha256==strsplit(system2('sha256sum',shQuote(file.path(root,paste0('chain-',i),'draws.rds')),stdout=TRUE),' ',fixed=TRUE)[[1]][1])\n write.table(m,paste0('/tmp/schwabe-jags-review/chain-',i,'.csv'),sep=',',row.names=FALSE,col.names=TRUE)\n}\nwriteLines(format(d$b[1],digits=17),'/tmp/schwabe-jags-review/b1.txt')\nprint(p[c('adaptation','burn_in','retained','thin','chain_seeds')])\n"
+export="root <- commandArgs(TRUE)[1]\np <- readRDS(file.path(root,'protocol.rds')); ins<-readRDS(file.path(root,'initials.rds')); d<-readRDS(file.path(root,'data.rds'))\nfor(i in 1:4){\n req<-readRDS(file.path(root,paste0('chain-',i),'request.rds'));res<-readRDS(file.path(root,paste0('chain-',i),'result.rds'));m<-readRDS(file.path(root,paste0('chain-',i),'draws.rds'))\n stopifnot(p$requested_chains==4L,p$retained==28000L,p$adaptation==1000L,p$burn_in==7000L,p$thin==1L,identical(as.integer(p$chain_seeds),830101:830104),res$status=='completed',identical(req$protocol,p),identical(req$initials,ins[[i]]),req$chain==i,res$chain==i,nrow(m)==28000,ncol(m)==14,all(is.finite(m)),res$adaptation_complete,res$retained==28000,res$all_finite,res$draws_sha256==strsplit(system2('sha256sum',shQuote(file.path(root,paste0('chain-',i),'draws.rds')),stdout=TRUE),' ',fixed=TRUE)[[1]][1])\n write.table(apply(m,2,function(z)sprintf('%.17g',z)),paste0('/tmp/schwabe-jags-review/chain-',i,'.csv'),sep=',',row.names=FALSE,col.names=TRUE)\n}\nwriteLines(format(d$b[1],digits=17),'/tmp/schwabe-jags-review/b1.txt')\nprint(p[c('adaptation','burn_in','retained','thin','chain_seeds')])\n"
 (tmp/'export.R').write_text(export.replace('/tmp/schwabe-jags-review',str(tmp)))
 subprocess.run(['/workspace/slot3-runtime/bin/Rscript',str(tmp/'export.R'),str(namespace/'prepared')],cwd=root,check=True,stdout=subprocess.DEVNULL)
-frames=[pd.read_csv(tmp/f'chain-{i}.csv') for i in range(1,5)];diag=pd.read_csv(folder/'diagnostics.csv').set_index('parameter');hpd=pd.read_csv(folder/'hpd-segment-sensitivity.csv');cs=pd.read_csv(folder/'chain-summaries.csv');b=float((tmp/'b1.txt').read_text())
+frames=[pd.read_csv(tmp/f'chain-{i}.csv',float_precision='round_trip') for i in range(1,5)];diag=pd.read_csv(folder/'diagnostics.csv').set_index('parameter');hpd=pd.read_csv(folder/'hpd-segment-sensitivity.csv');cs=pd.read_csv(folder/'chain-summaries.csv');b=float((tmp/'b1.txt').read_text())
 def hp(x):
  y=np.sort(x);gap=int(np.floor(len(y)*.95));i=np.argmin(y[gap:]-y[:-gap]);return y[i],y[i+gap]
 def rh(x):
  n=x.shape[0];w=np.var(x,axis=0,ddof=1).mean();bb=n*np.var(x.mean(axis=0),ddof=1);return np.sqrt(((n-1)*w/n+bb/n)/w)
 def rankrh(x):
- split=np.column_stack([x[:14000],x[14000:]])
+ half=x.shape[0]//2;split=np.column_stack([x[:half],x[-half:]])
  def rn(z):return norm.ppf((rankdata(z).reshape(z.shape)-.375)/(z.size+.25))
  return max(rh(rn(split)),rh(rn(abs(split-np.median(split)))))
 maxerr={'rhat':0.,'pooled_mean':0.,'pooled_sd':0.,'pooled_hpd':0.,'segment_hpd':0.,'log_transforms':0.,'conditional_probability_transform':0.,'chain_summary':0.};sensitivity={}
@@ -52,4 +52,8 @@ assert np.array_equal(gate.to_numpy(),diag.operational_gate_pass.to_numpy())
 assert np.isfinite(diag[['rhat_rank_split_folded','ess_bulk','ess_tail','mcse_mean','sd']]).all().all()
 assert np.max(abs(diag.mcse_mean/diag.sd-diag.mcse_over_sd))<1e-10
 assert all(e<1e-10 for e in maxerr.values()),maxerr
-print(json.dumps({'namespace':str(namespace.relative_to(root)),'requested_chains':4,'completed_chains':4,'retained_per_chain':28000,'all_adapted_and_finite':True,'all_operational_gates_pass':bool(gate.all()),'failed_parameters':list(diag.index[~gate]),'maximum_absolute_discrepancies':maxerr,'hpd_sensitivity':sensitivity},indent=2))
+drift={}
+for v in frames[0]:
+ x=np.column_stack([f[v] for f in frames])
+ drift[v]={'last_half_rhat':float(rankrh(x[14000:])),'half_mean_drift_over_pooled_sd':((x[14000:].mean(axis=0)-x[:14000].mean(axis=0))/x.std(ddof=1)).tolist(),'lag100_correlation':[float(np.corrcoef(x[:-100,i],x[100:,i])[0,1]) for i in range(4)]}
+print(json.dumps({'additional_descriptive_drift_review':drift,'namespace':str(namespace.relative_to(root)),'requested_chains':4,'completed_chains':4,'retained_per_chain':28000,'all_adapted_and_finite':True,'all_operational_gates_pass':bool(gate.all()),'failed_parameters':list(diag.index[~gate]),'maximum_absolute_discrepancies':maxerr,'hpd_sensitivity':sensitivity},indent=2))
