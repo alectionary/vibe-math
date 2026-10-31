@@ -1,0 +1,31 @@
+{
+  "reviewed_utc": "2026-10-31T00:09:55.310125+00:00",
+  "reviewer": "production_analysis; recorded by root",
+  "method": "Read-only comparison of source Chapter6 pp88\u201392 and frozen model/analyzer; no live effects inspected.",
+  "scientific_label": "Covariate-adjusted (residual) ACE heritability",
+  "definition": "h2_res=A/(A+C+E)",
+  "generating_values": {
+    "A": 0.5,
+    "C": 0.3,
+    "E": 0.2,
+    "covariate_predicted_variance": 0.64,
+    "total_phenotype_variance": 1.64,
+    "h2_res": 0.5
+  },
+  "source_locators": [
+    "p88 (PDF97), Section6.1.2 Eqs6.1\u20136.2: decomposition after covariate effects are partialled out",
+    "p89 (PDF98), Eq6.5: total phenotype variance adds beta-transpose (Sigma_w+Sigma_b) beta to ACE",
+    "p91 (PDF100), Section6.2: generating variances and total variance"
+  ],
+  "source_limit": "These source pages support the residual interpretation but do not explicitly print the h2 ratio; do not attribute a literal printed ratio formula to them.",
+  "implementation_locators": [
+    "simulation/openmx_production.R lines23,38: A/(A+C+E)",
+    "simulation/openmx_production.R lines30\u201331,44\u201345: delta-method SE of same ratio",
+    "simulation/analyze_production.py line16: generating h2=.5"
+  ],
+  "contrast_convention": "Mean fitted residual h2 minus generating residual h2=.5; positive means upward bias. Dividing A by1.64 instead defines a different total-phenotype fraction and must not be substituted.",
+  "input_sha256": {
+    "simulation/openmx_production.R": "d9faa0924c9fb719d59704c4447a1e5c44a9a68846507dc7d130e2571cba2a56",
+    "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518"
+  }
+}
