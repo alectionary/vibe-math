@@ -1,0 +1,35 @@
+test_cancellation_signal (__main__.GuardReview.test_cancellation_signal) ... ok
+test_expired_stage_never_launches (__main__.GuardReview.test_expired_stage_never_launches) ... FAIL
+test_failure_preserved (__main__.GuardReview.test_failure_preserved) ... ok
+test_headroom_prevents_launch (__main__.GuardReview.test_headroom_prevents_launch) ... ok
+test_log_cap (__main__.GuardReview.test_log_cap) ... ok
+test_memory_probe_failure_closed (__main__.GuardReview.test_memory_probe_failure_closed) ... ok
+test_no_overwrite (__main__.GuardReview.test_no_overwrite) ... ok
+test_output_cap (__main__.GuardReview.test_output_cap) ... ok
+test_rss_cap (__main__.GuardReview.test_rss_cap) ... ok
+test_spent_stage_never_launches (__main__.GuardReview.test_spent_stage_never_launches) ... FAIL
+test_success_denominator (__main__.GuardReview.test_success_denominator) ... ok
+test_summed_budget (__main__.GuardReview.test_summed_budget) ... ok
+test_timeout_cleanup (__main__.GuardReview.test_timeout_cleanup) ... ok
+test_total_rss_cap (__main__.GuardReview.test_total_rss_cap) ... ok
+
+======================================================================
+FAIL: test_expired_stage_never_launches (__main__.GuardReview.test_expired_stage_never_launches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/simulation/test_score_a0_dispatch_independent.py", line 57, in test_expired_stage_never_launches
+    self.assertTrue(all(x['state']=='not_launched' for x in r['outcomes']))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_spent_stage_never_launches (__main__.GuardReview.test_spent_stage_never_launches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/simulation/test_score_a0_dispatch_independent.py", line 60, in test_spent_stage_never_launches
+    self.assertTrue(all(x['state']=='not_launched' for x in r['outcomes']))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.529s
+
+FAILED (failures=2)

@@ -1,0 +1,72 @@
+{
+  "status": "Saved original draws verified and A0 preparation complete; independent review and dispatcher validation pending; no sampling authorization",
+  "scope": "Read-only reuse validation and deterministic saved-data preparation only. No dataset generated, compilation, adaptation or sampling.",
+  "original_chains": [
+    {
+      "chain": "1",
+      "draws_sha256": "0e9933747545732af3376e00ed2fc2f03bfc1cb457a8069e8002f7e94b365274",
+      "rows": "28000",
+      "columns": "14",
+      "adapted": "TRUE",
+      "all_finite": "TRUE",
+      "original_rng_seed": "830101"
+    },
+    {
+      "chain": "2",
+      "draws_sha256": "cc81c830dfd217f72110b2386c4fc9da49a4ce3d1f723e3b6cd34db3051edefd",
+      "rows": "28000",
+      "columns": "14",
+      "adapted": "TRUE",
+      "all_finite": "TRUE",
+      "original_rng_seed": "830102"
+    },
+    {
+      "chain": "3",
+      "draws_sha256": "9a652fdad4a541b484957f8c815aa894ad9153a3e7da224bf7744d2a7c30fa41",
+      "rows": "28000",
+      "columns": "14",
+      "adapted": "TRUE",
+      "all_finite": "TRUE",
+      "original_rng_seed": "830103"
+    },
+    {
+      "chain": "4",
+      "draws_sha256": "3342674c5c6ec304ee633b86d16f5a148a935adf265144fb65c5e47d16cfba54",
+      "rows": "28000",
+      "columns": "14",
+      "adapted": "TRUE",
+      "all_finite": "TRUE",
+      "original_rng_seed": "830104"
+    }
+  ],
+  "original_review": "provenance/jags-centered-extended-recovery-independent-review.json",
+  "all_review_artifact_hashes_match": true,
+  "all14_original_operational_gates_pass": true,
+  "physical_initialization": "All stochastic a,c,theta and five globals explicitly initialized; deterministic MZ a[,2] alone has NA sentinel. Sinusoidal physical starts are fixed mathematical sequences, not RNG draws. Four prescribed seeds850101..850104.",
+  "data_adapter_cross_check": "R canonical array exactly matches independent Python prepare_chapter2_case on all1000persons60items; model bytes equal Python graph. Observed masks all1 and zero Poisson observations all0; original calibration byte-identical.",
+  "target_check": "Independent R plogis(log.p=TRUE) item calculation vs canonical softplus at all four physical starts; max absolute error1.09139364212751e-11 for expected fixed log-target constant9106.74494334925. Common unchanged priors/latent law cancel; this is not posterior-engine independence.",
+  "syntax": "Both R files parsed without evaluation of sampling mode. Preparation execution exits before any rjags import/compile/sample.",
+  "runtime_commands": {
+    "prepare": "/workspace/slot3-runtime/bin/Rscript simulation/score_a0_prepare_run.R prepare outputs/score-a0-prepared",
+    "run_after_separate_authorization": "SCORE_A0_SAMPLING_AUTHORIZED=1 /workspace/slot3-runtime/bin/Rscript simulation/score_a0_prepare_run.R run production/score-a0-v1/prepared CHAIN_ID",
+    "diagnose": "/workspace/slot3-runtime/bin/Rscript simulation/diagnose_score_a0.R production/score-a0-v1/prepared"
+  },
+  "limits": [
+    "Run must be executed only by separately approved bounded dispatcher; env flag is an accidental-launch interlock, not external authorization.",
+    "Existing draws are historical; no contemporaneous speed comparison or independent backend.",
+    "All14 operational gates and manual review still required on any new chains; deterministic target equivalence does not establish mixing."
+  ],
+  "sha256": {
+    "outputs/score-a0-prepared/prepare-sessionInfo.txt": "febdc375791f8c46fa5f0efa5eb26dcc69978d0c8e4cfc9925e20f5aeff7c91a",
+    "outputs/score-a0-prepared/data.rds": "db44e852e0ff716791f604800a8e12c43c112e127a0f2ec9a7ff6e49801fd759",
+    "outputs/score-a0-prepared/model.jags": "3d90ea4f149cd8fa0b3f1853c0fe306fbe0286a8ccafb71b665264beacdb4855",
+    "outputs/score-a0-prepared/prepared-hashes.csv": "65b5302ec10bc8a38c3a3d869e06aa0b41b500c00d5365561ed3dac72f2d9e0b",
+    "outputs/score-a0-prepared/initials.rds": "6d86af0eedb07f292ab6a107abd5c617a9335a786bcbb60259de7a668354bdbb",
+    "outputs/score-a0-prepared/initial-target-check.csv": "5efba5e00d7a8a44468d30a7c5a3b2beb8a4e3f6a930ffcdbbbe91da9b47e9fa",
+    "outputs/score-a0-prepared/reference-reuse.csv": "0af78c6bbfb9e29757d13ad45e6dd991a7d226b4928ce841d60a0dd03e9021fe",
+    "outputs/score-a0-prepared/protocol.rds": "9cb04f0335ec1d1df309638801c7c3d90fec112e76fa6fe80981e65bf7e08c91",
+    "simulation/score_a0_prepare_run.R": "875dad66dd6cb754f387bb2816b4de84cda429dbedbbd9409a823bb909484ccb",
+    "simulation/diagnose_score_a0.R": "55554f8fd9c42939ae6ac434e7dfe3bb644cf504fc0ed451b07f80b027abad6d",
+    "provenance/jags-centered-extended-recovery-independent-review.json": "867ce28035fb5c79aea04d6009975a0d798b15c739bafbe5a3f34df8b62a3589"
+  }
+}

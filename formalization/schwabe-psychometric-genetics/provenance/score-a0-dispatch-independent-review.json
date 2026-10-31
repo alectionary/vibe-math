@@ -1,0 +1,77 @@
+{
+  "reviewer": "/root/score_likelihood_review",
+  "reviewed_utc": "2026-10-31T05:14:45.266332+00:00",
+  "verdict": "Independent deterministic fixture and read-only identity checks pass. Ready for external bounded A0 sampling decision, not authorization or evidence of posterior performance.",
+  "operations": {
+    "sampling": false,
+    "new_datasets": false,
+    "compilation": false,
+    "real_chain_dispatch": false,
+    "harmless_python_process_fixtures": true
+  },
+  "test_attempts": [
+    {
+      "methods": 14,
+      "passed": 12,
+      "failed": 2,
+      "log": "provenance/score-a0-dispatch-independent-initial-failed.txt",
+      "failures": "Expired/depleted stages launched before budget check. Root corrected prelaunch budget guards."
+    },
+    {
+      "methods": 16,
+      "passed": 16,
+      "log": "provenance/score-a0-dispatch-independent-second-pass.txt"
+    },
+    {
+      "methods": 18,
+      "passed": 18,
+      "final_seconds": 0.46,
+      "log": "provenance/score-a0-dispatch-independent-final-pass.txt"
+    }
+  ],
+  "coverage": [
+    "Successful four-row denominator",
+    "No namespace overwrite",
+    "Insufficient or unreadable memory prevents launch",
+    "Per-process and summed wall budgets",
+    "Expired elapsed and depleted all-phase budgets prevent launch",
+    "Per-group and aggregate RSS",
+    "Log and namespace output caps",
+    "Worker failure/no replacement",
+    "Supervisor SIGTERM cleanup",
+    "Descendant cleanup when leader exits normally",
+    "Incomplete identity refusal",
+    "Ancestor cgroup memory headroom",
+    "Conflicting worker refusal"
+  ],
+  "read_only_check": {
+    "command": "timeout 60 python simulation/dispatch_score_a0.py check",
+    "exit_code": 0,
+    "output": "PASS: pinned inputs/runtime, CPU, memory and idle checks; no R started.",
+    "runtime_files": 23257,
+    "study_files": 71,
+    "prepared_files": 8
+  },
+  "static_review": [
+    "Mandatory identity set includes dispatcher/runner/diagnostic/imported guards/source/reuse/resource plan plus historical prepared tree; runtime and prepared inventories require equality.",
+    "Root bounded and charged read-only launch validation to600sec; all-phase aggregate7740sec, elapsed3600sec and four fixed chain identities remain unchanged.",
+    "Stop verifies supervisor PID start tick before signalling; live dispatcher handles TERM and group cleanup. Initial requested record explicitly labels snapshot.",
+    "R preparation uses saved data only, deterministic physical starts and distinct fixed seeds, correct deterministic MZ node NA inputs and stable likelihood-constant checks.",
+    "R execution fixes1000 adaptation,7000 burn,7x4000 retained blocks; no retries/extensions. Independent diagnostics preserve all14 gates and frozen historical comparison; no engine/speedup claim."
+  ],
+  "limitations": [
+    "Resource guards are sampled with cleanup/poll reservation, not hard real-time or kernel memory quotas; transient overshoot is possible.",
+    "Fixtures exercise tiny harmless processes; they do not measure JAGS cost, mixing or full-data execution behavior.",
+    "No true independent posterior engine. No successful source-count posterior recovery/power implied.",
+    "No sampling authority granted by this review; launch still requires the specific bounded resource approval.",
+    "Read-only check is a point-in-time preflight; dispatcher rechecks identities/resources at actual authorized launch."
+  ],
+  "sha256": {
+    "simulation/dispatch_score_a0.py": "17e318566bd1aa6a98dfc76d874244ba0e5086695123bebbf64badfeb1efbdc0",
+    "simulation/test_score_a0_dispatch_independent.py": "a066fe1b4d12da1184a0ed94e3e1245b205204b80aae32d98522240f10884044",
+    "simulation/score_a0_prepare_run.R": "875dad66dd6cb754f387bb2816b4de84cda429dbedbbd9409a823bb909484ccb",
+    "simulation/diagnose_score_a0.R": "55554f8fd9c42939ae6ac434e7dfe3bb644cf504fc0ed451b07f80b027abad6d",
+    "provenance/score-a0-dispatch-manifest.json": "422f2bfe6c183677782cad4b8a9d48823191ee725f9cf8c78ec0d8cbc820f268",
+    "provenance/score-a0-reuse-evidence.json": "a4bcb71cc33a2764f3e3fb185dafeda07aac04f0d9b5109060af88c6862021af"
+  }
+}
