@@ -79,3 +79,7 @@ from the repository root and the skill-creator `scripts/quick_validate.py` with
 PyYAML. Test rejected as well as accepted evidence/review records. Phrase scans
 are review cues, never a word ban or a certification that prose stands alone.
 Do not retrofit passing attestations into historical study artifacts.
+
+For nonscalar headlines or unresolved scalar comparisons without a justified
+tolerance, follow the explicit comparison-applicability extension in [first-page contract](references/first-page-contract.md). Preserve all component evidence and keep the scientific claim verdict separate
+from an unestablished scalar magnitude. Never invent a numeric margin.
