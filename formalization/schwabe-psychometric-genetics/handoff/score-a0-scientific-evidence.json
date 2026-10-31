@@ -1,0 +1,49 @@
+{
+  "scope": "Single fixed Chapter2 N500/J60 floor dataset, calibrated Rasch likelihood, same JAGS4.3.2 backend",
+  "verdict": "The score representation did not complete the predeclared diagnostic workload within the bounded resource allocation; computational acceleration and posterior agreement are not established.",
+  "model": "Exact fixed-calibration canonical-score likelihood, same physical latent model and priors; known likelihood constant independent of all fitted parameters. Not the source Gaussian sum-score comparator.",
+  "requested": {
+    "chains": 4,
+    "adaptation": 1000,
+    "burn_in": 7000,
+    "retained_per_chain": 28000
+  },
+  "observed": {
+    "adapted_chains": 4,
+    "completed_fixed_chains": 0,
+    "saved_retained_per_chain": [
+      16000,
+      16000,
+      16000,
+      16000
+    ],
+    "saved_retained_total": 64000,
+    "checkpoint_rows_consistent": true,
+    "stop": "Predetermined summed-process budget",
+    "chain_cleanup_seconds": 6419.751313023,
+    "all_phase_seconds": 6420.894926815,
+    "elapsed_seconds": 1606.104005898
+  },
+  "benchmark": {
+    "type": "Historical same-dataset centered item-Bernoulli model",
+    "completed_chains": 4,
+    "retained_per_chain": 28000,
+    "summed_chain_seconds": 4927.558111619001,
+    "all14_operational_gates_pass": true
+  },
+  "diagnostics": "Full fixed-draw diagnostic and five-global MCSE comparisons are ineligible and were not run. Adaptation success and checkpoint finiteness are not evidence of convergence. No incomplete chain is pooled with historical chains.",
+  "timing": "More chain/cleanup time was consumed while fewer draws were retained. This does not demonstrate speedup; it is a bounded feasibility result, not equal-work benchmarking or proof that exact score methods cannot accelerate other implementations. Runtime epochs, starts and RNG streams differ.",
+  "independence": "Same JAGS backend, source model, calibration and observed dataset. Independent deterministic target checks do not establish independent posterior-engine replication.",
+  "coverage": "Zero new datasets, zero completed source-count aggregate, no change to original scientific claim verdicts. Chapter2 100-dataset andChapter5 250-dataset recovery/power/sufficiency targets remain pending.",
+  "next_evidence": "No extension is authorized. Any future algorithm/resource proposal must be justified independently; this capped run provides no automatic production authorization.",
+  "source_locators": [
+    "Schwabe2016 Chapter2 pp17\u201322 and AppendixA p133",
+    "Schwabe2016 Chapter5 pp75\u201380; distinct model not validated here"
+  ],
+  "files": [
+    "provenance/score-a0-terminal-outcome.json",
+    "production/score-a0-v1/terminal-checkpoints.csv",
+    "provenance/score-a0-dispatch-independent-review.json",
+    "provenance/exact-rasch-score-independent-review.json"
+  ]
+}
