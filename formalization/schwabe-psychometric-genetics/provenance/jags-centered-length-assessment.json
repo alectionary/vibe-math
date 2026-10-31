@@ -1,0 +1,45 @@
+{
+  "reviewed_utc": "2026-10-31T03:51:56.947660+00:00",
+  "status": "Scientifically reasonable as one separately frozen bounded length experiment, conditional on independent code/plan review. Not a guaranteed pass or automatic extension.",
+  "fixed_proposal": {
+    "chains": 4,
+    "adaptation": 1000,
+    "burn_in": 7000,
+    "retained_per_chain": 28000,
+    "chunks": 7,
+    "chunk_size": 4000,
+    "wall_cap_per_chain": 1370,
+    "planned_worker_seconds": 5480,
+    "cleanup_allowance_seconds": 20
+  },
+  "budget": {
+    "prior_worker_seconds_reported_by_parent": 6389.69453,
+    "new_worker_plus_cleanup_seconds": 5500,
+    "combined_seconds": 11889.69453,
+    "ceiling_seconds": 12000,
+    "remaining_slack_seconds": 110.30547,
+    "basis": "Parent provided accumulated prior budget; this note independently verifies arithmetic, not a new resource authorization."
+  },
+  "runtime_projection": {
+    "iterations_ratio": 1.8,
+    "slowest_current_process_wall_seconds": 672.800973065001,
+    "scaled_seconds": 1211.0417515170018,
+    "caution": "Coarse observed throughput projection; startup, disk checkpoints and changing concurrency can affect actual cost.1370second cap remains binding."
+  },
+  "stationary_efficiency_heuristic": {
+    "retained_multiplier": 2.3333333333333335,
+    "min_bulk_ESS": 608.999450659404,
+    "min_tail_ESS": 1414.5737220360131,
+    "max_relative_mean_MCSE": 0.0406978215452737,
+    "max_Rhat": 1.0073374531964243,
+    "assumption": "Unchanged stationary efficiency. Existing opposing half-chain drifts and worse last-half Rhat mean this is not a reliable forecast."
+  },
+  "drift_caution": "Last-half Rhat va1.03085,vc1.02699,ve1.02679 andbeta1 1.02193; va half shifts reach+.472/- .392 pooledSD andvc-.380/+.491. Slow exploration persists rather than a clearly vanishing initial transient. This does not forbid a fixed length experiment, but precludes describing success as likely/certain.",
+  "conditions": [
+    "Unchanged data, priors, centered target, seeds/global starts, monitoring and thresholds.",
+    "Seven fixed4000chunks; no outcome-based stopping, retries, replacement chains, additional allocations or adaptive length selection.",
+    "If capped, all partial requests/draws/failures remain in four-chain denominator. A partial24k run is not a completed28k gate.",
+    "Same initialization/seeds and same burn imply repeated retained prefix if trajectory is unchanged; never pool old and new draws or count them as independent confirmation.",
+    "No new source-count production or detection claim even if the joint gate passes; terminal numerical, interval and all-page review remains required."
+  ]
+}

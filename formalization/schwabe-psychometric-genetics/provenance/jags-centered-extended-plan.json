@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-10-31T03:51:52.554350+00:00",
+  "decision": "Final fixed longer centered diagnostic after independentlyreviewed source-length jointgatefailure; not automatic lengthescalation or source-countproduction",
+  "namespace": "production/jags-centered-extended-v1",
+  "model_and_data": "Same exact centeredmodel, priors, fixedseed301 N500J60floor dataset, all14monitoredphysicalparameters andsame830101-830104seeds/globalstarts",
+  "adaptation": 1000,
+  "burn_in": 7000,
+  "retained_per_chain": 28000,
+  "chunks": "7fixed4000retained chunks, checkpointdata/state aftereach; no favorableearlystop",
+  "gate": "Unchanged:allfinite/adapted,rankRhat<1.01,bulk/tailESS>=400,MCSEmean/SD<=.05 forALL14columns; manualreview mandatory.",
+  "reason": "Centering improvesfull diagnostics butvariance decomposition remains slowlymixing. Last-halfRhatworsens (va1.03085,vc1.02699,ve1.02679,beta1 1.02193), so stationary ESS/Rhat scaling cannotguaranteepass. One fixedlength test assesseswhether availablelonger sampling resolves this before any production.",
+  "cost": {
+    "actual_prior_chain_wall_seconds": 6389.694529709006,
+    "per_chain_cap_seconds": 1370,
+    "new_total_chain_caps": 5480,
+    "new_cleanup_allowance": 20,
+    "nominal_combined_chain_budget": 11889.694529709006,
+    "original_allocation": 12000,
+    "measured_prior_chain_range_seconds": [
+      651.435255145996,
+      672.800973065001
+    ],
+    "projection_slowest_seconds": 1211.041751517002,
+    "basis": "36k totaliterations versus20k source-length centered. Samegraph/engine; uncertainty remains.28kretainedchosen with~159s margin onslowestlinearprojection;32kretention wouldbetoo close."
+  },
+  "dependence": "Repeated fresh seeds/starts intentionally repeattrajectory prefix ifexecutionidentical; first12000retained expectedoverlap withpriorcenteredrun. Neverpoolorcountold+newasindependent. Newlongrun is one four-chain diagnostic ononesyntheticdataset.",
+  "stopping": "Finalfixedallocation endsatcompleted4chains or1370secondcaps. No automaticretryorlongerrun afterthis. A failedjointgate leavesfull Bayesianrecovery/power unestablished; furtherbudget/model-enginework needsnewplanandexpandedresourceauthority. Passingdoesnotauthorize source-countgrid.",
+  "prior_longer_runs": "Both48000-retained noncentered attempts infrastructurallyaborted withoutsavedretainedcheckpoints; no conclusionabout their mixing."
+}
