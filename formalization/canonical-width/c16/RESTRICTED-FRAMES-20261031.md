@@ -106,14 +106,69 @@ physical materialization and verification with the repo's existing
 `materialize_pool_frame.py` / `verify_partial_frame.py` chain. A SAT answer on p1
 alone is not enough; both p0 and p1 must be SAT to give a frame.
 
+## Follow-up A: global consequences of the quarter structure
+
+**Status: a necessary condition that does not bind at point 22. Stopped under
+its stop rule.** Everything here holds for every frame; it uses only the
+induced-matching condition restricted to one quarter basis B (the 32 pool
+vectors of one sector supported in a quarter whose pool is exactly a basis).
+
+- **Forced duals are realized by only one of the two T-orbits in each basis**
+  (`global_quarter.py`, `results/global_quarter.json`).
+  - The basis splits into orbits 33 and 35 for quarter {2,3} (X side) and quarter {4,5} (Z side), and into orbits 39 and 41 for quarter {6,7} (both sides).
+  - For orbit 33 (resp. 41), no opposite-pool vector pairs to 1 with b and to 0 with the other 31 basis vectors.
+  - For orbit 35 (resp. 39), every forced dual is realized.
+  - So a selected vector of orbit 33 or 41 always forces another basis vector of its quarter out of the frame.
+- **No pairwise exclusions** (`forced_exclusions.py`): for no b is one
+  fixed c forced out by every possible partner. The constraint is genuinely
+  disjunctive and gives no zero second moment.
+- **Exact cap on a frame's footprint in a quarter basis** (`local_max.py`,
+  Kissat; the selection family is closed under subsets):
+
+  | Basis | Distinct partner patterns | Max selectable | UNSAT at |
+  |---|---|---|---|
+  | {2,3} X (orbits 33, 35) | 256 | 23 | 24 |
+  | {4,5} Z (orbits 33, 35) | 256 | 23 | 24 |
+  | {6,7} X (orbits 39, 41) | 384 | 24 | 25 |
+  | {6,7} Z (orbits 39, 41) | 384 | 24 | 25 |
+
+- **Against point 22.** p(33) = 0.286, p(35) = 0.244, p(39) = 0.418 and
+  p(41) = 0.276 (read from
+  `coupling-results/two-basis-integer-witness22-rational.json.gz`, `values[0:45]`).
+  So point 22 expects about 8.5 selected vectors in the {2,3} basis and about
+  11.1 in the {6,7} X basis, against caps of 23 and 24. Neither the cardinality cap
+  nor the forced-dual fact can separate it. A joint two-orbit
+  second-moment hull is the only remaining refinement here, and with this much
+  slack it is not worth building.
+
+## Follow-up B: half-turn case with the repo's stronger encoding
+
+The frozen `subgroup_frame.py` (critical-monomial bound and lexicographic
+translation/sector symmetry breaking) runs unchanged with a minimal stand-in for its
+two `pysat` cardinality encoders (`pysat_shim/`, sequential counters). PyPI was
+unreachable from this session. The stand-in is logically equivalent but not
+clause-identical, so CNF hashes differ from `structural-results/`.
+- **Validation:** order 4 returns UNSAT in 215 s (85,213 variables / 215,870 clauses,
+  CNF SHA-256 `b959ae253af580585907e7094da1ea989f2908a8adfa2cb0447caaf10e0a183e`).
+- **Order 2:** 331,073 variables / 810,210 clauses, CNF SHA-256
+  `dc2b1d0d8b5e123d88b566ef77e2746173a0c4e4c8f2659efd402e7c41dc0452`. Running
+  for a 10,800 s bound at nice 19, with the proof sent to /dev/null to protect the
+  disk. On UNSAT, rerun with a proof file to certify; Kissat is deterministic.
+  The result is recorded below when it finishes.
+
+Run it with:
+```
+PYTHONPATH=restricted-frames-20261031/pysat_shim nice -n 19 python3 subgroup_frame.py \
+  --order 2 --output OUT.json --kissat KISSAT --drat-trim DRAT_TRIM --seconds 10800
+```
+
 ## Suggested next steps
 
-1. **Rerun the half-turn case with the repo's stronger encoding.** Add the
+1. **Rerun the half-turn case with the repo's stronger encoding** (follow-up B, running). Add the
    critical-monomial bound and lexicographic symmetry breaking from
    `subgroup_frame.py` (and the 80 common unit pairs as hints). This is the
    last subgroup-invariant case before the unrestricted search.
 2. **Run p0 for a comparable bounded time.** p0 is the other half of the
    split test.
-3. **Use the quarter obstruction globally.** Look for a cardinality or rank
-   lemma: how many frame vectors can be supported in `{2,3}`, `{4,5}` or
-   `{6,7}`? The forced-dual argument above may extend to a necessary inequality.
+3. ~~Use the quarter obstruction globally~~: done in follow-up A. It is valid
+   but non-binding at point 22.

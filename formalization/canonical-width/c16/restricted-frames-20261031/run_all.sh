@@ -21,3 +21,8 @@ python3 support_cnf.py '[0,1,4,5]' work/p0.cnf
 python3 support_cnf.py '[2,3,6,7]' work/p1.cnf
 sha256sum work/h2.cnf work/p0.cnf work/p1.cnf work/h4.cnf
 echo "Open cases (each ran to timeout; see results/): nice -n 19 $KISSAT work/h2.cnf | work/p0.cnf | work/p1.cnf"
+# Global quarter consequences (step 1 of the 31 October follow-up)
+python3 quarters.py > /dev/null
+python3 global_quarter.py
+python3 forced_exclusions.py
+nice -n 19 python3 local_max.py "$KISSAT"
