@@ -73,9 +73,9 @@ match exactly. A claim may have multiple effect rows/conditions. For `unresolved
 or `unstable` estimates, supply `unresolved_reason`; use null values where absent,
 `contrast_index: null` when no contrast can be computed, and `not established`
 for magnitude. Preserve computed diagnostic direction when finite estimates
-exist; otherwise its direction is also `not established`. A nonnumeric/theoretical headline must be accounted for this way
-with an explicit reason, not forced into a numerical magnitude claim. Keep a
-justified comparison tolerance even when the test cannot yet be performed.
+exist; otherwise its direction is also `not established`. A nonnumeric/theoretical headline uses the explicit applicability contract below.
+Never invent a tolerance or scalar effect to satisfy the validator. Scalar rows
+with a justified tolerance retain it even when the estimate is unavailable.
 A prespecified tolerance uses `kind: "prespecified"`, `value`, and `basis`.
 For a derived linear contrast, a rounding tolerance may replace `decimals` with
 `components: [{"decimals": 1, "weight": 1}, {"decimals": 1, "weight": 1}]`.
@@ -196,3 +196,67 @@ actual review decisions, not infer a passing review or fabricate missing fields.
 Record the input hashes and mapping, test it against the actual PDF, and report
 this as a focused first-page result. It is not full delivery acceptance: the
 existing delivery command still validates the complete hash-bound record.
+
+## Comparison applicability (v2 extension)
+
+Omitted `comparison_kind` means `scalar` and preserves the existing contract.
+Choose applicability from the source claim, not the observed replication outcome.
+Scientific claim status (`replicated`, nonreplication, blocked, etc. in the claim
+inventory) is independent of whether a scalar magnitude exists. Do not demote a
+headline, fabricate zero/average/max margins, or substitute precision for power.
+
+Two explicit exceptions are supported in `headline_effects`:
+
+- `comparison_kind: "nonscalar"`: a qualitative/theoretical proposition or a
+  multicomponent parent with no scientifically justified scalar aggregate.
+  Declare `comparison_kind: "nonscalar"` on the referenced source claim too.
+  Set both effects, `contrast_index`, and `display_decimals` to null. Set
+  `estimate_status: "unresolved"` (magnitude only), `magnitude` and `direction`
+  to `"not established"`, and retain `unresolved_reason` and uncertainty.
+  Use `tolerance: {"kind": "not_applicable", "value": null, "basis": "..."}`.
+  Supply `applicability_reason`, `component_claim_ids` matching the source claim
+  exactly (all references must exist), and `component_contrast_indices` listing
+  every parent contrast index, or empty lists for a purely qualitative claim.
+  The latter needs `contrast_not_applicable` on its source claim.
+- `comparison_kind: "scalar_unestablished"`: a specified scalar contrast with
+  no defensible source precision or prespecified
+  margin. Keep its valid `contrast_index` and all available values. Use
+  `tolerance: {"kind": "unestablished", "value": null, "basis": "..."}`,
+  `applicability_reason`, unresolved magnitude status/reason and magnitude
+  `"not established"`. Direction is computed for finite pairs, otherwise also
+  `"not established"`. Display precision is required only for available values.
+  Declare this missing-margin classification on the source claim (or its indexed
+  contrast for a component). Finite pairs retain their computed signed direction
+  and verified displayed values, while magnitude stays not established. Existing
+  justified tolerances cannot be discarded to evade arithmetic; the reviewer
+  must verify the stated absence of a defensible margin. No exception is inferred
+  merely from nulls.
+
+Nonscalar parents additionally supply `component_comparisons`, one ordinary
+scalar or scalar_unestablished effect record for each parent contrast, with the
+same parent claim_id, exact contrast_index and unique effect id. These records
+are validated recursively against the retained source contrasts, including
+numeric tolerances, magnitude and direction whenever applicable. They are
+**evidence-only** and are not additional first-page rows. Thus a 108-cell grid
+keeps all 108 comparisons without inventing a pooled gain or printing 108 rows.
+A single numeric contrast cannot be disguised as a nonscalar parent.
+
+In the writer table mapping, each exception row requires `applicability_text`
+found verbatim (normalized) in both manuscript source and rendered row,
+`estimand_text`, and `display` containing `magnitude_bbox` and `direction_bbox`.
+Magnitude must show `not established`; direction preserves a finite scalar pair's
+computed sign, otherwise it also shows `not established`. For one-sided scalar evidence,
+also supply `values_bbox` and `form: "signed"`; show the available fixed-precision
+value and `not established` for its missing counterpart in source/ours order.
+No fabricated numeric tolerance or display precision is required for nulls.
+The ordinary table note distinguishes point estimates from equivalence; prose
+must make clear that this applies to scalar comparisons, not qualitative claims.
+
+Any exception requires an additional editorial check `comparison_applicability`
+with `verdict: "pass"` and nonempty page-1 findings (`page`, `location`, `finding`).
+The hash-bound reviewer must assess source support for applicability, completeness
+of parent/components, retained uncertainty and separation of claim verdict from
+magnitude. Mechanical checks cannot establish that a semantic classification is
+honest. Existing scalar packets, the Pesah adapter and historical audit semantics
+are unchanged. Old attempted nonscalar packets require explicit new mappings and
+fresh review; do not backfill an attestation.
