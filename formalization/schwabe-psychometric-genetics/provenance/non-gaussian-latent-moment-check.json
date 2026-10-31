@@ -1,0 +1,121 @@
+{
+  "title": "Our fixed-parameter latent-moment identification calculation for the Chapter2 heteroscedastic Gaussian hierarchy",
+  "created_utc": "2026-10-31T03:57:50.931166+00:00",
+  "proposal_origin": "Parent analyst proposed the inversion; delegated analyst independently checked the source hierarchy, moment derivation, inversion and boundary conditions.",
+  "status": "Ordinary proof and13exact checks complete; independent review pending. Additive restricted analytical progress, not full observed-response identification or numerical replication.",
+  "relation_to_source_claims": {
+    "primary": "C2-1.construction",
+    "related": [
+      "C2-1.positive",
+      "C2-1.delta"
+    ],
+    "scope": "Checks and extends algebra of the source latent construction. The source empirical recovery, unbiasedness and power claims are not adjudicated by this result. The latent-moment identification proposition is our derived consequence, not presented as a quotation or a new source claim."
+  },
+  "source": {
+    "pdf_path": "/tmp/schwabe-thesis/thesis_I_Schwabe.pdf",
+    "pdf_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+    "text_path": "/tmp/schwabe.txt",
+    "text_sha256": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "locators": [
+      "p15 Eq2.1 environmental logvariance",
+      "p17 Eqs2.4\u20132.10 MZ hierarchy and binary item link",
+      "p18 Eqs2.11\u20132.15 DZ hierarchy and environmental logvariance",
+      "p18 Section2.4.1 InvGamma(1,1) variance priors and mean/calibration anchoring"
+    ],
+    "inspection": "Read local source text printed pp13\u201318, including all target equations and prior paragraph. No copyrighted code reproduced."
+  },
+  "dependencies": {
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+    "simulation/non_gaussian_latent_moment_check.py": "32778b47b1780cc94c0bf70d8e54d1ff30a0df7e1e377b6724251c0a3efe76d7",
+    "outputs/non-gaussian-latent-moment-checks.json": "66ecb878f1acc89c8da9cf01aaebcd4467b34b97b50919547c5b4b73b2782f1f"
+  },
+  "parameter_domain": "All calculations condition on one finite fixed parameter vector (mu,va,vc,beta0,beta), with va>0,vc>=0,ve=exp(beta0)>0. Source inverse-gamma priors place va,vc in the strictly positive interior; allowing vc=0 is a harmless extension, not a different prior. No averaging over parameter priors is used.",
+  "source_faithful_representation": {
+    "notation": "Source C_i has mean mu. Write centered C=C_i-mu ~N(0,vc); this centered variable is independent of genetic innovations. Let Z1,Z2 be independent standard normals independent of all genetic/common effects.",
+    "genetics": "For MZ, A1=A2~N(0,va). For DZ, A_t=G+H_t with G,H1,H2 mutually independent N(0,va/2). Thus each A_t~N(0,va) and Cov(A1,A2)=rho*va, rho=1 or1/2. Independence of common effect and Gaussian innovations follows the source conditional hierarchy.",
+    "trait": "Theta_t=mu+A_t+C+sqrt(ve*exp(beta*A_t))*Z_t. This expresses Eqs2.7\u20132.8 and2.14\u20132.15, with ve=exp(beta0), beta=beta1. Within MZ pairs the residual variance factor is shared, but residual draws remain conditionally independent.",
+    "conditions": "Same fixed parameters across both zygosity populations, known genetic correlations1 and1/2, independent residual innovations and centered common effects as above. Both populations must be available. This is not a Gaussian marginal trait assumption when beta is nonzero."
+  },
+  "theorem": "The map from this fixed parameter vector to the latent-population moments (mean mu, marginal variance T, MZ covariance K_MZ, DZ covariance K_DZ, marginal third central moment m3) is globally injective on the stated domain. Therefore equality of the two latent twin population distributions implies equality of the parameter vector. Finite Rasch item-response probabilities have not been shown to identify these latent moments.",
+  "ordinary_proof": [
+    {
+      "step": 1,
+      "name": "Absolute moments exist at fixed finite parameters",
+      "argument": "For any positive integer k, the Gaussian A+C has finite absolute kth moment. Independence of Z and A gives E|sqrt(ve exp(beta A))*Z|^k=ve^(k/2) E exp(k beta A/2) E|Z|^k, finite since the centered Gaussian mgf equals exp(va t^2/2) for every finite real t. The inequality |x+y|^k<=2^(k-1)(|x|^k+|y|^k) proves finite absolute central trait moments. Cross-products are integrable by Cauchy\u2013Schwarz. Thus conditional expectation and the cubic expansion below are legitimate. This does not assert existence of the trait mgf at nonzero arguments."
+    },
+    {
+      "step": 2,
+      "name": "Mean and twin covariance",
+      "argument": "Given A1,A2,C, each residual has mean zero, so ETheta_t=mu. Its conditional cross residual product expectation is zero because Z1 and Z2 are independent and centered, including the shared-scale MZ case. Residual\u2013genetic/common cross terms also vanish. Therefore K_MZ=va+vc and K_DZ=va/2+vc. Shared random residual scale may induce higher-order dependence; it does not add second cross covariance."
+    },
+    {
+      "step": 3,
+      "name": "Marginal variance",
+      "argument": "Write X=A+C and H=sqrt(ve exp(beta A)). Conditional residual variance is H^2 and conditional mean is mu+X. Total variance gives T=va+vc+ve E exp(beta A)=va+vc+ve exp(beta^2 va/2). Define R=T-va-vc=ve exp(beta^2 va/2)>0. In particular ve is environmental variance at A=0; the population residual contribution is R, which generally differs from ve."
+    },
+    {
+      "step": 4,
+      "name": "Third central moment",
+      "argument": "Condition on A,C and use EZ=EZ^3=0,EZ^2=1: E[(Theta-mu)^3|A,C]=(A+C)^3+3(A+C)ve exp(beta A). The centered Gaussian A+C has zero third moment. Since C is independent of A and centered, E[C exp(beta A)]=0. Differentiating the Gaussian mgf yields E[A exp(beta A)]=va beta exp(beta^2 va/2). Differentiation is justified, for example, by completing the square and integrability of |A| exp(tA) uniformly for t in a compact neighborhood of beta. Consequently m3=3 va beta ve exp(beta^2 va/2)=3 va beta R."
+    },
+    {
+      "step": 5,
+      "name": "Explicit inverse and global latent identification",
+      "argument": "Recover va=2(K_MZ-K_DZ), vc=2*K_DZ-K_MZ, and R=T-va-vc. Because va,R>0, recover beta=m3/(3 va R), then ve=R exp(-beta^2 va/2)>0 and beta0=log(R)-beta^2 va/2. The mean recovers mu directly. Every step is single valued. Thus equal specified latent moments imply equal parameters; no local Jacobian or parameter-count argument is being substituted for global injectivity."
+    },
+    {
+      "step": 6,
+      "name": "Sign and zero-interaction limits",
+      "argument": "Because3 va R>0, m3 and beta have the same sign and m3=0 iff beta=0 within the stated domain. When beta=0 the trait pair is jointly Gaussian, R=ve and m3=0. When beta is nonzero the nonzero finite third central moment proves the marginal trait is not Gaussian. Thus the earlier Gaussian item-identification lemma cannot be applied in that case."
+    }
+  ],
+  "boundaries_and_limits": [
+    {
+      "case": "va=0",
+      "finding": "A=0 almost surely, so exp(beta A)=1 for every beta. Beta is unidentifiable and the inverse divides by zero. Excluded; no claim of stable estimation as va approaches zero."
+    },
+    {
+      "case": "ve=0",
+      "finding": "The interaction disappears; outside the finite beta0 domain. R must be positive."
+    },
+    {
+      "case": "vc=0",
+      "finding": "Formulas remain valid for this fixed-parameter boundary, with genetic/common construction interpreted using degenerate C. Source prior remains strictly positive."
+    },
+    {
+      "case": "Only one zygosity or unequal components across zygosity",
+      "finding": "The two-covariance inversion is not justified; no identification theorem for that altered design is asserted."
+    },
+    {
+      "case": "Prior-predictive moments",
+      "finding": "Not evaluated. Source InvGamma(1,1) for va and vc has infinite mean, so finite fixed-parameter moments do not justify a finite prior-predictive variance or third moment. No exchange of averaging over those priors occurs."
+    },
+    {
+      "case": "Observed finite binary or ordinal responses",
+      "finding": "No proof supplied that their finitely many response-pattern probabilities identify T,K_MZ,K_DZ,m3 in this nonGaussian family. The earlier Gaussian joint-item lemma is inapplicable when beta is nonzero. Ordinal links and unknown item calibration need separate analysis."
+    },
+    {
+      "case": "Mean or trait scale unanchored",
+      "finding": "Latent-moment inversion refers to a specified trait coordinate. Unknown item difficulties/scale can introduce observational invariances; this proof does not remove them. Source fixes mean when estimating difficulties."
+    },
+    {
+      "case": "Finite sample and inference",
+      "finding": "Population inverse neither implies sample unbiasedness, good conditioning, general finite MLE existence/uniqueness, posterior convergence, empirical recovery, effect significance or power."
+    }
+  ],
+  "checks": {
+    "command": "python simulation/non_gaussian_latent_moment_check.py",
+    "output": "outputs/non-gaussian-latent-moment-checks.json",
+    "passed": 13,
+    "method": "Exact SymPy algebra, including Gaussian-mgf derivative, conditional cubic/cross residual expansions, complete inverse substitution, boundary limits and positive/negative/zero beta examples. Ordinary probabilistic arguments justify the conditional moments; tests do not replace that proof.",
+    "model_fits": 0,
+    "numerical_integration": 0,
+    "monte_carlo": 0,
+    "Lean": "Not performed; ordinary proof only, no formal certification claim."
+  },
+  "remaining": [
+    "Prove or disprove global identification of this nonGaussian parametric latent family from the specified finite calibrated Rasch response law; latent moments being identified by latent distributions is not the missing bridge.",
+    "General sample likelihood uniqueness/existence and empirical bias/power are separate unresolved questions.",
+    "Independent review required before scientific integration; no inventory, manuscript or baseline changes made."
+  ]
+}

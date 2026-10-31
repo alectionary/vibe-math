@@ -1,0 +1,64 @@
+{
+  "status": "Accepted as a fixed-parameter latent-population identification lemma; no observed-response identification claim",
+  "reviewer": "/root/guard_validation; independent ordinary mathematical review",
+  "reviewed_utc": "2026-10-31T03:59:30.513315+00:00",
+  "reviewed_sha256": {
+    "provenance/non-gaussian-latent-moment-check.json": "840f4a4076715f76f24a35a43fe139f22945d29346d2509aa1ffcf58aa55db24",
+    "simulation/non_gaussian_latent_moment_check.py": "32778b47b1780cc94c0bf70d8e54d1ff30a0df7e1e377b6724251c0a3efe76d7",
+    "outputs/non-gaussian-latent-moment-checks.json": "66ecb878f1acc89c8da9cf01aaebcd4467b34b97b50919547c5b4b73b2782f1f"
+  },
+  "source_review": {
+    "locators": [
+      "Chapter2 p15 Eq2.1",
+      "Chapter2 p17 Eqs2.4-2.10",
+      "Chapter2 p18 Eqs2.11-2.15 and Section2.4.1"
+    ],
+    "finding": "Read actual local source hierarchy. Source common effect has mean mu; centering it and subtracting it from familial effects yields independent Gaussian genetic innovations. The DZ two-stage variance halves give genetic variance va and cross covariance va/2; MZ shares a single genetic effect. Residual variance depends on genetic A, not on total familial F or centered C. Conditional residual independence is the model assumption required throughout."
+  },
+  "independent_step_checks": [
+    {
+      "step": "Coordinate and mean",
+      "finding": "C=C_source-mu is centered and independent of genetic innovations. Theta=mu+A+C+sqrt(ve*exp(beta*A))*Z therefore includes mu exactly once. ETheta=mu because E[Z|A,C]=0."
+    },
+    {
+      "step": "Moment finiteness",
+      "finding": "At fixed finite va,vc,ve,beta, every positive-integer absolute residual moment factors into ve^(k/2)*E exp(k*beta*A/2)*E|Z|^k, finite by the Gaussian exponential moment. Gaussian A+C also has finite absolute moments. The stated sum inequality establishes finite absolute central moments. Products needed for covariance and cubic expansion are integrable. This uses neither a marginal-trait moment-generating function nor any prior averaging."
+    },
+    {
+      "step": "Covariances",
+      "finding": "Conditional residual cross product is H1*H2*E[Z1*Z2]=0; a shared random variance scale in MZ does not imply shared residual innovations. All residual versus genetic/common cross terms vanish by conditional centering. Thus K_MZ=va+vc and K_DZ=va/2+vc, including nonzero beta."
+    },
+    {
+      "step": "Variance",
+      "finding": "Total variance yields T=va+vc+R with R=ve*exp(beta^2*va/2)>0. ve is the conditional variance at genetic A0; it is not the marginal residual variance R unless beta=0. In particular the beta0 notation denotes log baseline environmental variance, distinct from the interaction coefficient beta."
+    },
+    {
+      "step": "Third central moment",
+      "finding": "Independently expanding conditional on A,C leaves (A+C)^3+3*(A+C)*ve*exp(beta*A). The first expectation is0 and the C term is0 by independence/centering. Completing the square gives exp(beta*a)*phi_va(a)=exp(beta^2*va/2)*phi_va(a-va*beta), hence E[A exp(beta*A)]=va*beta*exp(beta^2*va/2). Therefore m3=3*va*beta*R, with correct factor3 and sign."
+    },
+    {
+      "step": "Global inverse",
+      "finding": "Two zygosity covariances identify va=2*(K_MZ-K_DZ) and vc=2*K_DZ-K_MZ. T then identifies R. Since va,R>0, beta=m3/(3*va*R) is unique; beta0=log(R)-beta^2*va/2 and mu=mean are unique. This is an explicit global inverse on moments arising from the stated domain, not parameter counting or a claim that arbitrary moment vectors are admissible."
+    },
+    {
+      "step": "Boundaries",
+      "finding": "At va0 the interaction vanishes for all beta and identification fails; excluded correctly. At vc0 the fixed-parameter calculations remain valid with degenerate centered C, although the source prior is interior. ve0 is outside finite beta0 and would also erase interaction. For beta=0 the trait pair is Gaussian; for beta nonzero, va,R>0 force nonzero finite m3 and hence a non-Gaussian marginal."
+    }
+  ],
+  "exact_checks": {
+    "replayed": 13,
+    "all_passed": true,
+    "method": "Re-executed submitted exact SymPy assertions with output write suppressed. All dependency hashes match. Independently reviewed the probability and exponential-tilting derivations; symbolic fixtures do not replace independence/integrability arguments.",
+    "numerical_integration": 0,
+    "Monte_Carlo": 0,
+    "model_fits": 0
+  },
+  "limits": [
+    "The inverse is for the latent trait coordinate. No new proof makes the finitely many calibrated Rasch response-pattern probabilities identify these latent moments. The known-Gaussian item lemma cannot be applied for nonzero beta.",
+    "Known genetic correlations, same components across both zygosity populations, both population laws and the stated independent innovations are substantive conditions. The theorem does not transfer to one-zygosity or different-component designs.",
+    "Fixed-parameter moment existence does not imply prior-predictive finite moments: the source InvGamma(1,1) variances have infinite mean. No prior averaging or posterior-moment theorem is used.",
+    "Latent moment identification does not imply good conditioning, finite-MLE uniqueness/existence, unbiased recovery, significance/power or sampler convergence.",
+    "No formal proof-assistant certification supplied. Ordinary analytical acceptance leaves all broad scientific statuses and missing observed-response bridge unchanged."
+  ],
+  "operations": "Only this independent review record created; author scripts/outputs and running model files unchanged; no sampling, integration or Monte Carlo."
+}
