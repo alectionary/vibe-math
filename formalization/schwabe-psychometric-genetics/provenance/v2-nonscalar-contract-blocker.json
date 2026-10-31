@@ -1,0 +1,50 @@
+{
+  "recorded_utc": "2026-10-31T00:24:52.579811+00:00",
+  "status": "contract conflict; scientific work continues",
+  "validator_source": "/tmp/schwabe-skill-v2/.agents/skills/replication-paper/scripts/first_page.py",
+  "validator_sha256": "a4d99caf7a23891a1ec64ae2e5cac3d0668228883039d49642b6071f2f7ec3ad",
+  "skill_commit": "57f3919abdf76f764762662e66c9a3672c780da6",
+  "contract_instruction": "Keep a justified comparison tolerance even when the test cannot yet be performed.",
+  "implementation_location": "scripts/first_page.py tolerance() lines32\u201352; comparison() calls tolerance before recognizing absent effects",
+  "reproduction_call": "first_page.comparison(example_row)",
+  "example_row": {
+    "id": "qualitative-power-contract-example",
+    "claim_id": "H6.power-assertion",
+    "contrast_index": null,
+    "estimand": "Unquantified assertion of greater power across all investigated conditions",
+    "units": "qualitative assertion; no scalar effect supplied",
+    "positive_means": "Not applicable without a specified scalar power contrast",
+    "published_effect": null,
+    "ours_effect": null,
+    "estimate_status": "unresolved",
+    "unresolved_reason": "The source supplies no numeric power difference, and no power experiment has established one.",
+    "tolerance": {
+      "kind": "not_applicable",
+      "value": null,
+      "basis": "No scalar estimand exists for this whole-grid qualitative proposition; inventing zero or borrowing a component bound would misrepresent it."
+    },
+    "magnitude": "not established",
+    "direction": "not established",
+    "interpretation": "descriptive point estimates; not equivalence",
+    "uncertainty_statement": "No numeric power estimate or sampling interval is established."
+  },
+  "actual_result": "ValueError: nonnegative tolerance and scientific basis required",
+  "independent_review": "production_analysis separately confirmed the conflict and rejected artificial zero/max/average tolerances for qualitative or whole-grid rows.",
+  "affected_examples": [
+    "H6.power-assertion",
+    "C5-2.power-inference.beta1a",
+    "C5-2.power-inference.beta1c",
+    "C5-3.twenty-sufficient",
+    "C4-2.two-dimensions",
+    "C4-3.subscale",
+    "H6.precision-grid as one nonscalar parent"
+  ],
+  "honest_available_cases": [
+    "Source rounding applies to unavailable numeric scalar coefficients.",
+    "Existing geometric extraction bounds apply to individual Chapter6 contrast cells.",
+    "Exact zero applies only to a specifically defined symbolic identity, not any arbitrary qualitative proposition."
+  ],
+  "required_resolution": "Explicit contract semantics for genuinely nonscalar/not-applicable tolerances while retaining unresolved labels, complete coverage and component evidence; alternatively an explicit approved departure. Do not fabricate numeric margins or demote principal claims for layout.",
+  "authorization_limit": "No reusable skill edits or validator bypass performed. Existing branch only; no new PR or merge.",
+  "unaffected_work": "Continue supervised production, terminal hash audit, frozen numerical analysis and bounded diagnostic; retain all source claims and scientific limitations."
+}
