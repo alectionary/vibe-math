@@ -1,0 +1,176 @@
+{
+  "document_kind": "explicit_root_scientific_overrides",
+  "complete_packet": false,
+  "adjudicator": "Root investigator after separate exact-arithmetic/source review by production_guards",
+  "reviewed_utc": "2026-10-31T02:10:58.366467+00:00",
+  "source_specification_sha256": "44eadb18c4327f52dc3f941dece153e378667d29c770d3f5230be2372f15e163",
+  "independent_review": {
+    "path": "provenance/chapter6-analytical-independent-review.json",
+    "sha256": "493574dadd6e314a7dcb1728c58a24b2e97e65feaa071c5a1e56bac9eb75616d"
+  },
+  "claims": [
+    {
+      "id": "C6-1.covariance",
+      "ours": {
+        "value": "Let x=(x1,x2) have covariance [[S,B],[B,S]], S=W+B, and yj=mu+beta^T*xj+uj. The residual pair u is independent of x with variance A+C+E and covariance rho*A+C. Then Var(yj)=A+C+E+beta^T*S*beta, Cov(y1,y2)=rho*A+C+beta^T*B*beta, Cov(yj,xj)=beta^T*S and Cov(yj,x_other)=beta^T*B. These are all blocks of Eq6.5. Equivalently transform the block-diagonal covariance of (u,x) by the linear map (u,x)->(y,x).",
+        "units": "analytical proposition / model kernel",
+        "unavailable_reason": null
+      },
+      "methods": "Let x=(x1,x2) have covariance [[S,B],[B,S]], S=W+B, and yj=mu+beta^T*xj+uj. The residual pair u is independent of x with variance A+C+E and covariance rho*A+C. Then Var(yj)=A+C+E+beta^T*S*beta, Cov(y1,y2)=rho*A+C+beta^T*B*beta, Cov(yj,xj)=beta^T*S and Cov(yj,x_other)=beta^T*B. These are all blocks of Eq6.5. Equivalently transform the block-diagonal covariance of (u,x) by the linear map (u,x)->(y,x). Our exact-arithmetic check checks the linear-map construction against the separately assembled displayed blocks for q=1..5 and both zygosities, using nonconstant rational beta. All ten match exactly. Existing outputs/analytic-checks.json q2..5 checks the source simulation design numerically, including explained fraction0.64/1.64 and DZ cross-covariance.",
+      "uncertainty": "MCSE, confidence intervals and source rounding tolerance are inapplicable to this exact identity. Existing floating-point discrepancies are arithmetic precision, not sampling error. The source narrative39% is a rounded description of0.64/1.64, separate from covariance identity.",
+      "multiplicity": "Exact deterministic analytical/model check; no inferential testing family. Numerical examples illustrate the stated identity and are not independent empirical replications.",
+      "status": "replicated",
+      "status_reason": "Established ordinary analytical identity under stated Gaussian regression assumptions. This verdict concerns the stated narrow analytical/model claim only.",
+      "numerical": "Exact analytical arithmetic or conditional distribution semantics; no printed-figure rounding verdict applies.",
+      "reconstruction_scope": "Ordinary analytical and literal code-semantic verification, with independently checked exact arithmetic. No Lean formalization, empirical calibration or posterior validation is claimed.",
+      "reproduction_deviation": "No scientific scalar reproduction deviation is defined for this analytical proposition.",
+      "limitations": [
+        "No conclusion about empirical fit, missingness ignorability or parameter-recovery performance follows from covariance algebra.",
+        "Ordinary analytical verification is distinct from formal proof-assistant certification."
+      ],
+      "artifact_ids": [
+        "ch6-terminal-mapping",
+        "ch6-terminal-summary",
+        "ch6-analysis-plan",
+        "ch6-source-estimand-review",
+        "ch6-analytic-checks",
+        "ch6-openmx-implementation",
+        "chapter6-analytical-evidence",
+        "chapter6-analytical-checks",
+        "chapter6-analytical-code"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "The narrow source model identity or mechanism has been checked analytically and by exact arithmetic; broader empirical and inferential claims remain separate.",
+        "attempted": "Let x=(x1,x2) have covariance [[S,B],[B,S]], S=W+B, and yj=mu+beta^T*xj+uj. The residual pair u is independent of x with variance A+C+E and covariance rho*A+C. Then Var(yj)=A+C+E+beta^T*S*beta, Cov(y1,y2)=rho*A+C+beta^T*B*beta, Cov(yj,xj)=beta^T*S and Cov(yj,x_other)=beta^T*B. These are all blocks of Eq6.5. Equivalently transform the block-diagonal covariance of (u,x) by the linear map (u,x)->(y,x). Our exact-arithmetic check checks the linear-map construction against the separately assembled displayed blocks for q=1..5 and both zygosities, using nonconstant rational beta. All ten match exactly. Existing outputs/analytic-checks.json q2..5 checks the source simulation design numerically, including explained fraction0.64/1.64 and DZ cross-covariance.",
+        "untested": "Empirical adequacy, full posterior convergence, parameter-recovery/power implications, and Lean formalization are not established by this check.",
+        "resource_basis": "Python standard-library exact arithmetic, under one second; no model fits, random samples or chains.",
+        "next_evidence": "No further computation is needed for the stated narrow identity; separate empirical inputs and inference validation are needed for broader claims."
+      }
+    },
+    {
+      "id": "C6-1.borrowing",
+      "ours": {
+        "value": "Partition a jointly Gaussian vector into missing U and observed O with fixed known mean/covariance and nonsingular Sigma_OO. E[U|O]=mu_U+Sigma_UO*Sigma_OO^{-1}*(O-mu_O), and Var(U|O)=Sigma_UU-Sigma_UO*Sigma_OO^{-1}*Sigma_OU. The removed quadratic form is positive semidefinite. Additional observed variables reduce conditional variance further by their residual covariance with U after conditioning on current O. Strict reduction requires nonzero conditional covariance; marginal correlation alone does not ensure incremental information after other observations. The conditional mean depends on correlated observed values, so a co-twin covariate and phenotypes can inform a missing value. Exact scalar-covariate illustration: W=B=1,beta=1/2, residual A=1/2,C=3/10,E=1/5,rho=1/2. With missing x1, successive conditional variances after observing nothing,x2,(x2,y1),(x2,y1,y2) are2,3/2,12/11,279/286. Every decrease is exact and strict.",
+        "units": "analytical proposition / model kernel",
+        "unavailable_reason": null
+      },
+      "methods": "Partition a jointly Gaussian vector into missing U and observed O with fixed known mean/covariance and nonsingular Sigma_OO. E[U|O]=mu_U+Sigma_UO*Sigma_OO^{-1}*(O-mu_O), and Var(U|O)=Sigma_UU-Sigma_UO*Sigma_OO^{-1}*Sigma_OU. The removed quadratic form is positive semidefinite. Additional observed variables reduce conditional variance further by their residual covariance with U after conditioning on current O. Strict reduction requires nonzero conditional covariance; marginal correlation alone does not ensure incremental information after other observations. The conditional mean depends on correlated observed values, so a co-twin covariate and phenotypes can inform a missing value. Exact scalar-covariate illustration: W=B=1,beta=1/2, residual A=1/2,C=3/10,E=1/5,rho=1/2. With missing x1, successive conditional variances after observing nothing,x2,(x2,y1),(x2,y1,y2) are2,3/2,12/11,279/286. Every decrease is exact and strict. ",
+      "uncertainty": "No Monte Carlo sampling; MCSE and printed rounding verdicts are inapplicable.",
+      "multiplicity": "Exact deterministic analytical/model check; no inferential testing family. Numerical examples illustrate the stated identity and are not independent empirical replications.",
+      "status": "replicated",
+      "status_reason": "Narrow information-borrowing mechanism analytically established; universal lower fitted-parameter SE or power is not established by it. This verdict concerns the stated narrow analytical/model claim only.",
+      "numerical": "Exact analytical arithmetic or conditional distribution semantics; no printed-figure rounding verdict applies.",
+      "reconstruction_scope": "Ordinary analytical and literal code-semantic verification, with independently checked exact arithmetic. No Lean formalization, empirical calibration or posterior validation is claimed.",
+      "reproduction_deviation": "No scientific scalar reproduction deviation is defined for this analytical proposition.",
+      "limitations": [
+        "Conditional uncertainty for a missing value with known parameters is different from a fitted biometric parameter SE with nuisance parameters estimated. No guarantee of lower SE in every realized finite fit is asserted.",
+        "The Gaussian prediction statement requires correct joint specification and suitable handling of the observation mechanism. Informative missingness not captured by the likelihood can invalidate inference.",
+        "No direct power experiment, universal missingness-scenario comparison, or observed empirical improvement is supplied by this small example.",
+        "Ordinary analytical verification is distinct from formal proof-assistant certification."
+      ],
+      "artifact_ids": [
+        "ch6-terminal-mapping",
+        "ch6-terminal-summary",
+        "ch6-analysis-plan",
+        "ch6-source-estimand-review",
+        "ch6-analytic-checks",
+        "ch6-appendix-g-run",
+        "chapter6-analytical-evidence",
+        "chapter6-analytical-checks",
+        "chapter6-analytical-code"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "The narrow source model identity or mechanism has been checked analytically and by exact arithmetic; broader empirical and inferential claims remain separate.",
+        "attempted": "Partition a jointly Gaussian vector into missing U and observed O with fixed known mean/covariance and nonsingular Sigma_OO. E[U|O]=mu_U+Sigma_UO*Sigma_OO^{-1}*(O-mu_O), and Var(U|O)=Sigma_UU-Sigma_UO*Sigma_OO^{-1}*Sigma_OU. The removed quadratic form is positive semidefinite. Additional observed variables reduce conditional variance further by their residual covariance with U after conditioning on current O. Strict reduction requires nonzero conditional covariance; marginal correlation alone does not ensure incremental information after other observations. The conditional mean depends on correlated observed values, so a co-twin covariate and phenotypes can inform a missing value. Exact scalar-covariate illustration: W=B=1,beta=1/2, residual A=1/2,C=3/10,E=1/5,rho=1/2. With missing x1, successive conditional variances after observing nothing,x2,(x2,y1),(x2,y1,y2) are2,3/2,12/11,279/286. Every decrease is exact and strict. ",
+        "untested": "Empirical adequacy, full posterior convergence, parameter-recovery/power implications, and Lean formalization are not established by this check.",
+        "resource_basis": "Python standard-library exact arithmetic, under one second; no model fits, random samples or chains.",
+        "next_evidence": "No further computation is needed for the stated narrow identity; separate empirical inputs and inference validation are needed for broader claims."
+      }
+    },
+    {
+      "id": "C6-8.binary-link",
+      "ours": {
+        "value": "Given Gaussian liability L and threshold t=0, define V=1{L>=0}. The script draws X|L as Bernoulli(epsilon+(1-2*epsilon)*V), epsilon=0.001. Thus probabilities are0.001 below threshold and0.999 at/above threshold; this is not a deterministic threshold observation. For L~Normal(mu,sigma^2),sigma>0, P(X=1)=0.001+0.998*Phi(mu/sigma). At mu0 this equals1/2. Conditionally independent observation errors imply Cov(X1,X2)=0.998^2*Cov(V1,V2). Conditional Bernoulli variance is0.001*0.999, not0. Conditional on fixed hyperparameters gamma_cov and the zygosity-specific precision matrices, the Gaussian hierarchy has shared family psi and independent within-twin innovations. Thus its latent covariance blocks are B_z+W_z on the diagonal and B_z across twins, where B_z=tau_b_z inverse and W_z=tau_w_z inverse, separately for MZ and DZ. The source uses separate MZ/DZ Wishart precision distributions. This is not a claim of a common B/W or a Gaussian marginal after integrating over their priors. Observed binary X variables are non-Gaussian.",
+        "units": "analytical proposition / model kernel",
+        "unavailable_reason": null
+      },
+      "methods": "Given Gaussian liability L and threshold t=0, define V=1{L>=0}. The script draws X|L as Bernoulli(epsilon+(1-2*epsilon)*V), epsilon=0.001. Thus probabilities are0.001 below threshold and0.999 at/above threshold; this is not a deterministic threshold observation. For L~Normal(mu,sigma^2),sigma>0, P(X=1)=0.001+0.998*Phi(mu/sigma). At mu0 this equals1/2. Conditionally independent observation errors imply Cov(X1,X2)=0.998^2*Cov(V1,V2). Conditional Bernoulli variance is0.001*0.999, not0. Conditional on fixed hyperparameters gamma_cov and the zygosity-specific precision matrices, the Gaussian hierarchy has shared family psi and independent within-twin innovations. Thus its latent covariance blocks are B_z+W_z on the diagonal and B_z across twins, where B_z=tau_b_z inverse and W_z=tau_w_z inverse, separately for MZ and DZ. The source uses separate MZ/DZ Wishart precision distributions. This is not a claim of a common B/W or a Gaussian marginal after integrating over their priors. Observed binary X variables are non-Gaussian. Exact epsilon fractions and covariance multiplier249001/250000 verified by our independently authored check. Source text explicitly contains both sides of each twin/zygosity branch.",
+      "uncertainty": "Exact kernel semantics; MCSE and source rounding are inapplicable.",
+      "multiplicity": "Exact deterministic analytical/model check; no inferential testing family. Numerical examples illustrate the stated identity and are not independent empirical replications.",
+      "status": "replicated",
+      "status_reason": "Literal AppendixG probabilistic link semantics established by analytical/code inspection and exact checks. This verdict concerns the stated narrow analytical/model claim only.",
+      "numerical": "Exact analytical arithmetic or conditional distribution semantics; no printed-figure rounding verdict applies.",
+      "reconstruction_scope": "Ordinary analytical and literal code-semantic verification, with independently checked exact arithmetic. No Lean formalization, empirical calibration or posterior validation is claimed.",
+      "reproduction_deviation": "No scientific scalar reproduction deviation is defined for this analytical proposition.",
+      "limitations": [
+        "The step boundary follows the nonnegative-step convention and has probability zero under a nondegenerate Gaussian.",
+        "Threshold0 alone does not establish identification of all latent scale/covariance parameters; no such claim is made.",
+        "This verifies the probability kernel, not empirical calibration, posterior convergence or the adequacy of approximating deterministic thresholds by0.999/0.001.",
+        "Ordinary analytical verification is distinct from formal proof-assistant certification."
+      ],
+      "artifact_ids": [
+        "ch6-terminal-mapping",
+        "ch6-terminal-summary",
+        "ch6-analysis-plan",
+        "ch6-source-estimand-review",
+        "ch6-analytic-checks",
+        "ch6-appendix-g-run",
+        "chapter6-analytical-evidence",
+        "chapter6-analytical-checks",
+        "chapter6-analytical-code"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "The narrow source model identity or mechanism has been checked analytically and by exact arithmetic; broader empirical and inferential claims remain separate.",
+        "attempted": "Given Gaussian liability L and threshold t=0, define V=1{L>=0}. The script draws X|L as Bernoulli(epsilon+(1-2*epsilon)*V), epsilon=0.001. Thus probabilities are0.001 below threshold and0.999 at/above threshold; this is not a deterministic threshold observation. For L~Normal(mu,sigma^2),sigma>0, P(X=1)=0.001+0.998*Phi(mu/sigma). At mu0 this equals1/2. Conditionally independent observation errors imply Cov(X1,X2)=0.998^2*Cov(V1,V2). Conditional Bernoulli variance is0.001*0.999, not0. Conditional on fixed hyperparameters gamma_cov and the zygosity-specific precision matrices, the Gaussian hierarchy has shared family psi and independent within-twin innovations. Thus its latent covariance blocks are B_z+W_z on the diagonal and B_z across twins, where B_z=tau_b_z inverse and W_z=tau_w_z inverse, separately for MZ and DZ. The source uses separate MZ/DZ Wishart precision distributions. This is not a claim of a common B/W or a Gaussian marginal after integrating over their priors. Observed binary X variables are non-Gaussian. Exact epsilon fractions and covariance multiplier249001/250000 verified by our independently authored check. Source text explicitly contains both sides of each twin/zygosity branch.",
+        "untested": "Empirical adequacy, full posterior convergence, parameter-recovery/power implications, and Lean formalization are not established by this check.",
+        "resource_basis": "Python standard-library exact arithmetic, under one second; no model fits, random samples or chains.",
+        "next_evidence": "No further computation is needed for the stated narrow identity; separate empirical inputs and inference validation are needed for broader claims."
+      }
+    },
+    {
+      "id": "C6-8.continuous-link",
+      "ours": {
+        "value": "The standardized school-size column2 has gamma_cov[2]=0. The observation rule X|L~Normal(L,precision100) means X=L+epsilon with independent epsilon~Normal(0,variance1/100). Residual SD is1/10. Conditional on fixed hyperparameters, Var(X)=Var(L)+0.01; cross-twin and cross-variable covariances are unchanged by independent mean-zero observation errors. An unconditional variance statement additionally requires finite second moments, which are not assumed for the prior-predictive mixture. Covariance addition is separate from conditional likelihood and parameter estimation.",
+        "units": "analytical proposition / model kernel",
+        "unavailable_reason": null
+      },
+      "methods": "The standardized school-size column2 has gamma_cov[2]=0. The observation rule X|L~Normal(L,precision100) means X=L+epsilon with independent epsilon~Normal(0,variance1/100). Residual SD is1/10. Conditional on fixed hyperparameters, Var(X)=Var(L)+0.01; cross-twin and cross-variable covariances are unchanged by independent mean-zero observation errors. An unconditional variance statement additionally requires finite second moments, which are not assumed for the prior-predictive mixture. Covariance addition is separate from conditional likelihood and parameter estimation. Our exact-arithmetic check confirms variance1/100 from precision100. All four twin/zygosity observation branches use100 in the source.",
+      "uncertainty": "Exact precision-to-variance conversion; no MCSE or rounding tolerance applies.",
+      "multiplicity": "Exact deterministic analytical/model check; no inferential testing family. Numerical examples illustrate the stated identity and are not independent empirical replications.",
+      "status": "replicated",
+      "status_reason": "Added residual variance established by literal AppendixG normal-precision semantics. This verdict concerns the stated narrow analytical/model claim only.",
+      "numerical": "Exact analytical arithmetic or conditional distribution semantics; no printed-figure rounding verdict applies.",
+      "reconstruction_scope": "Ordinary analytical and literal code-semantic verification, with independently checked exact arithmetic. No Lean formalization, empirical calibration or posterior validation is claimed.",
+      "reproduction_deviation": "No scientific scalar reproduction deviation is defined for this analytical proposition.",
+      "limitations": [
+        "X is not set equal to its latent expectation. The0.01 addition is on the standardized school-size scale, not raw student-count units.",
+        "The source comment labels this a prior; within the hierarchy it functions as a conditional observation distribution.",
+        "The phenotypic regression in AppendixG uses observed/imputed X, not the latent exp node directly. This matters for interpretation and prevents treating the application mixed-data model as exactly the continuous joint-Gaussian Eq6.5 model.",
+        "No empirical posterior or sensitivity of results to0.01 is established here.",
+        "Ordinary analytical verification is distinct from formal proof-assistant certification."
+      ],
+      "artifact_ids": [
+        "ch6-terminal-mapping",
+        "ch6-terminal-summary",
+        "ch6-analysis-plan",
+        "ch6-source-estimand-review",
+        "ch6-analytic-checks",
+        "ch6-appendix-g-run",
+        "chapter6-analytical-evidence",
+        "chapter6-analytical-checks",
+        "chapter6-analytical-code"
+      ],
+      "contrasts": [],
+      "stopping": {
+        "reason": "The narrow source model identity or mechanism has been checked analytically and by exact arithmetic; broader empirical and inferential claims remain separate.",
+        "attempted": "The standardized school-size column2 has gamma_cov[2]=0. The observation rule X|L~Normal(L,precision100) means X=L+epsilon with independent epsilon~Normal(0,variance1/100). Residual SD is1/10. Conditional on fixed hyperparameters, Var(X)=Var(L)+0.01; cross-twin and cross-variable covariances are unchanged by independent mean-zero observation errors. An unconditional variance statement additionally requires finite second moments, which are not assumed for the prior-predictive mixture. Covariance addition is separate from conditional likelihood and parameter estimation. Our exact-arithmetic check confirms variance1/100 from precision100. All four twin/zygosity observation branches use100 in the source.",
+        "untested": "Empirical adequacy, full posterior convergence, parameter-recovery/power implications, and Lean formalization are not established by this check.",
+        "resource_basis": "Python standard-library exact arithmetic, under one second; no model fits, random samples or chains.",
+        "next_evidence": "No further computation is needed for the stated narrow identity; separate empirical inputs and inference validation are needed for broader claims."
+      }
+    }
+  ]
+}
