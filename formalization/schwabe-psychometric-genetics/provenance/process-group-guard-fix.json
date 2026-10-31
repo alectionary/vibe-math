@@ -1,0 +1,8 @@
+{
+  "status": "Implementation for independent static/fixture review only; not executed on model workloads",
+  "original_dispatcher_sha256": "118331694fd75ac206fcd427589e52204742b6e23ea1e9711b645b201dba3f57",
+  "new_dispatcher_sha256": "bef846d28b1ce391b8285ddd4ac5b5505d696cbab781a66dbca14881e42aa89e",
+  "change": "Exclude members of the active worker process groups, not just worker PIDs. Model commands in unrelated groups still conflict. ESRCH exits ignored and permissions errors remain fatal.",
+  "ownership_basis": "Pinned dispatcher starts each worker in a new session; worker PID equals its PGID. Descendants that exec hashing shells remain in that owned group even after reparenting. No model, priors, schedule, thresholds, checkpoint or timeout changes.",
+  "future_execution": "No new run is authorized by this fix. Prior final allocation was cancelled; preserve it and require a separately justified resource/continuation plan."
+}

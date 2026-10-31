@@ -18,6 +18,14 @@ The existing 17-page main paper remains the reviewed milestone at commit `241fd4
 
 The final, fixed longer centered experiment is specified in [jags-centered-extended-plan.json](provenance/jags-centered-extended-plan.json). Its result must be read from its terminal ledger and independent outcome review, not inferred from successful adaptation or a partial checkpoint. Earlier process-guard aborts and the failed convergence results remain preserved.
 
+## Final diagnostic status
+
+The 28,000-draw experiment was cancelled at 04:05:18 UTC on 31 October 2026. The guard mistook a checksum shell in chain 1's own process group for a competing model. Zero of four requested chains completed the planned length. Chain 1 saved 12,000 rows with a stale 8,000-row checkpoint manifest; the other chains saved 8,000 rows with matching manifests. Every saved prefix and sampler state matches previously retained centered evidence, so this interruption adds no new independent posterior evidence or convergence conclusion.
+
+See [jags-centered-extended-interruption-audit.json](provenance/jags-centered-extended-interruption-audit.json) and its [independent review](provenance/jags-centered-extended-interruption-independent-review.json). The frozen files, including the inconsistent manifest, are preserved. The new process-group-aware dispatcher passes independent regression checks but has not been exercised on another model run. There was no restart.
+
+This follow-up consumed 9,006.183 summed chain-process wall seconds; including the earlier initial diagnostic gives 11,905.255 seconds. These are different accounting scopes, not measured CPU time. The follow-up allocation was 12,000 seconds. A fresh run at the same limits would require up to 5,480 chain-process seconds plus 20 seconds of cleanup, exceeding its remaining allocation. Preparation and diagnostic analysis have separate caps. A new resource plan is required before further execution; no source-count grid has started.
+
 ## Reproduction
 
 Use the R/JAGS runtime and package versions documented in the study's original [README.md](README.md) and pinned runtime manifests. The actual execution environment uses `/workspace/slot3-runtime/bin/Rscript` and the separate posterior library. Run the following from this study directory.
@@ -50,11 +58,11 @@ The alpha sensitivity intentionally checks the retained canonical generator outp
 A fresh execution of the fixed final diagnostic, requiring its separately declared allocation:
 
 ```sh
-python simulation/dispatch_jags_centered_extended.py check --namespace production/NEW_CENTERED_DIAGNOSTIC
-python simulation/dispatch_jags_centered_extended.py dispatch --namespace production/NEW_CENTERED_DIAGNOSTIC
-python simulation/dispatch_jags_centered_extended.py diagnose --namespace production/NEW_CENTERED_DIAGNOSTIC
+python simulation/dispatch_jags_centered_extended_guarded.py check --namespace production/NEW_CENTERED_DIAGNOSTIC
+python simulation/dispatch_jags_centered_extended_guarded.py dispatch --namespace production/NEW_CENTERED_DIAGNOSTIC
+python simulation/dispatch_jags_centered_extended_guarded.py diagnose --namespace production/NEW_CENTERED_DIAGNOSTIC
 ```
 
 The dispatcher refuses nonempty execution namespaces and conflicting known model processes. It pins code, prepared inputs and runtime bytes, caps each chain, preserves all four requested outcomes and writes partial checkpoints. It does not automatically resume, replace chains, lengthen sampling or launch a source-count grid. Partial checkpoint data and sampler-state files are valid together only when their hashes match the checkpoint record.
 
-The saved canonical final outcome can be checked with `simulation/validate_saved_centered_extended_outcome.py` and `simulation/check_centered_trajectory_prefix.R`. The prefix check requires a new CSV output filename. Reused trajectory prefixes must never be pooled as independent draws with the earlier centered run.
+The interrupted canonical run has no complete final draws and cannot pass `simulation/validate_saved_centered_extended_outcome.py` or the full-length `simulation/check_centered_trajectory_prefix.R`. Its actual partial-file checks are recorded in [jags-centered-extended-interrupted-checkpoints.csv](provenance/jags-centered-extended-interrupted-checkpoints.csv). Full-length helpers are retained for an explicitly authorized, completed future run; the prefix helper requires a new CSV output filename. Reused trajectory prefixes must never be pooled as independent draws with the earlier centered run.

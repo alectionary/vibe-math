@@ -1,0 +1,79 @@
+{
+  "reviewed_utc": "2026-10-31T04:13:49.874933+00:00",
+  "reviewer": "Independent reviewer /root/interrupted_run_review",
+  "status": "Interrupted evidence accounting and group guard fix accepted; no convergence or execution authorization",
+  "requested_chains": 4,
+  "completed_chains": 0,
+  "cancelled_chains": 4,
+  "target_retained_per_chain": 28000,
+  "independent_saved_RDS_checks": {
+    "actual_rows": [
+      12000,
+      8000,
+      8000,
+      8000
+    ],
+    "manifest_rows": [
+      8000,
+      8000,
+      8000,
+      8000
+    ],
+    "draw_hash_matches_manifest": [
+      false,
+      true,
+      true,
+      true
+    ],
+    "state_hash_matches_manifest": [
+      false,
+      true,
+      true,
+      true
+    ],
+    "identical_prior_draws": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "identical_prior_states": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "method": "Read-only R readRDS/identical and sha256sum. Chain1 compared to prior completed centered prepared artifacts; chains2-4 to supervision/20261031T034459Z snapshots."
+  },
+  "ownership": {
+    "pid": 102152,
+    "ppid": 1,
+    "pgid": 101832,
+    "sid": 101832,
+    "state": "Z",
+    "comm": "sh",
+    "independent_observation": "ps after interruption; group equals chain1 worker PID from outcomes",
+    "conclusion": "Owned child incorrectly classified as conflicting external model. Checksum fork explanation consistent with wrapper checkpoint save order and inherited argv, not a contemporaneous traced syscall record."
+  },
+  "chain_wall_seconds": {
+    "extended": 2616.4881290859994,
+    "four_followup_attempts": 9006.182658795005,
+    "initial_gate": 2899.0723325030012,
+    "all_five_attempts": 11905.254991298007,
+    "remaining_of_12000_followup_only": 2993.817341204995,
+    "remaining_of_12000_all_attempts": 94.74500870199336,
+    "caveat": "Summed recorded chain process elapsed time, not CPU time; excludes preparation and diagnostic time. Original followup budget test excludes initial gate; denominator must be explicit."
+  },
+  "guard_review": {
+    "path": "simulation/dispatch_jags_centered_extended_guarded.py",
+    "sha256": "bef846d28b1ce391b8285ddd4ac5b5505d696cbab781a66dbca14881e42aa89e",
+    "tests": "simulation/test_extended_group_guard_independent.py",
+    "passed": 6,
+    "scope": "Synthetic process-table fixtures plus exact diff. All launch/session, model, timeout and checkpoint code unchanged. Active worker groups excluded; unrelated groups still blocked; ESRCH tolerated and permission errors fatal. No model run."
+  },
+  "frozen_evidence": {
+    "pdf_sha256": "d1aee6a0f1c488ea68cc76b8489949f3acaa9aa7a96f48b6ed54391446b9fefb",
+    "packet_sha256": "41c12d8a490b572f1e5ea66a2e12e0becfad1398962616fdbad79b8f4ab2e554"
+  },
+  "scientific_conclusion": "No new independent posterior evidence; prior complete12000 centered failed joint gate remains controlling. Interrupted28000 attempt cannot be classified as a completed convergence test. No further model run performed or authorized by this review."
+}

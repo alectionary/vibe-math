@@ -1,0 +1,98 @@
+{
+  "observed_utc": "2026-10-31T04:12:48.987943+00:00",
+  "classification": "Process guard falsely classified an owned checksum child as an external model; final longer diagnostic interrupted, not completed.",
+  "process_evidence": {
+    "pid": 102152,
+    "stat_record": "102152 (sh) Z 1 101832 101832 0 -1 4228364 207 0 0 0 0 0 0 0 20 0 1 0 3903824 0 0 18446744073709551615 0 0 0 0 0 0 0 0 65538 0 0 0 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0",
+    "state": "Z",
+    "ppid": 1,
+    "process_group": 101832,
+    "session": 101832,
+    "owned_chain1_pid": 101832,
+    "ownership_confirmed": true
+  },
+  "mechanism": "R system2 forks a child which can briefly retain the parent R argv before exec of sh/sha256sum. Guard excluded worker PIDs but not their process groups. Frozen wrapper calls sha256sum during checkpoint write; interruption occurred between saving new partial/state files and replacing checkpoint manifest.",
+  "all_requested_outcomes": [
+    {
+      "id": 1,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_centered_extended_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-centered-extended-v1/prepared",
+        "1"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 101832,
+      "started_utc": "2026-10-31T03:53:58Z",
+      "elapsed_seconds": 679.4465706250048,
+      "ended_utc": "2026-10-31T04:05:18Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 2,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_centered_extended_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-centered-extended-v1/prepared",
+        "2"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 101858,
+      "started_utc": "2026-10-31T03:54:32Z",
+      "elapsed_seconds": 645.6837087699969,
+      "ended_utc": "2026-10-31T04:05:18Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 3,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_centered_extended_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-centered-extended-v1/prepared",
+        "3"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 101859,
+      "started_utc": "2026-10-31T03:54:32Z",
+      "elapsed_seconds": 645.6804464529996,
+      "ended_utc": "2026-10-31T04:05:18Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 4,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_centered_extended_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-centered-extended-v1/prepared",
+        "4"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 101860,
+      "started_utc": "2026-10-31T03:54:32Z",
+      "elapsed_seconds": 645.6774032379981,
+      "ended_utc": "2026-10-31T04:05:18Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    }
+  ],
+  "chain_process_wall_seconds": {
+    "jags-long-gate-v1": 2691.530247063012,
+    "jags-long-gate-recovery-v1": 1030.4480555280024,
+    "jags-centered-gate-v1": 2667.7162271179914,
+    "jags-centered-extended-v1": 2616.4881290859994
+  },
+  "total_followup_chain_process_wall_seconds": 9006.182658795005,
+  "nominal_original_allocation": 12000,
+  "saved_checkpoint_assessment": "provenance/jags-centered-extended-interrupted-checkpoints.csv",
+  "result_scope": "No28000-draw chain completed. Chain1 has12000 saved rows with stale8000manifest; otherchains8000 matched. All raw prefixes and states equal prior bound centered evidence. No additional independent posterior evidence, no new joint-gate decision, no source-count recovery result.",
+  "operation_status": "Cancelled by internal guard, not denied by approval review. Processes stopped; offending owned child is a zombie with no compute. No automatic restart/resume.",
+  "current_pdf": "Unchanged reviewed milestone; SHA d1aee6a0f1c488ea68cc76b8489949f3acaa9aa7a96f48b6ed54391446b9fefb",
+  "next_need": "Independently validate process-group ownership fix before future execution; fresh resource/continuation plan and authority required for any further model run."
+}
