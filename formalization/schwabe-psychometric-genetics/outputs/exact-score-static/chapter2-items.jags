@@ -1,0 +1,29 @@
+model {
+mu ~ dnorm(0,.1)
+ta ~ dgamma(1,1)
+tc ~ dgamma(1,1)
+va <- 1/ta
+vc <- 1/tc
+beta0 ~ dnorm(0,1)
+beta1 ~ dnorm(0,.1)
+ve <- exp(beta0)
+for(i in 1:N){
+ c[i] ~ dnorm(0,tc)
+ for(t in 1:2){
+  prec[i,t] <- exp(-beta0-beta1*a[i,t])
+  theta[i,t] ~ dnorm(mu+a[i,t]+c[i],prec[i,t])
+  for(k in 1:J){
+  logit(p[i,t,k]) <- theta[i,t]-b[k]
+  y[i,t,k] ~ dbern(p[i,t,k])
+}
+ }
+}
+for(i in 1:140){
+ a[i,1] ~ dnorm(0,ta)
+ a[i,2] <- a[i,1]
+}
+for(i in 141:N){
+ a[i,1] ~ dnorm(0,ta)
+ a[i,2] ~ dnorm(.5*a[i,1],ta/.75)
+}
+}

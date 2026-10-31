@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-31T05:03:12.363934+00:00",
+  "status": "Decision proposal only; no sampling or model compilation authorized or performed. Study implementation and independent adapter review are prerequisites.",
+  "author": "Independent source/design and resource-planning delegate; parent retains final implementation and approval decisions",
+  "operation_scope": {
+    "source_reads": true,
+    "model_compilation": false,
+    "sampling": false,
+    "artifact_edits": "Study-local plan, independent aggregation tests and review only; current paper/packet unchanged."
+  },
+  "prior_plan": "provenance/remaining-target-method-resource-plan.json",
+  "evidence_sha256": {
+    "source-local/schwabe.txt": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "simulation/jags_replication.R": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+    "simulation/jags_centered_extended_gate.R": "609fb57c45e7aa1a69322d8f9758e251dde7f84b51dcbf792a38df8e4b32032c",
+    "provenance/jags-centered-feasibility.json": "a185004286362705b7fd880ac7593d3c9911994b4650f464b775539cf144ddbd",
+    "provenance/rasch-sufficiency-derivation.json": "415dbd8aa65435320ec9125d1479a3bec9a621860c740df2050448f9ca15b1b8",
+    "provenance/chapter5-free-mean-source-check.json": "cdc9085886d5d2414f12f2d2c72a22e471b83d0934d8082100a94762f0abf470",
+    "provenance/jags-centered-extended-recovery-resource-outcome.json": "4d62c5693710759b34c508715e590eaeeb9623fb776421b3bade51042441eb9f",
+    "provenance/jags-centered-extended-recovery-independent-review.json": "867ce28035fb5c79aea04d6009975a0d798b15c739bafbe5a3f34df8b62a3589",
+    "coverage-v4.csv": "ec9797534011310e5bf0d382c504802fb8031f68b3c4e0be1c00f5c3cfff0879"
+  },
+  "source_reconciliation": {
+    "read_passages": [
+      "Chapter2 printed p18 Section2.4.1; pp19\u201321 Sections2.5\u20132.6; AppendixA p133 lines86\u201392",
+      "Chapter5 printed p77 Section5.2.2 and5.3; pp78\u201380 Tables5.1\u20135.2; AppendixD pp141\u2013142 lines84\u201392"
+    ],
+    "chapter2_priors": {
+      "mu": "Normal(mean0, variance10); JAGS dnorm(0,0.1)",
+      "beta1": "Normal(mean0, variance10); JAGS dnorm(0,0.1)",
+      "beta0": "Normal(mean0, variance1); JAGS dnorm(0,1)",
+      "ta_tc": "Independent Gamma(shape1,rate1); va=1/ta,vc=1/tc have InvGamma(shape1,scale1) priors",
+      "ve": "exp(beta0), conditional environmental variance at genetic score A=0; marginal environmental variance differs when beta1 !=0",
+      "known_calibration": "Item b fixed known; mu is estimated with stated prior. Generating mu=0 is not a fitted mu=0 constraint."
+    },
+    "chapter2_model": "Centered C_i~N(0,1/tc); MZ genetic A shared exactly; DZ A2|A1~N(0.5 A1,0.75/ta), A1~N(0,1/ta). Theta_it~N(mu+C_i+A_it,exp(beta0+beta1*A_it)). Rasch logits theta_it-b_j with conditionally independent item responses.",
+    "chapter2_schedule": "Source reports7000 burn plus12000 retained from one chain; source test runs reportedly Rhat<1.02. Proposed diagnostic deliberately uses four chains,1000 adaptation,7000 burn and28000 retained with stricter unchanged modern operational criteria. Procedural departure is explicit, not claimed exact historical execution.",
+    "chapter2_generation": "A=.5,C=.3,E(A=0)=.2,mu=0; MZ28%,DZ72%; fixed known b generated Normal(difficulty,SD1). Source fixed-versus-redrawn b across repetitions and historical seeds are underreported; declared redrawn reconstruction is not recovered historical driver.",
+    "original_sumscore_comparator": "Source standardizes individual total scores to mean0 and variance1 and removes the IRT observation model while retaining the biological model and mu prior. It is a different scientific method, not the exact score likelihood proposed here.",
+    "chapter5_priors": {
+      "log_variance_intercepts": "Each Normal(-1,variance2), JAGS dnorm(-1,.5)",
+      "moderation_slopes": "Each Normal(0,variance10), JAGS dnorm(0,.1)",
+      "mu_and_moderator_main": "Each Normal(0,variance10), JAGS dnorm(0,.1); generated mu=0 but fitted mu free",
+      "not_transportable": "Do not reuse Chapter2 Gamma precision priors, beta0 prior, genetic-score residual interaction, or its mixing validation."
+    },
+    "chapter5_design": "250 datasets per seven unique cells: N1000/2000/4000/8000 withJ60, andN1000 withJ20/100/250. Known equally spaced b in[-3.2,3.2]; shared-family dichotomous moderator with coefficient.7, variance components.25/.25/.5, all moderation slopes0. Bernoulli(.5) is a declared reconstruction motivated by approximately11% explained variance, not an independently recovered source probability. Text80000 vsTable8000 discrepancy preserved.",
+    "chapter5_schedule": "Source5000 adaptation+50000 burn+25000 retained,one chain; requires a separate model and resource stage. No Chapter5 dispatch is included here."
+  },
+  "representation_decision": {
+    "A": "JAGS4.3.2 centered physical latent model with original item-by-item Bernoulli likelihood",
+    "B": "JAGS4.3.2 SAME centered physical latent model and priors, canonical response-pattern log kernel for each known observed score, incorporated as observed zero~Poisson(1-log_kernel)",
+    "departure_from_previous_proposal": "This is two likelihood representations using the same JAGS/rjags backend, not two independent engines. It tests implementation/graph efficiency and posterior consistency; it does not provide independent engine validation. A true alternate backend remains optional and unimplemented.",
+    "target_identity": "For scoreS and fixed observed-item mask/difficulties choose one canonical binary pattern withS successes. Its log kernel differs from the actual item-pattern log likelihood by a known constant in theta and all latent-model parameters. The normalized score likelihood differs by another known fixed-calibration constant. The zeros trick contributes exp(-1)*canonical_pattern_probability per individual; the exp(-number_of_individuals) factor is also constant. Identical priors and latent law therefore give the same normalized posterior.",
+    "numerical_requirement": "Compute log successes as -softplus(-eta) and failures as -softplus(eta) without subtracting two large nearly equal totals. Each term is nonpositive, so Poisson mean1-log_kernel >=1 for finite valid states. Invalid/nonfinite states must be surfaced, never silently clipped into the model.",
+    "limits": [
+      "Known calibration only; estimating b makes dropped constants parameter dependent.",
+      "Rasch unit discrimination/local independence only; unequal OPLM slopes are not covered by unweighted total score.",
+      "Retain each individual observed mask and corresponding difficulties; missingness likelihood or ignorability assumptions remain separate.",
+      "Canonical kernel and zeros likelihood are not normalized score probabilities; restore known constants for predictive score PMFs, marginal likelihood or deviance comparisons.",
+      "Dropping item likelihood nodes need not speed JAGS: denominator/softplus work still depends on J and sampler assignments may change. No speedup is asserted."
+    ],
+    "implementation_readiness": "Exact likelihood and static JAGS adapter implemented; 17 independent deterministic test methods passed (provenance/exact-rasch-score-independent-review.json). Tiny N2/J4 graph compilation/initialization passed three cases with zero adaptation and zero posterior iterations in0.253sec (provenance/exact-score-compilation-check.json). This verifies syntax/initialization, not full-data mixing, efficiency or dispatch readiness. Full-data initial-state mappings, immutable command/manifest, original-draw reuse hash checks and complete pilot resource dispatcher remain prerequisites. No independent second engine exists."
+  },
+  "datasets": [
+    {
+      "id": "D1_reference",
+      "N_pairs": 500,
+      "J": 60,
+      "MZ_pairs": 140,
+      "DZ_pairs": 360,
+      "Delta": 1.0,
+      "beta1": 0.0,
+      "difficulty_mean": 1.0,
+      "data_seed": 301,
+      "data_selection": "Reuse exact already prepared and hashed dataset/calibration; no redraw or seed selection",
+      "existing_data_path": "production/jags-centered-extended-recovery-v1/prepared/data.rds",
+      "existing_data_sha256": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+      "chain_seeds": {
+        "A": [
+          840101,
+          840102,
+          840103,
+          840104
+        ],
+        "B": [
+          850101,
+          850102,
+          850103,
+          850104
+        ]
+      }
+    },
+    {
+      "id": "D2_larger_nonzero",
+      "N_pairs": 2000,
+      "J": 60,
+      "MZ_pairs": 560,
+      "DZ_pairs": 1440,
+      "Delta": 1.7,
+      "beta1_expression": "log(1.7)/sqrt(0.5)",
+      "beta1": 0.750421669230437,
+      "difficulty_mean": 0.0,
+      "data_seed": 9201701,
+      "data_selection": "Predetermined before any generation/output inspection; freeze full-precision beta and exact baseline RNG order, including unused M draw, then compare independent generation and hash before dispatch. No regenerated replacement if result is inconvenient.",
+      "chain_seeds": {
+        "A": [
+          840201,
+          840202,
+          840203,
+          840204
+        ],
+        "B": [
+          850201,
+          850202,
+          850203,
+          850204
+        ]
+      }
+    }
+  ],
+  "fixed_sampling_proposal": {
+    "chains_per_dataset_representation": 4,
+    "adaptation": 1000,
+    "burn_in": 7000,
+    "retained": 28000,
+    "thin": 1,
+    "checkpoint_retained_block": 4000,
+    "global_initials": [
+      {
+        "mu": -1,
+        "beta0": -2.5,
+        "beta1": -1.5,
+        "ta": 2,
+        "tc": 5
+      },
+      {
+        "mu": 1,
+        "beta0": -0.5,
+        "beta1": 1.5,
+        "ta": 5,
+        "tc": 2
+      },
+      {
+        "mu": -0.5,
+        "beta0": -1,
+        "beta1": 0.5,
+        "ta": 1,
+        "tc": 10
+      },
+      {
+        "mu": 0.5,
+        "beta0": -2,
+        "beta1": -0.5,
+        "ta": 10,
+        "tc": 1
+      }
+    ],
+    "initial_state_mapping": "Keep identical four scientific global starts across representations; adapter must construct and independently validate compatible physical latent starts before freeze. Different representation graphs/RNG streams need not yield identical trajectories. Initial state bytes and all RNG definitions must be pinned; no output-informed reseeding.",
+    "representative_monitors": "Preserve all14 established physical parameters/transforms/selected latent and predictive columns, with additional bookkeeping isolated from the original joint criterion. All unmonitored latent states are not certified by these diagnostics."
+  },
+  "approval_stages": [
+    {
+      "id": "stage_A8_optional_contemporaneous_reference_batches",
+      "description": "One saved reference dataset, two JAGS likelihood representations, four fresh chains each;8 total jobs. Existing draw files may inform frozen consistency checks but are not pooled or counted as fresh runs.",
+      "requires_specific_sampling_approval": true,
+      "approval_does_not_include_stage_B": true,
+      "worker_slots_max": 4,
+      "schedule": "A andB as separate four-chain batches, no concurrent8-worker launch; preserve fixed orderA thenB and hardware/runtime metadata.",
+      "per_chain_wall_seconds": 1600,
+      "chain_jobs": 8,
+      "summed_chain_wall_cap_seconds": 12800,
+      "termination_grace_per_chain_seconds": 5,
+      "summed_chain_and_cleanup_cap_seconds": 12840,
+      "preparation_phase_total_seconds": 120,
+      "diagnostic_phase_per_representation_seconds": 300,
+      "joint_read_only_validation_cap_seconds": 600,
+      "all_phase_summed_process_cap_seconds": 14160,
+      "elapsed_deadline_seconds": 4800,
+      "memory": {
+        "per_chain_RSS_limit_bytes": 1073741824,
+        "active_worker_RSS_sum_limit_bytes": 4294967296,
+        "minimum_system_cgroup_free_reserve_bytes": 2147483648,
+        "before_parallel_release_required_available_bytes": 6442450944,
+        "sampling_period_seconds": 0.2,
+        "action": "Stop owned workers and preserve requested denominator upon exceeded limit; no new pending launches."
+      },
+      "output_limits": {
+        "aggregate_namespace_bytes": 1073741824,
+        "per_chain_log_bytes": 16777216,
+        "action": "Stop owned workers on breach; preserve already written checkpoints/logs/outcomes, do not discard failures or restart."
+      },
+      "cost_basis": "Reference successful28k chain times1226.17\u20131240.31sec.1600sec is about29% above measured slowest, a proposed hard ceiling not a completion guarantee. Score graph cost is unmeasured. Four-worker batches plus separate bounded preparation/diagnostic checks fit4800sec elapsed only if scheduling and cleanup meet caps; hard deadline governs regardless."
+    },
+    {
+      "id": "stage_B_separate_larger_case_decision",
+      "description": "Only after stageA independent review and a new explicit decision: fixed D2, two representations,four chains each;8additionaljobs. Never automatic on stageA success.",
+      "requires_separate_sampling_approval": true,
+      "worker_slots_max": 4,
+      "schedule": "Separate four-chain batches with same identity, denominator and cap rules.",
+      "per_chain_wall_seconds": 6400,
+      "chain_jobs": 8,
+      "summed_chain_wall_cap_seconds": 51200,
+      "termination_grace_per_chain_seconds": 5,
+      "summed_chain_and_cleanup_cap_seconds": 51240,
+      "preparation_phase_total_seconds": 120,
+      "diagnostic_phase_per_representation_seconds": 300,
+      "joint_read_only_validation_cap_seconds": 600,
+      "all_phase_summed_process_cap_seconds": 52560,
+      "elapsed_deadline_seconds": 14400,
+      "memory": {
+        "per_chain_RSS_limit_bytes": 2147483648,
+        "active_worker_RSS_sum_limit_bytes": 8589934592,
+        "minimum_system_cgroup_free_reserve_bytes": 2147483648,
+        "before_parallel_release_required_available_bytes": 10737418240,
+        "sampling_period_seconds": 0.2,
+        "action": "Stop if limits breach; no pending launches or automatic lower-memory restart."
+      },
+      "output_limits": {
+        "aggregate_namespace_bytes": 2147483648,
+        "per_chain_log_bytes": 16777216,
+        "action": "Stop/preserve on breach; no source-count production."
+      },
+      "cost_basis": "4*Nreference withsameJ motivates4*1600sec ceiling. This is a linear-size resource scenario, not measured throughput or a guaranteed mixing bound; nonzero interaction and sampler graph may alter costs sharply. StageA timings must be reported before requesting this decision; no silent cap adjustment."
+    }
+  ],
+  "resource_accounting": {
+    "max_chain_jobs_both_stages": 16,
+    "max_summed_chain_and_cleanup_seconds_both_stages": 64080,
+    "max_all_phase_summed_process_seconds_both_stages": 66720,
+    "not_an_approved_budget": true,
+    "observed_reference_chain_seconds": 4927.558111619001,
+    "observed_reference_adaptation_stage_peak_RSS_bytes": 197128192,
+    "RSS_limit_basis": "Recorded RSS is an adaptation-stage process-tree sample, not whole-run peak.1GiB/referenceworker and2GiB/largerworker are conservative allocation caps with2GiB free reserve, not measured B requirements. No claim they guarantee completion.",
+    "budget_never_recycled": "Unused budget in one chain/stage is not authority for extra draws, replacements, seeds or stages.",
+    "alternative_not_additive": "A0 and A8 are alternative reference comparisons. The listed both-stage maximum is A8+B, not authorization to add A0. No duplicate B chain IDs across options. After A0, any larger case still requires its separate decision."
+  },
+  "fixed_failure_and_analysis_rules": {
+    "requested_denominator": "Four distinct requested chain IDs per dataset/representation remain in every execution record, including not_launched,failed,timeout,cancelled and invalid outcomes. No deletion or replacement.",
+    "joint_gate": {
+      "rank_split_folded_Rhat": "<1.01",
+      "bulk_ESS": ">=400",
+      "tail_ESS": ">=400",
+      "MCSE_mean_over_SD": "<=0.05",
+      "all14_monitors": true,
+      "all_finite": true,
+      "all_adapted": true,
+      "complete_fixed_draw_count": true
+    },
+    "manual_review": "Inspect all trace/rank pages, within-chain drift and all whole/half HPDs. A numerical gate alone is not proof of convergence. Keep warnings and actual sampler assignments.",
+    "posterior_consistency": {
+      "family": [
+        "mu",
+        "va",
+        "vc",
+        "ve",
+        "beta1"
+      ],
+      "summary": "Posterior mean, same fixed dataset, priors and physical estimands. ve denotes exp(beta0), conditional environmental variance at A=0.",
+      "comparison": "For each of five means report difference A-minus-B and combined MCSE sqrt(MCSE_A^2+MCSE_B^2), using distinct fixed chain RNG streams and the frozen posterior diagnostic implementation. Report simultaneous approximate Monte Carlo intervals difference +/- 2.5758293035489004 * combined_MCSE (Bonferroni family alpha=.05 across five means within a dataset).",
+      "failure_rule": "Only form these intervals if both complete four-chain joint gates pass and MCSE estimates are finite. An interval excluding zero flags a discrepancy for investigation; it does not justify more draws or reruns within this proposal. A family passing zero-inclusion is not evidence of scientific equivalence. A diagnostic failure leaves comparison unresolved.",
+      "limits": "Intervals address estimated Monte Carlo error conditional on the fixed dataset, not frequentist sampling uncertainty over datasets. Serial dependence, finite-chain bias and unmonitored poor mixing may invalidate approximate MCSE. Deterministic log-target identity is primary. No scientifically justified equivalence margin is asserted. Posterior SD, quantiles and HPDs are reported descriptively with trace/whole-half review; no unprespecified significance test of those summaries."
+    },
+    "performance": "Report compilation/adaptation/burn/sampling separately, all requested failures and worst-global ESS per summed chain-process second. Two sequential same-backend batches are not independent engines. Run order/hardware confounding and finite-chain uncertainty limit speed comparisons. No guaranteed speedup target.",
+    "stopping": "Finish planned lengths or stop on any fixed resource/identity/error gate. No optional early stopping on favorable significance, no extra samples if MC precision is disappointing, no source-count dispatch. Failure leaves target unfinished and requires a new plan."
+  },
+  "future_source_count_aggregation_specification": {
+    "status": "Deterministic aggregation implemented and independently tested on synthetic fixtures; no production aggregates or source-count completion claimed. HPD extraction and diagnostic certification remain caller responsibilities.",
+    "counts": "C2:100 datasets perdeclaredcondition; C5:250. Sourcecore3250unique datasets3450dataset-methodfits. A/B are two implementations of the same IRT posterior, not the source Gaussian sum-score comparator, and do not add independent datasets.",
+    "records": "Immutable condition/dataset/method/chain keys; seed,input,model,prior,code,runtime hashes; requested/attempted/completed/adapted/finite/gate-valid/HPD-classifiable flags; actual timeout/error reason; exact retained count and sampler state identity.",
+    "recovery": "Per valid dataset compute posterior mean andSD from complete equal-length chains, then across-dataset mean ofposterior means, sampleSD ofposterior means andmean ofposteriorSDs. Keep bias estimate-minus-generatingtruth separate from ours-minus-source. No conditional-on-success subset is called a completed100/250aggregate; label it provisional and retain full denominator. Unbounded parameters do not yield finite missing-result bounds without new assumptions.",
+    "power_target": "C2Table2.2 uses95%HPD beta1 exclusion ofzero; Delta1 cells report null rejection fraction, not nonzero-effect power. HPD algorithm/version and full/half-chain convention fixed before production.",
+    "classification_rule": "Retain raw pooled95%HPD decision. For validated decision require joint gate and agreement of pooled interval and all12 per-chain whole/half HPDs on positive exclusion, negative exclusion, or inclusion ofzero. Otherwise unclassified. Endpointzero counts as included. This conservative operational stability rule is a stated procedural difference, not a proof of HPD endpoint MC accuracy or posterior equality.",
+    "failure_bounds": "Ifd classified detections andu unclassified out of fixedR, identified realized detection-rate interval is[d/R,(d+u)/R]. Never count an unclassified result as nondetection or remove it fromR. Report classified nondetections separately.",
+    "sampling_uncertainty": "For each of12 Chapter2powercells, report exact binomial Clopper\u2013Pearson95% intervals and familywise Bonferroni intervals using alpha/12. With unclassified cases take lower endpoint fromd successes andupper endpoint fromd+u successes out ofR. Independence is across generated datasets, not twins/items/chains; no cross-cell independence needed forBonferroni. Source comparison requires separately verified source integer counts and method compatibility, not treating source printed percentages as uncertainty-free.",
+    "no_power_substitution": "SourceChapter5null-recovery cells,20-item sufficiency claim andChapter6SE ordering do not specify a unique nonzero-effect power experiment. Preserve these as pending specification/extension targets; do not invent source alternatives or call smallerSE measuredpower."
+  },
+  "low_compute_pending_vs_blocked": {
+    "pending_low_compute": [
+      "Pin full-data initialization, data/model/draw hashes, exact commands and complete bounded pilot dispatcher; static adapter and tiny zero-iteration syntax check are complete.",
+      "Connect independently tested aggregation module to actual diagnostic and HPD records without trusting unverified source-count status.",
+      "Continue ordinary identification and finite-likelihood arguments under explicit assumptions; implementation/finite fixtures do not prove general identifiability."
+    ],
+    "requires_material_compute": "Only after approved fixed caps and independent adapter/guard validation: stageA8jobs,then separatelystageB8jobs; source-count production requires further measured plan and approval.",
+    "genuine_input_limits": "Empirical responses/calibration/linkage/posterior files absent as dated availability records; underreported curvilinear/unknown-item extensions lack unique recovered designs.",
+    "not_complete": "Low-cost code correctness, a passing one-dataset diagnostic and source-prior reconciliation do not complete any source-count recovery/power target."
+  },
+  "readiness_gate": [
+    "Independent exact-code/static-target review and zero-iteration tiny graph syntax checks completed as linked; full-data adapter/start mapping and resource dispatcher review still required. Graph B is not an independent engine.",
+    "Both dataset preparations and full precision beta value, data ordering, MZ/DZ split, calibration, initial-state mappings and distinct fixed seeds pinned.",
+    "Numeric caps enforced by a reviewed dispatcher, including aggregate worker-time, elapsed deadline, ancestor cgroup headroom/RSS, total output bytes, log caps and process-group cleanup.",
+    "Exact commands/namespaces and output manifest declared before asking for execution approval.",
+    "No adaptation, posterior update or chain dispatch occurs in this low-compute task. Root may independently perform a bounded tiny synthetic graph syntax compilation with zero adaptation; this is not a full-data sampling pilot."
+  ],
+  "review_status": "Implementation evidence updated; numerical proposal still conditional and non-executable. Independent pilot launch review remains required.",
+  "decision_alternatives": [
+    {
+      "option": "A0_minimum_four_new_chains",
+      "scope": "Four new exact-score JAGS chains on saved D1 compared with the existing independently reviewed four item-Bernoulli 28000-draw chains. The old run is reused transparently, never counted as new jobs. This replaces a fresh A batch only for the smallest decision.",
+      "budget_reference": "minimum_sampling_alternative",
+      "status": "Preferred smallest resource decision subject to original-draw reuse gate, adapter/guard review and explicit sampling approval. 7740 all-phase summed process seconds;3600sec deadline. Alternative to fresh eight-chain A, not an extra automatic stage."
+    },
+    {
+      "option": "A8_optional_contemporaneous_reference_batches",
+      "scope": "D1 only, 8 chains: four item-Bernoulli and four exact-score canonical-target chains in JAGS4.3.2. Same backend, not independent engines.",
+      "budget_reference": "approval_stages[0]",
+      "status": "Numeric proposal frozen; dispatch conditional on independently reviewed adapter, initial mapping, enforced guards, pinned commands and specific sampling approval."
+    },
+    {
+      "option": "A_then_separately_B_two_conditions",
+      "scope": "16 chains total across D1 and D2 using two representations of the same JAGS backend. Stage B is not authorized by Stage A approval.",
+      "budget_reference": "approval_stages[0], approval_stages[1], resource_accounting",
+      "status": "Separate Stage B decision after Stage A resource and scientific review; no automatic expansion."
+    },
+    {
+      "option": "original_true_two_engine_pilot",
+      "scope": "A genuinely independent second backend for the same physical posterior would address backend-specific errors beyond these same-JAGS representation checks.",
+      "status": "NOT dispatch-ready and not fulfilled by options A/B. No second runtime or adapter is claimed implemented or validated.",
+      "remaining_low_compute_work": [
+        "Choose and verify an actually available independent backend/runtime/version and source-faithful prior parameterization.",
+        "Implement independent exact-score target including any transform Jacobians and physical-state monitors; deterministic joint-prior/likelihood equality checks over interior and boundary cases.",
+        "Validate initialization, missing masks, fixed calibration, log-target constants, and diagnostics/export adapter.",
+        "Independently review model and resource/cleanup guards; freeze immutable code, commands, seeds and complete failure records."
+      ],
+      "resource_decision": "The JAGS numerical caps cannot be represented as measured or adequate for an unimplemented backend. A new bounded compilation/profiling proposal is required before sampling, using same predetermined datasets; do not infer speedup or transfer JAGS mixing success."
+    }
+  ],
+  "minimum_sampling_alternative": {
+    "id": "stage_A0_minimum_new_sampling",
+    "description": "Four new exact-score JAGS chains on saved D1 compared with the existing independently reviewed four item-Bernoulli 28000-draw chains. The old run is reused transparently, never counted as new jobs. This replaces a fresh A batch only for the smallest decision.",
+    "requires_specific_sampling_approval": true,
+    "approval_does_not_include_stage_A_or_B": true,
+    "worker_slots_max": 4,
+    "schedule": "One four-chain B batch, fixed seeds850101..850104 and fixed scientific initials. If approved/completed, do not rerun these same identities as part of another option.",
+    "per_chain_wall_seconds": 1600,
+    "chain_jobs": 4,
+    "summed_chain_wall_cap_seconds": 6400,
+    "termination_grace_per_chain_seconds": 5,
+    "summed_chain_and_cleanup_cap_seconds": 6420,
+    "preparation_phase_total_seconds": 120,
+    "diagnostic_phase_total_seconds": 600,
+    "joint_read_only_validation_cap_seconds": 600,
+    "all_phase_summed_process_cap_seconds": 7740,
+    "elapsed_deadline_seconds": 3600,
+    "memory": {
+      "per_chain_RSS_limit_bytes": 1073741824,
+      "active_worker_RSS_sum_limit_bytes": 4294967296,
+      "minimum_system_cgroup_free_reserve_bytes": 2147483648,
+      "before_parallel_release_required_available_bytes": 6442450944,
+      "sampling_period_seconds": 0.2,
+      "action": "Stop owned workers and preserve requested denominator upon exceeded limit; no new pending launches."
+    },
+    "output_limits": {
+      "aggregate_namespace_bytes": 1073741824,
+      "per_chain_log_bytes": 16777216,
+      "action": "Stop owned workers on breach; preserve already written checkpoints/logs/outcomes, do not discard failures or restart."
+    },
+    "cost_basis": "Four chain ceilings based on measured original four-chain total4927.558111619001seconds, not a measured score-graph timing. 1600sec per chain is about29percent above original slowest. Old item chains and new score chains are not a contemporaneous speed benchmark; no speedup claim.",
+    "reuse_gate": "Pin and independently verify complete original data, model, draw and review hashes; confirm exact same priors, estimands, data and complete four-by28000 retained draws. Preserve historical scientific starts/RNG provenance; reused draws and new RNG streams are disjoint. Failure to validate reuse blocks A0, does not silently switch to A8.",
+    "comparison": "Use the same frozen five-global combined-MCSE comparison with historical A draws and fresh B draws. Report temporal/runtime confounding and no backend independence."
+  },
+  "completed_low_compute_evidence": {
+    "exact_code_review": "provenance/exact-rasch-score-independent-review.json",
+    "tiny_zero_iteration_compile": "provenance/exact-score-compilation-check.json",
+    "aggregation_review": "provenance/failure-preserving-aggregation-independent-review.json",
+    "qualification": "Numerical budgets remain decision proposals, not an executable launch approval. No new posterior sampling performed."
+  }
+}

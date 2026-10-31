@@ -1,0 +1,33 @@
+{
+  "reviewer": "/root/source_design_plan, independent of aggregation implementation author",
+  "reviewed_utc": "2026-10-31T05:09:48.943444+00:00",
+  "status": "Accepted deterministic aggregation within caller-supplied validation boundary",
+  "tests": {
+    "command": "python simulation/test_failure_preserving_aggregation_independent.py",
+    "methods": 10,
+    "result": "all pass",
+    "log": "provenance/failure-preserving-aggregation-independent-tests.txt",
+    "sampling": 0,
+    "model_compilations": 0
+  },
+  "independent_oracle": "Clopper-Pearson bounds checked by bisection of explicit finite binomial sums, not beta quantiles; all-zero/all-success closed forms checked.",
+  "coverage": [
+    "100/250 fixed requested denominators, absent/failed records retained as unclassified",
+    "Partial identification bounds and CP envelopes with missing outcomes",
+    "Bonferroni widening, family_size=1 identity and record ordering",
+    "Conditional/provisional mean, sample SD and posterior SD summaries; single valid result and absent results",
+    "Duplicate/unknown IDs, invalid interval settings, invalid finite/SD/HPD values, non-True gate flags"
+  ],
+  "findings": [],
+  "limitations": [
+    "Caller-supplied gate_valid and stable_hpd_decision are trusted assertions, not independently certified diagnostics or HPD calculations.",
+    "Failed/non-True-gate record numerical payload is intentionally ignored, preserving failure rather than rejecting it; invalid gate-valid payload raises.",
+    "complete_recovery denotes finite gate-valid summaries for all requested IDs, not complete HPD classification, source fidelity or full dissertation replication.",
+    "No source-count production aggregation, posterior fitting, source count equality or sampling speed is validated by fixtures."
+  ],
+  "sha256": {
+    "simulation/failure_preserving_aggregation.py": "96007b5b651925bc282fdd209c3ccec4826900c334b363406bcb7c291f60a49a",
+    "simulation/test_failure_preserving_aggregation_independent.py": "1375d38a3db9e2dcc3a5bd588bfd3dde65cd09c386b3a038a078a6481201e881",
+    "provenance/failure-preserving-aggregation-independent-tests.txt": "4008fbbbb6ab12f3144df0099ade1b15e71daf8d2eeccf38e42533286d343e23"
+  }
+}
