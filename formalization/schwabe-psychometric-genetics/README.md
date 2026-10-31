@@ -594,3 +594,51 @@ These start no model fits or simulations. They regenerate dated argument
 records; historical independent-review hashes identify the saved reviewed
 records, not newly timestamped regenerations. The likelihood counterexample
 and covariance/path identities remain in the separate identification audit.
+
+## Terminal evidence and replay
+
+The frozen [evidence-packet.json](handoff/evidence-packet.json), its explicit
+[scientific-adjudication.json](handoff/scientific-adjudication.json), and
+[coverage-v2.csv](coverage-v2.csv) are committed at
+`d1b61b8b1d7af6a17341a2b5fee73a134a35c47c`. They account for every source claim;
+they do not assert successful whole-dissertation replication. The source
+specification and numerical baselines are preserved separately.
+
+Chapter 6 completed all 96,000 fits. The bounded Chapter 2 diagnostic completed
+all four requested chains, each with 12,000 retained draws, but failed its joint
+convergence criteria for the three variance components and their log transforms.
+The [scientific evidence](handoff/jags-gate-scientific-evidence.json) distinguishes
+individual parameter diagnostics from the failed joint assessment. No chains
+were replaced or extended. All 14 trace/rank pages were reviewed independently
+in [jags-gate-outcome-independent-review.json](provenance/jags-gate-outcome-independent-review.json).
+
+To check saved results without model fitting, run from this study directory:
+
+```sh
+python3 simulation/chapter6_analytical_check.py
+python3 simulation/validate_saved_jags_outcome.py
+python3 provenance/verify-terminal-analysis-independent.py
+```
+
+The exact-arithmetic check uses only Python's standard library. The saved-draw
+validator additionally needs NumPy, pandas, SciPy and the pinned R launcher at
+`/workspace/slot3-runtime/bin/Rscript`; it exports existing RDS draws to temporary
+files and checks their hashes, moments, R-hat, HPDs and transformations. It does
+not independently reimplement ESS or MCSE. The analytical script regenerates
+its named output; run in a separate checkout to preserve saved evidence bytes.
+
+To repeat the bounded Bayesian experiment, use a **new, empty namespace** in a
+separate checkout, after installing the pinned runtime and posterior library:
+
+```sh
+python3 simulation/dispatch_jags_gate.py check --namespace production/jags-gate-replay
+python3 simulation/dispatch_jags_gate.py dispatch --namespace production/jags-gate-replay
+python3 simulation/dispatch_jags_gate.py diagnose --namespace production/jags-gate-replay
+```
+
+The dispatcher requires four available CPU slots and enforces the recorded
+memory policy, 1,800-second per-chain limit and 7,200-worker-second allocation.
+The observed four-chain run used 2,899.072 summed process-wall seconds, not
+measured CPU time. A repeated run is another diagnostic of one dataset; it is
+not the dissertation's 100-dataset simulation. Do not run these commands inside
+the preserved `production/jags-gate-v1` namespace.
