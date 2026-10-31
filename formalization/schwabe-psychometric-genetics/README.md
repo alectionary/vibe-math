@@ -6,8 +6,8 @@ datasets. The whole-dissertation replication remains incomplete. The terminal
 [analysis](production/chapter6-v1/terminal-analysis/summary.json) and
 [independent numerical review](provenance/terminal-analysis-independent-review.json)
 support the standalone manuscript below. The current
-[coverage-v2.csv](coverage-v2.csv) and
-[evidence-packet.json](handoff/evidence-packet.json) retain all 996 source records,
+[coverage-v4.csv](coverage-v4.csv) and
+[continuation-evidence-packet.json](handoff/continuation-evidence-packet.json) retain all 996 source records,
 with locators, actual attempts, dependencies and remaining work. These records
 include shared components and are not independent replication counts.
 [coverage.csv](coverage.csv) is the preserved historical 41-group inventory.
@@ -18,14 +18,16 @@ The primary manuscript is
 Its current standalone editable source is [standalone.tex](paper/standalone.tex), with
 [references.bib](paper/references.bib). Repository links to `master` in the PDF
 are intended navigation links and await merge. Use the commit-pinned links in
-[delivery-v2.json](provenance/delivery-v2.json) for the corresponding artifact revision.
+[delivery-current-v2.json](provenance/delivery-current-v2.json) for the corresponding artifact revision.
 
 ## What is established and what remains open
 
 The full source was read, its PhD metadata checked, all twelve public author
-repositories cloned, and the substantive results inventoried. All stated
-simulation conditions receive execution attempts, including untabulated results
-and the 2%/3% missingness ambiguity. Missing original NTR/Cito and Virginia30K
+repositories cloned, and the substantive results inventoried. The completed Chapter 6 grid includes the 2%/3% missingness sensitivity.
+Generation-only checks and posterior pilots do not complete source-count
+recovery or power targets; 391 exact targets remain pending, 29 are
+attempted-incomplete, 11 completed, 310 completed under declared reconstruction,
+and 255 blocked. These are dependent inventory records. Missing original NTR/Cito and Virginia30K
 inputs block empirical refits. Published-summary calculations do not replace
 those refits. The curvilinear simulation lacks a recoverable design/driver.
 
@@ -39,11 +41,16 @@ All 216 literal source variance-SE values fall outside conditional comparison
 bands; unknown original SE implementation and Monte Carlo uncertainty prevent
 an unconditional source-target verdict. Eleven full-information bias signs
 reverse relative to source points; none excludes zero after adjustment.
-The bounded four-chain Bayesian diagnostic completed but failed joint convergence.
+The centered four-chain diagnostic with 28,000 retained draws per chain passes
+all 14 unchanged operational criteria on one N500/J60 floor dataset. It does
+not establish convergence throughout the source design or complete its
+100/250-dataset aggregates. Earlier failed and interrupted attempts are preserved.
+Generation-only checks comprise 2,650 datasets; alpha sensitivity reuses those
+same datasets, adding no posterior fits or independent datasets.
 Independent scientific and rendered-manuscript reviews are recorded in
-[final-evidence-scientific-review.json](provenance/final-evidence-scientific-review.json)
-and [editorial-review-v2-final.json](provenance/editorial-review-v2-final.json).
-Review does not close the [unfinished work](provenance/unfinished-work-v2.json).
+[continuation-packet-final-independent-scientific-review.json](provenance/continuation-packet-final-independent-scientific-review.json)
+and [current-editorial-review-final.json](provenance/current-editorial-review-final.json).
+Review does not close the [unfinished work and resource plan](provenance/remaining-target-method-resource-plan.json).
 
 ## Source and immutable provenance
 
@@ -84,9 +91,12 @@ The terminal Chapter 6 analysis is saved at
 [reproduction recipe](handoff/terminal-reproduction.md) and
 [remote-byte verification](provenance/terminal-analysis-publication.json) are
 available. Use a separate checkout when replaying commands that write outputs.
-The frozen whole-dissertation evidence and the runnable analysis/checking tools
-are at `d1b61b8b1d7af6a17341a2b5fee73a134a35c47c`. The current standalone
-manuscript source belongs to the separate artifact revision in delivery-v2.json.
+The initial whole-dissertation packet and checking tools are preserved at
+`d1b61b8b1d7af6a17341a2b5fee73a134a35c47c`. The completed recovery and
+continuation code/results are at `2424e0f4d67929ba72255ef6f546ba2a72c25df0`;
+[current-reproduction.md](handoff/current-reproduction.md) gives exact commands.
+The current manuscript belongs to the separate artifact revision in
+[delivery-current-v2.json](provenance/delivery-current-v2.json).
 
 ## Prerequisites and local runtime
 
@@ -156,7 +166,12 @@ only; whitespace and page-label normalization is documented. Original failures
 and narrowly repaired attempts are both retained. No synthetic software smoke
 test is labelled an empirical reproduction.
 
-## Rerun simulations and resume checkpoints
+## Rerun historical pilots and their checkpoints
+
+These commands reproduce the historical pilot stage. Use
+[the current reproduction recipe](handoff/current-reproduction.md) for the
+completed guarded diagnostic and its fixed execution limits. Historical pilots
+do not complete source-count posterior targets.
 
 The pilot commands retain all conditions. The JAGS grid has25jobs: twelve
 sample-size/effect cells, floor/ceiling/symmetric item and sumscore arms, and all
@@ -176,7 +191,8 @@ are consolidated into [trial-records.csv](outputs/trial-records.csv); local
 checkpoint files are retained for continuation. Two initial process-start parse
 failures were retried at the identical seeds after the working source was frozen;
 [execution-retries.json](outputs/execution-retries.json) preserves both attempts.
-All 1,920 final method-by-dataset fits have optimizer status 0.
+All 1,920 baseline pilot method-by-dataset fits have optimizer status 0;
+they are included once in the completed 96,000-fit Chapter 6 reconstruction.
 
 Full-length Chapter2 confirmation on one shared generated dataset:
 
@@ -230,7 +246,7 @@ pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_rep
 ```
 
 The main source and bibliography hashes are in
-[writer-manifest.json](handoff/writer-manifest.json). Rebuilding can change PDF
+[current-writer-manifest.json](handoff/current-writer-manifest.json). Rebuilding can change PDF
 metadata and therefore its byte hash; a rebuilt PDF does not inherit an earlier
 exact-byte review automatically. `paper.tex` is the preserved historical
 baseline source, not the current manuscript entry point.
