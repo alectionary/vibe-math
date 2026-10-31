@@ -1,26 +1,24 @@
-# Schwabe (2016): whole-dissertation replication checkpoint
+# Schwabe (2016): whole-dissertation replication
 
 This study covers **the entire dissertation**, not a selected table. Chapter 6's
 planned 96,000 method fits are complete, with zero guard-invalid fits or failed
 datasets. The whole-dissertation replication remains incomplete. The terminal
 [analysis](production/chapter6-v1/terminal-analysis/summary.json) and
 [independent numerical review](provenance/terminal-analysis-independent-review.json)
-are separate from the manuscript below, which still describes the earlier
-20-repetition analysis and is awaiting replacement and fresh rendered review.
-[coverage.csv](coverage.csv)
-tracks 41 original empirical, numerical, analytical and software result groups,
-with source locators, actual attempts, dependencies and remaining work. The full
-996-record source inventory is in
-[claim-specification-applicability.json](handoff/claim-specification-applicability.json);
-these records include shared components and are not independent replication counts.
+support the standalone manuscript below. The current
+[coverage-v2.csv](coverage-v2.csv) and
+[evidence-packet.json](handoff/evidence-packet.json) retain all 996 source records,
+with locators, actual attempts, dependencies and remaining work. These records
+include shared components and are not independent replication counts.
+[coverage.csv](coverage.csv) is the preserved historical 41-group inventory.
 No study PR has been created, and no merge is authorized.
 
 The primary manuscript is
 [whole_dissertation_replication__schwabe_psychometric_genetics.pdf](paper/whole_dissertation_replication__schwabe_psychometric_genetics.pdf).
-Its editable source is [paper.tex](paper/paper.tex), with
+Its current standalone editable source is [standalone.tex](paper/standalone.tex), with
 [references.bib](paper/references.bib). Repository links to `master` in the PDF
 are intended navigation links and await merge. Use the commit-pinned links in
-the delivery record for the corresponding artifact revision.
+[delivery-v2.json](provenance/delivery-v2.json) for the corresponding artifact revision.
 
 ## What is established and what remains open
 
@@ -36,9 +34,16 @@ power, or table-replication evidence**. Full-length Chapter2 fits are separate
 from the short grid. Chapter 6 now has 1,000 datasets in each of 36 primary
 conditions and 12 additional 3% missingness sensitivity conditions, with both
 methods fitted to each dataset. Chapters 2–5's full Bayesian targets remain open.
+All 108 primary precision contrasts favor full information after adjustment.
+All 216 literal source variance-SE values fall outside conditional comparison
+bands; unknown original SE implementation and Monte Carlo uncertainty prevent
+an unconditional source-target verdict. Eleven full-information bias signs
+reverse relative to source points; none excludes zero after adjustment.
+The bounded four-chain Bayesian diagnostic completed but failed joint convergence.
 Independent scientific and rendered-manuscript reviews are recorded in
-[provenance/review.json](provenance/review.json), including initial findings and
-final artifact hashes. Review does not close unfinished replication items.
+[final-evidence-scientific-review.json](provenance/final-evidence-scientific-review.json)
+and [editorial-review-v2-final.json](provenance/editorial-review-v2-final.json).
+Review does not close the [unfinished work](provenance/unfinished-work-v2.json).
 
 ## Source and immutable provenance
 
@@ -78,9 +83,10 @@ The terminal Chapter 6 analysis is saved at
 `a9e7bd4a70cfa3a40f89d3525efd0dd98a5f033a`; its
 [reproduction recipe](handoff/terminal-reproduction.md) and
 [remote-byte verification](provenance/terminal-analysis-publication.json) are
-available. This is distinct from a passed Bayesian diagnostic or a reviewed new
-manuscript. Use a separate checkout when replaying commands that write outputs.
-The existing manuscript still describes the preserved baseline.
+available. Use a separate checkout when replaying commands that write outputs.
+The frozen whole-dissertation evidence and the runnable analysis/checking tools
+are at `d1b61b8b1d7af6a17341a2b5fee73a134a35c47c`. The current standalone
+manuscript source belongs to the separate artifact revision in delivery-v2.json.
 
 ## Prerequisites and local runtime
 
@@ -193,8 +199,9 @@ Rscript simulation/openmx_replication.R 5 .1 MAR 34444 sensitivity-c6-unequal 10
 MEAN_MODE=shared Rscript simulation/openmx_replication.R 5 .1 MAR 34444 sensitivity-c6-sharedmeans
 ```
 
-Production targets remain100repetitions for Chapter2,250for Chapter5,
-and1000for Chapter6. The grid runner's `--mode full` sets the source chain
+The source targets are 100 repetitions for Chapter 2, 250 for Chapter 5,
+and 1,000 for Chapter 6. Chapter 6 is complete; the Bayesian targets are not.
+The grid runner's `--mode full` sets the source chain
 lengths. The source-count continuation commands are:
 
 ```sh
@@ -203,8 +210,30 @@ python3 simulation/run_grid.py --engine jags --chapter 5 --mode full --replicate
 python3 simulation/run_grid.py --engine openmx --mode full --replicates 1000 --workers 2
 ```
 
-These are historical source-count command interfaces, not claims that full runs were performed. For the active Chapter6 continuation use the guarded supervisor below, rather than starting a second legacy grid. The largest Chapter5 condition alone projects to months of single-worker elapsed
-work from an actual timing pilot. No production-completion claim is made.
+These are historical source-count command interfaces, not instructions to start
+duplicate production. The completed Chapter 6 run used the guarded supervisor
+below. The largest Chapter 5 condition alone projects to months of single-worker
+work from an actual timing pilot; its full production remains unperformed.
+
+## Rebuild the standalone manuscript
+
+Run from the study directory after checking out the final artifact revision
+named in the delivery record. This uses the frozen numerical evidence already
+incorporated into the editable source and does not refit any model:
+
+```sh
+cd paper
+pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_replication__schwabe_psychometric_genetics standalone.tex
+bibtex whole_dissertation_replication__schwabe_psychometric_genetics
+pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_replication__schwabe_psychometric_genetics standalone.tex
+pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_replication__schwabe_psychometric_genetics standalone.tex
+```
+
+The main source and bibliography hashes are in
+[writer-manifest.json](handoff/writer-manifest.json). Rebuilding can change PDF
+metadata and therefore its byte hash; a rebuilt PDF does not inherit an earlier
+exact-byte review automatically. `paper.tex` is the preserved historical
+baseline source, not the current manuscript entry point.
 
 ## Rebuild the baseline report from saved outputs
 
@@ -215,11 +244,10 @@ python3 simulation/summarize.py
 python3 simulation/validate_evidence.py
 python3 simulation/build_report.py
 cd paper
-pdflatex -interaction=nonstopmode -halt-on-error paper.tex
-bibtex paper
-pdflatex -interaction=nonstopmode -halt-on-error paper.tex
-pdflatex -interaction=nonstopmode -halt-on-error paper.tex
-cp paper.pdf whole_dissertation_replication__schwabe_psychometric_genetics.pdf
+pdflatex -interaction=nonstopmode -halt-on-error -jobname=baseline_diagnostic_report paper.tex
+bibtex baseline_diagnostic_report
+pdflatex -interaction=nonstopmode -halt-on-error -jobname=baseline_diagnostic_report paper.tex
+pdflatex -interaction=nonstopmode -halt-on-error -jobname=baseline_diagnostic_report paper.tex
 ```
 
 `summary.json`, `condition-summary.csv`, `signed-contrasts.csv`, and
@@ -238,11 +266,11 @@ package code or private empirical data is included. Root [LICENSING.md](../../LI
 excludes R files, prose, results and source evidence from its original-code grant.
 No new content license is asserted here.
 
-Independent reviewers found missing signed bias contrasts and continuation defects.
-The revisions preserve the original numerical baseline and record all 72 bias
-contrasts, including 23 inconclusive point-sign reversals. Whole-dissertation
-replication remains incomplete after review; see
-[unfinished-work.json](provenance/unfinished-work.json).
+The original numerical baseline is preserved, including its 23 inconclusive
+point-sign reversals. The completed production analysis contains 11 such
+reversals across the same 72 signed MAR bias contrasts. Whole-dissertation
+replication remains incomplete; the current record is
+[unfinished-work-v2.json](provenance/unfinished-work-v2.json).
 
 ## Reviewed continuation and bounded resource plan
 
@@ -403,7 +431,10 @@ python3 simulation/test_production_analysis.py
 After the supervisor has reached its terminal state (completed target or fixed
 cap/failure), export its final checkpoint and analyze into a **new, empty**
 directory. A terminal state at the cap is still an incomplete simulation grid.
-These commands are the planned terminal analysis, not a statement it has run:
+The following records the original terminal-analysis command. Its output now
+exists and must be preserved. For replay use the new temporary directories in
+[terminal-reproduction.md](handoff/terminal-reproduction.md), rather than
+re-exporting or overwriting this saved namespace:
 
 ```sh
 python3 simulation/production_status.py --namespace production/chapter6-v1 --export
@@ -431,7 +462,7 @@ assert that the source has that precision. Existing generated files are refused.
 The builder does not edit `paper.tex` or the baseline builder. Replaying
 `OPENBLAS_NUM_THREADS=1 python3 simulation/test_production_report.py` uses only
 the preserved baseline and temporary outputs, including a temporary LaTeX build.
-These commands do not imply that terminal analysis or paper integration is done.
+The terminal analysis is complete; manuscript acceptance is recorded separately.
 
 The analyzer verifies exported hashes and ledger identities, retains all96
 condition/method cells, and counts historical guarded replays exactly once.
@@ -513,17 +544,19 @@ incomplete-chain outcomes, and obtain independent scientific outcome review.
 Even acceptable diagnostics on this one dataset would not establish100-dataset
 Chapter2 power/recovery, Chapter5 production, or whole-dissertation success.
 
-### Bounded JAGS dispatcher (awaiting independent dispatcher review)
+### Independently reviewed bounded JAGS dispatcher
 
-The study-specific dispatcher keeps the frozen gate wrappers unchanged. It must
-be independently reviewed before use. The following are future execution commands,
-not evidence of a started gate. Run from this study directory:
+The study-specific dispatcher keeps the frozen gate wrappers unchanged. Its
+independent implementation review is in
+[jags-dispatch-independent-review.json](provenance/jags-dispatch-independent-review.json).
+The original four-chain experiment is complete. To replay in a separate checkout,
+run from this study directory using a new, empty namespace:
 
 ```sh
-python3 simulation/dispatch_jags_gate.py check --namespace production/jags-gate-v1
-python3 simulation/dispatch_jags_gate.py dispatch --namespace production/jags-gate-v1
+python3 simulation/dispatch_jags_gate.py check --namespace production/jags-gate-replay
+python3 simulation/dispatch_jags_gate.py dispatch --namespace production/jags-gate-replay
 # Only after all four outcomes have been recorded:
-python3 simulation/dispatch_jags_gate.py diagnose --namespace production/jags-gate-v1
+python3 simulation/dispatch_jags_gate.py diagnose --namespace production/jags-gate-replay
 ```
 
 `check` is read-only and refuses active OpenMx supervisor/runner/batch or JAGS
