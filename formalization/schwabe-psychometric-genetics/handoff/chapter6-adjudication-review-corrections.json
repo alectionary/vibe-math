@@ -1,0 +1,2034 @@
+{
+  "document_kind": "targeted_proposed_field_corrections",
+  "proposal_sha256": "acebe74693bfe18daa085346b3c5e50bb93f03c536e144404cbc540c78f0b0e8",
+  "instructions": "Root review required. Apply only claim-appropriate fields; source values, empirical ours nulls and statuses are unchanged except root separate status override. additional_evidence is a sidecar recommendation for evidence attachment, not a schema field to copy blindly. Pending narrow analytical review takes precedence.",
+  "claims": {
+    "C6-1.covariance": {
+      "set_fields": {
+        "numerical": "Analytical/model-implementation check; source figure rounding is inapplicable to this proposition.",
+        "uncertainty": "Agreement of the stated covariance construction under the checked model and designs is a deterministic check. It is not a sampling confidence statement, empirical model validation, or proof for every parameter configuration.",
+        "multiplicity": "No inferential multiple-testing family applies to this analytical/model-implementation check.",
+        "reproduction_deviation": "Model-construction correspondence is recorded in the analytical evidence; no figure-derived scalar discrepancy is assigned."
+      },
+      "additional_evidence": []
+    },
+    "C6-1.observed-likelihood": {
+      "set_fields": {
+        "numerical": "Analytical/model-implementation check; source figure rounding is inapplicable to this proposition.",
+        "uncertainty": "Agreement of the stated covariance construction under the checked model and designs is a deterministic check. It is not a sampling confidence statement, empirical model validation, or proof for every parameter configuration.",
+        "multiplicity": "No inferential multiple-testing family applies to this analytical/model-implementation check.",
+        "reproduction_deviation": "Model-construction correspondence is recorded in the analytical evidence; no figure-derived scalar discrepancy is assigned."
+      },
+      "additional_evidence": []
+    },
+    "C6-1.borrowing": {
+      "set_fields": {
+        "numerical": "Analytical or specified observation-distribution target; figure extraction and printed-figure rounding are inapplicable.",
+        "uncertainty": "This target requires claim-specific analytical or code evidence; terminal Monte Carlo intervals for variance SE and bias do not establish it.",
+        "multiplicity": "No simulation multiple-testing family is assigned to this code/model proposition.",
+        "reproduction_deviation": "No empirical or simulation aggregate is substituted for this distinct model statement."
+      },
+      "additional_evidence": [],
+      "pending_override": "Root-assigned guard_validation narrow analytical/code review supersedes provisional unattempted wording when available; preserve its actual scope."
+    },
+    "C6-8.binary-link": {
+      "set_fields": {
+        "numerical": "Analytical or specified observation-distribution target; figure extraction and printed-figure rounding are inapplicable.",
+        "uncertainty": "This target requires claim-specific analytical or code evidence; terminal Monte Carlo intervals for variance SE and bias do not establish it.",
+        "multiplicity": "No simulation multiple-testing family is assigned to this code/model proposition.",
+        "reproduction_deviation": "No empirical or simulation aggregate is substituted for this distinct model statement."
+      },
+      "additional_evidence": [],
+      "pending_override": "Root-assigned guard_validation narrow analytical/code review supersedes provisional unattempted wording when available; preserve its actual scope."
+    },
+    "C6-8.continuous-link": {
+      "set_fields": {
+        "numerical": "Analytical or specified observation-distribution target; figure extraction and printed-figure rounding are inapplicable.",
+        "uncertainty": "This target requires claim-specific analytical or code evidence; terminal Monte Carlo intervals for variance SE and bias do not establish it.",
+        "multiplicity": "No simulation multiple-testing family is assigned to this code/model proposition.",
+        "reproduction_deviation": "No empirical or simulation aggregate is substituted for this distinct model statement."
+      },
+      "additional_evidence": [],
+      "pending_override": "Root-assigned guard_validation narrow analytical/code review supersedes provisional unattempted wording when available; preserve its actual scope."
+    },
+    "C6-7.implementation": {
+      "set_fields": {
+        "uncertainty": "Smoke execution establishes operational compatibility for the checked code and inputs; it does not certify parameter recovery, statistical coverage, or historical environment equivalence.",
+        "numerical": "Software execution target; figure extraction and rounding are inapplicable.",
+        "multiplicity": "No inferential family applies to a software smoke check.",
+        "reproduction_deviation": "Original-code execution is a compatibility check, not reproduction of original numerical outputs."
+      },
+      "additional_evidence": []
+    },
+    "C6-8.implementation": {
+      "set_fields": {
+        "methods": "Normalized AppendixG program compiled and sampled on synthetic inputs with100adaptation,100burn-in and100retained draws; original empirical inputs were not fitted.",
+        "uncertainty": "The short single smoke execution does not establish adaptation success, chain convergence, posterior precision, parameter recovery or empirical application reproduction.",
+        "numerical": "Software execution target; figure extraction and rounding are inapplicable.",
+        "multiplicity": "No inferential family or empirical coefficient classification is assigned to this smoke execution.",
+        "reproduction_deviation": "Operational compilation/sampling correspondence only; original posterior or empirical numerical results were not reproduced.",
+        "stopping": {
+          "reason": "The bounded implementation smoke test completed. Its short run is not a posterior convergence study.",
+          "attempted": "Normalized AppendixG compiled and sampled100adaptation+100burn+100retained draws on synthetic inputs.",
+          "untested": "Convergence, parameter recovery and original empirical application results.",
+          "resource_basis": "Short bounded synthetic-input smoke execution; the96000OpenMx fits are a separate experiment.",
+          "next_evidence": "Separate validated convergence/parameter-recovery design for this model, and original empirical inputs for empirical reproduction."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.pairs": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.pairs.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.MZ_pairs": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.MZ_pairs.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.DZ_pairs": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.DZ_pairs.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.MZ_male": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.MZ_male.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.MZ_female": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.MZ_female.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.DZ_male": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.DZ_male.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.DZ_female": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.DZ_female.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.DZ_opposite_sex": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.DZ_opposite_sex.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.missing_test_scores": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.missing_test_scores.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": [
+        {
+          "evidence_path": "outputs/analytic-checks.json",
+          "scope": "Source-only arithmetic, not independent empirical reproduction",
+          "description": "Existing source-only sum of stated missingness reasons is130 versus the reported120missing test scores. Categories may overlap; this is not proof of a data error."
+        }
+      ]
+    },
+    "C6-6.count.missing_not_final_grade": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.missing_not_final_grade.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.missing_special_education": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.missing_special_education.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.missing_other_test": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.missing_other_test.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.missing_child_nonattendance": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.missing_child_nonattendance.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.missing_unknown": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.missing_unknown.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Boy": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Boy.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Girl": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Girl.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.schoolsize_available": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.schoolsize_available.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.schoolsize_missing": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.schoolsize_missing.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Regular": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Regular.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Dalton": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Dalton.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Jenaplan": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Jenaplan.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Montessori": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Montessori.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Specialised_regular": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Specialised_regular.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Specialised": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Specialised.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.pedagogical_missing": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.pedagogical_missing.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.ProtestantChristian": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.ProtestantChristian.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Reformed": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Reformed.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Reformed_liberated": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Reformed_liberated.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.RomanCatholic": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.RomanCatholic.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.CollaborationPC_RC": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.CollaborationPC_RC.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.Special_denomination": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.Special_denomination.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.State": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.State.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.denomination_missing": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.denomination_missing.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.count.total_missing_covariate_answers": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.total_missing_covariate_answers.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": [
+        {
+          "evidence_path": "outputs/analytic-checks.json",
+          "scope": "Source-only arithmetic, not independent empirical reproduction",
+          "description": "Source-only arithmetic in outputs/analytic-checks.json:1432missing covariate answers /7920answers \u00d7100=18.08080808080808%. This uses published counts; it does not independently validate1432."
+        }
+      ]
+    },
+    "C6-6.count.deletion_lost_individuals": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.deletion_lost_individuals.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": [
+        {
+          "evidence_path": "outputs/analytic-checks.json",
+          "scope": "Source-only arithmetic, not independent empirical reproduction",
+          "description": "Published-count arithmetic1980\u2212496=1484 is consistent with the stated retained count; it does not independently verify496lost individuals."
+        }
+      ]
+    },
+    "C6-6.count.deletion_retained_individuals": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "count",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.count.deletion_retained_individuals.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": [
+        {
+          "evidence_path": "outputs/analytic-checks.json",
+          "scope": "Source-only arithmetic, not independent empirical reproduction",
+          "description": "Source-only arithmetic in outputs/analytic-checks.json:1980\u2212496=1484retained individuals;1484/1980\u00d7100=74.94949494949495%. Published input counts are assumed, not independently reproduced."
+        }
+      ]
+    },
+    "C6-6.6.2.A": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype variance units",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.2.A.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.2.C": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype variance units",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.2.C.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.2.E": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype variance units",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.2.E.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.2.h2": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "heritability proportion",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.2.h2.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.male": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.male.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.PC_RC": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.PC_RC.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.ProtestantChristian": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.ProtestantChristian.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Reformed": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Reformed.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Reformed_liberated": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Reformed_liberated.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Special": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Special.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.State": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.State.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.schoolsize": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast per1SD school size",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.schoolsize.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Dalton": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Dalton.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Jenaplan": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Jenaplan.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Montessori": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Montessori.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Specialised_regular": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Specialised_regular.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.6.3.Specialised": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "standardized phenotype mean contrast versus reference category",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.6.3.Specialised.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6.Bayes-ML": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "exact textual proposition",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6.Bayes-ML.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Boy": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Boy.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Girl": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Girl.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.schoolsize_available": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.schoolsize_available.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.schoolsize_missing": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.schoolsize_missing.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Regular": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Regular.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Dalton": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Dalton.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Jenaplan": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Jenaplan.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Montessori": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Montessori.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Specialised_regular": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Specialised_regular.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Specialised": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Specialised.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.pedagogical_missing": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.pedagogical_missing.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.ProtestantChristian": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.ProtestantChristian.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Reformed": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Reformed.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Reformed_liberated": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Reformed_liberated.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.RomanCatholic": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.RomanCatholic.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.CollaborationPC_RC": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.CollaborationPC_RC.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.Special_denomination": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.Special_denomination.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.State": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.State.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "C6-6.percent.denomination_missing": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "percent",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "No new empirical test or multiplicity-adjusted conclusion was obtained for this target.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of C6-6.percent.denomination_missing.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    },
+    "H6.covariate-nondetection": {
+      "set_fields": {
+        "ours": {
+          "value": null,
+          "units": "no single scalar estimand",
+          "unavailable_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations."
+        },
+        "status_reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+        "uncertainty": "Independent empirical sampling or fitted-model uncertainty is unavailable. Source-only arithmetic does not supply it.",
+        "multiplicity": "The source13coefficient99.6%HPD criterion remains a source statement, not an independently reproduced empirical test.",
+        "reconstruction_scope": "Original empirical data were not reconstructed. Any source-table arithmetic is explicitly conditional on the published inputs.",
+        "reproduction_deviation": "No independent empirical estimate or reproduction deviation is available.",
+        "limitations": [
+          "Original linked empirical observations and fitted-model inputs are unavailable. Source counts or fitted summaries do not recreate those observations.",
+          "Any arithmetic using published values checks internal consistency only; it is not independent empirical reproduction."
+        ],
+        "stopping": {
+          "reason": "The original linked NTR/Cito educational-achievement data and original fitted-model inputs were unavailable after documented permitted acquisition. Independent empirical counts, percentages, fitted estimates and nondetection results cannot be recovered from the Chapter6 simulations.",
+          "attempted": "Documented permitted source acquisition and inspection of the published empirical target.",
+          "untested": "Independent empirical reproduction of H6.covariate-nondetection.",
+          "resource_basis": "Unavailable original empirical inputs, not a simulation computation budget shortfall.",
+          "next_evidence": "Original empirical data and calibration/model specification from a permitted source."
+        }
+      },
+      "additional_evidence": []
+    }
+  },
+  "global_corrections": [
+    "Replace48sourceconditions with36primary source-design conditions plus12low-missingness sensitivity conditions.",
+    "Apply separate root216point not_established policy while retaining all conditional numerical discrepancies.",
+    "Precision-parent wording: Published literal variance-SE points differ from our estimates in216/216 conditional comparison bands; scientific comparability remains unresolved because source SE implementation and source Monte Carlo uncertainty are unavailable."
+  ]
+}
