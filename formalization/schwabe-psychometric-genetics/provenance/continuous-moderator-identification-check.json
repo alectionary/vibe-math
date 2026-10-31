@@ -1,0 +1,91 @@
+{
+  "title": "Our ordinary population-identification extension to rich, possibly disjoint moderator supports",
+  "canonical_claims": [
+    "C5-1.logvariance-identification",
+    "C5-1.one-likelihood-maximum"
+  ],
+  "created_utc": "2026-10-31T03:07:39.344754+00:00",
+  "status": "Concrete ordinary proof and exact algebra checks complete; independent review pending. Conditional extension only; original broad claim not marked replicated.",
+  "source": {
+    "pdf_local_path": "/tmp/schwabe-thesis/thesis_I_Schwabe.pdf",
+    "pdf_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+    "text_local_path": "/tmp/schwabe.txt",
+    "text_sha256": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "locators": [
+      "p72 Section5.1.2 Eq5.1 and likelihood-maximum assertion",
+      "pp75\u201376 Section5.2 Eqs5.3\u20135.15: shared-family moderator, Gaussian ACE, fixed Rasch calibration",
+      "p84 shared-family restriction and separate-twin extension",
+      "AppendixC pp138\u2013139 binary sign-indeterminacy argument and asserted continuous extension"
+    ],
+    "readback": "Read these local printed-page text passages directly. Source p75 prose specifies normality despite missing N in text extraction Eq5.3; this proof explicitly assumes the stated Gaussian model. No source code copied."
+  },
+  "dependencies": {
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+    "provenance/identification-check.json": "528804e4c6106cd3e0d290b93dd2536b21fc7c9c128bbad885d74b37c410e250",
+    "provenance/joint-item-identification-check.json": "7af0254e5b8c3b77385eba63b92b64fa05e761ae1b01c8342bb337c3456be732",
+    "provenance/joint-item-identification-independent-review.json": "ac4fb8f4f88080cb1c4ca721e04ff1ca58b485c5f07612ab748fdb661b35f283",
+    "simulation/continuous_moderator_identification_check.py": "3ee91eaf39880857abcc9ef6149abefa8d1a81fa7eb723f6c6444e6dc09aa721",
+    "outputs/continuous-moderator-identification-checks.json": "9964ec56d33519ad728c66054cf4758f46fa0aee2d2eaa00532e24f9eb97cc93"
+  },
+  "new_progress": "The earlier bridge required two moderator values common to both zygosities. This extension dispenses with overlap: each zygosity moderator law must not be concentrated on three or fewer values. Finite mixtures with four or more distinct atoms, nonatomic laws, and mixtures satisfying this condition qualify. This is sufficient, not claimed minimal or necessary. Binary designs remain covered only by earlier shared-level argument.",
+  "model_and_assumptions": [
+    "Observed zygosity Z has positive probability for MZ and DZ. The shared family moderator M is observed without error; its conditional law nu_z is common when comparing two candidate parameter points, as follows from equality of observed joint laws. Treat its distribution as ancillary or fixed rather than imposing a parameter-dependent unexamined selection model.",
+    "For each zygosity, nu_z is not concentrated on any set of at most three real values. MZ and DZ supports may be disjoint; no conditioning on specified zero-probability points is required.",
+    "One common finite eight-parameter vector eta defines mu(m)=mu0+mu1*m, A(m)=exp(a0+a1*m), C(m)=exp(c0+c1*m), E(m)=exp(e0+e1*m) for every real m. These positive functions, including the same mean and components across zygosity, are assumed exactly, not empirically demonstrated.",
+    "Conditional on M=m,Z=z, twin traits are jointly Gaussian with equal marginal mean mu(m), variance T(m)=A(m)+C(m)+E(m), covariance K_MZ(m)=A(m)+C(m) or K_DZ(m)=A(m)/2+C(m). Known genetic correlations are1 and1/2. The covariances are strictly interior because E>0.",
+    "Known finite invariant logistic calibration anchors trait location and scale; at least two distinct conditionally independent binary observations with strictly positive finite slopes are available within a person. Distinct observations may have identical calibration. Cross-twin item joint probabilities are also identified. Conditional independence is across the relevant observations given latent traits.",
+    "The full conditional observed item law supplies the within-person marginal/joint and cross-twin joint probabilities for nu_z-almost every m. Complete item observation suffices; with missingness/selection this availability is an additional assumption, not an automatic consequence of marginal item observation or this proof."
+  ],
+  "theorem": "Under these assumptions equality of population observed joint distributions of (Z,M,item responses) for eta and eta_prime implies eta=eta_prime. This is global population injectivity, not a statement about sample likelihood shape.",
+  "ordinary_proof": [
+    {
+      "step": 1,
+      "name": "Conditional-law equality without pointwise support assumptions",
+      "argument": "Equality of joint observed laws implies equal zygosity probabilities and moderator laws and equal conditional item probability vectors nu_z-almost everywhere. The finite binary response space permits one common full-measure equality set S_z. By the support assumption S_z contains at least four distinct real values: otherwise nu_z would be concentrated on at most three values. No claim is made that a regular conditional law is intrinsically fixed at an arbitrary zero-mass point."
+    },
+    {
+      "step": 2,
+      "name": "Recover latent moments on those equality sets",
+      "argument": "Apply the independently reviewed joint-item identification lemma at every m in S_z: with known positive slopes, one marginal and one within-person joint probability globally identify finite Gaussian mean mu(m) and positive variance T(m). The cross-twin joint probability then strictly increases in K_z(m) by the Gaussian covariance derivative E[fprime(theta1)gprime(theta2)]>0, so it identifies K_z(m). Bounded logistic derivatives justify the Gaussian differentiation. Thus both candidate parameter points have identical mu,T,K_z on S_z. This step is conditional on the pinned earlier proof and its stated local-independence/calibration assumptions."
+    },
+    {
+      "step": 3,
+      "name": "Real exponential zero-count lemma",
+      "argument": "For distinct ordered real lambda_1<...<lambda_r and nonzero real coefficients c_j, a nonzero F(x)=sum_j c_j exp(lambda_j*x) has at most r-1 distinct real zeros. For r=1 there are none. Induct: G=exp(-lambda_1*x)F has exactly the same zeros. If it has r distinct zeros, Rolle gives at least r-1 distinct zeros of Gprime=sum_{j=2}^r c_j(lambda_j-lambda_1)exp((lambda_j-lambda_1)*x). All r-1 coefficients are nonzero and exponents distinct, so induction allows at most r-2 zeros, contradiction. The same argument excludes any larger or infinite zero set by selecting r zeros. Before applying the lemma, group equal exponents and remove zero coefficients; if no terms remain, the function is identically zero."
+    },
+    {
+      "step": 4,
+      "name": "Extend both covariance equalities globally",
+      "argument": "For either z, K_z^eta-K_z^eta_prime is a sum of at most four real exponentials: the A and C terms from each candidate, with genetic coefficient1 or1/2. After grouping coincident slopes and cancellations there are r<=4 nonzero terms, or none. Equality on S_z gives at least four distinct zeros. The lemma forces the difference to be identically zero on R. This applies separately to each zygosity, so disjoint supports cause no gap in this exact functional model."
+    },
+    {
+      "step": 5,
+      "name": "Invert ACE then the affine coefficients",
+      "argument": "Global equality of both K curves yields A=2(K_MZ-K_DZ) and C=2*K_DZ-K_MZ equal globally. Their logarithms are affine, so equality at any two distinct real values identifies a0,a1,c0,c1. At any two distinct values in S_MZ, T equality and A,C equality give E equality; log E is affine, identifying e0,e1. Likewise mean equality on those two values identifies mu0,mu1. The two-point affine design determinant is m1-m0, nonzero. Thus all eight coefficients agree."
+    }
+  ],
+  "exact_checks": {
+    "command": "python simulation/continuous_moderator_identification_check.py",
+    "output": "outputs/continuous-moderator-identification-checks.json",
+    "passed": 9,
+    "scope": "Exact symbolic ACE inversion and affine determinant; Vandermonde identities r1\u20134 corroborating exponential linear independence; rational covariance example on disjoint four-point designs; equal-slope cancellation example. These checks support algebra only; the general theorem follows from the ordinary proof, not enumerated examples.",
+    "no_model_fits": true,
+    "no_numerical_integration": true
+  },
+  "finite_likelihood_attempt_and_remaining": {
+    "attempts": [
+      "Examined whether covariance/population injectivity implies a unique finite sample maximum: it does not; no concavity or strict-concavity argument follows from these inverse maps.",
+      "Re-read prior all-zero-response construction: likelihood strictly improves as mean tends to minus infinity, showing nonexistence of a finite maximizer. It is not a construction of two maxima and does not refute an at-most-one assertion.",
+      "Examined support-overlap gap in existing population proof and closed it under the explicit richer-support restriction above."
+    ],
+    "unresolved": "Existence and at-most-one finite likelihood maximum for nondegenerate observed-item samples under a specified design and parameter domain remain unresolved. No new multiple-maximum witness, sample concavity theorem, posterior uniqueness or MCMC convergence statement is claimed."
+  },
+  "limits": [
+    "No validation that unavailable empirical calibration, moderator support or missingness satisfy these conditions.",
+    "No unknown-calibration, ordinal-item, nonGaussian, separate-twin-moderator or noisy/unobserved-moderator theorem.",
+    "Disjoint-support identification relies on exact common loglinear component functions across zygosity; it offers no robustness or finite-sample extrapolation guarantee.",
+    "Population identification does not imply good conditioning, practical estimability, unbiasedness, likelihood existence/uniqueness, power or significance.",
+    "Ordinary mathematical proof, not Lean formalization. No lack-of-Lean blocker for this scoped analytical progress.",
+    "This additive note changes no source claim inventory status and does not complete the dissertation replication."
+  ]
+}
