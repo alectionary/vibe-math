@@ -50,6 +50,9 @@ still does not settle the original source question.
 
 ## Read these first
 
+0. [Restricted-frame checkpoint, 31 October](RESTRICTED-FRAMES-20261031.md):
+   quarter-split exclusion, pool structure, T^8 and p-half timeouts, and
+   reproducible encoders. Start here before any new subgroup/split search.
 1. [Independent enumeration](INDEPENDENT-ENUMERATION.md): the complete pools,
    lower bound, both-sector transfer and mixed-Pauli bridge.
 2. [Latest shared-master result](SHARED-MASTER-TWO-HOURS-RESULT.md): exact
