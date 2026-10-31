@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-31T14:41:18.777073+00:00",
+  "reviewer": "Independent continuation science reviewer delegated agent",
+  "status": "accepted_terminal_accounting_for_incomplete_budget_stopped_A0; posterior_comparison_not_eligible",
+  "namespace": "production/score-a0-v1",
+  "terminal_outcome_sha256": "3ea78ef1a93b7b2797afb59e43743f73ef4027c6ddd299a83a4354a560d0cd67",
+  "checks": {
+    "terminal_evidence_hashes_checked": 50,
+    "hash_mismatches": [],
+    "requested_count": 4,
+    "outcome_count": 4,
+    "all_four_cancelled_SIGTERM": true,
+    "reason": "TimeoutError: Summed process budget stop",
+    "sum_chain_seconds_recomputed": 6419.751313023,
+    "sum_matches": true,
+    "all_phase_seconds_recomputed": 6420.894926815,
+    "all_phase_matches": true,
+    "chain_cleanup_within_6420": true,
+    "all_phase_within_7740": true,
+    "elapsed_within_3600": true,
+    "four_16000_checkpoints": true,
+    "all_adapted": true,
+    "full_result_files_present": [],
+    "diagnostics_directory_absent": true,
+    "frozen_diagnostic_script_matches": true,
+    "frozen_wrapper_matches": true,
+    "frozen_dispatch_matches": true
+  },
+  "independent_checkpoint_metadata_read": "Read adaptation.rds and checkpoint.rds plus partial-draws.rds dimensions only using Rscript -e with explicit --args. All four adaptation flagsTRUE, four checkpoint chunks and16000x11 raw monitored matrices. Checkpoint partial/state hashes match independently rehashed evidence files. No partial parameter summaries, ESS, Rhat, MCSE or HPD computed.",
+  "completion": "0/4 prescribed28000-draw chains completed. Four16000-row checkpoints are preserved partial data, not successful chains or four datasets. No final result/draw file and no diagnostic stage.",
+  "resource_assessment": {
+    "chain_cleanup_seconds": 6419.751313023,
+    "all_phase_dispatch_seconds": 6420.894926815,
+    "elapsed_seconds": 1606.104005898,
+    "nominal_per_chain_cap": 1600,
+    "reported_per_chain_range_including_cleanup": [
+      1604.936059806,
+      1604.9396447880001
+    ],
+    "interpretation": "Summed-process budget guard triggered with reserved cleanup time. Reported per-chain process-accounting durations are about1604.94seconds, exceeding nominal1600 by about4.94seconds because final accounting includes the five-second TERM/KILL cleanup grace. Do not claim every final elapsed duration was below1600. Summed chain/cleanup6419.751313 and all-phase6420.894927 remain below6420 and7740 respectively; elapsed1606.104006 below3600. These are polled operational guards, not kernel-hard realtime limits. Actual sampler shutdown time within the cleanup interval is not measured by these totals.",
+    "other_resources": "No memory/output guard was reported as stop reason; absence of such a failure is not a measured peak-RSS profile. Separate read-only parent audit duration .23307459seconds is reported outside sampler-stage timing."
+  },
+  "benchmark_comparison": {
+    "historical_item_seconds": 4927.558111619001,
+    "score_consumed_seconds": 6419.751313023,
+    "ratio_score_over_historical": 1.3028260991758702,
+    "historical_retained_per_chain": 28000,
+    "score_checkpoint_retained_per_chain": 16000,
+    "conclusion": "About1.302826 times the recorded historical summed process time was consumed without completing the fixed target. This is not equal-work speedup or a causal slowdown estimate: saved draw counts differ, baseline was historical, starts/RNG streams differ, and both use JAGS4.3.2. No throughput extrapolation, independent-backend validation, score acceleration claim, or mathematical target-refutation follows."
+  },
+  "diagnostic_and_five_global_assessment": {
+    "eligible": false,
+    "joint_gate": "Not assessed; incomplete fixed target, not an observed convergence-gate failure. Adaptation completion alone does not establish convergence.",
+    "five_globals": [
+      "mu",
+      "va",
+      "vc",
+      "ve",
+      "beta1"
+    ],
+    "comparison": "No five-global means/combined-MCSE/Bonferroni intervals eligible under frozen rule requiring all four28000 chains and both joint gates. No partial replacement analysis performed. Historical14-gate pass remains historical item-model evidence only."
+  },
+  "audit_helper_argument_correction": {
+    "record": "provenance/score-a0-audit-initial-error.txt",
+    "sha256": "c95030872d3249b157fa17f37e2c702f792e4e782af29485fa5613f5f092b2ed",
+    "finding": "Recorded first read-only audit invocation failed before summary because local Rscript -e wrapper requires explicit --args. Corrected argument boundary concerns metadata audit, not sampler retry. Independent metadata read with --args succeeded; frozen sampler/diagnostic/dispatcher hashes unchanged."
+  },
+  "scientific_handoff": "The fixed four-chain score-representation pilot was stopped by its prespecified summed-process budget. No chain completed28000 retained draws; all four preserved16000-draw checkpoints after completed adaptation. The full diagnostic and posterior-mean comparison were therefore not performed. This case supplies bounded resource-failure evidence only. It does not establish score-likelihood equivalence empirically, acceleration, posterior recovery, power or computational impossibility. Existing analytical target-preservation evidence is logically separate.",
+  "source_target_status": "Zero new datasets; no100/250-dataset source posterior aggregates completed. No retry, expansion, partial diagnostics or manuscript modification authorized or performed.",
+  "process_check": "Independent ps listing found no processes with executable comm R or Rscript at review time. No signals sent.",
+  "remaining_blockers": [
+    "Prespecified A0 full-length comparison incomplete due to terminal summed-budget stop; no retry or expansion within this authorization."
+  ],
+  "operations": "Read-only file/hash/resource accounting and checkpoint metadata/dimension inspection; wrote this new review JSON only."
+}
