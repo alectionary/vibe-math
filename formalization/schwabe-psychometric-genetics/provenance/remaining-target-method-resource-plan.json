@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-31T04:23:53.631048+00:00",
+  "author": "/root/remaining_resource_plan; independent method/resource planning agent",
+  "status": "Proposed bounded plan for independent review; not execution authorization; no scientific status upgrades",
+  "operations": {
+    "model_runs": 0,
+    "pending_draws_or_outcomes_inspected": false,
+    "only_created_file": "provenance/remaining-target-method-resource-plan.json",
+    "frozen_artifacts_modified": false
+  },
+  "scope": "Source-count Bayesian recovery, numerical power, item sufficiency, and broad observed-response identification. Existing recovery4x28k N500/J60 seed301 must complete under its own frozen protocol; this plan does not alter it.",
+  "evidence_sha256": {
+    "coverage-v4.csv": "ec9797534011310e5bf0d382c504802fb8031f68b3c4e0be1c00f5c3cfff0879",
+    "source-local/schwabe.txt": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "provenance/bayesian-convergence-plan.json": "8b9cc97df9e1f3dbd2690dac80192d9db7daa34deaec0cbbcbdf6443bde2608b",
+    "provenance/compute-remedies-independent-review.json": "9830b6f1b634faa60eb12c41df009ed367038e622b0a41779ff36fe05a4871f2",
+    "provenance/jags-centered-outcome-independent-review.json": "aa0c9157c533ce72b25d18f355d8dc64d79caf8cabf6ff5fac6e7587b35f65b1",
+    "provenance/non-gaussian-latent-moment-independent-review.json": "12b45c8b49e1f65ba4efa6068b9ba6224ed21da45a7c681e647cfdc5a6c167b8",
+    "provenance/joint-item-identification-independent-review.json": "ac4fb8f4f88080cb1c4ca721e04ff1ca58b485c5f07612ab748fdb661b35f283",
+    "provenance/continuous-moderator-identification-independent-review.json": "3c19b94f11d822c3c413f4337130ccf971e93cc4e025a9a37ffa22db5e17c3fd",
+    "provenance/chapter5-free-mean-source-check.json": "cdc9085886d5d2414f12f2d2c72a22e471b83d0934d8082100a94762f0abf470",
+    "production/jags-centered-gate-v1/chains/outcomes.json": "97f7694ab5a79367e17873b4b1685769082789b7de0f375d412c7ab32ccec76f",
+    "outputs/source-power-targets.csv": "0c94733694040e4015316fa75be3daf811c784b77ef0ce80429063d37e177ad0",
+    "provenance/generator-summary-plan.json": "4478ab5794fd83c22105c00388248784719e38ebb1b05aaa51f286e9bd5ddbc3"
+  },
+  "source_designs": [
+    {
+      "id": "C2-floor-ceiling",
+      "locators": [
+        "Chapter2 pp19\u201322 Table2.1"
+      ],
+      "N_pairs": 500,
+      "J": 60,
+      "MZ_pairs": 140,
+      "DZ_pairs": 360,
+      "datasets_per_scenario": 100,
+      "scenarios": {
+        "floor": "b_j ~ Normal(1,1), SD=1",
+        "ceiling": "b_j ~ Normal(-1,1), SD=1"
+      },
+      "truth": {
+        "A": 0.5,
+        "C": 0.3,
+        "exp_beta0": 0.2,
+        "beta1": 0,
+        "mu": 0
+      },
+      "methods": [
+        "calibrated Rasch-ACE interaction",
+        "source standardized-total Gaussian-phenotype comparator"
+      ],
+      "unique_datasets": 200,
+      "dataset_method_fits": 400,
+      "targets": "Mean posterior means, across-dataset SD of posterior means, mean posterior SD, signed recovery biases and scale artifact contrasts; ceiling qualitative target retained separately."
+    },
+    {
+      "id": "C2-power-and-recovery",
+      "locators": [
+        "Chapter2 pp20\u201323 Eq2.16 Tables2.2\u20132.3"
+      ],
+      "N_pairs": [
+        500,
+        1000,
+        2000
+      ],
+      "J": 60,
+      "MZ_fraction": 0.28,
+      "DZ_fraction": 0.72,
+      "Delta": [
+        1,
+        1.3,
+        1.5,
+        1.7
+      ],
+      "beta1": "log(Delta)/sqrt(0.5)",
+      "truth_other": {
+        "A": 0.5,
+        "C": 0.3,
+        "exp_beta0": 0.2,
+        "mu": 0
+      },
+      "difficulty": "Normal(0,1), SD=1; treated known",
+      "datasets_per_cell": 100,
+      "cells": 12,
+      "unique_datasets": 1200,
+      "dataset_method_fits": 1200,
+      "sharing": "Same 1200 posterior fits supply Table2.2 detection and Table2.3 recovery; do not double count. Delta=1 is a null rejection fraction, not nonzero-effect power.",
+      "source_decision": "95% HPD for beta1 excludes zero",
+      "published_power_rows": [
+        {
+          "N": "500",
+          "delta": "1",
+          "power": "0.03",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "500",
+          "delta": "1.3",
+          "power": "0.48",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "500",
+          "delta": "1.5",
+          "power": "0.57",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "500",
+          "delta": "1.7",
+          "power": "0.81",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "1000",
+          "delta": "1",
+          "power": "0.07",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "1000",
+          "delta": "1.3",
+          "power": "0.57",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "1000",
+          "delta": "1.5",
+          "power": "0.92",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "1000",
+          "delta": "1.7",
+          "power": "0.99",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "2000",
+          "delta": "1",
+          "power": "0.07",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "2000",
+          "delta": "1.3",
+          "power": "0.92",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "2000",
+          "delta": "1.5",
+          "power": "1",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        },
+        {
+          "N": "2000",
+          "delta": "1.7",
+          "power": "1",
+          "replicates": "100",
+          "locator": "Table2.2 p22"
+        }
+      ]
+    },
+    {
+      "id": "C2-symmetric",
+      "locators": [
+        "Chapter2 p24"
+      ],
+      "N_pairs": 500,
+      "J": 60,
+      "MZ_pairs": 140,
+      "DZ_pairs": 360,
+      "difficulty": "Normal(0,1), SD=1",
+      "truth": "Same null interaction/ACE settings as study1",
+      "unique_datasets": 100,
+      "dataset_method_fits": 100,
+      "method": "Source standardized-total Gaussian comparator",
+      "targets": {
+        "mean_posterior_beta1": 0.03,
+        "across_dataset_SD": 0.24
+      },
+      "optional_IRT_arm": "100 extra method fits only if separately specified; not required by this numerical source target and not in core count."
+    },
+    {
+      "id": "C5-sample-size",
+      "locators": [
+        "Chapter5 pp77\u201379 Table5.1 AppendixD"
+      ],
+      "N_pairs": [
+        1000,
+        2000,
+        4000,
+        8000
+      ],
+      "J": 60,
+      "datasets_per_cell": 250,
+      "unique_datasets": 1000,
+      "dataset_method_fits": 1000,
+      "note": "Table5.1 and discussion support 8000; prose 80000 is recorded source discrepancy, not silently a new target."
+    },
+    {
+      "id": "C5-item-count",
+      "locators": [
+        "Chapter5 pp78\u201380 Table5.2"
+      ],
+      "N_pairs": 1000,
+      "J": [
+        20,
+        100,
+        250
+      ],
+      "datasets_per_cell": 250,
+      "unique_datasets": 750,
+      "dataset_method_fits": 750,
+      "note": "N1000/J60 reference comes from Table5.1 and is not a fourth new item-grid cell."
+    }
+  ],
+  "C5_shared_model": {
+    "MZ_fraction": 0.28,
+    "DZ_fraction": 0.72,
+    "moderator": "Shared family dichotomous moderator; source approximately 11% phenotypic variance explained; preserve declared Bernoulli reconstruction, verify coding/probability before freezing.",
+    "truth": {
+      "mu": 0,
+      "beta1m": 0.7,
+      "A0": 0.25,
+      "C0": 0.25,
+      "E0": 0.5,
+      "beta1a": 0,
+      "beta1c": 0,
+      "beta1e": 0
+    },
+    "difficulty": "Known equally spaced [-3.2,3.2]",
+    "fitted_mean": "Free mu with original prior; generated mu=0 is not fitted constraint",
+    "priors": "AppendixD/Section5.2.2; independently verify normal variance versus JAGS precision and all intercept/slope priors before implementation. Do not reuse Chapter2 Gamma-conjugacy argument for Chapter5.",
+    "source_schedule": {
+      "adaptation": 5000,
+      "burn": 50000,
+      "retained": 25000,
+      "chains": 1
+    },
+    "statistics": "Seven tabulated quantities: beta1m,A0,C0,E0,beta1a,beta1c,beta1e; mean posterior mean, across-dataset SD, mean posterior SD. Monitor fitted mu and additional transformed quantities for diagnostics too."
+  },
+  "count_accounting": {
+    "core_unique_datasets": 3250,
+    "core_dataset_method_fits": 3450,
+    "four_chain_jobs_if_independently_validated_uniform_protocol": 13800,
+    "interpretation": "Chains are computational replicates of one dataset-method posterior, never independent datasets. This core excludes optional symmetric IRT, empirical applications and underreported extensions. Shared/null conditions across distinct studies are not silently merged.",
+    "generator_2650": "Existing 2650 datasets cover 1400 Chapter2 plus1250 Chapter5 generator descriptors (four N/J60 cells plus J20). They omit C2 symmetric and C5 J100/J250, and contain no posterior target count. They do not constitute 2650 completed or prescribed posterior fits."
+  },
+  "source_ambiguities": [
+    "Chapter2 random difficulties fixed across or redrawn between replicates is incompletely reported; preserve redrawn reconstruction explicitly and do not claim exact historical driver recovery.",
+    "Source one-chain schedules are historical procedures, not convergence certificates; additional chains/validated equivalent engines must retain model, priors, estimands, counts, and report procedural difference.",
+    "Distinguish E at A=0 (exp(beta0)) from marginal environmental variance under genetic interaction."
+  ],
+  "dependencies_and_sequence": [
+    "Finish and independently review the already frozen 4x28k recovery gate without tuning against its pending draws. A pass permits planning a broader validation stage only; a failure stays unresolved.",
+    "Freeze exact claim-to-design/estimand mapping and source assumptions, seeds, data hashes, priors, calibration, starts, diagnostics, timeout/cleanup limits, and failure-accounting rules before any new run.",
+    "Validate any accelerated likelihood or reparameterization algebra and implementation independently, then conduct a separately authorized bounded cost/mixing pilot. No existing checkpoint is rewritten.",
+    "Only after pilot review and explicit finite budget allocation, request bounded resumable source-count batches with immutable manifests; no full-grid or indefinite-extension launch follows automatically."
+  ],
+  "remedies": [
+    {
+      "method": "Centered physical latent representation",
+      "support": "Independent density/Jacobian review accepted for Chapter2; completed centered12k gate failed joint diagnostics.",
+      "restriction": "Retain exact genetic correlations including singular MZ representation, priors, free mean and genetic-dependent environmental variance; no promise longer chains fix mixing."
+    },
+    {
+      "method": "Exact calibrated Rasch score likelihood",
+      "support": "Ordinary factorization and independent rational exhaustive checks accepted in compute-remedies-independent-review.json.",
+      "identity": "P(y|theta,b)/P(S|theta,b)=exp(-sum b_j*y_j)/c_S(b); constant in all latent-only parameters. Integrating correlated, even non-Gaussian, latent laws preserves the posterior under identical priors.",
+      "implementation_plan": "Stable log coefficients via dynamic programming, log-sum-exp/softplus denominator, retained item masks/calibration; independent normalization, boundary score, extreme finite b, missing-mask, and likelihood-ratio fixtures. Compare normalized log target up to constant at fixed states and numerical derivatives where engine uses them. Then independent small same-data multi-chain comparison within combined MC uncertainty; failure blocks acceleration.",
+      "limits": "Not the Gaussian standardized-total comparator. Unknown calibration breaks the dropped-constant argument; unequal OPLM slopes not covered by this raw-total result. Denominator still costs O(J) without separately validated further work; graph reduction is not measured acceleration. Keep original responses for predictive checks; missingness likelihood must be preserved."
+    },
+    {
+      "method": "Alternative blocked/HMC/interweaving implementation",
+      "status": "Optional later candidate, not implemented or authorized",
+      "requirements": "Independent target/Jacobian/prior review, same-data engine cross-check and bounded memory/ESS-per-second pilot; no changing priors or scientific target merely to pass diagnostics."
+    }
+  ],
+  "prespecified_validation": {
+    "joint_gate": {
+      "rank_normalized_split_folded_Rhat": "<1.01",
+      "bulk_ESS": ">=400",
+      "tail_ESS": ">=400",
+      "mean_MCSE_over_SD": "<=0.05",
+      "adapted": true,
+      "all_finite": true
+    },
+    "scope": "All monitored globals/transforms and fixed representative latent/predictive monitors; independent chain/RNG accounting, trace/rank and temporal-drift review. No individual beta1 pass overrides joint failure.",
+    "HPD": "Preserve source95% HPD; inspect chain/split endpoint sensitivity and suitable endpoint uncertainty. Quantile MCSE is not HPD-endpoint MCSE. Withhold classifications unstable to Monte Carlo error; do not relax criteria after inspecting results.",
+    "aggregation": "Fixed intended denominators100/250; retain attempted/valid/failed/timed-out counts and reasons. No favorable-chain selection, seed replacement, duplicate pooling, or concatenation of a restarted chain as a continuation without true sampler state.",
+    "uncertainty": "Separate posterior MC error from across-dataset simulation error and source rounding/extraction uncertainty. Report recovery estimates with MC intervals; power binomial intervals per cell, null rejection fractions separately, and prespecified grid comparisons with multiplicity handled. No numerical match/equivalence assertion without a predeclared margin.",
+    "unresolved_detection": "Report identified count interval [detected/100,(detected+unclassified)/100] plus sampling uncertainty; never drop failures from denominator or silently classify as nondetection."
+  },
+  "resource_pilot": {
+    "not_authorized": true,
+    "no_new_runs_by_this_task": true,
+    "stage0": "Static/source and deterministic likelihood validation first.",
+    "stage1_proposal": "At most two Chapter2 datasets (fixed N500/J60 floor reference and a prechosen N2000/J60 Delta1.7 cell), four fresh chains per engine, maximum two engines and16 chain jobs; existing prior draws may be read only after terminal independent review for comparator assessment.",
+    "stage2_proposal": "Separate Chapter5 resource stage after stage1 and Chapter5 model validation: one fixed dataset each N1000/J20,N1000/J60,N1000/J250,N8000/J60. Pilot compilation/adaptation/timing in fixed small iteration blocks before proposing full diagnostic runs. These are cost probes, not recovery estimates.",
+    "budget_gate": "Before dispatch, freeze numeric per-chain wall, aggregate worker-seconds, elapsed deadline, memory, output-size and cleanup caps from current actual runtime and quota; if they cannot cover the finite plan, narrow/defer the plan explicitly. This document alone supplies no executable authorization or open-ended budget.",
+    "measure": [
+      "compile/adaptation/burn/sample seconds separately",
+      "RSS per worker and total cgroup memory",
+      "CPU quota/throttling and concurrency",
+      "retained bytes per draw",
+      "ESS/second for worst global and interval endpoints only after diagnostic-length runs"
+    ],
+    "selection": "Choose fixed seeds/cells before results; retain failed pilots. No automatic retries, longer chains or production upon a pass. Representative cells do not certify all grid conditions."
+  },
+  "provisional_cost": {
+    "basis": "Completed centered12k,4 chains, adaptation1000+burn7000+retained12000 at N500/J60; no28k outputs inspected. Failed mixing means these are timing anchors only.",
+    "chain_wall_seconds": [
+      671.3129727229971,
+      672.800973065001,
+      651.435255145996,
+      672.1670261839972
+    ],
+    "four_chain_worker_seconds": 2667.7162271179914,
+    "four_chain_worker_hours": 0.7410322853105532,
+    "formula": "For each cell, datasets * methods * chains * observed per-chain seconds; sum across distinct fits. Scale iteration/N/J only as labeled sensitivity scenarios; distinguish total worker time from wall time and cgroup-limited concurrency.",
+    "C2_1700_fits_same_size_same_schedule_anchor_worker_days": 52.48978687616419,
+    "warning": "That constant-size anchor understates N1000/N2000 work and excludes Chapter5; it is neither feasibility verdict nor production quote. Do not multiply2650generator datasets by one gate cost as a posterior target.",
+    "C5": "No defensible calibrated cost from Chapter2 alone: different priors, schedule, graph and N/J. Require representative resource measurements.",
+    "actual28k_update": "Parent to add actual completed28k cost in a separate reviewed update; no extrapolated success or actual cost asserted here."
+  },
+  "power_and_sufficiency": [
+    {
+      "target": "Chapter2 Table2.2",
+      "state": "Feasible pending numerical target after engine validation",
+      "test": "Source95% HPD beta1 zero exclusion;100 per12cells",
+      "not_evidence": "Cronbach alpha, score skewness, latent scatter, variance recovery and posterior SD alone are not power."
+    },
+    {
+      "target": "C5-3.twenty-sufficient; C5 large-sample power inference",
+      "state": "Source null recovery/precision targets feasible pending; unique nonzero-effect sufficiency target unspecified",
+      "next": "Complete source250-dataset seven-cell precision/recovery grid first. For a new adequacy experiment independently prespecify nonzero beta1a/beta1c/beta1e alternatives, moderator prevalence/coding, N, item grid including20, nominal error/test rule, minimally useful power and precision criterion, counts and budget; label as new extension, not historical reproduction. Null interactions in Tables5.1/5.2 cannot establish detection power."
+    },
+    {
+      "target": "Chapter6 power assertions",
+      "state": "Interpretation/design clarification pending; source reports SEs without unique alternative/test/power fractions",
+      "next": "Keep completed96kfit precision evidence. Do not rebrand lower SE or generator descriptors as rejection-rate power. Any numerical experiment needs separately declared scientific alternative/test, boundary treatment, family-wise criterion and budget."
+    },
+    {
+      "target": "Curvilinear, unknown-item/slopes and relative-speed extensions",
+      "state": "Historical exact replication blocked where source design/calibration/comparator implementation is absent",
+      "next": "Specify recoverable details or label a separately designed extension; no invented historical counts or universal extrapolation."
+    }
+  ],
+  "ordinary_mathematical_next_work": [
+    {
+      "target": "Broad observed-response identification, non-Gaussian genetic interaction",
+      "available": "Reviewed latent-moment inverse under stated fixed-parameter model and MZ/DZ laws.",
+      "gap": "Finite calibrated binary response-pattern probabilities have not been proved to identify required non-Gaussian latent moments/parameters. Gaussian two-item monotonicity is not applicable for nonzero interaction.",
+      "plan": "Write explicit finite response-law map for the exact parametric family, anchors and both zygosities; seek global injectivity proof or counterexample under explicit interior/support conditions. Jacobian rank or numerical searches may guide but cannot close global claim; finite response alphabets do not by themselves prove parametric nonidentification."
+    },
+    {
+      "target": "Chapter5 observed-response identification",
+      "available": "Reviewed positive-known-slope Gaussian joint-item lemma, two shared moderator levels, and continuous moderator sufficient condition with at least four equality points per zygosity (possibly disjoint supports).",
+      "gap": "Unknown calibration, unidentified missing joint moments, conditional dependence, ordinal/non-Gaussian models, separate-twin/noisy moderators, boundary cases and actual empirical assumptions are not covered.",
+      "plan": "State precise scope, prove observation/support bridge for each additional model separately; empirical verification needs original responses/calibration/selection inputs. Four support points are sufficient, not necessary."
+    },
+    {
+      "target": "At most one finite likelihood maximum",
+      "gap": "Population injectivity does not imply finite-likelihood uniqueness. Existing all-zero free-mean example shows no finite maximum, not multiple maxima.",
+      "plan": "Specify local/global maximum claim, nondegenerate design and parameter domain; derive proof or certified counterexample for that exact objective. Proper-prior posterior objective is different. No proof-assistant availability is invoked as a scientific blocker."
+    },
+    {
+      "target": "Measurement-scale invariance",
+      "plan": "Retain conditional Gaussian population target argument and exact Rasch sufficiency separately; neither yields identical finite-data estimates, universal bias removal or non-Gaussian identification. Extend only with ordinary proofs under explicit assumptions."
+    }
+  ],
+  "blocked_vs_pending": {
+    "feasible_pending": "Source-specified C2/C5 simulations, validated sampler/score-engine implementation, ordinary mathematical arguments and bounded resource pilots; no demonstrated computational impossibility.",
+    "missing_input_blocked": "Independent NTR/Cito/SES empirical results and linked calibration/response/posterior targets remain blocked by documented absent inputs. Printed source arithmetic is separately feasible.",
+    "underreported_design": "Curvilinear/extensions and general sufficiency/power assertions without unique alternatives or procedures require scientific specification, not more compute.",
+    "formalization": "No missing Lean installation/certificate used to explain an ordinary proof gap."
+  },
+  "review_requirements": [
+    "Independent source/count review including3450core fits and3250unique datasets, correct symmetric comparator and seven Chapter5 cells.",
+    "Independent numerical-method/score-likelihood implementation review before any new sampling.",
+    "Independent budget and frozen pilot review before dispatch; later production requires a separate bounded authorization."
+  ],
+  "review_status": "Authored for parent independent review; not self-certified as independently approved."
+}
