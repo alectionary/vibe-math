@@ -1,0 +1,2718 @@
+{
+  "start_utc": "20261030T184239Z",
+  "arguments": {
+    "namespace": "production/chapter6-v1",
+    "hours": 12.0,
+    "max_batches": 110,
+    "batch_jobs": 480
+  },
+  "max_wall_seconds": 43200.0,
+  "max_batches": 110,
+  "identity": {
+    "schema": 1,
+    "files": {
+      "simulation/openmx_production.R": "d9faa0924c9fb719d59704c4447a1e5c44a9a68846507dc7d130e2571cba2a56",
+      "simulation/production_guards.R": "e52084a124cea9029c4e07ee69db1ff2403b1e1e7c7803fb8b7fd3a3b5a25545",
+      "simulation/production_batch.R": "e6d37c2508dec0ac509eb435e6e2257652c12bf56229cc9f4ee6e587ef227a08",
+      "simulation/production_runner.py": "cc5a9be8a4b7fb53a3a927a24135547cbec6570951c396ea70c7c3d904773c76",
+      "production/protocol.json": "07beafeacc00c6118ac6f2e5f4503bb7ca9520a6e1830b4eadadda0687cf531c",
+      "provenance/runtime-packages.json": "fe67dd10e6063b544e5ad5b65311f909e413bef574ca3fc48b11259f6985ec8c"
+    },
+    "Rscript": "/workspace/slot3-runtime/bin/Rscript",
+    "Rscript_sha256": "33a95ba8b66eb31bfa2389a17bf8d0e558470bd64f205baf85d4435befe1072c",
+    "environment": {
+      "OPENMX_OPTIMIZER": "SLSQP",
+      "MEAN_MODE": "",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "SAVE_DIAGNOSTICS": "0"
+    }
+  },
+  "supervisor_sha256": "c8178e442075620b65ec27a8c9bba50b8ff9174caa83086b92a38476eeeb86c7",
+  "stage_order": [
+    "audit baseline0-19 without adding unique datasets",
+    "new production20-999"
+  ],
+  "stopping": "Fixed target/operational bounds only; no estimates or significance read",
+  "batches": [
+    {
+      "batch": 0,
+      "replicate_range": [
+        0,
+        20
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "0",
+        "--end-replicate",
+        "20",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 246.78613689800022,
+      "returncode": 0
+    },
+    {
+      "batch": 1,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 269.54551454300054,
+      "returncode": 0
+    },
+    {
+      "batch": 2,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 284.20429896099995,
+      "returncode": 0
+    },
+    {
+      "batch": 3,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 270.1328643910001,
+      "returncode": 0
+    },
+    {
+      "batch": 4,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 280.0354857129996,
+      "returncode": 0
+    },
+    {
+      "batch": 5,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 258.6792231640002,
+      "returncode": 0
+    },
+    {
+      "batch": 6,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 268.49920064099933,
+      "returncode": 0
+    },
+    {
+      "batch": 7,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 266.0820248279997,
+      "returncode": 0
+    },
+    {
+      "batch": 8,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 266.29814539400013,
+      "returncode": 0
+    },
+    {
+      "batch": 9,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 257.7957822879998,
+      "returncode": 0
+    },
+    {
+      "batch": 10,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 259.72134653399917,
+      "returncode": 0
+    },
+    {
+      "batch": 11,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 260.11068590600007,
+      "returncode": 0
+    },
+    {
+      "batch": 12,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 261.4572479870003,
+      "returncode": 0
+    },
+    {
+      "batch": 13,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 254.60701706799955,
+      "returncode": 0
+    },
+    {
+      "batch": 14,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 266.0066299050013,
+      "returncode": 0
+    },
+    {
+      "batch": 15,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 250.46786309299932,
+      "returncode": 0
+    },
+    {
+      "batch": 16,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 248.00196447100097,
+      "returncode": 0
+    },
+    {
+      "batch": 17,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 278.75355001800017,
+      "returncode": 0
+    },
+    {
+      "batch": 18,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 260.16573956200045,
+      "returncode": 0
+    },
+    {
+      "batch": 19,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 261.0049451119994,
+      "returncode": 0
+    },
+    {
+      "batch": 20,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 261.2901594239993,
+      "returncode": 0
+    },
+    {
+      "batch": 21,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 270.2299009979997,
+      "returncode": 0
+    },
+    {
+      "batch": 22,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 256.2076216360001,
+      "returncode": 0
+    },
+    {
+      "batch": 23,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 255.49392328199974,
+      "returncode": 0
+    },
+    {
+      "batch": 24,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 267.48753350800143,
+      "returncode": 0
+    },
+    {
+      "batch": 25,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 258.4425096030009,
+      "returncode": 0
+    },
+    {
+      "batch": 26,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 251.95237551100035,
+      "returncode": 0
+    },
+    {
+      "batch": 27,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 247.86107275499853,
+      "returncode": 0
+    },
+    {
+      "batch": 28,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 245.81859762299973,
+      "returncode": 0
+    },
+    {
+      "batch": 29,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 259.1099411389987,
+      "returncode": 0
+    },
+    {
+      "batch": 30,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 247.83641291599997,
+      "returncode": 0
+    },
+    {
+      "batch": 31,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 250.00969881699893,
+      "returncode": 0
+    },
+    {
+      "batch": 32,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 253.31075745099952,
+      "returncode": 0
+    },
+    {
+      "batch": 33,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 269.66358809899975,
+      "returncode": 0
+    },
+    {
+      "batch": 34,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 245.72638354900118,
+      "returncode": 0
+    },
+    {
+      "batch": 35,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 245.70783034099986,
+      "returncode": 0
+    },
+    {
+      "batch": 36,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 249.55495111399978,
+      "returncode": 0
+    },
+    {
+      "batch": 37,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 266.93189501100096,
+      "returncode": 0
+    },
+    {
+      "batch": 38,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 252.51243368699943,
+      "returncode": 0
+    },
+    {
+      "batch": 39,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 251.50018303700017,
+      "returncode": 0
+    },
+    {
+      "batch": 40,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 244.67353903799994,
+      "returncode": 0
+    },
+    {
+      "batch": 41,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 256.7927675739993,
+      "returncode": 0
+    },
+    {
+      "batch": 42,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 240.93166699599897,
+      "returncode": 0
+    },
+    {
+      "batch": 43,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 241.77294365499984,
+      "returncode": 0
+    },
+    {
+      "batch": 44,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 241.02224647500043,
+      "returncode": 0
+    },
+    {
+      "batch": 45,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 257.4445316720012,
+      "returncode": 0
+    },
+    {
+      "batch": 46,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 245.0518023959994,
+      "returncode": 0
+    },
+    {
+      "batch": 47,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 249.7843483939978,
+      "returncode": 0
+    },
+    {
+      "batch": 48,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 250.45887600900096,
+      "returncode": 0
+    },
+    {
+      "batch": 49,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 264.2609576649993,
+      "returncode": 0
+    },
+    {
+      "batch": 50,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 239.36235045899957,
+      "returncode": 0
+    },
+    {
+      "batch": 51,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 249.48649628600106,
+      "returncode": 0
+    },
+    {
+      "batch": 52,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 249.53093971999988,
+      "returncode": 0
+    },
+    {
+      "batch": 53,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 259.35717307899904,
+      "returncode": 0
+    },
+    {
+      "batch": 54,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 248.06733185399935,
+      "returncode": 0
+    },
+    {
+      "batch": 55,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 252.69729701599863,
+      "returncode": 0
+    },
+    {
+      "batch": 56,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 252.90924582599837,
+      "returncode": 0
+    },
+    {
+      "batch": 57,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 256.68411598700186,
+      "returncode": 0
+    },
+    {
+      "batch": 58,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 243.78762072300015,
+      "returncode": 0
+    },
+    {
+      "batch": 59,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 246.35774605100232,
+      "returncode": 0
+    },
+    {
+      "batch": 60,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 250.99168056300186,
+      "returncode": 0
+    },
+    {
+      "batch": 61,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 264.31569020200186,
+      "returncode": 0
+    },
+    {
+      "batch": 62,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 248.58977805599716,
+      "returncode": 0
+    },
+    {
+      "batch": 63,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 245.45792276700013,
+      "returncode": 0
+    },
+    {
+      "batch": 64,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 239.35202133500206,
+      "returncode": 0
+    },
+    {
+      "batch": 65,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 253.3822892499993,
+      "returncode": 0
+    },
+    {
+      "batch": 66,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 239.35714847599957,
+      "returncode": 0
+    },
+    {
+      "batch": 67,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 241.32527180000034,
+      "returncode": 0
+    },
+    {
+      "batch": 68,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 246.25151438399917,
+      "returncode": 0
+    },
+    {
+      "batch": 69,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 267.2624679090004,
+      "returncode": 0
+    },
+    {
+      "batch": 70,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 242.23413260599773,
+      "returncode": 0
+    },
+    {
+      "batch": 71,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 252.24397992599916,
+      "returncode": 0
+    },
+    {
+      "batch": 72,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 253.36195050899914,
+      "returncode": 0
+    },
+    {
+      "batch": 73,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 263.63309984199805,
+      "returncode": 0
+    },
+    {
+      "batch": 74,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 251.09894669000278,
+      "returncode": 0
+    },
+    {
+      "batch": 75,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 251.12955846099794,
+      "returncode": 0
+    },
+    {
+      "batch": 76,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 264.50533613600055,
+      "returncode": 0
+    },
+    {
+      "batch": 77,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 277.27742922200196,
+      "returncode": 0
+    },
+    {
+      "batch": 78,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 249.32597804000034,
+      "returncode": 0
+    },
+    {
+      "batch": 79,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 254.05616521200136,
+      "returncode": 0
+    },
+    {
+      "batch": 80,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 256.7300266860002,
+      "returncode": 0
+    },
+    {
+      "batch": 81,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 270.2627180849995,
+      "returncode": 0
+    },
+    {
+      "batch": 82,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 250.14917611000055,
+      "returncode": 0
+    },
+    {
+      "batch": 83,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 253.11193448199992,
+      "returncode": 0
+    },
+    {
+      "batch": 84,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 253.29501905899815,
+      "returncode": 0
+    },
+    {
+      "batch": 85,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 268.1583438009984,
+      "returncode": 0
+    },
+    {
+      "batch": 86,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 254.55813911299992,
+      "returncode": 0
+    },
+    {
+      "batch": 87,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 256.8856328280017,
+      "returncode": 0
+    },
+    {
+      "batch": 88,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 248.01511763999952,
+      "returncode": 0
+    },
+    {
+      "batch": 89,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 275.0073228809997,
+      "returncode": 0
+    },
+    {
+      "batch": 90,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 272.06628660700153,
+      "returncode": 0
+    },
+    {
+      "batch": 91,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 254.45694778599864,
+      "returncode": 0
+    },
+    {
+      "batch": 92,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 258.3182649730006,
+      "returncode": 0
+    },
+    {
+      "batch": 93,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 280.3068754909982,
+      "returncode": 0
+    },
+    {
+      "batch": 94,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 252.92571917000168,
+      "returncode": 0
+    },
+    {
+      "batch": 95,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 252.4932699009987,
+      "returncode": 0
+    },
+    {
+      "batch": 96,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 253.13124132300072,
+      "returncode": 0
+    },
+    {
+      "batch": 97,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 269.62082777100295,
+      "returncode": 0
+    },
+    {
+      "batch": 98,
+      "replicate_range": [
+        20,
+        1000
+      ],
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "simulation/production_runner.py",
+        "--namespace",
+        "production/chapter6-v1",
+        "--start-replicate",
+        "20",
+        "--end-replicate",
+        "1000",
+        "--max-jobs",
+        "480",
+        "--workers",
+        "4",
+        "--chunk-size",
+        "12",
+        "--wall-seconds",
+        "1800"
+      ],
+      "elapsed_seconds": 141.9927552549998,
+      "returncode": 0
+    }
+  ],
+  "stop_reason": "target reached",
+  "elapsed_seconds": 25756.392079728,
+  "end_utc": "2026-10-31T01:51:56Z"
+}
