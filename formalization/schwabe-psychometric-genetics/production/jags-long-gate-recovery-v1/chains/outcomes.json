@@ -1,0 +1,97 @@
+{
+  "requested": 4,
+  "outcomes": [
+    {
+      "id": 1,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-recovery-v1/prepared",
+        "1"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 100131,
+      "started_utc": "2026-10-31T03:22:16Z",
+      "elapsed_seconds": 283.7886196959953,
+      "ended_utc": "2026-10-31T03:27:00Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 2,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-recovery-v1/prepared",
+        "2"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 100166,
+      "started_utc": "2026-10-31T03:22:51Z",
+      "elapsed_seconds": 248.88903073999973,
+      "ended_utc": "2026-10-31T03:27:00Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 3,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-recovery-v1/prepared",
+        "3"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 100167,
+      "started_utc": "2026-10-31T03:22:51Z",
+      "elapsed_seconds": 248.88642593500117,
+      "ended_utc": "2026-10-31T03:27:00Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 4,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-recovery-v1/prepared",
+        "4"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 100168,
+      "started_utc": "2026-10-31T03:22:51Z",
+      "elapsed_seconds": 248.88397915700625,
+      "ended_utc": "2026-10-31T03:27:00Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    }
+  ],
+  "error": "ProcessLookupError: [Errno 3] No such process",
+  "scheduling": {
+    "mode": "parallel",
+    "pilot_peak_rss_bytes": 199454720,
+    "max_concurrency": 4,
+    "batch_wall_bound_seconds": 9300,
+    "reason": "Measured adaptation-stage RSS with 2x safety factor and 1 GiB floor supports remaining chains",
+    "readiness_rss_bytes": 199454720,
+    "adaptation_record_observed": true,
+    "release_memory": {
+      "limits": [
+        {
+          "path": "/sys/fs/cgroup",
+          "max_bytes": 17179869184,
+          "current_bytes": 6235795456
+        }
+      ],
+      "available_bytes": 10944073728,
+      "required_policy_bytes": 1073741824,
+      "basis": "Operational allocation floor of 1 GiB per chain; not measured peak RSS or a guarantee of sufficient memory."
+    },
+    "per_additional_chain_policy_bytes": 1073741824
+  },
+  "updated_utc": "2026-10-31T03:27:00Z"
+}

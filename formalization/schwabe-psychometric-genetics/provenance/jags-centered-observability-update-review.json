@@ -1,0 +1,24 @@
+{
+  "status": "Accepted observability-only update; original bounded pre-run acceptance retained",
+  "reviewer": "/root/guard_validation",
+  "reviewed_utc": "2026-10-31T03:34:36.798864+00:00",
+  "sha256": {
+    "provenance/jags-centered-gate-pre-run-independent-review.json": "bde18068887b3f9b82742b270be54f5defdc301881d9186342276bb96950ace1",
+    "simulation/dispatch_jags_centered_gate.py": "89aff6dac61aa906ae9ed6e4e0d195f09064bf654661fc76194c3eadb3945620",
+    "provenance/jags-centered-gate-plan.json": "4a7d1d5607c0234e5713759165c67320dbf99980c46931c0e574e97da1903895",
+    "simulation/test_jags_centered_independent.py": "ac9b3a53dbb0b9e10bf7f9318c9cb9c8b30303f2018102c89b6fe518e73f5a60",
+    "provenance/jags-centered-dispatch-protocol.json": "e1ce3fa9b5f017ff7768ca7c3aa5a07a806f7c673cec827c187a68bc0752035a",
+    "simulation/jags_centered_gate.R": "6df730e2eed6a1710ef5b772373501ec0a5048e32ef400d7042fbce323e6a8b0",
+    "simulation/diagnose_jags_centered_gate.R": "dbe21c57801f8ac49994ceb891d404bdef6ed2c1f938e667411fff20ac2ddd86"
+  },
+  "previous_dispatcher_sha256": "af1f1a4b938c86a6de677f64a9c7bd21bb8fdef90f5e59a811628f1f778d9f9c",
+  "changes": "Added traceback import and exception-handler write to error-traceback.txt. Plan now explicitly qualifies previous ESRCH call-site diagnosis as inferred from code inspection, because the old ledger did not capture a stack. Original review remains unchanged as historical evidence.",
+  "tests": {
+    "passed": 16,
+    "command": "python simulation/test_jags_centered_independent.py",
+    "new_test": "Injected prelaunch guard failure: no subprocess launched, full traceback written, false success return, and requested not_launched outcome preserved.",
+    "structural_check": "run_batch AST is identical to previously reviewed mechanics after removing only the asserted exact traceback-write statement; CPU/memory/termination functions unchanged. All prior ESRCH/EACCES, script recognition, pinning and budget tests still pass."
+  },
+  "limitations": "No sampling, compilation, convergence or performance validation. All scientific/resource restrictions of the prior review persist. Traceback gives future call-site evidence; it does not retroactively prove the prior abort location.",
+  "chain_launches": 0
+}
