@@ -1,0 +1,44 @@
+{
+  "reviewed_utc": "2026-10-31T03:03:52.698798+00:00",
+  "reviewer": "Independent Bayesian mixing/remedy reviewer /root/bayesian_gate_setup",
+  "status": "Accepted for one bounded longer-chain diagnostic allocation; no convergence or source-count replication certified.",
+  "files_sha256": {
+    "simulation/jags_long_gate.R": "5aa5fbd4689c3b0fb6ab94f2261fa434e3144c34e8c6a9b28290f13be9099755",
+    "simulation/diagnose_jags_long_gate.R": "74b45ead2aa49a05992c270c72eefcf245731611019e4d14de878530e8358d6b",
+    "simulation/dispatch_jags_long_gate.py": "04b6c0eaf908a2d94db261d5efc9e177da2344ec4fd3cde371eb3af9de8a7a46",
+    "provenance/jags-long-gate-plan.json": "e7a905d45e6ddf6df5c73c523cad61357d68da4f1a8f8762b79f080935982e25",
+    "provenance/jags-long-dispatch-protocol.json": "b3b5519a4a554df9d4a794a66990c9e3537b03c807017d47438f04fdff3e25c5"
+  },
+  "review_method": "Read exact diff against accepted initial gate and independently analyze saved initial-gate draws; read-only dispatcher check. No new model compilation, chain or diagnostic run.",
+  "checks": {
+    "source_model_prior_data_generator_unchanged": true,
+    "same_global_initials_and_RNG_seeds": true,
+    "same_monitors_and_derived_columns": true,
+    "adaptation_1000": true,
+    "burn_in_14000": true,
+    "eight_chunks_of_6000_total_48000": true,
+    "same_rank_Rhat_ESS_MCSE_thresholds": true,
+    "HPD_halves_updated_to_24000_each": true,
+    "four_requested_chains_preserved": true,
+    "per_chain_3000_second_cap_total_12000": true,
+    "resource_only_staggered_dispatch_unchanged": true,
+    "no_posterior_based_scheduling_or_optional_stopping": true,
+    "no_resume_extension_or_replacement": true,
+    "fresh_namespace_and_hash_checks": true,
+    "read_only_dispatcher_check_passed": true,
+    "checkpoint_manifest_binds_partial_and_state_hashes": true
+  },
+  "checkpoint_review": {
+    "behavior": "Eight fixed6000-draw calls continue the same live JAGS model, preserving chain state. After each completed chunk, save cumulative raw monitored draws, sampler state and checkpoint metadata; final48000 draws add log transforms. No draw is discarded, selected or duplicated by chunk assembly.",
+    "limit": "Atomic replacement is per file, not a joint transaction. Checkpoint metadata now binds partial-draws and sampler-state SHA256s, permitting interrupted-write mismatch detection. No automatic resume is allowed; never assert a synchronized checkpoint unless both hashes match."
+  },
+  "scientific_assessment": "Accept a bounded length experiment, not an expectation of passing. Existing anti-correlated variance decomposition and last-half drift persist. Fourfold retention under crude stationary efficiency scaling is borderline for bulkESS and may still fail Rhat/relativeMCSE. Exact priors/model are preferable to unverified reparameterization at this stage.",
+  "dependence": "Same seeds/initials deliberately correlate runs. Under identical trajectory,5000 retained iterations per chain overlap the initial gate; never combine draws, count as independent replications or substitute new values for preserved baseline. Chunked monitoring is not claimed to establish exact trajectory equality in advance.",
+  "input_evidence": "provenance/jags-mixing-remedy-independent-review.json",
+  "remaining_limits": [
+    "Longer schedule is a convergence follow-up; it changes original iteration budget while preserving the posterior.",
+    "No gate pass authorizes the100-dataset simulation grid or whole-dissertation completion claim.",
+    "Terminal numerical, interval and rendered trace/rank review remains required.",
+    "No actual-chain execution test was performed by this reviewer."
+  ]
+}

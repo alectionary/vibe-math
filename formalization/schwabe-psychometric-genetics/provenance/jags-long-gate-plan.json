@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-31T03:02:06.103124+00:00",
+  "status": "fixed before new sampling; independent pre-run review pending",
+  "baseline": "production/jags-gate-v1",
+  "namespace": "production/jags-long-gate-v1",
+  "rationale": "Test whether the slow variance-component mixing resolves with longer fixed burn-in and retention before changing parameterization. Preserve exact posterior, all monitored columns, same thresholds. Baseline noncentered model already uses standard-normal genetic/shared factors.",
+  "adapt": 1000,
+  "burn": 14000,
+  "retained_per_chain": 48000,
+  "chains": 4,
+  "seeds": [
+    830101,
+    830102,
+    830103,
+    830104
+  ],
+  "unchanged": [
+    "dataset seed301 N500 J60 floor",
+    "model and priors",
+    "initials and RNG seeds",
+    "monitors and derived log variances",
+    "Rhat<1.01 bulk/tailESS>=400 MCSE/SD<=.05 finite/adapted joint gate"
+  ],
+  "dependence": "Same seeds and starting states deliberately isolate length; runs are correlated, not independent replications. Do not combine old and new draws.",
+  "cost": {
+    "baseline_summed_chain_wall_seconds": 2899.0723325030012,
+    "linear_projection_per_chain_seconds": 2283.0194618461137,
+    "chain_wall_cap_seconds": 3000,
+    "total_process_wall_cap_seconds": 12000,
+    "cpu_slots": 4,
+    "memory_limit_bytes": 17179869184,
+    "memory_release": "Pilot chain1 RSS through adaptation; unchanged dispatcher policy",
+    "scope": "One dataset only; no source-count grid authorized by a gate pass"
+  },
+  "stopping": "All four fixed chains or wall cap, no favorable early stop/replacement/extension. Preserve timeouts and partial logs. After terminal output compute unchanged joint diagnostics and independent review. Gate failure: stop this allocation, diagnose and propose separately bounded equivalent remedy; gate pass: only next design/cost planning, not source-count recovery or detection verdict.",
+  "alternatives": "Longer chains chosen before model changes. Centering or equivalent parameterization would require explicit Jacobian/prior equivalence checks and separately fixed plan; initialization tuning alone could conceal disagreement.",
+  "reviewed_pdf": "Keep reviewed paper/evidence packet immutable until fresh reviewed integration."
+}
