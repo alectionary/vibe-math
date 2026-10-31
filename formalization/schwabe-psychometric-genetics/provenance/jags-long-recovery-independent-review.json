@@ -1,0 +1,58 @@
+{
+  "status": "Accepted for one bounded recovery dispatch under the stated resource policy; not a convergence or completion guarantee",
+  "reviewer": "/root/guard_validation",
+  "reviewed_utc": "2026-10-31T03:20:15.950203+00:00",
+  "reviewed_sha256": {
+    "simulation/dispatch_jags_long_recovery.py": "7b69404ec171fe3e73baa42ea236a50845e0d5df3d8094af68fcde19870f513e",
+    "provenance/jags-long-recovery-protocol.json": "0861213c5dc96186819e7ccf0e93beea6f666f1ff556451ee9106b49d0082c34",
+    "provenance/jags-long-gate-abort-and-recovery-plan.json": "a16d111de41e6eeeec2cd60c0d27d15e5461cc305edcba8e0293b26994b80b5a",
+    "simulation/test_jags_recovery_independent.py": "b02f7c599713f70fb8b0ca690a008d7505897957ef9e8683c216074ee51b4c14",
+    "production/jags-long-gate-v1/chains/outcomes.json": "0efb69b6fcad09f46c5fef33a23eb98564750bb2a5b3832fc0e3caa49dcb4466",
+    "simulation/jags_long_gate.R": "5aa5fbd4689c3b0fb6ab94f2261fa434e3144c34e8c6a9b28290f13be9099755",
+    "simulation/diagnose_jags_long_gate.R": "74b45ead2aa49a05992c270c72eefcf245731611019e4d14de878530e8358d6b"
+  },
+  "tests": {
+    "command": "python simulation/test_jags_recovery_independent.py",
+    "result": "8 tests passed, including multiple interpreter/read-only subcases",
+    "cases": [
+      "rg/cat/sed/head/sha256sum with model filenames ignored",
+      "Python audit script data arguments, -c input arguments and stdin input filenames ignored",
+      "Rscript audit script data arguments and R -e/--args filenames ignored",
+      "Actual R --file=, --file and -f model operands detected",
+      "Actual Rscript with and without --vanilla and Python script invocations detected",
+      "Owned active process PID excluded; different competing PID retained",
+      "Empty/unrelated command lines ignored",
+      "AST equality of cpu_capacity, memory_headroom, require_memory, process_tree_rss, terminate_group and run_batch against prior dispatcher",
+      "Prior four cancelled outcomes preserved verbatim; accounting recomputed from actual ledger"
+    ]
+  },
+  "issues_resolved": [
+    "Initial recovery interpreter filter still treated arbitrary Python/R input arguments as executing scripts; author replaced it with actual script-operand recognition.",
+    "Final review identified Python stdin and R -e/--args edge cases; these are now recognized as non-file invocations and regression-tested."
+  ],
+  "runtime_scope": {
+    "inspection": "Pinned Rscript wrapper uses exec to replace itself with the R executable, preserving the active subprocess PID. Exclusion of that owned PID therefore covers actual launched study chains; no assumption of automatic arbitrary descendant exclusion is made.",
+    "limitations": "The process guard recognizes the file-based interpreter invocations used by this study, not arbitrary scripts dynamically sourced through -c/-e/-m or unrelated compute. Root must separately avoid concurrent unrelated CPU-intensive workloads.",
+    "preserved": "Scientific chain and diagnostic wrappers, fixed model/data identity, runtime pin set, outcome denominators, cgroup ancestor constraints, pilot RSS policy, timeout handling and cleanup mechanics unchanged. m.validate() passed without invoking R."
+  },
+  "budget": {
+    "prior_spent_chain_wall_seconds": "2691.5302470630121",
+    "new_nominal_sampling_caps_seconds": 9280,
+    "new_nominal_cleanup_seconds": 20,
+    "nominal_combined_chain_wall_seconds": "11991.5302470630121",
+    "nominal_margin_below_12000_seconds": "8.4697529369879",
+    "basis": "Four2320-second chain caps, plus five-second cleanup allowance per chain, plus all previous cancelled-chain elapsed times. Prior record agrees with original ledger.",
+    "limitations": "This is nominal chain-process accounting, not an absolute all-phase wall bound: dispatcher polling/guard/scheduling overhead may add elapsed time, and preparation120s plus diagnostics300s are separate allocations. The ~8.47-second margin is small. Preserve and report actual elapsed times; no automatic extra allocation if the cap or convergence gate fails.",
+    "completion": "2320 seconds per chain is near the prior runtime projection, so fixed48000 retention may not complete. Timeout/cancelled/not_launched outcomes remain scientifically unresolved, not successes."
+  },
+  "authorization_scope": "One separately named recovery after an infrastructure false positive; original aborted attempt preserved. Same1000adapt/14000burn/48000retained scientific plan, same seeds and inputs, fresh starts, no outcome-dependent tuning or automatic retries. Parent controls actual launch after other compute finishes.",
+  "operations": {
+    "chains_launched": 0,
+    "posterior_samples": 0,
+    "active_model_or_wrapper_edits": 0,
+    "files_created_by_reviewer": [
+      "simulation/test_jags_recovery_independent.py",
+      "provenance/jags-long-recovery-independent-review.json"
+    ]
+  }
+}
