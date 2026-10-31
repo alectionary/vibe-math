@@ -1,0 +1,50 @@
+[
+  {
+    "requirement": "Whole-dissertation coverage",
+    "status": "followed",
+    "evidence": "coverage-v4.csv and handoff/continuation-evidence-packet.json cover 19 sections, 996 dependent source records, 26 headline claims and 187 effect components. Exact-target work: 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed and 310 completed under declared reconstruction. Coverage is not whole-study replication."
+  },
+  {
+    "requirement": "Original-source and input audit",
+    "status": "followed",
+    "evidence": "handoff/scientific-availability.json records dated permitted acquisition attempts. All12public author repositories were examined. Unavailable empirical inputs and simulation specifications retain unresolved targets."
+  },
+  {
+    "requirement": "Preferred statistical engines",
+    "status": "followed",
+    "evidence": "provenance/preflight.json records R4.5.0,lavaan0.6.19 andOpenMx2.21.13. OpenMx implements the Chapter6 Gaussian likelihood; outputs/engine-agreement.csv supplies independent baseline checks."
+  },
+  {
+    "requirement": "JAGS for non-Gaussian latent item models",
+    "status": "departed",
+    "justification": "A covariance-only SEM would change the source likelihood. JAGS4.3.2/rjags4-16 reconstructs the item-level models; posterior1.6.1 computes diagnostics. Independent generator, baseline engine and model-semantic checks do not independently validate the full posterior.",
+    "evidence": "The continuation packet embeds the original and centered four-chain diagnostic evidence and their scientific limits. JAGS preserves the non-Gaussian item-level likelihood."
+  },
+  {
+    "requirement": "Original repetition counts and adequate posterior convergence",
+    "status": "departed",
+    "justification": "Chapter 6 completes 1000 datasets in 36 primary and 12 sensitivity conditions, 96000 method fits. Response generation completes 2650 datasets across 19 Chapter 2/5 conditions; alpha sensitivity reuses those datasets with zero additional independent datasets and zero posterior fits. Source-count Bayesian recovery/power aggregates remain incomplete. Both completed original and centered 12000-retained-draw-per-chain diagnostics fail their joint convergence gate. Final recovery outcome awaits terminal independent review.",
+    "evidence": "handoff/continuation-evidence-packet.json: continuation.scientific_evidence and current_coverage; final recovery reservation."
+  },
+  {
+    "requirement": "Signed estimands, uncertainty and multiplicity",
+    "status": "followed",
+    "evidence": "production/analysis-plan.json separates variance/pathSE, deletion-minus-full contrasts, estimate-minus-truth bias and source deviations. Geometric extraction margins, ourMonteCarlo error and unknownsourceMCerror remain distinct; descriptive magnitude is not equivalence."
+  },
+  {
+    "requirement": "Analytical verification and formal proof",
+    "status": "departed",
+    "justification": "Reviewed ordinary mathematical arguments and exact algebra checks are available; no Lean certificate is claimed. Conditional population identification, fixed-parameter latent moment inversion and exact Rasch score-likelihood sufficiency do not establish finite-likelihood uniqueness, non-Gaussian observed-item identification, empirical recovery, power or convergence. Absence of formal certification does not prevent reporting a scoped ordinary proof.",
+    "evidence": "Continuation packet embeds the ordinary proofs, assumptions, source locators and reviewed scientific limits."
+  },
+  {
+    "requirement": "Source attribution and permitted redistribution",
+    "status": "followed",
+    "evidence": "Verified replicated_work identity, source_pdf/source_text hashes and claim-level source locators in the continuation packet. Dissertation and original programs remain local; source attribution must be preserved in new writing."
+  },
+  {
+    "requirement": "Reproducible versions and commands",
+    "status": "followed",
+    "evidence": "handoff/terminal-reproduction.md specifies immutable completed-analysis commit and commands; README.md documents runtime, simulation and diagnostic execution. Navigation links to master are separate from immutable reproduction revisions."
+  }
+]

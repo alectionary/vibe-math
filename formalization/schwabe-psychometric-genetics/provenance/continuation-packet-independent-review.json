@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-31T04:26:43.500199+00:00",
+  "reviewer": "Independent continuation-science reviewer (delegated agent)",
+  "status": "conditional_acceptance_of_completed_scientific_evidence_with_writer_fixes_required; terminal_recovery_explicitly_reserved",
+  "scope": "Independent scientific integration/source-design review; no model launched, no ongoing recovery draws or checkpoints inspected. Existing artifacts preserved. This report does not approve final manuscript or whole-dissertation completion.",
+  "reviewed_hashes": {
+    "handoff/continuation-evidence-packet.json": "ce3d33a2aa975d059a794eea8c59a48b3e55ded77a4b7122633ad2f5f9657208",
+    "handoff/evidence-packet.json": "41c12d8a490b572f1e5ea66a2e12e0becfad1398962616fdbad79b8f4ab2e554",
+    "coverage-v4.csv": "ec9797534011310e5bf0d382c504802fb8031f68b3c4e0be1c00f5c3cfff0879",
+    "provenance/remaining-target-method-resource-plan.json": "c4184e2bbe89b3c96fa509a25675a9d5a0a440dda0bb3aa0e5f2ca7404321d77",
+    "source-local/schwabe.txt": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "handoff/generator-summary-scientific-evidence.json": "cd99339d9a882791ff5df361b900e6909dea8f514b65a126967a8f38c101b7c3",
+    "handoff/generator-alpha-sensitivity-scientific-evidence.json": "9e0b101e732b2fc8779f7a789e8859aa355bf4bda42f002180c7a93137570181",
+    "outputs/chapter6-saved-target-assessment.json": "e7d1db6d9ab7aaf83e27497c50a7a32cba3db11a2b64514a51ec725bcb516b0e",
+    "provenance/chapter6-saved-target-integration-review.json": "e4002e1db2f8e297cc452b6ddc582b556fd690b3d6e81946c862963cb6a2c791",
+    "handoff/continuation-writer-instructions/README.md": "64bee698842ac2ec831c0dfbd3831f62d0b5164708c2fb80aa66939becfe6289"
+  },
+  "checks": {
+    "claim_count": 996,
+    "unique_claim_ids": 996,
+    "coverage_counts_recomputed": {
+      "scientific_status": {
+        "blocked": 255,
+        "partly_replicated": 36,
+        "replicated": 10,
+        "not_established": 695
+      },
+      "work_status": {
+        "blocked": 255,
+        "attempted-incomplete": 404,
+        "completed": 10,
+        "completed-attempt": 311,
+        "pending": 16
+      },
+      "exact_target_work_status": {
+        "blocked": 255,
+        "pending": 391,
+        "attempted-incomplete": 29,
+        "completed": 11,
+        "completed-under-declared-reconstruction": 310
+      }
+    },
+    "counts_match_packet": true,
+    "claims_preserve_frozen_base_except_current_work": true,
+    "headline_effects_preserved": true,
+    "headline_count": 26,
+    "headline_effect_rows": 28,
+    "component_comparisons": 187,
+    "embedded_source_hash_mismatches": [],
+    "chapter6_targets": 26,
+    "chapter6_completed_descriptive_assessments": 21,
+    "chapter6_still_pending": [
+      "C6.power-inference.MCAR",
+      "C6.power-inference.MAR",
+      "C6.power-inference.MNAR",
+      "C6.zyg-structure",
+      "H6.power-assertion"
+    ],
+    "source_count_datasets_recomputed": 3250,
+    "source_count_method_fits_recomputed": 3450
+  },
+  "accepted_scientific_integration": [
+    "All 996 dependent source records remain represented. Exact-target statuses sum to 996: 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed, 310 completed-under-declared-reconstruction. Work-status totals are a different axis; no success fraction or independent finding count follows.",
+    "Generation-only work covers 14 Chapter2 cells x100 and five Chapter5 cells x250 =2650 datasets across19 conditions. Same-seed raw/standardized-alpha sensitivity adds zero independent datasets and zero posterior fits. Independent review limitation on unsaved response/covariance matrices is explicitly retained.",
+    "Alpha sensitivity uses paired SD/sqrt(replications), not independent-formula standard errors. Floor raw/standardized means .90802950/.90697262, ceiling .90753316/.90645093, and J20 .73819631/.73109750 do not establish exact source-estimand disagreement or agreement: formula/aggregation/calibration, difficulty-bank and moderator-generation ambiguity remain. MCSE is our simulation uncertainty; empirical quantiles are replicate spread; neither supplies source uncertainty.",
+    "Chapter6 saved analysis records21 completed descriptive assessments plus five pending power/unequal-structure targets. It retains primary2/6/10percent versus3percent sensitivity distinction, 81 positive adjacent-q deletion-SE point contrasts,12/12 absolute C-versus-A MAR bias comparisons and all four E-at10percent values (last nearer .20, first three nearer .21). These are shared-data descriptive results, not new significance families or equivalence demonstrations.",
+    "Conditional Gaussian observed-item identification requires known finite positive calibration, distinct conditionally independent observations, identifiable joint probabilities, both zygosities, and stated moderator support. Continuous/disjoint-support argument requires common exact loglinear variance functions and at least four equality points per zygosity; four is sufficient, not necessary.",
+    "Non-Gaussian fixed-parameter latent-moment inverse is not an observed-response identification theorem. Population identification does not imply finite-MLE existence/uniqueness or MCMC convergence; all-zero response example shows nonexistence, not multiple maxima. Rasch raw-total sufficiency preserves latent-only target only for fixed known calibration and appropriate observed masks; it is distinct from standardized-total Gaussian comparator and supplies no measured speedup.",
+    "Completed centered12k four-chain gate is correctly recorded as joint failure; individual parameter performance does not certify joint convergence. Final recovery result is explicitly withheld."
+  ],
+  "source_design_review": {
+    "local_source_read": "source-local/schwabe.txt, Chapter2 pp19-24 (Sections2.5-2.8, Eq2.16, Tables2.1-2.3) and Chapter5 pp77-80 (Section5.3, Tables5.1-5.2).",
+    "counts": [
+      {
+        "design": "C2 floor/ceiling",
+        "datasets": 200,
+        "method_fits": 400
+      },
+      {
+        "design": "C2 3N x4Delta power/recovery shared fits",
+        "datasets": 1200,
+        "method_fits": 1200
+      },
+      {
+        "design": "C2 symmetric standardized-total comparator",
+        "datasets": 100,
+        "method_fits": 100
+      },
+      {
+        "design": "C5 four N/J60 cells",
+        "datasets": 1000,
+        "method_fits": 1000
+      },
+      {
+        "design": "C5 J20/100/250 at N1000",
+        "datasets": 750,
+        "method_fits": 750
+      }
+    ],
+    "conclusion": "3250 datasets,3450 method fits,13800 chains only under a separately validated uniform four-chain protocol. C2 symmetric target is comparator beta1 mean .03/across-dataset SD .24; optional IRT is outside core. Table2.2 and2.3 share1200 fits. N1000/J60 is not a fourth new C5 item cell.",
+    "qualifications": "Source Chapter5 prose says80000 but Table5.1 and adjacent result narrative say8000; retain discrepancy. Source C5 null interactions cannot establish nonzero-effect power/sufficiency. Generation2650 omits C2 symmetric and C5 J100/J250; it cannot be used as posterior workload.",
+    "cost_review": "2667.716227 worker seconds for centered12k four chains gives0.741032285 worker hours; x1700 C2 fits /24 =52.489786876 worker days only at same N500/J60 schedule. Larger N, poor mixing, compilation/adaptation, quota concurrency and distinct C5 graph/schedule prevent production-time inference. No defensible C5 cost is calibrated; no impossibility or authorization follows."
+  },
+  "required_writer_fixes": [
+    {
+      "id": "R1",
+      "severity": "material wording",
+      "location": "synthesis",
+      "finding": "Additional completed evidence calls these descriptive assessments of26 saved Chapter6 targets; only21 are completed descriptive assessments and five remain pending. Detailed records are correct.",
+      "fix": "Say21 completed descriptive assessments among26 assessed targets, with five direct-power/unequal-structure targets still pending. Preserve current scientific verdicts."
+    },
+    {
+      "id": "R2",
+      "severity": "material omission",
+      "location": "continuation.scientific_evidence/source_hashes and writer allowlist",
+      "finding": "New remaining-target-method-resource-plan is not embedded or allowlisted. Isolated writer cannot obtain corrected3250/3450 core count, missing generator cells or bounded-cost qualifications from that plan.",
+      "fix": "Embed a reviewed scientific-only source-design/count/cost/remaining-target extract with plan hash, or explicitly allow the exact reviewed file. Keep proposed pilot authorization/budget separate from actual scientific results; no model-launch authorization follows."
+    },
+    {
+      "id": "R3",
+      "severity": "stale scientific limitation",
+      "location": "continuation.scientific_evidence.marginal-identification-check.remaining and reviewed_scientific_conclusions marginal/joint-item status",
+      "finding": "Embedded historical note still says unequal known OPLM discrimination requires proof and final review/Lean proved-results gate is unmet. Later joint-item note covers known positive unequal slopes; ordinary proof reporting does not require Lean. README instructs writer to ignore historical manuscript-gate wording, mitigating but not removing contradictory embedded evidence.",
+      "fix": "Preserve archived original notes but explicitly annotate supersession in packet: known-positive-unequal-slope gap closed conditionally; unknown calibration/observation/support gaps remain; no formal certification claimed. Remove workflow gate text from scientific summary or label historical-only."
+    },
+    {
+      "id": "R4",
+      "severity": "stale evidence wording, partly mitigated",
+      "location": "claims e.g. C2-2.design.alpha and C5-2.alpha.J20: ours.unavailable_reason/status_reason/uncertainty/stopping versus current_work",
+      "finding": "Frozen fields still say no100/250-dataset aggregate is available and describe only posterior pilots, whereas current_work correctly records completed generation/reliability aggregates. README establishes current-work precedence, but copying frozen prose would omit completed science and imply posterior fitting is needed for alpha.",
+      "fix": "Keep frozen adjudication history, add explicit current evidence/wording precedence or claim-specific supplement for all nine generator descriptors and newly completed analytical/descriptive work. Current uncertainty must say exact source-estimand unresolved despite completed reconstruction, not no repeated-generation aggregate."
+    },
+    {
+      "id": "R5",
+      "severity": "review provenance clarity",
+      "location": "continuation.reviewed_scientific_conclusions.chapter6-saved-target-assessment-review.status",
+      "finding": "Author review says independent_root_review_pending while adjacent integration-review already supplies independent arithmetic checks.",
+      "fix": "Label first status as historical author-validation state and identify subsequent integration review as current; do not imply26 completed results or broaden arithmetic review into full scientific verdict."
+    }
+  ],
+  "recovery_reservation": {
+    "state": "pending_terminal_independent_review",
+    "no_draw_values_inspected": true,
+    "requirements": "Add separate terminal handoff and independent review, actual cost and stopping outcome; rehash packet/allowlist and review changed scientific text. Even a passing single-dataset gate is not source-count recovery/power or whole-study completion. This conditional acceptance does not reserve authority to infer success."
+  },
+  "final_acceptance_conditions": [
+    "Resolve R1-R5 in writer-facing supplement or explicit precedence annotations while preserving archived artifacts.",
+    "Incorporate separately reviewed terminal recovery evidence before final manuscript handoff, with new hashes.",
+    "Keep source-count posterior aggregates, empirical refits, direct power/sufficiency and broad likelihood claims unresolved unless new appropriately scoped evidence establishes them."
+  ],
+  "blockers": [],
+  "operations": "Only local source/JSON/script reads and creation of this new review JSON. No manuscript, packet, original adjudication or production output edited."
+}
