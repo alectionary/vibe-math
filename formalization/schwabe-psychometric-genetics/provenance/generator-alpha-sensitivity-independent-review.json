@@ -1,0 +1,28 @@
+{
+  "reviewed_utc": "2026-10-31T03:28:34.360746+00:00",
+  "status": "Accepted for the fixed300second generation-only sensitivity after recovery-chain CPU release. No generation performed by reviewer.",
+  "script_sha256": "69da258ecadc30254af296715a328e5edce4883da1ab95d8c43af5d135f3f5c3",
+  "formula_checks": [
+    "Raw alpha J/(J-1)*(1-trace(V)/sum(V)) matches original covariance definition.",
+    "For positive item variances C_ij=V_ij/sqrt(V_ii*V_jj); average off-diagonal correlation rbar yields alpha_std=J*rbar/(1+(J-1)*rbar).",
+    "Equivalent standardized identity J/(J-1)*(1-J/sum(C)) is algebraically consistent.",
+    "Constant items remain in the requested denominator; standardized alpha is NA rather than removing items. Raw alpha remains defined if total score variance is positive."
+  ],
+  "scope_checks": [
+    "Same fixed seed formula and generator are intended for all2650datasets; no extra independent replications.",
+    "No model fitting, new grid, outcome-dependent seed selection, moderator probability tuning or item calibration tuning.",
+    "Formula comparison is descriptive; neither formula is assigned to the source without evidence.",
+    "300second additional cap plus prior131.334+.923 seconds is432.257 seconds, below the600second generation allowance. Execution is held until recovery chains release CPUs."
+  ],
+  "remaining_execution_review": "After execution inspect all requested/completed/NA denominators, paired differences, raw-baseline maximum discrepancy, retained partials if capped, and source-estimand limitations.",
+  "plan_sha256": "35fd3f4b0a0dd00ff0de1f17fcb00ba285f96a8a5fa13c346184acbc7ab8e593",
+  "dependencies_sha256": {
+    "simulation/generator_summary_check.R": "3339ca63639d783830370e001032f13dea62bf0df0f6314bf469f40ab5499124",
+    "production/generator-summary-v1/summaries.csv": "909211a9b24da1b0fff5a98d49a604e84b9e313fe9d9d405da90146ca084ada9"
+  },
+  "requested_hardening_resolved": [
+    "Both dependency hashes checked before generation.",
+    "Grid19 and total2650 asserted.",
+    "Original condition/replicate checked alongside unique seed and raw-alpha agreement."
+  ]
+}
