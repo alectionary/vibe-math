@@ -1,0 +1,690 @@
+{
+  "stage": "evidence_stage_provisional",
+  "contract_version": 2,
+  "reviewer": "current_cold_reader",
+  "context": "fresh origin recorded in current-cold-reader-initial.json; evidence now exposed",
+  "pdf": {
+    "path": "paper/current_standalone_v2.pdf",
+    "sha256": "4690d821d40f1a899a209f44b848ed45d8a96b58d4accf542102b7d2d8efdfa4",
+    "pages": 22
+  },
+  "packet": {
+    "path": "handoff/continuation-evidence-packet.json",
+    "sha256": "8944d4a1fc8a441c2262b3e3e926d207a54e156378f20ff5ac36c280de64c7fc"
+  },
+  "source_at_review": {
+    "path": "paper/current_standalone.tex",
+    "sha256": "fc485d88129e52c2292280a5a1797f062f0af83d965c49263275394bb5e4e417",
+    "caution": "Shared working source may change independently; PDF hash is authoritative for reviewed rendering."
+  },
+  "writer_manifest": "handoff/current-writer-manifest.json absent when checked; no final manifest certification",
+  "editorial": {
+    "verdict": "fail",
+    "read_order": [
+      "initial rendered manuscript all22 pages; cold record saved",
+      "v2 rendered manuscript all22 pages",
+      "evidence packet, current source, selected original source passages and saved scientific artifacts"
+    ],
+    "checks": {
+      "abstract_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract sentence 1",
+            "finding": "We partly replicated Schwabe (2016) opens the abstract, identifies both measurement-remedy and missing-covariate power findings, and immediately limits support to 108 precision contrasts. Subsequent sentences retain blocked empirical refits, repeated-recovery incompleteness and eleven nonsignificant point reversals."
+          }
+        ]
+      },
+      "introduction_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 2,
+            "location": "introduction paragraph 1",
+            "finding": "Partial verdict independently leads; 108 signed contrasts, bias pair, empirical/recovery/power limits and reversals are explicit."
+          }
+        ]
+      },
+      "standalone_prose": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "page": 8,
+            "location": "ambiguity headings, limitations pp9\u201310 and ledgers pp18\u201319",
+            "finding": "Residual concatenations include versusAppendixB, andDutch summaryp, 3%missingness and internal claim IDs. New prose spacing transformation corrupts literal commit hashes on p18 and coverage-v4.csv on p19. These should be corrected before publication."
+          }
+        ]
+      },
+      "headline_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract/table and Appendix A pp11\u201315",
+            "finding": "All 26 packet principal claims appear in order, plus two labeled illustrations. Source Chapter6 p85/91/101 calls the method more powerful; the abstract now preserves that stronger source assertion and withholds its replication rather than silently replacing it with precision."
+          }
+        ]
+      },
+      "claim_coverage": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 10,
+            "location": "Appendix A opening and pp11\u201316",
+            "finding": "All 26 parent claims and 19 source-section rows are represented. Mechanical comparison finds all 996 unique packet IDs in coverage-v4.csv, no missing IDs or status disagreements, with exact counts 255 blocked/391 pending/29 attempted-incomplete/11 completed/310 declared reconstruction. This is mapping coverage, not verification of every original source quantity or independent findings."
+          }
+        ]
+      },
+      "limitations_preserved": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 9,
+            "location": "Section 11, continuing p10",
+            "finding": "All 13 packet limitations remain represented: missing inputs, source-only arithmetic, ordinary-proof scope, 2%/3% ambiguity, eleven nonsignificant reversals, failed one-dataset gate, record dependence, alpha ambiguity, missing adequacy margin and finite-likelihood/observed-response distinctions. Source pp107\u2013108 scaling and self-report qualifications are preserved on p2."
+          }
+        ]
+      },
+      "scientific_process_distinction": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "page": 10,
+            "location": "Limit13; p19 original repetition ledger row",
+            "finding": "Final recovery result withheld pending terminal review and final recovery outcome awaits terminal independent review are still process placeholders. Replace with actual terminal scientific outcome after supplied evidence; do not certify pending result."
+          }
+        ]
+      },
+      "abstract_source_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract, backed by references p22",
+            "finding": "Source title/author/2016/Twente/DOI verified against original PDF pp2\u20134. Original Chapter2 p11 asserts measurement remedy; Chapter6 p85,91,101 asserts power advantage. Both are now named without claiming that precision alone establishes power. Source metadata and main original assertion verified directly."
+          }
+        ]
+      },
+      "effect_magnitude_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "headline table and notes; detail pp4\u20135",
+            "finding": "Five printed slope values and their half-last-unit tolerances agree with original Tables3.2/4.3/5.4 (PDF pp51/72/91). Illustrative signed bias 0.03315402096013098 versus 0.031180388166267718 has smaller absolute magnitude by more than 0.00027219389842495325, same positive direction. Precision example keeps finite signs but withholds magnitude because SE comparability remains unresolved. Nonscalar parent labels avoid averaging or fabricated scalar effects. Caption says point estimates/not equivalence. Geometric-bound timing audit states pre-production bound and later full plan, matching p7 caveat."
+          }
+        ]
+      }
+    },
+    "phrase_dispositions": []
+  },
+  "cue_scan": {
+    "command": "stage_checks.py cues paper/current_standalone.tex",
+    "result": [],
+    "qualification": "No cues does not override observed prose problems."
+  },
+  "visual_review": {
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "fixed": [
+      "clipped bias intervals pp14\u201315",
+      "clipped directory p20",
+      "source power claim and eleven reversals now explicit on p1",
+      "blocked/not-established verdicts now distinguish missing inputs from unseparated estimates"
+    ],
+    "remaining": [
+      "glued headings/HPD labels pp8\u201314",
+      "claim-ID prose in limits pp9\u201310",
+      "corrupted literal commit hashes p18",
+      "corrupted coverage-v4.csv display p19",
+      "terminal-review placeholders pp10/19"
+    ]
+  },
+  "evidence_checks": {
+    "packet_artifacts": {
+      "count": 178,
+      "all_exist": true,
+      "all_hashes_match": true
+    },
+    "coverage": {
+      "claims": 996,
+      "unique_coverage_ids": 996,
+      "id_or_status_mismatches": 0
+    },
+    "headlines_reviewed": [
+      "C1.scale-invariance",
+      "H2.IRT-bias-remedy",
+      "H2.power-grid",
+      "H2.sumscore-artifacts",
+      "C3-4.3.2.beta1",
+      "C3-4.3.2.gamma1",
+      "C4-2.two-dimensions",
+      "C4-3.subscale",
+      "C4-5.4.3.beta1",
+      "C4-5.4.3.gamma1",
+      "C4-5.reversal.beta1",
+      "C4-5.reversal.gamma1",
+      "C5-1.logvariance-identification",
+      "C5-1.measurement-bias",
+      "C5-1.one-likelihood-maximum",
+      "C5-2.power-inference.beta1a",
+      "C5-2.power-inference.beta1c",
+      "C5-3.twenty-sufficient",
+      "C5-5.5.4.beta1c",
+      "H6.covariate-nondetection",
+      "H6.power-assertion",
+      "H6.precision-grid",
+      "C6-1.observed-likelihood",
+      "C6-3.MAR-bias.A",
+      "C6-3.MAR-bias.C",
+      "C6-3.MAR-bias.h2"
+    ],
+    "limitations_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "saved_numeric_results": {
+      "primary_variance_SE_contrasts": 108,
+      "positive_adjusted_intervals": 108,
+      "variance_SE_source_points_outside": 216,
+      "exploratory_path_SE_points_outside": 20,
+      "bias_sign_reversals": 11,
+      "reversed_bias_adjusted_intervals_excluding_zero": 0
+    },
+    "generator": "19 conditions and 2650 datasets, zero posterior fits; raw and standardized examples agree with saved scientific evidence",
+    "centered_12000": "Rhat1.01703838214786, bulkESS260.999764568316, tailESS606.245880872577, relativeMCSE0.0621669492836738 and failed joint gate agree with saved evidence; no later terminal result reviewed",
+    "source_pdf_pages_read": [
+      2,
+      3,
+      4,
+      14,
+      20,
+      51,
+      60,
+      72,
+      78,
+      81,
+      89,
+      91,
+      94,
+      95,
+      100,
+      103,
+      110,
+      113,
+      116,
+      117
+    ],
+    "limitation": "All 996 mappings and artifact hashes checked; all26 headline summaries and all13 limits compared with manuscript. This is not an attestation that every one of996 source entries was independently rederived or every original dissertation page re-read."
+  },
+  "links_provisional": {
+    "uri_annotations": 83,
+    "same_repository_targets": "Observed artifact links use ale\u0441tionary/vibe-math blob/master paths (actual ASCII targets stored below).",
+    "inventory": [
+      {
+        "page": 3,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/scale-invariance-evidence.json",
+        "label": " handoff/scale-invariance-evidence.json."
+      },
+      {
+        "page": 4,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/chapter5-analytical-evidence.json",
+        "label": " handoff/chapter5-analytical-evidence.json."
+      },
+      {
+        "page": 5,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/chapter6-analytical-evidence.json",
+        "label": " handoff/chapter6-analytical-evidence.json."
+      },
+      {
+        "page": 6,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-evidence-packet.json",
+        "label": "handoff/continuation-evidence-packet.json."
+      },
+      {
+        "page": 9,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/narrow-analytical-evidence.json",
+        "label": " handoff/narrow-analytical-evidence.json;"
+      },
+      {
+        "page": 9,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-evidence-packet.json",
+        "label": " handoff/continuation"
+      },
+      {
+        "page": 9,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-evidence-packet.json",
+        "label": "-evidence-packet.json."
+      },
+      {
+        "page": 10,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-evidence-packet.json",
+        "label": " handoff/continuation-evidence-packet.json "
+      },
+      {
+        "page": 10,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/coverage-v4.csv",
+        "label": " coverage-v4.csv."
+      },
+      {
+        "page": 17,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/scientific-availability.json",
+        "label": " handoff/scientific-availability.json."
+      },
+      {
+        "page": 18,
+        "uri": "https://research.utwente.nl/en/publications/nature-nurture-and-item-response-theory-a-psychometric-approach-t/",
+        "label": "Institutional"
+      },
+      {
+        "page": 18,
+        "uri": "https://research.utwente.nl/en/publications/nature-nurture-and-item-response-theory-a-psychometric-approach-t/",
+        "label": "final-version"
+      },
+      {
+        "page": 18,
+        "uri": "https://research.utwente.nl/en/publications/nature-nurture-and-item-response-theory-a-psychometric-approach-t/",
+        "label": "record"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": "Author\ndisser-"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": "tation\nGitHub"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": "repository"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe",
+        "label": "All\n12\npublic"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe",
+        "label": "author GitHub"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe",
+        "label": "repositories"
+      },
+      {
+        "page": 18,
+        "uri": "https://osf.io/",
+        "label": "OSF\nindexed"
+      },
+      {
+        "page": 18,
+        "uri": "https://osf.io/",
+        "label": "search"
+      },
+      {
+        "page": 18,
+        "uri": "https://gitlab.com/",
+        "label": "GitLab indexed"
+      },
+      {
+        "page": 18,
+        "uri": "https://gitlab.com/",
+        "label": "search"
+      },
+      {
+        "page": 18,
+        "uri": "https://zenodo.org/",
+        "label": "Zenodo indexed"
+      },
+      {
+        "page": 18,
+        "uri": "https://zenodo.org/",
+        "label": "search"
+      },
+      {
+        "page": 18,
+        "uri": "https://link.springer.com/article/10.1007/s10519-015-9768-9",
+        "label": "Chapter\n4"
+      },
+      {
+        "page": 18,
+        "uri": "https://link.springer.com/article/10.1007/s10519-015-9768-9",
+        "label": "article\nand"
+      },
+      {
+        "page": 18,
+        "uri": "https://link.springer.com/article/10.1007/s10519-015-9768-9",
+        "label": "supplement"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/BayesTwin",
+        "label": "BayesTwin"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/BayesTwin",
+        "label": "repository"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/BayesTwin",
+        "label": "history"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": " His-"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": "torical statisti-"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": "cal engine spec-"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/ingaschwabe/Nature-Nurture-and-Item-Response-Theory",
+        "label": "ification"
+      },
+      {
+        "page": 18,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-scientific-compliance.json",
+        "label": " handoff/continuation-scientific-compliance.json."
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/terminal-reproduction.md",
+        "label": " handoff/terminal-rep"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/terminal-reproduction.md",
+        "label": "roduction.md."
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-evidence-packet.json",
+        "label": "handoff/continuation-evidence-packet."
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/continuation-evidence-packet.json",
+        "label": "json"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/coverage-v4.csv",
+        "label": "coverage-v4.csv"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/signed-SE-contrasts.csv",
+        "label": "production/chapter6-v1/terminal-analy"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/signed-SE-contrasts.csv",
+        "label": "sis/signed-SE-contrasts.csv"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "label": "production/chapter6-v1/terminal-analy"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/signed-bias-contrasts.csv",
+        "label": "sis/signed-bias-contrasts.csv"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/source-comparisons.csv",
+        "label": "production/chapter6-v1/terminal-analy"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/source-comparisons.csv",
+        "label": "sis/source-comparisons.csv"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/condition-summary.csv",
+        "label": "production/chapter6-v1/terminal-analy"
+      },
+      {
+        "page": 20,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/chapter6-v1/terminal-analysis/condition-summary.csv",
+        "label": "sis/condition-summary.csv"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/production/analysis-plan.json",
+        "label": "production/analysis-plan.json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/simulation/analyze_production.py",
+        "label": "simulation/analyze_production.py"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/simulation/build_production_report.py",
+        "label": "simulation/build_production_report.py"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/simulation/openmx_production.R",
+        "label": "simulation/openmx_production.R"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/terminal-reproduction.md",
+        "label": "handoff/terminal-reproduction.md"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/outputs/generator-summary-analysis.json",
+        "label": "outputs/generator-summary-analysis.js"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/outputs/generator-summary-analysis.json",
+        "label": "on"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/outputs/generator-alpha-sensitivity-analysis.json",
+        "label": "outputs/generator-alpha-sensitivity-a"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/outputs/generator-alpha-sensitivity-analysis.json",
+        "label": "nalysis.json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/jags-centered-scientific-evidence.json",
+        "label": "handoff/jags-centered-scientific-evide"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/jags-centered-scientific-evidence.json",
+        "label": "nce.json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/chapter5-analytical-evidence.json",
+        "label": "handoff/chapter5-analytical-evidence."
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/chapter5-analytical-evidence.json",
+        "label": "json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/chapter6-analytical-evidence.json",
+        "label": "handoff/chapter6-analytical-evidence."
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/chapter6-analytical-evidence.json",
+        "label": "json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/narrow-analytical-evidence.json",
+        "label": "handoff/narrow-analytical-evidence.js"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/narrow-analytical-evidence.json",
+        "label": "on"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/handoff/scale-invariance-evidence.json",
+        "label": "handoff/scale-invariance-evidence.json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/provenance/runtime-packages.json",
+        "label": "provenance/runtime-packages.json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/provenance/posterior-runtime-packages.json",
+        "label": "provenance/posterior-runtime-packages."
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/provenance/posterior-runtime-packages.json",
+        "label": "json"
+      },
+      {
+        "page": 21,
+        "uri": "https://github.com/alectionary/vibe-math/blob/master/formalization/schwabe-psychometric-genetics/paper/references.bib",
+        "label": "paper/references.bib"
+      },
+      {
+        "page": 22,
+        "uri": "https://CRAN.R-project.org/package=rjags",
+        "label": " https://CRAN.R-proje"
+      },
+      {
+        "page": 22,
+        "uri": "https://CRAN.R-project.org/package=rjags",
+        "label": "ct.org/package=rjags."
+      },
+      {
+        "page": 22,
+        "uri": "https://www.r-project.org/doc/Rnews/Rnews_2006-1.pdf",
+        "label": " https://www.r-project.org/doc/Rnews/Rnews"
+      },
+      {
+        "page": 22,
+        "uri": "https://www.r-project.org/doc/Rnews/Rnews_2006-1.pdf",
+        "label": "_2006-1.pdf."
+      },
+      {
+        "page": 22,
+        "uri": "https://www.R-project.org/",
+        "label": " https://www.R-project.org/."
+      },
+      {
+        "page": 22,
+        "uri": "https://research.utwente.nl/en/publications/nature-nurture-and-item-response-theory-a-psychometric-approach-t/",
+        "label": " https://research.utwente.nl/en/publi"
+      },
+      {
+        "page": 22,
+        "uri": "https://research.utwente.nl/en/publications/nature-nurture-and-item-response-theory-a-psychometric-approach-t/",
+        "label": "cations/nature-nurture-and-item-response-theory-a-psychometric-approach-t/."
+      },
+      {
+        "page": 22,
+        "uri": "https://github.com/ingaschwabe/BayesTwin",
+        "label": " https://github"
+      },
+      {
+        "page": 22,
+        "uri": "https://github.com/ingaschwabe/BayesTwin",
+        "label": ".com/ingaschwabe/BayesTwin."
+      },
+      {
+        "page": 22,
+        "uri": "https://arxiv.org/abs/1903.08008v5",
+        "label": "\ufffd\n https://arxiv.org/abs/1903.08008v5."
+      },
+      {
+        "page": 22,
+        "uri": "https://arxiv.org/html/1710.03576v2",
+        "label": " https://arxiv.org/html/1710."
+      },
+      {
+        "page": 22,
+        "uri": "https://arxiv.org/html/1710.03576v2",
+        "label": "03576v2."
+      }
+    ],
+    "qualifications": [
+      "No HTTP availability or publication claim",
+      "Final inventory and delivery orchestrator still required",
+      "No named key functions/line anchors reviewed; manuscript chiefly links artifact files"
+    ]
+  },
+  "pending": [
+    "actual terminal scientific evidence and updated packet",
+    "final PDF rerender and genuine rereview",
+    "final writer manifest and hash binding",
+    "final complete link inventory/delivery validation",
+    "remaining editorial fixes"
+  ],
+  "acceptance": false,
+  "no_model_runs": true,
+  "no_manuscript_edits": true
+}

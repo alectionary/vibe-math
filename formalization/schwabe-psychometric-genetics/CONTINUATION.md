@@ -2,7 +2,7 @@
 
 The source-count Bayesian recovery and power studies remain unfinished. This continuation adds response-generation checks, fuller assessments of the saved Chapter 6 grid, ordinary mathematical proofs, and bounded convergence experiments. None replaces the missing source-count posterior aggregates or unavailable empirical refits.
 
-The existing 17-page main paper remains the reviewed milestone at commit `241fd4ae49dce3d2d9d7351c53306ab528b08ecb`. Its PDF SHA256 is `d1aee6a0f1c488ea68cc76b8489949f3acaa9aa7a96f48b6ed54391446b9fefb`. These additional findings have scientific review records but have not been incorporated into a newly reviewed main paper.
+The current 22-page main paper integrates these findings and corrected coverage. Its source is `paper/standalone.tex`; exact reviewed artifact hashes and remote downloads are recorded in `provenance/delivery-current-v2.json`. The earlier reviewed 17-page manuscript remains available at commit `241fd4ae49dce3d2d9d7351c53306ab528b08ecb`, SHA256 `d1aee6a0f1c488ea68cc76b8489949f3acaa9aa7a96f48b6ed54391446b9fefb`. The current paper is a scientific milestone, not completed whole-dissertation replication.
 
 ## Coverage and evidence
 
@@ -20,11 +20,13 @@ The final, fixed longer centered experiment is specified in [jags-centered-exten
 
 ## Final diagnostic status
 
-The 28,000-draw experiment was cancelled at 04:05:18 UTC on 31 October 2026. The guard mistook a checksum shell in chain 1's own process group for a competing model. Zero of four requested chains completed the planned length. Chain 1 saved 12,000 rows with a stale 8,000-row checkpoint manifest; the other chains saved 8,000 rows with matching manifests. Every saved prefix and sampler state matches previously retained centered evidence, so this interruption adds no new independent posterior evidence or convergence conclusion.
+The single fixed recovery completed all four chains with 28,000 retained draws each. All 14 monitored quantities pass the unchanged operational criteria: maximum rank-normalized split/folded Rhat 1.00167324, minimum bulk ESS 685.7621, minimum tail ESS 1407.5320 and maximum mean MCSE/SD 0.03821134. This is one N500/J60 floor dataset, not a source-count recovery or power experiment. Independent numerical and all-page diagnostic review is recorded in `provenance/jags-centered-extended-recovery-independent-review.json`; the machine gate is not a proof of convergence.
 
-See [jags-centered-extended-interruption-audit.json](provenance/jags-centered-extended-interruption-audit.json) and its [independent review](provenance/jags-centered-extended-interruption-independent-review.json). The frozen files, including the inconsistent manifest, are preserved. The new process-group-aware dispatcher passes independent regression checks but has not been exercised on another model run. There was no restart.
+The preceding 28,000-draw attempt was cancelled by an owned-child process-guard false positive. Its incomplete checkpoint files and stale chain-1 manifest are preserved without repair. The completed recovery uses the independently reviewed group-aware guard. Every first 12,000-draw trajectory prefix equals the earlier completed centered run exactly; these runs must never be pooled as independent samples.
 
-This follow-up consumed 9,006.183 summed chain-process wall seconds; including the earlier initial diagnostic gives 11,905.255 seconds. These are different accounting scopes, not measured CPU time. The follow-up allocation was 12,000 seconds. A fresh run at the same limits would require up to 5,480 chain-process seconds plus 20 seconds of cleanup, exceeding its remaining allocation. Preparation and diagnostic analysis have separate caps. A new resource plan is required before further execution; no source-count grid has started.
+The recovery consumed 4,927.558 summed chain-process wall seconds within its separately authorized 5,500-second allocation, with no cleanup termination needed. Preparation took 0.751 seconds and diagnostic analysis 8.262 seconds under separate fixed caps. Earlier follow-up attempts consumed 9,006.183 seconds; including the historical initial gate and this recovery, all attempts total 16,832.813 summed chain-process seconds. These are process elapsed times, not measured CPU time.
+
+No model process remains active and no source-count posterior grid has started. The remaining-target plan identifies 3,250 source-design datasets and 3,450 dataset-method fits; chains are not additional datasets. Further engine validation and representative cost pilots require a concrete bounded allocation before any larger production. Passing one diagnostic does not authorize a production grid.
 
 ## Reproduction
 
