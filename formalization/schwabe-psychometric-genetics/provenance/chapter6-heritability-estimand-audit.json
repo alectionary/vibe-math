@@ -15,9 +15,10 @@
   "source_locators": [
     "p88 (PDF97), Section6.1.2 Eqs6.1\u20136.2: decomposition after covariate effects are partialled out",
     "p89 (PDF98), Eq6.5: total phenotype variance adds beta-transpose (Sigma_w+Sigma_b) beta to ACE",
-    "p91 (PDF100), Section6.2: generating variances and total variance"
+    "p91 (PDF100), Section6.2: generating variances and total variance",
+    "p93 (PDF102), paragraph immediately before Section6.2.1: explicit h2=sigma_A_squared/sigma_P_squared and sigma_P_squared=A+C+E"
   ],
-  "source_limit": "These source pages support the residual interpretation but do not explicitly print the h2 ratio; do not attribute a literal printed ratio formula to them.",
+  "source_limit": "Page93 explicitly defines the residual ACE ratio. Its denominator excludes the covariate-predicted contribution added to total phenotype variance in Eq6.5; the ratio is not inferred merely from pp88\u201392.",
   "implementation_locators": [
     "simulation/openmx_production.R lines23,38: A/(A+C+E)",
     "simulation/openmx_production.R lines30\u201331,44\u201345: delta-method SE of same ratio",
@@ -27,5 +28,22 @@
   "input_sha256": {
     "simulation/openmx_production.R": "d9faa0924c9fb719d59704c4447a1e5c44a9a68846507dc7d130e2571cba2a56",
     "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518"
-  }
+  },
+  "additional_source_review_utc": "2026-10-31T01:28:25.478020+00:00",
+  "visual_evidence": {
+    "path": "evidence/p93-heritability-definition.png",
+    "sha256": "d9c2fd001cf20127493d37012d4ccd2291463f744ade83df3ee8feec831227b7",
+    "pdf_page_1_based": 102,
+    "rectangle": [
+      67,
+      53,
+      397,
+      90
+    ],
+    "dpi": 600,
+    "reviewer": "root",
+    "finding": "The numerator is sigma_A squared and denominator sigma_P squared; the printed denominator definition is the sum of A,C,E variances.",
+    "license_note": "Limited attributed scholarly formula evidence; full source not redistributed."
+  },
+  "prior_audit_sha256": "59038f0395cca6359f4e417b2f5f1fa3a27629e984ff2366778f80a4d538a402"
 }
