@@ -1,0 +1,56 @@
+[
+  {
+    "requirement": "Whole-dissertation coverage",
+    "status": "followed",
+    "evidence": "The source inventory covers 19 sections, 996 dependent source records, 26 headline claims and 187 effect components. Exact-target work comprises 255 blocked, 391 pending, 29 attempted-incomplete, 11 completed and 310 completed under the declared reconstruction (coverage-v4.csv). Inventory coverage does not establish whole-study replication."
+  },
+  {
+    "requirement": "Original-source and input audit",
+    "status": "followed",
+    "evidence": "The input audit examined all 12 public author repositories. Original empirical responses, linked calibration and some simulation specifications were unavailable; their associated targets remain unresolved (handoff/scientific-availability.json)."
+  },
+  {
+    "requirement": "Preferred statistical engines",
+    "status": "followed",
+    "evidence": "R 4.5.0, lavaan 0.6.19 and OpenMx 2.21.13 were available. OpenMx implements the Chapter 6 Gaussian likelihood, with independent baseline engine checks recorded in outputs/engine-agreement.csv; package versions are recorded in provenance/preflight.json."
+  },
+  {
+    "requirement": "JAGS for non-Gaussian latent item models",
+    "status": "departed",
+    "justification": "A covariance-only SEM would change the source likelihood. JAGS 4.3.2 with rjags 4-16 reconstructs the item-level models; posterior 1.6.1 computes diagnostics. Generator, baseline engine and model-semantics checks do not independently validate the full posterior.",
+    "evidence": "The item-level posterior and its diagnostic limits are specified in handoff/jags-gate-scientific-evidence.json and handoff/jags-centered-scientific-evidence.json. The extended one-dataset result and runtime versions, including coda 0.19.4.1, are recorded in handoff/jags-centered-extended-recovery-scientific-evidence.json."
+  },
+  {
+    "requirement": "Original repetition counts and adequate posterior convergence",
+    "status": "departed",
+    "justification": "Chapter 6 completes 1000 datasets in 36 primary and 12 sensitivity conditions, totaling 96000 method fits. Response generation completes 2650 datasets across 19 Chapter 2/5 conditions; alpha sensitivity adds zero independent datasets and zero posterior fits. Shorter original and centered diagnostics failed their joint criteria. The completed four-chain centered diagnostic with 28000 retained draws per chain passes the operational criteria for all 14 monitored quantities on one fixed Chapter 2 N500/J60 floor dataset; its interaction HPD includes zero. This does not establish the source 100/250-dataset posterior recovery or power aggregates, other designs, or empirical refits.",
+    "evidence": "production/chapter6-v1/terminal-analysis/summary.json; handoff/generator-summary-scientific-evidence.json; handoff/generator-alpha-sensitivity-scientific-evidence.json; handoff/jags-centered-extended-recovery-scientific-evidence.json."
+  },
+  {
+    "requirement": "Signed estimands, uncertainty and multiplicity",
+    "status": "followed",
+    "evidence": "The analysis distinguishes variance and path SEs, deletion-minus-full contrasts, estimate-minus-truth bias and source deviations (production/analysis-plan.json). Geometric extraction uncertainty, our Monte Carlo error and unknown source Monte Carlo error remain distinct. Descriptive magnitude is not equivalence."
+  },
+  {
+    "requirement": "Analytical verification and formal proof",
+    "status": "departed",
+    "justification": "Ordinary mathematical arguments and exact algebra checks support the explicitly conditional results; no Lean certificate is claimed. Population identification, fixed-parameter latent moment inversion and exact Rasch score-likelihood sufficiency do not establish finite-likelihood uniqueness, non-Gaussian observed-item identification, empirical recovery, power or convergence.",
+    "evidence": "The derivations and assumptions appear in handoff/chapter5-analytical-evidence.json, handoff/chapter6-analytical-evidence.json, provenance/continuous-moderator-identification-check.json, provenance/non-gaussian-latent-moment-check.json and provenance/rasch-sufficiency-derivation.json."
+  },
+  {
+    "requirement": "Source attribution and permitted redistribution",
+    "status": "followed",
+    "evidence": "Schwabe (2016) is identified by verified bibliographic metadata and claim-specific dissertation locators. The full dissertation and unlicensed original programs remain local; redistributed materials comprise original replication code, generated results and limited attributed source extracts (handoff/scientific-availability.json)."
+  },
+  {
+    "requirement": "Reproducible versions and commands",
+    "status": "followed",
+    "evidence": "Immutable repository revision 2424e0f4d67929ba72255ef6f546ba2a72c25df0 contains completed scientific outputs, diagnostic draws, reviewed checks and original replication code. Saved-output validation and fixed-diagnostic rerun commands are specified in handoff/current-reproduction.md; handoff/terminal-reproduction.md supplies the Chapter 6 recipe. Full copyrighted dissertation text and unlicensed original programs remain separate inputs."
+  },
+  {
+    "requirement": "Equivalent score-likelihood implementation feasibility",
+    "status": "departed",
+    "justification": "The same-JAGS exact calibrated score representation was tested on one saved dataset with fixed starts and priors; it is not independent-engine validation.",
+    "evidence": "All four chains adapted and retained16000of28000requested draws before the preset summed-process ceiling; zero fixed-length chains completed.6419.751313chain/cleanup seconds and6420.894927all-phase seconds were consumed. Full joint diagnostic and five-global comparison were ineligible. Source-count targets remain pending. handoff/score-a0-scientific-evidence.json; provenance/score-a0-terminal-independent-review.json."
+  }
+]
