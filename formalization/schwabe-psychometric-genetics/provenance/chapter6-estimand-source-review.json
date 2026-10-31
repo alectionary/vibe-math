@@ -1,0 +1,40 @@
+{
+  "reviewer": "production_analysis (independent readback of root source audits)",
+  "reviewed_utc": "2026-10-31T01:29:46.081413+00:00",
+  "status": "accepted for source-estimand attribution only",
+  "input_sha256": {
+    "provenance/chapter6-heritability-estimand-audit.json": "303f814d66be67d0f1ea334aca679860bdf4163b4e32dd7ac1a19789f64aea1d",
+    "provenance/chapter6-standard-error-estimand-audit.json": "d5afe19460f5e5849d537c8984b2826b656b1ae77e22b040307a60300b07015f",
+    "source-local/thesis_I_Schwabe.pdf": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+    "source-local/schwabe.txt": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "evidence/p93-heritability-definition.png": "d9c2fd001cf20127493d37012d4ccd2291463f744ade83df3ee8feec831227b7",
+    "evidence/fig6-3.png": "ae2f2bfe08cd18069698a092e8315b6df412aad6b6dea723560020e342f90508",
+    "evidence/fig6-4.png": "99be7f41a1b722f568f48aef3a78b7eaebdb2b9e3d5214183c635fd249f3c26d",
+    "evidence/fig6-6.png": "745343c94e4d4f55d0022ffaffe5f55eaa26d4530527142f449ac23546ff558e"
+  },
+  "method": "Read both source audits and p93\u201395 extracted source text; visually inspected saved p93 formula crop, all three source plot crops, and independently rendered original PDF caption regions for Figures6.3,6.4,6.6. No new production effects inspected.",
+  "findings": [
+    {
+      "locator": "p93/PDF102, opening paragraph before Section6.2.1",
+      "finding": "The printed formula explicitly defines h2=sigma_A^2/sigma_P^2 and sigma_P^2=sigma_A^2+sigma_C^2+sigma_E^2. Combined with conditional covariance definition p88 and marginal covariance Eq6.5 p89, this is covariate-adjusted residual ACE heritability. Direct source attribution is now established, replacing the earlier pp88\u201392-only attribution limit."
+    },
+    {
+      "locator": "Figure6.3 p93/PDF102; Figure6.4 p94/PDF103; Figure6.6 p95/PDF104",
+      "finding": "Each caption explicitly says standard errors for sigma_A^2,sigma_C^2,sigma_E^2. The plotted panel headings visually show squared variance estimands as well. Primary source comparison must therefore use variance-component SEs."
+    },
+    {
+      "locator": "Same figures and captions",
+      "finding": "Captions state2%,6%,10% while plotted low-missing curves say3%; existing2%primary/3%sensitivity distinction remains necessary. This does not change the printed variance-SE estimand."
+    },
+    {
+      "locator": "provenance/chapter6-standard-error-estimand-audit.json",
+      "finding": "Exploratory path-loading SE comparison may investigate undocumented implementation/scaling, but cannot replace the literal printed variance-SE comparison or establish reproduction of that declared estimand."
+    }
+  ],
+  "remaining_limits": [
+    "The source labels identify the declared estimand, not the exact original fitting/SE/plotting implementation or original Monte Carlo uncertainty.",
+    "This is a narrow source and visual readback, not a scientific outcome review, rendered final-manuscript review or whole-dissertation replication verdict."
+  ],
+  "changes": "Only this separate review record is written; frozen science, source specifications, mapper, results and original audits are unchanged.",
+  "source_rights": "Full dissertation remains local-only; temporary caption renders are not publication artifacts."
+}
