@@ -333,9 +333,20 @@
     "four_chain_worker_hours": 0.7410322853105532,
     "formula": "For each cell, datasets * methods * chains * observed per-chain seconds; sum across distinct fits. Scale iteration/N/J only as labeled sensitivity scenarios; distinguish total worker time from wall time and cgroup-limited concurrency.",
     "C2_1700_fits_same_size_same_schedule_anchor_worker_days": 52.48978687616419,
-    "warning": "That constant-size anchor understates N1000/N2000 work and excludes Chapter5; it is neither feasibility verdict nor production quote. Do not multiply2650generator datasets by one gate cost as a posterior target.",
+    "warning": "This constant-N500 full-IRT timing anchor is a scenario only, neither a lower nor an upper bound for all Chapter2 work: it ignores heterogeneous N and model costs, including potentially cheaper standardized-total Gaussian comparators, and excludes Chapter5. It is neither a feasibility verdict nor a production quote. Do not multiply2650generator datasets by one gate cost as a posterior target.",
     "C5": "No defensible calibrated cost from Chapter2 alone: different priors, schedule, graph and N/J. Require representative resource measurements.",
-    "actual28k_update": "Parent to add actual completed28k cost in a separate reviewed update; no extrapolated success or actual cost asserted here."
+    "actual28k_update": {
+      "evidence": "provenance/jags-centered-extended-recovery-resource-outcome.json",
+      "chain_wall_seconds": [
+        1240.3066974320027,
+        1226.5553184730015,
+        1234.522328578998,
+        1226.1737671349983
+      ],
+      "four_chain_worker_seconds": 4927.558111619001,
+      "C2_1700_same_size_same_method_scenario_worker_days": 96.95426839991089,
+      "limit": "Illustrative constant-cost scenario only, neither lower nor upper bound: sample size and Gaussian-total comparator costs differ; Chapter5 has different graph/priors/schedule and is excluded. No projection authorizes dispatch."
+    }
   },
   "power_and_sufficiency": [
     {
