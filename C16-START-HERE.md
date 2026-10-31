@@ -3,6 +3,11 @@
 **The source question is open: width 16 or 18.** This branch is ready for a
 new investigator; no research block or optimization is running from this handoff.
 
+**New, 31 October:** [restricted-frame checkpoint](formalization/canonical-width/c16/RESTRICTED-FRAMES-20261031.md)
+— quarter-split frames excluded by a short written argument, the half-turn (T^8)
+and p-half cases run to timeout, pool structure facts, and one-command
+reproduction scripts. Read it before rerunning any subgroup or block-split search.
+
 Start with the [council handoff](formalization/canonical-width/c16/COUNCIL-HANDOFF.md).
 It gives the exact question, current evidence, corrected historical claims,
 distinct expert lanes, and acceptance criteria for a proof or construction.
