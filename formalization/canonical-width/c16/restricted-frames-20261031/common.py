@@ -107,3 +107,20 @@ class Enc:
                 for j in range(1, k):
                     self.cl.append([-lits[i], -s[i - 1][j - 1], s[i][j]])
                 self.cl.append([-lits[i], -s[i - 1][k - 1]])
+
+
+def dual_basis(vs, bitpos):
+    # rows: vs restricted to coordinates bitpos; return dual basis as ints (inverse transpose)
+    n = len(bitpos)
+    A = np.array([[(v >> p) & 1 for p in bitpos] for v in vs], dtype=np.uint8)
+    M = np.concatenate([A, np.eye(n, dtype=np.uint8)], 1)
+    r = 0
+    for c in range(n):
+        piv = [k for k in range(r, n) if M[k, c]]
+        if not piv: return None
+        M[[r, piv[0]]] = M[[piv[0], r]]
+        for k in range(n):
+            if k != r and M[k, c]: M[k] ^= M[r]
+        r += 1
+    Ainv = M[:, n:]          # A @ Ainv = I ; dual vectors are columns of Ainv
+    return [sum(int(Ainv[i, j]) << bitpos[i] for i in range(n)) for j in range(n)]
