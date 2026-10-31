@@ -1,0 +1,97 @@
+{
+  "requested": 4,
+  "outcomes": [
+    {
+      "id": 1,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "1"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98894,
+      "started_utc": "2026-10-31T03:04:13Z",
+      "elapsed_seconds": 701.9074868700045,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 2,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "2"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98951,
+      "started_utc": "2026-10-31T03:04:52Z",
+      "elapsed_seconds": 663.2108447640057,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 3,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "3"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98952,
+      "started_utc": "2026-10-31T03:04:52Z",
+      "elapsed_seconds": 663.2074869810021,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 4,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "4"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98953,
+      "started_utc": "2026-10-31T03:04:52Z",
+      "elapsed_seconds": 663.2044284479998,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    }
+  ],
+  "error": "RuntimeError: Conflicting OpenMx/JAGS processes: [{\"pid\": 99708, \"argv\": [\"rg\", \"-n\", \"zc|zb|dnorm|dgamma\", \"formalization/schwabe-psychometric-genetics/simulation/jags_convergence_gate.R\", \"formalization/schwabe-psychometric-genetics/simulation/jags_long_gate.R\", \"formalization/schwabe-psychometric-genetics/simulation/jags_replication.R\", \"\"]}]",
+  "scheduling": {
+    "mode": "parallel",
+    "pilot_peak_rss_bytes": 199409664,
+    "max_concurrency": 4,
+    "batch_wall_bound_seconds": 12020,
+    "reason": "Measured adaptation-stage RSS with 2x safety factor and 1 GiB floor supports remaining chains",
+    "readiness_rss_bytes": 199409664,
+    "adaptation_record_observed": true,
+    "release_memory": {
+      "limits": [
+        {
+          "path": "/sys/fs/cgroup",
+          "max_bytes": 17179869184,
+          "current_bytes": 6229327872
+        }
+      ],
+      "available_bytes": 10950541312,
+      "required_policy_bytes": 1073741824,
+      "basis": "Operational allocation floor of 1 GiB per chain; not measured peak RSS or a guarantee of sufficient memory."
+    },
+    "per_additional_chain_policy_bytes": 1073741824
+  },
+  "updated_utc": "2026-10-31T03:15:55Z"
+}

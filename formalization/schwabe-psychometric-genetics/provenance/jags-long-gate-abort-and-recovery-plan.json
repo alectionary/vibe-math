@@ -1,0 +1,86 @@
+{
+  "created_utc": "2026-10-31T03:17:14.427395+00:00",
+  "cause": "RuntimeError: Conflicting OpenMx/JAGS processes: [{\"pid\": 99708, \"argv\": [\"rg\", \"-n\", \"zc|zb|dnorm|dgamma\", \"formalization/schwabe-psychometric-genetics/simulation/jags_convergence_gate.R\", \"formalization/schwabe-psychometric-genetics/simulation/jags_long_gate.R\", \"formalization/schwabe-psychometric-genetics/simulation/jags_replication.R\", \"\"]}]",
+  "classification": "Infrastructure false-positive guard abort, not convergence/model failure",
+  "prior_attempt": "production/jags-long-gate-v1",
+  "prior_outcomes": [
+    {
+      "id": 1,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "1"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98894,
+      "started_utc": "2026-10-31T03:04:13Z",
+      "elapsed_seconds": 701.9074868700045,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 2,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "2"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98951,
+      "started_utc": "2026-10-31T03:04:52Z",
+      "elapsed_seconds": 663.2108447640057,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 3,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "3"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98952,
+      "started_utc": "2026-10-31T03:04:52Z",
+      "elapsed_seconds": 663.2074869810021,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    },
+    {
+      "id": 4,
+      "command": [
+        "/workspace/slot3-runtime/bin/Rscript",
+        "simulation/jags_long_gate.R",
+        "run",
+        "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-long-gate-v1/prepared",
+        "4"
+      ],
+      "state": "cancelled",
+      "returncode": -15,
+      "pid": 98953,
+      "started_utc": "2026-10-31T03:04:52Z",
+      "elapsed_seconds": 663.2044284479998,
+      "ended_utc": "2026-10-31T03:15:55Z",
+      "log_sha256": "e51f7e6ce773fc73687c7102d3340986d4c170d5028d87cb171fddda59cbfcec"
+    }
+  ],
+  "spent_chain_wall_seconds": 2691.530247063012,
+  "remaining_from_original_12000": 9308.469752936988,
+  "recovery_chain_wall_seconds": 2320,
+  "recovery_sampling_process_budget": 9280,
+  "recovery_cleanup_max": 20,
+  "combined_worst_case_chain_wall_seconds": 11991.530247063012,
+  "scientific_plan": "Exactly same1000adapt/14000burn/48000retained; four freshstarts same seeds/inits, no partialresume, no sourcecountgrid. Preserve failedattempt and correlation/dependence.",
+  "namespace": "production/jags-long-gate-recovery-v1",
+  "guard_fix": "RequireR/Rscript/Python interpreter before matching scriptargv; read-only tools withmodelpatharguments ignored.",
+  "limits": "2320s cap is near crude2310s slowestchainprojection, so completionnotguaranteed. No extensionifcap reached; no anotherautomaticretry. No retained draws from abortedattempt available; all4adapted."
+}

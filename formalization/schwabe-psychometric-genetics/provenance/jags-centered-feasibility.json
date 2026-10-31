@@ -1,0 +1,66 @@
+{
+  "created_utc": "2026-10-31T03:14:34.032852+00:00",
+  "status": "Analytical feasibility only. Not a selected next run, approved allocation, implementation, or demonstrated mixing improvement.",
+  "source": {
+    "citation": "Schwabe (2016), Appendix A, printed pp. 131\u2013133 / PDF pages 140\u2013142.",
+    "MZ": "Printed p. 132, lines 34\u201341.",
+    "DZ": "Printed p. 132, lines 58\u201368.",
+    "priors": "Printed p. 133, lines 86\u201392.",
+    "baseline_sha256": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+    "prepared_model_sha256": "65ae9f0cd26e420d4dec7d325cc577f9c70f51251b249c78ce27e810085649cf"
+  },
+  "notation": {
+    "va": "1/ta",
+    "vc": "1/tc",
+    "ve": "exp(beta0)",
+    "rho": "1 for MZ; 1/2 for DZ",
+    "C": "Zero-mean shared environmental effect, one per family.",
+    "A": "Additive genetic effect, shared exactly by MZ cotwins.",
+    "likelihood": "theta_t | A,C ~ Normal(mu+C+A_t, variance exp(beta0+beta1*A_t)); y_tk | theta_t ~ Bernoulli(logistic(theta_t-b_k)). Preserve actual responses and fixed known item difficulties."
+  },
+  "unchanged_priors": [
+    "Independent ta, tc ~ Gamma(shape=1, rate=1). Thus va and vc have inverse-Gamma(shape=1, scale=1) priors, not flat variance priors.",
+    "mu and beta1 ~ Normal(0, variance=10); beta0 ~ Normal(0, variance=1); ve=exp(beta0).",
+    "Do not replace these with priors on total variance, variance proportions, or residual precision."
+  ],
+  "direct_centered_representation": {
+    "C": "C_i ~ Normal(0, vc).",
+    "MZ": "A_i ~ Normal(0, va); define A_i1=A_i2=A_i deterministically. Keep two distinct theta values and both response vectors.",
+    "DZ": "A_i1 ~ Normal(0, va); A_i2 | A_i1 ~ Normal(rho*A_i1, va*(1-rho^2)), with rho=1/2. The second conditional precision is ta/(1-rho^2)=4*ta/3.",
+    "singularity": "Never use the DZ conditional with rho=1: its variance becomes zero. Declare MZ and DZ genetic coordinates separately. MZ genetic dimension is one, not two.",
+    "monitors": "Reassemble the original family order and all a[i,t], c[i], theta[i,t], and p[i,t,k] nodes. Preserve the same fourteen monitored columns, including selected family-1 MZ nodes and derived log variances."
+  },
+  "joint_target_equivalence": {
+    "baseline_map": "C=sqrt(vc)*zc; MZ A=sqrt(va)*za; DZ A1=sqrt(va)*za and A2=sqrt(va)*(rho*za+sqrt(1-rho^2)*zb). Active z coordinates are independent standard normals.",
+    "forward_Jacobian": "J = vc^(N/2) * va^(n_MZ/2+n_DZ) * (1-rho^2)^(n_DZ/2). This is the absolute determinant for active z -> (C,A) coordinates. Including unchanged global parameters makes the full transform block triangular, so parameter dependence adds no further determinant.",
+    "density_identity": "p_centered(C,A,globals,theta,y) = p_noncentered(z(C,A,globals),globals,theta,y) / J. The normal densities and 1/J give exactly the centered C, MZ A, and DZ bivariate normal densities. The substituted theta/item likelihood is identical. The joint target for mapped scientific variables is therefore unchanged.",
+    "unused_MZ_auxiliary": "The baseline also declares an unused standard-normal zb for MZ families because its coefficient is zero. Retain it as an independent auxiliary for an augmented-space bijection, or integrate it out. Removing it is marginalization, not an invertible two-to-one dimensional transformation.",
+    "variance_prior_warning": "If va rather than ta is declared stochastic, the Jacobian |dta/dva|=va^-2 is necessary; likewise for vc. Retaining the original Gamma precision priors avoids this accidental prior change."
+  },
+  "full_conditionals": {
+    "direct_ta": "ta | A,rest ~ Gamma(1+(n_MZ+2*n_DZ)/2, 1+0.5*(sum_MZ A_i^2 + sum_DZ A_i^T R^-1 A_i)), where R^-1=[[1,-rho],[-rho,1]]/(1-rho^2). For 140 MZ and 360 DZ families the shape is 431.",
+    "direct_tc": "tc | C,rest ~ Gamma(1+N/2, 1+0.5*sum_i C_i^2). For N=500 the shape is 251.",
+    "reason": "Conditional on centered A and C, the theta likelihood no longer depends directly on ta or tc. Their remaining factors are Gaussian latent densities and Gamma priors. In the current noncentered representation, A and C depend on ta/tc inside the likelihood.",
+    "limits": "These identities establish conditional conjugacy, not automatic JAGS sampler selection or improved mixing. beta0 and beta1 still enter residual variance exponentially. ve does not gain a Gamma conditional under its unchanged lognormal prior."
+  },
+  "source_F0_representation": {
+    "MZ": "Set C_source=mu+C and F=C_source+A. Then source a=F-C_source and theta has mean F. This translation has unit Jacobian; do not add mu again.",
+    "DZ": "Let U,V1,V2 be independent Normal(0, va/2). Set F0=C_source+U, F_t=F0+V_t, and A_t=U+V_t. Then Var(A_t)=va and Cov(A1,A2)=va/2. Integrating U recovers the direct centered DZ bivariate normal.",
+    "augmentation": "This uses three genetic coordinates to represent two mapped DZ effects. The transform (U,V1,V2)->(U,A1,A2) has unit Jacobian, followed by marginalization over U. It is not a two-to-three dimensional bijection. U | A1,A2 ~ Normal((A1+A2)/3, va/6).",
+    "augmented_ta": "ta | U,V,A_MZ,rest ~ Gamma(1+(n_MZ+3*n_DZ)/2, 1+0.5*sum_MZ A_i^2+sum_DZ(U_i^2+V_i1^2+V_i2^2)). The fixed-case shape is 611. This differs from 431 because of the additional auxiliary variables, not a changed marginal prior.",
+    "tc": "tc | C_source,mu,rest ~ Gamma(1+N/2, 1+0.5*sum_i(C_source_i-mu)^2).",
+    "monitor_mapping": "c_baseline=C_source-mu; a_t=F_t-C_source; theta_t=pheno_t; p=logistic(pheno_t-b). C_source is not the zero-mean c monitor, and F_t is not the genetic a monitor.",
+    "tradeoff": "The F0 construction matches the printed latent factorization but introduces one extra auxiliary coordinate per DZ family. Direct centering is more compact. Neither has a demonstrated mixing advantage."
+  },
+  "validation_required_before_any_implementation": [
+    "Independent algebra review of the Jacobian, auxiliary marginalization, and Gamma full conditionals.",
+    "Compare log joint densities at identical transformed latent/global states, including the parameter-dependent Jacobian, separately for MZ and DZ cases.",
+    "Validate DZ covariance and the F0 conditional analytically and with small nonposterior fixtures; assert MZ genetic equality and unchanged response ordering.",
+    "Preserve the actual prepared dataset, source priors, known b, monitor mappings, and fixed joint diagnostic criteria.",
+    "Define and record valid mapped latent initial states. Changed parameterization changes RNG consumption; identical seeds need not yield identical trajectories or imply new data.",
+    "Inspect actual JAGS sampler assignments if implemented. Conditional conjugacy alone does not establish engine optimization.",
+    "Obtain separate independent code review and a fixed resource plan in a fresh namespace. Do not automatically fall back from the current longer run.",
+    "Evaluate any future benchmark using the same estimands, adaptation records, rank Rhat, ESS per second, MCSE, HPD sensitivity, and all requested failures. Do not report only successful chains or parameters."
+  ],
+  "recommendation": "If the current longer allocation fails, centering is a mathematically justified candidate for a separately reviewed experiment because it restores conditional ta/tc conjugacy while preserving the source target. The current baseline is already noncentered. No evidence yet establishes that centering, source F0 augmentation, or a hybrid improves overall mixing."
+}

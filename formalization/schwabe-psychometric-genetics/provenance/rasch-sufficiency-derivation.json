@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-31T03:15:31.812488+00:00",
+  "kind": "Original conditional analytical extension; potential acceleration, not replicated performance",
+  "source_scope": "Schwabe2016 Chapter2pp19-20 andChapter5pp77-78 known item difficulties with Rasch responses; original sumscore comparator instead rescales totals and uses Gaussian phenotype model.",
+  "canonical_claims": [
+    "H2.IRT-bias-remedy",
+    "C5-1.measurement-bias"
+  ],
+  "assumptions": [
+    "Known fixed finite item difficulties b_j",
+    "Conditionally independent Bernoulli responses with logit p_j=theta-b_j",
+    "All retained observed items and their difficulties/missingness pattern known",
+    "Parameters being inferred occur only through latent theta law; item calibration not estimated"
+  ],
+  "proof": [
+    "For a response vector y with S=sum(y_j), p(y|theta,b)=exp(S*theta-sum(b_j*y_j))/product_j(1+exp(theta-b_j)).",
+    "Let c_s(b) be the coefficient of z^s in product_j(1+exp(-b_j)*z). Summing patterns at fixed S=s gives p(S=s|theta,b)=c_s(b)*exp(s*theta)/product_j(1+exp(theta-b_j)).",
+    "Their ratio exp(-sum(b_j*y_j))/c_S(b) is constant in theta and every latent-model parameter. For multiple people, multiply these constants, integrate the same correlated latent law and multiply the same priors. The normalized posterior on all latent-model quantities is identical.",
+    "Thus exact score-likelihood calculation can preserve the item model, even for non-Gaussian moderated ACE latent laws. This does not justify the dissertation Gaussian/rescaled sumscore comparator and says nothing about its bias.",
+    "If item parameters are inferred, the dropped constants depend on them, so retaining only S generally loses calibration information. With different observed-item masks the corresponding b subset and mask must be retained; missingness ignorability is a separate assumption."
+  ],
+  "possible_next_engine_work": "A custom exact score likelihood could reduce graph size, but denominator stilldepends on every difficulty. No benchmark or implementation here. Need stable coefficient/loglikelihood implementation and independent target/procedure validation before sampling.",
+  "check_script": "simulation/rasch_sufficiency_check.py",
+  "check_output": "outputs/rasch-sufficiency-check.json",
+  "check_output_sha256": "9288ed051a060cc2fc602ca4779dcc1c6616db5c0e038c8ec8b71ccc8376984b",
+  "status": "Ordinary derivation plus80 contrastchecks complete; independent review pending; no sourceclaim markedreplicated and no engine change."
+}

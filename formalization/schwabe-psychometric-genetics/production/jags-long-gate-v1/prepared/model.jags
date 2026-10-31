@@ -1,0 +1,21 @@
+model {mu ~ dnorm(0,.1)
+ ta ~ dgamma(1,1)
+ tc ~ dgamma(1,1)
+ va <- 1/ta
+ vc <- 1/tc
+ beta0 ~ dnorm(0,1)
+ beta1 ~ dnorm(0,.1)
+ ve <- exp(beta0) 
+ for(i in 1:N){ vaf[i] <- va
+ vcf[i] <- vc
+ location[i] <- mu
+ for(t in 1:2){prec[i,t] <- exp(-beta0-beta1*a[i,t])} 
+ zc[i] ~ dnorm(0,1)
+ za[i] ~ dnorm(0,1)
+ zb[i] ~ dnorm(0,1)
+ c[i] <- sqrt(vcf[i])*zc[i]
+ a[i,1] <- sqrt(vaf[i])*za[i]
+ a[i,2] <- sqrt(vaf[i])*(rho[i]*za[i]+sqrt(1-rho[i]*rho[i])*zb[i])
+ for(t in 1:2){theta[i,t] ~ dnorm(location[i]+a[i,t]+c[i],prec[i,t])
+ for(k in 1:J){logit(p[i,t,k]) <- theta[i,t]-b[k]
+ y[i,t,k] ~ dbern(p[i,t,k])} }}}

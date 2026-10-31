@@ -1,0 +1,73 @@
+{
+  "reviewer": "/root/guard_validation; independent ordinary analytical review",
+  "reviewed_utc": "2026-10-31T03:17:03.543105+00:00",
+  "status": "Both notes accepted as target-preserving analytical feasibility arguments under their explicit conditions. No performance or implementation acceptance.",
+  "reviewed_sha256": {
+    "provenance/jags-centered-feasibility.json": "a185004286362705b7fd880ac7593d3c9911994b4650f464b775539cf144ddbd",
+    "provenance/rasch-sufficiency-derivation.json": "415dbd8aa65435320ec9125d1479a3bec9a621860c740df2050448f9ca15b1b8",
+    "simulation/rasch_sufficiency_check.py": "ee52cbed69c1a46babb6b2f7a8dea25bf5885745ddcf00ab7416864272b50a5c",
+    "outputs/rasch-sufficiency-check.json": "9288ed051a060cc2fc602ca4779dcc1c6616db5c0e038c8ec8b71ccc8376984b",
+    "simulation/jags_replication.R": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+    "production/jags-long-gate-v1/prepared/model.jags": "65ae9f0cd26e420d4dec7d325cc577f9c70f51251b249c78ce27e810085649cf"
+  },
+  "source_verification": {
+    "locators": [
+      "Chapter2 pp19-20 known difficulties and standardized sum-score comparator",
+      "Chapter5 pp77-78 simulation known difficulties",
+      "AppendixA pp132-133 MZ/DZ hierarchy and priors, lines34-41,58-68,86-92"
+    ],
+    "finding": "Read source text and the active prepared model. Source known-Rasch settings match the sufficiency premise. AppendixA precision priors, free mean, genetic-effect-dependent environmental variance and latent source factorization match the centering note. Chapter5 has different biometric priors; the specific Gamma conjugacy formulas in this note concern the Chapter2 baseline, not every dissertation model."
+  },
+  "centered_review": {
+    "verdict": "accepted",
+    "checks": [
+      "Active genetic dimensions are n_MZ+2*n_DZ; shared environmental dimension is N. Multiplying the per-family triangular determinants yields vc^(N/2)*va^(n_MZ/2+n_DZ)*(1-rho^2)^(n_DZ/2). With globals retained unchanged, the transformation Jacobian is block triangular even though its latent block depends on the precisions.",
+      "Centered density is noncentered density divided by the forward determinant. MZ has one genetic coordinate; treating rho1 as a nonsingular two-dimensional Gaussian would be invalid. Unused zb is either retained independently or integrated out, exactly as the note states.",
+      "Given centered A,C, the conditional theta likelihood depends on A,C,beta0,beta1,mu but not directly on ta,tc. Original Gamma(1,1) precision priors then give ta shape1+(n_MZ+2*n_DZ)/2 and rate1+quadratic_form/2, and tc shape1+N/2, rate1+sum(C^2)/2. At140MZ,360DZ the shapes431 and251 are correct. Original beta0 normal prior does not yield residual-variance Gamma conjugacy.",
+      "The source translation C_source=mu+C and F=C_source+A has unit Jacobian with mu unchanged. It correctly avoids adding mu twice and keeps genetic A in the residual variance exp(beta0+beta1*A).",
+      "For source DZ augmentation, independent U,V1,V2 each have variance va/2. Their sum coordinates have variance va and covariance va/2. The precision of U conditional on A1,A2 is6/va and its conditional mean is(A1+A2)/3. The transformation retaining U has unit determinant; integrating U recovers the two-dimensional genetic model.",
+      "Augmented ta has dimension n_MZ+3*n_DZ, shape611 and rate1+sum_MZ(A^2)/2+sum_DZ(U^2+V1^2+V2^2). This differs from direct shape431 by auxiliary dimension, without changing the marginal target.",
+      "Changing stochastic variables from precision to variance requires the inverse-square Jacobian and the corresponding inverse-Gamma prior. The note correctly retains source priors and maps c to C_source-mu, not C_source."
+    ],
+    "independent_density_checks": {
+      "fixtures": 4,
+      "description": "Two fixed nonrandom states, each checked in one-dimensional MZ and triangular two-dimensional DZ form using normalized scalar Gaussian densities and the stated Jacobian. No likelihood fit or sampling.",
+      "max_abs_log_density_identity_error": 4.440892098500626e-16
+    },
+    "limits": [
+      "No implemented centered engine has been reviewed. Mapped scientific target equivalence is not trajectory equality, speed, adequate adaptation, improved mixing or convergence.",
+      "Data ordering, actual monitors, initials and sampler assignments still need code-level validation if implemented. No active run should be changed on the strength of this note."
+    ]
+  },
+  "rasch_review": {
+    "verdict": "accepted",
+    "derivation": "Independent check writes t=exp(theta), w_j=exp(-b_j). A response pattern has probability t^s*product(w_j^y_j)/product(1+t*w_j). Summing over all patterns of score s replaces the numerator weight by the elementary symmetric coefficient c_s(w). Thus the pattern-to-score likelihood ratio is product(w_j^y_j)/c_s(w), independent of theta and all latent-only parameters. Product constants remain outside integration over any correlated latent law. With unchanged priors and data masks the normalized posterior on retained latent quantities is identical. Gaussian latent structure is unnecessary for this factorization.",
+    "independent_exact_checks": {
+      "method": "Enumerated every observed-item subset of three rational odds weights1/2,2,3, every binary pattern, and theta odds1/3,1,4 using Fraction arithmetic. Direct pattern summation is independent of the submitted coefficient recursion. Includes empty masks and extreme all-zero/all-one scores.",
+      "pattern_theta_checks": 81,
+      "normalization_and_theta_invariant_ratio": "all exact assertions passed"
+    },
+    "submitted_checks": "Read the80 floating-point contrast checks and five score-PMF normalization checks. Their stated tolerances and maximum errors support their finite fixture; they do not independently establish all-calibration algebra. Source-script and output hashes are bound above.",
+    "limits": [
+      "Known calibration is essential: if b is inferred, the omitted pattern-to-score constant generally depends on b.",
+      "Different item masks require their retained calibrated item subset. This does not establish missingness ignorability or preserve an omitted response-dependent selection likelihood.",
+      "The raw total is sufficient for unit-slope Rasch measurement conditional on fixed calibration, not automatically for unequal OPLM slopes. The notes do not claim that extension.",
+      "Exact discrete score likelihood differs from fitting a rescaled total as a Gaussian phenotype. No claim about comparator bias is changed.",
+      "All latent and deterministic response-probability monitors can be reconstructed, but item-level observed-pattern diagnostics require retaining the original responses.",
+      "Stable score-coefficient computation and posterior engine integration remain unimplemented; no speed, mixing, sampler-selection or convergence result follows."
+    ]
+  },
+  "metadata_checks": {
+    "prepared_model_hash_matches_note": true,
+    "baseline_hash_matches_note": true,
+    "rasch_output_hash_matches_note": true
+  },
+  "operations": {
+    "model_fits": 0,
+    "posterior_samples": 0,
+    "random_fixtures": 0,
+    "running_or_frozen_file_changes": 0,
+    "only_written_repository_file": "provenance/compute-remedies-independent-review.json"
+  },
+  "formalization": "Ordinary mathematical review and bounded independent fixtures; no Lean certification. The accepted analytical progress does not close empirical replication or finite-likelihood uniqueness obligations."
+}
