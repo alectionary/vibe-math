@@ -19,7 +19,10 @@ for(g in seq_len(nrow(grid))){
  baseline<-new.env(parent=globalenv());baseline$commandArgs<-function(...)c(d$ch,d$N,d$J,d$effect,d$difficulty,seed,1000,7000,12000,'unused','.5','items')
  for(e in source[seq_len(boundary-1)])eval(e,baseline)
  s<-env$generate(d$ch,d$N,d$J,d$effect,d$difficulty,seed)
- for(name in c('y','b','theta','ys','nmz'))add(g,paste0('baseline_exact_',name),identical(s[[name]],baseline[[name]]))
+ for(name in c('y','b','ys','nmz'))add(g,paste0('baseline_exact_',name),identical(s[[name]],baseline[[name]]))
+ # Baseline mock commandArgs serializes effect to decimal text; allow only its
+ # floating-point representation difference in latent theta. Observed y remains exact.
+ add(g,'baseline_theta_maxabs_le_1e-14',identical(dimnames(s$theta),dimnames(baseline$theta)) && max(abs(s$theta-baseline$theta))<1e-14)
  all<-matrix(s$y,2*d$N,d$J);dzpairs<-which(baseline$rho==.5)
  dzrows<-c(dzpairs,d$N+dzpairs);scores<-as.vector(s$ys[dzpairs,])
  add(g,'DZscore_index_identity',identical(as.numeric(rowSums(all[dzrows,])),as.numeric(scores)))

@@ -14,7 +14,7 @@ alpha<-function(y){J<-ncol(y);J/(J-1)*(1-sum(apply(y,2,var))/var(rowSums(y)))}
 generate<-function(ch,N,J,effect,difficulty,seed){
  set.seed(seed);nmz<-round(.28*N);rho<-c(rep(1,nmz),rep(.5,N-nmz));M<-rbinom(N,1,.5)
  av<-if(ch==2).5 else .25;cv<-if(ch==2).3 else .25;ev<-if(ch==2).2 else .5
- a1<-rnorm(N,sd=sqrt(av));a2<-rho*a1+sqrt(av*(1-rho^2))*rnorm(N);cc<-rnorm(N,sd=sqrt(cv));aa<-cbind(a1,a2)
+ a1<-rnorm(N,sd=sqrt(av));a2<-rho*a1+sqrt(av*(1-rho^2))*rnorm(N);cc<-rnorm(N,sd=sqrt(cv));aa<-cbind(A1=a1,A2=a2)
  theta<-aa+cc+if(ch==5).7*M else 0
  if(ch==2)theta<-theta+matrix(rnorm(2*N),N,2)*sqrt(ev*exp(effect*aa)) else theta<-theta+matrix(rnorm(2*N,sd=sqrt(ev)),N,2)
  b<-if(ch==2)rnorm(J,difficulty,1)else seq(-3.2,3.2,length.out=J)

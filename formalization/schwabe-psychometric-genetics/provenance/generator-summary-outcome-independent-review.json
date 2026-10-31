@@ -1,0 +1,156 @@
+{
+  "reviewed_utc": "2026-10-31T03:25:36.652493+00:00",
+  "status": "Accepted as completed, independently checked generation-only evidence with unresolved source-estimand ambiguities. Not a nine-claim replication verdict.",
+  "completed_datasets": 2650,
+  "completed_conditions": 19,
+  "posterior_fits": 0,
+  "validation_rows": 194,
+  "validation_all_pass": true,
+  "preflight_changes": "A1/A2 latent column names preserved. Only theta comparison uses1e-14 tolerance for effect serialization; observed y,b,ys,nmz remain exactly equal in all19 first-seed checks. No output-based numerical or seed change.",
+  "independent_checks": [
+    "All2650 distinct seed identities and within-condition replicate sequences match the fixed formula.",
+    "All19condition counts equal their planned100/250 counts; DZ sample sizes match source proportions.",
+    "Recomputed every reported mean, sampleSD, MCSE, empirical quantile, min/max and sign count independently with NumPy/Pandas.",
+    "All per-dataset Joanes\u2013Gill correction identities and estimator extrema agree.",
+    "All19first-seed histograms have correct scores/counts/seeds and reproduce recordedg1 directly from frequencies."
+  ],
+  "maximum_absolute_analysis_discrepancy": 2.220446049250313e-16,
+  "source_claim_assessments": [
+    {
+      "id": "C2-2.design.alpha",
+      "source": 0.9,
+      "conditions": [
+        1,
+        2
+      ],
+      "assessment": "Across-dataset raw-alpha means are about.9080/.9075, rounding to.91 rather than.90. Source aggregation/calibration/subset is unknown; this is a descriptive mismatch, not a definitive failed source-estimand test."
+    },
+    {
+      "id": "C2-3.alpha",
+      "source": 0.92,
+      "conditions": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "assessment": "All12 condition means round to.92. This is rounding agreement of reconstruction means only, not certified reproduction of the unspecified source alpha summary."
+    },
+    {
+      "id": "C5-2.alpha.J60",
+      "source": 0.9,
+      "conditions": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "assessment": "All four raw-alpha means are about.8977\u2013.8979 and round to.90; source aggregation and moderator probability remain incompletely specified."
+    },
+    {
+      "id": "C5-2.alpha.J20",
+      "source": 0.75,
+      "conditions": [
+        19
+      ],
+      "assessment": "Raw-alpha mean about.7382 rounds to.74, not.75. Source raw-versus-standardized definition and aggregation remain unknown; differences require bounded sensitivity checks, not seed selection."
+    },
+    {
+      "id": "C2-2.design.floor_skew_min",
+      "source": 0.63,
+      "conditions": [
+        1
+      ],
+      "assessment": "All three estimators evaluated on each fixed-seed sample. Source endpoint is across estimators for one unknown-seed illustrative dataset, not across replicated datasets. Replicate means/extrema cannot directly reproduce this endpoint; exact illustrative sample remains unavailable."
+    },
+    {
+      "id": "C2-2.design.floor_skew_max",
+      "source": 0.632,
+      "conditions": [
+        1
+      ],
+      "assessment": "All three estimators evaluated on each fixed-seed sample. Source endpoint is across estimators for one unknown-seed illustrative dataset, not across replicated datasets. Replicate means/extrema cannot directly reproduce this endpoint; exact illustrative sample remains unavailable."
+    },
+    {
+      "id": "C2-2.design.ceiling_skew_min",
+      "source": -0.435,
+      "conditions": [
+        2
+      ],
+      "assessment": "All three estimators evaluated on each fixed-seed sample. Source endpoint is across estimators for one unknown-seed illustrative dataset, not across replicated datasets. Replicate means/extrema cannot directly reproduce this endpoint; exact illustrative sample remains unavailable."
+    },
+    {
+      "id": "C2-2.design.ceiling_skew_max",
+      "source": -0.434,
+      "conditions": [
+        2
+      ],
+      "assessment": "All three estimators evaluated on each fixed-seed sample. Source endpoint is across estimators for one unknown-seed illustrative dataset, not across replicated datasets. Replicate means/extrema cannot directly reproduce this endpoint; exact illustrative sample remains unavailable."
+    },
+    {
+      "id": "C2-2.score-distributions",
+      "source": "Slight floor and ceiling DZ score distributions",
+      "conditions": [
+        1,
+        2
+      ],
+      "assessment": "Reconstructed fixed-seed histograms and replicate skew signs support the qualitative directions. This does not reproduce the exact unknown-seed Figure2.1 shape or calibrate the word slight."
+    }
+  ],
+  "limits": [
+    "Replicate MCSE uses independent generated datasets, preserving twin dependence within each dataset. Empirical quantiles describe replicate variability; neither quantity supplies original-source uncertainty.",
+    "The pilot repeats the first fixed seed of every condition and is not an additional19independent observations.",
+    "Four source skew endpoint records share two samples and three deterministically related estimators; they are not four independent replications.",
+    "The19condition means and nine source claims share data/design dependencies.16/19rounded means is not a replication success fraction or multiplicity-adjusted inference.",
+    "No data-generation count is a posterior-fit count. No power, posterior recovery or whole-dissertation completion follows."
+  ],
+  "recommended_bounded_checks_not_started": [
+    {
+      "priority": 1,
+      "check": "Raw versus standardized alpha on identically regenerated saved seeds.",
+      "definition": "Raw alpha uses item covariances; standardized alpha is J*rbar/(1+(J-1)*rbar), using off-diagonal item correlations. They are different estimands.",
+      "bound": "First replay the prespecified first seed in all19conditions as a generation-only pilot after CPUs release. If planned separately, replay the same2650seeds with paired raw/standardized metrics and a fixed600second cap. No new seed search or fitting.",
+      "caution": "Current files lack item covariance matrices, so standardized alpha cannot be recovered from score histograms or existing alpha summaries. Its direction/magnitude must be measured, not assumed to resolve the discrepancy."
+    },
+    {
+      "priority": 2,
+      "check": "Chapter2 fixed versus redrawn item difficulty sensitivity.",
+      "definition": "Redrawn item banks mix between-bank and within-bank variability; a fixed bank conditions on a particular calibration.",
+      "bound": "Use a separately declared bank seed/design and independent response seeds; report all chosen banks and paired summaries. Do not choose a bank whose alpha/skew matches the source.",
+      "caution": "The original fixed bank, if any, is unavailable; this sensitivity cannot recover its exact descriptor."
+    },
+    {
+      "priority": 3,
+      "check": "Moderator-probability assumption, mainly interpretive before further simulation.",
+      "definition": "For family Bernoulli(p) moderator and coefficient.7 with baseline variance1, its marginal variance contribution is.49*p*(1-p); explained fraction=.49*p*(1-p)/(1+.49*p*(1-p)).",
+      "result": "The maximum atp=.5 is.1091314, consistent with the source approximately11percent. Thus p=.5 is substantively motivated, not an arbitrary knob; moving p away lowers this component.",
+      "caution": "Do not tune p to match alpha. An alternative probability requires independent source evidence or an explicitly labeled sensitivity; it cannot be presented as a recovered source choice."
+    }
+  ],
+  "artifact_sha256": {
+    "production/generator-summary-v1/conditions.csv": "4eb76cdc4213972fb0a8099960b6128a1d80daa6d9bd509d44282562025a8749",
+    "production/generator-summary-v1/summaries.csv": "909211a9b24da1b0fff5a98d49a604e84b9e313fe9d9d405da90146ca084ada9",
+    "production/generator-summary-v1/first-replicate-DZ-histograms.csv": "55b14a239a2b6d93cfd2d10ae9842008eb265846b1371d89b4535eae376a58ca",
+    "production/generator-summary-v1/terminal.rds": "b66f40333f0f5175ae9927b29299c6268020c1de71a85b9cfd170ed34c6a43f8",
+    "outputs/generator-summary-validation.csv": "e96331e0f37b51ba2cc5cfa0ef25a6e34d27470034e7ab80c57c42d37ab55019",
+    "outputs/generator-summary-analysis.json": "b9006369ac78b4687ec617931bd4bcd04c2471a471432748ecf8944e3f57578f",
+    "simulation/generator_summary_check.R": "3339ca63639d783830370e001032f13dea62bf0df0f6314bf469f40ab5499124",
+    "simulation/validate_generator_summary.R": "d4d66b46498e1a81486ecb406437641ac7b903d26381d9c7c257b76d1cf704aa",
+    "simulation/analyze_generator_summaries.py": "e92e667deb94966352f4ca48f440f68335cccc3d516f450c6579a93f15a334d9"
+  },
+  "execution": {
+    "terminal_status": "completed",
+    "full_generation_elapsed_seconds": 131.334,
+    "pilot_elapsed_seconds": 0.923,
+    "generation_cap_seconds": 600,
+    "meaning": "Generation wall duration only; no model fitting. Pilot duplicates first fixed seeds and is not additional independent evidence."
+  }
+}
