@@ -1,0 +1,65 @@
+{
+  "reviewer": "/root/guard_validation; independent ordinary mathematical review",
+  "reviewed_utc": "2026-10-31T03:08:43.740011+00:00",
+  "status": "Accepted under explicit assumptions; no mathematical correction required. Conditional population identification only.",
+  "reviewed_sha256": {
+    "provenance/continuous-moderator-identification-check.json": "eaa15f1062a28cb005071397464c806741e1ebcdbb698f66221483ce3a54d623",
+    "simulation/continuous_moderator_identification_check.py": "3ee91eaf39880857abcc9ef6149abefa8d1a81fa7eb723f6c6444e6dc09aa721",
+    "outputs/continuous-moderator-identification-checks.json": "9964ec56d33519ad728c66054cf4758f46fa0aee2d2eaa00532e24f9eb97cc93"
+  },
+  "source_checks": {
+    "locators": [
+      "Chapter5 p72 Eq5.1 and identification/maximum wording",
+      "Chapter5 pp75-76 Eqs5.3-5.15",
+      "Chapter5 p84 shared-family moderator restriction",
+      "AppendixC pp138-139 sign indeterminacy and continuous extension"
+    ],
+    "finding": "Source Gaussian hierarchy and exponential component variances support the assumed common shared-moderator family. The richer possibly disjoint support condition is an explicit new sufficient condition, not a claim that the original empirical dataset has it. AppendixC global sign discussion is not a proof of finite-likelihood uniqueness."
+  },
+  "steps": [
+    {
+      "step": "Conditional law and support",
+      "verdict": "accepted",
+      "review": "Equality of joint observed laws yields equality of finite response-probability vectors outside a null set for each zygosity. Intersect that set with any other full-measure sets on which the stated observation/calibration assumptions supply the moments. The intersection still has full measure and cannot have at most three distinct points under the explicit law condition. Thus at least four distinct points can be chosen from it. No assertion at arbitrary zero-probability conditioning points and no continuity bridge is needed."
+    },
+    {
+      "step": "Recover mu,T,K on equality sets",
+      "verdict": "accepted conditionally on pinned prior lemma",
+      "review": "The earlier independently reviewed positive-slope two-item lemma establishes global identification of Gaussian mean and positive variance from the specified within-person moments. Cross-twin covariance is then strictly identified by the bounded-derivative Gaussian covariance identity. Positive ACE and E imply nonsingular conditional covariance. Required calibrated item moments must be identifiable at the chosen full-measure points; this is a substantive assumption, not guaranteed by observing M alone."
+    },
+    {
+      "step": "Exponential polynomial zero bound",
+      "verdict": "accepted",
+      "review": "Independently checked Rolle induction: division by the smallest exponential leaves all zeros unchanged. For r distinct real exponents with nonzero coefficients, r distinct zeros force r-1 distinct derivative zeros; the derivative has exactly r-1 distinct exponential terms with nonzero coefficients, contradicting the induction bound r-2. Base r1 has no zeros. Grouping coincident slopes and removing zero coefficients before counting correctly handles degeneracies and the identically-zero case. No complex exponents or polynomial multipliers are assumed."
+    },
+    {
+      "step": "Separate global covariance curves",
+      "verdict": "accepted",
+      "review": "A difference of two candidate K curves has at most four exponential terms after grouping. Four distinct equality points per zygosity force each difference to vanish identically. Applying the result separately needs no support overlap. The number four is sufficient, not claimed necessary or minimal. Arbitrarily close or distant design values can make inference poorly conditioned without affecting exact injectivity."
+    },
+    {
+      "step": "ACE and coefficient inversion",
+      "verdict": "accepted",
+      "review": "The global functions A=2(K_MZ-K_DZ) and C=2K_DZ-K_MZ are uniquely recovered even if original A and C exponential slopes coincide; there is no unresolved permutation because both known genetic coefficients are used. At any two distinct points from one equality set, T equality yields E equality. Positivity permits logs, and the two-point affine determinant is nonzero. The same two points determine the mean coefficients. All eight common coefficients are thereby equal."
+    }
+  ],
+  "exact_check_replay": {
+    "all_dependency_hashes_match": true,
+    "checks_passed": 9,
+    "method": "Re-executed the submitted script with only its output write suppressed; all exact assertions passed. Independently checked the general induction and reconstructive proof above; finite fixtures alone are not treated as proof.",
+    "fixture_limits": "Vandermonde checks corroborate finite exponential independence; the rational disjoint example verifies algebra, not a finite-data identification experiment.",
+    "file_mutations": "Only this independent review record created; author outputs and code unchanged.",
+    "model_fits": 0,
+    "numerical_integration": 0,
+    "new_installs": 0
+  },
+  "boundaries_and_limits": [
+    "Binary supports are excluded from this new sufficient condition; the prior overlapping binary-level result remains separate. Failure to meet four points does not by itself prove nonidentification.",
+    "Common exact loglinear A,C,E functions and common affine mean across zygosity are essential to the extrapolation. Arbitrary smooth component functions on disjoint supports need not be identified by this argument.",
+    "Unknown calibration, missing unidentified joint item moments, conditional measurement dependence, noisy or separate-twin moderators, non-Gaussian latent models and ordinal models remain outside the theorem.",
+    "No empirical support/calibration/missingness assumptions have been independently verified by this mathematical argument.",
+    "Population injectivity does not establish finite-sample likelihood existence, at-most-one local/global maximum, posterior uniqueness, practical estimability, power, or sampler convergence. The existing no-finite-MLE all-zero example is not a multiple-maximum witness.",
+    "No Lean formalization or formal-certification claim. This is completed ordinary analytical progress, not closure of the original broad likelihood claim or whole dissertation."
+  ],
+  "recommendation": "Accept this additive conditional population-identification extension. Keep the finite-likelihood maximum obligation unresolved and maintain the source-owned claim wording. No baseline, manuscript or source-inventory changes were made."
+}

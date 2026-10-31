@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-10-31T03:07:09.061745+00:00",
+  "status": "planned before generator outputs; wait until longer-chain batch releases CPU slots",
+  "purpose": "Nine pending reliability/skewness/distribution claims, no posterior inference",
+  "script_sha256": "81c394a7b89108296f500faa8fc0d7a55c882a70fca5f9970f6dd8bbc2829d21",
+  "conditions": "2 floor/ceiling +12 N/effect Chapter2 +5 N/item Chapter5; all source conditions applicable to60/20item reliability statements",
+  "replications": "100 per Chapter2 condition;250 per Chapter5 condition;new fixedseeds910000+1000*condition+replicate",
+  "pilot": "one generated dataset per19conditions; cap60seconds, oneCPU; measure before full generation",
+  "production_cap_seconds": 600,
+  "sampling": "Random item difficulties redrawn per Chapter2 dataset, as baseline; source fixed-versus-redrawn ambiguity remains; Chapter5 fixed equispaced",
+  "skewness": "Three explicit Joanes-Gill estimators on720 DZindividuals in Chapter2 floor/ceiling; source .630-.632 and -.435--.434 compare estimators on illustrative unknown-seed dataset, not replicate min/max",
+  "alpha": "All individualtwins primary; DZ and first-twin sensitivity retained because source subset/aggregation unspecified",
+  "uncertainty": "Across-replicate summaries/quantiles and MCSE diagnostic only; descriptive original single-number comparability limited; do not select seed matching source or invent equivalence margin",
+  "stopping": "Complete fixed generator grid or externalcap; preserve partials and denominator. No fits or automaticlargergrid."
+}
