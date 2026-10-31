@@ -7,7 +7,7 @@ datasets. The whole-dissertation replication remains incomplete. The terminal
 [independent numerical review](provenance/terminal-analysis-independent-review.json)
 support the standalone manuscript below. The current
 [coverage-v4.csv](coverage-v4.csv) and
-[continuation-evidence-packet.json](handoff/continuation-evidence-packet.json) retain all 996 source records,
+[a0-evidence-packet.json](handoff/a0-evidence-packet.json) retain all 996 source records,
 with locators, actual attempts, dependencies and remaining work. These records
 include shared components and are not independent replication counts.
 [coverage.csv](coverage.csv) is the preserved historical 41-group inventory.
@@ -15,10 +15,24 @@ No study PR has been created, and no merge is authorized.
 
 The primary manuscript is
 [whole_dissertation_replication__schwabe_psychometric_genetics.pdf](paper/whole_dissertation_replication__schwabe_psychometric_genetics.pdf).
-Its current standalone editable source is [standalone.tex](paper/standalone.tex), with
+Its current standalone editable source is [a0-standalone.tex](paper/a0-standalone.tex), with
 [references.bib](paper/references.bib). Repository links to `master` in the PDF
 are intended navigation links and await merge. Use the commit-pinned links in
-[delivery-current-v2.json](provenance/delivery-current-v2.json) for the corresponding artifact revision.
+[delivery-a0-v2.json](provenance/delivery-a0-v2.json) for the corresponding artifact revision.
+
+The bounded exact-score pilot is terminal: all four chains adapted, but each saved
+16,000 of the prescribed 28,000 retained draws before the fixed process budget.
+No full diagnostic or posterior-comparison verdict is eligible. It consumed
+6,419.751 chain/cleanup seconds and 6,420.895 all-phase seconds; no retry or
+expansion is authorized. See [score-a0-scientific-evidence.json](handoff/score-a0-scientific-evidence.json)
+and [score-a0-reproduction.md](handoff/score-a0-reproduction.md).
+
+The manuscript's **Published** column states Schwabe's reported claim or value.
+Our replication status and magnitude comparisons are separate. The corrected
+[source-column mapping](handoff/published-column-correction.json) documents all
+21 qualitative/multicomponent source statements and three genuinely unreported
+numerical power differences. “Not established” is not attributed to Schwabe merely
+because our replication is incomplete or no pooled scalar is meaningful.
 
 ## What is established and what remains open
 
@@ -96,7 +110,7 @@ The initial whole-dissertation packet and checking tools are preserved at
 continuation code/results are at `2424e0f4d67929ba72255ef6f546ba2a72c25df0`;
 [current-reproduction.md](handoff/current-reproduction.md) gives exact commands.
 The current manuscript belongs to the separate artifact revision in
-[delivery-current-v2.json](provenance/delivery-current-v2.json).
+[delivery-a0-v2.json](provenance/delivery-a0-v2.json).
 
 ## Prerequisites and local runtime
 
@@ -238,18 +252,14 @@ named in the delivery record. This uses the frozen numerical evidence already
 incorporated into the editable source and does not refit any model:
 
 ```sh
-cd paper
-pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_replication__schwabe_psychometric_genetics standalone.tex
-bibtex whole_dissertation_replication__schwabe_psychometric_genetics
-pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_replication__schwabe_psychometric_genetics standalone.tex
-pdflatex -interaction=nonstopmode -halt-on-error -jobname=whole_dissertation_replication__schwabe_psychometric_genetics standalone.tex
+bash paper/build-a0.sh
+cp paper/a0-main.pdf paper/whole_dissertation_replication__schwabe_psychometric_genetics.pdf
 ```
 
 The main source and bibliography hashes are in
-[current-writer-manifest.json](handoff/current-writer-manifest.json). Rebuilding can change PDF
+[a0-writer-manifest.json](handoff/a0-writer-manifest.json). Rebuilding can change PDF
 metadata and therefore its byte hash; a rebuilt PDF does not inherit an earlier
-exact-byte review automatically. `paper.tex` is the preserved historical
-baseline source, not the current manuscript entry point.
+exact-byte review automatically. `paper.tex` and `standalone.tex` are preserved historical sources; `a0-standalone.tex` is the current entry point.
 
 ## Rebuild the baseline report from saved outputs
 

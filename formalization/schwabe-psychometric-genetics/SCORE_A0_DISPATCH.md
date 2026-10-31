@@ -1,4 +1,6 @@
-# Fixed A0 score-representation pilot: approval required
+# Fixed A0 score-representation pilot: executed once
+
+Execution status: the approved run stopped at its fixed resource ceiling with zero of four complete28,000-draw chains and16,000 saved draws per chain. See `provenance/score-a0-terminal-outcome.json`. The commands below document the frozen historical procedure; they do not authorize another run. No retry or expansion is approved.
 
 This package prepares exactly four new chains on the existing N=500-pair/J=60 dataset. It compares the canonical score representation with the four already reviewed item-likelihood chains. Both use JAGS 4.3.2; this is not an independent-backend check or a contemporaneous speed comparison. No new dataset is generated. No sampling has run from this package.
 

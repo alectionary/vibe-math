@@ -1,0 +1,153 @@
+{
+  "contract_version": 2,
+  "record_type": "rejected_first_page_semantic_review",
+  "reviewer": "independent agent /root/a0_cold_reader",
+  "created_utc": "2026-10-31T15:03:33.112880+00:00",
+  "verdict": "fail",
+  "affected_pdf_sha256": [
+    "ef88d4583c0c3232638e82552dde5a774b0ac58a98f2cb8a50d301768276a4a0",
+    "bb7530a19c0d11db06884206b73be587153b6e37d7e6f87485051cc2c9dfcf49"
+  ],
+  "findings": [
+    {
+      "page": 1,
+      "location": "Published and Ours columns, nonscalar rows",
+      "finding": "The Published cells say not established where the source actually reports a qualitative or multicomponent claim. Absence of a justified scalar aggregate is not absence of the original reported finding. Column heading and cell wording conflate applicability with evidence status; source claims/values must be explicit. Ours cells also need to communicate conditional support versus incomplete replication independently of absent aggregate magnitude."
+    }
+  ],
+  "affected_rows": [
+    {
+      "effect_id": "HE01",
+      "claim_id": "C1.scale-invariance",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Under a common appropriately identified IRT measurement scale, biometric conclusions are asserted to be independent of the particular item subset."
+    },
+    {
+      "effect_id": "HE02",
+      "claim_id": "H2.IRT-bias-remedy",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Incorporating an IRT measurement model remedies the scale-induced interaction bias and recovers generating parameters in the studied designs."
+    },
+    {
+      "effect_id": "HE03",
+      "claim_id": "H2.power-grid",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The proposed method has useful power to detect genotype\u2013environment interaction under the investigated sample-size and effect-size conditions."
+    },
+    {
+      "effect_id": "HE04",
+      "claim_id": "H2.sumscore-artifacts",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Sum-score analysis can produce spurious genotype\u2013environment interaction from measurement-scale properties."
+    },
+    {
+      "effect_id": "HE07",
+      "claim_id": "C4-2.two-dimensions",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The28-item scale measures two distinct dimensions: liberalism\u2013conservatism and use of the question-mark response."
+    },
+    {
+      "effect_id": "HE08",
+      "claim_id": "C4-3.subscale",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Nine selected items constitute the proposed ordinal social-liberalism subscale."
+    },
+    {
+      "effect_id": "HE11",
+      "claim_id": "C4-5.reversal.beta1",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The interaction point-estimate direction changes between IRT and sum-score analyses: beta1"
+    },
+    {
+      "effect_id": "HE12",
+      "claim_id": "C4-5.reversal.gamma1",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The interaction point-estimate direction changes between IRT and sum-score analyses: gamma1"
+    },
+    {
+      "effect_id": "HE13",
+      "claim_id": "C5-1.logvariance-identification",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The alternative logvariance ACE\u00d7M model is asserted to be uniquely identified."
+    },
+    {
+      "effect_id": "HE14",
+      "claim_id": "C5-1.measurement-bias",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Simultaneous IRT and ACE\u00d7M modelling is asserted to prevent spurious moderation arising from heterogeneous measurement error."
+    },
+    {
+      "effect_id": "HE15",
+      "claim_id": "C5-1.one-likelihood-maximum",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The source states the logvariance model has only one maximum in its likelihood function."
+    },
+    {
+      "effect_id": "HE16",
+      "claim_id": "C5-2.power-inference.beta1a",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Large samples are said to be necessary to detect beta1a moderation."
+    },
+    {
+      "effect_id": "HE17",
+      "claim_id": "C5-2.power-inference.beta1c",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Large samples are said to be necessary to detect beta1c moderation."
+    },
+    {
+      "effect_id": "HE18",
+      "claim_id": "C5-3.twenty-sufficient",
+      "comparison_kind": "nonscalar",
+      "source_statement": "As few as20phenotypic items are asserted sufficient to find moderation effects."
+    },
+    {
+      "effect_id": "HE20",
+      "claim_id": "H6.covariate-nondetection",
+      "comparison_kind": "nonscalar",
+      "source_statement": "None of the thirteen measured covariate coefficients was detected in the educational-achievement application using the reported99.6%HPD criterion."
+    },
+    {
+      "effect_id": "HE21",
+      "claim_id": "H6.power-assertion",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The source asserts that full information is more powerful than deletion regardless of the investigated missingness mechanism, covariate count or amount of missingness."
+    },
+    {
+      "effect_id": "HE22",
+      "claim_id": "H6.precision-grid",
+      "comparison_kind": "nonscalar",
+      "source_statement": "Full information gives lower variance-component standard errors than deletion across the investigated missingness mechanisms and design grid."
+    },
+    {
+      "effect_id": "HE23",
+      "claim_id": "C6-1.observed-likelihood",
+      "comparison_kind": "nonscalar",
+      "source_statement": "The full-information model uses all observed phenotype and covariate components when covariate data are incomplete."
+    },
+    {
+      "effect_id": "HE24",
+      "claim_id": "C6-3.MAR-bias.A",
+      "comparison_kind": "nonscalar",
+      "source_statement": "MAR deletion underestimates A variance while full information remains close to the generating value."
+    },
+    {
+      "effect_id": "HE25",
+      "claim_id": "C6-3.MAR-bias.C",
+      "comparison_kind": "nonscalar",
+      "source_statement": "MAR deletion underestimates C variance while full information remains close to the generating value."
+    },
+    {
+      "effect_id": "HE26",
+      "claim_id": "C6-3.MAR-bias.h2",
+      "comparison_kind": "nonscalar",
+      "source_statement": "MAR deletion overestimates heritability while full information remains close to the generating value."
+    }
+  ],
+  "prior_review_correction": "Cold pass did not catch this semantic ambiguity. No final passing review record was saved; attempted final write aborted on changed PDF hash. Any provisional source-column pass is withdrawn. Initial cold record remains historical, pending fidelity, and is not acceptance.",
+  "remaining_required": [
+    "Inspect every corrected Published/Ours row in actual final PDF against source and packet",
+    "Check display/manifest mappings preserve original source findings and separate effect applicability",
+    "Reinspect changed layout and regenerate/review exact URI inventory",
+    "Bind any later acceptance to new final hashes"
+  ]
+}
