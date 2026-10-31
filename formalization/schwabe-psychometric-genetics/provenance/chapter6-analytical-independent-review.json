@@ -1,0 +1,144 @@
+{
+  "reviewer": "Independent mathematical reviewer (/root/production_guards)",
+  "reviewed_utc": "2026-10-31T02:10:40.911306+00:00",
+  "status": "Accepted as four narrow ordinary analytical/kernel-semantics checks after attribution and conditioning corrections; no Lean formalization or empirical/performance certification",
+  "reviewed_artifact": "handoff/chapter6-analytical-evidence.json",
+  "reviewed_sha256": "ac8cd47f7019d1bfa0f5832a44e83fdf1321730bfd49d516b84b615c9b0d56d4",
+  "initial_sha256": "1b5cc5ea3413d99d4e0a636387cabdd562ccf589531eef302d1f8a52d41de22d",
+  "intermediate_sha256": "59a9b9a61b6186fd1d00effc3c3a33da268ed637e45b75d0ab8af0d5b491b0ff",
+  "repository_hashes_verified": {
+    "simulation/chapter6_analytical_check.py": "bb49d6acf62655807ddb0d8e7a34e4adf250bbe730f4d50b0aca0bf0aba9a3f3",
+    "outputs/chapter6-analytical-checks.json": "22dc6760465acda66c5cb48510f89c1664bba9ff494cd2e86c95a938e2801cbb",
+    "outputs/analytic-checks.json": "2625ec01a4e39ef13dcd1fbeefd0350cb3cb2a2881d9b9f19082ed108fd9297d",
+    "simulation/analytic_checks.py": "13bddf959c61b8e7c9aa2e1a5e82f06c86701a8ef41a3f68c04b8a32154c0bdf",
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f"
+  },
+  "source_evidence": {
+    "pdf_path": "/tmp/schwabe-thesis/thesis_I_Schwabe.pdf",
+    "pdf_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+    "text_path": "/tmp/schwabe.txt",
+    "text_sha256": "ae7c5e367f28ab743b9f36b92968181744bf0d73fd490a1492a4a22989b0a8aa",
+    "local_original_R": {
+      "path": "/tmp/schwabe-thesis/full_information_approach.R",
+      "sha256": "3a104fded746f0b0450dab74f17d594cd7240aed54eef4525e95c5b3efa71775",
+      "inspection": "Read covariance algebra only; did not execute its installation/source commands. Original is an OpenMx script corresponding to the Gaussian covariance construction. AppendixG mixed-covariate semantics were checked against dissertation text; no separate original AppendixG file was located in the thesis source bundle.",
+      "redistribution": "No original code copied or published."
+    },
+    "read_and_visually_inspected": [
+      {
+        "printed_page": 89,
+        "pdf_zero_based_page": 97,
+        "evidence": "Rendered Eq6.5 and block orientations inspected; A,C,E variance interpretation and rho given below matrix agree with prose."
+      },
+      {
+        "printed_page": 152,
+        "pdf_zero_based_page": 160,
+        "evidence": "Rendered lines89-129 show shared psi, separateMZ/DZ precision matrices, standardized school-size mean0 and independent twin latent nodes conditional on psi."
+      },
+      {
+        "printed_page": 153,
+        "pdf_zero_based_page": 161,
+        "evidence": "Rendered threshold0 and first binary-link branches checked; literal0.999/0.001 probabilities, not a deterministic observed threshold."
+      },
+      {
+        "printed_page": 154,
+        "pdf_zero_based_page": 162,
+        "evidence": "Remaining binary branches and all four continuous normal-precision100 branches checked; source comment explicitly describes0.01 residual variance."
+      }
+    ],
+    "additional_text_read": [
+      "Printedp88 Eqs6.1-6.2 conditional normal phenotype model and residualACE",
+      "Printedp89 Eqs6.3-6.4 covariate Gaussian block structure",
+      "AppendixG phenotype regression uses observed/imputed X in inprod, rather than exp latent node directly",
+      "Local original full_information_approach.R covariance algebra read only; installation/source commands not executed"
+    ],
+    "redistribution": "No original source code or dissertation pages added to repository. Temporary rendered source pages remain outside repository."
+  },
+  "claim_reviews": [
+    {
+      "claim_id": "C6-1.covariance",
+      "verdict": "accepted under stated assumptions",
+      "reason": "Covariance linearity gives Cov(y,x) from beta and covariate blocks and gives Cov(y1,y2)=rho*A+C+beta^T B beta when residualu is independent of x. With S=W+B and symmetric valid matrices, all transpose orientations match Eq6.5. Equivalently L diag(Sigma_u,Sigma_x) L^T yields the full displayed block matrix. This covariance identity itself needs finite second moments and independence/uncorrelatedness as stated; Gaussianity additionally supplies the distributional/conditional interpretation.",
+      "actual_check": "Independently used already installed SymPy exact rational block matrices for q1..5 and rho1/.5, with nonconstant beta. All10 exact products matched the separate displayed blocks. No model fitting, integration or random draws.",
+      "limits": "Ten finite checks alone do not prove an arbitrary-dimensional theorem; the written linear-transformation derivation supplies the general identity. They do not establish empirical fit, missingness ignorability or parameter recovery."
+    },
+    {
+      "claim_id": "C6-1.borrowing",
+      "verdict": "accepted as conditional-prediction mechanism",
+      "reason": "For fixed known jointly Gaussian moments, completing the square gives the stated conditional mean and Schur-complement covariance. The removed term isPSD. Additional observations subtract their residual cross-covariance quadratic form after conditioning on existing observations. A nonzero residual cross-covariance gives a nonzeroPSD reduction; for vectors it need not be positive definite in every direction. The scalar example has strict reductions.",
+      "independent_exact_values": [
+        "2",
+        "3/2",
+        "12/11",
+        "279/286"
+      ],
+      "independent_route": "Sequential scalar residualization, independent of the submitted general inverse routine: after x2, Cov(x1,y1)=3/4 and Var(y1)=11/8; after addingy1, Cov(x1,y2)=-3/10 and Var(y2)=39/50. Final reduction is(3/10)^2/(39/50)=3/26, giving12/11-3/26=279/286.",
+      "limits": "Conditional uncertainty for a missing value with known moments is not a fitted biometric-parameter standard error. No universal finite-fitSE reduction, power increase or MNAR validity is proved. Marginal correlation alone does not imply incremental information after conditioning."
+    },
+    {
+      "claim_id": "C6-8.binary-link",
+      "verdict": "accepted as literal stochastic-kernel semantics",
+      "reason": "The source gives V=step(L-0) and Bernoulli probability0.999whenV=1,0.001otherwise. Hence E[X|V]=epsilon+(1-2epsilon)V with epsilon1/1000. A conditional Gaussian liability gives P(X=1)=epsilon+(1-2epsilon)Phi(mu/sigma). For distinct conditionally independent observation errors, total covariance yields Cov(X1,X2)=(1-2epsilon)^2 Cov(V1,V2); individual variance also includes conditional Bernoulli variance.",
+      "exact_values": {
+        "epsilon": "1/1000",
+        "success_given_nonnegative_liability": "999/1000",
+        "covariance_multiplier": "249001/250000",
+        "conditional_Bernoulli_variance": "999/1000000",
+        "mu0_marginal_probability": "1/2"
+      },
+      "independent_check": "Direct exact finite-law calculation for a nonsymmetric rational joint distribution of(V1,V2) verified covariance attenuation, supplementing the written total-covariance derivation. The same-variable variance is not incorrectly multiplied without adding observation noise.",
+      "hierarchy_qualification": "Given fixed gamma_cov and positive-definite precision matrices, sharedfamilypsi givesB_z=tau_b_z^-1 and independent twin innovations giveW_z=tau_w_z^-1. The source uses separateMZ/DZ matrices; latent diagonal blocksB_z+W_z and cross-twin blockB_z are conditional statements. Integrating Wishart/mean priors need not yield aGaussian marginal or finite prior-predictive covariances.",
+      "limits": "Threshold0 is not an identification proof for all latent scales. The step convention at0 is immaterial for nondegenerate Gaussianliability probability but the kernel is explicitly stochastic. No convergence, calibration or adequacy ofepsilonapproximation is shown."
+    },
+    {
+      "claim_id": "C6-8.continuous-link",
+      "verdict": "accepted as conditional normal-precision semantics",
+      "reason": "JAGS dnorm second argument is precision:100meansvariance1/100andSD1/10. The literal fourbranches therefore add independent measurement residuals to latent schoolsize. At fixedhyperparameters Var(X)=Var(L)+.01 and off-diagonal covariances are unchanged by independent meanzeroerrors. Unconditional covariance assertions additionally need finite secondmoments; corrected evidence now states this.",
+      "exact_values": {
+        "precision": 100,
+        "added_variance": "1/100",
+        "residual_SD": "1/10"
+      },
+      "scale": "Column2 is standardizedschoolsize and gamma_cov[2]=0, so .01 is on that standardizedscale, not rawstudentcounts.",
+      "limits": "The observed/imputed X enters phenotype regression, and mixedbinary/continuous applicationmodel is not automatically identical to the purelycontinuous jointGaussian Eq6.5 likelihood. No empirical sensitivity study or posterior conclusion follows."
+    }
+  ],
+  "script_review": {
+    "file": "simulation/chapter6_analytical_check.py",
+    "assessment": "New original study code, not upstream dissertation code. Uses standard-library Fraction throughout matrix arithmetic; dimensions and ordering checked. Gauss-Jordan inverse has no rowpivoting, but only the statedpositive-definite conditional submatrices are used, whose elimination pivots are nonzero. It is not claimed as a generic robust inversionlibrary.",
+    "output_match": "Reviewed output records10exactblocktests, four conditionalvariances, binarychannel constants and precisionconversion; independently reconstructedvalues agree. Script/output hashes match evidence and output script_sha256 matches actualscript.",
+    "execution_by_reviewer": "Did not execute the submitted script to overwrite its outputs. Independently recomputed the algebra in a bounded inline exact-arithmetic check using Fraction/SymPy; approximately0.3second toolrun."
+  },
+  "findings_and_corrections": [
+    {
+      "finding": "Phrases Original rational-arithmetic script / Original exact rational calculation could be mistaken for original dissertation code.",
+      "resolution": "Root changed attribution to Our exact-arithmetic check / our independently authored check; final evidence read back."
+    },
+    {
+      "finding": "UnqualifiedGaussianhierarchy wording could imply commonMZ/DZ matrices or aGaussian prior-predictive marginal.",
+      "resolution": "Root explicitly conditioned on fixedgamma/zygosity-specificprecisionmatrices and excludedGaussianmarginalclaims after integratingpriors."
+    },
+    {
+      "finding": "Marginalvarianceaddition needed fixedhyperparameter or finite-unconditional-moment qualification.",
+      "resolution": "Root explicitly added fixedhyperparameters and finite-second-moment requirement; finalac8cd47f...record read back."
+    }
+  ],
+  "actual_checks": {
+    "input_hashes": "All current repository/source-text/local-original hashes verified; PDFhash independently checked.",
+    "independent_exact_block_cases": 10,
+    "conditional_variance_sequence_verified": true,
+    "binary_channel_covariance_verified": true,
+    "precision_to_variance_and_SD_verified": true,
+    "sympy_version": "1.14.0",
+    "new_model_fits": 0,
+    "new_chains": 0,
+    "random_samples": 0,
+    "numerical_integration": 0,
+    "installs": 0,
+    "network": 0,
+    "git": 0,
+    "manuscript_or_production_changes": 0
+  },
+  "remaining_failures": [],
+  "formalization_and_scope": "Accepted ordinary algebra and literal model-kernel semantics, not a Lean formalization or machine-checked proofbridge. The analytical checks have no MonteCarlo uncertainty; source decimal rounding is separate. No universal parameterSE/power result, empirical replication, sourceposteriorconvergence, or whole-dissertation completion is certified. Activechainprocesses were not started, altered or interrupted."
+}

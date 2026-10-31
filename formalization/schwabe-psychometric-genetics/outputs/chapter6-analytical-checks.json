@@ -1,0 +1,84 @@
+{
+  "covariance_exact_tests": [
+    {
+      "q": 1,
+      "rho": "1",
+      "exact_block_identity": true
+    },
+    {
+      "q": 1,
+      "rho": "1/2",
+      "exact_block_identity": true
+    },
+    {
+      "q": 2,
+      "rho": "1",
+      "exact_block_identity": true
+    },
+    {
+      "q": 2,
+      "rho": "1/2",
+      "exact_block_identity": true
+    },
+    {
+      "q": 3,
+      "rho": "1",
+      "exact_block_identity": true
+    },
+    {
+      "q": 3,
+      "rho": "1/2",
+      "exact_block_identity": true
+    },
+    {
+      "q": 4,
+      "rho": "1",
+      "exact_block_identity": true
+    },
+    {
+      "q": 4,
+      "rho": "1/2",
+      "exact_block_identity": true
+    },
+    {
+      "q": 5,
+      "rho": "1",
+      "exact_block_identity": true
+    },
+    {
+      "q": 5,
+      "rho": "1/2",
+      "exact_block_identity": true
+    }
+  ],
+  "borrowing_example": {
+    "order": [
+      "prior",
+      "co-twin covariate",
+      "plus own phenotype",
+      "plus co-twin phenotype"
+    ],
+    "conditional_variances": [
+      "2",
+      "3/2",
+      "12/11",
+      "279/286"
+    ],
+    "strict_reduction": true
+  },
+  "binary_link": {
+    "epsilon": "1/1000",
+    "P_X1_given_liability_below_threshold": "1/1000",
+    "P_X1_given_liability_at_or_above_threshold": "999/1000",
+    "symmetric_gaussian_marginal_probability": "1/2",
+    "threshold_covariance_multiplier": "249001/250000",
+    "conditional_Bernoulli_variance": "999/1000000"
+  },
+  "continuous_link": {
+    "precision": 100,
+    "added_variance": "1/100",
+    "residual_SD": "1/10"
+  },
+  "method": "Exact rational arithmetic; ten covariance designs and one conditional-variance example; no random samples, numerical integration, model fitting or chain execution",
+  "script_sha256": "bb49d6acf62655807ddb0d8e7a34e4adf250bbe730f4d50b0aca0bf0aba9a3f3"
+}
