@@ -1,17 +1,26 @@
 # Schwabe (2016): whole-dissertation replication checkpoint
 
-This study covers **the entire dissertation**, not a selected table. The current
-result is an incomplete replication checkpoint. [coverage.csv](coverage.csv)
+This study covers **the entire dissertation**, not a selected table. Chapter 6's
+planned 96,000 method fits are complete, with zero guard-invalid fits or failed
+datasets. The whole-dissertation replication remains incomplete. The terminal
+[analysis](production/chapter6-v1/terminal-analysis/summary.json) and
+[independent numerical review](provenance/terminal-analysis-independent-review.json)
+are separate from the manuscript below, which still describes the earlier
+20-repetition analysis and is awaiting replacement and fresh rendered review.
+[coverage.csv](coverage.csv)
 tracks 41 original empirical, numerical, analytical and software result groups,
-with source locators, actual attempts, dependencies and remaining work. A draft
-PR is a review milestone, not completion or approval to merge.
+with source locators, actual attempts, dependencies and remaining work. The full
+996-record source inventory is in
+[claim-specification-applicability.json](handoff/claim-specification-applicability.json);
+these records include shared components and are not independent replication counts.
+No study PR has been created, and no merge is authorized.
 
 The primary manuscript is
 [whole_dissertation_replication__schwabe_psychometric_genetics.pdf](paper/whole_dissertation_replication__schwabe_psychometric_genetics.pdf).
 Its editable source is [paper.tex](paper/paper.tex), with
 [references.bib](paper/references.bib). Repository links to `master` in the PDF
 are intended navigation links and await merge. Use the commit-pinned links in
-the PR/delivery record for this draft.
+the delivery record for the corresponding artifact revision.
 
 ## What is established and what remains open
 
@@ -24,8 +33,9 @@ those refits. The curvilinear simulation lacks a recoverable design/driver.
 
 Short JAGS chains are resource and execution diagnostics, **not convergence,
 power, or table-replication evidence**. Full-length Chapter2 fits are separate
-from the short grid. Chapter6 runs are a smaller Monte Carlo checkpoint than the
-original1000 repetitions per condition. Full production targets stay open.
+from the short grid. Chapter 6 now has 1,000 datasets in each of 36 primary
+conditions and 12 additional 3% missingness sensitivity conditions, with both
+methods fitted to each dataset. Chapters 2–5's full Bayesian targets remain open.
 Independent scientific and rendered-manuscript reviews are recorded in
 [provenance/review.json](provenance/review.json), including initial findings and
 final artifact hashes. Review does not close unfinished replication items.
@@ -64,9 +74,13 @@ baseline revision above does not contain all of them:
   and dated production evidence:
   `6b4e010302a4c916b46153476df4c1e6c80957e1`.
 
-These identify available code and saved evidence, not completed production or a
-passed Bayesian gate. Use a separate checkout when replaying commands that write
-outputs. The existing manuscript still describes the preserved baseline.
+The terminal Chapter 6 analysis is saved at
+`a9e7bd4a70cfa3a40f89d3525efd0dd98a5f033a`; its
+[reproduction recipe](handoff/terminal-reproduction.md) and
+[remote-byte verification](provenance/terminal-analysis-publication.json) are
+available. This is distinct from a passed Bayesian diagnostic or a reviewed new
+manuscript. Use a separate checkout when replaying commands that write outputs.
+The existing manuscript still describes the preserved baseline.
 
 ## Prerequisites and local runtime
 

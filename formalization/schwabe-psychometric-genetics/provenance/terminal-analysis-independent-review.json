@@ -1,0 +1,122 @@
+{
+  "reviewed_utc": "2026-10-31T02:01:23.909841+00:00",
+  "scope": "Independent terminal arithmetic and scientific-interpretation review; no model fits, no manuscript/editorial approval.",
+  "result": "accepted_with_explicit_scientific_limits",
+  "checks": {
+    "raw_parameter_rows": 720000,
+    "unique_datasets": 48000,
+    "method_fits": 96000,
+    "baseline_replay_datasets": 960,
+    "new_datasets": 47040,
+    "parameter_groups_recomputed": 720,
+    "paired_contrasts_recomputed": 288,
+    "primary_adjusted_positive": 108,
+    "source_comparisons_recomputed": 504,
+    "source_conditional_outside": {
+      "se": 216,
+      "path_se": 20,
+      "estimate": 2
+    },
+    "MAR_bias_recomputed": 72,
+    "MAR_point_reversals": 11,
+    "MAR_reversals_adjusted_excluding_zero": 0,
+    "mapped_unique_source_ids": 408
+  },
+  "analysis_snapshot_sha256": "725ef2ff7f95a4d9967fefec1ea956844680bd09a1419d761bc0c12b662bb585",
+  "analysis_file_sha256": {
+    "summary.json": "f0395ef513661c32f25b50ce4693f5b4281ae3df84cb8c4946a22ed12def128e",
+    "condition-summary.csv": "b50384f6c7c34fa51be4014e3eb307977bcd9aaad54ba49d1dedc5e92c790f6c",
+    "signed-SE-contrasts.csv": "abc538715dab7dc504dc4fd7b0e7d96d43f3ff3e28cd1b8d113f4b4ba10ec519",
+    "source-comparisons.csv": "60ed71d11e2c379930115ed8f49904d39dada97eea0f475d0abd48be18c457d8",
+    "signed-bias-contrasts.csv": "e2323b15f2dec4f6ac1b0883c522c8e097d0a9dadce8753c3a3b2bcf068b9a4a",
+    "provenance.json": "aa66f684327bb467e5d15f9a91f5b86f917ca5af921ea45d0974601b5a81c83e"
+  },
+  "input_sha256": {
+    "production/chapter6-v1/reports/guarded-trials.csv.gz": "d49634df4bd8a94bda2006c0fa6f969c8e60a81ba01858e724a6901a084be9a9",
+    "production/chapter6-v1/reports/checkpoint-ledger.jsonl.gz": "02a17ec766140a18691eaa536b27725f5a0bf42dfef8926bc5276de0e5e581b5",
+    "production/chapter6-v1/reports/condition-counts.csv": "33e13427fca106730b9852b84bb66c377411b34548103fc1c25b1cb46189dc6f",
+    "outputs/source-figure-values.csv": "84ac71c9222f9a0868e5b9da4d6dfe7c3ed4fa7f199be9e249a53003375c41a7",
+    "production/analysis-plan.json": "d8112ba65868f54035f5258c560821080e4d3588e6b9dfe01e8a7894f2f2fa1a",
+    "handoff/chapter6-result-mapping.json": "73cd7045ab4893e99ec66cab909f973fb7171f4f9fbececde96e44c4a8d86c22",
+    "simulation/analyze_production.py": "fc26fcd51aac29358b2865db209fd16b1421841fe72bccd9b356d651d34ae518",
+    "simulation/build_production_report.py": "6cc15c120e618700b7bc0c64cd5e041b1a6224709a031accc165131c848694b5",
+    "handoff/map_chapter6_results.py": "901d206bea30bedce702165da74b765a7d8b7dfe95fc0547f2ccd2d35b664259",
+    "handoff/claim-specification.json": "ec7aa73921f52679df57abdc29a5e5906ffbd78a306a7d2ddebe2b2bb8df356f",
+    "provenance/chapter6-heritability-estimand-audit.json": "303f814d66be67d0f1ea334aca679860bdf4163b4e32dd7ac1a19789f64aea1d",
+    "provenance/extraction-tolerance-timing-audit.json": "b384fe7fc6d6fbc37e51330e50ccbc07d03d1a312dc97d48096f6715b1cff08b",
+    "provenance/chapter6-terminal-process-audit.json": "a5f1959b4dacb8ed893b0ebcb7632ae262270efbc7dcfa3a86072244d257fb89"
+  },
+  "findings": [
+    {
+      "severity": "none",
+      "conclusion": "Terminal numerical outputs and mapped rows accepted within the declared simulation and estimands. No arithmetic or source-field mapping correction required."
+    },
+    {
+      "severity": "minor_wording",
+      "location": "production/chapter6-v1/terminal-analysis/summary.json:interpretation",
+      "finding": "The retained phrase Interim fixed-n descriptive intervals is stale at the terminal 1000-dataset target. Final narrative should call these fixed-target terminal intervals; frozen output need not be edited."
+    },
+    {
+      "severity": "interpretation_required",
+      "finding": "Two of 72 MAR source-estimate comparisons are conditionally outside their bands: q5 low-missingness deletion C and residual h2. Both are specifically exposed to the methods2%/plot3% source ambiguity as well as unknown source Monte Carlo uncertainty; neither is unconditional evidence of source error."
+    }
+  ],
+  "limits": [
+    "All 96,000 fits passed the frozen guards. This verifies the planned Chapter6 simulation attempt, not all dissertation claims, universal optimizer correctness, or whole-dissertation success.",
+    "108 primary paired variance-SE contrasts are strictly positive after Bonferroni adjustment within that prespecified family. They support lower mean estimated variance-component SE for full information in this grid, not directly measured rejection power, efficiency under all populations, or exact constancy across conditions.",
+    "216/216 variance-SE source deviations exclude zero only conditionally on extracted source points and their geometric bounds. Source Monte Carlo uncertainty, seeds and exact implementation remain unknown. These are not full two-sample replication tests, equivalence tests or rounding failures.",
+    "Path SE = variance SE / (2 sqrt(estimated variance)) is an explicitly different estimand. Its 20/216 conditional deviations suggest a possible source labeling/procedure explanation but cannot prove it or replace the printed variance-SE targets.",
+    "MAR bias is estimate minus generating truth; residual h2 truth .5 uses A/(A+C+E), not A/1.64. Eleven opposite point signs have zero adjusted ours intervals excluding zero. They do not establish meaningful sign reversals of a source scientific conclusion, nor prove unbiasedness.",
+    "Primary low-missingness comparisons implement methods/captions 2%; plots and some prose say3%. The separate3% sensitivity family does not resolve that ambiguity or authorize favorable selection between them.",
+    "Bonferroni families are separate: primary paired108, sensitivity36, path108/36, source variance216, path216, MARsource72 and MARbias72. No familywise95% coverage claim across all these families jointly is justified.",
+    "Extraction bounds encode a geometric reading tolerance, not source sampling error, printed precision or a scientific equivalence margin. Analysis plan was recorded during production before new production effect summaries, after the known20-replicate baseline; do not call it fully prospectively preregistered.",
+    "Mapped parent/child references share rows and are not independent replications or a success-count denominator. Empirical-data, power and nonquantified claims remain unadjudicated by this simulation mapping.",
+    "No manuscript exists for this review; scientific acceptance here is limited to terminal numeric outputs and interpretation constraints, not editorial or rendered-PDF acceptance."
+  ],
+  "mapping_checks": {
+    "mapped_row_occurrences": {
+      "source-comparisons.csv": 504,
+      "signed-SE-contrasts.csv": 504,
+      "condition-summary.csv": 916,
+      "signed-bias-contrasts.csv": 72
+    },
+    "unique_mapped_rows": {
+      "source-comparisons.csv": 504,
+      "signed-SE-contrasts.csv": 288,
+      "condition-summary.csv": 656,
+      "signed-bias-contrasts.csv": 72
+    },
+    "all_source_fields_preserved": true,
+    "all_frozen_input_hashes_verified": true
+  },
+  "verification_script": {
+    "path": "provenance/verify-terminal-analysis-independent.py",
+    "sha256": "d603e0bdf7739a74cc20751dbf6704f0d5c9e66f4b41ceb84d705fca2c37fa05",
+    "command": "OPENBLAS_NUM_THREADS=1 python provenance/verify-terminal-analysis-independent.py",
+    "method": "Independent NumPy/SciPy arithmetic from raw guarded rows; no import or execution of frozen analyzer, report builder or mapper. The two script sections were executed separately before assembly; no model fits."
+  },
+  "representative_checks": {
+    "MCAR_q2_m02_A_paired_variance_SE": {
+      "deletion_minus_full": 0.0015023487385430788,
+      "MCSE": 2.230934572786964e-05,
+      "adjusted108_interval": [
+        0.0014239766609276544,
+        0.0015807208161585033
+      ]
+    },
+    "MCAR_q2_m10_deletion_A_source_comparison": {
+      "source": 0.050477295572105285,
+      "ours_variance_SE": 0.07085674950056953,
+      "conditional_adjusted216_interval": [
+        0.019811355831390647,
+        0.020947552025537837
+      ],
+      "exploratory_path_SE": 0.05048307002832803
+    }
+  },
+  "source_checks": [
+    "source-local/schwabe.txt Chapter6 Fig6.3 caption: SE of squared variance components and2%,6%,10%; plotted low label3% separately retained.",
+    "Chapter6 discussion pp101\u2013102: lower SE and power assertions are distinct; the present simulation does not perform rejection-power trials.",
+    "provenance/chapter6-heritability-estimand-audit.json: residual h2 definition sourcep93."
+  ]
+}

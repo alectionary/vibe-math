@@ -1,6 +1,6 @@
 {
   "record_kind": "timestamped production monitor snapshot; not automatically live",
-  "observed_utc": "2026-10-31T01:58:55.640952+00:00",
+  "observed_utc": "2026-10-31T02:08:57.429074+00:00",
   "status": "production complete; terminal analysis complete; independent review and bounded Bayesian gate running",
   "total_target_method_fits": 96000,
   "completed_method_fits_including_preserved_baseline": 96000,
@@ -12,7 +12,7 @@
   "supervisor_pid": 23297,
   "supervisor_process": "Exited normally; zero active production workers independently checked",
   "publication_failure": false,
-  "most_recent_remote_head_at_observation": "b476c391c56ad9050cfb58d99f185dead827ef63",
+  "most_recent_remote_head_at_observation": "a9e7bd4a70cfa3a40f89d3525efd0dd98a5f033a",
   "recent_throughput_fits_per_second": 3.5993359158826785,
   "throughput_window_seconds": 1807.0,
   "production_finish_estimate_utc": null,
@@ -28,5 +28,30 @@
   "actual_supervision_elapsed_seconds": 25756.392079728,
   "terminal_analysis_snapshot_sha256": "725ef2ff7f95a4d9967fefec1ea956844680bd09a1419d761bc0c12b662bb585",
   "terminal_analysis": "production/chapter6-v1/terminal-analysis",
-  "whole_dissertation_complete": false
+  "whole_dissertation_complete": false,
+  "terminal_analysis_review": "provenance/terminal-analysis-independent-review.json",
+  "terminal_analysis_review_sha256": "0d3d7a6a7a4ace7dafd71c3455934ac4a4e7cc4e3ec3b25daa91bbadd82452fe",
+  "proposed_contract_integration": "provenance/proposed-validator-integration-check.json",
+  "bayesian_gate": {
+    "namespace": "production/jags-gate-v1",
+    "status": "four fixed chains running; no convergence result yet",
+    "dispatcher_session": 38768,
+    "requested_chains": 4,
+    "per_chain_wall_limit_seconds": 1800,
+    "batch_worker_seconds": 7200,
+    "source_dataset": "N500,J60,seed301",
+    "scope": "One dataset convergence diagnostic, not 100-dataset production",
+    "scheduling": "Four chains released after measured adaptation-stage RSS199405568bytes and headroom check"
+  },
+  "scientific_summary": {
+    "primary_variance_SE_gains_positive_after_adjustment": 108,
+    "primary_variance_SE_contrasts": 108,
+    "literal_source_variance_SE_outside_conditional_band": 216,
+    "source_variance_SE_comparisons": 216,
+    "exploratory_path_SE_outside_conditional_band": 20,
+    "MAR_point_sign_reversals": 11,
+    "MAR_sign_reversals_excluding_zero_after_adjustment": 0,
+    "MAR_source_estimate_deviations_outside_conditional_band": 2,
+    "caveat": "Both MAR source deviations are low-missingness ambiguous conditions. Unknown original MC error remains; path SE is a different estimand. Numeric mismatches do not resolve original SE implementation."
+  }
 }
