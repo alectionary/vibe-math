@@ -77,3 +77,7 @@ Negative fixtures include correct numbers with a buried verdict and a verdict-fi
 abstract that depends on a previous draft. Those must fail editorial acceptance;
 word searches alone cannot decide their scientific meaning. Historical helper
 APIs remain available through an explicit legacy audit, not a default bypass.
+
+For nonscalar headlines or unresolved scalar comparisons without a justified
+tolerance, follow the explicit comparison-applicability extension in [first-page contract](first-page-contract.md). Preserve all component evidence and keep the scientific claim verdict separate
+from an unestablished scalar magnitude. Never invent a numeric margin.

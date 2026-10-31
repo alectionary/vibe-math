@@ -52,7 +52,78 @@ def tolerance(row):
     return dec(t['value'])
 
 
+def signed_direction(row):
+    if not all(number(row.get(k)) for k in ('published_effect', 'ours_effect')):
+        return 'not established'
+    source, ours = dec(row['published_effect']), dec(row['ours_effect'])
+    sign = lambda v: (v > 0) - (v < 0)
+    return 'same direction' if sign(source) == sign(ours) else 'reversed direction' if source*ours < 0 else 'zero vs nonzero'
+
+
+def applicability_errors(row, claim=None, claims=None):
+    """Exceptions are explicit evidence contracts, never inferred from null values."""
+    mode = row.get('comparison_kind', 'scalar')
+    if mode == 'scalar':
+        return []
+    errors = []
+    if mode not in ('nonscalar', 'scalar_unestablished'):
+        return ['invalid comparison_kind']
+    if not text(row.get('applicability_reason')):
+        errors.append('applicability_reason required')
+    t = row.get('tolerance')
+    kind = 'not_applicable' if mode == 'nonscalar' else 'unestablished'
+    if not isinstance(t, dict) or t.get('kind') != kind or t.get('value') is not None or not text(t.get('basis')):
+        errors.append('explicit '+kind+' null tolerance and basis required')
+    if row.get('estimate_status') != 'unresolved':
+        errors.append('exception requires unresolved magnitude status')
+    expected_direction = signed_direction(row) if mode == 'scalar_unestablished' else 'not established'
+    if row.get('magnitude') != 'not established' or row.get('direction') != expected_direction:
+        errors.append('exception magnitude must be not established and direction must retain available signs')
+    if mode == 'nonscalar':
+        if any(row.get(k) is not None for k in ('published_effect', 'ours_effect', 'contrast_index', 'display_decimals')):
+            errors.append('nonscalar row cannot contain scalar effects, precision or contrast index')
+        if claim is not None:
+            if claim.get('comparison_kind') != 'nonscalar':
+                errors.append('nonscalar applicability must be declared on the source claim')
+            refs = row.get('component_claim_ids')
+            expected = claim.get('component_claim_ids', [])
+            if not isinstance(expected, list) or not all(text(x) for x in expected):
+                errors.append('invalid source component_claim_ids'); expected = []
+            if not isinstance(refs, list) or not all(text(x) for x in refs) or len(set(refs)) != len(refs) or set(refs) != set(expected):
+                errors.append('preserve complete component_claim_ids')
+            elif any(x not in claims or x == claim.get('id') for x in refs):
+                errors.append('component claim reference missing or self-referential')
+            contrasts = claim.get('contrasts', [])
+            if not isinstance(contrasts, list):
+                errors.append('invalid source contrasts'); contrasts = []
+            if len(contrasts) == 1 and isinstance(contrasts[0], dict) and any(number(contrasts[0].get(k)) for k in ('published', 'ours')):
+                errors.append('single numeric contrast requires scalar comparison')
+            indices = row.get('component_contrast_indices')
+            if not isinstance(indices, list) or any(type(x) is not int for x in indices) or sorted(indices) != list(range(len(contrasts))):
+                errors.append('preserve every parent contrast in component_contrast_indices')
+            if not contrasts and not text(claim.get('contrast_not_applicable')):
+                errors.append('nonscalar claim needs contrast_not_applicable rationale')
+    else:
+        idx = row.get('contrast_index')
+        source_contrasts = claim.get('contrasts', []) if claim else []
+        component_declared = (type(idx) is int and isinstance(source_contrasts, list) and 0 <= idx < len(source_contrasts) and isinstance(source_contrasts[idx], dict) and source_contrasts[idx].get('comparison_kind') == 'scalar_unestablished')
+        if type(idx) is int and isinstance(source_contrasts, list) and 0 <= idx < len(source_contrasts) and isinstance(source_contrasts[idx], dict):
+            retained_tolerance = source_contrasts[idx].get('tolerance')
+            if isinstance(retained_tolerance, dict) and number(retained_tolerance.get('value')):
+                errors.append('cannot discard retained numeric component tolerance')
+        if claim is not None and claim.get('comparison_kind') != 'scalar_unestablished' and not component_declared:
+            errors.append('unestablished tolerance must be declared on the source claim')
+        if type(row.get('contrast_index')) is not int:
+            errors.append('unestablished scalar requires a defined contrast index')
+    return errors
+
+
 def comparison(row):
+    if row.get('comparison_kind', 'scalar') != 'scalar':
+        errors = applicability_errors(row)
+        if errors:
+            raise ValueError('; '.join(errors))
+        return 'not established', signed_direction(row) if row['comparison_kind'] == 'scalar_unestablished' else 'not established'
     tol = tolerance(row)
     if not all(number(row.get(k)) for k in ('published_effect','ours_effect')):
         return 'not established', 'not established'
@@ -100,6 +171,7 @@ def packet_errors(packet):
             errors.append(label+': headline claim reference required')
         else:
             covered.add(claim_id)
+        errors.extend(label+': '+e for e in applicability_errors(row, claim, claims))
         for key in ('estimand', 'units', 'positive_means', 'uncertainty_statement'):
             if not text(row.get(key)):
                 errors.append(label+': missing '+key)
@@ -124,7 +196,26 @@ def packet_errors(packet):
                     errors.append(label+': inconsistent with source contrast '+a)
         elif idx is not None or state == 'resolved':
             errors.append(label+': valid scientific contrast_index required')
-        if type(row.get('display_decimals')) is not int or not 0 <= row['display_decimals'] <= 15:
+        if row.get('comparison_kind') == 'nonscalar' and claim:
+            # Component comparisons are evidence-only: do not force a whole grid
+            # into the first-page table or silently turn it into an aggregate.
+            components = row.get('component_comparisons', [])
+            contrasts = claim.get('contrasts', [])
+            if not isinstance(contrasts, list):
+                contrasts = []
+            if not isinstance(components, list) or not all(isinstance(c, dict) for c in components):
+                errors.append(label+': component_comparisons must be objects')
+            else:
+                indices = [c.get('contrast_index') for c in components]
+                if any(type(i) is not int for i in indices) or sorted(indices) != list(range(len(contrasts))):
+                    errors.append(label+': component comparisons must cover all parent contrasts exactly once')
+                elif components:
+                    if any(c.get('comparison_kind', 'scalar') == 'nonscalar' or c.get('claim_id') != claim_id for c in components):
+                        errors.append(label+': components must be scalar comparisons of this parent')
+                    else:
+                        component_packet = dict(packet, claims=[claim], headline_effects=components)
+                        errors.extend(label+' component: '+e for e in packet_errors(component_packet))
+        if (row.get('comparison_kind', 'scalar') == 'scalar' or any(number(row.get(k)) for k in ('published_effect', 'ours_effect'))) and (type(row.get('display_decimals')) is not int or not 0 <= row['display_decimals'] <= 15):
             errors.append(label+': display_decimals required')
         try:
             expected, direction = comparison(row)
@@ -200,7 +291,14 @@ def display_errors(effect, view, table_rect, region, row_rect=None):
         if cell('direction_bbox') not in aliases[effect['direction']]:
             errors.append(label+': direction cell does not show computed signed direction')
         values=[effect['published_effect'],effect['ours_effect']]
-        if not all(number(v) for v in values):return errors
+        if not any(number(v) for v in values):return errors
+        if not all(number(v) for v in values):
+            if view.get('form') != 'signed':
+                raise ValueError('partial scalar evidence requires signed display')
+            tokens = [re.escape(display(v, effect['display_decimals'])) for v in values]
+            if not bare_sequence(r'(?<![\w.+*/%-])'+r'\s+'.join(tokens)+r'(?![\w.])', cell('values_bbox')):
+                errors.append(label+': partial scalar values do not match evidence')
+            return errors
         places=view['decimals']
         if not isinstance(places,list) or len(places)!=2 or not all(type(p) is int and 0<=p<=15 for p in places):
             raise ValueError('two display precisions required')
@@ -299,6 +397,17 @@ def check_data(packet, writer, source, pdf_path, editorial_checks):
                     errors.append('first-page '+effect['id']+': effect units absent from table')
                 if not table_rect.contains(rect):
                     errors.append('first-page: row lies outside table region')
+                exceptional = effect.get('comparison_kind', 'scalar') != 'scalar'
+                if exceptional:
+                    explanation = row.get('applicability_text')
+                    if not text(explanation) or norm(explanation) not in rendered or norm(explanation) not in source_plain(source):
+                        errors.append('first-page '+effect['id']+': applicability explanation missing from source/rendered row')
+                    if 'not established' not in rendered:
+                        errors.append('first-page '+effect['id']+': unresolved magnitude label absent')
+                    if not text(row.get('estimand_text')) or norm(row['estimand_text']) not in rendered:
+                        errors.append('first-page '+effect['id']+': estimand absent')
+                    errors.extend(display_errors(effect, row.get('display'), table_rect, region, rect))
+                    continue
                 view = row.get('display')
                 if view is not None:
                     errors.extend(display_errors(effect, view, table_rect, region, rect))
@@ -310,6 +419,8 @@ def check_data(packet, writer, source, pdf_path, editorial_checks):
                     pattern = r'\s+'.join(r'(?<![\w.+*/%-])'+re.escape(norm(t))+r'(?![\w.])' for t in tokens)
                     if not bare_sequence(pattern, rendered):
                         errors.append('first-page '+effect['id']+': rendered signed values/magnitude/direction missing or out of order')
+                if exceptional:
+                    continue
                 for field in ('estimand_text', 'tolerance_text'):
                     target_text = table_pdf if field == 'tolerance_text' else rendered
                     if not text(row.get(field)) or norm(row[field]) not in target_text:
@@ -318,10 +429,17 @@ def check_data(packet, writer, source, pdf_path, editorial_checks):
                 if not any(dec(v) == dec(effect['tolerance']['value']) for v in tolerance_values):
                     errors.append('first-page '+effect['id']+': displayed tolerance must include its declared value')
         review = editorial_checks if isinstance(editorial_checks, dict) else {}
-        for name in ('abstract_source_fidelity', 'effect_magnitude_fidelity'):
+        required = ['abstract_source_fidelity', 'effect_magnitude_fidelity']
+        if any(r.get('comparison_kind', 'scalar') != 'scalar' for r in packet['headline_effects']):
+            required.append('comparison_applicability')
+        for name in required:
             item = review.get(name)
             if not isinstance(item, dict) or item.get('verdict') != 'pass':
                 errors.append('first-page: explicit editorial pass required for '+name)
+            if name == 'comparison_applicability' and isinstance(item, dict):
+                findings = item.get('findings')
+                if not isinstance(findings, list) or not findings or any(not isinstance(f, dict) or type(f.get('page')) is not int or f.get('page') != 1 or not text(f.get('location')) or not text(f.get('finding')) for f in findings):
+                    errors.append('first-page: page-specific applicability findings required')
     except (KeyError, TypeError, ValueError, OSError, ArithmeticError, ImportError, RuntimeError) as exc:
         errors.append('first-page: incomplete verification: '+str(exc))
     return errors

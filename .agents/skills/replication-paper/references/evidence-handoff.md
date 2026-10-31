@@ -53,3 +53,7 @@ provenance; the packet carries only their scientific consequence.
 Commit/freeze the packet before writer handoff and record its SHA-256 in the
 writer manifest. If research changes, issue a new packet hash and repeat writing
 and review for affected claims. Never silently overwrite the primary result.
+
+For nonscalar headlines or unresolved scalar comparisons without a justified
+tolerance, follow the explicit comparison-applicability extension in [first-page contract](first-page-contract.md). Preserve all component evidence and keep the scientific claim verdict separate
+from an unestablished scalar magnitude. Never invent a numeric margin.
