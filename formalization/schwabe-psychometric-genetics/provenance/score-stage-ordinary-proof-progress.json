@@ -1,0 +1,123 @@
+{
+  "created_utc": "2026-10-31T05:02:37.620227+00:00",
+  "status": "New ordinary analytical progress and 14 deterministic checks; independent review pending. No original scientific verdict or manuscript updated.",
+  "author": "delegated ordinary-proof analyst /root/ordinary_proof_next",
+  "source": {
+    "dissertation": "Schwabe2016 Nature, Nurture and Item Response Theory",
+    "pdf_sha256": "67dd29d98bc440b96a197a1ef1771dd3611823bceba428a1f66829ca099d7d28",
+    "locators": [
+      "Chapter2 pp17\u201318 Eqs2.4\u20132.15 and Section2.4.1: MZ/DZ latent hierarchy, environmental logvariance and variance-10 slope prior",
+      "Chapter5 p72 Section5.1.2 Eq5.1: unique-likelihood-maximum assertion",
+      "Chapter5 pp75\u201377 Eqs5.3\u20135.15 and Section5.2.2: Gaussian logvariance hierarchy and variance-10 slope priors"
+    ],
+    "readback": "Read local thesis prior paragraphs, p72 maximum wording and current source-model implementation. The proofs below are our derived results, not source quotations."
+  },
+  "relation_to_existing_work": {
+    "already_established": "Exact calibrated Rasch score/item posterior equivalence; conditional population identification; all-zero full-sample example with no finite mean MLE.",
+    "new_here": "Complete individual-score finite-MLE criterion, unique conditional Gaussian trait-block MAP, and explicit source-faithful centered augmented-posterior nonconcavity witnesses for Chapters2 and5.",
+    "not_new_claim": "No multiple-maxima witness or resolution of the broad source marginal likelihood uniqueness claim."
+  },
+  "propositions": [
+    {
+      "id": "P1",
+      "title": "Exact score likelihood has a unique finite trait MLE exactly for an interior score",
+      "assumptions": [
+        "J>=1 observed locally independent Rasch items; fixed finite known difficulties b_j",
+        "S is an integer in[0,J]; trait theta is an unrestricted finite real parameter",
+        "Likelihood conditional on the specified observed mask; no extra theta-dependent missingness factor is silently omitted"
+      ],
+      "proof": [
+        "The exact score log likelihood is ell(theta)=log c_S(b)+S theta-sum_j softplus(theta-b_j). Coefficient c_S is positive and finite for finite b and is independent of theta.",
+        "Let p_j(theta)=logistic(theta-b_j). Then ell prime=S-sum p_j and ell double-prime=-sum p_j(1-p_j)<0 at every finite theta.",
+        "As theta tends to minus infinity ell prime tends to S; as theta tends to plus infinity it tends to S-J. For0<S<J, continuity and strict decrease give exactly one finite zero of ell prime, which is the unique global maximum.",
+        "ForS=0 the derivative is strictly negative, so no finite maximizer exists and probability tends to1 as theta tends to minus infinity. ForS=J it is strictly positive, with analogous plus-infinity supremum. ForJ=0 the likelihood is constant and every theta maximizes it."
+      ],
+      "limit": "This is a trait-coordinate likelihood conditional on known calibration. The observed marginal likelihood of biometric hyperparameters is different."
+    },
+    {
+      "id": "P2",
+      "title": "Fixed proper Gaussian trait prior gives a unique conditional trait-block MAP, including empty masks",
+      "assumptions": [
+        "A finite-dimensional trait vector theta has a fixed Gaussian prior N(m,Q^-1) with symmetric positive-definite finite Q",
+        "Conditionally independent calibrated Rasch likelihood factors, each with its own known observed-item mask; masks may be empty",
+        "All other parameters and random effects determining m,Q are held fixed; any missingness factor must either be theta-independent or separately checked"
+      ],
+      "proof": [
+        "Its log posterior equals a constant plus sum_i ell_i(theta_i)-0.5(theta-m)^T Q(theta-m).",
+        "The Hessian is -Q-diag(sum_j p_ij(1-p_ij)). For any nonzero vector h, h^T Hessian h is strictly negative because Q is positive definite and each added diagonal is nonnegative. Thus the log posterior is strictly concave.",
+        "Every exact score probability is at most1, so sum ell_i<=0. The Gaussian quadratic tends to minus infinity as the norm of theta tends to infinity. The continuous log posterior is coercive and attains a finite maximum; strict concavity makes it unique.",
+        "ForChapter2 this applies to theta conditional on genetic/common effects and finite hyperparameters: residual variances exp(beta0+beta1*a) are strictly positive. It does not apply to the non-Gaussian marginal theta prior when beta1 is nonzero.",
+        "ForChapter5, with fixed moderator and hyperparameters, the Gaussian twin-phenotype prior also has positive-definite covariance when unique-environmental variances are positive; the result applies to that fixed block."
+      ],
+      "limit": "This is uniqueness of a conditional posterior mode, not unique marginal-likelihood maxima, joint posterior log concavity, unbiasedness, power, a sampler implementation or measured speedup."
+    },
+    {
+      "id": "P3",
+      "title": "Chapter2 centered augmented posterior need not be jointly log-concave under unchanged source priors",
+      "setup": [
+        "Use any design containing at least one MZ pair, known finite Rasch difficulties and J>=1 observed items per twin. This includes the structural source design; the argument is not based on its unavailable empirical observations.",
+        "Take finite interior precision ta=1, fix mu=0,beta0=0 and common effects at0. Let the selected shared MZ genetic effect be a, both selected traits equal a, and let v denote the source beta1 slope. Fix all other genetic effects and traits at0. This is an affine slice in independent centered coordinates; deterministic a2=a1 is represented only once.",
+        "Hold all other parameters and latent effects fixed at finite valid states. The source slope prior has variance10, hence negative-log prior v^2/20. The genetic effect contributes a^2/2."
+      ],
+      "proof": [
+        "Selected conditional theta residuals are zero along the slice. Their two Gaussian normalizing terms sum to v*a. Other zero genetic effects have environmental variances independent of v. Constants and linear observation terms do not affect curvature.",
+        "The restricted negative-log posterior is F2(a,v)=a^2/2+v^2/20+v*a+2 sum_j softplus(a-b_j)-S_pair*a+constant.",
+        "Its Hessian is [[1+d(a),1],[1,1/10]], where d(a)=2 sum_j p_j(a)(1-p_j(a)). Thus determinant=(1+d)/10-1.",
+        "As a tends to plus infinity, d tends to0 for every finite calibration. In particular take a>=max_j b_j+log(4J). Then d<=1/2 and the determinant<=-17/20<0. Both a and all other parameter/latent values are finite.",
+        "A concave log posterior would have concave restrictions to every affine slice, but this Hessian is indefinite. Thus the centered augmented posterior is not globally log-concave. This statement holds for any observed response pattern because scores enter only linearly."
+      ],
+      "exact_fixture": "AtJ=60,b_j=0,a=log(1000), d=120000/1002001 and determinant=-8898009/10020010<0.",
+      "limit": "Nonconcavity does not imply multiple local or global modes. It is coordinate-dependent and says nothing by itself about the marginal hyperparameter likelihood or the behavior of the tested sampler."
+    },
+    {
+      "id": "P4",
+      "title": "Chapter5 centered augmented posterior likewise has an explicit nonconcave slice",
+      "setup": [
+        "Use a design with an MZ pair whose shared moderator is1, known finite Rasch difficulties, J>=1 items per twin and the source normal variance10 prior for the genetic moderation slope v=beta1a.",
+        "Fix genetic logvariance intercept beta0a=0 and other finite hyperparameters; set mu=main=c=0, selected shared genetic effect a and selected theta1=theta2=a. Set other genetic effects and traits to0. All component variances remain strictly positive.",
+        "The selected genetic effect has variance exp(v). Other families with moderator1 and zero genetic effect add only terms linear in v; moderator0 families add no v curvature."
+      ],
+      "proof": [
+        "The restricted negative-log posterior is F5(a,v)=a^2 exp(-v)/2+v^2/20+k*v/2+2 sum_j softplus(a-b_j)-S_pair*a+constant, where k is the fixed number of relevant Gaussian genetic density normalizers. Its exact value does not affect the Hessian.",
+        "Atv=0 the Hessian is [[1+d(a),-a],[-a,a^2/2+1/10]]. Its determinant is 1/10-a^2/2+d(a)*(a^2/2+1/10).",
+        "Choose finite a>=max(1,max_j b_j+log(20J)). Since p(1-p)<=exp(-(a-b_j)), d<=1/10. The determinant is therefore <=11/100-9a^2/20<=-34/100<0.",
+        "Hence this source-faithful centered augmented posterior is not globally log-concave, notwithstanding the strictly log-concave conditional trait block."
+      ],
+      "exact_fixture": "ForJ=60,b=0,a=10,v=0, exp(10)>2^10, so d<120/1024. The exact rational determinant upper bound is -56357/1280<0.",
+      "limit": "This does not refute an at-most-one maximum statement for the observed marginal likelihood, nor prove posterior multimodality. It only rules out this particular global joint-concavity route to proving such a statement."
+    }
+  ],
+  "scientific_equivalence_boundaries": [
+    "Known calibration and correct item masks are essential for the score reduction; inference on item difficulties cannot drop calibration-dependent constants.",
+    "A Gaussian sum-score phenotype comparator is not the exact score model.",
+    "P2 and the nonconcavity witnesses concern different parameter blocks/objectives; there is no contradiction.",
+    "The augmented posterior densities use centered physical latent coordinates. Their concavity is not invariant under nonlinear reparameterization.",
+    "The observed-data marginal hyperparameter likelihood is an integral over latent variables. Neither a unique conditional MAP nor a nonconcave joint density settles its number of maxima.",
+    "A nonconcave function can have a unique maximum; no multiple-maxima claim is made."
+  ],
+  "remaining_exact_targets": {
+    "C5-1.one-likelihood-maximum": "Pending. Specify local versus global maximum, design, parameter domain and treatment of boundary/nonexistence. Need a marginal-likelihood theorem or certified multiple-maxima example for that exact objective.",
+    "non_gaussian_observed_response_identification": "Pending. Existing latent-moment inverse still lacks a global bridge from finite calibrated response probabilities; this work does not supply one.",
+    "posterior_recovery_power_and_sufficiency": "Pending source-count experiments/precisely specified alternatives; no fit or detection result here."
+  },
+  "tests": {
+    "command": "python simulation/score_stage_concavity_checks.py",
+    "output": "outputs/score-stage-concavity-checks.json",
+    "passed": 14,
+    "method": "SymPy differentiation and rational inequalities; ordinary proofs supply the general statements. No numerical integration or model fitting.",
+    "sampling_runs": 0,
+    "new_datasets": 0,
+    "model_fits": 0
+  },
+  "dependencies": {
+    "provenance/rasch-sufficiency-derivation.json": "415dbd8aa65435320ec9125d1479a3bec9a621860c740df2050448f9ca15b1b8",
+    "provenance/identification-check.json": "528804e4c6106cd3e0d290b93dd2536b21fc7c9c128bbad885d74b37c410e250",
+    "provenance/joint-item-identification-check.json": "7af0254e5b8c3b77385eba63b92b64fa05e761ae1b01c8342bb337c3456be732",
+    "provenance/non-gaussian-latent-moment-check.json": "840f4a4076715f76f24a35a43fe139f22945d29346d2509aa1ffcf58aa55db24",
+    "simulation/jags_replication.R": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+    "simulation/jags_centered_extended_gate.R": "609fb57c45e7aa1a69322d8f9758e251dde7f84b51dcbf792a38df8e4b32032c",
+    "simulation/score_stage_concavity_checks.py": "5c5df572693407c3d57783ec12e1e04851a48124d85c1e1a90b10f569e3e42e1",
+    "outputs/score-stage-concavity-checks.json": "d65c5d6e250126b0c0e60e81e2018e886c3f4977a7b347413947d3901b4fab49"
+  },
+  "publication": "New additive proof/provenance only. Existing22-pagePDF, source-owned claim adjudications, coverage ledger and frozen baseline files unchanged. Independent review required before scientific integration."
+}

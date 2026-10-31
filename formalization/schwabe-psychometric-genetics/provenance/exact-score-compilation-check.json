@@ -1,0 +1,38 @@
+{
+  "scope": "Tiny deterministic graph compilation/initialization, not posterior sampling or a scientific model fit.",
+  "timeout_seconds": 30,
+  "elapsed_seconds": 0.25305582000146387,
+  "returncode": 0,
+  "stdout": "         used (Mb) gc trigger (Mb) max used (Mb)\nNcells 345012 18.5     707728 37.8   707728 37.8\nVcells 597641  4.6    8388608 64.0  1974816 15.1\n         used (Mb) gc trigger (Mb) max used (Mb)\nNcells 345041 18.5     707728 37.8   707728 37.8\nVcells 597698  4.6    8388608 64.0  1974816 15.1\n         used (Mb) gc trigger (Mb) max used (Mb)\nNcells 345052 18.5     707728 37.8   707728 37.8\nVcells 597717  4.6    8388608 64.0  1974816 15.1\n",
+  "stderr": "Loading required package: coda\nLinked to JAGS 4.3.2\nLoaded modules: basemod,bugs\n",
+  "updates_requested": 0,
+  "adaptation_requested": 0,
+  "script_sha256": "98652164eb3d5763470ad2522e34bd13907ad853a1d9788abbb75c04c7b6cbce",
+  "adapter_sha256": "f3b5a35c91291a2fac00eb34053033e74f80707bc77eece39844ae1b97de33cb",
+  "cases": [
+    {
+      "case": "items_complete",
+      "compiled": "TRUE",
+      "adaptation_iterations": "0",
+      "posterior_iterations": "0"
+    },
+    {
+      "case": "score_complete",
+      "compiled": "TRUE",
+      "adaptation_iterations": "0",
+      "posterior_iterations": "0"
+    },
+    {
+      "case": "score_masked_empty_person",
+      "compiled": "TRUE",
+      "adaptation_iterations": "0",
+      "posterior_iterations": "0"
+    }
+  ],
+  "sampler_assignments": {
+    "items_complete": "$`base::RealSlicer`\n[1] \"theta[2,2]\"\n\n$`base::RealSlicer`\n[1] \"theta[2,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"c[2]\"\n\n$`base::RealSlicer`\n[1] \"theta[1,2]\"\n\n$`base::RealSlicer`\n[1] \"theta[1,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"c[1]\"\n\n$`base::RealSlicer`\n[1] \"a[1,1]\"\n\n$`base::RealSlicer`\n[1] \"a[2,2]\"\n\n$`base::RealSlicer`\n[1] \"a[2,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"mu\"\n\n$`bugs::ConjugateGamma`\n[1] \"ta\"\n\n$`bugs::ConjugateGamma`\n[1] \"tc\"\n\n$`base::RealSlicer`\n[1] \"beta0\"\n\n$`base::RealSlicer`\n[1] \"beta1\"\n\n",
+    "score_complete": "$`base::RealSlicer`\n[1] \"theta[2,2]\"\n\n$`base::RealSlicer`\n[1] \"theta[2,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"c[2]\"\n\n$`base::RealSlicer`\n[1] \"theta[1,2]\"\n\n$`base::RealSlicer`\n[1] \"theta[1,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"c[1]\"\n\n$`base::RealSlicer`\n[1] \"a[1,1]\"\n\n$`base::RealSlicer`\n[1] \"a[2,2]\"\n\n$`base::RealSlicer`\n[1] \"a[2,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"mu\"\n\n$`bugs::ConjugateGamma`\n[1] \"ta\"\n\n$`bugs::ConjugateGamma`\n[1] \"tc\"\n\n$`base::RealSlicer`\n[1] \"beta0\"\n\n$`base::RealSlicer`\n[1] \"beta1\"\n\n",
+    "score_masked_empty_person": "$`base::RealSlicer`\n[1] \"theta[2,2]\"\n\n$`base::RealSlicer`\n[1] \"theta[2,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"c[2]\"\n\n$`base::RealSlicer`\n[1] \"theta[1,2]\"\n\n$`base::RealSlicer`\n[1] \"theta[1,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"c[1]\"\n\n$`base::RealSlicer`\n[1] \"a[1,1]\"\n\n$`base::RealSlicer`\n[1] \"a[2,2]\"\n\n$`base::RealSlicer`\n[1] \"a[2,1]\"\n\n$`bugs::ConjugateNormal`\n[1] \"mu\"\n\n$`bugs::ConjugateGamma`\n[1] \"ta\"\n\n$`bugs::ConjugateGamma`\n[1] \"tc\"\n\n$`base::RealSlicer`\n[1] \"beta0\"\n\n$`base::RealSlicer`\n[1] \"beta1\"\n\n"
+  },
+  "sessionInfo": "R version 4.5.0 (2025-04-11)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Debian GNU/Linux 13 (trixie)\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.1 \nLAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.1;  LAPACK version 3.12.0\n\nlocale:\n [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       \n [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   \n [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          \n[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rjags_4-16    coda_0.19-4.1\n\nloaded via a namespace (and not attached):\n[1] compiler_4.5.0 grid_4.5.0     lattice_0.22-7\n"
+}

@@ -1,0 +1,47 @@
+{
+  "scope": "Static implementation audit on the existing one-dataset input; no new dataset, fit, compilation, sampling or performance comparison.",
+  "input_data_sha256": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+  "persons": 1000,
+  "items": 60,
+  "MZ_pairs": 140,
+  "DZ_pairs": 360,
+  "original_item_graph_equal_after_whitespace_semicolon_normalization": true,
+  "model_priors": "Gamma(1,rate1) on ta/tc; mu,beta1 Normal(0,variance10); beta0 Normal(0,variance1), unchanged.",
+  "full_target_settings": [
+    {
+      "setting": 0,
+      "item_log_target": -65847.89643518341,
+      "score_log_target": -38694.8793804524,
+      "canonical_zero_poisson_log_target": -74954.64137853266
+    },
+    {
+      "setting": 1,
+      "item_log_target": -72631.55177235305,
+      "score_log_target": -45478.53471762205,
+      "canonical_zero_poisson_log_target": -81738.29671570231
+    },
+    {
+      "setting": 2,
+      "item_log_target": -67345.34905078795,
+      "score_log_target": -40192.33199605694,
+      "canonical_zero_poisson_log_target": -76452.09399413719
+    }
+  ],
+  "item_minus_canonical_zero_poisson_constant": 9106.744943349255,
+  "maximum_full_target_difference_error": 1.0913936421275139e-11,
+  "maximum_item_score_factorization_error": 6.394884621840902e-14,
+  "deterministic_check_wall_seconds": 1.0172646900027758,
+  "timing_interpretation": "Cost of this audit including export/preparation; not a sampler benchmark or speedup measurement.",
+  "limitations": [
+    "Same JAGS backend for both graphs, not independent engines.",
+    "Generated graphs have not been compiled or sampled.",
+    "Known calibration only; no informative-missingness or unknown-calibration equivalence claim."
+  ],
+  "artifacts": {
+    "simulation/check_exact_score_saved_data.py": "0e9c788a0cffc3d794f9d2198da39c2305e664ae50dcdf9d8efe5126c4d8fcc7",
+    "simulation/exact_rasch_score.py": "bc1e6107e4e9465a767c2ca3e6cc5b0d921f61d1c88f97471ea6b7d3141243e0",
+    "simulation/rasch_score_jags_adapter.py": "f3b5a35c91291a2fac00eb34053033e74f80707bc77eece39844ae1b97de33cb",
+    "outputs/exact-score-static/chapter2-items.jags": "ba97866798760380f34aca9d0beb58c71c2c8298a551b5257c8f195f5bb6c247",
+    "outputs/exact-score-static/chapter2-score.jags": "3d90ea4f149cd8fa0b3f1853c0fe306fbe0286a8ccafb71b665264beacdb4855"
+  }
+}
