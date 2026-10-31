@@ -1,7 +1,7 @@
 {
   "record_kind": "timestamped production monitor snapshot; not automatically live",
-  "observed_utc": "2026-10-31T02:14:06.172675+00:00",
-  "status": "Production and bounded Bayesian diagnostic terminal; scientific integration and fresh manuscript reviews pending",
+  "observed_utc": "2026-10-31T02:22:09.028344+00:00",
+  "status": "All planned production and bounded diagnostics terminal; frozen evidence independently accepted; fresh standalone manuscript writing in progress",
   "total_target_method_fits": 96000,
   "completed_method_fits_including_preserved_baseline": 96000,
   "new_method_fits": 94080,
@@ -12,7 +12,7 @@
   "supervisor_pid": 23297,
   "supervisor_process": "Exited normally; zero active production workers independently checked",
   "publication_failure": false,
-  "most_recent_remote_head_at_observation": "66dd2649c4d83b6a3fefd730181d67248170ed0d",
+  "most_recent_remote_head_at_observation": "d1b61b8b1d7af6a17341a2b5fee73a134a35c47c",
   "recent_throughput_fits_per_second": 3.5993359158826785,
   "throughput_window_seconds": 1807.0,
   "production_finish_estimate_utc": null,
@@ -20,7 +20,7 @@
   "current_progress_record": "production/chapter6-v1/reports/progress.json",
   "historical_initial_snapshot": "provenance/active-production.json",
   "snapshot_distinction": "active-production.json records launch-time counts and remains preserved. This record records its own observed_utc; exported progress.json advances with the supervised run. Terminal state must be verified separately.",
-  "next_steps": "Freeze scientifically reviewed whole-dissertation evidence packet, then fresh standalone writer and independent rendered-main-PDF review. No new production, dissertation, PR or merge.",
+  "next_steps": "Complete fresh standalone writer, then independent cold-reader rendered-main-PDF, source-fidelity and link review; verify final remote artifacts. No new fits, dissertation, PR or merge.",
   "editorial_contract_blocker": "provenance/v2-nonscalar-contract-blocker.json",
   "editorial_contract_blocker_summary": "Proposed unmerged fix a322dd8b40bba924516df55c121d147aeb0b377a authorized for isolated validation; actual complete packet validation pending.",
   "editorial_contract_coordination": "No reusable skill edits or merge into study branch. Exact proposed validator pinned separately.",
@@ -34,7 +34,7 @@
   "proposed_contract_integration": "provenance/proposed-validator-integration-check.json",
   "bayesian_gate": {
     "namespace": "production/jags-gate-v1",
-    "status": "four chains completed; joint convergence gate failed; independent outcome review pending",
+    "status": "four chains completed; joint convergence gate failed; independent outcome review completed",
     "dispatcher_session": 38768,
     "requested_chains": 4,
     "per_chain_wall_limit_seconds": 1800,
@@ -69,5 +69,14 @@
     "MAR_sign_reversals_excluding_zero_after_adjustment": 0,
     "MAR_source_estimate_deviations_outside_conditional_band": 2,
     "caveat": "Both MAR source deviations are low-missingness ambiguous conditions. Unknown original MC error remains; path SE is a different estimand. Numeric mismatches do not resolve original SE implementation."
+  },
+  "evidence_packet": {
+    "path": "handoff/evidence-packet.json",
+    "sha256": "41c12d8a490b572f1e5ea66a2e12e0becfad1398962616fdbad79b8f4ab2e554",
+    "frozen_revision": "d1b61b8b1d7af6a17341a2b5fee73a134a35c47c",
+    "scientific_review": "provenance/final-evidence-scientific-review.json",
+    "claims": 996,
+    "contrasts": 386,
+    "headline_rows": 28
   }
 }
