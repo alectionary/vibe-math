@@ -1,0 +1,93 @@
+{
+  "status": "Accepted for one final fixed bounded length experiment; no forecast of convergence success",
+  "reviewer": "/root/guard_validation",
+  "reviewed_utc": "2026-10-31T03:53:36.299093+00:00",
+  "reviewed_sha256": {
+    "simulation/jags_centered_extended_gate.R": "609fb57c45e7aa1a69322d8f9758e251dde7f84b51dcbf792a38df8e4b32032c",
+    "simulation/diagnose_jags_centered_extended_gate.R": "8461d14a6a8cc154a062ba0adafb867a0443c3c8595a520d47296be52a17d6a8",
+    "simulation/dispatch_jags_centered_extended.py": "118331694fd75ac206fcd427589e52204742b6e23ea1e9711b645b201dba3f57",
+    "provenance/jags-centered-extended-protocol.json": "3f231308a9145b570980574187cae6c974ffc42dfd1af7779e47915c89492032",
+    "provenance/jags-centered-extended-plan.json": "dea1bea182f9b28d23d4a659446a408d3ab7143d08b48479342ec6bdd8409558",
+    "provenance/jags-centered-length-assessment.json": "d7704d7162e82a14504f992659921e1b577b7a3005c0b6b2e0b0bc6ab6cc4569",
+    "simulation/test_jags_centered_extended_independent.py": "ac339e3e871947fdcd4390f4a1419d8d755539c3af925ca139f12842ed7cf7fb",
+    "simulation/test_jags_centered_independent.py": "ac9b3a53dbb0b9e10bf7f9318c9cb9c8b30303f2018102c89b6fe518e73f5a60",
+    "simulation/test_jags_recovery_independent.py": "b02f7c599713f70fb8b0ca690a008d7505897957ef9e8683c216074ee51b4c14",
+    "production/jags-long-gate-v1/chains/outcomes.json": "0efb69b6fcad09f46c5fef33a23eb98564750bb2a5b3832fc0e3caa49dcb4466",
+    "production/jags-long-gate-recovery-v1/chains/outcomes.json": "d58ad587374721f7f728cbd9a39a0130dfa6b38d08d5de5accd02f46e7653402",
+    "production/jags-centered-gate-v1/chains/outcomes.json": "97f7694ab5a79367e17873b4b1685769082789b7de0f375d412c7ab32ccec76f"
+  },
+  "preflight_sha256": {
+    "data.rds": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+    "model.jags": "8fc2a47162489101ef942d73657544fc45bf0edb98187866ac5c11b699183451",
+    "initials.rds": "92eb07aa9ad7448584fe85b48f9cca736d2716886c7c523ec9e774c2b25c552f",
+    "protocol.rds": "bb457c51debbab65ba30c9e1de9e13985f14608968a64fc53d2b30be777d40c0"
+  },
+  "checks": {
+    "tests_passed": 19,
+    "command": "python simulation/test_jags_centered_extended_independent.py",
+    "scientific_diff": "Exact whole-wrapper equality after only documented name changes,1370-second header, retained count12000->28000 and fixed chunks3->7. No priors, latent conditional distributions, data generation, initial globals/seeds, monitors, adaptation/burn or checkpoint state mechanics changed.",
+    "diagnostic_diff": "Exact equality after file-name/count updates and half intervals1:14000,14001:28000. Same all14 operational gates and manual HPD-review requirement.",
+    "infrastructure": "All inherited script-reader/actual-script, ESRCH-ignore/EACCES-fatal, other-OS-error, owned-PID, prelaunch traceback/outcome, ancestor resource and timeout-mechanics tests pass. New extended wrapper recognized. Runtime and source pin validation passes.",
+    "prepared_identity": "Read hashes of the actual prepare-only artifacts. Both model8fc2a47162489101ef942d73657544fc45bf0edb98187866ac5c11b699183451 and data5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a match prior centered experiment exactly.",
+    "documentation_fix": "Initial header erroneously showed1800s; corrected to1370s and protocol pin refreshed before acceptance."
+  },
+  "allocation": {
+    "fixed_chains": 4,
+    "adaptation": 1000,
+    "burn_in": 7000,
+    "retained_per_chain": 28000,
+    "chunks": "7x4000, no early favorable stopping",
+    "cap_per_chain_seconds": 1370,
+    "new_worker_caps_seconds": 5480,
+    "cleanup_allowance_seconds": 20,
+    "actual_previous_ledgers": {
+      "jags-long-gate-v1": {
+        "elapsed": "2691.5302470630121",
+        "states": [
+          "cancelled",
+          "cancelled",
+          "cancelled",
+          "cancelled"
+        ]
+      },
+      "jags-long-gate-recovery-v1": {
+        "elapsed": "1030.44805552800245",
+        "states": [
+          "cancelled",
+          "cancelled",
+          "cancelled",
+          "cancelled"
+        ]
+      },
+      "jags-centered-gate-v1": {
+        "elapsed": "2667.7162271179913",
+        "states": [
+          "exited",
+          "exited",
+          "exited",
+          "exited"
+        ]
+      }
+    },
+    "previous_chain_wall_seconds": "6389.69452970900585",
+    "nominal_combined_seconds": "11889.69452970900585",
+    "margin_to12000_seconds": "110.30547029099415",
+    "interpretation": "Nominal chain-process budget; preparation/diagnostics are separately capped and polling/cleanup overhead must be reported from actual outcomes. No additional allocation is implied."
+  },
+  "scientific_interpretation": [
+    "Read the independent length assessment. Source-length centered chains completed but the joint gate failed; worse last-half Rhat and opposing drifts invalidate a confident stationary-efficiency extrapolation. The proposed longer run is a fixed empirical test of available length, not evidence that length will suffice.",
+    "The same data,seeds and global starts can reproduce the earlier centered trajectory prefix. Never pool prior and extended draws as independent confirmation, or count repeated prefixes as additional independent simulations.",
+    "Both earlier48000-retained noncentered attempts were infrastructure-aborted without saved retained draws. Do not label their unobserved48000 behavior a mixing failure.",
+    "The shortened final allocation fixes28000 retained in advance; a timeout after24000 is not a completed28000 gate. All four requested chain outcomes and partial checkpoints must remain visible.",
+    "No automatic retry, replacement, extension, adaptive stopping or source-count production follows this acceptance. A pass still needs terminal numerical/interval/all-page review and does not establish whole-dissertation replication."
+  ],
+  "review_operations": {
+    "model_compilations": 0,
+    "posterior_samples": 0,
+    "scientific_file_edits": 0,
+    "created_files": [
+      "simulation/test_jags_centered_extended_independent.py",
+      "provenance/jags-centered-extended-pre-run-independent-review.json"
+    ]
+  }
+}
