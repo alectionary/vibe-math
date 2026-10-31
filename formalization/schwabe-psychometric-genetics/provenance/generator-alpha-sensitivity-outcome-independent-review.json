@@ -1,0 +1,49 @@
+{
+  "reviewed_utc": "2026-10-31T03:38:30.961603+00:00",
+  "reviewer": "Independent paired-alpha outcome reviewer /root/bayesian_gate_setup",
+  "status": "Accepted as a completed descriptive formula sensitivity, not a source-estimand replication verdict.",
+  "datasets_regenerated": 2650,
+  "additional_independent_datasets": 0,
+  "posterior_fits": 0,
+  "conditions": 19,
+  "undefined_standardized": 0,
+  "checks": [
+    "All source,script,analysis and dependency hash pins verified.",
+    "All2650 seeds and condition/replicate keys are unique and match the original outputs.",
+    "All19 cells retain their100/250 requested datasets; no undefined standardized estimates or constant items.",
+    "Raw alpha matches saved baseline within1e-12 for every dataset.",
+    "Recomputed all condition means, paired differences, paired MCSEs and source-descriptor differences independently with NumPy/Pandas."
+  ],
+  "maximum_raw_baseline_absolute_discrepancy": 9.992007221626409e-16,
+  "maximum_absolute_analysis_discrepancy": 2.220446049250313e-16,
+  "findings": {
+    "floor": "Raw 0.9080295039 -> standardized 0.9069726168; paired change -0.0010568871 with MCSE 0.0000570066. Both round to .91 rather than the quoted .90.",
+    "ceiling": "Raw 0.9075331647 -> standardized 0.9064509269; paired change -0.0010822378 with MCSE 0.0000591391. Both round to .91 rather than the quoted .90.",
+    "Chapter5_J20": "Raw 0.7381963076 -> standardized 0.7310975033; paired change -0.0070988043 with MCSE 0.0001093792. This moves farther from quoted .75.",
+    "conclusion": "Formula ambiguity does not explain the reported floor/ceiling or20-item descriptor gaps under this reconstruction. Original source aggregation/subset/calibration remain unresolved; do not turn this into a definitive source-estimand replication verdict."
+  },
+  "limits": [
+    "The same2650 fixed-seed datasets were regenerated; additional independent datasets=0 and posterior fits=0.",
+    "Paired MCSE is SD of within-dataset standardized-minus-raw differences divided by sqrt(replicate count). Raw and standardized estimates are not independent samples.",
+    "MCSE describes our finite simulation mean, not source uncertainty. No source procedure or aggregation is inferred from proximity of a mean.",
+    "Raw-alpha agreement, fixed seeds and pinned deterministic generator establish replay consistency; individual item responses/covariances were not saved, so this outcome review checks retained scalar computations and prior formula review rather than independently reconstructing covariance matrices.",
+    "All19 cells remain reported. Neither two-decimal rounding counts nor selectively favorable formula choices are replication success fractions.",
+    "No source mismatch is resolved by post-hoc seed, moderator probability, calibration or equivalence-margin tuning."
+  ],
+  "artifact_sha256": {
+    "production/generator-alpha-sensitivity-v1/summaries.csv": "c5aeb402b1ad05f40bf5094dd75a52b61f9be5244de0599185a4662f2c8e1f21",
+    "production/generator-alpha-sensitivity-v1/terminal.rds": "8b3a181b2248a7970cf8dbf559ec2156a1e5912854d56491669d8d1f23c61358",
+    "outputs/generator-alpha-sensitivity-analysis.json": "2639613fae3aa02d40cfaa3435bcf5aeb0b3ae221fd3422cd9b4a44bcd44e061",
+    "simulation/generator_alpha_sensitivity.R": "69da258ecadc30254af296715a328e5edce4883da1ab95d8c43af5d135f3f5c3",
+    "simulation/analyze_alpha_sensitivity.py": "f021ba634aa3a695d19e661987d83663fa85321a599f60712108560d73592c2c",
+    "provenance/generator-alpha-sensitivity-plan.json": "35fd3f4b0a0dd00ff0de1f17fcb00ba285f96a8a5fa13c346184acbc7ab8e593",
+    "production/generator-summary-v1/summaries.csv": "909211a9b24da1b0fff5a98d49a604e84b9e313fe9d9d405da90146ca084ada9"
+  },
+  "execution": {
+    "terminal_status": "completed",
+    "elapsed_seconds": 100.317,
+    "cap_seconds": 300,
+    "combined_generation_plus_pilot_seconds": 232.574,
+    "combined_allowance_seconds": 600
+  }
+}
