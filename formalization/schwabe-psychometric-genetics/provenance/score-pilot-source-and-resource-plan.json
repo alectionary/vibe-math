@@ -364,5 +364,15 @@
     "tiny_zero_iteration_compile": "provenance/exact-score-compilation-check.json",
     "aggregation_review": "provenance/failure-preserving-aggregation-independent-review.json",
     "qualification": "Numerical budgets remain decision proposals, not an executable launch approval. No new posterior sampling performed."
+  },
+  "a0_dispatch_preparation_update": {
+    "status": "Frozen inputs, original reuse validation and executable guarded launcher implemented; final independent acceptance recorded separately; sampling approval required",
+    "manifest": "provenance/score-a0-dispatch-manifest.json",
+    "instructions": "SCORE_A0_DISPATCH.md",
+    "check": "python simulation/dispatch_score_a0.py check",
+    "launch_after_approval": "python simulation/dispatch_score_a0.py launch --approval-reference ACTUAL_APPROVAL_MESSAGE_ID",
+    "stop": "python simulation/dispatch_score_a0.py stop",
+    "resources": "Unchanged A0 caps. Sampled resource enforcement at0.1seconds reserves polling/cleanup margin; RSS/log/output may transiently overshoot between probes; no kernel-hard/realtime guarantee.",
+    "scope": "A0 only; no new dataset or source-count target completed. Historical A8/B proposal remains unapproved; no independent backend work included."
   }
 }
