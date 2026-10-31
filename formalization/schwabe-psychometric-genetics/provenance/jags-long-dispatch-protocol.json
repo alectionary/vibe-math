@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "Fixed longer-chain diagnostic; pending independent review before execution",
+  "chain_ids": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "per_chain_wall_seconds": 3000,
+  "planned_worker_seconds": 12000,
+  "termination_grace_seconds": 5,
+  "preparation_wall_seconds": 120,
+  "diagnostic_wall_seconds": 300,
+  "pinned_files": {
+    "simulation/jags_long_gate.R": "5aa5fbd4689c3b0fb6ab94f2261fa434e3144c34e8c6a9b28290f13be9099755",
+    "simulation/diagnose_jags_long_gate.R": "74b45ead2aa49a05992c270c72eefcf245731611019e4d14de878530e8358d6b",
+    "simulation/jags_replication.R": "55ab08fd95bc9a3210ba6eb64106c05777be6f786576abe9c7327ac8d7f28c20",
+    "provenance/bayesian-convergence-plan.json": "8b9cc97df9e1f3dbd2690dac80192d9db7daa34deaec0cbbcbdf6443bde2608b",
+    "provenance/posterior-runtime-packages.json": "13c016c589c916ab5ddf6caa1a6538110331aba4b91598fe62da95f1db26e9eb",
+    "provenance/runtime-packages.json": "fe67dd10e6063b544e5ad5b65311f909e413bef574ca3fc48b11259f6985ec8c"
+  },
+  "pinned_runtime": {
+    "/workspace/slot3-runtime/bin/Rscript": "33a95ba8b66eb31bfa2389a17bf8d0e558470bd64f205baf85d4435befe1072c",
+    "/workspace/slot3-runtime/usr/lib/R/bin/exec/R": "b2884f67c48931db99a731821742d11e7a9df9d94e693d3e9fab5b878ff778a1",
+    "/workspace/slot3-runtime/usr/lib/R/lib/libR.so": "6c3a11277df6968799e60c43f24bba997f288a3588c013de288bd6f17d29def6"
+  },
+  "expected_data_sha256": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+  "expected_model_sha256": "65ae9f0cd26e420d4dec7d325cc577f9c70f51251b249c78ce27e810085649cf",
+  "policy": "Fixed longer-run diagnostic after failed short gate; no automatic retries, extensions or production. Same seeds/initials/data/model: correlated diagnostic, not independent experiment. Preserve prior gate.",
+  "memory_policy": {
+    "minimum_initial_or_serial_headroom_bytes": 1073741824,
+    "parallel_allocation_per_remaining_chain": "max(2 * measured chain1 process-tree peak RSS through adaptation, 1 GiB)",
+    "basis": "Operational safety factor/floor, not measured requirement or peak guarantee. Sum of process RSS can count shared pages repeatedly. Current/ancestor cgroup headroom checked before first and additional allocations."
+  },
+  "phase_verification": "Full installed runtime/library file inventory, pinned source/runtime identities, dispatcher and protocol hashes checked before preparation, chains and diagnostics; no production runtime modification.",
+  "scheduling": {
+    "initial": "Only prescribed chain1 starts; no extra model or replacement seed",
+    "readiness": "Existence only of chain1 adaptation.rds, independent of adaptation success or posterior values",
+    "measurement": "Sample chain1 process-tree RSS every0.2 seconds through adaptation; require positive sample before parallel release",
+    "remaining": "Launch prescribed2\u20134 concurrently only if measured headroom supports all pending chains; otherwise serialize remaining. Without adaptation record or positive RSS sample use serial execution. Preserve resource-blocked not_launched outcomes.",
+    "wall_bound_seconds": 12020,
+    "cleanup_reserve_seconds": 5,
+    "poll_interval_seconds": 0.05,
+    "worker_budget_seconds": 12000
+  }
+}
