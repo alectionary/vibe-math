@@ -1,0 +1,167 @@
+{
+  "structural_validation_only": true,
+  "scientific_adjudication": {
+    "adjudicator": "Root research investigator",
+    "adjudicated_utc": "2026-10-31T02:15:34.434765+00:00",
+    "basis": "Whole-source audit; exact historical evidence readback; terminal96000-fit analysis independently recomputed and mapped; claim-specific Chapter6 corrections; separately reviewed ordinary analytical checks; completed bounded four-chain outcome and all14rendered diagnostic pages independently reviewed. Original numerical baselines preserved. No scientific verdict is inferred from structural contract validation.",
+    "scope": "All996sourceIDs and26principalclaims; complete inventory coverage, not successful or completed whole-dissertation replication. Scientific source-target comparison remains not_established for216literal variance-SE magnitudes despite recorded conditional numerical discrepancies."
+  },
+  "inputs": {
+    "claim_specification": {
+      "path": "handoff/claim-specification-applicability.json",
+      "sha256": "44eadb18c4327f52dc3f941dece153e378667d29c770d3f5230be2372f15e163"
+    },
+    "adjudication": {
+      "path": "handoff/scientific-adjudication.json",
+      "sha256": "16e8d51256bb9172cab860c9d1484c07a58b382e61bd78fbac5c92c28e121865"
+    }
+  },
+  "validator": {
+    "path": "/tmp/schwabe-skill-proposed-a322dd8/.agents/skills/replication-paper/scripts/stage_checks.py",
+    "sha256": "bff43d2584ef6665c452e4efe9361645af527fbb05b965e014671bdde3429314",
+    "first_page_sha256": "2c01b49fe1c7fd93c966953438173612f8a703efb6816e5e2fae277f4ec3dcce"
+  },
+  "builder_sha256": "331efd661d82d1c7cee873558438318505cdeb5314a6a5f920ae297a7d8f72f7",
+  "mapping": "Source-owned statements/values/conditions/sections/audit preserved; exact ID-joined result adjudications; source contrast published.value mapped to numeric published; no defaults for results/status/tolerance/review.",
+  "source_specification_notes": {
+    "ambiguities": [
+      {
+        "id": "A01",
+        "locator": "Chapter2 p21 Eq2.16 worked example",
+        "issue": "ForDelta1.5 prose multiplies.5\u00d71.5=.75 though environmental baseline was.2; slope/ratio formula and baseline example conflict.",
+        "claim_ids": [
+          "C2-1.delta"
+        ]
+      },
+      {
+        "id": "A02",
+        "locator": "Chapter3 p37 Eq3.4",
+        "issue": "OPLM information formula omits discrimination squared although Eq3.3 has item discrimination; plot implementation unavailable from dissertation.",
+        "claim_ids": [
+          "C3-2.information",
+          "C3-6.information",
+          "C3-6.SE"
+        ]
+      },
+      {
+        "id": "A03",
+        "locator": "Chapter3 p41 versusp42",
+        "issue": "Text defines effect atA=sigma_A squared, but reported ratios1.63/1.85 agree with one standard deviation.",
+        "claim_ids": [
+          "C3-4.ratio.AxE",
+          "C3-4.ratio.AxC"
+        ]
+      },
+      {
+        "id": "A04",
+        "locator": "Chapter4 p56 Eqs4.6\u20134.10 versusAppendixB",
+        "issue": "Printed GPCM normalization/threshold equations differ from cumulative-exponential code.",
+        "claim_ids": [
+          "C4-4.probabilities",
+          "B.implementation"
+        ]
+      },
+      {
+        "id": "A05",
+        "locator": "Chapter4 p64",
+        "issue": "IRT h2mean.54 is outside printed95%HPD[.34,.51].",
+        "claim_ids": [
+          "C4-5.heritability-IRT.h2"
+        ]
+      },
+      {
+        "id": "A06",
+        "locator": "Chapter5 p78 versusTable5.1",
+        "issue": "Design prose says80000pairs but table and results say8000. Preserve both; no silent replacement.",
+        "claim_ids": [
+          "C5-2.A-bias-largest"
+        ]
+      },
+      {
+        "id": "A07",
+        "locator": "Chapter5 p74 versusp84",
+        "issue": "Separate-moderator script referred to asAppendixF onp74 but isAppendixE onp84 and in contents.",
+        "claim_ids": [
+          "C5-7.extension",
+          "E.implementation"
+        ]
+      },
+      {
+        "id": "A08",
+        "locator": "Chapter6 pp91\u201395,101\u2013102;Figs6.3\u20136.6",
+        "issue": "Methods/captions say2%at lowest missingness; plotlabels/results/recommendation say3%.",
+        "claim_ids": [
+          "C6-2.precision.MCAR.A",
+          "C6-2.precision.MCAR.C",
+          "C6-2.precision.MCAR.E",
+          "C6-2.precision.MAR.A",
+          "C6-2.precision.MAR.C",
+          "C6-2.precision.MAR.E",
+          "C6-4.precision.MNAR.A",
+          "C6-4.precision.MNAR.C",
+          "C6-4.precision.MNAR.E",
+          "C6.recommendation"
+        ]
+      },
+      {
+        "id": "A09",
+        "locator": "Chapter6 p97 versusTable6.1",
+        "issue": "Text says five pedagogical categories but enumerates six, which table confirms; Table6.3 calls Reformed liberated Reformed liberal.",
+        "claim_ids": [
+          "C6-6.6.3.Reformed_liberated"
+        ]
+      },
+      {
+        "id": "A10",
+        "locator": "Chapter7 p104 andDutch summaryp117",
+        "issue": "Summaries list2,3,4covariates; primaryChapter6 includes5as well. Do not omitq5.",
+        "claim_ids": [
+          "C6.power-inference.MCAR",
+          "C6.power-inference.MAR",
+          "C6.power-inference.MNAR"
+        ]
+      },
+      {
+        "id": "A11",
+        "locator": "Dutch summaryp116 versusChapter4 abstract/results",
+        "issue": "Dutch wording says shared variance lower for genetic liberalism, opposite to primaryChapter4 positiveAxC result. Primary tables retained; translation discrepancy not treated as an independent experiment.",
+        "claim_ids": [
+          "C4-5.4.3.gamma1"
+        ]
+      },
+      {
+        "id": "A12",
+        "locator": "Chapter6 p97 versusAppendixG pp153\u2013154",
+        "issue": "Prose deterministic threshold differs from.999/.001 binary link; program adds.01 continuous observation variance.",
+        "claim_ids": [
+          "C6-8.binary-link",
+          "C6-8.continuous-link"
+        ]
+      },
+      {
+        "id": "A13",
+        "locator": "Chapter5 p72 andAppendixC",
+        "issue": "Source equates unique model identification with a single finite-sample likelihood maximum; binary-reflection and continuous-moderator claims need different hypotheses.",
+        "claim_ids": [
+          "C5-1.binary-path",
+          "C5-1.continuous-path",
+          "C5-1.logvariance-identification",
+          "C5-1.one-likelihood-maximum"
+        ]
+      }
+    ],
+    "omissions_or_explicit_limits": [
+      "No legacy group omitted. Newly explicit targets include common-IRT scale invariance, Chapter5 precision-to-power inference and20-item sufficiency, Chapter6 original power assertion and3%recommendation, Chapter3 information-equation ambiguity, and all software observation-link claims.",
+      "Unknown numerical values remain explicit: ceilingIRT table, curvilinear experiment, comparative runtime, extension power loss, GPCM-vsPCM AIC/BIC, submodel direction-change coefficients, Chapter6 untabulated coefficient/variance recovery, empirical raw data/calibration and supplementalplots.",
+      "Figure4.1\u20134.6,3.1\u20133.3,1.2\u20131.3,2.1,5.2,7.1 retain qualitative/distribution targets; coordinates are not fabricated from text. Exact source-generating data and seeds are unavailable in the thesis. Chapter6 vector values are existing reconstructed source points with bounds.",
+      "No new empirical investigation of external cited claims, future bivariate/rGE models, moderator measurement error, parent-offspring extension, or new sampling algorithms is claimed; these are explicitly futurework or cited background, not completed dissertation results.",
+      "No numerical equivalence tolerance is invented for qualitative/theoretical claims. Figure extraction bounds and rounding are distinct from scientific uncertainty. Root must finalize scientifically justified tolerances, convergence and outcome-status adjudications before writer handoff. Supporting distribution claims retain the complete distribution target, not a made-up scalar.",
+      "This source audit does not determine current empirical access, feasible computation, replication success or permission to redistribute the dissertation. SourcePDF remains local-only.",
+      "The initial962-to990 growth adds28 previously implicit descriptive percentages; the990-to996 growth adds six hierarchy parents. All990 atomic targets remain. Headline classification follows source emphasis and does not shrink whole-dissertation coverage or determine success."
+    ]
+  },
+  "claim_count": 996,
+  "section_count": 19,
+  "scope": "Not a rendered manuscript review, source-fidelity certification or whole-dissertation success claim.",
+  "packet_sha256": "41c12d8a490b572f1e5ea66a2e12e0becfad1398962616fdbad79b8f4ab2e554"
+}

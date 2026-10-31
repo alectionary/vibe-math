@@ -1,0 +1,600 @@
+{
+  "study": "Schwabe2016 Chapter2 fixed floor item-level diagnostic case",
+  "design": {
+    "datasets": 1,
+    "N_twin_pairs": 500,
+    "items": 60,
+    "data_seed": 301,
+    "beta1_generating_value": 0,
+    "chains": 4,
+    "chain_rng_seeds": [
+      830101,
+      830102,
+      830103,
+      830104
+    ],
+    "adaptation_per_chain": 1000,
+    "burn_in_per_chain": 7000,
+    "retained_per_chain": 12000,
+    "thin": 1,
+    "retained_total_per_parameter": 48000,
+    "monitored_columns": 14,
+    "selected_probabilities": "Conditional response probabilities for two persons/items; deterministic transforms, not a full posterior predictive replication."
+  },
+  "execution": {
+    "requested": 4,
+    "completed": 4,
+    "failed_or_timed_out": 0,
+    "all_adaptation_complete": true,
+    "all_draws_finite": true,
+    "wall_elapsed_per_chain_seconds": [
+      733.3423693010009,
+      721.4418958370006,
+      721.4399010220004,
+      722.8481663429993
+    ],
+    "sum_chain_wall_elapsed_seconds": 2899.0723325030012,
+    "elapsed_measurement": "Sum of process wall durations, not measured CPU time.",
+    "per_chain_wall_limit_seconds": 1800,
+    "planned_maximum_worker_seconds": 7200,
+    "max_concurrency": 4
+  },
+  "criteria": {
+    "rhat_less_than": 1.01,
+    "bulk_ESS_at_least": 400,
+    "tail_ESS_at_least": 400,
+    "mean_MCSE_over_SD_at_most": 0.05,
+    "all_draws_finite": true,
+    "all_chains_adaptation_complete": true
+  },
+  "joint_gate_pass": false,
+  "passing_columns": 8,
+  "failing_columns": 6,
+  "failed_parameters_and_criteria": {
+    "va": [
+      "Rhat",
+      "bulk_ESS",
+      "tail_ESS",
+      "MCSE_over_SD"
+    ],
+    "vc": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ],
+    "ve": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ],
+    "log_va": [
+      "Rhat",
+      "bulk_ESS",
+      "tail_ESS",
+      "MCSE_over_SD"
+    ],
+    "log_vc": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ],
+    "log_ve": [
+      "Rhat",
+      "bulk_ESS",
+      "MCSE_over_SD"
+    ]
+  },
+  "worst_diagnostics": {
+    "max_rhat": 1.04646665806503,
+    "min_bulk_ESS": 106.105488554247,
+    "min_tail_ESS": 262.354708115904,
+    "max_mean_MCSE_over_SD": 0.104568240211881
+  },
+  "parameter_summaries": [
+    {
+      "hpd_pooled_low": -1.84340491357244,
+      "hpd_pooled_high": 0.252151692537334,
+      "parameter": "a[1,1]",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00378599387462,
+      "ess_bulk": 2379.62223040797,
+      "ess_tail": 7971.69425736646,
+      "mean": -0.804008507460219,
+      "sd": 0.535010409467229,
+      "mcse_mean": 0.0109527127519621,
+      "mcse_over_sd": 0.02047196196214,
+      "ess_q025": 12116.6030800598,
+      "ess_q975": 11073.6168445681,
+      "mcse_q025": 0.0166093858538026,
+      "mcse_q975": 0.0128093324465606,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -0.671827989193248,
+      "hpd_pooled_high": 0.470981722688313,
+      "parameter": "beta1",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00146177828969,
+      "ess_bulk": 823.942675019967,
+      "ess_tail": 1494.0465352043,
+      "mean": -0.112156875523413,
+      "sd": 0.289800744147008,
+      "mcse_mean": 0.0101340692005805,
+      "mcse_over_sd": 0.0349690930932866,
+      "ess_q025": 2166.04367024857,
+      "ess_q975": 1676.33311220873,
+      "mcse_q025": 0.0180365587191517,
+      "mcse_q975": 0.0208312764250377,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -1.68976488834563,
+      "hpd_pooled_high": 0.345831209035207,
+      "parameter": "c[1]",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00370130797082,
+      "ess_bulk": 2852.15577084564,
+      "ess_tail": 8066.89000543674,
+      "mean": -0.672740436937537,
+      "sd": 0.521342200138472,
+      "mcse_mean": 0.00979708288249,
+      "mcse_over_sd": 0.0187920388564131,
+      "ess_q025": 11436.1587622146,
+      "ess_q975": 21183.9107219136,
+      "mcse_q025": 0.0138716452956382,
+      "mcse_q975": 0.0091631643099435,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -0.124512242372714,
+      "hpd_pooled_high": 0.0452705312563316,
+      "parameter": "mu",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00359570332797,
+      "ess_bulk": 2867.50322209871,
+      "ess_tail": 5887.22336999903,
+      "mean": -0.0410876857839571,
+      "sd": 0.0435004440799365,
+      "mcse_mean": 0.0008125701971288,
+      "mcse_over_sd": 0.0186795839517338,
+      "ess_q025": 7446.64502506574,
+      "ess_q975": 6752.9373827314,
+      "mcse_q025": 0.0015678674800071,
+      "mcse_q975": 0.0013036501161305,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": 0.0244551362700476,
+      "hpd_pooled_high": 0.0974439446617373,
+      "parameter": "p[1,1,1]",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00030719299993,
+      "ess_bulk": 15059.0712170941,
+      "ess_tail": 22109.7217681153,
+      "mean": 0.0581235662836546,
+      "sd": 0.0195198195294742,
+      "mcse_mean": 0.000155911797653,
+      "mcse_over_sd": 0.0079873585622895,
+      "ess_q025": 21625.8888773219,
+      "ess_q975": 27111.0574232376,
+      "mcse_q025": 0.0001943550042059,
+      "mcse_q975": 0.0005191051772091,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": 0.0087034296478175,
+      "hpd_pooled_high": 0.0525625273408147,
+      "parameter": "p[1,2,1]",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00080478367179,
+      "ess_bulk": 10803.8377099454,
+      "ess_tail": 17680.8363917336,
+      "mean": 0.0287574336824859,
+      "sd": 0.0119429161136003,
+      "mcse_mean": 0.0001082043894079,
+      "mcse_over_sd": 0.0090601314100085,
+      "ess_q025": 18018.9321530506,
+      "ess_q975": 24414.5923003996,
+      "mcse_q025": 0.0001244307718527,
+      "mcse_q975": 0.0003833796922185,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -2.04952899639458,
+      "hpd_pooled_high": -0.641785218839682,
+      "parameter": "theta[1,1]",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00030719299993,
+      "ess_bulk": 15059.0712170941,
+      "ess_tail": 22109.7217681153,
+      "mean": -1.32406776864152,
+      "sd": 0.360244237548813,
+      "mcse_mean": 0.0029513290918712,
+      "mcse_over_sd": 0.0081925782129168,
+      "ess_q025": 21625.8888773219,
+      "ess_q975": 27111.0574232376,
+      "mcse_q025": 0.00735098207849,
+      "mcse_q975": 0.0056370519051994,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -2.94840000409212,
+      "hpd_pooled_high": -1.24992422474553,
+      "parameter": "theta[1,2]",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.00080478367179,
+      "ess_bulk": 10803.8377099454,
+      "ess_tail": 17680.8363917336,
+      "mean": -2.08844411270634,
+      "sd": 0.435820125535469,
+      "mcse_mean": 0.0042528231452196,
+      "mcse_over_sd": 0.0097582073338042,
+      "ess_q025": 18018.9321530506,
+      "ess_q975": 24414.5923003996,
+      "mcse_q025": 0.0115805211136921,
+      "mcse_q975": 0.0071242747626808,
+      "operational_gate_pass": true,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": 0.265195481150152,
+      "hpd_pooled_high": 0.653857401515103,
+      "parameter": "va",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.04646665806503,
+      "ess_bulk": 106.105488554247,
+      "ess_tail": 262.354708115904,
+      "mean": 0.462929700338087,
+      "sd": 0.0979407972182779,
+      "mcse_mean": 0.0096326654675169,
+      "mcse_over_sd": 0.0983519201507915,
+      "ess_q025": 333.58855871306,
+      "ess_q975": 1828.24310845413,
+      "mcse_q025": 0.0154499959433276,
+      "mcse_q975": 0.0057836658229229,
+      "operational_gate_pass": false,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": 0.236511116113534,
+      "hpd_pooled_high": 0.576571218720334,
+      "parameter": "vc",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.03516904972541,
+      "ess_bulk": 178.806337162356,
+      "ess_tail": 571.35445239131,
+      "mean": 0.400375870788754,
+      "sd": 0.0875871273808556,
+      "mcse_mean": 0.0066348907011794,
+      "mcse_over_sd": 0.0757518929959751,
+      "ess_q025": 1137.70952290777,
+      "ess_q975": 1137.08075040725,
+      "mcse_q025": 0.0051348065686753,
+      "mcse_q975": 0.0073374779888956,
+      "operational_gate_pass": false,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": 0.134164864774511,
+      "hpd_pooled_high": 0.275318333228209,
+      "parameter": "ve",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.0273367048088,
+      "ess_bulk": 240.796782513073,
+      "ess_tail": 594.772776907028,
+      "mean": 0.203652387117365,
+      "sd": 0.0367324651499145,
+      "mcse_mean": 0.0024050898064761,
+      "mcse_over_sd": 0.0654758616569948,
+      "ess_q025": 2294.55695945821,
+      "ess_q975": 1105.44029717564,
+      "mcse_q025": 0.0015210673176825,
+      "mcse_q975": 0.0036514140219422,
+      "operational_gate_pass": false,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -1.24896437885563,
+      "hpd_pooled_high": -0.376227646795704,
+      "parameter": "log_va",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.04646665806503,
+      "ess_bulk": 106.105488554247,
+      "ess_tail": 262.354708115904,
+      "mean": -0.794735904217064,
+      "sd": 0.228644441854299,
+      "mcse_mean": 0.0239089469189318,
+      "mcse_over_sd": 0.104568240211881,
+      "ess_q025": 333.58855871306,
+      "ess_q975": 1828.24310845413,
+      "mcse_q025": 0.0584630203391218,
+      "mcse_q975": 0.0088939866509078,
+      "operational_gate_pass": false,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -1.39490196410489,
+      "hpd_pooled_high": -0.51796642063306,
+      "parameter": "log_vc",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.03516904972541,
+      "ess_bulk": 178.806337162356,
+      "ess_tail": 571.35445239131,
+      "mean": -0.940247442296666,
+      "sd": 0.22675115358411,
+      "mcse_mean": 0.0163607676012815,
+      "mcse_over_sd": 0.0721529630287534,
+      "ess_q025": 1137.70952290777,
+      "ess_q975": 1137.08075040725,
+      "mcse_q025": 0.0213304928280934,
+      "mcse_q975": 0.0126199341599654,
+      "operational_gate_pass": false,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    },
+    {
+      "hpd_pooled_low": -1.95592476503758,
+      "hpd_pooled_high": -1.25406169850025,
+      "parameter": "log_ve",
+      "all_finite": true,
+      "rhat_rank_split_folded": 1.0273367048088,
+      "ess_bulk": 240.796782513073,
+      "ess_tail": 594.772776907028,
+      "mean": -1.60759111744365,
+      "sd": 0.18094217489019,
+      "mcse_mean": 0.0115658570621721,
+      "mcse_over_sd": 0.0639201837227345,
+      "ess_q025": 2294.55695945821,
+      "ess_q975": 1105.44029717564,
+      "mcse_q025": 0.0108590858005176,
+      "mcse_q975": 0.0129320920311536,
+      "operational_gate_pass": false,
+      "detection_classification": "withheld pending manual HPD endpoint/tail precision review"
+    }
+  ],
+  "HPD_segment_sensitivity": {
+    "a[1,1]": {
+      "chain_mean_range": [
+        -0.861012041381268,
+        -0.768881949236064
+      ],
+      "segment_lower_endpoint_range": [
+        -1.96137102558498,
+        -1.74935434181945
+      ],
+      "segment_upper_endpoint_range": [
+        0.113105172500948,
+        0.356763430912821
+      ],
+      "segments_excluding_zero": 0,
+      "segments": 12
+    },
+    "beta1": {
+      "chain_mean_range": [
+        -0.118347704039845,
+        -0.107708287170703
+      ],
+      "segment_lower_endpoint_range": [
+        -0.761460074722077,
+        -0.611865544540984
+      ],
+      "segment_upper_endpoint_range": [
+        0.3845987759979,
+        0.537054373602686
+      ],
+      "segments_excluding_zero": 0,
+      "segments": 12
+    },
+    "c[1]": {
+      "chain_mean_range": [
+        -0.69761827235023,
+        -0.612395991605182
+      ],
+      "segment_lower_endpoint_range": [
+        -1.75753750178222,
+        -1.57334793297778
+      ],
+      "segment_upper_endpoint_range": [
+        0.297340180257421,
+        0.418841964211987
+      ],
+      "segments_excluding_zero": 0,
+      "segments": 12
+    },
+    "mu": {
+      "chain_mean_range": [
+        -0.0429080030000925,
+        -0.0403434950191321
+      ],
+      "segment_lower_endpoint_range": [
+        -0.131315305422043,
+        -0.11554065382779
+      ],
+      "segment_upper_endpoint_range": [
+        0.0360415225064252,
+        0.0496063296652779
+      ],
+      "segments_excluding_zero": 0,
+      "segments": 12
+    },
+    "p[1,1,1]": {
+      "chain_mean_range": [
+        0.0574139012347555,
+        0.0585386188408771
+      ],
+      "segment_lower_endpoint_range": [
+        0.0232983559252395,
+        0.0251839171612273
+      ],
+      "segment_upper_endpoint_range": [
+        0.0957369499540744,
+        0.0986944693992561
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "p[1,2,1]": {
+      "chain_mean_range": [
+        0.0283673143295096,
+        0.0292942062337811
+      ],
+      "segment_lower_endpoint_range": [
+        0.0080512943273739,
+        0.0091421551686607
+      ],
+      "segment_upper_endpoint_range": [
+        0.0511636717003071,
+        0.0533514606034746
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "theta[1,1]": {
+      "chain_mean_range": [
+        -1.33765471097267,
+        -1.31671615650622
+      ],
+      "segment_lower_endpoint_range": [
+        -2.07313197528842,
+        -2.00050696583927
+      ],
+      "segment_upper_endpoint_range": [
+        -0.668456476109559,
+        -0.594319426777052
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "theta[1,2]": {
+      "chain_mean_range": [
+        -2.10341972717253,
+        -2.0669361277068
+      ],
+      "segment_lower_endpoint_range": [
+        -3.01501784099129,
+        -2.89151433244519
+      ],
+      "segment_upper_endpoint_range": [
+        -1.31051716160923,
+        -1.22818844162924
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "va": {
+      "chain_mean_range": [
+        0.443994614030082,
+        0.501674323725707
+      ],
+      "segment_lower_endpoint_range": [
+        0.227570019945598,
+        0.332780319589246
+      ],
+      "segment_upper_endpoint_range": [
+        0.613163571496138,
+        0.672691533520743
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "vc": {
+      "chain_mean_range": [
+        0.373407986793691,
+        0.417172729486048
+      ],
+      "segment_lower_endpoint_range": [
+        0.212667304899772,
+        0.267096933363466
+      ],
+      "segment_upper_endpoint_range": [
+        0.521106414759353,
+        0.600345457658701
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "ve": {
+      "chain_mean_range": [
+        0.191141483855813,
+        0.209603816243652
+      ],
+      "segment_lower_endpoint_range": [
+        0.128866924244437,
+        0.144714916859421
+      ],
+      "segment_upper_endpoint_range": [
+        0.253569776433697,
+        0.29047473832858
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "log_va": {
+      "chain_mean_range": [
+        -0.837510961758476,
+        -0.705700033462092
+      ],
+      "segment_lower_endpoint_range": [
+        -1.38964366751663,
+        -1.05209536684
+      ],
+      "segment_upper_endpoint_range": [
+        -0.443917950026318,
+        -0.352544552135045
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "log_vc": {
+      "chain_mean_range": [
+        -1.00912892302083,
+        -0.895928172695157
+      ],
+      "segment_lower_endpoint_range": [
+        -1.49108748543958,
+        -1.29437847193173
+      ],
+      "segment_upper_endpoint_range": [
+        -0.609517425903004,
+        -0.463108759514741
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    },
+    "log_ve": {
+      "chain_mean_range": [
+        -1.67001275897895,
+        -1.57828203930897
+      ],
+      "segment_lower_endpoint_range": [
+        -2.01871298416238,
+        -1.90996145185612
+      ],
+      "segment_upper_endpoint_range": [
+        -1.35050380904835,
+        -1.21419087485849
+      ],
+      "segments_excluding_zero": 12,
+      "segments": 12
+    }
+  },
+  "interpretation": {
+    "main": "All four prescribed chains completed, but the joint gate failed because the three variance components and their log transforms mix insufficiently under the fixed criteria.",
+    "dependencies": "Log variances repeat the underlying variance failures. Conditional probability ranks repeat corresponding latent-trait ranks. These are shared transformations, not independent confirmatory findings.",
+    "beta1": "Individual criteria pass and all12 whole/half-chain95%HPDs include zero. This does not override the failed joint gate or establish detection, non-detection, power or false-positive recovery.",
+    "intervals": "Pooled and segmented HPD intervals are descriptive saved-draw summaries. Quantile MCSE is separately reported and is not HPD endpoint MCSE.",
+    "scope": "One dataset; not the100-dataset source simulation or whole-dissertation replication."
+  },
+  "sources": {
+    "diagnostics": "production/jags-gate-v1/prepared/diagnostics/diagnostics.csv",
+    "HPD_sensitivity": "production/jags-gate-v1/prepared/diagnostics/hpd-segment-sensitivity.csv",
+    "rendered_diagnostics": "production/jags-gate-v1/prepared/diagnostics/traces-and-ranks.pdf",
+    "independent_review": "provenance/jags-gate-outcome-independent-review.json"
+  }
+}
