@@ -33,20 +33,23 @@ certificate; do not label them formally verified or use them to establish genera
 finite-sample likelihood uniqueness, empirical recovery, power or convergence.
 Do not import historical manuscript-gate wording as a scientific limitation.
 
-The completed centered 12000-draw-per-chain diagnostic fails its joint gate.
-All diagnostic summaries remain descriptive. Do not use interim recovery output.
-The recovery reservation must be resolved by reviewed terminal evidence and a
-new packet/allowlist hash before final writer handoff. Do not invent its outcome.
+The shorter original and centered 12000-draw-per-chain diagnostics failed.
+The reviewed extended fixed-case diagnostic passes the operational criteria for all 14 monitored quantities
+with four chains retaining 28000 draws each. Its interaction HPD includes zero,
+including all 12 whole/half-chain HPDs. This is one Chapter 2 N500/J60 floor
+seed301 dataset, not source-count recovery/power or validation of other designs
+or Chapter 5. Repeated 12000-draw prefixes cannot be pooled. Current evidence
+precedence overrides historical failed-gate wording as a present limitation;
+original scientific adjudications and coverage-v4 work counts remain preserved.
 
 No workflow narrative belongs in the manuscript. State scientific consequences
 of unavailable inputs, unknown source procedures and incomplete evidence directly.
 The packet's artifact catalog is provenance; it is not an instruction to recount
 execution history or access other files. Write no model code and launch no analyses.
 
-Drafting from this candidate and completed evidence is authorized. Reserve the
-terminal recovery paragraph and final hash-bound writer manifest until the
-reviewed terminal evidence is incorporated. The candidate hash is not a final
-delivery attestation.
+Reviewed terminal evidence is incorporated. Bind the final manuscript manifest
+to the final packet, instruction and actual-exposure hashes. A later scientific
+packet change requires refreshed hashes and affected scientific review.
 
 The allowlist records the union of authorized inputs, including the baseline
 packet and scientific handoffs already read. Record actual exposure separately;
@@ -56,5 +59,12 @@ Chapter 6 assessments and five pending power/unequal-structure targets. Original
 claim fields preserve adjudication history; dated operational limitations cannot
 override current evidence. The remaining-target resource plan is a proposal,
 not an executed experiment: 3250 datasets and 3450 method fits are planned core
-targets; centered12k timings measure a failed diagnostic, not guaranteed cost
-or convergence.
+targets; the measured 28k cost is 4927.558111619001 summed chain-process elapsed
+seconds, not CPU time or total workflow time. Its 1700-fit constant-cost
+projection is neither a lower nor upper bound across different designs/methods.
+
+The immutable scientific reproduction revision is
+`2424e0f4d67929ba72255ef6f546ba2a72c25df0`. Use
+`handoff/current-reproduction.md` for current saved checks and fixed-run commands;
+`handoff/terminal-reproduction.md` remains the Chapter 6 recipe. Identify the
+link as the scientific outputs/code revision, not the later manuscript revision.
