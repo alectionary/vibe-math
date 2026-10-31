@@ -1,0 +1,79 @@
+{
+  "status": "Accepted for one bounded centered diagnostic experiment after other compute completes; implementation reviewed statically and preparation artifacts checked; no model compilation or sampling performed by reviewer",
+  "reviewer": "/root/guard_validation",
+  "reviewed_utc": "2026-10-31T03:33:44.703321+00:00",
+  "reviewed_sha256": {
+    "simulation/jags_centered_gate.R": "6df730e2eed6a1710ef5b772373501ec0a5048e32ef400d7042fbce323e6a8b0",
+    "simulation/diagnose_jags_centered_gate.R": "dbe21c57801f8ac49994ceb891d404bdef6ed2c1f938e667411fff20ac2ddd86",
+    "simulation/dispatch_jags_centered_gate.py": "af1f1a4b938c86a6de677f64a9c7bd21bb8fdef90f5e59a811628f1f778d9f9c",
+    "provenance/jags-centered-dispatch-protocol.json": "e1ce3fa9b5f017ff7768ca7c3aa5a07a806f7c673cec827c187a68bc0752035a",
+    "provenance/jags-centered-gate-plan.json": "99b98347004de0299d87ca0db15f96eaa8ec0f8567fae5799f6658dfe8960516",
+    "simulation/test_jags_centered_independent.py": "5860463185626103d2eddadb81f4822f155031bf61c4336e2815fcdd104dc6d0",
+    "simulation/test_jags_recovery_independent.py": "b02f7c599713f70fb8b0ca690a008d7505897957ef9e8683c216074ee51b4c14",
+    "production/jags-long-gate-v1/chains/outcomes.json": "0efb69b6fcad09f46c5fef33a23eb98564750bb2a5b3832fc0e3caa49dcb4466",
+    "production/jags-long-gate-recovery-v1/chains/outcomes.json": "d58ad587374721f7f728cbd9a39a0130dfa6b38d08d5de5accd02f46e7653402",
+    "provenance/compute-remedies-independent-review.json": "9830b6f1b634faa60eb12c41df009ed367038e622b0a41779ff36fe05a4871f2"
+  },
+  "preflight_sha256": {
+    "model.jags": "8fc2a47162489101ef942d73657544fc45bf0edb98187866ac5c11b699183451",
+    "data.rds": "5a9814682484e6cd62d8ee7c1415b8d67ba30be6b9696a685c85b58b5e60240a",
+    "initials.rds": "92eb07aa9ad7448584fe85b48f9cca736d2716886c7c523ec9e774c2b25c552f",
+    "protocol.rds": "dfaa136b6051c43408c3826e34c1137d1a95386e4c57f5001be62e111b0493db"
+  },
+  "source_equivalence": [
+    "Fixed design asserts N500,J60 and exactly first140MZ followed by360DZ rho values before generating centered code. The actual prepared data hash matches the previous noncentered dataset byte-for-byte; there is no response regeneration change.",
+    "Priors are inserted from the hash-pinned baseline env$prior: ta,tc~Gamma(1,1), beta0~Normal(0,variance1), beta1 and mu~Normal(0,variance10). va=1/ta,vc=1/tc,ve=exp(beta0) retain interpretation. No flat variance or changed residual prior has been introduced.",
+    "Each c[i] is Normal(0,precision tc). For MZ, a[i,1] is Normal(0,precision ta), and a[i,2] is the deterministic same value. For DZ, a[i,1] has precision ta; a[i,2]|a[i,1] has mean0.5*a[i,1] and precision ta/0.75=4*ta/3. Thus both marginal genetic variances are1/ta and covariance0.5/ta.",
+    "Two distinct theta nodes per family remain. Their mean is mu+a[i,t]+c[i], with precision exp(-beta0-beta1*a[i,t]); item logits are theta[i,t]-b[k]. The genetic effect, rather than the total family effect, moderates residual variance. This is the direct-centered target previously independently proved equivalent.",
+    "Node definitions form an acyclic hierarchy despite source-code textual ordering: globals -> c/a -> theta -> responses. MZ deterministic nodes have no conflicting stochastic declaration. Global starts are finite and both precisions positive. No invalid deterministic a2 initial values are supplied.",
+    "Prepared global starts and seeds830101..830104 are retained. Latent starts are left to JAGS auto-initialization in the new parameterization, not explicitly mapped old latent draws. This is valid as a new experiment but does not preserve initialization trajectories or RNG consumption. Runtime compilation and actual initialized latent finiteness are still checked only during the bounded execution.",
+    "Eleven original monitors plus derived log_va,log_vc,log_ve give the same14 quantities. Family1 is MZ by asserted ordering, and a/c monitors retain scientific coordinates. No source F/C alias confusion."
+  ],
+  "fixed_procedure": {
+    "adaptation": 1000,
+    "burn_in": 7000,
+    "retained_per_chain": 12000,
+    "thin": 1,
+    "chains": 4,
+    "checkpoints": "Three fixed4000-draw chunks, plus adaptation and burn-in sampler states. Checkpoints are forensic evidence; no automatic resume or outcome-dependent stopping.",
+    "diagnostics": "Compared with reviewed longer-run diagnostic: only wrapper/hash/name and intended12000 length/6000 half-splits changed. Rank Rhat, ESS, MCSE and manual HPD review criteria remain unchanged. Partial or failed chains cannot satisfy the all-four completion gate.",
+    "source_scope": "One fixed Chapter2 diagnostic dataset, not source simulation-count recovery or whole replication."
+  },
+  "guard_and_resource_tests": {
+    "command": "python simulation/test_jags_centered_independent.py",
+    "passed": 15,
+    "details": [
+      "ENOENT and ESRCH on proc cmdline read are ignored as process-exit races",
+      "EACCES raises explicit RuntimeError; unrelated EIO is not swallowed",
+      "Prior actual-script-versus-reader regressions all pass, including stdin, -e, --args and owned PID cases",
+      "Centered R wrapper is detected as competing; centered filename as Python input is ignored",
+      "Existing cgroup ancestor CPU/memory functions, RSS mechanics, timeout termination and run_batch match prior AST",
+      "All pinned source/runtime hashes validate; prepared data/model hashes match dispatcher expectations",
+      "Both previous four-cancelled-outcome ledgers retained and counted"
+    ],
+    "runtime_constraint": "Guard is for known file-based study commands, not general CPU-load detection. Parent will await unrelated generator completion before dispatch. The pinned Rscript wrapper execs R, retaining the owned PID."
+  },
+  "budget": {
+    "actual_prior_chain_elapsed_seconds": "3721.97830259101455",
+    "new_nominal_caps_seconds": 7200,
+    "new_cleanup_allowance_seconds": 20,
+    "nominal_combined_chain_elapsed_seconds": "10941.97830259101455",
+    "remaining_margin_to_12000_seconds": "1058.02169740898545",
+    "limit": "Nominal chain-process accounting, not an absolute all-phase wall bound. Preparation and diagnostics remain separately capped. Polling/guard overhead must be reported from actual outcomes. No automatic extension/replacement or another retry authorized by this review."
+  },
+  "interpretation": [
+    "The first two longer attempts were cancelled by infrastructure guards before retained checkpoints. They do not establish failed posterior mixing for48000 draws.",
+    "Centering restores precision conditional conjugacy mathematically; no evidence yet establishes JAGS sampler assignment, better ESS/sec, completed adaptation, convergence or interval stability.",
+    "Any compilation, initialization, timeout or numerical failure must remain visible with all four requested denominators; no cherry-picked replacement chains."
+  ],
+  "operations": {
+    "posterior_draws": 0,
+    "model_compilations": 0,
+    "R_read_only_actions": "Read prepared protocol and initials with base R and asserted counts/seeds/monitor dimensions; no rjags model instantiated.",
+    "active_scientific_file_edits": 0,
+    "reviewer_created_files": [
+      "simulation/test_jags_centered_independent.py",
+      "provenance/jags-centered-gate-pre-run-independent-review.json"
+    ]
+  }
+}
