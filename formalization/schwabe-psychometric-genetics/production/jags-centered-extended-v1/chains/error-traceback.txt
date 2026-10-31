@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/simulation/dispatch_jags_centered_extended.py", line 269, in run_batch
+    guard([p.pid for p, _, _ in active.values()])
+  File "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/simulation/dispatch_jags_centered_extended.py", line 151, in require_idle
+    raise RuntimeError('Conflicting OpenMx/JAGS processes: ' + json.dumps(busy))
+RuntimeError: Conflicting OpenMx/JAGS processes: [{"pid": 102152, "argv": ["/workspace/slot3-runtime/usr/lib/R/bin/exec/R", "--vanilla", "--slave", "--file=simulation/jags_centered_extended_gate.R", "--args", "run", "/workspace/vibe-math/formalization/schwabe-psychometric-genetics/production/jags-centered-extended-v1/prepared", "1", ""]}]
