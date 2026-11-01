@@ -186,3 +186,18 @@ PYTHONPATH=restricted-frames-20261031/pysat_shim nice -n 19 python3 subgroup_fra
    split test.
 3. ~~Use the quarter obstruction globally~~: done in follow-up A. It is valid
    but non-binding at point 22.
+
+## Follow-up C: half-turn case by cube-and-conquer (in progress)
+
+`restricted-frames-20261031/cnc.py` splits the follow-up B CNF (SHA-256 `dc2b1d0d…0dc0452`)
+into cubes over the primary orbit variables. Cubes are taken first on the critical
+orbit 12 (X, then Z), then on the other orbits. Each cube is solved by Kissat with
+units appended. Each UNSAT leaf's DRAT proof is checked by drat-trim before
+deletion; the proof's hash and size are kept. A cube that times out is split in
+two. The leaves therefore always partition the assignment space, and
+`check_tree()` re-verifies that from the recorded tree. State is resumable in
+`work/cnc/state.json`.
+- The root is pre-split on the 8 X-side orbit-12 variables (256 cubes).
+- A 60 s probe closed most of the first cubes in under 1 s (lexicographic
+  symmetry breaking plus the at-most-5 critical bound). The rest were split.
+- The run continues with 300 s cubes.
