@@ -126,6 +126,7 @@ def main():
     ap.add_argument('--proof-factor', type=float, default=4.0)
     ap.add_argument('--mode', choices=['search', 'certify', 'both'], default='both',
                     help='search: no proofs, UNSAT leaves become UNSAT_UNPROVED; certify: re-solve those with proofs and check them; both: prove and check during search')
+    ap.add_argument('--deep-first', action='store_true', help='take the deepest open cube first (probes whether splitting helps)')
     ap.add_argument('--initial-depth', type=int, default=8)
     ap.add_argument('--wall', type=int, default=6600, help='stop starting new cubes after this many seconds')
     args = ap.parse_args()
@@ -161,7 +162,7 @@ def main():
         todo = [k for k in leaves if state['nodes'][k].get('status') == want]
         if not todo:
             break
-        key = min(todo, key=lambda k: (state['nodes'][k]['depth'], int(k)))
+        key = min(todo, key=lambda k: ((-1 if args.deep_first else 1) * state['nodes'][k]['depth'], int(k)))
         n = state['nodes'][key]
         cnf = WORK / 'cube.cnf'; proof = WORK / 'cube.drat'; log = WORK / 'cube.log'
         write_cube_cnf(cnf, nv, nc, body, n['cube'])
