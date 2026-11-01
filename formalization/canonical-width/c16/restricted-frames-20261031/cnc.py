@@ -73,7 +73,7 @@ def write_cube_cnf(path, nv, nc, body, cube):
 def patterns():
     X = [int(v, 16) for v in (ROOT / 'pools/xcoords.txt').read_text().split()]
     Z = [int(v, 16) for v in (ROOT / 'pools/zcoords.txt').read_text().split()]
-    P = [[sum(((X[16 * a + p] & Z[16 * b + q + d * h]).bit_count() % 2) << h for h in range(L))
+    P = [[sum((bin(X[16 * a + p] & Z[16 * b + q + d * h]).count('1') % 2) << h for h in range(L))
           for b in range(45) for q in range(d)] for a in range(45) for p in range(d)]
     return X, Z, P
 
@@ -89,11 +89,11 @@ def decode(model):
     for i in cx:
         partners = [j for j in cz if P[i][j]]
         assert len(partners) == 1
-        j = partners[0]; f = P[i][j]; assert f.bit_count() == 1; h = f.bit_length() - 1
+        j = partners[0]; f = P[i][j]; assert bin(f).count('1') == 1; h = f.bit_length() - 1
         for s in range(L):
             pairs.append([16 * (i // d) + i % d + d * s, 16 * (j // d) + j % d + d * ((s + h) % L)])
     assert len(pairs) == 128
-    assert all((X[i] & Z[j]).bit_count() % 2 == (a == b)
+    assert all(bin(X[i] & Z[j]).count('1') % 2 == (a == b)
                for a, (i, _) in enumerate(pairs) for b, (_, j) in enumerate(pairs))
     return pairs
 
