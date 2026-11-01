@@ -155,6 +155,9 @@ clause-identical, so CNF hashes differ from `structural-results/`.
   for a 10,800 s bound at nice 19, with the proof sent to /dev/null to protect the
   disk. On UNSAT, rerun with a proof file to certify; Kissat is deterministic.
   The result is recorded below when it finishes.
+- **Attempt 1 (interrupted):** ran 5,766 s with no SAT/UNSAT before a container
+  restart killed it. This is not a solver time limit and carries no evidence
+  either way. Restarted from scratch on the identical CNF for the full 10,800 s bound.
 
 Run it with:
 ```
