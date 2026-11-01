@@ -124,6 +124,8 @@ def main():
     ap.add_argument('--drat-trim', required=True)
     ap.add_argument('--cube-seconds', type=int, default=900)
     ap.add_argument('--proof-factor', type=float, default=4.0)
+    ap.add_argument('--mode', choices=['search', 'certify', 'both'], default='both',
+                    help='search: no proofs, UNSAT leaves become UNSAT_UNPROVED; certify: re-solve those with proofs and check them; both: prove and check during search')
     ap.add_argument('--initial-depth', type=int, default=8)
     ap.add_argument('--wall', type=int, default=6600, help='stop starting new cubes after this many seconds')
     args = ap.parse_args()
@@ -155,28 +157,37 @@ def main():
         leaves = check_tree(state)
         if any(state['nodes'][k].get('status') == 'SAT' for k in leaves):
             break
-        todo = [k for k in leaves if 'status' not in state['nodes'][k]]
+        want = 'UNSAT_UNPROVED' if args.mode == 'certify' else None
+        todo = [k for k in leaves if state['nodes'][k].get('status') == want]
         if not todo:
             break
         key = min(todo, key=lambda k: (state['nodes'][k]['depth'], int(k)))
         n = state['nodes'][key]
         cnf = WORK / 'cube.cnf'; proof = WORK / 'cube.drat'; log = WORK / 'cube.log'
         write_cube_cnf(cnf, nv, nc, body, n['cube'])
+        limit = args.cube_seconds if args.mode != 'certify' else int(3 * n['solve_seconds']) + 120
+        prove = args.mode != 'search'
         start = time.monotonic()
         with log.open('w') as out:
             try:
-                code = subprocess.run(['nice', '-n', '19', args.kissat, f'--time={args.cube_seconds}', '-q', str(cnf), str(proof)],
-                                      stdout=out, stderr=subprocess.STDOUT, timeout=args.cube_seconds + 30).returncode
+                code = subprocess.run(['nice', '-n', '19', args.kissat, f'--time={limit}', '-q', str(cnf)] + ([str(proof)] if prove else []),
+                                      stdout=out, stderr=subprocess.STDOUT, timeout=limit + 30).returncode
             except subprocess.TimeoutExpired:
                 code = -15
-        n['solve_seconds'] = round(time.monotonic() - start, 2); n['time_limit'] = args.cube_seconds
+        secs = round(time.monotonic() - start, 2)
+        if args.mode == 'certify':
+            n['certify_solve_seconds'] = secs
+        else:
+            n['solve_seconds'] = secs; n['time_limit'] = limit
         text = log.read_text()
-        if code == 20 and 's UNSATISFIABLE' in text:
+        if code == 20 and 's UNSATISFIABLE' in text and not prove:
+            n['status'] = 'UNSAT_UNPROVED'
+        elif code == 20 and 's UNSATISFIABLE' in text:
             n['proof_bytes'] = proof.stat().st_size; n['proof_sha256'] = sha(proof)
             pstart = time.monotonic()
             try:
                 chk = subprocess.run(['nice', '-n', '19', args.drat_trim, str(cnf), str(proof)], capture_output=True, text=True,
-                                     timeout=int(args.proof_factor * n['solve_seconds']) + 300)
+                                     timeout=int(args.proof_factor * secs) + 300)
                 ok = chk.returncode == 0 and 's VERIFIED' in (chk.stdout + chk.stderr)
             except subprocess.TimeoutExpired:
                 ok = False
@@ -187,6 +198,8 @@ def main():
             pairs = decode(model)
             (WORK / 'witness.json').write_text(json.dumps({'cube': n['cube'], 'pool_pairs': pairs}) + '\n')
             n['status'] = 'SAT'
+        elif args.mode == 'certify':
+            n['certify_note'] = f'proof run returned {code}'; n['status'] = 'UNSAT_CERTIFY_FAILED'
         else:
             v = order[n['depth']]; kids = []
             for lit in (v, -v):
@@ -202,7 +215,7 @@ def main():
               f"(+{n.get('proof_check_seconds', 0)}s check); leaves {len(leaves)}, closed {closed}", flush=True)
     leaves = check_tree(state)
     summary = {s: sum(state['nodes'][k].get('status', 'OPEN') == s for k in leaves)
-               for s in ['UNSAT_CHECKED', 'UNSAT_UNCHECKED', 'SAT', 'OPEN']}
+               for s in ['UNSAT_CHECKED', 'UNSAT_UNPROVED', 'UNSAT_UNCHECKED', 'SAT', 'OPEN']}
     summary['leaves'] = len(leaves)
     summary['solve_seconds_total'] = round(sum(n.get('solve_seconds', 0) for n in state['nodes'].values()), 1)
     summary['check_seconds_total'] = round(sum(n.get('proof_check_seconds', 0) for n in state['nodes'].values()), 1)
