@@ -200,4 +200,16 @@ two. The leaves therefore always partition the assignment space, and
 - The root is pre-split on the 8 X-side orbit-12 variables (256 cubes).
 - A 60 s probe closed most of the first cubes in under 1 s (lexicographic
   symmetry breaking plus the at-most-5 critical bound). The rest were split.
-- The run continues with 300 s cubes.
+- **Status after about 4.7 h of solver time: paused, inconclusive.** No SAT cube was found.
+  - 302 leaves: 23 UNSAT with checked proofs, 19 UNSAT without proofs (proof-free `--mode search`), 260 open.
+  - State is in `results/cnc-state-20261101.json.gz` and the log in `results/cnc-driver-20261101.log.gz`.
+- **Splitting on single orbit variables does not make cubes easier.**
+  - Cubes that close quickly do so in under 1 s, through symmetry breaking and the critical bound. Roughly 9 in 10 do not.
+  - Every split produced the same "ladder". Selecting the variable (`+v`) gave UNSAT in about 100–280 s. Excluding it (`-v`) gave a cube about as hard as its parent.
+  - The deep-first probe followed one such chain from depth 8 to depth 17 before both children closed, about 4,400 s for a single depth-8 cube.
+  - Extrapolated over the ~220 hard depth-8 cubes, that is on the order of 100+ single-thread hours before certification, which costs about 3× more.
+- With proofs, checking costs about 2.7× the solve time, and each proof is about 250 MB. That is why the search was moved to proof-free mode with a later `--mode certify` pass.
+- Better options than more of the same:
+  1. Split on cardinalities instead of literals, for example on how many sub-orbits of each orbit are selected. That makes the `-v` side bind.
+  2. Add stronger symmetry or structural constraints before cubing.
+  3. Run the existing tree on many cores (the cubes are independent).
