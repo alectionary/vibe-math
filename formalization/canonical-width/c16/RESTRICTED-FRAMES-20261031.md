@@ -35,7 +35,7 @@ The pairing is the standard F2 dot product, and the 720×720 Gram
 | 1 | No frame splits along the quarters `{0,1},{2,3},{4,5},{6,7}` | Written proof + exact finite computation; DRAT-verified | `quarters.py`, `support_cnf.py`, `results/quarters.json` |
 | 2 | Pool structure facts listed below | Exact finite computation | `structure.py`, `results/structure.json` |
 | 3 | No T⁴-invariant frame (independent re-encoding) | Kissat UNSAT; reproduces the existing DRAT-verified result in [STRUCTURAL-COMPARISON.md](STRUCTURAL-COMPARISON.md) | `subgroup_cnf.py 4` |
-| 4 | T⁸ (half-turn) invariant frames | **Open.** Kissat timed out at 6,931 s | `subgroup_cnf.py 2`, `results/h2-kissat.log.gz` |
+| 4 | T⁸ (half-turn) invariant frames | **Open.** Kissat timed out at 6,931 s; the stronger repo encoding was stopped at 7,138 s (follow-up B) | `subgroup_cnf.py 2`, `results/h2-kissat.log.gz` |
 | 5 | Frames splitting into a `p=0` and a `p=1` half | **Open.** `p1` timed out at 5,349 s; `p0` got ~600 s only | `support_cnf.py`, `results/p1-kissat.log.gz` |
 | 6 | No order-3 invariant frame | Written: 3 ∤ 128 | — |
 
@@ -154,10 +154,19 @@ clause-identical, so CNF hashes differ from `structural-results/`.
   `dc2b1d0d8b5e123d88b566ef77e2746173a0c4e4c8f2659efd402e7c41dc0452`. Running
   for a 10,800 s bound at nice 19, with the proof sent to /dev/null to protect the
   disk. On UNSAT, rerun with a proof file to certify; Kissat is deterministic.
-  The result is recorded below when it finishes.
+  Outcome: see attempts below.
 - **Attempt 1 (interrupted):** ran 5,766 s with no SAT/UNSAT before a container
   restart killed it. This is not a solver time limit and carries no evidence
   either way. Restarted from scratch on the identical CNF for the full 10,800 s bound.
+- **Attempt 2 (stopped, inconclusive):** this session's background jobs are capped
+  at 2 hours, so the run was killed with SIGTERM at 7,138 s process time, before its
+  own 10,800 s bound. There was no SAT/UNSAT. It reached 9.51 M conflicts
+  (about 1,330 per second) and 30.6 M decisions, with about 81.9 k of the
+  331 k variables still active. The log is in `results/h2-subgroup-frame-run2.log.gz`.
+  **The half-turn case remains open.** Kissat cannot resume a run, so a
+  conclusive attempt needs a machine that can run for at least 3 hours without
+  interruption, or a cube-and-conquer split (for example on the orbit-12
+  critical-monomial variables) into jobs that each finish within 2 hours.
 
 Run it with:
 ```
@@ -167,10 +176,12 @@ PYTHONPATH=restricted-frames-20261031/pysat_shim nice -n 19 python3 subgroup_fra
 
 ## Suggested next steps
 
-1. **Rerun the half-turn case with the repo's stronger encoding** (follow-up B, running). Add the
-   critical-monomial bound and lexicographic symmetry breaking from
-   `subgroup_frame.py` (and the 80 common unit pairs as hints). This is the
-   last subgroup-invariant case before the unrestricted search.
+1. **Finish the half-turn case** (follow-up B, still open after 7,138 s with the
+   stronger encoding). Do one of the following:
+   - run it uninterrupted for 3 hours or more, on a host without a 2-hour job cap;
+   - split it into cubes (cube-and-conquer) and run each cube as its own job.
+
+   This is the last subgroup-invariant case before the unrestricted search.
 2. **Run p0 for a comparable bounded time.** p0 is the other half of the
    split test.
 3. ~~Use the quarter obstruction globally~~: done in follow-up A. It is valid
