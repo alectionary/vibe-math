@@ -32,6 +32,8 @@ def main():
     ap.add_argument('--mode', choices=['search', 'certify'], default='search')
     ap.add_argument('--proof-factor', type=float, default=4.0)
     ap.add_argument('--wall', type=int, default=10 ** 9)
+    ap.add_argument('--whole-depth', type=int, default=None,
+                    help='solve every unfinished node at this depth whole (no further splitting); an UNSAT result collapses its subtree')
     args = ap.parse_args()
     assert sha(BASE) == BASE_SHA, 'base CNF hash mismatch'
     state = json.loads((WORK / 'state.json').read_text())
@@ -64,7 +66,17 @@ def main():
         if any(state['nodes'][k].get('status') == 'SAT' for k in leaves):
             stopping = True
         if not stopping and time.monotonic() - t0 < args.wall:
-            todo = [k for k in leaves if state['nodes'][k].get('status') == want and k not in running]
+            if args.whole_depth is not None and args.mode == 'search':
+                open_leaf = {k for k in leaves if 'status' not in state['nodes'][k]}
+                def unfinished(k):
+                    n = state['nodes'][k]
+                    if 'children' not in n:
+                        return k in open_leaf
+                    return any(unfinished(c) for c in n['children'])
+                todo = [k for k, n in state['nodes'].items() if n['depth'] == args.whole_depth and not n.get('whole_timeout')
+                        and k not in running and unfinished(k)]
+            else:
+                todo = [k for k in leaves if state['nodes'][k].get('status') == want and k not in running]
             todo.sort(key=lambda k: (state['nodes'][k]['depth'], int(k)))
             while todo and len(running) < args.jobs:
                 launch(todo.pop(0))
@@ -90,6 +102,8 @@ def main():
                 else:
                     n['solve_seconds'] = secs; n['time_limit'] = r['limit']
                 if code == 20 and 's UNSATISFIABLE' in text and args.mode == 'search':
+                    if 'children' in n:   # whole-node solve: the node itself is now a closed leaf
+                        n['collapsed_children'] = n.pop('children'); n['collapsed_split_var'] = n.pop('split_var')
                     n['status'] = 'UNSAT_UNPROVED'; cleanup(r); del running[key]
                 elif code == 20 and 's UNSATISFIABLE' in text:
                     n['proof_bytes'] = r['proof'].stat().st_size; n['proof_sha256'] = sha(r['proof'])
@@ -104,6 +118,11 @@ def main():
                     n['status'] = 'SAT'; cleanup(r); del running[key]
                 elif args.mode == 'certify':
                     n['certify_note'] = f'proof run returned {code}'; n['status'] = 'UNSAT_CERTIFY_FAILED'; cleanup(r); del running[key]
+                elif args.whole_depth is not None:
+                    n['whole_timeout'] = r['limit']
+                    if 'children' not in n:
+                        new_children(state, key, order)
+                    cleanup(r); del running[key]
                 else:
                     new_children(state, key, order); cleanup(r); del running[key]
             save(state)

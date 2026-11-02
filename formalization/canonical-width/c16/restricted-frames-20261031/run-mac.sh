@@ -9,4 +9,4 @@ if [ ! -x src/drat-trim/drat-trim ]; then (cd src/drat-trim && make); fi
 cd c16/restricted-frames-20261031
 echo "Running $JOBS parallel jobs; log in $(pwd)/work/cnc/mac.log"
 caffeinate -i python3 cnc_parallel.py --kissat ../../src/kissat/build/kissat \
-  --drat-trim ../../src/drat-trim/drat-trim --jobs "$JOBS" --mode "${MODE:-search}" 2>&1 | tee -a work/cnc/mac.log
+  --drat-trim ../../src/drat-trim/drat-trim --jobs "$JOBS" --mode "${MODE:-search}" "${@:2}" 2>&1 | tee -a work/cnc/mac.log
