@@ -245,9 +245,11 @@ Kirsten Morris. August 2025. [Primary source](https://digitalcommons.unl.edu/dis
 - Record type: seed dissertation; access: full text local seed copy and online record.
 - Inspected locator: Chapter 5, Section 5.2, Table 5.1, printed p.69 / PDF p.81; Chapter 6 printed p.74 / PDF p.86.
 - Contribution: Prior opposing syndrome/logical representation effects and explicit lifted-product redundancy research direction.
-- Comparison limit: Gallager-B, different transformation and failure-inducing absorbing-set count; not our fixed integer min-sum LP merger; not a replacement for unavailable P10 conference text.
-- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design).
+- Comparison limit: Gallager-B, different transformation and failure-inducing absorbing-set count; not our fixed integer min-sum LP merger; not a replacement for unavailable P10 conference text. Fetch issue 11 is this same PDF (sha256 73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517). Chapter 6 states three further directions, recorded as L-F187-nonabsorbing-failure-sets, L-F187-gallager-b-convergence-bound, and L-F187-redundancy-other-families.
+- Related canonical targets: [L-P34-decoding-effects](OPEN-PROBLEMS.md#l-p34-decoding-effects), [L-P34-base-design](OPEN-PROBLEMS.md#l-p34-base-design), [L-F187-nonabsorbing-failure-sets](OPEN-PROBLEMS.md#l-f187-nonabsorbing-failure-sets), [L-F187-gallager-b-convergence-bound](OPEN-PROBLEMS.md#l-f187-gallager-b-convergence-bound), [L-F187-redundancy-other-families](OPEN-PROBLEMS.md#l-f187-redundancy-other-families).
 - Provenance: [source review ledger](../formalization/cyclic-lifts/search/loop-literature-review.json).
+
+- Question screen: [full text screened](../literature/fetch-ingest/11/SCREEN.md); 3 linked canonical targets.
 
 ## AbiadCastriota2026 — Spectral and Additive Combinatorial Methods for Cycles and Absorbing Sets in Lifted-Product Quantum LDPC Codes
 
@@ -1463,3 +1465,16 @@ William H. Cunningham. Journal of Combinatorial Theory, Series B 36 (1984), 161�
 - Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
 
 - Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 1 linked canonical targets.
+
+## F188 — Constructions of Macaulay Posets and Macaulay Rings
+
+Penelope Beall; Erenay Boyali; Nancy Chen; Ellen Chlachidze; Toan Trong Dao; Frederic Garvey; Mitchell Johnson; Yu Olivier Li; Nikola Kuzmanovski; Kelvin Ma; Treanungkur Mal; Rukshan Marasinghe Mudiyanselage; Quinlan Mayo; Nava Minsky-Primus; Alexandra Seceleanu; Sriram Veerapaneni. arXiv:2502.15166v2, 11 April 2026. [Primary source](https://arxiv.org/abs/2502.15166).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Conjecture 7.4, PDF page 30; introduction cross-reference on PDF page 4.
+- Contribution: Wedge, diamond, and fiber-product criteria for the Macaulay property, and Conjecture 7.4 on a finite-quotient tensor product.
+- Comparison limit: Conjecture 7.2 is refuted in the paper by Example 7.3. The journal version named by DOI 10.37236/14245 was not opened. Present-day resolution of Conjecture 7.4 was not assessed.
+- Related canonical targets: [L-F188-finite-quotient-tensor](OPEN-PROBLEMS.md#l-f188-finite-quotient-tensor).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02-issues-11-12.md).
+
+- Question screen: [full text screened](../literature/fetch-ingest/12/SCREEN.md); 1 linked canonical targets.
