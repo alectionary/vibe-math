@@ -296,3 +296,48 @@ for these pieces. Files are all under `restricted-frames-20261031/`.
 - **Tools:** `cnc.py` (tree, decoding, serial driver), `cnc_parallel.py` (parallel
   driver), `cardtest.py` (count-split probe), `cloudhard.py` (whole-piece helper),
   `check_o12_symmetry.py` (symmetry check), `run-mac.sh` (macOS launcher).
+
+## Follow-up E: linear-algebra exact search (`la/`)
+
+**Formulation.** Pairs (x_i, z_i) form a frame exactly when the 128 outer products
+x_i z_iᵀ sum to I over F2. If they sum to I, then X_Sᵀ Z_T = I, so X_S is invertible
+and X_S Z_Tᵀ = I. `la/la_dfs.c` searches for frames directly on this identity. The
+search state is the set of chosen items and the residual R = I − (sum of their outer products).
+- **Branch.** Choose an entry with R[c][k] = 1, using the fewest candidates. Every
+  completion's outer products sum to R, so some remaining item has a 1 at that
+  entry. Branch over exactly those items. Earlier siblings' items are excluded in
+  later siblings' subtrees: each completion is reached through the first sibling it contains.
+- **Prune.** Let `need` be the number of vectors still required. They must come from
+  - X′, the unused X groups orthogonal to every chosen Z vector, and
+  - Z′, the unused Z groups orthogonal to every chosen X vector.
+
+  Require rank(pairing on span X′ × span Z′) ≥ need.
+- **Items.** A subgroup case uses sub-orbit pairs (i, j, h) whose pattern is one monomial;
+  each such item carries L pairs. The unrestricted case uses single pairs with G = 1.
+- **Instances.** `la/gen_instance.py` writes them. `la/verify_frame.py` checks any frame found:
+  - the Gram matrix in pair order is the identity;
+  - all 128 vectors on each side are distinct;
+  - every vector is a pool member.
+
+| Instance | Expected | Result |
+|---|---|---|
+| quarter {0,1}, 32 dims | frame exists | frame found, verified |
+| quarters {2,3}, {4,5}, {6,7} | none | none |
+| order 16, 8 | none | none, 16 and 332 nodes |
+| order 4 (T⁴) | none (DRAT-certified) | none, 15,088 nodes, 2 s |
+| planted random T-invariant frame (seed 1), order 16 / 4 | 1 frame | 1 found, verified |
+| planted random T-invariant frame (seed 2), order 4 | 1 frame | 1 found, verified |
+| **order 2 (half-turn)** | open | **COMPLETE, no frame**: 9,995,481 nodes on 2 shards, 801 s + 787 s |
+
+The planted controls append 8 X and 8 Z orbits of a random T-invariant frame
+(`--plant SEED`) to the real pools; the search must find that frame.
+
+**Status of the half-turn result.** This is the output of an unverified custom
+program, not a certificate. It agrees with every control above and with the 230
+o12 SAT pieces closed so far. Before it is recorded as a theorem, the program or an
+independent reimplementation needs review, or the SAT/DRAT route must finish.
+Instance SHA-256 prefix: `60acef5f7b8a0bf0` (order 2).
+
+**Unrestricted problem.** The same search on all 99,808 single pairs (`gen_instance.py order 1`):
+- A Knuth estimate (`la_dfs -k 20`) gives about 9e11 nodes, heavy-tailed (maximum 8e12), with leaves at depth 4–7.
+- That is out of reach at about 6,000 nodes/s without further reduction, such as the 32-element symmetry group or stronger pruning.
