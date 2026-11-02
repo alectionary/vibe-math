@@ -1033,7 +1033,7 @@ The full-text access gap for Le Tran Tinh’s article is closed: its weak-unique
 
 ## CFA and measurement-model continuation
 
-[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 dissertation records and 49 selected source works; the prior 58-record first pass remains a dated snapshot.
+[41 added dissertations, labeled core/adjacent scope and downstream source screens](unl-sem/CFA-EXPANSION.md). The current seed contains 99 dissertation records and 54 selected source works; the prior 58-record first pass remains a dated snapshot.
 
 - **F128**: [Development and initial validation of a creative self-efficacy scale for undergraduates: categorical confirmatory factor analysis and multidimensional item response theory](https://doi.org/10.3389/feduc.2023.1306532).
 - **F129**: [Creative Self-Eﬃcacy Scale for Children and Adolescents (CASES): A Development and Validation Study](https://doi.org/10.21500/20112084.5410).
@@ -1069,3 +1069,14 @@ Sources read for the correlated-residual replication and the identification comp
 - **F148**: [Structural model analysis of multiple quantitative traits](https://doi.org/10.1371/journal.pgen.0020114).
 - **F150**: [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493).
 - **F151**: [Searching for recursive causal structures in multivariate quantitative genetics mixed models](https://doi.org/10.1534/genetics.109.112979).
+
+## Fetched-paper screen, 2 November 2026
+
+[Seven verified texts, two recorded directions, and the manifests](fetched-papers-2026-11-02.md). PDF bytes stay local. F150 was already in the ledger and now has a complete-text screen.
+
+- **F182**: [In praise of partially interpretable predictors](https://doi.org/10.1002/sam.11450).
+- **F183**: [An efficient approach to large-scale genotype–phenotype association analyses](https://doi.org/10.1093/bib/bbt061).
+- **F184**: [Understanding the metabolome and metagenome as extended phenotypes: The next frontier in macroalgae domestication and improvement](https://doi.org/10.1111/jwas.12782).
+- **F185**: [The wright stuff: reimagining path analysis reveals novel components of the sex determination hierarchy in Drosophila melanogaster](https://doi.org/10.1186/s12918-015-0200-0).
+- **F186**: [Multi-trait multi-locus SEM model discriminates SNPs of different effects](https://doi.org/10.1186/s12864-020-06833-2).
+- **F173**: [Testing membership in matroid polyhedra](https://doi.org/10.1016/0095-8956(84)90023-6).

@@ -1,0 +1,151 @@
+<!-- fetch-manifest: vibe-math-25-worker-20261102 -->
+
+```json
+{
+  "manifest_version": "0.2",
+  "manifest_id": "vibe-math-25-worker-20261102",
+  "supersedes": null,
+  "recorded_at": "2026-11-02T17:25:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-worker-20261102"
+  },
+  "campaign_id": null,
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "10.1002/sam.11450",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 25,
+    "url": "https://github.com/alectionary/vibe-math/issues/25"
+  },
+  "document": {
+    "title": "In praise of partially interpretable predictors",
+    "author": "Tri Le and Bertrand S. Clarke",
+    "year": 2020,
+    "document_type": "article",
+    "stable_ids": [
+      {
+        "scheme": "doi",
+        "value": "10.1002/sam.11450"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "doi-resolution-25-0",
+      "route": "doi-resolution@1",
+      "url": "https://doi.org/10.1002/sam.11450",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 challenge at onlinelibrary.wiley.com. No PDF bytes."
+    },
+    {
+      "id": "openalex-oa-25-1",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works/doi:10.1002/sam.11450",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "HTTP 200, hybrid OA; Wiley pdfdirect plus UNL record statisticsfacpub/112. No PDF bytes."
+    },
+    {
+      "id": "unpaywall-oa-25-2",
+      "route": "unpaywall-oa@1",
+      "url": "https://api.unpaywall.org/v2/10.1002/sam.11450",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "HTTP 200 metadata. No PDF bytes."
+    },
+    {
+      "id": "publisher-landing-25-3",
+      "route": "publisher-landing@1",
+      "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/sam.11450",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 challenge page. No PDF bytes."
+    },
+    {
+      "id": "institutional-repository-25-4",
+      "route": "institutional-repository@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1117&context=statisticsfacpub",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 Cloudflare challenge (record page HTTP 200). No PDF bytes."
+    },
+    {
+      "id": "browser-25",
+      "route": "browser-download@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1117&context=statisticsfacpub",
+      "resolved_url": null,
+      "method": "browser",
+      "attempted_at": "2026-11-02T17:10:00Z",
+      "http_status": null,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Real browser on the UNL bepress record; Download saved the complete 22-page PDF."
+    }
+  ],
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "outcome": "verified",
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "255187936be0c14fa254ca59e50e121bea9dc3c943e77eff13ca8b665a608a3c",
+    "byte_length": 2883611,
+    "page_count": 22,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/25/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "The PDF is the UNL DigitalCommons cover page followed by the article 'In praise of partially interpretable predictors', Tri Le and Bertrand S. Clarke, 2020; matches the request.",
+      "Page count is 22. Body and the reference list through the final page are present in the extracted text.",
+      "Extracted text is 145119 Unicode characters (text_characters), distinct from the PDF byte_length 2883611 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "8a667c0a972abd6c11b60d6a71857aacfca9697d432c5cde278c8909a6004e2f",
+    "text_characters": 145119,
+    "unreadable_reason": null
+  },
+  "notes": "Complete PDF saved by the browser pass to worker/25/paper.pdf; headless routes had hit bot mitigation. pdftotext -layout gave readable text; OCR not run. Question count stays null. Request campaign is not a valid campaign_id under the schema pattern, so campaign_id is null."
+}
+```

@@ -574,7 +574,7 @@ The replication sources are now ledger rows. PDFs are in ignored `local-extracti
 | F146 | Foygel, Draisma, and Drton 2012 | The same generic problem, plus L-F146-half-trek-gap. |
 | F147 | Drton and Weihs, arXiv:1504.02992v1 | L-F147-polytime-ancestral. |
 | F148 | Li et al. 2006 | Full text screened. No additional mathematical target. |
-| F150 | Campbell et al. 2003 | Access gap. Question count left null. |
+| F150 | Campbell et al. 2003 | Access gap on 2026-10-27. Complete text screened 2026-11-02. Question count 0. |
 | F151 | Valente et al. 2010 | Access gap. Question count left null. |
 
 Jiang and Zeng (1995) and Churchill and Doerge (1994) stay bibliography-only. They were not re-read, and no zero question count was entered.
@@ -599,3 +599,7 @@ The investigation notes did not name a set of eight unread citing papers. OpenAl
 | https://github.com/alectionary/vibe-math/issues/28 | 10.1186/s12918-015-0200-0 |
 | https://github.com/alectionary/vibe-math/issues/29 | 10.1186/s12864-020-06833-2 |
 | https://github.com/alectionary/vibe-math/issues/30 | Campbell et al. 2003, F150 |
+
+## Fetched texts screened, 2026-11-02
+
+Issues 25–29 are new ledger rows F182–F186. Issue 30 completed the F150 screen. The screen, hashes, and code ledger are in [literature/fetched-papers-2026-11-02.md](../../literature/fetched-papers-2026-11-02.md). PDF bytes are not committed. F182 contributes L-F182-stacking-mse-asymptotics. F183–F186 and F150 have question count 0. Cunningham 1984, issue 63, is F173 and is outside this SEM ledger.
