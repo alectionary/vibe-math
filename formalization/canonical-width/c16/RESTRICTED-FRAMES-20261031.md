@@ -434,3 +434,13 @@ Conclusion: the known near-misses are not close to any frame in the sense of sha
 **sT⁸ planted control (2026-11-02).** `la_gen -l -1 inst/gp1-swapT8.txt` (72,528 items) hit its 7,000 s time limit on one shared core after 32,816,666 nodes without reaching the planted frame. The result is inconclusive, not a failure; the control will be rerun on 2 shards.
 
 **Swap vertex-SAT (satcheck).** The planted control was SAT and checked (`check_model.py`). The real instance (`sat_symmetric.py swap`, CNF SHA-256 `588e61ed…`) was UNKNOWN at 3,300 s, and UNKNOWN again in a 7,000 s rerun (Kissat, one shared core). The next step is cube-and-conquer and/or rotation symmetry breaking in the vertex encoding; a plain longer run is not the way forward.
+
+**sT⁸ planted control, rerun (2026-11-02).** Unconstrained `la_gen -l -1` on 2 shards (`-S 2 -D 1`) hit the 6,900 s limit (19,993,881 + 20,027,320 nodes) without reaching the planted frame. The planted pools add many cross items (72,528 items against 49,904), and DFS explores real-pool subtrees first.
+
+Targeted control: fix k of the 64 planted sT⁸ items (`la_gen -p`, random subsets) and search for completions in the same class:
+
+| fixed items (pairs) | 48 (96) | 32 (64) | 16 (32) | 8 (16) | 4 (8) | 2 (4) | 1 (2) |
+|---|---|---|---|---|---|---|---|
+| nodes to the frame | 17 | 33 | 49 | 57 | 61 | 63 | 82 |
+
+Each found frame, joined with its fixed pairs, is VERIFIED as a 128-pair frame by `gen_items.py --plant 1 verify`. The class-specific code path (2-pair sT⁸ items, per-vector availability) therefore finds a planted frame from as little as one fixed item.
