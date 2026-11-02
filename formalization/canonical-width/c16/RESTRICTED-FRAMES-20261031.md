@@ -418,3 +418,15 @@ Once sT⁸ is closed, together with Follow-up E: **any frame has trivial stabili
 Summing the per-smallest-orbit sub-searches does not beat the unforced tree. So the simple root normalisation does not deliver the 16× symmetry saving; that would need orderly generation.
 
 Order of magnitude: 1e11–1e12+ nodes at a few thousand nodes/s per core, which is 1e4–1e6 core-hours. That is the scale of other large computer proofs, such as the Boolean Pythagorean triples (about 2 days on 800 cores) and Schur number five (about 14 CPU-years). It is feasible only with cluster time, and the heavy tail makes the estimate uncertain by 10× or more.
+
+## Follow-up G: exhaustive completion of dismantled near-misses (2026-11-02)
+
+`la_gen -p FILE` fixes the listed pool pairs and searches every completion; `la/nearmiss.py` drives random dismantling. The saved physical near-misses `partial-frame-88.json` and `partial-frame-84.json` map exactly onto pool pairs, with logical Gram identity checked (`la/inst/partials.json`).
+
+- **Planted control** (`gen_items.py --plant 1 order 1`): the planted 128-pair frame was dismantled by dropping 30, 50 or 60 pairs. Each time the search recovered a full frame in under 100 nodes, and `gen_items.py verify` accepted the 128 pairs.
+- **The 88- and 84-pair frames themselves** are rank-dead at the root: no completion exists.
+- **Random subsets of the 88:** keeping 24 to 80 of its pairs is always rank-dead at the root (3 trials per drop size, 8 to 64 pairs dropped). A greedy minimal rank-dead subset has only 7 pairs, none of them monomial-X.
+- **Largest root-compatible subsets** (greedy, 6 orders): 40 of the 88 and 41 of the 84. Each has a single live next pair, and that child dies, so it is COMPLETE with 2 nodes and no frame.
+- **Random pieces of the 40-pair compatible subset**, completed exhaustively: keeping 30, 20, 12 or 8 pairs gives COMPLETE with no frame (2 to 789 nodes, at most 0.6 s). Keeping 5 already exceeds 300 s, which means 5 pairs leave essentially the whole search open.
+
+Conclusion: the known near-misses are not close to any frame in the sense of shared pairs. Every sampled piece of 8 or more of their pairs lies in no frame. Neighbourhood search around them will not find a frame; any frame shares only a handful of pairs with them.
