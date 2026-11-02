@@ -5,11 +5,16 @@ The structural checker implements the JSON Schema subset used by
 (type, const, enum, required, properties, additionalProperties, pattern,
 numeric and length bounds, items, format, $ref, allOf, anyOf, oneOf, if/then/else).
 Semantic checks cover secrets, stable ids, discovered identifiers, completeness,
-evidence units, OCR, question counts, and route outcomes. manifest_version 0.2
-requires discovered_identifiers and does not require issue.comment_url.
-Applicability reads document.stable_ids unless the route catalog sets
-discovered_identifiers_expand_routes. A front-matter preview or unreadable
-text cannot validate as a completed screen or a zero question count.
+evidence units, OCR, question counts, route outcomes, campaign ids, bare other
+ids, route attribution, a preview that was seen and not saved, and screen
+status. manifest_version 0.2 and 0.3 require discovered_identifiers and do not
+require issue.comment_url. 0.3 also requires attempted_by on every route.
+0.1 and 0.2 stay valid. Applicability reads document.stable_ids unless the
+route catalog sets discovered_identifiers_expand_routes. requires_match says
+whether requires is any scheme, every scheme, unconditional, or a prefix list.
+A front-matter preview or unreadable text cannot validate as a completed
+screen or a zero question count. not_screened is only a verified readable
+file. A preview seen and not saved is needs_human.
 
 Usage:
   python3 scripts/validate_fetch_manifest.py --self-check
@@ -97,10 +102,31 @@ ID_PATTERNS = {
     "url": re.compile(r"^https://\S+$"),
     "archive_record": re.compile(r"^[a-z][a-z0-9-]{1,40}:\S+$"),
     "campaign_record": re.compile(r"^[A-Z0-9]+(?:-[A-Z0-9]+)+$"),
-    "other": re.compile(r"^[a-z0-9][a-z0-9.+-]{1,40}:\S+$"),
+    # prefix:value, or a bare token with no colon (UNL-SEM-D013, W2080656989).
+    "other": re.compile(
+        r"^(?:[a-z0-9][a-z0-9.+-]{1,40}:\S+|[A-Za-z0-9][A-Za-z0-9._+-]{0,120})$"
+    ),
 }
+# Two or more hyphen-separated segments. Case is the investigation's spelling.
+CAMPAIGN_ID = re.compile(r"^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+$")
+LEGACY_CAMPAIGN_ID = re.compile(r"^[A-Z0-9]+(?:-[A-Z0-9]+)+$")
+PMCID_VALUE = re.compile(r"^(?:pmcid:)?PMC\d+$")
 MARKER = re.compile(r"<!--\s*fetch-manifest:\s*([A-Za-z0-9][A-Za-z0-9._-]*)\s*-->")
 FENCE = re.compile(r"```(?:json)?\s*\n", re.IGNORECASE)
+HANDOFF_MARKER = re.compile(r"<!--\s*fetch-browser-handoff\s*-->")
+HANDOFF_RESOLVED = re.compile(
+    r"<!--\s*fetch-browser-handoff-resolved:\s*([A-Za-z0-9][A-Za-z0-9._-]{2,120})\s*-->"
+)
+HANDOFF_SESSION = re.compile(r"(?m)^-\s*Worker session:\s*`([^`]+)`\s*$")
+INGESTION_STARTED = re.compile(
+    r"<!--\s*fetch-ingestion-started:\s*([A-Za-z0-9][A-Za-z0-9._-]{2,120})\s*-->"
+)
+INGESTION_MERGED = re.compile(r"<!--\s*fetch-ingestion-merged:\s*(\S+)\s*-->")
+FETCH_TITLE = re.compile(r"(?i)^fetch:\s*\S")
+FETCH_ID_MARKER = re.compile(r"<!--\s*fetch-request:\s*(\S+)\s*-->")
+TYPE_OTHER = re.compile(r"(?im)^[ \t]*[-*]?\s*type:\s*other\s*$")
+PREVIEW_UNSAVED = ("not saved", "not downloaded", "not stored", "no preview hash")
+REQUIRES_MATCH = {"any", "all", "always", "prefixes"}
 
 
 def load_schema():
@@ -161,6 +187,20 @@ def load_catalog():
             raise SystemExit(f"{rid} order")
         if item["scope"] == "site" and not item.get("requires_prefixes"):
             raise SystemExit(f"{rid} requires_prefixes")
+        if version >= 3:
+            match = item.get("requires_match")
+            if match not in REQUIRES_MATCH:
+                raise SystemExit(f"{rid} requires_match")
+            if not isinstance(item.get("requires"), list):
+                raise SystemExit(f"{rid} requires")
+            if match == "prefixes" and not item.get("requires_prefixes"):
+                raise SystemExit(f"{rid} requires_prefixes")
+            if match == "always" and item.get("requires"):
+                raise SystemExit(f"{rid} requires must be empty when requires_match is always")
+            if match in ("any", "all") and not item.get("requires"):
+                raise SystemExit(f"{rid} requires")
+            if any(not isinstance(scheme, str) for scheme in item["requires"]):
+                raise SystemExit(f"{rid} requires")
     for host in catalog.get("temporary_hosts", []):
         if not isinstance(host, str) or "/" in host or not host:
             raise SystemExit(f"bad temporary host {host}")
@@ -178,6 +218,14 @@ def identifier_items(manifest, expand_discovered):
 
 
 def route_applies(route, manifest, expand_discovered=False):
+    """Whether this catalog route applies to the request's stable ids.
+
+    requires_match any: at least one listed scheme. ["doi", "url"] is DOI or
+    URL, not both. all: every listed scheme. always: not gated on a scheme.
+    prefixes, and every site route: an archive_record prefix matches
+    requires_prefixes. A missing requires_match keeps the older reading:
+    empty requires means always, and a non-empty list means any.
+    """
     schemes, prefixes = set(), set()
     for item in identifier_items(manifest, expand_discovered):
         if not isinstance(item, dict):
@@ -186,10 +234,15 @@ def route_applies(route, manifest, expand_discovered=False):
         value = item.get("value") or ""
         if item.get("scheme") == "archive_record" and isinstance(value, str) and ":" in value:
             prefixes.add(value.split(":", 1)[0])
-    if route.get("scope") == "site":
+    match = route.get("requires_match")
+    if route.get("scope") == "site" or match == "prefixes":
         return bool(prefixes & set(route.get("requires_prefixes") or []))
     needed = set(route.get("requires") or [])
-    return True if not needed else bool(schemes & needed)
+    if match == "always" or (match is None and not needed):
+        return True
+    if match == "all":
+        return bool(needed) and needed <= schemes
+    return bool(schemes & needed)
 
 
 def applicable_missing(manifest, catalog=None):
@@ -347,7 +400,10 @@ def secret_errors(instance, path="$", hosts=()):
     errors = []
     if isinstance(instance, dict):
         for key, value in instance.items():
-            if norm_key(key) in SECRET_KEY_NORMS:
+            # attempted_by.session is a worker-run id, not a cookie or login session.
+            if norm_key(key) in SECRET_KEY_NORMS and not (
+                norm_key(key) == "session" and path.endswith(".attempted_by")
+            ):
                 errors.append(f"{path}.{key}: secret material in field name")
             errors += secret_errors(value, f"{path}.{key}", hosts)
         return errors
@@ -392,7 +448,7 @@ def evidence_count_errors(manifest):
 
     Version 0.1 manifests already posted are not re-litigated for wording.
     """
-    if manifest.get("manifest_version") != "0.2":
+    if manifest.get("manifest_version") not in ("0.2", "0.3"):
         return []
     errors = []
     completeness = manifest.get("completeness") if isinstance(manifest.get("completeness"), dict) else {}
@@ -423,6 +479,36 @@ def evidence_count_errors(manifest):
                     "a Unicode character count, not a byte count"
                 )
     return errors
+
+
+def pmcid_known(manifest):
+    """True when a stable id or a discovered id is a PMCID."""
+    document = manifest.get("document") if isinstance(manifest.get("document"), dict) else {}
+    items = list(document.get("stable_ids") or [])
+    extra = manifest.get("discovered_identifiers")
+    if isinstance(extra, list):
+        items.extend(extra)
+    for item in items:
+        if isinstance(item, dict) and isinstance(item.get("value"), str) and PMCID_VALUE.fullmatch(item["value"]):
+            return True
+    return False
+
+
+def migrate_campaign_id(posted, issue_campaign):
+    """Campaign id to store on a new manifest.
+
+    Does not rewrite a posted comment. A posted id that already matches the
+    current pattern is kept, including UNL-SEM-2001. None takes issue_campaign
+    when that string matches, which is how unl-sem, L-F91-c16-unrestricted-width,
+    and L-F102-correlated-residuals move off the 0.1/0.2 null workaround.
+    Any other posted value stays unset: the caller files a new manifest rather
+    than editing the old one.
+    """
+    if isinstance(posted, str) and CAMPAIGN_ID.fullmatch(posted):
+        return posted
+    if posted is None and isinstance(issue_campaign, str) and CAMPAIGN_ID.fullmatch(issue_campaign):
+        return issue_campaign
+    return None
 
 
 def semantic_errors(manifest, catalog):
@@ -481,6 +567,33 @@ def semantic_errors(manifest, catalog):
         if isinstance(route, dict) and route.get("route") not in catalog_ids:
             errors.append(f"$.routes_tried[{index}].route: {route.get('route')} is not in the route catalog")
     outcome = manifest.get("outcome")
+    version = manifest.get("manifest_version")
+    producer = manifest.get("producer") if isinstance(manifest.get("producer"), dict) else {}
+    producer_name = producer.get("name")
+    if version == "0.3":
+        for index, route in enumerate(routes):
+            if not isinstance(route, dict):
+                continue
+            if "attempted_by" not in route:
+                errors.append(
+                    f"$.routes_tried[{index}].attempted_by: manifest 0.3 requires attempted_by "
+                    "(null when the producer ran this attempt)"
+                )
+            attribution = route.get("attempted_by")
+            if isinstance(attribution, dict) and attribution.get("session") == producer_name:
+                errors.append(
+                    f"$.routes_tried[{index}].attempted_by: use null when the producer session ran this attempt"
+                )
+            if route.get("route") == "unpaywall-oa@1":
+                url = route.get("url") or ""
+                if isinstance(url, str) and "email=" in url.lower():
+                    errors.append(
+                        f"$.routes_tried[{index}].url: omit the Unpaywall contact address from the manifest URL"
+                    )
+        if outcome == "not_found" and pmcid_known(manifest) and "pmc-oa-package@1" not in tried_routes:
+            errors.append(
+                "$.routes_tried: a 0.3 not_found manifest that knows a PMCID includes pmc-oa-package@1"
+            )
     complete_bytes = [
         route for route in routes
         if isinstance(route, dict) and route.get("obtained_bytes") is True and route.get("error_category") is None
@@ -496,6 +609,32 @@ def semantic_errors(manifest, catalog):
             errors.append("$.routes_tried: preview_only requires a route that obtained preview bytes")
         if complete_bytes:
             errors.append("$.routes_tried: preview_only cannot also record complete bytes")
+    seen_unsaved = [
+        route for route in routes
+        if isinstance(route, dict)
+        and route.get("error_category") == "preview_only"
+        and route.get("obtained_bytes") is False
+    ]
+    if seen_unsaved:
+        if outcome != "needs_human":
+            errors.append(
+                "$.outcome: a preview that was seen and not saved is needs_human; "
+                "preview_only is only a preview whose bytes were stored"
+            )
+        if manifest.get("artifact") is not None:
+            errors.append("$.artifact: a preview that was not saved has no artifact")
+        seen_completeness = manifest.get("completeness") if isinstance(manifest.get("completeness"), dict) else {}
+        if seen_completeness.get("classification") != "not_obtained":
+            errors.append(
+                "$.completeness.classification: a preview that was not saved is not_obtained"
+            )
+        for route in seen_unsaved:
+            notes = (route.get("notes") or "").lower()
+            if not any(phrase in notes for phrase in PREVIEW_UNSAVED):
+                errors.append(
+                    "$.routes_tried: a preview that was not saved says so "
+                    "(not saved, not downloaded, not stored, or no preview hash)"
+                )
     if outcome == "restricted":
         if not any(isinstance(route, dict) and route.get("error_category") == "restricted" for route in routes):
             errors.append("$.routes_tried: restricted requires a restricted route")
@@ -570,6 +709,18 @@ def semantic_errors(manifest, catalog):
                     errors.append(f"$.question_screen.candidates[{index}]: pdf page is outside page_count {page_count}")
     if screen.get("status") != "completed" and any(isinstance(item, dict) and item.get("counts_as_target") is True for item in candidates):
         errors.append("$.question_screen: counts_as_target requires a completed screen")
+    screen_status = screen.get("status")
+    file_readable = extraction.get("readable") is True
+    if screen_status == "not_screened" and not (outcome == "verified" and file_readable):
+        errors.append(
+            "$.question_screen.status: not_screened is only for a verified readable file "
+            "that has not been screened; use blocked when the screen cannot run"
+        )
+    if screen_status == "blocked" and outcome == "verified" and file_readable:
+        errors.append(
+            "$.question_screen.status: a verified readable file stays not_screened "
+            "until the research agent screens it"
+        )
     if screen.get("status") == "completed" and isinstance(screen.get("question_count"), int):
         counted = sum(isinstance(item, dict) and item.get("counts_as_target") is True for item in candidates)
         if counted != screen["question_count"]:
@@ -623,6 +774,150 @@ def claim_blocked(names, resuming_handoff=False):
     if resuming_handoff:
         return found != ["fetch-claimed"]
     return found != ["fetch-request"]
+
+
+def comment_bodies(comments):
+    if isinstance(comments, str):
+        return [comments]
+    bodies = []
+    for item in comments or []:
+        if isinstance(item, str):
+            bodies.append(item)
+        elif isinstance(item, dict):
+            bodies.append(item.get("body") or "")
+    return bodies
+
+
+def resolved_handoff_sessions(comments):
+    """Sessions whose browser handoff is finished.
+
+    A later resolved marker names the session. A later fetch-manifest also
+    resolves every handoff posted before it, so a 2026-11-02 thread that
+    posted a manifest after the handoff is already resolved. The handoff
+    comment itself is not edited.
+    """
+    resolved = set()
+    opened = []
+    for index, body in enumerate(comment_bodies(comments)):
+        if HANDOFF_MARKER.search(body):
+            match = HANDOFF_SESSION.search(body)
+            if match:
+                opened.append((index, match.group(1)))
+        resolved.update(HANDOFF_RESOLVED.findall(body))
+        if MARKER.search(body):
+            for prior, session in opened:
+                if prior < index:
+                    resolved.add(session)
+    return resolved
+
+
+def open_handoff_sessions(comments):
+    """Handoff sessions that still need a browser resume."""
+    resolved = resolved_handoff_sessions(comments)
+    found = []
+    for body in comment_bodies(comments):
+        if not HANDOFF_MARKER.search(body):
+            continue
+        match = HANDOFF_SESSION.search(body)
+        if match and match.group(1) not in resolved and match.group(1) not in found:
+            found.append(match.group(1))
+    return found
+
+
+def ingestion_markers(comments):
+    started, merged = [], []
+    for body in comment_bodies(comments):
+        started.extend(INGESTION_STARTED.findall(body))
+        merged.extend(INGESTION_MERGED.findall(body))
+    return started, merged
+
+
+def ingestion_ready(labels, comments):
+    """True when fetched bytes are waiting for the research agent.
+
+    The signal is the lifecycle label fetched, with no ingestion-started
+    marker and no ingestion-merged marker. No extra label is added.
+    """
+    if lifecycle_names(labels) != ["fetched"]:
+        return False
+    started, merged = ingestion_markers(comments)
+    return not started and not merged
+
+
+def ingestion_claimed(labels, comments):
+    """True when ingestion has started and the pull request is not merged yet."""
+    if lifecycle_names(labels) != ["fetched"]:
+        return False
+    started, merged = ingestion_markers(comments)
+    return bool(started) and not merged
+
+
+def ingest_paths(issue_number, source_id):
+    """Paths for one fetched source.
+
+    The PDF and extracted text stay under local-extraction, which git ignores.
+    The manifest copy and the question screen are tracked.
+    """
+    number = int(issue_number)
+    if number < 1:
+        raise ValueError(issue_number)
+    text = "" if source_id is None else str(source_id)
+    safe = re.sub(r"[^A-Za-z0-9._()-]+", "_", text).strip("._") or "source"
+    if safe in {".", ".."} or "/" in safe or "\\" in safe:
+        safe = "source"
+    return {
+        "pdf": f"local-extraction/literature/fetch/{number}/{safe}.pdf",
+        "text": f"local-extraction/literature/fetch/{number}/{safe}.txt",
+        "manifest": f"literature/fetch-ingest/{number}/manifest.json",
+        "screen": f"literature/fetch-ingest/{number}/SCREEN.md",
+    }
+
+
+def looks_like_fetch_request(title, body):
+    title = (title or "").strip()
+    body = body or ""
+    return bool(FETCH_TITLE.match(title) or FETCH_ID_MARKER.search(body))
+
+
+def non_paper_request(title, body):
+    """True for code, a supplement, a dataset, or a file offered only by email.
+
+    A paper that mentions a supplement in passing is still a paper. Issue 20
+    is the case: type other, programs, and no route except emailing the author.
+    """
+    text = f"{title or ''}\n{body or ''}"
+    lower = text.lower()
+    type_other = TYPE_OTHER.search(text) is not None
+    email_only = bool(re.search(
+        r"by email|emailing (the )?author|author email|only (offered|stated) route is",
+        lower,
+    ))
+    material = bool(re.search(r"\b(program|programs|supplement|dataset|source code|scripts)\b", lower))
+    if type_other and (email_only or material):
+        return True
+    if email_only and material and "no public url" in lower:
+        return True
+    return False
+
+
+def label_sweep_action(title, body, labels):
+    """What to do with an open issue before the labeled fetch-request list.
+
+    add-fetch-request: a paper request whose lifecycle label was never applied.
+    help-issue: not a paper; the research agent files a help issue.
+    claim-pool: already labeled fetch-request.
+    skip: not a fetch request, or another lifecycle label is already set.
+    """
+    if not looks_like_fetch_request(title, body):
+        return "skip"
+    if non_paper_request(title, body):
+        return "help-issue"
+    found = lifecycle_names(list(labels or []))
+    if not found:
+        return "add-fetch-request"
+    if found == ["fetch-request"]:
+        return "claim-pool"
+    return "skip"
 
 
 def terminal_label(manifest):
@@ -778,7 +1073,12 @@ def self_check():
     values = {item["value"] for item in example["document"]["stable_ids"]}
     assert {"aai:AAI3402936", "proquest-docview:305217740", "UNL-SEM-D067"} <= values
     catalog = load_catalog()
-    assert catalog["catalog_version"] == 2
+    assert catalog["catalog_version"] == 3
+    for item in catalog["routes"]:
+        assert item.get("requires_match") in REQUIRES_MATCH
+        assert isinstance(item.get("requires"), list)
+    assert "pmc-oa-package@1" in {item["id"] for item in catalog["routes"]}
+    assert any(item["prefix"] == "pmcid" for item in catalog["identifier_prefixes"])
     assert catalog["applicability"] == {
         "identifier_source": "document.stable_ids",
         "discovered_identifiers_expand_routes": False,
@@ -1203,10 +1503,130 @@ def self_check():
     expect_ok("verified manifest logs a lookup it actually ran", verified_discovery, schema)
     assert "doi-resolution@1" not in routes_to_retry(verified_discovery, catalog)
     assert "unpaywall-oa@1" not in routes_to_retry(verified_discovery, catalog)
+    for path in sorted((SKILL / "examples").glob("*.manifest.json")):
+        expect_ok(path.name, json.loads(path.read_text()), schema)
+    for campaign in ("unl-sem", "L-F91-c16-unrestricted-width", "L-F102-correlated-residuals", "UNL-SEM-2001"):
+        assert CAMPAIGN_ID.fullmatch(campaign)
+        assert migrate_campaign_id(None, campaign) == campaign
+    for legacy in ("unl-sem", "L-F91-c16-unrestricted-width", "L-F102-correlated-residuals"):
+        assert LEGACY_CAMPAIGN_ID.fullmatch(legacy) is None
+    assert migrate_campaign_id("UNL-SEM-2001", "unl-sem") == "UNL-SEM-2001"
+    assert migrate_campaign_id(None, None) is None
+    assert migrate_campaign_id(None, "not a campaign") is None
+    assert migrate_campaign_id("still invalid", "unl-sem") is None
+    paren = json.loads((SKILL / "examples" / "doi-parentheses.manifest.json").read_text())
+    assert "(" in paren["requested_source_id"] and paren["campaign_id"] == "L-F91-c16-unrestricted-width"
+    bare = json.loads((SKILL / "examples" / "bare-other-id.manifest.json").read_text())
+    assert any(item["scheme"] == "other" and ":" not in item["value"] for item in bare["document"]["stable_ids"])
+    attributed = json.loads((SKILL / "examples" / "browser-worker-attribution.manifest.json").read_text())
+    sessions = [route.get("attempted_by") for route in attributed["routes_tried"]]
+    assert any(isinstance(item, dict) and item["session"] != attributed["producer"]["name"] for item in sessions)
+    assert any(item is None for item in sessions)
+    # mutated() cannot delete a key. Drop it explicitly.
+    missing_attr = copy.deepcopy(attributed)
+    missing_attr["manifest_id"] = "fixture-missing-attempted-by"
+    del missing_attr["routes_tried"][0]["attempted_by"]
+    expect_fail("0.3 omits attempted_by", missing_attr, "attempted_by", schema)
+    same_session = copy.deepcopy(attributed)
+    same_session["manifest_id"] = "fixture-attribution-same-session"
+    same_session["routes_tried"][0]["attempted_by"] = {
+        "role": "retrieval_worker",
+        "session": same_session["producer"]["name"],
+    }
+    expect_fail("attempted_by repeats the producer", same_session, "use null", schema)
+    email_url = copy.deepcopy(attributed)
+    email_url["manifest_id"] = "fixture-unpaywall-email-query"
+    email_url["routes_tried"][0]["route"] = "unpaywall-oa@1"
+    email_url["routes_tried"][0]["url"] = "https://api.unpaywall.org/v2/10.1000/example?email=unpaywall_01@example.com"
+    expect_fail("0.3 unpaywall email query", email_url, "contact address", schema)
+    legacy_email = copy.deepcopy(email_url)
+    legacy_email["manifest_version"] = "0.1"
+    legacy_email.pop("discovered_identifiers")
+    legacy_email["manifest_id"] = "fixture-legacy-unpaywall-email"
+    for route in legacy_email["routes_tried"]:
+        route.pop("attempted_by", None)
+    expect_ok("0.1 may still carry a placeholder email query", legacy_email, schema)
+
+    def ids_for(*pairs):
+        data = copy.deepcopy(example)
+        data["document"]["stable_ids"] = [{"scheme": scheme, "value": value} for scheme, value in pairs]
+        return data
+
+    doi_only = ids_for(("doi", "10.1000/example.doi"))
+    url_only = ids_for(("url", "https://example.test/paper"))
+    archive_only = ids_for(("archive_record", "aai:AAI3402936"))
+    pmc_only = ids_for(("archive_record", "pmcid:PMC4558766"))
+    by_id = {item["id"]: item for item in catalog["routes"]}
+    assert route_applies(by_id["wayback-available@1"], doi_only)
+    assert route_applies(by_id["wayback-available@1"], url_only)
+    assert route_applies(by_id["wayback-available@1"], ids_for(
+        ("doi", "10.1000/example.doi"), ("url", "https://example.test/paper"),
+    ))
+    assert not route_applies(by_id["wayback-available@1"], archive_only)
+    assert by_id["wayback-available@1"]["requires_match"] == "any"
+    assert route_applies(by_id["publisher-landing@1"], doi_only)
+    assert not route_applies(by_id["publisher-landing@1"], archive_only)
+    assert route_applies(by_id["institutional-repository@1"], archive_only)
+    assert not route_applies(by_id["institutional-repository@1"], doi_only)
+    assert route_applies(by_id["openalex-oa@1"], archive_only)
+    assert route_applies(by_id["author-page@1"], doi_only)
+    assert route_applies(by_id["pmc-oa-package@1"], pmc_only)
+    assert not route_applies(by_id["pmc-oa-package@1"], doi_only)
+    assert not route_applies(by_id["pmc-oa-package@1"], ids_for(("other", "pmcid:PMC4558766")))
+
+    handoff = (
+        "<!-- fetch-browser-handoff -->\n\n"
+        "- Worker session: `headless-session-a`\n"
+    )
+    manifest_comment = "<!-- fetch-manifest: example-unl-aai3402936-verified -->\n"
+    assert open_handoff_sessions([handoff]) == ["headless-session-a"]
+    assert resolved_handoff_sessions([handoff, manifest_comment]) == {"headless-session-a"}
+    assert open_handoff_sessions([handoff, manifest_comment]) == []
+    marked = handoff + "\n<!-- fetch-browser-handoff-resolved: headless-session-a -->\n"
+    assert open_handoff_sessions([handoff, marked]) == []
+    assert ingestion_ready(["fetched"], [manifest_comment])
+    assert ingestion_ready(["fetch-claimed"], [manifest_comment]) is False
+    started = "<!-- fetch-ingestion-started: research-session-b -->"
+    merged = "<!-- fetch-ingestion-merged: https://github.com/alectionary/vibe-math/pull/1 -->"
+    assert ingestion_claimed(["fetched"], [started])
+    assert ingestion_ready(["fetched"], [started]) is False
+    assert ingestion_ready(["fetched"], [started, merged]) is False
+    assert ingestion_claimed(["fetched"], [started, merged]) is False
+    paths = ingest_paths(63, "10.1016/0095-8956(84)90023-6")
+    assert paths["pdf"].startswith("local-extraction/literature/fetch/63/")
+    assert paths["pdf"].endswith(".pdf")
+    assert paths["manifest"] == "literature/fetch-ingest/63/manifest.json"
+    assert paths["screen"] == "literature/fetch-ingest/63/SCREEN.md"
+    assert ".." not in paths["pdf"]
+    paper_body = "<!-- fetch-request: 10.1000/example.doi -->\n- Type: article\n"
+    email_body = (
+        "<!-- fetch-request: other:mi-2010-sas-iml-qtl -->\n"
+        "- Type: other\n"
+        "- Routes already attempted: available by email. No public URL is printed.\n"
+        "The programs were not obtained.\n"
+    )
+    assert label_sweep_action("fetch: 10.1000/example.doi", paper_body, []) == "add-fetch-request"
+    assert label_sweep_action("fetch: 10.1000/example.doi", paper_body, ["fetch-request"]) == "claim-pool"
+    assert label_sweep_action("fetch: 10.1000/example.doi", paper_body, ["fetched"]) == "skip"
+    assert label_sweep_action("fetch: other:mi-2010-sas-iml-qtl", email_body, []) == "help-issue"
+    assert label_sweep_action("status: something else", "no marker", []) == "skip"
+    expect_fail(
+        "not_screened on a restricted result",
+        mutated(restricted, **{"question_screen.status": "not_screened"}),
+        "not_screened",
+        schema,
+    )
+    expect_fail(
+        "blocked on a verified readable file",
+        mutated(example, **{"question_screen.status": "blocked"}),
+        "not_screened",
+        schema,
+    )
     print(
         "PASS: fetch-manifest self-check "
         "(positive control, preview, unreadable, secrets, labels, not_found, "
-        "comment_url, discovered identifiers, evidence units)."
+        "comment_url, discovered identifiers, evidence units, campaign ids, "
+        "DOI parentheses, bare other id, browser attribution, ingestion)."
     )
 
 

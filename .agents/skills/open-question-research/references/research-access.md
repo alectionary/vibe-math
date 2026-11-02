@@ -144,6 +144,11 @@ day, with the access gap, rather than at wrap-up. Check code and supplementary
 material with that skill's availability ledger before calling a numerical
 result unavailable.
 At the next research block, merge any manifest a retrieval worker has posted.
+An issue labeled `fetched` is ready for ingestion: store the PDF under
+gitignored `local-extraction/literature/fetch/<issue>/`, commit the manifest
+and the question screen, and open a pull request that references the fetch
+issue. The steps are
+[Ingest a fetched paper](../../document-acquisition-queue/SKILL.md#ingest-a-fetched-paper).
 The worker procedure is
 [document retrieval](../../document-retrieval-worker/SKILL.md). Site notes,
 read only when the source matches, are in

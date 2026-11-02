@@ -1,0 +1,84 @@
+{
+  "manifest_version": "0.3",
+  "manifest_id": "fixture-doi-parentheses",
+  "supersedes": null,
+  "recorded_at": "2026-11-02T18:00:00Z",
+  "producer": {
+    "role": "example",
+    "name": "schema-fixture"
+  },
+  "campaign_id": "L-F91-c16-unrestricted-width",
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "10.1016/0095-8956(84)90023-6",
+  "outcome": "verified",
+  "issue": null,
+  "document": {
+    "title": "Validator fixture",
+    "author": "Test Author",
+    "year": 1984,
+    "document_type": "article",
+    "stable_ids": [
+      {
+        "scheme": "doi",
+        "value": "10.1016/0095-8956(84)90023-6"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "fixture-bytes",
+      "route": "publisher-landing@1",
+      "url": "https://example.test/paper.pdf",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T18:00:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Fixture route stored a complete PDF. Not a claim about a real paper.",
+      "attempted_by": null
+    }
+  ],
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "byte_length": 2000,
+    "page_count": 12,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "local-extraction/literature/fetch/fixture/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "Title, author, and year match the request.",
+      "Body, references, and final pages are present.",
+      "Extracted text is 1000 Unicode characters, distinct from the PDF byte_length 2000 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "text_characters": 1000,
+    "unreadable_reason": null
+  },
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "notes": "Validator fixture for a DOI that contains parentheses and campaign id L-F91-c16-unrestricted-width. Not a live posting."
+}
