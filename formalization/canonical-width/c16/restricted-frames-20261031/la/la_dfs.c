@@ -38,7 +38,8 @@ static int *gxv, *gzv;           /* group -> g vector indices */
 static int *itx, *itz, *ipx, *ipz;  /* item -> group x, group z, pair vectors (g each) */
 static uint8_t *orth;            /* orth[gx*GZ+gz] = 1 if all vectors orthogonal */
 static v128 Dmask;
-static int only_first = 0, shard = 0, nshard = 1;
+static int only_first = 0, shard = 0, nshard = 1, knuth = 0; static double kprod, kest; static unsigned long long rng = 88172645463325252ULL;
+static unsigned long long xr(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng; }
 static long long nodes[200], prunes_rank[200], prunes_empty[200], nsol = 0;
 static FILE *solf;
 static int chosen[200];
@@ -121,11 +122,12 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         for (int s = 0; s < g; s++) b ^= bit(XV[ipx[q * g + s]], bc) & bit(ZV[ipz[q * g + s]], bk);
         if (b) ch[nch++] = q;
     }
+    if (knuth) { kprod *= nch; kest += kprod; int u = xr() % nch; int keep = ch[u]; free(ch); ch = malloc(sizeof(int)); ch[0] = keep; nch = 1; }
     uint8_t *excl = calloc(NI, 1);
     v128 R2[128]; uint8_t *okx2 = malloc(GX), *okz2 = malloc(GZ); int *live2 = malloc(sizeof(int) * (nlive + 1));
     for (int u = 0; u < nch && !timed_out; u++) {
         int q = ch[u];
-        if (depth == 0 && (u % nshard) != shard) { excl[q] = 1; continue; }
+        if (!knuth && depth == 0 && (u % nshard) != shard) { excl[q] = 1; continue; }
         memcpy(R2, R, sizeof(v128) * 128);
         for (int s = 0; s < g; s++) {
             v128 x = XV[ipx[q * g + s]], z = ZV[ipz[q * g + s]];
@@ -153,6 +155,8 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "-S")) nshard = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-t")) time_limit = atoll(argv[++a]);
         else if (!strcmp(argv[a], "-o")) out = argv[++a];
+        else if (!strcmp(argv[a], "-k")) knuth = atoi(argv[++a]);
+        else if (!strcmp(argv[a], "-r")) rng ^= strtoull(argv[++a], 0, 10) * 0x9E3779B97F4A7C15ULL;
         else in = argv[a];
     }
     FILE *f = fopen(in, "r"); if (!f) { perror(in); return 2; }
@@ -179,6 +183,15 @@ int main(int argc, char **argv) {
     uint8_t *okx = malloc(GX), *okz = malloc(GZ); memset(okx, 1, GX); memset(okz, 1, GZ);
     int *live = malloc(sizeof(int) * NI); for (int q = 0; q < NI; q++) live[q] = q;
     t0 = time(NULL);
+    if (knuth) {
+        double sum = 0, mx = 0; int md[200] = {0};
+        for (int p = 0; p < knuth; p++) { kprod = 1; kest = 1; long long before[200]; memcpy(before, nodes, sizeof before);
+            search(R, okx, okz, live, NI, 0, DIM); sum += kest; if (kest > mx) mx = kest;
+            int dd = 0; for (int d = 0; d < 200; d++) if (nodes[d] > before[d]) dd = d; md[dd]++; }
+        printf("{\"knuth_probes\": %d, \"mean_tree\": %.4g, \"max\": %.4g, \"seconds\": %ld, \"leaf_depths\": {", knuth, sum / knuth, mx, (long)(time(NULL) - t0));
+        int first = 1; for (int d = 0; d < 200; d++) if (md[d]) { printf("%s\"%d\": %d", first ? "" : ", ", d, md[d]); first = 0; }
+        printf("}, \"frames_hit\": %lld}\n", nsol); return 0;
+    }
     search(R, okx, okz, live, NI, 0, DIM);
     long long tot = 0; for (int d = 0; d < 200; d++) tot += nodes[d];
     printf("{\"status\": \"%s\", \"frames\": %lld, \"nodes\": %lld, \"seconds\": %ld, \"shard\": %d, \"nshard\": %d, \"per_depth\": [", timed_out ? "TIME_LIMIT" : "COMPLETE", nsol, tot, (long)(time(NULL) - t0), shard, nshard);
