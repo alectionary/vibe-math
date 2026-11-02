@@ -7,6 +7,7 @@ Facts about the concrete 720 × 720 pairing matrix are checked by `native_decide
 additionally trusts the Lean compiler (axiom `Lean.ofReduceBool`).
 -/
 import Mathlib.Data.ZMod.Basic
+import Mathlib.Algebra.Field.ZMod
 import Mathlib.Data.Matrix.Mul
 import C16Frames
 import PoolData
@@ -14,6 +15,8 @@ import PoolData
 open Matrix C16Frames.Pools
 
 namespace C16Frames.PoolBridge
+
+instance : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
 
 /-- Coordinates of a 128-bit integer as a vector over `𝔽₂`. -/
 def toVec (v : Nat) : Fin 128 → ZMod 2 := fun c => if v.testBit c then 1 else 0
@@ -71,10 +74,9 @@ theorem G_eq_mul : (Matrix.of fun i c => X i c) * (Matrix.of fun j c => Z j c)�
 
 /-- Reduction, size bound for these pools: an induced matching in `G` has at most 128 pairs. -/
 theorem pool_matching_le_128 {m : ℕ} (S T : Fin m → Fin 720)
-    (h : (Matrix.of G).submatrix S T = 1) : m ≤ 128 := by
-  have := induced_matching_le_dim (Matrix.of fun i c => X i c) (Matrix.of fun j c => Z j c) S T
+    (h : (Matrix.of G).submatrix S T = 1) : m ≤ 128 :=
+  induced_matching_le_dim (Matrix.of fun i c => X i c) (Matrix.of fun j c => Z j c) S T
     (by rw [G_eq_mul]; exact h)
-  exact this
 
 /-- The shift `T` maps pool frames to pool frames. -/
 theorem frame_rot {S T : Finset (Fin 720)} {k : ℕ} (hF : IsFrame G S T k) :
