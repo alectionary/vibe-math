@@ -20,17 +20,18 @@
 \newcommand{\CLP}{C^{\mathrm{LP}}_{16,9}}
 \newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
 \newcommand{\evidence}[1]{\textsf{[#1]}}
-% Repository links. BASE = public commit with the earlier C16 work; WORK = commit with this paper's artifacts.
+% Repository links. Primary links point to master, where the work lands when PR 17 is merged.
+% Commit-pinned copies (immutable review links) are listed in the Availability section.
 \newcommand{\repourl}{https://github.com/alectionary/vibe-math}
 \newcommand{\basecommit}{132f116176f4b6eb85512e73f73dda5a281fd9d4}
-\newcommand{\workcommit}{09f0603b7b800868306c05d87d19fc04627aab68}
+\newcommand{\workcommit}{9d9a4dcd}
 \newcommand{\cdir}{formalization/canonical-width/c16}
 \newcommand{\rdir}{formalization/canonical-width/c16/restricted-frames-20261031}
-\newcommand{\prior}[2]{\href{\repourl/blob/\basecommit/\cdir/#1}{#2}}
-\newcommand{\ours}[2]{\href{\repourl/blob/\workcommit/\rdir/#1}{#2}}
+\newcommand{\prior}[2]{\href{\repourl/blob/master/\cdir/#1}{#2}}
+\newcommand{\ours}[2]{\href{\repourl/blob/master/\rdir/#1}{#2}}
 \newcommand{\oursf}[1]{\ours{#1}{\texttt{\detokenize{#1}}}}
-\newcommand{\oursdir}[1]{\href{\repourl/tree/\workcommit/\rdir/#1}{\texttt{\detokenize{#1/}}}}
-\newcommand{\oursnote}[2]{\href{\repourl/blob/\workcommit/\cdir/#1}{#2}}
+\newcommand{\oursdir}[1]{\href{\repourl/tree/master/\rdir/#1}{\texttt{\detokenize{#1/}}}}
+\newcommand{\oursnote}[2]{\href{\repourl/blob/master/\cdir/#1}{#2}}
 
 \title{No Symmetric Width-16 Canonical Frame for the Lifted-Product Code $\CLP$}
 \author{}
@@ -206,15 +207,17 @@ Follow-up directions raised by this work (not source-posed):
 No statement in this paper has a Lean version yet. Lean versions are needed for Proposition~\ref{prop:reduction}, Lemma~\ref{lem:classes}, the three search lemmas of \S\ref{sec:method}, and the bridge from the frozen instances to the source objects. Until then the computational results are not presented as formally proved. \pending{Lean appendix}
 
 \section{Availability}
-All artifacts are on branch \texttt{research/c16-structural-20261027T173245} at commit \texttt{\workcommit}; the earlier work is at commit \texttt{\basecommit}. \pending{the work commit is not yet pushed; links of the form \texttt{github.com/alectionary/vibe-math/blob/<commit>/...} resolve once it is. Current-version \texttt{master} links will be added at integration.}
+Repository links in this paper point to \texttt{master} of \url{https://github.com/alectionary/vibe-math}, where the work lands when \href{https://github.com/alectionary/vibe-math/pull/17}{pull request 17} is merged. \pending{not yet on \texttt{master}: PR 17 awaits review, so these links do not resolve yet.}
+
+Immutable review copies: the earlier work is pinned at commit \href{\repourl/tree/\basecommit/\cdir}{\texttt{132f1161}}, which is already pushed to PR 17. This paper's programs, instances and records are on branch \texttt{research/c16-structural-20261027T173245}. \pending{that branch is not yet pushed; once it is, add the commit-pinned link and recheck every \texttt{master} link against the merged files.}
 
 \begin{thebibliography}{99}
 \bibitem{lee} J.~Y.~Lee, \emph{Designing Group-Valued Codes with Full Regular Low-Weight Bases}, arXiv:2610.06820v1, 5 October 2026, Proposition~9, Section~IV.4, Appendix~C.3, equation~(50). \url{https://arxiv.org/html/2610.06820v1}. Data repository: \url{https://github.com/yeon-lee/public-regular-logical-frames/tree/04ad4795ad15cb89ee47b7868ff925c30b2fc731}.
 \bibitem{pk} P.~Panteleev and G.~Kalachev, \emph{Quantum LDPC codes with almost linear minimum distance}, arXiv:2012.04068. \url{https://arxiv.org/abs/2012.04068}.
-\bibitem{investigation} \emph{Unrestricted canonical width of $C^{\mathrm{LP}}_{16,9}$}, investigation record. \url{https://github.com/alectionary/vibe-math/blob/132f116176f4b6eb85512e73f73dda5a281fd9d4/formalization/canonical-width/c16/INVESTIGATION.md}.
-\bibitem{enumeration} \emph{Independent low-weight pool enumeration}. \url{https://github.com/alectionary/vibe-math/blob/132f116176f4b6eb85512e73f73dda5a281fd9d4/formalization/canonical-width/c16/INDEPENDENT-ENUMERATION.md}.
-\bibitem{structural} \emph{Structural comparison: exact restricted result, no quarter-turn invariant frame}. \url{https://github.com/alectionary/vibe-math/blob/132f116176f4b6eb85512e73f73dda5a281fd9d4/formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md}.
-\bibitem{inverse4h} \emph{Inverse four-hour block: enlarged Cartesian dictionaries}. \url{https://github.com/alectionary/vibe-math/blob/132f116176f4b6eb85512e73f73dda5a281fd9d4/formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md}.
+\bibitem{investigation} \emph{Unrestricted canonical width of $C^{\mathrm{LP}}_{16,9}$}, investigation record. \url{https://github.com/alectionary/vibe-math/blob/master/formalization/canonical-width/c16/INVESTIGATION.md}.
+\bibitem{enumeration} \emph{Independent low-weight pool enumeration}. \url{https://github.com/alectionary/vibe-math/blob/master/formalization/canonical-width/c16/INDEPENDENT-ENUMERATION.md}.
+\bibitem{structural} \emph{Structural comparison: exact restricted result, no quarter-turn invariant frame}. \url{https://github.com/alectionary/vibe-math/blob/master/formalization/canonical-width/c16/STRUCTURAL-COMPARISON.md}.
+\bibitem{inverse4h} \emph{Inverse four-hour block: enlarged Cartesian dictionaries}. \url{https://github.com/alectionary/vibe-math/blob/master/formalization/canonical-width/c16/INVERSE-FOUR-HOURS.md}.
 \bibitem{mckay} B.~D.~McKay and A.~Piperno, \emph{Practical graph isomorphism, II}, J.\ Symbolic Comput.\ 60 (2014). \url{https://arxiv.org/abs/1301.1493}.
 \bibitem{knuth} D.~E.~Knuth, \emph{Estimating the efficiency of backtrack programs}, Math.\ Comp.\ 29 (1975). \url{https://www.ams.org/journals/mcom/1975-29-129/S0025-5718-1975-0373371-6/home.html}.
 \bibitem{kissat} A.~Biere et al., Kissat SAT solver. \url{https://github.com/arminbiere/kissat}.
