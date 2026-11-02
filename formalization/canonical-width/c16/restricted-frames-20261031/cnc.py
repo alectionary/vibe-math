@@ -31,6 +31,10 @@ ROOT = HERE.parent                       # formalization/canonical-width/c16
 WORK = HERE / 'work' / 'cnc'
 BASE = HERE / 'work' / 'sub' / 'o2.cnf'
 BASE_SHA = 'dc2b1d0d8b5e123d88b566ef77e2746173a0c4e4c8f2659efd402e7c41dc0452'
+if os.environ.get('C16_CNC') == 'o12':   # orbit-12-first symmetry breaking (subgroup_frame_o12.py)
+    WORK = HERE / 'work' / 'cnc-o12'
+    BASE = HERE / 'work' / 'o12' / 'o12.cnf'
+    BASE_SHA = '470ce05d4ae9e607a91cd56677fc5b9d1abb427928d335c838681d689ca48211'
 L, d = 2, 8
 m = 45 * d                               # orbit variables per sector
 
