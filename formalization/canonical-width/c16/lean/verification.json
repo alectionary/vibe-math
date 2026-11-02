@@ -28,10 +28,10 @@
     "perfect_inf_perp"
   ],
   "not_formalized": [
-    "look-ahead lemma: the final iff step (both spans full <=> pairing rank full) is a one-line argument from finrank_inf_perp_add and perfect_inf_perp, not stated separately",
-    "the exhaustive computations",
+    "completeness of the weight-16 pool enumeration (every logical class of weight <= 17 is in the pools)",
+    "mu_XZ = 26 (input to the mixed reduction)",
     "Theorem (symmetry group, order 32)",
-    "bridge from the code C^LP_16,9 (equation (50)) to the pools: completeness of the weight-16 pool enumeration"
+    "the exhaustive frame searches"
   ],
   "pool_bridge": {
     "file": "Pools.lean",
@@ -44,5 +44,24 @@
       "pool_matching_le_128": "standard only (propext, Classical.choice, Quot.sound)",
       "X_rot, Z_rot, G_symm, G_rot, rotEquiv, tau8, frame_rot, frame_swap, fixed_sT8_iff": "standard plus native_decide auxiliary axioms (trusts the Lean compiler via Lean.ofReduceBool)"
     }
+  },
+  "code_bridge": {
+    "file": "Code.lean",
+    "sha256": "8e2ae388e3ea458ed0f3348c0e493d33195c0d9c1877576ac827d7b981639fa9",
+    "data_file": "PhysData.lean",
+    "data_sha256": "cec355fc1fdab1d083f2ae5a8295c492b14931d0e6195face8c5a180bded48e7",
+    "data_generator": "gen_phys_data.py (records physical-pool-source.json SHA-256 in the header)",
+    "port_of": [
+      "verify_partial_frame.py (reconstruct_checks, shift)",
+      "audit_pools.py (exchange, canonical frame, coordinates)"
+    ],
+    "fingerprint_match_with_python": "hx, hz, canonical X/Z, physical X/Z pools identical",
+    "check": "0 errors, 9.5 min",
+    "axioms": "standard plus native_decide auxiliary axioms (Lean.ofReduceBool) for all 15 theorems"
+  },
+  "mixed_reduction": {
+    "file": "Mixed.lean",
+    "axioms": "standard only (propext, Classical.choice, Quot.sound)",
+    "hypothesis_not_proved_in_lean": "every operator of weight <= 17 has a trivial component (mu_XZ = 26, INDEPENDENT-ENUMERATION.md)"
   }
 }
