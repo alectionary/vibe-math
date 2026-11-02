@@ -524,6 +524,17 @@ Seven verified fetch manifests were screened. Five citing papers of Mi et al. 20
 - [L-F182-stacking-mse-asymptotics](OPEN-PROBLEMS.md#l-f182-stacking-mse-asymptotics): Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
 - [L-F173-strongly-polynomial-sfm](OPEN-PROBLEMS.md#l-f173-strongly-polynomial-sfm): Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.
 
-Current cohort: **378 canonical entries,151 eligible targets,190 paper records,159 full-text screens**; **6/151 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: fetch-ingest-11-12-2026-11-02
 
-The current source index has **113** records, with actual access levels retained.
+Fetch issues 11 and 12 were screened. Issue 11 is the Morris dissertation already stored as source-manifest id 2025-Morris; F187 links that seed and does not add a second file. Three Chapter 6 directions were recorded. Issue 12 is arXiv:2502.15166v2, a new row F188. Conjecture 7.2 is refuted in the paper. Conjecture 7.4 is the one eligible target. Present resolution and Lean discovery were not assessed. PDF bytes are not committed.
+
+[Screen report](../literature/fetched-papers-2026-11-02-issues-11-12.md). Added **4 entries**, **1 eligible targets**, **2 paper records**, **2 full-text screens** and **0 completed proofs**.
+
+- [L-F187-nonabsorbing-failure-sets](OPEN-PROBLEMS.md#l-f187-nonabsorbing-failure-sets): Characterize failure-inducing sets that are not absorbing sets.
+- [L-F187-gallager-b-convergence-bound](OPEN-PROBLEMS.md#l-f187-gallager-b-convergence-bound): Ask whether the graphical condition that guarantees Gallager-B convergence in two iterations can be relaxed.
+- [L-F187-redundancy-other-families](OPEN-PROBLEMS.md#l-f187-redundancy-other-families): Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.
+- [L-F188-finite-quotient-tensor](OPEN-PROBLEMS.md#l-f188-finite-quotient-tensor): If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.
+
+Current cohort: **382 canonical entries,152 eligible targets,192 paper records,161 full-text screens**; **6/152 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **114** records, with actual access levels retained.
