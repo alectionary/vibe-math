@@ -355,11 +355,15 @@ Instance SHA-256 prefix: `60acef5f7b8a0bf0` (order 2).
 | quarter {0,1}, first frame | found | found at node 33, verified |
 | quarter {2,3} | none | none, root pruned |
 | planted seed 1 / 2, order 2 (`-1`) | 1 frame each | planted frame found after 978,158 / 930,256 nodes (2,572 s / 2,527 s), verified |
+| half support {0,1,4,5}, 64 dims | open | none: 1,911 nodes plain, 503 with `-l -f` |
+| half support {2,3,6,7}, 64 dims | open | none: 435 nodes plain, 130 with `-l -f` |
 | order 2 | 9,995,481 nodes, no frame | 810,784 nodes, no frame (Knuth estimate was ~6e5) |
 | unrestricted, Knuth estimate | ~9e11 | ~2e11 (200 probes, max 2e13), leaves at depth 3–6 |
 | unrestricted, no weight-1 vectors | – | ~3e10 (100 probes) |
 
 **Half-turn rerun with `-l -f`: COMPLETE, no frame.** 810,784 nodes on 2 shards (418,365 + 392,419), 1,122 s + 1,011 s, against 9,995,481 nodes for the plain run. It is a second, differently pruned check by the same program, not an independent implementation.
+
+The half-support rows rule out only frames of the 64-dim subspace that use pool vectors supported on those blocks (block-diagonal frames). They do not restrict a global frame.
 
 **Symmetry.** Colour refinement (`explore/auto_wl.py`) on the coordinate/pool incidence graph gives one class per block. Individualising coordinate 0 makes the colouring discrete. So the coordinate-permutation automorphisms preserving both pools are exactly the 16 translations T^k, and 32 with the X↔Z swap. No hidden permutation symmetry is available to shrink the unrestricted search.
 
