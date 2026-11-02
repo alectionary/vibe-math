@@ -354,11 +354,11 @@ Instance SHA-256 prefix: `60acef5f7b8a0bf0` (order 2).
 | planted seed 1, order 16 | 1 frame | 1 frame, 11 nodes, verified |
 | quarter {0,1}, first frame | found | found at node 33, verified |
 | quarter {2,3} | none | none, root pruned |
-| order 2, Knuth estimate | ~1e7 (actual 9,995,481) | ~6e5 (30 probes) |
+| order 2 | 9,995,481 nodes, no frame | 810,784 nodes, no frame (Knuth estimate was ~6e5) |
 | unrestricted, Knuth estimate | ~9e11 | ~2e11 (200 probes, max 2e13), leaves at depth 3–6 |
 | unrestricted, no weight-1 vectors | – | ~3e10 (100 probes) |
 
-A full half-turn rerun with `-l -f` is in progress as a second, differently pruned check.
+**Half-turn rerun with `-l -f`: COMPLETE, no frame.** 810,784 nodes on 2 shards (418,365 + 392,419), 1,122 s + 1,011 s, against 9,995,481 nodes for the plain run. It is a second, differently pruned check by the same program, not an independent implementation.
 
 **Symmetry.** Colour refinement (`explore/auto_wl.py`) on the coordinate/pool incidence graph gives one class per block. Individualising coordinate 0 makes the colouring discrete. So the coordinate-permutation automorphisms preserving both pools are exactly the 16 translations T^k, and 32 with the X↔Z swap. No hidden permutation symmetry is available to shrink the unrestricted search.
 
