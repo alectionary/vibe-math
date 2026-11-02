@@ -1,0 +1,125 @@
+{
+  "writer": "research session",
+  "context": "shared",
+  "packet_sha256": "b0383a53b3086c6c6876c030e600c5af1a6ef231745206ce48d35c8db76ec1a3",
+  "inputs": [
+    {
+      "path": "evidence-packet.json",
+      "sha256": "b0383a53b3086c6c6876c030e600c5af1a6ef231745206ce48d35c8db76ec1a3"
+    },
+    {
+      "path": "paper/approved-preamble.tex",
+      "sha256": "03e1b01590e4268de4a2ab4600db045f327b803c3bf44a4fadf9942ed8cf345e"
+    },
+    {
+      "path": "simulation/results/summary.csv",
+      "sha256": "25107956679901b175d7620f7dbeb85d0ec6cddcf67cdae378aedcf733c02251"
+    },
+    {
+      "path": "notes/availability.md",
+      "sha256": "ae216cd3ea07853ad3c0d831f39ba6f99971f03d6179108d898c8221c3d31331"
+    },
+    {
+      "path": "simulation/results/cell_01.csv",
+      "sha256": "dee4747fa6665f045fe70f06c7267262bad3c0628271a4dd0792f5a9b383045f"
+    }
+  ],
+  "claim_map": {
+    "C1": "page 1 table and section What the normal random-intercept grid shows",
+    "C2": "page 1 approximate-weight row and section What the normal random-intercept grid shows",
+    "C3": "page 1 coverage row and Table of coverage",
+    "C4": "page 1 Bernoulli row and section What remains unresolved",
+    "C5": "section What the normal random-intercept grid shows, non-informative rows",
+    "C6": "section What we did ourselves, design moments",
+    "C7": "section What remains unresolved",
+    "C8": "coverage table, cluster size 20, intraclass correlation .05"
+  },
+  "limitations_map": {
+    "0": "page 1 Bernoulli row and the abstract limit sentence",
+    "1": "section What remains unresolved, random-coefficient paragraph",
+    "2": "page 1 contrast 0.152 against 0.151 and the comparison table",
+    "3": "coverage table and the comparison table row for cluster size 20",
+    "4": "section Code and source availability and notes/availability.md"
+  },
+  "first_page": {
+    "abstract": {
+      "bbox": [
+        70,
+        270,
+        540,
+        465
+      ],
+      "citation_key": "koziol2015",
+      "source_identification": "Koziol (2015)",
+      "source_citation": "Koziol, 2015",
+      "original_finding": "weighted single-level estimators tended to outperform weighted multilevel estimators",
+      "verdict_evidence": "We partly replicated the headline result of Koziol",
+      "claim_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    },
+    "table": {
+      "bbox": [
+        55,
+        470,
+        560,
+        710
+      ],
+      "magnitude_heading": "Effect magnitude",
+      "comparison_note": "Descriptive point estimates; not equivalence.",
+      "rows": [
+        {
+          "effect_id": "E1",
+          "bbox": [
+            60,
+            496,
+            545,
+            532
+          ],
+          "estimand_text": "Multilevel minus single-level intercept bias",
+          "tolerance_text": "tolerance 0.001",
+          "units_text": "outcome units"
+        },
+        {
+          "effect_id": "E2",
+          "bbox": [
+            60,
+            533,
+            545,
+            580
+          ],
+          "estimand_text": "Approximate-weight minus trueweight multilevel intercept bias",
+          "tolerance_text": "tolerance 0.001",
+          "units_text": "outcome units"
+        },
+        {
+          "effect_id": "E3",
+          "bbox": [
+            60,
+            581,
+            545,
+            617
+          ],
+          "estimand_text": "Single-level minus multilevel intercept coverage",
+          "tolerance_text": "tolerance 0.001",
+          "units_text": "proportion"
+        },
+        {
+          "effect_id": "E4",
+          "bbox": [
+            60,
+            618,
+            555,
+            656
+          ],
+          "estimand_text": "Bernoulli informative intercept bias",
+          "tolerance_text": "tolerance 0.001",
+          "units_text": "probit units"
+        }
+      ]
+    }
+  }
+}

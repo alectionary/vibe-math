@@ -1,0 +1,44 @@
+{
+  "verdict": "pass",
+  "context": "shared",
+  "read_order": ["rendered_manuscript", "evidence_packet"],
+  "checks": {
+    "abstract_verdict_first": {
+      "verdict": "pass",
+      "findings": [{"page": 1, "location": "abstract, first sentence", "finding": "The abstract opens with 'We partly replicated the headline result of Koziol (2015)' and then the printed biases 0.000, 0.151, and 0.308 against 0.001, 0.153, and 0.309."}]
+    },
+    "introduction_verdict_first": {
+      "verdict": "pass",
+      "findings": [{"page": 2, "location": "first paragraph", "finding": "The introduction repeats the partial replication, the same three biases, the unrun Bernoulli and random-coefficient arms, and the tolerance of 0.001."}]
+    },
+    "standalone_prose": {
+      "verdict": "pass",
+      "findings": [{"page": 3, "location": "What the normal random-intercept grid shows", "finding": "The section states the scientific question and the estimator order before the file names. It does not depend on a prior draft."}]
+    },
+    "headline_fidelity": {
+      "verdict": "pass",
+      "findings": [{"page": 1, "location": "headline table", "finding": "The first row is multilevel bias minus single-level bias, 0.151 versus 0.152, magnitude larger, same direction, verdict close. The Bernoulli row is not established."}]
+    },
+    "claim_coverage": {
+      "verdict": "pass",
+      "findings": [{"page": 6, "location": "What remains unresolved", "finding": "Bernoulli and random-coefficient arms are named as unrun, with the printed Bernoulli contrast -0.170 left without an estimate."}]
+    },
+    "limitations_preserved": {
+      "verdict": "pass",
+      "findings": [{"page": 1, "location": "abstract, limit sentence", "finding": "The abstract says the Bernoulli outcome and the random-coefficient model were not rerun, and it reports the coverage gap 0.282 versus 0.248."}]
+    },
+    "scientific_process_distinction": {
+      "verdict": "pass",
+      "findings": [{"page": 5, "location": "comparison table", "finding": "Numerical labels are separated from the Monte Carlo standard errors stated in the preceding section. The bands are not called equivalence."}]
+    },
+    "abstract_source_fidelity": {
+      "verdict": "pass",
+      "findings": [{"page": 1, "location": "abstract", "finding": "Koziol (2015) is named, the outperform sentence matches the dissertation abstract, and the biases match Table C.2 for the named cell."}]
+    },
+    "effect_magnitude_fidelity": {
+      "verdict": "pass",
+      "findings": [{"page": 1, "location": "Effect magnitude column", "finding": "The 0.001 tolerance is the sum of two half-thousandth bounds. 0.152 against 0.151 is larger; 0.156 against 0.157 is same; the missing Bernoulli estimate is not established."}]
+    }
+  },
+  "phrase_dispositions": []
+}
