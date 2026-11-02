@@ -444,3 +444,5 @@ Targeted control: fix k of the 64 planted sT⁸ items (`la_gen -p`, random subse
 | nodes to the frame | 17 | 33 | 49 | 57 | 61 | 63 | 82 |
 
 Each found frame, joined with its fixed pairs, is VERIFIED as a 128-pair frame by `gen_items.py --plant 1 verify`. The class-specific code path (2-pair sT⁸ items, per-vector availability) therefore finds a planted frame from as little as one fixed item.
+
+**Swap vertex-SAT with rotation symmetry breaking (`--symbreak`, CNF SHA-256 `05790b41…`).** The planted control was SAT and checked by `check_model.py`. The real instance was UNKNOWN after 5,400 s on a shared core. Kissat on the whole instance does not settle the swap class in about 2 h, with or without symmetry breaking. The next independent route would be cube-and-conquer over the vertex encoding.
