@@ -54,6 +54,11 @@ static int ins(v128 *piv, uint8_t *has, v128 v) {
         v = vxor(v, piv[h]);
     }
 }
+static int span_rank(const uint8_t *ok, int G, const int *gv, const v128 *V, int need) {
+    v128 p[128]; uint8_t h[128] = {0}; int r = 0;
+    for (int a = 0; a < G && r < need; a++) if (ok[a]) for (int s = 0; s < g; s++) r += ins(p, h, V[gv[a * g + s]]);
+    return r;
+}
 static int pair_rank(const uint8_t *okx, const uint8_t *okz, int need) {
     v128 px[128], pz[128]; uint8_t hx[128] = {0}, hz[128] = {0}; int rx = 0, rz = 0;
     v128 bx[128], bz[128];
@@ -71,7 +76,7 @@ static int pair_rank(const uint8_t *okx, const uint8_t *okz, int need) {
 }
 
 
-static int use_coloops = 0;
+static int use_coloops = 0, live_sides = 0, filter_items = 0; static long long filtered[200];
 /* Groups that every basis drawn from the given vectors must use: a vector that is not in
  * the span of the others (a coloop) lies in every basis. Writes up to 128 group ids. */
 static int coloop_groups(const uint8_t *ok, int G, const int *gv, const v128 *V, int *out) {
@@ -95,7 +100,7 @@ static int coloop_groups(const uint8_t *ok, int G, const int *gv, const v128 *V,
 }
 
 static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, int depth, int need) {
-    nodes[depth]++;
+    nodes[depth]++; int own_live = 0;
     if (time_limit && (nodes[depth] & 255) == 0 && time(NULL) - t0 > time_limit) { timed_out = 1; return; }
     if (timed_out) return;
     if (need == 0) {
@@ -103,7 +108,47 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         fprintf(solf, "FRAME"); for (int d = 0; d < depth; d++) fprintf(solf, " %d", chosen[d]); fprintf(solf, "\n"); fflush(solf);
         return;
     }
+    uint8_t okxL[GX > 0 ? GX : 1], okzL[GZ > 0 ? GZ : 1];
+    if (live_sides) {
+        /* every remaining frame pair is a live item, so X' and Z' shrink to the sides of live items */
+        memset(okxL, 0, GX); memset(okzL, 0, GZ);
+        for (int t = 0; t < nlive; t++) { okxL[itx[live[t]]] = 1; okzL[itz[live[t]]] = 1; }
+        okx = okxL; okz = okzL;
+    }
     if (pair_rank(okx, okz, need) < need) { prunes_rank[depth]++; return; }
+    if (filter_items && need > g) {
+        /* drop live items whose choice would already fail the rank test (one-step look-ahead), to a fixpoint */
+        /* Choosing item (a,b) leaves X' ∩ b^⊥ and Z' ∩ a^⊥; the child's rank test passes iff both still
+         * span need-g dimensions (the pairing between them is then perfect automatically, because
+         * <a-group, b-group> pair perfectly). So the test depends on a and on b separately. */
+        uint8_t *gzok = malloc(GZ), *gxok = malloc(GX), *tx = malloc(GX), *tz = malloc(GZ); int *keep = malloc(sizeof(int) * (nlive + 1));
+        for (int round = 0; round < 8; round++) {
+            memset(gzok, 2, GZ); memset(gxok, 2, GX);   /* 2 = not computed */
+            int nk = 0;
+            for (int t = 0; t < nlive; t++) {
+                int q = live[t], a = itx[q], b = itz[q];
+                if (gzok[b] == 2) {
+                    for (int i = 0; i < GX; i++) tx[i] = okx[i] && orth[i * GZ + b];
+                    gzok[b] = span_rank(tx, GX, gxv, XV, need - g) >= need - g;
+                }
+                if (gzok[b] && gxok[a] == 2) {
+                    for (int j = 0; j < GZ; j++) tz[j] = okz[j] && orth[a * GZ + j];
+                    gxok[a] = span_rank(tz, GZ, gzv, ZV, need - g) >= need - g;
+                }
+                if (gzok[b] && gxok[a]) keep[nk++] = q; else filtered[depth]++;
+            }
+            int changed = nk < nlive;
+            int *nl = malloc(sizeof(int) * (nk + 1)); memcpy(nl, keep, sizeof(int) * nk);
+            if (own_live) free(live);
+            live = nl; nlive = nk; own_live = 1;
+            if (!changed || !live_sides) break;
+            memset(okxL, 0, GX); memset(okzL, 0, GZ);
+            for (int t = 0; t < nlive; t++) { okxL[itx[live[t]]] = 1; okzL[itz[live[t]]] = 1; }
+            okx = okxL; okz = okzL;
+            if (pair_rank(okx, okz, need) < need) { prunes_rank[depth]++; free(gzok); free(gxok); free(tx); free(tz); free(keep); free(live); return; }
+        }
+        free(gzok); free(gxok); free(tx); free(tz); free(keep);
+    }
     /* counts of live items with a 1 at each entry (c,k) */
     static int cnt[200][128][128];
     int (*C)[128] = cnt[depth];
@@ -138,7 +183,7 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
             if (C[c][k] < best) { best = C[c][k]; bc = c; bk = k; }
         }
     }
-    if (best == 0) { prunes_empty[depth]++; return; }
+    if (best == 0) { prunes_empty[depth]++; if (own_live) free(live); return; }
     int forced_side = -1, forced_group = -1;
     if (use_coloops) {
         int cg[128], n;
@@ -148,7 +193,7 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         n = coloop_groups(okz, GZ, gzv, ZV, cg);
         for (int u = 0; u < n; u++) { int c = 0; for (int t = 0; t < nlive; t++) c += itz[live[t]] == cg[u];
             if (c < best) { best = c; forced_side = 1; forced_group = cg[u]; } }
-        if (best == 0) { prunes_empty[depth]++; return; }
+        if (best == 0) { prunes_empty[depth]++; if (own_live) free(live); return; }
     }
     /* children: live items with a 1 at (bc,bk), or the live items of a forced group */
     int *ch = malloc(sizeof(int) * (best + 1)), nch = 0;
@@ -182,6 +227,7 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         if (only_first && nsol) break;
     }
     free(ch); free(excl); free(okx2); free(okz2); free(live2);
+    if (own_live) free(live);
 }
 
 int main(int argc, char **argv) {
@@ -193,6 +239,8 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "-t")) time_limit = atoll(argv[++a]);
         else if (!strcmp(argv[a], "-o")) out = argv[++a];
         else if (!strcmp(argv[a], "-k")) knuth = atoi(argv[++a]);
+        else if (!strcmp(argv[a], "-l")) live_sides = 1;
+        else if (!strcmp(argv[a], "-f")) filter_items = 1;
         else if (!strcmp(argv[a], "-c")) use_coloops = 1;
         else if (!strcmp(argv[a], "-r")) rng ^= strtoull(argv[++a], 0, 10) * 0x9E3779B97F4A7C15ULL;
         else in = argv[a];
