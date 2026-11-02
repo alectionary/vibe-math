@@ -31,8 +31,10 @@
 \newcommand{\ours}[2]{\href{\repourl/blob/master/\rdir/#1}{#2}}
 \newcommand{\oursf}[1]{\ours{#1}{\texttt{\detokenize{#1}}}}
 \newcommand{\oursdir}[1]{\href{\repourl/tree/master/\rdir/#1}{\texttt{\detokenize{#1/}}}}
-\newcommand{\leancommit}{142f3771f57af24ed1fee37a76968e3acba328b5}
+\newcommand{\leancommit}{9792a06ae3a65e1be038945dff3b933595d128a5}
 \newcommand{\leanfile}{formalization/canonical-width/c16/lean/C16Frames.lean}
+\newcommand{\poolfile}{formalization/canonical-width/c16/lean/Pools.lean}
+\newcommand{\pl}[2]{\href{\repourl/blob/master/\poolfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\poolfile\#L#2}{pinned})}
 % \lean{decl}{line}: master deep link plus commit-pinned copy
 \newcommand{\lean}[2]{\href{\repourl/blob/master/\leanfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\leanfile\#L#2}{pinned})}
 \newcommand{\oursnote}[2]{\href{\repourl/blob/master/\cdir/#1}{#2}}
@@ -221,11 +223,19 @@ Lemma~\ref{lem:classes} & \lean{IsFrame}{80}, \lean{IsFrame.map}{84}, \lean{IsFr
 Branching lemma (\S\ref{sec:method}) & \lean{exists_pair_of_residual_entry}{156}, \lean{first_member_unique}{166} \\
 Rank-pruning lemma (\S\ref{sec:method}) & \lean{remaining_card_le_finrank}{186} \\
 Look-ahead lemma (\S\ref{sec:method}): dimension drop and perfect pairing & \lean{perpOf}{217}, \lean{finrank_inf_perp_add}{230}, \lean{perfect_inf_perp}{255} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Bridge to the concrete pools} (\href{\repourl/blob/master/\poolfile}{\texttt{Pools.lean}}; data in \href{\repourl/blob/master/formalization/canonical-width/c16/lean/PoolData.lean}{\texttt{PoolData.lean}})} \\
+Pools are $T$-orbits$^\dagger$ & \pl{X_rot}{43}, \pl{Z_rot}{45} \\
+Lemma~\ref{lem:G}: $G$ symmetric, $T$-invariant$^\dagger$ & \pl{G_symm}{49}, \pl{G_rot}{52} \\
+Prop.~\ref{prop:reduction} for these pools & \pl{G_eq_mul}{71}, \pl{pool_matching_le_128}{76} \\
+Symmetries act on pool frames$^\dagger$ & \pl{frame_rot}{82}, \pl{frame_swap}{87} \\
+Lemma~\ref{lem:classes}(iii) for these pools$^\dagger$ & \pl{tau8}{62}, \pl{fixed_sT8_iff}{92} \\
 \bottomrule
 \end{tabular}
 \end{center}
+{\small $^\dagger$ Uses \texttt{native\_decide} over the full $720\times720$ data, so it also trusts the Lean compiler (\texttt{Lean.ofReduceBool}). The pool data is generated from \texttt{pools/xcoords.txt} and \texttt{pools/zcoords.txt}, and the SHA-256 of both files is recorded in its header.}
 
-The Lean statements are abstract: they concern any field, any pairing matrix and any finite index set. For the look-ahead lemma, Lean proves its two cores. The remaining step, that both spans are full exactly when the pairing has full rank, follows in one line because a pairing rank never exceeds either dimension. Not yet formalized: the bridge from the concrete pools and instances to these statements; Theorem~\ref{thm:aut}; and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{pool bridge in Lean}
+The abstract Lean statements: they concern any field, any pairing matrix and any finite index set. For the look-ahead lemma, Lean proves its two cores. The remaining step, that both spans are full exactly when the pairing has full rank, follows in one line because a pairing rank never exceeds either dimension. Not yet formalized: the bridge from the code itself (equation~(50)) to the pools, i.e.\ the completeness of the weight-16 enumeration~\cite{enumeration}; Theorem~\ref{thm:aut}; and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{code-to-pool bridge in Lean}
 
 \section{Availability}
 Repository links in this paper point to \texttt{master} of \url{https://github.com/alectionary/vibe-math}, where the work lands when \href{https://github.com/alectionary/vibe-math/pull/17}{pull request 17} is merged. \pending{not yet on \texttt{master}: PR 17 awaits review, so these links do not resolve yet.}
