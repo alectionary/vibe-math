@@ -31,6 +31,10 @@
 \newcommand{\ours}[2]{\href{\repourl/blob/master/\rdir/#1}{#2}}
 \newcommand{\oursf}[1]{\ours{#1}{\texttt{\detokenize{#1}}}}
 \newcommand{\oursdir}[1]{\href{\repourl/tree/master/\rdir/#1}{\texttt{\detokenize{#1/}}}}
+\newcommand{\leancommit}{70469da00f9cd2a2b3e0548ddbb3a399f78bc863}
+\newcommand{\leanfile}{formalization/canonical-width/c16/lean/C16Frames.lean}
+% \lean{decl}{line}: master deep link plus commit-pinned copy
+\newcommand{\lean}[2]{\href{\repourl/blob/master/\leanfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\leanfile\#L#2}{pinned})}
 \newcommand{\oursnote}[2]{\href{\repourl/blob/master/\cdir/#1}{#2}}
 
 \title{No Symmetric Width-16 Canonical Frame for the Lifted-Product Code $\CLP$}
@@ -69,7 +73,7 @@ No width-$16$ canonical frame of $\CLP$ is fixed by a nontrivial element of the 
 
 The proof is computational: Theorem~\ref{thm:aut} identifies the group, Lemma~\ref{lem:classes} reduces the claim to three involution classes, and Table~\ref{tab:evidence} gives the evidence for each. The $T^8$ case subsumes the source's $f_{\mathrm{reg}}=18$ and the earlier exclusion of $T^4$-invariant frames~\cite{structural}, since every nontrivial subgroup of $C_{16}$ contains $T^8$.
 
-\paragraph{Evidence labels.} \evidence{proof}: written proof. \evidence{certified}: computation that outputs an independently checkable certificate (DRAT). \evidence{computation}: exhaustive search by a program, cross-checked as stated, not certified. No result in this paper has yet been checked in Lean (\S\ref{sec:lean}).
+\paragraph{Evidence labels.} \evidence{proof}: written proof. \evidence{certified}: computation that outputs an independently checkable certificate (DRAT). \evidence{computation}: exhaustive search by a program, cross-checked as stated, not certified. Every written proof except the look-ahead lemma has a Lean version (\S\ref{sec:lean}).
 
 \paragraph{Contributions.} New here: Theorem~\ref{thm:aut}; Theorem~\ref{thm:main} for the classes $T^8$, $s$ and $sT^8$; the linear-algebra search of \S\ref{sec:method} with its validation; the near-miss analysis of \S\ref{sec:nearmiss}; the block-restricted results and negative results of \S\ref{sec:remaining}. Cited from earlier repository work~\cite{investigation,enumeration,structural}: the pools and the reduction, the $T^4$ exclusion, the partial frames and the relaxation experiments.
 
@@ -203,8 +207,24 @@ Follow-up directions raised by this work (not source-posed):
 \item Let the \emph{symmetric width} be the minimum width over frames with nontrivial stabilizer. It equals $18$ here. When does it differ from $f$, for instance for $C^{\mathrm{LP}}_{20,10}$?
 \end{itemize}
 
-\section{Formal verification status}\label{sec:lean}
-No statement in this paper has a Lean version yet. Lean versions are needed for Proposition~\ref{prop:reduction}, Lemma~\ref{lem:classes}, the three search lemmas of \S\ref{sec:method}, and the bridge from the frozen instances to the source objects. Until then the computational results are not presented as formally proved. \pending{Lean appendix}
+\section{Lean formalization}\label{sec:lean}
+The written proofs are checked in Lean~4 (toolchain \texttt{v4.36.0-rc1}, Mathlib \texttt{5f7b4198}) in \href{\repourl/blob/master/\leanfile}{\texttt{C16Frames.lean}}. All declarations compile with no \texttt{sorry}, and \texttt{\#print axioms} reports only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The check is recorded in \href{\repourl/blob/master/formalization/canonical-width/c16/lean/verification.json}{\texttt{verification.json}}.
+
+\begin{center}\small
+\begin{tabular}{@{}p{5.2cm}p{10.2cm}@{}}
+\toprule
+Paper statement & Lean declaration \\
+\midrule
+Prop.~\ref{prop:reduction}, frame direction & \lean{gram_one_iff_sum_outer}{27}, \lean{frame_of_perm_block}{39} \\
+Prop.~\ref{prop:reduction}, size bound & \lean{induced_matching_le_rank}{49}, \lean{induced_matching_le_dim}{63} \\
+Lemma~\ref{lem:classes} & \lean{IsFrame}{80}, \lean{IsFrame.map}{84}, \lean{IsFrame.swap}{107}, \lean{fixed_swap_iff}{118}, \lean{fixed_half_iff}{124}, \lean{fixed_swapHalf_iff}{130} \\
+Branching lemma (\S\ref{sec:method}) & \lean{exists_pair_of_residual_entry}{156}, \lean{first_member_unique}{166} \\
+Rank-pruning lemma (\S\ref{sec:method}) & \lean{remaining_card_le_finrank}{186} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Lean statements are abstract: they concern any field, any pairing matrix and any finite index set. Not yet formalized: the look-ahead lemma; the bridge from the concrete pools and instances to these statements; Theorem~\ref{thm:aut}; and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{look-ahead lemma and pool bridge in Lean}
 
 \section{Availability}
 Repository links in this paper point to \texttt{master} of \url{https://github.com/alectionary/vibe-math}, where the work lands when \href{https://github.com/alectionary/vibe-math/pull/17}{pull request 17} is merged. \pending{not yet on \texttt{master}: PR 17 awaits review, so these links do not resolve yet.}
