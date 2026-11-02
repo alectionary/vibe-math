@@ -205,4 +205,82 @@ theorem remaining_card_le_finrank {K : Type*} [Field K] {n : ℕ} (X Z : Matrix 
 
 end Search
 
+section LookAhead
+/-! Lemma (look-ahead). Choosing a group of `g` pairs `(a s, b s)` with `a t ⬝ᵥ b s = δ` inside
+the current spaces `C` (X side) and `D` (Z side) leaves `C ∩ {b}^⊥` and `D ∩ {a}^⊥`. Their
+dimensions drop by exactly `g`, and the pairing between them stays perfect. Hence the child's
+rank test is equivalent to the two one-sided span tests "span(X' ∩ b^⊥) has dimension
+need - g" (a condition on `b` only) and "span(Z' ∩ a^⊥) has dimension need - g" (on `a` only). -/
+variable {K : Type*} [Field K] {n g : ℕ}
+
+/-- Vectors orthogonal to every `b s`. -/
+def perpOf (b : Fin g → Fin n → K) : Submodule K (Fin n → K) where
+  carrier := {v | ∀ s, v ⬝ᵥ b s = 0}
+  add_mem' := by intro u v hu hv s; simp [add_dotProduct, hu s, hv s]
+  zero_mem' := by intro s; simp
+  smul_mem' := by intro c v hv s; simp [smul_dotProduct, hv s]
+
+/-- Evaluation of `C` against the `b s`. -/
+def evalAgainst (C : Submodule K (Fin n → K)) (b : Fin g → Fin n → K) : C →ₗ[K] (Fin g → K) where
+  toFun c := fun s => (c : Fin n → K) ⬝ᵥ b s
+  map_add' := by intro x y; funext s; simp [add_dotProduct]
+  map_smul' := by intro r x; funext s; simp [smul_dotProduct]
+
+/-- Dimension part: `dim (C ∩ b^⊥) + g = dim C` when `C` contains a dual family `a`. -/
+theorem finrank_inf_perp_add (C : Submodule K (Fin n → K)) (a b : Fin g → Fin n → K)
+    (ha : ∀ t, a t ∈ C) (hab : ∀ t s, a t ⬝ᵥ b s = if t = s then 1 else 0) :
+    Module.finrank K ↥(C ⊓ perpOf b) + g = Module.finrank K C := by
+  classical
+  let φ := evalAgainst C b
+  have hsurj : Function.Surjective φ := by
+    intro y
+    refine ⟨⟨∑ t, y t • a t, C.sum_mem fun t _ => C.smul_mem _ (ha t)⟩, ?_⟩
+    funext s
+    simp [φ, evalAgainst, sum_dotProduct, smul_dotProduct, hab]
+  have hker : (LinearMap.ker φ).map C.subtype = C ⊓ perpOf b := by
+    ext v
+    simp only [Submodule.mem_map, LinearMap.mem_ker, Submodule.mem_inf]
+    constructor
+    · rintro ⟨c, hc, rfl⟩
+      exact ⟨c.2, fun s => congrFun hc s⟩
+    · rintro ⟨hvC, hvP⟩
+      exact ⟨⟨v, hvC⟩, funext fun s => hvP s, rfl⟩
+  have hrn := LinearMap.finrank_range_add_finrank_ker φ
+  rw [LinearMap.range_eq_top.mpr hsurj, finrank_top, Module.finrank_fin_fun] at hrn
+  rw [← hker, Submodule.finrank_map_subtype_eq]
+  omega
+
+/-- Pairing part: if the pairing is perfect on `C × D` (no nonzero vector of `C` is orthogonal
+to all of `D`), it stays perfect on `(C ∩ b^⊥) × (D ∩ a^⊥)`. -/
+theorem perfect_inf_perp (C D : Submodule K (Fin n → K)) (a b : Fin g → Fin n → K)
+    (hb : ∀ s, b s ∈ D) (hab : ∀ t s, a t ⬝ᵥ b s = if t = s then 1 else 0)
+    (hperf : ∀ c ∈ C, (∀ d ∈ D, c ⬝ᵥ d = 0) → c = 0) :
+    ∀ c ∈ C ⊓ perpOf b, (∀ d ∈ D ⊓ perpOf a, c ⬝ᵥ d = 0) → c = 0 := by
+  classical
+  intro c hc horth
+  obtain ⟨hcC, hcP⟩ := Submodule.mem_inf.mp hc
+  apply hperf c hcC
+  intro d hd
+  -- d = d' + Σ_s (a s ⬝ᵥ d) • b s with d' ∈ D ∩ a^⊥
+  set d' := d - ∑ s, (a s ⬝ᵥ d) • b s with hd'
+  have hd'D : d' ∈ D := D.sub_mem hd (D.sum_mem fun s _ => D.smul_mem _ (hb s))
+  have hd'P : d' ∈ perpOf a := by
+    intro t
+    show d' ⬝ᵥ a t = 0
+    rw [dotProduct_comm, hd', dotProduct_sub, dotProduct_sum]
+    simp only [dotProduct_smul, smul_eq_mul]
+    rw [Finset.sum_eq_single t]
+    · rw [hab t t, if_pos rfl, mul_one, sub_self]
+    · intro s _ hst
+      rw [hab t s, if_neg (Ne.symm hst), mul_zero]
+    · intro h; exact absurd (Finset.mem_univ t) h
+  have h1 : c ⬝ᵥ d' = 0 := horth d' (Submodule.mem_inf.mpr ⟨hd'D, hd'P⟩)
+  have h2 : c ⬝ᵥ (∑ s, (a s ⬝ᵥ d) • b s) = 0 := by
+    rw [dotProduct_sum]
+    exact Finset.sum_eq_zero fun s _ => by rw [dotProduct_smul, hcP s, smul_zero]
+  have : d = d' + ∑ s, (a s ⬝ᵥ d) • b s := by rw [hd']; abel
+  rw [this, dotProduct_add, h1, h2, add_zero]
+
+end LookAhead
+
 end C16Frames
