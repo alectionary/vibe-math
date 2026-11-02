@@ -433,4 +433,4 @@ Conclusion: the known near-misses are not close to any frame in the sense of sha
 
 **sT⁸ planted control (2026-11-02).** `la_gen -l -1 inst/gp1-swapT8.txt` (72,528 items) hit its 7,000 s time limit on one shared core after 32,816,666 nodes without reaching the planted frame. The result is inconclusive, not a failure; the control will be rerun on 2 shards.
 
-**Swap vertex-SAT (satcheck).** The planted control was SAT and checked (`check_model.py`). The real instance (`sat_symmetric.py swap`, CNF SHA-256 `588e61ed…`) was UNKNOWN at 3,300 s. A 7,000 s rerun is in progress.
+**Swap vertex-SAT (satcheck).** The planted control was SAT and checked (`check_model.py`). The real instance (`sat_symmetric.py swap`, CNF SHA-256 `588e61ed…`) was UNKNOWN at 3,300 s, and UNKNOWN again in a 7,000 s rerun (Kissat, one shared core). The next step is cube-and-conquer and/or rotation symmetry breaking in the vertex encoding; a plain longer run is not the way forward.
