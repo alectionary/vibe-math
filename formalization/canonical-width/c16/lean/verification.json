@@ -63,5 +63,23 @@
     "file": "Mixed.lean",
     "axioms": "standard only (propext, Classical.choice, Quot.sound)",
     "hypothesis_not_proved_in_lean": "every operator of weight <= 17 has a trivial component (mu_XZ = 26, INDEPENDENT-ENUMERATION.md)"
+  },
+  "project_build": {
+    "command": "lake exe cache get && lake build",
+    "roots": [
+      "C16Frames",
+      "PoolData",
+      "Pools",
+      "PhysData",
+      "Code",
+      "Mixed"
+    ],
+    "date": "2026-11-02",
+    "result": "Build completed successfully (3790 jobs), 0 errors",
+    "times_s": {
+      "Pools": 675,
+      "Code": 345
+    },
+    "note": "Run with Mathlib built from source at the pinned rev (cache.mathlib.org unreachable from the build machine); set MATHLIB_NO_CACHE_ON_UPDATE=1 in that case."
   }
 }
