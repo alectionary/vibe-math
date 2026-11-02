@@ -2,7 +2,7 @@
 
 Checked October 26, 2026. [PR #6](https://github.com/alectionary/vibe-math/pull/6) · [Tracking issue #5](https://github.com/alectionary/vibe-math/issues/5) · [Dissertation CSV](dissertations.csv) · [CFA expansion](CFA-EXPANSION.md) · [Retrieval correction](RETRIEVAL-REPAIR.md) · [Formalization suitability](FORMALIZATION.md) · [Shared questions](../OPEN-PROBLEMS.md).
 
-The expanded seed contains **89 SEM/CFA, growth/path or latent-measurement dissertations**, plus **10 explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** (99 records total). These are doctoral-dissertation records from 2001 onward; 8 now have complete-text question screens. All 99 authors have recorded downstream searches. The bibliography contains **49 selected source works**, with **30 readable full texts screened** and **13 source-stated statistical methods directions** indexed.
+The expanded seed contains **89 SEM/CFA, growth/path or latent-measurement dissertations**, plus **10 explicitly adjacent IRT/latent-class/exploratory-factor or scale-structure dissertations** (99 records total). These are doctoral-dissertation records from 2001 onward; 8 now have complete-text question screens. All 99 authors have recorded downstream searches. The bibliography contains **54 selected source works**, with **36 readable full texts screened** and **14 source-stated statistical methods directions** indexed.
 
 The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records. It corrects the initial literal-SEM search's omission of Daniel H. Abbott's 2010 dissertation. Public and ProQuest catalog copies are merged, not counted twice. [The original 58-record pass](FIRST-PASS.md) is a historical snapshot, not the current total.
 
@@ -15,17 +15,17 @@ The CFA expansion adds 41 dissertations: 31 core records and 10 adjacent records
 | Total deduplicated dissertation metadata records | 99 |
 | Authors with recorded downstream searches | 99 |
 | Authors linked to verified selected author/coauthor records | 29 |
-| Selected source works, including earlier background and independent citation followups | 49 |
-| Full source texts screened | 30 |
-| Selected source works with full-text gaps | 19 |
+| Selected source works, including earlier background and independent citation followups | 54 |
+| Full source texts screened | 36 |
+| Selected source works with full-text gaps | 18 |
 | Located public-copy dissertation records | 41 |
 | Completed dissertation full-text screens | 8 |
 | Front-matter-only previews, excluded from full screens | 1 |
 | Dissertation complete texts not yet recovered | 91 |
-| Statistical methods directions indexed | 13 |
+| Statistical methods directions indexed | 14 |
 | Added precise theorem targets / completed proofs | 0 / 0 |
 
-**Corrected retrieval scope:** all 99 archive records and Download controls were revisited. 8 complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The 91 records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The 19 associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
+**Corrected retrieval scope:** all 99 archive records and Download controls were revisited. 8 complete dissertations were recovered and screened; one nine-page front-matter preview is excluded. The 91 records lacking a recovered complete text retain null question counts. Direct archive download attempts encountered browser challenges, which do not establish paywalls. Of 94 inspected ProQuest records, two offer open-access downloads and 92 offer a preview plus institutional-access/purchase options; this describes those publisher routes, not availability elsewhere. The 18 associated source-work text gaps also retain null counts. [Per-record evidence and recovered dissertation questions](RETRIEVAL-REPAIR.md).
 
 ## Search and inclusion criteria
 
@@ -145,6 +145,14 @@ Source: [F147](https://arxiv.org/pdf/1504.02992.pdf), Final paragraph before Ack
 
 Statement gate: Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.
 
+### L-F182-stacking-mse-asymptotics
+
+Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
+
+Source: [F182](https://doi.org/10.1002/sam.11450), Section 3.2, after the citation of Liu's clauses. Two-column extraction interleaves the neighboring paragraph through this range.
+
+Statement gate: Write the asymptotic pointwise MSE expressions obtained by combining Theorem 3.3, Clause 1, with Theorem 3.2, Clause 2 or Clause 3, for the (PC, LM) and (NW, LM) predictors, including the hypotheses those clauses use.
+
 ## Selected source works and their outcomes
 
 | ID/year | Work | Relationship | Full-text outcome |
@@ -196,8 +204,13 @@ Statement gate: Specify the ancestral-subset search, the half-trek subroutine, a
 | F146/2012 | [Half-trek criterion for generic identifiability of linear structural equation models](https://doi.org/10.1214/12-AOS1012) | comparison_source | 2 method directions |
 | F147/2016 | [Generic identifiability of linear structural equation models by ancestor decomposition](https://arxiv.org/abs/1504.02992) | comparison_source | 1 method directions |
 | F148/2006 | [Structural model analysis of multiple quantitative traits](https://doi.org/10.1371/journal.pgen.0020114) | comparison_source | No suitable additional explicit mathematical target recorded |
-| F150/2003 | [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493) | comparison_source | Unassessed: full-text gap |
+| F150/2003 | [Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat](https://doi.org/10.2135/cropsci2003.1493) | comparison_source | No suitable additional explicit mathematical target recorded |
 | F151/2010 | [Searching for recursive causal structures in multivariate quantitative genetics mixed models](https://doi.org/10.1534/genetics.109.112979) | comparison_source | Unassessed: full-text gap |
+| F182/2020 | [In praise of partially interpretable predictors](https://doi.org/10.1002/sam.11450) | comparison_source | 1 method directions |
+| F183/2013 | [An efficient approach to large-scale genotype–phenotype association analyses](https://doi.org/10.1093/bib/bbt061) | comparison_source | No suitable additional explicit mathematical target recorded |
+| F184/2021 | [Understanding the metabolome and metagenome as extended phenotypes: The next frontier in macroalgae domestication and improvement](https://doi.org/10.1111/jwas.12782) | comparison_source | No suitable additional explicit mathematical target recorded |
+| F185/2015 | [The wright stuff: reimagining path analysis reveals novel components of the sex determination hierarchy in Drosophila melanogaster](https://doi.org/10.1186/s12918-015-0200-0) | comparison_source | No suitable additional explicit mathematical target recorded |
+| F186/2020 | [Multi-trait multi-locus SEM model discriminates SNPs of different effects](https://doi.org/10.1186/s12864-020-06833-2) | comparison_source | No suitable additional explicit mathematical target recorded |
 
 ## Excluded or historical passages
 
@@ -223,6 +236,13 @@ Statement gate: Specify the ancestral-subset search, the half-trek subroutine, a
 - **F143, Discussion and Conclusion, PDF pp. 7–8:** Pleiotropy versus close linkage and gene-by-environment tests are named as possible applications. They are not left as an unsolved conjecture. Table 2 is an empirical power count.
 - **F144, Introduction:** The 2002 text says a necessary and sufficient criterion for recursive models with correlated errors was then unsolved. The global case was later characterized. The remaining generic characterization is recorded from the 2011 paper, not as a second target from this wording. A conjecture cited from Kenny, Kashy, and Bolger is theirs.
 - **F148, Discussion, PDF pp. 10–11:** Tight linkage versus pleiotropy, missing traits, and sample-size guidance are limitations of the mouse analysis. No author-stated mathematical conjecture is extracted.
+- **F182, Section 3.2 nonlinearity sentence and Section 5 discussion:** The stacking nonlinearity sentence says existing results do not supply those three asymptotic forms. Section 5 states a methodological tradeoff between interpretability and MSE. Neither is a second explicit target. The recorded direction is only the (PC, LM) and (NW, LM) combination conjecture.
+- **F183, Discussion, conditional genetic analysis paragraph:** The potential power increase describes the proposed LASSO method. Zhu's sentence about not locating multi-trait QTLs refers to earlier conditional-variance work.
+- **F184, Section 4 conclusions:** Further microbiome, breeding, and omics work is an aquaculture application request. Naming SEM or QTL mapping as an existing tool does not state a new mathematical conjecture. The screened file is the author manuscript.
+- **F185, Discussion and conclusions:** Gene-validation and network-expansion statements are biological hypotheses addressed by the literature overlap and the dsx experiment. No mathematical conjecture is extracted.
+- **F186, Conclusions, genomic-selection sentence, extracted line 348:** Applicability of mtmlSEM in genomic selection is an application request. No estimand or success guarantee is fixed, so no inventory target is recorded.
+- **F150, Conclusions, printed pp. 1502–1504:** QTL and QTL-by-environment findings are for this RICL population and these Nebraska environments. No explicit mathematical conjecture is stated. The question count is 0 after the complete file was screened.
+- **F173, Section 4 grand-augmentation sketch, extracted lines 506 and 678; Corollaries 5.4 and 5.5:** The grand-augmentation sketch is defined as Algorithm 4.1 and the text says its validity is proved. Fulkerson's blocking and anti-blocking descriptions are stated as proved corollaries. The oracle minimum-cut question is answered by the paper's citation. These are not additional open targets.
 
 ## Dissertation registry
 

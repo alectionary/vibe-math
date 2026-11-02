@@ -8,8 +8,8 @@
     "full_text_screens": 122,
     "verified_complete_lean_targets": 6
   },
-  "full_text_paper_screens": 30,
-  "access_gap_papers": 19,
+  "full_text_paper_screens": 36,
+  "access_gap_papers": 18,
   "question_ids": [
     "L-F103-pleiotropy-linked",
     "L-F103-missing-phenotypes",
@@ -23,7 +23,8 @@
     "L-F134-interpretation-detection",
     "L-F145-generic-mixed-graph",
     "L-F146-half-trek-gap",
-    "L-F147-polytime-ancestral"
+    "L-F147-polytime-ancestral",
+    "L-F182-stacking-mse-asymptotics"
   ],
   "excluded_passages": [
     {
@@ -135,6 +136,41 @@
       "paper_id": "F148",
       "locator": "Discussion, PDF pp. 10–11",
       "reason": "Tight linkage versus pleiotropy, missing traits, and sample-size guidance are limitations of the mouse analysis. No author-stated mathematical conjecture is extracted."
+    },
+    {
+      "paper_id": "F182",
+      "locator": "Section 3.2 nonlinearity sentence and Section 5 discussion",
+      "reason": "The stacking nonlinearity sentence says existing results do not supply those three asymptotic forms. Section 5 states a methodological tradeoff between interpretability and MSE. Neither is a second explicit target. The recorded direction is only the (PC, LM) and (NW, LM) combination conjecture."
+    },
+    {
+      "paper_id": "F183",
+      "locator": "Discussion, conditional genetic analysis paragraph",
+      "reason": "The potential power increase describes the proposed LASSO method. Zhu's sentence about not locating multi-trait QTLs refers to earlier conditional-variance work."
+    },
+    {
+      "paper_id": "F184",
+      "locator": "Section 4 conclusions",
+      "reason": "Further microbiome, breeding, and omics work is an aquaculture application request. Naming SEM or QTL mapping as an existing tool does not state a new mathematical conjecture. The screened file is the author manuscript."
+    },
+    {
+      "paper_id": "F185",
+      "locator": "Discussion and conclusions",
+      "reason": "Gene-validation and network-expansion statements are biological hypotheses addressed by the literature overlap and the dsx experiment. No mathematical conjecture is extracted."
+    },
+    {
+      "paper_id": "F186",
+      "locator": "Conclusions, genomic-selection sentence, extracted line 348",
+      "reason": "Applicability of mtmlSEM in genomic selection is an application request. No estimand or success guarantee is fixed, so no inventory target is recorded."
+    },
+    {
+      "paper_id": "F150",
+      "locator": "Conclusions, printed pp. 1502–1504",
+      "reason": "QTL and QTL-by-environment findings are for this RICL population and these Nebraska environments. No explicit mathematical conjecture is stated. The question count is 0 after the complete file was screened."
+    },
+    {
+      "paper_id": "F173",
+      "locator": "Section 4 grand-augmentation sketch, extracted lines 506 and 678; Corollaries 5.4 and 5.5",
+      "reason": "The grand-augmentation sketch is defined as Algorithm 4.1 and the text says its validity is proved. Fulkerson's blocking and anti-blocking descriptions are stated as proved corollaries. The oracle minimum-cut question is answered by the paper's citation. These are not additional open targets."
     }
   ],
   "screen_method": "Search complete extracted texts for questions, conjectures, unknown cases and future-work language; inspect introductions, relevant definitions and closing passages; read in-paper answers and later inspected continuations. Not line-by-line proof verification.",
@@ -143,7 +179,7 @@
   "requirement_evidence": {
     "all_58_seed_authors_searched": "met: authors.json and searches.json",
     "downstream_author_or_coauthor_identity": "met for selected works; unverified search leads remain separate",
-    "full_text_question_harvest": "Eight full dissertations and 30 associated source works screened; 91 dissertations lack a recovered complete text (one front-matter preview), and 19 selected source works remain unscreened. These are retrieval dispositions, not blanket inaccessibility claims.",
+    "full_text_question_harvest": "Eight full dissertations and 36 associated source works screened; 91 dissertations lack a recovered complete text (one front-matter preview), and 18 selected source works remain unscreened. These are retrieval dispositions, not blanket inaccessibility claims. The 2026-11-02 fetch screen added five citing papers and completed F150.",
     "social_empirical_filter": "met: excluded_passages plus per-question formalization_suitability",
     "inventory_and_planning": "met after regeneration and validation",
     "publication": "PR for user review; not merged",
@@ -152,10 +188,10 @@
   "cohort_totals": {
     "dissertations": 99,
     "authors_searched": 99,
-    "selected_works": 49,
-    "full_text_screens": 30,
-    "access_gap_works": 19,
-    "method_directions": 13,
+    "selected_works": 54,
+    "full_text_screens": 36,
+    "access_gap_works": 18,
+    "method_directions": 14,
     "eligible_additions": 0,
     "seed_full_text_screens": 8
   },

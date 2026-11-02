@@ -1372,3 +1372,94 @@ Renaya Dhingra; Gretchen L. Matthews; Collin McDevitt; Emily McMillon. Accepted 
 - Provenance: [source review ledger](../literature/symmetric-css-editorial-source-screening.json).
 
 - Question screen: [full text screened](../literature/symmetric-css-editorial-source-screening.json); 3 linked canonical targets.
+
+## F182 — In praise of partially interpretable predictors
+
+Tri Le; Bertrand S. Clarke. 2020 journal; UNL faculty copy. [Primary source](https://doi.org/10.1002/sam.11450).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Section 3.2, extracted lines 890–908.
+- Contribution: Author-stated conjecture that Theorem 3.3, Clause 1, combines with Theorem 3.2, Clause 2 or 3, into pointwise MSE forms for (PC, LM) and (NW, LM).
+- Comparison limit: The forms are not displayed. The stacking nonlinearity sentence and the Section 5 tradeoff are not additional targets. Wheat example uses F150; it does not settle L-F102.
+- Related canonical targets: [L-F182-stacking-mse-asymptotics](OPEN-PROBLEMS.md#l-f182-stacking-mse-asymptotics).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 1 linked canonical targets.
+
+## F183 — An efficient approach to large-scale genotype–phenotype association analyses
+
+Runqing Yang; Hongwang Li; Lina Fu; Yongxin Liu. advance access 29 August 2013; volume 15(5), 814–822. [Primary source](https://doi.org/10.1093/bib/bbt061).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Discussion and key points.
+- Contribution: Conditional-phenotype LASSO method for large multi-trait association scans, described as a staged structural-equation solution.
+- Comparison limit: No additional explicit mathematical target. Simulations are not a universal power theorem.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 0 linked canonical targets.
+
+## F184 — Understanding the metabolome and metagenome as extended phenotypes: The next frontier in macroalgae domestication and improvement
+
+Kelly J. DeWeese; Melisa G. Osborne. author manuscript; journal October 2021, 52(5), 1009–1030. [Primary source](https://doi.org/10.1111/jwas.12782).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Section 4 conclusions.
+- Contribution: Review of metabolome and microbiome tools for macroalgae, including existing SEM and QTL methods.
+- Comparison limit: Author manuscript, not the publisher version. Empirical breeding and microbiome directions are not mathematical targets.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 0 linked canonical targets.
+
+## F185 — The wright stuff: reimagining path analysis reveals novel components of the sex determination hierarchy in Drosophila melanogaster
+
+Justin M. Fear; Michelle N. Arbeitman; Matthew P. Salomon; Justin E. Dalton; John Tower; Sergey V. Nuzhdin; Lauren M. McIntyre. BMC Systems Biology (2015) 9:53. [Primary source](https://doi.org/10.1186/s12918-015-0200-0).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Discussion and conclusions.
+- Contribution: SEM expansion of the Drosophila sex-hierarchy network in two populations.
+- Comparison limit: Biological findings and a mutant check. No mathematical target. Named code was located and not cloned.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 0 linked canonical targets.
+
+## F186 — Multi-trait multi-locus SEM model discriminates SNPs of different effects
+
+Anna A. Igolkina; Georgy Meshcheryakov; Maria V. Gretsova; Sergey V. Nuzhdin; Maria G. Samsonova. BMC Genomics 21(Suppl 8):490 (2020). [Primary source](https://doi.org/10.1186/s12864-020-06833-2).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Conclusions, extracted line 348.
+- Contribution: mtmlSEM model separating single-trait and pleiotropic SNP effects, with a chickpea application.
+- Comparison limit: The genomic-selection sentence does not fix an estimand. No inventory target.
+- Related canonical targets: .
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 0 linked canonical targets.
+
+## F150 — Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat
+
+B. T. Campbell; P. S. Baenziger; K. S. Gill; K. M. Eskridge; H. Budak; M. Erayman; I. Dweikat; Y. Yen. Crop Science 43 (2003), 1493–1505. [Primary source](https://doi.org/10.2135/cropsci2003.1493).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Conclusions, printed pp. 1502–1504.
+- Contribution: Phenotypic and QTL source for the wheat measurements used by Mi et al. and by Le and Clarke.
+- Comparison limit: The paper does not state the correlated-residual question. Question count is 0. Earlier correlation magnitudes were not re-measured in this screen.
+- Related canonical targets: [L-F102-correlated-residuals](OPEN-PROBLEMS.md#l-f102-correlated-residuals).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 0 linked canonical targets.
+
+## F173 — Testing membership in matroid polyhedra
+
+William H. Cunningham. Journal of Combinatorial Theory, Series B 36 (1984), 161–188. [Primary source](https://doi.org/10.1016/0095-8956(84)90023-6).
+
+- Record type: academic source; access: full text.
+- Inspected locator: Section 6, printed p. 182 / PDF p. 22, extracted lines 973–976.
+- Contribution: Strongly polynomial matroid-polyhedron membership algorithm, and the stated open problem of strongly polynomial submodular function minimization.
+- Comparison limit: No complexity bound is transferred to the C16 repair. L-F91-c16-unrestricted-width is unchanged. Present-day resolution of the 1984 minimization problem was not assessed.
+- Related canonical targets: [L-F173-strongly-polynomial-sfm](OPEN-PROBLEMS.md#l-f173-strongly-polynomial-sfm), [L-F91-c16-unrestricted-width](OPEN-PROBLEMS.md#l-f91-c16-unrestricted-width).
+- Provenance: [source review ledger](../literature/fetched-papers-2026-11-02.md).
+
+- Question screen: [full text screened](../literature/fetched-papers-2026-11-02.md); 1 linked canonical targets.
