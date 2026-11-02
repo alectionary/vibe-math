@@ -1,6 +1,8 @@
 # Question screen of seven fetched papers
 
-Checked 2026-11-02. [Manifests](fetch-manifests/) · [SEM source ledger](unl-sem/works.json) · [Canonical inventory](OPEN-PROBLEMS.md).
+Checked 2026-11-02. [Manifests and screen notes](fetch-ingest/) · [SEM source ledger](unl-sem/works.json) · [Canonical inventory](OPEN-PROBLEMS.md).
+
+Each issue's note at `fetch-ingest/<issue>/SCREEN.md` copies the findings in this file. The move from `fetch-manifests/` does not add a finding.
 
 This screen consumes the verified fetch manifests for issues 25, 26, 27, 28, 29, 30, and 63. Each file is outcome `verified`, completeness `complete_body`, and the extracted text is readable. Copyrighted PDFs are not committed. The repository ignores `*.pdf`, and full texts stay in ignored `local-extraction/` when a checkout has them. Another checkout reacquires a file from the stable id and checks the hash below. `text_characters` counts Unicode code points. `byte_length` is the PDF size in bytes.
 

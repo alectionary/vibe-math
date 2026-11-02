@@ -1080,3 +1080,10 @@ Sources read for the correlated-residual replication and the identification comp
 - **F185**: [The wright stuff: reimagining path analysis reveals novel components of the sex determination hierarchy in Drosophila melanogaster](https://doi.org/10.1186/s12918-015-0200-0).
 - **F186**: [Multi-trait multi-locus SEM model discriminates SNPs of different effects](https://doi.org/10.1186/s12864-020-06833-2).
 - **F173**: [Testing membership in matroid polyhedra](https://doi.org/10.1016/0095-8956(84)90023-6).
+
+## Fetch issues 11 and 12
+
+[Issue 11 and issue 12 screens](fetched-papers-2026-11-02-issues-11-12.md). Issue 11 is the Morris dissertation already indexed as source-manifest `2025-Morris`. Issue 12 had no earlier row.
+
+- **F187**: [Analysis of Graph-based Decoders for Quantum Low Density Parity Check Codes](https://digitalcommons.unl.edu/dissunl/339/). Same file as MorrisDissertation2025.
+- **F188**: [Constructions of Macaulay Posets and Macaulay Rings](https://arxiv.org/abs/2502.15166).
