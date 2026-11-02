@@ -1,6 +1,6 @@
 ---
 name: document-acquisition-queue
-description: "Queue a complete public source this environment cannot retrieve. File one GitHub issue labeled fetch-request for any paper, keep a dated code and supplementary-material ledger, file a help issue when that form does not fit, continue independent work, and later merge the retrieval worker's immutable manifest. Use during open-question-research when full text is still unverified after the documented routes."
+description: "Queue a complete public source this environment cannot retrieve. File one GitHub issue labeled fetch-request for any paper, keep a dated code and supplementary-material ledger, file a help issue when that form does not fit, continue independent work, and later ingest a fetched manifest. Ingestion commits the manifest and question screen and opens a pull request that references the fetch issue. Use during open-question-research when full text is still unverified after the documented routes."
 ---
 
 # Document acquisition queue
@@ -21,18 +21,25 @@ read only when the source matches.
 
 The manifest contract is
 [fetch-manifest.schema.json](schema/fetch-manifest.schema.json). Workers post
-`manifest_version` `0.2`. `0.1` stays valid for manifests already posted.
-The committed fixture is
+`manifest_version` `0.3`. `0.1` and `0.2` stay valid for manifests already
+posted. Do not edit a posted comment to bump its version. The committed
+fixture is
 [unl-aai3402936.manifest.json](examples/unl-aai3402936.manifest.json): a verified
 positive control, 283 pages, born-digital, no OCR, question count null,
 `discovered_identifiers` empty. It is `producer.role` `example`, not a live
-posting and not a question screen.
+posting and not a question screen. The other files in `examples/` are validator
+fixtures for a DOI with parentheses, the campaign ids `unl-sem`,
+`L-F91-c16-unrestricted-width`, and `L-F102-correlated-residuals`, a bare
+`other` id, and a route attributed to another worker session. They are not
+live postings.
 
 Check a file with `python3 scripts/validate_fetch_manifest.py`. `--self-check`
-covers that control, a front-matter preview, an unreadable extraction, a
-`not_found` result, catalog route ids, secret rejection, an omitted
-`comment_url`, discovered identifiers that do not backfill earlier routes,
-and evidence that keeps Unicode `text_characters` distinct from byte counts.
+covers that control, the other committed fixtures, a front-matter preview,
+an unreadable extraction, a `not_found` result, catalog route ids, secret
+rejection, an omitted `comment_url`, discovered identifiers that do not
+backfill earlier routes, evidence that keeps Unicode `text_characters`
+distinct from byte counts, campaign ids, a bare other id, route attribution,
+and the fetched-to-ingestion markers.
 
 ## Code and supplementary-material ledger
 
@@ -59,8 +66,9 @@ opened does not support that sentence.
 
 When the paper says the programs exist and names where they were deposited,
 record that sentence and whether this block obtained the file. A missing
-paper uses a `fetch-request`. A missing program, supplement, or other gap
-that the fetch form does not fit uses a [help issue](#help-issue).
+paper uses a `fetch-request`. A missing program, supplement, dataset, or other
+gap that the fetch form does not fit uses a [help issue](#help-issue). A file
+offered only by emailing the author is a help issue, not a fetch request.
 
 ## File a request the day the source is blocked
 
@@ -149,8 +157,20 @@ uses the authenticated transports and preflight in the
 [worker skill](../document-retrieval-worker/SKILL.md#github-transport). For
 `gh issue create`, write the same fields to a body file. REST is
 `POST /repos/alectionary/vibe-math/issues` with the same title, body, and
-`"labels": ["fetch-request"]`. Title: `fetch: 10.1000/example.doi`. The
-lifecycle label on a new issue is `fetch-request`.
+`"labels": ["fetch-request"]`. For `gh issue create`, pass
+`--label fetch-request`. Title: `fetch: 10.1000/example.doi`. The lifecycle
+label on a new issue is `fetch-request`.
+
+```sh
+gh issue create --repo alectionary/vibe-math --title "fetch: 10.1000/example.doi" \
+  --body-file request.md --label fetch-request
+```
+
+Read the issue back before the step ends. Confirm the only lifecycle label is
+`fetch-request`. If the create call omitted it, add it. A
+`<!-- fetch-request: ID -->` marker without that label is not filed. The
+2026-11-02 backlog was filed as bodies without the label; the worker now
+sweeps those, and new requests do not rely on that sweep.
 
 ```markdown
 <!-- fetch-request: 10.1000/example.doi -->
@@ -162,7 +182,7 @@ lifecycle label on a new issue is `fetch-request`.
 - Author: Author Name
 - Year: 2020
 - Type: article
-- Campaign: (omit when the paper is not in a campaign)
+- Campaign: unl-sem (omit when the paper is not in a campaign)
 - Priority: normal
 - Blocker category: bot_mitigation
 - Routes already attempted: curl https://doi.org/10.1000/example.doi returned a bot check; browser did not start
@@ -172,7 +192,21 @@ lifecycle label on a new issue is `fetch-request`.
 Stable ids use the manifest schemes `doi`, `arxiv`, `url`, `archive_record`,
 `campaign_record`, and `other`. An archive record looks like
 `prefix:value`. Prefixes for a particular archive are defined in that site's
-worker reference, not here.
+worker reference, not here. A PMCID on the request is `archive_record`
+`pmcid:PMC` plus digits. Scheme `other` is either `prefix:value`
+(`openalex:W2080656989`) or a bare token with no colon (`UNL-SEM-D013`). Do
+not invent a prefix so the value will match the old pattern. A DOI may
+contain parentheses (`10.1016/0095-8956(84)90023-6`); that string can be
+`requested_source_id`.
+
+The campaign field is the investigation's spelling: two or more
+hyphen-separated segments of letters and digits. `unl-sem`,
+`L-F102-correlated-residuals`, `L-F91-c16-unrestricted-width`, and
+`UNL-SEM-2001` are valid. Omit the field when the paper is not in a campaign.
+It is not a document id. A posted `0.1` or `0.2` manifest that stored
+`campaign_id` null because the old all-caps pattern rejected one of these ids
+stays as posted. `migrate_campaign_id(posted, issue_campaign)` returns the id
+a new manifest stores. It does not edit the old comment.
 
 Blocker categories are the manifest `error_category` names:
 `bot_mitigation`, `http_error`, `browser_host_unavailable`, `timeout`,
@@ -188,10 +222,16 @@ not a new `refs/heads/claims/` reservation.
 
 ## Help issue
 
-Use a help issue when the gap is not a missing paper: code, a supplement, or
-another file the `fetch-request` form does not fit. Search open issues for the
-same missing item before filing. Title: `help: <what is missing>`. The GitHub
-form is [help-request.yml](../../../.github/ISSUE_TEMPLATE/help-request.yml).
+Use a help issue when the gap is not a missing paper: code, a program, a
+supplement, a dataset, or another file the `fetch-request` form does not fit.
+Also use it when the only stated way to obtain the file is to email an author.
+The SAS programs named in a 2010 manuscript and offered only by email, with no
+public URL, are this case. Do not open `fetch: other:...` for them. If a fetch
+issue was already opened for that kind of gap, comment on it and file the help
+issue. The worker's `label_sweep_action` returns `help-issue` and does not
+claim it. Search open issues for the same missing item before filing. Title:
+`help: <what is missing>`. The GitHub form is
+[help-request.yml](../../../.github/ISSUE_TEMPLATE/help-request.yml).
 Filing uses the same authenticated transport as a fetch request. Paste this
 body when the form is not what the client sends:
 
@@ -241,32 +281,45 @@ do not change their colors or descriptions. Filing uses the same authenticated
 transports and preflight as the worker. Do not assume `gh` is logged in. The
 issue form names `fetch-request` so that label applies when the form is used.
 
-The research agent closes the issue after a successful merge. The worker does
-not close it. The worker does reopen a closed `not-found` issue when the route
-catalog gains an applicable route that the manifests do not contain.
+The worker does not close the issue. A `fetched` issue stays open until
+ingestion is on the default branch. The research agent closes it after the
+ingestion pull request has merged and the merged marker is posted. See
+[Ingest a fetched paper](#ingest-a-fetched-paper). `restricted` and
+`needs-human` close when that gap is recorded in the ledger and no PDF
+ingestion is required. A `not-found` issue stays labeled `not-found`. The
+worker reopens a closed `not-found` issue when the route catalog gains an
+applicable route that the manifests do not contain.
 
 ## Manifest
 
 The worker posts one comment and does not edit it. Start the comment with
 `<!-- fetch-manifest: MANIFEST_ID -->`, then a `json` fence whose object has the
-same `manifest_id`. A correction is a later comment whose `supersedes` names
-the replaced id. The committed fixture is a complete example of the object.
-Live postings use `manifest_version` `0.2`.
+same `manifest_id`. A verified comment also has `<!-- fetch-ready-for-ingestion -->`
+before that marker. A comment that finishes a browser handoff has
+`<!-- fetch-browser-handoff-resolved: SESSION -->` first. A correction is a
+later comment whose `supersedes` names the replaced id. The committed fixture
+is a complete example of the object. Live postings use `manifest_version` `0.3`.
 
 Required content:
 
 - `outcome`: `verified`, `preview_only`, `restricted`, `transport_failure`,
   `needs_human`, or `not_found`.
-- Stable ids from the request, on `document.stable_ids`. `campaign_id` is null
-  when there is no campaign.
+- Stable ids from the request, on `document.stable_ids`. `campaign_id` uses
+  the convention above, or null when there is no campaign.
 - `discovered_identifiers`: ids learned during the run, each with the catalog
   route that surfaced it. Empty when nothing new appeared. They are not copied
   into `document.stable_ids`, and they do not make earlier routes applicable.
 - `routes_tried`: catalog `route` (`openalex-oa@1`), attempt `id`, https URL,
   method, UTC `Z` timestamp, HTTP status, `error_category`, and whether that
-  route obtained bytes. The route id must be in the worker
-  [route catalog](../document-retrieval-worker/routes.json). Log a route only
-  when it was run. After complete bytes are stored, do not log a skipped route.
+  route obtained bytes. On `0.3`, each row has `attempted_by`: null when
+  `producer` ran it, or `role` `retrieval_worker` and `session` when another
+  worker session ran it. The route id must be in the worker
+  [route catalog](../document-retrieval-worker/routes.json). `requires_match`
+  is `any`, `all`, `always`, or `prefixes`. Log a route only when it was run.
+  After complete bytes are stored, do not log a skipped route. A preview that
+  was seen and not saved is `needs_human`, with that route's `error_category`
+  `preview_only`, `obtained_bytes` false, and notes that say the preview was
+  not saved. `preview_only` is only a preview whose bytes were stored.
 - When bytes were stored: sha256, page count, byte length, and a `worker_local`
   locator. `committed_to_git` and `cross_machine` stay false. The locator is
   provenance for that machine. Another checkout reacquires the file from the
@@ -282,13 +335,22 @@ Required content:
 - Optional question candidates with pdf page locators. `candidate_id` is not a
   canonical inventory id.
 
-`screen_owner` is `research_agent`. The worker may set `candidates_only` with
-`question_count` null. It does not set `completed`. `producer.role` `example`
-is the fixture and must not be merged. `consumable()` reports that.
-`producer.role` for a live posting is `retrieval_worker`.
+`screen_owner` is `research_agent`. The worker sets `not_screened` only for a
+verified readable file, and `blocked` when the screen cannot run (`restricted`,
+`preview_only`, `needs_human`, `not_found`, `transport_failure`, or an
+unreadable or partial extraction). It may set `candidates_only` with
+`question_count` null on a verified readable file. It does not set
+`completed`. `producer.role` `example` is a fixture and must not be merged.
+`consumable()` reports that. `producer.role` for a live posting is
+`retrieval_worker`.
 
-Versions `0.1` and `0.2` allow storage kind `worker_local` only. `0.2` requires
-`discovered_identifiers` and does not require `issue.comment_url`.
+Versions `0.1`, `0.2`, and `0.3` allow storage kind `worker_local` only.
+`committed_to_git` stays false: the manifest describes the worker's copy, and
+the PDF bytes are not a git blob. `0.2` and `0.3` require
+`discovered_identifiers` and do not require `issue.comment_url`. `0.3`
+requires `attempted_by` on every route. A `0.2` row that stored a PMC Open
+Access host on `institutional-repository@1` stays as posted. A new run uses
+`pmc-oa-package@1`.
 
 ## Consume and merge
 
@@ -305,16 +367,16 @@ the sources this block cares about.
    report the conflict.
 3. Run `consumable`. Reject invalid JSON, an unknown catalog route, secret
    material, a temporary media host, and `producer.role` `example`. Accept a
-   `0.1` manifest that still has `comment_url`, and a `0.2` manifest that
-   omits it.
+   `0.1` manifest that still has `comment_url`, and a `0.2` or `0.3` manifest
+   that omits it.
 4. Resolve an existing source from the stable ids. If none matches, record a
    lead in the working notes and do not create a canonical source from the
    manifest alone.
 5. Merge retrieval evidence only.
    - `verified` and `complete_body`: record the hash, page count, stable ids,
-     discovered identifiers, routes, and extraction status. Keep
-     `text_characters` as a Unicode character count and `byte_length` as PDF
-     bytes.
+     discovered identifiers, routes, and extraction status while ingesting
+     the file. Keep `text_characters` as a Unicode character count and
+     `byte_length` as PDF bytes. Do not close the issue in this bullet.
    - `verified` and `readable` false: keep the file hash and leave
      `question_count` null.
    - `preview_only` or front matter: store the partial hash so it cannot be
@@ -332,9 +394,13 @@ the sources this block cares about.
    screen, otherwise `None`. Copy a number into the ledger only after reading
    those pages.
 7. After a real ledger edit, run that campaign's bookkeeping validator.
-8. Comment with the merge result. Close the issue when the manifest is merged
-   or explicitly rejected. Leave a `not-found` issue labeled `not-found` so a
-   new catalog route can reopen it.
+8. For outcome `verified`, ingestion is the merge. Follow
+   [Ingest a fetched paper](#ingest-a-fetched-paper). Do not close the issue
+   in this step.
+9. For every other outcome, comment with the merge result. Close `restricted`
+   or `needs-human` when the gap is recorded. Leave a `not-found` issue
+   labeled `not-found` so a new catalog route can reopen it. Close an issue
+   whose manifest is explicitly rejected.
 
 `routes_to_retry` lists active applicable catalog routes absent from a
 manifest. Applicability uses `document.stable_ids` only, unless the route
@@ -344,13 +410,79 @@ routes. `should_reopen_not_found` is true only when the outcome is
 `not_found` and that list is not empty. The worker performs the reopen. The
 research agent does not retry those routes itself.
 
+## Ingest a fetched paper
+
+`fetched` means the worker verified a complete file and stopped. Nothing else
+runs until an agent following this skill, or the open-question-research skill,
+takes the issue. Any agent may do that. The worker does not.
+
+The signal is the lifecycle label `fetched` on an open issue.
+`ingestion_ready(labels, comments)` is that check: the only lifecycle label is
+`fetched`, and the thread has neither
+`<!-- fetch-ingestion-started: SESSION -->` nor
+`<!-- fetch-ingestion-merged: PR_URL -->`. A `<!-- fetch-ready-for-ingestion -->`
+marker on a new manifest comment says the same thing. A `fetched` issue from
+before that marker still counts. Do not add a seventh label.
+
+At the start of a research block, list open issues labeled `fetched` with the
+same authenticated transport as the worker. Ingest the ones this block's
+campaign or question needs. Leave the others labeled `fetched`.
+
+Claim, then do the work, then open the pull request. Do not close the issue
+when the pull request opens.
+
+1. Post `<!-- fetch-ingestion-started: SESSION -->` with the issue number, the
+   manifest id, and the PDF path from `ingest_paths`. `SESSION` is this run's
+   id. It is not a product name.
+2. Read the comments again. If more than one started marker is present, the
+   earliest comment continues and the others stop. If the timestamps tie, the
+   lower comment id continues.
+3. Load the active manifest with `locate_manifests` and `consumable`. It must
+   be outcome `verified` with `complete_body`.
+4. Put the PDF at `ingest_paths(issue, requested_source_id)["pdf"]`, which is
+   `local-extraction/literature/fetch/<issue>/<source-id>.pdf`. Copy the
+   worker's `worker_local` file when this machine has it. Otherwise reacquire
+   the file from the stable ids. `sha256sum` must match `artifact.sha256`, and
+   `pdfinfo` must match `page_count`. Write the extracted text beside it at
+   the `text` path. This is the same convention as every other source PDF:
+   `local-extraction/` is gitignored, and `*.pdf` is gitignored, because
+   copyrighted full texts are not git blobs. Do not `git add -f` the PDF.
+   `committed_to_git` on the manifest stays false.
+5. Write the manifest JSON, unchanged, to
+   `literature/fetch-ingest/<issue>/manifest.json`. If the source already has
+   a campaign ledger, add a row there with the hash, page count, local path,
+   manifest id, and fetch issue URL. Do not edit the issue comment.
+6. Screen the text under
+   [open-question-research](../open-question-research/SKILL.md#harvest-questions-from-every-encountered-paper).
+   Write `literature/fetch-ingest/<issue>/SCREEN.md` with the fetch issue URL,
+   the manifest id, the SHA-256, the page count, a short summary of what the
+   paper establishes, and either each open question with a locator or an
+   explicit statement that the readable passages named no additional target.
+   The manifest's `question_screen.status` stays `not_screened`. The count
+   lives in the screen note and the inventory, not in an edited manifest.
+7. Open a pull request that references the fetch issue. The body contains
+   `Refs #<issue>` and the issue URL. Do not write `Closes`, `Fixes`, or
+   `Resolves`: those would close the issue before the screen is on the
+   default branch. The pull request commits the manifest copy, `SCREEN.md`,
+   and any ledger row. It does not commit the PDF.
+
+After that pull request has merged to the default branch, post
+`<!-- fetch-ingestion-merged: PR_URL -->` and close the issue. A closed
+`fetched` issue means the screen and the manifest copy are on the default
+branch. The PDF remains at the local path; another checkout reacquires it
+from the stable ids and checks the hash.
+
+If this agent cannot open the pull request, do not post the started marker.
+Leave the issue `fetched`.
+
 ## Question counts
 
 A completed screen with question count zero is allowed only for outcome
 `verified`, completeness `complete_body`, and readable extracted text. The
 count equals the number of candidates with `counts_as_target` true.
 
-These stay null, with screen status `not_screened` or `blocked`:
+These stay null. `not_screened` is only a verified readable file the research
+agent has not screened. `blocked` is the status when the screen cannot run:
 
 - `preview_only`, including a readable front-matter file
 - unreadable or partial extraction
@@ -374,12 +506,12 @@ skill's `scripts/quick_validate.py`, using a Python that has PyYAML. Then run:
 ```sh
 python3 scripts/validate_fetch_manifest.py --self-check
 python3 scripts/validate_fetch_manifest.py \
-  .agents/skills/document-acquisition-queue/examples/unl-aai3402936.manifest.json
+  .agents/skills/document-acquisition-queue/examples/*.manifest.json
 ```
 
 ## Remaining for the finishing agent
 
-- [ ] Choose file storage. v0.1 and v0.2 are `worker_local` with `cross_machine` false. A release asset or bucket needs a schema bump.
+- [ ] Choose file storage beyond the local PDF. v0.1, v0.2, and v0.3 keep `worker_local` and `committed_to_git` false. Ingestion copies the PDF to gitignored `local-extraction/literature/fetch/<issue>/` and commits the manifest and screen under `literature/fetch-ingest/<issue>/`. A release asset or bucket needs a schema bump.
 - [ ] Merge one real manifest into the ledgers under the research skill, then run the campaign validator.
 - [ ] Deploy a worker. Starting it on a timer or from a workflow is outside the worker skill.
 - [ ] Pilot one previously unresolved UNL dissertation and one paper that is not from UNL. Keep the committed fixture as the schema control.

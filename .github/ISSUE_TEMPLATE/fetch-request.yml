@@ -7,13 +7,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        File this when a research block needs a complete text and this environment cannot verify it. The source may be any public paper. One issue per stable source. Search open issues for that id before filing.
+        File this when a research block needs a complete paper and this environment cannot verify it. The source may be any public paper. One issue per stable source. Search open issues for that id before filing. This form applies the `fetch-request` label. A body with the same fields and no `fetch-request` label is not filed. If you create the issue through the API, send `"labels": ["fetch-request"]` and read the labels back.
 
-        A retrieval worker claims the issue, fetches with ordinary tools, and posts an immutable manifest comment. It does not edit literature ledgers. The research agent merges the manifest and then closes the issue. Any agent may be the worker.
+        Code, a program, a supplement, a dataset, or a file offered only by emailing the author uses the help request, not this form.
 
-        Identify the source by DOI, arXiv id, canonical URL, or archive record id, plus title, author, and year. Write ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview, a front-matter file, or an unreadable extraction is not a finished question screen.
+        A retrieval worker claims the issue, fetches with ordinary tools, and posts an immutable manifest comment. It does not edit literature ledgers and it does not close the issue. The `fetched` label means the file is verified and waiting for ingestion. The research agent then stores the PDF at the conventional local path, commits the manifest and the question screen, and opens a pull request that references this issue. The issue closes after that pull request is merged. Any agent may be the worker or the research agent.
 
-        Label lifecycle: `fetch-request` to `fetch-claimed`, then `fetched`, `restricted`, `needs-human`, or `not-found`. Exactly one of those labels is on the issue. `not-found` means the applicable public routes found no copy and is reopened only when the route catalog gains a new applicable route. The blocker category uses the same names as a manifest `error_category`.
+        Identify the source by DOI, arXiv id, canonical URL, archive record id, or a bare other id, plus title, author, and year. A DOI may contain parentheses. Write ordinary https URLs only. Do not paste signed URLs, cookies, or credentials. A preview, a front-matter file, or an unreadable extraction is not a finished question screen.
+
+        Label lifecycle: `fetch-request` to `fetch-claimed`, then `fetched`, `restricted`, `needs-human`, or `not-found`. Exactly one of those labels is on the issue. `fetched` is the ingestion signal. Do not add another label for it. `not-found` means the applicable public routes found no copy and is reopened only when the route catalog gains a new applicable route. The blocker category uses the same names as a manifest `error_category`.
   - type: input
     id: stable_source_id
     attributes:
@@ -26,7 +28,7 @@ body:
     id: stable_id_aliases
     attributes:
       label: Other stable IDs
-      description: One scheme and value per line. Schemes are doi, arxiv, url, archive_record, and campaign_record.
+      description: One scheme and value per line. Schemes are doi, arxiv, url, archive_record, campaign_record, and other. other is prefix:value or a bare token with no colon. A PMCID is archive_record pmcid:PMC plus digits.
       placeholder: |
         arxiv 1234.56789
         url https://example.test/paper
@@ -71,8 +73,8 @@ body:
     id: campaign_id
     attributes:
       label: Campaign
-      description: Optional. Leave blank when the paper is not part of a campaign.
-      placeholder: CAMPAIGN-ID
+      description: Optional. Leave blank when the paper is not part of a campaign. Two or more hyphen-separated segments of letters and digits, spelled as the investigation spells them (unl-sem, L-F102-correlated-residuals, L-F91-c16-unrestricted-width, UNL-SEM-2001). Not a document id.
+      placeholder: unl-sem
   - type: dropdown
     id: priority
     attributes:
@@ -128,7 +130,11 @@ body:
     attributes:
       label: Before filing
       options:
+        - label: This is a paper. Code, a supplement, a dataset, or a file offered only by emailing the author belongs on a help request.
+          required: true
         - label: I searched existing issues for this stable source ID and its aliases.
+          required: true
+        - label: This form's fetch-request label will be on the issue. I will not file the same body without that label.
           required: true
         - label: This request contains no signed URLs, cookies, or credentials.
           required: true
