@@ -1,12 +1,12 @@
 {
   "file": "C16Frames.lean",
-  "sha256": "66f7059f1996b67fd6ca6721c8e8ce04ee466cf4ec0a42bdcffcdc92970f2246",
+  "sha256": "697c0a2485f37b3be3821d58f1a31a557cb866b3140b0e2a05289053b2970241",
   "toolchain": "leanprover/lean4:v4.36.0-rc1",
   "mathlib_rev": "5f7b4198d22a9c82e1c698a379334fe128095c82",
   "check": "lake env lean C16Frames.lean (from the Mathlib checkout); 0 errors, no sorry",
   "axioms": {
     "standard_only": true,
-    "note": "#print axioms for all 12 public declarations reports only propext, Classical.choice, Quot.sound"
+    "note": "#print axioms for all public theorems reports only propext, Classical.choice, Quot.sound"
   },
   "declarations": [
     "gram_one_iff_sum_outer",
@@ -21,10 +21,14 @@
     "fixed_swapHalf_iff",
     "exists_pair_of_residual_entry",
     "first_member_unique",
-    "remaining_card_le_finrank"
+    "remaining_card_le_finrank",
+    "perpOf",
+    "evalAgainst",
+    "finrank_inf_perp_add",
+    "perfect_inf_perp"
   ],
   "not_formalized": [
-    "look-ahead lemma (per-group split)",
+    "look-ahead lemma: the final iff step (both spans full <=> pairing rank full) is a one-line argument from finrank_inf_perp_add and perfect_inf_perp, not stated separately",
     "bridge from the concrete pools/instances to these abstract statements",
     "the exhaustive computations",
     "Theorem (symmetry group, order 32)"
