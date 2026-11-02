@@ -35,7 +35,7 @@ static int NX, NZ, NI, DIM;
 static v128 *XV, *ZV, Dmask;
 static int *ik, (*ix)[MAXK], (*iz)[MAXK];
 static uint8_t *orthxz;   /* orthxz[i*NZ+j] = <x_i,z_j> == 0 */
-static long long shard_ctr = 0; static int shard_depth = 0, force_x = -1;
+static const char *fixed_file = NULL; static long long shard_ctr = 0; static int shard_depth = 0, force_x = -1;
 static int live_sides = 0, filter_items = 0, full_filter = 0, only_first = 0, shard = 0, nshard = 1, knuth = 0;
 static double kprod, kest; static unsigned long long rng = 88172645463325252ULL;
 static unsigned long long xr(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng; }
@@ -198,6 +198,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "-S")) nshard = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-D")) shard_depth = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-x")) force_x = atoi(argv[++a]);
+        else if (!strcmp(argv[a], "-p")) fixed_file = argv[++a];
         else if (!strcmp(argv[a], "-o")) out = argv[++a];
         else in = argv[a];
     }
@@ -221,12 +222,26 @@ int main(int argc, char **argv) {
     solf = fopen(out, "w"); t0 = time(NULL);
     v128 R[128]; for (int c = 0; c < 128; c++) { R[c].w[0] = R[c].w[1] = 0; if (bit(Dmask, c)) R[c].w[c >> 6] = 1ULL << (c & 63); }
     uint8_t *okx = malloc(NX), *okz = malloc(NZ); memset(okx, 1, NX); memset(okz, 1, NZ);
-    int *live = malloc(sizeof(int) * NI); for (int q = 0; q < NI; q++) live[q] = q;
+    int need0 = DIM;
+    if (fixed_file) {
+        /* -p FILE: lines "i j" = pool pairs fixed in the frame; search all completions */
+        FILE *pf = fopen(fixed_file, "r"); int i, j, nf = 0; if (!pf) { perror(fixed_file); return 2; }
+        while (fscanf(pf, "%d %d", &i, &j) == 2) {
+            v128 x = XV[i], z = ZV[j];
+            if (!okx[i] || !okz[j] || !dot(x, z)) { fprintf(stderr, "fixed pair %d %d inconsistent\n", i, j); return 5; }
+            for (int c = 0; c < 128; c++) if (bit(x, c)) R[c] = vxor(R[c], z);
+            for (int a2 = 0; a2 < NX; a2++) if (!orthxz[a2 * NZ + j]) okx[a2] = 0;
+            for (int b2 = 0; b2 < NZ; b2++) if (!orthxz[i * NZ + b2]) okz[b2] = 0;
+            okx[i] = 0; okz[j] = 0; nf++;
+        }
+        fclose(pf); need0 -= nf; fprintf(stderr, "fixed %d pairs, need %d\n", nf, need0);
+    }
+    int *live = malloc(sizeof(int) * NI), nl0 = 0; for (int q = 0; q < NI; q++) if (item_live(q, okx, okz)) live[nl0++] = q;
     if (knuth) {
         double sum = 0, mx = 0; long long leaf[300] = {0};
         for (int p = 0; p < knuth; p++) {
             kprod = 1; kest = 1; long long before[300]; memcpy(before, nodes, sizeof before);
-            search(R, okx, okz, live, NI, 0, DIM);
+            search(R, okx, okz, live, nl0, 0, need0);
             int d = 0; for (int i = 0; i < 300; i++) if (nodes[i] > before[i]) d = i;
             leaf[d]++; sum += kest; if (kest > mx) mx = kest;
         }
@@ -234,7 +249,7 @@ int main(int argc, char **argv) {
         int first = 1; for (int i = 0; i < 300; i++) if (leaf[i]) { printf("%s\"%d\": %lld", first ? "" : ", ", i, leaf[i]); first = 0; }
         printf("}}\n"); return 0;
     }
-    search(R, okx, okz, live, NI, 0, DIM);
+    search(R, okx, okz, live, nl0, 0, need0);
     long long tot = 0; int maxd = 0; for (int i = 0; i < 300; i++) { tot += nodes[i]; if (nodes[i]) maxd = i; }
     printf("{\"status\": \"%s\", \"frames\": %lld, \"nodes\": %lld, \"seconds\": %ld, \"shard\": %d, \"nshard\": %d, \"per_depth\": [",
            timed_out ? "TIME_LIMIT" : "COMPLETE", nsol, tot, (long)(time(NULL) - t0), shard, nshard);
