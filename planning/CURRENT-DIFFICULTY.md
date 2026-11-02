@@ -1,6 +1,6 @@
 # Current per-target Lean difficulty estimates
 
-Inventory updated October 26, 2026. Low-confidence planning priors for all 373 entries (192 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
+Inventory updated November 2, 2026. Low-confidence planning priors for all 378 entries (197 new entries awaiting assessment). [Recommendation, assumptions and time bands](NEXT-PROJECT.md) · [Searchable table](current-difficulty.html) · [Structured estimates](current-difficulty-estimates.json). Proof-transfer effort assumes a correct complete mathematical proof has already been supplied. No open-problem discovery completion time is estimated.
 
 | Eligible-target tier | Statement setup | Conditional proof transfer |
 | --- | ---: | ---: |
@@ -10,7 +10,7 @@ Inventory updated October 26, 2026. Low-confidence planning priors for all 373 e
 | 3 | 38 | 22 |
 | 4 | 41 | 41 |
 | 5 | 8 | 35 |
-| Unestimated / scope gate | 45 | 45 |
+| Unestimated / scope gate | 46 | 46 |
 
 ### 2026-Geraci-O01
 
@@ -5796,13 +5796,13 @@ Characterize the mixed graphs that yield generically identifiable linear structu
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Section 8 of Drton, Foygel, and Sullivant leaves the generic characterization open after they settle the global case. Foygel, Draisma, and Drton restate that the problem remains open.
+The statement is mathematical. The model class and the success criterion still have to be fixed before it is a theorem target.
 
 First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
 
 Gate: Specify the mixed-graph class, the directed and bidirected edge sets, the generic parameter domain, and the map from edge coefficients to the covariance.
 
-Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f145-generic-mixed-graph).
 
 ### L-F146-half-trek-gap
 
@@ -5812,13 +5812,13 @@ Find an infinite family of mixed graphs that is rationally identifiable but not 
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Foygel, Draisma, and Drton ask for an infinite family in the gap between their necessary and sufficient conditions.
+The statement is mathematical. The model class and the success criterion still have to be fixed before it is a theorem target.
 
 First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
 
 Gate: Specify rational identifiability, the half-trek criterion, and an infinite graph family separating them.
 
-Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f146-half-trek-gap).
 
 ### L-F147-polytime-ancestral
 
@@ -5828,10 +5828,42 @@ Determine whether generic identifiability via ancestral decomposition can be dec
 - Proof transfer, given a complete proof: Not assessed: effort band pending.
 - Research: Planning not yet assessed. planning_not_yet_assessed
 
-Drton and Weihs leave the polynomial-time status of the ancestral search unresolved.
+The statement is mathematical. The model class and the success criterion still have to be fixed before it is a theorem target.
 
 First milestone: Freeze the graph class and the identifiability quantifiers, then compare them with the theorems already proved for the equation-(7) pattern.
 
 Gate: Specify the ancestral-subset search, the half-trek subroutine, and a polynomial-time bound or a counterexample to one.
 
-Basis: Source-stated identification question, not a theorem statement or a timed formalization estimate.
+Basis: Source-stated identification question, not a theorem statement or timed formalization estimate. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f147-polytime-ancestral).
+
+### L-F182-stacking-mse-asymptotics
+
+Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The source conjectures that two named asymptotic clauses combine. It does not display the resulting MSE expression, so the formal statement is not yet fixed.
+
+First milestone: Write the pointwise MSE forms and the hypotheses taken from Theorem 3.2 and Theorem 3.3.
+
+Gate: Write the asymptotic pointwise MSE expressions obtained by combining Theorem 3.3, Clause 1, with Theorem 3.2, Clause 2 or Clause 3, for the (PC, LM) and (NW, LM) predictors, including the hypotheses those clauses use.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f182-stacking-mse-asymptotics).
+
+### L-F173-strongly-polynomial-sfm
+
+Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.
+
+- Statement: Not assessed: effort band pending.
+- Proof transfer, given a complete proof: Not assessed: effort band pending.
+- Research: Planning not yet assessed. planning_not_yet_assessed
+
+The 1984 text states a strongly polynomial, or practical combinatorial polynomial-time, algorithm for submodular function minimization as open. Later resolution was not checked, so no effort tier is assigned.
+
+First milestone: Freeze the oracle model and the polynomial bound, then check whether a later paper already gives the algorithm, before any formalization.
+
+Gate: State the evaluation-oracle model, the input size, and the strongly polynomial or practical combinatorial bound. Do not treat the 1984 open label as a present-day status.
+
+Basis: Version-stamped primary full-document question screen; resolution and effort unassessed. [Source statement and hypotheses](../literature/OPEN-PROBLEMS.md#l-f173-strongly-polynomial-sfm).

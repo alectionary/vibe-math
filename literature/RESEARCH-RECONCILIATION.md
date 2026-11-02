@@ -474,6 +474,56 @@ One previously uninspected classical variant full text contributes three broad d
 - [L-F101-hybrid-decoding](OPEN-PROBLEMS.md#l-f101-hybrid-decoding): Develop hybrid decoding approaches combining strengths of multiple algorithms.
 - [L-F101-decoder-dependent-structure](OPEN-PROBLEMS.md#l-f101-decoder-dependent-structure): Develop deeper theoretical descriptions of absorbing-set behavior under different decoding methods.
 
-Current cohort: **363 canonical entries,150 eligible targets,135 paper records,122 full-text screens**; **6/150 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+## Separate indexing extension: unl-sem-seed-2026-10-26
 
-The current source index has **106** records, with actual access levels retained.
+58 dissertation metadata seeds, all-author discovery and mathematical/statistical question screening of selected subsequent works. Social and empirical-only questions excluded.
+
+[Screen report](../literature/unl-sem/README.md). Added **8 entries**, **0 eligible targets**, **26 paper records**, **14 full-text screens** and **0 completed proofs**.
+
+- [L-F103-pleiotropy-linked](OPEN-PROBLEMS.md#l-f103-pleiotropy-linked): Develop a Bayes-factor test distinguishing pleiotropic QTL effects from closely linked QTL.
+- [L-F103-missing-phenotypes](OPEN-PROBLEMS.md#l-f103-missing-phenotypes): Extend the Bayesian multi-trait SEM procedure to missing phenotypic observations.
+- [L-F103-mixed-outcomes](OPEN-PROBLEMS.md#l-f103-mixed-outcomes): Develop multi-trait SEM methods supporting mixed binary and continuous traits.
+- [L-F103-experimental-design](OPEN-PROBLEMS.md#l-f103-experimental-design): Extend multi-trait QTL SEM to include environments, blocks and gene–environment interactions.
+- [L-F102-correlated-residuals](OPEN-PROBLEMS.md#l-f102-correlated-residuals): Extend the multi-trait QTL SEM analysis to correlated residual errors.
+- [L-F102-nonlinear-traits](OPEN-PROBLEMS.md#l-f102-nonlinear-traits): Extend the linear multi-trait QTL SEM to nonlinear trait relationships.
+- [L-F106-dynamic-fit-robustness](OPEN-PROBLEMS.md#l-f106-dynamic-fit-robustness): Determine how direct-discrepancy dynamic fit indices perform across SEM types, sample sizes, distributions and missingness.
+- [L-F106-dynamic-fit-multilevel](OPEN-PROBLEMS.md#l-f106-dynamic-fit-multilevel): Develop direct-discrepancy dynamic fit index procedures for multiple-group or multilevel analyses.
+
+## Separate indexing extension: unl-sem-cfa-expansion-2026-10-26
+
+Source-question indexing extension.
+
+[Screen report](../literature/unl-sem/CFA-EXPANSION.md). Added **2 entries**, **0 eligible targets**, **13 paper records**, **7 full-text screens** and **0 completed proofs**.
+
+- [L-F132-subset-score-precision](OPEN-PROBLEMS.md#l-f132-subset-score-precision): Characterize how item-subset selection affects the accuracy of Angoff minimum-passing-score estimates.
+- [L-F134-interpretation-detection](OPEN-PROBLEMS.md#l-f134-interpretation-detection): Evaluate when latent-variable models reliably detect individual differences in the interpretation of vague quantifiers.
+
+## Separate indexing extension: unl-sem-retrieval-repair-2026-10-26
+
+Source-question indexing extension.
+
+[Screen report](../literature/unl-sem/RETRIEVAL-REPAIR.md). Added **0 entries**, **0 eligible targets**, **2 paper records**, **3 full-text screens** and **0 completed proofs**.
+
+
+## Separate indexing extension: l-f102-replication-sources-2026-10-27
+
+Source-question indexing extension.
+
+[Screen report](../formalization/correlated-residuals/INVESTIGATION.md). Added **3 entries**, **0 eligible targets**, **8 paper records**, **6 full-text screens** and **0 completed proofs**.
+
+- [L-F145-generic-mixed-graph](OPEN-PROBLEMS.md#l-f145-generic-mixed-graph): Characterize the mixed graphs that yield generically identifiable linear structural equation models.
+- [L-F146-half-trek-gap](OPEN-PROBLEMS.md#l-f146-half-trek-gap): Find an infinite family of mixed graphs that is rationally identifiable but not half-trek identifiable.
+- [L-F147-polytime-ancestral](OPEN-PROBLEMS.md#l-f147-polytime-ancestral): Determine whether generic identifiability via ancestral decomposition can be decided in polynomial time.
+
+## Separate indexing extension: fetched-papers-2026-11-02
+
+Seven verified fetch manifests were screened. Five citing papers of Mi et al. 2010 are new records F182–F186. F150, previously an access gap, now has a complete-text screen with question count 0. Cunningham 1984 is F173. One method direction and one eligible algorithmic question were added. Present resolution and Lean discovery were not assessed. PDF bytes are not committed.
+
+[Screen report](../literature/fetched-papers-2026-11-02.md). Added **2 entries**, **1 eligible targets**, **6 paper records**, **7 full-text screens** and **0 completed proofs**.
+
+- [L-F182-stacking-mse-asymptotics](OPEN-PROBLEMS.md#l-f182-stacking-mse-asymptotics): Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.
+- [L-F173-strongly-polynomial-sfm](OPEN-PROBLEMS.md#l-f173-strongly-polynomial-sfm): Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.
+
+Current cohort: **378 canonical entries,151 eligible targets,190 paper records,159 full-text screens**; **6/151 complete checked Lean targets**. New source questions have unassessed present resolution, Lean discovery and planning difficulty.
+
+The current source index has **113** records, with actual access levels retained.
