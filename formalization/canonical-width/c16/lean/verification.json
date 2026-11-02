@@ -1,0 +1,32 @@
+{
+  "file": "C16Frames.lean",
+  "sha256": "66f7059f1996b67fd6ca6721c8e8ce04ee466cf4ec0a42bdcffcdc92970f2246",
+  "toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_rev": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "check": "lake env lean C16Frames.lean (from the Mathlib checkout); 0 errors, no sorry",
+  "axioms": {
+    "standard_only": true,
+    "note": "#print axioms for all 12 public declarations reports only propext, Classical.choice, Quot.sound"
+  },
+  "declarations": [
+    "gram_one_iff_sum_outer",
+    "frame_of_perm_block",
+    "induced_matching_le_rank",
+    "induced_matching_le_dim",
+    "IsFrame",
+    "IsFrame.map",
+    "IsFrame.swap",
+    "fixed_swap_iff",
+    "fixed_half_iff",
+    "fixed_swapHalf_iff",
+    "exists_pair_of_residual_entry",
+    "first_member_unique",
+    "remaining_card_le_finrank"
+  ],
+  "not_formalized": [
+    "look-ahead lemma (per-group split)",
+    "bridge from the concrete pools/instances to these abstract statements",
+    "the exhaustive computations",
+    "Theorem (symmetry group, order 32)"
+  ]
+}
