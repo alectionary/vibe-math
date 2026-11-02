@@ -409,3 +409,12 @@ Once sT⁸ is closed, together with Follow-up E: **any frame has trivial stabili
 - *Parity checks* (`explore/parity_checks.py`): every frame satisfies #{e ∈ F : z_eᵀ L x_e = 1} ≡ tr L for every matrix L. Restricting L to one block, the smallest odd-trace check found still involves 1,515–2,595 pool pairs. That is no narrower than the residual-entry branching.
 - *Cocircuits* (Follow-up E): unit functionals are near-minimal.
 - *Per-vector look-ahead in la_gen* (`-f`): sound, but 15× slower than `-l` alone on the swap class (525 s against 34 s). Use `-l`.
+
+**Unrestricted estimates with la_gen (2026-11-02, 300 Knuth probes each, `-l`).**
+- Full tree: about 1.8e12 nodes, very heavy-tailed (one probe gave 1.7e14).
+- Frames forced to contain a given X vector (`-x`, rotation normalisation): 5e11 (orbit 0), 2e11 (orbit 12) and 6e10 (orbit 30) per sub-search.
+- No orbit is forced by rank: removing any single X or Z orbit leaves pool rank 128.
+
+Summing the per-smallest-orbit sub-searches does not beat the unforced tree. So the simple root normalisation does not deliver the 16× symmetry saving; that would need orderly generation.
+
+Order of magnitude: 1e11–1e12+ nodes at a few thousand nodes/s per core, which is 1e4–1e6 core-hours. That is the scale of other large computer proofs, such as the Boolean Pythagorean triples (about 2 days on 800 cores) and Schur number five (about 14 CPU-years). It is feasible only with cluster time, and the heavy tail makes the estimate uncertain by 10× or more.
