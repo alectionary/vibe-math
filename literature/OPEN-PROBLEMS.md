@@ -2,30 +2,30 @@
 
 Inventory updated November 2, 2026. [Searchable inventory](open-problems.html) · [Machine-readable entries](open-problems.json) · [Paper coverage](downstream-paper-coverage.json) · [Prior literature follow-up](README.md) · [Lean difficulty estimates](../planning/LEAN-DIFFICULTY.md).
 
-The inventory now contains **378 canonical entries**: the original 40 dissertation targets and **338 additional article entries**. Of the additions, **112 are specific mathematical questions or tasks suitable for coverage tracking**; the other 226 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
+The inventory now contains **382 canonical entries**: the original 40 dissertation targets and **342 additional article entries**. Of the additions, **113 are specific mathematical questions or tasks suitable for coverage tracking**; the other 229 are research directions, formulation or method requests, and held statements with counterexamples. These categories are kept visible rather than combined into a theorem count.
 
-The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [113 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/151 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
+The [research reconciliation](RESEARCH-RECONCILIATION.md) connects later trajectory work and [114 indexed research sources](RESEARCH-SOURCES.md). The original reconciliation added six source-posed questions/directions from two papers. A separate Beezer final-journal screen now adds one precise conjecture and two broad directions; their current-resolution, Lean discovery and difficulty assessments are explicitly unassessed. The [paper-by-paper absorbing-set screen](RESEARCH-QUESTION-SCREENING.md) additionally records every encountered source, question contribution and access gap. Five project-derived follow-ups remain attached to P34 rather than being counted as additional author-posed problems. The earlier fixed cohort retains 3/108 complete proofs; the current cohort has 6/152 after the recorded F16 completions and the unrestricted P09 counterexample. The Beezer cohort and subsequent question-screen extensions retain explicit separate deltas.
 
 ## Counts and formalization evidence
 
 | Measure | Count |
 | --- | ---: |
 | Original dissertation targets, including one held target | 40 |
-| Additional article targets in the coverage denominator | 112 |
-| Additional directions/formulation/method entries outside the denominator | 226 |
-| Combined eligible targets | 151 = 39 + 112 |
-| Eligible targets with an identified, verified proof-assistant statement | 6/151 (3.97%) |
-| Eligible targets with an identified, verified Lean statement | 6/151 (3.97%) |
-| Eligible targets with a complete checked Lean proof | 6/151 (3.97%) |
-| Additional targets with checked supporting proofs and a written source bridge | 0/151 |
-| Eligible targets with only finite-case proofs (no general supporting proof) | 0/151 |
-| Additional identified Lean statements without a build audit | 1/151 |
-| Eligible targets with Lean discovery still unassessed in this extension | 43/151 |
-| Articles/preprints in scope | 190 |
-| Full-text sources screened, including withdrawn history | 159/190 |
-| Current-publication full texts screened | 158 |
+| Additional article targets in the coverage denominator | 113 |
+| Additional directions/formulation/method entries outside the denominator | 229 |
+| Combined eligible targets | 152 = 39 + 113 |
+| Eligible targets with an identified, verified proof-assistant statement | 6/152 (3.95%) |
+| Eligible targets with an identified, verified Lean statement | 6/152 (3.95%) |
+| Eligible targets with a complete checked Lean proof | 6/152 (3.95%) |
+| Additional targets with checked supporting proofs and a written source bridge | 0/152 |
+| Eligible targets with only finite-case proofs (no general supporting proof) | 0/152 |
+| Additional identified Lean statements without a build audit | 1/152 |
+| Eligible targets with Lean discovery still unassessed in this extension | 44/152 |
+| Articles/preprints in scope | 192 |
+| Full-text sources screened, including withdrawn history | 161/192 |
+| Current-publication full texts screened | 160 |
 | Withdrawn historical manuscripts screened | 1 |
-| Not fully assessed | 31/190 |
+| Not fully assessed | 31/192 |
 
 **Current artifact coverage includes the [dyadic rank theorem](../formalization/dyadic-rank/README.md), the [general P34 girth-eight characterization](../formalization/cyclic-lifts/README.md), the [literal P11 forbidden-set completeness proof](../formalization/dyadic-forbidden/APPENDIX-ENUMERATION.md), and the [incidence-corrected F16 four-variable counts and source obstruction](../formalization/absorbing-four-zero/README.txt), each with a matching statement, successful build and axiom audit.** Search results without an artifact do not establish global absence. In particular, this is principally a Lean discovery audit; Coq, Isabelle, and other proof assistants were not systematically searched. The original search pass found no exact target artifacts; the later dyadic formalization is recorded separately with build and axiom evidence. L-P09-all-absorbing has a complete Lean-checked counterexample ([paper and scope](../formalization/gallager-b-absorbing/README.md)). L-P11-rank-converse, L-P34-girth-eight, L-P11-forbidden and L-F16-other-absorbing now have complete Lean proofs of their recorded statements, within the explicit artifact scopes. Current mathematical resolution is not independently certified for every other entry: “open” describes how the cited source presents the target.
 
@@ -241,6 +241,8 @@ A full-text screen searched headings, explicit conjectures/questions, future-wor
 | [F185](https://doi.org/10.1186/s12918-015-0200-0) | full text screened | 0 | No additional explicit mathematical target recorded. |
 | [F186](https://doi.org/10.1186/s12864-020-06833-2) | full text screened | 0 | Genomic-selection applicability is an application request without a fixed estimand. No inventory target recorded. |
 | [F173](https://doi.org/10.1016/0095-8956(84)90023-6) | full text screened | 1 | One algorithmic target recorded. The grand-augmentation sketch is proved later in the paper. |
+| [F187](https://digitalcommons.unl.edu/dissunl/339/) | full text screened | 3 | Same PDF as MorrisDissertation2025. Three Chapter 6 directions recorded beside the linked P34 targets. |
+| [F188](https://arxiv.org/abs/2502.15166) | full text screened | 1 | Conjecture 7.4 recorded. Conjecture 7.2 is refuted in the paper and is not an inventory target. |
 
 ## Reproducible evidence and limits
 
@@ -4504,3 +4506,43 @@ Find a strongly polynomial algorithm for submodular function minimization, or a 
 - Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
 - Source-described status: open or proposed in source; current resolution: not independently established.
 - [F173: Section 6, printed p. 182 / PDF p. 22. The open-problem sentence was compared with the rendered page.](https://doi.org/10.1016/0095-8956(84)90023-6); extraction lines 973–976; author stated question or direction.
+
+### L-F187-nonabsorbing-failure-sets
+
+Characterize failure-inducing sets that are not absorbing sets.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 6 says this characterization remains open and asks for an overlying combinatorial description. The description is not given, so the target stays a direction.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F187: Chapter 6 conclusion, PDF page 85, extracted lines 3208–3212](https://digitalcommons.unl.edu/dissunl/339/); extraction lines 3208–3212; author stated question or direction.
+
+### L-F187-gallager-b-convergence-bound
+
+Ask whether the graphical condition that guarantees Gallager-B convergence in two iterations can be relaxed.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 6 calls the two-iteration graphical condition strong and asks whether it can be lightened, perhaps by allowing more than two iterations. No weakened hypothesis is stated.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F187: Chapter 6 conclusion, PDF pages 85–86, extracted lines 3214–3221. Printed page 74 is the running header on PDF page 86](https://digitalcommons.unl.edu/dissunl/339/); extraction lines 3214–3221; author stated question or direction.
+
+### L-F187-redundancy-other-families
+
+Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.
+
+- Type: research direction; written formulation: research direction.
+- Coverage denominator: excluded. Chapter 6 asks about redundancy for lifted-product and balanced-product codes after reporting Hamming CSS and hypergraph-product cases. No estimand is fixed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F187: Chapter 6 conclusion, PDF page 86, printed page 74, extracted lines 3222–3227](https://digitalcommons.unl.edu/dissunl/339/); extraction lines 3222–3227; author stated question or direction.
+
+### L-F188-finite-quotient-tensor
+
+If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.
+
+- Type: conjecture; written formulation: precise math in source.
+- Coverage denominator: included. Conjecture 7.4 states this tensor-product claim. The weaker Conjecture 7.2, with only n>0, is refuted in the same section and is not this target. Present-day resolution was not assessed.
+- Proof-assistant statement: not assessed in this extension. Lean statement: not assessed in this extension. Lean proof: not assessed in this extension.
+- Source-described status: open or proposed in source; current resolution: not independently established.
+- [F188: Conjecture 7.4, PDF page 30, printed page 30, extracted lines 1797–1798. The formula was read from the rendered page; the text layer drops the superscript on n](https://arxiv.org/abs/2502.15166); extraction lines 1797–1798; author stated question or direction.
