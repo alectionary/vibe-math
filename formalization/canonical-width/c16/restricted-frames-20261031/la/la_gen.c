@@ -13,6 +13,7 @@
  *   NI lines: k x1 z1 ... xk zk      items (vector indices)
  *
  *   la_gen [-l] [-f] [-1] [-t SEC] [-k PROBES] [-r SEED] [-s i -S n [-D depth]] [-o FRAMES] INSTANCE
+ *   -x i: search only frames containing X vector i (rotation normalisation)
  *   shards split the children at the given depth (default 0) round-robin in visiting order
  *   -l  restrict X'/Z' to vectors of live items
  *   -f  per-vector look-ahead filter (cached)     -F  -f plus the exact per-item test
@@ -34,7 +35,7 @@ static int NX, NZ, NI, DIM;
 static v128 *XV, *ZV, Dmask;
 static int *ik, (*ix)[MAXK], (*iz)[MAXK];
 static uint8_t *orthxz;   /* orthxz[i*NZ+j] = <x_i,z_j> == 0 */
-static long long shard_ctr = 0; static int shard_depth = 0;
+static long long shard_ctr = 0; static int shard_depth = 0, force_x = -1;
 static int live_sides = 0, filter_items = 0, full_filter = 0, only_first = 0, shard = 0, nshard = 1, knuth = 0;
 static double kprod, kest; static unsigned long long rng = 88172645463325252ULL;
 static unsigned long long xr(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng; }
@@ -150,7 +151,12 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
     }
     free(C);
     if (best == 0 || bc < 0) { prunes_empty[depth]++; LEAVE; }
-    int *ch = malloc(sizeof(int) * (best + 1)), nch = 0;
+    int *ch = malloc(sizeof(int) * (nlive + 1)), nch = 0;
+    if (depth == 0 && force_x >= 0) {
+        /* -x i: the frame must contain X vector i; branch over the live items that use it */
+        for (int t = 0; t < nlive; t++) { int q = live[t], b = 0; for (int s = 0; s < ik[q]; s++) b |= ix[q][s] == force_x; if (b) ch[nch++] = q; }
+        if (!nch) { prunes_empty[depth]++; free(ch); LEAVE; }
+    } else
     for (int t = 0; t < nlive; t++) {
         int q = live[t], b = 0;
         for (int s = 0; s < ik[q]; s++) b ^= bit(XV[ix[q][s]], bc) & bit(ZV[iz[q][s]], bk);
@@ -191,6 +197,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "-s")) shard = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-S")) nshard = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-D")) shard_depth = atoi(argv[++a]);
+        else if (!strcmp(argv[a], "-x")) force_x = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-o")) out = argv[++a];
         else in = argv[a];
     }
