@@ -372,3 +372,40 @@ The half-support rows rule out only frames of the 64-dim subspace that use pool 
 **Unrestricted problem.** The same search on all 99,808 single pairs (`gen_instance.py order 1`):
 - A Knuth estimate (`la_dfs -k 20`) gives about 9e11 nodes, heavy-tailed (maximum 8e12), with leaves at depth 4–7.
 - That is out of reach at about 6,000 nodes/s without further reduction, such as the 32-element symmetry group or stronger pruning.
+
+## Follow-up F: the full symmetry group and the remaining involution classes
+
+**The problem is purely combinatorial.** A frame is a pair (S, T) of 128-sets with G[S, T] a permutation matrix, where G = X Zᵀ is the 720 × 720 anticommutation matrix. Equivalently, it is an induced matching of size 128 in the bipartite anticommutation graph. Since rank_F2(G) ≤ 128, no induced matching is larger, so a frame is an induced matching that meets the rank bound.
+
+**Full symmetry group = T^k × {id, swap}, order 32.** `explore/gram_wl.py` runs colour refinement on the anticommutation graph:
+- The colour classes are exactly the 90 T-orbits, or 45 orbit pairs when the X/Z swap is allowed.
+- Individualising one vertex makes the colouring discrete.
+
+Every symmetry of the frame problem is an automorphism of this graph, linear ones included. So nothing beyond the 16 rotations and the swap exists. The swap is valid because G is symmetric.
+
+**Involution classes.** Z16 × Z2 has exactly three involutions: T⁸, s (swap) and sT⁸.
+- A frame fixed by none of them has a free orbit of size 32.
+- s acts on pairs as (i, j) → (j, i).
+- sT⁸ acts as (i, j) → (τj, τi), where τ is T⁸ on pool indices.
+
+`la/la_gen.c` is la_dfs generalised to items of any size, with availability tracked per pool vector. `la/gen_items.py` writes the items as the H-orbits of pairs that are partial frames.
+
+Validation:
+- `gen_items.py order 4` with `la_gen` reproduces la_dfs on order 4 exactly: 15,088 nodes, identical per-depth counts, and 491 nodes with `-l -f` / per-item filter.
+- `order 2` gives the same 38,192 items as la_dfs.
+- Sharding `-S n -s i -D d` partitions the children created at depth d. On order 4 the per-depth sums match the unsharded run.
+
+| Class | Items | Result |
+|---|---|---|
+| s-invariant (swap) | 7,936 (416 single, 7,520 double) | **COMPLETE, no frame**: 69,180 nodes, 34 s (`-l`) |
+| s-invariant, planted seed 1 | 8,064 | planted frame found (86,873 nodes), verified |
+| sT⁸-invariant | 49,904 doubles | running: Knuth estimate ~4e7 nodes (`-l`), ~5,300 nodes/s, 2 shards |
+
+The planted frame is T-invariant with diagonal pairs (720+k, 720+k), so it is invariant under both s and sT⁸.
+
+Once sT⁸ is closed, together with Follow-up E: **any frame has trivial stabiliser in the full symmetry group**, so frames would come in free orbits of 32. This does not by itself exclude frames.
+
+**Negative results (recorded so they are not retried).**
+- *Parity checks* (`explore/parity_checks.py`): every frame satisfies #{e ∈ F : z_eᵀ L x_e = 1} ≡ tr L for every matrix L. Restricting L to one block, the smallest odd-trace check found still involves 1,515–2,595 pool pairs. That is no narrower than the residual-entry branching.
+- *Cocircuits* (Follow-up E): unit functionals are near-minimal.
+- *Per-vector look-ahead in la_gen* (`-f`): sound, but 15× slower than `-l` alone on the swap class (525 s against 34 s). Use `-l`.
