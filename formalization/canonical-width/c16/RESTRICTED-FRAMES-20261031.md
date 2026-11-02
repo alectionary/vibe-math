@@ -213,3 +213,45 @@ two. The leaves therefore always partition the assignment space, and
   1. Split on cardinalities instead of literals, for example on how many sub-orbits of each orbit are selected. That makes the `-v` side bind.
   2. Add stronger symmetry or structural constraints before cubing.
   3. Run the existing tree on many cores (the cubes are independent).
+
+### Follow-up C results so far (1 November)
+
+- 300 s cubes with literal splitting make a "ladder": the selected (`+v`) side closes and the excluded side stays about as hard. Piece #262 cost 4,537 s split this way.
+- Splitting it by count (`cardtest.py`) cost 2,125 s; piece #274 cost 1,538 s that way.
+- Solving #262 and #274 whole cost at most 634 s each. Splitting throws away what the solver has learned.
+- On a 5-core Mac (`cnc_parallel.py --whole-depth 8`), the depth-8 pieces split into two groups:
+  - Pieces selecting 5 X sub-orbits of orbit 12 close in 5–12 minutes.
+  - Almost every piece selecting 4 or fewer takes over 15 minutes. #270 and #278 needed 6,072 s and 6,777 s whole (cloud runs). About 160 such pieces exist under the original orbit-0-first lexicographic order.
+
+## Follow-up D: orbit-12-first symmetry breaking
+
+`subgroup_frame_o12.py` imports the frozen encoder's `encode()` unchanged and
+uses the same 16-element symmetry group:
+- the translation T, acting on every sub-orbit index p ↦ p+1 (mod 8) in both sectors;
+- the sector swap (S,T) ↦ (T,S), valid because G is symmetric.
+
+The only change is the variable order of the lexicographic-leader constraints: the 8 X
+sub-orbit variables of orbit 12 come first, then the other X variables in the
+original order.
+
+**Soundness.** Fix any total order σ of the X variables. Every solution's orbit
+under the group contains an element whose σ-ordered X part is lexicographically maximal. That element satisfies
+`σ(x) ≥lex σ((g·sol)_X)` for every g. So adding these constraints for all g preserves
+satisfiability whenever the group maps solutions to solutions.
+`check_o12_symmetry.py` verifies that it does: each group element preserves
+- every pattern class (zero, one monomial, or two or more), which is all the non-lex clauses depend on;
+- both cardinality targets;
+- the critical orbit-12 set.
+
+**Control.** With σ set to the identity order, the builder reproduces the follow-up B CNF
+byte for byte (`dc2b1d0d…`).
+
+**New CNF:** 331,073 variables and 810,210 clauses, SHA-256
+`470ce05d4ae9e607a91cd56677fc5b9d1abb427928d335c838681d689ca48211`.
+
+**Effect.** The 256 depth-8 cubes on the orbit-12 X variables were run with a 15 s limit:
+- 226 were UNSAT in 0.52 s or less.
+- 30 remained open. These are exactly the 30 lexicographically maximal rotation classes with at most 5 ones, computed independently.
+- Of these 30, 23 have 4 or fewer ones (the expected hard type), against about 160 under the original order.
+
+The 30 are now solved whole. Tree: `work/cnc-o12/state.json`, with `C16_CNC=o12`.
