@@ -327,6 +327,9 @@ search state is the set of chosen items and the residual R = I − (sum of their
 | order 4 (T⁴) | none (DRAT-certified) | none, 15,088 nodes, 2 s |
 | planted random T-invariant frame (seed 1), order 16 / 4 | 1 frame | 1 found, verified |
 | planted random T-invariant frame (seed 2), order 4 | 1 frame | 1 found, verified |
+| planted (seed 2), order 2 | 1 frame | planted frame found and verified; full run still going |
+| planted (seed 1), order 2 | 1 frame | still running (>70 CPU-min; planted pools have 53 orbits, not 45) |
+| quarter {0,1} with `-c`, full enumeration | 3^16 (INVESTIGATION.md) | 43,046,721 = 3^16 frames, 330 s |
 | **order 2 (half-turn)** | open | **COMPLETE, no frame**: 9,995,481 nodes on 2 shards, 801 s + 787 s |
 
 The planted controls append 8 X and 8 Z orbits of a random T-invariant frame
@@ -337,6 +340,8 @@ program, not a certificate. It agrees with every control above and with the 230
 o12 SAT pieces closed so far. Before it is recorded as a theorem, the program or an
 independent reimplementation needs review, or the SAT/DRAT route must finish.
 Instance SHA-256 prefix: `60acef5f7b8a0bf0` (order 2).
+
+**Coloop forcing (`-c`).** If the X side still has to supply its remaining vectors from X′, every coloop of X′ (a vector outside the span of the others) must be in the frame, and likewise on the Z side. With `-c` the search branches over a coloop's group when that group has fewer live items than the best residual entry, and prunes when a coloop has no live item. On order 4 this changes nothing (15,088 nodes both ways); the rank pruning already sees it.
 
 **Unrestricted problem.** The same search on all 99,808 single pairs (`gen_instance.py order 1`):
 - A Knuth estimate (`la_dfs -k 20`) gives about 9e11 nodes, heavy-tailed (maximum 8e12), with leaves at depth 4–7.
