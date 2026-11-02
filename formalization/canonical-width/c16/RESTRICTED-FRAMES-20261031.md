@@ -327,8 +327,8 @@ search state is the set of chosen items and the residual R = I − (sum of their
 | order 4 (T⁴) | none (DRAT-certified) | none, 15,088 nodes, 2 s |
 | planted random T-invariant frame (seed 1), order 16 / 4 | 1 frame | 1 found, verified |
 | planted random T-invariant frame (seed 2), order 4 | 1 frame | 1 found, verified |
-| planted (seed 1), order 2 | 1 frame | planted frame found and verified; run continuing to completion |
-| planted (seed 2), order 2 | 1 frame | planted frame found and verified; run continuing to completion |
+| planted (seed 1), order 2 | 1 frame | planted frame found and verified (run stopped at the 2 h background limit before finishing the tree) |
+| planted (seed 2), order 2 | 1 frame | planted frame found and verified (run stopped at the 2 h background limit before finishing the tree) |
 | quarter {0,1} with `-c`, full enumeration | 3^16 (INVESTIGATION.md) | 43,046,721 = 3^16 frames, 330 s |
 | **order 2 (half-turn)** | open | **COMPLETE, no frame**: 9,995,481 nodes on 2 shards, 801 s + 787 s |
 
