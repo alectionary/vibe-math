@@ -354,6 +354,7 @@ Instance SHA-256 prefix: `60acef5f7b8a0bf0` (order 2).
 | planted seed 1, order 16 | 1 frame | 1 frame, 11 nodes, verified |
 | quarter {0,1}, first frame | found | found at node 33, verified |
 | quarter {2,3} | none | none, root pruned |
+| planted seed 1 / 2, order 2 (`-1`) | 1 frame each | planted frame found after 978,158 / 930,256 nodes (2,572 s / 2,527 s), verified |
 | order 2 | 9,995,481 nodes, no frame | 810,784 nodes, no frame (Knuth estimate was ~6e5) |
 | unrestricted, Knuth estimate | ~9e11 | ~2e11 (200 probes, max 2e13), leaves at depth 3–6 |
 | unrestricted, no weight-1 vectors | – | ~3e10 (100 probes) |
