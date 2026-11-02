@@ -399,7 +399,7 @@ Validation:
 |---|---|---|
 | s-invariant (swap) | 7,936 (416 single, 7,520 double) | **COMPLETE, no frame**: 69,180 nodes, 34 s (`-l`) |
 | s-invariant, planted seed 1 | 8,064 | planted frame found (86,873 nodes), verified |
-| sT⁸-invariant | 49,904 doubles | running: Knuth estimate ~4e7 nodes (`-l`), ~5,300 nodes/s, 2 shards |
+| sT⁸-invariant | 49,904 doubles | **COMPLETE, no frame**: 50,401,313 nodes on 2 shards (-S 2 -D 1; 25,267,931 + 25,133,382), 6,679 s + 6,625 s (`-l`) |
 
 The planted frame is T-invariant with diagonal pairs (720+k, 720+k), so it is invariant under both s and sT⁸.
 
