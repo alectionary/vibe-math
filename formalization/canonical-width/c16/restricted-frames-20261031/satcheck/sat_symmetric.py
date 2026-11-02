@@ -15,7 +15,7 @@ Symmetry classes, written as constraints on the vertex sets only:
 In each case the class is *exactly* the set of frames fixed by the involution, because a frame
 is determined by its vertex sets.
 
-  sat_symmetric.py CLASS OUT.cnf [--plant SEED]
+  sat_symmetric.py CLASS OUT.cnf [--plant SEED] [--symbreak]
 """
 import hashlib, random, sys
 from pathlib import Path
@@ -24,6 +24,8 @@ X = [int(v, 16) for v in (root / 'pools/xcoords.txt').read_text().split()]
 Z = [int(v, 16) for v in (root / 'pools/zcoords.txt').read_text().split()]
 args = sys.argv[1:]
 plant = None
+symbreak = '--symbreak' in args
+if symbreak: args.remove('--symbreak')
 if '--plant' in args:
     k = args.index('--plant'); plant = int(args[k + 1]); del args[k:k + 2]
 mode, out = args
@@ -101,11 +103,27 @@ def atmost(lits, k):
             clauses.extend([[-lits[i], -R[i - 1][jj - 1], R[i][jj]], [-R[i - 1][jj], R[i][jj]]])
         clauses.append([-lits[i], -R[i - 1][k - 1]])
     clauses.append([-lits[m - 1], -R[m - 2][k - 1]])
+if symbreak:
+    # Rotation symmetry breaking (lex-leader). T acts on frames by S -> rot(S) (and T -> rot(T));
+    # for the classes above the X set S determines the frame. Keep only frames whose X indicator
+    # vector s (ordered by index, selected = 1 ranks first) is lexicographically >= that of every
+    # rotation. Every rotation orbit contains such a maximal element, so no orbit is lost.
+    rot = lambda i, k: 16 * (i // 16) + (i % 16 + k) % 16
+    def geq_lex(a, b):
+        e = new(); clauses.append([e])                      # e = 'equal so far'
+        for x, y in zip(a, b):
+            clauses.append([-e, x, -y])                     # equal so far -> x >= y
+            e2 = new()
+            clauses.extend([[-e, x, y, e2], [-e, -x, -y, e2]])   # still equal -> e2
+            e = e2
+    for k in range(1, 16):
+        # indicator of rot^k(S) at index i is s[rot^{-k}(i)]
+        geq_lex(s, [s[rot(i, 16 - k)] for i in range(n)])
 atmost(s, 128)
 atmost([-v for v in s], n - 128)               # at least 128
 
 with open(out, 'w') as f:
     f.write(f'p cnf {top[0]} {len(clauses)}\n')
     for c in clauses: f.write(' '.join(map(str, c)) + ' 0\n')
-print(mode, 'plant' if plant is not None else 'real', 'vars', top[0], 'clauses', len(clauses),
+print(mode, 'plant' if plant is not None else 'real', 'symbreak' if symbreak else '', 'vars', top[0], 'clauses', len(clauses),
       hashlib.sha256(Path(out).read_bytes()).hexdigest())
