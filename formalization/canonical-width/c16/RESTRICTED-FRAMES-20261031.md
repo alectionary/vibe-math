@@ -327,8 +327,8 @@ search state is the set of chosen items and the residual R = I − (sum of their
 | order 4 (T⁴) | none (DRAT-certified) | none, 15,088 nodes, 2 s |
 | planted random T-invariant frame (seed 1), order 16 / 4 | 1 frame | 1 found, verified |
 | planted random T-invariant frame (seed 2), order 4 | 1 frame | 1 found, verified |
-| planted (seed 2), order 2 | 1 frame | planted frame found and verified; full run still going |
-| planted (seed 1), order 2 | 1 frame | still running (>70 CPU-min; planted pools have 53 orbits, not 45) |
+| planted (seed 1), order 2 | 1 frame | planted frame found and verified; run continuing to completion |
+| planted (seed 2), order 2 | 1 frame | planted frame found and verified; run continuing to completion |
 | quarter {0,1} with `-c`, full enumeration | 3^16 (INVESTIGATION.md) | 43,046,721 = 3^16 frames, 330 s |
 | **order 2 (half-turn)** | open | **COMPLETE, no frame**: 9,995,481 nodes on 2 shards, 801 s + 787 s |
 
@@ -342,6 +342,27 @@ independent reimplementation needs review, or the SAT/DRAT route must finish.
 Instance SHA-256 prefix: `60acef5f7b8a0bf0` (order 2).
 
 **Coloop forcing (`-c`).** If the X side still has to supply its remaining vectors from X′, every coloop of X′ (a vector outside the span of the others) must be in the frame, and likewise on the Z side. With `-c` the search branches over a coloop's group when that group has fewer live items than the best residual entry, and prunes when a coloop has no live item. On order 4 this changes nothing (15,088 nodes both ways); the rank pruning already sees it.
+
+**Look-ahead filter (`-l -f`).** Two sound strengthenings:
+- `-l`: every remaining frame pair is a live item, so X′ and Z′ shrink to the X and Z sides of the live items (sibling exclusions included).
+- `-f`: choosing item (a, b) leaves X′ ∩ b^⊥ and Z′ ∩ a^⊥. The child passes the rank test iff both still span need − g dimensions; the pairing between them is then perfect automatically, since the a- and b-groups pair perfectly. So the test splits into one span computation per Z group and one per X group. Items failing it are removed, and the step repeats to a fixpoint.
+
+| Instance | plain | `-l -f` |
+|---|---|---|
+| order 4 | 15,088 nodes | 491 nodes, 1 s |
+| planted seed 1 / 2, order 4 | 1 frame | 1 frame (944 / 976 nodes), verified |
+| planted seed 1, order 16 | 1 frame | 1 frame, 11 nodes, verified |
+| quarter {0,1}, first frame | found | found at node 33, verified |
+| quarter {2,3} | none | none, root pruned |
+| order 2, Knuth estimate | ~1e7 (actual 9,995,481) | ~6e5 (30 probes) |
+| unrestricted, Knuth estimate | ~9e11 | ~2e11 (200 probes, max 2e13), leaves at depth 3–6 |
+| unrestricted, no weight-1 vectors | – | ~3e10 (100 probes) |
+
+A full half-turn rerun with `-l -f` is in progress as a second, differently pruned check.
+
+**Symmetry.** Colour refinement (`explore/auto_wl.py`) on the coordinate/pool incidence graph gives one class per block. Individualising coordinate 0 makes the colouring discrete. So the coordinate-permutation automorphisms preserving both pools are exactly the 16 translations T^k, and 32 with the X↔Z swap. No hidden permutation symmetry is available to shrink the unrestricted search.
+
+**Cocircuits.** `explore/cocircuits.py` looked for functionals u that are 1 on few pool vectors; these would allow narrower branching. Unit vectors give 66–88 pool vectors. Random dual-basis functionals give about 240. So the root branching width is intrinsic, and residual-entry branching is already close to the best a single hyperplane offers.
 
 **Unrestricted problem.** The same search on all 99,808 single pairs (`gen_instance.py order 1`):
 - A Knuth estimate (`la_dfs -k 20`) gives about 9e11 nodes, heavy-tailed (maximum 8e12), with leaves at depth 4–7.
