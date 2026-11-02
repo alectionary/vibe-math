@@ -31,10 +31,14 @@
 \newcommand{\ours}[2]{\href{\repourl/blob/master/\rdir/#1}{#2}}
 \newcommand{\oursf}[1]{\ours{#1}{\texttt{\detokenize{#1}}}}
 \newcommand{\oursdir}[1]{\href{\repourl/tree/master/\rdir/#1}{\texttt{\detokenize{#1/}}}}
-\newcommand{\leancommit}{9792a06ae3a65e1be038945dff3b933595d128a5}
+\newcommand{\leancommit}{e534c654d83261929da5f0bd4a1cd24db09d06c9}
 \newcommand{\leanfile}{formalization/canonical-width/c16/lean/C16Frames.lean}
 \newcommand{\poolfile}{formalization/canonical-width/c16/lean/Pools.lean}
 \newcommand{\pl}[2]{\href{\repourl/blob/master/\poolfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\poolfile\#L#2}{pinned})}
+\newcommand{\codefile}{formalization/canonical-width/c16/lean/Code.lean}
+\newcommand{\cl}[2]{\href{\repourl/blob/master/\codefile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\codefile\#L#2}{pinned})}
+\newcommand{\mixfile}{formalization/canonical-width/c16/lean/Mixed.lean}
+\newcommand{\ml}[2]{\href{\repourl/blob/master/\mixfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\mixfile\#L#2}{pinned})}
 % \lean{decl}{line}: master deep link plus commit-pinned copy
 \newcommand{\lean}[2]{\href{\repourl/blob/master/\leanfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\leanfile\#L#2}{pinned})}
 \newcommand{\oursnote}[2]{\href{\repourl/blob/master/\cdir/#1}{#2}}
@@ -230,12 +234,21 @@ Lemma~\ref{lem:G}: $G$ symmetric, $T$-invariant$^\dagger$ & \pl{G_symm}{49}, \pl
 Prop.~\ref{prop:reduction} for these pools & \pl{G_eq_mul}{71}, \pl{pool_matching_le_128}{76} \\
 Symmetries act on pool frames$^\dagger$ & \pl{frame_rot}{82}, \pl{frame_swap}{87} \\
 Lemma~\ref{lem:classes}(iii) for these pools$^\dagger$ & \pl{tau8}{62}, \pl{fixed_sT8_iff}{92} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{From the code to the pools} (\href{\repourl/blob/master/\codefile}{\texttt{Code.lean}}, a port of \prior{verify_partial_frame.py}{\texttt{verify\_partial\_frame.py}} and \prior{audit_pools.py}{\texttt{audit\_pools.py}})} \\
+Code from eq.~(50): 480+480 checks, weight $\le9$, CSS$^\dagger$ & \cl{hx_length}{106}, \cl{hz_length}{107}, \cl{checks_weight_le_9}{108}, \cl{checks_commute}{111} \\
+Width-18 frame is a canonical frame$^\dagger$ & \cl{canon_length}{115}, \cl{canon_logical}{116}, \cl{canon_gram}{118}, \cl{canon_width}{120} \\
+Pools are distinct nontrivial weight-16 logicals with the recorded coordinates$^\dagger$ & \cl{pools_length}{125}, \cl{pools_weight_16}{126}, \cl{pools_logical}{128}, \cl{pools_distinct}{130}, \cl{coords_match}{131}, \cl{coords_nonzero}{134} \\
+Physical anticommutation equals $G$$^\dagger$ & \cl{physical_pairing_eq_G}{138} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Mixed operators reduce to pure ones} (\href{\repourl/blob/master/\mixfile}{\texttt{Mixed.lean}}; Prop.~\ref{prop:pools}, second sentence)} \\
+Pairings, weights and types under the reduction & \href{\repourl/blob/master/\mixfile\#L47}{\texttt{$\omega$\_pure}}~(\href{\repourl/blob/\leancommit/\mixfile\#L47}{pinned}), \ml{card_supp_pure_le}{71}, \ml{kinds_differ_of_anticommute}{76}, \ml{pure_frame}{88} \\
 \bottomrule
 \end{tabular}
 \end{center}
 {\small $^\dagger$ Uses \texttt{native\_decide} over the full $720\times720$ data, so it also trusts the Lean compiler (\texttt{Lean.ofReduceBool}). The pool data is generated from \texttt{pools/xcoords.txt} and \texttt{pools/zcoords.txt}, and the SHA-256 of both files is recorded in its header.}
 
-The abstract Lean statements: they concern any field, any pairing matrix and any finite index set. For the look-ahead lemma, Lean proves its two cores. The remaining step, that both spans are full exactly when the pairing has full rank, follows in one line because a pairing rank never exceeds either dimension. Not yet formalized: the bridge from the code itself (equation~(50)) to the pools, i.e.\ the completeness of the weight-16 enumeration~\cite{enumeration}; Theorem~\ref{thm:aut}; and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{code-to-pool bridge in Lean}
+The abstract Lean statements: they concern any field, any pairing matrix and any finite index set. For the look-ahead lemma, Lean proves its two cores. The remaining step, that both spans are full exactly when the pairing has full rank, follows in one line because a pairing rank never exceeds either dimension. The mixed reduction takes as a hypothesis that every operator of weight at most $17$ has a stabilizer component, which follows from the computed $\mu_{XZ}=26$~\cite{enumeration}. Not yet formalized: that computation and the completeness of the weight-16 enumeration~\cite{enumeration} (every logical class of weight at most $17$ lies in the pools); Theorem~\ref{thm:aut}; and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{enumeration completeness in Lean or a certificate}
 
 \section{Availability}
 Repository links in this paper point to \texttt{master} of \url{https://github.com/alectionary/vibe-math}, where the work lands when \href{https://github.com/alectionary/vibe-math/pull/17}{pull request 17} is merged. \pending{not yet on \texttt{master}: PR 17 awaits review, so these links do not resolve yet.}
