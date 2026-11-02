@@ -430,3 +430,7 @@ Order of magnitude: 1e11–1e12+ nodes at a few thousand nodes/s per core, which
 - **Random pieces of the 40-pair compatible subset**, completed exhaustively: keeping 30, 20, 12 or 8 pairs gives COMPLETE with no frame (2 to 789 nodes, at most 0.6 s). Keeping 5 already exceeds 300 s, which means 5 pairs leave essentially the whole search open.
 
 Conclusion: the known near-misses are not close to any frame in the sense of shared pairs. Every sampled piece of 8 or more of their pairs lies in no frame. Neighbourhood search around them will not find a frame; any frame shares only a handful of pairs with them.
+
+**sT⁸ planted control (2026-11-02).** `la_gen -l -1 inst/gp1-swapT8.txt` (72,528 items) hit its 7,000 s time limit on one shared core after 32,816,666 nodes without reaching the planted frame. The result is inconclusive, not a failure; the control will be rerun on 2 shards.
+
+**Swap vertex-SAT (satcheck).** The planted control was SAT and checked (`check_model.py`). The real instance (`sat_symmetric.py swap`, CNF SHA-256 `588e61ed…`) was UNKNOWN at 3,300 s. A 7,000 s rerun is in progress.
