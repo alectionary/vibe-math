@@ -1,6 +1,6 @@
 ---
 name: document-retrieval-worker
-description: "Retrieve a queued full text for any public source. Claim a fetch-request issue, try the versioned identifier-first routes with curl and a real browser, fall back to the Wayback availability API when an open-access link has moved, hand off when this worker has no browser, verify the PDF, extract or OCR it, and for an equation that matters render the page and attach operators by glyph coordinates. Use for the retrieval worker, not for ledger edits or question screening."
+description: "Retrieve a queued full text for any public source. Claim a fetch-request issue, try the versioned identifier-first routes with curl and a real browser, fall back to the Wayback availability API when an open-access link has moved, hand off when this worker has no browser, verify the PDF, extract or OCR it, and for an equation that matters render the page and attach operators by glyph coordinates. The fetched label is the signal that ingestion can start. Use for the retrieval worker, not for ledger edits, question screening, or the ingestion pull request."
 ---
 
 # Document retrieval worker
@@ -12,9 +12,12 @@ not enough. File bytes use `curl`, `pdfinfo`, `pdftotext`, and `tesseract`.
 A browser step is a list of outcomes, not a call to one product's browser API.
 
 This worker does not edit canonical literature ledgers, does not open research
-claim refs, and does not close the issue. The research agent merges the
-manifest and closes it. How a worker is started (a person, a timer, a workflow)
-is a deployment choice and is not part of this procedure.
+claim refs, does not ingest the file, and does not close the issue. After a
+verified manifest it sets the lifecycle label to `fetched` and stops. That
+label is the signal that ingestion can start. The research agent copies the
+manifest, stores the PDF at the conventional local path, writes the question
+screen, and opens the pull request. How a worker is started (a person, a timer,
+a workflow) is a deployment choice and is not part of this procedure.
 
 The versioned route list is [routes.json](routes.json). Site notes are under
 [references/](references/) and are read only when the source matches. The
@@ -48,8 +51,26 @@ transport for the whole issue. If a later write returns 401 or 403, stop.
 
 ## Find and claim
 
-List open issues labeled `fetch-request` in `alectionary/vibe-math` with the
-transport that passed preflight:
+Sweep unlabeled paper requests before the labeled list. Search open issues
+whose title starts with `fetch:` (`gh issue list --repo alectionary/vibe-math
+--state open --search "fetch: in:title" --limit 50`, or the REST search
+`GET /search/issues?q=repo:alectionary/vibe-math+is:issue+is:open+fetch:+in:title`).
+`label_sweep_action` is the decision:
+
+- `add-fetch-request`: the title or the `<!-- fetch-request: ID -->` marker
+  names a paper, and the issue has no lifecycle label. Add `fetch-request`.
+  A marker in the body is not a substitute for the label. The 2026-11-02
+  backlog was filed this way.
+- `help-issue`: the request is not a paper. Code, a program, a supplement, a
+  dataset, or a file offered only by emailing the author uses a help issue.
+  Comment that the research agent files the help issue, do not add
+  `fetch-request`, and do not claim. `other:mi-2010-sas-iml-qtl` is this case:
+  the programs are available only by email, and there is no public URL.
+- `claim-pool`: the only lifecycle label is already `fetch-request`.
+- `skip`: this is not a fetch request, or another lifecycle label is already set.
+
+Then list open issues labeled `fetch-request` in `alectionary/vibe-math` with
+the transport that passed preflight:
 
 ```sh
 gh issue list --repo alectionary/vibe-math --state open --label fetch-request --limit 50
@@ -156,6 +177,13 @@ the same thing: `identifier_source` is `document.stable_ids`,
 `discovered_identifiers_expand_routes` is false, and
 `backfill_earlier_routes` is false. `routes_to_retry` uses that rule.
 
+`requires_match` says how to read `requires`. `any` means at least one listed
+scheme: `["doi", "url"]` is a DOI or a URL, not both. `all` means every listed
+scheme. `always` means the route is not gated on a scheme, and `requires` is
+empty. `prefixes` means an `archive_record` value starts with one of
+`requires_prefixes`. A site route uses `prefixes`. Empty `requires` with
+`always` is filled in; it is not a missing field.
+
 Skip a route that does not apply. Skip a route id already present on the
 issue's active manifest; copy those entries forward and do not fetch them again.
 Record every route you do run. The manifest field `route` is the catalog id,
@@ -171,20 +199,36 @@ Identifier-first order:
 1. `doi-resolution@1` when a DOI is present on the request. `curl -L` on `https://doi.org/<DOI>`.
 2. `arxiv-pdf@1` when an arXiv id is present on the request. `curl` the arXiv PDF for that id.
 3. `openalex-oa@1`. Read OpenAlex open-access locations for the DOI, arXiv id, or title.
-4. `unpaywall-oa@1` when a DOI is present on the request. Read Unpaywall open-access locations.
-5. `publisher-landing@1`. `curl` the publisher landing page and its public download control.
-6. Site routes whose `order` falls here. Read the matching file in
+4. `unpaywall-oa@1` when a DOI is present on the request. Read
+   [Unpaywall](references/unpaywall.md). The contact address is
+   `UNPAYWALL_EMAIL`. The manifest URL has no `email` query. If the variable
+   is unset, log this route with `error_category` `other` and do not call the
+   API. That row is not `not_found`.
+5. `pmc-oa-package@1` when the request has `archive_record` `pmcid:PMC` plus
+   digits, or when `openalex-oa@1` or `unpaywall-oa@1` in this run named a
+   PMCID. Read [the PMC Open Access package](references/pmc-oa.md). This is a
+   later route, not a backfill. Log it when you run it. A 0.2 manifest that
+   stored this host on `institutional-repository@1` stays as posted.
+6. `publisher-landing@1` when a DOI or a canonical URL is on the request.
+   `curl` the publisher landing page and its public download control.
+7. Site routes whose `order` falls here. Read the matching file in
    [references/](references/) before using them. Today that is
    [UNL bepress, ProQuest, and CORE](references/unl-proquest.md).
-7. `institutional-repository@1`. `curl` a repository record and its public file.
-8. `author-page@1`. `curl` an author or departmental manuscript page.
-9. `wayback-available@1` when an earlier curl route followed an open-access
-   link onto a redirect, an empty platform, or a page with no file. The
-   procedure is [Wayback fallback](#wayback-fallback). If no such link
-   appeared, log this route once with `error_category` `not_found` and say
-   that the availability API was not called. Do not invent a URL. If complete
-   bytes are already stored, skip this route and do not log it.
-10. `browser-download@1`, and any site browser route, only when a page you
+8. `institutional-repository@1` when a repository URL or an `archive_record`
+   is on the request. `curl` that record and its public file. A PMC Open
+   Access package is `pmc-oa-package@1`, not this route.
+9. `author-page@1`. The author string is on every request, so `requires_match`
+   is `always`. Log it as [Author page](#author-page) describes. If complete
+   bytes are already stored, skip it and do not log it.
+10. `wayback-available@1` when the request has a DOI or a URL. `requires_match`
+    is `any`: either scheme is enough, and both are not required. Call the
+    API only when an earlier curl route followed an open-access link onto a
+    redirect, an empty platform, or a page with no file. The procedure is
+    [Wayback fallback](#wayback-fallback). If no such link appeared, log this
+    route once with `error_category` `not_found` and say that the availability
+    API was not called. Do not invent a URL. If complete bytes are already
+    stored, skip this route and do not log it.
+11. `browser-download@1`, and any site browser route, only when a page you
    opened answered with a bot check, a cookie wall, or a challenge, and no
    route has obtained complete bytes. If no complete bytes were obtained and
    no such page remains, record the browser route once with `error_category`
@@ -212,8 +256,8 @@ signed URL, hash the bytes and record the stable id instead of the URL.
 A route may surface a DOI, arXiv id, or other stable id the request did not
 carry. Append it to `discovered_identifiers` with `scheme`, `value`, and the
 catalog `route` that surfaced it. That route must also be a row in
-`routes_tried`, because you ran it. On `manifest_version` `0.2` the array is
-required; use `[]` when nothing new appeared.
+`routes_tried`, because you ran it. On `manifest_version` `0.2` and `0.3` the
+array is required; use `[]` when nothing new appeared.
 
 Do not copy a discovered id into `document.stable_ids`. Do not run earlier
 routes that would have applied only if the request had carried that id. A DOI
@@ -224,6 +268,28 @@ After a route obtains complete bytes (`obtained_bytes` true and
 `error_category` null), do not download another copy. Log a later route only
 when you actually ran it, such as an identifier lookup that discovered a DOI.
 Do not log a route you skipped.
+
+## Author page
+
+`author-page@1` looks for a manuscript on a page the author or the department
+controls. It is not a second log of the publisher or repository route.
+
+Log one row when you run it:
+
+- `url` is the author page, lab page, or departmental page you opened. If no
+  such page exists, `url` is the search URL you actually requested.
+- `http_status` is the status of that page.
+- `obtained_bytes` is true only when the file from that page is the complete
+  work. `error_category` is then null.
+- `not_found` when the page has no manuscript of this work: citation only,
+  data or code only, a different work, or no page. The notes name which of
+  those you saw.
+- `restricted` when a manuscript link on that page is a login, a purchase, or
+  a campus-only wall. Name the wall.
+
+Do not point this row at a URL another route already logged unless that URL is
+the author or departmental page. Do not log the route after complete bytes are
+stored.
 
 ## Browser outcomes
 
@@ -284,6 +350,20 @@ Resume race, the same read-then-write shape:
 If this worker also has no browser, leave the handoff comment and
 `fetch-claimed`. Do not post a second handoff that drops the URLs.
 
+A handoff comment is immutable, so it stays on the issue after the file is
+fetched. The resume that finishes it posts a new comment. Start that comment
+with `<!-- fetch-browser-handoff-resolved: SESSION -->`, then the manifest
+marker. `SESSION` is the worker session named in the handoff. Do not edit the
+handoff comment.
+
+`open_handoff_sessions` is the list still waiting. A session leaves that list
+when a later comment has the resolved marker for that session, or when a later
+comment contains a fetch-manifest marker. A manifest posted on 2026-11-02
+after a handoff already resolves that handoff; do not edit those issues and
+do not add a marker after the fact. Resume only an open handoff on an issue
+whose only lifecycle label is `fetch-claimed`. A terminal label means the
+handoff is stale. Leave it.
+
 ```markdown
 <!-- fetch-browser-handoff -->
 
@@ -304,9 +384,17 @@ file against the request:
 - The title, author, and year on the first pages match the request. A different
   work with a similar title is `identity_mismatch`, not a success.
 - The file includes the body, references, and final pages. A title page, a
-  front-matter booklet, or a publisher preview is `preview_only` with
-  classification `front_matter_only` or `preview`. Keep that file's hash so it
-  is not later treated as the full text.
+  front-matter booklet, or a publisher preview that you saved is `preview_only`
+  with classification `front_matter_only` or `preview`. Keep that file's hash
+  so it is not later treated as the full text.
+- A preview you saw and did not save is not `preview_only`. There is no hash.
+  ProQuest's watermarked Document Preview is this case when the bytes were not
+  downloaded. Log that route with `error_category` `preview_only`,
+  `obtained_bytes` false, and notes that name what was shown and say the
+  preview was not saved (not saved, not downloaded, not stored, or no preview
+  hash). `artifact` is null. `completeness.classification` is `not_obtained`.
+  `completeness.preview` stays false: that flag means a stored preview file.
+  Outcome is `needs_human`.
 - A PDF header by itself is not completeness evidence. Write what you checked
   into `completeness.evidence`.
 
@@ -314,8 +402,8 @@ file against the request:
 is the number of Unicode code points in the extracted string. It is not the
 PDF size and not the UTF-8 byte length of a `.txt` file. Evidence that cites
 either number names the unit: `Unicode characters` or `bytes`. On
-`manifest_version` `0.2`, a number next to the wrong unit fails validation.
-A `0.1` manifest is not rejected for older wording.
+`manifest_version` `0.2` or `0.3`, a number next to the wrong unit fails
+validation. A `0.1` manifest is not rejected for older wording.
 
 `verified` requires one route with `obtained_bytes` true, `error_category`
 null, classification `complete_body`, and `identity_matched` true.
@@ -334,10 +422,19 @@ page count, or visibly the wrong glyphs, run `tesseract` on the pages.
   question count null. Do not use `unreadable` when OCR was not tried; use
   `needs_human`.
 
-Question screening stays with the research agent. Leave `question_screen.status`
-at `not_screened` or, when you only attach locator leads, `candidates_only`
-with `question_count` null. `screen_owner` is `research_agent`. Do not set
-`completed`.
+Question screening stays with the research agent. `screen_owner` is
+`research_agent`. Do not set `completed`.
+
+`not_screened` means the file can be screened and has not been. Use it only
+when the outcome is `verified` and the extraction is readable. Question count
+null, candidates empty. Locator leads on that file are `candidates_only`,
+still with question count null.
+
+`blocked` means a screen cannot be done from what this run obtained. Use it
+for `preview_only`, `restricted`, `transport_failure`, `needs_human`, and
+`not_found`, and for a verified file that is unreadable or partial. Question
+count null, candidates empty. A missing file is blocked. A verified readable
+file is not blocked.
 
 An equation the investigation will cite is not finished at `pdftotext`. Follow
 [Equations in the text layer](#equations-in-the-text-layer).
@@ -419,10 +516,46 @@ does not cover a route that was not opened.
 
 ## Post the manifest and relabel
 
-Validate the JSON, then comment. `manifest_version` is `0.2`. The marker id
-equals `manifest_id`. Do not edit the comment later. A correction is a new
+Validate the JSON, then comment. `manifest_version` is `0.3`. Versions `0.1`
+and `0.2` stay valid for comments already posted. Do not edit a comment to
+bump its version. The marker id equals `manifest_id`. A correction is a new
 comment whose `supersedes` names the previous id and which repeats earlier
 route rows unchanged, then appends new attempts.
+
+On `0.3`, every route has `attempted_by`. Use null when `producer` ran that
+attempt. When another worker session ran it, set `{"role": "retrieval_worker",
+"session": "SESSION"}`. `SESSION` is the opaque id from that run, not a product
+name. A browser resume copies the handoff rows and sets `attempted_by` on the
+rows the handoff session ran. The resume's own rows use null when the resume
+session is `producer.name`. Do not set `attempted_by.session` equal to
+`producer.name`.
+
+`campaign_id` is the investigation's spelling: two or more hyphen-separated
+segments of letters and digits. `unl-sem`, `L-F102-correlated-residuals`,
+`L-F91-c16-unrestricted-width`, and `UNL-SEM-2001` are all valid. Null when
+the request names no campaign. A `0.1` or `0.2` comment that stored null
+because the old all-caps pattern rejected the issue's campaign is not
+rewritten. `migrate_campaign_id(posted, issue_campaign)` is the id a new
+manifest stores.
+
+`requested_source_id` may be a DOI that contains parentheses, such as
+`10.1016/0095-8956(84)90023-6`. Scheme `other` is either `prefix:value` or a
+bare token with no colon, such as `UNL-SEM-D013`. A bare token does not need
+an invented prefix.
+
+When this comment finishes a browser handoff, the resolved marker comes first.
+When the outcome is `verified`, the ready marker comes before the manifest
+marker. The ready marker does not ingest the file. It tells the next reader
+why the label is `fetched`.
+
+```markdown
+<!-- fetch-browser-handoff-resolved: HANDOFF_SESSION -->
+<!-- fetch-ready-for-ingestion -->
+<!-- fetch-manifest: MANIFEST_ID -->
+```
+
+Omit the handoff marker when this run did not finish a handoff. Omit the
+ready marker unless the outcome is `verified`.
 
 `issue` names the repository, the issue number, and the issue URL. Omit
 `comment_url`. The comment URL does not exist until this comment is posted,
@@ -456,7 +589,21 @@ a `not_found` manifest that omits an applicable active route. Question count
 stays null.
 
 `producer.role` is `retrieval_worker`, and `issue` names the repository,
-number, and issue URL. `campaign_id` is null when the request has no campaign.
+number, and issue URL.
+
+## After fetched, stop
+
+`fetched` is the ingestion signal. There is no seventh lifecycle label. The
+worker does not copy the PDF into `local-extraction/`, does not write the
+question screen, does not open a pull request, and does not close the issue.
+
+The research agent lists open issues labeled `fetched`.
+`ingestion_ready` is true when that label is the only lifecycle label and the
+thread has no `<!-- fetch-ingestion-started: SESSION -->` marker and no
+`<!-- fetch-ingestion-merged: PR_URL -->` marker. The procedure from there is
+the queue skill's [Ingest a fetched paper](../document-acquisition-queue/SKILL.md#ingest-a-fetched-paper).
+A person or a timer may start that research block. Starting it is a deployment
+choice, the same way starting this worker is.
 
 ## Bounded retries
 
@@ -501,9 +648,10 @@ non-empty list.
 
 These six lifecycle names are the contract: `fetch-request`, `fetch-claimed`,
 `fetched`, `restricted`, `needs-human`, `not-found`. Exactly one is on the
-issue. Colors and descriptions are repository metadata. They already differ
-from any palette this skill used to suggest. Do not create labels, and do not
-change a color or a description.
+issue. `fetched` means the manifest is verified and ingestion is not yet
+merged. Do not add an ingestion label. Colors and descriptions are repository
+metadata. They already differ from any palette this skill used to suggest. Do
+not create labels, and do not change a color or a description.
 
 Check the names with the same authenticated transport:
 
