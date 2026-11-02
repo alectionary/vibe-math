@@ -89,6 +89,9 @@ def main():
                 r['proc'].terminate(); r['proc'].wait(); r['out'].close(); cleanup(r); del running[key]; continue
             if code is None:
                 continue
+            if stopping and code not in (10, 20):
+                # interrupted by Ctrl-C / SIGTERM: not a time limit, so record nothing
+                r['out'].close(); cleanup(r); del running[key]; continue
             r['out'].close(); n = state['nodes'][key]; secs = round(time.monotonic() - r['start'], 2)
             if r['phase'] == 'check':
                 text = Path(r['checklog']).read_text()
