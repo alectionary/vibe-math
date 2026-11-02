@@ -28,11 +28,11 @@ theorem gram_one_iff_sum_outer {n : ℕ} (X Z : Matrix (Fin n) (Fin n) K) :
     X * Zᵀ = 1 ↔ Xᵀ * Z = 1 := by
   constructor
   · intro h
-    have h2 : Zᵀ * X = 1 := Matrix.mul_eq_one_comm.mp h
+    have h2 : Zᵀ * X = 1 := mul_eq_one_comm.mp h
     simpa [Matrix.transpose_mul] using congrArg Matrix.transpose h2
   · intro h
-    have h2 : Z * Xᵀ = 1 := by simpa [Matrix.transpose_mul] using congrArg Matrix.transpose h
-    exact Matrix.mul_eq_one_comm.mp h2
+    have h2 : Zᵀ * X = 1 := by simpa [Matrix.transpose_mul] using congrArg Matrix.transpose h
+    exact mul_eq_one_comm.mp h2
 
 /-- If the Gram block of the chosen rows is a permutation matrix, re-pairing the `Z` rows by the
 permutation gives an identity Gram block (and hence a canonical frame by the previous lemma). -/
@@ -48,11 +48,12 @@ theorem frame_of_perm_block {n : ℕ} (X Z : Matrix (Fin n) (Fin n) K) (σ : Equ
 /-- An induced matching of size `m` (an `m × m` identity submatrix of `G`) has `m ≤ rank G`. -/
 theorem induced_matching_le_rank {m p q : ℕ} (G : Matrix (Fin p) (Fin q) K)
     (S : Fin m → Fin p) (T : Fin m → Fin q) (h : G.submatrix S T = 1) : m ≤ G.rank := by
-  let Rs : Matrix (Fin m) (Fin p) K := fun a i => if S a = i then 1 else 0
-  let Ct : Matrix (Fin q) (Fin m) K := fun j b => if T b = j then 1 else 0
+  let Rs : Matrix (Fin m) (Fin p) K := Matrix.of fun a i => if S a = i then 1 else 0
+  let Ct : Matrix (Fin q) (Fin m) K := Matrix.of fun j b => if T b = j then 1 else 0
   have hsub : Rs * G * Ct = G.submatrix S T := by
     ext a b
-    simp [Rs, Ct, Matrix.mul_apply, Finset.sum_ite_eq, Finset.sum_ite_eq']
+    simp only [Rs, Ct, Matrix.mul_apply, Matrix.of_apply, Matrix.submatrix_apply, ite_mul, one_mul,
+      zero_mul, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, ite_true]
   have h1 : (Rs * G * Ct).rank ≤ G.rank :=
     (Matrix.rank_mul_le_left _ _).trans (Matrix.rank_mul_le_right _ _)
   rw [hsub, h, Matrix.rank_one, Fintype.card_fin] at h1
@@ -71,7 +72,7 @@ end Reduction
 
 section Classes
 /-! Frames as vertex sets in the anticommutation graph, and the three involution classes. -/
-variable {ι K : Type*} [DecidableEq ι] [Zero K]
+variable {ι K : Type*} [Zero K]
 
 /-- `(S, T)` carries a frame of size `k`: every chosen X index has exactly one chosen Z
 neighbour and every chosen Z index exactly one chosen X neighbour. The matching is determined by
@@ -129,10 +130,11 @@ fixed iff `T = τ S`. -/
 theorem fixed_swapHalf_iff (τ : ι ≃ ι) (hτ : ∀ i, τ (τ i) = i) (S T : Finset ι) :
     ((T.map τ.toEmbedding, S.map τ.toEmbedding) = (S, T)) ↔ T = S.map τ.toEmbedding := by
   have hinv : ∀ U : Finset ι, (U.map τ.toEmbedding).map τ.toEmbedding = U := by
-    intro U; ext x; simp [Finset.mem_map, hτ]
-    constructor
-    · rintro ⟨a, ha, rfl⟩; simpa [hτ] using ha
-    · intro hx; exact ⟨τ x, by simpa [hτ] using hx, hτ x⟩
+    intro U
+    rw [Finset.map_map]
+    have : τ.toEmbedding.trans τ.toEmbedding = Function.Embedding.refl ι := by
+      ext i; simp [hτ]
+    rw [this, Finset.map_refl]
   constructor
   · intro h; exact ((Prod.mk.inj h).2).symm
   · intro h
@@ -175,7 +177,7 @@ theorem first_member_unique {α : Type*} {r : ℕ} (L : Fin r → α) (A : Set �
     apply Fin.ext
     apply le_antisymm
     · by_contra hlt
-      exact hwmin ⟨t, ht⟩ (lt_of_not_le hlt) hA
+      exact hwmin ⟨t, ht⟩ (not_le.mp hlt) hA
     · exact Nat.find_min' hex ⟨w.2, hwA⟩
 
 /-- Lemma (rank pruning): in a frame with Gram matrix `X Zᵀ = 1` on `Kⁿ`, the rows outside the
@@ -185,11 +187,11 @@ theorem remaining_card_le_finrank {K : Type*} [Field K] {n : ℕ} (X Z : Matrix 
     (h : X * Zᵀ = 1) (P : Finset (Fin n)) (X' : Set (Fin n → K))
     (hX' : ∀ i, i ∉ P → X i ∈ X') :
     n - P.card ≤ Module.finrank K (Submodule.span K X') := by
-  have hinv : IsUnit X.det := by
+  have hdet : X.det ≠ 0 := by
     have : X.det * Zᵀ.det = 1 := by rw [← Matrix.det_mul, h, Matrix.det_one]
-    exact isUnit_of_mul_eq_one _ _ this
+    exact left_ne_zero_of_mul_eq_one this
   have hli : LinearIndependent K (fun i => X i) :=
-    Matrix.linearIndependent_rows_of_det_ne_zero hinv.ne_zero
+    Matrix.linearIndependent_rows_of_det_ne_zero hdet
   let Q := {i : Fin n // i ∉ P}
   have hliQ : LinearIndependent K (fun q : Q => X q.1) := hli.comp _ Subtype.val_injective
   have hspan : Submodule.span K (Set.range fun q : Q => X q.1) ≤ Submodule.span K X' := by
