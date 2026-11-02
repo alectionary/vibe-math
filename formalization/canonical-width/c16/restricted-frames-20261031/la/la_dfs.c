@@ -70,6 +70,30 @@ static int pair_rank(const uint8_t *okx, const uint8_t *okz, int need) {
     return r;
 }
 
+
+static int use_coloops = 0;
+/* Groups that every basis drawn from the given vectors must use: a vector that is not in
+ * the span of the others (a coloop) lies in every basis. Writes up to 128 group ids. */
+static int coloop_groups(const uint8_t *ok, int G, const int *gv, const v128 *V, int *out) {
+    v128 piv[128], pexp[128]; uint8_t has[128] = {0}; int owner[128]; int nb = 0;
+    v128 used = {{0, 0}};
+    for (int a = 0; a < G; a++) if (ok[a]) for (int s = 0; s < g; s++) {
+        v128 v = V[gv[a * g + s]], e = {{0, 0}};
+        for (;;) {
+            if (vzero(v)) { used.w[0] |= e.w[0]; used.w[1] |= e.w[1]; break; }
+            int h = v.w[1] ? 64 + 63 - __builtin_clzll(v.w[1]) : 63 - __builtin_clzll(v.w[0]);
+            if (!has[h]) { has[h] = 1; piv[h] = v; e.w[nb >> 6] |= 1ULL << (nb & 63); pexp[h] = e; owner[nb++] = a; break; }
+            v = vxor(v, piv[h]); e = vxor(e, pexp[h]);
+        }
+    }
+    int n = 0;
+    for (int b = 0; b < nb; b++) if (!((used.w[b >> 6] >> (b & 63)) & 1)) {
+        int dup = 0; for (int u = 0; u < n; u++) if (out[u] == owner[b]) dup = 1;
+        if (!dup) out[n++] = owner[b];
+    }
+    return n;
+}
+
 static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, int depth, int need) {
     nodes[depth]++;
     if (time_limit && (nodes[depth] & 255) == 0 && time(NULL) - t0 > time_limit) { timed_out = 1; return; }
@@ -115,11 +139,24 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         }
     }
     if (best == 0) { prunes_empty[depth]++; return; }
-    /* children: live items with a 1 at (bc,bk) */
-    int *ch = malloc(sizeof(int) * best), nch = 0;
+    int forced_side = -1, forced_group = -1;
+    if (use_coloops) {
+        int cg[128], n;
+        n = coloop_groups(okx, GX, gxv, XV, cg);
+        for (int u = 0; u < n; u++) { int c = 0; for (int t = 0; t < nlive; t++) c += itx[live[t]] == cg[u];
+            if (c < best) { best = c; forced_side = 0; forced_group = cg[u]; } }
+        n = coloop_groups(okz, GZ, gzv, ZV, cg);
+        for (int u = 0; u < n; u++) { int c = 0; for (int t = 0; t < nlive; t++) c += itz[live[t]] == cg[u];
+            if (c < best) { best = c; forced_side = 1; forced_group = cg[u]; } }
+        if (best == 0) { prunes_empty[depth]++; return; }
+    }
+    /* children: live items with a 1 at (bc,bk), or the live items of a forced group */
+    int *ch = malloc(sizeof(int) * (best + 1)), nch = 0;
     for (int t = 0; t < nlive; t++) {
         int q = live[t], b = 0;
-        for (int s = 0; s < g; s++) b ^= bit(XV[ipx[q * g + s]], bc) & bit(ZV[ipz[q * g + s]], bk);
+        if (forced_side == 0) b = itx[q] == forced_group;
+        else if (forced_side == 1) b = itz[q] == forced_group;
+        else for (int s = 0; s < g; s++) b ^= bit(XV[ipx[q * g + s]], bc) & bit(ZV[ipz[q * g + s]], bk);
         if (b) ch[nch++] = q;
     }
     if (knuth) { kprod *= nch; kest += kprod; int u = xr() % nch; int keep = ch[u]; free(ch); ch = malloc(sizeof(int)); ch[0] = keep; nch = 1; }
@@ -156,6 +193,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "-t")) time_limit = atoll(argv[++a]);
         else if (!strcmp(argv[a], "-o")) out = argv[++a];
         else if (!strcmp(argv[a], "-k")) knuth = atoi(argv[++a]);
+        else if (!strcmp(argv[a], "-c")) use_coloops = 1;
         else if (!strcmp(argv[a], "-r")) rng ^= strtoull(argv[++a], 0, 10) * 0x9E3779B97F4A7C15ULL;
         else in = argv[a];
     }
