@@ -29,8 +29,20 @@
   ],
   "not_formalized": [
     "look-ahead lemma: the final iff step (both spans full <=> pairing rank full) is a one-line argument from finrank_inf_perp_add and perfect_inf_perp, not stated separately",
-    "bridge from the concrete pools/instances to these abstract statements",
     "the exhaustive computations",
-    "Theorem (symmetry group, order 32)"
-  ]
+    "Theorem (symmetry group, order 32)",
+    "bridge from the code C^LP_16,9 (equation (50)) to the pools: completeness of the weight-16 pool enumeration"
+  ],
+  "pool_bridge": {
+    "file": "Pools.lean",
+    "sha256": "bb00a8415568e2a9c5f9790d012a67e1771e7b89e00046687ff7eee0875c2365",
+    "data_file": "PoolData.lean",
+    "data_sha256": "0a7899a231fcd00259d2217cbdb207c6b0aec0074525c1dd9d5a30cec69e0901",
+    "data_generator": "gen_pool_data.py (records pools/xcoords.txt and pools/zcoords.txt SHA-256 in the PoolData.lean header)",
+    "check": "lean --root=lean -o Pools.olean Pools.lean with Mathlib 5f7b4198 on LEAN_PATH; 0 errors; ~19 min",
+    "axioms": {
+      "pool_matching_le_128": "standard only (propext, Classical.choice, Quot.sound)",
+      "X_rot, Z_rot, G_symm, G_rot, rotEquiv, tau8, frame_rot, frame_swap, fixed_sT8_iff": "standard plus native_decide auxiliary axioms (trusts the Lean compiler via Lean.ofReduceBool)"
+    }
+  }
 }
