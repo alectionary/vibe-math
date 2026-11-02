@@ -255,3 +255,44 @@ byte for byte (`dc2b1d0d…`).
 - Of these 30, 23 have 4 or fewer ones (the expected hard type), against about 160 under the original order.
 
 The 30 are now solved whole. Tree: `work/cnc-o12/state.json`, with `C16_CNC=o12`.
+
+**Correction (22:00, 1 November): fewer pieces, not much less work.** The first
+o12 pieces with 5 ones took 2,412–3,142 s each (#266, #268, #274). Their old-order
+counterparts took 5–12 minutes, and each new piece covers 8 old ones. So a new
+piece costs about the sum of its 8 rotated copies. The old orbit-0-first
+lexicographic order was already removing that symmetry, spread across orbits. The
+gain is about 1.3×, not 8×. Expect the 23 hard pieces to take several hours each.
+Estimate: 1.5–2 days on 5 cores for the search pass.
+
+## How to resume the half-turn run (state at 22:30, 1 November)
+
+Machine: a 6-core Mac running natively. A cloud session's job cap (about 2 h) is too short
+for these pieces. Files are all under `restricted-frames-20261031/`.
+
+- **Input:** `work/o12/o12.cnf`. Regenerate it with
+  `PYTHONPATH=pysat_shim python3 subgroup_frame_o12.py work/o12/o12.cnf` and check
+  the SHA-256 `470ce05d…48211`.
+- **Tree:** `work/cnc-o12/state.json`. It is the only state; it is written after every
+  piece and is safe to kill at any time. A snapshot is in `results/cnc-o12-state-*.json.gz`.
+- **Search pass (no proofs):**
+  ```
+  C16_CNC=o12 python3 cnc_parallel.py --kissat K --drat-trim D --jobs 5 \
+      --mode search --whole-depth 8 --cube-seconds 200000
+  ```
+  On the Mac: `C16_CNC=o12 bash run-mac.sh 5 --whole-depth 8 --cube-seconds 200000`.
+  This builds Kissat and drat-trim from `src/` on first use.
+- **Statuses:**
+  - `UNSAT_UNPROVED`: closed, but no proof yet.
+  - `UNSAT_CHECKED`: closed with a drat-trim-verified proof.
+  - `whole_timeout`: set aside after hitting the limit.
+  - `SAT`: decoded and checked as 128 pool pairs in `witness.json`; then run the repo's physical verification chain.
+- **Certify afterwards:**
+  `C16_CNC=o12 python3 cnc_parallel.py ... --mode certify`. It re-solves each
+  `UNSAT_UNPROVED` leaf with a DRAT proof and checks it. Allow about 2.7× the solve time for checking,
+  and about 250 MB of proof per piece while it is checked.
+- **Superseded:** the old-order tree `work/cnc/state.json`
+  (snapshot `results/cnc-state-mac-20261101.json.gz`). It used the same base problem with a different
+  symmetry order, so its leaves must not be mixed with the o12 tree.
+- **Tools:** `cnc.py` (tree, decoding, serial driver), `cnc_parallel.py` (parallel
+  driver), `cardtest.py` (count-split probe), `cloudhard.py` (whole-piece helper),
+  `check_o12_symmetry.py` (symmetry check), `run-mac.sh` (macOS launcher).
