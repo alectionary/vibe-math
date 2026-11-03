@@ -1,11 +1,11 @@
 {
-  "writer": "research session",
-  "context": "shared",
-  "packet_sha256": "b0383a53b3086c6c6876c030e600c5af1a6ef231745206ce48d35c8db76ec1a3",
+  "writer": "isolated writer",
+  "context": "fresh",
+  "packet_sha256": "451702d3adfb7bee7647b44749e753d7f821cd43a642814e92f9586f9df5fe06",
   "inputs": [
     {
       "path": "evidence-packet.json",
-      "sha256": "b0383a53b3086c6c6876c030e600c5af1a6ef231745206ce48d35c8db76ec1a3"
+      "sha256": "451702d3adfb7bee7647b44749e753d7f821cd43a642814e92f9586f9df5fe06"
     },
     {
       "path": "paper/approved-preamble.tex",
@@ -16,57 +16,70 @@
       "sha256": "25107956679901b175d7620f7dbeb85d0ec6cddcf67cdae378aedcf733c02251"
     },
     {
+      "path": "simulation/results/bern_inf_05_5.csv",
+      "sha256": "e3c8ab4a159d09f639f06a78fcca0cc591c05a5c4cfaff24e9d06f1ab6f99fa8"
+    },
+    {
+      "path": "simulation/results/rc_inf_05_5.csv",
+      "sha256": "cec075ee807e5f4885247515db012e1d382a6f4a89cb82fa9b4ef289d00250e6"
+    },
+    {
+      "path": "simulation/results/coverage_scaling.csv",
+      "sha256": "df0c5de13a360deb040dfe9628d500e5deaf7111b6b8d6b64cd81b34b549884b"
+    },
+    {
       "path": "notes/availability.md",
       "sha256": "ae216cd3ea07853ad3c0d831f39ba6f99971f03d6179108d898c8221c3d31331"
     },
     {
-      "path": "simulation/results/cell_01.csv",
-      "sha256": "dee4747fa6665f045fe70f06c7267262bad3c0628271a4dd0792f5a9b383045f"
+      "path": "notes/mplus-search.md",
+      "sha256": "55a693ce37d564ebbdc5a48c712255bee056fa96b25ef93e0f3808537a43b37c"
     }
   ],
   "claim_map": {
-    "C1": "page 1 table and section What the normal random-intercept grid shows",
-    "C2": "page 1 approximate-weight row and section What the normal random-intercept grid shows",
-    "C3": "page 1 coverage row and Table of coverage",
-    "C4": "page 1 Bernoulli row and section What remains unresolved",
-    "C5": "section What the normal random-intercept grid shows, non-informative rows",
-    "C6": "section What we did ourselves, design moments",
-    "C7": "section What remains unresolved",
-    "C8": "coverage table, cluster size 20, intraclass correlation .05"
+    "C1": "page 1 normal intercept row",
+    "C2": "page 1 approximate-weight intercept row",
+    "C3": "page 1 coverage row",
+    "C4": "page 1 Bernoulli threshold row",
+    "C5": "section on the normal grid, non-informative cells",
+    "C6": "design-moment paragraph",
+    "C7": "page 1 random-coefficient slope row",
+    "C8": "coverage-scaling section"
   },
   "limitations_map": {
-    "0": "page 1 Bernoulli row and the abstract limit sentence",
-    "1": "section What remains unresolved, random-coefficient paragraph",
-    "2": "page 1 contrast 0.152 against 0.151 and the comparison table",
-    "3": "coverage table and the comparison table row for cluster size 20",
-    "4": "section Code and source availability and notes/availability.md"
+    "0": "abstract limit sentence and Bernoulli section",
+    "1": "random-coefficient section and unresolved section",
+    "2": "page 1 normal contrast 0.152 against 0.151",
+    "3": "abstract coverage sentence 0.252 against 0.282",
+    "4": "code-availability section and notes/mplus-search.md"
   },
   "first_page": {
     "abstract": {
       "bbox": [
         70,
-        270,
+        250,
         540,
-        465
+        395
       ],
       "citation_key": "koziol2015",
       "source_identification": "Koziol (2015)",
       "source_citation": "Koziol, 2015",
       "original_finding": "weighted single-level estimators tended to outperform weighted multilevel estimators",
-      "verdict_evidence": "We partly replicated the headline result of Koziol",
+      "verdict_evidence": "We replicated the headline result of Koziol",
       "claim_ids": [
         "C1",
         "C2",
         "C3",
-        "C4"
+        "C4",
+        "C7"
       ]
     },
     "table": {
       "bbox": [
         55,
-        470,
+        400,
         560,
-        710
+        620
       ],
       "magnitude_heading": "Effect magnitude",
       "comparison_note": "Descriptive point estimates; not equivalence.",
@@ -74,50 +87,62 @@
         {
           "effect_id": "E1",
           "bbox": [
-            60,
-            496,
-            545,
-            532
+            98,
+            490,
+            540,
+            504
           ],
-          "estimand_text": "Multilevel minus single-level intercept bias",
-          "tolerance_text": "tolerance 0.001",
+          "estimand_text": "Normal wtm minus ws intercept",
+          "tolerance_text": "is 0.001",
           "units_text": "outcome units"
         },
         {
           "effect_id": "E2",
           "bbox": [
-            60,
-            533,
-            545,
-            580
+            98,
+            504,
+            540,
+            517
           ],
-          "estimand_text": "Approximate-weight minus trueweight multilevel intercept bias",
-          "tolerance_text": "tolerance 0.001",
+          "estimand_text": "Approx. minus true intercept",
+          "tolerance_text": "is 0.001",
+          "units_text": "outcome units"
+        },
+        {
+          "effect_id": "E4",
+          "bbox": [
+            98,
+            517,
+            540,
+            530
+          ],
+          "estimand_text": "Bernoulli wtm minus ws threshold",
+          "tolerance_text": "is 0.001",
+          "units_text": "probit threshold units"
+        },
+        {
+          "effect_id": "E5",
+          "bbox": [
+            98,
+            530,
+            540,
+            542.5
+          ],
+          "estimand_text": "RC slope, approx. minus true",
+          "tolerance_text": "is 0.001",
           "units_text": "outcome units"
         },
         {
           "effect_id": "E3",
           "bbox": [
-            60,
-            581,
-            545,
-            617
+            98,
+            542.5,
+            540,
+            555
           ],
-          "estimand_text": "Single-level minus multilevel intercept coverage",
-          "tolerance_text": "tolerance 0.001",
+          "estimand_text": "Normal ws minus wtm coverage",
+          "tolerance_text": "is 0.001",
           "units_text": "proportion"
-        },
-        {
-          "effect_id": "E4",
-          "bbox": [
-            60,
-            618,
-            555,
-            656
-          ],
-          "estimand_text": "Bernoulli informative intercept bias",
-          "tolerance_text": "tolerance 0.001",
-          "units_text": "probit units"
         }
       ]
     }

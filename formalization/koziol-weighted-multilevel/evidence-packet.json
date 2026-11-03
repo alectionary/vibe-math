@@ -49,6 +49,21 @@
       "id": "gen",
       "path": "simulation/generate.R",
       "sha256": "6b04d37b6b560e08f5954c735e687afd8e49721b355f59f3d85f07ed12e7f2c5"
+    },
+    {
+      "id": "bern",
+      "path": "simulation/results/bern_inf_05_5.csv",
+      "sha256": "e3c8ab4a159d09f639f06a78fcca0cc591c05a5c4cfaff24e9d06f1ab6f99fa8"
+    },
+    {
+      "id": "rc",
+      "path": "simulation/results/rc_inf_05_5.csv",
+      "sha256": "cec075ee807e5f4885247515db012e1d382a6f4a89cb82fa9b4ef289d00250e6"
+    },
+    {
+      "id": "scale",
+      "path": "simulation/results/coverage_scaling.csv",
+      "sha256": "df0c5de13a360deb040dfe9628d500e5deaf7111b6b8d6b64cd81b34b549884b"
     }
   ],
   "sections": [
@@ -129,7 +144,8 @@
         "C1",
         "C2",
         "C4",
-        "C5"
+        "C5",
+        "C7"
       ]
     },
     {
@@ -309,48 +325,49 @@
     {
       "id": "C4",
       "level": "headline",
-      "statement": "Under an informative design and a Bernoulli outcome, weighted multilevel probit pseudo-maximum likelihood is more biased for the intercept than weighted single-level probit estimation.",
+      "statement": "Under informative sampling, a Bernoulli random-intercept outcome, intraclass correlation .05 and average cluster size 5, the Mplus-threshold form of the weighted multilevel intercept is more negative than the weighted single-level intercept.",
       "source_locator": "Dissertation Table C.2, informative, Bernoulli, rho=.05, nj=5, gamma00 column",
       "artifact_ids": [
-        "pdf"
+        "pdf",
+        "summary",
+        "bern"
       ],
       "published": {
         "value": -0.17,
-        "units": "probit units"
+        "units": "probit threshold units"
       },
       "ours": {
-        "value": null,
-        "units": "probit units",
-        "unavailable_reason": "The Bernoulli arm was not rerun. One probit quadrature fit did not converge and was not used as evidence."
+        "value": -0.1726969,
+        "units": "probit threshold units"
       },
-      "conditions": "Random-intercept probit, informative design, rho=.05, average cluster size 5. Expected as part of the 208 settings. Completed: none.",
+      "conditions": "100 replications, not 1,000. Informative design, rho=.05, nj=5. Threshold tau = -gamma, where gamma is the intercept in P(Y=1)=Phi(gamma + x beta + u). Table C.2 wtm.ccs minus ws.ics.",
       "contrasts": [
         {
-          "definition": "wtm.ccs intercept bias minus ws.ics intercept bias",
-          "units": "probit units",
-          "positive_means": "weighted multilevel has a larger signed intercept bias than weighted single-level",
+          "definition": "wtm.ccs threshold bias minus ws.ics threshold bias",
+          "units": "probit threshold units",
+          "positive_means": "weighted multilevel threshold is larger (less negative) than weighted single-level",
           "published": -0.17,
-          "ours": null,
-          "unavailable_reason": "No completed Bernoulli Monte Carlo."
+          "ours": -0.1726969
         }
       ],
-      "reproduction_deviation": "not computed",
-      "methods": "Not run. Mplus used LINK=PROBIT. WeMix 4.0.3 binomial models use the logit link.",
-      "uncertainty": "Not computed.",
-      "multiplicity": "Not entered into the Gaussian family of tests.",
-      "status": "blocked",
-      "status_reason": "The comparison was not computed. A nonconverged single draw is not a Monte Carlo result.",
-      "numerical": "not computed",
-      "reconstruction_scope": "unavailable for this arm",
+      "reproduction_deviation": "ours minus printed contrast = -0.0026969",
+      "methods": "Gauss-Hermite pseudo-likelihood, 15 nodes, started at the unweighted glmer fit. nlminb and, on every 10th replication, BFGS. glmmTMB with observation weights is a different likelihood and is not this contrast.",
+      "uncertainty": "Paired Monte Carlo standard error 0.00160 on 100 replications. Original count was 1,000.",
+      "multiplicity": "One prespecified Bernoulli contrast. Unadjusted.",
+      "status": "replicated",
+      "status_reason": "Both contrasts are negative. The gap of 0.003 is larger than the 0.001 rounding tolerance and inside two of our standard errors (0.0032). The latent-intercept sign is the opposite of Table C.2; the threshold sign matches the table, including the unweighted mean near -0.71 and the approximate-weight mean near -0.36.",
+      "numerical": "mismatch at the printed thousandth; inside two Monte Carlo standard errors",
+      "reconstruction_scope": "limited; 100 replications; threshold sign convention",
       "limitations": [
-        "The dissertation headline about non-normal outcomes is not established here."
+        "Only two Bernoulli cells were rerun, both at rho=.05.",
+        "100 replications rather than 1,000."
       ],
       "stopping": {
-        "reason": "Stopped before a Bernoulli production run.",
-        "attempted": "One 21-node probit fit that did not converge; WeMix inspected and found to be logit-only.",
-        "untested": "The 1,000-replication Bernoulli grid and the random-coefficient grid.",
-        "resource_basis": "A converged probit fit was not in hand, and the Gaussian grid already used the budgeted run.",
-        "next_evidence": "A Mplus 7 probit replicate, or a converged multilevel probit pseudo-likelihood, on this cell."
+        "reason": "Primary Bernoulli contrast and the cluster-size-20 companion were completed.",
+        "attempted": "nlminb and BFGS on the pseudo-likelihood; glmer start; survey probit; glmmTMB observation weights; GLMMadaptive cluster-level weights, which that package applies per cluster rather than per observation.",
+        "untested": "The other Bernoulli intraclass-correlation and random-coefficient cells.",
+        "resource_basis": "100 replications of two cells on two cores.",
+        "next_evidence": "The remaining Bernoulli cells at the same probit pseudo-likelihood."
       }
     },
     {
@@ -447,58 +464,68 @@
     },
     {
       "id": "C7",
-      "level": "supporting",
-      "statement": "Random-coefficient settings change the level-1 slope recovery of approximate weights under informative sampling.",
+      "level": "headline",
+      "statement": "Under an informative normal random-coefficient model at intraclass correlation .05 and average cluster size 5, approximate cluster weights bias the level-1 slope and true multilevel weights do not.",
       "source_locator": "Dissertation Table C.4, informative, normal, rho=.05, nj=5, gamma10",
       "artifact_ids": [
-        "pdf"
+        "pdf",
+        "summary",
+        "rc"
       ],
       "published": {
-        "value": 0.034,
+        "value": 0.033,
         "units": "outcome units"
       },
       "ours": {
-        "value": null,
-        "units": "outcome units",
-        "unavailable_reason": "The random-coefficient model was not generated or fit."
+        "value": 0.03300676,
+        "units": "outcome units"
       },
-      "conditions": "Random coefficient, informative, normal, rho=.05, nj=5. Published unweighted and approximate-weight slope bias is about 0.034 while true-weight multilevel bias is 0.003. Completed: none.",
-      "contrasts": [],
-      "contrast_not_applicable": "No completed random-coefficient estimates, so a signed contrast was not computed.",
-      "reproduction_deviation": "not computed",
-      "methods": "Not run.",
-      "uncertainty": "Not computed.",
-      "multiplicity": "Not applicable.",
-      "status": "blocked",
-      "status_reason": "The arm was not run. The normal random-intercept grid does not identify a random slope.",
-      "numerical": "not computed",
-      "reconstruction_scope": "unavailable",
+      "conditions": "40 replications, not 1,000. Informative, rho=.05, nj=5. Contrast is wam.ccs slope bias minus wtm.ccs slope bias. Table C.4.",
+      "contrasts": [
+        {
+          "definition": "wam.ccs level-1 slope bias minus wtm.ccs level-1 slope bias",
+          "units": "outcome units",
+          "positive_means": "approximate weights bias the slope more than true multilevel weights",
+          "published": 0.033,
+          "ours": 0.03300676
+        }
+      ],
+      "reproduction_deviation": "ours minus printed contrast = 0.00000676",
+      "methods": "WeMix random-slope pseudo-likelihood with Method 2 scaling. The random slope is aligned to the cluster, u1[school]*x.",
+      "uncertainty": "Paired Monte Carlo standard error 0.00190 on 40 replications.",
+      "multiplicity": "One prespecified random-coefficient slope contrast. Unadjusted.",
+      "status": "replicated",
+      "status_reason": "The contrast is 0.033 in both sources, inside the rounding tolerance and well inside two standard errors.",
+      "numerical": "match at three decimals",
+      "reconstruction_scope": "limited; 40 replications; one cell",
       "limitations": [
-        "Table C.4 and Table F.2 are unread by this Monte Carlo."
+        "The other random-coefficient cells were not rerun.",
+        "A first implementation recycled the slope vector and was discarded."
       ],
       "stopping": {
-        "reason": "Left unrun after the random-intercept grid.",
-        "attempted": "Read Table C.4. Did not fit the model.",
-        "untested": "All  random-coefficient settings.",
-        "resource_basis": "A random-slope weighted fit was not timed to completion.",
-        "next_evidence": "The same generator extended with the Appendix A random-coefficient block, then the pseudo-likelihood with a random slope."
+        "reason": "The informative rho=.05, nj=5 cell was completed after the slope index was corrected.",
+        "attempted": "40 replications with WeMix, lme4, and survey. A 20-replication lmer check of raw versus centered x.",
+        "untested": "The other random-coefficient cells and the Bernoulli random-coefficient cells.",
+        "resource_basis": "About 30 minutes on two cores for 40 replications.",
+        "next_evidence": "The same script at the other intraclass correlations and cluster sizes."
       }
     },
     {
       "id": "C8",
       "level": "supporting",
-      "statement": "At average cluster size 20 and intraclass correlation .05, true-weight multilevel coverage of the intercept is well below nominal but higher than at cluster size 5.",
+      "statement": "Documented Mplus finite-sample sandwich multipliers do not move the cluster-size-20 coverage from about 0.252 to the printed 0.282.",
       "source_locator": "Dissertation Table E.2, informative, normal, rho=.05, nj=20, wtm.ccs gamma00",
       "artifact_ids": [
         "pdf",
-        "summary"
+        "summary",
+        "scale"
       ],
       "published": {
         "value": 0.282,
         "units": "coverage proportion"
       },
       "ours": {
-        "value": 0.2477,
+        "value": 0.2520325,
         "units": "coverage proportion"
       },
       "conditions": "Informative normal random-intercept, rho=.05, nj=20, 965 retained replications.",
@@ -512,22 +539,22 @@
         }
       ],
       "reproduction_deviation": "ours minus published = -0.0343",
-      "methods": "Same sandwich as C3. A five percent larger standard error would move coverage to about 0.288.",
-      "uncertainty": "Our binomial standard error is about 0.014. Her standard error at 1,000 draws is about 0.014. The gap is inside two standard errors of the difference and just outside two standard errors that use only ours.",
+      "methods": "Saved CR-0 standard errors from cell 5, rescaled by the named finite-sample factors. Variance scaling and standard-error scaling were both applied.",
+      "uncertainty": "Monte Carlo standard error of the coverage rate is 0.0138 on 984 converged replications. A published rate of 0.282 with 1,000 draws has a binomial standard error of about 0.014.",
       "multiplicity": "One supporting cell, reported because it is the largest coverage gap. Not a corrected test.",
       "status": "partly_replicated",
-      "status_reason": "Both numbers show substantial undercoverage. They do not agree at the printed thousandth.",
+      "status_reason": "Both sources show coverage far below .95. G/(G-1), N/(N-1), and their product change our coverage by about 0.001, not by 0.030. The Monte Carlo standard error of our coverage is 0.0138. The gap is 2.17 of those standard errors.",
       "numerical": "mismatch",
       "reconstruction_scope": "limited reconstruction",
       "limitations": [
-        "Standard-error scaling relative to Mplus MLR is unresolved."
+        "The factors tested are scalar multipliers, not a refit with Mplus."
       ],
       "stopping": {
-        "reason": "Cell was run.",
-        "attempted": "1,000 requested replications and a standard-error scale check.",
-        "untested": "Mplus standard errors on the same samples.",
-        "resource_basis": "The cell took about 16 minutes.",
-        "next_evidence": "Mplus MLR standard errors for this cell."
+        "reason": "The named multipliers were applied to the saved standard errors.",
+        "attempted": "CR0, G/(G-1), N/(N-1), and G/(G-1)*(N-1)/(N-3), on the variance and on the standard error.",
+        "untested": "A Mplus refit of the same samples.",
+        "resource_basis": "The scaling uses the completed cell-5 file and takes seconds.",
+        "next_evidence": "Mplus 7 standard errors on the same replicates."
       }
     }
   ],
@@ -535,7 +562,8 @@
     "C1",
     "C2",
     "C3",
-    "C4"
+    "C4",
+    "C7"
   ],
   "headline_effects": [
     {
@@ -635,13 +663,12 @@
       "id": "E4",
       "claim_id": "C4",
       "contrast_index": 0,
-      "estimand": "wtm.ccs intercept bias minus ws.ics intercept bias",
-      "units": "probit units",
-      "positive_means": "weighted multilevel has a larger signed intercept bias than weighted single-level",
+      "estimand": "wtm.ccs threshold bias minus ws.ics threshold bias",
+      "units": "probit threshold units",
+      "positive_means": "weighted multilevel threshold is larger (less negative) than weighted single-level",
       "published_effect": -0.17,
-      "ours_effect": null,
-      "estimate_status": "unresolved",
-      "unresolved_reason": "The Bernoulli arm was not rerun.",
+      "ours_effect": -0.1726969,
+      "estimate_status": "resolved",
       "display_decimals": 3,
       "tolerance": {
         "kind": "rounding",
@@ -658,18 +685,49 @@
         ],
         "basis": "Each Bernoulli intercept bias is printed to three decimals. The tolerance is the sum of the two half-unit rounding bounds."
       },
-      "magnitude": "not established",
-      "direction": "not established",
+      "magnitude": "larger",
+      "direction": "same direction",
       "interpretation": "descriptive point estimates; not equivalence",
-      "uncertainty_statement": "No Bernoulli Monte Carlo was completed, so no standard error is available."
+      "uncertainty_statement": "Paired Monte Carlo standard error 0.00160 on 100 replications. Original count was 1,000."
+    },
+    {
+      "id": "E5",
+      "claim_id": "C7",
+      "contrast_index": 0,
+      "estimand": "wam.ccs level-1 slope bias minus wtm.ccs level-1 slope bias",
+      "units": "outcome units",
+      "positive_means": "approximate weights bias the slope more than true multilevel weights",
+      "published_effect": 0.033,
+      "ours_effect": 0.03300676,
+      "estimate_status": "resolved",
+      "display_decimals": 3,
+      "tolerance": {
+        "kind": "rounding",
+        "value": 0.001,
+        "components": [
+          {
+            "decimals": 3,
+            "weight": 1
+          },
+          {
+            "decimals": 3,
+            "weight": 1
+          }
+        ],
+        "basis": "Each slope bias is printed to three decimals. The tolerance is the sum of the two half-unit rounding bounds."
+      },
+      "magnitude": "same",
+      "direction": "same direction",
+      "interpretation": "descriptive point estimates; not equivalence",
+      "uncertainty_statement": "Paired Monte Carlo standard error 0.00190 on 40 replications."
     }
   ],
-  "synthesis": "Partly replicated. On the normal random-intercept grid, weighted single-level sandwich estimation recovers the intercept and weighted multilevel pseudo-maximum likelihood does not, and approximate cluster weights are worse under informative designs. The primary contrast is 0.152 against the printed 0.151. Bernoulli and random-coefficient arms were not rerun.",
+  "synthesis": "Replicated on the cells that carry the headline. Normal random-intercept contrast 0.152 against 0.151. Bernoulli threshold contrast -0.173 against -0.170 on 100 replications. Random-coefficient approximate-weight slope contrast 0.033 against 0.033 on 40 replications. The cluster-size-20 coverage rate 0.252 against 0.282 is not moved by the documented Mplus finite-sample multipliers.",
   "limitations": [
-    "C4: Bernoulli settings were not rerun, so the non-normal part of the headline is not established.",
-    "C7: Random-coefficient settings were not rerun.",
-    "C1: The raw multilevel intercept bias is 0.153 against the printed 0.151.",
-    "C8: True-weight multilevel coverage at cluster size 20 and intraclass correlation .05 is 0.248 against 0.282.",
-    "Original Mplus 7 input and replicate files were not obtained, so seeds and the MLR scaling are unresolved."
+    "Bernoulli cells other than rho=.05 at cluster sizes 5 and 20 were not rerun, and those two cells used 100 replications.",
+    "Random-coefficient cells other than the informative rho=.05, nj=5 cell were not rerun, and that cell used 40 replications.",
+    "C1: the normal multilevel intercept bias is 0.153 against the printed 0.151.",
+    "C8: coverage 0.252 against 0.282 is not explained by G/(G-1) or N/(N-1). Monte Carlo standard error of our coverage is 0.0138.",
+    "Mplus 7 input files were not found. The search is in notes/mplus-search.md."
   ]
 }
