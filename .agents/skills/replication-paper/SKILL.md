@@ -115,6 +115,7 @@ equations, and appendix tables, are hints only.
 - [ ] Optional caption hints were reviewed.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
+- [ ] Page 1 was compared visually with a reference paper that uses the shared approved preamble (for example the Kupzyk replication). The geometry check only measures the text block, title, and abstract inset.
 
 ## 1. Research and evidence handoff
 

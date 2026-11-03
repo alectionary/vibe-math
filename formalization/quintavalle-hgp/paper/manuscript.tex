@@ -1,31 +1,15 @@
-\RequirePackage{fix-cm}
-% Layout extracted from Kupzyk report at ca1d062; retain a descriptive title.
-\documentclass[11pt]{article}
-\usepackage[letterpaper,margin=0.82in]{geometry}
-\usepackage{booktabs,longtable,array,graphicx,amsmath,xcolor,hyperref,xurl}
-\usepackage[authoryear,round]{natbib}
-\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=blue}
-\renewcommand{\arraystretch}{1.25}
-\setlength{\emergencystretch}{1em}
-\setlength{\parskip}{5pt}\setlength{\parindent}{0pt}
-% Use scalable fonts; inspect pdffonts output after building. Avoid adding T1
-% fontenc without an installed scalable font family. Add title/date in manuscript.
-
-\usepackage{microtype}
+\input{../../../.agents/skills/replication-paper/assets/approved-preamble.tex}
 \newcommand{\cell}[1]{\raggedright\arraybackslash #1}
+\title{A finite audit of hypergraph-product codes:\\supporting checks and unresolved dissertation findings}
+\date{3 November 2026}
 \begin{document}
-\newgeometry{margin=0.55in}
-\begingroup
-\setlength{\parskip}{3pt}
-{\Large\bfseries A finite audit of hypergraph-product codes:\\supporting checks and unresolved dissertation findings\par}
-\vspace{3pt}
+\maketitle\vspace{-2em}
 \begin{abstract}
-\noindent We could not establish the full dissertation findings of \citet{quintavalle2022}, who reported oracle-assisted decoding guarantees, logical gate constructions, and confinement-based single-shot correction. We completed 0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-product performance analyses. Finite support includes 1,061 guaranteed-range phase-error checks, 256 seed pairs, 19 matrix comparisons, 560,000 reconstructed trials and 80,000 original-software diagnostic trials. The thesis text was read and the rendered headline pages were inspected; finite tests do not prove universal results.
+We could not establish the full dissertation findings of \citet{quintavalle2022}, who reported oracle-assisted decoding guarantees, logical gate constructions, and confinement-based single-shot correction. We completed 0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-product performance analyses. Finite support includes 1,061 guaranteed-range phase-error checks, 256 seed pairs, 19 matrix comparisons, 560,000 reconstructed trials and 80,000 original-software diagnostic trials. The thesis text was read and the rendered headline pages were inspected; finite tests do not prove universal results.
 \end{abstract}
-\vspace{-5pt}
-{\fontsize{9.5}{10.5}\selectfont
-\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.08}
-\begin{tabular}{@{}p{61pt}p{139pt}p{139pt}p{59pt}p{52pt}p{45pt}@{}}
+\begin{center}\scriptsize
+\setlength{\tabcolsep}{1.6pt}\renewcommand{\arraystretch}{1.02}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.26\linewidth}>{\raggedright\arraybackslash}p{0.11\linewidth}>{\raggedright\arraybackslash}p{0.11\linewidth}>{\raggedright\arraybackslash}p{0.08\linewidth}@{}}
 \toprule
 Claim & Published & Ours & \cell{Effect\par magnitude} & Direction & Verdict\\\midrule
 \cell{ReShape guarantee\par Non-scalar} & \cell{Corrects errors through (d-1)/2 using classical oracles.} & \cell{1,061 phase-error checks pass; no general proof.} & \cell{not established} & \cell{not established} & \cell{partial}\\[2pt]
@@ -43,14 +27,15 @@ Claim & Published & Ours & \cell{Effect\par magnitude} & Direction & Verdict\\\m
 \cell{Random products\par Non-scalar} & \cell{Three random codes; crossing near 2.7\% at N=16.} & \cell{0 of 3 performance analyses; original seeds not recovered.} & \cell{not established} & \cell{not established} & \cell{unassessed}\\[2pt]
 \cell{Open problems\par Non-scalar} & \cell{Full gate framework open; general-confinement stochastic threshold conjectured.} & \cell{No architecture or conjecture demonstration attempted.} & \cell{not established} & \cell{not established} & \cell{unassessed}\\[2pt]
 \bottomrule
-\end{tabular}\par
-Table 1. Published: Quintavalle (2022), Chapters 3--6; exact locators in Appendix A. Ours: finite calculations and reconstructed runs. Non-scalar means qualitative or multicomponent; it does not erase either finding. ``Unassessed'' means the source finding was not independently assessed or its production fit was not completed. Threshold order is MWPM+BP/OSD, then BP/OSD twice; parentheses are source standard errors in the last digits. The confinement theorems require LDPC families with growing distance; the stochastic theorem also requires bounded qubit degree and good linear confinement.
+\end{tabular}
+\end{center}
+\noindent\footnotesize Descriptive point estimates; not equivalence.
+
+\noindent Table 1. Published: Quintavalle (2022), Chapters 3--6; exact locators in Appendix A. Ours: finite calculations and reconstructed runs. Non-scalar means qualitative or multicomponent; it does not erase either finding. ``Unassessed'' means the source finding was not independently assessed or its production fit was not completed. Threshold order is MWPM+BP/OSD, then BP/OSD twice; parentheses are source standard errors in the last digits. The confinement theorems require LDPC families with growing distance; the stochastic theorem also requires bounded qubit degree and good linear confinement.
 
 Signed effects (Published, Ours): capacity 6.05\quad not established; suppression 0.76\quad not established.
-Capacity is BP+OSD minus cited sweep, in percentage points, tolerance 0.055; suppression is beta at N=0 minus N=8, dimensionless, tolerance 0.01. Positive means the first value exceeds the second. Rounding bounds define tolerances, not sampling uncertainty. Descriptive point estimates; not equivalence. No scalar aggregate is assigned to qualitative or multicomponent findings.
-}
-\endgroup
-\clearpage\restoregeometry
+Capacity is BP+OSD minus cited sweep, in percentage points, tolerance 0.055; suppression is beta at N=0 minus N=8, dimensionless, tolerance 0.01. Positive means the first value exceeds the second. Rounding bounds define tolerances, not sampling uncertainty. No scalar aggregate is assigned to qualitative or multicomponent findings.
+
 \section{Introduction}
 We could not establish the full dissertation findings of \citet{quintavalle2022}: the finite checks support parts of the decoding and gate constructions, but universal theorems and production estimates are unresolved. We completed 0 of 4 sustainable threshold estimates, 0 of 2 code-capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-product performance analyses. The published sustainable thresholds are 3.08(4)\% and 2.90(1)\% for surface codes, and 2.90(2)\% and 2.78(2)\% for toric codes, in MWPM+BP/OSD and BP/OSD-twice order. There are no corresponding fitted values from this audit. Missing comparisons are not evidence of nonreplication.
 
@@ -516,7 +501,7 @@ Verdict and full scope & followed & Abstract, introduction, all 41 inventory ite
 Findings separate from effects & followed & Table 1 retains source and finite findings; capacity and suppression effects have separate notes.\\
 Evidence types & followed & Sections 3--4; no universal proof or noisy architecture inferred.\\
 Engine preflight & departed & Accepted model-specific Python/C++ fallback in engine-preflight.json; SEM software cannot represent binary-code algebra.\\
-Approved body layout & departed & Page 1 uses 0.55-inch margins and 9.5-point table text to fit all 14 readable rows; body restores 0.82-inch margins and 11-point text.\\
+Approved body layout & followed & The manuscript inputs the shared approved preamble: 11-point article, 0.82-inch margins, centered title, and the standard abstract. The 14-row headline table uses a smaller font so it stays on that page.\\
 Source page inspection & limited & The thesis PDF was read and the rendered headline pages were inspected; phase conventions and missing grids remain provisional.\\
 Citation coverage & followed & Dissertation cited at first attribution; locators throughout inventory. Wilson metadata verified, full scan not text-readable; NIST supplies Bonferroni method.\\
 Stochastic uncertainty & followed & Wilson and 56-cell adjusted intervals distinguished from rounding and reconstruction uncertainty.\\
