@@ -51,7 +51,7 @@ The decoding checks support the guaranteed finite regime and reproduce unfavorab
 
 The stochastic experiment supplies 560,000 reconstructed trials over 56 settings. At phase-flip probability .03, failure rates are .0596, .0623, .0714 and .1828 for distances 6, 8, 10 and 20. This is consistent with the source's toric anti-threshold observation (Chapter 3 Figure 4, PDF p.52), but does not establish an exact reproduction of its curves or tie conventions. The source describes random (3,4) scaling as less clear: the pseudo-threshold appears to increase, there is no common crossing, and a toric-like adverse trend is expected at larger distances (PDF p.52, lines 2644--2649). We did not run this family because its original seeds and grid were not recovered. Results and intervals are in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/toric_noise.json}{\path{results/toric_noise.json}}; the decoder and interval functions are \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/toric_noise.py#L15}{\path{analysis/toric_noise.py}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/toric_noise.py#L39}{\path{analysis/toric_noise.py}}.
 
-Logical basis and ideal gate checks support selected finite constructions, while noisy fault tolerance is untested. Square Hadamard--SWAP and square CZ--S pass phase-sensitive checks on planar3, planar5, toric2, toric3, Hamming65 and Hamming98. The latter two codes have 17 and 32 logical qubits. All nine symmetric-code appendix rows agree in construction parameters; quantum distance uses the source theorem rather than an independent exhaustive proof. There are 361 collision-free round-robin schedules and 256 successful ideal logical CZ pair actions. The source's intermediate ReShape correction (Chapter 4, Section 4.1, PDF pp.70--71) is a condition of the fault-tolerance construction, not something established by these ideal checks. Conventional ideal S and T injection gadgets pass both branches with conditional phase correction. The rendered round-robin figure (PDF p.71) and the S/T injection circuits (PDF p.72) were inspected; noisy injection was not run. Evidence is in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\path{results/exact_checks.json}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\path{results/independent_checks.json}}.
+Logical basis and ideal gate checks support selected finite constructions, while noisy fault tolerance is untested. Square Hadamard--SWAP and square CZ--S pass phase-sensitive checks on planar3, planar5, toric2, toric3, Hamming65 and Hamming98. The latter two codes have 17 and 32 logical qubits. All nine symmetric-code appendix rows agree in construction parameters; quantum distance uses the source theorem rather than an independent exhaustive proof. There are 361 collision-free round-robin schedules and 256 successful ideal logical CZ pair actions. The source's intermediate ReShape correction (Chapter 4, Section 4.1, PDF pp.70--71) is a condition of the fault-tolerance construction, not something established by these ideal checks. Conventional ideal S and T injection gadgets pass both branches with conditional phase correction. The rendered round-robin figure (PDF p.71) and the S/T injection circuits (PDF p.72) were inspected. The source wiring was not recovered. A conventional CNOT gadget, 20,000 shots, seed 20261103, is exact at zero noise. At depolarizing probability .01 the $|+\rangle$ error rate is .0253 for S and .0339 for T. Evidence is in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\path{results/exact_checks.json}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\path{results/independent_checks.json}}.
 
 \section{Confinement and single-shot findings}
 The finite confinement checks do not prove a stochastic threshold. Chapter 5 Theorem 1 requires a quantum low-density parity-check (LDPC) family with good confinement and distance $d\geq an^b$ for positive $a,b$. It establishes adversarial single-shot correction; good X confinement yields the phase-Z statement. Theorem 2 additionally requires bounded qubit degree and good linear confinement for its local-stochastic threshold. Theorem 3 states X confinement with $t$ equal to Z distance and $f(x)=x^3/4$ or better for 3D products (PDF p.86). Our 12-qubit finite example enumerates 4,096 physical errors and passes 31,232 residual checks. We did not independently re-prove these theorems. The proposed extension from general good confinement to a local-stochastic threshold is explicitly conjectural, as is clear from the text preceding Theorem 2.
@@ -91,17 +91,15 @@ The tensor construction agrees with all 19 archived Hx/metacheck matrices, resol
 Independent computational-basis phase checks reproduce negative stabilizer images from the symplectic calculation. Hamming98 has 16 negative images; toric2 also exhibits phase failures. A supplied Z Pauli correction restores the tested signs, but changes the gate and does not replicate the literal source expression. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/independent_checks.py#L73}{\path{analysis/independent_checks.py}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\path{results/independent_checks.json}} document this distinction. Whether the source uses an implicit Pauli frame is unresolved.
 
 \section{What remains unresolved}
-The main unresolved comparisons require source inputs or proofs, rather than more interpretations of the finite successes. The following six limits delimit the evidence.
-\paragraph{Limit 1.} The thesis PDF was read and the rendered headline pages, including Chapter 4 figures on PDF pages 67--72, were inspected. Phase conventions and missing numerical grids remain provisional.
-\paragraph{Limit 2.} Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.
-\paragraph{Limit 3.} Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.
-\paragraph{Limit 4.} 0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.
-\paragraph{Limit 5.} Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.
-\paragraph{Limit 6.} Sibling gate and partition discrepancies are candidate source-comparison gaps. The printed figures were inspected; the phase convention is not settled by those figures. They are not established source errors.
+Each unfinished part is one of three kinds. A finite check is a completed calculation that does not prove the universal statement. An input is unavailable when the archive and the extracted text do not contain it. A part was not run when the design is known and was declined, with the measured cost.
+\paragraph{Finite checks.} Oracle calls on the six worked examples are 1, 1, 2, 2, 5 and 8, each at most $k$. The 1,061 phase-error checks, the 256 line bases, the nine symmetric-code rows, the 19 archived matrices, and the 12-qubit confinement counts are the same kind of evidence. None of them is a proof for every code.
+\paragraph{Inputs that are not in the archive.} The random (3,4) seeds, the three Table III seeds, the surface $L=11$ matrices, the MWPM syndrome-repair decoder, and the image-only injection wiring were looked for in the extracted text and in \path{vendor/single_shot_3D_HGP}. They are not there. The sweep threshold 15.5\% is a cited comparison, not a run of this code.
+\paragraph{Not run.} A Release build takes 1.76 seconds per toric $L=11$ trial at depth 0. Eight noisy rounds scale that by about 11, so one 10,000-trial sustainable point at $L=11$ is about 54 CPU-hours. On 4 cores the full sustainable grid at $L=9$ and $L=11$ passes 24 wall-clock hours, so those points were not run. The sustainable subset is $N=8$ at $L=5$ and $L=7$. Code capacity, one perfect syndrome and 10,000 trials, is the design for every archived size: toric $L=5,7,9,11$ and surface $L=3,5,7,9$, at eleven probabilities from .10 to .24. A plotted point in the source needs at least 25 failures. Toric $L=5$ at $p=.10$ has 1 failure in 10,000 trials, so that point is excluded by the source rule and no suppression slope was fit.
+\paragraph{Gate reading.} Sibling signs and partition distances were computed on the named examples. The printed figures were inspected. The phase convention is not settled by those figures, and the difference is not treated as an established source error.
 
 The candidate gate discrepancies have several causes still in contention: extraction or convention differences, implementation error, and an error in the source statement. The independent phase representation reduces concern about a single phase implementation, while truly symmetric matrices pass sibling Hadamard--SWAP checks that fail 18 support checks for weak image symmetry on toric3. Exact Z-sector partition distances 3, 2 and 3 for planar3, toric2 and toric3 differ from a literal extracted floor-half-distance expression. The evidence does not rank a source error above an unsettled phase convention. The equation images were inspected. Explicit symmetry and Pauli-frame conventions remain the highest-priority discriminating artifacts; X-sector and universal partition statements remain unverified.
 
-The numerical stopping evidence is concrete: the toric-L11 pilot completed nine trials in 180 seconds, projecting about 55.6 CPU-hours per 10,000-trial point before complete grids. Surface-L11 inputs, the MWPM implementation, exact stochastic grids and random seeds were not recovered. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\path{results/original_pilots.json}} gives each attempted condition and outcome. Resource limits explain uncompleted estimates but do not validate them. There is no complete gate architecture demonstration, and nonlinear confinement must not be conflated with the proved conditional linear-confinement theorem.
+The earlier 180-second pilot is not the cost of the Release binary. Surface $L=11$ inputs, the MWPM implementation, the random seeds, and the source probability list remain absent. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/reshape_cost.json}{\path{results/reshape_cost.json}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/noisy_injection.json}{\path{results/noisy_injection.json}}, and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/production_grid.json}{\path{results/production_grid.json}} record the counts, the gadget, and the single-shot grid. A missing input is not a finished estimate. Nonlinear confinement stays a conjecture beside the conditional linear-confinement theorem.
 
 \section{Code and source availability}
 The dated availability ledger (3 November 2026) is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\path{availability.md}}. The route record is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/provenance/source-acquisition.json}{\path{provenance/source-acquisition.json}}. Source text is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\path{sources/browser-extraction.txt}}, and the finding-to-source audit is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/headline-finding-audit.json}{\path{sources/headline-finding-audit.json}}. The thesis PDF was obtained from the public record, read in full, and inspected on the rendered headline pages. The PDF file is not stored in this repository. Vendored MIT-licensed source is the unmodified single-shot repository at revision bdfb437b2abcfa514997f26be97a711b878448cb, with BP+OSD revision 74f86d3ef00f04bbb90a043dfef52e92a091f4d3 \citep{upstream}. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/provenance/upstream.json}{\path{provenance/upstream.json}} records the pins. Repository master links are navigation aids, not immutable reproduction identifiers.
@@ -115,7 +113,7 @@ Every item below distinguishes its source attribution from our outcome and scope
 \subsection{Context and notation}\label{claim:ch1}
 Claim ch1. Source: Ch1. Published: Context and notation.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Chapter 1 is notation and previously published background, so it was left out of the experimental design. Status: out of scope.
 
 Required scope: Audit background and explicitly exclude previously published introductory results.
 
@@ -123,7 +121,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Motivation and overview}\label{claim:ch2}
 Claim ch2. Source: Ch2. Published: Motivation and overview.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Chapter 2 maps later chapters and does not state a device that was tested. Status: out of scope.
 
 Required scope: Map the three research questions to Chapters 3--5; do not treat architectural motivation as a demonstrated device.
 
@@ -155,7 +153,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Outlook}\label{claim:ch6}
 Claim ch6. Source: Ch6. Published: Outlook.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: The outlook leaves the architecture and the nonlinear-confinement threshold open. No finite grid would close them. Status: out of scope.
 
 Required scope: Preserve open problems as open; distinguish conjectured extension to nonlinear confinement from established theorems.
 
@@ -171,7 +169,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Adversarial decoding and shaped errors}\label{claim:reshape-correctness}
 Claim reshape-correctness. Source: Ch3 Theorem1; PDF44, L1764--1768@P43. Published: Any [[n,k,d]] HGP constructed from the classical seed parity checks can decode errors through (d-1)/2 with O(k) oracle calls to classical seed/transposed-seed decoders plus $O(n^2)$ operations; source theorem, not our finite proof..
 
-Ours: 1061 guaranteed-range errors pass; 8448 exhaustive patterns classified. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 1061 guaranteed-range errors pass; 8448 exhaustive patterns classified. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Binary hypergraph product code [[n,k,d]]; suitable classical decoders for each seed and its transpose; adversarial errors through (d-1)/2. Our checks address phase errors and finite instances.
 
@@ -179,7 +177,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Oracle and classical resource bounds}\label{claim:reshape-cost}
 Claim reshape-cost. Source: Dissertation: Oracle and classical resource bounds. Published: Oracle and classical resource bounds.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: On the six worked examples the oracle-call counts are 1, 1, 2, 2, 5 and 8, each at most the logical dimension. That count is not a proof of the bound for every code. Status: partly replicated. Finite checks only.
 
 Required scope: Audit dimensions and count active oracle calls against logical dimension; distinguish operation counts from measured wall time.
 
@@ -195,7 +193,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Figure 4 toric anti-threshold}\label{claim:reshape-toric}
 Claim reshape-toric. Source: Ch3 Figure4; PDF52, L2612--2645@P51. Published: Toric ReShape performance worsens with size at substantial stochastic noise.
 
-Ours: 560000 trials on reconstructed 56-setting grid; at p=.03 failure .0596,.0623,.0714,.1828 for L6,8,10,20. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 560000 trials on reconstructed 56-setting grid; at p=.03 failure .0596,.0623,.0714,.1828 for L6,8,10,20. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Source toric HGP family under independent phase-flip noise; source Figure4 uses at least10000trials per point. Our reconstructed grid uses d=6,8,10,20 and14 probabilities; original point/tie conventions unrecovered.
 
@@ -211,7 +209,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Canonical logical line basis}\label{claim:line-basis}
 Claim line-basis. Source: Ch4 Theorem1; PDF63, L3598--3624@P62. Published: Canonical paired line-supported logical basis.
 
-Ours: All 256 seed pairs and named examples satisfy finite basis checks. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: All 256 seed pairs and named examples satisfy finite basis checks. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Arbitrary binary hypergraph product code; logical X/Z line support with symplectic pairing. Our census covers256 ordered pairs of binary2x2seeds and six examples.
 
@@ -219,7 +217,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Diagonal-twin partition distance}\label{claim:diagonal-partition}
 Claim diagonal-partition. Source: Ch4 diagonal-twin partition. Published: Extracted floor(d/2) partition-distance expression.
 
-Ours: Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound remains unresolved after inspection of the partition text. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound remains unresolved after inspection of the partition text. Status: not established. Finite checks only; the universal statement was not proved.
 
 Required scope: Compute exact partition distances on tractable planar and toric instances; compare lower-bound versus equality wording and inspect rendered equations before alleging discrepancy.
 
@@ -227,7 +225,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Square Hadamard-SWAP}\label{claim:square-hswap}
 Claim square-hswap. Source: Dissertation: Square Hadamard-SWAP. Published: Square Hadamard-SWAP.
 
-Ours: All stabilizer generators and logical X/Z images pass phase-sensitive square H-SWAP assertions for planar3,planar5,toric2,toric3,Hamming65,Hamming98. No universal proof certified.. Status: partly replicated. Finite result stated explicitly; source-wide generalization or visual wiring not established.
+Ours: All stabilizer generators and logical X/Z images pass phase-sensitive square H-SWAP assertions for planar3, planar5, toric2, toric3, Hamming65, and Hamming98. No universal proof was certified. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Verify full stabilizer and logical Pauli action on repetition and the specified 65-qubit Hamming example.
 
@@ -251,7 +249,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Sibling Hadamard-SWAP}\label{claim:sibling-hswap}
 Claim sibling-hswap. Source: Ch4 sibling Hadamard-SWAP proposition. Published: Sibling H-SWAP under symmetry condition.
 
-Ours: Weak image symmetry toric3 fails 18 support checks; truly symmetric matrices pass; pending source review. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: Weak image symmetry toric3 fails 18 support checks; truly symmetric matrices pass; pending source review. Status: not established. Finite checks only; the universal statement was not proved.
 
 Required scope: Verify Pauli action on cyclic repetition and symmetric Hamming examples.
 
@@ -259,7 +257,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Sibling CZ}\label{claim:sibling-cz}
 Claim sibling-cz. Source: Ch4 sibling CZ proposition. Published: Sibling CZ preserves encoded space.
 
-Ours: 16 negative stabilizer images in Hamming98, confirmed by independent basis phases; the printed circuits were inspected and the phase convention remains unresolved. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 16 negative stabilizer images in Hamming98, confirmed by independent basis phases; the printed circuits were inspected and the phase convention remains unresolved. Status: not established. Finite checks only; the universal statement was not proved.
 
 Required scope: Verify stabilizer preservation and logical CZ pairing on source symmetric examples.
 
@@ -275,7 +273,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Round-robin entangling gates}\label{claim:pieceable}
 Claim pieceable. Source: Ch4 Sec4.1; PDF70--71, L4186--4225@P69--70; limitations L4350--4363@P72. Published: Pieceable round-robin logical entangling gates.
 
-Ours: 361 schedules and 256 ideal logical pair actions pass; noisy intermediate correction untested. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 361 schedules and 256 ideal logical pair actions pass; noisy intermediate correction untested. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Logical CZ between left/right logical qubits using sector-transversal pieces and intermediate ReShape correction. High-weight intermediate X stabilizers and time overhead limit noisy fault-tolerance claims; our checks are ideal.
 
@@ -283,7 +281,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Single-qubit injection and universality}\label{claim:injection}
 Claim injection. Source: Dissertation: Single-qubit injection and universality. Published: Single-qubit injection and universality.
 
-Ours: Conventional ideal S and T injection gadgets each pass two branch checks with conditional phase corrections. Source image-only wiring and noisy injection not verified; this is a related diagnostic.. Status: partly replicated. Finite result stated explicitly; source-wide generalization or visual wiring not established.
+Ours: The source wiring was not recovered. A conventional CNOT gadget is exact at zero noise in 20,000 shots. At depolarizing probability .01 the $|+\rangle$ error rate is .0253 for S and .0339 for T. Status: partly replicated. Finite gadget only; the rendered circuit was not the one simulated.
 
 Required scope: Check ideal state-injection branches with exact small complex matrices; do not infer noisy gate thresholds or resource savings.
 
@@ -291,7 +289,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Confinement implies adversarial single-shot correction}\label{claim:confinement-adversarial}
 Claim confinement-adversarial. Source: Ch5 Theorem1; PDF86, L5046--5050@P85; definition L5040--5044. Published: An LDPC code family with good confinement and distance $d\ge a n^b$ ($a,b>0$) is single shot for adversarial noise; good X confinement gives the phase-Z version..
 
-Ours: 31232 finite syndrome/noise checks on 12-qubit surface instance pass. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 31232 finite syndrome/noise checks on 12-qubit surface instance pass. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Quantum LDPC family with good confinement and growing distance $d\ge a n^b$, $a,b>0$; good X confinement restricts guarantee to Pauli-Z noise. Our12qubit check is finite.
 
@@ -307,7 +305,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Cubic confinement of 3D products}\label{claim:confinement-product}
 Claim confinement-product. Source: Ch5 Theorem3; PDF86, L5062--5064@P85; $f(x)=x^3/4$ or better. Published: All 3D product codes have (t,f) X confinement with t equal to Z distance and $f(x)=x^3/4$ or better..
 
-Ours: 4096 finite error words checked; universal proof not reproduced. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 4096 finite error words checked; universal proof not reproduced. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Three-dimensional product codes; X confinement t equals Z distance; $f(x)=x^3/4$ or better. Finite quotient check does not reproduce universal proof.
 
@@ -315,7 +313,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Soundness and expander confinement}\label{claim:confinement-expander}
 Claim confinement-expander. Source: Dissertation: Soundness and expander confinement. Published: Soundness and expander confinement.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Appendix D does not name an expander seed, and none is in the archived code. Status: input unavailable.
 
 Required scope: Audit Lemma 2 and Appendix D, including strictness and expansion assumptions; no replacement by an unverified random graph.
 
@@ -323,7 +321,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{3D chain complex and locality}\label{claim:product-construction}
 Claim product-construction. Source: Ch5 Appendix B. Published: 3D tensor chain complexes and metachecks.
 
-Ours: All 19 available original Hx/metacheck matrices match independent construction entry for entry. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: All 19 available original Hx/metacheck matrices match independent construction entry for entry. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Independently build all three boundary maps, verify chain identities, rank parameters and metachecks against archived original matrices for available sizes; account for Appendix B.
 
@@ -355,7 +353,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Figure 2 failure-mode improvement}\label{claim:failure-subroutine}
 Claim failure-subroutine. Source: Ch5 Figure2 and text; PDF94, L5939@P93; high syndrome noise. Published: Syndrome failure repair improves logical performance at high measurement noise.
 
-Ours: At q=.03, 617 versus 72 failures in 10000 trials each; reconstructed depth N1. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: At q=.03, 617 versus 72 failures in 10000 trials each; reconstructed depth N1. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Source toric L=5,data p=.1 and varying syndrome noise; original figure depth/grid not recovered. Our diagnostic uses N=1 and original software final perfect-measurement round with fresh data noise,10000trials per arm.
 
@@ -379,7 +377,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Appendix E thresholds and suppression fits}\label{claim:fit-methods}
 Claim fit-methods. Source: Dissertation: Appendix E thresholds and suppression fits. Published: Appendix E thresholds and suppression fits.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Not run. Toric $L=5$ at $p=.10$ produced 1 failure in 10,000 trials, so the 25-failure rule removes the points a slope fit needs. Status: not run.
 
 Required scope: Implement cited rescaling and extrapolation methods only on adequate comparable data; synthetic recovery tests do not replicate reported fitted values.
 
@@ -395,7 +393,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Chapter 4 Appendix B Table 2: all nine symmetric codes}\label{claim:symmetric-table}
 Claim symmetric-table. Source: Ch4 Appendix B Table 2. Published: Nine symmetric HGP parameter rows.
 
-Ours: 9 of 9 n,k,seed distance,maxweight rows agree; quantum distance inherited, not exhaustively established. Status: partly replicated. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 9 of 9 n,k,seed distance,maxweight rows agree; quantum distance inherited, not exhaustively established. Status: partly replicated. Finite checks only; the universal statement was not proved.
 
 Required scope: Parse all nine printed seed matrices; independently enumerate each classical kernel, construct H transpose H and verify n, k, rate, seed distance and maximum stabilizer weight. Distinguish inherited distance theorem from exhaustive quantum distance search.
 
@@ -411,7 +409,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Random-product code1}\label{claim:random-code1}
 Claim random-code1. Source: Ch5 Table III, Figure 4. Published: [[1336,4,6]].
 
-Ours: Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.. Status: blocked. Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.
+Ours: The $[[1336,4,6]]$ seed is not in the archive, so this code was not run. Status: input unavailable.
 
 Required scope: Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.
 
@@ -419,7 +417,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Random-product code2}\label{claim:random-code2}
 Claim random-code2. Source: Ch5 Table III, Figure 4. Published: [[3100,5,8]].
 
-Ours: Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.. Status: blocked. Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.
+Ours: The $[[3100,5,8]]$ seed is not in the archive, so this code was not run. Status: input unavailable.
 
 Required scope: Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.
 
@@ -427,7 +425,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Random-product code3}\label{claim:random-code3}
 Claim random-code3. Source: Ch5 Table III, Figure 4. Published: [[5964,6,10]].
 
-Ours: Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.. Status: blocked. Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.
+Ours: The $[[5964,6,10]]$ seed is not in the archive, so this code was not run. Status: input unavailable.
 
 Required scope: Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.
 
@@ -435,7 +433,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Random-product crossing}\label{claim:random-crossing}
 Claim random-crossing. Source: Ch5 Table III, Figure 4. Published: 2.7.
 
-Ours: Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.. Status: blocked. Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.
+Ours: The $N=16$ crossing grid needs the three missing seeds. It was not run. Status: input unavailable.
 
 Required scope: Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.
 
