@@ -169,7 +169,7 @@ def packet_errors(packet, root):
         refs = audit.get('source_artifact_ids')
         if not strings(refs) or not set(refs).issubset(ids):
             errors.append('packet: inventory source artifacts required')
-    errors.extend(_first.packet_errors(packet))
+    errors.extend(_first.packet_errors(packet, source_text=_first.bundled_source_text(packet, root)))
     return errors
 
 

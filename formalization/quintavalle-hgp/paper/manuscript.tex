@@ -20,7 +20,7 @@
 {\Large\bfseries A finite audit of hypergraph-product codes:\\supporting checks and unresolved dissertation findings\par}
 \vspace{3pt}
 \begin{abstract}
-\noindent We could not establish the full dissertation findings of \citet{quintavalle2022}, who reported oracle-assisted decoding guarantees, logical gate constructions, and confinement-based single-shot correction. We completed 0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-product performance analyses. Finite support includes 1,061 guaranteed-range phase-error checks, 256 seed pairs, 19 matrix comparisons, 560,000 reconstructed trials and 80,000 original-software diagnostic trials. Source PDF ink and gate conventions are unresolved; finite tests do not prove universal results.
+\noindent We could not establish the full dissertation findings of \citet{quintavalle2022}, who reported oracle-assisted decoding guarantees, logical gate constructions, and confinement-based single-shot correction. We completed 0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-product performance analyses. Finite support includes 1,061 guaranteed-range phase-error checks, 256 seed pairs, 19 matrix comparisons, 560,000 reconstructed trials and 80,000 original-software diagnostic trials. The thesis text was read and the rendered headline pages were inspected; finite tests do not prove universal results.
 \end{abstract}
 \vspace{-5pt}
 {\fontsize{9.5}{10.5}\selectfont
@@ -59,27 +59,28 @@ The scientific question is which parts of the dissertation survive independent f
 \section{What we did ourselves, and what we took from others}
 Our contribution is an independent finite implementation and comparison, not a new universal proof. We computed binary matrix ranks, kernels, logical bases, decoder outcomes and phase-sensitive gate images; built independent tensor and computational-basis checks; and ran reconstructed Monte Carlo experiments. The original work supplies the code definitions, conditional theorems, gate constructions, simulation designs and published numbers \citep{quintavalle2022}. We distinguish the original software from our input settings: the former is pinned to an upstream revision, while missing source grids and depth choices make our runs diagnostic.
 
-The original dissertation is available to this audit as page-marked text, not verified PDF images. Our source quotations and numerical attributions refer to that extraction. Source formulas that depend on diagram wiring, signs or equality-versus-bound notation therefore remain provisional. Published theorem statements, numerical observations and conjectures are separate kinds of evidence throughout this paper.
+The full thesis PDF was read as text, and the rendered pages that support the headline and Published entries were inspected. Quotations follow that reading. Printed figures and equations on those pages were inspected. Sign conventions and equality-versus-bound readings that those figures do not settle remain provisional. Published theorem statements, numerical observations and conjectures are separate kinds of evidence throughout this paper.
 
 \section{Finite decoding and logical-operation findings}
-The decoding checks support the guaranteed finite regime and reproduce unfavorable toric scaling on a reconstructed grid. Chapter 3 Theorem 1 reports correction through $(d-1)/2$ with classical seed and transposed-seed decoder oracles, $O(k)$ oracle calls and $O(n^2)$ additional operations (PDF p.44). Our 1,061 guaranteed-range phase-error checks all pass. Exhaustive classification includes 8,192 planar3 and 256 toric2 patterns; it is not a claim that all those patterns correct successfully. The canonical decomposition and logical line-basis checks pass for all 256 binary $2\times2$ seed pairs and six named examples.
+The decoding checks support the guaranteed finite regime and reproduce unfavorable toric scaling on a reconstructed grid. Chapter 3 Theorem 1 reported correction of errors of weight up to $(d-1)/2$ with classical seed and transposed-seed decoder oracles, $O(k)$ oracle calls and $O(n^2)$ additional operations (PDF p.44). The same article's abstract reported weight smaller than $(d-1)/2$. This audit follows the displayed theorem. The difference is not treated as an established error. Our 1,061 guaranteed-range phase-error checks all pass. Exhaustive classification includes 8,192 planar3 and 256 toric2 patterns; it is not a claim that all those patterns correct successfully. The canonical decomposition and logical line-basis checks pass for all 256 binary $2\times2$ seed pairs and six named examples.
 
 The stochastic experiment supplies 560,000 reconstructed trials over 56 settings. At phase-flip probability .03, failure rates are .0596, .0623, .0714 and .1828 for distances 6, 8, 10 and 20. This is consistent with the source's toric anti-threshold observation (Chapter 3 Figure 4, PDF p.52), but does not establish an exact reproduction of its curves or tie conventions. The source describes random (3,4) scaling as less clear: the pseudo-threshold appears to increase, there is no common crossing, and a toric-like adverse trend is expected at larger distances (PDF p.52, lines 2644--2649). We did not run this family because its original seeds and grid were not recovered. Results and intervals are in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/toric_noise.json}{\path{results/toric_noise.json}}; the decoder and interval functions are \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/toric_noise.py#L15}{\path{analysis/toric_noise.py}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/toric_noise.py#L39}{\path{analysis/toric_noise.py}}.
 
-Logical basis and ideal gate checks support selected finite constructions, while noisy fault tolerance is untested. Square Hadamard--SWAP and square CZ--S pass phase-sensitive checks on planar3, planar5, toric2, toric3, Hamming65 and Hamming98. The latter two codes have 17 and 32 logical qubits. All nine symmetric-code appendix rows agree in construction parameters; quantum distance uses the source theorem rather than an independent exhaustive proof. There are 361 collision-free round-robin schedules and 256 successful ideal logical CZ pair actions. The source's intermediate ReShape correction (Chapter 4, Section 4.1, PDF pp.70--71) is a condition of the fault-tolerance construction, not something established by these ideal checks. Conventional ideal S and T injection gadgets pass both branches with conditional phase correction; source-image wiring and noisy injection remain unverified. Evidence is in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\path{results/exact_checks.json}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\path{results/independent_checks.json}}.
+Logical basis and ideal gate checks support selected finite constructions, while noisy fault tolerance is untested. Square Hadamard--SWAP and square CZ--S pass phase-sensitive checks on planar3, planar5, toric2, toric3, Hamming65 and Hamming98. The latter two codes have 17 and 32 logical qubits. All nine symmetric-code appendix rows agree in construction parameters; quantum distance uses the source theorem rather than an independent exhaustive proof. There are 361 collision-free round-robin schedules and 256 successful ideal logical CZ pair actions. The source's intermediate ReShape correction (Chapter 4, Section 4.1, PDF pp.70--71) is a condition of the fault-tolerance construction, not something established by these ideal checks. Conventional ideal S and T injection gadgets pass both branches with conditional phase correction. The rendered round-robin figure (PDF p.71) and the S/T injection circuits (PDF p.72) were inspected; noisy injection was not run. Evidence is in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\path{results/exact_checks.json}} and \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\path{results/independent_checks.json}}.
 
 \section{Confinement and single-shot findings}
 The finite confinement checks do not prove a stochastic threshold. Chapter 5 Theorem 1 requires a quantum low-density parity-check (LDPC) family with good confinement and distance $d\geq an^b$ for positive $a,b$. It establishes adversarial single-shot correction; good X confinement yields the phase-Z statement. Theorem 2 additionally requires bounded qubit degree and good linear confinement for its local-stochastic threshold. Theorem 3 states X confinement with $t$ equal to Z distance and $f(x)=x^3/4$ or better for 3D products (PDF p.86). Our 12-qubit finite example enumerates 4,096 physical errors and passes 31,232 residual checks. We did not independently re-prove these theorems. The proposed extension from general good confinement to a local-stochastic threshold is explicitly conjectural, as is clear from the text preceding Theorem 2.
 
 The independent tensor construction matches all 19 available archived Hx/metacheck matrices entry for entry. This validates finite matrix construction, not the absent production fits. The original BP+OSD twice decoder (belief propagation followed by ordered-statistics decoding at both stages) ran eight diagnostic settings of 10,000 trials each. At $L=5$, data noise $p=.1$, syndrome noise $q=.03$ and reconstructed depth $N=1$, repair reduces failures from 617 to 72 per 10,000. This supports improvement in our diagnostic; the source's over-an-order-of-magnitude improvement refers to its high-syndrome-noise experiment (Chapter 5 Figure 2, PDF p.94), whose exact depth/grid was not recovered. Our final round injects fresh data noise before perfect measurement. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_diagnostic_grid.json}{\path{results/original_diagnostic_grid.json}} records these outcomes and settings.
 
-The production comparisons are unavailable. Chapter 5 Table I reports a toric phase-flip capacity threshold of 21.55(1)\% for BP+OSD versus a cited sweep threshold of 15.5\%; the 6.05 percentage-point contrast is a source comparison, not our experiment. Appendix E reports suppression exponents 1.91(3) at $N=0$ and 1.15(3) at $N=8$, a difference of .76. Table III lists $[[1336,4,6]]$, $[[3100,5,8]]$ and $[[5964,6,10]]$ random-product codes, and Figure 4 suggests a crossing near 2.7\% at $N=16$ (PDF pp.95--96). None of those three performance analyses was completed. The sustainable-threshold parent retains its surface and toric contrasts, .18 and .12 percentage points, each with a .01 rounding tolerance; no pooled effect is justified.
+The production comparisons are unavailable. Chapter 5 Table I reports a toric phase-flip capacity threshold of 21.55(1)\% for BP+OSD versus a cited sweep threshold of 15.5\%; the 6.05 percentage-point contrast is a source comparison, not our experiment. Appendix E reports suppression exponents 1.91(3) at $N=0$ and 1.15(3) at $N=8$, a difference of .76. Table III reported $[[1336,4,6]]$, $[[3100,5,8]]$ and $[[5964,6,10]]$ random-product codes. A sentence on the same page reported that the distance-10 instance encodes ten logical qubits; the Published cell follows the table, and the difference is not treated as an established error. Figure 4 reported a suggested threshold at 2.7\% after 16 rounds (PDF pp.95--96). None of those three performance analyses was completed. The sustainable-threshold parent retains its surface and toric contrasts, .18 and .12 percentage points, each with a .01 rounding tolerance; no pooled effect is justified.
 
 \section{Comparison precision and uncertainty}
-Finite algebraic checks have exact arithmetic but restricted scope. For stochastic trials we use Wilson intervals \citep{wilson1927} and a 56-cell Bonferroni adjustment \citep{nist}; Wilson coverage is approximate, so the adjustment does not create an exact finite-sample family guarantee. No interval measures uncertainty from a reconstructed grid, missing conventions or unread source ink. The source standard errors remain attached to its thresholds and exponents; they are not tolerance bounds. Method metadata and its verification limits are in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/method-citations.json}{\path{sources/method-citations.json}}.
+Finite algebraic checks have exact arithmetic but restricted scope. For stochastic trials we use Wilson intervals \citep{wilson1927} and a 56-cell Bonferroni adjustment \citep{nist}; Wilson coverage is approximate, so the adjustment does not create an exact finite-sample family guarantee. No interval measures uncertainty from a reconstructed grid or from conventions the inspected pages do not settle. The source standard errors remain attached to its thresholds and exponents; they are not tolerance bounds. Method metadata and its verification limits are in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/method-citations.json}{\path{sources/method-citations.json}}.
 
 \begin{center}\small
-\begin{tabular}{p{.15\linewidth}p{.16\linewidth}p{.15\linewidth}p{.12\linewidth}p{.12\linewidth}p{.12\linewidth}}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.18\linewidth}>{\raggedright\arraybackslash}p{.15\linewidth}>{\raggedright\arraybackslash}p{.12\linewidth}>{\raggedright\arraybackslash}p{.12\linewidth}>{\raggedright\arraybackslash}p{.13\linewidth}>{\raggedright\arraybackslash}p{.13\linewidth}@{}}
 \toprule Claim & Published & Ours & Precision & Numerical & Scope\\\midrule
 Sustainable thresholds & 3.08/2.90; 2.90/2.78\% & 0 of 4 fits & .01\% & withheld & unavailable\\
 Capacity contrast & 6.05 pp & no fit & .055 pp bound & withheld & unavailable\\
@@ -106,22 +107,22 @@ Independent computational-basis phase checks reproduce negative stabilizer image
 
 \section{What remains unresolved}
 The main unresolved comparisons require source inputs or proofs, rather than more interpretations of the finite successes. The following six limits delimit the evidence.
-\paragraph{Limit 1.} Original PDF bytes and equation/figure ink were not retrieved under network policy; text-only equation interpretations remain provisional.
+\paragraph{Limit 1.} The thesis PDF was read and the rendered headline pages, including Chapter 4 figures on PDF pages 67--72, were inspected. Phase conventions and missing numerical grids remain provisional.
 \paragraph{Limit 2.} Finite binary checks do not prove the dissertation universal theorems or noisy fault tolerance.
 \paragraph{Limit 3.} Original stochastic grids, tie conventions, random seeds, MWPM implementation and surface L11 code were not recovered.
 \paragraph{Limit 4.} 0 of 4 sustainable thresholds, 0 of 2 capacity analyses, 0 of 2 suppression fits, and 0 of 3 random-code performance analyses were completed.
 \paragraph{Limit 5.} Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.
-\paragraph{Limit 6.} Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors.
+\paragraph{Limit 6.} Sibling gate and partition discrepancies are candidate source-comparison gaps. The printed figures were inspected; the phase convention is not settled by those figures. They are not established source errors.
 
-The candidate gate discrepancies have several causes still in contention: extraction or convention differences, implementation error, and an error in the source statement. The independent phase representation reduces concern about a single phase implementation, while truly symmetric matrices pass sibling Hadamard--SWAP checks that fail 18 support checks for weak image symmetry on toric3. Exact Z-sector partition distances 3, 2 and 3 for planar3, toric2 and toric3 differ from a literal extracted floor-half-distance expression. The evidence does not rank a source error above missing ink or assumptions. Original equation images and explicit symmetry/Pauli-frame conventions are the highest-priority discriminating artifacts; X-sector and universal partition statements remain unverified.
+The candidate gate discrepancies have several causes still in contention: extraction or convention differences, implementation error, and an error in the source statement. The independent phase representation reduces concern about a single phase implementation, while truly symmetric matrices pass sibling Hadamard--SWAP checks that fail 18 support checks for weak image symmetry on toric3. Exact Z-sector partition distances 3, 2 and 3 for planar3, toric2 and toric3 differ from a literal extracted floor-half-distance expression. The evidence does not rank a source error above an unsettled phase convention. The equation images were inspected. Explicit symmetry and Pauli-frame conventions remain the highest-priority discriminating artifacts; X-sector and universal partition statements remain unverified.
 
 The numerical stopping evidence is concrete: the toric-L11 pilot completed nine trials in 180 seconds, projecting about 55.6 CPU-hours per 10,000-trial point before complete grids. Surface-L11 inputs, the MWPM implementation, exact stochastic grids and random seeds were not recovered. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\path{results/original_pilots.json}} gives each attempted condition and outcome. Resource limits explain uncompleted estimates but do not validate them. There is no complete gate architecture demonstration, and nonlinear confinement must not be conflated with the proved conditional linear-confinement theorem.
 
 \section{Code and source availability}
-The dated availability ledger (3 November 2026) is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\path{availability.md}}. Source text is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\path{sources/browser-extraction.txt}}, and the finding-to-source audit is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/headline-finding-audit.json}{\path{sources/headline-finding-audit.json}}. The source PDF bytes and figure ink are not bundled; reading the text file cannot re-extract or visually verify them. Vendored MIT-licensed source is the unmodified single-shot repository at revision bdfb437b2abcfa514997f26be97a711b878448cb, with BP+OSD revision 74f86d3ef00f04bbb90a043dfef52e92a091f4d3 \citep{upstream}. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/provenance/upstream.json}{\path{provenance/upstream.json}} records the pins. Repository master links are navigation aids, not immutable reproduction identifiers.
+The dated availability ledger (3 November 2026) is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\path{availability.md}}. The route record is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/provenance/source-acquisition.json}{\path{provenance/source-acquisition.json}}. Source text is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\path{sources/browser-extraction.txt}}, and the finding-to-source audit is \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/headline-finding-audit.json}{\path{sources/headline-finding-audit.json}}. The thesis PDF was obtained from the public record, read in full, and inspected on the rendered headline pages. The PDF file is not stored in this repository. Vendored MIT-licensed source is the unmodified single-shot repository at revision bdfb437b2abcfa514997f26be97a711b878448cb, with BP+OSD revision 74f86d3ef00f04bbb90a043dfef52e92a091f4d3 \citep{upstream}. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/provenance/upstream.json}{\path{provenance/upstream.json}} records the pins. Repository master links are navigation aids, not immutable reproduction identifiers.
 
 \section{Next steps}
-The first needed artifact is the original PDF with readable equations and diagrams; compare sibling gates, partition inequalities and injection wiring directly to its ink before adjudicating candidate discrepancies. Next obtain the original random matrices, surface-L11 files, probability grids, seeds and MWPM code; validate their construction against the finite reference and rerun the planned threshold and exponent fits. A larger compute allocation without these inputs would still leave source comparability unresolved. Finally independently audit the full universal proofs and intermediate noisy correction before interpreting finite gate actions as fault tolerance.
+The thesis PDF and the rendered headline pages have been read, including the Chapter 4 figures. The phase convention is still unresolved. Next obtain the original random matrices, surface-L11 files, probability grids, seeds and MWPM code; validate their construction against the finite reference and rerun the planned threshold and exponent fits. A larger compute allocation without these inputs would still leave source comparability unresolved. Finally independently audit the full universal proofs and intermediate noisy correction before interpreting finite gate actions as fault tolerance.
 
 \appendix
 \section{Complete claim inventory}
@@ -129,7 +130,7 @@ Every item below distinguishes its source attribution from our outcome and scope
 \subsection{Context and notation}\label{claim:ch1}
 Claim ch1. Source: Ch1. Published: Context and notation.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
 
 Required scope: Audit background and explicitly exclude previously published introductory results.
 
@@ -137,7 +138,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Motivation and overview}\label{claim:ch2}
 Claim ch2. Source: Ch2. Published: Motivation and overview.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
 
 Required scope: Map the three research questions to Chapters 3--5; do not treat architectural motivation as a demonstrated device.
 
@@ -169,7 +170,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Outlook}\label{claim:ch6}
 Claim ch6. Source: Ch6. Published: Outlook.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
 
 Required scope: Preserve open problems as open; distinguish conjectured extension to nonlinear confinement from established theorems.
 
@@ -193,7 +194,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Oracle and classical resource bounds}\label{claim:reshape-cost}
 Claim reshape-cost. Source: Dissertation: Oracle and classical resource bounds. Published: Oracle and classical resource bounds.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
 
 Required scope: Audit dimensions and count active oracle calls against logical dimension; distinguish operation counts from measured wall time.
 
@@ -233,7 +234,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Diagonal-twin partition distance}\label{claim:diagonal-partition}
 Claim diagonal-partition. Source: Ch4 diagonal-twin partition. Published: Extracted floor(d/2) partition-distance expression.
 
-Ours: Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound/source ink unresolved. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: Z-sector distances 3,2,3 on planar3,toric2,toric3; equality versus bound remains unresolved after inspection of the partition text. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
 
 Required scope: Compute exact partition distances on tractable planar and toric instances; compare lower-bound versus equality wording and inspect rendered equations before alleging discrepancy.
 
@@ -273,7 +274,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Sibling CZ}\label{claim:sibling-cz}
 Claim sibling-cz. Source: Ch4 sibling CZ proposition. Published: Sibling CZ preserves encoded space.
 
-Ours: 16 negative stabilizer images in Hamming98, confirmed by independent basis phases; pending source-ink/convention review. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
+Ours: 16 negative stabilizer images in Hamming98, confirmed by independent basis phases; the printed circuits were inspected and the phase convention remains unresolved. Status: not established. Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.
 
 Required scope: Verify stabilizer preservation and logical CZ pairing on source symmetric examples.
 
@@ -329,7 +330,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Soundness and expander confinement}\label{claim:confinement-expander}
 Claim confinement-expander. Source: Dissertation: Soundness and expander confinement. Published: Soundness and expander confinement.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
 
 Required scope: Audit Lemma 2 and Appendix D, including strictness and expansion assumptions; no replacement by an unverified random graph.
 
@@ -393,7 +394,7 @@ Evidence: \href{https://github.com/alectionary/vibe-math/blob/master/formalizati
 \subsection{Appendix E thresholds and suppression fits}\label{claim:fit-methods}
 Claim fit-methods. Source: Dissertation: Appendix E thresholds and suppression fits. Published: Appendix E thresholds and suppression fits.
 
-Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
+Ours: Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item. Status: not established. Documentary inventory only; no independent proof, resource-count measurement or fit completed for this item.
 
 Required scope: Implement cited rescaling and extrapolation methods only on adequate comparable data; synthetic recovery tests do not replicate reported fitted values.
 
@@ -481,7 +482,7 @@ python analysis/upstream_runs.py vendor/single_shot_3D_HGP --suite
 \end{verbatim}
 The toric seed is 20261103; diagnostic seeds are $20261103+100i+\mathrm{repair}$ for syndrome-noise index $i$, and pilot seeds are $20261103+i$. Exact enumeration has no seed. Pilot timing and timeout counts may vary. Saved JSON summaries and raw per-run logs provide checkpoints for inspection; the scripts are not represented as resumable production fitting tools. Missing source inputs remain missing after rerunning these commands.
 
-\begin{longtable}{p{.23\linewidth}p{.37\linewidth}p{.32\linewidth}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.24\linewidth}>{\raggedright\arraybackslash}p{.40\linewidth}>{\raggedright\arraybackslash}p{.30\linewidth}@{}}
 \toprule Claim family & Evidence artifact & Regeneration script\\\midrule\endhead
 ReShape, bases, square gates, nine appendix rows, finite confinement & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/exact_checks.json}{\path{results/exact_checks.json}} & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/verify.py#L171}{\path{analysis/verify.py}}\\
 19 matrices, phases, partitions, round-robin and ideal injection & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/independent_checks.json}{\path{results/independent_checks.json}} & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/independent_checks.py}{\path{analysis/independent_checks.py}}\\
@@ -489,7 +490,7 @@ ReShape, bases, square gates, nine appendix rows, finite confinement & \href{htt
 Eight original-software diagnostic settings & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_diagnostic_grid.json}{\path{results/original_diagnostic_grid.json}} & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/upstream_runs.py#L12}{\path{analysis/upstream_runs.py}}; use --suite\\
 Four feasibility pilots; uncompleted production claims & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/results/original_pilots.json}{\path{results/original_pilots.json}} & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/upstream_runs.py#L12}{\path{analysis/upstream_runs.py}}; omit --suite\\
 All 41 source comparisons and 14 headline bindings & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/evidence-packet.json}{\path{evidence-packet.json}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/headline-finding-audit.json}{\path{sources/headline-finding-audit.json}} & Documentary source audit; requires original source for new extraction\\
-Source attribution and unavailable inputs & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\path{sources/browser-extraction.txt}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\path{availability.md}} & No PDF re-extraction recipe: original bytes unavailable\\
+Source attribution and acquisition record & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/sources/browser-extraction.txt}{\path{sources/browser-extraction.txt}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/availability.md}{\path{availability.md}}; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/provenance/source-acquisition.json}{\path{provenance/source-acquisition.json}} & Public PDF read; headline pages inspected; file not stored here\\
 Binary-algebra dependency & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/quintavalle-hgp/analysis/gf2.py}{\path{analysis/gf2.py}} & Imported by scripts above; no standalone target\\
 \bottomrule
 \end{longtable}
@@ -509,14 +510,14 @@ The bibliography uses editable \texttt{bibitem} entries in \path{references.tex}
 
 \section{Compliance ledger}
 The ledger distinguishes fulfilled reporting requirements from intentional model-specific or layout departures.
-\begin{longtable}{p{.24\linewidth}p{.12\linewidth}p{.56\linewidth}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.28\linewidth}>{\raggedright\arraybackslash}p{.16\linewidth}>{\raggedright\arraybackslash}p{.50\linewidth}@{}}
 \toprule Requirement & Status & Evidence and justification\\\midrule\endhead
 Verdict and full scope & followed & Abstract, introduction, all 41 inventory items, 14 headline findings and six limitations.\\
 Findings separate from effects & followed & Table 1 retains source and finite findings; capacity and suppression effects have separate notes.\\
 Evidence types & followed & Sections 3--4; no universal proof or noisy architecture inferred.\\
 Engine preflight & departed & Accepted model-specific Python/C++ fallback in engine-preflight.json; SEM software cannot represent binary-code algebra.\\
 Approved body layout & departed & Page 1 uses 0.55-inch margins and 9.5-point table text to fit all 14 readable rows; body restores 0.82-inch margins and 11-point text.\\
-Source PDF ink verification & departed & Text-only extraction is available; equation and diagram attributions remain explicitly provisional.\\
+Source page inspection & limited & The thesis PDF was read and the rendered headline pages were inspected; phase conventions and missing grids remain provisional.\\
 Citation coverage & followed & Dissertation cited at first attribution; locators throughout inventory. Wilson metadata verified, full scan not text-readable; NIST supplies Bonferroni method.\\
 Stochastic uncertainty & followed & Wilson and 56-cell adjusted intervals distinguished from rounding and reconstruction uncertainty.\\
 SEM comparability fields & not applicable & No SEM indices, likelihood fits or baseline models are estimated.\\

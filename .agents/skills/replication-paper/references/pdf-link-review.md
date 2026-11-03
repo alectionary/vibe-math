@@ -112,6 +112,33 @@ publication limit accurately; never claim that policy compliance proves the link
 currently resolves, and never switch its navigation URL to a branch to hide it.
 The reviewer must still verify the intended repository and actual link semantics.
 
+## Two gates: branch tree, then live master
+
+These are separate checks. A pre-merge 404 on a new `blob/master` or `tree/master`
+path is expected and must not block. The pre-merge gate does not fetch GitHub.
+
+Before merge, `preflight.py done` checks every same-repository
+`blob/master/<path>` and `tree/master/<path>` target in the paper against the
+branch tree at `HEAD` (`git cat-file -e HEAD:<path>`, and `git cat-file -t` so a
+file link is a blob and a directory link is a tree). Each `#L<n>` or `#L<n>-L<m>`
+anchor must fall inside that file's line count. If the link inventory records a
+`symbol` for that URI, the anchored line must contain it. Paths on another
+repository are not part of this gate.
+
+```sh
+python3 /path/to/skill/scripts/pdf_links.py --branch-targets \
+  --root /path/to/study --paper paper/manuscript.tex
+```
+
+After the paper is on master, run the post-merge gate. It requests the live
+master URL and, for a line anchor, the raw master file. A failure here is a
+publication defect. It is not a reason to retarget the paper at a branch.
+
+```sh
+python3 /path/to/skill/scripts/pdf_links.py --post-merge \
+  --root /path/to/study --paper paper/manuscript.tex
+```
+
 Historical `--legacy-audit` behavior is unchanged and cannot establish current
 acceptance. Version-2 drafts created before this link audit need a newly generated
 inventory and genuine review; do not backfill fictional inspection statements.

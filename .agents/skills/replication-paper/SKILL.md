@@ -111,8 +111,10 @@ equations, and appendix tables, are hints only.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
-- [ ] `preflight.py done` exits 0.
+- [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
+- [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
+- [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
 
 ## 1. Research and evidence handoff
 

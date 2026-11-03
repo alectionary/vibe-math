@@ -7,6 +7,20 @@ from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 LABELS = {'smaller', 'same', 'larger', 'not established'}
+CLAIM_TYPES = ('theorem', 'numerical estimate', 'conjecture', 'open question', 'other')
+# Filler words are ignored so "not established here" still matches. A cell is a
+# placeholder only when every remaining token is verdict vocabulary. A substantive
+# token keeps an explanatory sentence. This is not a synonym list of meanings.
+_FILLERS = frozenset(
+    'here there yet still currently now this that these those the a an is are was were '
+    'be been being remains remain just only simply entirely completely also very quite '
+    'it its of to for in on at by and or with from as all any'.split())
+_VERDICT = frozenset(
+    'not no nothing none null na established replicated blocked unresolved reported '
+    'obtained assessed applicable unavailable unknown finding findings result results found'.split())
+_NEGATION = re.compile(
+    r"(?:\b(?:not|no|never|without|cannot|unproved|unproven)\b|"
+    r"\b(?:does|do|did|is|are|was|were|must|should)\s+not\b|n['’]t\b)")
 
 
 def text(v):
@@ -136,11 +150,121 @@ def comparison(row):
 
 
 
-def finding_errors(claim, artifact_ids):
+def verdict_tokens(value):
+    raw = re.findall(r'[a-z0-9]+', norm(value))
+    merged, i = [], 0
+    while i < len(raw):
+        if raw[i] == 'n' and i + 1 < len(raw) and raw[i + 1] == 'a':
+            merged.append('na')
+            i += 2
+        else:
+            merged.append(raw[i])
+            i += 1
+    return [token for token in merged if token not in _FILLERS]
+
+
+def is_generic_placeholder(value):
+    """Reject a whole-cell verdict, including case, spacing, punctuation, and short rewordings.
+
+    "Not established here.", "No finding.", and "nothing reported" fail. A sentence
+    that adds a substantive token, such as a named estimate, does not. Token overlap
+    with verdict vocabulary does not establish what the sentence means.
+    """
+    if not text(value):
+        return False
+    if not re.search(r'[a-z0-9]', norm(value)):
+        return True
+    tokens = verdict_tokens(value)
+    return bool(tokens) and all(token in _VERDICT for token in tokens)
+
+
+def has_page_locator(value):
+    if not text(value):
+        return False
+    folded = norm(value)
+    return bool(re.search(r'(?:pages?|p{1,2}|pdf)\.?\s*\d', folded) or (
+        re.search(r'\b(?:page|pages|pdf)\b', folded) and re.search(r'\d', folded)))
+
+
+def _affirmed(pattern, wording):
+    folded = norm(wording)
+    for match in re.finditer(pattern, folded):
+        window = folded[max(0, match.start() - 56):match.start()]
+        if _NEGATION.search(window):
+            continue
+        return True
+    return False
+
+
+def wording_contradiction_errors(claim_type, texts):
+    """Bind recorded type to status wording. This does not decide whether the wording is true."""
+    chunks = [item for item in texts if text(item)]
+    if not chunks:
+        return []
+    blob = '\n'.join(chunks)
+    errors = []
+    if claim_type in ('conjecture', 'open question') and any(
+            _affirmed(pattern, blob) for pattern in (r'\bproved\b', r'\bproven\b', r'\bwe prove\b')):
+        errors.append('published: ' + claim_type + ' must not be called proved')
+    finite = bool(re.search(r'\bfinite\b', norm(blob)))
+    universal = any(_affirmed(pattern, blob) for pattern in (
+        r'universal proof', r'\bgeneral proof\b', r'proved for all', r'proves for all'))
+    if finite and universal:
+        errors.append('published: finite check must not be called a universal proof')
+    return errors
+
+
+def paper_sentences_about(paper, needle):
+    if not text(paper) or not text(needle) or len(norm(needle)) < 24:
+        return []
+    folded = norm(needle)
+    return [part for part in re.split(r'(?<=[.!?])\s+', paper) if folded in norm(part)]
+
+
+def bundled_source_text(packet, root=None):
+    """Return bundled source text when an artifact is marked role bundled_source."""
+    if root is None or not isinstance(packet, dict) or not isinstance(packet.get('artifacts'), list):
+        return None
+    root = Path(root).resolve()
+    for art in packet['artifacts']:
+        if not isinstance(art, dict) or art.get('role') != 'bundled_source' or not text(art.get('path')):
+            continue
+        path = (root / art['path']).resolve()
+        try:
+            path.relative_to(root)
+        except ValueError:
+            continue
+        if path.is_file():
+            try:
+                return path.read_text(encoding='utf-8')
+            except (OSError, UnicodeError):
+                return None
+    return None
+
+
+def _search_errors(finding):
+    """A not_reported published finding needs a bounded search, not only a locator."""
+    search = finding.get('search')
+    if not isinstance(search, dict):
+        return ['published: not_reported requires a bounded search (corpus, where, and terms), not only a locator']
+    errors = []
+    if not text(search.get('corpus')):
+        errors.append('published: bounded search corpus required')
+    if not text(search.get('where')):
+        errors.append('published: bounded search location required')
+    terms = search.get('terms')
+    if not (text(terms) or (isinstance(terms, list) and terms and all(text(term) for term in terms))):
+        errors.append('published: bounded search terms required')
+    return errors
+
+
+def finding_errors(claim, artifact_ids, source_text=None, paper_text=None):
     """Source/replication findings exist independently of scalar applicability.
 
-    This binds declared text to evidence and completeness metadata, not semantic
-    truth. Source-by-source editorial review remains mandatory.
+    Reported published findings carry a verbatim excerpt, page locator, claim type,
+    and conditions. When bundled source text is supplied, the excerpt must occur in
+    it after normalization. These checks bind declared evidence. They do not prove
+    that the excerpt means the finding. Source-by-source review remains mandatory.
     """
     errors = []
     findings = claim.get('findings')
@@ -156,11 +280,7 @@ def finding_errors(claim, artifact_ids):
         for key in ('text', 'locator'):
             if not text(f.get(key)):
                 errors.append(side+': finding '+key+' required')
-        # Reject placeholder cells, not legitimate sentences containing these words.
-        if text(f.get('text')) and norm(f['text']).strip(' .:;') in {
-                'not established', 'not replicated', 'blocked', 'unresolved',
-                'n/a', 'na', 'none', 'null', '-', 'not applicable',
-                'not reported', 'not obtained', 'not assessed', 'unavailable', 'unknown'}:
+        if text(f.get('text')) and is_generic_placeholder(f['text']):
             errors.append(side+': generic verdict cannot replace an evidence-linked finding')
         refs = f.get('artifact_ids')
         allowed = claim.get('artifact_ids', [])
@@ -189,8 +309,27 @@ def finding_errors(claim, artifact_ids):
                 errors.append(side+': known finding cannot be marked absent')
             if not text(f.get('reason')) or not isinstance(result, dict) or not text(result.get('unavailable_reason')):
                 errors.append(side+': absent finding needs audited reason and unavailable_reason')
+            if side == 'published' and state == 'not_reported':
+                errors.extend(_search_errors(f))
         elif state in ('reported', 'observed') and value is None:
             errors.append(side+': reported/observed finding needs retained source/result value')
+        if side == 'published' and state == 'reported':
+            excerpt = f.get('source_excerpt')
+            if not text(excerpt) or len(excerpt.strip()) < 8 or is_generic_placeholder(excerpt):
+                errors.append('published: verbatim source excerpt required')
+            elif source_text is not None and norm(excerpt) not in norm(source_text):
+                errors.append('published: source excerpt absent from bundled source text')
+            if not has_page_locator(f.get('page_locator')):
+                errors.append('published: page locator required')
+            claim_type = f.get('claim_type')
+            if claim_type not in CLAIM_TYPES:
+                errors.append('published: claim type must be theorem, numerical estimate, conjecture, open question, or other')
+            if not text(f.get('conditions')):
+                errors.append('published: conditions required')
+            wording = [f.get('text'), f.get('conditions'), f.get('status_wording'),
+                       findings.get('ours', {}).get('text') if isinstance(findings.get('ours'), dict) else None]
+            wording.extend(paper_sentences_about(paper_text, f.get('text')))
+            errors.extend(wording_contradiction_errors(claim_type, wording))
     return errors
 
 
@@ -249,7 +388,7 @@ def finding_cell_errors(claim, row, row_rect, table_rect, region, columns):
             errors.append('Published/Ours finding cells must be separate and ordered left to right')
     return errors
 
-def packet_errors(packet):
+def packet_errors(packet, source_text=None, paper_text=None):
     errors = []
     if not isinstance(packet, dict):
         return ['first-page: evidence packet required']
@@ -273,7 +412,7 @@ def packet_errors(packet):
     claims = {c.get('id'):c for c in packet.get('claims', []) if isinstance(c, dict) and text(c.get('id'))} if isinstance(packet.get('claims'), list) else {}
     for claim_id, claim in claims.items():
         if claim.get('level') == 'headline':
-            errors.extend('first-page claim '+claim_id+': '+e for e in finding_errors(claim, ids))
+            errors.extend('first-page claim '+claim_id+': '+e for e in finding_errors(claim, ids, source_text, paper_text))
     seen, covered = set(), set()
     for row in rows:
         if not isinstance(row, dict):
@@ -443,12 +582,12 @@ def display_errors(effect, view, table_rect, region, row_rect=None):
     return errors
 
 
-def check_data(packet, writer, source, pdf_path, editorial_checks):
+def check_data(packet, writer, source, pdf_path, editorial_checks, bundled_source=None):
     """Canonical adapter interface; callers must separately bind artifacts/hashes."""
     errors = []
     try:
         import fitz
-        errors.extend(packet_errors(packet))
+        errors.extend(packet_errors(packet, source_text=bundled_source, paper_text=source))
         if errors:
             return errors
         first = writer['first_page']; abstract = first['abstract']; table = first['table']
@@ -573,6 +712,7 @@ def check(record, root):
         writer = json.loads((Path(root)/record['writer_manifest']['path']).read_text())
         source = (Path(root)/record['source']['path']).read_text()
         return check_data(packet, writer, source, Path(root)/record['primary']['path'],
-                          record['review']['editorial']['checks'])
+                          record['review']['editorial']['checks'],
+                          bundled_source=bundled_source_text(packet, root))
     except (KeyError, TypeError, ValueError, OSError) as exc:
         return ['first-page: incomplete verification: '+str(exc)]
