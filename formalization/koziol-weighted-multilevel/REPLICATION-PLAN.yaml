@@ -1,0 +1,415 @@
+schema_version: 1
+dissertation: "Koziol, N. A. (2015). A comparison of population-averaged and cluster-specific approaches in the context of unequal probabilities of selection (Doctoral dissertation). University of Nebraska-Lincoln. Chair: James A. Bovaird."
+source_locator: "source/koziol2015.pdf"
+parts:
+  - id: study-dissertation
+    kind: study
+    label: Koziol 2015 dissertation
+    plan: "Account for every chapter, research question, simulation arm, condition, and headline conclusion in the 2015 dissertation. Run the full 208-setting factorial at 1,000 replications where the cores allow, and keep checkpoints so a stopped session can resume."
+    reason: "The factorial is still running. Finished settings match the printed direction on the headline contrasts, and many printed cells miss the 0.001 rounding rule."
+    evidence: "paper/weighted_single_level_versus_multilevel__a_replication_of_koziol_2015.tex"
+    headline: true
+    status: partly
+  - id: ch-1
+    kind: chapter
+    label: Chapter I. Introduction
+    plan: "Take Table 1.1 and the three research questions as the design to run, not as a substitute for the later tables."
+    reason: "The factors and questions are the grid now running. The empirical answer is not finished for every factor combination."
+    evidence: "source/koziol2015.pdf"
+    status: partly
+  - id: ch-2
+    kind: chapter
+    label: Chapter II. Literature review
+    plan: "Use the review to fix the population-averaged versus cluster-specific distinction, Equation 10, and the weighting literature. Do not treat it as a Monte Carlo table."
+    reason: "Chapter II is background. It was read and used to choose the pseudo-likelihood and the marginal transformation. It has no simulation table of its own."
+    evidence: "simulation/parameters.R"
+    status: partly
+  - id: ch-3
+    kind: chapter
+    label: Chapter III. Methods and procedures
+    plan: "Regenerate the finite population from Appendix A and Tables 3.1-3.4, scale weights by Method 2, and fit the eight Mplus estimators named on pages 76-79."
+    reason: "The generator and the estimators are in use. The original Mplus input files were not found, and the Bernoulli random-coefficient arm has not finished."
+    evidence: "simulation/generate.R"
+    status: partly
+  - id: ch-4
+    kind: chapter
+    label: Chapter IV. Results
+    plan: "Compare bias, relative bias, mean square error, coverage, and root mean square error in Appendices C-F for every printed cell."
+    reason: "Cell-by-cell comparison exists for the finished settings. The remaining settings are still being generated."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: ch-5
+    kind: chapter
+    label: Chapter V. Discussion
+    plan: "Revisit the three research-question conclusions, the limitations, and the claim that weighted single-level estimators tended to outperform weighted multilevel estimators."
+    reason: "The signed headline contrasts keep the printed direction. The discussion's full-design claim is not yet checked on every setting."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: rq-1
+    kind: research_question
+    label: Research question 1, no weights
+    plan: "Compare unweighted single-level and unweighted multilevel estimators under informative and noninformative selection."
+    reason: "Unweighted estimators are in every finished cell. Cluster size 20 and the Bernoulli random-coefficient arm are still running, so the question is not closed."
+    evidence: "simulation/results/cell_match.csv"
+    headline: true
+    status: partly
+  - id: rq-2
+    kind: research_question
+    label: Research question 2, true weights
+    plan: "Compare weighted single-level estimators with weighted multilevel estimators that use the true conditional and cluster weights."
+    reason: "True-weight contrasts are finished for the normal random-intercept grid and for the cluster-size-5 random-coefficient and Bernoulli random-intercept cells. The rest of the factorial is still running."
+    evidence: "simulation/results/cell_match.csv"
+    headline: true
+    status: partly
+  - id: rq-3
+    kind: research_question
+    label: Research question 3, approximate weights
+    plan: "Compare approximate-weight multilevel estimators with true-weight multilevel estimators, including the slope contrast in the random-coefficient model."
+    reason: "The approximate-weight slope contrast matches the printed 0.033 on the finished normal random-coefficient cell. Approximate-weight cells at cluster size 20 and for the Bernoulli random coefficient are not finished."
+    evidence: "simulation/results/cell_match.csv"
+    headline: true
+    status: partly
+  - id: headline-outperform
+    kind: headline
+    label: Weighted single-level estimators tended to outperform weighted multilevel estimators
+    plan: "Test the dissertation's headline on the full factorial, and grade the verdict by the cell-level match table rather than by one contrast."
+    reason: "On the finished informative cells the weighted single-level estimator is less biased than the weighted multilevel estimator, in the same direction as the dissertation. Several of those printed cells, including 0.152 against 0.151, miss the 0.001 rounding rule and are mismatches in the comparison table."
+    evidence: "simulation/results/cell_match.csv"
+    headline: true
+    status: partly
+  - id: grid-208
+    kind: condition
+    label: Full factorial of 208 estimator settings
+    plan: "Run all 208 settings: random-intercept 80 (2 designs x 2 outcomes x 2 ICCs x 2 cluster sizes x 5 estimators) and random-coefficient 128 (the same cells x 8 estimators), at 1,000 replications, for bias, relative bias, mean square error, coverage, and root mean square error."
+    reason: "92 settings have a finished Monte Carlo of about 1,000 replications. The other 116 are checkpointed and still running, or queued behind those jobs. A reduced count is not a completed replication."
+    evidence: "simulation/results/grid/"
+    headline: true
+    design_count: 208
+    run_count: 92
+    status: partly
+    subset_justification:
+      cost_estimate: "On four cores a normal random-coefficient replication takes a few seconds and a Bernoulli random-coefficient replication takes about 6 seconds at cluster size 5 and longer at cluster size 20, so the unfinished 116 settings are still hours of Monte Carlo."
+      attempted: "Finished: all 40 normal random-intercept settings; 32 normal random-coefficient settings at cluster size 5; 20 Bernoulli random-intercept settings at cluster size 5. Cluster size 20 and the Bernoulli random-coefficient arm are checkpointed and still running or queued."
+  - id: analysis-generation
+    kind: analysis
+    label: Appendix A data generation
+    plan: "Code the finite-population generator from Appendix A, including population group-mean centering and the informative selection logits."
+    reason: "The generator is the one used for every finished and running cell. It was checked against Table 4.1 on the normal random-intercept grid."
+    evidence: "simulation/generate.R"
+    status: partly
+  - id: analysis-table-32
+    kind: analysis
+    label: Table 3.2 superpopulation values
+    plan: "Use the Appendix A variance formulas, including tau00 = 0.052632 at rho = .05, rather than the rounded 0.053 in Table 3.2."
+    reason: "The parameters used in the generator follow Appendix A. A line-by-line audit of every printed Table 3.2 entry against the code is not a separate table."
+    evidence: "simulation/parameters.R"
+    status: partly
+  - id: analysis-table-34
+    kind: analysis
+    label: Table 3.4 population-averaged targets
+    plan: "Evaluate single-level Bernoulli estimators against Equation 10 for the random intercept and against the Monte Carlo finite-population targets in Table 3.4 for the random coefficient."
+    reason: "Random-intercept targets are in the comparison. Random-coefficient Bernoulli targets are coded and waiting on that arm."
+    evidence: "simulation/parameters.R"
+    status: partly
+  - id: analysis-table-41
+    kind: analysis
+    label: Table 4.1 design characteristics
+    plan: "Check realized cluster counts, sample size, and weight moments against Table 4.1."
+    reason: "The normal random-intercept grid was compared with Table 4.1. The same check has not been printed for every arm."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: analysis-bias
+    kind: analysis
+    label: Appendix C bias and relative bias
+    plan: "Compare every printed bias and relative-bias entry in Tables C.1-C.4."
+    reason: "Finished settings are in the cell-match table. Unfinished settings have no bias yet."
+    evidence: "simulation/results/published_cells.csv"
+    status: partly
+  - id: analysis-mse
+    kind: analysis
+    label: Appendix D mean square error
+    plan: "Compare every printed mean-square-error entry in Tables D.1-D.4, including bracketed marginal values for Bernoulli multilevel estimators."
+    reason: "Mean square error is in the cell-match table for finished settings."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: analysis-coverage
+    kind: analysis
+    label: Appendix E coverage
+    plan: "Compare every printed coverage entry in Tables E.1-E.4 using a 1.96 Wald interval."
+    reason: "Coverage is compared on finished settings. The cluster-size-20 weighted multilevel intercept remains about 0.25 against the printed 0.282, and scalar sandwich corrections do not close that gap."
+    evidence: "simulation/results/coverage_scaling.csv"
+    status: partly
+  - id: analysis-rmse
+    kind: analysis
+    label: Appendix F root mean square error
+    plan: "Compare every printed root-mean-square-error entry in Tables F.1 and F.2. Marginal root mean square error needs the person-level predictor and is still open."
+    reason: "Cluster-specific root mean square error is compared for finished settings. Marginal root mean square error is not stored in the checkpoints."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: analysis-mplus-syntax
+    kind: analysis
+    label: Mplus 7 estimation inputs
+    plan: "Search public sources for the original Mplus inputs. Do not email the author. If they are absent, record the search and reconstruct TYPE=COMPLEX or TWOLEVEL, ESTIMATOR=MLR, LINK=PROBIT, WTSCALE=CLUSTER, and BWTSCALE=UNSCALED."
+    reason: "No Mplus .inp file was found on the dissertation PDF, the 2017 supplement, OSF, GitHub, or the MAP Academy pages that were searched. No email was sent."
+    evidence: "notes/mplus-search.md"
+    status: input_unavailable
+  - id: analysis-appendix-b
+    kind: analysis
+    label: Appendix B external population sizes
+    plan: "Read Table B.1 as context for the chosen population size. Do not rebuild the NCES sampling-frame audit unless the simulation depends on it."
+    reason: "Appendix B is context for M = 48450. The simulation does not estimate those NCES rates, and they were not re-downloaded."
+    evidence: "source/koziol2015.pdf"
+    status: not_attempted
+  - id: arm-ri-normal
+    kind: arm
+    label: Normal random-intercept arm
+    plan: "Run 8 conditions and 5 estimators at 1,000 replications with the analytic Gaussian pseudo-likelihood checked against WeMix."
+    reason: "All 40 settings were run at 1,000 requested replications. Under the 0.001 rule the cell match rate is about 0.37, and coverage is the weakest column."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: arm-ri-bernoulli
+    kind: arm
+    label: Bernoulli random-intercept arm
+    plan: "Run 8 conditions and 5 estimators at 1,000 replications. Store the intercept as the threshold, tau = -latent intercept, and the slopes on the latent scale."
+    reason: "The four cluster-size-5 conditions are at 1,000 replications. The threshold means sit within a few thousandths of Tables C.2. Cluster size 20 is still running."
+    evidence: "simulation/run_grid_bernoulli_ri.R"
+    status: partly
+  - id: arm-rc-normal
+    kind: arm
+    label: Normal random-coefficient arm
+    plan: "Run 8 conditions and 8 estimators at 1,000 replications. Use the closed-form Gaussian integral that matches WeMix on a checked replicate."
+    reason: "The four cluster-size-5 conditions are at 1,000 replications and the intercept biases match Tables C.3 and C.4 to the printed thousandth for several estimators. Cluster size 20 is running. Incorrect-covariance standard errors from an earlier tight tolerance are queued for repair."
+    evidence: "simulation/run_grid_gaussian_rc.R"
+    status: partly
+  - id: arm-rc-bernoulli
+    kind: arm
+    label: Bernoulli random-coefficient arm
+    plan: "Run 8 conditions and 8 estimators with a two-dimensional Gauss-Hermite probit pseudo-likelihood, plus the misspecified random-intercept fits."
+    reason: "The runner is written and queued behind the Gaussian random-coefficient repair. No Bernoulli random-coefficient checkpoint has been written."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-ri-normal-inf-05-nj5
+    kind: condition
+    label: Random-intercept normal, informative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-inf-05-nj20
+    kind: condition
+    label: Random-intercept normal, informative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-inf-25-nj5
+    kind: condition
+    label: Random-intercept normal, informative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-inf-25-nj20
+    kind: condition
+    label: Random-intercept normal, informative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-non-05-nj5
+    kind: condition
+    label: Random-intercept normal, noninformative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-non-05-nj20
+    kind: condition
+    label: Random-intercept normal, noninformative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-non-25-nj5
+    kind: condition
+    label: Random-intercept normal, noninformative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-normal-non-25-nj20
+    kind: condition
+    label: Random-intercept normal, noninformative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "The condition was run at 1,000 requested replications. Cell labels under the 0.001 rule are mixed, so the condition is not called replicated."
+    evidence: "simulation/results/summary.csv"
+    status: partly
+  - id: cond-ri-bernoulli-inf-05-nj5
+    kind: condition
+    label: Random-intercept Bernoulli, informative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-ri-bernoulli-inf-05-nj20
+    kind: condition
+    label: Random-intercept Bernoulli, informative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "45 replications are checkpointed and the run toward 1,000 is still going."
+    evidence: "simulation/results/grid/"
+    status: partly
+  - id: cond-ri-bernoulli-inf-25-nj5
+    kind: condition
+    label: Random-intercept Bernoulli, informative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-ri-bernoulli-inf-25-nj20
+    kind: condition
+    label: Random-intercept Bernoulli, informative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "1 replication is checkpointed and the run toward 1,000 is still going."
+    evidence: "simulation/results/grid/"
+    status: partly
+  - id: cond-ri-bernoulli-non-05-nj5
+    kind: condition
+    label: Random-intercept Bernoulli, noninformative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-ri-bernoulli-non-05-nj20
+    kind: condition
+    label: Random-intercept Bernoulli, noninformative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "1 replication is checkpointed and the run toward 1,000 is still going."
+    evidence: "simulation/results/grid/"
+    status: partly
+  - id: cond-ri-bernoulli-non-25-nj5
+    kind: condition
+    label: Random-intercept Bernoulli, noninformative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-ri-bernoulli-non-25-nj20
+    kind: condition
+    label: Random-intercept Bernoulli, noninformative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "1 replication is checkpointed and the run toward 1,000 is still going."
+    evidence: "simulation/results/grid/"
+    status: partly
+  - id: cond-rc-normal-inf-05-nj5
+    kind: condition
+    label: Random-coefficient normal, informative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-rc-normal-inf-05-nj20
+    kind: condition
+    label: Random-coefficient normal, informative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "325 replications are checkpointed and the run toward 1,000 is still going."
+    evidence: "simulation/results/grid/"
+    status: partly
+  - id: cond-rc-normal-inf-25-nj5
+    kind: condition
+    label: Random-coefficient normal, informative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-rc-normal-inf-25-nj20
+    kind: condition
+    label: Random-coefficient normal, informative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. Earlier conditions in this arm are still using the cores."
+    evidence: "simulation/run_grid_gaussian_rc.R"
+    status: not_attempted
+  - id: cond-rc-normal-non-05-nj5
+    kind: condition
+    label: Random-coefficient normal, noninformative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-rc-normal-non-05-nj20
+    kind: condition
+    label: Random-coefficient normal, noninformative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. Earlier conditions in this arm are still using the cores."
+    evidence: "simulation/run_grid_gaussian_rc.R"
+    status: not_attempted
+  - id: cond-rc-normal-non-25-nj5
+    kind: condition
+    label: Random-coefficient normal, noninformative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "About 1000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
+  - id: cond-rc-normal-non-25-nj20
+    kind: condition
+    label: Random-coefficient normal, noninformative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. Earlier conditions in this arm are still using the cores."
+    evidence: "simulation/run_grid_gaussian_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-inf-05-nj5
+    kind: condition
+    label: Random-coefficient Bernoulli, informative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-inf-05-nj20
+    kind: condition
+    label: Random-coefficient Bernoulli, informative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-inf-25-nj5
+    kind: condition
+    label: Random-coefficient Bernoulli, informative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-inf-25-nj20
+    kind: condition
+    label: Random-coefficient Bernoulli, informative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-non-05-nj5
+    kind: condition
+    label: Random-coefficient Bernoulli, noninformative, rho=.05, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-non-05-nj20
+    kind: condition
+    label: Random-coefficient Bernoulli, noninformative, rho=.05, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-non-25-nj5
+    kind: condition
+    label: Random-coefficient Bernoulli, noninformative, rho=.25, nj=5
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+  - id: cond-rc-bernoulli-non-25-nj20
+    kind: condition
+    label: Random-coefficient Bernoulli, noninformative, rho=.25, nj=20
+    plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
+    reason: "No checkpoint yet. The runner is queued."
+    evidence: "simulation/run_grid_bernoulli_rc.R"
+    status: not_attempted
+removals: []
