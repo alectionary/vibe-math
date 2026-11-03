@@ -1,0 +1,40 @@
+{
+  "retrieved": "2026-11-03",
+  "pdf_obtainable": true,
+  "pdf_sha256": "dfed564052ab4068274f22efcddabbe3dc8890b3b020209bc70be0196d0cfe3f",
+  "pdf_pages": 122,
+  "pdf_stored_in_repository": false,
+  "routes": [
+    {
+      "route": "repository_record",
+      "target": "https://etheses.whiterose.ac.uk/id/eprint/32300/",
+      "result": "HTTP 200. White Rose record for the 2022 Sheffield thesis; CC BY-NC-ND 4.0 listed."
+    },
+    {
+      "route": "direct_pdf",
+      "target": "https://etheses.whiterose.ac.uk/id/eprint/32300/1/AOQ_thesis.pdf",
+      "result": "HTTP 200 on retry. PDF 1.5, 3501858 bytes, 122 pages. An earlier attempt in this study returned HTTP 403."
+    },
+    {
+      "route": "institutional_repository",
+      "target": "https://eprints.whiterose.ac.uk/id/eprint/32300/",
+      "result": "HTTP 404. White Rose eTheses, not this eprints host, holds the file. A ProQuest docview for the same numeric id redirected and returned no thesis."
+    },
+    {
+      "route": "arxiv_or_author",
+      "target": "https://arxiv.org/pdf/2204.10812",
+      "result": "HTTP 200 for 2204.10812v3.pdf. Author manuscript, not the 122-page thesis."
+    }
+  ],
+  "text_read": {
+    "mode": "text",
+    "done": true,
+    "source": "PyMuPDF text of all 122 pages, compared with sources/browser-extraction.txt for the headline lines"
+  },
+  "rendered_pages_inspected": {
+    "mode": "visual",
+    "done": true,
+    "pages": [44, 52, 63, 67, 68, 69, 70, 71, 72, 85, 86, 94, 95, 96, 114, 119]
+  },
+  "headline_pages": [44, 52, 63, 67, 68, 69, 70, 71, 72, 85, 86, 94, 95, 96, 114, 119]
+}

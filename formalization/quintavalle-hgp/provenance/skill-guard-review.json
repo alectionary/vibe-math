@@ -1,0 +1,106 @@
+{
+  "reviewer": "Independent guard_review agent",
+  "recorded_at_utc": "2026-11-03T14:50:13.716802+00:00",
+  "verdict": "No blocking findings within reviewed scope",
+  "scope": "Read-only review of reusable replication-paper skill repair, uncommitted implementation and documentation diff, finding-attribution fixtures/tests, and interactions with existing scalar, nonscalar, and stage checks. This is not a review certification of the study scientific findings.",
+  "checked_files": [
+    {
+      "path": ".agents/skills/replication-paper/SKILL.md",
+      "sha256": "0905eea8917a7a6987dca7ab510339a077917aea02b8af8606b57b6de8c0d836"
+    },
+    {
+      "path": ".agents/skills/replication-paper/references/editorial-review.md",
+      "sha256": "449491c534353838232626185a8dfa4f03c64c749fe83fba267d6e3b1c21cc56"
+    },
+    {
+      "path": ".agents/skills/replication-paper/references/first-page-contract.md",
+      "sha256": "f8b69153f306be741ad1108c642b7316316792a1ef782c5cb59608b858f9701b"
+    },
+    {
+      "path": ".agents/skills/replication-paper/references/manuscript.md",
+      "sha256": "5bb0494efffc78c628eff4323a54273239ed28b459b421ed2df7770848cb56a0"
+    },
+    {
+      "path": ".agents/skills/replication-paper/references/writer-stage.md",
+      "sha256": "4c7cb41a7aeff650c51f6e7c8a1f455882dbe88e3cf990a1ed49d851e0d87f88"
+    },
+    {
+      "path": ".agents/skills/replication-paper/scripts/first_page.py",
+      "sha256": "4dfaea0a2efbb42f64d9f65ac77aaf77abfbcf08bc802192f251fda9328e3161"
+    },
+    {
+      "path": ".agents/skills/replication-paper/scripts/stage_checks.py",
+      "sha256": "9301a96b5ece0d9962a5a87038a168b10bc1bf3b6bbb64bf6069a406815caec7"
+    },
+    {
+      "path": ".agents/skills/replication-paper/tests/test_nonscalar.py",
+      "sha256": "3a57d75cc151176d079f1dee96158e8494622c89e8b302a0af600451f79ae0c8"
+    },
+    {
+      "path": ".agents/skills/replication-paper/tests/test_stages.py",
+      "sha256": "75eeb2ee8fee58bf2afdbd5af2f34167acbf3aed10b340659cdf02d03839b093"
+    },
+    {
+      "path": ".agents/skills/replication-paper/tests/test_first_page.py",
+      "sha256": "2d6e51427cd20012041d97d129f2061ebdf48802027d18cf02eeebd17b5cf073"
+    },
+    {
+      "path": ".agents/skills/replication-paper/tests/test_finding_attribution.py",
+      "sha256": "573e06ad9c97b905a7900ee2625df5251f102f078a904a77c1d9e36fae434e9e"
+    },
+    {
+      "path": ".agents/skills/replication-paper/fixtures/finding_attribution_cases.json",
+      "sha256": "0224205228d7bd734e2697824267981679221c1ac76df540efda7e414c313ac2"
+    }
+  ],
+  "checks_reviewed": [
+    "Published and Ours findings remain distinct from scalar comparison applicability, including null effects.",
+    "Finding text references claim evidence artifacts and locators; finding states preserve known values and require explicit reasons for absence.",
+    "Rendered finding text matches declared text in its own row-contained, ordered, nonoverlapping, header-bound column; headings precede data rows.",
+    "Component claim references and contrast indices must remain complete; rendered alterations to declared component text are rejected.",
+    "Scalar arithmetic checks remain in force; mandatory finding_attribution editorial review is added."
+  ],
+  "findings": [
+    {
+      "severity": "nonblocking",
+      "description": "Earlier first-page-contract wording said existing scalar packets were unchanged despite mandatory new finding/header metadata.",
+      "resolution": "Repair agent clarified that scalar comparison/arithmetic semantics and historical audit behavior remain unchanged, while current acceptance requires finding and column mappings. Verified corrected wording."
+    }
+  ],
+  "validation": [
+    {
+      "command": "python3 -m unittest test_finding_attribution test_first_page test_nonscalar test_stages",
+      "working_directory": "/workspace/quantum-dissertation-replication/.agents/skills/replication-paper/tests",
+      "observed_result": "OK",
+      "tests_run": 75,
+      "elapsed_seconds": 13.917,
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "working_directory": "/workspace/quantum-dissertation-replication",
+      "observed_result": "No output; passed",
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "Tests and code review establish declared evidence/render consistency, not scientific source truth.",
+    "Semantic fidelity, theorem conditions, evidence provenance meaning, and completeness of component summaries still require independent source-by-source editorial review.",
+    "Evidence artifact hashing is enforced by the enclosing stage/adapter contract; first_page.check_data explicitly requires callers to bind artifacts and hashes.",
+    "No full-suite result is claimed by this independent review; only the 75 focused tests and diff check were independently run.",
+    "File hashes were captured when persisting this review after the parent confirmed reviewed skill code was frozen; tests were not rerun for persistence."
+  ],
+  "remaining_blockers": [],
+  "review_actions": "Read-only implementation/paper review; no implementation or paper edits, commits, or pushes. This JSON is the only deliverable written by the reviewing agent.",
+  "addenda": [
+    {
+      "reviewed_at_utc": "2026-11-03T14:57:59.584311+00:00",
+      "path": ".agents/skills/replication-paper/references/manuscript.md",
+      "previous_sha256": "6856ee1890fd15bf58f297bf9d44df87309b1e9e815f9c480b1ccf1615916a62",
+      "reviewed_sha256": "5bb0494efffc78c628eff4323a54273239ed28b459b421ed2df7770848cb56a0",
+      "verdict": "No blocking findings",
+      "finding": "Documentation correctly distinguishes unassessed (no comparable test, fit, or independent proof assessment completed) from not separated (ranking unresolved under an actual uncertainty analysis). Zero completed fits cannot support a not separated verdict. This preserves the distinction between absent assessment and uncertainty-supported inference.",
+      "verification": "Reviewed the documentation-only diff and verified the other 11 recorded file hashes remain unchanged. No code changes; no tests rerun. Earlier observed 75-test result remains recorded without implying a new run."
+    }
+  ]
+}
