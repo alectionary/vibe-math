@@ -143,7 +143,7 @@ The image of a frame under an element of $\mathcal G$ is the frame on the image 
 Class & Linear-algebra search (\S\ref{sec:method}) & Independent check \\
 \midrule
 $T^8$ & none: $9{,}995{,}481$ nodes; $810{,}784$ with look-ahead. Planted controls found (seeds 1, 2). &
-Kissat cube-and-conquer on the frozen encoding \pending{236/256 pieces closed, none SAT}; vertex SAT encoding \pending{} \\
+Kissat cube-and-conquer on the frozen encoding \pending{237/256 pieces closed, none SAT}; vertex SAT encoding \pending{} \\
 $s$ & none: $69{,}180$ nodes, 34\,s. Planted control found. & vertex SAT encoding: planted control SAT; real instance undecided after 2\,h (also with symmetry breaking) \pending{cube-and-conquer} \\
 $sT^8$ & none: $50{,}401{,}313$ nodes, 2 shards, $\approx$\,1.85\,h each. Planted control: unconstrained search exceeded its time limit (40M nodes), but with any 1 to 48 of the 64 planted items fixed the planted frame is found in at most 82 nodes and verified. & vertex SAT encoding \pending{} \\
 $T^4$ (earlier) & none: $15{,}088$ nodes & DRAT-certified~\cite{structural} \\
@@ -266,7 +266,7 @@ $T^4$ (validation) & \texttt{la/gen\_items.py order 4 inst/g-o4.txt}; \texttt{la
 Planted $s$ & \texttt{la/gen\_items.py --plant 1 swap inst/gp1-swap.txt}; \texttt{la/la\_gen -l} & \texttt{0774c77f} & frame found, verified \\
 Planted $sT^8$ & \texttt{la/gen\_items.py --plant 1 swapT8 inst/gp1-swapT8.txt}; \texttt{la/la\_gen -l -p FIXED} & \texttt{757b7274} & frame found from 1--48 fixed items, verified \\
 Swap SAT & \texttt{satcheck/sat\_symmetric.py swap swap.cnf} [\texttt{--symbreak}]; \texttt{kissat swap.cnf} & CNF \texttt{588e61ed}; with symmetry breaking \texttt{05790b41} & UNKNOWN at 7{,}000\,s \\
-$T^8$ SAT (Mac) & \texttt{run-mac.sh}: Kissat cube-and-conquer, 4 parallel jobs on a Mac & frozen encoding & 236/256 cubes UNSAT, 20 open \\
+$T^8$ SAT (Mac) & \texttt{run-mac.sh}: Kissat cube-and-conquer, 4 parallel jobs on a Mac & frozen encoding & 237/256 cubes UNSAT, 19 open \\
 Lean & \texttt{cd lean \&\& lake exe cache get \&\& lake build} & in the header of \texttt{PoolData\-.lean} & 0 errors, 3{,}790 jobs; \texttt{Pools} 675\,s, \texttt{Code} 345\,s \\
 \bottomrule
 \end{tabular}
