@@ -30,7 +30,6 @@
   "not_formalized": [
     "completeness of the weight-16 pool enumeration (every logical class of weight <= 17 is in the pools)",
     "mu_XZ = 26 (input to the mixed reduction)",
-    "Theorem (symmetry group, order 32)",
     "the exhaustive frame searches"
   ],
   "pool_bridge": {
@@ -72,7 +71,8 @@
       "Pools",
       "PhysData",
       "Code",
-      "Mixed"
+      "Mixed",
+      "Aut"
     ],
     "date": "2026-11-02",
     "result": "Build completed successfully (3790 jobs), 0 errors",
@@ -81,5 +81,17 @@
       "Code": 345
     },
     "note": "Run with Mathlib built from source at the pinned rev (cache.mathlib.org unreachable from the build machine); set MATHLIB_NO_CACHE_ON_UPDATE=1 in that case."
+  },
+  "aut_theorem": {
+    "file": "Aut.lean",
+    "sha256": "eac49ad22258fd884ab4c0b586c350c97c191fab52ee8ded4a222679264a5b22",
+    "statement": "aut_classification: every permutation of the 1440 vertices preserving adjacency of the anticommutation graph is gmap b k = T^k after s^b (b : Bool, k : Fin 16); gmap_aut: all 32 are automorphisms; gmap_distinct: they are distinct; adj_spec: adjacency between sides equals PoolBridge.G",
+    "method": "colour refinement proved equivariant for an arbitrary finite graph (aut_of_certificate, no native_decide); concrete facts class_v0 (3 rounds: class of vertex 0 = its 32 images) and dM_id (vertex 0 individualised, 4 rounds: discrete) by native_decide",
+    "check": "lake env lean Aut.lean (Mathlib 5f7b4198); 0 errors, no sorry; 140 s",
+    "axioms": {
+      "aut_classification": "standard (propext, Classical.choice, Quot.sound) plus native_decide auxiliary axioms of class_v0, dM_id, gmap_ginv, ginv_gmap, gmap_eq, rot1_aut, swp_aut (trusts the Lean compiler via Lean.ofReduceBool)",
+      "adj_spec": "standard plus its native_decide axiom"
+    },
+    "not_covered": "the remark that every linear map preserving both pools induces a graph automorphism (immediate, not formalized)"
   }
 }
