@@ -34,6 +34,14 @@ our evidence. Then any reversal of direction, with both sets of numbers.
 Supporting detail comes after that. The research question comes after the
 verdict, not before it.
 
+Match the opening verdict to `REPLICATION-PLAN.yaml`. The abstract says
+replicated only when every headline part was fully run. A reduced headline
+uses partly replicated, and the abstract and the body both state the exact
+counts as `N of M` (for example, `8 of 208`). An unavailable or unrun headline
+is not established. A mismatch is not replicated. Write "fully replicated",
+"replicated every condition", or "replicated the whole dissertation" only
+when every plan part was fully run.
+
 State the match tolerance and the direction of each key effect or ordering
 on page 1, in the abstract or in the headline table. Use "reported" or
 "concluded". Do not write "the author claims".
