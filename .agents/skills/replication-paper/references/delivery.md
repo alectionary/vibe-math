@@ -18,11 +18,26 @@ Read only for the corresponding stage in [SKILL.md](../SKILL.md).
 Reuse the latest user-approved manuscript template. Record its path and revision;
 compare the rendered main paper against it. The bundled
 [approved preamble](../assets/approved-preamble.tex) preserves the Kupzyk layout.
-Keep semantic subject-specific adaptations separate from style changes. Record
-and justify necessary deviations; do not silently invent a new layout.
+Input that file; do not paste a divergent preamble or override it with
+`\newgeometry`. Keep semantic subject-specific adaptations separate from style
+changes. Record and justify necessary deviations; do not silently invent a new
+layout.
+
+Before accepting the rendered paper, compare page 1 by eye with a reference
+paper in the series that uses the same preamble, such as the Kupzyk replication.
+Check the title block, the abstract inset, the margins, and the type. `preflight.py
+done` also measures page 1 against the preamble (letter size, the 0.82-inch text
+block, a centered `\LARGE` roman title, and an inset abstract). That measurement
+does not replace the visual comparison.
 
 Before declaring delivery complete, run the replication-plan done check from
-the [pre-done checklist](../SKILL.md#pre-done-checklist). From the study root:
+the [pre-done checklist](../SKILL.md#pre-done-checklist). That command includes
+the pre-merge link gate: same-repository `blob/master` and `tree/master` paths
+must exist at `HEAD`, and line anchors must fall inside the file. It does not
+fetch live master URLs. A 404 on a path that is not on master yet is expected
+and does not block. After merge, run the separate post-merge gate in
+[pdf-link-review.md](pdf-link-review.md), which requests the live master URLs
+and anchor text. The two gates are not substitutes. From the study root:
 
 ```sh
 python3 .agents/skills/replication-paper/scripts/preflight.py done \

@@ -28,6 +28,9 @@ import sys
 from pathlib import Path
 
 import checks
+import layout
+import pdf_links
+import source_acquisition
 
 
 def probe(which=None, runner=None) -> dict:
@@ -191,6 +194,8 @@ def first_addition(root: Path, path: Path):
     """Return (revision, historical path) for the first commit that added `path`."""
     root = Path(root)
     relative = _relative(root, path)
+    # `git -C` pathspecs are relative to that directory; show/cat paths are not.
+    from_root = ( _toplevel(root).resolve() / relative ).resolve().relative_to(root.resolve()).as_posix()
     completed = _git(
         root,
         "log",
@@ -199,7 +204,7 @@ def first_addition(root: Path, path: Path):
         "--format=%H",
         "--name-status",
         "--",
-        relative,
+        from_root,
     )
     if completed.returncode != 0:
         raise RuntimeError(completed.stderr.decode(errors="replace").strip() or "git log failed")
@@ -296,6 +301,18 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append(baseline_error)
     if paper_error and plan_obj is None:
         errors.append(paper_error)
+    if paper_text is not None:
+        try:
+            errors.extend(
+                'links: ' + item if not item.startswith('links:') else item
+                for item in pdf_links.branch_target_errors(
+                    paper_text, root, inventory=pdf_links.load_inventory_symbols(root))
+            )
+        except (OSError, RuntimeError) as exc:
+            errors.append('links: branch target check failed: ' + type(exc).__name__)
+        errors.extend(source_acquisition.acquisition_errors(root, paper_text))
+        pdf = layout.paper_pdf(paper_path)
+        errors.extend(layout.layout_errors(paper_text, paper_path, pdf))
     if revision is not None:
         for item in analysis or []:
             analysis_path = Path(item) if Path(item).is_absolute() else root / item

@@ -8,6 +8,10 @@ description: "Replicate a dissertation or published result using a committed rep
 Work in this order. Load only the current stage's instructions and required
 artifacts. Apply the [first-page contract](references/first-page-contract.md)
 for source identification, original findings and effect-magnitude comparisons.
+Keep Published, Ours, and comparison separate. Every headline needs evidence-linked
+finding text in its own rendered Published/Ours cells, even when scalar effects
+are null. Require the `finding_attribution` source-by-source review; a null
+comparison is never permission to erase a known finding.
 For a dissertation, cover the whole dissertation: inventory every
 substantive original claim, including theory, empirical results, simulations,
 negative results and unavailable inputs. Do not substitute a convenient table
@@ -107,8 +111,11 @@ equations, and appendix tables, are hints only.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
-- [ ] `preflight.py done` exits 0.
+- [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
+- [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
+- [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
+- [ ] Page 1 was compared visually with a reference paper that uses the shared approved preamble (for example the Kupzyk replication). The geometry check only measures the text block, title, and abstract inset.
 
 ## 1. Research and evidence handoff
 
