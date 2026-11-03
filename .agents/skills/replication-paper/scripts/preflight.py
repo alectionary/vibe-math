@@ -28,6 +28,7 @@ import sys
 from pathlib import Path
 
 import checks
+import layout
 import pdf_links
 import source_acquisition
 
@@ -310,6 +311,8 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         except (OSError, RuntimeError) as exc:
             errors.append('links: branch target check failed: ' + type(exc).__name__)
         errors.extend(source_acquisition.acquisition_errors(root, paper_text))
+        pdf = layout.paper_pdf(paper_path)
+        errors.extend(layout.layout_errors(paper_text, paper_path, pdf))
     if revision is not None:
         for item in analysis or []:
             analysis_path = Path(item) if Path(item).is_absolute() else root / item
