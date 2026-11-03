@@ -2,8 +2,9 @@
 
 This is a new implementation from the allowed specification and four coordinate
 files. All required known-answer tests passed in the final integrated suite.
-This checkpoint has A/B terminal outputs and C still running; see `RESULTS.md`.
-Canonical `results/` will be populated after C ends. Raw recorded runs remain in `final-outputs/` and
+Real A/B/C all ended INCOMPLETE at their bounded limits; their mathematical
+existence questions remain unresolved. Canonical results are in `results/`;
+see `RESULTS.md` for the terminal report. Raw recorded runs remain in `final-outputs/` and
 `bundle-outputs/`, with provenance describing their consolidation. Earlier diagnostic attempts are retained separately and
 must not be mistaken for the final run.
 
@@ -279,5 +280,18 @@ independent. They are not needed by the final clique backends.
 
 ## Final result table
 
-Checkpoint: all six known-answer tests passed; real A/B are INCOMPLETE.
-C is running with fixed deadline 2026-11-03 03:05:38 UTC. See `RESULTS.md`.
+| Pools | Class | Status | Frames found | Seconds |
+|---|---|---|---:|---:|
+| real | blocks01 | COMPLETE | 43,046,721 | 0.044 |
+| real | blocks23 | COMPLETE | 0 | 8.871 |
+| planted1 | A | COMPLETE | 1 | 0.523 |
+| planted1 | B | COMPLETE | 1 | 0.709 |
+| planted1 | C | COMPLETE | 1 | 0.860 |
+| real | quarter | COMPLETE | 0 | 2.936 |
+| real | A | INCOMPLETE | 0 | 7200.333 |
+| real | B | INCOMPLETE | 0 | 6699.480 |
+| real | C | INCOMPLETE | 0 | 7200.395 |
+
+For block tests, frames found is the exact count; otherwise it is returned witnesses.
+INCOMPLETE is not a nonexistence decision. Sources and additional raw runs are
+listed in `results/index.json`.
