@@ -12,7 +12,7 @@ The fresh checkout branch is `replication/quintavalle-hgp-20261103`, based on `7
 - Reconstructed toric ReShape experiment: 56 settings, 560,000 trials, Wilson intervals and 56-cell Bonferroni intervals. Source grid and tie conventions were not recovered.
 - Original BP+OSD software: eight diagnostic conditions, 80,000 trials. At q=.03, repair reduces failures from 617 to 72 per 10,000 trials at our reconstructed depth N=1. This is not an exact reproduction of source Figure 2.
 - **0 of 4** sustainable threshold estimates, **0 of 2** code-capacity analyses, **0 of 2** suppression exponent fits, and **0 of 3** random-product performance analyses reproduced. Toric L11 took 180 seconds for only nine completed pilot trials; projected cost is approximately 55.6 CPU-hours per 10,000-trial point, before full production grids.
-- Literal sibling-gate and partition comparisons contain provisional discrepancies. Independent representations check our calculations, but original PDF ink and Pauli-frame/symmetry conventions remain unresolved. They are not established author errors.
+- Literal sibling-gate and partition comparisons contain provisional discrepancies. Independent representations check our calculations. The thesis PDF was read and the Chapter 4 figures were inspected; Pauli-frame and symmetry conventions remain unresolved. They are not established source errors.
 
 Consult [research-notes.md](research-notes.md), [evidence-packet.json](evidence-packet.json), [REPLICATION-PLAN.yaml](REPLICATION-PLAN.yaml), and [availability.md](availability.md) for the complete inventory, source access limits, and stopping basis. The packet’s structural validation does not establish scientific correctness.
 
@@ -39,7 +39,7 @@ python analysis/upstream_runs.py vendor/single_shot_3D_HGP --suite
 
 Monte Carlo seed is 20261103; original diagnostic seeds are `20261103 + 100*i + repair` for q index i; pilots use `20261103+i`. Exact enumeration has no random seed. Results are overwritten on rerun: preserve the committed outputs before running comparisons. Original-source diagnostics use the original program’s final round, which injects fresh data noise before perfect measurement. The vendored code is unmodified MIT-licensed upstream commit `bdfb437b2abcfa514997f26be97a711b878448cb`, with BP+OSD submodule `74f86d3ef00f04bbb90a043dfef52e92a091f4d3`; see `provenance/upstream.json` and upstream licence files. No network fetch is required for the vendored build.
 
-The thesis extraction is a text-only browser retrieval with page/line markers; it is not a substitute for the source PDF. The scripts use its printed matrix extraction. Do not report source-image validation from these files.
+`sources/browser-extraction.txt` is a text extraction with page and line markers. The thesis PDF was later read in full, and the rendered headline pages were inspected; see `availability.md`. The scripts still use the extracted matrices. Do not treat a text line as a substitute for a figure that was not in the inspected set.
 
 ## Manuscript and acceptance
 

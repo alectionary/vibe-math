@@ -22,7 +22,13 @@ Keep semantic subject-specific adaptations separate from style changes. Record
 and justify necessary deviations; do not silently invent a new layout.
 
 Before declaring delivery complete, run the replication-plan done check from
-the [pre-done checklist](../SKILL.md#pre-done-checklist). From the study root:
+the [pre-done checklist](../SKILL.md#pre-done-checklist). That command includes
+the pre-merge link gate: same-repository `blob/master` and `tree/master` paths
+must exist at `HEAD`, and line anchors must fall inside the file. It does not
+fetch live master URLs. A 404 on a path that is not on master yet is expected
+and does not block. After merge, run the separate post-merge gate in
+[pdf-link-review.md](pdf-link-review.md), which requests the live master URLs
+and anchor text. The two gates are not substitutes. From the study root:
 
 ```sh
 python3 .agents/skills/replication-paper/scripts/preflight.py done \

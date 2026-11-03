@@ -283,6 +283,10 @@ Every headline claim requires `findings.published` and `findings.ours`:
       "text": "Corrects errors through (d-1)/2 under the stated oracle assumptions",
       "state": "reported", "artifact_ids": ["thesis"],
       "locator": "Chapter 3, Theorem 1, PDF page 44",
+      "source_excerpt": "decoded from error of weight up to (d-1)/2",
+      "page_locator": "PDF page 44",
+      "claim_type": "theorem",
+      "conditions": "Any [[n,k,d]] hypergraph product; classical decoder oracles for the seed matrices and their transposes",
       "component_claim_ids": [], "component_contrast_indices": []
     },
     "ours": {
@@ -301,16 +305,37 @@ record. The concise `text` must be independently checked against that evidence;
 it need not reproduce the full claim value verbatim. Preserve theorem conditions,
 conjectural versus proved status, estimator and experiment conditions, and limits.
 
+A Published finding with state `reported` also carries:
+
+- `source_excerpt`: a short verbatim passage from the source, at least a few words, and not itself a placeholder.
+- `page_locator`: a page locator containing a page cue and a number, such as `PDF page 44` or `pp. 70-71`.
+- `claim_type`: one of `theorem`, `numerical estimate`, `conjecture`, `open question`, or `other`.
+- `conditions`: the assumptions and conditions under which that reported finding holds.
+
+When bundled source text exists, mark that packet artifact with `"role": "bundled_source"`. The normalized excerpt must then occur in that text. Normalization collapses whitespace and compatible dashes; it does not interpret notation. If no bundled source is marked, the excerpt is still required and the occurrence check is skipped.
+
+Status wording must not contradict the recorded type. A `conjecture` or `open question` must not be called proved, and wording that describes a finite check must not call that check a universal proof. Negated wording such as "not proved" or "no general proof" is consistent with those limits. The check looks at the finding text, its conditions, optional `status_wording`, and manuscript sentences that contain the finding text.
+
 States are `reported` or `not_reported` for Published, and `observed`,
 `not_obtained` or `not_assessed` for Ours. An absent state requires `reason`, a
 null corresponding claim `published.value` or `ours.value`, and its explicit
-`unavailable_reason`. Absence is audited evidence, never inferred from a null
+`unavailable_reason`. A `not_reported` Published finding also requires `search`
+with `corpus` (what was searched), `where` (the bounded location), and `terms`
+(a string or a nonempty list). A locator by itself does not document that search.
+Absence is audited evidence, never inferred from a null
 `published_effect` or `ours_effect`. A known qualitative parent and a genuinely
 unreported statistic must remain distinct claims/components. For example,
 "Power benefit asserted; no numerical power experiment reported" preserves the
 qualitative claim; a numeric power component may separately be `not_reported`.
-Generic full-cell placeholders such as "not established" or "blocked" fail;
-legitimate explanatory sentences containing those words are allowed.
+Generic full-cell placeholders fail even when reworded, including differences of
+case, whitespace, and punctuation: "Not established here.", "No finding.", and
+"nothing reported" are placeholders. The match ignores short filler words and
+rejects a cell whose remaining tokens are only verdict vocabulary. It is not a
+list of synonyms for the scientific content. A sentence that names a specific
+result, such as "No numerical power difference reported.", is not a placeholder.
+These checks bind declared excerpts, locators, types, and conditions to the
+record. They do not prove what the sentence means. Row-by-row review of every
+Published and Ours cell remains mandatory.
 
 For each side, retain `component_claim_ids` exactly from the claim (or `[]`) and
 `component_contrast_indices` containing every index in the claim's `contrasts`

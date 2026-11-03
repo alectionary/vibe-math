@@ -103,7 +103,8 @@ class Findings(unittest.TestCase):
         for finding in claim['findings'].values():finding['component_claim_ids']=['power-statistic']
         self.assertEqual(m.packet_errors(self.packet),[])
         # Independently audited entirely absent statistic is legitimate too.
-        child['findings']['published'].update(text='No numerical power difference reported.',state='not_reported',reason='Source reports standard errors, not rejection rates.')
+        child['findings']['published'].update(text='No numerical power difference reported.',state='not_reported',reason='Source reports standard errors, not rejection rates.',
+                                              search=dict(corpus='Chapter 6 results and discussion', where='PDF pp. 91-102', terms=['rejection rate', 'power']))
         child['findings']['published']['component_claim_ids']=[]
         self.assertEqual(m.finding_errors(child,{'results'}),[])
 
@@ -172,5 +173,56 @@ class Findings(unittest.TestCase):
         for value in (None,[],{},'not established'):
             p=copy.deepcopy(self.packet);p['claims'][0]['findings']=value
             self.assertTrue(m.packet_errors(p))
+
+    def test_reworded_placeholders_are_rejected(self):
+        claim,_=self.qualitative()
+        for value in ('Not established here.', 'No finding.', 'nothing reported', 'not-established',
+                      'N/A.', 'nothing was reported here', '  NOT   REPLICATED  '):
+            with self.subTest(value=value):
+                claim['findings']['published']['text']=value
+                self.assertTrue(any('generic verdict' in e for e in m.finding_errors(claim,{'results'})))
+
+    def test_reported_finding_needs_excerpt_type_locator_and_conditions(self):
+        claim,_=self.qualitative()
+        published=claim['findings']['published']
+        self.assertEqual(m.finding_errors(claim,{'results'}),[])
+        for key in ('source_excerpt','page_locator','claim_type','conditions'):
+            saved=published[key]; published[key]=''
+            self.assertTrue(m.finding_errors(claim,{'results'}), key)
+            published[key]=saved
+        published['claim_type']='guess'
+        self.assertTrue(any('claim type' in e for e in m.finding_errors(claim,{'results'})))
+
+    def test_excerpt_must_occur_in_bundled_source_when_present(self):
+        claim,_=self.qualitative()
+        source='Theorem 1 can be successfully decoded from error of weight up to (d - 1)/2.'
+        claim['findings']['published']['source_excerpt']='decoded from error of weight up to (d - 1)/2'
+        self.assertEqual(m.finding_errors(claim,{'results'}, source_text=source),[])
+        self.assertTrue(any('bundled source' in e for e in m.finding_errors(claim,{'results'}, source_text='unrelated source text')))
+
+    def test_status_wording_cannot_promote_a_conjecture_or_a_finite_check(self):
+        claim,_=self.qualitative()
+        published=claim['findings']['published']
+        published.update(claim_type='conjecture', text='The extension is reported as a conjecture.')
+        self.assertEqual(m.finding_errors(claim,{'results'}),[])
+        published['text']='The conjecture is proved for every code.'
+        self.assertTrue(any('must not be called proved' in e for e in m.finding_errors(claim,{'results'})))
+        published['text']='The conjecture is not proved.'
+        self.assertEqual(m.finding_errors(claim,{'results'}),[])
+        published.update(claim_type='theorem', text='Finite checks pass; no general proof.')
+        claim['findings']['ours']['text']='Finite checks pass; no general proof.'
+        self.assertEqual(m.finding_errors(claim,{'results'}),[])
+        claim['findings']['ours']['text']='The finite check is a universal proof.'
+        self.assertTrue(any('universal proof' in e for e in m.finding_errors(claim,{'results'})))
+
+    def test_not_reported_needs_a_bounded_search_not_only_a_locator(self):
+        claim,_=self.qualitative(CASES[1])
+        published=claim['findings']['published']
+        published.update(text='No numerical power difference reported.', state='not_reported',
+                         reason='The searched chapters report standard errors only.')
+        claim['published']=dict(value=None, units='power probability', unavailable_reason='No rejection-rate experiment reported in source.')
+        self.assertTrue(any('bounded search' in e for e in m.finding_errors(claim,{'results'})))
+        published['search']=dict(corpus='Chapter 6', where='PDF pp. 91-102', terms=['power', 'rejection rate'])
+        self.assertEqual(m.finding_errors(claim,{'results'}),[])
 
 if __name__=='__main__':unittest.main()

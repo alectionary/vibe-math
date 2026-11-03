@@ -78,10 +78,14 @@ class Stages(unittest.TestCase):
             interpretation='descriptive point estimates; not equivalence', uncertainty_statement='No cross-population estimate')]
 
         claim['findings'] = {
-            'published': dict(text='13.184', state='reported', artifact_ids=['results'], locator='Table 2, B minus A', component_claim_ids=[], component_contrast_indices=[0]),
+            'published': dict(text='13.184', state='reported', artifact_ids=['results'], locator='Table 2, B minus A',
+                              source_excerpt='Source table 2, p 4: 2.712', page_locator='p. 4', claim_type='numerical estimate',
+                              conditions='n=1000; one prespecified contrast', component_claim_ids=[], component_contrast_indices=[0]),
             'ours': dict(text='13.208', state='observed', artifact_ids=['results'], locator='Replication B minus A', component_claim_ids=[], component_contrast_indices=[0])}
         blocked['findings'] = {
-            'published': dict(text='Robustness', state='reported', artifact_ids=['results'], locator='Chapter 3 robustness finding', component_claim_ids=[], component_contrast_indices=[]),
+            'published': dict(text='Robustness', state='reported', artifact_ids=['results'], locator='Chapter 3 robustness finding',
+                              source_excerpt='two populations unavailable', page_locator='p. 12', claim_type='other',
+                              conditions='Three populations; two inputs missing', component_claim_ids=[], component_contrast_indices=[]),
             'ours': dict(text='Two populations unavailable', state='not_obtained', reason='Data acquisition audit found no input files', artifact_ids=['results'], locator='Acquisition audit', component_claim_ids=[], component_contrast_indices=[])}
 
     def test_valid_packet_keeps_blocked_headline(self):

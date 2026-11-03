@@ -28,6 +28,8 @@ import sys
 from pathlib import Path
 
 import checks
+import pdf_links
+import source_acquisition
 
 
 def probe(which=None, runner=None) -> dict:
@@ -296,6 +298,16 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append(baseline_error)
     if paper_error and plan_obj is None:
         errors.append(paper_error)
+    if paper_text is not None:
+        try:
+            errors.extend(
+                'links: ' + item if not item.startswith('links:') else item
+                for item in pdf_links.branch_target_errors(
+                    paper_text, root, inventory=pdf_links.load_inventory_symbols(root))
+            )
+        except (OSError, RuntimeError) as exc:
+            errors.append('links: branch target check failed: ' + type(exc).__name__)
+        errors.extend(source_acquisition.acquisition_errors(root, paper_text))
     if revision is not None:
         for item in analysis or []:
             analysis_path = Path(item) if Path(item).is_absolute() else root / item
