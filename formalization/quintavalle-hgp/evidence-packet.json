@@ -60,7 +60,7 @@
     {
       "id": "headline-audit",
       "path": "sources/headline-finding-audit.json",
-      "sha256": "36fce188cfe5c85b9b10dac0b2875a0ada7a7afb697f02c800bf3f15b46beeaa"
+      "sha256": "7c7182d62ec50b25d954fcb476cdf09bbd2d89a183c691ffbeeacd62de0113d7"
     }
   ],
   "claims": [
@@ -618,9 +618,9 @@
     {
       "id": "reshape-random",
       "statement": "Figure 4 random (3,4) family",
-      "source_locator": "Ch3 Figure4; PDF52, L2612\u20132614@P51",
+      "source_locator": "Ch3 Figure4 and discussion; PDF52, L2612\u20132614 and L2644\u20132649@P51",
       "level": "headline",
-      "conditions": "Source HGP C(delta,delta transpose), full-rank randomly generated(3,4)seed matrices, independent phase-flip noise; original matrices and grid not recovered.",
+      "conditions": "Source HGP C(delta,delta transpose), full-rank randomly generated(3,4)seed matrices, independent phase-flip noise; original matrices and grid not recovered. Source discussion explicitly qualifies the random panel as less clear and expects, rather than demonstrates, the larger-distance toric trend.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
@@ -630,7 +630,7 @@
       "reconstruction_scope": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
-        "value": "Random (3,4) family exhibits unfavorable stochastic scaling",
+        "value": "Figure4 labels the random (3,4) family anti-threshold, but its discussion says the panel is less clear: pseudo-threshold appears to increase with distance and no common crossing is seen. The authors expect the toric trend for larger distances; that expectation is not a demonstrated asymptotic result.",
         "units": "source statement"
       },
       "ours": {
@@ -662,15 +662,15 @@
       },
       "comparison_kind": "nonscalar",
       "component_claim_ids": [],
-      "source_claim_type": "numerical evidence",
+      "source_claim_type": "numerical evidence with qualified large-distance expectation",
       "findings": {
         "published": {
-          "text": "Random (3,4) family shows anti-threshold behavior.",
+          "text": "Random (3,4) scaling unclear; adverse large-distance trend expected.",
           "state": "reported",
           "artifact_ids": [
             "source"
           ],
-          "locator": "Ch3 Figure4; PDF52, L2612\u20132614@P51",
+          "locator": "Ch3 Figure4 and discussion; PDF52, L2612\u20132614 and L2644\u20132649@P51",
           "component_claim_ids": [],
           "component_contrast_indices": []
         },
