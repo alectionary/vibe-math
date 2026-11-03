@@ -56,6 +56,11 @@
       "id": "method-citations",
       "path": "sources/method-citations.json",
       "sha256": "c3b6f6c1d759ea592a79d9652e734c12a7327213baabe2ba48fdbb287f61c5b8"
+    },
+    {
+      "id": "headline-audit",
+      "path": "sources/headline-finding-audit.json",
+      "sha256": "68a29f0191e232c6d820d0c4125fd6562e32e07d1523c326e906169c8e3877c8"
     }
   ],
   "claims": [
@@ -380,7 +385,7 @@
     {
       "id": "reshape-correctness",
       "statement": "Adversarial decoding and shaped errors",
-      "source_locator": "Ch3 Theorem 1, Corollary 2; PDF49\u201350",
+      "source_locator": "Ch3 Theorem1; PDF44, L1764\u20131768@P43",
       "level": "headline",
       "conditions": "Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -392,7 +397,7 @@
       "reconstruction_scope": "Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
-        "value": "Corrects phase errors below half distance; shaped-error extension",
+        "value": "Any [[n,k,d]] HGP constructed from the classical seed parity checks can decode errors through (d-1)/2 with O(k) oracle calls to classical seed/transposed-seed decoders plus O(n^2) operations; source theorem, not our finite proof.",
         "units": "source statement"
       },
       "ours": {
@@ -423,7 +428,30 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "theorem",
+      "findings": {
+        "published": {
+          "text": "Corrects errors through (d-1)/2 using classical oracles.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch3 Theorem1; PDF44, L1764\u20131768@P43",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "1,061 phase-error checks pass; no general proof.",
+          "state": "observed",
+          "artifact_ids": [
+            "exact"
+          ],
+          "locator": "cases[].adversarial_errors",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "reshape-cost",
@@ -519,7 +547,7 @@
     {
       "id": "reshape-toric",
       "statement": "Figure 4 toric anti-threshold",
-      "source_locator": "Ch3 Figure 4; PDF51\u201352",
+      "source_locator": "Ch3 Figure4; PDF52, L2612\u20132645@P51",
       "level": "headline",
       "conditions": "Reconstruct all identifiable source distances and probabilities with at least 10000 trials per point, or exact probabilities where derivable and independently checked; do not substitute planar codes for toric codes.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -562,20 +590,43 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "numerical evidence",
+      "findings": {
+        "published": {
+          "text": "Toric ReShape shows anti-threshold behavior.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch3 Figure4; PDF52, L2612\u20132645@P51",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "p=.03: failure .0596 to .1828 as d=6 to 20; reconstructed.",
+          "state": "observed",
+          "artifact_ids": [
+            "toric"
+          ],
+          "locator": "rows: p=.03, size6/8/10/20; 10000trials per setting",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "reshape-random",
       "statement": "Figure 4 random (3,4) family",
-      "source_locator": "Ch3 Figure 4; PDF51\u201352",
+      "source_locator": "Ch3 Figure4; PDF52, L2612\u20132614@P51",
       "level": "headline",
       "conditions": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
       "status": "blocked",
-      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
-      "numerical": "Not estimated",
+      "status_reason": "Not run: original random seeds/grid not recovered.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
@@ -584,8 +635,8 @@
       },
       "ours": {
         "value": null,
-        "units": "finite result",
-        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        "units": "replication result",
+        "unavailable_reason": "Not run: original random seeds/grid not recovered."
       },
       "contrasts": [],
       "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
@@ -610,12 +661,36 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "numerical evidence",
+      "findings": {
+        "published": {
+          "text": "Random (3,4) family shows anti-threshold behavior.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch3 Figure4; PDF52, L2612\u20132614@P51",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "Not run: original random seeds/grid not recovered.",
+          "state": "not_obtained",
+          "artifact_ids": [
+            "availability"
+          ],
+          "locator": "random (3,4) inputs not recovered",
+          "component_claim_ids": [],
+          "component_contrast_indices": [],
+          "reason": "Not run: original random seeds/grid not recovered."
+        }
+      }
     },
     {
       "id": "line-basis",
       "statement": "Canonical logical line basis",
-      "source_locator": "Ch4 Theorem 1 and Appendix A",
+      "source_locator": "Ch4 Theorem1; PDF63, L3598\u20133624@P62",
       "level": "headline",
       "conditions": "Implement independent kernel RREF basis construction and verify symplectic pairing, line support and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination and complexity.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -658,7 +733,30 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "theorem",
+      "findings": {
+        "published": {
+          "text": "Every HGP has a symplectic logical line basis.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch4 Theorem1; PDF63, L3598\u20133624@P62",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "256 seed pairs plus six examples pass; finite checks.",
+          "state": "observed",
+          "artifact_ids": [
+            "exact"
+          ],
+          "locator": "all_2_by_2_seed_pairs and cases; structural assertions in analysis/verify.py",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "diagonal-partition",
@@ -981,7 +1079,7 @@
     {
       "id": "pieceable",
       "statement": "Round-robin entangling gates",
-      "source_locator": "Ch4 Section 4",
+      "source_locator": "Ch4 Sec4.1; PDF70\u201371, L4186\u20134225@P69\u201370; limitations L4350\u20134363@P72",
       "level": "headline",
       "conditions": "Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -1024,7 +1122,30 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "conditional construction",
+      "findings": {
+        "published": {
+          "text": "Round-robin logical CZ with intermediate ReShape correction.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch4 Sec4.1; PDF70\u201371, L4186\u20134225@P69\u201370; limitations L4350\u20134363@P72",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "361 schedules and 256 ideal logical pairs pass; noisy steps untested.",
+          "state": "observed",
+          "artifact_ids": [
+            "independent"
+          ],
+          "locator": "round_robin and logical_round_robin",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "injection",
@@ -1074,7 +1195,7 @@
     {
       "id": "confinement-adversarial",
       "statement": "Confinement implies adversarial single-shot correction",
-      "source_locator": "Ch5 Theorem 1, Lemma 1",
+      "source_locator": "Ch5 Theorem1; PDF86, L5046\u20135050@P85; definition L5040\u20135044",
       "level": "headline",
       "conditions": "Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -1086,7 +1207,7 @@
       "reconstruction_scope": "Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
-        "value": "Confinement implies adversarial single-shot correction",
+        "value": "An LDPC code family with good confinement and distance d>=a*n^b (a,b>0) is single shot for adversarial noise; good X confinement gives the phase-Z version.",
         "units": "source statement"
       },
       "ours": {
@@ -1117,30 +1238,53 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "conditional theorem",
+      "findings": {
+        "published": {
+          "text": "Good confinement and growing distance imply adversarial single-shot.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 Theorem1; PDF86, L5046\u20135050@P85; definition L5040\u20135044",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "31,232 residual checks on 12 qubits; no general proof.",
+          "state": "observed",
+          "artifact_ids": [
+            "exact"
+          ],
+          "locator": "shadow.shadow_checks, shadow.n; finite exact shadow decoder",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "confinement-stochastic",
       "statement": "Linear confinement implies stochastic single-shot threshold",
-      "source_locator": "Ch5 Theorem 2, Appendix A",
+      "source_locator": "Ch5 Theorem2; PDF86, L5057\u20135061@P85; bounded qubit degree and polynomially growing distance",
       "level": "headline",
       "conditions": "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
       "status": "not_established",
-      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
-      "numerical": "Not estimated",
+      "status_reason": "Not independently proved; theorem conditions inventoried.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
-        "value": "Linear confinement implies stochastic single-shot threshold",
+        "value": "An LDPC family with bounded qubit degree, good linear confinement and d>=a*n^b (a,b>0) has a sustainable single-shot threshold for local stochastic noise; good X confinement gives the phase-Z version.",
         "units": "source statement"
       },
       "ours": {
         "value": null,
-        "units": "finite result",
-        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        "units": "replication result",
+        "unavailable_reason": "Not independently proved; theorem conditions inventoried."
       },
       "contrasts": [],
       "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
@@ -1165,12 +1309,36 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "conditional theorem",
+      "findings": {
+        "published": {
+          "text": "Good linear confinement implies stochastic single-shot threshold.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 Theorem2; PDF86, L5057\u20135061@P85; bounded qubit degree and polynomially growing distance",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "Not independently proved; theorem conditions inventoried.",
+          "state": "not_assessed",
+          "artifact_ids": [
+            "notes"
+          ],
+          "locator": "Theory accounting: AppendixA proof inventoried, not independently re-proved",
+          "component_claim_ids": [],
+          "component_contrast_indices": [],
+          "reason": "Not independently proved; theorem conditions inventoried."
+        }
+      }
     },
     {
       "id": "confinement-product",
       "statement": "Cubic confinement of 3D products",
-      "source_locator": "Ch5 Theorem 3, Appendix C",
+      "source_locator": "Ch5 Theorem3; PDF86, L5062\u20135064@P85; f(x)=x^3/4 or better",
       "level": "headline",
       "conditions": "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -1182,7 +1350,7 @@
       "reconstruction_scope": "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
-        "value": "3D products have cubic confinement f(x)=x^3/4 under stated distance conditions",
+        "value": "All 3D product codes have (t,f) X confinement with t equal to Z distance and f(x)=x^3/4 or better.",
         "units": "source statement"
       },
       "ours": {
@@ -1213,7 +1381,30 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "theorem",
+      "findings": {
+        "published": {
+          "text": "3D products have cubic X confinement; t is Z distance.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 Theorem3; PDF86, L5062\u20135064@P85; f(x)=x^3/4 or better",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "4,096 errors enumerated on 12 qubits; no general proof.",
+          "state": "observed",
+          "artifact_ids": [
+            "exact"
+          ],
+          "locator": "shadow.physical_errors_enumerated; finite quotient check",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "confinement-expander",
@@ -1355,15 +1546,15 @@
     {
       "id": "threshold-table",
       "statement": "Four sustainable threshold estimates",
-      "source_locator": "Ch5 Table II",
+      "source_locator": "Ch5 TableII; PDF85, L4949\u20134955@P84; standard errors in parentheses; MWPM+BP/OSD versus BP/OSD twice",
       "level": "headline",
       "conditions": "Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
       "status": "not_established",
-      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
-      "numerical": "Not estimated",
+      "status_reason": "0 of 4 sustainable-threshold estimates completed.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
@@ -1372,8 +1563,8 @@
       },
       "ours": {
         "value": null,
-        "units": "finite result",
-        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        "units": "replication result",
+        "unavailable_reason": "0 of 4 sustainable-threshold estimates completed."
       },
       "contrasts": [
         {
@@ -1416,20 +1607,50 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "numerical estimates",
+      "findings": {
+        "published": {
+          "text": "Surface 3.08(4)/2.90(1)%; toric 2.90(2)/2.78(2)%.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 TableII; PDF85, L4949\u20134955@P84; standard errors in parentheses; MWPM+BP/OSD versus BP/OSD twice",
+          "component_claim_ids": [],
+          "component_contrast_indices": [
+            0,
+            1
+          ]
+        },
+        "ours": {
+          "text": "0 of 4 sustainable-threshold estimates completed.",
+          "state": "not_obtained",
+          "artifact_ids": [
+            "pilot"
+          ],
+          "locator": "original_pilots.json; timed diagnostics are not threshold fits",
+          "component_claim_ids": [],
+          "component_contrast_indices": [
+            0,
+            1
+          ],
+          "reason": "0 of 4 sustainable-threshold estimates completed."
+        }
+      }
     },
     {
       "id": "capacity",
       "statement": "Code-capacity threshold and prior-decoder comparison",
-      "source_locator": "Ch5 Table I, Figure 3",
+      "source_locator": "Ch5 TableI; PDF85, L4893\u20134907@P84; phase-flip threshold, cited sweep comparator",
       "level": "headline",
       "conditions": "Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
       "status": "not_established",
-      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
-      "numerical": "Not estimated",
+      "status_reason": "0 of 2 capacity fits completed; no fitted contrast.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
@@ -1438,8 +1659,8 @@
       },
       "ours": {
         "value": null,
-        "units": "finite result",
-        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        "units": "replication result",
+        "unavailable_reason": "0 of 2 capacity fits completed; no fitted contrast."
       },
       "contrasts": [
         {
@@ -1472,12 +1693,40 @@
         "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
         "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "source_claim_type": "numerical estimate and cited comparator",
+      "findings": {
+        "published": {
+          "text": "BP+OSD 21.55(1)% versus cited sweep 15.5%.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 TableI; PDF85, L4893\u20134907@P84; phase-flip threshold, cited sweep comparator",
+          "component_claim_ids": [],
+          "component_contrast_indices": [
+            0
+          ]
+        },
+        "ours": {
+          "text": "0 of 2 capacity fits completed; no fitted contrast.",
+          "state": "not_obtained",
+          "artifact_ids": [
+            "pilot"
+          ],
+          "locator": "original_pilots.json; no production capacity fit",
+          "component_claim_ids": [],
+          "component_contrast_indices": [
+            0
+          ],
+          "reason": "0 of 2 capacity fits completed; no fitted contrast."
+        }
       }
     },
     {
       "id": "failure-subroutine",
       "statement": "Figure 2 failure-mode improvement",
-      "source_locator": "Ch5 Figure 2",
+      "source_locator": "Ch5 Figure2 and text; PDF94, L5939@P93; high syndrome noise",
       "level": "headline",
       "conditions": "Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures distinct.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
@@ -1520,20 +1769,43 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "numerical evidence",
+      "findings": {
+        "published": {
+          "text": "Repair improves high-noise decoding by over an order of magnitude.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 Figure2 and text; PDF94, L5939@P93; high syndrome noise",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "617 versus 72 failures/10000 at L=5, p=.1, q=.03, N=1.",
+          "state": "observed",
+          "artifact_ids": [
+            "original"
+          ],
+          "locator": "toric3D_L5_p0.1_q0.03_N1 repair0/1; reconstructed depth; final round adds data noise",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        }
+      }
     },
     {
       "id": "suppression",
       "statement": "Below-threshold exponents",
-      "source_locator": "Ch5 Appendix E",
+      "source_locator": "Ch5 AppendixE/Fig6; PDF114, L8196\u20138197@P113; also L5997\u20135998@P94",
       "level": "headline",
       "conditions": "Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
       "status": "not_established",
-      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
-      "numerical": "Not estimated",
+      "status_reason": "0 of 2 suppression fits completed.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
@@ -1542,8 +1814,8 @@
       },
       "ours": {
         "value": null,
-        "units": "finite result",
-        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        "units": "replication result",
+        "unavailable_reason": "0 of 2 suppression fits completed."
       },
       "contrasts": [
         {
@@ -1576,20 +1848,48 @@
         "untested": "Universal proofs, exact source grids and production fits; source-ink gate verification.",
         "resource_basis": "Toric L11 pilot completed 9 trials in 180 seconds: approximately 55.6 CPU-hours per 10000-trial point; full production grids are unresolved.",
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
+      },
+      "source_claim_type": "numerical estimates",
+      "findings": {
+        "published": {
+          "text": "Beta 1.91(3) at N=0; 1.15(3) at N=8.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 AppendixE/Fig6; PDF114, L8196\u20138197@P113; also L5997\u20135998@P94",
+          "component_claim_ids": [],
+          "component_contrast_indices": [
+            0
+          ]
+        },
+        "ours": {
+          "text": "0 of 2 suppression fits completed.",
+          "state": "not_obtained",
+          "artifact_ids": [
+            "pilot"
+          ],
+          "locator": "No adequate production data for AppendixE fits; research-notes.md numerical stopping",
+          "component_claim_ids": [],
+          "component_contrast_indices": [
+            0
+          ],
+          "reason": "0 of 2 suppression fits completed."
+        }
       }
     },
     {
       "id": "nontopological",
       "statement": "Random-product single-shot performance",
-      "source_locator": "Ch5 Table III, Figure 4",
+      "source_locator": "Ch5 TableIII/Figure4; PDF95\u201396, L6015@P94 and L6060\u20136080@P95",
       "level": "headline",
       "conditions": "Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
       "status": "blocked",
-      "status_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results.",
-      "numerical": "Not estimated",
+      "status_reason": "0 of 3 performance analyses; original seeds not recovered.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
@@ -1598,8 +1898,8 @@
       },
       "ours": {
         "value": null,
-        "units": "finite result",
-        "unavailable_reason": "Required full-design inputs or production estimates not obtained; pilots and inventory are not fitted results."
+        "units": "replication result",
+        "unavailable_reason": "0 of 3 performance analyses; original seeds not recovered."
       },
       "contrasts": [],
       "contrast_not_applicable": "Heterogeneous code tuples and an approximate crossing have no scientifically justified aggregate signed effect. Raw components retained as separate supporting claims.",
@@ -1630,7 +1930,41 @@
         "random-code2",
         "random-code3",
         "random-crossing"
-      ]
+      ],
+      "source_claim_type": "numerical evidence",
+      "findings": {
+        "published": {
+          "text": "Three random codes; crossing near 2.7% at N=16.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch5 TableIII/Figure4; PDF95\u201396, L6015@P94 and L6060\u20136080@P95",
+          "component_claim_ids": [
+            "random-code1",
+            "random-code2",
+            "random-code3",
+            "random-crossing"
+          ],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "0 of 3 performance analyses; original seeds not recovered.",
+          "state": "not_obtained",
+          "artifact_ids": [
+            "availability"
+          ],
+          "locator": "Random-product original matrices and grid not recovered",
+          "component_claim_ids": [
+            "random-code1",
+            "random-code2",
+            "random-code3",
+            "random-crossing"
+          ],
+          "component_contrast_indices": [],
+          "reason": "0 of 3 performance analyses; original seeds not recovered."
+        }
+      }
     },
     {
       "id": "fit-methods",
@@ -1681,24 +2015,25 @@
     {
       "id": "limitations",
       "statement": "Limits of a complete HGP computing architecture",
-      "source_locator": "Ch6 and Ch3\u20135 discussions",
+      "source_locator": "Ch6 PDF119, L8443\u20138459@P118; Ch5 PDF86 L5051\u20135056@P85",
       "level": "headline",
       "conditions": "Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.",
       "methods": "Exact GF(2), independent tensor/phase representations, reconstructed Monte Carlo, pinned original BP+OSD where applicable; details in research-notes.md.",
       "uncertainty": "Exact finite checks have no sampling interval. ReShape uses Wilson95 and 56-cell Bonferroni intervals; original source uncertainty is retained where printed. No interval quantifies source reconstruction uncertainty.",
       "multiplicity": "ReShape 56-cell family declared; other finite checks descriptive; no source-wide significance test.",
-      "status": "partly_replicated",
-      "status_reason": "Finite or documentary coverage only; universal and full-design conclusions not independently established. See named artifacts and limitations.",
-      "numerical": "Open nonlinear-confinement threshold, restricted gates and noisy gate performance remain unresolved",
+      "status": "not_established",
+      "status_reason": "No architecture or conjecture demonstration attempted.",
+      "numerical": "Not estimated or independently proved, as specified in finding",
       "reconstruction_scope": "Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.",
       "reproduction_deviation": "Finite or reconstructed tests; original figure grids and source ink unresolved. No universal theorem certified.",
       "published": {
-        "value": "No complete demonstrated scalable computing architecture",
+        "value": "Chapter6 explicitly leaves a comprehensive framework for encoded operations open. Chapter5 conjectures a stochastic threshold from general good confinement, while proving the linear-confinement conditional theorem.",
         "units": "source statement"
       },
       "ours": {
-        "value": "Open nonlinear-confinement threshold, restricted gates and noisy gate performance remain unresolved",
-        "units": "finite result"
+        "value": null,
+        "units": "replication result",
+        "unavailable_reason": "No architecture or conjecture demonstration attempted."
       },
       "contrasts": [],
       "contrast_not_applicable": "Qualitative proposition or heterogeneous family has no justified single scalar contrast.",
@@ -1723,7 +2058,31 @@
         "next_evidence": "Recover original PDF/inputs and decoder, then execute production fits; independently verify gate conventions."
       },
       "comparison_kind": "nonscalar",
-      "component_claim_ids": []
+      "component_claim_ids": [],
+      "source_claim_type": "open problems and conjecture",
+      "findings": {
+        "published": {
+          "text": "Full gate framework open; nonlinear-noise extension conjectural.",
+          "state": "reported",
+          "artifact_ids": [
+            "source"
+          ],
+          "locator": "Ch6 PDF119, L8443\u20138459@P118; Ch5 PDF86 L5051\u20135056@P85",
+          "component_claim_ids": [],
+          "component_contrast_indices": []
+        },
+        "ours": {
+          "text": "No architecture or conjecture demonstration attempted.",
+          "state": "not_assessed",
+          "artifact_ids": [
+            "notes"
+          ],
+          "locator": "Theory accounting and explicit open-problem limits",
+          "component_claim_ids": [],
+          "component_contrast_indices": [],
+          "reason": "No architecture or conjecture demonstration attempted."
+        }
+      }
     },
     {
       "id": "symmetric-table",
@@ -2173,7 +2532,7 @@
   ],
   "inventory_audit": {
     "reviewer": "Research agent; text-only source inventory, not independent proof certification",
-    "rationale": "All six chapters and ten embedded appendices mapped; every plan item retained, including negative and unavailable results. Review refinement: raw random-code parameters/crossing separated into4 supporting components; documentary-only items explicitly unassessed.",
+    "rationale": "All six chapters and ten embedded appendices mapped; every plan item retained, including negative and unavailable results. Review refinement: raw random-code parameters/crossing separated into4 supporting components; documentary-only items explicitly unassessed. Published/Ours repair independently records14 separate source/result statements, claim types, conditions and evidence locators; scalar availability never supplies finding text.",
     "source_artifact_ids": [
       "source",
       "notes"

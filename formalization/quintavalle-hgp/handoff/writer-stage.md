@@ -19,6 +19,10 @@ including blocked ones; a dedicated inventory appendix may carry supporting deta
 Record the first-page excerpts and table regions using the
 [first-page contract](first-page-contract.md). Identify/cite the original work,
 state its headline finding, and show signed effects, magnitude and direction.
+Map each Published and Ours finding to its own row-contained, nonoverlapping
+cell and exact evidence-linked text, as required by the first-page contract.
+Render known theorems, qualitative findings, component estimates and finite
+results directly; never substitute "not established" because a scalar is null.
 These maps are audit aids, not proof of completeness. Same-context work sets
 `context: "shared"` and is a draft pending an isolated writing pass.
 
