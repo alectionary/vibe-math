@@ -201,6 +201,8 @@ The following were tested and do not reduce the search materially:
 \item orbits forced by rank, of which there are none;
 \item branching first on the blocks $2,4,6$ where local frames fail, or on the other blocks: Knuth estimates are $1$--$5$ times the default fewest-candidates rule (\ours{order-exp/RESULTS.md}{\texttt{order-exp/RESULTS.md}}).
 \end{itemize}
+\paragraph{Structured pieces a frame cannot contain.} \evidence{proof; computation} If a frame contains $d$ pairs spanning $(U,U')$, the remaining pairs form a frame of $(U'^{\perp},U^{\perp})$. Using this: no frame contains a whole $X$-orbit paired one-to-one with a whole $Z$-orbit ($167$ of the $177$ such orbit pairs fail by rank, the other $10$ by complete search); $41$ of the $45$ orbits can never appear whole in a frame on either side, and orbits $9,10,11,33$ remain undecided after time-limited searches. The $88$-pair partial frame contains two of the excluded orbit pairs, which explains why it cannot be completed. None of this bounds how many vectors a frame takes from each orbit, so it is not an obstruction. Details: \ours{theory/THEORY-NOTES-2.md}{\texttt{theory/THEORY-NOTES-2.md}}.
+
 \pending{orderly generation with the 32-element group}
 
 \section{Open problems}\label{sec:open}
@@ -213,6 +215,7 @@ Follow-up directions raised by this work (not source-posed):
 \begin{itemize}
 \item What is the induced matching number of the anticommutation graph? It lies between $88$ and $128$.
 \item Why do rank-consistent partial frames fail after few choices while combinatorial ones reach $88$? Can this gap be turned into an obstruction?
+\item Is there a small $k$ with $|F\cap X_a|\le k$ for every frame $F$ and orbit $a$? With $\sum_a|F\cap X_a|=128$ over $45$ orbits, a bound $k<3$ would exclude frames.
 \item Is there a symmetrization principle for canonical frames of lifted-product codes over cyclic $2$-group lifts? A naive residue descent fails~\cite{inverse4h}. The local ring $R$ and its self-dual $T^8$-fixed submodule $(1+t^8)R^8$ are natural tools.
 \item Let the \emph{symmetric width} be the minimum width over frames with nontrivial stabilizer. It equals $18$ here. When does it differ from $f$, for instance for $C^{\mathrm{LP}}_{20,10}$?
 \end{itemize}
