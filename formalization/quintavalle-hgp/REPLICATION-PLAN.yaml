@@ -225,6 +225,22 @@ parts:
     conjectured nonlinear-confinement thresholds, and absence of a complete architecture
     demonstration.
   headline: true
+- id: symmetric-table
+  kind: condition
+  label: 'Chapter 4 Appendix B Table 2: all nine symmetric codes'
+  plan: Parse all nine printed seed matrices; independently enumerate each classical
+    kernel, construct H transpose H and verify n, k, rate, seed distance and maximum
+    stabilizer weight. Distinguish inherited distance theorem from exhaustive quantum
+    distance search.
+  headline: false
+  design_count: 9
+- id: parallel-overhead
+  kind: analysis
+  label: Pieceable parallelism and overhead
+  plan: 'Account for Section 4.3 and Figure 7: verify disjoint support criterion and
+    schedule counts; preserve unmeasured syndrome extraction cost and fault-tolerance
+    limits.'
+  headline: false
 removals: []
 design_notes: Counts refer to named source analyses/code families, not unknown plot
   points. Original per-point grids must be recovered before asserting full numerical
@@ -238,3 +254,10 @@ engine: Exact binary linear algebra and C++ BP+OSD. SEM engines lavaan/OpenMx do
   pinned original code.
 source_access: Browser text available; direct PDF download blocked by network destination
   policy. Figures and source ink still require visual verification.
+inventory_additions:
+- ids:
+  - symmetric-table
+  - parallel-overhead
+  reason: Full-source appendix/section reconciliation before running analysis; makes
+    previously included gate-examples/pieceable scope explicit without removing or
+    narrowing them.
