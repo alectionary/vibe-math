@@ -16,7 +16,9 @@ preferred engine is missing and the fallback is absent or incomplete.
 `done` exits 0 when the replication plan passes, and 2 when it does not.
 A plan with `limit_schema: 1` is also checked for per-part limit kinds,
 part-specific reasons and evidence, and a not_run estimate and decision.
-Plans that omit `limit_schema` skip that check.
+A tractable not_run part is accepted when `decision_by` is `project` and a
+`decision_reason` records the resource decline. Plans that omit
+`limit_schema` skip that check.
 Optional `--pr-body` and `--record` also check the PR description's primary
 PDF links. Omit them and `done` does not read a description.
 """

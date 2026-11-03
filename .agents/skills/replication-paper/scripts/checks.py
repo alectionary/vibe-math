@@ -489,13 +489,27 @@ def _limit_kind_errors(parts) -> list:
                 if type(tractable) is not bool:
                     errors.append(f"{label}: not_run requires tractable true or false")
                 elif tractable:
-                    justification = _detail(entry, part, "justification")
-                    if not _nonempty(justification) or _cost_only(justification) or (
-                        _nonempty(estimate) and _norm(justification).casefold() == _norm(estimate).casefold()
-                    ):
-                        errors.append(
-                            f"{label}: compute cost alone is not acceptable when the part is tractable"
-                        )
+                    decision_by = _detail(entry, part, "decision_by")
+                    decision_reason = _detail(entry, part, "decision_reason")
+                    # An explicit project decision may decline a tractable part for resources.
+                    # Cost alone, with no recorded decider, still fails.
+                    if decision_by not in (None, "project"):
+                        errors.append(f"{label}: decision_by must be project for a recorded resource decision")
+                    project_decision = (
+                        decision_by == "project"
+                        and _nonempty(decision_reason)
+                        and not _reason_is_generic(decision_reason)
+                    )
+                    if decision_by == "project" and not project_decision:
+                        errors.append(f"{label}: a project resource decision requires a decision_reason")
+                    if not project_decision:
+                        justification = _detail(entry, part, "justification")
+                        if not _nonempty(justification) or _cost_only(justification) or (
+                            _nonempty(estimate) and _norm(justification).casefold() == _norm(estimate).casefold()
+                        ):
+                            errors.append(
+                                f"{label}: compute cost alone is not acceptable when the part is tractable"
+                            )
             elif kind == "theorem_finite_only":
                 if not _nonempty(_detail(entry, part, "finite_checks")):
                     errors.append(f"{label}: theorem_finite_only requires finite_checks")

@@ -646,6 +646,23 @@ class LimitKinds(unittest.TestCase):
         costly["limit_schema"] = 1
         found = errors(costly, PARTIAL_PAPER)
         self.assertTrue(any("compute cost alone is not acceptable" in item for item in found))
+        declined = plan([
+            headline(),
+            limited("threshold-table", "results/threshold_decision.json", status="partly",
+                    reason="The N=8 grid at L=9 and L=11 is tractable and was declined for this project's compute limit.",
+                    limit_kind=["not_run"],
+                    cost_estimate="About 54 CPU-hours per toric L=11 point, several days on 4 cores.",
+                    decision="declined for resources",
+                    tractable=True,
+                    decision_by="project",
+                    decision_reason="The source design can be run. This project declines L=9 and L=11 at N=8 because one toric L=11 point is about 54 CPU-hours and the grid is several days on 4 cores."),
+        ])
+        declined["limit_schema"] = 1
+        self.assertEqual(errors(declined, PARTIAL_PAPER), [])
+        unnamed = copy.deepcopy(declined)
+        unnamed["parts"][1]["decision_reason"] = "See named artifacts and limitations."
+        self.assertTrue(any("decision_reason" in item or "compute cost alone" in item
+                            for item in errors(unnamed, PARTIAL_PAPER)))
 
     def test_several_limit_kinds_can_apply_to_one_part(self):
         data = plan([
