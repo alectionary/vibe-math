@@ -16,6 +16,9 @@
  *   -x i: search only frames containing X vector i (rotation normalisation)
  *   shards split the children at the given depth (default 0) round-robin in visiting order
  *   -l  restrict X'/Z' to vectors of live items
+ *   -P MASK [-M 0|1|2] [-Q F]  branch first on residual entries in the blocks of MASK (bit b = block b;
+ *       mode 0: row or column block, 1: both, 2: row block), unless such an entry has more than F
+ *       times the fewest candidates. Changes only the order, not the set of frames found.
  *   -f  per-vector look-ahead filter (cached)     -F  -f plus the exact per-item test
  */
 #include <stdint.h>
@@ -36,6 +39,7 @@ static v128 *XV, *ZV, Dmask;
 static int *ik, (*ix)[MAXK], (*iz)[MAXK];
 static uint8_t *orthxz;   /* orthxz[i*NZ+j] = <x_i,z_j> == 0 */
 static const char *fixed_file = NULL; static long long shard_ctr = 0; static int shard_depth = 0, force_x = -1;
+static int prefer_mask = 0, prefer_mode = 0; static double prefer_factor = 1e9;
 static int live_sides = 0, filter_items = 0, full_filter = 0, only_first = 0, shard = 0, nshard = 1, knuth = 0;
 static double kprod, kest; static unsigned long long rng = 88172645463325252ULL;
 static unsigned long long xr(void) { rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17; return rng; }
@@ -144,11 +148,18 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         for (int u = 0; u < nt; u++) { int c = tl[u]; v128 z = rows[c];
             for (int wz = 0; wz < 2; wz++) for (uint64_t mz = z.w[wz]; mz; mz &= mz - 1) C[c][wz * 64 + __builtin_ctzll(mz)]++; }
     }
-    int bc = -1, bk = -1, best = 1 << 30;
+    int bc = -1, bk = -1, best = 1 << 30, pbc = -1, pbk = -1, pbest = 1 << 30;
     for (int c = 0; c < 128; c++) for (int w = 0; w < 2; w++) for (uint64_t m = R[c].w[w]; m; m &= m - 1) {
         int k = w * 64 + __builtin_ctzll(m);
         if (C[c][k] < best) { best = C[c][k]; bc = c; bk = k; }
+        /* -P: preferred entries have the row block (prefer_mode 0: or column block, 1: and column
+         * block, 2: row block only) in prefer_mask. Any entry with R = 1 is a valid branch point. */
+        int pr = (prefer_mask >> (c / 16)) & 1, pk = (prefer_mask >> (k / 16)) & 1;
+        int pref = prefer_mode == 0 ? (pr || pk) : prefer_mode == 1 ? (pr && pk) : pr;
+        if (prefer_mask && pref && C[c][k] < pbest) { pbest = C[c][k]; pbc = c; pbk = k; }
     }
+    /* use the preferred entry unless it has more than prefer_factor times the global minimum */
+    if (pbc >= 0 && best > 0 && pbest <= prefer_factor * best) { best = pbest; bc = pbc; bk = pbk; }
     free(C);
     if (best == 0 || bc < 0) { prunes_empty[depth]++; LEAVE; }
     int *ch = malloc(sizeof(int) * (nlive + 1)), nch = 0;
@@ -188,6 +199,9 @@ int main(int argc, char **argv) {
     const char *in = NULL, *out = "/dev/null"; int a;
     for (a = 1; a < argc; a++) {
         if (!strcmp(argv[a], "-l")) live_sides = 1;
+        else if (!strcmp(argv[a], "-P")) prefer_mask = strtol(argv[++a], NULL, 0);
+        else if (!strcmp(argv[a], "-M")) prefer_mode = atoi(argv[++a]);
+        else if (!strcmp(argv[a], "-Q")) prefer_factor = atof(argv[++a]);
         else if (!strcmp(argv[a], "-f")) filter_items = 1;
         else if (!strcmp(argv[a], "-F")) filter_items = full_filter = 1;
         else if (!strcmp(argv[a], "-1")) only_first = 1;
