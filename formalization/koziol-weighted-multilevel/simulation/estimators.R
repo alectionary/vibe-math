@@ -36,7 +36,7 @@ ri_mpml_fit <- function(y, X, school, w1s, w2) {
   }
   nll <- function(theta) -sum(cluster_ll(theta))
   th0 <- c(beta0, log(max(sig20, 1e-6)), log(0.05))
-  opt <- nlminb(th0, nll, control = list(iter.max = 80, eval.max = 250, rel.tol = 1e-10))
+  opt <- nlminb(th0, nll, control = list(iter.max = 200, eval.max = 600, rel.tol = 1e-8))
   ok <- opt$convergence == 0 && all(is.finite(opt$par))
   se <- rep(NA_real_, p)
   if (ok) {
