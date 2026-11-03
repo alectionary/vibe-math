@@ -53,3 +53,11 @@ python -m unittest discover -s .agents/skills/replication-paper/tests -v
 ```
 
 `analysis/gf2.py` is imported by the exact checks; it has no standalone execution target. Reproduction environment versions and the model-specific engine fallback are in `provenance/`. The absence of R SEM libraries is not a missing decoder dependency.
+
+## Local Published/Ours attribution repair
+
+The repaired manuscript has separate evidence-linked Published and Ours findings for all 14 headline rows. Null scalar contrasts no longer erase theorem statements, reported estimates, or completed finite checks. All four source threshold estimates are retained; our 0 of 4 production completion remains explicit. The broader confinement conjecture is distinct from the conditional linear-confinement theorem.
+
+The updated reusable skill validates declared evidence, actual column headers and each rendered cell, with 190 passing tests including 18 new regressions. Such checks do not establish scientific source truth; a fresh source-by-source and rendered review is required. See `sources/headline-finding-audit.json` and the current review/validation records in `provenance/`. Original reporting artifacts are preserved in `provenance/published-column-original/`; their former passing reviews are superseded, not retroactively altered.
+
+This repair is local on `repair/quintavalle-published-findings`; the earlier remote branch and archive are historical snapshots. No new scientific runs or production fits were performed. Current local publication status is recorded in `delivery.json`; no remote delivery of the repaired bytes is implied.

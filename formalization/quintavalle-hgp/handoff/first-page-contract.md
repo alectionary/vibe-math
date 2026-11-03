@@ -122,7 +122,9 @@ Table rows must contain, in order: published signed effect, ours, magnitude labe
 and direction label. Include the estimand label in each row; units and its declared
 numeric tolerance may be in the row or caption within the table region. Use fixed
 `display_decimals` with half-up rounding, with ungrouped bare numeric cells
-(no arithmetic expressions or attached intervals between these columns); absent values display `not established`.
+(no arithmetic expressions or attached intervals between these columns); absent scalar comparison values display `not established`. This convention
+never applies to the separate Published/Ours finding cells: preserve their
+source statements, results or specific audited absence explanations.
 Row regions must not overlap. Match all effect IDs once. The paper may include
 other columns such as scientific verdict; a magnitude label does not replace it.
 
@@ -257,8 +259,9 @@ with `verdict: "pass"` and nonempty page-1 findings (`page`, `location`, `findin
 The hash-bound reviewer must assess source support for applicability, completeness
 of parent/components, retained uncertainty and separation of claim verdict from
 magnitude. Mechanical checks cannot establish that a semantic classification is
-honest. Existing scalar packets, the Pesah adapter and historical audit semantics
-are unchanged. Old attempted nonscalar packets require explicit new mappings and
+honest. Scalar comparison/arithmetic semantics and historical audit behavior are
+unchanged. Current acceptance of scalar packets and adapters additionally
+requires the mandatory finding and column mappings below. Old attempted nonscalar packets require explicit new mappings and
 fresh review; do not backfill an attestation.
 
 ## Published and Ours finding cells (mandatory)
@@ -335,7 +338,7 @@ Bind cell identity to actual table headers, not just left-to-right order. The
 `ours_column_bbox`, `published_heading_bbox`, `ours_heading_bbox`,
 `published_heading` ("Published" or "Published finding"), and `ours_heading`
 ("Ours" or "Our finding"). Each header rectangle spans exactly its declared
-column's horizontal extent and extracts exactly its heading. Columns lie inside
+column's horizontal extent and extracts exactly its heading before all data rows. Columns lie inside
 the table, are ordered and do not overlap. Each finding cell must be inside its
 own headed column as well as its row. Mapping duplicate text in a claim,
 comparison, caption or neighboring column cannot satisfy this contract.
