@@ -43,7 +43,7 @@ The thesis extraction is a text-only browser retrieval with page/line markers; i
 
 ## Manuscript and acceptance
 
-The editable manuscript and descriptive current PDF are under `paper/`; the isolated writer manifest and independent review records record their exact hashes. Build instructions are provided with the manuscript. Local scientific evidence and editorial acceptance are separate from publication. No push, PR, merge, remote-byte verification, or public delivery is authorized in this task.
+The current manuscript is [hypergraph_product_codes__finite_support_and_unresolved_production_results.pdf](paper/hypergraph_product_codes__finite_support_and_unresolved_production_results.pdf), with [editable source](paper/manuscript.tex) and [bibliography](paper/references.tex). Build from `paper/` with `pdflatex -interaction=nonstopmode -halt-on-error manuscript.tex` twice, then copy `manuscript.pdf` to that descriptive filename and refresh hashes/review. the isolated writer manifest and independent review records record their exact hashes. Build instructions are provided with the manuscript. Local scientific evidence and editorial acceptance are separate from publication. No push, PR, merge, remote-byte verification, or public delivery is authorized in this task.
 
 From the repository root, validate the evidence packet with:
 
