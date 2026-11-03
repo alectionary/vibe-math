@@ -40,6 +40,9 @@
 \newcommand{\mixfile}{formalization/canonical-width/c16/lean/Mixed.lean}
 \newcommand{\ml}[2]{\href{\repourl/blob/master/\mixfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\mixfile\#L#2}{pinned})}
 % \lean{decl}{line}: master deep link plus commit-pinned copy
+\newcommand{\autcommit}{e5bc8a686da85d9de8c326de41d0076974fcbb16}
+\newcommand{\autfile}{formalization/canonical-width/c16/lean/Aut.lean}
+\newcommand{\al}[2]{\href{\repourl/blob/master/\autfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\autcommit/\autfile\#L#2}{pinned})}
 \newcommand{\lean}[2]{\href{\repourl/blob/master/\leanfile\#L#2}{\texttt{\detokenize{#1}}}~(\href{\repourl/blob/\leancommit/\leanfile\#L#2}{pinned})}
 \newcommand{\oursnote}[2]{\href{\repourl/blob/master/\cdir/#1}{#2}}
 
@@ -158,7 +161,7 @@ $T^4$ (earlier) & none: $15{,}088$ nodes & DRAT-certified~\cite{structural} \\
 
 \paragraph{Planted controls.} A random $T$-invariant basis and its dual basis are appended to the pools as $8+8$ extra orbits. The planted frame lies in every class, and each method must find it.
 
-\paragraph{Block-diagonal frames.} \evidence{computation} No frame of the $64$-dimensional subspace on seeds $\{0,1,4,5\}$ or on $\{2,3,6,7\}$ uses only pool vectors supported there. \evidence{certified} No frame splits along the four seed-quarters. The quarter $\{0,1\}$ alone carries exactly $3^{16}=43{,}046{,}721$ frames of its subspace. \pending{explain this count}
+\paragraph{Block-diagonal frames.} \evidence{computation} No frame of the $64$-dimensional subspace on seeds $\{0,1,4,5\}$ or on $\{2,3,6,7\}$ uses only pool vectors supported there. \evidence{certified} No frame splits along the four seed-quarters. The quarter $\{0,1\}$ alone carries exactly $3^{16}=43{,}046{,}721$ frames of its subspace. \evidence{proof} This count has a short explanation: the pool vectors supported on blocks $\{0,1\}$ are $e_{0,s}$, $e_{1,s}$ and $e_{0,s}+e_{1,s}$ on both sides, so the subspace splits orthogonally into $16$ copies of $\F_2^2$, one for each position $s$, each with exactly $3$ frames; on the other quarters a shift by $3$ between the two pools leaves no frame. \evidence{proof; computation} More generally, no frame splits along any partition of the $8$ blocks: if a frame contains a full frame of the coordinates of a block set $B$, the rest is a frame of the other blocks, and a complete search finds a local frame only for $B\subseteq\{0,1,3,5,7\}$, whose complement contains blocks $2$, $4$ and $6$ and so has none. Details and scripts: \oursdir{theory}.
 
 \section{Method: exact search on the residual identity}\label{sec:method}
 
@@ -243,12 +246,16 @@ Physical anticommutation equals $G$$^\dagger$ & \cl{physical_pairing_eq_G}{138} 
 \midrule
 \multicolumn{2}{@{}l}{\emph{Mixed operators reduce to pure ones} (\href{\repourl/blob/master/\mixfile}{\texttt{Mixed.lean}}; Prop.~\ref{prop:pools}, second sentence)} \\
 Pairings, weights and types under the reduction & \href{\repourl/blob/master/\mixfile\#L47}{\texttt{$\omega$\_pure}}~(\href{\repourl/blob/\leancommit/\mixfile\#L47}{pinned}), \ml{card_supp_pure_le}{71}, \ml{kinds_differ_of_anticommute}{76}, \ml{pure_frame}{88} \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{The symmetry group} (\href{\repourl/blob/master/\autfile}{\texttt{Aut.lean}})} \\
+Theorem~\ref{thm:aut}: every automorphism is $T^ks^b$$^\dagger$ & \al{aut_classification}{246}, from \al{aut_of_certificate}{189} (refinement is equivariant, any finite graph) with \al{class_v0}{233}, \al{dM_id}{238} \\
+The 32 maps are distinct automorphisms; the graph is $G$$^\dagger$ & \al{gmap_aut}{96}, \al{gmap_distinct}{103}, \al{adj_spec}{48} \\
 \bottomrule
 \end{tabular}
 \end{center}
 {\small $^\dagger$ Uses \texttt{native\_decide} over the full $720\times720$ data, so it also trusts the Lean compiler (\texttt{Lean.ofReduceBool}). The pool data is generated from \texttt{pools/xcoords.txt} and \texttt{pools/zcoords.txt}, and the SHA-256 of both files is recorded in its header.}
 
-The abstract Lean statements: they concern any field, any pairing matrix and any finite index set. For the look-ahead lemma, Lean proves its two cores. The remaining step, that both spans are full exactly when the pairing has full rank, follows in one line because a pairing rank never exceeds either dimension. The mixed reduction takes as a hypothesis that every operator of weight at most $17$ has a stabilizer component, which follows from the computed $\mu_{XZ}=26$~\cite{enumeration}. Not yet formalized: that computation and the completeness of the weight-16 enumeration~\cite{enumeration} (every logical class of weight at most $17$ lies in the pools); Theorem~\ref{thm:aut}; and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{enumeration completeness in Lean or a certificate}
+The abstract Lean statements: they concern any field, any pairing matrix and any finite index set. For the look-ahead lemma, Lean proves its two cores. The remaining step, that both spans are full exactly when the pairing has full rank, follows in one line because a pairing rank never exceeds either dimension. The mixed reduction takes as a hypothesis that every operator of weight at most $17$ has a stabilizer component, which follows from the computed $\mu_{XZ}=26$~\cite{enumeration}. Theorem~\ref{thm:aut} is formalized for the anticommutation graph itself; its last sentence, that a linear map preserving both pools induces a graph automorphism, is immediate and not formalized. Not yet formalized: that computation and the completeness of the weight-16 enumeration~\cite{enumeration} (every logical class of weight at most $17$ lies in the pools); and the exhaustive computations, which remain \evidence{computation} or \evidence{certified} as labelled. \pending{enumeration completeness in Lean or a certificate}
 
 \section{Reproducibility}\label{sec:repro}
 Commands run from \texttt{\detokenize{restricted-frames-20261031/}}; the C programs are compiled with \texttt{cc -O3 -march=native}. Instances are regenerated by the listed command (they are not committed); the SHA-256 prefix (first 8 hex digits) identifies the file each recorded run used. Times are wall-clock on one core of a shared 2-core cloud machine unless stated.
