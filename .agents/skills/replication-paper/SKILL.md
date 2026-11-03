@@ -66,8 +66,12 @@ not `replicated`. `limit_kind` is one of, or a list of:
 
 - `input_unavailable`: name `missing_input` and `looked_in`.
 - `not_run`: give `cost_estimate`, `decision`, and `tractable`. Compute cost
-  alone is not acceptable when `tractable` is true; then `justification` must
-  say why the tractable part was still not run.
+  alone is not acceptable when `tractable` is true. A non-cost `justification`
+  can explain the stop. A tractable part may also be declined for resources
+  when the plan records `decision_by: project` and a `decision_reason`. That
+  pair is this project's decision. It does not make the part impossible and
+  it does not attribute the limit to the source. `decision` then says
+  `declined for resources`, and `cost_estimate` stays.
 - `theorem_finite_only`: `finite_checks` records the finite or exhaustive
   checks. A universal proof is not established.
 - `out_of_scope`: `scope_reason` says why.
@@ -128,7 +132,7 @@ equations, and appendix tables, are hints only.
 - [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
 - [ ] The headline verdict is no stronger than the headline parts that were run.
 - [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
-- [ ] When `REPLICATION-PLAN.yaml` sets `limit_schema: 1`, every part that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision.
+- [ ] When `REPLICATION-PLAN.yaml` sets `limit_schema: 1`, every part that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
 - [ ] No part was removed or narrowed against the first commit without a recorded reason.
 - [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
 - [ ] Optional caption hints were reviewed.
