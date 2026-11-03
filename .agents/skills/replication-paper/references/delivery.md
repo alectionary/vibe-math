@@ -55,8 +55,36 @@ Passing helper tests never establishes manuscript compliance. Apply the
 [final-PDF link audit](pdf-link-review.md); a nonempty links note does not
 replace extraction and validation of the actual URI annotations.
 
-When a draft PR is authorized, put an accessible current-commit primary PDF link
-first, followed by editable source/bibliography and linked evidence. Fetch the
+When a draft PR is authorized, put the built primary PDF first. The description
+needs two links to the delivery record's primary PDF path, near the top. The
+reviewable link works before merge:
+
+```text
+https://github.com/<owner>/<repo>/blob/<40-hex SHA or head branch>/<repo-relative primary PDF>
+```
+
+The intended master link uses that same path and is labeled as live after merge:
+
+```text
+https://github.com/<owner>/<repo>/blob/master/<repo-relative primary PDF>
+```
+
+The master link does not replace the reviewable one. A folder, source file, or
+appendix is not the built PDF. Before reporting, run:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/pr_description.py \
+  --body pr-body.md --record delivery.json --root STUDY_ROOT \
+  --head-branch BRANCH
+```
+
+Omit `--body` to read the description on stdin. Exit 0 means both links are
+present and their paths are the record's primary PDF. Exit 2 means a link is
+missing or the path differs. `preflight.py done --pr-body pr-body.md --record
+delivery.json` and `delivery_check.py RECORD.json --root STUDY_ROOT --pr-body
+pr-body.md` run the same check. Omit those arguments and the older commands
+are unchanged. Then put editable source, bibliography, and linked evidence
+after the PDF links. Fetch the
 remote primary PDF and evidence, compare their hashes with local artifacts, and
 record the URLs and downloaded paths. An appendix never substitutes for the
 main paper. If a transfer channel fails, use another authorized channel; otherwise
@@ -82,7 +110,10 @@ use direct resource/performance tradeoffs when no equivalence margin is justifie
 
 Write the description for a reader who has not read the paper. Use the same
 prose rules as the note. No language-model authorship statement, and no
-opening about how the files were produced.
+opening about how the files were produced. Near the top, link the built
+primary PDF with the reviewable commit or head-branch blob URL and the
+intended master URL labeled as live after merge. Check that pair with
+`pr_description.py` before reporting, as specified above.
 
 ```markdown
 ## What this is

@@ -116,6 +116,7 @@ equations, and appendix tables, are hints only.
 - [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
 - [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
 - [ ] Page 1 was compared visually with a reference paper that uses the shared approved preamble (for example the Kupzyk replication). The geometry check only measures the text block, title, and abstract inset.
+- [ ] Before reporting the pull request, its description links the built primary PDF near the top: a reviewable `blob/<40-hex SHA or head branch>/<path>` link, and the intended `blob/master/<path>` link for that same path, labeled as live after merge. Run `scripts/pr_description.py` on the description and the delivery record. `preflight.py done` and `delivery_check.py` run that check when `--pr-body` is supplied.
 
 ## 1. Research and evidence handoff
 
@@ -157,7 +158,21 @@ review an annotation inventory, then re-extract destinations during delivery
 acceptance. Master navigation and commit-pinned review delivery are separate.
 Run the numerical and
 citation helpers appropriate to the study, plus the [pre-done checklist](#pre-done-checklist)
-and `scripts/delivery_check.py RECORD.json --root STUDY_ROOT`. Use delivery
+and `scripts/delivery_check.py RECORD.json --root STUDY_ROOT`. Before reporting
+a pull request, link the built primary PDF in the description and check it:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/pr_description.py \
+  --body pr-body.md --record delivery.json --root STUDY_ROOT \
+  --head-branch BRANCH
+```
+
+Omit `--body` to read the description on stdin. Exit 0 means the description
+has a reviewable blob link pinned to a 40-hex SHA or that head branch, and
+the master link for the same path, both matching the record's primary PDF.
+Pass `--pr-body pr-body.md --record delivery.json` to `preflight.py done`, or
+`--pr-body pr-body.md` to `delivery_check.py`, to run the same check. Leaving
+those arguments off does not change the older commands. Use delivery
 contract version 2; see the editorial
 reference for migration of historical records. Helper passes establish neither
 scientific truth nor prose quality. Do not claim delivery complete without the

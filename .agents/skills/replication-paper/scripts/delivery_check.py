@@ -21,7 +21,10 @@ _link_spec.loader.exec_module(_links)
 REVIEW_ITEMS=('layout','headline_and_tolerance','citations','ledgers','links','independence_limits')
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def sha(value):return isinstance(value,str) and bool(re.fullmatch('[0-9a-f]{40}',value))
-def check(record,root,legacy_audit=False,details=None):
+def _pr_description():
+ spec=importlib.util.spec_from_file_location('replication_pr_description', Path(__file__).with_name('pr_description.py'))
+ module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module); return module
+def check(record,root,legacy_audit=False,details=None,pr_body=None,head_branch=None):
  root=Path(root).resolve();errors=[]
  if not isinstance(record,dict):return ['record must be an object']
  def obj(value,label):
@@ -88,8 +91,13 @@ def check(record,root,legacy_audit=False,details=None):
   if details is not None:details['pdf_link_failures']=link_errors
   for name in ('packet','writer_manifest','link_inventory'):
    artifact(record.get(name),name,revision_check=revision if sha(revision) else None)
+ if pr_body is not None:
+  errors.extend(_pr_description().description_errors(pr_body, record if isinstance(record, dict) else {}, root, head_branch=head_branch))
  return errors
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('record');p.add_argument('--root',required=True);p.add_argument('--legacy-audit',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('record');p.add_argument('--root',required=True);p.add_argument('--legacy-audit',action='store_true');p.add_argument('--pr-body',help='PR description file. Checked against this record\'s primary PDF.');p.add_argument('--head-branch',help='Head branch accepted in place of a 40-hex PDF pin.');a=p.parse_args()
  details={}
- errors=check(json.loads(Path(a.record).read_text()),a.root,legacy_audit=a.legacy_audit,details=details);print(json.dumps({'errors':errors,'pdf_link_failures':details.get('pdf_link_failures',[]),'structural_check_only':True,'current_acceptance':not errors and not a.legacy_audit,'legacy_audit':a.legacy_audit},indent=2));raise SystemExit(bool(errors))
+ body=None
+ if a.pr_body:
+  body=Path(a.pr_body).read_text(encoding='utf-8')
+ errors=check(json.loads(Path(a.record).read_text()),a.root,legacy_audit=a.legacy_audit,details=details,pr_body=body,head_branch=a.head_branch);print(json.dumps({'errors':errors,'pdf_link_failures':details.get('pdf_link_failures',[]),'structural_check_only':True,'current_acceptance':not errors and not a.legacy_audit,'legacy_audit':a.legacy_audit},indent=2));raise SystemExit(bool(errors))
