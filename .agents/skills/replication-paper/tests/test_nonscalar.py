@@ -20,6 +20,7 @@ class Nonscalar(unittest.TestCase):
                    tolerance=dict(kind='not_applicable', value=None, basis='No scalar estimand.'),
                    magnitude='not established', direction='not established',
                    component_claim_ids=[], component_contrast_indices=[])
+        for finding in claim['findings'].values(): finding['component_contrast_indices'] = []
         return row, claim
 
     def test_qualitative_contract(self):
@@ -39,6 +40,7 @@ class Nonscalar(unittest.TestCase):
         row, claim = self.exceptional()
         claim['contrasts'] = [dict(definition=str(i), units='SE', positive_means='gain', published=1, ours=2) for i in range(108)]
         row['component_contrast_indices'] = list(range(108))
+        for finding in claim['findings'].values(): finding['component_contrast_indices'] = list(range(108))
         row['component_comparisons'] = [dict(id='cell'+str(i), claim_id=claim['id'], contrast_index=i,
             estimand=str(i), units='SE', positive_means='gain', published_effect=1, ours_effect=2,
             estimate_status='resolved', display_decimals=2, tolerance=dict(kind='prespecified',value=0.01,basis='fixed before analysis'),
@@ -142,6 +144,9 @@ class Nonscalar(unittest.TestCase):
                         # existing geometric extraction bound, never a new empirical value.
                         effect['tolerance']=dict(kind='prespecified',value=c['tolerance']['value'],basis='Pre-result source-extraction allowance: '+c['tolerance']['basis'])
                     row['component_comparisons'].append(effect)
+                for finding in claim['findings'].values():
+                    finding['component_claim_ids'] = list(original['component_claim_ids'])
+                    finding['component_contrast_indices'] = list(range(len(claim['contrasts'])))
                 self.assertEqual(m.packet_errors(self.packet),[])
                 if original['id']=='H6.precision-grid':
                     self.assertEqual(len(row['component_comparisons']),108)
@@ -163,19 +168,23 @@ class Nonscalar(unittest.TestCase):
 
     def test_rendered_nonscalar_success_and_exact_label_failure(self):
         import fitz
-        self.exceptional()
+        _,claim=self.exceptional()
+        claim['findings']['published']['text']='Known theorem'
+        claim['findings']['ours']['text']='Finite tests'
         row=self.writer['first_page']['table']['rows'][0]
-        row.update(estimand_text='Qualitative: no scalar',applicability_text='Qualitative: no scalar',
-                   display=dict(magnitude_bbox=[265,255,365,275],direction_bbox=[400,255,510,275]))
+        row.update(estimand_text='Qualitative: no scalar',applicability_text='Qualitative: no scalar',published_text='Known theorem',published_bbox=[145,255,245,275],ours_text='Finite tests',ours_bbox=[245,255,345,275],
+                   display=dict(magnitude_bbox=[345,255,445,275],direction_bbox=[445,255,550,275]))
         source=self.root/'source.tex'
         source.write_text(source.read_text()+'\nQualitative: no scalar\n')
         self.record['review']['editorial']['checks']['comparison_applicability']=dict(verdict='pass',findings=[dict(page=1,location='table',finding='Qualitative proposition; no scalar estimand; evidence retained.')])
         def render(label):
             with fitz.open(self.root/'main.pdf') as doc:
                 doc[0].add_redact_annot(fitz.Rect(row['bbox']));doc[0].apply_redactions()
-                doc[0].insert_text((50,270),'Qualitative: no scalar',fontsize=9)
-                doc[0].insert_text((270,270),label,fontsize=9)
-                doc[0].insert_text((405,270),'not established',fontsize=9)
+                doc[0].insert_text((150,270),'Known theorem',fontsize=7)
+                doc[0].insert_text((250,270),'Finite tests',fontsize=7)
+                doc[0].insert_text((50,270),'Qualitative: no scalar',fontsize=6)
+                doc[0].insert_text((350,270),label,fontsize=8)
+                doc[0].insert_text((450,270),'not established',fontsize=8)
                 doc.save(self.root/'new.pdf')
             (self.root/'new.pdf').replace(self.root/'main.pdf')
         render('not established');self.save()

@@ -8,6 +8,10 @@ description: "Replicate a dissertation or published result using a committed rep
 Work in this order. Load only the current stage's instructions and required
 artifacts. Apply the [first-page contract](references/first-page-contract.md)
 for source identification, original findings and effect-magnitude comparisons.
+Keep Published, Ours, and comparison separate. Every headline needs evidence-linked
+finding text in its own rendered Published/Ours cells, even when scalar effects
+are null. Require the `finding_attribution` source-by-source review; a null
+comparison is never permission to erase a known finding.
 For a dissertation, cover the whole dissertation: inventory every
 substantive original claim, including theory, empirical results, simulations,
 negative results and unavailable inputs. Do not substitute a convenient table
