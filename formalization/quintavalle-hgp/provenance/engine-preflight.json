@@ -1,0 +1,14 @@
+{
+  "accepted": true,
+  "engine": "NumPy GF(2), integer-XOR and original C++ BP+OSD",
+  "fallback": true,
+  "os": "Linux",
+  "missing": [
+    "Rscript",
+    "lavaan",
+    "OpenMx"
+  ],
+  "reason": null,
+  "justification": "No SEM model is fitted. lavaan/OpenMx cannot express exact binary-code algebra or this decoder. Python and original C++ implement the scientific object, not a substitute SEM estimator.",
+  "independent_validation": "results/exact_checks.json verifies integer-XOR versus NumPy rank and all 256 small seed pairs. results/independent_checks.json compares 19 independently constructed Hx/metacheck matrices with original archives and uses a second phase representation."
+}
