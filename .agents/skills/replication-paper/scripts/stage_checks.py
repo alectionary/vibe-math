@@ -14,7 +14,7 @@ _first_spec.loader.exec_module(_first)
 EDITORIAL_CHECKS = (
     'abstract_verdict_first', 'introduction_verdict_first', 'standalone_prose',
     'headline_fidelity', 'claim_coverage', 'limitations_preserved',
-    'scientific_process_distinction', 'abstract_source_fidelity', 'effect_magnitude_fidelity',
+    'scientific_process_distinction', 'abstract_source_fidelity', 'effect_magnitude_fidelity', 'finding_attribution',
 )
 STATUSES = {'replicated', 'partly_replicated', 'not_replicated', 'not_established', 'blocked'}
 CUES = re.compile(

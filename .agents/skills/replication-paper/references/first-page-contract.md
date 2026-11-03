@@ -122,7 +122,9 @@ Table rows must contain, in order: published signed effect, ours, magnitude labe
 and direction label. Include the estimand label in each row; units and its declared
 numeric tolerance may be in the row or caption within the table region. Use fixed
 `display_decimals` with half-up rounding, with ungrouped bare numeric cells
-(no arithmetic expressions or attached intervals between these columns); absent values display `not established`.
+(no arithmetic expressions or attached intervals between these columns); absent scalar comparison values display `not established`. This convention
+never applies to the separate Published/Ours finding cells: preserve their
+source statements, results or specific audited absence explanations.
 Row regions must not overlap. Match all effect IDs once. The paper may include
 other columns such as scientific verdict; a magnitude label does not replace it.
 
@@ -257,6 +259,86 @@ with `verdict: "pass"` and nonempty page-1 findings (`page`, `location`, `findin
 The hash-bound reviewer must assess source support for applicability, completeness
 of parent/components, retained uncertainty and separation of claim verdict from
 magnitude. Mechanical checks cannot establish that a semantic classification is
-honest. Existing scalar packets, the Pesah adapter and historical audit semantics
-are unchanged. Old attempted nonscalar packets require explicit new mappings and
+honest. Scalar comparison/arithmetic semantics and historical audit behavior are
+unchanged. Current acceptance of scalar packets and adapters additionally
+requires the mandatory finding and column mappings below. Old attempted nonscalar packets require explicit new mappings and
 fresh review; do not backfill an attestation.
+
+## Published and Ours finding cells (mandatory)
+
+Keep three different things separate: **the published finding**, **our finding**,
+and **their comparison**. A null scalar effect means that a scalar comparison is
+undefined or unavailable. It does not mean a theorem, qualitative result,
+multicomponent result, or finite replication result is absent. Never render a
+known finding as a generic replication verdict in Published or Ours. This rule
+also applies to scalar rows: raw findings/endpoints and signed effects may be
+shown separately, with the existing arithmetic checks retained.
+
+Every headline claim requires `findings.published` and `findings.ours`:
+
+```json
+{
+  "findings": {
+    "published": {
+      "text": "Corrects errors through (d-1)/2 under the stated oracle assumptions",
+      "state": "reported", "artifact_ids": ["thesis"],
+      "locator": "Chapter 3, Theorem 1, PDF page 44",
+      "component_claim_ids": [], "component_contrast_indices": []
+    },
+    "ours": {
+      "text": "1061 guaranteed-range finite errors passed; universal theorem not reproved",
+      "state": "observed", "artifact_ids": ["exact-results"],
+      "locator": "cases[*].adversarial_errors; finite checks only",
+      "component_claim_ids": [], "component_contrast_indices": []
+    }
+  }
+}
+```
+
+`artifact_ids` must be nonempty references to this claim's hashed packet artifacts.
+Each `locator` identifies the relevant passage, result field, or acquisition
+record. The concise `text` must be independently checked against that evidence;
+it need not reproduce the full claim value verbatim. Preserve theorem conditions,
+conjectural versus proved status, estimator and experiment conditions, and limits.
+
+States are `reported` or `not_reported` for Published, and `observed`,
+`not_obtained` or `not_assessed` for Ours. An absent state requires `reason`, a
+null corresponding claim `published.value` or `ours.value`, and its explicit
+`unavailable_reason`. Absence is audited evidence, never inferred from a null
+`published_effect` or `ours_effect`. A known qualitative parent and a genuinely
+unreported statistic must remain distinct claims/components. For example,
+"Power benefit asserted; no numerical power experiment reported" preserves the
+qualitative claim; a numeric power component may separately be `not_reported`.
+Generic full-cell placeholders such as "not established" or "blocked" fail;
+legitimate explanatory sentences containing those words are allowed.
+
+For each side, retain `component_claim_ids` exactly from the claim (or `[]`) and
+`component_contrast_indices` containing every index in the claim's `contrasts`
+(or `[]`). These bindings make omissions detectable; source-by-source review must
+still judge whether the summary faithfully covers all components. A numeric
+family must not hide its known estimates behind "no pooled scalar".
+
+Each mapped first-page row additionally requires `published_text`,
+`published_bbox`, `ours_text`, and `ours_bbox`. Text must match the corresponding
+claim finding and exactly match normalized text extracted from its own rendered
+cell. Both rectangles must lie wholly in that row and table, must not overlap,
+and Published must be left of Ours. Do not point a cell rectangle at a caption,
+another row, or repeated text elsewhere. Comparison labels are checked separately.
+This validation always runs, including nonscalar rows with both effects null;
+legacy records lacking finding evidence do not pass current acceptance.
+
+Require a fresh `finding_attribution` editorial check with explicit page-1
+findings. Review every Published and Ours cell against its own cited evidence,
+including all components, and record any missing or unsupported finding as a
+failure. Correct cell geometry, known words, hashes, and arithmetic do not
+establish semantic fidelity. Preserve historical records; never retrofit a pass.
+
+Bind cell identity to actual table headers, not just left-to-right order. The
+`first_page.table` mapping must also declare `published_column_bbox`,
+`ours_column_bbox`, `published_heading_bbox`, `ours_heading_bbox`,
+`published_heading` ("Published" or "Published finding"), and `ours_heading`
+("Ours" or "Our finding"). Each header rectangle spans exactly its declared
+column's horizontal extent and extracts exactly its heading before all data rows. Columns lie inside
+the table, are ordered and do not overlap. Each finding cell must be inside its
+own headed column as well as its row. Mapping duplicate text in a claim,
+comparison, caption or neighboring column cannot satisfy this contract.
