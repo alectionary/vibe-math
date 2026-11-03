@@ -21,7 +21,17 @@ compare the rendered main paper against it. The bundled
 Keep semantic subject-specific adaptations separate from style changes. Record
 and justify necessary deviations; do not silently invent a new layout.
 
-Before declaring delivery complete, independently review the rendered **main
+Before declaring delivery complete, run the replication-plan done check from
+the [pre-done checklist](../SKILL.md#pre-done-checklist). From the study root:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/preflight.py done \
+  --plan REPLICATION-PLAN.yaml --paper PAPER.tex --root .
+```
+
+Add `--analysis` for each analysis file. Exit 2 means the plan, its first
+commit, or the paper's coverage language is not ready. Then independently
+review the rendered **main
 manuscript**, not merely its source, helper tests, or appendix. Check first-page
 findings, tables, scalable fonts, citations, copied compliance and availability
 rows, filename links, and the distinction between findings and execution details.
