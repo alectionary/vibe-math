@@ -28,7 +28,11 @@ we replicated, partly replicated, failed to replicate, or could not establish
 the dissertation's headline findings. Give the published-versus-ours values
 and qualifiers appropriate to the evidence. A blocked comparison must not be
 called nonreplication. Put limits immediately after the verdict; do not let a
-supporting success substitute for an unresolved composite headline.
+supporting success substitute for an unresolved composite headline. Keep the
+verdict inside the replication plan: a headline part marked `partly`,
+`mismatch`, `not_attempted`, or `input_unavailable`, or run below its design
+count, is not called replicated. When a count was reduced, put the exact
+`N of M` figures in the abstract and again in the body.
 
 Every sentence must make sense to a reader seeing this paper for the first time.
 Exclude earlier drafts, "results remain unchanged", "latest continuation",
