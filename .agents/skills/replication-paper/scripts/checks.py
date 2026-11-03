@@ -368,6 +368,165 @@ def _design_value(part: dict):
     return None
 
 
+LIMIT_KINDS = (
+    "input_unavailable",
+    "not_run",
+    "theorem_finite_only",
+    "out_of_scope",
+)
+_GENERIC_REASON = (
+    "see named artifacts and limitations",
+    "see named artifacts",
+    "finite or documentary coverage only",
+    "universal and full-design conclusions not independently established",
+    "required full-design inputs or production estimates not obtained",
+    "pilots and inventory are not fitted results",
+    "documentary inventory completed",
+    "independent proof/resource-count analysis or production fit not executed",
+)
+_COST_WORD = re.compile(
+    r"\b(?:cpu|wall(?:-clock)?|hours?|minutes?|seconds?|cost|estimate|approximately|about|cores?|parallel(?:ized)?|time|runtime|compute)\b|\d+(?:\.\d+)?",
+    re.I,
+)
+
+
+def _limit_schema(plan) -> bool:
+    """New limit checks apply only when the plan declares limit_schema 1."""
+    return isinstance(plan, dict) and plan.get("limit_schema") == 1
+
+
+def _evidence_paths(value):
+    if not isinstance(value, str):
+        return []
+    return [item.strip() for item in re.split(r"[;\n]+", value) if item.strip()]
+
+
+def _reason_is_generic(reason: str) -> bool:
+    folded = _norm(reason).casefold()
+    if not folded:
+        return True
+    for phrase in _GENERIC_REASON:
+        folded = folded.replace(phrase, " ")
+    folded = re.sub(r"[^a-z0-9]+", " ", folded).strip()
+    return len(folded) < 24
+
+
+def _cost_only(text: str) -> bool:
+    stripped = _COST_WORD.sub(" ", _norm(text).casefold())
+    stripped = re.sub(r"[^a-z]+", " ", stripped).strip()
+    return len(stripped) < 12
+
+
+def _limit_entries(part):
+    raw = part.get("limit_kind")
+    if isinstance(raw, str):
+        raw = [raw]
+    if not isinstance(raw, list) or not raw:
+        return None
+    entries = []
+    for item in raw:
+        if isinstance(item, str):
+            entries.append({"kind": item})
+        elif isinstance(item, dict) and isinstance(item.get("kind"), str):
+            entries.append(item)
+        else:
+            entries.append({"kind": None})
+    return entries
+
+
+def _detail(entry, part, key):
+    if key in entry and entry.get(key) is not None:
+        return entry.get(key)
+    return part.get(key)
+
+
+def _limit_kind_errors(parts) -> list:
+    """Reject stock reasons, shared evidence, and incomplete not_run decisions.
+
+    Applies only to plans that set ``limit_schema: 1``. A status other than
+    ``replicated`` needs one or more limit kinds, each with its own facts.
+    """
+    errors = []
+    reasons = {}
+    evidence_sets = {}
+    for part in parts:
+        ident = part.get("id")
+        if not _id_ok(ident):
+            continue
+        label = f"part {ident}"
+        status = part.get("status")
+        if status == "replicated":
+            continue
+        if status not in PLAN_STATUSES:
+            continue
+        entries = _limit_entries(part)
+        if entries is None:
+            errors.append(f"{label}: limit_kind required when status is not replicated")
+            entries = []
+        seen_kinds = []
+        for entry in entries:
+            kind = entry.get("kind")
+            if kind not in LIMIT_KINDS:
+                errors.append(f"{label}: limit_kind must be one of {', '.join(LIMIT_KINDS)}")
+                continue
+            if kind in seen_kinds:
+                errors.append(f"{label}: limit_kind {kind} is repeated")
+                continue
+            seen_kinds.append(kind)
+            if kind == "input_unavailable":
+                if not _nonempty(_detail(entry, part, "missing_input")):
+                    errors.append(f"{label}: input_unavailable requires missing_input")
+                if not _nonempty(_detail(entry, part, "looked_in")):
+                    errors.append(f"{label}: input_unavailable requires looked_in")
+            elif kind == "not_run":
+                estimate = _detail(entry, part, "cost_estimate")
+                decision = _detail(entry, part, "decision")
+                tractable = _detail(entry, part, "tractable")
+                if not _nonempty(estimate):
+                    errors.append(f"{label}: not_run requires a cost_estimate")
+                if not _nonempty(decision):
+                    errors.append(f"{label}: not_run requires a decision")
+                if type(tractable) is not bool:
+                    errors.append(f"{label}: not_run requires tractable true or false")
+                elif tractable:
+                    justification = _detail(entry, part, "justification")
+                    if not _nonempty(justification) or _cost_only(justification) or (
+                        _nonempty(estimate) and _norm(justification).casefold() == _norm(estimate).casefold()
+                    ):
+                        errors.append(
+                            f"{label}: compute cost alone is not acceptable when the part is tractable"
+                        )
+            elif kind == "theorem_finite_only":
+                if not _nonempty(_detail(entry, part, "finite_checks")):
+                    errors.append(f"{label}: theorem_finite_only requires finite_checks")
+            elif kind == "out_of_scope":
+                if not _nonempty(_detail(entry, part, "scope_reason")):
+                    errors.append(f"{label}: out_of_scope requires scope_reason")
+        reason = part.get("reason")
+        if isinstance(reason, str) and _nonempty(reason):
+            if _reason_is_generic(reason):
+                errors.append(f"{label}: reason is a generic template")
+            key = _norm(reason).casefold()
+            reasons.setdefault(key, []).append(ident)
+        paths = _evidence_paths(part.get("evidence"))
+        if len(paths) != len(set(paths)):
+            errors.append(f"{label}: evidence path is repeated")
+        unique = tuple(dict.fromkeys(paths))
+        if unique:
+            evidence_sets.setdefault(unique, []).append(ident)
+    for idents in reasons.values():
+        if len(idents) > 1:
+            for ident in idents:
+                others = ", ".join(item for item in idents if item != ident)
+                errors.append(f"part {ident}: reason duplicates {others}")
+    for idents in evidence_sets.values():
+        if len(idents) > 1:
+            for ident in idents:
+                others = ", ".join(item for item in idents if item != ident)
+                errors.append(f"part {ident}: evidence is not part-specific; shared with {others}")
+    return errors
+
+
 def _part_ceiling(status, reduced: bool) -> str:
     if status in ("not_attempted", "input_unavailable") or status not in PLAN_STATUSES:
         return "blocked"
@@ -635,6 +794,8 @@ def replication_plan_errors(plan, baseline, paper, *, baseline_error=None, paper
             }
         )
 
+    if _limit_schema(plan):
+        errors.extend(_limit_kind_errors(current_parts))
     if paper_error:
         errors.append(paper_error)
     elif not isinstance(paper, str):
