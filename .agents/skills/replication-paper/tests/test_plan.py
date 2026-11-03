@@ -562,6 +562,107 @@ class PlanGit(unittest.TestCase):
         self.assertEqual(caught.exception.code, 2)
 
 
+PARTIAL_PAPER = tex(
+    "We could not establish the headline result.",
+    "The remaining parts are unresolved.",
+)
+
+
+def limited(part_id, evidence, **updates):
+    part = {
+        "id": part_id,
+        "kind": "analysis",
+        "label": part_id,
+        "plan": f"Carry out {part_id}.",
+        "status": "partly",
+        "reason": f"{part_id} stopped after the finite matrix check in its own notes.",
+        "evidence": evidence,
+        "limit_kind": ["theorem_finite_only"],
+        "finite_checks": f"Exhaustive check on the {part_id} example; no universal proof.",
+    }
+    part.update(updates)
+    return part
+
+
+class LimitKinds(unittest.TestCase):
+    def test_plans_without_the_schema_keep_shared_boilerplate(self):
+        shared = "See named artifacts and limitations."
+        data = plan([
+            headline(status="partly", reason=shared, evidence="notes.md"),
+            chapter(status="partly", reason=shared, evidence="notes.md"),
+        ])
+        found = errors(data, PARTIAL_PAPER)
+        self.assertFalse(any("limit_kind" in item or "generic template" in item for item in found))
+
+    def test_schema_requires_a_specific_kind_reason_and_evidence(self):
+        data = plan([
+            headline(
+                status="partly",
+                reason="See named artifacts and limitations.",
+                evidence="notes.md; notes.md",
+            ),
+            chapter(
+                status="partly",
+                reason="See named artifacts and limitations.",
+                evidence="notes.md",
+            ),
+        ])
+        data["limit_schema"] = 1
+        found = errors(data, PARTIAL_PAPER)
+        self.assertTrue(any("limit_kind required" in item for item in found))
+        self.assertTrue(any("generic template" in item for item in found))
+        self.assertTrue(any("reason duplicates" in item for item in found))
+        self.assertTrue(any("evidence path is repeated" in item for item in found))
+        self.assertTrue(any("evidence is not part-specific" in item for item in found))
+
+    def test_each_limit_kind_keeps_its_own_facts(self):
+        good = plan([
+            headline(),
+            limited("reshape-cost", "results/reshape_cost.json", status="not_attempted",
+                    reason="Oracle call counts were not executed; the script is results/reshape_cost.py.",
+                    limit_kind=[{"kind": "not_run"}],
+                    cost_estimate="About 1 CPU-minute for the six worked examples.",
+                    decision="Not run in this pass.",
+                    tractable=True,
+                    justification="The count is a short exact calculation, deferred only because the oracle implementation was still being checked."),
+            limited("reshape-random", "sources/random-search.md", status="input_unavailable",
+                    reason="The (3,4) seed matrices are not in the archived repository.",
+                    limit_kind=["input_unavailable"],
+                    missing_input="original (3,4) seed matrices",
+                    looked_in="sources/browser-extraction.txt and the code archive"),
+        ])
+        good["limit_schema"] = 1
+        self.assertEqual(errors(good, PARTIAL_PAPER), [])
+        costly = plan([
+            headline(),
+            limited("reshape-cost", "results/reshape_cost.json", status="not_attempted",
+                    reason="The resource count was left for later.",
+                    limit_kind=["not_run"],
+                    cost_estimate="1 CPU-minute",
+                    decision="1 CPU-minute",
+                    tractable=True,
+                    justification="1 CPU-minute"),
+        ])
+        costly["limit_schema"] = 1
+        found = errors(costly, PARTIAL_PAPER)
+        self.assertTrue(any("compute cost alone is not acceptable" in item for item in found))
+
+    def test_several_limit_kinds_can_apply_to_one_part(self):
+        data = plan([
+            headline(),
+            limited(
+                "confinement-stochastic",
+                "results/confinement_audit.md",
+                reason="Theorem 2 was checked on one 12-qubit complex; the percolation proof was not redone.",
+                limit_kind=["theorem_finite_only", "out_of_scope"],
+                finite_checks="31,232 residual checks on 12 qubits.",
+                scope_reason="A new general proof is outside this finite audit.",
+            ),
+        ])
+        data["limit_schema"] = 1
+        self.assertEqual(errors(data, PARTIAL_PAPER), [])
+
+
 def _dump(data):
     import yaml
 
