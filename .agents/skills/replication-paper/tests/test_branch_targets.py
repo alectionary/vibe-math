@@ -34,7 +34,9 @@ class BranchTargets(unittest.TestCase):
 
     def test_head_paths_anchors_and_symbols(self):
         good = 'See https://github.com/a/b/blob/master/results.txt#L1 and https://github.com/a/b/tree/master/notes.'
+        wrapped = r'\href{https://github.com/a/b/blob/master/results.txt}{\path{results.txt}}'
         self.assertEqual(pdf_links.branch_target_errors(good, self.root), [])
+        self.assertEqual(pdf_links.branch_target_errors(wrapped, self.root), [])
         missing = 'https://github.com/a/b/blob/master/missing.txt'
         self.assertTrue(any('not in HEAD' in item for item in pdf_links.branch_target_errors(missing, self.root)))
         swapped = 'https://github.com/a/b/tree/master/results.txt'
