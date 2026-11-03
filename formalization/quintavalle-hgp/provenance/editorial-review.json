@@ -3,12 +3,10 @@
   "context": "fresh cold-reader followed by authorized evidence review",
   "pdf_sha256": "9500b3314a325a541453389d2caa570b76e1b0deb12c5f44e4e975e8c8d5eadd",
   "source_sha256": "e4fb172b6168ee08555b69de037decdb2a73044aaabf762f1fd0620e41b20408",
-  "build_inputs": [
-    {
-      "path": "paper/references.tex",
-      "sha256": "ee7ace9e4dc3676d050e5b4a00ebd2e226881b8ceed1f5f3cf47a2e666717216"
-    }
-  ],
+  "build_inputs": {
+    "paper/manuscript.tex": "e4fb172b6168ee08555b69de037decdb2a73044aaabf762f1fd0620e41b20408",
+    "paper/references.tex": "ee7ace9e4dc3676d050e5b4a00ebd2e226881b8ceed1f5f3cf47a2e666717216"
+  },
   "packet_sha256": "3e757d6edb4759ca7eaf45a383a6e001ee35f19ed2aed6dbee37cab7dfc9ba20",
   "writer_manifest_sha256": "fdafd857fcd32d2a86c2359b3cc25532ea0c8c54f9c6e5c7af8916373c354e52",
   "cold_review": {
@@ -43,7 +41,8 @@
       "selected analysis code and README heading",
       "paper/references.tex",
       "current manuscript phrase-cue scan",
-      "final rebuilt PDF all pages and URI inventory"
+      "final rebuilt PDF all pages and URI inventory",
+      "format completion: current manuscript preamble and first 110 source lines, full references.tex, all citation keys and declared TeX inputs"
     ],
     "not_read": [
       "prior reviews",
@@ -1976,5 +1975,13 @@
     "Sibling gate and partition discrepancies are candidate source-comparison gaps pending ink and convention review, not established source errors."
   ],
   "editorial_blockers": [],
-  "scientific_reruns_performed": false
+  "scientific_reruns_performed": false,
+  "items": {
+    "layout": "Visually inspected all 20 final PDF pages at 1.4-scale renders. Page 1 contains all 14 readable rows with separate Published/Ours, magnitude, direction and verdict columns, without overlap or clipping. Body and appendices remain legible, including corrected inequality glyphs on pages 12-13. First-page .55-inch margins and 9.5-point table text versus .82-inch, 11-point body are explicitly disclosed on page 19; verified in current manuscript preamble.",
+    "headline_and_tolerance": "Page 1 and page 2 open with the unresolved composite verdict and preserve all 4/2/2/3 missing production denominators. All 14 Published/Ours cells were independently checked against original extracted passages and saved results. Four sustainable thresholds and source errors remain explicit. Capacity +6.05 pp has rounding tolerance .055; suppression +.76 has tolerance .01. No ours fits or scalar aggregate are invented; source standard errors remain distinct from tolerance and point-estimate comparisons are explicitly not equivalence.",
+    "citations": "Read current references.tex and matched all five manuscript citation keys to bibliography entries; no undefined keys. Final pages 19-20 identify Quintavalle dissertation, Wilson, NIST and software references. Dissertation identity checked against title-page extraction and availability ledger; Wilson/NIST metadata against sources/method-citations.json. Actual external reference URIs agree with visible identities. This review does not newly verify Wilson full-text content, source PDF ink, every software version installation or remote URL availability; those verification limits are disclosed.",
+    "ledgers": "Read and compared all 41 Appendix A entries across final pages 6-17 with packet claim statements, outcomes, statuses and required scopes, and the six limitations on pages 5-6 with packet limits. Read regeneration ledger on page 18 and compliance ledger on page 19: calculations versus report rebuild, historical provenance, intentional layout/engine departures and unavailable source ink are distinguished. Inventories are not treated as independent proof. The separate 14-row attribution ledger retains source passages and actual result fields.",
+    "links": "Canonical extraction from final PDF yields 172 actual URI annotations and 39 distinct destinations. Reviewed complete destination/label grouping against final rendered pages, including wrapped filename fragments. Study artifact links use alectionary/vibe-math master paths. Verified decoder, interval, tensor, phase, main-run and upstream-run line anchors plus README reproduce heading against local text. External citation/software targets match labels. Semantic/navigation review does not assert HTTP availability or publication of these exact final bytes.",
+    "independence_limits": "A fresh-context cold read of only specified PDF and three handoff criteria was recorded before packet, writer manifest or evidence was opened. Then original extraction passages and saved results were checked, followed by all-page final visual reinspection. No prior reviews/manuscripts or research conversation read, no scientific reruns, and no paper/result edits by reviewer. Source ink, universal proofs, noisy fault tolerance and production fits remain unresolved; this agent editorial review is not human scientific certification."
+  }
 }
