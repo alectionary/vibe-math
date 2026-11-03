@@ -1,0 +1,402 @@
+{
+  "scope": "14 source-by-source headline finding audits; existing outputs only, no new simulations",
+  "source": "sources/browser-extraction.txt",
+  "source_page_numbering": "PDF pages are one-based; extraction P indices zero-based",
+  "findings": [
+    {
+      "claim_id": "reshape-correctness",
+      "source_claim_type": "theorem",
+      "published": {
+        "text": "Corrects errors through (d-1)/2 using classical oracles.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch3 Theorem1; PDF44, L1764\u20131768@P43",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "1,061 phase-error checks pass; no general proof.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "cases[].adversarial_errors",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "reshape-toric",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Toric ReShape shows anti-threshold behavior.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch3 Figure4; PDF52, L2612\u20132645@P51",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "p=.03: failure .0596 to .1828 as d=6 to 20; reconstructed.",
+        "state": "observed",
+        "artifact_ids": [
+          "toric"
+        ],
+        "locator": "rows: p=.03, size6/8/10/20; 10000trials per setting",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Reconstruct all identifiable source distances and probabilities with at least 10000 trials per point, or exact probabilities where derivable and independently checked; do not substitute planar codes for toric codes.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "reshape-random",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Random (3,4) family shows anti-threshold behavior.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch3 Figure4; PDF52, L2612\u20132614@P51",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "Not run: original random seeds/grid not recovered.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "availability"
+        ],
+        "locator": "random (3,4) inputs not recovered",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "reason": "Not run: original random seeds/grid not recovered."
+      },
+      "conditions": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "line-basis",
+      "source_claim_type": "theorem",
+      "published": {
+        "text": "Every HGP has a symplectic logical line basis.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch4 Theorem1; PDF63, L3598\u20133624@P62",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "256 seed pairs plus six examples pass; finite checks.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "all_2_by_2_seed_pairs and cases; structural assertions in analysis/verify.py",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Implement independent kernel RREF basis construction and verify symplectic pairing, line support and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination and complexity.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "pieceable",
+      "source_claim_type": "conditional construction",
+      "published": {
+        "text": "Round-robin logical CZ with intermediate ReShape correction.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch4 Sec4.1; PDF70\u201371, L4186\u20134225@P69\u201370; limitations L4350\u20134363@P72",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "361 schedules and 256 ideal logical pairs pass; noisy steps untested.",
+        "state": "observed",
+        "artifact_ids": [
+          "independent"
+        ],
+        "locator": "round_robin and logical_round_robin",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "confinement-adversarial",
+      "source_claim_type": "conditional theorem",
+      "published": {
+        "text": "Good confinement and growing distance imply adversarial single-shot.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Theorem1; PDF86, L5046\u20135050@P85; definition L5040\u20135044",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "31,232 residual checks on 12 qubits; no general proof.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "shadow.shadow_checks, shadow.n; finite exact shadow decoder",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "confinement-stochastic",
+      "source_claim_type": "conditional theorem",
+      "published": {
+        "text": "Good linear confinement implies stochastic single-shot threshold.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Theorem2; PDF86, L5057\u20135061@P85; bounded qubit degree and polynomially growing distance",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "Not independently proved; theorem conditions inventoried.",
+        "state": "not_assessed",
+        "artifact_ids": [
+          "notes"
+        ],
+        "locator": "Theory accounting: AppendixA proof inventoried, not independently re-proved",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "reason": "Not independently proved; theorem conditions inventoried."
+      },
+      "conditions": "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "confinement-product",
+      "source_claim_type": "theorem",
+      "published": {
+        "text": "3D products have cubic X confinement; t is Z distance.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Theorem3; PDF86, L5062\u20135064@P85; f(x)=x^3/4 or better",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "4,096 errors enumerated on 12 qubits; no general proof.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "shadow.physical_errors_enumerated; finite quotient check",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "threshold-table",
+      "source_claim_type": "numerical estimates",
+      "published": {
+        "text": "Surface 3.08(4)/2.90(1)%; toric 2.90(2)/2.78(2)%.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 TableII; PDF85, L4949\u20134955@P84; standard errors in parentheses; MWPM+BP/OSD versus BP/OSD twice",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0,
+          1
+        ]
+      },
+      "ours": {
+        "text": "0 of 4 sustainable-threshold estimates completed.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "pilot"
+        ],
+        "locator": "original_pilots.json; timed diagnostics are not threshold fits",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0,
+          1
+        ],
+        "reason": "0 of 4 sustainable-threshold estimates completed."
+      },
+      "conditions": "Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "capacity",
+      "source_claim_type": "numerical estimate and cited comparator",
+      "published": {
+        "text": "BP+OSD 21.55(1)% versus cited sweep 15.5%.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 TableI; PDF85, L4893\u20134907@P84; phase-flip threshold, cited sweep comparator",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ]
+      },
+      "ours": {
+        "text": "0 of 2 capacity fits completed; no fitted contrast.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "pilot"
+        ],
+        "locator": "original_pilots.json; no production capacity fit",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ],
+        "reason": "0 of 2 capacity fits completed; no fitted contrast."
+      },
+      "conditions": "Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "failure-subroutine",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Repair improves high-noise decoding by over an order of magnitude.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Figure2 and text; PDF94, L5939@P93; high syndrome noise",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "617 versus 72 failures/10000 at L=5, p=.1, q=.03, N=1.",
+        "state": "observed",
+        "artifact_ids": [
+          "original"
+        ],
+        "locator": "toric3D_L5_p0.1_q0.03_N1 repair0/1; reconstructed depth; final round adds data noise",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures distinct.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "suppression",
+      "source_claim_type": "numerical estimates",
+      "published": {
+        "text": "Beta 1.91(3) at N=0; 1.15(3) at N=8.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 AppendixE/Fig6; PDF114, L8196\u20138197@P113; also L5997\u20135998@P94",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ]
+      },
+      "ours": {
+        "text": "0 of 2 suppression fits completed.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "pilot"
+        ],
+        "locator": "No adequate production data for AppendixE fits; research-notes.md numerical stopping",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ],
+        "reason": "0 of 2 suppression fits completed."
+      },
+      "conditions": "Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "nontopological",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Three random codes; crossing near 2.7% at N=16.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 TableIII/Figure4; PDF95\u201396, L6015@P94 and L6060\u20136080@P95",
+        "component_claim_ids": [
+          "random-code1",
+          "random-code2",
+          "random-code3",
+          "random-crossing"
+        ],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "0 of 3 performance analyses; original seeds not recovered.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "availability"
+        ],
+        "locator": "Random-product original matrices and grid not recovered",
+        "component_claim_ids": [
+          "random-code1",
+          "random-code2",
+          "random-code3",
+          "random-crossing"
+        ],
+        "component_contrast_indices": [],
+        "reason": "0 of 3 performance analyses; original seeds not recovered."
+      },
+      "conditions": "Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.",
+      "source_ink_verified": false
+    },
+    {
+      "claim_id": "limitations",
+      "source_claim_type": "open problems and conjecture",
+      "published": {
+        "text": "Full gate framework open; nonlinear-noise extension conjectural.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch6 PDF119, L8443\u20138459@P118; Ch5 PDF86 L5051\u20135056@P85",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "ours": {
+        "text": "No architecture or conjecture demonstration attempted.",
+        "state": "not_assessed",
+        "artifact_ids": [
+          "notes"
+        ],
+        "locator": "Theory accounting and explicit open-problem limits",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "reason": "No architecture or conjecture demonstration attempted."
+      },
+      "conditions": "Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.",
+      "source_ink_verified": false
+    }
+  ]
+}

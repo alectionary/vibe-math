@@ -47,7 +47,9 @@ on page 1, in the abstract or in the headline table. Use "reported" or
 "concluded". Do not write "the author claims".
 
 Put the headline table immediately after the abstract, before the
-introduction. Columns: scientific estimand/claim, published signed effect, ours,
+introduction. Columns must distinguish the scientific claim, published finding, our finding,
+and comparison. Preserve the published signed effect and our signed effect where
+applicable, separately from the findings. Comparison columns include
 Effect magnitude, direction, scientific verdict. Magnitude is smaller/same/larger
 at the declared rounding-aware or prespecified tolerance, or not established
 for unresolved/unstable estimates. Keep reversals explicit even when absolute
