@@ -198,7 +198,7 @@ def check(record, root):
 
 
 _MASTER = re.compile(
-    r'https://github\.com/([^/\s\"\'<>]+)/([^/\s\"\'<>]+)/(blob|tree)/master/([^\s\"\'<>#]+)'
+    r'https://github\.com/([^/\s"\'<>]+)/([^/\s"\'<>]+)/(blob|tree)/master/([^\s"\'<>#{}\\]+)'
     r'(?:#(L\d+(?:-L\d+)?))?',
     re.I)
 _ANCHOR = re.compile(r'^L(\d+)(?:-L(\d+))?$', re.I)

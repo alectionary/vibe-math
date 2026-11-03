@@ -193,6 +193,8 @@ def first_addition(root: Path, path: Path):
     """Return (revision, historical path) for the first commit that added `path`."""
     root = Path(root)
     relative = _relative(root, path)
+    # `git -C` pathspecs are relative to that directory; show/cat paths are not.
+    from_root = ( _toplevel(root).resolve() / relative ).resolve().relative_to(root.resolve()).as_posix()
     completed = _git(
         root,
         "log",
@@ -201,7 +203,7 @@ def first_addition(root: Path, path: Path):
         "--format=%H",
         "--name-status",
         "--",
-        relative,
+        from_root,
     )
     if completed.returncode != 0:
         raise RuntimeError(completed.stderr.decode(errors="replace").strip() or "git log failed")
