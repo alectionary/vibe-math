@@ -22,6 +22,8 @@ def run(repo, topology, size, p, q, depth, trials, repair, seed, limit=120):
             inp[field+'_filename'] = f'codes/{topology}/{topology}_{size}_{field}.alist'
     input_file = out/'input.json'
     input_file.write_text(json.dumps(inp, indent=2)+'\n')
+    # A repeated run must never read a stale prior timestamped output.
+    prior = {x: x.stat().st_mtime_ns for x in out.glob("*.json") if x.name != "input.json"}
     start = time.monotonic()
     with (out/'run.log').open('w') as log:
         try:
@@ -30,7 +32,9 @@ def run(repo, topology, size, p, q, depth, trials, repair, seed, limit=120):
         except subprocess.TimeoutExpired:
             status = 'timeout'
     elapsed = time.monotonic()-start
-    raw = [x for x in out.glob('*.json') if x.name != 'input.json']
+    raw = sorted((x for x in out.glob('*.json') if x.name != 'input.json'
+                  and (x not in prior or x.stat().st_mtime_ns != prior[x])),
+                 key=lambda x: x.stat().st_mtime_ns, reverse=True)
     data = json.loads(raw[0].read_text()) if raw else {}
     result = dict(label=label,status=status,elapsed_seconds=elapsed,requested=trials,
                   completed=data.get('run_count',0), failures=data.get('run_count',0)-data.get('osdw_success_count',0),
