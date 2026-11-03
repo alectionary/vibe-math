@@ -45,7 +45,10 @@ Each claim requires:
 
 For resource/feasibility stops, estimate cost, describe actual budget and feasible
 subset, say why further work cannot change or cannot yet establish the conclusion,
-and name the evidence that could resolve it. Do not launch unlimited computation
+and name the evidence that could resolve it. A feasible subset is a last resort
+after the full design has been costed. Record that cost and the attempts on the
+replication-plan part, state the exact `N of M` counts in the manuscript, and
+keep every unrun arm in the plan. Do not launch unlimited computation
 or fabricate a test to fill the inventory. Account for every arm even when blocked.
 Distinguish a blocked action from scientific evidence. Operational logs stay in
 provenance; the packet carries only their scientific consequence.
