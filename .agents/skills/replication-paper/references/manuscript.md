@@ -57,8 +57,9 @@ magnitudes agree. These are descriptive point estimates, not equivalence; keep
 uncertainty-supported inferences separate. See the first-page contract for the
 structured fields and rendered checks.
 The verdict is one of `match`, `partial`, `close`, `no match`,
-`not separated`. Use `not separated` when a ranking is not established under
-the stated uncertainty analysis; a descriptive magnitude label of `same` does
+`not separated`, or `unassessed`. Use `unassessed` when no comparable test, fit,
+or independent proof assessment was completed. Reserve `not separated` for a
+ranking unresolved under an actual uncertainty analysis; a descriptive magnitude label of `same` does
 not establish that result or equivalence. The caption or abstract states the
 comparison tolerance and distinguishes it from sampling uncertainty.
 
