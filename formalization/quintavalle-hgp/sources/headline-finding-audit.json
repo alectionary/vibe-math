@@ -26,7 +26,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.",
+      "conditions": "Binary hypergraph product code [[n,k,d]]; suitable classical decoders for each seed and its transpose; adversarial errors through (d-1)/2. Our checks address phase errors and finite instances.",
       "source_ink_verified": false
     },
     {
@@ -52,7 +52,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Reconstruct all identifiable source distances and probabilities with at least 10000 trials per point, or exact probabilities where derivable and independently checked; do not substitute planar codes for toric codes.",
+      "conditions": "Source toric HGP family under independent phase-flip noise; source Figure4 uses at least10000trials per point. Our reconstructed grid uses d=6,8,10,20 and14 probabilities; original point/tie conventions unrecovered.",
       "source_ink_verified": false
     },
     {
@@ -79,7 +79,7 @@
         "component_contrast_indices": [],
         "reason": "Not run: original random seeds/grid not recovered."
       },
-      "conditions": "Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered. Missing seeds remain unresolved, not replaced by convenient random matrices.",
+      "conditions": "Source HGP C(delta,delta transpose), full-rank randomly generated(3,4)seed matrices, independent phase-flip noise; original matrices and grid not recovered.",
       "source_ink_verified": false
     },
     {
@@ -105,7 +105,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Implement independent kernel RREF basis construction and verify symplectic pairing, line support and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination and complexity.",
+      "conditions": "Arbitrary binary hypergraph product code; logical X/Z line support with symplectic pairing. Our census covers256 ordered pairs of binary2x2seeds and six examples.",
       "source_ink_verified": false
     },
     {
@@ -131,7 +131,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.",
+      "conditions": "Logical CZ between left/right logical qubits using sector-transversal pieces and intermediate ReShape correction. High-weight intermediate X stabilizers and time overhead limit noisy fault-tolerance claims; our checks are ideal.",
       "source_ink_verified": false
     },
     {
@@ -157,7 +157,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight checks on a tractable 3D surface code.",
+      "conditions": "Quantum LDPC family with good confinement and growing distance d>=a*n^b,a,b>0; good X confinement restricts guarantee to Pauli-Z noise. Our12qubit check is finite.",
       "source_ink_verified": false
     },
     {
@@ -184,7 +184,7 @@
         "component_contrast_indices": [],
         "reason": "Not independently proved; theorem conditions inventoried."
       },
-      "conditions": "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof audit from a new formal proof or numerical threshold.",
+      "conditions": "Quantum LDPC family with bounded qubit degree, good linear confinement, and d>=a*n^b,a,b>0; local stochastic noise. Good X confinement gives Pauli-Z version; general confinement extension is a conjecture.",
       "source_ink_verified": false
     },
     {
@@ -210,7 +210,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable, not an extrapolation to all products.",
+      "conditions": "Three-dimensional product codes; X confinement t equals Z distance; f(x)=x^3/4 or better. Finite quotient check does not reproduce universal proof.",
       "source_ink_verified": false
     },
     {
@@ -243,7 +243,7 @@
         ],
         "reason": "0 of 4 sustainable-threshold estimates completed."
       },
-      "conditions": "Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts; benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.",
+      "conditions": "Source independent phase flips and measurement flips with q=p; sustainable large-cycle estimates for surface/toric and MWPM+BP/OSD versus BP/OSD twice. Parent contains four estimates, not one pooled scalar.",
       "source_ink_verified": false
     },
     {
@@ -274,7 +274,7 @@
         ],
         "reason": "0 of 2 capacity fits completed; no fitted contrast."
       },
-      "conditions": "Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel literature thresholds as our experiments.",
+      "conditions": "Toric phase-flip code-capacity BP+OSD estimate21.55(1)%;15.5%sweep value is cited prior work, not a new sweep experiment. Planned replication includes both toric and surface capacity analyses.",
       "source_ink_verified": false
     },
     {
@@ -300,7 +300,7 @@
         "component_claim_ids": [],
         "component_contrast_indices": []
       },
-      "conditions": "Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures distinct.",
+      "conditions": "Source toric L=5,data p=.1 and varying syndrome noise; original figure depth/grid not recovered. Our diagnostic uses N=1 and original software final perfect-measurement round with fresh data noise,10000trials per arm.",
       "source_ink_verified": false
     },
     {
@@ -331,7 +331,7 @@
         ],
         "reason": "0 of 2 suppression fits completed."
       },
-      "conditions": "Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values and uncertainty separately.",
+      "conditions": "Source suppression fits beta at N=0(code capacity) and N=8(single-shot cycles); uncertainties retained separately. No comparable production fits completed.",
       "source_ink_verified": false
     },
     {
@@ -368,7 +368,7 @@
         "component_contrast_indices": [],
         "reason": "0 of 3 performance analyses; original seeds not recovered."
       },
-      "conditions": "Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries and run BP+OSD twice for N=16 when inputs permit.",
+      "conditions": "Source three random3Dproduct codes [[1336,4,6]],[[3100,5,8]],[[5964,6,10]], with reported approximate crossing near2.7% after16cycles; exact seed inputs unrecovered.",
       "source_ink_verified": false
     },
     {
@@ -395,7 +395,7 @@
         "component_contrast_indices": [],
         "reason": "No architecture or conjecture demonstration attempted."
       },
-      "conditions": "Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement thresholds, and absence of a complete architecture demonstration.",
+      "conditions": "Chapter6 open comprehensive encoded-operation framework and Chapter5 conjectural general-confinement stochastic threshold; distinguish established conditional linear-confinement theorem from broader conjecture.",
       "source_ink_verified": false
     }
   ]
