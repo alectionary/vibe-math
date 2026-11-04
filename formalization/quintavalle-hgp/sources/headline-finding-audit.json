@@ -1,0 +1,475 @@
+{
+  "scope": "14 source-by-source headline finding audits; existing outputs only, no new simulations",
+  "source": "sources/browser-extraction.txt",
+  "source_page_numbering": "PDF pages are one-based; extraction P indices zero-based",
+  "findings": [
+    {
+      "claim_id": "reshape-correctness",
+      "source_claim_type": "theorem",
+      "published": {
+        "text": "Corrects errors through (d-1)/2 using classical oracles.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch3 Theorem1; PDF44, L1764–1768@P43",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "(d − 1)/2 using O(k) oracle calls to classical decoders for",
+        "page_locator": "PDF page 44",
+        "claim_type": "theorem",
+        "conditions": "Binary hypergraph product code [[n,k,d]]; suitable classical decoders for each seed and its transpose; adversarial errors through (d-1)/2. Our checks address phase errors and finite instances. Theorem 1 on PDF page 44 reported weight up to (d-1)/2. The article abstract reported weight smaller than (d-1)/2. This row follows the theorem statement."
+      },
+      "ours": {
+        "text": "1,061 phase-error checks pass; no general proof.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "cases[].adversarial_errors",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Binary hypergraph product code [[n,k,d]]; suitable classical decoders for each seed and its transpose; adversarial errors through (d-1)/2. Our checks address phase errors and finite instances.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "reshape-toric",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Toric ReShape shows anti-threshold behavior.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch3 Figure4; PDF52, L2612–2645@P51",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "Fig. 4. Anti-threshold behaviour of ReShape on two families of hypergraph product codes. For both families, we plot the failure probability pfail as a",
+        "page_locator": "PDF page 52",
+        "claim_type": "numerical estimate",
+        "conditions": "Source toric HGP family under independent phase-flip noise; source Figure4 uses at least10000trials per point. Our reconstructed grid uses d=6,8,10,20 and14 probabilities; original point/tie conventions unrecovered."
+      },
+      "ours": {
+        "text": "p=.03: failure .0596 to .1828 as d=6 to 20; reconstructed.",
+        "state": "observed",
+        "artifact_ids": [
+          "toric"
+        ],
+        "locator": "rows: p=.03, size6/8/10/20; 10000trials per setting",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Source toric HGP family under independent phase-flip noise; source Figure4 uses at least10000trials per point. Our reconstructed grid uses d=6,8,10,20 and14 probabilities; original point/tie conventions unrecovered.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "reshape-random",
+      "source_claim_type": "numerical evidence with qualified large-distance expectation",
+      "published": {
+        "text": "Random (3,4) scaling unclear; adverse large-distance trend expected.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch3 Figure4 and discussion; PDF52, L2612–2614 and L2644–2649@P51",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "The situation appears less clear in Figure 4d because the",
+        "page_locator": "PDF page 52",
+        "claim_type": "numerical estimate",
+        "conditions": "Source HGP C(delta,delta transpose), full-rank randomly generated(3,4)seed matrices, independent phase-flip noise; original matrices and grid not recovered. Source discussion explicitly qualifies the random panel as less clear and expects, rather than demonstrates, the larger-distance toric trend."
+      },
+      "ours": {
+        "text": "Not run: original random seeds/grid not recovered.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "availability"
+        ],
+        "locator": "random (3,4) inputs not recovered",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "reason": "Not run: original random seeds/grid not recovered."
+      },
+      "conditions": "Source HGP C(delta,delta transpose), full-rank randomly generated(3,4)seed matrices, independent phase-flip noise; original matrices and grid not recovered. Source discussion explicitly qualifies the random panel as less clear and expects, rather than demonstrates, the larger-distance toric trend.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "line-basis",
+      "source_claim_type": "theorem",
+      "published": {
+        "text": "Every HGP has a symplectic logical line basis.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch4 Theorem1; PDF63, L3598–3624@P62",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "Theorem 1. For any hypergraph product code there exist bases B",
+        "page_locator": "PDF page 63",
+        "claim_type": "theorem",
+        "conditions": "Arbitrary binary hypergraph product code; logical X/Z line support with symplectic pairing. Our census covers256 ordered pairs of binary2x2seeds and six examples."
+      },
+      "ours": {
+        "text": "256 seed pairs plus six examples pass; finite checks.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "all_2_by_2_seed_pairs and cases; structural assertions in analysis/verify.py",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Arbitrary binary hypergraph product code; logical X/Z line support with symplectic pairing. Our census covers256 ordered pairs of binary2x2seeds and six examples.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "pieceable",
+      "source_claim_type": "conditional construction",
+      "published": {
+        "text": "Round-robin logical CZ with intermediate ReShape correction.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch4 Sec4.1; PDF70–71, L4186–4225@P69–70; limitations L4350–4363@P72",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "between logical qubits in different sectors, via the round-robin method presented in [23].",
+        "page_locator": "PDF pp. 70-71",
+        "claim_type": "other",
+        "conditions": "Logical CZ between left/right logical qubits using sector-transversal pieces and intermediate ReShape correction. High-weight intermediate X stabilizers and time overhead limit noisy fault-tolerance claims; our checks are ideal."
+      },
+      "ours": {
+        "text": "361 schedules and 256 ideal logical pairs pass; noisy steps untested.",
+        "state": "observed",
+        "artifact_ids": [
+          "independent"
+        ],
+        "locator": "round_robin and logical_round_robin",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Logical CZ between left/right logical qubits using sector-transversal pieces and intermediate ReShape correction. High-weight intermediate X stabilizers and time overhead limit noisy fault-tolerance claims; our checks are ideal.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "confinement-adversarial",
+      "source_claim_type": "conditional theorem",
+      "published": {
+        "text": "Good confinement and growing distance imply adversarial single-shot.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Theorem1; PDF86, L5046–5050@P85; definition L5040–5044",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "d ≥ anb with a > 0 and b > 0. This code family is single",
+        "page_locator": "PDF page 86",
+        "claim_type": "theorem",
+        "conditions": "Quantum LDPC family with good confinement and growing distance d>=a*n^b,a,b>0; good X confinement restricts guarantee to Pauli-Z noise. Our12qubit check is finite."
+      },
+      "ours": {
+        "text": "31,232 residual checks on 12 qubits; no general proof.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "shadow.shadow_checks, shadow.n; finite exact shadow decoder",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Quantum LDPC family with good confinement and growing distance d>=a*n^b,a,b>0; good X confinement restricts guarantee to Pauli-Z noise. Our12qubit check is finite.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "confinement-stochastic",
+      "source_claim_type": "conditional theorem",
+      "published": {
+        "text": "Good linear confinement implies stochastic single-shot threshold.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Theorem2; PDF86, L5057–5061@P85; bounded qubit degree and polynomially growing distance",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "linear confinement such that d ≥ anb with a > 0 and b >",
+        "page_locator": "PDF page 86",
+        "claim_type": "theorem",
+        "conditions": "Quantum LDPC family with bounded qubit degree, good linear confinement, and d>=a*n^b,a,b>0; local stochastic noise. Good X confinement gives Pauli-Z version; general confinement extension is a conjecture."
+      },
+      "ours": {
+        "text": "Not independently proved; theorem conditions inventoried.",
+        "state": "not_assessed",
+        "artifact_ids": [
+          "notes"
+        ],
+        "locator": "Theory accounting: AppendixA proof inventoried, not independently re-proved",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "reason": "Not independently proved; theorem conditions inventoried."
+      },
+      "conditions": "Quantum LDPC family with bounded qubit degree, good linear confinement, and d>=a*n^b,a,b>0; local stochastic noise. Good X confinement gives Pauli-Z version; general confinement extension is a conjecture.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "confinement-product",
+      "source_claim_type": "theorem",
+      "published": {
+        "text": "3D products have cubic X confinement; t is Z distance.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Theorem3; PDF86, L5062–5064@P85; f(x)=x^3/4 or better",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "Theorem 3. All 3D product codes have (t, f ) X confine\u0002ment, where t is equal to the Z distance of the code and",
+        "page_locator": "PDF page 86",
+        "claim_type": "theorem",
+        "conditions": "Three-dimensional product codes; X confinement t equals Z distance; f(x)=x^3/4 or better. Finite quotient check does not reproduce universal proof."
+      },
+      "ours": {
+        "text": "4,096 errors enumerated on 12 qubits; no general proof.",
+        "state": "observed",
+        "artifact_ids": [
+          "exact"
+        ],
+        "locator": "shadow.physical_errors_enumerated; finite quotient check",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Three-dimensional product codes; X confinement t equals Z distance; f(x)=x^3/4 or better. Finite quotient check does not reproduce universal proof.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "threshold-table",
+      "source_claim_type": "numerical estimates",
+      "published": {
+        "text": "Surface 3.08(4)/2.90(1)%; toric 2.90(2)/2.78(2)%.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 TableII; PDF85, L4949–4955@P84; standard errors in parentheses; MWPM+BP/OSD versus BP/OSD twice",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0,
+          1
+        ],
+        "source_excerpt": "Surface 3.08(4)% 2.90(1)%",
+        "page_locator": "PDF page 85",
+        "claim_type": "numerical estimate",
+        "conditions": "Source independent phase flips and measurement flips with q=p; sustainable large-cycle estimates for surface/toric and MWPM+BP/OSD versus BP/OSD twice. Parent contains four estimates, not one pooled scalar."
+      },
+      "ours": {
+        "text": "0 of 4 fits. L=5,7 curves run; L=9,11 declined.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "pilot"
+        ],
+        "locator": "original_pilots.json; timed diagnostics are not threshold fits",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0,
+          1
+        ],
+        "reason": "0 of 4 fits. L=5 and L=7 curves finished. L=9 and L=11 were declined for resources. No critical-exponent fit."
+      },
+      "conditions": "Source independent phase flips and measurement flips with q=p; sustainable large-cycle estimates for surface/toric and MWPM+BP/OSD versus BP/OSD twice. Parent contains four estimates, not one pooled scalar.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "capacity",
+      "source_claim_type": "numerical estimate and cited comparator",
+      "published": {
+        "text": "BP+OSD 21.55(1)% versus cited sweep 15.5%.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 TableI; PDF85, L4893–4907@P84; phase-flip threshold, cited sweep comparator",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ],
+        "source_excerpt": "BP+OSD 21.55(1)%",
+        "page_locator": "PDF page 85",
+        "claim_type": "numerical estimate",
+        "conditions": "Toric phase-flip code-capacity BP+OSD estimate21.55(1)%;15.5%sweep value is cited prior work, not a new sweep experiment. Planned replication includes both toric and surface capacity analyses."
+      },
+      "ours": {
+        "text": "0 of 2 fits. Toric L=9,11 cross .21--.215.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "pilot"
+        ],
+        "locator": "original_pilots.json; no production capacity fit",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ],
+        "reason": "0 of 2 fits. The grid finished. No critical-exponent fit and no sweep comparison."
+      },
+      "conditions": "Toric phase-flip code-capacity BP+OSD estimate21.55(1)%;15.5%sweep value is cited prior work, not a new sweep experiment. Planned replication includes both toric and surface capacity analyses.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "failure-subroutine",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Repair improves high-noise decoding by over an order of magnitude.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 Figure2 and text; PDF94, L5939@P93; high syndrome noise",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "decoding performance by over an order of magnitude.",
+        "page_locator": "PDF page 94",
+        "claim_type": "numerical estimate",
+        "conditions": "Source toric L=5,data p=.1 and varying syndrome noise; original figure depth/grid not recovered. Our diagnostic uses N=1 and original software final perfect-measurement round with fresh data noise,10000trials per arm."
+      },
+      "ours": {
+        "text": "q=.02: 114 versus 9; q=.1: 6731 versus 5574.",
+        "state": "observed",
+        "artifact_ids": [
+          "original"
+        ],
+        "locator": "toric3D_L5_p0.1_q0.03_N1 repair0/1; reconstructed depth; final round adds data noise",
+        "component_claim_ids": [],
+        "component_contrast_indices": []
+      },
+      "conditions": "Source toric L=5,data p=.1 and varying syndrome noise; original figure depth/grid not recovered. Our diagnostic uses N=1 and original software final perfect-measurement round with fresh data noise,10000trials per arm.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "suppression",
+      "source_claim_type": "numerical estimates",
+      "published": {
+        "text": "Beta 1.91(3) at N=0; 1.15(3) at N=8.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 AppendixE/Fig6; PDF114, L8196–8197@P113; also L5997–5998@P94",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ],
+        "source_excerpt": "noise, we estimate α = 0.546(33) and β = 1.91(3), and for eight rounds of single-shot error correction, we estimate α = 0.610(37) and",
+        "page_locator": "PDF page 114",
+        "claim_type": "numerical estimate",
+        "conditions": "Source suppression fits beta at N=0(code capacity) and N=8(single-shot cycles); uncertainties retained separately. No comparable production fits completed."
+      },
+      "ours": {
+        "text": "0 of 2 suppression fits completed.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "pilot"
+        ],
+        "locator": "No adequate production data for AppendixE fits; research-notes.md numerical stopping",
+        "component_claim_ids": [],
+        "component_contrast_indices": [
+          0
+        ],
+        "reason": "0 of 2 suppression fits completed."
+      },
+      "conditions": "Source suppression fits beta at N=0(code capacity) and N=8(single-shot cycles); uncertainties retained separately. No comparable production fits completed.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "nontopological",
+      "source_claim_type": "numerical evidence",
+      "published": {
+        "text": "Three random codes; crossing near 2.7% at N=16.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch5 TableIII/Figure4; PDF95–96, L6015@P94 and L6060–6080@P95",
+        "component_claim_ids": [
+          "random-code1",
+          "random-code2",
+          "random-code3",
+          "random-crossing"
+        ],
+        "component_contrast_indices": [],
+        "source_excerpt": "results suggest a threshold at 2.7%. The error bars show the 95%",
+        "page_locator": "PDF page 96",
+        "claim_type": "numerical estimate",
+        "conditions": "Source three random3Dproduct codes [[1336,4,6]],[[3100,5,8]],[[5964,6,10]], with reported approximate crossing near2.7% after16cycles; exact seed inputs unrecovered. Table III reported [[5964,6,10]] for the distance-10 code. A sentence on PDF page 95 reported that this instance encodes ten logical qubits. This row follows the table."
+      },
+      "ours": {
+        "text": "0 of 3 performance analyses; original seeds not recovered.",
+        "state": "not_obtained",
+        "artifact_ids": [
+          "availability"
+        ],
+        "locator": "Random-product original matrices and grid not recovered",
+        "component_claim_ids": [
+          "random-code1",
+          "random-code2",
+          "random-code3",
+          "random-crossing"
+        ],
+        "component_contrast_indices": [],
+        "reason": "0 of 3 performance analyses; original seeds not recovered."
+      },
+      "conditions": "Source three random3Dproduct codes [[1336,4,6]],[[3100,5,8]],[[5964,6,10]], with reported approximate crossing near2.7% after16cycles; exact seed inputs unrecovered.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    },
+    {
+      "claim_id": "limitations",
+      "source_claim_type": "open problems and conjecture",
+      "published": {
+        "text": "Full gate framework open; general-confinement stochastic threshold conjectured.",
+        "state": "reported",
+        "artifact_ids": [
+          "source"
+        ],
+        "locator": "Ch6 PDF119, L8443–8459@P118; Ch5 PDF86 L5051–5056@P85",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "source_excerpt": "First and foremost, we lack a comprehensive framework for encoded operations that fully exploits",
+        "page_locator": "PDF page 119",
+        "claim_type": "other",
+        "conditions": "Chapter6 open comprehensive encoded-operation framework and Chapter5 conjectural general-confinement stochastic threshold; distinguish established conditional linear-confinement theorem from broader conjecture."
+      },
+      "ours": {
+        "text": "No architecture or conjecture demonstration attempted.",
+        "state": "not_assessed",
+        "artifact_ids": [
+          "notes"
+        ],
+        "locator": "Theory accounting and explicit open-problem limits",
+        "component_claim_ids": [],
+        "component_contrast_indices": [],
+        "reason": "No architecture or conjecture demonstration attempted."
+      },
+      "conditions": "Chapter6 open comprehensive encoded-operation framework and Chapter5 conjectural general-confinement stochastic threshold; distinguish established conditional linear-confinement theorem from broader conjecture.",
+      "source_ink_verified": true,
+      "rendered_page_inspected": true
+    }
+  ],
+  "source_text": "The 122-page thesis PDF was read, and the rendered pages listed in provenance/source-acquisition.json were inspected. Excerpts are verbatim lines from sources/browser-extraction.txt. These bindings do not prove the meaning of a row.",
+  "pdf_sha256": "dfed564052ab4068274f22efcddabbe3dc8890b3b020209bc70be0196d0cfe3f",
+  "pdf_pages": 122
+}

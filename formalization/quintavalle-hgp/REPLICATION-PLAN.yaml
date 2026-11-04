@@ -1,0 +1,586 @@
+schema_version: 1
+dissertation: 'Armanda Ottaviano Quintavalle (2022). Hypergraph product codes: a bridge to scalable quantum
+  computers. PhD, University of Sheffield.'
+source_locator: https://etheses.whiterose.ac.uk/id/eprint/32300/1/AOQ_thesis.pdf
+parts:
+- id: ch1
+  kind: chapter
+  label: Context and notation
+  plan: Audit background and explicitly exclude previously published introductory results.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/ch1.json
+  reason: Chapter 1 is notation and previously published background, so it was not given an experimental
+    design.
+  limit_kind:
+  - out_of_scope
+  scope_reason: Introductory notation is outside the replication design; previously published background
+    was excluded on purpose.
+- id: ch2
+  kind: chapter
+  label: Motivation and overview
+  plan: "Map the three research questions to Chapters 3\u20135; do not treat architectural motivation\
+    \ as a demonstrated device."
+  headline: false
+  status: partly
+  evidence: results/part-evidence/ch2.json
+  reason: Chapter 2 maps three research questions onto later chapters and does not state a device that
+    was built.
+  limit_kind:
+  - out_of_scope
+  scope_reason: Architectural motivation is not a finite experiment or a theorem with a checkable instance.
+- id: ch3
+  kind: chapter
+  label: ReShape decoding
+  plan: Cover canonical form, homological invariants, adversarial correctness, complexity, worked examples,
+    and both stochastic-noise families.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/ch3.json
+  reason: Chapter 3 mixes a finite ReShape audit with a random-code grid whose seeds are absent, so the
+    chapter is not a single completed design.
+  limit_kind:
+  - theorem_finite_only
+  - input_unavailable
+  finite_checks: Six worked seeds and the 56-point reconstructed toric grid are in the child parts.
+  missing_input: original random (3,4) seed matrices
+  looked_in: sources/browser-extraction.txt and the archived code repository
+- id: ch4
+  kind: chapter
+  label: Logical gates
+  plan: Cover canonical line bases, partition distances, square and symmetric gates, examples, pieceable
+    circuits and injection.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/ch4.json
+  reason: Chapter 4 ideal gate checks pass on the named examples; the source injection wiring and noisy
+    fault propagation were not in the rendered figures.
+  limit_kind:
+  - theorem_finite_only
+  - input_unavailable
+  finite_checks: 256 logical CZ pairs, 361 schedules, and a 20,000-shot conventional injection gadget.
+  missing_input: image-only injection wiring and the noisy syndrome-extraction model
+  looked_in: rendered PDF pages 70-72 and analysis/independent_checks.py
+- id: ch5
+  kind: chapter
+  label: Confinement and single-shot correction
+  plan: Cover theoretical results and all numerical analyses, including negative and unavailable outcomes.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/ch5.json
+  reason: Chapter 5 theorems were checked on one 12-qubit complex; the MWPM decoder and surface L=11 matrices
+    are not in the archive.
+  limit_kind:
+  - theorem_finite_only
+  - input_unavailable
+  finite_checks: 19 archived boundary matrices match, and 4,096 errors were enumerated on 12 qubits.
+  missing_input: MWPM syndrome repair and surface L=11 parity-check files
+  looked_in: vendor/single_shot_3D_HGP/codes and the bp_osd subtree
+- id: ch6
+  kind: chapter
+  label: Outlook
+  plan: Preserve open problems as open; distinguish conjectured extension to nonlinear confinement from
+    established theorems.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/ch6.json
+  reason: Chapter 6 states open problems and a conjecture; closing them would be a new theorem, not a
+    finite run.
+  limit_kind:
+  - out_of_scope
+  scope_reason: The outlook keeps the nonlinear-confinement threshold as a conjecture and does not specify
+    a finite design that would settle it.
+- id: reshape-canonical
+  kind: analysis
+  label: Canonical decomposition and quotient invariant
+  plan: "Implement GF(2) splitting and independently check stabilizer invariance and kernel representatives;\
+    \ audit Chapter 3 Propositions 1\u20133 and Appendices A\u2013C."
+  headline: false
+  status: partly
+  evidence: results/part-evidence/reshape-canonical.json
+  reason: Canonical splitting and the quotient projector were checked on the six named seeds, not proved
+    for every seed pair.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: HGP.reshape on planar3, planar5, toric2, toric3, Hamming65, and Hamming98.
+- id: reshape-correctness
+  kind: headline
+  label: Adversarial decoding and shaped errors
+  plan: Implement Algorithm 1 with exact classical nearest-codeword oracles. Exhaustively test small instances
+    and all errors below half-distance for larger examples; finite tests do not prove the universal theorem.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/reshape-correctness.json
+  reason: 1,061 guaranteed-range phase-error patterns pass on the worked examples; that does not prove
+    correction up to (d-1)/2 for every code.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: 1,061 phase-error patterns plus exhaustive planar3 and toric2 lists in results/exact_checks.json.
+- id: reshape-cost
+  kind: analysis
+  label: Oracle and classical resource bounds
+  plan: Audit dimensions and count active oracle calls against logical dimension; distinguish operation
+    counts from measured wall time.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/reshape-cost.json
+  reason: 'Oracle calls were counted on the six worked examples: each count is at most k (1, 1, 2, 2,
+    5, 8). This is not a proof of the O(k) bound for every code.'
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: analysis/reshape_cost.py on the six seeds; calls_at_most_k is true for each.
+- id: reshape-examples
+  kind: analysis
+  label: "Figures 1\u20133 illustrative constructions"
+  plan: Reconstruct repetition, toric and worked planar code structure and enumerate planar errors; preserve
+    graphical input ambiguity if figures cannot be rendered.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/reshape-examples.json
+  reason: Repetition, toric, and planar seeds were rebuilt and their low-weight errors enumerated; the
+    printed figure geometry was inspected, not re-derived from pixels.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: Worked planar and toric complexes in results/exact_checks.json.
+- id: reshape-toric
+  kind: headline
+  label: Figure 4 toric anti-threshold
+  plan: Reconstruct all identifiable source distances and probabilities with at least 10000 trials per
+    point, or exact probabilities where derivable and independently checked; do not substitute planar
+    codes for toric codes.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/reshape-toric.json
+  reason: A 56-point reconstructed toric grid, 10,000 trials each, shows failure at p=.03 rising from
+    .0596 at distance 6 to .1828 at distance 20. The source probability list and tie rule were not archived.
+  limit_kind:
+  - input_unavailable
+  missing_input: the source Figure 4 probability list, complements, and tie convention
+  looked_in: sources/browser-extraction.txt Chapter 3 and the code archive
+- id: reshape-random
+  kind: headline
+  label: Figure 4 random (3,4) family
+  plan: Search for exact seed matrices, original inputs and code; replicate the full source grid if recovered.
+    Missing seeds remain unresolved, not replaced by convenient random matrices.
+  headline: true
+  status: input_unavailable
+  evidence: results/part-evidence/reshape-random.json
+  reason: The random (3,4) family was not run because its seed matrices are not in the extraction or the
+    archive.
+  limit_kind:
+  - input_unavailable
+  missing_input: original (3,4) seed matrices and the source grid
+  looked_in: sources/browser-extraction.txt and the archived repository
+- id: line-basis
+  kind: headline
+  label: Canonical logical line basis
+  plan: Implement independent kernel RREF basis construction and verify symplectic pairing, line support
+    and completeness on all source worked examples and a fixed small-matrix census; audit Appendix A termination
+    and complexity.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/line-basis.json
+  reason: Symplectic line bases pass for all 256 binary 2x2 seeds and the six named examples. Termination
+    of the general algorithm was not proved.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: 256 seed pairs and six examples in results/exact_checks.json.
+- id: diagonal-partition
+  kind: analysis
+  label: Diagonal-twin partition distance
+  plan: Compute exact partition distances on tractable planar and toric instances; compare lower-bound
+    versus equality wording and inspect rendered equations before alleging discrepancy.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/diagonal-partition.json
+  reason: Exact Z-sector partition distances on planar3, toric2, and toric3 are 3, 2, and 3. A universal
+    equality with floor((d-1)/2) was not proved.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: partition_distances in results/independent_checks.json.
+- id: square-hswap
+  kind: analysis
+  label: Square Hadamard-SWAP
+  plan: Verify full stabilizer and logical Pauli action on repetition and the specified 65-qubit Hamming
+    example.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/square-hswap.json
+  reason: Square Hadamard-SWAP preserves the tested stabilizers and logical Paulis on the repetition code
+    and the 65-qubit Hamming example only.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: Phase-sensitive checks on those two codes in results/exact_checks.json.
+- id: square-czs
+  kind: analysis
+  label: Square CZ-S
+  plan: Verify phases as well as binary support for stabilizer preservation and logical action, including
+    right-sector S dagger.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/square-czs.json
+  reason: Square CZ-S sign checks, including the right-sector S correction, pass on the symmetric examples
+    that were built. No general circuit identity was proved.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: gate_phase_crosscheck rows for the symmetric seeds.
+- id: sibling-partition
+  kind: analysis
+  label: Symmetric sibling partition distance
+  plan: Verify exact distances on small symmetric examples and inspect sector-transversal argument.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/sibling-partition.json
+  reason: Sibling distances were computed on the small symmetric examples. The sector-transversal argument
+    was read and not re-proved.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: z_sibling_distance entries for the symmetric codes in results/independent_checks.json.
+- id: sibling-hswap
+  kind: analysis
+  label: Sibling Hadamard-SWAP
+  plan: Verify Pauli action on cyclic repetition and symmetric Hamming examples.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/sibling-hswap.json
+  reason: Sibling Hadamard-SWAP passes the Pauli action on cyclic repetition and the symmetric Hamming
+    examples, and fails 18 support checks on toric3 under one symmetry reading.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: Support checks recorded for toric3 in results/exact_checks.json.
+- id: sibling-cz
+  kind: analysis
+  label: Sibling CZ
+  plan: Verify stabilizer preservation and logical CZ pairing on source symmetric examples.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/sibling-cz.json
+  reason: Sibling CZ produces 16 negative stabilizer images on Hamming98. A Z correction restores the
+    signs and changes the gate, so the literal source expression is not matched.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: phase_repair records in results/independent_checks.json.
+- id: gate-examples
+  kind: analysis
+  label: Hamming and toric examples
+  plan: Reconstruct the specified seed matrices, code dimensions and logical basis, including 65 and 98
+    physical qubits.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/gate-examples.json
+  reason: Hamming seeds give [[65,17,d]] and [[98,32,d]] with the source dimensions. Distance is taken
+    from the source theorem, not from an exhaustive search.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: Parameter reconstruction of Hamming65 and Hamming98.
+- id: pieceable
+  kind: headline
+  label: Round-robin entangling gates
+  plan: Construct schedules, verify each bipartite pair is applied once, no within-piece collision, and
+    ideal logical Pauli action; separately assess fault propagation and ReShape intermediate correction.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/pieceable.json
+  reason: '361 round-robin schedules are collision-free and 256 ideal logical CZ pairs pass. Noisy intermediate
+    correction was not run: the source fault-propagation model is not specified as a circuit.'
+  limit_kind:
+  - theorem_finite_only
+  - input_unavailable
+  finite_checks: round_robin and logical_round_robin in results/independent_checks.json.
+  missing_input: a gate-level noise model for intermediate ReShape correction
+  looked_in: Chapter 4 extraction and the rendered round-robin figure on PDF page 71
+- id: injection
+  kind: analysis
+  label: Single-qubit injection and universality
+  plan: Check ideal state-injection branches with exact small complex matrices; do not infer noisy gate
+    thresholds or resource savings.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/injection.json
+  reason: A conventional CNOT injection gadget at zero noise matches S and T on |0> and |+> in 20,000
+    shots. At depolarizing probability .01 the |+> error rates are .0253 for S and .0339 for T. The rendered
+    source wiring was not the circuit that was simulated.
+  limit_kind:
+  - theorem_finite_only
+  - input_unavailable
+  finite_checks: results/noisy_injection.json, 20,000 shots, seed 20261103.
+  missing_input: the image-only injection wiring on PDF page 72
+  looked_in: the rendered S and T circuits and analysis/independent_checks.py injection()
+- id: confinement-adversarial
+  kind: headline
+  label: Confinement implies adversarial single-shot correction
+  plan: Audit shadow-decoder Lemma 1 and Theorem 1; implement finite exact shadow decoder and residual-weight
+    checks on a tractable 3D surface code.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/confinement-adversarial.json
+  reason: 31,232 residual checks pass on one 12-qubit example. The adversarial single-shot theorem for
+    growing-distance LDPC families was not proved.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: 12-qubit enumeration in results/exact_checks.json.
+- id: confinement-stochastic
+  kind: headline
+  label: Linear confinement implies stochastic single-shot threshold
+  plan: "Inventory Appendix A Lemmas 3\u20138, closeness and percolation dependencies; distinguish proof\
+    \ audit from a new formal proof or numerical threshold."
+  headline: true
+  status: partly
+  evidence: results/part-evidence/confinement-stochastic.json
+  reason: Theorem 2 was read as a conditional statement that needs bounded degree and linear confinement.
+    Re-proving the percolation argument is a new general proof, not a finite test.
+  limit_kind:
+  - out_of_scope
+  scope_reason: No finite instance is named that would replace the percolation proof of the stochastic
+    threshold.
+- id: confinement-product
+  kind: headline
+  label: Cubic confinement of 3D products
+  plan: "Audit Appendix C Lemmas 9\u201310 and their conditions; exact finite quotient checks where tractable,\
+    \ not an extrapolation to all products."
+  headline: true
+  status: partly
+  evidence: results/part-evidence/confinement-product.json
+  reason: 4,096 physical errors on one 12-qubit 3D product pass the cubic-confinement residual check.
+    The claim for every 3D product was not proved.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: 4,096 enumerated errors recorded with the product checks.
+- id: confinement-expander
+  kind: analysis
+  label: Soundness and expander confinement
+  plan: Audit Lemma 2 and Appendix D, including strictness and expansion assumptions; no replacement by
+    an unverified random graph.
+  headline: false
+  status: not_attempted
+  evidence: results/part-evidence/confinement-expander.json
+  reason: Appendix D states an expansion hypothesis for a class of matrices and does not name an archived
+    expander seed that could be substituted.
+  limit_kind:
+  - input_unavailable
+  missing_input: a named expander matrix or seed for Lemma 2
+  looked_in: sources/browser-extraction.txt Appendix D and vendor/single_shot_3D_HGP
+- id: product-construction
+  kind: analysis
+  label: 3D chain complex and locality
+  plan: Independently build all three boundary maps, verify chain identities, rank parameters and metachecks
+    against archived original matrices for available sizes; account for Appendix B.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/product-construction.json
+  reason: All 19 archived Hx and metacheck matrices match the independent tensor construction entry for
+    entry, including the chain identities.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: archived() rows in results/independent_checks.json.
+- id: single-shot-algorithm
+  kind: analysis
+  label: Two-stage decoding and invalid syndromes
+  plan: Build the original C++ source with pinned dependency; validate metacode failure detection and
+    compare independent construction and controls.
+  headline: false
+  status: partly
+  evidence: results/part-evidence/single-shot-algorithm.json
+  reason: The pinned BP+OSD binary was built in Release mode and accepts the archived toric and surface
+    inputs. Metacode failure detection is the subroutine flag in that binary, not a separate proof.
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: Release build of sim_scripts/single_shot_hgp3d.cpp run on the archived alist files.
+- id: threshold-table
+  kind: headline
+  label: Four sustainable threshold estimates
+  plan: Attempt both decoder strategies on both topologies, all reported lattice sizes and cycle counts;
+    benchmark before full simulations, preserving minimum 10000 trials and at least 25 failures when specified.
+  headline: true
+  design_count: 4
+  status: partly
+  evidence: results/part-evidence/threshold-table.json
+  reason: 'MWPM syndrome repair is not in the pinned repository, so none of the four published
+    sustainable estimates was fit. The BP+OSD N=8 curves at L=5 and L=7 finished. Toric sizes cross
+    between p=.025 and p=.03, and surface sizes cross between p=.03 and p=.035, beside the reported
+    2.78% to 3.08% region. The N=8 grids at L=9 and L=11 remain tractable and were declined for this
+    project''s compute limit, about 54 CPU-hours per toric L=11 point. That decline is ours, not a
+    limit of the source.'
+  run_count: 0
+  subset_justification:
+    cost_estimate: About 54 CPU-hours per toric L=11, N=8, 10,000-trial point; several days on 4 cores
+      for the L=9 and L=11 grids.
+    attempted: L=5 and L=7 at N=8 finished at 10,000 trials. L=9 and L=11 were declined for resources.
+      MWPM is absent from the archive. No critical-exponent fit was computed.
+  limit_kind:
+  - input_unavailable
+  - not_run
+  missing_input: MWPM syndrome-repair decoder
+  looked_in: vendor/single_shot_3D_HGP and bp_osd
+  cost_estimate: About 54 CPU-hours per toric L=11, N=8, 10,000-trial point, from a measured 1.76 s/trial
+    at depth 0 scaled by the depth-8 to depth-0 ratio at L=5. Several days on 4 cores for the full L=9
+    and L=11 grids.
+  decision: declined for resources
+  tractable: true
+  decision_by: project
+  decision_reason: The source design can be run. This project declines the N=8 grids at L=9 and L=11
+    because one toric L=11 point is about 54 CPU-hours and the grids take several days on the available
+    4 cores. The part is tractable. The limit is ours, not the source's, and the runs are not impossible.
+- id: capacity
+  kind: headline
+  label: Code-capacity threshold and prior-decoder comparison
+  plan: Reproduce original BP+OSD toric and surface designs and critical exponent fitting; do not relabel
+    literature thresholds as our experiments.
+  headline: true
+  design_count: 2
+  status: partly
+  evidence: results/part-evidence/capacity.json
+  reason: The BP+OSD code-capacity grid finished at 10,000 trials for toric L=5, 7, 9 and 11 and
+    surface L=5, 7 and 9. Toric L=9 and L=11 cross between p=.21 and p=.215, beside the reported
+    21.55(1)%. No critical-exponent fit was computed, and the cited sweep decoder is not this
+    experiment. Surface L=11 files are absent. Surface L=3 aborts inside the pinned binary.
+  run_count: 0
+  subset_justification:
+    cost_estimate: The 10,000-trial code-capacity grid has been run. A critical-exponent fit was not
+      computed. Surface L=11 remains absent.
+    attempted: Toric L=5, 7, 9, 11 and surface L=5, 7, 9 finished at 10,000 trials. Surface L=3 aborted
+      in the pinned binary. No threshold fit and no sweep comparison.
+  limit_kind:
+  - input_unavailable
+  missing_input: surface L=11 matrices and the cited sweep-decoder implementation
+  looked_in: vendor/single_shot_3D_HGP/codes/surface3D and the thesis Table I citations
+- id: failure-subroutine
+  kind: headline
+  label: Figure 2 failure-mode improvement
+  plan: Reproduce L=5, data p=0.1, varying syndrome q, with and without repair, keeping metacode failures
+    distinct.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/failure-subroutine.json
+  reason: At toric L=5, p=.1 and depth N=1, 10,000 trials give 114 failures without repair and 9 with
+    repair at q=.02, and 6731 versus 5574 at q=.1. The source figure does not list the exact q grid
+    or the depth.
+  limit_kind:
+  - input_unavailable
+  missing_input: the exact Figure 2 syndrome-noise grid and depth
+  looked_in: sources/browser-extraction.txt Figure 2 caption and results/original_diagnostic_grid.json
+- id: suppression
+  kind: headline
+  label: Below-threshold exponents
+  plan: Reproduce code-capacity and N=8 data and Appendix E two-stage slope fits; retain both beta values
+    and uncertainty separately.
+  headline: true
+  design_count: 2
+  status: partly
+  evidence: results/part-evidence/suppression.json
+  reason: No suppression slope was fit. Toric L=11 at p=.10 has 0 failures in 10,000 trials and at
+    p=.16 has 8, so the source 25-failure rule removes the below-threshold wing. The N=8 grids at L=9
+    and L=11 were declined for resources and are not this fit.
+  run_count: 0
+  subset_justification:
+    cost_estimate: The code-capacity grid finished. Points below the 25-failure rule still do not
+      identify a slope. The N=8 L=9 and L=11 grids were declined, about 54 CPU-hours per toric L=11 point.
+    attempted: Code-capacity and N=8 L=5 and L=7 curves finished. No slope was fit.
+  limit_kind:
+  - not_run
+  cost_estimate: About 54 CPU-hours per toric L=11, N=8 point, and the low-p code-capacity points produce
+    too few failures to fit a slope.
+  decision: No suppression slope was fit. The N=8 L=9 and L=11 points were declined for resources.
+  tractable: false
+  justification: A slope fit is not identified when the 25-failure rule removes the below-threshold points.
+    More trials at those points would still be a different design from the missing source grid.
+- id: nontopological
+  kind: headline
+  label: Random-product single-shot performance
+  plan: Locate all three Table III random seed codes and exact Figure 4 grid; validate all parameter entries
+    and run BP+OSD twice for N=16 when inputs permit.
+  headline: true
+  design_count: 3
+  status: input_unavailable
+  evidence: results/part-evidence/nontopological.json
+  reason: Table III random-product codes and the Figure 4 N=16 grid were not run. The three seeds are
+    not in the archive.
+  run_count: 0
+  subset_justification:
+    cost_estimate: The three seeds are absent, so the N=16 grid was not started.
+    attempted: The seeds were looked for in the extraction and the archive and were not found.
+  limit_kind:
+  - input_unavailable
+  missing_input: three Table III random seeds and the N=16 grid
+  looked_in: sources/browser-extraction.txt Table III and the code archive
+- id: fit-methods
+  kind: analysis
+  label: Appendix E thresholds and suppression fits
+  plan: Implement cited rescaling and extrapolation methods only on adequate comparable data; synthetic
+    recovery tests do not replicate reported fitted values.
+  headline: false
+  status: not_attempted
+  evidence: results/part-evidence/fit-methods.json
+  reason: Appendix E critical-exponent and suppression fits were not computed. The finished code-capacity
+    grid still has fewer than 25 failures on the deep below-threshold points, including 8 failures at
+    toric L=11 and p=.16.
+  limit_kind:
+  - not_run
+  cost_estimate: 'The missing ingredient is failures, not CPU time: toric L=5 at p=.10 already used 10,000
+    trials and produced 1 failure.'
+  decision: No Appendix E fit was computed.
+  tractable: false
+  justification: Fitting a slope to points the source rule would discard would not be the reported procedure.
+- id: limitations
+  kind: headline
+  label: Limits of a complete HGP computing architecture
+  plan: Preserve lack of stochastic threshold for ReShape, restricted Clifford gates, conjectured nonlinear-confinement
+    thresholds, and absence of a complete architecture demonstration.
+  headline: true
+  status: partly
+  evidence: results/part-evidence/limitations.json
+  reason: The source leaves a full gate architecture and the nonlinear-confinement threshold open. No
+    finite design in the archive would close either item.
+  limit_kind:
+  - out_of_scope
+  scope_reason: These are stated open problems, not unfinished runs of a specified grid.
+- id: symmetric-table
+  kind: condition
+  label: 'Chapter 4 Appendix B Table 2: all nine symmetric codes'
+  plan: Parse all nine printed seed matrices; independently enumerate each classical kernel, construct
+    H transpose H and verify n, k, rate, seed distance and maximum stabilizer weight. Distinguish inherited
+    distance theorem from exhaustive quantum distance search.
+  headline: false
+  design_count: 9
+  status: partly
+  evidence: results/part-evidence/symmetric-table.json
+  reason: All nine Appendix B symmetric codes match the printed n, k, rate, seed distance, and maximum
+    stabilizer weight. Quantum distance uses the source theorem rather than an exhaustive search.
+  run_count: 9
+  limit_kind:
+  - theorem_finite_only
+  finite_checks: Nine rows, run_count 9, in results/exact_checks.json.
+- id: parallel-overhead
+  kind: analysis
+  label: Pieceable parallelism and overhead
+  plan: 'Account for Section 4.3 and Figure 7: verify disjoint support criterion and schedule counts;
+    preserve unmeasured syndrome extraction cost and fault-tolerance limits.'
+  headline: false
+  status: partly
+  evidence: results/part-evidence/parallel-overhead.json
+  reason: Schedule counts for disjoint support are the 361 collision-free round-robin schedules. Syndrome-extraction
+    time was not given a cost model in the source text that was read.
+  limit_kind:
+  - theorem_finite_only
+  - input_unavailable
+  finite_checks: 361 schedules in results/independent_checks.json.
+  missing_input: a numerical syndrome-extraction cost model
+  looked_in: Chapter 4 Section 4.3 extraction and Figure 7
+removals: []
+design_notes: Counts refer to named source analyses/code families, not unknown plot points. Original per-point
+  grids must be recovered before asserting full numerical coverage. No fit or simulation has run before
+  this baseline.
+resource_policy: Use at most two concurrent CPU processes. Benchmark original software first; estimate
+  full cost from measured throughput. Do not launch unbounded runs. Any reduced run requires measured
+  cost, attempted settings and explicit incomplete verdict.
+engine: Exact binary linear algebra and C++ BP+OSD. SEM engines lavaan/OpenMx do not implement this quantum
+  decoding model; verify via independent representations and pinned original code.
+source_access: Browser text available; direct PDF download blocked by network destination policy. Figures
+  and source ink still require visual verification.
+inventory_additions:
+- ids:
+  - symmetric-table
+  - parallel-overhead
+  reason: Full-source appendix/section reconciliation before running analysis; makes previously included
+    gate-examples/pieceable scope explicit without removing or narrowing them.
+limit_schema: 1
