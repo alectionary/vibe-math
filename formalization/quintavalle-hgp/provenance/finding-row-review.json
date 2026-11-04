@@ -317,7 +317,7 @@
       "source_artifact": "sources/browser-extraction.txt",
       "source_locator": "Ch5 TableII; PDF85, L4949\u20134955@P84; standard errors in parentheses; MWPM+BP/OSD versus BP/OSD twice",
       "source_passage": "L4949@P84: TABLE II. Sustainable thresholds for 3D toric and surface\nL4950@P84: codes for different single-shot decoding strategies. For each entry\nL4951@P84: in the table, we did an analogous simulation to that described in\nL4952@P84: Fig. 1. The numbers in brackets are the standard errors.\nL4953@P84: Code MWPM and BP+OSD BP+OSD \u00d72\nL4954@P84: Surface 3.08(4)% 2.90(1)%\nL4955@P84: Toric 2.90(2)% 2.78(2)%\nL4885@P83: phase-flip noise threshold; see Table I. For our single\u0002shot simulations, we use an independent and identically\nL4886@P83: distributed noise model where each qubit experiences a\nL4887@P83: phase-flip error with probability p, and each stabilizer\nL4888@P83: measurement outcome is flipped with probability q = p.",
-      "ours_text": "0 of 4 sustainable-threshold estimates completed.",
+      "ours_text": "0 of 4 fits. L=5,7 curves run; L=9,11 declined.",
       "result_evidence": {
         "path": "results/original_pilots.json",
         "fields": "all four pilot records; research-notes.md Numerical design",
@@ -343,7 +343,7 @@
             "completed": 9
           }
         ],
-        "absence_basis": "Only pilots at p=q=.03,N8; no production grid or MWPM implementation, no sustainable threshold fit."
+        "absence_basis": "N=8 curves at L=5 and L=7 finished in production_grid.json. L=9 and L=11 were declined for resources. MWPM is absent. No sustainable threshold fit."
       },
       "published_verdict": "pass",
       "ours_verdict": "pass",
@@ -360,11 +360,11 @@
       "source_artifact": "sources/browser-extraction.txt",
       "source_locator": "Ch5 TableI; PDF85, L4893\u20134907@P84; phase-flip threshold, cited sweep comparator",
       "source_passage": "L4893@P84: TABLE I. Comparison of the error thresholds of toric code\nL4894@P84: decoders (results from this work are highlighted in bold).\nL4895@P84: For phase-flip noise, BP+OSD outperforms all prior art, and\nL4896@P84: approaches the theoretical upper bound given by mapping to a\nL4897@P84: statistical mechanical model. In the single-shot regime, MWPM\nL4898@P84: and BP+OSD outperforms the Sweep decoder (the theoretical\nL4899@P84: maximum is unknown in this case).\nL4900@P84: Toric code decoder Phase-flip threshold\nL4901@P84: Erasure mapping [30] 12.2%\nL4902@P84: Toom\u2019s rule [15] 14.5%\nL4903@P84: Sweep [17] 15.5%\nL4904@P84: Renormalization group [13] 17.2%\nL4905@P84: Neural network [31] 17.5%\nL4906@P84: BP+OSD 21.55(1)%\nL4907@P84: Statistical phase transition [32\u201336] 23.180(4)%\nL5941@P93: We estimate the sustainable threshold of the 3D toric and\nL5942@P93: surface codes using our two decoding strategies. For code\u0002capacity noise (i.e., perfect syndrome measurements), the\nL5943@P93: syndrome-repair step is not required, so both decoding\nL5944@P93: strategies are the same. For each code family, we observe\nL5945@P93: a code capacity threshold of pth \u2248 21.6%, as illustrated in",
-      "ours_text": "0 of 2 capacity fits completed; no fitted contrast.",
+      "ours_text": "0 of 2 fits. Toric L=9,11 cross .21--.215.",
       "result_evidence": {
         "path": "results/original_pilots.json",
         "fields": "settings; research-notes.md Numerical design",
-        "absence_basis": "Four N8 noisy pilots do not produce either capacity fit; no capacity fitting outputs supplied."
+        "absence_basis": "The code-capacity grid finished in production_grid.json. Toric L=9 and L=11 cross between p=.21 and p=.215. No critical-exponent fit and no sweep comparison."
       },
       "published_verdict": "pass",
       "ours_verdict": "pass",
@@ -381,7 +381,7 @@
       "source_artifact": "sources/browser-extraction.txt",
       "source_locator": "Ch5 Figure2 and text; PDF94, L5939@P93; high syndrome noise",
       "source_passage": "L5934@P93: We find that whilst the failure-mode subroutine does not\nL5935@P93: change the error threshold of the decoder, it does consider\u0002ably reduce the logical error rate for all values of the lattice\nL5936@P93: parameter L. This is illustrated for L = 5 in Fig. 2, which\nL5937@P93: shows the single-shot logical error rate with and with\u0002out the failure-mode subroutine. For large syndrome error\nL5938@P93: rates, Fig. 2 shows the failure-mode subroutine improves\nL5939@P93: decoding performance by over an order of magnitude.\nL5923@P93: FIG. 2. Single-shot decoding of the 3D toric code with L = 5,\nL5924@P93: with and without the metacode failure-mode subroutine. The fail\u0002ure rate pfail is plotted against increasing values of the syndrome\nL5925@P93: error rate q, whilst the phase-flip error rate is set to p = 0.1. With\u0002out the subroutine, the single-shot decoder rapidly converges to\nL5926@P93: the failure-mode error rate (dotted line). For large values of q the\nL5927@P93: subroutine improves the logical failure rate by over an order of\nL5928@P93: magnitude. In this simulation, BP+OSD is used for both stage-1\nL5929@P93: and stage-2 decoding.",
-      "ours_text": "617 versus 72 failures/10000 at L=5, p=.1, q=.03, N=1.",
+      "ours_text": "q=.02: 114 versus 9; q=.1: 6731 versus 5574.",
       "result_evidence": {
         "path": "results/original_diagnostic_grid.json",
         "fields": "records with settings.syndrome_error_rate=.03",
