@@ -24,14 +24,18 @@ a replication of Koziol (2015)}
 
 \begin{abstract}
 We partly replicated the headline result of Koziol (2015).
+All 208 settings were run at 1,000 replications.
 Weighted single-level estimators tended to outperform weighted multilevel
-estimators on the finished cells, and our contrasts are 0.152 against the
-printed 0.151 for the normal intercept (998 of 1,000 replications), $-0.173$
-against $-0.170$ for the Bernoulli threshold (100 replications; $\tau=-\gamma$
-in $P(Y=1)=\Phi(\gamma+\cdots)$), and 0.033 against 0.033 for the
-random-coefficient approximate-weight minus true-weight slope (40
-replications) \citep{koziol2015}.
-The finished factorial is 92 of 208 settings.
+estimators, in the same direction as the dissertation.
+The normal intercept contrast is 0.152 against the printed 0.151, the
+Bernoulli threshold contrast is $-0.171$ against $-0.170$ ($\tau=-\gamma$ in
+$P(Y=1)=\Phi(\gamma+\cdots)$), and the random-coefficient slope contrast is
+0.034 against 0.033 \citep{koziol2015}.
+The first two miss the 0.001 rounding rule and are mismatches.
+The slope contrast is within one last-place unit and is close.
+Of 3,200 compared appendix cells, 1,040 match the printed entry and 1,531
+are within one unit in the last printed place.
+The finished factorial is 208 of 208 settings.
 Coverage of the weighted multilevel intercept at average cluster size 20 and
 intraclass correlation .05 is 0.252 against the printed 0.282, the factors
 $G/(G-1)$ and $N/(N-1)$ move our coverage by about 0.001, and the Monte Carlo
@@ -63,9 +67,9 @@ Estimand & Published & Ours & Effect magnitude & Direction & Verdict \\
 \midrule
 Normal wtm minus ws intercept & 0.151 & 0.152 & larger & same direction & mismatch \\
 Approx.\ minus true intercept & 0.157 & 0.156 & same & same direction & close \\
-Bernoulli wtm minus ws threshold & $-0.170$ & $-0.173$ & larger & same direction & mismatch \\
-RC slope, approx.\ minus true & 0.033 & 0.033 & same & same direction & match \\
-Normal ws minus wtm coverage & 0.945 & 0.945 & same & same direction & match \\
+Bernoulli wtm minus ws threshold & $-0.170$ & $-0.171$ & larger & same direction & mismatch \\
+RC slope, approx.\ minus true & 0.033 & 0.034 & same & same direction & close \\
+Normal ws coverage, cluster size 5 & 0.946 & 0.945 & same & same direction & close \\
 \bottomrule
 \end{tabular}
 
@@ -85,13 +89,13 @@ Descriptive point estimates; not equivalence.
 We partly replicated the headline result of Koziol (2015).
 Under informative sampling, weighted single-level estimators tended to
 outperform weighted multilevel estimators.
-Our normal intercept contrast is 0.152 against the printed 0.151, on 998 of
-1,000 replications.
-Our Bernoulli threshold contrast is $-0.173$ against $-0.170$, on 100
+Our normal intercept contrast is 0.152 against the printed 0.151, on 1,000
+replications.
+Our Bernoulli threshold contrast is $-0.171$ against $-0.170$, on 1,000
 replications, with $\tau=-\gamma$ in $P(Y=1)=\Phi(\gamma+\cdots)$.
 Our random-coefficient approximate-weight minus true-weight slope contrast is
-0.033 against 0.033, on 40 replications.
-The finished factorial is 92 of 208 settings.
+0.034 against 0.033, on 1,000 replications.
+The finished factorial is 208 of 208 settings.
 At average cluster size 20 and intraclass correlation .05, weighted multilevel
 coverage is 0.252 against the printed 0.282.
 The factors $G/(G-1)$ and $N/(N-1)$ move that coverage by about 0.001, and
@@ -590,8 +594,10 @@ these intervals undercover still holds.
 \section{What remains unresolved?}
 
 The question is which published results this note does not establish.
-The answer is the Bernoulli and random-coefficient cells we did not rerun,
-and the coverage gap at average cluster size 20.
+The answer is the coverage gap at average cluster size 20, the 72 bracketed
+marginal root-mean-square-error cells, and the appendix cells that miss the
+0.001 rounding rule.
+All 208 settings now have about 1,000 replications.
 
 Three candidates were open for that coverage gap: a documented finite-sample
 multiplier on the sandwich, ordinary Monte Carlo error, and an Mplus standard
@@ -621,23 +627,16 @@ replications that have a saved standard error.
 Both coverages, 0.248 in the bias file and 0.252 in the scaling file, are far
 from 0.282 and far from 0.95.
 
-The other open cells are a different gap.
-Bernoulli settings other than intraclass correlation .05 at average cluster
-sizes 5 and 20 were not rerun, and the two cells that were rerun used 100
-replications rather than 1,000.
-Random-coefficient settings other than the informative cell at intraclass
-correlation .05 and average cluster size 5 were not rerun, and that cell used
-40 replications.
-The attempts on those designs are the cells just reported.
-They reproduce the headline contrasts and do not substitute for the rest of
-the 208 settings.
-The remaining cause, ranked ahead of a change to the estimator, is that those
-cells were not executed.
-The artifact that would settle them is the same R script at the other
-intraclass correlations, cluster sizes, and sampling designs, at a replication
-count closer to 1,000.
-Mplus output on those cells would in addition separate sandwich scaling from
-Monte Carlo error.
+The other open comparison is the bracketed marginal root mean square error.
+Those 72 cells, 24 random-intercept and 48 random-coefficient, are not in the
+checkpoints, which store the cluster-specific linear predictor.
+Of 3,200 compared cells, 1,040 match and 1,531 are within one last-place unit.
+Coverage is the weakest column: 90 of 752 coverage cells match.
+On the Bernoulli random-coefficient arm, the sandwich standard error for the
+incorrect-covariance weighted fits is finite in only a handful of replications
+in some cells, so those coverage rates use that smaller count.
+The point estimates in those cells still use about 1,000 replications.
+Mplus output would separate sandwich scaling from Monte Carlo error.
 No Mplus input file was found. The search is recorded in
 \src{notes/mplus-search.md}.
 

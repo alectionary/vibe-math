@@ -81,15 +81,15 @@ parts:
     kind: condition
     label: Full factorial of 208 estimator settings
     plan: "Run all 208 settings: random-intercept 80 (2 designs x 2 outcomes x 2 ICCs x 2 cluster sizes x 5 estimators) and random-coefficient 128 (the same cells x 8 estimators), at 1,000 replications, for bias, relative bias, mean square error, coverage, and root mean square error."
-    reason: "92 settings have a finished Monte Carlo of about 1,000 replications. The other 116 are checkpointed and still running, or queued behind those jobs. A reduced count is not a completed replication."
+    reason: "All 208 settings have 1,000 checkpointed replications. Of 3,200 compared appendix cells, 1,040 match and 1,531 are within one last printed place. The headline contrasts keep the printed direction. The normal and Bernoulli intercept contrasts miss 0.001 and stay mismatches."
     evidence: "simulation/results/grid/"
     headline: true
     design_count: 208
-    run_count: 92
+    run_count: 208
     status: partly
     subset_justification:
-      cost_estimate: "On four cores a normal random-coefficient replication takes a few seconds and a Bernoulli random-coefficient replication takes about 6 seconds at cluster size 5 and longer at cluster size 20, so the unfinished 116 settings are still hours of Monte Carlo."
-      attempted: "Finished: all 40 normal random-intercept settings; 32 normal random-coefficient settings at cluster size 5; 20 Bernoulli random-intercept settings at cluster size 5. Cluster size 20 and the Bernoulli random-coefficient arm are checkpointed and still running or queued."
+      cost_estimate: "The factorial has finished. The slow cells were cluster-size 20 Bernoulli random-coefficient replications."
+      attempted: "All 208 settings have 1,000 checkpoint files. Three Gaussian incorrect-covariance standard errors of 8,000 files stayed non-finite after a repair pass."
   - id: analysis-generation
     kind: analysis
     label: Appendix A data generation
@@ -185,9 +185,9 @@ parts:
     kind: arm
     label: Bernoulli random-coefficient arm
     plan: "Run 8 conditions and 8 estimators with a two-dimensional Gauss-Hermite probit pseudo-likelihood, plus the misspecified random-intercept fits."
-    reason: "The runner is written and queued behind the Gaussian random-coefficient repair. No Bernoulli random-coefficient checkpoint has been written."
-    evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    reason: "All 8 conditions have 1,000 replications. Point estimates are in the cell-match table. Sandwich standard errors for some incorrect-covariance weighted fits are finite in only some replications, so those coverage rates use the smaller count."
+    evidence: "simulation/results/cell_match.csv"
+    status: partly
   - id: cond-ri-normal-inf-05-nj5
     kind: condition
     label: Random-intercept normal, informative, rho=.05, nj=5
@@ -255,7 +255,7 @@ parts:
     kind: condition
     label: Random-intercept Bernoulli, informative, rho=.05, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "45 replications are checkpointed and the run toward 1,000 is still going."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/results/grid/"
     status: partly
   - id: cond-ri-bernoulli-inf-25-nj5
@@ -269,7 +269,7 @@ parts:
     kind: condition
     label: Random-intercept Bernoulli, informative, rho=.25, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "1 replication is checkpointed and the run toward 1,000 is still going."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/results/grid/"
     status: partly
   - id: cond-ri-bernoulli-non-05-nj5
@@ -283,7 +283,7 @@ parts:
     kind: condition
     label: Random-intercept Bernoulli, noninformative, rho=.05, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "1 replication is checkpointed and the run toward 1,000 is still going."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/results/grid/"
     status: partly
   - id: cond-ri-bernoulli-non-25-nj5
@@ -297,7 +297,7 @@ parts:
     kind: condition
     label: Random-intercept Bernoulli, noninformative, rho=.25, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "1 replication is checkpointed and the run toward 1,000 is still going."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/results/grid/"
     status: partly
   - id: cond-rc-normal-inf-05-nj5
@@ -311,7 +311,7 @@ parts:
     kind: condition
     label: Random-coefficient normal, informative, rho=.05, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "325 replications are checkpointed and the run toward 1,000 is still going."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/results/grid/"
     status: partly
   - id: cond-rc-normal-inf-25-nj5
@@ -325,9 +325,9 @@ parts:
     kind: condition
     label: Random-coefficient normal, informative, rho=.25, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. Earlier conditions in this arm are still using the cores."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_gaussian_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-normal-non-05-nj5
     kind: condition
     label: Random-coefficient normal, noninformative, rho=.05, nj=5
@@ -339,9 +339,9 @@ parts:
     kind: condition
     label: Random-coefficient normal, noninformative, rho=.05, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. Earlier conditions in this arm are still using the cores."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_gaussian_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-normal-non-25-nj5
     kind: condition
     label: Random-coefficient normal, noninformative, rho=.25, nj=5
@@ -353,63 +353,63 @@ parts:
     kind: condition
     label: Random-coefficient normal, noninformative, rho=.25, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. Earlier conditions in this arm are still using the cores."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_gaussian_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-inf-05-nj5
     kind: condition
     label: Random-coefficient Bernoulli, informative, rho=.05, nj=5
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-inf-05-nj20
     kind: condition
     label: Random-coefficient Bernoulli, informative, rho=.05, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-inf-25-nj5
     kind: condition
     label: Random-coefficient Bernoulli, informative, rho=.25, nj=5
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-inf-25-nj20
     kind: condition
     label: Random-coefficient Bernoulli, informative, rho=.25, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-non-05-nj5
     kind: condition
     label: Random-coefficient Bernoulli, noninformative, rho=.05, nj=5
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-non-05-nj20
     kind: condition
     label: Random-coefficient Bernoulli, noninformative, rho=.05, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-non-25-nj5
     kind: condition
     label: Random-coefficient Bernoulli, noninformative, rho=.25, nj=5
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
   - id: cond-rc-bernoulli-non-25-nj20
     kind: condition
     label: Random-coefficient Bernoulli, noninformative, rho=.25, nj=20
     plan: "Run this condition at 1,000 replications for every estimator used in that model, and compare Appendices C-F."
-    reason: "No checkpoint yet. The runner is queued."
+    reason: "1,000 replications are checkpointed. Printed cells that miss 0.001 stay mismatches."
     evidence: "simulation/run_grid_bernoulli_rc.R"
-    status: not_attempted
+    status: partly
 removals: []

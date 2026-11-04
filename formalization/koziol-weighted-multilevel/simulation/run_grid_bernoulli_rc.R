@@ -107,11 +107,18 @@ fit_rep <- function(spec) {
       pa00 = pa["g00"], pa10 = pa["g10"], pa01 = pa["g01"], pa11 = pa["g11"],
       stringsAsFactors = FALSE)
   }
-  ctrl <- glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e4))
-  fl <- tryCatch(glmer(y ~ xgmc + wj + xw + (xgmc | school), data = dat,
-                       family = binomial(link = "probit"), control = ctrl), error = function(e) e)
-  fi <- tryCatch(glmer(y ~ xgmc + wj + xw + (1 | school), data = dat,
-                       family = binomial(link = "probit"), control = ctrl), error = function(e) e)
+  # Easy replicates converge in about 130 evaluations. A higher cap lets
+  # flat likelihoods run for minutes without moving the weighted fits.
+  ctrl <- glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 400))
+  timed <- function(expr) {
+    setTimeLimit(cpu = 25, elapsed = 30, transient = TRUE)
+    on.exit(setTimeLimit(cpu = Inf, elapsed = Inf, transient = TRUE), add = TRUE)
+    tryCatch(expr, error = function(e) e)
+  }
+  fl <- timed(glmer(y ~ xgmc + wj + xw + (xgmc | school), data = dat,
+                    family = binomial(link = "probit"), control = ctrl))
+  fi <- timed(glmer(y ~ xgmc + wj + xw + (1 | school), data = dat,
+                    family = binomial(link = "probit"), control = ctrl))
   dat$w_one <- 1
   d1 <- svydesign(ids = ~school, weights = ~w_uncond, data = dat)
   d0 <- svydesign(ids = ~school, weights = ~w_one, data = dat)
@@ -168,6 +175,7 @@ if (identical(Sys.getenv("SIM_RUN", unset = "1"), "1")) {
     }
   }
   message("bernoulli RC tasks ", length(tasks), " nquad ", nquad, " ", Sys.time())
-  invisible(mclapply(tasks, fit_rep, mc.cores = cores, mc.preschedule = FALSE))
+  # One process per core. Forking once per replication dominated the runtime.
+  invisible(mclapply(tasks, fit_rep, mc.cores = cores, mc.preschedule = TRUE))
   message("bernoulli RC finished ", Sys.time())
 }
