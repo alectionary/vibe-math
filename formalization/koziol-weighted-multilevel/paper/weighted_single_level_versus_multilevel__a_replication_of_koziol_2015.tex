@@ -1,0 +1,843 @@
+\input{approved-preamble.tex}
+\usepackage{float}
+\ExplSyntaxOn
+\cs_new_protected:Npn \koziol_showpath:n #1
+  {
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \tl_replace_all:Nnn \l_tmpa_tl { / } { /\allowbreak }
+    \group_begin:
+      \ttfamily
+      \tl_use:N \l_tmpa_tl
+    \group_end:
+  }
+\cs_new_eq:NN \showsrcpath \koziol_showpath:n
+\ExplSyntaxOff
+\NewDocumentCommand{\src}{v}{%
+  \href{https://github.com/alectionary/vibe-math/blob/master/formalization/koziol-weighted-multilevel/#1}{\showsrcpath{#1}}%
+}
+
+\title{Weighted single-level versus multilevel:\\
+a replication of Koziol (2015)}
+\date{4 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We partly replicated the headline result of Koziol (2015).
+All 208 settings were run at 1,000 replications.
+Weighted single-level estimators tended to outperform weighted multilevel
+estimators, in the same direction as the dissertation.
+The normal intercept contrast is 0.152 against the printed 0.151, the
+Bernoulli threshold contrast is $-0.171$ against $-0.170$ ($\tau=-\gamma$ in
+$P(Y=1)=\Phi(\gamma+\cdots)$), and the random-coefficient slope contrast is
+0.034 against 0.033 \citep{koziol2015}.
+The first two miss the 0.001 rounding rule and are mismatches.
+The slope contrast is within one last-place unit and is close.
+Of 3,200 compared appendix cells, 1,040 match the printed entry and 1,531
+are within one unit in the last printed place.
+Coverage matches in 90 of 752 cells.
+Seventy-two bracketed marginal root-mean-square-error cells were not computed.
+The finished factorial is 208 of 208 settings.
+Coverage of the weighted multilevel intercept at average cluster size 20 and
+intraclass correlation .05 is 0.252 against the printed 0.282, the factors
+$G/(G-1)$ and $N/(N-1)$ move our coverage by about 0.001, and the Monte Carlo
+standard error of that coverage is 0.014.
+The source software is Mplus~7.
+The tolerance on a difference of two three-decimal biases is 0.001, and a
+positive difference means our Monte Carlo mean is larger than the printed
+value.
+\end{abstract}
+
+\begin{table}[ht!]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Signed contrasts at the cells that carry the headline.
+Published values are the printed contrasts in Tables C.2, C.4, and E.2 of
+Koziol (2015).
+Our values are Monte Carlo means.
+Rows 1, 2, and 4 are in outcome units.
+Row 3 is in probit threshold units.
+Rows 5 and 6 are proportions.
+The tolerance on a difference of two three-decimal biases is 0.001.
+Magnitude uses the unrounded mean: a gap of at most 0.001 is same.}
+\label{tab:headline}
+\begin{tabular}{@{}p{2.05in}ccccc@{}}
+\toprule
+Estimand & Published & Ours & Effect magnitude & Direction & Verdict \\
+\midrule
+Normal wtm minus ws intercept & 0.151 & 0.152 & larger & same direction & mismatch \\
+Approx.\ minus true intercept & 0.157 & 0.156 & same & same direction & close \\
+Bernoulli wtm minus ws threshold & $-0.170$ & $-0.171$ & larger & same direction & mismatch \\
+RC slope, approx.\ minus true & 0.033 & 0.034 & same & same direction & close \\
+Normal ws coverage, cluster size 5 & 0.946 & 0.945 & same & same direction & close \\
+Weighted multilevel coverage, cluster size 20 & 0.282 & 0.252 & smaller & same direction & mismatch \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.4em}
+\begin{minipage}{0.98\textwidth}
+\footnotesize
+The source software is Mplus~7.
+The tolerance on a difference of two three-decimal biases is 0.001.
+A positive difference means our Monte Carlo mean is larger than the printed value.
+A positive estimand means the first estimator named in that row exceeds the second.
+Descriptive point estimates; not equivalence.
+\end{minipage}
+\end{table}
+
+\section{Introduction}
+
+We partly replicated the headline result of Koziol (2015).
+Under informative sampling, weighted single-level estimators tended to
+outperform weighted multilevel estimators.
+Our normal intercept contrast is 0.152 against the printed 0.151, on 1,000
+replications.
+Our Bernoulli threshold contrast is $-0.171$ against $-0.170$, on 1,000
+replications, with $\tau=-\gamma$ in $P(Y=1)=\Phi(\gamma+\cdots)$.
+Our random-coefficient approximate-weight minus true-weight slope contrast is
+0.034 against 0.033, on 1,000 replications.
+The finished factorial is 208 of 208 settings.
+At average cluster size 20 and intraclass correlation .05, weighted multilevel
+coverage is 0.252 against the printed 0.282.
+The factors $G/(G-1)$ and $N/(N-1)$ move that coverage by about 0.001, and
+the Monte Carlo standard error of the coverage is 0.014.
+The source software is Mplus~7 \citep{muthen2012}.
+The tolerance on a difference of two three-decimal biases is 0.001.
+A positive difference means our Monte Carlo mean is larger than the printed
+value.
+These comparisons are descriptive point estimates, not equivalence tests.
+
+Natalie A.\ Koziol concluded that, when selection probabilities are unequal
+and informative, a weighted single-level estimator with sandwich standard
+errors recovers the intercept more accurately than a weighted multilevel
+pseudo-maximum likelihood estimator, and that approximate cluster weights
+leave more bias than the true multilevel weights
+\citep{koziol2015}.
+The dissertation is \emph{A Comparison of Population-Averaged and
+Cluster-Specific Approaches in the Context of Unequal Probabilities of
+Selection} (University of Nebraska--Lincoln, 2015), chaired by James A.\
+Bovaird, and archived at
+\url{https://digitalcommons.unl.edu/cehsdiss/229/}.
+The three research questions ask how population-averaged and cluster-specific
+estimators behave under informative sampling, how their interval estimates
+cover, and whether an approximate cluster weight can stand in for the true
+multilevel weight.
+Table~1 answers those questions on the full factorial of 208 settings.
+A population-averaged fit is a single-level model with a sandwich variance.
+A cluster-specific fit is a multilevel model with a random intercept, or with
+a random intercept and a random slope.
+A sample is informative when the selection probability depends on the cluster
+effect that also enters the outcome, so an unweighted fit estimates a
+different intercept from the census model.
+
+Five estimators appear in the tables.
+The labels below are hers.
+Unweighted multilevel (\texttt{um.ccs}) and unweighted single-level
+(\texttt{us.ics}) ignore the weights.
+Weighted single-level (\texttt{ws.ics}) uses the selection weights and a
+cluster sandwich \citep{binder1983,lumley2004}.
+Weighted true multilevel (\texttt{wtm.ccs}) uses the multilevel weights inside
+a pseudo-likelihood \citep{pfeffermann1998,asparouhov2006,rabehesketh2006}.
+Weighted approximate multilevel (\texttt{wam.ccs}) replaces the cluster weight
+by $M$ divided by the realized number of clusters, and divides the conditional
+weight by that constant, the approximation of \citet{kovacevic2003}.
+$M$ is the number of clusters in the population.
+The population-averaged estimating equation is the same class of model that
+geepack implements for generalized estimating equations
+\citep{hojsgaard2006}.
+The single-level fits in this note use the survey package, because the
+design is a probability sample with a cluster sandwich
+\citep{lumley2024}.
+
+\section{What do the four arms show?}
+
+The question is what the normal and Bernoulli random-intercept arms, and the
+normal and Bernoulli random-coefficient arms, show at 1,000 replications.
+The answer is that the estimator order in her tables reappears on the
+informative cells, and that coverage is the column that misses most often.
+
+\subsection{Normal random intercept}
+
+The question is whether weighted multilevel intercept bias exceeds weighted
+single-level intercept bias when the outcome is normal.
+The answer is yes, on the primary cell and on the rest of the eight-cell grid.
+
+The primary cell is informative sampling, intraclass correlation .05, and
+average cluster size 5.
+Koziol reported the contrast of \texttt{wtm.ccs} minus \texttt{ws.ics}
+intercept bias as 0.151 in Table C.2.
+Our contrast on 1,000 replications is 0.152.
+The paired Monte Carlo standard error is 0.000415.
+The unrounded gap is 0.001025, which is a mismatch under the 0.001 rule.
+If 0.151 is treated as exact, the gap is about two and a half of our
+standard errors.
+The order is unchanged: weighted multilevel bias is the larger positive number.
+In the same cell the approximate-weight contrast, \texttt{wam.ccs} minus
+\texttt{wtm.ccs}, is 0.156 against the printed 0.157, with paired standard
+error 0.000514.
+Both contrasts are in outcome units.
+The cell means are stored in \src{simulation/results/summary.csv}, and the
+replicate file is \src{simulation/results/cell_01.csv}.
+
+Our intercept biases on that cell are 0.682 unweighted, 0.309 with
+approximate weights, 0.153 with true multilevel weights, and 0.001 with the
+weighted single-level estimator.
+The printed true-multilevel bias is 0.151, so the raw multilevel mean, 0.153,
+misses the printed thousandth by 0.002, and the contrast with the
+single-level estimator is a mismatch at the same rule.
+Weighted single-level coverage of the intercept is 0.945 against the printed
+0.946 in Table E.2, which is close.
+Weighted multilevel coverage is 0.000 against the printed 0.001, which is close.
+The coverage contrast is 0.945 against 0.945.
+A coverage near .95 on 1,000 draws has a binomial standard error near 0.007.
+She reported that the weighted single-level intervals sit near the nominal
+rate and the weighted multilevel intervals do not.
+Our run shows the same split.
+The bias means use all 1,000 replications.
+Weighted multilevel coverage on this cell uses 999 replications with a finite
+standard error.
+
+The other informative cells keep the same order.
+At intraclass correlation .25 and average cluster size 5, our true-multilevel
+intercept bias is 0.163 against the printed 0.164, and the weighted
+single-level bias is 0.003 against 0.005.
+Both are mismatches at the thousandth, and the multilevel bias is still the
+larger one.
+At average cluster size 20 the true-multilevel bias is 0.044 against 0.043
+(intraclass correlation .05, a mismatch) and 0.047 against 0.046
+(intraclass correlation .25, close).
+The weighted single-level bias is 0.001 and 0.002 in those two cells.
+Approximate weights remain worse than true weights in every informative cell.
+Under non-informative sampling the intercept biases stay small.
+Across the four non-informative cells and five estimators, her printed
+intercept biases lie between $-0.002$ and 0.001, and ours lie between
+$-0.001$ and 0.002.
+The largest absolute bias is 0.002 in both sources (Table C.1).
+One signed cell misses: true multilevel weights at intraclass correlation .25
+and average cluster size 5 are 0.002 against the printed $-0.002$.
+Relative bias is undefined at a zero intercept, so the comparison is the
+absolute bias.
+
+The realized primary sample has mean 967.7 clusters and 4,884 students, and
+the mean cluster weight is 49.5.
+Table 4.1 reports a mean of 964 clusters and a mean cluster weight of about
+50.
+A difference of about four clusters on a mean near 964 is under one percent.
+Cluster counts are means of Poisson samples drawn with separate seeds, so
+exact equality is not expected.
+The design check supports the bias comparison.
+It is not itself a performance result.
+
+\subsection{Bernoulli random intercept}
+
+The question is whether the weighted multilevel threshold is more negative
+than the weighted single-level threshold when the outcome is Bernoulli.
+The answer is yes, on every informative cell, each at 1,000 replications.
+
+The outcome model used here is $P(Y=1)=\Phi(\gamma+x\beta+u)$.
+Table C.2's intercept column matches the threshold $\tau=-\gamma$, not the
+latent intercept $\gamma$.
+At average cluster size 5 and intraclass correlation .05, our threshold means
+are $-0.714$ unweighted against the printed $-0.712$, $-0.002$ weighted
+single-level against 0.000, $-0.173$ true-weight multilevel against $-0.170$,
+and $-0.363$ approximate-weight against $-0.361$.
+Each of those four is a mismatch at the thousandth.
+The contrast of true-weight multilevel minus weighted single-level is
+$-0.171$ against the printed $-0.170$.
+The paired Monte Carlo standard error on 1,000 replications is 0.000471.
+The unrounded gap is $-0.001098$, which misses the 0.001 rule and is about
+two and a third of our standard errors.
+The sign is the same, and the four estimator means sit in the same order as
+Table C.2.
+The cell comparison is \src{simulation/results/cell_match.csv}.
+
+At average cluster size 20 and the same intraclass correlation, the
+true-weight threshold mean is $-0.045$ against the printed $-0.043$, and the
+approximate-weight mean is $-0.209$ against $-0.208$.
+Both are mismatches.
+The unweighted threshold mean is $-0.716$ against $-0.713$.
+The weighted single-level mean is $-0.002$ against 0.000.
+The multilevel threshold is still the more negative of the two weighted
+estimators.
+The same order holds at intraclass correlation .25: true-weight means are
+$-0.200$ against $-0.203$ at cluster size 5 and $-0.057$ against $-0.059$ at
+cluster size 20, and both are more negative than the weighted single-level
+means, which sit near zero.
+All eight Bernoulli random-intercept cells were run at 1,000 replications.
+
+\subsection{Normal random coefficient}
+
+The question is whether approximate cluster weights bias the level-1 slope
+when the true multilevel weights do not.
+The answer is yes, on the informative normal cell at intraclass correlation
+.05 and average cluster size 5, and the same factorial was run for the other
+seven normal cells and for all eight Bernoulli random-coefficient cells.
+
+The headline cell is a normal outcome, informative sampling, intraclass
+correlation .05, and average cluster size 5.
+Table C.4 prints the contrast of approximate-weight slope bias minus
+true-weight slope bias as 0.033.
+Our contrast on 1,000 replications is 0.034.
+The paired Monte Carlo standard error is 0.000409.
+The unrounded gap is 0.000716, which is within one last-place unit, so the
+contrast is close.
+The slope bias subtracts the common true slope stored on each row.
+All 1,000 replications contributed a finite slope.
+
+The component biases on that cell, ours against the printed value, are these.
+The unweighted intercept is 0.684 against 0.684, a match, and the unweighted
+slope is 0.033 against 0.034, close.
+The weighted single-level intercept is 0.001 against 0.002, close, with Monte
+Carlo standard error 0.000941, and the slope is $-0.001$ against 0.002, a
+mismatch.
+The true-weight multilevel intercept is 0.173 against 0.174, close, and the
+slope is 0.002 against 0.003, close.
+The approximate-weight intercept is 0.333 against 0.333, a match, and the
+slope is 0.036 against 0.036, a match.
+The slope contrast is the result that carries this design.
+The cell comparison for the other random-coefficient settings, including the
+Bernoulli arm, is in \src{simulation/results/cell_match.csv}.
+
+\section{What did we do, and what did we take from Koziol?}
+
+The question is which parts of the numerical work are ours and which parts are
+taken from the dissertation.
+The answer is that the design, the target parameters, and the printed tables
+are hers, and the Monte Carlo means in this note are ours.
+
+Koziol specified a finite population, Poisson sampling at the cluster and
+student levels, normal and Bernoulli outcomes, random-intercept and
+random-coefficient structures, intraclass correlations .05 and .25, and
+average cluster sizes 5 and 20.
+Chapter III and Appendix A give the operational weight formulas and a fragment
+of the R generator.
+Page 76 names Mplus version 7 for estimation, with \texttt{TYPE=COMPLEX} or
+\texttt{TWOLEVEL}, \texttt{ESTIMATOR=MLR}, \texttt{LINK=PROBIT},
+\texttt{WTSCALE=CLUSTER}, and \texttt{BWTSCALE=UNSCALED}
+\citep{muthen2012}.
+Tables C.2, C.4, and E.2 supply the published biases and coverages used above.
+Table 4.1 supplies the published sample-size moments.
+The 2017 article in \emph{Multivariate Behavioral Research} repeats the
+comparison \citep{koziol2017}.
+Its Figshare supplement repeats tables and does not contain Mplus or R
+programs.
+The article PDF was not re-read for this note.
+Every published number below is marked as taken from those tables.
+Every Monte Carlo mean is marked as our simulation.
+Choices that her deposited programs would have fixed, and that we set in order
+to run, are marked as assumptions in the next section.
+
+Our reconstruction is in R 4.3.3 \citep{r2024},
+\url{https://www.R-project.org/}.
+The dissertation generates the populations in R with MASS.
+Our generator is \src{simulation/generate.R}.
+Weighted single-level fits and their cluster-robust standard errors use survey
+4.2.1 \citep{lumley2004,lumley2024},
+\url{https://CRAN.R-project.org/package=survey}.
+Unweighted Gaussian multilevel fits, and the unweighted probit start, use
+lme4 1.1.35.1 \citep{bates2015},
+\url{https://CRAN.R-project.org/package=lme4}.
+The random-slope pseudo-likelihood, and a one-replicate check of the normal
+multilevel fit, use WeMix 4.0.3 \citep{bailey2023},
+\url{https://CRAN.R-project.org/package=WeMix}.
+On that production replicate, WeMix and the analytic pseudo-likelihood agree.
+Numerical derivatives for the pseudo-likelihood sandwich use numDeriv
+2016.8-1.1 \citep{gilbert2019},
+\url{https://CRAN.R-project.org/package=numDeriv}.
+The Bernoulli multilevel estimator is a Gauss--Hermite pseudo-likelihood with
+15 nodes, started at the unweighted \texttt{glmer} fit and optimized with
+\texttt{nlminb}.
+The run record is \src{simulation/results/RUN.txt}.
+
+All 208 settings were run at 1,000 requested replications.
+That is 40 normal random-intercept settings, 40 Bernoulli random-intercept
+settings, 64 normal random-coefficient settings, and 64 Bernoulli
+random-coefficient settings.
+Mplus 7 was not available for a refit of the same samples, and the original
+input files were not found.
+
+\section{What assumptions did we supply?}
+
+The question is which choices we supplied because the estimation programs were
+not deposited.
+The answer is the seven choices in this section.
+A setting she states in the dissertation stays hers.
+
+\subsection{Threshold sign}
+
+The question is which Bernoulli sign we compare with Table C.2.
+The answer is the threshold $\tau=-\gamma$, where $\gamma$ is the intercept
+in $P(Y=1)=\Phi(\gamma+x\beta+u)$.
+
+The latent intercept has the opposite sign from the column she printed.
+The threshold matches that column, including the unweighted mean near $-0.71$
+and the approximate-weight mean near $-0.36$.
+This is a parameterization that matches the table.
+It is not a finding that the table is wrong.
+
+\subsection{Method 2 scaling}
+
+The question is how the multilevel weights are scaled before the
+pseudo-likelihood.
+The answer is the cluster scaling she names as \texttt{WTSCALE=CLUSTER},
+which this reconstruction treats as Method 2, with between-cluster weights
+left unscaled (\texttt{BWTSCALE=UNSCALED}).
+
+Asparouhov describes scaling choices for multilevel sampling weights, and the
+Mplus 7 user's guide names the option on the page she cites
+\citep{asparouhov2006,muthen2012,rabehesketh2006}.
+We did not refit the grid under the other scale options.
+A different scale would change the weighted multilevel estimator, so this
+choice is part of the comparison rather than a harmless default.
+
+\subsection{Normal intervals at 1.96}
+
+The question is which critical value defines coverage.
+The answer is 1.96.
+
+Coverage is the proportion of replications in which the Wald interval
+$\hat\theta\pm 1.96\,\mathrm{SE}$ contains the target.
+We did not use a $t$ critical value and we did not apply a further
+degrees-of-freedom correction on top of the sandwich.
+Table E.2 is compared with that definition.
+The single-level standard errors are the survey cluster sandwich.
+The weighted multilevel standard errors are the observed pseudo-likelihood
+sandwich.
+
+\subsection{Separate seeds}
+
+The question is whether our samples are her samples.
+The answer is no.
+
+Her seed stream was not deposited.
+Each cell in this reconstruction uses its own seed sequence.
+Monte Carlo means are the objects compared with the printed tables.
+A single replicate is not expected to match a replicate she printed, and she
+did not print replicate-level estimates.
+The cluster-count gap of about four clusters is the sort of difference
+separate seeds produce.
+
+\subsection{Model-based standard errors in lme4}
+
+The question is where the unweighted Gaussian multilevel standard errors come
+from.
+The answer is the model-based variance from lme4, not an Mplus MLR sandwich.
+
+The weighted fits use a sandwich, as her MLR columns do.
+The unweighted multilevel coverage in our normal grid is therefore not a
+reconstruction of \texttt{ESTIMATOR=MLR}.
+The headline coverage contrast uses the weighted single-level sandwich and the
+weighted multilevel sandwich, so this assumption does not enter Table~1.
+It does limit any side comparison of unweighted multilevel coverage with
+Table E.2.
+
+\subsection{Appendix A variances}
+
+The question is which variance components generate the stated intraclass
+correlation.
+The answer is the pair printed in the Appendix A generator fragment.
+
+The fragment fixes the scale that turns intraclass correlations .05 and .25
+into a level-2 variance and a residual variance.
+We treated that fragment as the complete normal generator and did not estimate
+the variances from her tables.
+If the fragment we transcribed omits a scale factor, every normal bias would
+move by that factor.
+The Bernoulli threshold is on the probit scale and does not use those
+Gaussian variances.
+
+\subsection{Cluster-aligned random slope}
+
+The question is how the random slope enters the linear predictor.
+The answer is $u_{1j} x_{ij}$, with the slope draw aligned to cluster $j$.
+
+WeMix then fits the weighted random-slope pseudo-likelihood under Method 2
+scaling \citep{bailey2023}.
+A slope vector that is not aligned to the cluster estimates a different
+covariance and a different level-1 coefficient.
+The match of the slope contrast to Table C.4 depends on this alignment.
+
+\section{Which ambiguities were resolved?}
+
+The question is which implementation choices were checked against an
+alternative and then fixed.
+The answer is the four checks below.
+Each one changes which number is allowed into the tables.
+
+\subsection{The two probit optimizers agree}
+
+The ambiguity was whether the Gauss--Hermite pseudo-likelihood had settled on
+a local mode.
+The check was a second optimization with BFGS, from the same start, on every
+10th replication of the weighted multilevel probit.
+The finding is that the largest absolute gap on the latent intercept was
+under 0.0003 in both earlier Bernoulli files at intraclass correlation .05
+(\src{simulation/results/bern_inf_05_5.csv},
+\src{simulation/results/bern_inf_05_20.csv}).
+Those files were a 100-replication check of the optimizer.
+The reported factorial uses the same quadrature at 1,000 replications per cell.
+The implication is that the threshold contrast on that check is not an
+optimizer artifact.
+The reported means use \texttt{nlminb}.
+
+\subsection{Observation weights in glmmTMB do not match Table C.2}
+
+The ambiguity was whether a weighted probit mixed model with observation
+weights is the same estimator as the multilevel pseudo-likelihood.
+The check was glmmTMB with observation weights on the same Bernoulli samples,
+\url{https://CRAN.R-project.org/package=glmmTMB}.
+The finding is that the threshold mean at average cluster size 5 is about
+$-0.974$, against the printed true-weight mean of $-0.170$.
+At average cluster size 20 the glmmTMB threshold mean is about $-0.247$,
+against the printed $-0.043$.
+The implication is that this likelihood is a different estimator.
+It is not the contrast in Table~1, and it is not evidence against Table C.2.
+
+\subsection{GLMMadaptive weights are per cluster}
+
+The ambiguity was whether a mixed-model package that accepts a weight argument
+applies that weight once per observation.
+The check was the weight behavior of GLMMadaptive,
+\url{https://CRAN.R-project.org/package=GLMMadaptive}.
+The finding is that the package applies the weight once per cluster, not once
+per observation.
+The implication is that those fits are not the observation-level
+pseudo-likelihood behind Table C.2.
+They were not used as the reported Bernoulli means.
+
+\subsection{A recycled slope vector was discarded}
+
+The ambiguity was whether the random slope was indexed by cluster.
+The check was a first implementation that recycled a slope vector down the
+rows, followed by a refit in which the slope draw is constant inside the
+cluster, $u_{1j}x_{ij}$.
+The finding is that the recycled vector does not estimate the level-1 slope
+she printed.
+It was discarded.
+After the index was corrected, the approximate-weight minus true-weight slope
+contrast on 1,000 replications is 0.034 against the printed 0.033
+(\src{simulation/results/cell_match.csv}).
+A separate 20-replication check compared a raw covariate with a centered
+covariate in the unweighted \texttt{lmer} fit.
+The reported random-coefficient results use the cluster-aligned slope.
+
+\section{How do the numbers compare?}
+
+The question is which printed numbers match, which are close, and which miss,
+once scope is separated from the third decimal.
+The answer is that 1,040 of 3,200 compared cells match, 1,531 are within one
+last printed place, and coverage matches in 90 of 752 cells.
+On the headline row, the slope contrast is close, the approximate-weight
+intercept contrast is close, and the normal intercept contrast, the Bernoulli
+threshold contrast, and the cluster-size-20 coverage are mismatches.
+Scope is limited on every row: the samples are a reconstruction in R, not
+Mplus~7, and not her seed stream.
+
+Numerical agreement uses three labels at the printed precision.
+Match means our value rounds half up to the printed value.
+Close means it does not, and the absolute gap is at most one unit in the last
+printed place.
+Mismatch means the gap is larger than that.
+Scope is limited when the estimator and the scientific target are the ones she
+defined but the software or the seeds differ.
+The reported factorial uses her count of 1,000 replications.
+Limited scope does not change a numerical match.
+The page-1 tolerance of 0.001 is the sum of two half-thousandth rounding
+bounds, one for each bias that enters a contrast.
+That tolerance is a descriptive rule for Table~1.
+It is not an equivalence margin, and it is not the Monte Carlo standard error.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.3}
+\caption{Numerical agreement and reconstruction scope.
+Published values are taken from the dissertation tables named in the text.
+Our values are from this simulation.
+Precision is the printed unit used for the numerical label.}
+\label{tab:compare}
+\begin{tabular}{@{}p{2.15in}rrccp{0.72in}@{}}
+\toprule
+Comparison & Published & Ours & Precision & Numerical & Scope \\
+\midrule
+Normal wtm minus ws intercept & 0.151 & 0.152 & 0.001 & mismatch & limited \\
+Normal approx.\ minus true intercept & 0.157 & 0.156 & 0.001 & close & limited \\
+Normal coverage contrast, cluster size 5 & 0.945 & 0.945 & 0.001 & match & limited \\
+Bernoulli wtm minus ws threshold & $-0.170$ & $-0.171$ & 0.001 & mismatch & limited \\
+Random-coefficient slope contrast & 0.033 & 0.034 & 0.001 & close & limited \\
+Coverage at cluster size 20 & 0.282 & 0.252 & 0.001 & mismatch & limited \\
+Raw normal wtm intercept bias & 0.151 & 0.153 & 0.001 & mismatch & limited \\
+Non-informative intercept, worst signed cell & $-0.002$ & 0.002 & 0.001 & mismatch & limited \\
+Mean cluster count, primary cell & 964 & 967.7 & 1 & mismatch & limited \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The normal intercept contrast is a mismatch because the unrounded gap is
+0.001025, which is larger than 0.001, and 0.152 does not round to 0.151.
+The sign is the same.
+The approximate-weight intercept contrast is close: 0.156 does not round to
+0.157, and the unrounded gap is 0.000764.
+The primary coverage contrast is a match at 0.945 against 0.945.
+The weighted single-level rate itself is 0.945 against the printed 0.946,
+which is close, and both sources show weighted multilevel coverage at
+essentially zero.
+The Bernoulli threshold contrast is a mismatch because the unrounded gap is
+$-0.001098$.
+The contrast stays negative, and the estimator order matches Table C.2.
+The random-coefficient slope contrast is close: 0.034 does not round to
+0.033, and the unrounded gap is 0.000716.
+Coverage at average cluster size 20 and intraclass correlation .05 is a
+mismatch: 0.252 does not round to 0.282.
+The raw true-multilevel intercept bias on the primary normal cell is a
+mismatch, 0.153 against 0.151.
+The worst signed non-informative intercept is 0.002 against $-0.002$.
+The mean cluster count is a mismatch at the printed cluster and is within one
+percent, which is the agreement Table 4.1 supports for a Poisson design.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\caption{Cell-level agreement on the finished factorial.
+A match rounds half up to the printed entry.
+Within one last place adds the cells whose unrounded gap is at most one
+printed unit.
+The 72 bracketed marginal root-mean-square-error cells are omitted.}
+\label{tab:grid}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Arm & Compared cells & Match & Within one last place \\
+\midrule
+Normal random intercept & 480 & 178 & 251 \\
+Bernoulli random intercept & 672 & 228 & 341 \\
+Normal random coefficient & 1,024 & 375 & 545 \\
+Bernoulli random coefficient & 1,024 & 259 & 394 \\
+All compared cells & 3,200 & 1,040 & 1,531 \\
+Coverage column & 752 & 90 & 135 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Of the 1,669 mismatches, 1,038 lie within two Monte Carlo standard errors of
+our mean.
+Bias matches or is within one last place in 518 of 824 cells.
+Mean square error does so in 669 of 824 cells.
+Relative bias matches in 50 of 592 cells.
+Cluster-specific root mean square error matches in 71 of 208 cells.
+The counts are in \src{simulation/results/match_summary.csv}.
+
+The coverage gap of 0.030, from 0.282 to 0.252, is the unresolved cell in the
+next section.
+Both rates are far below the nominal 0.95, so the report that these intervals
+undercover still holds.
+
+\section{What remains unresolved?}
+
+The question is which published results this note does not establish.
+The answer is the coverage gap at average cluster size 20, the 72 bracketed
+marginal root-mean-square-error cells, and the appendix cells that miss the
+0.001 rounding rule.
+All 208 settings now have about 1,000 replications.
+
+Three candidates were open for that coverage gap: a documented finite-sample
+multiplier on the sandwich, ordinary Monte Carlo error, and an Mplus standard
+error that is not a scalar rescaling of the standard errors we saved.
+The saved CR-0 coverage on 984 replications is 0.252, against the printed
+0.282 in Table E.2
+(\src{simulation/results/coverage_scaling.csv}).
+Multiplying the variance, or the standard error, by $G/(G-1)$, by
+$N/(N-1)$, or by $G/(G-1)\times(N-1)/(N-3)$ moves the coverage from 0.252 to
+0.253.
+That is about 0.001, not the gap of 0.030.
+The Monte Carlo standard error of our coverage is 0.014 (0.0138 before
+rounding to three decimals).
+A published rate of 0.282 on 1,000 draws has a binomial standard error of
+about 0.014 as well.
+The gap is about two of those standard errors, so Monte Carlo error can
+account for part of it and cannot show which standard-error definition
+produced 0.282.
+The largest remaining cause is an Mplus 7 MLR detail that the scalar factors
+do not reproduce.
+The artifact that would settle it is a Mplus 7 output for the informative
+normal cell at average cluster size 20 and intraclass correlation .05, ideally
+on the same replicates.
+The bias summary for that cell retains 965 replications
+(\src{simulation/results/summary.csv}); the scaling file retains 984
+replications that have a saved standard error.
+Both coverages, 0.248 in the bias file and 0.252 in the scaling file, are far
+from 0.282 and far from 0.95.
+
+The other open comparison is the bracketed marginal root mean square error.
+Those 72 cells, 24 random-intercept and 48 random-coefficient, are not in the
+checkpoints, which store the cluster-specific linear predictor.
+Of 3,200 compared cells, 1,040 match and 1,531 are within one last-place unit.
+Coverage is the weakest column: 90 of 752 coverage cells match.
+On the Bernoulli random-coefficient arm, the sandwich standard error for the
+incorrect-covariance weighted fits is finite in only a handful of replications
+in some cells, so those coverage rates use that smaller count.
+The point estimates in those cells still use about 1,000 replications.
+Mplus output would separate sandwich scaling from Monte Carlo error.
+No Mplus input file was found. The search is recorded in
+\src{notes/mplus-search.md}.
+
+\section{Where are the code and the source?}
+
+The question is whether a reader can obtain her programs and our results.
+The answer is that our result files are in this repository and her Mplus
+inputs were not found.
+The dated ledger is \src{notes/availability.md}, searched on 2 November 2026
+(UTC).
+The Mplus search is \src{notes/mplus-search.md}, with the same date.
+
+The dissertation PDF was recovered from the Internet Archive after the
+DigitalCommons download returned an access challenge.
+The copy used here is \src{source/koziol2015.pdf}.
+The title page matches Natalie A.\ Koziol, May 2015, with adviser James A.\
+Bovaird.
+Appendix A prints part of the R generator.
+The dissertation names Mplus 7 for estimation and R with MASS for generation.
+It names no program archive, no OSF project, and no syntax file.
+The Figshare supplement of the 2017 article, file
+\texttt{hmbr\_a\_1292115\_sm3492.docx} under
+\url{https://doi.org/10.6084/m9.figshare.4743673}, repeats simulation tables and
+does not contain Mplus or R programs.
+Searches of GitHub, the OSF API, Zenodo, the CYFS biography and CV, two later
+OSF preregistrations, and the public ORCID record did not produce the
+simulation inputs.
+The estimation programs were not obtained.
+The generator fragment in Appendix A was.
+
+\section{What should happen next?}
+
+The question is which artifact to obtain first, and which check to run on it.
+The answer is a Mplus 7 output for the informative normal cell at average
+cluster size 20 and intraclass correlation .05.
+
+The check is a comparison of that output's intercept standard errors, and of
+the coverage they imply, with our coverage 0.252 and the printed coverage
+0.282.
+If the output is computed on our replicates, the comparison isolates the
+sandwich.
+If it is computed on a new Mplus Monte Carlo, the comparison still shows
+whether Mplus 7 lands near 0.282 under the options on page 76.
+The same file would also show whether \texttt{WTSCALE=CLUSTER} matches the
+Method 2 scaling used here.
+The simulation that does not require Mplus is already the full factorial.
+What that run does not settle is the cluster-size-20 coverage gap, the 72
+bracketed marginal root-mean-square-error cells, and the appendix cells that
+miss the printed thousandth.
+On some Bernoulli random-coefficient cells the sandwich standard error for
+the incorrect-covariance weighted fits is finite in only a small share of
+replications, so those coverage rates use that smaller count.
+
+\section{Compliance ledger}
+
+The question is whether the replication requirements that apply to this design
+were followed.
+The answer is that they were followed, with one departure: the preflight
+engine is for structural equation models, and these models are not structural
+equation models.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\caption{Compliance ledger.
+A departure carries its justification in the evidence cell.}
+\label{tab:ledger}
+\begin{tabular}{@{}p{1.7in}p{0.95in}p{3.3in}@{}}
+\toprule
+Requirement & Status & Evidence \\
+\midrule
+Source identified and cited & followed &
+Natalie A.\ Koziol (2015), University of Nebraska--Lincoln, chair James A.\ Bovaird.
+DigitalCommons URL in the introduction. \\
+Verdict before the design & followed &
+Abstract and Section 1 open with the replication verdict and the three contrasts. \\
+Effect magnitude on page 1 & followed &
+Table~\ref{tab:headline}, with tolerance 0.001 and the point-estimate note. \\
+Published numbers separated from ours & followed &
+Table captions name Tables C.2, C.4, E.2, and 4.1 as the source of published values. \\
+Method citations & followed &
+Weighting, sandwich variance, pseudo-likelihood, and each package that was discussed are cited in the text. \\
+Engine, lavaan / OpenMx & departed &
+Departure justification: the preflight expected lavaan and OpenMx.
+These models are not structural equation models, so that pair was not used to fit them.
+The weighted multilevel estimator was checked by WeMix 4.0.3 against the analytic pseudo-likelihood, and the two agree on the production replicate in \src{simulation/results/wemix_crosscheck_cell1_rep1.csv}. \\
+Availability ledger & followed &
+\src{notes/availability.md} and \src{notes/mplus-search.md}, dated 2 November 2026. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\appendix
+\section{Artifacts}
+\label{sec:artifacts}
+
+The question is which file holds each result, and what regenerates it.
+The answer is Table~\ref{tab:artifacts}.
+Links point at the \texttt{master} copy of this repository and are navigation
+aids.
+The numbers in the note were read from the result files named here.
+The invocation, the working directory, and the seeds are recorded in
+\src{simulation/results/RUN.txt}.
+That file is the regeneration record.
+This appendix does not restate it as a second command.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\caption{Files that hold the results in this note.
+Each link is the file on \texttt{master}.}
+\label{tab:artifacts}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.65in}>{\raggedright\arraybackslash}p{2.7in}>{\raggedright\arraybackslash}p{2.15in}@{}}
+\toprule
+Result & File & Regeneration record \\
+\midrule
+Full-grid cell comparison, 3,272 printed cells &
+\src{simulation/results/cell_match.csv} &
+\src{simulation/compare_cells.py}, runners
+\src{simulation/run_grid_gaussian_rc.R},
+\src{simulation/run_grid_bernoulli_ri.R},
+\src{simulation/run_grid_bernoulli_rc.R} \\
+Match rates by arm, statistic, and table &
+\src{simulation/results/match_summary.csv} &
+\src{simulation/compare_cells.py} \\
+Published appendix cells &
+\src{simulation/results/published_cells.csv} &
+\src{simulation/parse_published.py} \\
+Normal random-intercept replicates &
+\src{simulation/results/cell_01.csv} &
+\src{simulation/results/RUN.txt}, generator \src{simulation/generate.R} \\
+WeMix cross-check, one replicate &
+\src{simulation/results/wemix_crosscheck_cell1_rep1.csv} &
+\src{simulation/results/RUN.txt} \\
+Coverage scaling at cluster size 20 &
+\src{simulation/results/coverage_scaling.csv} &
+\src{simulation/results/RUN.txt} \\
+Dissertation PDF &
+\src{source/koziol2015.pdf} &
+Obtained from the Internet Archive; see \src{notes/availability.md} \\
+Program search &
+\src{notes/mplus-search.md} &
+Dated ledger, 2 November 2026 \\
+Code and supplement ledger &
+\src{notes/availability.md} &
+Dated ledger, 2 November 2026 \\
+Bibliography source &
+\src{paper/references.bib} &
+Edited with the note \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
