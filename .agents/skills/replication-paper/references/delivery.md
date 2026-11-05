@@ -18,11 +18,26 @@ Read only for the corresponding stage in [SKILL.md](../SKILL.md).
 Reuse the latest user-approved manuscript template. Record its path and revision;
 compare the rendered main paper against it. The bundled
 [approved preamble](../assets/approved-preamble.tex) preserves the Kupzyk layout.
-Keep semantic subject-specific adaptations separate from style changes. Record
-and justify necessary deviations; do not silently invent a new layout.
+Input that file; do not paste a divergent preamble or override it with
+`\newgeometry`. Keep semantic subject-specific adaptations separate from style
+changes. Record and justify necessary deviations; do not silently invent a new
+layout.
+
+Before accepting the rendered paper, compare page 1 by eye with a reference
+paper in the series that uses the same preamble, such as the Kupzyk replication.
+Check the title block, the abstract inset, the margins, and the type. `preflight.py
+done` also measures page 1 against the preamble (letter size, the 0.82-inch text
+block, a centered `\LARGE` roman title, and an inset abstract). That measurement
+does not replace the visual comparison.
 
 Before declaring delivery complete, run the replication-plan done check from
-the [pre-done checklist](../SKILL.md#pre-done-checklist). From the study root:
+the [pre-done checklist](../SKILL.md#pre-done-checklist). That command includes
+the pre-merge link gate: same-repository `blob/master` and `tree/master` paths
+must exist at `HEAD`, and line anchors must fall inside the file. It does not
+fetch live master URLs. A 404 on a path that is not on master yet is expected
+and does not block. After merge, run the separate post-merge gate in
+[pdf-link-review.md](pdf-link-review.md), which requests the live master URLs
+and anchor text. The two gates are not substitutes. From the study root:
 
 ```sh
 python3 .agents/skills/replication-paper/scripts/preflight.py done \
@@ -40,8 +55,36 @@ Passing helper tests never establishes manuscript compliance. Apply the
 [final-PDF link audit](pdf-link-review.md); a nonempty links note does not
 replace extraction and validation of the actual URI annotations.
 
-When a draft PR is authorized, put an accessible current-commit primary PDF link
-first, followed by editable source/bibliography and linked evidence. Fetch the
+When a draft PR is authorized, put the built primary PDF first. The description
+needs two links to the delivery record's primary PDF path, near the top. The
+reviewable link works before merge:
+
+```text
+https://github.com/<owner>/<repo>/blob/<40-hex SHA or head branch>/<repo-relative primary PDF>
+```
+
+The intended master link uses that same path and is labeled as live after merge:
+
+```text
+https://github.com/<owner>/<repo>/blob/master/<repo-relative primary PDF>
+```
+
+The master link does not replace the reviewable one. A folder, source file, or
+appendix is not the built PDF. Before reporting, run:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/pr_description.py \
+  --body pr-body.md --record delivery.json --root STUDY_ROOT \
+  --head-branch BRANCH
+```
+
+Omit `--body` to read the description on stdin. Exit 0 means both links are
+present and their paths are the record's primary PDF. Exit 2 means a link is
+missing or the path differs. `preflight.py done --pr-body pr-body.md --record
+delivery.json` and `delivery_check.py RECORD.json --root STUDY_ROOT --pr-body
+pr-body.md` run the same check. Omit those arguments and the older commands
+are unchanged. Then put editable source, bibliography, and linked evidence
+after the PDF links. Fetch the
 remote primary PDF and evidence, compare their hashes with local artifacts, and
 record the URLs and downloaded paths. An appendix never substitutes for the
 main paper. If a transfer channel fails, use another authorized channel; otherwise
@@ -67,7 +110,10 @@ use direct resource/performance tradeoffs when no equivalence margin is justifie
 
 Write the description for a reader who has not read the paper. Use the same
 prose rules as the note. No language-model authorship statement, and no
-opening about how the files were produced.
+opening about how the files were produced. Near the top, link the built
+primary PDF with the reviewable commit or head-branch blob URL and the
+intended master URL labeled as live after merge. Check that pair with
+`pr_description.py` before reporting, as specified above.
 
 ```markdown
 ## What this is

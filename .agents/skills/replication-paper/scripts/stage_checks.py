@@ -14,7 +14,7 @@ _first_spec.loader.exec_module(_first)
 EDITORIAL_CHECKS = (
     'abstract_verdict_first', 'introduction_verdict_first', 'standalone_prose',
     'headline_fidelity', 'claim_coverage', 'limitations_preserved',
-    'scientific_process_distinction', 'abstract_source_fidelity', 'effect_magnitude_fidelity',
+    'scientific_process_distinction', 'abstract_source_fidelity', 'effect_magnitude_fidelity', 'finding_attribution',
 )
 STATUSES = {'replicated', 'partly_replicated', 'not_replicated', 'not_established', 'blocked'}
 CUES = re.compile(
@@ -169,7 +169,7 @@ def packet_errors(packet, root):
         refs = audit.get('source_artifact_ids')
         if not strings(refs) or not set(refs).issubset(ids):
             errors.append('packet: inventory source artifacts required')
-    errors.extend(_first.packet_errors(packet))
+    errors.extend(_first.packet_errors(packet, source_text=_first.bundled_source_text(packet, root)))
     return errors
 
 
