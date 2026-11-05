@@ -8,6 +8,8 @@ import hashlib
 import json
 import posixpath
 import re
+import subprocess
+import sys
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -195,12 +197,185 @@ def check(record, root):
     return [format_issue(item) for item in audit(record, root)]
 
 
+_MASTER = re.compile(
+    r'https://github\.com/([^/\s"\'<>]+)/([^/\s"\'<>]+)/(blob|tree)/master/([^\s"\'<>#{}\\]+)'
+    r'(?:#(L\d+(?:-L\d+)?))?',
+    re.I)
+_ANCHOR = re.compile(r'^L(\d+)(?:-L(\d+))?$', re.I)
+
+
+def origin_repository(root):
+    """Owner/repo from origin, without credentials or the raw remote string."""
+    completed = subprocess.run(
+        ['git', '-C', str(root), 'remote', 'get-url', 'origin'],
+        check=False, capture_output=True, text=True)
+    if completed.returncode != 0:
+        return None
+    url = re.sub(r'://[^/@\s]+@', '://', completed.stdout.strip())
+    match = re.search(r'github\.com[:/]([^/\s]+)/([^/\s]+?)(?:\.git)?$', url)
+    if not match:
+        return None
+    return match.group(1) + '/' + match.group(2)
+
+
+def _git_bytes(root, *args):
+    return subprocess.run(
+        ['git', '-C', str(root), *args], check=False, capture_output=True)
+
+
+def iter_master_targets(text):
+    if not isinstance(text, str):
+        return
+    for match in _MASTER.finditer(text):
+        owner, repo, kind, path, anchor = match.groups()
+        yield {
+            'repository': owner + '/' + repo,
+            'kind': kind.lower(),
+            'path': unquote(path).strip('/').rstrip('.,;:'),
+            'anchor': anchor,
+            'uri': match.group(0),
+        }
+
+
+def _line_count(blob):
+    if blob == b'':
+        return 0
+    return blob.count(b'\n') + (0 if blob.endswith(b'\n') else 1)
+
+
+def branch_target_errors(text, root, repository=None, inventory=None):
+    """Pre-merge: same-repo master paths must exist at HEAD. Do not fetch live master.
+
+    A 404 on the published master URL is expected for a new path and is not an error here.
+    """
+    root = Path(root)
+    repo = repository or origin_repository(root)
+    symbols = {}
+    if isinstance(inventory, dict):
+        for link in inventory.get('links') or []:
+            if isinstance(link, dict) and isinstance(link.get('uri'), str) and isinstance(link.get('symbol'), str) and link['symbol'].strip():
+                symbols[link['uri']] = link['symbol'].strip()
+    errors = []
+    targets = list(iter_master_targets(text))
+    if any(item['repository'].lower() == (repo or '').lower() for item in targets) and not repo:
+        return ['links: origin repository required to check same-repo master paths']
+    if repo is None:
+        return []
+    for item in targets:
+        if item['repository'].lower() != repo.lower():
+            continue
+        label = item['kind'] + '/master/' + item['path']
+        if not item['path'] or item['path'].startswith('/') or '..' in item['path'].split('/'):
+            errors.append('links: ' + label + ': path is not a repository-relative target')
+            continue
+        kind = _git_bytes(root, 'cat-file', '-t', 'HEAD:' + item['path'])
+        if kind.returncode != 0:
+            errors.append('links: ' + label + ': target is not in HEAD')
+            continue
+        actual = kind.stdout.decode().strip()
+        expected = 'blob' if item['kind'] == 'blob' else 'tree'
+        if actual != expected:
+            errors.append('links: ' + label + ': HEAD object is ' + actual + ', expected ' + expected)
+            continue
+        anchor = item.get('anchor')
+        if item['kind'] != 'blob' or not anchor:
+            continue
+        parsed = _ANCHOR.fullmatch(anchor)
+        if not parsed:
+            errors.append('links: ' + label + ': unsupported anchor')
+            continue
+        start = int(parsed.group(1))
+        end = int(parsed.group(2) or parsed.group(1))
+        blob = _git_bytes(root, 'cat-file', '-p', 'HEAD:' + item['path'])
+        count = _line_count(blob.stdout)
+        if start < 1 or end < start or end > count:
+            errors.append('links: ' + label + '#' + anchor + ': anchor outside ' + str(count) + ' lines')
+            continue
+        symbol = symbols.get(item['uri'])
+        if symbol:
+            lines = blob.stdout.decode('utf-8', errors='replace').splitlines()
+            span = lines[start - 1:end]
+            if not any(symbol in line for line in span):
+                errors.append('links: ' + label + '#' + anchor + ': anchored line does not contain recorded symbol')
+    return errors
+
+
+def load_inventory_symbols(root):
+    path = Path(root) / 'provenance' / 'pdf-links.json'
+    if not path.is_file():
+        return None
+    try:
+        return json.loads(path.read_text(encoding='utf-8'))
+    except (OSError, UnicodeError, ValueError):
+        return None
+
+
+def post_merge_errors(text, repository, opener=None, timeout=20):
+    """After merge, fetch live master URLs and anchor lines. Not a pre-merge gate."""
+    import urllib.request
+    errors = []
+    opener = opener or urllib.request.urlopen
+    for item in iter_master_targets(text):
+        if item['repository'].lower() != repository.lower():
+            continue
+        page = 'https://github.com/' + item['repository'] + '/' + item['kind'] + '/master/' + item['path']
+        raw = 'https://raw.githubusercontent.com/' + item['repository'] + '/master/' + item['path']
+        try:
+            with opener(page, timeout=timeout) as response:
+                status = getattr(response, 'status', None) or getattr(response, 'code', None)
+                if status != 200:
+                    errors.append('post-merge: ' + page + ' returned ' + str(status))
+        except Exception as exc:
+            errors.append('post-merge: ' + page + ' failed: ' + type(exc).__name__)
+            continue
+        anchor = item.get('anchor')
+        if item['kind'] != 'blob' or not anchor:
+            continue
+        parsed = _ANCHOR.fullmatch(anchor)
+        if not parsed:
+            errors.append('post-merge: ' + page + ': unsupported anchor')
+            continue
+        try:
+            with opener(raw, timeout=timeout) as response:
+                body = response.read()
+        except Exception as exc:
+            errors.append('post-merge: ' + raw + ' failed: ' + type(exc).__name__)
+            continue
+        start = int(parsed.group(1))
+        end = int(parsed.group(2) or start)
+        count = _line_count(body)
+        if start < 1 or end < start or end > count:
+            errors.append('post-merge: ' + raw + '#' + anchor + ': anchor outside ' + str(count) + ' lines')
+    return errors
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('pdf', type=Path)
-    parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('pdf', nargs='?', type=Path)
+    parser.add_argument('--output', type=Path)
+    parser.add_argument('--branch-targets', action='store_true', help='Check same-repo master paths against HEAD. Does not fetch GitHub.')
+    parser.add_argument('--post-merge', action='store_true', help='Fetch live master URLs. A pre-merge 404 must not be used as this check.')
+    parser.add_argument('--root', type=Path)
+    parser.add_argument('--paper', type=Path)
+    parser.add_argument('--repository')
     args = parser.parse_args()
     try:
+        if args.branch_targets or args.post_merge:
+            if not args.root or not args.paper:
+                parser.error('--root and --paper are required')
+            paper = args.paper.read_text(encoding='utf-8')
+            if args.branch_targets:
+                found = branch_target_errors(paper, args.root, args.repository, load_inventory_symbols(args.root))
+            else:
+                repo = args.repository or origin_repository(args.root)
+                if not repo:
+                    parser.error('repository required')
+                found = post_merge_errors(paper, repo)
+            json.dump({'errors': found, 'accepted': not found}, sys.stdout, indent=2)
+            sys.stdout.write('\n')
+            raise SystemExit(0 if not found else 2)
+        if not args.pdf or not args.output:
+            parser.error('pdf and --output are required to extract an inventory')
         result = extract(args.pdf)
         args.output.write_text(json.dumps(result, indent=2) + '\n')
     except (LinkAuditError, OSError) as exc:

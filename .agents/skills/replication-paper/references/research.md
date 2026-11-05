@@ -212,6 +212,28 @@ under that independence assumption
 ([printed_probability.py](../../../../formalization/correlated-residuals/simulation/printed_probability.py)).
 The figure does not say how the printed numbers were obtained.
 
+## Source text and rendered pages
+
+Before the manuscript says that a source, or its pages, is unavailable, attempt
+each public route and record the target and the result in
+`provenance/source-acquisition.json`:
+
+- the repository record
+- the direct PDF
+- ProQuest, DigitalCommons, or another institutional repository
+- an arXiv or author version
+
+`not attempted` is not a result. Text that was read and pages that were
+visually inspected are separate records (`text_read` with `"mode": "text"`,
+and `rendered_pages_inspected` with `"mode": "visual"`). Reading an extracted
+text file does not inspect figures, tables, or equations. Whenever the PDF is
+obtainable, visual inspection of every page that supports a headline or
+Published entry is a pre-merge requirement: list those pages in
+`headline_pages` and include them in `rendered_pages_inspected.pages`. If the
+PDF was obtained, do not describe the source or those pages as unavailable.
+`preflight.py done` checks this record. The route log and the page list bind
+the attempt; they do not prove that a figure means what the prose says.
+
 ## Availability ledger
 
 Look for the original code before rebuilding it. Check the OSF project, the
