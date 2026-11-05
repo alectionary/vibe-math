@@ -14,11 +14,19 @@ Exit 0 when lavaan and OpenMx can be loaded, or when a fallback record
 supplies a justification and a separate validation. Exit 2 when the
 preferred engine is missing and the fallback is absent or incomplete.
 `done` exits 0 when the replication plan passes, and 2 when it does not.
+A plan with `limit_schema: 1` is also checked for per-part limit kinds,
+part-specific reasons and evidence, and a not_run estimate and decision.
+A tractable not_run part is accepted when `decision_by` is `project` and a
+`decision_reason` records the resource decline. Plans that omit
+`limit_schema` skip that check.
+Optional `--pr-body` and `--record` also check the PR description's primary
+PDF links. Omit them and `done` does not read a description.
 """
 
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import platform
 import re
@@ -28,6 +36,9 @@ import sys
 from pathlib import Path
 
 import checks
+import layout
+import pdf_links
+import source_acquisition
 
 
 def probe(which=None, runner=None) -> dict:
@@ -191,6 +202,8 @@ def first_addition(root: Path, path: Path):
     """Return (revision, historical path) for the first commit that added `path`."""
     root = Path(root)
     relative = _relative(root, path)
+    # `git -C` pathspecs are relative to that directory; show/cat paths are not.
+    from_root = ( _toplevel(root).resolve() / relative ).resolve().relative_to(root.resolve()).as_posix()
     completed = _git(
         root,
         "log",
@@ -199,7 +212,7 @@ def first_addition(root: Path, path: Path):
         "--format=%H",
         "--name-status",
         "--",
-        relative,
+        from_root,
     )
     if completed.returncode != 0:
         raise RuntimeError(completed.stderr.decode(errors="replace").strip() or "git log failed")
@@ -296,6 +309,18 @@ def done_check(root, plan, paper, analysis=None) -> dict:
         errors.append(baseline_error)
     if paper_error and plan_obj is None:
         errors.append(paper_error)
+    if paper_text is not None:
+        try:
+            errors.extend(
+                'links: ' + item if not item.startswith('links:') else item
+                for item in pdf_links.branch_target_errors(
+                    paper_text, root, inventory=pdf_links.load_inventory_symbols(root))
+            )
+        except (OSError, RuntimeError) as exc:
+            errors.append('links: branch target check failed: ' + type(exc).__name__)
+        errors.extend(source_acquisition.acquisition_errors(root, paper_text))
+        pdf = layout.paper_pdf(paper_path)
+        errors.extend(layout.layout_errors(paper_text, paper_path, pdf))
     if revision is not None:
         for item in analysis or []:
             analysis_path = Path(item) if Path(item).is_absolute() else root / item
@@ -322,14 +347,38 @@ def done_check(root, plan, paper, analysis=None) -> dict:
     return result
 
 
+def _pr_description():
+    spec = importlib.util.spec_from_file_location(
+        'replication_pr_description', Path(__file__).with_name('pr_description.py'))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def done_main(argv) -> int:
     parser = argparse.ArgumentParser(description="Check a replication plan against its first commit and the paper.")
     parser.add_argument("--plan", required=True)
     parser.add_argument("--paper", required=True)
     parser.add_argument("--root", required=True)
     parser.add_argument("--analysis", action="append", default=[])
+    parser.add_argument("--pr-body", help="PR description file. Checked with --record against the primary PDF.")
+    parser.add_argument("--record", help="Delivery record JSON. Required with --pr-body.")
+    parser.add_argument("--head-branch", help="Head branch accepted in place of a 40-hex PDF pin.")
     args = parser.parse_args(argv)
     decision = done_check(args.root, args.plan, args.paper, args.analysis)
+    if args.pr_body or args.record:
+        if not args.pr_body or not args.record:
+            decision["errors"].append("pr: description and delivery record are both required")
+        else:
+            try:
+                body = Path(args.pr_body).read_text(encoding="utf-8")
+                record = json.loads(Path(args.record).read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                decision["errors"].append("pr: description or delivery record is unreadable")
+            else:
+                decision["errors"].extend(_pr_description().description_errors(
+                    body, record, args.root, head_branch=args.head_branch))
+        decision["accepted"] = not decision["errors"]
     json.dump(decision, sys.stdout, indent=2)
     sys.stdout.write("\n")
     return 0 if decision["accepted"] else 2

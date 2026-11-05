@@ -77,6 +77,17 @@ class Stages(unittest.TestCase):
             magnitude='not established', direction='not established', display_decimals=3,
             interpretation='descriptive point estimates; not equivalence', uncertainty_statement='No cross-population estimate')]
 
+        claim['findings'] = {
+            'published': dict(text='13.184', state='reported', artifact_ids=['results'], locator='Table 2, B minus A',
+                              source_excerpt='Source table 2, p 4: 2.712', page_locator='p. 4', claim_type='numerical estimate',
+                              conditions='n=1000; one prespecified contrast', component_claim_ids=[], component_contrast_indices=[0]),
+            'ours': dict(text='13.208', state='observed', artifact_ids=['results'], locator='Replication B minus A', component_claim_ids=[], component_contrast_indices=[0])}
+        blocked['findings'] = {
+            'published': dict(text='Robustness', state='reported', artifact_ids=['results'], locator='Chapter 3 robustness finding',
+                              source_excerpt='two populations unavailable', page_locator='p. 12', claim_type='other',
+                              conditions='Three populations; two inputs missing', component_claim_ids=[], component_contrast_indices=[]),
+            'ours': dict(text='Two populations unavailable', state='not_obtained', reason='Data acquisition audit found no input files', artifact_ids=['results'], locator='Acquisition audit', component_claim_ids=[], component_contrast_indices=[])}
+
     def test_valid_packet_keeps_blocked_headline(self):
         self.assertEqual(m.packet_errors(self.packet, self.root), [])
 
@@ -137,9 +148,19 @@ class Stages(unittest.TestCase):
         with fitz.open() as document:
             page = document.new_page()
             page.insert_textbox(fitz.Rect(50, 50, 550, 220), abstract_text)
-            page.insert_text((50,250),'Effect magnitude (percent)', fontsize=9)
-            page.insert_text((50,270),'B minus A 13.184 13.208 larger same direction tol 0.0005', fontsize=9)
-            page.insert_text((50,290),'Robustness not established not established not established not established tol 0.01', fontsize=9)
+            page.insert_text((350,250),'Effect magnitude (percent)', fontsize=9)
+            page.insert_text((150,250),'Published', fontsize=9)
+            page.insert_text((250,250),'Ours', fontsize=9)
+            page.insert_text((50,270),'B minus A', fontsize=9)
+            page.insert_text((150,270),'13.184', fontsize=9)
+            page.insert_text((250,270),'13.208', fontsize=9)
+            page.insert_text((350,270),'larger same direction tol 0.0005', fontsize=8)
+            page.insert_text((50,290),'Robustness', fontsize=9)
+            page.insert_text((150,290),'Robustness', fontsize=9)
+            page.insert_text((250,290),'Two populations unavailable', fontsize=6)
+            page.insert_text((350,290),'not established', fontsize=8)
+            page.insert_text((450,290),'not established', fontsize=8)
+            page.insert_text((510,290),'tol 0.01', fontsize=8)
             page.insert_text((50,310),'Descriptive point estimates; not equivalence.', fontsize=9)
             page.insert_text((50, 400), 'results.txt')
             page.insert_link({'kind':fitz.LINK_URI, 'from':fitz.Rect(50, 385, 150, 405), 'uri':'https://github.com/a/b/blob/master/results.txt'})
@@ -156,9 +177,12 @@ class Stages(unittest.TestCase):
                          original_finding='reported lower error for A and robustness across populations',
                          verdict_evidence=case['abstract'].split('. ')[0], claim_ids=['C1','C2']),
                          table=dict(bbox=[45,235,555,320], magnitude_heading='Effect magnitude',
-                         comparison_note='Descriptive point estimates; not equivalence.', rows=[
-                         dict(effect_id='E1',bbox=[45,255,555,275],estimand_text='B minus A',tolerance_text='tol 0.0005'),
-                         dict(effect_id='E2',bbox=[45,280,555,295],estimand_text='Robustness',tolerance_text='tol 0.01')])))))
+                         comparison_note='Descriptive point estimates; not equivalence.',
+                         published_heading='Published',ours_heading='Ours',
+                         published_column_bbox=[145,235,245,300],ours_column_bbox=[245,235,345,300],
+                         published_heading_bbox=[145,237,245,253],ours_heading_bbox=[245,237,345,253],rows=[
+                         dict(effect_id='E1',bbox=[45,255,555,275],estimand_text='B minus A',tolerance_text='tol 0.0005', published_text='13.184',published_bbox=[145,255,245,275],ours_text='13.208',ours_bbox=[245,255,345,275]),
+                         dict(effect_id='E2',bbox=[45,280,555,295],estimand_text='Robustness',tolerance_text='tol 0.01',published_text='Robustness',published_bbox=[145,280,245,295],ours_text='Two populations unavailable',ours_bbox=[245,280,345,295], display=dict(magnitude_bbox=[345,280,445,295],direction_bbox=[445,280,505,295]))])))))
         def git(*args):
             return subprocess.check_output(['git', '-C', str(self.root), *args], stderr=subprocess.DEVNULL).decode().strip()
         git('init'); git('config', 'user.name', 'Test'); git('config', 'user.email', 'test@example.invalid')
