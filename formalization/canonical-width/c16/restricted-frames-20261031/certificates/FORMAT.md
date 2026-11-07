@@ -27,3 +27,19 @@ Commands (from `../la`, `la_gen_c` = `cc -O3 -march=native la_gen.c -o la_gen_c`
 ./la_gen_c -l -S 4 -s S -D 1 -C ../certificates/swapT8-sSof4.cert.gz inst/g-swapT8.txt  (S = 0..3)
 python3 ../certificates/check_cert_ref.py ../certificates/swap.inst ../certificates/swap.cert.gz
 ```
+
+## Runs (la_gen_c, 2026-11-07, one core each)
+
+| File | Status | Frames | Nodes | Seconds |
+|---|---|---|---|---|
+| `swap.cert.gz` | COMPLETE | 0 | 69,180 | 27 |
+| `half-s0of2.cert.gz` | COMPLETE | 0 | 4,986,138 | 852 |
+| `half-s1of2.cert.gz` | COMPLETE | 0 | 5,010,551 | 853 |
+| `swapT8-s0of4.cert.gz` | COMPLETE | 0 | 12,710,182 | 1895 |
+| `swapT8-s1of4.cert.gz` | COMPLETE | 0 | 12,433,035 | 1863 |
+| `swapT8-s2of4.cert.gz` | COMPLETE | 0 | 12,559,261 | 1924 |
+| `swapT8-s3of4.cert.gz` | COMPLETE | 0 | 12,701,859 | 1931 |
+
+`check_cert_ref.py` accepts `swap.cert.gz` and `test-quarter.cert.gz`, rejects `test-bad-*`, and
+reports the frame in `test-planted.cert.gz`. It is too slow (about 170 nodes/s) for the half-turn and
+swap-half-turn certificates; those await the independent checker.
