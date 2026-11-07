@@ -1,0 +1,87 @@
+{
+  "scope": "Unsharded executable checker; no no_swap_frame theorem claimed",
+  "code_revision_note": "Initial native run before equivalent partialFrame all-expression and List.Nodup replacements; final regression is pending",
+  "runs": [
+    {
+      "test": "swap",
+      "status": "passed",
+      "result": "ACCEPT",
+      "items": 7936,
+      "nodes": 69180,
+      "branches": 24864,
+      "rank_leaves": 12308,
+      "empty_leaves": 32008,
+      "children": 69179,
+      "generic_kernel_accepted": true
+    },
+    {
+      "test": "test-quarter",
+      "status": "passed",
+      "result": "ACCEPT",
+      "items": 8940,
+      "nodes": 15088,
+      "branches": 1453,
+      "rank_leaves": 12830,
+      "empty_leaves": 805,
+      "children": 15087,
+      "generic_kernel_accepted": true,
+      "seconds": 137.40399193763733
+    },
+    {
+      "test": "test-planted",
+      "status": "running"
+    },
+    {
+      "test": "swap_check_ok native_decide",
+      "status": "running"
+    },
+    {
+      "test": "bad-1",
+      "exit": 1,
+      "seconds": 2.237210273742676,
+      "output": "items verified: 8940\n{ status := \"REJECT rank\",\n  cursor := 789,\n  stats := { branches := 13, ranks := 237, empty := 0, children := 250 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "bad-2",
+      "exit": 1,
+      "seconds": 0.22193408012390137,
+      "output": "items verified: 8940\n{ status := \"REJECT coverage count\",\n  cursor := 0,\n  stats := { branches := 0, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "bad-3",
+      "exit": 1,
+      "seconds": 0.22714948654174805,
+      "output": "items verified: 8940\n{ status := \"REJECT residual\",\n  cursor := 12,\n  stats := { branches := 2, ranks := 0, empty := 0, children := 2 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "drop-child-count",
+      "status": "passed",
+      "result": "REJECT",
+      "generic_kernel_accepted": false
+    },
+    {
+      "test": "entry-out-of-range",
+      "status": "passed",
+      "result": "REJECT",
+      "generic_kernel_accepted": false
+    },
+    {
+      "test": "branch-to-rank",
+      "status": "passed",
+      "result": "REJECT",
+      "generic_kernel_accepted": false
+    },
+    {
+      "test": "item-out-of-range",
+      "status": "passed",
+      "result": "REJECT",
+      "generic_kernel_accepted": false
+    },
+    {
+      "test": "branch-to-empty",
+      "status": "passed",
+      "result": "REJECT",
+      "generic_kernel_accepted": false
+    }
+  ]
+}
