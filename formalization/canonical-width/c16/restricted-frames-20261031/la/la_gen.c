@@ -16,6 +16,7 @@
  *   -x i: search only frames containing X vector i (rotation normalisation)
  *   shards split the children at the given depth (default 0) round-robin in visiting order
  *   -l  restrict X'/Z' to vectors of live items
+ *   -C FILE  write a proof certificate (gzip) of the search tree; see ../certificates/FORMAT.md
  *   -P MASK [-M 0|1|2] [-Q F]  branch first on residual entries in the blocks of MASK (bit b = block b;
  *       mode 0: row or column block, 1: both, 2: row block), unless such an entry has more than F
  *       times the fewest candidates. Changes only the order, not the set of frames found.
@@ -39,6 +40,7 @@ static v128 *XV, *ZV, Dmask;
 static int *ik, (*ix)[MAXK], (*iz)[MAXK];
 static uint8_t *orthxz;   /* orthxz[i*NZ+j] = <x_i,z_j> == 0 */
 static const char *fixed_file = NULL; static long long shard_ctr = 0; static int shard_depth = 0, force_x = -1;
+static FILE *cert = NULL; /* -C: proof certificate (see ../certificates/FORMAT.md) */
 static int prefer_mask = 0, prefer_mode = 0; static double prefer_factor = 1e9;
 static int live_sides = 0, filter_items = 0, full_filter = 0, only_first = 0, shard = 0, nshard = 1, knuth = 0;
 static double kprod, kest; static unsigned long long rng = 88172645463325252ULL;
@@ -88,6 +90,7 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
     if (time_limit && (nodes[depth] & 255) == 0 && time(NULL) - t0 > time_limit) timed_out = 1;
     if (timed_out) return;
     if (need == 0) {
+        if (cert) fputs("F\n", cert);
         nsol++; fprintf(solf, "FRAME");
         for (int d = 0; d < depth; d++) for (int s = 0; s < ik[chosen[d]]; s++) fprintf(solf, " %d %d", ix[chosen[d]][s], iz[chosen[d]][s]);
         fprintf(solf, "\n"); fflush(solf); return;
@@ -99,7 +102,7 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         for (int t = 0; t < nlive; t++) { int q = live[t]; for (int s = 0; s < ik[q]; s++) { okxL[ix[q][s]] = 1; okzL[iz[q][s]] = 1; } }
         okx = okxL; okz = okzL;
     }
-    if (pair_rank(okx, okz, need) < need) { prunes_rank[depth]++; LEAVE; }
+    if (pair_rank(okx, okz, need) < need) { prunes_rank[depth]++; if (cert) fputs("R\n", cert); LEAVE; }
     if (filter_items) {
         uint8_t *tx = malloc(NX), *tz = malloc(NZ);
         for (int round = 0; round < 8; round++) {
@@ -161,7 +164,7 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
     /* use the preferred entry unless it has more than prefer_factor times the global minimum */
     if (pbc >= 0 && best > 0 && pbest <= prefer_factor * best) { best = pbest; bc = pbc; bk = pbk; }
     free(C);
-    if (best == 0 || bc < 0) { prunes_empty[depth]++; LEAVE; }
+    if (best == 0 || bc < 0) { prunes_empty[depth]++; if (cert) fprintf(cert, "E %d %d\n", bc, bk); LEAVE; }
     int *ch = malloc(sizeof(int) * (nlive + 1)), nch = 0;
     if (depth == 0 && force_x >= 0) {
         /* -x i: the frame must contain X vector i; branch over the live items that use it */
@@ -174,12 +177,14 @@ static void search(v128 *R, uint8_t *okx, uint8_t *okz, int *live, int nlive, in
         if (b) ch[nch++] = q;
     }
     if (knuth) { kprod *= nch; kest += kprod; ch[0] = ch[xr() % nch]; nch = 1; }
+    if (cert) fprintf(cert, "B %d %d %d\n", bc, bk, nch);
     uint8_t *excl = calloc(NI, 1), *okx2 = malloc(NX), *okz2 = malloc(NZ); int *live2 = malloc(sizeof(int) * (nlive + 1));
     v128 R2[128];
     for (int u = 0; u < nch && !timed_out; u++) {
         int q = ch[u];
-        if (!knuth && depth == shard_depth && (shard_ctr++ % nshard) != shard) { excl[q] = 1; continue; }
-        if (ik[q] > need) { excl[q] = 1; continue; }
+        if (!knuth && depth == shard_depth && (shard_ctr++ % nshard) != shard) { excl[q] = 1; if (cert) fprintf(cert, "S %d\n", q); continue; }
+        if (ik[q] > need) { excl[q] = 1; if (cert) fprintf(cert, "K %d\n", q); continue; }
+        if (cert) fprintf(cert, "C %d\n", q);
         memcpy(R2, R, sizeof R2);
         for (int s = 0; s < ik[q]; s++) { v128 x = XV[ix[q][s]], z = ZV[iz[q][s]]; for (int c = 0; c < 128; c++) if (bit(x, c)) R2[c] = vxor(R2[c], z); }
         child_ok(q, okx, okz, okx2, okz2);
@@ -214,6 +219,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[a], "-x")) force_x = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-p")) fixed_file = argv[++a];
         else if (!strcmp(argv[a], "-o")) out = argv[++a];
+        else if (!strcmp(argv[a], "-C")) { char cmd[4096]; snprintf(cmd, sizeof cmd, "gzip -c > '%s'", argv[++a]); cert = popen(cmd, "w"); }
         else in = argv[a];
     }
     FILE *f = fopen(in, "r"); if (!f) { perror(in); return 2; }
@@ -263,7 +269,12 @@ int main(int argc, char **argv) {
         int first = 1; for (int i = 0; i < 300; i++) if (leaf[i]) { printf("%s\"%d\": %lld", first ? "" : ", ", i, leaf[i]); first = 0; }
         printf("}}\n"); return 0;
     }
+    if (cert) {
+        if (filter_items || force_x >= 0 || fixed_file || prefer_mask) { fprintf(stderr, "-C supports only -l and sharding\n"); return 6; }
+        fprintf(cert, "C16CERT 1 need %d items %d live_sides %d shard %d nshard %d shard_depth %d\n", need0, NI, live_sides, shard, nshard, shard_depth);
+    }
     search(R, okx, okz, live, nl0, 0, need0);
+    if (cert) { fprintf(cert, "END %s\n", timed_out ? "TIME_LIMIT" : "COMPLETE"); pclose(cert); }
     long long tot = 0; int maxd = 0; for (int i = 0; i < 300; i++) { tot += nodes[i]; if (nodes[i]) maxd = i; }
     printf("{\"status\": \"%s\", \"frames\": %lld, \"nodes\": %lld, \"seconds\": %ld, \"shard\": %d, \"nshard\": %d, \"per_depth\": [",
            timed_out ? "TIME_LIMIT" : "COMPLETE", nsol, tot, (long)(time(NULL) - t0), shard, nshard);
