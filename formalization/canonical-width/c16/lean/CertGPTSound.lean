@@ -8,6 +8,14 @@ rank bridge, and complete `RulesSound` instance remain separate obligations.
 -/
 namespace C16Frames.CertGPT
 
+theorem bit_eq_testBit (v c : Nat) : bit v c = v.testBit c := by
+  simp only [bit, Nat.and_one_is_mod, Nat.shiftRight_eq_div_pow,
+    Nat.testBit_eq_decide_div_mod_eq]
+  rfl
+
+theorem bit_xor (a b c : Nat) : bit (a ^^^ b) c = (bit a c != bit b c) := by
+  simp only [bit_eq_testBit, Nat.testBit_xor]
+
 /-- Sum over F₂, represented by Boolean exclusive-or. -/
 def paritySum {α : Type} (f : α → Bool) : List α → Bool
   | [] => false
@@ -27,6 +35,22 @@ theorem foldl_xor_eq {α : Type} (f : α → Bool) (xs : List α) (b : Bool) :
   | cons a as ih =>
       simp only [List.foldl_cons, paritySum, ih]
       exact xor_assoc b (f a) (paritySum f as)
+
+/-- One row of the executable residual fold, observed at one column. -/
+theorem bit_foldl_outer (d : Instance) (pairs : List Pair) (r c k : Nat) :
+    bit (pairs.foldl (fun acc p => if bit d.x[p.1]! c then acc ^^^ d.z[p.2]! else acc) r) k =
+      (bit r k != paritySum (fun p : Pair => bit d.x[p.1]! c && bit d.z[p.2]! k) pairs) := by
+  induction pairs generalizing r with
+  | nil => simp [paritySum]
+  | cons p ps ih =>
+      simp only [List.foldl_cons, paritySum, ih]
+      cases hx : bit d.x[p.1]! c
+      · simp only [Bool.false_and, Bool.false_eq_true, ↓reduceIte]
+        cases bit r k <;> cases paritySum
+          (fun p : Pair => bit d.x[p.1]! c && bit d.z[p.2]! k) ps <;> rfl
+      · simp only [Bool.true_and, ↓reduceIte, bit_xor]
+        exact xor_assoc (bit r k) (bit d.z[p.2]! k)
+          (paritySum (fun p : Pair => bit d.x[p.1]! c && bit d.z[p.2]! k) ps)
 
 /-- Item contribution `cov` is precisely the parity sum of its outer entries. -/
 theorem cov_eq_paritySum (d : Instance) (q c k : Nat) :
@@ -183,6 +207,19 @@ theorem child_pairCount (d : Instance) (s : SearchState) (q : Nat) (done : Array
     (hcount : pairCount d remaining = s.need) :
     pairCount d (remaining.erase q) = (childState d s q done).need := by
   rw [pairCount_erase d remaining q hq, hcount, childState_need]
+
+/-- The concrete array/map/fold residual update is exactly XOR with the item
+outer-product contribution, at every checked matrix coordinate. -/
+theorem childState_residual_bit (d : Instance) (s : SearchState) (q : Nat)
+    (done : Array Nat) (c k : Nat) (hc : c < 128) :
+    bit (childState d s q done).residual[c]! k =
+      (bit s.residual[c]! k != cov d q c k) := by
+  change bit (((Array.range 128).map fun c => d.items[q]!.foldl
+    (fun acc p => if bit d.x[p.1]! c then acc ^^^ d.z[p.2]! else acc)
+      s.residual[c]!)[c]!) k = _
+  simp only [getElem!_pos, Array.size_map, Array.size_range, hc,
+    Array.getElem_map, Array.getElem_range]
+  rw [← Array.foldl_toList, bit_foldl_outer, cov_eq_paritySum]
 
 /-- A residual child preserves every remaining live item compatible with q
 and excluded from neither q itself nor earlier siblings. -/

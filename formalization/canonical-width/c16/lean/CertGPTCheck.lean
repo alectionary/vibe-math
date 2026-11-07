@@ -34,7 +34,7 @@ def orbit (kind : String) (i j : Nat) : Array Pair :=
   else #[(i,j),(tau 4 i,tau 4 j),(tau 8 i,tau 8 j),(tau 12 i,tau 12 j)]
 
 /-- Regenerate every partial-frame orbit. Compare pair sets, not item order. -/
-@[noinline] def validateItems (d : Instance) (kind : String) : Bool := Id.run do
+@[noinline] def validateItemsFast (d : Instance) (kind : String) : Bool := Id.run do
   if kind != "swap" && kind != "quarter" then return false
   if d.x.size != d.z.size then return false
   let n := d.x.size
@@ -57,6 +57,22 @@ def orbit (kind : String) (i j : Nat) : Array Pair :=
         count := count + 1
   return count == d.items.size
 
+/-- Extensional equality of the finite pair sets represented by two arrays. -/
+def samePairSet (a b : Array Pair) : Bool :=
+  a.all (fun p => b.contains p) && b.all (fun p => a.contains p)
+
+/-- Redundant, proof-friendly completeness check for swap orbits. -/
+@[noinline] def swapCoverage (d : Instance) : Bool :=
+  (Array.range d.x.size).all (fun i =>
+    (Array.range d.z.size).all (fun j =>
+      let o := orbit "swap" i j
+      !partialFrame d o || d.items.any (fun q => samePairSet q o)))
+
+/-- Retains fast format/exactness validation and exposes swap completeness to the proof. -/
+@[noinline] def validateItems (d : Instance) (kind : String) : Bool :=
+  validateItemsFast d kind && d.items.all (partialFrame d) &&
+    (kind != "swap" || swapCoverage d)
+
 abbrev rank128 := geCount
 
 structure SearchState where
@@ -69,24 +85,21 @@ structure SearchState where
 @[noinline] def cov (d : Instance) (q c k : Nat) : Bool :=
   d.items[q]!.foldl (fun a p => a != (bit d.x[p.1]! c && bit d.z[p.2]! k)) false
 
-@[noinline] def rankLeaf (d : Instance) (s : SearchState) : Bool := Id.run do
-  let mut xs := Array.replicate d.x.size false
-  let mut zs := Array.replicate d.z.size false
-  for q in s.live do
-    for (i,j) in d.items[q]! do
-      xs := xs.set! i true
-      zs := zs.set! j true
-  let xr := (Array.range d.x.size).filterMap (fun i => if xs[i]! then some d.x[i]! else none)
-  let zr := (Array.range d.z.size).filterMap (fun i => if zs[i]! then some d.z[i]! else none)
-  return rank128 xr < s.need || rank128 zr < s.need
+/-- Duplicate rows do not affect the span; keeping them makes containment explicit. -/
+def liveXRows (d : Instance) (s : SearchState) : Array Nat :=
+  s.live.flatMap fun q => d.items[q]!.map fun p => d.x[p.1]!
+def liveZRows (d : Instance) (s : SearchState) : Array Nat :=
+  s.live.flatMap fun q => d.items[q]!.map fun p => d.z[p.2]!
+
+@[noinline] def rankLeaf (d : Instance) (s : SearchState) : Bool :=
+  geCount (liveXRows d s) < s.need || geCount (liveZRows d s) < s.need
 
 @[noinline] def childState (d : Instance) (s : SearchState) (q : Nat)
     (done : Array Nat) : SearchState := Id.run do
   let item := d.items[q]!
-  let mut r := s.residual
-  for (i,j) in item do
-    for c in [:128] do
-      if bit d.x[i]! c then r := r.set! c (r[c]! ^^^ d.z[j]!)
+  let r := (Array.range 128).map fun c =>
+    item.foldl (fun acc p => if bit d.x[p.1]! c then acc ^^^ d.z[p.2]! else acc)
+      s.residual[c]!
   let live := s.live.filter fun a => a != q && !done.contains a &&
     d.items[a]!.all (fun p => item.all fun t =>
       p.1 != t.1 && p.2 != t.2 && !gram d p.1 t.2 && !gram d t.1 p.2)
