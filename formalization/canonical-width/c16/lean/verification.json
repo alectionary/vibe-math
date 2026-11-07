@@ -93,5 +93,31 @@
       "adj_spec": "standard plus its native_decide axiom"
     },
     "not_covered": "the remark that every linear map preserving both pools induces a graph automorphism (immediate, not formalized)"
+  },
+  "swap_certificate": {
+    "model": "Grok 4.7",
+    "generator": "gen_swap_cert.py",
+    "files": ["CertRun.lean", "SwapCert.lean", "CertValue.lean", "CertItems.lean", "CertCheckRun.lean", "CertSound.lean", "CertCheck.lean"],
+    "lake_build": "lake build; exit 0; Build completed successfully (3800 jobs). Warnings only, 0 errors. No sorry.",
+    "native_decide": {
+      "swap_items_ok": "true (orbit table matches the pools)",
+      "swap_check_ok": "true (swap.cert.gz accepted; CertCheckRun about 532s inside that build)"
+    },
+    "proved": [
+      "par128 equals the F2 dot product, so poolG agrees with PoolBridge.G (G_bool)",
+      "binary Gaussian elimination pivot count bounds Matrix.rank (matrixRank_le_geCount)",
+      "IsPairFrame implies C16Frames.IsFrame (isPairFrame_isFrame)",
+      "a swap-invariant pair set has equal vertex sets, hence is fixed in the sense of fixed_swap_iff (swap_image_iff_vertex)"
+    ],
+    "not_proved": "no_swap_frame. Certificate acceptance is a separate Bool fact. The search invariant that acceptance excludes every swap-invariant frame is not finished, so there is no #print axioms no_swap_frame output.",
+    "axioms": {
+      "isPairFrame_isFrame": "propext, Classical.choice, Quot.sound",
+      "swap_image_iff_vertex": "propext, Classical.choice, Quot.sound",
+      "matrixRank_le_geCount": "propext, Classical.choice, Quot.sound",
+      "G_bool": "propext, Classical.choice, Quot.sound",
+      "swap_items_ok": "propext, Quot.sound, swap_items_ok._native.native_decide.ax_1_1",
+      "swap_check_ok": "propext, Classical.choice, Quot.sound, swap_check_ok._native.native_decide.ax_1_1"
+    },
+    "toolchain_note": "On leanprover/lean4:v4.36.0-rc1, native_decide adds a per-declaration axiom named ._native.native_decide.ax_1_1. It does not use Lean.ofReduceBool; the same mechanism is what #print axioms reports for Aut.lean on this toolchain."
   }
 }

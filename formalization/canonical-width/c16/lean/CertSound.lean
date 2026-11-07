@@ -308,13 +308,13 @@ lemma row_mem_span_fold {n : Nat} (rows : List Nat) (pivs : Array Nat)
     simpa [List.foldl] using ih (geStep pivs r) (done ++ [r]) hdone' x hx'
 
 lemma rows_mem_geSpan {n : Nat} (rows : Array Nat) :
-    ∀ i : Fin rows.size, toV n (rows.get i) ∈ tailSpan n (rows.foldl geStep #[]) 0 := by
+    ∀ i : Fin rows.size, toV n rows[i] ∈ tailSpan n (rows.foldl geStep #[]) 0 := by
   intro i
-  have h := row_mem_span_fold (n := n) rows.toList #[] [] (by simp) (rows.get i)
-  have : rows.get i ∈ rows.toList := by
-    simpa using List.get_mem rows.toList i
-  have := h this
-  simpa [Array.foldl_toList] using this
+  have hmem : rows[i] ∈ rows.toList := by
+    simpa [Array.getElem_toList] using
+      List.get_mem rows.toList ⟨i.1, by simpa [Array.length_toList] using i.isLt⟩
+  have h := row_mem_span_fold (n := n) rows.toList #[] [] (by simp) rows[i] hmem
+  simpa [Array.foldl_toList] using h
 
 lemma finrank_tail_le (n : Nat) (pivs : Array Nat) :
     Module.finrank (ZMod 2) (tailSpan n pivs 0) ≤ pivs.size := by
@@ -331,7 +331,7 @@ lemma finrank_tail_le (n : Nat) (pivs : Array Nat) :
   exact (finrank_span_le_card (s := S)).trans hcard
 
 theorem matrixRank_le_geCount {n : Nat} (rows : Array Nat) :
-    (Matrix.of fun i : Fin rows.size => fun j : Fin n => toV n (rows.get i) j).rank ≤
+    (Matrix.of fun i : Fin rows.size => fun j : Fin n => toV n rows[i] j).rank ≤
       geCount rows := by
   rw [Matrix.rank_eq_finrank_span_row, geCount_foldl]
   refine (Submodule.finrank_mono ?_).trans (finrank_tail_le n (rows.foldl geStep #[]))
