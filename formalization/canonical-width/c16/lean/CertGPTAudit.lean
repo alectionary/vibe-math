@@ -1,5 +1,6 @@
-/- Axiom audit of proved components. The absent no_swap_frame is NOT substituted
-   by any conditional theorem in this audit. -/
+/- Axiom audit of proved components and the unconditional target theorem. -/
+import CertGPTNoSwap
+import CertGPTVertex
 import CertGPTSound
 import CertGPTFrameCheck
 import CertGPTRank
@@ -19,3 +20,10 @@ import CertGPTRank
 #print axioms C16Frames.CertGPT.partialFrame_complete
 #print axioms C16Frames.CertGPT.gram_bool
 #print axioms C16Frames.CertGPT.matrixRank_le_geCount
+
+#print axioms C16Frames.CertGPT.completionRulesSound
+#print axioms C16Frames.CertGPT.no_swap_frame_of_check
+#print axioms C16Frames.CertGPT.no_swap_frame
+
+#print axioms C16Frames.CertGPT.isFrame_pairFrame
+#print axioms C16Frames.CertGPT.no_swap_vertex_frame_of_no_pair

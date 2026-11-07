@@ -1,87 +1,160 @@
 {
-  "scope": "Unsharded executable checker; no no_swap_frame theorem claimed",
-  "code_revision_note": "Initial native run before equivalent partialFrame all-expression and List.Nodup replacements; final regression is pending",
+  "scope": "Final proof-friendly executable definitions; unsharded swap and quarter certificates",
+  "toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "all_passed": true,
+  "test_count": 13,
+  "method": "Native Lean executable; each test exercises both flat-stream checking and the proved generic kernel adapter. Planted frame is independently checked by partialFrame and printed. Durations include concurrent build contention.",
   "runs": [
     {
-      "test": "swap",
-      "status": "passed",
-      "result": "ACCEPT",
-      "items": 7936,
-      "nodes": 69180,
-      "branches": 24864,
-      "rank_leaves": 12308,
-      "empty_leaves": 32008,
-      "children": 69179,
-      "generic_kernel_accepted": true
-    },
-    {
       "test": "test-quarter",
-      "status": "passed",
+      "expected": "ACCEPT",
       "result": "ACCEPT",
-      "items": 8940,
-      "nodes": 15088,
-      "branches": 1453,
-      "rank_leaves": 12830,
-      "empty_leaves": 805,
-      "children": 15087,
+      "exit_code": 0,
+      "seconds": 414.45230536400004,
       "generic_kernel_accepted": true,
-      "seconds": 137.40399193763733
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"ACCEPT\",\n  cursor := 51231,\n  stats := { branches := 1453, ranks := 12830, empty := 805, children := 15087 },\n  frame := #[] }\ngeneric kernel accepted: true\n"
     },
     {
-      "test": "test-planted",
-      "status": "running"
-    },
-    {
-      "test": "swap_check_ok native_decide",
-      "status": "running"
-    },
-    {
-      "test": "bad-1",
-      "exit": 1,
-      "seconds": 2.237210273742676,
+      "test": "certgpt-test-bad-1.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 4.920709535000242,
+      "generic_kernel_accepted": false,
+      "passed": true,
       "output": "items verified: 8940\n{ status := \"REJECT rank\",\n  cursor := 789,\n  stats := { branches := 13, ranks := 237, empty := 0, children := 250 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
     },
     {
-      "test": "bad-2",
-      "exit": 1,
-      "seconds": 0.22193408012390137,
+      "test": "certgpt-test-bad-2.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 0.2479891950001729,
+      "generic_kernel_accepted": false,
+      "passed": true,
       "output": "items verified: 8940\n{ status := \"REJECT coverage count\",\n  cursor := 0,\n  stats := { branches := 0, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
     },
     {
-      "test": "bad-3",
-      "exit": 1,
-      "seconds": 0.22714948654174805,
+      "test": "certgpt-test-bad-3.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 0.31860287700010304,
+      "generic_kernel_accepted": false,
+      "passed": true,
       "output": "items verified: 8940\n{ status := \"REJECT residual\",\n  cursor := 12,\n  stats := { branches := 2, ranks := 0, empty := 0, children := 2 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
     },
     {
-      "test": "drop-child-count",
-      "status": "passed",
-      "result": "REJECT",
-      "generic_kernel_accepted": false
+      "test": "test-planted",
+      "expected": "FRAME",
+      "exit_code": 0,
+      "seconds": 424.02083445000017,
+      "output": "items verified: 11904\n{ status := \"FRAME\",\n  cursor := 85004,\n  stats := { branches := 1765, ranks := 23398, empty := 844, children := 26007 },\n  frame := #[(720, 720), (724, 724), (728, 728), (732, 732), (722, 722), (726, 726), (730, 730), (734, 734), (721, 721),\n             (725, 725), (729, 729), (733, 733), (723, 723), (727, 727), (731, 731), (735, 735), (737, 737), (741, 741),\n             (745, 745), (749, 749), (755, 755), (759, 759), (763, 763), (767, 767), (800, 800), (804, 804), (808, 808),\n             (812, 812), (752, 752), (756, 756), (760, 760), (764, 764), (738, 738), (742, 742), (746, 746), (750, 750),\n             (784, 784), (788, 788), (792, 792), (796, 796), (769, 769), (773, 773), (777, 777), (781, 781), (817, 817),\n             (821, 821), (825, 825), (829, 829), (803, 803), (807, 807), (811, 811), (815, 815), (819, 819), (823, 823),\n             (827, 827), (831, 831), (739, 739), (743, 743), (747, 747), (751, 751), (768, 768), (772, 772), (776, 776),\n             (780, 780), (753, 753), (757, 757), (761, 761), (765, 765), (787, 787), (791, 791), (795, 795), (799, 799),\n             (771, 771), (775, 775), (779, 779), (783, 783), (818, 818), (822, 822), (826, 826), (830, 830), (816, 816),\n             (820, 820), (824, 824), (828, 828), (832, 832), (836, 836), (840, 840), (844, 844), (770, 770), (774, 774),\n             (778, 778), (782, 782), (801, 801), (805, 805), (809, 809), (813, 813), (835, 835), (839, 839), (843, 843),\n             (847, 847), (786, 786), (790, 790), (794, 794), (798, 798), (785, 785), (789, 789), (793, 793), (797, 797),\n             (736, 736), (740, 740), (744, 744), (748, 748), (754, 754), (758, 758), (762, 762), (766, 766), (834, 834),\n             (838, 838), (842, 842), (846, 846), (833, 833), (837, 837), (841, 841), (845, 845), (802, 802), (806, 806),\n             (810, 810), (814, 814)] }\ngeneric kernel accepted: false\n",
+      "result": "FRAME",
+      "generic_kernel_accepted": false,
+      "passed": true
     },
     {
-      "test": "entry-out-of-range",
-      "status": "passed",
-      "result": "REJECT",
-      "generic_kernel_accepted": false
+      "test": "swap",
+      "expected": "ACCEPT",
+      "exit_code": 0,
+      "seconds": 405.9205028379997,
+      "output": "items verified: 7936\n{ status := \"ACCEPT\",\n  cursor := 346146,\n  stats := { branches := 24864, ranks := 12308, empty := 32008, children := 69179 },\n  frame := #[] }\ngeneric kernel accepted: true\n",
+      "result": "ACCEPT",
+      "generic_kernel_accepted": true,
+      "passed": true
     },
     {
-      "test": "branch-to-rank",
-      "status": "passed",
+      "test": "certgpt-mutation-branch-to-empty.input",
       "result": "REJECT",
-      "generic_kernel_accepted": false
+      "exit_code": 1,
+      "seconds": 0.26284872500036727,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT empty\",\n  cursor := 0,\n  stats := { branches := 0, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
     },
     {
-      "test": "item-out-of-range",
-      "status": "passed",
+      "test": "certgpt-mutation-branch-to-rank.input",
       "result": "REJECT",
-      "generic_kernel_accepted": false
+      "exit_code": 1,
+      "seconds": 0.6739658739998049,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT rank\",\n  cursor := 0,\n  stats := { branches := 0, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
     },
     {
-      "test": "branch-to-empty",
-      "status": "passed",
+      "test": "certgpt-mutation-drop-child-count.input",
       "result": "REJECT",
-      "generic_kernel_accepted": false
+      "exit_code": 1,
+      "seconds": 0.23267450699995607,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT coverage count\",\n  cursor := 0,\n  stats := { branches := 0, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "certgpt-mutation-drop-child-record.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 0.24588816499999666,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT child coverage\",\n  cursor := 4,\n  stats := { branches := 1, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "certgpt-mutation-entry-out-of-range.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 0.24348721699971065,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT residual\",\n  cursor := 0,\n  stats := { branches := 0, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "certgpt-mutation-item-out-of-range.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 0.25031227999988914,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT child coverage\",\n  cursor := 4,\n  stats := { branches := 1, ranks := 0, empty := 0, children := 0 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
+    },
+    {
+      "test": "certgpt-mutation-rank-to-empty.input",
+      "result": "REJECT",
+      "exit_code": 1,
+      "seconds": 0.2920170020001933,
+      "generic_kernel_accepted": false,
+      "passed": true,
+      "output": "items verified: 8940\n{ status := \"REJECT residual\",\n  cursor := 12,\n  stats := { branches := 2, ranks := 0, empty := 0, children := 2 },\n  frame := #[] }\ngeneric kernel accepted: false\n"
     }
-  ]
+  ],
+  "proof_evaluations": {
+    "swap_check_ok": {
+      "status": "passed",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "swap_check_ok._native.native_decide.ax_1_1"
+      ]
+    },
+    "swap_pools_ok": {
+      "status": "passed",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "swap_pools_ok._native.native_decide.ax_1_1"
+      ]
+    }
+  },
+  "source_sha256": {
+    "CertGPTBits.lean": "01e2a49da80eff648173bbb610210f02ca20efa39499fa6ce6e99f11e1a0d85e",
+    "CertGPTKernel.lean": "5fcbc99362c9a0d9d3d1e16636fca54d462f3bda4bc0d0f67aa12b8aef08503b",
+    "CertGPTCheck.lean": "d475f87ffa0bec2cdf00bf3cc3ff1cecddebaa196c2c8f79fc9f3082a8cb4a5c",
+    "CertGPTData.lean": "827b67a9e83de43879919e0df497686fe0610932194a0617f702718d4e481576",
+    "CertGPTTest.lean": "967e1a96cfc00baaacbf419810a243642be378f934521e67e6e666345e2ee10d",
+    "CertGPTGen.py": "e1b0deb5a276e7f3ef4c155a1b75ed51347d8615d3e291942a7686fd6642e85b",
+    "CertGPTSwapData.lean": "9a783a2d37fd94404d45eeeadc30fc483abd933c7d010d19f791a3d026a45634",
+    "CertGPTRun.lean": "3a9599a9174e2584440d4744bd64e98febf271effbc8e2396f265cc2827ac92c",
+    "CertGPTPool.lean": "3995aaa38e0867ca2dff6098696609e0fb533de453f900d525911a950bb57eae"
+  }
 }
