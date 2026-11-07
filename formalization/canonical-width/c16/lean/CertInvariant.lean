@@ -102,4 +102,29 @@ lemma resBit_aset (res : Array Nat) (i v c k : Nat) (hc : c < res.size) :
       exact hi hc
     simp [hne]
 
+lemma foldN_step {α : Type} (n i : Nat) (acc : α) (f : Nat → α → α) :
+    foldN.go n f i acc = if i ≥ n then acc else foldN.go n f (i + 1) (f i acc) := by
+  rw [foldN.go.eq_1]
+
+private def xorF (xi zj : Nat) : Nat → Array Nat → Array Nat :=
+  fun c r => if xi.testBit c then aset r c ((r.getD c 0) ^^^ zj) else r
+
+lemma not_decide_xor_eq (a b : Bool) : (¬ decide ((a ^^ b) = a)) = b := by
+  cases a <;> cases b <;> decide
+
+lemma xor_step_bit (res : Array Nat) (xi zj c k t : Nat)
+    (hs : res.size = 128) (hc : c < 128) (hk : k < 128) (ht : t < 128) :
+    resBit (xorF xi zj t res) c k =
+      resBit res c k ^^ (decide (c = t) && xi.testBit t && zj.testBit k) := by
+  unfold xorF resBit aset
+  have htc : t < res.size := by omega
+  have hcc : c < res.size := by omega
+  by_cases hx : xi.testBit t = true <;> by_cases hct : c = t
+  · subst hct
+    cases ha : (res[c].testBit k) <;> cases hb : zj.testBit k <;>
+      simp [hx, htc, hcc, Array.getElem_set_self, Nat.testBit_xor, ha, hb]
+  · simp [hx, hct, htc, hcc, Array.getElem_set_ne htc hcc (Ne.symm hct)]
+  · simp [hx]
+  · simp [hx]
+
 end C16Frames.CertInvariant
