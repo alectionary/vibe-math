@@ -93,5 +93,30 @@
       "adj_spec": "standard plus its native_decide axiom"
     },
     "not_covered": "the remark that every linear map preserving both pools induces a graph automorphism (immediate, not formalized)"
+  },
+  "certGPT": {
+    "status": "partial; no_swap_frame not proved",
+    "base_commit": "7cdf520a98801f24bd5c9cbd33f0373be33549ff",
+    "branch": "independent/c16-lean-cert-chatgpt-20261107",
+    "focused_build": {
+      "command": "lake build CertGPTAudit",
+      "exit_code": 0,
+      "jobs": 3789,
+      "log": "CertGPTAudit.log"
+    },
+    "full_build": "pending",
+    "target_theorem": "absent",
+    "target_axioms": null,
+    "proved_component_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "readme": "CertGPTREADME.md",
+    "remaining": [
+      "concrete RulesSound instance",
+      "root table/frame correspondence",
+      "concrete pool/certificate root instantiation"
+    ]
   }
 }
