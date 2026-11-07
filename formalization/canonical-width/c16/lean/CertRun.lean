@@ -59,43 +59,54 @@ def itemKey (x z : Array Nat) (pairs : List (Nat × Nat)) : Option Nat :=
     else none
   | _ => none
 
-def genKeys (x z : Array Nat) : Array Nat := Id.run do
-  let mut a : Array Nat := #[]
-  for i in List.range 720 do
-    for j in List.range (i + 1) do
-      if keep x z i j then
-        a := a.push (j * 1024 + i)
-  return a.qsort (fun a b => decide (a < b))
+def genAcc (x z : Array Nat) (i j : Nat) (acc : Array Nat) : Array Nat :=
+  if i ≥ 720 then acc
+  else if j ≥ i + 1 then genAcc x z (i + 1) 0 acc
+  else
+    let acc := if keep x z i j then acc.push (j * 1024 + i) else acc
+    genAcc x z i (j + 1) acc
+termination_by (720 - i, (i + 1) - j)
 
-/-- The item table is exactly the set of swap orbits that are partial frames. -/
-def itemsMatch (x z : Array Nat) (t : Table) : Bool := Id.run do
-  if t.start.isEmpty then return false
-  let nI := t.start.size - 1
-  if t.start.getD 0 99 != 0 then return false
-  if t.ii.size != t.jj.size then return false
-  if t.start.getD nI 99 != t.ii.size then return false
-  let mut keys : Array Nat := Array.emptyWithCapacity nI
-  let mut cursor : Nat := 0
-  for q in List.range nI do
+def genKeys (x z : Array Nat) : Array Nat :=
+  (genAcc x z 0 0 #[]).qsort (fun a b => decide (a < b))
+
+def takePairs (t : Table) (a b : Nat) : List (Nat × Nat) :=
+  (List.range (b - a)).map fun k => (t.ii.getD (a + k) 0, t.jj.getD (a + k) 0)
+
+def foldKeys (x z : Array Nat) (t : Table) (nI q cursor : Nat) (keys : Array Nat) :
+    Option (Array Nat) :=
+  if q ≥ nI then
+    if cursor == t.ii.size then some keys else none
+  else
     let a := t.start.getD q 0
     let b := t.start.getD (q + 1) 0
-    if a != cursor || decide (b < a) then return false
-    let pairs := (List.range (b - a)).map fun k =>
-      (t.ii.getD (a + k) 0, t.jj.getD (a + k) 0)
-    match itemKey x z pairs with
-    | none => return false
-    | some k =>
-      keys := keys.push k
-      cursor := b
-  if cursor != t.ii.size then return false
-  let sorted := keys.qsort (fun a b => decide (a < b))
-  let mut prev : Nat := 0
-  let mut seen : Bool := false
-  for k in sorted do
-    if seen && decide (k ≤ prev) then return false
-    prev := k
-    seen := true
-  return sorted == genKeys x z
+    if a != cursor || decide (b < a) then none
+    else
+      match itemKey x z (takePairs t a b) with
+      | none => none
+      | some k => foldKeys x z t nI (q + 1) b (keys.push k)
+termination_by nI - q
+
+def strictSortedFrom (a : Array Nat) (i prev : Nat) (seen : Bool) : Bool :=
+  if i ≥ a.size then true
+  else
+    let k := a.getD i 0
+    if seen && decide (k ≤ prev) then false else strictSortedFrom a (i + 1) k true
+termination_by a.size - i
+
+/-- The item table is exactly the set of swap orbits that are partial frames. -/
+def itemsMatch (x z : Array Nat) (t : Table) : Bool :=
+  if t.start.isEmpty then false
+  else
+    let nI := t.start.size - 1
+    if t.start.getD 0 99 != 0 || t.ii.size != t.jj.size || t.start.getD nI 99 != t.ii.size then
+      false
+    else
+      match foldKeys x z t nI 0 0 #[] with
+      | none => false
+      | some keys =>
+        let sorted := keys.qsort (fun a b => decide (a < b))
+        strictSortedFrom sorted 0 0 false && sorted == genKeys x z
 
 def aset (a : Array Nat) (i v : Nat) : Array Nat :=
   if h : i < a.size then a.set i v h else a
