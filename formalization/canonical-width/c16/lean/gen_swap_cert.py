@@ -1,0 +1,223 @@
+#!/usr/bin/env python3
+"""Generate SwapCert.lean from the swap instance and certificate.
+
+Checks SHA-256 against certificates/MANIFEST.json, checks that the instance
+vectors equal pools/xcoords.txt and pools/zcoords.txt, and emits a flat token
+stream (hex bytecode) plus the item table. The Lean checker recomputes orbits
+and reruns the certificate; this script does not decide the theorem.
+"""
+import gzip
+import hashlib
+import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+C16 = HERE.parent
+CERT = C16 / "restricted-frames-20261031" / "certificates"
+POOLS = C16 / "pools"
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_inst(path: Path):
+    tok = path.read_text().split()
+    p = 0
+
+    def nxt():
+        nonlocal p
+        p += 1
+        return tok[p - 1]
+
+    nx, nz, ni, dim = (int(nxt()) for _ in range(4))
+
+    def vec():
+        lo, hi = nxt(), nxt()
+        return int(lo, 16) | (int(hi, 16) << 64)
+
+    dmask = vec()
+    xs = [vec() for _ in range(nx)]
+    zs = [vec() for _ in range(nz)]
+    items = []
+    for _ in range(ni):
+        k = int(nxt())
+        items.append([(int(nxt()), int(nxt())) for _ in range(k)])
+    if p != len(tok):
+        raise SystemExit(f"trailing tokens in {path}")
+    return nx, nz, ni, dim, dmask, xs, zs, items
+
+
+def pool_vecs(path: Path):
+    return [int(v, 16) for v in path.read_text().split()]
+
+
+def parse_cert(path: Path):
+    lines = gzip.open(path, "rt").read().splitlines()
+    if not lines or lines[-1] != "END COMPLETE":
+        raise SystemExit("certificate does not end with END COMPLETE")
+    head = lines[0].split()
+    if head[:2] != ["C16CERT", "1"]:
+        raise SystemExit(f"bad header {head[:2]}")
+    fields = dict(zip(head[2::2], map(int, head[3::2])))
+    body = [ln.split() for ln in lines[1:-1]]
+    pos = 0
+    tokens = []
+    stats = {"R": 0, "E": 0, "B": 0, "C": 0, "K": 0, "S": 0}
+
+    def need_line():
+        nonlocal pos
+        if pos >= len(body):
+            raise SystemExit("truncated certificate")
+        pos += 1
+        return body[pos - 1]
+
+    def parse_node():
+        rec = need_line()
+        kind = rec[0]
+        stats[kind] = stats.get(kind, 0) + 1
+        if kind == "R":
+            if rec != ["R"]:
+                raise SystemExit(f"bad R {rec}")
+            tokens.append(0)
+        elif kind == "E":
+            c, k = int(rec[1]), int(rec[2])
+            tokens.extend((1, c, k))
+        elif kind == "B":
+            c, k, m = int(rec[1]), int(rec[2]), int(rec[3])
+            tokens.extend((2, c, k, m))
+            for _ in range(m):
+                ch = need_line()
+                ck, q = ch[0], int(ch[1])
+                stats[ck] = stats.get(ck, 0) + 1
+                if ck == "C":
+                    tokens.extend((3, q))
+                    parse_node()
+                elif ck == "K":
+                    tokens.extend((4, q))
+                elif ck == "S":
+                    tokens.extend((5, q))
+                else:
+                    raise SystemExit(f"bad child {ch}")
+        elif kind == "F":
+            raise SystemExit("certificate contains a frame record")
+        else:
+            raise SystemExit(f"bad record {rec}")
+
+    parse_node()
+    if pos != len(body):
+        raise SystemExit(f"unconsumed records at {pos}")
+    return fields, tokens, stats
+
+
+def u16(buf: bytearray, n: int) -> None:
+    if not 0 <= n <= 0xFFFF:
+        raise SystemExit(f"value {n} does not fit in uint16")
+    buf.append(n & 0xFF)
+    buf.append((n >> 8) & 0xFF)
+
+
+def emit(items, tokens, meta: dict):
+    starts = [0]
+    ii = []
+    jj = []
+    for it in items:
+        for i, j in it:
+            ii.append(i)
+            jj.append(j)
+        starts.append(len(ii))
+    # item blob: nI, nPairs, (nI+1) starts, nPairs i's, nPairs j's, all uint16 LE
+    blob = bytearray()
+    u16(blob, len(items))
+    u16(blob, len(ii))
+    for n in starts:
+        u16(blob, n)
+    for n in ii:
+        u16(blob, n)
+    for n in jj:
+        u16(blob, n)
+    # certificate bytecode: R=0; E c k; B c k m; C/K/S then uint16 item id
+    raw = bytearray()
+    tpos = 0
+    while tpos < len(tokens):
+        tag = tokens[tpos]
+        if tag == 0:
+            raw.append(0)
+            tpos += 1
+        elif tag == 1:
+            raw.extend((1, tokens[tpos + 1], tokens[tpos + 2]))
+            tpos += 3
+        elif tag == 2:
+            raw.extend((2, tokens[tpos + 1], tokens[tpos + 2], tokens[tpos + 3]))
+            tpos += 4
+        elif tag in (3, 4, 5):
+            q = tokens[tpos + 1]
+            raw.append(tag)
+            u16(raw, q)
+            tpos += 2
+        else:
+            raise SystemExit(f"bad token {tag}")
+    def hex_lit(name: str, data: bytes) -> str:
+        return f'def {name} : String :=\n  "{data.hex()}"'
+    header = "\n".join([
+        "/- Generated by gen_swap_cert.py. Do not edit.",
+        f"   swap.inst sha256 {meta['inst']}",
+        f"   swap.cert.gz sha256 {meta['cert']}",
+        f"   pools/xcoords.txt sha256 {meta['x']}",
+        f"   pools/zcoords.txt sha256 {meta['z']}",
+        "   itemHex: uint16 LE nI, nPairs, (nI+1) starts, nPairs X indices, nPairs Z indices.",
+        "   certHex bytecode: 0 R; 1 c k E; 2 c k m B; 3/4/5 then uint16 LE item id for C/K/S.",
+        f"   nodes R {meta['stats']['R']} E {meta['stats']['E']} B {meta['stats']['B']}"
+        f" C {meta['stats']['C']} K {meta['stats']['K']} S {meta['stats']['S']}",
+        f"   header {meta['fields']}",
+        "-/",
+        "namespace C16Frames.SwapCert",
+        "",
+        hex_lit("itemHex", blob),
+        "",
+        hex_lit("certHex", raw),
+        "",
+        "end C16Frames.SwapCert",
+        "",
+    ])
+    (HERE / "SwapCert.lean").write_text(header)
+    print("wrote SwapCert.lean",
+          {"items": len(items), "pairs": len(ii), "itemBytes": len(blob),
+           "certBytes": len(raw), "tokens": len(tokens)})
+
+
+def main():
+    manifest = json.loads((CERT / "MANIFEST.json").read_text())
+    inst_key = "restricted-frames-20261031/certificates/swap.inst"
+    cert_key = "restricted-frames-20261031/certificates/swap.cert.gz"
+    inst_path = CERT / "swap.inst"
+    cert_path = CERT / "swap.cert.gz"
+    for key, path in ((inst_key, inst_path), (cert_key, cert_path)):
+        got = sha256(path)
+        exp = manifest[key]["sha256"]
+        if got != exp:
+            raise SystemExit(f"sha256 mismatch {path}: {got} != {exp}")
+    nx, nz, ni, dim, dmask, xs, zs, items = load_inst(inst_path)
+    px = pool_vecs(POOLS / "xcoords.txt")
+    pz = pool_vecs(POOLS / "zcoords.txt")
+    if xs != px or zs != pz:
+        raise SystemExit("instance vectors differ from pools/xcoords.txt or pools/zcoords.txt")
+    if not (nx == nz == 720 and dim == 128 and dmask == (1 << 128) - 1 and ni == len(items)):
+        raise SystemExit(f"unexpected instance shape {nx} {nz} {ni} {dim}")
+    fields, tokens, stats = parse_cert(cert_path)
+    if fields.get("items") != ni or fields.get("need") != 128 or fields.get("nshard") != 1:
+        raise SystemExit(f"unexpected certificate header {fields}")
+    if fields.get("live_sides") != 1 or fields.get("shard") != 0:
+        raise SystemExit(f"unexpected shard header {fields}")
+    emit(items, tokens, {
+        "inst": sha256(inst_path),
+        "cert": sha256(cert_path),
+        "x": sha256(POOLS / "xcoords.txt"),
+        "z": sha256(POOLS / "zcoords.txt"),
+        "stats": stats,
+        "fields": fields,
+    })
+
+
+if __name__ == "__main__":
+    main()
