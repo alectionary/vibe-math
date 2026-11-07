@@ -24,6 +24,15 @@ Gaussian elimination bounds matrix rank. `CertCheck.lean` defines `IsPairFrame`
 and proves it yields `C16Frames.IsFrame`, and that a swap-invariant pair set has
 equal vertex sets in the sense of `fixed_swap_iff`.
 
+`CertInvariant.lean` proves the first semantic layer used by the search invariant:
+the cover test is the `F₂` sum of pair contributions (`covers_true_iff`), the initial
+residual is the identity (`idRes_bit`), and one residual-row update flips the
+predicted bit (`xor_step_bit`). The fuel induction for `checkNode`/`checkKids` is
+not finished. A Bool-equality simproc in Lean `v4.36.0-rc1` rewrites goals of the
+form `a = b ^^ c` into `(decide (a = b) ^^ c) = true`, which blocked a direct
+statement of the residual-loop invariant; the next attempt states that invariant
+in `ZMod 2`.
+
 The theorem `no_swap_frame` is not proved. Acceptance of the certificate is a
 separate `Bool` fact. The search invariant — that acceptance rules out every
 swap-invariant frame — is not finished, so this directory does not yet contain
