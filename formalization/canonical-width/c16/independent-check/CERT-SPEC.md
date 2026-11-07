@@ -165,3 +165,10 @@ commands, a README (model and version, method, the item-generation counts, test 
 tests), and one JSON line per run:
 `{"class": ..., "files": [...], "result": "ACCEPT|REJECT|FRAME", "nodes": n, "rank_leaves": n,
 "empty_leaves": n, "seconds": t, "notes": ...}`.
+
+## Clarifications given during the check (issue #76)
+
+- 2026-11-07: `CERT-SPEC.md` controls; `SPEC.md` is used only for definitions and pools, and its
+  exhaustive-search deliverables are not part of this task. `S` records are intended only at the
+  declared shard depth. Any sufficient proof that the rank is `< need` (for example an upper bound
+  by `min(|X'|, |Z'|, rank of the x vectors, rank of the z vectors)`) satisfies the `R` rule.
