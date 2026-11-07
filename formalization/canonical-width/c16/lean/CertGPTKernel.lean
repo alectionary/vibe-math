@@ -69,7 +69,7 @@ structure RulesSound {State Item Entry Frame : Type}
   large_sound : ∀ s f q, Completes s f → Contains f q → rules.eligible s q = true →
     rules.tooLarge s q = true → False
   next_sound : ∀ s f done q, Completes s f → Contains f q → rules.eligible s q = true →
-    (∀ r, r ∈ done → ¬ Contains f r) → Completes (rules.next s done q) f
+    (∀ r, r ∈ done → ¬ Contains f r) → ∃ f', Completes (rules.next s done q) f'
 
 private theorem checkChildren_sound {State Item Entry Frame : Type}
     (rules : Rules State Item Entry) (Completes : State → Frame → Prop)
@@ -96,8 +96,8 @@ private theorem checkChildren_sound {State Item Entry Frame : Type}
       · cases child with
         | none => exact sound.large_sound s f q hf hq he checks.1
         | some t =>
-            exact run_sound (rules.next s done q) t f checks.1
-              (sound.next_sound s f done q hf hq he hd)
+            obtain ⟨f', hf'⟩ := sound.next_sound s f done q hf hq he hd
+            exact run_sound (rules.next s done q) t f' checks.1 hf'
       · apply ih (done ++ [q])
         · intro r hr
           rcases List.mem_append.mp hr with hr | hr

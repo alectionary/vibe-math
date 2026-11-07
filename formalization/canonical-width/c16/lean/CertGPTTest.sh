@@ -15,6 +15,7 @@ from pathlib import Path
 here,work,out=map(Path,sys.argv[1:]); spec=importlib.util.spec_from_file_location('gen',here/'CertGPTGen.py');g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
 certdir=here.parent/'restricted-frames-20261031/certificates'
 runs=[]
+out.write_text(json.dumps(dict(scope="Unsharded executable checks; NOT no_swap_frame",status="running",runs=runs),indent=2)+"\n")
 def check(name,path,kind,expected):
     start=time.monotonic();p=subprocess.run([str(work/'CertGPTTest'),str(path),kind],capture_output=True,text=True)
     text=p.stdout+p.stderr
@@ -40,6 +41,10 @@ v=t.copy();v[1]=128;cases['entry-out-of-range']=v
 v=t.copy();v[:4]=[0];cases['branch-to-rank']=v
 v=t.copy();v[5]=int(a[2]);cases['item-out-of-range']=v
 v=t.copy();v[0]=1;cases['branch-to-empty']=v
+v=t.copy();del v[4:6];cases['drop-child-record']=v
+i=0
+while t[i]!=0:i+={1:3,2:4,3:2,4:2,5:2,6:1}[t[i]]
+v=t.copy();v[i:i+1]=[1,0,0];cases['rank-to-empty']=v
 for name,v in cases.items():
     path=work/(name+'.input');path.write_text(' '.join(h+[str(len(v))]+list(map(str,v))));check(name,path,'quarter','REJECT')
 PY
