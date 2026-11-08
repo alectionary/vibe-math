@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-moment-clean-20261030T0241/formalization/canonical-width/c16/verify_common_profile_cut.py", line 64, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-moment-clean-20261030T0241/formalization/canonical-width/c16/verify_common_profile_cut.py", line 27, in main
+    ap=argparse.ArgumentParser();ap.add_argument('--bank',type=Path,required=True);ap.add_argument('--point',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);a=ap.parse_args();start=time.monotonic();d=json.loads(a.bank.read_text());assert d['point_sha256']==sha(a.point);assert d['cuts']
+                                                                                                                                                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

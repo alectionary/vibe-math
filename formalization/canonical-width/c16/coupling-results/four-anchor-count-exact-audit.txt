@@ -1,0 +1,90 @@
+Both four-anchor count-only extensions at point10 are exactly feasible.
+Independent receipts accept h5 anchors[512,517,432,437] and h8 anchors
+[512,520,432,440]. The earlier presolve-on infeasibility reports are false
+for these exact systems. No infeasibility ray or separating cut was accepted.
+
+The LP constraints are source-necessary. For an actual full frame, let m
+be the exact four-bit selection pattern of the fixed X anchors. Under the
+uniform sector/rotation average, lambda_m is its probability and
+y_(m,j)=Pr(pattern=m and physical opposite vector j is selected).
+The first11 rows fix total probability, four anchor means and six pair
+means. The next720 rows fix opposite-vector means, and the next2880 rows
+fix the four anchor/opposite joint means. All use factorONE: p_orbit,
+S_(t_j-t_i)[orbit_i,orbit_j] and T_(b-t_i)[orbit_i,j]. The factor16 from
+whole-orbit count features does not apply to these fixed-vector events.
+Independent literal32-action controls checked28,888 feature identities.
+
+For every pattern, only the selected anchors constrain evaluation bins.
+Every full opposite basis has one vector in each unit-signature owner bin
+and128-k vectors in the zero-evaluation pool. Multibit-signature vectors
+are ineligible. A bit0 imposes no condition on evaluation against that
+absent anchor. Thus the model relaxes absence/completion requirements; it
+does not silently require all four anchors to be selected.
+
+The zero-pool constraints are0<=y_(m,j)<=lambda_m and sum_zero y=(128-k)
+lambda_m. Owner-bin masses equal lambda_m; nonnegativity already implies
+each owner y<=lambda_m. Global upper bounds1 on all variables are redundant
+because sum lambda=1. All physical zero-pool rank inequalities are omitted.
+The count-only feasible set for a fixed nonzero pattern mass is a product
+of a uniform-cardinality polytope and owner simplices. Its exact signed
+support is the sum of the largest128-k zero-pool weights plus the maximum
+weight in every owner bin. Negative weights must be retained. Independent
+small exhaustive controls and96 literal source count-columns verified
+this formula and their exact embedding in the extension.
+
+Therefore a valid exact infeasibility certificate would be a genuine
+common-mask necessary obstruction, not an unsupported stronger condition.
+However the numerical statuses disagreed, and no ray was produced. For
+completeness, if E x=b, U x<=0 and x>=0, a Farkas combination with
+eta^T E+mu^T U>=0 and mu>=0 requires eta^T b>=0; a negative value would
+contradict feasibility. Upper-bound multipliers add their constant RHS.
+The feature part of such a ray can be used in either sign as a discovery
+direction, but fresh exact support pricing must determine its bound.
+Dropping the coefficient of the constant feature merely shifts that bound.
+This support step makes sign conventions and solver tolerances irrelevant
+to acceptance. Here there was no actual ray whose sign could be accepted.
+
+Independent reconstruction matched every stored matrix entry, variable and
+exact RHS. Treating the presolve-off floats as binary rationals showed
+911 and217 nonzero equalities, with maximum errors2.3891e-10 and2.2311e-10;
+all inequalities and variable bounds were exactly satisfied. Exact target
+total-cardinality, conditional-cardinality and physical-owner dependencies
+were zero. The solver candidates had dropped several strictly positive
+PQ targets smaller than the1e-9 feasibility tolerance. This supplies a
+concrete boundary phenomenon, although no claim is made about the precise
+internal HiGHS presolve branch that returned infeasible.
+
+The exact recovery fixes literal floating zeros and y=lambda values as a
+candidate face, then independently eliminates each physical vector's five
+Q/PQ equations. Pivot y variables become rational affine expressions in
+16 lambda variables and local free-y parameters. Remaining local
+consistency equations and the11 pattern/48 count equations form a small
+global system. No approximate row or bound is accepted.
+
+For h5, the first candidate face failed only at Z122,708,716. Releasing one
+zero variable in each block restored the strictly positive targets
+69271/1125899906842624,134493/562949953421312,
+6085/70368744177664. The resulting62-row system had38 parameters and
+exact rank38. Every one of10,686 rational variables,3,659 equalities and
+6,538 upper rows passed independent replay. Twelve pattern masses are
+positive. The largest change from the numerical candidate is
+21518879/45035996273704960, approximately4.78e-10.
+
+For h8, seven analogous zero variables were released at Z67,115,192,200,
+694,696,711. The64-row system had35 parameters and exact rank35. All
+10,630 rational variables,3,659 equalities and6,618 upper rows passed.
+Eleven pattern masses are positive. Both failed initial faces and all
+false-presolve logs remain preserved in separate immutable artifacts.
+
+Accepted certificates:
+  four-anchor-h5-count-exact-v2-witness10.json.gz
+  four-anchor-h5-count-exact-v2-independent.json
+  four-anchor-h8-count-exact-v3-witness10.json.gz
+  four-anchor-h8-count-exact-v3-independent.json
+Four fresh corruption controls reject a negative variable, changed mass,
+wrong point binding and wrong source binding.
+
+This closes only the count-only extension gate for these two quads at
+point10. It does not establish membership in the full-basis relaxation,
+because physical zero-pool independence was deliberately omitted. It does
+not establish a full source frame, a width answer or a cover reduction.

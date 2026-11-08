@@ -1,0 +1,169 @@
+{
+  "file": "C16Frames.lean",
+  "sha256": "697c0a2485f37b3be3821d58f1a31a557cb866b3140b0e2a05289053b2970241",
+  "toolchain": "leanprover/lean4:v4.36.0-rc1",
+  "mathlib_rev": "5f7b4198d22a9c82e1c698a379334fe128095c82",
+  "check": "lake env lean C16Frames.lean (from the Mathlib checkout); 0 errors, no sorry",
+  "axioms": {
+    "standard_only": true,
+    "note": "#print axioms for all public theorems reports only propext, Classical.choice, Quot.sound"
+  },
+  "declarations": [
+    "gram_one_iff_sum_outer",
+    "frame_of_perm_block",
+    "induced_matching_le_rank",
+    "induced_matching_le_dim",
+    "IsFrame",
+    "IsFrame.map",
+    "IsFrame.swap",
+    "fixed_swap_iff",
+    "fixed_half_iff",
+    "fixed_swapHalf_iff",
+    "exists_pair_of_residual_entry",
+    "first_member_unique",
+    "remaining_card_le_finrank",
+    "perpOf",
+    "evalAgainst",
+    "finrank_inf_perp_add",
+    "perfect_inf_perp"
+  ],
+  "not_formalized": [
+    "completeness of the weight-16 pool enumeration (every logical class of weight <= 17 is in the pools)",
+    "mu_XZ = 26 (input to the mixed reduction)",
+    "the exhaustive frame searches"
+  ],
+  "pool_bridge": {
+    "file": "Pools.lean",
+    "sha256": "bb00a8415568e2a9c5f9790d012a67e1771e7b89e00046687ff7eee0875c2365",
+    "data_file": "PoolData.lean",
+    "data_sha256": "0a7899a231fcd00259d2217cbdb207c6b0aec0074525c1dd9d5a30cec69e0901",
+    "data_generator": "gen_pool_data.py (records pools/xcoords.txt and pools/zcoords.txt SHA-256 in the PoolData.lean header)",
+    "check": "lean --root=lean -o Pools.olean Pools.lean with Mathlib 5f7b4198 on LEAN_PATH; 0 errors; ~19 min",
+    "axioms": {
+      "pool_matching_le_128": "standard only (propext, Classical.choice, Quot.sound)",
+      "X_rot, Z_rot, G_symm, G_rot, rotEquiv, tau8, frame_rot, frame_swap, fixed_sT8_iff": "standard plus native_decide auxiliary axioms (trusts the Lean compiler via Lean.ofReduceBool)"
+    }
+  },
+  "code_bridge": {
+    "file": "Code.lean",
+    "sha256": "8e2ae388e3ea458ed0f3348c0e493d33195c0d9c1877576ac827d7b981639fa9",
+    "data_file": "PhysData.lean",
+    "data_sha256": "cec355fc1fdab1d083f2ae5a8295c492b14931d0e6195face8c5a180bded48e7",
+    "data_generator": "gen_phys_data.py (records physical-pool-source.json SHA-256 in the header)",
+    "port_of": [
+      "verify_partial_frame.py (reconstruct_checks, shift)",
+      "audit_pools.py (exchange, canonical frame, coordinates)"
+    ],
+    "fingerprint_match_with_python": "hx, hz, canonical X/Z, physical X/Z pools identical",
+    "check": "0 errors, 9.5 min",
+    "axioms": "standard plus native_decide auxiliary axioms (Lean.ofReduceBool) for all 15 theorems"
+  },
+  "mixed_reduction": {
+    "file": "Mixed.lean",
+    "axioms": "standard only (propext, Classical.choice, Quot.sound)",
+    "hypothesis_not_proved_in_lean": "every operator of weight <= 17 has a trivial component (mu_XZ = 26, INDEPENDENT-ENUMERATION.md)"
+  },
+  "project_build": {
+    "command": "lake exe cache get && lake build",
+    "roots": [
+      "C16Frames",
+      "PoolData",
+      "Pools",
+      "PhysData",
+      "Code",
+      "Mixed",
+      "Aut"
+    ],
+    "date": "2026-11-02",
+    "result": "Build completed successfully (3790 jobs), 0 errors",
+    "times_s": {
+      "Pools": 675,
+      "Code": 345
+    },
+    "note": "Run with Mathlib built from source at the pinned rev (cache.mathlib.org unreachable from the build machine); set MATHLIB_NO_CACHE_ON_UPDATE=1 in that case."
+  },
+  "aut_theorem": {
+    "file": "Aut.lean",
+    "sha256": "eac49ad22258fd884ab4c0b586c350c97c191fab52ee8ded4a222679264a5b22",
+    "statement": "aut_classification: every permutation of the 1440 vertices preserving adjacency of the anticommutation graph is gmap b k = T^k after s^b (b : Bool, k : Fin 16); gmap_aut: all 32 are automorphisms; gmap_distinct: they are distinct; adj_spec: adjacency between sides equals PoolBridge.G",
+    "method": "colour refinement proved equivariant for an arbitrary finite graph (aut_of_certificate, no native_decide); concrete facts class_v0 (3 rounds: class of vertex 0 = its 32 images) and dM_id (vertex 0 individualised, 4 rounds: discrete) by native_decide",
+    "check": "lake env lean Aut.lean (Mathlib 5f7b4198); 0 errors, no sorry; 140 s",
+    "axioms": {
+      "aut_classification": "standard (propext, Classical.choice, Quot.sound) plus native_decide auxiliary axioms of class_v0, dM_id, gmap_ginv, ginv_gmap, gmap_eq, rot1_aut, swp_aut (trusts the Lean compiler via Lean.ofReduceBool)",
+      "adj_spec": "standard plus its native_decide axiom"
+    },
+    "not_covered": "the remark that every linear map preserving both pools induces a graph automorphism (immediate, not formalized)"
+  },
+  "certGPT": {
+    "status": "proved and verified",
+    "base_commit": "7cdf520a98801f24bd5c9cbd33f0373be33549ff",
+    "branch": "independent/c16-lean-cert-chatgpt-20261107",
+    "focused_build": {
+      "command": "lake build CertGPTAudit",
+      "exit_code": 0,
+      "jobs": 3789,
+      "log": "CertGPTAudit.log"
+    },
+    "full_build": {
+      "command": "lake build",
+      "exit_code": 0,
+      "jobs": 3833,
+      "log": "CertGPTBuild.log"
+    },
+    "target_theorem": "C16Frames.CertGPT.no_swap_frame",
+    "target_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound",
+      "C16Frames.CertGPT.swap_check_ok._native.native_decide.ax_1_1",
+      "C16Frames.CertGPT.swap_pools_ok._native.native_decide.ax_1_1"
+    ],
+    "proved_component_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "readme": "CertGPTREADME.md",
+    "remaining": [],
+    "target_check": {
+      "command": "LEAN_PATH=. lake env lean CertGPTNoSwap.lean",
+      "exit_code": 0,
+      "log": "CertGPTNoSwap.log"
+    },
+    "native_checks": [
+      "swap_check_ok",
+      "swap_pools_ok"
+    ],
+    "target_build": {
+      "command": "lake build CertGPTNoSwap",
+      "exit_code": 0,
+      "jobs": 3816
+    },
+    "tests": {
+      "file": "CertGPTResults.json",
+      "passed": 13,
+      "failed": 0
+    },
+    "source_sha256": {
+      "CertGPTAudit.lean": "d37d16ba0df8a1dbad42652bd541db10e5e6a56fe4dca79e577fdb95d393b172",
+      "CertGPTBits.lean": "01e2a49da80eff648173bbb610210f02ca20efa39499fa6ce6e99f11e1a0d85e",
+      "CertGPTCheck.lean": "d475f87ffa0bec2cdf00bf3cc3ff1cecddebaa196c2c8f79fc9f3082a8cb4a5c",
+      "CertGPTCompletion.lean": "c65c4c7ba834da542c28d9a964059c2aee73ea2979af632d90e9ca55dbebb60e",
+      "CertGPTData.lean": "827b67a9e83de43879919e0df497686fe0610932194a0617f702718d4e481576",
+      "CertGPTFrameCheck.lean": "fbb23fa5d7b1291b9a8eda3031eda3679d1142d6f1f36a1c766e1102c06a0e83",
+      "CertGPTFrames.lean": "38a0ac1b28a19ceb9d1611fc5c205488fbc887027e4f9a17e7a18c615cdb07f1",
+      "CertGPTItemTable.lean": "6417914b3635d3cb2ae05d2e52c99d34dbd8fd3d62b5df9815a0eae795968e29",
+      "CertGPTKernel.lean": "5fcbc99362c9a0d9d3d1e16636fca54d462f3bda4bc0d0f67aa12b8aef08503b",
+      "CertGPTNoSwap.lean": "117f55489b524e8a81144391f6dc86fcc11f8aa44c82da8ec95db27f8cefede2",
+      "CertGPTPool.lean": "3995aaa38e0867ca2dff6098696609e0fb533de453f900d525911a950bb57eae",
+      "CertGPTRank.lean": "d0181cdd232fb3b70c92dd4781f0b722ff762b34025187cf5e700355a7e27981",
+      "CertGPTRankLeaf.lean": "ac1a2f1308c142c489889c8e67e9eb67602f8e7bc1e13f41c9293311eb550c21",
+      "CertGPTRoot.lean": "7e8dec6084fce54d36a2c180c9f6b77a9038ede7a8d012d5a35633e320df232f",
+      "CertGPTRun.lean": "3a9599a9174e2584440d4744bd64e98febf271effbc8e2396f265cc2827ac92c",
+      "CertGPTSound.lean": "0809d972f195d914fc70cc17d8722dd09f466b70869eeaf2e60ee961d69cee7f",
+      "CertGPTSwapData.lean": "9a783a2d37fd94404d45eeeadc30fc483abd933c7d010d19f791a3d026a45634",
+      "CertGPTTest.lean": "967e1a96cfc00baaacbf419810a243642be378f934521e67e6e666345e2ee10d",
+      "CertGPTVertex.lean": "0aab465cca41b6ce13177a5661c8a8c183781152b989176a83e0788d5d76f099"
+    }
+  }
+}

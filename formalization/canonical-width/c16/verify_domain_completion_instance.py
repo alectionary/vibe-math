@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""Physical reconstruction of a domain-restricted full128-completion input."""
+from pathlib import Path
+import argparse,gzip,hashlib,json,time
+from verify_anchored_cover_chain import physical,canonical
+ROOT=Path(__file__).resolve().parent
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--instance',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();start=time.monotonic();d=json.loads(a.instance.read_text());bp=ROOT/d['base_metadata_c16_path'];assert sha(bp)==d['base_metadata_sha256'];base=json.loads(bp.read_text());rp=ROOT/d['base_replay_c16_path'];assert sha(rp)==d['base_replay_sha256'];receipt=json.loads(rp.read_text());assert receipt['status']=='PASS' and receipt['input_sha256']==base['input_sha256']==d['base_input_sha256'];domain_path=ROOT/d['domain_c16_path'];assert sha(domain_path)==d['domain_sha256'];R=set(map(tuple,json.loads(domain_path.read_text())['classes']));partial_path=ROOT/d['partial_metadata_c16_path'];assert sha(partial_path)==d['partial_metadata_sha256'];partial=json.loads(partial_path.read_text());pairs=d['asserted_partial_pairs'];assert pairs==partial['partial_pairs'];A,C,pos,sig=physical();assert R<=set(C)
+    for k,(i,j) in enumerate(pairs):
+        assert (i,j) in sig and canonical(i,j) in R
+        for ii,jj in pairs[:k]:assert i!=ii and j!=jj and not A[i]>>jj&1 and not A[ii]>>j&1
+    forbidden=[[-i-1,-j-721] for (i,j),signature in sig.items() if signature and canonical(i,j) not in R];units=[[i+1] for i,j in pairs]+[[j+721] for i,j in pairs];original=gzip.decompress((bp.parent/base['input_file']).read_bytes());assert hashlib.sha256(original).hexdigest()==base['input_sha256'];lines=original.decode().splitlines();header=lines.pop(0).split();extra=forbidden+units;raw=(f'p cnf {header[2]} {len(lines)+len(extra)}\n'+'\n'.join(lines)+'\n'+''.join(' '.join(map(str,c))+' 0\n' for c in extra)).encode();assert raw==gzip.decompress((a.instance.parent/d['input_file']).read_bytes()) and hashlib.sha256(raw).hexdigest()==d['input_sha256'];assert len(forbidden)==d['forbidden_nonzero_pairs'] and len(units)==d['mandatory_owner_units'];out={'status':'PASS','source_C16_answered':False,'source_full_frame_size':128,'asserted_pairs':len(pairs),'physical_pairings_rebuilt':518400,'domain_classes':len(R),'forbidden_pairs_checked':len(forbidden),'mandatory_owner_units_checked':len(units),'input_sha256':d['input_sha256'],'base_physical_replay_sha256':d['base_replay_sha256'],'elapsed_seconds':time.monotonic()-start,'scope':'Exact domain and mandatory-pair augmentation of a separately rebuilt full-source base. No satisfiability conclusion; regenerate the base replay separately.'};a.output.write_text(json.dumps(out,indent=2)+'\n');print(out,flush=True)
+if __name__=='__main__':main()

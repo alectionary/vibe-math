@@ -1,0 +1,43 @@
+{
+  "status": "PASS_SECOND_INDEPENDENT_COLORED_TINY_REPLAY",
+  "bank_sha256": "d01772e7d24d084ed185745bdbebf32aca6618e57d662e816f783f14591f260e",
+  "previous_receipt_sha256": "c66f8952876fe7854788ba74e05d00629f87a77aaac7e8bb98dad9690b4efcc2",
+  "consumer_sha256": "b7ec2e1cbcbc3b7affd48cc303245539f79548e6c08b44e51c4940f864702037",
+  "source_hashes": {
+    "exact_colored_matroid_push_relabel_draft.py": "70c298c08e8dae2cdaa8916173f676c69410daaa38546a9eb80ba1437e437f0b",
+    "colored_physical_domain_representation_draft.py": "045aefecef010cd6afda45c9e1cabb87d28a2eae44e75c0811d54071a03433e9",
+    "verify_colored_physical_endpoint_draft.py": "6450d15e37b66e646696859fa3bedc6a738568cb10ca90f0720fae535c23600e",
+    "colored_matroid_controls_draft.py": "1ee6e2d0eef89cc04b9f7a698114a050a066e7c728cca624263f635c07e6ba5e"
+  },
+  "cases": 558,
+  "outcomes": {
+    "EXACT_COLORED_BASE_MIXTURE": 374,
+    "EXACT_WEIGHTED_RANK_VIOLATION": 184
+  },
+  "literal_span_subset_checks": 49420,
+  "positive_basis_records_checked": 1511,
+  "collision_replayed": true,
+  "cap_states_replayed": 4,
+  "physical": {
+    "domains": 64,
+    "subset_rank_identities": 3040,
+    "full_physical_bases": 88
+  },
+  "mutants_rejected": [
+    "negative-weight",
+    "wrong-mass",
+    "wrong-achieved",
+    "wrong-color",
+    "wrong-cut-rank",
+    "wrong-cut-gap",
+    "empty-cut"
+  ],
+  "rank_method": "Explicit full binary span enumeration, no producer elimination or circuit cache",
+  "elapsed_seconds": 0.2559975419426337,
+  "priority": 19,
+  "not_repeated": [
+    "Producer invalid-input rejection calls",
+    "48 physical colored endpoints not separately stored in the frozen bank; independently repeated physical basis/proxy equality instead"
+  ],
+  "scope": "Finite tiny exact endpoints and physical-domain representation controls only. No universal runtime, maximum-defect, physical128 or C16 frame conclusion."
+}

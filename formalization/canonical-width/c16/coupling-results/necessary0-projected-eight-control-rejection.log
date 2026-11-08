@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_projected_profile_moment_rows.py", line 353, in <module>
+    main()
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_projected_profile_moment_rows.py", line 342, in main
+    'rejected_translation_mutations': translation_mutation_controls(compiled, rhs, rows, selections),
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_projected_profile_moment_rows.py", line 264, in translation_mutation_controls
+    check(rejected_by is not None, f'literal controls failed to detect translation mutation: {name}')
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/verify_projected_profile_moment_rows.py", line 38, in check
+    raise ValueError(message)
+ValueError: literal controls failed to detect translation mutation: wrong-phase-transpose

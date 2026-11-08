@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-canonical-checkpoint-b6ed9a0-replay/canonical-worker.py", line 89, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-canonical-checkpoint-b6ed9a0-replay/canonical-worker.py", line 34, in main
+    if a.worker:return worker(a.copy_root,a.worker,a.output_dir)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-canonical-checkpoint-b6ed9a0-replay/canonical-worker.py", line 26, in worker
+    try:runpy.run_path(str(root/'scripts'/script),run_name='__main__');completed=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/private/tmp/c16-canonical-checkpoint-b6ed9a0/scripts/validate_difficulty.py", line 14, in <module>
+    assert r['related_target_ids']==c['related_target_ids']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

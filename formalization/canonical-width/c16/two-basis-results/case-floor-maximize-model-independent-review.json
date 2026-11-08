@@ -1,0 +1,27 @@
+{
+  "status": "PASS_ZERO_MARGIN_OBJECTIVE_ONLY_COPY",
+  "source_C16_answered": false,
+  "reviewer_sha256": "e85e54649a54f1c5e6be8bb2828aad3de5210d2a183aac4a9c64da5fed163e40",
+  "homotopy_model_sha256": "9b38a479401a79926e36ca5b890c4de5c285e5169581a818bb36e0b081b8fb50",
+  "maximize_model_sha256": "a74f67d9a0905587c7bcb633aa17a83cd01d085cc828f7267a3fff8c5282e7eb",
+  "review_diff_sha256": "3d17dfcf5f76f9aede8c58f2d7b1b791e02e4dd2c646b6201e4935831595a380",
+  "homotopy_semantic_review_sha256": "eefdb457943437ea72edb686686fabe2298b8e4855a7f85dd050ab0d2fd2bbb5",
+  "complete_AST_identical_after_declared_objective_gate_metadata_and_docstring_changes": true,
+  "preserved_review_harness_failures": [
+    "attempt1 incorrectly treated out=clean(out) as a dictionary literal",
+    "attempt2 omitted declared docstring normalization"
+  ],
+  "enforced_margins": {
+    "PSD": 0,
+    "Boolean": 0,
+    "projected": 0
+  },
+  "objective": "maximize T[ch][ci,cj]",
+  "constraints_unchanged": true,
+  "exact_source_exclusion_criterion": "An independently replayed exact semantic upper bound strictly below the true selected-pair floor excludes that case, because every selected source frame lies in the zero-margin relaxation and satisfies even the weaker trial floor.",
+  "exact_feasible_endpoint_criterion": "A recovered point satisfying all listed exact source-necessary rows and the true floor is a barrier only for this finite case relaxation, not a physical source frame. A feasible value below the true floor does not establish this barrier.",
+  "numerical_status_is_proof": false,
+  "source_case_excluded": false,
+  "execution_endpoint_replayed": false,
+  "scope": "Mechanical source semantics review only. Canonical floating duals or numerical objective estimates require exact semantic reconstruction before any upper-bound or case-exclusion claim."
+}

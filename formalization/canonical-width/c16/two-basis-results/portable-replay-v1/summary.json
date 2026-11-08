@@ -1,0 +1,227 @@
+{
+  "status": "PORTABLE_REPLAY_REQUIRES_FOLLOWUP",
+  "closure_sha256": "769525ec7fae4c8032244108a21d7af51497c024a59851efffd35ec28cf6a2e9",
+  "source_data_files": 84,
+  "source_data_bytes": 41537475,
+  "results": [
+    {
+      "name": "whole-32x27",
+      "returncode": 0,
+      "elapsed_seconds": 6.977812250028364,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "audit_two_sided_full_basis_endpoint_portable.py",
+        "--report",
+        "two-basis-results/two-sided-full-basis-32x27-wolfe-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/whole-32x27.json"
+      ],
+      "receipt_sha256": "4ec33ad78afc28b0cab7fe91f19d6083d86b5ce7235a52d264b8dcb655e3d6d6",
+      "status": "PASS_BOUNDED_ENDPOINT_AUDIT_INCONCLUSIVE",
+      "path_rewrites": []
+    },
+    {
+      "name": "whole-27x32",
+      "returncode": 0,
+      "elapsed_seconds": 7.383260249975137,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "audit_two_sided_full_basis_endpoint_portable.py",
+        "--report",
+        "two-basis-results/two-sided-full-basis-27x32-wolfe-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/whole-27x32.json"
+      ],
+      "receipt_sha256": "209d0e27acb3a7fe85624ea1a714567923deeb734d543cba87f09a70eb534666",
+      "status": "PASS_BOUNDED_ENDPOINT_AUDIT_INCONCLUSIVE",
+      "path_rewrites": []
+    },
+    {
+      "name": "inner-initial-X",
+      "returncode": 0,
+      "elapsed_seconds": 0.6396468339953572,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "audit_two_basis_inner_initial_portable.py",
+        "--report",
+        "two-basis-results/two-basis-inner-32x27-X-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/inner-initial-X.json"
+      ],
+      "receipt_sha256": "1ead963040146fdcd331d0475c1f6f60207a6a087bbcafe54c7d15b3f4c23a9d",
+      "status": "PASS_REJECTED_NUMERIC_ENDPOINT_AND_EXACT_PHASE_I_START",
+      "path_rewrites": []
+    },
+    {
+      "name": "phase-I-start-X",
+      "returncode": 1,
+      "elapsed_seconds": 0.08011875010561198,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "verify_two_basis_phase_I_start_portable.py",
+        "--initial",
+        "two-basis-results/two-basis-inner-v2-32x27-X-point15.initial-exact.json",
+        "--reference",
+        "two-basis-results/two-basis-inner-32x27-X-point15-independent.json",
+        "--reference-report",
+        "two-basis-results/two-basis-inner-32x27-X-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/phase-I-start-X.json"
+      ]
+    },
+    {
+      "name": "five-pattern-X",
+      "returncode": 1,
+      "elapsed_seconds": 0.0832076669903472,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "verify_two_basis_five_pattern_repair_portable.py",
+        "--certificate",
+        "two-basis-results/two-basis-five-pattern-X-l2-point15.json.gz",
+        "--point",
+        "coupling-results/integer-witness15-rational.json.gz",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/five-pattern-X.json"
+      ]
+    },
+    {
+      "name": "fixed-lambda-X",
+      "returncode": 0,
+      "elapsed_seconds": 5.257970875012688,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "audit_two_basis_fixed_lambda_endpoint_portable.py",
+        "--report",
+        "two-basis-results/two-basis-fixed-lambda-wolfe-32x27-X-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/fixed-lambda-X.json"
+      ],
+      "receipt_sha256": "6c1c1301e032d02901edfe181a1368a6b98ed3118830d0f594dbf9a0ba49079e",
+      "status": "PASS_FULL_FIXED_LAMBDA_ENDPOINT_INCONCLUSIVE",
+      "path_rewrites": [
+        {
+          "recorded_path": "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/two-basis-fixed-lambda-wolfe-32x27-X-point15.columns.npz",
+          "current_relative_path": "two-basis-results/two-basis-fixed-lambda-wolfe-32x27-X-point15.columns.npz"
+        }
+      ]
+    },
+    {
+      "name": "inner-initial-Z",
+      "returncode": 0,
+      "elapsed_seconds": 0.6439585409825668,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "audit_two_basis_inner_initial_portable.py",
+        "--report",
+        "two-basis-results/two-basis-inner-32x27-Z-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/inner-initial-Z.json"
+      ],
+      "receipt_sha256": "a55b9a8b345b90dd17d6d5f6f617b3a128f729d52c0bd045f3c8eb6f89d8f366",
+      "status": "PASS_REJECTED_NUMERIC_ENDPOINT_AND_EXACT_PHASE_I_START",
+      "path_rewrites": []
+    },
+    {
+      "name": "phase-I-start-Z",
+      "returncode": 1,
+      "elapsed_seconds": 0.08009687496814877,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "verify_two_basis_phase_I_start_portable.py",
+        "--initial",
+        "two-basis-results/two-basis-inner-v2-32x27-Z-point15.initial-exact.json",
+        "--reference",
+        "two-basis-results/two-basis-inner-32x27-Z-point15-independent.json",
+        "--reference-report",
+        "two-basis-results/two-basis-inner-32x27-Z-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/phase-I-start-Z.json"
+      ]
+    },
+    {
+      "name": "five-pattern-Z",
+      "returncode": 1,
+      "elapsed_seconds": 0.1341200420865789,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "verify_two_basis_five_pattern_repair_portable.py",
+        "--certificate",
+        "two-basis-results/two-basis-five-pattern-Z-l2-point15.json.gz",
+        "--point",
+        "coupling-results/integer-witness15-rational.json.gz",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/five-pattern-Z.json"
+      ]
+    },
+    {
+      "name": "fixed-lambda-Z",
+      "returncode": 0,
+      "elapsed_seconds": 5.113377499976195,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "audit_two_basis_fixed_lambda_endpoint_portable.py",
+        "--report",
+        "two-basis-results/two-basis-fixed-lambda-wolfe-32x27-Z-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/fixed-lambda-Z.json"
+      ],
+      "receipt_sha256": "1ce1803d98b1aa540cd34f260f72b6239f7df832875db8ea8aea12f3dcebe3e7",
+      "status": "PASS_FULL_FIXED_LAMBDA_ENDPOINT_INCONCLUSIVE",
+      "path_rewrites": [
+        {
+          "recorded_path": "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/two-basis-fixed-lambda-wolfe-32x27-Z-point15.columns.npz",
+          "current_relative_path": "two-basis-results/two-basis-fixed-lambda-wolfe-32x27-Z-point15.columns.npz"
+        }
+      ]
+    },
+    {
+      "name": "batch-IPM",
+      "returncode": 1,
+      "elapsed_seconds": 0.24965804198291153,
+      "command": [
+        "/private/tmp/c16-venv/bin/python",
+        "-B",
+        "verify_two_basis_batch_ipm_portable.py",
+        "--report",
+        "two-basis-results/two-basis-batch-ipm-X-nearest-point15.json",
+        "--recorded-root",
+        "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16",
+        "--output",
+        "/private/tmp/c16-two-basis-portable-replay-20261030T1650/two-basis-results/portable-smoke-results/batch-IPM.json"
+      ]
+    }
+  ],
+  "elapsed_seconds": 13.835777042084374,
+  "source_C16_answered": false,
+  "scope": "Only explicit declared-prefix path resolution changes. Frozen reports and consumers are unmodified; all original hash and physical checks remain."
+}

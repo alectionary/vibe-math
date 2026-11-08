@@ -1,0 +1,212 @@
+{
+  "status": "PASS_INDIVIDUAL_COMPATIBILITY_ORACLE",
+  "source_C16_answered": false,
+  "new_literature_needed": false,
+  "new_literature_acquired": false,
+  "cover_unchanged": 405,
+  "full_source_anchors_excluded": 0,
+  "interface": {
+    "module": "conditional_profile_compatibility.py",
+    "constructor": "ConditionalProfileCompatibility(root=ROOT)",
+    "lookup": "oracle.table(counted_orbit, side, anchor_orbit, condition=1)",
+    "table_type": "Read-only numpy boolean array indexed by the full16-bit physical counted-X phase mask. False excludes; True means only unexcluded.",
+    "side": "S is selected/absent X[16*anchor_orbit], T is selected/absent Z[16*anchor_orbit].",
+    "manifest": "oracle.manifest() returns SHA256 hashes for every input accessed so far."
+  },
+  "eligible_sources": {
+    "algebraic-results/conditional-capacity/cohort.json": "f940c523f0df8cc437799ee3bd66c331aa899cc04f949aa8d4c1f1ed320b0be0",
+    "algebraic-results/conditional-capacity/independent.json": "ca6a018300dfde9b39b724117214d48bfbc66cc5994f3b980dbe85722e520186",
+    "algebraic-results/conditional-cross-capacity/cohort.json": "170877dfc41b78cdf106fb91a926af5274877199ae535c80bef997428b4690cc",
+    "algebraic-results/conditional-cross-capacity/independent.json": "a164ac0e9f54fd816d4f3fdaef342bb88109050932636a99f92ac781a672a169",
+    "algebraic-results/absent336-Z-profiles.json.gz": "40a05cad841af64b73ea879e98e1bd66cef8a3ccd18cf9d80ccd1aa9d1357ba1",
+    "algebraic-results/absent336-Z-profiles-independent.json": "10c71ab9391f2bd400a1c36075328e0284151d2ddf5c3456767bebdcb040155d",
+    "algebraic-results/conditional-hulls-all.json.gz": "0ca3d624263a6e621b72bc8a03e590be52d5420dbf926c61a2fbe037bb1715f3",
+    "algebraic-results/conditional-hulls-face1.json.gz": "e1fdbbd727919a6dc8f248d2f3f72df769fb9f912dae5429d7cd338d60fcdb4c",
+    "algebraic-results/conditional-hulls-absent.json.gz": "9df70cc8a14bb149690713d584856e4f77f2e37f0d9601d261d2e2b8b9c37c26"
+  },
+  "bank_roles": {
+    "conditional-capacity": "All45 selected-X-only quotient profiles, counted quotient X; conditional nogoods exclude after removing the fixed X anchor itself.",
+    "conditional-cross-capacity": "All45 selected-X-only quotient profiles, counted quotient Z; sector exchange turns T anchors into X anchors while preserving all indices and phases. Remove the possible unique counted partner before testing quotient nogoods.",
+    "absent336-Z-profiles": "Only the T anchor21 absence event is supported; test full P directly after index-preserving sector exchange, with original X336 deleted from opposite dictionary.",
+    "conditional-hulls-all and conditional-hulls-face1": "Point-specific attempted/exact convex decompositions, not forbidden-mask sources.",
+    "conditional-hulls-absent": "Separate point-specific absent-anchor decompositions against original unconditional restrictions; no additional forbidden masks."
+  },
+  "proof": {
+    "source_assumption": "A full128-by128 Gram-identity pair of physical pool bases. These necessities need not hold for arbitrary partial frames.",
+    "same_sector_selected": "Condition on Xa. The other127 selected X vectors modulo span(Xa) and the127 selected Z vectors annihilating Xa form dual bases. A zero-rank witness outside span(Xa, selected phase vectors), annihilating every eligible zero-profile Z, makes the remaining Z dual space too small. A private-owner witness outside span(Xa), annihilating all eligible Z with phase degree<=1, makes the whole127-dimensional opposite quotient pool rank deficient.",
+    "opposite_sector_selected": "Use the verified physical linear maps X_i\u2194Z_i, which preserve cross pairings and unchanged indices/phases. The original anchor Z_a becomes X_a; the counted X phase mask becomes Z. A Gram-identity basis allows at most one counted Z neighbor of X_a. Remove it; all remaining phases are in Xa-annihilator and belong to the127-dimensional quotient dual basis. The saved Z quotient witnesses lift through the dual physical basis. They annihilate Xa, and their zero-domain/private-owner contradiction is checked directly against original X vectors.",
+    "absence": "When Xa is absent, the original opposite dictionary omits Xa. The saved original128-bit deletion witness then has the usual zero-domain/private-owner contradiction. This transfers to original T anchor21 by the same sector map.",
+    "monotonicity": "A witnessed forbidden phase subset forbids every superset under that anchor event. The producer uses subset-zeta closure; the consumer instead evaluates literal contained-witness predicates.",
+    "selected_absent_combination": "For q(P)=Pr(anchor=1,P) and g(P)=Pr(P), selected incompatibility forces q=0 and absence incompatibility forces q=g. If both occur, g=0. For orbit32/T21 there are no such both-incompatible masks."
+  },
+  "verification": "Independent high-pivot physical span replay; direct annihilation tests after128-bit witness lifting; fresh source/sector/phase graph checks; all180 tables per orbit independently reconstructed;672 literal3-dimensional Gram-basis subset controls; zero/span/nonannihilation and table-corruption rejection controls.",
+  "results": [
+    {
+      "orbit": 27,
+      "counts": [
+        {
+          "side": "S",
+          "condition": 0,
+          "old_compatible": 213125,
+          "compatible": 213125,
+          "new_exclusions": 0
+        },
+        {
+          "side": "S",
+          "condition": 1,
+          "old_compatible": 210960,
+          "compatible": 127793,
+          "new_exclusions": 83167
+        },
+        {
+          "side": "T",
+          "condition": 0,
+          "old_compatible": 214425,
+          "compatible": 214425,
+          "new_exclusions": 0
+        },
+        {
+          "side": "T",
+          "condition": 1,
+          "old_compatible": 146574,
+          "compatible": 146574,
+          "new_exclusions": 0
+        }
+      ],
+      "bank_sha256": "dfb23c26d76778099cabcd5ad1768cc1592adca89495973fc4a4fcb0f6e875f6",
+      "independent_receipt_sha256": "72df3a2b26b96a5afbd32a46ba4c84bfc3290ae0b13eefd42af4f58a25a767f3",
+      "physical_witnesses_checked": {
+        "unconditional": 2136,
+        "same_sector_selected": 62937,
+        "opposite_sector_selected": 31874,
+        "opposite_sector_absent": 2136
+      },
+      "anchor21_classification": {
+        "orbit": 27,
+        "anchor": [
+          "T",
+          21
+        ],
+        "both_compatible": 2736,
+        "selected_only": 0,
+        "absent_only": 2029,
+        "both_incompatible": 0,
+        "selected_only_masks": [],
+        "both_incompatible_masks": []
+      }
+    },
+    {
+      "orbit": 32,
+      "counts": [
+        {
+          "side": "S",
+          "condition": 0,
+          "old_compatible": 205639,
+          "compatible": 205639,
+          "new_exclusions": 0
+        },
+        {
+          "side": "S",
+          "condition": 1,
+          "old_compatible": 203494,
+          "compatible": 112956,
+          "new_exclusions": 90538
+        },
+        {
+          "side": "T",
+          "condition": 0,
+          "old_compatible": 206865,
+          "compatible": 206808,
+          "new_exclusions": 57
+        },
+        {
+          "side": "T",
+          "condition": 1,
+          "old_compatible": 130723,
+          "compatible": 130723,
+          "new_exclusions": 0
+        }
+      ],
+      "bank_sha256": "568f8e5c907e02d2f371afd8a4068d2827968204ed0cf0f15f514a1ffc50ce2e",
+      "independent_receipt_sha256": "a5eebd92642e80d0a37ca43f814f4874dfc251647c5460b5b52b94f14ec605c0",
+      "physical_witnesses_checked": {
+        "unconditional": 2848,
+        "same_sector_selected": 150005,
+        "opposite_sector_selected": 35661,
+        "opposite_sector_absent": 2868
+      },
+      "anchor21_classification": {
+        "orbit": 32,
+        "anchor": [
+          "T",
+          21
+        ],
+        "both_compatible": 3255,
+        "selected_only": 57,
+        "absent_only": 1285,
+        "both_incompatible": 0,
+        "selected_only_masks": [
+          2075,
+          2099,
+          4179,
+          4401,
+          4402,
+          4408,
+          6186,
+          6193,
+          6225,
+          6417,
+          8536,
+          10275,
+          10282,
+          12314,
+          12344,
+          12547,
+          14353,
+          14384,
+          14401,
+          16696,
+          18536,
+          18768,
+          20760,
+          22568,
+          22785,
+          24835,
+          26696,
+          28706,
+          28768,
+          32826,
+          32874,
+          33043,
+          33136,
+          34841,
+          34857,
+          35105,
+          36889,
+          37154,
+          40986,
+          41249,
+          41312,
+          43011,
+          43017,
+          45136,
+          47168,
+          49187,
+          49256,
+          49474,
+          49488,
+          51210,
+          51233,
+          51240,
+          53281,
+          53512,
+          55360,
+          57602,
+          61448
+        ],
+        "both_incompatible_masks": []
+      }
+    }
+  ],
+  "scope": "Individual necessary anchor/mask compatibility only. No joint-anchor constraint, source frame, infeasibility certificate, source-resolution claim or new cover case is supplied."
+}

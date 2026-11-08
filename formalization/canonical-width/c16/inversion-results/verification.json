@@ -1,0 +1,158 @@
+{
+  "status": "PASS",
+  "canonical_target_answered": false,
+  "canonical_entry_delta": 0,
+  "eligible_target_delta": 0,
+  "completed_Lean_target_delta": 0,
+  "checks": {
+    "frozen_file_hashes": 57,
+    "normal_form": {
+      "status": "PASS",
+      "exact_coordinate_basis_checks": 16384,
+      "pool_determinants_checked": 1440,
+      "full_pool_pairings_checked": 518400,
+      "complete_cartesian_pool_equality": true,
+      "sector_exchange_basis_checks": 128,
+      "type_subsets_checked": 1024,
+      "partial88_rank_constraints": "PASS",
+      "field_operator_inverse_identity": "PASS",
+      "source_question_answered": false
+    },
+    "triangular_support_minor": 128,
+    "regenerated_source_quotient_CNFs": 3,
+    "residue_seven_pair_witness": "PASS",
+    "regenerated_small_Cartesian_CNFs": 2,
+    "test_pool_inverse_structure.py": {
+      "status": "PASS",
+      "negative_certificate_controls": [
+        {
+          "mutation": "coordinate",
+          "rejected": true
+        },
+        {
+          "mutation": "tensor_point",
+          "rejected": true
+        },
+        {
+          "mutation": "thin_functional",
+          "rejected": true
+        },
+        {
+          "mutation": "rank_profile",
+          "rejected": true
+        },
+        {
+          "mutation": "sector_exchange",
+          "rejected": true
+        }
+      ]
+    },
+    "verify_inversion_counterexamples.py": {
+      "status": "PASS",
+      "trace_product_counterexample": {
+        "dimension": 8,
+        "X": [
+          85,
+          13,
+          153,
+          187,
+          144,
+          14,
+          208,
+          5
+        ],
+        "Z": [
+          112,
+          11,
+          14,
+          16,
+          238,
+          17,
+          176,
+          102
+        ],
+        "maximum_common_factor_ruling_occupancy": 3,
+        "refuted_statement": "Every full binary trace-dual rank-one frame has half of its X basis in a common left or right factor line."
+      },
+      "cyclic_descent_counterexample": {
+        "period": 2,
+        "module_rank": 4,
+        "full_frame": [
+          1,
+          26,
+          4,
+          74,
+          242,
+          42,
+          248,
+          138
+        ],
+        "common_pool": [
+          1,
+          26,
+          4,
+          74,
+          242,
+          42,
+          248,
+          138,
+          2,
+          37,
+          8,
+          133,
+          241,
+          21,
+          244,
+          69
+        ],
+        "residue_pool": [
+          1,
+          2,
+          7,
+          11
+        ],
+        "residue_Gram": [
+          [
+            1,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        "maximum_residue_pairs": 2,
+        "refuted_statement": "A full primitive binary canonical frame in a free orthogonal cyclic common pool always descends to a full residue frame.",
+        "source_specific_tensor_hypotheses_verified": false
+      },
+      "canonical_C16_question_answered": false
+    },
+    "test_inverse_identity.py": {
+      "status": "PASS",
+      "literal_decomposition_cases": 19645,
+      "rank_minimal_identities": 31,
+      "scope": "all nonzero rank-one atoms in dimensions2 and3; no C16 conclusion"
+    },
+    "DRAT_rechecks": [
+      "quotient1",
+      "cartesian-descent-control",
+      "cartesian-maximal-control"
+    ]
+  }
+}

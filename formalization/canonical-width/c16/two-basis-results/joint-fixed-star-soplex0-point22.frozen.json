@@ -1,0 +1,44 @@
+{
+  "status": "FROZEN_SINGLE_EXACT_SOPLEX_TRIAL",
+  "command": [
+    "/private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex",
+    "--readmode=1",
+    "--solvemode=2",
+    "--int:syncmode=1",
+    "--int:checkmode=2",
+    "-f0",
+    "-o0",
+    "-s0",
+    "-t120",
+    "-X=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-fixed-star-soplex0-point22.primal",
+    "-Y=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-fixed-star-soplex0-point22.dual",
+    "--writebas=/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-fixed-star-soplex0-point22.bas",
+    "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/two-basis-results/joint-fixed-star-fraction-input-point22.lp"
+  ],
+  "input_manifest": "two-basis-results/joint-fixed-star-fraction-input-point22.json",
+  "input_manifest_sha256": "18033d145efaf4d2b857595f9427de5ca8d5b0967c59fa133e270e407d70593c",
+  "input_lp_sha256": "d70a8461616a6e6fbcbabbd5ecacd5b6bef02f12d01821ade70fd8d9d54af63c",
+  "semantic_sha256": "f2b487d41a0541edcf2e7570ff2b768fc1c293806a5743ad05826b9434223168",
+  "setup_receipt_sha256": "b80ecbb76fd0b4836197fd44b310c3f6d7e03dcce7f7f32a3191c65154a264c7",
+  "tiny_receipt_sha256": "1237217dd53c14aa23a895247e8e3474fc07b532d975fc317f7784018810c244",
+  "runner_sha256": "d3a8bd68bbf05caf8ac6d0d75e22ebfea697315d7d521e7984fa862957a3b8ca",
+  "runtime_files": {
+    "/private/tmp/c16-soplex-8.1.0-20261030/soplex/8.1.0/bin/soplex": "fa62759749a44617b1e1f2c38fbcfe5dc0cd658045f95c4d2f851f9577813732",
+    "/opt/homebrew/opt/gmp/lib/libgmp.10.dylib": "9e9030352a38d1397fd23dccec5397c260890d2a54e9164b579c96548a9fd531",
+    "/opt/homebrew/opt/gmp/lib/libgmpxx.4.dylib": "eaaec4b35d906f1e5a715a2d5ec013b543a61dd9e811bd2c33c760cdbe4679f7",
+    "/private/tmp/c16-soplex-8.1.0-20261030/mpfr/4.2.2/lib/libmpfr.6.dylib": "45cae5b7974f864fbfa614940265232f188ca726cf4b66b06b5eca322b7e52ab"
+  },
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "DYLD_LIBRARY_PATH": "/opt/homebrew/opt/gmp/lib:/private/tmp/c16-soplex-8.1.0-20261030/mpfr/4.2.2/lib"
+  },
+  "internal_seconds": 120,
+  "external_seconds": 150,
+  "soft_rss_bytes": 2147483648,
+  "priority": 19,
+  "no_automatic_retry": true,
+  "scope": "Exact feasibility of fixed-lambda listed-row allocation model; no artificial margin; not global target or source-frame feasibility"
+}

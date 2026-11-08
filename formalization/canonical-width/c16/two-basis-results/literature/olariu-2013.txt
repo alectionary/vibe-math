@@ -1,0 +1,231 @@
+
+===== PDF PAGE 1 =====
+University “Alexandru Ioan Cuza” of Ia¸ si
+Faculty of Computer Science
+T
+E
+C
+H
+N
+I
+C
+A
+L
+R
+E
+P
+O
+R
+T
+A new strategy for push-relabel
+algorithm framework for matroid
+optimization
+Emanuel Florentin Olariu
+TR 13-01, June 2013
+ISSN 1224-9327
+Universitatea “Alexandru Ioan Cuza” Ia¸ si
+Facultatea de Informatic˘ a
+Str. Berthelot 16, 6600-Ia¸ si, Romania
+Tel. +40-32-201090, email: bibl@infoiasi.ro
+
+===== PDF PAGE 2 =====
+Abstract
+In this paper we present a combinatorial push-relabel algorithm based on lowest level/bfs traversal
+for matroid optimization. In contrast with other known algorithms our procedure uses lowest level
+rule and needs no lexicographic order of the elements. Combined with a reduction of the number of
+active basis our strategy gives a time complexity of O(n6).
+Keywords: push-relabel algorithms, combinatorial optimization, matroid optimization.
+1 Introduction
+Push-relabel algorithms are often used in the submodular optimization especially for the submodular
+ﬂow problem ([3], [4]). This framework includes some interesting combinatorial optimization problems
+as polymatroid intersection, minimum cost problem, or minimizing submodular functions ([5], [8], [10]).
+Push-relabel algorithms are an alternative to the procedures using augmenting path technique (see [7] in
+the context of minimizing submodular functions).
+Suppose E is the ground-set of our structure (say, a matroid), the procedure uses a level function
+ϕ :E→{ 0, 1,...,n }. In the push relabel framework (see [6]) we perform a local search, and, if a progress
+(i.e. a push) is not possible, then the level of the current element is increased (this means a relabel). The
+algorithm will terminate when a speciﬁc condition (related to the optimization context or the level sets)
+holds.
+The algorithm maintains a level function ϕ : E→{ 0, 1,...,n } (where|E| = n), the level sets are
+Λk =ϕ−1(k), 0 ⩽k ⩽n. For a given set S⊆E, we denote
+ϕmin(S) = minu∈Sϕ(u)
+Let M = (E,I, r) be a matroid over E,I being its independence family and r its rank function(for
+an exhaustive introduction in matroid theory see [9]). We denote by B∈B the basis family, i.e., the
+collection of maximal inclusionwise independent sets. For a given basis B, and an element s∈E\B, we
+denote by C(B,s ) the unique circuit (a maximal non independent set of E) included in B∪{s}.
+Lemma 1. ([2]) Let M(E,B) a matroid, B∈B , s∈E\B, t∈C(B,s ), and B′ =B\{t}∪{ s}∈B . If
+ϕ(t) =ϕmin (C(B,s )), then, for each u∈S−\ (B′∪{t}), we have
+ϕmin (C(B′,u )) >ϕmin (C(B,u ))
+Proof. If t∈C(B,u ), then ϕmin(C(B,u )) ⩽ϕ(t); as u∈C(B,u )\C(B,s ), there exists a circuit
+C⊆ (C(B,u )∪C(B,u ))\{t},u∈C,
+by strong circuit elimination axiom - see [9]. C⊆ B′∪{u}, therefore we must have C = C(B′,u ), and
+ϕmin (C(B′,u )) > min{t,ϕ min (C(B,u ))} =ϕmin (C(B,u )).
+If t /∈C(B,u ), the C(B,u ) =C(B′,u ).
+Remark 1. Obviously ϕmin (C(B′,t )) =ϕmin (C(B,s )) as C(B′,t ) =C(B,s ).
+This lemma will be useful for proving that some condition are algorithm invariant.
+1
+
+===== PDF PAGE 3 =====
+2 Matroid polytope membership
+Let M = (E,I, r) be a matroid over E. The independence polytope of M, I(r), is the convex hull of the
+characteristic vectors from I, and the base polytope of M, B(r), is the convex hull of the characteristic
+vectors fromB. These polytopes have the following characterization (see [1]):
+I(r) ={x∈ RE+ : x(S) ⩽ r(S),∀S⊆E}
+B(r) ={x∈I(r) : x(E) = r(E)}
+Let g :E→ R+ a non-negative vector; we devise a push-relabel algorithm for the following problem:
+determine a member, x, of the independence polytope I(r) such that x ⩽ g and x(E) is maximum. We
+recall here a known result followed by its proof:
+Theorem 1. ([2]) We have
+max
+x⩽g,x∈I(r)
+x(E) = min
+S⊆E
+[r(S) + g(E\S)]
+Proof. If x∈I(r) and x(u) ⩽ g(u),∀u∈E, then
+x(E) = x(S) + x(E\S) ⩽ r(S) + g(E\S)
+therefore
+max
+x⩽g,x∈I(r)
+x(E) ⩽ min
+S⊆E
+[r(S) + g(E\S)]
+with equality if and only if
+x(S) = r(S), andx(E\S) = g(E\S),
+x being a feasible vector (x ⩽ g, componentwise).
+The proof is completed by describing an algorithm which ﬁnds a feasible vector x and a subset S⊆E
+satisfying the above criteria. The algorithm maintains a member x of B(r), i.e., a convex combinations
+of the characteristic vectors of bases of M:
+x =
+∑
+B∈B
+λB·χB
+Following notations from [2] we say that a basisB∈B is active ifλB > 0, a elementu∈E is g-larger
+(g-smaller or g-neutral) if g(u)> x(u) (g(u)< x(u) or g(u) = x(u)). We will say that a triple ( B,s,t )
+is active if B is an active basis, s /∈B, t∈C(B,s ), and ϕ(t) =ϕmin (C(B,s )) =ϕ(s)− 1.
+Throughout the execution the following two properties are invariant (see lemma 1):
+(L1) ϕ(u) = 0, for every g-smaller u∈E
+(L2) ϕmin(C(B,u )) >ϕ(u)− 1, for all active basis B and u∈E\B
+The algorithm ends when either (I): there is no g-larger elements or (II): there is a Λ k = ∅ and all
+g-larger elements are over k.
+Lemma 2. ([2]) If (I) holds, then g∈I(r); if (II) holds, then min{x, g} andS ={u∈E : ϕ(u) ⩽k+1}
+satisfy conditions (L1) and (L2) from above.
+2
+
+===== PDF PAGE 4 =====
+It is important to emphasize that, if there are g-larger elements and (II) does not hold, then we can
+always pick a g-larger element on a level ⩽ n− 1. On the current g-larger element s, the algorithm
+performs one of the following two operations: lift s which means an increment of ϕ(s) or push at s, if
+exists an active triple ( B,s,t ) which consists in a decrease of λB and an increase of λB′ by the same
+amount ∆ = min{g(s)− x(s),λ B} , where B′ =B\{t}∪{ s}. We call the last operation a push from s
+to t.
+There are two types of push at an element s: a neutralizing one if ∆ = g(s)− x(s) and a common
+one otherwise. A treat of an element s means push at s while it is possible; when it is no more possible
+to push, if s was not neutralized, lift s.
+After a push from s to t, λB becomes (λB− ∆), and λB′ becomes (λB′− ∆), therefore
+(a) if the push is neutralizing, the number of active basis can increase by one - if B remains active and
+B′ steps out as active;
+(b) if the push is a common one (∆ = λB) B steps out inactive, and B′ can become active.
+Remark 2. A neutralizing push can increase the number of active basis by at most one; on the other
+hand a common push maintains or decreases the number of active basis by one.
+After a push at s with ϕmin (C(B,s )) = ϕ(t) = ϕ(s)− 1, and t∈ C(B,s ), x(t) decreases by ∆,
+therefore there are three cases related to t:
+(a) t was g-larger and remains so;
+(b) t was g-smaller and remains so or becomes larger or neutral;
+(c) t was g-neutral and becomes larger.
+Remark 3. If the g-larger element s is chosen to be on the lowest level, then t cannot be g-larger, and
+if it is g-smaller, then ϕ(s) = 1 and ϕ(t) = 0.
+The time complexity of this procedure heavily depends on the strategy of choosing the element to
+be treated. Our approach uses a bfs like procedure starting with a g-larger element s from a minimum
+possible level. Such an element is chosen whenever the queue becomes empty and the stopping rules are
+not yet fulﬁlled.
+The execution of the algorithm can be decomposed in phases: a phase is the segment of execution
+between two liftings. Each phase consists of a variable number of waves: a wave starts when the queue
+is empty and a new g-larger element is added to it and will end when the queue becomes again empty or
+a lifting arises - whichever comes ﬁrst.
+Lemma 3. There are at most n2 phases.
+Proof. This is obvious as each element starts from the zero level and can reach, at most, the nth level,
+hence it supports at most n liftings.
+Lemma 4. Each phase consists of at most n waves.
+Proof. Each wave starts with a newg-larger element; we will prove that the starting element is neutralized
+during its wave and remains so through the entire phase except perhaps at the last wave - in this case
+the starting element supports a lifting. Hence the starting elements of distinct waves are diﬀerent.
+Suppose that Wi is the set of elements corresponding to the ith wave, 1 ⩽ i ⩽ q and si is the
+corresponding starting element. During this wave Algorithm 1 builds a bfs tree Ti (following parent
+vector, its root is si), all its interior vertices being neutralized elements - if i < q; obviously the leaves
+3
+
+===== PDF PAGE 5 =====
+Algorithm 1 A push-relabel algorithm
+Q← ∅;
+for u∈E do
+visited[u]← 0; parent[u]← 0;
+end for
+while (not(A) and not(B)) do
+let s be a g-larger, Θ-minimum element;Q.push(s); ⊿ whenQ becomes empty
+whileQ⁄ = ∅ do
+s =Q.pop(); visited[s]← 0;
+if (∃B an active basis, s /∈B∋t, Θ(t) = Θ(s)− 1) then ⊿ Θmin(B) = Θ(t)
+push(B,s,t );
+if (x(t)<g (t)) and visited[t] = 0 then ⊿ if t becomes g-larger
+Q.push(t); visited[t]← 1; parent[t] =s;
+end if
+else if g(s)>x (s) then ⊿ if s is still g-larger
+Θ(s) + +;Q← ∅;
+for u∈E do
+visited[u]← 0; parent[u]← 0;
+end for
+end if
+end while
+end while
+of this tree are all g-smaller or -neutral elements, hence si+1 /∈Wi (in particular ϕ(si) ⩽ϕ(si+1)). It is
+worthly to note that all these leaves are in Λ 0, as an element becomes g-neutral only if was -smaller - see
+Remark 2.
+Remark 4. In the last wave of a phase the element which remains g-larger after its treatment is a leave
+or a parent of a leave in the subsequent tree.
+Lemma 5. If each wave starts with n active basis, then every phase contains at most 2n3 common
+pushes.
+Proof. In a wave, after the ith neutralization the number of active basis is at most n +i, hence the
+number of common pushes during the ith treatment is less than n +i. It follows that the total number
+of common pushes within a wave is less than
+n + (n + 1) +... + (n +n− 1)< 2n2
+Our ﬁnal results concerns the total time complexity of the above algorithm.
+Theorem 2. Supposeγ is the time used for ﬁnding an active triple (B,s,t ) for a given s. If we reduce
+the number of the active basis, after each wave, to at most n, the time complexity of the algorithm is
+O(γn6).
+Proof. In a wave which starts with at most n active basis, at the end the number of active basis is ⩽ 2n.
+Using a classic result of Caratheodory (see [7], [10], [2]) we can reduce, in O(n3), this number again to
+4
+
+===== PDF PAGE 6 =====
+at most n. If we include this reduction in the corresponding wave, the complexity of each wave becomes
+O(γn3), hence a phase has a complexity of O(γn4) (see lemmata 4 and 5). Now, using lemma 3, we get
+a total time complexity of O(γn6).
+3 Conclusion
+In this paper we show that the lowest level rule for choosing the curent element to be treated gives a
+good strategy for the push-relabel algorithm framework. In this study we use this rule in combination
+with a bfs traversal, the pure lowest level rule would give a dfs traversal which, for now, does not give
+the same good results.
+The algorithm complexity is the same obtained in [2] using highest level rule, although in combination
+with active basis reduction this rule can give better results. As our rule oﬀers more interesting properties
+of the treated elements, a future work can include the adaptation of this rule to the submodular ﬂow
+algorithm.
+Acknowledgments We thank professor C. Croitoru for this useful remarks.
+References
+[1] Edmonds, J., Matroids and the greedy algorithm , Math. Progr. 1, pp. 127-136, 1971.
+[2] Frank, A., Mikl´ os, Z., Simple push-relabel algorithms for matroids and submodular ﬂows , Japan
+Journal of Industrial and Applied Mathematics, vol. 29, Issue 3, pp, 419-439, 2012
+[3] Fujishige, S., X. Zhang, New algorithms for the intersection problem of submodular systems , Japan
+Journal of Industrial and Applied Mathematics, vol.9, pp.369-382, 1992.
+[4] Fujishige, S., S. Iwata, Algorithms for Submodular Flows . IEICE TRANS. Inform. Syst., 2000.
+[5] Fujishige, S., Submodular Functions and Optimization, 2nd edition,Annals of Discrete Mathematics,
+vol. 58, Elsevier, 2005.
+[6] Goldberg, A. V., Tarjan, E. R., A new approach to the maximum-ﬂow problem , Jornal of the ACM,
+vol. 35, issue 4, pp. 921-940, 1988.
+[7] Iwata, S., L. Fleischer, S. Fujishige, A Combinatorial, Strongly Polynomial-Time Algorithm for
+Minimizing Submodular Functions, Journal of ACM, vol. 48, pp. 761-777, 2001.
+[8] Iwata, S., J. B. Orlin, A simple combinatorial algorithm for submodular function minimization ,
+Proceedings of the 20th Annual ACM-SIAM Symposium on Discrete Algorithms (SODA), 2009.
+[9] Oxley, J., G., Matroid Theory, Oxford University Press, 1992.
+[10] Schrijver, A., A combinatorial algorithm minimizing submodular functions in strongly polynomial
+time, Journal of Combinatorial Theory Series B, vol. 80, Issue 2, pp. 346-355, 2000.
+5

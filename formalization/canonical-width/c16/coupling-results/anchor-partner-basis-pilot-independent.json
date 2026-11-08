@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "bank_sha256": "7a0ae1cf178f4741a7ba0a29494345d1f87f42aebb4fde604424647c60302960",
+  "frozen_sha256": "643efb6175af84e9df3f0e58e97e1121c080779f74599f9186ce4db0281cf207",
+  "consumer_sha256": "12916cbff440e080ec240bd41f54a0fc5b54b3c478280586fd8f4c901c712d9f",
+  "source_hashes": {
+    "coupling-results/full-partner-projection-wolfe-strengthen-witness2.json": "01ccca8c4457192ed82923faff6856cf30f0f5a2d382a5fdb67c4bdbe990762a",
+    "full_partner_anchor_basis_oracle.py": "891bdfa89ca56d49785436232df3c66aa8f8e0a060e2d63b20fb4f2c260e6aac",
+    "full_partner_basis_oracle.py": "0b2093c783ba71a670a74bec27cc3d90a9409057edd40905e2c6af5cd87e8a24",
+    "full_partner_projection_features.py": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977"
+  },
+  "dependencies": {
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "verify_partial_frame.py": "169b253e660ebc4111a7afdec2efd6a666f7811269816ac5cf2832e76f91e16f",
+    "audit_pools.py": "376794bbc25144a4d0247bc4fd5d64ab83cf3d2c64d2249471f5d5f043dd028b",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d",
+    "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559"
+  },
+  "source_branch_domains_checked": 330,
+  "source_exact_support_queries_checked": 990,
+  "feasible_support_queries": 675,
+  "strictly_negative_source_full128_basis_controls": 225,
+  "prefix_rank_checks": 204789,
+  "corrupt_controls_rejected": 2,
+  "domain_status_counts": {
+    "ANCHORED_FULL_PARTNER_BASIS_DOMAIN": 225,
+    "EXCLUDED_SELECTED_MULTIBIT_ANCHOR": 105
+  },
+  "tiny_controls": {
+    "literal_exhaustive_cases": 9216,
+    "strictly_negative_full_basis_cases": 619,
+    "selected_absent_max_equals_unconditioned": 4608,
+    "statuses": {
+      "ANCHORED_FULL_PARTNER_BASIS_DOMAIN": 619,
+      "EXCLUDED_SELECTED_MULTIBIT_ANCHOR": 154,
+      "EXCLUDED_ANCHOR_DEFICIENT_ZERO_POOL": 41,
+      "EXCLUDED_DEPENDENT_SELECTED_X": 252,
+      "EXCLUDED_ANCHOR_EMPTY_OWNER_BIN": 104,
+      "EXCLUDED_DEFICIENT_ZERO_POOL": 370,
+      "EXCLUDED_EMPTY_REQUIRED_OWNER": 756,
+      "EXCLUDED_SELECTED_ZERO_VECTOR": 8
+    },
+    "float_rejected": true
+  },
+  "feature_controls": {
+    "literal32_action_extra_feature_equalities": 5896,
+    "extra_features": 737,
+    "total_with_old_features": 1512,
+    "extra_feature_normalization": "p_a; T_t[a,32]; S_b[a,j], without16 multiplier"
+  },
+  "elapsed_seconds": 1.7751414169324562,
+  "proof": "Conditioning selected zero anchors contracts their physical vector into the zero matroid. Prefix-rank increments rank(F+prefix)-rank(F) bound the remaining full rank, including signed final weight. Selected unit anchors fix their owner bin; absent anchors delete. Unit evaluation vectors prove independence from the zero basis.",
+  "scope": "Exact one-sided fullbasis support for the frozen source queries and literal small examples. Fixed phase anchor breaks291 representative reduction; no4597-mask support cut or projection solve is claimed."
+}

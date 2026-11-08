@@ -1,0 +1,28 @@
+{
+  "status": "FROZEN_BEFORE_SOLVING",
+  "frozen_utc": "2026-10-29T04:43:12.683221+00:00",
+  "source_C16_answered": false,
+  "source_case": "X03-Z03-h00; physical indices48/48",
+  "full_original_case": true,
+  "partial_projection_model": false,
+  "variant_order": [
+    "baseline",
+    "conditional-span"
+  ],
+  "execution": "Two concurrent single-thread CaDiCaL195 trials; each has900 seconds outer wall time including load",
+  "input_metadata": "full-span-instance.json",
+  "input_metadata_sha256": "b3fb6fad245a399163d6b33e6a71fb2a70a26fde25385e86cf713a94f97a3e0e",
+  "input_physical_replay": "full-span-instance-independent.json",
+  "input_physical_replay_sha256": "cb99ad66a3871dba8276ac60a28bd7ca36431ea85c50b881018a356f2afac31d",
+  "native_library_sha256": "73a06368941e3be5d17aa92c3c00285f46e0ff12d32f1a1008556cbdb6947279",
+  "source_sha256": {
+    "conditional_span_native.cpp": "4d50f3e1c67c5fc3ebc53cee9bd8a61eedd6438f0be9765ebc4c376f634ff6eb",
+    "conditional_span_oracle.py": "4d27182470db4b706439da105aa65a5b8d383819ca1c2ce9a3f2eba5a2b6d6b9",
+    "full_span_frame.py": "5a9ca1385fde7c841e5229888fae8adea020949cda9dfa0fc8c5eda7732d400a",
+    "verify_full_span_frame.py": "50ca5d0ed3738c9719003fed4f6273751d84b548a0ae208a888a01fcb7f19ea7",
+    "control_conditional_span.py": "d641b44cf70c129ddbbfb7e0df1d2c7320b2aaa8bb7a1254dfb483a48442ac3c"
+  },
+  "theory_clause_limit": 20000,
+  "controls": "conditional-span-controls.json and conditional-span-full128-control.json",
+  "acceptance": "Full physical frame for SAT; all added theory certificates, exact final input and a fresh ordinary DRAT proof for UNSAT. UNKNOWN gives no completion."
+}

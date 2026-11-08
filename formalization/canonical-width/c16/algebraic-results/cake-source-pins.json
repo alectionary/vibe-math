@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "repository": "https://github.com/meelgroup/frat-xor",
+  "commit": "18cd6bc17af10a9891c10a846ce966166f9fe0dc",
+  "source_runtime_and_examples_git_blobs_match": true,
+  "files": [
+    {
+      "path": "cake_xlrup.S",
+      "git_blob": "3252c4272846160634d761ca8907dcf286a725d0",
+      "sha256": "4e08862087314ba00b72917214ea82f1c16c5d0063a12e0d72c8231252adcc2a",
+      "bytes": 1834494
+    },
+    {
+      "path": "basis_ffi.c",
+      "git_blob": "7cbd51cc2c4343a27d33bd5a3efe1cc83b4af3a2",
+      "sha256": "bd498883fdc0577d734a771fe8197c5ff571f2abdd769b8dc95d46818db5cbbc",
+      "bytes": 9636
+    },
+    {
+      "path": "example.xnf",
+      "git_blob": "80a25baf18230756b745cc0c91b2ce83e91302bc",
+      "sha256": "093de05fe11c1d2b73dbe0da3dfd5f8f718b4ab995c06e2b06c9805738a1c468",
+      "bytes": 40
+    },
+    {
+      "path": "example.xlrup",
+      "git_blob": "cd55070597ddfb52b910791f9f0c9ecb33aa1921",
+      "sha256": "0c34820266a2556111afd59da1cbee408263f67ac13f73cfcd176884f45e2a29",
+      "bytes": 72
+    },
+    {
+      "path": "example.xlrupb",
+      "git_blob": "f2584aab262af2e01c851ef2997945de953cce1c",
+      "sha256": "0be150c4d066a0615d7e6fe33e8008a4e2037b4beffc75cbaacec2b0e15bfd92",
+      "bytes": 38
+    }
+  ],
+  "binary_sha256": "bf0ddfc20cfb7af69647274800d14685cbeec2c2e7b663cc0bbe897a413b5d02",
+  "build": "clang -arch x86_64 -std=c11 -O2 -DCML_HEAP_SIZE=512 -DCML_STACK_SIZE=512 basis_ffi.c cake_xlrup.S -o cake_xlrup; unmodified official sources; existing Rosetta",
+  "failed_raw_binary_transport": {
+    "sha256": "137f86c79b833786364843ed003b5a7e5dbda5379c99cc8aa7e4bf034f92fa46",
+    "git_blob": "5e61f81ef08f3e0a400d7b9ab5c50e3d1f545e99",
+    "bytes": 66,
+    "outcome": "Raw API download did not match pinned blob; discarded as a positive control. Base64 decoded retry matches exactly. No upstream correctness conclusion."
+  }
+}
