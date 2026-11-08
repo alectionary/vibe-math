@@ -4,8 +4,8 @@
   statement_checks.py ../results/cells.csv > ../results/statement_checks.csv
 
 Scope: every statement in the Type I error section (printed pp. 99-108, PDF 113-122) and the power
-section (printed pp. 110-121, PDF 124-135) that names cells and a checkable outcome. Sentences that
-only describe a trend without naming cells ("power varied as a function of sample size") are not rows.
+section (printed pp. 110-121, PDF 124-135) that names cells and a checkable outcome. Sentences considered
+and not tested, with the reason (EXCLUDED below), are written to the end of the output as 'excluded' rows.
 
 Rates are rejection rates of the 95% percentile bootstrap CI, averaged over the design factors a
 statement does not name (as Chen's figures are), by n and cutoff index. A statement about "PNIE1" or
@@ -69,8 +69,13 @@ near0 = lambda x: x < .10 + SLACK
 rows = []
 
 
+COUNTER = [0]
+
+
 def stmt(page, text, eff, variants, ok):
     """ok(rt, kw) -> bool for one cell set (kw: the named factor values)."""
+    COUNTER[0] += 1
+    page = f'{COUNTER[0]}|{page}'
     verdicts = []
     for kw in variants:
         rt = rates(eff, **kw)
@@ -103,6 +108,7 @@ def highest(n, cut):
 
 
 def run_all():
+    COUNTER[0] = 0
     # ---------------- Type I error (PDF 113-122) ----------------
     stmt('99 (PDF 113)', 'PNIE Type I below the robustness criteria, near zero, when a = b = 0', 'PNIE',
          [dict(a=0, b=0)], at(below, NS))
@@ -144,6 +150,8 @@ def run_all():
          [dict(a=0, b=b, h=h) for b in [0] + P for h in [0] + H if b + h > 0], tnie_other)
     stmt('104 (PDF 118)', "PNDE Type I within the robustness criteria and close to .05 when c' = h = 0", 'PNDE',
          [dict(c=0, h=0)], at(within, NS))
+    stmt('104 (PDF 118)', "PNDE Type I shows no differences across cutoffs when c' = h = 0", 'PNDE',
+         [dict(c=0, h=0)], spread)
     stmt('106 (PDF 120)', "TNDE Type I within the robustness criteria when c' = h = 0, at every level of a", 'TNDE',
          [dict(c=0, h=0, a=a) for a in [0] + P], at(within, NS))
     stmt('108 (PDF 122)', 'MINT Type I close to zero and below the robustness criteria when a = h = 0', 'MINT',
@@ -203,6 +211,8 @@ def run_all():
          both(at(under80, ['500']), at(over80, ['1000'], '1'), at(under80, ['1000'], '23'), at(over80, NS[2:])))
     stmt('116 (PDF 130)', "PNDE power close to zero when c' = 0, at every level of h (h > 0) and cutoff", 'PNDE',
          [dict(c=0, h=h) for h in H], at(near0, NS))
+    stmt('116 (PDF 130)', "PNDE power below .80 for n <= 2500 when c' = 0, at every level of h (h > 0) and cutoff",
+         'PNDE', [dict(c=0, h=h) for h in H], at(under80, NS[:3]))
     stmt('116 (PDF 130)', "PNDE power slightly below .80 at n = 500 when c' = .39, at every level of h and cutoff",
          'PNDE', [dict(c=.39, h=h) for h in [0] + H], at(slightly_below80, ['500']))
     stmt('116 (PDF 130)', "PNDE power above .80 when c' = .59, at every level of h and cutoff", 'PNDE',
@@ -221,6 +231,13 @@ def run_all():
          [dict(c=.59, a=a, h=h) for a in [0] + P for h in [0] + H], at(over80, NS, '1'))
     stmt('118 (PDF 132)', 'TNDE power shows no variation by cutoff (h = .15)', 'TNDE',
          [dict(c=c, a=a, h=.15) for c in P for a in [0] + P], spread)
+
+    def tnde_no_h_variation(rt_unused, kw):
+        rts = [rates('TNDE', c=kw['c'], a=kw['a'], h=h) for h in [0] + H]
+        return all(max(r[(n, '1')] for r in rts) - min(r[(n, '1')] for r in rts) <= .05 + SLACK for n in NS)
+
+    stmt('118 (PDF 132)', 'TNDE1 power does not differ across levels of h (h = 0, .05, .15, .34; rates shown for the '
+         'cell set averaged over h)', 'TNDE', [dict(c=c, a=a) for c in P for a in [0] + P], tnde_no_h_variation)
     stmt('121 (PDF 135)', 'All power for MINT is near zero (below .10)', 'MINT',
          [dict(a=a, h=h) for a in P for h in H], at(near0, NS))
 
@@ -238,12 +255,30 @@ H0 = True
 run_all()
 h0 = rows
 H0 = False
-rows = [r + [s_[-1], z[-1]] for r, s_, z in zip(strict, slack, h0)]
+rows = [r[0].split('|', 1)[::-1][:1] + r[0].split('|', 1)[:1] + r[1:] + [s_[-1], z[-1]]
+        for r, s_, z in zip(strict, slack, h0)]
 SLACK = 0.0   # the summary rows below use the strict thresholds
 
+EXCLUDED = [
+    ('100 (PDF 114)', 'Overall, differences in Type I error rate occurred as a function of sample size when one path '
+     'was zero while the other path was a small effect size.', 'summary of the PNIE statements tested above (rows on '
+     'b = 0, a = .14 and a = 0, b = .14); names no cells of its own'),
+    ('110 (PDF 124)', 'Power varied as a function of sample size and effect size. The targeted power was .80.',
+     'general description; names no cells or outcome'),
+    ('110 (PDF 124)', 'Generally, as sample size increased, power also increased.', 'general trend; names no cells'),
+    ('116 (PDF 130)', 'Power increased as sample size increased.', "general trend for PNDE after the c' = 0 sentence; "
+     'names no threshold'),
+    ('118 (PDF 132)', "In the case of c' = .14, power increased as sample size increased.", 'trend only; the threshold '
+     'claim in the next sentence is tested'),
+    ('121 (PDF 135)', 'Low power may have been due to the fact that MINT is an interaction term.',
+     'explanation, not a result'),
+]
 w = csv.writer(sys.stdout)
-w.writerow(['page', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack', 'verdict_if_h_were_0'])
+w.writerow(['page', 'number', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack', 'verdict_if_h_were_0'])
 w.writerows(rows)
+
+for page, text, reason in EXCLUDED:
+    w.writerow([page, '', text, '', 'not tested', reason, 'excluded', 'excluded', 'excluded'])
 
 # Chapter 5 sample-size recommendation (printed p. 150): shares by n, then by n and cutoff
 for n in NS:
@@ -252,7 +287,7 @@ for n in NS:
         z = [float(r['reject']) for r in sel if abs(float(r['population'])) < 1e-12]
         nz = [float(r['reject']) for r in sel if abs(float(r['population'])) >= 1e-12]
         label = f'n = {n}' + ('' if c is None else f', cutoff index {c}')
-        w.writerow(['150 (PDF 164)', f'{label}: share of zero-effect cells with Type I in Bradley; share of nonzero '
+        w.writerow(['150 (PDF 164)', '', f'{label}: share of zero-effect cells with Type I in Bradley; share of nonzero '
                     'cells with power >= .80', 'all', f'{len(z)} zero cells, {len(nz)} nonzero cells',
                     f'{100 * sum(within(v) for v in z) / len(z):.1f}%; {100 * sum(v >= .8 for v in nz) / len(nz):.1f}%',
                     'summary', 'summary', 'summary'])

@@ -101,9 +101,12 @@ h0v = {r['statement']: r['verdict_if_h_were_0'] for r in checks if r['verdict'] 
 robust_dis = [k for k in verdicts if verdicts[k] == 'disagree' and slackv[k] == 'disagree']
 H0_FIXES = [k for k in robust_dis if h0v[k] == 'agree']
 n_h0 = sum(v == 'agree' for v in h0v.values())
-assert len(T1S) == 17 and len(PWS) == 24, (len(T1S), len(PWS))
+assert len(T1S) == 18 and len(PWS) == 26, (len(T1S), len(PWS))
+n_pnie = sum(1 for k in PWS if k.startswith('PNIE')); n_pnde = sum(1 for k in PWS if k.startswith('PNDE'))
+assert all(verdicts[k] == 'agree' for k in PWS if k.startswith(('PNIE', 'PNDE')))
 assert all(h0v[k] == 'agree' for k in verdicts if verdicts[k] == 'agree')   # no agreeing statement flips
-NUM = {k: i for i, k in enumerate(verdicts, start=1)}
+NUM = {r['statement']: int(r['number']) for r in checks if r['verdict'] in ('agree', 'disagree')}
+assert list(NUM.values()) == list(range(1, len(verdicts) + 1))
 rest = ', '.join(str(NUM[k]) for k in robust_dis if k not in H0_FIXES)
 
 ART = [
@@ -348,7 +351,7 @@ H_NOTE = (f'As a consistency check, every statement was also read on our cells w
           f'factors unchanged; the verdict_if_h_were_0 column). Then {n_h0} of {len(verdicts)} statements hold, '
           f'against {n_agree} as designed; {len(H0_FIXES)} of the {len(robust_dis)} statements that disagree under '
           f'both readings become agreements, and none that agrees becomes a disagreement. The {len(robust_dis) - len(H0_FIXES)} '
-          f'that still disagree are statements {rest} (numbered as in results/statement_checks.csv). Chen also '
+          f'that still disagree are statements {rest} (the number column of results/statement_checks.csv). Chen also '
           f'defines PNDE as "adding c\' and h" (printed p. 104), whereas with the mediator intercept zero in her '
           f'data-generating model the population PNDE is c\'. These observations are consistent with h contributing '
           f'little to her estimates; they do not establish it.')
@@ -394,8 +397,8 @@ claim(id='S3', level='supporting',
       methods=METHODS + ' ' + STMT_METHOD, uncertainty=MC,
       multiplicity=f'{len(PWS)} statements; no correction (descriptive).',
       status='partly_replicated',
-      status_reason=(f'{pw_agree} of {len(PWS)} power statements agree ({pw_slack} with slack): all six PNIE '
-                     f'statements and all four PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. '
+      status_reason=(f'{pw_agree} of {len(PWS)} power statements agree ({pw_slack} with slack): all {n_pnie} PNIE '
+                     f'statements and all {n_pnde} PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. '
                      + H_NOTE),
       numerical='not applicable', reconstruction_scope='full design',
       limitations=['Agreement on PNIE and PNDE is consistent with Chen\'s rejection rates for those effects not being '

@@ -23,7 +23,7 @@ parts:
   looked_in: ICPSR 29462 study page and public download V7 (no data files); ICPSR 36968 page; Chen 2021
     appendices (no RQ2 data or input); see notes/availability.md
   reason: 'Every chapter, question and headline is accounted for. The RQ3 simulation was run in full (3,840
-    of 3,840 cells): 27 of Chen''s 41 testable Type I error and power statements agree with ours, while
+    of 3,840 cells): 29 of Chen''s 44 testable Type I error and power statements agree with ours, while
     the bias, coverage and MINT conclusions do not. RQ2 cannot be rerun without the restricted HSIS data.'
   evidence: notes/run-record.md; REPLICATION-PLAN.yaml
 - id: ch-1
@@ -70,10 +70,10 @@ parts:
   missing_input: HSIS restricted-use data for Tables 4.2-4.7 and Figures 4.1-4.11
   looked_in: notes/availability.md (ICPSR 29462 public and restricted routes, ICPSR 36968, the dissertation's
     appendices)
-  reason: Of the simulation results, 27 of 41 testable Type I error and power statements agree with Chapter
-    4, including all PNIE and PNDE power statements; most disagreements concern cells in which h is part
-    of the effect. Tables 4.8 and 4.9 (bias, coverage, imbalance) disagree. The HSIS tables can only be
-    checked arithmetically.
+  reason: Of the simulation results, 29 of 44 testable Type I error and power statements agree with Chapter
+    4, including all PNIE and PNDE power statements; read on our cells with h set to 0, 39 of the 44 would
+    hold. Tables 4.8 and 4.9 (bias, coverage, imbalance) disagree. The HSIS tables can only be checked
+    arithmetically.
   evidence: results/table48_ours.csv; results/table49_ours.csv; results/statement_checks.csv
 - id: ch-5
   kind: chapter
@@ -216,10 +216,10 @@ parts:
     against Bradley's [.025,.075].
   status: partly
   run_complete: true
-  reason: 12 of the 17 testable Type I statements agree over every cell set they name (13 with .01 threshold
+  reason: 13 of the 18 testable Type I statements agree over every cell set they name (14 with .01 threshold
     slack). For MINT with a = 0, ours is below Bradley's range at h = .05 but about .05 at h = .34, whereas
-    Chen reports near zero with no variation across h; three TNIE statements at small n disagree near
-    the robustness bounds.
+    Chen reports near zero with no variation across h; three TNIE statements with a = 0 at small n disagree,
+    with our rates and her description on different sides of the robustness bounds.
   evidence: results/type1.csv; results/statement_checks.csv
 - id: out-power
   kind: analysis
@@ -227,7 +227,7 @@ parts:
   plan: Rejection rate in cells whose population effect is nonzero.
   status: partly
   run_complete: true
-  reason: 15 of the 24 testable power statements agree (16 with slack), including all PNIE and PNDE statements;
+  reason: 16 of the 26 testable power statements agree (17 with slack), including all PNIE and PNDE statements;
     the disagreements concern TNIE, TNDE and MINT cells in which h is part of the effect, where Chen reports
     lower power than ours or no variation (for example MINT power .84 at n = 500 for ah = .20 in our run).
   evidence: results/power.csv; results/statement_checks.csv
