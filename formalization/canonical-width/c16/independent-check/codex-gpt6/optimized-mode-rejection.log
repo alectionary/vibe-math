@@ -1,0 +1,18 @@
+solve.py: correctly rejected optimized mode
+Traceback (most recent call last):
+  File "/workspace/c16-independent/formalization/canonical-width/c16/independent-check/codex-gpt6/solve.py", line 8, in <module>
+    raise RuntimeError("Optimized Python disables validation; run without -O or PYTHONOPTIMIZE.")
+RuntimeError: Optimized Python disables validation; run without -O or PYTHONOPTIMIZE.
+
+test_clique.py: correctly rejected optimized mode
+Traceback (most recent call last):
+  File "/workspace/c16-independent/formalization/canonical-width/c16/independent-check/codex-gpt6/test_clique.py", line 5, in <module>
+    raise RuntimeError("Run validation without -O or PYTHONOPTIMIZE.")
+RuntimeError: Run validation without -O or PYTHONOPTIMIZE.
+
+test_bundle.py: correctly rejected optimized mode
+Traceback (most recent call last):
+  File "/workspace/c16-independent/formalization/canonical-width/c16/independent-check/codex-gpt6/test_bundle.py", line 4, in <module>
+    raise RuntimeError("Run validation without -O or PYTHONOPTIMIZE.")
+RuntimeError: Run validation without -O or PYTHONOPTIMIZE.
+
