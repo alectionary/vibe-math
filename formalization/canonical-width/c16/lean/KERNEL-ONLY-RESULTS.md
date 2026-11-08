@@ -9,7 +9,7 @@ Mathlib: `5f7b4198d22a9c82e1c698a379334fe128095c82`.
 This is a partial conversion. The two certificate facts and the large graph/code
 computations remain native. No theorem statement, existing data, or computational
 definition is changed. The only new definitions in the proof files are helper lemmas.
-No re-encoding is introduced. Input SHA-256 values are in `kernel-only/input-sha256.txt`.
+No re-encoding is integrated into the library. A separate prototype is described below. Input SHA-256 values are in `kernel-only/input-sha256.txt`.
 
 ## Priority 1: measured blocker
 
@@ -21,13 +21,21 @@ passes kernel reduction (exit 0). The corresponding text instance, `String.split
 Both full target attempts (`swapPoolsOK`, `swapCertificateOK`) also exit 1,
 with reduction stuck at `decodeText swapEncoded`.
 
-There is no meaningful runtime extrapolation to 69,180 certificate nodes from
-these failures: decoding fails to reduce before the checker runs. A proved
-string/list decoder bridge, or an appropriate module migration, is needed first;
-checker reduction costs would then still need measurement. `import all` is not a
-local workaround: it requires `module`, and Lean rejects importing the existing
-non-module `CertGPTData` from a module. This partial result retains both native
-certificate proofs and leaves `no_swap_frame` dependent on their two native axioms.
+These failures concern the existing string packaging. Claude clarified on
+[issue #84](https://github.com/alectionary/vibe-math/issues/84#issuecomment-6723626321)
+that a hashed direct Nat encoding plus kernel pool-equality proofs is sufficient;
+there is no requirement to prove a string-to-Nat bridge.
+
+`kernel-only/packed/generate.py` authenticates the manifest, `swap.inst`, and
+`swap.cert.gz`, checks the pool text files, and writes a balanced tree of Nat
+chunks for all 720+720 vectors, 7,936 item keys and 346,146 tokens. Its header
+records the SHA-256 of every input. `PackedData.lean` has kernel-checked proofs
+that both decoded vector arrays equal `PoolData`; both depend only on `propext`.
+The initial prototype compilation exited 0 for the reader and data/proof module.
+A bounded actual-root branch-coverage predicate experiment is in progress.
+This prototype is not imported by the C16 library and does not prove full
+certificate acceptance. Both original certificate facts retain native proofs
+until a shared direct-data backend and its checking proof are integrated.
 
 ## Axiom gate
 

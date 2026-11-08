@@ -150,8 +150,8 @@ theorem pools_logical : xPhys.all (fun v => hz.all fun z => !par v z) &&
 theorem pools_distinct : xPhys.Nodup ∧ zPhys.Nodup := by native_decide
 theorem coords_match : xPhys.map coordX = xArr.toList ∧ zPhys.map coordZ = zArr.toList := by
   native_decide
-/-- Nontrivial: no pool operator has zero logical coordinates (so none is a stabilizer). -/
 set_option maxRecDepth 10000 in
+/-- Nontrivial: no pool operator has zero logical coordinates (so none is a stabilizer). -/
 theorem coords_nonzero : xArr.all (· != 0) && zArr.all (· != 0) := by
   rw [← Array.all_toList, ← Array.all_toList]
   decide +kernel
