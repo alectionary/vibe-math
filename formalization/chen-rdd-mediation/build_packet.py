@@ -170,7 +170,7 @@ claim(id='H1', level='headline',
                                     'over n and effect sizes, by cutoff index',
                          component_claim_ids=[], component_contrast_indices=[0]),
           ours=dict(text=f'PNDE and TNDE within [-.05, .05] in 100% of conditions; largest |bias| '
-                         f'{max(float(t48[(e, c)]["max_abs_bias"]) for e in ("PNDE", "TNDE") for c in (1, 2, 3)):.3f}',
+                         f'{max(abs(float(r["bias"])) for r in rows("results/cells.csv") if r["effect"] in ("PNDE", "TNDE")):.3f}',
                     state='observed', artifact_ids=['t48', 'cells'],
                     locator='results/table48_ours.csv rows PNDE and TNDE', component_claim_ids=[],
                     component_contrast_indices=[0])))
@@ -298,9 +298,10 @@ claim(id='S1', level='supporting',
                       published=pub_ind[e], ours=our_ind[e]) for e in ('PNIE', 'TNIE', 'MINT')],
       methods=METHODS, uncertainty=MC, multiplicity='Descriptive.',
       status='not_replicated',
-      status_reason='All indirect and MINT results lie within [-.05, .05] in our run. Chen\'s PNIE, TNIE and MINT '
-                    'rows at the median cutoff equal what |bias| = population value would give over the grid '
-                    '(secondary/zero_estimate_check.csv); this is a consistency observation, not a diagnosis.',
+      status_reason='All indirect and MINT results lie within [-.05, .05] in our run. At the median cutoff, Chen\'s '
+                    'PNIE and MINT rows and her TNIE [-.05, .05] entry equal what |bias| = population value would give '
+                    'over the grid; her TNIE [-.10, .10] entry is 60.00 against 59.38 '
+                    '(secondary/zero_estimate_check.csv). This is a consistency observation, not a diagnosis.',
       numerical='mismatch', reconstruction_scope='full design',
       limitations=['The zero-estimate pattern does not fit every printed entry (for example PNDE needs c\' + h).'],
       stopping=STOP_DONE('Chen\'s population-value table, if one existed, would test the pattern directly.'))
@@ -508,8 +509,9 @@ limitations = [
     'RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the '
     'printed arithmetic was checked (S5).',
     'The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).',
-    'Code and prose disagree on cutoff labels: the code\'s index 1 is the 25th percentile (75% treated), while the '
-    'Table 4.8 note calls it 25% treatment; we report by the code (H1, H2).',
+    'The dissertation labels the cutoffs inconsistently: the code\'s index 1 is the 25th percentile (75% treated), '
+    'as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25% '
+    'treatment; we report by the code (H1, H2).',
     'Chen attributes the bias to global estimation with an incorrect functional form; in her data-generating model '
     'the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).',
 ]

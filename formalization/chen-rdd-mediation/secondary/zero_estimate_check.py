@@ -15,7 +15,7 @@ P = [0, .14, .39, .59]
 H = [0, .05, .15, .34]
 GRID = list(itertools.product(P, P, P, H))
 
-# printed Table 4.8 (p. 89): effect -> [(within .10, within .05) for cut index 1, 2, 3]
+# printed Table 4.8 (printed p. 88, PDF page 102): effect -> [(within .10, within .05) for cut index 1, 2, 3]
 PRINTED = {
     'PNIE': [(62.50, 50.00), (75.00, 50.00), (81.25, 75.00)],
     'TNIE': [(51.88, 41.88), (60.00, 42.19), (70.94, 54.69)],
