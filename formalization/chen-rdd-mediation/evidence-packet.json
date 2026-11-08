@@ -23,7 +23,7 @@
   {
    "id": "plan",
    "path": "REPLICATION-PLAN.yaml",
-   "sha256": "1f3b23458f86cb17654c3e13bc90d42e94ce3a9eacea963ca1d1e1872060ada7"
+   "sha256": "70f42a64d41f593fef0fa11e92e0fe4fd85299cb3fa798ab83ed50ba267a4d87"
   },
   {
    "id": "sim",
@@ -78,12 +78,12 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "cb5a85b386c9812548fa32821f7a3972f59f81fec0a2367d53f270555f97f343"
+   "sha256": "8c4711bd4f92cd1c7645bfc23719cfae25a8468d96eefe40474d21bc76b912e5"
   },
   {
    "id": "stmt",
    "path": "results/statement_checks.csv",
-   "sha256": "f8eab8b535744047b0be29f6df284aee0af9d93223c90b1f913b0d6e3d114f50"
+   "sha256": "2833efc7f232a568874b774c51aab70b24098d6f8e27f4b98efc194e5f1e2758"
   },
   {
    "id": "zero_code",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "2927d108022dddf4b7639a3885e1fa0ed7efe3993897e367bd55576789408bb1"
+   "sha256": "6679e85c6cb21e662ba056dbb716efa09c5df718d5f5958eb1a5ba5387310eae"
   }
  ],
  "sections": [
@@ -337,7 +337,7 @@
    "numerical": "mismatch",
    "reconstruction_scope": "full design, independent re-implementation, own seeds",
    "limitations": [
-    "The small positive imbalance in our run (truth above the CI slightly more often) is in the expected direction for percentile intervals of products of coefficients, and is two orders of magnitude smaller than Chen's."
+    "Our run shows a small positive imbalance (the truth lies above the CI slightly more often than below it), two orders of magnitude smaller than Chen's; we did not investigate its cause."
    ],
    "stopping": {
     "reason": "Full design completed.",
@@ -421,7 +421,7 @@
    "numerical": "withheld: no published number",
    "reconstruction_scope": "full design, independent re-implementation",
    "limitations": [
-    "Chen's MINT Type I error with a = 0 and h > 0 is also near zero, against about .05 in our run; both suggest her h estimates or their CIs differed from what the printed code produces."
+    "Chen also reports MINT Type I error near zero with a = 0 at every h > 0 and no variation across h. Ours is below Bradley's range at h = .05 through n = 5,000 (at most .019; .026-.036 at n = 10,000) and at h = .15 at n = 500 (.014-.020), but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), so it varies with h. Both MINT differences are consistent with smaller h estimates or wider h intervals in her runs than the printed code produces; this is not tested."
    ],
    "stopping": {
     "reason": "Full design completed.",
@@ -596,7 +596,7 @@
   {
    "id": "S2",
    "level": "supporting",
-   "statement": "Type I error: near zero when both paths of a product effect are zero; within Bradley's [.025, .075] for PNDE and TNDE; below the range for MINT at small n when a = .14, h = 0; near zero for MINT when a = 0 at every h.",
+   "statement": "Type I error: near zero when both paths of a product effect are zero; within Bradley's [.025, .075] for PNDE and TNDE; below the range for MINT at small n when a = .14, h = 0; near zero for MINT when a = 0, with no variation across h.",
    "source_locator": "Chapter 4 Type I error, printed p. 99 (PDF page 113)-printed p. 108 (PDF page 122)",
    "artifact_ids": [
     "pdf",
@@ -612,14 +612,14 @@
     "value": "5 of 6 agree",
     "units": "statements"
    },
-   "conditions": "Zero-effect cells named in each statement, all n and cutoffs.",
+   "conditions": "Every zero-effect cell set named in each statement, all n and cutoffs; rates averaged over the factors a statement does not name, as in Chen's figures.",
    "contrasts": [],
    "contrast_not_applicable": "Each statement is a threshold claim about a set of cells; results/statement_checks.csv holds the per-cell rates.",
    "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Six statements, each judged at its own threshold.",
    "status": "partly_replicated",
-   "status_reason": "All agree except MINT with a = 0 and h > 0, where our Type I is about .05, not near zero.",
+   "status_reason": "Five of six agree over every cell set they name. The exception is MINT with a = 0: ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
