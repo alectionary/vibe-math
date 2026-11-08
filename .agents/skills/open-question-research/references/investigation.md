@@ -104,6 +104,8 @@ as separate findings, without repeatedly restating generic uncertainty.
 
 ## Verification and publication, when applicable
 
+- Independent check: certificate format, independent checker and its spec, known-answer tests, cost estimate:
+- External results rerun before citing (commit, command, exit code, matching invariants):
 - Build commands; toolchain/dependency revisions; consumer and axiom checks:
 - Source hashes, immutable proof links and complete import/data closure:
 - Written proofs, finite computation and implementation bridges outside Lean:
