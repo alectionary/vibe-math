@@ -34,8 +34,11 @@ parity (`buildGRow_bit`), a column bit is the transposed Gram bit
 (`buildCol_bit`), item masks test membership of the item's vertices
 (`xmask_testBit`, `zmask_testBit`), a packed row bit is the selected Gram bit
 (`packRow_testBit`), and `setBits` lists exactly the set bits below 720
-(`setBits_mem`). The fuel induction for `checkNode`/`checkKids`, the rank-leaf
-comparison, and the root decomposition are not finished.
+(`setBits_mem`), in increasing order (`setBits_pairwise`). `bitPos` recovers
+that index, and `vertex_toV` is the packed Gram entry. `rank_lt_of_geCount`
+turns a strict pivot bound into a matrix-rank bound. The identity-submatrix
+step from a duplicate-free partial frame to `induced_matching_le_rank`, and the
+fuel induction for `checkNode`/`checkKids`, are not finished.
 
 The theorem `no_swap_frame` is not proved. Acceptance of the certificate is a
 separate `Bool` fact. The search invariant — that acceptance rules out every

@@ -481,4 +481,157 @@ theorem setBits_mem (mask i : Nat) :
   unfold setBits
   exact setBits_go_mem mask 0 #[] i (Nat.zero_le _) (by simp)
 
+lemma setBits_go_sorted (mask t : Nat) (acc : Array Nat) (ht : t ≤ 720)
+    (hs : acc.toList.Pairwise (· < ·)) (hlt : ∀ j ∈ acc.toList, j < t) :
+    (setBits.go mask t acc).toList.Pairwise (· < ·) := by
+  induction h : 720 - t generalizing t acc with
+  | zero =>
+    rw [setBits.go.eq_1, if_pos (by omega : t ≥ 720)]
+    exact hs
+  | succ d ih =>
+    have ht' : t < 720 := by omega
+    rw [setBits.go.eq_1, if_neg (by omega : ¬ t ≥ 720)]
+    have hle : t + 1 ≤ 720 := by omega
+    have hdec : 720 - (t + 1) = d := by omega
+    by_cases hb : mask.testBit t = true
+    · rw [if_pos hb]
+      apply ih (t + 1) (acc.push t) hle _ _ hdec
+      · simp only [Array.toList_push, List.pairwise_append, hs, List.pairwise_singleton,
+          List.mem_singleton, true_and]
+        intro a ha b hb
+        cases hb
+        exact hlt a ha
+      · intro j hj
+        simp only [Array.toList_push, List.mem_append, List.mem_singleton] at hj
+        rcases hj with hj | hjt
+        · exact Nat.lt_succ_of_lt (hlt j hj)
+        · cases hjt
+          exact Nat.lt_succ_self _
+    · have hb' : mask.testBit t = false := by
+        cases hbit : mask.testBit t
+        · rfl
+        · exact absurd hbit hb
+      rw [if_neg (by simp [hb'])]
+      apply ih (t + 1) acc hle hs _ hdec
+      intro j hj
+      exact Nat.lt_succ_of_lt (hlt j hj)
+
+theorem setBits_pairwise (mask : Nat) : (setBits mask).toList.Pairwise (· < ·) := by
+  unfold setBits
+  exact setBits_go_sorted mask 0 #[] (Nat.zero_le _) (by simp) (by simp)
+
+theorem setBits_index (mask i : Nat) (hi : i < 720) (hb : mask.testBit i = true) :
+    ∃ b, ∃ hb : b < (setBits mask).size, (setBits mask)[b]'hb = i := by
+  have hm : i ∈ (setBits mask).toList := (setBits_mem mask i).mpr ⟨hi, hb⟩
+  obtain ⟨b, hbnd, hget⟩ := List.getElem_of_mem hm
+  refine ⟨b, by simpa [Array.length_toList] using hbnd, ?_⟩
+  simpa [Array.getElem_toList] using hget
+
+lemma packGo_high (row : Nat) (cols : Array Nat) (t acc k : Nat)
+    (ht : t ≤ cols.size) (hk : cols.size ≤ k) (hacc : acc.testBit k = false) :
+    (packRow.go row cols t acc).testBit k = false := by
+  induction h : cols.size - t generalizing t acc with
+  | zero =>
+    rw [packRow.go.eq_1, if_pos (by omega : t ≥ cols.size)]
+    exact hacc
+  | succ d ih =>
+    have ht' : t < cols.size := by omega
+    rw [packRow.go.eq_1, if_neg (by omega : ¬ t ≥ cols.size)]
+    have hle : t + 1 ≤ cols.size := by omega
+    have hdec : cols.size - (t + 1) = d := by omega
+    have htk : t ≠ k := by omega
+    have hacc' :
+        (if row.testBit (cols.getD t 0) = true then acc ||| (1 <<< t) else acc).testBit k = false := by
+      by_cases hb : row.testBit (cols.getD t 0) = true
+      · rw [if_pos hb, Nat.testBit_or, testBit_shift_one, hacc, decide_eq_false htk]
+        simp
+      · rw [if_neg hb, hacc]
+    have hzeta :
+        (let j := cols.getD t 0;
+          packRow.go row cols (t + 1)
+            (if row.testBit j = true then acc ||| (1 <<< t) else acc)).testBit k =
+          (packRow.go row cols (t + 1)
+            (if row.testBit (cols.getD t 0) = true then acc ||| (1 <<< t) else acc)).testBit k := by
+      rfl
+    rw [hzeta]
+    exact ih (t + 1) (if row.testBit (cols.getD t 0) = true then acc ||| (1 <<< t) else acc)
+      hle hacc' hdec
+
+theorem packRow_high (row : Nat) (cols : Array Nat) (k : Nat) (hk : cols.size ≤ k) :
+    (packRow row cols).testBit k = false := by
+  unfold packRow
+  exact packGo_high row cols 0 0 k (Nat.zero_le _) hk (by simp)
+
+theorem rank_lt_of_geCount {n : Nat} (rows : Array Nat) (need : Nat)
+    (h : geCount rows < need) :
+    (Matrix.of fun i : Fin rows.size => fun j : Fin n => toV n rows[i] j).rank < need := by
+  exact lt_of_le_of_lt (matrixRank_le_geCount (n := n) rows) h
+
+lemma testBit_eq_false_of_and_zero (a b k : Nat) (h : a &&& b = 0) :
+    a.testBit k = true → b.testBit k = false := by
+  intro ha
+  have hbit := congrArg (fun n => n.testBit k) h
+  rw [Nat.testBit_and, Nat.zero_testBit] at hbit
+  cases hb : b.testBit k
+  · rfl
+  · simp [ha, hb] at hbit
+
+lemma and_eq_zero_of_testBit (a b : Nat)
+    (h : ∀ k, a.testBit k = true → b.testBit k = false) : a &&& b = 0 := by
+  apply Nat.eq_of_testBit_eq
+  intro k
+  rw [Nat.testBit_and, Nat.zero_testBit]
+  cases ha : a.testBit k <;> cases hb : b.testBit k <;> simp_all
+
+def vertexRows (gRow : Array Nat) (xs zs : Nat) : Array Nat :=
+  (setBits xs).map fun i => packRow (gRow.getD i 0) (setBits zs)
+
+lemma vertexRows_size (gRow : Array Nat) (xs zs : Nat) :
+    (vertexRows gRow xs zs).size = (setBits xs).size := by
+  simp [vertexRows, Array.size_map]
+
+lemma setBits_get_lt (mask b : Nat) (hb : b < (setBits mask).size) :
+    (setBits mask)[b] < 720 := by
+  have hmem : (setBits mask)[b] ∈ (setBits mask).toList := Array.getElem_mem_toList hb
+  exact ((setBits_mem mask _).mp hmem).1
+
+def bitPos (mask i : Nat) : Nat :=
+  ((setBits mask).toList).idxOf i
+
+lemma bitPos_lt (mask i : Nat) (hi : i < 720) (hb : mask.testBit i = true) :
+    bitPos mask i < (setBits mask).size := by
+  have hm : i ∈ (setBits mask).toList := (setBits_mem mask i).mpr ⟨hi, hb⟩
+  simpa [bitPos, Array.length_toList] using List.idxOf_lt_length_of_mem hm
+
+lemma bitPos_get (mask i : Nat) (hi : i < 720) (hb : mask.testBit i = true) :
+    (setBits mask)[bitPos mask i]'(bitPos_lt mask i hi hb) = i := by
+  have hlt : ((setBits mask).toList).idxOf i < ((setBits mask).toList).length := by
+    rw [Array.length_toList]
+    exact bitPos_lt mask i hi hb
+  have hlist := List.getElem_idxOf (xs := (setBits mask).toList) (x := i) hlt
+  unfold bitPos
+  rw [Array.getElem_toList] at hlist
+  exact hlist
+
+lemma vertex_testBit (gRow : Array Nat) (xs zs : Nat) (a b : Nat)
+    (ha : a < (setBits xs).size) (hb : b < (setBits zs).size) :
+    ((vertexRows gRow xs zs)[a]'(by simpa [vertexRows, Array.size_map] using ha)).testBit b =
+      (gRow.getD ((setBits xs)[a]) 0).testBit ((setBits zs)[b]) := by
+  have hrow :
+      (vertexRows gRow xs zs)[a]'(by simpa [vertexRows, Array.size_map] using ha) =
+        packRow (gRow.getD ((setBits xs)[a]) 0) (setBits zs) := by
+    simp [vertexRows, Array.getElem_map]
+  rw [hrow, packRow_testBit _ _ b hb]
+  simp [Array.getD, hb]
+
+lemma vertex_toV (gRow : Array Nat) (xs zs : Nat)
+    (a : Fin (vertexRows gRow xs zs).size) (b : Fin (setBits zs).size) :
+    toV (setBits zs).size (vertexRows gRow xs zs)[a] b =
+      if (gRow.getD ((setBits xs)[a.1]'(by simpa [vertexRows, Array.size_map] using a.2)) 0).testBit
+          ((setBits zs)[b]) then 1 else 0 := by
+  have ha : a.1 < (setBits xs).size := by simpa [vertexRows, Array.size_map] using a.2
+  unfold toV
+  exact congrArg (fun c : Bool => if c then (1 : ZMod 2) else 0)
+    (vertex_testBit gRow xs zs a.1 b.1 ha b.2)
+
 end C16Frames.CertInvariant
