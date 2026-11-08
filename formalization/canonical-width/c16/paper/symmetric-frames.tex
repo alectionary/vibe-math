@@ -4,6 +4,7 @@
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,array,xcolor,enumitem,xurl,longtable}
+\usepackage{listings}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={No Symmetric Width-16 Canonical Frame for the Lifted-Product Code C16,9},pdfauthor={}}
 \newtheorem{theorem}{Theorem}
@@ -16,6 +17,9 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \setlength{\emergencystretch}{3em}
+\lstset{basicstyle=\scriptsize\ttfamily,columns=fullflexible,keepspaces=true,
+ breaklines=true,breakatwhitespace=false,showstringspaces=false,frame=lines,
+ escapeinside={(*@}{@*)}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\CLP}{C^{\mathrm{LP}}_{16,9}}
 \newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
@@ -48,7 +52,7 @@
 
 \title{No Symmetric Width-16 Canonical Frame for the Lifted-Product Code $\CLP$}
 \author{}
-\date{Draft, 3 November 2026}
+\date{8 November 2026}
 
 \begin{document}
 \maketitle
@@ -81,6 +85,24 @@ No width-$16$ canonical frame of $\CLP$ is fixed by a nontrivial element of the 
 \end{theorem}
 
 The proof is computational: Theorem~\ref{thm:aut} identifies the group, Lemma~\ref{lem:classes} reduces the claim to three involution classes, and Table~\ref{tab:evidence} gives the evidence for each. The $T^8$ case subsumes the source's $f_{\mathrm{reg}}=18$ and the earlier exclusion of $T^4$-invariant frames~\cite{structural}, since every nontrivial subgroup of $C_{16}$ contains $T^8$.
+
+\paragraph{Chronology.} Table~\ref{tab:chronology} lists the central sources with their dates. Elapsed days are civil calendar days to this paper's date, 8 November 2026 (Pacific); they are source ages, not the time a problem was open. Year- or month-only dates give ranges rather than an invented day. Repository records are internal manuscripts, dated by their first commit.
+\begin{center}\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{5.1cm}>{\raggedright\arraybackslash}p{6.6cm}>{\raggedright\arraybackslash}p{3.4cm}@{}}
+\caption{Central sources and elapsed calendar days to 8 November 2026.}\label{tab:chronology}\\
+\toprule Source / role & Earliest relevant version; inspected milestone & Elapsed days\\\midrule\endhead
+Lee~\cite{lee}: source question (Prop.~9) & arXiv v1, 2026-10-05; v1 inspected & 34 \\[4pt]
+Panteleev--Kalachev~\cite{pk}: lifted-product construction & arXiv v1, 2020-12-07 & 2{,}162 \\[4pt]
+Repository investigation record~\cite{investigation} (internal) & first commit 2026-10-26 & 13 \\[4pt]
+Repository pool enumeration~\cite{enumeration} (internal) & first commit 2026-10-26 & 13 \\[4pt]
+Repository $T^4$ exclusion~\cite{structural} (internal) & first commit 2026-10-27 & 12 \\[4pt]
+McKay--Piperno~\cite{mckay}: colour refinement and individualisation & arXiv v1, 2013-01-08; J.\ Symbolic Comput.\ 60, January 2014 & 5{,}052; 4{,}664--4{,}694 \\[4pt]
+Knuth~\cite{knuth}: search-tree size estimator & Math.\ Comp.\ 29, January 1975 & 18{,}909--18{,}939 \\[4pt]
+Heule--Kullmann--Marek~\cite{pythagorean}: cube-and-conquer with proof checking & arXiv v1, 2016-05-03 & 3{,}841 \\[4pt]
+Heule~\cite{schur5}: Schur number five & arXiv v1, 2017-11-21 & 3{,}274 \\
+\bottomrule
+\end{longtable}
+\end{center}
 
 \paragraph{Evidence labels.} \evidence{proof}: written proof. \evidence{certified}: computation that outputs an independently checkable certificate (a DRAT proof, or a search-tree certificate accepted by an independently written checker, \S\ref{sec:method}). \evidence{computation}: exhaustive search by a program, cross-checked as stated, not certified. Every written proof has a Lean version (\S\ref{sec:lean}).
 
@@ -222,7 +244,7 @@ Follow-up directions raised by this work (not source-posed):
 \end{itemize}
 
 \section{Lean formalization}\label{sec:lean}
-The written proofs are checked in Lean~4 (toolchain \texttt{v4.36.0-rc1}, Mathlib \texttt{5f7b4198}) in \href{\repourl/blob/master/\leanfile}{\texttt{C16Frames.lean}}. All declarations compile with no \texttt{sorry}, and \texttt{\#print axioms} reports only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The check is recorded in \href{\repourl/blob/master/formalization/canonical-width/c16/lean/verification.json}{\texttt{verification.json}}.
+Appendix~\ref{app:lean} explains the chain of central Lean proofs and prints their complete bodies, with current and commit-pinned links to each declaration. The written proofs are checked in Lean~4 (toolchain \texttt{v4.36.0-rc1}, Mathlib \texttt{5f7b4198}) in \href{\repourl/blob/master/\leanfile}{\texttt{C16Frames.lean}}. All declarations compile with no \texttt{sorry}, and \texttt{\#print axioms} reports only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}. The check is recorded in \href{\repourl/blob/master/formalization/canonical-width/c16/lean/verification.json}{\texttt{verification.json}}.
 
 \begin{center}\small
 \begin{tabular}{@{}p{5.2cm}p{10.2cm}@{}}
@@ -307,4 +329,19 @@ Immutable review copies: the earlier work is pinned at commit \href{\repourl/tre
 \bibitem{pythagorean} M.~J.~H.~Heule, O.~Kullmann and V.~W.~Marek, \emph{Solving and verifying the Boolean Pythagorean triples problem via cube-and-conquer}, arXiv:1605.00723. \url{https://arxiv.org/abs/1605.00723}.
 \bibitem{schur5} M.~J.~H.~Heule, \emph{Schur number five}, arXiv:1711.08076. \url{https://arxiv.org/abs/1711.08076}.
 \end{thebibliography}
+\appendix
+\section{Central Lean proofs}\label{app:lean}
+This appendix prints the complete Lean proofs on which the paper's main claims rest, generated from the checked files by \href{\repourl/blob/master/\cdir/paper/gen_lean_appendix.py}{\texttt{gen\_lean\_appendix.py}}, which also checks that each declaration is identical at the pinned commit. Each name links to the current file on \texttt{master}, followed by the pinned copy. All files build with Lean~4 \texttt{v4.36.0-rc1} and Mathlib \texttt{5f7b4198} (\texttt{lake build}, $3{,}833$ jobs, no errors, no \texttt{sorry}).
+
+\paragraph{Definitions and bridges.} Frames are stated twice. The paper's form is a pair $(S,T)$ of index sets with $G[S,T]$ a permutation matrix (\texttt{IsFrame} in \texttt{C16Frames.lean}). The certificate checker uses sets $F$ of $128$ index pairs with $G_{ij'}=1$ exactly when $(i,j)=(i',j')$ (\texttt{IsPairFrame}). The pairing is the parity of the bitwise AND of the pool vectors in \texttt{PoolData.lean}, generated from the pool files with their SHA-256 recorded in its header. \texttt{no\_swap\_vertex\_frame\_of\_no\_pair} carries a pair-form exclusion to the $(S,T)$ form for any symmetric $G$, and \texttt{fixed\_swap\_iff} turns $s$-invariance of $(S,T)$ into $S=T$.
+
+\paragraph{Dependency structure.}
+\begin{itemize}[nosep]
+\item \emph{Search lemmas.} \texttt{gram\_one\_iff\_sum\_outer} is the frame identity $\sum x_iz_i^{\mathsf T}=I$ behind the residual. \texttt{exists\_pair\_of\_residual\_entry} gives a covering pair at every residual entry equal to $1$. \texttt{first\_member\_unique} justifies excluding earlier siblings. \texttt{induced\_matching\_le\_rank} justifies rank pruning.
+\item \emph{Symmetry group.} \texttt{col\_iter\_equiv} shows that colour refinement commutes with any automorphism. \texttt{aut\_of\_certificate} turns a discrete refinement after individualising one vertex into a bound on the group, for any finite graph. \texttt{class\_v0} and \texttt{dM\_id} are the two computed facts for the anticommutation graph, and \texttt{aut\_classification} concludes that every automorphism is $T^ks^b$.
+\item \emph{Swap class.} \texttt{check\_sound}, with \texttt{checkChildren\_sound} for the list of children, proves the generic certificate recursion sound under the obligations \texttt{RulesSound}. \texttt{completionRulesSound} discharges those obligations for the concrete frame semantics \texttt{Completion} (rank leaves, residual coverage, sibling exclusion, oversized items and the child update). \texttt{frame\_root\_completion} shows that every swap-invariant frame is a root completion, using the item table and the frame identity. \texttt{no\_swap\_frame} instantiates this with the real pools and \texttt{swap.cert.gz}; its only non-standard axioms are the two \texttt{native\_decide} facts that the checker accepts the certificate and that the decoded vectors equal the pool data.
+\end{itemize}
+
+\input{lean-appendix}
+
 \end{document}
