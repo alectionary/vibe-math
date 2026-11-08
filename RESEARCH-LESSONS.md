@@ -803,3 +803,49 @@ zero elsewhere. That basis is proved; its runtime benefit is untested. Prefer
 a bounded test of this specific initialization before expanding the archive
 or attributing the difficulty to memory or language choice.
 [Checked model, negative projection and next basis test](formalization/canonical-width/c16/SHARED-MASTER-TWO-HOURS-RESULT.md).
+
+## C16: certify the search and check it independently
+
+The [symmetric-frames paper](formalization/canonical-width/c16/paper/output/pdf/symmetric-frames.pdf)
+proves that no width-16 canonical frame of Lee's C^LP_{16,9} has a nontrivial
+symmetry. The exhaustive search finished early. Most of the remaining time went
+on independent confirmation.
+
+**Certificates beat re-solving.** For days the independent check was a Kissat
+cube-and-conquer run on a counting-heavy encoding. Its hardest pieces each hit a
+55-hour limit, and 20 were still open when the paper was written. Once the search
+wrote its tree as a [certificate](formalization/canonical-width/c16/restricted-frames-20261031/certificates/FORMAT.md),
+an independent checker confirmed all three classes in about 80 minutes. Ask early
+what the cheapest independent check is. Re-solving is not the only option.
+
+**A spec alone is enough for an independent implementation.**
+[`CERT-SPEC.md`](formalization/canonical-width/c16/independent-check/CERT-SPEC.md)
+gave a different model everything it needed, and nothing more:
+- definitions, data formats, and the checking rules with their soundness argument;
+- known-answer tests: a passing certificate, three altered ones, and a planted frame;
+- file hashes, and a ban on reading our code.
+
+The C++ checker it produced (#76) regenerated the inputs itself and matched our
+node counts exactly. Its questions were answered only as recorded edits to the spec.
+
+**Racing two agents on a proof cost little and saved hours.** Two models worked on
+the Lean soundness proof in parallel, each on its own branch with its own file
+prefix (#77, #79). One reached `no_swap_frame` in about 20 minutes. The other
+caught two imprecisions in the lead's proof plan.
+
+**Verify every status yourself.** Mistakes to avoid repeating:
+- reporting a Lean build as clean when it had run out of memory (exit 137);
+- moving files while they were still being written;
+- using a Python reference checker too slow for the large certificates;
+- a final push that silently failed, and an agent that paused without saying so.
+
+So: rerun external results before citing them, read the exact theorem statement
+and its axioms, and treat silence as a status to chase.
+
+**Settle access and conventions first.** Before the work depends on them, check:
+- push rights to the repository;
+- review rules on the default branch;
+- file size limits for each transfer route.
+
+Read this repository's research skill at the start. This paper still lacks the
+chronology table and the Lean proof appendix that the skill asks for.
