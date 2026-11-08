@@ -88,7 +88,7 @@ The proof is computational: Theorem~\ref{thm:aut} identifies the group, Lemma~\r
 
 \section{Background}\label{sec:background}
 
-\paragraph{The code.} $\CLP$ is the self-adjoint lifted product~\cite{pk} of the $3\times5$ matrix over $\F_4[C_{16}]$ with coefficient array $((1,1,1,1,1),(1,1,\omega,0,\omega^2),(1,\omega^2,1,\omega,0))$ and exponent array $((0,0,0,0,0),(0,6,12,9,3),(0,12,6,2,14))$~\cite[eq.~(50)]{lee}, expanded to binary by the trace representation $\rho(\omega)=\left(\begin{smallmatrix}0&1\\1&1\end{smallmatrix}\right)$, $\rho(\omega^2)=\left(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\right)$. It has $480$ independent checks of weight at most $9$ in each sector, $n=1088$ and $k=128$; both CSS distances are $16$~\cite{enumeration}. The checks are rebuilt independently by \prior{verify_partial_frame.py}{\texttt{verify\_partial\_frame.py}}.
+\paragraph{The code.} $\CLP$ is the self-adjoint lifted product~\cite{pk} of the $3\times5$ matrix over $\F_4[C_{16}]$ with coefficient array $((1,1,1,1,1),\allowbreak(1,1,\omega,0,\omega^2),\allowbreak(1,\omega^2,1,\omega,0))$ and exponent array $((0,0,0,0,0),\allowbreak(0,6,12,9,3),\allowbreak(0,12,6,2,14))$~\cite[eq.~(50)]{lee}, expanded to binary by the trace representation $\rho(\omega)=\left(\begin{smallmatrix}0&1\\1&1\end{smallmatrix}\right)$, $\rho(\omega^2)=\left(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\right)$. It has $480$ independent checks of weight at most $9$ in each sector, $n=1088$ and $k=128$; both CSS distances are $16$~\cite{enumeration}. The checks are rebuilt independently by \prior{verify_partial_frame.py}{\texttt{verify\_partial\_frame.py}}.
 
 \begin{definition}
 A \emph{canonical frame} of a CSS code is a family $(\bar X_i,\bar Z_i)_{i=1}^{k}$ of logical operators in which $\bar X_i$ and $\bar Z_j$ anticommute iff $i=j$ and all other pairs commute. Its width is its largest operator weight, and $f(C)$ is the minimum width.
@@ -197,7 +197,7 @@ The following were tested and do not reduce the search materially:
 \begin{itemize}
 \item parity checks $\#\{e\in F:z_e^{\mathsf T}Lx_e=1\}\equiv\operatorname{tr}L$ (the smallest odd-trace check found involves at least $1515$ pairs; \oursf{explore/parity_checks.py});
 \item small cocircuits of the pool matroids (unit functionals, which meet $66$--$88$ pool vectors, are near-minimal; \oursf{explore/cocircuits.py});
-\item the orbit-aggregated rank-inequality LP, whose optimum is exactly $128$ (\oursf{explore/rank_lp.py});
+\item the orbit-aggregated rank-inequality LP, whose optimum is exactly $128$: \oursf{explore/rank_lp.py};
 \item root normalization by a forced vector, with no net gain;
 \item orbits forced by rank, of which there are none;
 \item orderly generation modulo the $32$-element group: a frame without symmetry lies in a free orbit of $32$ frames, so this saves at most a factor of $32$ and was not implemented;
@@ -257,7 +257,7 @@ Theorem~\ref{thm:aut}: every automorphism is $T^ks^b$$^\dagger$ & \al{aut_classi
 The 32 maps are distinct automorphisms; the graph is $G$$^\dagger$ & \al{gmap_aut}{96}, \al{gmap_distinct}{103}, \al{adj_spec}{48} \\
 \midrule
 \multicolumn{2}{@{}l}{\emph{Certificate check for the class $s$} (ChatGPT, \href{\repourl/tree/master/\cdir/lean}{\texttt{CertGPT*.lean}}~(\href{\repourl/tree/7820f6af3f4be5aadc452914153eaff74d7c20c2/\cdir/lean}{pinned}))} \\
-Theorem~\ref{thm:main} for $s$: no $s$-fixed frame$^\dagger$ & \href{\repourl/blob/master/\cdir/lean/CertGPTNoSwap.lean\#L92}{\texttt{no\_swap\_frame}}~(\href{\repourl/blob/7820f6af3f4be5aadc452914153eaff74d7c20c2/\cdir/lean/CertGPTNoSwap.lean\#L92}{pinned}), with \href{\repourl/blob/master/\cdir/lean/CertGPTVertex.lean\#L88}{\texttt{no\_swap\_vertex\_frame\_of\_no\_pair}}~(\href{\repourl/blob/7820f6af3f4be5aadc452914153eaff74d7c20c2/\cdir/lean/CertGPTVertex.lean\#L88}{pinned}) (to the $(S,T)$ form, any symmetric $G$) \\
+Theorem~\ref{thm:main} for $s$: no $s$-fixed frame$^\dagger$ & \href{\repourl/blob/master/\cdir/lean/CertGPTNoSwap.lean\#L92}{\texttt{no\_swap\_frame}}~(\href{\repourl/blob/7820f6af3f4be5aadc452914153eaff74d7c20c2/\cdir/lean/CertGPTNoSwap.lean\#L92}{pinned});\newline bridge to the $(S,T)$ form, for any symmetric $G$: \href{\repourl/blob/master/\cdir/lean/CertGPTVertex.lean\#L88}{\texttt{no\_swap\_vertex\_frame\_of\_no\_pair}}~(\href{\repourl/blob/7820f6af3f4be5aadc452914153eaff74d7c20c2/\cdir/lean/CertGPTVertex.lean\#L88}{pinned}) \\
 \bottomrule
 \end{tabular}
 \end{center}
