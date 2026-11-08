@@ -23,7 +23,7 @@ parts:
   looked_in: ICPSR 29462 study page and public download V7 (no data files); ICPSR 36968 page; Chen 2021
     appendices (no RQ2 data or input); see notes/availability.md
   reason: 'Every chapter, question and headline is accounted for. The RQ3 simulation was run in full (3,840
-    of 3,840 cells): 29 of Chen''s 44 testable Type I error and power statements agree with ours, while
+    of 3,840 cells): 29 of Chen''s 46 testable Type I error and power statements agree with ours, while
     the bias, coverage and MINT conclusions do not. RQ2 cannot be rerun without the restricted HSIS data.'
   evidence: notes/run-record.md; REPLICATION-PLAN.yaml
 - id: ch-1
@@ -70,8 +70,8 @@ parts:
   missing_input: HSIS restricted-use data for Tables 4.2-4.7 and Figures 4.1-4.11
   looked_in: notes/availability.md (ICPSR 29462 public and restricted routes, ICPSR 36968, the dissertation's
     appendices)
-  reason: Of the simulation results, 29 of 44 testable Type I error and power statements agree with Chapter
-    4, including all PNIE and PNDE power statements; read on our cells with h set to 0, 39 of the 44 would
+  reason: Of the simulation results, 29 of 46 testable Type I error and power statements agree with Chapter
+    4, including all PNIE and PNDE power statements; read on our cells with h set to 0, 39 of the 46 would
     hold. Tables 4.8 and 4.9 (bias, coverage, imbalance) disagree. The HSIS tables can only be checked
     arithmetically.
   evidence: results/table48_ours.csv; results/table49_ours.csv; results/statement_checks.csv
@@ -227,9 +227,10 @@ parts:
   plan: Rejection rate in cells whose population effect is nonzero.
   status: partly
   run_complete: true
-  reason: 16 of the 26 testable power statements agree (17 with slack), including all PNIE and PNDE statements;
-    the disagreements concern TNIE, TNDE and MINT cells in which h is part of the effect, where Chen reports
-    lower power than ours or no variation (for example MINT power .84 at n = 500 for ah = .20 in our run).
+  reason: '16 of the 28 testable power statements agree (17 with slack), including all PNIE and PNDE statements;
+    the disagreements concern TNIE, TNDE and MINT: most involve cells in which h is part of the effect,
+    where Chen reports lower power than ours or no variation, and two concern differences between cutoffs
+    that she describes as similar (for example MINT power .84 at n = 500 for ah = .20 in our run).'
   evidence: results/power.csv; results/statement_checks.csv
 - id: out-power-analytic
   kind: analysis

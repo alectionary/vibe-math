@@ -101,7 +101,7 @@ h0v = {r['statement']: r['verdict_if_h_were_0'] for r in checks if r['verdict'] 
 robust_dis = [k for k in verdicts if verdicts[k] == 'disagree' and slackv[k] == 'disagree']
 H0_FIXES = [k for k in robust_dis if h0v[k] == 'agree']
 n_h0 = sum(v == 'agree' for v in h0v.values())
-assert len(T1S) == 18 and len(PWS) == 26, (len(T1S), len(PWS))
+assert len(T1S) == 18 and len(PWS) == 28, (len(T1S), len(PWS))
 n_pnie = sum(1 for k in PWS if k.startswith('PNIE')); n_pnde = sum(1 for k in PWS if k.startswith('PNDE'))
 assert all(verdicts[k] == 'agree' for k in PWS if k.startswith(('PNIE', 'PNDE')))
 assert all(h0v[k] == 'agree' for k in verdicts if verdicts[k] == 'agree')   # no agreeing statement flips
