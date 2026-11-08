@@ -78,12 +78,12 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "bf1f601bdd4cc048c509db6aa0b23bcf8503cdbbdca680e19cf6be5706c4eb17"
+   "sha256": "3ef9628f714b8feae0991d25e34b5922b83c53bc4b9b77b3f5092fdd5a54acbb"
   },
   {
    "id": "stmt",
    "path": "results/statement_checks.csv",
-   "sha256": "50da8f2328de59cbedc6fece0781b88858da8dbcad1818ec43d43b12b161062a"
+   "sha256": "af7ac24d28e4755d697e5f092f58f952b846948358cf8ea807c7b7d0f06966ea"
   },
   {
    "id": "zero_code",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "ccda61827fa09cc9058bcff5bba969fd439beff45a7ffc086941efa0c342847e"
+   "sha256": "aeaee61615fe4a8ed89543bd79e05cfdcf67b5a38d8ca9eeae9d836d907ba782"
   }
  ],
  "sections": [
@@ -619,7 +619,7 @@
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "17 statements, each judged at its own threshold; no correction (descriptive).",
    "status": "partly_replicated",
-   "status_reason": "12 of 17 Type I statements agree (13 with slack). The robust disagreements are MINT with a = 0, where ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h; and three TNIE Type I statements at small n near the robustness bounds.",
+   "status_reason": "12 of 17 Type I statements agree (13 with slack). The robust disagreements are MINT with a = 0, where ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h; and TNIE Type I statements with a = 0 at small n (statements 9, 10, 11), where our rates and her description fall on different sides of the robustness bounds. Read with h = 0, statements 9, 17 would hold in our run.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
@@ -661,7 +661,7 @@
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "24 statements; no correction (descriptive).",
    "status": "partly_replicated",
-   "status_reason": "15 of 24 power statements agree (16 with slack): all six PNIE statements and all four PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. Of the 12 statements that disagree under both readings, 9 concern cells in which h is part of the effect (MINT; TNIE with b = 0, across levels of h, or with a = .59 and b = .14; TNDE with h > 0), and in each her text reports rates lower than ours or no variation with h, as would be expected if h contributed little to her estimates. The other 3 concern TNIE Type I error at small n near the robustness bounds. Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. These are consistency observations; the cause is not established.",
+   "status_reason": "15 of 24 power statements agree (16 with slack): all six PNIE statements and all four PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. As a consistency check, every statement was also read on our cells with h replaced by 0 (other factors unchanged; the verdict_if_h_were_0 column). Then 36 of 41 statements hold, against 27 as designed; 9 of the 12 statements that disagree under both readings become agreements, and none that agrees becomes a disagreement. The 3 that still disagree are statements 10, 11, 38 (numbered as in results/statement_checks.csv). Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. These observations are consistent with h contributing little to her estimates; they do not establish it.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
@@ -1022,7 +1022,7 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 41 testable Type I and power statements, 27 agree (29 with .01 threshold slack); 9 of the 12 robust disagreements concern cells in which h is part of the effect. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 41 testable Type I and power statements, 27 agree (29 with .01 threshold slack), and 36 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
  "limitations": [
   "R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it agrees with Chen on summaries only (H1-H4, S1-S3).",
   "Chen's aggregation code and population-value table are not printed, so the source of her bias, coverage and MINT results cannot be identified (H1, H2, H3, S1); our Type I and power agree with most of her statements (S2, S3).",
@@ -1030,6 +1030,6 @@
   "The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).",
   "The dissertation labels the cutoffs inconsistently: the code's index 1 is the 25th percentile (75% treated), as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25% treatment; we report by the code (H1, H2).",
   "Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).",
-  "Most of Chen's Type I and power statements that disagree with our run concern cells in which h is part of the effect, and her text defines PNDE as c' + h where the population value is c'; both are consistent with h contributing little to her estimates or population values, but neither is tested (S2, S3, H3)."
+  "Read on our cells with h replaced by 0, most of Chen's Type I and power statements that disagree with our run would hold, and her text defines PNDE as c' + h where the population value is c'; both are consistent with h contributing little to her estimates or population values, but neither is tested against her runs (S2, S3, H3)."
  ]
 }

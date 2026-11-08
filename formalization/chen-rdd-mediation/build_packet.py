@@ -97,11 +97,14 @@ T1S = [k for k in verdicts if 'Type I' in k]
 PWS = [k for k in verdicts if 'Type I' not in k]
 t1_agree, pw_agree = sum(verdicts[k] == 'agree' for k in T1S), sum(verdicts[k] == 'agree' for k in PWS)
 t1_slack, pw_slack = sum(slackv[k] == 'agree' for k in T1S), sum(slackv[k] == 'agree' for k in PWS)
+h0v = {r['statement']: r['verdict_if_h_were_0'] for r in checks if r['verdict'] in ('agree', 'disagree')}
 robust_dis = [k for k in verdicts if verdicts[k] == 'disagree' and slackv[k] == 'disagree']
-H_PATTERN = [k for k in robust_dis if k.startswith(('MINT', 'All power for MINT', 'TNDE1 power', 'TNIE1 (h = .15) power close',
-             'TNIE1 power shows', 'TNIE (h = .15), a = .59', 'TNIE1 (h = .15) power below .80 at n = 500 and above'))]
+H0_FIXES = [k for k in robust_dis if h0v[k] == 'agree']
+n_h0 = sum(v == 'agree' for v in h0v.values())
 assert len(T1S) == 17 and len(PWS) == 24, (len(T1S), len(PWS))
-assert len(robust_dis) == 12 and len(H_PATTERN) == 9, (len(robust_dis), len(H_PATTERN))
+assert all(h0v[k] == 'agree' for k in verdicts if verdicts[k] == 'agree')   # no agreeing statement flips
+NUM = {k: i for i, k in enumerate(verdicts, start=1)}
+rest = ', '.join(str(NUM[k]) for k in robust_dis if k not in H0_FIXES)
 
 ART = [
     ('pdf', 'source/chen2021.pdf'), ('plan', 'REPLICATION-PLAN.yaml'), ('sim', 'simulation/chen_sim.py'),
@@ -341,13 +344,14 @@ STMT_METHOD = ('Every Type I error and power statement in Chapter 4 that names c
                'factors it does not name, as in Chen\'s figures, and with fixed numeric readings of her words '
                '(for example "near zero" Type I < .025, "close to zero" power < .10, "around .80" .70-.90). '
                'A second reading moves every threshold .01 in her favour.')
-H_NOTE = ('Of the 12 statements that disagree under both readings, 9 concern cells in which h is part of the effect '
-          '(MINT; TNIE with b = 0, across levels of h, or with a = .59 and b = .14; TNDE with h > 0), and in each '
-          'her text reports rates lower than ours or no variation with h, as would be expected if h contributed '
-          'little to her estimates. The other 3 concern TNIE Type I error at small n near the robustness bounds. '
-          'Chen also defines PNDE as "adding c\' and h" (printed p. 104), whereas with the mediator intercept zero '
-          'in her data-generating model the population PNDE is c\'. These are consistency observations; the cause '
-          'is not established.')
+H_NOTE = (f'As a consistency check, every statement was also read on our cells with h replaced by 0 (other '
+          f'factors unchanged; the verdict_if_h_were_0 column). Then {n_h0} of {len(verdicts)} statements hold, '
+          f'against {n_agree} as designed; {len(H0_FIXES)} of the {len(robust_dis)} statements that disagree under '
+          f'both readings become agreements, and none that agrees becomes a disagreement. The {len(robust_dis) - len(H0_FIXES)} '
+          f'that still disagree are statements {rest} (numbered as in results/statement_checks.csv). Chen also '
+          f'defines PNDE as "adding c\' and h" (printed p. 104), whereas with the mediator intercept zero in her '
+          f'data-generating model the population PNDE is c\'. These observations are consistent with h contributing '
+          f'little to her estimates; they do not establish it.')
 excerpt('PNDE is calculated by adding c', 118)
 
 claim(id='S2', level='supporting',
@@ -368,7 +372,11 @@ claim(id='S2', level='supporting',
                      f'disagreements are MINT with a = 0, where ours is below Bradley\'s range at h = .05 through '
                      f'n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at '
                      f'h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation '
-                     f'across h; and three TNIE Type I statements at small n near the robustness bounds.'),
+                     f'across h; and TNIE Type I statements with a = 0 at small n (statements '
+                     f'{", ".join(str(NUM[k]) for k in robust_dis if k in T1S and k.startswith("TNIE"))}), where '
+                     f'our rates and her description fall on different sides of the robustness bounds. Read with h = 0, '
+                     f'statements {", ".join(str(NUM[k]) for k in robust_dis if k in T1S and h0v[k] == "agree")} would '
+                     f'hold in our run.'),
       numerical='not applicable', reconstruction_scope='full design',
       limitations=['The numeric readings of Chen\'s words are ours; the slack column shows which verdicts depend on them.',
                    'The figures themselves were not digitized; only the text was tested.'],
@@ -570,9 +578,9 @@ limitations = [
     'treatment; we report by the code (H1, H2).',
     'Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model '
     'the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).',
-    'Most of Chen\'s Type I and power statements that disagree with our run concern cells in which h is part of the '
-    'effect, and her text defines PNDE as c\' + h where the population value is c\'; both are consistent with h '
-    'contributing little to her estimates or population values, but neither is tested (S2, S3, H3).',
+    'Read on our cells with h replaced by 0, most of Chen\'s Type I and power statements that disagree with our run '
+    'would hold, and her text defines PNDE as c\' + h where the population value is c\'; both are consistent with h '
+    'contributing little to her estimates or population values, but neither is tested against her runs (S2, S3, H3).',
 ]
 
 packet = dict(
@@ -600,7 +608,7 @@ packet = dict(
                f'averages {summary["overall_mean_coverage"]*100:.1f}%, against Chen\'s 6-87% non-bias and 24-84% '
                f'coverage; MINT power reaches {our_mint:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
                f'{len(verdicts)} testable Type I and power statements, {n_agree} agree ({n_slack} with .01 threshold '
-               f'slack); 9 of the 12 robust disagreements concern cells in which h is part of the effect. The n = 5,000 '
+               f'slack), and {n_h0} would hold in our run if h were 0. The n = 5,000 '
                f'recommendation holds for most but not all cells. RQ2 is blocked by data access.'),
     limitations=limitations,
 )

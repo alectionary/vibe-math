@@ -1,0 +1,294 @@
+{
+  "reviewer": "independent cold-reader agent (fresh context, review 4)",
+  "pdf_sha256": "90542373b170b27c33b5a3e8c6a22941ad53a4019614ebd8448e9443fa99643f",
+  "source_sha256": "d8cd334f47db5b11bf845e05d757a765e87a6cb9a788d22d858309d389f0760a",
+  "packet_sha256": "bd259038c4bd5d55c41999d362eeb669179d622e699f8cb4812ffce12baaf9da",
+  "writer_manifest_sha256": "ec2fe14642856763468aefe90427ca9cc9a46c8185c08a32a2449357cab66203",
+  "editorial": {
+    "verdict": "fail",
+    "context": "fresh",
+    "read_order": [
+      "rendered_manuscript",
+      "evidence_packet"
+    ],
+    "checks": {
+      "abstract_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract, sentence 1",
+            "finding": "Opens 'We did not replicate three of the four simulation headline findings of Chen (2021), who reported that mediation analysis in a sharp regression discontinuity design gives biased natural direct effects, percentile bootstrap confidence intervals that cover the true value far less often than the nominal level, and near-zero power for the mediated interaction:' and then gives the published-versus-ours numbers (85.42 vs 0.00; 43.62 vs 0.04; 47.07 vs 0.33; near zero vs 0.836) and the run count (all 3,840 condition-cutoff cells). Verdict, source, original finding and evidence are in one sentence, and the verdict matches REPLICATION-PLAN.yaml (three headline parts mismatch, hl-n5000 partly)."
+          },
+          {
+            "page": 1,
+            "location": "abstract, sentence 2",
+            "finding": "The limit comes next, as required: 'We could not establish why her results differ ...; her Head Start Impact Study comparison is not established, as its data were unavailable.' The blocked RQ2 is not called a nonreplication. Its single stated reason ('her step comparing estimates with true values is unprinted') does not cover the mediated-interaction power gap, which Section 4.3 (p. 7) says cannot come from that step. Suggested fix only, because Section 1 gives the fuller reason."
+          },
+          {
+            "page": 1,
+            "location": "abstract, last sentence",
+            "finding": "The fourth headline (the minimum n of 5,000) is given as partly replicated with 86.3% and 89.2%. 'except effects with both paths zero' could be read as saying those effects were excluded from the shares; Section 4.4 (p. 7) shows they are included and fail. Polish."
+          }
+        ]
+      },
+      "introduction_verdict_first": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 2,
+            "location": "Section 1, paragraph 1, sentence 1",
+            "finding": "Repeats the verdict-first sentence with the exact count 'all 3,840 of 3,840 condition-cutoff cells', the four headline contrasts, and Chen's quoted 'All power for MINT is near zero' (printed p. 121, checked at PDF p. 135). The limit follows, then 'No headline effect reversed its sign', then the tolerance ('half a unit in Chen's last printed decimal ... (0.005, 0.005 and 0.01 percentage points); it is a rounding bound, not a sampling band')."
+          },
+          {
+            "page": 2,
+            "location": "Section 1, paragraph 1, 'two orders of magnitude smaller'",
+            "finding": "This holds for the imbalance (47.07 vs 0.33, about 140x) but understates the coverage shortfall (43.62 vs 0.04, about 1,200x before rounding: 0.0358). It is an understatement, not an overclaim. Suggested fix."
+          },
+          {
+            "page": 2,
+            "location": "Section 1, paragraph 2",
+            "finding": "The research questions follow the verdict, as required, with locators (printed pp. 7, 147, 148, 150), all checked against the source."
+          }
+        ]
+      },
+      "standalone_prose": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 caption",
+            "finding": "Defines PNIE/TNIE/PNDE/TNDE/MINT, 'condition-cutoff cell' and 'both-zero products' on page 1. No vague destinations, internal roles or authorship statements anywhere; file names are typeset with extensions."
+          },
+          {
+            "page": 8,
+            "location": "Section 5.1 heading '(S1)' onward",
+            "finding": "The labels S1-S8 are used from Section 5 on but defined only in Appendix C (p. 19). A first-time reader can infer them; adding one sentence in Section 1 would help. Polish."
+          },
+          {
+            "page": 5,
+            "location": "Table 3 caption 'results/table48_ours.csv'; also p. 6 Table 4, p. 7 Tables 5-6, p. 9 Table 7",
+            "finding": "Output files named in table captions are not hyperlinked (the inventory has no links on pp. 5, 6 and 9), although Appendix A links all of them. Polish."
+          },
+          {
+            "page": 1,
+            "location": "stage_checks.py cues",
+            "finding": "The cue scan of the .tex returned [] (no flagged phrases). I read every page anyway; nothing reads as internal shorthand."
+          }
+        ]
+      },
+      "headline_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 rows E1-E5 and abstract",
+            "finding": "All four headline claims H1-H4 and every packet contrast (H1 c0, H2 c0 and c1, H3 c0, H4 nonscalar) appear on page 1, with the packet's verdicts (no match x3, partial), matching the claim statuses (not_replicated x3, partly_replicated) and the plan's hl-* parts."
+          },
+          {
+            "page": 4,
+            "location": "Section 4.1 H1",
+            "finding": "Chen's H1 components are all present: 12.50-18.75% within [-.10, .10], negative bias (quoted, printed p. 147, checked at PDF p. 161) and her functional-form explanation ('may be an indicator', 'plausible explanation', checked). The cutoff trend is handled in Section 8.1 (p. 13)."
+          },
+          {
+            "page": 6,
+            "location": "Sections 4.2-4.4",
+            "finding": "H2 includes the 'chief conclusion' quotation (printed p. 151, checked at PDF p. 165, exact). H3 quotes p. 121 and 'never reached the .80 level' (p. 148, exact). H4 quotes p. 150 exactly ('a minimum sample size of 5000 has accurate Type I error rates and power above .80, regardless of cutoff score'); her 'Tentatively' is preserved as 'tentative'."
+          }
+        ]
+      },
+      "claim_coverage": {
+        "verdict": "fail",
+        "findings": [
+          {
+            "page": 9,
+            "location": "Table 7 and Section 5.2",
+            "finding": "Coverage of the statements is complete. I read Chen's Type I error section (PDF pp. 113-123) and power section (PDF pp. 124-136) in full. Every sentence that names cells and a checkable outcome maps to one of the 41 rows in simulation/statement_checks.py, and the paper's Table 7 reproduces them. The sentences not tested are trends ('power varied as a function of sample size') or are implied by a tested row (PNDE Type I 'no differences across cutoff scores' is implied by within-band at every cutoff; PNDE 'Given c' = 0, n <= 2500 below .80' is implied by statement 32). statement_checks.py reruns byte-identical to results/statement_checks.csv."
+          },
+          {
+            "page": 10,
+            "location": "Table 7 statements 24-28 ('TNIE1 (h = .15)')",
+            "finding": "Scope note, not a failure. Chen's paragraph (PDF p. 126) calls the h = .15 cutoff figure 'Figure 4.23', but Figure 4.23 is TNIE1 at all levels of h. The script tests the intersection (cutoff 1, h = .15) without saying why. I reran both full readings (TNIE1 at each h, including h = 0 where the effect is nonzero; all cutoffs at h = .15). The verdicts of 24-28 do not change. Nor do those of 29 (with h = 0), 35 (with c' = 0) and 40 (with c' = 0, strict and slack). Disclose the reading."
+          },
+          {
+            "page": 8,
+            "location": "Section 5.2 paragraph 2: 'Of the 12 statements that disagree under both readings, 9 concern cells in which h is part of the effect, and in each her text reports rates lower than ours or no variation with h ... The other three robust disagreements concern TNIE Type I error at small n near the robustness bounds (statements 9-11)'; repeated in the p. 2 introduction ('9 of the 12 that disagree under both readings concern effects that include h'), p. 11 Section 6 S2 reason and p. 15 Section 10.2",
+            "finding": "FAIL. No script computes this classification, and the stated criterion does not reproduce it. Statement 9 disagrees exactly in its h = .15 and h = .34 cell sets: our TNIE3 Type I at n = 500 is .043 and .054, comfortably inside [.025, .075], where Chen reports 'outside ... for all levels of h' (PDF p. 116). That is the same 'no variation with h' pattern, with population value zero because a = 0, as statement 17, which the paper counts among the 9. So statement 9 meets the paper's own criterion, and 'near the robustness bounds' is wrong for it. Statement 11's failing b = 0, h = .05 set (.004 at n = 500, below .025 through n = 2,500) is also not 'near the bounds'. The introduction's wording 'effects that include h' would cover all 12, since TNIE = ab + ah. The error understates the h pattern the paper ranks first in Section 10.2, but it is a wrong description of the evidence in the opening paragraph. Recount with an explicit rule and correct the description of statements 9-11."
+          },
+          {
+            "page": 19,
+            "location": "Appendix C and writer-manifest claim_map",
+            "finding": "Every packet claim (H1-H4, S1-S8) and every dissertation part (front matter, Chapters 1-5, References, Appendices A-B) is accounted for. Each claim_map page locator checked against the PDF (e.g. H3 statement 41 on p. 10, Section 10.2 on p. 15, S5 Section 5.3 on p. 11). Chapter 4's coverage-section prose (PDF pp. 137-160) and the Chapter 5 statement 'Power was uniform across all cutoff scores for the other effects' (PDF p. 162) are not tested statement by statement. H2 and the Table 4.9 comparison cover the coverage conclusion. Suggested fix: say so."
+          }
+        ]
+      },
+      "limitations_preserved": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 14,
+            "location": "Section 9 items 1-7",
+            "finding": "All seven packet limitations appear verbatim in substance (identical wording) as Section 9 items 1-7. They also appear where they apply: limitations_map entries 0-6 checked against Sections 3.3/8.3 (pp. 3, 13), the abstract and Sections 10.1-10.2, Section 5.3 (p. 10), Section 5.4/10.4 (pp. 11, 15), Section 8.1 (p. 13), Section 4.1 (p. 4) and the introduction/Section 5.2 (pp. 2, 8)."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 caption",
+            "finding": "Uncertainty is kept on page 1: 'Chen reports no Monte Carlo errors; ours are about 0.7 percentage points per cell.' The binomial SE sqrt(.95 x .05/1000) = .0069 is correct."
+          },
+          {
+            "page": 13,
+            "location": "Section 7.5",
+            "finding": "The post hoc choice of the H3 contrast cell ('after the full results were available') is disclosed, as in the packet's H3 multiplicity field."
+          }
+        ]
+      },
+      "scientific_process_distinction": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 2,
+            "location": "Section 2",
+            "finding": "Separates Chen's contribution (model, estimators eqs. 3.5-3.11, Table 3.1 design, Appendices A-B code, printed numbers) from ours (re-implementation, run, comparison). Values derived from her printed tables are flagged (dagger in Table 8 on p. 12; Table 1 caption 'E1-E3 published effects are our averages of her rows')."
+          },
+          {
+            "page": 5,
+            "location": "Section 5.1; Section 10.1 (pp. 14-15)",
+            "finding": "No cause of Chen's discrepancy is presented as established. The zero-estimate pattern is 'a consistency observation about the printed table, not a diagnosis' (verified: secondary/zero_estimate_check.csv gives 75.00/50.00 PNIE and 87.50/75.00 MINT, matching her median-cutoff rows; TNIE 59.38 vs 60.00). Candidate (e) is 'untested, not established'. Section 4.1's statement that her data-generating model has no term that would bias OLS is supported by Appendix A (PDF pp. 189-191: x enters only through t and r). 'OLS has no source of bias' is slightly strong for product estimators, but the 0.016 maximum |bias| supports it in practice."
+          },
+          {
+            "page": 3,
+            "location": "Section 3.3",
+            "finding": "The process claims match notes/run-record.md and simulation/fallback.json: R unavailable on both hosts; 401 + 879 conditions; Python 3.13.18/NumPy 2.5.3 and 3.10.12/NumPy 2.2.6; cross-host difference 1.1e-16; 13.7 core-hours; scikit-learn 1.9.1 validation. The p. 8 claim that the thresholds were 'fixed in the script before the comparison' rests only on the script's own docstring. I could not verify the timing without history. The slack column mitigates this."
+          }
+        ]
+      },
+      "abstract_source_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "abstract citation and References (p. 16)",
+            "finding": "Donna Chen, 'Statistical Mediation Analysis in Regression Discontinuity Design for Causal Inference', doctoral dissertation, University of Nebraska-Lincoln, December 2021, advisers James A. Bovaird and Lorey A. Wheeler. All match the title page and abstract page (PDF pp. 1-2: 'Under the Supervision of Professors James A. Bovaird & Lorey A. Wheeler', 'Lincoln, Nebraska', 'December, 2021'). Source sha256 9206b3d8... matches the packet."
+          },
+          {
+            "page": 1,
+            "location": "abstract, sentence 1, original finding",
+            "finding": "States her headline faithfully: biased direct effects (PDF p. 161), low coverage (Table 4.9, PDF p. 138; p. 164 'systematically fell above the CIs'), near-zero MINT power (PDF pp. 135, 162)."
+          },
+          {
+            "page": 2,
+            "location": "Section 1 quotation of Chen's abstract",
+            "finding": "'Type I error rate and power for all mediation effects were within or reached the robustness criteria, but bias and coverage were more often outside the robustness range' matches PDF p. 3 exactly. Other quotations were checked exactly at their cited pages: p. 121, p. 147 ('When bias was present, the measure of bias was a negative value'), p. 148, p. 150, p. 151, p. 104 ('adding c' and h'; source uses a typographic prime), p. 112, p. 58, p. 87 ('collapsed across sample and effect size'), p. 54 ('the standard deviation of the RCT outcome'), p. 86 ('25% control—75% treatment')."
+          }
+        ]
+      },
+      "effect_magnitude_fidelity": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 rows E1-E3",
+            "finding": "Recomputed from Chen's printed Table 4.8 (PDF p. 102): mean of 100 minus (12.50, 12.50, 18.75, 12.50, 12.50, 18.75) = 85.4167 -> 85.42. From Table 4.9 (PDF p. 138): 95 - 770.71/15 = 43.6193 -> 43.62, and mean(above - below) = 706.07/15 = 47.0713 -> 47.07. From results/table48_ours.csv and table49_ours.csv: 0 of 7,680 direct-effect results with |bias| > .10 -> 0.00; 95 - 94.9642 = 0.0358 -> 0.04; mean imbalance 0.3258 -> 0.33. All are signed as stated, in percentage points, and the positive meanings match the packet contrasts."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 caption tolerances",
+            "finding": "E1 0.005 and E2 0.005 (means of values rounded to 0.01) and E3 0.01 (difference of two such means) are correct half-unit derivations. magnitude 'smaller' and direction 'zero vs nonzero' (E1; ours exactly 0), 'same direction' (E2, E3; positive both) are correct. Caption: 'Descriptive point estimates; not equivalence.'"
+          },
+          {
+            "page": 6,
+            "location": "Section 4.2 paragraph 2",
+            "finding": "Uncertainty is explained honestly. The smallest row gap of 11.14 pp (83.99 vs 95.13) is about 16 binomial SEs of a single cell, and no Holm adjustment over 15 rows could close it. Chen's missing Monte Carlo error is stated."
+          }
+        ]
+      },
+      "finding_attribution": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 row E1 Published/Ours",
+            "finding": "Published 'PNDE and TNDE within [-.10, .10] in only 12.50-18.75% of conditions, with negative bias' matches Table 4.8 (PDF p. 102) and p. 147 (PDF p. 161). Ours 'within [-.05, .05] in 100% of conditions; largest |bias| 0.016' matches table48_ours.csv (max 0.0155 for PNDE3) and summary.json overall_max_abs_bias 0.01551."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 rows E2-E3 Published/Ours",
+            "finding": "Published 'Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI' matches Table 4.9 (Above CI exceeds Below CI in all 15 rows). Ours 'Coverage 94.6-95.6% ...; misses on both sides at similar rates' matches table49_ours.csv (coverage 94.59-95.63; truth below 1.84-2.71, above 2.52-2.90)."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 rows E4-E5 Published/Ours",
+            "finding": "E4 Published 'MINT power near zero at every sample size; never reaches .80' matches PDF pp. 135 and 162. E4 Ours '0.836 at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000' matches summary.json (0.8361; 0.9735, 0.9824), and 48 cells average 0.836125. E5 Published matches PDF p. 164. E5 Ours (86.3%, 89.2%, 'similar at each cutoff' 85.7-87.0/88.3-89.9, both-zero products conservative at about .002) matches statement_checks.csv summary rows and cells.csv (PNIE/TNIE/MINT all-zero Type I .0012-.0020 at every n). No cell is a placeholder or unsupported."
+          }
+        ]
+      },
+      "comparison_applicability": {
+        "verdict": "pass",
+        "findings": [
+          {
+            "page": 1,
+            "location": "Table 1 row E4 (scalar_unestablished)",
+            "finding": "Justified. Chen tabulates no MINT power value; the only source statements are verbal ('near zero', 'never reached the .80 level'). So a scalar contrast (rejection rate in a named cell) exists, but there is no printed precision or prespecified margin. Magnitude and direction are 'not established' because the published value is null. The row verdict 'no match' is kept separate from the magnitude label and rests on the qualitative conflict, as Section 4.3 (p. 7) says."
+          },
+          {
+            "page": 1,
+            "location": "Table 1 row E5 (nonscalar)",
+            "finding": "Justified. The p. 150 recommendation is a design rule over the whole grid ('regardless of cutoff score'). Any pooled share would depend on the grid's mix of effect sizes, and the component evidence (Table 6, p. 7; by-cutoff shares) is kept in the body. The verdict 'partial' is separate from the 'not established' magnitude, and the caption says 'E5 is qualitative'."
+          },
+          {
+            "page": 7,
+            "location": "Section 4.3, Section 4.4 last sentence",
+            "finding": "The prose makes clear that no tolerance or magnitude label can be computed for E4 and that 'No scalar contrast represents a recommendation over the grid, so its magnitude is not established (row E5)'. The 'not equivalence' note is said to apply to the E1-E4 magnitude labels only."
+          }
+        ]
+      }
+    },
+    "phrase_dispositions": []
+  },
+  "pdf_links": {
+    "verdict": "pass",
+    "pdf_sha256": "90542373b170b27c33b5a3e8c6a22941ad53a4019614ebd8448e9443fa99643f",
+    "inventory_sha256": "421b605e4e7c2ffc54cebfcc9fe7a998aaff318bfe92eb017d8b435098a15df8",
+    "findings": [
+      {
+        "page": 17,
+        "finding": "Appendix A: every repository file in the artifacts table is a clickable link whose visible label is the filename with its extension (chen_sim.py, validate_estimator.py, fallback.json, cells.csv, table48_ours.csv, table49_ours.csv, type1.csv, power.csv, summary.json, statement_checks.py/.csv, zero_estimate_check.py/.csv, table_arithmetic.py/.csv, availability.md). Each targets github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/... ."
+      },
+      {
+        "page": 18,
+        "finding": "Directories simulation/, results/, secondary/, notes/ use tree/master. The .tex (label split across two lines as two annotations to the same target), references.bib, approved-preamble.tex, handoff/SNAPSHOTS.md, REPLICATION-PLAN.yaml, build_packet.py, evidence-packet.json and README.md are linked. The source dissertation is labeled 'Digital Commons record' and points to the external record, not to a repository path; source/chen2021.pdf is correctly left unlinked."
+      },
+      {
+        "page": 3,
+        "finding": "All 65 annotations in provenance/pdf-links.json checked, not just a sample: 59 repository links (55 blob/master files, 4 tree/master directories), all of which exist in the working tree and are git-tracked; 6 external links (digitalcommons.unl.edu/cehsdiss/403 x3, ICPSR 29462 and 36968, R-project.org), all legitimate citations. Spot-checked rendering on pp. 3, 4, 8, 13, 17, 18."
+      },
+      {
+        "page": 5,
+        "finding": "Not a defect of the links present: the file names in the captions of Tables 3-7 (pp. 5, 6, 7, 9) are not linked. Suggested polish."
+      }
+    ]
+  },
+  "items": {
+    "layout": "The shared preamble is byte-identical to formalization/koziol-weighted-multilevel/paper/approved-preamble.tex (handoff/SNAPSHOTS.md revision 454cc89). The disclosed additions (lmodern, T1, textcomp, microtype) are listed as a ledger departure. Page 1 has the title, date, abstract, then Table 1 before the introduction. Table 1 is legible but dense: narrow text columns wrap heavily, the caption is small, and rows E2/E3 repeat identical Published/Ours text. Acceptable; tightening is polish.",
+    "headline_and_tolerance": "Page 1 states each row's tolerance and units in the Table 1 caption (E1 0.005 pp, E2 0.005 pp, E3 0.01 pp; E4 not established; E5 not applicable) and gives direction in its own column. The abstract has no tolerance; the introduction (p. 2) restates it as a rounding bound, not a sampling band.",
+    "citations": "Author-year style throughout. check_citations.py result recorded in the manifest (9 keys, 9 references, 0 errors). Chen metadata verified against the title page. Page locators spot-checked against the source (printed pp. 7, 19, 29, 53-55, 57-58, 60, 86-88, 99-121, 124, 146-151, 175-179, 189). Bradley 1978, Hoogland & Boomsma 1998, Valeri & VanderWeele 2013, Harris 2020 and Pedregosa 2011 details look correct; I did not check them against publishers, and the ledger discloses the same limit.",
+    "ledgers": "The compliance ledger (Appendix B, pp. 18-19) uses followed/departed with a reason for each departure (engine, reference verification, commit pinning, template additions). Table 9 (p. 16) faithfully reproduces notes/availability.md, dated 2026-11-08. Its row 2 ('Documentation and public-use files after free sign-in') sits awkwardly next to row 3 ('no data files'); availability.md shows the V7 public download contained documentation only. Suggest clarifying.",
+    "links": "Labels name real files with extensions; all 59 repository targets are master blob/tree paths that exist in the working tree. The study is on branch replication/chen-2021, so master links resolve only after merge. They are explicitly framed as navigation aids, per the series convention.",
+    "independence_limits": "I did not rerun the 13.7 core-hour simulation or validate_estimator.py, and did not open git history. So the cross-host check, the scikit-learn agreement and the claim that the statement thresholds were fixed before comparison are verified only against the run record, fallback.json and the script docstring. I did rerun statement_checks.py (byte-identical output) and recomputed E1-E3, the Table 3-6 values, the zero-effect counts and the scope variants from cells.csv. I did not check the ICPSR pages online, did not digitize Chen's figures, and did not read the earlier review files. A human reviewer is still needed."
+  },
+  "required_fixes": [
+    "Pages 2, 8, 11, 15: correct the 'Of the 12 statements that disagree under both readings, 9 concern cells in which h is part of the effect ... The other three ... concern TNIE Type I error at small n near the robustness bounds (statements 9-11)' classification. Statement 9 disagrees exactly in its h = .15 and .34 cell sets (our TNIE3 Type I at n = 500 is .043 and .054, inside the band, versus Chen's 'outside ... for all levels of h'). That is the same pattern as statement 17, which is counted among the 9. And 'near the robustness bounds' does not describe statement 9 or statement 11's b = 0, h = .05 set (.004 at n = 500). State an explicit, reproducible criterion (ideally computed in statement_checks.py), recount (10 of 12 under the paper's own stated criterion), and update the introduction, Section 5.2, the Section 6 S2/S3 reasons, Section 10.2, and the matching packet and plan text."
+  ],
+  "suggested_fixes": [
+    "Page 2: 'two orders of magnitude smaller' is accurate for the imbalance (about 140x) but not the coverage shortfall (about 1,000x); say 'two to three orders' or give the ratios.",
+    "Page 1 abstract: the stated reason for the unexplained differences ('her step comparing estimates with true values is unprinted') does not cover the MINT power gap. Add 'and her result files are not available', as in Section 1.",
+    "Page 1 abstract: reword 'except effects with both paths zero' (e.g. 'with effects whose two paths are both zero staying conservative') so it is not read as an exclusion. Consider also mentioning that the smallest effects (ah = .007) stay below .80.",
+    "Pages 9-10 Table 7 / Section 5.2: say that statements 24-28 are tested at cutoff 1 and h = .15 because Chen's paragraph mixes Figures 4.23 and 4.24, and that verdicts are unchanged under either full reading (verified by this review).",
+    "Page 8: define S1-S8 when first used (or in Section 1), not only in Appendix C.",
+    "Pages 5-9: hyperlink the result-file names in the captions of Tables 3-7.",
+    "Page 16 Table 9: reconcile 'public-use files after free sign-in' with 'no data files' in the V7 download.",
+    "Page 8 / statement_checks.py: say that 'fixed in the script before the comparison' is recorded in the script itself, or point to a dated record.",
+    "Page 20 Appendix C: note that Chapter 4's coverage-section prose (PDF pp. 137-160) and the Chapter 5 cutoff-uniformity statement (PDF p. 162) are covered by the Table 4.9 comparison rather than tested statement by statement.",
+    "Packet hygiene (not in the PDF): claim S5's 'stopping' block is copied from the simulation claims ('All 3,840 condition-cutoff cells ...'); E1's uncertainty says Monte Carlo error 'at most about .01', while cells.csv gives at most 0.0056, as the paper correctly states."
+  ]
+}
