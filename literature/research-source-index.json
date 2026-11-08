@@ -141,38 +141,31 @@
     },
     {
       "id": "OkadaKasai2026",
-      "title": "High-Girth Regular Quantum LDPC Codes from Square-Base Hypergraph Products via CPM Lifts",
+      "title": "Rate-2/3 Girth-8 (3,18)-Regular Quantum LDPC Codes from Two-Branch Finite-Field Bases and CPM Lifts",
       "authors": [
         "Koki Okada",
         "Kenta Kasai"
       ],
-      "date_or_version": "arXiv:2604.27817v3",
-      "url": "https://arxiv.org/html/2604.27817v3",
+      "date_or_version": "arXiv:2606.27130v2, 5 September 2026",
+      "url": "https://arxiv.org/html/2606.27130v2",
       "access": "full_text",
-      "locator": "Lemma 3, Theorem 5, Corollary 6",
-      "relationship": "Closely related support reduction and product-cycle results.",
-      "comparison_limit": "Square binary input and constrained CPM lifts differ from arbitrary rectangular monomial matrices.",
-      "provenance_ledger": "formalization/cyclic-lifts/search/loop-literature-review.json",
-      "checked_on": "2026-10-23",
-      "related_target_ids": [
-        "L-P34-decoding-effects",
-        "L-P34-base-design",
-        "L-P34-girth-eight",
-        "L-F26-exact-distance",
-        "L-F26-logical-qubit-lifts",
-        "L-F26-replicated-comparisons"
-      ],
-      "bibliography_id": "F26",
+      "locator": "Sections3.4,3.7 and6; exact-distance and affine-ceiling theorems",
+      "relationship": "Issue1 post-lemma primary comparison; related prior methods credited.",
+      "comparison_limit": "The v2 paper proves one 34542-qubit code has distance18 and a fixed-base affine-shift ceiling for primes greater than19. Its pair-at-check normal-graph enumeration and exact integer consistency certificates are related prior methods and are credited. Its different two-branch finite-field construction is not our monomial 3x4 symmetric LP family; its theorems do not imply our universal truncated bound. The earlier v1 distance-upper-bound language must not replace this v2 exact-distance result.",
       "record_kind": "academic_source",
-      "selection_review_ledger": "literature/quantum-next-selection-2026-10-24.json",
+      "bibliography_id": "F94",
+      "checked_on": "2026-10-25",
+      "related_target_ids": [
+        "L-F25-distance-preservation"
+      ],
+      "provenance_ledger": "literature/truncated-distance12-source-screening.json",
       "question_screening": {
-        "ledger": "literature/quantum-next-selection-2026-10-24.json",
-        "checked_on": "2026-10-24",
         "status": "full_text_screened",
+        "screen_date": "2026-10-25",
+        "target_count": 1,
+        "audit": "literature/truncated-distance12-source-screening.json",
         "target_ids": [
-          "L-F26-exact-distance",
-          "L-F26-logical-qubit-lifts",
-          "L-F26-replicated-comparisons"
+          "L-F94-nonaffine-lifts"
         ]
       }
     },
@@ -606,7 +599,7 @@
       "access": "full_text_local_seed_copy_and_online_record",
       "locator": "Chapter 5, Section 5.2, Table 5.1, printed p.69 / PDF p.81; Chapter 6 printed p.74 / PDF p.86",
       "relationship": "Prior opposing syndrome/logical representation effects and explicit lifted-product redundancy research direction.",
-      "comparison_limit": "Gallager-B, different transformation and failure-inducing absorbing-set count; not our fixed integer min-sum LP merger; not a replacement for unavailable P10 conference text.",
+      "comparison_limit": "Gallager-B, different transformation and failure-inducing absorbing-set count; not our fixed integer min-sum LP merger; not a replacement for unavailable P10 conference text. Fetch issue 11 is this same PDF (sha256 73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517). Chapter 6 states three further directions, recorded as L-F187-nonabsorbing-failure-sets, L-F187-gallager-b-convergence-bound, and L-F187-redundancy-other-families.",
       "local_file": "2025-Morris-Analysis-of-Graph-based-Decoders-for-Quantum-Low-Density-Parity-Check-Codes.pdf",
       "local_sha256": "73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517",
       "additional_primary_urls": [
@@ -617,9 +610,23 @@
       "checked_on": "2026-10-23",
       "related_target_ids": [
         "L-P34-decoding-effects",
-        "L-P34-base-design"
+        "L-P34-base-design",
+        "L-F187-nonabsorbing-failure-sets",
+        "L-F187-gallager-b-convergence-bound",
+        "L-F187-redundancy-other-families"
       ],
-      "record_kind": "seed_dissertation"
+      "record_kind": "seed_dissertation",
+      "bibliography_id": "F187",
+      "question_screening": {
+        "ledger": "literature/fetch-ingest/11/SCREEN.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": [
+          "L-F187-nonabsorbing-failure-sets",
+          "L-F187-gallager-b-convergence-bound",
+          "L-F187-redundancy-other-families"
+        ]
+      }
     },
     {
       "id": "AbiadCastriota2026",
@@ -4105,24 +4112,28 @@
       "authors": [
         "William H. Cunningham"
       ],
-      "date_or_version": "Journal of Combinatorial Theory, Series B36(2),161–188,April1984",
-      "url": "https://www.sciencedirect.com/science/article/pii/0095895684900236",
+      "date_or_version": "Journal of Combinatorial Theory, Series B 36 (1984), 161–188",
+      "url": "https://doi.org/10.1016/0095-8956(84)90023-6",
       "record_kind": "academic_source",
       "bibliography_id": "F173",
-      "access": "metadata_or_selected_passages_only",
-      "locator": "Publisher-indexed abstract; author publication entry18; author available-papers index; Bonn report81207 index; OpenAlex W2080656989; connected-browser publisher challenge. Fulltext request63 pending.",
-      "relationship": "Prospective exact matroid-membership algorithm reference after the independently derived C16 exchange-repair gate.",
-      "comparison_limit": "Full text not retrieved or question-screened. Current implementation is not identified with Cunningham's algorithm and inherits no complexity guarantee.",
+      "access": "full_text",
+      "locator": "Section 6, printed p. 182 / PDF p. 22, extracted lines 973–976",
+      "relationship": "Strongly polynomial matroid-polyhedron membership algorithm, and the stated open problem of strongly polynomial submodular function minimization.",
+      "comparison_limit": "No complexity bound is transferred to the C16 repair. L-F91-c16-unrestricted-width is unchanged. Present-day resolution of the 1984 minimization problem was not assessed.",
       "related_target_ids": [
-        "L-F91-c16-unrestricted-width"
+        "L-F91-c16-unrestricted-width",
+        "L-F173-strongly-polynomial-sfm"
       ],
-      "provenance_ledger": "formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json",
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
       "question_screening": {
-        "status": "not_assessed",
-        "target_ids": [],
-        "ledger": "formalization/canonical-width/c16/coupling-results/cunningham-membership-reference.json"
+        "status": "full_text_screened",
+        "target_ids": [
+          "L-F173-strongly-polynomial-sfm"
+        ],
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02"
       },
-      "checked_on": "2026-10-30",
+      "checked_on": "2026-11-02",
       "retrieval_status": "acquisition_requested",
       "acquisition_issue": "https://github.com/alectionary/vibe-math/issues/63"
     },
@@ -4348,6 +4359,221 @@
         "ledger": "literature/owner-lift-20261030/F181-screen.json"
       },
       "checked_on": "2026-10-30"
+    },
+    {
+      "id": "F182",
+      "bibliography_id": "F182",
+      "title": "In praise of partially interpretable predictors",
+      "authors": [
+        "Tri Le",
+        "Bertrand S. Clarke"
+      ],
+      "date_or_version": "2020 journal; UNL faculty copy",
+      "url": "https://doi.org/10.1002/sam.11450",
+      "access": "full_text",
+      "locator": "Section 3.2, extracted lines 890–908",
+      "relationship": "Author-stated conjecture that Theorem 3.3, Clause 1, combines with Theorem 3.2, Clause 2 or 3, into pointwise MSE forms for (PC, LM) and (NW, LM).",
+      "comparison_limit": "The forms are not displayed. The stacking nonlinearity sentence and the Section 5 tradeoff are not additional targets. Wheat example uses F150; it does not settle L-F102.",
+      "related_target_ids": [
+        "L-F182-stacking-mse-asymptotics"
+      ],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": [
+          "L-F182-stacking-mse-asymptotics"
+        ]
+      }
+    },
+    {
+      "id": "F183",
+      "bibliography_id": "F183",
+      "title": "An efficient approach to large-scale genotype–phenotype association analyses",
+      "authors": [
+        "Runqing Yang",
+        "Hongwang Li",
+        "Lina Fu",
+        "Yongxin Liu"
+      ],
+      "date_or_version": "advance access 29 August 2013; volume 15(5), 814–822",
+      "url": "https://doi.org/10.1093/bib/bbt061",
+      "access": "full_text",
+      "locator": "Discussion and key points",
+      "relationship": "Conditional-phenotype LASSO method for large multi-trait association scans, described as a staged structural-equation solution.",
+      "comparison_limit": "No additional explicit mathematical target. Simulations are not a universal power theorem.",
+      "related_target_ids": [],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": []
+      }
+    },
+    {
+      "id": "F184",
+      "bibliography_id": "F184",
+      "title": "Understanding the metabolome and metagenome as extended phenotypes: The next frontier in macroalgae domestication and improvement",
+      "authors": [
+        "Kelly J. DeWeese",
+        "Melisa G. Osborne"
+      ],
+      "date_or_version": "author manuscript; journal October 2021, 52(5), 1009–1030",
+      "url": "https://doi.org/10.1111/jwas.12782",
+      "access": "full_text",
+      "locator": "Section 4 conclusions",
+      "relationship": "Review of metabolome and microbiome tools for macroalgae, including existing SEM and QTL methods.",
+      "comparison_limit": "Author manuscript, not the publisher version. Empirical breeding and microbiome directions are not mathematical targets.",
+      "related_target_ids": [],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": []
+      }
+    },
+    {
+      "id": "F185",
+      "bibliography_id": "F185",
+      "title": "The wright stuff: reimagining path analysis reveals novel components of the sex determination hierarchy in Drosophila melanogaster",
+      "authors": [
+        "Justin M. Fear",
+        "Michelle N. Arbeitman",
+        "Matthew P. Salomon",
+        "Justin E. Dalton",
+        "John Tower",
+        "Sergey V. Nuzhdin",
+        "Lauren M. McIntyre"
+      ],
+      "date_or_version": "BMC Systems Biology (2015) 9:53",
+      "url": "https://doi.org/10.1186/s12918-015-0200-0",
+      "access": "full_text",
+      "locator": "Discussion and conclusions",
+      "relationship": "SEM expansion of the Drosophila sex-hierarchy network in two populations.",
+      "comparison_limit": "Biological findings and a mutant check. No mathematical target. Named code was located and not cloned.",
+      "related_target_ids": [],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": []
+      }
+    },
+    {
+      "id": "F186",
+      "bibliography_id": "F186",
+      "title": "Multi-trait multi-locus SEM model discriminates SNPs of different effects",
+      "authors": [
+        "Anna A. Igolkina",
+        "Georgy Meshcheryakov",
+        "Maria V. Gretsova",
+        "Sergey V. Nuzhdin",
+        "Maria G. Samsonova"
+      ],
+      "date_or_version": "BMC Genomics 21(Suppl 8):490 (2020)",
+      "url": "https://doi.org/10.1186/s12864-020-06833-2",
+      "access": "full_text",
+      "locator": "Conclusions, extracted line 348",
+      "relationship": "mtmlSEM model separating single-trait and pleiotropic SNP effects, with a chickpea application.",
+      "comparison_limit": "The genomic-selection sentence does not fix an estimand. No inventory target.",
+      "related_target_ids": [],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": []
+      }
+    },
+    {
+      "id": "F150",
+      "bibliography_id": "F150",
+      "title": "Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat",
+      "authors": [
+        "B. T. Campbell",
+        "P. S. Baenziger",
+        "K. S. Gill",
+        "K. M. Eskridge",
+        "H. Budak",
+        "M. Erayman",
+        "I. Dweikat",
+        "Y. Yen"
+      ],
+      "date_or_version": "Crop Science 43 (2003), 1493–1505",
+      "url": "https://doi.org/10.2135/cropsci2003.1493",
+      "access": "full_text",
+      "locator": "Conclusions, printed pp. 1502–1504",
+      "relationship": "Phenotypic and QTL source for the wheat measurements used by Mi et al. and by Le and Clarke.",
+      "comparison_limit": "The paper does not state the correlated-residual question. Question count is 0. Earlier correlation magnitudes were not re-measured in this screen.",
+      "related_target_ids": [
+        "L-F102-correlated-residuals"
+      ],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetched-papers-2026-11-02.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": []
+      }
+    },
+    {
+      "id": "F188",
+      "bibliography_id": "F188",
+      "title": "Constructions of Macaulay Posets and Macaulay Rings",
+      "authors": [
+        "Penelope Beall",
+        "Erenay Boyali",
+        "Nancy Chen",
+        "Ellen Chlachidze",
+        "Toan Trong Dao",
+        "Frederic Garvey",
+        "Mitchell Johnson",
+        "Yu Olivier Li",
+        "Nikola Kuzmanovski",
+        "Kelvin Ma",
+        "Treanungkur Mal",
+        "Rukshan Marasinghe Mudiyanselage",
+        "Quinlan Mayo",
+        "Nava Minsky-Primus",
+        "Alexandra Seceleanu",
+        "Sriram Veerapaneni"
+      ],
+      "date_or_version": "arXiv:2502.15166v2, 11 April 2026",
+      "url": "https://arxiv.org/abs/2502.15166",
+      "access": "full_text",
+      "locator": "Conjecture 7.4, PDF page 30; introduction cross-reference on PDF page 4",
+      "relationship": "Wedge, diamond, and fiber-product criteria for the Macaulay property, and Conjecture 7.4 on a finite-quotient tensor product.",
+      "comparison_limit": "Conjecture 7.2 is refuted in the paper by Example 7.3. The journal version named by DOI 10.37236/14245 was not opened. Present-day resolution of Conjecture 7.4 was not assessed.",
+      "related_target_ids": [
+        "L-F188-finite-quotient-tensor"
+      ],
+      "provenance_ledger": "literature/fetched-papers-2026-11-02-issues-11-12.md",
+      "record_kind": "academic_source",
+      "checked_on": "2026-11-02",
+      "question_screening": {
+        "ledger": "literature/fetch-ingest/12/SCREEN.md",
+        "checked_on": "2026-11-02",
+        "status": "full_text_screened",
+        "target_ids": [
+          "L-F188-finite-quotient-tensor"
+        ]
+      }
     }
   ]
 }

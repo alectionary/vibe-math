@@ -28,7 +28,7 @@ See the [successful Edge Scholar/X continuation](BROWSER-SEARCH.md) for six more
 
 The historical [Lean coverage assessment](LEAN-COVERAGE.md) reviewed the earlier discovery backlog with one complete proof at that stage. Current counts, including subsequent proofs and the new source cohort, are in [the expanded inventory](OPEN-PROBLEMS.md). Related source-level infrastructure is distinguished from exact target coverage.
 
-The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 430 inventory entries, with new source-question additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
+The [current difficulty assessment](../planning/NEXT-PROJECT.md) covers all 187 inventory entries, including six additions explicitly awaiting assessment and now records completion of the selected P34 girth-eight target.
 
 The selected P34 girth target now has a [complete checked characterization](../formalization/cyclic-lifts/README.md): a general simple eight-cycle plus complete rectangle/hexagon exclusion criteria, including the actual expanded binary matrix. Scope is cyclic permutation blocks, at least two rows and columns, and positive finite lift size. Current complete target proof coverage is recorded in the regenerated expanded inventory, including the separate P11 completeness result. The [prior-art comparison](../formalization/cyclic-lifts/PRIOR-ART-AND-PROOF-COMPARISON.md) identifies established mathematical components and matching mechanisms; the full girth characterization is the earliest complete answer known to us; its established ingredients and first-formalization status are distinguished. Other graph properties remain separate.
 
@@ -36,7 +36,7 @@ The selected P34 girth target now has a [complete checked characterization](../f
 
 - All **20 authors** received an author/topic search. **16** have topic-matched article/preprint records in this bibliography.
 - **34 article/preprint records** are included. These include overlapping manuscript and conference versions and a dissertation-derived upload; they are not independent new contributions or uniformly peer-reviewed articles.
-- **179 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
+- **186 related coauthor/external article follow-ups** and **two talk/abstract records** are tracked separately. These papers have coauthor, topic or citation connections as specified individually; they do not all repeat a particular dissertation question.
 - **40 open-looking targets** are cross-referenced: the earlier audit’s **39 eligible targets**, plus Geraci’s held Question 5.1. None is marked fully resolved by this search.
 
 Eight selected questions have a directly corresponding earlier article statement or unresolved-property description: Geraci’s two neural-code targets, Zamir’s two targets, Wright’s existence question, DeClerk’s two questions, and Volk’s path-minimizer question. These are mainly pre-dissertation formulations, so this count establishes circulation beyond the thesis text, not eight later rediscoveries. Wright’s existence question is also explicitly revisited in a 2024 conference abstract. Broader regimes and related theorems receive separate labels in the ledger.
@@ -1245,9 +1245,9 @@ Comparison source read for the L-F102 replication and identification notes. The 
 
 ### F150 Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat
 
-B. T. Campbell; P. S. Baenziger; K. S. Gill; K. M. Eskridge; H. Budak; M. Erayman; Y. Yen. 2003. [l f102 replication source](https://doi.org/10.2135/cropsci2003.1493).
+B. T. Campbell; P. S. Baenziger; K. S. Gill; K. M. Eskridge; H. Budak; M. Erayman; I. Dweikat; Y. Yen. 2003. [l f102 replication source](https://doi.org/10.2135/cropsci2003.1493).
 
-Comparison or data source named in the L-F102 replication ledger. The complete file was not stored. unassessed_full_text_access_gap
+Complete UNL faculty PDF stored locally and screened. The author list on the first page includes I. Dweikat. no_additional_suitable_explicit_math_target_recorded
 
 ### F151 Searching for recursive causal structures in multivariate quantitative genetics mixed models
 
@@ -1365,9 +1365,9 @@ Primary abstract read. Early source gate finds all45 representative listed cocir
 
 ### F173 Testing membership in matroid polyhedra
 
-William H. Cunningham. 1984. [c16 coupling membership methods](https://www.sciencedirect.com/science/article/pii/0095895684900236).
+William H. Cunningham. 1984. [c16 membership predecessor](https://doi.org/10.1016/0095-8956(84)90023-6).
 
-Publisher-indexed abstract and author bibliographic entry inspected. Publisher landing/PDF reader returned403; connected Edge browser displayed a CAPTCHA. Author available-papers index and Bonn report81207 index supplied no full text. OpenAlex identifies the publisher PDF as open access but supplies no repository PDF. Retrieval request63 is open; full text remains unverified. No full-text question screen or implementation/complexity transfer is claimed. The current exchange repair has independent local/terminal certificates but no polynomial termination guarantee.
+Full text of the 1984 journal article screened from a scan with a text layer. Read for the C16 membership comparison. The complexity bound is not transferred to the C16 repair. One algorithmic target recorded. Present-day resolution of that target was not assessed.
 
 ### F174 Simple push-relabel algorithms for matroids and submodular flows
 
@@ -1416,6 +1416,48 @@ Targeted reading of Remark4.4 and its cited context only. Later primary evidence
 Kenjiro Takazawa; Yu Yokoi. 2019. [c16 owner lift discrete convex methods](https://arxiv.org/html/1805.05528v3).
 
 Targeted reading of generalized-polymatroid/paramodularity and two-polyhedron intersection hypotheses only. Complete HTML acquired, but complete question screening remains unassessed; no zero-question conclusion or source-frame implication. No C16 frame, cross-pattern integrality, runtime transfer or Lean completion follows.
+
+### F182 In praise of partially interpretable predictors
+
+Tri Le; Bertrand S. Clarke. 2020. [l f102 citing paper](https://doi.org/10.1002/sam.11450).
+
+Citing paper of Mi et al., DOI 10.2202/1544-6115.1552, queued as fetch issue 25. Complete file screened. methodological_directions_recorded
+
+### F183 An efficient approach to large-scale genotype–phenotype association analyses
+
+Runqing Yang; Hongwang Li; Lina Fu; Yongxin Liu. 2013. [l f102 citing paper](https://doi.org/10.1093/bib/bbt061).
+
+Citing paper of Mi et al., DOI 10.2202/1544-6115.1552, queued as fetch issue 26. Complete file screened. no_additional_suitable_explicit_math_target_recorded
+
+### F184 Understanding the metabolome and metagenome as extended phenotypes: The next frontier in macroalgae domestication and improvement
+
+Kelly J. DeWeese; Melisa G. Osborne. 2021. [l f102 citing paper](https://doi.org/10.1111/jwas.12782).
+
+Citing paper of Mi et al., DOI 10.2202/1544-6115.1552, queued as fetch issue 27. Complete file screened. no_additional_suitable_explicit_math_target_recorded
+
+### F185 The wright stuff: reimagining path analysis reveals novel components of the sex determination hierarchy in Drosophila melanogaster
+
+Justin M. Fear; Michelle N. Arbeitman; Matthew P. Salomon; Justin E. Dalton; John Tower; Sergey V. Nuzhdin; Lauren M. McIntyre. 2015. [l f102 citing paper](https://doi.org/10.1186/s12918-015-0200-0).
+
+Citing paper of Mi et al., DOI 10.2202/1544-6115.1552, queued as fetch issue 28. Complete file screened. no_additional_suitable_explicit_math_target_recorded
+
+### F186 Multi-trait multi-locus SEM model discriminates SNPs of different effects
+
+Anna A. Igolkina; Georgy Meshcheryakov; Maria V. Gretsova; Sergey V. Nuzhdin; Maria G. Samsonova. 2020. [l f102 citing paper](https://doi.org/10.1186/s12864-020-06833-2).
+
+Citing paper of Mi et al., DOI 10.2202/1544-6115.1552, queued as fetch issue 29. Complete file screened. no_additional_suitable_explicit_math_target_recorded
+
+### F187 Analysis of Graph-based Decoders for Quantum Low Density Parity Check Codes
+
+Kirsten Morris. 2025. [seed dissertation screen](https://digitalcommons.unl.edu/dissunl/339/).
+
+Same PDF as source-manifest id 2025-Morris and research source MorrisDissertation2025. SHA-256 73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517. Fetch issue 11. Three Chapter 6 directions recorded beside the P34 targets already linked from MorrisDissertation2025. Present-day resolution was not assessed.
+
+### F188 Constructions of Macaulay Posets and Macaulay Rings
+
+Penelope Beall; Erenay Boyali; Nancy Chen; Ellen Chlachidze; Toan Trong Dao; Frederic Garvey; Mitchell Johnson; Yu Olivier Li; Nikola Kuzmanovski; Kelvin Ma; Treanungkur Mal; Rukshan Marasinghe Mudiyanselage; Quinlan Mayo; Nava Minsky-Primus; Alexandra Seceleanu; Sriram Veerapaneni. 2025. [macaulay posets preprint](https://arxiv.org/abs/2502.15166).
+
+arXiv:2502.15166v2 screened from the fetched PDF. No earlier bibliography row matched this id or title. Fetch issue 12. One open conjecture recorded. Conjecture 7.2 is refuted in the paper and is not an inventory target. The journal version was not opened.
 
 ## Question by question cross references
 

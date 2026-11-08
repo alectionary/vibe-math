@@ -1,6 +1,6 @@
 ---
 name: open-question-research
-description: "Investigate an open mathematical question or conjecture in vibe-math: verify the source and prior art, explore proofs or counterexamples, and develop Lean evidence within a bounded target. Use for starting, continuing, or assessing these investigations, not unrelated repository maintenance."
+description: "Investigate an open mathematical question or conjecture in vibe-math: verify the source and prior art, explore proofs or counterexamples, and develop Lean evidence within a bounded target. When a fetch issue is labeled fetched, ingest the manifest and write the question screen in a pull request that references that issue. Use for starting, continuing, or assessing these investigations, not unrelated repository maintenance."
 ---
 
 # Open Question Research
@@ -70,6 +70,19 @@ already posted for the active campaign. Follow
 the only writer of the canonical ledgers. Merging a fetched PDF does not
 complete a question screen. Unreadable text and a front-matter preview keep a
 null question count.
+
+Also list open issues labeled `fetched`. That label is the signal that a
+verified PDF is waiting for ingestion. There is no extra label. For each issue
+this block needs, follow
+[Ingest a fetched paper](../document-acquisition-queue/SKILL.md#ingest-a-fetched-paper):
+store the PDF at the gitignored `local-extraction/literature/fetch/<issue>/`
+path, check the hash, commit the manifest copy and `SCREEN.md` under
+`literature/fetch-ingest/<issue>/`, and open a pull request that says
+`Refs #<issue>`. Do not put `Closes` or `Fixes` on that pull request. The
+screen in `SCREEN.md` is the summary and the open questions from
+[Harvest questions](#harvest-questions-from-every-encountered-paper). Close the
+fetch issue only after that pull request is on the default branch and the
+ingestion-merged marker is posted. The retrieval worker does not do this step.
 
 Use one GitHub issue per canonical target for discussion, scope, progress and
 handoff; search open and closed issues before creating one. If using a Project,
@@ -228,7 +241,10 @@ that records the block. Do not collect blocked sources for closeout. Search for
 an existing fetch issue, file a `fetch-request` when none exists, record
 `acquisition_requested` as that skill describes, and continue independent work.
 A preview or unreadable extraction stays a null question count. Index the
-blocked source that same day, with the issue URL and the access gap. Add the findings to the shared inventory and planning records, leave
+blocked source that same day, with the issue URL and the access gap. When a
+worker later labels that issue `fetched`, ingest it in the next block as
+[document acquisition](../document-acquisition-queue/SKILL.md#ingest-a-fetched-paper)
+describes, instead of leaving the verified file unread. Add the findings to the shared inventory and planning records, leave
 unperformed current-resolution/Lean checks
 unassessed, regenerate reports and validate source coverage and cohort deltas.
 The [complete absorbing-set source screen](../../../literature/RESEARCH-QUESTION-SCREENING.md)

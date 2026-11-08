@@ -16751,5 +16751,219 @@
       "assessment": "not_assessed",
       "objects_and_gate": "Specify the norm representation, submodular evaluation oracle, numerical data and exact-versus-approximate output. Preserve the Euclidean subcase and conjectured convex-optimization approach within this single question."
     }
+  },
+  {
+    "id": "L-F182-stacking-mse-asymptotics",
+    "origin": "article_inventory_extension",
+    "title": "Combine the stated asymptotic clauses to give pointwise MSE forms for the (PC, LM) and (NW, LM) predictors.",
+    "kind": "method_request",
+    "written_math_status": "method_request",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Author-stated conjecture that named asymptotic clauses combine into pointwise MSE forms. The forms are not written in the paper, so this stays a method direction until the expression and hypotheses are fixed.",
+    "occurrences": [
+      {
+        "source_id": "F182",
+        "locator": "Section 3.2, after the citation of Liu's clauses. Two-column extraction interleaves the neighboring paragraph through this range",
+        "extracted_text_lines": [
+          890,
+          908
+        ],
+        "url": "https://doi.org/10.1002/sam.11450",
+        "source_sha256": "255187936be0c14fa254ca59e50e121bea9dc3c943e77eff13ca8b665a608a3c",
+        "relation": "author_stated_question_or_direction",
+        "version": "Statistical Analysis and Data Mining 13 (2020), 113–133; UNL DigitalCommons faculty copy"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-11-02",
+    "search_family": "statistical_prediction",
+    "source_screening": "literature/fetched-papers-2026-11-02.md",
+    "formalization_suitability": {
+      "assessment": "mathematical/statistical core potentially formalizable; statement required",
+      "objects_and_gate": "Write the asymptotic pointwise MSE expressions obtained by combining Theorem 3.3, Clause 1, with Theorem 3.2, Clause 2 or Clause 3, for the (PC, LM) and (NW, LM) predictors, including the hypotheses those clauses use.",
+      "source_does_not_claim": "A displayed formula, or a comparison strong enough to rank those predictors."
+    }
+  },
+  {
+    "id": "L-F173-strongly-polynomial-sfm",
+    "origin": "article_inventory_extension",
+    "title": "Find a strongly polynomial algorithm for submodular function minimization, or a practical combinatorial polynomial-time method.",
+    "kind": "algorithmic_question",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Author-stated algorithmic existence question for submodular function minimization given by an evaluation oracle. Present-day resolution and Lean discovery were not assessed in this screen.",
+    "occurrences": [
+      {
+        "source_id": "F173",
+        "locator": "Section 6, printed p. 182 / PDF p. 22. The open-problem sentence was compared with the rendered page.",
+        "extracted_text_lines": [
+          973,
+          976
+        ],
+        "url": "https://doi.org/10.1016/0095-8956(84)90023-6",
+        "source_sha256": "d7ad1675aa9882a226ab0b9349beac0ab51f467deb57b900d4274b26e6360715",
+        "relation": "author_stated_question_or_direction",
+        "version": "Journal of Combinatorial Theory, Series B 36 (1984), 161–188; scan with a text layer. Open-problem sentence checked on rendered PDF page 22."
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-11-02",
+    "search_family": "submodular_function_minimization",
+    "source_screening": "literature/fetched-papers-2026-11-02.md",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed."
+  },
+  {
+    "id": "L-F187-nonabsorbing-failure-sets",
+    "origin": "article_inventory_extension",
+    "title": "Characterize failure-inducing sets that are not absorbing sets.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Chapter 6 says this characterization remains open and asks for an overlying combinatorial description. The description is not given, so the target stays a direction.",
+    "occurrences": [
+      {
+        "source_id": "F187",
+        "locator": "Chapter 6 conclusion, PDF page 85, extracted lines 3208–3212",
+        "extracted_text_lines": [
+          3208,
+          3212
+        ],
+        "url": "https://digitalcommons.unl.edu/dissunl/339/",
+        "source_sha256": "73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517",
+        "relation": "author_stated_question_or_direction",
+        "version": "August 2025 dissertation; same PDF as source-manifest id 2025-Morris"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-11-02",
+    "search_family": "quantum_ldpc",
+    "source_screening": "literature/fetched-papers-2026-11-02-issues-11-12.md",
+    "formalization_suitability": {
+      "assessment": "decoder-dependent characterization; statement required",
+      "objects_and_gate": "Name the decoder, the failure-inducing condition, and the combinatorial description that would count as a characterization.",
+      "source_does_not_claim": "A named family of non-absorbing failure-inducing sets, or a theorem that lists them."
+    }
+  },
+  {
+    "id": "L-F187-gallager-b-convergence-bound",
+    "origin": "article_inventory_extension",
+    "title": "Ask whether the graphical condition that guarantees Gallager-B convergence in two iterations can be relaxed.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Chapter 6 calls the two-iteration graphical condition strong and asks whether it can be lightened, perhaps by allowing more than two iterations. No weakened hypothesis is stated.",
+    "occurrences": [
+      {
+        "source_id": "F187",
+        "locator": "Chapter 6 conclusion, PDF pages 85–86, extracted lines 3214–3221. Printed page 74 is the running header on PDF page 86",
+        "extracted_text_lines": [
+          3214,
+          3221
+        ],
+        "url": "https://digitalcommons.unl.edu/dissunl/339/",
+        "source_sha256": "73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517",
+        "relation": "author_stated_question_or_direction",
+        "version": "August 2025 dissertation; same PDF as source-manifest id 2025-Morris"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-11-02",
+    "search_family": "quantum_ldpc",
+    "source_screening": "literature/fetched-papers-2026-11-02-issues-11-12.md",
+    "formalization_suitability": {
+      "assessment": "decoder convergence question; statement required",
+      "objects_and_gate": "State the graphical hypothesis used for two-iteration convergence, and the weakened hypothesis or iteration bound being asked about.",
+      "source_does_not_claim": "A specific weaker theorem."
+    }
+  },
+  {
+    "id": "L-F187-redundancy-other-families",
+    "origin": "article_inventory_extension",
+    "title": "Study the effect of redundant parity checks on lifted-product and balanced-product QLDPC families.",
+    "kind": "research_direction",
+    "written_math_status": "research_direction",
+    "eligible_for_coverage": false,
+    "eligibility_note": "Chapter 6 asks about redundancy for lifted-product and balanced-product codes after reporting Hamming CSS and hypergraph-product cases. No estimand is fixed.",
+    "occurrences": [
+      {
+        "source_id": "F187",
+        "locator": "Chapter 6 conclusion, PDF page 86, printed page 74, extracted lines 3222–3227",
+        "extracted_text_lines": [
+          3222,
+          3227
+        ],
+        "url": "https://digitalcommons.unl.edu/dissunl/339/",
+        "source_sha256": "73578ca2735961d7f37539dfa92377691eda47746e5f554c2e1005f000bd2517",
+        "relation": "author_stated_question_or_direction",
+        "version": "August 2025 dissertation; same PDF as source-manifest id 2025-Morris"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-11-02",
+    "search_family": "quantum_ldpc",
+    "source_screening": "literature/fetched-papers-2026-11-02-issues-11-12.md",
+    "formalization_suitability": {
+      "assessment": "code-family direction; statement required",
+      "objects_and_gate": "Fix the code family, the redundancy operation, and the decoder and performance measure.",
+      "source_does_not_claim": "A theorem for lifted-product or balanced-product redundancy."
+    }
+  },
+  {
+    "id": "L-F188-finite-quotient-tensor",
+    "origin": "article_inventory_extension",
+    "title": "If S is a Macaulay ring, x is a new variable, and n exceeds every degree in S, then S tensor K[x]/(x^n) is a Macaulay ring.",
+    "kind": "conjecture",
+    "written_math_status": "precise_math_in_source",
+    "eligible_for_coverage": true,
+    "eligibility_note": "Conjecture 7.4 states this tensor-product claim. The weaker Conjecture 7.2, with only n>0, is refuted in the same section and is not this target. Present-day resolution was not assessed.",
+    "occurrences": [
+      {
+        "source_id": "F188",
+        "locator": "Conjecture 7.4, PDF page 30, printed page 30, extracted lines 1797–1798. The formula was read from the rendered page; the text layer drops the superscript on n",
+        "extracted_text_lines": [
+          1797,
+          1798
+        ],
+        "url": "https://arxiv.org/abs/2502.15166",
+        "source_sha256": "6373eea0021a7aa835f3d562a431756c4f941669623e457f5d139d4dc0f2c134",
+        "relation": "author_stated_question_or_direction",
+        "version": "arXiv:2502.15166v2, 11 April 2026"
+      }
+    ],
+    "related_target_ids": [],
+    "status_as_of_source": "open_or_proposed_in_source",
+    "proof_assistant_statement_status": "not_assessed_in_this_extension",
+    "lean_statement_status": "not_assessed_in_this_extension",
+    "lean_proof_status": "not_assessed_in_this_extension",
+    "current_resolution_status": "not_independently_established",
+    "added_on": "2026-11-02",
+    "search_family": "macaulay_posets",
+    "source_screening": "literature/fetched-papers-2026-11-02-issues-11-12.md",
+    "lean_discovery_note": "Full-text question harvesting only; current-resolution and exact-target Lean searches remain unassessed. The formula was read from rendered PDF page 30."
   }
 ]

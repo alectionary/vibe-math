@@ -1,6 +1,6 @@
 ---
 name: replication-paper
-description: "Replicate a dissertation or published result using a complete evidence handoff, standalone verdict-first manuscript, independent cold-reader review, and verified delivery. Use for claim inventories, numerical comparisons, uncertainty, availability audits, replication papers and authorized PRs or announcements."
+description: "Replicate a dissertation or published result using a committed replication plan, a complete evidence handoff, standalone verdict-first manuscript, independent cold-reader review, and verified delivery. Use for full-design replications, claim inventories, numerical comparisons, uncertainty, availability audits, replication papers and authorized PRs or announcements."
 ---
 
 # Replication paper
@@ -8,19 +8,146 @@ description: "Replicate a dissertation or published result using a complete evid
 Work in this order. Load only the current stage's instructions and required
 artifacts. Apply the [first-page contract](references/first-page-contract.md)
 for source identification, original findings and effect-magnitude comparisons.
+Keep Published, Ours, and comparison separate. Every headline needs evidence-linked
+finding text in its own rendered Published/Ours cells, even when scalar effects
+are null. Require the `finding_attribution` source-by-source review; a null
+comparison is never permission to erase a known finding.
 For a dissertation, cover the whole dissertation: inventory every
 substantive original claim, including theory, empirical results, simulations,
 negative results and unavailable inputs. Do not substitute a convenient table
 for its research questions. Complete coverage means every claim is accounted
-for, not that every claim replicated. Use
+for, not that every claim replicated. Follow the full-design rule and commit
+the replication plan before any analysis. Use
 [open-question research](../open-question-research/SKILL.md) for proof methods
 when needed; keep its research chronology out of the manuscript.
+
+## Full design
+
+Replicate the dissertation's full design whenever that work is feasible:
+every condition, arm, table, and analysis. A subset or a reduced replication
+count is a last resort. It is allowed only with a written cost estimate, a
+record of what was tried, the exact counts in the abstract and again in the
+body (for example, `8 of 208`), and a headline verdict no stronger than the
+runs that finished. Stopping at a headline-carrying subset is not a completed
+replication. That stop has come up before, including Koziol (8 of 208
+settings) and Chumney.
+
+## Replication plan
+
+The first research commit is `REPLICATION-PLAN.yaml` in the study directory.
+That commit is the baseline, and it happens before any fit or simulation.
+List the dissertation's substantive parts: studies and chapters, research
+questions and hypotheses, analyses, simulation arms and conditions, and the
+headline conclusions. Each part has a stable `id`, a `kind`, a short `label`,
+and a `plan` note that says how we will replicate it.
+
+Kinds are `study`, `chapter`, `research_question`, `hypothesis`, `analysis`,
+`arm`, `condition`, and `headline`. Set `headline: true` on any part the
+headline conclusion rests on, or use kind `headline`.
+
+After the runs, set every part's `status` and `evidence`. Status is
+`replicated`, `partly`, `mismatch`, `not_attempted`, or `input_unavailable`.
+`evidence` points at the code or output that covers the part. Every status
+except `replicated` needs a `reason`. `not_attempted` and `input_unavailable`
+always need one. A grid records `design_count` in the first commit and
+`run_count` when the run finishes. A run below the design count, including a
+design count that was later edited downward, is a reduced run: the denominator
+stays at the larger first-committed count, the status cannot be `replicated`,
+and `subset_justification` supplies `cost_estimate` and `attempted`. The
+abstract and the body both state that pair as `N of M`, such as `8 of 208`.
+
+Removing a part, or changing its plan note, kind, label, or design count,
+needs a recorded reason. A removal is `{id, reason}` under `removals`. The
+done check diffs the current file against the first committed version and
+fails when a part disappeared without that reason.
+
+A plan that sets `limit_schema: 1` must classify every part whose status is
+not `replicated`. `limit_kind` is one of, or a list of:
+
+- `input_unavailable`: name `missing_input` and `looked_in`.
+- `not_run`: give `cost_estimate`, `decision`, and `tractable`. Compute cost
+  alone is not acceptable when `tractable` is true. A non-cost `justification`
+  can explain the stop. A tractable part may also be declined for resources
+  when the plan records `decision_by: project` and a `decision_reason`. That
+  pair is this project's decision. It does not make the part impossible and
+  it does not attribute the limit to the source. `decision` then says
+  `declined for resources`, and `cost_estimate` stays.
+- `theorem_finite_only`: `finite_checks` records the finite or exhaustive
+  checks. A universal proof is not established.
+- `out_of_scope`: `scope_reason` says why.
+
+A part may list several kinds. Each non-replicated `reason` must be specific
+to that part: the done check rejects a reason copied verbatim onto another
+part, and generic templates such as "See named artifacts and limitations".
+Each part's evidence paths must be specific to that part. The same path list
+may not be repeated, and a path may not be listed twice inside one part.
+Plans that omit `limit_schema` are not subject to these fields.
+
+```yaml
+schema_version: 1
+dissertation: "Koziol (year). Title. Institution."
+source_locator: "sources/dissertation.pdf"
+parts:
+  - id: ch4-grid
+    kind: condition
+    label: "Chapter 4 crossed settings"
+    plan: "Replicate all 208 crossed settings."
+    headline: true
+    design_count: 208
+    run_count: 208
+    status: replicated
+    evidence: "simulation/outputs/grid.csv"
+removals: []
+```
+
+From the study root:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/preflight.py done \
+  --plan REPLICATION-PLAN.yaml --paper paper/paper.tex --root . \
+  --analysis simulation/run.py
+```
+
+Exit 0 means the plan file is committed, every part has a status, a required
+reason, and an evidence pointer, the plan was not silently shrunk, each
+`--analysis` file was committed after the plan, and the paper's coverage
+language is no stronger than the plan. Exit 2 is a failure. Repeat
+`--analysis` for each analysis file. The engine probe is still the command
+without `done`.
+
+An optional caption hint can suggest parts the plan missed. The done check
+does not read it, and the same text always produces the same list:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/checks.py captions dissertation.txt
+```
+
+`pdftotext -layout` is used when the input is a PDF. Captions such as
+`Table 3.2` and `Figure 4.1`, plus hypotheses, research questions, numbered
+equations, and appendix tables, are hints only.
+
+## Pre-done checklist
+
+- [ ] `REPLICATION-PLAN.yaml` lists every substantive part and was committed before analysis.
+- [ ] The full design was run, or the reduced run is a last resort with a cost estimate, what was tried, and exact `N of M` counts in the abstract and the body.
+- [ ] The headline verdict is no stronger than the headline parts that were run.
+- [ ] Every part has a status, an evidence pointer, and a reason when the status requires one.
+- [ ] When `REPLICATION-PLAN.yaml` sets `limit_schema: 1`, every part that is not `replicated` has its own `limit_kind` (`input_unavailable`, `not_run`, `theorem_finite_only`, or `out_of_scope`), a part-specific reason, and part-specific evidence. `preflight.py done` rejects copied reasons, generic templates such as "See named artifacts and limitations", a repeated evidence path, and a `not_run` part that lacks an estimate and a decision. A tractable `not_run` part needs a non-cost justification, or an explicit `decision_by: project` with a `decision_reason`, before a resource decline is accepted.
+- [ ] No part was removed or narrowed against the first commit without a recorded reason.
+- [ ] `preflight.py done` exits 0. That command also checks same-repository master paths and line anchors against `HEAD`, and the source-acquisition record when the manuscript calls a source or its pages unavailable. A live master 404 is a separate post-merge gate.
+- [ ] Optional caption hints were reviewed.
+- [ ] Each reported Published finding has a verbatim excerpt, page locator, claim type, and conditions. Those checks bind the record; row-by-row review is still required.
+- [ ] Rendered pages for headline and Published entries were inspected when the PDF could be obtained. Text reading and visual inspection are recorded separately.
+- [ ] Page 1 was compared visually with a reference paper that uses the shared approved preamble (for example the Kupzyk replication). The geometry check only measures the text block, title, and abstract inset.
+- [ ] Before reporting the pull request, its description links the built primary PDF near the top: a reviewable `blob/<40-hex SHA or head branch>/<path>` link, and the intended `blob/master/<path>` link for that same path, labeled as live after merge. Run `scripts/pr_description.py` on the description and the delivery record. `preflight.py done` and `delivery_check.py` run that check when `--pr-body` is supplied.
 
 ## 1. Research and evidence handoff
 
 Read [evidence handoff](references/evidence-handoff.md) and
 [research methods](references/research.md). Produce `evidence-packet.json` and
-its named sources/results before drafting. Validate the packet with
+its named sources/results before drafting. Commit `REPLICATION-PLAN.yaml`
+before the first fit or simulation, as specified under Replication plan.
+Validate the packet with
 `scripts/stage_checks.py packet PACKET --root STUDY_ROOT`. Reconcile the inventory
 against every dissertation chapter and appendix, not just completed experiments.
 Scientific unknowns and justified feasibility stops are legitimate outputs;
@@ -53,8 +180,23 @@ remote-byte verification, PR and announcement rules. Apply the mandatory
 review an annotation inventory, then re-extract destinations during delivery
 acceptance. Master navigation and commit-pinned review delivery are separate.
 Run the numerical and
-citation helpers appropriate to the study, plus `scripts/delivery_check.py
-RECORD.json --root STUDY_ROOT`. Use delivery contract version 2; see the editorial
+citation helpers appropriate to the study, plus the [pre-done checklist](#pre-done-checklist)
+and `scripts/delivery_check.py RECORD.json --root STUDY_ROOT`. Before reporting
+a pull request, link the built primary PDF in the description and check it:
+
+```sh
+python3 .agents/skills/replication-paper/scripts/pr_description.py \
+  --body pr-body.md --record delivery.json --root STUDY_ROOT \
+  --head-branch BRANCH
+```
+
+Omit `--body` to read the description on stdin. Exit 0 means the description
+has a reviewable blob link pinned to a 40-hex SHA or that head branch, and
+the master link for the same path, both matching the record's primary PDF.
+Pass `--pr-body pr-body.md --record delivery.json` to `preflight.py done`, or
+`--pr-body pr-body.md` to `delivery_check.py`, to run the same check. Leaving
+those arguments off does not change the older commands. Use delivery
+contract version 2; see the editorial
 reference for migration of historical records. Helper passes establish neither
 scientific truth nor prose quality. Do not claim delivery complete without the
 independent rendered review. Publication actions still require authorization.
@@ -79,3 +221,7 @@ from the repository root and the skill-creator `scripts/quick_validate.py` with
 PyYAML. Test rejected as well as accepted evidence/review records. Phrase scans
 are review cues, never a word ban or a certification that prose stands alone.
 Do not retrofit passing attestations into historical study artifacts.
+
+For nonscalar headlines or unresolved scalar comparisons without a justified
+tolerance, follow the explicit comparison-applicability extension in [first-page contract](references/first-page-contract.md). Preserve all component evidence and keep the scientific claim verdict separate
+from an unestablished scalar magnitude. Never invent a numeric margin.

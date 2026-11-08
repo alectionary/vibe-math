@@ -31,11 +31,10 @@ Add `packet_sha256`, `writer_manifest_sha256`, and:
 }
 ```
 
-Require the same explicit pass/fail findings structure for all nine checks:
+Require the same explicit pass/fail findings structure for all ten checks:
 `abstract_verdict_first`, `introduction_verdict_first`, `standalone_prose`,
 `headline_fidelity`, `claim_coverage`, `limitations_preserved`,
-`scientific_process_distinction`, `abstract_source_fidelity`, and
-`effect_magnitude_fidelity`. Use the [first-page contract](first-page-contract.md)
+`scientific_process_distinction`, `abstract_source_fidelity`, `effect_magnitude_fidelity`, and `finding_attribution`. Use the [first-page contract](first-page-contract.md)
 to review original-source identity/finding and effect magnitude, direction,
 tolerance and uncertainty interpretation. Each needs positive PDF page numbers, specific
 locations and observations, including at least one finding even on pass. Check
@@ -77,3 +76,14 @@ Negative fixtures include correct numbers with a buried verdict and a verdict-fi
 abstract that depends on a previous draft. Those must fail editorial acceptance;
 word searches alone cannot decide their scientific meaning. Historical helper
 APIs remain available through an explicit legacy audit, not a default bypass.
+
+For nonscalar headlines or unresolved scalar comparisons without a justified
+tolerance, follow the explicit comparison-applicability extension in [first-page contract](first-page-contract.md). Preserve all component evidence and keep the scientific claim verdict separate
+from an unestablished scalar magnitude. Never invent a numeric margin.
+
+For `finding_attribution`, check every Published and Ours cell against its own
+source/result evidence before judging the comparison. Record page-1 findings
+covering source statements, conditions, quantitative components and legitimate
+absence reasons. Null scalar effects must not erase known findings. A populated
+row label, caption, appendix or packet does not repair an empty or misleading
+Published/Ours cell. Fail acceptance if any of these cells is unsupported.

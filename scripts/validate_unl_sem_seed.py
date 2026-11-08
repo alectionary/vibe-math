@@ -54,7 +54,7 @@ for task in seed_screens['project_derived_followups']:
 assert all(x['year']>=2001 and x['record_kind']=='doctoral_dissertation' for x in s)
 assert all(x['search_ids'] for x in a)
 searchids={x['id'] for x in search};assert all(set(x['search_ids'])<=searchids for x in a)
-assert len(w)==tot['selected_works']==49 and len({x['id'] for x in w})==49
+assert len(w)==tot['selected_works']==54 and len({x['id'] for x in w})==54
 allowed_work_retrieval={'retrieved','access_gap','acquisition_requested'}
 assert {x['retrieval']['status'] for x in w}<=allowed_work_retrieval
 for x in w:
@@ -62,9 +62,9 @@ for x in w:
   assert x['question_count'] is None and x['screen_status']=='full_text_access_gap'
 by={x['id']:x for x in w};seedids={x['id'] for x in s}
 assert all(set(x['seed_ids'])<=seedids and x['authors'] and x['title'] and x['url'].startswith('https://') for x in w)
-assert sum(x['screen_status']=='full_text_screened' for x in w)==screen['full_text_paper_screens']==tot['full_text_screens']==30
-assert sum(x['screen_status']=='full_text_access_gap' for x in w)==screen['access_gap_papers']==19
-assert len(q)==tot['method_directions']==13 and not any(x['eligible_for_coverage'] for x in q)
+assert sum(x['screen_status']=='full_text_screened' for x in w)==screen['full_text_paper_screens']==tot['full_text_screens']==36
+assert sum(x['screen_status']=='full_text_access_gap' for x in w)==screen['access_gap_papers']==18
+assert len(q)==tot['method_directions']==14 and not any(x['eligible_for_coverage'] for x in q)
 for author in a:
  for id in author['selected_work_ids']:
   assert author['seed_id'] in by[id]['seed_ids']
@@ -116,7 +116,7 @@ assert idx['added_entries']==3 and idx['added_eligible_targets']==0 and idx['com
 assert idx['full_text_screens_added']==6 and idx['incomplete_paper_records_added']==2
 assert idx['added_target_ids']==['L-F145-generic-mixed-graph','L-F146-half-trek-gap','L-F147-polytime-ancestral']
 assert idx['added_paper_ids']==['F143','F144','F145','F146','F147','F148','F150','F151']
-assert len(screen['excluded_passages'])==22
+assert len(screen['excluded_passages'])==29
 assert by['F134']['retrieval']['hash_scope'].startswith('UTF8 transcript')
 assert by['F132']['year']==2003 and by['F132']['relationship']=='pre_dissertation_background'
-print('PASS:99 dissertation route rechecks;8 complete dissertation screens;1 partial preview excluded;49 associated sources;30 article/work screens;13 gated directions;0 invented precise conjectures.')
+print('PASS:99 dissertation route rechecks;8 complete dissertation screens;1 partial preview excluded;54 associated sources;36 article/work screens;14 gated directions;0 invented precise conjectures.')

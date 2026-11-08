@@ -1,0 +1,139 @@
+<!-- fetch-manifest: vibe-math-30-worker-20261102 -->
+
+```json
+{
+  "manifest_version": "0.2",
+  "manifest_id": "vibe-math-30-worker-20261102",
+  "supersedes": null,
+  "recorded_at": "2026-11-02T17:25:00Z",
+  "producer": {
+    "role": "retrieval_worker",
+    "name": "grokbot-retrieval-worker-20261102"
+  },
+  "campaign_id": null,
+  "priority": "normal",
+  "retryable": false,
+  "requested_source_id": "10.2135/cropsci2003.1493",
+  "issue": {
+    "repository": "alectionary/vibe-math",
+    "number": 30,
+    "url": "https://github.com/alectionary/vibe-math/issues/30"
+  },
+  "document": {
+    "title": "Identification of QTLs and environmental interactions associated with agronomic traits on chromosome 3A of wheat",
+    "author": "B. T. Campbell, P. S. Baenziger, K. S. Gill, K. M. Eskridge, H. Budak, M. Erayman, and Y. Yen",
+    "year": 2003,
+    "document_type": "article",
+    "stable_ids": [
+      {
+        "scheme": "doi",
+        "value": "10.2135/cropsci2003.1493"
+      }
+    ]
+  },
+  "discovered_identifiers": [],
+  "routes_tried": [
+    {
+      "id": "doi-resolution-30-0",
+      "route": "doi-resolution@1",
+      "url": "https://doi.org/10.2135/cropsci2003.1493",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 challenge at acsess.onlinelibrary.wiley.com. No PDF bytes."
+    },
+    {
+      "id": "openalex-oa-30-1",
+      "route": "openalex-oa@1",
+      "url": "https://api.openalex.org/works/doi:10.2135/cropsci2003.1493",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "HTTP 200, oa_status closed; lists UNL record agronomyfacpub/27. No PDF bytes."
+    },
+    {
+      "id": "unpaywall-oa-30-2",
+      "route": "unpaywall-oa@1",
+      "url": "https://api.unpaywall.org/v2/10.2135/cropsci2003.1493",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 200,
+      "error_category": null,
+      "obtained_bytes": false,
+      "notes": "HTTP 200 metadata. No PDF bytes."
+    },
+    {
+      "id": "institutional-repository-30-3",
+      "route": "institutional-repository@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1026&context=agronomyfacpub",
+      "resolved_url": null,
+      "method": "headless",
+      "attempted_at": "2026-11-02T16:40:00Z",
+      "http_status": 403,
+      "error_category": "bot_mitigation",
+      "obtained_bytes": false,
+      "notes": "HTTP 403 Cloudflare challenge (record page itself HTTP 200). No PDF bytes."
+    },
+    {
+      "id": "browser-30",
+      "route": "browser-download@1",
+      "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1026&context=agronomyfacpub",
+      "resolved_url": null,
+      "method": "browser",
+      "attempted_at": "2026-11-02T17:10:00Z",
+      "http_status": null,
+      "error_category": null,
+      "obtained_bytes": true,
+      "notes": "Real browser on the UNL bepress record; Download saved the complete 13-page PDF."
+    }
+  ],
+  "question_screen": {
+    "status": "not_screened",
+    "question_count": null,
+    "candidates": [],
+    "screen_owner": "research_agent"
+  },
+  "outcome": "verified",
+  "artifact": {
+    "media_type": "application/pdf",
+    "sha256": "7e70f3b1916c0cff5cf79f118c2d5d33c57b63062d8705a9474da3c135e9de3a",
+    "byte_length": 165180,
+    "page_count": 13,
+    "committed_to_git": false,
+    "storage": {
+      "kind": "worker_local",
+      "locator": "worker/30/paper.pdf",
+      "cross_machine": false
+    }
+  },
+  "completeness": {
+    "classification": "complete_body",
+    "identity_matched": true,
+    "front_matter_only": false,
+    "preview": false,
+    "evidence": [
+      "First page reads 'Identification of QTLs and Environmental Interactions Associated with Agronomic Traits on Chromosome 3A of Wheat', B. T. Campbell, P. S. Baenziger, K. S. Gill, K. M. Eskridge, H. Budak, M. Erayman, I. Dweikat, and Y. Yen; matches the request (the PDF also lists I. Dweikat).",
+      "Page count is 13. Body and the reference list through the final page are present in the extracted text.",
+      "Extracted text is 161095 Unicode characters (text_characters), distinct from the PDF byte_length 165180 bytes."
+    ]
+  },
+  "extraction": {
+    "status": "extracted",
+    "method": "born_digital",
+    "ocr_applied": false,
+    "ocr_engine": null,
+    "readable": true,
+    "text_sha256": "42c10955b5733f8f3e403d06fc0688f1749c7b2ff9420e9c14ee846a2bd16167",
+    "text_characters": 161095,
+    "unreadable_reason": null
+  },
+  "notes": "Complete PDF saved by the browser pass to worker/30/paper.pdf; headless routes had hit bot mitigation. pdftotext -layout gave readable text; OCR not run. Question count stays null. Request campaign is not a valid campaign_id under the schema pattern, so campaign_id is null."
+}
+```
