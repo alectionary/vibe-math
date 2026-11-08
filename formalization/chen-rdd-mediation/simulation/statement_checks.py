@@ -10,7 +10,7 @@ only describe a trend without naming cells ("power varied as a function of sampl
 Rates are rejection rates of the 95% percentile bootstrap CI, averaged over the design factors a
 statement does not name (as Chen's figures are), by n and cutoff index. A statement about "PNIE1" or
 "TNIE1" uses cutoff index 1 only; otherwise all three cutoffs are tested unless a cutoff is named.
-Thresholds used to read Chen's words (fixed here, before comparison):
+Thresholds used to read Chen's words (stated here; the slack column below shows which verdicts depend on them):
   below the robustness criteria / near zero (Type I) : rate < .025
   within the robustness criteria                    : .025 <= rate <= .075
   outside the robustness criteria                   : rate < .025 or rate > .075
