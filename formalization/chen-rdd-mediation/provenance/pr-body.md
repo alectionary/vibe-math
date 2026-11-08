@@ -1,4 +1,4 @@
-**Paper (reviewable now):** [mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf](https://github.com/alectionary/vibe-math/blob/replication/chen-2021/formalization/chen-rdd-mediation/paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf)
+**Paper (reviewable now, the reviewed bytes):** [mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf](https://github.com/alectionary/vibe-math/blob/2aa873df4b6b43b6d80a1a7ef887f9c5da90d715/formalization/chen-rdd-mediation/paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf)
 **After merge (live on master):** [mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf](https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf)
 
 Closes #88 when merged.
