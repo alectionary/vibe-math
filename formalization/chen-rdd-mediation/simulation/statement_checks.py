@@ -275,6 +275,8 @@ EXCLUDED = [
     ('110 (PDF 124)', 'Power varied as a function of sample size and effect size. The targeted power was .80.',
      'general description; names no cells or outcome'),
     ('110 (PDF 124)', 'Generally, as sample size increased, power also increased.', 'general trend; names no cells'),
+    ('112 (PDF 126)', 'Given a = .14 and b = .14, .39, or .59, power increased as sample size increased.',
+     'trend only; the threshold claim in the next sentence is tested (TNIE1, a = .14)'),
     ('116 (PDF 130)', 'Power increased as sample size increased.', "general trend for PNDE after the c' = 0 sentence; "
      'names no threshold'),
     ('118 (PDF 132)', "In the case of c' = .14, power increased as sample size increased.", 'trend only; the threshold '
