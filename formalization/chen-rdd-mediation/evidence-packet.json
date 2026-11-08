@@ -78,7 +78,7 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "3ef9628f714b8feae0991d25e34b5922b83c53bc4b9b77b3f5092fdd5a54acbb"
+   "sha256": "497c1a577864dcb48d493f87cb19b8b0d3e081ba4a52729993a0fc9d29c5ce0f"
   },
   {
    "id": "stmt",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "aeaee61615fe4a8ed89543bd79e05cfdcf67b5a38d8ca9eeae9d836d907ba782"
+   "sha256": "428b68577a8361fd53322681cbf5b7534887ba8b24a0b5b2b0ed26ce1bfa176a"
   }
  ],
  "sections": [
@@ -244,7 +244,7 @@
    ],
    "reproduction_deviation": "ours minus printed = -85.42 percentage points",
    "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Bias is the mean of 1,000 estimates minus the population value (PNDE = c', TNDE = c' + ah).",
-   "uncertainty": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo error of a mean of 1,000 estimates is at most about .01 in these cells.",
+   "uncertainty": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo standard error of a mean of 1,000 estimates is at most 0.006 in any cell.",
    "multiplicity": "Descriptive summary over the full grid; no tests.",
    "status": "not_replicated",
    "status_reason": "Every direct-effect result in our run lies within [-.05, .05]. Chen's printed estimation code matches ours line by line, and her data-generating model contains no term that would bias OLS.",
@@ -749,11 +749,11 @@
     "The divisor discrepancy is between the text and the tables; which was intended is unknown."
    ],
    "stopping": {
-    "reason": "Full design completed.",
-    "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
-    "untested": "Chen's own R output and seeds.",
-    "resource_basis": "13.7 core-hours.",
-    "next_evidence": "None needed."
+    "reason": "Complete: all 24 printed entries recomputed.",
+    "attempted": "Differences and standardized biases from the printed RCT and RDD estimates and standard errors (secondary/table_arithmetic.py).",
+    "untested": "Which divisor Chen intended; the HSIS fits themselves (S4).",
+    "resource_basis": "Seconds.",
+    "next_evidence": "None needed for the arithmetic."
    },
    "reproduction_deviation": "0 of 24 entries differ (SB with the RCT-estimate SE divisor)."
   },
@@ -911,7 +911,7 @@
    "magnitude": "smaller",
    "direction": "zero vs nonzero",
    "interpretation": "descriptive point estimates; not equivalence",
-   "uncertainty_statement": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo error of a mean of 1,000 estimates is at most about .01 in these cells."
+   "uncertainty_statement": "Our largest |bias| over all 19,200 condition-cutoff-effect results is 0.016, far inside .10; Monte Carlo standard error of a mean of 1,000 estimates is at most 0.006 in any cell."
   },
   {
    "id": "E2",
