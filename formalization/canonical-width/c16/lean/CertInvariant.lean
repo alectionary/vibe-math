@@ -115,7 +115,7 @@ lemma not_decide_xor_eq (a b : Bool) : (¬ decide ((a ^^ b) = a)) = b := by
 lemma xor_step_bit (res : Array Nat) (xi zj c k t : Nat)
     (hs : res.size = 128) (hc : c < 128) (hk : k < 128) (ht : t < 128) :
     resBit (xorF xi zj t res) c k =
-      resBit res c k ^^ (decide (c = t) && xi.testBit t && zj.testBit k) := by
+      (resBit res c k ^^ (decide (c = t) && xi.testBit t && zj.testBit k)) := by
   unfold xorF resBit aset
   have htc : t < res.size := by omega
   have hcc : c < res.size := by omega
@@ -126,5 +126,121 @@ lemma xor_step_bit (res : Array Nat) (xi zj c k t : Nat)
   · simp [hx, hct, htc, hcc, Array.getElem_set_ne htc hcc (Ne.symm hct)]
   · simp [hx]
   · simp [hx]
+
+lemma xor_go (xi zj t : Nat) (res0 res : Array Nat)
+    (_hs0 : res0.size = 128) (hs : res.size = 128) (ht : t ≤ 128)
+    (hinv : ∀ c k, c < 128 → k < 128 →
+      resBit res c k =
+        (resBit res0 c k ^^ (decide (c < t) && xi.testBit c && zj.testBit k))) :
+    ∀ c k, c < 128 → k < 128 →
+      resBit (foldN.go 128 (xorF xi zj) t res) c k =
+        (resBit res0 c k ^^ (xi.testBit c && zj.testBit k)) := by
+  induction h : 128 - t generalizing t res with
+  | zero =>
+    have ht' : t = 128 := by omega
+    intro c k hc hk
+    rw [foldN_step, if_pos (by omega : t ≥ 128)]
+    have hc' : decide (c < t) = true := by simp [ht', hc]
+    have hbit := hinv c k hc hk
+    rw [hc'] at hbit
+    simpa [Bool.true_and] using hbit
+  | succ d ih =>
+    have ht' : t < 128 := by omega
+    rw [foldN_step, if_neg (by omega : ¬ t ≥ 128)]
+    have hs' : (xorF xi zj t res).size = 128 := by
+      unfold xorF
+      by_cases hx : xi.testBit t = true
+      · simp only [hx, ite_true]
+        unfold aset
+        have htlt : t < res.size := by omega
+        rw [hs] at htlt
+        simp [htlt, Array.size_set, hs]
+      · have hx' : xi.testBit t = false := by
+          cases hb : xi.testBit t
+          · rfl
+          · exact absurd hb hx
+        simp [hx', hs]
+    have hle : t + 1 ≤ 128 := by omega
+    suffices hinv' : ∀ c k, c < 128 → k < 128 →
+        resBit (xorF xi zj t res) c k =
+          (resBit res0 c k ^^ (decide (c < t + 1) && xi.testBit c && zj.testBit k)) by
+      have hdec : 128 - (t + 1) = d := by omega
+      exact ih (t + 1) (xorF xi zj t res) hs' hle hinv' hdec
+    intro c k hc hk
+    rw [xor_step_bit res xi zj c k t hs hc hk ht', hinv c k hc hk]
+    by_cases hct : c = t
+    · subst hct
+      have h0 : decide (c < c) = false := by simp
+      have h1 : decide (c < c + 1) = true := by simp [Nat.lt_succ_self]
+      have he : decide (c = c) = true := by simp
+      rw [h0, h1, he]
+      simp only [Bool.false_xor, Bool.xor_false, Bool.and_true, Bool.true_and,
+        Bool.false_and, Bool.and_false]
+    · have h0 : decide (c = t) = false := by simpa [decide_eq_false_iff_not] using hct
+      have hlt : decide (c < t) = decide (c < t + 1) := by
+        by_cases h1 : c < t
+        · simp [h1, Nat.lt_succ_of_le (Nat.le_of_lt h1)]
+        · simp [h1, show ¬ c < t + 1 by omega]
+      rw [h0, hlt]
+      simp only [Bool.false_and, Bool.and_false, Bool.xor_false, Bool.xor_assoc]
+
+lemma xorGo_size (xi zj t : Nat) (res : Array Nat)
+    (hs : res.size = 128) (ht : t ≤ 128) :
+    (foldN.go 128 (xorF xi zj) t res).size = 128 := by
+  induction h : 128 - t generalizing t res with
+  | zero =>
+    rw [foldN_step, if_pos (by omega : t ≥ 128)]
+    exact hs
+  | succ d ih =>
+    have ht' : t < 128 := by omega
+    rw [foldN_step, if_neg (by omega : ¬ t ≥ 128)]
+    have hs1 : (xorF xi zj t res).size = 128 := by
+      unfold xorF
+      by_cases hx : xi.testBit t = true
+      · simp only [hx, ite_true]
+        unfold aset
+        have htlt : t < res.size := by omega
+        rw [hs] at htlt
+        simp [htlt, Array.size_set, hs]
+      · have hx' : xi.testBit t = false := by
+          cases hb : xi.testBit t
+          · rfl
+          · exact absurd hb hx
+        simp [hx', hs]
+    have hle : t + 1 ≤ 128 := by omega
+    exact ih (t + 1) (xorF xi zj t res) hs1 hle (by omega)
+
+lemma onePair_bit (xi zj : Nat) (res : Array Nat) (c k : Nat)
+    (hs : res.size = 128) (hc : c < 128) (hk : k < 128) :
+    resBit (foldN 128 res (xorF xi zj)) c k =
+      (resBit res c k ^^ (xi.testBit c && zj.testBit k)) := by
+  have h := xor_go xi zj 0 res res hs hs (Nat.zero_le _)
+    (by intro c k hc hk; simp) c k hc hk
+  simpa [foldN] using h
+
+lemma onePair_resZ (i j : Nat) (res : Array Nat) (c k : Nat)
+    (hs : res.size = 128) (hc : c < 128) (hk : k < 128) :
+    resZ (foldN 128 res (xorF (x.getD i 0) (z.getD j 0))) c k =
+      resZ res c k + bitContrib x z i j c k := by
+  have h := onePair_bit (x.getD i 0) (z.getD j 0) res c k hs hc hk
+  simp only [resZ]
+  rw [h, bitZ_xor]
+  simp [bitContrib, bitZ]
+
+theorem addPairs_resZ (pairs : List (Nat × Nat)) (res : Array Nat) (c k : Nat)
+    (hs : res.size = 128) (hc : c < 128) (hk : k < 128) :
+    resZ (addPairs x z res pairs) c k = resZ res c k + Msum x z pairs c k := by
+  induction pairs generalizing res with
+  | nil => simp [addPairs, Msum]
+  | cons p ps ih =>
+    have hstep := onePair_resZ x z p.1 p.2 res c k hs hc hk
+    have hcons : addPairs x z res (p :: ps) =
+        addPairs x z (foldN 128 res (xorF (x.getD p.1 0) (z.getD p.2 0))) ps := by
+      unfold addPairs xorF
+      simp only [List.foldl_cons]
+    have hs' : (foldN 128 res (xorF (x.getD p.1 0) (z.getD p.2 0))).size = 128 := by
+      simpa [foldN] using xorGo_size (x.getD p.1 0) (z.getD p.2 0) 0 res hs (Nat.zero_le _)
+    rw [hcons, ih _ hs', hstep]
+    simp [Msum, List.map_cons, List.sum_cons, add_assoc]
 
 end C16Frames.CertInvariant
