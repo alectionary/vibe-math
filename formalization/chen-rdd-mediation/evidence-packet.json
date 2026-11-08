@@ -23,7 +23,7 @@
   {
    "id": "plan",
    "path": "REPLICATION-PLAN.yaml",
-   "sha256": "39819fe1556b3be2bbdb0ae084c2d37bfd3f8af949a36384d5e37d75cb6ab7f1"
+   "sha256": "1f3b23458f86cb17654c3e13bc90d42e94ce3a9eacea963ca1d1e1872060ada7"
   },
   {
    "id": "sim",
@@ -78,12 +78,12 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "0a87e478a5fdc12c7b8c1fe9b4adcd0c74ca5197be1c92cfb85d7e608bf1f741"
+   "sha256": "cb5a85b386c9812548fa32821f7a3972f59f81fec0a2367d53f270555f97f343"
   },
   {
    "id": "stmt",
    "path": "results/statement_checks.csv",
-   "sha256": "3cc1773891287870060de1704c4fc937a4feb0b5553d2b7eb60ece6811132616"
+   "sha256": "f8eab8b535744047b0be29f6df284aee0af9d93223c90b1f913b0d6e3d114f50"
   },
   {
    "id": "zero_code",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "3fe59c696bf3b02efc8b39ad0aa716f86a85aa1b89ba61feb26c280d4a6aaffe"
+   "sha256": "2927d108022dddf4b7639a3885e1fa0ed7efe3993897e367bd55576789408bb1"
   }
  ],
  "sections": [
@@ -415,9 +415,9 @@
    "contrast_unestablished_reason": "The published value is only the verbal statement \"near zero\"; no printed number or rounding precision exists to define a tolerance.",
    "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Rejection means the 95% percentile CI excludes zero; it does not use population values.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
-   "multiplicity": "One cell chosen in advance as the largest MINT in the design, at the smallest n.",
+   "multiplicity": "One cell: the largest MINT in the design at the smallest n. It was chosen after the full results were available; results/summary.json gives MINT power for every n and ah.",
    "status": "not_replicated",
-   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. This is a direct conflict: rejection rates do not depend on population values.",
+   "status_reason": "In our run MINT power rises with n and ah: 0.836 at n = 500 for ah = .20, and at least 0.974 for ah >= .13 once n >= 1,000. Rejection rates do not use population values, so this disagreement cannot come from how estimates were matched to population values; it could still come from another unprinted step.",
    "numerical": "withheld: no published number",
    "reconstruction_scope": "full design, independent re-implementation",
    "limitations": [
@@ -490,7 +490,7 @@
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Shares over 1,176 zero-effect and 2,664 nonzero results at n = 5,000.",
    "status": "partly_replicated",
-   "status_reason": "n = 5,000 is where most results pass in our run, but not all: product effects with both paths zero stay conservative (about .002) at every n, and small effects such as ah = .007 stay below .80.",
+   "status_reason": "In our run the share of zero-effect results with Type I error in Bradley's range rises from 70.0% at n = 500 to 86.3% at n = 5,000, and the share of nonzero results with power >= .80 from 35.9% to 89.2% (the largest step, from 61.5% at n = 2,500). The shares differ little by cutoff at n = 5,000 (85.7-87.0% and 88.3-89.9%). Not all results pass: product effects with both paths zero stay conservative (about .002) at every n, and small effects such as ah = .007 stay below .80.",
    "numerical": "not applicable: qualitative",
    "reconstruction_scope": "full design",
    "limitations": [
@@ -519,7 +519,7 @@
      "component_contrast_indices": []
     },
     "ours": {
-     "text": "At n = 5,000, 89.2% of nonzero results reach .80 power; both-zero products stay conservative",
+     "text": "At n = 5,000, 86.3% of zero-effect results have Type I in range and 89.2% of nonzero results reach .80 power, similar at each cutoff; both-zero products stay conservative",
      "state": "observed",
      "artifact_ids": [
       "stmt",
@@ -663,7 +663,7 @@
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
-    "Agreement here means Chen's rejection rates for these effects were not affected by whatever produced her bias and coverage results."
+    "Agreement here is consistent with Chen's rejection rates for these effects not being affected by whatever produced her bias and coverage results."
    ],
    "stopping": {
     "reason": "Full design completed.",
@@ -896,34 +896,14 @@
    "display_decimals": 2,
    "tolerance": {
     "kind": "rounding",
-    "value": 0.00500001,
+    "value": 0.005,
     "components": [
      {
       "decimals": 2,
-      "weight": 0.166667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.166667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.166667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.166667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.166667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.166667
+      "weight": 1
      }
     ],
-    "basis": "6 printed percentages, each to two decimals (half-unit bound 0.005), enter the contrast with weight 1/6 (written as 0.166667); the bound is their weighted sum, 0.00500001 percentage points."
+    "basis": "6 printed percentages, each to two decimals (half-unit bound 0.005), enter as a mean of 6 values. A mean of values each within 0.005 is within 0.005, so the bound is 0.005 percentage points."
    },
    "magnitude": "smaller",
    "direction": "zero vs nonzero",
@@ -943,70 +923,14 @@
    "display_decimals": 2,
    "tolerance": {
     "kind": "rounding",
-    "value": 0.005000025,
+    "value": 0.005,
     "components": [
      {
       "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
+      "weight": 1
      }
     ],
-    "basis": "15 printed percentages, each to two decimals (half-unit bound 0.005), enter the contrast with weight 1/15 (written as 0.066667); the bound is their weighted sum, 0.005000025 percentage points."
+    "basis": "15 printed percentages, each to two decimals (half-unit bound 0.005), enter as a mean of 15 values. A mean of values each within 0.005 is within 0.005, so the bound is 0.005 percentage points."
    },
    "magnitude": "smaller",
    "direction": "same direction",
@@ -1026,130 +950,18 @@
    "display_decimals": 2,
    "tolerance": {
     "kind": "rounding",
-    "value": 0.01000005,
+    "value": 0.01,
     "components": [
      {
       "decimals": 2,
-      "weight": 0.066667
+      "weight": 1
      },
      {
       "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
-     },
-     {
-      "decimals": 2,
-      "weight": 0.066667
+      "weight": 1
      }
     ],
-    "basis": "30 printed percentages, each to two decimals (half-unit bound 0.005), enter the contrast with weight 1/15 (written as 0.066667); the bound is their weighted sum, 0.01000005 percentage points."
+    "basis": "30 printed percentages, each to two decimals (half-unit bound 0.005), enter as a difference of 2 means of 15 values. A mean of values each within 0.005 is within 0.005, so the bound is 0.01 percentage points."
    },
    "magnitude": "smaller",
    "direction": "same direction",

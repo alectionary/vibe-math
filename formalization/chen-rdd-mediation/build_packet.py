@@ -83,7 +83,11 @@ our_imb = r2(sum(float(t49[(e, c)]['truth_above_ci']) - float(t49[(e, c)]['truth
                  for e in EFF for c in (1, 2, 3)) / 15)
 mint = summary['mint_power_by_n_and_ah']
 our_mint = round(mint['n=500 ah=0.2006'], 3)
-n5000 = [r for r in checks if r['statement'].startswith('n = 5000')][0]
+n5000 = [r for r in checks if r['statement'].startswith('n = 5000:')][0]
+SH = {r['statement'].split(':')[0]: [float(x.strip().rstrip('%')) for x in r['our_rejection_rate_cut1/cut2/cut3'].split(';')]
+      for r in checks if r['verdict'] == 'summary'}
+by_cut = [SH[f'n = 5000, cutoff index {c}'] for c in '123']
+by_n = {n: SH[f'n = {n}'] for n in ('500', '1000', '2500', '5000', '10000')}
 t1_5000, pw_5000 = [float(x.strip().rstrip('%')) for x in n5000['our_rejection_rate_cut1/cut2/cut3'].split(';')]
 verdicts = {r['statement']: r['verdict'] for r in checks if r['verdict'] in ('agree', 'disagree')}
 n_agree = sum(v == 'agree' for v in verdicts.values())
@@ -105,13 +109,18 @@ from decimal import Decimal
 
 
 def rounding_tol(n_inputs, k_rows):
-    """n_inputs printed two-decimal percentages, each with weight 1/k_rows (written to six decimals)."""
-    w = round(1 / k_rows, 6)
-    value = float(sum(Decimal(str(w)) * Decimal('0.005') for _ in range(n_inputs)))
-    return dict(kind='rounding', value=value, components=[dict(decimals=2, weight=w)] * n_inputs,
-                basis=f'{n_inputs} printed percentages, each to two decimals (half-unit bound 0.005), enter the '
-                      f'contrast with weight 1/{k_rows} (written as {w}); the bound is their weighted sum, {value} '
-                      f'percentage points.')
+    """Mean(s) of printed two-decimal percentages: n_inputs values entering with weight 1/k_rows each.
+
+    The mean of k values each within +-0.005 is itself within +-0.005, so each mean is one
+    weight-1 component with two decimals; n_inputs / k_rows means are combined by their sum.
+    """
+    means = n_inputs // k_rows
+    assert means * k_rows == n_inputs
+    value = float(Decimal('0.005') * means)
+    return dict(kind='rounding', value=value, components=[dict(decimals=2, weight=1)] * means,
+                basis=f'{n_inputs} printed percentages, each to two decimals (half-unit bound 0.005), enter as '
+                      f'{"a mean" if means == 1 else f"a difference of {means} means"} of {k_rows} values. A mean of '
+                      f'values each within 0.005 is within 0.005, so the bound is {value} percentage points.')
 
 
 TOL2 = lambda k: rounding_tol(k, k)
@@ -234,11 +243,13 @@ claim(id='H3', level='headline', comparison_kind='scalar_unestablished',
                                     'number or rounding precision exists to define a tolerance.',
       methods=METHODS + ' Rejection means the 95% percentile CI excludes zero; it does not use population values.',
       uncertainty=MC,
-      multiplicity='One cell chosen in advance as the largest MINT in the design, at the smallest n.',
+      multiplicity='One cell: the largest MINT in the design at the smallest n. It was chosen after the full results '
+                   'were available; results/summary.json gives MINT power for every n and ah.',
       status='not_replicated',
       status_reason=f'In our run MINT power rises with n and ah: {our_mint:.3f} at n = 500 for ah = .20, and at least '
                     f'{min(mint["n=1000 ah=0.1326"], mint["n=1000 ah=0.2006"]):.3f} for ah >= .13 once n >= 1,000. '
-                    f'This is a direct conflict: rejection rates do not depend on population values.',
+                    f'Rejection rates do not use population values, so this disagreement cannot come from how '
+                    f'estimates were matched to population values; it could still come from another unprinted step.',
       numerical='withheld: no published number', reconstruction_scope='full design, independent re-implementation',
       limitations=['Chen\'s MINT Type I error with a = 0 and h > 0 is also near zero, against about .05 in our run; '
                    'both suggest her h estimates or their CIs differed from what the printed code produces.'],
@@ -269,8 +280,14 @@ claim(id='H4', level='headline', comparison_kind='nonscalar',
                               'represents it, and any pooled share would depend on the grid\'s mix of effect sizes.',
       methods=METHODS, uncertainty=MC, multiplicity='Shares over 1,176 zero-effect and 2,664 nonzero results at n = 5,000.',
       status='partly_replicated',
-      status_reason='n = 5,000 is where most results pass in our run, but not all: product effects with both paths '
-                    'zero stay conservative (about .002) at every n, and small effects such as ah = .007 stay below .80.',
+      status_reason=(f'In our run the share of zero-effect results with Type I error in Bradley\'s range rises from '
+                     f'{by_n["500"][0]:.1f}% at n = 500 to {by_n["5000"][0]:.1f}% at n = 5,000, and the share of nonzero '
+                     f'results with power >= .80 from {by_n["500"][1]:.1f}% to {by_n["5000"][1]:.1f}% (the largest step, '
+                     f'from {by_n["2500"][1]:.1f}% at n = 2,500). The shares differ little by cutoff at n = 5,000 '
+                     f'({min(b[0] for b in by_cut):.1f}-{max(b[0] for b in by_cut):.1f}% and '
+                     f'{min(b[1] for b in by_cut):.1f}-{max(b[1] for b in by_cut):.1f}%). Not all results pass: product '
+                     f'effects with both paths zero stay conservative (about .002) at every n, and small effects such as '
+                     f'ah = .007 stay below .80.'),
       numerical='not applicable: qualitative', reconstruction_scope='full design',
       limitations=['Chen calls the recommendation tentative; our check judges it literally over the whole grid.'],
       stopping=STOP_DONE('None needed for the recommendation; it is fully characterized by results/type1.csv and power.csv.'),
@@ -282,7 +299,8 @@ claim(id='H4', level='headline', comparison_kind='nonscalar',
                          page_locator=loc(164), claim_type='other',
                          conditions='Recommendation from the simulation, stated as tentative',
                          component_claim_ids=[], component_contrast_indices=[]),
-          ours=dict(text=f'At n = 5,000, {pw_5000:.1f}% of nonzero results reach .80 power; both-zero products stay conservative',
+          ours=dict(text=f'At n = 5,000, {t1_5000:.1f}% of zero-effect results have Type I in range and {pw_5000:.1f}% '
+                         f'of nonzero results reach .80 power, similar at each cutoff; both-zero products stay conservative',
                     state='observed', artifact_ids=['stmt', 'power'], locator='results/statement_checks.csv n = 5000 row',
                     component_claim_ids=[], component_contrast_indices=[])))
 
@@ -335,7 +353,7 @@ claim(id='S3', level='supporting',
       methods=METHODS, uncertainty=MC, multiplicity='Three statements.',
       status='replicated', status_reason='Each statement holds cell by cell in our run, including the cutoff ordering.',
       numerical='not applicable', reconstruction_scope='full design',
-      limitations=['Agreement here means Chen\'s rejection rates for these effects were not affected by whatever '
+      limitations=['Agreement here is consistent with Chen\'s rejection rates for these effects not being affected by whatever '
                    'produced her bias and coverage results.'],
       stopping=STOP_DONE('None needed.'))
 

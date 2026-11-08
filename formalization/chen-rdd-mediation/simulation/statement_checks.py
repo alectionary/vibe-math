@@ -73,3 +73,13 @@ for n in NS:
     w.writerow(['150 (PDF 164)', f'n = {n}: share of zero-effect cells with Type I in Bradley; share of nonzero cells with power >= .80',
                 'all', f'{len(z)} zero cells, {len(nz)} nonzero cells',
                 f'{100 * sum(inb(v) for v in z) / len(z):.1f}%; {100 * sum(v >= .8 for v in nz) / len(nz):.1f}%', 'summary'])
+
+# the same shares by cutoff index ("regardless of cutoff score", printed p. 150)
+for n in NS:
+    for c in '123':
+        z = [float(r['reject']) for r in R if r['n'] == n and r['cut_index'] == c and abs(float(r['population'])) < 1e-12]
+        nz = [float(r['reject']) for r in R if r['n'] == n and r['cut_index'] == c and abs(float(r['population'])) >= 1e-12]
+        w.writerow(['150 (PDF 164)', f'n = {n}, cutoff index {c}: share of zero-effect cells with Type I in Bradley; '
+                    'share of nonzero cells with power >= .80', 'all', f'{len(z)} zero cells, {len(nz)} nonzero cells',
+                    f'{100 * sum(inb(v) for v in z) / len(z):.1f}%; {100 * sum(v >= .8 for v in nz) / len(nz):.1f}%',
+                    'summary'])
