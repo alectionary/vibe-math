@@ -23,6 +23,9 @@ Thresholds used to read Chen's words (fixed here, before comparison):
 Each statement has one row per cell set it names (rates by n, cutoffs 1/2/3) with that set's verdict,
 then a row with the statement's verdict: 'agree' only if every cell set agrees. A last column repeats
 every verdict with each threshold moved .01 in Chen's favour (a sensitivity check on reading her words).
+A further column repeats every verdict (strict thresholds) on our cells with h replaced by 0, keeping the
+other factors: it asks whether Chen's statement would hold in our run if the mediator-by-treatment
+interaction were absent. It is a counterfactual reading of our own results, not a test of her runs.
 """
 import csv, sys
 from collections import defaultdict
@@ -37,7 +40,12 @@ for r in R:
     IDX[r['effect']].append(r)
 
 
+H0 = False   # counterfactual pass: read every cell with h replaced by 0 (same other factors)
+
+
 def rates(eff, **kw):
+    if H0 and eff in ('PNDE', 'TNDE', 'TNIE', 'MINT'):
+        kw = dict(kw, h=0)
     d = defaultdict(list)
     for r in IDX[eff]:
         if all(abs(float(r[k]) - v) < 1e-9 for k, v in kw.items()):
@@ -224,11 +232,17 @@ rows = []
 SLACK = 0.01
 run_all()
 slack = rows
-rows = [r + [s_[-1]] for r, s_ in zip(strict, slack)]
+SLACK = 0.0
+rows = []
+H0 = True
+run_all()
+h0 = rows
+H0 = False
+rows = [r + [s_[-1], z[-1]] for r, s_, z in zip(strict, slack, h0)]
 SLACK = 0.0   # the summary rows below use the strict thresholds
 
 w = csv.writer(sys.stdout)
-w.writerow(['page', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack'])
+w.writerow(['page', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack', 'verdict_if_h_were_0'])
 w.writerows(rows)
 
 # Chapter 5 sample-size recommendation (printed p. 150): shares by n, then by n and cutoff
@@ -241,4 +255,4 @@ for n in NS:
         w.writerow(['150 (PDF 164)', f'{label}: share of zero-effect cells with Type I in Bradley; share of nonzero '
                     'cells with power >= .80', 'all', f'{len(z)} zero cells, {len(nz)} nonzero cells',
                     f'{100 * sum(within(v) for v in z) / len(z):.1f}%; {100 * sum(v >= .8 for v in nz) / len(nz):.1f}%',
-                    'summary', 'summary'])
+                    'summary', 'summary', 'summary'])
