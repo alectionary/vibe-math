@@ -1,0 +1,33 @@
+{
+  "status": "PASS_WEAKER_FLOOR_CONTINUATION_COPY",
+  "source_C16_answered": false,
+  "reviewer_sha256": "3184ab5a3c8617e98beec86f9f1a6da672a9e94cfab6006e1cce15ba92bd2647",
+  "baseline_sha256": "0f6f4a870b4193a951b6b523ae4999cb7eb5c72c5bdaeac4b9e8c715f8fea5ad",
+  "homotopy_model_sha256": "9b38a479401a79926e36ca5b890c4de5c285e5169581a818bb36e0b081b8fb50",
+  "diff_sha256": "cfa4b7f6e21756e492af8124ccf3084a89008b13e676ae673b4b2a224eb265c3",
+  "case_source_review_sha256": "3b0b6df75b342c3cc4efa756e7a366ebd8f36a45932e5c5c9361e450cca0321e",
+  "complete_AST_identical_after_declared_floor_changes": true,
+  "exact_dyadic_multipliers": [
+    "1/16",
+    "1/8",
+    "1/4",
+    "1/2",
+    "3/4",
+    "1"
+  ],
+  "case32_trial_floors": [
+    "1/256",
+    "1/128",
+    "1/64",
+    "1/32",
+    "3/64",
+    "1/16"
+  ],
+  "source_floor": "1/16",
+  "no_other_model_or_solver_change": true,
+  "execution_flags_not_replayed": true,
+  "zero_margin_semantics": "For 0<multiplier<=1 the trial floor is weaker than the true selected-case floor, so the zero-margin model remains source-necessary. Exact infeasibility of this weaker model would exclude the case; feasibility below multiplier1 does not establish the true-floor relaxation.",
+  "positive_margin_semantics": "Positive PSD/Boolean/projected margins turn this into a sufficient interior witness search. Failure, including exact infeasibility, cannot exclude source cases. Exact feasible points still require full original-row recovery and the true floor for a true-case relaxation barrier.",
+  "source_frame_claimed": false,
+  "source_case_excluded": false
+}

@@ -1,0 +1,18 @@
+--- verify_singleton_exact_pricing.py
++++ verify_singleton_geometry_pricing.py
+@@ -103,12 +103,12 @@
+     ap=argparse.ArgumentParser()
+     for name in ('pricing','output'):ap.add_argument('--'+name,required=True)
+     for name in ('manifest','farkas-receipt'):ap.add_argument('--'+name)
+-    ap.add_argument('--archive-consumer',default='verify_singleton_archive_cg.py')
+-    ap.add_argument('--pricing-producer',default='price_singleton_archive_cg.py')
++    ap.add_argument('--archive-consumer',default='verify_singleton_geometry_archive.py')
++    ap.add_argument('--pricing-producer',default='price_singleton_geometry_archive.py')
+     a=ap.parse_args();c=read(a.pricing)
+     a.manifest=a.manifest or c['manifest'];a.farkas_receipt=a.farkas_receipt or c['farkas_receipt']
+     m=read(a.manifest);s=read(m['semantic']);r=read(a.farkas_receipt)
+-    assert m['status']=='EXACT_SINGLETON_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
++    assert m['status']=='EXACT_SINGLETON_GEOMETRY_ARCHIVE_LP_REQUIRES_TEXT_REPLAY'
+     assert r['status']=='PASS_EXACT_RESTRICTED_SINGLETON_ARCHIVE_INFEASIBILITY'
+     assert c['manifest_sha256']==r['manifest_sha256']==sha(a.manifest)
+     assert c['farkas_receipt_sha256']==sha(a.farkas_receipt)

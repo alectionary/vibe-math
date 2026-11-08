@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+"""Bounded fully corrective weighted-L2/Wolfe projection pilot.
+
+QR affine minimization and simplex-boundary minor cycles maintain a numerical
+convex combination. Exact integer global pricing alone can produce a separating
+candidate. Small residuals require a separate exact physical-mixture consumer.
+"""
+from pathlib import Path
+import argparse,hashlib,json,resource,sys,time
+import numpy as np
+from scipy.linalg import lstsq
+from full_partner_projection import mask_universe,support_all,sha,read,LAYOUT
+from full_partner_projection_features import FEATURES
+from full_partner_projection_residual import exact_seed
+from full_partner_basis_oracle import FullPartnerBasisOracle
+ROOT=Path(__file__).resolve().parent
+
+
+def main():
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--point',type=Path,required=True);ap.add_argument('--archive',type=Path,required=True)
+    ap.add_argument('--audit',type=Path,default=ROOT/'coupling-results/full-partner-projection-independent-audit.json')
+    ap.add_argument('--metric',choices=['raw','target_relative','variance'],default='raw')
+    ap.add_argument('--seconds',type=float,default=600);ap.add_argument('--max-rounds',type=int,default=1000)
+    ap.add_argument('--pricing-scale',type=int,default=1<<24);ap.add_argument('--output',type=Path,required=True)
+    a=ap.parse_args();assert 0<a.seconds<=600 and a.pricing_scale>0 and not a.output.exists()
+    start=time.monotonic();audit=read(a.audit);assert audit['status'].startswith('PASS')
+    target,seed_mixture,residual,variance,selected,numerators,denominator=exact_seed(a.point,a.archive)
+    from fractions import Fraction
+    diagonal=([Fraction(1)]*775 if a.metric=='raw' else
+              [1/max(Fraction(1,16),abs(v))**2 for v in target] if a.metric=='target_relative' else
+              [1/max(Fraction(1,256),v) for v in variance])
+    D=np.asarray(list(map(float,diagonal)));sqrtD=np.sqrt(D[1:]);b=np.asarray(list(map(float,target)));scale=a.pricing_scale
+    saved=np.load(a.archive);F0=saved['features'];features=[r for r in F0]
+    masks=list(map(int,saved['masks']));witnesses=[r for r in saved['selected_Z_indices']]
+    lookup={f.tobytes():i for i,f in enumerate(features)};assert len(lookup)==len(features)
+    active=selected.tolist();weights=np.asarray([float(Fraction(n,denominator)) for n in numerators]);weights/=weights.sum()
+    allowed,reps=mask_universe(32);oracle=FullPartnerBasisOracle();domains=[(p,oracle.prepare(32,p)) for p in reps]
+    paths=['full_partner_projection_wolfe.py','full_partner_projection_residual.py','full_partner_projection.py',
+        'full_partner_projection_features.py','full_partner_basis_oracle.py','verify_projected_profile_moment_rows.py',
+        'projected_profile_moment_matrix.py','physical-pool-source.json','pools/xcoords.txt','pools/zcoords.txt',
+        'algebraic-results/orbit-rank-profiles.json.gz','algebraic-results/hulls-16-rank.json.gz',
+        'moment-resumption-results/symmetry-bridge-independent.json','coupling-results/full-partner-orbit32-independent.json',
+        str(a.audit.resolve().relative_to(ROOT.resolve())),
+        'coupling-results/full-partner-projection-independent-audit.py']
+    hashes={p:sha(ROOT/p) for p in paths}
+    frozen={'status':'FROZEN_BEFORE_WOLFE_PROJECTION','source_C16_answered':False,'point_sha256':sha(a.point),
+        'archive_sha256':sha(a.archive),'mapping_audit_sha256':sha(a.audit),'source_hashes':hashes,
+        'orbit':32,'feature_layout':LAYOUT,'allowed_masks':len(allowed),'representatives':reps,
+        'allowed_mask_list_sha256':hashlib.sha256(json.dumps(allowed,separators=(',',':')).encode()).hexdigest(),
+        'metric':a.metric,'metric_diagonal':list(map(str,diagonal)),'initial_active_columns':active,
+        'initial_exact_weight_numerators':list(map(str,numerators)),'initial_exact_weight_denominator':str(denominator),
+        'seconds':a.seconds,'pricing_scale':scale,'max_rounds':a.max_rounds,
+        'controls':'QR affine rank, feasible minor-cycle weights, objective decrease, corral stationarity, true-gradient witness scores and quantization-aware Wolfe bound.',
+        'scope':'Numerical fully corrective L2 projection search. No global projection optimality, membership, or source feasibility without independent exact acceptance.'}
+    fp=a.output.with_suffix('.frozen.json');assert not fp.exists();fp.write_text(json.dumps(frozen,indent=2)+'\n')
+
+    def point(ids,w):return w@np.asarray([features[i] for i in ids],dtype=float)
+    def objective(x):return .5*float(np.dot(D*(x-b),x-b))
+    def correction(ids,w):
+        ids=list(ids);w=w.copy();minor=[];before=time.monotonic()
+        for step in range(1000):
+            if time.monotonic()-start>=a.seconds:return ids,w,minor,'TIME_LIMIT_DURING_CORRECTION'
+            oldx=point(ids,w);oldobj=objective(oldx);V=np.asarray([features[i][1:] for i in ids],dtype=float)
+            if len(ids)==1:alpha=np.ones(1);rank=0
+            else:
+                U=(V[1:]-V[0]).T*sqrtD[:,None];rhs=(b[1:]-V[0])*sqrtD
+                eta,_,rank,_=lstsq(U,rhs,cond=1e-12,lapack_driver='gelsy')
+                if rank!=len(ids)-1:return ids,w,minor,'AFFINE_RANK_FAILURE'
+                alpha=np.r_[1-eta.sum(),eta]
+            if alpha.min()>=-1e-11:
+                candidate=np.maximum(alpha,0);candidate/=candidate.sum();keep=candidate>0
+                ids=[i for i,k in zip(ids,keep) if k];candidate=candidate[keep]
+                newobj=objective(point(ids,candidate));assert newobj<=oldobj+1e-9*max(1.,oldobj)
+                minor.append({'step':step,'active_columns':len(ids),'objective_before':oldobj,'objective_after':newobj,
+                              'affine_rank':int(rank),'completed_corral':True})
+                return ids,candidate,minor,None
+            bad=np.flatnonzero(alpha<0);ratios=w[bad]/(w[bad]-alpha[bad]);hit=int(bad[int(np.argmin(ratios))]);theta=float(np.min(ratios))
+            assert -1e-12<=theta<=1+1e-12
+            candidate=(1-theta)*w+theta*alpha;candidate[hit]=0
+            assert candidate.min()>=-1e-10
+            candidate=np.maximum(candidate,0);candidate/=candidate.sum();keep=candidate>0
+            newids=[i for i,k in zip(ids,keep) if k];candidate=candidate[keep];newobj=objective(point(newids,candidate))
+            assert newobj<=oldobj+1e-9*max(1.,oldobj) and abs(candidate.sum()-1)<1e-10
+            minor.append({'step':step,'active_before':len(ids),'active_after':len(newids),
+                          'objective_before':oldobj,'objective_after':newobj,'theta':theta,'affine_rank':int(rank)})
+            ids,w=newids,candidate
+        return ids,w,minor,'MINOR_CYCLE_LIMIT'
+
+    rounds=[];cuts=[];reason='ROUND_LIMIT';last_direction=np.zeros(775);last_bound=0
+    result={**frozen,'status':'RUNNING','frozen_sha256':sha(fp),'rounds':rounds,'cuts':cuts}
+    for iteration in range(a.max_rounds):
+        if time.monotonic()-start>=a.seconds:reason='TIME_LIMIT';break
+        before=time.monotonic();active,weights,minor,failure=correction(active,weights)
+        x=point(active,weights);r=b-x;raw=D*r;raw[0]=0;norm=max(abs(raw));obj=objective(x)
+        rec={'round':iteration,'active_columns':len(active),'historical_columns':len(features),
+             'correction_seconds':time.monotonic()-before,'minor_cycles':minor,'weighted_objective':obj,
+             'max_feature_residual':float(max(abs(r))),'weight_mass':float(weights.sum()),
+             'minimum_weight':float(weights.min()),'correction_failure':failure}
+        rounds.append(rec)
+        if failure:reason=failure;break
+        V=np.asarray([features[i] for i in active],dtype=float)
+        stationarity=float(np.max(abs((V-x)@raw)));rec['corral_stationarity_residual']=stationarity
+        if stationarity>1e-7*max(1.,norm):reason='CORRAL_STATIONARITY_FAILURE';break
+        if max(abs(r))<=1e-9:reason='NUMERICAL_MIXTURE_REQUIRES_EXACT_RECOVERY';break
+        assert norm>0;direction=raw/norm;last_direction=direction
+        c=[int(np.rint(v*scale)) for v in direction];c[0]=0
+        before=time.monotonic();bound,records,columns=support_all(oracle,domains,c);last_bound=bound/scale
+        value=sum(a0*b0 for a0,b0 in zip(c,target));gap=value-bound
+        scores=np.asarray([np.dot(direction,f) for f in columns]);best=int(np.argmax(scores));xscore=float(np.dot(direction,x))
+        sample_gap=float(scores[best]-xscore);quantization=32*float(np.sum(abs(direction-np.asarray(c)/scale)))
+        wolfe_upper=sample_gap+quantization
+        rec.update(pricing_seconds=time.monotonic()-before,exact_integer_support=bound,
+            exact_target_value=str(value),exact_violation=str(gap),scaled_violation=float(gap/scale),
+            true_gradient_best_sample_gap=sample_gap,quantization_additive_bound=quantization,
+            numerical_Wolfe_upper_with_rounding=wolfe_upper,best_mask=records[best]['mask'],
+            peak_RSS_MiB=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/(1024**2 if sys.platform=='darwin' else 1024))
+        if gap>0:
+            cuts.append({'coefficients':c,'upper_bound':bound,'exact_target_value':str(value),
+                'exact_violation':str(gap),'pricing_scale':scale,'support_records':records})
+            reason='EXACT_POSITIVE_SUPPORT_GAP_REQUIRES_INDEPENDENT_REPLAY'
+        print(json.dumps({k:v for k,v in rec.items() if k!='minor_cycles'}),flush=True)
+        if cuts:break
+        if wolfe_upper<=1e-10:reason='NUMERICAL_WOLFE_STOP_WITHOUT_EXACT_CERTIFICATE';break
+        if sample_gap<=1e-12:reason='NO_TRUE_GRADIENT_IMPROVEMENT_FROM_ROUNDED_PRICING';break
+        # Archive all queried physical witnesses, but add only the strongest
+        # actual-gradient improvement to the corral.
+        chosen=None
+        for j,(feature,record) in enumerate(zip(columns,records)):
+            f=np.asarray(feature,dtype=np.int16);key=f.tobytes();gid=lookup.get(key)
+            if gid is None:
+                gid=len(features);lookup[key]=gid;features.append(f);masks.append(record['mask'])
+                witnesses.append(np.asarray(record['selected_Z_indices'],dtype=np.uint16))
+            if j==best:chosen=gid
+        if chosen in active:reason='PRICED_VERTEX_ALREADY_IN_CORRAL';break
+        active.append(chosen);weights=np.r_[weights,0.]
+        result.update(elapsed_seconds=time.monotonic()-start,feature_columns=len(features))
+        a.output.write_text(json.dumps(result,indent=2)+'\n')
+    global_weights=np.zeros(len(features));global_weights[np.asarray(active,dtype=np.int64)]=weights
+    colpath=a.output.with_suffix('.columns.npz')
+    np.savez_compressed(colpath,features=np.stack(features),masks=np.asarray(masks,dtype=np.uint16),
+        selected_Z_indices=np.stack(witnesses),master_mixture_weights=global_weights,
+        active_column_ids=np.asarray(active,dtype=np.int32),search_direction=last_direction,
+        priced_bound=last_bound,metric_diagonal=D)
+    x=point(active,weights);assert all(sha(ROOT/p)==digest for p,digest in hashes.items())
+    result.update(status='EXACT_SUPPORT_CUT_CANDIDATE' if cuts else 'NO_EXACT_SEPARATOR_FOUND',
+        stopping_reason=reason,elapsed_seconds=time.monotonic()-start,feature_columns=len(features),
+        columns_artifact=str(colpath),columns_sha256=sha(colpath),numeric_mixture_max_feature_residual=float(max(abs(x-b))),
+        numeric_mixture_weight_mass=float(weights.sum()),numeric_mixture_minimum_weight=float(weights.min()),
+        scope='Fully corrective weightedL2 numerical pilot with physical witness archives and exact global support pricing. Only independently accepted strict cuts or exact nonnegative mixture recovery establish auxiliary results; no source frame or width resolution is claimed.')
+    a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:result[k] for k in ('status','stopping_reason','elapsed_seconds','feature_columns','numeric_mixture_max_feature_residual')}),flush=True)
+
+
+if __name__=='__main__':main()

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/four_anchor_count_ray_v2.py", line 55, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-coupling-20261030T0514/formalization/canonical-width/c16/four_anchor_count_ray_v2.py", line 40, in main
+    H.run();model_status=str(H.getModelStatus());ray_status,exists,ray=H.getDualRay();assert exists,(model_status,str(ray_status));ray=np.array(ray);np.savez_compressed(str(a.prefix)+'.ray.npz',ray=ray,rhs=np.array(list(map(str,rhs))))
+                                                                                             ^^^^^^
+AssertionError: ('HighsModelStatus.kOptimal', 'HighsStatus.kOk')

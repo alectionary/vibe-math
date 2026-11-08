@@ -5,7 +5,7 @@ R=pathlib.Path(__file__).resolve().parent.parent;D=R/'literature'
 load=lambda n:json.loads((D/n).read_text())
 rows=load('open-problems.json');coverage=load('downstream-paper-coverage.json');exclusions=load('downstream-exclusions.json');mechanization=load('downstream-mechanization.json')
 reconciliation=load('research-reconciliation.json')
-updated_on=max(e['checked_on'] for e in reconciliation['indexing_extensions'])
+updated_on=max(e['checked_on'] for e in reconciliation['indexing_extensions']+reconciliation.get('research_blocks', []) if e.get('checked_on'))
 date_label=date.fromisoformat(updated_on).strftime('%B %d, %Y').replace(' 0',' ')
 research_sources=load('research-source-index.json')['sources']
 new=[r for r in rows if r['origin']=='article_inventory_extension'];eligible=[r for r in rows if r['eligible_for_coverage']]

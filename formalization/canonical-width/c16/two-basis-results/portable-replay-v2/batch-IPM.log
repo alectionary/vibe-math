@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/private/tmp/c16-two-basis-portable-replay-v2-20261030T1652/verify_two_basis_batch_ipm_portable.py", line 116, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-two-basis-portable-replay-v2-20261030T1652/verify_two_basis_batch_ipm_portable.py", line 29, in main
+    matrix_path=Path(str(stem)+'.lp-data.npz');data=np.load(matrix_path,allow_pickle=False)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'two-basis-results/two-basis-batch-ipm-X-nearest-point15.lp-data.npz'

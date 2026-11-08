@@ -1,0 +1,336 @@
+{
+  "checked_on": "2026-10-27",
+  "canonical_target_id": "L-F91-c16-unrestricted-width",
+  "canonical_completion_delta": 0,
+  "question_status": "open",
+  "value_of_f": "still_16_or_18",
+  "lean_certificate": false,
+  "committed_checker": {
+    "command": "python3 formalization/canonical-width/c16/verify_partial_frame.py",
+    "command_88": "python3 formalization/canonical-width/c16/verify_partial_frame.py formalization/canonical-width/c16/partial-frame-88.json",
+    "script_sha256": "169b253e660ebc4111a7afdec2efd6a666f7811269816ac5cf2832e76f91e16f",
+    "witness": "formalization/canonical-width/c16/partial-frame-84.json",
+    "witness_sha256": "7823c6f7987daa8c35dc96a8f5ec381ead428531df6c129ba5788d63f6cce949",
+    "witness_pairs": 84,
+    "witness_88": "formalization/canonical-width/c16/partial-frame-88.json",
+    "witness_88_sha256": "814fa6d137f3429b7a2cf34e28c254c0684c1f4441aa0701dc63a2edb68cc987",
+    "witness_88_pairs": 88,
+    "operator_weight": 16,
+    "expected_stdout": [
+      "partial canonical frame ok: 84 pairs, weight 16, zero syndromes, Gram identity",
+      "rebuilt checks: 480 rows, max weight 9, ranks (480, 480), k=128"
+    ],
+    "construction": {
+      "source": "Lee arXiv:2610.06820v1 equation (50)",
+      "html_sha256": "3e4294e6e8c328eca1de101b04b1ad527e0ddae1fc9bc776e3037328ef22a37f",
+      "P": 16,
+      "n": 1088,
+      "k": 128,
+      "C_coefficients_0_1_omega_omega2": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2,
+          0,
+          3
+        ],
+        [
+          1,
+          3,
+          1,
+          2,
+          0
+        ]
+      ],
+      "E": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          12,
+          9,
+          3
+        ],
+        [
+          0,
+          12,
+          6,
+          2,
+          14
+        ]
+      ]
+    },
+    "does_not_import": "Lee checker or unpacked pool"
+  },
+  "scratch_nonextension": {
+    "evidence": "exact_finite_computation",
+    "in_committed_checker": false,
+    "basis_file": "/tmp/lf91/best-11.txt",
+    "dual_hits_in_z_pool": 84,
+    "dual_misses": 44,
+    "z_pool_vectors_orthogonal_to_the_84_x_columns": 0,
+    "meaning": "This 84-pair frame does not extend by one more weight-16 pool pair. It does not prove that no 128-pair frame exists."
+  },
+  "reproduced_enumerator": {
+    "evidence": "exact_finite_computation_of_released_program",
+    "independent_reimplementation": false,
+    "repository": "https://github.com/yeon-lee/public-regular-logical-frames",
+    "commit": "04ad4795ad15cb89ee47b7868ff925c30b2fc731",
+    "code": "LPQ6",
+    "returncode": 0,
+    "wall_seconds": 54.86957409599995,
+    "nodes": 56921793,
+    "normalized_orbits": 45,
+    "matches_released_pool": true,
+    "stabilizer_overlap_pruning": false,
+    "terminal": "ENUMERATION_COMPLETE W=17 roots=[0,68) children=[0,1073741824) mod(D=-1,M=1,r=0) nodes=56921793 t=54.8",
+    "input_sha256": "a00f1dac2385856c0fab25f28c04d57729cd1ac79f745ff18e37d03b432137d2",
+    "source_sha256": "b9f0b5be8e26195af5c37fb45f33c29956653ee028212e58646489caa0b74a8c",
+    "binary_sha256": "2dcb140e0a388557b7d89b2d3d5ce20de09291485e312872507b6b8b45516ab8",
+    "stdout_sha256": "36dc5c723c0aba9f1f7de7aa87f06e7173afbc39bb8b3336d4fe72d9ef226536"
+  },
+  "seed4_monomials": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/monomial_rank.cpp",
+    "pools": [
+      "formalization/canonical-width/c16/pools/xcoords.txt",
+      "formalization/canonical-width/c16/pools/zcoords.txt"
+    ],
+    "assignments": 43046721,
+    "maximum_orthogonal_x_rank": 109,
+    "rank_required_for_a_frame": 112,
+    "conclusion": "No width-16 CSS canonical frame contains all 16 seed-4 X monomials."
+  },
+  "seed4_fifteen": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_fifteen.cpp",
+    "pools": [
+      "formalization/canonical-width/c16/pools/xcoords.txt",
+      "formalization/canonical-width/c16/pools/zcoords.txt"
+    ],
+    "omit_bit": 0,
+    "assignments": 14348907,
+    "full_rank_assignments": 9,
+    "maximum_orthogonal_x_rank": 113,
+    "rank_required_for_a_frame": 113,
+    "quotient_solutions": 0,
+    "independent_python_node_counts": [
+      203,
+      128,
+      1208,
+      292,
+      766,
+      124,
+      124,
+      146,
+      178
+    ],
+    "conclusion": "No width-16 CSS canonical frame contains 15 of the 16 seed-4 X monomials.",
+    "scope_correction_2026_10_27": "Historical three-prototype partner domain only. The complete partner domain is larger when monomials are omitted. Superseded by corrected_seed4_search and takeover-results/manifest.json."
+  },
+  "seed4_fourteen": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_fifteen.cpp",
+    "assignments_per_distance": 4782969,
+    "distances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "omit_masks": [
+      3,
+      5,
+      9,
+      17,
+      33,
+      65,
+      129,
+      257
+    ],
+    "full_rank_assignments": [
+      346,
+      589,
+      108,
+      193,
+      880,
+      107,
+      138,
+      569
+    ],
+    "full_rank_total": 2930,
+    "rank_required_for_a_frame": 114,
+    "quotient_solutions": 0,
+    "capped_then_rerun_with_z_rank": 36,
+    "largest_rerun_nodes": 17623,
+    "conclusion": "No width-16 CSS canonical frame contains 14 of the 16 seed-4 X monomials.",
+    "scope_correction_2026_10_27": "Historical three-prototype partner domain only. The complete partner domain is larger when monomials are omitted. Superseded by corrected_seed4_search and takeover-results/manifest.json."
+  },
+  "seed4_thirteen": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_fifteen.cpp",
+    "rotation_orbits": 35,
+    "assignments_per_orbit": 1594323,
+    "full_rank_total": 96807,
+    "full_rank_min_orbit": 399,
+    "full_rank_max_orbit": 6760,
+    "rank_required_for_a_frame": 115,
+    "quotient_solutions": 0,
+    "largest_search_nodes": 318114,
+    "largest_search_type": "*1*212112112*211",
+    "conclusion": "No width-16 CSS canonical frame contains 13 of the 16 seed-4 X monomials.",
+    "scope_correction_2026_10_27": "Historical three-prototype partner domain only. The complete partner domain is larger when monomials are omitted. Superseded by corrected_seed4_search and takeover-results/manifest.json."
+  },
+  "seed4_twelve_partial": {
+    "evidence": "partial_exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_fifteen.cpp",
+    "accounting": "formalization/canonical-width/c16/seed4-twelve-partial.json",
+    "capped_types": "formalization/canonical-width/c16/seed4-twelve-capped.txt",
+    "rotation_orbits": 116,
+    "assignments_per_orbit": 531441,
+    "full_rank_total": 1008952,
+    "rank_required_for_a_frame": 116,
+    "max_rank_attained_in_every_orbit": 116,
+    "orbits_fully_dead": 33,
+    "orbits_fully_dead_assignments": 319061,
+    "capped_assignments": 100,
+    "node_cap": 300000,
+    "quotient_solutions": 0,
+    "stopped": "2026-10-26T23:40:28Z",
+    "conclusion": "No dual basis in the searched restricted subfamily. This does not exclude any whole twelve-monomial rotation orbit in the complete pools.",
+    "scope_correction_2026_10_27": "Three-prototype partner subfamily only. None of the reported 33 complete-domain twelve-monomial orbit exclusions is established by these old logs."
+  },
+  "b_identity_matching": {
+    "evidence": "exact_finite_computation",
+    "solver": "OR-Tools CP-SAT 9.15.6755",
+    "statement": "No induced matching of B-carrying pool pairs has B-outer-products equal to I_32 in the three restricted pools named in INVESTIGATION.md. The seed-5 monomial matching is accepted. This does not decide f.",
+    "infeasible_pools": [
+      "seeds 4,5,6,7 only: 2208 pairs",
+      "seed 0 = 0: 2576 pairs",
+      "seed 1 = 0: 2208 pairs",
+      "phase-0 quotient, joint B and C: 8352 pairs"
+    ]
+  },
+  "sampled_search": {
+    "evidence": "sampled_experiment",
+    "best_partial_pairs": 88,
+    "reduced_96_plateau": 48,
+    "reduced_coloring_colors": 158,
+    "reduced_coloring_max_degree": 8354,
+    "ils_stopped_for_closeout": true,
+    "ils_best": 84
+  },
+  "partner_domain_audit": {
+    "report": "formalization/canonical-width/c16/TAKEOVER.md",
+    "counterexample": "formalization/canonical-width/c16/partner-domain-counterexample.json",
+    "physical_pool_checker": "formalization/canonical-width/c16/audit_pools.py",
+    "combined_verifier": "formalization/canonical-width/c16/verify_takeover.py",
+    "legacy_twelve_exclusions_retracted": true,
+    "pool_completeness_proved": false,
+    "pool_completeness_status_update": "Historical audit checkpoint did not reimplement the enumerator. See independent_pool_enumeration for the subsequent independent computation and written bridge."
+  },
+  "corrected_seed4_search": {
+    "evidence": "exact_finite_computation",
+    "program": "formalization/canonical-width/c16/seed4_exact.cpp",
+    "manifest": "formalization/canonical-width/c16/takeover-results/manifest.json",
+    "complete_partner_domain": true,
+    "cases": {
+      "15": {
+        "rotation_orbits": 1,
+        "assignments": 70858800,
+        "full_rank": 9
+      },
+      "14": {
+        "rotation_orbits": 8,
+        "assignments": 1117382040,
+        "full_rank": 6897
+      },
+      "13": {
+        "rotation_orbits": 35,
+        "assignments": 9340813224,
+        "full_rank": 449904
+      }
+    },
+    "conclusion": "No 128-pair frame in the listed CSS pools contains 13 or more seed-4 X monomials. All corrected partner assignments are covered, without capped searches. Unrestricted width remains unresolved."
+  },
+  "global_takeover_searches": {
+    "solver_results": [
+      "formalization/canonical-width/c16/takeover-results/solver-global128.json",
+      "formalization/canonical-width/c16/takeover-results/solver-global128-cap13.json",
+      "formalization/canonical-width/c16/takeover-results/solver-max88.json"
+    ],
+    "decision": "Two UNKNOWN runs; optimization kept best 88 and bound 128. No global exclusion.",
+    "relaxations": "formalization/canonical-width/c16/takeover-results/global-relaxations.json"
+  },
+  "independent_pool_enumeration": {
+    "evidence": [
+      "independent_exact_finite_computation",
+      "written_completeness_argument"
+    ],
+    "manifest": "formalization/canonical-width/c16/four-hours-results/enumeration/manifest.json",
+    "report": "formalization/canonical-width/c16/INDEPENDENT-ENUMERATION.md",
+    "checker": "formalization/canonical-width/c16/verify_independent_enumeration.py",
+    "all_roots": 68,
+    "nodes": 47708679,
+    "maximum_weight": 17,
+    "normalized_orbits": 45,
+    "all_outputs_weight": 16,
+    "physical_representatives_per_sector": 720,
+    "minimum_cross_sector_support_union": 26,
+    "source_search_code_imported": false,
+    "lean_certificate": false,
+    "conclusion": "Complete low-weight pools independently reproduced in both sectors; mixed representatives through weight17 reduce to a pure pool frame. The exact width remains16 or18."
+  },
+  "four_hour_monomial_search": {
+    "evidence": "exact_finite_computation",
+    "manifest": "formalization/canonical-width/c16/four-hours-results/twelve/manifest.json",
+    "checker": "formalization/canonical-width/c16/verify_four_hours.py",
+    "rotation_classes": 116,
+    "assignments_covered": 54411742864,
+    "quotient_cases_reached": 16203129,
+    "search_nodes": 115977493,
+    "capped": 0,
+    "complete_partner_domain": true,
+    "exact_count_restriction": false,
+    "conclusion": "All116 corrected twelve-monomial translation classes are excluded, covering54,411,742,864 partner assignments with16,203,129 quotient calls after prefix pruning and zero caps. Any complete-pool width16 CSS frame has at most11 seed4 X monomials. Independent physical pool completeness is reproduced through weight17. Exact unrestricted width remains16 or18; no Lean certificate.",
+    "eleven_case": "formalization/canonical-width/c16/four-hours-results/eleven/manifest.json",
+    "eleven_scope": "Only omitted-mask4677 class excluded; remaining272 eleven-monomial classes unresolved"
+  },
+  "four_hour_global_search": {
+    "status": "unresolved",
+    "frontier_summary": "formalization/canonical-width/c16/four-hours-results/frontier/summary.json",
+    "frontier_archive": "formalization/canonical-width/c16/four-hours-results/frontier/campaign.json.gz",
+    "archive_checker": "formalization/canonical-width/c16/verify_frontier_archive.py",
+    "nodes_including_root": 669402203,
+    "closed_tasks": 65950,
+    "expanded_tasks": 75,
+    "unresolved_tasks": 20558,
+    "solver_results": "formalization/canonical-width/c16/four-hours-results/experiments/solver-runs.json",
+    "global_sat_witness": false,
+    "global_unsat_certificate": false
+  },
+  "four_hour_timing": {
+    "start_utc": "2026-10-27T01:26:36Z",
+    "deadline_utc": "2026-10-27T05:26:36Z",
+    "closeout_resumed_utc": "2026-10-27T07:12:57Z",
+    "on_time_handoff": false,
+    "note": "Pending tool orchestration returned after deadline and launched the saved endomorphism calculation before the overrun was noticed. Final preservation/validation/publication was late. No new research campaign after discovery of the missed deadline."
+  }
+}

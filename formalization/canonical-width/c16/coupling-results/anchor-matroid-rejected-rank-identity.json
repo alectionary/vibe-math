@@ -1,0 +1,29 @@
+{
+  "status": "REJECTED_DIAGNOSTIC_ASSERTION",
+  "assertion": "rank(all eligible ground)=rank(unowned ground)+number of nonempty owner bins",
+  "counterexample": {
+    "mask": 0,
+    "include_S13": 1,
+    "eligible_count": 45,
+    "eligible_rank": 32,
+    "unowned_rank": 26,
+    "owner_bins": {
+      "65536": [
+        16,
+        18,
+        19,
+        27,
+        29,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ]
+    }
+  },
+  "reason": "Differences between two vectors sharing one owner may add kernel dimensions outside the span of the unowned ground. The valid decomposition applies to at most one chosen vector per owner, not to the whole eligible ground. The proposed optimizer still uses at most one per owner.",
+  "source_C16_answered": false
+}

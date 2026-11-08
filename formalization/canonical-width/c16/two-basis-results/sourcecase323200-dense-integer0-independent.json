@@ -1,0 +1,130 @@
+{
+  "bank_sha256": "db03e3af19cb6e1ef1a2f0ba32c29face9b607104ae9edac9b956b7cb74c5c88",
+  "complete_monomial_mapping": {
+    "actions_per_monomial": 32,
+    "canonical_orbit_labels_sha256": "3ffdd8d424a6832c25c6e0c13e06f1f9e4541347cac74042ef8d760bffba4908",
+    "diagonals_checked": 1440,
+    "distinct_pairs_checked": 1036080,
+    "mapping_sha256": "dc61be650f98d6c64e501c53cbdfe973163782b02df268130572b3e083a2789f",
+    "proof": "Uniform finite-group orbit sums have equal stabilizer multiplicities. Equality of exact32-action orbit keys proves each physical monomial has the compiled representative average. Diagonals use I_a^2=I_a.",
+    "unordered_monomials_checked": 1037520
+  },
+  "consumer_sha256": "e092d86d215d00064415e980c6d478e2ceb2f4f2f343e1074353e985aaa5184d",
+  "corrupt_inputs_rejected": 14,
+  "cuts_checked": 12,
+  "exact_target_separation_claimed": false,
+  "exhaustive_tiny_controls": {
+    "Boolean_assignments": 55550,
+    "arbitrary_precision_large_input_checked": true,
+    "constants": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "exhaustive_integer_polynomials": 3900,
+    "maximum_exhaustive_arity": 4,
+    "weights": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ]
+  },
+  "literal32_controls": {
+    "assignments": 4,
+    "full32_action_polynomial_checks": 60,
+    "full_support_and_large_integer_controls": true,
+    "polynomials": 15
+  },
+  "proof": [
+    "Every source selector is Boolean, so L=c+sum w_e I_e is integer and L(L-1)/2>=0.",
+    "Boolean reduction gives constant c(c-1)/2, diagonal coefficient c*w+w(w-1)/2, and distinct-pair coefficient w_a*w_b. The stored <= row is the negative nonconstant part.",
+    "The independently guarded physical symmetry group has32 actions. The complete monomial-orbit check proves that averaging each expanded term yields exactly the stored p/S/T owner coordinate.",
+    "No factor32 multiplies the averaged row. For a literal selector vector the sum of32 negative binomial evaluations equals row dot unnormalized-owner-sum minus32*RHS."
+  ],
+  "results": [
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32490,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32490,
+      "rhs": "7021"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32396,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32392,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32490,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32490,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32490,
+      "rhs": "3655"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32396,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32400,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32364,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32294,
+      "rhs": "0"
+    },
+    {
+      "matrix_int64_safe": true,
+      "owner_nonzeros": 32310,
+      "rhs": "0"
+    }
+  ],
+  "scope": "Universal full-support Boolean integer-form source validity only. Numeric scout gaps are not accepted as exact separation. No LP infeasibility, semantic dual, source-case exclusion or source frame is certified.",
+  "seconds": 16.78605312493164,
+  "source_C16_answered": false,
+  "source_anchor_excluded": false,
+  "source_hashes": {
+    "/private/tmp/c16-two-basis-20261030T1438/formalization/canonical-width/c16/dense_integer_form_scout.py": "70cb7c34510bd8f29519ea2b2ba9764656137de92c8fc71ab837cb30465d68c8",
+    "coupling-results/sourcecase323200-linear22.linear-data.npz": "dd7f25a31e7225458bd8528d67bd0bd87a0270a2e915a4971074ab917ed7c5fe",
+    "moment-resumption-results/symmetry-bridge-independent.json": "59f16313089e8fde24a14f20c218b60b25fa70a2aa62208dc1faa36ef3550b94",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "two-basis-results/sourcecase323200-ipm-binaryscale22.npz": "a37acf76dbcf786305edbfc82a4c110d8f9a78c0c2543d1d67aeb4844007a317"
+  },
+  "status": "PASS_DENSE_INTEGER_FORM_SOURCE_VALIDITY",
+  "validity_only": true,
+  "verification_sources": {
+    "moment-resumption-results/symmetry-bridge-independent.json": "59f16313089e8fde24a14f20c218b60b25fa70a2aa62208dc1faa36ef3550b94",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "verify_moment_symmetry_bridge.py": "ddd9fe5567ec2490f2422daeefb97bd474f41c439e3767fda4d96e2f58005c40"
+  }
+}

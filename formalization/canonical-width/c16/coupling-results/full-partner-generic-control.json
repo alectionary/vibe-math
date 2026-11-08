@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "source_C16_answered": false,
+  "control_only": true,
+  "consumer_sha256": "6a6d8c89e09a6337840b2e636ecea4069997f295abd20b609e2923afea68108f",
+  "control_code_sha256": "19b44668e00f927193e123dc300de33d3b4cf91ca152bfd3b5f4a0aa77558552",
+  "positive_bank_sha256": "b93ea8e66fa0fe0b0654b4922a8dab65263739cf12e42e6ba2e8b3145d68e966",
+  "positive_receipt_sha256": "ec55482f980de083ef035ca75dc8435e52f5a1a3439fe5183d96965e47854bd6",
+  "positive_synthetic_cardinality_target": 129,
+  "source_cardinality_bound": 128,
+  "generic27_row_exactly_16_sum_p_le_128": true,
+  "generic32_row_equals_frozen_compiler": true,
+  "corrupted_input_controls": [
+    {
+      "name": "wrong_bound",
+      "rejected": true,
+      "bank_sha256": "4fb2b0a86f76188f2bd66ade3a92ea4bcc01f430a8e8c56712cd927d3f6191b1",
+      "returncode": 1
+    },
+    {
+      "name": "missing_class",
+      "rejected": true,
+      "bank_sha256": "0a5ce4a849343d8a00ce41de16a6564765a71ef22e0763d394202c70fff48c00",
+      "returncode": 1
+    },
+    {
+      "name": "wrong_orbit",
+      "rejected": true,
+      "bank_sha256": "36a262ccfb93c36d29cf0fa4d3bee7980e3841b2e73613131309634ae1246c97",
+      "returncode": 1
+    }
+  ],
+  "elapsed_seconds": 25.082756166928448,
+  "scope": "Consumer and exact integer matrix controls only; all synthetic invalid artifacts are explicitly labeled."
+}

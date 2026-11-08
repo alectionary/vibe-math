@@ -1,0 +1,133 @@
+{
+  "all_authorized_optimization_ended": true,
+  "all_columns_fixed_across_three_main_attempts": true,
+  "all_sixteen_patterns": true,
+  "created_UTC": "2026-10-30T23:01:36.414125+00:00",
+  "dimensions": {
+    "nonzeros": 1057219,
+    "row_count": 169657,
+    "variable_count": 70235
+  },
+  "domains": 32,
+  "exact_projected_gap": "-31307782943304147678131275923343031110840912013214903115354899608280972364097/2577531399716533030151947794259003604251705344000000000000000000000000000",
+  "exact_projected_gap_approx": -12146.42155154628,
+  "exact_shared_master_membership_proved": false,
+  "exact_shared_master_optimum_proved": false,
+  "final_projection_receipt": {
+    "bytes": 3987,
+    "path": "shared-master-results/phase-one-v1-residual-projection-independent.json",
+    "sha256": "cad693ff8753f95717f888c7c153b39205e007dc6ac69a3f6476310a3a8a5a56"
+  },
+  "full_source_case_excluded": false,
+  "global_target_excluded": false,
+  "highs_diagnostic": {
+    "absolute_stop_UTC": "2026-10-30T22:56:00Z",
+    "actual_external_cap_seconds": 90.74400401115417,
+    "actual_internal_cap_seconds": 82.74400401115417,
+    "candidate": {
+      "bytes": 1242192,
+      "path": "shared-master-results/highs-candidate-v1.candidate.json.gz",
+      "sha256": "da898132ba9b2215ea34c42a0b8a51fc0ac2916e622b84bc229e3c03177049fa"
+    },
+    "dual_valid_api": true,
+    "exact_dual_feasibility_claimed": false,
+    "exact_optimality_claimed": false,
+    "exact_primal_feasibility_claimed": false,
+    "maximum_sampled_rss_bytes": 351272960,
+    "objective_provisional": "64.93163951387301",
+    "report": {
+      "bytes": 1021,
+      "path": "shared-master-results/highs-candidate-v1.run.json",
+      "sha256": "f04fba4173caf3e632a79096beda1a84ce444f5f8f92adc0b73857f9340262ed"
+    },
+    "row_weights": 169657,
+    "seconds": 83.49305604200345,
+    "solver_seconds": 82.60642666707281,
+    "termination": "HighsModelStatus.kTimeLimit",
+    "value_valid_api": true
+  },
+  "lp_sha256": "590102f60151d9baf6e24bc0b0dbef7813f98171027acedbd9c2a765d92d8658",
+  "master": {
+    "bytes": 62341,
+    "path": "shared-master-results/phase-one-v1.json",
+    "sha256": "507c923f0f90561c59b307dee06d4e799559f1a064b9bb9b5a868da06a9b3aeb"
+  },
+  "no_automatic_retry": true,
+  "numeric_view": {
+    "adaptation": "Only eager NPZ-array caching in checker; worker successor only changes accepted consumer filename. Exact LP/packet unchanged.",
+    "original_checker_operational_stop": {
+      "bytes": 505,
+      "path": "shared-master-results/highs-view-v1-consumer-operational-stop.json",
+      "sha256": "4159da2fec29d2e5645c8214f7f05dce72bdb8b1526af54776eff6587594ad9d"
+    },
+    "receipt": {
+      "bytes": 2469,
+      "path": "shared-master-results/highs-view-v1-independent-v2.json",
+      "sha256": "4b9e9463bc2fc444ee98d837eb7fafc3db15b68ea2f2b3d5ca2063e0968a30d3"
+    }
+  },
+  "physical_basis_columns": 1642,
+  "preparation_receipt": {
+    "bytes": 64370,
+    "path": "shared-master-results/phase-one-v1-independent.json",
+    "sha256": "f1986104291d48091c705f3e1fbaeb574348833cdaf2ca6ac8024e403346977d"
+  },
+  "residual_pricing_receipt": {
+    "bytes": 9152,
+    "path": "shared-master-results/phase-one-v1-residual-pricing-v2-independent.json",
+    "sha256": "9c19418f8e83fda35815d23678b0e297bb7ecae21cd2f79376c1790199950e54"
+  },
+  "resource_scope": "RSS values are sampled maxima, not measured peak RSS; every research process verified nice19 and one thread.",
+  "separates_current_point": false,
+  "soplex_attempts": [
+    {
+      "basis_checkpoint": {
+        "bytes": 1013556,
+        "path": "shared-master-results/phase-one-v1-solve.bas",
+        "sha256": "6cdb9cc0d40acb0f71bdec369370f06d0e8a1a108f897691ddad8f4bf817953e"
+      },
+      "basis_checkpoint_scope": "Unfinished solver basis checkpoint only; no accepted rational endpoint or feasibility proof.",
+      "exact_dual_available": false,
+      "exact_primal_available": false,
+      "maximum_sampled_rss_bytes": 588627968,
+      "prefix": "phase-one-v1-solve",
+      "presolve": 0,
+      "returncode": -15,
+      "seconds": 660.5978570419829,
+      "termination": "EXTERNAL_WALL_LIMIT"
+    },
+    {
+      "exact_dual_available": false,
+      "exact_primal_available": false,
+      "floating_dual_available": false,
+      "floating_primal_available": false,
+      "maximum_sampled_rss_bytes": 633700352,
+      "prefix": "phase-one-v1-presolve1-solve",
+      "presolve": 1,
+      "returncode": 0,
+      "seconds": 654.5672895830357,
+      "termination": "solving aborted [time limit reached]"
+    }
+  ],
+  "source_C16_answered": false,
+  "source_rows_retained": 98863,
+  "status": "CLOSED_SHARED_MASTER_SOLVER_OUTCOME_NO_SEPARATION",
+  "tiny_projection": {
+    "exact_primal_dual_objectives_equal": true,
+    "external_seconds": 20,
+    "internal_seconds": 10,
+    "minimum_pattern_cost": "-33506515752061780165463355920268660574810764808085893304251/2892773198982327999976701952000000000000000000000000000",
+    "minimum_pattern_cost_approx": -11582.835378815493,
+    "seconds": 0.11486700002569705
+  },
+  "unchanged_original_source": {
+    "full_source_anchors_excluded": 0,
+    "lower_width": 16,
+    "physical_full_basis_dimension": 128,
+    "physical_partial_basis": 88,
+    "sufficient_cover_cases": 405,
+    "upper_width": 18
+  },
+  "valid_pin_free_necessary_row": true,
+  "zero_tau_pins": false
+}

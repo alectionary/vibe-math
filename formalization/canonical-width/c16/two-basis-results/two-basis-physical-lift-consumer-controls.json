@@ -1,0 +1,36 @@
+{
+  "status": "PASS_LITERAL_PHYSICAL_OWNER_AND_CONTRACTION_CONTROLS",
+  "consumer_sha256": "8e3b836dd9aee502066e48143737ffa6f79404b06641e9c99bd7ebe3ded22f7a",
+  "harness_sha256": "9ea911ab7a66f72cc7ef7e0fa03f51bdbae426f67098b0e95cd1829dd72b6159",
+  "prepared_domains_sha256": "288d47274ccc5978c1388cf776be8e1a825cd2414f738be46cdd26f8536ccbc3",
+  "fixtures": [
+    {
+      "mask": 3,
+      "forced_zero_count": 0,
+      "required_owner_bins": 2,
+      "physical_bases": 273,
+      "valid_state": true
+    },
+    {
+      "mask": 5,
+      "forced_zero_count": 0,
+      "required_owner_bins": 1,
+      "physical_bases": 1,
+      "valid_state": true
+    },
+    {
+      "mask": 12,
+      "forced_zero_count": 2,
+      "required_owner_bins": 0,
+      "physical_bases": 1,
+      "valid_state": true
+    }
+  ],
+  "corruptions_rejected": [
+    "mask3_incomplete_full_basis",
+    "mask5_incomplete_full_basis",
+    "mask12_incomplete_full_basis"
+  ],
+  "elapsed_seconds": 0.6346864170627668,
+  "scope": "Constructed physical intermediate mixtures with one zero basis, coupled independently by exact CDF breakpoints. Verifies generalized endpoint consumer; no algorithm run or target membership asserted."
+}

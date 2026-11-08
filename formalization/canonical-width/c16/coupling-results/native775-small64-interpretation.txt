@@ -1,0 +1,96 @@
+The two primitive scale64 inequalities are cuts0 and7 in
+native775-witness9-gauge-rounded.json.gz. The unchanged independent consumer
+accepted both, along with the other12 rows in that bank. Their common form is
+
+  46 C1 +40 C2 +29 C3 +29 C4 +56 C5 +28 C6 +38 C7 +27 C8
+       + sum(j,h) b[j,h] d[j,h] <=64 k.
+
+Here k=|P|, Ch=sum_t P_t P_(t+h), and
+d[j,h]=sum_t P_t Q_(j,t+h). Q is a full128-vector opposite basis whose
+evaluation on the selected X32 phases has exactly one unit owner per phase.
+There are no constant or orbit-count n_j terms. Every quantity is a count,
+and every coefficient is an integer. This is a source-necessary weighted
+occupancy inequality, proved by conditional physical-rank support; it has
+not been proved to define an irredundant facet.
+
+After averaging sectors and all16 common rotations, divide the compiled
+owner row by16. The same integer coefficients give
+
+  46 S1[32,32]+40 S2[32,32]+29 S3[32,32]+29 S4[32,32]
+ +56 S5[32,32]+28 S6[32,32]+38 S7[32,32]+27 S8[32,32]
+ +sum(j,h) b[j,h] T_h[32,j] <=64 p32.
+
+The feature coefficient gcd is1. The unnormalized owner row has gcd16;
+division leaves295 nonzero owner coordinates. Before owner folding each
+row has301 nonzero features: k, eight autocorrelations, and292 mixed terms.
+Mixed coefficients range from-10 to7. There are166 positive mixed terms,
+126 negative mixed terms, and428 zeros. Of720 phase/orbit pair classes,
+198 have physical pairing1 and522 have pairing0. The mixed support uses
+185 pairing1 classes and107 pairing0 classes. Thus the row is not merely
+a weighted count of owners: zero-evaluation opposite vectors also matter.
+
+The phase distances0..15 have respectively
+  14,17,27,20,11,20,19,13,22,22,8,20,21,18,21,19
+nonzero mixed coefficients. All distances occur. The strongest negative
+coefficients are concentrated in the more complicated patterns of orbits
+5,9,10,13,39; no monotone distance rule or simple nearest-neighbor form is
+established. Complete coefficient histograms, pairing-class splits and
+phase statistics are in native775-small64-structure.json.
+
+Nine whole orbit patterns vanish:0,1,2,15,16,17,18,19,20. The other36
+16-phase coefficient words are distinct even after cyclic rotation.
+Therefore exact cyclic-word compression only combines the nine zero
+patterns; there is no additional repeated nonzero rotation template.
+Common physical rotation is already absorbed by the invariant C,d
+features and the291 representative-mask proof.
+
+Cut7 differs from cut0 in exactly four mixed terms:
+  cut7 - cut0 = d[4,1] - d[5,11] - d[9,15] + d[24,2].
+Their normalized witness9 gaps are0.0384206045923 and0.0405516940498.
+Their complete physical support maxima are exactly0. Empty P attains0
+because all terms vanish. No claim that either row is an equality is made.
+
+The useful coefficient simplification came from two exact identities,
+not from assuming that the saved numerical columns span the full hull:
+  sum(j,h) d[j,h] =128 k;
+  sum(j,h) A32[j,h] d[j,h] =k.
+The first counts all pairs of selected P and the128 elements of Q. The
+second counts the unique owner of each selected X. A32[j,h] is the actual
+physical binary pairing of X32,phase0 with Z_j,phaseh. Independent low-pivot
+support checks prove both signs of each identity have bound0 on all291
+representatives; the exact target also satisfies both. Subtracting t0
+from pairing0 mixed coefficients and t1 from pairing1 coefficients, while
+adding127*t0+t1 to the k coefficient, changes neither physical scores nor
+target scores. Median shifts followed by fresh exact integer rounding
+produced these rows. Every rounded row was repriced and independently
+accepted; validity is not inherited from numerical proximity.
+
+Physical rank is essential for these same functionals. If one retains
+one owner per selected phase and exactly128 total opposite vectors but
+drops linear independence,235/236 of291 masks have a positive maximum,
+as large as135/136. Exact basis rank improves support on269 masks. A
+particularly transparent example is mask391, the phases{0,1,2,7,8}. Its
+cardinality optimum uses128 distinct eligible vectors but has rank74.
+For cut0 the local profile score is100 and owner support is23; the
+cardinality upper bound is135. The full zero basis needs rank123. At
+weight thresholds0,-1,-2,-3,-4,-5,-6 the zero-pool prefix rank deficits
+are48,38,29,24,12,2,1. Their sum154 lowers the bound to-19. For cut7 the
+corresponding losses sum152, lowering136 to-16. These are ordinary
+nested-set matroid base-rank inequalities, not a heuristic penalty.
+
+There is also a recognizable large flat behind much of the obstruction.
+The144 physical vectors in the nine zero-coefficient orbits form exactly
+the pool intersection with a64-dimensional subspace. All16 X32 phases
+annihilate it. Hence every opposite basis satisfies the simple count cap
+  sum(j in {0,1,2,15,16,17,18,19,20}) n_j(Q) <=64.
+Adding just this cap to the owner/cardinality relaxation removes most
+violations, but56/65 masks still have positive bounds, up to33. Thus this
+single rank-flat cap is an explanation of part of the effect, not a proof
+of either full row. The remaining nested rank constraints are necessary
+for the checked support proof. No universal simpler count inequality or
+single rank inequality has been established by this bounded diagnostic.
+
+Proof artifacts are the gauge-rounded bank and its independent receipt,
+the frozen gauge-rounding file containing both identity proofs, the full
+structure JSON, and native775-small64-single-flat-diagnostic.json. The
+source width question, full-frame existence and cover count are unchanged.

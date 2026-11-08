@@ -1,0 +1,75 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 263706 rows; 76008 cols; 3026731 nonzeros
+Coefficient ranges:
+  Matrix  [6e-08, 1e+00]
+  Cost    [0e+00, 0e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e-05, 8e+00]
+WARNING: Problem has some excessively small row bounds
+Presolving model
+183484 rows, 75958 cols, 2945520 nonzeros 0s
+Dependent equations search running on 586 equations with time limit of 1.20s
+Dependent equations search removed 0 rows and 0 nonzeros in 0.00s (limit = 1.20s)
+168749 rows, 75958 cols, 2836400 nonzeros 2s
+Presolve reductions: rows 168749(-94957); columns 75958(-50); nonzeros 2836400(-190331) 
+Solving the presolved LP
+IPX model has 168749 rows, 75958 columns and 2836400 nonzeros
+Input
+    Number of variables:                                75958
+    Number of free variables:                           0
+    Number of constraints:                              168749
+    Number of equality constraints:                     586
+    Number of matrix entries:                           2836400
+    Matrix range:                                       [6e-08, 1e+02]
+    RHS range:                                          [1e-05, 8e+00]
+    Objective range:                                    [0e+00, 0e+00]
+    Bounds range:                                       [6e-02, 1e+00]
+Preprocessing
+    Dualized model:                                     yes
+    Number of dense columns:                            24
+    Range of scaling factors:                           [2.50e-01, 4.00e+00]
+    Scaled cost norm:                                   8
+    Scaled bounds norm:                                 0
+IPX version 1.0
+Interior point solve
+ Iter       primal obj         dual obj       pinf       dinf       gap      time
+   0    0.00000000e+00   0.00000000e+00   1.50e+00   3.11e+00  0.00e+00       3.1
+   1    5.41715026e+04   0.00000000e+00   1.16e+00   8.06e+00  2.00e+00       5.2
+   2    1.60163734e+05   0.00000000e+00   4.23e-01   8.21e+00  2.00e+00       9.8
+ Constructing starting basis...
+ Iter       primal obj         dual obj       pinf       dinf       gap      time
+   3    2.92285406e+05   0.00000000e+00   1.07e-01   7.26e+00  2.00e+00      15.5
+   4    3.01636224e+05   0.00000000e+00   1.07e-07   1.61e+00  2.00e+00      19.6
+   5    2.12368787e+05   0.00000000e+00   2.55e-11   4.75e-01  2.00e+00      23.9
+   6    1.32437112e+05   0.00000000e+00   1.83e-11   1.45e-01  2.00e+00      28.2
+   7    1.18759718e+05   0.00000000e+00   1.31e-11   8.29e-02  2.00e+00      41.8
+   8    8.94566244e+04   0.00000000e+00   1.34e-11   3.90e-02  2.00e+00      47.4
+   9    4.98446074e+04   0.00000000e+00   1.67e-11   1.88e-02  2.00e+00      52.4
+  10    2.48885511e+04   0.00000000e+00   1.25e-11   8.30e-03  2.00e+00      57.1
+  11    1.56137921e+04   0.00000000e+00   5.10e-12   3.80e-03  2.00e+00      61.3
+  12    1.11718528e+04   0.00000000e+00   2.51e-12   2.15e-03  2.00e+00      64.0
+  13    8.43827555e+03   0.00000000e+00   2.51e-12   9.08e-04  2.00e+00      66.6
+  14    7.51165473e+03   0.00000000e+00   2.88e-12   6.65e-04  2.00e+00      68.6
+  15    3.98004979e+03   0.00000000e+00   2.84e-12   1.72e-04  2.00e+00      70.1
+  16    9.77385651e+02   0.00000000e+00   1.19e-12   1.72e-10  2.00e+00      72.5
+  17    9.77386083e-04   0.00000000e+00   5.11e-13   4.61e-15  9.77e-04      73.1
+  18*   9.77386080e-10   0.00000000e+00   6.93e-19   1.82e-15  9.77e-10      73.6
+Summary
+    Runtime:                                            73.57s
+    Status interior point solve:                        optimal
+    Status crossover:                                   not run
+    objective value:                                    0.00000000e+00
+    interior solution primal residual (abs/rel):        6.55e-14 / 7.28e-15
+    interior solution dual residual (abs/rel):          2.17e-18 / 2.17e-18
+    interior solution objective gap (abs/rel):          9.77e-10 / 9.77e-10
+Ipx: IPM       optimal
+
+Performed postsolve
+
+Model status        : Optimal
+IPM       iterations: 18
+Objective value     :  0.0000000000e+00
+P-D objective error :  7.1893915813e-10
+HiGHS run time      :         73.65
+{'status': 'NUMERICAL_DENSE_OUTER_APPROXIMATION_ONLY', 'source_C16_answered': False, 'source_anchor_excluded': False, 'model_status': 'HighsModelStatus.kOptimal', 'solver_seconds': 73.65739112498704, 'settings': {'output_flag': True, 'threads': 1, 'solver': 'ipm', 'presolve': 'on', 'run_crossover': 'off', 'time_limit': 120.0, 'primal_feasibility_tolerance': 1e-09, 'dual_feasibility_tolerance': 1e-09, 'ipm_optimality_tolerance': 1e-09, 'small_matrix_value': 1e-12}, 'variables': 76008, 'rows': 263706, 'dense_integer_rows': 24, 'dense_compiled_nonzeros': 775602, 'ipm_iterations': 18, 'value_valid': True, 'dual_valid': True, 'scope': 'Source-valid added integer forms in a numerical necessary-case LP. A numerical endpoint is not an exact primal or obstruction.', 'original_numeric_residuals': {'equalities': 2.89721588733749e-14, 'inequalities': 0.0, 'lower': 0.0, 'upper': 0.0}, 'scaled_numeric_residuals': {'equalities': 3.885780586188048e-15, 'inequalities': 0.0}}

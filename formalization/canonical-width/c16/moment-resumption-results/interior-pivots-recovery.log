@@ -1,0 +1,24 @@
+PIVOT_RANK 639 639 0.16743400214964518
+POSITIVE_PIVOT_RECOVERY (639, 76008) 639 minimum_variable 1.1072587640779235e-06
+Traceback (most recent call last):
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/recover_interior_pivots_point.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/recover_interior_pivots_point.py", line 54, in main
+    result=verify(data,hulls,caps,cond,cross,weighted)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/certify_profile_moment_point.py", line 84, in verify
+    old=old_verify({'p':list(map(str,p+p)),'C':C},ROOT)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/verify_moment_certificate.py", line 42, in verify
+    ctx.prec=256;checks=[interval_pd(arb_mat([[arb(G[i][j]) for j in keep] for i in keep]))]
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-moments-20261030T0025/formalization/canonical-width/c16/certify_moment_point.py", line 56, in interval_pd
+    n=B.nrows();F=np.array([[float(B[i,j].mid()) for j in range(n)] for i in range(n)]);L=np.linalg.cholesky((F+F.T)/2);R=solve_triangular(L,np.eye(n),lower=True);D=1<<45
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py", line 887, in cholesky
+    r = gufunc(a, signature=signature)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/c16-venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py", line 147, in _raise_linalgerror_nonposdef
+    raise LinAlgError("Matrix is not positive definite")
+numpy.linalg.LinAlgError: Matrix is not positive definite

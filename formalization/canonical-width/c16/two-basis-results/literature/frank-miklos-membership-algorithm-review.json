@@ -1,0 +1,137 @@
+{
+  "accepted_endpoint": false,
+  "comparison_with_previous_numeric_gate": {
+    "advantage": "Exact pushes construct a mixture directly or expose a literal rank defect. They remove the requirement that approximate positive error be smaller than the target lattice spacing.",
+    "alternative": "Greedy column-generation plus an IPM can still discover a useful warm mixture/corral; arbitrary pivot selection or a failed exact solve cannot prove nonmembership. Matroid affine dimension gives at most n independent basis columns, not a universal bound of 700.",
+    "remaining_cost": "Circuit work and active-basis growth replace approximate convergence/recovery risk. A bounded run can still be inconclusive. Phase-end exact Caratheodory may be a later optimization, but can change denominators and needs its own controls."
+  },
+  "implemented_variant": "Section 3 highest-level exact membership; no Caratheodory compression; optional independently validated initial mixture.",
+  "independent_derivation": {
+    "circuit_proof": "In GF(2), expansion of vector s in a basis gives a unique support; that support together with s is its fundamental circuit. Swapping any supported basis element preserves rank. For a loop the circuit is {s}, so no exchange is available.",
+    "cut_endpoint": "Choose an empty level j below the lowest deficient level, and Z={i:level(i)>j}. Excess elements lie outside Z. The circuit invariant forces C(B,u) subset Z for u in Z-B, so B intersect Z spans Z and |B intersect Z|=rank(Z) for every active B. Hence x(Z)/D=rank(Z), while g(Z)>x(Z)/D because Z contains all deficits and no excess. A consumer can ignore the levels and directly check the strict rank defect.",
+    "denominator": "Without compression, delta is an integer, so D never changes. No tolerance or minimum lattice-gap estimate enters correctness. Large numerator bit lengths still affect arithmetic cost. An optional warm mixture may enlarge D to its lcm with the target denominator.",
+    "highest_rule": "After a non-neutralizing push, the only newly deficient coordinate is t one level below s. Therefore reselecting the highest deficient coordinate with the same deterministic tie rule returns s; the prototype implements a complete treatment despite using an outer loop per push.",
+    "input": "A binary matroid on n labeled columns, rank r, and exact g>=0 with sum(g)=r. Duplicate columns and loops remain labeled. An optional initial convex mixture must contain only genuine size-r bases.",
+    "integer_state": "Choose D as lcm of target and optional initial-weight denominators. Store positive integer basis weights w_B summing D and x_i=sum_{B contains i}w_B. Store g_i=D*g(i) as integers and levels 0..n.",
+    "invariant_proof": "The push cannot create an excess at s because delta is bounded by its deficit. Decreasing x_t cannot create an excess. The minimum-level exchange lemma preserves all other circuit lower bounds. A lift is permitted only after every active basis lacks an exchange to the preceding level, strengthening the necessary circuit bound by one.",
+    "invariants": [
+      "Every active basis has rank r. The represented point is x/D and is in the base polytope.",
+      "All excess coordinates x_i>g_i have level 0.",
+      "For every active B and s outside B, the minimum level of the full fundamental circuit C(B,s), including s, is at least level(s)-1."
+    ],
+    "membership_endpoint": "If no deficient coordinate remains then x>=g. Both totals equal r*D, so x=g coordinatewise. The saved basis mixture is itself a finite exact membership certificate.",
+    "operation": "Select a deficient s with highest level among those below n. If an active basis B omits s and has t in C(B,s) intersect B with level(t)=level(s)-1, transfer delta=min(g_s-x_s,w_B) from B to B-t+s; add delta to x_s and subtract it from x_t. Merge duplicate bases. Otherwise increase level(s) by one.",
+    "stronger_optimality": "For a full-rank target, the defect g(Z)-rank(Z) equals the sum of positive coordinate deficits of the represented mixture. For any other set A, g(A)-rank(A)<=g(A)-x(A)/D<=sum positive deficits. Thus this terminal Z also maximizes rank defect, although a simple separation certificate need not claim this stronger property.",
+    "termination_theory": "Levels lift at most n times per element. Under highest-level treatment, neutralized coordinates remain neutral for the rest of a phase, giving at most n treatments between lifts. A non-neutralizing push exhausts one old basis; its replacement contains s and cannot be used again in the same treatment. These facts give finite polynomial operation counts for the source algorithm. They do not give a useful 720-element wall-time promise."
+  },
+  "local_allocation_bridge": {
+    "negative_scope": "A rank cut rejects this allocation. It becomes a shared-allocation constraint sum y_mj<=rank*lambda; it is not automatically a violated global moment inequality or a source-frame obstruction.",
+    "optional_face_reduction": "Exact q_j=0 permits deletion; exact q_j=1 permits contraction after verifying those columns are independent. Never identify these faces by a floating tolerance.",
+    "positive_scope": "A verified mixture proves that this fixed pattern allocation is in the relevant conditional matroid base polytope. Together with separate owner simplexes it certifies that local compatible-sector selection law.",
+    "remaining_joint_gate": "Even all pattern-sector mixtures with common lambda do not impose every unanchored X/Z mutual-pairing relation. No C16 frame or source exclusion follows solely from local membership.",
+    "required": "For each positive pattern mass lambda, contract the physically forced zero vectors jointly and use q_j=y_mj/lambda on the free zero pool; verify exact total equals the remaining rank. Treat owner-bin probabilities separately as simplex memberships. Forced-dependence, target on a loop, incorrect rank total or invalid owner sums are immediate failures, not inputs to be silently repaired."
+  },
+  "primary_source_summary": "Section 3 represents a base-polytope point by weighted bases, moves weight across fundamental-circuit exchanges, and maintains levels. Its stopping alternatives yield membership or an optimal rank-set obstruction. The basic rational version preserves the input denominator. The paper gives polynomial operation bounds and a phase-end compression improvement, while explicitly omitting implementation data structures.",
+  "producer": "exact_matroid_push_relabel.py",
+  "producer_sha256": "32a3ad3690eba960b593e566ee18d172d7acf17a692c658cff883ecef4289ee4",
+  "prototype_audit": {
+    "checks": [
+      "Nonnegative integer column validation; exact rational target and rank-total assertion.",
+      "Optional initial bases checked for distinct/ranged indices, size/rank, nonnegative weights and total one.",
+      "Elimination cache tracks both vector and basis-coordinate masks; circuit is their exact dependency support.",
+      "Correct signs, delta bound, removal/merge of active bases, and exact marginal update.",
+      "The gap stopping condition matches the primary source: empty level strictly below every deficit, with the cut above the gap.",
+      "A proposed rank endpoint recomputes binary rank and asserts an exact positive defect before returning.",
+      "No-deficit endpoint asserts exact coordinate equality.",
+      "All capped exits remain BOUNDED_PUSH_RELABEL_INCONCLUSIVE."
+    ],
+    "endpoint_consumer_minimum": [
+      "Bind input vectors/physical contraction, target fractions, point/allocation/source hashes and producer hash.",
+      "For membership: independently rank-check every positive basis; check integer weights>=0, sum=D, and every exact marginal equals g.",
+      "For separation: independently check indices, contracted physical rank and sum target over the set minus rank>0.",
+      "For bounded state: replay current physical bases/mass/marginals and preserve status as inconclusive."
+    ],
+    "nonblocking_limits": [
+      "Each push can rescan active bases. The paper amortizes a treatment scan, so its O(gamma*n^6) implementation bound is not transferred to this prototype.",
+      "Time limits are cooperative and checked between iterations; startup, invariant checks, a circuit scan or serialization can exceed the requested wall time.",
+      "The maximum-bases condition uses greater-than and may preserve one state above the requested cap before stopping.",
+      "Final mathematical acceptance requires an independent consumer; the producer status alone is not acceptance.",
+      "An interrupted mixture is physically valid but need not equal the target. No membership follows from a small residual."
+    ],
+    "recommended_controls": [
+      "Exhaustively compare small binary matroids and rational total-rank targets with every rank inequality.",
+      "Include loops, parallels, rank-zero and empty grounds, target entries above one, tiny rational defects and dependent forced contractions.",
+      "Include exact valid warm mixtures with duplicate basis records and different denominators; reject malformed initial bases/weights.",
+      "Exercise gap/membership/cap exits and corrupt one vector, basis index, weight, target numerator and claimed rank."
+    ]
+  },
+  "schema": "c16-exact-matroid-membership-source-review-v1",
+  "secondary_pdf_sha256": "23b0a82804bb608fcb47cbf05a1650c899042eda74059f951da0718fc1b59cac",
+  "secondary_source_summary": "The report studies a lowest-level/BFS variation with periodic basis reduction. Its future direction is submodular-flow adaptation. Several printed formulas or pseudocode details are inconsistent with the surrounding mathematics; it is not the implementation authority.",
+  "source_C16_answered": false,
+  "source_errata": [
+    {
+      "issue": "B-prime is printed S-t+s; the hypothesis and all subsequent uses require B-t+s.",
+      "location": "Lemma 2.1",
+      "pdf_page": 2,
+      "source": "primary"
+    },
+    {
+      "issue": "Theta(z) occurs where the selected element is s; a harmless variable typo.",
+      "location": "basic operations",
+      "pdf_page": 5,
+      "source": "primary"
+    },
+    {
+      "issue": "Two occurrences of neutralizing in the final count must mean non-neutralizing; the preceding paragraph already bounds neutralizing pushes by n^3.",
+      "location": "non-neutralizing push count",
+      "pdf_page": 5,
+      "source": "primary"
+    },
+    {
+      "issue": "With duplicate-basis merging, a non-neutralizing push can decrease the active count; the proof needs only nonincrease.",
+      "location": "active basis count",
+      "pdf_page": 5,
+      "source": "primary"
+    },
+    {
+      "issue": "One line places remaining larger nodes in L0; surrounding algorithm/proof put them in Ln. This extension is not used by the prototype.",
+      "location": "Section 6.1",
+      "pdf_page": 13,
+      "source": "primary"
+    },
+    {
+      "issue": "Circuit is minimal dependent, not maximal non-independent; circuit-elimination union repeats C(B,u) where the second term should involve s.",
+      "location": "circuit definition and Lemma 1",
+      "pdf_page": 2,
+      "source": "secondary"
+    },
+    {
+      "issue": "Printed stopping set uses phi<=k+1 and refers to level conditions as optimality conditions. Use the primary set phi>k and directly check the rank certificate.",
+      "location": "Lemma 2",
+      "pdf_page": 3,
+      "source": "secondary"
+    },
+    {
+      "issue": "One line decreases both basis weights; the surrounding prose and valid update increase the new-basis weight.",
+      "location": "push update",
+      "pdf_page": 4,
+      "source": "secondary"
+    },
+    {
+      "issue": "The displayed single push after queue-pop does not explicitly repeat treatment of a still-deficient s. Do not transcribe the pseudocode without a correctness repair.",
+      "location": "Algorithm 1",
+      "pdf_page": 5,
+      "source": "secondary"
+    },
+    {
+      "issue": "Extracted text displays a strict sign, but the rendered PDF has >=. This is an extraction artifact, not a source error.",
+      "location": "L2 extraction",
+      "pdf_page": 3,
+      "source": "secondary"
+    }
+  ],
+  "source_pdf_sha256": "c69757cb5ac4bab729fd9341a56b3ae45025600aafa55b1674b6cfd61969f4b7",
+  "status": "PASS_MATHEMATICAL_SOURCE_BRIDGE_BOUNDED_PROTOTYPE",
+  "utc": "2026-10-30T16:55:45.870362+00:00"
+}

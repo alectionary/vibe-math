@@ -1,0 +1,63 @@
+MODEL_BUILT {"status": "RUNNING", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 4, "orbit_types": 3, "target_pairs": 4, "control": "positive", "solver": "SCS", "iterations_limit": 3000, "explicit_positive_moment_check": {"linear_max_error": 0.0, "errors": {"diagonal": 0.0, "cardinality": 0.0, "cardinality_products": 0.0, "selected_degrees": 0.0, "pair_bounds": 0.0, "transpose": 0.0}, "minimum_frequency_eigenvalues": [-5.551115123125783e-16, -3.6739403974420594e-16, 0.0], "PSD_min_eigenvalue": -5.551115123125783e-16, "evidence": "floating-point residual check; no exact certificate"}, "model_seconds": 0.00730012496933341}
+(CVXPY) Oct 27 10:42:15 AM: Your problem has 114 variables, 699 constraints, and 0 parameters.
+(CVXPY) Oct 27 10:42:15 AM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Oct 27 10:42:15 AM: DCP verification time: 0.0006 seconds.
+(CVXPY) Oct 27 10:42:15 AM: Expression tree has 12 nodes.
+(CVXPY) Oct 27 10:42:15 AM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Oct 27 10:42:15 AM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Oct 27 10:42:15 AM: Your problem is compiled with the CPP canonicalization backend.
+(CVXPY) Oct 27 10:42:15 AM: Compiling problem (target solver=SCS).
+(CVXPY) Oct 27 10:42:15 AM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> ExactCone2Cone -> EliminateZeroSized -> ConeMatrixStuffing -> SCS
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction Dcp2Cone
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction CvxAttr2Constr
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction ExactCone2Cone
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction EliminateZeroSized
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction ConeMatrixStuffing
+(CVXPY) Oct 27 10:42:15 AM: Applying reduction SCS
+(CVXPY) Oct 27 10:42:15 AM: Finished problem compilation (took 1.067e-02 seconds).
+(CVXPY) Oct 27 10:42:15 AM: Invoking solver SCS  to obtain a solution.
+(CVXPY) Oct 27 10:42:15 AM: Problem status: optimal
+(CVXPY) Oct 27 10:42:15 AM: Optimal value: 0.000e+00
+(CVXPY) Oct 27 10:42:15 AM: Compilation took 1.067e-02 seconds
+(CVXPY) Oct 27 10:42:15 AM: Solver (including time spent in interface) took 3.457e-03 seconds
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+------------------------------------------------------------------
+	       SCS v3.3.1 - Splitting Conic Solver
+	(c) Brendan O'Donoghue, Stanford University, 2012
+------------------------------------------------------------------
+problem:  variables n: 84, constraints m: 597
+cones: 	  z: primal zero / dual free vars: 26
+	  l: linear vars: 444
+	  s: psd vars: 127, ssize: 3
+settings: eps_abs: 1.0e-05, eps_rel: 1.0e-05, eps_infeas: 1.0e-07
+	  alpha: 1.50, scale: 1.00e-01, adaptive_scale: 1
+	  max_iters: 3000, normalize: 1, rho_x: 1.00e-06
+	  acceleration_lookback: 10, acceleration_interval: 5
+	  time_limit_secs: 5.50e+01
+lin-sys:  sparse-direct-amd-qdldl
+	  nnz(A): 1416, nnz(P): 0
+------------------------------------------------------------------
+ iter | pri res | dua res |   gap   |   obj   |  scale  | time (s)
+------------------------------------------------------------------
+     0| 4.01e+00  2.41e+00  2.18e+00 -1.09e+00  1.00e-01  1.28e-03 
+    50| 7.73e-06  9.77e-06  1.50e-06  7.52e-07  1.00e-01  3.34e-03 
+------------------------------------------------------------------
+status:  solved
+timings: total: 3.34e-03s = setup: 7.16e-04s + solve: 2.63e-03s
+	 lin-sys: 6.03e-04s, cones: 1.91e-03s, accel: 2.82e-05s
+------------------------------------------------------------------
+objective = 0.000001
+------------------------------------------------------------------
+-------------------------------------------------------------------------------
+                                    Summary                                    
+-------------------------------------------------------------------------------
+{"status": "optimal", "scope": "necessary degree-two cyclic moment SDP", "physical_frame": false, "P": 4, "orbit_types": 3, "target_pairs": 4, "control": "positive", "solver": "SCS", "iterations_limit": 3000, "explicit_positive_moment_check": {"linear_max_error": 0.0, "errors": {"diagonal": 0.0, "cardinality": 0.0, "cardinality_products": 0.0, "selected_degrees": 0.0, "pair_bounds": 0.0, "transpose": 0.0}, "minimum_frequency_eigenvalues": [-5.551115123125783e-16, -3.6739403974420594e-16, 0.0], "PSD_min_eigenvalue": -5.551115123125783e-16, "evidence": "floating-point residual check; no exact certificate"}, "model_seconds": 0.00730012496933341, "total_seconds": 0.024807750014588237, "solver_seconds": 0.002629083, "solver_iterations": 50, "independent_numeric_check": {"linear_max_error": 2.346140615117065e-09, "errors": {"diagonal": 7.069475005394565e-10, "cardinality": 2.346140615117065e-09, "cardinality_products": 2.190768677579058e-09, "selected_degrees": 4.6562198541266753e-10, "pair_bounds": 4.6562198541266753e-10, "transpose": 0.0}, "minimum_frequency_eigenvalues": [-3.7997703205765765e-09, 4.833225280033638e-06, -3.19467918706036e-05], "PSD_min_eigenvalue": -3.19467918706036e-05, "evidence": "floating-point residual check; no exact certificate"}}

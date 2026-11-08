@@ -1,0 +1,70 @@
+{
+  "records": [
+    {
+      "artifact": "broader-rank-one-screen.json",
+      "status": "PASS",
+      "best_case_count": 518,
+      "tested_trace_one_witnesses": 6235,
+      "elapsed_seconds": 6.7557830000296235
+    },
+    {
+      "artifact": "structured-matrix-screen.json",
+      "status": "PASS",
+      "best_case_count": 518,
+      "tested_trace_one_matrices": 65152
+    },
+    {
+      "artifact": "signature-greedy-0.json",
+      "status": "DISCOVERY_ONLY",
+      "retained_case_count": 505,
+      "elapsed_seconds": 95.78443616593722,
+      "unknown_calls": 0
+    },
+    {
+      "artifact": "signature-native-0.json",
+      "status": "DISCOVERY_ONLY",
+      "retained_case_count": 509,
+      "elapsed_seconds": 60.264373415964656,
+      "unknown_calls": 41
+    },
+    {
+      "artifact": "signature-compressed-1.json",
+      "status": "DISCOVERY_ONLY",
+      "retained_case_count": 505,
+      "elapsed_seconds": 90.54955570795573,
+      "unknown_calls": 50
+    },
+    {
+      "artifact": "signature-exchange.json",
+      "status": "DISCOVERY_ONLY",
+      "retained_case_count": 505,
+      "elapsed_seconds": 180.04516608302947,
+      "unknown_oracle_calls": 211
+    },
+    {
+      "artifact": "signature-exchange-compact.json",
+      "status": "DISCOVERY_ONLY",
+      "retained_case_count": 505,
+      "elapsed_seconds": 120.48239979206119,
+      "unknown_oracle_calls": 10
+    },
+    {
+      "artifact": "conditional-signature-screen.json",
+      "status": "DISCOVERY_ONLY",
+      "elapsed_seconds": 2.017700499971397,
+      "tested": 505,
+      "satisfiable": 505,
+      "unsatisfiable": 0,
+      "unknown": 0
+    }
+  ],
+  "initial_input_launch": "A setup launch used systemPython3.9, which lacks int.bit_count; it failed before matrix comparisons. Corrected launch used the pinnedPython3.12 interpreter.",
+  "initial_timer_limit": "The first discovery run used a Python thread timer that did not reliably interrupt a solver holding theGIL; it finished at95.8s. Later runs use native limits/conflict budgets and subprocess proof timeouts.",
+  "scientific_research_stopped_UTC": "2026-10-28T17:08:59.618206+00:00",
+  "no_continuous_CPU_hour_claim": true,
+  "stronger_claims_not_supported": [
+    "No full frame or full anchor-case exclusion",
+    "No unrestricted optimum for nonlinear covers",
+    "No measured end-to-end frame-search speedup"
+  ]
+}

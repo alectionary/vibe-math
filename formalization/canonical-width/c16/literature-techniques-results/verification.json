@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "checked_on": "2026-10-28",
+  "scope": "Literature review, literal graph/support-cover diagnostic and inventory validation. No solver campaign.",
+  "source_C16_answered": false,
+  "current_width_options": [
+    16,
+    18
+  ],
+  "best_physical_partial_frame": 88,
+  "new_solver_experiments": 0,
+  "new_support_exclusions": 0,
+  "new_Lean_completed_targets": 0,
+  "checks": [
+    {
+      "command": "/private/tmp/c16-venv/bin/python formalization/canonical-width/c16/literature-techniques-results/replay_review.py",
+      "exit_code": 0,
+      "output": "PASS: exact pool graph, support-cover counts and source-question links; no new C16 resolution.\n"
+    },
+    {
+      "command": "/private/tmp/c16-venv/bin/python scripts/validate_open_problems.py",
+      "exit_code": 0,
+      "output": "Validated 383 canonical entries, 154 eligible targets, 189 paper records, preserved historical audit evidence, and distinct verified/unverified/unassessed Lean statuses.\nResearch reconciliation: earlier six-target expansion preserved; source index and zero-delta (4,2) research block PASS.\nBeezer extension:187→190 entries,111→112 eligible,60→61 papers,57→58 full-text screens; three historical complete Lean targets retained; one existing F16 target completed.\n"
+    },
+    {
+      "command": "/private/tmp/c16-venv/bin/python scripts/validate_current_difficulty.py",
+      "exit_code": 0,
+      "output": "Validated 383 planning records, including 202 explicitly unassessed additions, 154 eligible targets and 6 completed targets.\n"
+    },
+    {
+      "command": "/private/tmp/c16-venv/bin/python scripts/validate_research_question_screening.py",
+      "exit_code": 0,
+      "output": "PASS: 43 paper works accounted for; 36 full texts, 7 paper gaps, 4 version gaps; 62 additions, 23 eligible; no new proof claims.\n"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "visual_QA": [
+    "Ahat author manuscript PDF page4: endpoint formulation",
+    "GLV primary preprint PDF page5: Lemma2.2 block congruence",
+    "Yoshida arXiv v1 PDF page8: finite-field Proposition3.2 and Theorem3.3"
+  ],
+  "source_question_delta": {
+    "canonical_entries": 7,
+    "eligible_source_questions": 4,
+    "completed_C16_targets": 0
+  },
+  "publication_status": "pending_required_review_PR17"
+}

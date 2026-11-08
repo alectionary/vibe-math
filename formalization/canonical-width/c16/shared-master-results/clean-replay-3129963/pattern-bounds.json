@@ -1,0 +1,43 @@
+{
+  "status": "PASS_EXACT_SHARED_MASTER_PATTERN_LOCAL_PROBABILITY_BOUNDS",
+  "certificate_sha256": "e4ffaa1315b4a4eb6116d67cbeb28a986858226b2bc414bd0ef6b8a15e53336c",
+  "consumer_sha256": "23462f0b1799ff96409d12c7d862b17e20ea64adb8a3f58277e5ef10f5ec626f",
+  "manifest_sha256": "507c923f0f90561c59b307dee06d4e799559f1a064b9bb9b5a868da06a9b3aeb",
+  "point_sha256": "4945dd10a5ec76c54311466ab0594b0c7b8fc2071eab4ae9a783a87143baad8f",
+  "source_hashes": {
+    "shared_master_price_probability_bounds.py": "0d9d0309a4308f80ab1f2b674d24a95a3700bdbe4ef559ce62a7e42474271372",
+    "verify_shared_master_common.py": "ae95f16a46fc796f259059c006eca77c2dd066936b7fff2e870bafdeac4f3c25",
+    "verify_shared_master_preparation.py": "254f8dd6b03736d0d4b8f4135b579089aa54e9e31a2267b6ce37de24680a0f6a"
+  },
+  "dependencies": {
+    "verify_shared_master_common.py": "ae95f16a46fc796f259059c006eca77c2dd066936b7fff2e870bafdeac4f3c25",
+    "verify_shared_master_preparation.py": "254f8dd6b03736d0d4b8f4135b579089aa54e9e31a2267b6ce37de24680a0f6a"
+  },
+  "finite_variables_covered": 22508,
+  "lower_row_witnesses": 22508,
+  "upper_row_witnesses": 22508,
+  "kind_counts": {
+    "allocation": 13388,
+    "owner_joint": 9088,
+    "conditional_same_sector_pair": 32
+  },
+  "exact_tau_superset_identities": 5,
+  "exact_lambda_total_identities": 1,
+  "signed_probability_tiny_controls": 60,
+  "rejected_mutants": [
+    "missing_K22_upper_box",
+    "wrong_pattern",
+    "wrong_variable",
+    "negative_row_multiplier",
+    "tau_as_exact_atom",
+    "missing_K22_variable",
+    "equality_misused_as_positive_bound"
+  ],
+  "zero_tau_pins": false,
+  "source_valid_pattern_residual_formula": "r*v>=min(0,r)*lambda_mask",
+  "scope": "Bounds/projection preparation only; no fallback source combination, optimization or new source exclusion.",
+  "source_C16_answered": false,
+  "elapsed_seconds": 3.3604222499998286,
+  "nice": 19,
+  "threads": 1
+}

@@ -1,0 +1,70 @@
+{
+  "status": "PASS_EXACT_UNCONDITIONED_NATIVE_UNION_GATE",
+  "source_C16_answered": false,
+  "source_hashes": {
+    "verify_full_partner_native.py": "a125d470d63b03446a71f8f306a378598597854ea4357a5fbda484df2c8adfb1",
+    "full_partner_native.py": "c87c23542cf456daeea46a8e2e457cdcbf7041b3f74b99307398f4bf4c3fa80c",
+    "full_partner_anchor_native.py": "15ae173c0f847c6f38b820cb2f23404b72469a51a38d135829057bdba59be7e4",
+    "full_partner_anchor_native.cpp": "3f0bc8f2cbb7c8c2eb87c9a07fe43620ef7ecaa626680be69dc96daf6183efdf",
+    "full_partner_anchor_basis_oracle.py": "891bdfa89ca56d49785436232df3c66aa8f8e0a060e2d63b20fb4f2c260e6aac",
+    "full_partner_basis_oracle.py": "0b2093c783ba71a670a74bec27cc3d90a9409057edd40905e2c6af5cd87e8a24",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d",
+    "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+    "verify_algebraic_model.py": "d68ad912427588b134dfcae73fb9e7b5e474ef9342d4aaf5e9142c3189de0d5f",
+    "verify_partial_frame.py": "169b253e660ebc4111a7afdec2efd6a666f7811269816ac5cf2832e76f91e16f",
+    "audit_pools.py": "376794bbc25144a4d0247bc4fd5d64ab83cf3d2c64d2249471f5d5f043dd028b",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "coupling-results/anchor-native-matched-accepted.json": "bd028c80c8a2d2950b8921873ddf1543772303a778a7b75f58f10ee826d0331d",
+    "coupling-results/anchor-native-matched-accepted.frozen.json": "c1ef421c3a661d306d523161f1407c4b728525487e8e2ba51371df6ab4572273",
+    "coupling-results/anchor-native-accepted.dylib": "2debccace3daab20d4eafc6f8ade4fb6f892fb4249eaf1a2b1a9556f7e2ab16f"
+  },
+  "frozen_sha256": "fde05bf95526144f4ab8258eb1c4c5ea75c5d2a0350f42e84fda73036aafcb6d",
+  "arrays_sha256": "5d97701cde4c930643699914e01574473c314bde90f06d6bd033ac3b727ce26a",
+  "native_prepare_seconds": 0.017491874983534217,
+  "cohorts": [
+    {
+      "cohort": "zero",
+      "native_first_seconds": 0.0055712079629302025,
+      "native_median_seconds": 0.00561133399605751,
+      "python_seconds": 0.1638884999556467,
+      "speedup": 29.20669132701667,
+      "independent_replay_seconds": 0.20857979194261134,
+      "masks_checked": 291
+    },
+    {
+      "cohort": "negative",
+      "native_first_seconds": 0.009501500055193901,
+      "native_median_seconds": 0.006883917027153075,
+      "python_seconds": 0.177823958103545,
+      "speedup": 25.83179858242513,
+      "independent_replay_seconds": 0.21300058299675584,
+      "masks_checked": 291
+    },
+    {
+      "cohort": "signed",
+      "native_first_seconds": 0.0073274580063298345,
+      "native_median_seconds": 0.00787291710730642,
+      "python_seconds": 0.19808520807418972,
+      "speedup": 25.160331980424097,
+      "independent_replay_seconds": 0.303479167050682,
+      "masks_checked": 291
+    },
+    {
+      "cohort": "wolfe",
+      "native_first_seconds": 0.007507666014134884,
+      "native_median_seconds": 0.007647958933375776,
+      "python_seconds": 0.18999450001865625,
+      "speedup": 24.842510488585155,
+      "independent_replay_seconds": 0.22510325000621378,
+      "masks_checked": 291
+    }
+  ],
+  "exact_source_queries": 1164,
+  "independent_prefix_rank_checks": 284352,
+  "different_but_optimal_basis_orders": 89,
+  "overflow_and_negative_fraction_controls": 2,
+  "elapsed_seconds": 2.383518125046976,
+  "scope": "Exact arbitrary signed objective support on291 representative masks, comparing both-anchor union to the frozen unconditioned Python oracle and independent prefix-rank proof. Rotation-equivariant global support requires separate caller proof."
+}

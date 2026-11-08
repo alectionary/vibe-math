@@ -1,0 +1,132 @@
+Exact exchange repair and the joint-profile obstruction: bounded assessment
+
+The exact anchor40 membership is a useful local closure, but not a joint
+profile law. The anchor17 timeout remains inconclusive. Neither outcome
+answers whether one distribution of X32 phase masks and full opposite bases
+reproduces all775 moments. The missing condition is sharing the same profile
+mass and conditional opposite law across every marginal equation.
+
+1. What exact exchange can prove inside a profile extension
+
+For a representative mask P with mass lambda_P>0, let W be its selected X
+vectors and k=|P|. Eligible Z vectors have evaluation signature zero or one
+unit coordinate on W. Their required conditional selection law consists of
+a full rank(128-k) basis of the zero pool and one element of each unit bin.
+Given exact extension variables y, divide its zero block by lambda_P. This
+is precisely the ordinary linear-matroid target to which the checked exact
+exchange lemma applies. First test the physical rank of its positive support;
+if full, any basis there is a valid starting distribution of mass one.
+
+If every positive block has an exact zero-basis mixture, combine it with
+the independent product of the unit-bin categorical laws. Each product
+component is a full128 basis: distinct unit evaluations are independent
+modulo the zero span. Multiply by lambda_P and sum over masks. Exact global
+feature equations then certify full775 membership without expanding the
+potentially enormous products. Zero-mass blocks must have all y=0.
+
+A failed block instead gives a valid local row y_P(C)<=rank(C)*lambda_P.
+Add that row and solve the shared extension again. A violation at one
+extension excludes that extension only. It is not a projected inequality
+until a common-system dual certificate has eliminated all lambda/y freedom.
+Timeout in exchange is not a rank-separation oracle and supplies no row.
+
+2. Eliminate the large local blocks by exact support
+
+Let V contain the integer feature vector phi(P,B) for every allowed mask
+representative and compatible full Z basis. The exact full775 relaxation
+is conv(V). This statement follows directly from the preceding product
+decomposition and averaging. It does not impose a completion by the other
+X vectors or compatibility with other whole-profile projections.
+
+The existing exact signed support oracle already optimizes over V. Thus a
+restricted column master can replace the133070-variable prefix extension.
+With columns f_l, use nonnegative weights theta of total one and minimize
+sum_i rho_i(e_i+ + e_i-) subject to
+
+  sum_l theta_l f_li + e_i+ - e_i- = target_i.
+
+The constant coordinate is the mass equation and has no error variable.
+Its dual seeks c.target-beta, with f_l.c<=beta and |c_i|<=rho_i. Given ANY
+rational or integer proposed c, compute H(c)=max_{v in V} c.v. The strict
+exact inequality c.target>H(c) is the accepted obstruction. Neither the
+restricted master bound nor floating stationarity is needed for acceptance.
+If no strict gap occurs, add a maximizing physical vertex and re-solve.
+
+This is not a new mathematical formulation: the earlier primal/active L1
+pilots already used it. The old primal pilot began with15714 columns, spent
+78.73s on its first solve, added291 columns per round, and timed out after
+601.54s. The old active pilot initially solved18329 columns for85.26s, then
+pruned to753; it still added291 per round and ended with1535 active columns
+and68501 historical columns after605.60s. A smaller master alone is therefore
+not a new guarantee. The new bounded pilot changes only implementation and
+initialization:665 positive warm Wolfe columns, native pricing, one global
+best vertex per round, immediate nonbasic pruning, and25s per-solve caps.
+All positive candidates still require the unchanged independent consumer.
+
+3. Safe affine elimination and its limits
+
+Three exact homogeneous feature relations are known:
+
+  sum_j n_j = 128*phi0,
+  sum_(j,h) d_jh = 128*k,
+  sum_(j,h) A32[j,h]*d_jh = k.
+
+Together with phi0=1 these bound the affine dimension by771. Remove one n
+coordinate and one d coordinate from each physical pairing class0/1; the
+three relations reconstruct them uniquely. This is a safe coordinate
+projection, changes the chosen L1 metric, and preserves exact membership.
+It supplies at most772 columns for a minimal affinely independent exact
+mixture: any larger positive support can be reduced using an affine
+dependence while preserving nonnegative weights and the represented point.
+
+The6980 saved witness10 integer columns have modular linear rank758, whereas
+the941 recovered witness9 columns have rank718. These are matrix-rank lower
+bounds, not new universal relations. The apparent additional null directions
+must not be discarded. A concrete later completeness gate is to recover an
+exact nullspace of a source-verified spanning column set and price both signs
+of each candidate relation. Zero support in both signs proves an identity;
+a nonzero support supplies a new independent physical column. Repeat until
+all remaining nullspace directions have both-sign proofs. This is finite
+in dimension, but no runtime promise is made here. Native int64 overflow
+must use the existing exact fallback for large recovered coefficients.
+
+4. Smaller certificate proposals already available from current artifacts
+
+For a fixed765-vector v on n/d features, compute every exact conditional
+support h_v(P). Only ten mask-only coefficients u remain:
+
+  maximize u.target_mask + v.target_partner
+  subject to u.f_mask(P) <= -h_v(P), for all291 representatives.
+
+Every feasible u gives the valid homogeneous bound (u,v).phi<=0. This tiny
+LP is the already used fixed-template method, now applicable to any saved
+normal, not just the eleven-anchor template. Its primal/dual optimum can be
+recovered exactly from a small active system; only a strict rational target
+gap and complete support replay justify a cut. It can improve the mask-only
+part of a proposed normal even when its original worst-mask upper bound is
+large. It cannot decide full membership if all tested fixed-v families fail.
+
+The saved prefix matrices also admit a direct residual-safe finite-LP dual:
+for E x=b, U x<=0, 0<=x<=1, take rational a and z>=0, put
+r=E^T a+U^T z and L=sum_j min(0,r_j). If a.b<L, infeasibility follows.
+Both saved120s prefix runs have no valid primal or dual vector, so there is
+currently nothing to rationalize by this route. A saved basis alone is not
+a candidate certificate. Repricing the first775 feature multipliers would
+give the more reusable full-support certificate if it strictly separates.
+
+5. Exact outcome criteria and stop rule
+
+Success as an obstruction: one integer normal, all291 independently proved
+signed full-basis supports, correct rotation/owner translation, and a strict
+exact target gap. Success as membership: exact nonnegative physical vertex
+weights reproducing every775 coordinate, or an exact lambda/y extension
+with independently accepted zero-pool mixtures in every positive block.
+The latter proves only this single whole-orbit auxiliary projection.
+
+Numerical membership, a nonpositive priced gap, a stalled restricted master,
+an unresolved block, or a wall-clock cap are all inconclusive. Rank rows
+found at one conditional decomposition must be reinserted into the shared
+master before projected conclusions. No new source bound or cover reduction
+follows from this assessment. No additional literature theorem is used; the
+saved Cunningham abstract remains a method lead, not a complexity guarantee
+for the present exchange implementation.

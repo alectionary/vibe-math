@@ -1,0 +1,295 @@
+
+===== PDF PAGE 1 =====
+University “Alexandru Ioan Cuza” of Ia¸ si
+Faculty of Computer Science
+T
+E
+C
+H
+N
+I
+C
+A
+L
+R
+E
+P
+O
+R
+T
+A simple push-relabel algorithm for
+sub-modular ﬂows
+Cristian Frasinaru, Emanuel F. Olariu
+TR 13-02, October 2013
+ISSN 1224-9327
+Universitatea “Alexandru Ioan Cuza” Ia¸ si
+Facultatea de Informatic˘ a
+Str. Berthelot 16, 6600-Ia¸ si, Romania
+Tel. +40-32-201090, email: bibl@infoiasi.ro
+
+===== PDF PAGE 2 =====
+Abstract
+In this paper we present a combinatorial push-relabel algor ithm for sub-modular ﬂows. Our
+procedure, using a lowest level rule combined with a bfs-like traversal, needs no lexicographic order
+of the elements, and gives a time complexity of O(n5).
+Keywords: sub-modular ﬂows, push-relabel algorithms, combinatoria l optimization.
+1 Introduction
+Push-relabel algorithms are often used in the sub-modular o ptimization especially for the sub-modular
+ﬂow problem ([3], [5]). This framework includes some import ant combinatorial optimization problems
+as polymatroid intersection, minimum cost problem, or mini mizing sub-modular functions ([6], [8], [10]).
+Push-relabel algorithms are an alternative to the procedur es using augmenting path technique (see [7] in
+the context of minimizing sub-modular functions).
+2 Sub-modular ﬂows
+We shortly outline here the context of the sub-modular ﬂows. Let G = ( V, A) a directed graph with no
+multiple arcs. If x : A→ R is a function on the arcs of G, we deﬁne three new functions δ−, δ+ and
+Ψx :P(V )→ R like this:
+δ−x (Z) =
+uv∈A,u /∈Z∋v
+x(uv), δ +x (Z) =
+uv∈A,u∈Z⁄∋v
+x(uv),∀Z⊆ V, and
+Ψx(Z) = δ−x (Z)− δ+x (Z),∀Z⊆ V.
+In order to introduce the notion of sub-modular ﬂow we need two bounding functions f, g : A→ R
+for which f ⩽ g, and a sub-modular function 1 b :P(V )→ R for which b(V ) = 0. Given such a function,
+the base-polyhedron of b is B(b) ={y∈ RV : y(Z) ⩽ b(Z),∀Z⊂ V, y(V ) = b(V )}, where for a function
+y∈ RV , y : 2 V → R with y(Z) =
+u∈Z
+y(u), for any Z⊆ V .
+A sub-modular ﬂow is a function x : A→ R for which
+Ψx(Z) ⩽ b(Z),∀Z⊆ V.
+A sub-modular ﬂow is feasible if
+f (e) ⩽ x(e) ⩽ g(e),∀e∈ A.
+Our study concerns the characterization of the existence of feasible sub-modular ﬂows:
+Theorem 2.1. ([1]) Let G = (V, A) a directed graph without multiple arcs, f, g : A→ R for which f ⩽ g,
+and b :P(V )→ R a sub-modular function. In this context there is a feasible s ub-modular ﬂow if and only
+if
+δ−f (Z)− δ+g (Z) ⩽ b(Z),∀Z⊆ V. (2.1)
+Moreover, if f, g, and b are integral, then the above condition insures the existenc e of an integral
+feasible sub-modular ﬂow.
+For the only if part: let x be a feasible sub-modular ﬂow; we have δ−f (Z)− δ+g (Z) ⩽ δ−x (Z)− δ+x (Z) ⩽
+b(Z),∀Z⊆ V . For the if part there are two diﬀerent approaches, one which use an augmenting path type
+argument (Frank in [1]), and a later one which uses a push-rel abel algorithm (see Fujishige and Zhang
+in [4] or Frank and Mikl´ os in [2]). The push-relabel algorit hm either ﬁnds a feasible sub-modular ﬂow or
+ﬁnds a subset Z0⊆ V which violates condition (2.1):
+δ−f (Z0)− δ+g (Z0) > b(Z0)
+1A function f is (fully) sub-modular if, for every S, T ⊆ V , we have that f (S) + f (T ) /greaterorequalslant f (S ∩ T ) + f (S ∪ T ).
+
+===== PDF PAGE 3 =====
+We develop here a simple push-relabel algorithm based on a mo diﬁed procedure used in [2].
+For a vector (function) m : V → R, an m-ﬂow is a function x : A→ R for which Ψ x(v) = m(v),
+∀v∈ V .
+Lemma 2.1. There is a feasible sub-modular ﬂow if and only if we have a vec tor m∈ B(b) for which it
+exists a feasible m-ﬂow.
+Proof. First, suppose that, for a certain m∈ B(b), it exists a feasible m-ﬂow x; we need only to check
+that x is sub-modular. Using the modularity of Ψ x we have that
+Ψx(Z) =
+v∈Z
+Ψx(v) =
+v∈Z
+m(v) = m(Z) ⩽ b(Z).
+If x is a feasible sub-modular ﬂow, we deﬁne m : V → R by taking m(v) = Ψ x(v); using again the
+modularity of Ψ x we get m(Z) ⩽ b(Z),∀Z⊆ V . On the other hand m(V ) = Ψ x(V ) = 0, hence m is in
+B(b) and x is a (feasible) m-ﬂow.
+3 Preliminaries of the algorithm
+Our procedure maintains a feasible vector x and a vector m from the base polyhedron. We modify x
+until Ψ x(v) ⩽ m(v), for all v∈ V . It is noteworthy that our strategy diﬀers from that of Frank and
+Mikl´ os in [2] asm remains unchanged during the algorithm.
+A vertex u∈ V will be called Ψ -larger (Ψ-smaller or Ψ -neutral) if Ψ x(u) > m (u) (Ψ x(u) < m (u) or
+Ψx(u) = m(u)). An arc e∈ A can be increasable if x(e) < g (e), decreasable if x(e) > f (e).
+For a given vector m∈ B(b), a subset Z will be called m-tight if m(Z) = b(Z).
+Remark 3.1. b being a fully sub-modular function, it is easy to see that the collection of m-tight sets
+is closed under union and intersection. Therefore, for a ver tex v∈ V , we can deﬁne T (v), the smallest
+(inclusion wise) m-tight set containing v.
+The algorithm maintains a level function ϕ : V →{ 0, 1, . . . , n} (where|V| = n), the level sets are
+Λk = ϕ−1(k), 0 ⩽ k ⩽ n. For a given set Z⊆ V , we denote
+ϕmin(Z) = minu∈Z ϕ(u).
+A generic push-relabel type procedure performs some local o ptimization steps - at a vertex in our case
+- and the selection of the vertex for the next step is made usin g the level function. Usually the strategies
+for choosing the next vertex is to take a vertex from the maxim um or minimum level.
+Throughout the execution of the algorithm the following thr ee level properties are invariant
+(L1) ϕ(u) = 0 , for every Ψ-smaller u∈ V ;
+(L2) ( a) ϕ(v) /greaterorequalslant ϕ(u)− 1, for every increasable arc uv;
+(b) ϕ(v) ⩽ ϕ(u) + 1, for every decreasable arc uv;
+(L3) ϕmin(T (u)) /greaterorequalslant ϕ(u)− 1, for every vertex u∈ V.
+Property ( L2) says that every increasable (decreasable) arc steps down ( up) at most one level. The
+algorithm ends when either
+(I) there is no Ψ-larger elements
+or
+(II ) there is an empty level Λ k and a Ψ-larger vertex over k th level.
+The following result from [2] concerns the link between the l evel properties and the stopping rules.
+
+===== PDF PAGE 4 =====
+Lemma 3.1. Let x be a feasible function, m∈ B(b), and ϕ a level function which satisﬁes properties
+(L1) - ( L3). Then
+(i) If Λk = ∅, and there are vertices over the kth level, then Z ={v∈ V : ϕ(v) > k} is m-tight and
+Ψx(Z) = δ−f (Z)− δ+g (Z).
+(ii) If ( I) holds, then x is a sub-modular ﬂow;
+(iii) If ( II ) holds, then {v∈ V : ϕ(v) > k} violates condition (2.1).
+Proof. (i) for every v∈ Z, and every u∈ T (v) we have that ϕ(u) /greaterorequalslant ϕmin(T (v)) /greaterorequalslant ϕ(v)− 1 /greaterorequalslant k, hence
+u∈ Z,∀u∈ T (v). It follows that T (v)⊆ Z,∀v∈ Z, and, from here,
+v∈Z
+T (v) = Z which means that
+Z is m-tight. As Λ k = ∅, every arc leaving Z steps down at least two levels, hence there are no leaving
+increasable arcs from Z (x(e) = g(e),∀ arc e leaving Z), hence δ+x (Z) = δ+g (Z). In the same way we get
+δ−x (Z) = δ−f (Z) (every arc entering Z steps up at least two levels means there are no entering decre asable
+arcs to Z). It follows that Ψ x(Z) = δ−f (Z)− δ+g (Z).
+(ii) Suppose there are no Ψ-larger vertices, then, for every X⊆ V we have
+Ψx(X) =
+v∈X
+Ψx(v) ⩽
+v∈X
+m(v) = m(X) ⩽ b(X).
+(iii) If ( II ) holds, from ( i), Z is m-tight, and we have Ψ x(Z) = δ−f (Z)− δ+g (Z), where Z ={v∈
+V : ϕ(v) > k}. Λ 0∩ Z = ∅, therefore Z contains only Ψ-larger (at least one) or -neutral vertices a nd
+therefore
+Ψx(Z) =
+v∈Z
+Ψx(v) >
+v∈Z
+m(v) = m(Z) = b(Z).
+It follows that δ−f (Z)− δ+g (Z) = Ψ x(Z) > b(Z) which violates (2.1).
+4 The algorithm
+At each step of the algorithm, while there are Ψ-larger verti ces, we select such a vertex s, and, as long
+as s stays larger, we perform a number of pushes along its inciden t increasable or decreasable arcs; when
+such arcs are no more available we increment the label of s. This is a version of the algorithm proposed
+by Frank and Mikl´ os in [2].
+Therefore there are three basic operations:
+(a) arc-push at s on an arc e incident with s (we say that the arc-push is carried out along e):
+1. ( increase) if e = su is an increasable arc with ϕ(u) = ϕ(s)− 1, then increase x(su) by
+α = min{g(su)− x(su), Ψx(s)− m(s)};
+2. ( decrease) if e = us is a decreasable arc with ϕ(u) = ϕ(s)− 1, then decrease x(us) by α =
+min{x(us)− f (us), Ψx(s)− m(s)};
+(b) node-push at s, when minϕ(T (s)) = ϕ(s)−1: ﬁnds a vertex t∈ T (s) with ϕ(t) = ϕ(s)???1, increases
+m(s) by α = min{Ψx(s)− m(s), ∆(t, s)}, and decreases m(t) by α (we say that the node-push is
+carried out along ( s, t)).
+(c) lift s: increment ϕ(s).
+A push at s is neutralizing if s becomes neutral and non-neutralizing otherwise. All these basic
+operations preserve the level properties [2].
+The algorithm works as follows:
+
+===== PDF PAGE 5 =====
+- a queue is initialized with a Ψ-larger node from the lowest l evel; we redo this initialization as long
+as there are Ψ-larger nodes, and the queue becomes empty;
+- in a typical step of the procedure, we extract a vertex s from the queue;
+- as long as s remains Ψ-larger: we apply edge-pushes at s, when no more such pushes are possible
+we apply node-pushes at s; in the end, if s is still Ψ-larger, we lift s;
+- if, during a push, a new Ψ-larger vertex is created (see rema rk 4.1 below), we introduce it in the
+queue (if it is not already there).
+Algorithm 1 The algorithm
+Q← ∅; ⊲Q is a queue
+for (u∈ V ) do
+visited[u]← 0; parent[u]← 0;
+end for
+while (not(I) and not(II)) do
+let s∈ V be a Ψ-larger, ϕ-minimum vertex;
+Q.push(s);
+while (Q⁄ = ∅) do
+s←Q .pop(); visited[s]← 1; parent[s]← s;
+while (∃ an increasable arc su and ϕ((u) = ϕ(s)− 1) do
+α← min{g(su)− x(su), Ψx(s)− m(s)};
+x(su)← x(su) + α;
+if (Ψx(u) > m(u) and visited[u] = 0) then ⊲ if u becomes Ψ-larger
+Q.push(u); visited[u]← 1; parent[u] = s;
+end if
+end while
+while ((∃ a decreasable arc us and ϕ((u) = ϕ(s)− 1) do
+α← min{x(us)− f (us), Ψx(s)− m(s)};
+x(us)← x(us)− α;
+if (Ψx(u) > m(u) and visited[u] = 0) then ⊲ if u becomes Ψ-larger
+Q.push(u); visited[u]← 1; parent[u] = s;
+end if
+end while
+while (ϕmin(T (s)) = ϕ(s)− 1) do
+let t∈ T (s), ϕ(u) = ϕmin(T (s));
+α← min{Ψx(s)− m(s), ∆(u, s)};
+m(s)← m(s) + α; m(u)← m(u)− α;
+if (Ψx(u) > m(u) and visited[u] = 0) then ⊲ if u becomes Ψ-larger
+Q.push(u); visited[u]← 1; parent[u] = s;
+end if
+end while
+if (Ψx(s) > m(s)) then ⊲ if s is still Ψ-larger
+ϕ(s) + +;Q← ∅;
+for u∈ V do
+visited[u]← 0; parent[u]← 0;
+end for
+end if
+end while
+end while
+Remark 4.1. After an arc-push at s, as Ψx(u) increases, u can become Ψ-larger, and, in a similar
+manner, after a nod-push along (s, u), u can become Ψ-larger, as m(u) decreases.
+
+===== PDF PAGE 6 =====
+5 Complexity
+As in [9] we use a minimum level strategy in order to choose the next vertex to be treated by the
+algorithm. Obviously the time complexity depends on the str ategy of this choosing. We use a bfs like
+procedure starting with a Ψ-larger element s from a minimum possible level. We restart with such an
+element whenever the queue becomes empty and the stopping ru les are not yet fulﬁlled.
+The execution of the algorithm is decomposed in phases: a phase is the segment of execution between
+two liftings.
+Lemma 5.1. There are at most n2 phases.
+Proof. Each elements starts on the zero level and can reach the nth level at most.
+Each phase consists of a variable number of waves: a wave starts when the queue is empty and a new
+Ψ-larger element is added to it and will end when the queue bec omes again empty or a lifting arises -
+whichever comes ﬁrst.
+To a wave W we can associate a (bfs) tree T = ( W, E) - for which the root (say s) and the interior
+vertices are (become) neutral (after the wave is ﬁnished). A part from the edges of T , there are un-
+apparent (invisible) edges of the form su: when we made an arc-push along su( or us), or a node-push
+along ( s, u), and the vertex u was already visited.
+To each phase we associate the forest corresponding to all wa ves which belong to it.
+Lemma 5.2. Each phase consists of at most n waves.
+Proof. Let Wi be an intermediate wave. A level of the tree Ti = ( Wi, Ei) contains vertices from the
+same ϕ-level and in decreasing order, as ϕ(parent[u]) = ϕ(u) + 1, except for the root, si. Clearly
+ϕ(si+1) /greaterorequalslant ϕ(si), and because after the wave Wi vertex si becomes neutral, it follows that si+1⁄= si; si
+will remain neutral after each subsequent wave, hence si⁄= sj, for every i < j . As an exception, if Wi is
+the last wave, we can have ϕ(si) = 0.
+Therefore the number of waves in a phase is at most the number o f vertices in the initial graph.
+Lemma 5.3. In a wave we have at most n2 node-pushes.
+Proof. This is obvious, as each tree wave has at most n vertices, and in-between these vertices we can
+have n(n− 1)/2, apparent or not, edges - each such edge corresponds to a nod e- or arc-push.
+Lemma 5.4. In a phase the number of non-neutralizing arc-pushes is at mo st m =|A|, and the number
+of neutralizing arc-pushes is at most n2. Therefore the total number of arc-pushes is O(n4).
+Proof. First, for non-neutralizing arc-pushes, we discuss only th e case of increasable arcs (the same proof
+works for decreasable arcs). If su is increasable ϕ(s) = ϕ(u)− 1, and x(su) becomes g(su); x(su) cannot
+be modiﬁed until su becomes decreasable, which implies that ϕ(u) = ϕ(s)− 1. Hence, in the same phase
+x(su) can be modiﬁed at most once. As we have m arcs in G, the number of non-neutralizing arc-pushes
+will beO(m).
+On the other hand, in each wave we can have at most one neutrali zing arc-push per vertex: after a
+neutralizing push a node v remains neutral until the end of the current wave. Therefore a wave has at
+most n neutralizing arc-pushes, and a phase has at most n2 such pushes.
+The above lemmata give
+Theorem 5.1. The time complexity of the algorithm is O(n5).
+
+===== PDF PAGE 7 =====
+6 Conclusions
+In this study we emphasize the strategy that uses the lowest l evel rule. This rule does not work alone as
+new Ψ-larger nodes on lower levels can appear during treatme nt of a current node. Hence, it is reinforced
+with a bfs traversal: the new appeared larger nodes are added to a queue , and when this queue becomes
+empty a new lowest level, larger vertex is chosen to start a ne w queue.
+This strategy brings a forest structure of the treated nodes , where the basic operations (pushes and
+liftings) can be easily numbered. The other known strategy ( [2]) based only on the largest level rule
+has a claimed complexity of O(n4) and exploits the structure of sets T (s). It seems that a future work
+should avoid these sets, those determination imply a non-ne gligible cost - O(n) - which is not apparent
+in the cited article. The authors believe that this technica l rapport begins a way for a simpler O(n2m)
+algorithm for ﬁnding a feasible sub-modular ﬂow - at least fo r particular types of networks.
+Acknowledgments. The authors thank Prof. C. Croitoru for his comments on an ear lier version of
+this rapport.
+References
+[1] Frank, A., Finding feasible vectors of Edmonds-Giles polyhedra , Journal of Combinatorial Theory,
+Series B, 36 (4), pp. 221–239, 1984.
+[2] Frank, A., Mikl´ os, Z., Simple push-relabel algorithms for matroids and submodula r ﬂows , Japan
+Journal of Industrial and Applied Mathematics, vol. 29, Iss ue 3, pp. 419-439, 2012.
+[3] Fujishige, S., X. Zhang, New algorithms for the intersection problem of submodular s ystems, Japan
+Journal of Industrial and Applied Mathematics, vol. 9, pp.3 69–382, 1992.
+[4] Fujishige, S., X. Zhang, A push/relabel framework for submodular ﬂows and its reﬁnem ent for 0-1
+submodular ﬂows , Optimization, vol. 38, Issue 2, pp. 133–154,1996.
+[5] Fujishige, S., S. Iwata, Algorithms for Submodular Flows . IEICE TRANS. Inform. Syst., 2000.
+[6] Fujishige, S., Submodular Functions and Optimization , 2nd edition,Annals of Discrete Mathematics,
+vol. 58, Elsevier, 2005.
+[7] Iwata, S., L. Fleischer, S. Fujishige, A Combinatorial, Strongly Polynomial-Time Algorithm for
+Minimizing Submodular Functions , Journal of ACM, vol. 48, pp. 761–777, 2001.
+[8] Iwata, S., J. B. Orlin, A simple combinatorial algorithm for submodular function m inimization,
+Proceedings of the 20th Annual ACM-SIAM Symposium on Discre te Algorithms (SODA), 2009.
+[9] Olariu, E. F., A new strategy for pus-relabel algorithm framework for matr oid optimization , TR
+13-01, http://profs.info.uaic.ro/ tr/tr13-01.pdf, 2013 .
+[10] Schrijver, A., A combinatorial algorithm minimizing submodular function s in strongly polynomial
+time, Journal of Combinatorial Theory Series B, vol. 80, Issue 2, pp. 346–355, 2000.

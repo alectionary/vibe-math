@@ -1,0 +1,50 @@
+{
+  "status": "PASS_READ_ONLY_ANCHORED_PROJECTION_REVIEW",
+  "source_C16_answered": false,
+  "source_hashes": {
+    "anchor_partner_projection_features.py": "688aa18315b87da220991408cfed42877643951da57507dc5256f796131d9d32",
+    "verify_anchor_partner_projection.py": "e982714c3ce5068fce99c0c53cc7b7d97ea2d3006f8441a3399a4435ff696ee3",
+    "full_partner_projection_features.py": "cce1a54f12de3d6385f58c7e27faae34f27ef6de7f80586015523204b656a3fa",
+    "verify_full_partner_projection.py": "3e5133b777cd1d64d24ebaeeb6d50d5d812a1eae9642c2d993c2ab274f0b7559",
+    "verify_full_partner_anchor_basis_oracle.py": "12916cbff440e080ec240bd41f54a0fc5b54b3c478280586fd8f4c901c712d9f",
+    "verify_full_partner_basis_oracle.py": "be3bf8a3f4d51287948a1316cd82b02afba2d1f54ecd94e6677190e62ecd5d5d",
+    "verify_projected_profile_moment_rows.py": "ab5ff5e15d19e1eef6409f1498a830ecb726829399c22e4b2d0496aed099b10e",
+    "physical-pool-source.json": "474be8e33c7b0aa2d3ee89930f90770aefc5e0128c5103bf2b7b07ec73addc8f",
+    "pools/xcoords.txt": "5a0661f1e04f5c4bdf34aacd14581e0d883c2db83c533d77160e794b164ea89d",
+    "pools/zcoords.txt": "14b2861040c206e1c66a3a220d862c0eba834d9eba7244c76bc8c67facbbe977",
+    "algebraic-results/orbit-rank-profiles.json.gz": "6e4852d5a003c7c6877f22f03a1fe4f719e8152b709ab00b988a583de58d9439"
+  },
+  "review_code_sha256": "4adc7870f78f64f3d04f2df7809428dd9c915170366ef304f83c2de352cb8826",
+  "literal_feature_equalities_checked": 1209600,
+  "target_coordinates_checked": 37800,
+  "branch_decomposition_checks": 800,
+  "row_and_constant_checks": 25,
+  "phase_direction_negative_controls_rejected": 15,
+  "incorrect_factor16_extra_controls_rejected": 20,
+  "tested_phase_zero_anchors": [
+    0,
+    80,
+    272,
+    512,
+    704
+  ],
+  "allowed_masks": 4597,
+  "branch_states_checked": 9194,
+  "anchor80_branch_status_counts": {
+    "ANCHORED_FULL_PARTNER_BASIS_DOMAIN": 5782,
+    "EXCLUDED_SELECTED_MULTIBIT_ANCHOR": 3409,
+    "EXCLUDED_ANCHOR_DEFICIENT_ZERO_POOL": 3
+  },
+  "branch_coverage_sha256": "1270900bb438e9a362ff799a61f0f892f2470b408f1102662af14f1a2bbac426",
+  "normalization": "Old775 expectations retain16; added737 are p_a,T_t[a,32],S_b[a,j] without16. No anchor-multiplied old correlations are present.",
+  "averaging_proof": "For each physical full frame, each sector orientation and each of16 rotations gives one allowedP and one exact anchor state. The universal support bound holds pointwise, hence after averaging. Fixedphase anchor means all4597 oriented masks are required.",
+  "domain_review": "Selected multibit anchor is impossible. Selected zero anchor is contracted into the zero matroid; selected unit anchor fixes its owner bin. Absence deletes the anchor. Rank deficiency or empty mandatory owner excludes exactly that branch; signed contraction-prefix bounds cover every feasible branch.",
+  "matrix_review": "PASS receipt is bound to bank/current consumer/source hashes/dependency hashes; compiled row and positive exact gap are compared; integer coefficients and rhs are restricted below2^53 before sparse conversion.",
+  "limitations": [
+    "Actual cut-bank acceptance still requires full consumer execution.",
+    "Main acceptance is deliberately orbit32-only (512 offsets,4597 masks); generic helper signatures do not certify other orbits.",
+    "Main anchor validation checks phase0 but omits an immediate range assertion; downstream domain/row checks reject invalid indices. Explicit early0<=anchor<720 would improve diagnostics.",
+    "Pure producer helpers coerce selection indices and branch state; acceptance instead checks physical integer indices and exact state coverage."
+  ],
+  "elapsed_seconds": 15.064357249997556
+}
