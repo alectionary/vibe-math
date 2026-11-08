@@ -152,7 +152,8 @@ def run_all():
          [dict(c=0, h=0)], at(within, NS))
     stmt('104 (PDF 118)', "PNDE Type I shows no differences across cutoffs when c' = h = 0", 'PNDE',
          [dict(c=0, h=0)], spread)
-    stmt('106 (PDF 120)', "TNDE Type I within the robustness criteria when c' = h = 0, at every level of a", 'TNDE',
+    stmt('106 (PDF 120)', "TNDE Type I within the robustness criteria and close to the targeted .05 when c' = h = 0, "
+         "at every level of a", 'TNDE',
          [dict(c=0, h=0, a=a) for a in [0] + P], at(within, NS))
     stmt('108 (PDF 122)', 'MINT Type I close to zero and below the robustness criteria when a = h = 0', 'MINT',
          [dict(a=0, h=0)], at(below, NS))
@@ -196,6 +197,10 @@ def run_all():
          [dict(a=.59, b=b, h=.15) for b in P[1:]], at(over80, NS, '1'))
 
 
+    stmt('112 (PDF 126)', 'TNIE2 and TNIE3 power show overall patterns similar to TNIE1 (read as: no differences '
+         'across the three cutoffs; h = .15, every a and b)', 'TNIE',
+         [dict(a=a, b=b, h=.15) for a in P for b in [0] + P], spread)
+
     def no_h_variation(rt_unused, kw):
         rts = [rates('TNIE', a=kw['a'], b=kw['b'], h=h) for h in H]
         return all(max(r[(n, '1')] for r in rts) - min(r[(n, '1')] for r in rts) <= .05 + SLACK for n in NS)
@@ -231,6 +236,10 @@ def run_all():
          [dict(c=.59, a=a, h=h) for a in [0] + P for h in [0] + H], at(over80, NS, '1'))
     stmt('118 (PDF 132)', 'TNDE power shows no variation by cutoff (h = .15)', 'TNDE',
          [dict(c=c, a=a, h=.15) for c in P for a in [0] + P], spread)
+
+    stmt('118 (PDF 132)', 'TNDE2 and TNDE3 power show overall patterns similar to TNDE1 (read as: no differences '
+         "across the three cutoffs; every c', a and h with a nonzero TNDE)", 'TNDE',
+         [dict(c=c, a=a, h=h) for c in [0] + P for a in [0] + P for h in [0] + H if c + a * h > 0], spread)
 
     def tnde_no_h_variation(rt_unused, kw):
         rts = [rates('TNDE', c=kw['c'], a=kw['a'], h=h) for h in [0] + H]
