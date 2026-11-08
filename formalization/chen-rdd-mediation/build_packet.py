@@ -174,8 +174,8 @@ claim(id='H1', level='headline',
       reproduction_deviation=f'ours minus printed = {r2(our_dir - pub_dir)} percentage points',
       methods=METHODS + ' Bias is the mean of 1,000 estimates minus the population value (PNDE = c\', TNDE = c\' + ah).',
       uncertainty=f'Our largest |bias| over all 19,200 condition-cutoff-effect results is '
-                  f'{summary["overall_max_abs_bias"]:.3f}, far inside .10; Monte Carlo error of a mean of 1,000 '
-                  f'estimates is at most about .01 in these cells.',
+                  f'{summary["overall_max_abs_bias"]:.3f}, far inside .10; Monte Carlo standard error of a mean of 1,000 '
+                  f'estimates is at most {max(float(r["sd"]) for r in rows("results/cells.csv")) / 1000 ** 0.5:.3f} in any cell.',
       multiplicity='Descriptive summary over the full grid; no tests.',
       status='not_replicated',
       status_reason='Every direct-effect result in our run lies within [-.05, .05]. Chen\'s printed estimation code '
@@ -436,7 +436,10 @@ claim(id='S5', level='supporting',
                     'rather than the outcome SD stated in equation 3.12.',
       numerical='match', reconstruction_scope='printed numbers only',
       limitations=['The divisor discrepancy is between the text and the tables; which was intended is unknown.'],
-      stopping=STOP_DONE('None needed.'))
+      stopping=dict(reason='Complete: all 24 printed entries recomputed.', attempted='Differences and standardized '
+                    'biases from the printed RCT and RDD estimates and standard errors (secondary/table_arithmetic.py).',
+                    untested='Which divisor Chen intended; the HSIS fits themselves (S4).', resource_basis='Seconds.',
+                    next_evidence='None needed for the arithmetic.'))
 
 claim(id='S6', level='supporting',
       statement='HSIS assumption checks: density, covariate balance (Table 4.3), residual correlations (Table 4.4) '
