@@ -127,6 +127,11 @@ does not mean the source question is answered. Mark a block Done only with its
 outcome and evidence recorded; do not close an unanswered canonical question
 merely because a bounded follow-up finished.
 
+Settle access before the work depends on it: push rights (for example the
+GitHub app on the repository), branch rules such as required reviews, and file
+size limits for every transfer route. Raise a required-review rule with the user
+before merging past it.
+
 For this repository, finished work belongs on `master` unless the user explicitly
 requests a draft, branch-only delivery or another destination. Within the user's
 authorized publication scope, integrate all completed artifacts and their required
@@ -306,6 +311,44 @@ can explain little of a **net** deterioration. A descriptive partition is not a
 causal pathway. Separate checked mathematical updates, implementation replay,
 sampling and statistical conclusions. Stop a weak route at its bounded endpoint
 and record what it failed to establish.
+
+## Independent verification and multi-agent work
+
+Plan the independent check when the search is designed, not after it has run.
+Before launching a costly confirmation, estimate its cost and ask what the
+cheapest *independent* check is. For an exhaustive search, the default is a
+**proof certificate**: the search writes its tree, and a checker recomputes
+every node's state and checks that each branch lists all candidates and each
+leaf is justified. Checking is usually far cheaper than solving. A second solver
+on a counting-heavy encoding can have a heavy tail; treat it as supplementary
+evidence unless it is also cheap. Keep a fast reference checker of our own,
+in a compiled language when certificates are large.
+
+When another agent provides the independent check:
+
+- Write a self-contained spec: definitions, data formats, the checking rules with
+  their soundness argument, known-answer tests (a passing case, altered
+  certificates that must fail, and a planted positive control that must be
+  found), file hashes, and the deliverable. Forbid reading our search code,
+  reference checker and paper. Require the agent to regenerate derived inputs
+  from raw data and compare them with ours.
+- Answer that agent only with spec clarifications, and record each clarification
+  in the spec, so the record shows exactly what it was told. An agent writing
+  kernel-checked proofs may be given full context.
+- Use one GitHub issue per agent for status, questions and handoff. Treat silence
+  or a missing push as a status to chase, not as progress.
+- For a critical-path formal proof, consider two agents in parallel, each with its
+  own branch and file prefix.
+- Before citing an external result, rebuild or rerun it, check exit codes (137
+  means out of memory, not success), read the exact theorem statement and its
+  axioms, and compare node counts or other invariants with our own runs. Never
+  report a build, run or push you have not observed succeed.
+- Merge the cited agent branches with an ordinary merge, not a squash, so pinned
+  commit links stay in the default branch's history. Link each cited artifact to
+  `master` and to the pinned commit.
+
+[C16 symmetric frames](../../../RESEARCH-LESSONS.md#c16-certify-the-search-and-check-it-independently)
+is the worked example.
 
 ## Report, preserve and hand off
 
