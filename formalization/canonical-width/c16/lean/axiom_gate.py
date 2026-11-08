@@ -123,6 +123,13 @@ def main():
         if args.self_test:
             self_test()
             return 0
+        fresh = subprocess.run(["lake", "--no-build", "build"], cwd=ROOT,
+                               text=True, stdout=subprocess.PIPE,
+                               stderr=subprocess.STDOUT)
+        print(fresh.stdout, end="")
+        print("BUILD FRESHNESS EXIT", fresh.returncode)
+        if fresh.returncode:
+            raise RuntimeError("library build is missing or stale; run lake build first")
         # All local library sources; exclude no declarations by namespace or visibility.
         modules = sorted(p.stem for p in ROOT.glob("*.lean"))
         records = audit(modules)
