@@ -1,0 +1,505 @@
+\input{approved-preamble.tex}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
+\usepackage{tabularx}
+
+\newcommand{\cellsetup}{\raggedright\arraybackslash\hyphenpenalty=10000\exhyphenpenalty=10000\spaceskip=0.42em plus 0.4em\relax}
+\newcolumntype{L}[1]{>{\cellsetup}p{#1}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\q}{\textquotesingle}
+\newcommand{\absbar}{\textbar}
+
+\hypersetup{pdftitle={Mediation in Regression Discontinuity: A Replication of Chen (2021)}}
+\title{Mediation in Regression Discontinuity: A Replication of Chen (2021)}
+\author{}
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\hyphenpenalty=10000\exhyphenpenalty=10000\spaceskip=0.34em plus 0.4em minus 0.02em\emergencystretch=3em\relax
+We did not replicate the simulation headline findings of \citet{chen2021}, who reported that mediation analysis in a sharp regression discontinuity design gives biased natural direct effects, percentile bootstrap confidence intervals that cover the true value far less often than the nominal level, and near-zero power for the mediated interaction: over 3,840 of 3,840 condition-cutoff cells, 0.00\% of our direct-effect results had \absbar bias\absbar{} \textgreater{} .10 against her 85.42\%, coverage fell 0.04 rather than 43.62 percentage points short of 95\%, the truth lay above the interval 0.33 rather than 47.07 points more often than below it, and mediated-interaction power was 0.836 at n = 500 where she reported near zero.
+We could not establish why her results differ, as her matching of estimates to population values is not printed; her Head Start Impact Study comparison (research question 2) is not established, as its data were unavailable.
+Her tentative minimum sample size of 5,000 was partly replicated: there 89.2\% of our nonzero-effect results reach .80 power, but products with both paths zero stay conservative.
+\end{abstract}
+
+\begingroup
+\refstepcounter{table}\label{tab:pageone}
+\fontsize{8}{9.1}\selectfont
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.0}\setlength{\aboverulesep}{1pt}\setlength{\belowrulesep}{1.5pt}
+\noindent\begin{tabular}{@{}L{118pt}L{70pt}L{76pt}L{42pt}L{40pt}L{49pt}L{40pt}L{31pt}@{}}
+\toprule
+\textbf{Claim / estimand} & \textbf{Published} & \textbf{Ours} & \textbf{Published effect} & \textbf{Our effect} & \textbf{Effect magnitude} & \textbf{Direction} & \textbf{Verdict}\\
+\midrule
+\textbf{H1, E1.} Percentage of PNDE and TNDE condition-cutoff results with \absbar bias\absbar{} \textgreater{} .10, averaged over the six effect-cutoff rows of Table 4.8
+& PNDE and TNDE within [-.10, .10] in only 12.50-18.75\% of conditions, with negative bias
+& PNDE and TNDE within [-.05, .05] in 100\% of conditions; largest \absbar bias\absbar{} 0.016
+& 85.42 & 0.00 & smaller & zero vs nonzero & no match\\
+\midrule
+\textbf{H2, E2.} 95 minus mean coverage (\%) over the 15 effect-cutoff rows of Table 4.9
+& Coverage 24.10-83.99\% by effect and cutoff; true value usually above the CI
+& Coverage 94.6-95.6\% by effect and cutoff; misses on both sides at similar rates
+& 43.62 & 0.04 & smaller & same direction & no match\\
+\midrule
+\textbf{H2, E3.} Mean over the 15 Table 4.9 rows of (\% of CIs lying below the population value) minus (\% lying above it)
+& Coverage 24.10-83.99\% by effect and cutoff; true value usually above the CI
+& Coverage 94.6-95.6\% by effect and cutoff; misses on both sides at similar rates
+& 47.07 & 0.33 & smaller & same direction & no match\\
+\midrule
+\textbf{H3, E4.} MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c\q{} and cutoffs. The source states a verbal result; a scalar contrast exists but no defensible margin.
+& MINT power near zero at every sample size; never reaches .80
+& MINT power 0.836 at n = 500 for ah = .20; at least .97 for ah \textgreater= .13 from n = 1,000
+& not established & 0.836 & not established & not established & no match\\
+\midrule
+\textbf{H4, E5.} qualitative sample-size recommendation over the grid. A qualitative design recommendation over the whole grid; no single signed contrast represents it, and any pooled share would depend on the mix of effect sizes in the grid.
+& Tentative minimum n of 5,000 for accurate Type I error and power above .80
+& At n = 5,000, 89.2\% of nonzero results reach .80 power; both-zero products stay conservative
+& not established & not established & not established & not established & partial\\
+\bottomrule
+\end{tabular}\par
+\vspace{2pt}
+\noindent\parbox{\textwidth}{\fontsize{7.5}{8.6}\selectfont\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\spaceskip=0.45em plus 0.4em\relax
+\textbf{Table 1.} Headline claims H1--H4 of \citet{chen2021}. Published: her Tables 4.8 (p.~88), 4.9 (p.~124) and text (pp.~121, 150); E1--E3 published effects are our calculation from them. Ours: our simulation, 3,840 of 3,840 cells. Effects are signed. Tolerances and units: E1 tolerance 0.00500001 percentage points; E2 tolerance 0.005000025 percentage points; E3 tolerance 0.01000005 percentage points; E4 tolerance not established, units rejection rate; E5 tolerance not applicable, units not applicable. Tolerances are rounding bounds, not sampling error (about .007 per cell). Descriptive point estimates; not equivalence. It applies to rows E1--E4, not to E5.}
+\endgroup
+
+\section{Introduction}\label{sec:intro}
+
+We did not replicate the simulation headline findings of \citet{chen2021}, who reported that mediation analysis in a sharp regression discontinuity design (RDD) gives biased natural direct effects, percentile bootstrap confidence intervals (CIs) that cover the true value far less often than the nominal 95\%, and near-zero power for the mediated interaction: over 3,840 of 3,840 condition-cutoff cells, 0.00\% of our direct-effect results had $|\mathrm{bias}|>.10$ against her 85.42\% (Table 4.8), mean coverage fell 0.04 rather than 43.62 percentage points short of 95\%, the population value lay above the CI 0.33 rather than 47.07 percentage points more often than below it (Table 4.9), and mediated-interaction power was 0.836 at $n=500$ where she reported that ``All power for MINT is near zero'' \citep[printed p.~121]{chen2021}.
+We could not establish why her printed bias, coverage and mediated-interaction results differ from ours, because the step that matched her estimates to population values is not printed and her result files are not available; her second research question, which compares RDD and randomized estimates in the Head Start Impact Study (HSIS), is not established because the restricted-use data were unavailable to us.
+No headline effect reversed its sign: our coverage shortfall and imbalance have the same sign as hers but are two orders of magnitude smaller, and our share of direct-effect results outside $[-.10,.10]$ is zero where hers is 85.42\%.
+Her tentative recommendation of a minimum sample size of 5,000 \citep[printed p.~150]{chen2021} was partly replicated.
+The comparison tolerance in Table~\ref{tab:pageone} is half a unit in Chen\q s last printed decimal, combined over the inputs of each derived contrast; it is a rounding bound, not a sampling band, and the magnitude labels are descriptive point-estimate comparisons, not equivalence tests.
+
+Chen\q s dissertation asks three research questions \citep[printed p.~7]{chen2021}: what assumptions mediation requires in an RDD (RQ1, answered by the literature synthesis in her Table 4.1); how mediation in an RDD compares with mediation in a randomized controlled trial (RCT), using the HSIS (RQ2); and how mediation in an RDD behaves across sample size, path effect sizes and cutoff in a Monte Carlo simulation (RQ3). Her headline conclusions come from RQ3 and are restated in her Chapter~5: biased direct effects (printed p.~147), invalid percentile bootstrap CIs with the truth ``systematically'' above them (printed p.~150), near-zero power for the mediated interaction (printed p.~148), and the minimum sample size of 5,000 (printed p.~150). Section~\ref{sec:results} answers each in turn. Section~\ref{sec:supporting} covers her Type I error and power statements, RQ1 and RQ2. Sections~\ref{sec:assumptions}--\ref{sec:next} record our assumptions, the ambiguities we resolved, what remains open, availability and next steps.
+
+\section{What we did ourselves, and what we took from others}\label{sec:contrib}
+
+The question here is which parts of this note are Chen\q s and which are ours. Chen\q s contribution is the model, the design and the published tables: the single-mediator model with a treatment-by-mediator interaction, the natural-effect estimators (her equations 3.5--3.11, printed pp.~53--54), the factorial design of her Table 3.1 (printed p.~55), the R code of her Appendices A--B (printed pp.~175--189), and every published number we quote, each labeled with its table and printed page. The natural direct and indirect effects and the mediated interaction follow the potential-outcomes definitions she adopts from \citet{vanderweele2015} and \citet{valeri2013} (her printed p.~19). The robustness bands come from her sources: $[.025,.075]$ for Type I error and $[.925,.975]$ for coverage \citep{bradley1978}, and $[-.05,.05]$ for bias \citep{hoogland1998}, with her looser $[-.10,.10]$ (printed pp.~57--58).
+
+Our contribution is an independent re-implementation of her simulation, its full run, and the comparison. Every number labeled ``ours'' is our simulation or calculation from the files in Appendix~\ref{app:artifacts}; numbers we derived from Chen\q s printed values (the headline contrasts E1--E3, and the recomputed differences of her Tables 4.6--4.7) are labeled as our calculation from her printed figures. We supplied the assumptions listed in Section~\ref{sec:assumptions}. We wrote no proofs; this replication is computational.
+
+\section{Methods}\label{sec:methods}
+
+\subsection{Data generation and estimation}
+The simulation follows Chen\q s Appendix A (printed pp.~175--178) and Appendix B (printed pp.~179--189), re-implemented in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/chen_sim.py}{\nolinkurl{chen_sim.py}}. In each replication, $x\sim N(0,1)$ for $n$ units; for each of three cutoffs at the 25th, 50th and 75th sample percentiles of $x$, $t=1$ if $x$ is at or above the cutoff, $r=x-\text{cutoff}$, $m=a t+e_m$ with $e_m\sim N(0,1-a^2)$, and $y=c' t+b m+h\,t m+e_y$ with $e_y\sim N(0,1-b^2)$; fresh residuals are drawn for each cutoff, as in Appendix A. Ordinary least squares fits $m\sim 1+t+r$ and $y\sim 1+t+r+m+tm$, and the effects are $\mathrm{PNIE}=ab$, $\mathrm{TNIE}=ab+ah$, $\mathrm{PNDE}=c'+h\,i_{0M}$, $\mathrm{TNDE}=c'+h\,i_{0M}+ah$ and $\mathrm{MINT}=ah$, where $i_{0M}$ is the intercept of the $m$ model (Chen\q s equations 3.7--3.11). Here PNIE and TNIE are the pure and total natural indirect effects, PNDE and TNDE the pure and total natural direct effects, and MINT the mediated interaction.
+
+Each replication forms 95\% percentile bootstrap CIs \citep{efron1993} from 500 resamples of the rows; as in Appendix B, the same resample indices serve all three cutoffs. The design crosses $n\in\{500,1000,2500,5000,10000\}$, $a,b,c'\in\{0,.14,.39,.59\}$ and $h\in\{0,.05,.15,.34\}$: 1,280 data conditions, each analyzed at three cutoffs, give 3,840 condition-cutoff cells, and each was run at Chen\q s 1,000 replications \citep[printed p.~57]{chen2021}.
+
+\subsection{Outcome measures}
+Following Chen (printed pp.~57--58), bias is the mean of 1,000 estimates minus the population value; a rejection is a CI that excludes zero, read as Type I error when the population effect is zero and as power otherwise; coverage is the share of CIs that contain the population value; and imbalance splits the misses into CIs lying wholly below the population value (``truth above CI'') and wholly above it. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/aggregate.py}{\nolinkurl{aggregate.py}} collapses the cell results over sample size and effect sizes by effect and cutoff index, as in Chen\q s Tables 4.8 and 4.9.
+
+\subsection{Software and validation}
+R is not reachable from either host used here (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/fallback.json}{\nolinkurl{fallback.json}}; Section~\ref{sec:amb-engine}), so the simulation is written in Python with NumPy \citep{harris2020}: Python 3.13.18 with NumPy 2.5.3 in a Linux x86\_64 cloud container (401 conditions), and Python 3.10.12 with NumPy 2.2.6 in a Linux aarch64 virtual machine (879 conditions), as recorded in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/notes/run-record.md}{\nolinkurl{run-record.md}}. Chen used R 4.0.3 \citep{rcore2021}. Python and NumPy were chosen because her estimator is plain OLS with percentile bootstrap CIs, which needs no structural-equation package. Each condition has its own seed, \texttt{SeedSequence(20211201, spawn\_key=(k,))}, so splitting the run across hosts changes no result; two conditions computed on one host and rerun on the other differed by at most $1.1\times10^{-16}$ in any summary statistic. The run took 13.7 core-hours.
+
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/validate_estimator.py}{\nolinkurl{validate_estimator.py}} checks the estimator independently: its point estimates agree with scikit-learn 1.9.1 \citep{pedregosa2011} linear-regression fits to $1.1\times10^{-14}$ over 20 random datasets, its weighted-count bootstrap agrees with explicit row resampling refitted by least squares over 100 resamples, and at $n=200{,}000$ its estimates are within sampling error of the population values. The validation ran with scikit-learn 1.9.1 in the container (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/notes/run-record.md}{\nolinkurl{run-record.md}}).
+
+\subsection{Comparability of the two simulations}
+Table~\ref{tab:comparability} records, for each side, the elements that determine whether a summary is comparable. The two sides share the model, the estimators, the bootstrap rule and counts, and the design; they differ in engine, random streams, and in that Chen\q s population values and aggregation code are not printed.
+
+\begin{table}[htbp]
+\centering\small\renewcommand{\arraystretch}{1.3}
+\caption{Comparability record for Chen\q s simulation and ours. Chen\q s entries are taken from her Chapter 3 and Appendices A--B; ours from \texttt{chen\_sim.py} and \texttt{aggregate.py}.}\label{tab:comparability}
+\begin{tabular}{@{}P{0.24\textwidth}P{0.34\textwidth}P{0.34\textwidth}@{}}
+\toprule
+Element & \citet{chen2021} & Ours\\
+\midrule
+Engine & R 4.0.3, \texttt{lm()} & Python and NumPy, normal equations\\
+Estimator & OLS, $m\sim t+r$, $y\sim t+r+m+tm$ & same\\
+Missing data & none in the simulation & none\\
+$n$, replications, resamples & 500--10,000; 1,000; 500 & same\\
+CI rule & 95\% percentile bootstrap & same (R quantile type 7)\\
+Random streams & R seeds 18374788 and 95409 & NumPy, seed 20211201 per condition\\
+Population values & not printed & derived (Section~\ref{sec:a-pop})\\
+Aggregation & ``collapsed across sample and effect size'' & mean over 1,280 conditions per effect and cutoff\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Results for the headline claims}\label{sec:results}
+
+\subsection{H1: are the direct effects biased?}\label{sec:h1}
+No: in our run every direct-effect estimate is unbiased, whereas Chen reported that PNDE and TNDE fall inside $[-.10,.10]$ in only 12.50--18.75\% of conditions and that ``When bias was present, the measure of bias was a negative value'' (printed p.~147). Table~\ref{tab:t48} sets her Table 4.8 beside ours. All 1,280 conditions lie inside $[-.05,.05]$ for every effect and cutoff; the largest absolute bias over all 19,200 condition-cutoff-effect results is 0.016 (0.01551 before rounding; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/summary.json}{\nolinkurl{summary.json}}), against a Monte Carlo error of the mean of 1,000 estimates of at most about .01 in these cells. The headline contrast E1, the share of direct-effect results with $|\mathrm{bias}|>.10$ averaged over the six direct-effect rows, is 85.42 percentage points in Chen\q s table (our calculation from her printed values) and 0.00 in ours.
+
+Chen attributed the bias to global estimation with an incorrect functional form (printed p.~147). In her data-generating model the assignment variable enters neither $M$ nor $Y$ (Appendix A, printed pp.~175--177), so the linear models she fits are correctly specified and OLS has no source of bias; our unbiased results are what that model implies. Her printed estimation code (Appendix B) matches ours line by line, so the difference must arise in a step that is not printed (Section~\ref{sec:unresolved}).
+
+\begin{table}[htbp]
+\centering\small\renewcommand{\arraystretch}{1.3}
+\caption{Percentage of conditions with bias inside $[-.10,.10]$ and $[-.05,.05]$, by effect and cutoff index. ``Chen'' columns are copied from her Table 4.8 (printed p.~88); ``ours'' columns and the largest absolute bias are our simulation (\texttt{results/table48\_ours.csv}), each over 1,280 conditions. Cutoff index follows the code (Section~\ref{sec:amb-cutoff}).}\label{tab:t48}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{Within $[-.10,.10]$ (\%)} & \multicolumn{2}{c}{Within $[-.05,.05]$ (\%)} & Largest\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Effect & Cutoff & Chen & Ours & Chen & Ours & $|\mathrm{bias}|$, ours\\
+\midrule
+PNIE & 1 & 62.50 & 100.00 & 50.00 & 100.00 & 0.0081 \\
+PNIE & 2 & 75.00 & 100.00 & 50.00 & 100.00 & 0.0070 \\
+PNIE & 3 & 81.25 & 100.00 & 75.00 & 100.00 & 0.0079 \\
+TNIE & 1 & 51.88 & 100.00 & 41.88 & 100.00 & 0.0118 \\
+TNIE & 2 & 60.00 & 100.00 & 42.19 & 100.00 & 0.0093 \\
+TNIE & 3 & 70.94 & 100.00 & 54.69 & 100.00 & 0.0113 \\
+PNDE & 1 & 12.50 & 100.00 & 6.25 & 100.00 & 0.0143 \\
+PNDE & 2 & 12.50 & 100.00 & 8.75 & 100.00 & 0.0123 \\
+PNDE & 3 & 18.75 & 100.00 & 10.00 & 100.00 & 0.0155 \\
+TNDE & 1 & 12.50 & 100.00 & 6.88 & 100.00 & 0.0144 \\
+TNDE & 2 & 12.50 & 100.00 & 7.50 & 100.00 & 0.0117 \\
+TNDE & 3 & 18.75 & 100.00 & 7.19 & 100.00 & 0.0146 \\
+MINT & 1 & 87.50 & 100.00 & 75.00 & 100.00 & 0.0044 \\
+MINT & 2 & 87.50 & 100.00 & 75.00 & 100.00 & 0.0064 \\
+MINT & 3 & 87.50 & 100.00 & 75.00 & 100.00 & 0.0065 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{H2: do percentile bootstrap CIs give valid inference?}\label{sec:h2}
+Yes in our run, contrary to Chen\q s ``chief conclusion'' that the bootstrap CIs ``do not produce valid inferences'' (printed p.~151). Table~\ref{tab:t49} sets her Table 4.9 beside ours. Our mean coverage is 94.6--95.6\% in every effect-cutoff row, against her 24.10--83.99\%; overall, mean cell coverage is 94.96\%, the lowest cell coverage is .916, and 92.9\% of the 19,200 cell coverages lie inside Bradley\q s $[.925,.975]$. Misses fall on both sides: the truth lies above the CI in 2.5--2.9\% of replications and below it in 1.8--2.7\%. The resulting imbalance (E3) is 0.33 percentage points in our run against Chen\q s 47.07, and the coverage shortfall (E2) is 0.04 against her 43.62 (both her values are our calculation from her printed table). Our small positive imbalance has her sign and is the expected direction for percentile intervals of products of coefficients, but it is two orders of magnitude smaller than hers.
+
+The gaps lie far outside Monte Carlo error. The smallest coverage gap between a printed row and ours is 11.14 percentage points (PNIE, cutoff 3: 83.99 against 95.13), about 16 times the binomial standard error of a single cell\q s coverage (about .007 with 1,000 replications); each row mean averages 1,280 cells and has a smaller error still. No multiplicity adjustment, such as Holm\q s over the 15 rows, could bring any row inside a two-standard-error band.
+
+\begin{table}[htbp]
+\centering\small\renewcommand{\arraystretch}{1.3}
+\caption{Coverage and imbalance (\%) by effect and cutoff index. ``Chen'' columns are copied from her Table 4.9 (printed p.~124); ``ours'' columns and the lowest cell coverage are our simulation (\texttt{results/table49\_ours.csv}), each a mean over 1,280 conditions. ``Below CI'' means the truth lies below the interval.}\label{tab:t49}
+\begin{tabular}{@{}llrrrrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{Below CI} & \multicolumn{2}{c}{Coverage} & \multicolumn{2}{c}{Above CI} & Lowest cell\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Effect & Cutoff & Chen & Ours & Chen & Ours & Chen & Ours & coverage, ours\\
+\midrule
+PNIE & 1 & 1.21 & 2.11 & 59.07 & 95.22 & 39.72 & 2.67 & 0.917 \\
+PNIE & 2 & 1.59 & 2.22 & 70.94 & 95.15 & 27.47 & 2.63 & 0.919 \\
+PNIE & 3 & 1.93 & 2.24 & 83.99 & 95.13 & 14.08 & 2.63 & 0.924 \\
+TNIE & 1 & 0.72 & 2.40 & 41.97 & 94.77 & 57.31 & 2.83 & 0.916 \\
+TNIE & 2 & 0.83 & 2.35 & 50.89 & 94.83 & 48.28 & 2.81 & 0.919 \\
+TNIE & 3 & 0.90 & 2.26 & 62.25 & 94.84 & 36.85 & 2.90 & 0.919 \\
+PNDE & 1 & 0.36 & 2.69 & 26.87 & 94.63 & 72.77 & 2.68 & 0.917 \\
+PNDE & 2 & 0.52 & 2.68 & 36.60 & 94.62 & 62.89 & 2.69 & 0.918 \\
+PNDE & 3 & 0.68 & 2.69 & 47.72 & 94.63 & 51.60 & 2.68 & 0.924 \\
+TNDE & 1 & 0.34 & 2.68 & 24.10 & 94.64 & 75.55 & 2.68 & 0.922 \\
+TNDE & 2 & 0.48 & 2.69 & 32.86 & 94.61 & 66.65 & 2.70 & 0.916 \\
+TNDE & 3 & 0.64 & 2.71 & 42.76 & 94.59 & 56.60 & 2.70 & 0.926 \\
+MINT & 1 & 0.47 & 1.84 & 64.42 & 95.63 & 35.11 & 2.52 & 0.919 \\
+MINT & 2 & 0.46 & 1.89 & 61.91 & 95.57 & 37.62 & 2.54 & 0.922 \\
+MINT & 3 & 0.47 & 1.85 & 64.36 & 95.60 & 35.17 & 2.54 & 0.922 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{H3: is power for the mediated interaction near zero?}\label{sec:h3}
+No: in our run MINT power rises with $n$ and with the population value $ah$, whereas Chen reported that ``All power for MINT is near zero'' (printed p.~121) and that it ``never reached the .80 level'' (printed p.~148). In the contrast cell chosen in advance as the largest MINT at the smallest sample size ($n=500$, $a=.59$, $h=.34$, $ah=.2006$, averaged over $b$, $c'$ and cutoffs), our power is 0.836; from $n=1{,}000$ it is at least .97 whenever $ah\ge .13$ (Table~\ref{tab:mint}). Because a rejection depends only on whether the CI excludes zero, not on any population value, this is a direct conflict between the two runs, not a difference in how estimates were matched to the truth. Chen gives no number for the cell, so no tolerance or magnitude label can be computed (row E4 of Table~\ref{tab:pageone}); the verdict rests on the qualitative conflict.
+
+\begin{table}[htbp]
+\centering\small\renewcommand{\arraystretch}{1.3}
+\caption{MINT power (rejection rate) by sample size and population MINT $=ah$, averaged over $b$, $c'$ and the three cutoffs. Our simulation (\texttt{results/summary.json}, field \texttt{mint\_power\_by\_n\_and\_ah}); Chen tabulates no MINT power values.}\label{tab:mint}
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+& \multicolumn{9}{c}{$ah$}\\
+\cmidrule(l){2-10}
+$n$ & .0070 & .0195 & .0210 & .0295 & .0476 & .0585 & .0885 & .1326 & .2006\\
+\midrule
+500 & 0.011 & 0.063 & 0.049 & 0.079 & 0.148 & 0.249 & 0.275 & 0.719 & 0.836 \\
+1,000 & 0.026 & 0.111 & 0.152 & 0.106 & 0.272 & 0.558 & 0.477 & 0.974 & 0.982 \\
+2,500 & 0.113 & 0.215 & 0.519 & 0.178 & 0.560 & 0.912 & 0.836 & 1.000 & 1.000 \\
+5,000 & 0.328 & 0.369 & 0.845 & 0.302 & 0.844 & 0.995 & 0.981 & 1.000 & 1.000 \\
+10,000 & 0.669 & 0.622 & 0.987 & 0.518 & 0.988 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{H4: does a sample size of 5,000 suffice?}\label{sec:h4}
+Mostly, so we partly replicated Chen\q s tentative recommendation that ``a minimum sample size of 5000 has accurate Type I error rates and power above .80, regardless of cutoff score'' (printed p.~150). Table~\ref{tab:byn} shows the share of passing results at each $n$ (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/statement_checks.csv}{\nolinkurl{statement_checks.csv}}). At $n=5{,}000$, 86.3\% of the 1,176 zero-effect results have Type I error inside Bradley\q s $[.025,.075]$ and 89.2\% of the 2,664 nonzero results have power of at least .80; $n=5{,}000$ is where most results first pass. Not all do: product effects with both paths zero stay conservative (Type I error about .002) at every $n$, and small effects such as $ah=.007$ stay below .80 power even at $n=10{,}000$ (0.669). Chen calls the recommendation tentative; our check reads it literally over the whole grid. No scalar contrast represents a recommendation over the grid, so its magnitude is not established (row E5).
+
+\begin{table}[htbp]
+\centering\small\renewcommand{\arraystretch}{1.3}
+\caption{Share of results meeting each criterion, by sample size, over all effects and cutoffs. Our simulation (\texttt{results/statement\_checks.csv}); 1,176 zero-effect and 2,664 nonzero-effect results at each $n$.}\label{tab:byn}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+$n$ & Type I error in $[.025,.075]$ (\%) & Power $\ge .80$ (\%)\\
+\midrule
+500 & 70.0 & 35.9\\
+1,000 & 74.0 & 53.3\\
+2,500 & 80.1 & 61.5\\
+5,000 & 86.3 & 89.2\\
+10,000 & 89.6 & 91.4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Supporting claims, RQ1 and RQ2}\label{sec:supporting}
+
+\subsection{Indirect and mediated-interaction bias (S1)}
+Not replicated: Chen reported that PNIE, TNIE and MINT fall inside $[-.10,.10]$ in 51.88--87.50\% of conditions, with non-bias increasing with the control share (Table 4.8), and all of ours lie inside $[-.05,.05]$ (Table~\ref{tab:t48}). Averaged over cutoffs, her shares outside $[-.10,.10]$ are 27.08 (PNIE), 39.06 (TNIE) and 12.50 (MINT) percentage points (our calculation from her printed values), against 0.00 for each in our run.
+
+\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/zero_estimate_check.py}{\nolinkurl{zero_estimate_check.py}} asks what Table 4.8 would show if every estimate were zero, so that $|\mathrm{bias}|$ equals the population value over the 256 combinations of $a$, $b$, $c'$ and $h$ (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/zero_estimate_check.csv}{\nolinkurl{zero_estimate_check.csv}}). At the median cutoff, Chen\q s PNIE row (75.00\% and 50.00\%), her MINT row (87.50\% and 75.00\%, as at all three cutoffs) and her TNIE $[-.05,.05]$ entry (42.19\%) equal what that pattern gives; her TNIE $[-.10,.10]$ entry is 60.00\% against the pattern\q s 59.38\%. The pattern does not fit every printed entry: PNDE would need a magnitude of $c'+h$ rather than its population value $c'$ to give her 12.50\% inside $[-.10,.10]$, and even then not her 6.25--10.00\% inside $[-.05,.05]$. This is a consistency observation about the printed table, not a diagnosis of what her code did.
+
+\subsection{Type I error and power statements (S2, S3)}
+Chen\q s Type I error statements partly replicate and her indirect-effect power statements replicate. \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/statement_checks.py}{\nolinkurl{statement_checks.py}} tests ten statements from her Chapter 4 against our cell results at each statement\q s own threshold (Table~\ref{tab:statements}). Five of the six Type I statements agree, including near-zero rates when both paths of a product are zero and rates inside Bradley\q s range for PNDE and TNDE; the exception is MINT with $a=0$ and $h>0$, where Chen reported rates near zero and ours are about .05. All three PNIE and TNIE power statements agree cell by cell, including the cutoff ordering. The tenth statement, near-zero MINT power, is the H3 headline and disagrees. Over all 5,880 zero-effect results, our mean Type I error is .043 and 80.0\% lie inside $[.025,.075]$. The statements were chosen because they can be checked from the text; Chen\q s Figures 4.17--4.28 were not digitized. Agreement here means her rejection rates for these effects were not affected by whatever produced her bias and coverage results.
+
+\begin{table}[htbp]
+\centering\footnotesize\renewcommand{\arraystretch}{1.3}
+\caption{Chen\q s Type I error and power statements (printed page, PDF page in parentheses) checked against our rejection rates (\texttt{results/statement\_checks.csv}, which lists the rates by $n$ and cutoff).}\label{tab:statements}
+\begin{tabular}{@{}P{0.11\textwidth}P{0.6\textwidth}P{0.08\textwidth}P{0.1\textwidth}@{}}
+\toprule
+Page & Statement & Claim & Ours\\
+\midrule
+99 (113) & PNIE Type I near zero, below Bradley, when $a=b=0$ & S2 & agree\\
+104 (118) & PNDE Type I within Bradley and close to .05 when $c'=h=0$ & S2 & agree\\
+106 (120) & TNDE Type I within Bradley when $c'=h=0$ & S2 & agree\\
+108 (122) & MINT1 and MINT3 Type I below Bradley at $n\le 2{,}500$ when $a=.14$, $h=0$ & S2 & agree\\
+108 (122) & MINT Type I within Bradley when $h=0$ and $a=.39$ or $.59$ & S2 & agree\\
+108 (122) & MINT Type I below Bradley and close to zero when $a=0$, at every $h>0$ & S2 & disagree\\
+110 (124) & PNIE power below .80 at $n\le 2{,}500$ when $a=b=.14$ & S3 & agree\\
+110 (124) & PNIE, $a=.59$, $b=.14$: at $n=1{,}000$ only cutoff 3 reaches .80; at $n=2{,}500$ all three do & S3 & agree\\
+112 (126) & TNIE1 power below .80 for $n\le 2{,}500$ and above .80 for $n\ge 5{,}000$ when $a=b=.14$ ($h=.15$) & S3 & agree\\
+121 (135) & All power for MINT is near zero & H3 & disagree\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{RQ2: the Head Start Impact Study (S4, S5, S6)}
+RQ2 is not established, because its data are unavailable; this is a blocked comparison, not a nonreplication. Chen analyzed the HSIS restricted-use file (3,721 children after excluding crossovers and no-shows, 2,697 with a wave-1 spelling score) and reported that synthetic-RDD mediation estimates at three cutoffs are typically smaller than the RCT estimates, with standardized bias outside an acceptable range (Tables 4.6--4.7; printed pp.~145--146), and that density, covariate-balance, residual-correlation and functional-form checks show slight violations of independence and functional form (Tables 4.3--4.5; printed p.~146). The restricted-use files require a signed ICPSR Restricted Data Use Agreement that this project does not hold, and the public download of ICPSR study 29462 contains documentation only (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/notes/availability.md}{\nolinkurl{availability.md}}). Tables 4.2--4.7 and Figures 4.1--4.11 therefore cannot be refitted (S4, S6).
+
+What can be checked from printed numbers was checked (S5). \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/table_arithmetic.py}{\nolinkurl{table_arithmetic.py}} recomputes all 24 differences and standardized biases (SB) of Tables 4.6--4.7 from the printed RCT and RDD estimates (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/table_arithmetic.csv}{\nolinkurl{table_arithmetic.csv}}). All 24 differences match as RCT minus RDD, and all 24 SBs match at the printed precision when the divisor is the printed standard error of the RCT estimate (Section~\ref{sec:amb-sb}).
+
+\subsection{RQ1 and the unreported power analysis (S7, S8)}
+RQ1 is not established in this replication because it is conceptual: Chen\q s Table 4.1 (printed p.~60) integrates mediation and RDD assumptions from the literature, and there is no computation to rerun. We note only that the simulation\q s data-generating model meets the no-confounding and functional-form assumptions by construction; the synthesis was not evaluated as scholarship (S7). Chen\q s Chapter~3 also announces ``An additional power analysis by standard deviation of the outcome'' to compare expected and simulated power (printed p.~58), but no method or result for it appears in Chapters 4--5 or the appendices, so it is not established (S8).
+
+\section{Comparison of published and replicated numbers}\label{sec:comparison}
+Table~\ref{tab:compare} gives, for each claim, the published value, ours, the precision, the numerical agreement and the reconstruction scope. Numerical is \emph{match} when our value rounds half up to the printed value, \emph{close} when it misses by at most one unit in the last printed place, and \emph{mismatch} otherwise; \emph{withheld} marks a comparison without a published number or without our number. Scope is \emph{exact} for the same data, estimator and procedure, \emph{limited} for a reconstruction, and \emph{unavailable} when the input was not obtained. Our simulation is \emph{limited} because it uses the same model, estimators and counts but our own engine and random streams, so it can agree with Chen only on summaries. Each row\q s reason follows the table.
+
+\begin{table}[htbp]
+\centering\footnotesize\renewcommand{\arraystretch}{1.3}
+\caption{Claim-level comparison. Published values are Chen\q s, or our calculation from her printed tables where marked $^{\dagger}$; our values come from the files in Appendix~\ref{app:artifacts}.}\label{tab:compare}
+\begin{tabular}{@{}P{0.25\textwidth}P{0.15\textwidth}P{0.14\textwidth}P{0.11\textwidth}P{0.1\textwidth}P{0.1\textwidth}@{}}
+\toprule
+Claim & Published & Ours & Precision & Numerical & Scope\\
+\midrule
+H1 direct effects, \% with $|\mathrm{bias}|>.10$ & 85.42$^{\dagger}$ & 0.00 & 2 decimals & mismatch & limited\\
+H2 coverage shortfall from 95\% & 43.62$^{\dagger}$ & 0.04 & 2 decimals & mismatch & limited\\
+H2 imbalance, above minus below & 47.07$^{\dagger}$ & 0.33 & 2 decimals & mismatch & limited\\
+H3 MINT power, $n=500$, $ah=.20$ & near zero (verbal) & 0.836 & verbal & withheld & limited\\
+H4 minimum $n$ of 5,000 & qualitative & 89.2\% and 86.3\% pass & not applicable & not applicable & limited\\
+S1 PNIE, TNIE, MINT \% with $|\mathrm{bias}|>.10$ & 27.08, 39.06, 12.50$^{\dagger}$ & 0.00 each & 2 decimals & mismatch & limited\\
+S2 Type I statements & 6 statements & 5 of 6 agree & thresholds & not applicable & limited\\
+S3 power statements & 3 statements & 3 of 3 agree & thresholds & not applicable & limited\\
+S4 HSIS RDD versus RCT & typically smaller & not rerun & -- & withheld & unavailable\\
+S5 Tables 4.6--4.7 arithmetic & 24 entries & 24 reproduced & 3 decimals & match & exact\\
+S6 HSIS assumption checks & slight violations & not rerun & -- & withheld & unavailable\\
+S7 Table 4.1 synthesis & conceptual & not applicable & -- & not applicable & not applicable\\
+S8 power by SD of $Y$ & not reported & not rerun & -- & withheld & unavailable\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Reasons, row by row. H1: every direct-effect result lies inside $[-.05,.05]$ in our run. H2 (both rows): our coverage is near nominal in every effect-cutoff row and misses fall on both sides at similar rates. H3: Chen prints no number, and our power reaches 0.836 where she reports near zero. H4: most results pass at $n=5{,}000$, but both-zero products and the smallest effects do not. S1: all our indirect and MINT results lie inside $[-.05,.05]$. S2: only the MINT statement for $a=0$, $h>0$ disagrees. S3: each statement holds cell by cell. S4 and S6: the restricted-use data are unavailable. S5: all differences and SBs reproduce, with the SE divisor. S7: there is nothing computational to replicate. S8: the analysis is announced but not reported.
+
+Every remaining gap is large: each printed row of Tables~\ref{tab:t48} and \ref{tab:t49} differs from ours by at least 12.50 (non-bias) and 11.14 (coverage) percentage points, against a single-cell binomial standard error of about .007 in proportion (0.7 percentage points). None of these is a rounding, typographic or boundary difference.
+
+Small differences, which are not replication failures, are listed separately. (i) The cutoff labels disagree between Chen\q s code and parts of her prose (Section~\ref{sec:amb-cutoff}). (ii) Her SB divisor in the text differs from the one that reproduces her tables (Section~\ref{sec:amb-sb}).
+
+\section{Assumptions}\label{sec:assumptions}
+Each subsection states a choice we supplied because the dissertation does not state it, and what it affects.
+
+\subsection{Population values}\label{sec:a-pop}
+Chen does not print the population values against which bias and coverage are computed. We derived them from her estimands (equations 3.7--3.11) under her data-generating model, in which the $m$ model has no intercept, so $i_{0M}=0$: $\mathrm{PNIE}=ab$, $\mathrm{TNIE}=ab+ah$, $\mathrm{PNDE}=c'$, $\mathrm{TNDE}=c'+ah$ and $\mathrm{MINT}=ah$ (\texttt{population()} in \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/chen_sim.py}{\nolinkurl{chen_sim.py}}). This choice affects bias and coverage but not rejection rates.
+
+\subsection{Aggregation over conditions}
+Chen states that Tables 4.8 and 4.9 are ``collapsed across sample and effect size'' (printed p.~87) but does not print the aggregation code. We take each table entry as a share or mean over all 1,280 conditions for that effect and cutoff index, with bias bounds inclusive ($|\mathrm{bias}|\le .10$) and coverage counting an interval whose endpoint equals the population value as covering.
+
+\subsection{Zero and nonzero effects}
+A result counts toward Type I error when its population value is exactly zero and toward power otherwise (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/aggregate.py}{\nolinkurl{aggregate.py}}). This follows Chen\q s definition (printed p.~58); the choice we supplied is the numerical test for zero.
+
+\subsection{Random numbers}
+Chen\q s R random streams cannot be reproduced without R, so each condition uses its own NumPy seed, \texttt{SeedSequence(20211201, spawn\_key=(k,))}. Agreement is therefore judged on summaries, not on individual draws.
+
+\subsection{Headline contrasts and the MINT cell}
+The headline contrasts E1--E3 are averages over the rows of Chen\q s Tables 4.8 and 4.9, so that one signed number summarizes each headline; their tolerances follow from her two-decimal printing. For H3 we chose in advance the largest MINT in the design at the smallest sample size ($n=500$, $a=.59$, $h=.34$) as the contrast cell.
+
+\subsection{Literal reading of the sample-size recommendation}
+Chen calls the minimum sample size of 5,000 tentative. We test it literally, over every zero-effect and nonzero-effect result in the grid at that sample size, which is the strictest reading.
+
+\section{Ambiguities that were resolved}\label{sec:ambiguities}
+
+\subsection{Cutoff labels}\label{sec:amb-cutoff}
+The ambiguity is which share of units is treated at each cutoff index. Chen\q s code (Appendix A, printed pp.~175--176) sets the first cutoff at the 25th sample percentile and assigns treatment to units at or above it, so index 1 has 75\% treated; her Chapter 4 text (printed p.~86) agrees, labeling index 1 ``25\% control---75\% treatment''. Her Table 4.8 note (printed p.~88) and her Chapter 3 design description (printed p.~55) instead label index 1 as 25\% treatment and 75\% control. We checked the code against the prose and ran the design as coded; all our tables report by the code\q s index, with index 3 the 75th percentile and 25\% treated (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/chen_sim.py}{\nolinkurl{chen_sim.py}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/table48_ours.csv}{\nolinkurl{table48_ours.csv}}). The labels do not affect any verdict, because our bias and coverage show no trend across cutoffs, but readers comparing cutoff-specific statements should use the code\q s index.
+
+\subsection{Standardized-bias divisor}\label{sec:amb-sb}
+The ambiguity is the divisor of Chen\q s standardized bias. Equation 3.12 (printed p.~54) divides the RDD-minus-RCT difference by ``the standard deviation of the RCT outcome''. Recomputing the 24 printed SBs of Tables 4.6--4.7 shows that all 24 match only when the divisor is the printed standard error of the RCT estimate; for example, for path $a$ at cutoff 1, $(1.301-2.066)/0.733=-1.044$, the printed value (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/table_arithmetic.csv}{\nolinkurl{table_arithmetic.csv}}). The tables are therefore internally consistent with the SE divisor. Which divisor Chen intended is unknown, so the text and the tables disagree; without the HSIS data the choice cannot be tested further.
+
+\subsection{Engine fallback from R to Python}\label{sec:amb-engine}
+The ambiguity is whether the replication can use Chen\q s engine. R (\texttt{Rscript}) is unavailable on both hosts: neither CRAN, conda-forge nor the Ubuntu archives are reachable through the network allowlist, and packages cannot be installed as root on the virtual machine (\href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/fallback.json}{\nolinkurl{fallback.json}}). Chen\q s analysis is OLS with \texttt{lm()} and percentile bootstrap CIs, with no structural-equation model, so a Python and NumPy re-implementation can express it exactly. The check was the independent validation of Section~\ref{sec:methods}, which printed \texttt{PASS\_ESTIMATOR\_VALIDATION}. The implication is that the replication is distributional: it reproduces Chen\q s procedure, not her random draws.
+
+\section{Limits of the evidence}\label{sec:limits}
+The evidence has six limits, each also stated where it applies.
+\begin{enumerate}\setlength{\itemsep}{1pt}
+\item R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it agrees with Chen on summaries only (H1--H4, S1--S3).
+\item Chen\q s aggregation code and population-value table are not printed, so the source of her bias, coverage and MINT results cannot be identified (H1, H2, H3, S1); our Type I error and power agree with most of her statements (S2, S3).
+\item RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic was checked (S5).
+\item The announced power analysis by the SD of $Y$ is not reported, so it cannot be assessed (S8).
+\item The dissertation labels the cutoffs inconsistently: the code\q s index 1 is the 25th percentile (75\% treated), as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25\% treatment; we report by the code (H1, H2).
+\item Chen attributes the bias to global estimation with an incorrect functional form; in her data-generating model the assignment variable does not enter $M$ or $Y$, so the fitted linear models are correctly specified (H1).
+\end{enumerate}
+
+\section{What remains unresolved}\label{sec:unresolved}
+Four gaps remain open. For each we give the candidate causes, what each check gave, the rank of the remaining causes, and the artifact that would settle the largest.
+
+\subsection{Where Chen\q s bias and coverage figures arise (H1, H2, S1)}
+\emph{Candidates and checks.} (a) A coding error in our estimator: ruled out by the scikit-learn and explicit-resampling validation and by the line-by-line match with Appendix B. (b) Global estimation with an incorrect functional form, Chen\q s own explanation: not supported, because her data-generating model makes the fitted models correctly specified (limit 6). (c) Monte Carlo error: ruled out, because the gaps exceed it by orders of magnitude. (d) An engine difference between R and NumPy: not supported, because the estimator is plain OLS and her rejection rates for PNIE, TNIE, PNDE and TNDE agree with ours. (e) The unprinted step that matched her estimates to population values or aggregated the cells: untested, because that step is not printed; the zero-estimate pattern that reproduces several of her Table 4.8 entries is a consistency observation, not a diagnosis.
+\emph{Rank.} Candidate (e) ranks first, as the only one not contradicted by the evidence; (a)--(d) are ruled out or unsupported.
+\emph{Stopping statement.} The full design was completed (all 3,840 cells at the printed replication and bootstrap counts, 13.7 core-hours); Chen\q s own R output and seeds were not available. Her result files or aggregation code, with her per-replication CIs and population values, would show where the printed bias and coverage arise.
+
+\subsection{Why Chen\q s MINT rejection rates are near zero (H3, S2)}
+\emph{Candidates and checks.} Rejection rates do not use population values, so candidate (e) above cannot explain them. Chen\q s MINT Type I error with $a=0$ and $h>0$ is also near zero, against about .05 in our run; both results suggest that her $h$ estimates or their CIs differed from what the printed code produces. Engine differences are not supported, for the reason given in (d) above.
+\emph{Rank.} A difference in her $h$ estimates or their CIs is the leading candidate; an engine difference is second.
+\emph{Stopping statement.} The full design was completed; Chen\q s MINT CIs for one condition would show whether her $h$ estimates were attenuated.
+
+\subsection{The HSIS analyses (S4, S6)}
+\emph{Stopping statement.} The input is unavailable: the ICPSR 29462 public download V7 contains documentation only, and the restricted-use route needs a signed agreement. All HSIS fits are untested. The settling artifact is the restricted-use HSIS file under an ICPSR agreement.
+
+\subsection{The announced power analysis (S8)}
+\emph{Stopping statement.} Chapters 3--5 and Appendices A--B were searched for ``expected power'', ``standard deviation'' and ``power analysis''; no method or result is reported. The settling artifact is Chen\q s analysis notes. A related, smaller gap is that the Type I and power statements of S2--S3 were checked from the text; digitized Figures 4.17--4.21 would allow a cell-by-cell numerical comparison.
+
+\section{Code and source availability}\label{sec:availability}
+The replicated work is \citet{chen2021}, available at \url{https://digitalcommons.unl.edu/cehsdiss/403/}; the copy read here, \texttt{source/chen2021.pdf}, is not in the repository and can be downloaded from that record (SHA-256 \texttt{9206b3d824077d36c86b4935ff7f19f6\allowbreak 4b3fdebde7746943b8a94500fe11e557}). All code and summary results are in the study directory (Appendix~\ref{app:artifacts}), and the study \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/README.md}{\nolinkurl{README.md}} gives the reproduction commands, seeds and outputs. The per-condition files of \texttt{simulation/work/} are not committed; \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/aggregate.py}{\nolinkurl{aggregate.py}} turns them into \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/cells.csv}{\nolinkurl{cells.csv}} and the summary tables, which are committed. The HSIS data are not available to this project. Table~\ref{tab:avail} is the dated availability ledger from \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/notes/availability.md}{\nolinkurl{availability.md}}.
+
+\begin{table}[htbp]
+\centering\footnotesize\renewcommand{\arraystretch}{1.3}
+\caption{Source-data availability for RQ2, checked on 2026-11-08 (UTC).}\label{tab:avail}
+\begin{tabular}{@{}P{0.36\textwidth}P{0.58\textwidth}@{}}
+\toprule
+Place checked & Result\\
+\midrule
+Chen (2021), Chapter 3, Dataset & Uses the HSIS restricted-use dataset from ICPSR under agreement; 3,721 children, 2,697 with a wave-1 spelling score.\\
+\href{https://www.icpsr.umich.edu/web/ICPSR/studies/29462}{ICPSR 29462}, HSIS 2002--2006 & Documentation and public-use files after free sign-in; restricted-use files need a signed Restricted Data Use Agreement.\\
+ICPSR 29462 public download V7 (2018-02-08) & 58 files, 454 MB unpacked: guides, codebooks and questionnaires for DS0001--DS0030; no data files.\\
+\href{https://www.icpsr.umich.edu/web/ICPSR/studies/36968}{ICPSR 36968}, HSIS 2002--2008 & Related restricted collection; not checked further.\\
+Chen (2021), appendices & No RQ2 analysis data or Mplus input; Appendices A--B cover only the simulation.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Next steps}\label{sec:next}
+Three artifacts would settle the open gaps, each with a defined check. First, Chen\q s result files or aggregation code, including her population values and the MINT CIs for one condition: recompute her Tables 4.8 and 4.9 and her MINT rejection rates from them and compare them, cell by cell, with \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/cells.csv}{\nolinkurl{cells.csv}}. Second, the restricted-use HSIS file under an ICPSR agreement: refit her Tables 4.2--4.7 with her printed models and compare estimates and SBs, under both SB divisors. Third, digitized Figures 4.17--4.21: compare her plotted Type I error rates with \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/type1.csv}{\nolinkurl{type1.csv}} cell by cell, judging each against two Monte Carlo standard errors with a Holm adjustment.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+
+\section{Artifacts and reproduction}\label{app:artifacts}
+Links point to the \texttt{master} branch as navigation aids, not as an immutable reproduction version. Commands run from the study root \texttt{formalization/chen-rdd-mediation/} unless a \texttt{cd} is shown, as in the ``Reproduce'' section of the study \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/README.md}{\nolinkurl{README.md}}. The simulation needs Python 3 with NumPy; the validation also needs scikit-learn; the packet builder needs \texttt{pdftotext} and the source PDF, which is not in git.
+
+\begingroup\footnotesize\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}P{0.28\textwidth}P{0.28\textwidth}P{0.38\textwidth}@{}}
+\toprule
+Claim & File & Command\\
+\midrule
+\endhead
+Simulation design and estimator (all H, S1--S3) & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/chen_sim.py}{\nolinkurl{chen_sim.py}} & \texttt{cd simulation \&\& OPENBLAS\_NUM\_THREADS=1 python3 chen\_sim.py run -{}-out work -{}-workers 2} (defaults: 1,000 replications, 500 resamples; seed per condition 20211201 with spawn key $k$)\\
+Estimator validation & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/validate_estimator.py}{\nolinkurl{validate_estimator.py}} & \texttt{cd simulation \&\& python3 validate\_estimator.py} (seeds 7 and 11; prints \texttt{PASS\_ESTIMATOR\_VALIDATION})\\
+Engine fallback & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/fallback.json}{\nolinkurl{fallback.json}} & record; no command\\
+Cell results (19,200 rows) & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/cells.csv}{\nolinkurl{cells.csv}} & \texttt{cd simulation \&\& python3 aggregate.py work ../results}\\
+H1, S1: Table 4.8 analogue & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/table48_ours.csv}{\nolinkurl{table48_ours.csv}} & same command\\
+H2: Table 4.9 analogue & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/table49_ours.csv}{\nolinkurl{table49_ours.csv}} & same command\\
+S2, H4: Type I error by $n$ & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/type1.csv}{\nolinkurl{type1.csv}} & same command\\
+S3, H4: power by $n$ & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/power.csv}{\nolinkurl{power.csv}} & same command\\
+H1--H3: overall summaries, MINT power & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/summary.json}{\nolinkurl{summary.json}} & same command\\
+S2, S3, H3, H4: statement checks & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/simulation/statement_checks.py}{\nolinkurl{statement_checks.py}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/results/statement_checks.csv}{\nolinkurl{statement_checks.csv}} & \texttt{cd simulation \&\& python3 statement\_checks.py ../results/cells.csv > ../results/statement\_checks.csv}\\
+S1: zero-estimate consistency check & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/zero_estimate_check.py}{\nolinkurl{zero_estimate_check.py}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/zero_estimate_check.csv}{\nolinkurl{zero_estimate_check.csv}} & \texttt{python3 secondary/zero\_estimate\_check.py > secondary/zero\_estimate\_check.csv}\\
+S5: Tables 4.6--4.7 arithmetic & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/table_arithmetic.py}{\nolinkurl{table_arithmetic.py}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/secondary/table_arithmetic.csv}{\nolinkurl{table_arithmetic.csv}} & \texttt{cd secondary \&\& python3 table\_arithmetic.py} (writes the CSV in the working directory)\\
+S4, S6: data availability & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/notes/availability.md}{\nolinkurl{availability.md}} & record; no command\\
+Run record, software versions & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/notes/run-record.md}{\nolinkurl{run-record.md}} & record; no command\\
+Plan and part statuses & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/REPLICATION-PLAN.yaml}{\nolinkurl{REPLICATION-PLAN.yaml}} & record; no command\\
+Evidence packet & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/build_packet.py}{\nolinkurl{build_packet.py}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/evidence-packet.json}{\nolinkurl{evidence-packet.json}} & \texttt{python3 build\_packet.py} (needs the source PDF and \texttt{pdftotext})\\
+Source dissertation (not in git) & \href{https://digitalcommons.unl.edu/cehsdiss/403/}{Digital Commons record}; local copy \texttt{source/chen2021.pdf} & download from the record; SHA-256 \texttt{9206b3d824077d36c86b4935ff7f19f6\allowbreak 4b3fdebde7746943b8a94500fe11e557}\\
+Reproduction recipe, seeds, outputs & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/README.md}{\nolinkurl{README.md}} & read; section ``Reproduce''\\
+Template and stage-instruction snapshots & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/handoff/SNAPSHOTS.md}{\nolinkurl{SNAPSHOTS.md}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/paper/approved-preamble.tex}{\nolinkurl{approved-preamble.tex}} & record; no command\\
+This note & \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex}{\nolinkurl{mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex}}, \href{https://github.com/alectionary/vibe-math/blob/master/formalization/chen-rdd-mediation/paper/references.bib}{\nolinkurl{references.bib}} & \texttt{cd paper; pdflatex; bibtex; pdflatex; pdflatex} (TeX Live 2023)\\
+Directories & \href{https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/simulation}{\nolinkurl{simulation/}}, \href{https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/results}{\nolinkurl{results/}}, \href{https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/secondary}{\nolinkurl{secondary/}}, \href{https://github.com/alectionary/vibe-math/tree/master/formalization/chen-rdd-mediation/notes}{\nolinkurl{notes/}} & --\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+Rebuilding this note from the saved outputs needs only the last command. Rerunning the simulation regenerates \texttt{simulation/work/} (one JSON file per condition, written atomically, so an interrupted run resumes by skipping finished conditions) and then the results files; it takes about 13.7 core-hours. Re-extracting source data is not possible for RQ2.
+
+\section{Compliance ledger}\label{app:ledger}
+\begingroup\footnotesize\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}P{0.34\textwidth}P{0.11\textwidth}P{0.49\textwidth}@{}}
+\toprule
+Requirement & Status & Evidence or justification\\
+\midrule
+\endhead
+Verdict-first abstract and introduction, citing the source and its finding & followed & Abstract; Section~\ref{sec:intro}\\
+Limit of the evidence in the second sentence & followed & Abstract; Section~\ref{sec:intro}\\
+Blocked RQ2 not called nonreplication & followed & Abstract; Section~\ref{sec:supporting}\\
+Unprinted aggregation step described only as a consistency observation & followed & Sections~\ref{sec:supporting} and \ref{sec:unresolved}\\
+Exact counts (3,840 of 3,840 cells) in abstract and body & followed & Abstract; Sections~\ref{sec:intro}, \ref{sec:methods}\\
+Headline table on page 1 with signed effects, magnitude, direction, verdict, tolerance and units & followed & Table~\ref{tab:pageone}\\
+Later comparison table with numerical and scope & followed & Table~\ref{tab:compare}\\
+Monte Carlo band and multiplicity & followed & Section~\ref{sec:h2}: gaps exceed any two-SE band under Holm adjustment\\
+Assumptions and resolved ambiguities as subsections & followed & Sections~\ref{sec:assumptions}, \ref{sec:ambiguities}\\
+Stopping statements for open gaps & followed & Section~\ref{sec:unresolved}\\
+Engine (preflight) & departed & R unavailable on both hosts; Python and NumPy re-implementation validated independently (\texttt{fallback.json}, Section~\ref{sec:amb-engine})\\
+Software cited with exact versions & followed & Python 3.13.18 and NumPy 2.5.3; Python 3.10.12 and NumPy 2.2.6; scikit-learn 1.9.1 (\texttt{run-record.md}); R 4.0.3 for Chen\\
+Citations with page, table and equation locators & followed & Throughout; printed page numbers of \citet{chen2021}\\
+Primary method citations verified & departed & Bradley, Hoogland and Boomsma, Valeri and VanderWeele, VanderWeele and R were verified against Chen\q s reference list; Efron and Tibshirani, Harris et al.\ and Pedregosa et al.\ are not in that list and were not checked against publishers in this writing pass\\
+Structural citation check script & followed & \texttt{check\_citations.py} on this note, \texttt{references.bib} and \texttt{build.log}: 9 citation keys, 9 references, no errors (structural check only; claim support was checked by reading the cited passages)\\
+Clickable \texttt{master} links with filenames & followed & Appendix~\ref{app:artifacts}\\
+Immutable reproduction revision & departed & No commit-pinned link is given; \texttt{master} links are navigation aids and the commands in Appendix~\ref{app:artifacts} and \texttt{README.md} define the reproduction\\
+README that runs every script & followed & Study \texttt{README.md}, section ``Reproduce'': every script, seeds and output paths\\
+Template and stage-instruction snapshots & followed & \texttt{handoff/SNAPSHOTS.md} records the snapshots and their original paths at revision 454cc89\\
+Approved preamble used unchanged & departed & The preamble is input unchanged on line 1; after it the note loads \texttt{lmodern}, T1 \texttt{fontenc}, \texttt{textcomp} and \texttt{microtype} with f-ligatures disabled, because the default fonts render apostrophes, vertical bars and ligatures as glyphs that do not extract as the evidence text and pull in bitmap fonts; Latin Modern is an installed scalable family, as the preamble requires for T1\\
+Source PDF not linked as a repository file & followed & \texttt{source/chen2021.pdf} is not in git; the note links the Digital Commons record and states the SHA-256\\
+No author line; no authorship statement & followed & Title block\\
+Inventory of every claim and chapter & followed & Appendix~\ref{app:inventory}\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\section{Inventory of claims and dissertation sections}\label{app:inventory}
+Every claim in the evidence packet appears below with its status and where this note treats it; every chapter and appendix of the dissertation follows. Printed page numbers equal PDF page numbers minus 14.
+
+\begingroup\footnotesize\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}P{0.06\textwidth}P{0.4\textwidth}P{0.16\textwidth}P{0.3\textwidth}@{}}
+\toprule
+Claim & Chen\q s claim and locator & Status & Treated in\\
+\midrule
+\endhead
+H1 & Direct effects biased, mostly negatively (Table 4.8, p.~88; pp.~86--87, 147) & not replicated & Table~\ref{tab:pageone} E1; Sections~\ref{sec:h1}, \ref{sec:unresolved}\\
+H2 & Percentile bootstrap coverage 24.10--83.99\%, truth above the CI; CIs invalid (Table 4.9, p.~124; pp.~123, 150) & not replicated & Table~\ref{tab:pageone} E2--E3; Sections~\ref{sec:h2}, \ref{sec:unresolved}\\
+H3 & MINT power near zero, never .80 (pp.~121, 148) & not replicated & Table~\ref{tab:pageone} E4; Section~\ref{sec:h3}\\
+H4 & Tentative minimum $n$ of 5,000 (p.~150) & partly replicated & Table~\ref{tab:pageone} E5; Section~\ref{sec:h4}\\
+S1 & Indirect and MINT non-bias 51.88--87.50\% (Table 4.8, p.~88) & not replicated & Section~\ref{sec:supporting}\\
+S2 & Six Type I statements (pp.~99--108) & partly replicated & Section~\ref{sec:supporting}, Table~\ref{tab:statements}\\
+S3 & Three PNIE and TNIE power statements (pp.~110--113) & replicated & Section~\ref{sec:supporting}, Table~\ref{tab:statements}\\
+S4 & HSIS RDD estimates typically smaller than RCT (Tables 4.6--4.7; pp.~145--146) & blocked (not established) & Section~\ref{sec:supporting}\\
+S5 & Differences and SBs of Tables 4.6--4.7; equation 3.12 & replicated (arithmetic) & Sections~\ref{sec:supporting}, \ref{sec:amb-sb}\\
+S6 & HSIS assumption checks (Tables 4.3--4.5; p.~146) & blocked (not established) & Section~\ref{sec:supporting}\\
+S7 & Integrated assumption table (Table 4.1, p.~60) & not established (conceptual) & Section~\ref{sec:supporting}\\
+S8 & Power analysis by SD of $Y$ (p.~58) & blocked (not reported) & Sections~\ref{sec:supporting}, \ref{sec:unresolved}\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}P{0.3\textwidth}P{0.32\textwidth}P{0.32\textwidth}@{}}
+\toprule
+Part of the dissertation & Content & Coverage here\\
+\midrule
+\endhead
+Front matter (title page, abstract, acknowledgements, contents) & Restates Chapters 4--5 & Used for citation metadata; no separate claims\\
+Chapter 1, Introduction (p.~1) & RQ1--RQ3, hypotheses, Table 1.1 design & H1--H4, S7; the design run here\\
+Chapter 2, Literature review (p.~9) & Potential-outcomes definitions of PNIE, TNIE, PNDE, TNDE, MINT; RDD assumptions & No analysis of its own; definitions give the population values (Section~\ref{sec:a-pop})\\
+Chapter 3, Methods (p.~48) & HSIS analysis plan, equations 3.1--3.13, simulation design (Table 3.1) & S5, S8; Sections~\ref{sec:methods}, \ref{sec:amb-cutoff}, \ref{sec:amb-sb}\\
+Chapter 4, Results (p.~59) & RQ1 Table 4.1; RQ2 Tables 4.2--4.7, Figures 4.1--4.11; RQ3 Tables 4.8--4.9, Figures 4.12--4.38 & H1--H3, S1--S7; RQ2 blocked\\
+Chapter 5, Discussion (p.~143) & Conclusions on RQ1--RQ3, implications, limitations & H1--H4, S4, S6\\
+References (p.~155) & Bibliography & Used to verify cited metadata\\
+Appendix A (pp.~175--178) & R code for data generation & Re-implemented (H1, H2); Section~\ref{sec:amb-cutoff}\\
+Appendix B (pp.~179--189) & R code for estimation and percentile bootstrap & Re-implemented (H1--H3)\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\end{document}
