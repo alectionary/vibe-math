@@ -23,7 +23,7 @@
   {
    "id": "plan",
    "path": "REPLICATION-PLAN.yaml",
-   "sha256": "877b79951dc5c20f694285ea1f31244c31d70d88c598a7549fd3e065ec357ab4"
+   "sha256": "577689e1a3f416445046b07201062aee524aded64e692e174bd29556a219928f"
   },
   {
    "id": "sim",
@@ -78,12 +78,12 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "f0f2a5fbc5181e94528c99ed360d432bd0307f0b4c089d2676e90d6f2d200fbf"
+   "sha256": "7c09a4a8e93513093851cdc60dc7588b6a3b3592fba695a14d808962c6abec79"
   },
   {
    "id": "stmt",
    "path": "results/statement_checks.csv",
-   "sha256": "b39da37caf4b8d9a81c3d6ba2e8fd49bdcea8a70ae57de9835957a6c213ce450"
+   "sha256": "77efb88344720fd496310c5eca20c112a60553c2c1aa4e53868c196ead96817a"
   },
   {
    "id": "zero_code",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "e61427abfffc5b4308ef2a15d355e0b68ab0a0e980e25df85907c7fc596ed49a"
+   "sha256": "ef7ef4a7f592acde5ebfa9073df5574530ceb124c03d6a4d3cb164143dad20c5"
   }
  ],
  "sections": [
@@ -647,11 +647,11 @@
     "stmt_code"
    ],
    "published": {
-    "value": "26 testable power statements",
+    "value": "28 testable power statements",
     "units": "statements"
    },
    "ours": {
-    "value": "16 of 26 agree (17 with .01 threshold slack)",
+    "value": "16 of 28 agree (17 with .01 threshold slack)",
     "units": "statements"
    },
    "conditions": "Every nonzero-effect cell set named in each statement; rates averaged over unnamed factors.",
@@ -659,9 +659,9 @@
    "contrast_not_applicable": "Threshold statements; per-cell rates are in results/statement_checks.csv.",
    "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
-   "multiplicity": "26 statements; no correction (descriptive).",
+   "multiplicity": "28 statements; no correction (descriptive).",
    "status": "partly_replicated",
-   "status_reason": "16 of 26 power statements agree (17 with slack): all 6 PNIE statements and all 5 PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. As a consistency check, every statement was also read on our cells with h replaced by 0 (other factors unchanged; the verdict_if_h_were_0 column). Then 39 of 44 statements hold, against 29 as designed; 10 of the 13 statements that disagree under both readings become agreements, and none that agrees becomes a disagreement. The 3 that still disagree are statements 10, 11, 40 (the number column of results/statement_checks.csv). Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. These observations are consistent with h contributing little to her estimates; they do not establish it.",
+   "status_reason": "16 of 28 power statements agree (17 with slack): all 6 PNIE statements and all 5 PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. As a consistency check, every statement was also read on our cells with h replaced by 0 (other factors unchanged; the verdict_if_h_were_0 column). Then 39 of 46 statements hold, against 29 as designed; 10 of the 15 statements that disagree under both readings become agreements, and none that agrees becomes a disagreement. The 5 that still disagree are statements 10, 11, 30, 41, 44 (the number column of results/statement_checks.csv). Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. These observations are consistent with h contributing little to her estimates; they do not establish it.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
@@ -675,7 +675,7 @@
     "resource_basis": "13.7 core-hours.",
     "next_evidence": "Chen's h estimates for one condition would test whether h was attenuated in her runs."
    },
-   "reproduction_deviation": "Not computable: threshold statements; 10 of 26 disagree (9 with slack)."
+   "reproduction_deviation": "Not computable: threshold statements; 12 of 28 disagree (11 with slack)."
   },
   {
    "id": "S4",
@@ -1022,7 +1022,7 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 44 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 46 testable Type I and power statements, 29 agree (31 with .01 threshold slack), and 39 would hold in our run if h were 0. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
  "limitations": [
   "R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it agrees with Chen on summaries only (H1-H4, S1-S3).",
   "Chen's aggregation code and population-value table are not printed, so the source of her bias, coverage and MINT results cannot be identified (H1, H2, H3, S1); our Type I and power agree with most of her statements (S2, S3).",
