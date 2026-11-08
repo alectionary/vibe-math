@@ -211,9 +211,8 @@ claim(id='H2', level='headline',
       status_reason='Coverage is close to nominal in every effect-cutoff row of our run, and misses fall on both '
                     'sides of the interval at similar rates.',
       numerical='mismatch', reconstruction_scope='full design, independent re-implementation, own seeds',
-      limitations=['The small positive imbalance in our run (truth above the CI slightly more often) is in the '
-                   'expected direction for percentile intervals of products of coefficients, and is two orders of '
-                   'magnitude smaller than Chen\'s.'],
+      limitations=['Our run shows a small positive imbalance (the truth lies above the CI slightly more often than '
+                   'below it), two orders of magnitude smaller than Chen\'s; we did not investigate its cause.'],
       stopping=STOP_DONE('Chen\'s per-replication CIs and population values would locate the discrepancy.'),
       findings=dict(
           published=dict(text='Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI',
@@ -251,8 +250,10 @@ claim(id='H3', level='headline', comparison_kind='scalar_unestablished',
                     f'Rejection rates do not use population values, so this disagreement cannot come from how '
                     f'estimates were matched to population values; it could still come from another unprinted step.',
       numerical='withheld: no published number', reconstruction_scope='full design, independent re-implementation',
-      limitations=['Chen\'s MINT Type I error with a = 0 and h > 0 is also near zero, against about .05 in our run; '
-                   'both suggest her h estimates or their CIs differed from what the printed code produces.'],
+      limitations=['Chen also reports MINT Type I error near zero with a = 0 at every h > 0 and no variation across '
+                   'h. Ours is below Bradley\'s range at h = .05 through n = 5,000 (at most .019; .026-.036 at n = 10,000) and at h = .15 at n = 500 (.014-.020), but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), so it varies with h. Both MINT differences are consistent '
+                   'with smaller h estimates or wider h intervals in her runs than the printed code produces; this is '
+                   'not tested.'],
       stopping=STOP_DONE('Chen\'s MINT CIs for one condition would show whether her h estimates were attenuated.'),
       findings=dict(
           published=dict(text='MINT power near zero at every sample size; never reaches .80', state='reported',
@@ -327,17 +328,19 @@ claim(id='S1', level='supporting',
 claim(id='S2', level='supporting',
       statement='Type I error: near zero when both paths of a product effect are zero; within Bradley\'s [.025, '
                 '.075] for PNDE and TNDE; below the range for MINT at small n when a = .14, h = 0; near zero for '
-                'MINT when a = 0 at every h.',
+                'MINT when a = 0, with no variation across h.',
       source_locator=f'Chapter 4 Type I error, {loc(113)}-{loc(122)}', artifact_ids=['pdf', 'stmt', 'type1', 'stmt_code'],
       published=dict(value='six cell-level Type I statements (Figures 4.17-4.21)', units='statements'),
       ours=dict(value=f'{sum(1 for s, v in verdicts.items() if "Type I" in s and v == "agree")} of '
                       f'{sum(1 for s in verdicts if "Type I" in s)} agree', units='statements'),
-      conditions='Zero-effect cells named in each statement, all n and cutoffs.', contrasts=[],
+      conditions='Every zero-effect cell set named in each statement, all n and cutoffs; rates averaged over the '
+                 'factors a statement does not name, as in Chen\'s figures.', contrasts=[],
       contrast_not_applicable='Each statement is a threshold claim about a set of cells; results/statement_checks.csv '
                               'holds the per-cell rates.',
       methods=METHODS, uncertainty=MC, multiplicity='Six statements, each judged at its own threshold.',
       status='partly_replicated',
-      status_reason='All agree except MINT with a = 0 and h > 0, where our Type I is about .05, not near zero.',
+      status_reason='Five of six agree over every cell set they name. The exception is MINT with a = 0: ours is below '
+                    'Bradley\'s range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h.',
       numerical='not applicable', reconstruction_scope='full design',
       limitations=['Statements were chosen to be checkable from the text; the figures themselves were not digitized.'],
       stopping=STOP_DONE('Digitized Figures 4.17-4.21 would allow a cell-by-cell numeric comparison.'))
