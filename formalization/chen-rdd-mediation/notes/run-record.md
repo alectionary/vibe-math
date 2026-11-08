@@ -23,7 +23,7 @@ in the container: the largest difference in any summary statistic was 1.1e-16. N
 computed on both hosts in the main run (the merge script found no file in common).
 
 **Engine.** R is not reachable from either host (see `simulation/fallback.json`); the estimator
-was validated against scikit-learn OLS and explicit resampling by
+was validated against scikit-learn 1.9.1 OLS (container) and explicit resampling by
 `simulation/validate_estimator.py` (`PASS_ESTIMATOR_VALIDATION`). R's random streams cannot be
 reproduced, so agreement with Chen is judged on summaries, not draws.
 
