@@ -1,16 +1,16 @@
 {
  "writer": "isolated writer (fresh agent context)",
  "context": "fresh",
- "isolation_note": "Separate agent context, isolated from the research conversation; read only the packet, its artifact files, the approved preamble, the three handoff instruction files, README.md and handoff/SNAPSHOTS.md, and the independent reviewer findings notes/editorial-review.json and notes/review-cold-pass.md (supplied for this revision). No git history or other studies were read. This revision edited the same writer's earlier draft.",
- "packet_sha256": "040f0081aa5262e691ecb952d4e341daa7a65e229299102f824907599ee5f9ec",
+ "isolation_note": "Separate agent context, isolated from the research conversation; read only the packet, its artifact files, the approved preamble, the three handoff instruction files, README.md and handoff/SNAPSHOTS.md, and the independent reviewer findings notes/editorial-review.json and notes/review-cold-pass.md, notes/editorial-review-2.json and notes/review-2-cold-pass.md (supplied for revisions). No git history or other studies were read. This revision edited the same writer's earlier draft.",
+ "packet_sha256": "c39669ade27fd1d4899ea9e6bca72630c14211073b127ba157fab83b9e652671",
  "inputs": [
   {
    "path": "evidence-packet.json",
-   "sha256": "040f0081aa5262e691ecb952d4e341daa7a65e229299102f824907599ee5f9ec"
+   "sha256": "c39669ade27fd1d4899ea9e6bca72630c14211073b127ba157fab83b9e652671"
   },
   {
    "path": "REPLICATION-PLAN.yaml",
-   "sha256": "1f3b23458f86cb17654c3e13bc90d42e94ce3a9eacea963ca1d1e1872060ada7"
+   "sha256": "70f42a64d41f593fef0fa11e92e0fe4fd85299cb3fa798ab83ed50ba267a4d87"
   },
   {
    "path": "simulation/chen_sim.py",
@@ -30,7 +30,7 @@
   },
   {
    "path": "simulation/statement_checks.py",
-   "sha256": "cb5a85b386c9812548fa32821f7a3972f59f81fec0a2367d53f270555f97f343"
+   "sha256": "8c4711bd4f92cd1c7645bfc23719cfae25a8468d96eefe40474d21bc76b912e5"
   },
   {
    "path": "results/cells.csv",
@@ -54,7 +54,7 @@
   },
   {
    "path": "results/statement_checks.csv",
-   "sha256": "f8eab8b535744047b0be29f6df284aee0af9d93223c90b1f913b0d6e3d114f50"
+   "sha256": "2833efc7f232a568874b774c51aab70b24098d6f8e27f4b98efc194e5f1e2758"
   },
   {
    "path": "results/summary.json",
@@ -86,7 +86,7 @@
   },
   {
    "path": "build_packet.py",
-   "sha256": "2927d108022dddf4b7639a3885e1fa0ed7efe3993897e367bd55576789408bb1"
+   "sha256": "6679e85c6cb21e662ba056dbb716efa09c5df718d5f5958eb1a5ba5387310eae"
   },
   {
    "path": "source/chen2021.pdf",
@@ -123,12 +123,20 @@
   {
    "path": "notes/review-1-cold-pass.md",
    "sha256": "11c7d61a1ed1d39f8efdc52599f99c9fe740318cb600b9c222bfabd74319fc07"
+  },
+  {
+   "path": "notes/editorial-review-2.json",
+   "sha256": "a4bea6cbe316bcc60081051c75b577e764b95b6a11b322c53b582b08e6857b46"
+  },
+  {
+   "path": "notes/review-2-cold-pass.md",
+   "sha256": "1ddb91911d3c692e0000dbd3dc305a6f04d111ec245ce28d0a59b8f3ac72497f"
   }
  ],
  "outputs": [
   {
    "path": "paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex",
-   "sha256": "99a0f77a015ccc40651046261476c80ff5e5c470aeb2a2ce1059fc86e395cde4"
+   "sha256": "40b3d6209b48ca4769bfb8f5dc2ea50d1fe8051fe9a1c54341e2598e10a481f1"
   },
   {
    "path": "paper/references.bib",
@@ -136,11 +144,11 @@
   },
   {
    "path": "paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf",
-   "sha256": "cf5e4acab3d6678115cef5c397e14eaaa7609ebeddb456a121ef0b39c59bb615"
+   "sha256": "d519967e914f371398f44ddd3ad4f3247ab824ddf457af448223adbc6cb46338"
   },
   {
    "path": "paper/build.log",
-   "sha256": "8991b783e146b222d5e0f89b7ff6ac1a6f67947ea8765d67bfd0317b39df6665"
+   "sha256": "81e9c2daa019057419d7977088a57bcbcdf5c7d595450a642df2a17b50704c12"
   }
  ],
  "template": {
@@ -152,11 +160,11 @@
  "claim_map": {
   "H1": "Table 1 row E1 / page 1; Section 4.1, Table 3 / pages 4-5; Section 10.1 / page 13",
   "H2": "Table 1 rows E2-E3 / page 1; Section 4.2, Table 4 / page 6; Section 10.1 / page 13",
-  "H3": "Table 1 row E4 / page 1; Section 4.3, Table 5 / pages 6-7; Section 10.2 / page 13",
+  "H3": "Table 1 row E4 / page 1; Section 4.3, Table 5 / pages 6-7; Table 7 / page 9; Section 10.2 / page 13",
   "H4": "Table 1 row E5 / page 1; Section 4.4, Table 6 / page 7",
   "S1": "Section 5.1 / page 8; Table 3 / page 5; Section 10.1 / page 13",
-  "S2": "Section 5.2, Table 7 / pages 8-9; Section 10.2 / page 13",
-  "S3": "Section 5.2, Table 7 / pages 8-9",
+  "S2": "Section 5.2 / page 8; Table 7 / page 9; Section 10.2 / page 13",
+  "S3": "Section 5.2 / page 8; Table 7 / page 9",
   "S4": "Section 5.3 / page 8; Section 10.3 / page 13 (blocked, not established)",
   "S5": "Section 5.3 / page 8; Section 8.2 / page 12",
   "S6": "Section 5.3 / page 8; Section 10.3 / page 13 (blocked, not established)",
@@ -183,7 +191,7 @@
    "source_identification": "Chen (2021)",
    "source_citation": "Chen (2021)",
    "original_finding": "mediation analysis in a sharp regression discontinuity design gives biased natural direct effects, percentile bootstrap confidence intervals that cover the true value far less often than the nominal level, and near-zero power for the mediated interaction",
-   "verdict_evidence": "We did not replicate the simulation headline findings of",
+   "verdict_evidence": "We did not replicate three of the four simulation headline findings of",
    "claim_ids": [
     "H1",
     "H2",
