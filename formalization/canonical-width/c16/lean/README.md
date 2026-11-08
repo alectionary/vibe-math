@@ -24,14 +24,18 @@ Gaussian elimination bounds matrix rank. `CertCheck.lean` defines `IsPairFrame`
 and proves it yields `C16Frames.IsFrame`, and that a swap-invariant pair set has
 equal vertex sets in the sense of `fixed_swap_iff`.
 
-`CertInvariant.lean` proves the first semantic layer used by the search invariant:
-the cover test is the `F₂` sum of pair contributions (`covers_true_iff`), the initial
-residual is the identity (`idRes_bit`), and one residual-row update flips the
-predicted bit (`xor_step_bit`). The fuel induction for `checkNode`/`checkKids` is
-not finished. A Bool-equality simproc in Lean `v4.36.0-rc1` rewrites goals of the
-form `a = b ^^ c` into `(decide (a = b) ^^ c) = true`, which blocked a direct
-statement of the residual-loop invariant; the next attempt states that invariant
-in `ZMod 2`.
+`CertInvariant.lean` proves the semantic layer used by the search invariant.
+The cover test is the `F₂` sum of pair contributions (`covers_true_iff`). The
+initial residual is the identity (`idRes_bit`). One pair update and a whole
+`addPairs` residual equal that sum (`addPairs_resZ`); the one-row statement is
+`resBit ... = (resBit ... ^^ (xi.testBit c && zj.testBit k))`, with the `^^`
+parenthesized because `=` binds tighter than `^^`. A Gram row bit is the pool
+parity (`buildGRow_bit`), a column bit is the transposed Gram bit
+(`buildCol_bit`), item masks test membership of the item's vertices
+(`xmask_testBit`, `zmask_testBit`), a packed row bit is the selected Gram bit
+(`packRow_testBit`), and `setBits` lists exactly the set bits below 720
+(`setBits_mem`). The fuel induction for `checkNode`/`checkKids`, the rank-leaf
+comparison, and the root decomposition are not finished.
 
 The theorem `no_swap_frame` is not proved. Acceptance of the certificate is a
 separate `Bool` fact. The search invariant — that acceptance rules out every
@@ -39,7 +43,7 @@ swap-invariant frame — is not finished, so this directory does not yet contain
 a kernel proof that the swap class has no frame. There is therefore no
 `#print axioms no_swap_frame` output.
 
-`lake build` completed with exit status 0: `Build completed successfully (3800 jobs).`
+`lake build` completed with exit status 0: `Build completed successfully (3804 jobs).`
 `#print axioms` on the declarations that do exist:
 
 ```
