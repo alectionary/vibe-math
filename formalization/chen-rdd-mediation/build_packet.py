@@ -90,7 +90,18 @@ by_cut = [SH[f'n = 5000, cutoff index {c}'] for c in '123']
 by_n = {n: SH[f'n = {n}'] for n in ('500', '1000', '2500', '5000', '10000')}
 t1_5000, pw_5000 = [float(x.strip().rstrip('%')) for x in n5000['our_rejection_rate_cut1/cut2/cut3'].split(';')]
 verdicts = {r['statement']: r['verdict'] for r in checks if r['verdict'] in ('agree', 'disagree')}
+slackv = {r['statement']: r['verdict_with_.01_slack'] for r in checks if r['verdict'] in ('agree', 'disagree')}
 n_agree = sum(v == 'agree' for v in verdicts.values())
+n_slack = sum(v == 'agree' for v in slackv.values())
+T1S = [k for k in verdicts if 'Type I' in k]
+PWS = [k for k in verdicts if 'Type I' not in k]
+t1_agree, pw_agree = sum(verdicts[k] == 'agree' for k in T1S), sum(verdicts[k] == 'agree' for k in PWS)
+t1_slack, pw_slack = sum(slackv[k] == 'agree' for k in T1S), sum(slackv[k] == 'agree' for k in PWS)
+robust_dis = [k for k in verdicts if verdicts[k] == 'disagree' and slackv[k] == 'disagree']
+H_PATTERN = [k for k in robust_dis if k.startswith(('MINT', 'All power for MINT', 'TNDE1 power', 'TNIE1 (h = .15) power close',
+             'TNIE1 power shows', 'TNIE (h = .15), a = .59', 'TNIE1 (h = .15) power below .80 at n = 500 and above'))]
+assert len(T1S) == 17 and len(PWS) == 24, (len(T1S), len(PWS))
+assert len(robust_dis) == 12 and len(H_PATTERN) == 9, (len(robust_dis), len(H_PATTERN))
 
 ART = [
     ('pdf', 'source/chen2021.pdf'), ('plan', 'REPLICATION-PLAN.yaml'), ('sim', 'simulation/chen_sim.py'),
@@ -325,40 +336,64 @@ claim(id='S1', level='supporting',
       limitations=['The zero-estimate pattern does not fit every printed entry (for example PNDE needs c\' + h).'],
       stopping=STOP_DONE('Chen\'s population-value table, if one existed, would test the pattern directly.'))
 
+STMT_METHOD = ('Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is '
+               'tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the '
+               'factors it does not name, as in Chen\'s figures, and with fixed numeric readings of her words '
+               '(for example "near zero" Type I < .025, "close to zero" power < .10, "around .80" .70-.90). '
+               'A second reading moves every threshold .01 in her favour.')
+H_NOTE = ('Of the 12 statements that disagree under both readings, 9 concern cells in which h is part of the effect '
+          '(MINT; TNIE with b = 0, across levels of h, or with a = .59 and b = .14; TNDE with h > 0), and in each '
+          'her text reports rates lower than ours or no variation with h, as would be expected if h contributed '
+          'little to her estimates. The other 3 concern TNIE Type I error at small n near the robustness bounds. '
+          'Chen also defines PNDE as "adding c\' and h" (printed p. 104), whereas with the mediator intercept zero '
+          'in her data-generating model the population PNDE is c\'. These are consistency observations; the cause '
+          'is not established.')
+excerpt('PNDE is calculated by adding c', 118)
+
 claim(id='S2', level='supporting',
-      statement='Type I error: near zero when both paths of a product effect are zero; within Bradley\'s [.025, '
-                '.075] for PNDE and TNDE; below the range for MINT at small n when a = .14, h = 0; near zero for '
-                'MINT when a = 0, with no variation across h.',
+      statement='Type I error statements for all five effects (Figures 4.17-4.21): for example, near zero when both '
+                'paths of a product effect are zero; within Bradley\'s [.025, .075] for PNDE and TNDE; for MINT near '
+                'zero when a = 0, with no variation across h.',
       source_locator=f'Chapter 4 Type I error, {loc(113)}-{loc(122)}', artifact_ids=['pdf', 'stmt', 'type1', 'stmt_code'],
-      published=dict(value='six cell-level Type I statements (Figures 4.17-4.21)', units='statements'),
-      ours=dict(value=f'{sum(1 for s, v in verdicts.items() if "Type I" in s and v == "agree")} of '
-                      f'{sum(1 for s in verdicts if "Type I" in s)} agree', units='statements'),
+      published=dict(value=f'{len(T1S)} testable Type I error statements', units='statements'),
+      ours=dict(value=f'{t1_agree} of {len(T1S)} agree ({t1_slack} with .01 threshold slack)', units='statements'),
       conditions='Every zero-effect cell set named in each statement, all n and cutoffs; rates averaged over the '
                  'factors a statement does not name, as in Chen\'s figures.', contrasts=[],
       contrast_not_applicable='Each statement is a threshold claim about a set of cells; results/statement_checks.csv '
-                              'holds the per-cell rates.',
-      methods=METHODS, uncertainty=MC, multiplicity='Six statements, each judged at its own threshold.',
+                              'holds the per-cell rates and verdicts.',
+      methods=METHODS + ' ' + STMT_METHOD, uncertainty=MC,
+      multiplicity=f'{len(T1S)} statements, each judged at its own threshold; no correction (descriptive).',
       status='partly_replicated',
-      status_reason='Five of six agree over every cell set they name. The exception is MINT with a = 0: ours is below '
-                    'Bradley\'s range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h.',
+      status_reason=(f'{t1_agree} of {len(T1S)} Type I statements agree ({t1_slack} with slack). The robust '
+                     f'disagreements are MINT with a = 0, where ours is below Bradley\'s range at h = .05 through '
+                     f'n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at '
+                     f'h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation '
+                     f'across h; and three TNIE Type I statements at small n near the robustness bounds.'),
       numerical='not applicable', reconstruction_scope='full design',
-      limitations=['Statements were chosen to be checkable from the text; the figures themselves were not digitized.'],
+      limitations=['The numeric readings of Chen\'s words are ours; the slack column shows which verdicts depend on them.',
+                   'The figures themselves were not digitized; only the text was tested.'],
       stopping=STOP_DONE('Digitized Figures 4.17-4.21 would allow a cell-by-cell numeric comparison.'))
 
 claim(id='S3', level='supporting',
-      statement='Power rises with n and effect size; PNIE with a = b = .14 stays below .80 through n = 2,500; with '
-                'a = .59, b = .14 only cutoff 3 reaches .80 at n = 1,000; TNIE1 with a = b = .14 passes .80 from n = 5,000.',
-      source_locator=f'Chapter 4 power, {loc(124)}-{loc(127)}', artifact_ids=['pdf', 'stmt', 'power'],
-      published=dict(value='three cell-level PNIE/TNIE power statements', units='statements'),
-      ours=dict(value='3 of 3 agree', units='statements'),
-      conditions='Cells named in each statement.', contrasts=[],
-      contrast_not_applicable='Threshold statements; per-cell rates are in results/statement_checks.csv.',
-      methods=METHODS, uncertainty=MC, multiplicity='Three statements.',
-      status='replicated', status_reason='Each statement holds cell by cell in our run, including the cutoff ordering.',
+      statement='Power statements for all five effects (Figures 4.22-4.28): for example, PNIE with a = b = .14 stays '
+                'below .80 through n = 2,500; TNIE1 power is close to zero when b = 0; TNDE1 power is close to zero '
+                'when c\' = 0 regardless of a and h; all MINT power is near zero.',
+      source_locator=f'Chapter 4 power, {loc(124)}-{loc(135)}', artifact_ids=['pdf', 'stmt', 'power', 'stmt_code'],
+      published=dict(value=f'{len(PWS)} testable power statements', units='statements'),
+      ours=dict(value=f'{pw_agree} of {len(PWS)} agree ({pw_slack} with .01 threshold slack)', units='statements'),
+      conditions='Every nonzero-effect cell set named in each statement; rates averaged over unnamed factors.',
+      contrasts=[], contrast_not_applicable='Threshold statements; per-cell rates are in results/statement_checks.csv.',
+      methods=METHODS + ' ' + STMT_METHOD, uncertainty=MC,
+      multiplicity=f'{len(PWS)} statements; no correction (descriptive).',
+      status='partly_replicated',
+      status_reason=(f'{pw_agree} of {len(PWS)} power statements agree ({pw_slack} with slack): all six PNIE '
+                     f'statements and all four PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. '
+                     + H_NOTE),
       numerical='not applicable', reconstruction_scope='full design',
-      limitations=['Agreement here is consistent with Chen\'s rejection rates for these effects not being affected by whatever '
-                   'produced her bias and coverage results.'],
-      stopping=STOP_DONE('None needed.'))
+      limitations=['Agreement on PNIE and PNDE is consistent with Chen\'s rejection rates for those effects not being '
+                   'affected by whatever produced her bias and coverage results.',
+                   'The numeric readings of Chen\'s words are ours; the slack column shows which verdicts depend on them.'],
+      stopping=STOP_DONE('Chen\'s h estimates for one condition would test whether h was attenuated in her runs.'))
 
 claim(id='S4', level='supporting',
       statement='In the Head Start Impact Study, synthetic-RDD mediation estimates at three cutoffs are typically '
@@ -535,6 +570,9 @@ limitations = [
     'treatment; we report by the code (H1, H2).',
     'Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model '
     'the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).',
+    'Most of Chen\'s Type I and power statements that disagree with our run concern cells in which h is part of the '
+    'effect, and her text defines PNDE as c\' + h where the population value is c\'; both are consistent with h '
+    'contributing little to her estimates or population values, but neither is tested (S2, S3, H3).',
 ]
 
 packet = dict(
@@ -560,8 +598,9 @@ packet = dict(
     synthesis=(f'Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is '
                f'unbiased (largest |bias| {summary["overall_max_abs_bias"]:.3f}) and percentile-bootstrap coverage '
                f'averages {summary["overall_mean_coverage"]*100:.1f}%, against Chen\'s 6-87% non-bias and 24-84% '
-               f'coverage; MINT power reaches {our_mint:.2f} at n = 500 where Chen reports near zero. Her Type I and '
-               f'PNIE/TNIE power statements largely agree ({n_agree} of {len(verdicts)} checked). The n = 5,000 '
+               f'coverage; MINT power reaches {our_mint:.2f} at n = 500 for the largest interaction, where Chen reports near zero. Of her '
+               f'{len(verdicts)} testable Type I and power statements, {n_agree} agree ({n_slack} with .01 threshold '
+               f'slack); 9 of the 12 robust disagreements concern cells in which h is part of the effect. The n = 5,000 '
                f'recommendation holds for most but not all cells. RQ2 is blocked by data access.'),
     limitations=limitations,
 )

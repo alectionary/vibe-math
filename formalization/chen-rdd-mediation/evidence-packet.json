@@ -78,12 +78,12 @@
   {
    "id": "stmt_code",
    "path": "simulation/statement_checks.py",
-   "sha256": "8c4711bd4f92cd1c7645bfc23719cfae25a8468d96eefe40474d21bc76b912e5"
+   "sha256": "4ff006557f8a612a70406a1f879c4f990e0825bbd0d48efe05da4248d1e3ef58"
   },
   {
    "id": "stmt",
    "path": "results/statement_checks.csv",
-   "sha256": "2833efc7f232a568874b774c51aab70b24098d6f8e27f4b98efc194e5f1e2758"
+   "sha256": "0603159fdb7a3a8713f5cf02d975ae976f66ba52e39e63ec48bfc3480b86ebff"
   },
   {
    "id": "zero_code",
@@ -118,7 +118,7 @@
   {
    "id": "builder",
    "path": "build_packet.py",
-   "sha256": "1232ddb1b99248d0d7c14b2ae05f554c1dbbf0a52dcbfa1aed2fb962222ffc7d"
+   "sha256": "bcd8f11d842295502300a1c845361eba380b78af9f0460e650975635dc6e7087"
   }
  ],
  "sections": [
@@ -480,7 +480,7 @@
     "units": "qualitative recommendation"
    },
    "ours": {
-    "value": "at n = 5,000: 86.3% of zero-effect results have Type I in Bradley's range and 89.2% of nonzero results have power >= .80",
+    "value": "at n = 5,000: 89.2% of zero-effect results have Type I in Bradley's range and 89.2% of nonzero results have power >= .80",
     "units": "qualitative with shares"
    },
    "conditions": "Full factorial of Table 3.1: n in {500, 1000, 2500, 5000, 10000}, a, b, c' in {0, .14, .39, .59}, h in {0, .05, .15, .34}; three cutoffs (25th, 50th, 75th percentile of x). Expected 3,840 condition-cutoff cells; completed 3,840 at 1,000 replications and 500 percentile-bootstrap resamples.",
@@ -490,7 +490,7 @@
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
    "multiplicity": "Shares over 1,176 zero-effect and 2,664 nonzero results at n = 5,000.",
    "status": "partly_replicated",
-   "status_reason": "In our run the share of zero-effect results with Type I error in Bradley's range rises from 70.0% at n = 500 to 86.3% at n = 5,000, and the share of nonzero results with power >= .80 from 35.9% to 89.2% (the largest step, from 61.5% at n = 2,500). The shares differ little by cutoff at n = 5,000 (85.7-87.0% and 88.3-89.9%). Not all results pass: product effects with both paths zero stay conservative (about .002) at every n, and small effects such as ah = .007 stay below .80.",
+   "status_reason": "In our run the share of zero-effect results with Type I error in Bradley's range rises from 73.2% at n = 500 to 89.2% at n = 5,000, and the share of nonzero results with power >= .80 from 35.9% to 89.2% (the largest step, from 61.5% at n = 2,500). The shares differ little by cutoff at n = 5,000 (88.5-89.8% and 88.3-89.9%). Not all results pass: product effects with both paths zero stay conservative (about .002) at every n, and small effects such as ah = .007 stay below .80.",
    "numerical": "not applicable: qualitative",
    "reconstruction_scope": "full design",
    "limitations": [
@@ -519,7 +519,7 @@
      "component_contrast_indices": []
     },
     "ours": {
-     "text": "At n = 5,000, 86.3% of zero-effect results have Type I in range and 89.2% of nonzero results reach .80 power, similar at each cutoff; both-zero products stay conservative",
+     "text": "At n = 5,000, 89.2% of zero-effect results have Type I in range and 89.2% of nonzero results reach .80 power, similar at each cutoff; both-zero products stay conservative",
      "state": "observed",
      "artifact_ids": [
       "stmt",
@@ -596,7 +596,7 @@
   {
    "id": "S2",
    "level": "supporting",
-   "statement": "Type I error: near zero when both paths of a product effect are zero; within Bradley's [.025, .075] for PNDE and TNDE; below the range for MINT at small n when a = .14, h = 0; near zero for MINT when a = 0, with no variation across h.",
+   "statement": "Type I error statements for all five effects (Figures 4.17-4.21): for example, near zero when both paths of a product effect are zero; within Bradley's [.025, .075] for PNDE and TNDE; for MINT near zero when a = 0, with no variation across h.",
    "source_locator": "Chapter 4 Type I error, printed p. 99 (PDF page 113)-printed p. 108 (PDF page 122)",
    "artifact_ids": [
     "pdf",
@@ -605,25 +605,26 @@
     "stmt_code"
    ],
    "published": {
-    "value": "six cell-level Type I statements (Figures 4.17-4.21)",
+    "value": "17 testable Type I error statements",
     "units": "statements"
    },
    "ours": {
-    "value": "5 of 6 agree",
+    "value": "12 of 17 agree (13 with .01 threshold slack)",
     "units": "statements"
    },
    "conditions": "Every zero-effect cell set named in each statement, all n and cutoffs; rates averaged over the factors a statement does not name, as in Chen's figures.",
    "contrasts": [],
-   "contrast_not_applicable": "Each statement is a threshold claim about a set of cells; results/statement_checks.csv holds the per-cell rates.",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "contrast_not_applicable": "Each statement is a threshold claim about a set of cells; results/statement_checks.csv holds the per-cell rates and verdicts.",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
-   "multiplicity": "Six statements, each judged at its own threshold.",
+   "multiplicity": "17 statements, each judged at its own threshold; no correction (descriptive).",
    "status": "partly_replicated",
-   "status_reason": "Five of six agree over every cell set they name. The exception is MINT with a = 0: ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h.",
+   "status_reason": "12 of 17 Type I statements agree (13 with slack). The robust disagreements are MINT with a = 0, where ours is below Bradley's range at h = .05 through n = 5,000 (at most .019) and at h = .15 at n = 500 (.014-.020), as Chen reports, but about .05 at h = .34 and at h = .15 from n = 2,500 (.026-.033 at n = 1,000), whereas she reports no variation across h; and three TNIE Type I statements at small n near the robustness bounds.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
-    "Statements were chosen to be checkable from the text; the figures themselves were not digitized."
+    "The numeric readings of Chen's words are ours; the slack column shows which verdicts depend on them.",
+    "The figures themselves were not digitized; only the text was tested."
    ],
    "stopping": {
     "reason": "Full design completed.",
@@ -637,40 +638,42 @@
   {
    "id": "S3",
    "level": "supporting",
-   "statement": "Power rises with n and effect size; PNIE with a = b = .14 stays below .80 through n = 2,500; with a = .59, b = .14 only cutoff 3 reaches .80 at n = 1,000; TNIE1 with a = b = .14 passes .80 from n = 5,000.",
-   "source_locator": "Chapter 4 power, printed p. 110 (PDF page 124)-printed p. 113 (PDF page 127)",
+   "statement": "Power statements for all five effects (Figures 4.22-4.28): for example, PNIE with a = b = .14 stays below .80 through n = 2,500; TNIE1 power is close to zero when b = 0; TNDE1 power is close to zero when c' = 0 regardless of a and h; all MINT power is near zero.",
+   "source_locator": "Chapter 4 power, printed p. 110 (PDF page 124)-printed p. 121 (PDF page 135)",
    "artifact_ids": [
     "pdf",
     "stmt",
-    "power"
+    "power",
+    "stmt_code"
    ],
    "published": {
-    "value": "three cell-level PNIE/TNIE power statements",
+    "value": "24 testable power statements",
     "units": "statements"
    },
    "ours": {
-    "value": "3 of 3 agree",
+    "value": "15 of 24 agree (16 with .01 threshold slack)",
     "units": "statements"
    },
-   "conditions": "Cells named in each statement.",
+   "conditions": "Every nonzero-effect cell set named in each statement; rates averaged over unnamed factors.",
    "contrasts": [],
    "contrast_not_applicable": "Threshold statements; per-cell rates are in results/statement_checks.csv.",
-   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries.",
+   "methods": "Independent Python/NumPy re-implementation of Appendices A-B (R unavailable; simulation/fallback.json), validated against scikit-learn OLS and explicit resampling. Same data-generating model, estimators, bootstrap count and percentile rule; our own seeds, so agreement is judged on summaries. Every Type I error and power statement in Chapter 4 that names cells and a checkable outcome is tested on every cell set it names (simulation/statement_checks.py), with rates averaged over the factors it does not name, as in Chen's figures, and with fixed numeric readings of her words (for example \"near zero\" Type I < .025, \"close to zero\" power < .10, \"around .80\" .70-.90). A second reading moves every threshold .01 in her favour.",
    "uncertainty": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error.",
-   "multiplicity": "Three statements.",
-   "status": "replicated",
-   "status_reason": "Each statement holds cell by cell in our run, including the cutoff ordering.",
+   "multiplicity": "24 statements; no correction (descriptive).",
+   "status": "partly_replicated",
+   "status_reason": "15 of 24 power statements agree (16 with slack): all six PNIE statements and all four PNDE statements agree; the disagreements concern TNIE, TNDE and MINT. Of the 12 statements that disagree under both readings, 9 concern cells in which h is part of the effect (MINT; TNIE with b = 0, across levels of h, or with a = .59 and b = .14; TNDE with h > 0), and in each her text reports rates lower than ours or no variation with h, as would be expected if h contributed little to her estimates. The other 3 concern TNIE Type I error at small n near the robustness bounds. Chen also defines PNDE as \"adding c' and h\" (printed p. 104), whereas with the mediator intercept zero in her data-generating model the population PNDE is c'. These are consistency observations; the cause is not established.",
    "numerical": "not applicable",
    "reconstruction_scope": "full design",
    "limitations": [
-    "Agreement here is consistent with Chen's rejection rates for these effects not being affected by whatever produced her bias and coverage results."
+    "Agreement on PNIE and PNDE is consistent with Chen's rejection rates for those effects not being affected by whatever produced her bias and coverage results.",
+    "The numeric readings of Chen's words are ours; the slack column shows which verdicts depend on them."
    ],
    "stopping": {
     "reason": "Full design completed.",
     "attempted": "All 3,840 condition-cutoff cells at the printed replication and bootstrap counts.",
     "untested": "Chen's own R output and seeds.",
     "resource_basis": "13.7 core-hours.",
-    "next_evidence": "None needed."
+    "next_evidence": "Chen's h estimates for one condition would test whether h was attenuated in her runs."
    },
    "reproduction_deviation": "Not computable: threshold statements; 0 of 3 disagree."
   },
@@ -1019,13 +1022,14 @@
    "uncertainty_statement": "With 1,000 replications, a cell coverage near .95 has a binomial standard error of about .007 and a rejection rate near .05 about .007. Chen reports no Monte Carlo error."
   }
  ],
- "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 where Chen reports near zero. Her Type I and PNIE/TNIE power statements largely agree (8 of 10 checked). The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
+ "synthesis": "Not replicated on the simulation headlines. Over all 3,840 condition-cutoff cells, every effect is unbiased (largest |bias| 0.016) and percentile-bootstrap coverage averages 95.0%, against Chen's 6-87% non-bias and 24-84% coverage; MINT power reaches 0.84 at n = 500 for the largest interaction, where Chen reports near zero. Of her 41 testable Type I and power statements, 27 agree (29 with .01 threshold slack); 9 of the 12 robust disagreements concern cells in which h is part of the effect. The n = 5,000 recommendation holds for most but not all cells. RQ2 is blocked by data access.",
  "limitations": [
   "R is unavailable here, so the simulation is an independent Python re-implementation with our own seeds; it agrees with Chen on summaries only (H1-H4, S1-S3).",
   "Chen's aggregation code and population-value table are not printed, so the source of her bias, coverage and MINT results cannot be identified (H1, H2, H3, S1); our Type I and power agree with most of her statements (S2, S3).",
   "RQ2 (HSIS) cannot be rerun: the restricted-use data are not available to this project (S4, S6); only the printed arithmetic was checked (S5).",
   "The announced power analysis by the SD of Y is not reported, so it cannot be assessed (S8).",
   "The dissertation labels the cutoffs inconsistently: the code's index 1 is the 25th percentile (75% treated), as is the Chapter 4 description of the cut scores, while Chapter 3 and the Table 4.8 note call index 1 25% treatment; we report by the code (H1, H2).",
-  "Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1)."
+  "Chen suggests global estimation with an incorrect functional form as a plausible explanation of the bias; in her data-generating model the assignment variable does not enter M or Y, so the fitted linear models are correctly specified (H1).",
+  "Most of Chen's Type I and power statements that disagree with our run concern cells in which h is part of the effect, and her text defines PNDE as c' + h where the population value is c'; both are consistent with h contributing little to her estimates or population values, but neither is tested (S2, S3, H3)."
  ]
 }
