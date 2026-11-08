@@ -225,6 +225,7 @@ SLACK = 0.01
 run_all()
 slack = rows
 rows = [r + [s_[-1]] for r, s_ in zip(strict, slack)]
+SLACK = 0.0   # the summary rows below use the strict thresholds
 
 w = csv.writer(sys.stdout)
 w.writerow(['page', 'statement', 'effect', 'cells', 'our_rejection_rate_cut1/cut2/cut3', 'verdict', 'verdict_with_.01_slack'])
