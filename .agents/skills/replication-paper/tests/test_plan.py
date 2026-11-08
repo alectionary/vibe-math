@@ -664,6 +664,33 @@ class LimitKinds(unittest.TestCase):
         self.assertTrue(any("decision_reason" in item or "compute cost alone" in item
                             for item in errors(unnamed, PARTIAL_PAPER)))
 
+    def test_complete_mismatch_needs_no_limit_kind(self):
+        data = plan([
+            headline(),
+            limited("bias-table", "results/bias_table.csv", status="mismatch", run_complete=True,
+                    reason="All 3,840 cells were run; our bias is within .02 everywhere, the printed table is not."),
+        ])
+        for key in ("limit_kind", "finite_checks"):
+            data["parts"][1].pop(key)
+        data["limit_schema"] = 1
+        self.assertFalse(any("limit_kind" in item for item in errors(data, PARTIAL_PAPER)))
+        partly = copy.deepcopy(data)
+        partly["parts"][1]["status"] = "partly"
+        self.assertFalse(any("limit_kind" in item for item in errors(partly, PARTIAL_PAPER)))
+        undeclared = copy.deepcopy(data)
+        undeclared["parts"][1].pop("run_complete")
+        self.assertTrue(any("limit_kind required" in item for item in errors(undeclared, PARTIAL_PAPER)))
+        unavailable = copy.deepcopy(data)
+        unavailable["parts"][1]["status"] = "input_unavailable"
+        self.assertTrue(any("limit_kind required" in item for item in errors(unavailable, PARTIAL_PAPER)))
+        reduced = copy.deepcopy(data)
+        reduced["parts"][1]["design_count"] = 3840
+        reduced["parts"][1]["run_count"] = 100
+        self.assertTrue(any("limit_kind required" in item for item in errors(reduced, PARTIAL_PAPER)))
+        bare = copy.deepcopy(data)
+        bare["parts"][1]["reason"] = "See named artifacts and limitations."
+        self.assertTrue(any("generic template" in item for item in errors(bare, PARTIAL_PAPER)))
+
     def test_several_limit_kinds_can_apply_to_one_part(self):
         data = plan([
             headline(),
