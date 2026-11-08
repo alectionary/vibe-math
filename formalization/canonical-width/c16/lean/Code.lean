@@ -103,8 +103,22 @@ def coordZ (v : Nat) : Nat := ((List.range 128).filter fun c => par (canX.getD c
 
 /-! ### Checks on the code -/
 
-theorem hx_length : hx.length = 480 := by native_decide
-theorem hz_length : hz.length = 480 := by native_decide
+/-- Row expansion always keeps two rows and all sixteen translates of each. -/
+private theorem expandRow_length (mons : List (Nat × Nat × Int)) :
+    (expandRow mons).length = 32 := by
+  simp only [expandRow, List.length_flatMap, List.length_map, List.length_range,
+    List.map_const', List.sum_replicate_nat, List.length_take, List.length_mergeSort,
+    List.length_cons, List.length_nil, P]
+  rfl
+
+theorem hx_length : hx.length = 480 := by
+  simp only [hx, List.length_flatMap, expandRow_length, List.map_const', List.sum_replicate_nat,
+    hxRows, List.length_flatMap, List.length_map, List.length_range, List.map_const', List.sum_replicate_nat]
+  rfl
+theorem hz_length : hz.length = 480 := by
+  simp only [hz, List.length_flatMap, expandRow_length, List.map_const', List.sum_replicate_nat,
+    hzRows, List.length_flatMap, List.length_map, List.length_range, List.map_const', List.sum_replicate_nat]
+  rfl
 theorem checks_weight_le_9 : hx.all (fun v => popc v ≤ 9) && hz.all (fun v => popc v ≤ 9) := by
   native_decide
 /-- CSS condition: every X check commutes with every Z check. -/
@@ -112,7 +126,10 @@ theorem checks_commute : hx.all (fun x => hz.all fun z => !par x z) := by native
 
 /-! ### The width-18 frame -/
 
-theorem canon_length : canX.length = 128 ∧ canZ.length = 128 := by native_decide
+theorem canon_length : canX.length = 128 ∧ canZ.length = 128 := by
+  simp only [canX, canZ, List.length_flatMap, List.length_map, List.length_range,
+    List.map_const', List.sum_replicate_nat]
+  constructor <;> rfl
 theorem canon_logical : canX.all (fun v => hz.all fun z => !par v z) &&
     canZ.all (fun v => hx.all fun x => !par x v) := by native_decide
 theorem canon_gram : ∀ c d : Fin 128, par (canX.getD c 0) (canZ.getD d 0) = (c == d) := by
@@ -122,7 +139,10 @@ theorem canon_width : (canX ++ canZ).all (fun v => popc v ≤ 18) &&
 
 /-! ### The pools are weight-16 logical operators with the recorded coordinates -/
 
-theorem pools_length : xPhys.length = 720 ∧ zPhys.length = 720 := by native_decide
+theorem pools_length : xPhys.length = 720 ∧ zPhys.length = 720 := by
+  simp only [xPhys, zPhys, List.length_flatMap, List.length_map, List.length_range,
+    List.map_const', List.sum_replicate_nat]
+  constructor <;> rfl
 theorem pools_weight_16 : xPhys.all (fun v => popc v == 16) && zPhys.all (fun v => popc v == 16) := by
   native_decide
 theorem pools_logical : xPhys.all (fun v => hz.all fun z => !par v z) &&
@@ -131,7 +151,10 @@ theorem pools_distinct : xPhys.Nodup ∧ zPhys.Nodup := by native_decide
 theorem coords_match : xPhys.map coordX = xArr.toList ∧ zPhys.map coordZ = zArr.toList := by
   native_decide
 /-- Nontrivial: no pool operator has zero logical coordinates (so none is a stabilizer). -/
-theorem coords_nonzero : xArr.all (· != 0) && zArr.all (· != 0) := by native_decide
+set_option maxRecDepth 10000 in
+theorem coords_nonzero : xArr.all (· != 0) && zArr.all (· != 0) := by
+  rw [← Array.all_toList, ← Array.all_toList]
+  decide +kernel
 
 /-- Physical anticommutation of the pool operators is exactly the pairing matrix `G` of
 `Pools.lean`. -/

@@ -30,7 +30,7 @@ def classify(axioms):
     # These are the native_decide dependencies produced by the pinned toolchain.
     # Do not permit arbitrary names merely containing 'native_decide'.
     if all(a == "Lean.ofReduceBool" or
-           re.fullmatch(r".+\._native\.native_decide\.ax_[0-9]+_[0-9]+", a)
+           re.fullmatch(r".+\._native\.native_decide\.ax_[0-9]+(?:_[0-9]+)*", a)
            for a in extra):
         return "NATIVE"
     return "FORBIDDEN"
@@ -51,6 +51,7 @@ theorem admitted : False := by sorry
 axiom custom : False
 theorem customUser : False := custom
 theorem native : (List.range 5).length = 5 := by native_decide
+def nativeField : {n : Nat // n = 2} := ⟨2, by native_decide⟩
 theorem clean : True := True.intro
 end AxiomGateProbe
 """ if probes else ""
@@ -100,7 +101,8 @@ def self_test():
     records = audit(["Std"], probes=True)
     probes = {r["name"]: r for r in records if r["name"].startswith("AxiomGateProbe.")}
     expected = {"admitted": "FORBIDDEN", "custom": "FORBIDDEN",
-                "customUser": "FORBIDDEN", "native": "NATIVE", "clean": "KERNEL"}
+                "customUser": "FORBIDDEN", "native": "NATIVE",
+                "nativeField": "NATIVE", "clean": "KERNEL"}
     for name, status in expected.items():
         record = probes["AxiomGateProbe." + name]
         assert classify(record["axioms"]) == status, record

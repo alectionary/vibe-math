@@ -28,8 +28,10 @@ def Z (j : Fin 720) : Fin 128 → ZMod 2 := toVec (zArr.getD j 0)
 /-- The anticommutation (pairing) matrix `G i j = ⟨x_i, z_j⟩`. -/
 def G (i j : Fin 720) : ZMod 2 := X i ⬝ᵥ Z j
 
-theorem xArr_size : xArr.size = 720 := by native_decide
-theorem zArr_size : zArr.size = 720 := by native_decide
+set_option maxRecDepth 10000 in
+theorem xArr_size : xArr.size = 720 := by rfl
+set_option maxRecDepth 10000 in
+theorem zArr_size : zArr.size = 720 := by rfl
 
 /-- The cyclic shift `T` on pool indices: `16a + t ↦ 16a + (t+1 mod 16)`. -/
 def rotIdx (k : ℕ) (i : Fin 720) : Fin 720 :=
@@ -55,17 +57,37 @@ theorem G_rot : ∀ i j : Fin 720, G (rotIdx 1 i) (rotIdx 1 j) = G i j := by nat
 def rotEquiv : Fin 720 ≃ Fin 720 where
   toFun := rotIdx 1
   invFun := rotIdx 15
-  left_inv := by intro i; revert i; native_decide
-  right_inv := by intro i; revert i; native_decide
+  left_inv := by
+    intro i
+    apply Fin.ext
+    simp only [rotIdx]
+    have := i.isLt
+    omega
+  right_inv := by
+    intro i
+    apply Fin.ext
+    simp only [rotIdx]
+    have := i.isLt
+    omega
 
 /-- `T⁸` on indices is an involution. -/
 def tau8 : Fin 720 ≃ Fin 720 where
   toFun := rotIdx 8
   invFun := rotIdx 8
-  left_inv := by intro i; revert i; native_decide
-  right_inv := by intro i; revert i; native_decide
+  left_inv := by
+    intro i
+    apply Fin.ext
+    simp only [rotIdx]
+    have := i.isLt
+    omega
+  right_inv := by
+    intro i
+    apply Fin.ext
+    simp only [rotIdx]
+    have := i.isLt
+    omega
 
-theorem tau8_invol : ∀ i : Fin 720, tau8 (tau8 i) = i := by intro i; revert i; native_decide
+theorem tau8_invol : ∀ i : Fin 720, tau8 (tau8 i) = i := tau8.left_inv
 
 /-- `G` as the product of the pool matrices. -/
 theorem G_eq_mul : (Matrix.of fun i c => X i c) * (Matrix.of fun j c => Z j c)ᵀ = Matrix.of G := by

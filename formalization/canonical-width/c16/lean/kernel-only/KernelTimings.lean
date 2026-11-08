@@ -4,7 +4,9 @@
    A successful recheck alone does not imply kernel-only axioms; inspect `axioms`.
    The kernel environment's addDeclCore always checks (no skip-check parameter).
    Each fresh declaration is checked against the same imported environment.
-   Times exclude imports, tactics, and checking dependencies already imported. -/
+   Times exclude imports and tactics. Include generated auxiliary proofs of each
+   target, and the two new private helper lemmas; other imported dependencies
+   remain trusted as already checked by the build. -/
 import CertGPTPool
 import CertGPTRun
 import Aut
@@ -33,11 +35,29 @@ run_cmd do
     `C16Frames.Code.pools_logical, `C16Frames.Code.pools_distinct,
     `C16Frames.Code.coords_match, `C16Frames.Code.coords_nonzero,
     `C16Frames.Code.physical_pairing_eq_G]
-  for name in names do
+  let owners : Array Name := #[`Aut, `Pools, `Code, `CertGPTPool, `CertGPTRun]
+  let localConstants := env.constants.toList.filter fun (name, _) =>
+    match env.getModuleIdxFor? name with
+    | some idx => owners.contains env.header.moduleNames[idx]!
+    | none => false
+  let mut work : Array (Name × Name) := #[]
+  for target in names do
+    work := work.push (target, target)
+    for (name, info) in localConstants do
+      let nested := (name.toString.splitOn (target.toString ++ ".")).length > 1
+      let helper :=
+        (target == `C16Frames.Aut.gmap_eq && name.toString.endsWith ".iterate_rot1_val") ||
+        ((target == `C16Frames.Code.hx_length || target == `C16Frames.Code.hz_length) &&
+          name.toString.endsWith ".expandRow_length")
+      if nested || helper then
+        match info with
+        | .thmInfo _ | .defnInfo _ => work := work.push (target, name)
+        | _ => pure ()
+  for (target, name) in work do
     let freshName := `C16KernelTiming ++ name
     let decl ← match env.checked.get.find? name with
-      | some (.thmInfo info) => pure <| Declaration.thmDecl {info with name := freshName}
-      | some (.defnInfo info) => pure <| Declaration.defnDecl {info with name := freshName}
+      | some (.thmInfo info) => pure <| Declaration.thmDecl {info with name := freshName, all := [freshName]}
+      | some (.defnInfo info) => pure <| Declaration.defnDecl {info with name := freshName, all := [freshName]}
       | _ => throwError "missing theorem/definition: {name}"
     let start ← IO.monoNanosNow
     match env.checked.get.addDeclCore 0 100000 decl none with
@@ -45,6 +65,6 @@ run_cmd do
     | .ok _ => pure ()
     let stop ← IO.monoNanosNow
     let axs ← collectAxioms name
-    let record := Json.mkObj [("name", toJson name.toString),
+    let record := Json.mkObj [("name", toJson name.toString), ("target", toJson target.toString),
       ("kernel_ns", toJson (stop - start)), ("axioms", toJson (axs.map Name.toString))]
     liftIO <| IO.println ("C16_KERNEL_TIMING " ++ record.compress)

@@ -72,8 +72,16 @@ def gmap (b : Bool) (k : Fin 16) (u : V) : V :=
 
 def ginv (b : Bool) (k : Fin 16) (u : V) : V := gmap b ⟨(16 - k.1) % 16, by omega⟩ u
 
-theorem gmap_ginv : ∀ b k u, gmap b k (ginv b k u) = u := by native_decide
-theorem ginv_gmap : ∀ b k u, ginv b k (gmap b k u) = u := by native_decide
+theorem gmap_ginv : ∀ b k u, gmap b k (ginv b k u) = u := by
+  intro b k u
+  apply Fin.ext
+  cases b <;> simp only [gmap, ginv, Bool.false_eq_true, ite_false, ite_true] <;>
+    have := u.isLt <;> have := k.isLt <;> omega
+theorem ginv_gmap : ∀ b k u, ginv b k (gmap b k u) = u := by
+  intro b k u
+  apply Fin.ext
+  cases b <;> simp only [gmap, ginv, Bool.false_eq_true, ite_false, ite_true] <;>
+    have := u.isLt <;> have := k.isLt <;> omega
 
 /-- The generators: the shift `T` and the side exchange `s`. -/
 def rot1 (u : V) : V := gmap false 1 u
@@ -82,9 +90,25 @@ def swp (u : V) : V := gmap true 0 u
 theorem rot1_aut : ∀ u w, adj (rot1 u) (rot1 w) = adj u w := by native_decide
 theorem swp_aut : ∀ u w, adj (swp u) (swp w) = adj u w := by native_decide
 
+/-- Iterating the shift adds to the residue within each 16-element orbit. -/
+private theorem iterate_rot1_val (n : ℕ) (u : V) :
+    (rot1^[n] u).val = 16 * (u.val / 16) + (u.val % 16 + n) % 16 := by
+  induction n with
+  | zero => simp; omega
+  | succ n ih =>
+    rw [Function.iterate_succ_apply']
+    change 16 * ((rot1^[n] u).val / 16) + ((rot1^[n] u).val % 16 + 1) % 16 = _
+    rw [ih]
+    omega
+
 /-- `gmap b k = T^k ∘ s^b`. -/
 theorem gmap_eq : ∀ (b : Bool) (k : Fin 16) (u : V),
-    gmap b k u = rot1^[k.1] (if b then swp u else u) := by native_decide
+    gmap b k u = rot1^[k.1] (if b then swp u else u) := by
+  intro b k u
+  apply Fin.ext
+  rw [iterate_rot1_val]
+  cases b <;> simp only [gmap, swp, Bool.false_eq_true, ite_false, ite_true] <;>
+    have := u.isLt <;> have := k.isLt <;> omega
 
 theorem iter_aut (f : V → V) (hf : ∀ u w, adj (f u) (f w) = adj u w) (n : ℕ) :
     ∀ u w, adj (f^[n] u) (f^[n] w) = adj u w := by
@@ -101,7 +125,12 @@ theorem gmap_aut (b : Bool) (k : Fin 16) (u w : V) : adj (gmap b k u) (gmap b k 
 
 /-- The 32 maps are distinct (already on vertex `0`). -/
 theorem gmap_distinct : ∀ b k b' k', gmap b k 0 = gmap b' k' 0 → b = b' ∧ k = k' := by
-  native_decide
+  intro b k b' k' h
+  have hv := congrArg Fin.val h
+  cases b <;> cases b' <;>
+    simp only [gmap, Bool.false_eq_true, ite_false, ite_true] at hv <;>
+    have := k.isLt <;> have := k'.isLt <;>
+    first | (exfalso; omega) | (constructor; rfl; apply Fin.ext; omega)
 
 /-! ### Colour refinement on an arbitrary finite graph, and its equivariance -/
 
