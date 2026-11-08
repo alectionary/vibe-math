@@ -476,8 +476,8 @@ DEV = dict(
     H4='Not computable: qualitative recommendation.',
     S1='PNIE: ours minus printed = %s; TNIE: %s; MINT: %s percentage points' % tuple(
         r2(our_ind[e] - pub_ind[e]) for e in ('PNIE', 'TNIE', 'MINT')),
-    S2='Not computable: threshold statements; 1 of 6 disagrees (MINT, a = 0, h > 0).',
-    S3='Not computable: threshold statements; 0 of 3 disagree.',
+    S2=f'Not computable: threshold statements; {len(T1S) - t1_agree} of {len(T1S)} disagree ({len(T1S) - t1_slack} with slack).',
+    S3=f'Not computable: threshold statements; {len(PWS) - pw_agree} of {len(PWS)} disagree ({len(PWS) - pw_slack} with slack).',
     S4='Not computable: not rerun.', S5='0 of 24 entries differ (SB with the RCT-estimate SE divisor).',
     S6='Not computable: not rerun.', S7='Not applicable: conceptual.', S8='Not computable: not reported.')
 for c in claims:
