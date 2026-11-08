@@ -1,0 +1,116 @@
+schema_version: 1
+limit_schema: 1
+dissertation: "Chen, D. (2021). Statistical mediation analysis in regression discontinuity design for causal inference (Doctoral dissertation). University of Nebraska-Lincoln. First adviser: James A. Bovaird; second adviser: Lorey A. Wheeler."
+source_locator: "source/chen2021.pdf"
+source_sha256: "9206b3d824077d36c86b4935ff7f19f64b3fdebde7746943b8a94500fe11e557"
+source_url: "https://digitalcommons.unl.edu/cehsdiss/403/"
+parts:
+  - id: study-dissertation
+    kind: study
+    label: Chen 2021 dissertation
+    plan: "Account for every chapter, research question, analysis, simulation factor, outcome and headline conclusion. Run the full simulation design printed in Table 3.1 and Appendices A-B, independently re-implemented, at 1,000 replications and 500 percentile-bootstrap resamples per replication."
+    headline: true
+  - id: ch-1
+    kind: chapter
+    label: Chapter 1. Introduction
+    plan: "Take the three research questions, the hypotheses and Table 1.1 as the design to replicate."
+  - id: ch-2
+    kind: chapter
+    label: Chapter 2. Literature review
+    plan: "Use it to fix the potential-outcomes definitions of PNIE, TNIE, PNDE, TNDE and MINT and the RDD assumptions; it has no analysis of its own to rerun."
+  - id: ch-3
+    kind: chapter
+    label: Chapter 3. Methods and procedures
+    plan: "Re-implement the data generation (Appendix A) and estimation with percentile bootstrap CIs (Appendix B) from the printed code and equations 3.5-3.13, and record every place where the code and the prose differ."
+  - id: ch-4
+    kind: chapter
+    label: Chapter 4. Results
+    plan: "Compare every printed simulation summary (Tables 4.8 and 4.9, Figures 4.12-4.38 as described in the text) with our full-design results; account for the secondary-data tables 4.2-4.7."
+  - id: ch-5
+    kind: chapter
+    label: Chapter 5. Discussion
+    plan: "Test the discussion's conclusions against our results: biased direct effects, low coverage with true values above the CIs, near-zero MINT power, and the tentative minimum sample size of 5,000."
+  - id: rq-1
+    kind: research_question
+    label: "RQ1: statistical assumptions for mediation in RDD (Table 4.1)"
+    plan: "Check the integrated assumption table against the cited definitions and against the simulation's data-generating model; this is a conceptual synthesis, not a computation."
+  - id: rq-2
+    kind: research_question
+    label: "RQ2: mediation in RDD versus RCT, Head Start Impact Study"
+    plan: "Request or locate the HSIS restricted-use data (ICPSR). If unavailable, record where we looked and replicate only the arithmetic that can be checked from printed numbers (standardized bias and differences in Tables 4.6-4.7)."
+  - id: rq-3
+    kind: research_question
+    label: "RQ3: behavior of mediation in RDD across sample size, effect sizes and cutoff"
+    plan: "Run the full factorial simulation and compute bias, Type I error, power, coverage and imbalance for all five effects at all three cutoffs."
+    headline: true
+  - id: an-hsis-assumptions
+    kind: analysis
+    label: "HSIS assumption tests: treatment distribution plots, covariate balance (Table 4.3), McCrary density test, residual correlations (Table 4.4), functional form (Table 4.5)"
+    plan: "Rerun on HSIS data if obtainable; otherwise record as input unavailable."
+  - id: an-hsis-effects
+    kind: analysis
+    label: "HSIS path and mediation effect estimates, RCT versus synthetic RDD at three cutoffs (Tables 4.6-4.7)"
+    plan: "Rerun with the printed model if HSIS data are obtainable; recompute the printed differences and standardized biases from the printed estimates in any case."
+  - id: an-hsis-arithmetic
+    kind: analysis
+    label: "Internal arithmetic of Tables 4.6-4.7 (differences and standardized bias)"
+    plan: "Recompute each printed difference and SB from the printed RCT and RDD estimates and the formula in equation 3.12."
+  - id: cond-grid
+    kind: condition
+    label: "Full factorial: n (5 levels) x a (4) x b (4) x c' (4) x h (4) x cutoff (3)"
+    plan: "Run every cell: 1,280 generated data conditions, each analysed at three cutoffs, giving 3,840 condition-cutoff cells, 1,000 replications each, 500 bootstrap resamples per replication."
+    design_count: 3840
+    headline: true
+  - id: arm-cut1
+    kind: arm
+    label: "Cutoff 1: 25th percentile of the assignment variable"
+    plan: "Treatment for x at or above the 25th sample percentile, as in Appendix A; record that this gives 75% treated, and compare with the prose labels."
+  - id: arm-cut2
+    kind: arm
+    label: "Cutoff 2: median"
+    plan: "Treatment for x at or above the sample median, as in Appendix A."
+  - id: arm-cut3
+    kind: arm
+    label: "Cutoff 3: 75th percentile"
+    plan: "Treatment for x at or above the 75th sample percentile, as in Appendix A; record that this gives 25% treated."
+  - id: out-bias
+    kind: analysis
+    label: "Bias of PNIE, TNIE, PNDE, TNDE and MINT (Table 4.8, Figures 4.12-4.16)"
+    plan: "Average estimate minus population value per cell; percentage of cells within [-.10,.10] and [-.05,.05] by effect and cutoff, collapsed as in Table 4.8."
+  - id: out-type1
+    kind: analysis
+    label: "Type I error of the five effects (Figures 4.17-4.21)"
+    plan: "Rejection rate of the 95% percentile bootstrap CI in cells whose population effect is zero, judged against Bradley's [.025,.075]."
+  - id: out-power
+    kind: analysis
+    label: "Power of the five effects (Figures 4.22-4.28)"
+    plan: "Rejection rate in cells whose population effect is nonzero."
+  - id: out-power-analytic
+    kind: analysis
+    label: "Additional power analysis by the standard deviation of Y (Chapter 3, Outcome Measures)"
+    plan: "Locate the reported comparison of expected and simulated power; replicate it if its method is stated."
+  - id: out-coverage
+    kind: analysis
+    label: "Coverage and imbalance of the five effects (Table 4.9, Figures 4.29-4.38)"
+    plan: "Share of CIs containing, falling below and falling above the population value; collapsed as in Table 4.9 and by cell."
+  - id: hl-bias-direct
+    kind: headline
+    label: "Direct-effect estimates are biased (negative bias), indirect and MINT less so; bias decreases as the control share increases"
+    plan: "Compare with the bias in our full-design run."
+    headline: true
+  - id: hl-coverage
+    kind: headline
+    label: "Percentile bootstrap CIs give low coverage, with true values systematically above the CIs; the chief conclusion that the CI method does not give valid inference"
+    plan: "Compare with coverage and imbalance in our full-design run."
+    headline: true
+  - id: hl-mint-power
+    kind: headline
+    label: "MINT power is near zero at every sample size"
+    plan: "Compare with MINT rejection rates in our run."
+    headline: true
+  - id: hl-n5000
+    kind: headline
+    label: "Tentative minimum sample size of 5,000 for accurate Type I error and power above .80 regardless of cutoff"
+    plan: "Check against our Type I error and power across cells."
+    headline: true
+removals: []
