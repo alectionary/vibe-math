@@ -93,5 +93,77 @@
       "adj_spec": "standard plus its native_decide axiom"
     },
     "not_covered": "the remark that every linear map preserving both pools induces a graph automorphism (immediate, not formalized)"
+  },
+  "certGPT": {
+    "status": "proved and verified",
+    "base_commit": "7cdf520a98801f24bd5c9cbd33f0373be33549ff",
+    "branch": "independent/c16-lean-cert-chatgpt-20261107",
+    "focused_build": {
+      "command": "lake build CertGPTAudit",
+      "exit_code": 0,
+      "jobs": 3789,
+      "log": "CertGPTAudit.log"
+    },
+    "full_build": {
+      "command": "lake build",
+      "exit_code": 0,
+      "jobs": 3833,
+      "log": "CertGPTBuild.log"
+    },
+    "target_theorem": "C16Frames.CertGPT.no_swap_frame",
+    "target_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound",
+      "C16Frames.CertGPT.swap_check_ok._native.native_decide.ax_1_1",
+      "C16Frames.CertGPT.swap_pools_ok._native.native_decide.ax_1_1"
+    ],
+    "proved_component_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "readme": "CertGPTREADME.md",
+    "remaining": [],
+    "target_check": {
+      "command": "LEAN_PATH=. lake env lean CertGPTNoSwap.lean",
+      "exit_code": 0,
+      "log": "CertGPTNoSwap.log"
+    },
+    "native_checks": [
+      "swap_check_ok",
+      "swap_pools_ok"
+    ],
+    "target_build": {
+      "command": "lake build CertGPTNoSwap",
+      "exit_code": 0,
+      "jobs": 3816
+    },
+    "tests": {
+      "file": "CertGPTResults.json",
+      "passed": 13,
+      "failed": 0
+    },
+    "source_sha256": {
+      "CertGPTAudit.lean": "d37d16ba0df8a1dbad42652bd541db10e5e6a56fe4dca79e577fdb95d393b172",
+      "CertGPTBits.lean": "01e2a49da80eff648173bbb610210f02ca20efa39499fa6ce6e99f11e1a0d85e",
+      "CertGPTCheck.lean": "d475f87ffa0bec2cdf00bf3cc3ff1cecddebaa196c2c8f79fc9f3082a8cb4a5c",
+      "CertGPTCompletion.lean": "c65c4c7ba834da542c28d9a964059c2aee73ea2979af632d90e9ca55dbebb60e",
+      "CertGPTData.lean": "827b67a9e83de43879919e0df497686fe0610932194a0617f702718d4e481576",
+      "CertGPTFrameCheck.lean": "fbb23fa5d7b1291b9a8eda3031eda3679d1142d6f1f36a1c766e1102c06a0e83",
+      "CertGPTFrames.lean": "38a0ac1b28a19ceb9d1611fc5c205488fbc887027e4f9a17e7a18c615cdb07f1",
+      "CertGPTItemTable.lean": "6417914b3635d3cb2ae05d2e52c99d34dbd8fd3d62b5df9815a0eae795968e29",
+      "CertGPTKernel.lean": "5fcbc99362c9a0d9d3d1e16636fca54d462f3bda4bc0d0f67aa12b8aef08503b",
+      "CertGPTNoSwap.lean": "117f55489b524e8a81144391f6dc86fcc11f8aa44c82da8ec95db27f8cefede2",
+      "CertGPTPool.lean": "3995aaa38e0867ca2dff6098696609e0fb533de453f900d525911a950bb57eae",
+      "CertGPTRank.lean": "d0181cdd232fb3b70c92dd4781f0b722ff762b34025187cf5e700355a7e27981",
+      "CertGPTRankLeaf.lean": "ac1a2f1308c142c489889c8e67e9eb67602f8e7bc1e13f41c9293311eb550c21",
+      "CertGPTRoot.lean": "7e8dec6084fce54d36a2c180c9f6b77a9038ede7a8d012d5a35633e320df232f",
+      "CertGPTRun.lean": "3a9599a9174e2584440d4744bd64e98febf271effbc8e2396f265cc2827ac92c",
+      "CertGPTSound.lean": "0809d972f195d914fc70cc17d8722dd09f466b70869eeaf2e60ee961d69cee7f",
+      "CertGPTSwapData.lean": "9a783a2d37fd94404d45eeeadc30fc483abd933c7d010d19f791a3d026a45634",
+      "CertGPTTest.lean": "967e1a96cfc00baaacbf419810a243642be378f934521e67e6e666345e2ee10d",
+      "CertGPTVertex.lean": "0aab465cca41b6ce13177a5661c8a8c183781152b989176a83e0788d5d76f099"
+    }
   }
 }
