@@ -14,6 +14,15 @@ mathematical result does not claim authorship of that result. Third-party code,
 quotations and source excerpts embedded in an otherwise included file retain
 their own terms and are outside this grant.
 
+## Included agent skills
+
+The grant also applies to original material under `.agents/skills/`: skill
+instructions (`SKILL.md` and `references/`), agent configuration, templates,
+scripts and tests. Skills may be shared and adapted under Apache-2.0 with its
+notice and attribution requirements. Fixtures, examples and other skill files
+that quote dissertations, papers or other third-party sources keep those
+sources' terms for the quoted material, as with embedded excerpts above.
+
 ## Exclusions take precedence
 
 - **All of `formalization/higgott-quantum-decoding/`** is excluded from this new
@@ -31,8 +40,8 @@ their own terms and are outside this grant.
 - Everything outside the included code scope is excluded: papers and TeX,
   prose documentation and reviews, figures and dissertation crops, datasets,
   result tables, circuits (`.stim`), logs, certificates stored as data, source
-  extracts, metadata, HTML, configuration, and `.agents/` skill material.
-  No Creative Commons or other new content license is granted here.
+  extracts, metadata, HTML, and configuration outside the included agent
+  skills. No Creative Commons or other new content license is granted here.
 
 Exclusion from this new grant does not revoke an existing license, prohibit
 uses permitted by law, or establish that an item has no existing license.
