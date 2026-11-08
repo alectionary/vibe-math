@@ -1,12 +1,12 @@
 {
  "writer": "isolated writer (fresh agent context)",
  "context": "fresh",
- "isolation_note": "Separate agent context; read only the packet, its artifact files, the approved preamble, the three handoff instruction files, and (after the coordinator permitted them for the revised packet) README.md and handoff/SNAPSHOTS.md. No prior drafts by others, git history or other studies were read. This revision edited the writer's own earlier draft for the revised packet.",
- "packet_sha256": "3bf43a8ad94dcfe732eb7bdeb8c48e47b41e45ffd45a7aa4c17bd98563fbb414",
+ "isolation_note": "Separate agent context, isolated from the research conversation; read only the packet, its artifact files, the approved preamble, the three handoff instruction files, README.md and handoff/SNAPSHOTS.md, and the independent reviewer findings notes/editorial-review.json and notes/review-cold-pass.md (supplied for this revision). No git history or other studies were read. This revision edited the same writer's earlier draft.",
+ "packet_sha256": "040f0081aa5262e691ecb952d4e341daa7a65e229299102f824907599ee5f9ec",
  "inputs": [
   {
    "path": "evidence-packet.json",
-   "sha256": "3bf43a8ad94dcfe732eb7bdeb8c48e47b41e45ffd45a7aa4c17bd98563fbb414"
+   "sha256": "040f0081aa5262e691ecb952d4e341daa7a65e229299102f824907599ee5f9ec"
   },
   {
    "path": "REPLICATION-PLAN.yaml",
@@ -30,7 +30,7 @@
   },
   {
    "path": "simulation/statement_checks.py",
-   "sha256": "0a87e478a5fdc12c7b8c1fe9b4adcd0c74ca5197be1c92cfb85d7e608bf1f741"
+   "sha256": "cb5a85b386c9812548fa32821f7a3972f59f81fec0a2367d53f270555f97f343"
   },
   {
    "path": "results/cells.csv",
@@ -54,7 +54,7 @@
   },
   {
    "path": "results/statement_checks.csv",
-   "sha256": "3cc1773891287870060de1704c4fc937a4feb0b5553d2b7eb60ece6811132616"
+   "sha256": "f8eab8b535744047b0be29f6df284aee0af9d93223c90b1f913b0d6e3d114f50"
   },
   {
    "path": "results/summary.json",
@@ -86,7 +86,7 @@
   },
   {
    "path": "build_packet.py",
-   "sha256": "3fe59c696bf3b02efc8b39ad0aa716f86a85aa1b89ba61feb26c280d4a6aaffe"
+   "sha256": "2927d108022dddf4b7639a3885e1fa0ed7efe3993897e367bd55576789408bb1"
   },
   {
    "path": "source/chen2021.pdf",
@@ -115,12 +115,20 @@
   {
    "path": "handoff/SNAPSHOTS.md",
    "sha256": "f39018c995407d0457d1f3d2b629f92e84a7cbdeb8e9c4de76dd1953170a5b2c"
+  },
+  {
+   "path": "notes/editorial-review.json",
+   "sha256": "474bf45e62675ee9b58e046365adc31f1a91672b89eb42d6621f325e3065cef9"
+  },
+  {
+   "path": "notes/review-cold-pass.md",
+   "sha256": "11c7d61a1ed1d39f8efdc52599f99c9fe740318cb600b9c222bfabd74319fc07"
   }
  ],
  "outputs": [
   {
    "path": "paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.tex",
-   "sha256": "8ec2980077f1301e15c6818ce4f3e8cc0a634f8c8bbfd6f29e3c3eb9e6a0e1af"
+   "sha256": "99a0f77a015ccc40651046261476c80ff5e5c470aeb2a2ce1059fc86e395cde4"
   },
   {
    "path": "paper/references.bib",
@@ -128,11 +136,11 @@
   },
   {
    "path": "paper/mediation_in_regression_discontinuity__a_replication_of_chen_2021.pdf",
-   "sha256": "640590a12ecc553c901b242bacf8225ab358a6911dd7c3a8156758daec5e9217"
+   "sha256": "cf5e4acab3d6678115cef5c397e14eaaa7609ebeddb456a121ef0b39c59bb615"
   },
   {
    "path": "paper/build.log",
-   "sha256": "8279aecfee93cdf763f20ca80873b789c4aaf07dadd09e3ca610c83ae1146a58"
+   "sha256": "8991b783e146b222d5e0f89b7ff6ac1a6f67947ea8765d67bfd0317b39df6665"
   }
  ],
  "template": {
@@ -142,34 +150,34 @@
   "note": "Input unchanged on line 1; lmodern, T1 fontenc, textcomp and microtype (f-ligatures disabled) are loaded after it, recorded as a departure in the compliance ledger."
  },
  "claim_map": {
-  "H1": "Table 1 row E1 / Section 4.1 / page 1, 4-5; Section 10.1 page 12",
-  "H2": "Table 1 rows E2-E3 / Section 4.2 / pages 1, 4-6; Section 10.1 page 12",
-  "H3": "Table 1 row E4 / Section 4.3, Table 5 / pages 1, 6-7; Section 10.2 page 13",
-  "H4": "Table 1 row E5 / Section 4.4, Table 6 / pages 1, 7",
-  "S1": "Section 5.1, Table 3 / pages 5, 7-8; Section 10.1 page 12",
-  "S2": "Section 5.2, Table 7 / page 8; Section 10.2 page 13",
-  "S3": "Section 5.2, Table 7 / page 8",
-  "S4": "Section 5.3 / page 8; Section 10.3 page 13 (blocked, not established)",
-  "S5": "Section 5.3 / page 8; Section 8.2 page 11",
-  "S6": "Section 5.3 / page 8; Section 10.3 page 13 (blocked, not established)",
+  "H1": "Table 1 row E1 / page 1; Section 4.1, Table 3 / pages 4-5; Section 10.1 / page 13",
+  "H2": "Table 1 rows E2-E3 / page 1; Section 4.2, Table 4 / page 6; Section 10.1 / page 13",
+  "H3": "Table 1 row E4 / page 1; Section 4.3, Table 5 / pages 6-7; Section 10.2 / page 13",
+  "H4": "Table 1 row E5 / page 1; Section 4.4, Table 6 / page 7",
+  "S1": "Section 5.1 / page 8; Table 3 / page 5; Section 10.1 / page 13",
+  "S2": "Section 5.2, Table 7 / pages 8-9; Section 10.2 / page 13",
+  "S3": "Section 5.2, Table 7 / pages 8-9",
+  "S4": "Section 5.3 / page 8; Section 10.3 / page 13 (blocked, not established)",
+  "S5": "Section 5.3 / page 8; Section 8.2 / page 12",
+  "S6": "Section 5.3 / page 8; Section 10.3 / page 13 (blocked, not established)",
   "S7": "Section 5.4 / page 9 (not established, conceptual)",
-  "S8": "Section 5.4 / page 9; Section 10.4 page 13 (blocked, not reported)"
+  "S8": "Section 5.4 / page 9; Section 10.4 / page 13 (blocked, not reported)"
  },
  "limitations_map": {
   "0": "Section 9 item 1 / page 12; Sections 3.3 and 8.3 / pages 3, 12",
-  "1": "Abstract / page 1; Section 9 item 2 / page 12; Section 10.1-10.2 / pages 12-13",
+  "1": "Abstract / page 1; Section 9 item 2 / page 12; Sections 10.1-10.2 / page 13",
   "2": "Abstract / page 1; Section 5.3 / page 8; Section 9 item 3 / page 12",
   "3": "Section 5.4 / page 9; Section 9 item 4 / page 12; Section 10.4 / page 13",
   "4": "Section 8.1 / page 11; Section 9 item 5 / page 12",
-  "5": "Section 4.1 / page 5; Section 9 item 6 / page 12; Section 10.1 / page 12"
+  "5": "Section 4.1 / page 4; Section 9 item 6 / page 12; Section 10.1 / page 13"
  },
  "first_page": {
   "abstract": {
    "bbox": [
     58.0,
-    199.75,
+    203.08,
     553.0,
-    358.82
+    372.96
    ],
    "citation_key": "chen2021",
    "source_identification": "Chen (2021)",
@@ -186,41 +194,41 @@
   "table": {
    "bbox": [
     58.0,
-    369.97,
+    386.68,
     553.0,
-    739.02
+    738.12
    ],
    "magnitude_heading": "Effect magnitude",
    "comparison_note": "Descriptive point estimates; not equivalence.",
    "published_column_bbox": [
     178.6,
-    371.17,
-    252.31,
-    687.99
+    387.88,
+    255.29,
+    676.71
    ],
    "ours_column_bbox": [
-    252.33,
-    371.17,
-    332.01,
-    687.99
+    255.31,
+    387.88,
+    342.97,
+    676.71
    ],
    "published_heading_bbox": [
     178.6,
-    371.17,
-    252.31,
-    391.6
+    387.88,
+    255.29,
+    407.17
    ],
    "ours_heading_bbox": [
-    252.33,
-    371.17,
-    332.01,
-    391.6
+    255.31,
+    387.88,
+    342.97,
+    407.17
    ],
    "magnitude_heading_bbox": [
-    421.69,
-    371.17,
-    474.47,
-    391.6
+    430.66,
+    387.88,
+    476.46,
+    407.17
    ],
    "published_heading": "Published",
    "ours_heading": "Ours",
@@ -229,199 +237,199 @@
      "effect_id": "E1",
      "bbox": [
       58.0,
-      392.2,
+      407.77,
       553.0,
-      449.03
+      452.55
      ],
      "estimand_text": "Percentage of PNDE and TNDE condition-cutoff results with |bias| > .10, averaged over the six effect-cutoff rows of Table 4.8",
      "published_text": "PNDE and TNDE within [-.10, .10] in only 12.50-18.75% of conditions, with negative bias",
      "published_bbox": [
       178.6,
-      392.2,
-      252.31,
-      449.03
+      407.77,
+      255.29,
+      452.55
      ],
      "ours_text": "PNDE and TNDE within [-.05, .05] in 100% of conditions; largest |bias| 0.016",
      "ours_bbox": [
-      252.33,
-      392.2,
-      332.01,
-      449.03
+      255.31,
+      407.77,
+      342.97,
+      452.55
      ],
      "published_effect_bbox": [
-      332.03,
-      392.2,
-      377.83,
-      449.03
+      342.99,
+      407.77,
+      386.8,
+      452.55
      ],
      "ours_effect_bbox": [
-      377.85,
-      392.2,
-      421.67,
-      449.03
+      386.82,
+      407.77,
+      430.64,
+      452.55
      ],
      "verdict_bbox": [
-      518.33,
-      392.2,
+      520.32,
+      407.77,
       553.0,
-      449.03
+      452.55
      ],
      "verdict_text": "no match",
-     "tolerance_text": "E1 tolerance 0.00500001 percentage points",
+     "tolerance_text": "E1 tolerance 0.005 percentage points",
      "units_text": "percentage points"
     },
     {
      "effect_id": "E2",
      "bbox": [
       58.0,
-      449.63,
+      453.15,
       553.0,
-      497.4
+      497.97
      ],
      "estimand_text": "95 minus mean coverage (%) over the 15 effect-cutoff rows of Table 4.9",
      "published_text": "Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI",
      "published_bbox": [
       178.6,
-      449.63,
-      252.31,
-      497.4
+      453.15,
+      255.29,
+      497.97
      ],
      "ours_text": "Coverage 94.6-95.6% by effect and cutoff; misses on both sides at similar rates",
      "ours_bbox": [
-      252.33,
-      449.63,
-      332.01,
-      497.4
+      255.31,
+      453.15,
+      342.97,
+      497.97
      ],
      "published_effect_bbox": [
-      332.03,
-      449.63,
-      377.83,
-      497.4
+      342.99,
+      453.15,
+      386.8,
+      497.97
      ],
      "ours_effect_bbox": [
-      377.85,
-      449.63,
-      421.67,
-      497.4
+      386.82,
+      453.15,
+      430.64,
+      497.97
      ],
      "verdict_bbox": [
-      518.33,
-      449.63,
+      520.32,
+      453.15,
       553.0,
-      497.4
+      497.97
      ],
      "verdict_text": "no match",
-     "tolerance_text": "E2 tolerance 0.005000025 percentage points",
+     "tolerance_text": "E2 tolerance 0.005 percentage points",
      "units_text": "percentage points"
     },
     {
      "effect_id": "E3",
      "bbox": [
       58.0,
-      498.0,
+      498.57,
       553.0,
-      545.76
+      543.4
      ],
      "estimand_text": "Mean over the 15 Table 4.9 rows of (% of CIs lying below the population value) minus (% lying above it)",
      "published_text": "Coverage 24.10-83.99% by effect and cutoff; true value usually above the CI",
      "published_bbox": [
       178.6,
-      498.0,
-      252.31,
-      545.76
+      498.57,
+      255.29,
+      543.4
      ],
      "ours_text": "Coverage 94.6-95.6% by effect and cutoff; misses on both sides at similar rates",
      "ours_bbox": [
-      252.33,
-      498.0,
-      332.01,
-      545.76
+      255.31,
+      498.57,
+      342.97,
+      543.4
      ],
      "published_effect_bbox": [
-      332.03,
-      498.0,
-      377.83,
-      545.76
+      342.99,
+      498.57,
+      386.8,
+      543.4
      ],
      "ours_effect_bbox": [
-      377.85,
-      498.0,
-      421.67,
-      545.76
+      386.82,
+      498.57,
+      430.64,
+      543.4
      ],
      "verdict_bbox": [
-      518.33,
-      498.0,
+      520.32,
+      498.57,
       553.0,
-      545.76
+      543.4
      ],
      "verdict_text": "no match",
-     "tolerance_text": "E3 tolerance 0.01000005 percentage points",
+     "tolerance_text": "E3 tolerance 0.01 percentage points",
      "units_text": "percentage points"
     },
     {
      "effect_id": "E4",
      "bbox": [
       58.0,
-      546.36,
+      544.0,
       553.0,
-      603.2
+      597.24
      ],
      "estimand_text": "MINT rejection rate at n = 500, a = .59, h = .34, mean over b, c' and cutoffs",
      "published_text": "MINT power near zero at every sample size; never reaches .80",
      "published_bbox": [
       178.6,
-      546.36,
-      252.31,
-      603.2
+      544.0,
+      255.29,
+      597.24
      ],
      "ours_text": "MINT power 0.836 at n = 500 for ah = .20; at least .97 for ah >= .13 from n = 1,000",
      "ours_bbox": [
-      252.33,
-      546.36,
-      332.01,
-      603.2
+      255.31,
+      544.0,
+      342.97,
+      597.24
      ],
      "published_effect_bbox": [
-      332.03,
-      546.36,
-      377.83,
-      603.2
+      342.99,
+      544.0,
+      386.8,
+      597.24
      ],
      "ours_effect_bbox": [
-      377.85,
-      546.36,
-      421.67,
-      603.2
+      386.82,
+      544.0,
+      430.64,
+      597.24
      ],
      "verdict_bbox": [
-      518.33,
-      546.36,
+      520.32,
+      544.0,
       553.0,
-      603.2
+      597.24
      ],
      "verdict_text": "no match",
      "applicability_text": "The source states a verbal result; a scalar contrast exists but no defensible margin.",
      "display": {
       "form": "signed",
       "magnitude_bbox": [
-       421.69,
-       546.36,
-       474.47,
-       603.2
+       430.66,
+       544.0,
+       476.46,
+       597.24
       ],
       "direction_bbox": [
-       474.49,
-       546.36,
-       518.31,
-       603.2
+       476.48,
+       544.0,
+       520.3,
+       597.24
       ],
       "values_bbox": [
-       332.03,
-       546.36,
-       421.67,
-       603.2
+       342.99,
+       544.0,
+       430.64,
+       597.24
       ]
      },
      "tolerance_text": "E4 tolerance not established",
@@ -431,64 +439,64 @@
      "effect_id": "E5",
      "bbox": [
       58.0,
-      603.8,
+      597.84,
       553.0,
-      687.99
+      676.71
      ],
      "estimand_text": "qualitative sample-size recommendation over the grid",
      "published_text": "Tentative minimum n of 5,000 for accurate Type I error and power above .80",
      "published_bbox": [
       178.6,
-      603.8,
-      252.31,
-      687.99
+      597.84,
+      255.29,
+      676.71
      ],
-     "ours_text": "At n = 5,000, 89.2% of nonzero results reach .80 power; both-zero products stay conservative",
+     "ours_text": "At n = 5,000, 86.3% of zero-effect results have Type I in range and 89.2% of nonzero results reach .80 power, similar at each cutoff; both-zero products stay conservative",
      "ours_bbox": [
-      252.33,
-      603.8,
-      332.01,
-      687.99
+      255.31,
+      597.84,
+      342.97,
+      676.71
      ],
      "published_effect_bbox": [
-      332.03,
-      603.8,
-      377.83,
-      687.99
+      342.99,
+      597.84,
+      386.8,
+      676.71
      ],
      "ours_effect_bbox": [
-      377.85,
-      603.8,
-      421.67,
-      687.99
+      386.82,
+      597.84,
+      430.64,
+      676.71
      ],
      "verdict_bbox": [
-      518.33,
-      603.8,
+      520.32,
+      597.84,
       553.0,
-      687.99
+      676.71
      ],
      "verdict_text": "partial",
      "applicability_text": "A qualitative design recommendation over the whole grid; no single signed contrast represents it, and any pooled share would depend on the mix of effect sizes in the grid.",
      "display": {
       "form": "signed",
       "magnitude_bbox": [
-       421.69,
-       603.8,
-       474.47,
-       687.99
+       430.66,
+       597.84,
+       476.46,
+       676.71
       ],
       "direction_bbox": [
-       474.49,
-       603.8,
-       518.31,
-       687.99
+       476.48,
+       597.84,
+       520.3,
+       676.71
       ],
       "values_bbox": [
-       332.03,
-       603.8,
-       421.67,
-       687.99
+       342.99,
+       597.84,
+       430.64,
+       676.71
       ]
      },
      "tolerance_text": "E5 tolerance not applicable",
@@ -500,7 +508,7 @@
  },
  "build": {
   "command": "cd paper; pdflatex; bibtex; pdflatex; pdflatex",
-  "pdf_pages": 18,
+  "pdf_pages": 19,
   "measurement": "pdfplumber 0.11.10 on the final PDF; coordinates in PDF points [left, top, right, bottom], top-left origin, page 1"
  },
  "stage_instruction_snapshots": {
